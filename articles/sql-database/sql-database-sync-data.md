@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b8844e6ca9effe78f8d98571af2ce59b4e0abee8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5e8e634bfb69d7c274322d34d26ff614f75905af
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465312"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215914"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -228,7 +228,7 @@ Budete muset aktualizovat schéma databáze ve skupině synchronizace? Změny ve
 
 Provádí synchronizaci dat SQL dle očekávání? Monitorování a řešení potíží, najdete v následujících článcích:
 
-- [Monitorování Synchronizace dat SQL Azure s využitím Log Analytics](sql-database-sync-monitor-oms.md)
+- [Monitorování synchronizace dat SQL Azure s protokoly Azure monitoru](sql-database-sync-monitor-oms.md)
 - [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Další informace o Azure SQL Database

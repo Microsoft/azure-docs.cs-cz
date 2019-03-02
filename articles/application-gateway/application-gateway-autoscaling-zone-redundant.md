@@ -5,27 +5,25 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c3ad62dd5f8af52ae9aed1f9469d4b00c4795fa7
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446507"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215833"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
 Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostupné ve verzi Public Preview v nové skladové jednotce v2, která nabízí vylepšení výkonu a přidává podporu pro důležité nové funkce jako podporu pro virtuální IP adresy statické, automatické škálování a redundanci zón. Existující funkce v rámci všeobecně dostupné skladové položky i dál podporovaná v nové SKU v2 s několika výjimkami, které jsou uvedené v části známé omezení. Nové SKU v2 zahrnují následující vylepšení:
 
-- **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navýšit kapacitu nebo dolů podle aktuálních vzory zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Proto skladová jednotka nabízí true elasticitu. V nové skladové položky můžete provozovat Application Gateway v pevnou kapacitu (automatické škálování, zakázané) a v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které se zobrazují velké odchylky v provozu aplikací.
+- **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navýšit kapacitu nebo dolů podle aktuálních vzory zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Tato skladová jednotka nabízí true elasticitu. V nové skladové položky můžete provozovat Application Gateway v pevnou kapacitu (automatické škálování, zakázané) a v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které se zobrazují velké odchylky v provozu aplikací.
 
-   > [!NOTE]
-   > Automatické škálování není aktuálně k dispozici pro WAF SKU. Konfigurace WAF s režimem pevnou kapacitu, namísto režim automatického škálování.
 - **Zóna redundance**: Nasazení služby Application Gateway nebo WAF může zahrnovat více zón dostupnosti, není potřeba zřizovat a typu číselník samostatných instancí služby Application Gateway v každé zóně pomocí Traffic Manageru. Můžete v jedné oblasti nebo více zónách ve které jsou nasazené instance aplikační brány, tedy zajistit, že zóna selhání odolnost proti chybám. Fond back-endu pro aplikace můžete podobně distribuované napříč zónami dostupnosti.
 - **Vylepšení výkonu**: Automatické škálování, které skladová jednotka nabízí až 5 X lepší SSL snižování zátěže výkon ve srovnání se obecně dostupné skladové položky.
 - **Rychlejší nasazení a aktualizace** automatické škálování SKU poskytuje rychlejší nasazení a aktualizace čas obecně dostupné skladové položky.
-- **Virtuální IP adresy statické**: Virtuální IP adresu brány aplikace nyní podporuje statický typ VIP výhradně. Tím se zajistí, že se virtuální IP adresy přidružené k službě Application Gateway nezmění ani po restartování počítače.
+- **Virtuální IP adresy statické**: Virtuální IP adresu brány aplikace nyní podporuje statický typ VIP výhradně. Tím se zajistí, že virtuální IP adresy přidružené k službě application gateway nemění ani po restartování počítače.
 
 > [!IMPORTANT]
 > Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -38,7 +36,7 @@ Automatickým Škálováním SKU je k dispozici v následujících oblastech: US
 
 ## <a name="pricing"></a>Ceny
 
-Ve verzi preview se neúčtuje. Bude vám Účtovaná prostředků než aplikační brány, jako je trezor klíčů, virtuální počítače atd.
+Ve verzi preview se neúčtuje. Účtují se prostředky než aplikační brány, jako je trezor klíčů, virtuální počítače a tak dále.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 

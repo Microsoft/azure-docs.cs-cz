@@ -30,6 +30,8 @@ items:
     href: infrastructure-fqdns.md
   - name: Protokoly a metriky
     href: logs-and-metrics.md
+  - name: Analýza hrozeb
+    href: threat-intel.md
   - name: Logika zpracování pravidel
     href: rule-processing.md
   - name: Značky služeb
@@ -72,9 +74,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/azure-firewall/
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: f7867f898cd85e5255fbf3a8d216cac3be85a890
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 00f15dafcf5db5ee2e5e488b1a7d806308caea96
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456533"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243104"

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/28/2019
+ms.openlocfilehash: dd06ae6046ab96d95cf1c1907c74d0b4d9a843bb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963841"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214329"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -90,7 +90,7 @@ Pokud agregační objem prostředků pro izolované databáze je více než 1, 5
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
 
-Prostřednictvím sdílení prostředků, ne všechny databáze ve fondu současně používat prostředky až po limit dostupný pro izolované databáze. Čím méně databází má současně špičku, tím nižší prostředků fondu můžete nastavit a tím výhodnější fond bude. Obecně platí by měla více než 2/3 (nebo 67 %) databází ve fondu současně vrcholu do svého limitu prostředků.
+Prostřednictvím sdílení prostředků, ne všechny databáze ve fondu současně používat prostředky až po limit dostupný pro izolované databáze. Čím méně databází má současně špičku, tím nižší prostředků fondu můžete nastavit a tím výhodnější fond bude. Obecné, ne více než 2/3 (nebo 67 %) databází ve fondu měli současně ve špičce na omezení jejich prostředky.
 
 ***Založený na DTU nákupní model příklad***
 
@@ -200,6 +200,20 @@ Ve výchozím nastavení graf **využití databázových prostředků** okno se 
 Můžete také vybrat další metriky pro zobrazení vedle sebe v této tabulce databáze, chcete-li získat podrobnější přehled výkonu vaší databáze.
 
 Další informace najdete v tématu [vytvářet upozornění databáze SQL na webu Azure portal](sql-database-insights-alerts-portal.md).
+
+## <a name="customer-case-studies"></a>Zákaznické případové studie
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart rychle rozšířit svoje obchodní služby ve výši 1 000 nových databází Azure SQL Database za měsíc použít elastické fondy s Azure SQL Database.
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco pomocí elastických fondů Azure SQL Database rychle zřizovat a škálovat služby pro tisíce tenantů ve službě cloud.
+
+- [Daxko/CSI](http://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI používá elastické fondy s Azure SQL Database, ke zrychlení jeho vývojový cyklus a ke zvýšení jeho zákaznické a výkon.
 
 ## <a name="next-steps"></a>Další postup
 

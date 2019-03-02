@@ -12,27 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/01/2019
 ms.author: alleonar
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 567ea09a50edc043f2022a47d08576720550e750
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 47233d593e9539e5755daf331ce9dbff73207942
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448088"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213479"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
 >
-> Od února 2019 Azure Active Directory Graph API je zastaralé a místo toho použití rozhraní Microsoft Graph API.  
+> Od února 2019 jsme začali postupně přestat používat některé starší verze Azure Active Directory Graph API a rozhraní Microsoft Graph API. 
 >
-> K usnadnění přechodu, starší verze Azure AD Graph API kdy před novější značky.  
->
-> Podrobnosti, aktualizace a časové rámce [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogový příspěvek v Centru pro vývojáře Office.
+> Podrobnosti, aktualizace a časové rámce, naleznete v tématu [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) Office Dev Center.
 >
 > V budoucnu, aplikace by měly používat rozhraní Microsoft Graph API. 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric – sledování výkonu pomocí Log Analytics | Dokumentace Microsoftu
+title: Azure Service Fabric – protokoly výkonu monitorování prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit agenta Log Analytics pro monitorování kontejnerů a čítače výkonu pro své clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 36402b7dc9c5ee801dd59b03f99b45d6428de187
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3d35075c768855ebd907b96de2ded82757d5e525
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815990"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242900"
 ---
-# <a name="performance-monitoring-with-log-analytics"></a>Sledování výkonu pomocí Log Analytics
+# <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorování výkonu pomocí protokolů Azure Monitor
 
 Tento článek popisuje kroky pro přidání agenta Log Analytics jako virtuálního počítače škálovací sady rozšíření do clusteru a připojte ho k existující pracovní prostor Azure Log Analytics. To umožňuje shromažďování diagnostická data o kontejnerech, aplikací a monitorování výkonu. Tak, že přidáte jako rozšíření k prostředku virtuálního počítače škálovací sady, Azure Resource Manageru se zajistí, že se nainstaluje na všech uzlech i při škálování clusteru.
 
 > [!NOTE]
-> Tento článek předpokládá, že máte pracovní prostor služby Azure Log Analytics, už nastavili. Pokud tak neučiníte, přejděte na [nastavení Azure Log Analytics](service-fabric-diagnostics-oms-setup.md)
+> Tento článek předpokládá, že máte pracovní prostor služby Azure Log Analytics, už nastavili. Pokud tak neučiníte, přejděte na [nastavení protokolů Azure Azure Monitor](service-fabric-diagnostics-oms-setup.md)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Přidat rozšíření agenta pomocí příkazového řádku Azure
 
@@ -34,9 +36,9 @@ Nejlepší způsob, jak přidat agenta Log Analytics ke svému clusteru je prost
 
 1. Jakmile vaší služby Cloud Shell je požadováno, ujistěte se, že pracujete ve stejném předplatném jako prostředek. Zkontrolujte to s `az account show` a ujistěte se, že hodnota "name" odpovídá předplatné vašeho clusteru.
 
-2. Na portálu přejděte do skupiny prostředků, ve kterém se nachází váš pracovní prostor Log Analytics. Klikněte na prostředek Log Analytics (typ prostředku bude Log Analytics). Jakmile budete na stránce Přehled zdrojů, klikněte na **Upřesnit nastavení** v nabídce vlevo v části nastavení.
+2. Na portálu přejděte do skupiny prostředků, ve kterém se nachází váš pracovní prostor Log Analytics. Klikněte na prostředek log analytics, (typ prostředku bude pracovní prostor Log Analytics). Jakmile budete na stránce Přehled zdrojů, klikněte na **Upřesnit nastavení** v nabídce vlevo v části nastavení.
 
-    ![Stránka Vlastnosti log Analytics](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+    ![Stránka Vlastnosti log analytics](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
  
 3. Klikněte na **servery Windows** Pokud jsou připraveni cluster Windows, a **servery s Linuxem** při vytváření clusteru s Linuxem. Tato stránka zobrazí vaše `workspace ID` a `workspace key` (uvedené jako primárního klíče na portálu). Budete potřebovat i na další krok.
 
@@ -99,5 +101,5 @@ Teď, když jste přidali agenta Log Analytics, přejděte na přes portál Log 
 ## <a name="next-steps"></a>Další postup
 
 * Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta Log Analytics ke shromažďování konkrétních čítačích výkonu najdete v tématu [konfigurace zdroje dat](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Nakonfigurujte Log Analytics a nastavit [automatické upozorňování](../log-analytics/log-analytics-alerts.md) které vám pomůže se zjišťováním a diagnostikou
+* Konfigurace protokolů Azure Monitor k nastavení [automatické upozorňování](../log-analytics/log-analytics-alerts.md) které vám pomůže se zjišťováním a diagnostikou
 * Jako alternativu můžete shromáždit čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat do Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

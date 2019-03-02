@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 12c5ba06eed37072d4c122be9e47a80ce94a5f1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8beac9d4a84fdee4e8fa7689d60cb51c20acd671
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872824"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241829"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -119,7 +119,7 @@ K vytvoření skutečně cloudových služeb, je velmi důležité ověřit, že
 Clustery Service Fabric se dají vytvořit na virtuálních nebo fyzických počítačích s Windows serverem nebo Linuxem. Máte možnost k nasazení a spuštění aplikace Service Fabric v jakémkoli prostředí, kam máte sadu Windows Server nebo Linux počítačů, které jsou propojeny: místně, v Microsoft Azure nebo na jakýkoli jiný poskytovatel cloudu.
 
 ### <a name="clusters-on-azure"></a>Clustery v Azure
-Clustery Service Fabric běžící v Azure poskytuje integraci se službou další funkce a služby Azure, takže operace a Správa clusteru jednodušší a spolehlivější. Cluster je prostředek Azure Resource Manageru, takže lze modelovat clustery podobně jako ostatní prostředky v Azure. Resource Manager také poskytuje snadnou správu všechny prostředky používané položkou clusteru jako jeden celek. Clustery v Azure jsou integrované s diagnostikou Azure a službou Log Analytics. Typy uzlů clusteru jsou [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/index), takže je součástí funkcí automatického škálování.
+Clustery Service Fabric běžící v Azure poskytuje integraci se službou další funkce a služby Azure, takže operace a Správa clusteru jednodušší a spolehlivější. Cluster je prostředek Azure Resource Manageru, takže lze modelovat clustery podobně jako ostatní prostředky v Azure. Resource Manager také poskytuje snadnou správu všechny prostředky používané položkou clusteru jako jeden celek. Clustery v Azure jsou integrované s Azure diagnostics a protokoly Azure monitoru. Typy uzlů clusteru jsou [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/index), takže je součástí funkcí automatického škálování.
 
 Můžete vytvořit cluster v Azure prostřednictvím [webu Azure portal](service-fabric-cluster-creation-via-portal.md), z [šablony](service-fabric-cluster-creation-via-arm.md), nebo z [sady Visual Studio](service-fabric-cluster-creation-via-visual-studio.md).
 

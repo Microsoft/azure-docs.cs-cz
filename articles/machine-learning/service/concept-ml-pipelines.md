@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879250"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213666"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Sestavit machine learning kanály ve službě Azure Machine Learning
 
@@ -54,7 +54,7 @@ Použití samostatné kroky umožňuje znovu spustit pouze kroky, které potřeb
 
 Po kanálu je určená, je často Další doladění kolem smyčky školení kanálu. Když znovu spusťte kanál, spuštění přejde do kroků, které je potřeba znovu spustit, jako je například aktualizované cvičný skript a přeskočí, co se nezměnil. Stejné paradigma se vztahuje na beze změny skripty používané pro provedení kroku. 
 
-Pomocí služby Azure Machine Learning můžete použít různé sady nástrojů a architektur, jako je například Microsoft Cognitive Toolkit nebo TensorFlow, pro každý krok v kanálu. Souřadnice Azure mezi různými [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md) použijete, tak, aby dočasných dat je s cíli podřízené výpočetní snadno sdílet. 
+Pomocí služby Azure Machine Learning můžete použít různé sady nástrojů a architektur, jako je například PyTorch nebo TensorFlow, pro každý krok v kanálu. Souřadnice Azure mezi různými [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md) použijete, tak, aby dočasných dat je s cíli podřízené výpočetní snadno sdílet. 
 
 Je možné [sledujte metriky pro vaše experimenty kanálu](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) přímo na webu Azure portal. 
 

@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818927"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247150"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
-V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost tento druh události vyřešit. Selhání může nastat výsledek neočekávaný dotaz, připojení k zařízení nebo kvůli výpadku neočekávané služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
+V některých případech úlohy Azure Stream Analytics neočekávaně zastaví zpracování. Je důležité mít možnost tento druh události vyřešit. Selhání můžou být způsobená neočekávaným výsledkem dotazu, připojením k zařízením nebo neočekávaným výpadkem služby. Protokoly diagnostiky ve službě Stream Analytics může pomoct identifikovat příčiny problémů, pokud dojde k a zkrácení času obnovení.
 
 ## <a name="log-types"></a>Typy protokolů
 
@@ -29,7 +29,9 @@ Stream Analytics nabízí dva typy protokolů:
 * [Protokoly diagnostiky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (možnost konfigurace), které poskytují podrobnější přehled o všechno, co, který se stane s úlohou. Při odstraňování úlohy, protokoly diagnostiky spuštění při vytvoření úlohy a ukončení. Při aktualizaci úlohy a během jejího běhu pokrývají události.
 
 > [!NOTE]
-> Služby, jako je Azure Storage, Azure Event Hubs a Azure Log Analytics můžete použít k analýze dat aplikace. Budou se vám účtovat podle cenového modelu pro služby.
+> Můžete použít služby, jako je Azure Storage, Azure Event Hubs a Azure Monitor protokoly k analýze dat aplikace. Budou se vám účtovat podle cenového modelu pro služby.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>Ladění pomocí aktivity protokoly
 
@@ -51,11 +53,11 @@ Protokoly aktivit jsou standardně povoleny a poskytnout podrobný přehled o op
 
 5. Můžete provést opravné akce, které na základě chybové zprávy ve formátu JSON. V tomto příkladu zkontroluje, aby je zeměpisná šířka hodnota v rozmezí od-90 stupňů a 90 stupňů je potřeba přidat do dotazu.
 
-6. Pokud chybová zpráva v protokolech aktivit se užitečné identifikovat hlavní příčinu, povolení diagnostických protokolů a používat službu Log Analytics.
+6. Pokud chybová zpráva v protokolech aktivit se užitečné identifikovat hlavní příčinu, povolení diagnostických protokolů a protokoly Azure monitoru.
 
-## <a name="send-diagnostics-to-log-analytics"></a>Odeslání diagnostiky do Log Analytics
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Odeslat diagnostické protokoly Azure monitoru
 
-Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do Log Analytics. Diagnostické protokoly jsou **vypnout** ve výchozím nastavení. Chcete-li zapnout diagnostické protokoly, postupujte takto:
+Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do protokoly Azure monitoru. Diagnostické protokoly jsou **vypnout** ve výchozím nastavení. Chcete-li zapnout diagnostické protokoly, postupujte takto:
 
 1.  Přihlaste se k webu Azure portal a přejděte do vaší úlohy Stream Analytics. V části **monitorování**vyberte **diagnostické protokoly**. Potom vyberte **zapnout diagnostiku**.
 
@@ -67,7 +69,7 @@ Důrazně doporučujeme zapnout diagnostické protokoly a jejich odesílání do
 
 3. Při spuštění vaší úlohy Stream Analytics, diagnostické protokoly jsou směrovány do vašeho pracovního prostoru Log Analytics. Přejděte do pracovního prostoru Log Analytics a zvolte **protokoly** pod **Obecné** oddílu.
 
-   ![Protokoly log Analytics v části Obecné části](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Protokoly Azure monitoru Obecné v části](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. Je možné [napsat vlastní dotaz](../azure-monitor/log-query/get-started-portal.md) hledat podmínky, rozpoznávejte trendy, analyzovat vzory a poskytují přehledy na základě vašich dat. Například můžete napsat dotaz pro filtrování pouze diagnostické protokoly, které mají zpráva "úloha streamování se nezdařilo." Diagnostické protokoly z Azure Stream Analytics se ukládají v **AzureDiagnostics** tabulky.
 

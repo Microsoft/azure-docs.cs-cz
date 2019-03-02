@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894047"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240078"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -42,7 +42,7 @@ A [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může
 
 ### <a name="pass-through"></a>Průchod
 
-![Předávací](./media/live-streaming/pass-through.png)
+![Předávací](./media/live-streaming/pass-through.svg)
 
 Při použití předávací **živá událost**, můžete spoléhat na vaše místní kodér služby live Encoding pro vygenerování více datový proud videa s přenosovou rychlostí a odeslat, že jako příspěvek kanálu pro živá událost (pomocí protokolu RTMP nebo fragmentovaný soubor MP4). Živá událost se potom provede prostřednictvím příchozí datové proudy videa bez dalšího zpracování. Předávací Livestream je optimalizovaný pro dlouho běžící živě přenášené události nebo 24 × 365 lineární živé streamování. Při vytváření tohoto typu živá událost, zadejte None (LiveEventEncodingType.None).
 
@@ -56,11 +56,16 @@ Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azur
 
 ### <a name="live-encoding"></a>Kódování v reálném čase  
 
-![živé kódování](./media/live-streaming/live-encoding.png)
+![živé kódování](./media/live-streaming/live-encoding.svg)
 
 Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu živá událost (pomocí protokolu RTMP nebo fragmentovaný soubor Mp4). Živá událost kóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), zpřístupní pro doručení pro přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu živá událost, zadejte jako typ kódování **standardní** (LiveEventEncodingType.Standard).
 
 Můžete odeslat příspěvek kanálu na až rozlišení 1080 p rychlostí rámec 30 snímků/druhé kodek H.264/AVC videa a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek. Zobrazit [živá událost typy porovnání](live-event-types-comparison.md) , kde najdete další podrobnosti.
+
+Při použití kódování v reálném čase (živá událost nastavena na **standardní**), použitá předvolba kódování definuje, jak příchozím datovém proudu je zakódován do více přenosových rychlostí nebo vrstvy. Informace najdete v tématu [přednastavení systému](live-event-types-comparison.md#system-presets).
+
+> [!NOTE]
+> V současné době jediným povoleným názvem přednastavené hodnoty pro standardní typ živé události je *Default720p*. Pokud musíte použít vlastní předvolba živé kódování, obraťte se prosím amshelp@microsoft.com. Měli byste určit požadovanou tabulku rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva na 720p a maximálně 6 vrstvy.
 
 ## <a name="live-event-creation-options"></a>Možnosti vytvoření živé události
 

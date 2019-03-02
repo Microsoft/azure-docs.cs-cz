@@ -3,7 +3,7 @@ title: Prozkoumat uživatelů pomocí analýzy chování uživatelů ve verzi Pr
 description: Další informace o tom, jak zjistit uživatelů pomocí analýzy chování uživatelů v Azure Sentinelu.
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 5b06aef0-16be-4ca0-83e4-a33795a82353
 ms.service: azure-sentinel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: b9944764345f97c561f3f82f9cce9d37e204f134
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ee871f90838b32be3c950ab23a0f01568c309269
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992975"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246317"
 ---
 # <a name="investigate-users-with-user-analytics"></a>Prozkoumat uživatelů pomocí analýzy chování uživatelů
 

@@ -1,5 +1,5 @@
 ---
-title: Hlavní rozdíly pro Machine Learning Services (s jazykem R) v přehledu Azure SQL Database (Preview)
+title: Hlavní rozdíly pro Azure SQL Database Machine Learning Services (preview)
 description: Toto téma popisuje hlavní rozdíly mezi Azure SQL Database Machine Learning Services (s jazykem R) a SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,22 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237480"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242118"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database a SQL Server
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database (preview) a SQL Server
 
-Funkce služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database jsou podobné jako ve službě [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Níže jsou uvedeny některé hlavní rozdíly mezi nimi.
+Funkce Azure SQL Database Machine Learning Services (s jazykem R) ve verzi (preview) je podobný [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Níže jsou uvedeny některé hlavní rozdíly.
+
+> [!IMPORTANT]
+> Služby Machine Learning Azure SQL Database je aktuálně ve verzi public preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -41,7 +46,19 @@ Správa balíčků R a instalace fungovat rozdíly mezi SQL Database a SQL Serve
 
 ## <a name="resource-governance"></a>Zásady správného řízení prostředků
 
-Není možné omezit prostředky R prostřednictvím [správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) a fondy externích zdrojů. R prostředky jsou procento prostředků SQL Database a závisí na jaká úroveň služby zvolíte. Další informace najdete v tématu [modely nákupu Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+Není možné omezit prostředky R prostřednictvím [správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) a fondy externích zdrojů.
+
+Ve verzi public preview, R prostředky jsou nastaveny na maximálně 20 % prostředků SQL Database a závisí na jaká úroveň služby zvolíte. Další informace najdete v tématu [modely nákupu Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+
+### <a name="insufficient-memory-error"></a>Chyba nedostatku paměti
+
+Pokud je pro R k dispozici dostatek paměti, zobrazí se chybová zpráva. Běžné chybové zprávy jsou:
+
+- Nelze navázat komunikaci s modulem runtime pro skript "R" pro id požadavku: ***. Zkontrolujte prosím požadavky modulu runtime "R"
+- Během provádění "sp_execute_external_script' s hodnotou HRESULT 0x80004004 došlo k chybě skriptu"R". ... došlo k chybě externího skriptu: ".. Nelze přidělit paměť (0 Mb) funkce jazyka C "R_AllocStringBuffer."
+- Došlo k chybě externího skriptu: Chyba: Nelze přidělit vektor velikost.
+
+Využití závisí na tom, kolik paměti se používá v svoje skripty jazyka R a počet paralelních dotazů, které se spouští. Pokud se zobrazí výše uvedené chyby, je možné škálovat databáze na vyšší úroveň služby na tento problém vyřešit.
 
 ## <a name="security-isolation"></a>Izolace zabezpečení
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 383f65ea925a3575afd988e07784be643201c6b8
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895393"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214490"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta technické informace o SaaS aplikace
 
@@ -73,6 +73,9 @@ Volání pole akce umožňuje vybrat zprávu, která se zobrazí na tlačítku p
 - Kontaktujte mě
 
 Další informace o volání akce možnosti najdete v článku vybrat možnost publikování.
+
+>[!Note]
+>Kanál partnera cloudových poskytovatelů řešení (CSP) vyjádřit výslovný souhlas nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="next-steps"></a>Další postup
 

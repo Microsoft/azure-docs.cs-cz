@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d10e0b48da497dafe9bb841c68746328e8334c91
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657650"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215723"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
 
@@ -28,8 +28,8 @@ V tomto kurzu se naučíte:
 > * Konfigurace rozložení nastavení zařízení
 > * Konfigurace rozložení vlastností zařízení
 > * Zobrazení náhledu zařízení jako operátor
-> * Konfigurace výchozí domovské stránky
-> * Zobrazení náhledu výchozí domovské stránky jako operátor
+> * Konfigurovat výchozí řídicí panel aplikací
+> * Ve verzi Preview. výchozí řídicí panel aplikací jako operátor
 
 [!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
@@ -115,7 +115,7 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 > [!NOTE]
 > V režimu **Upravit šablonu** nemůžete upravovat hodnoty vlastností.
 
-## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>Zobrazení náhledu připojeného klimatizačního zařízení jako operátor
+## <a name="preview-the-device"></a>Zařízení ve verzi Preview
 
 V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud nejste v režimu **Upravit šablonu**, můžete aplikaci zobrazit jako operátor.
 
@@ -135,30 +135,33 @@ V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku 
 
     ![Zobrazení řídicího panelu zařízení pro operátora](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-home-page"></a>Konfigurace výchozí domovské stránky
+## <a name="configure-the-default-dashboard"></a>Konfigurovat výchozí řídicí panel
 
-Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, uvidí domovskou stránku. Jako tvůrce můžete nakonfigurovat obsah této domovské stránky tak, aby zahrnovala obsah, který je pro operátory nejužitečnější a nejrelevantnější.
+Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí se jim řídicí panel aplikací. Jako tvůrce můžete nakonfigurovat obsah výchozí řídicí panel chcete zahrnout obsah nejvíce a vhodnost pro operátor.
 
-1. Pokud chcete přizpůsobit výchozí domovskou stránku, přejděte na stránku **Home** a v pravé horní části stránky vyberte **Upravit**. Po zvolení možnosti **Upravit** se zprava vysune seznam objektů, které můžete přidat na vaši domovskou stránku.
+> [!NOTE]
+> Uživatelé mohou také vytvářet své vlastní osobní řídicí panely a zvolte jednu z nich jako výchozí.
 
-    ![Stránka Application Builder (Tvůrce aplikací)](media/tutorial-customize-operator/builderhome.png)
+1. Chcete-li přizpůsobit výchozí řídicí panel aplikace, přejděte na **řídicí panel** stránky a klikněte na tlačítko **upravit** v horní části stránky. Knihovna objektů, které lze přidat na řídicí panel se zobrazí panel.
 
-2. Pokud chcete přizpůsobit na domovskou stránku, přidejte dlaždice z **knihovny**. Zvolte **Link** (Odkaz) a přidejte podrobné informace o webu vaší organizace. Potom zvolte **Save** (Uložit):
+    ![Stránka řídicího panelu](media/tutorial-customize-operator/builderhome.png)
 
-    ![Přidání odkazu na domovskou stránku](media/tutorial-customize-operator/addlink.png)
+2. Chcete-li přizpůsobit řídicí panel, přidejte dlaždice z **knihovny**. Zvolte **Link** (Odkaz) a přidejte podrobné informace o webu vaší organizace. Potom zvolte **Save** (Uložit):
+
+    ![Přidat odkaz na řídicí panel](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Můžete také přidat odkazy na stránky ve vaší aplikaci Azure IoT Central. Můžete třeba přidat odkaz na řídicí panel zařízení nebo na stránku nastavení.
 
-3. Volitelně můžete zvolit **Image** (Obrázek) a nahrát obrázek, který se zobrazí na vaší domovské stránce. Obrázek může mít adresu URL, na kterou přejdete po kliknutí na něj:
+3. Volitelně můžete zvolit **Image** a nahrát obrázek se zobrazí na řídicím panelu. Obrázek může mít adresu URL, na který můžete procházet po kliknutí:
 
-    ![Přidání obrázku na domovskou stránku](media/tutorial-customize-operator/addimage.png)
+    ![Přidání obrázku na řídicí panel](media/tutorial-customize-operator/addimage.png)
 
     Další informace najdete v tématu věnovaném [postupu při přípravě a nahrávání obrázků do aplikace Azure IoT Central](howto-prepare-images.md).
 
-## <a name="preview-the-default-home-page-as-an-operator"></a>Zobrazení náhledu výchozí domovské stránky jako operátor
+## <a name="preview-the-dashboard"></a>Ve verzi Preview řídicí panel
 
-Pokud chcete zobrazit náhled domovské stránky tak, jak ji uvidí operátor, a nechcete ji upravovat, zvolte **Hotovo** v pravé horní části stránky
+Chcete-li zobrazit řídicí panel aplikací jako operátor náhled, vyberte **provádí** v horní části stránky
 
 ![Přepnutí režimu návrhu](media/tutorial-customize-operator/operatorviewhome.png)
 
@@ -174,8 +177,8 @@ V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operá
 > * Konfigurace rozložení nastavení zařízení
 > * Konfigurace rozložení vlastností zařízení
 > * Zobrazení náhledu zařízení jako operátor
-> * Konfigurace výchozí domovské stránky
-> * Zobrazení náhledu výchozí domovské stránky jako operátor
+> * Konfigurovat výchozí řídicí panel aplikací
+> * Ve verzi Preview. výchozí řídicí panel aplikací jako operátor
 
 Teď když jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora, můžete přejít k dalším navrhovaným krokům:
 

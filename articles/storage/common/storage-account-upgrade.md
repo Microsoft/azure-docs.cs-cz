@@ -5,24 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352134"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217287"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
 Účty úložiště pro obecné účely v2 podporuje nejnovější funkce služby Azure Storage a zapracovali všechny funkce pro obecné účely v1 a účty Blob storage. Účty pro obecné účely v2 se doporučuje pro většinu scénářů úložiště. Účty pro obecné účely v2 doručování nejnižší podle sazby za gigabajt kapacity ceny pro Azure Storage, jakož i průmysl konkurenceschopných cen za transakce.
 
-Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure. 
+Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely v1 a účty úložiště Blob je jednoduché. Můžete upgradovat pomocí webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure.
 
-> [!NOTE]
-> Upgrade vašeho účtu úložiště na účet pro obecné účely verze 2 je zdarma.
-> Změna úrovně přístupu úložiště můžou způsobit změny na faktuře. Další informace najdete v části [Ceny a fakturace](#pricing-and-billing).
+> [!IMPORTANT]
+> Upgraduje se účet úložiště v1 pro obecné účely verze 2 je trvalá a není možné vrátit zpět.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade s využitím webu Azure portal
 
@@ -68,8 +67,10 @@ Ve výchozím nastavení v horká vrstva přístupu je vytvořen nový účet ú
 
 V obou případech je hlavní prioritou odhad nákladů na ukládání, přístup k a provozování na datech uložených v účtu úložiště pro obecné účely v2 a jejich porovnání s aktuálními náklady.
 
-
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
+
+Upgrade účtu storage v1 na účet pro obecné účely verze 2 je zdarma. Ale změna úrovně přístupu úložiště můžou způsobit změny na faktuře. 
+
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
 * **Náklady na úložiště**: Kromě objemu uložených dat náklady na uložení dat liší v závislosti na úrovni přístupu úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.

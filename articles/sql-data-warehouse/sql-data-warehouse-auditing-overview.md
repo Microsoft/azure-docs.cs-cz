@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342300"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217049"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -131,7 +131,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
     4. Sloučený soubor se otevře v SSMS, kde je můžete zobrazit a analyzovat, jakož i exportovat do souboru XEL nebo sdíleného svazku clusteru nebo na tabulku.
 
-* Použití [synchronizovat aplikace](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , kterou jsme vytvořili. Spuštění v Azure a využívá Log Analytics veřejných rozhraní API pro protokoly auditu SQL nasdílení změn do Log Analytics. Synchronizace aplikace nabízených oznámení protokoly auditu SQL do Log Analytics pro spotřebu prostřednictvím řídicích panelů Log Analytics.
+* Použití [synchronizovat aplikace](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , kterou jsme vytvořili. Spuštění v Azure a využívá log analytics veřejných rozhraní API tak, aby nabízel SQL protokoly auditu do protokolů Azure Monitor. Synchronizace aplikace nabízených oznámení protokoly auditu SQL do protokolů Azure Monitor pro spotřebu prostřednictvím řídicích panelů log analytics.
 
 * Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace o [Power BI a přístup ke stažení šablony](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

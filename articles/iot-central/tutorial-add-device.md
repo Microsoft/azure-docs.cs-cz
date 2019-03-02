@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04bdbd6c6af1f0e3a479920bc7f286343052281e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 307449a24555fed48899d67196114cb24f0bb572
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192152"
+ms.locfileid: "57216845"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -111,27 +111,27 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
 1. Připojovací řetězec pro instanci zařízení ve vaší aplikaci se vygeneruje z informací o zařízení, které poskytuje IoT Central.
 
-   Vraťte se na portál IoT Central. Na obrazovce zařízení skutečné připojené klimatizace zvolte **Connect** (Připojit).
+    Vraťte se na portál IoT Central. Na obrazovce zařízení skutečné připojené klimatizace zvolte **Connect** (Připojit).
 
-   ![Stránka zařízení s odkazem pro zobrazení informací o připojení](media/tutorial-add-device/connectionlink.png)
+    ![Stránka zařízení s odkazem pro zobrazení informací o připojení](media/tutorial-add-device/connectionlink.png)
 
 1. Na stránce Device Connection (Připojení zařízení) zkopírujte hodnoty Scope ID (ID oboru), Device ID (ID zařízení) a Primary Key (Primární klíč), vložte je do textového editoru a pak je uložte. Tyto hodnoty použijete v dalším kroku.
 
-   ![Podrobnosti připojení](media/tutorial-add-device/device-connect.png)
+    ![Podrobnosti připojení](media/tutorial-add-device/device-connect.PNG)
 
 1. Vraťte se do prostředí příkazového řádku a spuštěním následujícího příkazu vygenerujte připojovací řetězec:
 
     ```cmd/sh
-    dps_keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+     dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
     ```
 
-   Výstup zkopírujte a uložte do nového souboru (například connection.txt).
+    Výstup zkopírujte a uložte do nového souboru (například connection.txt).
 
 1. Pokud chcete inicializovat projekt Node.js, spusťte následující příkaz a přijměte všechny výchozí hodnoty:
 
-   ```cmd/sh
+    ```cmd/sh
     npm init
-   ```
+    ```
 
 1. Potřebné balíčky nainstalujte spuštěním následujícího příkazu:
 

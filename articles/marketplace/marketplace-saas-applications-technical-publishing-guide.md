@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450741"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213615"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikace SaaS nabízí průvodce publikováním
 
@@ -143,6 +143,9 @@ Microsoft je hostitelem transakce commerce. Microsoft účtuje zákazníkovi va�
 |Zrušení | Kdykoli je zrušitelný zákazník vaši nabídku. |  
 |Cílová stránka transakce | Hostujete Azure značkou transakce cílová stránka kde uživatelé můžou vytvářet a spravovat své účty služby SaaS. |   
 | Předplatné rozhraní API | Můžete zpřístupnit služby, které mohou komunikovat s předplatným služby SaaS vytvářet, aktualizovat a odstraňovat uživatelský účet a službu plán. Důležité změny rozhraní API musí podporovat během 24 hodin. Pravidelně se vydá Nekritická změn rozhraní API. |  
+
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](./cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="next-steps"></a>Další postup
 Pokud jste tak již neučinili,

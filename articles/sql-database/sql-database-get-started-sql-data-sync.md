@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4cd7c61903bad5c0f1d6c41165e9bd7ff61a6d09
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567923"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213428"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL mezi Azure SQL Database a SQL Server v místním
 
@@ -232,7 +232,7 @@ Další informace o Synchronizaci dat SQL:
 
 - [Agent synchronizace dat pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 - [Osvědčené postupy](sql-database-best-practices-data-sync.md) a [řešení potíží se synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
-- [Monitorování synchronizace dat SQL s využitím Log Analytics](sql-database-sync-monitor-oms.md)
+- [Monitorování synchronizace dat SQL s protokoly Azure monitoru](sql-database-sync-monitor-oms.md)
 - [Aktualizovat schéma synchronizace, pomocí příkazů jazyka Transact-SQL](sql-database-update-sync-schema.md) nebo [prostředí PowerShell](scripts/sql-database-sync-update-schema.md)
 
 Další informace o službě SQL Database:

@@ -3,7 +3,7 @@ title: Použití spravované identity pro prostředky Azure ve službě Azure Cl
 description: Ověřování kódu pomocí Instalační služby MSI ve službě Azure Cloud Shell
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
-ms.author: juluk
-ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.author: damaerte
+ms.openlocfilehash: 7cadaaf67f9c6923ee9e9eb2596941aa8e1f0c9b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352936"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244006"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Použití spravované identity pro prostředky Azure ve službě Azure Cloud Shell
 

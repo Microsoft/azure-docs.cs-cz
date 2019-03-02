@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: b48910b74d90072a360bad504e2b826402dceea5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ee828c908cb3b103befa3890b43bb2c1f04f7cf0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639608"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214040"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace stávající nabídky virtuálních počítačů na webu Azure Marketplace
 
@@ -35,6 +35,8 @@ Existuje mnoho běžné důvody pro aktualizaci nabídky, včetně:
 
 Které vám pomohou tyto úpravy, tento portál nabízí **porovnání** a **historie** funkce.  
 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Nedovolené změny nabídky virtuálních počítačů nebo SKU
 
@@ -149,12 +151,12 @@ Pokud mají byl již účtuje cyklu, během které došlo k cenu, dostanou při 
 
 Od 1. září 2018 se nazývá obsahují nový oddíl **zjednodušená ceny měny** přidá se k portálu. Microsoft je zjednodušení obchodních Azure Marketplace povolením více předvídatelné ceny a kolekce od svých zákazníků po celém světě. Toto zjednodušení bude obsahovat snížení počtu měny, ve kterých jsme vašim zákazníkům faktury.
 
-Nový oddíl bude trvat ceny v nových měn. Jakmile všichni zákazníci úspěšně migrováni na nových měn vyrovnání, původní části s cenami se vyřadí z provozu a bude i nadále pouze část zjednodušená ceny měny.
+Nový oddíl bude trvat ceny v nových měn. Jakmile všichni zákazníci úspěšně migrováni na nových měn vyrovnání, původní části s cenami se vyřadí z provozu a bude i nadále pouze část zjednodušená ceny měny.
 
 Budete mít až do 1. listopadu 2018 nastavit nové ceny pro oblasti, ve které měně vyrovnání se mění. Nebudete tak zároveň rozšiřujete ceny pro oblasti, ve které není změněn vyrovnání měny.
 
 > [!NOTE] 
-> Pokud používáte rozhraní API pro publikování vaší nabídky, může se zobrazit nová část v rámci nabídky JSON. To by být označena jako `virtualMachinePricingV2` nebo `monthlyPricingV2`, v závislosti na typu nabídky. 
+> Pokud používáte rozhraní API pro publikování vaší nabídky, může se zobrazit nová část v rámci nabídky JSON. To by být označena jako `virtualMachinePricingV2` nebo `monthlyPricingV2`, v závislosti na typu nabídky. 
 
 Pokud máte nějaké dotazy o této změně, obraťte se na [podpory Azure Marketplace](../../support-azure-marketplace.md).
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650287"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213904"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -231,6 +231,26 @@ Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě)
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Můžete vytvořit připojení s partnerským vztahem k virtuální síti v jiné oblasti?
 Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních sítí v různých oblastech. Globální VNet peering je k dispozici ve všech veřejných oblastech Azure a cloudových oblastech Čína. Můžete nejde vytvořit partnerský vztah globálně z veřejných oblastech Azure do národních cloudů oblastí. Globální partnerský vztah není aktuálně k dispozici v cloudu pro státní správu.
+
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jaká jsou omezení související s globální VNet Peering a nástroje pro vyrovnávání zatížení?
+Pokud dvě virtuální sítě v různých oblastech (globální VNet Peering) se nemůže připojit k prostředkům, které používají základní nástroje pro vyrovnávání zatížení. Můžete připojit k prostředkům, které používají Load balanceru úrovně Standard.
+Základní služby Vyrovnávání zatížení, což znamená, že nemůže komunikovat na ně napříč globální VNet Peering používají následující prostředky:
+- Virtuální počítače za bránou nástroje pro vyrovnávání zatížení základní
+- VM Scale Sets s nástroji pro vyrovnávání zatížení základní 
+- Redis Cache 
+- Služba Application Gateway (v1) skladové položky
+- Service Fabric
+- SQL Always on
+- SQL MI
+- Rozhraní API správy
+- PŘIDÁ
+- Logic Apps
+- HD Insight
+-   Azure Batch
+- AKS
+- App Service Environment
+
+Můžete připojit k těmto prostředku přes ExpressRoute nebo připojení typu VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Můžete povolit VNet Peering Pokud Můj virtuální sítě patří do předplatných v rámci různých tenantů Azure Active Directory?
 Ano. Je možné navázat partnerský vztah virtuální sítě (ať už místní nebo globální), pokud vaše předplatná patří do různých tenantů Azure Active Directory. Můžete to provést prostřednictvím Powershellu nebo rozhraní příkazového řádku. Portál se ještě nepodporuje.

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 68503b399d132aae5a4999e6ce08c51e4542e2e7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699138"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242611"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
 
@@ -176,7 +176,7 @@ Tyto virtuální sítě jsou i nadále spravovány jako samostatné prostředky,
 
 **Brána firewall protokoly**: Application Gateway poskytuje úplnou diagnostiku a protokoly přístupů. Protokoly brány firewall jsou dostupné pro prostředky služby Application Gateway, které mají povolený Firewall webových aplikací.
 
-**Archivace protokolu**: Úložiště dat protokolu je možné nakonfigurovat k zápisu do účet centralizované úložiště Azure pro archivaci a období definované uchovávání informací. Protokoly je možné zpracovávat pomocí Azure Log Analytics nebo systémy jiných výrobců SIEM.
+**Archivace protokolu**: Úložiště dat protokolu je možné nakonfigurovat k zápisu do účet centralizované úložiště Azure pro archivaci a období definované uchovávání informací. Protokoly je možné zpracovávat pomocí protokolů Azure Monitor nebo systémy jiných výrobců SIEM.
 
 ### <a name="identity"></a>Identita
 

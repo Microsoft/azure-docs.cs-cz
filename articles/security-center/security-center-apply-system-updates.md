@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9c2d6c48b9bf51062181886c8a9ef789b1c2b359
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105123"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240826"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
 Azure Security Center monitoruje denní Windows a Linuxem a virtuální počítače (VM) pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurována na počítači Windows. Security Center také vyhledává nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítači chybí aktualizace systému, Security Center vám doporučí použít aktualizace systému.
@@ -63,13 +63,13 @@ V tomto příkladu budeme používat **Compute**.
 
    ![Chybějící aktualizace zabezpečení][3]
 
-4. Vyberte **hledání** ikona na horním pásu karet.  Filtrované počítačům chybí aktualizace se otevře vyhledávací dotaz Log Analytics.
+4. Vyberte **hledání** ikona na horním pásu karet.  Filtrované počítačům chybí aktualizace se otevře dotaz vyhledávání protokolů služby Azure Monitor.
 
-   ![Hledání log Analytics][4]
+   ![Hledání protokolů Azure Monitor][4]
 
 5. Vyberte počítač ze seznamu pro další informace. Další výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
 
-    ![Hledání log Analytics][5]
+    ![Hledání protokolů Azure Monitor][5]
 
 ## <a name="reboot-after-system-updates"></a>Restartovat po aktualizacích systému
 1. Vraťte se **doporučení** okno. Po použití aktualizací systému, nazývá se vygeneroval nový záznam **restartovat po aktualizacích systému**. Tato položka vám umožňuje vědět, že je potřeba restartovat virtuální počítač k dokončení procesu instalace aktualizací systému.

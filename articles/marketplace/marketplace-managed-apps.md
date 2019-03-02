@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 432a65771727b68dab23fbaeee1e3a08f7759420
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 15c559bb8b357b7776c101f88db8316b05edb677
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733074"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213156"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Aplikace Azure: Nabídka spravované aplikace, Průvodce publikováním
 
@@ -46,6 +46,8 @@ V případě používání – vlastní licence zatímco Microsoft vám bude ú�
 >[!NOTE]
 > Spravované aplikace musí být nasaditelný prostřednictvím webu Marketplace. Pokud zákazník komunikace je problém, pak by se kontaktovat zúčastněným zákazníkům po povolení sdílení potenciálních zákazníků.  
 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](./cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="next-steps"></a>Další postup
 Pokud jste tak již neučinili, 

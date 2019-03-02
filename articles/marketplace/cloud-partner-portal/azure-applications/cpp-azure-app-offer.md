@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097146"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213514"
 ---
 # <a name="azure-application-offer"></a>Nabídky aplikace Azure
 
@@ -44,6 +44,9 @@ Existují dva druhy aplikací Azure: spravované aplikace a šablony řešení.
 
 Kromě webu Azure Marketplace nabízí také spravované aplikace katalogu služeb. Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Pomocí katalogu splňovat standardy organizace při nabízení řešení pro skupiny v organizaci. Zaměstnanci v katalogu snadno najdou aplikace doporučené a schválené oddělením IT.
 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
+
 Další informace o výhodách a typech spravovaných aplikací najdete v tématu [Azure managed applications přehled](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
@@ -64,7 +67,6 @@ Postup vysoké úrovně pro uvedení nabídky aplikace Azure jsou:
 3. [Vytvoření skladové Položce](./cpp-skus-tab.md) – vytvoření skladové jednotky spojené s nabídkou. Je vyžadována pro každý obrázek, který se chystáte publikovat jedinečný skladová položka.
 
 4. Certifikace a [publikování nabídky](./cpp-publish-offer.md) – po dokončení nabídka a technických prostředků, můžete odeslat nabídku. Toto odeslání spustí se proces publikování. Během tohoto procesu řešení je testována ověřen, certifikace, pak "místo pro živé" na webu Azure Marketplace.
-
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d97a2350765ac321cf77f8a9f84825c88d0c9185
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9402c4b24c9d64b4b69d750fbd19de40cda396f3
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824248"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218086"
 ---
 Azure poskytuje následující předdefinované role RBAC pro přístup k datům úložiště:
 
@@ -23,6 +23,4 @@ Azure poskytuje následující předdefinované role RBAC pro přístup k datům
 - [Přispěvatel dat fronty služby Storage (Preview)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Slouží k udělení oprávnění pro čtení/zápisu a odstranění do fronty Azure.
 - [Čtenář dat fronty služby Storage (Preview)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Slouží k udělení oprávnění jen pro čtení do fronty Azure.
 
-Další informace o tom, předdefinované role jsou definované pro službu Azure Storage, najdete v článku [pochopení definic rolí](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview).
-
-Azure Storage také podporuje vlastní role RBAC. Další informace najdete v tématu [vytváření vlastních rolí pro řízení přístupu](../articles/role-based-access-control/custom-roles.md). 
+Další informace o tom, předdefinované role jsou definované pro službu Azure Storage, najdete v článku [pochopení definic rolí](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Informace o vytváření vlastních rolí RBAC najdete v tématu [vytváření vlastních rolí pro řízení přístupu](../articles/role-based-access-control/custom-roles.md). 

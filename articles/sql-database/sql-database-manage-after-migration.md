@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417631"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216930"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
@@ -261,9 +261,9 @@ Můžete zadat dotaz [sys.dm_db_resource_stats](/sql/relational-databases/system
 
 ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL Analytics (Preview) ve službě Log Analytics
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Protokoly Azure SQL Analytics (Preview) ve službě Azure Monitor
 
-[Azure Log Analytics](../azure-monitor/insights/azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 SQL elastické fondy na pracovní prostory. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
+[Protokoly Azure monitoru](../azure-monitor/insights/azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 SQL elastické fondy na pracovní prostory. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Cena vašeho povšimnutí problémy s výkonem: Jak Moje databáze SQL metodologie řešení potíží se liší od SQL serveru
 

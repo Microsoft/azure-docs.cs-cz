@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310720"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240231"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -37,7 +37,7 @@ Security Center doporučuje pro monitorování, entit, které lze snadno povolit
 
 > [!NOTE]
 > Funkce monitorování Integrity souborů (FIM) se dá použít pro virtuální počítače a počítače s Windows a Linuxem a je k dispozici na na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
-FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data použít, na základě objemu dat, které nahrajete. Zobrazit [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Další informace.
+FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data použít, na základě objemu dat, které nahrajete. Zobrazit [ceny log analytics](https://azure.microsoft.com/pricing/details/log-analytics/) Další informace.
 >
 >
 

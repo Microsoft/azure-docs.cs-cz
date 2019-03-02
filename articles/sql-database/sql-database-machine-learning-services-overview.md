@@ -1,5 +1,5 @@
 ---
-title: Služby Machine Learning (s jazykem R) v Přehled služby Azure SQL Database (Preview)
+title: Azure SQL Database služby Machine Learning s přehled R (preview)
 description: Toto téma popisuje Azure SQL Database Machine Learning Services (s jazykem R) a vysvětluje, jak to funguje.
 services: sql-database
 ms.service: sql-database
@@ -11,22 +11,26 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 02/06/2019
-ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/01/2019
+ms.openlocfilehash: 5f876deef4c92c0d678380a49aa38628e0afa660
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875599"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240300"
 ---
-# <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Machine Learning Services (s jazykem R) ve službě Azure SQL Database (preview)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database služby Machine Learning s jazykem R (preview)
 
 Služby Machine Learning je funkce služby Azure SQL Database, používá se ke spuštění skriptů jazyka R v databázi. Funkce obsahuje balíčky Microsoft R pro machine learning a výkonné prediktivní analýzy. Relační data je možné v skripty jazyka R pomocí uložených procedur, obsahující R příkazy skriptu T-SQL nebo kód R, který obsahuje T-SQL.
 
 > [!IMPORTANT]
-> Machine Learning Services (s jazykem R) ve službě Azure SQL Database je aktuálně ve verzi public preview pro izolované databáze a elastických fondů v založený na virtuálních jádrech nákupní model **Obecné** a **kritickéobchodní** úrovně služeb. V tomto počáteční verzi preview pro veřejnost **hyperškálovatelný systém** úroveň služby a **spravovanou instanci** možnost nasazení se nepodporují. V současné době je R jediným podporovaným jazykem. Python se momentálně nepodporuje. 
+> Azure SQL Database Machine Learning Services (s jazykem R) je aktuálně ve verzi public preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Verzi preview je teď dostupná v následujících oblastech: západní Evropa, Severní Evropa, západní USA 2, východní USA, střed USA – Jih, střed USA – sever, Kanada – střed, jihovýchodní Asie, Indie – jih a Austrálie – jihovýchod. 
+> Verze public preview je k dispozici pro izolované databáze a elastických fondů v založený na virtuálních jádrech nákupní model **Obecné** a **pro důležité obchodní informace** úrovně služeb. V tomto počáteční verzi preview pro veřejnost **hyperškálovatelný systém** úroveň služby a **spravovanou instanci** možnost nasazení se nepodporují. V současné době je R jediným podporovaným jazykem. Python se momentálně nepodporuje.
+>
+> Verzi preview je teď dostupná v těchto oblastech: Západní Evropa, Severní Evropa, západní USA 2, USA – východ, USA (střed) – Jih, USA (střed) – sever, Kanada – střed, jihovýchodní Asie, Indie – jih a Austrálie – jihovýchod.
 >
 > [Zaregistrujte si verzi preview](#signup) níže.
 
@@ -60,7 +64,7 @@ Zaregistrovat verzi public preview, postupujte podle těchto kroků:
 
 Po registraci v programu Microsoft bude připojení je ve verzi public preview a povolit R pro stávající nebo novou databázi.
 
-Nepoužívejte služby Machine Learning s jazykem R pro produkční úlohy ve verzi public preview.
+Služby Machine Learning s jazykem R se nedoporučuje pro produkční úlohy ve verzi public preview.
 
 ## <a name="next-steps"></a>Další postup
 

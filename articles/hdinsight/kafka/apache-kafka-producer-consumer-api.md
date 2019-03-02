@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 23a676c64ec2788ec4a9b3d61f86529fa437079f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c0ef7ce7520886787f4df8d3998cb464d477a2c3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580378"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244532"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití Apache Kafka Producer and Consumer API
 
@@ -133,6 +133,8 @@ V tomto kódu je konzument nakonfigurovaný tak, aby četl od začátku tématu 
 Soubor [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) poskytuje rozhraní příkazového řádku, ve kterém se spustí buď kód producenta, nebo konzumenta. Jako parametr je potřeba zadat informace o hostiteli zprostředkovatele Kafka. Volitelně můžete zadat i hodnotu ID skupiny, kterou použije proces konzumenta. Pokud vytvoříte více instancí konzumentů s použitím stejného ID skupiny, budou vyrovnávat zatížení čtení z tématu.
 
 ## <a name="build-and-deploy-the-example"></a>Sestavení a nasazení příkladu
+
+Můžete přeskočit kroky 1 a 2 pro sestavení a stáhněte si předem sestavených jars(kafka-producer-consumer.jar) z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars). Pak můžete zkopírovat tento soubor jar pro váš cluster HDInsight.
 
 1. Stáhněte si příklady z adresy [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 

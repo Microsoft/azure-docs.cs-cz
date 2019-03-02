@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 285c8a9c34d13b6c2696481e813d27943169e559
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176250"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214907"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Rychlý start: Samoobslužné resetování hesla
 
@@ -42,8 +42,8 @@ Tento rychlý start vás provede konfigurací samoobslužného resetování hesl
 3. Na stránce **Metody ověřování** proveďte následující volby:
    * Počet metod požadovaných k resetování: **1**
    * Metody dostupné pro uživatele:
-      * **Mobilní telefon**
-      * **Telefon do kanceláře**
+      * **E-mail**
+      * **Kód mobilní aplikace (preview)**
    * Klikněte na **Uložit**.
 
     ![Ověřování][Authentication]

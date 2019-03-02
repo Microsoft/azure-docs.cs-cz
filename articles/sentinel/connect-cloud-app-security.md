@@ -4,7 +4,7 @@ description: Zjistěte, jak shromažďovat data o Cloud App Security v ověřova
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: cd9e5e27-fdd4-4717-8924-be4c1c430f23
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2cf442dca074155e500f26c84a4ae569406b3d9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993143"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245484"
 ---
 # <a name="collect-data-from-microsoft-cloud-app-security"></a>Shromažďování dat z Microsoft Cloud App Security 
 

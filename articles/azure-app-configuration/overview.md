@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8207c9bb4cce3d793a5030febc532b869f54dd3f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0d78536173fd87e046a882314d6f94a92092fd9e
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195128"
+ms.locfileid: "57215876"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikace pro Azure
 
 Konfigurace aplikace pro Azure poskytuje službu pro správu nastavení aplikace centrálně. Moderní aplikace, zejména těch, které jsou spuštěny v cloudu, mají obvykle spousta komponent, které jsou ze své podstaty distribuovány. Rozšíření nastavení konfigurace pro tyto součásti může vést k chybám obtížné vyřešit během nasazení aplikace. Konfigurace aplikace umožňuje uložit všechna nastavení pro vaši aplikaci a zabezpečení jejich přístupy na jednom místě.
 
-Služba konfigurace aplikace je v **ve verzi private preview**. Je pro použití během období preview zdarma.
+Služba konfigurace aplikace je v **ve verzi private preview**. Je pro použití během období preview zdarma. Prosím [zaregistrovat](https://aka.ms/azconfig/register) ve verzi Preview, pokud vás zajímají zkoušíte.
 
 ## <a name="why-use-app-configuration"></a>Proč používat konfiguraci aplikací
 

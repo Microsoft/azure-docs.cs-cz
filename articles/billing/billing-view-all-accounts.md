@@ -1,6 +1,6 @@
 ---
-title: Zobrazit všechny vaše účty fakturace na webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit osobní a fakturační účty smlouvy Enterprise na webu Azure portal.
+title: Zobrazit vaše fakturační účty na webu Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit vaše fakturační účty na webu Azure portal.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -14,32 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: a9f299f8987b5a2023d668d41c98b473f1a626d4
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 58a84848c8a0ccfe906cde7027129e2ca022ec0f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902258"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244889"
 ---
-# <a name="view-all-your-billing-accounts-in-azure-portal"></a>Zobrazit všechny vaše účty fakturace na webu Azure portal  
+# <a name="view-your-billing-accounts-in-azure-portal"></a>Zobrazit vaše fakturační účty na webu Azure portal  
 
-Fakturace účty definování relací fakturace Azure. Můžete mít více účtů fakturace. Například může mít předplatné Azure, které budete používat pro osobní projekty. Také může mít přístup k Azure prostřednictvím smlouvy Enterprise vaší organizace. Přejděte na [Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) na webu Azure Portal a zobrazte vaše fakturační účty.
+Fakturační účet se vytvoří pro každou smlouvu, že se že přihlásíte s Microsoftem používání Azure. Umožňuje spravovat vaše metody faktury a platby fakturačnímu účtu a sledování nákladů na služby Azure. Můžete mít přístup k několika účtům fakturace. Například může registraci pro Azure pro vaše osobní projekty. Můžete mít také přístup prostřednictvím smlouvy Enterprise nebo smlouvy zákazníka Microsoftu vaší organizace.
 
-Aktuálně můžete jenom zobrazit váš osobní a fakturační účty smlouvy Enterprise. Ve výchozím nastavení [Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingMenuBlade/Overview) stránce se zobrazí váš osobní účet fakturaci. Však můžete přejít na **fakturaci účtů** a změnit účet.
+Portál Azure aktuálně podporuje následující typ fakturační účty:
 
-Pro fakturační osobní účty, můžete spravovat a zobrazit všechny poplatky v [webu Azure portal](https://portal.azure.com). Ale pro účty smlouvy Enterprise, můžete jenom zobrazit nákupy na Azure rezervace, zůstatek a poplatky za měsíc k datu. Tyto funkce smlouvy Enterprise jsou ve verzi preview a jsou k dispozici pouze v případě, že jsou v roli správce organizace.
+- **Microsoft Online Services Program**: Fakturační účet pro Microsoft Online Services Program se vytvoří při registraci k Azure prostřednictvím webu Azure. Například při přihlašování k [bezplatný účet Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), [nabídka Azure průběžných plateb](https://azure.microsoft.com/offers/ms-azr-0003p/) nebo jako [předplatitel sady Visual studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-## <a name="change-billing-account-view"></a>Změnit zobrazení fakturační účet 
+- **Smlouva Enterprise Agreement**: Fakturační účet pro smlouvu Enterprise Agreement se vytvoří při vaší organizaci přihlásí smlouvu Enterprise Agreement používání systému Azure. Ve fakturační účet pro smlouvu Enterprise Agreement správci oddělení a účty – fakturace obory pro správu a fakturaci pro svoji organizaci.
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+- **Zákazníkem Microsoft**: Fakturační účet Microsoft zákaznické smlouvy se vytvoří při vaší organizaci přihlásí zákaznické smlouvy Microsoft Azure využívají. Správci ve fakturační účet zákaznické smlouvy Microsoft fakturační profily a faktury oddíly fakturace obory pro správu a fakturaci pro svoji organizaci. Další informace najdete v tématu [Začínáme s fakturační účet pro smlouvy Microsoft zákazníka](billing-mca-overview.md).
 
-2.  Na levé straně portálu vyberte **Správa nákladů a fakturace**. 
+## <a name="change-billing-account-view"></a>Změnit zobrazení fakturační účet
 
-3.  Ve výchozím nastavení pokud ji máte, se zobrazí váš osobní fakturační účet. Pokud osobní fakturační účet nemáte nebo chcete změnit na účet Enterprise Agreement, vyberte **fakturační účty**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-4.  Vyberte účet, který chcete zobrazit podrobnosti. Pro smlouvy Enterprise uvidíte pouze fakturační účty, kde se správce podnikové sítě. Ostatní role smlouvy Enterprise bude podporovat v budoucnu.
+2. Hledat na **Cost Management a fakturace**.
 
-    ![Snímek obrazovky zobrazující seznam fakturační účty](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+   ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+
+3. Ve výchozím nastavení uvidíte podrobnosti fakturace oboru jako fakturační účet, oddělení ve smlouvě Enterprise nebo fakturační profil ve smlouvě zákazníků Microsoftu.
+
+4. Můžete změnit rozsah tak, že vyberete **fakturace obory** z levé straně a pak vyberte obor.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

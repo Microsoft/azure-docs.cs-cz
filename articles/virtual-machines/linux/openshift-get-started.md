@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: b1a39016907e697ab03a8a6962fb1e75e4433675
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382349"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218035"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -46,7 +46,7 @@ Pět verzí popsaná v tomto článku pouze dva jsou dnes dostupná pro zákazn�
 
 Container Platform je připravená pro podnikové [komerční verze](https://www.openshift.com) z a podporuje Red Hat. S touto verzí zákazníci zakoupit nezbytná oprávnění pro OpenShift Container Platform a zodpovídají za instalaci a správu celé infrastruktury.
 
-Protože zákazníkům "vlastní" celou platformu, jejich ji nainstalujte ve svém místním datovém centru, nebo ve veřejném cloudu (jako je například Azure, AWS a Google).
+Protože zákazníkům "vlastní" celou platformu, jejich ji nainstalujte ve svém místním datovém centru, nebo ve veřejném cloudu (jako je Azure).
 
 ## <a name="openshift-on-azure"></a>OpenShift v Azure
 
@@ -58,7 +58,7 @@ Je OKD [open source](https://www.okd.io/) nadřazený projekt OpenShift, která 
 
 ## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Vyhrazené je Red Hat spravovaná *jednoho tenanta* OpenShift, který používá OpenShift Container Platform. Red Hat spravuje všechny základní infrastruktury (virtuální počítače, OpenShift clusteru, sítě, úložiště atd.). Cluster je specifická pro jednoho zákazníka a spouští ve veřejném cloudu (jako je AWS a Google). Počáteční cluster obsahuje čtyři uzly aplikace a všechny poplatky jsou předem roční a placené.
+Vyhrazené je Red Hat spravovaná *jednoho tenanta* OpenShift, který používá OpenShift Container Platform. Red Hat spravuje všechny základní infrastruktury (virtuální počítače, OpenShift clusteru, sítě, úložiště atd.). Cluster je specifická pro jednoho zákazníka a spouští ve veřejném cloudu (jako je Azure). Počáteční cluster obsahuje čtyři uzly aplikace a všechny poplatky jsou předem roční a placené.
 
 ## <a name="openshift-online"></a>OpenShift Online
 

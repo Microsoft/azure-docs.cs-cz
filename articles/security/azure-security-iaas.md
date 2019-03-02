@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990404"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243223"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -128,7 +128,7 @@ Monitorovat stav zabezpečení vašich [Windows](../security-center/security-cen
 
 Security Center může aktivně monitorovat hrozby a potenciálních hrozeb, které jsou přístupné na výstrahy zabezpečení. Korelační hrozby se agregují v rámci jednoho zobrazení volá incidentu zabezpečení.
 
-Security Center ukládá data v [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Log Analytics poskytuje dotazovací jazyk a analytický modul, který poskytuje přehled o fungování vašich aplikací a prostředků. Data se shromažďují také z [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), řešení pro správu a agenti nainstalovaní na virtuálních počítačích v cloudu nebo místně. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
+Security Center ukládá data v [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md). Protokoly Azure monitoru poskytuje dotazovací jazyk a analytický modul, který poskytuje přehled o fungování vašich aplikací a prostředků. Data se shromažďují také z [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), řešení pro správu a agenti nainstalovaní na virtuálních počítačích v cloudu nebo místně. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
 
 Organizace, které nevynucují silné zabezpečení pro své virtuální počítače zůstanou vědět o potenciální pokusy o neoprávnění uživatelé obejít kontrolní mechanismy zabezpečení.
 

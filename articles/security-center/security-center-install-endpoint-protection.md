@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1ce1faa13c541939335d188866e15c683b6ffc28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110264"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246997"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
 Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
@@ -84,13 +84,13 @@ V tomto příkladu budeme používat **Compute**.  Podíváme se na tom, jak nai
 
    ![Vybrat Endpoint protection není nainstalovaná na počítačích mimo Azure][4]
 
-2. V části **Endpoint protection není nainstalovaná na počítačích mimo Azure**, vyberte pracovní prostor. Vyhledávací dotaz Log Analytics vyfiltrovaný tak, aby pracovní prostor se otevře a zobrazí seznam počítačů chybí antimalwarové. Vyberte počítač ze seznamu pro další informace.
+2. V části **Endpoint protection není nainstalovaná na počítačích mimo Azure**, vyberte pracovní prostor. Azure Monitor protokoly vyhledávací dotaz vyfiltrovaný tak, aby pracovní prostor se otevře a zobrazí seznam počítačů chybí antimalwarové. Vyberte počítač ze seznamu pro další informace.
 
-   ![Hledání log Analytics][5]
+   ![Hledání protokolů Azure Monitor][5]
 
 Další výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
 
-  ![Hledání log Analytics][6]
+  ![Hledání protokolů Azure Monitor][6]
 
 > [!NOTE]
 > Doporučujeme vám, že aplikace endpoint protection je možné zřídit za všechny virtuální počítače a počítače pomáhá s identifikací a likvidací virů, spywaru a dalšího škodlivého softwaru.

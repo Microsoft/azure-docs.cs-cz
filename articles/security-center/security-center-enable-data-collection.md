@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0afc507a49ae7cc54fb0daa5c7ae71c3a40ee637
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 09abb8fa2c8d08b27b83a2510b4c1133458b8363
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731102"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240724"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Log Analytics, která z počítače načítá různé konfigurace týkající se zabezpečení a protokolů událostí a zkopíruje data na váš pracovní prostor pro analýzu. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agenta Log Analytics také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -87,11 +87,11 @@ Výběr pracovního prostoru vytvořených službou Security Center:
 -   Security Center automaticky povolí řešení Security Center v pracovním prostoru pro jednotlivé cenové úrovně pro předplatné. 
 
 > [!NOTE]
-> Cenová úroveň pracovních prostorů vytvořených službou Security Center log Analytics nemá vliv na fakturaci Security Center. Fakturace Security Center je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru. Pro bezplatnou úroveň Security Center umožňuje *SecurityCenterFree* řešení na výchozího pracovního prostoru. Pro úroveň Standard, Security Center umožňuje *zabezpečení* řešení na výchozího pracovního prostoru.
+> Log analytics cenová úroveň pracovních prostorů vytvořených službou Security Center nemá vliv na fakturaci Security Center. Fakturace Security Center je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru. Pro bezplatnou úroveň Security Center umožňuje *SecurityCenterFree* řešení na výchozího pracovního prostoru. Pro úroveň Standard, Security Center umožňuje *zabezpečení* řešení na výchozího pracovního prostoru.
 
 Další informace o cenách najdete v tématu [ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-Další informace o existujících účtů Log Analytics najdete v tématu [existující Log Analytics zákazníkům](security-center-faq.md#existingloganalyticscust).
+Další informace o existujících účtů log analytics najdete v tématu [existující log analytics zákazníkům](security-center-faq.md#existingloganalyticscust).
 
 ### <a name="using-an-existing-workspace"></a>Použití existujícího pracovního prostoru
 
@@ -149,7 +149,7 @@ Když vyberete pracovní prostor, ve kterých se mají ukládat data, jsou k dis
 ## <a name="data-collection-tier"></a>Úrovně shromažďování dat
 Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Agenta Log Analytics bude i nadále shromažďovat a analyzovat události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
 > [!NOTE]
-> Ukládání dat v Log Analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
+> Ukládání dat v log analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
 >
 Můžete si vybrat vpravo filtrování zásady pro předplatná a pracovní prostory z čtyř sad událostí, které mají být uloženy ve vašem pracovním prostoru: 
 
@@ -212,8 +212,8 @@ Další informace najdete v tématu [co se stane, když OMS nebo SCOM přímý a
 
 -   Existující rozšíření virtuálního počítače je k dispozici<br>
     - Security center podporuje stávající instalace rozšíření, nedojde k přepsání existujících připojení. Security Center uchovává data z virtuálních počítačů v pracovním prostoru už připojený a poskytuje ochranu podle řešení povolená v pracovním prostoru pro zabezpečení.   
-    - Pokud chcete zobrazit, který pracovní prostor existující rozšíření odesílá data pro spuštění testu na [ověření připojení pomocí služby Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternativně můžete otevřít Log analytics, vyberte pracovní prostor, vyberte virtuální počítač a podívejte se na připojení agenta Log Analytics. 
-    - Pokud máte prostředí kde agenta Log Analytics je nainstalovaná na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, projděte si seznam [operačních systémů podporovaných službou Azure Security Center](security-center-os-coverage.md) zajistit váš operační systém se podporuje a najdete v článku [existující Log Analytics zákazníkům](security-center-faq.md#existingloganalyticscust) Další informace.
+    - Pokud chcete zobrazit, který pracovní prostor existující rozšíření odesílá data pro spuštění testu na [ověření připojení pomocí služby Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternativně můžete otevřít pracovní prostory Log Analytics, vyberte pracovní prostor, vyberte virtuální počítač a podívejte se na připojení agenta Log Analytics. 
+    - Pokud máte prostředí kde agenta Log Analytics je nainstalovaná na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, projděte si seznam [operačních systémů podporovaných službou Azure Security Center](security-center-os-coverage.md) zajistit váš operační systém se podporuje a najdete v článku [existující log analytics zákazníkům](security-center-faq.md#existingloganalyticscust) Další informace.
  
 ### Vypnout automatické zřizování <a name="offprovisioning"></a>
 Můžete vypnout automatické zřizování z prostředků v každém okamžiku vypnutím toto nastavení v zásadách zabezpečení. 

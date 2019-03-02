@@ -3,17 +3,17 @@ title: Správa aplikace Azure IoT Central | Dokumentace Microsoftu
 description: Jako správce jak spravovat aplikace Azure IoT Central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/05/2019
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8989d6ef54961f5f8eea7c6d8c9d941319bd917a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117727"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215400"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -44,7 +44,7 @@ V **nastavení aplikace** stránky, můžete změnit název a adresu URL vaší 
 Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ### <a name="copy-an-application"></a>Kopírovat aplikaci
-Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie bude aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
+Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie je aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
 
 Klikněte na tlačítko **kopírování** tlačítko. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Klikněte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rychlý start.
 
@@ -62,7 +62,7 @@ Po úspěšném provedení operace kopie aplikace, můžete přejít na novou ap
 > [!Note]
 > Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím se trvale odstraní všechna data, která má přidruženou k této aplikaci.
+Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím trvale odstraní všechna data, která má přidruženou k této aplikaci.
 
 ## <a name="manage-users"></a>Správa uživatelů
 
@@ -95,7 +95,7 @@ Pokud chcete odstranit uživatele, vyberte jeden nebo více políček na **uživ
 
 ## <a name="manage-roles"></a>Správa rolí
 
-Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy v IoT Central. Existují tři role, které můžete přiřazovat uživatelům vaší aplikace. 
+Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy v IoT Central. Existují tři role, které můžete přiřazovat uživatelům vaší aplikace.
 
 ### <a name="administrator"></a>Správce
 
@@ -111,7 +111,6 @@ Uživatelé v **Tvůrce aplikací** role můžou provádět vše v aplikaci s t�
 
 Uživatelé v **operátor aplikací** role nemůže provádět změny šablon a nelze spravovat aplikace. To znamená, že operátory lze přidání a odstranění zařízení, Správa sad zařízení a spouštět úlohy a analýzy. Operátory nebudete mít přístup k **Tvůrce aplikací** a **správu** stránky.
 
-
 ## <a name="view-your-bill"></a>Prohlédněte si fakturu
 
 Chcete-li zobrazit váš účet, přejděte na **fakturace** stránku **správy** části. Azure fakturační stránka se otevře na nové kartě, ve kterém uvidíte na faktuře pro jednotlivé aplikace Azure IoT Central.
@@ -124,14 +123,14 @@ Můžete převést zkušební verzi aplikace do aplikace s průběžnými platba
 - **Pay-As-You-Go** – Aplikace s průběžnými platbami se účtují podle počtu zařízení a prvních 5 zařízení je zdarma.
 
 Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
-    
+
 K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kroků:
 
-1. Přejděte na **fakturace** stránku **správu** oddílu. 
+1. Přejděte na **fakturace** stránku **správu** oddílu.
 
     ![Zkušební verze stavu](media/howto-administer-experimental/freetrialbilling.png)
 
-1. Klikněte na tlačítko **přejděte k průběžným platbám**. 
+1. Klikněte na tlačítko **přejděte k průběžným platbám**.
 
     ![Převést zkušební verzi](media/howto-administer-experimental/convert.png)
 

@@ -4,7 +4,7 @@ description: Zjistěte, jak zakoupit certifikát App Service a jeho vazbu na va�
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b569165153ce713846be5e836a26f48e500be1fc
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594130"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216573"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -121,28 +121,35 @@ Pomocí následující tabulky můžete nakonfigurovat vazby v **vazby SSL** dia
 
 Navštivte vaši aplikaci s použitím `HTTPS://<domain_name>` místo `HTTP://<domain_name>` k ověření, že certifikát nakonfigurovaný správně.
 
-## <a name="rekey-and-sync-certificate"></a>Obnovení klíče a certifikátu synchronizace
+## <a name="rekey-certificate"></a>Obnovit klíč certifikátu
 
-Pokud byste někdy potřebovali obnovit klíč certifikátu, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a pak vyberte **obnovení klíče a synchronizace** z levé navigace.
+Pokud si myslíte, že váš certifikát uživatele privátního klíče je ohrožena, můžete obnovit klíč certifikátu. Vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a pak vyberte **obnovit klíč a synchronizovat** z levé navigace.
 
-Klikněte na tlačítko **opětovné vytvoření** tlačítko pro spuštění procesu. Tento proces může trvat 1 až 10 minut na dokončení.
+Klikněte na tlačítko **opětovné vytvoření** zahájíte proces. Tento proces může trvat 1 až 10 minut na dokončení.
 
 ![Vložit obrázek opětovné vytvoření protokolu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 Obnovení klíče vrátí certifikát pomocí nového certifikátu vydaného certifikační autoritou.
 
+Po dokončení operace obnovení klíče, klikněte na tlačítko **synchronizace**. Operace synchronizace automaticky aktualizuje vazby názvu hostitele pro certifikát ve službě App Service bez způsobení odstávky do vašich aplikací.
+
+> [!NOTE]
+> Pokud neklepnete na **synchronizace**, App Service se automaticky synchronizuje vaše certifikát do 48 hodin.
+
 ## <a name="renew-certificate"></a>Prodloužit platnost certifikátu
 
-Zapnutí automatického obnovení certifikátu v okamžiku, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a potom klikněte na **nastavení automatického obnovení** v levém navigačním panelu. 
+Zapnutí automatického obnovení certifikátu v okamžiku, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a potom klikněte na **nastavení automatického obnovení** v levém navigačním panelu.
 
 Vyberte **na** a klikněte na tlačítko **Uložit**. Certifikáty můžete spustit automaticky obnovení 60 dní před vypršením platnosti, pokud máte zapnuté automatické obnovení.
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![automaticky prodloužit platnost certifikátu](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení**. Můžete požádat o certifikát ručně obnovit 60 dní před vypršením platnosti.
 
+Po dokončení obnovení klikněte na tlačítko **synchronizace**. Operace synchronizace automaticky aktualizuje vazby názvu hostitele pro certifikát ve službě App Service bez způsobení odstávky do vašich aplikací.
+
 > [!NOTE]
-> Obnoveného certifikátu není automaticky svázán s vaší aplikace, ať už ručně obnovit nebo ho obnovit automaticky. Vytvořte jeho vazbu do vaší aplikace, najdete v článku [prodloužit platnost certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Pokud neklepnete na **synchronizace**, App Service se automaticky synchronizuje vaše certifikát do 48 hodin.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 

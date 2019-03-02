@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 28891c103df91baa16b895ece7909658fede3b91
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894390"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213309"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
@@ -158,9 +158,9 @@ Další informace:
 - [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Nastavení auditování serveru do centra událostí nebo Log Analytics
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Nastavení auditování serveru do služby Event Hub nebo Azure Monitor protokolů
 
-Protokoly auditu ze spravované instance můžete odesílat i rozbočovače nebo Log Analytics pomocí Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
+Protokoly auditu ze spravované instance můžete odesílat i rozbočovače nebo protokoly Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
 
 1. Přejděte v [webu Azure Portal](https://portal.azure.com/) do spravované instance.
 
@@ -170,7 +170,7 @@ Protokoly auditu ze spravované instance můžete odesílat i rozbočovače nebo
 
 4. Vyberte **SQLSecurityAuditEvents** v seznamu protokolů.
 
-5. Vyberte cílové umístění událostí auditu – centra událostí a Log Analytics. Konfigurace pro každý cíl požadované parametry (například pracovní prostor Log Analytics).
+5. Vyberte cílové umístění událostí auditu – centra událostí a protokoly Azure monitoru. Konfigurace pro každý cíl požadované parametry (například pracovní prostor Log Analytics).
 
 6. Klikněte na **Uložit**.
 
@@ -213,11 +213,13 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v článku dokumentace k Azure Event Hubs.
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Využití a analyzovat protokoly uložené v Log Analytics
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Využití a analyzovat protokoly uložené v protokolech Azure Monitor
 
-Pokud se protokoly auditu se zapisují do Log Analytics, jsou k dispozici v pracovním prostoru Log Analytics, ve kterém rozšířené hledání můžete spustit na data auditu. Jako výchozí bod, přejděte do služby Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, jako například: `search "SQLSecurityAuditEvents"` zobrazíte auditování protokoluje.  
+Pokud se protokoly auditu se zapisují do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, ve kterém rozšířené hledání můžete spustit na data auditu. Jako výchozí bod, přejděte do pracovního prostoru Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, jako například: `search "SQLSecurityAuditEvents"` zobrazíte auditování protokoluje.  
 
-Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Protokoly služby Azure Monitor nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o Azure Monitor protokoly vyhledávací jazyk a příkazy, naleznete v tématu [protokoly Azure monitoru reference ke službě search](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Auditování rozdíly mezi databázemi ve službě Azure SQL Database a databází v systému SQL Server
 
@@ -232,7 +234,7 @@ Relace XEvent auditování ve spravované instanci podporuje cíle úložiště 
 Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování objektů Blob v Azure storage jsou:
 
 - Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, kde `.xel` soubory jsou umístěny.
-- Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení cíle i centra a Log Analytics.
+- Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení i Hub a Azure Monitor cíle protokolů.
 - Syntaxe `TO FILE` je **nepodporuje** protože SQL Database nemá přístup ke sdílené složky Windows.
 - Možnost vypnutí je **nepodporuje**.
 - `queue_delay` 0 je **nepodporuje**.

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b99311a7a8742cdc5995e53a6b0d3e6a2ddf1328
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7cf6b08655174ce6d9b851d635d5c8b9d9d358dd
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736868"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245535"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapování Tvůrce výrazů toku dat
 
@@ -70,3 +70,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 U výrazu funkcí, které vrací pole k adresování specifickými indexy uvnitř objektu pole vrácené použijte hranaté závorky []. Pole je založená na ty.
 
 ![Výraz pole Tvůrce](media/data-flow/expb2.png "výraz dat ve verzi Preview")
+
+## <a name="handling-names-with-special-characters"></a>Zpracování názvů s speciální znaky
+
+Až budete mít názvy sloupců, které obsahují speciální znaky ani mezery, uzavřete název pomocí složených závorek.
+* ```{[dbo].this_is my complex name$$$}```
+
+## <a name="next-steps"></a>Další postup
+
+[Začít sestavovat výrazy transformace dat](data-flow-expression-functions.md)

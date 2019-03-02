@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e752302baab14505e71c3f0f65840156833b8976
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bf9d8e6d3aa8d1995c705ecdec95b6f3dea028ff
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194601"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242339"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -284,6 +284,7 @@ Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze slu
     | &nbsp; | Čína – sever 2 | 40.73.37.141</br>40.73.38.172 | 443 | Příchozí |
     | Evropa | Severní Evropa | 52.164.210.96</br>13.74.153.132 | 443 | Příchozí |
     | &nbsp; | Západní Evropa| 52.166.243.90</br>52.174.36.244 | 443 | Příchozí |
+    | Francie | Francie – střed| 20.188.39.64</br>40.89.157.135 | 443 | Příchozí |
     | Německo | Německo – střed | 51.4.146.68</br>51.4.146.80 | 443 | Příchozí |
     | &nbsp; | Německo – severovýchod | 51.5.150.132</br>51.5.144.101 | 443 | Příchozí |
     | Indie | Střed Indie | 52.172.153.209</br>52.172.152.49 | 443 | Příchozí |

@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 93a4595ce0b36c8d0f447177bda69d2d8cab12c8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a8b792ee7731a9994ded76ef1614fc3966d033d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117524"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243801"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Integrace protokolů Azure s protokolování diagnostiky Azure a předávání událostí Windows
 
@@ -248,5 +248,5 @@ Další informace o Azure Log Integration, naleznete v následujících článc�
 * [Úvod do integrace protokolů Azure](security-azure-log-integration-overview.md). Tento článek vás seznámí s integrací protokolů Azure, jejích klíčových funkcích a jak to funguje.
 * [Partner kroky konfigurace](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Tento příspěvek na blogu ukazuje postup při konfiguraci integrace protokolů Azure pro práci s partnerskými řešeními Splunk, HP ArcSight a IBM QRadar. Popisuje naše aktuální doprovodné materiály, o tom, jak nakonfigurovat komponenty systému SIEM. Zkontrolovat u dodavatele systému SIEM k další podrobnosti.
 * [Integrace protokolů Azure – nejčastější dotazy (FAQ)](security-azure-log-integration-faq.md). Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se integrace protokolů Azure.
-* [Integrace výstrah služby Azure Security Center s integrací protokolů Azure](../security-center/security-center-integrating-alerts-with-log-integration.md). V tomto článku se dozvíte, jak synchronizovat výstrahy Security Center a události zabezpečení virtuálního počítače, které byly shromážděny sadou diagnostiky Azure a aktivit v Azure protokoly. Protokoly se synchronizuje s využitím řešení Azure Log Analytics nebo systému SIEM.
+* [Integrace výstrah služby Azure Security Center s integrací protokolů Azure](../security-center/security-center-integrating-alerts-with-log-integration.md). V tomto článku se dozvíte, jak synchronizovat výstrahy Security Center a události zabezpečení virtuálního počítače, které byly shromážděny sadou diagnostiky Azure a aktivit v Azure protokoly. Synchronizace protokolů pomocí Azure monitoru protokoly nebo řešení SIEM.
 * [Protokoly auditu nových funkcí pro diagnostiku Azure a Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/). Tento příspěvek na blogu vás seznámí s protokoly auditování Azure a dalších funkcí, které vám může pomoct získat přehled o operacích vašich prostředků Azure.

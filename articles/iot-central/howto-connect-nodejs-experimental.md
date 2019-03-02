@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b8f2df14e0aa0246d794bd56f4187002cfdeee02
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ba5a8cc09a098e58c39d42475d18e92e45222937
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194464"
+ms.locfileid: "57216777"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -93,7 +93,7 @@ Pole Název zadejte přesně tak, jak je znázorněno v tabulce do šablony zař
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zařízení můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Podrobné pokyny o tom, jak připojit aplikaci Node.js do IoT Central, naleznete v tématu [generovat připojovací řetězec pro skutečné zařízení z aplikace](tutorial-add-device-experimental.md#generate-connection-string-for-real-device-from-application) a [Příprava klientský kód](tutorial-add-device-experimental.md#prepare-the-client-code) v kurzech > Přidáte zařízení.
+V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zařízení můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Podrobné pokyny o tom, jak připojit aplikaci Node.js do IoT Central, naleznete v tématu [generovat připojovací řetězec pro skutečné zařízení z aplikace](tutorial-add-device-experimental.md#generate-connection-string) a [Příprava klientský kód](tutorial-add-device-experimental.md#prepare-the-client-code) v kurzech > Přidáte zařízení.
 
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
@@ -268,11 +268,11 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 
     ![Zobrazení telemetrických dat](media/howto-connect-nodejs-experimental/viewtelemetry.png)
 
-* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Dlaždice vlastnosti zařízení budou aktualizováni, pokud je připojení úspěšné. 
+* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Vlastnosti dlaždice aktualizace zařízení Pokud je připojení úspěšné.
 
     ![Zobrazení vlastností zařízení](media/howto-connect-nodejs-experimental/viewproperties.png)
 
-* Nastavte ventilátor rychlost a cíl teploty od **nastavení** stránky. Nastavení hodnoty se budou synchronizovat, pokud je připojení úspěšné. 
+* Nastavte ventilátor rychlost a cíl teploty od **nastavení** stránky. Hodnoty nastavení synchronizace, pokud je připojení úspěšné.
 
     ![Ventilátor rychlost set](media/howto-connect-nodejs-experimental/setfanspeed.png)
 

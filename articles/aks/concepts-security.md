@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456499"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240333"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ Tento článek představuje základní koncepty, které zabezpečení aplikací 
 
 ## <a name="master-security"></a>Hlavní zabezpečení
 
-Hlavní součásti Kubernetes ve službě AKS, jsou součástí spravované služby poskytované společností Microsoft. Každý cluster AKS má své vlastní hlavní Kubernetes jedním klienty, vyhrazené poskytnout serveru rozhraní API, Plánovač atd. Tento hlavní je spravovaný a udržovaný microsoftem
+Hlavní součásti Kubernetes ve službě AKS, jsou součástí spravované služby poskytované společností Microsoft. Každý cluster AKS má své vlastní hlavní Kubernetes jedním klienty, vyhrazené poskytnout serveru rozhraní API, Plánovač atd. Tento hlavní správy a spravován společností Microsoft.
 
 Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adresu a s plně kvalifikovaný název (plně kvalifikovaný název domény). Můžete řídit přístup k rozhraní API serveru pomocí řízení přístupu na základě rolí Kubernetes a Azure Active Directory. Další informace najdete v tématu [integrace Azure AD s AKS][aks-aad].
 
 ## <a name="node-security"></a>Zabezpečení uzlu
 
-Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. V uzlech je spuštěný optimalizované distribuce systému Ubuntu Linux pomocí Dockeru kontejner modulu runtime. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
+Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. V uzlech je spuštěný optimalizované Ubuntu Linuxovou distribuci pomocí modulu runtime Moby kontejneru. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
 
 Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly přes noc. Pokud aktualizace zabezpečení operačního systému, vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly, nebo běžným přístupem je použití [Kured][kured], open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet] [ aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
 
@@ -65,7 +65,7 @@ Pro připojení a zabezpečení v sítích na pracovišti můžete nasadit clust
 
 ### <a name="azure-network-security-groups"></a>Skupiny zabezpečení sítě Azure
 
-Chcete-li filtrovat toku provozu ve virtuálních sítích, Azure využívá pravidla skupiny zabezpečení sítě. Tato pravidla definují zdrojové a cílové rozsahy IP adres, porty a protokoly, které se povoluje nebo odepírá přístup k prostředkům. Výchozí pravidla se vytvářejí pro povolení provozu TLS na serveru Kubernetes API a pro přístup přes SSH k uzlům. Při vytváření služby pomocí nástroje pro vyrovnávání zatížení, mapování portů nebo příchozího přenosu dat trasy, AKS automaticky změní skupina zabezpečení sítě pro provoz volný průběh.
+Chcete-li filtrovat toku provozu ve virtuálních sítích, Azure využívá pravidla skupiny zabezpečení sítě. Tato pravidla definují zdrojové a cílové rozsahy IP adres, porty a protokoly, které se povoluje nebo odepírá přístup k prostředkům. Výchozí pravidla se vytvářejí pro povolení provozu TLS na serveru Kubernetes API. Při vytváření služby pomocí nástroje pro vyrovnávání zatížení, mapování portů nebo příchozího přenosu dat trasy, AKS automaticky změní skupina zabezpečení sítě pro provoz volný průběh.
 
 ## <a name="kubernetes-secrets"></a>Tajné klíče Kubernetes
 
@@ -76,6 +76,8 @@ Použití tajných kódů snižuje citlivých informací, která je definována 
 ## <a name="next-steps"></a>Další postup
 
 Začínáme se zabezpečením vašich clusterů AKS najdete v článku [Upgrade clusteru AKS][aks-upgrade-cluster].
+
+Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro zabezpečení clusteru a inovace ve službě AKS][operator-best-practices-cluster-security].
 
 Další informace o základní Kubernetes a AKS koncepty najdete v následujících článcích:
 
@@ -99,3 +101,4 @@ Další informace o základní Kubernetes a AKS koncepty najdete v následujíc�
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

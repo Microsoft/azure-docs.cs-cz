@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002370"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215536"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
 
@@ -52,7 +52,7 @@ Správa výkonu databáze sestává z kompilování a analýz dat výkonu a nás
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Pro službu SQL Database monitorování a upozorňování je k dispozici v databázích. Toto integrované monitorování a upozorňování je specifické podle prostředků, takže je pohodlné používat ho u malého počtu prostředků, ale není vhodné při práci s mnoha prostředky.
 
-U velkoobjemových scénářů, ve kterém pracujete s mnoha prostředky, [Log Analytics](https://azure.microsoft.com/services/log-analytics/) lze použít. Toto je samostatná služba Azure, která poskytuje analýzy přes vydávané diagnostické protokoly a telemetrii získanou v pracovním prostoru log analytics. Log Analytics může shromažďovat telemetrii z mnoha služeb a použije k dotazování a nastavování výstrah.
+U velkoobjemových scénářů, ve kterém pracujete s mnoha prostředky, [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) lze použít. Toto je samostatná služba Azure, která poskytuje analýzy přes vydávané diagnostické protokoly a telemetrii získanou v pracovním prostoru Log Analytics. Protokoly služby Azure Monitor může shromažďovat telemetrii z mnoha služeb a použije k dotazování a nastavování výstrah.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Získat zdrojový kód aplikace Wingtip Tickets SaaS databázi s více tenanty a skripty
 

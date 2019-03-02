@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c7019eac4edc530de5ef64ba9eb32e8e4994e75b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456720"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245195"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Škálování možností pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Budete muset vyladit tyto hodnoty která. Výchozí hodnoty která může mít d
 
 ## <a name="cluster-autoscaler"></a>Automatického škálování clusteru
 
-Reagovat na měnící se požadavky podů Kubernetes má přizpůsobí počet uzlů, které jsou založené na požadované výpočetní prostředky ve fondu uzlu clusteru bylo. Ve výchozím nastavení kontroluje automatického škálování clusteru serveru rozhraní API každých 10 sekund k nějakým nezbytným změnám v počtu uzlů. Pokud automatické škálování clusteru zjistí, že je vyžadována změna, počet uzlů v clusteru AKS zvýší nebo sníží odpovídajícím způsobem. Funguje automatického škálování clusteru s podporou RBAC AKS clustery se spuštěnou technologií Kubernetes 1.10.x nebo vyšší.
+Reagovat na měnící se požadavky podů Kubernetes má přizpůsobí počet uzlů, které jsou založené na požadované výpočetní prostředky ve fondu uzlu clusteru bylo. Automatického škálování clusteru používá parametry spuštění pro takové věci, jako je časových intervalů mezi škálovací události a prahové hodnoty prostředků. Pokud automatické škálování clusteru zjistí, že je vyžadována změna, počet uzlů v clusteru AKS zvýší nebo sníží odpovídajícím způsobem. Použití automatického škálování clusteru AKS clustery spouštět škálovací sady virtuálních počítačů, spravovat škálování nahoru a dolů události uzlů AKS.
 
 ![Automatického škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 

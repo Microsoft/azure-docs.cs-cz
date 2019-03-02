@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263624"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213547"
 ---
 # <a name="azure-saas-application-offer"></a>Nabídka Azure aplikace SaaS
 
@@ -36,6 +36,9 @@ Výpis vašich aplikací na webu Microsoft marketplace výhody patří:
 - Rozšíření prodejní tým: oslovit obchodní uživatele po celém světě a získejte prodejní kanál, který zaujme uživatele, pomáhá generovat zájemce a zahajuje konverzace s novým zákazníkům napříč odvětvími.
 
 - Získání užitečných přehledů: budeme sdílet přehledy o jaký je výkon vaší aplikace na AppSource, co funguje dobře a jak můžete ještě zlepšit prodejní postupy.
+ 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="publishing-process-workflow"></a>Publikování procesů pracovního postupu 
 

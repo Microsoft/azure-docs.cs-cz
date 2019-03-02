@@ -1,6 +1,6 @@
 ---
 title: Provozní zabezpečení Azure | Dokumentace Microsoftu
-description: Další informace o Microsoft Azure Log Analytics, jejích služeb a jak to funguje.
+description: Další informace o protokoly Microsoft Azure Monitor, jejích služeb a jak to funguje.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc820d0e8a19ae3905fbd26a1b9a98e948ecfb63
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2f68156e593281acb46dbeb132f0f45db4b3dfb9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107274"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244770"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -53,36 +53,36 @@ Tento dokument white paper popisuje přístup Microsoftu k provozní zabezpečen
 6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+## <a name="microsoft-azure-monitor-logs"></a>Protokoly Microsoft Azure Monitor
 
-Microsoft Azure Log Analytics je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo rozšířit existující nasazení nástroje System Center Log Analytics poskytuje maximální flexibilitu a kontrolu pro cloudovou správu infrastruktury.
+Protokoly Microsoft Azure Monitor je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo pro rozšíření stávajícího nasazení nástroje System Center, protokoly Azure monitoru poskytuje maximální flexibilitu a řízení pro správu cloudové infrastruktury.
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Protokoly Azure monitoru](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-Pomocí služby Log Analytics můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, Log Analytics nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
+S protokoly Azure monitoru můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, protokoly Azure Monitor nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
 
-### <a name="log-analytics-services"></a>Služby log Analytics
+### <a name="azure-monitor-services"></a>Azure Monitor services
 
-Základní funkce služby Log Analytics poskytuje sadu služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
+Základní funkce protokoly Azure monitoru poskytuje sadu služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
 
 | Služba  | Popis|
 | :------------- | :-------------|
-| Log Analytics | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
+| Protokoly Azure monitoru | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
 |Automation | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |
 | Backup | Zálohování a obnovení kritických dat. |
 | Site Recovery | Poskytnutí vysoké dostupnosti pro důležitá data |
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Protokoly Azure monitoru](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
 
 Tato metoda umožňuje konsolidovat data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
 
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Protokoly Azure monitoru](./media/azure-operational-security/azure-operational-security-fig2.png)
 
-Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomocí následujících metod:
+Služby Azure Monitor bezpečně spravuje vaše data založené na cloudu pomocí následujících metod:
 -   oddělení dat
 -   uchovávání dat
 -   fyzické zabezpečení
@@ -92,22 +92,22 @@ Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomoc�
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](https://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady Log Analytics produktů a služeb.
+[Azure Backup](https://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady Azure Monitor produktů a služeb.
 Chrání data vaší aplikace a dlouhá léta je uchovává bez nutnosti velkých investic a s minimálními provozními náklady. To můžete zálohovat data z fyzických a virtuálních serverů Windows kromě úloh aplikací, jako je SQL Server a SharePoint. Je také možné pomocí [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) k replikaci chráněných dat do Azure pro redundance a dlouhodobého úložiště.
 
 
 Chráněná data ve službě Azure Backup se ukládají do trezoru záloh umístěného v konkrétní geografické oblasti. Data se replikují v rámci stejné oblasti a v závislosti na typu trezoru se můžou replikovat také do jiné oblasti pro zajištění vyšší odolnosti.
 
 ### <a name="management-solutions"></a>Řešení pro správu
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) je společnosti Microsoft cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu.
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) je společnosti Microsoft cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu.
 
 
-[Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou předpřipravené sady logics, které implementují konkrétní scénáře správy s použitím nejméně jedna služba Log Analytics. Jiná řešení jsou k dispozici od Microsoftu a partnerů můžete snadno přidat do předplatného Azure ke zvýšení hodnoty investice do Log Analytics. Jako partner můžete vytvořit svoje vlastní řešení pro podporu vašich aplikací a služeb a poskytnout je uživatelům prostřednictvím Azure Marketplace nebo šablon pro rychlý Start.
+[Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou předpřipravené sady logics, které implementují konkrétní scénáře správy pomocí jedné nebo více služeb Azure Monitor. Jiná řešení jsou k dispozici od Microsoftu a partnerů můžete snadno přidat do předplatného Azure ke zvýšení hodnoty investice do Azure monitoru. Jako partner můžete vytvořit svoje vlastní řešení pro podporu vašich aplikací a služeb a poskytnout je uživatelům prostřednictvím Azure Marketplace nebo šablon pro rychlý Start.
 
 
 ![Řešení pro správu](./media/azure-operational-security/azure-operational-security-fig4.png)
 
-Dobrým příkladem řešení, které používá více služeb k poskytnutí dalších funkcí je [řešení Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management). Toto řešení používá [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) agenta pro Windows a Linux ke shromažďování informací o požadovaných aktualizací na každém agentovi. Zapíše tato data do úložiště Log Analytics, kde je můžete analyzovat pomocí obsaženého řídicího panelu.
+Dobrým příkladem řešení, které používá více služeb k poskytnutí dalších funkcí je [řešení Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management). Toto řešení používá [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) agenta pro Windows a Linux ke shromažďování informací o požadovaných aktualizací na každém agentovi. Tato data zapíše do úložiště Azure Monitor protokoly, kde můžete analyzovat pomocí obsaženého řídicího panelu.
 
 Když vytvoříte nasazení s runbooky v [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) se používají k instalaci požadovaných aktualizací. Celý tento proces spravujete na portálu a nemusíte se starat o podrobnosti.
 
@@ -312,7 +312,7 @@ Tento článek souhrny, ochraně osobních údajů a zabezpečení vašich dat p
 
 Tento článek vysvětluje
 
--   Jak data shromažďují, zpracování a zabezpečené v Log Analytics suite.
+-   Jak data shromažďují, zpracování a zabezpečené sady Azure Monitor.
 
 -   Rychlá analýza událostí z různých zdrojů dat Identifikace bezpečnostních rizik a pochopení rozsahu a dopadů hrozeb a útoků s cílem omezit škody vzniklé narušením bezpečnosti
 
@@ -335,7 +335,7 @@ Tento článek vysvětluje
 
 Microsoft navrhuje svůj služeb a softwaru zabezpečení k zajištění, že své cloudové infrastruktury je odolné a před útoky.
 
-- [Log Analytics | Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Protokoly služby Azure Monitor | Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Pomocí Microsoft zabezpečení dat a analýza provádět inteligentní a efektivní detekce hrozeb.
 

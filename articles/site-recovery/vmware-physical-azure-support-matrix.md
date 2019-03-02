@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/01/2019
 ms.author: raynew
-ms.openlocfilehash: 960d1df7c89383efc976fed959c1a39fae461c52
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2225c978eade3af12e910d7f403ca06287cabbef
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875800"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214227"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -230,6 +230,26 @@ FC disk | Nepodporuje se. | Kontrola selže, pokud není podporován.
 BitLocker | Nepodporuje se. | Dříve než povolíte replikaci pro počítač, musí se zakázat nástroj BitLocker. |
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu v vlastnosti počítače ve službě Site Recovery.
 
+## <a name="azure-site-recovery-churn-limits"></a>Omezení četnosti změn v Azure Site Recovery
+
+Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Nejlepších výsledků dosáhnete, důrazně doporučujeme [spustit nástroj Plánovač nasazení](site-recovery-deployment-planner.md) a provádět rozsáhlá testování aplikace pomocí testovacího převzetí služeb při získat skutečnou představu o výkonu aplikace.
+
+**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
+---|---|---|---
+Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
+Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
+Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
+Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |10 MB/s | 842 GB na disk
+
+**Četnost změn dat zdroje** | **Maximální omezení**
+---|---
+Průměrná četnost změn dat na virtuální počítač| 25 MB/s
+Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
+Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
+
+Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 
 ## <a name="vault-tasks"></a>Trezor úlohy
 

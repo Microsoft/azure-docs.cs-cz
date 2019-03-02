@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118271"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245042"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Úvod do integrace protokolů Azure
 
@@ -61,7 +61,7 @@ Pokud nejsou dostupné žádné další možnosti, zvažte použití integrace p
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | Začněte migrovat do [rozšíření Azure Monitor umožňující Splunk](https://splunkbase.splunk.com/app/3534/). | Použití [Splunk konektor](https://splunkbase.splunk.com/app/3534/). |
 |**QRadar** | Migrace na nebo začít používat QRadar konektoru, která je popsána v poslední části [pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). | Použití konektoru QRadar, která je popsána v poslední části [pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | Pokračovat v používání integrátor protokolů Azure, dokud se konektor je k dispozici a potom migrovat do řešení založené na konektoru.  | Zvažte použití Azure Log Analytics jako alternativu. Program není připojení k Azure Log Integration Pokud se nechcete projít procesem migrace, jakmile je konektor k dispozici. |
+|**ArcSight** | Pokračovat v používání integrátor protokolů Azure, dokud se konektor je k dispozici a potom migrovat do řešení založené na konektoru.  | Zvažte použití Azure monitoru protokoly jako alternativu. Program není připojení k Azure Log Integration Pokud se nechcete projít procesem migrace, jakmile je konektor k dispozici. |
 
 > [!NOTE]
 > Přestože integrace protokolů Azure je bezplatné řešení, jsou náklady na úložiště Azure spojené s úložištěm informace souboru protokolu.

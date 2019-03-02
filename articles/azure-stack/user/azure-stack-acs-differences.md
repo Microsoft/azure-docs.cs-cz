@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 44fc096fa95be3a469ada7c7dc212ce4fc04e83b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486534"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218052"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: Rozdíly a aspekty
 
@@ -44,6 +44,7 @@ Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Sto
 |Maximální velikost objektu blob bloku|4,75 TB (100 MB × 50 000 bloků)|4,75 TB (100 MB × 50 000 bloků) pro verzi 1802 update nebo novější verze. 50 000 × 4 MB (přibližně 195 GB) pro předchozí verze.
 |Kopie snímků objektů blob stránky|Zálohování Azure nespravovaných disků virtuálních počítačů připojený spuštěný virtuální počítač nepodporuje|Ještě není podporované.
 |Kopie přírůstkový snímek objektu blob stránky|Premium a objekty BLOB stránky standardní Azure, které jsou podporovány|Ještě není podporované.
+|Fakturace objektů blob stránky|Poplatky se účtují pro jedinečný stránky, ať už jsou v objektu blob nebo ve snímku. Nebude se účtovat další poplatky za snímky přidružené tomuto objektu blob dokud základní objekt blob se aktualizuje.|Poplatky se účtují pro základní snímky objektů blob a assiociated. Bude se účtovat další poplatky za každé jednotlivé snímku.
 |Úrovně úložiště pro ukládání objektů blob|Horké studené a archivní úroveň úložiště.|Ještě není podporované.
 |Obnovitelného odstranění pro úložiště objektů blob|Obecně dostupná|Ještě není podporované.
 |Maximální velikost objektu blob stránky|8 TB|1 TB

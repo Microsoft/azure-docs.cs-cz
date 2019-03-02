@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: afc833775894a01e8061401fe7601267f09edded
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823412"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243240"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56823412"
 
 Když používáte cluster Azure Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
 
-Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření Windows Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [Log Analytics](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
+Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření Windows Azure Diagnostics (WAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [protokoly Azure monitoru](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
 
 ## <a name="prerequisites"></a>Požadavky
 Tyto nástroje se používají v tomto článku:
@@ -57,7 +57,7 @@ Důrazně doporučujeme, stáhněte si šablonu **před kliknutím na vytvořit*
 
 ![Šablony clusteru](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Teď, když máte agregaci událostí ve službě Azure Storage [nastavení Log Analytics](service-fabric-diagnostics-oms-setup.md) k získání přehledu a jejich dotazování na portálu Log Analytics
+Teď, když máte agregaci událostí ve službě Azure Storage [nastavení protokoly Azure monitoru](service-fabric-diagnostics-oms-setup.md) k získání přehledu a jejich dotazování ve službě Azure Monitor protokoly portálu
 
 >[!NOTE]
 >Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude dál rozšiřovat tabulky (výchozí limit je 50 GB). Návod, jak změnit jsou [níže v tomto článku](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Kromě toho je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
@@ -340,11 +340,11 @@ V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. A
 
 ## <a name="next-steps"></a>Další postup
 
-Po nakonfigurování Azure diagnostics správně, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud se rozhodnete používat Log Analytics, Kibana nebo jakékoli jiné datové analýzy a vizualizace platformě, která není nakonfigurovaná přímo v šabloně Resource Manageru, ujistěte se, že nastavení platformy podle vašeho výběru, pokud chcete číst data z těchto tabulek úložiště. Tím ke službě Log Analytics je poměrně jednoduchá a je podrobně [analýzy událostí a protokolů](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je hodně ve speciálním případě v tomto smyslu, protože je možné nakonfigurovat jako součást konfigurace diagnostického rozšíření, naleznete [příslušný článek](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud budete chtít využít AI.
+Po nakonfigurování Azure diagnostics správně, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud budete chtít používat protokoly Azure monitoru, Kibana nebo jakékoli jiné datové analýzy a vizualizace platformě, která není nakonfigurovaná přímo v šabloně Resource Manageru, ujistěte se, že nastavení platformy podle vašeho výběru, pokud chcete číst data z těchto tabulek úložiště. Protokoly Azure monitoru to je poměrně jednoduchá a je podrobně [analýzy událostí a protokolů](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je hodně ve speciálním případě v tomto smyslu, protože je možné nakonfigurovat jako součást konfigurace diagnostického rozšíření, naleznete [příslušný článek](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud budete chtít využít AI.
 
 >[!NOTE]
 >Aktuálně neexistuje žádný způsob, jak filtrovat nebo mazání událostí, které se odesílají do tabulky. Pokud implementujete není procesu odebrání události z tabulky, bude růst v tabulce. V současné době je příkladem data výmazu dat služby spuštěné [sledovacích ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a je doporučeno, že napíšete nějakou, pokud není dobrý důvod pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
 
 * [Zjistěte, jak shromáždit čítače výkonu nebo protokoly pomocí diagnostického rozšíření](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Události analýzy a vizualizace pomocí Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Události analýzy a vizualizace pomocí Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* [Události analýzy a vizualizace s protokoly Azure monitoru](service-fabric-diagnostics-event-analysis-oms.md)

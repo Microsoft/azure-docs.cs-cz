@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3fbbf688f6de7c3fceb6695a6b085f917dbec242
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196663"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216886"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>Aktualizace stávající nabídky aplikace Azure
 
@@ -75,6 +75,9 @@ Použijte následující postup k aktualizaci marketplace metadata související
 2. V části **všechny nabídky**, najít nabídky, které chcete aktualizovat.
 3. Přejděte **Marketplace** kartu. Postupujte podle pokynů v [nabídka aplikaci Azure publikovat](./cpp-publish-offer.md) provést změny metadat.
 4. Vyberte **publikovat** ke spuštění pracovního postupu publikovat provedené změny.
+ 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="deleting-an-existing-offer"></a>Odstraňuje se stávající nabídky
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c4ce8e01b1dc819453610f68d044cc268e27eed7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290514"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242747"
 ---
 # <a name="service-fabric-events"></a>Události služby Service Fabric 
 
@@ -45,7 +45,7 @@ Tady je několik příkladů scénářů, zobrazí se události ve vašem cluste
 ## <a name="how-to-access-events"></a>Jak získat přístup k události
 
 Existuje několik různých způsobů, pomocí kterých můžete získat přístup události Service Fabric:
-* Události se neprotokolují pomocí standardních kanálů, jako jsou protokoly událostí trasování událostí pro Windows a Windows a můžete vizualizovat pomocí monitorovacího nástroje, který podporuje tyto například služba Log Analytics. Ve výchozím nastavení clustery vytvořené na portálu mají zapnutou diagnostikou a agenta diagnostiky Azure pro Windows, odesílání událostí do služby Azure table storage, ale je stále potřeba to integrovat s vaším prostředkem Log Analytics. Další informace o konfiguraci [agenta diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md) upravit konfiguraci diagnostiky vašeho clusteru, aby se získaly další protokoly a čítače výkonu a [integrace Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)
+* Události se neprotokolují pomocí standardních kanálů, jako jsou protokoly událostí trasování událostí pro Windows a Windows a můžete vizualizovat pomocí monitorovacího nástroje, který podporuje tyto jako jsou protokoly Azure monitoru. Ve výchozím nastavení clustery vytvořené na portálu mají zapnutou diagnostikou a agenta diagnostiky Azure pro Windows, odesílání událostí do služby Azure table storage, ale je stále potřeba to integrovat s vaším prostředkem log analytics. Další informace o konfiguraci [agenta diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md) upravit konfiguraci diagnostiky vašeho clusteru, aby se získaly další protokoly a čítače výkonu a [integrace protokolů Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)
 * Eventstoru služby rozhraní Rest API, které umožňují dotazování clusteru přímo nebo prostřednictvím klientské knihovny Service Fabric. Zobrazit [rozhraní API Eventstoru dotazu pro události clusteru](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Další postup

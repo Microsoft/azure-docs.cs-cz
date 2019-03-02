@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730439"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242815"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -361,8 +361,8 @@ K dosažení úložiště dat, společné schéma rozhraní API implementované 
 ### <a name="azure-alerts"></a>Upozornění Azure
 - [Výstrahy nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) je kolekce služeb pro správu.
+### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+[Protokoly Azure monitoru](/azure/operations-management-suite/operations-management-suite-overview) je kolekce služeb pro správu.
 
 -   Pracovní prostor povolený pro Security Center
 

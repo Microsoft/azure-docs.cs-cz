@@ -2,7 +2,7 @@
 title: Správa prostředků a související entity pomocí služby Media Services .NET SDK
 description: Další informace o správě prostředků a přidružených entit pomocí sady Media Services SDK pro .NET.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f9f4dacc8aac2fc47002b65798c8367e354bb69c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979968"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240537"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Správa prostředků a související entity pomocí služby Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "55979968"
 > 
 > 
 
-Toto téma ukazuje, jak spravovat entity Azure Media Services pomocí rozhraní .NET (starší verze)
+Toto téma ukazuje, jak spravovat entity Azure Media Services s .NET.
 
 >[!NOTE]
 > Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní. Spolu s ním se odstraní přidružené záznamy úkolů, a to i v případě, že celkový počet záznamů je nižší než maximální kvóta. Například na 1. dubna 2017 se libovolný záznam úlohy ve vašem účtu, který je starší než 31. prosince 2016, se automaticky odstraní. Pokud potřebujete informace o úlohách/úkolech archivovat, můžete použít kód popsaný v tomto tématu.

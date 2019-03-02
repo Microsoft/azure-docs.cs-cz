@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ead303257b0b5a4b56803abe57a0101b8f031c0
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 9623cf727998348c313b7184c29e968afd33c6cc
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588973"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214142"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit kombinovat zabezpečení informace o registraci (preview)
 
@@ -38,6 +38,9 @@ Proveďte následující kroky, aby kombinovaná registrace:
 3. V části **uživatelé můžou používat funkce pro registraci a správu bezpečnostní údaje ve verzi preview – aktualizovat**, můžete povolit pro **vybrané** skupiny uživatelů nebo pro **všechny** uživatelů.
 
 ![Povolit prostředí ve verzi preview kombinované bezpečnostní údaje pro všechny uživatele na portálu Azure AD](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+
+> [!IMPORTANT]
+> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
 
 > [!NOTE]
 > Po povolení kombinované registrace uživatelů, kteří registrace nebo potvrzení, že se že jejich telefonní číslo nebo mobilních aplikací prostřednictvím nového prostředí můžete využít pro vícefaktorové ověřování a samoobslužné resetování HESLA, pokud tyto metody jsou povolené v zásadách vícefaktorového ověřování a samoobslužné resetování HESLA. Pokud zakážete pak toto prostředí, na stránce uživatelé přejít na předchozí registrace samoobslužného resetování HESLA [https:/aka.ms/ssprsetup](https:/aka.ms/ssprsetup) budou muset provádět ověřování službou Multi-Factor Authentication před přístupem na stránce.

@@ -4,7 +4,7 @@ description: Zjistěte, jak shromažďovat data DNS v Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4687841beb848a147691bfffbcc2bce0feba0a4c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 088a8f5034593b222a8a204feaa40b9cf5374059
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993094"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241878"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojení serveru název domény
 

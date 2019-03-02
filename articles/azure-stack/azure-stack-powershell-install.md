@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 1f51aee41937c531a987482a6a367970305e6594
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299560"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218018"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
@@ -106,8 +106,8 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     ```
 
     > [!Note]  
-    > Verze modulu Azure Stack 1.7.0 je zásadní změnu. Migrace ze služby Azure Stack 1.6.0 najdete [Průvodce migrací](https://aka.ms/azspshmigration170).
-
+    > Verze modulu Azure Stack 1.7.0 je vydání se zásadními změnami. Migrace ze služby Azure Stack 1.6.0 najdete [Průvodce migrací](https://aka.ms/azspshmigration170).
+    > Verze 2.4.0 modulu AzureRm se dodává s zásadní změny pro rutinu Remove-AzureRmStorageAccount. Tato rutina očekává, že - Force prameter pro účet úložiště bez potvrzení se odebírá.
 - Azure Stack 1811:
 
     ```PowerShell
@@ -216,6 +216,12 @@ Instalace je třeba provést čtyři kroky:
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    ```
+
+    > [!NOTE]  
+    >Na počítače bez připojení k Internetu doporučujeme provádí následující rutina pro zakázání shromažďování data telemetrie. Snížení výkonu aplikace cmldets může dojít bez zakázání shromažďování data telemetrie. To platí jenom pro počítače bez připojení k Internetu
+    ```PowerShell
+    Disable-AzureRmDataCollection
     ```
 
 ### <a name="enable-additional-storage-features"></a>Povolení funkcí dalšího úložiště

@@ -1,6 +1,6 @@
 ---
-title: Analýza událostí Azure Service Fabric pomocí Log Analytics | Dokumentace Microsoftu
-description: Další informace o vizualizaci a analýzu událostí pomocí Log Analytics pro monitorování a diagnostiku clustery Azure Service Fabric.
+title: Protokoly Azure Analysis Service Fabric události prostřednictvím služby Azure Monitor | Dokumentace Microsoftu
+description: Další informace o vizualizaci a analýzu událostí pomocí Azure monitoru protokoly pro monitorování a diagnostiku clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,28 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: e8719b071bf2e836ed92fa4f6dcddc5f1865b320
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668790"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246912"
 ---
-# <a name="event-analysis-and-visualization-with-log-analytics"></a>Události analýzy a vizualizace s využitím Log Analytics
- Log Analytics shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analýzy nástroje, které vám umožní maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v Log Analytics k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Události analýzy a vizualizace s protokoly Azure monitoru
+ Protokoly Azure monitoru shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analytické nástroje, které vám pomůžou maximálně využít jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
 
 * Jak řešit události stavu
 * Jak poznám, kdy se uzel ocitne mimo provoz?
 * Jak poznám, že pokud služby vaší aplikace mají spouštění nebo zastavování?
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview-of-the-log-analytics-workspace"></a>Přehled pracovního prostoru Log Analytics
 
 >[!NOTE] 
 >Diagnostické úložiště je povolen ve výchozím nastavení při vytváření clusteru, stále musíte vytvořit pracovní prostor Log Analytics pro čtení z úložiště diagnostiky.
 
-Log Analytics shromažďuje data ze spravovaných prostředků, včetně tabulku úložiště Azure nebo agenta a udržuje v centrálním úložišti. Data lze potom slouží pro analýzy, výstrahy a vizualizace nebo další exportu. Log Analytics podporuje události, údaje o výkonu nebo jiné vlastní data. Podívejte se na [postup pro konfiguraci rozšíření diagnostiky pro agregaci událostí](service-fabric-diagnostics-event-aggregation-wad.md) a [kroky k vytvoření pracovního prostoru Log Analytics pro čtení z události ve službě storage](service-fabric-diagnostics-oms-setup.md) k Ujistěte se, že se data přenášejí do Log Analytics .
+Azure Monitor protokoluje shromažďuje data ze spravovaných prostředků, včetně tabulku úložiště Azure nebo agenta a udržuje v centrálním úložišti. Data lze potom slouží pro analýzy, výstrahy a vizualizace nebo další exportu. Azure Monitor protokoly podporuje události, údaje o výkonu nebo jiné vlastní data. Podívejte se na [postup pro konfiguraci rozšíření diagnostiky pro agregaci událostí](service-fabric-diagnostics-event-aggregation-wad.md) a [kroky k vytvoření pracovního prostoru Log Analytics pro čtení z události ve službě storage](service-fabric-diagnostics-oms-setup.md) k Ujistěte se, že se data přenášejí do služby Azure Monitor ukládá do protokolu.
 
-Po přijetí dat pomocí Log Analytics, Azure nabízí několik *řešení pro správu* , která jsou připravená řešení nebo provozní řídicí panely se budou monitorovat příchozí data upravit tak, aby několik scénářů. Mezi ně patří *analýza služby Service Fabric* řešení a *kontejnery* řešení, které jsou dva nejdůležitější ty, které Diagnostika a monitorování clusterů Service Fabric. Tento článek popisuje, jak použít řešení analýza služby Service Fabric, který je vytvořen s pracovním prostorem.
+Po přijetí dat pomocí Azure monitoru protokoly Azure obsahuje několik *řešení pro monitorování* , která jsou připravená řešení nebo provozní řídicí panely se budou monitorovat příchozí data upravit tak, aby několik scénářů. Mezi ně patří *analýza služby Service Fabric* řešení a *kontejnery* řešení, které jsou dva nejdůležitější ty, které Diagnostika a monitorování clusterů Service Fabric. Tento článek popisuje, jak použít řešení analýza služby Service Fabric, který je vytvořen s pracovním prostorem.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení analýza služby Service Fabric
 
@@ -110,7 +112,7 @@ Je výkonný dotazovací jazyk Kusto. Další cenné dotaz, který můžete spus
 ## <a name="next-steps"></a>Další postup
 
 * Pokud chcete povolit infrastruktury, například monitorování čítače výkonu, přejděte na [Přidání agenta Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent shromažďuje čítače výkonu a přidá je do existujícího pracovního prostoru.
-* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení k Log Analytics pomocí Log Analytics gateway](../azure-monitor/platform/gateway.md).
+* Místními clustery protokoly Azure Monitor nabízí brány (dopředu proxy server HTTP), který slouží k odesílání dat do Azure monitoru protokoly. Další informace o, že v [připojení počítače bez připojení k Internetu pomocí brány Log Analytics protokoly Azure monitoru](../azure-monitor/platform/gateway.md).
 * Konfigurace [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) nabízenými jako součást Log Analytics.
-* Získejte podrobnější přehled o Log Analytics a navíc nabízejí, přečtěte si [co je služba Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).
+* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru.
+* Získejte podrobnější přehled o protokoly Azure monitoru a navíc nabízejí, přečtěte si [co je Azure Monitor protokoly?](../operations-management-suite/operations-management-suite-overview.md).

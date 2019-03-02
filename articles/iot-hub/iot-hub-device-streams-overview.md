@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7b436acb937216ad02289282f4a7ac5f88df2eea
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770784"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245144"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Řešení potíží pomocí datové proudy zařízení protokolů aktivit
 
-Azure Log Analytics můžete nastavit ke shromažďování streamů zařízení protokolu aktivit ve službě IoT Hub. To může být velmi užitečné při řešení potíží se scénáři.
+Protokoly Azure Monitor můžete nastavit ke shromažďování streamů zařízení protokolu aktivit ve službě IoT Hub. To může být velmi užitečné při řešení potíží se scénáři.
 
-Postupujte podle pokynů níže nakonfigurujte Azure Log Analytics pro aktivity stream zařízení služby IoT Hub:
+Postupujte podle pokynů níže nakonfigurujte protokoly Azure monitoru pro aktivity stream zařízení služby IoT Hub:
 
 1. Přejděte *nastavení diagnostiky* kartě ve službě IoT Hub a klikněte na *zapnout diagnostiku* odkaz.
 
   ![Alternativní text](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "povolení disgnostics protokoly")
 
 
-2. Zadejte název pro nastavení diagnostiky a zvolte *odesílat do Log Analytics* možnost. Průvodce zvolte existující prostředek Log Analytics nebo vytvořte novou. Dále zkontrolujte, *DeviceStreams* ze seznamu.
+2. Zadejte název pro nastavení diagnostiky a zvolte *odesílat do Log Analytics* možnost. Průvodce zvolte existující prostředek pracovního prostoru Log Analytics nebo vytvořte novou. Dále zkontrolujte, *DeviceStreams* ze seznamu.
 
     ![Alternativní text](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "zařízení povolení streamování protokolů")
 

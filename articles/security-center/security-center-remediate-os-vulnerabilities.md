@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a951e60b417167f2e1566efb689ea0f2d4e65374
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111420"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242237"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů, které jsou zranitelnější vůči útokům. Security Center doporučuje, abyste vyřešili ohrožení zabezpečení, když vaše konfigurace operačního systému se neshoduje s pravidla konfigurace doporučené zabezpečení a doporučuje změny konfigurace, které tyto nedostatky zabezpečení řeší.
@@ -84,7 +84,7 @@ Tento příklad se vztahuje "Opravit konfigurace zabezpečení" doporučení v �
    ![Uvedené pracovní prostory][4]
 
 5. Vyberte pracovní prostor.  
-  Vyfiltrováno do pracovního prostoru s neshoda konfigurace zabezpečení se otevře vyhledávací dotaz Log Analytics.
+  Vyfiltrováno do pracovního prostoru s neshoda konfigurace zabezpečení se otevře dotaz vyhledávání protokolů služby Azure Monitor.
 
    ![Pracovní prostor s ohrožení zabezpečení operačního systému][5]
 

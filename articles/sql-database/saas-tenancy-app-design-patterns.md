@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471194"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217865"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
 
@@ -99,7 +99,7 @@ Při nasazení databáze ve stejné skupině prostředků, mohou být seskupeny 
 
 ![Návrh aplikace s více tenanty s databází na tenanta, použití elastického fondu.][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL Database poskytuje nástroje potřebné k konfigurovat, monitorovat a spravovat sdílení.  Obě metriky na úrovni fondu a databáze úrovně výkonu jsou k dispozici na webu Azure Portal a pomocí Log Analytics.  Metriky můžete poskytovat skvělé informací o výkonu agregují a specifickým pro tenanta.  Jednotlivé databáze můžete přesouvat mezi fondy poskytují vyhrazené prostředky ke konkrétnímu tenantu.  Tyto nástroje umožňují zajistili dobrý výkon nákladově efektivní způsobem.
+Azure SQL Database poskytuje nástroje potřebné k konfigurovat, monitorovat a spravovat sdílení.  Obě metriky na úrovni fondu a databáze úrovně výkonu jsou k dispozici na webu Azure Portal a přes protokoly Azure monitoru.  Metriky můžete poskytovat skvělé informací o výkonu agregují a specifickým pro tenanta.  Jednotlivé databáze můžete přesouvat mezi fondy poskytují vyhrazené prostředky ke konkrétnímu tenantu.  Tyto nástroje umožňují zajistili dobrý výkon nákladově efektivní způsobem.
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Operace škálování pro databáze na tenanta
 

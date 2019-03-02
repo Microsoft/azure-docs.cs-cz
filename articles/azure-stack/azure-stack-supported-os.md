@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 171beb432a2c49f1896dc13208a3df1b922828c0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301277"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245688"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 
@@ -53,7 +53,7 @@ Edice Datacenter jsou dostupné na webu Marketplace pro stahování. Zákazníci
 Linuxové distribuce, které jsou uvedené jako dostupné na webu Marketplace zahrnují nezbytné Windows Azure Linux Agent (WALA). Používání vlastní image do služby Azure Stack, postupujte podle pokynů v [přidat Linuxové Image do služby Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Vlastní Image by měly být sestaveny pomocí nejnovější veřejné verze WALA nebo s verzí 2.2.20. Verze starší než 2.2.20 a mezi 2.2.20 a 2.2.35 (výhradní) nebude fungovat správně v Azure stacku. 
+> Vlastní Image by měly být sestaveny pomocí nejnovější veřejné verze WALA nebo s verzí 2.2.20. Verze starší než 2.2.20 a mezi 2.2.20 a 2.2.36 nemusí fungovat správně v Azure stacku. 
 >
 > [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 

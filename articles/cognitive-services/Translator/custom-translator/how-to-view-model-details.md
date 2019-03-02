@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 01d7d197983638e415798b0b73e7ac7168c8cfab
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9dcfb40835202849761d5d81728caf6be63d9641
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192696"
+ms.locfileid: "57215468"
 ---
 # <a name="view-model-details"></a>Zobrazení podrobností o modelu
 
 Na kartě modely v rámci projektu zobrazí všechny modely v daném projektu. Všechny modely školení, které projekt je uveden na této kartě.
 
-Pro každý model v projektu se zobrazí následující podrobnosti modelu.
+Pro každý model v projektu se zobrazí tyto podrobnosti.
 
 1.  Název modelu: Zobrazí název modelu z daného modelu.
 

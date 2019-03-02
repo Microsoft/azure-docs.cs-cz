@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab9bf868191238d933ae301b9a7df293842e8e36
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998429"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247048"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js (starší verze)
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js  
 
 ## <a name="overview"></a>Přehled
 MPEG-DASH je standard ISO pro adaptivní streamování obsahu videa, která nabízí významné výhody pro vývojáře, kteří chtějí dodávat vysoce kvalitní, adaptivní streamování výstup videa. S MPEG-DASH datový proud videa při automaticky upraví na nižší definici stane zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastaveno" videa, když hráč stáhne další několik sekund přehrávání (označuje se také jako ukládání do vyrovnávací paměti). Jak snižuje zahlcení sítě, přehrávače videa zase vrátit datový proud vyšší kvality. Tato schopnost přizpůsobit požadovanou šířku pásma výsledkem také rychlejší spouštění pro video. To znamená, že prvních pár sekund můžete přehrát v segmentu rychlé stažení nižší kvality a potom krok až vyšší Jakmile dostatečná kvalitního obsahu má byla uložená do vyrovnávací paměti.

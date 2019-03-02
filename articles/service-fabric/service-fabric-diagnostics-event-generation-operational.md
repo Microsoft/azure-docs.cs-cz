@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 51a334557ddfb57ceab318963e319fd046d3a703
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6aec4e4bbf0abcfb6201da50381b6697a47716fa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820038"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244583"
 ---
 # <a name="list-of-service-fabric-events"></a>Seznam událostí Service Fabric 
 
-Service Fabric poskytuje sadu události clusteru pro informování o stavu vašeho clusteru jako primární [události Service Fabric](service-fabric-diagnostics-events.md). Jsou založeny na rozhodnutích týkajících se správy od vlastníka nebo operátor clusteru nebo akce provádět na svých uzlech i cluster Service Fabric. Tyto události je přístupná pomocí konfigurace v několika způsoby, včetně konfigurace [Log Analytics pro cluster](service-fabric-diagnostics-oms-setup.md), nebo dotazování [Eventstoru](service-fabric-diagnostics-eventstore.md). Na počítačích s Windows získávají tyto události do protokolu událostí –, abyste si mohli zobrazit události Service Fabric v prohlížeči událostí. 
+Service Fabric poskytuje sadu události clusteru pro informování o stavu vašeho clusteru jako primární [události Service Fabric](service-fabric-diagnostics-events.md). Jsou založeny na rozhodnutích týkajících se správy od vlastníka nebo operátor clusteru nebo akce provádět na svých uzlech i cluster Service Fabric. Tyto události je přístupná pomocí konfigurace v několika způsoby, včetně konfigurace [protokoly Azure monitoru s vaším clusterem](service-fabric-diagnostics-oms-setup.md), nebo dotazování [Eventstoru](service-fabric-diagnostics-eventstore.md). Na počítačích s Windows získávají tyto události do protokolu událostí –, abyste si mohli zobrazit události Service Fabric v prohlížeči událostí. 
 
 Tady jsou některé vlastnosti tyto události
 * Každá událost se váže na konkrétní entitu v clusteru např. aplikace, služby, uzel, repliky.

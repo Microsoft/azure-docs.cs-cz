@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561871"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217032"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
 
-Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generovaných [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data obsahuje pro potřeby vaší vlastní vývoj. Odešlete tento protokol diagnostiky a [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
+Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generovaných [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data obsahuje pro potřeby vaší vlastní vývoj. Odešlete tento protokol diagnostiky a [protokoly Azure monitoru](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
 
 ## <a name="log-header"></a>Hlavička protokolu
 
@@ -135,7 +135,7 @@ Poslední část protokolu výkonu Intelligent Insights se vztahují na analýzu
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Můžete použít protokol výkonu inteligentních přehledů s [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní vývoj a provoz výstrahy a vytváření sestav funkce.
+Můžete použít protokol výkonu inteligentních přehledů s [protokoly Azure monitoru]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní vývoj a provoz výstrahy a vytváření sestav funkce.
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [Intelligent Insights](sql-database-intelligent-insights.md) koncepty.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116216"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241387"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric řeší problematiku vývoje a správy cloudových aplikací. Vývojáři a správci můžou vyhnout komplexním problémům s infrastrukturou a soustředit na implementaci důležitějších a náročných úloh, které jsou škálovatelné a spolehlivé.
@@ -87,7 +87,7 @@ Pracovní postup monitorování a diagnostiky se skládá ze tří kroků:
 
 2.  **Agregace událostí**: Vygenerovaných událostí potřeba shromažďovat a agregovat předtím, než je možné zobrazit. Většinou doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobně jako kolekce založené na agentovi protokolů) nebo [využitím EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu shromažďování protokolů).
 
-3.  **Analýza**: Události musí být vizualizovaný a v některých formátu umožňující analýzy a zobrazení k dispozici. Existuje několik platforem pro analýzy a vizualizace dat monitorování a diagnostiku. Doporučujeme [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) vzhledem k tomu, že se integrují s Service Fabric.
+3.  **Analýza**: Události musí být vizualizovaný a v některých formátu umožňující analýzy a zobrazení k dispozici. Existuje několik platforem pro analýzy a vizualizace dat monitorování a diagnostiku. Doporučujeme [protokoly Azure monitoru](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) vzhledem k tomu, že se integrují s Service Fabric.
 
 Můžete také použít [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) monitorování řadu prostředků Azure, na kterých je postavená clusteru Service Fabric.
 

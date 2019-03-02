@@ -1,45 +1,50 @@
 ---
-title: Nakonfigurovat domovskou stránku aplikace Azure IoT Central | Dokumentace Microsoftu
-description: Jako tvůrce zjistěte, jak nakonfigurovat domovskou stránku aplikace Azure IoT Central.
+title: Konfigurace Azure IoT Central řídicí panel aplikací | Dokumentace Microsoftu
+description: Jako tvůrce zjistěte, jak nakonfigurovat výchozí Azure IoT Central řídicí panel aplikací.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a03ac0ef66f4ffdce53d0bd2a35839bbe1615d0b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: a42e88de693f93e0407c185efc84d17a03d16116
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199081"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215842"
 ---
-# <a name="configuring-homepage"></a>Konfigurace domovské stránky
+# <a name="configure-the-application-dashboard"></a>Konfigurace řídicí panel aplikací
 
-Domovské stránce je stránka, která načte, když uživatelé, kteří mají přístup k aplikaci přejděte na adresu URL vaší aplikace. Pokud jste vybrali "Ukázkové společnosti Contoso" nebo "Ukázka Devkits" aplikace šablony při vytváření vaší aplikace, aplikace bude mít předdefinované domovské stránky. Pokud jste vybrali na druhé straně šablony aplikace "Aplikace vlastní", bude prázdné vaší domovské stránce.
+**Řídicí panel** je stránka, která načte, když uživatelé, kteří mají přístup k aplikaci přejděte na adresu URL vaší aplikace. Pokud jste vybrali, buď **ukázka Contoso** nebo **ukázka Devkits** aplikace šablony k vytvoření aplikace, vaše aplikace má předdefinovaného řídicího panelu. Pokud jste zvolili **vlastní aplikace** šablonu aplikace, řídicí panel je prázdný.
 
-Například tady je domovská stránka pro aplikace založené na šabloně "Ukázkové společnosti Contoso". Přizpůsobení domovské stránky pro vaši aplikaci, vyberte nejdřív **upravit** v pravém horním rohu. 
+> [!NOTE]
+> Uživatelé mohou také [vytváření vlastních osobních řídicích panelů](howto-personalize-dashboard.md) použít místo výchozí řídicí panel aplikací.
 
-![Domovská stránka pro aplikace založené na šabloně "Ukázkové společnosti Contoso"](media/howto-configure-homepage/image1.png)
+## <a name="add-tiles"></a>Přidat dlaždice
 
-Výběr **upravit**, knihovna řídicího panelu se otevře do panelu na levé straně. Existuje mnoho typů dlaždice a řídicí panel primitiva, které mohou být přidány k přizpůsobení domovské stránky.
+Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořenou z **ukázka Contoso** šablony. Chcete-li přizpůsobit výchozí řídicí panel pro vaši aplikaci, klikněte na tlačítko **upravit** v horní části stránky.
+
+![Řídicí panel pro aplikace založené na šabloně "Ukázkové společnosti Contoso"](media/howto-configure-homepage/image1.png)
+
+Kliknutím na **upravit**, otevře se panel Knihovna řídicího panelu. Knihovna obsahuje dlaždice a řídicí panel primitiv, můžete přizpůsobit řídicí panel.
 
 ![Knihovna řídicího panelu](media/howto-configure-homepage/image2.png)
 
-Například můžete přidat **nastavením a vlastnostem** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. V tomto případě jsme vybrali **nastavit teploty**. Kliknutím na **provádí** způsobí, že tato dlaždice se zobrazí na domovské stránce.
+Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení pro zařízení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **nastavit teploty** nastavení vybrané pro přidání k dlaždici. Klikněte na tlačítko **provádí** se uložit změnu na řídicí panel.
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media/howto-configure-homepage/image3.png)
 
-Nyní když operátor domovskou stránku, uvidí tuto dlaždici, které zobrazuje vlastnosti nebo nastavení zařízení:
+Teď když operátor zobrazí výchozí řídicí panel aplikací, se zobrazí nová dlaždice s **nastavit teploty** nastavení pro zařízení:
 
 ![Karta "Řídicí panel" se zobrazené nastavení a vlastnosti pro dlaždici](media/howto-configure-homepage/image4.png)
 
-Pohrajte si s různými Další dlaždice typy v knihovně se zjistit, jak můžete přizpůsobit domovskou stránku aplikace ještě více.
+Můžete prozkoumat další typy dlaždic v knihovně chcete zjistit, jak dále přizpůsobit výchozí řídicí panel aplikací.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak nakonfigurovat domovské stránce Azure IoT Central, můžete:
+Teď, když jste zjistili, jak Azure IoT Central řídicí panel aplikací výchozí konfigurace, můžete:
 
 > [!div class="nextstepaction"]
 > [Informace o přípravě a nahrávání imagí](howto-prepare-images.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9d4de2a8be13718f7989f064b76b586407ca3a48
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f0e4d1badd0ed992c96f6624813e575d0f286d8b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198605"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216794"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
@@ -34,9 +34,9 @@ Můžete přidat vlastní Image do následujícího umístění, v aplikaci Azur
 
     ![Obrázek na stránce správce aplikace](media/howto-prepare-images/applicationmanager.png)
 
-* Na domovské stránce
+* Řídicí panel aplikací
 
-    ![Obrázek na domovské stránce](media/howto-prepare-images/homepage.png)
+    ![Obrázek na řídicím panelu aplikací](media/howto-prepare-images/homepage.png)
 
 * Šablona zařízení
 
@@ -58,9 +58,9 @@ Následující tabulka shrnuje velikosti obrázků, které můžete použít:
 
 | Umístění | Velikosti |
 | -------- | ------ |
-| Application Manager | 268 x 160 px |
-| Šablona zařízení | 64 × 64 pixelů |
-| Domovská stránka a dlaždice řídicího panelu | Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px |
+| Správce aplikací | 268x160 px |
+| Šablona zařízení | 64x64 px |
+| Dlaždice řídicího panelu | Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px |
 
 Nejlepšího zobrazení v aplikaci byste měli vytvořit Image, které odpovídají dimenze je znázorněno v předchozí tabulce.
 
@@ -76,11 +76,11 @@ K nahrání obrázku na **Správce aplikací**, přejděte na **nastavení aplik
 
 Klikněte na dlaždici aplikace Image nahrajete svou image připravená (268 x 160 px) z místního počítače.
 
-### <a name="home-page"></a>Domovská stránka
+### <a name="application-dashboard"></a>Řídicí panel aplikací
 
-K nahrání obrázku na domovské stránce, přejděte **domovské stránky** vaší aplikace a klikněte na **upravit**. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel** vaší aplikace a klikněte na **upravit**. Musí být Tvůrce k dokončení této úlohy:
 
-![Nahrajte obrázek domovské stránky](media/howto-prepare-images/uploadhomepage.png)
+![Nahrajte obrázek řídicího panelu aplikací](media/howto-prepare-images/uploadhomepage.png)
 
 V části Konfigurace Image klikněte na dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 

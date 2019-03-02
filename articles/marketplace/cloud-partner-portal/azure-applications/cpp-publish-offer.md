@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fdca47877d4cb2192eef0a26448cd21e8afe4b77
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098217"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217933"
 ---
 # <a name="publish-azure-application-offer"></a>Publikovat nabídku aplikací Azure
 
@@ -52,6 +52,8 @@ Můžete monitorovat v procesu publikování **stav** kartu pro vaši nabídku v
 
 Po dokončení procesu publikování vaší nabídky nebude uvedené [kategorie aplikace Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
 
+>[!Note]
+>Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
 
 ## <a name="errors-and-review-feedback"></a>Chyby a zpětné vazby z revize
 

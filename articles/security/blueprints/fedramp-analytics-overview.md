@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0e5beb89f3ea2a5c14fc56af35112710964bdb16
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e3bfc3d0f444bece0afe7b7f5bcdac343a693a13
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406564"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243699"
 ---
-# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Dodržování předpisů a zabezpečení Azure: Analýza pro FedRAMP
+# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: Analýza pro FedRAMP
 
 ## <a name="overview"></a>Přehled
 
@@ -37,7 +37,7 @@ Jakmile se data odeslán do databáze SQL Azure a školení služba Azure Analys
 
 Celé řešení je postavené na službě Azure Storage, které zákazníci účet nakonfigurovat z portálu Azure Portal. Azure Storage šifruje všechna data pomocí šifrování služby Storage k údržbě důvěrnost dat v klidovém stavu.  Geografické redundantní úložiště (GRS) zajišťuje, že nežádoucí událost ve primárního datového centra zákazníka nebude mít za následek ztrátu dat jako druhá kopie se uloží v samostatném umístění stovky mil okamžitě.
 
-Pro zvýšení zabezpečení Tato architektura slouží ke správě prostředků pomocí Azure Active Directory a Azure Key Vault. Stav systému je monitorovat prostřednictvím Log Analytics a Azure Monitor. Zákazníci nakonfigurovat i služby monitorování pro zachycení protokolů a zobrazení stavu systému v řídicím panelu jeden, lze snadno procházet.
+Pro zvýšení zabezpečení Tato architektura slouží ke správě prostředků pomocí Azure Active Directory a Azure Key Vault. V nástroji Azure Monitor se monitoruje stav systému. Zákazníci nakonfigurovat i služby monitorování pro zachycení protokolů a zobrazení stavu systému v řídicím panelu jeden, lze snadno procházet.
 
 Azure SQL Database je obecně spravované přes SQL Server Management Studio (SSMS), který se spouští z místního počítače nakonfigurovaná pro přístup k Azure SQL Database prostřednictvím zabezpečeného připojení VPN nebo ExpressRoute. **Azure doporučuje nakonfigurovat připojení VPN nebo Azure ExpressRoute pro správu a data importovat do skupiny prostředků odkaz na architekturu.**
 
@@ -63,8 +63,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 - Službu Azure Analysis Services
 - Azure Active Directory
 - Azure Key Vault
-- Azure Log Analytics
-- Azure Monitor
+- Azure Monitor (logs)
 - Azure Storage
 - Síť ExpressRoute nebo VPN Gateway
 - Řídicí panel Power BI
@@ -74,18 +73,18 @@ Následující část podrobně popisuje prvky k vývoji a implementaci.
 
 ![alternativní text](images/fedramp-analytics-components.png?raw=true "Analytics pro FedRAMP diagram komponent")
 
-**Služba Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) řešení pro spouštění malé části kódu v cloudu prostřednictvím Většina programovacích jazyků. Funkce v tomto řešení integrovat se službou Azure Storage k automaticky o přijetí změn zákaznických dat do cloudu, usnadňuje integraci s dalšími službami Azure. Funkce se snadno škálovatelnou a pouze vám být naúčtovány náklady při jejich spuštění.
+**Služba Azure Functions**: [Služba Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) řešení pro spouštění malé části kódu v cloudu prostřednictvím Většina programovacích jazyků. Funkce v tomto řešení integrovat se službou Azure Storage k automaticky o přijetí změn zákaznických dat do cloudu, usnadňuje integraci s dalšími službami Azure. Funkce se snadno škálovatelnou a pouze vám být naúčtovány náklady při jejich spuštění.
 
-**Služba Azure Analysis**: [službu Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) poskytuje modelování dat organizace a integrace se službami datové platformy Azure. Azure Analysis Service zrychluje procházení velkých objemů dat díky kombinaci dat z více zdrojů do jednoho datového modelu.
+**Služba Azure Analysis Service**: [Služba Azure Analysis](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) poskytuje modelování dat organizace a integrace se službami datové platformy Azure. Azure Analysis Service zrychluje procházení velkých objemů dat díky kombinaci dat z více zdrojů do jednoho datového modelu.
 
 **Power BI**: [Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) poskytuje analýzy a generování sestav funkce pro zákazníky, kteří pokusu pull lepší přehled o mimo svoje data zpracovávat prostřednictvím.
 
 ### <a name="networking"></a>Sítě
-**Skupiny zabezpečení sítě**: [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) jsou nastavené ke správě přenosů dat, zaměřuje na nasazených prostředků a služeb. Skupiny zabezpečení sítě jsou nastaveny na odepřít výchozí schéma a pouze povolit provoz, který je obsažen v předem nakonfigurovaných přístupu ovládacího prvku seznam (ACL).
+**Skupiny zabezpečení sítě**: [Skupiny Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) jsou nastavené ke správě přenosů dat, zaměřuje na nasazených prostředků a služeb. Skupiny zabezpečení sítě jsou nastaveny na odepřít výchozí schéma a pouze povolit provoz, který je obsažen v předem nakonfigurovaných přístupu ovládacího prvku seznam (ACL).
 
 Skupiny zabezpečení sítě mají konkrétní porty a protokoly, otevřete řešení mohli pracovat zabezpečeně a správně. Kromě toho jsou povoleny následující konfigurace pro jednotlivé skupiny NSG:
   - [Diagnostické protokoly a události](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) jsou povolené a uložená v účtu úložiště
-  - [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) je připojen k této skupině diagnostické protokoly.
+  - [Protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) je připojen k této skupině diagnostické protokoly.
 
 ### <a name="data-at-rest"></a>Neaktivní uložená data
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
@@ -110,17 +109,17 @@ Architektura chrání data při nečinnosti pomocí šifrování, auditování d
 
 ### <a name="logging-and-audit"></a>Protokolování a auditování
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) generuje veškeré zobrazení monitorovaných dat, včetně protokolů aktivit, metrik a diagnostických dat, takže se zákazníci můžou vytvořit ucelený přehled o stavu systému.  
-[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) poskytuje rozsáhlou protokolování systémových a uživatelských aktivit a také stav systému. Shromažďuje a analyzuje data vygenerovaná prostředky v Azure a místním prostředí.
-- **Protokoly aktivit**: [protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného.
-- **Diagnostické protokoly**: [diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) zahrnout všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows a úložiště objektů Blob v Azure, tabulky a fronty protokoly.
-- **Brána firewall protokoly**: The Application Gateway poskytuje úplné diagnostiky a přístup k protokolům. Protokoly brány firewall jsou dostupné pro prostředky povoleným waf služby Application Gateway.
-- **Archivace protokolu**: všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci pomocí dobu definované uchování o délce 2 dny. Tyto protokoly se připojit ke službě Azure Log Analytics pro zpracování, ukládání a vytváření sestav na řídicím.
+[Protokoly Azure monitoru](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) poskytuje rozsáhlou protokolování systémových a uživatelských aktivit a také stav systému. Shromažďuje a analyzuje data vygenerovaná prostředky v Azure a místním prostředí.
+- **Protokoly aktivit**: [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného.
+- **Diagnostické protokoly**: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) zahrnout všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows a úložiště objektů Blob v Azure, tabulky a fronty protokoly.
+- **Brána firewall protokoly**: Application Gateway poskytuje úplnou diagnostiku a přístup k protokolům. Protokoly brány firewall jsou dostupné pro prostředky povoleným waf služby Application Gateway.
+- **Archivace protokolu**: Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci pomocí dobu definované uchování o délce 2 dny. Tyto protokoly se připojit k protokoly Azure monitoru pro zpracování, ukládání a sestavy řídicího panelu.
 
 Kromě toho jsou součástí této architektury řešení následující monitorování:
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): řešení Azure Automation ukládá, spouští a spravuje sady runbook.
--   [Zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): řídicí panel zabezpečení a Audit poskytuje podrobný pohled na stav zabezpečení prostředků tím, že poskytuje metriky na zabezpečení domény, významné problémy, detekce, analýza hrozeb a běžné dotazy na zabezpečení.
--   [Posouzení SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): řešení SQL Health Check posuzuje v pravidelných intervalech rizika a stav prostředí serveru a poskytuje zákazníkům s uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
--   [Protokoly aktivit Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): The Activity Log Analytics řešení pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure zákazníka.
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Řešení služby Azure Automation ukládá, spouští a spravuje sady runbook.
+-   [Zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Řídicí panel zabezpečení a Audit poskytuje podrobný pohled na stav zabezpečení prostředků tím, že poskytuje metriky na zabezpečení domény, významné problémy, detekce, analýza hrozeb a běžné dotazy na zabezpečení.
+-   [Posouzení SQL](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Řešení SQL Health Check posuzuje v pravidelných intervalech rizika a stav prostředí serveru a poskytuje zákazníkům s uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
+-   [Protokoly aktivit Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Řešení Activity Log Analytics pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure zákazníka.
 
 ### <a name="identity-management"></a>Správa identit
 -   Používání služby Azure AD se provádí ověřování do aplikace. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Kromě toho šifrování sloupců databáze používá Azure AD k ověření aplikace ke službě Azure SQL Database. Další informace najdete v tématu Jak [chránit citlivá data ve službě SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
@@ -142,25 +141,25 @@ Další informace o používání funkcí zabezpečení služby Azure SQL Databa
 
 ### <a name="additional-services"></a>Další služby
 #### <a name="iaas---vm-vonsiderations"></a>IaaS – vonsiderations virtuálního počítače
-Toto řešení PaaS nejsou sestavené všechny virtuální počítače Azure IaaS. Zákazník může vytvořit virtuální počítač Azure spustit mnoho z těchto služeb PaaS. V takovém případě konkrétní funkce a služby pro provozní kontinuitu a Log Analytics může využít:
+Toto řešení PaaS nejsou sestavené všechny virtuální počítače Azure IaaS. Zákazník může vytvořit virtuální počítač Azure spustit mnoho z těchto služeb PaaS. V takovém případě může být využít konkrétní funkce a služby pro provozní kontinuitu a protokoly Azure monitoru:
 
 ##### <a name="business-continuity"></a>Kontinuita podnikových procesů
-- **Vysoká dostupnost**: Server úlohy jsou seskupené v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Nejméně jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, splňuje 99,95 % Azure SLA.
+- **Vysoká dostupnost**: Jiné úlohy serveru jsou seskupené v [dostupnosti](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k zajištění vysoké dostupnosti virtuálních počítačů v Azure. Nejméně jeden virtuální počítač je k dispozici během událostí plánované i neplánované údržby, splňuje 99,95 % Azure SLA.
 
-- **Trezor služby Recovery Services**: [trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) jsou uloženy zálohovaných dat a chrání všechny konfigurace virtuálních počítačů Azure v této architektuře. Pomocí trezoru služby Recovery Services zákazníci obnovit soubory a složky z virtuálního počítače IaaS bez obnovení virtuálního počítače umožňuje rychlejší obnovení.
+- **Trezor služby Recovery Services**: [Trezor služby Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) jsou uloženy zálohovaných dat a chrání všechny konfigurace virtuálních počítačů Azure v této architektuře. Pomocí trezoru služby Recovery Services zákazníci obnovit soubory a složky z virtuálního počítače IaaS bez obnovení virtuálního počítače umožňuje rychlejší obnovení.
 
 ##### <a name="monitoring-solutions"></a>Řešení monitorování
--   [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): The Active Directory Health řešení Check posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazený server infrastruktury.
--   [Posouzení antimalwaru](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): The Antimalwarovým řešením hlásí stav malwaru, ohrožení a ochrana.
--   [Správa aktualizací](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): řešení Update Management umožňuje správu zákazníka aktualizace zabezpečení operačního systému, včetně proces instalace požadovaných aktualizací a stav dostupných aktualizací.
--   [Stav agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): řešení Agent Health sestavy, kolik agentů je nasazených a zeměpisné rozšíření, jakož i kolik agentů, které jsou reagovat a počet agentů, které jsou odesílání provozních dat.
--   [Sledování změn](https://docs.microsoft.com/azure/automation/automation-change-tracking): řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
+-   [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Kontrola stavu služby Active Directory řešení posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.
+-   [Posouzení antimalwaru](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Antimalwarové řešení hlásí stav malwaru, hrozeb a ochranu.
+-   [Správa aktualizací](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Řešení Update Management umožňuje správu zákazníka aktualizace zabezpečení operačního systému, včetně proces instalace požadovaných aktualizací a stav dostupných aktualizací.
+-   [Stav agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Řešení Agent Health sestavy, kolik agentů je nasazených a zeměpisné rozšíření, jakož i kolik agentů, které jsou reagovat a počet agentů, které jsou odesílání provozních dat.
+-   [Sledování změn](https://docs.microsoft.com/azure/automation/automation-change-tracking): Řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
 
 ##### <a name="security"></a>Zabezpečení
-- **Ochrana proti malwaru**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Virtual Machines poskytuje možnost ochrany v reálném čase, že pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software, se dají konfigurovat výstrahy Pokud známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na chráněných virtuálních počítačů.
+- **Ochrana proti malwaru**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Virtual Machines poskytuje funkce ochrany v reálném čase, který pomáhá zjistit a odebrat viry, spyware a jiný škodlivý software, se dají konfigurovat výstrahy, když známé škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit na chráněných virtuálních počítačů.
 - **Správa oprav**: Windows virtuálních počítačů nasazených jako součást této referenční architektury jsou standardně nakonfigurovaní tak příjem automatických aktualizací ze služby Windows Update. Toto řešení zahrnuje také [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) službu, jejímž prostřednictvím je možné vytvořit aktualizované nasazení oprava virtuálním počítačům v případě potřeby.
 
-#### <a name="azure-commercial"></a>Komerční Azure
+#### <a name="azure-commercial"></a>Azure Commercial
 I když tato data analytics architektura není určen pro nasazení [Azure Commercial](https://azure.microsoft.com/overview/what-is-azure/) prostředí, podobně jako cíle lze dosáhnout prostřednictvím služeb popsaných v této referenční architektuře, stejně jako Další služby k dispozici pouze v Azure komerčním prostředí. Mějte prosím na paměti, že Azure Commercial udržuje FedRAMP JAB P-ATO na střední úrovni dopad povolení státní správy USA a partnerům, aby nasazení mírně citlivé informace do cloudu, využívat Azure komerčním prostředí.
 
 Komerční Azure nabízí širokou škálu analytické služby pro přesun přehledů z velkého objemu dat:

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010612"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243886"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živé události
 
@@ -33,7 +33,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá ud
 | Vstup s jednou přenosovou rychlostí je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení příspěvek informačního kanálu |4K (4096 × 2160 na 60 snímků za sekundu) |1080p (1920 × 1088 na 30 snímků za sekundu)|
 | Doporučená maximální vrstvy v příspěvku informačního kanálu|Až 12|Jedno audio|
-| Maximální vrstvy ve výstupu| Stejné jako vstup|Až 6|
+| Maximální vrstvy ve výstupu| Stejné jako vstup|Až 6 (viz níže přednastavení systému)|
 | Maximální agregovaná šířka pásma příspěvku informačního kanálu|60 MB/s|neuvedeno|
 | Maximální přenosovou rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
 | Podpora pro více jazyka zvukové stopy|Ano|Ne|
@@ -54,6 +54,30 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů živá ud
 | Podpora pro vstupní GOPs nerovnoměrné|Ano|Ne – vstup musí opravily GOP doba trvání|
 | Podpora pro vstup míra proměnné rámce|Ano|Ne – vstup musí být stanovena snímkovou frekvenci. Malé změny jsou například tolerovat při vysoké pohybu scény. Ale příspěvek informačního kanálu nelze vyřadit, frekvence snímků (například do 15 snímků za sekundu).|
 | Auto přístupnými živé události při zadání kanálu dojde ke ztrátě|Ne|Po 12 hodinách, pokud neexistuje žádný LiveOutput spuštění|
+
+## <a name="system-presets"></a>Předvolby systému
+
+Při použití kódování v reálném čase (živá událost nastavena na **standardní**), použitá předvolba kódování definuje, jak příchozím datovém proudu je zakódován do více přenosových rychlostí nebo vrstvy. V současné době jediná povolená hodnota je přednastavený kontext *Default720p* (výchozí).
+
+**Default720p** bude kódování videa do následujících 6 vrstev.
+
+### <a name="output-video-stream"></a>Výstupní Stream videa
+
+| S přenosovou rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupní Stream |
+| --- | --- | --- | --- | --- | --- |
+| 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Vysoký |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Vysoký |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Vysoký |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Vysoký |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Vysoký |Video_340x192_200kbps |
+
+> [!NOTE]
+> Pokud musíte použít vlastní předvolba živé kódování, obraťte se prosím amshelp@microsoft.com. Měli byste určit požadovanou tabulku rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva na 720p a maximálně 6 vrstvy.
+
+### <a name="output-audio-stream"></a>Výstup zvukový Stream
+
+Zvuk je zakódován do stereo AAC-LC na 128 kb/s, vzorkovací frekvenci 48 kHz.
 
 ## <a name="next-steps"></a>Další postup
 

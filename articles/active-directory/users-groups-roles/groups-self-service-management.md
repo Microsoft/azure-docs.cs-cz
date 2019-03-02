@@ -10,25 +10,35 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: get-started-article
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059746d0e3a277016f5d6b98fe0d0f90c9ee2b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 211c519668d26a9972f7c34fbe8cce766936df96
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217985"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215128"
 ---
-# <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Nastavení služby Azure Active Directory pro samoobslužnou správu skupin
+# <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
 
-Vaši uživatelé můžou vytvářet a spravovat své vlastní skupiny zabezpečení nebo skupiny Office 365 ve službě Azure Active Directory (Azure AD). Uživatelé mohou také požádat o členství ve skupině zabezpečení nebo ve skupině Office 365. Vlastník skupiny pak může členství schválit nebo odepřít. Každodenní řízení členství ve skupině můžete delegovat na uživatele, kteří chápou obchodní kontext takového členství. Funkce samoobslužné správy skupin jsou dostupné jenom pro skupiny zabezpečení a skupiny Office 365. Nejsou dostupné pro skupiny zabezpečení s povoleným e-mailem a pro distribuční seznamy.
+Můžete povolit uživatelům vytvářet a spravovat své vlastní skupiny zabezpečení nebo skupiny Office 365 ve službě Azure Active Directory (Azure AD). Vlastník skupiny můžete schválit nebo odmítnout žádosti o členství a můžete delegovat řízení členství ve skupině. Funkce Samoobslužné skupiny správy nejsou dostupné pro skupiny zabezpečení s povoleným e-mailem a distribuční seznamy. 
 
-Samoobslužná správa skupin služby dva scénáře: 
+## <a name="self-service-group-membership-defaults"></a>Výchozí nastavení samoobslužné skupiny členství
 
-* **Delegovaná správa skupin** – příkladem je správce, který spravuje přístup k aplikaci SaaS, kterou používá jeho společnost. Správa těchto přístupových práv je čím dál náročnější, takže správce požádá majitele firmy, aby vytvořil novou skupinu. Správce přiřadí nové skupině přístup k aplikaci a do této skupiny přidá všechny uživatele, kteří už přístup k aplikaci mají. Majitel firmy potom může přidat další uživatele a tito uživatelé budou automaticky přiřazeni k aplikaci. Kvůli správě přístupu pro uživatele tak majitel firmy nemusí čekat na správce. Pokud správce udělí stejné oprávnění správci v jiné firemní skupině, potom tato osoba může spravovat také přístup svých vlastních uživatelů. Majitel firmy ani správce nemůžou zobrazit nebo spravovat uživatele toho druhého. Správce může stále vidět všechny uživatele, kteří mají přístup k aplikaci, a v případě potřeby je může zablokovat.
+Když se vytvoří skupiny zabezpečení na webu Azure Portal nebo pomocí prostředí PowerShell Azure AD, můžete pouze vlastníci skupiny aktualizovat členství. Skupiny zabezpečení vytvořené v [přístupového panelu](https://account.activedirectory.windowsazure.com/r#/joinGroups) a všechny skupiny Office 365 jsou k dispozici pro připojení pro všechny uživatele, ať už schválené vlastníkem nebo schvalovány automaticky. Na přístupovém panelu můžete změnit členství možnosti při vytváření skupiny.
+
+Skupiny vytvořené v | Chování výchozí skupiny zabezpečení | Výchozí chování skupiny Office 365
+------------------ | ------------------------------- | ---------------------------------
+[Azure AD PowerShell](groups-settings-cmdlets.md) | Pouze vlastníci mohou přidávat členy<br>Viditelný, ale není k dispozici pro připojení v přístupovém panelu | Otevřít do ní přidat všichni uživatelé
+[Azure Portal](https://portal.azure.com) | Pouze vlastníci mohou přidávat členy<br>Viditelný, ale není k dispozici pro připojení v přístupovém panelu<br>Vlastník není přiřazen automaticky při vytvoření skupiny | Otevřít do ní přidat všichni uživatelé
+[Přístupový panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Otevřít do ní přidat všichni uživatelé<br>Možnosti členství můžete změnit po vytvoření skupiny | Otevřít do ní přidat všichni uživatelé<br>Možnosti členství můžete změnit po vytvoření skupiny
+
+## <a name="self-service-group-management-scenarios"></a>Scénáře správy samoobslužné skupiny
+
+* **Delegovaná správa skupin** – příkladem je správce, který spravuje přístup k aplikaci SaaS, kterou používá jeho společnost. Správa těchto přístupových práv je čím dál náročnější, takže správce požádá majitele firmy, aby vytvořil novou skupinu. Správce přiřadí nové skupině přístup k aplikaci a do této skupiny přidá všechny uživatele, kteří už přístup k aplikaci mají. Majitel firmy potom může přidat další uživatele a tito uživatelé budou automaticky přiřazeni k aplikaci. Kvůli správě přístupu pro uživatele tak majitel firmy nemusí čekat na správce. Pokud správce udělí stejné oprávnění správci v jiné firemní skupině, potom tato osoba může spravovat také přístup pro členy skupiny. Majitel firmy ani správce můžete zobrazit nebo spravovat uživatele toho druhého členství ve skupinách. Správce může stále vidět všechny uživatele, kteří mají přístup k aplikaci, a v případě potřeby je může zablokovat.
 * **Samoobslužná správa skupin** – příkladem tohoto scénáře jsou dva uživatelé, kteří mají nezávisle nastavené weby SharePoint Online. Oba chtějí týmu toho druhého poskytnout přístup na svůj web. Aby toho dosáhli, můžou vytvořit jednu skupinu v Azure AD a potom v SharePointu Online každý z nich vybere tu skupinu, které chce poskytnout přístup na svůj web. Pokud chce uživatel získat přístup, požádá o něj na přístupovém panelu a po schválení získá přístup k oběma webům SharePoint Online automaticky. Později se jeden z nich rozhodne, že všichni uživatelé s přístupem k webu by měli získat přístup i k určité aplikaci SaaS. Správce aplikace SaaS může přidat přístupová práva k aplikacím na web SharePoint Online. Od toho okamžiku získají veškeré jím schválené žádosti přístup na oba weby SharePoint Online a také k této aplikaci SaaS.
 
 ## <a name="make-a-group-available-for-user-self-service"></a>Zpřístupnění skupiny pro uživatelskou samoobsluhu

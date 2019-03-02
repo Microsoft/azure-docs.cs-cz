@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 25349593bd45949f662581160fa23d30b4682710
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894152"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214193"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k tržišti Marketplace
 
@@ -66,10 +66,11 @@ Pomocí webu Azure Marketplace najdou zákazníci technické aplikace vytvořen�
 
 Nabídky Azure Marketplace se dají zakoupit prostřednictvím:
 
-* [webové prodejní místo](https://azuremarketplace.microsoft.com/marketplace/apps).
-* [Microsoft Azure Management portal](https://portal.azure.com/), nebo prostřednictvím [Azure Marketplace rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* [webové prodejní místo](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Microsoft Azure Management portal](https://portal.azure.com/), nebo prostřednictvím [Azure Marketplace rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-Poznámka: Předplacené kredity a další formy peněžních závazků nejde použít k úhradě licenční poplatky za software, ale je možné platit poplatky za související využití Azure.  Výjimky jsou uvedeny v [peněžního závazku Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+>[!Note]
+>Předplacené kredity a další formy peněžních závazků nejde použít k úhradě licenční poplatky za software, ale je možné platit poplatky za související využití Azure.  Výjimky jsou uvedeny v [peněžního závazku Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
 **Můžu si zvolit oblast které oblasti Microsoft Azure k nasazení koupenou na Azure Marketplace?**
 
@@ -93,9 +94,11 @@ V současné době jsou k dispozici prostřednictvím zákazníky Azure CSP a Op
 
 **Které země jsou podporovány pro zakoupení aplikace a služby prodávané nebo zřizované prostřednictvím Azure Marketplace?**
 
-Azure Marketplace je dostupný pro zákazníky Microsoft Azure v těchto zemích:
+Azure Marketplace je dostupný pro zákazníky Microsoft Azure v zemích uvedených v [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy).
 
-Alžírsko, Argentina, Austrálie, Bahrajn, Belgie, Bělorusko, Brazílie, Bulharsko, Černá Hora, Česká republika, Dánsko, Dominikánská republika, Egypt, Ekvádor, Estonsko, Filipíny, Finsko, Francie, Guatemala, Hongkong, Chile, Chorvatsko, Indie, Indonésie, Irsko, Island, Itálie, Izrael, Japonsko, Jižní Afrika, Jižní Korea, Jordánsko, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Kostarika, Kuvajt, Kypr, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Maďarsko, Makedonie, Malajsie, Malta, Maroko, Mexiko, Německo, Nigérie, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Polsko, Portoriko, Portugalsko, Rakousko, Rumunsko, Rusko, Řecko, Salvador, Saúdská Arábie, Singapur, Slovensko, Slovinsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Španělsko, Švédsko, Švýcarsko, Thajsko, Tchaj-wan, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Uruguay, USA a Venezuela.
+**Jaké měny se podporuje Azure Marketplace?**
+
+Transakce mohou být prováděna v 17 měnách následující: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Nasazení řešení z Azure Marketplace
 
@@ -180,17 +183,17 @@ Ne. Vydavatele, který vlastní řešení na webu Azure Marketplace můžete nas
 
 **Jak zaplatím za tato předplatná? Nákupy na Azure Marketplace se nezobrazují na faktuře za Azure nebo existuje jiná faktura?**
 
-Nákupy na Azure Marketplace dědit stejný způsob platby jako má předplatné Azure.  Se účtují odděleně od Azure využití Pokud nemají povolen spotřebovávání finančních závazků.
+MOSP - [Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) zákazníky (tj přímo na webu) se poplatek strhávat z platební karty, které uvedenou v profilu předplatného Azure. Pokud nemáte platební karty strženy, pak není možné koupit na Azure Marketplace. V tomto případě jste získali zvláštní výjimku a poplatky za Azure vám místo toho fakturujeme.
 
-MOSP - zákazníkům programu Microsoft Online Subscription Program (přímo na webu) se poplatek strhávat z platební karty, které uvedenou v profilu předplatného Azure. Pokud zákazník nemá platební karty strženy (zvláštní výjimku a Azure účtuje fakturujeme), že nelze nakupovat na Azure Marketplace.
-
-Zákazníci s Enterprise Agreement (EA) se účtují podle příslušné smlouvy EA. Konkrétní nabídky Azure Marketplace uvedené v [peněžního závazku Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) se nejdřív odečtou z všechny dostupné prostředky peněžních závazků a potom fakturovat jako Nadlimitní využití na jedné čtvrtletní faktuře. Nepřímým zákazníkům EA, education a government zákazníkům se účtuje podle řešení poskytovatele LSP (Licensing).
+Zákazníci s Enterprise Agreement (EA) se účtují podle příslušné smlouvy EA. Konkrétní nabídky Azure Marketplace, které jsou zde uvedeny jsou nejprve odečte od všechny dostupné prostředky peněžních závazků a potom fakturovat jako Nadlimitní využití na jedné čtvrtletní faktuře. Nepřímým zákazníkům EA, education a government zákazníkům se účtuje podle řešení poskytovatele LSP (Licensing).
 
 **Jak lze zobrazit svého Podrobnosti předplatného Azure Marketplace a fakturace?**
 
-MOSP - zákazníkům programu Microsoft Online Subscription Program (web direct) můžete zobrazit podrobnosti předplatného Marketplace v části "Marketplace" nabídky ve fakturačním portálu Azure. Zákazníci, kteří zakoupili virtuální počítače z webu Marketplace můžete zobrazit výši svých odhadovaných poplatků na portálu Microsoft Azure Management portal.
+MOSP - [Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) zákazníků (web direct) můžete zobrazit podrobnosti o nákupu Marketplace v kartě faktury Cost Management a fakturace části portálu pro správu Azure.
 
-Přímí zákazníci se smlouvou Enterprise (EA) se na podrobnosti předplatného Marketplace můžou podívat na kartě Azure Marketplace v zobrazení správy fakturace a účtu na portálu Enterprise. Poznámka: EA nepřímí zákazníci uvidí jenom v nabídce a využití informací. Podrobnosti o cenách nejsou k dispozici na webu Enterprise Portal.
+Zákazníci s Enterprise Agreement (EA) můžete zobrazit podrobnosti o nákupu Marketplace v kartě faktury Cost Management a fakturace části portálu pro správu Azure.
+
+Partnery cloud Solution Provider (CSP) můžete zobrazit podrobnosti o nákupu Marketplace pro každého zákazníka v partnerském centru na kartě Historie objednávek po výběru společnosti v zobrazení pro zákazníky.
 
 **Jak zruším doplněk k webu Azure Marketplace k virtuálnímu počítači Azure?**
 
@@ -198,9 +201,9 @@ Protože doplněk přidružený k virtuálního počítače Azure (VM), chcete-l
 
 **Jak často se fakturují pro nákupy na Azure Marketplace?**
 
-Zákazníci se smlouvou Enterprise, pro [určité služby uvedené](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/), napřed prostředky k dispozici peněžních závazků snížené o celkové náklady na tyto služby v měsíci, kdy se využijí. Všechny nabídky Azure Marketplace, které se neodečítají z peněžního závazku využívání služeb, jsou měsíční poplatky za uplynulé čtvrtletí.
+Zákazníci se smlouvou Enterprise, pro určité služby uvedené, nejprve máte dostupné prostředky peněžních závazků sníží o celkové náklady na tyto služby v měsíci, kdy se využijí. Všechny nabídky Azure Marketplace, které se neodečítají z peněžního závazku využívání služeb, jsou měsíční poplatky za uplynulé čtvrtletí. Roční předplatná SaaS se účtují po celý rok služby.
 
-MOSP, který je přímo na webu zákazníků, jsou měsíční poplatek strhávat z platební karty, které uvedenou v profilu předplatného Azure.
+MOSP - [Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) zákazníkům se účtuje měsíčně proti strhávat z platební karty, které uvedenou v profilu předplatného Azure. Roční předplatná SaaS se účtují po celý rok služby.
 
 **Jak si můžu přesunout že nákupy na Azure Marketplace z předplatného MOSP na předplatné s přímým přístupem Enterprise Agreement (EA)?**
 
@@ -246,7 +249,7 @@ Veškerou technickou podporu produktů, obraťte se na vydavatele zprostředkova
 
 **Pokud nejsem spokojeni, můžete nákup vrátit?**
 
-Nákupy na Azure Marketplace se nedají vrátit, ale můžete je zrušit nebo odstranit. Když předplatné zrušíte nebo odstraníte, se neúčtuje už další měsíce.
+Nákupy [Azure Marketplace](https://azuremarketplace.microsoft.com/) nedají vrátit, ale můžete je zrušit nebo odstranit. Využití se účtují na základě nabídky podle využití, tak když se zastaví, poplatky za také zastavit. Předplatná se zruší a nebude nic účtováno za v aktuálním fakturačním období. Pokud předplatné se zrušil krátce po nákupu (24 hodin, pro měsíční a roční 14 dnů), je k dispozici si vrátit celou částku.
 
 Zákazníci musí vydavatele kontaktovat přímo v případě technických problémů týkajících se jejich služby webu Marketplace nebo nákupu. Informace o kontaktu vydavatele a/nebo odkaz na web podpory najdete na stránce s podrobnostmi řešení na webu Azure Marketplace.
 
@@ -335,6 +338,10 @@ Při nahrávání seznam, zkušební verze nebo BYOL (Používání vlastní lic
 **Platí pro nákupy na webu Azure Marketplace nějaké transakční poplatky?**
 
 Řešení licence, které jste si koupili prostřednictvím webu Azure Marketplace, výnosů pro licence na software jsou rozděleny mezi vydavatele a Microsoftu.  To se provádí v souladu s podmínkami a podmínky v [smlouva s vydavatelem Marketplace](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf). Řešení BYOL (Používání vlastní licence) vydavatelů nejsou spojené transakční poplatky.
+
+**Co je standardní smlouvy?**
+
+Microsoft nabízí standardní smluvní podmínky, které vydavatele můžete vybrat možnost využít, tak, aby zákazníci mají zjednodušený zajišťování a právní revizní proces.
 
 **Kde najdu pokyny pro integraci aplikace s Azure Active Directory (AAD)?**
 
@@ -490,6 +497,35 @@ Pro zákazníky Azure CSP a Open jsou teď dostupné jenom bezplatné nabídky a
 Azure Marketplace je dostupný pro zákazníky Microsoft Azure v těchto zemích:
 
 Alžírsko, Argentina, Austrálie, Bahrajn, Belgie, Bělorusko, Brazílie, Bulharsko, Černá Hora, Česká republika, Dánsko, Dominikánská republika, Egypt, Ekvádor, Estonsko, Filipíny, Finsko, Francie, Guatemala, Hongkong, Chile, Chorvatsko, Indie, Indonésie, Irsko, Island, Itálie, Izrael, Japonsko, Jižní Afrika, Jižní Korea, Jordánsko, Kanada, Katar, Kazachstán, Keňa, Kolumbie, Kostarika, Kuvajt, Kypr, Lichtenštejnsko, Litva, Lotyšsko, Lucembursko, Maďarsko, Makedonie, Malajsie, Malta, Maroko, Mexiko, Německo, Nigérie, Nizozemsko, Norsko, Nový Zéland, Omán, Pákistán, Panama, Paraguay, Peru, Polsko, Portoriko, Portugalsko, Rakousko, Rumunsko, Rusko, Řecko, Salvador, Saúdská Arábie, Singapur, Slovensko, Slovinsko, Spojené arabské emiráty, Spojené království, Srbsko, Srí Lanka, Španělsko, Švédsko, Švýcarsko, Thajsko, Tchaj-wan, Trinidad a Tobago, Tunisko, Turecko, Ukrajina, Uruguay, USA a Venezuela.
+
+**Jak definovat Moje geografickou dostupností umožňující prodej v různých zemích?**
+
+1.  Portál Cloud Partner přejděte na skladovou Položku, ke kterému chcete přidat nové země.  V rámci "Podrobné údaje SKU" Přejít na "Země/oblast dostupnosti" a klikněte na tlačítko "Vybraných oblastech."
+
+    ![Vybrat oblasti](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+
+1.  Seznam objeví se všechny dostupné země prodávat.  Klikněte na zaškrtávací políčko vedle každé země, kterou chcete zpřístupnit tato skladová položka. Klikněte na tlačítko "OK".
+
+    ![Vyberte zemi seznamu](media/marketplace-publishers-guide/FAQ-select-countries.png)
+
+1.  Nakonec změny se použijí pro živé nabídky, klikněte na možnost "Publikovat".  
+
+>[!Note]
+>To bude trvat 24 hodin, aby se změny projevily.
+
+<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
+
+**Jak změnit vydavatel geografické dostupnosti pro existující nabídky?**
+
+Vydavatele můžete upravit stávající nabídky, vyberte nové země a použití funkce ke stažení a nahrání tabulky k ocenění.
+
+**V zemích, které mohou zákazníci zakoupit nabídky na webu Azure Marketplace?**
+
+Azure Marketplace podporuje 141 dodavatele geografické oblasti definované fakturační adresu zákazníka. Zobrazit [zásadách pro účast](https://docs.microsoft.com/legal/marketplace/participation-policy) seznam zemí.
+
+**Jaké měny se podporuje Azure Marketplace?**
+
+Transakce mohou být prováděna v 17 měnách následující: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Nasazení řešení z Azure Marketplace
 

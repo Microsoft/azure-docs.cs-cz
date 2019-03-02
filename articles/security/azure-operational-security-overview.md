@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116469"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241081"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
 
@@ -29,13 +29,13 @@ ms.locfileid: "56116469"
 
 Operace má IT tým zodpovídá za správu infrastruktury datového centra, aplikace a data, včetně stabilitu a zabezpečení těchto systémů. Získávání informací o zabezpečení napříč často zvýšení komplexní IT prostředí však vyžaduje organizacím cobble dohromady data z několika systémů zabezpečení a správu.
 
-[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Jejích klíčových funkcí poskytuje tyto služby, které běží v Azure. Azure obsahuje několik služeb, které vám pomůžou spravovat a chránit svoje místní a cloudovou infrastrukturu. Každá služba poskytuje specifickou funkci správy. Můžete kombinovat služby dosahovat různých scénářů správy. 
+[Protokoly Microsoft Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Jejích klíčových funkcí poskytuje tyto služby, které běží v Azure. Azure obsahuje několik služeb, které vám pomůžou spravovat a chránit svoje místní a cloudovou infrastrukturu. Každá služba poskytuje specifickou funkci správy. Můžete kombinovat služby dosahovat různých scénářů správy. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) shromažďuje data ze spravovaných zdrojů do centrální datových úložišť. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export. 
 
-Můžete sloučit data z různých zdrojů a kombinovat data ze služby Azure s existujícím místním prostředím. Log Analytics také jasně odděluje získávání dat od akcí provedených na těchto datech, tak, aby všechny akce jsou k dispozici pro všemi druhy dat.
+Můžete sloučit data z různých zdrojů a kombinovat data ze služby Azure s existujícím místním prostředím. Protokoly Azure monitoru také jasně odděluje získávání dat od akcí provedených na těchto datech, tak, aby všechny akce jsou k dispozici pro všemi druhy dat.
 
 ### <a name="automation"></a>Automation
 
@@ -93,7 +93,7 @@ Security Center posuzuje konfiguraci vašich prostředků identifikovat problém
 >[!Note]
 >Další informace o rolích a povolené akce ve službě Security Center, najdete v článku [oprávnění ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-Security Center používá agenta Microsoft Monitoring Agent. To je stejný agent, který používá služba Log Analytics. Data shromážděná z tohoto agenta se ukládají do obou Log Analytics existující [pracovní prostor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k vašemu předplatnému Azure nebo vytvořte nový zohledněním polohu virtuálního počítače.
+Security Center používá agenta Microsoft Monitoring Agent. To je stejný agent, který používá služby Azure Monitor. Data shromážděná z tohoto agenta se ukládají do obou Log Analytics existující [pracovní prostor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k vašemu předplatnému Azure nebo vytvořte nový zohledněním polohu virtuálního počítače.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

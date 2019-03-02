@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 197e79c2674d314c178444cc1f0d685503425031
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986923"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242407"
 ---
 # <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Povolit řídicí panel Kubernetes v Azure stacku 
 
@@ -107,7 +107,6 @@ Adresu URL řídicího panelu můžete načíst z hlavního uzlu v clusteru.
 3. Poznamenejte si umístění souborů. Aktualizujte skript pomocí umístění a pak otevřete prostředí PowerShell s řádku se zvýšenými oprávněními. Spusťte skript aktualizace:  
 
     ```PowerShell   
-    Import  /etc/kubernetes/certs/ca.crt -CertStoreLocation cert:\LocalMachine\Root 
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 
@@ -121,9 +120,11 @@ Adresu URL řídicího panelu můžete načíst z hlavního uzlu v clusteru.
 3.  Vyberte klientský certifikát.
 4.  Zadejte token. 
 5. Znovu připojit k příkazovému řádku bash na hlavní uzel a udělit oprávnění k `kubernetes-dashboard`. Spusťte následující příkaz:
-    ```Bash   
+
+    ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
+
     Skript vypíše `kubernetes-dashboard` cloudu oprávnění správce. Další informace najdete v tématu [clustery s podporou pro RBAC](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
 
 Mohou pomocí řídicího panelu. Další informace na řídicí panel Kubernetes najdete v tématu [řídicí panel Kubernetes webového uživatelského rozhraní](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 

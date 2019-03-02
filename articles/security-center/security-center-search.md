@@ -1,6 +1,6 @@
 ---
 title: Hledání v Centru zabezpečení Azure | Dokumentace Microsoftu
-description: Zjistěte, jak Azure Security Center používá hledání Log Analytics k načtení a analyzovat data zabezpečení.
+description: Zjistěte, jak Azure Security Center využívá Azure Monitor protokoly hledání načíst a analyzovat data zabezpečení.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110536"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244940"
 ---
 # <a name="azure-security-center-search"></a>Hledání v Centru zabezpečení Azure
-Azure Security Center používá [hledání Log Analytics](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Log Analytics obsahuje dotazovací jazyk pro rychlé načítání a slučování dat. Ze služby Security Center můžete využít hledání Log Analytics vytvářet dotazy a analyzovat shromážděná data.
+Azure Security Center používá [protokoly Azure monitoru hledání](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Protokoly Azure monitoru poskytuje dotazovací jazyk k rychlému načítání a slučování dat. Ze služby Security Center můžete využít vyhledávání protokoly Azure monitoru vytvářet dotazy a analyzovat shromážděná data.
 
 Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Center.  Aby byla data dostupná v rámci vaší prohledávání protokolů je závislá na úroveň vrstvy použitý pro váš pracovní prostor.  Zobrazit Security Center [stránce s cenami](../security-center/security-center-pricing.md) Další informace.
 
@@ -49,15 +49,15 @@ Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Ce
 
   ![Výsledky hledání][3]
 
-Zobrazit [dotazovací jazyk Log Analytics](../log-analytics/log-analytics-search-reference.md) Další informace o tom, jak dotaz na data ve vybraném pracovním prostoru.
+Zobrazit [Kusto dotazovací jazyk](../log-analytics/log-analytics-search-reference.md) Další informace o tom, jak dotaz na data ve vybraném pracovním prostoru.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak získat přístup k vyhledávání ve službě Security Center. Security Center používá hledání Log Analytics. Další informace o hledání Log Analytics najdete v tématu:
+V tomto článku jste zjistili, jak získat přístup k vyhledávání ve službě Security Center. Security Center používá službu search protokoly Azure monitoru. Další informace o vyhledávání protokoly Azure monitoru, najdete v tématech:
 
-- [Co je služba Log Analytics?](../log-analytics/log-analytics-overview.md) – Přehled v Log Analytics
-- [Principy prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak se používají prohledávání protokolů v Log Analytics a poskytuje koncepty, které by měl být srozumitelný před vytvořením prohledávání protokolu
-- [Vyhledání dat pomocí prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md) – kurz k používání prohledávání protokolů
-- [Referenční příručce k vyhledávání log Analytics](../log-analytics/log-analytics-search-reference.md) – popisuje dotazovací jazyk v Log Analytics
+- [Co je Azure Monitor protokoly?](../log-analytics/log-analytics-overview.md) – Přehled na protokoly Azure monitoru
+- [Principy prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak prohledávání protokolů jsou v protokolech Azure Monitor a poskytuje koncepty, které by měl být srozumitelný před vytvořením prohledávání protokolu
+- [Vyhledání dat pomocí prohledávání protokolů v protokoly Azure monitoru](../log-analytics/log-analytics-log-searches.md) – kurz k používání prohledávání protokolů
+- [Reference ke službě search Kusto](../log-analytics/log-analytics-search-reference.md) – popisuje dotazovací jazyk v protokoly Azure monitoru
 
 Další informace o službě Security Center najdete v tématu:
 

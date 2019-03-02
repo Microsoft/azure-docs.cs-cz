@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 2506137e03e8677827bb1e2a3914ee10ae24f368
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2e3e790ac33f7c93bc5fe6deb705425b0e958def
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810112"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214482"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -87,7 +87,7 @@ Chcete-li přidat novou šablonu zařízení pro vaši aplikaci, budete muset p�
 
 Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connected Air Conditioner** (Připojená klimatizace) pro zařízení, která do vaší aplikace odesílají teplotní telemetrická data:
 
-1. Na **šablon** klikněte na **+ nová**:
+1. Na **šablon** klikněte na **+**:
 
     ![Stránka zařízení šablon, vytvořit šablonu zařízení](./media/tutorial-define-device-type-experimental/newtemplate.png)
 
@@ -397,7 +397,7 @@ Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si
     | Časové rozmezí   | Posledních 30 minut |
     | Měření     | Ventilátor Motor chyby (klikněte na tlačítko **viditelnost** vedle **Motor chyba ventilátor**) |
 
-    ![Nastavení čárového grafu](./media/tutorial-define-device-type-experimental/dashboardeventchartsetting.png)
+    ![Nastavení grafu události](./media/tutorial-define-device-type-experimental/dashboardeventchartsetting.png)
 
     Potom klikněte na **Uložit**.
 

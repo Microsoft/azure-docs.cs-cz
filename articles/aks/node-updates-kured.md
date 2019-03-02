@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0bcc49df6540b73b8feb5bb1ec4312e680572797
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617871"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243325"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Použít zabezpečení a aktualizace jádra na uzly ve službě Azure Kubernetes Service (AKS)
 
@@ -23,11 +23,11 @@ V tomto článku se dozvíte, jak používat open source [kured (KUbernetes rest
 > [!NOTE]
 > `Kured` je open source projekt podle Weaveworks. Na základě best effort poskytuje podporu pro tento projekt ve službě AKS. Další podpora lze nalézt v slackový kanál # úřady weave
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.49 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Popis prostředí aktualizace uzlů AKS
 
@@ -78,15 +78,15 @@ Můžete monitorovat stav uzlů pomocí [kubectl get uzly] [ kubectl-get-nodes] 
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
-aks-nodepool1-79590246-2   Ready,SchedulingDisabled   agent     1h        v1.9.11
+aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Po dokončení procesu aktualizace můžete zobrazit stav uzlů pomocí [kubectl get uzly] [ kubectl-get-nodes] příkazů `--output wide` parametru. Další výstup vám umožňují vidět rozdíl v *verze jádra* základní uzlů, jak je znázorněno v následujícím příkladu výstupu. *Aks nodepool1 79590246 2* byla aktualizována v předchozím kroku a verze jádra ukazuje *4.15.0-1025-azure*. Uzel *aks nodepool1 79590246 1* , který se zobrazí aktualizovaná verze jádra *4.15.0-1023-azure*.
+Po dokončení procesu aktualizace můžete zobrazit stav uzlů pomocí [kubectl get uzly] [ kubectl-get-nodes] příkazů `--output wide` parametru. Další výstup vám umožňují vidět rozdíl v *verze jádra* základní uzlů, jak je znázorněno v následujícím příkladu výstupu. *Aks nodepool1 28993262 0* byla aktualizována v předchozím kroku a verze jádra ukazuje *4.15.0-1039-azure*. Uzel *aks nodepool1 28993262 1* , který se zobrazí aktualizovaná verze jádra *4.15.0-1037-azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.11   10.240.0.6    <none>        Ubuntu 16.04.5 LTS   4.15.0-1023-azure   docker://1.13.1
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.11   10.240.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1025-azure   docker://1.13.1
+aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS   4.15.0-1039-azure   docker://3.0.4
+aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
 ## <a name="next-steps"></a>Další postup

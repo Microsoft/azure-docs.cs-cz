@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339752"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240163"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Zjišťování a řešení potíží s odpojí službou Azure IoT Hub
 
@@ -54,7 +54,7 @@ Další informace najdete v tématu [co jsou upozornění v Microsoft Azure clas
 
 ## <a name="resolve-connectivity-errors"></a>Řešení chyb připojení
 
-Když zapnete diagnostické protokoly a upozornění na připojených zařízení, získáte výstrahy, když dojde k chybám. Tato část popisuje, jak vyřešit běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili Azure Log Analytics pro diagnostické protokoly.
+Když zapnete diagnostické protokoly a upozornění na připojených zařízení, získáte výstrahy, když dojde k chybám. Tato část popisuje, jak vyřešit běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure monitoru pro diagnostické protokoly.
 
 1. Získat pracovní prostor **Log Analytics** na webu Azure Portal.
 1. Vyberte **prohledávání protokolů**.

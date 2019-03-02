@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2b528892d2046f590d979d1646583e028fe4a834
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004576"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218069"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení databáze jedné, nebo součástí fondu
 
@@ -90,7 +90,7 @@ Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k ja
 
 ### <a name="setup-database-firewall-rules"></a>Nastavení pravidel brány firewall databáze
 
-Pravidla brány firewall na úrovni databáze platí jenom pro jednotlivé databáze. Tato pravidla jsou přenositelné a bude následovat databáze při selhání serveru. Pravidla brány firewall na úrovni databáze lze konfigurovat pouze pomocí příkazů jazyka Transact-SQL (T-SQL) a až poté, co jste nakonfigurovali pravidlo brány firewall na úrovni serveru.
+Pravidla brány firewall na úrovni databáze platí jenom pro jednotlivé databáze. Databáze zachová tato pravidla při selhání serveru. Pravidla brány firewall na úrovni databáze lze konfigurovat pouze pomocí příkazů jazyka Transact-SQL (T-SQL) a až poté, co jste nakonfigurovali pravidlo brány firewall na úrovni serveru.
 
 Chcete-li nastavit pravidlo brány firewall na úrovni databáze:
 
@@ -264,7 +264,7 @@ Pokud se zjistí neobvyklé aktivity, obdržíte e-mail s informacemi o událost
 
 ### <a name="auditing"></a>Auditování
 
-Tato funkce sleduje události databáze a zapisuje události do protokolu auditu v úložišti buď Azure log analytics nebo centra událostí. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit potenciální narušení zabezpečení.
+Tato funkce sleduje události databáze a zapisuje události do protokolu auditu v obou Azure storage, protokoly Azure monitoru, nebo do centra událostí. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit potenciální narušení zabezpečení.
 
 Pokud chcete povolit auditování:
 
@@ -286,7 +286,7 @@ Pokud chcete povolit auditování:
         - **Log Analytics**, které automaticky uloží události pro dotaz nebo další analýzu
 
             > [!NOTE]
-            > A **pracovní prostor Log analytics** je nezbytný pro podporu pokročilých funkcí, jako je například analýzy, vlastních pravidel výstrah a export Excelu nebo Power BI. Bez pracovní prostor je k dispozici pouze v editoru dotazů.
+            > A **pracovní prostor Log Analytics** je nezbytný pro podporu pokročilých funkcí, jako je například analýzy, vlastních pravidel výstrah a export Excelu nebo Power BI. Bez pracovní prostor je k dispozici pouze v editoru dotazů.
 
         - **Centrum událostí**, což umožňuje událostí bude směrovat pro použití v jiných aplikacích
 

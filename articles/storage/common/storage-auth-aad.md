@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57e793278af7eb03fe49fd657e45b0846db8b1c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3a8ee51656b5521916e68ee34edda91c34ea0c35
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817911"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216031"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory (Preview)
 
@@ -57,9 +57,11 @@ Když roli RBAC je přiřazena k objektu zabezpečení Azure AD, Azure uděluje 
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
+Informace o přiřazení předdefinované role na webu Azure Portal najdete v tématu [udělit přístup k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)](storage-auth-aad-rbac.md).
+
 ### <a name="access-permissions-granted-by-rbac-roles"></a>Přístupová oprávnění udělená role RBAC 
 
-Následující tabulka shrnuje přístupová práva udělují předdefinované role, v závislosti na rozsahu:
+Následující tabulka shrnuje přístupová práva udělují předdefinované role pro různé úrovně oboru:
 
 |Rozsah|Vlastník dat objektů BLOB|Blob Data Contributor|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
 |---|---|---|---|---|---|

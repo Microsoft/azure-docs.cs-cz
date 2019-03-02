@@ -4,7 +4,7 @@ description: Přečtěte si o Azure Sentinelu, jejích klíčových funkcích a 
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: dccbfea0fd26b9d9673ff7652ba6fc4ee632cc46
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 2859df94b1418cfa9fbfaa341e6bf08b257875bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992796"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245281"
 ---
 # <a name="what-is-azure-sentinel-preview"></a>Co je Azure Sentinelu Preview?
 
@@ -66,11 +66,11 @@ Můžete omezit informační šum a minimalizovat počet výstrah, budete muset 
 
 ![Případy](./media/overview/cases.png)
 
-## <a name="user-analytics"></a>Analýzy chování uživatelů
+## <a name="user-analytics"></a>Uživatelské analýzy
 
 Díky nativní integraci rozhraní machine learning (ML) a [analýzy chování uživatelů](user-analytics.md), Sentinelu Azure může pomoct rychle detekovat hrozby. Azure Sentinel se hladce integrují s Azure Advanced Threat Protection k analýze chování uživatelů a stanovení priorit uživatelů, které byste měli prozkoumat nejdříve, na základě jejich výstrahy a vzory podezřelých aktivit v Azure Sentinelu a Microsoft 365.
 
-![Analýzy chování uživatelů](./media/overview/user-analytics.png)
+![Uživatelské analýzy](./media/overview/user-analytics.png)
 
 
 ## <a name="security-automation--orchestration"></a>Zabezpečení automatizace a Orchestrace
@@ -90,11 +90,11 @@ Azure Sentinel [podrobné zkoumání](tutorial-investigate-cases.md) nástroje v
 ![Šetření](./media/overview/investigation.png)
 
 
-## <a name="hunting"></a>Myslivost
+## <a name="hunting"></a>Vyhledávání
 
 Použití Azure Sentinelu [myslivost výkonné nástroje hledání a dotazů](hunting.md)založená na rozhraní MITRE, které vám umožní aktivně dost možná nejlepší bezpečnostní hrozby ve vaší organizaci zdrojů dat, předtím, než se aktivuje upozornění. Po zjištění typu dotazu, který poskytuje cenné přehledy o možných útoků, můžete také vytvořit vlastní zjišťování pravidla založená na dotazu a zpracujte tyto poznatky jako oznámení na vaše respondéry incidentu zabezpečení. Při typu, můžete vytvořit záložky pro zajímavé události, která vám umožní vrátit se k nim později, je sdílet s ostatními a seskupit je pomocí jiných usnadňuje korelování událostem a vytvářet přesvědčivé případu pro zkoumání.
 
-![Myslivost](./media/overview/hunting.png)
+![Vyhledávání](./media/overview/hunting.png)
 
 ## <a name="community"></a>Komunita
 

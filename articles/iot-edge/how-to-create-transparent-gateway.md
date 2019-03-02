@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556216"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243750"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -45,7 +45,10 @@ Zařízení Azure IoT Edge jako bránu nakonfigurovat. Vývojovém počítači n
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-Můžete použít libovolný počítač, čímž vygenerujete certifikáty a potom zkopírovat je do zařízení IoT Edge. 
+Můžete použít libovolný počítač, čímž vygenerujete certifikáty a potom zkopírovat je do zařízení IoT Edge.
+
+>[!NOTE]
+>"Název brány" k vytvoření certifikátů v tento pokyn, musí být stejný název jako používané jako název hostitele v souboru config.yaml IoT Edge a GatewayHostName v připojovacím řetězci podřízené zařízení. "Název brány" musí být možné přeložit na IP adresu pomocí DNS nebo položkou hostitelského souboru. Komunikace založená na protokolu používá (MQTTS:8883 / AMQPS:5671 / HTTPS:433) musí být možné mezi podřízené zařízení a transparant IoT Edge. Pokud brána firewall je někde mezi, musí být otevřený příslušný port.
 
 ## <a name="generate-certificates-with-windows"></a>Generování certifikátů s Windows
 

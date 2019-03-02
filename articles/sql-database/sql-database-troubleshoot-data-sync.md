@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4ab26891a98418fae75c3be18f17f1d8e02d8b36
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563180"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216709"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -58,7 +58,7 @@ Skupina synchronizace v synchronizaci dat SQL bylo ve stavu zpracování po dlou
 
 Ve skupině synchronizace právě zablokované ve stavu zpracování může způsobit některý z následujících podmínek:
 
-- **Příčina**. Klientský agent je v režimu offline
+- **Příčina**. Klientský agent je offline.
 
 - **Rozlišení**. Ujistěte se, že je klientský agent online, a zkuste to znovu.
 
@@ -250,7 +250,7 @@ Další informace o synchronizaci dat SQL najdete v tématu:
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 -   Osvědčené postupy – [osvědčené postupy pro synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
--   Monitorování – [monitorování synchronizace dat SQL s využitím Log Analytics](sql-database-sync-monitor-oms.md)
+-   Monitorování – [protokoly monitorování synchronizace dat SQL pomocí Azure monitoru](sql-database-sync-monitor-oms.md)
 -   Aktualizovat schéma synchronizace
     -   Pomocí příkazů jazyka Transact-SQL - [automatizace replikace změn schématu synchronizace dat SQL Azure](sql-database-update-sync-schema.md)
     -   Pomocí Powershellu – [aktualizovat schéma synchronizace ve stávající skupině synchronizace pomocí Powershellu](scripts/sql-database-sync-update-schema.md)

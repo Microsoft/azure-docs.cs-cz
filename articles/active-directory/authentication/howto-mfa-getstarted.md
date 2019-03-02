@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167146"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217734"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasadit cloudovou službu Azure Multi-Factor Authentication
 
@@ -42,6 +42,9 @@ Než začnete, ujistěte se, že jsou splněné následující požadavky:
 ## <a name="choose-authentication-methods"></a>Zvolit metody ověřování
 
 Povolte alespoň jednu metodu ověřování pro uživatele na základě požadavků vaší organizace. Zjistíme, že pokud je povolená pro uživatele aplikaci Microsoft Authenticator poskytuje nejlepší uživatelské prostředí. Pokud je potřeba pochopit, které metody jsou k dispozici a jak je nastavit, najdete v článku [jaké metody ověřování jsou](concept-authentication-methods.md).
+
+> [!IMPORTANT]
+> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
 
 ## <a name="get-users-to-enroll"></a>Získat uživatele k registraci
 

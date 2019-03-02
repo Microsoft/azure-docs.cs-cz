@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: aschhab
-ms.openlocfilehash: 172fee19de77deb4ecf679d6884dfcea2a4968be
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865956"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242594"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak používat fronty služby Service Bus pomocí Pythonu
 
@@ -38,7 +38,7 @@ Tento článek popisuje, jak používat fronty Service Bus. Ukázky jsou napsan�
 
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
-**ServiceBusService** objektu umožňuje pracovat s frontami. Přidejte následující kód do horní jakéhokoli souboru Python, ve kterém chcete programovému přístupu ke službě Service Bus:
+**ServiceBusClient** objektu umožňuje pracovat s frontami. Přidejte následující kód do horní jakéhokoli souboru Python, ve kterém chcete programovému přístupu ke službě Service Bus:
 
 ```python
 from azure.servicebus import ServiceBusClient
@@ -69,7 +69,7 @@ sb_client.create_queue("taskqueue", queue_options)
 Další informace najdete v tématu [dokumentace ke službě Azure Service Bus Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Odeslat zprávu do fronty služby Service Bus, vaše aplikace volání `send_queue_message` metodu **ServiceBusService** objektu.
+Odeslat zprávu do fronty služby Service Bus, vaše aplikace volání `send` metodu `ServiceBusClient` objektu.
 
 Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `taskqueue` pomocí `send_queue_message`:
 
@@ -89,7 +89,7 @@ Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni St
 Další informace najdete v tématu [dokumentace ke službě Azure Service Bus Python](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
-Přijme zprávy z fronty pomocí `receive_queue_message` metodu **ServiceBusService** objektu:
+Přijme zprávy z fronty pomocí `get_receiver` metodu `ServiceBusService` objektu:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -97,9 +97,12 @@ from azure.servicebus import QueueClient, Message
 # Create the QueueClient 
 queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE NAME>")
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(Message("Message"))
+## Receive the message from the queue
+with queue_client.get_receiver() as queue_receiver:
+    messages = queue_receiver.fetch_next(timeout=3)
+    for message in messages:
+        print(message)
+        message.complete()
 ```
 
 Další informace najdete v tématu [dokumentace ke službě Azure Service Bus Python](/python/api/overview/azure/servicebus?view=azure-python).

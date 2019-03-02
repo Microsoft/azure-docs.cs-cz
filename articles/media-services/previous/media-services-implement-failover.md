@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f367d6e1b1c545bcad0faf030a56fdec2ffafca2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1ea11c44806e2375a272fe8f5e256d8ffde7affb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989061"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240401"
 ---
-# <a name="implement-failover-streaming-with-media-services-legacy"></a>Provádění převzetí služeb při selhání streamování pomocí služby Media Services (starší verze)
+# <a name="implement-failover-streaming-with-media-services"></a>Provádění převzetí služeb při selhání streamování pomocí služby Media Services 
 
 Tento návod ukazuje, jak kopírovat obsah (objektů BLOB) z jednoho prostředku do jiného ke zpracování redundance pro streamování na vyžádání. Tento scénář je vhodný, pokud budete chtít nastavit síť Azure Content Delivery Network pro převzetí služeb při selhání mezi dvěma datacentry, i v případě výpadku v jednom datacentru. Tento návod používá Azure Media Services SDK, REST API služby Azure Media Services a sady SDK služby Azure Storage, na které si předvedeme následující úkoly:
 

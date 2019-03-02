@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5242be4dfe1c79b8f943b3b6d240046d0e8c5181
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 67b46b1bd13fc749b3f30ca8acbee038dc188604
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658758"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214244"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -41,7 +41,7 @@ Pomocí levé navigační nabídky můžete získat přístup k různým oblaste
 
 | Nabídka | Popis |
 | ---- | ----------- |
-| ![Levá navigační nabídka](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Tlačítko **Home** (Domů) zobrazí domovskou stránku vaší aplikace. Jako tvůrce můžete tuto domovskou stránku přizpůsobit pro operátory.</li><li>Tlačítkem **Device Explorer** (Průzkumník zařízení) zobrazíte seznam šablon zařízení definovaných ve vaší aplikací a simulovaných i skutečných zařízení přidružených k jednotlivým šablonám zařízení. Jako operátor můžete tlačítko **Device Explorer** (Průzkumník zařízení) použít ke správě připojených zařízení.</li><li>Tlačítko **Device Sets** (Sady zařízení) umožňuje zobrazit a nastavit sady zařízení. Jako operátor můžete vytvořit sady zařízení představující logické kolekce zařízení specifikovaných určitým dotazem.</li><li>Tlačítko **Analytics** (Analýzy) zobrazuje analýzy odvozené z telemetrických dat pro zařízení a sady zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Tlačítko **Jobs** (Úlohy) umožňuje hromadnou správu zařízení tím, že vás nechá vytvořit a spustit úlohy pro provedení aktualizací škálovaně.</li><li>Tlačítko **Application Builder** (Tvůrce aplikací) zobrazí nástroje používané tvůrcem, třeba nástroj **Create Device Template** (Vytvořit šablonu zařízení).</li><li>Tlačítko **Administration** (Správa) zobrazí stránky správy aplikace, kde může správce spravovat nastavení aplikace, uživatele a role.</li></ul> |
+| ![Levá navigační nabídka](media/overview-iot-central-tour/navigationbar.png) | <ul><li>**Řídicí panel** tlačítku zobrazí řídicí panel aplikací. Jako tvůrce můžete přizpůsobit řídicí panel pro operátory. Uživatelé mohou také vytvářet vlastní řídicí panely.</li><li>Tlačítkem **Device Explorer** (Průzkumník zařízení) zobrazíte seznam šablon zařízení definovaných ve vaší aplikací a simulovaných i skutečných zařízení přidružených k jednotlivým šablonám zařízení. Jako operátor můžete tlačítko **Device Explorer** (Průzkumník zařízení) použít ke správě připojených zařízení.</li><li>Tlačítko **Device Sets** (Sady zařízení) umožňuje zobrazit a nastavit sady zařízení. Jako operátor můžete vytvořit sady zařízení představující logické kolekce zařízení specifikovaných určitým dotazem.</li><li>Tlačítko **Analytics** (Analýzy) zobrazuje analýzy odvozené z telemetrických dat pro zařízení a sady zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Tlačítko **Jobs** (Úlohy) umožňuje hromadnou správu zařízení tím, že vás nechá vytvořit a spustit úlohy pro provedení aktualizací škálovaně.</li><li>Tlačítko **Application Builder** (Tvůrce aplikací) zobrazí nástroje používané tvůrcem, třeba nástroj **Create Device Template** (Vytvořit šablonu zařízení).</li><li>Tlačítko **Administration** (Správa) zobrazí stránky správy aplikace, kde může správce spravovat nastavení aplikace, uživatele a role.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Hledání, nápověda a podpora
 
@@ -57,13 +57,13 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 ![Volba motivu uživatelského rozhraní](media/overview-iot-central-tour/themes.png)
 
-## <a name="home-page"></a>Domovská stránka
+## <a name="dashboard"></a>Řídicí panel
 
-![Domovská stránka](media/overview-iot-central-tour/homepage.png)
+![Řídicí panel](media/overview-iot-central-tour/homepage.png)
 
-Domovská stránka je první stránka, která se zobrazí, když se přihlásíte do aplikace Azure IoT Central. Jako tvůrce můžete domovskou stránku přizpůsobit pro jiné uživatele aplikace pomocí dlaždic. Další informace najdete v kurzu [Přizpůsobení zobrazení Azure IoT Central pro operátora](tutorial-customize-operator.md).
+Domovská stránka je první stránka, která se zobrazí, když se přihlásíte do aplikace Azure IoT Central. Řídicí panel je první stránky, které se zobrazí při přihlášení do aplikace Azure IoT Central. Jako tvůrce můžete přizpůsobit řídicí panel aplikací pro ostatní uživatele tak, že přidáte dlaždice. Další informace najdete v kurzu [Přizpůsobení zobrazení Azure IoT Central pro operátora](tutorial-customize-operator.md). Uživatelé mohou také [vytváření vlastních osobních řídicích panelů](howto-personalize-dashboard.md).
 
-## <a name="device-explorer"></a>Průzkumník zařízení
+## <a name="device-explorer"></a>Device Explorer
 
 ![Stránka Device Explorer (Průzkumník zařízení)](media/overview-iot-central-tour/explorer.png)
 

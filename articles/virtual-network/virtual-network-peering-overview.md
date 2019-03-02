@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c1693b6e5ef9abbd1c72c10581a9f36325cf6478
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958180"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243988"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
-Partnerské vztahy virtuálních sítí umožňují bezproblémové propojení dvou [virtuálních sítí](virtual-networks-overview.md) Azure. Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu v zásadě stejně jako mezi virtuálními počítači ve stejné virtuální síti pouze přes *privátní* IP adresy. Azure podporuje:
+Partnerský vztah virtuální sítě vám umožní bez problémů připojit Azure [virtuálních sítí](virtual-networks-overview.md). Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu v zásadě stejně jako mezi virtuálními počítači ve stejné virtuální síti pouze přes *privátní* IP adresy. Azure podporuje:
 * VNet peering – propojení virtuálních sítí ve stejné oblasti Azure
 * Globální VNet peering – propojení virtuálních sítí z různých oblastí Azure
 
@@ -78,7 +78,7 @@ Můžete také zkusit [Poradce při potížích pro partnerský vztah virtuáln�
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
 Pouze když partnerské virtuální sítě jsou globálně platí následující omezení:
-- Prostředky v jedné virtuální síti nemůžou komunikovat s front-endovou IP adresou interního nástroje pro vyrovnávání zatížení Azure ve virtuální síti v globálním partnerském vztahu. Nástroj pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve stejné oblasti.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard existuje v obou případech globální partnerské vztahy a partnerské vztahy virtuálních sítí. 
 - Nemůžete používat vzdálené brány ani povolit průchod bránou. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, virtuální sítě v partnerském vztahu musí být ve stejné oblasti.
 
 Další informace o požadavcích a omezeních najdete v tématu [Požadavky a omezení partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints). Informace o omezeních počtu partnerských vztahů, které pro virtuální síť můžete vytvořit, najdete v tématu popisujícím [omezení sítí Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 

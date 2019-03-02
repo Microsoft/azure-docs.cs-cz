@@ -9,25 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959438"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243615"
 ---
 # <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
 
-Azure Media Services umožňuje má kódovat do souborů MP4 vysoké kvality digitální mediální soubory, tak svůj obsah můžete přehrát na širokou škálu prohlížečů a zařízení. Úspěšné úlohy kódování Media Services vytvoří výstupní Asset se sadou s adaptivní přenosovou rychlostí soubory MP4 rychlostmi a soubory manifestu (serveru a klienta). V tomto okamžiku můžete využít výhod [dynamické balení](dynamic-packaging-overview.md).
+Azure Media Services umožňuje má kódovat do souborů MP4 vysoké kvality digitální mediální soubory, tak svůj obsah můžete přehrát na širokou škálu prohlížečů a zařízení. Úspěšné úlohy kódování Media Services vytvoří výstupní Asset se sadou s adaptivní přenosovou rychlostí soubory MP4 rychlostmi a streamování konfigurační soubory. Konfigurační soubory zahrnují .ism, .ismc, .mpi a další soubory, které byste neměli měnit. Po dokončení úlohy kódování můžete využít výhod [dynamické balení](dynamic-packaging-overview.md) a spustit streamování.
 
-Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování** a následně vytvořit adresy URL pro streamování. Potom podle formátu určeného v manifestu, vaši klienti datový proud obdrželi v protokolu, které jste vybrali.
+Chcete-li videa ve výstupu prostředek k dispozici pro klienty pro přehrávání, je nutné vytvořit **Lokátor streamování** a vytvoření adresy URL pro streamování. Potom podle formátu určeného v manifestu, vaši klienti datový proud obdrželi v protokolu, které jste vybrali.
 
 Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
 
-![Dynamické kódování](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
 

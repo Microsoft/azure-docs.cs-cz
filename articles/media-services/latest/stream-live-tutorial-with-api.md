@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3500463cc57fb236de2a591181a5dc7054780404
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338593"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240690"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
 
@@ -81,9 +81,9 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-a-live-event"></a>Vytvoření živé události
 
-Tato část ukazuje, jak vytvořit **předávací** typu živá událost (LiveEventEncodingType nastavena na hodnotu None). Pokud chcete vytvořit živá událost, která je povolená pro kódování v reálném čase LiveEventEncodingType nastaven na hodnotu **standardní**. 
-
-Některá další nastavení, která můžete chtít zadat při vytváření události v reálném čase:
+Tato část ukazuje, jak vytvořit **předávací** typu živá událost (LiveEventEncodingType nastavena na hodnotu None). Další informace o dostupných typech živé události najdete v tématu [živá událost typy](live-events-outputs-concept.md#live-event-types). 
+ 
+Některé věci, které můžete zadat při vytváření živé události jsou:
 
 * Umístění Media Services 
 * Protokol streamování pro živá událost (v současné době jsou podporovány protokoly RTMP nebo Smooth Streaming).<br/>Možnost protokolu nelze změnit během živá událost nebo jeho přidružené výstupů za běhu. Pokud požadujete různé protokoly, měli byste vytvořit samostatné živá událost pro každý protokol streamování.  

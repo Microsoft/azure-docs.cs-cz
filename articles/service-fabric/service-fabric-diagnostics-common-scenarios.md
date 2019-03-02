@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 377b41f6ea011c06457fb6550ddd8d448574835e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 355b859428712b2e7b086fdfc152044814695b7b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881326"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243937"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
-Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti monitorování a diagnostiku, s využitím Service Fabric. Scénáře uvedené zahrnují všechny vrstvy 3 service Fabric: Aplikace, clusteru a infrastruktury. Každé řešení používá Application Insights a Log Analytics, Azure nástrojů pro monitorování, dokončete každý scénář. Kroky v jednotlivých řešení uživatelům úvodní informace o tom, jak používat Application Insights a Log Analytics v rámci Service Fabric.
+Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti monitorování a diagnostiku, s využitím Service Fabric. Scénáře uvedené zahrnují všechny vrstvy 3 service Fabric: Aplikace, clusteru a infrastruktury. Každé řešení používá Application Insights a protokoly Azure monitoru, nástroje pro monitorování Azure, k dokončení každého scénáře. Kroky v jednotlivých řešení uživatelům úvodní informace o tom, jak pomocí Application Insights a Azure Monitor protokoly v kontextu Service Fabric.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites-and-recommendations"></a>Požadavky a doporučení
 
@@ -31,7 +33,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 
 * [Application Insights s využitím Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
 * [Povolení diagnostiky Azure na svém clusteru](service-fabric-diagnostics-event-aggregation-wad.md)
-* [Nastavit pracovní prostor Log Analytics](service-fabric-diagnostics-oms-setup.md)
+* [Nastavte pracovní prostor Log Analytics](service-fabric-diagnostics-oms-setup.md)
 * [Protokolu agenta Analytics ke sledování čítače výkonu](service-fabric-diagnostics-oms-agent.md)
 
 ## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Jak lze zobrazit neošetřené výjimky v mé aplikaci?
@@ -63,7 +65,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 1. Uzel události jsou sledovány ve vašem clusteru Service Fabric. Přejděte k prostředku řešení analýza služby Service Fabric s názvem **ServiceFabric(NameofResourceGroup)**
 2. Klikněte na graf v dolní části okna s názvem "Přehled"
 
-    ![Řešení log Analytics](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Azure Monitor protokoly řešení](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. Tady máte mnoho grafů a zobrazení různých metrik dlaždice. Klikněte na jednotlivé grafy a je zkratkou k prohledávání protokolů. Tady můžete zadat dotaz na všechny události clusteru nebo čítače výkonu.
 4. Zadejte následující dotaz. Tyto události jsou součástí [uzel události – referenční informace](service-fabric-diagnostics-event-generation-operational.md#application-events)
@@ -75,7 +77,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 
 5. Klikněte na tlačítko "Nové pravidlo výstrahy" v horní části a nyní kdykoli události dorazí na tento dotaz na základě, obdržíte výstrahu zvolenou metodu komunikace.
 
-    ![Nová upozornění log Analytics](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Oznámení nové protokoly Azure monitoru](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Jak lze I upozorněni vrácení upgradu zpět aplikaci?
 
@@ -143,7 +145,7 @@ Zkontrolujte tyto odkazy pro úplný seznam čítačů výkonu na spolehlivé [s
 
 * [Nastavte si upozornění v umělé Inteligenci](../azure-monitor/app/alerts.md) abyste dostávali oznámení o změny ve výkonu a využití
 * [Inteligentní zjišťování ve službě Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrických dat odesílaných do AI upozornit vás na potenciální problémy s výkonem
-* Další informace o službě Log Analytics [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení ke službě Log Analytics pomocí brány Log Analytics](../azure-monitor/platform/gateway.md)
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
-* Získejte podrobnější přehled o Log Analytics a navíc nabízejí, přečtěte si [co je služba Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)
+* Další informace o protokolech Azure Monitor [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
+* Místními clustery protokoly Azure Monitor nabízí brány (dopředu proxy server HTTP), který slouží k odesílání dat do Azure monitoru protokoly. Další informace o, že v [připojení počítače bez připojení k Internetu pomocí brány Log Analytics protokoly Azure monitoru](../azure-monitor/platform/gateway.md)
+* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
+* Získejte podrobnější přehled o protokoly Azure monitoru a navíc nabízejí, přečtěte si [co je Azure Monitor protokoly?](../operations-management-suite/operations-management-suite-overview.md)

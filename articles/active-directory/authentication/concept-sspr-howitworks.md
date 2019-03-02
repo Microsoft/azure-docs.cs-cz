@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175083"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214747"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Azure AD samoobslužné resetování hesla
 
@@ -59,7 +59,7 @@ Když uživatel přejde na portál pro resetování hesla, pracovní postup je v
 
 ## <a name="authentication-methods"></a>Metody ověřování
 
-Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jednu z následujících možností pro metody ověřování. Někdy uslyšíte. Tyto možnosti uvedené jako "brány." Důrazně doporučujeme vám **zvolit dvě nebo více metod ověřování** tak, aby vaši uživatelé měli větší flexibilitu v případě, kdy ho potřebují nebudou moct získat přístup k některému.
+Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jednu z následujících možností pro metody ověřování. Někdy uslyšíte. Tyto možnosti uvedené jako "brány." Důrazně doporučujeme vám **zvolit dvě nebo více metod ověřování** tak, aby vaši uživatelé měli větší flexibilitu v případě, kdy ho potřebují nebudou moct získat přístup k některému. Další informace o metodách uvedené níže najdete v článku [jaké metody ověřování jsou?](concept-authentication-methods.md).
 
 * Oznámení mobilní aplikace (Preview)
 * Kód mobilní aplikace (Preview)
@@ -69,6 +69,9 @@ Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jedn
 * Bezpečnostní otázky
 
 Uživatelům můžete jenom resetování hesla, pokud mají data v metody ověřování, které správce povolil.
+
+> [!IMPORTANT]
+> Počínaje březnem 2019 možnosti telefonního hovoru nebudou k dispozici uživatelům vícefaktorové ověřování a samoobslužné resetování HESLA v tenantech bezplatné a zkušební verze Azure AD. Zprávy SMS, nejsou ovlivněny tuto změnu. Telefonní hovor budou nadále dostupné uživatelům v placené tenantů Azure AD. Tato změna ovlivní jenom klienty bezplatné a zkušební verze Azure AD.
 
 > [!WARNING]
 > Účty přiřazené role Správce služby Azure se bude vyžadovat použití metod, jak jsou definovány v sekci [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).

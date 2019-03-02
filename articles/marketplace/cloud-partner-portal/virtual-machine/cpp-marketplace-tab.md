@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 551f2bbc4846a1b47dafaa03cca08b424572ebf5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977144"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214873"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Tržiště virtuálních počítačů
 
-**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tato dlouhý tvar je rozdělen do čtyř oddílů: **přehled**, **marketingové artefakty**, **vést správu**, a **právní**. 
+**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**. 
 
 ## <a name="overview-section"></a>Přehled oddílu
 V této části zadáte obecné informace o nabídky Azure Marketplace.  Připojený hvězdička (*) na název pole označuje, že je povinný.
@@ -38,6 +38,7 @@ Následující tabulka popisuje účel a obsah těchto polí.
 | **Souhrn**               | Stručný účel nebo funkce řešení.  Delší než 100 znaků. |
 | **Dlouhé shrnutí**          | Účel nebo funkce řešení.  Delší než 256 znaků. |
 | **Popis**           | Popis řešení.  3000 znaků podporuje jednoduchý formátování HTML. |
+| **Kanál prodejců zprostředkovatele kryptografických služeb Microsoft** | Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály. |
 | **Identifikátor marketing**  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
 | **Užitečné odkazy**          | Přidejte adresy URL do dokumentace, poznámky k verzi, nejčastější dotazy a tak dále. |
@@ -47,7 +48,7 @@ Následující tabulka popisuje účel a obsah těchto polí.
 
 ## <a name="marketing-artifacts-section"></a>Část artefakty marketing
 
-Tento druhý oddíl je rozdělen na tři pododdíly: **loga**, **snímek obrazovky**, a **videa**. Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka.
+Tento druhý oddíl je rozdělen na tři pododdíly: **Loga**, **snímek obrazovky**, a **videa**. Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka.
 
 ![Marketingové artefakty části Marketplace karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_009.png)
 
@@ -121,7 +122,7 @@ Po úspěšném publikování vaší nabídky, realizace připojení ověříte 
 
 ## <a name="legal-section"></a>Právní oddílu
 
-Tento poslední část umožňuje zadat dva právní dokumenty, vyžaduje se pro každou nabídku: zásady ochrany osobních údajů a podmínky použití.
+Tento poslední část umožňuje poskytnout dvě právní dokumenty, vyžaduje se pro každou nabídku: Zásady ochrany osobních údajů a podmínky použití.
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |

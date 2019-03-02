@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6ac36fed8f9d3220e6caf6eba94a62d1ec8372c7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846655"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216335"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 
@@ -46,7 +46,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
     ![změnit stav diagnostické protokoly](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Nastavení cíle archiv, který chcete zjistit. například účet úložiště, Centrum událostí nebo Azure Log Analytics.
+5.  Nastavení cíle archiv, který chcete zjistit. například protokoly účtu úložiště, Centrum událostí nebo Azure Monitor.
 
 6.  Uložte nové nastavení diagnostiky.
 

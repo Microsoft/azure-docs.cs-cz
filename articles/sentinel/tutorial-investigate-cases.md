@@ -4,7 +4,7 @@ description: A zjistěte, jak prozkoumat případy s Sentinelu Azure pomocí toh
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 424f7eeacf5ca3317462fa63cf684c0d5d1bac9e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 8d44c1448296df16e9dd58a486d4cfb21bb053de
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993248"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244192"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Kurz: Prozkoumat případů s Azure Sentinelu ve verzi Preview
 
@@ -33,10 +33,10 @@ Poté co [připojené zdroje dat](quickstart-onboard.md) Sentinelu Azure chcete 
 
 > [!div class="checklist"]
 > * Vytvořte případy
-> * Prozkoumat případy
+> * Prozkoumávání případů
 > * Reakce na hrozby
 
-## <a name="investigate-cases"></a>Prozkoumat případy
+## <a name="investigate-cases"></a>Prozkoumávání případů
 
 Případ může obsahovat více výstrah. Je souhrn všech důkazy, které jsou relevantní pro konkrétní šetření. Případ je založeno na výstrahy, kterou jste definovali v **Analytics** stránky. Vlastnosti související s výstrahami, jako je například stav a závažnost jsou nastaveny na úrovni případu. Po necháte Azure Sentinelu vědět, jaké druhy hrozeb, které hledáte a jak je najít, můžete monitorovat hrozby, kterých se zjišťují šetření případů. 
 

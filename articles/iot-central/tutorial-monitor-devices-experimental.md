@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9480565643887b5a9a4d644ba3173b365eaea29c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 03e0826d306328ce9a7293d26289f04a012c447f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767769"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216454"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Kurz: Monitorování zařízení pomocí Azure IoT Central
 
@@ -55,7 +55,7 @@ Zvolte zobrazení **Dashboard** a podívejte se na informace o zařízení.
 
 ![Řídicí panel zařízení](media/tutorial-monitor-devices-experimental/initial_screen.png)
 
-Graf na řídicím panelu vykresluje teplotní křivku zařízení. Na dlaždici **Set target temperature** (Nastavit cílovou teplotu) se můžete také podívat na aktuální cílovou teplotu zařízení. Rozhodnete se, že cílová teplota je příliš vysoká.
+Graf na řídicím panelu vykresluje teplotní křivku zařízení. Můžete také zjistit aktuální teplotu cíl pro dané zařízení v **vlastnosti zařízení** dlaždici. Rozhodnete se, že cílová teplota je příliš vysoká.
 
 ## <a name="remediate-an-issue"></a>Oprava problému
 

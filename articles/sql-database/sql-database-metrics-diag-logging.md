@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6f8dd8611e5e2120bdfa0ae111bf6e248ca0f3cb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893592"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214729"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -76,7 +76,7 @@ Azure SQL Database můžete nastavit shromažďování následujících telemetr
 
 ### <a name="azure-portal"></a>portál Azure
 
-Můžete použít **nastavení diagnostiky** nabídku pro každý jednotlivý ve fondu, nebo instanci databáze na webu Azure Portal ke konfiguraci streamování telemetrická data diagnostiky pro Azure SQL Database. Můžete nastavit následující cíle: Azure Storage, Azure Event Hubs a Azure Log Analytics.
+Můžete použít **nastavení diagnostiky** nabídku pro každý jednotlivý ve fondu, nebo instanci databáze na webu Azure Portal ke konfiguraci streamování telemetrická data diagnostiky pro Azure SQL Database. Můžete nastavit následující cíle: Protokoly Azure Storage, Azure Event Hubs a Azure Monitor.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-pooled-or-instance-databases"></a>Vysílání datového proudu telemetrická data diagnostiky pro zadání jedné konfigurace, ve fondu nebo instanci databáze
 
@@ -100,7 +100,7 @@ Povolení streamování telemetrická data diagnostiky pro zadání jedné, klie
    ![Konfigurovat diagnostiku pro jeden, ve fondu nebo instanci databáze](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokolů v Azure Log Analytics a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2), a [auditování protokoly v protokolech Azure Monitor a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Tento postup opakujte pro každý Azure SQL Database, kterou chcete monitorovat.
 
@@ -152,7 +152,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
-1. Log Analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo vyberte existující pracovní prostor.
+1. Ke službě log analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo vyberte existující pracovní prostor.
 1. Zaškrtněte políčko pro elastický fond diagnostickou telemetrii: **AllMetrics**.
 1. Vyberte **Uložit**.
 
@@ -181,7 +181,7 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
 1. Zadejte název nastavení pro vlastní referenci.
 1. Vyberte cílový prostředek pro streamování dat diagnostiky: **Archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**.
-1. Log Analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo použijte existující pracovní prostor.
+1. Ke službě log analytics, vyberte **konfigurovat** a vytvořte nový pracovní prostor tak, že vyberete **+ vytvořit nový pracovní prostor**, nebo použijte existující pracovní prostor.
 1. Zaškrtněte políčko pro instanci telemetrická data diagnostiky: **ResourceUsageStats**.
 1. Vyberte **Uložit**.
 
@@ -288,7 +288,7 @@ Azure SQL Analytics je cloudové řešení, která monitoruje výkon databáze, 
 
 ![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
-Metriky a diagnostické protokoly SQL Database můžete streamovali do služby Azure SQL Analytics s využitím integrovaného **odesílat do Log Analytics** možnosti na kartě nastavení diagnostiky na portálu. Log Analytics můžete povolit také pomocí nastavení diagnostiky prostřednictvím rutin Powershellu, rozhraní příkazového řádku Azure nebo REST API služby Azure Monitor.
+Metriky a diagnostické protokoly SQL Database můžete streamovali do služby Azure SQL Analytics s využitím integrovaného **odesílat do Log Analytics** možnosti na kartě nastavení diagnostiky na portálu. Log analytics můžete povolit také pomocí nastavení diagnostiky prostřednictvím rutin Powershellu, rozhraní příkazového řádku Azure nebo REST API služby Azure Monitor.
 
 ### <a name="installation-overview"></a>Přehled instalace
 
@@ -379,7 +379,7 @@ Zjistěte, jak [stažení Diagnostika a metriky protokolů ze služby Storage](.
 
 ## <a name="data-retention-policy-and-pricing"></a>Zásady uchovávání dat a ceny
 
-Pokud vyberete služby Event Hubs nebo účet úložiště, můžete zadat zásady uchovávání informací. Tato zásada odstraňuje data, která je starší než vybrané časové období. Pokud chcete zadat Log Analytics, zásady uchovávání informací, závisí na vybrané cenové úrovně. Zadaná volných jednotek příjem dat v takovém případě můžete povolit bezplatné sledování několik databází každý měsíc. Jakékoli využití telemetrická data diagnostiky nad rámec volných jednotek může způsobit náklady. Mějte na paměti, že aktivní databáze s větším zatížení ingestování více dat než nečinné databáze. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/monitor/).
+Pokud vyberete služby Event Hubs nebo účet úložiště, můžete zadat zásady uchovávání informací. Tato zásada odstraňuje data, která je starší než vybrané časové období. Pokud chcete zadat Log Analytics, zásady uchovávání informací, závisí na vybrané cenové úrovně. Zadaná volných jednotek příjem dat v takovém případě můžete povolit bezplatné sledování několik databází každý měsíc. Jakékoli využití telemetrická data diagnostiky nad rámec volných jednotek může způsobit náklady. Mějte na paměti, že aktivní databáze s větším zatížení ingestování více dat než nečinné databáze. Další informace najdete v tématu [ceny Log analytics](https://azure.microsoft.com/pricing/details/monitor/).
 
 Pokud používáte Azure SQL Analytics, můžete monitorovat spotřebu příjem dat v řešení tak, že vyberete **pracovní prostor OMS** v navigační nabídce Azure SQL Analytics, a pak vyberete **využití** a **odhadované náklady**.
 

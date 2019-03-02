@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 7577a05302dcf23cc68666685c1537c0eb31f831
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115568"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246130"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpečení služeb a technologií, které jsou k dispozici v Azure
 
@@ -34,7 +34,7 @@ Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. Ujistě
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| Řešení ochrany úloh cloud, který zajišťuje správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.|
 |[Azure Key Vault](../key-vault/key-vault-overview.md)| Zabezpečené úložiště tajných klíčů pro hesla, připojovací řetězce a další informace, které potřebujete k udržování propojení vašich aplikací pracovat. |
-|[Log Analytics](../log-analytics/log-analytics-overview.md)|Monitorovací služba, která shromažďuje telemetrii a další data a poskytuje dotazovací jazyk a analytický modul k zajištění provozu vašich aplikací a prostředků. Je možné samostatně nebo s jinými službami, jako je Security Center. |
+|[Protokoly Azure Monitoru](../log-analytics/log-analytics-overview.md)|Monitorovací služba, která shromažďuje telemetrii a další data a poskytuje dotazovací jazyk a analytický modul k zajištění provozu vašich aplikací a prostředků. Je možné samostatně nebo s jinými službami, jako je Security Center. |
 |[Azure Dev/Test Lab](../devtest-lab/devtest-lab-overview.md)|Služba, která pomáhá vývojářům a testerům rychle vytvářet prostředí v Azure plýtváním a kontrolou nad náklady.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

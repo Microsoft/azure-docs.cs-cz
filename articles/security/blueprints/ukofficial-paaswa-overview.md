@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7f67b7363719f544c485503e0f8207bb1f1078ce
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301787"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244702"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -57,9 +57,8 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 - Aplikace API
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Azure Monitor (logs)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
@@ -169,11 +168,11 @@ Podrobné informace o zabezpečení služby Azure Storage najdete v [Průvodci z
 
 ### <a name="monitoring-logging-and-audit"></a>Monitorování, protokolování a auditování
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) je služba v Azure, která pomáhá shromažďovat a analyzovat data vygenerovaná prostředky ve vašem cloudovém a místním prostředí.
+[Protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) je služba v Azure, která pomáhá shromažďovat a analyzovat data vygenerovaná prostředky ve vašem cloudovém a místním prostředí.
 
-#### <a name="log-analytics-in-this-blueprint"></a>Log Analytics v tomto podrobném plánu
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>Azure Monitor přihlásí Tento podrobný plán
 
 - Posouzení SQL
 - Diagnostika služby Key Vault

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: be55fcd7bb4baab218f739094b91fc734c2fb70d
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985555"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244736"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
@@ -36,7 +36,7 @@ Jakmile nahrajete do prostředky vysoce kvalitní digitální mediální soubory
 
 Ke kódování pomocí Media Services v3, je potřeba vytvořit **transformuje** a **úlohy**.
 
-![Transformace](./media/concepts/transforms-jobs.png)
+![Transformace](./media/encoding/transforms-jobs.png)
 
 - [Transformace a úlohy](transforms-jobs-concept.md)
 - [Kódování pomocí Media Services](encoding-concept.md)
@@ -55,7 +55,7 @@ Při vytváření **Lokátor streamování**, kromě název assetu, musíte zada
 
 Dynamické balení se používá, zda streamování vašeho obsahu, živě nebo na vyžádání. Následující diagram znázorňuje streamování na vyžádání s dynamickým vytvářením paketů pracovního postupu.
 
-![Dynamické kódování](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu šifrován dynamicky Advanced Encryption Standard (AES-128) nebo / a systémů tři hlavní digitálních práv management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
 
@@ -63,11 +63,13 @@ Při zadání možnosti šifrování na datový proud, vytvořte **obsahu zásad
 
 Následující obrázek ukazuje pracovní postup služby Media Services content protection: 
 
-![Ochrana obsahu](./media/concepts/content-protection.png)
+![Ochrana obsahu](./media/content-protection/content-protection.svg)
+
+&#42;* dynamického šifrování podporuje AES-128 "nezašifrovaný klíč", CBCS a CENC. 
 
 Služba Media Services můžete použít **dynamických manifestů** Streamovat pouze konkrétní verze nebo subclips vašeho videa. V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: HLS, MPEG DASH a Smooth.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
 
-![Interpretace filtrování](./media/concepts/media-services-rendition-filter.png)
+![Interpretace filtrování](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
 - [Dynamické balení](dynamic-packaging-overview.md)
 - [Koncové body streamování](streaming-endpoint-concept.md)
@@ -84,7 +86,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 
 Následující obrázek ukazuje pracovní postup předávací typu:
 
-![Předávací](./media/concepts/pass-through.png)
+![Předávací](./media/live-streaming/pass-through.svg)
 
 - [Přehled živého streamování](live-streaming-overview.md)
 - [Události v reálném čase a živé výstupy](live-events-outputs-concept.md)

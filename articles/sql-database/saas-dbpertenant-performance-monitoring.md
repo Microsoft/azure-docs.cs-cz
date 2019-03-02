@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004624"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215162"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 
@@ -57,7 +57,7 @@ Fondů a databází ve fondech, by měl být monitorovat tak zajistilo že jejic
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a upozorňování je specifické podle prostředků, takže je pohodlné používat ho u malého počtu prostředků, ale není příliš pohodlné při práci s mnoha prostředky.
 
-U velkoobjemových scénářů, ve kterém pracujete s mnoha prostředky, [Log Analytics](saas-dbpertenant-log-analytics.md) lze použít. Toto je samostatná služba Azure, která poskytuje analýzy přes vydávané diagnostické protokoly a telemetrii získanou v pracovním prostoru log analytics. Log Analytics může shromažďovat telemetrii z mnoha služeb a použije k dotazování a nastavování výstrah.
+U velkoobjemových scénářů, ve kterém pracujete s mnoha prostředky, [protokoly Azure monitoru](saas-dbpertenant-log-analytics.md) lze použít. Toto je samostatná služba Azure, která poskytuje analýzy přes vydávané diagnostické protokoly a telemetrii získanou v pracovním prostoru Log Analytics. Protokoly služby Azure Monitor může shromažďovat telemetrii z mnoha služeb a použije k dotazování a nastavování výstrah.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS databáze na Tenanta
 
@@ -247,4 +247,4 @@ V tomto kurzu se naučíte:
 * Další [kurzy, které vycházejí z nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md) – kurz Nastavení a používání Log Analytics
+* [Protokoly Azure monitoru](saas-dbpertenant-log-analytics.md) – nastavení a používání kurzu protokoly Azure monitoru

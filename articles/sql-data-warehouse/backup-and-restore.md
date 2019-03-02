@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 09/06/2018
+ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d2c7fbba8184fba81be5e93eae1dd816687ecb4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e9cf4fd448527e8104883e1c23c8c4b64fde3f0d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992664"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213632"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 
@@ -97,6 +97,10 @@ Můžete zachovat obnovené datového skladu a aktuální, nebo odstraňte jednu
 Chcete-li obnovit datový sklad, přečtěte si téma [obnovení datového skladu pomocí webu Azure portal](sql-data-warehouse-restore-database-portal.md), [obnovit data warehouse pomocí prostředí PowerShell](sql-data-warehouse-restore-database-powershell.md), nebo [obnovení datového skladu pomocí rozhraní REST API](sql-data-warehouse-restore-database-rest-api.md).
 
 Chcete-li obnovit odstraněné nebo pozastaveného datového skladu, můžete [vytvořit lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md).
+
+## <a name="cross-subscription-restore"></a>Různé obnovení
+
+Pokud je potřeba přímo obnovení předplatného, hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Obnovit na jiný logický server a ["Přesun"](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) serveru mezi předplatnými provést obnovení mezi předplatnými. 
 
 ## <a name="geo-redundant-restore"></a>Geograficky redundantní obnovení
 

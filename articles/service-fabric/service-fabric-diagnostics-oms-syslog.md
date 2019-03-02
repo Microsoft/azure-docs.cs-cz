@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 25452d3d65518511c47087d1cb712d0a512416fc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297663"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245552"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
 
 Service Fabric poskytuje sadu událostí platformy, které informují o důležitých aktivit ve vašem clusteru. Úplný seznam událostí, které jsou vystaveny je k dispozici [tady](service-fabric-diagnostics-event-generation-operational.md). Existují různé způsoby, pomocí kterého můžete využívat tyto události. V tomto článku budeme diskutovat o tom, jak nakonfigurovat Service Fabric zapsat tyto události do protokolu Syslog.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="introduction"></a>Úvod
 
@@ -93,8 +95,8 @@ Tady jsou změny provádět volání
     }
 ```
 
-## <a name="log-analytics-integration"></a>Integrace analýzy protokolů
-Tyto události protokolu Syslog v monitorování nástroje, jako je Log Analytics může číst. Pracovní prostor Log Analytics můžete vytvořit pomocí webu Azure Marketplace pomocí těchto [pokynů]. (.. / azure-monitor/learn/quick-create-workspace.md) budete také muset přidat agenta Log Analytics ke svému clusteru pro shromažďování a odesílání dat do pracovního prostoru. Toto je stejný agent, kterého používá ke shromažďování čítačů výkonu. 
+## <a name="azure-monitor-logs-integration"></a>Integrace protokolů Azure Monitor
+Můžete číst tyto události protokolu Syslog v monitorovacího nástroje, jako jsou protokoly Azure monitoru. Pracovní prostor Log Analytics můžete vytvořit pomocí webu Azure Marketplace pomocí těchto [pokynů]. (.. / azure-monitor/learn/quick-create-workspace.md) budete také muset přidat agenta Log Analytics ke svému clusteru pro shromažďování a odesílání dat do pracovního prostoru. Toto je stejný agent, kterého používá ke shromažďování čítačů výkonu. 
 
 1. Přejděte `Advanced Settings` okno
 
@@ -120,6 +122,6 @@ V příkladu výše je NodeDown události. Můžete zobrazit úplný seznam udá
 
 ## <a name="next-steps"></a>Další postup
 * [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
-* [Návrhář zobrazení použít k vytváření vlastních zobrazení v Log Analytics](../log-analytics/log-analytics-view-designer.md)
-* Referenční informace o [Log Analytics integrace se Syslogem](../log-analytics/log-analytics-data-sources-syslog.md).
+* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
+* [Použít návrháře zobrazení pro vytváření vlastních zobrazení v protokoly Azure monitoru](../log-analytics/log-analytics-view-designer.md)
+* Referenční informace o [protokoly Azure monitoru integrace se Syslogem](../log-analytics/log-analytics-data-sources-syslog.md).

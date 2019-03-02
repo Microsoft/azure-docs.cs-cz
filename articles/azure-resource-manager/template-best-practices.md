@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 121011555d0ba6fdae392275495b89a9759f3978
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490375"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244260"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manageru šablony osvědčené postupy
 
@@ -131,7 +131,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
 
 ## <a name="variables"></a>Proměnné
 
-Následující informace mohou být užitečné při práci s [proměnné](resource-manager-templates-variables.md):
+Následující informace mohou být užitečné při práci s [proměnné](resource-group-authoring-templates.md#variables):
 
 * Použijte proměnné pro hodnoty, které je nutné použít více než jednou v šabloně. Pokud hodnota je použit pouze jednou, pevně zakódované hodnotu díky šablony snadněji čtou.
 
@@ -277,7 +277,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
 
 ## <a name="outputs"></a>Výstupy
 
-Pokud použijete šablonu k vytvoření veřejné IP adresy, přidejte [výstupy části](resource-manager-templates-outputs.md) , který vrátí podrobnosti o IP adresu a plně kvalifikovaný název domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
+Pokud použijete šablonu k vytvoření veřejné IP adresy, přidejte [výstupy části](resource-group-authoring-templates.md#outputs) , který vrátí podrobnosti o IP adresu a plně kvalifikovaný název domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
 
 ```json
 "outputs": {

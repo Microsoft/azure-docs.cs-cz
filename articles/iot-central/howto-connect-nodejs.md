@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b22d719a25a93e1dffdba848e18f732b31e6e67d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194797"
+ms.locfileid: "57214516"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -269,11 +269,11 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 
     ![Zobrazení telemetrických dat](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Dlaždice vlastnosti zařízení budou aktualizováni, pokud je připojení úspěšné. 
+* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Dlaždice vlastnosti zařízení jsou aktualizovány, pokud je připojení úspěšné.
 
     ![Zobrazení vlastností zařízení](media/howto-connect-nodejs/viewproperties.png)
 
-* Nastavte ventilátor rychlost a cíl teploty od **nastavení** stránky. Nastavení hodnoty se budou synchronizovat, pokud je připojení úspěšné. 
+* Nastavte ventilátor rychlost a cíl teploty od **nastavení** stránky. Hodnoty nastavení synchronizace, pokud je připojení úspěšné.
 
     ![Ventilátor rychlost set](media/howto-connect-nodejs/setfanspeed.png)
 

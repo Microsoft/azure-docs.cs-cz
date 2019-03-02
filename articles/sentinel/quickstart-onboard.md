@@ -4,7 +4,7 @@ description: Zjistěte, jak shromažďovat data v Azure Sentinelu.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c5f4c73bb516172773f6aad5e5393db6d40b3d5
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c711ea3636a3ea045b4a145481f9da156b8c5bfc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992912"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246980"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -63,7 +63,7 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 6. Klikněte na tlačítko **přidat Azure Sentinel**.
   
 
-## <a name="connect-data-sources"></a>Připojení zdroje dat
+## <a name="connect-data-sources"></a>Připojení zdrojů dat
 
 Azure Sentinel vytvoří připojení ke službám a aplikace připojuje ke službě a jejich předávání událostí a protokolů Sentinelu Azure. Pro počítače a virtuální počítače můžete nainstalovat agenta, který shromažďuje protokoly a předává je na Azure Sentinelu Sentinelu Azure. Brány firewall a proxy servery využívá Azure Sentinelu serveru protokolu Syslog v Linuxu. Je na něm nainstalován agent a ze které agent shromažďuje protokolu, souborů a předává je na Azure Sentinelu. 
  

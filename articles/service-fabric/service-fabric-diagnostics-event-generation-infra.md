@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 58bad793ba44ae91d75324257f55648cf3207cd0
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 90ec06b01b11b5cbe119f41483eaf794af4e991b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291436"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243087"
 ---
 # <a name="monitoring-the-cluster"></a>Monitorování clusteru
 
@@ -90,13 +90,13 @@ Seznam čítačů výkonu k získání při použití Service Fabric najdete v t
 Tady jsou dvě běžné způsoby, ve kterých můžete nastavit shromažďování dat výkonu pro váš cluster:
 
 * **Pomocí agenta**  
-Toto je upřednostňovaný způsob shromažďování výkonu z počítače, protože agenti mají obvykle seznam možného výkonu metriky, které se můžou shromažďovat, a je poměrně snadné procesu zvolit metriky, které chcete shromažďovat nebo změnit. Přečtěte si o Azure Monitor nabízí Log Analytics v Service Fabric [Log Analytics integrace](service-fabric-diagnostics-event-analysis-oms.md) a [nastavení agenta Log Analytics](../log-analytics/log-analytics-windows-agent.md) získat další informace o agenta Log Analytics, což je jedna agent takové monitorování, která je možné ke sbírání údaje o výkonu pro virtuální počítače clusteru a nasazení kontejnerů.
+Toto je upřednostňovaný způsob shromažďování výkonu z počítače, protože agenti mají obvykle seznam možného výkonu metriky, které se můžou shromažďovat, a je poměrně snadné procesu zvolit metriky, které chcete shromažďovat nebo změnit. Přečtěte si o Azure Monitor nabízí Azure Monitor protokoly v Service Fabric [integrace protokolů Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md) a [nastavení agenta Log Analytics](../log-analytics/log-analytics-windows-agent.md) získat další informace o agenta Log Analytics, která je jeden takový agent monitorování, která je možné ke sbírání údaje o výkonu pro virtuální počítače clusteru a nasazení kontejnerů.
 
 * **Čítače výkonu pro Azure Table Storage**  
 Metriky výkonu můžete také odeslat ke stejnému úložišti tabulek jako události. To vyžaduje změnu konfigurace diagnostiky Azure ke sbírání čítačů výkonu odpovídající z virtuálních počítačů v clusteru a povolení ho ke sbírání statistiky dockeru, pokud budete současně nasazovat žádné kontejnery. Přečtěte si informace o konfiguraci [čítače výkonu v WAD](service-fabric-diagnostics-event-aggregation-wad.md) v Service Fabric k nastavení kolekce čítačů výkonu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Přečtěte si informace o Service Fabric [Log Analytics integrace](service-fabric-diagnostics-event-analysis-oms.md) shromažďovat diagnostické clusteru a vytvoření vlastních dotazů a výstrahy
+* Přečtěte si informace o Service Fabric [integrace protokolů Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md) shromažďovat diagnostické clusteru a vytvoření vlastních dotazů a výstrahy
 * Další informace o Service Fabric v sestavených diagnostického prostředí [Eventstoru](service-fabric-diagnostics-eventstore.md)
 * Provede některé [běžné scénáře diagnostických](service-fabric-diagnostics-common-scenarios.md) v Service Fabric

@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 8e30edcc7a600088693de57264665f5ffff3842a
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: af95c07b43682322693aed18b6bcf58ca70291d1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300729"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242781"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Přidat Linuxové Image do služby Azure Stack
 
@@ -38,7 +38,7 @@ Všimněte si, že jsou časté aktualizace do těchto bitových kopií, tak spr
 
 Kdykoli je to možné, stáhněte si Image, která je dostupná prostřednictvím webu Marketplace správu, který byl předem připraven a testovat pro službu Azure Stack.
 
-Agent Azure Linux (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je povinné a ne všechny verze agenta práce ve službě Azure Stack. Používejte verze 2.2.20 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
+Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné použít, a ne všechny verze agenta bude fungovat ve službě Azure Stack. Pokud vytvoříte vlastní image by měl používat nejnovější verze WALA nebo 2.2.20. Všimněte si, že verze mezi 2.2.20 a 2.2.36 nebudou fungovat ve službě Azure Stack. Všimněte si, že [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 
 Můžete připravit své vlastní image s Linuxem podle následujících pokynů:
 

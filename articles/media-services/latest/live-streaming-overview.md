@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: juliako
-ms.openlocfilehash: e90dd052f6a4af83d2dd794dd405a4700da75bde
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0f63896239615699db63c9f48be6b291208408db
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656330"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247167"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -42,6 +42,7 @@ Informace o tom živého streamování pracovního postupu v Media Services v3, 
 
 - [Koncové body streamování](streaming-endpoint-concept.md)
 - [Události v reálném čase a živé výstupy](live-events-outputs-concept.md)
+- [Lokátory streamování](streaming-locators-concept.md)
 
 ## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 

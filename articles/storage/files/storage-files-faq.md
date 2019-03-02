@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f53df953d0a879d029a1cae3819a0e3154bd8f75
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562381"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213853"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -244,6 +244,12 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
    Služba soubory Azure se spouští nad rámec stejné architektury úložiště, který se používá v dalších službách úložiště ve službě Azure Storage. Služba soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů pro data služby Azure Storage najdete [nabídek dodržování předpisů služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)a přejděte [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Místní přístup
+
+* <a id="port-445-blocked"></a>
+**Připojte své poskytovatele internetových služeb nebo IT bloky Port 445, které se nedaří soubory Azure. Co bych měl/a dělat?**
+
+    Informace o [různé způsoby, jak řešení blokované portu 445 zde](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Služba soubory Azure umožňuje pouze připojení přes protokol SMB 3.0 (s podporou šifrování) z mimo oblasti nebo datového centra. Protokol SMB 3.0 přináší mnoho funkcí zabezpečení, včetně šifrování kanálu, který je vysoce zabezpečená na používání přes internet. Ale jeho možné, že port 445 zablokovaný z historických důvodů slabých míst v nižší verze protokolu SMB. V ideálním případě by měly být blokovány port pro pouze pro přenosy SMB 1.0 a protokol SMB 1.0 by bylo vypnuto na všech klientských počítačích.
+
 * <a id="expressroute-not-required"></a>
 **Máte připojení do služby soubory Azure pomocí Azure ExpressRoute nebo použít Azure File Sync v místním?**  
 

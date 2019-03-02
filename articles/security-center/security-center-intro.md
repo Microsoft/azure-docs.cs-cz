@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109040"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242033"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -128,7 +128,7 @@ Security Center obsahuje funkce, které vám pomůžou provést automatické kla
 
 ## <a name="get-secure-faster"></a>Zajištění zabezpečení rychleji
 
-Nativní integrace se službou Azure (včetně Azure Policy a Log Analytics) v kombinaci s bezproblémovou integraci s další řešení zabezpečení, jako je Microsoft Cloud App Security a Windows Defender Advanced Threat Protection nápovědy, ujistěte se, že vaše zabezpečení společnosti Microsoft řešení je komplexní, jakož i jednoduchý na připojení a zavedení.
+Nativní integrace se službou Azure (včetně zásad Azure a Azure Monitor protokoly) v kombinaci s bezproblémovou integraci s jinými řešeními zabezpečení Microsoftu, jako je Microsoft Cloud App Security a rozšířené ochrany před internetovými útoky programu Windows Defender pomoct, ujistěte se, že vaše zabezpečení řešení je komplexní, jakož i jednoduchý na připojení a zavedení.
 
 Kromě toho můžete rozšířit nad rámec Azure kompletní řešení pro úlohy běžící v jiných cloudech a v místních datových centrech.
 

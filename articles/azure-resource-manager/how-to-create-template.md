@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: abfc7ce78e8676e9560621be1ec9a81717d958e5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a802b12f34c5fe16202f55416a698823e55c01bb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994279"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245892"
 ---
 # <a name="create-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
 
 Tento článek popisuje proces a rozhodnutí, která učiníte při vytváření šablony Azure Resource Manageru. Poskytuje přehled o příklady a funkce, které vám mohou pomoci při vytváření šablony. Tento článek předpokládá, že nasazujete prostředky do skupiny prostředků. Pokud je potřeba nasadit prostředky ke svému předplatnému Azure, jako je například vytváření zásady Azure nebo přiřazení řízení přístupu na základě rolí naleznete v tématu [vytvoření skupiny prostředků a prostředků pro předplatné Azure](deploy-to-subscription.md).
 
-## <a name="select-json-editor"></a>Vyberte JSON editor
+## <a name="select-json-editor"></a>Select JSON editor
 
 Šablona Resource Manageru je soubor JSON. Je nutné nástroj vhodný pro vytváření obsahu pro práci na souboru JSON. Máte celou řadu možností, ale pokud ještě nemáte editor, který preferujete, nainstalujte [Visual Studio Code (VS Code)](https://code.visualstudio.com/). 
 
@@ -40,13 +40,13 @@ Pojďme se podívat na části šablonu, kterou chcete pochopit, jak funguje ša
 
 * [Parametry](resource-manager-templates-parameters.md) části, která zobrazuje hodnoty můžete zadat během nasazování přizpůsobit infrastrukturu, která je nasazená. 
 
-* [Proměnné](resource-manager-templates-variables.md) oddíl, který obsahuje hodnoty, které se používají v šabloně.
+* [Proměnné](resource-group-authoring-templates.md#variables) oddíl, který obsahuje hodnoty, které se používají v šabloně.
 
 * [Funkce](resource-group-authoring-templates.md#functions) oddílu, který ukazuje přizpůsobené výrazy šablony, které se používají ve vaší šabloně.
 
 * [Prostředky](resource-manager-templates-resources.md) oddílu, který ukazuje prostředky Azure, které jsou nasazené do vašeho předplatného.
 
-* [Výstupy](resource-manager-templates-outputs.md) oddílu, který zobrazuje hodnoty, které se vrátí po dokončení nasazení.
+* [Výstupy](resource-group-authoring-templates.md#outputs) oddílu, který zobrazuje hodnoty, které se vrátí po dokončení nasazení.
 
 ## <a name="look-for-similar-templates"></a>Hledat podobné šablony
 

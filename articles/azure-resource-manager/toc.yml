@@ -59,22 +59,17 @@ items:
     - name: Parametry
       href: resource-manager-templates-parameters.md
     - name: Proměnné
-      href: resource-manager-templates-variables.md
+      href: resource-group-authoring-templates.md#variables
     - name: Functions
       href: resource-group-authoring-templates.md#functions
     - name: Zdroje a prostředky
       href: resource-manager-templates-resources.md
     - name: Výstupy
-      href: resource-manager-templates-outputs.md
-  - name: Doprovodné materiály
-    items:
-    - name: Osvědčené postupy pro šablony
-      href: template-best-practices.md
-    - name: Zásady správného řízení pro předplatná
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
-      maintainContext: true
-    - name: Šablony pro konzistenci cloudu
-      href: templates-cloud-consistency.md
+      href: resource-group-authoring-templates.md#outputs
+  - name: Osvědčené postupy pro šablony
+    href: template-best-practices.md
+  - name: Šablony pro konzistenci cloudu
+    href: templates-cloud-consistency.md
   - name: Poskytovatelé a typy prostředků
     href: resource-manager-supported-services.md
   - name: Skupiny pro správu
@@ -265,9 +260,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 061f23dd0f25fccdbcfe459dc71f998319b06d58
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: cb2e9b6d12acfb6fff514fc5e2603d9531acd76f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886685"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241678"

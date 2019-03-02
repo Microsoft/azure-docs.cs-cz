@@ -1,6 +1,6 @@
 ---
-title: Použití Log Analytics s víceklientských aplikací SQL Database | Dokumentace Microsoftu
-description: Nastavit a používat službu Log Analytics s víceklientské aplikace Azure SQL Database SaaS
+title: Protokoly Azure monitoru pomocí víceklientské aplikace SQL Database | Dokumentace Microsoftu
+description: Nastavit a začít používat Azure Monitor protokoly s víceklientské aplikace Azure SQL Database SaaS
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,22 +12,24 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b283f2691d2cb3135007a752348a8d9759e870f5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475138"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214159"
 ---
-# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Nastavit a používat službu Log Analytics s víceklientské aplikace SaaS databáze SQL
+# <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Nastavit a začít používat Azure Monitor protokoly s víceklientské aplikace SaaS databáze SQL
 
-V tomto kurzu, můžete nastavit a používat Azure [Log Analytics](/azure/log-analytics/log-analytics-overview) monitorování elastických fondů a databází. Tento kurz vychází [kurzu monitorování a správa výkonu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat službu Log Analytics k posílení monitorování a upozorňování k dispozici na webu Azure Portal. Log Analytics podporuje monitorování tisíce elastických fondů a stovky tisíc databází. Log Analytics poskytuje jedno řešení pro monitorování, které může integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
+V tomto kurzu, můžete nastavit a používat [protokoly Azure monitoru](/azure/log-analytics/log-analytics-overview) monitorování elastických fondů a databází. Tento kurz vychází [kurzu monitorování a správa výkonu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat Azure Monitor protokoly k posílení monitorování a upozorňování k dispozici na webu Azure Portal. Azure Monitor protokoly podporuje monitorování tisíce elastických fondů a stovky tisíc databází. Protokoly Azure monitoru poskytuje jedno řešení pro monitorování, které může integrovat monitorování různých aplikací a služeb Azure napříč několika předplatnými Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Instalace a konfigurace Log Analytics.
-> * Monitorování fondů a databází pomocí Log Analytics.
+> * Nainstalujte a nakonfigurujte protokoly Azure monitoru.
+> * Použití protokolů Azure Monitor k monitorování fondů a databází.
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -36,11 +38,11 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 Zobrazit [kurzu monitorování a správa výkonu](saas-dbpertenant-performance-monitoring.md) diskuzi o scénáře SaaS a vzory a způsob, jakým ovlivňují požadavky na řešení pro monitorování.
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Monitorování a správu databáze a elastického fondu výkonu pomocí Log Analytics
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-azure-monitor-logs"></a>Monitorování a správu databáze a elastického fondu výkonu s protokoly Azure monitoru
 
 Pro službu Azure SQL Database monitorování a upozorňování k dispozici v databázích a fondech na webu Azure Portal. Toto integrované monitorování a upozorňování je vhodné, ale je také specifické podle prostředků. To znamená, že to je méně vhodné pro monitorování velkých instalací nebo poskytovat jednotné zobrazení napříč prostředky a předplatnými.
 
-Log Analytics můžete použít pro monitorování a upozorňování pro velkoobjemových scénářů. Log Analytics je samostatná služba Azure, která umožňuje analytics přes diagnostické protokoly a telemetrii, která jsou shromážděna v pracovním prostoru z potenciálně mnoha služeb. Log Analytics poskytuje integrovaný dotazovací jazyk a nástroje vizualizace dat umožňující analýzy provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných elastických fondů a databázi sledování a výstrah zobrazení a dotazů. Log Analytics poskytuje také vlastní Návrhář zobrazení.
+U scénářů s vysokými objemy můžete protokoly Azure monitoru pro monitorování a upozorňování. Azure Monitor je samostatná služba Azure, která umožňuje analytics přes diagnostické protokoly a telemetrii, která jsou shromážděna v pracovním prostoru z potenciálně mnoha služeb. Protokoly Azure monitoru poskytuje integrovaný dotazovací jazyk a nástroje vizualizace dat umožňující analýzy provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných elastických fondů a databázi sledování a výstrah zobrazení a dotazů. Protokoly Azure monitoru poskytuje také vlastní Návrhář zobrazení.
 
 Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics. Na webu Azure Portal otevřete log Analytics pracovní prostory a analytická řešení. Na webu Azure portal je novější přístupový bod, ale může být, co je za portálu Operations Management Suite v některých oblastech.
 
@@ -63,27 +65,27 @@ Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 SaaS aplikace Wingtip Tickets víceklientské databázové skripty a zdrojový kód aplikace, které jsou k dispozici v [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) úložiště GitHub. Pokyny ke stažení a odblokování skriptů aplikace Wingtip Tickets Powershellu najdete v článku [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md).
 
-## <a name="install-and-configure-log-analytics-and-the-azure-sql-analytics-solution"></a>Instalace a konfigurace Log Analytics a řešení Azure SQL Analytics
+## <a name="install-and-configure-log-analytics-workspace-and-the-azure-sql-analytics-solution"></a>Instalace a konfigurace pracovního prostoru Log Analytics a řešení Azure SQL Analytics
 
-Log Analytics je samostatná služba, která musí být nakonfigurované. Log Analytics shromažďuje data protokolu, telemetrie a metrik v pracovním prostoru Log Analytics. Stejně jako ostatní prostředky v Azure musí se vytvořit pracovní prostor Log Analytics. Pracovní prostor není nutné vytvořit ve stejné skupině prostředků jako aplikace, které monitorují. To tak často ale dává největší smysl. Pro aplikace Wingtip Tickets pomocí jedné skupiny prostředků zajistit, aby že pracovní prostor se odstraní společně s aplikací.
+Azure Monitor je samostatná služba, která musí být nakonfigurované. Azure Monitor zaznamená v pracovním prostoru Log Analytics shromažďuje data protokolu, telemetrie a metriky. Stejně jako ostatní prostředky v Azure musí se vytvořit pracovní prostor Log Analytics. Pracovní prostor není nutné vytvořit ve stejné skupině prostředků jako aplikace, které monitorují. To tak často ale dává největší smysl. Pro aplikace Wingtip Tickets pomocí jedné skupiny prostředků zajistit, aby že pracovní prostor se odstraní společně s aplikací.
 
 1. Otevřít v PowerShell ISE *... \\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\monitorování a správa výkonu\\Log Analytics\\Demo-LogAnalytics.ps1*.
 1. Stisknutím klávesy F5 spusťte skript.
 
-Nyní můžete otevřít Log Analytics na portálu Azure portal. Trvá několik minut, než ke shromažďování telemetrických dat v pracovním prostoru Log Analytics a zprůhlední je. Čím déle necháte systém shromažďování diagnostických dat, tím zajímavější výsledné prostředí funguje. 
+Teď můžete otevřít na webu Azure Portal protokoly Azure monitoru. Trvá několik minut, než ke shromažďování telemetrických dat v pracovním prostoru Log Analytics a zprůhlední je. Čím déle necháte systém shromažďování diagnostických dat, tím zajímavější výsledné prostředí funguje. 
 
-## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Monitorování fondů a databází pomocí Log Analytics a řešení SQL Analytics
+## <a name="use-log-analytics-workspace-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Monitorování fondů a databází pomocí pracovního prostoru Log Analytics a řešení SQL Analytics
 
 
-V tomto cvičení otevřete Log Analytics na webu Azure Portal se podívat na telemetrii získanou pro databáze a fondy.
+V tomto cvičení otevřete pracovní prostor Log Analytics na webu Azure Portal se podívat na telemetrii získanou pro databáze a fondy.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** otevřete Log Analytics. Potom vyhledejte Log Analytics.
+1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** otevřete pracovní prostor Log Analytics. Potom vyhledejte Log Analytics.
 
-   ![Open Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
+   ![Otevřete pracovní prostor Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
 1. Vyberte pracovní prostor s názvem _wtploganalytics -&lt;uživatele&gt;_.
 
-1. Vyberte **Přehled** k otevření řešení Log Analytics na portálu Azure Portal.
+1. Vyberte **přehled** k otevření řešení log analytics na webu Azure Portal.
 
    ![Přehled](media/saas-dbpertenant-log-analytics/click-overview.png)
 
@@ -98,7 +100,7 @@ V tomto cvičení otevřete Log Analytics na webu Azure Portal se podívat na te
 
 1. Prozkoumat na stránce souhrnu, vyberte dlaždice nebo jednotlivé databáze procházení Průzkumníka můžete otevřít.
 
-    ![Řídicí panel log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
+    ![Řídicí panel log analytics](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
 1. Změňte nastavení filtru na Upravit časový rozsah. Pro účely tohoto kurzu vyberte **poslední 1 hodina**.
 
@@ -131,11 +133,11 @@ V tomto cvičení otevřete Log Analytics na webu Azure Portal se podívat na te
 
 V pracovním prostoru Log Analytics můžete prozkoumat další data protokolů a metrik. 
 
-Monitorování a upozorňování v Log Analytics jsou založené na dotazech na data v pracovním prostoru, na rozdíl od výstrah definované u jednotlivých prostředků na webu Azure Portal. Pomocí šablony oznámení pro dotazy, můžete definovat jedinou výstrahu, která vypadá za všechny databáze místo definování jeden na databázi. Dotazy jsou omezené pouze podle data, která je k dispozici v pracovním prostoru.
+Monitorování a výstrah ve službě Azure Monitor protokoly jsou založené na dotazech na data v pracovním prostoru, na rozdíl od výstrah definované u jednotlivých prostředků na webu Azure Portal. Pomocí šablony oznámení pro dotazy, můžete definovat jedinou výstrahu, která vypadá za všechny databáze místo definování jeden na databázi. Dotazy jsou omezené pouze podle data, která je k dispozici v pracovním prostoru.
 
-Další informace o tom, jak používat službu Log Analytics k dotazování a nastavování upozornění, najdete v části [pracovat pravidla upozornění v Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Další informace o tom, jak používat Azure Monitor protokoly k dotazování a nastavování upozornění najdete v tématu [práce s pravidla výstrah ve službě Azure Monitor protokoly](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
-Log Analytics pro SQL Database poplatky stanovené podle objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili bezplatný pracovní prostor, což je omezený na 500 MB za den. Po dosažení tohoto limitu se data je již přidána do pracovního prostoru.
+Protokoly Azure monitoru pro SQL Database poplatky stanovené podle objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili bezplatný pracovní prostor, což je omezený na 500 MB za den. Po dosažení tohoto limitu se data je již přidána do pracovního prostoru.
 
 
 ## <a name="next-steps"></a>Další postup
@@ -143,12 +145,12 @@ Log Analytics pro SQL Database poplatky stanovené podle objemu dat v pracovním
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Instalace a konfigurace Log Analytics.
-> * Monitorování fondů a databází pomocí Log Analytics.
+> * Nainstalujte a nakonfigurujte protokoly Azure monitoru.
+> * Použití protokolů Azure Monitor k monitorování fondů a databází.
 
 Zkuste [kurz analýza Tenanta](saas-dbpertenant-log-analytics.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
 * [Další kurzy, které vycházejí z počátečního nasazení databáze na tenanta aplikace SaaS aplikace Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)
+* [Protokoly Azure Monitoru](../azure-monitor/insights/azure-sql.md)

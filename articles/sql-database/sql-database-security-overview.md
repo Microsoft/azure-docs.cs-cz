@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235984"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213921"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -84,7 +84,7 @@ Přehled oprávnění ve službě Azure SQL Database najdete v tématu [přihla�
 
 SQL Database chrání vaše zákaznická data tím, že poskytuje možnosti detekce hrozeb a auditování.
 
-### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Auditování SQL v Log Analytics a Event Hubs
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Auditování SQL v Azure Monitor protokoly a Event Hubs
 
 Auditování služby SQL Database sleduje databázové aktivity a pomáhá udržovat dodržování standardů zabezpečení díky zaznamenávání databázových událostí k auditu protokolu v účtu úložiště Azure vlastněné zákazníkem. Auditování umožňuje uživatelům sledovat probíhající databázové aktivity a pomocí analýzy a zkoumání historické aktivity identifikovat potenciální hrozby nebo možné zneužití a narušení zabezpečení. Další informace najdete v článku s [auditování služby SQL Database](sql-database-auditing.md).  
 

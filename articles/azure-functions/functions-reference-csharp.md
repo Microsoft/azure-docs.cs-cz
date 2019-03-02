@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 0a0d003f3d78c6d18938e9c87dd4862f7429d55b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4ef16a932eb50294ff3d1596873295d82f8d894e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728688"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241473"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# (.csx) pro vývojáře odkaz na skript
 
@@ -376,7 +376,7 @@ Informace o tom, jak nahrávat soubory do složky funkce, najdete v části na [
 Adresář obsahující soubor skriptu funkce je automaticky sledované změny sestavení. Chcete-li sledovat změny sestavení v dalších adresářích, přidejte je do `watchDirectories` seznamu v [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>Pomocí balíčků NuGet
-Použití balíčků NuGet v C# funkci, nahrajte *function.proj* soubor do složky funkce v systému souborů aplikace function app. Tady je příklad *function.proj* soubor, který přidá odkaz na *Microsoft.ProjectOxford.Face* verze *1.1.0*:
+Balíčky NuGet používané k 2.x C# funkci, nahrajte *function.proj* soubor do složky funkce v systému souborů aplikace function app. Tady je příklad *function.proj* soubor, který přidá odkaz na *Microsoft.ProjectOxford.Face* verze *1.1.0*:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -390,19 +390,36 @@ Použití balíčků NuGet v C# funkci, nahrajte *function.proj* soubor do slož
 </Project>
 ```
 
-Pokud chcete použít vlastní NuGet informačního kanálu, určit informačního kanálu ve *Nuget.Config* souboru v kořenovém adresáři aplikace Function App. Další informace najdete v tématu [konfigurace NuGet chování](/nuget/consume-packages/configuring-nuget-behavior).
+Pokud chcete použít vlastní NuGet informačního kanálu, určit informačního kanálu ve *Nuget.Config* souboru v kořenovém adresáři aplikace Function App. Další informace najdete v tématu [konfigurace NuGet chování](/nuget/consume-packages/configuring-nuget-behavior). 
 
-### <a name="using-a-extensionscsproj-file"></a>Použití souboru extensions.csproj
+> [!NOTE]
+> V 1.x C# funkce a balíčky NuGet jsou odkazovány pomocí *project.json* souboru místo *function.proj* souboru.
+
+Funkce 1.x, použijte *project.json* souboru místo toho. Tady je příklad *project.json* souboru: 
+
+```json
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "Microsoft.ProjectOxford.Face": "1.1.0"
+      }
+    }
+   }
+}
+```
+
+### <a name="using-a-functionproj-file"></a>Použití souboru function.proj
 
 1. Funkce otevřete na webu Azure Portal. Na kartě protokoly se zobrazí výstup instalace balíčku.
-2. K nahrání *extensions.csproj* souboru, použijte jednu z metod popsaných v [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate) v referenčním tématu pro vývojáře Azure Functions.
-3. Po *extensions.csproj* nahraje soubor, zobrazí se výstup jako v následujícím příkladu ve své funkci je streamování protokolů:
+2. K nahrání *function.proj* souboru, použijte jednu z metod popsaných v [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate) v referenčním tématu pro vývojáře Azure Functions.
+3. Po *function.proj* nahraje soubor, zobrazí se výstup jako v následujícím příkladu ve své funkci je streamování protokolů:
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
 2018-12-14T22:00:48.681 [Information] Starting packages restore
 2018-12-14T22:00:57.064 [Information] Restoring packages for D:\local\Temp\9e814101-fe35-42aa-ada5-f8435253eb83\function.proj...
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\function.proj...
 2018-12-14T22:01:00.844 [Information] Installing Newtonsoft.Json 10.0.2.
 2018-12-14T22:01:01.041 [Information] Installing Microsoft.ProjectOxford.Common.DotNetStandard 1.0.0.
 2018-12-14T22:01:01.140 [Information] Installing Microsoft.ProjectOxford.Face.DotNetStandard 1.0.0.

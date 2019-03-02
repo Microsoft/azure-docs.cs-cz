@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111284"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244566"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
@@ -393,7 +393,7 @@ Kromě toho můžete monitorovat webové aplikace před útoky pomocí WAF proto
 
 Formátovaný protokolu JSON přejde přímo na účet úložiště zákazníka. Mít plnou kontrolu nad tyto protokoly a můžete použít vlastní zásady uchovávání informací.
 
-Tyto protokoly můžete také přijímat do vlastní systém analýz pomocí [Azure Log Integration](https://aka.ms/AzLog). Protokolů WAF je integrovaná taky s [Log Analytics](../log-analytics/log-analytics-overview.md) tak Log Analytics můžete použít k provádění sofistikované podrobných dotazů.
+Tyto protokoly můžete také přijímat do vlastní systém analýz pomocí [Azure Log Integration](https://aka.ms/AzLog). Protokolů WAF je integrovaná taky s [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) tak protokoly Azure Monitor můžete použít k provádění sofistikované podrobných dotazů.
 
 #### <a name="azure-web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -507,7 +507,7 @@ Azure nabízí řadu nástrojů pro monitorování, hrozbami, detekci a reakce n
 
 -   Úroveň sledování síťových prostředků
 
--   Log Analytics
+-   Protokoly Azure monitoru
 
 ### <a name="network-watcher"></a>Sledovací proces sítě
 
@@ -547,7 +547,7 @@ Určuje, [dalšího segmentu směrování](https://docs.microsoft.com/azure/netw
 
 Další směrování také vrátí hodnotu směrovací tabulky přidružené k další segment směrování. Při dotazování na další segment směrování, pokud trasu je definován jako trasy definované uživatelem, vrátí se danou trasu. Další směrování v opačném případě vrátí "Systémová trasa".
 
-#### <a name="security-group-view"></a>zobrazení skupin zabezpečení
+#### <a name="security-group-view"></a>Zobrazení skupiny zabezpečení
 
 Získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači. Skupiny zabezpečení sítě jsou spojeny na úrovni podsítě nebo na úrovni síťové karty. Pokud se související na úrovni podsítě, platí pro všechny instance virtuálních počítačů v podsíti. Síť [zobrazení skupiny zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) vrátí nakonfigurované skupiny Nsg a pravidla, které jsou spojeny na úrovni síťové karty NIC a podsítě pro virtuální počítač poskytuje přehled o konfiguraci. Kromě toho jsou vráceny platná pravidla zabezpečení pro jednotlivé síťové adaptéry na virtuálním počítači. Zobrazení pomocí skupiny zabezpečení sítě můžete vyhodnotit virtuálního počítače pro zranitelností sítí, jako je otevření portů. Můžete také ověřit, zda vaše skupiny zabezpečení sítě funguje podle očekávání, na základě [srovnání nakonfigurované a platná pravidla zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell).
 
@@ -597,17 +597,17 @@ Metriky jsou čítače shromažďují průběžně a měření výkonu. Metriky 
 
 #### <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech úložiště, odeslané do Log Analytics nebo centra událostí. Tyto protokoly poskytují přehled o stavu prostředku. Tyto protokoly můžete zobrazit v nástrojů, jako je Power BI a Log Analytics. Zjistěte, jak zobrazit diagnostické protokoly, najdete v tématu [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
+Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech úložiště, odeslaná do centra událostí nebo protokoly Azure monitoru. Tyto protokoly poskytují přehled o stavu prostředku. Tyto protokoly můžete zobrazit v nástrojů, jako jsou protokoly Power BI a Azure Monitor. Zjistěte, jak zobrazit diagnostické protokoly, najdete v tématu [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
 
 Diagnostické protokoly jsou k dispozici pro [nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), trasy, a [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
 
 Network Watcher dává zobrazení protokolů diagnostiky. Toto zobrazení obsahuje všechny síťové prostředky, které podporují protokolování diagnostiky. Z tohoto hlediska můžete povolit nebo zakázat síťové prostředky, jednoduše a rychle.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je služba v Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
+[Protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je služba v Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
 
-Log Analytics nabízí následující řešení pro monitorování vaší sítě:
+Protokoly služby Azure Monitor nabízí následující řešení pro monitorování vaší sítě:
 
 -   Network Performance Monitor (NPM)
 
@@ -627,7 +627,7 @@ Používá se k monitorování připojení mezi:
 -   Podsítě poskytující hostování různé úrovně víceúrovňových aplikací.
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Analýzy Azure application gateway ve službě log analytics
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Analýzy Azure application gateway v protokoly Azure monitoru
 
 Tyto protokoly jsou podporovány pro brány Application Gateway:
 
@@ -641,7 +641,7 @@ Pro brány Application Gateway se podporují následující metriky:
 
 -   propustnost 5 minut
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Analýzy skupin zabezpečení sítě Azure v log analytics
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Analýzy skupin zabezpečení sítě Azure v protokoly Azure monitoru
 
 Tyto protokoly jsou podporovány pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
@@ -652,7 +652,7 @@ Tyto protokoly jsou podporovány pro [skupiny zabezpečení sítě](https://docs
 ## <a name="next-steps"></a>Další postup
 Další informace o zabezpečení najdete některé z našich podrobných zabezpečení témata:
 
--   [Log Analytics pro skupiny zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Protokoly Azure monitoru pro skupiny zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [Inovace v oblasti, které řídí přerušení cloudové sítě](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871789"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245236"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
-Azure nabízí integrované funkce detekci pokročilých hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), Azure Log Analytics a Azure Security Center. Tato skupina zabezpečení služeb a možností poskytuje rychlý a jednoduchý způsob, jak pochopit, co se děje ve vašich nasazeních Azure.
+Azure nabízí integrované funkce detekci pokročilých hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), protokoly Azure monitoru a Azure Security Center. Tato skupina zabezpečení služeb a možností poskytuje rychlý a jednoduchý způsob, jak pochopit, co se děje ve vašich nasazeních Azure.
 
 Azure nabízí širokou škálu možnosti konfigurace a vlastního nastavení zabezpečení pro splnění požadavků nasazení aplikací. Tento článek popisuje, jak budou odpovídat vašim požadavkům.
 
@@ -75,17 +75,17 @@ PIM umožňuje:
 
 -   Dostávejte upozornění týkající se přístupu k privilegovanou roli.
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je Microsoftu založené na cloudu IT řešení pro správu, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Protože Log Analytics je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou poskytována automaticky, uložení průběžnou údržbu a upgrade náklady.
+[Protokoly Azure monitoru](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je Microsoftu založené na cloudu IT řešení pro správu, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Protože protokoly Azure Monitor je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou poskytována automaticky, uložení průběžnou údržbu a upgrade náklady.
 
-Kromě poskytování přínosných služeb sama o sobě, Log Analytics může integrovat s komponentami nástroje System Center, jako [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), rozšířit vaše stávající zabezpečení investice do správy do cloudu. System Center a Log Analytics můžete společně poskytují správu úplné hybridní prostředí.
+Kromě poskytování přínosných služeb sama, Azure Monitor protokoly můžete integrovat s součástí produktu System Center, jako [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), rozšířit vaše stávající zabezpečení investice do správy do cloud. Protokoly produktu System Center a Azure Monitor můžete společně poskytují správu úplné hybridní prostředí.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Komplexní zabezpečení a dodržování předpisů, aby detekoval
 
-[Řídicí panel Log Analytics zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje ucelený přehled o vaší organizaci stavu zabezpečení IT pomocí předdefinovaných vyhledávacích dotazů na důležité problémy, které vyžadují vaši pozornost. Řídicí panel zabezpečení a Audit je domovskou obrazovkou pro všechno, co související se zabezpečením v Log Analytics. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události z posledních 24 hodin, 7 dní, nebo všechny vlastní časový rámec.
+[Řídicí panel Log Analytics zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje ucelený přehled o vaší organizaci stavu zabezpečení IT pomocí předdefinovaných vyhledávacích dotazů na důležité problémy, které vyžadují vaši pozornost. Řídicí panel zabezpečení a Audit je domovskou obrazovkou pro všechno, co týkajících se zabezpečení v Azure Monitor protokoly. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události z posledních 24 hodin, 7 dní, nebo všechny vlastní časový rámec.
 
-Log Analytics, vám pomohou rychle a snadno pochopit celkové postavení zabezpečení všech prostředí, všechny v rámci IT operace, včetně softwaru o aktualizaci, posouzení antimalwaru a standardní hodnoty konfigurace. Data protokolu zabezpečení jsou snadno přístupné pro zjednodušení procesu audit zabezpečení a dodržování předpisů.
+Azure Monitor protokoly pomohou vám rychle a snadno zjistit celkové postavení zabezpečení všech prostředí, vše v rámci IT operace, včetně posouzení aktualizací softwaru, posouzení antimalwaru a standardní hodnoty konfigurace. Data protokolu zabezpečení jsou snadno přístupné pro zjednodušení procesu audit zabezpečení a dodržování předpisů.
 
 ![Řídicí panel Log Analytics zabezpečení a Audit](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ Log Analytics, vám pomohou rychle a snadno pochopit celkové postavení zabezpe
 -   **Běžné dotazy na zabezpečení**: Obsahuje seznam nejběžnějších bezpečnostních dotazů, které vám umožní monitorovat vaše prostředí. Při výběru jakéhokoli dotazu v podokně hledání otevře a zobrazí výsledky pro daný dotaz.
 
 ### <a name="insight-and-analytics"></a>Službu Insight and analytics
-V centru [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je úložiště, které je hostovaný v Azure.
+V centru [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je úložiště, které je hostovaný v Azure.
 
 ![Diagram službu Insight and analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Shromažďování dat do úložiště z připojených zdrojů tak, že konfigurace zdroje dat a přidání řešení do vašeho předplatného.
 
-![Řídicí panel Log Analytics](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Řídicí panel protokoly Azure monitoru](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Zdroje dat a řešení vytvořit samostatný záznam typy s vlastní sadu vlastností, ale stále je můžete analyzovat společně v dotazech do úložiště. Můžete stejné nástroje a metody pro práci s širokou škálu dat, která se shromažďují z různých zdrojů.
 
 
-Většina vaší práce s využitím Log Analytics je na webu Azure portal, který běží v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy a reagovat na shromážděná data. Z portálu můžete použít:
+Většina vaší práce s protokoly Azure Monitor je na webu Azure portal, který běží v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy a reagovat na shromážděná data. Z portálu můžete použít:
 * [Prohledávání protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) kde je možné vytvářet dotazy pro analýzy shromážděných dat.
 * [Řídicí panely](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), které můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání.
 * [Řešení](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), která poskytují další funkce a analytické nástroje.
 
 ![Nástroje pro analýzu](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Řešení do služby Log Analytics přidávají funkčnost. Jsou primárně běží v cloudu a poskytují analýzu dat, která se shromažďují v úložišti Log Analytics. Řešení může také definovat nové typy záznamů které se mají shromáždit, které se dají analyzovat pomocí prohledávání protokolu nebo prostřednictvím dalšího uživatelského rozhraní, které toto řešení poskytuje v řídicím panelu Log Analytics.
+Řešení přidávají funkce protokoly Azure monitoru. Jsou primárně běží v cloudu a poskytují analýzu dat, která se shromažďují v úložišti log analytics. Řešení může také definovat nové typy záznamů které se mají shromáždit, které se dají analyzovat pomocí prohledávání protokolu nebo prostřednictvím dalšího uživatelského rozhraní, které toto řešení poskytuje v řídicím panelu log analytics.
 
 Řídicí panel zabezpečení a Audit je příkladem tyto druhy řešení.
 

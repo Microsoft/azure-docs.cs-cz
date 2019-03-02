@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175145"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215587"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Kurz: Kompletní Azure AD samoobslužné resetování hesla pilotní zavedení
 
@@ -42,8 +42,8 @@ Testování samoobslužného resetování hesla musíte provést z účtů bez o
       * Přesvědčte se, že uživatelé ve vybrané skupině mají příslušnou licenci.
    * Klikněte na **Uložit**.
 1. Na stránce **Metody ověřování**
-   * Nastavte **Počet metod nutných pro resetování** na **2**.
-   * Zvolte, které **Metody dostupné pro uživatele** chcete v organizaci povolit. Pro účely tohoto kurzu zaškrtněte políčka povolující **E-mail**, **Mobilní telefon** a **Telefon do kanceláře**.
+   * Nastavte **počet metod požadovaných k resetování** k **1**
+   * Zvolte, které **Metody dostupné pro uživatele** chcete v organizaci povolit. Pro účely tohoto kurzu zaškrtávat políčka a povolit **e-mailu** a **kód mobilní aplikace (preview)**.
    * Klikněte na **Uložit**.
 1. Na stránce **Registrace**
    * U možnosti **Při přihlášení vyžadovat registraci uživatelů** vyberte **Ano**.

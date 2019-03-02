@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3889aa1e8b19e203a3f6354c2d26fb82afe2b922
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958862"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214278"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvoření nové šablony verze zařízení
 
@@ -56,7 +56,7 @@ Co se stane k pravidlům a řídicí panely zařízení, když dojde ke změně 
 
 Můžete vytvořit více verzí šablony zařízení. V průběhu času budou mít více připojenými zařízeními pomocí těchto šablon zařízení. Zařízení z jedné verze šablony zařízení můžete migrovat do jiného. Následující kroky popisují, jak migrovat zařízení:
 
-1. Přejděte **Explorer** stránky.
+1. Přejděte **Device Explorer** stránky.
 1. Vyberte zařízení, které je potřeba migrovat na jinou verzi.
 1. Zvolte **migrovat zařízení**.
 1. Vyberte číslo verze, kterou chcete migrovat zařízení a zvolte **migrace**.

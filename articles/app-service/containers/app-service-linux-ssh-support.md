@@ -4,8 +4,8 @@ description: Další informace o používání SSH se službou Azure App Service
 keywords: azure app service, web app, linux, oss
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3b3a4b6767855fa2f7ba595072b187b7a8bff400
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984460"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215995"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
 
@@ -111,18 +111,6 @@ Pomocí protokolu TCP tunelové propojení, které můžete vytvořit síťové 
 
 Abyste mohli začít, je potřeba nainstalovat [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Chcete-li zjistit, jak to funguje, bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Přidejte nejnovější rozšíření služby App Service spuštěním [přidat rozšíření az](/cli/azure/extension?view=azure-cli-latest#az-extension-add):
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-Pokud jste již spustili `az extension add` , před spuštěním [aktualizace rozšíření az](/cli/azure/extension?view=azure-cli-latest#az-extension-update) místo:
-
-```azurecli-interactive
-az extension update --name webapp
-```
-
 Vytvořit vzdálené připojení k aplikaci pomocí [az webapp-připojení ke vzdálené vytvoření](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) příkazu. Zadejte  _\<předplatné\_id >_,  _\<skupiny\_název >_ a \_< aplikace\_name > _ pro vaši aplikaci.
 
 ```azurecli-interactive
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-Nyní jste připojeni k vašemu konektoru. 
+Nyní jste připojeni k vašemu konektoru.  
 
 Zkuste spustit [horní](https://ss64.com/bash/top.html) příkazu. Byste měli vidět procesu vaší aplikace v seznamu proces. Následující ukázkový výstup je se `PID 263`.
 

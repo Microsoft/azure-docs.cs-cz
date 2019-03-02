@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 24e159ea2cccfdaab9c732835506a1a22abab134
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 68fb7678fac2a0a32278e813d03a0eebd20565ec
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869139"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216035"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
@@ -78,9 +78,6 @@ Do výsledků hledání zahrnout vlastní datovou část, ujistěte se, že **In
 ## <a name="sample-payloads"></a>Ukázkové datové části
 Tato část ukazuje ukázkovou datovou část webhooku pro upozornění protokolů, včetně při datové části je pevná a při jeho vlastní.
 
-> [!NOTE]
-> K zajištění zpětné kompatibility, datová část standardní webhooku pro výstrahy pomocí Azure Log Analytics je stejný jako [správu upozornění Log Analytics](alerts-metric.md). Ale pro výstrahy protokolu pomocí [Application Insights](../../azure-monitor/app/analytics.md), datová část webhooku standardní podle schématu skupiny akcí.
-
 ### <a name="standard-webhook-for-log-alerts"></a>Standardní Webhooku pro výstrahy protokolu 
 Oba tyto příklady uvedli fiktivní datovou část s pouze dvěma sloupci a dva řádky.
 
@@ -118,7 +115,11 @@ Následuje ukázkovou datovou část pro akce webhooku standardní *bez možnost
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Pole hodnoty závažnosti může změnit, pokud máte [přepnout dáváte přednost API](alerts-log-api-switch.md) pro upozornění protokolů v Log Analytics.
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Upozornění protokolu pro službu Azure Application Insights
 Následuje ukázkovou datovou část pro standardní webhook *bez možnosti vlastní Json* pro application insights výstrahy založené na protokolu-.
@@ -154,7 +155,7 @@ Následuje ukázkovou datovou část pro standardní webhook *bez možnosti vlas
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }

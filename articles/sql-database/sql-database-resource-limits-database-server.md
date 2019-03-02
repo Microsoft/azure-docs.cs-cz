@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 670ca1b8ba16122d4e969a41f8679e1a6d1b27c6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 011aa97d44a92feced7328b2bd014395d2c5b765
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990100"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246694"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -73,6 +73,29 @@ Pokud dochází k vysoké využití relace nebo pracovního procesu, možnosti o
 
 - Zvýšení službu úroveň nebo velikost databázi nebo elastický fond – compute úrovně. Zobrazit [škálování izolované databáze prostředků](sql-database-single-database-scale.md) a [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů, aby se snížilo využití prostředků každého dotazu, je-li příčinou využití zvýšenou pracovního procesu je z důvodu kolize pro výpočetní prostředky. Další informace najdete v tématu [dotazu ladění/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
+
+### <a name="transaction-log-rate-governance"></a>Transakční protokol míra zásad správného řízení 
+Transakční protokol míra zásad správného řízení je proces ve službě Azure SQL Database používá k omezení vysoké ingestování účtovat sazby platné pro úlohy, jako jsou hromadné vložení SELECT INTO a sestavení indexu. Tato omezení jsou sledovány a vynucují na úrovni sekunda pro míru generování záznamů protokolu, omezení propustnosti bez ohledu na to, kolik IOs může být vydaný pro datové soubory.  Rychlost generování protokolu transakcí aktuálně se škálují lineárně až bod, který je závislá na hardwaru, pomocí protokolu maximální rychlost povoleno, se 48 MB/s s nákupem modelu virtuálních jader. 
+
+> [!NOTE]
+> Skutečné fyzické soubory transakčních protokolů Iosu se řídí nebo jsou omezena. 
+
+Protokol sazby jsou nastavené tak, že je možné dosáhnout a trvalejší v řadě scénářů, zatímco celkový stav systému můžete spravovat její funkce pomocí minimalizace dopadu na uživatelské zatížení. Zásady správného řízení frekvence protokolu zajišťuje protokol transakce, které zálohy neopustí publikované možnosti obnovení smlouvy o úrovni služeb.  Tento zásad správného řízení také brání nadměrnému nevyřízených položek na sekundárních replikách.
+
+Jak se generují záznamy protokolu, každá operace je vyhodnocen a použit k vyhodnocení, jestli by měl být zpožděné zachování maximální požadovaný protokol rychlost (MB/s za sekundu). Zpoždění nebyly přidány při záznamy protokolu jsou zapsány do úložiště, místo protokolu míra zásad správného řízení se použije při generování protokolu rychlost, samotného.
+
+Generování skutečné protokolu kurzů uložených v době běhu může také být ovlivněn mechanismus zpětné vazby, dočasně snížit sazby povolený protokol tak můžete stabilizaci systému. Správa místo souboru protokolu, jak se vyhnout dochází do protokolu místo podmínky a skupiny dostupnosti mechanismech replikace můžete dočasně snížit omezení celého systému. 
+
+Směrování protokolu míra správce přenosu je prezentované prostřednictvím následujících typů čekání (v [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) zobrazení dynamické správy):
+
+| Počkejte typu | Poznámky |
+| :--- | :--- |
+| LOG_RATE_GOVERNOR | Omezení databáze |
+| POOL_LOG_RATE_GOVERNOR | Omezení fondu |
+| INSTANCE_LOG_RATE_GOVERNOR | Omezení na úrovni instance |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Ovládací prvek zpětnou vazbu, fyzické replikace skupiny dostupnosti v Premium nebo pro důležité obchodní informace není uchování |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Ovládací prvek zpětnou vazbu, omezení sazby zabránit nedostatku místa podmínky protokolu |
+||||
 
 ## <a name="next-steps"></a>Další postup
 

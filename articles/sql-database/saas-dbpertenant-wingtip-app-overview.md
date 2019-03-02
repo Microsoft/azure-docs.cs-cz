@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: bbebfca1684cad600d7ef0cc1a4cff2201fdc07e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c26f042cb749f9ab023e7033ea015b74d87ca92a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566140"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214108"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Úvod do víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 
@@ -46,7 +46,7 @@ Poté, co nasadíte aplikaci, si projděte následující kurzy, které vycháze
 |[Nasazení a zkoumání SaaS aplikace Wingtip aplikace](saas-dbpertenant-get-started-deploy.md)|  Nasazení a zkoumání SaaS aplikace Wingtip aplikace ve vašem předplatném Azure. |
 |[Zřízení a katalog tenantů](saas-dbpertenant-provision-and-catalog.md)| Zjistěte, jak aplikace připojuje klientům pomocí databáze katalogů a jak katalog mapuje tenanty ke svým datům. |
 |[Monitorování a správa výkonu](saas-dbpertenant-performance-monitoring.md)| Zjistěte, jak použít monitorování funkcí služby SQL Database a nastavit upozornění při překročení prahové hodnoty výkonu. |
-|[Monitorování pomocí služby Azure Log Analytics](saas-dbpertenant-log-analytics.md) | Další informace o použití [Log Analytics](../log-analytics/log-analytics-overview.md) k monitorování velkého množství prostředků u více fondů. |
+|[Monitorování s protokoly Azure monitoru](saas-dbpertenant-log-analytics.md) | Další informace o použití [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) k monitorování velkého množství prostředků u více fondů. |
 |[Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)| Zjistěte, jak obnovit databáze tenantů do předchozího bodu v čase. Naučte se obnovit databázi paralelní, což zanechá databázi existujícího tenanta online. |
 |[Správa schémat databází tenantů](saas-tenancy-schema-management.md)| Zjistěte, jak aktualizovat schéma a aktualizace referenčních dat napříč všemi databázemi tenantů. |
 |[Spouštění distribuovaných dotazů napříč tenanty](saas-tenancy-cross-tenant-reporting.md) | Vytvořit analytickou databázi ad hoc a spouštění distribuovaných dotazů v reálném čase ve všech tenantech.  |

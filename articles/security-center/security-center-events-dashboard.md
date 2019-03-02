@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: f1a3268fcacd4083b767a3fe89d6ab9b41b6cceb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114055"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241064"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Sledování a zpracování událostí zabezpečení v Azure Security Center
 Řídicí panel události poskytuje přehled o počet událostí zabezpečení, které jsou shromážděné v průběhu času a seznam významné události, které mohou vyžadovat vaši pozornost.  
@@ -28,6 +28,8 @@ ms.locfileid: "56114055"
 > Pro tuto funkci používat, musí váš pracovní prostor v nich běžet Log Analytics verze 2 a je na Security Center úrovně Standard. Zobrazit Security Center [stránce s cenami](security-center-pricing.md) Další informace o úrovni Standard.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Co je událost zabezpečení?
 Security Center používá agenta Microsoft Monitoring Agent shromažďovat různé zabezpečení související s konfigurací a události z vašeho počítače a uloží tyto události v pracovních prostorech. Příkladem takových dat jsou: protokoly operačního systému (protokoly událostí Windows), spuštění procesů a události z řešení zabezpečení integrované pomocí služby Security Center. Microsoft Monitoring Agent také do vašich pracovní prostorů zkopíruje soubory se stavem systému.
@@ -70,7 +72,7 @@ Přístup **události** řídicího panelu z hlavní nabídky služby Security C
   ![Prohledávání protokolů][6]
 
 ## <a name="add-a-notable-event"></a>Přidat významnou událost
-Security Center poskytuje out-of-the-box významné události. Můžete přidat významné události podle vlastní pomocí dotazu [dotazovací jazyk Log Analytics](../log-analytics/log-analytics-search-reference.md). Vrátí na **řídicí panel události** přidat významnou událost.
+Security Center poskytuje out-of-the-box významné události. Můžete přidat významné události podle vlastní pomocí dotazu [Kusto dotazovací jazyk](../log-analytics/log-analytics-search-reference.md). Vrátí na **řídicí panel události** přidat významnou událost.
 
 1. Vyberte **přidat významnou událost**.
 
@@ -94,7 +96,7 @@ Pokud řádek pracovního prostoru:
 - Prázdné – pracovní prostor splňuje požadavky a vyberete pracovní prostor přejdete na řídicí panel
 
 > [!NOTE]
-> V části **řídicí panel události**, **události** sloupci určuje objem událostí v každém pracovním prostoru.  Tento sloupec je prázdný u některých pracovních prostorů, protože Security Center úrovně Free se použije pro tento pracovní prostor. V části na úrovni Free Security Center bude shromažďovat události ale události nejsou uloženy ve službě Log Analytics a nejsou k dispozici na řídicím panelu.
+> V části **řídicí panel události**, **události** sloupci určuje objem událostí v každém pracovním prostoru.  Tento sloupec je prázdný u některých pracovních prostorů, protože Security Center úrovně Free se použije pro tento pracovní prostor. V části na úrovni Free Security Center bude shromažďovat události ale události nejsou uloženy ve protokoly Azure monitoru a nejsou k dispozici na řídicím panelu.
 >
 >
 
@@ -119,9 +121,9 @@ Pokud řádek pracovního prostoru:
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat řídicí panel Security Center událostí. Další informace o tom, jak funguje řídicí panel a psát dotazy, vlastní událost, najdete v tématu:
 
-- [Co je služba Log Analytics?](../log-analytics/log-analytics-overview.md) – Přehled v Log Analytics
-- [Principy prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak se používají prohledávání protokolů v Log Analytics a poskytuje koncepty, které by měl být srozumitelný před vytvořením prohledávání protokolu
-- [Referenční příručce k vyhledávání log Analytics](../log-analytics/log-analytics-search-reference.md) – zjistěte, jak psát své vlastní dotazy události v protokolu pomocí dotazovacího jazyka
+- [Co je Azure Monitor protokoly?](../log-analytics/log-analytics-overview.md) – Přehled na protokoly Azure monitoru
+- [Principy prohledávání protokolů v Kusto](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak prohledávání protokolů jsou v protokolech Azure Monitor a poskytuje koncepty, které by měl být srozumitelný před vytvořením prohledávání protokolu
+- [Reference ke službě search Kusto](../log-analytics/log-analytics-search-reference.md) – zjistěte, jak psát své vlastní dotazy události v protokolu pomocí dotazovacího jazyka
 
 Další informace o službě Security Center najdete v tématu:
 

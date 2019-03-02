@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5d453fbacb44105c491c9e69085a219099943fa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b1544d73478f30c7501e76a8e20975f975f9708d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326904"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215043"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -234,7 +234,7 @@ except ComputeTargetException:
 
 ## <a id="steps"></a>Vytvoření postupu kanálu k
 
-Po vytvoření a připojení k vašemu pracovnímu prostoru cílového výpočetního prostředí, budete chtít definovat kroku profilace. Nejsou k dispozici prostřednictvím sady SDK Azure Machine Learning mnoho předdefinovaných kroků. Je nejzákladnější z těchto kroků [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), která spouští skript Pythonu v cílové výpočetní prostředí zadané.
+Po vytvoření a připojení k vašemu pracovnímu prostoru cílového výpočetního prostředí, budete chtít definovat kroku profilace. Nejsou k dispozici prostřednictvím sady SDK Azure Machine Learning mnoho předdefinovaných kroků. Je nejzákladnější z těchto kroků [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), která spouští skript Pythonu v cílové zadaný výpočetní prostředí:
 
 ```python
 trainStep = PythonScriptStep(
@@ -281,6 +281,8 @@ steps = [dbStep]
 pipeline1 = Pipeline(workspace=ws, steps=steps)
 ```
 
+Další informace najdete v tématu [balíčku azure kanálu kroky](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) a [kanálu třídy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) odkaz.
+
 ## <a name="submit-the-pipeline"></a>Odeslat kanálu
 
 Při odesílání kanál služby Azure Machine Learning kontroluje závislosti pro každý krok a odešle snímek zdrojový adresář, který jste zadali. Pokud není zadán žádný zdrojový adresář, se nahraje aktuální místní adresář.
@@ -302,6 +304,8 @@ Při prvním spuštění kanálu, Azure Machine Learning:
 * Vytvoří artefaktům, jako jsou protokoly stdout a stderr, metriky a výstup určené v kroku. Tyto artefakty jsou pak nahraje a uloženy v úložišti dat uživatele výchozí.
 
 ![Diagram spuštění experimentu jako kanál](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
+
+Další informace najdete v tématu [experimentovat třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) odkaz.
 
 ## <a name="publish-a-pipeline"></a>Publikování kanálu
 

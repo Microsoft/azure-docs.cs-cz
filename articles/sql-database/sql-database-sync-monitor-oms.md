@@ -1,6 +1,6 @@
 ---
-title: Monitorování synchronizace dat Azure SQL s využitím Log Analytics | Dokumentace Microsoftu
-description: Další informace o monitorování synchronizace dat SQL Azure s využitím Log Analytics
+title: Monitorování synchronizace dat SQL Azure s využitím protokolů Azure Monitor | Dokumentace Microsoftu
+description: Další informace o monitorování synchronizace dat SQL Azure s použitím protokoly Azure monitoru
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,16 +12,18 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 75bbae000fa0fbbf783b3df43bd51ed2f8a73e96
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561412"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213462"
 ---
-# <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorování synchronizace dat SQL s využitím Log Analytics 
+# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorování synchronizace dat SQL s protokoly Azure monitoru 
 
 Synchronizace dat SQL v protokolu aktivit a detekovat chyby a upozornění, dříve museli jste ruční kontrola synchronizace dat SQL na webu Azure Portal nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku můžete nakonfigurovat vlastní řešení, která zvyšuje synchronizace dat možností monitorování. Toto řešení, aby vyhovovala vašemu scénáři můžete přizpůsobit.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
 
@@ -30,27 +32,27 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny synchronizace 
 
-Už nemusíte hledat prostřednictvím protokolů všech skupin synchronizace jednotlivě k vyhledání problémů. Všechny skupiny synchronizace můžete monitorovat z některého z vašich předplatných na jednom místě pomocí vlastního zobrazení Log Analytics. Toto zobrazení poskytuje informace, které je důležité informace pro zákazníky používající synchronizaci dat SQL.
+Už nemusíte hledat prostřednictvím protokolů všech skupin synchronizace jednotlivě k vyhledání problémů. Všechny skupiny synchronizace z některého z vašich předplatných na jednom místě můžete monitorovat pomocí zobrazení vlastní log analytics. Toto zobrazení poskytuje informace, které je důležité informace pro zákazníky používající synchronizaci dat SQL.
 
 ![Řídicí panel monitorování synchronizace dat](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Automatizovaných e-mailových oznámení
 
-Už nemusíte protokolu ručně na webu Azure portal nebo pomocí Powershellu nebo rozhraní REST API. S [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet upozornění, které přejít přímo na e-mailové adresy lidí, třeba zobrazit, když dojde k chybě.
+Už nemusíte protokolu ručně na webu Azure portal nebo pomocí Powershellu nebo rozhraní REST API. S [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet upozornění, které přejít přímo na e-mailové adresy lidí, třeba zobrazit, když dojde k chybě.
 
 ![Data synchronizace e-mailových oznámení](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak můžete nastavit tyto funkce monitorování? 
 
-Implementujte vlastní Log Analytics, řešení pro monitorování pro synchronizaci dat SQL za kratší dobu než hodinu provedením následujících akcí:
+Implementace vlastního monitorování Azure protokolech řešení monitorování synchronizace dat SQL za kratší dobu než hodinu provedením následujících akcí:
 
 Musíte nakonfigurovat tři komponenty:
 
--   Powershellový runbook ke kanálu synchronizace dat SQL data protokolů do Log Analytics.
+-   Powershellový runbook ke kanálu dat protokolu synchronizace dat SQL na protokoly Azure monitoru.
 
--   Upozornění Log Analytics pro e-mailová oznámení.
+-   Upozornění log analytics pro e-mailová oznámení.
 
--   Zobrazení Log Analytics pro monitorování.
+-   Log analytics zobrazení monitorování.
 
 ### <a name="samples-to-download"></a>Ukázky ke stažení
 
@@ -70,7 +72,7 @@ Ujistěte se, že jste nastavili následující věci:
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Powershellový Runbook se získat protokol synchronizace dat SQL 
 
-Načítání dat protokolu synchronizace dat SQL a jeho odeslání do Log Analytics pomocí Powershellového runbooku hostovaná ve službě Azure Automation. Ukázkový skript je v ceně. Předpokladem je musíte mít účet Azure Automation. Je nutné k vytvoření sady runbook a naplánovat jeho spuštění. 
+Pomocí Powershellového runbooku hostovaná ve službě Azure Automation můžete načítat data protokolů synchronizace dat SQL a odeslat protokoly Azure monitoru. Ukázkový skript je v ceně. Předpokladem je musíte mít účet Azure Automation. Je nutné k vytvoření sady runbook a naplánovat jeho spuštění. 
 
 ### <a name="create-a-runbook"></a>Vytvoření runbooku
 
@@ -100,7 +102,7 @@ Další informace o vytvoření sady runbook najdete v tématu [Můj první Powe
 
     2.  Informace o skupině synchronizace.
 
-    3.  Protokolování informací Analytics. Tyto informace najdete na webu Azure Portal | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../azure-monitor/platform/data-collector-api.md).
+    3.  Azure Monitor protokoluje informace. Tyto informace najdete na webu Azure Portal | Nastavení | Připojené zdroje. Další informace o odesílání dat do Azure monitoru protokolů najdete v tématu [odesílání dat do Azure monitoru protokolů pomocí rozhraní API kolekce dat HTTP (preview)](../azure-monitor/platform/data-collector-api.md).
 
 11. Spustíte sadu runbook v testovací podokno. Zkontrolujte, ujistěte se, že byla úspěšná.
 
@@ -120,7 +122,7 @@ Naplánování runbooku:
 
 4.  Vyberte **vytvořit nový plán.**
 
-5.  Nastavte **opakování** periodický a nastavte interval chcete. Použijte stejný interval, ve skriptu a ve službě Log Analytics.
+5.  Nastavte **opakování** periodický a nastavte interval chcete. Ve skriptu a protokoly Azure monitoru, použijte zde stejný interval.
 
 6.  Vyberte **Vytvořit**.
 
@@ -130,7 +132,7 @@ Ke sledování, zda automatizace běží podle očekávání, v části **přehl
 
 ## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Vytvoření upozornění Čtenář Log Analytics pro e-mailových oznámení
 
-Pokud chcete vytvořit upozornění, která používá Log Analytics, proveďte následující akce. Předpokladem je budete muset mít Log Analytics propojený s pracovním prostorem Log Analytics.
+Pokud chcete vytvořit upozornění, která používá protokoly Azure monitoru, proveďte následující akce. Předpokladem je budete muset mít protokoly Azure monitoru propojený s pracovním prostorem Log Analytics.
 
 1.  Na webu Azure Portal, vyberte **prohledávání protokolů**.
 
@@ -152,7 +154,7 @@ Pokud chcete vytvořit upozornění, která používá Log Analytics, proveďte 
 
 ## <a name="create-a-log-analytics-view-for-monitoring"></a>Vytvoření zobrazení v Log Analytics pro monitorování
 
-Tento krok vytvoří zobrazení Log Analytics pro vizuální monitorování všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
+Tento krok vytvoří zobrazení v log analytics pro vizuální monitorování všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
 
 -   Dlaždice přehledu, který ukazuje, kolik chyb, úspěchy a upozornění mají všechny skupiny synchronizace.
 
@@ -160,9 +162,9 @@ Tento krok vytvoří zobrazení Log Analytics pro vizuální monitorování vše
 
 -   Dlaždice pro každou skupinu synchronizace, který zobrazuje počet chyb, úspěchy a upozornění a poslední chybové zprávy.
 
-Konfigurace zobrazení Log Analytics, proveďte následující akce:
+Pokud chcete nakonfigurovat zobrazení v log analytics, proveďte následující akce:
 
-1.  Na domovské stránce Log Analytics vyberte plus na levé straně otevřete **Návrhář zobrazení**.
+1.  Na domovské stránce log analytics vyberte plus na levé straně otevřete **Návrhář zobrazení**.
 
 2.  Vyberte **Import** na horním panelu Návrhář zobrazení. Potom vyberte ukázkový soubor "DataSyncLogOMSView".
 
@@ -186,7 +188,7 @@ Ve většině případů toto řešení je zdarma.
 
 **Azure Automation:** Můžou existovat náklady pomocí účtu Azure Automation, v závislosti na využití. Prvních 500 minut úlohy spuštění za měsíc je zdarma. Ve většině případů toto řešení by měl používat méně než 500 minut za měsíc. Chcete-li nemuseli platit případné poplatky, naplánujte runbook, aby se spouštěla v intervalu nejméně dvě hodiny. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Log Analytics:** Můžou existovat náklady spojené s Log Analytics v závislosti na využití. Bezplatná úroveň zahrnuje 500 MB přijatých dat za den. Ve většině případů toto řešení má ingestování menší než 500 MB za den. Ke snížení využití, použijte jen selhání filtrování zahrnuty v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, aby nedošlo k ohrožení analytics zastaví, když je dosaženo omezení. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Protokoly Azure monitoru:** Můžou existovat náklady spojené s protokoly Azure monitoru v závislosti na využití. Bezplatná úroveň zahrnuje 500 MB přijatých dat za den. Ve většině případů toto řešení má ingestování menší než 500 MB za den. Ke snížení využití, použijte jen selhání filtrování zahrnuty v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, aby nedošlo k ohrožení analytics zastaví, když je dosaženo omezení. Další informace najdete v tématu [protokoly Azure monitoru ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Ukázky kódů
 

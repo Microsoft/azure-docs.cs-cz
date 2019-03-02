@@ -10,18 +10,27 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 60a76df6360ca66e8f55b03d5914283f669eb402
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118101"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242934"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpečné spuštění experimentů a odvozování uvnitř virtuální sítě Azure
 
 V tomto článku se dozvíte, jak pro spouštění experimentů a odvozování ve virtuální síti. Virtuální sítě slouží jako hranice zabezpečení, izolace vašich prostředků Azure z veřejného Internetu. Služby Azure virtual network můžete připojit také k vaší místní síti. Umožňuje bezpečně trénování modelů a přístup k nasazených modelů pro odvozování.
 
 Služba Azure Machine Learning spoléhá na ostatní služby Azure pro výpočetní prostředky. Výpočetní prostředky (cílových výpočetních prostředí) se používají k trénování a nasazování modelů. Tyto výpočetní cíle lze vytvořit ve virtuální síti. Například můžete použít virtuální počítač Microsoft datové vědy pro trénování modelu a poté model nasaďte do Azure Kubernetes Service (AKS). Další informace o virtuálních sítích najdete v tématu [Přehled služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento dokument předpokládá, že máte zkušenosti s Azure Virtual Networks a obecně sítě protokolu IP. Tento dokument předpokládá také, že jste vytvořili virtuální síť a podsíť pro použití s výpočetní prostředky. Pokud nejste obeznámeni s virtuálními sítěmi Azure, přečtěte si o službě následujících článcích:
+
+* [Přidělování IP adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
+* [Skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [Rychlé zprovoznění: Vytvoření virtuální sítě](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Filtrování provozu sítě](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 ## <a name="storage-account-for-your-workspace"></a>Účet úložiště pro váš pracovní prostor
 

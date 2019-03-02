@@ -10,19 +10,25 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 3fcac10e32d6510510dc3a069c754a6f482e75eb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: f287648758d2883226132c0f45418dacaaf27652
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194839"
+ms.locfileid: "57216318"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat indexer Azure Search blob extrahujte strukturované obsah z dokumentů JSON ve službě Azure Blob storage a usnadnit prohledávatelná ve službě Azure Search. Tento pracovní postup vytvoří index Azure Search a načte se existující text extrahovaný z objektů BLOB JSON. 
 
 Můžete použít [portál](#json-indexer-portal), [rozhraní REST API](#json-indexer-rest), nebo [sady .NET SDK](#json-indexer-dotnet) do indexu obsah JSON. Společná pro všechny přístupy je, že dokumenty JSON jsou umístěny v kontejneru objektů blob v účtu služby Azure Storage. Pokyny k odesílání dokumentů JSON z jiných platforem než Azure najdete v tématu [import dat ve službě Azure Search](search-what-is-data-import.md).
 
-Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokument JSON nebo pole JSON. Indexování objektů blob ve službě Azure Search můžete analyzovat buď konstrukce v závislosti na tom, jak nastavit **parsingMode** parametru na požadavek.
+Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokument JSON nebo kolekci entit JSON. Pro kolekce JSON, objekt blob může mít **pole** elementů JSON ve správném formátu. Objekty BLOB může také obsahovat více jednotlivých entit JSON oddělené nový řádek. Indexování objektů blob ve službě Azure Search může analyzovat tyto konstrukce, v závislosti na tom, jak nastavit **parsingMode** parametru na požadavek.
+
+> [!IMPORTANT]
+> `json` a `jsonArray` režimy parsování jsou obecně dostupné, ale `jsonLines` režim parsování je ve verzi public preview a neměli byste používat v produkčním prostředí. Další informace najdete v tématu [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
+
+> [!NOTE]
+> Postupujte podle doporučení konfigurace indexeru v [jeden mnoho indexování](search-howto-index-one-to-many-blobs.md) výstup více dokumentů vyhledávání z jednoho objektu blob Azure.
 
 <a name="json-indexer-portal"></a>
 
@@ -51,11 +57,13 @@ V **zdroj dat** stránku, musí být zdroj **Azure Blob Storage**, s následují
 
 + **Data k extrakci** by měl být *obsah a metadata*. Pokud vyberete tuto možnost umožňuje Průvodce odvodit schéma indexu a mapování polí pro import.
    
-+ **Režim parsování** by mělo být nastavené *JSON* nebo *pole JSON*. 
++ **Režim parsování** by mělo být nastavené *JSON*, *pole JSON* nebo *řádků JSON*. 
 
   *JSON* zabývá se výhodami jednotlivých objektů blob jako dokument hledání jednoduchého, objeví jako nezávislou položku ve výsledcích hledání. 
 
-  *Pole JSON* je pro objekty BLOB skládá z několika prvků, kde má každý prvek na kloubové jako samostatná, nezávislé hledání v dokumentech. Pokud objekty BLOB jsou komplexní a nevyberete *pole JSON* celý objekt blob se ingestuje jako jeden dokument.
+  *Pole JSON* je pro objekty BLOB, které obsahují ve správném formátu dat JSON – ve správném formátu JSON odpovídá pole objektů, nebo má vlastnost, která je pole objektů, a chcete, aby každý prvek na kloubové jako samostatná, nezávislé hledání v dokumentech. Pokud objekty BLOB jsou komplexní a nevyberete *pole JSON* celý objekt blob se ingestuje jako jeden dokument.
+
+  *Řádky JSON* je pro objekty BLOB skládá z několika entit JSON oddělené nový řádek, kde má každá entita na kloubové jako samostatné nezávislé Prohledat dokument. Pokud objekty BLOB jsou komplexní a nevyberete *řádků JSON* analýze režimu a potom celý objekt blob se ingestuje jako jeden dokument.
    
 + **Kontejner úložiště** musíte zadat svůj účet úložiště a kontejner nebo připojovací řetězec, který se přeloží do kontejneru. Na stránce portálu služby objektů Blob můžete získat připojovací řetězce.
 
@@ -116,12 +124,13 @@ Založený na kódu JSON indexování, použijte [Postman](search-fiddler.md) a 
 
 Rozdíl od průvodce portálem, vyžaduje přístup založený na kódu, abyste měli indexu na místě a připravená přijímat dokumenty JSON, když posíláte **vytvoření indexeru** požadavku.
 
-Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokument JSON nebo pole JSON. Indexování objektů blob ve službě Azure Search můžete analyzovat buď konstrukce, v závislosti na tom, jak nastavit **parsingMode** parametru na požadavek.
+Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokument JSON nebo JSON "pole". Indexování objektů blob ve službě Azure Search můžete analyzovat buď konstrukce, v závislosti na tom, jak nastavit **parsingMode** parametru na požadavek.
 
 | Dokument JSON | parsingMode | Popis | Dostupnost |
 |--------------|-------------|--------------|--------------|
-| Jeden objekt blob | `json` | Analyzuje objektů BLOB JSON jako jediný neodkazovaný blok textu. Každý objekt blob JSON se změní na jeden dokument Azure Search. | Obecně dostupná v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) rozhraní API. |
-| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON v objektu blob, kde každý prvek pole se změní na samostatné dokument Azure Search.  | Obecně dostupná v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) rozhraní API. |
+| Jeden objekt blob | `json` | Analyzuje objektů BLOB JSON jako jediný neodkazovaný blok textu. Každý objekt blob JSON se změní na jeden dokument Azure Search. | Obecně dostupná v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) rozhraní API a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON v objektu blob, kde každý prvek pole se změní na samostatné dokument Azure Search.  | K dispozici ve verzi preview v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) rozhraní API a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Více na jeden objekt blob | `jsonLines` | Analyzuje objektu blob, který obsahuje více entit JSON ("pole") oddělené nového řádku, kde každá entita se změní na samostatné dokument Azure Search. | K dispozici ve verzi preview v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) rozhraní API a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - vstupy pro žádost o sestavení
 
@@ -208,12 +217,16 @@ Až doteď byly definice pro zdroj dat a indexu parsingMode nezávislé. V kroku
 
 + Nastavte **parsingMode** k `json` indexování jednotlivých objektů blob jako jeden dokument.
 
-+ Nastavte **parsingMode** k `jsonArray` Pokud objektů blob se skládají z pole JSON, a je třeba každý prvek pole se samostatnou dokumentu ve službě Azure Search. Dokument si lze představit jako jedinou položku ve výsledcích hledání. Pokud chcete, aby každý prvek v poli zobrazení ve výsledcích hledání jako nezávislou položku, použijte `jsonArray` možnost.
++ Nastavte **parsingMode** k `jsonArray` Pokud objektů blob se skládají z pole JSON, a je třeba každý prvek pole se samostatnou dokumentu ve službě Azure Search. 
 
-Pro pole JSON pole existuje jako vlastnost nižší úrovně, můžete nastavit kořen dokumentu určující umístění pole v rámci objektu blob.
++ Nastavte **parsingMode** k `jsonLines` Pokud objektů blob se skládají z více entit, JSON, které jsou oddělené znakem nového řádku, a je nutné, aby každá entita se samostatnou dokumentu ve službě Azure Search.
+
+Dokument si lze představit jako jedinou položku ve výsledcích hledání. Pokud chcete, aby každý prvek v poli zobrazení ve výsledcích hledání jako nezávislou položku, použijte `jsonArray` nebo `jsonLines` možnost podle potřeby.
+
+V rámci definice indexeru můžete volitelně použít [mapování polí](search-indexer-field-mappings.md) zvolte Vlastnosti ve zdrojovém dokumentu JSON, které se používají k naplnění cílovým indexem vyhledávání. Pro `jsonArray` analýze režimu, pokud existuje pole jako vlastnost nižší úrovně, můžete nastavit kořen dokumentu určující umístění pole v rámci objektu blob.
 
 > [!IMPORTANT]
-> Při použití `json` nebo `jsonArray` režim parsování Azure Search se předpokládá, že všechny objekty BLOB ve zdroji dat obsahovat JSON. Pokud potřebujete podporovat kombinaci objekty BLOB JSON a jiné JSON do stejného zdroje dat, dejte nám vědět o [náš web UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Při použití `json`, `jsonArray` nebo `jsonLines` režim parsování Azure Search se předpokládá, že všechny objekty BLOB ve zdroji dat obsahovat JSON. Pokud potřebujete podporovat kombinaci objekty BLOB JSON a jiné JSON do stejného zdroje dat, dejte nám vědět o [náš web UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 
 ### <a name="how-to-parse-single-json-blobs"></a>Jak analyzovat jeden objektů BLOB JSON
@@ -232,7 +245,7 @@ Indexování objektů blob analyzuje dokument JSON do jednoho dokumentu Azure Se
 
 Jak je uvedeno, nejsou nutné mapování polí. Zadaný index s "text", "datePublished a"značek"polí, objekt blob indexer lze odvodit správné mapování bez pole mapování v požadavku.
 
-### <a name="how-to-parse-json-arrays"></a>Jak analyzovat pole JSON
+### <a name="how-to-parse-json-arrays-in-a-well-formed-json-document"></a>Jak analyzovat pole JSON ve správném formátu dokumentu JSON
 
 Alternativně se můžete rozhodnout pro funkci pole JSON. Tato možnost je užitečná, pokud objekty BLOB obsahují *pole objektů JSON*, a chcete, aby každý prvek stane samostatnou dokumentů Azure Search. Například s ohledem následujících objektů blob JSON, která můžete naplnit index Azure Search pomocí tří samostatných dokumentů, každý s pole "id" a "text".  
 
@@ -281,7 +294,31 @@ Použití této konfigurace k indexování pole obsažené ve `level2` vlastnost
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
 
-### <a name="field-mappings"></a>Mapování polí
+### <a name="how-to-parse-blobs-with-multiple-json-entities-separated-by-newlines"></a>Jak analyzovat objektů BLOB s více entitami JSON oddělené vložení znaků newline
+
+Pokud objekt blob obsahuje více entit JSON oddělené nový řádek, a chcete, aby každý prvek stane samostatnou dokumentů Azure Search, můžete se rozhodnout pro funkci řádků JSON. Mějme například následující objekt blob (pokud existují tři různé entity JSON), která můžete naplnit index Azure Search pomocí tří samostatných discích dokumentů, každý s pole "id" a "text".
+
+    { "id" : "1", "text" : "example 1" }
+    { "id" : "2", "text" : "example 2" }
+    { "id" : "3", "text" : "example 3" }
+
+Pro řádky JSON by měla vypadat podobně jako v následujícím příkladu definice indexeru. Všimněte si, že parsingMode parametr určuje, `jsonLines` analyzátor. 
+
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "name" : "my-json-indexer",
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
+    }
+
+Opět si všimněte, že mapování polí můžou být vynechán, podobně jako `jsonArray` režim parsování.
+
+### <a name="using-field-mappings-to-build-search-documents"></a>Použití mapování polí k sestavení vyhledávání dokumentů
 
 Při zdrojové a cílové pole nejsou zarovnány dokonale, můžete definovat části mapování pole v textu požadavku pro explicitní přiřazení jednoho pole.
 

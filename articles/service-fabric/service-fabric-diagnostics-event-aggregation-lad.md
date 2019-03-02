@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: a41599194d6dd6230c80aa078375b798c3002adf
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9e4c4e8c8d7aa89e2a27efc2c2deebd4863be23e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824007"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242951"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace událostí a kolekce pomocí diagnostiky Azure Linux
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56824007"
 
 Když používáte cluster Azure Service Fabric, je vhodné pro shromažďování protokolů ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění vám pomáhají analyzovat a řešit problémy ve vašem clusteru nebo problémy v aplikace a služby běžící v tomto clusteru.
 
-Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření diagnostiky Azure Linux (LAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [Log Analytics](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
+Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření diagnostiky Azure Linux (LAD), nahraje protokoly do služby Azure Storage, který má také možnost odeslat protokoly do služby Azure Application Insights nebo Center událostí. Externí proces lze také použít ke čtení události ze služby storage a umístit je do o produkt poskytovaný analýzy platformy, jako [protokoly Azure monitoru](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení analýzy protokolů.
 
 ## <a name="log-and-event-sources"></a>Zdroje protokolů a událostí
 

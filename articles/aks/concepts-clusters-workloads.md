@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456516"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243852"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
-Jako vývoj aplikací se přesunul směrem k přístupu založených na kontejnerech, je potřeba orchestrovat a spravovat propojených prostředků důležitá. Kubernetes je přední platforma, která poskytuje schopnost poskytovat spolehlivé plánování úloh aplikace odolné proti chybám. Azure Kubernetes Service (AKS) je spravované platformy Kubernetes nabízející další zjednodušuje nasazení a správu založených na kontejnerech aplikace.
+Vývoj aplikací přibližování přístupu založených na kontejnerech, je potřeba orchestrovat a spravovat prostředky důležité. Kubernetes je přední platforma, která poskytuje schopnost poskytovat spolehlivé plánování úloh aplikace odolné proti chybám. Azure Kubernetes Service (AKS) je spravované platformy Kubernetes nabízející další zjednodušuje nasazení a správu založených na kontejnerech aplikace.
 
 Tento článek představuje základní komponenty infrastruktury Kubernetes, jako *předlohy clusteru*, *uzly*, a *fondy uzlů*. Prostředky úlohy, jako *podů*, *nasazení*, a *nastaví* jsou rovněž popsány spolu s postupy skupiny prostředků do *obory názvů*.
 
@@ -52,9 +52,11 @@ Hlavní clusteru zahrnuje následující součásti core Kubernetes:
 
 Poskytuje předlohu jednoho tenanta clusteru AKS pomocí vyhrazeného serveru rozhraní API, Plánovač atd. Definování počtu a velikosti uzlů a platformy Azure nakonfiguruje zabezpečenou komunikaci mezi hlavní clusteru a uzlů. Interakce s hlavní větví clusteru dojde k přes rozhraní API Kubernetes, jako například `kubectl` nebo řídicí panel Kubernetes.
 
-Tento hlavní spravovaný cluster znamená, že není potřeba konfigurovat součásti, jako jsou s vysokou dostupností *etcd* úložiště, ale také znamená, že hlavní clusteru nelze přímý přístup. Upgrade na Kubernetes jsou orchestrované prostřednictvím rozhraní příkazového řádku Azure nebo webu Azure portal, který provede upgrade hlavní clusteru a pak uzly. Řešení potíží s informace o možných problémech, můžete zkontrolovat hlavní protokoly clusteru přes protokoly Azure monitoru.
+Tento hlavní spravovaný cluster znamená, že není nutné ke konfiguraci součásti, jako jsou s vysokou dostupností *etcd* úložiště, ale také znamená, že hlavní clusteru nelze přímý přístup. Upgrade na Kubernetes jsou orchestrované prostřednictvím rozhraní příkazového řádku Azure nebo webu Azure portal, který provede upgrade hlavní clusteru a pak uzly. Řešení potíží s informace o možných problémech, můžete zkontrolovat hlavní protokoly clusteru přes protokoly Azure monitoru.
 
 Pokud je potřeba nakonfigurovat hlavní clusteru specifickým způsobem nebo potřebujete přímý přístup k nim, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine].
+
+Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro zabezpečení clusteru a inovace ve službě AKS][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Uzly a fondy uzlů
 
@@ -62,7 +64,7 @@ Ke spuštění vaší aplikace a podpůrných služeb, budete potřebovat Kubern
 
 - `kubelet` Je agent Kubernetes, který zpracovává požadavky Orchestrace z clusteru hlavní a plánování spouštění požadovanou kontejnery.
 - Virtuální síť se zpracovává souborem *kube proxy* na každém uzlu. Trasy proxy serveru síťový provoz a spravuje přidělování IP adres pro služby a tyto pody.
-- *Runtime kontejneru* je komponenta, která umožňuje spouštět a interakci s dalšími materiály, jako je například virtuální síť a úložiště kontejnerizovaných aplikací. Ve službě AKS Docker slouží jako kontejner modulu runtime.
+- *Runtime kontejneru* je komponenta, která umožňuje spouštět a interakci s dalšími materiály, jako je například virtuální síť a úložiště kontejnerizovaných aplikací. Ve službě AKS Moby slouží jako kontejner modulu runtime.
 
 ![Virtuální počítač Azure a podpůrné prostředky pro uzel Kubernetes](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -70,7 +72,7 @@ Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, ko
 
 Ve službě AKS image virtuálního počítače pro uzly ve vašem clusteru momentálně založené na Ubuntu Linuxu. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
 
-Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
+Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Moby, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
@@ -92,6 +94,8 @@ Příklad:
     - Celkem *(32-4) = 28 GiB* je k dispozici pro uzel
     
 Základní uzel operačního systému také vyžaduje určitý objem prostředků procesoru a paměti k dokončení vlastní základních funkcí.
+
+Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro Plánovač základní funkce ve službě AKS][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Fondy uzlů
 
@@ -236,3 +240,5 @@ Tento článek popisuje některé základní součásti Kubernetes a jak se vzta
 [aks-concepts-network]: concepts-network.md
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
 [aks-helm]: kubernetes-helm.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[operator-best-practices-scheduler]: operator-best-practices-scheduler.md

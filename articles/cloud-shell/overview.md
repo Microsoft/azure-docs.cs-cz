@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
-ms.author: juluk
-ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.author: damaerte
+ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428529"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243971"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.

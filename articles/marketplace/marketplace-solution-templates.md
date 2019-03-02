@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e8bcc43a3bf26a40055e4258bf73bb047e61ef9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737599"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215366"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Aplikace Azure: Průvodce publikováním nabídky šablony řešení
 
@@ -38,7 +38,6 @@ Tyto šablony řešení jsou transakce nabídek, které se nasazují a prostřed
 |Kompatibilní s Azure virtuálního pevného disku (VHD)  |   Virtuální počítače musí být sestaveny jako ve Windows nebo Linuxu.  Další informace najdete [najdete v části Vytvoření virtuálního pevného disku kompatibilního s Azure](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
 | Využití Attribution zákazníka | Povolení attribution využití zákazník musí být ve všech šablon řešení na webu Azure Marketplace publikovat. Další informace o využití attribution zákazníka a jak se dá povolit, najdete v části [partnerů Azure zákazníka využití attribution](./azure-partner-customer-usage-attribution.md).  |
 |  |  |
-
 
 ## <a name="next-steps"></a>Další postup
 Pokud jste tak již neučinili, [zaregistrovat](https://azuremarketplace.microsoft.com/sell) na webu Marketplace.

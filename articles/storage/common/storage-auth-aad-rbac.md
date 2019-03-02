@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869679"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242645"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)
 
@@ -88,14 +88,12 @@ Například, pokud přiřadíte **Přispěvatel dat objektu Blob služby Storage
 
 Nicméně, pokud chce Mary zobrazení objektu blob na webu Azure Portal, pak bude **Přispěvatel dat objektu Blob služby Storage (Preview)** role samostatně, nebudou zajišťovat dostatečná oprávnění k procházení portálu na objekt blob, aby bylo možné zobrazit. Další služby Azure AD oprávnění nejsou vyžadována k přejděte na portálu a zobrazit další materiály, které jsou viditelné.
 
-Pokud budou uživatelé potřebovat přístup k objektům blob na webu Azure Portal a pak je přiřadit další role RBAC, moct [čtečky](../../role-based-access-control/built-in-roles.md#reader) role za účelem těchto uživatelů. **Čtečky** rolí je role Azure Resource Manageru, která umožňuje uživatelům zobrazit prostředků účtu úložiště, ale ne je upravovat. Neposkytuje oprávnění ke čtení k datům ve službě Azure Storage, ale jenom pro účet správy zdrojů.
+Pokud budou uživatelé potřebovat přístup k objektům blob na webu Azure Portal a pak je přiřadit další role RBAC, moct [čtečky](../../role-based-access-control/built-in-roles.md#reader) role za účelem tito uživatelé na úrovni účtu úložiště nebo vyšší. **Čtečky** rolí je role Azure Resource Manageru, která umožňuje uživatelům zobrazit prostředků účtu úložiště, ale ne je upravovat. Neposkytuje oprávnění ke čtení k datům ve službě Azure Storage, ale jenom pro účet správy zdrojů.
 
-Následující postup použijte k přiřazení **čtečky** rolí tak, aby uživatel může přístup k objektům blob na webu Azure Portal. V tomto případě má obor přiřazení ke kontejneru:
+Následující postup použijte k přiřazení **čtečky** rolí tak, aby uživatel může přístup k objektům blob na webu Azure Portal. V tomto příkladu má obor přiřazení k účtu úložiště:
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště a zobrazit **přehled** pro účet.
-1. V části Služba vyberte **objekty BLOB**. 
-1. Najděte kontejner, pro kterou chcete přiřadit roli a zobrazí nastavení kontejneru. 
-1. Vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro kontejner. Vyberte **přiřazení rolí** kartu pro zobrazení seznamu přiřazení rolí.
+1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
+1. Vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro účet úložiště. Vyberte **přiřazení rolí** kartu pro zobrazení seznamu přiřazení rolí.
 1. V **přidat přiřazení role** okna, vyberte **čtečky** role. 
 1. Z **přiřadit přístup k** rozevíracího seznamu, vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
 1. Prohledávat při vyhledávání objektu zabezpečení, ke kterému chcete přiřadit roli.

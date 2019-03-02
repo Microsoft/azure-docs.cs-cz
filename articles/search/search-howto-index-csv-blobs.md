@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: eac0c1f2f7ded35cf09eec12f0406c754621f49c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dce19e750c5546ddd5cac18411dcbb4a603e5c45
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465458"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216097"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB CSV pomocí indexeru Azure Search blob
 Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azure-blob-storage.md) analyzuje oddělený text objektů BLOB jako jediný neodkazovaný blok textu. Nicméně s objekty BLOB, který obsahuje data ve formátu CSV, často chcete zpracovávat každý řádek v objektu blob jako samostatný dokument. Například směru následující text s oddělovači, můžete k analýze do dva dokumenty a každý obsahuje pole "tags", "datePublished" a "id": 
@@ -26,9 +26,8 @@ Ve výchozím nastavení [indexeru Azure Search blob](search-howto-indexing-azur
 
 V tomto článku se dozvíte, jak analyzovat objektů BLOB CSV pomocí indexeru Azure Search blob. 
 
-> [!IMPORTANT]
-> Indexování objektů blob CSV je aktuálně ve verzi public preview a neměli byste používat v produkčním prostředí. Další informace najdete v tématu [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
-> 
+> [!NOTE]
+> Postupujte podle doporučení konfigurace indexeru v [jeden mnoho indexování](search-howto-index-one-to-many-blobs.md) výstup více dokumentů vyhledávání z jednoho objektu blob Azure.
 
 ## <a name="setting-up-csv-indexing"></a>Nastavení indexování sdíleného svazku clusteru
 Indexování objektů BLOB CSV, vytvořit nebo aktualizovat definici rozhraní indexeru se `delimitedText` analýze režimu:  

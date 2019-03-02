@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9914943cc5b3ef9e95f12c6890cb8e1646f7e335
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311712"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244213"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasadit více než jednu instanci zdroje nebo vlastnosti v šablonách Azure Resource Manageru
 
@@ -272,6 +272,8 @@ Zdroj a vlastnost iterace můžete použít společně. Odkaz na vlastnost itera
 
 Chcete-li vytvořit více instancí proměnné, použijte `copy` vlastnost v sekci proměnných. Vytvoří pole prvků zkonstruovat z hodnoty v `input` vlastnost. Můžete použít `copy` vlastnosti v rámci proměnné nebo na nejvyšší úrovni sekci proměnných. Při použití `copyIndex` uvnitř proměnné iterace, je nutné zadat název iterace.
 
+Jednoduchý příklad vytvoření pole hodnot typu string, naleznete v tématu [šablony pole kopírování](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
+
 Následující příklad ukazuje několik způsobů vytvoření proměnné pole s prvky dynamicky vytvořený. Ukazuje, jak používat kopii uvnitř proměnné k vytvoření polí objektů a řetězce. Také ukazuje, jak používat kopii na nejvyšší úrovni k vytvoření polí objektů, řetězce a celá čísla.
 
 ```json
@@ -344,6 +346,50 @@ Následující příklad ukazuje několik způsobů vytvoření proměnné pole 
     }
   }
 }
+```
+
+Typ proměnné, která se vytvoří závisí na vstupní objekt. Například proměnná s názvem **top-úrovně-object pole** v předchozím příkladu vrátí:
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+A proměnné s názvem **top-úrovně--pole řetězců** vrátí:
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Závisí na prostředky ve smyčce

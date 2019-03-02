@@ -3,18 +3,18 @@ title: Vytvoření aplikace Azure IoT Central | Microsoft Docs
 description: Vytvořte novou aplikaci Azure IoT Central. Vytvořte zkušební verzi aplikace nebo aplikaci s průběžnými platbami s využitím šablony aplikace.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 02/20/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b02ca043539067061e8b7fec0e002d7d21290c38
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e538d0caf82d67314834a630d53dd03f2c1a11bd
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823467"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216590"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -46,7 +46,7 @@ Vytvoření nové aplikace Azure IoT Central:
 
 1. Pokud vytváříte aplikaci s **průběžnými platbami**, musíte vybrat *adresář*, *předplatné Azure* a *oblast*. 
 
-    - *Adresář* je služba Azure Active Directory, ve které se vaše aplikace vytvoří. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud službu AAD nemáte, vytvoří se pro vás při vytváření předplatného Azure.
+    - *Adresář* je Azure Active Directory (AD) k vytvoření aplikace. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud nemáte Azure AD, vytvoří se pro vás při vytváření předplatného Azure.
 
     - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central bude ve vašem předplatném zřizovat prostředky. Pokud předplatné Azure nemáte, můžete si ho vytvořit na [registrační stránce Azure](https://aka.ms/createazuresubscription). Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 

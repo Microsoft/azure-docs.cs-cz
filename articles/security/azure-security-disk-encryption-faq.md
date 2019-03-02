@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 305a5c5d4f82c732dd796f5c5140c0da04fe7b13
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193275"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245212"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -73,9 +73,13 @@ Abyste mohli začít, přečtěte si [přehled Azure Disk Encryption](azure-secu
 
 Ano, můžete šifrovat spouštěcích a datových svazků pro Windows a virtuálních počítačů IaaS s Linuxem. Pro virtuální počítače s Windows nejde šifrovat data bez první šifrování svazku operačního systému. Pro virtuální počítače s Linuxem je možné šifrovat objem dat bez nutnosti nejprve šifrování svazku operačního systému. Zakázáním šifrování svazku operačního systému pro virtuální počítače IaaS s Linuxem není podporována po zašifrujete svazek s operačním systémem Linux.
 
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Můžete šifrovat odpojený svazek s Azure Disk Encryption?
+
+Ne, Azure Disk Encryption zašifruje pouze připojené svazky.
+
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak otočit tajné kódy nebo šifrovací klíče?
 
-Obměna tajné klíče, stačí zavoláte stejný příkaz, který jste původně použili povolit šifrování disku. Obměna klíčů šifrovací klíč, volání stejný příkaz, který jste použili původně povolit šifrování disku, určení nové šifrovací klíče. 
+Otočit tajné klíče, stačí zavolat stejný příkaz, který jste původně použili povolit šifrování disku, zadáte jiný trezor klíčů. Obměna klíčů šifrovací klíč, volání stejný příkaz, který jste použili původně povolit šifrování disku, určení nové šifrovací klíče. 
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak přidat nebo odebrat šifrovací klíč klíče, pokud nebyla původně ji používat?
 
@@ -145,6 +149,10 @@ Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES2
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Je-li použít encryptformatall šifrovaně a určete všechny typy svazku vymaže jeho data na datové jednotky, které jsme už zašifrovali?
 Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžete zálohovat a obnovit šifrovaný virtuální počítač? 
+
+Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaných Virtuálních počítačů ve stejném předplatném a oblasti.  Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Obnovení šifrovaných virtuálních počítačů do jiné oblasti se momentálně nepodporuje.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Kam se můžu obrátit klást otázky nebo připomínky?
 

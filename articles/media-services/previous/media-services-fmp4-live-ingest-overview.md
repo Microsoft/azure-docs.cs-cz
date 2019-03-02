@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/03/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6de31da1809173fb5fae1abcde47861ed7542f31
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984830"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240265"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Azure Media Services fragmentovaného MP4 živé ingestování specifikace (starší verze)
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikace ingestování fragmentovaného MP4 za Azure Media Services 
 
 Tato specifikace popisuje protokol a formáty fragmentovaného MP4 podle živého streamování ingestování pro Azure Media Services. Služba Media Services poskytuje služby živého streamování, které zákazníci mohou používat streamování události v reálném čase a vysílat obsah v reálném čase s využitím Azure jako cloudovou platformu. Tento dokument popisuje také osvědčené postupy pro sestavování vysoce redundantní a robustní živé ingestování mechanismy.
 

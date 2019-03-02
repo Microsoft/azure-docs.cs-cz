@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429464"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240758"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -28,6 +28,8 @@ Každý požadavek do služby Azure Cognitive musí obsahovat hlavičku ověřov
 
 Před provedením požadavku, budete potřebovat účet Azure a předplatné služeb Azure Cognitive Services. Pokud již máte účet, neváhejte a přejděte k další části. Pokud nemáte účet, máme Tento průvodce vám několika minut: [Vytvoření účtu služeb Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
+Můžete získat klíč předplatného z [webu Azure portal](cognitive-services-apis-create-account.md#access-your-resource) po vytvoření účtu nebo aktivaci [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/my-apis).
+ 
 ## <a name="authentication-headers"></a>Ověřovací hlavičky
 
 Pojďme ověřovací hlavičky, které jsou k dispozici pro použití se službou Azure Cognitive Services rychle.
