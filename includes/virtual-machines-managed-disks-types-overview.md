@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1556a7d482a6644831589937b1847b1d63e72693
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdfc858522c5b331c90259de0fb5ad84fa54bc5d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56890936"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251864"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -95,11 +95,11 @@ SSD disky Azure standard je možnost a nákladově efektivní služba storage op
 
 Velikosti s hvězdičkou jsou aktuálně ve verzi preview.
 
-| Standardní velikosti SSD  | E10               | E15               | E20             | E30 | E40              | E50              | E60*              | E70*              | E80*              |
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| Velikost disku v GB           | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8 192     | 16,384     | 32,767    |
-| Vstupně-výstupní operace za sekundu / disk       | Až 500              | Až 500              | Až 500              | Až 500 | Až 500              | Až 500              | Až 500             | Až 500              | 1 až 300              | Až 2 000              | Až 2 000              |
-| Propustnost / disk |  Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu| Až 300 MiB za sekundu |  Až 500 MiB/s | Až 500 MiB/s |
+| Standardní velikosti SSD  | E4                   | E6                   | E10               | E15               | E20             | E30 | E40              | E50              | E60*              | E70*              | E80*              |
+|---------------------|---------------------|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
+| Velikost disku v GB           | 32             | 64             | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8 192     | 16,384     | 32,767    |
+| Vstupně-výstupní operace za sekundu / disk       | Až 120              | Až 240              | Až 500              | Až 500              | Až 500              | Až 500 | Až 500              | Až 500              | Až 500             | Až 500              | 1 až 300              | Až 2 000              | Až 2 000              |
+| Propustnost / disk |  Až pro 25 MiB za sekundu  |  Až na 50 MiB za sekundu  |  Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu | Až 60 MiB za sekundu| Až 300 MiB za sekundu |  Až 500 MiB/s | Až 500 MiB/s |
 
 ## <a name="standard-hdd"></a>Standard HDD
 
