@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984631"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240792"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -195,7 +195,7 @@ Už máte zpřístupnit vlastní clustery Databricks. Vytvoření clusteru a vš
 Když společnost Microsoft poskytuje pomoc nebo řešení potíží s toky dat, zadejte do "DSL kód plánu". Postupujte přitom takto:
 
 * Z Návrháře toku dat v pravém horním rohu klikněte na tlačítko "Kód". Tato akce zobrazí upravitelný kód JSON pro datový tok.
-* V zobrazení kódu klikněte na "Plán" v pravém horním rohu. Plánu přepínač nástroje DEVENV z formátu JSON do formátovaného skript plánu DSL.
+* V zobrazení kódu klikněte na "Plán" v pravém horním rohu. Přepnout plánu se přepne z JSON na jen pro čtení formátovaného DSL skript plánu.
 * Zkopírujte a vložte tento skript nebo uložte ho do textového souboru.
 
 ### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Jak můžu přistupovat k datům pomocí jiných typů 80 datové sady ve službě ADF?

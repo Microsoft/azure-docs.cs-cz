@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: 52c0799dd2f3c22b1ae3553869aafe9a1fcffc7f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e752c19dc74135c05b971f8eb296da61259d0c20
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887926"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217763"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -113,9 +113,9 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
-- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Vytvoření partnerského vztahu virtuálních sítí v různých oblastech se také označuje jako *globální partnerský vztah*.
-- Při vytváření globální partnerský vztah, mohou existovat partnerských virtuálních sítích v oblasti veřejného cloudu Azure, cloudové oblasti China nebo oblasti cloud Government. Nejde vytvořit partnerský vztah napříč cloudy.
-- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v globálním partnerském vztahu virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve virtuální síti ve stejné oblasti. Pokud partnerských virtuálních sítích se ale ve stejné oblasti, můžete prostředky v obou virtuálních sítích komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v obou virtuálních sítích v partnerském vztahu.
+- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Partnerské vztahy virtuálních sítí v různých oblastech se také označuje jako *globální VNet Peering*. 
+- Při vytváření globální partnerský vztah, partnerských virtuálních sítích mohou existovat v libovolné oblasti veřejného cloudu Azure nebo cloudových oblastech Čína, ale není v Government cloudovým oblastem. Je možné jen partnerské virtuální sítě ve stejné oblasti v oblasti cloudu Azure Government. Nejde vytvořit partnerský vztah napříč cloudy.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná za globální VNet Peering.
 - Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
 - Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete si [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým tenantům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
 - Virtuální sítě, které můžete vytvořit partnerský vztah musí mít překrývat adresní prostory IP adres.
