@@ -149,6 +149,30 @@ items:
       href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
   - name: Šablona Resource Manageru
     href: /azure/templates/microsoft.maps/accounts
+- name: Zdroje a prostředky
+  items:
+  - name: Podmínky použití služby Azure Maps
+    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/azure-maps
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-maps
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
+  - name: Glosář
+    href: glossary.md
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates
+  - name: Centrum pro vývojáře Azure IoT
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: Technické případové studie
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: Videa
+    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
 - name: Související
   items:
   - name: Řešení
@@ -175,31 +199,9 @@ items:
       href: /azure/iot-edge
     - name: Sady SDK pro zařízení IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-- name: Zdroje a prostředky
-  items:
-  - name: Centrum pro vývojáře Azure IoT
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Glosář
-    href: glossary.md
-  - name: Fórum MSDN
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/azure-maps
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Aktualizace služeb
-    href: https://azure.microsoft.com/updates
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-maps
-  - name: Technické případové studie
-    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Videa
-    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 114647e85aa775d37dab827daef2e55867e5a47b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 194b8ff59a19e33a3ec8e2544e4d04c9afb6613f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234386"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246437"

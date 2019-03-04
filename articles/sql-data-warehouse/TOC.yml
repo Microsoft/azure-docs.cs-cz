@@ -22,7 +22,7 @@ items:
   items:
   - name: Nedávno vydaná verze
     href: release-notes-10-0-10106-0.md
-  - name: Plán migrace oblastí Gen2
+  - name: Plán upgradu oblastí Gen2
     href: gen2-migration-schedule.md
   - name: Archivované poznámky k verzi
     items:
@@ -311,9 +311,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Správa dat
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 90b07d04766a1add27383ff3eca5cb30b25c057e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e3eab380b4f8234c50376899bcd0af8492337999
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243123"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217712"

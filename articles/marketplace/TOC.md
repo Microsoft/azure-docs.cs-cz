@@ -14,6 +14,7 @@
 #### [Správa potenciálních zákazníků](./lead-management-for-cloud-marketplace.md)
 #### [Transakce na Azure Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 #### [Soukromé nabídky](./private-offers.md)
+#### [Standardní kontrakt](./standard-contract.md)
 
 ### [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
@@ -30,13 +31,16 @@
 #### [Osvědčené postupy nabídky](./gtm-offer-listing-best-practices.md)
 #### [Jak získat doporučení](./gtm-how-to-get-featured.md)
 #### [Ověření obsahu na Marketplace](./marketplace-criteria-content-validation.md)
+#### [Poskytovatelé cloudových řešení](./cloud-solution-providers.md)
 
 ### [Vaše výhody na trhu](./gtm-your-marketplace-benefits.md)
 #### [Propagace vašeho podnikání s Microsoftem](./gtm-promote-your-business.md)
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
+#### [Integrovaná řešení](./integrated-solutions.md)
 
 ### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)
 #### [Nejčastější dotazy k Marketplace](./marketplace-faq-publisher-guide.md)
+#### [Geografická dostupnost a měny](./marketplace-geo-availability-currencies.md)
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 

@@ -686,9 +686,9 @@ items:
         href: service-fabric-diagnostics-oms-containers.md
     - name: Monitorování clusterů
       items:
-      - name: Konfigurace Log Analytics pro shromažďování událostí clusteru
+      - name: Konfigurace protokolů služby Azure Monitor pro shromažďování událostí clusteru
         href: service-fabric-diagnostics-oms-setup.md
-      - name: Monitorování clusteru pomocí služby Log Analytics
+      - name: Monitorování clusteru s využitím protokolů služby Azure Monitor
         href: service-fabric-diagnostics-event-analysis-oms.md
       - name: Dotazování rozhraní API EventStoru
         href: service-fabric-diagnostics-eventstore-query.md
@@ -837,9 +837,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 2478cb35cb0981848009febe382fddf3371887ce
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: bceb61a6c5d5105d09d1b2ec94b394fd25402ea6
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823378"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241812"

@@ -7,21 +7,35 @@ items:
     href: billing-understand-your-bill.md
   - name: Vysvětlení informací na faktuře za EA
     href: billing-understand-your-bill-ea.md
-  - name: Získání faktury a dat o využití
-    href: billing-download-azure-invoice-daily-usage-date.md
+  - name: Vysvětlení informací na faktuře – pouze smlouva se zákazníkem Microsoftu
+    href: billing-mca-understand-your-bill.md
+  - name: Zobrazit a stáhnout fakturu Microsoft Azure
+    href: billing-download-azure-invoice.md
+  - name: Zobrazit a stáhnout využití a poplatky Microsoft Azure
+    href: billing-download-azure-daily-usage.md
+  - name: Zobrazit a stáhnout daňové dokumenty pro smlouvu se zákazníkem Microsoftu
+    href: billing-mca-download-tax-document.md
   - name: Poplatky za služby třetích stran
     href: billing-understand-your-azure-marketplace-charges.md
   - name: Vysvětlení podmínek použití
     href: billing-understand-your-usage.md
+  - name: Vysvětlení podmínek použití – pouze smlouva se zákazníkem Microsoftu
+    href: billing-mca-understand-your-usage.md
   - name: Vysvětlení podmínek fakturace
     href: billing-understand-your-invoice.md
+  - name: Vysvětlení podmínek fakturace – pouze smlouva se zákazníkem Microsoftu
+    href: billing-mca-understand-your-invoice.md
+  - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
+    href: billing-mca-overview.md
   expanded: true
 - name: Správa nákladů
   items:
   - name: Jak zabránit neočekávaným nákladům
     href: billing-getting-started.md
-  - name: Zobrazit ceny EA
+  - name: Zobrazit a stáhnout ceny vaší organizace
     href: billing-ea-pricing.md
+  - name: Vysvětlení podmínek ceníku – pouze smlouva se zákazníkem Microsoftu
+    href: billing-mca-understand-pricesheet.md
   - name: Použití značek prostředků
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
   - name: Začínáme s analýzou nákladů
@@ -30,6 +44,8 @@ items:
     href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
   - name: Optimalizace doporučení
     href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: Sledování kreditu pro smlouvu se zákazníkem Microsoftu
+    href: billing-mca-check-azure-credits-balance.md
   - name: Výpočet cen
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Vysvětlení limitu útraty
@@ -90,12 +106,20 @@ items:
     href: billing-manage-access.md
   - name: Role EA v Azure
     href: billing-understand-ea-roles.md
+  - name: Role smlouvy se zákazníkem Microsoftu v Azure
+    href: billing-understand-mca-roles.md
   - name: Propojení ID partnera
     href: billing-partner-admin-link-started.md
   - name: Zobrazení fakturačních účtů
     href: billing-view-all-accounts.md
+  - name: Organizace nákladů pomocí oddílů faktury
+    href: billing-mca-section-invoice.md
+  - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+    href: billing-mca-enterprise-operations.md
   - name: Řešení zůstatku po splatnosti
     href: billing-azure-subscription-past-due-balance.md
+  - name: Nastavení fakturačních účtů pro smlouvu se zákazníkem Microsoftu
+    href: billing-mca-setup-account.md
   - name: Registrace s použitím účtu Office 365
     href: billing-use-existing-office-365-account-azure-subscription.md
   - name: Registrace Office 365 pomocí účtu Azure
@@ -106,6 +130,8 @@ items:
     href: billing-subscription-become-disable.md
   - name: Převod vlastnictví
     href: billing-subscription-transfer.md
+  - name: Vyžádání vlastnictví – smlouva se zákazníkem Microsoftu
+    href: billing-mca-request-billing-ownership.md
   - name: Zrušení předplatného
     href: billing-how-to-cancel-azure-subscription.md
   - name: Změna platební karty
@@ -122,6 +148,8 @@ items:
     href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
   - name: Vytvoření dalších předplatných
     href: billing-create-subscription.md
+  - name: Vytvoření dalších předplatných – smlouva se zákazníkem Microsoftu
+    href: billing-mca-create-subscription.md
   - name: Programové vytváření předplatných Enterprise
     href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
   - name: Export informací o předplatném
@@ -190,9 +218,9 @@ items:
     items:
     - name: Rozhraní REST API služby Enterprise Reporting
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 156f9f2ebb293855d541c779c7a2e3ba83cffc07
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5d56504730be60d872c9d1345850925a645c664e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447697"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241642"
