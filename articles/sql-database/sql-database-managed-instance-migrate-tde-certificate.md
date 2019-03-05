@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
 ms.date: 01/17/2019
-ms.openlocfilehash: c6d0d2eec61375760ee3dc4e4b100b24cef2b405
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: f27a5b0deb0dd446d4f05b0a6d6e96d67d24d9e9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388773"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315992"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrace certifikátů transparentní šifrování dat chráněné databáze do Azure SQL Database Managed Instance
 
@@ -35,17 +35,19 @@ Alternativní možnost migrace databáze s ochranou TDE i odpovídajícího cert
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 - Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2pfx je součástí [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), samostatného a nezávislého prostředí příkazového řádku.
 - [Prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) nainstalované ve verzi 5.0 nebo vyšší.
-- [Nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-az-ps) modul AzureRM PowerShellu.
-- [Modul AzureRM.Sql](https://www.powershellgallery.com/packages/AzureRM.Sql) verze 4.10.0 nebo novější.
+- Modul Azure PowerShell [nainstalován a aktualizován](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Modul Az.Sql](https://www.powershellgallery.com/packages/Az.Sql).
   Modul PowerShell nainstalujte spuštěním následujících příkazů v prostředí PowerShell:
 
    ```powershell
-   Install-Module -Name AzureRM.Sql
-   Update-Module -Name AzureRM.Sql
+   Install-Module -Name Az.Sql
+   Update-Module -Name Az.Sql
    ```
 
 ## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>Export certifikátu TDE do souboru Personal Information Exchange (.pfx)
@@ -116,13 +118,13 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
    ```powershell
    # Import the module into the PowerShell session
-   Import-Module AzureRM
+   Import-Module Az
    # Connect to Azure with an interactive dialog for sign-in
-   Connect-AzureRmAccount
+   Connect-AzAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
-   Get-AzureRmSubscription
+   Get-AzSubscription
    # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
-   Select-AzureRmSubscription Guid_Subscription_Id
+   Select-AzSubscription Guid_Subscription_Id
    ```
 
 2. Jakmile bude vše připraveno, spuštěním následujících příkazů nahrajte certifikát v kódování base-64 do cílové spravované instance:
@@ -133,7 +135,7 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-   Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
+   Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
 Certifikát je nyní k dispozici pro zadanou spravovanou instanci a bude v ní možné obnovit zálohu databáze chráněné transparentním šifrováním dat.

@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c3148ebe11ba0e23cbded5965234ece9fb6082aa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192766"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317692"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Řešení Azure Key Vault Analytics ve službě Log Analytics
 
 ![Symbol služby Key Vault](media/azure-key-vault/key-vault-analytics-symbol.png)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Řešení Azure Key Vault v Log Analytics můžete využít ke kontrole protokolů AuditEvent služby Azure Key Vault.
 
@@ -55,13 +57,13 @@ Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Key V
 8. Klikněte na tlačítko *Uložit* povolení protokolování diagnostiky ke službě Log Analytics
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Povolení diagnostiky služby Key Vault pomocí Powershellu
-Následující skript prostředí PowerShell poskytuje příklad, jak používat `Set-AzureRmDiagnosticSetting` povolit diagnostické protokolování pro Key Vault:
+Následující skript prostředí PowerShell poskytuje příklad, jak používat `Set-AzDiagnosticSetting` povolit diagnostické protokolování pro Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 
@@ -103,12 +105,12 @@ Po klepnutí **přehled** dlaždici, můžete zobrazení souhrnných informací 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*AzureDiagnostics* |
+| Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
-| callerIpAddress |IP adresa klienta, který vytvořil požadavek |
+| CallerIpAddress |IP adresa klienta, který vytvořil požadavek |
 | Kategorie | *AuditEvent* |
 | CorrelationId |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
-| doby trvání v MS |Doba trvání obsloužení požadavku REST API v milisekundách. Tentokrát nezahrnuje latenci sítě, takže čas, který budete vyhodnocovat na straně klienta se nemusí shodovat této doby. |
+| DurationMs |Doba trvání obsloužení požadavku REST API v milisekundách. Tentokrát nezahrnuje latenci sítě, takže čas, který budete vyhodnocovat na straně klienta se nemusí shodovat této doby. |
 | httpStatusCode_d |Stavový kód HTTP vrácený z požadavku (například *200*) |
 | id_s |Jedinečné ID požadavku |
 | identity_claim_appid_g | Identifikátor GUID pro id aplikace |
@@ -117,7 +119,7 @@ Po klepnutí **přehled** dlaždici, můžete zobrazení souhrnných informací 
 | requestUri_s |Identifikátor URI žádosti |
 | Prostředek |Název trezoru klíčů. |
 | ResourceGroup |Skupina prostředků trezoru klíčů. |
-| ID prostředku |ID prostředku Azure Resource Manageru Pro protokoly Key Vault. to je ID prostředku Key Vault. |
+| ResourceId |ID prostředku Azure Resource Manageru Pro protokoly Key Vault. to je ID prostředku Key Vault. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *TREZORY SLUŽBY* |
 | resultSignature |Stav protokolu HTTP (například *OK*) |

@@ -1,7 +1,7 @@
 ---
 title: Připojení a indexování Azure SQL Database obsahu pomocí indexerů – Azure Search
 description: Zjistěte, jak k procházení dat ve službě Azure SQL Database pro fulltextové vyhledávání ve službě Azure Search pomocí indexerů. Tento článek se týká připojení, konfigurace indexeru a přijímat data.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752888"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315210"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
@@ -305,8 +305,8 @@ SQL indexer poskytuje několik nastavení konfigurace:
 
 | Nastavení | Typ dat | Účel | Výchozí hodnota |
 | --- | --- | --- | --- |
-| queryTimeout |řetězec |Nastaví časový limit pro provedení dotazu SQL. |5 minut ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |BOOL |Způsobí, že dotaz SQL použitý zásadami vysoce mezí Pokud chcete vynechat, nechte klauzule ORDER by. Zobrazit [vysoce mezí zásad](#HighWaterMarkPolicy) |false (nepravda) |
+| queryTimeout |string |Nastaví časový limit pro provedení dotazu SQL. |5 minut ("00: 05:00") |
+| disableOrderByHighWaterMarkColumn |bool |Způsobí, že dotaz SQL použitý zásadami vysoce mezí Pokud chcete vynechat, nechte klauzule ORDER by. Zobrazit [vysoce mezí zásad](#HighWaterMarkPolicy) |false (nepravda) |
 
 Tato nastavení se používají v `parameters.configuration` objektu v definice indexeru. Například pokud chcete nastavit časový limit dotazu na 10 minut, vytvořit nebo aktualizovat indexer s následující konfigurací:
 

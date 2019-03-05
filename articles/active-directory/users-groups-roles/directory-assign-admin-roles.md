@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35927b038ee8caa7e826c4edfb7803a2bc0177c8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 31b65dc7a73d24066bee8088b3177a1300186eba
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750680"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316655"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -42,7 +42,7 @@ K dispozici jsou následující role správce:
 
 * **[Vývojář aplikace](#application-developer)**: Uživatelé s touto rolí může vytvářet registrace aplikací při "Uživatelé můžou registrovat aplikace" nastavená na Ne. Tato role také umožňuje členům vyjádřili souhlas na vlastním jménem při "Uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem" nastavená na Ne. Členové této role jsou přidány jako vlastníky, při vytváření aplikace v kterémkoli nebo podnikové aplikace.
 
-* **[Správce ověřování](#authentication-administrator)**: Uživatelé s touto rolí můžete nastavit nebo resetovat přihlašovací údaje bez hesla. Správce ověřování vyžadovat, aby uživatelé přeregistrovat na existující přihlašovací údaje bez hesla (například vícefaktorové ověřování nebo FIDO) dokumentů a odvolání přístupu **zapamatovat MFA na zařízení**, pwhich rompts pro vícefaktorové ověřování na další přihlášení uživatelů, kteří jsou bez oprávnění správce nebo členem následujících rolí:
+* **[Správce ověřování](#authentication-administrator)**: Uživatelé s touto rolí můžete nastavit nebo resetovat přihlašovací údaje bez hesla. Správce ověřování vyžadovat, aby uživatelé přeregistrovat na existující přihlašovací údaje bez hesla (například vícefaktorové ověřování nebo FIDO) dokumentů a odvolání přístupu **zapamatovat MFA na zařízení**, který zobrazí výzvu pro vícefaktorové ověřování na další přihlášení uživatelů, kteří jsou bez oprávnění správce nebo členem následujících rolí:
   * Správce ověření
   * Uživatelé s oprávněním ke čtení adresářů
   * Odesílatel pozvánky hostů

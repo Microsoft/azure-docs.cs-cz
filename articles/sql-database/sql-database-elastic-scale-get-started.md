@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 245cbafb42becc230f5e480cfc8e6fa41c352190
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462966"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309379"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji Elastic Database
 
@@ -131,7 +131,7 @@ Další informace o nástroje pro elastické databáze najdete v následujícíc
   * Nástroje pro elastické databáze ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Nástroje elastic Database pro Azure SQL – integrace Entity Frameworku](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Elasticita horizontálních oddílů v Centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Elastické škálování oznámení](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
+* Blog: [Elastické škálování oznámení](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Kanál 9: [Elastické škálování video s přehledem](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Diskuzní fórum: [Fórum služby Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * K měření výkonu: [Čítače výkonu pro správce mapování horizontálních oddílů](sql-database-elastic-database-client-library.md)

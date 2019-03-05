@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 34e4371902095c5802bf4fc180e09ce189c110fc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214006"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316043"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -73,7 +73,7 @@ Diagnostický protokol vypíše hodnoty hash dotazu dotazů, které měla vliv n
 
 Pokud bylo dosaženo omezení dostupné relace, můžete optimalizovat aplikací snížením počtu přihlášení, provedené v databázi. Pokud nemůžete snížit počet přihlášení z vaší aplikace k databázi, zvažte zvýšení cenová úroveň databáze. Nebo můžete rozdělit a přesuňte databázi do více databází pro více vyvážené distribuce zatížení.
 
-Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobrazit [Přehled prostředků omezuje na server služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.
+Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobrazit [Přehled prostředků omezuje na server služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.
 
 ## <a name="workload-increase"></a>Zvýšení zatížení
 
@@ -109,7 +109,7 @@ Můžete optimalizovat nebo dotazů souvisejících s úředníci s nejvyšším
 
 Také můžete snížit zatížení optimalizace nebo distribuci přes více databází. Nebo můžete k distribuci vašich úloh mezi několik databází. Pokud tato řešení není možné, zvažte zvýšení cenové úrovně předplatného databáze SQL zvýšit objem paměťových prostředků dostupných v databázi.
 
-Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: Záhadnými a často příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: Záhadnými a často příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Uzamykání
 
@@ -259,7 +259,7 @@ Tento model zjistitelná výkonu kombinuje tři různé případy regrese plánu
 
 Nové podmínky regrese plán odkazuje na stavu, ve kterém SQL Database začne provádět nový plán provádění dotazu, který není tak účinné jako původní plán. Staré regrese podmínku plán týká stavu při přepnutí SQL Database pomocí nového, efektivnější plán na původní plán, který není tak účinné jako nový plán. Existující regrese změnit plány úloh odkazuje na stavu, ve kterém původní a nové plány průběžně alternativní, s zůstatek na účtu, budete více směrem k provádění špatné plánu.
 
-Další informace o plánu regrese, naleznete v tématu [co je plán Regrese v systému SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
+Další informace o plánu regrese, naleznete v tématu [co je plán Regrese v systému SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
@@ -267,7 +267,7 @@ Diagnostický protokol vypíše hodnoty hash dotazu, ID dobrého plánu, plán c
 
 Můžete analyzovat, s jakým plánem je lepší pro určité dotazy, které chcete zjistit pomocí dotazu uvedené hodnoty hash. Až zjistíte, s jakým plánem fungovala lépe pro své dotazy, můžete ji ručně vynutit. 
 
-Další informace najdete v tématu [zjistěte, jak systém SQL Server zabraňuje regresím plán](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Další informace najdete v tématu [zjistěte, jak systém SQL Server zabraňuje regresím plán](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Víte, že integrované inteligentní funkce SQL Database může automaticky spravovat ty plánům spuštění dotazů pro vaše databáze?

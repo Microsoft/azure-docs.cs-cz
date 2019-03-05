@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 2173bc46471fec6bfbacbda9362e5530075faf18
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857325"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311086"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Co je znalostní bázi nástroje QnA Maker?
 
@@ -28,7 +28,7 @@ Znalostní báze QnA Maker se skládá ze sady páry otázek a odpovědí (QnA) 
 * **Odpovědi** – odpověď je tato odpověď, která je vrácena, pokud uživatelský dotaz je nalezena shoda s přidružené otázku.  
 * **Metadata** – Metadata jsou značky přiřazeny k pár QnA a jsou reprezentovány jako páry klíč hodnota. Metadata značky se používají k filtrování QnA páry a omezit tak skupinu, přes který dotaz se provádí porovnávání.
 
-Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alternativní dotazy), že všechny mapovat na jednu odpověď. Každý takový pár kromě toho může mít více polí metadat s ním spojená.
+Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alternativní dotazy), že všechny mapovat na jednu odpověď. Kromě toho každý takový pár může mít více polí metadat s ním spojená: jeden klíč a jednu hodnotu.
 
 ![Nástroj QnA Maker znalostních bází](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
@@ -36,7 +36,7 @@ Jeden QnA, reprezentovaný číselné ID QnA má několik variant otázky (alter
 
 Při ingestování formátovaný obsah do znalostní báze, nástroj QnA Maker se pokusí převést obsah na markdown. Čtení [to](https://aka.ms/qnamaker-docs-markdown-support) blogu o markdownu formáty používaném většina klientů konverzace.
 
-Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(produktu: Shredder)**. Klíče a hodnoty musí být prostého textu. Klíč metadat nesmí obsahovat žádné mezery.
+Pole metadat se skládá z dvojice klíč hodnota oddělené dvojtečkou **(produktu: Shredder)**. Klíče a hodnoty musí být prostého textu. Klíč metadat nesmí obsahovat žádné mezery. Metadata podporuje pouze jednu hodnotu pro klíč.
 
 ## <a name="next-steps"></a>Další postup
 

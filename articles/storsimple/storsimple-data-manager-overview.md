@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: fe4d332859b3ec0ba03e64f9a830b7710586aa17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158813"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312480"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Data Manageru
 
@@ -68,7 +68,9 @@ Doporučujeme:
  - Váš účet úložiště zdroje (je přidružený k zařízení StorSimple) a cílový účet úložiště (ve kterém chcete daná data v nativním formátu) být ve stejné oblasti Azure.
  - Použijete v oblasti, která obsahuje účet úložiště StorSimple Data Manager a úlohy definice. Pokud to není možné přenést do Správce dat v nejbližší oblasti Azure a pak vytvořte definici úlohy ve stejné oblasti jako váš účet úložiště StorSimple. 
 
-    Pokud váš účet úložiště StorSimple není v 26 oblastech, které podporují vytváření definice úlohy, doporučujeme, abyste jako uvidíte dlouhá latenci a potenciálně velkému spojeným nelze spustit Správce dat StorSimple.
+    Pokud váš účet úložiště StorSimple není v 26 oblastech, které podporují vytváření definice úlohy, doporučujeme, abyste jako uvidíte dlouhá latenci a potenciální poplatky za odchozí přenos nelze spustit Správce dat StorSimple.
+    
+Cílem Microsoftu je zasloužit k zajištění, že služby Azure vždy k dispozici ve všech oblastech. Ale neplánované výpadky může nastat krátká období v určité oblasti. V takových případech otevřete definici správce dat a úlohy v oblasti, která nemá vliv výpadek a spuštění úlohy transformace. Některé další latence v takové situaci může dojít, ale může to být strategii zotavení v nepravděpodobném případě regionálního výpadku.
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
 

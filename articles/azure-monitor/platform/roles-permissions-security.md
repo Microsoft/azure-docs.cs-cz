@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55a7a26815dac1140d100c05a47057f8d5000f9d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465237"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317811"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
 
 ## <a name="built-in-monitoring-roles"></a>Předdefinované role monitorování
@@ -49,8 +52,8 @@ Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data m
 Uživatelé se přiřadila role Přispěvatel monitorování můžete zobrazit všechna data monitorování v rámci předplatného a vytvoření nebo upravte nastavení monitorování, ale nelze změnit všechny další prostředky. Tato role je nadstavbou jazyka roli Čtenář monitorování a je vhodný pro členy týmu monitorování nebo poskytovatelům spravovaných služeb, kteří kromě výše uvedeného oprávnění také musí být schopni v organizaci:
 
 * Publikujte jako sdílený řídicí panel monitorování řídicí panely.
-* Nastavte [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) pro resource.*
-* Nastavte [profil protokolu](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) pro subscription.*
+* Nastavte [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) pro prostředek.\*
+* Nastavte [profil protokolu](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) pro odběr.\*
 * Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Vytvořte webové testy Application Insights a komponenty.
 * Sdílené klíče pracovního prostoru Log Analytics seznamu.
@@ -58,7 +61,7 @@ Uživatelé se přiřadila role Přispěvatel monitorování můžete zobrazit v
 * Vytvářet a odstraňovat a spouštět uložené výsledky hledání Log Analytics.
 * Vytvořit a odstranit konfiguraci úložiště analýzy protokolů.
 
-* uživatele musí být taky samostatně přidělují oprávnění klíče Listkey na cílový prostředek (úložiště účtu nebo událost obor názvů centra) k nastavení profilu protokolu nebo nastavení diagnostiky.
+\*Uživatel musí být taky samostatně přidělují oprávnění klíče Listkey na cílový prostředek (úložiště účtu nebo událost obor názvů centra) k nastavení profilu protokolu nebo nastavení diagnostiky.
 
 > [!NOTE]
 > Tato role vám není udělena oprávnění ke čtení k data protokolu, která byla Streamovat do centra událostí nebo uložený v účtu úložiště. [Viz níže](#security-considerations-for-monitoring-data) pro informace o tom, jak nakonfigurovat přístup k těmto prostředkům.
@@ -98,7 +101,7 @@ Pokud výše uvedené vestavěné role nevyhovují přesné potřebám vašeho t
 Například použití výše uvedené tabulky, můžete vytvořit vlastní roli RBAC pro "aktivity protokolů Čtenář, následujícím způsobem:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Activity Log Reader"
 $role.Description = "Can view activity logs."
@@ -106,7 +109,7 @@ $role.Actions.Clear()
 $role.Actions.Add("Microsoft.Insights/eventtypes/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 ## <a name="security-considerations-for-monitoring-data"></a>Důležité informace o zabezpečení pro monitorování dat.
@@ -127,8 +130,8 @@ Všechny tři typy dat lze uložit v účtu úložiště nebo Streamovat do cent
 Když uživatel nebo aplikace potřebuje přístup k datům v účtu úložiště monitorování, měli byste [generovat SAS účtu](https://msdn.microsoft.com/library/azure/mt584140.aspx) v účtu úložiště, který obsahuje data monitorování s přístupem jen pro čtení úrovně služeb do úložiště objektů blob. V prostředí PowerShell to může vypadat:
 
 ```powershell
-$context = New-AzureStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
-$token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
+$context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
+$token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
 Pak můžete udělit token k entitě, musí přečíst z úložiště účtu a můžete seznam a číst ze všech objektů BLOB v tomto účtu úložiště.
@@ -136,7 +139,7 @@ Pak můžete udělit token k entitě, musí přečíst z úložiště účtu a m
 Případně pokud potřebujete řídit pomocí RBAC toto oprávnění, můžete udělit dané entitě Microsoft.Storage/storageAccounts/listkeys/action oprávnění v této konkrétní účet úložiště. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit nastavení diagnostiky nebo profil k archivaci protokolu na účet úložiště. Můžete například vytvořit následující vlastní roli RBAC pro uživatele nebo aplikaci, která potřebuje pouze ke čtení z jednoho účtu úložiště:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Monitoring Storage Account Reader"
 $role.Description = "Can get the storage account keys for a monitoring storage account."
@@ -145,7 +148,7 @@ $role.Actions.Add("Microsoft.Storage/storageAccounts/listkeys/action")
 $role.Actions.Add("Microsoft.Storage/storageAccounts/Read")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myMonitoringStorageAccount")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 > [!WARNING]
@@ -160,7 +163,7 @@ Platí podobný vzorec s event hubs, ale nejdřív je potřeba vytvořit vyhraze
 2. Pokud příjemce musí být schopni získat klíče ad-hoc, udělte uživateli klíče Listkey akce pro tohoto centra událostí. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit nastavení diagnostiky nebo profil protokolu pro streamování do event hubs. Například může vytvořit pravidlo RBAC:
    
    ```powershell
-   $role = Get-AzureRmRoleDefinition "Reader"
+   $role = Get-AzRoleDefinition "Reader"
    $role.Id = $null
    $role.Name = "Monitoring Event Hub Listener"
    $role.Description = "Can get the key to listen to an event hub streaming monitoring data."
@@ -169,7 +172,7 @@ Platí podobný vzorec s event hubs, ale nejdřív je potřeba vytvořit vyhraze
    $role.Actions.Add("Microsoft.ServiceBus/namespaces/Read")
    $role.AssignableScopes.Clear()
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
-   New-AzureRmRoleDefinition -Role $role 
+   New-AzRoleDefinition -Role $role 
    ```
 
 ## <a name="monitoring-within-a-secured-virtual-network"></a>Monitorování v rámci zabezpečené virtuální síti

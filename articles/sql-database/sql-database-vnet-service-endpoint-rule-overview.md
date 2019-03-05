@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456278"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312252"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncové body služeb virtuální sítě a pravidel pro databázové servery
 
@@ -174,6 +174,8 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
 
 #### <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
@@ -182,9 +184,9 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
 1.  V prostředí PowerShell **registraci serveru služby SQL Database** s Azure Active Directory (AAD):
 
     ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+    Connect-AzAccount
+    Select-AzSubscription -SubscriptionId your-subscriptionId
+    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -273,7 +275,7 @@ Tato část ukazuje, jak můžete používat [webu Azure portal] [ http-azure-po
 
 ## <a name="powershell-alternative"></a>Alternativní prostředí PowerShell
 
-Skript prostředí PowerShell můžete také vytvořit pravidla virtuální sítě. Zásadní rutiny **New-AzureRmSqlServerVirtualNetworkRule**. Pokud chcete, přečtěte si téma [prostředí PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidlo pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Skript prostředí PowerShell můžete také vytvořit pravidla virtuální sítě. Zásadní rutiny **New-AzSqlServerVirtualNetworkRule**. Pokud chcete, přečtěte si téma [prostředí PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidlo pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>Alternativní rozhraní REST API
 

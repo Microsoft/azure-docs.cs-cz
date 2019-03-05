@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7006d7ed56c58858e4b7c053af3ba1101455928c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214058"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312504"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
@@ -40,6 +40,8 @@ Tento scénář bude:
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ke konfiguraci-kompletního protokolu SSL s aplikační bránou, certifikát je vyžadován pro bránu a certifikáty jsou nutné k back-end serverů. Certifikát brány se používá k odvození symetrický klíč podle specifikace protokolu SSL. Symetrický klíč je pak používat zašifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů.
 
 Pro šifrování SSL začátku do konce back-end musí být povolené ve službě application gateway. Odešlete veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
@@ -54,21 +56,21 @@ Tato část vás provede vytvořením skupinu prostředků, která obsahuje brá
    1. Přihlaste se ke svému účtu Azure.
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 
    2. Vyberte předplatné, které chcete použít pro tento scénář.
 
    ```powershell
-   Select-AzureRmsubscription -SubscriptionName "<Subscription name>"
+   Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
 
 
    3. Vytvořte skupinu prostředků. (Tento krok přeskočte, pokud používáte některou ze stávajících skupin prostředků.)
 
    ```powershell
-   New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
+   New-AzResourceGroup -Name appgw-rg -Location "West US"
    ```
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvořte virtuální síť a podsíť pro aplikační bránu
@@ -79,7 +81,7 @@ Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu pod
    1. Přiřaďte rozsah adres podsítě se použije pro službu application gateway.
 
    ```powershell
-   $gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
+   $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
    ```
 
    > [!NOTE]
@@ -90,21 +92,21 @@ Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu pod
    2. Přiřaďte rozsah adres pro fond back endových adres.
 
    ```powershell
-   $nicSubnet = New-AzureRmVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
+   $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
    3. Vytvořte virtuální síť s podsítí definovaných v předchozích krocích.
 
    ```powershell
-   $vnet = New-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+   $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
    4. Načíst prostředek virtuální sítě a podsítě prostředky, který se má použít v následujících kroků.
 
    ```powershell
-   $vnet = Get-AzureRmvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
-   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
-   $nicSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
+   $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
+   $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -VirtualNetwork $vnet
+   $nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name 'appsubnet' -VirtualNetwork $vnet
    ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
@@ -112,7 +114,7 @@ Následující příklad vytvoří virtuální síť a dvě podsítě. Jednu pod
 Vytvořte prostředek veřejné IP se použije pro službu application gateway. Tato veřejná IP adresa se používá v jednom z následujících kroků.
 
 ```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
+$publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01' -Location "West US" -AllocationMethod Dynamic
 ```
 
 > [!IMPORTANT]
@@ -125,20 +127,20 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 1. Vytvoření konfigurace IP aplikační brány. Toto nastavení lze konfigurovat využívající podsítě application gateway. Při spuštění služby application gateway ji předá IP adresa z nakonfigurované podsítě a směrování síťového provozu na IP adresy v back endového fondu IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
    ```powershell
-   $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
+   $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
 
 2. Vytvořte konfiguraci front-end IP adresy. Namapuje se toto nastavení privátní nebo veřejnou IP adresu front-endu služby application gateway. Následující krok přiřadí veřejnou IP adresu v předchozím kroku s konfigurací front-end IP adresy.
 
    ```powershell
-   $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
+   $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
 3. Nakonfigurujte fond back-end IP adres s IP adresami serverů back endové webové. Tyto IP adresy jsou IP adresy, které přijímají síťový provoz, který přichází z koncového bodu front-end IP adresy. Nahraďte IP adresy ve vzorku s vlastními koncovými body IP adresy typu aplikace.
 
    ```powershell
-   $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
+   $pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
    ```
 
    > [!NOTE]
@@ -148,14 +150,14 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 4. Nakonfigurujte port front-end IP pro koncový bod veřejné IP adresy. Tento port je port, který koncoví uživatelé připojit.
 
    ```powershell
-   $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
+   $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
 5. Konfigurace certifikátu pro službu application gateway. Tento certifikát slouží k dešifrování a šifrovaly provozu ve službě application gateway.
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
+   $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
    ```
 
    > [!NOTE]
@@ -164,7 +166,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 6. Vytvořte naslouchací proces protokolu HTTP služby application gateway. Přiřadíte konfiguraci front-end IP adresy, portu a certifikát protokolu SSL se má použít.
 
    ```powershell
-   $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
+   $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
 7. Nahrajte certifikát, který se použije na prostředky s podporou protokolu SSL back endového fondu.
@@ -175,7 +177,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
    > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-endu, nemusí být načtený veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud už máte pochybnosti, navštivte https://127.0.0.1/ na back-end servery, které chcete potvrdit, který certifikát se používá pro *výchozí* vazby SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikátu ze žádosti o ruční prohlížeče k https://127.0.0.1/ na back-end serverech, musíte nastavit výchozí vazbu SSL na na ně. Pokud to neprovedete, selhání sondy a back-end není na seznamu povolených.
 
    ```powershell
-   $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
    ```
 
    > [!NOTE]
@@ -184,31 +186,31 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
    Pokud používáte SKU v2 Application Gateway, vytvořte důvěryhodný kořenový certifikát namísto ověřovací certifikát. Další informace najdete v tématu [přehled koncového šifrování protokolu SSL pomocí Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 
    ```powershell
-   $trustedRootCert01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
+   $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
    ```
 
 8. Konfigurace nastavení protokolu HTTP pro application gateway back-endu. Přiřadíte certifikát nahraný v předchozím kroku, a nastavení HTTP.
 
    ```powershell
-   $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
+   $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
 
    Pro SKU v2 Application Gateway použijte následující příkaz:
 
    ```powershell
-   $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+   $poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
    ```
 
 9. Vytvořte pravidlo směrování pro vyrovnávání zatížení, které konfiguruje chování nástroje pro vyrovnávání zatížení. V tomto příkladu se vytvoří základní pravidlo kruhové dotazování.
 
    ```powershell
-   $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+   $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
 10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní\_malé**, **standardní\_střední**, a **standardní\_velké**.  Pro kapacitu, jsou k dispozici hodnoty **1** prostřednictvím **10**.
 
     ```powershell
-    $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+    $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
     ```
 
     > [!NOTE]
@@ -225,7 +227,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
    Následující příklad nastaví minimální protocol verze **TLSv1_2** a umožňuje **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** pouze.
 
    ```powershell
-   $SSLPolicy = New-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+   $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
    ```
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
@@ -233,7 +235,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
 Pomocí všech předchozích kroků vytvořte službu application gateway. Vytvoření brány je proces, který trvá dlouhou dobu pro spuštění.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Omezení verze protokolu SSL v existující aplikační bráně
@@ -243,20 +245,20 @@ V předchozích krocích trvalo vás provedou vytvořením aplikace s protokolem
    1. Získat application gateway se aktualizovat.
 
    ```powershell
-   $gw = Get-AzureRmApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
    2. Definujte zásady protokolu SSL. V následujícím příkladu **TLSv1.0** a **TLSv1.1** jsou zakázána a šifrovacích sad **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, a **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** jsou pouze těch, které jsou povoleny.
 
    ```powershell
-   Set-AzureRmApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
+   Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
    3. Nakonec aktualizujte brány. Tento poslední krok je dlouho běžící úlohy. Po dokončení, je nakonfigurované – kompletního protokolu SSL ve službě application gateway.
 
    ```powershell
-   $gw | Set-AzureRmApplicationGateway
+   $gw | Set-AzApplicationGateway
    ```
 
 ## <a name="get-an-application-gateway-dns-name"></a>Získejte název DNS aplikace brány
@@ -266,7 +268,7 @@ Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. 
 Konfigurace aliasu, načtěte podrobnosti o služby application gateway a název její přidružené IP adresy nebo DNS s využitím **PublicIPAddress** element připojený ke službě application gateway. Použijte službu application gateway název DNS vytvořit záznam CNAME, který ukazuje dvě webové aplikace na tento název DNS. Jsme není doporučujeme používat záznamy typu, protože virtuální IP adresu můžete změnit na restartování služby application gateway.
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
+Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
 ```
 
 ```

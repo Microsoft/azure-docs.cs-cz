@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1f6ce2e51255ddf43b6c123585866117d76f8d0b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234744"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313646"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -60,6 +60,9 @@ Orchestrace aplikaci patch se skládá z následujících tyto dílčí součás
 > Aplikace orchestraci oprav používá službu Service Fabric opravy správce systému zakázat nebo povolit uzlu a provádění kontroly stavu. Úloha opravy vytvořené aplikací orchestraci oprav sleduje průběh aktualizace Windows pro každý uzel.
 
 ## <a name="prerequisites"></a>Požadavky
+
+> [!NOTE]
+> Minimální požadovaná verze rozhraní .NET framework má číslo 4.6.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Povolit službu správce opravit (Pokud již není spuštěná)
 
@@ -152,7 +155,7 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měly být uložené v mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzel a měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> – Výsledky po dobu posledních tří měsíců by měla být uložena. |
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
-| WUQuery               | řetězec<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| WUQuery               | string<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: false)                 | Pomocí tohoto příznaku do správy, které aktualizace by měla být stažen a nainstalován. Jsou povoleny následující hodnoty <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace v počítači.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
 | WURescheduleCount     | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |

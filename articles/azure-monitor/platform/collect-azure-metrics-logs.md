@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1d01755ae62843ad1f2f1728df046b767fe123ca
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2137a2e1d7cea9f2a2dbf565295323cb133513ee
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886573"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315788"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -79,16 +79,19 @@ Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overvie
 * Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Povolení diagnostiky pomocí PowerShellu
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Potřebujete listopadu 2016 (v2.3.0) nebo novější verze [prostředí Azure PowerShell](/powershell/azure/overview).
 
-Následující příklad PowerShell ukazuje, jak používat [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) povolit diagnostiku na skupinu zabezpečení sítě. Stejný postup funguje u všech podporovaných zdrojů – nastavit `$resourceId` k prostředku, které chcete povolit diagnostiku pro id prostředku.
+Následující příklad PowerShell ukazuje, jak používat [Set-AzDiagnosticSetting](/powershell/module/az.insights/set-azdiagnosticsetting) povolit diagnostiku na skupinu zabezpečení sítě. Stejný postup funguje u všech podporovaných zdrojů – nastavit `$resourceId` k prostředku, které chcete povolit diagnostiku pro id prostředku.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
 
-Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Povolení diagnostiky pomocí šablon Resource Manageru

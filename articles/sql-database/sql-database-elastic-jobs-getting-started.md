@@ -12,22 +12,22 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6c77bb1f17f93e25605d251c717c2a4d61f940dd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567005"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313955"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohy elastické databáze
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
 Úlohy elastic Database (preview) pro službu Azure SQL Database umožňuje spolehlivě spouštět skripty T-SQL, které zahrnují více databází při automatické opakování a poskytuje záruky konečné dokončení. Další informace o funkci úlohy elastické databáze najdete v tématu [Elastic jobs](sql-database-elastic-jobs-overview.md).
 
 Tento článek rozšiřuje ukázku v [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md). Po dokončení se dozvíte, jak vytvářet a spravovat úlohy, které spravovat skupiny souvisejících databází. Není třeba použít nástroje pro elastické škálování pro využití výhod Elastických úloh.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Stáhněte a spusťte [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
 
@@ -55,7 +55,7 @@ Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-A
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
     $ServerName = "samples"
-    $dbsinserver = Get-AzureRMSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+    $dbsinserver = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
     $dbsinserver | %{
     $currentdb = $_.DatabaseName
     $ErrorActionPreference = "Stop"

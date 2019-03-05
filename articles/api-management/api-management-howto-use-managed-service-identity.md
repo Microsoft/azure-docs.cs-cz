@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 750403c18a6eaa36cdc05ece2de1222ad050ba1b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989536"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310552"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravované identity ve službě Azure API Management
 
@@ -166,7 +166,7 @@ Následující příklad ukazuje šablonu Azure Resource Manageru, který obsahu
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate."
+                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },

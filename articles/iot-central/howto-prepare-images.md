@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f0e4d1badd0ed992c96f6624813e575d0f286d8b
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4378ff4155cf0b2f9c4af8176f41fe35fc433792
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216794"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310705"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
@@ -74,17 +74,17 @@ K nahrání obrázku na **Správce aplikací**, přejděte na **nastavení aplik
 
 ![Nahrání image aplikací](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Klikněte na dlaždici aplikace Image nahrajete svou image připravená (268 x 160 px) z místního počítače.
+Výběrem dané dlaždice aplikace Image nahrajete svou image připravená (268 x 160 px) z místního počítače.
 
 ### <a name="application-dashboard"></a>Řídicí panel aplikací
 
-K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel** vaší aplikace a klikněte na **upravit**. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel** vaší aplikace a vyberte **upravit**. Musí být Tvůrce k dokončení této úlohy:
 
 ![Nahrajte obrázek řídicího panelu aplikací](media/howto-prepare-images/uploadhomepage.png)
 
-V části Konfigurace Image klikněte na dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
-**Uložit** nahraný obrázek. Změnit velikost je v režimu úprav. Klikněte na tlačítko **provádí** po dokončení. 
+**Uložit** nahraný obrázek. Změnit velikost je v režimu úprav. Vyberte **provádí** po dokončení.
 
 ### <a name="device-template"></a>Šablona zařízení
 
@@ -92,27 +92,27 @@ K nahrání obrázku do šablony zařízení, přejděte na **Device Explorer**,
 
 ![Nahrání image šablony zařízení](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Klikněte na dlaždici s obrázkem do nahrajete svou image připravená (64 × 64 pixelů) z místního počítače. 
+Vyberte dlaždici s obrázkem do nahrajete svou image připravená (64 × 64 pixelů) z místního počítače. 
 
 ### <a name="device-dashboard"></a>Řídicí panel zařízení
 
-K nahrání obrázku na řídicí panel zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránky a klikněte na **upravit šablonu**. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku na řídicí panel zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránku a vybrat **upravit šablonu**. Musí být Tvůrce k dokončení této úlohy:
 
 ![Nahrajte obrázek řídicího panelu zařízení](media/howto-prepare-images/uploaddevicedashboard.png)
 
-V části Konfigurace Image klikněte na dlaždici s obrázkem a pak zvolte soubor k nahrání z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části Konfigurace Image vyberte dlaždici s obrázkem a pak zvolte soubor k odeslání z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
-**Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Klikněte na tlačítko **provádí** po dokončení.
+**Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Vyberte **provádí** po dokončení.
 
 ### <a name="device-set-dashboard"></a>Zařízení nastavit řídicí panel
 
-K nahrání obrázku na řídicí panel sady zařízení, přejděte na **sady zařízení** a zvolte sadu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránky a klikněte na **upravit**:
+K nahrání obrázku na řídicí panel sady zařízení, přejděte na **sady zařízení** a zvolte sadu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránku a vybrat **upravit**:
 
 ![Nahrajte obrázek řídicího panelu nastavení zařízení](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-V části Konfigurace Image klikněte na dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
+V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
-**Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Klikněte na tlačítko **provádí** po dokončení.
+**Uložit** nahraný obrázek. Můžete změnit velikost a umístění v režimu úprav. Vyberte **provádí** po dokončení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9925f2ed9f5b24a4113c30f1d00eb3a5bbed8eb5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d21fe7c70c09ad41faf628db45d82b995c8f2515
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205337"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311436"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -117,7 +117,7 @@ Další informace najdete v případě, že máte problémy s připojením, [ře
 * Volitelné: Testovací uživatelský účet k ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Požadavky na komponenty
-### <a name="powershell-and-net-framework"></a>Prostředí PowerShell a rozhraní .net Framework
+### <a name="powershell-and-net-framework"></a>Prostředí PowerShell a rozhraní .NET Framework
 Azure AD Connect, závisí na Microsoft PowerShell a rozhraní .NET Framework 4.5.1. Je nutné tuto verzi nebo novější verze na serveru nainstalovaný. V závislosti na vaší verzi Windows serveru postupujte takto:
 
 * Windows Server 2012R2
@@ -133,16 +133,16 @@ Starší než verze 1.1.614.0 Azure AD Connect ve výchozím nastavení použív
 
 1. Před Windows serverem 2008 R2 nebo novější není možné TLS 1.2. Ujistěte se, že je nainstalována .net 4.5.1 oprava hotfix pro váš operační systém, najdete v článku [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). Můžete mít tato oprava hotfix nebo novější verzi na serveru již nainstalovány.
 2. Pokud používáte Windows Server 2008 R2, ujistěte se, že je povolený protokol TLS 1.2. Na serveru Windows Server 2012 a novější verze TLS 1.2 již povolena.
-   ```
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   ```
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    ```
 3. Pro všechny operační systémy nastavte tento klíč registru a restartujte server.
-   ```
-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-   "SchUseStrongCrypto"=dword:00000001
-   ```
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+    "SchUseStrongCrypto"=dword:00000001
+    ```
 4. Pokud chcete také protokol TLS 1.2 mezi serverem modul synchronizace a vzdálený SQL Server a ujistěte se, že máte nainstalované pro požadované verze [podpora protokolu TLS 1.2 pro Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Předpoklady pro federační instalace a konfigurace

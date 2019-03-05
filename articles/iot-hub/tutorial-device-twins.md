@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
 ms.custom: mvc
-ms.openlocfilehash: d613526cd6c1adc277ba3bd58a40f757a9c7b729
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5163f2596e9ba08754cd3a5e49040a9d95764192
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009405"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312949"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -59,7 +59,7 @@ Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azur
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud zatím ve svém předplatném nemáte centrum IoT nastavené, můžete jej nastavit pomocí následujícího skriptu rozhraní příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
+Pokud ještě nemáte služby IoT hub nastavit v rámci vašeho předplatného, můžete nastavit jednu pomocí následujícího skriptu příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub

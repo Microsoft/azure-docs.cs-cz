@@ -8,12 +8,12 @@ ms.date: 1/3/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 971c01ec8002e73dbc6abfb66a0ede26f90a4d9c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8fd46bdc5971ce1e9bcee6599dd73f09cc3c00be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453316"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314343"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-azure-logic-apps"></a>Vytváření pracovních postupů s konektorem IoT Central ve službě Azure Logic Apps
 
@@ -32,13 +32,13 @@ V Microsoft Flow můžete použít konektor IoT Central. Azure Logic Apps a Micr
 
 Tato část ukazuje, jak publikovat zprávu do Microsoft Teams, když se aktivuje pravidlo. Můžete nakonfigurovat svůj pracovní postup pro jiné konektory slouží k provádění akcí, například odeslání události do vašeho centra událostí vytvořit novou pracovní položku Azure DevOps a vložit nový řádek v SQL serveru.
 
-1. Začněte tím, že [vytváření pravidla v IoT Central](howto-create-telemetry-rules.md). Po uložení podmínky pravidla, klikněte na tlačítko **Azure Logic Apps** dlaždici jako novou akci. Klikněte na tlačítko **vytvořit na webu Azure portal**. Budete přesměrováni na web Azure Portal k vytvoření nové aplikace logiky. Budete se muset přihlásit ke svému účtu Azure.
+1. Začněte tím, že [vytváření pravidla v IoT Central](howto-create-telemetry-rules.md). Po uložení podmínky pravidla, vyberte **Azure Logic Apps** dlaždici jako novou akci. Vyberte **vytvořit na webu Azure portal**. Budete přesměrováni na web Azure Portal k vytvoření nové aplikace logiky. Budete se muset přihlásit ke svému účtu Azure.
 
-1. Zadejte požadované informace a vytvořte novou aplikaci logiky. Můžete zřídit nové aplikace logiky do předplatného Azure. Nemusí být stejné jako předplatné, které vaše aplikace IoT Central byl vytvořen v. Klikněte na možnost **Vytvořit**.
+1. Zadejte požadované informace a vytvořte novou aplikaci logiky. Můžete zřídit nové aplikace logiky do předplatného Azure. Nemusí být stejné jako předplatné, které vaše aplikace IoT Central byl vytvořen v. Vyberte **Vytvořit**.
 
     ![Vytvoření aplikace logiky na webu Azure portal](./media/howto-build-azure-logic-apps/createinazureportal.PNG)
 
-1. Po úspěšném vytvoření aplikace logiky budete automaticky přesměrováni do návrháře pro Logic Apps. Klikněte na tlačítko **prázdná aplikace logiky**. 
+1. Po úspěšném vytvoření aplikace logiky budete automaticky přesměrováni do návrháře pro Logic Apps. Vyberte **prázdná aplikace logiky**. 
 
     ![Vytvoření prázdné aplikace logiky](./media/howto-build-azure-logic-apps/blanklogicapp.PNG)
 
@@ -54,11 +54,11 @@ Tato část ukazuje, jak publikovat zprávu do Microsoft Teams, když se aktivuj
 
 1. V akci, zvolte **týmu** a **kanálu**. Vyplňte **zpráva** pole co má každá zpráva říct. Můžete zahrnout *dynamický obsah* z vašeho IoT Central pravidla předávání podél důležité informace, jako je název zařízení a časové razítko oznámení.
     > [!NOTE]
-    > Klikněte na tlačítko "Další informace" textu v okně dynamického obsahu můžete získat měření a hodnoty vlastností, které aktivuje pravidlo.
+    > Vyberte **zobrazit další** textu v okně dynamického obsahu se získat měření a hodnoty vlastností, které aktivuje pravidlo.
 
     ![Otevřete úpravy akce aplikace logiky s podoknem dynamické](./media/howto-build-azure-logic-apps/buildworkflow.PNG)
 
-1. Po dokončení úprav akci, klikněte na tlačítko **Uložit**.
+1. Po dokončení úprav akci, vyberte **Uložit**.
 
 1. Pokud vrátíte se do vaší aplikace IoT Central, uvidíte, že toto pravidlo obsahuje akci Azure Logic Apps v rámci oblasti akce.
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d8a5ca6285624720e23a4986917ab5e715f6ebfa
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 5c414e4398ef280b0d04d0a384722ee923c4cefa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768009"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316014"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -36,15 +36,15 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
 ## <a name="create-a-telemetry-based-rule"></a>Vytvoření pravidla založeného na telemetrii
 
-1. Chcete-li přidat nové pravidlo na základě telemetrie pro vaši aplikaci, v levé navigační nabídce zvolte **šablon**:
+1. Chcete-li přidat nové pravidlo na základě telemetrie pro vaši aplikaci, v levé navigační nabídce **šablon**:
 
     ![Stránka šablony zařízení](media/tutorial-configure-rules-experimental/templatespage1.png)
 
     Zobrazí **připojené Vzduchovod (1.0.0)** zařízení šablonu, kterou jste vytvořili v předchozím kurzu.
 
-2. Přizpůsobení šablony zařízení, klikněte na tlačítko **připojené Vzduchovod** šablonu, kterou jste vytvořili v předchozím kurzu.
+2. Chcete-li upravit šablonu vašeho zařízení, vyberte **připojené Vzduchovod** šablonu, kterou jste vytvořili v předchozím kurzu.
 
-3. Přidání telemetrické pravidla v **pravidla** zobrazení, zvolte **pravidla**, klikněte na tlačítko **+ nové pravidlo**a klikněte na tlačítko **Telemetrie**:
+3. Přidání telemetrické pravidla v **pravidla** zobrazit, vyberte možnost **pravidla**vyberte **+ nové pravidlo**a pak vyberte **Telemetrie**:
 
     ![Zobrazení pravidel](media/tutorial-configure-rules-experimental/newrule.png)
 
@@ -59,7 +59,7 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     ![Podmínka pravidla teploty](media/tutorial-configure-rules-experimental/temperaturerule.png)
 
-    Potom klikněte na **Uložit**.
+    Potom vyberte **Uložit**.
 
 ## <a name="add-an-action"></a>Přidání akce
 
@@ -81,7 +81,7 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
     ![Akce teploty](media/tutorial-configure-rules-experimental/temperatureaction.png)
 
-3. Klikněte na **Uložit**. Pravidlo je uvedeno na **pravidla** stránky.
+3. Vyberte **Uložit**. Pravidlo je uvedeno na **pravidla** stránky.
 
 ## <a name="test-the-rule"></a>Testování pravidla
 

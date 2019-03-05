@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 839a6b3cc90c6a8fcc512c100c8825f9513ded26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 21f3f9cba6fadb8f3d163fb5a9ed8b214e43c541
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875935"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316366"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru
 
@@ -310,28 +310,29 @@ Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQu
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>Správa výstrah protokolu pomocí Powershellu, rozhraní příkazového řádku nebo rozhraní API
 
-[Azure Monitor – naplánovaných pravidel dotazu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Azure Monitor – naplánovaných pravidel dotazu rozhraní API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
+
 
 > [!NOTE]
 > Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
 
+Upozornění protokolů aktuálně nemáte vyhrazené příkazy prostředí PowerShell nebo rozhraní příkazového řádku aktuálně; jak je znázorněno níže je možné pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json) v, ale [oddíl prostředků šablony](#azure-resource-template-for-application-insights) :
 
-Upozornění protokolů nemají vyhrazené příkazy prostředí PowerShell nebo rozhraní příkazového řádku aktuálně; ale jak je znázorněno níže je možné pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json) v části šablony Resource:
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
 V části šablony prostředků je znázorněno níže použití pomocí příkazu Azure Resource Manageru v Azure CLI v ukázce výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json):
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-```
+On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
 
-Úspěšná operace 201 se vrátit k vytvoření nového pravidla upozornění stavu nebo 200 bude vrácen, pokud byla změněna stávající pravidla upozornění.
+## Next steps
 
-## <a name="next-steps"></a>Další postup
-
-* Další informace o [upozornění protokolů ve výstrahách Azure](../../azure-monitor/platform/alerts-unified-log.md)
-* Vysvětlení [akce Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md)
-* Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
-* Další informace o [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
+* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
+* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
+* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

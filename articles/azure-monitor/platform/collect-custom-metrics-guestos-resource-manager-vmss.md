@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 2b032405a2fb3b8b608228d8a739bf91dcf439ef
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: afe1214299b7f1ecd741f992af75abedcfe77b84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895937"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308699"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Pomocí Azure monitoru [rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-overview.md), můžete shromažďovat metriky a protokoly z hostovaný operační systém (guest OS), které se spouští jako součást virtuální počítač, cloudovou službu nebo clusteru Azure Service Fabric. Rozšíření mohla odesílat telemetrii do mnoha různých umístěních uvedených v dříve odkazovaném článku.  
 
@@ -27,7 +29,7 @@ Pokud jste začínáte se šablonami Resource Manageru, přečtěte si o [nasaze
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musíte mít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nainstalovaná, nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
+- Musíte mít [prostředí Azure PowerShell](/powershell/azure) nainstalovaná, nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení jako datová jímka Azure monitoru 
@@ -236,17 +238,17 @@ Uložte a zavřete oba soubory.
 Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:  
 
 1. Spusťte PowerShell. 
-1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`.
-1. Získat seznam vašich předplatných s použitím `Get-AzureRmSubscription`.
+1. Přihlaste se k Azure s využitím `Login-AzAccount`.
+1. Získat seznam vašich předplatných s použitím `Get-AzSubscription`.
 1. Nastavení předplatného budete vytvořit nebo aktualizovat virtuální počítač: 
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. Vytvořte novou skupinu prostředků pro virtuální počítač se nasazuje. Spusťte následující příkaz: 
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
+    New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
@@ -258,7 +260,7 @@ Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:
    > Pokud chcete aktualizovat existující škálovací sadě, přidejte **-režim přírůstkového** na konec příkazu. 
  
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
+   New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
 1. Po úspěšném nasazení, měli byste najít virtuálního počítače škálovací sady na webu Azure Portal. To by měly vydávat metrik do Azure monitoru. 

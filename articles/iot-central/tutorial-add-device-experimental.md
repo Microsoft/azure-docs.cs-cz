@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8792873407a6103134300f11b4dae002e4df107a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: cb457f59cf20f213aaeef6c2d336659c259060ad
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216216"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307237"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -52,7 +52,7 @@ Pokud chcete přidat skutečné zařízení do aplikace, použijete šablonu za�
 
    **Device Explorer** zobrazuje šablonu zařízení **Connected Air Conditioner** a simulované zařízení, které se automaticky vytvořilo při vytváření šablony zařízení tvůrcem.
 
-2. Pokud chcete začít připojovat vzduchovod reálné připojených zařízení, klikněte na tlačítko **+**, pak **skutečné**:
+2. Chcete-li začít připojovat vzduchovod reálné připojených zařízení, vyberte **+**, pak **skutečné**:
 
    ![Zahájení přidávání nového skutečného klimatizačního zařízení](media/tutorial-add-device-experimental/newreal.png)
 

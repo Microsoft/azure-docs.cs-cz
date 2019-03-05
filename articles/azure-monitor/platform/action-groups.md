@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a817e3681f6b94b1b9ad7d5a2d2a1369935ee064
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8e9208981dd54fef1f56ee552d34bab78210b96d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651756"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316553"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -69,7 +69,7 @@ Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitor
 > [!NOTE]
 > Zobrazit [limity předplatného služby pro monitorování](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) pro číselné limity na každé z níže uvedených položek.  
 
-**Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí. V současné době podporuje pouze akce aplikace Azure ServiceHealth výstrahy. Další upozornění vždy se bude ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Aplikace Azure nabízené** – může mít omezený počet akcí Azure aplikace do skupiny akcí. V současné době podporuje pouze akce aplikace Azure ServiceHealth výstrahy. Další typ výstrahy se budou ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailu** – E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
    - azure-noreply@microsoft.com

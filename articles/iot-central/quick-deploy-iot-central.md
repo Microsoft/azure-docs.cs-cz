@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 3ffc361421f57b405c284742b662a833b178f9da
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 9b66e4160dc78286f393257136dbf9375c6f61fb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260319"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306727"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -53,7 +53,7 @@ Vytvoření nové aplikace Azure IoT Central:
     > [!Note]
     > Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.
 
-1. Klikněte na možnost **Vytvořit**.
+1. Vyberte **Vytvořit**.
 
 ## <a name="next-steps"></a>Další postup
 

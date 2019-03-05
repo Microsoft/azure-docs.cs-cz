@@ -12,22 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b94136f063f9d4793ce4c8a03c17454df920af26
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1da3b71cbb809c92ba3228676f8a47235829b499
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117550"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309532"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Můžete automatizovat konfiguraci [výstrahy](../../azure-monitor/app/alerts.md) v [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 Kromě toho můžete [nastavit webhooky automatizovat reakce na výstrahy](../../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Pokud chcete vytvářet prostředky a výstrahy ve stejnou dobu, vezměte v úvahu [pomocí šablony Azure Resource Manageru](powershell.md).
->
->
 
 ## <a name="one-time-setup"></a>Jednorázová nastavení
 Pokud jste ještě nepoužívali prostředí PowerShell ve vašem předplatném Azure před:
@@ -42,15 +43,15 @@ Otevřete prostředí Azure PowerShell a [připojení k vašemu předplatnému](
 
 ```PowerShell
 
-    Add-AzureRmAccount
+    Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>Získání výstrah
-    Get-AzureRmAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>Přidat výstrahu
-    Add-AzureRmMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
+    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
      -MetricName "{METRIC NAME}" `
@@ -69,7 +70,7 @@ Poslat mi e-mail, pokud odpověď serveru na požadavky HTTP, byla více než 5 
 
 Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
 
-    Add-AzureRmMetricAlertRule -Name "slow responses" `
+    Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -83,7 +84,7 @@ Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
 ## <a name="example-2"></a>Příklad 2
 Mám aplikaci, ve které používám [metody TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) hlášení metriku s názvem "salesPerHour." Posílejte že e-mailu kolegové Pokud "salesPerHour" klesne pod 100, byla po dobu 24 hodin.
 
-    Add-AzureRmMetricAlertRule -Name "poor sales" `
+    Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -127,7 +128,7 @@ Metriky odesílá telemetrická data různých modulů:
 | Metriky skupiny | Modul kolekcí |
 | --- | --- |
 | basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazit |[JavaScript prohlížeče](../../azure-monitor/app/javascript.md) |
-| PerformanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| performanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Závislost](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | žádost<br/>requestFailed |[Žádost serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 

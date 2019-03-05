@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c9d8330e857a8f76e143631f17e29ba44244a88
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244577"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307917"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 Tento článek uvádí běžné otázka Poradce při potížích.
@@ -52,7 +52,7 @@ Tento článek uvádí běžné otázka Poradce při potížích.
 | Msg 40847: Operaci nejde provést, protože server by překročil povolenou kvótu Database Transaction Unit 45000. | Snižte [DWU] [ DWU] databáze se pokoušíte vytvořit nebo [požádat o zvýšení kvóty][request a quota increase]. |
 | Prozkoumat využití místa                              | Zobrazit [tabulky velikostí] [ Table sizes] porozumět využití místa systému. |
 | Pomoci se správou tabulky                                    | Zobrazit [Přehled tabulek] [ Overview] článku pomoci se správou vaší tabulky.  Tento článek obsahuje také odkazy na podrobnější témata zahrnují třeba [typy tabulkových dat][Data types], [distribuce tabulky][Distribute], [Indexování tabulky][Index], [dělení tabulky][Partition], [Správa statistik tabulek] [ Statistics] a [dočasné tabulky][Temporary]. |
-| Indikátor průběhu dat transparentní šifrování (TDE) není aktualizován na webu Azure Portal | Můžete zobrazit stav transparentní šifrování dat prostřednictvím [powershellu](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption). |
+| Indikátor průběhu dat transparentní šifrování (TDE) není aktualizován na webu Azure Portal | Můžete zobrazit stav transparentní šifrování dat prostřednictvím [powershellu](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 ## <a name="polybase"></a>Polybase
 | Problém                                           | Řešení                                                   |

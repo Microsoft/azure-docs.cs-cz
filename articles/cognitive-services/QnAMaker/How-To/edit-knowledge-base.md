@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a1f1270f5c77332cbcc8c7761203f0194be62a94
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ade6737d2df37d35eefd0be77895a54e1cea433d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881089"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314870"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
@@ -71,7 +71,7 @@ Přidáte alternativní dotazy na existující dvojice QnA ke zlepšení pravdě
 ## <a name="add-metadata"></a>Přidání metadat
 
 
-Přidat páry metadata tak, že vyberete ikonu metadat
+Přidáte páry metadata tak, že vyberete ikonu metadat. Pár metadat se skládá z jednoho klíče a jedna hodnota.
 
 ![Přidání metadat](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

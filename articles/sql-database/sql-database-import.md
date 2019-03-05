@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: c5f90776cb0e8617f0e524bd6b1701f4bf20d0a1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 06c74aa85bda13ccd6849056ccc031ae6f1c12c2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415697"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315550"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do databáze ve službě Azure SQL Database
 
@@ -58,6 +58,8 @@ Import pomocí databáze systému SQL Server [SqlPackage](https://docs.microsoft
 
 Škálovatelnost a výkon doporučujeme použitím nástroje SqlPackage ve většině produkčních prostředí než pomocí webu Azure portal. Pro blog zákaznického poradního týmu SQL serveru o migraci pomocí `BACPAC` soubory, naleznete v tématu [migraci z SQL serveru do Azure SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
+Škálovatelnost a výkon doporučujeme použitím nástroje SqlPackage ve většině produkčních prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+
 Následující příkaz SqlPackage importuje **AdventureWorks2008R2** databáze z místního úložiště na serveru Azure SQL Database s názvem **mynewserver20170403**. Vytvoří novou databázi s názvem **myMigratedDatabase** s **Premium** úroveň služby a **P6** cíle služby. Změňte tyto hodnoty v závislosti na vašem prostředí.
 
 ```cmd
@@ -80,16 +82,18 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze ze souboru BACPAC s použitím prostředí Azure PowerShell]. Pro import do spravované instance pomocí SQL Server Management Studio nebo nástroje SQLPackage.
 
 
-Použití [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) rutinu k odeslání žádosti o importu databáze do služby Azure SQL Database. V závislosti na velikosti databáze může import trvat nějakou dobu.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Použití [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) rutinu k odeslání žádosti o importu databáze do služby Azure SQL Database. V závislosti na velikosti databáze může import trvat nějakou dobu.
 
  ```powershell
- $importRequest = New-AzureRmSqlDatabaseImport
+ $importRequest = New-AzSqlDatabaseImport 
     -ResourceGroupName "<your_resource_group>" `
     -ServerName "<your_server>" `
     -DatabaseName "<your_database>" `
     -DatabaseMaxSizeBytes "<database_size_in_bytes>" `
     -StorageKeyType "StorageAccessKey" `
-    -StorageKey $(Get-AzureRmStorageAccountKey -ResourceGroupName "<your_resource_group>" -StorageAccountName "<your_storage_account").Value[0] `
+    -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName "<your_resource_group>" -StorageAccountName "<your_storage_account").Value[0] `
     -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
     -Edition "Standard" `
     -ServiceObjectiveName "P6" `
@@ -98,14 +102,14 @@ Použití [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azur
 
  ```
 
- Můžete použít [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny importu průběh zkontrolovat. Spuštěním rutiny ihned po žádosti obvykle vrátí **stavu: Probíhá zpracování**. Když se zobrazí dokončení importu **stavu: Úspěšné**.
+ Můžete použít [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) rutiny importu průběh zkontrolovat. Spuštěním rutiny ihned po žádosti obvykle vrátí **stavu: Probíhá zpracování**. Když se zobrazí dokončení importu **stavu: Úspěšné**.
 
 ```powershell
-$importStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
+$importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
 [Console]::Write("Importing")
 while ($importStatus.Status -eq "InProgress")
 {
-    $importStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
+    $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
     [Console]::Write(".")
     Start-Sleep -s 10
 }

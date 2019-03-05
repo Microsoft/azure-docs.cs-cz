@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: d81ab4283b408f7490f0dc40cce3199ca29c0af1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737225"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314309"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
-Pokud už čtete tento dokument jste clustery významu zabezpečení. Budete pravděpodobně již nesou odpovědnost za zabezpečení vaší organizace. Pokud potřebujete přesvědčování ostatních důležitosti zabezpečení, aby, odešlete jim přečíst nejnovější [inteligentního zabezpečení Microsoftu sestavy](https://www.microsoft.com/security/intelligence-report).
+Pokud už čtete tento dokument jste clustery významu zabezpečení. Budete pravděpodobně již nesou odpovědnost za zabezpečení vaší organizace. Pokud potřebujete přesvědčování ostatních důležitosti zabezpečení, aby, odešlete jim přečíst nejnovější [inteligentního zabezpečení Microsoftu sestavy](https://go.microsoft.com/fwlink/p/?linkid=2073747).
 
 Tento dokument vám pomůže získat bezpečnější stavu pomocí možností služby Azure Active Directory pomocí pěti krocích kontrolní seznam, aby bylo možné očkovat organizaci před kybernetickými útoky.
 

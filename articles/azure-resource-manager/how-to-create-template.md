@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: a802b12f34c5fe16202f55416a698823e55c01bb
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245892"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312864"
 ---
 # <a name="create-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
 
@@ -38,7 +38,7 @@ Kurz instalace rozšíření nástroje Resource Manageru a jak pomocí VS Code, 
 
 Pojďme se podívat na části šablonu, kterou chcete pochopit, jak funguje šablony. Vaše šablona nemusí mít každý oddíl. Oddíly, které chcete se soustředit na jsou:
 
-* [Parametry](resource-manager-templates-parameters.md) části, která zobrazuje hodnoty můžete zadat během nasazování přizpůsobit infrastrukturu, která je nasazená. 
+* [Parametry](resource-group-authoring-templates.md#parameters) části, která zobrazuje hodnoty můžete zadat během nasazování přizpůsobit infrastrukturu, která je nasazená. 
 
 * [Proměnné](resource-group-authoring-templates.md#variables) oddíl, který obsahuje hodnoty, které se používají v šabloně.
 

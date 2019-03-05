@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: b3bd157f06c922d96f71627f885fe6de2537987a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 935c9bbbb3e3d66eeef7258299677b44a32f7a13
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215282"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311017"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
@@ -27,7 +27,7 @@ Vytvořit sadu zařízení:
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
-1. Klikněte na **+ Nový**.
+1. Vyberte **+ nový**.
 
     ![Nová sada zařízení](media/howto-use-device-sets-experimental/image1.png)
 
@@ -52,7 +52,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Vyberte kartu **Dashboard** (Řídicí panel).
 
-1. Klikněte na **Upravit**.
+1. Vyberte **Upravit**.
 
     ![Režim návrhu](media/howto-use-device-sets-experimental/image3.png)
 
@@ -61,7 +61,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 1. Přidání dlaždice odkaz:
     1. Zvolte **odkaz** v pravém podokně.
     1. Zadejte odkaz **Title**.
-    1. Zvolte adresu URL otevřít po kliknutí na odkaz.
+    1. Zvolte adresu URL otevřít při výběru odkazu.
     1. Zadejte popis, který zobrazuje následující odkaz **Title**.
     1. Zvolte **Uložit**.
 
@@ -83,7 +83,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
         > [!NOTE]
         > Můžete přidat více imagí, odkazy a mřížky.
   
-    1. Klikněte na **Done** (Hotovo).
+    1. Vyberte **Done** (Hotovo).
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel
 
@@ -97,7 +97,7 @@ Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídic�
 4. Nyní když operátor zobrazení řídicího panelu sady zařízení, operátor, který můžete vidět všechny dlaždice, které jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled!
 
 > [!NOTE]
-> Budete moct změnit velikost mapování na požadovanou velikost. Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.
+> Budete moct změnit velikost mapování na požadovanou velikost. Výběrem PIN kód na mapě zobrazíte informace o zařízení, název a umístění. Můžete vybrat automaticky otevírané okno, přejděte na stránku vlastností zařízení.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení
 

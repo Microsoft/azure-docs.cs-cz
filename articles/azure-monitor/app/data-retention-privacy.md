@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 8218da62eb8c3d8c454ca1dca1bd1071e0de67b0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300257"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308750"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -118,9 +118,7 @@ Další telemetrické údaje se může odesílat do vašeho účtu pomocí Instr
 Pokud sdílíte s jinými projekty kódu, nezapomeňte odebrat svůj Instrumentační klíč.
 
 ## <a name="is-the-data-encrypted"></a>Zašifrovaná data?
-Ne uvnitř servery v současné době.
-
-Všechna data se šifrují při jejich přesunu mezi datovými centry.
+Veškerá data se šifrují při nečinnosti a protože přesouvá mezi datového centra.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Zašifrovaná data přenášená z mé aplikace na servery Application Insights?
 Ano, můžeme použít https k odesílání dat do portálu v téměř všech sad SDK, včetně webových serverů, zařízení a protokol HTTPS webové stránky. Jedinou výjimkou je data odeslaná z jednoduché webové stránky HTTP.

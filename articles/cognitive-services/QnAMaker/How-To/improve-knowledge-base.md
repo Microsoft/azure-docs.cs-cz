@@ -4,19 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 93e735958669dd39deaf88d1d468a9148b7db3d1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960293"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314819"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Využití aktivního učení k vylepšení znalostní báze
 
@@ -33,13 +32,13 @@ Nástroj QnA Maker se učí novou otázku variace implicitní a explicitní odes
 
 Některé z metod poskytuje klasifikátor s podobné dotazy, které jsou v clusteru.
 
-Když jsou Clusterované podobné dotazy, navrhuje nástroje QnA Maker dotazy založené na uživatelích do znalostní báze knowledge base návrháře přijmout nebo odmítnout.
-
 ## <a name="how-active-learning-works"></a>Jak active learning funguje
 
 Aktivní učení se aktivuje podle skóre nejčastější několik odpovědi vrácené QnA Maker pro libovolný daný dotaz. Pokud skóre rozdíly ležet v rozsahu malé, pak dotazu je považován za možný výskyt _návrh_ pro všechny možné odpovědi. 
 
 Všechny návrhy jsou Clusterované společně odpovědným a nejčastějších návrhů pro alternativní otázky se zobrazují na základě četnosti konkrétní dotazů koncovými uživateli. Aktivní učení nabízí nejlepší možný návrhů v případech, kde se zobrazuje koncové body přiměřené množství a různorodost dotazů na využití.
+
+Jakmile dotazy jsou navržené v portál QnA Maker, budete muset zkontrolovat a přijmout nebo odmítnout tyto návrhy. 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Upgrade verze použití aktivního učení
 
@@ -58,6 +57,8 @@ Algoritmů a určit blízkých výrazů není jednoduchý výpočet. Oblasti v p
 ## <a name="turn-on-active-learning"></a>Zapnout aktivní učení
 
 Aktivní učení je vypnuto ve výchozím nastavení. Zapněte navrhované dotazy. 
+
+1. Vyberte **publikovat** publikovat znalostní báze. Aktivní učení dotazy jsou shromážděná z GenerateAnswer předpovědi koncový bod rozhraní API pouze. Dotazy na testovací podokno portálu Qna Maker nemají vliv na aktivní učení.
 
 1. Chcete-li aktivní učení na platformě, klikněte na vaše **název**, přejděte na stránku [ **nastavení služby** ](https://www.qnamaker.ai/UserSettings) portálu QnA Maker v pravém horním rohu.  
 
@@ -88,6 +89,9 @@ Aktivní učení je vypnuto ve výchozím nastavení. Zapněte navrhované dotaz
 
 1. Vyberte **uložit a jejich trénování** a uložte změny do znalostní báze.
 
+1. Vyberte **publikovat** k povolení změn bude k dispozici z rozhraní API GenerateAnswer.
+
+    Když jsou Clusterované 5 nebo další podobné dotazy, každých 30 minut, nástroj QnA Maker navrhuje dotazy založené na uživatelích do znalostní báze knowledge base návrháře přijmout nebo odmítnout.
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>Určení nejlepší volbou, kdy několik otázky mají podobné skóre
 

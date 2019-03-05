@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ff68bfc9cdd13563fa8f938870742e9e9ceac9c2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816585"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313255"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
 
@@ -65,7 +65,7 @@ Předá parametr podrobného plánu, který používá funkce, jako například 
 
 #### <a name="resolution"></a>Řešení
 
-Funkce prostřednictvím předat jako parametr, řídicí celý řetězec s `[` tak, aby parametr podrobného plánu vypadá jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že podrobné plány. při zpracování podrobný plán považovat hodnotu jako řetězec. Podrobné plány. pak vloží funkci na artefakt, což umožňuje být dynamické podle očekávání.
+Funkce prostřednictvím předat jako parametr, řídicí celý řetězec s `[` tak, aby parametr podrobného plánu vypadá jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že podrobné plány. při zpracování podrobný plán považovat hodnotu jako řetězec. Podrobné plány. pak vloží funkci na artefakt, což umožňuje být dynamické podle očekávání. Další informace najdete v tématu [struktura souboru šablony - syntaxe](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
 
 ## <a name="next-steps"></a>Další postup
 

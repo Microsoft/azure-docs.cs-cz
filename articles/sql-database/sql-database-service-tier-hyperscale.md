@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2c32ef84c1016d0058ee07220729a291aff19b70
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7097c3852ad903e9d8f7c8786ea7fd616706f108
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868064"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317318"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
 
@@ -112,7 +112,7 @@ Díky možnosti rozjedete směrem nahoru nebo dolů dalších jen pro čtení v�
 
 ## <a name="create-a-hyperscale-database"></a>Vytvoření Hyperškálovatelného databáze
 
-Velkokapacitní databázi lze vytvořit pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Velkokapacitní databáze jsou k dispozici pouze prostřednictvím [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+Velkokapacitní databázi lze vytvořit pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Velkokapacitní databáze jsou k dispozici pouze prostřednictvím [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
 Pomocí následujícího příkazu T-SQL vytvoří databázi mírou škálování. Je nutné zadat cíl edition i služby v `CREATE DATABASE` příkazu.
 
@@ -124,7 +124,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrovat existující databázi SQL Azure na vrstvu služby hyperškálovatelný systém
 
-Můžete přesunout existující databáze Azure SQL do Hyperškálovatelného pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Ve verzi public preview Toto je jednosměrná migrace. Nelze přesunout databáze z Hyperškálovatelného na jinou úroveň služby. Doporučujeme vytvořit kopii provozní databáze a migrace na Hyperškálovatelného pro testování konceptů (upozorníme).
+Můžete přesunout existující databáze Azure SQL do Hyperškálovatelného pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Ve verzi public preview Toto je jednosměrná migrace. Nelze přesunout databáze z Hyperškálovatelného na jinou úroveň služby. Doporučujeme vytvořit kopii provozní databáze a migrace na Hyperškálovatelného pro testování konceptů (upozorníme).
 
 Pomocí následujícího příkazu T-SQL, přesune databázi do vrstvy velkokapacitní služby. Je nutné zadat cíl edition i služby v `ALTER DATABASE` příkazu.
 

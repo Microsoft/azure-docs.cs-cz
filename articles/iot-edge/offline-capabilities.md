@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699342"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307985"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 
@@ -73,7 +73,7 @@ Pokud chcete zlepšit odolnost, se doporučuje zadejte adresy serverů DNS ve sv
 
 ```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -136,7 +136,7 @@ Můžete nakonfigurovat proměnné prostředí a možnosti vytvořit pro modul I
 
 Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cesta k úložišti cestu; hostitele i modul úložiště hostitele a modul musí být absolutní cesta. V možnosti vytvořit svázat dohromady cesty úložiště hostitele a modulu. Pak vytvořte proměnnou prostředí, která odkazuje na cestu úložiště modulu.  
 
-Například `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že adresář **/etc/iotedge/storage** na hostiteli systému je namapovaný na adresář **/iotedge/úložiště/** v kontejneru. Dalším příkladem pro systémy Windows, nebo `"Binds":["C:\\temp:C:\\contemp]"` znamená, že adresář **C:\\temp** na hostiteli systému je namapovaný na adresář **C:\\contemp** v kontejneru. 
+Například `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` znamená, že adresář **/etc/iotedge/storage** na hostiteli systému je namapovaný na adresář **/iotedge/úložiště/** v kontejneru. Dalším příkladem pro systémy Windows, nebo `"Binds":["C:\\temp:C:\\contemp"]` znamená, že adresář **C:\\temp** na hostiteli systému je namapovaný na adresář **C:\\contemp** v kontejneru. 
 
 Můžete také najít další podrobnosti o vytvoření možnosti z [docker dokumentace](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 

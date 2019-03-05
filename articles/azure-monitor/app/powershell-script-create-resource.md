@@ -12,15 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3fe6a89073da731332a91ece40a6ea6f667d150a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 91790f372dce4322d316b42c4bfa7ad36625c91d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003247"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315567"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Rutina PowerShell pro vytvoření prostředku Application Insights
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Pokud chcete monitorování nové aplikace - nebo nové verze aplikace – díky [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), nastavte nový prostředek v Microsoft Azure. Tento prostředek je kde analyzovat a zobrazit telemetrická data z vaší aplikace. 
 
@@ -36,8 +37,8 @@ Například pokud vyvíjíte aplikace pro mobilní zařízení, je pravděpodobn
 ## <a name="script-to-create-an-application-insights-resource"></a>Skript pro vytvoření prostředku Application Insights
 V tématu Specifikace příslušné rutiny:
 
-* [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
-* [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
+* [New-AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *Skript prostředí PowerShell*  
 
@@ -51,7 +52,7 @@ V tématu Specifikace příslušné rutiny:
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Connect-AzureRmAccount / Connect-AzureRmAccount
+# Connect-AzAccount / Connect-AzAccount
 
 # Set the name of the Application Insights Resource
 
@@ -75,7 +76,7 @@ Select-AzureSubscription -SubscriptionName "MySubscription"
 # Create the App Insights Resource
 
 
-$resource = New-AzureRmResource `
+$resource = New-AzResource `
   -ResourceName $appInsightsName `
   -ResourceGroupName $resourceGroupName `
   -Tag @{ applicationType = "web"; applicationName = $applicationTagName} `
@@ -86,7 +87,7 @@ $resource = New-AzureRmResource `
 
 # Give owner access to the team
 
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName "myteam@fabrikam.com" `
   -RoleDefinitionName Owner `
   -Scope $resource.ResourceId 
@@ -103,11 +104,11 @@ Každý prostředek je identifikován jeho Instrumentační klíč (Instrumenta�
 
 Existují dva způsoby, jak zpřístupnit iKey sady SDK:
 
-* V [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
-  * `<instrumentationkey>`*Instrumentační klíč*`</instrumentationkey>`
+* In [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
+  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
 * Nebo v [inicializační kód](../../azure-monitor/app/api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
-    TelemetryConfiguration.Active.InstrumentationKey = "`*Instrumentační klíč*`";`
+    TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Vytvořit Application Insights a webových testů prostředků ze šablony](powershell.md)

@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1318cd3d1c0c51889cc70b6836d06d6d6ee70c24
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453133"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308376"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pomocí ověřování Azure Active Directory pro ověřování pomocí SQL
 
@@ -81,7 +81,7 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, mi ne
 - Následující členy služby Azure AD se dá zřídit v Azure SQL server nebo SQL Data Warehouse:
 
   - Nativní členové: Člen vytvořené ve službě Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Federované domény členové: Člen vytvořené ve službě Azure AD s federovanou doménu. Další informace najdete v tématu [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Federované domény členové: Člen vytvořené ve službě Azure AD s federovanou doménu. Další informace najdete v tématu [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Importované členové z jiných Azure AD, kteří jsou členy nativní nebo federované domény.
   - Skupiny služby Active Directory vytvoří jako skupin zabezpečení.
 

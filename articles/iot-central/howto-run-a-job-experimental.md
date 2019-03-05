@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 02/04/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: e418ec7d22622c341abd972763d78ac2f0df46d9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8667b7747a8874451e21fbf8aea19f51b6b6252f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773247"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314224"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -25,7 +25,7 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Každý krok proch�
 
 1. V navigačním podokně přejděte do úlohy.
 
-1. Klikněte na tlačítko **+ nová** zahájíte vytváření nové úlohy.
+1. Vyberte **+ nová** zahájíte vytváření nové úlohy.
 
     ![Vytvoření nové úlohy](./media/howto-run-a-job-experimental/createnewjob.png)
 
@@ -33,11 +33,11 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Každý krok proch�
 
 1. Vyberte sadu zařízení chcete použít pro vaše úloha. Po výběru zařízení nastavení, zobrazí se vám na pravé straně naplnit zařízení v rámci sady vybraných zařízení. Pokud vyberete sada přerušeno zařízení, žádná zařízení se zobrazí a zobrazí se zpráva s vysvětlením, že vaše zařízení sada je přerušeno.
 
-1. Potom vyberte typ úlohy, které se bude definován (nastavení, vlastnost nebo příkaz). Klikněte na tlačítko **+** vedle typu úlohy vybraná a přidat požadované operace.
+1. Potom vyberte typ úlohy, které se bude definován (nastavení, vlastnost nebo příkaz). Vyberte **+** vedle typu úlohy vybraná a přidat požadované operace.
 
     ![Konfigurace úlohy](./media/howto-run-a-job-experimental/configurejob.png)
 
-1. Na pravé straně zvolte byste chtěli spouštět úlohy zařízení. Klepnutím na horní zaškrtávací políčko, jsou vybrány všechna zařízení v sadě celého zařízení. Kliknutím zaškrtněte políčko vedle názvu jsou vybrány všechna zařízení na aktuální stránce.
+1. Na pravé straně zvolte byste chtěli spouštět úlohy zařízení. Zaškrtnutím políčka horní jsou vybrány všechna zařízení v sadě celého zařízení. Pokud vyberete zaškrtávací políčko vedle názvu, jsou vybrány všechna zařízení na aktuální stránce.
 
 1. Jakmile požadované zařízení jste vybrali, zvolte **spustit**. Úloha se teď budou zobrazovat na vaší hlavní **úlohy** stránky. V tomto zobrazení budete moct zobrazit aktuálně spuštěné úlohy a historii některého dříve spouštění úloh. Spuštěná úloha se vždy zobrazí v horní části seznamu.
 
@@ -46,19 +46,19 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Každý krok proch�
     > [!NOTE]
     > Bude moct zobrazit historie dřív spuštěných úloh po dobu až 30 dnů.
 
-1. Pokud chcete získat přehled o vaší úlohy, klikněte na název úlohy, které chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti o úloze, zařízení a stavy zařízení.
+1. Pokud chcete získat přehled o vaší úlohy, vyberte název úlohy, které chcete zobrazit v seznamu. Tento přehled obsahuje podrobnosti o úloze, zařízení a stavy zařízení.
 
     ![Zobrazení stavu zařízení](./media/howto-run-a-job-experimental/viewdevicestatus.png)
 
 ### <a name="stop-a-running-job"></a>Zastavit spuštěné úlohy
 
-Pokud chcete zastavit úlohu, která je aktuálně spuštěna, klikněte na název spuštěné úlohy, která byste chtěli zastavit. Zvolte **Zastavit** tlačítko na panelu. Uvidíte, že se že stav úlohy změnilo tak, aby odrážely, úloha se zastavila.
+Pokud chcete zastavit úlohu, která aktuálně běží, vyberte název spuštěná úloha, která byste chtěli zastavit. Zvolte **Zastavit** tlačítko na panelu. Uvidíte, že se že stav úlohy změnilo tak, aby odrážely, úloha se zastavila.
 
    ![Zastavit úlohu](./media/howto-run-a-job-experimental/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>Spustit úlohu zastaveno
 
-Pokud chcete spustit úlohu, která je nyní zastavena, klikněte na název zastavenou úlohu, která chcete spustit. Zvolte **spustit** tlačítko na panelu. Uvidíte, že stav úlohy se změnila tak, aby odrážely, že úloha je nyní spuštěna znovu.
+Pokud chcete spustit úlohu, která je nyní zastavena, vyberte název zastavenou úlohu, která chcete spustit. Zvolte **spustit** tlačítko na panelu. Uvidíte, že stav úlohy se změnila tak, aby odrážely, že úloha je nyní spuštěna znovu.
 
    ![Obnovit úlohy](./media/howto-run-a-job-experimental/resumejob.png)
 
@@ -83,7 +83,7 @@ Ve zprávě o stavu Následuje přehled zařízení v rámci úlohy. Tyto stavy 
 
 ### <a name="view-the-device-status"></a>Zobrazení stavu zařízení
 
-Chcete-li zobrazit stav jednotlivých zařízení v rámci úlohy, klikněte na název úlohy. Zde uvidíte podrobnosti o úloze a všechna zařízení, které byly částí této konkrétní úlohy. Vedle názvu každé zařízení zobrazí se vám jeden z následujících zpráv:
+Chcete-li zobrazit stav jednotlivých zařízení v rámci úlohy, vyberte název úlohy. Zde uvidíte podrobnosti o úloze a všechna zařízení, které byly částí této konkrétní úlohy. Vedle názvu každé zařízení zobrazí se vám jeden z následujících zpráv:
 
 | Zpráva o stavu       | Stav význam                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |

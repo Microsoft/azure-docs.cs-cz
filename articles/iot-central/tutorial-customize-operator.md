@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d10e0b48da497dafe9bb841c68746328e8334c91
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 0f03cdb7f407e0f568b543cc09527bb6a6e4c25a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215723"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317216"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
 
@@ -79,7 +79,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Úprava rozložení řídicího panelu](media/tutorial-customize-operator/dashboardlayout.png)
 
-7. Po dokončení změn klikněte na tlačítko **Hotovo**.
+7. Vyberte **provádí** po dokončení změn.
 
 ## <a name="configure-your-settings-layout"></a>Konfigurace rozložení nastavení
 
@@ -93,7 +93,7 @@ Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro
 
     ![Úprava rozložení nastavení](media/tutorial-customize-operator/settingslayout.png)
 
-3. Po dokončení změn klikněte na tlačítko **Hotovo**.
+3. Vyberte **provádí** po dokončení změn.
 
 > [!NOTE]
 > V režimu **Upravit šablonu** nemůžete upravovat hodnoty nastavení.
@@ -110,7 +110,7 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 
     ![Úprava rozložení vlastností](media/tutorial-customize-operator/propertieslayout.png)
 
-3. Po dokončení změn klikněte na tlačítko **Hotovo**.
+3. Vyberte **provádí** po dokončení změn.
 
 > [!NOTE]
 > V režimu **Upravit šablonu** nemůžete upravovat hodnoty vlastností.
@@ -119,7 +119,7 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 
 V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud nejste v režimu **Upravit šablonu**, můžete aplikaci zobrazit jako operátor.
 
-1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor, kliknutím na **Done** (Hotovo) ukončete úpravu šablony a vraťte se do zobrazení zařízení pro operátora.
+1. Chcete-li zobrazit jako operátor vzduchovod připojených zařízení, vyberte **provádí** ukončit úpravy šablony a vraťte se do zobrazení operátora na zařízení.
 
 2. Pokud chcete aktualizovat umístění tohoto zařízení, upravte hodnotu na dlaždici s umístěním a potom zvolte **Uložit**:
 
@@ -142,7 +142,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí 
 > [!NOTE]
 > Uživatelé mohou také vytvářet své vlastní osobní řídicí panely a zvolte jednu z nich jako výchozí.
 
-1. Chcete-li přizpůsobit výchozí řídicí panel aplikace, přejděte na **řídicí panel** stránky a klikněte na tlačítko **upravit** v horní části stránky. Knihovna objektů, které lze přidat na řídicí panel se zobrazí panel.
+1. Chcete-li přizpůsobit výchozí řídicí panel aplikace, přejděte na **řídicí panel** stránku a vybrat **upravit** v horní části stránky. Knihovna objektů, které lze přidat na řídicí panel se zobrazí panel.
 
     ![Stránka řídicího panelu](media/tutorial-customize-operator/builderhome.png)
 
@@ -153,7 +153,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí 
     > [!NOTE]
     > Můžete také přidat odkazy na stránky ve vaší aplikaci Azure IoT Central. Můžete třeba přidat odkaz na řídicí panel zařízení nebo na stránku nastavení.
 
-3. Volitelně můžete zvolit **Image** a nahrát obrázek se zobrazí na řídicím panelu. Obrázek může mít adresu URL, na který můžete procházet po kliknutí:
+3. Volitelně můžete zvolit **Image** a nahrát obrázek se zobrazí na řídicím panelu. Obrázek může mít adresu URL, na který můžete procházet, když ji vyberete:
 
     ![Přidání obrázku na řídicí panel](media/tutorial-customize-operator/addimage.png)
 
@@ -165,7 +165,7 @@ Chcete-li zobrazit řídicí panel aplikací jako operátor náhled, vyberte **p
 
 ![Přepnutí režimu návrhu](media/tutorial-customize-operator/operatorviewhome.png)
 
-Když kliknete na dlaždice s obrázky a odkazy, přejdete na adresy URL, které jste nastavili jako tvůrce.
+Můžete vybrat dlaždice odkazů a obrázků přejděte k adresám URL, které jste nastavili jako tvůrce.
 
 ## <a name="next-steps"></a>Další postup
 

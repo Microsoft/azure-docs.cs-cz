@@ -3,7 +3,7 @@ title: Přístup k virtuálním počítačům just-in-time ve službě Azure Sec
 description: Tento dokument ukazuje, jak just-in-time přístup k virtuálním počítačům v Azure Security Center pomáhá řídit přístup k Azure virtual machines.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
-ms.author: rkarlin
-ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 2/28/2019
+ms.author: monhaber
+ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733653"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314768"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -144,11 +144,11 @@ To umožňuje přístup just-in-time pro virtuální počítač pomocí následu
 - Windows servery:
     - Port 3389 pro RDP
     - maximální povolené přístupu 3 hodiny
-    - Povolené zdrojové IP adresy je nastavena na každý požadavek
+    - Povolené zdrojové IP adresy je nastavena na jednu
 - Servery s Linuxem:
     - SSH port 22
     - maximální povolené přístupu 3 hodiny
-    - Povolené zdrojové IP adresy je nastavena na každý požadavek
+    - Povolené zdrojové IP adresy je nastavena na jednu
      
 Pokud je virtuální počítač už just-in-time povolena, když přejdete na stránku jeho konfigurace bude možné zjistit, že je povolená v čase a odkaz můžete otevřít ve službě Azure Security Center k zobrazení a změna nastavení zásad.
 

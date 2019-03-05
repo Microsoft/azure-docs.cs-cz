@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
+ms.date: 03/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 364b0bf611581f88fc87f163acbbb7529862d096
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275985"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309566"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
@@ -29,7 +29,7 @@ Velká Instance HANA typu můžu třídy součástí čtyřikrát paměti svazek
 
 V následující tabulce, jde o přidělení úložiště. Tabulka uvádí přibližnou kapacitu pro různé svazky s různými jednotkami velká Instance HANA k dispozici.
 
-| Velká Instance HANA SKU | data systému Hana / | Hana/log | Hana/shared | Hana/logbackups |
+| Velká Instance HANA SKU | hana/data | Hana/log | Hana/shared | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
@@ -52,7 +52,7 @@ Skutečné nasazené svazky může lišit v závislosti na nasazení a nástroje
 
 Pokud rozdělíte SKU velké Instance HANA, několik příkladů kusů možné dělení může vypadat:
 
-| Oddíl paměti v GB | data systému Hana / | Hana/log | Hana/shared | Hana/log/zálohování |
+| Oddíl paměti v GB | hana/data | Hana/log | Hana/shared | Hana/log/zálohování |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
@@ -73,7 +73,7 @@ Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) podrobn
 
 Je možné k hostování více než jeden aktivní instanci SAP HANA na jednotkách velká Instance HANA. Poskytují možnosti snímků úložiště a zotavení po havárii, taková konfigurace vyžaduje svazku nastavit na jednu instanci. V současné době velká Instance HANA jednotky lze dále rozdělit následujícím způsobem:
 
-- **S72 S72m, S96, S144, S192**: Dokupuje se násobek 256 GB, 256 GB od nejmenších po počáteční jednotky. Různé přírůstky například 256 GB až 512 GB, mohou být kombinovány pro maximální paměť jednotku.
+- **S72, S72m, S96, S144, S192**: Dokupuje se násobek 256 GB, 256 GB od nejmenších po počáteční jednotky. Různé přírůstky například 256 GB až 512 GB, mohou být kombinovány pro maximální paměť jednotku.
 - **S144m a S192m**: Dokupuje se násobek 256 GB, 512 GB nejmenší jednotka. Různé přírůstky například 512 GB a o velikosti 768 GB mohou být kombinovány pro maximální paměť jednotku.
 - **Zadejte třídu II**: V přírůstcích po 512 GB, od nejmenších po počáteční jednotku 2 TB. Různé přírůstky například 512 GB, 1 TB a 1,5 TB mohou být kombinovány pro maximální paměť jednotku.
 
@@ -93,6 +93,19 @@ Existují i další varianty konfigurací.
 Úložiště pro velké Instance HANA umožňuje transparentní šifrování dat se ukládají na discích. Při nasazení jednotka velká Instance HANA, můžete povolit tento typ šifrování. Také můžete změnit na šifrovaných svazcích po nasazení se provádí. Přechod z nešifrované na šifrovaných svazcích je transparentní a nevyžaduje výpadek. 
 
 S typem můžu třídy skladových jednotek, svazků spouštěcí logická jednotka je uložen na, je zašifrovaný. Pro třídu typu II skladové položky z velké instance HANA je potřeba šifrovat spouštěcí logické jednotky s operačním systémem metody. Další informace obraťte se na tým Microsoft Service Management.
+
+## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Požadovaná nastavení pro větší instance HANA ve velkých instancích HANA
+Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v případech omezení velikosti souborů jako v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
+
+> [!IMPORTANT]
+> Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini Hana
+> 
+- datavolume_striping=true
+- datavolume_striping_size_gb = 15000
+- Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+
+
+
 
 **Další kroky**
 - Přečtěte si [Podporované scénáře pro velké instance HANA](hana-supported-scenario.md)

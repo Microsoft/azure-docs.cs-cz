@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b4eb3fe8132aafc3d673234dc1b4123f20f9e569
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822696"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312728"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -173,6 +173,8 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 ## <a name="installation"></a>Instalace
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ### <a name="azure-vm-extension"></a>Rozšíření virtuálního počítače Azure
 Rozšíření je k dispozici pro Windows (DependencyAgentWindows) i Linux (DependencyAgentLinux) a agenta závislostí můžete snadno nasadit na virtuální počítače Azure pomocí [rozšíření Azure VM](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Pomocí rozšíření virtuálního počítače Azure můžete nasadit agenta závislosti pro Windows a virtuální počítače s Linuxem pomocí skriptu prostředí PowerShell nebo přímo ve virtuálním počítači pomocí šablony Azure Resource Manageru.  Pokud provádíte nasazení agenta pomocí rozšíření virtuálního počítače Azure, agenty se automaticky aktualizují na nejnovější verzi.
 
@@ -188,7 +190,7 @@ $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
 
-Get-AzureRmVM -ResourceGroupName $rmgroup |
+Get-AzVM -ResourceGroupName $rmgroup |
 ForEach-Object {
     ""
     $name = $_.Name
@@ -198,7 +200,7 @@ ForEach-Object {
     "${name}: ${os} (${location})"
     Date -Format o
     $ext = $OsExtensionMap.($os.ToString())
-    $result = Set-AzureRmVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
+    $result = Set-AzVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
     -Publisher $ExtPublisher -ExtensionType $ext -Name "DependencyAgent" -TypeHandlerVersion $version
     $result.IsSuccessStatusCode
 }

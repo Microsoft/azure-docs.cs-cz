@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 21814ddf6af5e65725f5e0e6ebdf31206565baa2
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218001"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315958"
 ---
 # <a name="manage-your-application-preferences"></a>Správa vašich předvoleb aplikace
 
@@ -27,7 +27,7 @@ IoT Central je podporována v různých jazycích. Váš upřednostňovaný jazy
 
 ## <a name="changing-theme"></a>Změna motivu
 
-Máme podporu pro motiv tmavý a světlý motiv. Světlý motiv je výchozí nastavení, můžete změnit kliknutím na ikonu nastavení v horním navigačním panelu.
+Máme podporu pro motiv tmavý a světlý motiv. Výchozí hodnota při světlý motiv toto můžete změnit tak, že vyberete ikonu nastavení v horním navigačním panelu.
 
 ![Výběr motivu IoT Central](media/howto-manage-preferences/settings.png)
 

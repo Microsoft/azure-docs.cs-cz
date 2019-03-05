@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 67b9be6f7788acd44ac60fe0c71133d69a2c122e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565475"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313833"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Přehled instalace úloh elastické databáze
 
@@ -90,13 +90,13 @@ Pro požadované nastavení, lze upravit parametry uvedené v této ukázkové v
 </tr>
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů A0/A1 a A2 a A3 nepřijmou, které způsobují roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů... /.. / A3 nepřijmou, což způsobí, že roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Poskytuje výpočetního prostředí pro edici Standard. Tento parametr výchozí hodnotu S0. Hodnoty parametru findwebconfigpath S0/S1/S2/S3/S4/S6/S9 a S12 na úrovni Standard jsou přijímány, které způsobují Azure SQL Database k použití příslušného výpočetního prostředí. Další informace o velikostech výpočetních SQL Database, najdete v části [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje výpočetního prostředí pro edici Standard. Tento parametr výchozí hodnotu S0. Hodnoty parametru findwebconfigpath... /.. /.. /.. / S9 a S12 na úrovni Standard jsou přijímány, což způsobí, že Azure SQL Database k použití příslušného výpočetního prostředí. Další informace o velikostech výpočetních SQL Database, najdete v části [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
@@ -148,7 +148,7 @@ Velikost virtuálního počítače při instalaci aktualizace, spusťte následu
 
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů A0/A1 a A2 a A3 nepřijmou, které způsobují roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů... /.. / A3 nepřijmou, což způsobí, že roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </table>

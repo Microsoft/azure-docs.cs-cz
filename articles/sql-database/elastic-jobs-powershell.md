@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 04a4c23808489e17d1759904cb6df01cd15eaafa
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 2b31b13ac0667680ace37e5ee688844e8dccb08a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656681"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315244"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
@@ -36,6 +36,8 @@ V tomto kurzu se naučíte kroky potřebné ke spuštění dotazu napříč něk
 > * Monitorování úlohy
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -73,13 +75,13 @@ Elastické úlohy nemají žádné specifické požadavky na pojmenování, tak�
 
 ```powershell
 # Sign in to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # Create a resource group
 Write-Output "Creating a resource group..."
 $ResourceGroupName = Read-Host "Please enter a resource group name"
 $Location = Read-Host "Please enter an Azure Region"
-$Rg = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+$Rg = New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 $Rg
 
 # Create a server
@@ -90,17 +92,17 @@ $AdminLogin = Read-Host "Please enter the server admin name"
 $AdminPassword = Read-Host "Please enter the server admin password"
 $AdminPasswordSecure = ConvertTo-SecureString -String $AdminPassword -AsPlainText -Force
 $AdminCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AdminLogin, $AdminPasswordSecure
-$AgentServer = New-AzureRmSqlServer -ResourceGroupName $ResourceGroupName -Location $Location -ServerName $AgentServerName -ServerVersion "12.0" -SqlAdministratorCredentials ($AdminCred)
+$AgentServer = New-AzSqlServer -ResourceGroupName $ResourceGroupName -Location $Location -ServerName $AgentServerName -ServerVersion "12.0" -SqlAdministratorCredentials ($AdminCred)
 
 # Set server firewall rules to allow all Azure IPs
 Write-Output "Creating a server firewall rule..."
-$AgentServer | New-AzureRmSqlServerFirewallRule -AllowAllAzureIPs
+$AgentServer | New-AzSqlServerFirewallRule -AllowAllAzureIPs
 $AgentServer
 
 # Create the job database
 Write-Output "Creating a blank SQL database to be used as the Job Database..."
 $JobDatabaseName = "JobDatabase"
-$JobDatabase = New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $AgentServerName -DatabaseName $JobDatabaseName -RequestedServiceObjectiveName "S0"
+$JobDatabase = New-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $AgentServerName -DatabaseName $JobDatabaseName -RequestedServiceObjectiveName "S0"
 $JobDatabase
 ```
 
@@ -109,17 +111,17 @@ $JobDatabase
 Write-Output "Creating target server..."
 $TargetServerName = Read-Host "Please enter a target server name"
 $TargetServerName = $TargetServerName + "-" + [guid]::NewGuid()
-$TargetServer = New-AzureRmSqlServer -ResourceGroupName $ResourceGroupName -Location $Location -ServerName $TargetServerName -ServerVersion "12.0" -SqlAdministratorCredentials ($AdminCred)
+$TargetServer = New-AzSqlServer -ResourceGroupName $ResourceGroupName -Location $Location -ServerName $TargetServerName -ServerVersion "12.0" -SqlAdministratorCredentials ($AdminCred)
 
 # Set target server firewall rules to allow all Azure IPs
-$TargetServer | New-AzureRmSqlServerFirewallRule -AllowAllAzureIPs
-$TargetServer | New-AzureRmSqlServerFirewallRule -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName AllowAll
+$TargetServer | New-AzSqlServerFirewallRule -AllowAllAzureIPs
+$TargetServer | New-AzSqlServerFirewallRule -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName AllowAll
 $TargetServer
 
 # Create some sample databases to execute jobs against...
-$Db1 = New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $TargetServerName -DatabaseName "TargetDb1"
+$Db1 = New-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $TargetServerName -DatabaseName "TargetDb1"
 $Db1
-$Db2 = New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $TargetServerName -DatabaseName "TargetDb2"
+$Db2 = New-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $TargetServerName -DatabaseName "TargetDb2"
 $Db2
 ```
 
@@ -128,19 +130,19 @@ $Db2
 Pokud chcete používat elastické úlohy, zaregistrujte tuto funkci ve svém předplatném Azure spuštěním následujícího příkazu (v každém předplatném, ve kterém chcete používat elastické úlohy, stačí tento příkaz spustit pouze jednou):
 
 ```powershell
-Register-AzureRmProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
+Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
 ```
 
 ## <a name="create-the-elastic-job-agent"></a>Vytvoření agenta elastických úloh
 
 Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent spouští úlohy na základě plánu nebo jako jednorázové úlohy.
 
-Rutina **New-AzureRmSqlElasticJobAgent** vyžaduje, aby již existovala databáze SQL Azure, takže parametry *ResourceGroupName*, *ServerName* a *DatabaseName* musí odkazovat na existující prostředky.
+**New-AzSqlElasticJobAgent** rutina vyžaduje databázi Azure SQL na ještě neexistuje, proto *ResourceGroupName*, *ServerName*, a  *DatabaseName* parametry musí všechny bodu ke stávajícím prostředkům.
 
 ```powershell
 Write-Output "Creating job agent..."
 $AgentName = Read-Host "Please enter a name for your new Elastic Job agent"
-$JobAgent = $JobDatabase | New-AzureRmSqlElasticJobAgent -Name $AgentName
+$JobAgent = $JobDatabase | New-AzSqlElasticJobAgent -Name $AgentName
 $JobAgent
 ```
 
@@ -202,10 +204,10 @@ Write-Output "Creating job credentials..."
 $LoginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
 
 $MasterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $LoginPasswordSecure
-$MasterCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "masteruser" -Credential $MasterCred
+$MasterCred = $JobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $MasterCred
 
 $JobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "jobuser", $LoginPasswordSecure
-$JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Credential $JobCred
+$JobCred = $JobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $JobCred
 ```
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>Definice cílových databází, pro které se má úloha spustit
@@ -217,13 +219,13 @@ Následující fragment kódu vytvoří dva cílové skupiny: *ServerGroup*, a *
 ```powershell
 Write-Output "Creating test target groups..."
 # Create ServerGroup target group
-$ServerGroup = $JobAgent | New-AzureRmSqlElasticJobTargetGroup -Name 'ServerGroup'
-$ServerGroup | Add-AzureRmSqlElasticJobTarget -ServerName $TargetServerName -RefreshCredentialName $MasterCred.CredentialName
+$ServerGroup = $JobAgent | New-AzSqlElasticJobTargetGroup -Name 'ServerGroup'
+$ServerGroup | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -RefreshCredentialName $MasterCred.CredentialName
 
 # Create ServerGroup with an exclusion of Db2
-$ServerGroupExcludingDb2 = $JobAgent | New-AzureRmSqlElasticJobTargetGroup -Name 'ServerGroupExcludingDb2'
-$ServerGroupExcludingDb2 | Add-AzureRmSqlElasticJobTarget -ServerName $TargetServerName -RefreshCredentialName $MasterCred.CredentialName
-$ServerGroupExcludingDb2 | Add-AzureRmSqlElasticJobTarget -ServerName $TargetServerName -Database $Db2.DatabaseName -Exclude
+$ServerGroupExcludingDb2 = $JobAgent | New-AzSqlElasticJobTargetGroup -Name 'ServerGroupExcludingDb2'
+$ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -RefreshCredentialName $MasterCred.CredentialName
+$ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -Database $Db2.DatabaseName -Exclude
 ```
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
@@ -231,7 +233,7 @@ $ServerGroupExcludingDb2 | Add-AzureRmSqlElasticJobTarget -ServerName $TargetSer
 ```powershell
 Write-Output "Creating a new job"
 $JobName = "Job1"
-$Job = $JobAgent | New-AzureRmSqlElasticJob -Name $JobName -RunOnce
+$Job = $JobAgent | New-AzSqlElasticJob -Name $JobName -RunOnce
 $Job
 ```
 
@@ -244,8 +246,8 @@ Write-Output "Creating job steps"
 $SqlText1 = "IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id('Step1Table')) CREATE TABLE [dbo].[Step1Table]([TestId] [int] NOT NULL);"
 $SqlText2 = "IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id('Step2Table')) CREATE TABLE [dbo].[Step2Table]([TestId] [int] NOT NULL);"
 
-$Job | Add-AzureRmSqlElasticJobStep -Name "step1" -TargetGroupName $ServerGroup.TargetGroupName -CredentialName $JobCred.CredentialName -CommandText $SqlText1
-$Job | Add-AzureRmSqlElasticJobStep -Name "step2" -TargetGroupName $ServerGroupExcludingDb2.TargetGroupName -CredentialName $JobCred.CredentialName -CommandText $SqlText2
+$Job | Add-AzSqlElasticJobStep -Name "step1" -TargetGroupName $ServerGroup.TargetGroupName -CredentialName $JobCred.CredentialName -CommandText $SqlText1
+$Job | Add-AzSqlElasticJobStep -Name "step2" -TargetGroupName $ServerGroupExcludingDb2.TargetGroupName -CredentialName $JobCred.CredentialName -CommandText $SqlText2
 ```
 
 
@@ -255,7 +257,7 @@ Pokud chcete úlohu okamžitě spustit, spusťte následující příkaz:
 
 ```powershell
 Write-Output "Start a new execution of the job..."
-$JobExecution = $Job | Start-AzureRmSqlElasticJob
+$JobExecution = $Job | Start-AzSqlElasticJob
 $JobExecution
 ```
 
@@ -273,13 +275,13 @@ Následující fragment kódu získá podrobnosti o provádění úlohy:
 
 ```powershell
 # Get the latest 10 executions run
-$JobAgent | Get-AzureRmSqlElasticJobExecution -Count 10
+$JobAgent | Get-AzSqlElasticJobExecution -Count 10
 
 # Get the job step execution details
-$JobExecution | Get-AzureRmSqlElasticJobStepExecution
+$JobExecution | Get-AzSqlElasticJobStepExecution
 
 # Get the job target execution details
-$JobExecution | Get-AzureRmSqlElasticJobTargetExecution -Count 2
+$JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
 ## <a name="schedule-the-job-to-run-later"></a>Naplánování pozdějšího spuštění úlohy
@@ -288,7 +290,7 @@ Pokud chcete naplánovat spuštění úlohy na určitý čas, spusťte následuj
 
 ```powershell
 # Run every hour starting from now
-$Job | Set-AzureRmSqlElasticJob -IntervalType Hour -IntervalCount 1 -StartTime (Get-Date) -Enable
+$Job | Set-AzSqlElasticJob -IntervalType Hour -IntervalCount 1 -StartTime (Get-Date) -Enable
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -300,7 +302,7 @@ Odstraněním skupiny prostředků odstraňte prostředky Azure vytvořené v to
 >
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $ResourceGroupName
+Remove-AzResourceGroup -ResourceGroupName $ResourceGroupName
 ```
 
 

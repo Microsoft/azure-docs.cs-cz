@@ -12,21 +12,22 @@ ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/17/2019
-ms.openlocfilehash: bbb22f8d5eab3e60eba13bb642edb8f8d190cf67
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: eeceb72ef73b5bbe241835a70b37255c12fc9eee
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54387936"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311387"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>Použití Powershellu k vytvoření Azure SQL Database Managed Instance pomocí šablony Azure Resource Manageru
 
 Azure SQL Database Managed Instance můžete vytvořit pomocí Azure Powershellu knihovny a šablony Azure Resource Manageru. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Nasazení pomocí předdefinované šablony Azure Resource Manageru můžete spustit příkazy Azure Powershellu. V šabloně můžete zadat následující vlastnosti:
 - Název instance
@@ -39,7 +40,7 @@ Název instance, uživatelské jméno správce SQL, virtuální sítě nebo pods
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento příklad předpokládá, že máte [vytvoření prostředí s platnou sítí](../sql-database-managed-instance-create-vnet-subnet.md) nebo [upravit existující virtuální síť](../sql-database-managed-instance-configure-vnet-subnet.md) pro Managed Instance. Ukázka používá rutiny [New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) a [Get-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetwork) proto se ujistěte, zda je nainstalována následující moduly prostředí PowerShell:
+Tento příklad předpokládá, že máte [vytvoření prostředí s platnou sítí](../sql-database-managed-instance-create-vnet-subnet.md) nebo [upravit existující virtuální síť](../sql-database-managed-instance-configure-vnet-subnet.md) pro Managed Instance. Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) proto se ujistěte, zda je nainstalována následující moduly prostředí PowerShell:
 
 ```
 Install-Module AzureRM.Network
@@ -103,7 +104,7 @@ Uložte obsah tohoto souboru jako soubor .json, cesta k souboru vložte následu
 
 ```powershell
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"
-Select-AzureRmSubscription -SubscriptionId $subscriptionId
+Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Managed Instance properties
 $resourceGroup = "rg_mi"
@@ -116,12 +117,12 @@ $secpasswd = ConvertTo-SecureString "<Put some strong password here>" -AsPlainTe
 $vNetName = "my_vnet"
 $vNetResourceGroup = "rg_mi_vnet"
 $subnetName = "ManagedInstances"
-$vNet = Get-AzureRmVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGroup
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vNet
+$vNet = Get-AzVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGroup
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vNet
 $subnetId = $subnet.Id
 
 # Deploy Instance using Azure Resource Manager template:
-New-AzureRmResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
+New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```

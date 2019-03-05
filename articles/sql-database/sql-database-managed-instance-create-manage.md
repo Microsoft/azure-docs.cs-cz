@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5d9952581049198131e30cd7d0ba0ebf6a14cc54
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 852f181ff0bb84bc3bcdb6d674ecf72eca900d7d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098864"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312575"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Spravovaná reference k rozhraní API pro Azure SQL Database Managed instance
 
@@ -29,21 +29,23 @@ Rychlý start ukazující vytvoření Azure SQL Database Managed Instance, nalez
 
 ## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Vytváření a správě spravované instance
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Můžete vytvářet a spravovat spravované instance pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> Příklady skriptů Powershellu, najdete v části [skript rychlý start: Vytvoření spravované Instance Azure SQL pomocí prostředí PowerShell knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+> Příklady skriptů Powershellu, najdete v části [skript rychlý start: Vytvoření spravované Instance Azure SQL pomocí prostředí PowerShell knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Rutina | Popis |
 | --- | --- |
-|[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Vytvoří spravované Instance Azure SQL Database |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Vrátí informace o spravované Instance Azure SQL|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Nastaví vlastnosti pro Azure SQL Database Managed Instance|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Odebere instanci spravované databáze Azure SQL|
-|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Vytvoří databázi Azure SQL Database Managed Instance|
-|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Vrátí informace o spravované Instance Azure SQL database|
-|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Odebere databázi spravované instanci databáze SQL Azure|
-|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Obnoví databázi spravované instanci databáze SQL Azure|
+|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Vytvoří spravované Instance Azure SQL Database |
+|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Vrátí informace o spravované Instance Azure SQL|
+|[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Nastaví vlastnosti pro Azure SQL Database Managed Instance|
+|[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Odebere instanci spravované databáze Azure SQL|
+|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Vytvoří databázi Azure SQL Database Managed Instance|
+|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Vrátí informace o spravované Instance Azure SQL database|
+|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Odebere databázi spravované instanci databáze SQL Azure|
+|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Obnoví databázi spravované instanci databáze SQL Azure|
 
 ## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Vytváření a správě spravované instance
 

@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: dba1f66be91d8fa8e151a2771bad70b721af02dc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893574"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313068"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslání metrik hostovaného operačního systému do Azure monitoru metriky uložit klasické cloudové služby 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Díky nástroji Azure Monitor [diagnostické rozšíření](diagnostics-extension-overview.md), můžete shromažďovat metriky a protokoly z hostovaný operační systém (Guest OS) spuštěná jako virtuální počítač, cloudovou službu nebo clusteru Service Fabric. Rozšíření mohla odesílat telemetrii na [různými umístěními.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Proces, který je popsaný v tomto článku platí jenom pro čítače výkonu v
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
+- Musíte mít buď [prostředí Azure PowerShell](/powershell/azure) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Zřizování cloudové služby a úložiště účtu 
 
@@ -141,7 +143,7 @@ Uložte tento soubor diagnostiky místně.
 Spusťte PowerShell a připojte se k Azure. 
 
 ```PowerShell
-Login-AzureRmAccount 
+Login-AzAccount 
 ```
 
 Pomocí následujících příkazů ukládat podrobnosti o účtu úložiště, který jste vytvořili dříve. 

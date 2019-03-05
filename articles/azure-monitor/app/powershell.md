@@ -12,14 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ea4bc61dec59308b2c2311e8300e44aae78fc041
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817860"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313510"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](../../azure-monitor/app/app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavte [cenové schéma](pricing.md)a vytvořit další prostředky Azure .
 
 Klíčem k vytvoření těchto prostředků je šablony JSON pro [Azure Resource Manageru](../../azure-resource-manager/manage-resources-powershell.md). Řečeno v kostce, postup je: stáhnout definice JSON z existujících prostředků; parametrizovat určité hodnoty jako jsou názvy; a spusťte šablonu pokaždé, když chcete vytvořit nový prostředek. Několik prostředků můžete zabalit dohromady, k jejich vytvoření všechno v jednom přejděte – například monitorování aplikace s testy dostupnosti, upozornění a úložiště pro průběžný export. Existují některé odlišnosti k některým parameterizations, které vám objasníme tady.
@@ -154,12 +157,12 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
 ## <a name="create-application-insights-resources"></a>Vytvoření prostředků Application Insights
 1. V prostředí PowerShell Přihlaste se k Azure:
    
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 2. Spusťte příkaz takto:
    
     ```PS
    
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
 
@@ -175,8 +178,8 @@ Můžete přidat další parametry - jejich popis najdete v sekci parametrů ša
 Po vytvoření prostředek aplikace, je vhodné Instrumentační klíč: 
 
 ```PS
-    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
+    $details = Get-AzResource -ResourceId $resource.ResourceId
     $ikey = $details.Properties.InstrumentationKey
 ```
 
@@ -189,7 +192,7 @@ Můžete nastavit [cenový plán](pricing.md).
 Vytvořte prostředek aplikace s cenový plán Enterprise, pomocí výše uvedené šablony:
 
 ```PS
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp

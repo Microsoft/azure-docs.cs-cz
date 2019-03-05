@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ae9f4d1ebcb84748b665579104f63dab3ee6f076
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 65940aa07c532ae3bc708d475b2d6ac60cf8d636
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463867"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308920"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 
@@ -126,13 +126,15 @@ Všimněte si, že instalační program pro verzi .NET 4.6.1 může vyžadovat d
 
 ## <a name="transactions-across-multiple-servers"></a>Transakce napříč několika servery
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Transakcí elastické databáze jsou podporovány na různé servery SQL Database ve službě Azure SQL Database. Když transakce překračují hranice databáze SQL serveru, zúčastněných serverů nejdřív zadat do vztahu vzájemnou komunikaci. Jakmile je navázaný vztah komunikace, všechny databáze v libovolné ze dvou serverů mohou účastnit elastické transakce s databází z jiného serveru. Vztahu komunikace s transakcemi pokrývající více než dva servery SQL Database, musí být nastavené pro jakýkoli pár servery SQL Database.
 
 Správa relací mezi komunikaci mezi serverem pro transakcí elastické databáze pomocí následujících rutin Powershellu:
 
-* **New-AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k vytvoření nové relace komunikace mezi dvěma servery SQL Database ve službě Azure SQL Database. Relace je symetrický, což znamená, že oba servery můžete zahájit transakce s jiným serverem.
-* **Get-AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k načtení existujících relací komunikace a jejich vlastnosti.
-* **Remove-AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k odebrání existujícího vztahu komunikace. 
+* **New-AzSqlServerCommunicationLink**: Tuto rutinu použijte k vytvoření nové relace komunikace mezi dvěma servery SQL Database ve službě Azure SQL Database. Relace je symetrický, což znamená, že oba servery můžete zahájit transakce s jiným serverem.
+* **Get-AzSqlServerCommunicationLink**: Tuto rutinu použijte k načtení existujících relací komunikace a jejich vlastnosti.
+* **Remove-AzSqlServerCommunicationLink**: Tuto rutinu použijte k odebrání existujícího vztahu komunikace. 
 
 ## <a name="monitoring-transaction-status"></a>Monitorování stavu transakce
 

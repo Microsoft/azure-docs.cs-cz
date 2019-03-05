@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0e872509b7971adce871daf6967c0fcd1a87e9bc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661815"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311014"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
@@ -118,7 +118,7 @@ Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connec
     ![Měření klimatizace](./media/tutorial-define-device-type/airconmeasurements.png)
 
     > [!NOTE]
-    > Pokud chcete změnit název zařízení nebo šablony zařízení, klikněte na text v horní části stránky.
+    > Chcete-li změnit název zařízení nebo zařízení šablony, vyberte text, v horní části stránky.
 
 5. Pokud chcete přidat měření telemetrických teplotních dat, zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **Telemetry** (Telemetrická data):
 
@@ -187,7 +187,7 @@ Událost můžete využít k definování dat v určitém časovém bodu, která
 
     ![Zobrazení simulace události](./media/tutorial-define-device-type/eventview.png)
 
-1. Pokud chcete o události zobrazit další podrobnosti, klikněte na ni v grafu:
+1. Chcete-li zobrazit další podrobnosti o události, vyberte událost v grafu:
 
     ![Zobrazení podrobnosti události](./media/tutorial-define-device-type/eventviewdetail.png)
 
@@ -228,7 +228,7 @@ Pomocí měření stavu můžete definovat a vizualizovat stav zařízení nebo 
 
     ![Zobrazení simulace stavu](./media/tutorial-define-device-type/stateview.png)
 
-4. V případě, že zařízení v krátkém čase pošle příliš mnoho datových bodů, měření stavu se zobrazí s jiným vizuálem, jak je uvedeno níže. Pokud kliknete na graf, zobrazí se v chronologickém pořadí všechny datové body v daném časovém období. Časový rozsah můžete také zúžit a zobrazit podrobnější měření.
+4. V případě, že zařízení v krátkém čase pošle příliš mnoho datových bodů, měření stavu se zobrazí s jiným vizuálem, jak je uvedeno níže. Pokud vyberete v grafu, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Časový rozsah můžete také zúžit a zobrazit podrobnější měření.
 
     ![Zobrazení podrobností o stavu](./media/tutorial-define-device-type/stateviewdetail.png)
 
@@ -367,7 +367,7 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
 
 1. Přejděte na stránku **Commands** (Příkazy) šablony zařízení **Connected Air Conditioner** a upravte šablonu. 
 
-1. Kliknutím na **New Command** (Nový příkaz) přidejte do zařízení nový příkaz a začněte ho konfigurovat.
+1. Vyberte **nový příkaz** začít konfigurovat nový příkaz a přidejte příkaz do svého zařízení.
 
    Na základě svých požadavků můžete vytvářet příkazy různých typů. 
 
@@ -381,7 +381,7 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
     | Zobrazovaný typ         | text            |
     | Popis          | Příkaz zařízení  |  
 
-    Kliknutím na **+** v části **Input Fields** (Vstupní pole) můžete do příkazu přidat další vstupy.
+    Můžete přidat další vstupy k příkazu výběrem **+** pro **vstupní pole**.
 
     ![Příprava pro přidání nastavení](media/tutorial-define-device-type/commandsecho1.png)
 
@@ -439,7 +439,7 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
 
     Potom zvolte **Save** (Uložit).
 
-1. Pokud chcete přidat nastavení teploty na řídicí panel, zvolte **Settings and Properties** (Nastavení a vlastnosti). Kliknutím na **Add/Remove** (Přidat nebo odebrat) přidejte nastavení nebo vlastnosti, které chcete zobrazit na řídicím panelu. 
+1. Pokud chcete přidat nastavení teploty na řídicí panel, zvolte **Settings and Properties** (Nastavení a vlastnosti). Vyberte **přidat nebo odebrat** přidat nastavení nebo vlastnosti, které chcete zobrazit na řídicím panelu. 
 
     ![Komponenty řídicího panelu](./media/tutorial-define-device-type/dashboardcomponents4.png)
 

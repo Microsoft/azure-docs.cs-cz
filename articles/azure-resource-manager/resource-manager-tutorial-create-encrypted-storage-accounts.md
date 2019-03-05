@@ -10,22 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 645d7c2dca166bf95b4bd6bd7677100644a1f948
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097586"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306693"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Kurz: Využít odkaz na šablonu Azure Resource Manageru
 
 Zjistěte, jak vyhledat informace o schématu šablony a jak pomocí těchto informací vytvářet šablony Azure Resource Manageru.
 
 V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace k šablonám tuto šablonu přizpůsobíte tak, abyste s její pomocí vytvořili šifrovaný účet služby Storage.
+
+![Referenční informace k šablonám Resource Manageru nasadit zašifrovaném účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Tento kurz se zabývá následujícími úkony:
 

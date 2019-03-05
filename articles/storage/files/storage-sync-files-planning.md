@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97508c05ea26df1aaae7f41738835380767c81d2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200492"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312711"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -235,6 +235,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
+| Brazílie – jih | Sao Paolo stavu |
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
@@ -242,6 +243,8 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Východní Asie | Hongkong |
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
+| Japonsko – východ | Tokio, Saitama |
+| Japonsko – západ | Ósaka |
 | Středoseverní USA | Illinois |
 | Severní Evropa | Irsko |
 | Středojižní USA | Texas |

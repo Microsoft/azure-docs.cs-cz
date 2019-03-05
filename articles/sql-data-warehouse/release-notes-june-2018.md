@@ -10,23 +10,25 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: accb2b730d5b165e29a1ff050cbb2c0ffa2f379d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475342"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317165"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v červnu 2018. 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 SQL Data Warehouse automaticky pořizuje snímky datového skladu každých 8 hodin starat plánovaného bodu obnovení osm hodin (RPO). Když to automatizované snímky usnadnění správy zatížení spuštěných váš datový sklad, není potřeba dělat jeho snímky v kritické dobu podle potřeb vašeho podniku. Třeba pořízení snímku bezprostředně před významné datové zatížení nebo nasazení nové skripty do datového skladu povolit bod obnovení přímo před provedením operace. 
 
-SQL Data Warehouse teď podporuje [body obnovení uživatelem definované](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) rutiny.
+SQL Data Warehouse teď podporuje [body obnovení uživatelem definované](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) rutiny.
 
 ```PowerShell
-New-AzureRmSqlDatabaseRestorePoint
+New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
     -DatabaseName $DatabaseName

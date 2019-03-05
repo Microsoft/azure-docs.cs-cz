@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bd2f675fe646395b60aeb687f67269b0184563bd
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193394"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309906"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -72,10 +72,10 @@ Pokud chcete nasadit aplikaci klienta z předchozího kroku do zařízení Windo
 Jakmile, který jste provedli, budete muset otevřít [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) tak, že zadáte http://[device-IP-address]:8080 do libovolného prohlížeče.
 
 Z zde a, jak ukazuje if níže budete chtít:
-1. Rozbalte uzel "Aplikace" na levé straně.
-2. Klikněte na tlačítko "rychlého spuštění ukázky".
-3. Klikněte na tlačítko "Klient služby Azure IoT Hub".
-4. Klikněte na tlačítko "Nasadit a spustit".
+1. Rozbalte **aplikace** uzlu na levé straně.
+2. Vyberte **rychlé spuštění ukázky**.
+3. Vyberte **klienta služby Azure IoT Hub**.
+4. Vyberte **nasadit a spustit**.
 
 ![GIF klienta služby Azure IoT Hub na Windows Device Portal](./media/howto-connect-windowsiotcore/iothubapp.gif)
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755148"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316485"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
 
@@ -37,7 +37,7 @@ Azure SQL je postavená na systému Microsoft SQL Server a je navrženo pro zaji
 Azure nyní nabízí dvě možnosti pro hostování úloh SQL serveru: Azure SQL database, databáze jako služba a systému SQL server na virtuálních počítačích (VM). Jsme nebude získat podrobnosti o rozdílech mezi těmito dvěma, s tím rozdílem, že Azure SQL database je nejvhodnější pro nové cloudové aplikace výhod úspory nákladů a optimalizace výkonu, které cloudové služby poskytovat. Pokud zvažujete migrace nebo rozšíří vaši místní aplikace do cloudu, SQL server na virtuálním počítači Azure může fungovat lépe za vás. Pro zjednodušení tohoto článku, Pojďme vytvořit databázi Azure SQL.
 
 ## <a id="ODBC"></a>Technologie datových přístupů: ODBC a OLE DB
-Připojení ke službě Azure SQL DB se nijak neliší a aktuálně existují dva způsoby, jak připojit se k nim: ODBC (Open Database connectivity) a technologie OLE DB (propojování a vkládání objektů databáze). Microsoft má v posledních letech, v souladu s [rozhraní ODBC pro přístup k datům nativní relační](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC je poměrně jednoduchá a také mnohem rychlejší než OLE DB. Pouze výstrahou je, že ODBC používat staré API C-style.
+Připojení ke službě Azure SQL DB se nijak neliší a aktuálně existují dva způsoby, jak připojit se k nim: ODBC (Open Database connectivity) a technologie OLE DB (propojování a vkládání objektů databáze). Microsoft má v posledních letech, v souladu s [rozhraní ODBC pro přístup k datům nativní relační](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC je poměrně jednoduchá a také mnohem rychlejší než OLE DB. Pouze výstrahou je, že ODBC používat staré API C-style.
 
 ## <a id="Create"></a>Krok 1:  Vytvoření služby Azure SQL Database
 Zobrazit [úvodní stránce](sql-database-single-database-get-started.md) informace o vytvoření ukázkové databáze.  Alternativně můžete použít tento [krátký dvouminutové video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) vytvoření Azure SQL database pomocí webu Azure portal.
@@ -78,7 +78,7 @@ Alternativně můžete vytvořit soubor DSN pomocí průvodce, který se spustí
 Blahopřejeme! Teď úspěšně připojily k Azure SQL pomocí jazyka C++ a rozhraní ODBC na Windows. Čtení dělat to samé pro platformu Linux také můžete pokračovat.
 
 ## <a id="Linux"></a>Krok 5: Připojení z aplikace pro Linux C/C++
-V případě, že nebyly slyšeli pro zprávy, ale Visual Studio teď umožňuje vyvíjet aplikace pro C++ Linux stejně. Informace o tomto nový scénář v [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) blogu. Pokud chcete vytvořit pro Linux, musíte vzdálený počítač se spuštěným systémem vaší distribuce Linuxu. Pokud nemáte k dispozici, můžete vybrat jednu rychle pomocí [Linux Azure Virtual machines](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+V případě, že nebyly slyšeli pro zprávy, ale Visual Studio teď umožňuje vyvíjet aplikace pro C++ Linux stejně. Informace o tomto nový scénář v [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blogu. Pokud chcete vytvořit pro Linux, musíte vzdálený počítač se spuštěným systémem vaší distribuce Linuxu. Pokud nemáte k dispozici, můžete vybrat jednu rychle pomocí [Linux Azure Virtual machines](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Pro účely tohoto kurzu Předpokládejme, že máte Ubuntu 16.04 Linuxová distribuce vytvořená nastavení. Zde uvedené kroky by měl platí také pro Ubuntu 15.10, Red Hat 6 a Red Hat 7.
 

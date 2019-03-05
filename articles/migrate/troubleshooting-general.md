@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: cb1bed847f5b7afe7c1eff0243c64e8c25ddb814
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e85608c411c0aea7b7bf71be19939f6859139c56
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992551"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314361"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -163,10 +163,34 @@ Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Po
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
    d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
-   
-   e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze fo PowerCLI.
 
-3. Pokud výše problém nevyřeší, ručně nainstalujte [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) a zkontrolujte, jestli se problém vyřeší.
+   e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
+
+3. Pokud výše problém nevyřeší, postupujte podle kroků c výše a potom ručně nainstalujte PowerCLI v zařízení pomocí následujících kroků:
+
+   a. Vyčistit všechny neúplné PowerCLI instalačních souborů pomocí následujících kroků #k #c v kroku 2 # výše.
+
+   b. Přejděte na začátku > spuštění > Otevřít PowerShell(x86) Windows v režimu správce
+
+   c. Spusťte příkaz:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ "A" požádá o potvrzení)
+
+   d. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
+
+   e. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
+
+4. Pokud se vám nedaří stáhnout modul v zařízení kvůli problémům s bránou firewall, stáhněte a nainstalujte modul na počítači, který má přístup k Internetu pomocí následujících kroků:
+
+    a. Vyčistit všechny neúplné PowerCLI instalačních souborů pomocí následujících kroků #k #c v kroku 2 # výše.
+
+    b. Přejděte na začátku > spuštění > Otevřít PowerShell(x86) Windows v režimu správce
+
+    c. Spusťte příkaz:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (typ "A" požádá o potvrzení)
+
+    d. Zkopírujte všechny moduly, počínaje "VMware" z "C:\Program Files (x86) \WindowsPowerShell\Modules" do stejného umístění na virtuálním počítači kolektoru.
+
+    e. Restartujte službu Azure Migrate Collector na Windows portálu Service Manager (otevřít "Spustit" a zadejte příkaz services.msc otevřete Správce služby Windows). Klikněte pravým tlačítkem ve službě Azure Migrate Collector Service a klikněte na příkaz spustit.
+
+    f. Dvakrát klikněte na zástupce na ploše "Spustit kolektor" spustíte aplikaci kolektoru. Aplikaci kolektoru by měl automaticky stáhnout a nainstalovat požadované verze nástroje PowerCLI.
 
 ### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 

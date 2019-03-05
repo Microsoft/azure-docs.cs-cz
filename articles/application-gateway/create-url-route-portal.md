@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 227e09ad087f1ac06f0dbb5b731c68f7c0a6980e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f1c26c43472e9d433baf2e9c6baab1e621d88b87
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159770"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311945"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s na základě cest pravidla směrování pomocí webu Azure portal
 
@@ -99,6 +99,8 @@ V tomto příkladu vytvoříte tři virtuální počítače má být použit jak
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
 
     ![Instalace vlastního rozšíření](./media/create-url-route-portal/application-gateway-extension.png)
@@ -107,7 +109,7 @@ V tomto příkladu vytvoříte tři virtuální počítače má být použit jak
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -118,7 +120,7 @@ V tomto příkladu vytvoříte tři virtuální počítače má být použit jak
       -Settings $publicSettings
     ```
 
-3. Vytvořte dva další virtuální počítače a instalace služby IIS pomocí kroky, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a hodnoty VMName v Set-AzureRmVMExtension.
+3. Vytvořte dva další virtuální počítače a instalace služby IIS pomocí kroky, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a hodnoty VMName v sadě AzVMExtension.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Vytvoření back-endové fondy s virtuálními počítači
 

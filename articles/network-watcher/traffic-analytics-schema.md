@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ca7aba3d92542f1b73160c726a555487e17fd8e2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 34c455b5bf77906d9b6525731c09b62f15e4ccd2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012032"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313221"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 
@@ -112,15 +112,15 @@ Tady je polí na schéma a jejich místo
     
 1. V případě AzurePublic a ExternalPublic toky zákazník, který vlastní že IP adresa virtuálního počítače Azure jsou v VMIP_s pole vyplněné, zatímco veřejné IP adresy se zatím připravují PublicIPs_s pole. Pro tyto typy dvě toku jsme používali VMIP_s a PublicIPs_s místo SrcIP_s a DestIP_s pole. Pro AzurePublic a ExternalPublicIP adresy jsme agregovat dále tak, aby byla minimální počet záznamů přijaté do pracovního prostoru log analytics zákazníka. (Toto pole bude brzy přestanou používat a jsme měli použít SrcIP_ a DestIP_s v závislosti na tom, jestli byl virtuální počítač azure zdroji nebo cíli v toku) 
 2. Podrobnosti o typech toků: Podle IP adresy používané v toku, jsme kategorizace toků v následující typy toku: 
- *  IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure. 
- *  Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure. 
-*   S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route. 
-*   P2S - (bod do lokality) některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k virtuální síti Azure přes bránu VPN.
-*   AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku. <br><br>
-*   ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
-*   MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
-*   UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
-*   Neznámé – nelze mapovat buď IP adres v toků s topologií zákazníků v Azure stejně jako místní (lokalita).
+* IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure. 
+* Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure. 
+* S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route. 
+* P2S - (bod do lokality) některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k virtuální síti Azure přes bránu VPN.
+* AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku. 
+* ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
+* MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
+* UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
+* Neznámé – nelze mapovat buď IP adres v toků s topologií zákazníků v Azure stejně jako místní (lokalita).
 
 ### <a name="next-steps"></a>Další kroky
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) podrobnosti o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md)

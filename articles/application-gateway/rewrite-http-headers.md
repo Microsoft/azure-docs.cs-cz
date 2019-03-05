@@ -7,14 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 176e6804e6c98a1b9e9ffe4af04f02748c80928b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103424"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310897"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Přepsání hlavičky protokolu HTTP pomocí služby Application Gateway (public preview)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepsání těchto HTTP záhlaví vám pomáhá s několik důležitých scénářů, jako je například přidávání bezpečnostních záhlaví pole jako HSTS / X-XSS ochrany nebo odebrání pole hlavičky odpovědi, což může vést k odhalení citlivých informací, jako je název serveru back-endu.
 
@@ -27,7 +29,7 @@ Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příc
 Podpora služby Application Gateway záhlaví revize nabízí:
 
 - **Globální záhlaví revize**: Je možné přepsat konkrétní hlavičky pro všechny požadavky a odpovědi týkající se webu.
-- **Na základě cest záhlaví revize**: Tento typ přepsání umožňuje přepsání hlavičky pro pouze tyto požadavky a odpovědi, které se vztahují pouze na určitém webovém serveru oblast, třeba nákupní košík oblasti udávají/košík / *.
+- **Na základě cest záhlaví revize**: Tento typ přepsání umožňuje přepsání hlavičky pro pouze tyto požadavky a odpovědi, které se vztahují pouze na určitém webovém serveru oblast, třeba nákupní košík oblasti udávají /cart/\*.
 
 Díky této změně budete muset:
 
@@ -48,7 +50,7 @@ Je možné přepsat hodnotou v hlavičkách na:
   *Příklad:* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - Hodnota z jiné záhlaví. 
@@ -56,7 +58,7 @@ Je možné přepsat hodnotou v hlavičkách na:
   *Příklad 1:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ Je možné přepsat hodnotou v hlavičkách na:
   *Příklad 2*:
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ Je možné přepsat hodnotou v hlavičkách na:
   *Příklad:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 

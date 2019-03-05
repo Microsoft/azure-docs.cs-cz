@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 704c12bc2ea16fcad5672dde4181f63495fbe967
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870835"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310178"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -113,12 +113,14 @@ Diagnostické nastavení tenanta se nakonfigurovat jenom v okně portálu pro te
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Povolit shromažďování protokolů diagnostiky prostředků pomocí Powershellu
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Chcete-li povolit shromažďování protokolů diagnostiky prostředků pomocí Azure Powershellu, použijte následující příkazy:
 
 Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště, použijte tento příkaz:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 ID účtu úložiště je ID prostředku pro účet úložiště, do kterého chcete odeslat protokoly.
@@ -126,7 +128,7 @@ ID účtu úložiště je ID prostředku pro účet úložiště, do kterého ch
 Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
 ID pravidla služby Service bus je řetězec v tomto formátu: `{Service Bus resource ID}/authorizationrules/{key name}`.
@@ -134,13 +136,13 @@ ID pravidla služby Service bus je řetězec v tomto formátu: `{Service Bus res
 Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics, použijte tento příkaz:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 Můžete získat ID prostředku pracovního prostoru Log Analytics pomocí následujícího příkazu:
 
 ```powershell
-(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+(Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.

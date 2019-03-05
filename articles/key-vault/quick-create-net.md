@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8127a7a10c117edaefc4a215366990d847a165ec
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238279"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316383"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
@@ -171,7 +171,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče. V předchozím příkazu uvádíte identitu aplikace aervice oprávnění udělat **získat** a **seznamu** operace v trezoru klíčů.
+Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče. V předchozím příkazu uvádíte identitu aplikace služby oprávnění k proveďte **získat** a **seznamu** operace v trezoru klíčů.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Když už je budete potřebovat, odstraňte skupinu prostředků, virtuálního počítače a všech souvisejících prostředků. Uděláte to tak, vyberte skupinu prostředků příslušného virtuálního počítače a vyberte **odstranit**.

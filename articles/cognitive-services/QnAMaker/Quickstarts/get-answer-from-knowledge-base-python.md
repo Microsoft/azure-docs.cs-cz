@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: bd25235f10f25490edfe9f6dc4ea8ab5037cdc8a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 7da861b240d0502d62c1344b1927c3c05a9086ac
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57212986"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313884"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Získejte odpovědi na dotaz zadaný ze znalostní báze pomocí Pythonu
 
@@ -72,6 +72,7 @@ python get-answer-3x.py
 
 [!INCLUDE [JSON request and response](../../../../includes/cognitive-services-qnamaker-quickstart-get-answer-json.md)] 
 
+Další informace o [požadavek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888183"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307815"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -29,7 +29,7 @@ Před nastavením průběžný export je některé alternativy, které můžete 
 * [Analytics](../../azure-monitor/app/analytics.md) poskytuje výkonný dotazovací jazyk pro telemetrii. Můžete také exportovat výsledky.
 * Pokud ale chcete [zkoumání dat v Power BI](../../azure-monitor/app/export-power-bi.md ), můžete to udělat bez použití průběžného exportu.
 * [Rozhraní REST API pro přístup k datům](https://dev.applicationinsights.io/) umožňuje programový přístup k vaší telemetrie.
-* Také přístup k nastavení [průběžný export prostřednictvím prostředí Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
+* Také přístup k nastavení [průběžný export prostřednictvím prostředí Powershell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Poté, co průběžný Export zkopíruje data do služby storage (ve kterém může zůstat pro dlouho budete chtít), je stále k dispozici ve službě Application Insights pro obvyklého [dobu uchování](../../azure-monitor/app/data-retention-privacy.md).
 

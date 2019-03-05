@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 41ffd7229383f1006bb846f975aeccf83256032a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807724"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314666"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
 
@@ -154,29 +154,39 @@ Pokud chcete nainstalovat bránu, postupujte takto.  (Pokud jste nainstalovali p
 
 
 ## <a name="configure-network-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení sítě 
-Konfigurace brány pro zajištění vysoké dostupnosti s využitím Vyrovnávání zatížení sítě (NLB). Pomocí Microsoft Azure Load Balancer nebo nástroje pro vyrovnávání zatížení na základě hardwaru.  Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů Log Analytics nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměruje na jiných uzlech.
+Bránu pro zajištění vysoké dostupnosti pomocí služby Vyrovnávání zatížení sítě (NLB) společnosti Microsoft můžete nakonfigurovat [načíst vyrovnávání sítě (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md), nebo nástroje pro vyrovnávání zatížení na základě hardwaru. Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů Log Analytics nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměrován do dalších uzlů.
+
+### <a name="microsoft-network-load-balancing"></a>Vyrovnávání zatížení sítě Microsoft
+Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě systému Windows Server 2016, najdete v článku [Vyrovnávání zatížení sítě](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Následující kroky popisují, jak konfigurovat cluster vyrovnávání zatížení sítě společnosti Microsoft.  
+
+1. Přihlaste do Windows serveru, který je členem clusteru programu NLB s účtem správce.  
+2. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
+3. Pro připojení k serveru služby Brána Log Analytics pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**. 
+
+    ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/gateway/nlb02.png)
+ 
+4. Zadejte IP adresu serveru brány, kterou chcete připojit. 
+
+    ![Zatížení vyrovnávání správce – přidat hostitele do clusteru: Připojení](./media/gateway/nlb03.png) 
+
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+Zjistěte, jak navrhnout a nasadit služby Azure Load Balancer, najdete v článku [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit nástroj pro vyrovnávání zatížení základní, postupujte podle kroků uvedených v tomto [rychlý Start](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) s výjimkou kroků uvedených v části **vytvořit back-end serverů**.   
+
+> [!NOTE]
+> Konfigurace pomocí nástroje pro vyrovnávání zatížení Azure **základní SKU**, vyžaduje, aby patřit dostupnosti virtuálních počítačů Azure. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/manage-availability.md). Přidat existující virtuální počítače do skupiny dostupnosti, najdete v tématu [nastavit Azure Resource Manageru dostupnosti virtuálních počítačů](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> 
+
+Po vytvoření nástroje pro vyrovnávání zatížení back-endový fond je potřeba vytvořit, který distribuuje provoz na jeden nebo více serverů brány. Postupujte podle kroků popsaných v části článku rychlý Start [vytvoření prostředků nástroje pro vyrovnávání zatížení](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
 
 >[!NOTE]
->Zjistěte, jak navrhnout a nasadit cluster programu NLB Windows Server 2016, najdete v článku [Vyrovnávání zatížení sítě](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing). 
+>Při konfiguraci sondy stavu musí být nakonfigurovaný na použití portu TCP serveru brány. Sonda stavu dynamicky přidá nebo odebere z oběhu nástroje pro vyrovnávání zatížení na základě jejich reakce na kontroly stavu serverů brány. 
 >
 
-Postupujte podle těchto kroků a nakonfigurujte Microsoft nástroje pro vyrovnávání zatížení clusteru:  
-
-1. Pomocí účtu správce pro přihlášení k Windows serveru, který je členem clusteru, nástroj pro vyrovnávání zatížení.
-1. Ve Správci serveru otevřete **Správce vyrovnávání zatížení sítě**vyberte **nástroje**a pak vyberte **Správce vyrovnávání zatížení sítě**.
-1. Pro připojení serveru brány Log Analytics, který používá agenta Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.
-
-   ![Snímek obrazovky ze Správce vyrovnávání zatížení sítě, se přidání hostitele do clusteru vybrali](./media/gateway/nlb02.png)
-
-1. Zadejte IP adresu serveru brány, kterou chcete připojit.
-
-   ![Snímek obrazovky ze Správce vyrovnávání zatížení sítě, stránkou hostitele přidat do clusteru: Připojení](./media/gateway/nlb03.png)
-    
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurace agenta Log Analytics a skupinu pro správu Operations Manageru
 V této části uvidíte postup konfigurace přímo připojených agentů Log Analytics, skupiny pro správu Operations Manageru nebo Azure Automation Hybrid Runbook Worker ve službě Log Analytics gateway ke komunikaci s Azure Automation a Log Analytics.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Konfigurace agenta Log Analytics do samostatné
-Při konfiguraci agenta Log Analytics, nahraďte hodnotu server proxy IP adresu serveru brány Log Analytics a jeho číslo portu. Pokud jste nasadili více serverů brány za služby NLB, je konfigurace proxy serveru agenta Log Analytics virtuální IP adresy služby NLB.  
+Při konfiguraci agenta Log Analytics, nahraďte hodnotu server proxy IP adresu serveru brány Log Analytics a jeho číslo portu. Pokud jste nasadili více serverů brány za nástrojem pro vyrovnávání zatížení, konfigurace proxy serveru agenta Log Analytics je virtuální IP adresa nástroje pro vyrovnávání zatížení.  
 
 >[!NOTE]
 >Chcete-li nainstalovat agenta Log Analytics mají brány a Windows, které se připojují přímo ke službě Log Analytics, přečtěte si téma [počítače Windows se připojit ke službě Log Analytics v Azure](agent-windows.md). Připojení počítačů s Linuxem najdete v tématu [konfigurace agenta Log Analytics pro počítače s Linuxem v hybridním prostředí](../../azure-monitor/learn/quick-collect-linux-computer.md). 
@@ -200,7 +210,7 @@ Pro podporu nástroje Operations Manager použít bránu OMS, musíte mít:
 > Pokud chcete zadat žádná hodnota pro bránu, prázdné hodnoty se nasdílejí do všech agentů.
 >
 
-Pokud registraci skupiny pro správu nástroje Operations Manager s pracovním prostorem Log Analytics pro první nezobrazí možnost zadat konfiguraci proxy serveru pro skupinu pro správu v konzole Operations console.  Tato možnost je dostupná jenom v případě, že skupina pro správu byl zaregistrován u služby.  
+Pokud registraci skupiny pro správu nástroje Operations Manager s pracovním prostorem Log Analytics pro první nezobrazí možnost zadat konfiguraci proxy serveru pro skupinu pro správu v konzole Operations console. Tato možnost je dostupná jenom v případě, že skupina pro správu byl zaregistrován u služby.  
 
 Pokud chcete nakonfigurovat integrace, aktualizujte konfiguraci proxy serveru systému pomocí nástroje Netsh v systému, ve kterém spouštíte konzolu Operations console a na všech serverech pro správu ve skupině pro správu. Postupujte následovně:
 
@@ -220,7 +230,7 @@ Po dokončení integrace s Log Analytics, odeberte změnu spuštěním `netsh wi
 
    ![Snímek obrazovky nástroje Operations Manager, zobrazen výběr konfigurovat Proxy Server](./media/gateway/scom01.png)
 
-1. Vyberte **použít proxy server pro přístup k Operations Management Suite** a poté zadejte IP adresu serveru brány pro Log Analytics nebo virtuální IP adresy Vyrovnávání zatížení sítě. Dejte pozor, abyste začínat předponou `http://`.
+1. Vyberte **použít proxy server pro přístup k Operations Management Suite** a poté zadejte IP adresu serveru brány pro Log Analytics nebo virtuální IP adresu nástroje pro vyrovnávání zatížení. Dejte pozor, abyste začínat předponou `http://`.
 
    ![Snímek obrazovky nástroje Operations Manager, zobrazuje adresu serveru proxy](./media/gateway/scom02.png)
 

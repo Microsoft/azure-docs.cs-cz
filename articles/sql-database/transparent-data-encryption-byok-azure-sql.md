@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: bccf79cea88890d02e2e1bfeb952ca9e754705cb
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: d7b25b641b91640c72ff6785de1b4bfddac3ea50
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217372"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314734"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře
 
@@ -38,6 +38,8 @@ Transparentní šifrování dat díky integraci služby Azure Key Vault nabízí
 > K těm, kteří používají spravovaná služba TDE, kteří by chtěli začít používat Key Vault transparentní šifrování dat zůstane povolen během procesu přepnutí na ochrana TDE ve službě Key Vault. Neexistuje žádný výpadek ani znova šifrovat soubory databáze. Přechod z klíče spravované službou Key Vault klíč se vyžaduje jenom znova šifrovat šifrovací klíč databáze (DEK), což je rychlé a online operace.
 
 ## <a name="how-does-tde-with-azure-key-vault-integration-support-work"></a>Jak podporuje transparentní šifrování dat díky integraci služby Azure Key Vault práce
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ![Ověřování serveru k trezoru klíčů](./media/transparent-data-encryption-byok-azure-sql/tde-byok-server-authentication-flow.PNG)
 
@@ -86,11 +88,11 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
 
 - Použití klíče bez data vypršení platnosti – a nemají nastavený datum vypršení platnosti klíče již používán: **po vypršení platnosti tohoto klíče, šifrovaným databázím ztratíte přístup k jejich ochrana TDE a budou pro během 24 hodin**.
 - Zkontrolujte klíč zapnutá a nemá oprávnění k provedení *získat*, *zabalit klíč*, a *rozbalit klíč* operace.
-- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) příkazu.
+- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) příkazu.
 - Vytvořit novou zálohu pokaždé, když se všechny změny provedené klíč (třeba přidání seznamy ACL, přidání značek, přidání klíčových atributů).
 - **Zachovat předchozí verze** klíče v trezoru klíčů při obměně klíčů, můžete obnovit tak starší zálohy databáze. Při změně ochrana TDE pro databázi, starší zálohy databáze **se neaktualizují** použít nejnovější ochrana TDE.  Každá záloha musí ochrana TDE byl vytvořen v době obnovení. Střídání klíčů lze provést podle pokynů [otočit transparentní ochrana šifrování dat pomocí Powershellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Po změně klíče spravované zákazníkem služby zachovat všechny dříve použitých klíče ve službě Azure Key Vault.  Tím se zajistí, že zálohování databáze je možné obnovit pomocí ochrany transparentní šifrování dat uložených ve službě Azure Key Vault.  Transparentní šifrování dat ochrany vytvořené pomocí Azure Key Vault musí být zachovány, dokud všechny uložené zálohy byly vytvořeny s použitím klíčů spravovaných služeb.  
-- Vytvořte obnovitelné kopie tyto klíče pomocí [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Vytvořte obnovitelné kopie tyto klíče pomocí [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
 - Odebrání potenciálně ohrožený klíč během incidentu zabezpečení bez rizika ztráty dat, postupujte podle kroků uvedených v [odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 ## <a name="high-availability-geo-replication-and-backup--restore"></a>Vysoká dostupnost, geografickou replikaci a zálohování a obnově
@@ -99,7 +101,7 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
 
 Ke konfiguraci vysoké dostupnosti s využitím služby Azure Key Vault, závisí na konfiguraci databáze a databáze SQL serveru, a tady jsou požadavky na doporučené konfiguraci pro dva různé případy.  Prvním případě je samostatná databáze nebo serveru služby SQL Database s žádné nakonfigurovanou geografickou redundancí.  Druhou možností je databázi nebo databázi SQL serveru konfigurovaném se skupiny převzetí služeb při selhání nebo geografická redundance, kde je třeba zajistit, že každá geograficky redundantní kopie má místní služby Azure Key Vault ve skupině převzetí služeb při selhání k zajištění pracovní geo-převzetí služeb při selhání.
 
-V prvním případě pokud požadujete vysokou dostupnost databáze a databáze SQL serveru s žádné nakonfigurovanou geografickou redundancí, důrazně doporučujeme nakonfigurovat server pro použití dvou různých trezorů klíčů ve dvou různých oblastech pomocí stejného klíče. Toho můžete docílit tak, že vytvoříte ochranu pomocí primární služby Key Vault společně umístěné ve stejné oblasti jako databázového SQL serveru transparentní šifrování dat a tak, aby server měl přístup k trezoru klíčů druhého klonování klíče do služby key vault v jiné oblasti Azure, měli byste primární služby Key vault prostředí kvůli výpadku, zatímco databáze je vytvořená a spuštěná. Pomocí rutiny Backup-AzureKeyVaultKey načíst klíč v šifrovaném tvaru z primární služby key vault a pomocí rutiny Restore-AzureKeyVaultKey zadejte služby key vault v druhé oblasti.
+V prvním případě pokud požadujete vysokou dostupnost databáze a databáze SQL serveru s žádné nakonfigurovanou geografickou redundancí, důrazně doporučujeme nakonfigurovat server pro použití dvou různých trezorů klíčů ve dvou různých oblastech pomocí stejného klíče. Toho můžete docílit tak, že vytvoříte ochranu pomocí primární služby Key Vault společně umístěné ve stejné oblasti jako databázového SQL serveru transparentní šifrování dat a tak, aby server měl přístup k trezoru klíčů druhého klonování klíče do služby key vault v jiné oblasti Azure, měli byste primární služby Key vault prostředí kvůli výpadku, zatímco databáze je vytvořená a spuštěná. Pomocí rutiny Backup-AzKeyVaultKey načíst klíč v šifrovaném tvaru z primární služby key vault a pomocí rutiny Restore-AzKeyVaultKey zadejte služby key vault v druhé oblasti.
 
 ![Jeden Server HA a geo-dr](./media/transparent-data-encryption-byok-azure-sql/SingleServer_HA_Config.PNG)
 
@@ -117,14 +119,14 @@ Následující části se přenášejí prostřednictvím kroky instalace a konf
 
 ### <a name="azure-key-vault-configuration-steps"></a>Postup konfigurace služby Azure Key Vault
 
-- Install [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-5.6.0)
+- Nainstalujte [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 - Vytvoření dvou Azure Key Vault ve dvou různých oblastech pomocí [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) v trezorech klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL).
 - Jak Azure Key Vault se musí nacházet ve dvou oblastech, které jsou k dispozici ve stejné zeměpisné oblasti Azure v pořadí pro zálohování a obnovování klíčů pro práci.  Pokud budete potřebovat dva trezorům klíčů umístěné v různých zeměpisných oblastech k požadavkům SQL Geo-DR, postupujte [BYOK procesu](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) klíče nelze importovat z místního modulu hardwarového zabezpečení, který umožňuje.
 - Vytvořte nový klíč v první služby key vault:  
   - Klíč RSA/RSA-HSA 2048
   - Žádná data vypršení platnosti
   - Klíč je povolená a má oprávnění k provedení get, zabalit klíč a rozbalit klíčové operace
-- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) a [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
+- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) a [obnovení AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
 
 ### <a name="azure-sql-database-configuration-steps"></a>Postup konfigurace Azure SQL Database
 
@@ -172,10 +174,10 @@ Obnovení zálohy šifrované pomocí ochrana TDE ze služby Key Vault, ujistět
 
 Pokud klíč, který může být nutné pro obnovení zálohy je už v jeho původní trezoru klíčů, vrátí se následující chybová zpráva: "Cílový server `<Servername>` nemá přístup na všechny identifikátory URI AKV mezi < časové razítko č. 1 > a < časové razítko č. 2 >. Zkuste prosím operaci po obnovení všechny identifikátory URI AKV."
 
-Chcete-li tento problém zmírnit, spusťte [Get-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) rutina vrátí seznam klíčů z trezoru klíčů, které byly přidány na server (pokud nebyly odstraněny uživatelem). K zajištění, že je možné obnovit všechny zálohy, ujistěte se, že cílový server pro zálohování má přístup ke všem těmto klíčům.
+Chcete-li tento problém zmírnit, spusťte [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) rutina vrátí seznam klíčů z trezoru klíčů, které byly přidány na server (pokud nebyly odstraněny uživatelem). K zajištění, že je možné obnovit všechny zálohy, ujistěte se, že cílový server pro zálohování má přístup ke všem těmto klíčům.
 
 ```powershell
-Get-AzureRmSqlServerKeyVaultKey `
+Get-AzSqlServerKeyVaultKey `
   -ServerName <LogicalServerName> `
   -ResourceGroup <SQLDatabaseResourceGroupName>
 ```

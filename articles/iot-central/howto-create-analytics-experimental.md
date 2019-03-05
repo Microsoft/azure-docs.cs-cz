@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 83225af7cb2cbdff4a264693e30b2a813f6ec9c7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b941b97a533740322d9070497de6845e834a16
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214924"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315635"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak používat analýzu k analýze dat zařízení
 
@@ -23,7 +23,7 @@ Azure IoT Central poskytuje bohaté analytické funkce dávat smysl velkých obj
 
 ## <a name="querying-your-data"></a>Zadávání dotazů na data
 
-Budete muset zvolit **sada zařízení**, přidat **filtr** (volitelné) a vyberte **časové období** začít. Až budete hotovi, klikněte na *zobrazit výsledky* spustit vizualizace vaše data.
+Budete muset zvolit **sada zařízení**, přidat **filtr** (volitelné) a vyberte **časové období** začít. Jakmile budete hotovi, vyberte **zobrazit výsledky** spustit vizualizace vaše data.
 
 * **Sady zařízení:** A [sada zařízení](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) je uživatelem definované skupiny zařízení. Například všechny chladniček v Oakland nebo všechny rev 2.0 větrné turbíny.
 

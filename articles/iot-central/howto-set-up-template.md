@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99fce821c903a9638575eba9fe4a17d294bcbd60
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657735"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310501"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
@@ -65,7 +65,7 @@ Měření jsou data, která pochází z vašeho zařízení. Více měření mů
 - **Stav** měření představující stav zařízení nebo její součásti po určitou dobu. Ventilátor režimu lze například definovat tak, že má **operační** a **Zastaveno** jako dva možné stavy.
 
 ### <a name="create-a-telemetry-measurement"></a>Vytvoření měření telemetrie
-Chcete-li přidat novou míru telemetrická data, **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **Telemetrie** jako měření typ a zadejte podrobnosti **vytvořit Telemetrie** formuláře.
+Chcete-li přidat novou míru telemetrická data, **upravit šablonu**a pak vyberte **a nové měření** tlačítko. Vyberte **Telemetrie** jako měření typ a zadejte podrobnosti **vytvořit Telemetrie** formuláře.
 
 > [!NOTE]
 > Názvy polí v šabloně zařízení musí odpovídat názvům vlastností v odpovídajícím kódu zařízení v pořadí pro měření telemetrická data zobrazit v aplikaci při připojení skutečné zařízení. Totéž při konfiguraci nastavení vlastnosti zařízení a příkazy i další definice šablony zařízení v následujících částech.
@@ -84,7 +84,7 @@ Po výběru **provádí**, **teploty** měření se zobrazí v seznamu měření
   Datový typ telemetrických dat měření je plovoucí číslo bodu.
 
 ### <a name="create-an-event-measurement"></a>Vytvoření měření událostí
-Chcete-li přidat novou událost měření **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **události** jako měření typ a zadejte podrobnosti **vytvořit událost** formuláře.
+Chcete-li přidat novou událost měření **upravit šablonu**a pak vyberte **a nové měření** tlačítko. Vyberte **události** jako měření typ a zadejte podrobnosti **vytvořit událost** formuláře.
 
 Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti o události. Můžete vybrat ze tří dostupných úrovní závažnosti: **Chyba**, **upozornění**, a **informace**.  
 
@@ -108,7 +108,7 @@ Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v gr
   Datový typ měření událostí je řetězec.
 
 ### <a name="create-a-state-measurement"></a>Vytvoření měření stavu
-Chcete-li přidat nový měření stavu **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **stavu** jako měření typ a zadejte podrobnosti **vytvořit stavu** formuláře.
+Chcete-li přidat nový měření stavu **upravit šablonu**a pak vyberte **a nové měření** tlačítko. Vyberte **stavu** jako měření typ a zadejte podrobnosti **vytvořit stavu** formuláře.
 
 Zadejte podrobnosti pro **zobrazovaný název**, **název pole**, a **hodnoty** stavu. Každá hodnota může mít také zobrazovaný název, který se použije, když hodnota se zobrazí v grafech a tabulky.
 
@@ -125,7 +125,7 @@ Po výběru **provádí**, **ventilátor režimu** měření stavu se zobrazí v
 
 ![Měření stavu grafu](./media/howto-set-up-template/statemeasurementschart.png)
 
-Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, zobrazí se měření stavu s jiný vizuál, jak je znázorněno na následujícím snímku obrazovky. Pokud kliknete na graf, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
+Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, zobrazí se měření stavu s jiný vizuál, jak je znázorněno na následujícím snímku obrazovky. Pokud vyberete v grafu, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
 
 > [!NOTE]
   Datový typ měření stavu je řetězec.
@@ -241,7 +241,7 @@ Příkazy se používají ke vzdálené správě zařízení. Umožňují operá
 * **Příkaz**: Pomocí příkazů okamžité spuštění příkazu na zařízení vzdáleně z IoT Central. Pokud zařízení není připojené, vyprší časový limit příkazu a selže. Například chcete restartovat zařízení.  
 
 
-Například můžete přidat nový **Echo** příkaz tak, že vyberete **úpravy šablony**, pak levým na **+ nový příkaz**a zadáním do nového příkazu:
+Například můžete přidat nový **Echo** příkaz tak, že vyberete **úpravy šablony**, pak vyberete **+ nový příkaz**a zadáním do nového příkazu:
 
 | Zobrazovaný název  | Název pole | Výchozí časový limit | Typ dat |
 | --------------| -----------|---------------- | --------- | 

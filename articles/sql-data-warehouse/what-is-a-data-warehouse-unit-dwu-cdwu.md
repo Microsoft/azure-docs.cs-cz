@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7da813022527830a5ede62c9f4ce98645fe63d4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 32a3ec7146e4dd43e0c5f522187856132745b539
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871587"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307084"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
 Doporučení pro výběr ideální počet jednotek datového skladu (Dwu, cDWUs) optimalizovat ceny a výkonu a jak změnit počet jednotek. 
@@ -124,10 +124,13 @@ Chcete-li změnit jednotky Dwu nebo cDWUs:
 3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
 
 ### <a name="powershell"></a>PowerShell
-Chcete-li změnit jednotky Dwu nebo cDWUs, použijte [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) rutiny Powershellu. Následující příklad nastaví cíl na úrovni služby na úroveň DW1000 a MySQLDW, který je hostitelem serveru MyServer databáze.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Ke změně jednotek dwu a rychle nebo cDWUs, použijte [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) rutiny Powershellu. Následující příklad nastaví cíl na úrovni služby na úroveň DW1000 a MySQLDW, který je hostitelem serveru MyServer databáze.
 
 ```Powershell
-Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
 Další informace najdete v tématu [rutin Powershellu pro službu SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)

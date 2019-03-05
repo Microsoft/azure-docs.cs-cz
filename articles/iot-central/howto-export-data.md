@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cba0bad2e81ffddedfc4ca04e82e17e4286b389b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ecfd9671587c0544cf82aa7ddbccef975e1fe5c6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312115"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310416"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 
@@ -28,13 +28,13 @@ Tento článek popisuje způsob použití souvislá datová funkce exportu v Azu
 
 - Musíte být správcem ve vaší aplikaci IoT Central
 
-## <a name="export-to-blob-storage"></a>Exportovat do úložiště objektů Blob
+## <a name="export-to-blob-storage"></a>Export do Blob Storage
 
 Měření, zařízení a zařízení šablony data se vyexportují do vašeho účtu úložiště jednou za minutu, se každý soubor, který obsahuje batch změny od poslední exportovaný soubor. Exportovaná data se v [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátu.
 
 Další informace o [export do úložiště objektů Blob](howto-export-data-blob-storage.md).
 
-## <a name="export-to-event-hubs-and-service-bus"></a>Export do služby Event Hubs a služby Service Bus
+## <a name="export-to-event-hubs-and-service-bus"></a>Export do služeb Event Hubs a Service Bus
 
 Měření, zařízení a zařízení šablony data se exportují do centra událostí nebo fronty Service Bus nebo téma. Exportované měření dat přijde téměř v reálném čase a obsahuje celé zprávy zařízení odesílat IoT Central, ne jenom hodnoty měření sami. Exportovaná zařízení data dorazí v dávkách každou minutu a obsahuje změny vlastnosti a nastavení všech zařízení a zařízení exportované šablony obsahuje změny pro všechny šablony zařízení.
 
@@ -81,14 +81,14 @@ Teď, když máte exportovat data do cílového úložiště/Event Hubs a služb
 
 1. Přihlaste se do vaší aplikace IoT Central.
 
-2. V nabídce vlevo klikněte na tlačítko **průběžný Export dat**.
+2. V nabídce vlevo vyberte **průběžný Export dat**.
 
     > [!Note]
     > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
 
     ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu.PNG)
 
-3. Klikněte na tlačítko **+ nová** tlačítko v pravém horním rohu. Vyberte jednu z **Azure Blob Storage**, **Azure Event Hubs**, nebo **Azure Service Bus** jako cíl pro export. 
+3. Vyberte **+ nová** tlačítko v pravém horním rohu. Vyberte jednu z **Azure Blob Storage**, **Azure Event Hubs**, nebo **Azure Service Bus** jako cíl pro export. 
 
     > [!NOTE] 
     > Maximální počet exportů na aplikaci je pět. 
@@ -107,10 +107,10 @@ Teď, když máte exportovat data do cílového úložiště/Event Hubs a služb
 
 5. (Volitelné) Pokud jste zvolili **zadejte připojovací řetězec**, můžete vložit připojovací řetězec se zobrazí nové pole. Chcete-li získat připojovací řetězec pro váš:
     - Účet úložiště, přejděte na účet úložiště na webu Azure Portal.
-        - V části **nastavení**, klikněte na tlačítko **přístupové klíče**
+        - V části **nastavení**vyberte **přístupové klíče**
         - Zkopírujte připojovací řetězec key1 a key2 připojovací řetězec
     - Event Hubs nebo Azure Service Bus, přejděte do oboru názvů na webu Azure Portal.
-        - V části **nastavení**, klikněte na tlačítko **sdílené zásady přístupu**
+        - V části **nastavení**vyberte **sdílené zásady přístupu**
         - Zvolte výchozí **RootManageSharedAccessKey** nebo vytvořte novou
         - Zkopírujte primární nebo sekundární připojovací řetězec
  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 69c7da1a529e46c054d9c824c2aee71fa67bd8ff
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8fbad5350170d0e5434dfc2db3c85c04c2807726
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768636"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311470"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Správa zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
@@ -66,7 +66,7 @@ K hromadné registraci zařízení ve vaší aplikaci:
     > [!NOTE]
     > Pokud nemáte šablonu zařízení, ale pak můžete importovat zařízení v rámci **zrušeno přiřazení zařízení** a jejich registrace bez šablony. Po importu zařízení je můžete přiřadit pomocí šablony.
 
-1. Klikněte na **Importovat**.
+1. Vyberte **Import**.
 
     ![Akce importu](./media/howto-manage-devices-experimental/BulkImport1.png)
 
@@ -92,11 +92,11 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 
 1. Vyberte zařízení, které chcete přidružit šablonu:
 
-1. Klikněte na tlačítko **přidružit**:
+1. Vyberte **přidružit**:
 
     ![Přidružit zařízení](./media/howto-manage-devices-experimental/UnassociatedDevices2.png)
 
-1. Vyberte šablonu ze seznamu dostupných šablon a klikněte na tlačítko **přidružit** tlačítko.
+1. Vyberte šablonu ze seznamu dostupných šablon a vybrat **přidružit**.
 
 1. Vybraná zařízení jsou přidružená k šabloně zařízení, kterou jste zvolili.
 
@@ -113,7 +113,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Na levém panelu vyberte šablonu zařízení, ze kterého chcete exportovat zařízení.
 
-1. Vyberte zařízení, která chcete exportovat a pak klikněte na tlačítko **exportovat** akce.
+1. Vyberte zařízení, která chcete exportovat a pak vyberte **exportovat** akce.
 
     ![Export](./media/howto-manage-devices-experimental/Export1.png)
 
@@ -121,7 +121,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Po dokončení exportu zprávu o úspěšném dokončení se zobrazí spolu s odkazem na stažení generovaného souboru.
 
-1. Klikněte na **zpráva o úspěchu** stáhněte soubor do místní složky na disku.
+1. Vyberte **zpráva o úspěchu** stáhněte soubor do místní složky na disku.
 
     ![Export úspěch](./media/howto-manage-devices-experimental/Export2.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895852"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308852"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -84,7 +84,7 @@ Výpočet hodnoty hash vypadá podobně jako v následujícím kódu pseudo a vr
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-Token, který obsahuje hodnoty – hodnoty hash tak, aby příjemce může přepočítá hodnoty hash se stejnými parametry, ověření, že vystavitel je k dispozici platný podpisový klíč. 
+Token, který obsahuje hodnoty – hodnoty hash tak, aby příjemce může přepočítá hodnoty hash se stejnými parametry, ověření, že vystavitel je k dispozici platný podpisový klíč.
 
 Identifikátor URI prostředku je úplný identifikátor URI prostředku služby Service Bus, ke kterému je požadována přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; to znamená `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Identifikátor URI musí být [procentuálně zakódovaný](https://msdn.microsoft.com/library/4fkewx0t.aspx).
 
@@ -156,7 +156,7 @@ helloMessage.MessageId = "SAS-Sample-Message";
 sendClient.Send(helloMessage);
 ```
 
-Poskytovatele tokenu, kterého můžete také použít přímo pro vydávání tokenů předat jiným klientům. 
+Poskytovatele tokenu, kterého můžete také použít přímo pro vydávání tokenů předat jiným klientům.
 
 Připojovací řetězce můžou obsahovat název pravidla (*SharedAccessKeyName*) a klíč pravidlo (*SharedAccessKey*) nebo dříve vystaveného tokenu (*SharedAccessSignature*). Když jsou k dispozici v připojovacím řetězci předány žádné konstruktor nebo výrobní metoda přijímá připojovací řetězec, je automaticky vytvořen a vyplní Poskytovatel tokenu SAS.
 
@@ -171,7 +171,7 @@ POST https://<yournamespace>.servicebus.windows.net/<yourentity>/messages
 Content-Type: application/json
 Authorization: SharedAccessSignature sr=https%3A%2F%2F<yournamespace>.servicebus.windows.net%2F<yourentity>&sig=<yoursignature from code above>&se=1438205742&skn=KeyName
 ContentType: application/atom+xml;type=entry;charset=utf-8
-``` 
+```
 
 Nezapomeňte, že tento postup funguje pro všechno, co. SAS můžete vytvořit pro fronty, tématu nebo odběru.
 
@@ -183,7 +183,7 @@ V předchozí části jste viděli, jak pomocí tokenu SAS pomocí požadavku HT
 
 Před zahájením odesílání dat do služby Service Bus, musí vydavatele odeslat token SAS uvnitř zprávu AMQP jasně definovaných AMQP uzel s názvem **$cbs** (zobrazí se jako "speciální" služba používá k získání a ověření všech SAS fronty tokeny). Musíte zadat vydavatele **ReplyTo** pole uvnitř zprávy protokolu AMQP; Toto je uzel, ve kterém služba reaguje na vydavatele s výsledkem ověření tokenu (jednoduchý požadavek/odpověď vzor mezi vydavateli a služby ). Tento uzel odpovědi se vytvoří "v reálném čase," mluvit o "dynamické vytváření vzdálený uzel", jak je popsáno ve specifikaci protokolu AMQP 1.0. Když zkontrolujete, že je platný SAS token, můžete vydavatele dopředu a začít odesílat data do služby.
 
-Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP [AMQP.Net Lite](https://github.com/Azure/amqpnetlite) knihovny. To je užitečné, pokud nemůžete použít oficiální sady SDK služby Service Bus (například na WinRT, .net Compact Framework a .net Micro Framework a Mono) vývoj v jazyce C\#. Samozřejmě, tato knihovna je užitečné porozumět zabezpečení jak na základě deklarací identity funguje na úrovni protokolu AMQP, protože jste viděli, jak to funguje na úrovni protokolu HTTP (s požadavek HTTP POST a token SAS odeslaný v hlavičce "Autorizace"). Pokud není nutné tyto znalosti o AMQP, můžete použít oficiální sady SDK služby Service Bus s .net Framework aplikace, které bude to za vás.
+Následující kroky ukazují, jak odeslat token SAS pomocí protokolu AMQP [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) knihovny. To je užitečné, pokud nemůžete použít oficiální sady SDK služby Service Bus (například na WinRT, .NET Compact Framework, rozhraní .NET Framework Micro a Mono) vývoj v jazyce C\#. Samozřejmě, tato knihovna je užitečné porozumět zabezpečení jak na základě deklarací identity funguje na úrovni protokolu AMQP, protože jste viděli, jak to funguje na úrovni protokolu HTTP (s požadavek HTTP POST a token SAS odeslaný v hlavičce "Autorizace"). Pokud není nutné tyto znalosti o AMQP, můžete použít oficiální sady SDK služby Service Bus s aplikacemi rozhraní .NET Framework, které bude to za vás.
 
 ### <a name="c35"></a>C&#35;
 
@@ -236,12 +236,12 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-`PutCbsToken()` Metoda přijímá *připojení* (instance třídy připojení AMQP podle [AMQP .NET Lite knihovny](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP do služby a *sasToken* parametr, který je SAS token k odeslání. 
+`PutCbsToken()` Metoda přijímá *připojení* (instance třídy připojení AMQP podle [AMQP .NET Lite knihovny](https://github.com/Azure/amqpnetlite)), která představuje připojení TCP do služby a *sasToken* parametr, který je SAS token k odeslání.
 
 > [!NOTE]
 > Je důležité, že se připojení vytvoří s **ověřovací mechanismus SASL nastavena na ANONYMNÍ** (a ne výchozí prostý pomocí uživatelského jména a hesla při není nutné odeslat SAS token).
-> 
-> 
+>
+>
 
 V dalším kroku vydavatele vytvoří dva odkazy AMQP pro SAS token odesílání a příjem odpovědí (výsledek ověření tokenu) ze služby.
 
@@ -295,7 +295,7 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 | **pravidla** | | |
 | Vytvoření pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Odstranění pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
-| Zobrazení výčtu pravidel |Spravovat nebo naslouchání |.. /myTopic/Subscriptions/mySubscription/Rules 
+| Zobrazení výčtu pravidel |Spravovat nebo naslouchání |.. /myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Další postup
 

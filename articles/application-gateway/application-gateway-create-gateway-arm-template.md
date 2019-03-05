@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002077"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316400"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
 
@@ -125,18 +125,20 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Nasazení šablony Azure Resource Manageru pomocí prostředí PowerShell
 
-Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) a postupujte podle pokynů k přihlášení do Azure a vyberte své předplatné.
 
 1. Přihlaste se k prostředí PowerShell
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. Zkontrolujte předplatná pro příslušný účet.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     Zobrazí se výzva k ověření pomocí přihlašovacích údajů.
@@ -144,19 +146,19 @@ Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [instal
 1. Zvolte předplatné Azure, které chcete použít.
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. Pokud je to potřeba, vytvořte pomocí rutiny **New-AzureResourceGroup** skupinu prostředků. V následujícím příkladu vytvoříte skupinu prostředků s názvem AppgatewayRG v umístění Východní USA.
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Spuštěním rutiny **New-AzureRmResourceGroupDeployment** nasadíte novou virtuální síť pomocí šablony a souborů parametrů, které jste stáhli a upravili v krocích výše.
+1. Spustit **New-AzResourceGroupDeployment** rutiny nasadíte novou virtuální síť pomocí šablony a parametrů soubory, které jste stáhli a upravili.
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -222,7 +224,7 @@ Pokud chcete odstranit všechny prostředky vytvořené v tomto článku, prove�
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -233,9 +235,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete konfigurovat přesměrování zpracování SSL, přečtěte si článek [Konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
+Pokud chcete konfigurovat přesměrování zpracování SSL, navštivte: [Konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
 
-Pokud chcete službu Application Gateway nakonfigurovat pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si článek [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
+Pokud chcete provést konfiguraci aplikační brány pro použití s službě interní služby load balancer, navštivte: [Vytvoření služby application gateway se interní nástroj pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
 
 Pokud chcete získat další informace o obecných možnostech vyrovnávání zatížení, přečtěte si článek:
 

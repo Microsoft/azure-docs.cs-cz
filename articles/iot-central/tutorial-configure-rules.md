@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f6016d594e4d4c869c5b45275c4c0200f7769724
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662977"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317556"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central
 
@@ -46,11 +46,11 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     ![Stránka připojené klimatizace](media/tutorial-configure-rules/builderdevicelist1.png)
 
-3. Když chcete v zobrazení **Pravidla** začít přidávat pravidlo, zvolte **Pravidla** a klikněte na **Upravit šablonu**:
+3. Můžete začít přidávat pravidla v **pravidla** zobrazení, zvolte **pravidla** a pak vyberte **upravit šablonu**:
 
     ![Zobrazení pravidel](media/tutorial-configure-rules/builderedittemplate.png)
 
-4. Pokud chcete vytvořit telemetrické pravidlo založené na prahové hodnotě, klikněte na **Nové pravidlo** a pak na **Telemetrie**.
+4. Chcete-li vytvořit pravidlo založené na prahových hodnotách telemetrická data, vyberte **nové pravidlo**a potom **Telemetrie**.
 
     ![Úprava šablony](media/tutorial-configure-rules/buildernewrule.png)
 

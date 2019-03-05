@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d325c30173955ff7c08099a125094ffe620c7ee3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822591"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313374"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -46,7 +46,7 @@ Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azu
 ### <a name="copy-an-application"></a>Kopírovat aplikaci
 Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie bude aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
 
-Klikněte na tlačítko **kopírování** tlačítko. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Klikněte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central.md) rychlý start.
+Vyberte **kopírování**. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Potom vyberte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central.md) rychlý start.
 
 ![Stránka nastavení aplikace](media/howto-administer/appCopy2.png)
 
@@ -131,13 +131,13 @@ K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kr
 
     ![Zkušební verze stavu](media/howto-administer/freetrialbilling.png)
 
-1. Klikněte na tlačítko **přejděte k průběžným platbám**. 
+1. Vyberte **přejděte k průběžným platbám**. 
 
     ![Převést zkušební verzi](media/howto-administer/convert.png)
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci s průběžnými platbami.
 
-1. Po kliknutí na **převést**, vaše aplikace je teď aplikace s průběžnými platbami a spustit načítání účtuje.
+1. Po výběru **převést**, vaše aplikace je teď aplikace s průběžnými platbami a spustit načítání účtuje.
 
 ## <a name="export-data"></a>Exportovat data
 

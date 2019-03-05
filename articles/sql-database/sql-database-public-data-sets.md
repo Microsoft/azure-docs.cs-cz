@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 8aad3cf0bfeb2f8586bca1072f3e395e196f3e0c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 4963114f3646453510e20c7071157c952e52c40f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098489"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307135"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
 
@@ -46,7 +46,7 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 | [Open Science Data Cloud data](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |
 | [Globální klimatu dat – WorldClim](http://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](http://worldclim.org/formats1). |
 | [Data o lidských společnosti - GDELT projekt](http://www.gdeltproject.org/data.html) | "GDELT projektu je největší, nejúplnější a nejvyšší řešení otevřít databázi lidské společnosti, kdy byly vytvořeny." | Soubory nezpracovaná data jsou ve formátu CSV. |
-| [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
 | [ClueWeb09 text dolování datové sady z Lemur projekt](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 datové sady bylo vytvořeno pro podporu research na načítání informací a související jazyk lidské technologie. Skládá se z přibližně 1 miliardy webových stránek v 10 jazycích, které byly shromážděny v lednu a únor 2009." | Zobrazit [informací o datové sadě](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Data online služby

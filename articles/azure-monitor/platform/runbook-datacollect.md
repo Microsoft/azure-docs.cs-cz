@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5de5191ee616f38404e2423c23f4e8b363240b0e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078571"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308325"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md). Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře. V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API. Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.
 
 Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě Azure Automation k zápisu dat do Log Analytics.
@@ -62,8 +65,8 @@ Galerie prostředí PowerShell ale nabízí rychlou možnost jak nasadit modul p
 
 | Vlastnost | Hodnota ID pracovního prostoru | Hodnota klíče pracovního prostoru |
 |:--|:--|:--|
-| Název | ID pracovního prostoru | WorkspaceKey |
-| Typ | Řetězec | Řetězec |
+| Název | WorkspaceId | WorkspaceKey |
+| Type | String | String |
 | Hodnota | Vložte ID pracovního prostoru z pracovního prostoru Log Analytics. | Vložit pomocí primární nebo sekundární klíč pracovního prostoru Log Analytics. |
 | Šifrované | Ne | Ano |
 
@@ -92,7 +95,7 @@ Azure Automation obsahuje editor na portálu, kde můžete upravit a otestovat s
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ Azure Automation obsahuje editor na portálu, kde můžete upravit a otestovat s
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json
@@ -178,7 +181,7 @@ Nejběžnější způsob spuštění sady runbook, která shromažďuje data mon
 
 | Vlastnost | Hodnota |
 |:--|:--|
-| Název | AutomationJobs každou hodinu |
+| Název | AutomationJobs-Hourly |
 | Spuštění | Vyberte možnost kdykoli alespoň 5 minut po aktuálním čase. |
 | Opakování | Opakující se |
 | Opakovat každých | 1 hodina |
@@ -199,7 +202,7 @@ Při každém spuštění sady runbook [se vytvoří úloha](../../automation/au
 2. Měli byste vidět seznam úloh pro při každém spuštění sady runbook.
 3. Klikněte na jednotlivé úlohy zobrazíte její podrobnosti.
 4. Klikněte na **všechny protokoly** k zobrazení protokolů a výstup z runbooku.
-5. Posuňte se dolů na položku najít podobně jako na následujícím obrázku.<br>![Podrobný](media/runbook-datacollect/verbose.png)
+5. Posuňte se dolů na položku najít podobně jako na následujícím obrázku.<br>![Podrobnosti](media/runbook-datacollect/verbose.png)
 6. Kliknutím na tuto položku, chcete-li zobrazit podrobné json data, která se odesílají do Log Analytics.
 
 ## <a name="next-steps"></a>Další postup

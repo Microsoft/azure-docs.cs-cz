@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: c62581447cd395bd48a787fa7dc89659d5172486
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a1071bb690fc5714890116c757c3036916bf1700
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192175"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314091"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování objekt pro vytváření dat ve službě Azure Data Factory
 
@@ -35,6 +35,8 @@ Tady jsou některé okolnosti, ve kterých možná bude užitečné kopírován�
 1. Uživatelské rozhraní Data Factory na webu Azure Portal umožňuje exportovat celé datové části do šablony Resource Manageru, spolu se souborem parametru, který umožňuje změnit všechny hodnoty, které chcete změnit při klonování se svým objektem pro vytváření datové továrny.
 
 1. Předpokladem je budete muset vytvořit datovou továrnu cíl z portálu Azure portal.
+
+1. Pokud máte SelfHosted IntegrationRuntime ve vaší zdrojové továrně, budete muset starší verze předem vytvořit se stejným názvem v cílovém objektu pro vytváření. Pokud chcete sdílet IRs SelfHosted mezi různé objekty pro vytváření, můžete použít vzor publikování [tady](author-visually.md#best-practices-for-git-integration).
 
 1. Pokud jste v režimu GIT při každém publikování z portálu, factory pro šablony Resource Manageru se uloží do GITU ve větvi adf_publish úložiště.
 

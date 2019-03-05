@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c1171a6b118797c2aafda137ec532259921c0713
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ae1e65162ffab35e6d3ef3bf84c1eb6bbe75c65f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880542"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314292"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -122,7 +122,7 @@ Služba Site Recovery načte seznam virtuálních počítačů přidružených k
 3. Vyberte cíl Azure virtuální sítě, ke které chcete přesunout virtuální počítače Azure k testování této konfigurace. 
 
 > [!IMPORTANT]
-> Doporučujeme použít samostatnou síť virtuálních počítačů Azure pro selhání testu a ne produkční sítě v cílového virtuálního počítače, do kterého chcete nakonec přesunout virtuální počítače. který jste nastavili při povolování replikace.
+> Doporučujeme použít samostatnou síť virtuálních počítačů Azure pro testovací převzetí služeb a ne produkční sítě, do kterého chcete přesunout virtuální počítače časem, které jste nastavili při povolování replikace.
 
 4. Pro začátek testování přesunutí, klikněte na tlačítko **OK**. Pokud chcete sledovat průběh, kliknutím na virtuální počítač otevřete jeho vlastnosti. Případně můžete kliknout na úlohu **Testovací převzetí služeb při selhání** v části název_trezoru > **Nastavení** > **Úlohy** > **Úlohy Site Recovery**.
 5. Po dokončení převzetí služeb při selhání se replika virtuálního počítače Azure zobrazí na webu Azure Portal v části **Virtuální počítače**. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.

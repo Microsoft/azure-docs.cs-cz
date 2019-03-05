@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 15d85d30f73a9880a6a68a62ab208bb0bdbf5402
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788034"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315669"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -33,8 +33,8 @@ Technologie Hyper-V bez Virtual Machine Manager | Můžete provést zotavení po
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Technologie Hyper-V (bez Virtual Machine Manager spuštěna) | Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pro virtuální počítače na hostitele se systémem Windows Server 2016 není podporováno obnovení do alternativního umístění.<br/><br/> Pokud jste už nakonfigurovali systému Windows Server 2012 R2 s / nebo SCVMM 2012 R2 s Azure Site Recovery a chcete upgradovat operační systém, postupujte podle pokynů [dokumentaci.](upgrade-2012R2-to-2016.md) 
-Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2012 R2 Virtual Machine Manager 2016 | Pokud se používá Virtual Machine Manager, by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/>
+Technologie Hyper-V (bez Virtual Machine Manager spuštěna) | Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali systému Windows Server 2012 R2 s / nebo SCVMM 2012 R2 s Azure Site Recovery a chcete upgradovat operační systém, postupujte podle pokynů [dokumentaci.](upgrade-2012R2-to-2016.md) 
+Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
@@ -92,9 +92,9 @@ Akcelerované síťové služby | Ne | Ne
 
 **Storage** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | --- | ---
-Systém souborů NFS | Není k dispozici | Není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
-SÍŤ SAN (ISCSI) | Ano | Ano
+SAN (ISCSI) | Ano | Ano
 Více cest (MPIO). Testovat pomocí:<br></br> DSM od společnosti Microsoft, SP4 PowerPath 5.7 EMC<br/><br/> EMC PowerPath DSM pro CLARiiON | Ano | Ano
 
 ## <a name="hyper-v-vm-guest-storage"></a>Úložiště hostů virtuálních počítačů Hyper-V
@@ -107,7 +107,7 @@ VHD/VHDX | Ano | Ano
 ROZHRANÍM EFI/UEFI| Ano | Ano
 Sdílený disk clusteru | Ne | Ne
 Šifrovaného disku | Ne | Ne
-Systém souborů NFS | Není k dispozici | Není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ne | Ne
 RDM | Není k dispozici | Není k dispozici
 Disk > 1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
@@ -141,7 +141,7 @@ Pro virtuální sítě na cílový účet úložiště mezipaměti nebo úloži�
 **Funkce** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 Skupiny dostupnosti | Ano | Ano
-CENTRUM | Ano | Ano  
+HUB | Ano | Ano  
 Managed Disks | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků se nepodporuje.
 
 ## <a name="azure-vm-requirements"></a>Požadavky virtuálních počítačů Azure
@@ -159,7 +159,7 @@ Velikost datového disku virtuálního pevného disku | Až 4 095 GB | Kontrola 
 Síťové adaptéry | Podporuje se více adaptérů |
 Sdílený virtuální pevný disk | Nepodporuje se | Kontrola předpokladů selže, pokud není podporován.
 FC disk | Nepodporuje se | Kontrola předpokladů selže, pokud není podporován.
-Formát pevného disku | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | Site Recovery při převzetí služeb při selhání do Azure automaticky převede formát VHDX na VHD. Když převezmete služby zpět do místního, virtuální počítače i nadále používat formát VHDX.
+Formát pevného disku | VHD <br/><br/> VHDX | Site Recovery při převzetí služeb při selhání do Azure automaticky převede formát VHDX na VHD. Když převezmete služby zpět do místního, virtuální počítače i nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Než povolíte replikaci pro virtuální počítač, musí se zakázat nástroj BitLocker.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
 Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 použijte disk operačního systému typu basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku se nepodporuje.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|

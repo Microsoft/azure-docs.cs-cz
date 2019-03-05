@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 13da9e0d731e87b6cdd5830c9295847511c301ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2e7c06d7dd673ff2a638b94996667607a079e707
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567294"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307832"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
 Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jeden nebo více existujících nasazení AKS pomocí následující metody:
@@ -31,8 +34,8 @@ Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jed
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, ujistěte se, že máte následující:
 
-- Pracovní prostor Log Analytics. Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-- Jste členem role Přispěvatel Log Analytics povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+- **Pracovní prostor Log Analytics.** Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+- Jste **členem role Přispěvatel Log Analytics** povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -76,7 +79,7 @@ Poté, co jste povolili monitorování a úspěšném dokončení všech konfigu
 Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>Zapněte sledování pro existující spravované clustery
-Monitorování clusteru AKS, který je už nasazená buď pomocí rozhraní příkazového řádku Azure na portálu nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzureRmResourceGroupDeployment`. 
+Monitorování clusteru AKS, který je už nasazená buď pomocí rozhraní příkazového řádku Azure na portálu nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzResourceGroupDeployment`. 
 
 ### <a name="enable-monitoring-using-azure-cli"></a>Povolte monitorování pomocí Azure CLI
 Následující krok zapne monitorování clusteru AKS pomocí Azure CLI. V tomto příkladu nemusíte za vytvoření nebo zadejte existující pracovní prostor. Tento příkaz zjednodušuje proces pro vás vytvořením výchozího pracovního prostoru do výchozí skupiny prostředků předplatného cluster AKS, pokud již neexistuje v oblasti.  Vytvoření výchozího pracovního prostoru vypadá podobně jako formát *DefaultWorkspace -\<GUID >-\<oblast >*.  
@@ -117,7 +120,7 @@ provisioningState       : Succeeded
 
 2. Přidat [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) následující kroky v dokumentaci k Terraformu.
 
-### <a name="enable-monitoring-from-azure-monitor"></a>Povolit monitorování ze služby Azure Monitor
+### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>Povolit monitorování na portálu ze služby Azure Monitor 
 Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služby Azure Monitor, postupujte takto:
 
 1. Na webu Azure Portal, vyberte **monitorování**. 
@@ -297,7 +300,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     * Do složky obsahující šablonu použijte následující příkazy Powershellu:
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ClusterResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
+        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
         ```
         Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 16e23f77509d2402f765981b39a30e08a2309f68
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 325e06cadd2593684bc610a0387829541bea30b2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156523"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311793"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure portal
 
@@ -99,7 +99,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
     - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro název skupiny prostředků.
     - **Název virtuálního počítače**: Zadejte *myVM* pro název virtuálního počítače.
     - **Uživatelské jméno**: Zadejte *azureuser* pro uživatelské jméno správce.
-    - **Heslo**: Zadejte *Azure123456!* k zadání hesla správce.
+    - **Heslo**: Enter *Azure123456!* k zadání hesla správce.
 
 4. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Disky**.  
 
@@ -115,6 +115,8 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Otevřít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Chcete-li to provést, vyberte **Cloud Shell** z horního navigačního panelu webu Azure portal a pak vyberte **Powershellu** z rozevíracího seznamu. 
 
     ![Instalace vlastního rozšíření](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
@@ -122,7 +124,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -133,7 +135,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
       -Location EastUS
     ```
 
-3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzureRmVMExtension** rutiny.
+3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzVMExtension** rutiny.
 
 ### <a name="add-backend-servers"></a>Přidání back-endových serverů
 

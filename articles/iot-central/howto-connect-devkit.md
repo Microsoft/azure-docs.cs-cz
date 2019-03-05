@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198724"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316621"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -45,14 +45,14 @@ Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zaříze
 
 V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zaznamenání podrobností o připojení zařízení (**ID oboru, ID zařízení a primární klíč**).
 
-1. Přidat **skutečné zařízení** z Device Explorer, klikněte na **+ nový > skutečné** skutečné zařízení přidat.
+1. Přidat **skutečné zařízení** Device Explorer, vyberte **+ nový > skutečné** skutečné zařízení přidat.
     * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
     * Zadejte název zařízení nebo použijte navrhovaný název
     
     ![Přidání zařízení](media/concepts-connectivity/add-device.png)
 
 
-1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
+1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení tak, že vyberete **připojit** na stránce zařízení.
  
     ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
@@ -189,7 +189,7 @@ Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šab
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
-| temp           | ° C     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | tlak       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -230,7 +230,7 @@ Přepínací tlačítko Nastavení
 
 ### <a name="properties"></a>Vlastnosti
 
-| Typ            | Zobrazované jméno | Název pole | Typ dat |
+| Type            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Vlastnosti zařízení | Umístění zařízení   | location  | location    |

@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: bbf04104d70ecb6ea8d83c6167b5b9b0dfe2c2dc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217440"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308886"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -160,7 +160,7 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
 
     4. Sloučený soubor se otevře v SSMS, kde je můžete zobrazit a analyzovat, jakož i exportovat do souboru XEL nebo sdíleného svazku clusteru nebo na tabulku.
 
-- Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace a pro přístup k šabloně ke stažení najdete na stránce [analyzovat data protokolu auditování v Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+- Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace a pro přístup k šabloně ke stažení najdete na stránce [analyzovat data protokolu auditování v Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
   - Po stažení souboru protokolu místně, poklikejte na soubor otevřít, zobrazení a analýza protokolů v aplikaci SSMS.
   - Můžete také stáhnout více souborů najednou pomocí Průzkumníka služby Azure Storage. Chcete-li to provést, klikněte pravým tlačítkem na konkrétní podsložku a vyberte **uložit jako** uložit do místní složky.
@@ -170,8 +170,8 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
   - Po stažení několik souborů nebo na podsložku, která obsahuje soubory protokolu, sloučit je místně, jak je popsáno v SSMS sloučení auditu soubory pokynů je popsáno výše.
   - Auditování objektů blob k zobrazení protokolů prostřednictvím kódu programu:
 
-    - Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) knihovny v jazyce C#.
-    - [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
+    - Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) knihovny v jazyce C#.
+    - [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
 
 ## <a id="subheading-5"></a>Postupy v produkčním prostředí
 

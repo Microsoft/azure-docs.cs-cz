@@ -8,20 +8,22 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 707c04c22e54220f3020b5897c364318b427267b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586589"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310042"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 
-Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
 Rozhraní API služby Azure Monitor umožňuje programově načíst definice metrik dostupné výchozí, členitosti a hodnoty metrik. Data můžete uložit do samostatného úložiště dat. jako je například Azure SQL Database a Azure Cosmos DB, Azure Data Lake. Odtud můžete provést další analýzy podle potřeby.
 
-Kromě práce s různými metriky datové body, monitorování rozhraní API také umožňuje seznamu pravidel upozornění, zobrazení protokolů aktivit a spoustu dalších věcí. Úplný seznam dostupných operací, najdete v článku [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Kromě práce s různými metriky datové body, monitorování rozhraní API také umožňuje seznamu pravidel upozornění, zobrazení protokolů aktivit a spoustu dalších věcí. Úplný seznam dostupných operací, najdete v článku [Reference k REST API Microsoft Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Požadavky na ověřování Azure Monitor
 
@@ -34,24 +36,24 @@ $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
 # Authenticate to a specific Azure subscription.
-Connect-AzureRmAccount -SubscriptionId $subscriptionId
+Connect-AzAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"
 $secureStringPassword = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
 # Create a new Azure AD application
-$azureAdApplication = New-AzureRmADApplication `
+$azureAdApplication = New-AzADApplication `
                         -DisplayName "My Azure Monitor" `
                         -HomePage "https://localhost/azure-monitor" `
                         -IdentifierUris "https://localhost/azure-monitor" `
                         -Password $secureStringPassword
 
 # Create a new service principal associated with the designated application
-New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
 # Assign Reader role to the newly created service principal
-New-AzureRmRoleAssignment -RoleDefinitionName Reader `
+New-AzRoleAssignment -RoleDefinitionName Reader `
                           -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 ```
@@ -59,9 +61,9 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 Dotaz rozhraní API služby Azure Monitor, klientská aplikace k ověření používala dříve vytvořený instanční objekt. Skript prostředí PowerShell následující příklad ukazuje jednu přístup, pomocí [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. JWT token je předán jako součást parametrem HTTP autorizace v požadavku REST API služby Azure Monitor.
 
 ```PowerShell
-$azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
+$azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
 
-$subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
+$subscription = Get-AzSubscription -SubscriptionId $subscriptionId
 
 $clientId = $azureAdApplication.ApplicationId.Guid
 $tenantId = $subscription.TenantId
@@ -630,7 +632,7 @@ ID prostředku lze také získat z webu Azure portal. Uděláte to tak, přejdě
 ID prostředku se dá načíst pomocí rutin Powershellu pro Azure i. Třeba získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 
 ```PowerShell
-Get-AzureRmLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
+Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
 Výsledek by měl vypadat přibližně jako v následujícím příkladu:

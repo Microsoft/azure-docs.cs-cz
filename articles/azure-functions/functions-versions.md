@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6d4f588a98e519298b91c158b11730a23567aa7f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734451"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310960"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -49,7 +49,7 @@ Můžete se rozhodnout migrovat stávající aplikace napsané pomocí modulu ru
 
 ### <a name="changes-in-triggers-and-bindings"></a>Změny v aktivačními událostmi a vazbami
 
-Verze 2.x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používá funkce ve vaší aplikaci. Jedinou výjimkou tohoto protokolu HTTP a časovač aktivačních událostí, které nevyžadují rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-expressions-patterns.md).
+Verze 2.x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používá funkce ve vaší aplikaci. Jedinou výjimkou tohoto protokolu HTTP a časovač aktivačních událostí, které nevyžadují rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-register.md).
 
 Také došlo k několika změnám v `function.json` nebo atributy funkce mezi verzemi. Například centra událostí `path` vlastnost je nyní `eventHubName`. Zobrazit [existující vazby tabulky](#bindings) odkazy na dokumentaci pro každou vazbu.
 

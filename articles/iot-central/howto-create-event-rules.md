@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337270"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307849"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření události pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -29,7 +29,7 @@ Pokud chcete vytvořit pravidlo události, šablona zařízení musí mít alesp
 
 1. Pomocí Device Explorer přejděte k šabloně zařízení, pro který chcete přidat pravidlo pro.
 
-1. V rámci vybrané šablony klikněte na existující zařízení. 
+1. V části vybrané šablony vyberte ze stávajících zařízení.
 
     >[!TIP] 
     >Pokud šablonu nebude mít všechna zařízení, nejdříve přidejte nové zařízení.
@@ -39,10 +39,10 @@ Pokud chcete vytvořit pravidlo události, šablona zařízení musí mít alesp
     ![Zatím žádná pravidla](media/howto-create-event-rules/Rules_Landing_Page.png)
 
 
-1. Na **pravidla** klikněte na tlačítko **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** kartu, vyberte možnost **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
 
-1. Klikněte na **události** dlaždici vytvořit událost pravidlo monitorování.
+1. Vyberte **události** dlaždici vytvořit událost pravidlo monitorování.
 
     ![Typy pravidel](media/howto-create-event-rules/Rule_Types.png)
 

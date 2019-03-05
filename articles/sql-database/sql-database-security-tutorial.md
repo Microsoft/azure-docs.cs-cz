@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2b528892d2046f590d979d1646583e028fe4a834
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4fc1b4d4d0d7f215f8fee1de01e171c3fdc5aae5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218069"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308784"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení databáze jedné, nebo součástí fondu
 
@@ -142,7 +142,7 @@ Informace o konfiguraci Azure AD najdete tady:
 
 - [Integrace místních identit s Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure teď podporuje federace se službou Windows Server AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Microsoft Azure teď podporuje federace se službou Windows Server AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md)
 - [Správa služby Azure AD pomocí Powershellu](/powershell/azure/overview?view=azureadps-2.0)
 - [Porty a protokoly vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md)

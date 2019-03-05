@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313029"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315805"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
 
 
@@ -168,7 +171,7 @@ Přenos dat do služby Log Analytics používá veřejné partnerské vztahy okr
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>Otázka: Je jednoduché a snadný způsob, jak přesunout existující pracovní prostor Log Analytics do jiného předplatného Azure pracovní prostor Log Analytics?
 
-A. `Move-AzureRmResource` Rutina umožňuje přesunout do jiného pracovního prostoru Log Analytics a účet Automation z jednoho předplatného Azure. Další informace najdete v tématu [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. `Move-AzResource` Rutina umožňuje přesunout do jiného pracovního prostoru Log Analytics a účet Automation z jednoho předplatného Azure. Další informace najdete v tématu [přesunout AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Tato změna můžete také provést na webu Azure Portal.
 
@@ -196,7 +199,7 @@ V části **Azure Log Analytics (OMS)**, odeberte všechny pracovní prostory uv
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>OTÁZKA: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
 
-Odpověď: Pokud chcete přesunout pracovní prostor na jiné předplatné nebo skupinu prostředků, musíte nejprve zrušit propojení účtu Automation v pracovním prostoru. Zrušení propojení účtu Automation vyžaduje odebrání těchto řešení, pokud jsou nainstalovány v pracovním prostoru: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku, se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
+Odpověď: Pokud chcete přesunout pracovní prostor na jiné předplatné nebo skupinu prostředků, musíte nejprve zrušit propojení účtu Automation v pracovním prostoru. Pro zrušení propojení s účtem Automation je potřeba odebrat následující řešení, pokud jsou v pracovním prostoru nainstalovaná: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku, se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
  > Odebrat řešení je třeba znovu nainstalovat v pracovním prostoru a propojení služby Automation s pracovním prostorem musí revidovat po přesunutí.
 
 Ujistěte se, že máte oprávnění v obou předplatných Azure.

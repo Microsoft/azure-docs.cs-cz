@@ -10,19 +10,23 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 33bc10bb601fa14a34b6032c54b0c751a3608ccc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c73084b03736a422e5e3b617ec058ade1de0fbb9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823650"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317114"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlý start: Vytváření šablon Azure Resource Manageru pomocí Visual Studio Code
 
 Zjistěte, jak pomocí Visual Studio Code a rozšíření Nástroje Azure Resource Manageru vytvářet a upravovat šablony Azure Resource Manageru. Šablony Resource Manageru můžete v nástroji Visual Studio Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
+
+V tomto kurzu nasadíte účet úložiště:
+
+![Resource manager šablony rychlý start sady visual studio kódu diagram](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -90,15 +94,24 @@ Pokud chcete vyzkoušet, jak upravit šablonu pomocí Visual Studio Code, přide
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Šablony můžete nasadit mnoha způsoby.  V tomto rychlém startu použijete Azure Cloud Shell. Cloud shell je webová aplikace, která nevyžaduje žádnou konfiguraci. Podporuje rozhraní příkazového řádku Azure a Azure Powershellu.
+Šablony můžete nasadit mnoha způsoby. Azure Cloud shell se používá v rámci tohoto rychlého startu. Službě cloud shell podporuje rozhraní příkazového řádku Azure a Azure Powershellu. Volič karty použijte k výběru mezi rozhraní příkazového řádku a Powershellu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-
 1. Přihlaste se do služby [Azure Cloud Shell](https://shell.azure.com).
 
+2. Vyberte upřednostňované prostředí tak, že vyberete buď **PowerShell** nebo **Bash**(rozhraní příkazového řádku) v levém horním rohu.  Po přepnutí se vyžaduje restartování prostředí.
+
+    # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
     ![CLI v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. Vyberte upřednostňované prostředí tak, že vyberete buď **PowerShell** nebo **Bash** v levém horním rohu. Pokud chcete použít rozhraní příkazového řádku, musíte otevřít relaci Bash. Ke spuštění prostředí Azure PowerShell, budete muset otevřít relaci prostředí PowerShell. Chcete-li přepnout mezi Bash a PowerShell, vyberte šipku dolů. Viz předchozí snímek obrazovky. Po přepnutí se vyžaduje restartování prostředí.
+
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+
+    ![Azure portal Cloud shell prostředí PowerShell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+
+    ---
+
 3. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)

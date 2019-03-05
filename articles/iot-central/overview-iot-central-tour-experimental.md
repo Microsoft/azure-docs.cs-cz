@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6865a90a46c5614c5735f9766194c40dfd3e2e4f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b7aa1186005cd34b4c6a1c6fca4f89f6b845025b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216947"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312524"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-new-ui-design"></a>Projděte si Azure IoT Central uživatelského rozhraní (návrh nové uživatelské rozhraní)
 
@@ -37,7 +37,7 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 
 ## <a name="use-the-left-navigation-menu"></a>Použití levé navigační nabídky
 
-Levé navigační nabídce použijte pro přístup k oblasti jiné aplikace. Můžete rozbalit nebo Sbalit navigační panel kliknutím **<** nebo **>**:
+Levé navigační nabídce použijte pro přístup k oblasti jiné aplikace. Můžete rozbalit nebo Sbalit navigační panel tak, že vyberete **<** nebo **>**:
 
 | Nabídka | Popis |
 | ---- | ----------- |

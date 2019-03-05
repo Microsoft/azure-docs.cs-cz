@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: c93434f060525f2f53f24c511bfa748a31d1fd61
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453290"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309124"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -23,6 +23,8 @@ Pomocí Azure Application Gateway můžete monitorovat prostředky následujíc�
 * [Protokoly](#diagnostic-logging): Protokoly umožňují výkonu, přístupu a další data k ukládání nebo spotřebované prostředků pro účely monitorování.
 
 * [Metriky](#metrics): Služba Application Gateway nyní má hlavní sedm metriky, chcete-li zobrazit čítače výkonu.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="back-end-health"></a>Stav back endu
 
@@ -47,10 +49,10 @@ Každý člen ve fondu back-end je uvedený na této stránce (ať už se jedná
 
 ### <a name="view-back-end-health-through-powershell"></a>Zobrazit stav back endu pomocí Powershellu
 
-Následující kód Powershellu ukazuje, jak zobrazit stav back endu pomocí `Get-AzureRmApplicationGatewayBackendHealth` rutiny:
+Následující kód Powershellu ukazuje, jak zobrazit stav back endu pomocí `Get-AzApplicationGatewayBackendHealth` rutiny:
 
 ```powershell
-Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
+Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
 ### <a name="view-back-end-health-through-azure-cli"></a>Zobrazit stav back endu pomocí rozhraní příkazového řádku Azure
@@ -121,7 +123,7 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 3. Protokolování diagnostiky zapnete pomocí následující rutiny PowerShellu:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
+    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 

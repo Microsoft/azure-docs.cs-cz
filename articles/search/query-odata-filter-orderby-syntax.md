@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c6dbd95cfd17f5ce49245fcadea299c5a0dfd582
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b709851a0b8b4a095b5b1bf5e0f1008359b1f426
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008444"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317403"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -181,6 +181,13 @@ $filter=tags/all(t: t ne 'motel')
 ```  
 $filter=tags/any()  
 ```  
+
+Najdete všechny hotely, které nemají značky:  
+
+```  
+$filter=not tags/any()  
+```  
+
 
  Najdete všechny hotely v rámci 10 kilometrů bodu daného odkazu (kde umístění je pole typu Edm.GeographyPoint):  
 

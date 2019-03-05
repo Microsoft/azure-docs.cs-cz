@@ -1,6 +1,6 @@
 ---
-title: Zákaznická data žádosti o funkce v centrální Azure IoT | Microsoft Docs
-description: Zákaznická data žádosti o funkce v centrální Azure IoT
+title: Zákaznická data požadavky na funkce v Azure IoT Central | Dokumentace Microsoftu
+description: Zákaznická data požadavky na funkce v Azure IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/17/2018
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bb5e263b0332f957b4e7f4a928ccd53f639bcd9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2952008ca788a620f2b558d5997aeebd59196b7a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629401"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314564"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí požadavek data zákazníků
+# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
-Azure IoT střed je plně spravovaná řešení Internetu věcí (IoT) softwaru jako služby, které usnadňuje připojení, monitorovat a spravovat vaše prostředky IoT ve velkém rozsahu, vytvářet hloubkové přehledy o vašich datech IoT a provést informované akci.
+Azure IoT Central je plně spravovaná řešení software jako služba Internetu věcí (IoT), které usnadňuje připojení, sledování a správu vašich IoT prostředků i ve velkém měřítku, vytvořit podrobné informace z vašich dat IoT a informovaně.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Identifikace data zákazníků
+## <a name="identifying-customer-data"></a>Identifikace zákaznická data
 
-Azure Active Directory-ID objektů se používají k identifikaci uživatelů a přiřazování rolí. Je uložený Azure IoT centrální portálu zobrazí uživatele e-mailové adresy pro přiřazení rolí, ale jenom Azure Active Directory-ID objektu, e-mailová adresa je dynamicky získaných z Azure Active Directory. Azure IoT střed správci můžete zobrazit, exportovat a aplikace uživatele v části Správa uživatele Azure IoT centrální aplikace odstranit.
+Azure Active Directory – ID objektů se používají k identifikaci uživatelů a přiřazení rolí. Azure IoT Central portálu zobrazí uživateli. e-mailové adresy pro přiřazení rolí, ale pouze Azure Active Directory – ID objektu je uložen, e-mailová adresa se dynamicky dotazovat ze služby Azure Active Directory. Správci služby Azure IoT Central můžete zobrazit, exportovat a odstranit uživatele aplikace v části administration uživatele aplikaci Azure IoT Central.
 
-V aplikaci můžete nakonfigurovat e-mailových adres přijímat výstrahy. V takovém případě e-mailové adresy jsou uloženy v rámci střed IoT a ze stránky správy účtu v aplikaci se musí spravovat.
+V rámci aplikace je možné nakonfigurovat e-mailových adres pro příjem oznámení. V tomto případě e-mailové adresy jsou uloženy v rámci IoT Central a na stránce účtu v aplikaci pro správu se musí spravovat.
 
-O zařízení společnost Microsoft udržuje žádné informace a nemá přístup k datům, která povoluje zařízení uživatele korelace. Mnoho zařízení spravovaných v Azure IoT centrální nejsou osobní zařízení, třeba prodejních počítače nebo maker v. Zákazníci, však zvažte některá zařízení jako osobní identifikovatelné a podle svého uvážení mohou zachovat své vlastní prostředek nebo systémy, které tie zařízení jednotlivcům pro sledování inventáře. Azure IoT střed spravuje a ukládá všechna data přidružená k zařízení, jako by šlo osobní data.
+Pokud jde o zařízení Microsoft udržuje žádné informace o a nemá přístup k datům, která umožňuje zařízení a uživatele korelace. Mnoho zařízení spravovaných v Azure IoT Central nejsou osobní zařízení, například Automat nebo kávy Tvůrce. Zákazníci mohou, ale vezměte v úvahu některé zařízení, která budou identifikovatelné osobní údaje a podle vlastního uvážení může udržovat vlastní prostředek nebo sledování systémy, které jsou zařízení, která jednotlivcům inventáře. Azure IoT Central spravuje a ukládá všechna data přidružená k zařízení, jako by šlo osobní údaje.
 
-Při použití služby Microsoft enterprise Microsoft generuje některé informace, které jsou známé jako protokoly generované systémem. Tyto protokoly tvoří konkrétní akce prováděné v rámci služby a diagnostická data související s jednotlivých zařízení a nesouvisí se aktivity uživatelů. Azure IoT střed generována protokoly nejsou přístupné nebo exportovatelný správci aplikace.
+Při použití služby Microsoft enterprise Microsoft generuje určité informace, označované jako protokoly generované systémem. Tyto protokoly představují skutečné akce provedené v rámci služby a diagnostická data týkající se jednotlivých zařízeních a nesouvisí s aktivity uživatelů. Azure IoT Central systémem generované protokoly nejsou přístupné nebo exportovat pomocí aplikace správce.
 
-## <a name="deleting-customer-data"></a>Odstraňování dat zákazníka
+## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
 
-Možnost odstranit data uživatele je k dispozici pouze prostřednictvím stránky IoT centrální správy. Správci aplikace můžete vybrat uživatele odstranit, a klikněte na tlačítko **odstranit** v pravém horním rohu aplikace záznamu. Správci aplikací rovněž můžete odebrat jednotlivé účty, které jsou už přidružené dané žádosti.
+Možnost odstranit data uživatele se poskytuje jenom pomocí stránky pro správu IoT Central. Správci aplikace mohou vybrat uživatele a odstranit, vyberte **odstranit** v pravém horním rohu aplikace záznam odstranit. Správci aplikace můžete také odebrat jednotlivé účty, které už nejsou přidružené dané žádosti.
 
-Po odstranění uživatele se žádné další výstrahy e-mailem na ně. Ale e-mailové adresy musí jednotlivě odeberou z každé nakonfigurované výstrahy.
+Po odstranění uživatele se žádné další výstrahy e-mailem na ně. Ale e-mailová adresa musí jednotlivě odebrat z každé konfigurované výstrahy.
 
 Další informace najdete v tématu [nakonfigurovat pravidla a akce pro vaše zařízení](tutorial-configure-rules.md).
 
-## <a name="exporting-customer-data"></a>Export dat zákazníka
+## <a name="exporting-customer-data"></a>Export zákaznických dat
 
-Možnost exportu dat je k dispozici pouze prostřednictvím stránky IoT centrální správy. Data zákazníků, včetně přiřazených rolí můžete vybrané, zkopírovat a vložit správcem aplikace.
+Možnost export dat je k dispozici pouze prostřednictvím stránky pro správu IoT Central. Zákaznická data, včetně přiřazených rolí můžete vybrané, zkopírovat a vložit microsoftem nebo správcem aplikace.
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Další informace o správě účtu, včetně definice rolí, najdete v části [postupy při správě aplikace](howto-administer.md).
+Další informace o správě účtu, včetně definice rolí, najdete v části [jak spravovat aplikace](howto-administer.md).

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998616"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337358"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -22,6 +22,8 @@ Ve výchozím nastavení služba Azure Application Gateway monitoruje stav všec
 ![Příkladem testu Application gateway][1]
 
 Kromě používání výchozího stavu testu monitorování, můžete také přizpůsobit sondu stavu, aby odpovídala požadavkům vaší aplikace. V tomto článku se vztahují výchozích a vlastních testů stavu paměti.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-health-probe"></a>Výchozí kontroly stavu
 
@@ -33,20 +35,20 @@ Pokud selže server A kontrola testu výchozí, application gateway, odebere ho 
 
 ### <a name="probe-matching"></a>Porovnávání pro zjišťování
 
-Ve výchozím nastavení je považován za v pořádku odpověď HTTP (S) se stavovým kódem 200. Vlastních testů stavu také podporují dvě kritéria přiřazování. Volitelně můžete změnit výchozí výklad o tom, co v dobrém stavu odpovědi lze použít odpovídající kritériím.
+Ve výchozím nastavení považuje odpověď HTTP (S) se stavovým kódem 200 až 399 v pořádku. Vlastních testů stavu také podporují dvě kritéria přiřazování. Volitelně můžete změnit výchozí výklad o tom, co v dobrém stavu odpovědi lze použít odpovídající kritériím.
 
 Následující jsou odpovídající kritériím: 
 
 - **Shoda kód stavu odpovědi HTTP** - test kritéria pro příjem přiřazování zadané uživatelem, které http odpovědi kódu nebo odpovědi kódu rozsahů. Stavové kódy odezvy jednotlivých čárkami nebo rozsah stavový kód je podporován.
 - **Porovnání textu odpovědi HTTP** – test paměti, že vyhledá v textu odpovědi HTTP a shody s uživatelem zadaný řetězec kritéria přiřazování. Pouze vyhledá shodu přítomnost uživatele zadaného řetězce v textu odpovědi a není úplné regulárního výrazu.
 
-Kritéria shody se dá nastavit pomocí `New-AzureRmApplicationGatewayProbeHealthResponseMatch` rutiny.
+Kritéria shody se dá nastavit pomocí `New-AzApplicationGatewayProbeHealthResponseMatch` rutiny.
 
 Příklad:
 
-```powershell
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfigurace `-Match` parametr v prostředí PowerShell.
 
@@ -57,7 +59,7 @@ Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfi
 | Adresa URL testu |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Množství času během několika sekund se má čekat před dalším sondu stavu se odesílají.|
 | Časový limit |30 |Množství času v sekundách application gateway čeká na odpověď testu před označením testu jako není v pořádku. Pokud test vrátí jako v pořádku, odpovídající back-endu okamžitě označen jako v pořádku.|
-| Prahová hodnota špatného stavu |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!NOTE]
 > Port, který je stejný port jako nastavení HTTP back-end.
@@ -86,7 +88,7 @@ Následující tabulka obsahuje definice pro vlastnosti sondu stavu vlastní.
 | Cesta |Relativní cesta testu. Platná cesta začíná od "/". |
 | Interval |Interval testu paměti v sekundách. Tato hodnota je časový interval mezi dvěma po sobě jdoucích sondy. |
 | Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný.  |
-| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!IMPORTANT]
 > Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.

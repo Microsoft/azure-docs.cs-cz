@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 736ff5565bb279d26e686421cc13f54a73b1c7e9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461089"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312048"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor běžné metriky automatického škálování
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Automatické škálování Azure Monitor umožňuje škálování více spuštěných instancích směrem nahoru nebo dolů, na základě telemetrických dat (metriky). Tento dokument popisuje běžné metriky, které chcete použít. Na webu Azure Portal můžete zvolit metrika prostředku, který chcete škálovat. Ale můžete také jakékoliv metriky z různých zdrojů škálovat podle.
 
 Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Jiným službám Azure použít různé metody škálování.
@@ -43,7 +46,7 @@ Při vytváření virtuálního počítače v Azure diagnostics je povoleno pomo
 Seznam metrik lze vytvořit pomocí následujícího příkazu v Powershellu.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 Můžete vytvořit výstrahu pro následující metriky:
@@ -84,7 +87,7 @@ Při vytváření virtuálního počítače v Azure diagnostics je ve výchozím
 Seznam metrik lze vytvořit pomocí následujícího příkazu v Powershellu.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
  Můžete vytvořit výstrahu pro následující metriky:
@@ -137,7 +140,7 @@ Můžete také provést automatické škálování podle běžné metriky webov�
 Pomocí následujícího příkazu v Powershellu můžete vygenerovat seznam metrik webových aplikací.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 Můžete výstrahy na nebo škálovat podle těchto metrikách.

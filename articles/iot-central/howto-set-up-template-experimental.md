@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b5ec8df9ff08aace69680c188f9ab05e944ce891
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 80c98d151c1b42b0c6106d4fa1af921bbb5ef55f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734568"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308393"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
 
@@ -46,7 +46,7 @@ Z této šablony zařízení můžete vytvořit a připojit skutečné ventilát
 
 1. Přejděte **šablon** stránky.
 
-2. Chcete-li vytvořit prázdnou šablonu, klikněte na tlačítko **+** a potom zadejte název, třeba **lednice** nové šablony zařízení. Potom vyberte **vytvořit**:
+2. Chcete-li vytvořit prázdnou šablonou, vyberte **+** a potom zadejte název, třeba **lednice** nové šablony zařízení. Potom vyberte **vytvořit**:
 
    ![Stránce s podrobnostmi o zařízení s "Lednice" jako název šablony](./media/howto-set-up-template-experimental/devicedetailspage.png)
 
@@ -64,7 +64,7 @@ Měření jsou data, která pochází z vašeho zařízení. Více měření mů
 
 ### <a name="create-a-telemetry-measurement"></a>Vytvoření měření telemetrie
 
-Přidat novou míru telemetrická data, klikněte na **a nové měření**, zvolte **Telemetrie** jako měření typ a zadejte podrobnosti ve formuláři.
+Chcete-li přidat novou míru telemetrická data, **a nové měření**, zvolte **Telemetrie** jako měření typ a zadejte podrobnosti ve formuláři.
 
 > [!NOTE]
 > Názvy polí v šabloně zařízení musí odpovídat názvům vlastností v odpovídajícím kódu zařízení v pořadí pro měření telemetrická data zobrazit v aplikaci při připojení skutečné zařízení. Totéž při konfiguraci nastavení vlastnosti zařízení a příkazy i další definice šablony zařízení v následujících částech.
@@ -77,14 +77,14 @@ Například můžete přidat nové měření teploty telemetrická data:
 
 !["Vytvořit Telemetrie" formulář s podrobnostmi o měření teploty](./media/howto-set-up-template-experimental/measurementsform.png)
 
-Po kliknutí na **Uložit**, **teploty** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data o teplotě ze simulovaného zařízení.
+Po výběru **Uložit**, **teploty** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data o teplotě ze simulovaného zařízení.
 
 > [!NOTE]
 > Datový typ telemetrických dat měření je plovoucí číslo bodu.
 
 ### <a name="create-an-event-measurement"></a>Vytvoření měření událostí
 
-Přidat novou míru události, klikněte na **a nové měření** a vyberte **události** jako typ měrné jednotky. Zadejte podrobnosti **vytvořit událost** formuláře.
+Chcete-li přidat novou událost měření **a nové měření** a vyberte **události** jako typ měrné jednotky. Zadejte podrobnosti **vytvořit událost** formuláře.
 
 Zadejte **zobrazovaný název**, **název pole**, a **závažnost** podrobnosti o události. Můžete vybrat ze tří dostupných úrovní závažnosti: **Chyba**, **upozornění**, a **informace**.
 
@@ -96,9 +96,9 @@ Například můžete přidat nový **Motor chyba ventilátor** událostí.
 
 !["Vytvořit událost" formulář s podrobnostmi ventilátor motor události](./media/howto-set-up-template-experimental/eventmeasurementsform.png)
 
-Po kliknutí na **Uložit**, **Motor chyba ventilátor** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data události ze simulovaného zařízení.
+Po výběru **Uložit**, **Motor chyba ventilátor** měření se zobrazí v seznamu měření. Nějakou dobu vidíte vizualizaci data události ze simulovaného zařízení.
 
-Chcete-li zobrazit další podrobnosti o události, klikněte na ikonu události v grafu:
+Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v grafu:
 
 ![Podrobnosti o události "Ventilátor Motor chyba"](./media/howto-set-up-template-experimental/eventmeasurementsdetail.png)
 
@@ -107,7 +107,7 @@ Chcete-li zobrazit další podrobnosti o události, klikněte na ikonu události
 
 ### <a name="create-a-state-measurement"></a>Vytvoření měření stavu
 
-Chcete-li přidat nového měření stavu, klikněte na tlačítko **a nové měření** tlačítko a vyberte **stavu** jako typ měrné jednotky. Zadejte podrobnosti **vytvořit stavu** formuláře.
+Chcete-li přidat nový měření stavu, **a nové měření** tlačítko a vyberte **stavu** jako typ měrné jednotky. Zadejte podrobnosti **vytvořit stavu** formuláře.
 
 Zadejte podrobnosti pro **zobrazovaný název**, **název pole**, a **hodnoty** stavu. Každá hodnota může mít také zobrazovaný název, který se použije, když hodnota se zobrazí v grafech a tabulky.
 
@@ -119,9 +119,9 @@ Například můžete přidat nový **ventilátor režimu** stavu, který má dva
 
 !["Upravit stav" formulář s podrobnostmi o ventilátor režimu](./media/howto-set-up-template-experimental/statemeasurementsform.png)
 
-Po kliknutí na **Uložit**, **ventilátor režimu** měření stavu se zobrazí v seznamu měření. Stručně řečeno, i když naleznete v tématu vizualizace dat o stavu ze simulovaného zařízení.
+Po výběru **Uložit**, **ventilátor režimu** měření stavu se zobrazí v seznamu měření. Stručně řečeno, i když naleznete v tématu vizualizace dat o stavu ze simulovaného zařízení.
 
-Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, se zobrazí s jiný vizuál měření stavu. Klikněte na graf zobrazíte všechny datové body v rámci tohoto časového období v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
+Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, se zobrazí s jiný vizuál měření stavu. Vyberte graf, chcete-li zobrazit všechny datové body v rámci tohoto časového období v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
 
 > [!NOTE]
 > Datový typ měření stavu je řetězec.
@@ -138,7 +138,7 @@ Nastavení může být v jednom ze tří stavů. Zařízení odesílá tyto stav
 
 - **Chyba**: Zařízení vrátilo chybu.
 
-Například můžete přidat nové nastavení rychlost ventilátor kliknutím **nastavení** a zadáte na novém **číslo** nastavení:
+Například můžete přidat nové nastavení rychlost ventilátor tak, že vyberete **nastavení** a zadáte na novém **číslo** nastavení:
 
 | Zobrazovaný název  | Název pole    |  Jednotky  | Desetinná místa |Počáteční|
 | --------------| ------------- |---------| ---------|---- |
@@ -198,7 +198,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost aplikace s využitím ma
    - **Umístění jako adresa**
    - **Umístění jako souřadnice**
 
-4. Klikněte na **Uložit**. Operátor můžete aktualizovat hodnotu umístění v **Device Explorer**.
+4. Vyberte **Uložit**. Operátor můžete aktualizovat hodnotu umístění v **Device Explorer**.
 
 #### <a name="add-location-as-a-device-property"></a>Přidat umístění jako vlastnosti zařízení
 
@@ -231,7 +231,7 @@ Příkazy se používají ke vzdálené správě zařízení. Umožňují, oper�
 
 * **Příkaz**: Pomocí příkazů okamžité spuštění příkazu na zařízení vzdáleně z IoT Central. Pokud zařízení není připojené, vyprší časový limit příkazu a selže. Například chcete restartovat zařízení.
 
-Například můžete přidat nový **Echo** příkaz tak, že vyberete **příkazy** kartu, pak levým na **+ nový příkaz**a zadat podrobnosti nového příkazu:
+Například můžete přidat nový **Echo** příkaz tak, že vyberete **příkazy** kartu výběrem **+ nový příkaz**a zadat podrobnosti nového příkazu:
 
 | Zobrazovaný název  | Název pole | Výchozí časový limit | Typ dat |
 | --------------| -----------|---------------- | --------- |

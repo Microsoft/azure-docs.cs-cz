@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8c5b32464a9c6253dc34d070d64a1645f523a80c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f58d06cd191166f47d864241564bc57019b59132
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804429"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316570"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Spravovat z portálu Azure IoT Central
 
@@ -23,7 +23,7 @@ Místo vytváření a správu aplikací IoT Central z IoT Central [Správce apli
 
 ## <a name="create-iot-central-applications"></a>Vytvoření aplikací IoT Central
 
-K vytvoření aplikace, přejděte [webu Azure portal](https://ms.portal.azure.com) a klikněte na tlačítko **vytvořit prostředek** v hlavní navigační nabídce na levé straně.
+K vytvoření aplikace, přejděte [webu Azure portal](https://ms.portal.azure.com) a vyberte **vytvořit prostředek** v hlavní navigační nabídce na levé straně.
 
 ![Portál pro správu: navigační nabídku](media/howto-manage-iot-central-from-portal/image0.png)
 
@@ -31,11 +31,11 @@ Na panelu hledání zadejte **IoT Central**.
 
 ![Portál pro správu: vyhledávání](media/howto-manage-iot-central-from-portal/image0a.png)
 
-Klikněte na tlačítko **aplikaci IoT Central** položek ve výsledcích hledání.
+Vyberte **aplikaci IoT Central** položek ve výsledcích hledání.
 
 ![Portálu pro správu: výsledky hledání](media/howto-manage-iot-central-from-portal/image0b.png)
 
-Nyní, klikněte na tlačítko **vytvořit** tlačítko.
+Teď vyberte **vytvořit**.
 
 ![Portál pro správu: IoT Central prostředků](media/howto-manage-iot-central-from-portal/image0c.png)
 
@@ -43,7 +43,7 @@ Vyplňte všechna pole ve formuláři. Tento formulář je podobná formuláři 
 
 ![Portál pro správu: vytvoření prostředku IoT Central](media/howto-manage-iot-central-from-portal/image1.png)  
 
-Po vyplnění všech polí, klikněte na tlačítko **vytvořit** tlačítko.
+Po vyplnění všech polí, vyberte **vytvořit**.
 
 ## <a name="manage-existing-iot-central-applications"></a>Spravovat existující aplikace IoT Central
 
@@ -52,19 +52,19 @@ Pokud již máte aplikaci Azure IoT Central, můžete ho odstranit nebo přesuno
 > [!NOTE]
 > Zkušební verze aplikace na webu Azure Portal nejde zobrazit, protože nejsou přidružené k vašemu předplatnému.
 
-Abyste mohli začít, klikněte na tlačítko **všechny prostředky** v hlavní navigační nabídce na levé straně. Pomocí vyhledávacího pole zadejte název aplikace, aby ji našli v seznamu prostředků. Pak klikněte na aplikaci IoT Central, které chcete spravovat.
+Abyste mohli začít, vyberte **všechny prostředky** v hlavní navigační nabídce na levé straně. Pomocí vyhledávacího pole zadejte název aplikace, aby ji našli v seznamu prostředků. Vyberte aplikace IoT Central, které chcete spravovat.
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image2.png)
 
-Přejděte do aplikace, klikněte na adresu URL IoT Central aplikace.
+Přejděte do aplikace, vyberte IoT Central adresa URL aplikace.
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image3.png)
 
-Přesuňte aplikaci do jiné skupiny prostředků, klikněte na tlačítko **změnit** vedle skupiny prostředků. Na **přesunutí prostředků** stránky, vyberte skupinu prostředků, které byste chtěli migrovat této aplikace.
+Chcete-li přesunout aplikaci na jinou skupinu prostředků, vyberte **změnit** vedle skupiny prostředků. Na **přesunutí prostředků** stránky, vyberte skupinu prostředků, které byste chtěli migrovat této aplikace.
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image4.png)
 
-Přesunutí aplikace do jiného předplatného, klikněte na tlačítko **změnit** odkaz vedle předplatné. Vyberte předplatné, do kterého chcete migrovat této aplikace v zobrazeném dialogu.
+Chcete-li přesunout aplikaci do jiného předplatného, vyberte **změnit** odkaz vedle předplatné. Vyberte předplatné, do kterého chcete migrovat této aplikace v zobrazeném dialogu.
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image5.png)
 

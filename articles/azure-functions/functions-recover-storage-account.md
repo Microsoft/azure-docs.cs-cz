@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bddfccaf0749bbb5eaf206e5961c713efa5eea17
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732154"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311895"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s "modul runtime služby functions nedostupný"
 
@@ -66,7 +66,7 @@ V předchozím kroku by neměl připojovací řetězec účtu úložiště byly 
 ### <a name="guidance"></a>Doprovodné materiály
 
 * Nezaškrtávejte políčko "nastavení slotu" pro některé z těchto nastavení. Pokud jste prohození slotů nasazení funkce se přeruší.
-* Nenastavujte tato nastavení při použití automatického nasazení.
+* Neprovádějte žádné změny těchto nastavení jako součást automatizované nasazení.
 * Tato nastavení musí být zadaná a je platný v okamžiku vytvoření. Automatického nasazení, který neobsahuje toto nastavení způsobí neovlivňující aplikace i v případě, že nastavení jsou přidány po jejich výskytu.
 
 ## <a name="storage-account-credentials-invalid"></a>Neplatná pověření účtu úložiště

@@ -11,22 +11,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 96b22a6e44142fef8d47dc228d5491c31c65478f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 14a9e369f3366fc103cde2f0faafb570de409de7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823055"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311861"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
 Modul runtime Azure Functions podporuje [Java SE 8 LTS (zulu8.31.0.2 jre8.0.181 win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/).
 
-## <a name="programming-model"></a>Programovací model
+Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions pomocí Javy.
+
+Funkce Java je `public` metody upravené pomocí poznámek `@FunctionName`. Tato metoda definuje položku pro funkce jazyka java a musí být jedinečný v daném balíčku. 
+
+Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Také by se měla dokončit funkce Rychlý start k vytvoření první funkce pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [pomocí nástroje maven](functions-create-first-java-maven.md).
+
+## <a name="programming-model"></a>Programovací model 
 
 Koncepty [aktivačními událostmi a vazbami](functions-triggers-bindings.md) jsou základem pro Azure Functions. Triggery spuštění provádění kódu. Vazby poskytují způsob, jak předávat data a vrátit data z funkce, aniž byste museli psát kód pro přístup k vlastní data.
-
-Funkce by měly být bezstavové metodu ke zpracování vstupu a výstup. Funkce by neměl záviset na všechna pole instancí třídy. Všechny funkce metody by měly být `public` a metody s poznámkou @FunctionName musí být jedinečný, jako je zadání funkce definuje název metody.
 
 ## <a name="folder-structure"></a>struktura složek
 

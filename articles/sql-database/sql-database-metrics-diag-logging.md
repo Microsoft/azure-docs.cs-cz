@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 6f8dd8611e5e2120bdfa0ae111bf6e248ca0f3cb
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8b8f7aa559fa8b9adc805636c377f31dd252687b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214729"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309600"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -192,12 +192,14 @@ Pokud chcete povolit streamování telemetrická data diagnostiky pro prostřede
 
 ### <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Metriky a protokolování diagnostiky můžete povolit pomocí Powershellu.
 
 - Pokud chcete povolit úložiště pro diagnostické protokoly v účtu úložiště, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    ID účtu úložiště je ID prostředku pro cílový účet úložiště.
@@ -205,7 +207,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí Powershellu.
 - Pokud chcete povolit streamování protokolů diagnostiky do centra událostí, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    ID pravidla služby Azure Service Bus je řetězec v tomto formátu:
@@ -217,20 +219,20 @@ Metriky a protokolování diagnostiky můžete povolit pomocí Powershellu.
 - Povolení odesílání protokolů diagnostiky k pracovnímu prostoru Log Analytics, použijte tento příkaz:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - ID prostředku pracovního prostoru Log Analytics můžete získat pomocí následujícího příkazu:
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Konfigurace několika prostředků Azure
 
-Pro podporu více předplatných, pomocí skriptu prostředí PowerShell z [protokolování metrik prostředku povolit Azure pomocí Powershellu](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
+Pro podporu více předplatných, pomocí skriptu prostředí PowerShell z [protokolování metrik prostředku povolit Azure pomocí Powershellu](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
 Zadat ID prostředku pracovního prostoru \<$WSID\> jako parametr při spuštění skriptu `Enable-AzureRMDiagnostics.ps1` k odesílání diagnostických dat z více zdrojů do pracovního prostoru.
 

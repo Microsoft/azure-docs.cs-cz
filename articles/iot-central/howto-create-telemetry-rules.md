@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aee31f54ddf4e71dd9b9391ec93d0f2319addc3f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964811"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307953"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrická data a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -29,18 +29,18 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
 1. Pomocí Device Explorer přejděte k šabloně zařízení, pro který chcete přidat pravidlo pro.
 
-1. V rámci vybrané šablony klikněte na existující zařízení. 
+1. V části vybrané šablony vyberte ze stávajících zařízení.
 
-    >[!TIP] 
+    >[!TIP]
     >Pokud šablonu nebude mít všechna zařízení, nejdříve přidejte nové zařízení.
 
 1. Pokud jste dosud nevytvořili žádná pravidla, zobrazí se na následující obrazovce:
 
     ![Zatím žádná pravidla](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. Na **pravidla** klikněte na tlačítko **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** kartu, vyberte možnost **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
-1. Klikněte na tlačítko **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
+1. Vyberte **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
 
     ![Typy pravidel](media/howto-create-telemetry-rules/Rule_Types.png)
 
@@ -57,7 +57,7 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
 Podmínka definuje kritéria, která je sledována tímto pravidlem.
 
-1. Klikněte na tlačítko **+** vedle **podmínky** přidat novou podmínku.
+1. Vyberte **+** vedle **podmínky** přidat novou podmínku.
 
 1. Vyberte telemetrie, kterou chcete monitorovat z **měření** rozevíracího seznamu.
 

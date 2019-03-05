@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819440"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309022"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
 
 Informace o řešení chyb Chybná brána (502) přijal při použití služba application gateway.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -50,21 +52,21 @@ Ověření konfigurace skupiny zabezpečení sítě, směrování definovaného 
 * Zkontrolujte směrování definovaného uživatelem spojená s podsítí Application Gateway. Ujistěte se, že uživatelem definovaná TRASA není směrování provozu mimo podsíť back-endu – třeba zkontrolovat pro směrování do síťových virtuálních zařízení nebo výchozí trasy, inzerované do podsítě Application Gateway přes síť ExpressRoute nebo VPN.
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * Zkontrolujte efektivní skupiny zabezpečení sítě a trasu s back-endového virtuálního počítače
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * Kontrola přítomnosti vlastního DNS ve virtuální síti. DNS můžete zkontrolovat pohledem na podrobnosti o vlastnostech virtuálních sítí ve výstupu.
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -84,7 +86,7 @@ Pokud jsou k dispozici, ujistěte se, že je schopen správně přeložit plně 
 | Adresa URL testu |http://127.0.0.1/ |Cesta URL |
 | Interval |30 |Interval testu v sekundách |
 | Časový limit |30 |Časový limit testu v sekundách |
-| Prahová hodnota špatného stavu |3 |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |3 |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 ### <a name="solution"></a>Řešení
 
@@ -109,7 +111,7 @@ Povolit vlastních testů stavu paměti větší flexibilitu pro výchozí chov�
 | Cesta |Relativní cesta testu. Platná cesta začíná od "/". Sonda se odesílá do \<protokol\>://\<hostitele\>:\<port\>\<cesta\> |
 | Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucích sondy. |
 | Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný. |
-| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota pro poškozený stav |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 ### <a name="solution"></a>Řešení
 
@@ -132,7 +134,7 @@ Při přijetí požadavku uživatele Application Gateway použije nakonfigurovan
 Služba Application Gateway umožňuje uživatelům ke konfiguraci tohoto nastavení prostřednictvím nastavení BackendHttpSetting, můžete následně použije na různých fondů. Různých fondů back-end může mít různé nastavení BackendHttpSetting a nakonfigurovat vypršení časového limitu proto různé žádosti.
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>Prázdný BackendAddressPool
@@ -146,7 +148,7 @@ V případě Application Gateway nemá žádné virtuální počítače nebo šk
 Ujistěte se, že fond back endových adres není prázdný. To můžete udělat přes PowerShell, rozhraní příkazového řádku nebo portálu.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
 Výstup z předchozí rutiny by měl obsahovat neprázdný back endovém fondu adres. Tady je příklad, kde, dva fondy jsou vráceny, které jsou nakonfigurovány s plně kvalifikovaný název domény nebo IP adres back-endový virtuální počítače. Stav zřizování BackendAddressPool musí být 'bylo úspěšné".

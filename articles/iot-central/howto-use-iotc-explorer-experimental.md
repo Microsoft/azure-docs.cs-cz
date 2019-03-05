@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ace8eedf4b6f03c839fc2da7469e5e9c36bc5cae
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 167a7b008af521c5f4e403a3786b004138d69da9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213326"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311147"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitorování připojení zařízení pomocí Průzkumníka Azure IoT Central
 
@@ -48,10 +48,10 @@ Následující části popisují běžné příkazy a možnosti, které můžete
 Předtím, než můžete začít, musíte mít správce vaší aplikace IoT Central pro získání přístupového tokenu pro použití. Správce má následující kroky:
 
 1. Přejděte do **správu** pak **přístupové tokeny**.
-1. Klikněte na tlačítko **vygenerovat Token**.
+1. Vyberte **vygenerovat Token**.
     ![Snímek obrazovky stránky tokenu přístupu](media/howto-use-iotc-explorer-experimental/accesstokenspage.png)
 
-1. Zadejte název tokenu, klikněte na tlačítko **Další**a potom **kopírování**.
+1. Zadejte název tokenu, vyberte **Další**a potom **kopírování**.
     > [!NOTE]
     > Hodnota tokenu se zobrazí pouze jednou, takže musí být zkopírovány před jeho zavřením dialogu. Po zavření dialogového okna, se nikdy znovu zobrazí.
 

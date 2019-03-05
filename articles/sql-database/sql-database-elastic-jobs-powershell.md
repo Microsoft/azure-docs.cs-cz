@@ -12,20 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dc9b58402ed0fcc48d60b51d30f891ffcadddbe0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472639"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315618"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvoření a správa elastických úloh SQL Database pomocí Powershellu (preview)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 Rozhraní API prostředí PowerShell pro **úlohy elastické databáze** (ve verzi preview) umožňují definovat skupiny databází, u kterých se spustí skripty. Tento článek popisuje, jak vytvořit a spravovat **úlohy elastické databáze** pomocí rutin prostředí PowerShell. Zobrazit [přehled úloh Elastic](sql-database-elastic-jobs-overview.md). 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,9 +32,9 @@ Rozhraní API prostředí PowerShell pro **úlohy elastické databáze** (ve ver
 * **Úlohy elastic Database** balíčků v Powershellu: Zobrazit [úlohy instalace elastické databáze](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure
-Vyberte předplatné, je třeba Id předplatného (**- SubscriptionId**) nebo název předplatného (**- SubscriptionName**). Pokud máte více předplatných, můžete spustit **Get-AzureRmSubscription** rutiny a kopírovat nastavit informace o požadované předplatné z výsledku. Jakmile budete mít informace o vašem předplatném, spusťte následující rutiny můžete nastavit toto předplatné jako výchozí, konkrétně cíl pro vytváření a Správa úloh:
+Vyberte předplatné, je třeba Id předplatného (**- SubscriptionId**) nebo název předplatného (**- SubscriptionName**). Pokud máte více předplatných, můžete spustit **Get-AzSubscription** rutiny a kopírovat nastavit informace o požadované předplatné z výsledku. Jakmile budete mít informace o vašem předplatném, spusťte následující rutiny můžete nastavit toto předplatné jako výchozí, konkrétně cíl pro vytváření a Správa úloh:
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 [Prostředí PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) se doporučuje pro využití pro vývoj a spouštění skriptů prostředí PowerShell pro úlohy elastické databáze.
 

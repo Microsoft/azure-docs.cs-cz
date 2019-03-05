@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f3c1dae656e91fab91878ca2411f6cad0fc0431
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192468"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315142"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co je správa zařízení v Azure Active Directory?
 
@@ -89,7 +89,7 @@ Služba **Azure AD Join** je určená pro organizace, které se chtějí zaměř
 
 Implementace zařízení připojených k Azure AD vám poskytne následující výhody:
 
-- **Jednotné přihlašování** k vašim službám a aplikacím SaaS spravovaným v Azure. Vašim uživatelům se při přístupu k pracovním prostředkům nebudou zobrazovat další výzvy k ověření. Jednotné přihlašování funguje dokonce i v případě, že nejsou připojeni k dostupné doménové síti.
+- **Jednotné přihlašování** k vašim službám a aplikacím SaaS spravovaným v Azure. Vašim uživatelům se při přístupu k pracovním prostředkům nebudou zobrazovat další výzvy k ověření. Funkce jednotného přihlašování je k dispozici, i v případě, že vaši uživatelé nejsou připojeni k doménové síti.
 
 - **Předpisům organizace odpovídající přesun** uživatelských nastavení mezi připojenými zařízeními. Uživatelé kvůli zobrazení nastavení na různých zařízeních nemusí připojovat účet Microsoft (například Hotmail).
 

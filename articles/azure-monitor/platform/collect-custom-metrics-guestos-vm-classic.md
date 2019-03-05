@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: f6bf672905fe7752a6c3d07492861f43af43e1f5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893965"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315125"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [diagnostické rozšíření](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (označují se termínem "WAD" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly z hostovaný operační systém (Guest OS) spuštěná jako virtuální počítač, cloudovou službu nebo Service Fabric cluster. Rozšíření mohla odesílat telemetrii na [různými umístěními.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Proces, který je popsaný v tomto článku funguje pouze v klasických virtuál
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
+- Musíte mít buď [prostředí Azure PowerShell](/powershell/azure) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Vytvoření klasického virtuálního počítače a účtu úložiště
 
@@ -145,7 +147,7 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
 1. Spusťte PowerShell a přihlaste se.
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. Začněte tím, že nastavíte kontext pro klasický virtuální počítač.
@@ -157,7 +159,7 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
 1. Nastavte kontext účtu klasického úložiště, který byl vytvořen s virtuálním Počítačem.
 
     ```powershell
-    $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
+    $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
 1.  Nastavte cestu k souboru diagnostiky na proměnnou pomocí následujícího příkazu:

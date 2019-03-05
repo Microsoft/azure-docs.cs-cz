@@ -1,6 +1,6 @@
 ---
-title: Chyby neplatný šablony Azure | Microsoft Docs
-description: Popisuje, jak vyřešit chyby neplatný šablony.
+title: Chyb neplatných šablon Azure | Dokumentace Microsoftu
+description: Popisuje postup řešení chyb neplatných šablon.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,58 +13,58 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 59f07b9ba8116cb1a4b5ab50382d89d01a78853b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ee4bce38e0fcde93ba0417617ae90dab2eefda67
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357686"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316196"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb neplatný šablony
 
-Tento článek popisuje, jak vyřešit chyby neplatný šablony.
+Tento článek popisuje, jak vyřešit chyb neplatných šablon.
 
-## <a name="symptom"></a>Příznaky
+## <a name="symptom"></a>Příznak
 
-Při nasazení šablony, se zobrazí chyba oznamující:
+Při nasazování šablony, se zobrazí chyba s upozorněním:
 
 ```
 Code=InvalidTemplate
 Message=<varies>
 ```
 
-Chybová zpráva, závisí na typu chyby.
+Chybová zpráva závisí na typu chyby.
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba může způsobit z několika různých typů chyb. Obvykle zahrnují syntaxe nebo strukturální chyby v šabloně.
+Tato chyba může být následek několik různých typů chyb. Obvykle zahrnují syntaxe nebo strukturální Chyba v šabloně.
 
 <a id="syntax-error" />
 
 ## <a name="solution-1---syntax-error"></a>Řešení 1 - Chyba syntaxe
 
-Pokud se zobrazí chybovou zprávu, která určuje ověření šablony se nezdařilo, bude pravděpodobně problém syntaxe ve vaší šabloně.
+Pokud se zobrazí chybová zpráva, která určuje ověření šablony se nezdařilo, možná syntaxe ve vaší šabloně.
 
 ```
 Code=InvalidTemplate
 Message=Deployment template validation failed
 ```
 
-Tato chyba je snadné provést, protože může být složité výrazy šablony. Například následující přiřazení název účtu úložiště má jednu sadu závorky, tři funkce, tři sady závorky, jednu sadu jednoduchých uvozovek a jednu vlastnost:
+Tato chyba je snadné vytvořit, protože výrazy šablony může být složité. Například následující přiřazení název účtu úložiště má jednu sadu závorek, tři funkce, tří párů závorek, jednu sadu jednoduchých uvozovek a jednu vlastnost:
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 ```
 
-Pokud nezadáte syntaxe porovnávání, vytvoří šablona hodnotu, která se liší od svůj záměr.
+Pokud nezadáte syntaxe porovnávání, šablona vytváří hodnotu, která se liší od váš záměr.
 
-Po zobrazení tohoto typu chyby, pečlivě zkontrolujte syntaxi výrazu. Zvažte použití editor JSON jako [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) nebo [Visual Studio Code](resource-manager-vs-code.md), která vás upozorní chyby syntaxe.
+Když dostanete tento typ chyby, pečlivě si prostudujte syntaxe výrazu. Zvažte použití editoru JSON, jako je [sady Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) nebo [Visual Studio Code](resource-manager-vs-code.md), která vás upozorní chyby syntaxe.
 
 <a id="incorrect-segment-lengths" />
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Řešení 2 – nesprávný segment délky
 
-Další neplatný šablony chyba nastane, když název prostředku není ve správném formátu.
+Další Chyba Neplatná šablona nastane, pokud název prostředku není ve správném formátu.
 
 ```
 Code=InvalidTemplate
@@ -72,7 +72,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-Kořenové úrovně prostředku musí mít jeden menší segmentu v názvu než v typ prostředku. Každý segment je rozlišené pomocí lomítko. V následujícím příkladu, typ má dva segmenty a název jednoho segmentu, takže má **platný název**.
+Kořenové úrovně prostředku musí mít jeden menší segment v názvu než v typu prostředku. Každý segment je rozlišené pomocí lomítkem. V následujícím příkladu typ má dva segmenty a název obsahuje jeden segment, takže má **platný název**.
 
 ```json
 {
@@ -82,7 +82,7 @@ Kořenové úrovně prostředku musí mít jeden menší segmentu v názvu než 
 }
 ```
 
-Dalším příkladem je, ale **není platný název** protože má stejný počet segmentů jako typ.
+Je další příklad, ale **není platný název** protože má stejný počet segmentů jako typ.
 
 ```json
 {
@@ -92,7 +92,7 @@ Dalším příkladem je, ale **není platný název** protože má stejný poče
 }
 ```
 
-Pro podřízené prostředky typ a název mít stejný počet segmentů. Tento počet segmentů dává smysl, protože úplný název a typ pro podřízený objekt zahrnuje název nadřazeného a typu. Úplný název proto má stále jednoho menší segmentu než úplné typu.
+Pro podřízené prostředky typ a název mít stejný počet segmentů. Tento počet segmentů dává smysl, protože úplný název a typ pro podřízené zahrnuje nadřazené názvem a typem. Úplný název proto má stále jeden menší segment než úplným typem.
 
 ```json
 "resources": [
@@ -111,7 +111,7 @@ Pro podřízené prostředky typ a název mít stejný počet segmentů. Tento p
 ]
 ```
 
-Získávání segmentů správné může být složité s typy Resource Manager, které se použijí napříč zprostředkovatelé prostředků. Například použití prostředků zámku na web vyžaduje typ s čtyři segmenty. Název je tedy tři segmenty:
+Získání správné segmenty může být velmi obtížné s typy Resource Manageru, které se použilo pro poskytovatele prostředků. Například použití zámek prostředku na webu vyžaduje typ s čtyři segmenty. Název je proto tři segmenty:
 
 ```json
 {
@@ -125,7 +125,7 @@ Získávání segmentů správné může být složité s typy Resource Manager,
 
 ## <a name="solution-3---parameter-is-not-valid"></a>Řešení 3 – parametr není platný
 
-Pokud zadáte hodnotu parametru, který není jedním z povolených hodnot, zobrazí se zpráva podobná následující chybě:
+Pokud zadáte hodnotu parametru, jež není jednou z povolených hodnot, zobrazí se zpráva podobná následující chybu:
 
 ```
 Code=InvalidTemplate;
@@ -134,38 +134,38 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Double zkontrolujte povolené hodnoty v šabloně a zadejte jeden během nasazení. Další informace o povolených parametr hodnoty, najdete v části [oddílu parametry šablon Azure Resource Manager](resource-manager-templates-parameters.md).
+Double zkontrolujte povolené hodnoty v šabloně a zadejte jednu během nasazení. Další informace o povolených parametrů najdete v tématu [oddílu parametry šablon Azure Resource Manageru](resource-group-authoring-templates.md#parameters).
 
 <a id="too-many-resource-groups" />
 
-## <a name="solution-4---too-many-target-resource-groups"></a>Řešení 4 - příliš mnoho skupin prostředků cíle
+## <a name="solution-4---too-many-target-resource-groups"></a>Řešení 4 – příliš mnoho skupin prostředků cíle
 
-Pokud zadáte více než pět skupin prostředků cíle v jednom nasazení, zobrazí tato chyba. Zvažte buď konsolidace počet skupin prostředků ve vašem nasazení nebo nasazení některé šablony jako samostatná nasazení. Další informace najdete v tématu [prostředky Azure nasazení na více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
+Pokud chcete zadat víc než pět skupin prostředků cíle v jednom nasazení, tato chyba se zobrazí. Zvažte sloučení počet skupin prostředků ve vašem nasazení nebo nasazení některé šablony jako samostatná nasazení. Další informace najdete v tématu [Azure nasadit prostředky do více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
 
 <a id="circular-dependency" />
 
-## <a name="solution-5---circular-dependency-detected"></a>Řešení 5 - cyklická závislost zjistil
+## <a name="solution-5---circular-dependency-detected"></a>Řešení 5 – cyklická závislost zjistil
 
-Tato chyba se zobrazí, když prostředky jsou vzájemně závislé způsobem, který zabrání spuštění nasazení. Kombinace vzájemné závislosti díky dvou nebo více prostředků čekat na další prostředky, které jsou také čekání. Například resource1 závisí na resource3, resource2 závisí na resource1 a resource3 závisí na resource2. Obvykle můžete tento problém vyřešit odstraněním nepotřebných závislosti.
+Tato chyba se zobrazí, když prostředky jsou vzájemně závislé způsobem, který zabrání nasazení spustit. Díky kombinaci vzájemné závislosti dva nebo více prostředků, počkejte další prostředky, které jsou také čekání. Například zdroj1 závisí na resource3 zdroj2 závisí na zdroj1 a resource3 závisí na zdroj2. Obvykle můžete tento problém vyřešit odstraněním nepotřebných závislosti.
 
-K vyřešení cyklická závislost:
+Chcete-li vyřešit cyklická závislost:
 
 1. V šabloně najdete prostředek určený v cyklická závislost. 
-2. Pro tento prostředek, zkontrolujte **dependsOn** vlastnost a jakékoli použití **odkaz** funkce na prostředcích, které závisí na. 
-3. Zkontrolujte na prostředcích, které jsou závislé na tyto prostředky. Postupujte podle závislosti, dokud si všimnete na prostředek, který závisí na původní prostředků.
-5. Pro prostředků zahrnutých v cyklická závislost, pečlivě zkontrolujte všechna jeho použití **dependsOn** vlastnost k identifikaci všechny závislosti, které nejsou potřebné. Odeberte tyto závislosti. Pokud si nejste jistí, že je potřeba závislost, zkuste ji odebrat. 
+2. Pro daný prostředek, zkontrolujte **dependsOn** vlastnost a při každém použití **odkaz** funkce na prostředcích, které závisí. 
+3. Prozkoumejte tyto prostředky na prostředcích, které jsou závislé. Postupujte podle závislostí, dokud si všimnete prostředek, který závisí na původní zdroj.
+5. Pro prostředky, které jsou součástí cyklické závislosti, pečlivě zkontrolujte všechna použití **dependsOn** vlastnost k identifikaci případných závislostí, které nejsou potřebné. Odebrání těchto závislostí. Pokud si nejste jistí, že je potřeba závislý, odstraňte ho. 
 6. Znovu nasaďte šablonu.
 
-Odebírání hodnot **dependsOn** vlastnost mohou způsobit chyby při nasazování šablony. Pokud dojde k chybě, přidejte závislosti zpět do šablony. 
+Odebrání hodnoty z **dependsOn** vlastnost mohou způsobit chyby při nasazování šablony. Pokud dojde k chybě, přidejte závislosti zpět do šablony. 
 
-Pokud tento přístup nevyřeší cyklická závislost, zvažte přesunutí součást logiky nasazení do podřízené prostředky (například rozšíření nebo nastavení konfigurace). Nakonfigurujte tyto podřízené prostředky k nasazení po prostředků zahrnutých v cyklická závislost. Předpokládejme například, že nasazujete dva virtuální počítače, ale je nutné nastavit vlastnosti u každé z nich odkazovat na druhý. Je můžete nasadit v následujícím pořadí:
+Pokud tento přístup nevyřeší cyklická závislost, zvažte přesunutí části logiky nasazení do podřízených prostředků (jako je například rozšíření nebo nastavení konfigurace). Nakonfigurujte tyto podřízené prostředky k nasazení po prostředky zahrnuté v cyklická závislost. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte zadat vlastnosti na každé z nich odkazovat na druhý. Můžete je nasadit v následujícím pořadí:
 
 1. vm1
 2. vm2
-3. Rozšíření na vm1 závisí na vm1 a virtuálního počítače 2. Rozšíření nastaví hodnoty vm1, který získá z virtuálního počítače 2.
-4. Rozšíření na virtuálního počítače 2 závisí na vm1 a virtuálního počítače 2. Rozšíření virtuálního počítače 2, který získá ze vm1 nastaví hodnoty.
+3. Rozšíření na vm1 závisí na vm1 a vm2. Rozšíření nastaví hodnoty pro vm1, který získá z vm2.
+4. Rozšíření na vm2 závisí na vm1 a vm2. Rozšíření nastaví hodnoty pro vm2, který získá z vm1.
 
-Ve stejný přístup funguje pro aplikace služby App Service. Zvažte přesunutí hodnoty konfigurace do podřízených prostředkem prostředek aplikace. Můžete nasadit dva webové aplikace v následujícím pořadí:
+Stejný postup funguje u aplikací služby App Service. Zvažte přesunutí hodnoty konfigurace do podřízených prostředků sady prostředků aplikace. Můžete nasadit dvě webové aplikace v následujícím pořadí:
 
 1. webapp1
 2. webapp2

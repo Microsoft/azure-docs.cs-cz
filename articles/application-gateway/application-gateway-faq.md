@@ -8,14 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: a65aabc7b56c4dd5f2d22974756f5f3e54cebb31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5552ca80059b4aa7ef96caf7984b4c15ec177d38
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867707"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316587"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general"></a>Obecné
 
@@ -41,10 +43,10 @@ Podpora protokolu HTTP/2 je k dispozici pro připojení klientů k application g
 
 Ve výchozím nastavení je zakázána podpora HTTP/2. Následující příklad fragmentu kódu prostředí Azure PowerShell ukazuje, jak můžete zajistit:
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+```azurepowershell
+$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
 $gw.EnableHttp2 = $true
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Které prostředky jsou dnes podporované jako součást back-endový fond?
@@ -70,6 +72,10 @@ Naslouchací procesy jsou zpracovávány v pořadí, ve kterém jsou zobrazeny. 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Kde najdu IP a DNS Application Gateway?
 
 Při použití veřejné IP adresy jako koncový bod, tyto informace můžete najít na prostředek veřejné IP adresy nebo na stránce Přehled pro službu application gateway na portálu. Pro interní IP adresy to najdete na stránce Přehled.
+
+### <a name="what-is-keep-alive-timeout-and-tcp-idle-timeout-setting-on-application-gateway"></a>Co je vypršení časového limitu Keep-Alive a nastavení časového limitu nečinnosti protokolu TCP ve službě Application Gateway?
+
+Keep-Alive časový limit pro v1 SKU je 120 s. Keep-Alive časový limit pro v2 SKU je 75 s. časového limitu nečinnosti protokolu TCP je výchozí pro 4 min na front-endový virtuální IP adresy služby Application Gateway.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Mění název IP nebo DNS během životního cyklu Application Gateway?
 
@@ -126,7 +132,7 @@ Skupiny zabezpečení sítě (Nsg) podporují na podsítě služby application g
 
 * Výjimky musí být umístěno v pro příchozí provoz na portech 65503 65534 pro službu Application Gateway v1 SKU a porty 65200 – 65 535 pro v2 SKU. Tento rozsah portů je nutné pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudou se moct k zahájení změny činnost těchto koncových bodů.
 
-* Odchozí připojení k Internetu, nejde blokovat.
+* Odchozí připojení k Internetu, nejde blokovat. Odchozí výchozí pravidla v této skupině již povolit připojení k Internetu. Doporučujeme, že není odebrat výchozí odchozí pravidla a nevytvoříte dalších odchozích pravidel, které odepřou odchozí připojení k Internetu.
 
 * Musí se povolit provoz z značka AzureLoadBalancer.
 
@@ -342,7 +348,7 @@ K dispozici tři protokoly pro službu Application Gateway. Další informace na
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Jak poznám, že pokud jsou v pořádku Moje členů fondu back-end?
 
-Můžete použít rutinu Powershellu `Get-AzureRmApplicationGatewayBackendHealth` nebo ověřit stav prostřednictvím portálu návštěvou [diagnostiku brány aplikací](application-gateway-diagnostics.md)
+Můžete použít rutinu Powershellu `Get-AzApplicationGatewayBackendHealth` nebo ověřit stav prostřednictvím portálu návštěvou [diagnostiku brány aplikací](application-gateway-diagnostics.md)
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Co jsou zásady uchovávání informací na protokoly diagnostiky?
 

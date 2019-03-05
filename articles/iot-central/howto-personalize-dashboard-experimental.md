@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a7de9126716437e4e90185f46c9cf95f7de20d40
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 2a989a98399e9d6701d92d8e4e22b243cb1ebff5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220533"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315822"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Vytvoření a Správa osobních řídicích panelů
 
@@ -21,15 +21,15 @@ ms.locfileid: "57220533"
 
 ## <a name="create-dashboard"></a>Vytvoření řídicího panelu
 
-Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořenou z **ukázka Contoso** šablony. Řídicí panel můžete nahradit výchozí řídicí panel aplikací. Chcete-li tak učinit, klikněte na tlačítko **+ nová** v horní části stránky.
+Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořenou z **ukázka Contoso** šablony. Řídicí panel můžete nahradit výchozí řídicí panel aplikací. Chcete-li to provést, vyberte **+ nová** v horní části stránky.
 
 ![Řídicí panel pro aplikace založené na šabloně "Ukázkové společnosti Contoso"](media/howto-personalize-dashboard-experimental/defaultdashboard.png)
 
-Kliknutím na **+ nová**, otevře se editor řídicích panelů. V editoru můžete pojmenovat řídicí panel a zvolit položky z knihovny. Knihovna obsahuje dlaždice a řídicí panel primitiv, můžete přizpůsobit řídicí panel.
+Výběr **+ nová**, otevře se editor řídicích panelů. V editoru můžete pojmenovat řídicí panel a zvolit položky z knihovny. Knihovna obsahuje dlaždice a řídicí panel primitiv, můžete přizpůsobit řídicí panel.
 
 ![Knihovna řídicího panelu](media/howto-personalize-dashboard-experimental/dashboardeditor.png)
 
-Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte vlastnosti a nastavení hodnoty pro jedno zařízení, která spravujete. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Název a vyberte dlaždici dejte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **ventilátor rychlost** nastavení vybrané pro přidání k dlaždici. Klikněte na tlačítko **provádí** uložte změnu do řídicího panelu.
+Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte vlastnosti a nastavení hodnoty pro jedno zařízení, která spravujete. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Název a vyberte dlaždici dejte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **ventilátor rychlost** nastavení vybrané pro přidání k dlaždici. Vyberte **provádí** uložte změnu do řídicího panelu.
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media/howto-personalize-dashboard-experimental/dashboardsetting.png)
 

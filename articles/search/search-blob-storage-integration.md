@@ -4,17 +4,17 @@ description: Procházení textový obsah v úložišti objektů Blob v Azure pro
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310866"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316145"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Prohledávání služby Blob Storage pomocí Azure Search
 
@@ -38,7 +38,7 @@ Běžný scénář, který umožňuje snadno seřadit prostřednictvím objektů
 ## <a name="image-search"></a>Vyhledávání obrázků
 Azure Search fulltextové vyhledávání, Fasetové navigace a možnosti řazení se teď může používat pro metadata uložená v objektech BLOB bitové kopie.
 
-Pokud tyto Image jsou předem zpracovány pomocí [rozhraní API pro počítačové zpracování obrazu](https://www.microsoft.com/cognitive-services/computer-vision-api) od společnosti Microsoft Cognitive Services, je možné indexovat vizuálním obsahu nalezeném v každé bitové kopie, včetně rozpoznání OCR a ručně psaného textu. Pracujeme na přidání OCR a další možnosti zpracování obrazu přímo do služby Azure Search, pokud vás zajímají tyto možnosti Odeslat požadavek na naše [UserVoice](https://aka.ms/azsuv) nebo [pošlete nám e-mail](mailto:azscustquestions@microsoft.com).
+Kognitivní vyhledávání zahrnuje dovednosti zpracování obrázků, například [optického rozpoznávání znaků (OCR)](cognitive-search-skill-ocr.md) a identifikace [funkce visual](cognitive-search-skill-image-analysis.md) , které umožňuje indexování vizuálním obsahu nalezeném v každém obrázek.
 
 ## <a name="index-and-search-through-json-blobs"></a>Indexování a vyhledávání pomocí objektů BLOB JSON
 Služba Azure Search je možné nakonfigurovat extrahujte strukturované obsahu nalezeném v objektech BLOB, které obsahují JSON. Služba Azure Search můžete čtení objektů BLOB JSON a analýza strukturovaných obsah do příslušných polí dokumentu Azure Search. Služba Azure Search můžete taky využít objekty BLOB, které obsahují pole objektů JSON a mapování každý prvek na samostatný dokument Azure Search.

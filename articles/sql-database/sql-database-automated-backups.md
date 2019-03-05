@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 4a3b48be893c596f1a86bbf308a97868ed546006
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453575"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313918"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -126,12 +126,11 @@ Můžete změnit období uchování zálohy PITR pomocí webu Azure portal, pře
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změnit PITR období uchování zálohy pomocí Powershellu
 
-```powershell
-Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
-```
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
-> Toto rozhraní API je součástí modulu Powershellu AzureRM.Sql od verze [4.7.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.7.0-preview).
+```powershell
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
+```
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změnit dobu uchování PITR pomocí rozhraní REST API
 
@@ -174,4 +173,4 @@ Další informace najdete v tématu [rozhraní REST API pro uchování zálohy](
 - Obnovení do bodu v čase pomocí webu Azure portal, najdete v článku [obnovit databázi do bodu v čase pomocí webu Azure portal](sql-database-recovery-using-backups.md).
 - Pokud chcete obnovit do bodu v čase s použitím prostředí PowerShell, naleznete v tématu [obnovit databázi do bodu v čase s použitím prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 - Můžete konfigurovat, spravovat a obnovení z dlouhodobého uchovávání automatizovaných záloh v úložišti objektů Blob v Azure pomocí webu Azure portal najdete v tématu [správa dlouhodobého uchovávání záloh pomocí webu Azure portal](sql-database-long-term-backup-retention-configure.md).
-- Konfigurovat, spravovat a obnovení z dlouhodobě uchovávaných z automatických záloh na blogu Azure storage pomocí Powershellu, přečtěte si téma [správa dlouhodobého uchovávání záloh pomocí Powershellu](sql-database-long-term-backup-retention-configure.md).
+- Můžete konfigurovat, spravovat a obnovení z dlouhodobého uchovávání automatizovaných záloh v úložišti objektů Blob v Azure pomocí Powershellu, přečtěte si téma [správa dlouhodobého uchovávání záloh pomocí Powershellu](sql-database-long-term-backup-retention-configure.md).

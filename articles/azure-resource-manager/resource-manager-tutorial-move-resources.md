@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/19/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 62e35a361f2fcf9d6f484b699084a78f66121957
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820820"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310093"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group"></a>Kurz: Přesun prostředků Azure do jiné skupiny prostředků
 
 Další informace o přesunutí prostředků Azure z jedné skupiny prostředků do jiné skupiny prostředků. Prostředky Azure z jednoho předplatného Azure můžete také přesunout do jiného předplatného Azure. V tomto kurzu pomocí šablony resource Manageru k nasazení dvě skupiny prostředků a jeden účet úložiště. Potom přesuňte účet úložiště z jedné skupiny prostředků do jiné.
+
+![Azure Resource Manager přesunout prostředky diagramu](./media/resource-manager-tutorial-move-resources/resource-manager-template-move-resources.png)
 
 Tento kurz se zabývá následujícími úkony:
 

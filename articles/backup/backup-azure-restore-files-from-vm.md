@@ -7,14 +7,14 @@ manager: shivamg
 keywords: obnovení na úrovni položek; obnovení souborů ze záloh virtuálních počítačů Azure; obnovení souborů z virtuálního počítače Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 2/26/2019
+ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6c2ade276e43f5e40d334a62c62a1abaa42b1b78
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874153"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308937"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -74,13 +74,15 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
     - odchozí port 3260
 
 > [!Note]
-> Název souboru staženého skriptu bude mít "geo-name" pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678... Adresa URL bude "https://pod01-rec2.wcus.backup.windowsazure.com"
-> 
+>
+* Název souboru staženého skriptu bude mít **geo-name** pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678...<br><br>
+* Adresa URL bude "https://pod01-rec2.wcus.backup.windowsazure.com"
+
 
    Pro Linux vyžaduje skript 'open-iscsi' a "lshw" součásti pro připojení k bodu obnovení. Pokud komponenty na počítači, ve kterém se skript spouští neexistují, skript vyzve k zadání oprávnění k instalaci součásti. Poskytnout souhlas nainstalujte nezbytné součásti.
-   
+
    Přístup k download.microsoft.com je potřeba stáhnout součásti sloužící k sestavení zabezpečený kanál mezi počítačem, ve kterém se skript spouští a dat v bodu obnovení.
-   
+
    Spusťte skript na jakýkoli počítač, který má stejné (nebo kompatibilní) operačního systému jako zálohování virtuálního počítače. Zobrazit [tabulky kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements) pro kompatibilní operační systémy. Pokud chráněný virtuální počítač Azure používá prostory úložiště ve Windows (pro virtuální počítače Azure s Windows) nebo pole LVM/RAID (pro virtuální počítače s Linuxem), nelze spustit spustitelný soubor nebo skript ve stejném virtuálním počítači. Místo toho spusťte spustitelný soubor nebo skript na jiný počítač s kompatibilní operační systém.
 
 ### <a name="identifying-volumes"></a>Určení svazků
@@ -96,7 +98,7 @@ Při spuštění spustitelného souboru připojí nové svazky operačního syst
 V systému Linux jsou do složky, ve kterém se skript spouští připojené svazky bodů obnovení. Připojené disky, svazky a příslušnými cestami připojení jsou uvedeny odpovídajícím způsobem. Připojte tyto cesty jsou viditelné pro uživatele s kořenové úrovně přístupu. Projděte si svazky uvedené ve výstupu skriptu.
 
   ![Nabídky obnovení souborů v Linuxu](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
-  
+
 ## <a name="closing-the-connection"></a>Probíhá ukončování připojení
 
 Po identifikování souborů a zkopírujete do umístění místního úložiště, odeberte (nebo odpojte) další jednotky. Odpojit disky, na **obnovení souborů** nabídky na webu Azure Portal, klikněte na tlačítko **odpojit disky**.
@@ -113,8 +115,8 @@ V systému Linux po připojení k bodu obnovení je porušeno, operační systé
 
 Pokud chráněný virtuální počítač Azure má svazky s jeden nebo oba z těchto vlastností, nelze spustit spustitelný soubor skriptu v jednom virtuálním počítači.
 
-    - Svazky, které zahrnují více disků (doby trvání a prokládané svazky)
-    - Odolné proti chybám svazky (RAID-5 a zrcadlených svazků) na dynamických discích
+- Svazky, které zahrnují více disků (doby trvání a prokládané svazky)
+- Odolné proti chybám svazky (RAID-5 a zrcadlených svazků) na dynamických discích
 
 Místo toho spuštění spustitelného souboru skriptu na libovolném počítači s kompatibilní operační systém.
 
@@ -230,3 +232,41 @@ Pokud máte potíže při obnovení souborů z virtuálních počítačů, zkont
 | Výstupní soubor EXE: Skript je úspěšně spuštěn, ale "Nové svazky připojené" není zobrazena na výstup skriptu |    Jedná se o přechodnou chybu    | Svazky by byly již připojeny. Otevřete Průzkumníka a přejděte. Pokud ke spouštění skriptů pokaždé, když používáte stejný počítač, vezměte v úvahu počítač se restartuje a v seznamu má být zobrazena v následných exe spustí. |
 | Konkrétní Linux: Nelze zobrazit požadované svazky | Operační systém počítače, ve kterém se skript spouští nemusí rozpoznat základní systému souborů chráněných virtuálních počítačů | Zkontrolujte, zda bod obnovení je selhání konzistentní vzhledem k aplikacím nebo konzistentní. Pokud soubor konzistentní, spusťte skript na jiném počítači jejichž operační systém rozpozná systému souborů chráněném virtuálním počítači |
 | Konkrétní Windows: Nelze zobrazit požadované svazky | Disky připojené, ale nebyly nakonfigurovány svazky | Na obrazovce správy disků zjistěte další disky týkající se bodu obnovení. Jestliže má některý z těchto disků v offline stavu akci, díky kterým online kliknutím pravým tlačítkem na disk a klikněte na tlačítko "Online.|
+
+## <a name="security"></a>Zabezpečení
+
+Tato část popisuje různé bezpečnostní opatření přijatá k provádění obnovení souborů ze záloh virtuálních počítačů Azure tak, aby uživatelé informováni bezpečnostní aspekty funkcí.
+
+### <a name="feature-flow"></a>Funkce toku
+
+Tato funkce byla vytvořena pro přístup k datům virtuálního počítače, aniž byste museli obnovit celý virtuální počítač nebo virtuální počítač disky a v krocích minimální. Poskytuje přístup k datům virtuálního počítače pomocí skriptu (který připojí svazek obnovení při spuštění uvedeno níže), a proto tvoří základní kámen všechny implementace zabezpečení
+
+  ![Tok funkce zabezpečení](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+
+### <a name="security-implementations"></a>Implementace zabezpečení
+
+#### <a name="select-recovery-point-who-can-generate-script"></a>Vyberte bod obnovení (který můžete vygenerovat skript)
+
+Skript poskytuje přístup k datům virtuálního počítače, je potřeba regulovat, který můžete generovat na prvním místě. Jeden potřebuje přihlásit do portálu Azure portal a by měl být [oprávnění RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) budete moci vygenerovat skript.
+
+Obnovení souborů musí stejnou úroveň autorizace podle potřeby pro obnovení virtuálního počítače a obnovení disků. Jinými slovy jen ověřeným uživatelům může zobrazit data virtuálního počítače můžete vygenerovat skript.
+
+Generovaný skript je podepsané certifikátem Microsoft official pro službu Azure Backup. Manipulaci s skript znamená, že podpis je porušený a jakékoli pokusy o spuštění skriptu je zvýrazněná jako potenciální riziko operačního systému.
+
+#### <a name="mount-recovery-volume-who-can-run-script"></a>Svazek pro obnovení připojení (který můžete spustit skript)
+
+Pouze správce můžete spustit skript a byste ho spustit v režimu se zvýšenými oprávněními. Pouze skript spustí předem generovaného sadu kroků a nepřijímá vstup z externího zdroje.
+
+Pro spuštění skriptu, jedna vyžaduje heslo, které se zobrazí pouze na autorizované uživatele v okamžiku generování skriptů webu Azure portal nebo Powershellu/CLI. Tím je zajištěno, že autorizovaným uživatelům, kteří jej stáhne skript zodpovídá také pro spuštění skriptu.
+
+#### <a name="browse-files-and-folders"></a>Procházet soubory a složky
+
+Procházet soubory a složky, skript používá iniciátor iSCSI na počítači a připojit k bodu obnovení, který je nakonfigurovaný jako cíl iSCSI. Zde jeden může převzít scénáře, ve kterém jeden pokouší napodobují/falešného buď/všechny komponenty.
+
+Tak, aby jednotlivé součásti ověřuje druhé používáme vzájemné mechanismus ověřování CHAP. To znamená, že je velmi obtížné pro falešné iniciátor pro připojení k cíli iSCSI a falešné cíl, který má být připojen k počítači, ve kterém se skript spouští.
+
+Tok dat mezi službou pro zotavení a počítač je chráněn vytváření bezpečného tunelu SSL přes TCP ([by měla podporovat protokol TLS 1.2](#system-requirements) na počítači, ve kterém se skript spouští)
+
+Všechny soubory řízení přístupu seznamu (ACL) ve nadřazené/zálohovanému virtuálnímu počítači jsou zachovány v systému připojeného souboru také.
+
+Skript poskytuje přístup jen pro čtení k vytvoření bodu obnovení a je platný pouze 12 hodin. Pokud uživatel chce odebrat přístup k dříve, pak se přihlaste na portál/PowerShell nebo rozhraní příkazového řádku Azure a provádět **odpojit disky** pro tento konkrétnímu bodu obnovení. Skript bude zrušena platnost okamžitě.

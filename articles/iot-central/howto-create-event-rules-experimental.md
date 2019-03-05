@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 937f8fe09cae6284b318201657cf112138ac17c7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 7ed7ad6529035fbea018bdf1515947d37dfbbece
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217219"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308139"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření události pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -33,7 +33,7 @@ Pokud chcete vytvořit pravidlo události, šablona zařízení musí mít alesp
 
     ![Zatím žádná pravidla](media/howto-create-event-rules-experimental/Rules_Landing_Page.png)
 
-1. Na **pravidla** klikněte na tlačítko **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** kartu, vyberte možnost **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
 1. Zvolte **události** dlaždici vytvořit událost pravidlo monitorování.
 

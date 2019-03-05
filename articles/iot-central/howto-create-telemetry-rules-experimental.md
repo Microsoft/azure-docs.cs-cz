@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c8cba4006d1112ccc1529fc1769e046fe45468a7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: f8af115824ec48492d0f53297a6e697f7011ff55
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214176"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316417"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrická data a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -33,9 +33,9 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
     ![Zatím žádná pravidla](media/howto-create-telemetry-rules-experimental/Rules_Landing_Page.png)
 
-1. Na **pravidla** klikněte na tlačítko **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** kartu, vyberte možnost **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
-1. Klikněte na tlačítko **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
+1. Vyberte **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
 
     ![Typy pravidel](media/howto-create-telemetry-rules-experimental/Rule_Types.png)
 
@@ -51,7 +51,7 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
 Podmínka definuje kritéria, která je sledována tímto pravidlem.
 
-1. Klikněte na tlačítko **+** vedle **podmínky** přidat novou podmínku.
+1. Vyberte **+** vedle **podmínky** přidat novou podmínku.
 
 1. Vyberte telemetrie, kterou chcete monitorovat z **měření** rozevíracího seznamu.
 

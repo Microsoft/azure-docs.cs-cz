@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159413"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308087"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurace aplikační brány s ukončení protokolu SSL pomocí webu Azure portal
 
@@ -29,6 +29,8 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření virtuálních počítačů použít jako servery back-endu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -132,7 +134,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -143,7 +145,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
       -Location EastUS
     ```
 
-3. Vytvořte druhý virtuální počítač a stejným postupem na něj nainstalujte službu IIS. Jako název a VMName v Set-AzureRmVMExtension zadejte *myVM2*.
+3. Vytvořte druhý virtuální počítač a stejným postupem na něj nainstalujte službu IIS. Zadejte *myVM2* pro její název a VMName v sadě AzVMExtension.
 
 ### <a name="add-backend-servers"></a>Přidání back-endových serverů
 

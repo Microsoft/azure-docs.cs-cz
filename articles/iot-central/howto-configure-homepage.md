@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a42e88de693f93e0407c185efc84d17a03d16116
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 033a7207765f2ee6712f8552d5c1585280250d5e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215842"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312065"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicí panel aplikací
 
@@ -24,15 +24,15 @@ ms.locfileid: "57215842"
 
 ## <a name="add-tiles"></a>Přidat dlaždice
 
-Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořenou z **ukázka Contoso** šablony. Chcete-li přizpůsobit výchozí řídicí panel pro vaši aplikaci, klikněte na tlačítko **upravit** v horní části stránky.
+Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořenou z **ukázka Contoso** šablony. Chcete-li přizpůsobit výchozí řídicí panel pro vaši aplikaci, vyberte **upravit** v horní části stránky.
 
 ![Řídicí panel pro aplikace založené na šabloně "Ukázkové společnosti Contoso"](media/howto-configure-homepage/image1.png)
 
-Kliknutím na **upravit**, otevře se panel Knihovna řídicího panelu. Knihovna obsahuje dlaždice a řídicí panel primitiv, můžete přizpůsobit řídicí panel.
+Výběr **upravit**, otevře se panel Knihovna řídicího panelu. Knihovna obsahuje dlaždice a řídicí panel primitiv, můžete přizpůsobit řídicí panel.
 
 ![Knihovna řídicího panelu](media/howto-configure-homepage/image2.png)
 
-Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení pro zařízení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **nastavit teploty** nastavení vybrané pro přidání k dlaždici. Klikněte na tlačítko **provádí** se uložit změnu na řídicí panel.
+Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení pro zařízení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **nastavit teploty** nastavení vybrané pro přidání k dlaždici. Vyberte **provádí** se uložit změnu na řídicí panel.
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media/howto-configure-homepage/image3.png)
 

@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c595627275848de5489fe11e1327a72bf6251199
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 80ba612bf0f76fb0c1e202bec0bf88fa75fb2c98
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213258"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314003"
 ---
 # <a name="export-your-data-from-azure-iot-central"></a>Export dat z Azure IoT Central
 
@@ -85,14 +85,14 @@ Teď, když máte exportovat data do cílového úložiště/Event Hubs a služb
 
 1. Přihlaste se do vaší aplikace IoT Central.
 
-2. V nabídce vlevo klikněte na tlačítko **průběžný Export dat**.
+2. V nabídce vlevo vyberte **průběžný Export dat**.
 
     > [!Note]
     > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
 
     ![Vytvořit nové Centrum událostí](media/howto-export-data-experimental/export_menu.png)
 
-3. Klikněte na tlačítko **+ nová** tlačítko v pravém horním rohu. Vyberte jednu z **Azure Blob Storage**, **Azure Event Hubs**, nebo **Azure Service Bus** jako cíl pro export.
+3. Vyberte **+ nová** tlačítko v pravém horním rohu. Vyberte jednu z **Azure Blob Storage**, **Azure Event Hubs**, nebo **Azure Service Bus** jako cíl pro export.
 
     > [!NOTE]
     > Maximální počet exportů na aplikaci je pět.
@@ -111,10 +111,10 @@ Teď, když máte exportovat data do cílového úložiště/Event Hubs a služb
 
 5. (Volitelné) Pokud jste zvolili **zadejte připojovací řetězec**, můžete vložit připojovací řetězec se zobrazí nové pole. Chcete-li získat připojovací řetězec pro váš:
     - Účet úložiště, přejděte na účet úložiště na webu Azure Portal.
-        - V části **nastavení**, klikněte na tlačítko **přístupové klíče**
+        - V části **nastavení**vyberte **přístupové klíče**
         - Zkopírujte připojovací řetězec key1 a key2 připojovací řetězec
     - Event Hubs nebo Azure Service Bus, přejděte do oboru názvů na webu Azure Portal.
-        - V části **nastavení**, klikněte na tlačítko **sdílené zásady přístupu**
+        - V části **nastavení**vyberte **sdílené zásady přístupu**
         - Zvolte výchozí **RootManageSharedAccessKey** nebo vytvořte novou
         - Zkopírujte primární nebo sekundární připojovací řetězec
 

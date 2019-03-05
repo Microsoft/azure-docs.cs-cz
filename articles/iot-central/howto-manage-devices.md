@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 21c29d90d8ed149062f24b470603b0e0e03cc6ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658110"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315601"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -67,7 +67,7 @@ K hromadné registraci zařízení ve vaší aplikaci:
  >   [!NOTE] 
     Pokud nemáte šablonu zařízení, ale pak můžete importovat zařízení v rámci **zrušeno přiřazení zařízení** a jejich registrace bez jakékoli šablony. Po importu zařízení, můžete pak přidružit k jejich šablony jako další krok.
 
-1. Klikněte na **Importovat**.
+1. Vyberte **Import**.
 
     [![Akce importu](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
@@ -79,7 +79,7 @@ K hromadné registraci zařízení ve vaší aplikaci:
 
     [![Importovat úspěch](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Pokud zařízení importovat operace se nezdaří, zobrazí se chybová zpráva v mřížce zařízení. Soubor protokolu zachytávání všechny chyby se vygeneruje a kliknutím na chybové zprávy si můžete stáhnout.
+Pokud zařízení importovat operace se nezdaří, zobrazí se chybová zpráva v mřížce zařízení. Soubor protokolu zachytávání všechny chyby se vygeneruje a výběrem chybové zprávy si můžete stáhnout.
 
 
 **Přidružení zařízení pomocí šablony**
@@ -89,9 +89,9 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**.
     [![Nepřidružené zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. Vyberte zařízení, které chcete přidružit k šabloně.
-1. Klikněte na tlačítko **přidružit** možnost.
+1. Vyberte **přidružit** možnost.
     [![Přidružení zařízení](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
-1. Vyberte šablonu ze seznamu dostupných šablon a klikněte na tlačítko **přidružit** tlačítko.
+1. Vyberte šablonu ze seznamu dostupných šablon a vybrat **přidružit**.
 1. Vybraná zařízení se přesunou v šabloně příslušných zařízení.
 
  >   [!NOTE] 
@@ -106,7 +106,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Na levém panelu vyberte šablonu zařízení, pro který chcete exportovat zařízení.
 
-1. Vyberte zařízení, která chcete exportovat a pak klikněte na tlačítko **exportovat** akce.
+1. Vyberte zařízení, která chcete exportovat a pak vyberte **exportovat** akce.
 
     [![Export](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
 
@@ -114,7 +114,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 1. Po dokončení exportu zprávu o úspěšném dokončení se zobrazí spolu s odkazem na stažení generovaného souboru.
 
-1. Klikněte na **zpráva o úspěchu** stáhněte soubor do místní složky na disku.
+1. Vyberte **zpráva o úspěchu** stáhněte soubor do místní složky na disku.
 
     [![Export úspěch](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 

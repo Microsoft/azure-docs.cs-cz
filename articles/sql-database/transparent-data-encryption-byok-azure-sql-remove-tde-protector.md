@@ -12,20 +12,22 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/12/2018
-ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a3677dc5402948fc0105190d1891d709291d0f7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990287"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317726"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné
-- Musíte mít Azure PowerShell verze 4.2.0 nebo novější nainstalován a spuštěn. 
-- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat díky integraci služby Azure Key Vault – podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md) Další informace.
+- Musíte mít Azure PowerShell nainstalovaný a spuštěný. 
+- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat s podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md) Další informace.
 
 ## <a name="overview"></a>Přehled
 
@@ -45,34 +47,34 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachovat šifrovaná prostředky dostupné
 
 1. Vytvoření [nový klíč ve službě Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ujistěte se, že tento nový klíč je vytvořen v samostatné služby key vault z potenciálně napadeného ochrana TDE, protože je zřízený řízení přístupu na úrovni trezoru. 
-2. Přidat nový klíč k serveru pomocí [přidat AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) a [rutiny Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) rutiny a aktualizovat ho jako novou ochrana TDE serveru.
+2. Přidat nový klíč k serveru pomocí [přidat AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny a aktualizovat ho jako novou ochrana TDE serveru.
 
    ```powershell
    # Add the key from Key Vault to the server  
-   Add-AzureRmSqlServerKeyVaultKey `
+   Add-AzSqlServerKeyVaultKey `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -KeyId <KeyVaultKeyId>
 
    # Set the key as the TDE protector for all resources under the server
-   Set-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Set-AzSqlServerTransparentDataEncryptionProtector `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -Type AzureKeyVault -KeyId <KeyVaultKeyId> 
    ```
 
-3. Ujistěte se, že server a všechny repliky aktualizovaly na nový ochrana TDE pomocí [Get-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) rutiny. 
+3. Ujistěte se, že server a všechny repliky aktualizovaly na nový ochrana TDE pomocí [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) rutiny. 
 
    >[!NOTE]
    > Může trvat několik minut, než se nové ochrana TDE rozšíří do všech databází a sekundární databáze v rámci serveru.
 
    ```powershell
-   Get-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Get-AzSqlServerTransparentDataEncryptionProtector `
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Přijmout [zálohování nového klíče](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey) ve službě Key Vault.
+4. Přijmout [zálohování nového klíče](/powershell/module/az.keyvault/backup-azurekeyvaultkey) ve službě Key Vault.
 
    ```powershell
    <# -OutputFile parameter is optional; 
@@ -82,18 +84,18 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
    ```
-
-5. Odstranit ohrožený klíč ze služby Key Vault pomocí [Remove-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) rutiny. 
+ 
+5. Odstranit ohrožený klíč ze služby Key Vault pomocí [odebrat AzKeyVaultKey](/powershell/module/az.keyvault/remove-azurekeyvaultkey) rutiny. 
 
    ```powershell
-   Remove-AzureKeyVaultKey `
+   Remove-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName>
    ```
-
-6. Obnovení klíče do služby Key Vault v budoucnu pomocí [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey) rutiny:
+ 
+6. Obnovení klíče do služby Key Vault v budoucnu pomocí [obnovení AzKeyVaultKey](/powershell/module/az.keyvault/restore-azurekeyvaultkey) rutiny:
    ```powershell
-   Restore-AzureKeyVaultKey `
+   Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -InputFile <BackupFilePath>
    ```

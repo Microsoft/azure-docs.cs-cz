@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300247"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316519"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
 
@@ -124,7 +124,7 @@ CREATE TABLE Collection (
 
 Tato struktura klíč hodnota podle vašich potřeb bez jakýchkoliv omezení můžete přizpůsobit. Například, hodnota může být dokument XML namísto `nvarchar(max)` typu, pokud hodnota je dokument JSON, můžete vložit `CHECK` omezení, která ověřuje platnost sady obsah JSON. Můžete vložit libovolný počet hodnoty související s jeden klíč v další sloupce, přidat počítané sloupce a indexy pro zjednodušení a optimalizaci přístupu k datům, definovat tabulku jako paměti či optimalizovanou jen schéma tabulky získat lepší výkon, atd.
 
-Zobrazit [jak BWin OLTP v paměti používá k zajištění mimořádného výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro jejich ukládání do mezipaměti ASP.NET řešení, které dosáhnout 1.200.000 dávek za sekundu, například jak relační model efektivně slouží jako řešení páru klíč hodnota v praxi.
+Zobrazit [jak BWin OLTP v paměti používá k zajištění mimořádného výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro jejich ukládání do mezipaměti ASP.NET řešení, které dosáhnout 1.200.000 dávek za sekundu, například jak relační model efektivně slouží jako řešení páru klíč hodnota v praxi.
 
 ## <a name="next-steps"></a>Další postup
 Více modelů možnosti v Azure SQL Database jsou také základní funkce databázového stroje SQL serveru, které jsou sdíleny mezi Azure SQL Database a SQL Server. Další informace o těchto funkcích najdete v tématu stránky dokumentace služby SQL relační databáze:

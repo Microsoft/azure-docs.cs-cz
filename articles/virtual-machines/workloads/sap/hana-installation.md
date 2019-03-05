@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 03/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446388"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316638"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
@@ -50,7 +50,7 @@ Po obdržení velká Instance HANA jednotek od Microsoftu, ověřte následujíc
 
 Velká Instance HANA jednotku můžete připojit k této instanci SMT. (Další informace najdete v tématu [jak nastavit SMT server operačním systémem SUSE Linux](hana-setup-smt.md)). Alternativně musí být zaregistrované pomocí Red Hat předplatné správce, které potřebujete pro připojení k váš operační systém Red Hat. Další informace najdete v části poznámky v [co je SAP HANA v Azure (velké instance)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Tento krok je také je nutné pro použití dílčích oprav operačního systému, který zodpovídá za zákazníka. SUSE, najdete v dokumentaci k instalaci a konfiguraci SMT na této stránce o [SMT instalace](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+Tento krok je nezbytný pro použití dílčích oprav operačního systému, který zodpovídá za zákazníka. SUSE, najdete v dokumentaci k instalaci a konfiguraci SMT na této stránce o [SMT instalace](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 **Druhý krok** se kontroluje nové opravy a oprav konkrétní verze nebo verze operačního systému. Ověřte, že úroveň opravy velké instance HANA ve nejnovější stav. Můžou nastat případy, ve kterém nejsou zahrnuté nejnovějších oprav. Po déle než jednu jednotku velká Instance HANA, je nutné zkontrolovat, jestli je potřeba použít opravy.
 
@@ -80,6 +80,7 @@ Pokud si objednat další instance do vašeho tenanta, budete muset upravit čas
 
 **Pátý krok** je kontrola etc/hosts. Jak získat předán okna, mají různé IP adresy, které jsou přiřazené pro různé účely. Zkontrolujte soubor etc/hosts. Když jednotky jsou přidány do existujícího tenanta, Neočekáváme, že máte etc/hostitele nově nasazené systémy udržuje správně s IP adresami systémů, které byly dodány dříve. Je vaší povinností jako zákazník zajistí, že nově nasazené instance můžete pracovat a překlad názvů jednotky, které jste nasadili dříve ve vašem tenantovi. 
 
+
 ## <a name="operating-system"></a>Operační systém
 
 > [!IMPORTANT] 
@@ -105,7 +106,7 @@ Následují poznámky SAP podpory, které se dají použít k implementaci SAP H
 - [SAP support Poznámka #171356 – softwaru SAP v Linuxu:  Obecné informace](https://launchpad.support.sap.com/#/notes/1984787)
 - [Poznámka: podpora 1391070 # – Linux UUID řešení SAP](https://launchpad.support.sap.com/#/notes/1391070)
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) je jinou nabídku pro spuštění SAP HANA ve velkých instancích HANA. Verze RHEL 6.7 a 7.2 jsou k dispozici. Všimněte si, že na rozdíl od nativních virtuálních počítačích Azure kde se podporují jenom RHEL 7.2 a novější verze, velkých instancích HANA podporují RHEL 6.7 také. Doporučujeme však používat o verzi 7.x RHEL.
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) je jinou nabídku pro spuštění SAP HANA ve velkých instancích HANA. Verze RHEL 6.7 a 7.2 jsou k dispozici. Mějte na paměti, než kde se podporují jenom RHEL 7.2 a novější verze, nativní virtuální počítače Azure že velkých instancích HANA podporují RHEL 6.7 také. Doporučujeme však používat o verzi 7.x RHEL.
 
 Tady jsou další užitečné SAP na Red Hat souvisejících odkazů:
 - [SAP HANA na webu Red Hat Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
@@ -200,6 +201,16 @@ Pokud chcete optimalizovat SAP HANA na úložiště používá pod, nastavte ná
 Verze SAP HANA 1.0 až SPS12 tyto parametry můžete udělat během instalace databáze SAP HANA, jak je popsáno v [Poznámka SAP #2267798 – konfiguraci serveru SAP HANA database](https://launchpad.support.sap.com/#/notes/2267798).
 
 Můžete také nakonfigurovat parametry po instalaci databáze SAP HANA pomocí rozhraní hdbparam. 
+
+Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v případech omezení velikosti souborů jako v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
+
+> [!IMPORTANT]
+> Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini Hana
+> 
+- datavolume_striping=true
+- datavolume_striping_size_gb = 15000
+- Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+
 
 V SAP HANA 2.0 hdbparam framework je zastaralá. Parametry v důsledku toho musíte nastavit pomocí příkazů jazyka SQL. Další informace najdete v tématu [Poznámka SAP #2399079: Odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 

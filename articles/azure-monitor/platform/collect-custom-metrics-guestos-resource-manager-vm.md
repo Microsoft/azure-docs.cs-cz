@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1eaf73e1d8b3c60ea32fa7d4aaf51a212d24a18c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6e79aba5ae6d06c207b0070fd7741471db7d820c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894594"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316910"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metrik hostovaného operačního systému do Azure monitoru metriky ukládat pomocí šablony Resource Manageru pro virtuální počítače s Windows
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Pomocí Azure monitoru [diagnostické rozšíření](diagnostics-extension-overview.md), můžete shromažďovat metriky a protokoly z hostovaný operační systém (Guest OS), na kterém běží v rámci virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření mohla odesílat telemetrii na [různými umístěními.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -29,7 +31,7 @@ Pokud jste začínáte se šablonami Resource Manageru, přečtěte si o [nasaze
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
 
-- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
+- Musíte mít buď [prostředí Azure PowerShell](/powershell/azure) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení jako datová jímka Azure monitoru
@@ -237,17 +239,17 @@ Uložte a zavřete oba soubory.
 K nasazení šablony Resource Manageru, můžeme využít prostředí Azure PowerShell.
 
 1. Spusťte PowerShell.
-1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`.
-1. Získat seznam vašich předplatných s použitím `Get-AzureRmSubscription`.
+1. Přihlaste se k Azure s využitím `Login-AzAccount`.
+1. Získat seznam vašich předplatných s použitím `Get-AzSubscription`.
 1. Nastavte předplatné, které používáte k vytvoření nebo aktualizaci virtuálního počítače:
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. Chcete-li vytvořit novou skupinu prostředků pro virtuální počítač, který se nasazuje, spusťte následující příkaz:
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > Nezapomeňte [použijte oblast Azure, který je povolený pro vlastní metriky](metrics-custom-overview.md).
@@ -257,7 +259,7 @@ K nasazení šablony Resource Manageru, můžeme využít prostředí Azure Powe
    > Pokud chcete aktualizovat existující virtuální počítač, stačí přidat *-režim přírůstkového* na konec příkazu.
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. Po úspěšném nasazení virtuální počítač by měl být na webu Azure Portal, generování metrik do Azure monitoru.

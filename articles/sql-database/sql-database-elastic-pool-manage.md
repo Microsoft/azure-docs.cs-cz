@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2a719fcbe2180e366060fba11bf64ad9770aa672
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e35de707abe04702201969fdfd008fc9713fc391
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756117"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309736"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Vytvoření a správa elastických fondů Azure SQL Database
 
@@ -39,6 +39,8 @@ Odsud můžete provést libovolné z následujících změn a uložte si je vše
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Spravovat elastické fondy a databáze ve fondu
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Pokud chcete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fondu pomocí prostředí Azure PowerShell, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete vytvářet a spravovat servery SQL Database pro elastický fond, přečtěte si téma [vytvořit a spravovat servery SQL Database](sql-database-servers.md). Vytvoření a Správa pravidel brány firewall najdete v tématu [vytvoření a Správa pravidel brány firewall pomocí prostředí PowerShell](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
 
 > [!TIP]
@@ -47,15 +49,15 @@ Pokud chcete vytvářet a spravovat databázi SQL elastické fondy a databáze v
 
 | Rutina | Popis |
 | --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|Vytvoří elastický fond.|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Získá elastických fondů a jejich hodnot vlastností.|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Upraví vlastnosti elastického fondu pro příklad, použijte **StorageMB** vlastnost změnit maximální velikost úložiště elastického fondu.|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Odstraní elastického fondu.|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Získá stav operací v elastickém fondu|
-|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Vytvoří novou databázi v existující fond nebo izolovanou databázi. |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Získá jednu nebo více databází.|
-|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Nastaví vlastnosti pro databáze nebo přesune databázi do, z nebo mezi elastickými fondy.|
-|[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Odebere databázi.|
+|[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Vytvoří elastický fond.|
+|[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Získá elastických fondů a jejich hodnot vlastností.|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|Upraví vlastnosti elastického fondu pro příklad, použijte **StorageMB** vlastnost změnit maximální velikost úložiště elastického fondu.|
+|[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|Odstraní elastického fondu.|
+|[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|Získá stav operací v elastickém fondu|
+|[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Vytvoří novou databázi v existující fond nebo izolovanou databázi. |
+|[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Získá jednu nebo více databází.|
+|[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)|Nastaví vlastnosti pro databáze nebo přesune databázi do, z nebo mezi elastickými fondy.|
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase)|Odebere databázi.|
 
 > [!TIP]
 > Vytvoření mnoha databází v elastickém fondu může trvat dobu, pokud se provádí pomocí portálu nebo rutiny prostředí PowerShell jednu databázi po jednom. K automatizaci vytváření elastického fondu, naleznete v tématu [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).

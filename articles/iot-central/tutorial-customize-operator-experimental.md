@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0494e9ef2a4f7adddd615dbf7882c9f2b4b81982
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5fac49c3c1e99421ec3ff25514950d9b9bc3b0bd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213207"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314683"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central – operátor (návrh nové uživatelské rozhraní)
 
@@ -48,7 +48,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Stránka šablony zařízení](media/tutorial-customize-operator-experimental/devicetemplates.png)
 
-2. Přizpůsobte si řídicí panel zařízení, klikněte na tlačítko **připojené Vzduchovod (1.0.0)** šablony zařízení, které jste vytvořili v [definujte nový typ zařízení ve vaší aplikaci](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) kurzu.
+2. Chcete-li přizpůsobit řídicí panel zařízení, vyberte **připojené Vzduchovod (1.0.0)** šablony zařízení, které jste vytvořili v [definujte nový typ zařízení ve vaší aplikaci](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) kurzu.
 
 3. Chcete-li upravit řídicí panel, vyberte **řídicí panel** kartu.
 
@@ -67,7 +67,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Přidání KPI](media/tutorial-customize-operator-experimental/addkpi.png)
 
-5. Klikněte na **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
+5. Vyberte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
 
     ![Dlaždice KPI](media/tutorial-customize-operator-experimental/temperaturekpi.png)
 
@@ -101,7 +101,7 @@ Můžete použít **šablon** stránky k přizpůsobení karty řídicí panel, 
 
     ![Zobrazit a používat šablonu zařízení](media/tutorial-customize-operator-experimental/usetemplate.png)
 
-2. Chcete-li aktualizovat umístění tohoto zařízení, zvolte **vlastnosti** a upravit její hodnotu v dlaždici umístění. Pak klikněte na tlačítko **Uložit**:
+2. Chcete-li aktualizovat umístění tohoto zařízení, zvolte **vlastnosti** a upravit její hodnotu v dlaždici umístění. Potom vyberte **Uložit**:
 
     ![Úprava nastavení vlastnosti](media/tutorial-customize-operator-experimental/editproperty.png)
 
@@ -122,7 +122,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí 
 > [!NOTE]
 > Uživatelé mohou také vytvářet své vlastní osobní řídicí panely a zvolte jednu z nich jako výchozí.
 
-1. Chcete-li přizpůsobit výchozí řídicí panel aplikace, přejděte na **řídicí panel** stránky a klikněte na tlačítko **upravit** v horní části stránky. Knihovna objektů, které lze přidat na řídicí panel se zobrazí panel.
+1. Chcete-li přizpůsobit výchozí řídicí panel aplikace, přejděte na **řídicí panel** stránku a vybrat **upravit** v horní části stránky. Knihovna objektů, které lze přidat na řídicí panel se zobrazí panel.
 
     ![Stránka řídicího panelu](media/tutorial-customize-operator-experimental/builderhome.png)
 
@@ -133,7 +133,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí 
     > [!NOTE]
     > Můžete také přidat odkazy na stránky ve vaší aplikaci Azure IoT Central. Můžete třeba přidat odkaz na řídicí panel zařízení nebo na stránku nastavení.
 
-3. Volitelně můžete zvolit **Image** a nahrát obrázek se zobrazí na řídicím panelu. Obrázek může mít adresu URL, na který můžete procházet po kliknutí:
+3. Volitelně můžete zvolit **Image** a nahrát obrázek se zobrazí na řídicím panelu. Obrázek může mít adresu URL, na který můžete procházet, když ji vyberete:
 
     ![Přidání obrázku na řídicí panel](media/tutorial-customize-operator-experimental/addimage.png)
 
@@ -145,7 +145,7 @@ Chcete-li zobrazit řídicí panel aplikací jako operátor náhled, vyberte **p
 
 ![Přepnutí režimu návrhu](media/tutorial-customize-operator-experimental/operatorviewhome.png)
 
-Když kliknete na dlaždice s obrázky a odkazy, přejdete na adresy URL, které jste nastavili jako tvůrce.
+Můžete vybrat dlaždice odkazů a obrázků přejděte k adresám URL, které jste nastavili jako tvůrce.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7819dc62d766a6b35f5c2efe1179cb0adb0ab933
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 024a622484a83957c9ab5f4a684a346a55787ccf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243546"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313357"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -31,13 +31,13 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "",
-    "parameters": {  },
-    "variables": {  },
-    "functions": [  ],
-    "resources": [  ],
-    "outputs": {  }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "",
+  "parameters": {  },
+  "variables": {  },
+  "functions": [  ],
+  "resources": [  ],
+  "outputs": {  }
 }
 ```
 
@@ -55,106 +55,106 @@ Každý prvek má vlastnosti, které můžete nastavit. Následující příklad
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "",
-    "parameters": {  
-        "<parameter-name>" : {
-            "type" : "<type-of-parameter-value>",
-            "defaultValue": "<default-value-of-parameter>",
-            "allowedValues": [ "<array-of-allowed-values>" ],
-            "minValue": <minimum-value-for-int>,
-            "maxValue": <maximum-value-for-int>,
-            "minLength": <minimum-length-for-string-or-array>,
-            "maxLength": <maximum-length-for-string-or-array-parameters>,
-            "metadata": {
-                "description": "<description-of-the parameter>" 
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "",
+  "parameters": {  
+    "<parameter-name>" : {
+      "type" : "<type-of-parameter-value>",
+      "defaultValue": "<default-value-of-parameter>",
+      "allowedValues": [ "<array-of-allowed-values>" ],
+      "minValue": <minimum-value-for-int>,
+      "maxValue": <maximum-value-for-int>,
+      "minLength": <minimum-length-for-string-or-array>,
+      "maxLength": <maximum-length-for-string-or-array-parameters>,
+      "metadata": {
+        "description": "<description-of-the parameter>" 
+      }
+    }
+  },
+  "variables": {
+    "<variable-name>": "<variable-value>",
+    "<variable-object-name>": {
+      <variable-complex-type-value>
+    },
+    "<variable-object-name>": {
+      "copy": [
+        {
+          "name": "<name-of-array-property>",
+          "count": <number-of-iterations>,
+          "input": <object-or-value-to-repeat>
         }
+      ]
     },
-    "variables": {
-        "<variable-name>": "<variable-value>",
-        "<variable-object-name>": {
-            <variable-complex-type-value>
-        },
-        "<variable-object-name>": {
-            "copy": [
-                {
-                    "name": "<name-of-array-property>",
-                    "count": <number-of-iterations>,
-                    "input": <object-or-value-to-repeat>
-                }
-            ]
-        },
-        "copy": [
-            {
-                "name": "<variable-array-name>",
-                "count": <number-of-iterations>,
-                "input": <object-or-value-to-repeat>
-            }
-        ]
-    },
-    "functions": [
+    "copy": [
       {
-        "namespace": "<namespace-for-your-function>",
-        "members": {
-          "<function-name>": {
-            "parameters": [
-              {
-                "name": "<parameter-name>",
-                "type": "<type-of-parameter-value>"
-              }
-            ],
-            "output": {
-              "type": "<type-of-output-value>",
-              "value": "<function-expression>"
+        "name": "<variable-array-name>",
+        "count": <number-of-iterations>,
+        "input": <object-or-value-to-repeat>
+      }
+    ]
+  },
+  "functions": [
+    {
+      "namespace": "<namespace-for-your-function>",
+      "members": {
+        "<function-name>": {
+          "parameters": [
+            {
+              "name": "<parameter-name>",
+              "type": "<type-of-parameter-value>"
             }
+          ],
+          "output": {
+            "type": "<type-of-output-value>",
+            "value": "<function-expression>"
           }
         }
       }
-    ],
-    "resources": [
-      {
-          "condition": "<boolean-value-whether-to-deploy>",
-          "apiVersion": "<api-version-of-resource>",
-          "type": "<resource-provider-namespace/resource-type-name>",
-          "name": "<name-of-the-resource>",
-          "location": "<location-of-resource>",
-          "tags": {
-              "<tag-name1>": "<tag-value1>",
-              "<tag-name2>": "<tag-value2>"
-          },
-          "comments": "<your-reference-notes>",
-          "copy": {
-              "name": "<name-of-copy-loop>",
-              "count": "<number-of-iterations>",
-              "mode": "<serial-or-parallel>",
-              "batchSize": "<number-to-deploy-serially>"
-          },
-          "dependsOn": [
-              "<array-of-related-resource-names>"
-          ],
-          "properties": {
-              "<settings-for-the-resource>",
-              "copy": [
-                  {
-                      "name": ,
-                      "count": ,
-                      "input": {}
-                  }
-              ]
-          },
-          "resources": [
-              "<array-of-child-resources>"
-          ]
-      }
-    ],
-    "outputs": {
-        "<outputName>" : {
-            "condition": "<boolean-value-whether-to-output-value>",
-            "type" : "<type-of-output-value>",
-            "value": "<output-value-expression>"
-        }
     }
+  ],
+  "resources": [
+    {
+      "condition": "<boolean-value-whether-to-deploy>",
+      "apiVersion": "<api-version-of-resource>",
+      "type": "<resource-provider-namespace/resource-type-name>",
+      "name": "<name-of-the-resource>",
+      "location": "<location-of-resource>",
+        "tags": {
+          "<tag-name1>": "<tag-value1>",
+          "<tag-name2>": "<tag-value2>"
+        },
+        "comments": "<your-reference-notes>",
+        "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": "<number-of-iterations>",
+          "mode": "<serial-or-parallel>",
+          "batchSize": "<number-to-deploy-serially>"
+        },
+        "dependsOn": [
+          "<array-of-related-resource-names>"
+        ],
+        "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+            {
+              "name": ,
+              "count": ,
+              "input": {}
+            }
+          ]
+        },
+        "resources": [
+          "<array-of-child-resources>"
+        ]
+    }
+  ],
+  "outputs": {
+    "<outputName>" : {
+      "condition": "<boolean-value-whether-to-output-value>",
+      "type" : "<type-of-output-value>",
+      "value": "<output-value-expression>"
+    }
+  }
 }
 ```
 
@@ -170,7 +170,7 @@ Následující příklad ukazuje, jak použít několik funkcí při vytvářen�
 
 ```json
 "variables": {
-    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 }
 ```
 
@@ -180,20 +180,179 @@ Následující příklad ukazuje, jak použít několik funkcí při vytvářen�
 
 V sekci parametrů šablony zadejte hodnoty, které můžete zadat při nasazování prostředků. Tyto hodnoty parametrů umožňují vlastní nastavení nasazení tím, že poskytuje hodnoty, které jsou přizpůsobené pro konkrétní prostředí (jako je vývoj, testování a produkce). Není nutné zadat parametry v šabloně, ale bez parametrů by vždy šablony nasadit stejným prostředkům se stejnými názvy, umístění a vlastnosti.
 
-Následující příklad ukazuje definicí jednoduchého parametru:
+Jste omezeni na 256 parametrů v šabloně. Počet parametrů můžete omezit použitím objektů, které obsahují více vlastností, jak je znázorněno v tomto článku.
+
+### <a name="available-properties"></a>Dostupné vlastnosti
+
+Dostupné vlastnosti parametru jsou:
 
 ```json
 "parameters": {
-  "siteNamePrefix": {
-    "type": "string",
+  "<parameter-name>" : {
+    "type" : "<type-of-parameter-value>",
+    "defaultValue": "<default-value-of-parameter>",
+    "allowedValues": [ "<array-of-allowed-values>" ],
+    "minValue": <minimum-value-for-int>,
+    "maxValue": <maximum-value-for-int>,
+    "minLength": <minimum-length-for-string-or-array>,
+    "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "The name prefix of the web app that you wish to create."
+      "description": "<description-of-the parameter>" 
+    }
+  }
+}
+```
+
+| Název elementu | Požaduje se | Popis |
+|:--- |:--- |:--- |
+| Název parametru |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
+| type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **securestring**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
+| Výchozí hodnota |Ne |Výchozí hodnota pro parametr, pokud se nezadá žádná hodnota pro parametr. |
+| allowedValues |Ne |Povolené hodnoty pro parametr, abyste měli jistotu, že se zadal správný hodnotu pole. |
+| minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je také zahrnuto. |
+| maxValue |Ne |Maximální hodnoty pro parametry typu int, tato hodnota je také zahrnuto. |
+| minLength |Ne |Minimální délku řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
+| maxLength |Ne |Maximální délka řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
+| description |Ne |Popis parametru, který se zobrazí uživatelům na portálu. Další informace najdete v tématu [komentáře v šablonách](#comments). |
+
+### <a name="define-and-use-a-parameter"></a>Definujte a použijte parametr.
+
+Následující příklad ukazuje definicí jednoduchého parametru. Definuje název parametru a určuje, že přijímá řetězcovou hodnotu. Parametr přijímá pouze hodnoty, které dávají smysl pro zamýšlený účel. Pokud během nasazení se nezadá žádná hodnota určuje výchozí hodnotu. Nakonec tento parametr obsahuje popis jeho použití.
+
+```json
+"parameters": {
+  "storageSKU": {
+    "type": "string",
+    "allowedValues": [
+      "Standard_LRS",
+      "Standard_ZRS",
+      "Standard_GRS",
+      "Standard_RAGRS",
+      "Premium_LRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+      "description": "The type of replication to use for the storage account."
+    }
+  }   
+}
+```
+
+V šabloně referenční hodnota parametru s následující syntaxí:
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "sku": {
+      "name": "[parameters('storageSKU')]"
+    },
+    ...
+  }
+]
+```
+
+### <a name="template-functions-with-parameters"></a>Šablony funkce s parametry
+
+Při zadávání výchozí hodnota pro parametr, můžete použít většina funkcí šablony. Pro vytvoření výchozí hodnoty můžete použít jinou hodnotu parametru. Následující šablona ukazuje použití funkcí v výchozí hodnota:
+
+```json
+"parameters": {
+  "siteName": {
+    "type": "string",
+    "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]",
+    "metadata": {
+      "description": "The site name. To use the default value, do not specify a new value."
     }
   },
+  "hostingPlanName": {
+    "type": "string",
+    "defaultValue": "[concat(parameters('siteName'),'-plan')]",
+    "metadata": {
+      "description": "The host name. To use the default value, do not specify a new value."
+    }
+  }
+}
+```
+
+Nelze použít `reference` funkce v sekci parametrů. Jsou parametry vyhodnoceny před nasazením proto `reference` funkce nelze získat běhový stav prostředku. 
+
+### <a name="objects-as-parameters"></a>Objekty, které jako parametry
+
+Může být jednodušší k uspořádání souvisejících hodnot v předáním jako objekt. Tento přístup také snižuje počet parametrů v šabloně.
+
+Definujte parametr v šabloně a během nasazení, zadejte objekt JSON místo jednu hodnotu. 
+
+```json
+"parameters": {
+  "VNetSettings": {
+    "type": "object",
+    "defaultValue": {
+      "name": "VNet1",
+      "location": "eastus",
+      "addressPrefixes": [
+        {
+          "name": "firstPrefix",
+          "addressPrefix": "10.0.0.0/22"
+        }
+      ],
+      "subnets": [
+        {
+          "name": "firstSubnet",
+          "addressPrefix": "10.0.0.0/24"
+        },
+        {
+          "name": "secondSubnet",
+          "addressPrefix": "10.0.1.0/24"
+        }
+      ]
+    }
+  }
 },
 ```
 
-Informace o definování parametrů najdete v tématu [oddílu parametry šablon Azure Resource Manageru](resource-manager-templates-parameters.md).
+Potom odkazujete objektu třídy subproperties parametru pomocí operátoru tečka.
+
+```json
+"resources": [
+  {
+    "apiVersion": "2015-06-15",
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[parameters('VNetSettings').name]",
+    "location": "[parameters('VNetSettings').location]",
+    "properties": {
+      "addressSpace":{
+        "addressPrefixes": [
+          "[parameters('VNetSettings').addressPrefixes[0].addressPrefix]"
+        ]
+      },
+      "subnets":[
+        {
+          "name":"[parameters('VNetSettings').subnets[0].name]",
+          "properties": {
+            "addressPrefix": "[parameters('VNetSettings').subnets[0].addressPrefix]"
+          }
+        },
+        {
+          "name":"[parameters('VNetSettings').subnets[1].name]",
+          "properties": {
+            "addressPrefix": "[parameters('VNetSettings').subnets[1].addressPrefix]"
+          }
+        }
+      ]
+    }
+  }
+]
+```
+
+### <a name="parameter-example-templates"></a>Parametr ukázkových šablon
+
+Tyto šablony příklad ukazují některé scénáře použití parametrů. Nasazení, je otestovat zpracování parametrů v různých scénářích.
+
+|Šablona  |Popis  |
+|---------|---------|
+|[parametry s využitím functions pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Popisuje způsob použití funkce šablon, při definování výchozí hodnoty pro parametry. Šablona nenasadí žádné prostředky. Konstrukce hodnoty parametrů a vrátí tyto hodnoty. |
+|[Parametr objektu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona nenasadí žádné prostředky. Konstrukce hodnoty parametrů a vrátí tyto hodnoty. |
 
 ## <a name="variables"></a>Proměnné
 
@@ -205,26 +364,26 @@ Následující příklad ukazuje dostupné možnosti pro definování proměnné
 
 ```json
 "variables": {
-    "<variable-name>": "<variable-value>",
-    "<variable-name>": { 
-        <variable-complex-type-value> 
-    },
-    "<variable-object-name>": {
-        "copy": [
-            {
-                "name": "<name-of-array-property>",
-                "count": <number-of-iterations>,
-                "input": <object-or-value-to-repeat>
-            }
-        ]
-    },
+  "<variable-name>": "<variable-value>",
+  "<variable-name>": { 
+    <variable-complex-type-value> 
+  },
+  "<variable-object-name>": {
     "copy": [
-        {
-            "name": "<variable-array-name>",
-            "count": <number-of-iterations>,
-            "input": <object-or-value-to-repeat>
-        }
+      {
+        "name": "<name-of-array-property>",
+        "count": <number-of-iterations>,
+        "input": <object-or-value-to-repeat>
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "<variable-array-name>",
+      "count": <number-of-iterations>,
+      "input": <object-or-value-to-repeat>
+    }
+  ]
 }
 ```
 
@@ -256,16 +415,16 @@ Komplexní typy JSON můžete použít k definování souvisejících hodnot pro
 
 ```json
 "variables": {
-    "environmentSettings": {
-        "test": {
-            "instanceSize": "Small",
-            "instanceCount": 1
-        },
-        "prod": {
-            "instanceSize": "Large",
-            "instanceCount": 4
-        }
+  "environmentSettings": {
+    "test": {
+      "instanceSize": "Small",
+      "instanceCount": 1
+    },
+    "prod": {
+      "instanceSize": "Large",
+      "instanceCount": 4
     }
+  }
 },
 ```
 
@@ -273,13 +432,13 @@ V parametrech vytvořit hodnotu určující, která konfigurace bude hodnoty pou
 
 ```json
 "parameters": {
-    "environmentName": {
-        "type": "string",
-        "allowedValues": [
-          "test",
-          "prod"
-        ]
-    }
+  "environmentName": {
+    "type": "string",
+    "allowedValues": [
+      "test",
+      "prod"
+    ]
+  }
 },
 ```
 
@@ -289,7 +448,7 @@ Aktuální nastavení s načíst:
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-### <a name="variables-example-templates"></a>Proměnné ukázkových šablon
+### <a name="variable-example-templates"></a>Příklad proměnné šablony
 
 Tyto šablony příklad ukazují některé scénáře pro používání proměnných. Je nasadíte na testování, jak se zpracovává proměnné v různých scénářích. 
 
@@ -384,11 +543,11 @@ Následující příklad ukazuje strukturu definici výstupu:
 
 ```json
 "outputs": {
-    "<outputName>" : {
-        "condition": "<boolean-value-whether-to-output-value>",
-        "type" : "<type-of-output-value>",
-        "value": "<output-value-expression>"
-    }
+  "<outputName>" : {
+    "condition": "<boolean-value-whether-to-output-value>",
+    "type" : "<type-of-output-value>",
+    "value": "<output-value-expression>"
+  }
 }
 ```
 
@@ -446,7 +605,7 @@ Následující příklad ukazuje, jak nastavit IP adresu nástroje pro vyrovnáv
 
 ```json
 "publicIPAddress": {
-    "id": "[reference('linkedTemplate').outputs.resourceID.value]"
+  "id": "[reference('linkedTemplate').outputs.resourceID.value]"
 }
 ```
 
@@ -471,24 +630,24 @@ Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ign
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "comments": "This template was developed for demonstration purposes.",
+    "author": "Example Name"
+  },
 ```
 
 Pro **parametry**, přidejte `metadata` objektu `description` vlastnost.
 
 ```json
 "parameters": {
-    "adminUsername": {
-      "type": "string",
-      "metadata": {
-        "description": "User name for the Virtual Machine."
-      }
-    },
+  "adminUsername": {
+    "type": "string",
+    "metadata": {
+      "description": "User name for the Virtual Machine."
+    }
+  },
 ```
 
 Při nasazování šablony prostřednictvím portálu, text, který zadáte v popisu automaticky slouží jako komentář pro tento parametr.
@@ -525,13 +684,13 @@ Pro **výstupy**, přidejte objekt metadat výstupní hodnotu.
 
 ```json
 "outputs": {
-    "hostname": {
-      "type": "string",
-      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
-      "metadata": {
-        "comments": "Return the fully qualified domain name"
-      }
-    },
+  "hostname": {
+    "type": "string",
+    "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
+    "metadata": {
+      "comments": "Return the fully qualified domain name"
+    }
+  },
 ```
 
 Objekt metadat nelze přidat do uživatelem definované funkce.
@@ -545,8 +704,8 @@ Vložené komentáře, můžete použít `//` , ale tato syntaxe nefunguje s vš
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
   "dependsOn": [ // storage account and network interface must be deployed first
-      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
 ```
 

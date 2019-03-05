@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3546dd26ac7d376eed142629ceeeb30e0709e162
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661934"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309872"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrace ostatních služeb s využitím SQL Data Warehouse
 Kromě jejích klíčových funkcí SQL Data Warehouse umožňuje integrovat s mnoha dalšími službami v Azure. Mezi tyto služby patří:
@@ -33,7 +33,7 @@ Integrace Power BI umožňuje kombinovat výkon služby SQL Data Warehouse s dyn
 * **Přímém připojení**: Pokročilejší připojení logické přenosu směrem dolů na SQL Data Warehouse. Přenosu směrem dolů poskytuje rychlejší analýzy ve větším měřítku.
 * **Otevřít v Power BI**: Tlačítko Otevřít v Power BI předává informace o instanci Power BI pro jednodušší způsob, jak připojit.
 
-Další informace najdete v tématu [integrace s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), nebo [dokumentaci k Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
+Další informace najdete v tématu [integrace s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), nebo [dokumentaci k Power BI](https://blogs.msdn.com/b/powerbi/archive/20../../exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory poskytuje uživatelům spravovaná platforma pro vytváření komplexních extrakce a načítání kanály. SQL Data Warehouse integrace s Azure Data Factory obsahuje:

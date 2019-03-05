@@ -12,18 +12,20 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: cdd709fa446ffe769c8c57aeb44fe592b12e92d4
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f68097f7b97814bc24926b6fc1b0bb2a750855a2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416102"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311266"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
 SQL Database, Azure SQL Database jsou generovány doporučení pro vyladění [automatické ladění](sql-database-automatic-tuning.md). Toto řešení nepřetržitě monitoruje a analyzuje úloh SQL Database poskytuje přizpůsobená doporučení pro každé jednotlivé databáze týkající se vytváření indexů, odstranění indexu a optimalizace plánů spouštění dotazu pro optimalizaci.
 
-SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
+SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatizace e-mailová oznámení pro doporučení automatického ladění
 
@@ -55,7 +57,7 @@ Pokud máte několik předplatných Azure, pro které chcete sestavení stejné 
 
 ## <a name="update-azure-automation-modules"></a>Aktualizace modulů Azure Automation.
 
-Skript prostředí PowerShell k načtení automatického ladění doporučení používá [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) a [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) příkazy aktualizací modulů Azure verze 4 a novější.
+Skript prostředí PowerShell k načtení automatického ladění doporučení používá [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) a [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) příkazy, které aktualizace modulů Azure verze 4 a vyšší je povinný.
 
 Postupujte podle těchto kroků provedete aktualizaci modulů Azure Powershellu:
 
@@ -85,7 +87,7 @@ Použijte následující postup načtení skriptu prostředí PowerShell v runbo
 - Uvnitř "**upravit Powershellový Runbook**"podokně, vyberte možnost"**sady RUNBOOK**" v nabídce stromu a rozbalte položku zobrazení, dokud se nezobrazí název sady runbook (v tomto příkladu " **AutomaticTuningEmailAutomation**"). Vyberte tuto sadu runbook.
 - Na prvním řádku "upravit Powershellový Runbook" (počínaje číslem 1) kopírování a vkládání následující kód skriptu prostředí PowerShell. Tento skript Powershellu se poskytuje jako-je vám pomůžou začít. Upravte skript tak suite vašim potřebám.
 
-V záhlaví dodaný skript Powershellu, budete muset nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` s ID vašeho předplatného Azure. Zjistěte, jak načíst ID vašeho předplatného Azure, najdete v článku [získání vaší GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/).
+V záhlaví dodaný skript Powershellu, budete muset nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` s ID vašeho předplatného Azure. Zjistěte, jak načíst ID vašeho předplatného Azure, najdete v článku [získání vaší GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
 V případě několika předplatných přidáním jako oddělených čárkou pro vlastnost "$subscriptions" v hlavičce skriptu.
 
@@ -104,7 +106,7 @@ $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_W
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
 # Define the resource types
 $resourceTypes = ("Microsoft.Sql/servers/databases")
@@ -113,8 +115,8 @@ $results = @()
 
 # Loop through all subscriptions
 foreach($subscriptionId in $subscriptions) {
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
-    $rgs = Get-AzureRmResourceGroup
+    Select-AzSubscription -SubscriptionId $subscriptionId
+    $rgs = Get-AzResourceGroup
 
     # Loop through all resource groups
     foreach($rg in $rgs) {
@@ -122,7 +124,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
+            $resources = Get-AzResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -151,7 +153,7 @@ foreach($subscriptionId in $subscriptions) {
 
                 # Loop through all Automatic tuning recommendation types
                 foreach ($advisor in $advisors) {
-                    $recs = Get-AzureRmSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
+                    $recs = Get-AzSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
                     foreach ($r in $recs) {
                         if ($r.State.CurrentValue -eq "Active") {
                             $object = New-Object -TypeName PSObject

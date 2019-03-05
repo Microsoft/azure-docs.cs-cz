@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: d6933d5fd72a3a6c945d3afc3fdd3512be5b28d1
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7654de7041b2aa7a5b72f551893c3e0fb60bbd40
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591597"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309855"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Můžete použít [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
 
 * Vytvořit pracovní prostor, včetně nastavení cenové úrovně 
@@ -122,7 +125,7 @@ Následující parametry nastavení výchozí hodnoty:
    * Pro prostředí PowerShell ze složky obsahující šablonu použijte následující příkazy:
    
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
         ```
 
    * Pro příkazový řádek ze složky obsahující šablonu použijte následující příkazy:
@@ -500,7 +503,7 @@ Nasazení ukázkové šablony:
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Příkazový řádek

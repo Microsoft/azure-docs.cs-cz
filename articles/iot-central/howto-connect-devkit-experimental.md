@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1097d14c824bcdebb9062fcf63b04e9837b0d170
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 620ae30c684ad9105357d0d20bbde158d5ff0a5a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811609"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308988"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -43,14 +43,14 @@ Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zaříze
 
 V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zaznamenání podrobností o připojení zařízení (**ID oboru, ID zařízení a primární klíč**).
 
-1. Přidat **skutečné zařízení** z Device Explorer, klikněte na **+ nový > skutečné** skutečné zařízení přidat.
+1. Přidat **skutečné zařízení** Device Explorer, vyberte **+ nový > skutečné** skutečné zařízení přidat.
 
     * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
     * Zadejte název zařízení nebo použijte navrhovaný název
 
     ![Přidání zařízení](media/howto-connect-devkit-experimental/add-device.png)
 
-1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
+1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení tak, že vyberete **připojit** na stránce zařízení.
 
     ![Podrobnosti připojení](media/howto-connect-devkit-experimental/device-connect.png)
 

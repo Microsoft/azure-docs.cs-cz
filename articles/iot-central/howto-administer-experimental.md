@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8989d6ef54961f5f8eea7c6d8c9d941319bd917a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8a3e90488558335ca5d186e6ff1dbab6abf5aaee
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215400"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313170"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -46,7 +46,7 @@ Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azu
 ### <a name="copy-an-application"></a>Kopírovat aplikaci
 Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie je aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
 
-Klikněte na tlačítko **kopírování** tlačítko. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Klikněte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rychlý start.
+Vyberte **kopírování**. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Potom vyberte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rychlý start.
 
 ![Stránka nastavení aplikace](media/howto-administer-experimental/appCopy2.png)
 
@@ -130,13 +130,13 @@ K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kr
 
     ![Zkušební verze stavu](media/howto-administer-experimental/freetrialbilling.png)
 
-1. Klikněte na tlačítko **přejděte k průběžným platbám**.
+1. Vyberte **přejděte k průběžným platbám**.
 
     ![Převést zkušební verzi](media/howto-administer-experimental/convert.png)
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci s průběžnými platbami.
 
-1. Po kliknutí na **převést**, vaše aplikace je teď aplikace s průběžnými platbami a spustit načítání účtuje.
+1. Po výběru **převést**, vaše aplikace je teď aplikace s průběžnými platbami a spustit načítání účtuje.
 
 ## <a name="export-data"></a>Exportovat data
 

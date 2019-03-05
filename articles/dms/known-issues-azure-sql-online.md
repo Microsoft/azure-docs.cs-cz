@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/11/2019
-ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 03/05/2019
+ms.openlocfilehash: a5f44e5f7f19507723eeb75518a9a573d6563e2b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231814"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337205"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 
@@ -89,7 +89,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **Alternativní řešení**
 
-Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technický tým na [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="issues-with-timestamp-columns"></a>Problémy s sloupce časového razítka
 
@@ -99,7 +99,7 @@ DMS nemigruje hodnotu časové razítko zdroje Místo toho DMS generuje novou ho
 
 **Alternativní řešení**
 
-Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve zdrojové tabulce, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve zdrojové tabulce, obraťte se na technický tým na [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Chyby při migraci dat se neposkytuje další podrobnosti v okně podrobný stav databáze.
 

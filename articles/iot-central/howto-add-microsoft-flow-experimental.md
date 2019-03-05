@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ba6b8c76b31f09eb8f04097f935f865728a4e893
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c2c172dc5f03aee8b167cd65562de3329c54d563
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217491"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313000"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
@@ -30,24 +30,24 @@ Pomocí Microsoft Flow můžete automatizovat pracovní postupy mezi mnoha aplik
 
 V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplikaci Flow při pravidlo aktivuje v IoT Central.
 
-1. Začněte tím, že [vytváření pravidla v IoT Central](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Po uložení podmínky pravidla, klikněte na tlačítko **akce Microsoft Flow** jako novou akci. Nové kartě nebo v okně by měla otevřít v prohlížeči, přechod do Microsoft Flow.
+1. Začněte tím, že [vytváření pravidla v IoT Central](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Po uložení podmínky pravidla, vyberte **akce Microsoft Flow** jako novou akci. Nové kartě nebo v okně by měla otevřít v prohlížeči, přechod do Microsoft Flow.
 
     ![Vytvořit novou akci Microsoft Flow](media/howto-add-microsoft-flow-experimental/createflowaction.png)
 
 1. Přihlaste se k Microsoft Flow. To nemusí být stejný účet jako ten, který použijete v IoT Central. Budete přesměrováni na stránku přehled zobrazující konektoru služby IoT Central připojování k vlastní akci.
 
-1. Přihlaste se do konektoru IoT Central a klikněte na tlačítko **pokračovat**. Budete přesměrováni na Návrhář Microsoft Flow k sestavení pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
+1. Přihlaste se do konektoru IoT Central a vyberte **pokračovat**. Budete přesměrováni na Návrhář Microsoft Flow k sestavení pracovního postupu. Pracovní postup obsahuje aktivační událost IoT Central, která má svoji aplikaci a pravidlo už vytvořilo.
 
 1. Zvolte **+ nový krok** a **přidat akci**. V tomto okamžiku můžete přidat jakékoli akce, které chcete do svého pracovního postupu. Jako příklad můžeme odeslat mobilní oznámení. Vyhledejte **oznámení**a zvolte **oznámení – odeslat mobilní oznámení**.
 
 1. V akci zadejte textové pole s Chcete oznámení říct. Můžete zahrnout *dynamický obsah* z vašeho IoT Central pravidla předávání podél důležité informace, jako je název zařízení a časové razítko oznámení.
 
     > [!NOTE]
-    > Klikněte na tlačítko "Další informace" textu v okně dynamického obsahu můžete získat měření a hodnoty vlastností, které aktivuje pravidlo.
+    > Vyberte **zobrazit další** textu v okně dynamického obsahu se získat měření a hodnoty vlastností, které aktivuje pravidlo.
 
     ![Tok akce s otevřeným podoknem dynamické úpravy](./media/howto-add-microsoft-flow-experimental/flowdynamicpane.png)
 
-1. Po dokončení úprav akci, klikněte na tlačítko **Uložit**. Budete přesměrováni na stránku přehled vašeho pracovního postupu. Zde můžete zobrazit historii spuštění a sdílet ho s dalšími kolegy.
+1. Po dokončení úprav akci, vyberte **Uložit**. Budete přesměrováni na stránku přehled vašeho pracovního postupu. Zde můžete zobrazit historii spuštění a sdílet ho s dalšími kolegy.
 
     > [!NOTE]
     > Pokud chcete ostatním uživatelům ve vaší aplikaci IoT Central, chcete-li upravit toto pravidlo, musí ho sdílet s nimi v Microsoft Flow. Přidáte své účty Microsoft Flow jako vlastníky ve svém pracovním postupu.

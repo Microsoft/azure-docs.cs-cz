@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/05/2019
+ms.openlocfilehash: be6c31840abcf2503293c381aad2848afebe3d9b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721644"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337120"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Známé problémy a migrace omezení online migrace do Azure DB for MySQL
 
@@ -80,7 +80,7 @@ Sloupce velkého objektu (LOB) jsou sloupce, které může rozvíjet velké. Pro
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Alternativní řešení**: Pokud budete mít obchodní objekt, který je větší než 32 KB, obraťte se na technický tým na adrese [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com). 
+    **Alternativní řešení**: Pokud budete mít obchodní objekt, který je větší než 32 KB, obraťte se na technický tým na adrese [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com). 
 
 ## <a name="other-limitations"></a>Další omezení
 - Řetězec hesla, která má otevírací a uzavírací složené závorky {} na začátku a konce řetězce hesla se nepodporuje. Toto omezení platí pro obě připojení k MySQL zdroj a cíl – Azure Database for MySQL.

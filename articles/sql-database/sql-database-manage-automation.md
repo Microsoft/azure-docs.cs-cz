@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 05dfece2a2e69c5cdb3f08b51424720a1c2898db
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f462940f652f568168c4d0b1e8012c7196d59b13
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561928"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314156"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL Database pomocí Azure Automation.
 
@@ -37,7 +37,7 @@ Azure SQL Database můžete spravovat ve službě Azure Automation s použitím 
 
 Azure Automation má také možnost ke komunikaci se servery SQL přímo, pomocí příkazů SQL pomocí prostředí PowerShell.
 
-[v galerii runbooků Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktů týmu a komunity sady runbook začít s automatizací správy databází Azure SQL, dalších služeb Azure a systémech třetích stran. Galerie runbooků patří:
+[v galerii runbooků Azure Automation](https://azure.microsoft.com/blog/20../../introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktů týmu a komunity sady runbook začít s automatizací správy databází Azure SQL, dalších služeb Azure a systémech třetích stran. Galerie runbooků patří:
 
 - [Spouštějte dotazy SQL proti databázi serveru SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 - [Vertikální škálování (nahoru nebo dolů) služby Azure SQL Database podle plánu](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
@@ -50,4 +50,4 @@ Teď, když jste se naučili základy služby Azure Automation a jak lze použí
 
 - [Přehled Azure Automation](../automation/automation-intro.md)
 - [Můj první runbook](../automation/automation-first-runbook-graphical.md)
-- [Azure Automation: Agenta SQL v cloudu](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+- [Azure Automation: Agenta SQL v cloudu](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

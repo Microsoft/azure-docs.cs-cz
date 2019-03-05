@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b537dd8360c39a744cf9963376387a4c89e33838
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110145"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311640"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Spravovat souboru místo jednoho a ve fondu databází ve službě Azure SQL Database
 
@@ -27,6 +27,8 @@ Tento článek popisuje různé druhy prostor úložiště pro databáze ve fond
 > Tento článek se nevztahuje možnost nasazení spravované instance Azure SQL Database.
 
 ## <a name="overview"></a>Přehled
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 S databázemi ve fondu a jeden ve službě Azure SQL Database existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, protože přidělené místo souboru neuvolní automaticky, když se odstraní data.
 
@@ -40,7 +42,7 @@ V následujících scénářích může být potřeba monitorovat využití pros
 
 Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní API pro následující míru jenom velikost stránky používaná data:
 
-- Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
+- Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/az.insights/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ale následující rozhraní API také měření velikost místa vyhrazeného pro databáze a elastické fondy:
@@ -162,7 +164,7 @@ $userName = "name"
 $password = "password"
 
 # Get list of databases in elastic pool
-$databasesInPool = Get-AzureRmSqlElasticPoolDatabase `
+$databasesInPool = Get-AzSqlElasticPoolDatabase `
     -ResourceGroupName $resourceGroupName `
     -ServerName $serverName `
     -ElasticPoolName $poolName

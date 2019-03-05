@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217049"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314241"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -133,7 +133,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 * Použití [synchronizovat aplikace](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , kterou jsme vytvořili. Spuštění v Azure a využívá log analytics veřejných rozhraní API tak, aby nabízel SQL protokoly auditu do protokolů Azure Monitor. Synchronizace aplikace nabízených oznámení protokoly auditu SQL do protokolů Azure Monitor pro spotřebu prostřednictvím řídicích panelů log analytics.
 
-* Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace o [Power BI a přístup ke stažení šablony](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+* Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace o [Power BI a přístup ke stažení šablony](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
 * Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
     * Po stažení souboru protokolu místně, dvakrát klikněte na soubor otevřít, zobrazení a analýza protokolů v aplikaci SSMS.
@@ -144,8 +144,8 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
    * Auditování objektů blob k zobrazení protokolů prostřednictvím kódu programu:
 
-     * Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) knihovny v jazyce C#.
-     * [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
+     * Použití [rozšířené události čtečky](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) knihovny v jazyce C#.
+     * [Dotazování rozšířené události soubory](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) pomocí prostředí PowerShell.
 
 
 
@@ -169,17 +169,20 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
 4. Vraťte se zpět do úložiště uživatelského rozhraní a **znovu vygenerovat** *sekundární přístupový klíč* (jako příprava pro další klíče obnovit cyklu.
 
 ## <a id="subheading-5"></a>Automatizace (Powershellu nebo rozhraní REST API)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Můžete taky nakonfigurovat auditování ve službě Azure SQL Data Warehouse pomocí následujících nástrojů pro automatizaci:
 
 * **Rutiny Powershellu**:
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
-   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
-   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
-   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
-   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
-   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
-   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+   * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
+   * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
+   * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
+   * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
+   * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
+   * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
 
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Podpora klientů nižší úrovně pro auditování a dynamické maskování dat

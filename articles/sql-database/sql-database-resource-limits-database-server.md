@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
 ms.author: carlrab
-ms.reviewer: sashan,moslake
+ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 011aa97d44a92feced7328b2bd014395d2c5b765
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246694"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316451"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -74,7 +74,7 @@ Pokud dochází k vysoké využití relace nebo pracovního procesu, možnosti o
 - Zvýšení službu úroveň nebo velikost databázi nebo elastický fond – compute úrovně. Zobrazit [škálování izolované databáze prostředků](sql-database-single-database-scale.md) a [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů, aby se snížilo využití prostředků každého dotazu, je-li příčinou využití zvýšenou pracovního procesu je z důvodu kolize pro výpočetní prostředky. Další informace najdete v tématu [dotazu ladění/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="transaction-log-rate-governance"></a>Transakční protokol míra zásad správného řízení 
+## <a name="transaction-log-rate-governance"></a>Transakční protokol míra zásad správného řízení 
 Transakční protokol míra zásad správného řízení je proces ve službě Azure SQL Database používá k omezení vysoké ingestování účtovat sazby platné pro úlohy, jako jsou hromadné vložení SELECT INTO a sestavení indexu. Tato omezení jsou sledovány a vynucují na úrovni sekunda pro míru generování záznamů protokolu, omezení propustnosti bez ohledu na to, kolik IOs může být vydaný pro datové soubory.  Rychlost generování protokolu transakcí aktuálně se škálují lineárně až bod, který je závislá na hardwaru, pomocí protokolu maximální rychlost povoleno, se 48 MB/s s nákupem modelu virtuálních jader. 
 
 > [!NOTE]
