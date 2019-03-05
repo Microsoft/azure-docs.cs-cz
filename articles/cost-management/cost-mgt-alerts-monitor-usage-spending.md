@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: 813ec8f74371b6ae76ac306aea2c462f0beea1fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773423"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337768"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použít cost výstrahy a monitorování využití a výdajů
 
@@ -23,7 +23,7 @@ Tento článek vám pomůže pochopit a výstrahy Cost Management můžete použ
 
 ## <a name="budget-alerts"></a>Upozornění na rozpočet
 
-Rozpočet upozornění se zobrazí při útratu na základě využití nebo náklady, dosáhne nebo překračuje velikost podle [upozornění podmínku rozpočtu](tutorial-acm-create-budgets.md). Cost Management rozpočty lze vytvořit pomocí webu Azure portal nebo [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) rozhraní API. 
+Rozpočet upozornění se zobrazí při útratu na základě využití nebo náklady, dosáhne nebo překračuje velikost podle [upozornění podmínku rozpočtu](tutorial-acm-create-budgets.md). Cost Management rozpočty lze vytvořit pomocí webu Azure portal nebo [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) rozhraní API.
 
 Na webu Azure Portal jsou definovány rozpočty nákladů. Pomocí rozhraní Azure Consumption API, jsou definovány rozpočty nákladů nebo jejich využití. Upozornění na rozpočet podporují rozpočty nákladů na i na základě využití. Rozpočet výstrahy jsou generovány automaticky pokaždé, když jsou splněny podmínky upozornění na rozpočet. Na webu Azure Portal můžete zobrazit všechny výstrahy náklady. Pokaždé, když je vygenerována výstraha, bude uvedená v upozornění na náklady. Lidem v seznamu výstrah příjemci rozpočtu přijde e-mailové upozornění.
 
@@ -34,6 +34,18 @@ Kredit oznámení vás upozorní, když se spotřebuje peněžní závazky vaše
 ## <a name="department-spending-quota-alerts"></a>Oznámení kvóty útraty oddělení
 
 Oddělení útraty kvóty oznámení vás upozorní, jakmile oddělení útraty dosáhne pevné prahové hodnoty kvóty. Útraty kvóty se konfigurují na portálu EA. Pokaždé, když je dosaženo prahové hodnoty generuje e-mailu oddělení vlastníkům a zobrazí se ve výstrahách náklady. Například, 50 % nebo % 75 kvóty.
+
+## <a name="supported-alert-features-by-offer-categories"></a>Podporované funkce upozornění podle kategorií nabídky
+
+Podpora pro různé typy výstrah závisí na typu účtu Azure, abyste měli (Microsoft nabízí). V následující tabulce jsou uvedeny výstrah funkce, které jsou podporovány v různých nabídek Microsoft. Můžete zobrazit úplný seznam nabídek Microsoft v [datům Cost managementu pochopit](understand-cost-mgt-data.md).
+
+| Typ výstrahy | Smlouva Enterprise | Smlouva se zákazníkem Microsoftu | Web direct/průběžnými platbami-As-You-Go |
+|---|---|---|---|
+| Rozpočet | ✔ | ✔ | ✔ |
+| Credit | ✔ |✘ | ✘ |
+| Kvóta útraty oddělení | ✔ | ✘ | ✘ |
+
+
 
 ## <a name="view-cost-alerts"></a>Zobrazení nákladů výstrah
 

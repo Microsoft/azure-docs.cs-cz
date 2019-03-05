@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0202dfa8316caec036b4ad288c2bd32f1c4eaf3
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d4698ad54e08587b223bb65388d399c0cbf3ff63
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989400"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342509"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
@@ -60,14 +60,14 @@ Pořadí šifrování disku operačního systému Linux dočasně odpojí jednot
 Pokud chcete zkontrolovat stav šifrování, dotazovat **zpráva o průběhu** pole vrácená [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) příkaz. Při šifrované jednotky operačního systému virtuálního počítače přejde do stavu údržby a zakáže abychom zabránili případnému přerušení k aktuálnímu procesu SSH. **EncryptionInProgress** zprávy sestavy pro většinu času, zatímco probíhá šifrování. Několik hodin, **VMRestartPending** zobrazí se výzva k restartování virtuálního počítače. Příklad:
 
 
-```
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
@@ -93,7 +93,7 @@ Všechna nastavení skupiny zabezpečení sítě, které jsou použity musí umo
 Když je šifrování povoleno s [přihlašovacích údajů Azure AD.](azure-security-disk-encryption-prerequisites-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory a koncové body služby Key Vault. V části 56 a 59 se udržuje aktuální koncové body ověřování Azure Active Directory [Office 365 – adresy URL a rozsahy IP adres](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentaci. Key Vault pokyny najdete v dokumentaci o tom, jak [přístup k Azure Key Vault za bránou firewall](../key-vault/key-vault-access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-Virtuální počítač musí mít přístup k [služby Azure Instance Metadata](../virtual-machines/windows/instance-metadata-service.md) koncový bod, který používá známá nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.
+Virtuální počítač musí mít přístup k [služby Azure Instance Metadata](../virtual-machines/windows/instance-metadata-service.md) koncový bod, který používá známá nesměrovatelných adres IP (`169.254.169.254`), který je přístupný pouze z v rámci virtuálního počítače.  Konfigurace proxy serveru, kterými nastavíte jinou místní provoz protokolu HTTP na tuto adresu (například přidání hlavičky X-předané-pro) nejsou podporovány.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Správa balíčků Linux za bránou firewall
 
@@ -138,6 +138,12 @@ DISKPART> list vol
 
 If the expected encryption state does not match what is being reported in the portal, see the following support article:
 [Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
+
+## <a name="troubleshooting-encryption-status"></a>Řešení potíží s stav šifrování 
+
+Na portálu může zobrazit na disk jako šifrovaný i po jejím nešifrované ve virtuálním počítači.  Tato situace může nastat v případě nízké úrovně příkazy používají šifrování přímo z disku na virtuálním počítači, namísto použití vyšší úrovni Azure Disk Encryption příkazy pro správu.  Vyšší úroveň příkazy jenom obnovením z disku na virtuálním počítači, ale mimo virtuální počítač se také neaktualizují nastavení šifrování na úrovni důležité platformy a nastavení rozšíření spojená s virtuálním Počítačem.  Pokud tyto nejsou uloženy v zarovnání, platformu nebude možné nahlásit stav šifrování nebo zřídit virtuální počítač správně.   
+
+Správně zakázat Azure Disk Encryption, spusťte ze známého funkčního stavu s povoleným šifrováním a následně použít [Disable-AzureRmVmDiskEncryption](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) a [Remove-AzureRmVmDiskEncryptionExtension](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiskencryptionextension) Příkazy prostředí PowerShell, nebo [az vm encryption zakázat](https://docs.microsoft.com/en-us/cli/azure/vm/encryption) příkazu rozhraní příkazového řádku. 
 
 ## <a name="next-steps"></a>Další postup
 

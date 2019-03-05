@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 408776b0b0053b2b2d45112568a2e28467123768
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ba59ca4ac9a200c4579a4f71ff94be6bd554f180
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805371"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341557"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,12 +107,13 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | folderPath            | Cesta ke složce vlastní aplikace a všechny její závislosti<br/><br/>Pokud máte závislosti uložena v podsložkách – to znamená, že v hierarchickou strukturu složek v části *folderPath* – struktura složek se sloučí aktuálně, když soubory se zkopírují do služby Azure Batch. To znamená všechny soubory se zkopírují do jediné složky žádné podsložky. Chcete-li tento problém vyřešit, zvažte komprese souborů, kopírování komprimovaného souboru a pak rozzipovávání vlastního kódu do požadovaného umístění. | Ne&#42;       |
 | referenceObjects      | Pole z existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON tak váš vlastní kód může odkazovat na prostředky služby Data Factory | Ne       |
 | extendedProperties    | Uživatelem definované vlastnosti, které mohou být předány vlastní aplikaci ve formátu JSON, tak váš vlastní kód mohou odkazovat další vlastnosti | Ne       |
+| retentionTimeInDays | Doba uchování pro soubory odeslané pro vlastní aktivity. Výchozí hodnota je 30 dní. | Ne |
 
 &#42;Vlastnosti `resourceLinkedService` a `folderPath` buď musí být zadány oba, nebo obojí vynechat.
 
 > [!NOTE]
 > Pokud jako referenceObjects ve vlastní aktivitě předáváte propojené služby, je, že osvědčeným postupem zabezpečení služby Azure Key Vault předat povolená propojené služby, (protože neobsahuje žádné zabezpečené řetězce) a načítání přihlašovacích údajů pomocí název tajného kódu přímo z klíče Trezoru z kódu. Příklad můžete nalézt [tady](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , že odkazy AKV povolené propojené služby, načte přihlašovací údaje ze služby Key Vault a pak přistupuje k úložišti v kódu.  
- 
+
 ## <a name="custom-activity-permissions"></a>Vlastní aktivita oprávnění
 
 Vlastní aktivita nastaví automaticky uživatelský účet Azure Batch na *přístup bez oprávnění správce s oborem úloh* (specifikace výchozí uživatele automaticky). Nelze změnit úroveň oprávnění automaticky uživatelského účtu. Další informace najdete v tématu [spouštění úloh v rámci uživatelských účtů ve službě Batch | Automatické uživatelské účty](../batch/batch-user-accounts.md#auto-user-accounts).
@@ -321,7 +322,7 @@ Pro přístup k vlastnostem typu *SecureString* z vlastní aktivitu, přečtěte
 
 ## <a name="compare-v2-v1"></a> Porovnání v2 pro vlastní aktivity a verze 1 (vlastní) aktivity DotNet
 
-Ve službě Azure Data Factory verze 1 implementujete aktivity DotNet (vlastní) tak, že vytvoříte .net projekt knihovny tříd s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Metoda spuštění se předá propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jako silně typované objekty. Podrobnosti o chování verzi 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu této implementaci váš kód aktivity DotNet verze 1 má cílit na .net Framework 4.5.2. Verze 1 aktivity DotNet také musí být spuštěn na uzlech Azure Batch Pool se systémem Windows.
+Ve službě Azure Data Factory verze 1 implementujete aktivity DotNet (vlastní) tak, že vytvoříte .net projekt knihovny tříd s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Metoda spuštění se předá propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jako silně typované objekty. Podrobnosti o chování verzi 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu této implementaci váš kód aktivity DotNet verze 1 má cílit na rozhraní .NET Framework 4.5.2. Verze 1 aktivity DotNet také musí být spuštěn na uzlech Azure Batch Pool se systémem Windows.
 
 Ve vlastních aktivit Azure Data Factory V2 nemusíte implementovat rozhraní .net. Můžete nyní přímo spustit příkazy, skripty a vlastní kód, kompilovány jako spustitelný soubor. Pokud chcete nakonfigurovat tuto implementaci, zadejte `Command` vlastnost spolu s `folderPath` vlastnost. Vlastní aktivita nahraje spustitelného souboru a jeho závislosti do `folderpath` a provede příkaz za vás.
 
@@ -335,7 +336,7 @@ Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity 
 |Rozdíly      | Vlastní aktivity      | verze 1 (vlastní) aktivity DotNet      |
 | ---- | ---- | ---- |
 |Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací .net knihovny DLL      |
-|Prostředí pro spouštění vlastní logiky      |Windows nebo Linux      |Windows (.Net Framework 4.5.2)      |
+|Prostředí pro spouštění vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
 |Spouštění skriptů      |Podporuje spouštění skriptů přímo (například "cmd /c odezvu hello world" na virtuálním počítači Windows)      |Vyžaduje implementaci v rozhraní .net knihovny DLL      |
 |Datová sada, povinné      |Nepovinné      |Požadované aktivity zřetězit a předávají informace      |
 |Předávání informací z aktivity do vlastní logiku      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (Vlastnosti)      |Prostřednictvím ExtendedProperties (Vlastnosti), vstupní a výstupní datové sady      |

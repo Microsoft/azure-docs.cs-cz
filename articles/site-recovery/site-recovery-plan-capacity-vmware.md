@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107816"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338276"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -42,7 +42,7 @@ Procesor | Memory (Paměť) | Velikost mezipaměti disku | Frekvence změny dat 
 12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | Můžete replikovat počítače 100 až 150.
 16 virtuálních procesorů (2 sockets * 8 jader \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB na 2 TB | Můžete replikovat počítače 151 až 200.
 Nasadit jiném konfiguračním serveru pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Pokud replikujete více než 200 počítačů, nasazování nového serveru konfigurace.
-Nasadit další [procesový server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | &GT; 2 TB| Nasaďte nový horizontální navýšení kapacity procesový server, když celková denní četnost změn dat je větší než 2 TB.
+Nasadit další [procesový server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Nasaďte nový horizontální navýšení kapacity procesový server, když celková denní četnost změn dat je větší než 2 TB.
 
 V těchto konfigurací:
 
@@ -114,7 +114,7 @@ Před nastavením infrastruktura Site Recovery, přístup k prostředí k měře
 1. K měření tyto parametry, spusťte Plánovač nasazení služby Site Recovery ve vašem prostředí. Užitečné pokyny najdete v části [o Site Recovery Deployment Planner pro replikaci z VMware do Azure](site-recovery-deployment-planner.md).
 2. Nasazení konfiguračního serveru, který splňuje [doporučené velikosti pro konfigurační server](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Pokud vaše produkční úlohy překročí celkový počet virtuálních 650 počítačů, nasazování jiném konfiguračním serveru.
 3. Podle měřené denní frekvenci změn dat, nasaďte [horizontální navýšení kapacity procesových serverů](vmware-azure-set-up-process-server-scale.md#download-installation-file) díky [velikost pokyny](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Pokud očekáváte, že rychlost disku virtuálního počítače 2 MB/s, překročí změn dat [nastavení účtu služby Premium storage](tutorial-prepare-azure.md#create-a-storage-account). Site Recovery Deployment Planner se spouští v konkrétním časovém období. Špičky v četnost změn dat v jinou dobu nemusí být zachyceny v sestavě.
+4. Pokud očekáváte, že data změnit sazbou za virtuální počítač disk překročit 2 MB/s, ujistěte se, že používáte spravované disky úrovně premium. Site Recovery Deployment Planner se spouští v konkrétním časovém období. Špičky v četnost změn dat v jinou dobu nemusí být zachyceny v sestavě.
 5. [Nastavení šířky pásma sítě](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) podle k dosažení cíle bodu obnovení.
 6. Při nastavení infrastruktury, povolte zotavení po havárii pro vaše úlohy. Další informace o postupu [nastavení zdrojového prostředí pro VMware pro replikaci Azure](vmware-azure-set-up-source.md).
 

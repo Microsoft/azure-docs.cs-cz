@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 89c2f380fb4007256273b10b1fcc0fc99627ccb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7c93911ce824bc1111e0c348070cc11817c5b45c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248864"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341846"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka
 
@@ -27,7 +27,7 @@ Vytvořte další předplatná pro váš fakturační účet vytvořit samostatn
 
 Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement). Pokud chcete vytvářet předplatná pro jiné fakturační účty, najdete v článku [vytvořte další předplatné na webu Azure Portal](billing-create-subscription.md).
 
-Jak vytvoříte odběr, musí být **vlastník části faktury**, **Přispěvatel části faktury**, nebo **předplatného Azure Tvůrce**. Další informace najdete v tématu [předplatné role a úlohy](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). K poskytování dalších oprávnění vytvářet předplatná Azure pro váš fakturační účet, najdete v článku [dalším osobám udělit oprávnění vytvářet předplatná Azure](#give-others-permission-to-create-azure-subscriptions).
+Jak vytvoříte odběr, musí být **vlastník části faktury**, **Přispěvatel části faktury**, nebo **předplatného Azure Tvůrce**. Další informace najdete v tématu [fakturace předplatného role a úlohy](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). K poskytování dalších oprávnění vytvářet předplatná Azure pro váš fakturační účet, najdete v článku [dalším osobám udělit oprávnění vytvářet předplatná Azure](#give-others-permission-to-create-azure-subscriptions).
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Vytvoření odběru na portálu Azure portal
 
@@ -43,9 +43,9 @@ Jak vytvoříte odběr, musí být **vlastník části faktury**, **Přispěvate
 
    ![Vytvořit snímek obrazovky zobrazující stránku odběru služby](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
 
-5. Vyberte fakturační profil. Poplatky za předplatné se zobrazí na faktuře fakturační profil a bude se budou hradit pomocí jeho způsoby platby. Pokud máte přístup k fakturačním jenom jeden profil, výběr šedě.
+5. Vyberte fakturační profil. Poplatky za vaše předplatné se projeví na faktuře fakturační profil a se budou hradit pomocí jeho způsoby platby. Pokud máte přístup k fakturačním jenom jeden profil, výběr šedě.
 
-6. Vyberte oddíl faktury. Poplatky za vaše předplatné se zobrazí v této části faktury fakturační profil. Pokud máte přístup k pouze jeden oddíl faktury, výběr šedě.
+6. Vyberte oddíl faktury. V této části faktury fakturační profil projeví se poplatky za předplatné. Pokud máte přístup k pouze jeden oddíl faktury, výběr šedě.
 
 7. Vyberte plán pro předplatné. Vyberte **plán Microsoft Azure DevTest**, pokud máte v plánu použít toto předplatné pro vývoj nebo testování zatížení else používají **plánu Microsoft Azure**. Pokud máte přístup k jenom jeden plán, výběr šedě.
 

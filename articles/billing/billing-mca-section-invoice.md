@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: a9fa2ed58cbd84c83d3109fe173515b07d93db30
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f903f85dfafb61562698a437465f8421aaf3a3d8
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248834"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339483"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Vytvořit oddíly na vaší faktuře uspořádat svoje náklady
 
-Vytvořit oddíly na vaší faktuře uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Potom dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Žádné poplatky za využívání ani nákup předplatných a zobrazit v části faktury. Zobrazit celkové poplatky pro oddíl na vaší faktuře na webu Azure Portal, nebo Seznamte se s nimi v analýze nákladů na Azure. Další informace najdete v tématu [zobrazit transakce podle části faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
+Vytvořit oddíly na vaší faktuře uspořádat svoje náklady podle oddělení, vývojové prostředí, nebo na základě potřeb vaší organizace. Potom dalším osobám udělit oprávnění vytvářet předplatná Azure pro oddíl. Všechny poplatky za využívání nebo nákupu pro předplatná reflektovat části faktury. Zobrazit celkové poplatky pro oddíl na vaší faktuře na webu Azure Portal, nebo Seznamte se s nimi v analýze nákladů na Azure. Další informace najdete v tématu [zobrazit transakce podle části faktury](billing-mca-understand-your-bill.md#view-transactions-by-invoice-sections).
 
 Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
@@ -44,7 +44,7 @@ K vytvoření oddílu faktury, musíte být **fakturační vlastníka profilu** 
 
    ![Snímek obrazovky zobrazující stránku vytvoření části faktury](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
-6. Vyberte fakturační profil. Všechny poplatky za využívání nebo Nákup v části faktury se zobrazí na faktuře fakturační profil.
+6. Vyberte fakturační profil. Všechny poplatky za využívání nebo Nákup v části faktury projeví se na faktuře fakturační profil.
 
 7. Vyberte **Vytvořit**.
 

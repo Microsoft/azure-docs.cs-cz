@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 03/04/2018
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b8df87e5d5091219b9b44a6b957250e254c97fec
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239098"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341785"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Monitor v Azure stacku
 
@@ -27,7 +27,7 @@ ms.locfileid: "55239098"
 
 Tento článek obsahuje přehled služby Azure Monitor ve službě Azure Stack. Popisuje operace služby Azure Monitor a další informace o tom, jak používat Azure Monitor ve službě Azure Stack. 
 
-Úvod najdete přehled a tom, jak začít pracovat s Azure Monitor, najdete v článku na global Azure [Začínáme se službou Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+Úvod najdete přehled a tom, jak začít pracovat s Azure Monitor, najdete v článku na global Azure [Začínáme se službou Azure Monitor ve službě Azure Stack](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Okno Azure Monitor zásobníku](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
@@ -36,7 +36,7 @@ Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorová
 > [!Note]  
 Diagnostické protokoly a metriky nejsou k dispozici pro Azure Stack Development Kit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Požadavky pro Azure Monitor v Azure stacku
 
 Zaregistrujte **Microsoft.insights** poskytovatele prostředků na nastavení poskytovatele prostředků nabídka vašeho předplatného. Můžete ověřit, zda je k dispozici ve vaší nabídce přidružených k vašemu předplatnému poskytovatele prostředků:
 
@@ -46,13 +46,13 @@ Zaregistrujte **Microsoft.insights** poskytovatele prostředků na nastavení po
 4. Vyberte **poskytovatelů prostředků** pod **nastavení.** 
 5. Najít **Microsoft.Insights** v seznamu a ověřte, zda je stav **registrovaná.**.
 
-## <a name="overview"></a>Přehled
+## <a name="overview-of-azure-monitor-on-azure-stack"></a>Přehled služby Azure Monitor v Azure stacku
 
 Jako je Azure Monitor v Azure Azure Monitor ve službě Azure Stack poskytuje základní infrastruktura metriky a protokoly pro většina služeb.
 
-## <a name="azure-monitor-sources-compute-subset"></a>Azure monitor zdroje: výpočetní část
+## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor zdroje: výpočetní část
 
-![Azure monitor zdroje – výpočetní část](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Azure Monitor ve službě Azure Stack zdroje – výpočetní část](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 **Microsoft.Compute** poskytovatele prostředků ve službě Azure Stack zahrnuje:
  - Virtuální počítače 
@@ -86,7 +86,7 @@ Můžete hledat protokolů aktivit pro informace o výpočetní prostředky, jak
 
 ## <a name="azure-monitor-sources-everything-else"></a>Azure monitor zdroje: všechno ostatní
 
-![Azure monitor zdroje – všechno ostatní](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Azure Monitor zdrojů službě Azure Stack – všechno ostatní](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
 
 ### <a name="resources---metrics-and-diagnostics-logs"></a>Prostředky - metriky a diagnostické protokoly
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a7c503fba534b72323472fa58b14188bc412003c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 5c33538513388a4093a205b44a1e049072402179
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100682"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337587"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Ověřit shromáždění dat
 
 ## <a name="prerequisites"></a>Požadavky
-Export dat je k dispozici pro různé typy účtů Azure, včetně [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) zákazníků. Chcete-li zobrazit úplný seznam typů podporovaných účtů, najdete v článku [datům Cost managementu pochopit](understand-cost-mgt-data.md). Při exportu dat uživatelů a skupin se u předplatných podporují následující oprávnění Azure:
+Export dat je k dispozici pro různé typy účtů Azure, včetně [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) zákazníků. Chcete-li zobrazit úplný seznam typů podporovaných účtů, najdete v článku [datům Cost managementu pochopit](understand-cost-mgt-data.md). Následující oprávnění Azure, nebo oborů, jsou podporovány na předplatné pro export dat podle uživatele a skupiny. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
 - Vlastník – může vytvářet, upravovat a odstraňovat naplánované exporty u předplatných.
 - Přispěvatel – může vytvářet, upravovat a odstraňovat svoje vlastní naplánované exporty. Může měnit názvy naplánovaných exportů, které vytvořili jiní uživatelé.
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Správa nákladů a fakturace &gt; Cost Management &gt; vyberte předplatné nebo skupinu prostředků v předplatném &gt; Exportovat &gt; **Přidat**.
 
-Zadejte název pro export a vyberte možnost "Každý den export nákladů za měsíc k datu". Klikněte na tlačítko **Další**.
+Zadejte název pro export, vyberte **denní export náklady za měsíc k datu** možnost. Klikněte na **Další**.
 
 ![Nový příklad pro export zobrazující export typu](./media/tutorial-export-acm-data/basics_exports.png)
 

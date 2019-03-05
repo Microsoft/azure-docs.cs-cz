@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814040"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342170"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -39,7 +39,7 @@ Rozpočty jsou podporované pro různé typy účtů Azure. Chcete-li zobrazit �
 
  Pro předplatná Azure EA musí mít přístup pro čtení k zobrazení rozpočtů. Vytvoření a Správa rozpočtů, musí mít oprávnění přispěvatele. Můžete vytvořit jednotlivé rozpočty pro skupiny prostředků a předplatných EA. Nelze však vytvořit rozpočty pro fakturační účty EA.
 
-Následující oprávnění Azure se podporuje na předplatné pro rozpočty uživatelů a skupin:
+Následující oprávnění Azure, nebo oborů, podporuje na předplatné pro rozpočty uživatelů a skupin. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
 - Vlastník – Může vytvářet, upravovat a odstraňovat rozpočty u předplatných.
 - Přispěvatel a přispěvatelů Cost Management – můžete vytvořit, upravit nebo odstranit vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
@@ -53,7 +53,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
 
-Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte. Například na webu Azure Portal, přejděte na **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **skupiny prostředků** > vyberte skupinu prostředků > **rozpočty**.
+Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Navigační obsah na webu Azure Portal určuje, zda rozpočet pro předplatné nebo skupinu prostředků vytvoříte. Například na webu Azure Portal, přejděte na **předplatná** &gt; vybrat odběr, který &gt; **rozpočty**. V tomto příkladu je rozpočtu, který vytvoříte pro předplatné, které jste vybrali. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **skupiny prostředků** > vyberte skupinu prostředků > **rozpočty**...
 
 Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
 
@@ -85,6 +85,28 @@ V závislosti na úrovni přístupu, kterou máte můžete upravit rozpočtu, ch
 
 ![Příklad úpravy rozpočtu, chcete-li změnit různé vlastnosti](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>Aktivační událost skupiny akcí
+
+Když vytvoříte nebo upravíte rozpočet pro obor skupiny prostředků nebo předplatného, můžete nakonfigurovat k volání skupiny akcí. Skupina akcí můžete provádět řadu různých akcí při dosažení prahové hodnoty vašeho rozpočtu. Další informace o skupinách akcí najdete v tématu [vytvořit a spravovat skupiny akcí na webu Azure Portal](../azure-monitor/platform/action-groups.md). Další informace o použití služby automation na základě rozpočtu se skupiny akcí najdete v tématu [Správa nákladů s Azure rozpočty](../billing/billing-cost-management-budget-scenario.md).
+
+Vytvoření nebo aktualizace skupiny akcí, klikněte na tlačítko **spravovat skupiny akcí** při vytváření nebo úpravách rozpočtu.
+
+![Příklad vytvoření rozpočtu zobrazíte spravovat skupiny akcí](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+Klepnutím na tlačítko **přidat skupinu akcí** a vytvořit skupinu akcí.
+
+
+![Obrázek dialogového okna Přidat akce skupiny](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+Za akci se vytvoří skupina, zavřete okno se vraťte k vašemu rozpočtu.
+
+Konfigurace vašeho rozpočtu na použití skupiny vaše akce při splnění jednotlivé prahovou hodnotu. Až pět různé prahové hodnoty jsou podporovány.
+
+![Příklad zobrazující výběr skupiny akce pro podmínku upozornění](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+Následující příklad ukazuje prahové hodnoty nastavit na 50 %, 75 % a 100 %. Každý je nakonfigurován k aktivaci zadaných akcí v rámci skupiny určené akce.
+
+![Příklad zobrazující podmínky upozornění, které jsou nakonfigurované s různými skupin akcí a typ akce](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>Další postup
 

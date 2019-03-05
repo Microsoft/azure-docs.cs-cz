@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f89fab47cf07538d1915d359fc29a21deb1e560
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f402aeb82271d4e0f5023f05b0d61713c4ab73c1
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986071"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338463"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -482,7 +482,7 @@ sudo ./deploymodel <ContainerRegistryName> <username> <password> <imageLocationU
 Alternativně můžete podle kroků v [moduly nasazení Azure IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) dokumentu k nasazení image do svého zařízení. Při konfiguraci __nastavení registru__ pro zařízení, použijte __přihlašovací server__, __uživatelské jméno__, a __heslo__ pro váš pracovní prostor registr kontejnerů.
 
 > [!NOTE]
-> Pokud nejste obeznámeni s Azure IoT, naleznete v následujících dokumentech informace pro zahájení práce se službou:
+> Pokud nejste obeznámeni s Azure IoT Edge, naleznete v následujících dokumentech informace pro zahájení práce se službou:
 >
 > * [Rychlé zprovoznění: Nasazení prvního modulu IoT Edge k Linuxovému zařízení](../../iot-edge/quickstart-linux.md)
 > * [Rychlé zprovoznění: Nasazení prvního modulu IoT Edge na zařízení s Windows](../../iot-edge/quickstart.md)

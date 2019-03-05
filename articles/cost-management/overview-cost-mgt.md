@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
+ms.date: 02/28/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 6e9eb5709882cc084da8fe02ebb23b70852185d3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d5ed8e896034341dcc9a776d722144bb5879568b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240095"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337953"
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
@@ -41,7 +41,7 @@ Pokud pro přístup k datům správy nákladů nebo jejich kontrole používáte
 
 ## <a name="consider-cloudyn"></a>Zvážení využití služby Cloudyn
 
-[Cloudyn](overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. Cost Management momentálně podporuje pouze účty smlouvy Azure EA. Přestože služba Cost Management nepodporuje individuální účty, účty s průběžnými platbami ani účty poskytovatelů cloudových služeb Microsoft, služba Cloudyn je podporuje. Pokud máte některý z těchto účtů, může vám Cloudyn pomoci se správou nákladů.
+[Cloudyn](overview.md) je služba Azure, která souvisí se službou Cost Management. Pomocí služby Cloudyn můžete sledovat využití cloudu a výdaje na prostředky Azure. Podporuje také další poskytovatele cloudu, včetně AWS a Googlu. Snadno pochopitelné sestavy řídicího panelu pomáhají s přidělováním nákladů i metodami showback a chargeback. V současné době služba Cost Management nepodporuje metody showback a chargeback ani jiné poskytovatele cloudových služeb. Cloudyn je však možnost, která je _podporuje_. V současné době náklady na správu nepodporuje účty Microsoft Cloud Service Provider (CSP), ale nemá Cloudyn. Pokud máte účty CSP nebo pokud chcete použít metody showback a chargeback, můžete ke správě nákladů Cloudyn.
 
 ## <a name="additional-azure-tools"></a>Další nástroje Azure
 

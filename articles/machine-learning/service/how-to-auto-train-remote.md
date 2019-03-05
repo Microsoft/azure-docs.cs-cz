@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b45f48289eda9096c84537eaaa7bc2df74c9d05d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247540"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341394"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -80,8 +80,8 @@ Můžete také připojit existující DSVM Linux jako cílové výpočetní pros
 
 > [!NOTE]
 >
-> Následující kód používá `RemoteCompute` cílové třídy připojit existující virtuální počítač jako vaše cílové výpočetní prostředí.
-> `DsvmCompute` Třídy se přestanou používat v budoucích vydaných verzích a místo toho použití tohoto vzoru návrhu.
+> Následující kód používá [RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) cílové třídy připojit existující virtuální počítač jako vaše cílové výpočetní prostředí.
+> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) třídy se přestanou používat v budoucích vydaných verzích a místo toho použití tohoto vzoru návrhu.
 
 Spusťte následující kód k vytvoření cílové výpočetní prostředí z již existujících DSVM Linux.
 

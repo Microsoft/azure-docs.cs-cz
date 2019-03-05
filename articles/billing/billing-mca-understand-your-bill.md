@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 3c5f5778d68b8df4d4b3132ff96bedb9d5da24ee
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9e43d122bfb758e2e9e14db2ef200cbf3adbefcb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248862"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340401"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Principy poplatků za na faktuře smlouvy zákazníka Microsoftu
 
-Můžete sjednotit poplatky na faktuře díky analýze jednotlivé transakce na faktuře.
+Rozumíte poplatky na faktuře díky analýze jednotlivých transakcí.
 
-Ve fakturační účet zákaznické smlouvy Microsoft generováno faktury každý měsíc pro každou fakturační profil. Faktury zahrnuje všechny poplatky za předchozí měsíc. Na webu Azure Portal můžete zobrazit vašich fakturách se projeví. Další informace najdete v tématu [zobrazit a stáhnout fakturu Microsoft Azure](billing-download-azure-invoice.md).
+Ve fakturační účet zákaznické smlouvy Microsoft generováno faktury každý měsíc pro každou fakturační profil. Faktury zahrnuje všechny poplatky za předchozí měsíc. Na webu Azure Portal můžete zobrazit vašich fakturách se projeví. Další informace najdete v tématu [stahovat faktury zákaznické smlouvy Microsoft](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
 Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Zaškrtněte, pokud máte přístup k zákaznické smlouvy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
@@ -59,13 +59,13 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 ### <a name="view-transactions-by-invoice-sections"></a>Zobrazit transakce pomocí faktury
 
-Části faktury umožňují organizovat náklady na faktuře fakturační profil. Další informace najdete v tématu [části faktury porozumění](billing-mca-overview.md#understand-invoice-sections). Při vygenerování faktury poplatky za všechny části v fakturační profil se zobrazí na faktuře.
+Části faktury umožňují organizovat náklady na faktuře fakturační profil. Další informace najdete v tématu [vysvětlení části faktury](billing-mca-overview.md#understand-invoice-sections). Při vygenerování faktury zahrnují poplatky za všechny části v fakturační profil na faktuře.
 
-Následující obrázek ukazuje poplatky za část faktury IT oddělení na faktuře vzorku.
+Následující obrázek ukazuje poplatky za část faktury účetní oddělení na faktuře vzorku.
 
 ![Příklad obrázek znázorňující podrobnosti faktury části informace](./media/billing-understand-your-bill-mca/invoicesection-details.png)
 
-Po zjištění poplatky za oddíl faktury, můžete zobrazit na webu Azure Portal ke sjednocení se účtovat poplatky za transakce.
+Po zjištění poplatky za oddíl faktury, můžete zobrazit transakce na webu Azure Portal k pochopení poplatků.
 
 1. Přejděte na stránku všechny transakce na webu Azure Portal zobrazit transakce pro faktury. Další informace najdete v tématu [zobrazit transakce pro fakturu na webu Azure Portal](#view-transactions-for-an-invoice-in-the-azure-portal).
 
@@ -73,9 +73,9 @@ Po zjištění poplatky za oddíl faktury, můžete zobrazit na webu Azure Porta
 
 ## <a name="understand-pending-charges-to-estimate-your-next-invoice"></a>Vysvětlení čekající poplatky pro odhad další faktury
 
-Ve fakturační účet zákaznické smlouvy Microsoft dokud poplatky se fakturují, jsou odhad a považován za čekající na vyřízení. Se dokončí a považován za dobu, kdy se zobrazují na faktuře. Můžete zobrazit čekající poplatky za fakturační profil, pokud chcete odhadnout náklady na další faktuře.
+Ve fakturační účet zákaznické smlouvy Microsoft dokud poplatky se fakturují, jsou odhad a považován za čekající na vyřízení. Můžete zobrazit čekající poplatky webu Azure Portal pro odhad další faktury. Čekající poplatky jsou odhad a jsou bez daně tak skutečné náklady na další faktuře budou lišit od čekající poplatky.
 
-### <a name="view-charges-summary"></a>Zobrazit souhrn nákladů
+### <a name="view-summary-of-pending-charges"></a>Zobrazení souhrnu probíhající poplatky
 
 1. Přihlaste se k webu [Azure Portal](https://www.azure.com).
 
@@ -91,11 +91,11 @@ Ve fakturační účet zákaznické smlouvy Microsoft dokud poplatky se fakturuj
 
    ![Snímek obrazovky zobrazující Azure portal vyhledejte Správa nákladů a fakturace](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
 
-Poplatky za měsíc k datu se čeká na náklady pro aktuální měsíc a se účtují při vygenerování faktury za měsíc. Pokud není fakturu za poslední měsíc i nadále vygenerována, pak poplatky v posledním měsíci také čekající na vyřízení.
+Poplatky za měsíc k datu se čeká na náklady pro aktuální měsíc a se účtují při vygenerování faktury za měsíc. Pokud není fakturu za poslední měsíc i nadále vygenerována, pak poplatky v posledním měsíci také čekající na vyřízení a projeví se na další faktuře.
 
 ### <a name="view-pending-transactions"></a>Zobrazit čekající transakce
 
-Po identifikování čekající poplatky za jednotlivé transakce, které přispívají k poplatky na stránce všechny transakce můžete zobrazit. V tomto okamžiku čekající využití poplatky nejsou zobrazeny na stránce všechny transakce. Použití čekající poplatků můžou podívat na stránce předplatná Azure. Další informace najdete v tématu [zobrazení čekajících poplatky za využívání](#view-pending-usage-charges)
+Jakmile identifikujete čekající poplatky, rozumíte poplatky prostřednictvím analýzy, které poskytly se účtovat poplatky za jednotlivé transakce. V tomto okamžiku čekající využití poplatky nejsou zobrazeny na stránce všechny transakce. Použití čekající poplatků můžou podívat na stránce předplatná Azure. Další informace najdete v tématu [zobrazení čekajících poplatky za využívání](#view-pending-usage-charges)
 
 1. Přihlaste se k webu [Azure Portal](https://www.azure.com).
 
@@ -127,11 +127,9 @@ Po identifikování čekající poplatky za jednotlivé transakce, které přisp
 
     ![Snímek obrazovky zobrazující seznam předplatných Azure pro fakturační profil](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list.png)
 
-Můžete zobrazit podrobných poplatků za využití pomocí Azure file využití a poplatků. Další informace najdete v další části.
-
 ## <a name="analyze-your-azure-usage-charges"></a>Analyzujte své poplatky za využití Azure
 
-Použijte k analýze své poplatky za využití na základě využití a poplatky za Azure souboru csv. Soubor pro fakturu nebo si můžete stáhnout čekající poplatky. Další informace najdete v tématu [získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
+Použijte k analýze poplatky podle využití Azure souboru csv využití a poplatků. Soubor pro fakturu nebo si můžete stáhnout čekající poplatky. Další informace najdete v tématu [získat Azure billing invoice a denní data o využití](billing-download-azure-invoice-daily-usage-date.md).
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Zobrazit podrobné informace o využití z oddílu faktury
 
@@ -143,9 +141,9 @@ Následující kroky vás provedou sjednocování poplatky za výpočetní kapac
 
  | Faktury PDF | Využití Azure a poplatky za sdíleného svazku clusteru |
  | --- | --- |
- |IT oddělení |invoiceSectionName |
- |Poplatky za využívání - Azure Standard |productOrderName |
- |Storage |serviceFamily |
+ |Účetní oddělení |invoiceSectionName |
+ |Poplatky za využívání - plánu Microsoft Azure |productOrderName |
+ |Compute |serviceFamily |
 
 1. Filtr **invoiceSectionName** sloupec v souboru CSV do **účetní oddělení**.
 2. Filtr **productOrderName** sloupec v souboru CSV do **plánu Microsoft Azure**.
@@ -173,7 +171,7 @@ Filtr **subscriptionName** sloupec v Azure souboru CSV využití a náklady na *
 
 Pokyny, jak platit váš účet se zobrazí v dolní části faktury. [Zjistěte, jak platit](billing-mca-understand-your-invoice.md#how-to-pay).
 
-Pokud jste už jste platili vyúčtování, můžete zkontrolovat stav platby na fakturách stránce na webu Azure Portal. 
+Pokud jste už jste platili vyúčtování, můžete zkontrolovat stav platby na fakturách stránce na webu Azure Portal.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

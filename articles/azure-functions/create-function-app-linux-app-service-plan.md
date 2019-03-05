@@ -1,90 +1,122 @@
 ---
-title: Vytvoření aplikace funkcí v plánu služby Azure App Service v Linuxu
-description: Zjistěte, jak vytvořit aplikaci function app, na kterém běží na Linuxu v plánu služby App Service pomocí Azure CLI.
+title: Vytvoření aplikace function app v Linuxu na webu Azure Portal | Dokumentace Microsoftu
+description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
 services: functions
-keywords: ''
+documentationcenter: na
 author: ggailey777
-ms.author: glenga
-ms.date: 11/28/2018
-ms.topic: conceptual
-ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: ec7b71c7da19ecefc14696c029e63a074b498ec8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.service: azure-functions
+ms.devlang: multiple
+ms.topic: quickstart
+ms.date: 02/28/2019
+ms.author: glenga
+ms.custom: ''
+ms.openlocfilehash: cc99bc4345c388f22e72957590f3917a85e214e0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696728"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339804"
 ---
-# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan-preview"></a>Vytvoření aplikace function app v Linuxu v plánu služby Azure App Service (preview)
+# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Vytvoření aplikace funkcí v plánu služby Azure App Service v Linuxu
 
-Služba Azure Functions umožňuje hostovat funkce v Linuxu ve výchozím kontejneru Azure App Service. Tento článek vás provede jak používat rozhraní příkazového řádku Azure k vytvoření aplikace funkcí hostované v systému Linux v Azure, která běží v [plán služby App Service](functions-scale.md#app-service-plan). Můžete také [použít vlastní kontejner](functions-create-function-linux-custom-image.md). Hostování v Linuxu je aktuálně ve verzi preview.
+Služba Azure Functions umožňuje hostovat funkce v Linuxu ve výchozím kontejneru Azure App Service. Tento článek vás provede způsob použití [webu Azure portal](https://portal.azure.com) k vytvoření aplikace funkcí hostované v systému Linux, na kterém běží v [plán služby App Service](functions-scale.md#app-service-plan). Můžete také [použít vlastní kontejner](functions-create-function-linux-custom-image.md).
 
-V plánu služby App Service zodpovídáte za škálování vaší aplikace function app. Abyste mohli využívat funkce bez serveru služby Azure Functions, můžete také hostovat funkce v Linuxu v [plánu Consumption](functions-scale.md#consumption-plan).
-
-Následující kroky můžete provést v počítačích se systémem Mac, Windows nebo Linux.
-
-## <a name="prerequisites"></a>Požadavky
-
-K dokončení tohoto rychlého startu je potřeba:
-
-+ Aktivní předplatné Azure.
+![Vytvoření aplikace Function App na webu Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0.21 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí svého účtu Azure.
 
-[!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
+## <a name="create-a-function-app"></a>Vytvoření Function App
 
-[!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
+K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. V tomto článku vytvoříte plán služby App Service při vytváření aplikace funkcí.
 
-## <a name="create-a-linux-app-service-plan"></a>Vytvoření plánu služby App Service pro Linux
+1. Vyberte **vytvořit prostředek** nalezeno tlačítko v levém horním rohu webu Azure portal, pak vyberte **Compute** > **aplikace Function App**.
 
-[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
+    ![Vytvoření aplikace Function App na portálu Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
-## <a name="create-a-function-app-on-linux"></a>Vytvoření aplikace funkcí v Linuxu
+2. Použijte nastavení aplikace Function App uvedená v tabulce pod obrázkem.
 
-K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje prostředí pro provádění kódu funkce. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci funkcí vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create) s použitím plánu služby App Service pro Linux.
+    ![Určení nastavení nové aplikace Function App](./media/create-function-app-linux-app-service-plan/function-app-create-flow2.png)
 
-V následujícím příkazu nahraďte zástupný symbol `<app_name>` jedinečným názvem vaší aplikace funkcí a `<storage_name>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<app_name>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Také byste měli nastavit `<language>` modul runtime pro aplikace function app, z `dotnet` (C#), `node` (JavaScript), nebo `python`.
+    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **Název aplikace** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
+    | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. | 
+    | **[Skupina prostředků](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
+    | **OS** | Linux | Aplikace function app běží na systému Linux. |
+    | **Publikování** | Kód | Výchozí kontejner Linuxu pro vaše **zásobník modulu Runtime** se používá. Vše, co je potřeba zadat je kód projektu funkce aplikace. Další možností je publikovat vlastní [image Dockeru](functions-create-function-linux-custom-image.md). |
+    | **[Plán hostování](functions-scale.md)** | Plán služby App Service | Plán hostování, který určuje způsob přidělování prostředků aplikaci Function App. Při spuštění v plánu služby App Service, můžete řídit [škálování vaší aplikace function App](functions-scale.md).  |
+    | **Plán služby App Service/umístění** | Vytvoření plánu | Zvolte **vytvořit nový** a zadat **plán služby App Service** název. Zvolte **umístění** v [oblasti](https://azure.microsoft.com/regions/) vaší blízkosti nebo v blízkosti jiných služeb vaše funkce využívají. Zvolte požadované  **[cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Aplikace function App Linux i Windows nelze spustit v rámci stejného plánu služby App Service. |
+    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Zvolte **.NET** pro funkce C# a F#. [Podpora jazyka Python](functions-reference-python.md) je ve verzi preview v současnosti. |
+    | **[Úložiště](../storage/common/storage-quickstart-create-account.md)** |  Globálně jedinečný název |  Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít také existující účet, který splňuje [požadavky na účet úložiště](functions-scale.md#storage-account-requirements). |
+    | **[Application Insights](functions-monitoring.md)** | Povoleno | Application Insights je ve výchozím nastavení zakázána. Doporučujeme, abyste povoluje se integrace služby Application Insights teď a výběr umístění pro hostování poblíž vaší aktuální polohy plán služby App Service. Pokud chcete udělat to později, přečtěte si téma [monitorování Azure Functions](functions-monitoring.md).  |
 
-```azurecli-interactive
-az functionapp create --resource-group myResourceGroup --plan myAppServicePlan \
---name <app_name> --storage-account  <storage_name> --runtime <language>
-```
+3. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
 
-Po vytvoření a nasazení aplikace funkcí se v Azure CLI zobrazí podobné informace jako v následujícím příkladu:
+4. Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**.
 
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 1536,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "quickstart.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "quickstart.azurewebsites.net",
-    "quickstart.scm.azurewebsites.net"
-  ],
-   ....
-    // Remaining output has been truncated for readability.
-}
-```
+    ![Určení nastavení nové aplikace Function App](./media/create-function-app-linux-app-service-plan/function-app-create-notification.png)
 
-Vzhledem k tomu, že `myAppServicePlan` je plán pro Linux, k vytvoření kontejneru, ve kterém se spouští aplikace funkcí v Linuxu, se použije integrovaná image Dockeru.
+5. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte.
 
-[!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources-simple.md)]
+> [!TIP]
+> Pokud máte potíže najít na portálu své aplikace funkcí, zkuste [přidat aplikace funkcí mezi oblíbené na webu Azure Portal](functions-how-to-use-azure-function-app-settings.md#favorite).
 
-## <a name="next-steps"></a>Další kroky
+Dál vytvoříte v nové aplikaci Function App funkci. I když vaše aplikace function app je k dispozici, může trvat několik minut, než plně inicializován.
 
-V tomto článku se dozvíte, jak vytvořit aplikaci function app Linux hostované v Azure. Teď můžete [nasazení projektu funkce](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest) do této aplikace function app. Můžete použít Azure Functions Core Tools na [vytvoření projektu funkce](functions-run-local.md) do místního počítače a nasaďte ji do nové aplikace funkce systému Linux.  
+## <a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-> [!div class="nextstepaction"] 
-> [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
+Tato část ukazuje, jak vytvořit funkci ve vaší nové aplikaci function app na portálu.
+
+> [!NOTE]
+> Portálu vývojové prostředí může být užitečné pro vyzkoušení Azure Functions. Pro většinu scénářů doporučujeme vývoj funkcí místně a publikování projektu do aplikace function app, buď pomocí [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) nebo [nástrojů Azure Functions Core](functions-run-local.md#create-a-local-functions-project).  
+
+1. Ve vaší nové aplikaci function app, vyberte **přehled** kartu a po jeho načtení zcela zvolte **+ nová funkce**.
+
+    ![Vytvoření nové funkce z karty přehledu](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
+
+1. V **rychlý Start** kartě **na portálu**a vyberte **pokračovat**.
+
+    ![Volba vývojářské platformy funkce.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
+
+1. Zvolte **Webhook + API** a potom vyberte **Vytvořit**.
+
+    ![Stručný úvod do služby Functions na webu Azure Portal.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-node-webhook.png)
+
+Na základě šablony funkce aktivované protokolem HTTP pro určitý jazyk se vytvoří funkce.
+
+Novou funkci můžete spustit odesláním požadavku HTTP.
+
+## <a name="test-the-function"></a>Testování funkce
+
+1. V nové funkci klikněte vpravo nahoře na **</> Získat adresu URL funkce**, vyberte **výchozí (klíč funkce)** a potom klikněte na **Kopírovat**. 
+
+    ![Kopírování adresy URL funkce z webu Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
+
+2. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Na konec této adresy URL připojte hodnotu řetězce dotazu `&name=<yourname>` a stisknutím klávesy `Enter` na klávesnici požadavek proveďte. V prohlížeči by se měla zobrazit odpověď, kterou funkce vrátila.  
+
+    Následující příklad ukazuje odpověď v prohlížeči:
+
+    ![Odezva funkce v prohlížeči.](./media/create-function-app-linux-app-service-plan/function-app-browser-testing.png)
+
+    Adresa URL požadavku obsahuje klíč, který je ve výchozím nastavení nezbytný pro přístup k funkci přes protokol HTTP.
+
+3. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Pokud chcete zobrazit výstup trasování z předchozího zpracování, vraťte se k funkci na portálu a kliknutím na šipku ve spodní části obrazovky rozbalte položku **Protokoly**.
+
+   ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/create-function-app-linux-app-service-plan/function-view-logs.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+
+## <a name="next-steps"></a>Další postup
+
+Vytvořili jste aplikaci Function App s jednoduchou funkcí aktivovanou protokolem HTTP.  
+
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+
+Další informace najdete v tématu [Vazby protokolu HTTP služby Azure Functions](functions-bindings-http-webhook.md).

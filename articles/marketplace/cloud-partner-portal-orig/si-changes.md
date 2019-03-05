@@ -12,24 +12,36 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 3/3/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ec3784a91f8aeb7f0fedd13c9ab86a844832a578
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809192"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342373"
 ---
-<a name="seller-insights-release-notes"></a>Zpráva k vydání verze Insights prodejce 
-===============================
-(Datum vydání: 28. července 2018)
+# <a name="seller-insights-release-notes"></a>Zpráva k vydání verze Insights prodejce 
+
+(Datum vydání: 1. března 2019)
 
 Tento článek obsahuje informace o změnách na funkci na prodejce Insights [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
 
+## <a name="release-highlights-for-march-1-2019"></a>Nejdůležitější Novinky ve verzi pro 1. března 2019
 
-<a name="release-highlights"></a>Nejdůležitější Novinky ve verzi
-------------------
+* *Trend zákazníka* přidány do souhrnu
+* *Prvních pět zákazníků* v souhrnu odrážejí zákazník má všechna předplatná Azure
+* *Normalizovaná Trend využití & aktivní Trend objednávky* v souhrnu přesunutá do části *měsíční objednávky na první pohled*
+* *Sestava odsouhlasení obecných licencí výběr* aktualizovat
+* *Prvních pět zákazníků* na výběr odrážejí zákazník má všechna předplatná Azure
+* *Sestava využití* aktualizovat pomocí ID zákazníka
+* *Zákazník držby* na využití & objednávky odráží zákazník má všechna předplatná Azure
+
+
+(Datum vydání: 28. července 2018)
+
+## <a name="release-highlights-for-july-28-2018"></a>Nejdůležitější Novinky ve verzi pro 28. července 2018
+
 
 -   *Odhad ceny* zviditelňují poplatky zákazníků s měny převod vliv.
 -   *Naplánované výplaty* poskytují starší pohled potenciální výplaty.
@@ -37,8 +49,7 @@ Tento článek obsahuje informace o změnách na funkci na prodejce Insights [po
 -   *Použití s denním intervalem* poskytuje další členitosti a lepší přehled o využití ze strany zákazníků.
 
 
-<a name="changes-to-data-structure-and-taxonomy"></a>Změny datové struktury a taxonomie
---------------------------------------
+### <a name="changes-to-data-structure-and-taxonomy"></a>Změny datové struktury a taxonomie
 
 V následující tabulce jsou uvedeny metriky, které byly přidány nebo podstatně změna v této vydané verzi. 
 

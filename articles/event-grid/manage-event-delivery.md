@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/06/2019
 ms.author: spelluru
-ms.openlocfilehash: a15797e9b181aa877b6dfa3350e69b210af5885e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 69c26ab522a925032c5a255d07489de0052756c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731763"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340844"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
@@ -21,6 +21,9 @@ Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doru
 ## <a name="set-dead-letter-location"></a>Nastavit umístění onta nedoručených zpráv
 
 Pokud chcete nastavit umístění nedoručených zpráv, potřebujete účet úložiště pro uchování událostí, které nelze doručit do koncového bodu. V příkladech Získejte ID prostředku pro existující účet úložiště. Vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
+
+> [!NOTE]
+> Vytvoření účtu úložiště a kontejner objektů blob v úložišti před spuštěním příkazů v tomto článku.
 
 ### <a name="azure-cli"></a>Azure CLI
 

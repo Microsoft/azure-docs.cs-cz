@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: adb893a9d37219409f81b2fb402f2d4afd36aa34
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755015"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338854"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
 
@@ -55,7 +55,7 @@ Chcete-li použít grafickými procesory v instanci kontejneru, zadejte *GPU pro
 
   | Skladová jednotka (SKU) | Rodina virtuálního počítače |
   | --- | --- |
-  | K80 | [SÍŤOVÝ ADAPTÉR.](../virtual-machines/linux/sizes-gpu.md#nc-series) |
+  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
@@ -85,6 +85,10 @@ Při nasazování prostředků GPU, nastavte prostředky procesoru a paměti vho
 
 * **Ovladače CUDA** – Container instances, s GPU prostředky jsou předem zřízené ovladače NVIDIA CUDA a vyvinuté kontejnerové moduly runtime, abyste mohli používat Image kontejneru pro CUDA, úlohy.
 
+  V této fázi podporujeme CUDA 9.0. Například můžete použít následující základní Image pro váš soubor Docker:
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+    
 ## <a name="yaml-example"></a>Příklad YAML
 
 Jedním ze způsobů přidání prostředků GPU je nasadit skupinu kontejnerů s využitím [soubor YAML](container-instances-multi-container-yaml.md). Zkopírujte následující kód YAML do nového souboru s názvem *gpu nasazení aci.yaml*, pak soubor uložte. Tato YAML vytvoří skupinu kontejnerů *gpucontainergroup* zadání instanci kontejneru s grafickým Procesorem K80. Instance spuštění ukázkové CUDA vektoru přidání aplikace. Požadavky prostředků jsou dostatečné ke spouštění úloh.

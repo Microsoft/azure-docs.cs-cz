@@ -1,5 +1,5 @@
 ---
-title: Přidat uživatele spolupráce B2B bez pozvánky – Azure Active Directory | Dokumentace Microsoftu
+title: Přidat uživatele spolupráce B2B bez pozvánky odkaz nebo e-mailu – Azure Active Directory | Dokumentace Microsoftu
 description: Můžete nechat přidat další uživatele typu Host do služby Azure AD bez uplatnění pozvání v Azure Active Directory s B2B spolupráce uživatele typu Host.
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75656eec8e2c79c48ab48bd96a504d6e5dbac3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672232"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337664"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Přidání uživatelů typu Host pro spolupráci B2B bez pozvánky
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Přidat uživatele typu Host spolupráce B2B bez pozvánky odkaz nebo e-mailu
 
 Nyní můžete pozvat uživatele typu Host odesláním na přímý odkaz na sdílené aplikace. Pomocí této metody uživatele typu Host už nemusí používat e-mailová pozvánka s výjimkou v některé zvláštní případy. Uživatel typu Host klikne odkaz na aplikaci, kontroly a přijme podmínky ochrany osobních údajů a bez problémů přistupuje aplikace. Další informace najdete v tématu [uplatnění pozvání spolupráce B2B](redemption-experience.md).   
 

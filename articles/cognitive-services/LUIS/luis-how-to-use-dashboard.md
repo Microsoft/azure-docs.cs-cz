@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8927213dc4f1cf01eccdd8f54a946f9dbbaaa04d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869955"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338429"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>Statistika modelu a využití na řídicím panelu
 Řídicí panel aplikací umožňuje monitorovat aplikace jeden pohled. **Řídicí panel** zobrazí při otevření aplikace po kliknutí na název aplikace **Moje aplikace** stránce vyberte **řídicí panel** v horním panelu. 
@@ -69,21 +69,8 @@ Počet přístupů spotřebované klíče koncového bodu aplikace. Další info
 
 ![Rozpis záměru](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-Chcete-li řídit, jestli rozdělení je založena na označené projevy nebo koncový bod přístupů:
-
-1. Klikněte na tlačítko **další nastavení** ![tlačítka Další nastavení do seznamu přístupu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
-
-    ![Seznam rozdělení záměru](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Vyberte hodnotu ze seznamu a potom klikněte na šipku zpět ![Šipka vzad](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Chcete-li zobrazit v grafu.
-
 ## <a name="entity-breakdown"></a>Rozpis entity
 Na řídicím panelu zobrazí rozpis entit na základě s popiskem projevy nebo koncový bod přístupů. Toto souhrnné grafy zobrazují relativní důležitost Každá entita v aplikaci. Když myší najedete myší určitý řez, uvidíte název entity a procento v přístupy s popiskem projevy nebo koncového bodu. 
 
 ![Rozpis entity](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-Chcete-li řídit, jestli rozdělení je založena na označené projevy nebo koncový bod přístupů:
-
-1. Klikněte na tlačítko **další nastavení** ![tlačítko Další nastavení a získání seznamu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
-
-    ![Seznam rozdělení entit](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Vyberte hodnotu ze seznamu a potom klikněte na šipku zpět ![Šipka vzad](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Chcete-li zobrazit graf odpovídajícím způsobem.

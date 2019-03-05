@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 03/04/2019
+ms.openlocfilehash: 58eb7729dd0d2dda728d2008d5bb674f5222c08e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894696"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337834"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse IP pravidla brány firewall
 
@@ -82,7 +82,7 @@ Pokud chcete umožnit aplikacím z Azure připojení k vašemu serveru SQL Azure
 
 ## <a name="creating-and-managing-ip-firewall-rules"></a>Vytváření a Správa pravidel brány firewall protokolu IP
 
-První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Následující pravidla brány firewall na úrovni serveru IP můžete vytvářet a spravovat těmito způsoby a pomocí příkazů jazyka Transact-SQL.
+První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Následující pravidla brány firewall na úrovni serveru IP můžete vytvářet a spravovat těmito způsoby a pomocí příkazů jazyka Transact-SQL.
 
 > [!IMPORTANT]
 > Pravidla brány firewall na úrovni databáze IP mohou být vytvořeny pouze a spravují s použitím příkazů jazyka Transact-SQL.
@@ -149,17 +149,19 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Spravovat pravidla brány firewall na úrovni serveru IP pomocí Azure Powershellu
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 | Rutina | Úroveň | Popis |
 | --- | --- | --- |
-| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |Server |Vrátí aktuální pravidla brány firewall úrovni serveru IP |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |Server |Vytvoří nové pravidlo brány firewall na úrovni serveru IP |
-| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |Server |Aktualizuje vlastnosti existujícího pravidla brány firewall na úrovni serveru IP |
-| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |Server |Odebere pravidla brány firewall na úrovni serveru IP |
+| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server |Vrátí aktuální pravidla brány firewall na úrovni serveru. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server |Vytvoří nové pravidlo brány firewall na úrovni serveru |
+| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Server |Aktualizuje vlastnosti existujícího pravidla brány firewall na úrovni serveru. |
+| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Server |Odebere pravidla brány firewall na úrovni serveru. |
 
 Následující příklad nastaví pravidlo firewallu protokolu IP úrovni serveru pomocí prostředí PowerShell:
 
 ```powershell
-New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
+New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
     -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```

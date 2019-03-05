@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: cf8525d4cc829805532210bf09e9ea9da240405d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857745"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338650"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Vytvořit pro vizuální vyhledávání jednostránkovou webovou aplikaci 
 
-Rozhraní API pro vizuální vyhledávání Bingu poskytuje prostředí podobné podrobnostem o obrázcích zobrazeným na Bing.com/images. Pomocí vizuálního vyhledávání můžete zadat obrázek a získat zpět přehledy o obrázku, například vizuálně podobné obrázky, nákupní zdroje, webové stránky, na kterých se obrázek nachází, a další. 
+Rozhraní API vizuální vyhledávání Bingu poskytuje funkce podobný podrobnosti o imagi na Bing.com/images. Pomocí vizuálního vyhledávání můžete zadat obrázek a získat zpět přehledy o obrázku, například vizuálně podobné obrázky, nákupní zdroje, webové stránky, na kterých se obrázek nachází, a další. 
 
 Tento článek vysvětluje, jak rozšířit jednostránkovou webovou aplikaci pro rozhraní API Bingu pro vyhledávání obrázků. K zobrazení tohoto kurzu nebo získat zdrojový kód se tady použít, najdete v článku [kurzu: Vytvoření jednostránkovou aplikaci pro rozhraní API Bingu pro vyhledávání obrázků](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
 

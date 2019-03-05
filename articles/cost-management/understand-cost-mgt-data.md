@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447459"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339228"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -62,8 +62,9 @@ Následující tabulka uvádí nepodporované nabídky.
 | **Plány podpory** | Azure Government pro-Direct Support | MS-AZR-USGOV-0042P |
 | **Plány podpory** | Azure Government Developer Support. | MS-AZR-USGOV-0043P |
 
-Pro zákazníky s kategorií nabídky s průběžnými platbami, MSDN a Visual Studio data jsou k dispozici ve službě Cost Management od 10/02/2018.
+Pro zákazníky s kategorií nabídky s průběžnými platbami, MSDN a Visual Studio data jsou k dispozici ve službě Cost Management od 10/02/2018. Pro přístup k datům pro vaše předplatné před 10/02/2018, můžete použít [centra účtů Azure](https://account.azure.com/subscriptions) stáhnout využití podrobnosti v souboru CSV, nebo můžete použít [podrobnosti o použití rozhraní API](/rest/api/consumption/usagedetails).
 
+## <a name="determine-your-offer-type"></a>Určení svůj typ nabídky
 Pokud se vám nezobrazují žádná data k předplatnému a k určení, pokud vaše předplatné spadá pod podporované nabídky, můžete ověřit, že je vaše předplatné nepodporuje. Chcete-li ověřit, že předplatné Azure se podporuje, přihlaste se do [webu Azure portal](https://portal.azure.com). Potom vyberte **všechny služby** na panelu nabídky vlevo. V seznamu služeb vyberte **předplatná**. V nabídce předplatné seznam klikněte na předplatné, pro kterou chcete ověřit. Vaše předplatné se zobrazí na kartě Přehled a zobrazí se **nabízejí** a **ID nabídky**. Příklad ukazuje následující obrázek.
 
 ![Příklad na kartě Přehled předplatného, nabídky a ID nabídky](./media/understand-cost-mgt-data/offer-and-offer-id.png)

@@ -1,28 +1,28 @@
 ---
-title: Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview) | Microsoft Docs
+title: Vytvoření Azure Functions v Linuxu pomocí vlastní image
 description: Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu.
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 2c80f988583571f3394a29747a6f452951cea878
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978030"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337570"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
+# <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce v Linuxu pomocí vlastní image
 
-Služba Azure Functions umožňuje hostovat funkce v Linuxu ve vašem vlastním kontejneru. Můžete také [hostovat ve výchozím kontejneru služby Azure App Service](functions-create-first-azure-function-azure-cli-linux.md). Tato funkce je aktuálně ve verzi Preview a vyžaduje [modul runtime Functions 2.0](functions-versions.md).
+Služba Azure Functions umožňuje hostovat funkce v Linuxu ve vašem vlastním kontejneru. Můžete také [hostovat ve výchozím kontejneru služby Azure App Service](functions-create-first-azure-function-azure-cli-linux.md). Tato funkce vyžaduje [modul runtime verze 2.x funkce](functions-versions.md).
 
-V tomto kurzu se dozvíte, jak do Azure nasadit funkce jako vlastní image Dockeru. Tento vzor je užitečný v případě, že potřebujete přizpůsobit vestavěnou image kontejneru služby App Service. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image.
+V tomto kurzu se dozvíte, jak do Azure nasadit funkce jako vlastní image Dockeru. Tento vzor je užitečný v případě, že potřebujete přizpůsobit vestavěnou image kontejneru služby App Service. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image. Podporovaná základní Image pro Azure Functions jsou součástí [Azure Functions základní úložiště imagí](https://hub.docker.com/_/microsoft-azure-functions-base). [Podpora jazyka Python](functions-reference-python.md) je ve verzi preview v současnosti.
 
 V tomto kurzu se dozvíte, jak pomocí Azure Functions Core Tools vytvořit funkci ve vlastní imagi Linuxu. Tuto image publikujete do aplikace funkcí v Azure, která se vytvořila pomocí Azure CLI.
 
@@ -36,6 +36,7 @@ V tomto kurzu se naučíte:
 > * Vytvořit plán služby App Service pro Linux
 > * Nasadit aplikaci Function App z Docker Hubu
 > * Přidat do aplikace Function App nastavení aplikace
+> * Povolit průběžné nasazování
 
 Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux.  
 
@@ -67,6 +68,8 @@ Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících
 * `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
 * `python`: vytvoří projekt Python.
+
+[!INCLUDE functions-python-preview-note]
 
 Při spuštění příkazu se zobrazí něco jako následující výstup:
 
@@ -101,7 +104,7 @@ COPY . /home/site/wwwroot
 ```
 
 > [!NOTE]
-> Při hostování image v privátním registru kontejneru byste měli pomocí proměnných **ENV** v souboru Dockerfile přidat do aplikace Function App nastavení připojení. Jelikož tento kurz nemůže zaručit, že použijete privátní registr, nastavení připojení se v rámci osvědčeného postupu v oblasti zabezpečení [přidávají po nasazení pomocí rozhraní Azure CLI](#configure-the-function-app).
+> Úplný seznam podporovaných základní Image pro službu Azure Functions najdete v [stránce základní image Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 ### <a name="run-the-build-command"></a>Spuštění příkazu `build`
 V kořenové složce spusťte příkaz [docker build](https://docs.docker.com/engine/reference/commandline/build/) a zadejte název `mydockerimage` a značku `v1.0.0`. Položku `<docker-id>` nahraďte ID vašeho účtu Docker Hubu. Tento příkaz sestaví image Dockeru pro kontejner.
@@ -223,20 +226,20 @@ Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace 
 }
 ```
 
-Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hubu, která se má použít k vytvoření aplikace Function App.
+Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hubu, která se má použít k vytvoření aplikace Function App. Použití [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) příkazu zobrazíte informace o imagi použité pro nasazení. Použití [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) příkaz pro nasazení z jiné image.
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
 
 Funkce potřebuje k připojení k výchozímu účtu úložiště připojovací řetězec. Při publikování vlastní image do účtu privátního kontejneru byste měli místo toho určit tato nastavení aplikace jako proměnné prostředí v souboru Dockerfile pomocí [instrukce ENV](https://docs.docker.com/engine/reference/builder/#env) nebo něčeho podobného.
 
-V tomto případě je `<storage_account>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
+V tomto případě je `<storage_name>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_account> \
+storageConnectionString=$(az storage account show-connection-string \
+--resource-group myResourceGroup --name <storage_name> \
 --query connectionString --output tsv)
 
-az functionapp config appsettings set --name <function_app> \
+az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
@@ -252,6 +255,24 @@ AzureWebJobsStorage=$storageConnectionString
 Teď můžete svoje funkce běžící na Linuxu v Azure otestovat.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-continuous-deployment"></a>Povolit průběžné nasazování
+
+Jednou z výhod použití kontejnerů je schopnost automaticky nasazovat aktualizace, když kontejnery jsou aktualizovány v registru. Povolit průběžné nasazování se službou [az functionapp deployment kontejneru konfigurace](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) příkazu.
+
+```azurecli-interactive
+az functionapp deployment container config --enable-cd \
+--query CI_CD_URL --output tsv \
+--name <app_name> --resource-group myResourceGroup
+```
+
+Tento příkaz vrátí adresu URL webhooku nasazení po povolení průběžného nasazování. Můžete také použít [az functionapp deployment show-cd – adresa url kontejneru](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) příkaz, který vrátí tuto adresu URL. 
+
+Zkopírujte adresu URL nasazení a přejděte do úložiště Dockerhubu, zvolte **Webhooky** kartu, zadejte **název Webhooku** webhooku, vložte adresu URL v **adresu URL Webhooku**a klikněte na tlačítko znaménko plus (**+**).
+
+![Přidat webhook ve vašem úložišti Dockerhubu](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+Se sadou webhooku způsobit žádné aktualizace pro propojený obrázek v Dockerhubu do aplikace function App, stahování a instalaci nejnovější image.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

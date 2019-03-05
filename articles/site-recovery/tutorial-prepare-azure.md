@@ -2,18 +2,18 @@
 title: Příprava Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery | Microsoft Docs
 description: Zjistěte, jak připravit Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: raynew
+ms.date: 03/03/2019
+ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd84becdf7043f3ae1c8070bdc1918d377bc3e3b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159005"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337868"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -28,7 +28,6 @@ V tomto článku se dozvíte, jak připravit komponenty Azure v případě, že 
 
 > [!div class="checklist"]
 > * Ověření oprávnění účtu Azure k replikaci
-> * Vytvoření účtu úložiště Azure Jsou v něm uložené image replikovaných počítačů.
 > * Vytvořte trezor služby Recovery Services. Trezor obsahuje metadata a informace o konfiguraci virtuálních počítačů a další komponenty replikace.
 > * Nastavit síť Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, připojí se do této sítě Azure.
 
@@ -44,27 +43,11 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste správcem předpl
 
 - Vytvoření virtuálního počítače ve vybrané skupině prostředků
 - Vytvoření virtuálního počítače ve vybrané virtuální síti
-- Zápis do vybraného účtu úložiště
+- Zápis do účtu úložiště.
+- Zápis do spravovaného disku.
 
 K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovanou roli Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by váš účet mít navíc přiřazenou předdefinovanou roli Přispěvatel Site Recovery.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-
-Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure. Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services. V tomto kurzu používáme oblast Západní Evropa.
-
-1. V nabídce webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
-2. V části **Vytvořit účet úložiště** zadejte název účtu. Pro účely těchto kurzů používáme název **contosovmsacct1910171607**. Vybraný název musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze číslice a malá písmena.
-3. V části **Model nasazení** vyberte **Resource Manager**.
-4. V části **Druh účtu** vyberte **Úložiště (obecné účely v1)**. Nevybírejte úložiště objektů blob.
-5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**. Možnost pro **vyžadování zabezpečeného přenosu** ponechte **zakázanou**.
-6. V části **Výkon** vyberte **Standard** a v části **Úroveň přístupu** zvolte výchozí možnost **Horká**.
-7. V části **Předplatné** vyberte předplatné, ve kterém chcete nový účet úložiště vytvořit.
-8. V části **Skupina prostředků** zadejte název nové skupiny prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pro účely těchto kurzů používáme název **ContosoRG**.
-9. V části **Umístění** vyberte zeměpisné umístění účtu úložiště. 
-
-   ![vytvořit účet úložiště](media/tutorial-prepare-azure/create-storageacct.png)
-
-9. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -81,7 +64,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
-Když se po převzetí služeb při selhání vytvoří z úložiště virtuální počítače Azure, připojí se do této sítě.
+Když virtuální počítače Azure se vytvoří spravované disky po převzetí služeb při selhání, připojí se k této síti.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 2. Jako model nasazení nechte vybraný **Resource Manager**.
@@ -100,8 +83,7 @@ Když se po převzetí služeb při selhání vytvoří z úložiště virtuáln
 ## <a name="useful-links"></a>Užitečné odkazy
 
 - Informace o [sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- Informace o [typech účtů úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)
-- Další informace o [redundanci úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a [zabezpečeném přenosu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro úložiště
+- [Další informace o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravované disky.
 
 
 

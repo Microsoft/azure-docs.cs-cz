@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511934"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339449"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -39,7 +39,7 @@ Upgradujte na StorSimple řady 8000 a tedy pokračovat na platformě StorSimple.
 
 Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
 
-#### <a name="migrate-to-azure-file-sync"></a>Migrace do Azure File Sync
+#### <a name="migrate-to-azure-file-sync"></a>Migrace do Synchronizace souborů Azure
 
 Tento úplně nová možnost migrace umožňuje zákazníkům umožňuje ukládat sdílené složky organizace ve složce služby soubory Azure. Pro přístup k místnímu používání Azure File Sync (AFS) jsou pak centralizované těchto sdílených složek. AFS můžete nasadit na hostitelském Windows serveru. Skutečná data migrace je pak provést, protože hostitel kopírování nebo použití nástroj pro migraci.
 
@@ -54,6 +54,10 @@ StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS P
 #### <a name="migrate-to-cohesity"></a>Migrace na Cohesity
 
 Cohesity umožňuje migrovat data z aktuální StorSimple 5000 – 7000 Cohesity datovou platformu v Azure. Datová platforma Cohesity je webové škálování softwarově definované řešení, která spojuje soubory, zálohování, objektů a virtuální počítače do jediného řešení nativní pro cloud. Po migraci datové platformy můžete spravovat, ochrana a zřídit dat a aplikací z cloudu na jádro prostřednictvím podokně ze skla. S využitím Cohesity začněte s pouhými třemi uzly. Další informace najdete na [migrace do Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+
+#### <a name="migrate-to-nasuni"></a>Migrace do společnosti Nasuni
+
+Nasuni usnadňuje StorSimple 5000 – 7000 zákazníkům migrovat a uchovávat svá data v Azure.  Nasuni je přední řešení úložiště založené na Azure NAS, poskytuje zákazníkům výkon a zabezpečení, kterou zákazníci očekávají od řešení v místním prostředí s cloudovými cenami a škálování.  Kromě vysoce výkonné úložiště souborů, Nasuni a Azure popisovač zálohování a zotavení po Havárii při umožňuje sdílet a spolupracovat na data po celém světě s centralizovaný správu úložiště. Nasuni má prostředí pro usnadnění migrace – Začněte ještě dnes: https://info.nasuni.com/nasuni-storsimple-migration
 
 ## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
 

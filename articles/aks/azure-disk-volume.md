@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068176"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337987"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytváření a používání svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -21,13 +21,13 @@ Kontejnerových aplikací často potřebují přístup k a zachovat data ve svaz
 > [!NOTE]
 > Disk s Azure je možné připojit pouze pro jeden pod najednou. Pokud potřebujete sdílet mezi více podů trvalý svazek, použijte [Azure Files][azure-files-volume].
 
-Další informace o Kubernetes svazky, naleznete v tématu [Kubernetes svazky][kubernetes-volumes].
+Další informace o Kubernetes svazky, naleznete v tématu [možnosti úložiště pro aplikace ve službě AKS][concepts-storage].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Vytvořte disk s Azure
 
@@ -35,7 +35,7 @@ Při vytváření disku Azure pro použití službou AKS, můžete vytvořit pro
 
 Pro účely tohoto článku vytvořte na disku ve skupině prostředků uzlu. Nejprve získejte název skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Disky Azure se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 8TiB S60 nebo P60 disků. Propustnost a výkon vstupně-výstupních operací na úrovni Premium spravovaného disku závisí na SKU a velikosti instance uzlů v clusteru AKS. Zobrazit [ceny a výkonu spravované disky][managed-disk-pricing-performance].
+> Disky Azure se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 32TiB S80 nebo P80 disků (ve verzi preview). Propustnost a výkon vstupně-výstupních operací na úrovni Premium spravovaného disku závisí na SKU a velikosti instance uzlů v clusteru AKS. Zobrazit [ceny a výkonu spravované disky][managed-disk-pricing-performance].
 
 ID prostředku disku se zobrazí, jakmile se příkaz úspěšně dokončil, jak je znázorněno v následujícím příkladu výstupu. Toto ID disku se používá pro připojení disku v dalším kroku.
 
@@ -126,6 +126,8 @@ Events:
 
 ## <a name="next-steps"></a>Další postup
 
+Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro ukládání a zálohování ve službě AKS][operator-best-practices-storage].
+
 Další informace o službě AKS clustery interakci s disky Azure, najdete v článku [modul plug-in Kubernetes pro Azure Disks][kubernetes-disks].
 
 <!-- LINKS - external -->
@@ -143,3 +145,5 @@ Další informace o službě AKS clustery interakci s disky Azure, najdete v čl
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-files-volume]: azure-files-volume.md
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

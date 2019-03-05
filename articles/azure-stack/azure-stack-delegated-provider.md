@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: a075fdceaf57625280ef73499d868d5c3724426c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1211edde43d802a4c48cbd936473b1a6f83af705
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236477"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342084"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegování nabídek v Azure Stacku
 
@@ -78,7 +78,7 @@ Pokud chcete použít tento návod, potřebujete kromě svého účtu Azure Stac
 | Uživatel |Uživatel |
 
  > [!NOTE]
-   > V případě prodejce CSP Chcete-li vytvořit tento delegované poskytovatele, bude vyžadovat tyto uživatele v adresáři Tenanta (uživatel AAD). Operátor Azure stacku muset [první připojení](https://docs.microsoft.com/azure/azure-stack/azure-stack-enable-multitenancy) , který tenant AAD a nakonfigurujte pomocí následujícího využití a fakturace [tyto kroky](https://docs.microsoft.com/azure/azure-stack/azure-stack-csp-howto-register-tenants).
+ > V případě prodejce CSP vytvoření tohoto delegované poskytovatele je potřeba tyto uživatele v adresáři tenanta (uživatel AAD). Operátory Azure stacku musí [první připojení](azure-stack-enable-multitenancy.md) , který tenanta AAD a nakonfigurujte pomocí následujícího využití a fakturace [tyto kroky](azure-stack-csp-howto-register-tenants.md).
 
 ### <a name="identify-the-delegated-provider"></a>Identifikujte delegované poskytovatele
 

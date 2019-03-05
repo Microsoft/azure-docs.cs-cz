@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 52058469b531383b32974ccc5bc77b31783583bd
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700583"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339943"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Ukázková aplikace pro použití s zóny DMZ
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -42,7 +42,7 @@ Pokud používáte tyto skripty, je toto přidání pravidla brány firewall na 
 Tento skript se:
 
 1. Otevřete IMCPv4 (Ping) na místním serveru brány windows firewall pro snazší testování
-2. Instalace IIS a rozhraní .net Framework v4.5
+2. Instalace IIS a rozhraní .NET Framework v4.5
 3. Vytvořit webovou stránku ASP.NET a v souboru Web.config
 4. Změnit výchozí fond aplikací pro usnadnění přístupu k souborům
 5. Nastavit pro anonymní uživatele pro účet správce a heslo
@@ -152,12 +152,12 @@ Tento skript vytvoří back endu pro tuto jednoduchou aplikaci. Tento skript se:
 2. Vytvořte adresář pro webové stránky
 3. Vytvořte textový soubor, který se vzdáleně přístupný web webové stránky
 4. Nastavení oprávnění pro adresáře a souboru pro anonymní přístup
-5. Vypněte rozšířené zabezpečení Internet Exploreru umožňuje snadnější prohlížení z tohoto serveru 
+5. Vypněte rozšířené zabezpečení Internet Exploreru umožňuje snadnější prohlížení z tohoto serveru
 
 > [!IMPORTANT]
 > **Osvědčený postup**: Nikdy vypněte rozšířené zabezpečení Internet Exploreru na provozním serveru. Navíc je obecně vhodné k procházení webu v provozním serveru. Navíc se vám otevírají sdílené složky pro anonymní přístup není dobrý nápad, ale Hotovo zde pro zjednodušení.
-> 
-> 
+>
+>
 
 Tento skript Powershellu by měl spustit místně, zatímco RDP měl do AppVM01. PowerShell je potřeba spustit jako správce k zajištění úspěšného provedení.
 

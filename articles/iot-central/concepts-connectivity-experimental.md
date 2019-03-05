@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 76976fef7d5372ad5ebbb063f7af12342b001467
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 47fde9099ed8172b83f9f12085c5aee219c4716c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193768"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57318015"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -90,9 +90,9 @@ Následující kroky popisují, jak připojit zařízení k IoT Central pomocí 
       Pokud v případě porušení zabezpečení nebo nastavení primárního certifikátu vyprší, použijte k omezení prostojů sekundární certifikát. Můžete pokračovat ke zřízení zařízení pomocí sekundární certifikát aktualizovat primární certifikát.
 
     - Ověření vlastnictví certifikátu se zajistí, že odeslání certifikát nemá privátní klíč certifikátu. Chcete-li ověřit certifikát:
-        - Klikněte na tlačítko vedle **ověřovací kód** generovat kód.
+        - Vyberte tlačítko vedle **ověřovací kód** generovat kód.
         - Vytvořte certifikát pro ověření X.509 s ověřovacím kódem, který jste vygenerovali v předchozím kroku. Uložte si certifikát jako soubor .cer.
-        - Nahrát podepsaný ověřovacího certifikátu a klikněte na tlačítko ověřit.
+        - Nahrát podepsaný ověřovací certifikát a vyberte **ověřte**.
 
           ![Nastavení připojení](media/concepts-connectivity-experimental/verify-cert.png)
 
@@ -173,7 +173,7 @@ Když skutečné zařízení se připojí k vaší aplikace IoT Central, jeho z�
 
 Následující kroky popisují, jak získat připojovací řetězec pro zařízení:
 
-1. Klikněte na tlačítko **připojit** na **Device Explorer** stránky pro získání podrobností o připojení: **ID rozsahu**, **ID zařízení**, a **zařízení primární klíč**:
+1. Vyberte **připojit** na **Device Explorer** stránky pro získání podrobností o připojení: **ID rozsahu**, **ID zařízení**, a **zařízení primární klíč**:
 
     ![Podrobnosti připojení](media/concepts-connectivity-experimental/device-connect.png)
 

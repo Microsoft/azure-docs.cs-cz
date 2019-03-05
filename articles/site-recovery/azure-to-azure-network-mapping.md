@@ -5,24 +5,24 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866024"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338949"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
-Tento článek popisuje, jak namapovat dvě instance s virtuálními sítěmi Azure (Vnet) nachází v různých oblastech Azure a jak nastavit IP adresování mezi sítěmi. Mapování sítě zajišťuje, aby replikovaný virtuální počítač se vytvoří v cíli Azure oblasti se vytvoří ve virtuální síti, který je namapovaný na virtuální sítě zdrojového virtuálního počítače.
+Tento článek popisuje, jak namapovat dvě instance s virtuálními sítěmi Azure (Vnet) nachází v různých oblastech Azure a jak nastavit IP adresování mezi sítěmi. Mapování sítě poskytuje výchozí chování pro výběr cílové sítě založené na zdrojové síti při povolení replikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než budete mapovat sítě, měli byste mít [virtuálním sítím Azure](../virtual-network/virtual-networks-overview.md) ve zdrojové a cílové oblasti Azure. 
 
-## <a name="set-up-network-mapping"></a>Nastavení mapování sítě
+## <a name="set-up-network-mapping-manually-optional"></a>Nastavit ruční mapování sítě (volitelné)
 
 Mapovat sítě následujícím způsobem:
 
@@ -44,8 +44,13 @@ Pokud jste dosud připraveni mapování sítě, než začnete konfigurovat zotav
 
 - Založený na cíli, který vyberete, Site Recovery automaticky vytvoří mapování sítě ze zdrojové do cílové oblasti a z cíle do zdrojové oblasti.
 - Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti, která je stejný jako zdrojovou síť k síti. Site Recovery přidává **Azure Site Recovery -** jako příponu k názvu zdrojové síti. Můžete přizpůsobit cílová síť.
-- Pokud mapování sítě se už k problému došlo, nelze změnit cílovou virtuální sítí, když povolíte replikaci. Pokud chcete změnit cílovou virtuální sítí, budete muset upravit existující mapování sítě.
-- Pokud upravíte mapování sítě z oblasti A oblasti B, ujistěte se, že upravíte mapování sítě z oblasti B do oblasti A.]
+- Pokud mapování sítě pro zdrojové síti již došlo, namapované Cílová síť bude vždy výchozí při povolení replikace pro více virtuálních počítačů. Můžete změnit cílovou virtuální sítí výběrem dalších dostupných možností z rozevíracího seznamu. 
+- Chcete-li změnit výchozí cílová virtuální síť pro nové replikace, budete muset upravit existující mapování sítě.
+- Pokud chcete upravit mapování sítě z oblasti A oblasti B, ujistěte se, že je nejprve odstranit mapování sítě z oblasti B do oblasti A. Po odstranění reverzní mapování upravit mapování sítě z oblasti A oblasti B a pak vytvořte relevantní reverzní mapování.
+
+>[!NOTE]
+>* Upravuje se mapování sítě se změní pouze výchozí hodnoty pro nový virtuální počítač replikace. Výběr cílové virtuální sítě pro existující replikace nemá vliv. 
+>* Pokud chcete změnit Cílová síť pro stávající replikaci, přejděte na výpočty a síť nastavení replikované položky.
 
 ## <a name="specify-a-subnet"></a>Zadejte podsíť
 

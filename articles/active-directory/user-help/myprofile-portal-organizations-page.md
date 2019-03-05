@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458060"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339738"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Správa vaší organizace na portálu Můj profil (preview)
 Můžete spravovat z vaší organizace **organizace** stránku **Můj profil** portálu.
@@ -35,7 +35,7 @@ Existují dva typy organizací, které je znázorněno na **organizace** stránk
 
 2. Vyberte **organizace** z levého navigačního podokna nebo vyberte **správu organizací** propojit **organizace** bloku.
 
-    ![Stránka Moje profilu zobrazující zvýrazněný organizace odkazy](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![Stránka Moje profilu zobrazující zvýrazněný organizace odkazy](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. Zkontrolovat informace o vaší **domovskou organizaci**. 
 
@@ -57,4 +57,4 @@ Můžete nechat každou organizaci, která není organizaci Domovská stránka.
 
 ## <a name="next-steps"></a>Další postup
 
-- Po zobrazení poslední přihlašovací aktivitu, můžete vybrat možnost zobrazovat a spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), [nedávných aktivit přihlašování](myprofile-portal-recent-activity-page.md), propojená [zařízení](myprofile-portal-devices-page.md), nebo pokud chcete zobrazit jak vaše organizace [používá data](myprofile-portal-privacy-page.md).
+- Po zobrazení vaší organizace, můžete vybrat možnost zobrazovat a spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md), propojená [zařízení](myprofile-portal-devices-page.md), nebo zobrazení jak vaše organizace [používá data](myprofile-portal-privacy-page.md).

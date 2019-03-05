@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312518"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339007"
 ---
 # <a name="detect-domain-specific-content"></a>Zjištění obsahu specifického pro doménu
 
-Kromě toho kategorizace značek a vysoké úrovně, pro počítačové zpracování obrazu podporuje také další specifického pro doménu analýza s využitím modelů, které jste se školení na specializované data. 
+Kromě toho kategorizace značek a vysoké úrovně, pro počítačové zpracování obrazu podporuje také další specifického pro doménu analýza s využitím modelů, které jste se školení na specializované data.
 
 Existují dva způsoby, jak použít doménově specifické modely: samostatně (s vymezeným oborem analýzy) nebo jako neboli podmínky vylepšují funkci kategorizaci.
 
 ### <a name="scoped-analysis"></a>S vymezeným oborem analýzy
 
-Můžete analyzovat image pomocí zvolený model specifického pro doménu voláním [modely /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) rozhraní API. 
+Můžete analyzovat image pomocí zvolený model specifického pro doménu voláním [modely /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) rozhraní API.
 
 Tady je ukázka JSON odpovědi vrácené **modely/celebrit/analyzovat** rozhraní API pro danou image:
 
@@ -55,28 +55,28 @@ Tady je ukázka JSON odpovědi vrácené **modely/celebrit/analyzovat** rozhran�
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Rozšířená kategorizace analýzy  
+### <a name="enhanced-categorization-analysis"></a>Rozšířená kategorizace analýzy
 
-Doménově specifické modely můžete použít také k doplnění analýzu obecné obrázku. Můžete to provést v rámci [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním doménově specifické modely v *podrobnosti* parametr [analyzovat](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) volání rozhraní API. 
+Doménově specifické modely můžete použít také k doplnění analýzu obecné obrázku. Můžete to provést v rámci [vysoké úrovně kategorizace](concept-categorizing-images.md) zadáním doménově specifické modely v *podrobnosti* parametr [analyzovat](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) volání rozhraní API.
 
-V takovém případě třídění taxonomie 86 kategorií jako první. Pokud zjištěné kategorií modelu odpovídající specifického pro doménu, image se předává přidaná i modelu a výsledky. 
+V takovém případě třídění taxonomie 86 kategorií jako první. Pokud zjištěné kategorií modelu odpovídající specifického pro doménu, image se předává přidaná i modelu a výsledky.
 
 Následující odpověď JSON ukazuje, jak specifického pro doménu analýzy může být zahrnut jako `detail` uzel v širší kategorizaci analýzy.
 
 ```json
-"categories":[  
-  {  
+"categories":[
+  {
     "name":"abstract_",
     "score":0.00390625
   },
-  {  
+  {
     "name":"people_",
     "score":0.83984375,
-    "detail":{  
-      "celebrities":[  
-        {  
+    "detail":{
+      "celebrities":[
+        {
           "name":"Satya Nadella",
-          "faceRectangle":{  
+          "faceRectangle":{
             "left":597,
             "top":162,
             "width":248,
@@ -85,8 +85,8 @@ Následující odpověď JSON ukazuje, jak specifického pro doménu analýzy m�
           "confidence":0.999028444
         }
       ],
-      "landmarks":[  
-        {  
+      "landmarks":[
+        {
           "name":"Forbidden City",
           "confidence":0.9978346
         }
@@ -108,20 +108,20 @@ Počítačové zpracování obrazu v současné době podporuje následující d
 Volání [modely](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) rozhraní API vrátí tyto informace spolu s kategorií, na které můžete použít každý model:
 
 ```json
-{  
-  "models":[  
-    {  
+{
+  "models":[
+    {
       "name":"celebrities",
-      "categories":[  
+      "categories":[
         "people_",
         "人_",
         "pessoas_",
         "gente_"
       ]
     },
-    {  
+    {
       "name":"landmarks",
-      "categories":[  
+      "categories":[
         "outdoor_",
         "户外_",
         "屋外_",

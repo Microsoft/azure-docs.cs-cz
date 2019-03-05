@@ -2,18 +2,18 @@
 title: Nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje postup nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/05/2018
-ms.author: ramamill
-ms.openlocfilehash: 4260aaf814b344c1a30106651959d4e4e9ad2335
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 02/28/2019
+ms.author: mayg
+ms.openlocfilehash: e7ee8f58e42f99ebc087f21837511979c578fb89
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340078"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -121,7 +121,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ### <a name="configure-settings"></a>Konfigurace nastavení
 
-1. V průvodci správou konfiguračního serveru vyberte **Nastavit připojení** a pak vyberte síťový adaptér, přes který bude procesový server přijímat provoz replikace z virtuálních počítačů. Potom vyberte **Uložit**. Toto nastavení nelze změnit po dokončení konfigurace. Důrazně doporučujeme neměnit IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je STATICKÁ IP adresa a ne IP DHCP.
+1. Průvodce správou konfiguračního serveru, vyberte **nastavit připojení**. Z rozevíracích seznamů nejprve vyberte síťový adaptér, který používá integrovaný procesový server pro zjišťování a vynucená instalace služby mobility na zdrojový počítače a potom vyberte síťový adaptér, který konfigurační Server používá pro připojení k Azure. Potom vyberte **Uložit**. Toto nastavení nelze změnit po dokončení konfigurace. Důrazně doporučujeme neměnit IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je STATICKÁ IP adresa a ne IP DHCP.
 2. V **trezor Recovery Services vyberte**, přihlaste se k Microsoft Azure pomocí přihlašovacích údajů používaných pro **kroku 6** z "[registrace konfiguračního serveru pomocí služby Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services)" .
 3. Po přihlášení vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
 

@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 02/13/2019
+ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 84f53b0ddf2d9dfbf25eabbe028c2cfaa0c3fb55
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880049"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338140"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -33,13 +33,10 @@ Během replikace data se replikují do služby Azure storage a neplatíte žádn
 
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Co musím udělat v Azure?
-Budete potřebovat předplatné Azure, trezor služby Recovery Services, účet úložiště a virtuální síť. Trezor, účet úložiště a síť musí být ve stejné oblasti.
-
-### <a name="what-azure-storage-account-do-i-need"></a>Který účet úložiště Azure budu potřebovat?
-Budete potřebovat účet úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Premium storage podporuje.
+Budete potřebovat předplatné Azure, trezor služby Recovery Services, účet úložiště mezipaměti, spravované disky a virtuální síť. Trezor, účet úložiště mezipaměti spravovaných disků a sítí musí být ve stejné oblasti.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Oprávnění k vytvoření virtuálních počítačů musí Můj účet Azure?
-Pokud si nejste správce předplatného, máte oprávnění replikace, které potřebujete. Pokud si nejste, budete potřebovat oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci Site Recovery a oprávnění k zápisu do vybraného účtu úložiště. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Pokud si nejste správce předplatného, máte oprávnění replikace, které potřebujete. Pokud si nejste, potřebujete oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci Site Recovery a oprávnění k zápisu do vybraného účtu úložiště nebo spravovaných disků na základě vaší konfigurace. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Můžete použít licenční server hostovaný operační systém v Azure?
 Ano, můžete použít Microsoft Software Assurance zákazníci [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) a Šetřete na náklady na licencování **počítače s Windows serverem** , které se migrují do Azure nebo použijte Azure pro zotavení po havárii.
@@ -107,7 +104,7 @@ Místní konfigurační server můžete nasadit takto:
 
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Kde replikace místních virtuálních počítačů do?
-Data se replikují do úložiště Azure. Při spuštění převzetí služeb při selhání Site Recovery automaticky vytvoří virtuální počítače Azure z účtu úložiště.
+Data se replikují do úložiště Azure. Při spuštění převzetí služeb při selhání Site Recovery automaticky vytvoří virtuální počítače Azure z účtu úložiště nebo spravovaný disk, na základě vaší konfigurace.
 
 ## <a name="replication"></a>Replikace
 
@@ -122,15 +119,19 @@ Ne, jedná se o nepodporovaný scénář.
 Site Recovery replikuje data z místních do úložiště Azure přes veřejný koncový bod, nebo pomocí veřejného partnerského vztahu ExpressRoute. Replikace přes síť VPN typu site-to-site se nepodporuje.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Můžete replikovat do Azure pomocí ExpressRoute?
-Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Ujistěte se, že [síťové požadavky](vmware-azure-configuration-server-requirements.md#network-requirements) splnění pro replikaci. Po převzetí služeb virtuálních počítačů do služby Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Recovery replikuje data do úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Ujistěte se, že [síťové požadavky](vmware-azure-configuration-server-requirements.md#network-requirements) splnění pro replikaci. Po převzetí služeb virtuálních počítačů do služby Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Jak můžete změnit účet úložiště, jakmile je chráněný počítač?
 
-Účet úložiště je možné pouze upgradovat na úroveň premium. Pokud chcete použít jiný účet úložiště, musíte zakázat replikaci zdrojového počítače a znovu povolte ochranu pomocí nového účtu úložiště. Kromě toho neexistuje žádné další způsob, jak změnit účet úložiště po povolení ochrany.
+Pro probíhající replikaci může účet úložiště jenom upgradovat na úroveň premium. Pokud chcete použít standardní ceny, musíte zakázat replikaci zdrojového počítače a znovu povolte ochranu pomocí spravovaných disků úrovně standard. Kromě toho neexistuje žádné další způsob, jak změnit účet úložiště po povolení ochrany.
+
+### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak mohu změnit typ spravovaného disku po aktivaci ochrany počítače?
+
+Ano, můžete snadno změnit typ spravovaného disku. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč se můžu replikovat přes síť VPN?
 
-Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účtu úložiště Azure, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat.
+Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body služby Azure Storage, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat.
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Jaké jsou požadavky na replikovaných virtuálních počítačů?
 
@@ -150,6 +151,9 @@ Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http:
 
 ### <a name="can-i-exclude-disks"></a>Vyloučení disků
 Ano, můžete vyloučit disky z replikace.
+
+### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>Můžete změnit cílovou velikost virtuálního počítače nebo typ virtuálního počítače před převzetí služeb při selhání?
+Ano, můžete změnit typy a velikosti virtuálního počítače před převzetí služeb při selhání tak, že přejdete na výpočty a síť nastavení položky replikace na portálu.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Můžete replikovat virtuální počítače s dynamickými disky?
 Dynamické disky se dají replikovat. Disk s operačním systémem musí být základní disk.
@@ -267,6 +271,9 @@ Ano, jak šifrování během přenosu a [šifrování v Azure](https://docs.micr
 
 
 ## <a name="failover-and-failback"></a>Převzetí služeb při selhání a navrácení služeb po obnovení
+### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Můžu použít procesový server na místní navrácení služeb po obnovení?
+Důrazně doporučujeme vytvořit procesový server v Azure, aby latence přenosu dat pro účely navrácení služeb po obnovení. Kromě toho v případě, že oddělené zdrojové síti virtuálních počítačů s Azure máte sítí na konfiguračním serveru, pak je nutné použít procesový Server vytvořený v Azure pro navrácení služeb po obnovení.
+
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko mohou obnovit?
 Nejstarší bod obnovení, které můžete použít pro replikaci z VMware do Azure je 72 hodin.
 

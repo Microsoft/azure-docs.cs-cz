@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 9a7bdb10c43f9192599f8b65be106597b4770e8e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338293"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Rychlý start: Vytvoření profilu Traffic Manageru s vysokou dostupností webové aplikace
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rychlý start: Vytvoření profilu Traffic Manageru pomocí webu Azure portal
 
 Tento rychlý start popisuje, jak vytvořit profil služby Traffic Manager, který poskytuje vysokou dostupnost pro vaši webovou aplikaci.
 
@@ -84,7 +84,7 @@ Vytvořte profil služby Traffic Manager, která směruje provoz uživatelů na 
     | Název | Zadejte jedinečný název pro svůj profil Traffic Manageru.|
     | Metoda směrování | Vyberte **Priority**.|
     | Předplatné | Vyberte předplatné, které chcete použít pro profil traffic Manageru. |
-    | Skupina prostředků | Vyberte *myResourceGroupTM1*.|
+    | Skupina prostředků | Select *myResourceGroupTM1*.|
     | Umístění |Toto nastavení se týká umístění skupiny prostředků. Nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.|
 
 3. Vyberte **Vytvořit**.
@@ -100,7 +100,7 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
 
     | Nastavení | Hodnota |
     | ------- | ------|
-    | Typ | Vyberte **koncový bod Azure**. |
+    | Type | Vyberte **koncový bod Azure**. |
     | Název | Zadejte *myPrimaryEndpoint*. |
     | Typ cílového prostředku | Vyberte **služby App Service**. |
     | Cílový prostředek | Vyberte **vybrat aplikační službu** > **USA – východ**. |
@@ -113,7 +113,7 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
 
     | Nastavení | Hodnota |
     | ------- | ------|
-    | Typ | Vyberte **koncový bod Azure**. |
+    | Type | Vyberte **koncový bod Azure**. |
     | Název | Zadejte *myFailoverEndpoint*. |
     | Typ cílového prostředku | Vyberte **služby App Service**. |
     | Cílový prostředek | Vyberte **vybrat aplikační službu** > **západní Evropa**. |

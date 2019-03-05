@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 735c3dc4764f45512386a0c53a389f355f069aa3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/04/2019
+ms.openlocfilehash: f4d6826d13f92db7a430f668c56825926d198235
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998100"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340095"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -47,6 +47,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|1 500|2000|2500|3000|
+|Omezení přenosové rychlosti protokolu (MB/s)|2.5|5|7.5|10|12.5|15|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|
@@ -69,6 +70,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)
 |Cíl vstupně-výstupních operací (64 KB)|3500|4000|4500|5000|7000|7000|
+|Omezení přenosové rychlosti protokolu (MB/s)|17.5|20|20|20|20|20|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|
@@ -85,12 +87,13 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
-|Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|1536|
+|Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|307|461|461|461|461|
 |Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|1 500|2000|2500|3000|3500|
+|Omezení přenosové rychlosti protokolu (MB/s)|2.5|56|7.5|10|12.5|15|17.5|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -113,6 +116,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|4000|4500|5000|6000|7000|7000|7000|
+|Omezení přenosové rychlosti protokolu (MB/s)|20|20|20|20|20|20|20|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -129,15 +133,17 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
-|Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
-|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
-|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
+|Maximální velikost dat (GB)|650|650|650|650|650|650|
+|Maximální velikost protokolu (GB)|195|195|195|195|195|195|
 |Velikost databáze TempDB (GB)|32|64|96|128|160|192|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|15 000|20000|25000|30000|
+|Omezení přenosové rychlosti protokolu (MB/s)|6|12|18|24|30|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
+|Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -151,15 +157,17 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|168|
-|Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
-|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
-|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
+|Maximální velikost dat (GB)|650|650|650|650|1024|1024|
+|Maximální velikost protokolu (GB)|195|195|195|195|307|307|
 |Velikost databáze TempDB (GB)|224|256|288|320|384|384|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|35000|40000|45000|50000|80000|120000|
+|Omezení přenosové rychlosti protokolu (MB/s)|42|48|48|48|48|48|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
+|Maximální počet souběžných přihlášení (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -175,13 +183,15 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
-|Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|1536|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|461|461|
+|Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
+|Maximální velikost protokolu (GB)|307|307|307|461|461|922|922|
 |Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|15 000|20000|25000|30000|35000|
+|Omezení přenosové rychlosti protokolu (MB/s)|6|12|18|24|30|36|42|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
+|Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|1400|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -203,10 +213,12 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|40000|45000|50000|60000|80000|100000|200000|
+|Omezení přenosové rychlosti protokolu (MB/s)|48|48|48|48|48|48|48|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
+|Maximální počet souběžných přihlášení|1600|1800|2000|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
-|Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Počet replik|4|4|4|4|4|4|4|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
@@ -262,7 +274,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 
 - Omezení prostředků DTU pro izolovanou databázi, naleznete v tématu [omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU](sql-database-dtu-resource-limits-single-databases.md)
 - VCore omezení prostředků pro elastické fondy najdete v tématu [limity pro elastické fondy pomocí nákupní model založený na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md)
-- DTU limites prostředků pro elastické fondy, najdete v části [limity pro elastické fondy pomocí nákupní model založený na DTU prostředků](sql-database-dtu-resource-limits-elastic-pools.md)
+- Omezení prostředků DTU pro elastické fondy najdete v tématu [limity pro elastické fondy pomocí nákupní model založený na DTU prostředků](sql-database-dtu-resource-limits-elastic-pools.md)
 - Omezení prostředků pro spravované instance najdete v tématu [managed instance omezení prostředků](sql-database-managed-instance-resource-limits.md).
 - Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
 - Informace o omezení prostředků na databázovém serveru najdete v tématu [přehled omezení prostředků na serveru služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.

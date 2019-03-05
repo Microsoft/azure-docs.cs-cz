@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 02/20/2019
-ms.openlocfilehash: 08e83cdcadabdcf7234d0bbd0fb7e6d103c8369c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 8e39734a6f5fa13240d24eb35c431f746e540484
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447527"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342118"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Povolení protokolování ve službě Azure Machine Learning
 
@@ -41,7 +41,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-Viz odkaz [dokumentaci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) pro `Run` třídy pro funkce dodatečné protokolování.
+Naleznete v referenční dokumentaci pro [spustit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) třídy pro funkce dodatečné protokolování.
 
 Chcete-li povolit místní protokolování stav aplikace v průběhu školení, použijte `show_output` parametru. Povolení podrobného protokolování můžete zobrazit podrobnosti o procesu trénování, stejně jako informace o všech vzdálených prostředků nebo cílových výpočetních prostředí. Povolení protokolování po odeslání experimentu pomocí následujícího kódu.
 

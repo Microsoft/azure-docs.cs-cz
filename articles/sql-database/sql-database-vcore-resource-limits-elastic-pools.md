@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/15/2019
-ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.date: 03/04/2019
+ms.openlocfilehash: a372a955578f3621c1b8a9226809671927c9bfd3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328669"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342747"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity pro elastické fondy pomocí omezení založený na virtuálních jádrech nákupní model prostředků
 
@@ -50,7 +50,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|1 500|2000|2500|3000|
+|Omezení přenosové rychlosti protokolu (MB/s)|2.5|5|7.5|10|12.5|15|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * |210|420|630|840|1050|1260|
+|Maximální počet souběžných přihlášení na fond * |210|420|630|840|1050|1260|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|100|200|300|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
@@ -76,7 +78,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|3500|4000|4500|5000|7000|7000|
+|Omezení přenosové rychlosti protokolu (MB/s)|17.5|20|20|20|20|20|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
+|Maximální počet souběžných přihlášení fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|200|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
@@ -102,7 +106,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|1 500|2000|2500|3000|3500|
+|Omezení přenosové rychlosti protokolu (MB/s)|2.5|56|7.5|10|12.5|15|17.5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|200|500|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
@@ -128,7 +134,9 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Typ úložiště|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|Storage úrovně Premium (vzdálené)|
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|4000|4500|5000|6000|7000|7000|7000|
+|Omezení přenosové rychlosti protokolu (MB/s)|20|20|20|20|20|20|20|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
 |Maximální počet databází pro každý fond|500|500|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
@@ -146,16 +154,18 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|3|4|5|6|
-|Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
-|Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
+|Paměť (GB)|7|14|21|28|35|42|
+|Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
-|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
-|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
+|Maximální velikost dat (GB)|650|650|650|650|650|650|
+|Maximální velikost protokolu (GB)|195|195|195|195|195|195|
 |Velikost databáze TempDB (GB)|32|64|96|128|160|192|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|15 000|20000|25000|30000|
+|Omezení přenosové rychlosti protokolu (MB/s)|6|12|18|24|30|36|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
@@ -176,12 +186,14 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
-|Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
-|Maximální velikost protokolu (GB)|307|307|307|307|307|307|
+|Maximální velikost dat (GB)|650|650|650|650|1024|1024|
+|Maximální velikost protokolu (GB)|195|195|195|195|307|307|
 |Velikost databáze TempDB (GB)|224|256|288|320|384|384|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|35000|40000|45000|50000|80000|120000|
+|Omezení přenosové rychlosti protokolu (MB/s)|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|100|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
@@ -201,13 +213,15 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
-|Maximální velikost dat (GB)|1024|1024|1024|1536|1536|1536|1536|
-|Maximální velikost protokolu (GB)|307|307|307|461|461|461|461|
+|Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
+|Maximální velikost protokolu (GB)|307|307|307|461|461|922|922|
 |Velikost databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|15 000|20000|25000|30000|35000|
+|Omezení přenosové rychlosti protokolu (MB/s)|48|48|48|48|48|48|48|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
@@ -233,12 +247,14 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Cíl vstupně-výstupních operací (64 KB)|40000|45000|50000|60000|80000|100000|200000|
+|Omezení přenosové rychlosti protokolu (MB/s)|48|48|48|48|48|48|48|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet databází pro každý fond|100|100|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Počet replik|4|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 

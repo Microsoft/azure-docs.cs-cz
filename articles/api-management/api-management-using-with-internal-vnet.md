@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 0fe4da13e8242d858d553e0532b82cf1adca450a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008674"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338755"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -59,7 +59,7 @@ Služba API Management v interní virtuální síti je hostovaných za službou 
 
 4. Vyberte **Uložit**.
 
-Po úspěšném nasazení, měli byste vidět interní virtuální IP adresa služby na řídicím panelu.
+Po úspěšném nasazení, měli byste vidět **privátní** virtuální IP adresu a **veřejné** virtuální adresy IP služby API Management na kartě s přehledem. **Privátní** virtuální IP adresa je zatížení vyvážené IP adresu z v rámci rozhraní API pro správu delegovat podsítě nad tím, které `gateway`, `portal`, `management` a `scm` koncové body přístupné. **Veřejné** virtuální IP adresa se používá **pouze** pro rovinu řízení přenosu do `management` koncového bodu přes port 3443 a jde zamknout dolů na [ApiManagement] [ ServiceTags] servicetag.
 
 ![Řídicí panel pro správu rozhraní API k interní virtuální síti nakonfigurovat][api-management-internal-vnet-dashboard]
 
@@ -83,25 +83,25 @@ Když služba API Management je v režimu externí virtuální síť, DNS spravu
 > Služba API Management nepřijímá požadavky na požadavky přicházející z IP adresy. Pouze reaguje na požadavky na název hostitele, které jsou nakonfigurované na své koncové body služby. Tyto koncové body patří brány, na webu Azure portal a portálu pro vývojáře, koncový bod správy s přímým přístupem a Git.
 
 ### <a name="access-on-default-host-names"></a>Přístup k výchozí názvy hostitelů
-Při vytváření služby API Management, například s názvem "contoso", jsou ve výchozím nastavení nakonfigurované následující koncové body služby:
+Při vytváření služby API Management, například s názvem "contosointernalvnet" jsou ve výchozím nastavení nakonfigurované následující koncové body služby:
 
-   * Brána nebo proxy: contoso.azure-api.net
+   * Brána nebo proxy: contosointernalvnet.azure-api.net
 
-   * Na webu Azure portal a portálu pro vývojáře: contoso.portal.azure-api.net
+   * Na webu Azure portal a portálu pro vývojáře: contosointernalvnet.portal.azure-api.net
 
-   * Koncový bod správy s přímým přístupem: contoso.management.azure-api.net
+   * Koncový bod správy s přímým přístupem: contosointernalvnet.management.azure-api.net
 
-   * Git: contoso.scm.azure-api.net
+   * Git: contosointernalvnet.scm.azure-api.net
 
-Pro přístup k tyto koncové body služby API Management, můžete vytvořit virtuální počítač v podsíti připojené k virtuální síti, ve kterém je nasazená API Management. Za předpokladu, že 10.0.0.5 je interní virtuální IP adresa pro vaši službu, můžete namapovat souboru hostitelů % SystemDrive%\drivers\etc\hosts, následujícím způsobem:
+Pro přístup k tyto koncové body služby API Management, můžete vytvořit virtuální počítač v podsíti připojené k virtuální síti, ve kterém je nasazená API Management. Za předpokladu, že je 10.1.0.5 interní virtuální IP adresa pro vaši službu, můžete namapovat souboru hostitelů % SystemDrive%\drivers\etc\hosts, následujícím způsobem:
 
-   * 10.0.0.5 contoso.azure-api.net
+   * 10.1.0.5 contosointernalvnet.azure-api.net
 
-   * 10.0.0.5 contoso.portal.azure-api.net
+   * 10.1.0.5 contosointernalvnet.portal.azure-api.net
 
-   * 10.0.0.5 contoso.management.azure-api.net
+   * 10.1.0.5 contosointernalvnet.management.azure-api.net
 
-   * 10.0.0.5 contoso.scm.azure-api.net
+   * 10.1.0.5 contosointernalvnet.scm.azure-api.net
 
 Potom můžete přistupovat všechny koncové body služby z virtuálního počítače, který jste vytvořili. Pokud používáte vlastní server DNS ve virtuální síti, můžete také vytvořit záznamy A DNS a přístup k tyto koncové body z libovolného místa ve virtuální síti. 
 
@@ -125,10 +125,12 @@ Další informace naleznete v následujících článcích:
 * [Nejčastější dotazy k virtuální síti](../virtual-network/virtual-networks-faq.md)
 * [Vytvoření záznamu ve službě DNS](https://msdn.microsoft.com/library/bb727018.aspx)
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
+
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags
 
