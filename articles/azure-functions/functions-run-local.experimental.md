@@ -11,18 +11,29 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2e2a388b399ff34e36ab65a734593704cf274dc0
+ms.openlocfilehash: 401cd6b2a78072c8299f32f60f1ac3677f05557c
 ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312082"
+ms.locfileid: "57318744"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
 Nástroje Azure Functions Core můžete vyvíjet a testovat funkce v místním počítači z příkazového řádku nebo terminálu. Lokální funkce se můžete připojit k za provozu služeb Azure a vaší funkce můžete ladit v místním počítači pomocí úplné modul runtime služby Functions. Aplikace function app můžete nasadit i do vašeho předplatného Azure.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
+
+Vývoje služby functions na místním počítači a jejich publikování do Azure s využitím nástrojů Core zahrnuje následující základní kroky:
+
+> [!div class="checklist"]
+> * [Nainstalujte základní nástroje a závislosti.](#v2)
+> * [Vytvoření projektu aplikace funkcí ze specifické pro jazyk šablony.](#create-a-local-functions-project)
+> * [Registrace rozšíření aktivační události a vazby.](#register-extensions)
+> * [Definování úložiště a další připojení.](#local-settings-file)
+> * [Vytvoření funkce z aktivační události a specifické pro jazyk šablony.](#create-func)
+> * [Místní spuštění funkce](#start)
+> * [Publikování projektu do Azure](#publish)
 
 ## <a name="core-tools-versions"></a>Základní verze nástroje
 

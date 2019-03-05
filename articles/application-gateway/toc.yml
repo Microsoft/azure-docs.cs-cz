@@ -166,13 +166,13 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: Řešení potíží
     items:
-    - name: Řešení potíží s Application Gateway – interní nástroj pro vyrovnávání zatížení (ILB) s využitím funkce App Service Environment (ASE)
+    - name: Interní nástroj pro vyrovnávání zatížení se službou App Service Environment
       href: create-gateway-internal-load-balancer-app-service-environment.md
-    - name: Řešení potíží s Application Gateway s využitím služby App Service – přesměrování na adresu URL služby App Service
+    - name: Přesměrování na adresu URL služby App Service
       href: troubleshoot-app-service-redirection-app-service-url.md
-    - name: Řešení potíží se spřažením relace ve službě Azure Application Gateway
+    - name: Potíže se spřažením relací
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
-    - name: Řešení chyb typu Chybná brána (502)
+    - name: Chyby Chybná brána (502)
       href: application-gateway-troubleshooting-502.md
     - name: Diagnostika
       href: application-gateway-diagnostics.md
@@ -212,9 +212,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: 7fd344a06dcd29c53d313a59c484101b1d0b2c8f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7fe790e7b75e3cf6bead50635b7be690b1b7eeb7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985661"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309039"

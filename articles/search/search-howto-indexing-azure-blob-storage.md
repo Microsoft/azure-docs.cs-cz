@@ -1,7 +1,7 @@
 ---
 title: Indexování obsahu úložiště objektů Blob v Azure pro fulltextové vyhledávání – Azure Search
 description: Zjistěte, jak index služby Azure Blob Storage a extrakci textu z dokumentů s Azure Search.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872994"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310875"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů ve službě Azure Blob Storage pomocí služby Azure Search
 Tento článek popisuje, jak používat Azure Search k indexování dokumentů (jako jsou soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené ve službě Azure Blob storage. Nejprve vysvětluje základy tohoto nastavení a konfigurace indexeru blob. Potom nabízí blíže zkoumat chování a scénáře se pravděpodobně dojde k.
@@ -68,7 +68,7 @@ Další informace k rozhraní API pro vytvoření zdroje dat, naleznete v témat
 
 Zadejte přihlašovací údaje pro kontejner objektů blob v jednom z těchto způsobů:
 
-- **Připojovací řetězec účtu úložiště úplný přístup**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Připojovací řetězec můžete získat z webu Azure portal tak, že přejdete do okna účet úložiště > Nastavení > klíče (pro účty úložiště Classic) nebo nastavení > přístupové klíče (pro účty úložiště Azure Resource Manageru).
+- **Připojovací řetězec účtu úložiště úplný přístup**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Připojovací řetězec můžete získat z webu Azure portal tak, že přejdete do okna účet úložiště > Nastavení > klíče (pro účty úložiště Classic) nebo nastavení > přístupové klíče (pro účty úložiště Azure Resource Manageru).
 - **Sdílený přístupový podpis úložiště účtu** připojovací řetězec (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Musí mít v seznamu a oprávnění ke čtení u kontejnery a objekty sdíleného přístupového podpisu (v tomto případě objektů BLOB).
 -  **Sdílený přístupový podpis kontejneru**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS by měl mít seznamu a oprávnění ke čtení v kontejneru.
 

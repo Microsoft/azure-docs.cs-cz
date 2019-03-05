@@ -51,10 +51,9 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                         <p>
                         <a href="/azure/active-directory/user-help/myprofile-portal-overview">Přehled</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-security-info-overview">Správa bezpečnostních údajů</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Zobrazení nedávné přihlašovací aktivity</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Správa organizací</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Správa připojených zařízení</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Zobrazení informací souvisejících s ochranou osobních údajů</a><br/>                       
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Zobrazení informací souvisejících s ochranou osobních údajů</a>
                         </p>
                     </div>
                 </div>

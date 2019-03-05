@@ -1314,7 +1314,7 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                         <li>
                                             <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>Základy IoT</p>
+                                                <p>Azure IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3929,12 +3929,12 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iothub.svg" alt="" />
+                                                        <img src="media/index/question-mark-grey.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Základy IoT</h3>
-                                                    <p>Začínáme s připojováním zařízení</p>
+                                                    <h3>Začínáte s Azure IoT?</h3>
+                                                    <p>Začněte zjištěním, které služby splňují vaše potřeby</p>
                                                 </div>
                                             </div>
                                         </div>

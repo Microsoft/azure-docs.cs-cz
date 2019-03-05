@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/05/2019
+ms.openlocfilehash: 99200e521ea844d20ef00ef70ad65ac0ab3bcddd
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714691"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337290"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 Tento článek obsahuje nejčastější dotazy o použití Azure Database Migration Service společně se související odpovědi.
@@ -90,7 +90,7 @@ Při více kurzy Microsoftu, které může vás provede procesem vytvoření vir
 Pokud uživatel explicitně zastaví Azure Database Migration Service (DMS) nebo pokud je služba neaktivní po dobu 24 hodin, služba bude v zastavený nebo auto pozastaveného stavu. V obou případech bude služba není k dispozici a je v zastaveném stavu.  Chcete-li pokračovat s migracemi aktivní, restartujte službu.
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>Otázka: Kde je můžete nechat názor na Azure Database Migration Service?
-Chceme znát váš názor. Pošlete svůj názor a / nápady, budete mít o Azure Database Migration Service přes User Voice [tady](https://feedback.azure.com/forums/906100-azure-database-migration-service).
+Chceme znát váš názor. Pošlete svůj názor a / nápady, budete mít o Azure Database Migration Service přes User Voice [tady](https://feedback.azure.com/forums/906100-azure-database-migration-service), nebo se můžete obrátit tým na adrese [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ## <a name="next-steps"></a>Další postup
 Přehled služby Azure Database Migration Service a dostupnosti v jednotlivých oblastech najdete v článku [co je Azure Database Migration Service](dms-overview.md). 

@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/05/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4660a45014e6afdb091fb40b8fe7f03fdb647aab
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251890"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339194"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob storage: Premium (preview), vrstvy úložiště Hot, Cool a archiv
 
@@ -56,16 +56,6 @@ BLOB storage a GPv2 zpřístupňují účty **úroveň přístupu** atribut na �
 Přístup k vrstvě Premium, díky kterému budou často používaná data k dispozici prostřednictvím vysoce výkonnému hardwaru je dostupná ve verzi preview. Data uložená na této úrovni se ukládají na jednotky SSD, které jsou optimalizovány pro nižší latenci a vyšší míra transakční ve srovnání s tradičními pevné disky. Přístup k úrovni Premium je k dispozici prostřednictvím pouze typ účtu úložiště objektů Blob bloku.
 
 Tato úroveň je ideální pro úlohy vyžadující rychlé a konzistentní odezvy. Data, která zahrnuje koncovým uživatelům, jako jsou úpravy, statický webový obsah, online transakce a podobně, jsou vhodnými kandidáty přístup k vrstvě Premium pro interaktivní videa. Tato úroveň je vytvořený na míru pro úlohy, které provádějí velký počet malých transakcí, jako je zachytávání telemetrická data, zasílání zpráv a transformace dat.
-
-Pokud chcete použít tuto úroveň, zřiďte nový účet úložiště objektů Blob bloku a začněte vytvářet kontejnerům a objektům BLOB pomocí [rozhraní REST API služby Blob](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), nebo [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
-
-Ve verzi preview, na úrovni Premium přístupu:
-
-- Je k dispozici jako místně redundantní úložiště (LRS)
-- Je k dispozici pouze v těchto oblastech: USA – východ 2, USA – střed a USA – západ
-- Nepodporuje vrstev na úrovni objektu nebo automatizovaným vrstvením s správu životního cyklu dat.
-
-Zjistěte, jak zaregistrovat verzi preview přístup úrovně Premium, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](https://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Horká vrstva přístupu
 

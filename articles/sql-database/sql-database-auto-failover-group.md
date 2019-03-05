@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 862cc4da99aed02b81b6fd12913736bf30866f72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889881"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313595"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -304,14 +304,16 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: Správa SQL database převzetí služeb při selhání izolované databáze a elastických fondů
 
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+
 | Rutina | Popis |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstranění všech sekundárních databází zahrnuté skupiny |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny převzetí služeb při selhání služby Azure SQL Database|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstranění všech sekundárních databází zahrnuté skupiny |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny převzetí služeb při selhání služby Azure SQL Database|
 |  | |
 
 > [!IMPORTANT]
@@ -341,11 +343,11 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 
 | Rozhraní API | Popis |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Upraví konfiguraci skupiny převzetí služeb při selhání|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Načte konfiguraci skupiny převzetí služeb při selhání|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
+| New-AzSqlDatabaseInstanceFailoverGroup |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ho na primární a sekundární server|
+| Set-AzSqlDatabaseInstanceFailoverGroup |Upraví konfiguraci skupiny převzetí služeb při selhání|
+| Get-AzSqlDatabaseInstanceFailoverGroup |Načte konfiguraci skupiny převzetí služeb při selhání|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Spravovat skupiny převzetí služeb při selhání databáze SQL s databázemi ve fondu a jeden
 

@@ -199,7 +199,9 @@
 ##### [Karta Kontakty](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
 #### [Publikování nabídky](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [Aktualizace stávající nabídky](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
-#### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+#### [Rozhraní API naplnění SaaS](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md)
+##### [Rozhraní API SaaS V1](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md) 
+##### [Rozhraní API SaaS V2](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md) 
 
 ### [Nabídka virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [Požadavky](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)

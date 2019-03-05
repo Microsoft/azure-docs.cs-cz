@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 195b513d7cc878045449ed137a2ea72f291a9f6e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564931"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308146"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
@@ -216,12 +216,14 @@ Služby dělení a slučování používá Azure Diagnostics založené na Azure
 
 ## <a name="deploy-diagnostics"></a>Nasazení diagnostiky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Pokud chcete povolit monitorováním a diagnostikou pomocí konfigurace diagnostiky pro webové a pracovní role poskytovaný balíček NuGet, spusťte následující příkazy pomocí Azure Powershellu:
 
 ```powershell
     $storage_name = "<YourAzureStorageAccount>"
     $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
+    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
     $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
     $service_name = "<YourCloudServiceName>"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"

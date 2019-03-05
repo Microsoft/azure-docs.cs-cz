@@ -2,17 +2,17 @@
 title: Správa konfiguračního serveru pro zotavení po havárii místních fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak Správa konfiguračního serveru Azure Site Recovery pro zotavení po havárii fyzického serveru do Azure.
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: d5ce80e44ee1a3a48443b190ea9259fe2dea0dcb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 02/28/2019
+ms.author: mayg
+ms.openlocfilehash: 80fbc84c2284b7078b07040a74566cf1e8d57fb4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983215"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341081"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -77,7 +77,7 @@ Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na
 9. Na stránce **Umístění instalace** vyberte, kam chcete nainstalovat binární soubory a ukládat mezipaměť. Vybraná jednotka musí mít minimálně 5 GB dostupného místa na disku, ale pro mezipaměť doporučujeme jednotku alespoň s 600 GB volného místa.
 
     ![Umístění instalace](./media/physical-manage-configuration-server/combined-wiz8.png)
-10. Na stránce **Výběr sítě** zadejte naslouchací proces (síťový adaptér a port SSL), na kterém konfigurační server odesílá a přijímá data replikace. Výchozím portem pro odesílání a příjem přenosů replikace je port 9443, ale toto číslo portu můžete změnit podle potřeb vašeho prostředí. Kromě portu 9443 otevíráme také port 443, který používá webový server k orchestraci operací replikace. Nepoužívejte port 443 pro odesílání nebo příjem provozu replikace.
+10. V **výběr sítě**, nejprve vyberte síťový adaptér, který používá integrovaný procesový server pro zjišťování a vynucená instalace služby mobility na zdrojový počítače a potom vyberte síťový adaptér, který používá konfigurační Server pro připojení s Azure. Výchozím portem pro odesílání a příjem přenosů replikace je port 9443, ale toto číslo portu můžete změnit podle potřeb vašeho prostředí. Kromě portu 9443 otevíráme také port 443, který používá webový server k orchestraci operací replikace. Nepoužívejte port 443 pro odesílání nebo příjem provozu replikace.
 
     ![Výběr sítě](./media/physical-manage-configuration-server/combined-wiz9.png)
 
