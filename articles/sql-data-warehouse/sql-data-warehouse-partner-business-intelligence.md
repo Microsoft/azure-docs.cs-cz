@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a45ed3ad5360f613a4949799c60ec09f4a30afb9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 7a02fff5a727bd0a3be762e9e458a71f66b87ba2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427764"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452670"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Partneři business intelligence SQL Data Warehouse
 K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z široké škály špičkové nástroje.  Tento článek se soustředí partnerských společností Microsoft s Azure SQL Data Warehouse podporuje řešení pro business intelligence (BI).
@@ -34,7 +34,7 @@ K vytvoření vašeho řešení začátku do konce datového skladu, vyberte z �
 | ![SiSense][9] |**SiSense**<br>SiSense je software kompletní Business Intelligence, která se dodává s nástroji, které firma potřebuje analýza a vizualizace dat: vysoce výkonné analytické databáze, schopnost připojit k více zdrojů, jednoduchá extrakce (ETL) a na základě webových dat vizualizace. Začněte analyzovat a vizualizovat velké datové sady s SiSense BI a analytických ještě dnes. |[Web][sisense_website]<br>[Datový list][sisense_datasheet]<br>[Twitter][sisense_twitter]<br>[YouTube][sisense_youtube] |[![sisense videa](./media/sql-data-warehouse-partner-business-intelligence/sisense_video.jpg)](https://www.youtube.com/watch?v=6N3mkTWI5R4) |
 | ![Tableau][10] |**Tableau**<br>Tableau pro samoobslužné analýzy pomoct kdokoli viděl a pochopil svá data v mnoha různých dat z plochých souborů do databáze. Tableau s konektorem nativního, optimalizovaného do Microsoft Azure SQL Data Warehouse, která podporuje živých dat a analýzu v paměti. |[Marketplace][tableau_marketplace]<br>[Web][tableau_website]<br>[Datový list][tableau_datasheet]<br>[Twitter][tableau_twitter]<br>[YouTube][tableau_youtube] |[![tableau videa](./media/sql-data-warehouse-partner-business-intelligence/tableau_video.jpg)](https://www.youtube.com/watch?v=TwbkI3ZzCHE) |
 | ![Targit][11] |**Targit**<br>Poskytuje sada rozhodnutí Targit BI a analytických platformu, která poskytuje řídicí panely v reálném čase, samoobslužné analýzy, uživatelsky přívětivé vytváření sestav, poutavé mobilní funkce a technologie jednoduché zjišťování dat v jedné a získá na ucelenosti řešení. Targit nabízí společnostem odvahu tak, aby fungoval. |[Marketplace][targit_marketplace]<br>[Web][targit_website]<br>[Twitter][targit_twitter]<br>[YouTube][targit_youtube] |[![targit videa](./media/sql-data-warehouse-partner-business-intelligence/targit_video.jpg)](https://www.youtube.com/watch?v=A0vET80Ker4) |
-| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocení dodavatele cloudu BI pro ad-hoc sestavy a řídicí panely podle barc vyhodnocena jako ŠPIČKOVÁ; BI průzkumu. Připojení k Azure SQL Data Warehouse a pak vytvořit a sdílet působivé sestavy a řídicí panely s Oceňovaný spolupráci BI a umístění informačních funkcí. |[Marketplace][yellowfin_marketplace]<br>[Web][yellowfin_website]<br>[Datový list][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin video](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
+| ![Yellowfin][12] |**Yellowfin**<br>Yellowfin je nejvyšší hodnocení dodavatele cloudu BI pro ad hoc sestavy a řídicí panely podle barc vyhodnocena jako ŠPIČKOVÁ; BI průzkumu. Připojení k Azure SQL Data Warehouse a pak vytvořit a sdílet působivé sestavy a řídicí panely s Oceňovaný spolupráci BI a umístění informačních funkcí. |[Marketplace][yellowfin_marketplace]<br>[Web][yellowfin_website]<br>[Datový list][yellowfin_datasheet]<br>[Twitter][yellowfin_twitter]<br>[YouTube][yellowfin_youtube] |[![yellowfin video](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_video.jpg)](https://www.youtube.com/watch?v=i1q33AftI0A) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

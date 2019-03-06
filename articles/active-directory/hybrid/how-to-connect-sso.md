@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94b027900a3be4a43d6524fa595a5b4dc2909fa7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 00d0332e44b76cc3b883fd0472567f74cfde21b2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186212"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444969"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -54,7 +54,7 @@ Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchro
 - Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut nakonfigurované ve službě Azure AD Connect (`Alternate ID`). Oba použít případy práce, protože používá bezproblémového jednotného přihlašování `securityIdentifier` deklarací identity v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele ve službě Azure AD.
 - Bezproblémové jednotné přihlašování je zaměřený na příležitosti funkce. Pokud z nějakého důvodu selže, přihlášení uživatele se vrátí do běžného chování – tj, uživatel musí zadat heslo na přihlašovací stránku.
 - Pokud manifest aplikace (například https://myapps.microsoft.com/contoso.com) předává `domain_hint` (OpenID Connect) nebo `whr` (SAML) parametr - identifikaci vašeho tenanta, nebo `login_hint` parametr - ne k identifikaci uživatelů, v jeho služby Azure AD žádost o přihlášení, jsou uživatelé přihlášení se automaticky bez jejich zadávání uživatelských jmen a hesel.
-- Uživatelé získají bezobslužné možnosti přihlašování také, pokud manifest aplikace (například https://contoso.sharepoint.com) odešle žádostí o přihlášení k Azure AD bezproblémovým koncové body – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>.
+- Uživatelé získají bezobslužné možnosti přihlašování také, pokud manifest aplikace (například https://contoso.sharepoint.com) odešle žádost o přihlášení ke koncovým bodům služby Azure AD nastavený jako klienti – to znamená https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>.
 - Odhlaste se podporuje. To umožňuje uživatelům si vybrat jiný účet služby Azure AD se přihlásit pomocí, namísto automaticky Probíhá přihlašování pomocí bezproblémového jednotného přihlašování automaticky.
 - Klienty Office 365 Win32 (Outlook, Word, Excel a jiné) s verze 16.0.8730.xxxx a vyšší jsou podporovány při použití toku jako neinteraktivní. Pro OneDrive, budete muset aktivovat [Onedrivu bezobslužné konfiguraci funkce](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bezobslužné možnosti přihlašování.
 - Je možné povolit prostřednictvím služby Azure AD Connect.

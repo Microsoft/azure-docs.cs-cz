@@ -13,17 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2f08d5b8548b8b7af282356d41c26442edd145b0
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe38ffd5e9e57c0357417144e733311f3b14ea83
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669577"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448335"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak spustit a zastavit prostředí Azure-SSIS Integration Runtime podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení prostředí Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Prostředí Azure-SSIS IR je ADF výpočetní prostředky, které jsou vyhrazené pro spouštění balíčků SQL Server Integration Services (SSIS). Spuštění prostředí Azure-SSIS IR s náklady s ním spojená. Proto je obvykle chcete spustit prostředí IR jenom v případě, že budete muset spouštění balíčků služby SSIS v Azure a zastavit prostředí IR, když ho už není nutné. Můžete použít ADF uživatelské rozhraní (UI) / aplikaci nebo prostředí Azure PowerShell potřeba [ručně spustit nebo zastavit prostředí IR](manage-azure-ssis-integration-runtime.md)).
 
 Alternativně můžete vytvořit aktivity webu v ADF kanály, abyste mohli spustit/zastavit prostředí IR podle plánu, třeba to začne ráno před spouštěním vaše každodenní úlohy ETL a zastavuje odpoledne poté, co se dokončí.  Můžete také zřetězit aktivity spuštění balíčku služby SSIS mezi dvě aktivity webu spouštějících a zastavujících vaše reakcí na Incidenty, takže prostředí IR se spustit/zastavit na vyžádání za běhu před nebo za spouštění vašeho balíčku. Další informace o aktivitě spuštění balíčku služby SSIS najdete v tématu [spouštění balíčků služby SSIS pomocí aktivity spustit balíčků služby SSIS v kanálu ADF](how-to-invoke-ssis-package-ssis-activity.md) článku.
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud jste ještě už zřídili prostředí Azure-SSIS IR, zřízení podle pokynů v [kurzu](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -188,19 +190,19 @@ Sledujte své kanály a aktivační události pomocí skriptů jako v následuj�
 1. Získáte stav spuštění kanálu.
 
   ```powershell
-  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+  Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
   ```
 
 2. Získáte informace o aktivační události.
 
   ```powershell
-  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+  Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
   ```
 
 3. Načíst stav spuštění aktivační události.
 
   ```powershell
-  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+  Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
   ```
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Vytvoření a naplánování runbooku Azure Automation, který spustí/zastaví prostředí Azure-SSIS IR
@@ -292,7 +294,7 @@ Následující část obsahuje postup pro vytvoření sady runbook Powershellu. 
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Connect-AzureRmAccount `
+        Connect-AzAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -312,12 +314,12 @@ Následující část obsahuje postup pro vytvoření sady runbook Powershellu. 
     if($Operation -eq "START" -or $operation -eq "start")
     {
         "##### Starting #####"
-        Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
+        Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
     }
     elseif($Operation -eq "STOP" -or $operation -eq "stop")
     {
         "##### Stopping #####"
-        Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+        Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     }  
     "##### Completed #####"    
     ```
@@ -328,7 +330,7 @@ Následující část obsahuje postup pro vytvoření sady runbook Powershellu. 
 
    ![Sada runbook tlačítko Start](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. V **spustit Runbook** podokno, proveďte následující ations: 
+5. V **spustit Runbook** podokno, proveďte následující akce: 
 
     1. Pro **název skupiny prostředků**, zadejte název skupiny prostředků, která obsahuje vaše ADF pomocí prostředí Azure-SSIS IR. 
     2. Pro **název datové TOVÁRNY**, zadejte název vaší ADF pomocí prostředí Azure-SSIS IR. 

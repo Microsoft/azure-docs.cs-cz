@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9b53a26f5163eae17198302fc26c079185cb7bd8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355467"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454540"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Vytvoření nabídky Azure Marketplace a AppSource
 
@@ -55,7 +55,7 @@ Při vytváření nabídky, zadáte požadované a volitelné dat na jednotlivý
 |      --------       |   -------                                                            |
 | **Nabídka nastavení**  | Shromažďuje nabídky a vydavatel informace o identitě.                    |
 | **SKU**            | Definuje vlastnosti technické a podnikové pro každou verzi skladovou jednotku (SKU) o vaší nabídce |
-| **Testovací verze**      | Pro tyto typy, které podporují tuto volitelnou funkci definuje ukázku pro vaši nabídku.  Další informace najdete v tématu [co je to Test Drive?](../../cloud-partner-portal-orig/what-is-test-drive.md)  |
+| **Testovací verze**      | Pro tyto typy, které podporují tuto volitelnou funkci definuje ukázku pro vaši nabídku.  Další informace najdete v tématu [co je to Test Drive?](../test-drive/what-is-test-drive.md)  |
 | **Marketplace** nebo **výkladní skříň** | Shromažďuje textové řetězce, dokumenty a obrázky používané k výpisu nabídky na webu Marketplace |
 | **Podpora**         | Shromažďuje kontaktní informace na zákazníka, inženýrství a odborné pomoci online  |
 |  |  |

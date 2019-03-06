@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d6b72a994b034b0bbc735e5cca2ce987a02af61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0fa3638ef47fb8cb1d0237a2ab9530ab76d316dc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196746"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449264"
 ---
 # <a name="saas-application-test-drive-tab"></a>Karta testovací verzi aplikace SaaS
 
@@ -33,7 +33,7 @@ Testovací verze poskytuje zákazníkům s praktické, samostatně prováděnéh
 
 ## <a name="how-a-test-drive-works"></a>Jak funguje testovací verze
 
-Potenciální zákazník prohledá a zjistí aplikace na webu Marketplace. Zákazník přihlásí a souhlasí s podmínkami použití. V tomto okamžiku zákazník přijme předem nakonfigurované prostředí pro akci pro pevný počet hodin, když obdržíte vysoce kvalifikovaných potenciálního zákazníka do se. Další informace najdete v tématu [co je to Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/what-is-test-drive)
+Potenciální zákazník prohledá a zjistí aplikace na webu Marketplace. Zákazník přihlásí a souhlasí s podmínkami použití. V tomto okamžiku zákazník přijme předem nakonfigurované prostředí pro akci pro pevný počet hodin, když obdržíte vysoce kvalifikovaných potenciálního zákazníka do se. Další informace najdete v tématu [co je to Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
 ## <a name="publishing-steps"></a>Postup publikování
 
@@ -49,9 +49,9 @@ Tady jsou hlavní publikování kroky pro přidání testu jednotky:
 K dispozici jsou čtyři různé druhy testů jednotek, každý podle typu produktu, scénář a marketplace, které používáte.
 |  **Typ**          |  **Popis**  |  **Pokyny k instalaci**  |
 |  ---------------   |  ---------------  |  ---------------  |
-|     Azure Resource Manager               |    Vyzkoušejte Azure Resource Manageru je šablonu nasazení, která obsahuje všechny prostředky Azure, které tvoří vytváří Vydavatel řešení. Produkty, které patří tento typ testovací verze jsou ty, které používají jenom prostředky Azure.               |       [Testovací verze Azure Resource Manageru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive)            |
-|       Hostovaný             |       Hostovaná testovací verze složitost instalační program odebere služba Microsoft hosting a zachovat službu, která provádí Test Drive uživatele zřizování a zrušení zřizování.             |         [Hostovaná testovací verze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive)          |
-|      Aplikace logiky              |       Test aplikace logiky jednotka je šablonu nasazení, která slouží k zahrnovat všechny architektury komplexní řešení. Všechny aplikace Dynamics nebo vlastní produkty by měl použít tento typ testovací verze.            |      [Jednotky Test aplikace logiky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/logic-app-test-drive)             |
+|     Azure Resource Manager               |    Vyzkoušejte Azure Resource Manageru je šablonu nasazení, která obsahuje všechny prostředky Azure, které tvoří vytváří Vydavatel řešení. Produkty, které patří tento typ testovací verze jsou ty, které používají jenom prostředky Azure.               |       [Testovací verze Azure Resource Manageru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
+|       Hostovaný             |       Hostovaná testovací verze složitost instalační program odebere služba Microsoft hosting a zachovat službu, která provádí Test Drive uživatele zřizování a zrušení zřizování.             |         [Hostovaná testovací verze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
+|      Aplikace logiky              |       Test aplikace logiky jednotka je šablonu nasazení, která slouží k zahrnovat všechny architektury komplexní řešení. Všechny aplikace Dynamics nebo vlastní produkty by měl použít tento typ testovací verze.            |      [Jednotky Test aplikace logiky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Power BI testovací verze se skládá z vložený odkaz na míru sestavené řídicí panel. Jakýkoli produkt, který chce prokázat, že že interaktivní vizuálu Power BI by měl použít tento typ testovací verze. Vše, co potřebujete k nahrání je vaše adresa URL vložené Power BI.          |        [Vyzkoušejte Power BI](#Power-BI-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Testovací verze Power BI
@@ -83,4 +83,4 @@ Pomocí následujícího postupu můžete nakonfigurovat si testovací jízdu.
 
 ## <a name="next-steps"></a>Další postup
 
-[Prezentace kartu Podrobnosti](./cpp-storefront-tab.md)
+[Karta podrobností o prodejních místech](./cpp-storefront-tab.md)

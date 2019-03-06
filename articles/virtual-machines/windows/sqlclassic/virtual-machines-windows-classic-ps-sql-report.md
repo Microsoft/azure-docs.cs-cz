@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820109"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445632"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -56,7 +56,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
     ![nový virtuální počítač z Galerie](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Klikněte na tlačítko **SQL Server 2014 RTM Standard – Windows Server 2012 R2** a poté klikněte na šipku pokračujte.
    
-    ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Pokud potřebujete data služby Reporting Services řízené funkce předplatných, zvolte **SQL serveru 2014 RTM Enterprise, Windows Server 2012 R2**. Další informace o edicích systému SQL Server a podporovaných funkcích najdete v tématu [funkce, které jsou podporovány edice systému SQL Server 2012](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Na **konfigurace virtuálního počítače** stránky, upravte následující pole:
@@ -79,7 +79,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
      
      * **HTTP**: Výchozí veřejné a soukromé porty jsou **80**. Všimněte si, že používáte privátní port než 80, upravte **$HTTPport = 80** ve skriptu http.
      * **HTTPS**: Výchozí veřejné a soukromé porty jsou **443**. Osvědčeným postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodech najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
-   * Klikněte na tlačítko Další. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klikněte na tlačítko Další. ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na poslední stránce průvodce, ponechte výchozí **nainstalujte agenta virtuálního počítače** vybrané. Kroky v tomto tématu Neuvedeno agenta virtuálního počítače, ale pokud budete chtít zachovat tento virtuální počítač, agent virtuálního počítače a rozšíření vám umožní zajistit, že CM.  Další informace o agenta virtuálního počítače najdete v tématu [agenta virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jednou z výchozí nainstalovaná rozšíření služby ad s je rozšíření "BGINFO", který zobrazuje na ploše virtuálního počítače, systémové informace, například interní IP adresa a volného místa na disku.
 9. Klikněte na dokončení. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. **Stav** virtuálního počítače se zobrazí jako **spuštění (zřizování)** během procesu zřizování a potom zobrazí jako **systémem** když virtuální počítač je zřízená a připravený k použití.
@@ -124,7 +124,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
       
        Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
       
-       ![název virtuálního počítače zahrnuje přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+       ![přihlašovací jméno obsahuje název virtuálního počítače](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
    2. Spusťte mmc.exe. Další informace najdete v tématu [jak: Zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. V konzolové aplikaci **souboru** nabídky, přidejte **certifikáty** modul snap-in, vyberte **účet počítače** při zobrazení výzvy a potom klikněte na **Další**.
    4. Vyberte **místního počítače** ke správě a potom klikněte na tlačítko **Dokončit**.
@@ -160,7 +160,7 @@ Konfigurace serveru sestav pomocí skriptu prostředí Windows PowerShell, prove
    
     Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
    
-    ![název virtuálního počítače zahrnuje přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![přihlašovací jméno obsahuje název virtuálního počítače](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. Na virtuálním počítači, otevřete **Windows PowerShell ISE** s oprávněními správce. Prostředí PowerShell ISE se instaluje standardně na Windows serveru 2012. Doporučuje se, že používáte ISE místo standardní okno Windows Powershellu tak, aby vložte skript do ISE, upravte skript a potom spusťte skript.
 3. V prostředí Windows PowerShell ISE, klikněte na tlačítko **zobrazení** nabídky a pak klikněte na tlačítko **zobrazit podokno skriptu**.
 4. Zkopírujte následující skript a vložte skript do podokna skriptu Windows PowerShell ISE.
@@ -294,7 +294,7 @@ Konfigurace serveru sestav pomocí Windows Powershellu, proveďte následující
    
     Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
    
-    ![název virtuálního počítače zahrnuje přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![přihlašovací jméno obsahuje název virtuálního počítače](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. Na virtuálním počítači, otevřete **Windows PowerShell ISE** s oprávněními správce. Prostředí PowerShell ISE se instaluje standardně na Windows serveru 2012. Doporučuje se, že používáte ISE místo standardní okno Windows Powershellu tak, aby vložte skript do ISE, upravte skript a potom spusťte skript.
 3. Pokud chcete povolit spouštění skriptů, spusťte následující příkaz Windows Powershellu:
    

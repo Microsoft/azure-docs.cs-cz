@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 527ab4ee0edaf3ac2048403d7063edef8fc58ae8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094168"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451973"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Clustery škálování Azure Service Fabric
 Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou potenciálně obsahovat tisících uzlech. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly).  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
@@ -81,7 +81,7 @@ Při škálování clusteru Azure, mějte následujícími pravidly:
 Proces typ uzlu vertikálního navýšení nebo snížení kapacity se liší v závislosti na tom, zda je typ neprimární nebo primárního uzlu.
 
 ### <a name="scaling-non-primary-node-types"></a>Škálování typy jiné než primární uzel
-Vytvoření nového typu uzlu s prostředky, které potřebujete.  Aktualizujte omezení umístění spuštění služby zahrnuté nového typu uzlu.  Postupně (postupně po jednom), snížit počet instancí starý počet instancí typu uzlu na nulu, tak, aby spolehlivosti clusteru nemá vliv.  Služby se postupně migrovat do nového typu uzlu decommisioned je původní typ uzlu.
+Vytvoření nového typu uzlu s prostředky, které potřebujete.  Aktualizujte omezení umístění spuštění služby zahrnuté nového typu uzlu.  Postupně (postupně po jednom), snížit počet instancí starý počet instancí typu uzlu na nulu, tak, aby spolehlivosti clusteru nemá vliv.  Služby se postupně migrovat do nového typu uzlu jako původní typ uzlu je vyřazena z provozu.
 
 ### <a name="scaling-the-primary-node-type"></a>Škálování primární typ uzlu
 Doporučujeme neměnit skladovou Položku virtuálního počítače z primární typ uzlu. Pokud potřebujete víc kapacity clusteru, doporučujeme přidat více instancí. 

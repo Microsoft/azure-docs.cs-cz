@@ -13,18 +13,20 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060087"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453027"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pomocí Azure SQL Database pro geografické replikace a převzetí služeb při selhání
 
 Tento článek popisuje, jak nakonfigurovat prostředí Azure-SSIS Integration Runtime s Azure SQL Database geografickou replikaci pro databázi SSISDB. Když dojde k selhání, můžete zajistit, že Azure-SSIS IR pořád funguje s sekundární databáze.
 
-Další informace o geografické replikace a převzetí služeb při selhání pro službu SQL Database najdete v tématu [přehled: aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny](../sql-database/sql-database-geo-replication-overview.md).
+Další informace o geografické replikace a převzetí služeb při selhání pro službu SQL Database najdete v tématu [přehled: Aktivní geografická replikace a Automatická – převzetí služeb při selhání skupiny](../sql-database/sql-database-geo-replication-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scénář 1 - Azure-SSIS IR je přejdete na koncový bod naslouchacího procesu pro čtení i zápis
 
@@ -87,7 +89,7 @@ Použijte následující postup zastavit prostředí Azure-SSIS IR, přepnout pr
 2. Zavoláním následujícího příkazu v Powershellu aktualizovat prostředí IR s novým nastavením.
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `
+    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
                     -CatalogServerEndpoint "Azure SQL Database server endpoint" `
                     -CatalogAdminCredential "Azure SQL Database server admin credentials" `
                     -VNetId "new VNet" `

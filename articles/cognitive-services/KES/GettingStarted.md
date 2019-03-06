@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a48fecd910d87af23a9385270878b0d1b6737007
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309637"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452534"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -238,7 +238,7 @@ V tomto příkladu můžete předpokládat, že už je vytvořený následujíc�
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
-Pamatujte na to, že zřízení dočasného virtuálního počítače k sestavení indexu může trvat 5 až 10 minut. Při rychlém vytváření prototypů můžete:
+Všimněte si, že může trvat 5 až 10 minut ke zřízení dočasný virtuální počítač pro sestavení indexu. Při rychlém vytváření prototypů můžete:
 - Vyvíjet s menší datovou sadou místně na libovolném počítači.
 - Ručně [vytvořit virtuální počítač Azure](../../../articles/virtual-machines/windows/quick-create-portal.md), [připojit se k němu](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) přes Vzdálenou plochu, nainstalovat [sadu SDK služby Knowledge Exploration Service](https://www.microsoft.com/en-us/download/details.aspx?id=51488) a spustit [`kes.exe`](CommandLine.md) v rámci virtuálního počítače.
 

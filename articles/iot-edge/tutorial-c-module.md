@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 798cf405c222a443dbbd3a316d20c482daf4429f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b09282d3e897018aa6d5b2561f08d8eee0757d7a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563248"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455424"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu jazyka C IoT Edge a nasazení simulovaného zařízení
 
@@ -137,7 +137,7 @@ Přidejte do modulu C kód, který mu umožní načítat data ze snímače, kont
 
    4. Uložte soubor **CMakeLists.txt**.
 
-   5. Otevřete soubor **modules** > **CModule** > **main.c**. Na konec seznamu příkazů include přidejte nový příkaz pro zahrnutí souboru `parson.h`, který zajistí podporu JSON:
+   5. Otevřete soubor **modules** > **CModule** > **main.c**. V dolní části seznamu #include, zahrnují přidání nového `parson.h` pro podporu JSON:
 
       ```c
       #include "parson.h"

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f72f75013d69533eeda0e69acbff1c4f7047f509
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193679"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452109"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Rezidence dat a dostupnost oblastí
 Dostupnost v oblastech a rezidence dat jsou dvě velmi odlišné koncepty, které se vztahují na Azure AD B2C odlišně od zbytku Azure. Tento článek vysvětluje rozdíly mezi tyto dva pojmy a porovnat, jak se vztahují na Azure a Azure AD B2C.
@@ -37,7 +37,7 @@ Azure AD B2C ukládá uživatelská data v USA nebo Evropa.
 
 Rezidence dat závisí na které země/oblast je vybrána při [vytvoření tenanta Azure AD B2C](active-directory-b2c-get-started.md).
 
-![Snímek obrazovky okna tenant ve verzi preview](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
+![Snímek obrazovky tenant ve verzi preview](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
 
 Data se nachází ve Spojených státech amerických pro následujících zemích nebo oblastech:
 
@@ -58,4 +58,4 @@ Pokud jste vytvořili tenanta B2C během období preview Azure AD B2C, je pravd�
 > Neexistuje žádná cesta migrace z tenanta B2C ve verzi preview na tenanta B2C produkčním měřítku. Všimněte si, že jsou známy problémy odstranit tenanta B2C ve verzi preview a znovu vytvoříte tenanta B2C produkčním měřítku se stejným názvem domény. Je nutné vytvořit tenanta B2C produkčním měřítku s jiným názvem domény.
 
 
-![Snímek obrazovky okna tenant ve verzi preview](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
+![Snímek obrazovky tenant ve verzi preview](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)

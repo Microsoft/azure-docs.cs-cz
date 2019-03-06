@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c95fcd2e6369fae920481db2623124342c34a730
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327846"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447626"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -60,11 +60,9 @@ Ve většině případů se doporučuje účty pro obecné účely v2, účty pr
 
 * Používáte verzi rozhraní [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx), která je starší než 14.2.2014, nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
 
-### <a name="blob-storage-accounts"></a>Účty úložiště Blob
+### <a name="block-blob-storage-accounts"></a>Účty úložiště objektů blob bloku
 
-Účet Blob storage je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku. Účty BLOB storage poskytuje stejnou odolnost, dostupnost, škálovatelnost a funkce výkonu, které jsou k dispozici s účty úložiště pro obecné účely v2. Účty úložiště BLOB podporují ukládání objektů BLOB bloku a doplňovací objekty BLOB, ale ne objekty BLOB stránky.
-
-Účty BLOB storage nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
+Účet block blob storage je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku nebo doplňovacích objektů BLOB. Účty blob storage bloku nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 

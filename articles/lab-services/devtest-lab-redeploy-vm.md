@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 273b0f1105d8b71b90a06e2627e201b97f12a754
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095391"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454251"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Opětovné nasazení virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs
-Pokud se nemůžete připojit k virtuálnímu počítači (VM) v testovacím prostředí pomocí připojení ke vzdálené ploše, znovu nasadit virtuální počítač a opakujte conencting k němu. Při opětovném nasazování virtuálního počítače s DevTest Labs přesune virtuální počítač z uzlu, na kterém běží do nového uzlu v rámci infrastruktury Azure. Pak spustí virtuální počítač při zachování všech možností konfigurace a přidružených prostředků. Tato funkce může ušetřit vám čas trvání řešení potíží s připojení ke vzdálené ploše nebo přístup k aplikaci do virtuálních počítačů s Windows v testovacím prostředí. 
+Pokud se nemůžete připojit k virtuálnímu počítači (VM) v testovacím prostředí pomocí připojení ke vzdálené ploše, znovu nasadit virtuální počítač a zkuste se znovu připojit. Při opětovném nasazování virtuálního počítače s DevTest Labs přesune virtuální počítač z uzlu, na kterém běží do nového uzlu v rámci infrastruktury Azure. Pak spustí virtuální počítač při zachování všech možností konfigurace a přidružených prostředků. Tato funkce může ušetřit vám čas trvání řešení potíží s připojení ke vzdálené ploše nebo přístup k aplikaci do virtuálních počítačů s Windows v testovacím prostředí. 
 
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Postup opětovné nasazení virtuálního počítače v testovacím prostředí 
 Opětovné nasazení virtuálního počítače v testovacím prostředí ve službě Azure DevTest Labs, proveďte následující kroky: 

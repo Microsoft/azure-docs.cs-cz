@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0a9197c8c46cc480f5f096f1d2ef98c0d5823f35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232976"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455781"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Vytvoření a správa hybridních připojení
 
@@ -42,7 +42,7 @@ Toto téma obsahuje seznam těchto kroků.
 > Například (pseudokódu), můžete definovat **10.4.5.6** jako místního hostitele:
 > 
 > **Následujícím scénáři funguje:**  
-> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on premises host`
 > 
 > **Následující scénář nefunguje:**  
 > `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
@@ -56,7 +56,7 @@ Hybridní připojení se dá vytvořit v [Azure App Service Hybrid Connections](
 
 #### <a name="additional"></a>Další
 * Je možné vytvořit více hybridní připojení. Zobrazit [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md) počet připojení povolených. 
-* Každé hybridní připojení je vytvořené pomocí páru připojovacích řetězců: aplikace klíče této SEND a On-premises klíče, které NASLOUCHAT. Každý pár má primární a sekundární klíč. 
+* Každé hybridní připojení je vytvořené pomocí páru připojovacích řetězců: Klíče aplikace, které ODESÍLÁNÍ a On-premises klíče, které NASLOUCHAT. Každý pár má primární a sekundární klíč. 
 
 ## <a name="LinkWebSite"></a>Propojení služby Azure App Service webovou aplikaci nebo mobilní aplikace
 Odkaz na webovou aplikaci nebo mobilní aplikace ve službě Azure App Service na existující hybridní připojení, vyberte **použít existující hybridní připojení** v okně hybridní připojení. 
@@ -121,7 +121,7 @@ Po zkopírování můžete změnit zásady Editor zásad skupiny.
 [Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)  
 [Vytvoření služby BizTalk](biztalk-provision-services.md)  
-[BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md)
+[BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

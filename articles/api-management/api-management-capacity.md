@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 31959cc1bef6b6434f6d3f586052a845837aa438
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442587"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454503"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance Azure API Management
 
@@ -78,7 +78,7 @@ Složitějších operací na požadavky jsou, tím vyšší **kapacity** za spot
 4. Vyberte z části zelené **umístění** pro rozdělení metriku podle dimenzí.
 5. Můžete si vyberte požadovaný časový rámec z panelu horní části.
 
-    Můžete nastavit upozornění na metriku dali vám vědět, kdy se děje něco neočekávaného. Třeba získáte oznámení po překročil vaší instanci APIM jeho očekávané maximální vytížení kapacitu pro více než 20 minut.
+    Můžete nastavit upozornění na metriku dali vám vědět, kdy se děje něco neočekávaného. Třeba získáte oznámení při vaší instanci APIM má překročení kapacity jeho očekávané maximální vytížení po dobu více než 20 minut.
 
     >[!TIP]
     > Můžete nakonfigurovat výstrahy, které vám umožní vědět, že vaše služba není dostatek kapacity, nebo pomocí funkce automatického škálování Azure Monitor automaticky přidat jednotku Azure API Management. Škálování operace může trvat přibližně 30 minut, takže byste měli odpovídajícím způsobem naplánovat pravidla.  

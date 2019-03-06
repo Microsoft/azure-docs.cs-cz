@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 80f0aa3158ce4f3eeafaeb5c7834dc820e8ba75b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e33606e0b5be0db5306cfd42f87baf59671eb2a8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886584"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451725"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapování datového toku zdroj transformace
 
@@ -74,7 +74,7 @@ Volitelně můžete při vytváření oddílů připojení na základě dotazu. 
 ## <a name="source-file-management"></a>Správa zdrojového souboru
 ![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
 
-* Zástupný cesta k výběru řadu soubory ze zdrojové složky, které odpovídají vzoru. Tím se přepíše všech souborů, které jste nastavili ve vaší definici datové sady.
+* Zástupný cesta k výběru řadu soubory ze zdrojové složky, které odpovídají vzoru. Tím se přepíše všech souborů, které jste nastavili v definici datové sady.
 * Seznam souborů. Stejné jako sady souborů. Přejděte do textového souboru, který vytvoříte seznam soubory relativní cestu ke zpracování.
 * Sloupce pro uložení názvu souboru uloží název souboru ze zdroje ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
 * Po dokončení (můžete zvolit Neprovádět žádnou akci se zdrojovým souborem po spuštění toku dat, zdrojový soubor odstranit nebo přesunout zdrojové soubory. Cesty pro přesunutí jsou relativní cesty.

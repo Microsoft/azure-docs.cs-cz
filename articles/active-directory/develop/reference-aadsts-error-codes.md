@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738585"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452008"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -68,7 +68,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS50032 | WeakRsaKey – označuje chybné uživatelské pokusem o použití slabý klíč RSA. |
 | AADSTS50033 | RetryableError – označuje přechodná chyba nesouvisí databázových operací. |
 | AADSTS50034 | UserAccountNotFound - pro přihlášení do této aplikace, musí být tento účet přidaný do adresáře. |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt – hodnota salt vyžadovaných ke generování pairwise identifikátor nebyl nalezen v objektu zabezpečení. Obraťte se na správce tenanta. |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt – hodnota salt vyžadovaných ke generování pairwise identifikátor se nenašel v zásadě. Obraťte se na správce tenanta. |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | Deklarace identity subjektu neshody vystavitele SubjectMismatchesIssuer - v kontrolní výraz klienta. Obraťte se na správce tenanta. |
 | AADSTS50049 | NoSuchInstanceForDiscovery – neznámá nebo neplatná instance. |
@@ -140,7 +140,7 @@ Hledáte informace o chybových kódech AADSTS, které jsou vráceny od služby 
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. odešlete žádost o interaktivní autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent - uživatel odmítl souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
-| AADSTS65005 | MisconfiguredApplication - aplikace vyžaduje přístup k seznamu prostředků neobsahuje aplikace zjistitelné prostředkem nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadán v přístupovém seznamu požadovaných prostředků nebo služba Graph vrátila chybný žádost nebo prostředek se nenašel. Pokud aplikace podporuje SAML, jste nakonfigurovali aplikaci s identifikátorem nesprávné (entita). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) |
+| AADSTS65005 | MisconfiguredApplication - aplikace vyžaduje přístup k seznamu prostředků neobsahuje aplikace zjistitelné prostředkem nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadán v přístupovém seznamu požadovaných prostředků nebo služba Graph vrátila chybný žádost nebo prostředek se nenašel. Pokud aplikace podporuje SAML, jste nakonfigurovali aplikaci s identifikátorem nesprávné (entita). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – ověření se nezdařilo. Obnovovací token není platný. Chyba může být z následujících důvodů:<ul><li>Token vazby záhlaví je prázdný</li><li>Token vazby hash neodpovídá</li></ul> |
 | AADSTS70001 | UnauthorizedClient – aplikace je zakázaná. |

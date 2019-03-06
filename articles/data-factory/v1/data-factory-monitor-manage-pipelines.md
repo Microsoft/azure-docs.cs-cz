@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015488"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445139"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí webu Azure portal a Powershellu
 > [!div class="op_single_selector"]
@@ -35,6 +35,8 @@ Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí webu
 
 > [!IMPORTANT]
 > Azure Data Factory verze 1 nyní používá nový [Azure Monitor výstrahy infrastruktury](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Staré výstrahy infrastruktury je zastaralý. V důsledku toho existující výstrahy nakonfigurované pro verzi 1 datové továrny už nebude fungovat. Existující upozornění pro v1 datové továrny se nemigrují automaticky. Budete muset znovu vytvořit tyto výstrahy na nové výstrahy infrastruktury. Přihlaste se k Azure portal a vyberte **monitorování** vytvořit nové výstrahy týkající se metrik (jako jsou neúspěšná spuštění nebo úspěšná spuštění) pro vaši verzi 1 datových továren.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-pipelines-and-activity-states"></a>Vysvětlení stavů aktivit a kanálů
 Pomocí webu Azure portal můžete:
@@ -173,26 +175,26 @@ Vaše kanály můžete spravovat pomocí Azure Powershellu. Například můžete
 > [!NOTE] 
 > Pozastavování a obnovování kanály, zobrazení diagramu se nepodporuje. Pokud chcete použít uživatelské rozhraní, pomocí monitorování a Správa aplikace. Podrobnosti o použití této aplikace najdete v tématu [monitorování a Správa kanálů Data Factory pomocí aplikace pro monitorování a správu](data-factory-monitor-manage-app.md) článku. 
 
-Je možné pozastavit/pozastavit kanály pomocí **Suspend-AzureRmDataFactoryPipeline** rutiny Powershellu. Tato rutina je užitečná, když nechcete, aby ke spuštění kanálů, dokud nebude problém vyřešen. 
+Je možné pozastavit/pozastavit kanály pomocí **Suspend-AzDataFactoryPipeline** rutiny Powershellu. Tato rutina je užitečná, když nechcete, aby ke spuštění kanálů, dokud nebude problém vyřešen. 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Příklad:
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 Po vyřešení problému s kanálem, lze obnovit pozastavenou kanálu spuštěním následujícího příkazu Powershellu:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Příklad:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 ## <a name="debug-pipelines"></a>Ladění kanálů
@@ -217,29 +219,29 @@ Pokud se nezdaří spuštění aktivity v kanálu, datové sady, který je vytvo
 
 #### <a name="use-powershell-to-debug-an-error"></a>Použití Powershellu k ladění k chybě
 1. Spusťte **PowerShell**.
-2. Spustit **Get-AzureRmDataFactorySlice** příkazu zobrazíte řezy a jejich stavy. Zobrazí se řez ve stavu **neúspěšné**.        
+2. Spustit **Get-AzDataFactorySlice** příkazu zobrazíte řezy a jejich stavy. Zobrazí se řez ve stavu **neúspěšné**.        
 
     ```powershell   
-    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
    Příklad:
 
     ```powershell   
-    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    Nahraďte **StartDateTime** s časem zahájení vašeho kanálu. 
-3. Nyní, spusťte **Get-AzureRmDataFactoryRun** rutiny zobrazíte podrobnosti o aktivitě spuštění řez.
+3. Nyní, spusťte **Get-AzDataFactoryRun** rutiny zobrazíte podrobnosti o aktivitě spuštění řez.
 
     ```powershell   
-    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
+    Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
     Příklad:
 
     ```powershell   
-    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     Hodnota StartDateTime je počáteční čas řezu chybě nebo problému, který jste si poznamenali v předchozím kroku. Datum a čas by měl být uzavřen do dvojitých uvozovek.
@@ -267,10 +269,10 @@ Pokud se nezdaří spuštění aktivity v kanálu, datové sady, který je vytvo
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. Můžete spustit **uložit AzureRmDataFactoryLog** rutina s hodnotou Id najdete v článku z výstupu a stáhněte si soubory protokolů pomocí **- DownloadLogsoption** pro rutinu.
+5. Můžete spustit **uložit AzDataFactoryLog** rutina s hodnotou Id najdete v článku z výstupu a stáhněte si soubory protokolů pomocí **- DownloadLogsoption** pro rutinu.
 
     ```powershell
-    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>Opětovné spuštění při selhání v rámci kanálu
@@ -288,7 +290,7 @@ V případě řez se nezdařilo ověření z důvodu selhání zásad (napříkl
 ![Opravte chyby a ověřit](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Použití Azure Powershell
-Můžete znovu spustit selhání pomocí **Set-AzureRmDataFactorySliceStatus** rutiny. Zobrazit [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) tématu pro syntaxi a další podrobnosti o rutině.
+Můžete znovu spustit selhání pomocí **Set-AzDataFactorySliceStatus** rutiny. Najdete v článku [Set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) tématu pro syntaxi a další podrobnosti o rutině.
 
 **Příklad:**
 
@@ -297,7 +299,7 @@ Následující příklad nastaví stav všech řezů pro tabulku "DAWikiAggregat
 Typ "aktualizace" je nastavena na "UpstreamInPipeline", což znamená, že stavy každý řez pro tabulku a všechny závislé (nadřazeného) tabulky nastavené na "Čeká". S možnou hodnotou pro tento parametr je "Osoba".
 
 ```powershell
-Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Vytvářet upozornění na webu Azure Portal
 

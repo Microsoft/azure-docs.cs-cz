@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/28/2019
-ms.author: mayg
-ms.openlocfilehash: e7ee8f58e42f99ebc087f21837511979c578fb89
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.author: ramamill
+ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340078"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448828"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -74,7 +74,7 @@ Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si
 >Můžete také stáhnout nejnovější verzi šablona konfiguračního serveru přímo z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 >[!NOTE]
-Licence, které jsou poskytovány s šablonou OVA je zkušební licenci, která je platná po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
+Licence, které jsou poskytovány s šablonou OVA je zkušební licence, který je platný po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
 
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
@@ -113,8 +113,8 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 3. Po dokončení instalace se přihlaste k virtuálnímu počítači jako správce.
 4. Spustí se při prvním přihlášení se během několika sekund nástroj pro konfiguraci Azure Site Recovery.
 5. Zadejte název, pod kterým se konfigurační server zaregistruje do služby Site Recovery. Pak vyberte **Další**.
-6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po navázání spojení vyberte **Přihlásit se**, abyste se mohli přihlásit ke svému předplatnému Azure.
-    a. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat.
+6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po navázání spojení vyberte **Přihlásit se**, abyste se mohli přihlásit ke svému předplatnému Azure.</br>
+    a. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat.</br>
     b. Ujistěte se, že zvolená uživatelský účet má oprávnění k vytvoření aplikace v Azure. Pokud chcete povolit požadovaná oprávnění, postupujte podle pokynů uvedených [tady](#azure-active-directory-permission-requirements).
 7. Nástroj provede několik konfiguračních úloh a pak restartuje počítač.
 8. Znovu se přihlaste k počítači. Spustí Průvodce správou konfiguračního serveru **automaticky** několik sekund.
@@ -155,7 +155,7 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
 
 1. Jak dlouhé je, že platnost Licence na konfiguračním serveru, které jsou nasazené prostřednictvím OVF k dispozici? Co se stane, když není můžu aktivovat licenci?
 
-    Licence, které jsou poskytovány s šablonou OVA je zkušební licenci, která je platná po dobu 180 dnů. Před vypršením platnosti budete muset aktivovat licenci. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
+    Licence, které jsou poskytovány s šablonou OVA je zkušební licence, který je platný po dobu 180 dnů. Před vypršením platnosti budete muset aktivovat licenci. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
 
 2. Můžete použít virtuální počítač, ve kterém je nainstalován konfigurační server pro různé účely?
 
