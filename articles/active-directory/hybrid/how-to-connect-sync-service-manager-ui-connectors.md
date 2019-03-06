@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0d42ff70bfaebf4d544fd81e6767592198ccef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205592"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431168"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect Sync Service Manager
 
@@ -86,7 +86,7 @@ Chcete-li vyřešit tento problém, aktualizujte uživatelský účet služby AD
 3. Vyberte konektor AD, který je konfigurován pro použití účtu služby AD DS.
 4. V části Akce, vyberte **vlastnosti**.
 5. V místním dialogovém okně vyberte připojit k doménové struktuře služby Active Directory:
-6. Určuje název doménové struktury odpovídající místní AD.
+6. Název doménové struktury označuje odpovídající místní AD.
 7. Uživatelské jméno označuje účet služby AD DS, který je používán k synchronizaci.
 8. Zadejte nové heslo účtu služby AD DS do textového pole hesla ![Azure AD Connect Sync šifrování klíč nástroje](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Kliknutím na tlačítko OK uložte nové heslo a restartujte synchronizační službu pro odebrání předchozího hesla z mezipaměti.

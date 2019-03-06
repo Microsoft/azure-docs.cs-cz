@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588938"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457769"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
@@ -25,7 +25,7 @@ Vytvoření oboru názvů:
 
     ![Vytvořit prostředek -> integrace -> služby Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. V **vytvoření oboru názvů** dialogového okna, proveďte následující kroky: 
-    1. Zadejte **název pro obor názvů**. Systém okamžitě kontroluje, jestli je název dostupný.
+    1. Zadejte **název pro obor názvů**. Systém okamžitě kontroluje, jestli je název dostupný. Seznam pravidel pro pojmenování obory názvů, naleznete v tématu [REST API vytvořte Namespace](/rest/api/servicebus/create-namespace).
     2. Vyberte cenovou úroveň (Basic, Standard nebo Premium) pro obor názvů. Pokud chcete použít [témata a odběry](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), zvolit úroveň Standard nebo Premium. Témata/předplatná se v cenové úrovni Basic nepodporují.
     3. Pokud jste vybrali **Premium** cenovou úroveň, postupujte podle těchto kroků: 
         1. Zadejte počet **jednotky zasílání zpráv**. Úroveň premium zajišťuje izolaci prostředků na úrovni procesoru a paměti, takže každá úloha běží izolovaně. Kontejner prostředků se nazývá jednotka zasílání zpráv. Obor názvů úrovně premium má alespoň jedna jednotka zasílání zpráv. Můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv pro každý obor názvů Service Bus úrovně Premium. Další informace najdete v tématu [služby zasílání zpráv Service Bus úrovně Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md).

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: d2c21e82447c4be8b7e0cfaa023f87547277433a
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 541d431c9387d512374047c4cc004e1a237e1ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195196"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406520"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
@@ -108,7 +108,6 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nakonfigurována [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), pak nasadili webovou aplikaci Java archivu zabalené do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App Service v Linuxu.
 
 - [Kurz: Nasazení aplikace v Javě podnikové aplikace s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#connecting-to-data-sources)
+- [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#tomcat)
 - [CI/CD pomocí Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
 - [Nastavení nástroje pro monitorování výkonu aplikací](how-to-java-apm-monitoring.md)
-

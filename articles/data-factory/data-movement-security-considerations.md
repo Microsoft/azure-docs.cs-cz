@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498060"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447944"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,6 +51,8 @@ V tomto článku jsme projděte si informace o zabezpečení v následujících 
 
 - **Scénář cloudu**: V tomto scénáři jsou veřejně přístupné prostřednictvím Internetu zdroj a cíl. Mezi ně patří služby spravované cloudové úložiště jako je Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, služeb SaaS, jako je Salesforce a webové protokoly, jako je například FTP a OData. Úplný seznam podporovaných zdrojů dat v [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybridní scénář**: V tomto scénáři je váš zdroj nebo cíl za bránou firewall nebo uvnitř podnikové sítě v místním prostředí. Nebo úložiště dat je v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Cloudové scénáře
 
@@ -109,9 +111,9 @@ Přihlašovací údaje pro vaše místní úložiště dat jsou vždy zašifrova
 
 - **Store pověření místně**. Pokud chcete k šifrování a ukládání přihlašovacích údajů místně do místního prostředí integration runtime, postupujte podle kroků v [šifrovat přihlašovací údaje pro místní úložiště dat ve službě Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Všechny konektory podporují tuto možnost. Modul runtime integrace v místním prostředí používá Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) pro šifrování citlivých informací data a přihlašovací údaje. 
 
-   Použití **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** rutiny pro šifrování přihlašovacích údajů propojené služby a citlivých podrobnosti v propojené službě. Pak můžete použít vráceném kódu JSON (s **EncryptedCredential** element v připojovacím řetězci) k vytvoření propojené služby s použitím **Set-AzureRmDataFactoryV2LinkedService** rutiny.  
+   Použití **New-AzDataFactoryV2LinkedServiceEncryptedCredential** rutiny pro šifrování přihlašovacích údajů propojené služby a citlivých podrobnosti v propojené službě. Pak můžete použít vráceném kódu JSON (s **EncryptedCredential** element v připojovacím řetězci) k vytvoření propojené služby s použitím **Set-AzDataFactoryV2LinkedService** rutiny.  
 
-- **Store ve službě Azure Data Factory managed storage**. Pokud používáte přímo **Set-AzureRmDataFactoryV2LinkedService** rutiny s připojením řetězce a přihlašovací údaje vložený v kódu JSON, je zašifrované a uložené v úložišti spravované služby Azure Data Factory propojené služby. Certifikát je stále šifrovaný citlivé informace a Microsoft spravuje tyto certifikáty.
+- **Store ve službě Azure Data Factory managed storage**. Pokud používáte přímo **Set-AzDataFactoryV2LinkedService** rutiny s připojením řetězce a přihlašovací údaje vložený v kódu JSON, je zašifrované a uložené v úložišti spravované služby Azure Data Factory propojené služby. Certifikát je stále šifrovaný citlivé informace a Microsoft spravuje tyto certifikáty.
 
 
 

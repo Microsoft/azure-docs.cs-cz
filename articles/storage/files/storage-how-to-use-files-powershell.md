@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 53f2b59032e7e9725b067ef472b2b6dcf94bcb72
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 59d8b9ffa8c0cbeaaa354f2497d279ac8c285ae1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662448"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437118"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytváření a správě sdílené složky Azure pomocí Azure Powershellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -166,7 +166,7 @@ Pokud teď vypíšete soubory v nové sdílené složce, měl by se zobrazit vá
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
 ```
 
-Přestože je rutina `Start-AzStorageFileCopy` praktická pro ad hoc přesun souborů mezi sdílenými složkami Azure a kontejnery úložiště objektů blob v Azure, pro větší přesuny (z hlediska počtu nebo velikosti přesouvaných souborů) doporučujeme použít AzCopy. Další informace o [AzCopy pro Windows](../common/storage-use-azcopy.md) a [AzCopy pro Linux](../common/storage-use-azcopy-linux.md). Nástroj AzCopy musí být nainstalovaný místně – ve službě Cloud Shell není dostupný. 
+Zatímco `Start-AzStorageFileCopy` rutiny je vhodné pro přesun mezi sdílenými složkami Azure a kontejnery úložiště objektů Blob v Azure ad hoc souborů, doporučujeme použít AzCopy pro větší přesuny (z hlediska počtu nebo velikosti přesouvaných souborů). Další informace o [AzCopy pro Windows](../common/storage-use-azcopy.md) a [AzCopy pro Linux](../common/storage-use-azcopy-linux.md). Nástroj AzCopy musí být nainstalovaný místně – ve službě Cloud Shell není dostupný. 
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává sdílenou složku Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné technologiím operačního systému, které už možná znáte, jako například:

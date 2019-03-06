@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c05c2e8941790dd30c42aca8d434a3b914d79de7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 83de0046a56788e40b9224823af0411a18dea5eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107277"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449933"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesunout úložiště dat z rozhraní ODBC dat pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,6 +32,8 @@ ms.locfileid: "56107277"
 Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunu dat z úložiště dat rozhraní ODBC místní. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
 Kopírování dat z úložiště dat rozhraní ODBC do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z úložiště dat rozhraní ODBC do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat rozhraní ODBC.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
 Služba data Factory podporuje připojení k místním zdrojům ODBC pomocí brány správy dat. Zobrazit [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku se dozvíte o brána správy dat a podrobné pokyny o nastavení brány. Použití brány pro připojení k úložišti dat rozhraní ODBC i v případě, že je hostovaný na Virtuálním počítači Azure IaaS.
@@ -93,7 +95,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Zašifrované přihlašovací údaje pomocí základního ověřování
-Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi nástroje Azure Prostředí PowerShell).
+Můžete šifrovat přihlašovací údaje pomocí [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi nástroje Azure Prostředí PowerShell).
 
 ```json
 {

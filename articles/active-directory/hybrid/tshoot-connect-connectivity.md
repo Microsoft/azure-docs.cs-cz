@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205694"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436651"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením u služby Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -76,7 +76,7 @@ Tato chyba se zobrazí, pokud koncový bod **https://secure.aadcdn.microsoftonli
 
 ### <a name="the-password-cannot-be-verified"></a>Heslo nelze ověřit.
 Pokud Průvodce instalací byl úspěšný při připojování ke službě Azure AD, ale heslo samotné nelze ověřit, že se zobrazí tato chyba:  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![Chybné heslo.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Dočasné heslo je heslo a musí být změněno? Je ve skutečnosti správné heslo? Zkuste se přihlásit k https://login.microsoftonline.com (na jiném počítači než na serveru služby Azure AD Connect) a ověřte účet je použitelná.
 
@@ -165,7 +165,7 @@ Vypršela platnost vašich přihlašovacích údajů. Změňte si heslo.
 ### <a name="authorization-failure"></a>Selhání autorizace
 Nepovedlo se autorizovat uživatele k provedení akce ve službě Azure AD.
 
-### <a name="authentication-cancelled"></a>Ověřování zrušeno
+### <a name="authentication-canceled"></a>Ověřování bylo zrušeno
 Výzva ověřování službou Multi-Factor Authentication (MFA) byla zrušena.
 
 <div id="connect-msolservice-failed">

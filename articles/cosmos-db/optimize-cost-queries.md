@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457662"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445377"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizujte náklady dotazu ve službě Azure Cosmos DB
 
@@ -53,7 +53,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>Faktory ovlivňující zátěž jednotek žádostí pro dotaz
 
-Jednotek žádostí pro dotazy jsou závislé na počtu faktorů. Například počet položek Azure Cosmos načíst/vrátil, počet hledání na index, čas kompilace dotazu podrobnosti atd. Azure Cosmos DB zaručuje, že stejný dotaz při spuštění na stejná data vždy využívat stejný počet jednotek žádostí i při opakovaném spuštění. Profil dotazu využitím metrik spouštění dotazu vám představu, jak se spotřebovávají jednotkách požadavků.  
+Jednotek žádostí pro dotazy jsou závislé na počtu faktorů. Například počet položek Azure Cosmos načíst/vrátila, počet hledání na index, kompilaci dotazu čas podrobnosti atd. Azure Cosmos DB zaručuje, že stejný dotaz při spuštění na stejná data vždy využívat stejný počet jednotek žádostí i při opakovaném spuštění. Profil dotazu využitím metrik spouštění dotazu vám představu, jak se spotřebovávají jednotkách požadavků.  
 
 V některých případech se může zobrazit posloupnost odpovědi 200 a 429 a jednotkách požadavků proměnné stránkovaného provádění dotazů, protože dotazy se spustí nejrychleji podle dostupných RU. Může se zobrazit provádění dotazu rozdělit do několika stránek/zaokrouhlit cest mezi serverem a klientem. Například 10 000 položek mohou být vráceny jako více stránek, každý účtuje podle výpočtu pro danou stránku. Když vás provede součet na těchto stránkách, měli byste obdržet stejný počet jednotek ru budete byste si pro celý dotaz.  
 

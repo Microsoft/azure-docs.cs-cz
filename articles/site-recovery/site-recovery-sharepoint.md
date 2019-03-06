@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848472"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443483"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -29,7 +29,7 @@ Microsoft SharePoint ještě dnes, neposkytuje žádné možnosti zotavení po h
 
 Tento článek popisuje podrobně k ochraně aplikací SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčené postupy pro replikaci tři vrstvy aplikace služby SharePoint do Azure, jak zotavení po havárii a jak můžete převzetí služeb při selhání aplikace do Azure.
 
-Můžete se podívat níže uvedené video o obnovení vrstvy aplikace s více do Azure.
+Můžete se podívat níže uvedené video o obnovení vícevrstvých aplikací do Azure.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -67,7 +67,7 @@ Pro vytvoření tohoto článku, byly použity virtuální počítače VMware s 
 **Fyzický server** | Ano | Ano
 **Azure** | Není k dispozici | Ano
 
-### <a name="sharepoint-versions"></a>Verze služby SharePoint
+### <a name="sharepoint-versions"></a>SharePoint Versions
 Jsou podporovány následující verze serveru SharePoint.
 
 * SharePoint server 2013 Standard
@@ -111,7 +111,7 @@ U lokalit, směřujících do Internetu [vytvořit profil služby Traffic Manage
 
 | **kde** | **Zdroj** | **Cíl**|
 | --- | --- | --- |
-| Veřejná služba DNS | Veřejná služba DNS pro weby služby SharePoint <br/><br/> Příklad: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Public DNS | Veřejná služba DNS pro weby služby SharePoint <br/><br/> Příklad: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Veřejné IP adresy na farmě místní |
 
 

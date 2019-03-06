@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3eb68c4394afeb4719d92fb56d3ae9028d8566c9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456108"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451191"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -51,7 +51,7 @@ Klíčovou vlastností šablony Resource Manageru je jeho schopnost nainstalovat
 ## <a name="quick-trip-around-the-diagram"></a>Rychlé jízdy okolo diagramu
 
 Spouští se v horní části, při psaní kódu, kompilují a testují a potom vytvoření instalačního balíčku.
-Chocolatey může zpracovávat různé typy instalačních balíčků, jako je například MSI, MSU, ZIP. A máte plný výkon prostředí PowerShell pro případ Chocolateys nativní funkce nejsou zcela až vlastní instalace. Umístěte balíček do někde dostupný – úložiště balíčků. Tento příklad použití používá veřejné složky v účtu úložiště objektů blob v Azure, ale může být kdekoli. Chocolatey spolupracuje nativně servery NuGet a několik dalších pro správu metadata balíčků. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Tento příklad použití používá NuGet. Souboru Nuspec jsou metadata informace o balíčcích. Souboru Nuspec jsou "zkompilován" společnosti NuPkg a uloženy v NuGet server. Při konfiguraci požadavků balíčku podle názvu a odkazuje na NuGet server, získá balíček Chocolatey prostředku DSC (nyní ve virtuálním počítači) a nainstaluje za vás. Můžete také požádat o konkrétní verzi balíčku.
+Chocolatey může zpracovávat různé typy instalačních balíčků, jako je například MSI, MSU, ZIP. A máte plný výkon prostředí PowerShell pro případ Chocolateys nativní funkce nejsou zcela až vlastní instalace. Umístěte balíček do některé dostupný – místo úložiště balíčků. Tento příklad použití používá veřejné složky v účtu úložiště objektů blob v Azure, ale může být kdekoli. Chocolatey spolupracuje nativně servery NuGet a několik dalších pro správu metadata balíčků. [Tento článek](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) popisuje možnosti. Tento příklad použití používá NuGet. Souboru Nuspec jsou metadata informace o balíčcích. Souboru Nuspec jsou "zkompilován" společnosti NuPkg a uloženy v NuGet server. Při konfiguraci požadavků balíčku podle názvu a odkazuje na NuGet server, získá balíček Chocolatey prostředku DSC (nyní ve virtuálním počítači) a nainstaluje za vás. Můžete také požádat o konkrétní verzi balíčku.
 
 V levé dolní části obrázku je šablonu Azure Resource Manageru. V tomto příkladu využití zaregistruje rozšíření virtuálního počítače virtuální počítač s Azure Automation stavu konfigurace o přijetí změn serverem (to znamená, serveru vyžádané replikace) jako uzel. Konfigurace je uložena v tomto serveru.
 Ve skutečnosti, uloží se dvakrát: jednou jako prostý text a po kompilaci do souboru MOF (pro ty, které vědět o takové věci.) Na portálu je soubor MOF "konfigurace uzlu" (na rozdíl od jednoduše "konfigurace"). Je artefakt, který je spojen s uzlem, takže vědí, jeho konfigurace uzlu. Podrobnosti níže ukazují, jak přiřadit konfiguraci uzlu k uzlu.

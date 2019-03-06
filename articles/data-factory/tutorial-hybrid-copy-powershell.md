@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: ff1d873b44f91f64a114a6da01091bbd3aa01663
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424808"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451633"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat. 
@@ -112,15 +112,10 @@ V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner
 ### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
-Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi Azure PowerShellu. 
 
-1. Přejděte na stránku [Sady Azure SDK ke stažení](https://azure.microsoft.com/downloads/). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. V části **Nástroje příkazového řádku** > **PowerShell** vyberte **Instalace pro Windows**. 
-
-1. Pokud chcete nainstalovat Azure PowerShell, spusťte soubor MSI. 
-
-Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
+Pokud jej ve svém počítači ještě nemáte, nainstalujte nejnovější verzi Azure PowerShellu. Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 #### <a name="log-in-to-powershell"></a>Přihlášení do PowerShellu
 
@@ -131,13 +126,13 @@ Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure Po
 1. Spusťte následující příkaz a pak zadejte uživatelské jméno a heslo Azure, které používáte pro přihlášení k webu Azure Portal:
        
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
 
 1. Pokud máte několik předplatných Azure, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -151,7 +146,7 @@ Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure Po
 1. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz: 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
 
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$resourceGroupName` jinou hodnotu a spusťte tento příkaz znovu.
@@ -171,10 +166,10 @@ Podrobné pokyny najdete v tématu [Instalace a konfigurace prostředí Azure Po
     $location = "East US"
     ```  
 
-1. Vytvořte datovou továrnu spuštěním následující rutiny `Set-AzureRmDataFactoryV2`: 
+1. Vytvořte datovou továrnu spuštěním následující rutiny `Set-AzDataFactoryV2`: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 > [!NOTE]
@@ -201,7 +196,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 1. Vytvořte místní prostředí Integration Runtime. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ``` 
     Tady je ukázkový výstup:
 
@@ -217,7 +212,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 1. Pokud chcete načíst stav vytvořeného prostředí Integration Runtime, spusťte následující příkaz:
 
     ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     Tady je ukázkový výstup:
@@ -242,7 +237,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 1. Spuštěním následujícího příkazu načtěte *ověřovací klíče* pro registraci místního prostředí Integration Runtime ve službě Data Factory v cloudu. Pro registraci místního prostředí Integration Runtime, které nainstalujete na počítači v dalším kroku, zkopírujte jeden z klíčů (bez uvozovek). 
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+    Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
     
     Tady je ukázkový výstup:
@@ -345,10 +340,10 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
 
 1. V PowerShellu přejděte do složky *C:\ADFv2Tutorial*.
 
-1. Spuštěním následující rutiny `Set-AzureRmDataFactoryV2LinkedService` vytvořte propojenou službu AzureStorageLinkedService: 
+1. Spuštěním následující rutiny `Set-AzDataFactoryV2LinkedService` vytvořte propojenou službu AzureStorageLinkedService: 
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
    Tady je ukázkový výstup:
@@ -423,17 +418,17 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
     > - Než soubor uložíte, položky **\<servername>**, **\<databasename>**, **\<username>**, a **\<password>** nahraďte odpovídajícími hodnotami pro vaši instanci SQL Serveru.
     > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *mydomain\\\\myuser*. 
 
-1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential`.  
+1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     Toto šifrování zajišťuje šifrování přihlašovacích údajů pomocí rozhraní Data Protection API. Zašifrované přihlašovací údaje jsou uložené místně v uzlu místního prostředí Integration Runtime (místní počítač). Výstupní datovou část je možné přesměrovat do jiného souboru JSON (v tomto případě *encryptedLinkedService.json*), který obsahuje zašifrované přihlašovací údaje.
     
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 1. Spusťte následující příkaz, který vytvoří EncryptedSqlServerLinkedService:
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
    ```
 
 
@@ -475,10 +470,10 @@ V tomto kroku definujete datovou sadu, která představuje data v instanci datab
     }
     ```
 
-1. Datovou sadu SqlServerDataset vytvoříte spuštěním rutiny `Set-AzureRmDataFactoryV2Dataset`.
+1. Datovou sadu SqlServerDataset vytvoříte spuštěním rutiny `Set-AzDataFactoryV2Dataset`.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
     Tady je ukázkový výstup:
@@ -517,10 +512,10 @@ Propojená služba má informace o připojení, které datová továrna použív
     }
     ```
 
-1. Datovou sadu AzureBlobDataset vytvoříte spuštěním rutiny `Set-AzureRmDataFactoryV2Dataset`.
+1. Datovou sadu AzureBlobDataset vytvoříte spuštěním rutiny `Set-AzDataFactoryV2Dataset`.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
     Tady je ukázkový výstup:
@@ -572,10 +567,10 @@ V tomto kurzu pomocí aktivity kopírování vytvoříte kanál. Aktivita kopí
     }
     ```
 
-1. Kanál SQLServerToBlobPipeline vytvoříte spuštěním následující rutiny `Set-AzureRmDataFactoryV2Pipeline`.
+1. Kanál SQLServerToBlobPipeline vytvoříte spuštěním následující rutiny `Set-AzDataFactoryV2Pipeline`.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
     Tady je ukázkový výstup:
@@ -592,7 +587,7 @@ V tomto kurzu pomocí aktivity kopírování vytvoříte kanál. Aktivita kopí
 Zahajte spuštění pro kanál SQLServerToBlobPipeline a zaznamenejte ID spuštění kanálu pro budoucí monitorování.
 
 ```powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
 ```
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
@@ -601,7 +596,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
             Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"

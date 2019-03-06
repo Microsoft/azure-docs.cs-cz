@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 1807bda35f6bfcc9dbbb30f054cedb9454a88a7f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158566"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432137"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení Resource Manager
 > [!div class="op_single_selector"]
@@ -28,6 +28,8 @@ Tento článek vás provede kroky další tabulky ARP pro váš okruh ExpressRou
 > Účelem tohoto dokumentu je vám pomohou diagnostikovat a opravovat problémy jednoduché. Není určen jako náhrada za podporu Microsoftu. Je nutné otevřít lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud nemůžete vyřešit problém s využitím pokynů je popsáno níže.
 > 
 > 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Adresa tabulky Resolution Protocol (ARP) a protokolu ARP
 Protokol ARP (Address Resolution) je protokol vrstvy 2 definované v [RFC 826](https://tools.ietf.org/html/rfc826). Slouží k mapování sítě Ethernet (adresy MAC) s ip adresou.
@@ -69,10 +71,10 @@ Následující rutiny najdete protokolu ARP tabulky pro soukromý partnerský vz
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure private peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
         # ARP table for Azure private peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 Ukázkový výstup najdete níž pro jeden z cesty
 
@@ -90,10 +92,10 @@ Následující rutiny najdete protokolu ARP tabulky pro veřejný partnerský vz
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure public peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
         # ARP table for Azure public peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
 Ukázkový výstup najdete níž pro jeden z cesty
@@ -112,10 +114,10 @@ Následující rutiny najdete protokolu ARP tabulky pro partnerské vztahy Micro
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Microsoft peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
         # ARP table for Microsoft peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
 Ukázkový výstup najdete níž pro jeden z cesty
@@ -141,7 +143,7 @@ Základě tabulky ARP partnerského slouží k určení ověření vrstvy 2 konf
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Kdy tabulky protokolu ARP v místním nebo připojení zprostředkovatele na straně má problémy
-Pokud dojde k problémům v místním nebo poskytovatele připojení, které může vidět, že buď pouze jedna položka se zobrazí v tabulce ARP nebo adresa MAC v místním prostředí se zobrazí neúplné. Tím se zobrazí mapování mezi adresu MAC a IP adresu použitou na straně Microsoftu. 
+Pokud dojde k problémům v místním nebo poskytovatele připojení, které může vidět, že buď pouze jedna položka se zobrazí v základě tabulky ARP nebo adresu MAC na místě zobrazí neúplné. Tím se zobrazí mapování mezi adresu MAC a IP adresu použitou na straně Microsoftu. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

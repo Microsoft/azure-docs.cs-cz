@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: efaa9101fbe46e0db2f582fe5a208dd8b16f095f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003580"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442099"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 
@@ -208,7 +208,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>Přidání koncových bodů z jiného předplatného
 
-Traffic Manager můžete pracovat s koncovými body z různých předplatných. Je potřeba přepnout na předplatné s koncovým bodem, který chcete přidat k načtení potřebné vstup do Traffic Manageru. Potom potřebujete přepnout na předplatné s profilem Traffic Manageru a přidejte encpoint do ní. Následujícím příkladu ukazuje, jak to provést s použitím veřejné IP adresy.
+Traffic Manager můžete pracovat s koncovými body z různých předplatných. Je potřeba přepnout na předplatné s koncovým bodem, který chcete přidat k načtení potřebné vstup do Traffic Manageru. Pak musíte přejít na předplatné s profilem Traffic Manageru a k němu přidat koncový bod. Následujícím příkladu ukazuje, jak to provést s použitím veřejné IP adresy.
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

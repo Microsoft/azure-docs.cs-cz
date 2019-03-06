@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 2137a2e1d7cea9f2a2dbf565295323cb133513ee
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ae4e4487b3d9df4b2cf756174f0a56e721af91c4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315788"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406897"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -84,7 +84,7 @@ Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overvie
 
 Potřebujete listopadu 2016 (v2.3.0) nebo novější verze [prostředí Azure PowerShell](/powershell/azure/overview).
 
-Následující příklad PowerShell ukazuje, jak používat [Set-AzDiagnosticSetting](/powershell/module/az.insights/set-azdiagnosticsetting) povolit diagnostiku na skupinu zabezpečení sítě. Stejný postup funguje u všech podporovaných zdrojů – nastavit `$resourceId` k prostředku, které chcete povolit diagnostiku pro id prostředku.
+Následující příklad PowerShell ukazuje, jak používat [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) povolit diagnostiku na skupinu zabezpečení sítě. Stejný postup funguje u všech podporovaných zdrojů – nastavit `$resourceId` k prostředku, které chcete povolit diagnostiku pro id prostředku.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

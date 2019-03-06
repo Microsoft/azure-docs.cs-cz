@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338140"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442609"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -165,7 +165,7 @@ Ano, můžete přidat nové virtuální počítače do existující skupiny repl
 
 Pro replikaci VMware do Azure můžete upravit velikost disku. Pokud chcete přidat nové disky, které potřebujete přidat disk a znovu povolit ochranu virtuálního počítače.
 
-### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Můžu migrovat místní počítače do nového serveru Vcenter bez dopadu na probíhající replikaci?
+### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Můžu migrovat na místní počítače do nového serveru Vcenter bez dopadu na probíhající replikaci?
 Ne, Změna serveru Vcenter nebo migrace ovlivní probíhající replikaci. Budete muset nastavení Azure Site Recovery do nového systému Vcenter a povolíte replikaci pro počítače.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Můžete replikovat do mezipaměti nebo cílový účet úložiště, který má virtuální sítě (pomocí bran firewall Azure storage) nakonfigurovaný na něm?

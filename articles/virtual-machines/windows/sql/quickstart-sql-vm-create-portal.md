@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0a583a75b72286718b34b84e67ee5aff34726be0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 13049018042183a4960c81af65b35fcfa6d4c50d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818234"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447011"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -100,7 +100,7 @@ V okně **Nastavení SQL Serveru** nakonfigurujte následující možnosti.
 
 1. V rozevíracím seznamu **Připojení SQL** vyberte **Veřejné (internet)**. Povolíte tak připojení SQL Serveru přes internet.
 
-1. Hodnotu v poli **Port** změňte na **1401**, abyste se vyhnuli použití známého názvu portu ve veřejném scénáři.
+1. Změnit **Port** k **1401** abyste se vyhnuli použití známého portu název v veřejného scénáře.
 
 1. V části **Ověřování SQL** klikněte na **Povolit**. Jako přihlašovací údaje pro SQL je nastavené stejné uživatelské jméno a heslo, které jste nakonfigurovali pro virtuální počítač.
 

@@ -18,12 +18,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172161"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446635"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
 
@@ -105,7 +105,7 @@ Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakon
 
 Verze služby Azure AD Connect 1.1.873.0 nebo novější Díky zálohování služby Azure AD s důvěrou nastavení pokaždé, když se aktualizace provedené v nastavení vztahu důvěryhodnosti Azure AD. Nastavení vztahu důvěryhodnosti Azure AD jsou zálohované zde **%ProgramData%\AADConnect\ADFS**. Název souboru je v následujícím formátu AadTrust -&lt;datum&gt;-&lt;čas&gt;.txt, například - AadTrust-20180710-150216.txt
 
-![Sanpshot příkladu zálohování vztah důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
+![Snímek obrazovky příklad zálohování vztah důvěryhodnosti Azure AD](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Můžete obnovit pomocí následujícího postupu navrhované pravidla transformace při vystavení
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 4911a872a4b5479abe84c2e06573256092185cf2
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669697"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450938"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Připojení k rozhraní API pro počítačové zpracování obrazu s využitím připojených služeb v sadě Visual Studio
 
@@ -92,7 +92,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klikněte pravým tlačítkem na jeden z obrázků, uložte ho na místní pevný disk a potom v Průzkumníku řešení klikněte pravým tlačítkem na složku images a výběrem možnosti **Přidat** > **Existující položka** ho přidejte do projektu. V Průzkumníku řešení by měl projekt vypadat takto: 
+1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klikněte pravým tlačítkem na některou k imagí, uložit na místní pevný disk a potom v okně Průzkumník řešení, klikněte pravým tlačítkem na složku Obrázky a zvolte **přidat** > **existující položku** ho přidat do projektu. V Průzkumníku řešení by měl projekt vypadat takto: 
   
    ![Snímek obrazovky zobrazení Průzkumníka řešení se souborem bitové kopie vybrané](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 

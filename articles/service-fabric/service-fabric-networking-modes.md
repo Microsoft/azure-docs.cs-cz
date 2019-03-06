@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: cb918516a9180b4bffdc72c688df5d830e83833a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cc4860c43b6d1a1f5b89060a3d3045df804152c0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959659"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404412"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -55,15 +55,6 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                             "name": "IPProviderEnabled",
                             "value": "true"
                       }
-                    ]
-                },
-                {
-                    "name":  "Trace/Etw", 
-                    "parameters": [
-                    {
-                            "name": "Level",
-                            "value": "5"
-                    }
                     ]
                 },
                 {

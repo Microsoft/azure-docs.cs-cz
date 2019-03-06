@@ -1,7 +1,7 @@
 ---
 title: Časté otázky – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Seznam currated nejčastější dotazy týkající se služba QnA Maker vám pomůže přijmout službu rychleji a s lepší výsledky.
+description: Vybraný seznam nejčastějších dotazů týkající se služba QnA Maker vám pomůže přijmout službu rychleji a s lepší výsledky.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a5b27df32193e2b2e51b41ef7c594a4b8dcacef0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5b4c9e24bdcb6aaf4efde24d747e77d6014b2539
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341965"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439464"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>Nejčastější dotazy pro QnA Maker
 
-Seznam currated nejčastější dotazy týkající se služba QnA Maker vám pomůže přijmout službu rychleji a s lepší výsledky.
+Vybraný seznam nejčastějších dotazů týkající se služba QnA Maker vám pomůže přijmout službu rychleji a s lepší výsledky.
 
 ## <a name="manage-the-knowledge-base"></a>Správa znalostní báze
 

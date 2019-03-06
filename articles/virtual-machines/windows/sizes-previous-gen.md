@@ -1,6 +1,6 @@
 ---
 title: Velikosti virtuálních počítačů Azure Windows – předchozí generace | Dokumentace Microsoftu
-description: Zobrazí seznam předchozí generace velikostí, které jsou k dispozici pro Windows virtual machines v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+description: Zobrazí seznam předchozí generace velikostí, které jsou k dispozici pro Windows virtual machines v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: b4b4c3fb1b0045edf59f1c29769659d7000278d4
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: c39a744a5ef57efa6486460ab84998d6600e7bc5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673371"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405594"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Velikosti virtuálních počítačů předchozí generace
 

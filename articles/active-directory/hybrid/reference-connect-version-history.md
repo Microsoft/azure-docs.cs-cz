@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5dc106d3a524f9bdd6f2d989ef1189032cd60f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195519"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455067"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -154,7 +154,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 - Opravili jsme několik problémů usnadnění pro Editor pravidel synchronizace a synchronizace Service Manager  
 - Oprava chyby, kde Azure AD Connect nemůže získat informace o nastavení registru
 - Je opravená chyba, která vytvoří problémy, když uživatel přejde za přechod dopředu nebo zpět v Průvodci
-- Je opravená chyba, aby se zabránilo chybu z důvodu nesprávné více vláken zpracování v Průvodci
+- Je opravená chyba, aby se zabránilo chybu z důvodu nesprávné více vláken, zpracování v Průvodci
 - Při filtrování skupin synchronizace stránky zaznamená chybu LDAP při překladu skupiny zabezpečení, Azure AD Connect nyní vrátí výjimka s plnou věrností.  Původní příčinu výjimka odkazu je stále neznámý a bude ji adresovat podle různých chyb.
 -  Je opravená chyba, kdy oprávnění pro klíče STK a NGC (ms-DS-KeyCredentialLink atribut na objekty uživatele nebo zařízení pro WHfB) nebyly nastaveny správně.     
 - Oprava chyby, kde 'Set-ADSyncRestrictedPermissions' nebyla volána správně
@@ -833,7 +833,7 @@ Vydáno: Březen 2017
 Synchronizace služby Azure AD Connect
 * Opravili jsme chybu, která způsobí, že průvodce Azure AD Connect selhat, pokud zobrazovaný název konektor služby Azure AD neobsahuje počáteční doméně onmicrosoft.com přiřazené k tenantovi Azure AD.
 * Opravili jsme chybu, která způsobí, že průvodce Azure AD Connect k selhání při navazování připojení ke službě SQL database, pokud heslo účtu synchronizační služby obsahuje speciální znaky, třeba apostrof, dvojtečku a místo.
-* Opravili jsme problém, který způsobuje chybu "dimage má anchor, který se liší od obrázku" na serveru služby Azure AD Connect v pracovním režimu, poté, co jste dočasně vyloučili místní AD objektu synchronizaci a pak ho znovu zahrnuté pro synchronizaci.
+* Opravili jsme problém, který způsobuje chybu "bitová kopie je kotva, která se liší od obrázku" na serveru služby Azure AD Connect v pracovním režimu, poté, co jste dočasně vyloučili místní AD objektu synchronizaci a pak ho znovu zahrnuté pro synchronizaci.
 * Opravili jsme problém, který způsobuje chybu "nalézt rozlišující název objektu je fiktivní" na serveru služby Azure AD Connect v pracovním režimu, poté, co jste dočasně vyloučili místní AD objektu synchronizaci a pak ho znovu zahrnuté pro synchronizaci.
 
 Správa služby AD FS

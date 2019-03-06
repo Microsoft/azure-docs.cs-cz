@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ce65f71349ae6d7e86ebae1ee2067653a63b89b4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e464787919577b89b1cfec11e579cb17c18e2878
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161054"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404212"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -40,7 +40,7 @@ Nejsou podporovány v následujících tocích:
 1.  Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
 2.  Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
 3.  Klikněte na tlačítko **toky uživatelů**a vyberte **nový tok uživatele**.
-4.  Klikněte na tlačítko **všechny** kartě a vyberte **vlastníka prostředku**.
+4.  Klikněte na tlačítko **všechny** kartě a vyberte **Přihlaste se pomocí ROPC**.
 5.  Zadejte název pro tok uživatele, jako třeba *ROPC_Auth*.
 6.  V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více**.
 7.  Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako je zobrazované jméno, e-mailovou adresu a zprostředkovatele Identity.
@@ -69,7 +69,7 @@ Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje apli
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Value |
+| Klíč | Hodnota |
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
 | heslo | Passxword1 |
@@ -83,7 +83,7 @@ Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje apli
 Skutečné požadavek POST vypadá takto:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -109,7 +109,7 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Value |
+| Klíč | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

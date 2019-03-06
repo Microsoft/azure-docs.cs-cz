@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 59524a9a08b16100598b7713cb0507646245d90b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163156"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445819"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -33,7 +33,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation** element conatains následující atributy:
+**ClaimsTransformation** prvek obsahuje následující atributy:
 
 | Atribut |Požadováno | Popis |
 | --------- |-------- | ----------- |
@@ -96,7 +96,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 | --------- | ----------- |----------- |
 | ID | Ano | Identifikátor, který je odkaz na parametr metody transformace deklarací identity. Každá metoda transformace deklarací identity má své vlastní hodnoty. V tabulce transformace deklarací identity pro úplný seznam dostupných hodnot. |
 | DataType | Ano | Typ dat parametr, jako je řetězec, logická hodnota, Int nebo data a času podle výčtu datového typu ve schématu XML vlastní zásady. Tento typ se používá k provedení aritmetické operace správně. Každá transformace deklarací identity má své vlastní hodnoty. Zobrazit [odkaz na transformaci deklarací](#Claims-transformations-reference) úplný seznam dostupných hodnot. |
-| Value | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
+| Hodnota | Ano | Hodnota, která je předána verbatim transformace. Některé hodnoty libovolného, některé z nich můžete vybrat z metody transformace deklarací identity. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

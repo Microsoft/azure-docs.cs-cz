@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 32fc3f1c93261f6fb19c084f51dea4942310ac47
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664142"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434789"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,6 +25,8 @@ ms.locfileid: "55664142"
 > * [Aktuální verze](connector-azure-table-storage.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat do a z Azure Table storage. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -114,15 +116,15 @@ Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům v
 
 > [!TIP]
 > Vygenerovat sdílený přístupový podpis služby pro účet úložiště, spusťte následující příkazy Powershellu. Nahraďte zástupné symboly a udělit příslušná oprávnění.
-> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Použít sdílený přístupový podpis ověřování, jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na **AzureTableStorage**. |Ano |
-| sasUri | Zadejte identifikátor URI SAS URI sdíleného přístupového podpisu do tabulky. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Můžete také umístit SAS token ve službě Azure Key Vault do smyčky automatické leverate a odebrat část tokenu. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
+| sasUri | Zadejte identifikátor URI SAS URI sdíleného přístupového podpisu do tabulky. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. SAS token můžete také vložit do Azure Key Vault a využívat automatické rotace a odebrat část tokenu. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
@@ -331,7 +333,7 @@ Při přesunu dat do a z Azure Table, následující [mapování definovaná v t
 | Azure typ pro tabulková data | Data Factory dočasné datový typ | Podrobnosti |
 |:--- |:--- |:--- |
 | Edm.Binary |Byte |Pole bajtů až 64 KB. |
-| Edm.Boolean |BOOL |Logická hodnota. |
+| Edm.Boolean |bool |Logická hodnota. |
 | Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). V podporovaném rozsahu datum a čas zahájení půlnocí, 1, 1601. ledna (C.E.), UTC. Rozsah končí 31. prosince 9999. |
 | Edm.Double |double |Bod hodnotu s plovoucí desetinnou čárkou 64bitové. |
 | Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |

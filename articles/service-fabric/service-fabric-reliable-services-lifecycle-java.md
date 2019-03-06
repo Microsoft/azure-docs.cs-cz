@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 3254b29ed380b526be6d5fe5f671adeccbd8ea46
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4d97803117a875514fb36f770d551204ece0e55c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54196701"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448945"
 ---
 # <a name="reliable-services-lifecycle"></a>Životní cyklus Reliable Services
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Stejně jako bezstavové služby události životního cyklu během vypínání 
 
 1. Tyto události se generují paralelně:
     - Všechny otevřené naslouchací procesy jsou uzavřeny. `CommunicationListener.closeAsync()` je volána na každý naslouchací proces.
-    - Token zrušení, který byl předán `runAsync()` se zrušila. Token zrušení volání `isCancelled()` vrátí metoda `true`a pokud je volána, tokenu `throwIfCancellationRequested()` vyvolá metoda výjimku `OperationCanceledException`.
+    - Token zrušení, který byl předán `runAsync()` se zruší. Token zrušení volání `isCancelled()` vrátí metoda `true`a pokud je volána, tokenu `throwIfCancellationRequested()` vyvolá metoda výjimku `OperationCanceledException`.
 2. Po `closeAsync()` dokončen každý naslouchací proces a `runAsync()` také dokončení služby `StatefulServiceBase.onChangeRoleAsync()` je volána. Toto volání není ve službě běžně přepsána.
 
    > [!NOTE]  

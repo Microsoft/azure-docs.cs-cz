@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 0246b19c0155fe2707ac780c7acb61be424d2caf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008927"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450987"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Příručka pro vývojáře Azure IoT Hub
 
@@ -55,7 +55,7 @@ Tato příručka pro vývojáře IoT Hub obsahuje následující články:
 
 * [Řízení přístupu ke službě IoT Hub](iot-hub-devguide-security.md) popisuje model zabezpečení umožňuje udělit přístup k funkcím služby IoT Hub pro obě zařízení a cloudové komponenty. Tento článek obsahuje informace o používání tokeny a podrobnosti, které můžete udělit oprávnění a certifikáty X.509.
 
-* [Použití dvojčat zařízení k synchronizaci stavu a konfigurace](iot-hub-devguide-device-twins.md) popisuje *dvojče zařízení* koncept. Tento článek také popisuje funkce dvojčata zařízení zpřístupnit, například synchronizace zařízení s jeho dvojče zařízení. Tento článek obsahuje informace o data uložená ve dvojčeti zařízení.
+* [Použití dvojčat zařízení k synchronizaci stavu a konfigurace](iot-hub-devguide-device-twins.md) popisuje *dvojče zařízení* koncept. Tento článek také popisuje funkce zařízení, které dvojčat zpřístupnit, například synchronizace zařízení s jeho dvojče zařízení. Tento článek obsahuje informace o data uložená ve dvojčeti zařízení.
 
 * [Vyvolání přímé metody v zařízení](iot-hub-devguide-direct-methods.md) popisuje životní cyklus přímé metody. Tento článek popisuje, jak vyvolávat metody v zařízení v back endové aplikace a zpracovávají přímé metody v zařízení.
 

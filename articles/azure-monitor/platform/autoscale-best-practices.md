@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 85a326c97ecf8476bdd802a718e082d0e5c7a89c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467349"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454098"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -38,7 +38,7 @@ Pokud máte nastavení, které má minimálně = 2, maximální = 2 a aktuální
 Pokud je ručně aktualizovat na hodnotu nad nebo pod maximální počet instancí, modul automatického škálování se automaticky škáluje zpět do (Pokud se níže) minimální nebo maximální počet (Pokud je vyšší než). Například nastavte rozsah dlouhý 3 až 6. Pokud máte jednu běžící instanci, modul automatického škálování se škáluje na tři instance při příštím spuštění. Podobně pokud ručně nastavíte škálování na osmi instancí, při dalším spuštění automatického škálování se bude škálovat ji zpět do šesti instance při příštím spuštění.  Ruční škálování je dočasný, není-li obnovit také pravidla automatického škálování.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Vždy používejte kombinaci pravidlo pro horizontální navýšení kapacity a škálování na méně instancí, který provádí zvýšení a snížení
-Pokud používáte pouze jednu část kombinace, automatické škálování pouze provést akci v jednom směru (scale out nebo in), dokud nedosáhne maximální nebo minimální OST počtů definovány v profilu. Tento způsob není ideální, ideálně chcete vertikálně navýšit kapacitu v časech vysokého využití, aby se zajistila dostupnost prostředku. Podobně čas od času nízké využití chcete, aby váš prostředek můžete vertikálně snížit kapacitu, takže byste mohli realizovat úspory nákladů.
+Pokud používáte pouze jednu část kombinace, automatické škálování pouze provést akci v jednom směru (scale out nebo in), dokud nedosáhne maximální nebo minimální instance počtů definovány v profilu. Tento způsob není ideální, ideálně chcete vertikálně navýšit kapacitu v časech vysokého využití, aby se zajistila dostupnost prostředku. Podobně čas od času nízké využití chcete, aby váš prostředek můžete vertikálně snížit kapacitu, takže byste mohli realizovat úspory nákladů.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Zvolte odpovídající Statistika metriky diagnostiky
 Diagnostických metrik, můžete vybrat mezi *průměrné*, *minimální*, *maximální* a *celkový* jako ke škálování podle metriky. Je nejběžnější statistiky *průměrné*.

@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: f81a781bf3d1232c0af519b81f38c1d27fa6b2df
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818387"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407999"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Kurz: Nabízí vysoce dostupné databáze SQL
 
@@ -44,7 +44,7 @@ Před zahájením těchto kroků v tomto kurzu, ujistěte se, že [poskytovatele
 > Všechny tyto funkce jsou požadovány pro šablonu pro rychlý start Azure Stack se použije.
 
 - [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) image z marketplace.
-- SQL Server 2016 SP1 nebo SP2 (Enterprise, Standard nebo vývojář) na image serveru Windows Server 2016. Tento kurz používá [SQL Server 2016 SP2 Enterprise na Windows serveru 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.sqlserver2016sp2enterprisewindowsserver2016) image z marketplace.
+- SQL Server 2016 SP1 nebo SP2 (Enterprise, Standard nebo vývojář) na image serveru Windows Server 2016. Tento kurz používá [SQL Server 2016 SP2 Enterprise na Windows serveru 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) image z marketplace.
 - [Rozšíření systému SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) verze 1.2.30 nebo vyšší. Rozšíření SQL IaaS nainstaluje potřebné komponenty, které jsou vyžadované položky Marketplace SQL serveru pro všechny verze Windows. Umožňuje nastavení specifická pro SQL nakonfigurovat na virtuálních počítačích SQL. Pokud rozšíření není nainstalována na místní webu Marketplace, zřizování serveru SQL se nezdaří.
 - [Rozšíření vlastních skriptů pro Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) verze 1.9.1 nebo vyšší. Rozšíření vlastních skriptů je nástroj, který je možné automaticky spustit po nasazení úkolů vlastního nastavení virtuálních počítačů.
 - [Prostředí PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) verze 2.76.0.0 nebo vyšší. DSC je platforma pro správu v prostředí Windows PowerShell, který umožňuje nasazení a Správa konfigurační data pro softwarové služby a správu prostředí, ve které tyto služby jsou spuštěny.

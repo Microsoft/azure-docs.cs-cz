@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652598"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433446"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -167,12 +167,12 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
 
    | Adresa URL (\* = zástupných znaků) | Odchozí porty TCP | Využití |
    | ----- | ----- | ----- |
-   | MCR.microsoft.com  | 443 | Registr kontejneru Microsoft |
-   | Global.Azure. zařízení provisioning.net  | 443 | DPS přístup (nepovinné) |
-   | \*. azurecr.io | 443 | Registry kontejnerů osobní a 3. stran |
+   | mcr.microsoft.com  | 443 | Registr kontejneru Microsoft |
+   | global.azure-devices-provisioning.net  | 443 | DPS přístup (nepovinné) |
+   | \*.azurecr.io | 443 | Registry kontejnerů osobní a 3. stran |
    | \*.blob.core.windows.net | 443 | Časový limit stažení bitové kopie rozdíly | 
-   | \*.Azure devices.net | 5671, 8883, 443 | Přístup k službě IoT Hub |
-   | \*. docker.io  | 443 | Přístup ke docker (volitelné) |
+   | \*.azure-devices.net | 5671, 8883, 443 | Přístup k službě IoT Hub |
+   | \*.docker.io  | 443 | Přístup ke docker (volitelné) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurace komunikace prostřednictvím proxy serveru
 
@@ -186,7 +186,7 @@ Pokud vaše zařízení se chystáte nasadit v síti, která používá proxy se
 
 ### <a name="set-up-logs-and-diagnostics"></a>Nastavení diagnostiky a protokolování
 
-Démon IoT Edge v Linuxu, používá journald jako výchozí protokolování ovladač. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-WinEvent` do protokolů dotazu z démona. Moduly IoT Edge použít ovladač JSON pro protokolování, což je výchozí Dockeru.  
+Démon IoT Edge v Linuxu, použije deníky jako výchozí protokolování ovladače. Můžete použít nástroj příkazového řádku `journalctl` k dotazování démona protokoly. Démon IoT Edge na Windows, používá diagnostiky prostředí PowerShell. Použití `Get-WinEvent` do protokolů dotazu z démona. Moduly IoT Edge použít ovladač JSON pro protokolování, což je výchozí Dockeru.  
 
 Při testování nasazení IoT Edge, obvykle možné získat přístup zařízení k načtení protokolů a řešení potíží. V případě nasazení nemusí mít tuto možnost. Zvažte, jak budete shromažďovat informace o zařízeních v produkčním prostředí. Jednou z možností je použít modul protokolování, který shromažďuje informace z jiných modulů a odešle ji do cloudu. Jedním z příkladů modulu protokolování je [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics), nebo můžete navrhnout vlastní. 
 
@@ -194,7 +194,7 @@ Pokud máte obavy o protokolech příliš velká na zařízení prostředků ome
 
 * Konkrétně můžete omezit velikost všech docker logfiles v samotné démona Dockeru. Pro Linux, konfigurace démona v `/etc/docker/daemon.json`. Pro Windows `C:\ProgramData\docker\confige\daemon.json`. 
 * Pokud chcete upravit velikost souboru protokolu pro každý kontejner, provést v CreateOptions field každého modulu. 
-* Konfigurace Dockeru k automatické správě protokoly podle journald nastavení jako výchozí protokolování ovladače pro Docker. 
+* Konfigurace Dockeru k automatické správě protokoly nastavením deníky jako výchozí protokolování ovladač pro Docker. 
 * Pravidelně odstraňuje staré protokoly ze zařízení nainstalováním nástroje logrotate pro Docker. Použijte následující specifikace souboru: 
 
    ```

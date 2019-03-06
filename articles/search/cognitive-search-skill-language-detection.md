@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 51c032aeca3717b126192efc9c83a9de6483cebd
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 605f4c639cfc8c0f9732f7347532e1bd7edc055f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992647"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404650"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Kognitivní dovednosti detekce jazyka
 
-Pro až [120 jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support), **rozpoznávání jazyka** dovednosti jazyk vstupního textu zjišťuje a vykazuje jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka je spárovaná s skóre označuje sílu analýzy. Tato dovednosti pomocí strojového učení modelů poskytované [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službě Cognitive Services.
+**Rozpoznávání jazyka** dovednosti jazyk vstupního textu zjišťuje a vykazuje jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka je spárovaná s skóre označuje sílu analýzy. Tato dovednosti pomocí strojového učení modelů poskytované [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) ve službě Cognitive Services.
 
 Tato funkce je obzvláště užitečná při budete muset zadat jazyk textu jako vstup pro další dovednosti (například [analýzu subjektivního hodnocení dovednosti](cognitive-search-skill-sentiment.md) nebo [dovedností rozdělit textové](cognitive-search-skill-textsplit.md)).
+
+Rozpoznávání jazyka využívá Bingu knihovny zpracování přirozeného jazyka, který překračuje počet z [podporované jazyky a oblasti](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) uvedené pro analýzu textu. Přesný seznam jazyků není publikována, ale zahrnuje všechny jazyky běžně používaný plus varianty, dialekty a některé jazyky místní a jazykové verze. Pokud máte obsah vyjádřen v méně často používané jazyce, je možné [zkuste rozhraní API pro detekci jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) zobrazíte, pokud vrací kód. Odpověď pro jazyky, které nelze zjistit `unknown`.
 
 > [!NOTE]
 > Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.

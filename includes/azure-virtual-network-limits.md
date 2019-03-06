@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d43424e1377f7fa9cb8b272cc4ffbf3e5323f2ba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55905120"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457784"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -23,7 +23,7 @@ ms.locfileid: "55905120"
 | Místní síťové lokality |20 |kontaktovat podporu |
 | Servery DNS na virtuální síť |20 |20 |
 | Privátní IP adresy na virtuální síť |4 096 |4 096 |
-| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |500 000 |
+| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 tisíc až 1 000 kB pro dva nebo více síťových adaptérů |500 tisíc až 1 000 kB pro dva nebo více síťových adaptérů |
 | Skupiny zabezpečení sítě (NSG) |100 |200 |
 | Počet pravidel NSG na skupinu NSG |200 |1000 |
 | Směrovací tabulky definované uživatelem |100 |200 |

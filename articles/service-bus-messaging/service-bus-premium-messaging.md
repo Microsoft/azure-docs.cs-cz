@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3c5666922c89819d9959af5cf77a640efb023ad0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855291"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455509"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -54,6 +54,21 @@ V Zasílání zpráv na úrovni Premium se dělené fronty a témata nepodporuj�
 Protože zasílání zpráv úrovně Premium běží v kompletně izolovaném prostředí, nejsou expresní entity v oborech názvů úrovně Premium podporované. Další informace o expresní funkci najdete v popisu vlastnosti [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress).
 
 Pokud je váš kód spuštěný v rámci zasílání zpráv úrovně Standard a chcete přejít na úroveň Premium, ověřte, že vlastnost [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) je nastavena na hodnotu **false** (výchozí hodnota).
+
+## <a name="premium-messaging-resource-usage"></a>Využití prostředků zasílání zpráv úrovně Premium
+Obecně platí všechny operace s entitou může způsobit využití procesoru a paměti. Tady jsou některé z těchto operací: 
+
+- Operace správy, jako je například CRUD (vytvoření, načtení, Update a Delete) operace fronty, témata a odběry.
+- Operace modulu runtime (odesílání a příjem zpráv)
+- Monitorování operací a výstrahy
+
+Další využití procesoru a paměti již není kromě ale ceny. Pro úroveň zasílání zpráv úrovně Premium je jeden cena za jednotku zprávy.
+
+Využití procesoru a paměti jsou sledovány a zobrazí vám z následujících důvodů: 
+
+- Poskytuje přehled o interní informace o systému
+- Seznamte se s kapacity prostředků zakoupili.
+- Který plánování kapacity vám pomůže rozhodnout na škálování směrem nahoru nebo dolů.
 
 ## <a name="get-started-with-premium-messaging"></a>Začínáme se zasíláním zpráv na úrovni Premium
 

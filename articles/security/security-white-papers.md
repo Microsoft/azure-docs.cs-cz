@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 01688c120a8302da4903302ab8bcd2d1fa4ab351
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3fb6e42e55119684ace8547a55297d38dbb9a26e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113409"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402372"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
@@ -42,4 +42,4 @@ ms.locfileid: "56113409"
 |[Přehled o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Nabídky dodržování předpisů Azure, včetně dosažené certifikace, osvědčení, ověření, autorizace a hodnocení vytvářených nezávislé auditování podniky třetích stran, stejně jako smluvní změny, popisuje tento dokument ke stažení vlastní posouzení a pokyny k dokumentům od společnosti Microsoft. <br/> Každá nabídka popis stavy, které určených pro zákazníky služby Azure jsou v oboru pro posouzení a poskytuje odkazy na materiály ke stažení zákazníkům povinností dodržování předpisů.|
 |[Správa zabezpečení v Azure](azure-security-management.md)|Popisuje problémy v vzdáleného přístupu k prostředkům Azure. Povaha správu vzdáleného přístupu požadavky na cloudu a tedy zabezpečení je prvořadá. Obsahuje pokyny pro obecné zabezpečení, konfiguraci klienta, osvědčené postupy a provozní zásad a postupů. |
 |[Zabezpečení a Azure AD data](https://aka.ms/aaddatawhitepaper) | Dokument ke stáhnutí vysvětluje různých komponent nástroje Azure Active Directory a jejich interakce mezi sebou. Poskytuje přehled, jak chránit různé součásti, zabezpečení, šifrování nebo hodnoty hash svá data na cestě (například přes Internet) a tom, jak je chráněný v klidovém stavu. Vysvětluje různých datacentrech Azure AD a jejich interakce s místními adresáři, jakož i toků do a z Azure AD. A konečně popisuje provozní postupy používané technický tým služby Azure AD ke správě a zabezpečení služby.|
-
+|[Přehled ověřování bez hesla](https://aka.ms/pwdless-whitepaper)|Tento dokument je přehled o klíčových výhod bez hesla ověřování pomocí Windows Hello pro firmy, FIDO2 zabezpečení klíčů a aplikaci Microsoft Authenticator. Doporučuje se pro odborníky v oblasti zabezpečení a CISOs, kteří mají zájem o vysvětlení, jak může Microsoft přispět nad rámec hesla a přihlašovací údaje pro ověření další generaci nasazení.|

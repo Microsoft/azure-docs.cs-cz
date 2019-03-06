@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 564cfe0bb0b95d12d91b7d8d4e3f1f0549ec73e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209723"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451752"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidání nebo odebrání členů skupiny automaticky
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato funkce vyžaduje, abyste jako globální správce tenanta měli jednu licenci Azure AD Premium. Pokud ji nemáte, v Azure AD vyberte **Licence** > **Produkty** > **Vyzkoušet / koupit**.
+Tato funkce vyžaduje jedna licence Azure AD Premium můžete jako globální správce tenanta. Pokud ji nemáte, v Azure AD vyberte **Licence** > **Produkty** > **Vyzkoušet / koupit**.
 
 Uživatelům, kteří mají být členy dynamických skupin, licence přiřazovat nemusíte. V tenantovi potřebujete pouze minimální počet dostupných licencí Azure AD Premium P1 pro pokrytí všech takových uživatelů. 
 
@@ -44,7 +44,7 @@ Uživatelům, kteří mají být členy dynamických skupin, licence přiřazova
 
 Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z jedné partnerské společnosti. Potřebují zvláštní licencování, takže je efektivnější pro tento účel vytvořit skupinu.
 
-1. Přihlaste se k webu Azure Portal (https://portal.azure.com)) pomocí účtu, který má k tenantovi oprávnění globálního správce.
+1. Přihlaste se k webu Azure portal (https://portal.azure.com) pomocí účtu, který má oprávnění globálního správce pro vašeho tenanta.
 2. Vyberte **Azure Active Directory** > **Skupiny** > **Nová skupina**.
   ![výběr příkazu Nová skupina](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:

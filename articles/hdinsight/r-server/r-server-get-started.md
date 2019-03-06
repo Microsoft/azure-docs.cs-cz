@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dce345c39918e7471531710051797c848a3c7cde
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968804"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444068"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
@@ -88,7 +88,7 @@ Z portálu:
     ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
    > [!IMPORTANT]  
-   > Bez ohledu na použitou metodu bude při prvním přihlášení potřeba dvojí ověření.  Po zobrazení první výzvy k ověření zadejte *ID uživatele* a *heslo* správce clusteru. Po zobrazení druhé výzvy k ověření zadejte *ID uživatele* a *heslo* SSH. Při dalším přihlašování už budete potřebovat jenom přihlašovací údaje SSH.
+   > Bez ohledu na použitou metodu bude při prvním přihlášení potřeba dvojí ověření.  Po zobrazení první výzvy k ověření zadejte *ID uživatele* a *heslo* správce clusteru. Po zobrazení druhé výzvy k ověření zadejte *ID uživatele* a *heslo* SSH. Následující protokol – budete potřebovat jenom přihlašovací údaje SSH.
 
 Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím snímku obrazovky:
 

@@ -4,57 +4,47 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f56d53d7-5a08-490a-bfb9-78fefc2751ec
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 03/01/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3166a4e19bc137d57b97dbb516e7037228e1c020
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f6c2fb58bcd3ba1de636dd258f8b8f74beb2b1d4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188813"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Kurz: Integrace Azure Active Directory s N2F - sestavy výdajů
 
 V tomto kurzu se dozvíte, jak integrovat N2F - sestavy výdajů se službou Azure Active Directory (Azure AD).
-
 Integrace N2F - vyúčtování s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k N2F - sestavy výdajů.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k N2F - vyúčtování (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup k N2F - sestavy výdajů.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k N2F - vyúčtování (Single Sign-On) pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s N2F - vyúčtování, potřebujete následující položky:
 
-- Předplatné Azure AD
-- N2F - vyúčtování jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* N2F - vyúčtování jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-1. Přidání N2F - vyúčtování z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+* Sestavy výdajů N2F - podporuje **SP** a **IDP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-n2f---expense-reports-from-the-gallery"></a>Přidání N2F - vyúčtování z Galerie
 
@@ -62,133 +52,160 @@ Konfigurace integrace N2F - vyúčtování do služby Azure AD, budete muset př
 
 **Chcete-li přidat N2F - vyúčtování z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **N2F - vyúčtování**vyberte **N2F - vyúčtování** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![N2F - sestavy výdajů v seznamu výsledků](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_addfromgallery.png)
+     ![N2F - sestavy výdajů v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s N2F - vyúčtování podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co protějšek uživatel v N2F – vyúčtování je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v N2F - výdajů sestavy musí být vytvořeno.
+V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s N2F - vyúčtování podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování k práci, vztah odkazu mezi uživatele služby Azure AD a související uživatelské v N2F - sestavy výdajů je potřeba navázat.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s N2F - sestavy výdajů, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **Vytvoření N2F – vyúčtování testovací uživatele** – aby protějšek Britta Simon v N2F - sestavy výdajů připojený k Azure AD reprezentace uživatele.
+2. **[Konfigurace N2F – Single Sign-On sestavy výdajů](#configure-n2f---expense-reports-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+5. **[Vytvoření N2F – vyúčtování testovací uživatele](#create-n2f---expense-reports-test-user)**  – aby protějšek Britta Simon v N2F - sestavy výdajů připojený k Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich N2F – aplikace sestavy výdajů.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s N2F - vyúčtování, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s N2F - vyúčtování, proveďte následující kroky:
 
-1. Na webu Azure Portal na **N2F - vyúčtování** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **N2F - vyúčtování** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Jednotné přihlašování – dialogové okno](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_samlbase.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Na **domény a adresy URL sestavy výdajů N2F -** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, uživatel nebude muset provést všechny kroky, protože aplikace je už předem integrované se službou Azure.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![N2F - vyúčtování domény a adresy URL jednotného přihlašování – informace](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_url1.png)
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, uživatel nebude muset provést všechny kroky, protože aplikace je už předem integrované se službou Azure.
 
-    ![N2F - vyúčtování domény a adresy URL jednotného přihlašování – informace](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_url2.png)
+    ![N2F - vyúčtování domény a adresy URL jednotného přihlašování – informace](common/preintegrated.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://www.n2f.com/app/`
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+    ![N2F - vyúčtování domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    ![Odkaz ke stažení certifikátu](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_certificate.png)
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://www.n2f.com/app/`
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/n2f-expensereports-tutorial/tutorial_general_400.png)
+    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-7. Na **N2F - sestavy výdajů konfigurace** klikněte na tlačítko **konfigurace N2F - vyúčtování** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
+7. Na **nastavení myPolicies** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_configure.png)
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-8. V okně jiné webové prohlížeče Přihlaste se k vaší N2F - webu společnosti sestavy výdajů jako správce.
+    a. Přihlašovací adresa URL
 
-9. Klikněte na **nastavení** a pak vyberte **rozšířená nastavení** z rozevíracího seznamu.
+    b. Identifikátor Azure AD
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-n2f---expense-reports-single-sign-on"></a>Konfigurace N2F - vyúčtování jednotného přihlašování
+
+1. V okně jiné webové prohlížeče Přihlaste se k vaší N2F - webu společnosti sestavy výdajů jako správce.
+
+2. Klikněte na **nastavení** a pak vyberte **rozšířená nastavení** z rozevíracího seznamu.
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/configure1.png)
 
-10. Vyberte **nastavení účtu** kartu.
+3. Vyberte **nastavení účtu** kartu.
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/configure2.png)
 
-11. Vyberte **ověřování** a pak vyberte **+ přidat metodu ověřování** kartu.
+4. Vyberte **ověřování** a pak vyberte **+ přidat metodu ověřování** kartu.
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/configure3.png)
 
-12. Vyberte **SAML Microsoft Office 365** jako metodu ověřování.
+5. Vyberte **SAML Microsoft Office 365** jako metodu ověřování.
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/configure4.png)
 
-13. Na **metodu ověřování** části, proveďte následující kroky:
+6. Na **metodu ověřování** části, proveďte následující kroky:
 
     ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/configure5.png)
 
-    a. V **Entity ID** vložit do textového pole **SAML Entity ID** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    a. V **Entity ID** vložit do textového pole **Azure AD identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
     b. V **adresa URL metadat** vložit do textového pole **adresa Url federačních metadat aplikace** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
     c. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/n2f-expensereports-tutorial/create_aaduser_01.png)
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/n2f-expensereports-tutorial/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/n2f-expensereports-tutorial/create_aaduser_03.png)
-
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/n2f-expensereports-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-a-n2f---expense-reports-test-user"></a>Vytvoření N2F – vyúčtování testovací uživatele
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k N2F – sestavy výdajů.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **N2F - vyúčtování**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikací vyberte **N2F - vyúčtování**.
+
+    ![Sestavy výdajů N2F - odkaz v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-n2f---expense-reports-test-user"></a>Vytvoření N2F – vyúčtování testovací uživatele
 
 Přihlaste se k N2F - vyúčtování, Azure AD uživatelům umožnit, musí být zřízená do N2F – sestavy výdajů. V případě N2F - vyúčtování, zřizování se ruční úlohy.
 
@@ -198,7 +215,7 @@ Přihlaste se k N2F - vyúčtování, Azure AD uživatelům umožnit, musí být
 
 2. Klikněte na **nastavení** a pak vyberte **rozšířená nastavení** z rozevíracího seznamu.
 
-   ![N2F - výdajů přidat uživatele](./media/n2f-expensereports-tutorial/configure1.png)
+    ![N2F - výdajů přidat uživatele](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Vyberte **uživatelé** kartu v levém navigačním panelu.
 
@@ -206,7 +223,7 @@ Přihlaste se k N2F - vyúčtování, Azure AD uživatelům umožnit, musí být
 
 4. Vyberte **+ nový uživatel** kartu.
 
-   ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/user2.png)
+    ![N2F - vyúčtování konfigurace](./media/n2f-expensereports-tutorial/user2.png)
 
 5. Na **uživatele** části, proveďte následující kroky:
 
@@ -225,59 +242,17 @@ Přihlaste se k N2F - vyúčtování, Azure AD uživatelům umožnit, musí být
     > [!NOTE]
     > Pokud máte jakékoli problémy při přidávání uživatele, obraťte se prosím [N2F - vyúčtování tým podpory](mailto:support@n2f.com)
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k N2F – sestavy výdajů.
-
-![Přiřazení role uživatele][200]
-
-**Přiřadit Britta Simon N2F - vyúčtování, proveďte následující kroky:**
-
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201]
-
-2. V seznamu aplikací vyberte **N2F - vyúčtování**.
-
-    ![Sestavy výdajů N2F - odkaz v seznamu aplikací](./media/n2f-expensereports-tutorial/tutorial_n2f-expensereports_app.png)  
-
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete N2F – vyúčtování dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší N2F – aplikace sestavy výdajů.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Když kliknete N2F – vyúčtování dlaždici na přístupovém panelu, vám by měl být automaticky přihlášeni ke N2F - vyúčtování, pro které můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/n2f-expensereports-tutorial/tutorial_general_01.png
-[2]: ./media/n2f-expensereports-tutorial/tutorial_general_02.png
-[3]: ./media/n2f-expensereports-tutorial/tutorial_general_03.png
-[4]: ./media/n2f-expensereports-tutorial/tutorial_general_04.png
-
-[100]: ./media/n2f-expensereports-tutorial/tutorial_general_100.png
-
-[200]: ./media/n2f-expensereports-tutorial/tutorial_general_200.png
-[201]: ./media/n2f-expensereports-tutorial/tutorial_general_201.png
-[202]: ./media/n2f-expensereports-tutorial/tutorial_general_202.png
-[203]: ./media/n2f-expensereports-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

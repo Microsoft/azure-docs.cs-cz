@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5ade16bbd45203892cd9a3117dd52471884cf700
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098727"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455815"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -42,6 +42,8 @@ Můžete nainstalovat zdarma nebo nelicencovaného součásti i součásti place
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující věci:
 
 -   [Předplatné Azure](https://azure.microsoft.com/)
@@ -54,7 +56,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
 ## <a name="instructions"></a>Pokyny
 
-1.  Stáhněte a nainstalujte [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) (verze 5.4 nebo novější).
+1.  Stáhněte a nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-az-ps).
 
 1.  Připravte vlastní instalační skript a jeho přidružené soubory (například soubory .bat, .cmd, .exe, .dll, .msi nebo .ps1).
 
@@ -103,15 +105,15 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        ![Zadejte sdílený přístupový podpis](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-       Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí Powershellu, před zahájením prostředí Azure-SSIS IR, spusťte `Set-AzureRmDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru. Příklad:
+       Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí Powershellu, před zahájením prostředí Azure-SSIS IR, spusťte `Set-AzDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru. Příklad:
 
        ```powershell
-       Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                   -Name $MyAzureSsisIrName `
                                                   -ResourceGroupName $MyResourceGroupName `
                                                   -SetupScriptContainerSasUri $MySetupScriptContainerSasUri
 
-       Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                     -Name $MyAzureSsisIrName `
                                                     -ResourceGroupName $MyResourceGroupName
        ```
@@ -160,7 +162,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
     ![Složky ve složce uživatelské scénáře](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-    e. Pokud chcete vyzkoušet tyto ukázky vlastní nastavení, zkopírujte a vložte obsah z vybrané složky do kontejneru. Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí prostředí PowerShell, spusťte `Set-AzureRmDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru.
+    e. Pokud chcete vyzkoušet tyto ukázky vlastní nastavení, zkopírujte a vložte obsah z vybrané složky do kontejneru. Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí prostředí PowerShell, spusťte `Set-AzDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru.
 
 ## <a name="next-steps"></a>Další postup
 

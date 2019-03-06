@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 18dc82880830b6f8d14a7fc01930f75e9e61e5b0
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300546"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405398"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -34,7 +34,7 @@ V tomto článku se používá tato metoda nasazení ve dvou krocích.  Další 
 
 Pokud nechcete použít [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
 - **Instalace rutin Powershellu pro Azure v místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
-- **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount.md)**. Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext.md). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
+- **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
 - * Stáhněte a uložte [šablonu pro rychlý Start](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) . Název místního souboru použitý v tomto článku je **c:\MyTemplates\azuredeploy.json**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

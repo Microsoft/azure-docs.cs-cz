@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185124"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439109"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -95,7 +95,7 @@ Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést p
      
      - Problémy se síťovým připojením možná nepůjde **autoworkplace.exe** dosažení služby AD FS nebo adresy URL Azure AD. 
      
-     - **Autoworkplace.exe** vyžaduje, aby měl s přímým přístupem na dohled z klienta orgnanization místní klient řadič domény služby AD, což znamená, že připojení k hybridní službě Azure AD úspěšné, jenom když je klient připojen k intranetu organizace .
+     - **Autoworkplace.exe** vyžaduje, aby měl přímé dohlednost služby z klienta do organizace místní klient řadič domény služby AD, což znamená, že připojení k hybridní službě Azure AD úspěšné, jenom když je klient připojen k intranetu organizace.
      
      - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení aplikace Internet Explorer intranetu zařízení, a **povolit aktualizace stavového řádku prostřednictvím skriptu** není povolená pro zónu intranetu.
 

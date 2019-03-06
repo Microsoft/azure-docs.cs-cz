@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e44b6a8232bcd0bc72c4faa0f7116d42cec79111
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67f2af94f32d5439585ad4d727fd2b1bd80fc41b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172412"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431696"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -72,9 +72,9 @@ Chcete-li zkontrolovat nebo změnit inteligentním uzamčením hodnoty pro vaši
 
 ![Přizpůsobte si zásadu inteligentním uzamčením Azure AD na webu Azure Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Jak určit, zda Smartlockout funkce pracuje, nebo ne
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Jak určit, zda funkci inteligentního uzamčení funguje nebo ne
 
-Když se aktivuje smartlockout prahovou hodnotu, zobrazí se následující zpráva při uzamčení účtu:
+Když prahová hodnota pro inteligentní uzamčení se aktivuje, zobrazí se následující zpráva při uzamčení účtu:
 
 **Váš účet je dočasně uzamčený, abyste zabránili neoprávněnému používání. Zkuste to znovu později a Pokud potíže přetrvávají, obraťte se na svého správce.**
 

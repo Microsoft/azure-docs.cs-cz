@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245724"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432767"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -82,7 +82,7 @@ Nelze vytvořit certifikát, který má vyžadovaný k ověření v Site Recover
 
 ## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Nepodařilo se aktivovat licenci Windows ze standardní zkušební verze serveru na Server Standard
 
-1. Jako součást nasazení konfiguračního serveru pomocí OVF se používá vyhodnocení licence platí po dobu 180 dnů. Potřebujete aktivovat tuto licenci předtím, než to vyprší. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
+1. Jako součást nasazení konfiguračního serveru pomocí OVF se používá zkušební licence, který je platný po dobu 180 dnů. Potřebujete aktivovat tuto licenci předtím, než to vyprší. Jinak to mít za následek časté vypnutí konfiguračního serveru a hinderance replikace aktivitám, čímž vznikne.
 2. Pokud se nemůžete aktivovat licenci Windows, kontaktujte [tým podpory Windows](https://aka.ms/Windows_Support) k vyřešení daného problému.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Zdrojový počítač zaregistrovat u konfiguračního serveru

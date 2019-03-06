@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492afcdd5143aa5a6597ba8c296d15059f9c7d64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198210"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453265"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
 Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -59,7 +59,7 @@ Před implementací služby, měli byste zvážit vždy strategie dělení, kter
 
 Přemýšlet o struktuře stavu, který potřebuje k rozdělení na oddíly, prvním krokem je dobrý nápad.
 
-Pojďme se na jednoduchý příklad. Pokud byste chtěli vytvořit službu pro countywide dotazování, můžete vytvořit oddíl pro každé město v kraj. Hlasy pro každou osobu, která pak může uchovávat ve městě v oddílu, který odpovídá této město. Obrázek 3 ukazuje sadu uživatelů a města, ve kterém se nacházejí.
+Pojďme se na jednoduchý příklad. Pokud byste chtěli vytvoření služby pro dotazování celé oblasti, můžete vytvořit oddíl pro každé město v kraj. Hlasy pro každou osobu, která pak může uchovávat ve městě v oddílu, který odpovídá této město. Obrázek 3 ukazuje sadu uživatelů a města, ve kterém se nacházejí.
 
 ![Jednoduché oddílu](./media/service-fabric-concepts-partitioning/cities.png)
 

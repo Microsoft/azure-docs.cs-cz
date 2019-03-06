@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bf9d8e6d3aa8d1995c705ecdec95b6f3dea028ff
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242339"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433786"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -235,7 +235,7 @@ Pokud máte v úmyslu používat **skupiny zabezpečení sítě** nebo **trasy d
 3. Vytvoření nebo úprava skupiny zabezpečení sítě nebo trasy definované uživatelem pro podsíť, která budete chtít nainstalovat do HDInsight.
 
     * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy. Tím se zajistí, že správa služby Hdinsight můžete oslovit clusteru od mimo virtuální síť.
-    * __Trasy definované uživatelem__: Pokud budete chtít použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firwall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
+    * __Trasy definované uživatelem__: Pokud budete chtít použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firewall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
 
 Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem najdete v následující dokumentaci:
 
@@ -245,7 +245,7 @@ Další informace o skupinách zabezpečení sítě nebo trasy definované uživ
 
 #### <a name="forced-tunneling-to-on-premise"></a>Vynucené tunelování na místní
 
-Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynuceným tunelovým propojením do místní sítě. Pokud používáte Firewall služby Azure nebo virtuální zařízení síťový hostované v Azure, můžete použít trasy definované uživatelem pro směrování provozu k němu pro účely monitorování a povolují veškerý odchozí provoz.
+Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynuceným tunelovým propojením do místní sítě. Pokud používáte Firewall služby Azure nebo síťové virtuální zařízení hostované v Azure, můžete použít trasy definované uživatelem pro směrování provozu k němu pro účely monitorování a povolují veškerý odchozí provoz.
 
 ## <a id="hdinsight-ip"></a> Požadované IP adresy
 

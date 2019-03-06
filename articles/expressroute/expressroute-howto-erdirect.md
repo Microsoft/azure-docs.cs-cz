@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9157466f0768b052f55f6d225e72ae7a036f8b9c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c5bae17008e2d664a09999daf3244213dfa2364f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822168"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406741"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurace ExpressRoute přímo
 
@@ -24,14 +24,14 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 1. Přihlaste se k Azure a vyberte předplatné. Prostředek přímo ExpressRoute a okruhy ExpressRoute musí být ve stejném předplatném.
 
   ```powershell
-  Connect-AzureRMAccount 
+  Connect-AzAccount 
 
-  Select-AzureRMSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+  Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
   ```
 2. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
   
   ```powershell
-  Get-AzureRmExpressRoutePortsLocation
+  Get-AzExpressRoutePortsLocation
   ```
 
   **Příklad výstupu**
@@ -64,7 +64,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 3. Pokud výše uvedené umístění určila dostupnou šířku pásma
 
   ```powershell
-  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
+  Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **Příklad výstupu**
@@ -94,7 +94,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
   > 
  
   ```powershell 
-  $ERDirect = New-AzureRMExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
+  $ERDirect = New-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
   ```
 
   > [!NOTE]
@@ -156,7 +156,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 1. Získáte přímé ExpressRoute podrobnosti.
 
   ```powershell
-  $ERDirect = Get-AzureRmExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
+  $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
   ```
 2. Nastavit odkaz na povoleno. Opakujte tento krok nastavit každý odkaz na povoleno.
 
@@ -164,10 +164,10 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
 
   ```powershell
   $ERDirect.Links[0].AdminState = “Enabled”
-  Set-AzureRmExpressRoutePort -ExpressRoutePort $ERDirect
-  $ERDirect = Get-AzureRmExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
+  Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
+  $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
   $ERDirect.Links[1].AdminState = “Enabled”
-  Set-AzureRmExpressRoutePort -ExpressRoutePort $ERDirect
+  Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
   ```
   **Příklad výstupu:**
 
@@ -231,7 +231,7 @@ Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy 
 Vytvoření okruhu ExpressRoute přímo prostředku.
 
   ```powershell
-  New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
+  New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
   Další šířek pásma patří: 5.0, 10.0 a 40.0

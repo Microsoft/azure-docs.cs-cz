@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c09e999779ddc384cf70d20c9368f9d93d695e2a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b1065c583bb7f10f2a584f77b182e4e53084073b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243529"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440196"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externích řešení pomocí Common Event Format
 
@@ -48,7 +48,7 @@ Připojení mezi Azure Sentinelu a vaše zařízení CEF probíhá ve třech kro
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>Krok 1: Připojte se k zařízení CEF přes vyhrazený virtuální počítač Azure
 
-Je třeba nasadit agenta na počítači s vyhrazenou Linuxem (virtuálního počítače nebo v místním prostředí) mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je založené na šablonách Resource Manageru a lze použít pouze v případě, že je vyhrazený počítač s Linuxem v Azure vytváříte nový virtuální počítač.
+Je třeba nasadit agenta na počítači s Linuxem vyhrazené (virtuálního počítače nebo v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je založené na šablonách Resource Manageru a lze použít pouze v případě, že je vyhrazený počítač s Linuxem v Azure vytváříte nový virtuální počítač.
 
  ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)
 
@@ -91,7 +91,7 @@ Alternativně můžete nasadit agenta ručně na existující virtuální počí
       2. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Nasazení agenta na serveru Linux v místním prostředí
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Nasazení agenta na serveru Linux on premises
 
 Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
 

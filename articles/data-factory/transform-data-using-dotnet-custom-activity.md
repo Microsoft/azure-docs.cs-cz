@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: ba59ca4ac9a200c4579a4f71ff94be6bd554f180
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6947ac5819a8e096f3be4edf6f2891974829e422
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341557"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440451"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,11 +30,13 @@ Existují dva typy aktivit, které můžete použít v kanálu Azure Data Factor
 
 Přesunout data do nebo z datového úložiště, že Data Factory nepodporuje, nebo pokud chcete transformovat a zpracovávat data způsobem, který není podporován službou Data Factory, můžete vytvořit **vlastní aktivity** s vlastním přesun dat nebo logiku transformace a použití aktivita v kanálu. Vlastní aktivita spouští kód vlastní logikou v **Azure Batch** fondu virtuálních počítačů.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Viz následující články, pokud jste ještě službu Azure Batch:
 
 * [Základy Azure Batch](../batch/batch-technical-overview.md) Přehled služby Azure Batch.
-* [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
-* [Nový-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) rutina pro vytvoření fondu služby Azure Batch.
+* [Nové AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
+* [Nové AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) rutina pro vytvoření fondu služby Azure Batch.
 
 ## <a name="azure-batch-linked-service"></a>Služba Azure Batch propojené
 Následující kód JSON určuje ukázku služby Azure Batch a propojený. Podrobnosti najdete v tématu [výpočetní prostředí podporovaných službou Azure Data Factory](compute-linked-services.md)
@@ -231,13 +233,13 @@ namespace SampleApp
 Můžete začít spuštění kanálu pomocí následujícího příkazu Powershellu:
 
 ```.powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
 Při spuštění kanálu můžete zkontrolovat výstupu spuštění pomocí následujících příkazů:
 
 ```.powershell
 while ($True) {
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
     if(!$result) {
         Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 35a041216bf24a4c6ab73f9d5c3e85dff38a4501
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588105"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404701"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS
 
@@ -40,7 +40,8 @@ Než začnete, ujistěte se, že:
 
 Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
-- Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob. 
+- Jedna sdílená složka pro premium storage. 
+- Jedna sdílená složka pro účet služby blob storage. 
 
 Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
 
@@ -125,6 +126,9 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
      V tomto příkazu parametr j určuje úroveň paralelizace a hodnota X počet paralelních kopií.
 
      Doporučujeme začít s 16 paralelními kopiemi a zvyšovat počet vláken v závislosti na dostupnosti prostředků.
+
+> [!IMPORTANT]
+> Nejsou podporovány následující typy souborů Linux: symbolické odkazy, soubory, bloku souborů, soketů a kanálů. Tyto typy souborů bude mít za následek selhání během **přípravu k odeslání** kroku.
 
 - Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
     

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7f3619e345666256a63181eb978506914d55d1e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d2275d1ef3534e6d8e984595a816315b7b74a760
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196531"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439838"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -56,7 +56,7 @@ K **odstranit aplikaci**, postupujte podle těchto pokynů:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace vyjádření souhlasu budoucí uživatele do žádné aplikace
 
-Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou udělit souhlas stále na behalves uživatele. Další informace o aplikaci souhlas a proč může nebo nemusí chtít udělat, přečtěte si [uživatele porozumění a souhlas správce](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Viz také [oprávnění a vyjádření souhlasu](../develop/v2-permissions-and-consent.md).
+Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou stále udělit souhlas jménem uživatele. Další informace o aplikaci souhlas a proč může nebo nemusí chtít udělat, přečtěte si [uživatele porozumění a souhlas správce](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Viz také [oprávnění a vyjádření souhlasu](../develop/v2-permissions-and-consent.md).
 
 K **zakázat všechny operace vyjádření souhlasu budoucí uživatele v adresáři celý**, postupujte podle těchto pokynů:
 

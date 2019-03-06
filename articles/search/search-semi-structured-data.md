@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 44c818cba760fb5cd7d496fd45ea321ef38248f3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632938"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445076"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Kurz: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure
 
 V této dvoudílné sérii kurzů se dozvíte, jak pomocí služby Azure Search prohledávat částečně strukturovaná a nestrukturovaná data. [Část 1](../storage/blobs/storage-unstructured-search.md) vás provedla prohledáváním nestrukturovaných dat, ale obsahovala také důležité požadavky pro tento kurz, například vytvoření účtu úložiště. 
 
-V části 2 se pozornost zaměří na částečně strukturovaná data, jako je JSON, uložená v objektech blob Azure. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Představují kompromis mezi nestrukturovanými daty, která je nutné indexovat jako celek, a formálně strukturovanými daty, která se řídí datovým modelem, jako je schéma relační databáze, a která je možné procházet po jednotlivých polích.
+V části 2 se pozornost zaměří na částečně strukturovaná data, jako je JSON, uložená v objektech blob Azure. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována a formálně strukturovaná data, která dodržuje datový model, jako je schéma relační databáze, která je možné procházet na základě na pole.
 
 V části 2 získáte informace o těchto tématech:
 
@@ -58,7 +58,7 @@ Připravili jsme pro vás ukázkovou datovou sadu. **Stáhněte soubor [clinical
 
 Ukázka obsahuje příklady souborů JSON, které byly původně textové soubory získané z webu [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). Pro usnadnění práce jsme je převedli do formátu JSON.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 

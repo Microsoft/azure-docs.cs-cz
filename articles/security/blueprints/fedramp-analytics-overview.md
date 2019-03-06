@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3bfc3d0f444bece0afe7b7f5bcdac343a693a13
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243699"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451871"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: Analýza pro FedRAMP
 
@@ -140,7 +140,7 @@ Další informace o používání funkcí zabezpečení služby Azure SQL Databa
 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je zásadní pro správu nasazení a zřizování přístupu pro pracovníky, práci s prostředím. Existující systému Windows Server Active Directory je možné integrovat s AAD v [čtyři kliknutí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Zákazníci mohou také spojit nasazenou infrastrukturu služby Active Directory (řadiče domény) existující AAD tím, že nasazenou infrastrukturu služby Active Directory subdoména doménové struktury služby AAD.
 
 ### <a name="additional-services"></a>Další služby
-#### <a name="iaas---vm-vonsiderations"></a>IaaS – vonsiderations virtuálního počítače
+#### <a name="iaas---vm-considerations"></a>IaaS – aspekty virtuálních počítačů
 Toto řešení PaaS nejsou sestavené všechny virtuální počítače Azure IaaS. Zákazník může vytvořit virtuální počítač Azure spustit mnoho z těchto služeb PaaS. V takovém případě může být využít konkrétní funkce a služby pro provozní kontinuitu a protokoly Azure monitoru:
 
 ##### <a name="business-continuity"></a>Kontinuita podnikových procesů

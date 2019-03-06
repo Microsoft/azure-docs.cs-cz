@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159787"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448056"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -79,8 +79,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |použít|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -vždy – vždy použijte převod.<br />obsah json typ - převodu pouze v případě, že hlavičku odpovědi Content-Type indikuje přítomnost JSON.|Ano|neuvedeno|
-|Vezměte v úvahu přijmout – hlavička|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud je požadováno JSON v požadavku hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
-|Datum analýzy|Pokud je nastavena na `false` hodnot data zkopírují jednoduše při transformaci|Ne|true (pravda)|
+|consider-accept-header|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud je požadováno JSON v požadavku hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
+|parse-date|Pokud je nastavena na `false` hodnot data zkopírují jednoduše při transformaci|Ne|true (pravda)|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -116,7 +116,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 |Název|Popis|Požaduje se|
 |----------|-----------------|--------------|
-|XML na json|Kořenový element.|Ano|
+|xml-to-json|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
@@ -124,7 +124,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |----------|-----------------|--------------|-------------|
 |Typ|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> javascript – vhodných - JSON převedeného obsahuje formulář popisný pro vývojáře v JavaScriptu.<br />-direct - JSON převedeného strukturu původního dokumentu XML.|Ano|neuvedeno|
 |použít|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -vždy - převeďte vždy.<br />convert – obsah xml typu – pouze v případě, že hlavičku odpovědi Content-Type indikuje přítomnost XML.|Ano|neuvedeno|
-|Vezměte v úvahu přijmout – hlavička|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud XML je požadováno v žádosti o hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
+|consider-accept-header|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud XML je požadováno v žádosti o hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -262,10 +262,10 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 |----------|-----------------|--------------|-------------|
 |Základní adresa url|Nový back-endu základní adresa URL služby.|Ne|neuvedeno|
 |id back-endu|Identifikátor směrovat do back-endu.|Ne|neuvedeno|
-|klíč oddílu SF|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Použít k vyřešení konkrétního oddílu ze služby rozlišování názvů.|Ne|neuvedeno|
-|Typ SF repliky|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Určuje, zda požadavek by měl přejít na primární nebo sekundární repliky oddílu. |Ne|neuvedeno|
-|SF vyřešit podmínku|Platí jenom při back-end služby Service Fabric. Podmínka, identifikace, pokud je volání do back-endu Service Fabric se opakuje se nové řešení.|Ne|neuvedeno|
-|SF-service-instance-name|Platí jenom při back-end služby Service Fabric. Umožňuje změnit instancí služby za běhu. |Ne|neuvedeno|
+|sf-partition-key|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Použít k vyřešení konkrétního oddílu ze služby rozlišování názvů.|Ne|neuvedeno|
+|sf-replica-type|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Určuje, zda požadavek by měl přejít na primární nebo sekundární repliky oddílu. |Ne|neuvedeno|
+|sf-resolve-condition|Platí jenom při back-end služby Service Fabric. Podmínka, identifikace, pokud je volání do back-endu Service Fabric se opakuje se nové řešení.|Ne|neuvedeno|
+|sf-service-instance-name|Platí jenom při back-end služby Service Fabric. Umožňuje změnit instancí služby za běhu. |Ne|neuvedeno|
 |Název naslouchacího procesu SF|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Service Fabric Reliable Services umožňuje vytvořit několik naslouchacích procesů ve službě. Tento atribut slouží k výběru konkrétním posluchačem, když má více než jeden naslouchací proces back-endem spolehlivé služby. Pokud tento atribut není zadán, API Management se pokusí použít naslouchací proces bez názvu. Naslouchací proces bez názvu je typický pro spolehlivé služby, které mají pouze jeden naslouchací proces. |Ne|neuvedeno|
 
 ### <a name="usage"></a>Využití
@@ -358,7 +358,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 > [!IMPORTANT]
 > Při provádění kapaliny `set-body` zásady nakonfigurované v "režimu C#". To je zvlášť důležité při věci, jako je například filtrování. Jako příklad použití Filtr kalendářních dat vyžaduje použití Pascal velká a malá písmena a C# data, například formátování:
 >
-> {{body.foo.startDateTime| Datum: "yyyyMMddTHH:mm:ddZ"}}
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
 
 > [!IMPORTANT]
 > Chcete-li správně vytvoří vazbu textu XML pomocí Liquid šablony, použijte `set-header` zásady nastavení Content-Type buď application/xml, text/xml (nebo libovolný typ končí + xml); pro text JSON musí být application/json, text/json (nebo libovolný typ končí + JSON).
@@ -376,7 +376,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 </set-body>
 ```
 
-#### <a name="tranform-json-using-a-liquid-template"></a>Tranform JSON pomocí šablony Liquid.
+#### <a name="transform-json-using-a-liquid-template"></a>Transformace JSON pomocí šablony Liquid.
 ```xml
 {
 "order": {
@@ -390,7 +390,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 |Název|Popis|Požaduje se|
 |----------|-----------------|--------------|
-|Nastavit text|Kořenový element. Obsahuje základní text nebo výrazy, které vrací text.|Ano|
+|set-body|Kořenový element. Obsahuje základní text nebo výrazy, které vrací text.|Ano|
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -499,7 +499,7 @@ OriginalUrl.
 
 |Název|Popis|Požaduje se|
 |----------|-----------------|--------------|
-|set – hlavička|Kořenový element.|Ano|
+|set-header|Kořenový element.|Ano|
 |hodnota|Určuje hodnotu hlavičky, která se má nastavit. Pro více záhlaví s názvem přidejte další `value` elementy.|Ano|
 
 ### <a name="properties"></a>Vlastnosti
@@ -707,7 +707,7 @@ OriginalUrl.
 
 |Název|Popis|Požaduje se|
 |----------|-----------------|--------------|
-|transformace XSL|Kořenový element.|Ano|
+|xsl-transform|Kořenový element.|Ano|
 |parametr|Slouží k definování proměnné, používat v transformaci|Ne|
 |: stylesheet|Kořenovém prvku šablony stylů. Všechny elementy a atributy definované v rámci dodržovat standardní [specifikaci XSLT](https://www.w3.org/TR/xslt)|Ano|
 

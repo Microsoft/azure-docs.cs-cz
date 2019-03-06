@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e96c7da9ac53927ed48003370f40f5861f48d3d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 71eeed62c6de2a3771909e8489ca816930993435
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204761"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442218"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>Sdílení dat integrace Linkedinu a vyjádření souhlasu
 
@@ -76,7 +76,7 @@ Když se připojíte účtů Microsoft a LinkedIn, udělujete Microsoftu na Link
 
 Data, která je přístupná z Microsoft není trvale uložen s Linkedinem, s výjimkou kontakty. Microsoft Contacts jsou uloženy na LinkedIn, dokud neodeberete uživatelé. Další informace o [odstraňování kontaktů importované z Linkedinu](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Další informace o použití na LinkedIn osobní údaje, najdete v článku [zásady ochrany osobních údajů LinkedIn](https://www.linkedin.com/legal/privacy-policy). Pro LinkedIn služby, přenos dat a úložiště, může tok dat z Evropské unie Spojených států a zpět a vaše osobní údaje jsou chráněné jako popsané v [přenosů dat v rámci Evropské unie](https://www.linkedin.com/help/linkedin/answer/62533).
+Další informace o použití na LinkedIn osobní údaje, najdete v článku [zásady ochrany osobních údajů LinkedIn](https://www.linkedin.com/legal/privacy-policy). Pro LinkedIn služby, přenos dat a úložiště, může tok dat z Evropské unie Spojených států a zpět a ochranu vašich osobních údajů je chráněný, jak je popsáno v [přenosů dat v rámci Evropské unie](https://www.linkedin.com/help/linkedin/answer/62533).
 
 ## <a name="next-steps"></a>Další postup
 

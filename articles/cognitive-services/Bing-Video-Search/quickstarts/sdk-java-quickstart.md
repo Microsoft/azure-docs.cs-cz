@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34555ec3315c1fd7322c249e59744cb512ac2d37
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885017"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437476"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Javu
 
@@ -41,7 +41,7 @@ Nainstalujte si závislosti sady SDK Vyhledávání videí Bingu pomocí systém
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>Vytvořit a inicializovat projekt
+## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
 
 V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
@@ -115,7 +115,7 @@ V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>Odeslat žádost o vyhledávání a přijetí odpovědi 
+## <a name="send-a-search-request-and-receive-the-response"></a>Odeslat žádost o vyhledávání a přijetí odpovědi 
 
 1. Vytvořit funkci s názvem `VideoSearch()` , která má váš klíč předplatného jako řetězec. Vytvořit instanci klienta hledání vytvořili dříve.
     

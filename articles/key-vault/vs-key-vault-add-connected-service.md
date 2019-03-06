@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: a6de5385046918c48b3f606477727ca4623a784c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 098958cd729f1c616a93bbb5264445cb6d877f8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998621"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441980"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -49,7 +49,7 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
 
    ![Přejmenování služby Key Vault a zvolte skupinu prostředků](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. Vyberte existující skupinu prostředků, nebo můžete vytvořit nový s názvem automaticky vygenerovaný jedinečný.  Pokud chcete vytvořit novou skupinu s jiným názvem, můžete použít [webu Azure Portal](https://portal.azure.com)a pak zavřete stránku a restartuje, aby znovu načíst seznam skupin prostředků.
+1. Vyberte existující skupinu prostředků, nebo můžete vytvořit nový s automaticky vygenerovaný jedinečný název.  Pokud chcete vytvořit novou skupinu s jiným názvem, můžete použít [webu Azure Portal](https://portal.azure.com)a pak zavřete stránku a restartuje, aby znovu načíst seznam skupin prostředků.
 1. Vyberte oblast, ve kterém chcete vytvořit trezor klíčů. Pokud vaše webová aplikace je hostovaný v Azure, vyberte oblast, který je hostitelem webové aplikace pro optimální výkon.
 1. Vyberte si cenový model. Podrobnosti najdete v tématu [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 1. Klepněte na tlačítko OK potvrďte možnosti konfigurace.

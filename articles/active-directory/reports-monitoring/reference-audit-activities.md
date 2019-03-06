@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a60f95bc8a98ea15c174f48bc3c3e63eae534d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88fc78a1263ac4587a98288dc71df26385bc81ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164053"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453639"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -66,10 +66,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kontroly přístupu|Aktualizace kontroly přístupu|
 |Kontroly přístupu|Aktualizovat stav registrace kontrol přístupu Azure AD|
 |Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Kontroly přístupu|Aktualizace nastavení počtu opakování kontroly přístupu|
-|Kontroly přístupu|Aktualizace nastavení doby trvání opakování kontroly přístupu ve dnech|
-|Kontroly přístupu|Aktualizace nastavení koncového typu opakování kontroly přístupu|
-|Kontroly přístupu|Aktualizace nastavení typu opakování kontroly přístupu|
+|Kontroly přístupu|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Kontroly přístupu|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Kontroly přístupu|Nastavení aktualizace typu konce opakování kontrol přístupu|
+|Kontroly přístupu|Nastavení aktualizace typu opakování kontrol přístupu|
 |Kontroly přístupu|Aktualizace nastavení připomenutí kontroly přístupu|
 |Kontroly přístupu|Aktualizace programu|
 |Kontroly přístupu|Aktualizace žádosti o schválení|

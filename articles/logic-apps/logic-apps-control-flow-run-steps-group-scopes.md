@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233068"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455900"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -54,7 +54,7 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
 1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, pokud jste tak již neučinili. Vytvoření prázdné aplikace logiky
 
-1. Přidat **plán – opakování** aktivační událost s těmito nastaveními: **Interval** = "1" a **frekvence** = "Minute"
+1. Přidat **plán – opakování** aktivační událost s tímto nastavením: **Interval** = "1" a **frekvence** = "Minute"
 
    ![Nastavení aktivační události "Plán – opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -79,7 +79,7 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
-      | **Bod na trase 1** | <*Spuštění*> | Zadejte počátek vaší cesty. | 
+      | **Bod na trase 1** | <*start*> | Zadejte počátek vaší cesty. | 
       | **Bod na trase 2** | <*ukončení*> | Zadejte cíl vaší trasy. | 
       | **Vyloučit** | Žádný | Zadejte položky, které chcete se na trase vyhnout, jako je například dálnice, mýtné a tak dále. Možné hodnoty najdete v části [výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizovat** | timeWithTraffic | Vyberte parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
@@ -99,7 +99,7 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
    1. V prostředním poli vyberte tento operátor: **je větší než**
 
-   1. Ve sloupci úplně vpravo, zadejte tuto hodnotu porovnání, který se nachází v řádu sekund a equivlent na 10 minut: **600**
+   1. Ve sloupci úplně vpravo zadejte tuto hodnotu porovnání, který se nachází v řádu sekund a ekvivalentní na 10 minut: **600**
 
       Jakmile budete hotovi, vaše podmínka bude vypadat jako v tomto příkladu:
 

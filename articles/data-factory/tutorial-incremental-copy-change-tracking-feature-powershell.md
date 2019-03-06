@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: a7dd8cd349703fc9009695e570b66c3a3e626d15
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593178"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436540"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -32,6 +32,8 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření, spuštění a monitorování kanálu úplného kopírování
 > * Přidání nebo aktualizace dat ve zdrojové tabulce
 > * Vytvoření, spuštění a monitorování kanálu přírůstkového kopírování
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 V řešení integrace dat je přírůstkové načítání dat po počátečním načtení dat často používaný scénář. V některých případech je změněná data ve vašem zdrojovém úložišti dat za určité období snadno rozdělit (například LastModifyTime, CreationTime). V některých případech ale neexistuje žádný explicitní způsob identifikace rozdílových dat od posledního zpracování dat. K identifikaci rozdílových dat je možné využít technologii Change Tracking, kterou podporují úložiště dat, jako je Azure SQL Database a SQL Server.  Tento kurz popisuje využití služby Azure Data Factory s technologií SQL Change Tracking k přírůstkovému načtení rozdílových dat z Azure SQL Database do Azure Blob Storage.  Další konkrétnější informace o technologii SQL Change Tracking najdete v článku věnovaném [sledování změn na SQL Serveru](/sql/relational-databases/track-changes/about-change-tracking-sql-server). 
@@ -68,7 +70,8 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* Azure PowerShell Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+
+* Azure PowerShell Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 * **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem **adftutorial**. 
 
@@ -145,7 +148,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 1. Definujte proměnnou pro název skupiny prostředků, kterou použijete později v příkazech PowerShellu. Zkopírujte do PowerShellu následující text příkazu, zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v uvozovkách a pak příkaz spusťte. Například: `"adfrg"`. 
@@ -163,7 +166,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 3. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz: 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$resourceGroupName` jinou hodnotu a spusťte tento příkaz znovu. 
 3. Definujte proměnnou název datové továrny. 
@@ -174,10 +177,10 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
     ```powershell
     $dataFactoryName = "IncCopyChgTrackingDF";
     ```
-5. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **Set-AzureRmDataFactoryV2**: 
+5. Vytvořit datovou továrnu, spusťte následující příkaz **Set-AzDataFactoryV2** rutiny: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 Je třeba počítat s následujícím:
@@ -214,10 +217,10 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
     }
     ```
 2. V **Azure PowerShellu** přepněte do složky **C:\ADFTutorials\IncCopyChgTrackingTutorial**.
-3. Spustit **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactoryName**. 
+3. Spustit **Set-AzDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactoryName**. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     Tady je ukázkový výstup:
@@ -248,10 +251,10 @@ V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
         }
     }
     ```
-2. V **prostředí Azure PowerShell**, spusťte **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureSQLDatabaseLinkedService**. 
+2. V **prostředí Azure PowerShell**, spusťte **Set-AzDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureSQLDatabaseLinkedService**. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     Tady je ukázkový výstup:
@@ -287,10 +290,10 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci zdrojových dat.
     }   
     ```
 
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: SourceDataset
+2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset vytvořte datovou sadu: SourceDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
@@ -329,10 +332,10 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
     ```
 
     Jako součást požadavků ve službě Azure Blob Storage vytvoříte kontejner adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. V tomto kurzu se název výstupního souboru generuje dynamicky pomocí výrazu @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: SinkDataset
+2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset vytvořte datovou sadu: SinkDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
@@ -367,10 +370,10 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.
     ```
 
     Jako součást požadavků vytvoříte tabulku table_store_ChangeTracking_version.
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: WatermarkDataset
+2.  Spuštěním rutiny Set-AzDataFactoryV2Dataset vytvořte datovou sadu: WatermarkDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
     ```
 
     Tady je ukázkový výstup této rutiny:
@@ -416,10 +419,10 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
         }
     }
     ```
-2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
+2. Spuštěním rutiny Set-AzDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
    ``` 
 
    Tady je ukázkový výstup: 
@@ -433,10 +436,10 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>Spuštění kanálu úplného kopírování
-Spuštění kanálu: **FullCopyPipeline** pomocí **Invoke-AzureRmDataFactoryV2Pipeline** rutiny. 
+Spuštění kanálu: **FullCopyPipeline** pomocí **Invoke-AzDataFactoryV2Pipeline** rutiny. 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
+Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
 ``` 
 
 ### <a name="monitor-the-full-copy-pipeline"></a>Monitorování kanálu úplného kopírování
@@ -605,10 +608,10 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     }
     
     ```
-2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
+2. Spuštěním rutiny Set-AzDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    Tady je ukázkový výstup: 
@@ -622,10 +625,10 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Spuštění kanálu přírůstkového kopírování
-Spuštění kanálu: **IncrementalCopyPipeline** pomocí **Invoke-AzureRmDataFactoryV2Pipeline** rutiny. 
+Spuštění kanálu: **IncrementalCopyPipeline** pomocí **Invoke-AzDataFactoryV2Pipeline** rutiny. 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
+Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
 ``` 
 
 

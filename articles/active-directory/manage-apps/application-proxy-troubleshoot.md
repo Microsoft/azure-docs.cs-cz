@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee78516cbed46174e98c483970a21d740eac6829
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5895325aa929e44128c331db847252835f563796
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209621"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437537"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -77,9 +77,9 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 | Chyba | Doporučené kroky |
 | ----- | ----------------- |
 | Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace IWA. Definované hlavního názvu služby pro tuto aplikaci může být nesprávná. Pro aplikace IWA Ujistěte se, že správnost SPN konfigurované pro tuto aplikaci. |
-| Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace OWA. To může být způsobeno jedním z následujících:<br><li>Definované hlavního názvu služby pro tuto aplikaci je nesprávný. Ujistěte se, že je správný název SPN konfigurované pro tuto aplikaci.</li><li>Uživatel, který pokusu o přístup k aplikaci je pomocí účtu Microsoft, nikoli na řádné podnikový účet pro přihlášení, nebo je uživatel uživatele typu Host. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci. Account Microsoft uživatelů a hostů nemá přístup k aplikacím IWA.</li><li>Uživatel, který pokusu o přístup k aplikaci není správně definováno pro tuto aplikaci na straně v místním prostředí. Ujistěte se, že tento uživatel má příslušná oprávnění definované pro tuto aplikaci back-endu na místním počítači. |
+| Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace OWA. To může být způsobeno jedním z následujících:<br><li>Definované hlavního názvu služby pro tuto aplikaci je nesprávný. Ujistěte se, že je správný název SPN konfigurované pro tuto aplikaci.</li><li>Uživatel, který pokusu o přístup k aplikaci je pomocí účtu Microsoft, nikoli na řádné podnikový účet pro přihlášení, nebo je uživatel uživatele typu Host. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci. Account Microsoft uživatelů a hostů nemá přístup k aplikacím IWA.</li><li>Uživatel, který pokusu o přístup k aplikaci není správně definováno pro tuto aplikaci na straně v místním prostředí. Ujistěte se, že tento uživatel má příslušná oprávnění definované pro tuto aplikaci back-endu na na místním počítači. |
 | Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že chcete přiřadit uživatele s přístupem k této aplikaci. | Uživatelé mohou získat tuto chybu při pokusu o přístup k aplikaci, kterou jste publikovali, pokud používají účty Microsoft namísto jejich podnikový účet pro přihlášení. Tato chyba může zobrazit také uživatele typu Host. Uživatelé Microsoft Account a hosté nelze přístup k aplikacím IWA. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci.<br><br>Nemusí mít přiřazené uživatele pro tuto aplikaci. Přejděte na **aplikace** kartu a v části **uživatelů a skupin**, přiřaďte tento uživatel nebo skupina uživatelů k této aplikaci. |
-| Teď je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Uživatelé mohou získat tuto chybu při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nejsou správně definované pro tuto aplikaci na straně v místním prostředí. Ujistěte se, aby uživatelé měli správná oprávnění, jak jsou definovány pro tuto aplikaci back-endu na místním počítači. |
+| Teď je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Uživatelům může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nejsou správně definované pro tuto aplikaci na straně v místním prostředí. Ujistěte se, aby uživatelé měli správná oprávnění, jak jsou definovány pro tuto aplikaci back-endu na na místním počítači. |
 | Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Uživatelům může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud jejich nebyly explicitně přiřazovat licence Premium nebo Basic správcem účastníka. Přejděte do služby Active Directory účastníka **licence** kartu a ujistěte se, že tento uživatel nebo skupina uživatelů je přiřazená licence Premium nebo Basic. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Moje chyby se zde uvedené.

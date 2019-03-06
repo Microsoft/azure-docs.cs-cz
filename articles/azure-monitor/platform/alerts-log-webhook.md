@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 68fb7678fac2a0a32278e813d03a0eebd20565ec
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 908422927feabd156c5dcdc7a04d44ff8fc42094
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216035"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442873"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolů
 Když [upozornění protokolu se vytvoří v Azure](alerts-log.md), máte možnost [konfigurace pomocí skupin akcí](action-groups.md) provést jednu nebo více akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o tom, jak nakonfigurovat vlastní webhooku založenými na JSON.
@@ -54,7 +54,7 @@ Webhooky zahrnují adresu URL a datové části je ve formátu JSON, který se d
 | ID předplatného |#subscriptionid |ID vašeho předplatného Azure používat s Application Insights. 
 
 > [!NOTE]
-> LinkToSearchResults předá parametrů, jako je čas SearchQuery, StartTime Interval hledání & Konec intervalu vyhledávání v adrese URL na webu Azure portal pro zobrazení v části Analytics. Azure portal, má identifikátor URI upravit velikost limitu přibl 2000 znaků a bude *není* Otevřít odkaz podle výstrahy, pokud překročí uvedené mezní hodnoty parametrů. Uživatele můžete ručně zadat podrobnosti a zobrazit výsledky analýzy portálu nebo pomocí [REST API pro Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [rozhraní API REST služby Log Analytics](https://dev.loganalytics.io/reference) k načtení výsledků prostřednictvím kódu programu 
+> LinkToSearchResults předá parametrů, jako je čas SearchQuery, StartTime Interval hledání & Konec intervalu vyhledávání v adrese URL na webu Azure portal pro zobrazení v části Analytics. Portál Azure má identifikátor URI přibližně 2000 znaků. limit velikosti a bude *není* Otevřít odkaz podle výstrahy, pokud překročí uvedené mezní hodnoty parametrů. Uživatele můžete ručně zadat podrobnosti a zobrazit výsledky analýzy portálu nebo pomocí [REST API pro Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [rozhraní API REST služby Log Analytics](https://dev.loganalytics.io/reference) k načtení výsledků prostřednictvím kódu programu 
 
 Například můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*.  Služba, která volá tento webhook by byl očekáván tento parametr.
 

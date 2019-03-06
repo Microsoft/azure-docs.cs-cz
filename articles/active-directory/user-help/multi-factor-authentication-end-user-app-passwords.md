@@ -1,6 +1,6 @@
 ---
-title: Správa hesel aplikací v Azure Active Directory | Dokumentace Microsoftu
-description: Tato stránka vám pomůže uživatelům pomoct pochopit, co jsou hesla aplikací a jaké se používají s ohledem na dvoustupňové ověřování.
+title: Správa hesel aplikací – Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o hesla aplikací a co se používá pro dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,13 +12,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee21080fd95815289f73654cc5bc650296c8e8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187300"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433361"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 

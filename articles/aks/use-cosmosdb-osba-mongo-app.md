@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, otevřete Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977011"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432784"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrovat stávající aplikaci MongoDB API služby Azure Cosmos DB pro MongoDB a zprostředkovatele Open Service Broker for Azure (OSBA)
 
@@ -189,7 +189,7 @@ Přejděte na http://localhost:8080 v prohlížeči. Všimněte si, že výchoz�
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Spuštění aplikace ve vašem clusteru AKS
 
-Můžete použít [Azure Dev prostory](../dev-spaces/azure-dev-spaces.md) k nasazení aplikace do clusteru AKS. Azure Dev prostorech můžete generovat artefaktům, jako jsou grafy Dockefiles a Helm, nasazení a spuštění aplikace ve službě AKS.
+Můžete použít [Azure Dev prostory](../dev-spaces/azure-dev-spaces.md) k nasazení aplikace do clusteru AKS. Azure Dev prostorech můžete generovat artefaktům, jako jsou soubory Dockerfile a Helm grafy, nasazení a spuštění aplikace ve službě AKS.
 
 Pokud chcete povolit prostory vývoj Azure ve vašem clusteru AKS:
 

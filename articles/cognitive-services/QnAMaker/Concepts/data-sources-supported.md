@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: tulasim
-ms.openlocfilehash: d41c7a24d72cdafac953e0215a6cbd2d9e8bba01
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316468"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433106"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -25,7 +25,7 @@ Následující tabulka shrnuje typy obsahu a souboru formáty, které podporuje 
 
 |Typ zdroje|Typ obsahu| Příklady|
 |--|--|--|
-|zprostředkovatele identity|Nejčastější dotazy<br> (Paušální, oddíly nebo s domovskou stránku témata)<br>Stránku podpory <br> (Jednostránkové články s postupy, řešení potíží s články atd.)|[Nejčastější dotazy týkající se prostý](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Nejčastější dotazy týkající se propojení](https://www.microsoft.com/software-download/faq),<br> [Nejčastější dotazy týkající se témata domovské stránky](https://support.microsoft.com/products/windows?os=windows-10)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|zprostředkovatele identity|Nejčastější dotazy<br> (Paušální, oddíly nebo s domovskou stránku témata)<br>Stránku podpory <br> (Jednostránkové články s postupy, řešení potíží s články atd.)|[Nejčastější dotazy týkající se prostý](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Nejčastější dotazy týkající se propojení](https://www.microsoft.com/software-download/faq),<br> [Nejčastější dotazy týkající se témata domovské stránky](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |SOUBOR PDF / DOC|Nejčastější dotazy,<br> Příručka k produktu,<br> Brožur<br> Dokument,<br> Leták zásad<br> Průvodce podpory<br> Nástroj QnA strukturovaná,<br> Atd.|[Strukturované QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka produktu Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázkový částečně structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka bílé paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|Strukturované QnA souboru<br> (včetně RTF, HTML podpora)|[Ukázka QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Strukturované QnA souboru|[Ukázka chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|

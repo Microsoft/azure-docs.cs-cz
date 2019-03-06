@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f1ce786b748fedd1ec4c722b28bc11c28672c2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190904"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443398"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -79,7 +79,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |50027|Token JWT může být neplatný z následujících důvodů:<ul><li>Neobsahuje deklaraci identity hodnoty nonce nebo subjektu.</li><li>Identifikátor subjektu se neshoduje.</li><li>Deklarace identity idTokenu má duplicitní deklaraci identity.</li><li>Neočekávaný vystavitel</li><li>Neočekávaná cílová skupina</li><li>Nenachází se v platném časovém rozsahu. </li><li>Nesprávný formát tokenu</li><li>U externího ID tokenu od vystavitele se nezdařilo ověření podpisu.</li></ul>Obraťte se na vlastníka aplikace.|
 |50029|Neplatný identifikátor URI – název domény obsahuje neplatné znaky. Obraťte se na správce tenanta.|
 |50034|Uživatel v adresáři neexistuje. Obraťte se na svého správce klienta.|
-|50042|Chybí náhodný řetězec vyžadovaný ke generování párovaného identifikátoru. Obraťte se na správce tenanta.|
+|50042|Hodnota salt vyžadovaných ke generování pairwise identifikátor se nenašel v zásadě. Obraťte se na správce tenanta.|
 |50048|Subjekt se v klientském kontrolním výrazu neshoduje s deklarací identity vystavitele. Obraťte se na správce tenanta.|
 |50050|Požadavek je poškozený. Obraťte se na vlastníka aplikace.|
 |50053|Účet je uzamčený, protože uživatel se pokusil přihlásit příliš mnohokrát pomocí nesprávného ID uživatele nebo hesla.|
@@ -129,7 +129,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |50180|Vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování.|
 |51001|Nápověda domény není k dispozici s identifikátorem zabezpečení místní – místní hlavní název uživatele.|
 |51004|Uživatelský účet v adresáři neexistuje.|
-|51006|Vyžaduje se integrované ověřování systému Windows. Uživatel se přihlásil pomocí tokenu relace, kterému chybí integrované ověřování Windows (WIA) deklarace identity. Požádejte uživatele, aby se přihlásil znovu.|
+|51006|Vyžaduje se integrované ověřování systému Windows. Uživatel přihlášen pomocí tokenu relace, která chybí prostřednictvím deklarací identity. Požádejte uživatele, aby se přihlásil znovu.|
 |52004|Uživatel neposkytl souhlas pro přístup k prostředkům LinkedIn. |
 |53000|Zásady podmíněného přístupu vyžadují zařízení, které dodržuje předpisy, ale dané zařízení je nedodržuje. Požádejte uživatele zaregistrovat své zařízení s poskytovatelem služby schválené MDM, jako je Intune.|
 |53001|Zásady podmíněného přístupu vyžadují zařízení, které je připojené k doméně, a toto zařízení k doméně připojené není. Použití uživatele domény se připojili k zařízení.|
@@ -138,7 +138,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |53004|Uživatel musí dokončit registraci pro vícefaktorové ověřování, než získá přístup k tomuto obsahu. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování.|
 |65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace: Y pro prostředek: Z.|
 |65004|Uživatel odmítl souhlas s udělením přístupu aplikace. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
-|65005|Přístupový seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné tímto prostředkem; klientská aplikace požadovala přístup k prostředku, který nebyl zadán v jejím přístupovém seznamu požadovaných prostředků; služba Graph vrátila chybnou žádost; nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, pravděpodobně jste ji nakonfigurovali pomocí špatného identifikátoru (entity). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
+|65005|Přístupový seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné tímto prostředkem; klientská aplikace požadovala přístup k prostředku, který nebyl zadán v jejím přístupovém seznamu požadovaných prostředků; služba Graph vrátila chybnou žádost; nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, pravděpodobně jste ji nakonfigurovali pomocí špatného identifikátoru (entity). Vyzkoušejte řešení uvedené pro SAML v následujícím odkazu: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|Udělení oprávnění může být neplatné z následujících důvodů:<ul><li>Požadovaný kontrolní výraz SAML 2.0 má neplatnou metodu potvrzení subjektu.</li><li>Tok OnBehalfOf aplikace se u V2 nepodporuje.</li><li>Primární obnovovací token není podepsaný klíčem relace.</li><li>Externí obnovovací token je neplatný.</li><li>Udělení oprávnění bylo získáno pro jiného tenanta.</li></ul>|
 |70001|Aplikace X nebyla nalezena v tenantovi Y. K tomu může dojít v případě, že aplikace s identifikátorem X nebyla nainstalována správcem tenanta nebo nebyla odsouhlasena žádným uživatelem v tenantovi. Možná máte správně nakonfigurovaný. hodnota identifikátoru pro aplikaci nebo odeslání žádosti o ověření do nesprávného tenanta.|
 |70002|Aplikace vrátila neplatné přihlašovací údaje klienta. Obraťte se na vlastníka aplikace.|

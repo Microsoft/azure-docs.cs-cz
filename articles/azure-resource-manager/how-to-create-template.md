@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312864"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403511"
 ---
 # <a name="create-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
 
@@ -44,7 +44,7 @@ Pojďme se podívat na části šablonu, kterou chcete pochopit, jak funguje ša
 
 * [Funkce](resource-group-authoring-templates.md#functions) oddílu, který ukazuje přizpůsobené výrazy šablony, které se používají ve vaší šabloně.
 
-* [Prostředky](resource-manager-templates-resources.md) oddílu, který ukazuje prostředky Azure, které jsou nasazené do vašeho předplatného.
+* [Prostředky](resource-group-authoring-templates.md#resources) oddílu, který ukazuje prostředky Azure, které jsou nasazené do vašeho předplatného.
 
 * [Výstupy](resource-group-authoring-templates.md#outputs) oddílu, který zobrazuje hodnoty, které se vrátí po dokončení nasazení.
 
@@ -98,7 +98,7 @@ Můžete přidat značky k vašim prostředkům logicky tak uspořádat podle ka
 }
 ```
 
-Můžete také použít značky dynamicky z parametrů. Další informace najdete v tématu [značky v šabloně](resource-manager-templates-resources.md#tags).
+Můžete také použít značky dynamicky z parametrů. Další informace najdete v tématu [značky v šabloně](resource-group-using-tags.md#templates).
 
 ## <a name="review-template-functions"></a>Kontrola funkce šablon
 
@@ -176,7 +176,7 @@ Následující příklad podmíněně nasadí účet úložiště:
 }
 ```
 
-Další informace najdete v tématu [podmínky](resource-manager-templates-resources.md#condition).
+Další informace najdete v tématu [podmínky](resource-group-authoring-templates.md#condition).
 
 ## <a name="review-dependencies"></a>Kontrola závislosti
 

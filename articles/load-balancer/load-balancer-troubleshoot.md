@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 495325696dad79a6cc1a77b9a87f6db0af4c1156
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 26f60a6f1796b080df3294737ce93bfb43029bf1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253251"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439110"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -77,7 +77,7 @@ Pokud předchozí příčiny zdá se, že se ověří a analyzovat správně, a 
     - Spusťte současné trasování Netsh na cílový fond back-endového virtuálního počítače a jiném testovacím virtuálním počítači z stejné virtuální síti. Nyní spusťte PsPing test nechystáte nějakou dobu, shromažďování některá trasování sítě a pak test zastavte. 
     - Analýza zachytávání sítě a zjistíte, jestli jsou příchozí i odchozí pakety týkající se dotaz ping. 
         - Pokud žádná příchozí pakety jsou dodržovány na virtuálních počítačích back-endového fondu, je potenciálně skupiny zabezpečení sítě nebo UDR chybná konfigurace blokování provozu. 
-        - Pokud žádná odchozí pakety jsou dodržovány na virtuálních počítačích back-endového fondu, je potřeba zkontrolovat problémy nesouvisejících (pro Příkladem může být aplikace blokuje portu sondy) virtuálního počítače. 
+        - Pokud žádná odchozí pakety jsou dodržovány na virtuálních počítačích back-endového fondu, je potřeba zkontrolovat problémy nesouvisejících (například aplikace blokuje portu sondy) virtuálního počítače. 
     - Ověření, pokud jsou pakety test vynutit do jiné cíle (případně prostřednictvím nastavení UDR) před dosažením nástroje pro vyrovnávání zatížení. To může způsobit provoz do nikdy nedorazí back-endového virtuálního počítače. 
 * Změnit typ testu (například HTTP na TCP) a nakonfigurovat příslušný port do skupiny zabezpečení sítě ACL a brány firewall, ověřte, jestli je problém s konfigurací testu odpovědi. Další informace o konfiguraci sondy stavu najdete v tématu [koncový bod Vyrovnávání zatížení konfiguraci sondy stavu](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 

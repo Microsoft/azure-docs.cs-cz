@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: orspod
-ms.openlocfilehash: 41cdae310fb9c2fc66ec9ed78ddc21596c9a5ba9
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 94cf153d7d88e0589edfb3c126c18e04e25e2ef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317845"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431916"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 Kopírovat data ze všech podporovaných zdrojů úložišť dat do Průzkumníku dat Azure. Můžete také kopírování dat z Průzkumníka služby Azure Data do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md) tabulky.
 
 >[!NOTE]
->Kopírování dat do a z Průzkumníku dat Azure z/do úložiště dat v místním prostředí pomocí modul Integration Runtime se podporuje od verze 3.14.
+>Kopírování dat do a z Azure Průzkumníka dat z/a na místní úložiště pomocí modul Integration Runtime se podporuje od verze 3.14.
 
 Průzkumník dat Azure konektor umožňuje postupujte takto:
 
@@ -181,7 +181,7 @@ Pro kopírování dat do Průzkumníku dat Azure, nastavte vlastnost typ v jímk
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na: **AzureDataExplorerSink** | Ano |
-| ingestionMappingName | Název předem vytvořené **[sdíleného svazku clusteru mapování](/azure/kusto/management/mappings#csv-mapping)** v tabulce Kusto. Chcete-li namapovat sloupce ze zdroje do Průzkumníku dat Azure – které se vztahuje na **[všechny podporované zdrojové úložiště/formáty](copy-activity-overview.md#supported-data-stores-and-formats)** včetně CSV nebo JSON nebo Avro formáty atd, můžete použít aktivitu kopírování [sloupec mapování](copy-activity-schema-and-type-mapping.md) (implicitně podle názvu nebo explicitně nakonfigurovat) a/nebo mapování CSV Průzkumník dat Azure. | Ne |
+| ingestionMappingName | Název předem vytvořené **[mapování](/azure/kusto/management/mappings#csv-mapping)** v tabulce Kusto. Chcete-li namapovat sloupce ze zdroje do Průzkumníku dat Azure – které se vztahuje na **[všechny podporované zdrojové úložiště/formáty](copy-activity-overview.md#supported-data-stores-and-formats)** včetně CSV nebo JSON nebo Avro formáty atd, můžete použít aktivitu kopírování [sloupec mapování](copy-activity-schema-and-type-mapping.md) (implicitně podle názvu nebo explicitně nakonfigurovat) a/nebo Průzkumníka služby Azure Data mapování. | Ne |
 
 **Příklad:**
 
@@ -196,7 +196,7 @@ Pro kopírování dat do Průzkumníku dat Azure, nastavte vlastnost typ v jímk
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional csv mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
             }
         },
         "inputs": [

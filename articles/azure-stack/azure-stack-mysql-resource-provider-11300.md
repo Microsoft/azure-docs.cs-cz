@@ -16,12 +16,12 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 1bfdaef4523a714aed0f1b7bbdb5a600f7775ffb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5934d075378df9f04130b79eb43131d71eaa25af
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244806"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449457"
 ---
 # <a name="mysql-resource-provider-11300--release-notes"></a>Poznámky k verzi poskytovatele 1.1.30.0 prostředků MySQL
 
@@ -49,7 +49,7 @@ Tato verze poskytovatele prostředků Azure Stack MySQL zahrnuje následující 
 
 ### <a name="fixes"></a>Opravy
 
-- **Kompatibilita Azure Stack Powershellu poskytovatele prostředků MySQL**. Poskytovatele prostředků MySQL byla aktualizována na pracovním profilem Azure Stack 2018-03-01hybridní prostředí PowerShell a k zajištění kompatibility se AzureRM 1.3.0 a novější.
+- **Poskytovatele prostředků MySQL Azure Stack Powershellu kompatibility**. Poskytovatele prostředků MySQL byla aktualizována na pracovním profilem Azure Stack 2018-03-01hybridní prostředí PowerShell a k zajištění kompatibility se AzureRM 1.3.0 a novější.
 
 - **MySQL přihlášení změnit heslo okno**. Opravili jsme problém, kde heslo nelze změnit, v okně změnit heslo. Upozornění na změnu odstraněny odkazy z hesla.
 

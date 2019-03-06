@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 305a5c5d4f82c732dd796f5c5140c0da04fe7b13
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 14804de1d8507a49cda2ce1dd8ee97dc56c0223b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245212"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439549"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -145,7 +145,7 @@ Pokud tento pracovní postup není možné, spoléhat na [šifrování služby S
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Jakou metodu šifrování Azure Disk Encryption používá?
 
-Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES256WithDiffuser ve verzích starších než Windows Server 2012). V Linuxu ADE používá výchozí dmcrypt xts-aes-plain64 pomocí hlavního klíče svazku 256 bitů.
+Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES256WithDiffuser ve verzích starších než Windows Server 2012). V Linuxu ADE používá výchozí dešifrovat xts-aes-plain64 pomocí hlavního klíče svazku 256 bitů.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Je-li použít encryptformatall šifrovaně a určete všechny typy svazku vymaže jeho data na datové jednotky, které jsme už zašifrovali?
 Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

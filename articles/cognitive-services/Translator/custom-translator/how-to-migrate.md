@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6cab76a1169469853a4eb82a934bdc665e07ef8d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 3442e322ac75f7757d7a59f6035fc35d77e70702
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217508"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431576"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -31,7 +31,7 @@ Během migrace se provádí tyto akce:
 
 ## <a name="enable-account-migration"></a>Povolení migrace účtu
 
-Chcete-li použít nástroj pro migraci, budete muset mít vaše Centrum účtu migrace je povolená. K tomuto účelu e-mailu [ custommt@microsoft.com ](mailto:custommt@microsoft.com) se seznamem všech liveid účtů, které byste chtěli povolena. Tyto účty by měl být e-mailové adresy, které jste přihlášení.
+Chcete-li použít nástroj pro migraci, budete muset mít vaše Centrum účtu migrace je povolená. K tomuto účelu e-mailu [ custommt@microsoft.com ](mailto:custommt@microsoft.com) se seznamem všech za provozu id účtů, které byste chtěli povolena. Tyto účty by měl být e-mailové adresy, které jste přihlášení.
 
 ## <a name="find-custom-translator-workspace-id"></a>Najít vlastní Translator ID pracovního prostoru
 
@@ -141,6 +141,10 @@ Tato tabulka obsahuje porovnání funkcí mezi centrem Microsoft Translator a vl
 | Přizpůsobení NMT | Ne    | Ano |
 | Nové sjednocené přizpůsobení služby řeči | Ne    | Ano |
 | Bez trasování | Ano | Ano |
+
+## <a name="new-languages"></a>Nové jazyky
+
+Pokud jste komunity nebo organizací pracující na vytvoření nového systému jazyk pro Microsoft Translatoru, kontaktujte [ custommt@microsoft.com ](mailto:custommt@microsoft.com) Další informace.
 
 ## <a name="next-steps"></a>Další postup
 

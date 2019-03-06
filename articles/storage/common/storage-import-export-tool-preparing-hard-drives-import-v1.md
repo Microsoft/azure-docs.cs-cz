@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454670"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452364"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 Pro přípravu jeden nebo více pevných disků pro úlohu importu, postupujte podle těchto kroků:
@@ -108,7 +108,7 @@ Pro přípravu jeden nebo více pevných disků pro úlohu importu, postupujte p
 |**/csas:**<ContainerSas\>|`Optional`. Kontejner SAS použijte pro import dat do účtu úložiště. Musí obsahovat buď **/sk:**< StorageAccountKey\> nebo **/csas:**< ContainerSas\> v příkazu.<br /><br /> Hodnota tohoto parametru musí začínat název kontejneru, za nímž následuje otazník (?) a tokenu SAS. Příklad:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Oprávnění, zda zadaný na adresu URL nebo uložené zásady přístupu, musí zahrnovat čtení, zápis a odstranění pro úlohy importu a pro čtení, zápisu a seznamu pro úlohy exportu.<br /><br /> Pokud tento parametr zadán, všechny objekty BLOB na importovaná nebo exportovaná musí být v rámci zadané v sdílený přístupový podpis kontejneru.|
 |**/t:**<TargetDriveLetter\>|`Required.` Písmeno jednotky pevný disk cílového pro aktuální relaci kopie bez koncové dvojtečka.|
 |**všechny**|`Optional.` Tento parametr zadán, když se jednotka musí být ve formátu; v opačném případě ji vynechte. Předtím, než nástroj formáty jednotky, se zobrazí výzva k potvrzení z konzoly. Chcete-li potlačit potvrzení, zadejte parametr /silentmode.|
-|**/silentmode**|`Optional.` Zadejte tento parametr můžete potlačit potvrzení pro formátování targert jednotky.|
+|**/silentmode**|`Optional.` Zadejte tento parametr můžete potlačit potvrzení pro formátování cílovou jednotku.|
 |**/ šifrování**|`Optional.` Tento parametr zadaný při jednotka nebyl dosud zašifruje pomocí Bitlockeru a musí být šifrované nástrojem. Pokud jednotka již byla zašifrována pomocí Bitlockeru, pak tento parametr vynecháte a `/bk` parametr poskytuje existující klíč Bitlockeru.<br /><br /> Pokud zadáte `/format` parametr, pak je nutné zadat také `/encrypt` parametru.|
 |**/bk:**<BitLockerKey\>|`Optional.` Pokud `/encrypt` je tento parametr zadán, vynechat. Pokud `/encrypt` je tento parametr vynechán, je třeba již mít šifrované jednotky pomocí Bitlockeru. Tento parametr použijte k určení klíče Bitlockeru. Šifrování nástrojem BitLocker je vyžadován pro všechny pevné disky pro úlohy importu.|
 |**/logdir:**< LogDirectory\>|`Optional.` Adresář protokolu Určuje adresář, který se má použít k ukládání podrobné protokoly, stejně jako dočasné soubory manifestu. Pokud není zadán, použije aktuální adresář jako adresář protokolu.|

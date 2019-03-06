@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 4de6e4429543ea4f691cc3a38c15b896b866075b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d692eb471c514015271a688e4660700788f1baaa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980716"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431458"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro Windows Server vám umožní využít vaše licence v místním systému Windows Server a spusťte Windows virtual machines v Azure s nižšími náklady. Azure Hybrid Benefit pro Windows Server můžete použít k nasazení nových virtuálních počítačů s operačním systémem Windows. Tento článek prochází přes všechny kroky v tom, jak nasadit nové virtuální počítače s programem Azure Hybrid Benefit pro Windows Server a jak můžete aktualizovat existující spouštění virtuálních počítačů. Další informace o programu Azure Hybrid Benefit pro Windows Server najdete v článku úspory licencování a náklady [stránky licencování programu Azure Hybrid Benefit pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -33,7 +33,7 @@ Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro
 >
 
 > [!NOTE]
-> Pro klasické virtuální počítače je podporováno pouze nasazení nového virtuálního počítače z vlastních imagí v místním prostředí. Abyste mohli využívat možnosti podporované v tomto článku, musí nejprve migrovat klasické virtuální počítače na model Resource Manager.
+> Pro klasické virtuální počítače se podporuje pouze nasazení nového virtuálního počítače z na vlastních imagích místním prostředí. Abyste mohli využívat možnosti podporované v tomto článku, musí nejprve migrovat klasické virtuální počítače na model Resource Manager.
 >
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]

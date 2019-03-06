@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d385fd8c8388e3ce54b89ff2ac863cd5a1aa0df
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5cd3f7f1f1f17d6dedea0157760b03c7e55e3d8a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216131"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410090"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -43,9 +43,6 @@ V plánu služby App Service můžete škálovat mezi vrstvami k přidělování
 
 Pokud používáte plán Consumption, instance hostitele Azure Functions dynamicky přidávají nebo odebírají na základě počtu příchozích událostí. Tento plán bez serveru se automaticky škáluje. proto vám budou účtovány za výpočetní prostředky, pouze když vaše funkce běží. V plánu Consumption vyprší časový limit po nastaveném časovém nastavení provádění funkce.
 
-> [!NOTE]
-> Výchozí hodnota časového limitu pro funkce v plánu Consumption je 5 minut. Je možné zvýšit hodnotu pro aplikaci Function App až do maximálního počtu 10 minut tak, že změníte vlastnost `functionTimeout` v [host.json](functions-host-json.md#functiontimeout) souboru projektu.
-
 Fakturace vychází z počtu spuštění, čas spuštění a paměť použitá. Fakturace se agreguje přes všechny funkce v rámci aplikace function app. Další informace najdete v tématu [stránce s cenami za Azure Functions].
 
 Plán Consumption je výchozí plán hostování a nabízí následující výhody:
@@ -62,7 +59,7 @@ Vezměte v úvahu plán služby App Service v těchto případech:
 * Máte stávající, nedostatečně využité virtuální počítače, které jsou již spuštěny jiné instance služby App Service.
 * Vaše aplikace function App spouštět nepřetržitě téměř průběžně. Plán služby App Service v takovém případě může být cenově výhodnější.
 * Budete potřebovat další možnosti procesoru nebo paměti, než je zadán v plánu Consumption.
-* Váš kód je potřeba spustit delší než maximální doba spuštění povolena v plánu Consumption, což je až 10 minut.
+* Váš kód je potřeba spustit déle, než [maximální doba spuštění povolené](#timeout) v plánu Consumption.
 * Vyžadujete funkce, které jsou dostupné jenom pro plán služby App Service, jako třeba podporu pro App Service Environment, virtuální sítě nebo VPN připojení a větší velikosti virtuálních počítačů.
 * Chcete spustit aplikaci function app v Linuxu nebo chcete poskytnout vlastní image, ve kterém se spustí vaše funkce.
 
@@ -77,6 +74,8 @@ Při spuštění funkce jazyka JavaScript na plán služby App Service, měli by
 ###<a name="always-on"></a> Always On
 
 Pokud spustíte v plánu služby App Service, měli byste povolit **vždy na** nastavení tak, aby vaše aplikace function app běží správně. Plán služby App Service modul runtime služby functions začne nečinnosti, po několika minutách neaktivity, takže pouze triggerů HTTP bude "probuzení" vašich funkcí. Vždy v je dostupné jenom v plánu služby App Service. V plánu Consumption platformu automaticky aktivuje aplikace function App.
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="what-is-my-hosting-plan"></a>Co je Můj plán hostování
 

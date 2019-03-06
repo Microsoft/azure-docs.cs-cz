@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729791"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452126"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -119,19 +119,13 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
    **ExpressRoute Monitor**: Vyberte **zjistit nyní** ke zjišťování všech ExpressRoute privátní partnerské vztahy, které jsou připojené k virtuálním sítím v Azure předplatné propojené s tímto pracovním prostorem Log Analytics. 
 
-   >[!NOTE] 
-   > Řešení aktuálně zjišťuje pouze privátní partnerské vztahy ExpressRoute. 
-
-   >[!NOTE] 
-   > Zjištění pouze privátní partnerské vztahy, které jsou připojené k virtuálním sítím přidružené předplatné propojené s tímto pracovním prostorem Log Analytics. Pokud ExpressRoute je připojená k virtuálním sítím mimo předplatné propojené s Tento pracovní prostor, vytvořte pracovní prostor Log Analytics v těchto předplatných. Pomocí Network Performance Monitor monitorovat tyto partnerské vztahy.
-
    ![Zobrazení monitorování ExpressRoute](media/network-performance-monitor/npm-express-route.png)
 
-   Po dokončení zjišťování zjištěných privátní partnerské vztahy jsou uvedeny v tabulce. 
+   Po dokončení zjišťování zjištěných okruhů a partnerské vztahy jsou uvedeny v tabulce. 
 
    ![Stránka konfigurace sledování výkonu sítě](media/network-performance-monitor/npm-private-peerings.png)
     
-Monitorování pro tyto partnerské vztahy zpočátku je v zakázaném stavu. Vyberte každý partnerský vztah, který chcete monitorovat a konfigurace monitorování pro ně ze zobrazení podrobností na pravé straně. Vyberte **Uložit** uložte konfiguraci. Další informace najdete v článku "Monitorování konfigurace ExpressRoute". 
+Monitorování pro tyto okruhů a partnerských vztahů je zpočátku v zakázaném stavu. Vyberte každý prostředek, který chcete monitorovat a konfigurace monitorování pro ně ze zobrazení podrobností na pravé straně. Vyberte **Uložit** uložte konfiguraci. Další informace najdete v článku "Monitorování konfigurace ExpressRoute". 
 
 Po dokončení instalace trvá 30 minut až jednu hodinu pro naplní agregovanými daty. Při řešení agreguje data z vaší sítě, zobrazí se zpráva *řešení vyžaduje další konfiguraci* na Network Performance Monitor **přehled** dlaždici. Jakmile se data shromažďují a indexovat, **přehled** dlaždice se změní a informuje o stavu vašeho sítě v souhrnu. Potom můžete upravit monitorování uzly, na které Log Analytics jsou nainstalovaní agenti, stejně jako podsítě prohledány z vašeho prostředí.
 
@@ -269,7 +263,7 @@ Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím webu Azure P
 3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat skupinu dříve vytvořená akce. Zjistěte, jak vytvořit skupinu akcí [tady.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Po úspěšném vytvoření výstrahy můžete spravovat výstrahy odkaz jak spravovat upozornění. 
 
-Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz je triggerred ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo upozornění na základě dotazu protokolu ve službě Azure Monitor. Tento dotaz se aktivuje ve výchozím nastavení každých 5 minut. Azure monitor není účtovat prvních 250 pravidel upozornění, které jsou vytvořené protokolů a všechna pravidla upozornění výše uvedené omezení 250 pravidel upozornění protokolů se budou účtovat podle jako [výstrahy ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 Oznámení se účtují samostatně podle [oznámení ceny ve službě Azure Monitor stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 
 

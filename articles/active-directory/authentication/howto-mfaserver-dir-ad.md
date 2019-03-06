@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211593"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449610"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
@@ -61,7 +61,7 @@ Azure Multi-Factor Authentication má tyto tři možnosti filtru:
 * **Filtr uživatele** - Zadejte kritéria filtru, která se použijí pro kvalifikaci záznamů uživatele při prohledávání adresáře.  Pro Active Directory a ADAM se obvykle používá (&(objectClass=user)(objectCategory=person)).  Pro jiné adresáře LDAP použijte (objectClass=inetOrgPerson) nebo něco podobného v závislosti na schématu adresáře. <br>Poznámka:  Pokud je ponecháno prázdné, používá (& (objectCategory=person)(objectClass=user)) je ve výchozím nastavení.
 
 ## <a name="attributes"></a>Atributy
-Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umožní přidat vlastní atributy a nastavit synchronizaci pouze na atributy, které potřebujete. Pro hodnotu každého pole atributu použijte název atributu, jak je definovaný ve schématu adresáře. Následující tabulka poskytuje další informace k jednotlivým funkcím.
+Atributy můžete podle potřeby upravit pro konkrétní adresář.  To vám umožní přidat vlastní atributy a nastavit synchronizaci pouze na atributy, které potřebujete. Použijte název atributu, jak je definováno ve schématu adresáře pro hodnotu každého pole atributu. Následující tabulka poskytuje další informace k jednotlivým funkcím.
 
 Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atributů.
 
@@ -71,7 +71,7 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | --- | --- |
 | Jedinečný identifikátor |Zadejte název atributu, který slouží jako jedinečný identifikátor kontejneru, skupiny zabezpečení a záznamů uživatele.  V Active Directory je to obvykle objectGUID. V jiných implementacích LDAP se může používat entryUUID nebo něco podobného.  Výchozí hodnota je objectGUID. |
 | Typ jedinečného identifikátoru |Vyberte typ atributu jedinečného identifikátoru.  V Active Directory má atribut objectGUID typ GUID. V jiných implementacích LDAP se může používat typ Pole bajtů ASCII nebo Řetězec.  Výchozí hodnota je GUID. <br><br>Je důležité tento typ nastavit správně, protože na synchronizační položky se odkazuje pomocí jejich jedinečného identifikátoru. Typ jedinečného identifikátoru se používá pro přímé vyhledání objektu v adresáři.  Pokud se typ nastaví na Řetězec, když adresář ve skutečnosti ukládá hodnotu jako pole znaků ASCII, nebude synchronizace fungovat správně. |
-| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud neexistuje atribut obsahující jen rozlišující název, může se použít atribut adspath.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
+| Rozlišující název |Zadejte název atributu, který obsahuje rozlišující název pro každý záznam.  V Active Directory je to obvykle distinguishedName. V jiných implementacích LDAP se může používat entryDN nebo něco podobného.  Výchozí hodnota je distinguishedName. <br><br>Pokud atribut obsahující jen rozlišující název neexistuje, může použít atribut cesty služby Active Directory.  Část cesty „LDAP://\<server\>/“ se automaticky odstraní a zůstane jen rozlišující název objektu. |
 | Název kontejneru |Zadejte název atributu, který v záznamu kontejneru obsahuje název.  Hodnota tohoto atributu se zobrazí v Hierarchii kontejneru při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. <br><br>Pokud různé kontejnery používají pro své názvy různé atributy, použijte k oddělení několika atributů názvu kontejneru středník.  Pro zobrazení názvu objektu kontejneru se použije první atribut názvu kontejneru, který se v něm najde. |
 | Název skupiny zabezpečení |Zadejte název atributu, který v záznamu skupiny zabezpečení obsahuje název.  Hodnota tohoto atributu se zobrazí v seznamu Skupiny zabezpečení při importu z Active Directory nebo při přidávání synchronizačních položek.  Výchozí hodnota je name. |
 | Uživatelské jméno |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelské jméno.  Hodnota tohoto atributu se použije jako uživatelské jméno pro Multi-Factor Auth Server.  Můžete zadat i druhý, záložní atribut.  Druhý atribut se použije pouze v případě, že první atribut neobsahuje hodnotu pro uživatele.  Výchozí hodnoty jsou userPrincipalName a sAMAccountName. |

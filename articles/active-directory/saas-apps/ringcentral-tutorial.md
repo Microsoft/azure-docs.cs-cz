@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d86dc27822c91bd6b2b1cb3ec53b07978061cc7d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173296"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Kurz: Integrace Azure Active Directory s RingCentral
 
@@ -191,7 +191,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d. Klikněte na **Uložit**.
 
-    e. Z **kroku 2** klikněte na tlačítko **Stáhnout** ke stažení **soubor metadat poskytovatele služeb** a nahrajte ho v **základní konfiguraci SAML** oddílu Automatické polulate **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure portal.
+    e. Z **kroku 2** klikněte na tlačítko **Stáhnout** ke stažení **soubor metadat poskytovatele služeb** a nahrajte ho v **základní konfiguraci SAML** oddílu Chcete-li automaticky vyplnit pole **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure portal.
 
     ![image](./media/ringcentral-tutorial/ringcentral6.png) 
 

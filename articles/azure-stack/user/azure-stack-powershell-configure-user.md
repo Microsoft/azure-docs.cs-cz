@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 65071df1dff6e25683510956c2d82de5252b67ac
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6839d46efdcd9b6a09e8b2c98e0334f6e6ea1620
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107238"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405585"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel
 
@@ -94,6 +94,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md)
-- [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+- [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md)  
+- [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)  
+- [Odkaz na modul služby Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  
 - Pokud chcete nastavit prostředí PowerShell pro operátor prostředí cloud, podívejte se na [konfigurace prostředí PowerShell pro operátory Azure stacku](../azure-stack-powershell-configure-admin.md) článku.

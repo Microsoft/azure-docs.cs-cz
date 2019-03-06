@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0a03bfe61da6a1de073401fca9c61f3212b9d0bb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819169"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440093"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -82,9 +82,9 @@ Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a sl
     - **Přihlašovací jméno a heslo clusteru**: Výchozí přihlašovací jméno je admin.
     - **Uživatelské jméno a heslo SSH**.
     - **Databáze SQL serveru přihlašovací jméno a heslo**.
-    - **umístění _artifacts**: Použijte výchozí hodnotu, pokud chcete použít vlastní soubor backpac v jiném umístění.
+    - **umístění _artifacts**: Použijte výchozí hodnotu, pokud chcete použít vlastní soubor bacpac v jiném umístění.
     - **Token Sas umístění _artifacts**: Ponechte prázdné.
-    - **Název souboru Bacpac**: Pokud chcete použít vlastní soubor backpac použijte výchozí hodnotu.
+    - **Název souboru Bacpac**: Použijte výchozí hodnotu, pokud chcete použít vlastní soubor bacpac.
      
         Pevně zakódované v sekci proměnných jsou následující hodnoty:
         

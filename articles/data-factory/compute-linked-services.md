@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 490f11b4a35bb7e5669ccf1554c3a73f5156f3c7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321938"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445649"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různých výpočetních prostředích, které můžete použít k zpracovávat a transformovat data. Obsahuje také podrobnosti o různých konfigurací (na vyžádání vs. funkce přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojené služby propojení těchto výpočetních prostředí do služby Azure data factory.
@@ -304,13 +304,15 @@ Můžete vytvořit služby Azure HDInsight propojené můžete zaregistrovat vla
 
 ## <a name="azure-batch-linked-service"></a>Služba Azure Batch propojené
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Můžete vytvořit služby propojené služby Azure Batch můžete fondu služby Batch virtuálních počítačů (VM) zaregistrovat do služby data factory. Můžete spustit pomocí služby Azure Batch pro vlastní aktivity.
 
 Najdete v následujících tématech, pokud jste ještě službu Azure Batch:
 
 * [Základy Azure Batch](../batch/batch-technical-overview.md) Přehled služby Azure Batch.
-* [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
-* [Nový-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) rutina pro vytvoření fondu služby Azure Batch.
+* [Nové AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
+* [Nové AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) rutina pro vytvoření fondu služby Azure Batch.
 
 ### <a name="example"></a>Příklad:
 
@@ -380,7 +382,7 @@ Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Lear
 ### <a name="properties"></a>Vlastnosti
 | Vlastnost               | Popis                              | Požaduje se                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Typ                   | Vlastnost type by měla být nastavená na: **AzureML**. | Ano                                      |
+| Type                   | Vlastnost type by měla být nastavená na: **AzureML**. | Ano                                      |
 | mlEndpoint             | Adresu URL dávkového bodování.                   | Ano                                      |
 | apiKey                 | Rozhraní API publikované pracovního prostoru modelu.     | Ano                                      |
 | updateResourceEndpoint | Adresu URL prostředku aktualizace pro koncový bod webové služby Azure ML použitý k aktualizaci souboru trénovaného modelu prediktivní webové služby | Ne                                       |

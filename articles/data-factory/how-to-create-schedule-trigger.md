@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016626"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432817"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který spouští kanál podle časového plánu
 Tento článek obsahuje informace o aktivační události plánovače a kroky k vytvoření, spuštění a monitorování aktivační události plánovače. Jiné druhy aktivačních událostí, naleznete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -66,6 +66,9 @@ Můžete vytvořit **aktivační událost plánovače** naplánovat pravidelné 
     ![Monitorování spuštění aktivační události](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování aktivační události plánovače. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: Vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
 
 1. Vytvořte soubor JSON s názvem **MyTrigger.json** ve složce C:\ADFv2QuickStartPSH\ s následujícím obsahem:
@@ -108,34 +111,34 @@ Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spu
     - Aktivační událost je přidružena **Adfv2QuickStartPipeline** kanálu. Chcete-li přidružit více kanálů s triggerem, přidat další **pipelineReference** oddíly.
     - Kanál v tomto rychlém startu má dva **parametry** hodnoty: **inputPath** a **outputPath**. Proto předáte hodnoty pro tyto parametry z aktivační události.
 
-2. Vytvoření aktivační události pomocí **Set-AzureRmDataFactoryV2Trigger** rutiny:
+2. Vytvoření aktivační události pomocí **Set-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Ověřte, zda je stav triggeru **Zastaveno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+3. Ověřte, zda je stav triggeru **Zastaveno** pomocí **Get-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Spusťte trigger pomocí **Start-AzureRmDataFactoryV2Trigger** rutiny:
+4. Spusťte trigger pomocí **Start AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Ověřte, zda je stav triggeru **spuštěno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+5. Ověřte, zda je stav triggeru **spuštěno** pomocí **Get-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Aktivační událost spouští v prostředí Azure PowerShell pomocí Get **Get-AzureRmDataFactoryV2TriggerRun** rutiny. Pokud chcete získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty odpovídají hodnotám v definici aktivační události:
+6.  Aktivační událost spouští v prostředí Azure PowerShell pomocí Get **Get-AzDataFactoryV2TriggerRun** rutiny. Pokud chcete získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty odpovídají hodnotám v definici aktivační události:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
     K monitorování aktivační událost spouští a spuštění kanálu na webu Azure Portal, přečtěte si [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
@@ -322,12 +325,12 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad: |
+| Vlastnost JSON | Type | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad: |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Řetězec | Ano | Žádný | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | Ano | Žádný | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Objekt | Ano | Žádný | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | Řetězec | Ano | Žádný | Hodnota data a času představující čas v budoucnosti. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | Ano | Žádný | Hodnota data a času představující čas v budoucnosti. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Objekt | Ne | Žádný | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime

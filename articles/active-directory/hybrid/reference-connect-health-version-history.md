@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37d34d6df23b22466f3016841685ec2797a5c9ea
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45983a4aecd61babf4e4262d708ac323f9773546
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177946"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443949"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje s novými funkcemi a funkce Azure AD Connect Health. Tento článek uvádí verzích a funkcích, které byly vydány.
@@ -39,7 +39,7 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
 *   Agent Azure AD Connect Health pro službu AD FS (verze 3.1.24.0)
 1. Přenos dodržování předpisů verze 1.2 protokol zabezpečení vrstvy (TLS) a vynucení
 2. Podpora ADFSRequestToken testovacího lokalizovaný operačního systému
-3. Vyřešit problém zamykání EventHandler disgnostic agenta
+3. Vyřešit problém zamykání EventHandler agenta diagnostiky
 4. Opravy chyb registrace agenta stavu
 
 ## <a name="august-2018"></a>Srpen 2018 

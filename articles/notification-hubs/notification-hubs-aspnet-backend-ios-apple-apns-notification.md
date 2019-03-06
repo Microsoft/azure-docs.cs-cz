@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d69a2a26fb0b487a3efa4b5376ca6480569aa846
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227705"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450885"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení odesílaná konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -54,7 +54,7 @@ Pokud chcete použít jako back-end službu Mobile Apps, najdete v článku [Mob
 
 2. V `Main.storyboard` přidejte zobrazené na snímku obrazovky z objektu knihovny součásti.
 
-    ![Upravit storybard v Tvůrci rozhraní Xcode][1]
+    ![Upravit scénář Tvůrce rozhraní Xcode][1]
 
    * **Uživatelské jméno**: A UITextField zástupným textem *zadejte uživatelské jméno*bezprostředně pod odeslat výsledky označovat popisky a omezené na levý a pravý okraj a pod popisek výsledky odeslat.
    * **Heslo**: A UITextField zástupným textem *zadat heslo*, bezprostředně pod uživatelské jméno textové pole a omezené na levý a pravý okraj a pod textové pole uživatelského jména. Zkontrolujte **zabezpečený vstupní Text** možnost v inspektoru atributu v části *vrátit klíč*.

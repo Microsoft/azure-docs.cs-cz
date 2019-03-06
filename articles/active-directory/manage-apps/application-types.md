@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037d1de83e34aa8489498c65dbc5fd3423b081b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162658"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444286"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>V seznamu aplikací neočekávaná aplikace
 
@@ -108,7 +108,7 @@ K **odstranit aplikaci**, postupujte podle těchto kroků:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace vyjádření souhlasu budoucí uživatele do žádné aplikace
 
-Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou udělit souhlas stále na behalves uživatele. Další informace o souhlasu s aplikací a proč může nebo nemusí chtít vyjádřit souhlas, přečtěte si [uživatele porozumění a souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Zakázání souhlas uživatele, pro celý adresář zabrání koncovým uživatelům od vyjádření souhlasu s libovolnou aplikaci. Správci můžou stále udělit souhlas jménem uživatele. Další informace o souhlasu s aplikací a proč může nebo nemusí chtít vyjádřit souhlas, přečtěte si [uživatele porozumění a souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 K **zakázat všechny operace vyjádření souhlasu budoucí uživatele v adresáři celý**, postupujte podle těchto kroků:
 

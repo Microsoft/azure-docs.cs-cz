@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 848663c509fd3635b33b8e7735feb940da215bfa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332094"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441810"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
 Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](https://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](https://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
@@ -71,7 +71,7 @@ ISCPSpout je rozhraní pro netransakční spout.
 
 Když `NextTuple()` je volána z jazyka C\# kód uživatele může vysílat jeden nebo více řazené kolekce členů. Pokud není nic ke generování, tato metoda by měla vrátit bez generování cokoli. Je třeba poznamenat, že `NextTuple()`, `Ack()`, a `Fail()` jsou volány v těsné smyčce v jednom vlákně v jazyce C\# procesu. Pokud neexistují žádné řazených kolekcí členů a vygenerovat, je zdvořilý mít z režimu spánku NextTuple krátkém čase (například 10 milisekund) tak, aby odpad příliš mnoho procesoru.
 
-`Ack()` a `Fail()` jsou volány pouze při potvrzení mechanismus je povolené v specifikace souboru. `seqId` Slouží k identifikaci řazené kolekce členů, které je potvrzeno nebo se nezdařilo. Takže pokud je potvrzení je povoleno v netransakční topologii, byste měli použít následující funkce vygeneruje ve Spout:
+`Ack()` a `Fail()` jsou volány pouze při potvrzení mechanismus je povolené v specifikace souboru. `seqId` Slouží k identifikaci řazené kolekce členů, které jsou potvrzeny nebo se nezdařilo. Takže pokud je potvrzení je povoleno v netransakční topologii, byste měli použít následující funkce vygeneruje ve Spout:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -431,7 +431,7 @@ Přidali jsme dvě metody v objektu SCP.NET Context. Používají se ke generov�
 Generování do datového proudu neexistující způsobí, že výjimky modulu CLR.
 
 ### <a name="fields-grouping"></a>Seskupení polí
-Předdefinované skupiny polí v Strom v SCP.NET nepracuje správně. Na straně Java Proxy všechny datové typy pole jsou ve skutečnosti byte [] a pole seskupení používá hodnota hash objektu byte [] provádět seskupení. Hodnota hash objektu byte [] je adresa tohoto objektu v paměti. Seskupení tak bude nesprávný pro dva bajty [] objektů, které sdílejí stejný obsah, ale ne stejnou adresu.
+Předdefinované skupiny polí v Storm v SCP.NET nepracuje správně. Na straně Java Proxy všechny datové typy pole jsou ve skutečnosti byte [] a pole seskupení používá hodnota hash objektu byte [] provádět seskupení. Hodnota hash objektu byte [] je adresa tohoto objektu v paměti. Seskupení tak bude nesprávný pro dva bajty [] objektů, které sdílejí stejný obsah, ale ne stejnou adresu.
 
 SCP.NET přidá metodu přizpůsobené seskupení a používá obsah byte [] provést seskupení. V **specifikace** soubor, je syntaxe jako:
 
@@ -573,7 +573,7 @@ Existují dva specifikace soubory **HelloWorld.spec** a **HelloWorld\_EnableAck.
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-Pokud je povoleno potvrzení, v spout, slouží slovník pro ukládání do mezipaměti, které ještě nebyly potvrzeno řazené kolekce členů. Pokud je volána Fail(), je znovu přehrát neúspěšné řazené kolekce členů:
+Pokud je povoleno potvrzení, v spout, slouží slovník pro ukládání do mezipaměti řazených kolekcí členů, které nebyly potvrzeny. Pokud je volána Fail(), je znovu přehrát neúspěšné řazené kolekce členů:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

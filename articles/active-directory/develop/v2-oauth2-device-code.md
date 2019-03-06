@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170190"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443262"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 zařízení kódu
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170190"
 Azure AD podporuje [udělení kódu zařízení](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), což umožňuje uživatelům umožní přihlásit k omezené vstupní zařízení, jako jsou inteligentní TV, zařízení IoT nebo tiskárny.  Pokud chcete povolit tento tok, má zařízení uživatele navštivte webovou stránku ve svém prohlížeči na jiném zařízení pro přihlášení.  Když se uživatel přihlásí, zařízení je možné získat přístupové tokeny a podle potřeby obnovovacích tokenů.  
 
 > [!Important] 
-> V současné době podporuje koncový bod v2.0 tok zařízení pouze pro klienty Azure AD, ale ne osobní účty.  To znamená, že je třeba použít koncový bod bezproblémovým nebo koncový bod organizace.  
+> V současné době podporuje koncový bod v2.0 tok zařízení pouze pro klienty Azure AD, ale ne osobní účty.  To znamená, že je třeba použít koncový bod nastavit jako tenant nebo koncový bod organizace.  
 >
 > Osobní účty, které se pozvat do tenanta služby Azure AD bude moct používat toku udělení zařízení, ale pouze v rámci tenanta.
 

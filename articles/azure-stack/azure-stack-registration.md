@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877142"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405194"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -303,7 +303,7 @@ Volitelně můžete použít rutinu Get-obsah tak, aby odkazoval na soubor, kter
 
 ## <a name="verify-azure-stack-registration"></a>Ověření registrace Azure Stack
 
-Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack registrace byla úspěšná. Tato dlaždice není k dispozici na výchozí řídicí panel portálu správce. Stav může být registrováno nebo není zaregistrovaný. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci společně s registrace skupiny prostředků a název služby Azure Stack.
+Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack registrace byla úspěšná. Tato dlaždice není k dispozici na výchozí řídicí panel portálu pro správu. Stav může být registrováno nebo není zaregistrovaný. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci společně s registrace skupiny prostředků a název služby Azure Stack.
 
 1. Přihlaste se k [portál pro správu služby Azure Stack](https://adminportal.local.azurestack.external).
 
@@ -325,7 +325,7 @@ Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack reg
 
     Registrace aplikace Azure Stack mají předponu **Azure Stack**.
 
-Alternativně můžete ověřit, jestli registrace byla úspěšná pomocí funkce pro správu webu Marketplace. Pokud se zobrazí seznam položek z marketplace v okně správy webu Marketplace, vaše registrace byla úspěšná. Ale v odpojených prostředích, nebudete moci zobrazit položky marketplace v Marketplace správu. Ale můžete pomocí offline nástroje pro ověření registrace.
+Alternativně můžete ověřit, jestli registrace byla úspěšná pomocí funkce pro správu webu Marketplace. Pokud se zobrazí seznam položek z marketplace v okně správy webu Marketplace, vaše registrace byla úspěšná. Ale v odpojených prostředích, nebudete moci zobrazit položky marketplace v Marketplace správu.
 
 > [!NOTE]
 > Po dokončení registrace se už zobrazí aktivní upozornění pro registraci není. V odpojených scénářů zobrazí se zprávy v Marketplace správu s výzvou k registraci a aktivaci služby Azure Stack, i v případě, že jste úspěšně zaregistrovali.

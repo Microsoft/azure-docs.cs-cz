@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d7d23300936cd512466e5c4b18f1f0922c81ceff
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447170"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408186"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení přenosu mezi pody pomocí zásady sítě ve službě Azure Kubernetes Service (AKS)
 
 Když spustíte moderních aplikací založených na mikroslužbách v Kubernetes, často chcete řídit, které součásti mohou komunikovat mezi sebou. Princip nejnižších oprávnění bude použito, jak můžete tok provozu mezi pody v clusteru AKS. Například budete pravděpodobně chtít blokovat provoz přímo na back-endové aplikace. V případě Kubernetes *zásady sítě* funkce vám umožňuje definovat pravidla pro příchozí a odchozí přenos dat mezi pody v clusteru.
 
-Tento článek popisuje, jak používat zásady sítě k řízení toku přenosů mezi pody ve službě AKS.
+Calico, opensourcové sítě a řešení zabezpečení sítě Ruska Tigera, nabízí modul zásad sítě, které můžete implementovat pravidla zásad sítě Kubernetes. Tento článek popisuje, jak nainstalovat modul zásad sítě Calico a vytvářet zásady sítě Kubernetes pro řízení toku přenosů mezi pody ve službě AKS.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.

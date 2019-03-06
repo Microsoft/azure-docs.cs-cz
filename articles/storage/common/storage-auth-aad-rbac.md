@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242645"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431852"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Udělení přístupu k kontejnery služby Azure a fronty pomocí RBAC na webu Azure Portal (preview)
 

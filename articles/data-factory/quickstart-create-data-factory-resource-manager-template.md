@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: douglasl
-ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7d02dedc6979f1b9b78ef1ec3f74728c67574f56
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437050"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
 
@@ -34,7 +34,9 @@ Tento rychlý start popisuje použití šablony Azure Resource Manageru k vytvo�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
@@ -328,7 +330,7 @@ Vytvořte soubor JSON s názvem **ADFTutorialARM-Parameters.json**, který obsah
 Spuštěním následujícího příkazu v PowerShellu nasaďte entity služby Data Factory pomocí šablony Resource Manageru, kterou jste vytvořili dříve v tomto rychlém startu.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
 ```
 
 Zobrazí se podobný výstup jako v následující ukázce:
@@ -368,9 +370,9 @@ DeploymentDebugLogLevel :
 - Kanál s aktivitou kopírování
 - Trigger pro aktivaci kanálu
 
-Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spustit, je použít rutinu PowerShellu **Start-AzureRmDataFactoryV2Trigger**. Podrobné kroky najdete v následujícím postupu:
+Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spustit, je použít **Start AzDataFactoryV2Trigger** rutiny Powershellu. Podrobné kroky najdete v následujícím postupu:
 
-1. V okně PowerShellu vytvořte proměnnou, která bude uchovávat název skupiny prostředků. Zkopírujte do okna PowerShellu následující příkaz a stiskněte ENTER. Pokud jste pro příkaz New-AzureRmResourceGroupDeployment zadali jiný název skupiny prostředků, aktualizujte tuto hodnotu.
+1. V okně PowerShellu vytvořte proměnnou, která bude uchovávat název skupiny prostředků. Zkopírujte do okna PowerShellu následující příkaz a stiskněte ENTER. Pokud jste zadali jiný název skupiny prostředků pro příkaz New-AzResourceGroupDeployment, aktualizujte tuto hodnotu.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -388,7 +390,7 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
 4. Po zadání názvu datové továrny a triggeru získejte **stav triggeru** spuštěním následujícího příkazu PowerShellu:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
     Tady je ukázkový výstup:
@@ -405,7 +407,7 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
 5. **Spusťte trigger**. Trigger spouští kanál definovaný v šabloně v celou hodinu. To znamená, že pokud jste tento příkaz spustili ve 14:25, trigger poprvé spustí kanál v 15:00. Potom bude kanál spouštět každou hodinu až do koncového času, který jste zadali pro aktivační událost.
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Tady je ukázkový výstup:
@@ -416,10 +418,10 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Znovu spusťte příkaz Get-AzureRmDataFactoryV2Trigger a potvrďte spuštění triggeru.
+6. Potvrďte, že aktivační událost se spustil spuštěním příkazu Get-AzDataFactoryV2Trigger znovu.
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Tady je ukázkový výstup:
@@ -466,7 +468,7 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
 8. Jakmile se zobrazí úspěšné nebo chybné spuštění, zastavte trigger. Trigger spouští kanál jednou za hodinu. Kanál při každém spuštění zkopíruje stejný soubor ze vstupní složky do výstupní složky. Pokud chcete trigger zastavit, spusťte v okně PowerShellu následující příkaz.
     
     ```powershell
-    Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
@@ -604,7 +606,7 @@ Nadefinujete kanál, který kopíruje data z jedné datové sady Azure Blob do j
 
 #### <a name="trigger"></a>Trigger
 
-Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte trigger pomocí rutiny **Start-AzureRmDataFactoryV2Trigger**. Další informace o triggerech najdete v článku [Spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).
+Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte trigger pomocí **Start AzDataFactoryV2Trigger** rutiny. Další informace o triggerech najdete v článku [Spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
 {
@@ -647,11 +649,11 @@ V tomto kurzu jste vytvořili šablonu pro definování entit služby Data Facto
 Příklad:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
 
 Všimněte si, že první příkaz používá soubor parametrů pro vývojové prostředí, druhý příkaz používá soubor parametrů pro testovací prostředí a třetí příkaz používá soubor parametrů pro produkční prostředí.

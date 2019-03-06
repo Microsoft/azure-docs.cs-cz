@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f4dbfae4bada77cf882f7249353a17defebf312e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ce6fc0a90ad093a6bba5a4720777e409202c73ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209345"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439821"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
@@ -43,7 +43,7 @@ Jak je znázorněno, objeví se okno:
 | Pozdní vstupní události      | Události, které byly přijaty později než nakonfigurované pozdní okno tolerance pozdního přijetí. Další informace o [aspekty pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md) . |
 | Události mimo pořadí    | Počet událostí přijatých mimo pořadí, ve kterém byly vyřazeny nebo zadaný upravené časové razítko na základě zásad řazení událostí. To může mít vliv konfigurace okna pro toleranci mimo pořadí z nastavení. |
 | Výstupní události          | Objem dat odesílaných úlohy Stream Analytics na cíl výstupu v počtu událostí. |
-| Chyby za běhu         | Celkový počet chyb souvisejících s zpracování dotazů (s výjimkou chyby při ingestování události nebo výsledky outputing) |
+| Chyby za běhu         | Celkový počet chyb souvisejících s zpracování dotazů (s výjimkou chyb nalezených při ingestování událostí nebo výstupu výsledků) |
 | % využití SU       | Využití jednotek streamování přiřazené úlohy, z na kartě Měřítko úlohy. By měl tento ukazatel dosáhnou 80 % nebo vyšší, je vysoká pravděpodobnost, že zpracování událostí se může zpozdit nebo zastavená vidět pokrok. |
 | Zpoždění vodoznaku       | Meze maximální zpoždění mezi všechny oddíly všechny výstupy v rámci úlohy. |
 

@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66506a8abf130f27950fd958ba1a7c291e55a5a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674183"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408526"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Řízení připojení vašich zařízení k hybridní službě Azure AD
 
@@ -99,16 +99,16 @@ Pomocí následujícího klientského nastavení můžete řídit chování regi
 
 Postup konfigurace nastavení klienta:
 
-1.  Otevřít **nástroje Configuration Manager**a pak přejděte na **Cloud Services**.
+1.  Otevřít **nástroje Configuration Manager**vyberte **správu**a pak přejděte na **nastavení klienta**.
 
-2.  V části **nastavení zařízení**, vyberte jednu z následujících nastavení pro **automaticky zaregistrovat nová zařízení s Windows 10 připojených k doméně se službou Azure Active Directory**:
+2.  Otevřete vlastnosti pro **výchozí nastavení klienta** a vyberte **Cloud Services**.
+
+3.  V části **nastavení zařízení**, vyberte jednu z následujících nastavení pro **automaticky zaregistrovat nová zařízení s Windows 10 připojených k doméně se službou Azure Active Directory**:
 
     - **Ne**: Aby se zabránilo automatické registrace zařízení.
     - **Ano**: Povolit automatickou registraci zařízení.
 
-
-3.  Vyberte **OK**.
-    
+4.  Vyberte **OK**.
 
 Budete muset propojit toto klientské nastavení do umístění podle vašeho výběru. Například pokud chcete nakonfigurovat tato nastavení klienta pro všechna aktuální zařízení Windows ve vaší organizaci, propojte nastavení klienta k doméně. Provést řízené nasazení, můžete nakonfigurovat nastavení klienta pro připojené k doméně Windows aktuální zařízení, která patří k organizační jednotku nebo skupinu zabezpečení.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b49ec91af0c2b55185d7f750420825bb174c4b6d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 82c4bca1c72d5440385e3fda6208b1e74a5444a1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473727"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453146"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zkoumání dat pomocí Sparku v Azure HDInsight
 
@@ -132,7 +132,7 @@ Jsme přijata ukázku 0,1 % těchto souborů a připojená k cesty\_a dat o jíz
 | dropoff_longitude |Zeměpisná délka Dropoff |
 | dropoff_latitude |Zeměpisná šířka Dropoff |
 | direct_distance |Přímé vzdálenost mezi výběru nahoru a dropoff umístění |
-| payment_type |Typ platby (certifikačních autorit, platební karty atd.) |
+| payment_type |Typ platby (hotovosti, platební karty atd.) |
 | fare_amount |Tarif částka v |
 | Příplatek za |Příplatek za |
 | mta_tax |Daň za MTA |

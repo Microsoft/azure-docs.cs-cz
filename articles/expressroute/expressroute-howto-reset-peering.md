@@ -1,5 +1,5 @@
 ---
-title: 'Resetování okruhu, partnerského vztahu – ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Resetování okruhu, partnerského vztahu – ExpressRoute:  Azure | Dokumentace Microsoftu'
 description: Postup zakázání a povolení partnerské vztahy okruhu ExpressRoute.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: ad050e11c98139af00ad752f8960d55a58ca2f34
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f856753ae74b43e257cb222422f4d4eb27ee099c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132581"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404871"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>Resetovat partnerské vztahy okruhu ExpressRoute
 
@@ -25,6 +25,8 @@ Existuje několik scénářů, kde vám může být užitečné resetování va�
 
 ### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="reset-a-peering"></a>Obnovení nastavení partnerského vztahu
@@ -32,22 +34,22 @@ Existuje několik scénářů, kde vám může být užitečné resetování va�
 1. Pokud používáte PowerShell místně, otevřete konzolu Powershellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```azurepowershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 2. Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.
 
   ```azurepowershell-interactive
-  Get-AzureRmSubscription
+  Get-AzSubscription
   ```
 3. Určete předplatné, které chcete použít.
 
   ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
   ```
 4. Spusťte následující příkazy pro načtení váš okruh ExpressRoute.
 
   ```azurepowershell-interactive
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+  $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 5. Identifikace, partnerský vztah, který chcete povolit nebo zakázat. *Partnerské vztahy* je pole. V následujícím příkladu je partnerské vztahy [0] privátní partnerské vztahy Azure a Microsoft Peering partnerské vztahy [1].
 
@@ -136,7 +138,7 @@ GatewayManagerEtag               :
 
   ```azurepowershell-interactive
   $ckt.Peerings[0].State = "Disabled"
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 Partnerský vztah musí být ve stavu, které jste nastavili. 
 

@@ -1,5 +1,5 @@
 ---
-title: Obnovení odstraněné skupiny Office 365 v Azure AD | Microsoft Docs
+title: Obnovení odstraněné skupiny Office 365 – Azure AD | Dokumentace Microsoftu
 description: Jak obnovit odstraněné skupiny, zobrazení obnovitelné skupin a trvale odstranit skupinu v Azure Active Directory
 services: active-directory
 author: curtand
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cacd4a24becab1dfe797fe29aea125c016527192
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fee8604bece0ae7249b0735f6952bfa35a4590fb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734383"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443160"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Obnovení odstraněné skupiny Office 365 v Azure Active Directory
 Když odstraníte skupinu Office 365 v Azure Active Directory (Azure AD), uchovává se tato odstraněná skupina po dobu 30 dnů od data odstranění, ale není viditelná. Je to kvůli tomu, abyste v případě potřeby mohli skupinu, včetně jejího obsahu, obnovit. Tato funkce je omezená výhradně pro skupiny Office 365 v Azure AD. Není dostupná pro skupiny zabezpečení a distribuční skupiny.

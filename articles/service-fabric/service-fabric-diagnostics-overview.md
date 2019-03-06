@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: bb4ffe959fd3b973f55b08908ea603839222365d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 71bff5473abe9f53804d702625b871f41309a787
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243258"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441827"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a diagnostiky pro Azure Service Fabric
 
@@ -73,7 +73,7 @@ Teď, když jsme si popsali diagnostiku ve vaší aplikace a platformy, jak vím
 
 Seznam čítačů výkonu, které by měly být shromažďovány na úrovni infrastruktury najdete v [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md). 
 
-Alsp Service Fabric poskytuje sady čítačů výkonu pro programovací modely Reliable Services a objekty actor. Pokud používáte některý z těchto modelů, můžete tyto čítače výkonu informací zajistit, že jsou vaše actors zprovozňování navýšení nebo snížení kapacity správně, nebo že žádostí o spolehlivé služby jsou zpracovávanou dostatečně rychle. Další informace najdete v tématu [monitorování pro vzdálenou komunikaci Reliable Service](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) a [sledování výkonu služby Reliable Actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
+Service Fabric také poskytuje sadu čítačů výkonu pro programovací modely Reliable Services a objekty actor. Pokud používáte některý z těchto modelů, můžete tyto čítače výkonu informací zajistit, že jsou vaše actors zprovozňování navýšení nebo snížení kapacity správně, nebo že žádostí o spolehlivé služby jsou zpracovávanou dostatečně rychle. Další informace najdete v tématu [monitorování pro vzdálenou komunikaci Reliable Service](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) a [sledování výkonu služby Reliable Actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
 
 Řešení Azure monitoru ke shromažďování těchto je protokoly Azure monitoru, stejně jako monitorování na úrovni platformy. Měli byste použít [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) ke shromažďování čítačů výkonu odpovídající a zobrazit v protokolech Azure Monitor.
 

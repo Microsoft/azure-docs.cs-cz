@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d6677733339babf45e7351e10d6de1c002a6ea93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437212"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436498"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
 
@@ -52,7 +52,7 @@ Nový plán pro sady runbook můžete vytvořit na webu Azure Portal nebo pomoc�
 1. Na **nový plán** podokně zadejte **název** a volitelně **popis** nového plánu.
 1. Vyberte, jestli plán se spustí jednorázově nebo podle plánu opakované tak, že vyberete **jednou** nebo **periodický**. Pokud vyberete **jednou** zadat **počáteční čas**a potom klikněte na tlačítko **vytvořit**. Pokud vyberete **periodický**, zadejte **počáteční čas** a pro **opakovat každých**, vyberte frekvenci, jak často chcete sadu runbook opakujte – podle **hodinu**, **den**, **týden**, nebo **měsíc**.
     1. Pokud vyberete **týden**, jsou k dispozici seznam dny v týdnu lze vybírat. Vyberte libovolný počet dní, jak chcete. První spuštění vašeho plánu se stane první den vybrané po času zahájení.
-    2. Pokud vyberete **měsíc**, jsou uvedeny různé možnosti. Pro **měsíční occurrances** , vyberte buď **dny v měsíci** nebo **dnech**. Pokud se rozhodnete **dny v měsíci** kalendáře, se zobrazí, který umožňuje zvolit libovolný počet dní, jak chcete. Pokud zvolíte datum třeba 31, nedojde v aktuálním měsíci, plán se nespustí. Pokud chcete plán pro spuštění poslední den, zvolte **Ano** pod **spustit poslední den v měsíci**. Pokud se rozhodnete **dnech**, **opakovat každých** možnost se zobrazí. Zvolte **první**, **druhý**, **třetí**, **čtvrtý**, nebo **poslední**. A nakonec zvolte den na opakovat.
+    2. Pokud vyberete **měsíc**, jsou uvedeny různé možnosti. Pro **měsíční opakování** , vyberte buď **dny v měsíci** nebo **dnech**. Pokud se rozhodnete **dny v měsíci** kalendáře, se zobrazí, který umožňuje zvolit libovolný počet dní, jak chcete. Pokud zvolíte datum třeba 31, nedojde v aktuálním měsíci, plán se nespustí. Pokud chcete plán pro spuštění poslední den, zvolte **Ano** pod **spustit poslední den v měsíci**. Pokud se rozhodnete **dnech**, **opakovat každých** možnost se zobrazí. Zvolte **první**, **druhý**, **třetí**, **čtvrtý**, nebo **poslední**. A nakonec zvolte den na opakovat.
 1. Po dokončení klikněte na tlačítko **vytvořit**.
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>K vytvoření nového plánu pomocí prostředí Windows PowerShell

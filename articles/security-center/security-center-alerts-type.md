@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f9ea2fd1e9a346046c55db451bc333373896db5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118084"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439679"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Principy výstrah zabezpečení ve službě Azure Security Center
 Tento článek vám pomůže porozumět různým typům výstrah zabezpečení a souvisejícím přehledům, které jsou dostupné ve službě Azure Security Center. Další informace o správě těchto výstrah a incidentů najdete v tématu [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -96,7 +96,7 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
 * **Byly odstraněny všechny stínové kopie souboru**: Tato výstraha indikuje, že se odstranily stínové kopie.
 * **Příkazy pro čištění podezřelý soubor**: Tato výstraha indikuje kombinaci příkazů systeminfo, používá k provedení samočinného čištění aktivity po ohrožení zabezpečení.  *Systeminfo.exe* je sice legitimní nástroj Windows, ale jeho spuštění dvakrát za sebou s následným použitím příkazu pro odstranění, jak k tomu došlo tady, není obvyklé.
 * **Podezřelé vytvoření účtu**: Tato výstraha indikuje, že byl vytvořen účet s nápadně podobá existujícímu integrovanému účtu s oprávněním správce. Tento postup můžou použít útočníci k vytvoření podvodného účtu, aniž by došlo k jeho detekci.
-* **Aktivita stínové kopie svazku podezřelé**: Tato výstraha indikuje aktivitu odstranění stínové kopie u daného prostředku. Stínová kopie svazku je důležitý artefakt, který uchovává snímky dat. Tato aktivita je spojena s Ransomwarem, ale může být také legitimní.
+* **Aktivita stínové kopie svazku podezřelé**: Tato výstraha indikuje aktivitu odstranění stínové kopie u daného prostředku. Stínová kopie svazku je důležitý artefakt, který uchovává snímky dat. Tato aktivita je spojena s Ransomwarem ale může být také legitimní.
 * **Metoda přetrvávání v registru Windows**: Tato výstraha indikuje pokus o zachování spustitelného souboru v registru Windows. Tuto techniku používá malware často k tomu, aby nedošlo k jeho odstranění při spuštění počítače.
 * **Podezřelé nové pravidlo brány firewall**: Tato výstraha indikuje, že nové pravidlo brány Firewall byly přidané prostřednictvím *netsh.exe* chcete povolit přenosy ze spustitelného souboru v podezřelém umístění.
 * **Podezřelé spouštění příkazu xcopy**: Tato výstraha indikuje posloupnost spuštění příkazu XCOPY, která může signalizovat, že jedna z vašich počítačů došlo k napadení a jeho použití k šíření malwaru.

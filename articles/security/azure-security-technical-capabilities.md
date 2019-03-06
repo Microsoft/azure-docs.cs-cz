@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247575"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440059"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -192,8 +192,8 @@ Alespoň jeden z doporučených šifrování modely podrobně popsané v násled
 | Modely šifrování |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
 | Šifrování serveru | Šifrování serveru | Šifrování serveru | Šifrování klienta
-| Šifrování na straně serveru pomocí klíče spravované služby | Šifrování na straně serveru pomocí Customer-Managed klíčů ve službě Azure Key Vault | Šifrování na straně serveru pomocí klíčů spravovaná zákazníkem v místním prostředí |
-| • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování <br> • Microsoft spravuje klíče <br>• Úplné cloudové funkce | • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování<br>• Zákazník řídí klíče účtů prostřednictvím Azure Key Vault<br>• Úplné cloudové funkce | • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování <br>• Zákazník řídí klíče v místním prostředí <br> • Úplné cloudové funkce| • Služeb azure neuvidí dešifrovaná data <br>• Zákazníky zachovat klíče v místním (nebo v jiných zabezpečené úložiště). Klíče nejsou k dispozici ke službám Azure <br>• Snižuje cloudové funkce|
+| Šifrování na straně serveru pomocí klíče spravované služby | Šifrování na straně serveru pomocí Customer-Managed klíčů ve službě Azure Key Vault | Klíče spravované v místě zákazníka pomocí šifrování na straně serveru |
+| • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování <br> • Microsoft spravuje klíče <br>• Úplné cloudové funkce | • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování<br>• Zákazník řídí klíče účtů prostřednictvím Azure Key Vault<br>• Úplné cloudové funkce | • Azure poskytovatelů prostředků provádět operace šifrování a dešifrování <br>• Zákazník řídí klíče On-premises <br> • Úplné cloudové funkce| • Služeb azure neuvidí dešifrovaná data <br>• Zákazníky zachovat klíče v místním (nebo v jiných zabezpečené úložiště). Klíče nejsou k dispozici ke službám Azure <br>• Snižuje cloudové funkce|
 
 ### <a name="enabling-encryption-at-rest"></a>Povolení šifrování v klidovém stavu
 

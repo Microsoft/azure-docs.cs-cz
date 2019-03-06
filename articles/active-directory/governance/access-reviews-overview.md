@@ -16,12 +16,12 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419a07ff6d423f363d6973da3df00fd4aa3f6278
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d5fa81e564cf28f8b5478abe9ec5bb63d0f11bd3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727260"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449661"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -42,12 +42,12 @@ Azure AD umožňuje spolupráci interně ve vaší organizaci a s uživateli z e
 
 ## <a name="when-to-use-access-reviews"></a>Kdy použít přístup kontroly?
 
-- **Moc velký počet uživatelů v privilegovaných rolích:** Je vhodné zkontrolovat, kolik uživatelů má přístup pro správu, kolik z nich jsou č. globálních správců, a pokud tam nějaké jsou pozváni hosté nebo partnery, kteří nebyli odebráni po přiřazení k provedení administrativní úlohy. Můžete recertifikovat uživateli přiřazení role v [role adresáře Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) jako je například globální správce, nebo [role prostředků Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) jako je například správce uživatelských přístupů v [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) prostředí.
+- **Moc velký počet uživatelů v privilegovaných rolích:** Je vhodné zkontrolovat, kolik uživatelů má přístup pro správu, kolik z nich delegovaní správci jsou globální správci, a pokud tam nějaké jsou pozváni hosté nebo partnery, kteří nebyli odebráni po přiřazení k provedení administrativní úlohy. Můžete recertifikovat uživateli přiřazení role v [role adresáře Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) jako je například globální správce, nebo [role prostředků Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) jako je například správce uživatelských přístupů v [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) prostředí.
 - **Pokud je nemožné automation:** Můžete vytvořit pravidla dynamického členství pro skupiny zabezpečení nebo skupiny Office 365, ale co když HR data není ve službě Azure AD nebo pokud uživatelé stále potřebují přístup po opuštění skupiny pro jejich nahrazení trénování? Potom můžete vytvořit recenzi této skupiny tak zajistěte, aby uživatelům, kteří stále potřebují přístup mají mít nadále přístup.
 - **Když skupiny se používá pro nový účel:** Pokud máte vytvořenou skupinu, která se má synchronizovat s Azure AD nebo pokud budete chtít povolit aplikaci Salesforce pro všichni členové skupiny tým prodeje, bylo by vhodné požádat vlastníka skupiny zkontrolovat členství ve skupině před skupiny se používají v různých riziko co obsahem.
 - **Obchodní důležitá data access:** pro některé prostředky, může být požadováno lidi mimo žádat IT pravidelně odhlášení a zadejte odůvodnění na proč potřebují přístup pro účely auditování.
 - **Chcete-li udržovat seznam výjimek pro zásady:** Ideální světě, všemi uživateli proveďte následujícím způsobem přístup zásady zabezpečení přístupu k prostředkům vaší organizace. Někdy existují však obchodních případů, které vyžadují, abyste provedli výjimky. Jako správce IT můžete spravovat tuto úlohu, vyhnout dohledu výjimky zásad a auditoři poskytnout důkaz, že tyto výjimky jsou pravidelně kontrolovány.
-- **Požádejte vlastníci skupiny a ověřte, zda že stále potřebují hostů v jejich skupinách:** Přístup zaměstnanců může automatizovat některé IAM v místním prostředí, ale nebyl pozvaný hosty. Pokud skupinu poskytuje hostů přístup k obchodní citlivý obsah a pak její odpovědnosti vlastníka skupiny. potvrďte, hosté ještě legitimní obchodní potřebu přístupu.
+- **Požádejte vlastníci skupiny a ověřte, zda že stále potřebují hostů v jejich skupinách:** S některými v místním prostředí IAM, ale nebyl pozvaný hosté může automatizovat přístup zaměstnanců. Pokud skupinu poskytuje hostů přístup k obchodní citlivý obsah a pak její odpovědnosti vlastníka skupiny. potvrďte, hosté ještě legitimní obchodní potřebu přístupu.
 - **Máte pravidelně opakované kontroly:** Můžete nastavit opakování kontroly přístupu uživatelů na sadu frekvencí například týdně, měsíčně, čtvrtletně nebo ročně a recenzenti budou upozorněni na začátku každé revizi. Revidující mohli schválit nebo odepřít přístup s rozhraním popisný a díky inteligentní doporučení.
 
 ## <a name="where-do-you-create-reviews"></a>Pokud vytvoříte revize

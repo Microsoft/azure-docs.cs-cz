@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 77c38089a4f9c6518d9736df7f3020c66ad17b3b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 573eb3a8ae6c9ee7c5b80e9621ebbfd04aaf5354
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877040"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446533"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesuňte virtuální počítače Azure do zóny dostupnosti
 Zóny dostupnosti v Azure chrání vaše aplikace a data před selháními datových center. Každé zóny dostupnosti se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Zóna dostupnosti se podporuje ve vybraných oblastech, jak je uvedeno [tady](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). 
@@ -92,14 +92,14 @@ Níže uvedený postup se dozvíte, jak pomocí Azure Site Recovery k replikaci 
 ![Enable-rep-1. PNG](media/azure-vms-to-zones/enable-rep-1.PNG)
 
 1. Vyberte **Další: Upřesňující nastavení**
-2. Vyberte hodnoty jeví pro cíl subscriptiom, cílové skupiny prostředků virtuálního počítače a virtuální sítě.
-3. V **dostupnosti** zvolte dostupností zónu, do kterého chcete přesunout virtuální počítač. 
+2. Zvolte příslušné hodnoty pro cílové předplatné, cílové skupiny prostředků virtuálního počítače a virtuální sítě.
+3. V **dostupnosti** zvolte zónu dostupnosti, do kterého chcete přesunout virtuální počítač. 
 > [!NOTE]
 > Pokud nevidíte možnost pro skupinu dostupnosti nebo zóny dostupností, zajistěte, aby [požadavky](#prepare-the-source-vms) splnění a [přípravy](#prepare-the-source-vms) zdroje jsou kompletní virtuální počítače.
 
    ![enable-rep-2.PNG](media/azure-vms-to-zones/enable-rep-2.PNG)
 
-7. Klikněte na povolit replikace. Tím se spustí úloha, která povolí replikaci pro daný virtuální počítač.
+7. Klikněte na povolit replikaci. Tím se spustí úloha, která povolí replikaci pro daný virtuální počítač.
 
 ## <a name="verify-settings"></a>Ověření nastavení
 

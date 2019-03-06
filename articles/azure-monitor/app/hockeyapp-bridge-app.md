@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121443"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448386"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat data HockeyApp v Application Insights
 
@@ -56,7 +56,7 @@ A to je vše! Vlastní a trasování dat shromážděných ve vaší aplikaci in
 Pojďme krátce se podívat na každou z těchto funkcí, které jsou teď k dispozici.
 
 ## <a name="analytics"></a>Analýzy
-Analýza je výkonný nástroj pro dotazování ad hoc vašich dat díky tomu můžete diagnostikovat a analýze telemetrických dat a rychle vyhledat hlavní příčiny a vzory.
+Analýza je výkonný nástroj pro ad hoc dotazování na data, díky tomu můžete diagnostikovat a analýze telemetrických dat a rychle vyhledat hlavní příčiny a vzory.
 
 ![Analýzy](./media/hockeyapp-bridge-app/05.png)
 

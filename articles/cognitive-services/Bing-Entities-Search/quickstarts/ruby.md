@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 44dad6d0a6f11b84c4cd2a4470e9a286e1a9ea36
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a2bf7d018712d311545422b91eac0c6ca4912960
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866079"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439374"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit s využitím Ruby
 
@@ -65,7 +65,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Odeslat požadavek a tisku resposne
+3. Odeslat požadavek a tisku odpověď
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

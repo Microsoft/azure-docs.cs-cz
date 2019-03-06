@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f6d49a60df09e78c3cbeee22d43827ecc9f9f64
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118417"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436236"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v odolná služba Functions v Azure
 
-Existuje několik možností pro diagnostiku problémů s [Durable Functions](durable-functions-overview.md). Některé z těchto možností jsou stejné pro běžné funkce a některé z nich jsou jedinečné pro Durable Functions.
+Existuje několik možností pro diagnostiku problémů s [Durable Functions](durable-functions-overview.md). Některé z těchto možností jsou stejné pro normální funkce a některé jsou jedinečné pro Durable Functions.
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -35,7 +35,7 @@ Každé události životního cyklu instance Orchestrace způsobí vygenerován�
 * **appName**: Název aplikace function app. To je užitečné v případě, že máte více aplikací funkcí sdílení stejné instance služby Application Insights.
 * **slotName**: [Slot nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) v aktuální aplikaci function app běží. To je užitečné, když využít sloty nasazení na verzi vašeho Orchestrace.
 * **functionName**: Název funkce nástroje orchestrator nebo aktivity.
-* **functiontype –**: Typ funkce, jako například **Orchestrator** nebo **aktivity**.
+* **functionType**: Typ funkce, jako například **Orchestrator** nebo **aktivity**.
 * **instanceId**: Jedinečné ID instance Orchestrace.
 * **Stav**: Stav provádění životního cyklu instance. Platné hodnoty jsou:
   * **Naplánované**: Funkce byla naplánována na spuštění, ale nebyl spuštěn dosud spuštěna.

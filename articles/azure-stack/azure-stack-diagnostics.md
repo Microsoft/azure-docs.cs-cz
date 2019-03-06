@@ -11,12 +11,12 @@ ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 41609a75efec6c15d894b61867fb9d3ae727dc8c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251856"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440552"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostické nástroje
 
@@ -163,7 +163,7 @@ Pomocí těchto kroků můžete spustit na hostitelském počítači ASDK Get Az
     -   Protokoly služby ACS se shromažďují v *úložiště* a *ACS* role.
 
 > [!NOTE]
-> Velikost a stáří limity se vynucují v protokolech shromažďovaných je nezbytné k zajištění efektivního využití prostoru úložiště Ujistěte se, že ho nezíská zahlcenou s protokoly. Ale při diagnostikování problému budete někdy potřebovat protokoly, které už možná z důvodu tato omezení neexistuje. Je tedy **důrazně doporučujeme** snižování zátěže protokolů do prostoru externí úložiště (účet úložiště v Azure, zařízení s další místní úložiště atd.) každých 8 až 12 hodin a udržte je tam po dobu 1-3 měsíců. v závislosti na vaší požadavky. Také se ujistěte, že toto umístění úložiště je zašifrovaný.
+> Velikost a stáří limity se vynucují v protokolech shromažďovaných je nezbytné k zajištění efektivního využití prostoru úložiště Ujistěte se, že ho nezíská zahlcenou s protokoly. Ale při diagnostikování problému budete někdy potřebovat protokoly, které už možná z důvodu tato omezení neexistuje. Je tedy **důrazně doporučujeme** každých 8 až 12 hodin snižování zátěže protokolů k externí místa (účet úložiště Azure, dalších na místní úložné zařízení atd.) a udržte je tam po dobu 1-3 měsíců. v závislosti na vaší požadavky. Také se ujistěte, že toto umístění úložiště je zašifrovaný.
 
 ## <a name="next-steps"></a>Další postup
 [Řešení potíží s Microsoft Azure Stack](azure-stack-troubleshooting.md)

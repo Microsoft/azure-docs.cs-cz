@@ -3,7 +3,7 @@ title: Nasazení existujícího spustitelného souboru do Azure Service Fabric |
 description: Zjistěte, jak zabalit existující aplikaci jako Host spustitelného souboru, takže je možné nasadit do clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell
-ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: 2035ee27aecdf2ec1ab8bf1166f667b5595a7cbb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168409"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439481"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Balení a nasazení existujícího spustitelného souboru do Service Fabric
 Při vytváření balíčku existujícího spustitelného souboru jako [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md), můžete buď použít šablonu projektu sady Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu jsou vytvářeny nová šablona projektu pro vás.
@@ -73,7 +73,7 @@ Proces ručně balení spustitelný soubor typu Host jsou založené na těmito 
 -->
 
 ### <a name="create-the-package-directory-structure"></a>Vytvoření balíčku adresářovou strukturu
-Můžete začít tak, že vytvoříte adresářovou strukturu, jak je popsáno v předchozí části "Balíček souboru struktury aplikace."
+Začnete vytvořením adresářovou strukturu, jak je popsáno v [balíček aplikace služby Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Přidat kód a konfigurační soubory aplikace
 Po vytvoření adresářové struktury můžete přidat kód aplikace a konfigurační soubory v části kódu a konfiguračním adresáře. Můžete také vytvořit další adresáře souborů nebo podadresáře v adresáři kódu nebo konfigurace.

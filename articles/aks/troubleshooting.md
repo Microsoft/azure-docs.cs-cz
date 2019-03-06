@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 53061d4d09ac2769e59269701467a22f292cd919
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959761"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432630"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -89,4 +89,4 @@ Tato chyba nastane, pokud clustery zadejte stavu selhání z několika důvodů.
 Operace clusteru jsou omezené, když dochází k upgradu aktivní operace nebo byl pokus o upgrade, ale následně se nezdařilo. K diagnostice problému spusťte `az aks show -g myResourceGroup -n myAKSCluster -o table` získat podrobný stav ve vašem clusteru. Na základě výsledku:
 
 * Pokud je aktivním upgradu clusteru, počkejte, až do doby ukončení operace. Pokud byla úspěšná, zkuste to znovu dříve nezdařené operace.
-* Pokud cluster selhal upgrade, postupujte podle kroků uvedených [výše](#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade-directed-from-httpsakamsaks-pending-upgrade)
+* Pokud cluster selhal upgrade, postupujte podle kroků uvedených výše

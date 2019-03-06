@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de9c79d09c400aa95775b332580c3658c349ede7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820738"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449083"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
@@ -154,7 +154,7 @@ Definuje informace o místní firmy, jako je například restaurace nebo hotelu.
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|String|  
-|Adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
+|adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
 |entityPresentationInfo|Další informace o entitě, jako je například pomocné parametry, které můžete použít k určení typu entity. Například zda je restaurace nebo hotelu. `entityScenario` Je nastaveno na ListItem.|EntityPresentationInfo|  
 |jméno|Název entity.|String|  
 |Telefon|Entity telefonní číslo.|String|  

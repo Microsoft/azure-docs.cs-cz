@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 1f6ce2e51255ddf43b6c123585866117d76f8d0b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313646"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432987"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -418,4 +418,4 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 - Výchozí hodnota InstallWindowsOSOnlyUpdates se mění na hodnotu False.
 
 ### <a name="version-132"></a>Verze 1.3.2
-- Opravit chybu, která provádí oprav lifecyle na uzlu v případě, že jsou dostupné uzly s názvem, který je podmnožinou názvu aktuálního uzlu. Pro tyto uzly, jeho možné opravy chybí nebo čeká na restartování. 
+- Opravit chybu, která provádí oprav cyle života na uzlu v případě, že jsou dostupné uzly s názvem, který je podmnožinou názvu aktuálního uzlu. Pro tyto uzly, jeho možné opravy chybí nebo čeká na restartování. 

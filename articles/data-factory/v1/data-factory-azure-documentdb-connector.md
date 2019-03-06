@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812646"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437424"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a ze služby Azure Cosmos DB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -139,7 +139,7 @@ V případě aktivity kopírování, pokud je zdroj typu **DocumentDbCollectionS
 Pomocí tohoto konektoru služby Cosmos DB, můžete snadno
 
 * Dokumenty JSON import z různých zdrojů do služby Cosmos DB, včetně objektů Blob v Azure, Azure Data Lake v místním systému souborů nebo dalšími úložišti souborů podporovaných službou Azure Data Factory.
-* Exportujte dokumentů JSON do různých úložišť založená na souborech z collecton Cosmos DB.
+* Exportujte dokumentů JSON z kolekce Cosmos DB do různých úložišť založená na souborech.
 * Migrace dat mezi dvě kolekce Cosmos DB jako-je.
 
 Abyste dosáhli takové kopírování dogmaticky na schématu

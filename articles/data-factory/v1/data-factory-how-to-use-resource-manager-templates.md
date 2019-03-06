@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 904b5db35281ed07745b33c364c03e3f4c4bfd2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111318"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449202"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Použijte šablony k vytvoření entity služby Azure Data Factory
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "56111318"
 ## <a name="overview"></a>Přehled
 Při používání služby Azure Data Factory pro vaše potřeby integrace dat, může být pro vás sami opakovaného použití stejného vzoru napříč různými prostředími nebo implementaci stejnou úlohu opakovaně ve stejném řešení. Šablony vám pomohou implementovat a spravovat tyto scénáře snadno způsobem. Šablony ve službě Azure Data Factory jsou ideální pro scénáře, které zahrnují možnost opakovaného využití a opakování.
 
-Vezměte v úvahu situace, kdy organizace má 10 výrobních závodech proto po celém světě. Protokoly z každého zařízení jsou uloženy v databázi serveru SQL Server samostatný lokální. Společnost chce, aby se k vytvoření jednoho datového skladu v cloudu pro ad-hoc analytics. Také chce mít stejnou logiku, ale různé konfigurace pro vývoj, testování a produkční prostředí.
+Vezměte v úvahu situace, kdy organizace má 10 výrobních závodech proto po celém světě. Protokoly z každého zařízení jsou uloženy v databázi serveru SQL Server samostatný lokální. Společnost chce, aby se k vytvoření jednoho datového skladu v cloudu pro ad hoc analýzy. Také chce mít stejnou logiku, ale různé konfigurace pro vývoj, testování a produkční prostředí.
 
 V tomto případě úkol musí mezi 10 datových továren u každého z výrobních závodů opakovat v rámci stejného prostředí, ale s různými hodnotami. V důsledku toho **opakování** je k dispozici. Šablonování umožňuje abstrakce tento obecný tok (to znamená, kanálů, které mají stejné aktivity v každé služby data factory), ale pro každou výrobních závodů, používá soubor parametrů samostatné.
 

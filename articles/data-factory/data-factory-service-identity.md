@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: c49cff297404174a6331eaa82ab5efd585a345c4
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: daafac3cd89b2af7f6d7fa9a8ae28eecd334b623
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671807"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438461"
 ---
-# <a name="managed-identity-for-data-factory"></a>Spravovaná identita služby Data Factory
+# <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
 Tento článek vám pomůže pochopit, co je spravovaná identita pro objekt pro vytváření dat (dříve označované jako Identity spravované služby nebo MSI) a jak to funguje.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
@@ -54,10 +56,10 @@ Pokud nenajdete své datové továrny nemá spravovanou identitu spojené násle
 
 ### <a name="generate-managed-identity-using-powershell"></a>Generovat spravovanou identitu pomocí Powershellu
 
-Volání **Set-AzureRmDataFactoryV2** příkaz znovu, pak naleznete v tématu "Identity" polí generovaných nově:
+Volání **Set-AzDataFactoryV2** příkaz znovu, pak naleznete v tématu "Identity" polí generovaných nově:
 
 ```powershell
-PS C:\WINDOWS\system32> Set-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
+PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
 
 DataFactoryName   : ADFV2DemoFactory
 DataFactoryId     : /subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/ADFV2DemoFactory
@@ -167,7 +169,7 @@ Můžete najít informace o spravovaných identit z webu Azure portal -> datové
 Spravovaná identita ID instančního objektu a ID tenanta bude vrácen, pokud dostanete konkrétní datové továrny následujícím způsobem:
 
 ```powershell
-PS C:\WINDOWS\system32> (Get-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
+PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
 
 PrincipalId                          TenantId
 -----------                          --------
@@ -177,7 +179,7 @@ PrincipalId                          TenantId
 Zkopírujte ID instančního objektu a potom spusťte následující příkaz Azure Active Directory s ID objektu zabezpečení jako parametr zobrazíte **ApplicationId**, který použijete k udělení přístupu:
 
 ```powershell
-PS C:\WINDOWS\system32> Get-AzureRmADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
+PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 
 ServicePrincipalNames : {76f668b3-XXXX-XXXX-XXXX-1b3348c75e02, https://identity.azure.net/P86P8g6nt1QxfPJx22om8MOooMf/Ag0Qf/nnREppHkU=}
 ApplicationId         : 76f668b3-XXXX-XXXX-XXXX-1b3348c75e02

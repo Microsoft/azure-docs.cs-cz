@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 355a144597ce384725d92e64d4a5e4909b18c3d7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246098"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449951"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Jak se zaregistrovat pro rozhraní Text Analytics API
 
@@ -25,7 +25,7 @@ Prostředky rozhraní API pro analýzu textu jsou k dispozici nepřetržitě v c
 
 + Vytvořte si [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a zvolte **Rozhraní API pro analýzu textu**. Po registraci se vygeneruje váš klíč.
 
-Rozhraní API pro analýzu textu nabízí úroveň Free pro zkoumání a vyzkoušení a fakturovatelné úrovně pro produkční úlohy. V každém předplatném můžete mít několik registrací: jednu bezplatnou, jednu placenou atd. Pokud se váš požadovaný objem transakcí zvýší, můžete přepnout na úroveň, která nabízí více transakcí.
+Rozhraní API pro analýzu textu nabízí úroveň Free pro zkoumání a vyzkoušení a fakturovatelné úrovně pro produkční úlohy. V každé předplatné může mít více registrací: jedné free, jeden placené a tak dále. Pokud se váš požadovaný objem transakcí zvýší, můžete přepnout na úroveň, která nabízí více transakcí.
 
 Po služby ve verzi Preview nebo na bezplatné úrovni neexistuje žádná smlouva SLA. Další informace najdete ve [smlouvě SLA pro služby Cognitive Services](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 

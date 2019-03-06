@@ -6,29 +6,19 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 01/23/19
-ms.openlocfilehash: 86a7f98f8232d4fb3e915efee6d9b53f1fae6e7e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737701"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410277"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
-Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
-
-V následující tabulce jsou uvedeny rozdíly mezi identity dvě možnosti:
-
-||Odpojení od Internetu|Připojení k Internetu|
-|---------|---------|---------|
-|Fakturace|Musí být kapacity<br> Pouze Enterprise Agreement (EA)|Kapacita nebo platbami jako využití<br>EA nebo poskytovatele Cloud Solution Provider (CSP)|
-|Identita|Musí být služba AD FS|Azure AD nebo AD FS|
-|Marketplace |Podporováno<br>BYOL licencování|Podporováno<br>BYOL licencování|
-|Registrace|Povinné, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Automatizované|
-|Opravy a aktualizace|Povinné, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Balíček aktualizace si můžete stáhnout přímo<br> z Internetu do služby Azure Stack.|
+Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. V případě připojení můžete použít Azure AD nebo AD FS. Odpojené scénáři je podporována pouze služba AD FS.
 
 > [!IMPORTANT]
 > Zprostředkovatel identity se nedá přejít bez opětovného nasazení celé řešení Azure Stack.
@@ -43,7 +33,7 @@ Ověřování je jednou ze součástí identity. Ke správě na základě říze
 
 Existující služby AD FS je účet služby tokenů zabezpečení (STS), která odesílá deklarace identity do služby Azure Stack AD FS (zdrojem STS). Ve službě Azure Stack automatizace vytvoří vztah důvěryhodnosti zprostředkovatele deklarací se koncový bod metadat pro existující službu AD FS.
 
-V existující služby AD FS musí být nakonfigurovaný vztah důvěryhodnosti předávající strany. Tento krok se provádí automatizace a musí být nakonfigurovaný pomocí operátoru. Koncový bod metadat služby Azure Stack je popsána v souboru AzureStackStampDeploymentInfo.JSON nebo prostřednictvím privilegovaných koncový bod pomocí příkazu `Get-AzureStackInfo`.
+V existující služby AD FS musí být nakonfigurovaný vztah důvěryhodnosti předávající strany. Tento krok se provádí automatizace a musí být nakonfigurovaný pomocí operátoru. Koncový bod Azure Stack virtuálních IP adres pro službu AD FS můžete vytvořit pomocí vzoru `https://adfs.<Region>.<ExternalFQDN>/`.
 
 Konfiguraci vztahu důvěryhodnosti předávající strany také vyžaduje, abyste nakonfigurovali pravidla transformace deklarací identity, které jsou k dispozici společností Microsoft.
 

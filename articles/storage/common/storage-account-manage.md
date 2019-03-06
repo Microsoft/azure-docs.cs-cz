@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981327"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444051"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Spravovat nastavení účtu úložiště na webu Azure Portal
 
@@ -85,4 +85,4 @@ Pokud se pokusíte odstranit účet úložiště, který je přidružený virtu�
 ## <a name="next-steps"></a>Další postup
 
 - [Přehled účtu Azure storage](storage-account-overview.md)
-- [vytvořit účet úložiště](storage-quickstart-create-account.md)
+- [Vytvoření účtu úložiště](storage-quickstart-create-account.md)

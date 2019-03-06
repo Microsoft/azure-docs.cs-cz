@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3a3e9da66cf9ca6e08bb25b4f4b9d09aa0c5b6e7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989306"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431933"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
 
@@ -42,9 +42,9 @@ Pokud chcete upgradovat, použijte následující kroky:
 
 1. Vraťte se do složky, do které jste stáhli sjednocené instalace a spuštění MicrosoftAzureSiteRecoveryUnifiedSetup.exe dokončit upgrade. 
 
-## <a name="upgrade-failure-due-to-the-thirdparty-folder-being-renamed"></a>Upgrade selhalo, protože se přejmenovat složku třetích stran
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Upgrade nezdaří z důvodu složce 3. stran Probíhá přejmenování
 
-Pro úspěch upgradu nesmí přejmenovat složku třetích stran.
+Pro úspěch upgradu nesmí přejmenovat složku 3. stran.
 
 K vyřešení daného problému.
 
