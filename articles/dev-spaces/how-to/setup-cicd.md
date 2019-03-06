@@ -11,12 +11,12 @@ ms.topic: conceptual
 manager: yuvalm
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: b614a517874363be95ff17d802995a927a15af2f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ba5032e5d52d1fd70d0bfd4f1d677e17df7deffd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194619"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437441"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD pomocí Azure Dev mezery
 
@@ -46,6 +46,17 @@ azds space select -n dev
 
 Po zobrazení výzvy k výběru místa dev nadřazené vyberte  _\<žádný\>_.
 
+Po vytvoření prostoru dev, je nutné určit přípona hostitele. Použití `azds show-context` příkazu můžete zobrazit hostitele příponu Kontroleru příchozího přenosu dat Azure Dev mezery.
+
+```cmd
+$ azds show-context
+Name   ResourceGroup    DevSpace  HostSuffix
+-----  ---------------  --------  ----------------------
+MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
+```
+
+V předchozím příkladu je přípona hostitele _fedcba098.eus.azds.io_. Tato hodnota se používá později při vytváření definice vydané verze.
+
 _Dev_ místo bude vždy obsahovat nejnovější stav úložiště směrný plán, tak, aby vývojáři mohou vytvářet _podřízené prostory_ z _dev_ otestovat jejich izolovaných změn v rámci větší aplikace. Tento koncept je popsáno podrobněji v kurzech vývoje mezery.
 
 ## <a name="creating-the-build-definition"></a>Vytváří se definice sestavení
@@ -65,17 +76,17 @@ V _azds_updates_ větve jsme zahrnuli jednoduchý [YAML kanálu Azure](https://d
 V závislosti na jazyku, který jste zvolili byl kanál YAML vrácené se změnami do cesty, podobně jako: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 K vytvoření kanálu z tohoto souboru:
-1. Na hlavní stránce projektu DevOps přejděte do kanálů > sestavení
-1. Vyberte možnost vytvořit **nový** vytvoření kanálu
-1. Vyberte **Githubu** jako zdroj, autorizovat s vaším účtem Githubu Pokud nezbytné a vyberte _azds_updates_ větve z vašeho rozvětveného verzi vývoje prostorů úložiště ukázková aplikace
-1. Vyberte **konfigurace jako kódu**, nebo **YAML**, jako šablonu
-1. Stránka konfigurace se teď zobrazí pro vašeho kanálu sestavení. Jak je uvedeno výše, zadejte cestu konkrétní jazyk pro **cesta k souboru YAML**. Například `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`.
-1. Přejít na kartě proměnné
+1. Na hlavní stránce projektu DevOps přejděte do kanálů > sestavení.
+1. Vyberte možnost vytvořit **nový** kanálu pro sestavování.
+1. Vyberte **Githubu** jako zdroj, autorizovat s vaším účtem Githubu Pokud nezbytné a vyberte _azds_updates_ větve z vašeho rozvětveného verzi vývoje prostorů úložiště ukázková aplikace.
+1. Vyberte **konfigurace jako kódu**, nebo **YAML**, jako šablony.
+1. Stránka konfigurace se teď zobrazí pro vašeho kanálu sestavení. Jak je uvedeno výše, přejděte do umístění konkrétní jazyk pro **cesta k souboru YAML** pomocí **...**  tlačítko. Například, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Přejděte **proměnné** kartu.
 1. Ruční přidání _dockerId_ jako proměnnou, která je uživatelské jméno vašeho [účet správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). (Jak je uvedeno v článku požadavků)
 1. Ruční přidání _dockerPassword_ jako proměnnou, která je heslo vaší [účet správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). Nezapomeňte zadat _dockerPassword_ jako tajný kód (výběrem ikonu zámku) z bezpečnostních důvodů.
-1. Vyberte **Uložit & frontu**
+1. Vyberte **Uložit & frontu**.
 
-Teď máte řešení CI, které se automaticky sestaví *mywebapi* a *webfrontend* pro žádnou aktualizaci do _azds_updates_ větví z forku Githubu. Můžete ověřit tak, že přejdete na web Azure Portal, výběr služby Azure Container Registry a procházení byly nahrány imagí Dockeru _úložišť_ kartu:
+Teď máte řešení CI, které se automaticky sestaví *mywebapi* a *webfrontend* pro žádnou aktualizaci do _azds_updates_ větví z forku Githubu. Můžete ověřit tak, že přejdete na web Azure Portal, výběr služby Azure Container Registry a procházení byly nahrány imagí Dockeru **úložišť** kartu. Může trvat několik minut, než bitové kopie sestavení a zobrazí se v registru kontejneru.
 
 ![Úložiště Azure Container Registry](../media/common/ci-cd-images-verify.png)
 
@@ -83,31 +94,44 @@ Teď máte řešení CI, které se automaticky sestaví *mywebapi* a *webfronten
 
 1. Na hlavní stránce projektu DevOps přejděte do kanálů > vydané verze
 1. Pokud pracujete v zcela nový projekt DevOps, které ještě neobsahuje definici vydané verze, musíte nejprve vytvořit definici prázdný verzi než budete pokračovat. Možnost importu se nezobrazí v uživatelském rozhraní, dokud nebudete mít existující definice vydané verze.
-1. Na levé straně klikněte na tlačítko **+ nová** tlačítko a pak klikněte na **importovat kanálu**
-1. Vyberte soubor .json na `samples/release.json`
-1. Klikněte na tlačítko Ok. Všimněte si, že v podokně kanálu byl načten pomocí stránky pro úpravu definice vydání. Všimněte si, že jsou také některé red varovné ikony označující clusteru konkrétní podrobnosti, které musí být pořád nakonfigurované.
+1. Na levé straně klikněte na tlačítko **+ nová** tlačítko a pak klikněte na **importovat kanálu**.
+1. Klikněte na tlačítko **Procházet** a vyberte `samples/release.json` z projektu.
+1. Klikněte na **OK**. Všimněte si, že v podokně kanálu byl načten pomocí stránky pro úpravu definice vydání. Všimněte si, že jsou také některé red varovné ikony označující clusteru konkrétní podrobnosti, které musí být pořád nakonfigurované.
 1. V levém podokně kanálu, klikněte na tlačítko **přidání artefaktu** bublinu.
-1. V **zdroj** rozevíracím seznamu vyberte sestavení kanálu, který jsme vytvořili něco dříve v tomto dokumentu.
-1. Pro **výchozí verze**, doporučujeme vám, že zvolíte **nejnovější z výchozí větev sestavení kanálu**. Nepotřebujete žádné značky zadány.
-1. Nastavte **alias zdroje** k `drop`. Předdefinované uvolnění úlohy použijte **alias zdroje** , je nutné ji nastavit.
+1. V **zdroj** rozevíracím seznamu vyberte sestavení kanálu, kterou jste vytvořili dříve.
+1. Pro **výchozí verze**, zvolte **nejnovější z výchozí větve kanálu sestavení se značkami**.
+1. Ponechte **značky** prázdný.
+1. Nastavte **alias zdroje** k `drop`. **Alias zdroje** hodnotu používají předdefinované uvolnění úloh, je nutné ji nastavit.
 1. Klikněte na tlačítko **Add** (Přidat).
 1. Nyní klikněte na ikonu blesku na nově vytvořený `drop` zdroj artefaktu, jak je znázorněno níže:
 
     ![Nastavení průběžného nasazování verze artefaktu](../media/common/release-artifact-cd-setup.png)
-1. Povolit **trigger průběžného nasazování**
-1. Teď přejděte do podokna úloh. _Dev_ fáze by měla být zaškrtnutá a které by se zobrazit tři červené rozevírací ovládací prvky jako níže:
-
-    ![Nastavení definice verze](../media/common/release-setup-tasks.png)
-1. Zadejte předplatné Azure, skupinu prostředků a cluster, který používáte s Azure Dev mezery.
-1. Měla by existovat jenom jeden další oddíl v tomto okamžiku; zobrazují red **úlohu agenta** oddílu. Tam můžete a zadejte **hostované 1604 Ubuntu** jako fond agenta pro tuto fázi.
-1. Podržte ukazatel myši nad úlohy selektoru v horní části vyberte _produkční_.
-1. Zadejte předplatné Azure, skupinu prostředků a cluster, který používáte s Azure Dev mezery.
-1. V části **úlohu agenta**, nakonfigurujte **hostované 1604 Ubuntu** jako fond agentů.
+1. Povolit **trigger průběžného nasazování**.
+1. Najeďte myší **úlohy** kartu vedle **kanálu** a klikněte na tlačítko _dev_ upravit _dev_ Příprava úlohy.
+1. Ověřte **Azure Resource Manageru** zvolena možnost **typ připojení.** a uvidíte tři ovládacích prvků rozevírací seznam zvýrazněné červeně: ![Nastavení definice verze](../media/common/release-setup-tasks.png)
+1. Vyberte předplatné Azure, které používáte s Azure Dev mezerami. Budete také muset klikněte na tlačítko **Authorize**.
+1. Vyberte skupinu prostředků a cluster, který používáte s Azure Dev mezery.
+1. Klikněte na **úlohu agenta**.
+1. Vyberte **hostované 1604 Ubuntu** pod **fondu Agentských**.
+1. Najeďte myší **úlohy** selektoru v horní části stránky, klikněte na tlačítko _produkční_ upravit _produkční_ Příprava úlohy.
+1. Ověřte **Azure Resource Manageru** zvolena možnost **typ připojení.** a vyberte předplatné Azure, skupinu prostředků a cluster, který používáte s Azure Dev mezery.
+1. Klikněte na **úlohu agenta**.
+1. Vyberte **hostované 1604 Ubuntu** pod **fondu Agentských**.
+1. Klikněte na tlačítko **proměnné** kartu a aktualizovat proměnné pro svou verzi.
+1. Aktualizujte hodnotu **DevSpacesHostSuffix** z **UPDATE_ME** na vaše přípona hostitele. Přípona hostitele se zobrazí, když jste spustili `azds show-context` příkaz dříve.
 1. Klikněte na tlačítko **Uložit** v pravém horním rohu, a **OK**.
 1. Klikněte na tlačítko **+ vydání** (vedle tlačítka Uložit), a **vytvořit vydanou verzi**.
-1. Zkontrolujte nejnovější sestavení z vašeho kanálu sestavení je vybraný v části artefakty a přístupů **vytvořit**.
+1. V části **artefakty**, ověřte vybrané na nejnovější verzi z vašeho kanálu sestavení.
+1. Klikněte na možnost **Vytvořit**.
 
-Automatický proces vydávání nyní se spustí proces, nasazení *mywebapi* a *webfrontend* grafy pro vaše Kubernetes cluster v _dev_ prostor nejvyšší úrovně. Můžete sledovat průběh vydaných verzí na webovém portálu Azure DevOps.
+Automatický proces vydávání nyní se spustí proces, nasazení *mywebapi* a *webfrontend* grafy pro vaše Kubernetes cluster v _dev_ prostor nejvyšší úrovně. Můžete sledovat průběh vydaných verzí na webovém portálu Azure DevOps:
+
+1. Přejděte **verze** části **kanály**.
+1. Klikněte na kanál pro vydávání verzí pro ukázkovou aplikaci.
+1. Klikněte na název nejnovější verzi.
+1. Najeďte myší na **dev** pole v rámci **fáze** a klikněte na tlačítko **protokoly**.
+
+Vydání se provádí po dokončení všech úkolů.
 
 > [!TIP]
 > Pokud vydaných verzí se nezdaří s chybovou zprávou *upgradu se nezdařilo: Vypršel časový limit čekání na podmínku*, zkuste kontrola podů ve vašem clusteru [na řídicím panelu Kubernetes](../../aks/kubernetes-dashboard.md). Pokud se zobrazí, se nedaří podů začít s chybové zprávy, jako jsou *Nepodařilo se vyžádat image "azdsexample.azurecr.io/mywebapi:122": chyby rpc: kód = Neznámý desc = chybová odpověď z démona: Získat https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: neoprávněným: je vyžadováno ověření*, může to být proto, že cluster nemá autorizaci k vyžádání ze služby Azure Container Registry. Ujistěte se, že jste dokončili [autorizovat clusteru AKS na vyžádání ze služby Azure Container Registry](../../container-registry/container-registry-auth-aks.md) požadovaných součástí.
@@ -115,31 +139,37 @@ Automatický proces vydávání nyní se spustí proces, nasazení *mywebapi* a 
 Teď máte plně automatizované kanály CI/CD pro svého forku Githubu Dev prostory ukázkových aplikací. Pokaždé, když potvrzení a nasdílení změn kódu, sestavení kanálu se vytváření a nasdílení změn *mywebapi* a *webfrontend* bitové kopie do vlastní instance služby ACR. Pak kanál pro vydávání verzí nasadíte pro každou aplikaci do grafu helmu _dev_ místa v clusteru povolené prostory vývoj.
 
 ## <a name="accessing-your-dev-services"></a>Přístup k vaší _dev_ služby
-Po nasazení _dev_ verzi *webfrontend* přístupné přes veřejnou adresu URL podobnou této: `http://dev.webfrontend.<hash>.<region>.aksapp.io`.
+Po nasazení _dev_ verzi *webfrontend* přístupné přes veřejnou adresu URL podobnou této: `http://dev.webfrontend.fedcba098.eus.azds.io`. Tuto adresu URL můžete najít spuštěním `azds list-uri` příkaz: 
 
-Pomocí této adresy URL můžete najít *kubectl* rozhraní příkazového řádku:
 ```cmd
-kubectl get ingress -n dev webfrontend -o=jsonpath="{.spec.rules[0].host}"
+$ azds list-uris
+
+Uri                                           Status
+--------------------------------------------  ---------
+http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ```
 
 ## <a name="deploying-to-production"></a>Nasazení do produkčního prostředí
-Klikněte na tlačítko **upravit** v definici vydané verze a Všimněte si, že je _produkční_ fáze definované:
-
-![Produkční fáze](../media/common/prod-env.png)
 
 Chcete-li ručně převést konkrétní vydání do _produkční_ pomocí systému CI/CD vytvořené v tomto kurzu:
-1. Otevřete dříve úspěšné vydané verzi na portálu pro DevOps
-1. Najeďte myší fázi 'prod'
-1. Vyberte nasazení
+1. Přejděte **verze** části **kanály**.
+1. Klikněte na kanál pro vydávání verzí pro ukázkovou aplikaci.
+1. Klikněte na název nejnovější verzi.
+1. Najeďte myší **produkční** pole v rámci **fáze** a klikněte na tlačítko **nasadit**.
+    ![Přesun do produkčního prostředí](../media/common/prod-promote.png)
+1. Najeďte myší na **produkční** pole znovu pod **fáze** a klikněte na tlačítko **protokoly**.
 
-![Přesun do produkčního prostředí](../media/common/prod-promote.png)
+Vydání se provádí po dokončení všech úkolů.
 
-Náš příklad kanálu CI/CD díky pomocí proměnných můžete změnit předpona DNS *webfrontend* v závislosti na prostředí, ve kterém se nasazuje. Tak přístup k vašim službám "produkční", můžete použít adresu URL podobnou této: `http://prod.webfrontend.<hash>.<region>.aksapp.io`.
+_Produkční_ fázi kanálu CI/CD používá nástroj pro vyrovnávání zatížení místo řadiče Dev prostory příchozího přenosu dat pro poskytnutí přístupu k _produkční_ služby. V nasazení služby _produkční_ fázi jsou k dispozici jako IP adres místo názvů DNS. V produkčním prostředí můžete vytvořit vlastní kontroler příchozího přenosu dat pro hostování vašeho službám v závislosti na konfiguraci DNS.
 
-Po nasazení, můžete najít pomocí adresy URL *kubectl* rozhraní příkazového řádku: <!-- TODO update below to use list-uris when the product has been updated to list non-azds ingresses #769297 -->
+Pokud chcete zjistit IP webfrontend služby, klikněte na **tisk webfrontend veřejnou IP adresu** krok rozbalte výstup protokolu. Pomocí zobrazené v protokolu výstupu pro přístup k IP **webfrontend** aplikace.
 
 ```cmd
-kubectl get ingress -n prod webfrontend -o=jsonpath="{.spec.rules[0].host}"
+...
+2019-02-25T22:53:02.3237187Z webfrontend can be accessed at http://52.170.231.44
+2019-02-25T22:53:02.3320366Z ##[section]Finishing: Print webfrontend public IP
+...
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>Vývoj prostory instrumentace v produkčním prostředí

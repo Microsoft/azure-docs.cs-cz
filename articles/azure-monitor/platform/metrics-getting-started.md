@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: a94e53644b2032af7be1575cd13807e0484eb182
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9d23d4b30ca4d394fb4afd0bb6620be6df179600
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344704"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444935"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -26,7 +26,7 @@ Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostřed
 
 1. Začněte tím, že [výběr prostředku a metriku](#creating-your-first-metric-chart) a zobrazí se základní graf. Potom [vyberte časový rozsah](#picking-time-range) , který je relevantní pro šetření.
 
-1. Po získání informací o základní grafy, můžete chtít zkuste [použití filtrů dimenzí a rozdělování](#applying-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
+1. Zkuste [použití filtrů dimenzí a rozdělování](#applying-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
 
 1. Použití [upřesňující nastavení](#advanced-chart-settings-and-next-steps) přizpůsobení grafu před připnutím na řídicí panely. [Konfigurace výstrah](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotou.
 

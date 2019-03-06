@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b4b514350e36e9fe71e7c5cb5cd978764e0108d5
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317182"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409846"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -141,7 +141,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [AzSqlDatabase obnovení](https://docs.microsoft.com/powershell/module/az.sql/restore-azurermsqldatabase)
+- K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [obnovení AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
 
   | Rutina | Popis |
   | --- | --- |
@@ -153,7 +153,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
   > [!TIP]
   > Ukázkový skript prostředí PowerShell ukazuje, jak provést obnovení bodu v čase databáze, najdete v části [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-- Chcete-li obnovit databázi Managed Instance, naleznete v tématu [v daném okamžiku obnovení databáze na spravované instanci Azure SQL pomocí prostředí AzureRm.Sql PowerShell knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-Az-sql-powershell-library/)
+- Chcete-li obnovit databázi Managed Instance, naleznete v tématu [v daném okamžiku obnovení databáze na spravované instanci Azure SQL pomocí prostředí AzureRm.Sql PowerShell knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
 
 ### <a name="rest-api"></a>REST API
 

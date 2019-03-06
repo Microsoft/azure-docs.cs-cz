@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ada0a54f014e4e896c0e91d1eeafb94e6d254d5b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565208"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445073"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Další informace o zřízení nových tenantů a jejich registrace v katalogu
 
@@ -46,7 +46,7 @@ Katalog umožňuje název nebo umístění databáze, kterou chcete změnit s mi
 
 Katalog také můžete ukládat další tenanta nebo metadata databáze, jako je verze schématu, plán služeb nebo smlouvy o úrovni služeb nabízených klientům. Další informace, které umožňují správu aplikací, zákaznická podpora nebo DevOps může ukládat do katalogu. 
 
-Nad rámec aplikace SaaS můžete povolit katalog databázové nástroje. V ukázce databáze na tenanta SaaS aplikace Wingtip Tickets katalogu slouží k povolení dotazy mezi tenanty, která je prozkoumali v [Ad-hoc, generování sestav kurzu](saas-tenancy-cross-tenant-reporting.md). Mezidatabázové úlohy správy je prozkoumali v [Schema management](saas-tenancy-schema-management.md) a [Tenant analytics](saas-tenancy-tenant-analytics.md) kurzy. 
+Nad rámec aplikace SaaS můžete povolit katalog databázové nástroje. V ukázce databáze na tenanta SaaS aplikace Wingtip Tickets katalogu slouží k povolení dotazy mezi tenanty, která je prozkoumali v [vykazování Ad hoc kurzu](saas-tenancy-cross-tenant-reporting.md). Mezidatabázové úlohy správy je prozkoumali v [Schema management](saas-tenancy-schema-management.md) a [Tenant analytics](saas-tenancy-tenant-analytics.md) kurzy. 
 
 Ve službě SaaS aplikace Wingtip Tickets Ukázky katalogu implementovaná pomocí funkcí správy horizontálních oddílů [Klientská knihovna Elastic Database (EDCL)](sql-database-elastic-database-client-library.md). EDCL je k dispozici v jazyce Java a .NET Framework. EDCL umožňuje aplikaci vytvářet, spravovat a použít mapy horizontálních oddílů databáze zálohována. 
 

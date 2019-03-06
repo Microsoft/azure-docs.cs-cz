@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 334f5fa2309c44bebe8583f497fdaa3c7578e5ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162574"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Integrace Azure Active Directory s T & E Express
 
@@ -134,7 +134,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Vyberte **Activar(Activate)** možnost **ne** k **SI(Yes)**. V **metadat zprostředkovatele Identity** textového pole vložte kód XML, který máte metadat stáhl z webu Azure portal.
+1. Vyberte **Activar(Activate)** možnost **ne** k **SI(Yes)**. V **metadat zprostředkovatele Identity** textového pole vložte kód XML, který jste si stáhli z webu Azure portal metadat.
 
     ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tyeAdmin.png)
 

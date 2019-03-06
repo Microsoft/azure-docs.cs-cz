@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 1/29/2019
+ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207492"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436030"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače VMware nebo fyzických počítačů do Azure
 
@@ -110,7 +110,50 @@ Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure j
 
 Při spouštění virtuálním počítači Windows příspěvek převzetí služeb při selhání, pokud se zobrazí zpráva neočekávané vypnutí na obnoveného virtuálního počítače, znamená to, že stav vypnutí virtuálního počítače nebyly zaznamenány v bodu obnovení pro převzetí služeb při selhání. To se stane, když obnovíte do bodu, když virtuální počítač kdyby byl vypnutý plně.
 
-To není obvykle příčinou znepokojení a obvykle se dá ignorovat pro neplánované převzetí služeb při selhání. V případě plánované převzetí služeb při selhání Ujistěte se, že virtuální počítač je správně vypnutý před převzetí služeb při selhání a poskytnout dostatek času na probíhající replikaci dat v místním k odeslání do Azure. Potom použijte **nejnovější** možnost [převzetí služeb při selhání obrazovky](site-recovery-failover.md#run-a-failover) tak, aby všechny čekající data v Azure je zpracován do bodu obnovení, který potom slouží pro převzetí služeb při selhání virtuálního počítače.
+To není obvykle příčinou znepokojení a obvykle se dá ignorovat pro neplánované převzetí služeb při selhání. Pokud je naplánovaná převzetí služeb při selhání, ujistěte se, že virtuální počítač je správně vypnutý před převzetí služeb při selhání a poskytnout dostatek času na probíhající replikaci dat v místním k odeslání do Azure. Potom použijte **nejnovější** možnost [převzetí služeb při selhání obrazovky](site-recovery-failover.md#run-a-failover) tak, aby všechny čekající data v Azure je zpracován do bodu obnovení, který potom slouží pro převzetí služeb při selhání virtuálního počítače.
+
+## <a name="unable-to-select-the-datastore"></a>Nelze vybrat úložiště
+
+Tento problém je označeno, když jste na portálu nezobrazuje úložišti dat v Azure, při pokusu o znovunastavením ochrany tohoto virtuálního počítače, který má došlo k selhání. Důvodem je, že hlavní cíl se nerozpoznal jako virtuální počítač v rámci vCenters přidán do Azure Site Recovery.
+
+Další informace o virtuální počítač znovu se zapíná ochrana, najdete v části [znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure](vmware-azure-reprotect.md).
+
+Řešení tohoto problému:
+
+Ručně vytvořit hlavní cíl na vCenter, který spravuje váš zdrojový počítač. Úložiště bude k dispozici po další operace vCenter zjišťování a aktualizace prostředků infrastruktury.
+
+> [!Note]
+> 
+> Zjišťování a aktualizace prostředků infrastruktury operace může trvat až 30 minut. 
+
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Registrace hlavního cíle Linuxu ve službě CS se nezdaří s chybou SSL 35 
+
+Registrace konfiguračního serveru do Azure Site Recovery Master Target nezdaří z důvodu ověření proxy serveru se povoluje na hlavním cíli. 
+ 
+Tato chyba je indikován následující řetězce v protokolu instalace: 
+
+RegisterHostStaticInfo došlo k výjimce config/talwrapper.cpp(107) [příspěvek] CurlWrapper příspěvek se nezdařilo: server: 10.38.229.221, port: 443, phpUrl: request_handler.php, zabezpečené: true, ignoreCurlPartialError: hodnotu false s chybou: [na curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] se nepodařilo publikovat požadavek: (35) – Chyba připojení SSL. 
+ 
+Řešení tohoto problému:
+ 
+1. Na konfiguračním serveru virtuálního počítače otevřete příkazový řádek a ověřte nastavení proxy serveru pomocí následujících příkazů:
+
+    CAT /etc/environment echo $http_proxy echo $https_proxy 
+
+2. Výstup z předchozích příkazů ukazuje, že jsou definovány http_proxy nebo https_proxy nastavení, použijte jednu z následujících metod odblokujete komunikaci hlavní cíl se konfigurační server:
+   
+   - Stáhněte si [nástroj PsExec](https://aka.ms/PsExec).
+   - Použijte nástroj pro přístup k systému uživatelský kontext a určit, jestli je nakonfigurovaná adresa proxy serveru. 
+   - Pokud je nakonfigurován proxy server, otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
+  
+     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+
+   - Chcete-li zajistit, že hlavní cílový server může komunikovat s konfiguračním serverem:
+  
+     - Upravte nastavení proxy serveru v aplikaci Internet Explorer obejít IP adresu hlavního cílového serveru přes proxy server.   
+     Nebo
+     - Vypněte proxy server na hlavním cílovém serveru. 
+
 
 ## <a name="next-steps"></a>Další postup
 - Řešení potíží s [připojení RDP k virtuálnímu počítači Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)

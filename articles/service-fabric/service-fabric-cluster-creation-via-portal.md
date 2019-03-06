@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: 71448125d7308ca28e7241fd4019aadba430214e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 80a4014cb371f3c37c01fa1cf2d20041caf17184
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106133"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448217"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -191,7 +191,7 @@ Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvon
 Abyste mohli provádět operace správy ve vašem clusteru pomocí Powershellu nebo rozhraní příkazového řádku, budete muset připojit ke clusteru, přečtěte si informace o tom, jak na [připojení k vašemu clusteru](service-fabric-connect-to-secure-cluster.md).
 
 ## <a name="view-your-cluster-status"></a>Zobrazení stavu clusteru
-![Snímek obrazovky okna Podrobnosti o clusteru na řídicím panelu.][ClusterDashboard]
+![Snímek obrazovky podrobnosti o clusteru na řídicím panelu.][ClusterDashboard]
 
 Po vytvoření clusteru si můžete prohlédnout na portálu pro váš cluster:
 

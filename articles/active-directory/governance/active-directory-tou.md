@@ -15,12 +15,12 @@ ms.subservice: compliance
 ms.date: 02/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f2de9274e1b6c996e75148d1a1f018d73a721bb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163763"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443449"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -315,7 +315,7 @@ Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu 
 
 Většina organizací má proces místo jejich zaměstnanci mohli souhlas s jejich organizace podmínky použití a ochrana osobních údajů. Ale jak můžete vynutit stejné souhlasy pro Azure AD business-to-business (B2B) hosté přidané prostřednictvím služby SharePoint nebo týmy? Pomocí podmíněného přístupu a podmínky použití, můžete vynutit zásady přímo na uživatele typu Host B2B. Během toku uplatnění pozvánky se zobrazí uživatele s podmínkami použití. Tato podpora je aktuálně ve verzi preview.
 
-Podmínky použití se zobrazí pouze tehdy, pokud má uživatel účet hostovaný v Azure AD. SharePoint Online má v současné době [ad-hoc externí sdílení příjemce prostředí](/sharepoint/what-s-new-in-sharing-in-targeted-release) sdílení dokumentu nebo složky, která nevyžaduje, aby uživatel měl účet guest. V takovém případě se nezobrazí podmínky použití.
+Podmínky použití se zobrazí pouze tehdy, pokud má uživatel účet hostovaný v Azure AD. SharePoint Online má v současné době [ad hoc externí sdílení příjemce prostředí](/sharepoint/what-s-new-in-sharing-in-targeted-release) sdílení dokumentu nebo složky, která nevyžaduje, aby uživatel měl účet guest. V takovém případě se nezobrazí podmínky použití.
 
 ![Všichni uživatelé typu host](./media/active-directory-tou/b2b-guests.png)
 

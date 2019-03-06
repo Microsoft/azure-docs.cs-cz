@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 66ac3cf786abeebc2579a937d8670d639c1af270
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408795"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446992"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý start: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance
 
@@ -84,7 +84,7 @@ Nejjednodušší způsob, jak vytvořit virtuální počítač klienta se všech
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Toto heslo se používá pokaždé, když jste [připojit k virtuálnímu počítači](#connect-to-virtual-machine).|
    | **Velikost virtuálního počítače** | Libovolné platné velikosti | Výchozí hodnota v této šabloně z **Standard_B2s** stačí pro účely tohoto rychlého startu. |
    | **Umístění**|[resourceGroup () .location].| Tato hodnota se nezmění. |
-   | **Název virtuální sítě**|Virtuální síťové, ve které jste vytvořili spravovanou instanci.|
+   | **Název virtuální sítě**|Virtuální síť, ve které jste vytvořili spravovanou instanci.|
    | **Název podsítě**|Název podsítě, kterou jste vytvořili v předchozím postupu| Neklikejte podsíť, ve které jste vytvořili spravovanou instanci.|
    | **artefakty umístění** | [.properties.templateLink.uri nasazení ()] | Tato hodnota se nezmění. |
    | **token Sas umístění artefaktů** | Ponechte prázdné | Tato hodnota se nezmění. |

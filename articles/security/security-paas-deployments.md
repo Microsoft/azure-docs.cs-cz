@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: terrylan
-ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247201"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404803"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -85,7 +85,7 @@ Principy a modely pro hraniční síť byly k dispozici desítky let. Naproti to
 Níže jsou doporučené postupy pro správu identit hraniční síti.
 
 **Osvědčený postup**: Zabezpečení vašich klíčů a přihlašovacích údajů k zabezpečení nasazení PaaS.   
-**Podrobnosti o**: Došlo ke ztrátě klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení. Azure poskytuje v cloudu pomocí modulu hardwarového zabezpečení [Azure Key Vault](../key-vault/key-vault-whatis.md).
+**Podrobnosti o**: Došlo ke ztrátě klíčů a přihlašovacích údajů je běžný problém. Můžete použít centralizované řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). [Služba Azure Key Vault](../key-vault/key-vault-whatis.md) chrání vaše klíče a tajné kódy tím, že šifruje ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla, pomocí klíčů chráněných moduly hardwarového zabezpečení.
 
 **Osvědčený postup**: Není vložit pověření a dalších tajných kódů v zdrojový kód nebo GitHub.   
 **Podrobnosti o**: Jediné, co horší ztráty klíčů a přihlašovacích údajů, je, aniž by bylo neoprávněným stran získat přístup k nim. Útočníci mohou využít výhod bot technologie k vyhledání klíče a tajné kódy uložené v úložištích kódu, jako je například GitHub. Nevkládejte do těchto úložišť kódu veřejné klíče a tajné kódy.

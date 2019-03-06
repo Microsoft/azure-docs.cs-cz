@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3632fdb3b4d5c1d2b5465671f36a201c5ff990
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193292"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409886"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Verze Preview: Řešení potíží Azure AD ochrana heslem
 
@@ -55,13 +55,13 @@ Zkontrolujte připojení ke koncovým bodům uvedené v má počítač serveru p
 
 Tento problém můžete manifest nastavení s širokou škálu příznaky, ale obvykle má původní příčiny běžných.
 
-Azure AD hesla ochrany má kriticky závislé na funkci šifrování a dešifrování, získáte ho od služby distribuce klíčů Microsoft, který je dostupný na řadičích domény s Windows serverem 2012 a novější. Služby KDS musí být povolené a funkční na všech systému Windows Server 2012 a novější řadiče domény v doméně.  
+Azure AD hesla ochrany má kriticky závislé na funkci šifrování a dešifrování, získáte ho od služby distribuce klíčů Microsoft, který je dostupný na řadičích domény s Windows serverem 2012 a novější. Služby KDS musí být povolené a funkční na všech systému Windows Server 2012 a novější řadiče domény v doméně.
 
-Ve výchozím nastavení KDS režim spouštění služby služby nastavená na ruční (aktivační událost spuštění). Tato konfigurace znamená, že klient se pokusí použít službu, při prvním spuštění na vyžádání. Tento režim spouštění služby výchozí je přijatelné pro ochranu hesel služby Azure AD pro práci. 
+Ve výchozím nastavení KDS režim spouštění služby služby nastavená na ruční (aktivační událost spuštění). Tato konfigurace znamená, že klient se pokusí použít službu, při prvním spuštění na vyžádání. Tento režim spouštění služby výchozí je přijatelné pro ochranu hesel služby Azure AD pro práci.
 
 Pokud je režim spuštění služby KDS není nakonfigurovaná na hodnotu zakázáno, tato konfigurace musí nejdřív opravit ochrana hesel Azure AD bude fungovat správně.
 
-Jednoduchý test pro tento problém je ohledně ručního spuštění služby KDS, buď prostřednictvím konzoly MMC řízení služby nebo pomocí jiné nástroje pro správu služby (například spuštění, "net start kdssvc" z konzoly příkazového řádku). Služby KDS očekává se úspěšně spustit a zůstanou spuštěné.
+Jednoduchý test pro tento problém je ohledně ručního spuštění služby KDS, buď přes konzolu MMC služby pro správu, nebo pomocí jiné nástroje pro správu služby (například spuštění, "net start kdssvc" z konzoly příkazového řádku). Služby KDS očekává se úspěšně spustit a zůstanou spuštěné.
 
 Nejběžnější příčina je, že objektu řadiče domény služby Active Directory se nachází mimo výchozí organizační jednotce řadiče domény. Tato konfigurace není podporována službou KDS a není omezení mezijazyka ochrana hesel Azure AD. Oprava této podmínky je přesunout do umístění ve výchozí organizační jednotce řadiče domény objektu řadiče domény.
 
@@ -118,7 +118,7 @@ Pokud je se rozhodli odinstalovat software ve verzi public preview a vyčištěn
 
    Není vynechat hvězdičku ("*") na konci $keywords hodnotu proměnné.
 
-   Výsledné objekty vyhledat přes `Get-ADObject` příkazu, můžete pak rourou do `Remove-ADObject`, nebo odstranit ručně. 
+   Výsledné objekty vyhledat přes `Get-ADObject` příkazu, můžete pak rourou do `Remove-ADObject`, nebo odstranit ručně.
 
 4. Ručně odeberte všechny body připojení agenta řadiče domény v každé doméně názvový kontext. Může jich být tyto objekty na řadič domény v doménové struktuře, v závislosti na tom, jak často byl nasazen software ve verzi public preview. Umístění tohoto objektu může být nalezeny pomocí následujícího příkazu Powershellu pro Active Directory:
 

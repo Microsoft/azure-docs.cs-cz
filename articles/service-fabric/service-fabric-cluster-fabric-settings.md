@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cefdc8819162a19a9b73b99a38f7028aa5fbacac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674901"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438138"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -327,7 +327,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |EndpointProviderEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje správu koncový bod prostředků infrastruktury. Vyžaduje, aby počáteční a koncové rozsahu portů aplikace v FabricNode. |
 |FabricContainerAppsEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| |
 |FirewallPolicyEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje otevřít porty brány firewall pro koncový bod prostředků s explicitní portů zadaných v souboru ServiceManifest |
-|GetCodePackageActivationContextTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická|Zadejte časový interval v sekundách. Hodnota časového limitu pro CodePackageActivationContext volání. To neplatí pro služby ad-hoc. |
+|GetCodePackageActivationContextTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická|Zadejte časový interval v sekundách. Hodnota časového limitu pro CodePackageActivationContext volání. To neplatí pro služby ad hoc. |
 |GovernOnlyMainMemoryForProcesses|Logická hodnota, výchozí hodnotu FALSE|Statická|Výchozí chování zásady správného řízení prostředků, je vložit limitu zadaného ve MemoryInMB za množství z celkové paměti (RAM + odkládacího souboru), že proces používá. Pokud dojde k překročení limitu; proces obdrží OutOfMemory výjimky. Pokud tento parametr je nastaven na hodnotu true; omezení se použijí pouze k množství paměti RAM, kterou proces použije. Pokud se překročí toto omezení; a pokud je toto nastavení true. operační systém potom budou provádět záměnu hlavní paměti na disk. |
 |IPProviderEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Umožňuje pomocí správy IP adres. |
 |IsDefaultContainerRepositoryPasswordEncrypted|Logická hodnota, výchozí hodnotu FALSE|Statická|Určuje, zda je nebo není zašifrovaná DefaultContainerRepositoryPassword.|
@@ -374,7 +374,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |SharedLogId |řetězec, výchozí hodnota je "" |Statická|Jedinečný identifikátor guid pro sdílené protokolu kontejneru. Použití "" Pokud používáte výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogPath |řetězec, výchozí hodnota je "" |Statická|Cesta a název souboru do umístění, na sdílené protokolu kontejneru. Použití "" pro použití výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogSizeInMB |Int, výchozí hodnota je 8192 |Statická|Počet MB k přidělení v kontejneru sdílené protokolu. |
-|SharedLogThrottleLimitInPercentUsed|int, výchozí je 0 | Statická | Procento využití sdílené protokolu, který způsobí omezení šířky pásma. Hodnota by měla být mezi 0 a 100. Hodnota 0 znamená, s výchozí hodnotou procenta. Hodnota 100 znamená, nedojde k omezování vůbec. Určuje hodnotu mezi 1 a 99 procento využití log výše, bude probíhat který omezení; Například pokud je sdílená protokol 10GB a hodnota je 90 throttleing bude probíhat až 9GB se používá. Doporučuje se použít výchozí hodnotu.|
+|SharedLogThrottleLimitInPercentUsed|int, výchozí je 0 | Statická | Procento využití sdílené protokolu, který způsobí omezení šířky pásma. Hodnota by měla být mezi 0 a 100. Hodnota 0 znamená, s výchozí hodnotou procenta. Hodnota 100 znamená, nedojde k omezování vůbec. Určuje hodnotu mezi 1 a 99 procento využití log výše, bude probíhat který omezení; Například pokud sdílené protokolu je 10GB a hodnota je 90 a omezování dojde až 9GB se používá. Doporučuje se použít výchozí hodnotu.|
 |WriteBufferMemoryPoolMaximumInKB | int, výchozí je 0 |Dynamická|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
 |WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamická|Číslo KB k začátku přidělení pro fond vyrovnávací paměti zápisu. Použijte hodnotu 0 označující bez omezení, výchozí by měl být konzistentní s SharedLogSizeInMB níže. |
 
@@ -671,7 +671,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |InvokeInfrastructureCommand |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro příkazy pro správu infrastruktury úloh. |
 |InvokeInfrastructureQuery |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamická|Konfigurace zabezpečení pro dotazování infrastrukturních úloh. |
 |Seznam |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamická|Konfigurace zabezpečení pro image ukládání operace seznam souborů klienta. |
-|MoveNextFabricUpgradeDomain |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro obnovení inovace clusteru se výslovně upgradu domény. |
+|MoveNextFabricUpgradeDomain |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro obnovení upgrady clusteru s explicitní doménou upgradu. |
 |MoveNextUpgradeDomain |řetězec, výchozí je "Admin" |Dynamická| Konfigurace zabezpečení pro obnovení upgrady aplikací s explicitní doménou upgradu. |
 |MoveReplicaControl |řetězec, výchozí je "Admin" | Dynamická|Přesuňte repliky. |
 |NameExists |řetězec, výchozí hodnota je "správce\|\|uživatele" | Dynamická|Konfigurace zabezpečení pro identifikátor URI pojmenování kontroly existence. |

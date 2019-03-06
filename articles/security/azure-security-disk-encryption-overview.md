@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c07fbccdcf77e68f497fe940fa730f294b5c34a1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 67f1488af330ac666aa3f9fe83e5b5ee42e6df2f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727859"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410039"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS
 
@@ -72,7 +72,7 @@ Pokud používáte Azure Security Center, budete upozorněni, pokud máte virtu�
    > [!NOTE]
    > Šifrování jednotky operačního systému u některých Linuxových distribucích se nepodporuje. Další informace najdete v tématu [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) článku.
    
-* Povolte šifrování na virtuálních počítačích s Windows, které jsou nakonfigurované pro prostory úložiště ve Windows.
+* Povolte šifrování na virtuálních počítačích, které mají nakonfigurované prostory úložiště Windows od verze Windows serveru 2016.
 * Aktualizace nastavení šifrování pro existující šifrované Premium a Premium Storage VM.
 * Zálohování a obnovení šifrovaných virtuálních počítačů pro scénáře bez KEK a šifrovací klíč klíče (KEK).
 * Všechny veřejné Azure a Azure Government oblasti jsou podporovány.

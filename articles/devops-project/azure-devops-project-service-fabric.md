@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2bba5d54c2b6298c2dd8059d47e5975ad3f176c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264756"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453750"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Kurz: Nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí projektů Azure DevOps
 
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující:
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabricc"></a>Použijte k vytvoření aplikace ASP.NET Core a nasaďte ji do služby Fabricc projekty DevOps
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Vytvoření aplikace ASP.NET Core a nasaďte ji do Service Fabric pomocí projekty DevOps
 
 Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Projekty DevOps prostředků Azure, jako je cluster Service Fabric také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
@@ -79,7 +79,7 @@ Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit nov
 
 Projekty DevOps automaticky nakonfiguruje kanál CI/CD v kanálech Azure. Kanál můžete prozkoumat a upravit. Seznamte se s ním, postupujte takto:
 
-1. Přejdete na řídicí panel DevOps Projectss.
+1. Přejdete na řídicí panel Projekt DevOps.
 
 1. V horní části řídicího panelu DevOps Projects, vyberte **vytvářet kanály**.  
     Na kartě prohlížeče zobrazí kanálu sestavení pro nový projekt.

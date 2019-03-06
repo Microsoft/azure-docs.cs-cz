@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 06c74aa85bda13ccd6849056ccc031ae6f1c12c2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/05/2019
+ms.openlocfilehash: 09ee74ef661a3c60ecb617e14b4b05365298a93c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315550"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407472"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rychlý start: Import souboru BACPAC do databáze ve službě Azure SQL Database
 
@@ -79,7 +79,7 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 ## <a name="import-into-a-single-database-from-a-bacpac-file-using-powershell"></a>Importovat do jedné databáze ze souboru BACPAC s použitím prostředí PowerShell
 
 > [!NOTE]
-> [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze ze souboru BACPAC s použitím prostředí Azure PowerShell]. Pro import do spravované instance pomocí SQL Server Management Studio nebo nástroje SQLPackage.
+> [Spravovaná instance](sql-database-managed-instance.md) aktuálně nepodporuje migrace databáze do instance databáze ze souboru BACPAC s použitím prostředí Azure PowerShell. Pro import do spravované instance pomocí SQL Server Management Studio nebo nástroje SQLPackage.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

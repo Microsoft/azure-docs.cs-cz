@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 8dd3c6ce7eabdf90c2a84f4d1e52ce3aef2d5c12
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: bc738dd93a43a1a3610323b9dd05abfd5b5c0091
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984625"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408798"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -75,6 +75,7 @@ Použití analýzy provozu pro skupiny zabezpečení sítě v některém z násl
 * Střed Indie
 * Indie – jih
 * Japonsko – východ 
+* USA (Gov) – Virginia
 
 Pracovní prostor Log Analytics, musí existovat v těchto oblastech:
 * Kanada – střed
@@ -86,6 +87,7 @@ Pracovní prostor Log Analytics, musí existovat v těchto oblastech:
 * Jihovýchodní Asie
 * Střed Indie
 * Japonsko – východ
+* USA (Gov) – Virginia
 
 ## <a name="prerequisites"></a>Požadavky
 

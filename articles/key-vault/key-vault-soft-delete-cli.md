@@ -1,18 +1,18 @@
 ---
 title: Služba Azure Key Vault – jak používat obnovitelné odstranění s využitím rozhraní příkazového řádku
 description: Příklady případu použití obnovitelného odstranění s využitím rozhraní příkazového řádku výstřižky kódu
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: bryanla
-ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 5af9ac4b694eccddacebdf387992226930bf1125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116719"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450257"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vault pomocí rozhraní příkazového řádku
 

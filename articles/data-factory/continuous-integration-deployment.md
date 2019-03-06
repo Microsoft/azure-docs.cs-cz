@@ -11,18 +11,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bfab3c94892b94eaf1c0585ee47a6dcbdb161776
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901220"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452721"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
 Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
 
 Pro službu Azure Data Factory průběžná integrace a doručování znamená přesun kanálů Data Factory z jednoho prostředí (vývojové, testovací, produkční) do jiného. Průběžná integrace a doručování proveďte můžete integrace uživatelské rozhraní služby Data Factory pomocí šablony Azure Resource Manageru. Uživatelské rozhraní služby Data Factory můžete vygenerovat šablonu Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a další parametry. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývojové, testovací, produkčním prostředí). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pro zavedení devět po minutách a ukázku této funkce z následujícího videa:
 
@@ -161,7 +163,7 @@ Existují dva způsoby, jak zpracovat tajné klíče:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udělit oprávnění k agentovi Azure kanály
-Úloha služby Azure Key Vault může selhat čas Runtimest fIntegration s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
+Úloha služby Azure Key Vault může selhat čas fIntegration modulu Runtime s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi Azure kanály. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
 
 ### <a name="update-active-triggers"></a>Aktualizace active aktivační události
 Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační události. K aktualizaci aktivního aktivačních událostí, budete muset ručně zastavit a spustit po nasazení. K tomuto účelu můžete přidat úkol prostředí Azure Powershell, jak je znázorněno v následujícím příkladu:
@@ -173,14 +175,14 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 1.  Zvolte **zpracování vloženého skriptu** skript zadejte a potom poskytnutí ověřovacího kódu. Následující příklad zastaví aktivačních událostí:
 
     ```powershell
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
+Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
 
 > [!IMPORTANT]
 > Scénáře nasazení a průběžnou integraci typ modulu Runtime integrace napříč různými prostředími musí být stejné. Pokud máte například *v místním prostředí* stejné prostředí IR Integration Runtime (IR) ve vývojovém prostředí, musí být typu *v místním prostředí* v jiných prostředích, jako je například testovací a produkční také. Podobně pokud sdílíte prostředí integration Runtime v několika fázích, budete muset nakonfigurovat prostředí Integration runtime jako *propojené v místním prostředí* ve všech prostředích, jako je vývoj, testování a produkce.
@@ -727,7 +729,7 @@ Tady je ukázka šablony nasazení, který můžete importovat v kanálech Azure
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Ukázkový skript k zastavení a restartování aktivační události a vyčištění
 
-Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány. Pokud chcete nainstalovat nejnovější verzi Azure Powershellu, najdete v článku [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0).
+Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány. Pokud chcete nainstalovat nejnovější verzi Azure Powershellu, najdete v článku [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ```powershell
 param
@@ -745,7 +747,7 @@ $resources = $templateJson.resources
 
 #Triggers 
 Write-Host "Getting triggers"
-$triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+$triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 $triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
 $triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
 $activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
@@ -757,32 +759,32 @@ if ($predeployment -eq $true) {
     Write-Host "Stopping deployed triggers"
     $triggerstostop | ForEach-Object { 
         Write-host "Disabling trigger " $_
-        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 else {
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
-    $pipelinesADF = Get-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $pipelinesADF = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
     $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
     #datasets
     Write-Host "Getting datasets"
-    $datasetsADF = Get-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
     $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
     $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
     #linkedservices
     Write-Host "Getting linked services"
-    $linkedservicesADF = Get-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $linkedservicesADF = Get-AzDataFactoryV2LinkedService -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
     $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
     #Integrationruntimes
     Write-Host "Getting integration runtimes"
-    $integrationruntimesADF = Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
@@ -791,112 +793,182 @@ else {
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
-        $trig = Get-AzureRmDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
-            Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
         }
-        Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting pipelines"
     $deletedpipelines | ForEach-Object { 
         Write-Host "Deleting pipeline " $_.Name
-        Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting datasets"
     $deleteddataset | ForEach-Object { 
         Write-Host "Deleting dataset " $_.Name
-        Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting linked services"
     $deletedlinkedservices | ForEach-Object { 
         Write-Host "Deleting Linked Service " $_.Name
-        Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting integration runtimes"
     $deletedintegrationruntimes | ForEach-Object { 
         Write-Host "Deleting integration runtime " $_.Name
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
     if ($deleteDeployment -eq $true) {
         Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
-        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
         $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
         $deploymentName = $deploymentsToConsider[0].DeploymentName
 
        Write-Host "Deployment to be deleted: " $deploymentName
-        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
         $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
 
         $deploymentsToDelete | ForEach-Object { 
             Write-host "Deleting inner deployment: " $_.properties.targetResource.id
-            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
         }
         Write-Host "Deleting deployment: " $deploymentName
-        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
     }
 
     #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
-        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 ```
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Pomocí vlastních parametrů šablony Resource Manageru
 
-Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li soubor s názvem `arm-template-parameters-definition.json` v kořenové složce úložiště. (Název souboru musí odpovídat názvu právě ukázali.) Data Factory se pokusí přečíst soubor z toho větve, kterou právě pracujete, ne jenom z větve spolupráci. Pokud se nenajde žádný soubor, datová továrna používá výchozí parametry a hodnoty.
+Pokud jste v režimu GIT, můžete v šabloně Resource Manageru můžete nastavit vlastnosti, které jsou parametrizovány v šabloně a vlastnosti, které jsou pevně zakódované přepsat výchozí vlastnosti. Můžete chtít přepsat výchozí šablona Parametrizace v těchto scénářích:
+
+* Použít automatizované CI/CD a chcete změnit některé vlastnosti během nasazení podle modelu Resource Manager, ale nejsou ve výchozím nastavení parametrizované vlastnosti.
+* Se svým objektem pro vytváření velmi velké, výchozí šablony Resource Manageru je neplatný, protože má více než maximální povolená parametry (256).
+
+Za těchto podmínek Pokud chcete přepsat výchozí šablona Parametrizace, vytvořte soubor s názvem *arm šablonu parametry definition.json* v kořenové složce úložiště. Název souboru musí přesně shodovat. Data Factory se pokusí načíst tento soubor z větve, podle toho, která je momentálně na portálu Azure Data Factory, ne jenom z větve spolupráci. Můžete vytvořit nebo upravit soubor z soukromé větve, kde můžete testovat změny pomocí **šablony ARM exportovat** v uživatelském rozhraní. Soubor pak, můžete sloučit do větve spolupráci. Pokud se nenajde žádný soubor, je použita výchozí šablona.
+
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxe souboru vlastních parametrů
 
-Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Podívejte se na příklady syntaxe, naleznete v následující části [ukázkový soubor vlastní parametry](#sample).
+Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Soubor se skládá z část pro každý typ entity: aktivační událost, kanál, propojené služby, datové sady, integrationruntime a tak dále.
+* Zadejte cestu vlastnosti v části Typ relevantní entity.
+* Pokud nastavíte vlastnost název na "\*", určujete, že chcete parametrizovat všechny vlastnosti v něm (pouze až na úroveň rekurzivní). Můžete také zadat jakékoli výjimky.
+* Když nastavíte hodnotu vlastnosti jako řetězec, určujete, že chcete parametrizovat vlastnost. Použijte formát `<action>:<name>:<stype>`.
+   *  `<action>` může být jedna z následujících znaků:
+      * `=` prostředky zachovat aktuální hodnoty jako výchozí hodnota pro parametr.
+      * `-` znamená, že není ponechte výchozí hodnotu pro parametr.
+      * `|` je zvláštní případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
+   * `<name>` je název parametru. Pokud není zadán, přebírá název vlastnosti. Pokud hodnota začíná `-` znak, název zkrácen. Například `AzureStorage1_properties_typeProperties_connectionString` bude zkrátila na `AzureStorage1_connectionString`.
+   * `<stype>` je typ parametru. Pokud `<stype>` je prázdný, je výchozí typ `string`. Podporované hodnoty: `string`, `bool`, `number`, `object`, a `securestring`.
+* Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli s použitím definice určený v modulu Runtime integrace objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
+* Není možné mít definici, která je specifická pro instance prostředku. Libovolná definice se vztahuje na všechny prostředky daného typu.
+* Standardně jsou všechny zabezpečené řetězce, jako je například tajných kódů služby Key Vault a zabezpečené řetězce, jako je například připojovací řetězce, klávesy a tokeny, parametrizovány.
+ 
+## <a name="sample-parameterization-template"></a>Ukázková šablona Parametrizace
 
-1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadaná v prostředí Integration Runtime objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
-
-    ```json
-    ...
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {
+        "properties": {
+            "activities": [{
+                "typeProperties": {
+                    "waitTimeInSeconds": "-::number",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
     "Microsoft.DataFactory/factories/triggers": {
         "properties": {
-            "pipelines": [{
-                    "parameters": {
-                        "*": "="
-                    }
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:number",
+                    "frequency": "=:-freq"
                 },
-                "pipelineReference.referenceName"
-            ],
-            "pipeline": {
-                "parameters": {
-                    "*": "="
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "connectionString": "|:-connectionString:secureString",
+                    "secretAccessKey": "|"
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
                 }
             }
         }
     },
-    ...
-    ```
+    "Microsoft.DataFactory/factories/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
 
-2. Pokud nastavíte vlastnost název na `*`, určujete, že chcete šablonu, kterou chcete používat všechny vlastnosti na této úrovni, s výjimkou těch explicitně definované.
+### <a name="explanation"></a>Vysvětlení:
 
-3. Když nastavíte hodnotu vlastnosti jako řetězec, určujete, že chcete parametrizovat vlastnost. Použijte formát `<action>:<name>:<stype>`.
-    1.  `<action>` může být jedna z následujících znaků: 
-        1.  `=`  prostředky zachovat aktuální hodnoty jako výchozí hodnota pro parametr.
-        2.  `-` znamená, že není ponechte výchozí hodnotu pro parametr.
-        3.  `|` je zvláštní případ pro tajné klíče z Azure Key Vault pro připojovací řetězec.
-    2.  `<name>` je název parametru. Pokud `<name`> je pole prázdné, bude trvat název parametru 
-    3.  `<stype>` je typ parametru. Pokud `<stype>` je prázdný, je výchozí typ řetězec.
-4.  Pokud zadáte `-` znak na začátku názvu parametru, úplný název parametru se zkrátila na správce prostředků `<objectName>_<propertyName>`.
-Například `AzureStorage1_properties_typeProperties_connectionString` zkrátila na `AzureStorage1_connectionString`.
+#### <a name="pipelines"></a>Kanály
+    
+* Žádné vlastnosti v cestě aktivity/typeProperties/waitTimeInSeconds je s parametry. To znamená, že všechny aktivity v kanálu, který má úroveň kódu vlastnost s názvem `waitTimeInSeconds` (například `Wait` aktivity) parametrizované jako číslo s výchozím názvem. Ale nebude mít výchozí hodnotu v šabloně Resource Manageru. Povinný vstup bude během nasazení Resource Manageru.
+* Podobně vlastnost s názvem `headers` (například v `Web` aktivity) je opatřena parametry typu `object` (JObject). Má výchozí hodnotu, která má stejnou hodnotu jako zdrojový objekt pro vytváření.
 
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-### <a name="sample"></a> Ukázkový soubor vlastní parametry
+* Pouze vlastnosti a všechny vlastnosti v cestě `typeProperties` jsou parametrizovány s jejich odpovídajících výchozích hodnot. Například od verze schématu dnešní existují dvě vlastnosti v části **IntegrationRuntimes** vlastnosti typu: `computeProperties` a `ssisProperties`. Oba typy vlastností se vytvoří s jejich odpovídajících výchozích hodnot a typy (Object).
 
-Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku použijte jako odkaz na vytvořte svůj vlastní soubor vlastní parametry. Pokud soubor, který zadáte, není ve správném formátu JSON, Data Factory výstup chybovou zprávu v konzole prohlížeče a vrátí na výchozí parametry a hodnoty zobrazené v Uživatelském rozhraní služby Data Factory.
+#### <a name="triggers"></a>Aktivační události
+
+* V části `typeProperties`, dvě vlastnosti jsou parametrizovány. První z nich je `maxConcurrency`, který je zadán s výchozí hodnotou a typ by `string`. Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency`.
+* `recurrence` Také parametrizované vlastnosti. V části, nejsou zadány všechny vlastnosti na této úrovni k parametrizovat jako řetězce, výchozí hodnoty a názvy parametrů. Výjimka je `interval` vlastnost, která je jako typ Číslo s parametry a s názvem parametru doplněny `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Podobně platí `freq` vlastnosti je řetězec a parametrizované jako řetězec. Ale `freq` Parametrizovaná vlastnost bez výchozí hodnoty. Název je zkráceno a příponou. Například, `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* Propojené služby je jedinečný. Protože z několika typů může být potenciálně propojené služby a datové sady, můžete zadat konkrétní typ vlastního nastavení. Vám může Dejme tomu, že pro všechny propojené služby typu `AzureDataLakeStore`, konkrétní šablonu. bude používat a všech ostatních případech (prostřednictvím \*) se použijí jiné šablony.
+* V předchozím příkladu `connectionString` vlastnost bude parametrizované jako `securestring` hodnotu, nebude mít výchozí hodnotu a bude mít parametr zkrácený název, který je přidán s `connectionString`.
+* Vlastnost `secretAccessKey`, ale se stane, chcete-li být `AzureKeyVaultSecret` (například `AmazonS3` propojenou službu). Proto je automaticky parametrizované jako tajný klíč Azure Key Vault, a načte se z trezoru klíčů, který má nakonfigurovanou v objektu pro vytváření zdroje. Můžete také parametrizovat trezoru klíčů, samotného.
+
+#### <a name="datasets"></a>Datové sady
+
+* I když přizpůsobení specifické pro typ. je k dispozici pro datové sady, konfigurace je možné poskytnout bez nutnosti explicitně \*-úrovni konfigurace. V předchozím příkladu všechny vlastnosti datové sady v rámci `typeProperties` jsou parametrizovány.
+
+Můžete změnit výchozí parametrizaci šablony, ale toto je aktuální šablony. To bude hodit, pokud potřebujete pouze přidat další jednu vlastnost jako parametr, ale i pokud nechcete přijít o existující parameterizations a muset znovu vytvořit.
+
 
 ```json
 {
-    "Microsoft.DataFactory/factories/pipelines": {},
-    "Microsoft.DataFactory/factories/integrationRuntimes": {
+    "Microsoft.DataFactory/factories/pipelines": {
+    },
+    "Microsoft.DataFactory/factories/integrationRuntimes":{
         "properties": {
             "typeProperties": {
                 "ssisProperties": {
@@ -916,7 +988,8 @@ Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku pou�
                 "linkedInfo": {
                     "key": {
                         "value": "-::secureString"
-                    }
+                    },
+                    "resourceId": "="
                 }
             }
         }
@@ -927,14 +1000,18 @@ Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku pou�
                     "parameters": {
                         "*": "="
                     }
-                },
+                },  
                 "pipelineReference.referenceName"
             ],
             "pipeline": {
                 "parameters": {
                     "*": "="
                 }
+            },
+            "typeProperties": {
+                "scope": "="
             }
+
         }
     },
     "Microsoft.DataFactory/factories/linkedServices": {
@@ -957,7 +1034,25 @@ Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku pou�
                     "tenant": "=",
                     "dataLakeStoreUri": "=",
                     "baseUrl": "=",
+                    "database": "=",
+                    "serviceEndpoint": "=",
+                    "batchUri": "=",
+                    "databaseName": "=",
+                    "systemNumber": "=",
+                    "server": "=",
+                    "url":"=",
+                    "aadResourceId": "=",
                     "connectionString": "|:-connectionString:secureString"
+                }
+            }
+        },
+        "Odbc": {
+            "properties": {
+                "typeProperties": {
+                    "userName": "=",
+                    "connectionString": {
+                        "secretName": "="
+                    }
                 }
             }
         }
@@ -970,8 +1065,7 @@ Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku pou�
                     "fileName": "="
                 }
             }
-        }
-    }
+        }}
 }
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: fff484f2ee6722083a34383b8960931cb37b8316
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700442"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445785"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay ověřování a autorizace
 
@@ -29,7 +29,7 @@ Aplikace lze ověřit pomocí sdíleného přístupového podpisu (SAS) ověřov
 
 [Ověřování SAS](../service-bus-messaging/service-bus-sas.md) vám umožní udělit přístup uživatelů k prostředkům Azure Relay s konkrétní práva. Ověřování SAS zahrnuje konfiguraci kryptografický klíč s přidružená práva na prostředek. Klienti pak získat přístup k danému prostředku nabízí ten samý token SAS, který se skládá z identifikátoru URI v přístupu k prostředku a vypršení platnosti podepsán nakonfigurovaný klíč.
 
-Klíče můžete nakonfigurovat pro SAS na obor názvů služby Relay. Na rozdíl od zasílání zpráv Service Bus, [Relay Hybrid Connections](relay-hybrid-connections-protocol.md) podporuje neoprávněným nebo anonymní odesílatelů. Anonymní přístup pro entitu můžete povolit při vytváření, jak je znázorněno na následujícím snímku z portálu:
+Klíče můžete nakonfigurovat pro SAS na obor názvů služby Relay. Na rozdíl od zasílání zpráv Service Bus, [Relay Hybrid Connections](relay-hybrid-connections-protocol.md) podporuje neoprávněným nebo anonymní odesílatelů. Anonymní přístup pro entitu můžete povolit při vytváření, jak je znázorněno na následujícím snímku obrazovky z portálu:
 
 ![][0]
 

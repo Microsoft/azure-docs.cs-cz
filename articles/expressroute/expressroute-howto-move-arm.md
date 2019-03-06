@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ganesr;cherylmc
+ms.date: 02/25/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a561ae5d46222ed9da75d0d32948ee3f0b66658d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106762"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408407"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z klasického modelu nasazení Resource Manageru pomocí Powershellu
 
@@ -21,7 +21,9 @@ Pro účely okruhu ExpressRoute i klasické modely nasazení a modely nasazení 
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-* Ověřte, že máte nejnovější verzi modulů prostředí Azure PowerShell (minimálně verze 1.0). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* Ověřte, že máte nainstalovanou classic i moduly Azure Powershellu Az místně ve vašem počítači. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 * Ujistěte se, že jste si prohlédli [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 * Projděte si informace, které není k dispozici [přesunu okruh ExpressRoute z modelu nasazení classic do Resource Manageru](expressroute-move.md). Ujistěte se, že plně chápete limity a omezení.
 * Ověřte, že je okruh v modelu nasazení classic plně funkční.
@@ -65,19 +67,19 @@ Přihlaste se k Resource Manageru prostředí a vytvořit novou skupinu prostře
 1. Přihlaste se k prostředí Azure Resource Manageru.
 
   ```powershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 
 2. Vyberte příslušné předplatné Azure.
 
   ```powershell
-  Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
+  Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
   ```
 
 3. Upravte fragment kódu níže můžete vytvořit novou skupinu prostředků, pokud ještě nemáte skupinu prostředků.
 
   ```powershell
-  New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
+  New-AzResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Přesun okruhu ExpressRoute do modelu nasazení Resource Manageru
@@ -87,10 +89,10 @@ Nyní jste připraveni na přesun okruhů ExpressRoute z modelu nasazení classi
 Přesun okruhů, úpravu a spusťte následující fragment kódu:
 
 ```powershell
-Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
+Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-Okruh ExpressRoute v klasickém režimu, nemá koncept se spojené s konkrétní oblastí. Však v Resource Manageru každý prostředek musí být namapovaný na oblasti Azure. Zadanou v rutině Move-AzureRmExpressRouteCircuit oblast technicky může být libovolné oblasti. Pro účely organizace můžete vybrat oblast, která úzce představuje vaše umístění partnerského vztahu.
+Okruh ExpressRoute v klasickém režimu, nemá koncept se spojené s konkrétní oblastí. Však v Resource Manageru každý prostředek musí být namapovaný na oblasti Azure. Zadanou v rutině Move-AzExpressRouteCircuit oblast technicky může být libovolné oblasti. Pro účely organizace můžete vybrat oblast, která úzce představuje vaše umístění partnerského vztahu.
 
 > [!NOTE]
 > Po dokončení přesunu nový název, který je uveden v předchozí rutiny se použije k vyřešení zdroje. Okruh se v podstatě přejmenovat.
@@ -105,7 +107,7 @@ Po přesunutí klasický okruh ExpressRoute do modelu nasazení Resource Manager
 1. Získání podrobností o okruhu.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Nastavení "Povolit klasické operace" na hodnotu TRUE.
@@ -117,7 +119,7 @@ Po přesunutí klasický okruh ExpressRoute do modelu nasazení Resource Manager
 3. Aktualizujte okruh. Po úspěšném dokončení této operace bude moci zobrazit okruh v modelu nasazení classic.
 
   ```powershell
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 4. Spuštěním následující rutiny pro získání podrobností o okruhu ExpressRoute. Musíte být vidět uvedený klíč služby.
@@ -138,7 +140,7 @@ Spusťte následující rutiny můžete zakázat přístup k modelu nasazení cl
 1. Získáte podrobnosti o okruhu ExpressRoute.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Nastavení "Povolit klasické operace" na hodnotu FALSE.
@@ -150,7 +152,7 @@ Spusťte následující rutiny můžete zakázat přístup k modelu nasazení cl
 3. Aktualizujte okruh. Po úspěšném dokončení této operace nebudou moct zobrazit okruh v modelu nasazení classic.
 
   ```powershell
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 ## <a name="next-steps"></a>Další postup

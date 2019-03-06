@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 8693c5e255020e30c2e8ed52a3199712089e4503
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 24e2d7be0dfc32e499bc864f2fdf7e2b1c108969
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119080"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440204"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -83,9 +83,9 @@ Uživatel, který vytvoří prostředí Azure-SSIS Integration Runtime musí mí
 
 - Pokud jste se zapojili SSIS IR k virtuální síti Azure Resource Manageru, máte dvě možnosti:
 
-  - Použít integrovaný *Přispěvatel sítě* role. Součástí této role *Microsoft.Network/\**  oprávnění, která má mnohem větší rozsah než je nutné.
+  - Použít integrovaný *Přispěvatel sítě* role. Součástí této role _Microsoft.Network/\*_  oprávnění, která má mnohem větší rozsah než je nutné.
 
-  - Vytvořit vlastní roli, která obsahuje pouze nezbytné *Microsoft.Network/virtualNetworks/\*/join nebo akce* oprávnění. 
+  - Vytvořit vlastní roli, která obsahuje pouze nezbytné _Microsoft.Network/virtualNetworks/\*/join nebo akce_ oprávnění. 
 
 - Pokud jste se zapojili SSIS IR k virtuální síti classic, doporučujeme použít předdefinované *Přispěvatel virtuálních počítačů modelu Classic* role. Jinak budete muset definovat vlastní roli, která zahrnuje oprávnění k připojení k virtuální síti.
 
@@ -96,7 +96,7 @@ Uživatel, který vytvoří prostředí Azure-SSIS Integration Runtime musí mí
 
 -   Nepoužívejte podsítě, která je výhradně obsazena dalšími službami Azure (například SQL Database Managed Instance, App Service, atd.). 
 
-### <a name="dns_server"></a> Server služby název domény 
+### <a name="dns_server"></a> Domain Name Services server 
 Pokud je potřeba použít vlastní server služby DNS (Domain Name) ve virtuální síti připojí pomocí prostředí Azure-SSIS integration runtime, ujistěte se, že překlad názvů hostitelů veřejný Azure (třeba název služby Azure Storage blob, `<your storage account>.blob.core.windows.net`). 
 
 Doporučujeme následující kroky: 
@@ -115,7 +115,7 @@ Pokud potřebujete implementovat skupinu zabezpečení sítě (NSG) pro podsíť
 | Příchozí | TCP | AzureCloud<br/>(nebo větší rozsah, jako je Internet) | * | VirtualNetwork | 29876, 29877 (když se do programu prostředí IR k virtuální síti Azure Resource Manageru) <br/><br/>10100, 20100, 30100 (když se do programu prostředí IR k virtuální síti classic)| Služba Data Factory používá následující porty pro komunikaci s uzly prostředí Azure-SSIS integration runtime ve virtuální síti. <br/><br/> Jestli NSG úrovni podsítě vytvořit, nebo Ne, služby Data Factory vždy nakonfiguruje skupiny NSG na úrovni karty síťového rozhraní (NIC) připojených k virtuálním počítačům, které jsou hostiteli Azure-SSIS IR. V této úrovni síťové karty, skupiny zabezpečení sítě je povolen pouze příchozí provoz z Data Factory IP adresy zadané porty. I v případě, že otevřete tyto porty pro přenosy z Internetu na úrovni podsítě, jsou blokovány přenosy z IP adresy, které nejsou Data Factory IP adresy na úrovni síťové karty. |
 | Odchozí | TCP | VirtualNetwork | * | AzureCloud<br/>(nebo větší rozsah, jako je Internet) | 443 | Uzly vašeho prostředí Azure-SSIS integration runtime ve službě virtual network používat tento port pro přístup ke službám Azure, jako je například Azure Storage a Azure Event Hubs. |
 | Odchozí | TCP | VirtualNetwork | * | Internet | 80 | Uzly vašeho prostředí Azure-SSIS integration runtime ve službě virtual network používat tento port se stáhnout seznam odvolaných certifikátů z Internetu. |
-| Odchozí | TCP | VirtualNetwork | * | Sql<br/>(nebo větší rozsah, jako je Internet) | 1433, 11000 11999, 14000 14999 | Uzly prostředí Azure-SSIS integration runtime používá virtuální síť, tyto porty pro přístup k SSISDB hostuje váš server Azure SQL Database – tento účel neplatí pro databází SSISDB hostovanou ve spravované instanci. |
+| Odchozí | TCP | VirtualNetwork | * | Sql<br/>(nebo větší rozsah, jako je Internet) | 1433, 11000-11999, 14000-14999 | Uzly prostředí Azure-SSIS integration runtime používá virtuální síť, tyto porty pro přístup k SSISDB hostuje váš server Azure SQL Database – tento účel neplatí pro databází SSISDB hostovanou ve spravované instanci. |
 ||||||||
 
 ### <a name="route"></a> Pomocí Azure ExpressRoute nebo uživatelem definované trasy
@@ -280,6 +280,8 @@ Musíte nakonfigurovat virtuální sítě, než bude možné připojit Azure-SSI
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="configure-a-virtual-network"></a>Konfigurace virtuální sítě
 Musíte nakonfigurovat virtuální sítě, než bude možné připojit Azure-SSIS IR k němu. Automaticky konfigurovat oprávnění a nastavení virtuální sítě pro prostředí Azure-SSIS integration runtime k virtuální síti připojit, přidejte následující skript:
 
@@ -289,16 +291,16 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
     Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign the VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
@@ -326,7 +328,7 @@ $SubnetName = "<the name of subnet in your virtual network>"
 Prostředí Azure-SSIS integration runtime zastavte, než bude možné připojit k virtuální síti. Tento příkaz uvolní všechny jeho uzly a zastaví fakturaci:
 
 ```powershell
-Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Stop-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                             -DataFactoryName $DataFactoryName `
                                             -Name $AzureSSISName `
                                             -Force 
@@ -339,25 +341,25 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
         Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
 
 ### <a name="configure-the-azure-ssis-ir"></a>Konfigurace prostředí Azure-SSIS IR
-Pokud chcete nakonfigurovat prostředí Azure-SSIS IR k virtuální síti připojit, spusťte `Set-AzureRmDataFactoryV2IntegrationRuntime` příkaz: 
+Pokud chcete nakonfigurovat prostředí Azure-SSIS IR k virtuální síti připojit, spusťte `Set-AzDataFactoryV2IntegrationRuntime` příkaz: 
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                            -DataFactoryName $DataFactoryName `
                                            -Name $AzureSSISName `
                                            -Type Managed `
@@ -369,7 +371,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName
 Pokud chcete spustit prostředí Azure-SSIS integration runtime, spusťte následující příkaz: 
 
 ```powershell
-Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                              -DataFactoryName $DataFactoryName `
                                              -Name $AzureSSISName `
                                              -Force

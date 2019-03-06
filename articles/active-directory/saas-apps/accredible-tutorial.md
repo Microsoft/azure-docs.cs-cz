@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f816a6629ef561067f5a40ba15064b98b34c99
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8e588dc0e2821a1dcc3e6bb424752b5ce4d7a176
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871430"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Kurz: Integrace Azure Active Directory s Accredible
 
@@ -51,7 +51,7 @@ V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jedno
 
 Konfigurace integrace Accredible do služby Azure AD, budete muset přidat Accredible z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Accredible z galerie, postupujte následovně:**
+**Chcete-li přidat Accredible z galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -189,7 +189,7 @@ V této části je povolit Britta Simon k udělení přístupu k Accredible pou�
 
 ### <a name="create-accredible-test-user"></a>Vytvoření Accredible testovacího uživatele
 
-V této části vytvoříte uživatele v Accredible jako Britta Simon. Je nutné odeslat emailid uživatele k [tým podpory Accredible](mailto:support@accredible.com), ověřte e-mailu a odeslat pozvánky e-mailu, kde můžete přidat uživatele accredible platformě.
+V této části vytvoříte uživatele v Accredible jako Britta Simon. Je nutné odeslat id e-mailu uživatele k [tým podpory Accredible](mailto:support@accredible.com), ověřte e-mailu a odeslat pozvánky e-mailu, kde můžete přidat uživatele accredible platformě.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

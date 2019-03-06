@@ -1,5 +1,5 @@
 ---
-title: Azure MFA přihlášení s dvoustupňovým ověřováním | Dokumentace Microsoftu
+title: Azure MFA přihlášení s dvoustupňovým ověřováním – Azure Active Directory | Dokumentace Microsoftu
 description: Na této stránce zobrazí pokyny, ve kterém můžete přejít na najdete v různých přihlášení dostupné metody s Azure MFA.
 keywords: ověřování uživatelů, přihlášení, přihlaste se pomocí mobilního telefonu, přihlaste se pomocí telefonní číslo do kanceláře
 services: active-directory
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957534"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431763"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication
 > [!NOTE]
@@ -32,8 +33,8 @@ Vaše přihlášení se liší v závislosti na tom, co si přejete použít jak
 | --- |
 | [Pomocí telefonního hovoru na telefon Můj mobilní telefon nebo office](#signing-in-with-a-phone-call) |
 | [S textem do mi na mobilní telefon](#signing-in-with-a-text-message)
-| Oznámení z aplikace Microsoft Authenticator |
-| Pomocí ověřovacích kódů z aplikace Microsoft Authenticator |
+| [Oznámení z aplikace Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| [Pomocí ověřovacích kódů z aplikace Microsoft Authenticator](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
 | [S alternativní metodu protože nelze použít upřednostňovanou metodu hned teď](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Přihlášení pomocí telefonního hovoru

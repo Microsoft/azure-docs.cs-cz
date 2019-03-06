@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958265"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433174"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co je Azure Data Explorer?
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pomáhá zpracovávat celou řadu datových proudů generovaných moderním softwarem, takže můžete shromažďovat, ukládat a analyzovat data. Azure Data Explorer je ideální pro analýzu velkých objemů různých dat z libovolného zdroje dat, jako jsou weby, aplikace, zařízení IoT a další. Tato data se používají pro diagnostiku, monitorování, vytváření sestav, strojové učení a další možnosti analýzy. Azure Data Explorer umožňuje tato data snadno ingestovat a umožňuje také provádět komplexní ad-hoc dotazy na data v řádu sekund.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pomáhá zpracovávat celou řadu datových proudů generovaných moderním softwarem, takže můžete shromažďovat, ukládat a analyzovat data. Azure Data Explorer je ideální pro analýzu velkých objemů různých dat z libovolného zdroje dat, jako jsou weby, aplikace, zařízení IoT a další. Tato data se používají pro diagnostiku, monitorování, vytváření sestav, strojové učení a další možnosti analýzy. Průzkumník služby Azure Data umožňují snadno ingestovat data a umožňuje provádět komplexní ad hoc dotazy na data v řádu sekund.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Čím je Azure Data Explorer jedinečný?
 
@@ -53,7 +53,7 @@ Práce v Azure Data Explorer obecně probíhá podle tohoto modelu:
 
 ## <a name="query-experience"></a>Práce s dotazy
 
-Dotaz v Azure Data Exploreru je požadavek na zpracování dat, který je jen pro čtení a který vrací výsledky tohoto zpracování, aniž by se při tom měnila data nebo metadata. Dotazy můžete podle potřeby ladit, abyste získali kompletní analýzu. Azure Data Explorer tento proces usnadňuje díky tomu, jak rychle pracuje s ad-hoc dotazy.
+Dotaz v Azure Data Exploreru je požadavek na zpracování dat, který je jen pro čtení a který vrací výsledky tohoto zpracování, aniž by se při tom měnila data nebo metadata. Dotazy můžete podle potřeby ladit, abyste získali kompletní analýzu. Průzkumník služby Azure Data usnadňuje tento proces z důvodu jeho práce s velice rychlou ad hoc dotazy.
 
 Azure Data Explorer zpracovává stejně dobře velké objemy strukturovaných, částečně strukturovaných (vnořené typy podobné formátu JSON) i nestrukturovaných dat (volný text). Umožňuje hledat konkrétní textové pojmy, konkrétní události a provádět výpočty se strukturovanými daty ve stylu metrik. Azure Data Explorer přemosťuje svět nestrukturovaných textových protokolů a strukturovaných čísel a dimenzí extrahováním hodnot v modulu runtime z textových polí obsahujících libovolný text. Zkoumání dat je zjednodušeno díky kombinaci rychlého indexování textu, úložiště sloupců a operací s časovými řadami.
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7081d46af335f29e5723ef8d471814a1564907c2
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990200"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409682"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -32,7 +32,7 @@ Před použitím šablonu pro vytvoření, ujistěte se, že se že odstranily t
 1. [Oprávnění vlastníka předplatného](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta pro vFXT clusteru](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Vlastní přístup role](avere-vfxt-prereqs.md#create-access-roles) -musí vytvořit roli řízení přístupu na základě role přiřadit uzlům clusteru. Máte možnost také vytvářet vlastní přístup role pro správce clusteru, ale většina uživatelů bude trvat výchozí role vlastníka, který dává oprávnění kontroleru odpovídající vlastníkovi skupiny prostředků. Čtení [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md#owner) další podrobnosti.
-1. [Koncový bod služby Storage (v případě potřeby)](avere-vfxt-prereqs.md#optional-create-a-storage-service-endpoint-in-your-virtual-network) – třeba nasadí použití existující virtuální síť a vytvoření úložiště objektů blob
+1. [Koncový bod služby Storage (v případě potřeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – třeba nasadí použití existující virtuální síť a vytvoření úložiště objektů blob
 
 Další informace o plánování a kroky nasazení clusteru, najdete v článku [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md) a [Přehled nasazení](avere-vfxt-deploy-overview.md).
 
@@ -104,7 +104,7 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
 
 * **Název clusteru vFXT Avere** – zadejte jedinečný název clusteru. 
 
-* **Velikost** – Tato část ukazuje typ virtuálního počítače, který se použije pro uzly clusteru. I když existuje jenom jedna možnost doporučené, **změnit velikost** odkaz otevře tabulku s podrobnostmi o tento typ instance a odkaz na cenové kalkulačky.  <!-- old: Specify the VM type to use when creating the cluster nodes.  -->
+* **Velikost** – Tato část ukazuje typ virtuálního počítače, který se použije pro uzly clusteru. I když existuje jenom jedna možnost doporučené, **změnit velikost** odkaz otevře tabulku s podrobnostmi o tento typ instance a odkaz na cenové kalkulačky.  
 
 * **Velikost na jeden uzel mezipaměti** -clusteru mezipaměti se pak rozdělí mezi uzly clusteru, takže celková velikost mezipaměti ve vašem clusteru vFXT Avere bude velikost mezipaměti podle počtu uzlů vynásobenému z počtu uzlů. 
 
@@ -120,7 +120,7 @@ Na druhé stránce šablonu nasazení umožňuje nastavit velikost clusteru, typ
   >  * Pokud není nastavení veřejné IP adresy na řadiči, musíte použít jiný hostitel jump, připojení k síti VPN nebo ExpressRoute pro přístup ke clusteru. Například vytvořte řadič ve virtuální síti, který už má nakonfigurované připojení k síti VPN.
   >  * Pokud vytvoříte řadič s použitím veřejné IP adresy, by měl ochranu virtuálního počítače řadiče se skupinou zabezpečení sítě. Ve výchozím nastavení vFXT Avere pro nasazení v Azure vytvoří skupinu zabezpečení sítě a omezuje příchozí přístup jenom port 22 pro řadiče s veřejnými IP adresami. Systém jde dál chránit zamčením dolů přístup ke zdrojové váš rozsah IP adres – to znamená, povolit připojení pouze z počítačů, které máte v úmyslu používat pro přístup ke clusteru.
 
-  Nasazení šablony také nakonfiguruje novou virtuální síť s koncového bodu služby storage pro Azure Blob storage a řízení přístupu k síti uzamčený, aby se jen IP adresy z podsítě clusteru. <!-- xxx make sure this is accurate --> <!-- do I need to say that this only happens if you choose to create storage? -->
+  Nasazení šablony také nakonfiguruje novou virtuální síť s koncového bodu služby storage pro Azure Blob storage a řízení přístupu k síti uzamčený, aby se jen IP adresy z podsítě clusteru. 
 
 * **Podsíť** – zvolte podsíť z existující virtuální sítě, nebo vytvořte novou. 
 

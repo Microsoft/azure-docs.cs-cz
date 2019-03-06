@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 950ea04addb0c88d4c745d2de3d95df787885137
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804242"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403426"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
@@ -94,9 +94,9 @@ Podle pokynů v tomto rychlém startu se nainstaluje všechny balíčky, které 
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
-1. V prostředí aktivovaných conda instalace základních součástí sady SDK Machine Learning s možnostmi Poznámkový blok Jupyter.  Instalace trvá několik minut na dokončení závislosti na konfiguraci vašeho počítače.
+1. V prostředí aktivovaných conda instalace základních součástí sady SDK Machine Learning s možnostmi Poznámkový blok Jupyter. Instalace trvá několik minut na dokončení závislosti na konfiguraci vašeho počítače.
 
-  ```shell
+    ```shell
     pip install --upgrade azureml-sdk[notebooks]
     ```
 
@@ -111,6 +111,11 @@ Podle pokynů v tomto rychlém startu se nainstaluje všechny balíčky, které 
     ```shell
     pip install --upgrade azureml-sdk[automl]
     ```
+
+> [!IMPORTANT]
+> V některé nástroje příkazového řádku můžete potřebovat pro přidání uvozovek následujícím způsobem: * 'azureml-sdk [poznámkových bloků]' * "azureml-sdk [automl]"
+>
+
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 

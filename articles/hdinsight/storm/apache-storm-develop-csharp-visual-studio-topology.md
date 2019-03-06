@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf258637311cd22964723da6bad3451dff6cccf6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632005"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437390"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -140,7 +140,7 @@ Topologii příkladu, který používá toto komponenty a spolupracuje se Storme
 
 3. Po vytvoření projektu, byste měli mít následující soubory:
 
-   * **Soubor program.cs**: Tento soubor definuje topologie pro váš projekt. Ve výchozím nastavení se vytvoří výchozí topologii, která se skládá z jednoho spout a bolt jeden.
+   * **Program.cs**: Tento soubor definuje topologie pro váš projekt. Ve výchozím nastavení se vytvoří výchozí topologii, která se skládá z jednoho spout a bolt jeden.
 
    * **Spout.cs**: Spout příklad, který generuje náhodná čísla.
 
@@ -433,7 +433,7 @@ Transakční topologie implementovat následující pro podporu opakování dat:
 
 * **Ukládání do mezipaměti metadat**: Spout musí ukládají metadata o datech vygenerován, takže data můžete načíst a znovu aktivováno, pokud dojde k chybě. Vzhledem k tomu, že jsou data, protože ho vygeneroval vzorku malé, nezpracovaných dat pro jednotlivé řazené kolekce členů je uložen ve slovníku opětovného přehrání.
 
-* **ACK**: Můžete volat každou bolt v topologii `this.ctx.Ack(tuple)` potvrďte, že se úspěšně zpracovala řazené kolekce členů. Pokud všechny funkce bolts potvrzeno řazené kolekce členů, `Ack` vyvolání metody spout. `Ack` Metoda umožňuje spout odstranila data, která ukládá do mezipaměti pro opakování.
+* **ACK**: Můžete volat každou bolt v topologii `this.ctx.Ack(tuple)` potvrďte, že se úspěšně zpracovala řazené kolekce členů. Pokud mají všechny funkce bolts potvrzení řazené kolekce členů, `Ack` vyvolání metody spout. `Ack` Metoda umožňuje spout odstranila data, která ukládá do mezipaměti pro opakování.
 
 * **Selhání**: Můžete volat každou bolt `this.ctx.Fail(tuple)` k označení, že zpracování se nezdařilo pro řazené kolekce členů. Selhání rozšíří na `Fail` metoda spout, kde můžete s použitím přehrály řazené kolekce členů v mezipaměti metadat.
 
@@ -756,7 +756,7 @@ Další Storm v HDInsight ukázky a další způsoby práce s HDInsight najdete 
 * [Nasazení a monitorování topologií pomocí Apache Storm v HDInsight](apache-storm-deploy-monitor-topology.md)
 * [Příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md)
 
-**Apache Hadoop v HDInsight**
+**Apache Hadoop on HDInsight**
 
 * [Použití Apache Hivu s Apache Hadoop v HDInsight](../hadoop/hdinsight-use-hive.md)
 * [Použití Apache Pig s Apache Hadoop v HDInsight](../hadoop/hdinsight-use-pig.md)

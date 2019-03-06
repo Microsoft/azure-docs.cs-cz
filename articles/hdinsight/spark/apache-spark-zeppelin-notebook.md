@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 70d1e08b1b81fd3aba159e18de3ee8829bc36548
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 600b2796f1cca5d6ac2c478a5eb30e12f30b670a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331006"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449746"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
@@ -103,7 +103,7 @@ Clustery HDInsight Spark zahrnují [Apache Zeppelin](https://zeppelin.apache.org
     ![Spuštění interpretu](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "výstup Hive")
 1. Přejděte do nastavení překladač Livy a potom klikněte na tlačítko **restartovat**.
    
-    ![Restartujte Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "restartovat Zeppelin intepreter")
+    ![Restartujte překladač Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "restartovat překladač Zeppelin")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Použití externích balíčků s poznámkového bloku
 Poznámkový blok Zeppelin můžete nakonfigurujete pro použití externího, komunitou balíčky, které nejsou součástí out-of-the-box v clusteru v clusteru Apache Spark v HDInsight (Linux). Můžete vyhledávat [úložiště Maven](https://search.maven.org/) pro úplný seznam balíčků, které jsou k dispozici. Seznam dostupných balíčků můžete získat také z jiných zdrojů. Například je k dispozici na úplný seznam balíčků z komunity [Spark balíčky](https://spark-packages.org/).
@@ -150,7 +150,7 @@ V takovém případě musíte provést následující kroky předtím, než mů�
     ![Spuštění interpretu](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "výstup Hive")
 1. Přejděte do nastavení překladač Livy a potom klikněte na tlačítko **restartovat**.
    
-    ![Restartujte Livy intepreter](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "restartovat Zeppelin intepreter")
+    ![Restartujte překladač Livy](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "restartovat překladač Zeppelin")
 1. Spuštění buňky kódu z existující Poznámkový blok Zeppelin. Tím se vytvoří nová relace Livy v clusteru HDInsight.
 
 ## <a name="seealso"></a>Viz také

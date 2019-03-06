@@ -1,6 +1,6 @@
 ---
-title: DMZ příklad – vytvoření DMZ k ochraně aplikací s bránou Firewall a skupin zabezpečení sítě | Dokumentace Microsoftu
-description: Vytvoření DMZ pomocí brány Firewall a skupin zabezpečení sítě (NSG)
+title: Příklad hraniční sítě – sestavení do hraniční sítě k ochraně aplikací s bránou firewall a skupin zabezpečení sítě | Dokumentace Microsoftu
+description: Vytvářejte hraniční síti s bránou firewall a skupin zabezpečení sítě (Nsg)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,263 +14,274 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 31d945f64cccd0c811d4dc45163583224102fb8a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965235"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442474"
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Příklad 2 – Vytvoření DMZ k ochraně aplikací s bránou Firewall a skupin zabezpečení sítě
-[Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
+# <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>Příklad 2: Vytvořit hraniční síť k ochraně aplikací s bránou firewall a skupin zabezpečení sítě
+[Vraťte se do Microsoft cloud services a stránka zabezpečení sítě][HOME]
 
-V tomto příkladu bude vytvoření DMZ pomocí brány firewall, čtyři windows serverů a skupin zabezpečení sítě. To vás také provede všechny relevantní příkazy zajistit lepší představu o jednotlivých kroků. Je také část provozu scénář k poskytování podrobné krok za krokem, jak se provoz pokračuje přes vrstev obrany v hraniční síti. Nakonec v odkazech oddíl je kompletní kód a pokyny k vytvoření tohoto prostředí pro testování a experimentovat s různými scénáři. 
+Tento příklad ukazuje, jak vytvořit hraniční síti (označované také jako *DMZ*, *demilitarizovaná zóna nebo*, a *monitorována podsíť*) s bránou firewall, čtyř počítačů Windows serveru a skupiny zabezpečení sítě (Nsg). Obsahuje podrobnosti o každém z příslušných příkazy zajistit lepší představu o jednotlivých kroků. V části "Provoz scénáře" poskytuje podrobné vysvětlení, jak se provoz pokračuje přes vrstev obrany v hraniční síti. Nakonec v části "Odkazy na" obsahuje kompletní kód a pokyny k vytvoření tohoto prostředí pro testování a vyzkoušet různé scénáře.
 
-![Příchozí DMZ pomocí síťového virtuálního zařízení a skupiny zabezpečení sítě][1]
+![Příchozí hraniční sítě pomocí síťového virtuálního zařízení a skupin zabezpečení sítě][1]
 
-## <a name="environment-description"></a>Popis prostředí
-V tomto příkladu je předplatné, které obsahuje následující:
+## <a name="environment"></a>Prostředí 
+V tomto příkladu je založené na scénářích s předplatným Azure, která obsahuje tyto položky:
 
-* Dva cloudových služeb: "FrontEnd001" a "BackEnd001"
-* Virtuální síť "CorpNetwork" se dvěma podsítěmi: "FrontEnd" a "Back-end"
-* Jednu skupinu zabezpečení sítě, které platí pro obě podsítě
-* Síťové virtuální zařízení, v tomto příkladu Barracuda NextGen Firewall, připojený k podsíti Frontend
-* Windows Server, který představuje aplikační server web (dále jen "IIS01")
-* Dva windows serverů, které představují zpět aplikaci ukončit servery ("AppVM01", "AppVM02")
-* Windows server, který představuje server DNS ("DNS01")
+* Dva cloudových služeb: FrontEnd001 a BackEnd001.
+* Virtuální síť s názvem CorpNetwork, která má dvě podsítě: Front-endových a back-endu.
+* Jedné skupině NSG, která se uplatňuje na obě podsítě.
+* Síťové virtuální zařízení: Barracuda NextGen Firewall připojené k podsíti FrontEnd.
+* Počítač s Windows serverem, který představuje server webových aplikací: IIS01.
+* Dva počítače Windows serveru, které představují aplikace back-end serverů: AppVM01 a AppVM02.
+* Počítač s Windows serverem, který představuje DNS server: DNS01.
 
 > [!NOTE]
-> Přestože tento příklad používá Barracuda NextGen Firewall, řadu různých síťových virtuálních zařízení lze použít v tomto příkladu.
+> Přestože tento příklad používá Barracuda NextGen Firewall, můžete použít mnoho síťových virtuálních zařízení.
 > 
 > 
 
-V části odkazy níže je skript prostředí PowerShell, který sestaví většinu prostředí, je popsáno výše. Vytváření virtuálních počítačů a virtuálních sítí, i když se provádí ukázkový skript, nejsou v podrobně popsány v tomto dokumentu.
+Skript Powershellu v části "Odkazy" v tomto článku vytváří většinu prostředí, je zde popsáno. Virtuální počítače a virtuální sítě jsou vytvořeny skriptem, ale tyto procesy nejsou podrobně popsané v tomto dokumentu.
 
 Sestavení prostředí:
 
-1. Uložte soubor xml konfigurace sítě v oddíle odkazy (aktualizováno s názvy, umístění a IP adresy, které odpovídají situaci)
-2. Aktualizace uživatelské proměnné ve skriptu, tak, aby odpovídaly prostředí, ve kterém je skript běžet před (předplatné, názvy služeb atd.)
-3. Spusťte skript prostředí PowerShell
+1. Uložte soubor XML konfigurace sítě zahrnuté v části "Odkazy" (aktualizováno s názvy, umístění a IP adresy, které odpovídají vašemu scénáři).
+2. Aktualizujte uživatelské proměnné ve skriptu prostředí PowerShell tak, aby odpovídaly prostředí, ve kterém skript poběží na (předplatných, názvy služeb a tak dále).
+3. Spusťte skript prostředí PowerShell.
 
-**Poznámka:** Oblast označeny Powershellového skriptu musí odpovídat oblasti označeny v souboru xml konfigurace sítě.
+> [!NOTE]
+> Oblast zadali ve skriptu prostředí PowerShell musí odpovídat oblasti zadaný v souboru XML konfigurace sítě.
+>
+>
 
-Po úspěšném spuštění skriptu bude může provést následující kroky pozálohovací skript:
+Po úspěšném spuštění skriptu můžete provést tyto kroky:
 
-1. Nastavení pravidel brány firewall, tento proces je popsán v následující části s názvem: Pravidla brány firewall.
-2. Volitelně můžete v části odkazy jsou dva skripty pro nastavení webového serveru a aplikačního serveru s jednoduchou webovou aplikaci umožňující testování s touto konfigurací DMZ.
+1. Nastavení pravidel brány firewall. Najdete v části "Pravidla brány Firewall" v tomto článku.
+2. Pokud chcete, můžete nastavit webový server a server aplikace s jednoduchou webovou aplikaci umožňující testování s konfigurací hraniční sítě. Můžete použít skripty dvě aplikace uvedené v části "Odkazy".
 
-V další části vysvětluje většinu příkazů skriptů vzhledem k skupiny zabezpečení sítě.
+V další části vysvětluje většinu příkazů skriptu, které se týkají skupin zabezpečení sítě.
 
-## <a name="network-security-groups-nsg"></a>Skupiny zabezpečení sítě (NSG)
-V tomto příkladu je skupina NSG vytvořené a pak načíst šest pravidlům. 
+## <a name="nsgs"></a>Skupiny NSG
+V tomto příkladu je skupinu NSG vytvořené a pak načíst šest pravidlům.
 
 > [!TIP]
-> Obecně řečeno byste měli nejprve vytvořit konkrétní pravidla "Povolit" a pak obecnější pravidla "Zakázat" poslední. Přiřazené priority určují, které jsou pravidla vyhodnocují první. Po nalezení provozu použít na příslušné pravidlo, žádná další pravidla se vyhodnocují. Pravidla skupiny zabezpečení sítě můžete použít buď ve směru příchozí nebo odchozí (z hlediska podsíť).
+> Obecně platí nejdřív byste měli vytvořit konkrétní pravidla "Povolit" a naposledy obecnější pravidla "Zakázat". Přiřazené priority ovládací prvky, které jsou pravidla se vyhodnocují první. Po provoz nenajde, která platí pro konkrétní pravidlo, žádná další pravidla se vyhodnocují. Pravidla skupiny zabezpečení sítě můžete použít buď příchozí nebo odchozí směr (z hlediska podsíť).
 > 
 > 
 
-Deklarativní byly sestaveny pro příchozí provoz následující pravidla:
+Deklarativní tato pravidla jsou vytvořeny pro příchozí provoz:
 
 1. Interní DNS provoz (port 53) je povolený.
-2. Je povolený provoz protokolu RDP (portu 3389) z Internetu do všech virtuálních počítačů
-3. Je povolený provoz protokolu HTTP (port 80) z Internetu do síťových virtuálních zařízení (Brána firewall)
-4. Je povolen veškerý provoz (všechny porty) z IIS01 k AppVM1
-5. Veškerý provoz (všechny porty) z Internetu do celé virtuální síť (obě podsítě) byl odepřen.
+2. Provoz protokolu RDP (portu 3389) z Internetu do všech virtuálních počítačů je povolené.
+3. Je povolený provoz protokolu HTTP (port 80) z Internetu do síťových virtuálních zařízení (Brána firewall).
+4. Je povolen veškerý provoz (všechny porty) z IIS01 do AppVM01.
+5. Veškerý provoz (všechny porty) z Internetu do celé virtuální sítě (obě podsítě) byl odepřen.
 6. Veškerý provoz (všechny porty) z podsítě front-endu do back-endové podsítě je odepřen.
 
-Pomocí těchto pravidel vázán ke každé podsíti, pokud požadavek HTTP byl příchozí z Internetu webový server, jak pravidla 3 (Povolit) a 5 (zabránění) se vztahují, ale protože pouze by použít a pravidlo 5 by souvisejí, má vyšší prioritu pravidla 3. Požadavek HTTP se proto by bylo možné bránu firewall. Pokud tento stejný provoz se snažil to spojit se serverem DNS01, pravidlo 5 (odmítnout) by se použít jako první a provoz nebude možné předat serveru. Pravidlo 6 (odmítnout) blokuje front-endové podsítě z komunikaci na podsíť back-endu (s výjimkou povolený provoz v pravidlech 1 a 4), tím se zajistí ochrana síť back-end v případě, že ohrožení útočník k webové aplikaci na front-endu, útočník bude omezený přístup back-end "protected" sítě (jenom k prostředkům zveřejněné na AppVM01 server).
+Pomocí těchto pravidel vázána pro každou podsíť, kdyby příchozí z Internetu webový server, požadavek HTTP i pravidla 3 (Povolit) a pravidla 5 (zabránění) by se zdá, že chcete použít, ale protože pravidlo 3 má vyšší prioritu, pouze se použije. Pravidlo 5 nebude souvisejí. Požadavek protokolu HTTP bude tak možné do brány firewall.
 
-Neexistuje výchozí odchozí pravidlo, které umožňuje provozu do Internetu. V tomto příkladu jsme povoluje odchozí provoz a místo abyste upravili žádná odchozí pravidla. Zamezit provoz v obou směrech, směrování definovaného uživatele se vyžaduje, to je prozkoumali v jiném příkladu, který lze nalézt v [hlavní zabezpečení hranic dokumentu][HOME].
+Pokud tento stejný provoz se snažil to spojit se serverem DNS01, pravidlo 5 (zabránění) by první použití, takže provoz nebude možné předat serveru. Pravidla 6 (zabránění) blokuje front-endové podsítě v komunikaci s back-endové podsítě (s výjimkou provoz povolený v pravidlech 1 a 4). Tím se zajistí ochrana síť back-end v případě, že útočník zneužije webovou aplikaci na front-endu. V takovém případě útočník by mít omezený přístup k back-end "chráněné" sítě. (Útočník bude mít přístup pouze na prostředky, které jsou zveřejněné na AppVM01 server.)
 
-Popsané výše uvedených pravidel skupiny zabezpečení sítě jsou velmi podobné pravidla skupiny zabezpečení sítě v [– Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin zabezpečení sítě][Example1]. Přečtěte si prosím popis skupiny zabezpečení sítě v tomto dokumentu podrobný pohled na každé pravidlo skupiny zabezpečení sítě a jeho atributy.
+Neexistuje výchozí odchozí pravidlo, které umožňuje provozu do Internetu. V tomto příkladu jsme povoluje odchozí provoz a místo abyste upravili žádná odchozí pravidla. Zamezit provoz v obou směrech, budete potřebovat, směrování definovaného uživatelem. Informace o této techniky v jiném příkladu v [hlavní zabezpečení hranic dokumentu][HOME].
+
+Pravidla skupiny zabezpečení sítě je zde popsáno, jsou podobné pravidlům NSG v [– Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin zabezpečení sítě][Example1]. Zkontrolujte popis skupiny zabezpečení sítě v tomto článku podrobný pohled na každé pravidlo skupiny zabezpečení sítě a jeho atributy.
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
-Klienta správy bude potřeba nainstalovat na počítači pro správu brány firewall a vytváření konfigurací potřeba. O správě zařízení najdete v článku dodavatele dokumentace ke službě z vaší brány firewall (nebo jiné síťové virtuální zařízení). Zbytek tohoto oddílu popisuje konfigurace, brány firewall prostřednictvím dodavatele správy klienta (tzn. ne Azure portal nebo Powershellu).
+Je potřeba nainstalovat klienta správy na počítač pro správu brány firewall a vytvořit konfigurace potřebné. Viz dokumentace ke službě z vaší brány firewall (nebo jiné síťové virtuální zařízení) dodavatele o tom, jak spravovat zařízení. Zbytek tohoto oddílu popisuje konfigurace, brány firewall prostřednictvím klienta pro správu od dodavatele (není webu Azure portal nebo Powershellu).
 
-Pokyny pro stažení klienta a připojení k Barracuda použitý v tomto příkladu najdete tady: [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+Zobrazit [Barracuda NG správce](https://techlib.barracuda.com/NG61/NGAdmin) pokyny pro stažení klienta a připojení k bráně firewall Barracuda použitý v tomto příkladu.
 
-V bráně firewall pravidla předávání bude nutné vytvořit. Protože v tomto příkladu pouze směruje přenosy z Internetu ve vázané na bránu firewall a potom na webový server, je potřeba jenom jeden předávání pravidlo překladu adres. Pravidlo v bráně Firewall Barracuda NextGen použitý v tomto příkladu bude pravidlo NAT cíl ("letního času NAT"), abyste tento provoz.
+Je potřeba vytvořit pravidla pro předávání v bráně firewall. Protože scénář v tomto příkladu pouze internetový provoz směruje příchozí do brány firewall a pak na webový server, stačí jeden předávání pravidlo překladu adres. Pravidlo v bráně firewall Barracuda použitý v tomto příkladu, bude pravidlo NAT cíl (Dst NAT), abyste tento provoz.
 
-Vytvořit následující pravidlo (nebo ověřit existující výchozí pravidla), od řídicího panelu Barracuda NG správce klienta, přejděte na kartu Konfigurace, v provozní konfigurační oddíl, klikněte na sady pravidel. Mřížka volat, "Hlavní pravidla" se zobrazí existující pravidla aktivní a deaktivované v bráně firewall. V pravém horním rohu tuto mřížku je malá zelená "+" tlačítko, klepnutím na toto tlačítko Vytvořit nové pravidlo (Poznámka: vaše brána firewall může být "uzamčen" změny, pokud se zobrazí tlačítko označený "Lock" a nejde vytvořit nebo upravit pravidla, klikněte na toto tlačítko "odemknout" Sada pravidel a Povolte úpravy). Pokud chcete upravit stávající pravidlo, vyberte toto pravidlo, klikněte pravým tlačítkem a vyberte Upravit pravidlo.
+Chcete-li vytvořit následující pravidlo (nebo ověřit existující výchozí pravidla), proveďte následující kroky:
+1. Na řídicím panelu Barracuda NG správce klienta, na kartě Konfigurace v **provozní konfiguraci** vyberte **Ruleset**. 
 
-Vytvořit nové pravidlo a zadejte název, jako je například "WebTraffic". 
+   Mřížka volá **hlavní pravidla** ukazuje, stávající aktivní a deaktivovat pravidla v bráně firewall.
+
+2. Chcete-li vytvořit nové pravidlo, vyberte malá zelená **+** tlačítko v pravém horním rohu tuto mřížku. (Brána firewall může být uzamčen. Pokud se zobrazí tlačítko označené **Zámek** a nemůžeme vytvořit nebo upravit pravidla, vyberte tlačítko a odemknutí sada pravidel a povolit úpravy.)
+  
+3. Pokud chcete upravit stávající pravidlo, vyberte pravidlo, klikněte pravým tlačítkem a pak vyberte **upravit pravidlo**.
+
+Vytvořit nové pravidlo nazývat například **WebTraffic.** 
 
 Ikona pravidel NAT cílové vypadá takto: ![Určení ikony NAT][2]
 
-Pravidlo samotné by vypadat přibližně takto:
+Pravidlo samotné bude vypadat přibližně takto:
 
 ![Pravidlo brány firewall][3]
 
-Zde žádné příchozí adresu, kterou narazí na bránu Firewall při pokusu o přístup protokolu HTTP (port 80 nebo 443 pro protokol HTTPS) budou odeslány mimo brány Firewall na "Místní IP Adrese počítače DHCP1" rozhraní a přesměruje na webový Server s adresou IP adresa 10.0.1.5. Jelikož je příchozí na portu 80 a přechod na webový server na portu 80 provoz portu byla nutná žádná. Ale cílový seznam mohlo být 10.0.1.5:8080 Pokud naslouchali náš webový Server na portu 8080, tedy překladu příchozí port 80 v bráně firewall na portu 8080 pro příchozí spojení na webovém serveru.
+Všechny příchozí adresa narazí na bránu firewall při pokusu o přístup protokolu HTTP (port 80 nebo 443 pro protokol HTTPS) budou odeslány mimo brány firewall na počítači DHCP1 místní IP rozhraní a přesměruje na webový server s adresou IP adresa 10.0.1.5. Protože hned provoz na portu 80 a přechod na webový server na portu 80, není nutná žádná změna portu. Ale cílový seznam mohlo být 10.0.1.5:8080 Pokud naslouchali webového serveru na portu 8080, která převedla příchozí port 80 v bráně firewall na portu 8080 pro příchozí spojení na webovém serveru.
 
-Způsob připojení by měl také být označeny, pro cílové pravidlo z Internetu, že je nejvhodnější "Dynamické SNAT". 
+Měli byste také určit způsob připojení. Cíl pravidla z Internetu je dynamické SNAT nejvhodnější metodu.
 
-I když byl vytvořen pouze jedno pravidlo je důležité, jestli je správně nastavené prioritu. V mřížce všechna pravidla v bráně firewall toto nové pravidlo je v dolní části (nižší než pravidla "BLOCKALL") do hry se nikdy přijde. Zajistěte, aby nově vytvořeného pravidla pro webový provoz je vyšší než BLOCKALL pravidlo.
+I když jste vytvořili jenom jedno pravidlo, je potřeba správně nastavit její prioritu. V mřížce všechna pravidla v bráně firewall Pokud je toto nové pravidlo v dolní části (nižší než pravidla BLOCKALL), to se nikdy souvisejí. Zajistěte, aby že nové pravidlo pro webový provoz je vyšší než BLOCKALL pravidlo.
 
-Jakmile se vytvoří pravidlo, musí být vloženo do brány firewall a pak se aktivuje, pokud tato podmínka není splněna pravidla změna projeví. Nabízená a aktivační proces je popsaný v další části.
+Po vytvoření pravidla, musíte ji odeslat do brány firewall a poté aktivovat. Pokud neprovedete tyto kroky, změně v pravidle projeví. Další část popisuje proces nabízených oznámení a aktivace.
 
 ## <a name="rule-activation"></a>Pravidlo aktivace
-Pomocí pravidel upravit a přidat toto pravidlo musí být nahráli do brány firewall a aktivovat sady pravidel.
+Teď, když se pravidlo přidá sady pravidel, budete muset nahrát sady pravidel brány firewall a pak sadu aktivujte.
 
 ![Aktivace pravidla brány firewall][4]
 
-V pravém horním rohu okna správy klienta se cluster tlačítek. Klikněte na tlačítko "Odeslat změny" a odeslat upravenou pravidla brány firewall a potom klikněte na tlačítko "Aktivovat".
+V pravém horním rohu správy klienta zobrazí se vám skupina tlačítek. Vyberte **odeslat změny** odeslat upravenou sady pravidel brány firewall a potom vyberte **aktivovat**.
 
-Díky aktivaci sady pravidel brány firewall prostředí sestavení tohoto příkladu je dokončena. Volitelně lze spustit skripty sestavení příspěvek v části odkazy pro přidání aplikace do tohoto prostředí pro testování následující scénáře provoz.
+Teď, když po dokončení aktivace sady pravidel brány firewall, je kompletní prostředí. Pokud chcete, můžete spustit skripty ukázkové aplikace v části "Odkazy na" a přidejte aplikace do prostředí. Pokud jste přidali aplikaci, je otestovat provoz scénáře popsané v další části.
 
 > [!IMPORTANT]
-> Je důležité si uvědomit, že nebude dosáhnete webový server přímo. Když prohlížeč požádá FrontEnd001.CloudApp.Net stránku protokolu HTTP, koncový bod protokolu HTTP (port 80) předá tento přenos není webový server do brány firewall. Bránu firewall pak podle pravidlo vytvořené výše NAT, které požadují k webovému serveru.
+> Si uvědomit, webový server nebude přímo přístupů. Když prohlížeč vyžádá stránku protokolu HTTP od FrontEnd001.CloudApp.Net, koncový bod protokolu HTTP (port 80) předává provoz na bránu firewall, nikoli na webovém serveru. Brána firewall, pravidla, které jste vytvořili dříve, použije překladu adres k mapování požadavku na webový server.
 > 
 > 
 
 ## <a name="traffic-scenarios"></a>Provoz scénáře
-#### <a name="allowed-web-to-web-server-through-firewall"></a>(Povolena) Web pro webový Server přes bránu Firewall
-1. Internet uživatelské požadavky HTTP stránky FrontEnd001.CloudApp.Net (Internet směřující cloudové služby)
-2. Cloudové služby předává provoz přes otevřených koncových bodů na portu 80 na místní rozhraní brány firewall na 10.0.1.4:80
-3. Front-endové podsítě začíná zpracování příchozí pravidlo:
-   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-   3. Vztahuje se 3 pravidlo skupiny zabezpečení sítě (Internet do brány Firewall), provoz je povolený, zastavte pravidla zpracování
-4. Provoz narazí na interní IP adresa brány firewall (10.0.1.4)
-5. To je provoz na portu 80, přesměruje na webový server IIS01 naleznete v tématu pravidlo brány firewall pro předávání
-6. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku
-7. IIS01 dotazem SQL serveru na AppVM01 informace
-8. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
-9. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-   3. 3 pravidlo skupiny zabezpečení sítě (Internet do brány Firewall) nebude použít, přejděte k další pravidla
-   4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
-10. AppVM01 obdrží dotaz SQL a odpovídá
-11. Protože nejsou žádná odchozí pravidla na back-endové podsítě je povolena odpovědi
-12. Front-endové podsítě začíná zpracování příchozí pravidlo:
-    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
-13. Server služby IIS obdrží odpověď SQL a dokončí odpovědi HTTP a pošle žadateli
-14. Protože NAT relace ze brána firewall, cíl odpovědi (zpočátku) je pro bránu Firewall
-15. Brána firewall obdrží odpověď od serveru a předá zpět do Internetu uživatele
-16. Vzhledem k tomu, že jsou povolená žádná odchozí pravidla ve front-endové podsíti odpovědi a Internet uživatel obdrží požadované webové stránky.
+#### <a name="allowed-web-to-web-server-through-the-firewall"></a>(Povolena) Web pro webový server přes bránu firewall
+1. Internet uživatele požádá o stránku protokolu HTTP FrontEnd001.CloudApp.Net (přístupem k Internetu cloudové služby).
+2. Cloudové služby předává provoz přes otevřených koncových bodů na portu 80 brány firewall na místní rozhraní na 10.0.1.4:80.
+3. Front-endové podsítě zahájí zpracování příchozí pravidlo:
+   1. Neplatí pravidlo skupiny zabezpečení sítě 1 (DNS). Přesunout na další pravidla.
+   2. Neplatí pravidlo skupiny zabezpečení sítě 2 (RDP). Přesunout na další pravidla.
+   3. Pravidlo skupiny zabezpečení sítě 3 (internet do brány firewall) nevztahuje. Povolení provozu. Zastavte zpracování pravidla.
+4. Provoz narazí na interní IP adresa brány firewall (10.0.1.4).
+5. Brána firewall pravidlo přeposílání zjistí, že to je port 80 provoz a přesměruje na webový server IIS01.
+6. IIS01 naslouchá pro webový provoz, obdrží požadavek a spustí zpracování požadavku.
+7. IIS01 požádá o informace z instance systému SQL Server na AppVM01.
+8. Nejsou žádná odchozí pravidla ve front-endové podsíti, takže provoz je povolený.
+9. Podsíť back-endu spustí zpracování příchozí pravidlo:
+   1. Neplatí pravidlo skupiny zabezpečení sítě 1 (DNS). Přesunout na další pravidla.
+   2. Neplatí pravidlo skupiny zabezpečení sítě 2 (RDP). Přesunout na další pravidla.
+   3. Neplatí pravidlo skupiny zabezpečení sítě 3 (internet do brány firewall). Přesunout na další pravidla.
+   4. Pravidlo skupiny zabezpečení sítě 4 (IIS01 k AppVM01) nevztahuje. Povolení provozu. Zastavte zpracování pravidla.
+10. Instance systému SQL Server na AppVM01 obdrží požadavek a odpovídá.
+11. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povoleno odpovědi.
+12. Front-endové podsítě zahájí zpracování příchozí pravidlo:
+    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsíti, takže pravidla NSG nepoužijí.
+    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi umožňuje tento provoz, takže provoz je povolený.
+13. IIS01 obdrží odpověď od AppVM01 dokončí odpovědi HTTP a pošle žadateli.
+14. Protože je to NAT relace ze brána firewall, cíl odpovědi je zpočátku pro bránu firewall.
+15. Brána firewall obdrží odpověď od serveru a předá zpět uživateli Internetu.
+16. Protože nejsou žádná odchozí pravidla ve front-endové podsíti, odpovědi je povolený a internet uživatel obdrží webové stránky.
 
 #### <a name="allowed-rdp-to-backend"></a>(Povolena) Připojení RDP k back-endu
-1. Správce serveru k Internetu vyžaduje relaci RDP na AppVM01 na BackEnd001.CloudApp.Net:xxxxx kde xxxxx je počet náhodně přidělenému portu pro připojení RDP k AppVM01 (přidělenému portu najdete na webu Azure Portal nebo prostřednictvím prostředí PowerShell)
-2. Vzhledem k tomu, že brána Firewall naslouchá jenom na adrese FrontEnd001.CloudApp.Net, není zapojená tento tok provozu
-3. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-   2. Použít pravidlo NSG 2 (RDP), provoz je povolený, zastavte pravidla zpracování
-4. Žádná odchozí pravidla použít výchozí pravidla a zpětný provoz je povolený.
-5. Povolené relace protokolu RDP
-6. AppVM01 vyzve k zadání uživatelského jména hesla
+1. Správce serveru k Internetu vyžaduje relaci RDP na AppVM01 na BackEnd001.CloudApp.Net:*xxxxx*, kde *xxxxx* je číslo náhodně přidělenému portu pro připojení RDP k AppVM01. (Zjistíte přidělenému portu na portálu Azure portal nebo pomocí prostředí PowerShell.)
+2. Vzhledem k tomu, že brána firewall naslouchá jenom na adrese FrontEnd001.CloudApp.Net, není zapojená tento tok provozu.
+3. Podsíť back-endu spustí zpracování příchozí pravidlo:
+   1. Neplatí pravidlo skupiny zabezpečení sítě 1 (DNS). Přesunout na další pravidla.
+   2. Použít pravidlo skupiny zabezpečení sítě 2 (RDP). Povolení provozu. Zastavte zpracování pravidla.
+4. Vzhledem k tomu, že nejsou žádná odchozí pravidla, výchozí pravidla použít a vracet provoz je povolený.
+5. Relace protokolu RDP je povolena.
+6. AppVM01 vyzve k zadání uživatelského jména a hesla.
 
-#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Povolena) Webové vyhledávání serveru DNS na serveru DNS
-1. Webový Server, IIS01, potřebám datového kanálu na www.data.gov, ale potřebám pro překlad adres.
-2. Konfiguraci sítě pro virtuální síť seznamy DNS01 (10.0.2.4 v back-endové podsíti) jako primární server DNS, IIS01 odešle žádosti DNS DNS01
-3. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
-4. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-   1. Vztahuje se 1 pravidlo skupiny zabezpečení sítě (DNS), provoz je povolený, zastavte pravidla zpracování
-5. DNS server obdrží požadavek
-6. DNS server nemá adresu do mezipaměti a požádá kořenový server DNS na Internetu
-7. Žádná odchozí pravidla na back-endové podsítě je povolený provoz
-8. Server DNS pro Internet odpoví, protože tato relace byla zahájena interně, odpověď může
-9. DNS server, odpověď do mezipaměti a reaguje na původní žádost zpět na IIS01
-10. Žádná odchozí pravidla na back-endové podsítě je povolený provoz
-11. Front-endové podsítě začíná zpracování příchozí pravidlo:
-    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz
-12. IIS01 obdrží odpověď od DNS01
+#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Povolena) Vyhledávání DNS webového serveru na serveru DNS
+1. Požadavky serveru, IIS01, webové datového kanálu na www.data.gov ale potřebuje pro překlad adres.
+2. Konfiguraci sítě pro virtuální síť ukazuje DNS01 (10.0.2.4 v back-endové podsíti) jako primární server DNS. IIS01 odešle DNS01 žádosti DNS.
+3. Protože nejsou žádná odchozí pravidla ve front-endové podsíti, je povolený provoz.
+4. Podsíť back-endu spustí zpracování příchozí pravidlo:
+   1. Použije pravidlo skupiny zabezpečení sítě 1 (DNS). Povolení provozu. Zastavte zpracování pravidla.
+5. DNS server obdrží požadavek.
+6. DNS server nemá adresu do mezipaměti a dotazuje kořenový server DNS na Internetu.
+7. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povolený provoz.
+8. Internetového DNS server odpoví. Protože interně zahájení relace odpovědi je povolené.
+9. DNS server, odpověď do mezipaměti a odpoví na požadavek od IIS01.
+10. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povolený provoz.
+11. Front-endové podsítě zahájí zpracování příchozí pravidlo:
+    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsíti, takže pravidla NSG nepoužijí.
+    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi umožňuje tento provoz, aby provoz.
+12. IIS01 obdrží odpověď od DNS01.
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(Povolena) Přístup k souboru webového serveru na AppVM01
-1. IIS01 vyzve k zadání souboru na AppVM01
-2. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
-3. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-   3. 3 pravidlo skupiny zabezpečení sítě (Internet do brány Firewall) nebude použít, přejděte k další pravidla
-   4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
-4. AppVM01 obdrží požadavek a odpovídá zprávou souboru (za předpokladu, že přístup je autorizovaný)
-5. Protože nejsou žádná odchozí pravidla na back-endové podsítě je povolena odpovědi
-6. Front-endové podsítě začíná zpracování příchozí pravidlo:
-   1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-   2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
-7. Server služby IIS obdrží soubor
+#### <a name="allowed-web-server-file-access-on-appvm01"></a>(Povolena) Přístup k souborům webového serveru na AppVM01
+1. IIS01 požádá o soubor na AppVM01.
+2. Protože nejsou žádná odchozí pravidla ve front-endové podsíti, je povolený provoz.
+3. Podsíť back-endu spustí zpracování příchozí pravidlo:
+   1. Neplatí pravidlo skupiny zabezpečení sítě 1 (DNS). Přesunout na další pravidla.
+   2. Neplatí pravidlo skupiny zabezpečení sítě 2 (RDP). Přesunout na další pravidla.
+   3. Neplatí pravidlo skupiny zabezpečení sítě 3 (internet do brány firewall). Přesunout na další pravidla.
+   4. Pravidlo skupiny zabezpečení sítě 4 (IIS01 k AppVM01) nevztahuje. Povolení provozu. Zastavte zpracování pravidla.
+4. AppVM01 obdrží požadavek a odpoví na soubor (za předpokladu, že přístup je autorizovaný).
+5. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povoleno odpovědi.
+6. Front-endové podsítě zahájí zpracování příchozí pravidlo:
+   1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsíti, takže pravidla NSG nepoužijí.
+   2. Systém výchozí pravidlo povolení provozu mezi podsítěmi umožňuje tento provoz, aby provoz.
+7. IIS01 obdrží soubor.
 
 #### <a name="denied-web-direct-to-web-server"></a>(Zakázaný) Web s přímým přístupem k webovému serveru
-Vzhledem k tomu, že webový Server, IIS01 a brány Firewall jsou ve stejné cloudové službě sdílejí stejné veřejná IP adresa. Veškerý provoz HTTP by tedy přesměrováni do brány firewall. I když by se žádost úspěšně obsluhovat, nejde přejít přímo na webovém serveru, jí předán, tak, jak navrženo, přes bránu Firewall nejprve. Podívejte se první scénáře v této části pro tok přenosů.
+Protože IIS01 webového serveru a brány firewall jsou ve stejné cloudové službě, sdílejí stejnou veřejnou IP adresu. Proto všechny HTTP provoz se směřuje do brány firewall. Během požadavku by se úspěšně obsluhovat, nejde přejít přímo na webovém serveru. Předá, tak, jak navrženo, přes bránu firewall nejprve. Podívejte se první scénáře v této části pro tok přenosů.
 
 #### <a name="denied-web-to-backend-server"></a>(Zakázaný) Web back-end server
-1. Internet uživatel pokusí přistoupit k souboru na AppVM01 přes službu BackEnd001.CloudApp.Net
-2. Protože je otevřeno žádné koncové body pro sdílenou složku, to nebude předejte Cloudovou službu a nebude připojit k serveru
-3. Pokud z nějakého důvodu otevřelo koncových bodů, pravidlo skupiny zabezpečení sítě 5 (Internet k virtuální síti) by blokovaly tento provoz
+1. Uživateli s Internetu pokusí o přístup k souboru na AppVM01 přes službu BackEnd001.CloudApp.Net.
+2. Protože je otevřeno žádné koncové body pro sdílení souborů, to nebudou předávat cloudovou službu a nebude připojit k serveru.
+3. Pokud z nějakého důvodu jsou spuštěné koncové body, pravidlo NSG 5 (internet k virtuální síti) blokuje provoz.
 
-#### <a name="denied-web-dns-lookup-on-dns-server"></a>(Zakázaný) Webové vyhledávání DNS na serveru DNS
-1. Internet uživatel se pokusí vyhledat interní DNS záznam na DNS01 přes službu BackEnd001.CloudApp.Net
-2. Protože je otevřeno žádné koncové body pro službu DNS, to nebude předejte Cloudovou službu a by připojit k serveru
-3. Pokud z nějakého důvodu otevřelo koncových bodů, pravidlo skupiny zabezpečení sítě 5 (Internet k virtuální síti) by blokovaly tento provoz (Poznámka: Tento pravidlo 1 (DNS) se nedají použít pro dva důvody, nejprve zdrojové adresy je Internetu, toto pravidlo platí pouze pro místní virtuální sítě jako zdroj To je také pravidlo povolení, takže by nikdy odepření provozu)
+#### <a name="denied-web-dns-lookup-on-the-dns-server"></a>(Zakázaný) Webové vyhledávání DNS na serveru DNS
+1. Internetu uživatel se pokusí vyhledat interní DNS záznam na DNS01 přes službu BackEnd001.CloudApp.Net.
+2. Protože je otevřeno žádné koncové body pro službu DNS, to nebudou předávat cloudovou službu a nebude připojit k serveru.
+3. Pokud z nějakého důvodu jsou spuštěné koncové body, pravidlo NSG 5 (internet k virtuální síti) blokuje provoz. (Pravidlo 1 [DNS] neplatí pro dva důvody. Nejprve zdrojové adresy je internet a pouze v případě, že místní virtuální sítě je zdroj bude použito toto pravidlo. Za druhé toto pravidlo je pravidlo povolení, takže nikdy odepření provozu.)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(Zakázaný) Web pro přístup k SQL přes bránu Firewall
-1. Internet uživatel požádá o SQL data z FrontEnd001.CloudApp.Net (Internet směřující cloudové služby)
-2. Protože je otevřeno žádné koncové body pro server SQL, to nebude předat Cloudovou službu a by kontaktovat bránu firewall
-3. Pokud z nějakého důvodu otevřelo koncové body, front-endové podsítě začíná zpracování příchozí pravidlo:
-   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-   3. Použít NSG Rule 2 (Internet do brány Firewall), provoz je povolený, zastavte pravidla zpracování
-4. Provoz narazí na interní IP adresa brány firewall (10.0.1.4)
-5. Brána firewall nemá žádná pravidla předávání pro SQL a zahodí přenos
+#### <a name="denied-web-to-sql-access-through-the-firewall"></a>(Zakázaný) Web pro přístup k SQL přes bránu firewall
+1. Uživatel k Internetu vyžaduje SQL data z FrontEnd001.CloudApp.Net (přístupem k Internetu cloudové služby).
+2. Protože je otevřeno žádné koncové body pro server SQL, to nebudou předávat cloudovou službu a nedostanou bránu firewall.
+3. Pokud z nějakého důvodu jsou spuštěné koncové body, začne podsítě front-endové zpracování příchozí pravidlo:
+   1. Neplatí pravidlo skupiny zabezpečení sítě 1 (DNS). Přesunout na další pravidla.
+   2. Neplatí pravidlo skupiny zabezpečení sítě 2 (RDP). Přesunout na další pravidla.
+   3. Pravidlo skupiny zabezpečení sítě 3 (internet do brány firewall) nevztahuje. Povolení provozu. Zastavte zpracování pravidla.
+4. Provoz narazí na interní IP adresa brány firewall (10.0.1.4).
+5. Brána firewall nemá žádná pravidla předávání pro SQL a zahodí přenos.
 
 ## <a name="conclusion"></a>Závěr
-Toto je poměrně přímo dopředné způsob, jak ochraně vaší aplikace s bránou firewall a izolaci podsíť back-end z příchozí provoz.
+Tento příklad ukazuje poměrně jednoduchý způsob, jak Ochrana aplikací pomocí firewallu a izolovat back endové podsítě z příchozí provoz.
 
-Další příklady a základní informace o hranicích zabezpečení sítě najdete [tady][HOME].
+Můžete najít další příklady a základní informace o síti hranice zabezpečení [tady][HOME].
 
 ## <a name="references"></a>Odkazy
-### <a name="main-script-and-network-config"></a>Hlavní skript a konfigurace sítě
-Úplná skript uložte v souboru skriptu prostředí PowerShell. Konfigurace sítě uložte do souboru s názvem "NetworkConf2.xml".
-Podle potřeby upravte proměnné definované uživatelem. Spusťte skript a potom postupujte podle pokynů nastavení pravidla brány Firewall výše.
+### <a name="full-script-and-network-config"></a>Úplná skript a síťové konfigurace
+Úplná skript uložte v souboru skriptu prostředí PowerShell. Uložte skript konfigurace sítě do souboru s názvem NetworkConf2.xml.
+Uživateli definované proměnných změňte podle potřeby. Spusťte skript a pak postupujte podle pokynů v části "Pravidla brány Firewall" v tomto článku.
 
-#### <a name="full-script"></a>Úplná skript
-Tento skript bude založené na proměnné definované uživatelem:
+#### <a name="full-script"></a>Celý skript
+Tento skript na základě proměnných definovaný uživatelem, bude proveďte následující kroky:
 
-1. Připojení k předplatnému Azure
-2. Vytvoření nového účtu úložiště
-3. Vytvořit novou virtuální síť a dvě podsítě, jak jsou definovány v souboru konfigurace sítě
-4. Vytváření 4 windows server virtuálních počítačů
-5. Konfigurace, včetně skupiny zabezpečení sítě:
-   * Vytvoření NSG
-   * Sestavování s pravidly
-   * Vytvoření vazby skupiny zabezpečení sítě na příslušné podsítě
+1. Připojení k předplatnému Azure.
+2. Vytvoření účtu úložiště
+3. Vytvoření virtuální sítě a dvě podsítě, jak jsou definovány v konfiguračním souboru sítě.
+4. Vytvořte čtyři virtuální počítače Windows serveru.
+5. Nakonfigurujte skupiny zabezpečení sítě. Dokončení konfigurace těchto kroků:
+   * Vytvoří skupinu zabezpečení sítě.
+   * Naplní skupinu zabezpečení sítě s pravidly.
+   * Skupiny zabezpečení sítě se váže k příslušné podsítě.
 
-Tento skript Powershellu je vhodné spustit místně na, že připojení Internetu, počítač nebo server.
+Tento skript Powershellu byste měli spustit místně na serveru nebo počítače připojeného k Internetu.
 
 > [!IMPORTANT]
-> Když se skript spouští, může být upozornění nebo ostatní informační zprávy, které se objeví v prostředí PowerShell. Pouze chybové zprávy červeně jsou příčinou znepokojení.
+> Při spuštění tohoto skriptu, může zobrazit upozornění a ostatní informační zprávy v prostředí PowerShell. Stačí mít obavy o chybové zprávy, které se zobrazí červeně.
 > 
 > 
 
 ```powershell
     <# 
      .SYNOPSIS
-      Example of DMZ and Network Security Groups in an isolated network (Azure only, no hybrid connections)
+      Example of a perimeter network and Network Security Groups in an isolated network. (Azure only. No hybrid connections.)
 
      .DESCRIPTION
-      This script will build out a sample DMZ setup containing:
-       - A default storage account for VM disks
-       - Two new cloud services
-       - Two Subnets (FrontEnd and BackEnd subnets)
-       - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
-       - One server on the FrontEnd Subnet (plus the NVA on the FrontEnd subnet)
-       - Three Servers on the BackEnd Subnet
-       - Network Security Groups to allow/deny traffic patterns as declared
+      This script will build out a sample perimeter network setup containing:
+       - A default storage account for VM disks.
+       - Two new cloud services.
+       - Two subnets (the FrontEnd and BackEnd subnets).
+       - A network virtual appliance (NVA): a Barracuda NextGen Firewall.
+       - One server on the FrontEnd subnet (plus the NVA on the FrontEnd subnet).
+       - Three servers on the BackEnd subnet.
+       - Network Security Groups to allow/deny traffic patterns as declared.
 
-      Before running script, ensure the network configuration file is created in
-      the directory referenced by $NetworkConfigFile variable (or update the
+      Before running the script, ensure the network configuration file is created in
+      the directory referenced by the $NetworkConfigFile variable (or update the
       variable to reflect the path and file name of the config file being used).
 
      .Notes
-      Security requirements are different for each use case and can be addressed in a
-      myriad of ways. Please be sure that any sensitive data or applications are behind
+      Security requirements are different for each use case and can be addressed in many ways. Be sure that any sensitive data or applications are behind
       the appropriate layer(s) of protection. This script serves as an example of some
-      of the techniques that can be used, but should not be used for all scenarios. You
-      are responsible to assess your security needs and the appropriate protections
-      needed, and then effectively implement those protections.
+      of the techniques that you can use, but it should not be used for all scenarios. You
+      are responsible for assessing your security needs and the appropriate protections
+      and then effectively implementing those protections.
 
       FrontEnd Service (FrontEnd subnet 10.0.1.0/24)
        myFirewall - 10.0.1.4
@@ -293,9 +304,9 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         $SubnetName = @()
         $VMIP = @()
 
-    # User Defined Global Variables
-      # These should be changes to reflect your subscription and services
-      # Invalid options will fail in the validation section
+    # User-Defined Global Variables
+      # These should be changed to reflect your subscription and services.
+      # Invalid options will fail in the validation section.
 
       # Subscription Access Details
         $subID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -324,15 +335,15 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
       # NSG Details
         $NSGName = "MyVNetSG"
 
-    # User Defined VM Specific Config
-        # Note: To ensure proper NSG Rule creation later in this script:
-        #       - The Web Server must be VM 1
-        #       - The AppVM1 Server must be VM 2
-        #       - The DNS server must be VM 4
+    # User-Defined VM-Specific Config
+        # To ensure proper NSG rule creation later in this script:
+        #       - The web server must be VM 1.
+        #       - The AppVM1 server must be VM 2.
+        #       - The DNS server must be VM 4.
         #
         #       Otherwise the NSG rules in the last section of this
         #       script will need to be changed to match the modified
-        #       VM array numbers ($i) so the NSG Rule IP addresses
+        #       VM array numbers ($i) so the NSG rule IP addresses
         #       are aligned to the associated VM IP addresses.
 
         # VM 0 - The Network Virtual Appliance (NVA)
@@ -381,8 +392,8 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Variables or   #
-    # Configuration past this point #
+    # No user-defined variables or   #
+    # configuration past this point #
     # ----------------------------- #
 
       # Get your Azure accounts
@@ -390,14 +401,14 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         Set-AzureSubscription –SubscriptionId $subID -ErrorAction Stop
         Select-AzureSubscription -SubscriptionId $subID -Current -ErrorAction Stop
 
-      # Create Storage Account
+      # Create storage account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
             Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
 
-      # Update Subscription Pointer to New Storage Account
+      # Update subscription pointer to new storage account
         Write-Host "Updating Subscription Pointer to New Storage Account" -ForegroundColor Cyan 
         Set-AzureSubscription –SubscriptionId $subID -CurrentStorageAccountName $StorageAccountName -ErrorAction Stop
 
@@ -432,11 +443,11 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
-    # Create VNET
+    # Create virtual network
         Write-Host "Creating VNET" -ForegroundColor Cyan 
         Set-AzureVNetConfig -ConfigurationPath $NetworkConfigFile -ErrorAction Stop
 
-    # Create Services
+    # Create services
         Write-Host "Creating Services" -ForegroundColor Cyan
         New-AzureService -Location $DeploymentLocation -ServiceName $FrontEndService -ErrorAction Stop
         New-AzureService -Location $DeploymentLocation -ServiceName $BackEndService -ErrorAction Stop
@@ -452,16 +463,16 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
                     Set-AzureSubnet  –SubnetNames $SubnetName[$i] | `
                     Set-AzureStaticVNetIP -IPAddress $VMIP[$i] | `
                     New-AzureVM –ServiceName $ServiceName[$i] -VNetName $VNetName -Location $DeploymentLocation
-                # Set up all the EndPoints we'll need once we're up and running
-                # Note: Web traffic goes through the firewall, so we'll need to set up a HTTP endpoint.
-                #       Also, the firewall will be redirecting web traffic to a new IP and Port in a
+                # Set up all the endpoints we'll need once we're up and running.
+                # Note: Web traffic goes through the firewall, so we'll need to set up an HTTP endpoint.
+                #       Also, the firewall will be redirecting web traffic to a new IP and port in a
                 #       forwarding rule, so the HTTP endpoint here will have the same public and local
                 #       port and the firewall will do the NATing and redirection as declared in the
                 #       firewall rule.
                 Add-AzureEndpoint -Name "MgmtPort1" -Protocol tcp -PublicPort 801  -LocalPort 801  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "MgmtPort2" -Protocol tcp -PublicPort 807  -LocalPort 807  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "HTTP"      -Protocol tcp -PublicPort 80   -LocalPort 80   -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
-                # Note: A SSH endpoint is automatically created on port 22 when the appliance is created.
+                # Note: An SSH endpoint is automatically created on port 22 when the appliance is created.
                 }
             Else
                 {
@@ -484,7 +495,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
         Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
 
-      # Add NSG Rules
+      # Add NSG rules
         Write-Host "Writing rules into the NSG" -ForegroundColor Cyan
         Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" -Type Inbound -Priority 100 -Action Allow `
             -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
@@ -516,15 +527,15 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
             -DestinationAddressPrefix $BEPrefix -DestinationPortRange '*' `
             -Protocol *
 
-        # Assign the NSG to the Subnets
+        # Assign the NSG to the subnets
             Write-Host "Binding the NSG to both subnets" -ForegroundColor Cyan
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $FESubnet -VirtualNetworkName $VNetName
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
-    # Optional Post-script Manual Configuration
-      # Configure Firewall
-      # Install Test Web App (Run Post-Build Script on the IIS Server)
-      # Install Backend resource (Run Post-Build Script on the AppVM01)
+    # Optional Post-Script Manual Configuration
+      # Configure firewall
+      # Install test web app (run post-build script on the IIS server)
+      # Install back-end resources (run post-build script on AppVM01)
       Write-Host
       Write-Host "Build Complete!" -ForegroundColor Green
       Write-Host
@@ -536,7 +547,7 @@ Tento skript Powershellu je vhodné spustit místně na, že připojení Interne
 ```
 
 #### <a name="network-config-file"></a>Soubor konfigurace sítě
-Uložte tento soubor xml s aktualizované umístění a přidání odkazu do tohoto souboru $NetworkConfigFile proměnné ve skriptu výše.
+Uložte tento soubor XML s aktualizovanou umístění a pak přidat odkaz na tento soubor do proměnné $NetworkConfigFile v předchozím skriptu.
 
 ```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -571,7 +582,7 @@ Uložte tento soubor xml s aktualizované umístění a přidání odkazu do toh
 ```
 
 #### <a name="sample-application-scripts"></a>Ukázky skriptů aplikace
-Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady hraniční sítě, jednu byl poskytnut na následující odkaz: [Ukázkový skript aplikace][SampleApp]
+Pokud chcete nainstalovat ukázkovou aplikaci pro tuto a další příklady hraniční sítě, přečtěte si článek [ukázkový skript aplikace][SampleApp].
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Příchozí DMZ pomocí skupiny zabezpečení sítě"

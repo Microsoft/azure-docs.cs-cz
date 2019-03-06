@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 3/3/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 043a49e679f2b8ec48213e28d229121d3f0e070d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 47cd1c8e7a8ea02175f1f35eaf8c1658e03a2a53
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338633"
+ms.locfileid: "57403307"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
@@ -51,12 +51,15 @@ Při replikaci virtuálních počítačů VMware:
 
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se zprovozní po převzetí služeb při selhání. Síť musí být ve stejné oblasti jako trezor Služeb zotavení. Výběrem možnosti **Nakonfigurovat pro vybrané počítače** použijte nastavení sítě pro všechny počítače, které jste vybrali pro ochranu. Vyberte **Nakonfigurovat později** a vyberte síť Azure pro konkrétní počítač. Pokud nejste připojeni k síti, musíte ho vytvořit. Pokud chcete vytvořit síť pomocí Resource Manageru, klikněte na tlačítko **vytvořit nový**. Vyberte podsíť, pokud je k dispozici a potom klikněte na tlačítko **OK**.
 
-    ![Povolit nastavení cíle replikace](./media/vmware-azure-enable-replication/enable-rep3.png)
+>[!NOTE]
+>Azure Site Recovery replikuje nyní přímo do služby Managed Disks pro všechny nové replikace. Existující replikace nebude mít vliv. Replikace do účtů úložiště pro nový počítač se pouze k dispozici prostřednictvím rozhraní REST API a Powershellu. 
+
+    ![Enable replication target setting](./media/vmware-azure-enable-replication/enable-rep3.png)
 8. V části **Virtuální počítače** > **Výběr virtuálních počítačů** vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na **OK**. Pokud nejste schopni zobrazení/vybrat konkrétní virtuální počítač, klikněte na tlačítko [tady](https://aka.ms/doc-plugin-VM-not-showing) k vyřešení daného problému.
 
     ![Povolení replikace vyberte virtuálních počítačů](./media/vmware-azure-enable-replication/enable-replication5.png)
-9. V **vlastnosti** > **konfigurovat vlastnosti**, vyberte účet používaný službou procesový server při automatické instalaci služby Mobility na počítači.  
-10. Ve výchozím nastavení se replikují všechny disky. Chcete-li vyloučit disky z replikace, klikněte na tlačítko **všechny disky** a zrušte všechny disky, které nechcete replikovat.  Pak klikněte na **OK**. Později můžete nastavit další vlastnosti. [Další informace](vmware-azure-exclude-disk.md) o vyloučení disků.
+9. V **vlastnosti** > **konfigurovat vlastnosti**, vyberte účet používaný službou procesový server při automatické instalaci služby Mobility na počítači. Zvolte, typ cílového spravovaného disku, který chcete replikovat do svých dat změny vzory.
+10. Ve výchozím nastavení se replikují všechny disky zdrojového počítače. Vyloučení disků z replikace, zrušte zaškrtnutí políčka **zahrnout** zaškrtávací políčko proti všechny disky, které nechcete replikovat.  Pak klikněte na **OK**. Později můžete nastavit další vlastnosti. [Další informace](vmware-azure-exclude-disk.md) o vyloučení disků.
 
     ![Povolení replikace nakonfigurovat vlastnosti](./media/vmware-azure-enable-replication/enable-replication6.png)
 

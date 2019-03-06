@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e44b4a2c21cf340683ffbca71f609db58c8f363b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5e25de83ddec2884d4bd10ea85f4708d534b8e3f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337035"
+ms.locfileid: "57403239"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Rychlý start: Převést převod textu na řeč pomocí Node.js
 
@@ -136,7 +136,7 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Už jste téměř hotovi. Posledním krokem je vytvoření asynchronní funkci. Tato funkce bude číst váš klíč předplatného z proměnné prostředí, vyzvat k textu, získání tokenu, počkejte požadavek na dokončení, potom převést převod textu na řeč a uložit jako WAV zvuk.
+Už jste téměř hotovi. Posledním krokem je vytvoření asynchronní funkce. Tato funkce bude číst váš klíč předplatného z proměnné prostředí, vyzvat k textu, získání tokenu, počkejte požadavek na dokončení, potom převést převod textu na řeč a uložit jako WAV zvuk.
 
 Pokud jste obeznámeni s proměnnými prostředí nebo dáváte přednost testu se vaše předplatné klíče pevně zakódované jako řetězec, nahraďte `process.env.SPEECH_SERVICE_KEY` s klíči předplatného jako řetězec.
 

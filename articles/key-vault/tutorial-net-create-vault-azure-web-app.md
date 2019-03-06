@@ -1,6 +1,6 @@
 ---
-title: Kurz – použití Azure Key Vault pomocí webové aplikace Azure v rozhraní .NET – Azure Key Vault | Dokumentace Microsoftu
-description: Kurz – konfigurace aplikace ASP.NET core pro čtení tajného klíče ze služby Key vault
+title: Kurz – použití Azure Key Vault pomocí webové aplikace Azure v rozhraní .NET | Dokumentace Microsoftu
+description: V tomto kurzu nakonfigurujete aplikaci ASP.NET core pro čtení tajného klíče z trezoru klíčů.
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: b6dbae0f721983920c2073927fff74100528678e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 18c95978af3ce1e3451cac84db367f55acd392b4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998791"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455985"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
@@ -25,46 +25,43 @@ Služba Azure Key Vault pomáhá chránit tajné kódy jako jsou klíče rozhran
 
 V tomto kurzu se dozvíte, jak vytvořit webové aplikace Azure, který může číst informace z trezoru klíčů Azure. Proces využívá spravovaných identit pro prostředky Azure. Další informace o Azure webové aplikace najdete v tématu [služby Azure App Service](../app-service/overview.md).
 
-Tento článek ukazuje, jak do:
+V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
-> * Uložení tajného klíče v trezoru klíčů
+> * Přidání tajného klíče do trezoru klíčů.
 > * Načtení tajného klíče z trezoru klíčů
-> * Vytvoření webové aplikace Azure
-> * Povolení [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) pro webovou aplikaci
-> * Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
-> * Spusťte webovou aplikaci v Azure.
+> * Vytvoření webové aplikace Azure.
+> * Povolte spravované identity pro webové aplikace.
+> * Přiřadíte oprávnění pro webovou aplikaci.
+> * Spuštění webové aplikace v Azure.
 
-Než budete pokračovat, přečtěte si [základní koncepty služby Key Vault](key-vault-whatis.md#basic-concepts).
+Než začnete, přečtěte si [základní koncepty služby Key Vault](key-vault-whatis.md#basic-concepts). 
+
+Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ve Windows:
-  * [Sada .NET Core SDK 2.1 nebo novější](https://www.microsoft.com/net/download/windows)
-
-* Na počítači Mac:
-  * [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/)
-
-* Všechny platformy:
+* Pro Windows: [sady SDK .NET Core 2.1 nebo novější](https://www.microsoft.com/net/download/windows)
+* Pro Mac: [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
-  * Předplatné Azure <br />(Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před zahájením.)
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.0.4 nebo novější, která je dostupná pro Windows, Mac a Linux
+  * Tento kurz vyžaduje, abyste spustili Azure CLI místně. Musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
-## <a name="managed-service-identity-and-how-it-works"></a>Identita spravované služby a jak to funguje
+## <a name="about-managed-service-identity"></a>Informace o funkci Identita spravované služby
 
-Azure Key Vault bezpečně ukládá přihlašovací údaje, a proto nejsou ve vašem kódu. Však musíte pro ověření do služby Azure Key Vault k načtení klíče. K ověření do služby Key Vault, budete potřebovat přihlašovací údaje. Je classic dilema bootstrap. Identita spravované služby (MSI) řeší tento problém tím, že poskytuje _bootstrap identity_ , která zjednodušuje proces.
+Azure Key Vault ukládá přihlašovací údaje bezpečně, takže nejsou zobrazeny ve vašem kódu. Však musíte pro ověření do služby Azure Key Vault k načtení klíče. K ověření do služby Key Vault, budete potřebovat přihlašovací údaje. Je classic dilema bootstrap. Identita spravované služby (MSI) řeší tento problém tím, že poskytuje _bootstrap identity_ , která zjednodušuje proces.
 
-Při povolení MSI pro služby Azure (třeba: Virtuální počítače, služby App Service nebo funkce), Azure vytvoří [instanční objekt služby](key-vault-whatis.md#basic-concepts). MSI se k tomu pro instanci služby v Azure Active Directory (Azure AD) a vkládá přihlašovací údaje pro instanční objekt do této instance.
+Při povolení MSI pro službu Azure, jako jsou Azure Virtual Machines, Azure App Service nebo Azure Functions, Azure vytvoří [instanční objekt služby](key-vault-whatis.md#basic-concepts). MSI se k tomu pro instanci služby v Azure Active Directory (Azure AD) a vloží pověření instančního objektu do této instance.
 
 ![MSI diagram](media/MSI.png)
 
-V dalším kroku váš kód volá místních metadat služba k dispozici u prostředku Azure získat přístupový token. Váš kód použije přístupový token, který získá z místního koncového bodu MSI_ENDPOINT, k ověření ve službě Azure Key Vault.
+V dalším kroku k získání přístupového tokenu, váš kód volá služba místních metadat, která je k dispozici u prostředku Azure. Váš kód používá přístupový token, který získá z místního koncového bodu MSI pro ověření do služby Azure Key Vault.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
+Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
 
 ```azurecli
 az login
@@ -74,8 +71,9 @@ az login
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-1. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create).
-1. Vyberte název skupiny prostředků a nahraďte zástupný text. Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create).
+
+Potom vyberte název skupiny prostředků a vyplňte zástupný symbol. Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
 
    ```azurecli
    # To list locations: az account list-locations --output table
@@ -88,49 +86,57 @@ Tato skupina prostředků v celém tomto kurzu použijete.
 
 Vytvoření služby key vault ve vaší skupině prostředků, zadejte následující informace:
 
-* Název trezoru klíčů: řetězec dlouhý 3 až 24 znaků, které mohou obsahovat pouze číslice, písmena a pomlčky (například: 0 – 9, a – z, A-Z - a)
+* Název trezoru klíčů: řetězec dlouhý 3 až 24 znaků, které mohou obsahovat pouze číslice (0 – 9), písmena (a – z, A-Z) a pomlčky (-)
 * Název skupiny prostředků
 * Umístění: **Západní USA**
 
-Zadejte následující příkaz v rozhraní příkazového řádku Azure:
+V rozhraní příkazového řádku Azure zadejte následující příkaz:
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
 
-V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+Váš účet Azure v tuto chvíli je pouze jeden, který má oprávnění k provádění operací s tímto novým trezorem.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Přidání tajného klíče do trezoru klíčů
 
 Nyní můžete přidat tajný klíč. Může být připojovací řetězec SQL nebo nějakých jiných informací, které potřebujete k zabezpečení a k dispozici pro vaši aplikaci.
 
-Typ s názvem následující příkaz pro vytvoření tajného klíče v trezoru klíčů **AppSecret**. Tento tajný kód ukládá hodnotu **MySecret**.
+Vytvoření tajného klíče v trezoru klíčů s názvem **AppSecret**, zadejte následující příkaz: 
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-Chcete-li zobrazit hodnotu v tajném kódu jako prostý text, zadejte následující příkaz:
+Tento tajný kód ukládá hodnotu **MySecret**.
+
+Chcete-li zobrazit hodnotu, která je obsažena v tajném kódu jako prostý text, zadejte následující příkaz:
 
 ```azurecli
 az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 ```
 
-Tento příkaz zobrazí informace o tajném klíči, včetně identifikátoru URI. Po dokončení těchto kroků byste měli mít identifikátor URI pro tajný klíč v trezoru klíčů. Poznamenejte si tyto informace. Budete je potřebovat později.
+Tento příkaz zobrazí tajné informace, včetně identifikátoru URI. 
+
+Po dokončení těchto kroků byste měli mít identifikátor URI pro tajný klíč v trezoru klíčů. Poznamenejte si tyto informace použijete později v tomto kurzu. 
 
 ## <a name="create-a-net-core-web-app"></a>Vytvoření webové aplikace .NET Core
 
-Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k vytvoření webové aplikace .NET Core a **publikovat** ji do Azure. Můžete také zhlédnout následující video:
+Vytvoření webové aplikace .NET Core a publikujete ji do Azure, postupujte podle pokynů v [vytvoření webové aplikace ASP.NET Core v Azure](../app-service/app-service-web-get-started-dotnet.md). 
+
+Můžete se také podívat na toto video:
 
 >[!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
 
 ## <a name="open-and-edit-the-solution"></a>Otevření a úprava řešení
 
 1. Přejděte **stránky** > **About.cshtml.cs** souboru.
-2. Instalace těchto balíčků NuGet:
+
+1. Instalace těchto balíčků NuGet:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
-3. Naimportujte následující kód do souboru About.cshtml.cs:
+
+1. Importovat následující kód, který *About.cshtml.cs* souboru:
 
    ```csharp
     using Microsoft.Azure.KeyVault;
@@ -138,7 +144,7 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
     using Microsoft.Azure.Services.AppAuthentication;
    ```
 
-4. Váš kód ve třídě AboutModel by takto:
+   Váš kód ve třídě AboutModel by měl vypadat takto:
 
    ```csharp
     public class AboutModel : PageModel
@@ -152,14 +158,14 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
             bool retry = false;
             try
             {
-                /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
+                /* The next four lines of code show you how to use AppAuthentication library to fetch secrets from your key vault*/
                 AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
                 KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
                 var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
                         .ConfigureAwait(false);
                 Message = secret.Value;
 
-                /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
+                /* The following *do while* logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff, which is the recommended client side throttling*/
                 do
                 {
                     long waitTime = Math.Min(getWaitTime(retries), 2000000);
@@ -180,14 +186,14 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
             }
         }
 
-        // This method implements exponential backoff incase of 429 errors from Azure Key Vault
+        // This method implements exponential backoff if there are 429 errors from Azure Key Vault
         private static long getWaitTime(int retryCount)
         {
             long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
             return waitTime;
         }
 
-        // This method fetches a token from Azure Active Directory which can then be provided to Azure Key Vault to authenticate
+        // This method fetches a token from Azure Active Directory, which can then be provided to Azure Key Vault to authenticate
         public async Task<string> GetAccessTokenAsync()
         {
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
@@ -197,53 +203,51 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
     }
     ```
 
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-web-app"></a>Spuštění webové aplikace
 
-1. V hlavní nabídce sady Visual Studio 2017, vyberte **ladění** > **Start** s nebo bez ladění. 
-1. Jakmile se zobrazí prohlížeč, přejděte na stránku **O aplikaci**.
-1. Zobrazí se hodnota tajného klíče **AppSecret**.
+1. V hlavní nabídce sady Visual Studio 2017, vyberte **ladění** > **Start**, s nebo bez ladění. 
+1. V prohlížeči přejděte **o** stránky.  
+    Zobrazí se hodnota tajného klíče **AppSecret**.
 
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Povolení spravované identity pro webovou aplikaci
+## <a name="enable-a-managed-identity"></a>Povolit spravované identity
 
-Služba Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaje a dalších tajných kódů, ale váš kód potřebuje ověřit do služby Key Vault je načítat. [Spravovaných identit pro prostředky Azure přehled](../active-directory/managed-identities-azure-resources/overview.md) pomáhá tento problém vyřešit tím, že Azure services automaticky spravovanou identitu ve službě Azure AD. Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
+Služba Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaje a dalších tajných kódů, ale váš kód potřebuje ověřit do služby Key Vault je načítat. [Spravovaných identit pro prostředky Azure přehled](../active-directory/managed-identities-azure-resources/overview.md) pomáhá tento problém vyřešit tím, že Azure services automaticky spravovanou identitu ve službě Azure AD. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste museli zobrazovat přihlašovací údaje ve vašem kódu.
 
-1. V Azure CLI spusťte příkaz přiřadit identity vytvořit identitu pro tuto aplikaci:
+V rozhraní příkazového řádku Azure CLI vytvořit identitu pro tuto aplikaci, spusťte příkaz přiřadit identity:
 
-   ```azurecli
+```azurecli
+az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+```
 
-   az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+Nahraďte \<YourAppName > s názvem publikované aplikace v Azure.  
+    Například, pokud byl název vaší aplikace publikované **MyAwesomeapp.azurewebsites.net**, nahraďte \<YourAppName > s **MyAwesomeapp**.
 
-   ```
+Poznamenejte si, `PrincipalId` po publikování aplikace do Azure. Výstup tohoto příkazu v kroku 1 by měla být v následujícím formátu:
 
-   >[!NOTE]
-   >Je nutné nahradit \<YourAppName\> s názvem publikované aplikace v Azure. Například, pokud byl název vaší aplikace publikované **MyAwesomeapp.azurewebsites.net**, nahraďte \<YourAppName\> s **MyAwesomeapp**.
-
-1. Poznamenejte si, `PrincipalId` po publikování aplikace do Azure. Výstup tohoto příkazu v kroku 1 by měla být v následujícím formátu:
-
-   ```json
-   {
-     "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-     "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-     "type": "SystemAssigned"
-   }
-   ```
+```json
+{
+  "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "SystemAssigned"
+}
+```
 
 >[!NOTE]
->Příkaz v tomto postupu je ekvivalentem přechodu na [portál](https://portal.azure.com) a přepnutí nastavení **Identita / Přiřazeno systémem** na hodnotu **Zapnuto** ve vlastnostech webové aplikace.
+>Příkaz v tomto postupu je ekvivalentem chystáte [webu Azure portal](https://portal.azure.com) a přepnete **Identity / systém přiřadil** nastavení **na** ve webové aplikaci Vlastnosti.
 
-## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Přiřazení oprávnění ke čtení tajných kódů ze služby Key Vault vaší aplikaci
+## <a name="assign-permissions-to-your-app"></a>Přiřazení oprávnění pro aplikaci
 
-Nahraďte \<YourKeyVaultName\> s názvem trezoru klíčů a \<PrincipalId\> s hodnotou **PrincipalId** v následujícím příkazu:
+Nahraďte \<YourKeyVaultName > s názvem služby key vault, a nahraďte \<PrincipalId > hodnotou identifikátoru **PrincipalId** v následujícím příkazu:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
 ```
 
-Tento příkaz poskytuje identitu aplikace (MSI) služby oprávnění k proveďte **získat** a **seznamu** operace v trezoru klíčů.
+Tento příkaz poskytuje identitu (MSI) služby oprávnění aplikace provedete **získat** a **seznamu** operace v trezoru klíčů.
 
-## <a name="publish-the-web-application-to-azure"></a>Publikování webové aplikace do Azure
+## <a name="publish-the-web-app-to-azure"></a>Publikování webové aplikace do služby Azure
 
-Publikování webové aplikace do Azure jednou znovu, abyste viděli, že svou živou webovou aplikaci můžete načíst hodnotu tajného kódu.
+Publikování webové aplikace do Azure ještě jednou a ověřte, že svou živou webovou aplikaci můžete načíst hodnotu tajného kódu.
 
 1. V sadě Visual Studio vyberte projekt **key-vault-dotnet-core-quickstart**.
 2. Vyberte **Publikovat** > **Spustit**.
@@ -251,7 +255,10 @@ Publikování webové aplikace do Azure jednou znovu, abyste viděli, že svou �
 
 Při spuštění aplikace, měli byste vidět, že můžete načíst tajná hodnota.
 
-Nyní teď úspěšně jste vytvořili webovou aplikaci v .NET, která ukládá a načítá jeho tajné klíče ze služby Key Vault.
+Teď jste úspěšně vytvořili webovou aplikaci v .NET, která ukládá a načítá jeho tajné klíče z trezoru klíčů.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud už je nepotřebujete, můžete odstranit virtuální počítač a trezor klíčů.
 
 ## <a name="next-steps"></a>Další postup
 

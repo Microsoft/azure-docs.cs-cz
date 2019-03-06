@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 62675df9f440df77d1098d5c89bd6810349fb3af
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 88ea0fee73441f98734058391e0599cf8e1142a3
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750000"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403868"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -41,7 +41,8 @@ Než začnete, ujistěte se, že:
 
 Založené na vybraný účet úložiště, zařízení Data Box vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
-- Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob.
+- Jedna sdílená složka pro premium storage. 
+- Jedna sdílená složka pro účet služby blob storage. 
 
 Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
 

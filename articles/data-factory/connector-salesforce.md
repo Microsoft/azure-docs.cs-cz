@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c4d694621e4ac5428256346e3994bc3233d399a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015079"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441402"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-salesforce-connector.md)
 > * [Aktuální verze](connector-salesforce.md)
 
@@ -289,9 +289,9 @@ K dotazování obnovitelně odstraněné záznamy z koše služby Salesforce, m�
 
 Kopírování dat ze služby Salesforce, můžete použít SOQL dotazu nebo příkaz jazyka SQL. Všimněte si, že tyto dvě má odlišnou syntaxi a podporu funkce, nelze kombinovat. Byly navrženy používat SOQL dotaz, který má nativní podporu v Salesforce. Následující tabulka uvádí hlavní rozdíly:
 
-| Syntaxe | Režim SOQL | Režim SQL |
+| Syntaxe | Režim SOQL | SQL Mode |
 |:--- |:--- |:--- |
-| Výběr sloupce | Třeba vyjmenování pole ke zkopírování v dotazu, například `SELECT field1, filed2 FROM objectname` | `SELECT *` se podporuje kromě výběr sloupce. |
+| Výběr sloupce | Musí se vytvořit výčet polí ke zkopírování v dotazu, například `SELECT field1, filed2 FROM objectname` | `SELECT *` se podporuje kromě výběr sloupce. |
 | Uvozovky | Názvy zaznamenaná/objektů nemůže citovat. | Názvy polí nebo objektů může používat uvozovky, například `SELECT "id" FROM "Account"` |
 | Formát data a času |  Přečtěte si podrobnosti o [tady](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) a ukázky v další části. | Přečtěte si podrobnosti o [tady](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) a ukázky v další části. |
 | Logické hodnoty | Reprezentovaná jako `False` a `True`, třeba `SELECT … WHERE IsDeleted=True`. | Reprezentovaná jako 0 nebo 1, třeba `SELECT … WHERE IsDeleted=1`. |
@@ -311,25 +311,25 @@ Při kopírování dat ze služby Salesforce se používají následující mapo
 
 | Datový typ Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
-| Automatické číslo |Řetězec |
+| Automatické číslo |String |
 | Zaškrtávací políčko |Logická hodnota |
-| Měna |Desítkově |
+| Měna |Decimal |
 | Datum |DateTime |
 | Datum a čas |DateTime |
-| Email |Řetězec |
-| ID |Řetězec |
-| Relaci vyhledávání |Řetězec |
-| Vyberte rozevírací seznam |Řetězec |
-| Číslo |Desítkově |
-| Procento |Desítkově |
-| Telefon |Řetězec |
-| Rozevírací seznam |Řetězec |
-| Text |Řetězec |
-| Textové pole |Řetězec |
-| Textová oblast (dlouhý) |Řetězec |
-| Textové pole (RTF) |Řetězec |
-| Text (zašifrovaný) |Řetězec |
-| zprostředkovatele identity |Řetězec |
+| Email |String |
+| ID |String |
+| Relaci vyhledávání |String |
+| Vyberte rozevírací seznam |String |
+| Číslo |Decimal |
+| Procento |Decimal |
+| Telefon |String |
+| Rozevírací seznam |String |
+| Text |String |
+| Textové pole |String |
+| Textová oblast (dlouhý) |String |
+| Textové pole (RTF) |String |
+| Text (zašifrovaný) |String |
+| zprostředkovatele identity |String |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

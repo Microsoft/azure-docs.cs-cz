@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdd4ecb1bfc9385ea3fa23756fcbf8fb20b6d87c
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 4f0a009d4bea8a0f0075337d6fcfb9de31b7c7a6
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193241"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409648"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Verze Preview: Nasazení ochrany hesel Azure AD
 
@@ -123,7 +123,7 @@ Existují dva instalační programy požadovaných pro ochranu hesel služby Azu
 
          ```PowerShell
          $globalAdminCredentials = Get-Credential
-         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
+         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
          ```
 
          > [!NOTE]

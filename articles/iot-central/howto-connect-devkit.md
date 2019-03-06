@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316621"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448539"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -31,7 +31,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami: 
 
-- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **Accelorometer** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
+- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **akcelerometr** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
 - Stav, který obsahuje příklad měření **stav zařízení**.
 - Měření událostí s **stiskne tlačítko B** událostí. 
 - Nastavení zobrazení **napětí**, **aktuální**, **ventilátor rychlost**a **reakcí na Incidenty** přepínací tlačítko.
@@ -56,7 +56,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
  
     ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
-3. Ujistěte se, že chcete uložit tyto podrobnosti, jako je bude temporaritly získat odpojení od Internetu během přípravy zařízení DevKit. 
+3. Ujistěte se, že chcete uložit tyto podrobnosti, jak vám bude dočasně odpojeny z Internetu během přípravy zařízení DevKit. 
 
 
 ### <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit

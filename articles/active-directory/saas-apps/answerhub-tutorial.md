@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d6ff44a8d760150df491b67ee56d62c4daff31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e05f865f0fd76e93b92f3bb09f1babd780074065
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882786"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Integrace Azure Active Directory s AnswerHub
 
@@ -80,7 +80,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s AnswerHub, kter
 2. [Konfigurace AnswerHub jednotného přihlašování](#configure-answerhub-single-sign-on) nastavit nastavení jednotného přihlašování na straně aplikace.
 3. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) s názvem Britta Simon.
 4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
-5. [Vytvořit testovacího uživatele AnswerHub](#create-answerhub-test-user) , který odpovídá a je propojen testovací uživatele Azure AD.
+5. Vytvořte testovacího uživatele AnswerHub, která odpovídá a je propojena s testovacího uživatele Azure AD.
 6. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování

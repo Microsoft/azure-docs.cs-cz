@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ef6d258be0165c7a73ce060879f55f1c7f404f9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751629"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453515"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkování pro zvýšení výkonu aplikací SQL Database
 
@@ -94,7 +94,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 V obou těchto příkladech se používají ve skutečnosti transakce. V prvním příkladu je každého jednotlivého volání implicitní transakce. V druhém příkladu zabalí explicitní transakce všech volání. Za dokumentaci [dávky zápisu transakční protokol](https://msdn.microsoft.com/library/ms186259.aspx), záznamy protokolu jsou zapsány na disk při potvrzení transakce. Pokud uvedete více volání v transakci, můžete tak zápis do transakčního protokolu zpoždění, dokud je transakce potvrzena. V důsledku toho jsou povolení dávkování pro zápis do protokolu transakcí serveru.
 
-V následující tabulce jsou uvedeny některé výsledky testování ad hoc. Testy provést stejnou sekvenční vložení a nemusíte transakce. Pro další perspektivy první sadu testů spustila vzdáleně z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů spustili z cloudové služby a databáze i nacházejí ve stejném datacentru Microsoft Azure (USA – západ). Následující tabulka uvádí doba trvání v MS sekvenční operace vložení a nemusíte transakce.
+V následující tabulce jsou uvedeny některé ad hoc výsledky testování. Testy provést stejnou sekvenční vložení a nemusíte transakce. Pro další perspektivy první sadu testů spustila vzdáleně z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů spustili z cloudové služby a databáze i nacházejí ve stejném datacentru Microsoft Azure (USA – západ). Následující tabulka uvádí doba trvání v MS sekvenční operace vložení a nemusíte transakce.
 
 **On-Premises do Azure**:
 
@@ -192,7 +192,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 Ve většině případů parametrů table-valued mají ekvivalentní, nebo lepší výkon než jiné postupy dávkování. Parametry Table-valued jsou často vhodnější, protože jsou flexibilnější, než jiné možnosti. Jiné techniky, jako je například hromadná kopie SQL, například povolit pouze vkládání nových řádků. Ale s parametry s hodnotou tabulky, můžete použít logiku v uložené proceduře k určení, které řádky jsou aktualizace a které jsou vloží. Typ tabulky můžete také upravit tak, aby obsahovala sloupec "Operace", která určuje, zda zadaný řádek by měl být vložen, aktualizoval nebo odstranil.
 
-V následující tabulce jsou uvedeny ad-hoc výsledky testu pro použití parametrů table-valued v milisekundách.
+V následující tabulce jsou uvedeny výsledky ad hoc testu pro použití parametrů table-valued v milisekundách.
 
 | Operace | On-Premises do Azure (ms) | Stejné datové centrum Azure (ms) |
 | --- | --- | --- |
@@ -232,7 +232,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Existují případy, kdy hromadné kopírování je upřednostňované nad parametry s hodnotou tabulky. Zobrazit srovnávací tabulka z parametrů Table-Valued oproti operace HROMADNÉHO vložení v článku [Table-Valued parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
-Výkon dávkování se zobrazit následující výsledky testů ad-hoc **SqlBulkCopy** v milisekundách.
+Zobrazit následující výsledky testů ad hoc výkon dávkové zpracování s **SqlBulkCopy** v milisekundách.
 
 | Operace | On-Premises do Azure (ms) | Stejné datové centrum Azure (ms) |
 | --- | --- | --- |
@@ -277,7 +277,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 V tomto příkladu slouží k zobrazení základní princip. Vyzkoušet realističtější scénář by projít požadované entity, které chcete současně vytvořit řetězec dotazu a parametry příkazu. Jste omezeni na celkový počet parametrů dotazu 2100, toto nastavení omezuje celkový počet řádků, které mohou být zpracovány tímto způsobem.
 
-Následující výsledky testů ad-hoc zobrazení výkonu tento typ příkazu insert v milisekundách.
+Následující výsledky testů ad hoc zobrazení výkonu tento typ příkazu insert v milisekundách.
 
 | Operace | Parametry Table-valued (ms) | Jedním příkazem INSERT (ms) |
 | --- | --- | --- |

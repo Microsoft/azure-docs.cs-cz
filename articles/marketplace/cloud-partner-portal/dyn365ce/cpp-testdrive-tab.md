@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 664a2c6bfc4a73b7d792b71c4b81df54b05fcd74
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082689"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454965"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement aplikaci Test Drive karta
 
-Použití **Test Drive** kartu a vytvořte zkušební prostředí pro vaše zákazníky.  Zákazníkům přináší praktická, samostatně prováděného zkušební verzi klíčové funkce a výhody, které jsme vám ukázali ve scénáři Skutečná implementace vaší nabídky.  Možnosti zkušebních verzí dostupné Test Drive je nejúčinnější pro vysoce kvalitní generování potenciálních zákazníků a větší převodu těchto potenciálních zákazníků.  Další informace najdete v tématu [co je to Test Drive?](../../cloud-partner-portal-orig/what-is-test-drive.md)
+Použití **Test Drive** kartu a vytvořte zkušební prostředí pro vaše zákazníky.  Zákazníkům přináší praktická, samostatně prováděného zkušební verzi klíčové funkce a výhody, které jsme vám ukázali ve scénáři Skutečná implementace vaší nabídky.  Možnosti zkušebních verzí dostupné Test Drive je nejúčinnější pro vysoce kvalitní generování potenciálních zákazníků a větší převodu těchto potenciálních zákazníků.  Další informace najdete v tématu [co je to Test Drive?](../test-drive/what-is-test-drive.md)
 
-Testovací verze prostředí pro aplikace Dynamics 365 se automaticky spustí jako řešení hostovaných Microsoftem.  Další informace najdete v tématu [hostovaná testovací verze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive).
+Testovací verze prostředí pro aplikace Dynamics 365 se automaticky spustí jako řešení hostovaných Microsoftem.  Další informace najdete v tématu [hostovaná testovací verze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive).
 
 Na kartě testovací verze má tři části potenciální: **Vyzkoušejte si**, **podrobnosti**, a **technické konfigurace**.  Poslední dvě části se zobrazí pouze po povolení funkce testovací verze.  Hvězdičku (*) připojeným k názvu pole označuje, že je to požadováno. 
 

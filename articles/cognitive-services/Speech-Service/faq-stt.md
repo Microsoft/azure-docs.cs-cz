@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 5c5a42908198b3a8f473efbe4f54bc481e250efa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875990"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431984"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
@@ -63,7 +63,7 @@ Původní datové sady a nová datová sada musí zkombinovat do jednoho souboru
 
 **A**: Nasazení není aktualizují automaticky.
 
-Pokud máte upravit a nasadit model se standardními hodnotami V1.0, zůstane tohoto nasazení je. Zákazníci mají decommision nasazený model znovu přizpůsobit pomocí novější verze směrný plán a znovu nasadit.
+Pokud máte upravit a nasadit model se standardními hodnotami V1.0, zůstane tohoto nasazení je. Zákazníky můžete vyřadit z provozu nasazený model, znovu přizpůsobit pomocí novější verze směrný plán a znovu nasadit.
 
 **Otázka: Co když budu potřebovat vyšší souběžnosti pro moje nasazený model než nabízejí na portálu?**
 

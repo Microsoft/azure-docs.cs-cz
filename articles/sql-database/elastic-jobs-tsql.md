@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 56ad75bc0bed77c2107a49ab339368ab2a63c1fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: de0227ac3e3d963b5ec196b58e467dbeaf0dff42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881256"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453452"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -284,7 +284,7 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>Zahájit provádění ad-hoc úlohy
+## <a name="begin-ad-hoc-execution-of-a-job"></a>Zahájit ad hoc provádění úlohy
 
 Následující příklad ukazuje, jak chcete okamžitě spustit úlohu.  
 Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:

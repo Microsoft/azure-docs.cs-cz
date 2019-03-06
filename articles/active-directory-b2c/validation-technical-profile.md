@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4652f23bdf30e1b9e582cd1e83dc95f7716c8394
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175088"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436404"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor technického profilu již definována v zásadách nebo nadřazené zásady. |
-|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické validaiton vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). |
+|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické ověření vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). |
 |ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
 
 **ValidationTechnicalProfile** prvek obsahuje následující element:
@@ -65,7 +65,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Typ | Ano | Typ kontroly nebo dotaz k provedení pro předpoklad. Buď `ClaimsExist` je zadali, a ověřte, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo `ClaimEquals` je zadán, že by měl provést akce, pokud existuje zadaný deklarace identity a jeho hodnota se rovná Zadaná hodnota. |
+| Type | Ano | Typ kontroly nebo dotaz k provedení pro předpoklad. Buď `ClaimsExist` je zadali, a ověřte, že by měl provést akce, pokud zadané deklarace existuje v aktuální sadě deklarací identity uživatele nebo `ClaimEquals` je zadán, že by měl provést akce, pokud existuje zadaný deklarace identity a jeho hodnota se rovná Zadaná hodnota. |
 | ExecuteActionsIf | Ano | Určuje, zda má být provedena akce v předpoklad je-li test true nebo false. |
 
 **Předběžné podmínky** prvek obsahuje následující prvky:

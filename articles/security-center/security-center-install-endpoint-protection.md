@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c2cb4c2f1154be56b7237a6cb12c87fcc3e00467
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246997"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455866"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
 Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
@@ -60,7 +60,7 @@ V tomto příkladu budeme používat **Compute**.  Podíváme se na tom, jak nai
    - Nainstalovat poskytovatelé endpoint protection – seznam různých zprostředkovatelů identifikované pomocí služby Security Center.
    - Stav stavu nainstalované endpoint protection – ukáže stav virtuálních počítačů a počítačů, které mají nainstalovaný žádné řešení ochrany koncových bodů. Tento graf zobrazuje počet virtuálních počítačů a počítačů, které jsou v pořádku a číslo s nedostatečnou ochranou.
    - Malware zjištěn – zobrazuje počet virtuálních počítačů a počítačů, ve kterém se hlásí, Security Center zjistila malware.
-   - Napadené počítače – zobrazuje počet virtuálních počítačů a počítačů, ve kterém je Security Center reporting útoky pomocí služeb.
+   - Napadené počítače – zobrazuje počet virtuálních počítačů a počítačů, ve kterém je Security Center reporting útoky malwarem.
 
    V dolní části řídicího panelu je seznam koncových bodů potíže s ochranou, které zahrnují následující informace:  
 

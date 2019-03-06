@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b8264e4f69a7561865f5d14087bc81bc933a6c59
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cd02930394fd4cd09808a808765e54ff9ea6b4ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821400"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434297"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvořte clustery systému Apache Hadoop v HDInsight pomocí šablon Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -30,7 +30,7 @@ Postupujte podle pokynů v tomto článku, budete potřebovat:
 * Prostředí Azure PowerShell a/nebo Azure CLI Classic.
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
-Šablony Resource Manageru umožňuje snadno vytvořit následující resoruces pro vaši aplikaci v rámci jediné koordinované operace:
+Šablony Resource Manageru umožňuje snadno vytvoříte následující prostředky pro vaši aplikaci v rámci jediné koordinované operace:
 * Clustery HDInsight a jejich závislé prostředky (například výchozí účet úložiště).
 * Další prostředky (jako je Azure SQL Database používat [Apache Sqoop](https://sqoop.apache.org/)).
 

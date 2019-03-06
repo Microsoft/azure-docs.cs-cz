@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195630"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444612"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí volání rozhraní REST API
 
@@ -294,7 +294,7 @@ Pokud chcete zakázat systém přiřadil spravovaná identita na virtuálním po
 
    Odebrat z virtuálního počítače, který má uživatelsky přiřazené identity spravované systém přiřadil spravovanou identitu, odeberte `SystemAssigned` z `{"identity":{"type:" "}}` hodnotu při zachování `UserAssigned` hodnotu a `userAssignedIdentities` slovník hodnot, pokud používáte **Rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechat `identityIds` pole.
 
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny spravovaná identita na Virtuálním počítači Azure pomocí příkazu CURL k volání koncového bodu REST Azure Resource Manageru.
 
@@ -511,7 +511,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    |---------|---------|
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.
 
-    Pokud máte všechny uživatele nebo systém přiřadil spravované identity přiřazené k virtuálnímu počítači v jsme uvedli `identity` hodnota v odpovědi, přejděte ke kroku 5, který ukazuje, jak zachovat p, systém přiřadil spravovanou identitu při přidávání uživatelsky přiřazené spravovanou identitu na váš virtuální počítač.
+    Pokud máte všechny uživatele nebo systém přiřadil spravované identity přiřazené k virtuálnímu počítači v jsme uvedli `identity` hodnota v odpovědi, přejděte ke kroku 5, který ukazuje, jak zachovat systém přiřadil spravovanou identitu při přidávání uživatelsky přiřazené spravovanou identitu na váš virtuální počítač.
 
 4. Pokud nemáte k dispozici žádné uživatelsky přiřazené spravované identity přiřazené k vašemu virtuálnímu počítači, použijte následující příkaz CURL k volání koncového bodu REST Azure Resource Manageru přiřadit první spravovaná identita uživatelsky přiřazené k virtuálnímu počítači.
 

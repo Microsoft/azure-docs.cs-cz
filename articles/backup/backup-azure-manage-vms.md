@@ -1,6 +1,6 @@
 ---
 title: Správa a sledování záloh virtuálních počítačů Azure pomocí služby Azure Backup
-description: Zjistěte, jak se správou a monitorováním zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
+description: Zjistěte, jak ke správě a sledování záloh virtuálních počítačů Azure pomocí služby Azure Backup.
 services: backup
 author: sogup
 manager: vijayts
@@ -8,145 +8,147 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: 47acccf0cdb246683314322ed73f21446e3a9345
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0fa221721471772b066990ec2d33f0cedb960239
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310025"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453537"
 ---
 # <a name="manage-azure-vm-backups"></a>Správa záloh virtuálních počítačů Azure
 
-Tento článek popisuje, jak spravovat virtuální počítače Azure zálohovat pomocí [služba Azure Backup](backup-overview.md) zálohování a shrnuje informace výstrahy zálohování v řídicím panelu portálu k dispozici.
+Tento článek popisuje, jak spravovat virtuální počítače Azure (VM), které jsou zálohovány pomocí [služby Azure Backup](backup-overview.md). Tento článek shrnuje také zálohování informace, které najdete na řídicím panelu trezoru.
 
-Řídicím panelu trezoru služby Recovery Services na webu Azure Portal, poskytuje přístup k informacím o trezoru, včetně:
+
+Na webu Azure Portal, řídicího panelu trezoru služby Recovery Services poskytuje přístup k trezoru informace, včetně:
 
 * Poslední zálohy, což je také nejnovější bod obnovení.
-* zásady zálohování
-* Celková velikost všech snímků zálohy
-* Počet virtuálních počítačů, které jsou povolené pro zálohování
+* Zásady zálohování.
+* Celková velikost všech snímků zálohy.
+* Počet virtuálních počítačů, které jsou povolené pro zálohování.
 
-Zálohování z řídicího panelu, můžete spravovat a podrobnostem jednotlivým virtuálním počítačům. Zálohování počítačů začínají znakem otevírání v řídicím panelu trezoru.
+Zálohování můžete spravovat pomocí řídicího panelu a podrobnostem jednotlivým virtuálním počítačům. Zahajte zálohování počítačů, otevřete na řídicím panelu trezoru.
 
-![Úplné zobrazení s posuvníkem](./media/backup-azure-manage-vms/bottom-slider.png)
+![Zobrazení řídicího panelu úplné s posuvníkem](./media/backup-azure-manage-vms/bottom-slider.png)
 
-## <a name="view-vms-in-the-dashboard"></a>Zobrazení virtuálních počítačů na řídicím panelu
+## <a name="view-vms-on-the-dashboard"></a>Zobrazení virtuálních počítačů na řídicím panelu
+
+Chcete-li zobrazit virtuálních počítačů na řídicím panelu trezoru: 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra klikněte na **Procházet** a v seznamu prostředků zadejte **Recovery Services**. Seznam se průběžně filtruje podle zadávaného textu. Klikněte na **Trezor Recovery Services**.
+2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní v seznamu vyfiltrují podle vašeho zadání. Vyberte **trezory služby Recovery Services**.
 
-    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
+    ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
-3. Snadné použití, klikněte pravým tlačítkem na trezor v seznamu trezorů > **připnout na řídicí panel**.
+3. Snadné použití, klikněte pravým tlačítkem na trezor a vyberte **připnout na řídicí panel**.
 4. Otevření řídicího panelu trezoru.
     ![Otevření řídicího panelu trezoru a okna nastavení](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. Na **zálohování položek** dlaždici, klikněte na tlačítko **Azure Virtual Machines**.
+4. Na **zálohování položek** dlaždice, vyberte **Azure Virtual Machines**.
 
-    ![Dlaždice otevřít zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![Otevřete dlaždici zálohování položek](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. V **zálohované položky** okno, zobrazí se poslední úloha zálohování pro každou položku. V tomto příkladu je jeden chráněný virtuální počítač, demovm markgal, v tomto trezoru.  
+5. Na **zálohované položky** okně zobrazí poslední úloha zálohování pro každou položku. V tomto příkladu trezor chrání jeden virtuální počítač: demovm markgal.  
 
-    ![Zálohované položky dlaždice](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Zobrazit okno zálohování položek](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-7. Z řídicího panelu trezoru položky můžete vytvořit nebo upravit zásady zálohování, Zobrazit body obnovení, spustit zálohování, zastavit na vyžádání a obnovit ochranu virtuálních počítačů, odstranit body obnovení a spusťte obnovení.
 
-    ![Řídicí panel zálohované položky se okno nastavení](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+6. Z řídicího panelu trezoru položky můžete vytvořit nebo upravit zásady zálohování, Zobrazit body obnovení, spustit zálohování, zastavit na vyžádání nebo obnovit ochranu virtuálních počítačů, odstranit body obnovení a spusťte obnovení.
+
+    ![Zálohování položek řídicího panelu a v okně Nastavení](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policies"></a>Správa zásad zálohování
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **všechna nastavení** .
 
-    ![Okno zásady zálohování](./media/backup-azure-manage-vms/all-settings-button.png)
-2. V **nastavení**, klikněte na tlačítko **zásady zálohování**.
-3. Z **výběr zásady zálohování** nabídky:
+Správa zásad zálohování:
 
-   * Chcete-li změnit zásady, vyberte jiné zásady a klikněte na tlačítko **Uložit**. Nové zásady se okamžitě použijí na trezor.
-   * Chcete-li vytvořit zásadu, vyberte **vytvořit nový**. [Další informace](backup-azure-arm-vms-prepare.md#configure-a-backup-policy)
+1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard)vyberte **všechna nastavení**.
 
-     ![Záloha virtuálního počítače](./media/backup-azure-manage-vms/backup-policy-create-new.png)
+    ![Všechny možnosti nastavení](./media/backup-azure-manage-vms/all-settings-button.png)
+2. V **nastavení**vyberte **zásady zálohování**.
+3. Na **výběr zásady zálohování** nabídky:
+
+   * K přepnutí zásad, vyberte jinou zásadu a pak vyberte **Uložit**. Nové zásady se okamžitě použijí na trezor.
+   * Chcete-li vytvořit zásadu, vyberte **vytvořit nový**. Další informace najdete v tématu [konfiguraci zásad zálohování](backup-azure-arm-vms-prepare.md#configure-a-backup-policy).
+
+     ![Vybrat zásady zálohování](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 
 ## <a name="run-an-on-demand-backup"></a>Spustit zálohu na vyžádání
-
-Podle potřeby můžete využít zálohování virtuálního počítače, jakmile je nakonfigurován pro ochranu.
-
+Po nastavení ochrany, můžete spustit zálohování na vyžádání z virtuálního počítače. Mějte tyto podrobnosti: 
 - Pokud čeká na vyřízení prvotní zálohování, zálohování na vyžádání vytvoří úplná kopie virtuálního počítače v trezoru služby Recovery Services.
-- Po dokončení prvotní zálohy zálohu na vyžádání odešle pouze změny z předchozího snímku do trezoru služby Recovery Services. To znamená jsou následné zálohy vždy přírůstkové.
-- Uchování hodnotu zadanou v době spuštění úlohy zálohování je rozsah uchování pro zálohu na vyžádání.
+- Pokud dokončení prvotní zálohy se zálohu na vyžádání odešle pouze změny z předchozího snímku do trezoru služby Recovery Services. To znamená jsou novější zálohy vždy přírůstkové.
+- Hodnotu uchování, určete, kdy aktivovat zálohování je rozsah uchování pro zálohu na vyžádání.
 
 Spustit zálohu na vyžádání:
 
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **zálohovaná položka** pod **chráněné položky** oddílu.
+1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard)v části **chráněné položky**vyberte **zálohovaná položka**.
 
-    ![Zálohování teď tlačítko.](./media/backup-azure-manage-vms/backup-now-button.png)
+    ![Možnost zálohování nyní](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. Klikněte na tlačítko **virtuálních počítačů Azure** z **typ správy zálohování**. **Zálohované položky (virtuální počítač Azure)** otevře se okno.
-3. Vyberte virtuální počítač a klikněte na tlačítko **zazálohovat** vytvořit zálohu na vyžádání. **Okno zálohovat nyní** se zobrazí.
-4. V **záloha zachována** určete datum zálohy uchovávat.
+2. Z **typu správy zálohování**vyberte **virtuálního počítače Azure**. **Zálohované položky (virtuální počítač Azure)** otevře se okno.
+3. Vyberte virtuální počítač a vyberte **zazálohovat** vytvořit zálohu na vyžádání. **Zálohovat nyní** otevře se okno.
+4. V **záloha zachována** uveďte datum zálohy uchovávat.
 
-    ![Zálohování teď tlačítko.](./media/backup-azure-manage-vms/backup-now-check.png)
+    ![Kalendář zálohovat nyní](./media/backup-azure-manage-vms/backup-now-check.png)
 
-5. Klikněte na tlačítko **OK**, spuštění úlohy zálohování.
+5. Vyberte **OK** spuštění úlohy zálohování.
 
-Chcete-li sledovat průběh úlohy v řídicím panelu trezoru klikněte na tlačítko **úlohy zálohování** dlaždici.
+Chcete-li sledovat průběh úlohy na řídicím panelu trezoru, vyberte **úlohy zálohování** dlaždici.
 
 ## <a name="stop-protecting-a-vm"></a>Ukončit ochranu virtuálního počítače
 
-Existují dva způsoby, jak zastavit ochranu virtuálních počítačů:
+Ochranu virtuálního počítače můžete zastavit dvěma způsoby:
 
-- Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení. Nebudete schopni obnovit virtuální počítač v tomto případě.
-- Zastavit všechny budoucí úlohy zálohování, ale zachovat body obnovení. Je přidružený k zachování bodů obnovení v trezoru. Výhodou uchovávají body obnovení však je, že v případě potřeby můžete obnovit virtuální počítač. [Další informace](https://azure.microsoft.com/pricing/details/backup/) o podrobnosti o cenách.
+- Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení. V takovém případě nebudete schopni obnovit virtuální počítač.
+- Zastavit všechny budoucí úlohy zálohování a zachovat body obnovení. I když se budete muset zaplatit zachovat body obnovení v trezoru, budete moct v případě potřeby obnovte virtuální počítač. Další informace najdete v tématu [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
 
 >[!NOTE]
+>Při odstranění zdroje dat bez zastavení zálohování, se nezdaří nových záloh. Podle zásad vyprší platnost starých bodů obnovení, ale jeden poslední bod obnovení bude vždy zachovaná, dokud Zastavit zálohování a odstraňte data.
 >
-* Pokud jste **Zastavit zálohování** s **zachovat zálohovaná Data**, body obnovení nevyprší podle zásady zálohování, protože kolekce uvolnění paměti (GC) pro neaktivní zdroje dat nelze spustit. Bude vám účtována chráněné instance a spotřebovaného úložiště. Body obnovení se pouze vyčistí po obnovení zálohování (znovu povolit ochranu) podle zásad, nebo ručně odstranit zálohovaná data.
-* Při odstranění zdroje dat bez zastavení zálohování, začne nových záloh služeb při selhání. Znovu vyprší platnost starých bodů obnovení podle zásady, ale jeden poslední bod obnovení vždy zachová až do zastavení zálohování a odstraňte data.
 
 Zastavení ochrany pro virtuální počítač:
 
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **Zastavit zálohování**.
-2. Zvolte, jestli se má uchovat nebo odstranit data zálohy a potvrďte podle potřeby. Potvrďte podle potřeby a volitelně zadejte komentář. Pokud si nejste jisti názvem položky, najeďte myší vykřičník, abyste zobrazili jméno.
+1. Na [položky řídícím panelu trezoru](#view-vms-in-the-dashboard)vyberte **Zastavit zálohování**.
+2. Zvolte, jestli se má uchovat nebo odstranit data zálohy a potvrďte výběr podle potřeby. Pokud chcete přidáte komentář. Pokud si nejste jisti názvem položky, najeďte myší vykřičník, abyste zobrazili jméno.
 
     ![Zastavení ochrany](./media/backup-azure-manage-vms/retain-or-delete-option.png)
 
- Oznámení vám umožňuje vědět, že byly zastaveny úlohy zálohování.
+     Oznámení vám umožňuje vědět, že byly zastaveny úlohy zálohování.
 
 ## <a name="resume-protection-of-a-vm"></a>Pokračovat v ochraně virtuálního počítače
 
-Pokud se data záloh uchovávají, když byl virtuální počítač zastavený, můžete obnovit ochranu. Pokud se zálohovaná data odstraněna, pak nelze obnovit.
+Pokud při zastavení virtuálního počítače se zachovat zálohovaná data, můžete později obnovit ochranu. Při odstranění zálohovaných dat, nelze obnovit ochranu.
 
 Pokud chcete obnovit ochranu pro virtuální počítač:
 
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **obnovit zálohu**.
+1. Na [položky řídícím panelu trezoru](#view-vms-in-the-dashboard)vyberte **obnovit zálohu**.
 
-2. Postupujte podle kroků v [Správa zásad zálohování](#manage-backup-policies) přiřazení zásad pro virtuální počítač. můžete použít jiné zásady než zásady, pomocí kterého byl virtuální počítač původně chráněný.
-3. Po zásadu zálohování, která se použije k virtuálnímu počítači, zobrazí se následující zpráva.
+2. Postupujte podle kroků v [Správa zásad zálohování](#manage-backup-policies) přiřazení zásady pro virtuální počítač. Není nutné vyberte zásadu pro počáteční ochranu Virtuálního počítače.
+3. Po použití zásady zálohování pro virtuální počítač, zobrazí se následující zpráva:
 
-    ![Úspěšně chráněného virtuálního počítače](./media/backup-azure-manage-vms/success-message.png)
+    ![Zprávu s upozorněním úspěšně chráněného virtuálního počítače](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+## <a name="delete-backup-data"></a>Odstranit data zálohy
 
-Můžete odstranit zálohovaná data přidružená k virtuálnímu počítači během **Zastavit zálohování** úlohy, nebo kdykoli po zálohování dokončení úlohy.
+Můžete odstranit zálohovaná data Virtuálního počítače během **Zastavit zálohování** úlohy nebo po dokončení úlohy zálohování. Než odstraníte data záloh, mějte tyto podrobnosti:
 
-- Před odstraněním bodů obnovení dokonce může být užitečné několik dnů nebo týdnů počkat.
-- Na rozdíl od obnovování bodů obnovení nemůžete při odstraňování zálohovaných dat zvolit konkrétní body obnovení, které se mají odstranit. Pokud se rozhodnete odstranit zálohovaná data, odstraníte všechny body obnovení přidružené k příslušné položce.
+- Může být vhodné čekat dny nebo týdny před odstraněním bodů obnovení.
+- Na rozdíl od procesu pro obnovování bodů obnovení, při odstranit data zálohy, nelze zvolit konkrétní body obnovení odstranit. Pokud jste odstranit zálohovaná data, odstraníte všechny body obnovení přidružené.
 
-Tento postup předpokládá úloha zálohování pro virtuální počítač byla zastavena nebo zakázána.
+Po zastavení nebo zakázání úloha zálohování Virtuálního počítače, můžete odstranit zálohovaná data:
 
 
-1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard), klikněte na tlačítko **odstranit zálohy**.
+1. Na [řídicího panelu trezoru položky](#view-vms-in-the-dashboard)vyberte **odstranit zálohy**.
 
-    ![Typ virtuálního počítače](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+    ![Vybrat zálohu, která Delete](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-2. Zadejte název položky, abychom potvrdili, že chcete odstranit body obnovení.
+1. Zadejte název zálohované položky potvrďte, že chcete odstranit body obnovení.
 
-    ![Zastavit ověření](./media/backup-azure-manage-vms/item-verification-box.png)
+    ![Potvrďte, že chcete odstranit body obnovení](./media/backup-azure-manage-vms/item-verification-box.png)
 
-3. Chcete-li odstranit zálohovaná data pro aktuální položku, klikněte na tlačítko ![tlačítko Zastavit zálohování](./media/backup-azure-manage-vms/delete-button.png)
-
-    Oznámení vám umožňuje vědět, že záložní data byla odstraněna.
+1. Chcete-li odstranit zálohovaná data pro položku, vyberte **odstranit**. Zprávu s oznámením poznáte, že záložní data byla odstraněna.
 
 ## <a name="next-steps"></a>Další postup
-- [Další informace o](backup-azure-vms-first-look-arm.md) zálohování virtuálních počítačů Azure z nastavení virtuálního počítače.
-- [Další informace o](backup-azure-arm-restore-vms.md) obnovení virtuálních počítačů.
-- [Další informace o](backup-azure-monitor-vms.md) sledování záloh virtuálních počítačů Azure.
+- Zjistěte, jak [zálohování virtuálních počítačů Azure z nastavení Virtuálního počítače](backup-azure-vms-first-look-arm.md).
+- Zjistěte, jak [obnovení virtuálních počítačů](backup-azure-arm-restore-vms.md).
+- Zjistěte, jak [sledování záloh virtuálních počítačů Azure](backup-azure-monitor-vms.md).

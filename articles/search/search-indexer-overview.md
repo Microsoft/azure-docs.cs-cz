@@ -7,21 +7,21 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2017
+ms.date: 03/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0a6c894b08fd76a018035a824b463e41e31c2f2f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310195"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407982"
 ---
 # <a name="indexers-in-azure-search"></a>Indexery ve službě Azure Search
 
-*Indexer* ve službě Azure Search je prohledávací modul, který extrahuje prohledávatelná data a metadata z externího Azure zdroje dat a naplní index na základě mapování pole pole mezi indexem a zdroje dat. Tento přístup se někdy nazývá model Pull, protože služba si vyžádá data, aniž byste museli psát kód, který by vložil data do indexu bez vyžádání.
+*Indexer* ve službě Azure Search je prohledávací modul, který extrahuje prohledávatelná data a metadata z externího Azure zdroje dat a naplní index na základě mapování pole pole mezi indexem a zdroje dat. Tento přístup je někdy označovány jako "model na vyžádání", protože služba si vyžádá data, aniž byste museli psát jakýkoli kód, který přidá data do indexu.
 
-Indexery jsou založené na typech nebo platformách zdrojů dat a existují samostatné indexery pro SQL Server v Azure, služby Cosmos DB, Azure Table Storage a Blob Storage atd.
+Indexery jsou založené na data typech nebo platformách zdrojů, existují samostatné indexery pro SQL Server na Azure, služby Cosmos DB, Azure Table Storage a Blob Storage. Indexování objektů BLOB storage mají další vlastnosti specifické pro typy obsahu objektu blob.
 
 Můžete použít indexer jako jediný prostředek přijímání dat, nebo můžete použít kombinaci postupů, kdy se indexer použije k načtení jenom některých polí v indexu.
 
@@ -37,6 +37,9 @@ Indexery můžete vytvářet a spravovat pomocí těchto přístupů:
 
 Nový indexer je zpočátku oznámen jako funkce ve verzi Preview. Funkce ve verzi Preview se zavádějí v rozhraních API (REST a .NET) a po přechodu do všeobecné dostupnosti se integrují do portálu. Pokud vyhodnocujete nový indexer, měli byste počítat s psaním kódu.
 
+## <a name="permissions"></a>Oprávnění
+
+Všechny operace související s indexery, včetně požadavků GET pro stav nebo definice, vyžadují [správce rozhraní api-key](search-security-api-keys.md). 
 
 <a name="supported-data-sources"></a>
 
@@ -62,19 +65,19 @@ Indexer získává připojení ke zdroji dat z *zdroj dat* objektu. Definice zdr
 Zdroje dat se konfigurují a spravují nezávisle na indexerech, které je používají, což znamená, že několik indexerů může používat zdroj dat k načtení více indexů současně.
 
 ### <a name="step-2-create-an-index"></a>Krok 2: Vytvoření indexu
-Indexer automatizuje některé úkoly související s příjmem dat, ale vytváření indexu k nim obvykle nepatří. K základním požadavkům patří předdefinovaný index s poli, která odpovídají polím v externím zdroji dat. Další informace o strukturování indexu najdete v tématu [vytvoření indexu (REST Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) nebo [Index – třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Nápovědu k přidružení polí najdete v tématu [Mapování polí v indexerech Azure Search](search-indexer-field-mappings.md).
+Indexer automatizuje některé úkoly související s příjmem dat, ale vytváření indexu k nim obvykle nepatří. K základním požadavkům patří předdefinovaný index s poli, která odpovídají polím v externím zdroji dat. Pole musí odpovídat podle názvu a datového typu. Další informace o strukturování indexu najdete v tématu [vytvoření indexu (REST Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) nebo [Index – třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Nápovědu k přidružení polí najdete v tématu [Mapování polí v indexerech Azure Search](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Přestože indexery nedokážou vygenerovat index za vás, může vám pomoct průvodce **importem dat** na portálu. Ve většině případů dokáže průvodce odvodit schéma indexu ze stávajících metadat ve zdroji a zobrazit předběžné schéma indexu, které můžete upravit přímo v aktivním průvodci. Po vytvoření indexu ve službě jsou další úpravy na portálu omezené hlavně na přidávání nových polí. K vytvoření, ale ne revidování, indexu zvažte použití průvodce. Praktickou výuku najdete v [průvodci portálem](search-get-started-portal.md).
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3: Vytvoření a naplánování indexeru
-Definice indexeru je konstrukce, která určuje index, zdroj dat a plán. Indexer můžete odkazovat na zdroj dat z jiné služby, pokud se tento zdroj dat nachází ve stejném předplatném. Další informace o strukturování indexeru najdete v tématu [Vytvoření indexeru (rozhraní API Azure Search REST)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Definice indexeru je konstrukce, která spojuje všechny elementy související s příjmem dat. Požadované prvky patří zdroj dat a indexu. Volitelné prvky patří mapování plánu a pole. Mapování pole jsou pouze volitelné, pokud jasně odpovídají zdrojové pole a indexu pole. Indexer můžete odkazovat na zdroj dat z jiné služby, pokud se tento zdroj dat nachází ve stejném předplatném. Další informace o strukturování indexeru najdete v tématu [Vytvoření indexeru (rozhraní API Azure Search REST)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>Spuštění indexery na vyžádání
 
-I když je společné pro naplánovat indexování, indexeru můžete také volat na vyžádání pomocí příkazu Spustit:
+I když je společné pro naplánovat indexování, indexer může být vyvoláno také ručně pomocí [spusťte příkaz](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -82,13 +85,14 @@ I když je společné pro naplánovat indexování, indexeru můžete také vola
 > [!NOTE]
 > Při spuštění rozhraní API vrátí úspěšně, vyvolání indexeru je naplánovaná, ale vlastní zpracování probíhá asynchronně. 
 
-Můžete monitorovat stav indexeru na portálu nebo pomocí získat Indexer stav rozhraní API, které popisujeme dále. 
+Můžete monitorovat stav indexeru na portálu nebo prostřednictvím rozhraní API stavu získat indexeru. 
 
 <a name="GetIndexerStatus"></a>
 
 ## <a name="get-indexer-status"></a>Získat stav indexeru
 
-Můžete načíst historii stavu a spuštění indexeru prostřednictvím rozhraní REST API:
+Můžete načíst historii stavu a spuštění indexeru prostřednictvím [příkazu získat stav Indexer](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -100,8 +104,8 @@ Odpověď obsahuje celkový stav indexer, indexer poslední (nebo probíhající
         "lastResult": {
             "status":"success",
             "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,
@@ -111,8 +115,8 @@ Odpověď obsahuje celkový stav indexer, indexer poslední (nebo probíhající
         "executionHistory":[ {
             "status":"success",
              "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,

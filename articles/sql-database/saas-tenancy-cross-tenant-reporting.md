@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 39ff70670d628ca672022b84e59ed3cc8a17d925
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476243"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447015"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů
 
@@ -61,7 +61,7 @@ Ke spouštění dotazů na zajímavější datové sady, vytvořte spuštěním 
 
 1. V *prostředí PowerShell ISE*, otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReporting.ps1* skriptu a nastavte následující hodnotu:
    * **$DemoScenario** = 1, **nákup lístků na akce na všech místech**.
-2. Stisknutím klávesy **F5** ke spuštění skriptu a zvyšovaly prodej lístků. Když je spuštěný skript, pokračujte kroky v tomto kurzu. Data lístku je dotazován v průběhu *spouštění dotazů ad-hoc distribuované* části, proto počkejte generátor lístků na dokončení.
+2. Stisknutím klávesy **F5** ke spuštění skriptu a zvyšovaly prodej lístků. Když je spuštěný skript, pokračujte kroky v tomto kurzu. Data lístku je dotazován v průběhu *spuštění ad hoc distribuované dotazy* části, proto počkejte generátor lístků na dokončení.
 
 ## <a name="explore-the-global-views"></a>Prozkoumejte globální zobrazení
 
@@ -106,7 +106,7 @@ V tomto cvičení nasadíte _adhocreporting_ databáze. Toto je hlavní databáz
 
 1. v *prostředí PowerShell ISE*, otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReporting.ps1*. 
 
-1. Nastavte **$DemoScenario = 2**, _databázi vytváření sestav Deploy Ad-hoc_.
+1. Nastavte **$DemoScenario = 2**, _nasazení Ad hoc databázi sestav_.
 
 1. Stisknutím klávesy **F5** spusťte skript a vytvořit *adhocreporting* databáze.
 

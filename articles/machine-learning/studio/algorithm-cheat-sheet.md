@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.date: 12/18/2017
-ms.openlocfilehash: 8d0b123045ace223dbea6c8fa98980091cfe73e1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.date: 03/04/2019
+ms.openlocfilehash: 4adcef601ca84b94d88ed65278310a94c7273353
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819986"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433311"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
 
@@ -36,7 +36,7 @@ Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velik
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Poznámky a definice terminologie pro algoritmus Machine Learning Studio tahák
 
-* Tento tahák k algoritmům nabízí návrhy jsou přibližné pravidla nástroje jezdce. Některé můžou ohnuty a některé mohou být flagrantly došlo k porušení. To je určený pro návrh výchozí bod. Nebojte se ke spuštění head-to-head konkurence mezi několik algoritmů s vašimi daty. Není jednoduše náhradu pochopení principů jednotlivých algoritmů a Principy systému, která vygenerovala vaše data.
+* Tento tahák k algoritmům nabízí návrhy jsou přibližné pravidla nástroje jezdce. Některé můžou ohnuty a některé mohou být flagrantly došlo k porušení. To je určený pro návrh výchozí bod. Nebojte se ke spuštění head-to-head konkurence mezi několik algoritmů s vašimi daty. Není jednoduše náhradu pro pochopení principů jednotlivých algoritmů a systému, která vygenerovala vaše data.
 
 * Každý algoritmu strojového učení má svůj vlastní styl nebo *indukční posun*. Pro určitý problém může být vhodné několik algoritmů a jeden algoritmus může být vhodný lepší než jiné. Ale to není vždy možné předem znát, což je nejvhodnější. V takových případech patří několik algoritmů společně v stručný přehled stylů. Vhodné strategie může být jeden algoritmus a pokud výsledky ještě nejsou uspokojivé kvality, akci ostatní. Tady je příklad z [galerii Azure AI](http://gallery.azure.ai/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [Porovnejte roc třídění: Písmeno rozpoznávání](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
@@ -52,7 +52,7 @@ Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velik
 
 * **Vylepšené regrese rozhodovacího stromu** využívá funkce překrývají nebo interakci mezi funkcemi. Která znamená, že, během čárky daná data hodnotu jednu funkci prediktivní trochu jiné hodnoty. Například v denní data o teplotě vysoká nebo Nízká, znalost nejnižší teplota daného dne umožňuje přiměřené odhad toho, že. Informace obsažené v dvě funkce se poněkud redundantní.
 
-* Klasifikace dat do více než dvou kategorií lze provést buď pomocí ze své podstaty roc třídění, nebo zkombinováním sadu třídění dvě třídy do **komplet**. V metodě komplet je zvláštní třídění dvě třídy pro každou třídu – každé z nich data odděluje do dvou kategorií: "Tato třída" a "není této třídy." Potom tyto třídění hlasovat pro správné přiřazení datového bodu. Je to provozní Princip za [One-vs-All Multiclass][one-vs-all-multiclass].
+* Klasifikace dat do více než dvou kategorií lze provést pomocí ze své podstaty roc třídění nebo kombinací sadu třídění dvě třídy do **komplet**. V metodě komplet je zvláštní třídění dvě třídy pro každou třídu – každé z nich data odděluje do dvou kategorií: "Tato třída" a "není této třídy." Potom tyto třídění hlasovat pro správné přiřazení datového bodu. Je to provozní Princip za [One-vs-All Multiclass][one-vs-all-multiclass].
 
 * Několik metod, včetně logistické regrese a Bayes point machine, předpokládají **lineární třídy hranice**. To znamená předpokládají, že jsou hranice mezi třídami přibližně přímé spojnic (nebo v případě obecnější hyperplanes). Často je jím charakteristiku data, která si nejste jisti až poté, co jste se pokusili oddělení, ale je to něco, obvykle je možné zjistit předem vizualizací. Pokud hranice třídy vypadají velmi nestandardní, Zůstaňte u rozhodovacích stromů, rozhodnutí Džungle, podporu vektoru počítače nebo neuronových sítí.
 
@@ -69,7 +69,7 @@ Stáhnout a vytisknout Machine Learning Studio algoritmus Ošidit listu ve velik
 
 
 <!-- Module References -->
-[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
-[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
-[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
-[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass
+[a-z-list]: /azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: /azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: /azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: /azure/machine-learning/studio-module-reference/one-vs-all-multiclass

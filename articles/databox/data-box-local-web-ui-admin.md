@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/27/2018
+ms.date: 02/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6df44afee26570dbdc5d64b449c4e33d6a0956ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885706"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404038"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Použití místního webového uživatelského rozhraní při správě Data Boxu
 
@@ -25,6 +25,7 @@ Tento článek obsahuje následující návody:
 
 - Generování balíčku pro podporu
 - Vypnutí nebo restartování zařízení
+- Stáhněte si BOM nebo soubory manifestu
 - Zobrazení dostupné kapacity zařízení
 - Přeskočení ověření kontrolního součtu 
 
@@ -104,6 +105,8 @@ Než začnete, ujistěte se, že vaše zařízení Data Box byla dokončena **p�
     |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Spravovaný Disk         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Spravovaný Disk         |SMB/NFS         |
 
 Tento seznam slouží k ověření soubory nahrát do účtu úložiště Azure, až zařízení Data Box se vrátí do datacentra Azure. Ukázkový soubor manifestu je uveden níže.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: fab5d69239c420c394645cef632d119848d0f4c4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818829"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404763"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Odstranit aktivitu ve službě Azure Data Factory
 
@@ -313,7 +313,7 @@ Můžete vytvořit kanál Vyčistit stará nebo vypršela její platnost soubor�
         },
         "type": "AzureBlob",
         "typeProperties": {
-            "fileName": "",
+            "fileName": "*",
             "folderPath": "mycontainer",
             "modifiedDatetimeEnd": "2018-01-01T00:00:00.000Z"
         }
@@ -563,6 +563,11 @@ Datová sada pro cíl dat používá aktivitu kopírování.
     }
 }
 ```
+## <a name="known-limitation"></a>Známá omezení
+
+-   Odstranit aktivita nepodporuje odstranění seznamu složek popsal zástupný znak.
+
+-   Při použití atributu filtr souborů: modifiedDatetimeStart a modifiedDatetimeEnd a vyberte soubory, která se má odstranit, ujistěte se, že nastavení "název_souboru": "*" v datové sadě.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,19 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: e004dc6b7d78849705f8d3fa3545efe7318d3911
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 938392cea3e6fe001e662a60e17b936415e7e4f2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022797"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439275"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové monitorování služby Azure data factory
 Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK). 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="data-range"></a>Rozsah dat
 
-Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Při dotazování prostřednictvím kódu programu pro data o spuštění kanálu služby Data Factory – například pomocí příkazu Powershellu `Get-AzureRmDataFactoryV2PipelineRun` -nejsou žádné maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Ale pokud dotaz na data v minulém roce, třeba dotaz nevrací chybu, ale pouze vrátí kanál spuštění data z uplynulých 45 dní.
+Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Při dotazování prostřednictvím kódu programu pro data o spuštění kanálu služby Data Factory – například pomocí příkazu Powershellu `Get-AzDataFactoryV2PipelineRun` -nejsou žádné maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Ale pokud dotaz na data v minulém roce, třeba dotaz nevrací chybu, ale pouze vrátí kanál spuštění data z uplynulých 45 dní.
 
 Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, nastavte si vlastní protokolování diagnostiky s [Azure Monitor](monitor-using-azure-monitor.md).
 
@@ -119,7 +121,7 @@ Kompletní postup vytváření a monitorování kanálu pomocí Powershellu najd
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -137,7 +139,7 @@ Kompletní postup vytváření a monitorování kanálu pomocí Powershellu najd
 
     ```powershell
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result
     
     Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
@@ -147,7 +149,7 @@ Kompletní postup vytváření a monitorování kanálu pomocí Powershellu najd
     $result.Error -join "`r`n"
     ```
 
-Úplnou dokumentaci o rutinách prostředí PowerShell najdete v části [Reference k rutinám Powershellu objekt pro vytváření dat](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1).
+Úplnou dokumentaci o rutinách prostředí PowerShell najdete v části [Reference k rutinám Powershellu objekt pro vytváření dat](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit [monitorování kanálů pomocí Azure monitoru](monitor-using-azure-monitor.md) článku se dozvíte o použití Azure Monitor k monitorování kanálů Data Factory. 

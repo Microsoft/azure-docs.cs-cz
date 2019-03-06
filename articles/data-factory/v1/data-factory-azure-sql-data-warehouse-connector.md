@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 4c431b149edb0677585da3c84e37d64873478ccf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331230"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432732"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -228,7 +228,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 Pokud vaše zdrojová data nesplňuje kritéria představíme v předchozí části, můžete povolit kopírování dat prostřednictvím dočasné pracovní Azure Blob Storage (nemůže být Storage úrovně Premium). V takovém případě služby Azure Data Factory automaticky provede transformace data splňují požadavky na formát dat o PolyBase a pak pomocí PolyBase načtete data do SQL Data Warehouse a v poslední čištění dočasná data z úložiště objektů Blob. V tématu [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) podrobnosti o tom, jak kopírovat data prostřednictvím pracovního objektu Blob Azure funguje obecně.
 
 > [!NOTE]
-> Při kopírování dat z dat místní ukládání do Azure SQL Data Warehouse pomocí PolyBase a Fázování importu, pokud je vaše brána správy dat verze nižší než 2.4, prostředí JRE (Java Runtime Environment) vyžaduje na počítači brány, který slouží k transformaci zdrojových dat do správný formát. Navrhněte že upgradu vaší brány na nejnovější verzi, aby tyto závislosti.
+> Při kopírování dat ze místní úložiště dat do Azure SQL Data Warehouse pomocí PolyBase a Fázování importu, pokud je vaše brána správy dat verze nižší než 2.4, prostředí JRE (Java Runtime Environment) vyžaduje na počítači brány, který slouží k transformaci zdroje data do správný formát. Navrhněte že upgradu vaší brány na nejnovější verzi, aby tyto závislosti.
 >
 
 Pokud chcete tuto funkci používat, vytvořte [propojenou službu Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) , který odkazuje na účet úložiště Azure, který má úložiště objektů blob v mezičase, zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v Následující kód:
@@ -307,8 +307,8 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v úl
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | Bit | Bit |
-| Desítkově | Desítkově |
-| Čísla | Desítkově |
+| Decimal | Decimal |
+| Čísla | Decimal |
 | Float | Float |
 | peníze | peníze |
 | Real | Real |

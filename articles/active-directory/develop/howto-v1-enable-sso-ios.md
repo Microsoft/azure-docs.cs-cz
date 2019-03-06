@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602fba95b3cc69521fe3fe17d8c89cc332131566
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190224"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448675"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL
 
@@ -231,7 +231,7 @@ Až budete mít oprávnění nastavit správně jste měli vidět soubor v adres
 </plist>
 ```
 
-Jakmile budete mít přístupové oprávnění povolená v každé z vašich aplikací a jste připraveni používat jednotné přihlašování, popište odentity SDK klíčenky pomocí následujících nastavení ve vašich `ADAuthenticationSettings` s následujícím nastavením:
+Jakmile budete mít přístupové oprávnění povolená v každé z vašich aplikací a jste připraveni používat jednotné přihlašování, řekněte identita sady SDK o své klíčenky pomocí následujících nastavení ve vašich `ADAuthenticationSettings` s následujícím nastavením:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";

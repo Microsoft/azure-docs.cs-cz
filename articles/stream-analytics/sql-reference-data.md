@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118016"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449576"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
 
@@ -158,7 +158,7 @@ Neexistují žádné další [cena za jednotky streamování](https://azure.micr
 
 **Jak zjistím, referenční data snímku se z databáze SQL dotazovat a používat v úloze Azure Stream Analytics?**
 
-Nejsou nakonfigurovaná metriky filtrovat podle logického názvu (v rámci webu Azure Portal metriky), který můžete použít tak, aby monitorovala referenčních dat databáze SQL vstup.
+Existují dvě metriky filtrovat podle logického názvu (v rámci webu Azure Portal metriky), který můžete použít tak, aby monitorovala referenčních dat databáze SQL vstup.
 
    * Situací: Tato metrika měří počet načtených v SQL database referenční datové sady záznamů.
    * InputEventBytes: Tato metrika měří velikost snímku referenční data načtena do paměti úlohy Stream Analytics. 

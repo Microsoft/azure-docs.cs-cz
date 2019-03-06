@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387380"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441062"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -143,10 +143,10 @@ Pomocí tlačítka nastavení na panelu nástrojů můžete zobrazit informace o
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>Jak sdílet data s Zákaznická podpora Microsoftu? 
 Diagnostika sestavu sdílet s Microsoftem několika způsoby.
 
-**Možnost 1:** automaticky sdílet na nejnovější sestavu  
+**Možnost 1:** Automaticky sdílet na nejnovější sestavu  
 Když otevřete lístek podpory s Microsoftem, je potřeba sdílet sestavu Diagnostika výkonu. Pokud jste se rozhodli sdílet tyto informace s Microsoftem při spuštění diagnostiky (tak, že vyberete "**vyjadřuji souhlas s sdílet diagnostické informace s Microsoftem**" zaškrtávací políčko), Microsoft bude mít přístup k sestavě z úložiště účet pomocí odkaz SAS pro výstupní soubor zip po dobu až 30 dnů ode dne spuštění. Jenom nejnovější sestava je k dispozici pro pracovníka podpory. 
 
-**Možnost 2:** vygenerovat sdílený přístupový podpis pro komprimovaný soubor sestavy diagnostiky  
+**Možnost 2:** Vygenerování sdíleného přístupového podpisu pro komprimovaný soubor sestavy diagnostiky  
 Může sdílet odkaz na komprimovaný soubor sestavy s použitím sdílených přístupových podpisů. Postupujte přitom takto: 
 1.  Na webu Azure Portal přejděte do účtu úložiště, ve kterém je uložený diagnostická data.
 1.  Vyberte **objekty BLOB** pod **službu Blob service** oddílu. 
@@ -156,7 +156,7 @@ Může sdílet odkaz na komprimovaný soubor sestavy s použitím sdílených p�
 1.  Klikněte na tlačítko **vygenerujte token SAS objektů blob a adresa URL**.
 1.  Kopírovat **SAS URL objektu Blob**a sdílet je s pracovníkem technické podpory. 
 
-**Možnost 3:** stáhnout sestavu z účtu úložiště
+**Možnost 3:** Stáhnout sestavu z účtu úložiště
 
 Diagnostika komprimovaného souboru obsahujícímu sestavu výkonu můžete také vyhledat pomocí kroků 1 – 4 v možnosti 2. Možnost vyberte ke stažení souboru a pak ji sdílet pomocí e-mailu nebo položit pracovníkem technické podpory pokyny pro nahrání souboru.  
 

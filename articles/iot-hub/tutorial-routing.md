@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: df98be4dbb65088951968a16198b41d3d6d0bb67
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728722"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410209"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv pomocí služby IoT Hub
 
@@ -276,7 +276,7 @@ Potřebujete směrovat zprávy do různých prostředků na základě vlastnost�
 
 Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směrování zpráv a přidejte trasu. Při přidávání trasy pro ni definujte nový koncový bod. Po tomto nastavení se zprávy s vlastností **level** nastavenou na **storage** budou do účtu úložiště zapisovat automaticky. 
 
-Data se do úložiště objektů blob zapisují ve formátu Avro.
+Data se zapisují do úložiště objektů blob v formát Avro ve výchozím nastavení.
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Skupiny prostředků** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
@@ -301,7 +301,9 @@ Data se do úložiště objektů blob zapisují ve formátu Avro.
    > 
    > Například při použití výchozího formátu názvu souboru objektu blob a za předpokladu, že název centra je ContosoTestHub a datum a čas je 30. října 2018 v 10:56, bude název objektu blob vypadat takto: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > Objekty blob se zapisují ve formátu Avro.
+   > Objekty BLOB jsou napsané ve formátu Avro ve výchozím nastavení. Je možné zapisovat soubory ve formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Najdete v článku [doprovodné materiály k směrování do úložiště objektů blob] (iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > 
+   > Při směrování do úložiště objektů blob, doporučujeme uvedení objektů BLOB a pak iterace je zajistit, že všechny kontejnery, které jsou pro čtení bez vytváření žádných předpokladů vyhodnocený oddílu. Rozsah oddílů může potenciálně změnit během [iniciované Microsoft převzetí služeb při selhání](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo službu IoT Hub [ruční převzetí služeb při selhání](iot-hub-ha-dr.md#manual-failover-preview). Další informace o výčet seznamu objektů BLOB najdete v tématu [směrování do úložiště objektů blob](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
    >
 
 8. Kliknutím na **Vytvořit** vytvořte koncový bod úložiště a přidejte ho do trasy. Vrátíte se do podokna **Přidat trasu**.

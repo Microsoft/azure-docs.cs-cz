@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 42246a5d2c8515c26ed399f041476c8ad70decfe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729400"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442133"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
@@ -33,7 +33,7 @@ Vytvoření úlohy importu pomocí rozhraní REST API služby Microsoft Azure Im
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Příprava jednotky pomocí nástroje Azure Import/Export
 
-Kroky pro přípravu disků pro úlohu importu jsou stejné, ať už jobvia vytvoříte na portálu nebo prostřednictvím rozhraní REST API.
+Kroky pro přípravu disků pro úlohu importu jsou stejné, zda vytvořit úlohu prostřednictvím portálu nebo prostřednictvím rozhraní REST API.
 
 Níže uvádíme stručný přehled o přípravu jednotky. Odkazovat [referenčních informacích k Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) úplné pokyny. Nástroj Azure Import/Export můžete stáhnout [tady](https://go.microsoft.com/fwlink/?LinkID=301900).
 

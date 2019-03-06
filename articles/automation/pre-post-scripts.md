@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: dc30b28203ad416370f1304436e7e6e642921be9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416781"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441504"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
-Skripty před a po umožňují spustit Powershellové runbooky ve vašem účtu Automation před (předběžné úkolu) a po nasazení (po úloh) aktualizace. Skripty před a po spuštění v rámci Azure a ne místně. Spustit skripty před začátkem nasazení aktualizace. Spustit skripty příspěvek na konci nasazení a po žádné restartování počítače, které jsou nakonfigurované.
+Skripty před a po umožňují spustit Powershellové runbooky ve vašem účtu Automation před (předběžné úkolu) a po nasazení (po úloh) aktualizace. Skripty před a po spuštění v rámci Azure a ne místně. Předběžné skripty se spouští na začátku nasazení aktualizace. Spustit skripty příspěvek na konci nasazení a po žádné restartování počítače, které jsou nakonfigurované.
 
 ## <a name="runbook-requirements"></a>Požadavky na sady Runbook
 

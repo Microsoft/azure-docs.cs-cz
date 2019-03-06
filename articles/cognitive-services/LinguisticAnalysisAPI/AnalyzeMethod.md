@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861676"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431134"
 ---
 # <a name="analyze-method"></a>Analýza – metoda
 
@@ -24,7 +24,7 @@ ms.locfileid: "55861676"
 > Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 **Analyzovat** rozhraní REST API slouží k analýze vstup dané přirozeného jazyka.
-Která může zahrnovat jenom hledání [věty a tokeny](Sentences-and-Tokens.md) v rámci tento vstup, hledání [značek částí řeči](POS-tagging.md), nebo hledání [constitutency stromu](Constituency-Parsing.md).
+Která může zahrnovat jenom hledání [věty a tokeny](Sentences-and-Tokens.md) v rámci tento vstup, hledání [značek částí řeči](POS-tagging.md), nebo hledání [složková stromu](Constituency-Parsing.md).
 Můžete určit, jaké výsledky chcete výběrem příslušné analyzátory.
 Seznam všech dostupných analyzátory, podívejte se na  **[analyzátory](AnalyzersMethod.md)**.
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Název | Type | Povinné | Popis
 -----|-------|----------|------------
-**Jazyk**    | řetězec | Ano | Dvě písmena kód ISO jazyka použitého pro analýzu. Angličtina je například "en".
+**Jazyk**    | string | Ano | Dvě písmena kód ISO jazyka použitého pro analýzu. Angličtina je například "en".
 **analyzerIds** | seznam řetězců | Ano | Seznam identifikátorů GUID analyzátory použít. Další informace v dokumentaci analyzátory.
-**Text**        | řetězec | Ano | Vstup nezpracovaných dat má být analyzován. To může být třeba slovo nebo frázi, úplné věty, nebo úplné odstavce nebo discourse krátký řetězec.
+**Text**        | string | Ano | Vstup nezpracovaných dat má být analyzován. To může být třeba slovo nebo frázi, úplné věty, nebo úplné odstavce nebo discourse krátký řetězec.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
@@ -52,7 +52,7 @@ Výsledky budou vypadat takto:
 
 Název | Typ | Popis
 -----|------|--------------
-analyzerId | řetězec | Analyzátor zadaný identifikátor GUID
+analyzerId | string | Analyzátor zadaný identifikátor GUID
 výsledek | objekt | výsledek analyzátoru
 
 Všimněte si, že typ výsledku závisí na typu vstupu analyzátor.
@@ -67,8 +67,8 @@ výsledek [x]. Délka | int | Délka ve znacích jednotlivé věty |
 result[x].Tokens | seznam tokenů objektů | Token hranice identifikované ve větě |
 výsledek [x]. Tokeny [y]. Posun | int | počáteční odsazení znaku tokenu |
 výsledek [x]. Tokeny [y]. Délka | int | Délka ve znacích tokenu |
-výsledek [x]. Tokeny [y]. RawToken | řetězec | znaky uvnitř tohoto tokenu, před normalizace |
-výsledek [x]. Tokeny [y]. NormalizedToken | řetězec | normalizovaná forma znaku, bezpečný pro použití v [strom analýzy](Constituency-Parsing.md); například znak levou (otevírací) ' (' stane - LRB – |
+výsledek [x]. Tokeny [y]. RawToken | string | znaky uvnitř tohoto tokenu, před normalizace |
+výsledek [x]. Tokeny [y]. NormalizedToken | string | normalizovaná forma znaku, bezpečný pro použití v [strom analýzy](Constituency-Parsing.md); například znak levou (otevírací) ' (' stane - LRB – |
 
 Příklad vstupu: "Toto je test. Dobrý den. "
 Příklad odpovědi JSON:

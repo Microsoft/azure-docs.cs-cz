@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 60d4d9224a6a70c8fa2702dede8721f742fa6256
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015300"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434942"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -26,16 +26,18 @@ ms.locfileid: "54015300"
 - Prostředí Integration Runtime v místním prostředí
 - Prostředí Azure-SSIS Integration Runtime
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Pokud chcete získat stav instance prostředí integration runtime (IR), spusťte následující příkaz Powershellu: 
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
 Rutina vrátí různé informace pro různé typy prostředí integration runtime. Tento článek vysvětluje, vlastnosti a stavů pro každý typ prostředí integration runtime.  
 
 ## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
-Výpočetní prostředek pro prostředí Azure integration runtime je plně spravovaná Elasticky v Azure. Následující tabulka obsahuje popis vlastností vrácené **Get-AzureRmDataFactoryV2IntegrationRuntime** příkaz:
+Výpočetní prostředek pro prostředí Azure integration runtime je plně spravovaná Elasticky v Azure. Následující tabulka obsahuje popis vlastností vrácené **Get-AzDataFactoryV2IntegrationRuntime** příkaz:
 
 ### <a name="properties"></a>Vlastnosti
 Následující tabulka obsahuje popisy vlastností vrací rutina pro prostředí Azure integration runtime:
@@ -58,7 +60,7 @@ Následující tabulka uvádí možné stavy prostředí Azure integration runti
 | Offline | Prostředí Azure integration runtime je offline z důvodu vnitřní chyby. |
 
 ## <a name="self-hosted-integration-runtime"></a>Prostředí Integration Runtime v místním prostředí
-Tato část obsahuje popis vlastností vrací Rutina Get-AzureRmDataFactoryV2IntegrationRuntime. 
+Tato část obsahuje popis vlastností vrací Rutina Get-AzDataFactoryV2IntegrationRuntime. 
 
 > [!NOTE] 
 > Vrácený vlastností a stavu obsahují informace o celkové místní prostředí integration runtime a každý uzel v modulu runtime.  
@@ -86,7 +88,7 @@ Výchozí hodnota je nastavený limit souběžných úloh podle velikosti počí
 
 Horizontální navýšení kapacity zvýšením počtu uzlů. Pokud zvýšíte počet uzlů, limit souběžných úloh je součet hodnot limitu souběžných úloh všech dostupných uzlů.  Například pokud se jeden uzel umožňuje spouštět až 12 souběžných úloh, přidáte tři uzly podobné vám umožní spustit určitý počet souběžných úloh 48 (4 x 12). Doporučujeme, abyste zvýšili limit souběžných úloh pouze v případě, že se zobrazí využití prostředků nízké výchozí hodnoty na každém uzlu.
 
-Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Upravit > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) příkazu.
+Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Upravit > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) příkazu.
   
 ### <a name="status-per-node"></a>Stav (na uzel)
 Následující tabulka uvádí možné stavy uzel v místním prostředí integration runtime:
@@ -111,10 +113,10 @@ Následující tabulka obsahuje možné stavy z místního prostředí integrati
 | Offline | Žádný uzel je online. |
 | Omezená | Ne všechny uzly v tomto modulu runtime integrace v místním prostředí jsou v dobrém stavu. Tento stav se upozornění, že některé uzly jsou pravděpodobně mimo provoz. Tento stav může být způsobeno problém synchronizace s přihlašovacími údaji na dispečerský/pracovní uzel. |
 
-Použití **Get-AzureRmDataFactoryV2IntegrationRuntimeMetric** rutina pro načtení datové části JSON obsahující na podrobné v místním prostředí integration runtime vlastnosti a hodnoty jejich snímku během doby provádění rutiny.
+Použití **Get-AzDataFactoryV2IntegrationRuntimeMetric** rutina pro načtení datové části JSON obsahující na podrobné v místním prostředí integration runtime vlastnosti a hodnoty jejich snímku v době spuštění rutiny.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
 Ukázkový výstup (předpokládá, že existují dva uzly, které jsou přidružené k tento modul runtime integrace v místním prostředí):
@@ -174,7 +176,7 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | VNetId | Virtuální síť ID prostředku pro prostředí Azure-SSIS integration runtime připojit. |
 | Podsíť | Název podsítě pro vaše prostředí Azure-SSIS integration runtime připojit. |
 | ID | ID prostředku vašeho prostředí Azure-SSIS integration runtime. |
-| Typ | Typ (spravované/samoobslužné-Hosted) vašeho prostředí Azure-SSIS integration runtime. |
+| Type | Typ (spravované/samoobslužné-Hosted) vašeho prostředí Azure-SSIS integration runtime. |
 | ResourceGroupName | Název vaší skupiny prostředků Azure, ve kterém byly vytvořeny služby data factory a Azure-SSIS integration runtime. |
 | DataFactoryName | Název služby Azure data factory. |
 | Název | Název prostředí Azure-SSIS integration runtime. |
@@ -213,7 +215,7 @@ Na následujících snímcích obrazovky ukazují, jak vybrat Azure-SSIS IR k mo
 Použít skript jako v následujícím příkladu a zkontrolujte stav Azure-SSIS IR.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Další informace o Azure-SSIS integration runtime
@@ -222,7 +224,7 @@ Naleznete v následujících článcích se dozvíte další informace o Azure-S
 
 - [Prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o prostředí integration runtime obecně včetně Azure-SSIS IR. 
 - [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny pro vytvoření Azure-SSIS IR a využívá databázi Azure SQL k hostování katalogu SSIS. 
-- [Jak: Vytvoření prostředí Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Tento článek dál navazuje na tento kurz a obsahuje pokyny k používání Azure SQL Database Managed Instance a připojení IR k virtuální síti. 
+- [Postup: Vytvoření prostředí Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md). Tento článek dál navazuje na tento kurz a obsahuje pokyny k používání Azure SQL Database Managed Instance a připojení IR k virtuální síti. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
 - [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure. Poskytuje také kroky konfigurace virtuální sítě tak, aby prostředí Azure-SSIS IR se může připojit k virtuální síti pomocí webu Azure portal. 
 

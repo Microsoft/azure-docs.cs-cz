@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1ebe600a305e6dbc2790d50c6e1eafcfda19c9b8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 75c453c9ac501eea681af32643a40e941555ffbd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749439"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454914"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Obrázek analýzy kognitivní dovednosti
 
@@ -37,7 +37,7 @@ Parametry rozlišují malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | defaultLanguageCode   |  Řetězec označující jazyk, který chcete vrátit. Tato služba vrátí výsledky rozpoznávání do zadaného jazyku. Pokud není tento parametr zadán, výchozí hodnota je "en". <br/><br/>Podporované jazyky jsou: <br/>*cs* -Angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
-|visualFeatures |   Pole řetězce, které označují typy vizuální funkce vrátit. Platný vizuální funkce patří:  <ul><li> *kategorie* – rozděluje obsah image podle taxonomie definované ve službě Cognitive Services [dokumentaci](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *značky* – značky bitová kopie se podrobný seznam slov, související s obsahem obrazu.</li><li>*Popis* -popisuje obsah s kompletní věta anglické image.</li><li>*Tváří* -rozpozná, pokud jsou k dispozici tváří. Pokud jsou k dispozici, generuje souřadnice, pohlaví nebo věku.</li><li> *ImageType* – zjistí, jestli obrázek je klipart nebo perokresba.</li><li>   *Barva* -Určuje barvu motivu, dominantní barva, a určuje, zda je bitová kopie černé černobílý.</li><li>*Pro dospělé* – zjistí, zda se má obrázek pornografický ze své podstaty (znázorňuje nahota nebo act pohlaví). Zjistil se také sexuálně sugestivní obsah.</li></ul> Názvy funkcí visual jsou malá a velká písmena.|
+|visualFeatures |   Pole řetězce, které označují typy vizuální funkce vrátit. Platný vizuální funkce patří:  <ul><li> *kategorie* – rozděluje obsah image podle taxonomie definované ve službě Cognitive Services [dokumentaci](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *značky* – značky bitová kopie se podrobný seznam slov, související s obsahem obrazu.</li><li>*Popis* -popisuje obsah s kompletní věta anglické image.</li><li>*Tváří* -rozpozná, pokud jsou k dispozici tváří. Pokud jsou k dispozici, generuje souřadnice, pohlaví nebo věku.</li><li> *ImageType* – zjistí, jestli obrázek je klipart nebo perokresba.</li><li>  *Barva* -Určuje barvu motivu, dominantní barva, a určuje, zda je bitová kopie černé černobílý.</li><li>*Pro dospělé* – zjistí, zda se má obrázek pornografický ze své podstaty (znázorňuje nahota nebo act pohlaví). Zjistil se také sexuálně sugestivní obsah.</li></ul> Názvy funkcí visual jsou malá a velká písmena.|
 | Podrobnosti   | Pole řetězce, které označují, které specifického pro doménu podrobnosti k vrácení. Platný vizuální funkce patří: <ul><li>*Celebrit* -identifikuje celebrit, pokud se zjistí na obrázku.</li><li>*Zajímavá* -identifikuje památek, pokud se zjistí na obrázku.</li></ul>
  |
 

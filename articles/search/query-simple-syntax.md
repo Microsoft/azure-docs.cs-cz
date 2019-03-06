@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 12589d9fa4623dbb6ebfd12d2e007eb9303ecdbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008325"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441556"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Jednoduchá syntaxe dotazů ve službě Azure Search
 Služba Azure Search implementuje dva jazyků dotazů Lucene: [Jednoduchý analyzátor dotazů](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) a [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Jednoduchá syntaxe dotazů ve službě Azure Search, nezahrnuje možnosti přibližné/odpadový.  
@@ -46,7 +46,7 @@ Obvykle můžete si s větší pravděpodobností zobrazíte těchto projevů v 
 
 ## <a name="operators-in-simple-search"></a>Operátory v jednoduché hledání
 
-Operátory můžete vložit do řetězce dotazu k sestavení riche sadu kritérií, u kterých se nacházejí odpovídajících dokumentů. 
+Operátory můžete vložit do řetězce dotazu k sestavení bohatou sadu kritérií, u kterých se nacházejí odpovídajících dokumentů. 
 
 ## <a name="and-operator-"></a>AND – operátor `+`
 

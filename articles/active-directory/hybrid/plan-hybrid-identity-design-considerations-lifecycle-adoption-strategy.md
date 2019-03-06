@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d11de9dc82dad0426f141049603e99e99690f5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873215"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433735"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí životního cyklu hybridní identity
 V této úloze budete definovat strategie správy identit pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v [určit úlohy správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -95,7 +95,7 @@ Projděte si následující tabulku k porovnání vybrané možnosti synchroniza
 | Možnost správy synchronizace | Výhody | Nevýhody |
 | --- | --- | --- |
 | Na základě synchronizace (prostřednictvím DirSync nebo AADConnect) |Uživatelé a skupiny synchronizované z místní prostředí a cloudu <br>  **Řízení pomocí zásad**: Je možné nastavit zásady účtů prostřednictvím služby Active Directory, která umožňuje správci spravovat zásady pro hesla, pracovní stanice, omezení, uzamčení ovládací prvky a další, aniž byste museli provádět další úkoly v cloudu.  <br>  **Řízení přístupu**: Můžete omezit přístup ke cloudové službě, aby služby přístupné prostřednictvím podnikové prostředí prostřednictvím online servery, nebo obojí. <br>  Omezit volání podpory: Pokud uživatelé používají méně hesel, která mějte na paměti, jsou méně pravděpodobné, že zapomenete je. <br>  Zabezpečení: Identity uživatelů a informace jsou chráněny, protože všechny servery a služby použité v jednotného přihlašování, standardní a řídit místní. <br>  Podpora pro silné ověřování: Silné ověřování (také nazývané dvoufaktorové ověřování) můžete použít s cloudovou službou. Nicméně pokud používáte silné ověřování, musíte použít jednotné přihlašování. | |
-| Federační (prostřednictvím služby AD FS) |Zajišťuje služba tokenů zabezpečení (STS). Při konfiguraci služby tokenů zabezpečení zajistit přístup pomocí jednotného přihlašování s cloudovou službou Microsoftu, budete vytvářet federovaného vztahu důvěryhodnosti mezi vaší místní služby STS a federovanou doménu, kterou jste zadali ve vašem tenantovi Azure AD. <br> Umožňuje koncovým uživatelům získat přístup k více prostředkům používá stejnou sadu přihlašovacích údajů <br>koncoví uživatelé nemusíte udržovat několik sad přihlašovacích údajů. Zatím, uživatelé musí zadat své přihlašovací údaje pro každé z nich zúčastněných prostředků., B2B a B2C scénáře podporované. |Vyžaduje specializované pracovníky pro nasazení a údržby vyhrazené místní servery služby AD FS. Existují omezení týkající se použití silné ověřování, pokud plánujete použití služby AD FS pro vaši službu tokenů zabezpečení. Další informace najdete v tématu [konfigurace rozšířené možnosti pro službu AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
+| Federační (prostřednictvím služby AD FS) |Zajišťuje služba tokenů zabezpečení (STS). Při konfiguraci služby tokenů zabezpečení zajistit přístup pomocí jednotného přihlašování s cloudovou službou Microsoftu, budete vytvářet federovaného vztahu důvěryhodnosti mezi vaší místní služby STS a federovanou doménu, kterou jste zadali ve vašem tenantovi Azure AD. <br> Umožňuje koncovým uživatelům získat přístup k více prostředkům používá stejnou sadu přihlašovacích údajů <br>koncoví uživatelé nemusíte udržovat několik sad přihlašovacích údajů. Zatím, uživatelé musí zadat své přihlašovací údaje pro každé z nich zúčastněných prostředků., B2B a B2C scénáře podporované. |Pro nasazení a údržby vyhrazené místní servery služby AD FS vyžaduje specializované pracovníky. Existují omezení týkající se použití silné ověřování, pokud plánujete použití služby AD FS pro vaši službu tokenů zabezpečení. Další informace najdete v tématu [konfigurace rozšířené možnosti pro službu AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]
 > Další informace najdete v tématu [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).

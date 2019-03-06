@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d59a811b09d2c60627f7d506f1f5fd3513c914e8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821299"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408016"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service pomocí Jenkinse průběžnou integraci a nasazování
 
@@ -193,7 +193,7 @@ V Jenkinsovi se vytvořte úlohu kanálu pro sestavování a nasazení vaší ap
 
    1. V **vlastnosti obsahu** pole, které se zobrazí, přidejte tyto proměnné prostředí a jejich hodnoty. 
 
-      ```text
+      ```ini
       AZURE_CRED_ID=yourAzureServicePrincipalName
       RES_GROUP=yourWebAppAzureResourceGroupName
       WEB_APP=yourWebAppName
@@ -212,7 +212,7 @@ Teď vytvořte soubory, které Jenkins používá pro vytváření a nasazení v
 1. Ve vašem forku Githubu `src/main/resources/` složku, vytvořte tento konfigurační soubor aplikace s názvem `web.config`, který obsahuje tento kód XML, ale nahraďte `$(JAR_FILE_NAME)` s `gs-spring-boot-0.1.0.jar`:
 
    ```xml
-   <?xml version="1.0" encoding="UTF-8">
+   <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
       <system.webServer>
          <handlers>
@@ -225,7 +225,7 @@ Teď vytvořte soubory, které Jenkins používá pro vytváření a nasazení v
 
 1. V kořenové složce vašeho forku Githubu, vytvořte tento skript sestavení a nasazení s názvem `Jenkinsfile`, který obsahuje tento text ([zdroje na Githubu tady](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
 
-   ```text  
+   ```groovy
    node {
       stage('init') {
          checkout scm

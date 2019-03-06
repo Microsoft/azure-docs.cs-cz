@@ -9,14 +9,14 @@ ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3a72689be1902a05a2df409366bc5caba94d6a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231606"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436098"
 ---
-# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scénář: Aktivace aplikací logiky s využitím Azure Functions a Azure Service Bus
+# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Scénář: Aktivační událost aplikací logiky s využitím Azure Functions a Azure Service Bus
 
 Azure Functions můžete použít k vytvoření aktivační události pro aplikaci logiky, když budete chtít nasadit dlouhotrvající naslouchací proces nebo úkolu. Můžete například vytvořit funkci, která naslouchá frontě a okamžitě aktivuje aplikace logiky jako trigger nabízených oznámení.
 
@@ -34,9 +34,9 @@ V tomto příkladu máte funkci spuštění pro každou aplikaci logiky, kterou 
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a vytvoření prázdné aplikace logiky. 
 
-   Pokud se službou logic Apps teprve začínáte, přečtěte si [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Pokud se službou logic Apps teprve začínáte, přečtěte si [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte "požadavek http". V seznamu triggerů vyberte tento trigger: **přijetí požadavku HTTP je při**
+1. Do vyhledávacího pole zadejte "požadavek http". V seznamu triggerů vyberte tento trigger: **Při přijetí požadavku HTTP**
 
    ![Vybrat trigger](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +98,7 @@ Dál vytvořte funkci, která funguje jako aktivační událost a přijímá zpr
 
 1. Na webu Azure Portal otevřete a rozbalte aplikaci function app, není otevřen. 
 
-1. V části název vaší aplikace funkcí, rozbalte položku **funkce**. Na **funkce** podokně zvolte **novou funkci**. Vyberte tuto šablonu: **aktivační událost fronty Service Bus – C#**
+1. V části název vaší aplikace funkcí, rozbalte položku **funkce**. Na **funkce** podokně zvolte **novou funkci**. Vyberte tuto šablonu: **Aktivační událost fronty Service Bus –C#**
    
    ![Vyberte portál Azure Functions](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +114,14 @@ Dál vytvořte funkci, která funguje jako aktivační událost a přijímá zpr
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 

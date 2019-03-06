@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: de4c8aecefce334889c3fa6790c0ba42673896c7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d51c7330acd37d8a861c136ea85a2ff456eb264e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196667"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446482"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Karta testovací verze aplikace Azure
 
@@ -33,7 +33,7 @@ Zákazníkům přináší praktická, samostatně prováděného zkušební verz
 
 ## <a name="how-a-test-drive-works"></a>Jak funguje testovací verze
 
-Potenciální zákazník prohledá a zjistí aplikace na webu Marketplace. Zákazník přihlásí a souhlasí s podmínkami použití. V tomto okamžiku zákazník přijme předem nakonfigurované prostředí pro akci pro pevný počet hodin, když obdržíte vysoce kvalifikovaných potenciálního zákazníka do se. Další informace najdete v tématu [co je to Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/what-is-test-drive)
+Potenciální zákazník prohledá a zjistí aplikace na webu Marketplace. Zákazník přihlásí a souhlasí s podmínkami použití. V tomto okamžiku zákazník přijme předem nakonfigurované prostředí pro akci pro pevný počet hodin, když obdržíte vysoce kvalifikovaných potenciálního zákazníka do se. Další informace najdete v tématu [co je to Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
 ## <a name="setting-up-a-test-drive"></a>Nastavení testovací verze
 
@@ -65,12 +65,12 @@ Následující tabulka popisuje pole k nastavení testů jednotky pro spravovan�
 |      Popis              |   Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.                |
 |    Uživatelská příručka                |     Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF.              |
 |         Test jednotky – ukázkové Video (volitelné)           |       Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>            |
-|       Instance             |        Kolik instancí, které chcete nakonfigurovat, v jaké oblasti a jak rychle vaši zákazníci mohou získat testovací verze. Další informace najdete v tématu [publikování si testovací jízdu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
+|       Instance             |        Kolik instancí, které chcete nakonfigurovat, v jaké oblasti a jak rychle vaši zákazníci mohou získat testovací verze. Další informace najdete v tématu [publikování si testovací jízdu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
 |       Jednotka doba trvání testu (hodiny)             |       Zadejte celé číslo pro počet hodin. Povolený rozsah je od 1 do 999.            |
-|        Šablona ARM testu jednotky            |        Nahrání komprimovaný soubor (ZIP), který má své šablony Azure Resource Manageru pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manageru Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive).            |
+|        Šablona ARM testu jednotky            |        Nahrání komprimovaný soubor (ZIP), který má své šablony Azure Resource Manageru pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manageru Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).            |
 |        Přístup k informacím            |         Poskytuje přístup k informacím po získá váš zákazník testovací verze. Například adresa URL pro přístup k testovací verze a informace o přihlášení. . Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.          |
 |       Id předplatného přístup             |       Tím získají přístup ke službám Azure a webu Azure portal. Předplatné je používání prostředků vykazováno, kde služby se účtují. Pokud ještě nemáte samostatné předplatné Azure pro Test jednotek pouze, vytvořte předplatné.             |
-|          Id klienta Azure AD          |        Zadejte existujícího Tenanta služby Azure Active Directory, nebo vytvořit tenanta pro tento testovací verze.           |
+|          Azure AD Tenant Id          |        Zadejte existujícího Tenanta služby Azure Active Directory, nebo vytvořit tenanta pro tento testovací verze.           |
 |         Id aplikace Azure AD           |       Vytvořte a zaregistrujte novou aplikaci. Společnost Microsoft používá k provádění operací ve vaší instanci testovací verze této aplikace.            |
 |          Klíč aplikace Azure AD          |         Vytvoření ověřovací klíč pro aplikaci a vložte ho do tohoto pole.          |
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477212"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451939"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
@@ -417,7 +417,7 @@ K sestavení počet tabulek na údaje o počtu, použijte data ve složce raw ne
 Náš model vytváření procesů ve službě Azure Machine Learning zahrnuje následující kroky:
 
 1. [Získat data z tabulek Hive do Azure Machine Learning](#step1)
-2. [Vytvoření experimentu: Vyčištění dat a zpracování volných se počet tabulek](#step2)
+2. [Vytvoření experimentu: Vyčištění dat a nastavte ji funkce s počet tabulek](#step2)
 3. [Vytváření, trénování a modul score model](#step3)
 4. [Vyhodnocení modelu](#step4)
 5. [Publikování modelu jako webové služby](#step5)
@@ -451,7 +451,7 @@ Klikněte pravým tlačítkem na výstupní port modulu **Import dat** modulu. Z
 
 Vyberte uloženou datovou sadu pro použití v experimentu machine learning, vyhledejte datových sad pomocí **hledání** pole je znázorněno na následujícím obrázku. Jednoduše zadejte název dáte datové sady částečně na přístup a přetáhněte datovou sadu na hlavním panelu. Zastaví na hlavní panel vybere pro použití v machine learning modelování.
 
-![Datová sada Drage na hlavním panelu](./media/hive-criteo-walkthrough/cl5tpGw.png)
+![Přetáhněte datovou sadu na hlavním panelu](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > To lze proveďte trénování a datových sad testů. Nezapomeňte použít název databáze a názvy tabulek, které jste zadali pro tento účel. Hodnoty použité na obrázku jsou pouze pro ilustraci purposes.* *

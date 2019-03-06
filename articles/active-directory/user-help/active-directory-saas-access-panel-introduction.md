@@ -1,5 +1,5 @@
 ---
-title: Co je portálu MyApps ve službě Azure Active Directory? | Dokumenty Microsoft
+title: Co je na portálu MyApps – Azure Active Directory? | Dokumenty Microsoft
 description: Další informace o použití změn na portálu MyApps (webový prohlížeč, aplikace pro Android, aplikace pro iPhone a iPad) pro přístup k aplikacím SaaS.
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9682611467311f06d60f6f393ebd7788f95f7f12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6df034264e54d7d421d9508fb3c08cc6675cb10d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177865"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451990"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 

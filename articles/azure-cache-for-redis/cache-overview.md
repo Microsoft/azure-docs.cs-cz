@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236545"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433803"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis
 
@@ -57,7 +57,7 @@ Basic | Mezipaměť s jedním uzlem. Tato vrstva podporuje více velikostí pam�
 
 Po vytvoření můžete mezipaměť škálovat na vyšší vrstvu. Škálování na nižší vrstvu se nepodporuje. Podrobné pokyny škálování najdete v tématu [postup škálování Azure mezipaměti Redis](cache-how-to-scale.md) a [jak automatizovat operaci škálování](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="feature-comparision"></a>Srovnání funkcí
+### <a name="feature-comparison"></a>Porovnání funkcí
 
 [Mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/) stránka obsahuje podrobné porovnání jednotlivých vrstev. V následující tabulce jsou popsány některé funkce podporované jednotlivými vrstvami:
 

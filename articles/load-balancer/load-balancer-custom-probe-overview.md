@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: dc22f1392d14529c2944dde67315a278fca4fa73
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195332"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450443"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -212,7 +212,7 @@ Nepovolujte [časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povol
 
 ## <a name="monitoring"></a>Monitorování
 
-Veřejné a vnitřní [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vystavit na koncový bod a back-end instance sondy stavu jako vícedimenzionálních metrik přes Azure Monitor. Tyto metriky můžou využívat další služby Azure nebo třetí arty aplikací. 
+Veřejné a vnitřní [Load balanceru úrovně Standard](load-balancer-standard-overview.md) vystavit na koncový bod a back-end instance sondy stavu jako vícedimenzionálních metrik přes Azure Monitor. Tyto metriky můžou využívat další služby Azure nebo partner aplikace. 
 
 Veřejný Load balancer úrovně Basic poskytuje sondy stavu shrnuté na back-endový fond přes protokoly Azure monitoru.  Azure Monitor protokoly nejsou k dispozici pro interní základní nástroje pro vyrovnávání zatížení.  Můžete použít [protokoly Azure monitoru](load-balancer-monitor-log.md) a zkontrolovat stav sondy stavu nástroje pro vyrovnávání veřejný nástroj pro zjišťování počtu. Protokolování je možné s Power BI nebo Azure Operational Insights k poskytování statistické údaje o stavu nástroje pro vyrovnávání zatížení.
 

@@ -12,12 +12,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 2/19/2019
 ms.author: douglasl
-ms.openlocfilehash: 77ee2a0649d5c815fb68a4a40106455839030695
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 159aaf017265c09c2afc4b603ed5172fead9b29d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671518"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438648"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
@@ -27,6 +27,8 @@ Další informace o spravované identity pro vaše ADF [identiy spravované slu�
 
 > [!NOTE]
 > Pokud jste již vytvořili prostředí Azure-SSIS IR pomocí ověřování SQL, nelze změnit konfiguraci prostředí IR v tuto chvíli používat ověřování Azure AD pomocí Powershellu, ale můžete udělat v aplikaci Azure portal/ADF. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-ad-on-azure-sql-database"></a>Povolení služby Azure AD pro službu Azure SQL Database
 
@@ -216,7 +218,7 @@ Ke zřízení prostředí Azure-SSIS IR pomocí Powershellu, proveďte následuj
 2.  Ve skriptu, nenastavujte `CatalogAdminCredential` parametru. Příklad:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                -DataFactoryName $DataFactoryName `
                                                -Name $AzureSSISName `
                                                -Description $AzureSSISDescription `
@@ -229,7 +231,7 @@ Ke zřízení prostředí Azure-SSIS IR pomocí Powershellu, proveďte následuj
                                                -CatalogServerEndpoint $SSISDBServerEndpoint `
                                                -CatalogPricingTier $SSISDBPricingTier
 
-    Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+    Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
    ```

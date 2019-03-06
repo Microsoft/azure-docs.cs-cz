@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747318"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407619"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Požadavky na systém Azure Data Box Disk
 
@@ -52,7 +52,7 @@ Sada nástrojů disku Data Box pro klienta pro Linux, nainstaluje následující
 
 ## <a name="supported-connection"></a>Podporované připojení
 
-USB 3.0 nebo novější portu musí mít klientský počítač, který obsahuje data. Disky připojit k tohoto klienta pomocí zadané kabel. 
+USB 3.0 nebo novější portu musí mít klientský počítač, který obsahuje data. Disky připojit k tohoto klienta pomocí zadané kabel.
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
@@ -62,19 +62,22 @@ Tady je seznam typů podporovaných úložiště pro Data Box Disk.
 | --- | --- |
 | Classic | Standard |
 | Obecné použití  |Standardní; verze V1 i V2 podporují. Vrstvy hot a cool nejsou podporovány. |
+| Účet BLOB storage | |
 
 >[!NOTE]
 > Účty Azure Data Lake Storage generace 2 nejsou podporovány.
 
 
-## <a name="supported-storage-types"></a>Typy podporovaných úložišť
+## <a name="supported-storage-types-for-upload"></a>Typy podporované úložiště pro nahrání
 
-Tady je seznam typů podporovaných úložiště pro Data Box Disk.
+Tady je seznam typů úložiště, které jsou podporovány pro nahráli do Azure s použitím disku Data Box.
 
 | **Formát souboru** | **Poznámky** |
 | --- | --- |
 | Objekt blob bloku Azure | |
 | Objekt blob stránky Azure  | |
+| Soubory Azure  | |
+| Managed Disks | |
 
 
 ## <a name="next-step"></a>Další krok

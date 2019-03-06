@@ -9,12 +9,12 @@ ms.author: dwgeo
 ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a6f6033fb52c54cf3f9987743fcd725e3539803
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002135"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453792"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Odesílání úloh oříznutí z Azure Media Clipperem 
 

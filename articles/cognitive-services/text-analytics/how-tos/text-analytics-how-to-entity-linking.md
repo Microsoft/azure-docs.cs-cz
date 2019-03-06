@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5e614d7fc1b45e5a1e1c11d04ed80fbb66bfbd28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889405"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441606"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -23,7 +23,7 @@ ms.locfileid: "56889405"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Propojování entit a rozpoznávání pojmenovaných entit
 
-Rozhraní Text Analytics `entities` koncový bod supprts s názvem rozpoznávání entit (NER) a propojování entit.
+Rozhraní Text Analytics `entities` pojmenované rozpoznávání entit (NER) a rozhraní entity linking podporuje koncový bod.
 
 ### <a name="entity-linking"></a>Entity Linking
 Propojování entit je schopnost identifikovat a rozpoznat identity entity v textu (například určující, zda "Mars" je používán jako globální úrovni nebo Roman i war). Tento proces vyžaduje přítomnost který rozpoznáno entity jsou propojeny – Wikipedia slouží jako znalostní báze pro základní znalosti `entities` koncový bod pro analýzu textu.

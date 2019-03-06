@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 1e714faa04717ac8e6687db3c074b8a77d649fb2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 65104503af2e177f1898d8509c2d82bd9b58c266
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217203"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446958"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
 Podle jiných platforem, aplikace na platformě Azure Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. Tento článek poskytuje přehled rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric.
@@ -29,7 +29,7 @@ Podle jiných platforem, aplikace na platformě Azure Service Fabric obvykle pro
 ## <a name="service-model-roles"></a>Služba role modelu
 Role modelu služby jsou:
 
-* **Služba pro vývojáře**: Vyvíjí modulární a obecné služby, které lze použít ve více aplikacích stejného typu nebo různé typy a jinému účelu. Například služba front lze použít pro vytváření lístků podpory aplikaci (technické podpory) nebo aplikaci elektronického obchodování (nákupního košíku).
+* **Služba pro vývojáře**: Vyvíjí modulární a obecné služby, které můžete k jinému účelu a používaných pro několik aplikací stejného typu nebo různé typy. Například služba front lze použít pro vytváření lístků podpory aplikaci (technické podpory) nebo aplikaci elektronického obchodování (nákupního košíku).
 * **Vývojář aplikace**: Vytvoří aplikace integrací kolekce služeb, splnit určité požadavky nebo scénáře. Na webu elektronického obchodování může integrovat například "JSON bezstavové Front-End služby," "Aukce stavová služba" a "Stavová služba fronty" k vytvoření auctioning řešení.
 * **Správce aplikace**: Díky rozhodnutí ohledně konfigurace aplikace (vyplňování v parametrech šablony konfigurace), nasazení (mapování na dostupné prostředky) a kvalitu služeb. Například aplikace správce rozhodne pro národní prostředí (v angličtině pro Spojené státy) a japonštině pro Japonsko, například aplikace. Různé nasazené aplikace mohou mít různá nastavení.
 * **Operator**: Nasazení aplikace založené na konfiguraci aplikace a požadavky na zadaný správcem aplikace. Například operátor zřídí a nasadí aplikaci a zajistí, že běží v Azure. Operátory monitorovat informace o stavu a výkonu aplikace a spravovat fyzické infrastruktury, podle potřeby.

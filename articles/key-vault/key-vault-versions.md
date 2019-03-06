@@ -3,7 +3,7 @@ title: Verze Key Vaultu
 description: Různé verze služby Azure Key Vault
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: d74bf8603e3d5a394935994bc61fa0e96905ed25
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 3672d3f0b62978460720509a72e19d1948a39dc5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115024"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402435"
 ---
 # <a name="key-vault-versions"></a>Verze Key Vaultu
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5282f2e153ec2f1304bec9aadaf8fab88961edd9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792970"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443604"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro VMware pro replikaci Azure
 
@@ -41,7 +41,7 @@ Prostřednictvím šablonu otevřít virtualizace aplikace OVA () můžete nasta
 
 1. Další informace o [požadavky](vmware-azure-deploy-configuration-server.md#prerequisites) pro nasazení konfiguračního serveru.
 2. [Zkontrolujte kapacitu čísla](vmware-azure-deploy-configuration-server.md#capacity-planning) pro nasazení.
-3. [Stáhněte si](vmware-azure-deploy-configuration-server.md#download-the-template) a [importovat](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) šablony OVA nastavení VMware v místním prostředí virtuálního počítače, na kterém běží konfigurační server. Licence, které jsou poskytovány s šablonou je o zkušební licenci a je platný po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
+3. [Stáhněte si](vmware-azure-deploy-configuration-server.md#download-the-template) a [importovat](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) šablony OVA nastavení VMware v místním prostředí virtuálního počítače, na kterém běží konfigurační server. Licence, které jsou poskytovány s šablonou je zkušební licence a je platná po dobu 180 dnů. Po uplynutí této doby zákazník potřebuje aktivovat systém windows s licencí opatřené.
 4. Zapněte požadovaný virtuální počítač VMware a [ho zaregistrovat](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) v služby Recovery Services vault.
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery vyloučení složek z antivirového programu
@@ -62,13 +62,13 @@ Vyloučit následující složky z antivirového softwaru pro hladký průběh r
  - C:\Temp
  - C:\strawberry
  - C:\ProgramData\MySQL
- - Soubory (x86) \MySQL C:\Program
+ - C:\Program Files (x86)\MySQL
  - C:\ProgramData\ASR
  - C:\ProgramData\Microsoft Azure Site Recovery
  - C:\ProgramData\ASRLogs
  - C:\ProgramData\ASRSetupLogs
  - C:\ProgramData\LogUploadServiceLogs
- - C:\Inetpub
+ - C:\inetpub
  - Instalační adresář serveru Azure Site Recovery. Příklad: E:\Program soubory (x86) \Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Pokud Software antivirové ochrany v programu je aktivní na horizontální navýšení kapacity zpracování server nebo hlavní cíl
@@ -81,7 +81,7 @@ Vyloučit následující složky z antivirového softwaru
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Azure Site Recovery zatížení vyvážené proces serveru instalační adresář, příklad: C:\Program Files (x86) \Microsoft Azure Site Recovery
+7. Azure Site Recovery zatížení vyvážené proces serveru instalační adresář, příklad: C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 
 ## <a name="next-steps"></a>Další postup

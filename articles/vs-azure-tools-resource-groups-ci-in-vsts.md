@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955163"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456342"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
-K nasazení šablony Azure, můžete provádět úlohy v různých fázích: sestavení, testování, kopírovat do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
+K nasazení šablony Azure, můžete provádět úlohy v různých fázích: Kopírovat sestavení, testování, do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
 
 1. Přidáte jednoho kroku do vašeho kanálu sestavení, který spustí skript prostředí PowerShell, který je součástí nasazení projektu skupiny prostředků Azure (Deploy-AzureResourceGroup.ps1). Tento skript zkopíruje artefakty a pak nasadí šablony.
 2. Přidání že více služeb Azure DevOps kroky sestavení, každý z nich provedení úlohy fázi.
@@ -78,7 +78,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
       
       * ID předplatného
       * Název předplatného
-      * Id instančního objektu
+      * ID instančního objektu
       * Klíč objektu služby
       * ID tenanta
    6. Přidání názvu vlastní volby **předplatné** pole název. Tato hodnota se zobrazí později v **předplatné Azure** rozevíracího seznamu ve službě Azure DevOps Services. 
@@ -136,7 +136,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
 
 1. Upravte svůj kanál služby Azure DevOps sestavení přidat že dvě nové kroky sestavení. Vyberte kanál sestavení v rámci **definice sestavení** kategorie a klikněte na tlačítko **upravit** odkaz.
    
-   ![Upravit definici sestavení][12]
+   ![Úprava definice sestavení][12]
 2. Přidat nové kroky sestavení k sestavení pomocí kanálu **přidat krok sestavení...** .
    
    ![Přidejte krok sestavení][13]

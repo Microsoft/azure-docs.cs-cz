@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: c26f042cb749f9ab023e7033ea015b74d87ca92a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1c16ea44418d99ee1f80a7d0ef7a3e5b3f118f46
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214108"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432329"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Úvod do víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 
@@ -49,7 +49,7 @@ Poté, co nasadíte aplikaci, si projděte následující kurzy, které vycháze
 |[Monitorování s protokoly Azure monitoru](saas-dbpertenant-log-analytics.md) | Další informace o použití [protokoly Azure monitoru](../log-analytics/log-analytics-overview.md) k monitorování velkého množství prostředků u více fondů. |
 |[Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)| Zjistěte, jak obnovit databáze tenantů do předchozího bodu v čase. Naučte se obnovit databázi paralelní, což zanechá databázi existujícího tenanta online. |
 |[Správa schémat databází tenantů](saas-tenancy-schema-management.md)| Zjistěte, jak aktualizovat schéma a aktualizace referenčních dat napříč všemi databázemi tenantů. |
-|[Spouštění distribuovaných dotazů napříč tenanty](saas-tenancy-cross-tenant-reporting.md) | Vytvořit analytickou databázi ad hoc a spouštění distribuovaných dotazů v reálném čase ve všech tenantech.  |
+|[Spouštění distribuovaných dotazů napříč tenanty](saas-tenancy-cross-tenant-reporting.md) | Vytvořit databázi ad hoc analýzy a spouštění distribuovaných dotazů v reálném čase ve všech tenantech.  |
 |[Spouštět analýzy na data extrahovaná tenanta](saas-tenancy-tenant-analytics.md) | Extrahování dat klienta do analytics databázi ani na datový sklad pro offline analytických dotazů. |
 
 

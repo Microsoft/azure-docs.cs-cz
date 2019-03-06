@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468814"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454940"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje různé ukázkové zdroje dat a cílové scénáře, které mohou být zpracovány [vědecké zpracování týmových dat (TDSP)](overview.md). TDSP nabízí systematický přístup pro týmy spolupracovat na sestavování inteligentních aplikací. Scénáře uvedené tady ukazují možnosti dostupné v pracovním postupu zpracování dat, které se liší podle vlastností dat, zdrojová umístění a cíl úložiště v Azure.
@@ -146,7 +146,7 @@ Každá z těchto částí představuje vzorový scénář. Pro každý scéná�
 1. Přečíst data přímo z SQL serveru pomocí [Import dat] [ import-data] modulu. Vložte potřebné dotaz, který extrahuje pole, vytvoří funkce a vzorkuje data, v případě potřeby přímo v [Import dat] [ import-data] dotazu.
 1. Jednoduchý experiment tok Azure Machine Learning, počínaje nahraná datová sada
 
-## <a name="largedbtodb"></a>Scénář \#6: Velké datové sady v serveru SQL Server databáze v místním prostředí, cílení na serveru SQL Server ve virtuálním počítači Azure
+## <a name="largedbtodb"></a>Scénář \#6: Velkou datovou sadu v databázi SQL serveru v místním prostředí, cílení na serveru SQL Server ve virtuálním počítači Azure
 ![Velké SQL DB místní k databázi SQL v Azure][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Další prostředky Azure: Virtuální počítač Azure (SQL Server / IPython Notebook server)
@@ -154,7 +154,7 @@ Každá z těchto částí představuje vzorový scénář. Pro každý scéná�
 1. Použijte některou z data exportu metod exportovat data z SQL serveru do souborů s výpisem paměti.
    
    > [!NOTE]
-   > Pokud se rozhodnete přesunout všechna data z místní databáze, alternativní metodu (rychlejší) přesunout celé databáze do instance systému SQL Server v Azure. Přeskočte kroky k exportovat data, vytvořit databázi a zatížení a import dat do cílové databáze a použijte alternativní metodu.
+   > Pokud se rozhodnete přesunout všechna data z on premises databáze alternativní metodu (rychlejší) přesunout celé databáze do instance systému SQL Server v Azure. Přeskočte kroky k exportovat data, vytvořit databázi a zatížení a import dat do cílové databáze a použijte alternativní metodu.
    > 
    > 
 1. Nahrajte soubory s výpisem paměti do kontejneru úložiště Azure.

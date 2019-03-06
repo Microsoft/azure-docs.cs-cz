@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af5c3d5d92dea804221b2285d4fa5b9cedae665
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c6b8109c8d3834f932ba492eddb8d6332acc1707
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168086"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Kurz: Integrace Azure Active Directory s RFPIO
 
@@ -234,7 +234,7 @@ V případě RFPIO zřizování se ruční úlohy.
 
     a. Zadejte **e-mailová adresa** v **zadejte jednu e-mailu na řádek** pole.
 
-    b. Vyberte prosím znovu **Role** podle vašich požadavků.
+    b. Vyberte prosím **Role** podle vašich požadavků.
 
     c. Klikněte na tlačítko **přidat členy**.
         

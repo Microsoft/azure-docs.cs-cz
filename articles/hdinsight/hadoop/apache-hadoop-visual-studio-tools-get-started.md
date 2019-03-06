@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 951bb978ac78529959acbf878a72c22573400f11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7d93e5777e3456098e1282fd70da55e85e1f80d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822782"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438241"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -113,7 +113,7 @@ Po otevření kontejneru můžete k nahrání, odstranění a stažení objektů
 ## <a name="run-interactive-apache-hive-queries"></a>Spouštění interaktivních dotazů Apache Hive
 [Apache Hive](https://hive.apache.org) je infrastruktura datového skladu postavená na Hadoop. Hive se používá k souhrnům dat, dotazům a analýzám. Pomocí nástrojů Data Lake pro Visual Studio můžete spouštět dotazy Hive ze sady Visual Studio. Další informace o Hivu najdete v tématu [použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md).
 
-[Interactive Query](../interactive-query/apache-interactive-query-get-started.md) využívá [Hive s funkcí LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) v Apache Hive 2.1. Interactive Query přináší interaktivitu do složitých dotazů ve stylu datového skladu nad rozsáhlými uloženými datovými sadami. Spouštění dotazů Hive v Interactive Query je v porovnání s tradičními dávkovými úlohami Hive mnohem rychlejší. Další informace najdete v tématu [spouštění Apache dávkových úloh Hive](#run-hive-batch-jobs).
+[Interactive Query](../interactive-query/apache-interactive-query-get-started.md) využívá [Hive s funkcí LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) v Apache Hive 2.1. Interactive Query přináší interaktivitu do složitých dotazů ve stylu datového skladu nad rozsáhlými uloženými datovými sadami. Spouštění dotazů Hive v Interactive Query je v porovnání s tradičními dávkovými úlohami Hive mnohem rychlejší. Další informace najdete v tématu spouštění Apache dávkových úloh Hive.
 
 > [!NOTE]  
 > Interaktivní dotazy Hive můžete spouštět pouze po připojení ke clusteru [HDInsight Interactive Query](../interactive-query/apache-interactive-query-get-started.md).
@@ -155,10 +155,10 @@ K vytvoření tabulky Hive můžete použít grafické rozhraní (GUI) nebo dota
 ### <a name="run.queries"></a>Vytváření a spouštění dotazů Hive
 Vytvářet a spouštět dotazy Hive můžete dvěma způsoby:
 
-* Vytváření dotazů ad-hoc
+* Vytváření dotazů ad hoc
 * Vytvoření aplikace Hive
 
-Vytvoření a spouštění dotazů ad-hoc:
+Vytvoření a spouštění dotazů ad hoc:
 
 1. Klikněte pravým tlačítkem na cluster, ve kterém chcete spustit dotaz a vybrat **napsat dotaz Hive**.  
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 859add6c9310cf5f18ed7090c8e93d4896b59a0b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852928"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433378"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Služby Service Bus, ceny a fakturace
 
@@ -74,7 +74,7 @@ Na úrovni Standard odebere limit zprostředkovaných připojení na obor názv�
 <br />
 
 > [!NOTE]
-> Pro účely fakturace se používá nejvyšší počet souběžných připojení poměrně přepočítaných na hodiny na základě 744 hodin za měsíc.
+> Účtování vychází z nejvyšší počet souběžných připojení a poměrně po hodinách podle 730 hodin za měsíc.
 >
 >
 
@@ -91,12 +91,12 @@ Zprostředkované připojení se definuje jedním z těchto způsobů:
 1. Připojení AMQP klienta k tématu/odběru a fronty služby Service Bus.
 2. Volání HTTP při příjmu zprávy z tématu nebo fronty Service Bus, které má hodnotu časového limitu příjmu větší než nula.
 
-Poplatkům za Service Bus pro nejvyšší počet souběžných zprostředkovaných připojení, která překročí zahrnuté množství (1 000 na úrovni Standard). Špičky se měří po hodinách. Výsledek měření se vydělí 744 hodinami za měsíc a přičte se k měsíčnímu fakturačnímu období. Zahrnuté množství (1 000 hodin zprostředkovaných připojení za měsíc) se na konci fakturačního období porovná s úhrnem poměrných hodinových špiček.
+Poplatkům za Service Bus pro nejvyšší počet souběžných zprostředkovaných připojení, která překročí zahrnuté množství (1 000 na úrovni Standard). Špičky se měří po hodinách, vydělí 730 hodin za měsíc a přičte se k měsíčnímu fakturačnímu období. Zahrnuté množství (1 000 hodin zprostředkovaných připojení za měsíc) se na konci fakturačního období porovná s úhrnem poměrných hodinových špiček.
 
 Příklad:
 
-1. Každý z 10 000 zařízení se připojuje přes samostatné připojení AMQP a přijímá příkazy z tématu Service Bus. Zařízení odesílá události telemetrie do centra událostí. Pokud všechna zařízení připojená 12 hodin každý den, platí následující poplatky za připojení (navíc k žádné jiné téma poplatkům za Service Bus): 10 000 připojení * 12 hodin * 31 dnů / 744 = 5 000 zprostředkovaných připojení. Protože máte měsíčně povolených 1000 zprostředkovaných připojení vám bude účtovat 4 000 zprostředkovaných připojení se sazbou 0.03 za zprostředkované připojení, tedy celkem 120 $.
-2. 10 000 zařízení přijímá zprávy z fronty Service Bus přes protokol HTTP nenulovým časovým limitem. Pokud všechna zařízení připojená 12 hodin každý den, zobrazí se následující poplatky za připojení (navíc k poplatkům jiné služby Service Bus): 10 000 připojení pro přijetí přes protokol HTTP * 12 hodin každý den * 31 dnů / 744 hodin = 5 000 zprostředkovaných připojení.
+1. Každý z 10 000 zařízení se připojuje přes samostatné připojení AMQP a přijímá příkazy z tématu Service Bus. Zařízení odesílá události telemetrie do centra událostí. Pokud všechna zařízení připojená 12 hodin každý den, platí následující poplatky za připojení (navíc k žádné jiné téma poplatkům za Service Bus): 10 000 připojení * 12 hodin * 30denní / 730 = 4,931 zprostředkovaných připojení. Protože máte měsíčně povolených 1000 zprostředkovaných připojení vám bude účtovat 4 000 zprostředkovaných připojení se sazbou 0.03 za zprostředkované připojení, tedy celkem 120 $.
+2. 10 000 zařízení přijímá zprávy z fronty Service Bus přes protokol HTTP nenulovým časovým limitem. Pokud všechna zařízení připojená 12 hodin každý den, zobrazí se následující poplatky za připojení (navíc k poplatkům jiné služby Service Bus): 10 000 připojení pro přijetí přes protokol HTTP * 12 hodin každý den * 30denní / běhu 730 hodin = 4,931 zprostředkovaných připojení.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>Vztahují se poplatky za připojení na fronty a předplatná?
 

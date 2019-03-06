@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 45e5c43cf5eb8df1df5b26ffae50d2881bb086e4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e966f371f7a308d3981a10e26ecd8c8ee855e6df
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115194"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402865"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuální rozbočovač řídit provoz do síťového virtuálního zařízení
 
@@ -32,6 +32,8 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ověřte, že splňujete následující kritéria:
 
 1. Máte síťové virtuální zařízení (NVA) se softwarem třetích stran podle vašeho výběru, který je obvykle zřízený z Azure Marketplace (odkaz) ve virtuální síti.
@@ -43,22 +45,22 @@ Ověřte, že splňujete následující kritéria:
 
 ## <a name="signin"></a>1. Přihlášení
 
-Ujistěte se, že jste si nainstalovali nejnovější verzi rutin Powershellu pro Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/overview). To je důležité, protože starší verze rutin neobsahují aktuální hodnoty, které potřebujete pro toto cvičení. Moduly v thí následující příklady jsou vzdálené správy služby Azure V tomto článku bude v budoucnu aktualizovat Azure Az.
+Ujistěte se, že jste si nainstalovali nejnovější verzi rutin Powershellu pro Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps). To je důležité, protože starší verze rutin neobsahují aktuální hodnoty, které potřebujete pro toto cvičení. Moduly v thí následující příklady jsou vzdálené správy služby Azure V tomto článku bude v budoucnu aktualizovat Azure Az.
 
 1. Otevřete konzolu Powershellu se zvýšenými oprávněními a přihlaste se ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů přihlásit. Po přihlášení se stáhne nastavení účtu, aby byly k dispozici pro prostředí Azure PowerShell.
 
   ```powershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 2. Načtěte seznam předplatných Azure.
 
   ```powershell
-  Get-AzureRmSubscription
+  Get-AzSubscription
   ```
 3. Určete předplatné, které chcete použít.
 
   ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+  Select-AzSubscription -SubscriptionName "Name of subscription"
   ```
 
 ## <a name="rg"></a>2. Vytvoření prostředků
@@ -66,17 +68,17 @@ Ujistěte se, že jste si nainstalovali nejnovější verzi rutin Powershellu pr
 1. Vytvořte skupinu prostředků.
 
   ```powershell
-  New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+  New-AzResourceGroup -Location "West US" -Name "testRG"
   ```
 2. Vytvořte virtuální síť WAN.
 
   ```powershell
-  $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+  $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
   ```
 3. Vytvořte virtuální rozbočovač.
 
   ```powershell
-  New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+  New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
   ```
 
 ## <a name="connections"></a>3. Vytvoření připojení
@@ -84,13 +86,13 @@ Ujistěte se, že jste si nainstalovali nejnovější verzi rutin Powershellu pr
 Vytvořte Centrum připojení virtuální sítě z nepřímé virtuální sítě paprsků a virtuální síť DMZ virtuální rozbočovač.
 
   ```powershell
-  $remoteVirtualNetwork1= Get-AzureRmVirtualNetwork -Name “indirectspoke1” -ResourceGroupName “testRG”
-  $remoteVirtualNetwork2= Get-AzureRmVirtualNetwork -Name “indirectspoke2” -ResourceGroupName “testRG”
-  $remoteVirtualNetwork3= Get-AzureRmVirtualNetwork -Name “dmzvnet” -ResourceGroupName “testRG”
+  $remoteVirtualNetwork1= Get-AzVirtualNetwork -Name “indirectspoke1” -ResourceGroupName “testRG”
+  $remoteVirtualNetwork2= Get-AzVirtualNetwork -Name “indirectspoke2” -ResourceGroupName “testRG”
+  $remoteVirtualNetwork3= Get-AzVirtualNetwork -Name “dmzvnet” -ResourceGroupName “testRG”
 
-  New-AzureRmVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection1” -RemoteVirtualNetwork $remoteVirtualNetwork1
-  New-AzureRmVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection2” -RemoteVirtualNetwork $remoteVirtualNetwork2
-  New-AzureRmVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection3” -RemoteVirtualNetwork $remoteVirtualNetwork3
+  New-AzVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection1” -RemoteVirtualNetwork $remoteVirtualNetwork1
+  New-AzVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection2” -RemoteVirtualNetwork $remoteVirtualNetwork2
+  New-AzVirtualHubVnetConnection -ResourceGroupName “testRG” -VirtualHubName “westushub” -Name  “testvnetconnection3” -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
 ## <a name="route"></a>4. Vytvořit trasu virtuální rozbočovač
@@ -98,7 +100,7 @@ Vytvořte Centrum připojení virtuální sítě z nepřímé virtuální sítě
 Pro účely tohoto článku nepřímé virtuální sítě paprsků adresních prostorů jsou 10.0.2.0/24 a 10.0.3.0/24 a síťové virtuální zařízení hraniční sítě síťové rozhraní privátní IP adresa je 10.0.4.5.
 
 ```powershell
-$route1 = New-AzureRmVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
+$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
 ## <a name="applyroute"></a>5. Vytvoření směrovací tabulky virtuální rozbočovač
@@ -106,7 +108,7 @@ $route1 = New-AzureRmVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/2
 Vytvoření směrovací tabulky virtuální rozbočovač a pak pro ni nastavit vytvořená trasa.
  
 ```powershell
-$routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1)
+$routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
 ## <a name="commit"></a>6. Potvrzení změn
@@ -114,15 +116,15 @@ $routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1)
 Potvrďte změny do virtuální rozbočovač.
 
 ```powershell
-Update-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
+Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
 ```
 
 ## <a name="cleanup"></a>Vyčištění prostředků
 
-Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+Pokud už tyto prostředky nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) k odebrání skupiny prostředků a všech prostředků, které obsahuje. Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další postup

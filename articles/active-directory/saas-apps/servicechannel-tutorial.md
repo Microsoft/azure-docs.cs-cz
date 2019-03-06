@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190496"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Integrace Azure Active Directory s kanálu ServiceChannel
 
@@ -155,7 +155,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-1. Na **konfigurace kanálu ServiceChannel** klikněte na tlačítko **konfigurace kanálu ServiceChannel** otevřete **nakonfigurovat přihlašování** okna. Mějte prosím na paměti **SAML Enitity ID** z **Stručná referenční příručka** oddílu.
+1. Na **konfigurace kanálu ServiceChannel** klikněte na tlačítko **konfigurace kanálu ServiceChannel** otevřete **nakonfigurovat přihlašování** okna. Mějte prosím na paměti **SAML Entity ID** z **Stručná referenční příručka** oddílu.
 
 1. Ke konfiguraci jednotného přihlašování na **kanálu ServiceChannel** straně, je nutné odeslat na stažený **certifikát (Base64)** a **SAML Entity ID** k [kanálu ServiceChannel tým podpory](https://servicechannel.zendesk.com/hc/en-us). To bude nastavené abyste měli správně nastavené na obou stranách připojení SAML SSO.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 03/05/2019
 ms.author: jdial
-ms.openlocfilehash: a71870115c3ea5e64c8b365d6c4aa64920bc6ca3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 0ae83e56a4ca1e05f5af8229452662f0af7751a6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675037"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433264"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -71,7 +71,7 @@ Všechny veřejné IP adresy vytvořené před zavedením skladových položek j
 Veřejné IP adresy standardních SKU jsou:
 
 - Vždy používejte metodu statického přidělování.
-- Máte měnitelné příchozí původ původu a odchozí tok časový limit nečinnosti 4-30 minut, výchozí hodnota je 4 minuty.
+- Máte měnitelné příchozí pocházející ze tok, který nečinnosti časový limit 4-30 minut, výchozí hodnota je 4 minuty a oprava odchozí tok pocházející ze časový limit nečinnosti 4 minuty.
 - Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
 - Přiřazená síťová rozhraní, Standardní veřejné nástroje pro vyrovnávání zatížení, brány Application Gateway nebo bran VPN Gateway. Další informace o Load balanceru úrovně Standard najdete v tématu [Azure Load balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Zónově redundantní ve výchozím nastavení a volitelně oblastmi (je možné vytvořit zónově a zaručit v konkrétní zóně dostupnosti). Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

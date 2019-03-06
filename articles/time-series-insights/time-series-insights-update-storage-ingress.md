@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301668"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438359"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview
 
@@ -116,7 +116,7 @@ Je důležité vybrat příslušné ID řady času, protože je neměnné vlastn
 
 Když vytvoříte s průběžnými platbami prostředí Time Series Insights, můžete vytvořit dva prostředky: prostředí Time Series Insights a účet služby Azure Storage pro obecné účely V1 ukládat data. Rozhodli jsme se provést výchozí prostředek služby Azure Storage pro obecné účely V1 z důvodu jeho vzájemná funkční spolupráce, ceny a výkonu. 
 
-Time Series Insights publikuje až dvě kopie každé události ve vašem účtu úložiště Azure. Počáteční kopie se vždy zachovají tak, aby vám ho dotazovat performantly pomocí dalších služeb. Snadno můžete Spark, Hadoop a další dobře známých nástrojů v čase řady ID nezpracované soubory Parquet, protože tyto moduly podporují filtrování základní název souboru. Seskupení objektů BLOB podle roku a měsíce je užitečný způsob, jak výpis objektů BLOB v rámci konkrétní časové období pro vlastní úlohu. 
+Time Series Insights publikuje až dvě kopie každé události ve vašem účtu úložiště Azure. Počáteční kopie se vždy zachovají tak, aby se rychle dotazovat pomocí dalších služeb. Snadno můžete Spark, Hadoop a další dobře známých nástrojů v čase řady ID nezpracované soubory Parquet, protože tyto moduly podporují filtrování základní název souboru. Seskupení objektů BLOB podle roku a měsíce je užitečný způsob, jak výpis objektů BLOB v rámci konkrétní časové období pro vlastní úlohu. 
 
 Kromě toho Time Series Insights repartitions soubory Parquet optimalizovat pro rozhraní API, doba Series Insights. Nedávno repartitioned souboru se také uloží.
 

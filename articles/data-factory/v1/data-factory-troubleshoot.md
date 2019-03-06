@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 053cabfa29bd5e436fecd922e4bcdbca9483d25a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023017"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455679"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. 
 
 Tento článek poskytuje tipy pro řešení potíží pro problémy při použití služby Azure Data Factory. Tento článek neobsahuje všechny možné problémy při použití služby, ale uvádí některé problémy a Obecné tipy pro řešení potíží.   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Chyba: Předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory.
@@ -34,20 +36,20 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
 2. Přihlaste se ke svému účtu Azure pomocí následujícího příkazu.
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Spuštěním následujícího příkazu zaregistrujte poskytovatele Azure Data Factory.
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problém: Neautorizovaná chybová zpráva při spuštění rutiny služby Data Factory
 Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo účet Azure. Pomocí následujících rutin vyberte správné předplatné a účet Azure pro použití s Azure PowerShellem.
 
-1. Connect-AzureRmAccount - použití správné ID uživatele a heslo
-2. Get-AzureRmSubscription - zobrazit všechna předplatná pro tento účet.
-3. Select-AzureRmSubscription &lt;název předplatného&gt; – výběr správného předplatného. Použijte stejný jako ten, který použijete k vytvoření služby data factory na webu Azure portal.
+1. Připojení – AzAccount – použití správné ID uživatele a heslo
+2. Get-AzSubscription - zobrazit všechna předplatná pro tento účet.
+3. Vyberte AzSubscription &lt;název předplatného&gt; – výběr správného předplatného. Použijte stejný jako ten, který použijete k vytvoření služby data factory na webu Azure portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problém: Nepovedlo se spustit expresní instalaci serveru Data Management Gateway z webu Azure portal
 Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo webový prohlížeč kompatibilní s technologií Microsoft ClickOnce. Pokud se expresní instalace nezdaří, použijte jeden z následujících postupů:

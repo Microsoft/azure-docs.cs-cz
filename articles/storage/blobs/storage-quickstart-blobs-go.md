@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: abe3d79f352ef04abf8f90f50824b6426457c2a1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445462"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Go
 
@@ -208,7 +208,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Stažení objektu blob
 
-Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud při čtení selže připojení, odešlou se další požadavky na opětovné navázání připojení a bude se pokračovat ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
+Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Jestliže připojení selže při čtení, budou další požadavky na obnovení připojení a pokračujte ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
 
 Následující kód stáhne objekt blob pomocí funkce **Download**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
 

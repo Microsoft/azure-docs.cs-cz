@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167586"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447825"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) týkající se Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy k pokrytí otázek o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -155,7 +155,7 @@ Azure AD Connect Health pro AD FS generuje toto upozornění v případě chyby 
 
 Nejčastěji tento test se nezdaří, protože je Agent stavu nejde přeložit název farmy služby AD FS. To může nastat, pokud jsou servery služby AD FS za nástroje pro vyrovnávání zatížení sítě a inicializuje se žádost získá z uzlu, který je za nástroj pro vyrovnávání zatížení (na rozdíl od pravidelných klienta, který je před nástroje pro vyrovnávání zatížení). To lze opravit aktualizací "hostitelů" soubor umístěný v části "C:\Windows\System32\drivers\etc" IP adresu serveru služby AD FS nebo adresu IP zpětné smyčky (127.0.0.1) pro název farmy služby AD FS (například sts.contoso.com). Přidání souboru hostitele bude zkrácenou síťová volání, což umožní agenta stavu se získat token.
 
-**Otázka: Zobrazilo se mi e-mail s oznámením, že mých počítačů není nainstalována oprava poslední ransomeware útoků. Proč tento e-mail dostali?**
+**Otázka: Zobrazilo se mi e-mail s oznámením, že pro nedávné útoky ransomwaru není opravit mých počítačů. Proč tento e-mail dostali?**
 
 Služba Azure AD Connect Health prohledávány všechno, co byly nainstalovány na počítače, které monitorují zajistit vyžadovaných oprav. E-mail jste dostali správci klientů, pokud alespoň jeden počítač neměl důležité opravy. Za účelem určení byl použit podle následujícího postupu.
 1. Najdete všechny opravy hotfix, na počítači nainstalovaný.

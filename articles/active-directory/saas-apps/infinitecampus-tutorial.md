@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c23f16f5d3c665cb74e9e0460d2e5658fa716d72
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189357"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace Azure Active Directory s nekonečnou Campus
 
@@ -49,7 +49,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 - Nepoužívejte produkčním prostředí, pokud to není nutné.
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-- Minimálně musíte být správce Azure Active Directory a dokončete tak konfiguraci.
+- Minimálně musíte být správce Azure Active Directory a mít roli zabezpečení produktu Campus z "Student informačního systému (SIS)" k dokončení konfigurace.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -112,7 +112,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](common/editconfigure.png)
 
-4. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb**, dokončení kroků 4.a prostřednictvím 4.d a potom přejděte ke kroku 11.c. Pokud nemáte soubor metadat poskytovatele služeb, přejděte ke kroku 5.
+4. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb** exportované z nekonečné areálu, dokončete kroky 4.a prostřednictvím 4.d a potom přejděte ke kroku 11.c. Pokud nemáte soubor metadat poskytovatele služeb, přejděte ke kroku 5.
 
     a. Klikněte na tlačítko **nahrát soubor metadat**.
 
@@ -168,13 +168,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. Vyberte **povolit SAML jednotného přihlašování**.
     
-    b. Na **vyberte možnost načíst data serveru zprostředkovatele Identity (IDP)** vyberte **adresa URL metadat**, vložte **adresa Url federačních metadat aplikace** v poli a pak Klikněte na tlačítko **synchronizace**.
+    b. Upravit **volitelný název atributu** tak, aby obsahovala **název**
+    
+    c. Na **vyberte možnost načíst data serveru zprostředkovatele Identity (IDP)** vyberte **adresa URL metadat**, vložte **adresa Url federačních metadat aplikace** (z kroku 6 výše) v pole a pak klikněte na tlačítko **synchronizace**.
 
-    c. Klikněte na **Metadata poskytovatele služby** odkaz můžete uložit **soubor metadat poskytovatele služeb** v počítači a nahrajte ho v **základní konfiguraci SAML** části auto naplnění **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure Portal (najdete v kroku 4 pro nahrávání a automatické naplnění hodnot nebo kroku 5 pro ruční zadání).
+    d. Klikněte na **Metadata poskytovatele služby** odkaz můžete uložit **soubor metadat poskytovatele služeb** v počítači a nahrajte ho v **základní konfiguraci SAML** části auto naplnění **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure Portal (najdete v kroku 4 pro nahrávání a automatické naplnění hodnot nebo kroku 5 pro ruční zadání).
 
-    d. Po kliknutí na tlačítko **synchronizace** hodnoty získat automaticky dosadí **konfigurace poskytovatele služby jednotného přihlašování** stránky.
+    e. Po kliknutí na tlačítko **synchronizace** hodnoty získat automaticky dosadí **konfigurace poskytovatele služby jednotného přihlašování** stránky.
 
-    e. Klikněte na **Uložit**.
+    f. Klikněte na **Uložit**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 
@@ -233,7 +235,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici nekonečné Campus na přístupovém panelu, vám by měl získat automaticky přihlášení k nekonečné Campus aplikace. Pokud se přihlašujete do aplikace nekonečné Camnpus ve stejném prohlížeči, je Správa služby Azure AD, ujistěte se, že jste se přihlásili do služby Azure AD jako testovací uživatel. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici nekonečné Campus na přístupovém panelu, vám by měl získat automaticky přihlášení k nekonečné Campus aplikace. Pokud se přihlašujete do nekonečné školních aplikací ve stejném prohlížeči, je Správa služby Azure AD, ujistěte se, že jste přihlášeni do služby Azure AD jako testovací uživatel. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

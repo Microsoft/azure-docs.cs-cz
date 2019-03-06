@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 28891c103df91baa16b895ece7909658fede3b91
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: ff29d60715001ddb98ffb7424784ae0b81cfbb3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213309"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437679"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
@@ -135,7 +135,7 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
 
      1. Vyberte předplatné, účet úložiště a kontejner objektů Blob z rozevíracích seznamů, nebo vytvořit vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na tlačítko **OK**:
 
-        ![Vyberte předplatné Azure, účet úložiště a kontejner blobl](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![Vyberte předplatné Azure, účet úložiště a kontejner objektů blob](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
      1. Klikněte na tlačítko **OK** v dialogovém okně "Create Audit".
 

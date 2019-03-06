@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 038b1d9fa319837f3877c20c9fc3b1b83970e7b4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b072efbbf02528a3c62662c5543007ef3332d434
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158614"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440708"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Používejte IoT DevKit AZ3166 se službou Azure Functions a Cognitive Services, aby převaděč jazyka
 
@@ -54,7 +54,7 @@ K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 
   Poznamenejte si název zařízení Azure IoT Hub, kterou jste vytvořili.
 
-1. Otevřít `Functions\DevKitTranslatorFunction.cs` a aktualizujte následující řádky kódu pomocí devce název a klíč Speech Service jste si poznamenali.
+1. Otevřít `Functions\DevKitTranslatorFunction.cs` a aktualizujte následující řádky kódu s názvem zařízení a klíč Speech Service, které jste si poznamenali.
   ```csharp
   // Subscription Key of Speech Service
   const string speechSubscriptionKey = "";
@@ -128,7 +128,7 @@ Na obrazovce s výsledky překladu je možné:
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
+![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 IoT DevKit zaznamenává vašeho hlasu, jak potom odešle požadavek HTTP na aktivační událost Azure Functions. Služba Azure Functions volá překlady řeči služby cognitive Services API provedete překlad. Jakmile Azure Functions získá překlad textu, odešle zprávu C2D do zařízení. Překlad se pak zobrazí na obrazovce.
 
@@ -136,7 +136,7 @@ IoT DevKit zaznamenává vašeho hlasu, jak potom odešle požadavek HTTP na akt
 
 Pokud narazíte na potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás prostřednictvím následujících kanálů:
 
-* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup

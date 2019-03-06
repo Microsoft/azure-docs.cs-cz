@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 60d004413fbdf01b271231f754aef5aa46b48763
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: a65f326498427f5180baa677ea3a22d1f5207e36
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196254"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Kurz: Integrace Azure Active Directory s ExcelityGlobal
 
@@ -106,19 +106,19 @@ Ke konfiguraci Azure AD jednotné přihlašování s ExcelityGlobal, proveďte n
 
     a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
 
-    **Pro produkční Envoronment** : `https://ess.excelityglobal.com`
+    **Pro produkční prostředí** : `https://ess.excelityglobal.com`
 
-    **Pro izolovaný prostor Envoronment** : `https://s6.excelityglobal.com`
+    **Pro prostředí izolovaného prostoru** : `https://s6.excelityglobal.com`
 
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
 
-    **Pro produkční Envoronment** : `https://ess.excelityglobal.com/ACS`
+    **Pro produkční prostředí** : `https://ess.excelityglobal.com/ACS`
 
-    **Pro izolovaný prostor Envoronment** : `https://s6.excelityglobal.com/ACS`
+    **Pro prostředí izolovaného prostoru** : `https://s6.excelityglobal.com/ACS`
 
 5. Vaše aplikace ExcelityGlobal očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace ExcelityGlobal **nameidentifier** namapovat s **user.mail**, takže budete muset upravit mapování atributů po kliknutí na **upravit** ikonu a změňte mapování atributů.
  
-    ![image](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
 
@@ -140,7 +140,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ExcelityGlobal, proveďte n
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>Konfigurace ExcelityGlobal jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **ExcelityGlobal** straně, je nutné odeslat **hodnotu kryptografického otisku** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory ExcelityGlobal](mailto:yashwanths@quinnox.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **ExcelityGlobal** straně, je nutné odeslat **hodnotu kryptografického otisku** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us/our-locations/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -195,7 +195,7 @@ V této části je povolit Britta Simon k udělení přístupu k ExcelityGlobal 
 
 ### <a name="create-excelityglobal-test-user"></a>Vytvoření ExcelityGlobal testovacího uživatele
 
-V této části vytvoříte uživatele v ExcelityGlobal jako Britta Simon. Práce s [tým podpory ExcelityGlobal](mailto:yashwanths@quinnox.com) přidat uživatele na platformě ExcelityGlobal. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v ExcelityGlobal jako Britta Simon. Práce s [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us/our-locations/) přidat uživatele na platformě ExcelityGlobal. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

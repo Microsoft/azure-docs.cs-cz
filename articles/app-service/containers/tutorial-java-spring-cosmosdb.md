@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: a0a07a78d36e4c0d11132d0c7d5ff947f7073029
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a48fb0b84e99f01798caabf7e713992af5a04ad9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353562"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441283"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java Spring a Azure Cosmos DB
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 Tento kurz používá aplikaci seznamu úkolů ukázkové pomocí webového uživatelského rozhraní, která volá rozhraní API REST Spring se opírá o [Spring dat Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). Kód aplikace je k dispozici [na Githubu](https://github.com/Microsoft/spring-todo-app). Další informace o vytváření aplikací v Javě pomocí Spring a Cosmos DB najdete v tématu [aplikace Spring Boot Starter s kurzem rozhraní SQL API služby Azure Cosmos DB](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) a [Spring dat Azure Cosmos DB úvodní](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
-Spusťte příkazy folllowing v terminálu naklonujte ukázkové úložiště a nastavení prostředí ukázkové aplikace.
+Spuštěním následujících příkazů v terminálu naklonujte ukázkové úložiště a nastavení prostředí ukázkové aplikace.
 
 ```bash
 git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git
@@ -171,7 +171,7 @@ Přistupujete k aplikaci Spring úkolů po spuštění aplikace místně pomocí
 
  ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Pokud se zobrazí výjimky instaead zprávy "TodoApplication spustit", zkontrolujte, že `bash` skript v předchozím kroku exportované proměnné prostředí správně a správnost hodnoty pro databázi Azure Cosmos DB, které jste vytvořili.
+Pokud se zobrazí výjimky místo zprávy "TodoApplication spustit", zkontrolujte, že `bash` skript v předchozím kroku exportované proměnné prostředí správně a správnost hodnoty pro databázi Azure Cosmos DB, které jste vytvořili.
 
 ## <a name="configure-azure-deployment"></a>Konfigurace nasazení Azure
 

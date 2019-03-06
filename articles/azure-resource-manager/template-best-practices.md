@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: d40fcacc4612761b2c43b0dd3658042c38a0df75
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309515"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440468"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manageru šablony osvědčené postupy
 
@@ -26,7 +26,25 @@ Doporučení o tom, jak řídit vaše předplatná Azure, najdete v tématu [Zá
 
 Doporučení, jak vytvářet šablony, které fungují ve všech prostředích cloudu Azure, najdete v části [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="template-limits"></a>Omezení šablony
+
+Omezení velikosti šablony pro 1 MB a každý soubor parametrů na 64 KB. Po rozšířila s definic iterativní prostředků a hodnoty pro proměnné a parametry, platí omezení 1 MB na konečný stav šablony. 
+
+Také jste omezeni na:
+
+* 256 parametry
+* 256 proměnné
+* 800 prostředky (včetně počet kopií)
+* 64 výstupní hodnoty
+* 24,576 znaků ve výrazu šablony
+
+Některá omezení šablony mohou překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Pokud chcete snížit počet parametrů, proměnných nebo výstupů, můžete kombinovat několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
+
+## <a name="resource-group"></a>Skupina prostředků
+
+Při nasazování prostředků do skupiny prostředků, skupina prostředků ukládá metadata o prostředcích. Metadata uložená v umístění skupiny prostředků.
+
+Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Chcete-li minimalizovat rizika, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
 
 ## <a name="parameters"></a>Parametry
 Informace v této části mohou být užitečné při práci s [parametry](resource-group-authoring-templates.md#parameters).
@@ -155,7 +173,7 @@ Při rozhodování o tom, co [závislosti](resource-group-define-dependencies.md
 
 * Nastavte jako závisí na jeho nadřazený prostředek podřízený prostředek.
 
-* Prostředky s [podmínky](resource-manager-templates-resources.md#condition) nastaven na hodnotu false, budou automaticky odebrány z pak pořadí závislostí. Nastavte závislosti, jako kdyby je vždy nasazený prostředek.
+* Prostředky s [podmínky](resource-group-authoring-templates.md#condition) nastaven na hodnotu false, budou automaticky odebrány z pak pořadí závislostí. Nastavte závislosti, jako kdyby je vždy nasazený prostředek.
 
 * Umožněte závislosti cascade bez nastavení je explicitně. Například vašeho virtuálního počítače závisí na rozhraní virtuální sítě a virtuální síťové rozhraní závisí na virtuální sítě a veřejné IP adresy. Proto tento virtuální počítač je nasazený všechny tři prostředky, ale není explicitně nastavit virtuální počítač jako závislé na všechny tři zdroje. Tento postup vysvětluje pak pořadí závislostí a usnadňuje později změnit šablonu.
 
@@ -163,7 +181,7 @@ Při rozhodování o tom, co [závislosti](resource-group-define-dependencies.md
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-Následující informace mohou být užitečné při práci s [prostředky](resource-manager-templates-resources.md):
+Následující informace mohou být užitečné při práci s [prostředky](resource-group-authoring-templates.md#resources):
 
 * Chcete-li pomoci ostatních uživatelů pochopit účel prostředku, zadejte **komentáře** pro každý prostředek v šabloně:
    

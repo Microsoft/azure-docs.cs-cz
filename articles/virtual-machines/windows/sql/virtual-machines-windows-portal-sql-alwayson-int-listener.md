@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43f2694f597d99edaf127a6afd64376cca33dad2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248298"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448148"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn SQL serveru ve službě Azure virtual machines, které jsou spuštěny pomocí Azure Resource Manageru. Skupině dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. V případě skupiny dostupnosti pokrývá více oblastí, musí každá oblast nástroj pro vyrovnávání zatížení.
@@ -66,8 +66,8 @@ Nejprve vytvořte nástroj pro vyrovnávání zatížení.
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje nástroj pro vyrovnávání zatížení. Například **sqlLB**. |
-   | **Typ** |**Interní**: Většina implementací pomocí interního nástroje, které umožňuje aplikacím v rámci stejné virtuální síti připojit ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím, aby se připojit ke skupině dostupnosti prostřednictvím veřejného Internetu. |
-   | **Virtuální síť** |Vyberte virtuální síť, která jsou instance systému SQL Server. |
+   | **Typ** |**Interní**: Většina implementací pomocí interního nástroje, které umožňuje aplikacím v rámci stejné virtuální síti připojit ke skupině dostupnosti.  </br> **Externí**: Umožňuje aplikacím pro připojení ke skupině dostupnosti prostřednictvím veřejného Internetu. |
+   | **Virtuální síť** |Vyberte virtuální síť, která instance systému SQL Server jsou v. |
    | **Podsíť** |Vyberte podsíť, která instance systému SQL Server jsou v. |
    | **Přiřazení IP adresy** |**Statická** |
    | **Privátní IP adresa** |Zadejte dostupnou IP adresu z podsítě. Při vytváření naslouchacího procesu v clusteru, použijte tuto IP adresu. Tuto adresu pro použijte v skriptu prostředí PowerShell, dále v tomto článku `$ILBIP` proměnné. |
@@ -100,7 +100,7 @@ Volání back endovém fondu adres Azure *back-endový fond*. V tomto případě
 
 Nastavení fondu back endových adres aktualizací Azure. Vaše skupina dostupnosti má teď fond dvě instance systému SQL Server.
 
-### <a name="step-3-create-a-probe"></a>Krok 3: Vytvoření testu paměti
+### <a name="step-3-create-a-probe"></a>Krok 3: Vytvořte sondu
 Sonda definuje, jak Azure ověří, které z instance systému SQL Server aktuálně vlastníkem naslouchacího procesu skupiny dostupnosti. Azure sondy služba založená na IP adresu na portu, který můžete definovat při vytváření testu.
 
 1. V nástroji pro vyrovnávání zatížení **nastavení** okna, klikněte na tlačítko **sondy stavu**. 
@@ -126,7 +126,7 @@ Sonda definuje, jak Azure ověří, které z instance systému SQL Server aktuá
 
 Azure vytvoří testu a použije ho k otestování kterou instanci systému SQL Server má naslouchací proces skupiny dostupnosti.
 
-### <a name="step-4-set-the-load-balancing-rules"></a>Krok 4: Nastavení pravidla Vyrovnávání zatížení
+### <a name="step-4-set-the-load-balancing-rules"></a>Krok 4: Nastavte pravidla Vyrovnávání zatížení
 Pravidla Vyrovnávání zatížení nakonfigurovat, jak nástroj pro vyrovnávání zatížení směruje provoz do instancí systému SQL Server. Pro tento nástroj pro vyrovnávání zatížení povolit přímá odpověď ze serveru vrácené protože pouze jeden z obou instancí systému SQL Server vlastní prostředek naslouchacího procesu skupiny dostupnosti v čase.
 
 1. V nástroji pro vyrovnávání zatížení **nastavení** okna, klikněte na tlačítko **pravidla Vyrovnávání zatížení**. 
@@ -142,7 +142,7 @@ Pravidla Vyrovnávání zatížení nakonfigurovat, jak nástroj pro vyrovnává
    | **Port** |*1433* |
    | **Back-endový Port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP (přímá odpověď ze serveru vrácené)**. |
    | **Test paměti** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
-   | **Trvalost relace** |**None** |
+   | **Trvalost relace** |**Žádné** |
    | **Časový limit nečinnosti (minuty)** |*4* |
    | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** |**Enabled** (Povoleno) |
 
@@ -226,7 +226,7 @@ Chcete-li přidat IP adresu nástroji pro vyrovnávání zatížení pomocí web
    |**Název** |Název pro identifikaci sondy.
    |**Protokol** |TCP
    |**Port** |Nepoužívaný port TCP, který musí být k dispozici na všech virtuálních počítačů. Nelze použít k žádnému jinému účelu. Žádné dva naslouchací procesy můžete použít stejný port sondy. 
-   |**Interval** |Množství času mezi pokusy o testování. Použijte výchozí nastavení (5).
+   |**Interval** |Doba mezi pokusy o sondování Použijte výchozí nastavení (5).
    |**Prahová hodnota špatného stavu** |Počet po sobě jdoucích prahové hodnoty, které musí selhat, než virtuální počítač považoval za poškozený.
 
 8. Klikněte na tlačítko **OK** uložit test paměti. 

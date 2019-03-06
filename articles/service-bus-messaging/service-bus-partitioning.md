@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ea5f0e1ad6af6f301b684337941c7d9bce8590c1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818069"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444468"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -27,9 +27,9 @@ Není možné změnit možnost rozdělení na jakékoli existující fronty nebo
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Každý dělená fronta nebo téma se skládá z několika fragmenty. Každý fragment je uložen v jiném úložišti zasílání zpráv a zpracovává jinou zprávu zprostředkovatele. Odeslání zprávy do dělené fronty nebo tématu Service Bus tuto zprávu přiřadí k jednomu fragmentů. Výběr se provádí náhodně ve službě Service Bus nebo s použitím klíče oddílu, můžete zadat odesílatele.
+Každý dělená fronta nebo téma se skládá z několika oddílů. Každý oddíl je uložen v jiném úložišti zasílání zpráv a zpracovává jinou zprávu zprostředkovatele. Odeslání zprávy do dělené fronty nebo tématu Service Bus tuto zprávu přiřadí k jednomu z oddílů. Výběr se provádí náhodně ve službě Service Bus nebo s použitím klíče oddílu, můžete zadat odesílatele.
 
-Když klient požaduje při příjmu zprávy z dělená fronta nebo přihlášení k odběru oddílů tématu, Service Bus dotazy všechny fragmentů zpráv, vrátí první zprávu, která se získá z některého z úložiště pro zasílání zpráv pro příjemce. Service Bus mezipamětí druhé zprávy a vrátí je při přijetí další přijímat požadavky. Přijímající klient nemá žádné informace o dělení; chování klienta dělené fronty nebo tématu (například číst, dokončete, odložit, nedoručených zpráv, předběžné načítání) je stejný jako chování regulárních entity.
+Když klient požaduje při příjmu zprávy z dělená fronta nebo přihlášení k odběru oddílů tématu, Service Bus dotazy všech oddílů pro zprávy, vrátí první zprávu, která se získá z některého z úložiště pro zasílání zpráv pro příjemce. Service Bus mezipamětí druhé zprávy a vrátí je při přijetí další přijímat požadavky. Přijímající klient nemá žádné informace o dělení; chování klienta dělené fronty nebo tématu (například číst, dokončete, odložit, nedoručených zpráv, předběžné načítání) je stejný jako chování regulárních entity.
 
 Se neúčtují žádné další poplatky při odesílání zprávy nebo příjmu zprávy z dělená fronta nebo téma.
 
@@ -43,7 +43,7 @@ V zasílání zpráv úrovně Standard můžete vytvořit front služby Service 
 
 ### <a name="premium"></a>Premium
 
-V oboru názvů úrovně Premium není podporována dělení entit. Však můžete stále vytvořit front a témat Service Bus v 1, 2, 3, 4, 5, 10, 20, 40 nebo velikosti 80 GB (výchozí hodnota je 1 GB). Zobrazí velikost fronty nebo tématu zobrazením vstupu [webu Azure portal][Azure portal]v **přehled** okno pro danou entitu.
+V oboru názvů úrovně Premium dělení entit nejsou podporovány. Však můžete stále vytvořit front a témat Service Bus v 1, 2, 3, 4, 5, 10, 20, 40 nebo velikosti 80 GB (výchozí hodnota je 1 GB). Zobrazí velikost fronty nebo tématu zobrazením vstupu [webu Azure portal][Azure portal]v **přehled** okno pro danou entitu.
 
 ### <a name="create-a-partitioned-entity"></a>Vytvořit dělené entity
 
@@ -61,11 +61,11 @@ Alternativně můžete vytvořit dělené fronty nebo tématu [webu Azure portal
 
 ## <a name="use-of-partition-keys"></a>Použití klíče oddílu
 
-Pokud zprávu ve frontě do dělené fronty nebo tématu, Service Bus zkontroluje přítomnosti určitého klíče oddílu. Pokud jeden najde, vybere fragment podle klíče. Pokud nelze najít klíč oddílu, vybere fragment založené na interním algoritmu.
+Pokud zprávu ve frontě do dělené fronty nebo tématu, Service Bus zkontroluje přítomnosti určitého klíče oddílu. Pokud jeden najde, vybere na základě tohoto klíče oddílu. Pokud nelze najít klíč oddílu, vybere oddílu závislosti na interním algoritmu.
 
 ### <a name="using-a-partition-key"></a>Použití klíče oddílu
 
-Některé scénáře, jako je například relací nebo transakce, vyžadují zpráv k uložení do specifického fragmentu. Všechny tyto scénáře vyžadují použití klíče oddílu. Všechny zprávy, které používají stejný klíč oddílu jsou přiřazeny do stejného fragmentu. Pokud fragment je dočasně nedostupný, Service Bus vrátí chybu.
+Některé scénáře, jako je například relací nebo transakce, vyžadují zpráv k uložení do konkrétního oddílu. Všechny tyto scénáře vyžadují použití klíče oddílu. Všechny zprávy, které používají stejný klíč oddílu jsou přiřazeny do stejného oddílu. Pokud oddíl je dočasně nedostupný, Service Bus vrátí chybu.
 
 V závislosti na scénáři jiná zpráva vlastnosti slouží jako klíč oddílu:
 
@@ -77,13 +77,13 @@ V závislosti na scénáři jiná zpráva vlastnosti slouží jako klíč oddíl
 
 ### <a name="not-using-a-partition-key"></a>Bez použití klíče oddílu
 
-Service Bus chybí klíč oddílu, distribuuje zprávy způsobem kruhové dotazování na tyto fragmenty dělená fronta nebo téma. Pokud není k dispozici zvolené fragment, Service Bus tuto zprávu přiřadí k různé fragment. Tímto způsobem, bez ohledu na dočasné nedostupnosti úložiště bude úspěšná operace odeslání. Nebudou však dosáhnout zaručené řazení, který obsahuje klíč oddílu.
+Service Bus chybí klíč oddílu, distribuuje zprávy způsobem kruhové dotazování na všechny oddíly dělená fronta nebo téma. Pokud zvolenou oddílu není k dispozici, Service Bus tuto zprávu přiřadí k jiný oddíl. Tímto způsobem, bez ohledu na dočasné nedostupnosti úložiště bude úspěšná operace odeslání. Nebudou však dosáhnout zaručené řazení, který obsahuje klíč oddílu.
 
 Podrobnější diskuzi o kompromis mezi dostupností (žádný klíč oddílu) a konzistenci (pomocí klíče oddílu), najdete v článku [v tomto článku](../event-hubs/event-hubs-availability-and-consistency.md). Tyto informace se vztahuje stejnou měrou do dělené entity služby Service Bus.
 
-Service Bus poskytnout dostatečný čas zařadit do fronty zprávy do různých fragment, [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) hodnotu zadanou pomocí klienta, která odesílá zprávy musí být větší než 15 sekund. Doporučuje se, že jste nastavili [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) vlastnost na výchozí hodnotu 60 sekund.
+Service Bus poskytnout dostatečný čas zařadit do fronty zprávy do různých oddílů, [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) hodnotu zadanou pomocí klienta, která odesílá zprávy musí být větší než 15 sekund. Doporučuje se, že jste nastavili [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) vlastnost na výchozí hodnotu 60 sekund.
 
-Klíč oddílu "připíná" zprávu do specifického fragmentu. Pokud není k dispozici úložiště pro přenos zpráv, který obsahuje tento fragment, Service Bus vrátí chybu. Chybí klíč oddílu Service Bus můžete vybrat jiný fragment a úspěšné operaci. Proto se doporučuje, pokud je vyžadován, není zadat klíč oddílu.
+Klíč oddílu "připíná" zpráv do konkrétního oddílu. Pokud úložiště pro přenos zpráv, který obsahuje tento oddíl nedostupný, Service Bus vrátí chybu. Chybí klíč oddílu Service Bus můžete vybrat jiný oddíl a úspěšné operaci. Proto se doporučuje, pokud je vyžadován, není zadat klíč oddílu.
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Pokročilá témata: používání transakcí s dělené entity
 
@@ -101,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-Pokud nejsou nastavené žádné vlastnosti, které slouží jako klíč oddílu, připíná služby Service Bus zprávu, která se specifického fragmentu. K tomuto chování dochází, jestli se používá transakce. Je doporučeno, pokud není nutné není určovat klíč oddílu.
+Pokud nejsou nastavené žádné vlastnosti, které slouží jako klíč oddílu, připíná služby Service Bus zprávu, která se konkrétního oddílu. K tomuto chování dochází, jestli se používá transakce. Je doporučeno, pokud není nutné není určovat klíč oddílu.
 
 ## <a name="using-sessions-with-partitioned-entities"></a>Použití relací s dělené entity
 
@@ -126,9 +126,9 @@ committableTransaction.Commit();
 Service Bus podporuje automatické přesměrování z do a mezi dělené entity zpráv. Chcete-li povolit předávání automatické zpráv, nastavte [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vlastnosti zdrojové fronty nebo odběru. Pokud zpráva Určuje klíč oddílu ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey), nebo [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)), tento klíč oddílu se používá pro Cílová entita.
 
 ## <a name="considerations-and-guidelines"></a>Důležité informace a pokyny
-* **Funkce vysoké konzistence**: Pokud entita používá funkce, jako jsou relace, duplicit nebo explicitní kontrolu nad klíč rozdělení do oddílů, operací zasílání zpráv vždy směrovat na konkrétní fragmenty. Pokud některý z tyto fragmenty docházet k vysoké návštěvnosti nebo příslušné úložiště není v pořádku, tyto operace selhat a snížit dostupnost. Celkově je stále mnohem vyšší než bez oddílů entity; konzistence pouze podmnožinu provoz se setkává s problémy, na rozdíl od veškerý provoz. Další informace najdete v tomto [diskuzi o dostupnosti a konzistence](../event-hubs/event-hubs-availability-and-consistency.md).
-* **Správa**: Operace, jako jsou Create, Update a Delete musí provést na tyto fragmenty entity. Pokud žádné fragmentu není v pořádku, může vést k selhání těchto operací. Pro operaci Get informace, jako je zpráva se počítá musí být agregován ze všech fragmenty. Pokud žádné fragmentu není v pořádku, stav dostupnosti entity se hlásí jako omezená.
-* **Zpráva scénáře s nízkou**: Pro takové scénáře, zvláště při použití protokolu HTTP, možná budete muset provést více operací příjmu, aby bylo možné získat všechny zprávy. Front-endu pro příjem požadavků, provádí příjmu na tyto fragmenty a ukládá do mezipaměti všechny odpovědi přijata. Následné přijmout požadavek na stejné připojení by těžit z této ukládání do mezipaměti a přijímat bude nižší latenci. Ale pokud máte více připojení nebo prostřednictvím protokolu HTTP, který vytvoří nové připojení pro každý požadavek. V důsledku toho není k dispozici žádná záruka, že byste přejít na stejném uzlu. Pokud jsou všechny existující zprávy uzamčen a uložili do mezipaměti v jiném front-endu, operace obdržení vrátí **null**. Nakonec vyprší zprávy a můžete přijímat je znovu. Doporučuje se udržování připojení HTTP.
+* **Funkce vysoké konzistence**: Pokud entita používá funkce, jako jsou relace, duplicit nebo explicitní kontrolu nad klíč rozdělení do oddílů, operací zasílání zpráv vždy směrovat na konkrétní oddíl. Pokud žádného z oddílů docházet k vysoké návštěvnosti nebo příslušné úložiště není v pořádku, tyto operace selhat a snížit dostupnost. Celkově je stále mnohem vyšší než bez oddílů entity; konzistence pouze podmnožinu provoz se setkává s problémy, na rozdíl od veškerý provoz. Další informace najdete v tomto [diskuzi o dostupnosti a konzistence](../event-hubs/event-hubs-availability-and-consistency.md).
+* **Správa**: Operace, jako jsou Create, Update a Delete musí provést na všechny oddíly entity. Pokud žádný oddíl není v pořádku, může vést k selhání těchto operací. Pro operaci Get informace, jako je zpráva se počítá musí být agregován ze všech oddílů. Pokud žádný oddíl není v pořádku, stav dostupnosti entity se hlásí jako omezená.
+* **Zpráva scénáře s nízkou**: Pro takové scénáře, zvláště při použití protokolu HTTP, možná budete muset provést více operací příjmu, aby bylo možné získat všechny zprávy. Front-endu pro příjem požadavků, provádí příjmu na všechny oddíly a ukládá do mezipaměti všechny odpovědi přijata. Následné přijmout požadavek na stejné připojení by těžit z této ukládání do mezipaměti a přijímat bude nižší latenci. Ale pokud máte více připojení nebo prostřednictvím protokolu HTTP, který vytvoří nové připojení pro každý požadavek. V důsledku toho není k dispozici žádná záruka, že byste přejít na stejném uzlu. Pokud jsou všechny existující zprávy uzamčen a uložili do mezipaměti v jiném front-endu, operace obdržení vrátí **null**. Nakonec vyprší zprávy a můžete přijímat je znovu. Doporučuje se udržování připojení HTTP.
 * **Procházení a prohlížení zpráv**: K dispozici pouze v starší [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) vždy nevrací počtu zpráv zadaného v [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) vlastnost. Existují dva běžné důvody pro toto chování. Jedním z důvodů je, že agregovaná velikost kolekce zpráv překračuje maximální velikost 256 KB. Dalším důvodem je, že pokud má fronty nebo tématu [EnablePartitioning vlastnost](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) nastavena na **true**, oddíl nemusí mít dostatek zprávy k dokončení požadovaný počet zpráv. Obecně platí, pokud aplikace chce přijímat určitého počtu zpráv, měla by volat [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) opakovaně, dokud získá daný počet zpráv, nebo nejsou žádné další zprávy pro náhled. Další informace, včetně ukázek kódu, najdete v článku [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nebo [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) dokumentace k rozhraní API.
 
 ## <a name="latest-added-features"></a>Nejnovější přidaná funkce

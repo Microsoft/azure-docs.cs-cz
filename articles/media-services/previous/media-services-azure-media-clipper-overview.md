@@ -9,12 +9,12 @@ ms.author: dwgeo
 ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 9d306bc3b9e206e5f21f9c16c0cd32bc599f1b6d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 578818c6c140253bfb6a30530cee6a915eb385c3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003155"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450426"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvářet s Azure Media Clipperem 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d325c30173955ff7c08099a125094ffe620c7ee3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313374"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431322"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -149,7 +149,7 @@ Připojení zařízení v měřítku ve vaší aplikaci pomocí klíčů a certi
 
 ## <a name="use-access-tokens"></a>Použití přístupových tokenů
 
-Generovat přístupové tokeny pro jejich použití v nástrojích pro vývojáře. Aktuálně je jeden vývojářský nástroj k dispozici tedy IoT Central explorer pro zprávy typu zařízení a změny v propreties a nastavení monitorování. Další informace o Průzkumníku IoT Central. 
+Generovat přístupové tokeny pro jejich použití v nástrojích pro vývojáře. Aktuálně je jeden vývojářský nástroj k dispozici tedy IoT Central explorer pro zprávy typu zařízení a změny ve vlastnosti a nastavení monitorování. Další informace o Průzkumníku IoT Central. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Použití sady Azure SDK pro operace roviny řízení
 

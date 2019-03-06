@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: ce377234cceb22bc2c6979bedd92d800355e75da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f567e66a1e84dccaa18db550f30d6bb34ad8162
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872080"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442932"
 ---
 # <a name="bake-acoustics"></a>Vytvoření Akustika
 
@@ -243,7 +243,7 @@ Třeba na počítači s technologií Intel Xeon E5-1660 @ 3 GHz a 32 GB paměti 
 ### <a name="setup-docker"></a>Instalace Dockeru
 Instalace a konfigurace Dockeru na počítači, který bude zpracovávat simulace-
 1. Nainstalujte [nástrojů Dockeru](https://www.docker.com/products/docker-desktop).
-2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky k dispozici ochucené, o obsahu 8 GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Příklad nastavení Dockeru](media/DockerSettings.png)
+2. Spusťte nastavení Dockeru, přejděte na možnosti "Pokročilé" a konfigurovat prostředky mít aspoň 8GB paměti RAM. Více procesorů může přidělit Dockeru, tím rychleji která má označení vytvoření dokončí. ![Příklad nastavení Dockeru](media/DockerSettings.png)
 3. Přejděte na "Sdílené jednotky" a zapněte sdílení má jednotka použitá ke zpracování.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Spusťte místní která má označení vytvoření

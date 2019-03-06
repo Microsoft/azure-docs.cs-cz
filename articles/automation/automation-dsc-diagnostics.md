@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33b3ed52d198d162af666e0f38066ba936d7874f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7eb841a0f4a34e708734cf433fac82ab35ef35b6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819816"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451259"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
 
@@ -97,7 +97,7 @@ Pokud chcete vytvořit pravidlo upozornění, začněte vytvořením prohledáv�
 
    Pokud jste nastavili protokoly z více než jeden účet služby Automation nebo odběru do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation.  
    Název účtu služby Automation může být odvozena z pole zdroje ve službě search DscNodeStatusData.  
-1. Chcete-li otevřít **vytvořit pravidlo** obrazovce, klikněte na tlačítko **+ nové pravidlo upozornění** v horní části stránky. Další informace o možnostech konfigurace upozornění, najdete v části [vytvoření výstrahy rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+1. Chcete-li otevřít **vytvořit pravidlo** obrazovce, klikněte na tlačítko **+ nové pravidlo upozornění** v horní části stránky. Další informace o možnostech konfigurace upozornění, najdete v části [vytvoření pravidla upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Najít nevydařené zdroje DSC napříč všemi uzly
 

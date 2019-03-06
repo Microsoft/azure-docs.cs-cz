@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316451"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447077"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -96,6 +96,11 @@ Směrování protokolu míra správce přenosu je prezentované prostřednictví
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Ovládací prvek zpětnou vazbu, fyzické replikace skupiny dostupnosti v Premium nebo pro důležité obchodní informace není uchování |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Ovládací prvek zpětnou vazbu, omezení sazby zabránit nedostatku místa podmínky protokolu |
 ||||
+
+Při zjištění omezení frekvence protokolu, který brzdí požadované škálovatelnost, zvažte následující možnosti:
+- Vertikálně navýšit kapacitu na vyšší úroveň zajistí maximální rychlost protokolu 48 MB/s. 
+- Pokud se načítají data je přechodná, tedy přípravu dat v procesu ETL, to je možné načíst do databáze tempdb (která je zaznamenána minimálně). 
+- Pro analytické scénáře zaveďte do Clusterované zahrnutých tabulky columnstore. Tím se snižuje frekvence požadovaný protokol důsledku komprese. Tato technika zvýší využití procesoru a platí jenom pro datové sady, které využívají samosprávné Clusterované indexy columnstore. 
 
 ## <a name="next-steps"></a>Další postup
 

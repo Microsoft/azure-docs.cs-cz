@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d3a02a850059dc96e4e4ba306fed7cded2f7dd7d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259747"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454183"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Zobrazit měsíční trend nákladů odhadované testovacího prostředí ve službě Azure DevTest Labs
 Funkci náklady na správu služby DevTest Labs pomáhá sledovat náklady testovacího prostředí. Tento článek ukazuje, jak používat **měsíční Trend odhadovaných nákladů** grafu chcete zobrazit aktuální kalendářní měsíc odhadované náklady k datu a očekávané náklady na konci měsíce pro zbytek aktuálního měsíce. Tento článek také ukazuje, jak lépe spravovat náklady na laboratoře nastavením útraty cílům a prahovým hodnotám, které po dosažení aktivační událost DevTest Labs můžete zprávu o výsledcích.
@@ -76,8 +76,8 @@ DevTest Labs umožňuje lépe spravovat tak, že nastavíte útraty cíl, který
       - **Oprava**: náklady na cíle jsou sledována pro rozsah dat zadáte datum zahájení a ukončení datová pole. Obvykle to odpovídají jak dlouho je naplánováno spuštění projektu.
    - Zadejte **cílové náklady**. Například to může být, kolik chcete věnovat v časovém období, které jste definovali v tomto testovacím prostředí.
    - Vyberte možnost k povolení nebo zakázání jakékoli prahu chcete hlášené – v přírůstcích po 25 % – až 125 % vaše zadané **cílové náklady**.
-      - **Oznámit**: při splnění této prahové hodnoty, se zobrazí oznámení o zadaná adresa URL webhooku.
-      - **Vykreslit v grafu**: při splnění této prahové hodnoty, výsledky jsou zobrazeny v grafu trend nákladů, které můžete zobrazit, jak je popsáno v [zobrazení grafu měsíční Trend nákladů odhadované](#viewing-the-monthly-estimated-cost-trend-chart).
+      - **Oznámit**: Při splnění této prahové hodnoty jsou upozorněni prostřednictvím zadaná adresa URL webhooku.
+      - **Vykreslit v grafu**: Při splnění této prahové hodnoty, výsledky jsou zobrazeny v grafu trend nákladů, které můžete zobrazit, jak je popsáno v [zobrazení grafu měsíční Trend nákladů odhadované](#viewing-the-monthly-estimated-cost-trend-chart).
    - Pokud budete chtít **upozornění** při splnění prahové hodnoty, je nutné zadat adresu URL webhooku. V oblasti integrace nákladů, vyberte **kliknutím sem přidáte integraci**.
 
       Zadejte adresu URL Webhooku v podokně Konfigurace oznámení a pak vyberte **OK**.

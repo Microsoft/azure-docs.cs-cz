@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 449df8e49eb63cb6e52cd4ec25dafc2bb0851347
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241755"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444782"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On v Azure
 > [!div class="op_single_selector"]
@@ -123,11 +123,11 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytv
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>Testování naslouchacího procesu skupiny dostupnosti (přes internet)
-Aby bylo možné získat přístup k naslouchacího procesu od mimo virtuální síť, musíte používat externí/veřejný zátěže (popsané v tomto tématu) místo ILB, který je dostupný pouze z v rámci stejné virtuální síti. V připojovacím řetězci zadejte název cloudové služby. Například, pokud jste měli cloudovou službu s názvem *mycloudservice*, příkazu sqlcmd by měl vypadat takto:
+Aby bylo možné získat přístup k naslouchacího procesu od mimo virtuální síť, musíte používat externí/veřejný zátěže (popsané v tomto tématu) místo ILB, který je přístupný jenom v rámci stejné virtuální síti. V připojovacím řetězci zadejte název cloudové služby. Například, pokud jste měli cloudovou službu s názvem *mycloudservice*, příkazu sqlcmd by měl vypadat takto:
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Na rozdíl od předchozího příkladu ověřování SQL musí použít, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [skupiny dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klienta](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že vytvoření stejné přihlašovací údaje na obou replikách. Další informace o řešení potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k ostatními replikami a mapovat do databází dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Na rozdíl od předchozího příkladu ověřování SQL musí použít, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [skupiny dostupnosti Always On na virtuálním počítači Azure: Scénáře připojení klienta](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že vytvoření stejné přihlašovací údaje na obou replikách. Další informace o řešení potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k ostatními replikami a mapovat do databází dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Pokud jsou repliky Always On v různých podsítích, budou muset klienti zadat **MultisubnetFailover = True** v připojovacím řetězci. Výsledkem je pokusy o paralelní připojení repliky v různých podsítích. Všimněte si, že tento scénář obsahuje nasazení skupiny dostupnosti Always On mezi oblastmi.
 

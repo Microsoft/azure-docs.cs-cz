@@ -9,15 +9,15 @@ ms.author: johndeu
 ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c5c5d90045e1697f698895e522ffda47d47565
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999007"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447717"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
-Když živého streamování pomocí služby Azure Media Services, můžete zadat, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Pokud se rozhodnete použít kodér v místním prostředí pomocí živého kódování kanálu, by měl váš kodér push datový proud s jednou přenosovou rychlostí vysoce kvalitní jako výstup. Pokud se rozhodnete používat pro místní kodér průchodu přes kanál, by měl váš kodér push datového proudu s více přenosovými rychlostmi jako výstup s všechny požadované výstupu kvality. Další informace najdete v tématu [živé streamování pomocí místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
+Když živého streamování pomocí služby Azure Media Services, můžete zadat, jak chcete, aby váš kanál pro příjem vstupního datového proudu. Pokud se rozhodnete použít kodér v místním prostředí pomocí živého kódování kanálu, by měl váš kodér push datový proud s jednou přenosovou rychlostí vysoce kvalitní jako výstup. Pokud budete chtít pomocí kodéru on premises průchozích kanálů, by měl váš kodér push datového proudu s více přenosovými rychlostmi jako výstup s všechny požadované výstupu kvality. Další informace najdete v tématu [živé streamování pomocí na místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
 Azure Media Services doporučuje používat jednu z následujících kodéry, které mají RTMP jako výstup:
 - Adobe Flash Media Live Encoder 3.2
@@ -44,8 +44,8 @@ Azure Media Services doporučuje používat jednu z následující kodéry, kter
 > [!NOTE]
 > Live encoder můžete odeslat datový proud s jednou přenosovou rychlostí průchodu přes kanál, ale tato konfigurace se nedoporučuje, protože neumožňuje pro adaptivní přenosové rychlosti streamování do klienta.
 
-## <a name="how-to-become-an-on-prem-encoder-partner"></a>Jak se stát partnerem místní kodér
-Jako partner Azure Media Services místní kodér Media Services podporuje váš produkt doporučením váš kodér pro podnikové zákazníky. Pokud chcete stát partnerem kodér v místním prostředí, musíte ověřit kompatibilitu váš kodér v místním prostředí pomocí služby Media Services. Uděláte to tak, proveďte následující ověření:
+## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak se stát partnerem kodér on premises
+Jako Azure Media Services na partnerovi místní kodér Media Services podporuje váš produkt doporučením váš kodér pro podnikové zákazníky. Pokud chcete stát partnerem kodér v místním prostředí, musíte ověřit kompatibilitu váš kodér v místním prostředí pomocí služby Media Services. Uděláte to tak, proveďte následující ověření:
 
 Předávání ověření kanálu
 1. Vytvořit nebo navštivte svůj účet Azure Media Services

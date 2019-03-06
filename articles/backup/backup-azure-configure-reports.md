@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237684"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440994"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
@@ -29,7 +29,7 @@ Stáhněte si prosím nejnovější aplikace (verze 1.8) k tomuto problému vyhn
 - Sestavy Azure Backup podporuje pro zálohování virtuálních počítačů Azure a souborům a složkám zálohování do cloudu pomocí agenta Azure Recovery Services.
 - Sestavy pro Azure SQL Database, sdílených složek Azure, Data Protection Manager a Azure Backup serveru nejsou v tuto chvíli nepodporuje.
 - Sestavy můžete zobrazit napříč trezory a předplatných, je-li stejný účet úložiště je nakonfigurovaný pro všechny tyto trezory. Vybraný účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
-- Četnost naplánované aktualizace pro sestavy je 24 hodin v Power BI. Můžete také provést aktualizaci ad-hoc sestav v Power BI. V takovém případě nejnovější data v účtu úložiště zákazníka slouží k vykreslení sestavy.
+- Četnost naplánované aktualizace pro sestavy je 24 hodin v Power BI. Můžete také provést ad hoc aktualizace této sestavy v Power BI. V takovém případě nejnovější data v účtu úložiště zákazníka slouží k vykreslení sestavy.
 
 ## <a name="prerequisites"></a>Požadavky
 - Vytvoření [účtu služby Azure storage](../storage/common/storage-quickstart-create-account.md) ho nakonfigurovat pro sestavy. Tento účet úložiště se používá k ukládání dat týkajících se sestavy.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673320"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435758"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -134,16 +134,16 @@ Langagues {řeči (object, volitelné), text (object, volitelné), převod textu
 
 |Hlavička|Popis|Type|
 :--|:--|:--|
-X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pro účely odstraňování potíží.|řetězec|
+X-RequestId|Hodnota generován serverem k identifikaci žádosti a používá pro účely odstraňování potíží.|string|
 
 ### <a name="parameters"></a>Parametry
 
 |Parametr|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|
-|verze API-version    |Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query|řetězec|
-|scope  |Nastaví podporované jazyky nebo hlasy vrácena klientovi. Tento parametr zadán jako čárkou oddělený seznam klíčových slov. Následující klíčová slova jsou k dispozici:<ul><li>`speech`: Poskytuje sadu jazyky podporované pro přepisy řeči.</li><li>`tts`: Poskytuje sadu podporuje pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyky podporované pro překlad textu.</li></ul>Pokud není zadána hodnota, hodnota `scope` výchozí hodnota je `text`.|query|řetězec|
-|X-ClientTraceId    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Usnadňuje řešení potíží se musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.|záhlaví|řetězec|
-|Přijměte jazyka    |Některá pole v odpovědi jsou názvy jazyků nebo oblastech. Použijte tento parametr se definuje jazyk, ve kterém se vrátí názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Vyberte značku ze seznamu identifikátorů jazyka se vrátil s `text` oboru. U nepodporovaných jazyků názvy jsou k dispozici v angličtině.<br/>Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.|záhlaví|řetězec|
+|verze API-version    |Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query|string|
+|scope  |Nastaví podporované jazyky nebo hlasy vrácena klientovi. Tento parametr zadán jako čárkou oddělený seznam klíčových slov. Následující klíčová slova jsou k dispozici:<ul><li>`speech`: Poskytuje sadu jazyky podporované pro přepisy řeči.</li><li>`tts`: Poskytuje sadu podporuje pro převod textu na řeč.</li><li>`text`: Poskytuje sadu jazyky podporované pro překlad textu.</li></ul>Pokud není zadána hodnota, hodnota `scope` výchozí hodnota je `text`.|query|string|
+|X-ClientTraceId    |Identifikátor GUID klientem generovaná použít ke sledování požadavku. Usnadňuje řešení potíží se musí klienti zadejte novou hodnotu s každou žádostí a zaznamenejte ho.|záhlaví|string|
+|Přijměte jazyka    |Některá pole v odpovědi jsou názvy jazyků nebo oblastech. Použijte tento parametr se definuje jazyk, ve kterém se vrátí názvy. Jazyk je zadán zadáním značky jazyka ve správném formátu BCP 47. Vyberte značku ze seznamu identifikátorů jazyka se vrátil s `text` oboru. U nepodporovaných jazyků názvy jsou k dispozici v angličtině.<br/>Například použijte hodnotu `fr` žádosti názvy ve francouzštině, nebo použijte hodnotu `zh-Hant` požadavek názvy v tradiční čínštině.|záhlaví|string|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 

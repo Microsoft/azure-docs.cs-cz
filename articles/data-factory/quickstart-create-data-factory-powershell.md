@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0e6db6ad4d2f3dfdf6aa95c0ee2255328de7e4ef
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b675ab9663be674ec2439bfe9139b7c79c144cbd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996317"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453384"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rychlý start: Vytvoření datové továrny Azure pomocí PowerShellu
 
@@ -35,7 +35,9 @@ Tento rychlý start popisuje použití PowerShellu k vytvoření datové továrn
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 #### <a name="log-in-to-powershell"></a>Přihlášení do PowerShellu
 
@@ -44,19 +46,19 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 2. Spusťte následující příkaz a zadejte uživatelské jméno a heslo Azure, které používáte k přihlášení na Azure Portal:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet:
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. Pokud se zobrazí několik předplatných přidružených vašem účtu, spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **SubscriptionId** použijte ID vašeho předplatného Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -72,7 +74,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 2. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz:
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'East US'
     ```
 
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$ResourceGroupName` jinou hodnotu a spusťte tento příkaz znovu.
@@ -86,10 +88,10 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Pokud chcete vytvořit datovou továrnu, spusťte následující rutinu **Set-AzureRmDataFactoryV2** s použitím vlastností Location a ResourceGroupName z proměnné $ResGrp:
+4. Vytvořit datovou továrnu, spusťte následující příkaz **Set-AzDataFactoryV2** rutiny použitím vlastností Location a ResourceGroupName z proměnné $ResGrp:
 
     ```powershell
-    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
+    $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
         -Location $ResGrp.Location -Name $dataFactoryName
     ```
 
@@ -137,10 +139,10 @@ V datové továrně vytvořte propojené služby, abyste svá úložiště dat 
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Spustit **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureStorageLinkedService**.
+3. Spustit **Set-AzDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureStorageLinkedService**.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" `
         -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
@@ -181,10 +183,10 @@ V tomto kroku nadefinujete datovou sadu, která představuje data ke kopírován
     }
     ```
 
-2. Vytvořte datovou sadu: **BlobDataset**, spusťte **Set-AzureRmDataFactoryV2Dataset** rutiny.
+2. Vytvořte datovou sadu: **BlobDataset**, spusťte **Set-AzDataFactoryV2Dataset** rutiny.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" `
         -DefinitionFile ".\BlobDataset.json"
     ```
@@ -253,10 +255,10 @@ V tomto rychlém startu vytvoříte kanál s jednou aktivitou, který přebírá
     }
     ```
 
-2. Pokud chcete vytvořit kanál: **Adfv2QuickStartPipeline**, spusťte **Set-AzureRmDataFactoryV2Pipeline** rutiny.
+2. Pokud chcete vytvořit kanál: **Adfv2QuickStartPipeline**, spusťte **Set-AzDataFactoryV2Pipeline** rutiny.
 
     ```powershell
-    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline `
+    $DFPipeLine = Set-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -Name "Adfv2QuickStartPipeline" `
@@ -275,10 +277,10 @@ V tomto kroku nastavíte hodnoty pro parametry kanálu **inputPath** a **outputP
         "outputPath": "adftutorial/output"
     }
     ```
-2. Spuštěním rutiny **Invoke-AzureRmDataFactoryV2Pipeline** vytvořte spuštění kanálu a předejte mu hodnoty parametrů. Tato rutina vrací ID spuštění kanálu pro budoucí monitorování.
+2. Spustit **Invoke-AzDataFactoryV2Pipeline** rutina pro vytvoření kanálu spusťte a předejte mu hodnoty parametrů. Tato rutina vrací ID spuštění kanálu pro budoucí monitorování.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline `
+    $RunId = Invoke-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -PipelineName $DFPipeLine.Name `
@@ -291,7 +293,7 @@ V tomto kroku nastavíte hodnoty pro parametry kanálu **inputPath** a **outputP
 
     ```powershell
     while ($True) {
-        $Run = Get-AzureRmDataFactoryV2PipelineRun `
+        $Run = Get-AzDataFactoryV2PipelineRun `
             -ResourceGroupName $ResGrp.ResourceGroupName `
             -DataFactoryName $DataFactory.DataFactoryName `
             -PipelineRunId $RunId
@@ -356,7 +358,7 @@ V tomto kroku nastavíte hodnoty pro parametry kanálu **inputPath** a **outputP
 
     ```powershell
     Write-Output "Activity run details:"
-    $Result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $Result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $Result
 
     Write-Output "Activity 'Output' section:"

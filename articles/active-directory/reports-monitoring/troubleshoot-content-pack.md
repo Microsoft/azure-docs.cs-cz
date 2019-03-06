@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b2346c0631bb4540aef27623f82f72f4eabd0d23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210692"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433548"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s Azure Active Directory aktivity chyby balíčku obsahu protokolů 
 
@@ -71,6 +71,6 @@ Tento článek obsahuje informace o možných příčinách a jak tyto chyby opr
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nainstalujte sadu contect Power BI pro sestavy Azure AD](quickstart-install-power-bi-content-pack.md).
+* [Nainstalujte balíček obsahu Power BI pro sestavy Azure AD](quickstart-install-power-bi-content-pack.md).
 * [Použití Power BI content pack pro službu Azure AD zprávy k vizualizaci dat](howto-power-bi-content-pack.md)
 * [Získání podpory pro Azure Active Directory](../fundamentals/active-directory-troubleshooting-support-howto.md)

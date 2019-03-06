@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314223"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453486"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpečení pro oříznutí výsledky ve službě Azure Search
 
@@ -152,7 +152,7 @@ Měli byste získat dokumenty zpět tam, kde `group_ids` obsahuje "group_id1" ne
 ```
 ## <a name="conclusion"></a>Závěr
 
-To je, jak můžete filtrovat výsledky na základě identity uživatele a Azure Search `search.in()` funkce. Tato funkce slouží a zajistěte tak předání objektu zabezpečení identifikátory pro žádajícího uživatele k porovnání s hlavní identifikátory, které jsou spojené s každou cílového dokumentu. Když je zpracována žádost o vyhledávání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory může představovat věci, jako jsou skupiny zabezpečení, role nebo dokonce i vlastní identitu uživatele.
+To je, jak můžete filtrovat výsledky na základě identity uživatele a Azure Search `search.in()` funkce. Tuto funkci můžete použít k předání v zásadě identifikátory žádajícího uživatele k porovnání s hlavní identifikátory, které jsou spojené s každou cílového dokumentu. Když je zpracována žádost o vyhledávání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory může představovat věci, jako jsou skupiny zabezpečení, role nebo dokonce i vlastní identitu uživatele.
  
 ## <a name="see-also"></a>Další informace najdete v tématech
 

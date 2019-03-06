@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e69e2ca5ccd8e8edc2f55d74a0cca03eaabc9f49
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884738"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438427"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s hodnoty klíče v úložišti konfigurace aplikace pro Azure
 
@@ -70,9 +70,9 @@ Tento skript používá následující příkazy pracovat na klíč hodnota v ob
 
 | Příkaz | Poznámky |
 |---|---|
-| [Sada kv appconfig az](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-set) | Vytvoří nebo aktualizuje páru klíč hodnota. |
-| [seznam kv appconfig az](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-list) | Uvádí klíč hodnota v obchodě s aplikacemi konfigurace. |
-| [AZ appconfig kv delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-delete) | Odstraní páru klíč hodnota. |
+| [Sada kv appconfig az](/cli/azure/ext/appconfig/appconfig) | Vytvoří nebo aktualizuje páru klíč hodnota. |
+| [seznam kv appconfig az](/cli/azure/ext/appconfig/appconfig) | Uvádí klíč hodnota v obchodě s aplikacemi konfigurace. |
+| [AZ appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Odstraní páru klíč hodnota. |
 
 ## <a name="next-steps"></a>Další postup
 

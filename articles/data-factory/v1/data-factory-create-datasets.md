@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811082"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433429"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -238,7 +238,7 @@ Následující tabulka popisuje vlastnosti, které můžete použít v části d
 | frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
 | interval |Určuje multiplikátor pro četnost.<br/><br/>"Interval četnosti x" Určuje, jak často se řez. Například pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, byste měli nastavit interval na menší než 15. |Ano |Není k dispozici |
 | Styl |Určuje, zda by měl být řez na začátku nebo konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastavena na **měsíc**, a **styl** je nastavena na **EndOfInterval**, řez na poslední den v měsíci. Pokud **styl** je nastavena na **StartOfInterval**, řez v první den v měsíci.<br/><br/>Pokud **frekvence** je nastavena na **den**, a **styl** je nastavena na **EndOfInterval**, řez za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastavena na **hodinu**, a **styl** je nastavena na **EndOfInterval**, řez na konec hodiny. Například pro určitý řez dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/>Všimněte si, že pokud je tato propoerty částí data, která jsou podrobnější než je zadaná četnost, se ignorují podrobnější částí. Například pokud **interval** je **každou hodinu** (frekvence: hour a interval je: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
+| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/>Všimněte si, že pokud se tato vlastnost je částí data, která jsou podrobnější než je zadaná četnost, podrobnější části jsou ignorovány. Například pokud **interval** je **každou hodinu** (frekvence: hour a interval je: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
 | Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/>Všimněte si, že pokud mají oba **anchorDateTime** a **posun** jsou zadána, výsledkem je kombinované shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí

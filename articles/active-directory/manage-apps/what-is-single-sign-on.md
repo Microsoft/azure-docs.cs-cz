@@ -12,12 +12,12 @@ ms.date: 02/21/2019
 ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93d5a08d08a67a14d2e78f414fc40e7391653951
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 186bc220778ed669672bfbc689dad6471195f4ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593688"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448556"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihlašování uživatelů k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody přihlašování a vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.
@@ -153,11 +153,11 @@ Tento diagram popisuje tok, když uživatel získá přístup k místní aplikac
 
 ![Vývojový diagram ověřování Microsoft AAD](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. Uživatel zadá adresu URL pro přístup k místní aplikaci pomocí služby Proxy aplikací.
+1. Uživatel zadá adresu URL pro přístup na místní aplikace prostřednictvím Proxy aplikací.
 2. Proxy aplikace přesměruje požadavek preauthenticate ověřování služby Azure AD. V tuto chvíli Azure AD použije všechny příslušné ověřování a zásady autorizace, jako je například vícefaktorové ověřování. Pokud uživatel je ověřen, Azure AD vytvoří token a odešle se uživateli.
 3. Uživatel se předá token Proxy aplikací.
 4. Proxy aplikace ověří token a načte hlavní název uživatele (UPN) z tokenu. Ke konektoru prostřednictvím zabezpečeného kanálu obousměrně ověřeného pak odešle požadavek, hlavní název uživatele a hlavní název služby (SPN).
-5. Konektor používá vyjednávání protokolu Kerberos omezené delegování (KCD) se v místním AD zosobňování uživatele získá token protokolu Kerberos k aplikaci.
+5. Konektor používá vyjednávání protokolu Kerberos omezené delegování (KCD) s místní AD zosobňování uživatele získá token protokolu Kerberos k aplikaci.
 6. Služby Active Directory odešle token protokolu Kerberos pro použití konektoru.
 7. Konektor odešle původní požadavek na aplikační server pomocí obdrženého ze služby AD token protokolu Kerberos.
 8. Aplikace odešle odpověď na konektoru, který je pak vrácen do Proxy aplikace služby a nakonec na uživatele.

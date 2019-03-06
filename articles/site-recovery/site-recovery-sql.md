@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: e84c33b35ef7828cc16be4b532ab8406e0236ee3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2d141a330b6b6c5fc102dd70ae1d6b3b01283d19
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876666"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444867"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server 
 
@@ -70,7 +70,7 @@ Site Recovery je možné integrovat s nativní technologiemi BCDR SQL serveru, k
 
 Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL serveru se službou Site Recovery.
 
-| **Verze** | **Edice** | **Nasazení** | **V místním prostředí pro místní prostředí** | **V místním prostředí do Azure** |
+| **Verze** | **Edice** | **Nasazení** | **Místního v místním prostředí** | **V místním prostředí do Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2014, 2016 a 2012 |Enterprise |Instance clusteru převzetí služeb při selhání |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
 || Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn | |

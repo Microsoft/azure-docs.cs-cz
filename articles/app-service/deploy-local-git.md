@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c547eba931e23b6ffc7cae176e19959d43bcf5e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602490"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405018"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -44,7 +44,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>Nasazení z místního Gitu pomocí Kudu sestavení
+## <a name="deploy-with-kudu-builds"></a>Nasazení pomocí Kudu sestavení
 
 Nejjednodušší způsob, jak povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu server sestavení je použití Cloud Shell.
 
@@ -102,7 +102,7 @@ Automatizace specifické pro modul runtime ve výstupu, jako je MSBuild pro tech
 
 Přejděte do své aplikace a zkontrolujte, že obsah nasazení.
 
-## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Nasazení z místního Gitu k sestavení služeb Azure DevOps
+## <a name="deploy-with-azure-devops-builds"></a>Nasazení s využitím Azure DevOps sestavení
 
 > [!NOTE]
 > Pro službu App Service k vytváření kanálů nezbytné Azure ve vaší organizaci Azure DevOps služby, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
@@ -110,20 +110,18 @@ Přejděte do své aplikace a zkontrolujte, že obsah nasazení.
 
 Pokud chcete povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu sestavovací server, přejděte do vaší aplikace v [webu Azure portal](https://portal.azure.com).
 
-V levém navigačním panelu na stránce vaší aplikace, klikněte na tlačítko **Deployment Center** > **místního Gitu** > **pokračovat**. 
+V levém navigačním panelu na stránce vaší aplikace, klikněte na tlačítko **Deployment Center** > **místního Gitu** > **pokračovat**.
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Klikněte na tlačítko **průběžné doručování služeb Azure DevOps** > **pokračovat**.
+Klikněte na tlačítko **kanály Azure (Preview)** > **pokračovat**.
 
-![](media/app-service-deploy-local-git/vsts-build-server.png)
+![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-V **konfigurovat** stránce, nakonfigurovat novou organizaci Azure DevOps služby nebo zadejte existující organizace. Až budete hotovi, klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránce, nakonfigurovat novou organizaci Azure DevOps nebo zadejte existující organizace. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
 > [!NOTE]
-> Pokud chcete použít existující služby Azure DevOps organizace, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
-
-V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
+> Pokud chcete použít existující organizaci Azure DevOps, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má povolit sloty nasazení a pak klikněte na **pokračovat**.
 
@@ -158,23 +156,23 @@ Tady jsou běžné chyby nebo problémy při použití Git k publikování pro a
 ---
 **Příznak**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
-**Příčina**: K této chybě může dojít, pokud nebude funkční ani po aplikaci.
+**Příčina:** K této chybě může dojít, pokud nebude funkční ani po aplikaci.
 
-**Rozlišení**: Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
+**Řešení:** Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
 
 ---
 **Příznak**: `Couldn't resolve host 'hostname'`
 
-**Příčina**: K této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
+**Příčina:** K této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
 
-**Rozlišení**: Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
+**Řešení:** Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
 
 ---
 **Příznak**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**Příčina**: K této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
+**Příčina:** K této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
 
-**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
+**Řešení:** Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -183,9 +181,9 @@ git push azure master
 ---
 **Příznak**: `src refspec [branchname] does not match any.`
 
-**Příčina**: K této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
+**Příčina:** K této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
 
-**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
+**Řešení:** Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -194,9 +192,9 @@ git push azure master
 ---
 **Příznak**: `RPC failed; result=22, HTTP code = 5xx.`
 
-**Příčina**: Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
+**Příčina:** Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
 
-**Rozlišení**: Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
+**Řešení:** Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -205,9 +203,9 @@ git config --global http.postBuffer 524288000
 ---
 **Příznak**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**Příčina**: K této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
+**Příčina:** K této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
 
-**Rozlišení**: Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
+**Řešení:** Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
 
 * **Soubor package.json poškozený**: npm ERR! Nelze číst závislosti.
 * **Nativní modul, který nemá binární distribuce pro Windows**:

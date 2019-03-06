@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413475"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440807"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows - CMD a prostředí PowerShell
 
@@ -118,7 +118,7 @@ Pokud jiné metody, která je k dispozici ve Windows ve výchozím nastavení pr
 ### <a name="disable-windows-firewall"></a>Zakázat bránu Windows Firewall
 `netsh advfirewall set allprofiles state off`
 
-Tento příkaz můžete použít při řešení potíží s dočasně vyloučit brány Windows Firewall. Bude možné povolit při příštím restartování počítače nebo při enaable můžete pomocí následujícího příkazu. Nedojde k zastavení služby brány Windows Firewall (MPSSVC) nebo službu Base Filtering Engine (BFE) jako způsob, jak vyloučit brány Windows Firewall. Blokuje všechna připojení způsobí zastavení MPSSVC nebo BFE.
+Tento příkaz můžete použít při řešení potíží s dočasně vyloučit brány Windows Firewall. Bude při dalším restartování nebo když povolíte pomocí následujícího příkazu. Nedojde k zastavení služby brány Windows Firewall (MPSSVC) nebo službu Base Filtering Engine (BFE) jako způsob, jak vyloučit brány Windows Firewall. Blokuje všechna připojení způsobí zastavení MPSSVC nebo BFE.
 ### <a name="enable-windows-firewall"></a>Povolit bránu Windows Firewall
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>Správa uživatelů a skupin
@@ -446,7 +446,7 @@ Další informace najdete v tématu [služby Azure Instance Metadata](https://do
 `$im.Compute.Location`
 ### <a name="size-instance-metadata"></a>Velikost (Instance metadat)
 `$im.Compute.vmSize`
-### <a name="vm-id-instance-metadata"></a>ID virtuálního počítače (Instance metadat)
+### <a name="vm-id-instance-metadata"></a>VM ID (Instance Metadata)
 `$im.Compute.vmId`
 ### <a name="vm-name-instance-metadata"></a>Název virtuálního počítače (Instance metadat)
 `$im.Compute.name`

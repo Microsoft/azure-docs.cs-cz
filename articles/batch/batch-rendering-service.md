@@ -6,18 +6,18 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bc8c96345aeb1886696326edd230666ac8b6c41d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: dbe3fe59fd2674cf3475fc5b589a2c938e706ab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542191"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441334"
 ---
 # <a name="rendering-using-azure"></a>Vykreslování s využitím Azure
 
 Vykreslování je proces trvá 3D modely a převod na 2D imagí. 3D Scéna soubory jsou vytvořeny v aplikací, jako jsou Autodesk 3ds Max, Autodesk Maya a Blender.  Vykreslování aplikací, jako jsou Autodesk Maya, Autodesk Arnold, Chaos Group V-Ray a cykly blenderu pro vytváření 2D imagí.  Vytváření imagí někdy jeden ze souborů scény. Je však společné pro modelování a vykreslení více bitových kopií a pak je zkombinovat animace.
 
-Úlohy vykreslování se často používá pro zvláštních efektů (vizuálních EFEKTŮ) v odvětví média a zábava. Vykreslování se používá také v mnoha industires například reklamy, maloobchodního prodeje, ropy a plynu a výroby.
+Úlohy vykreslování se často používá pro zvláštních efektů (vizuálních EFEKTŮ) v odvětví média a zábava. Vykreslování se používá také v mnoha oborech, třeba reklamy, maloobchodního prodeje, ropy a plynu a výroby.
 
 Proces vykreslování je výpočetně náročný; může být mnoho snímků a imagí k vytvoření a každá image může trvat několik hodin k vykreslení.  Vykreslování je proto ideální batch úlohy zpracování, který můžete využít Azure a Azure Batch k paralelnímu spouštění mnoha vykreslení.
 
@@ -88,7 +88,7 @@ Existuje několik způsobů, jak používat službu Azure Batch, které platí t
 * Klienta aplikace plug v společnosti:
   * Moduly plug-in jsou k dispozici, která umožňují Batch rendering pro použití přímo v rámci klienta návrhu a modelování aplikace. Moduly plug-in hlavně vyvolat aplikaci služby Batch Explorer kontextové informace o aktuální 3D modelu.
   * Následující moduly plug-in jsou k dispozici:
-    * [Azure Batch pro Maya](https://github.com/Azure/azure-batch-maya)
+    * [Azure Batch for Maya](https://github.com/Azure/azure-batch-maya)
     * [3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
     * [Blenderu](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 

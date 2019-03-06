@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: a88ea248f1db90916c5dbcaefc24131eb976e2f6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9e36ac41fb42d7c0e00dca6dc82f2f5daee1278b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728322"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435537"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
@@ -49,7 +49,7 @@ Chcete-li postupovat podle kroků popsaných v tomto článku, budete potřebova
 
 ## <a name="scenario"> </a> Scénář
 
-Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a fungují jako jeden front-endu pro obě místní a cloudové rozhraní API. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí směrování funkce je dostupná ve službě Application Gateway.
+Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a pracovat jako jeden front-endu pro i v místním prostředí a rozhraní API v cloudu. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí směrování funkce je dostupná ve službě Application Gateway.
 
 V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v rámci vaší virtuální sítě. Interní příjemci (zvýrazněná v oranžová) můžete přistupovat všechna vaše interní a externí rozhraní API. Provoz nikdy nedostane mimo vysoký výkon se doručí Internet prostřednictvím okruhů Expressroute.
 

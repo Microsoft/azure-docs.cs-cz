@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243223"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409742"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -153,7 +153,7 @@ Doporučené postupy pro používání Azure Disk Encryption jsou následující
 **Podrobnosti o**: Azure Disk Encryption generuje a zapíše šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů se vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování, můžete použít buď ověřování na základě tajný kód klienta nebo [ověřování klienta na základě certifikátů Azure AD](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Osvědčený postup**: Použijte šifrovací klíč klíče (KEK) pro další úroveň zabezpečení pro šifrovací klíče. Přidání KEK do trezoru klíčů.   
-**Podrobnosti o**: Použití [přidat AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) rutina pro vytvoření šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vašeho místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Uchování v úschově kopii tohoto klíče v místní správy klíčů HSM nabízí další ochranu před náhodným odstraněním klíčů.
+**Podrobnosti o**: Použití [přidat AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) rutina pro vytvoření šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vašeho místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. Uchování v úschově kopii tohoto klíče v místní správy klíčů HSM nabízí další ochranu před náhodným odstraněním klíčů.
 
 **Osvědčený postup**: Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) nebo zálohování před disky jsou šifrované. Zálohování poskytuje možnost obnovení, pokud dojde k neočekávané chybě při šifrování.   
 **Podrobnosti o**: Virtuální počítače se spravovanými disky vyžadují zálohu, než dojde k šifrování. Po zálohování se provádí, můžete použít **Set-AzVMDiskEncryptionExtension** rutiny k šifrování spravované disky tak, že zadáte *- skipVmBackup* parametru. Další informace o tom, jak zálohování a obnovení šifrovaných virtuálních počítačů najdete v tématu [Azure Backup](../backup/backup-azure-vms-encryption.md) článku.

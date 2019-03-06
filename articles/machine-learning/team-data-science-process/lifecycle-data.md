@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d65704f7037eb4152b4f91d4cbe68ceaad2cea48
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650220"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444493"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získání dat a principy fázi vědecké zpracování týmových dat
 
@@ -68,7 +68,7 @@ Tady jsou výstupy v této fázi:
 
    * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje shrnutí dat, vztahy mezi všechny atributy a cíl, proměnné pořadí a další. [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) nástroje, které jsou k dispozici jako součást TDSP můžete rychle vygenerovat tuto sestavu na všechny tabulkové datové sady, jako je například soubor CSV nebo relační tabulky. 
    * **Architektura řešení**: Architekturu řešení může být diagram a popis datového kanálu, který používáte ke spouštění hodnocení nebo vytváření předpovědí na nová data po vytvoření modelu. Obsahuje také kanál tak, aby přeučování váš model založený na nová data. Store v dokumentu [projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) adresáře, když použijete šablonu struktury TDSP adresáře.
-   * **Kontrolní bod rozhodnutí**: Před zahájením vytváření plně funkcí a vytváření modelů, prezentovaný projektu určuje, jestli je očekávána hodnota dostatečná k pokračování usilovat o normalizaci ho. Například může být připraveni pokračovat, musíte shromáždit více dat, nebo opustit projektu, protože data neexistuje odpověď na otázku.
+   * **Kontrolní bod rozhodnutí**: Před zahájením vytváření plně funkcí a vytváření modelů, prezentovaný projektu určuje, jestli je očekávána hodnota dostatečná k pokračování ovlivňovat ho. Například může být připraveni pokračovat, musíte shromáždit více dat, nebo opustit projektu, protože data neexistuje odpověď na otázku.
 
 ## <a name="next-steps"></a>Další postup
 

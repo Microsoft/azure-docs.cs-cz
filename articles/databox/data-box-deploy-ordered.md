@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 43dc9edf715e20c84515d6acf4884e97c3b28184
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 16a3fab1fe2338611823a9ab559826302bd06d13
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451880"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403834"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednávky zařízení Azure Data Box
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 - Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
     - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). 
+    - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
 - Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
 
@@ -68,7 +68,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Zdrojová země     |   Vyberte zemi, ve které jsou data aktuálně umístěna.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést.        |
 
-5. Vyberte **Data Box**. Maximální kapacita řešení pro jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
+5. Vyberte **Data Box**. Maximální využitelné kapacity na jednu objednávku je 786 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
       [![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
@@ -79,8 +79,22 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Název     |  Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.      |
     |Skupina prostředků     |   Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně.         |
     |Cílová oblast Azure     | K účtu úložiště přiřaďte oblast. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).        |
-    |Účty úložiště     | Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. Nelze použít účty úložiště, které mají nakonfigurovaná pravidla. Účty úložiště musí **povolit přístup ze všech sítí** v části virtuální sítě a brány firewall.|
-    
+    |Cílové úložiště     | Vyberte si z účtu úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. <br> Můžete také vytvořit novou **pro obecné účely v1**, **pro obecné účely v2**, nebo **účtu úložiště objektů Blob**. <br>Účty úložiště s virtuálními sítěmi se podporují. Služba Data Box pro práci s účty úložiště zabezpečené, povolte důvěryhodným službám v nastavení brány firewall sítě účtu úložiště. Další informace najdete v tématu Jak [přidat zařízení Azure Data Box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).|
+
+    Pokud používáte účet úložiště jako cílové úložiště, vidíte na následujícím snímku obrazovky:
+
+    ![Pořadí dat pole pro účet úložiště](media/data-box-deploy-ordered/order-storage-account.png)
+
+    Pokud používáte zařízení Data Box pro vytvoření spravovaných disků z místních virtuálních pevných disků, musíte také zadat následující informace:
+
+    |Nastavení  |Hodnota  |
+    |---------|---------|
+    |Skupiny prostředků     | Pokud máte v úmyslu vytvoření spravovaných disků z místních virtuálních pevných disků, vytvořte nové skupiny prostředků. Můžete použít existující skupinu prostředků, pouze v případě, že skupina prostředků se vytvořila dříve při vytváření objednávka zařízení Data Box pro spravovaný disk pomocí služby Data Box. <br> Zadejte více skupin prostředků, které jsou odděleny středníky. Podporují se maximálně 10 skupin prostředků.|
+
+    ![Pole data, aby spravovaný disk](media/data-box-deploy-ordered/order-managed-disks.png)
+
+    Účet úložiště zadaný pro spravované disky se používá jako přípravného účtu úložiště. Nahrávání služby Data Box virtuálních pevných disků jako stránka objekty BLOB do přípravného účtu úložiště před převod na spravované disky a přesunete do skupiny prostředků. Další informace najdete v tématu [ověřit data nahrát do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+
 7. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení. Klikněte na **Další**.
 
 8. Na kartě **Podrobnosti o oznámení** zadejte e-mailové adresy. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
@@ -89,7 +103,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 
 9. Na kartě **Souhrn** zkontrolujte informace týkající se objednávky, kontaktu, oznámení a podmínkách ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
 
-10. Klikněte na **Objednat**. Vytvoření objednávky trvá několik minut. 
+10. Klikněte na **Objednat**. Vytvoření objednávky trvá několik minut.
 
 
 ## <a name="track-the-order"></a>Sledování objednávky
@@ -98,9 +112,9 @@ Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Př
 
 Pokud zařízení není k dispozici, dostanete oznámení. Pokud je zařízení k dispozici, Microsoft určí zařízení k odeslání a připraví zásilku. Při přípravě zařízení dojde k těmto akcím:
 
-- Pro každý účet úložiště přidružený k zařízení se vytvoří sdílené složky SMB. 
+- Pro každý účet úložiště přidružený k zařízení se vytvoří sdílené složky SMB.
 - Pro každou sdílenou složku se vygenerují přihlašovací údaje pro přístup, například uživatelské jméno a heslo.
-- Také se vygeneruje heslo zařízení, které pomáhá odemknout zařízení. 
+- Také se vygeneruje heslo zařízení, které pomáhá odemknout zařízení.
 - Data Box se uzamkne, aby se zabránilo jakémukoli neoprávněnému přístupu k zařízení.
 
 Jakmile bude zařízení připravené, stav objednávky na portálu se změní na **Zpracováno**.

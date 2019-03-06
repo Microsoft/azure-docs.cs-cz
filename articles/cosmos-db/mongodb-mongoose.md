@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 26eccfd2a144d5bfcb285e6b52af246c3eefde75
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c1343326b6db18608eb6a8994957d560124116ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822030"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450698"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB
 
@@ -183,7 +183,7 @@ Výchozím chováním Mongoose je vytvořit kolekci MongoDB při každém vytvo�
 
 1. Nyní že přejdete na web Azure Portal, zjistíte v Cosmos DB vytvořily dvě kolekce.
 
-    ![Kurz k Node.js – Snímek obrazovky webu Azure Portal se zobrazeným účtem služby Azure Cosmos DB a několika zvýrazněnými názvy kolekcí – databáze Node][multiple-coll]
+    ![Kurz k Node.js – snímek obrazovky webu Azure Portal, účet služby Azure Cosmos DB s několika zvýrazněnými názvy kolekcí – uzel databáze][multiple-coll]
 
 1. Ze služby Cosmos DB nakonec načteme data. Vzhledem k tomu, že používáme výchozí provozní model Mongoose, probíhá čtení stejným způsobem jako jakákoli jiná čtení pomocí Mongoose.
 
@@ -288,7 +288,7 @@ Tady vytvoříme základní objektový model, nadefinujeme odlišující klíč 
 
 1. Pokud se teď vrátíte na web Azure Portal, zjistíte, že máte pouze jednu kolekci ```alldata``` obsahující data modelů Family i VacationDestinations.
 
-    ![Kurz k Node.js – Snímek obrazovky webu Azure Portal se zobrazeným účtem služby Azure Cosmos DB a zvýrazněným názvem kolekce – databáze Node][alldata]
+    ![Kurz k Node.js – snímek obrazovky na webu Azure portal ukazující účet služby Azure Cosmos DB se zvýrazněným názvem kolekce – uzel databáze][alldata]
 
 1. Všimněte si také, že každý objekt má jiný atribut ```__type```, který pomáhá s odlišováním těchto dvou různých objektových modelů.
 

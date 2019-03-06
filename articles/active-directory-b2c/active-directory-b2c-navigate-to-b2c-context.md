@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9522e921b59ddc57a6039c625bf6b0af4c4b4af2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9315b3a5e1641098daf2c7dadf9fa4f09d0cb2a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181805"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438495"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Přepnutí na tenanta Azure AD B2C
 
@@ -37,7 +37,7 @@ Azure Portal se aktualizuje.  Nyní jste na webu Azure Portal přihlášeni v ko
 1. Klikněte na **Všechny služby** a pak v levém navigačním panelu vyhledejte `Azure AD B2C`.  (Pro připnutí na Úvodní panel vlevo klikněte na hvězdičku nalevo od Azure AD B2C)
 1. Kliknutím na **Azure AD B2C** otevřete podokno s funkcemi B2C.
    
-    ![Snímek obrazovky s přechodem do podokna s funkcemi B2C](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Snímek obrazovky přejděte do podokna s funkcemi B2C](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
 > Pro přístup k podoknu s funkcemi B2C musíte být globálním správcem tenanta B2C. Globální správce jiného klienta ani uživatel jakéhokoli klienta nemají k oknu přístup.  Můžete přepnout na svého klienta B2C pomocí přepínače klienta v pravém horním rohu webu Azure Portal.

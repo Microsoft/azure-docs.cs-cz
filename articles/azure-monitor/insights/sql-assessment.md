@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e20623c015f8bc80b61f07e28c49d49df73887b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 534307cfd71551de5427a196902b275a15ad44b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189434"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436370"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -186,7 +186,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Zde je snímek obrazovky zobrazující z dotazu prohledávání protokolu:<br><br> ![doporučení se nezdařilo](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Zde je snímek z dotazu prohledávání protokolu:<br><br> ![doporučení se nezdařilo](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
 
@@ -241,7 +241,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 *Jaký typ dat se shromažďují?*
 
 * Jsou shromažďovány následující typy dat:
-  * ROZHRANÍ WMI
+  * WMI
   * Registr
   * Čítače výkonu
   * Zobrazení dynamické správy SQL (DMV Sys.DM_OPERATION_STATUS).

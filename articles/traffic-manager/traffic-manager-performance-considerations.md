@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257693"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453656"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
@@ -28,7 +28,7 @@ Máte instance vašeho webu v oblastech WestUS a východní Asie. Jedna z instan
 
 Pouze dopad na výkon, který Traffic Manager může mít na svém webu je počáteční vyhledávání DNS. Kořenový server DNS od Microsoftu, který hostuje zóny trafficmanager.net zpracovává žádost DNS pro název vašeho profilu Traffic Manageru. Traffic Manager naplní a pravidelně aktualizuje kořenové servery DNS od Microsoftu na základě zásadu Traffic Manageru a výsledky testu. Takže i během počáteční vyhledávání DNS bez DNS dotazy se odesílají do Traffic Manageru.
 
-Traffic Manager se skládá z několika komponent: název serveru DNS, servery, služby rozhraní API, vrstvy úložiště a koncový bod monitorování služby. Pokud součást služby Traffic Manager selže, neexistuje žádný vliv na DNS název přidružený k profilu Traffic Manageru. Záznamy v serverech DNS od Microsoftu zůstanou beze změny. Nicméně monitorování koncových bodů a aktualizace DNS není standardní. Traffic Manager proto není možné aktualizovat DNS tak, aby odkazovala na váš web převzetí služeb při selhání, pokud primární lokalita ocitne mimo provoz.
+Traffic Manager se skládá z několika komponent: Název serveru DNS servery, služby rozhraní API, vrstvy úložiště a koncový bod monitorování služby. Pokud součást služby Traffic Manager selže, neexistuje žádný vliv na DNS název přidružený k profilu Traffic Manageru. Záznamy v serverech DNS od Microsoftu zůstanou beze změny. Nicméně monitorování koncových bodů a aktualizace DNS není standardní. Traffic Manager proto není možné aktualizovat DNS tak, aby odkazovala na váš web převzetí služeb při selhání, pokud primární lokalita ocitne mimo provoz.
 
 Překlad názvů DNS je rychlá a výsledky jsou uloženy v mezipaměti. Rychlost počáteční vyhledávání DNS závisí na servery DNS, kterou klient používá k rozlišení názvu. Klienta lze obvykle provést vyhledávání DNS v rámci přibližně 50 ms. Výsledky vyhledávání jsou uložené v mezipaměti po dobu trvání DNS Time-to-live (TTL). Výchozí hodnota TTL pro Traffic Manager je 300 sekund.
 
@@ -58,7 +58,7 @@ Nástroje na tyto weby míru DNS latenci a zobrazení přeložit IP adresy pro k
 
 * [Monitorování syntetických aplikace certifikační Autority](https://asm.ca.com/en/checkit.php)
 
-    Dříve označované jako nástroj Watchmouse kontrola webu, tento web ukazují, dobu překladu názvů DNS z více geografických oblastí najednou. Zadejte adresu URL zobrazíte dobu překladu názvů DNS, připojení a rychlost v několika geografických umístěních. Pomocí tohoto testu můžete zobrazit, které hostované služby se vrátí na jiná umístění po celém světě.
+    Dříve označované jako nástroj pro sledování myši kontrola webu, tento web ukazují, doba překladu názvů DNS z více geografických oblastí najednou. Zadejte adresu URL zobrazíte dobu překladu názvů DNS, připojení a rychlost v několika geografických umístěních. Pomocí tohoto testu můžete zobrazit, které hostované služby se vrátí na jiná umístění po celém světě.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

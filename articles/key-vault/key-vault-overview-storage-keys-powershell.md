@@ -3,16 +3,16 @@ title: Služba Azure Key Vault spravovat účet úložiště – verze prostřed
 description: Funkce účtu spravovaného úložiště poskytuje seemless integrace mezi Azure Key Vault a účet úložiště Azure.
 ms.topic: conceptual
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
+author: msmbaldwin
+ms.author: mbaldwin
 manager: barbkess
-ms.date: 11/28/2018
-ms.openlocfilehash: 3566f7514f10bc8fb1de417583c6db17bb4e091e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/01/2019
+ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104971"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405092"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Služba Azure Key Vault spravovat účet úložiště – PowerShell
 

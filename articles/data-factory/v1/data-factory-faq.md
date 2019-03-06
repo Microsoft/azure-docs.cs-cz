@@ -13,16 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 01ed1b94ffedb273321fa49653a614c659611e6a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024038"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453197"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – nejčastější dotazy
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [časté otázky – Data Factory](../frequently-asked-questions.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
@@ -70,7 +72,7 @@ Následující tabulka obsahuje seznam podporovaných objektu pro vytváření d
 | Výpočetní prostředí | activities |
 | --- | --- |
 | [Cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
-| [Služba Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
+| [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivity Machine Learning: Dávkové spouštění a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL Data Lake Analytics](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [systému SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
@@ -171,12 +173,12 @@ Můžete znovu spustit určitý řez v jednom z následujících způsobů:
 
 * Pomocí monitorování a Správa aplikací spustit znovu okno aktivity nebo řezu. Zobrazit [znovu spustit vybranou okna aktivit](data-factory-monitor-manage-app.md#perform-batch-actions) pokyny.   
 * Klikněte na tlačítko **spustit** panelu příkazů **datový ŘEZ** okno řezu na webu Azure Portal.
-* Spustit **Set-AzureRmDataFactorySliceStatus** rutiny se stavem nastavena na **čekání** řez.   
+* Spustit **Set-AzDataFactorySliceStatus** rutiny se stavem nastavena na **čekání** řez.   
 
     ```PowerShell
-    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Zobrazit [Set-AzureRmDataFactorySliceStatus] [ set-azure-datafactory-slice-status] podrobné informace o rutině.
+Zobrazit [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] podrobné informace o rutině.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak dlouho to trvala zpracovat určitý řez?
 Použití Průzkumníku okna aktivity v monitorování a Správa aplikace vědět, jak dlouho trvalo zpracování datový řez. Zobrazit [Průzkumníku okna aktivity](data-factory-monitor-manage-app.md#activity-window-explorer) podrobnosti.
@@ -191,7 +193,7 @@ Můžete také provést následující na webu Azure Portal:
 6. Měli byste vidět **doba trvání** pole s hodnotou. Tato hodnota je doba zpracování řezu.   
 
 ### <a name="how-to-stop-a-running-slice"></a>Postup zastavení spuštěného řez?
-Pokud je třeba ukončit spuštění kanálu, můžete použít [Suspend-AzureRmDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) rutiny. V současné době pozastavení kanálu nezastaví řez spuštění, které jsou v průběhu. Po dokončení spuštění v průběhu je neexistoval žádný další řez.
+Pokud je třeba ukončit spuštění kanálu, můžete použít [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) rutiny. V současné době pozastavení kanálu nezastaví řez spuštění, které jsou v průběhu. Po dokončení spuštění v průběhu je neexistoval žádný další řez.
 
 Pokud Opravdu chcete okamžitě zabránit všech spuštění, jedině bude kanál odstranit a znovu vytvořit. Pokud se rozhodnete odstranit kanálu, není potřeba odstraňovat tabulky a propojené služby používané kanálu.
 
@@ -199,9 +201,9 @@ Pokud Opravdu chcete okamžitě zabránit všech spuštění, jedině bude kaná
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
+[adf-powershell-reference]: /powershell/module/az.datafactory/
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+[set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/

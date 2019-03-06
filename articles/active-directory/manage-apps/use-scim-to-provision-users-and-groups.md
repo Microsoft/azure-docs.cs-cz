@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785c02a0187cf02df3bb3cf5d248f97a3edf74c6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b1b1fd5976189c4c74791bf2e6a80a494a2fccc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961750"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433293"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -51,7 +51,7 @@ Tento článek je rozdělený do čtyř oddílů:
 * **[Referenční dokumentace schématu uživatelů a skupin](#user-and-group-schema-reference)**  -popisuje schéma uživatele a skupiny podporováno implementací Azure AD SCIM pro aplikace mimo galerii. 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Zřizování uživatelů a skupin a aplikace s podporou SCIM
-Dá se Azure AD automaticky zřizovat přiřazené uživatele a skupiny, které se aplikace, které implementují konkrétní profil [protokol SCIM 2.0](https://tools.ietf.org/html/rfc7644). Podrobnosti profilu jsou dokumentovány v článku [znalost implementace Azure AD SCIM](#implementing-a-scim-endpoint-that-works-with-azure-ad-user-provisioning).
+Dá se Azure AD automaticky zřizovat přiřazené uživatele a skupiny, které se aplikace, které implementují konkrétní profil [protokol SCIM 2.0](https://tools.ietf.org/html/rfc7644). Podrobnosti profilu jsou popsány v pochopení implementace Azure AD SCIM.
 
 Obraťte se na svého poskytovatele aplikace nebo dokumentaci poskytovatele aplikace pro příkazy kompatibilitu s těmito požadavky.
 

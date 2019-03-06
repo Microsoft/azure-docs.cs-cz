@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: magoedte
-ms.openlocfilehash: b42eb963e33c14b003c053bb0f7fca6361dbd555
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: d09ce810605055b5be53219f254beb6660addbee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985100"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445700"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolů a pracovním prostorům ve službě Azure Monitor
 Azure Monitor úložiště vytvářet protokoly dat v pracovním prostoru Log Analytics, která je v podstatě kontejner, který obsahuje data a informace o konfiguraci. Ke správě přístupu k protokolování dat, můžete provádět různé úlohy správy související s pracovními prostory. Vy nebo další členové vaší organizace můžete používat víc pracovních prostorů ke správě různých sad dat, která se shromažďují ze všech částí vaší infrastruktury IT.
@@ -153,7 +153,7 @@ Chcete-li nakonfigurovat režim přístupu v šabloně Azure Resource Manageru, 
 
 
 ## <a name="manage-accounts-and-users"></a>Správa účtů a uživatelů
-Oprávnění k pracovnímu prostoru, které se použijí s určitým uživatelem definovanými v jejich [režim přístupu](#access-mode) a [režim řízení přístupu](#access-control-mode) pracovního prostoru. **Oprávnění k pracovním prostorům** se použijí, když uživatel přistupuje k jakékoli pracovní prostor pomocí **zaměřené na pracovní prostor** v [zaměřené na pracovní prostor režimu](#access-modes). **Oprávnění k prostředkům** se použijí, když uživatel zobrazuje pracovní prostor se **použít oprávnění prostředků nebo pracovní prostor** [režim řízení přístupu](#access-control-mode) pomocí [zaměřené na prostředek režimu ](#access-modes).
+Oprávnění k pracovnímu prostoru, které se použijí pro určitého uživatele jsou určené jejich přístupovém režimu a [režim řízení přístupu](#access-control-mode) pracovního prostoru. **Oprávnění k pracovním prostorům** se použijí, když uživatel přistupuje k jakékoli pracovní prostor pomocí **zaměřené na pracovní prostor** v [zaměřené na pracovní prostor režimu](#access-modes). **Oprávnění k prostředkům** se použijí, když uživatel zobrazuje pracovní prostor se **použít oprávnění prostředků nebo pracovní prostor** [režim řízení přístupu](#access-control-mode) pomocí [zaměřené na prostředek režimu ](#access-modes).
 
 ### <a name="workspace-permissions"></a>Oprávnění pracovního prostoru.
 Každý pracovní prostor může mít přiřazených více účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup ke správě [přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md). 

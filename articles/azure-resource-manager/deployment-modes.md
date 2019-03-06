@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 618412f27efb71caf6e044b4768d7be00f0d0f47
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009236"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407508"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 
@@ -26,7 +26,7 @@ Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Re
 
 ## <a name="complete-mode"></a>Úplný režim
 
-V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou v této šabloně specifikovaný, ale není nasazena, protože [podmínku](resource-manager-templates-resources.md#condition) vyhodnotí na hodnotu false, nebudou odstraněny.
+V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou v této šabloně specifikovaný, ale není nasazena, protože [podmínku](resource-group-authoring-templates.md#condition) vyhodnotí na hodnotu false, nebudou odstraněny.
 
 Existují některé rozdíly v jak postupovat při odstranění úplný režim typy prostředků. Nadřazené prostředky jsou po není v šabloně, která je nasazena v režimu dokončení automaticky odstraní. Pokud není v šabloně nejsou automaticky odstraněny některé podřízené prostředky. Těchto podřízených prostředků se odstraní, ale pokud se nadřazený prostředek odstraní. 
 

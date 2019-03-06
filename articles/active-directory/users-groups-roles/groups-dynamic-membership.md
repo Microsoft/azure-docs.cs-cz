@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21e300c2540ddefb79fcaf593f752eef7e2c2e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010187"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450664"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -318,7 +318,7 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Rozšíření vlastností a vlastností vlastního rozšíření
 
-Atributy rozšíření a vlastní extenson vlastnosti jsou podporovány jako řetězec vlastnosti pravidla dynamického členství. Atributy rozšíření jsou synchronizované z místní Windows Server AD a využijte formát "ExtensionAttributeX", kde X je rovno 1 – 15. Tady je příklad pravidla, která používá jako vlastnost atributu rozšíření:
+Vlastnosti vlastního rozšíření a atributů rozšíření jsou podporovány jako řetězec vlastnosti pravidla dynamického členství. Atributy rozšíření jsou synchronizované z místní Windows Server AD a využijte formát "ExtensionAttributeX", kde X je rovno 1 – 15. Tady je příklad pravidla, která používá jako vlastnost atributu rozšíření:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")

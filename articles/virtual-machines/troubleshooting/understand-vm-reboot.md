@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 734889905719e0b15b32988e90b48721372076cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329145"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433157"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Vysvětlení restartování systému pro virtuální počítač Azure
 
@@ -102,7 +102,7 @@ Všechny virtuální počítače na tomto hostiteli jsou automaticky přemístit
 
 Ve výjimečných případech může být nutné Azure provozní tým provádět činnosti údržby zajistit celkový stav platformy Azure. Toto chování může mít vliv na dostupnost virtuálních počítačů, a to situace obvykle vzniká stejné akce automatického obnovení jak bylo popsáno dříve.  
 
-Neplánované maintenances patří:
+Neplánovaná Údržba patří:
 
 - Defragmentace urgentní uzlu
 - Aktualizace přepínač urgentní sítě

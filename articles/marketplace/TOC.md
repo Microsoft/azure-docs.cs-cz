@@ -99,12 +99,12 @@
 #### [Odstranění nabídky](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
 
 ### Testovací verze
-#### [Co je testovací verze?](./cloud-partner-portal-orig/what-is-test-drive.md)
-#### [Testovací verze Azure Resource Manageru](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-#### [Hostovaná testovací verze](./cloud-partner-portal-orig/hosted-test-drive.md)
-#### [Testovací verze aplikace logiky](./cloud-partner-portal-orig/logic-app-test-drive.md)
-#### [Transformace příkladů pro testovací verzi](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-#### [Marketing a osvědčené postupy](./cloud-partner-portal-orig/marketing-and-best-practices.md)
+#### [Co je testovací verze?](./cloud-partner-portal/test-drive/what-is-test-drive.md)
+#### [Testovací verze Azure Resource Manageru](./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md)
+#### [Hostovaná testovací verze](./cloud-partner-portal/test-drive/hosted-test-drive.md)
+#### [Testovací verze aplikace logiky](./cloud-partner-portal/test-drive/logic-app-test-drive.md)
+#### [Transformace příkladů pro testovací verzi](./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md)
+#### [Marketing a osvědčené postupy](./cloud-partner-portal/test-drive/marketing-and-best-practices.md)
 
 ### [Nabídka aplikace Azure](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [Požadavky](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)

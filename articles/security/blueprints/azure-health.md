@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441793"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -48,7 +48,7 @@ Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li uprav
 
 -   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro podrobný plán a v příkladu scénáři použití.
 
--   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a implementovat pracovní stanice privilegovaný přístup k bezpečné správě bsed cloudové služby a řešení. 
+-   [Rozšíření IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) toto řešení ukazuje, jak migrovat jako místní řešení založená na jazyce SQL do Azure a provádět stanici privilegovaný přístup k bezpečné správě cloudových služeb a řešení. 
 
 ## <a name="solution-components"></a>Součásti řešení
 

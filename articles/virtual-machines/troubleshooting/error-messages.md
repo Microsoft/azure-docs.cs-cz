@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118971"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437594"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Vysvětlení běžných chybových zpráv při správě virtuálních počítačů v Azure
 
@@ -99,8 +99,8 @@ Tato část uvádí běžné chybové zprávy, se můžete setkat při správě 
 |  InvalidParameter  |  "Zadané heslo musí být mezi {0}-{1} znaků dlouhé a musí splňovat aspoň {2} z požadavky na složitost hesla z následujících možností: <ol><li> Obsahuje velké písmeno</li><li>Obsahuje malé písmeno</li><li>Obsahuje numerickou číslici</li><li>Obsahuje speciální znak.</li></ol>  |
 |  InvalidParameter  |  Zadané uživatelské jméno správce není povolené.  |
 |  InvalidParameter  |  Pokud je virtuální počítač vytvořený z platformy nebo uživatelské image, nejde připojit existující disk s operačním systém.  |
-|  InvalidParameter  |  Název kontejneru {0} je neplatný. Názvy kontejnerů musí být dlouhý 3 až 63 znaků a může obsahovat jenom malé alfanumerické znaky a pomlčky. Spojovníkem musí být dlouhé a za nímž následuje alfanumerický znak.  |
-|  InvalidParameter  |  Název kontejneru {0} v adrese URL {1} je neplatný. Názvy kontejnerů musí být dlouhý 3 až 63 znaků a může obsahovat jenom malé alfanumerické znaky a pomlčky. Spojovníkem musí být dlouhé a za nímž následuje alfanumerický znak.  |
+|  InvalidParameter  |  Název kontejneru {0} je neplatný. Názvy kontejnerů musí být dlouhý 3 až 63 znaků a může obsahovat jenom malé alfanumerické znaky a pomlčky. Spojovníkem musí být před a za nímž následuje alfanumerický znak.  |
+|  InvalidParameter  |  Název kontejneru {0} v adrese URL {1} je neplatný. Názvy kontejnerů musí být dlouhý 3 až 63 znaků a může obsahovat jenom malé alfanumerické znaky a pomlčky. Spojovníkem musí být před a za nímž následuje alfanumerický znak.  |
 |  InvalidParameter  |  Název objektu blob v adrese URL {0} obsahuje lomítko. V současné době se nepodporuje pro disky.  |
 |  InvalidParameter  |  Identifikátor URI {0} vzhled není správný identifikátor URI objektu blob.  |
 |  InvalidParameter  |  Disk s názvem "{0}se už používá stejnou logickou jednotku: {1}.  |

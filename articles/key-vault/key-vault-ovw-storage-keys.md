@@ -8,13 +8,13 @@ ms.service: key-vault
 author: prashanthyv
 ms.author: pryerram
 manager: barbkess
-ms.date: 10/03/2018
-ms.openlocfilehash: 684d6a87b5cf33a3ebed36381d2db21b285a6f0c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/01/2019
+ms.openlocfilehash: dc743f7e8ebaebf2b253a1c2c199133bc4266dd5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338803"
+ms.locfileid: "57404361"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -24,12 +24,25 @@ ms.locfileid: "57338803"
 > - Použití [identita spravované služby Azure AD](/azure/active-directory/managed-identities-azure-resources/) při spouštění v Azure. Spravovat identity odebrat potřebné pro ověřování klientů všechno dohromady a ukládání přihlašovacích údajů v nebo s vaší aplikací.
 > - Používejte na základě řízení přístupu Role (RBAC) pro správu autorizace, která je také podporována službou Key Vault.
 
-- Azure Key Vault se spravuje klíče z Azure Storage účtu (ASA).
-    - Azure Key Vault interně, můžete zobrazit seznam klíčů (sync) pomocí účtu služby Azure Storage.    
-    - Služba Azure Key Vault obnoví (obmění) klíče pravidelně.
-    - Hodnoty klíče se nikdy vrátí odpověď na volajícího.
-    - Služba Azure Key Vault slouží ke správě klíčů účtů úložiště a klasické účty úložiště.
-    
+[Účtu služby Azure storage](/azure/storage/storage-create-storage-account) používá pověření, která se skládá z názvu účtu a klíč. Klíč se automaticky generuje a obsluhuje více jako "heslo" na rozdíl od kryptografický klíč. Key Vault, můžete spravovat tyto klíče účtu úložiště jako ukládání [tajných kódů služby Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). 
+
+## <a name="overview"></a>Přehled
+
+Účet úložiště, že funkce provádí několik funkcí správy vaším jménem spravované služby Key Vault:
+
+- Seznamy (synchronizace) klíče účtu služby Azure storage.
+- Obnoví (obmění) klíče pravidelně.
+- Spravuje klíče pro účty úložiště a účty úložiště Classic.
+- Hodnoty klíče se nikdy vrátí odpověď na volajícího.
+
+Při použití funkce klíče účtu spravovaného úložiště:
+
+- **Povolte pouze služby Key Vault ke správě vašeho klíče účtu úložiště.** Nepokoušejte se spravovat sami, jak budete rušit procesy služby Key Vault.
+- **Nepovolit klíče účtu úložiště lze spravovat pomocí více než jeden objekt služby Key Vault**.
+- **Klíče účtu úložiště ručně negenerovat**. Doporučujeme vám, můžete obnovit pomocí služby Key Vault.
+
+Následující příklad ukazuje, jak povolit služby Key Vault ke správě vašeho klíče účtu úložiště.
+
 > [!IMPORTANT]
 > Tenanta služby Azure AD poskytuje každý registrované aplikaci  **[instanční objekt služby](/azure/active-directory/develop/developer-glossary#service-principal-object)**, který slouží jako identitu aplikace. ID aplikace instančního objektu se používá při zadání autorizaci pro přístup k další prostředky Azure prostřednictvím řízení přístupu na základě role (RBAC). Protože Key Vault je aplikace Microsoft, je předem registrovánu ve všech tenantů Azure AD v rámci stejné ID aplikace v rámci každé cloudu Azure:
 > - ID aplikace používat klienty Azure AD v cloudu Azure government `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.

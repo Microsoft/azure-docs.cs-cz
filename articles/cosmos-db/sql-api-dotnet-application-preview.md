@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fa2657fbc4e5fe734b8e026494351fef2aea1c2a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037119"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454200"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .net ve verzi preview SDK 
 
@@ -28,7 +28,7 @@ ms.locfileid: "54037119"
 
 V tomto kurzu se dozvíte, jak pomocí služby Azure Cosmos DB k ukládání a přístup k datům z aplikace ASP.NET MVC, která je hostována v Azure. V tomto kurzu pomocí .net SDK V3, který je v současné době ve verzi preview. Následující obrázek ukazuje webové stránky, které vytvoříte pomocí ukázky v tomto článku:
  
-![Snímek obrazovky webové aplikace MVC pro seznam úkolů vytvořené v tomto kurzu – podrobný kurz ASP.NET MVC](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
+![Snímek obrazovky aplikace seznam úkolů vytvořené v tomto kurzu – podrobný kurz ASP.NET MVC krok za krokem webové aplikace MVC](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
 
 Pokud nemáte čas k dokončení tohoto kurzu, si můžete stáhnout úplný ukázkový projekt z [Githubu][GitHub]. 
 
@@ -55,7 +55,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
 
 * Microsoft Azure SDK pro .NET pro Visual Studio 2017, k dispozici prostřednictvím Instalačního programu pro Visual Studio.
 
-Všechny snímky obrazovky v tomto článku byly pořízeny pomocí Microsoft Visual Studio Community 2017. Pokud je systém konfigurován s jinou verzí, je možné, že vaše obrazovky a možnosti nemusí mírně lišit, ale pokud splníte výše uvedené požadavky tohoto řešení by mělo fungovat.
+Snímky obrazovky v tomto článku byly pořízeny pomocí nástroje Microsoft Visual Studio Community 2017. Pokud je systém konfigurován s jinou verzí, je možné, že vaše obrazovky a možnosti nemusí mírně lišit, ale pokud splníte výše uvedené požadavky tohoto řešení by mělo fungovat.
 
 ## <a name="create-an-azure-cosmos-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos
 
@@ -91,7 +91,7 @@ Když teď máme většinu kódu ASP.NET MVC framework, kterou potřebujeme pro 
 
 1. Sada Azure Cosmos DB .NET SDK se připravuje a distribuuje jako balíček NuGet. Chcete-li získat balíček NuGet v sadě Visual Studio, používat Správce balíčků NuGet v sadě Visual Studio kliknutím pravým tlačítkem myši na projekt v **Průzkumníka řešení** a pak vyberte **spravovat balíčky NuGet**.
    
-   ![Snímek obrazovky možností nabídky po kliknutí pravým tlačítkem na projekt webové aplikace v Průzkumníkovi řešení se zvýrazněnou možností Spravovat balíčky NuGet.](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
+   ![Snímek obrazovky s možností klikněte pravým tlačítkem na projekt webové aplikace v Průzkumníkovi řešení se spravovat balíčky NuGet zvýrazní.](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
    
 2. Zobrazí se dialogové okno **Správa balíčků NuGet**. Nuget **Procházet** zadejte **Microsoft.Azure.Cosmos**. Z výsledků nainstalujte **Microsoft.Azure.Cosmos** 3.0.0.1-preview verze. Stáhne a nainstaluje balíček služby Azure Cosmos DB a jeho závislosti, jako je například Newtonsoft.Json. Vyberte **OK** v **ve verzi Preview** okně a **souhlasím** v **přijetí licence** okno pro dokončení instalace.
    
@@ -129,7 +129,7 @@ Teď k této aplikaci MVC přidejme modely, zobrazení a kontrolery:
 
 1. Vyberte **kontroler MVC 5 – prázdný** a vyberte **přidat**.
 
-   ![Snímek obrazovky dialogového okna Přidat vygenerované uživatelské rozhraní se zvýrazněnou možností Kontroler MVC 5 – prázdný](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-controller-add-scaffold.png)
+   ![Snímek obrazovky dialogového okna Přidat vygenerované uživatelské rozhraní s kontroler MVC 5 – prázdný zvýrazněnou možností](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-controller-add-scaffold.png)
 
 1. Pojmenujte nový kontroler, ** ItemController a nahraďte kód v tomto souboru následujícím kódem:
 
@@ -151,7 +151,7 @@ V dalším kroku vytvoříme následující tři zobrazení:
 
 1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na prázdnou **položky** složku, která sadě Visual Studio vytvoří za vás během přidávání  **ItemController** dříve, klikněte na tlačítko **přidat**a potom klikněte na tlačítko **zobrazení**.
    
-   ![Snímek obrazovky Průzkumníka řešení, na kterém se zobrazuje složka Položka vytvořená nástrojem Visual Studio se zvýrazněnými příkazy Přidat zobrazení](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
+   ![Snímek obrazovky Průzkumníka řešení zobrazuje složka položka vytvořená nástrojem zvýrazněnými příkazy přidat zobrazení Visual Studio](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
 
 2. V **přidat zobrazení** dialogovém okně aktualizací následujících hodnot:
    
@@ -241,7 +241,7 @@ Teď Pokud aplikaci spouštíte, zavolá do vašeho **ItemController** , která 
 
 Pokud teď projekt sestavíte a spustíte, mělo by se zobrazit něco přibližně takového.    
 
-![Snímek obrazovky webové aplikace vytvořené v tomto databázovém kurzu](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
+![Snímek obrazovky s webovou aplikaci seznamu úkolů vytvořené v tomto kurzu databáze](./media/sql-api-dotnet-application-preview/build-and-run-the-project-now.png)
 
 
 ## <a name="run-the-application"></a>Krok 6: Místní spuštění aplikace
@@ -250,17 +250,17 @@ Chcete-li aplikaci otestovat na místním počítači, použijte následující 
 
 1. Stisknutím klávesy F5 v sadě Visual Studio k vytvoření aplikace v režimu ladění. Po sestavení aplikace by se měl spustit prohlížeč se stránkou s prázdnou mřížkou, kterou jsme viděli dříve:
    
-   ![Snímek obrazovky webové aplikace vytvořené v tomto databázovém kurzu](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item-a.png)
+   ![Snímek obrazovky s webovou aplikaci seznamu úkolů vytvořené v tomto kurzu databáze](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item-a.png)
        
 2. Klikněte na odkaz **Vytvořit nový** a do polí **Název** a **Popis** zadejte hodnoty. Nechte **dokončeno** zaškrtávací políčko nevybranou jinak nová položka přidána ve stavu dokončení a nezobrazí v úvodním seznamu.
    
 3. Klikněte na tlačítko **vytvořit** a budete přesměrováni zpět **Index** zobrazení a položky se zobrazí v seznamu. Můžete přidat několik více položek do seznamu úkolů.
 
-    ![Snímek obrazovky zobrazení pro index](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item.png)
+    ![Snímek obrazovky zobrazení Index](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-create-an-item.png)
   
 4. Klikněte na **Upravit** vedle **položky** v seznamu. Přejdete na zobrazení **Upravit**, kde můžete aktualizovat jakoukoli vlastnost objektu, včetně příznaku **Dokončeno**. Pokud označíte příznak **Dokončeno** a kliknete na **Uložit**, **položka** se odstraní ze seznamu neúplných úkolů.
    
-   ![Snímek obrazovky zobrazení Index se zaškrtnutým políčkem Dokončeno](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-completed-item.png)
+   ![Snímek obrazovky zobrazení Index se zaškrtnutým políčkem dokončeno](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-completed-item.png)
 
 5. Až budete s testováním aplikace hotovi, stiskněte Ctrl+F5, aby se ukončilo ladění aplikace. Jste připraveni aplikaci nasadit!
 

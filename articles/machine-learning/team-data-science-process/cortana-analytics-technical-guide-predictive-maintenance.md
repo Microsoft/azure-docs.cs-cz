@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: dad97fab8c4c8fe997ee9b8d9ac8c7dc6c0d1e48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0e62edd156e8fafbf16437af33941a99f4607fd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454466"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440603"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 
@@ -195,7 +195,7 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
      <br/>
      ![Poslední zobrazení](./media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
      <br/>
-   * Chcete naplánovat aktualizaci dat, najeďte myší **PredictiveMaintenanceAerospace** datovou sadu, klikněte na tlačítko ![ikonu tří teček](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) a klikněte na tlačítko **naplánovat aktualizaci**.
+   * Chcete naplánovat aktualizaci dat, najeďte myší **PredictiveMaintenanceAerospace** datovou sadu, klikněte na tlačítko ![ikonu se třemi tečkami](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) a klikněte na tlačítko **naplánovat aktualizaci**.
      <br/>
      **Poznámka:** Pokud se zobrazí upozornění masáž, klikněte na tlačítko **upravit přihlašovací údaje** a ujistěte se, že vaše přihlašovací údaje databáze jsou stejné jako je popsáno v kroku 1.
      <br/>

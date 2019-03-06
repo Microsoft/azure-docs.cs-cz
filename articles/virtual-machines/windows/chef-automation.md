@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6659b49ecfbcb6bf571fccc258a65aa547f72f86
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663181"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453809"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -175,7 +175,7 @@ knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 Dále [stáhnout a nainstalovat](https://downloads.chef.io/chef-workstation/) Chef pracovní stanice.
 Pracovní stanice Chef výchozí umístění instalace. Tato instalace může trvat několik minut.
 
-Na ploše uvidíte "Powershellu SH", což je prostředí načteny pomocí nástroje, které budete potřebovat pro interakci s produkty Chef. Prostředí PowerShell SH zpřístupní nové příkazy ad-hoc, jako například `chef-run` příkazy i tradiční Chef rozhraní příkazového řádku, jako například `chef`. Zobrazit nainstalované verze aplikace Chef pracovní stanice a nástrojů Chefu s `chef -v`. Můžete také zkontrolujte pracovní stanice verzi výběrem "O Chefu pracovní stanice" z aplikace pracovní stanice Chef.
+Na ploše uvidíte "Powershellu SH", což je prostředí načteny pomocí nástroje, které budete potřebovat pro interakci s produkty Chef. SH Powershellu zpřístupní nové příkazy ad hoc, jako například `chef-run` příkazy i tradiční Chef rozhraní příkazového řádku, jako například `chef`. Zobrazit nainstalované verze aplikace Chef pracovní stanice a nástrojů Chefu s `chef -v`. Můžete také zkontrolujte pracovní stanice verzi výběrem "O Chefu pracovní stanice" z aplikace pracovní stanice Chef.
 
 `chef --version` by měla vrátit vypadat:
 

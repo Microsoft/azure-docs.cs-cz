@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 433386ac873b5064b3f71650480b0807e96ddbbd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669514"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448777"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace dat pro rozpoznávání tváře do jiného předplatného pro rozpoznávání tváře
 
@@ -83,7 +83,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>Načtení ID snímku
 
-Snímku, přičemž – metoda je asynchronní, takže budete muset počkat na jeho dokončení (snímek, který operace se nedá zrušit.). V tomto kódu `WaitForOperation` metoda monitoruje asynchronní volání, kontrola stavu každých 100 ms. Po dokončení operace bude moct načíst ID operace. Můžete ji získat pomocí analýzy `OperationLocation` pole. 
+Snímku, přičemž – metoda je asynchronní, takže budete muset počkat na jeho dokončení (snímek, který nelze zrušit operace). V tomto kódu `WaitForOperation` metoda monitoruje asynchronní volání, kontrola stavu každých 100 ms. Po dokončení operace bude moct načíst ID operace. Můžete ji získat pomocí analýzy `OperationLocation` pole. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);

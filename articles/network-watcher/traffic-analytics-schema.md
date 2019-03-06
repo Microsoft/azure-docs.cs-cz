@@ -1,6 +1,6 @@
 ---
 title: Azure traffic analytics schématu | Dokumentace Microsoftu
-description: Pochopení schématu Analýza provozu analyzuje protokoly toků skupin zabezpečení sítě Azure.
+description: Pochopení schématu Traffic Analytics analyzovat protokoly toků skupin zabezpečení sítě Azure.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 34c455b5bf77906d9b6525731c09b62f15e4ccd2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b46a89e331c63aadc76b856b56b7b40bbc626193
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313221"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453061"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 7e5d04f3ead4353c88a6b56ab530f41ff15022d1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005382"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444119"
 ---
-# <a name="computer-groups-in-azure-monitor-log-quereies"></a>Skupiny počítačů ve službě Azure Monitor protokolu quereies
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v dotazů na protokoly Azure monitoru
 Skupiny počítačů ve službě Azure Monitor vám umožní oboru [protokolu dotazy](../log-query/log-query-overview.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v protokolu dotazu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]

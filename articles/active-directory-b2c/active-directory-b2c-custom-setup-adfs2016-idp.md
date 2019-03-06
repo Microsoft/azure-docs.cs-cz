@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b76162606c4d21cb6979d410fbaaaafc539cf403
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b53e052182e3d775bdd3309bfd1e986c4f5896ed
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668646"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432256"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -167,7 +167,7 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 10. V **šablony pravidla deklarace identity**vyberte **odesílat atributy LDAP jako deklarace identity**.
 11. Zadejte **název pravidla deklarace identity**. Pro **úložiště atributů**vyberte **služby Active Directory vyberte**, přidejte následující deklarace identity a pak klikněte na tlačítko **Dokončit** a **OK**.
 
-    | LDAP attrubute | Typ odchozí deklarace |
+    | Atribut LDAP | Typ odchozí deklarace |
     | -------------- | ------------------- |
     | User-Principal-Name | userPrincipalName (Hlavní název uživatele) |
     | příjmení | family_name |

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 445c5600-e340-4724-a9cb-3cfaf5770b70
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c82d5029e08ff3656c6d8c08478a702f832b7067
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d62d6f43269fb9319f40315742d5e16701c6ea01
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867758"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>Kurz: Integrace Azure Active Directory s Chromeriver
 

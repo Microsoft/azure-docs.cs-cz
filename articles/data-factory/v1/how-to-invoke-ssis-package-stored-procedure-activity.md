@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c7731de810dab8b252294d694ace5df3f5d0a185
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 859cd6cfd3db68dad2607f1dc8905facb43dd290
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427555"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453767"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě Azure Data Factory
 Tento článek popisuje, jak vyvolat z kanálu služby Azure Data Factory balíčku SSIS pomocí aktivity uložených procedur. 
@@ -165,7 +165,9 @@ Další informace o monitorování kanálů najdete v tématu [monitorování a 
 ## <a name="azure-powershell"></a>Azure PowerShell
 V této části použijete Azure PowerShell k vytvoření kanálu Data Factory s aktivitou uložené procedury, která volá balíčku SSIS.
 
-Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Následující postup předvádí kroky k vytvoření datové továrny. Vytvoření kanálu s aktivitou uložené procedury v této datové továrně. Aktivity uložených procedur spouští uloženou proceduru v databázi SSISDB pro spuštění vašeho balíčku služby SSIS.
@@ -180,7 +182,7 @@ Následující postup předvádí kroky k vytvoření datové továrny. Vytvoře
 2. Pokud chcete vytvořit skupinu prostředků Azure, spusťte následující příkaz: 
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'eastus'
     ``` 
     Pokud již skupina prostředků existuje, nepřepisujte ji. Přiřaďte proměnné `$ResourceGroupName` jinou hodnotu a spusťte tento příkaz znovu. 
 3. Definujte proměnnou název datové továrny. 
@@ -192,10 +194,10 @@ Následující postup předvádí kroky k vytvoření datové továrny. Vytvoře
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. Vytvořit datovou továrnu, spusťte následující příkaz **New-AzureRmDataFactory** rutiny použitím vlastností Location a ResourceGroupName z proměnné $ResGrp: 
+5. Vytvořit datovou továrnu, spusťte následující příkaz **New-AzDataFactory** rutiny použitím vlastností Location a ResourceGroupName z proměnné $ResGrp: 
     
     ```powershell       
-    $df = New-AzureRmDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
+    $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
     ```
 
 Je třeba počítat s následujícím:
@@ -227,10 +229,10 @@ Vytvořte propojenou službu, která propojí vaši databázi Azure SQL, který 
         }
     ```
 2. V **prostředí Azure PowerShell**, přepněte **C:\ADF\RunSSISPackage** složky.
-3. Spustit **New-AzureRmDataFactoryLinkedService** rutina pro vytvoření propojené služby: **AzureSqlDatabaseLinkedService**. 
+3. Spustit **New-AzDataFactoryLinkedService** rutina pro vytvoření propojené služby: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
-    New-AzureRmDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
+    New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
 ### <a name="create-an-output-dataset"></a>Vytvoření výstupní datové sady
@@ -252,10 +254,10 @@ Tento výstupní datová sada je fiktivní datovou sadu, která řídí plán ka
         }
     }
     ```
-2. Spustit **New-AzureRmDataFactoryDataset** rutina pro vytvoření datové sady. 
+2. Spustit **New-AzDataFactoryDataset** rutina pro vytvoření datové sady. 
 
     ```powershell
-    New-AzureRmDataFactoryDataset $df -File ".\OutputDataset.json"
+    New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložené procedury 
@@ -294,24 +296,24 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivita vyvol
     }    
     ```
 
-2. Pokud chcete vytvořit kanál: **RunSSISPackagePipeline**, spusťte **New-AzureRmDataFactoryPipeline** rutiny.
+2. Pokud chcete vytvořit kanál: **RunSSISPackagePipeline**, spusťte **New-AzDataFactoryPipeline** rutiny.
 
     ```powershell
-    $DFPipeLine = New-AzureRmDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
+    $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
     ```
 
 ### <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-2. Spustit **Get-AzureRmDataFactorySlice** získat tak podrobné údaje o všech řezech datové sady výstupní datovou sadu **, která je výstupní tabulkou kanálu.
+2. Spustit **Get-AzDataFactorySlice** získat tak podrobné údaje o všech řezech datové sady výstupní datovou sadu **, která je výstupní tabulkou kanálu.
 
     ```PowerShell
-    Get-AzureRmDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. 
-3. Spuštěním rutiny **Get-AzureRmDataFactoryRun** získáte podrobnosti o spouštění aktivity pro určitý řez.
+3. Spustit **Get-AzDataFactoryRun** získáte podrobnosti o spouštění aktivity pro určitý řez.
 
     ```PowerShell
-    Get-AzureRmDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 
     Rutinu můžete spouštět opakovaně, dokud se u řezu neobjeví stav **Připraveno** nebo **Nezdařilo se**. 

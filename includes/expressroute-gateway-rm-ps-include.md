@@ -5,45 +5,39 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7e33d4ed7100287ef6b22aa4c90fd52671363902
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c50e2b082c3181c37e9d129766d4bf400075d5a8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31613615"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410668"
 ---
-Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v následujícím seznamu odkaz konfigurace. Názvy a další nastavení jsou také popsány v tomto seznamu. Tento seznam nepoužívá přímo v žádném z kroků, i když přidáme proměnné na základě hodnot v tomto seznamu. Seznam, aby používal jako odkaz, můžete zkopírovat nahraďte hodnoty vlastními.
-
-**Seznam odkazů konfigurace**
+Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odkaz Konfigurace virtuální sítě. Další nastavení a názvy jsou také popsány v tomto seznamu. I když můžeme přidat proměnné na základě hodnot v tomto seznamu, budeme není přímo v žádném z kroků, pomocí tohoto seznamu. Můžete zkopírovat seznam, aby používal jako odkaz, nahraďte hodnoty vlastními.
 
 * Název virtuální sítě = "TestVNet"
-* Virtuální adresní prostor sítě = 192.168.0.0/16
+* Adresní prostor virtuální sítě = 192.168.0.0/16
 * Skupina prostředků = "TestRG"
 * Subnet1 Name = "FrontEnd" 
-* Adresní prostor Subnet1 = "192.168.1.0/24"
-* Název podsítě brány: "GatewaySubnet" název musí být vždy podsíť brány *GatewaySubnet*.
-* Adresního prostoru podsítě brány = "192.168.200.0/26"
+* Subnet1 adresní prostor = "192.168.1.0/24"
+* Název podsítě brány: "GatewaySubnet" je nutné vždy pojmenovat podsíť brány *GatewaySubnet*.
+* Adresní prostor podsítě brány = "192.168.200.0/26"
 * Oblast = "East US"
-* Název brány = "GW"
-* Název brány IP = "GWIP"
-* Konfigurace IP brány Name = "gwipconf"
-* Typ = "ExpressRoute" Tento typ je požadovaná konfigurace ExpressRoute.
-* Název veřejné IP adresy brány = "gwpip"
+* Název brány = "GS"
+* Název IP brány = "GWIP"
+* Konfiguraci IP adresy brány Name = "gwipconf"
+* Typ = "ExpressRoute" Tento typ je požadován pro konfiguraci služby ExpressRoute.
+* Název veřejné IP brány = "gwpip"
 
-## <a name="add-a-gateway"></a>Přidat bránu
-1. Připojení k předplatnému Azure.
+## <a name="add-a-gateway"></a>Přidání brány
+1. Připojte se ke svému předplatnému Azure.
 
-  ```powershell 
-  Connect-AzureRmAccount
-  Get-AzureRmSubscription 
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
-  ```
-2. Deklarace proměnných pro toto cvičení. Nezapomeňte upravit ukázku nastavení, které chcete použít.
+  [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
+2. Deklarujte proměnné pro účely tohoto cvičení. Nezapomeňte upravit vzorku tak, aby odrážely nastavení, které chcete použít.
 
-  ```powershell 
+  ```azurepowershell-interactive 
   $RG = "TestRG"
   $Location = "East US"
   $GWName = "GW"
@@ -51,65 +45,65 @@ Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v násled
   $GWIPconfName = "gwipconf"
   $VNetName = "TestVNet"
   ```
-3. Uložte objekt virtuální sítě jako proměnnou.
+3. Store objekt virtuální sítě jako proměnnou.
 
-  ```powershell
-  $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
+  ```azurepowershell-interactive
+  $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
   ```
-4. Přidáte podsíť brány k virtuální síti. Podsíť brány musí mít název "GatewaySubnet". Měli byste vytvořit podsíť brány, který je/27 nebo větší (/ 26, / 25 atd.).
+4. Přidáte podsíť brány k virtuální síti. Podsíť brány musí mít název "GatewaySubnet". Měli byste vytvořit podsíť brány, která je/27 nebo větší (/ 26, / 25 atd.).
 
-  ```powershell
-  Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+  ```azurepowershell-interactive
+  Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
   ```
 5. Nastavte konfiguraci.
 
-  ```powershell
-  $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+  ```azurepowershell-interactive
+  $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
   ```
-6. Uložte jako proměnnou a podsíť brány.
+6. Podsíť brány Store jako proměnnou.
 
-  ```powershell
-  $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+  ```azurepowershell-interactive
+  $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
   ```
-7. Vyžádejte si veřejnou IP adresu. Před vytvořením brány je požadována adresa IP. Nelze zadat IP adresu, která chcete použít; se přidělí dynamicky. Tuto IP adresu použijete v části s další konfigurací. AllocationMethod musí být dynamické.
+7. Vyžádejte si veřejnou IP adresu. IP adresa je požadována před vytvořením brány. Nelze zadat IP adresu, kterou chcete použít; se přidělí dynamicky. Tuto IP adresu použijete v části s další konfigurací. AllocationMethod musí být dynamické.
 
-  ```powershell
-  $pip = New-AzureRmPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
+  ```azurepowershell-interactive
+  $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
   ```
-8. Vytvoření konfigurace pro bránu. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. V tomto kroku určíte konfigurace, který se použije při vytváření brány. Tento krok není ve skutečnosti vytvořit objekt brány. Podle následující ukázky vytvořte vlastní konfiguraci brány.
+8. Vytvořte konfiguraci brány. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. V tomto kroku musíte zadat konfigurace, který se použije při vytváření brány. Tento krok nevytvoří objektu brány. Podle následující ukázky vytvořte vlastní konfiguraci brány.
 
-  ```powershell
-  $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+  ```azurepowershell-interactive
+  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
   ```
-9. Vytvoření brány. V tomto kroku **- GatewayType** je obzvláště důležité. Musíte použít hodnotu **ExpressRoute**. Po spuštění těchto rutin, může trvat brány 45 minut nebo déle vytvořit.
+9. Vytvoření brány. V tomto kroku **- GatewayType** je obzvláště důležité. Je nutné použít hodnotu **ExpressRoute**. Po spuštění těchto rutin, brány může trvat 45 minut nebo více otázek a vytvořit.
 
-  ```powershell
-  New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
+  ```azurepowershell-interactive
+  New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
   ```
 
 ## <a name="verify-the-gateway-was-created"></a>Ověřte, že vytvoření brány
-Chcete-li ověřit, zda byl vytvořen brány použijte následující příkazy:
+Pokud chcete ověřit vytvoření brány použijte následující příkazy:
 
-```powershell
-Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
+```azurepowershell-interactive
+Get-AzVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
-## <a name="resize-a-gateway"></a>Změnit velikost brány
-Existuje řada [SKU brány](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Tento příkaz můžete kdykoli změnit skladová položka brány.
+## <a name="resize-a-gateway"></a>Změňte velikost brány
+Několik položek [skladové položky brány](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Následující příkaz můžete kdykoli změnit SKU brány.
 
 > [!IMPORTANT]
-> Tento příkaz nefunguje pro UltraPerformance bránu. Chcete-li změnit bránu pro bránu UltraPerformance, nejprve odeberte existující bránu ExpressRoute a poté vytvořit novou bránu UltraPerformance. Přejít na starší verzi bránu z bránu UltraPerformance, nejprve odeberte UltraPerformance brány a poté vytvořit novou bránu.
+> Tento příkaz nefunguje pro brány UltraPerformance. Chcete-li změnit brána brány UltraPerformance, nejprve odeberte existující bránu ExpressRoute a pak vytvořte nové brány UltraPerformance. Přejít na nižší verzi z brány UltraPerformance bránu, nejprve odeberte brány UltraPerformance a pak vytvořit novou bránu.
 > 
 > 
 
-```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+```azurepowershell-interactive
+$gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 
-## <a name="remove-a-gateway"></a>Odebrat bránu
-Chcete-li odebrat bránu, použijte následující příkaz:
+## <a name="remove-a-gateway"></a>Odebrání brány
+Použijte následující příkaz k odebrání brány:
 
-```powershell
-Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 ```

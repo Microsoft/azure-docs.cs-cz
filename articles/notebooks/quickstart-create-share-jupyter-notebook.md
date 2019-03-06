@@ -1,5 +1,5 @@
 ---
-title: Vytvářejte a sdílejte aplikace Jupyter notebook v Azure | Dokumentace Microsoftu
+title: Vytvářejte a sdílejte aplikace Jupyter notebook v Azure
 description: Rychle vytvořit a spustit Poznámkový blok Jupyter v poznámkových blocích Azure a potom sdílet s ostatními tento poznámkový blok.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 3e9850a40d949ce09e9c44a6b4b63a1f58259e7a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865111"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447128"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Rychlý start: Vytvoření a sdílení poznámkového bloku
 
@@ -34,7 +34,7 @@ ms.locfileid: "52865111"
 
 1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
-    - **Název projektu**: Hello World v Pythonu
+    - **Název projektu**: Aplikace Hello World v Pythonu
     - **ID projektu**: hello-world – python
     - **Veřejné projektu**: (zaškrtnuto)
     - **Vytvoření README.md**: (zaškrtnuto)
@@ -83,7 +83,7 @@ ms.locfileid: "52865111"
     print(msg)
     ```
 
-1. Vyberte **spustit** (Klávesová zkratka: Shift + Enter) ke spuštění kódu. Pod buňku byste měli vidět úspěšné výstup podobný následujícímu textu:
+1. Vyberte **spustit** (Klávesová zkratka: Shift + Enter) pro spuštění kódu. Pod buňku byste měli vidět úspěšné výstup podobný následujícímu textu:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -93,7 +93,7 @@ ms.locfileid: "52865111"
 
     ![Uložit ikonu na panelu nástrojů poznámkového bloku Jupyter](media/quickstarts/hello-results-save-icon.png)
 
-1. Vyberte **souboru** > **zastavení a zavřít** příkaz k zastavení serveru a zavřete okno prohlížeče.
+1. Vyberte **souboru** > **zavřít a zastavit** příkaz k zastavení serveru a zavřete okno prohlížeče.
 
 ## <a name="share-the-notebook"></a>Sdílet poznámkového bloku
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567024"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433225"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, který spouští kanál na aktivační událost pro přeskakující okno
 Tento článek popisuje kroky k vytvoření, spuštění a monitorování přeskakující okno. Obecné informace o aktivačních událostech a podporovaných typů najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -120,7 +120,7 @@ Můžete použít **WindowStart** a **WindowEnd** systémové proměnné přeska
 Použít **WindowStart** a **WindowEnd** hodnoty proměnných systému v definici kanálu používat parametry "MyWindowStart" a "MyWindowEnd", odpovídajícím způsobem.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Pořadí zpracování systému windows ve scénáři obnovení dat
-Pokud existuje více oken pro spuštění (zejména v případě obnovení dat), je z intervalu od nejstarších k nejnovějším deterministická, pořadí zpracování pro windows. V současné době nelze toto chování změnit.
+Pokud existuje více oken pro spuštění (zejména v případě obnovení dat), je z intervalu od nejstarších k nejnovějším deterministická, pořadí zpracování pro windows. Toto chování v současné době není možné změnit.
 
 ### <a name="existing-triggerresource-elements"></a>Stávající elementy TriggerResource
 Platí následující body k existujícím **TriggerResource** prvky:
@@ -129,6 +129,9 @@ Platí následující body k existujícím **TriggerResource** prvky:
 * Pokud hodnota **endTime** prvek aktivační událost změny (Přidání nebo aktualizaci), stav systému windows, které jsou již zpracovány je *není* resetovat. Aktivační událost respektuje nové **endTime** hodnotu. Pokud nový **endTime** hodnotu před windows, které jsou již spuštěny, aktivační událost zarážky. V opačném případě se aktivační událost zastaví, když nové **endTime** zjištěna hodnota.
 
 ## <a name="sample-for-azure-powershell"></a>Ukázky Azure powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování aktivační události.
 
 1. Vytvořte soubor JSON s názvem **MyTrigger.json** ve složce C:\ADFv2QuickStartPSH\ s následujícím obsahem:
@@ -167,34 +170,34 @@ Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spu
     }
     ```
 
-2. Vytvoření aktivační události pomocí **Set-AzureRmDataFactoryV2Trigger** rutiny:
+2. Vytvoření aktivační události pomocí **Set-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
     
-3. Ověřte, zda je stav triggeru **Zastaveno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+3. Ověřte, zda je stav triggeru **Zastaveno** pomocí **Get-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Spusťte trigger pomocí **Start-AzureRmDataFactoryV2Trigger** rutiny:
+4. Spusťte trigger pomocí **Start AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Ověřte, zda je stav triggeru **spuštěno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+5. Ověřte, zda je stav triggeru **spuštěno** pomocí **Get-AzDataFactoryV2Trigger** rutiny:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. Aktivační událost spouští v prostředí Azure PowerShell pomocí Get **Get-AzureRmDataFactoryV2TriggerRun** rutiny. Pokud chcete získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty odpovídají hodnotám v definici aktivační události:
+6. Aktivační událost spouští v prostředí Azure PowerShell pomocí Get **Get-AzDataFactoryV2TriggerRun** rutiny. Pokud chcete získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty odpovídají hodnotám v definici aktivační události:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
 Monitorování spuštění aktivační události a kanál se spouští na webu Azure Portal, najdete v článku [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

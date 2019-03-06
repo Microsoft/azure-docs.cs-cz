@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1345a5814faefd4074e7d9548d374bd79d977514
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015581"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453979"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Výměna mezi spotřebiteli a výrobců, které používají různé protokoly událostí: AMQP, Kafka a protokolu HTTPS
-Azure Event Hubs podporuje tři protokoly pro zákazníky a producenti: AMQP, Kafka a protokolu HTTPS. Každý z těchto protokolů z nich má vlastní způsob představující zprávu, takže přirozeně vzniká na následující otázku: Pokud aplikace odesílá události do centra událostí s jeden protokol a využívá jiný protokol, co dělat různé části a hodnoty události vypadat podobně jako při jejich doručení na spotřebitele? Tento článek popisuje osvědčené postupy pro producenta a konzumenta Ujistěte se, že jsou hodnoty v rámci události správně interpretovat spotřebitelskou aplikací.
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Události serveru Exchange mezi spotřebiteli a výrobců, které používají různé protokoly: AMQP, Kafka a protokolu HTTPS
+Azure Event Hubs podporuje pro zákazníky a generátory tří protokolů: AMQP, Kafka a HTTPS. Každý z těchto protokolů z nich má vlastní způsob představující zprávu, takže přirozeně vzniká na následující otázku: Pokud aplikace odesílá události do centra událostí s jeden protokol a využívá jiný protokol, co dělat různé části a hodnoty události vypadat podobně jako při jejich doručení na spotřebitele? Tento článek popisuje osvědčené postupy pro producenta a konzumenta Ujistěte se, že jsou hodnoty v rámci události správně interpretovat spotřebitelskou aplikací.
 
 Doporučení v tomto článku se vztahuje konkrétně tito klienti v uvedených verzích použité při vývoji fragmenty kódu:
 
@@ -101,7 +101,7 @@ final String exampleJson = "{\"name\":\"John\", \"number\":9001}";
 final EventData ed = EventData.create(exampleJson.getBytes(StandardCharsets.UTF_8));
 ```
 
-### <a name="java-amqp-utf-8-string-consumer"></a>Příjemce řetězce Java AMQP UTF-8
+### <a name="java-amqp-utf-8-string-consumer"></a>Java AMQP UTF-8 string consumer
 ```java
 EventData ed = /* receive event */
 String receivedJson = new String(ed.getBytes(), StandardCharsets.UTF_8);
@@ -344,5 +344,5 @@ V tomto článku jste zjistili, jak streamovat do služby Event Hubs s podporou 
 * [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Další ukázky v úložišti Event Hubs pro ekosystém Kafka na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Použití nástroje [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ke [streamování událostí z místního systému Kafka do služby Event Hubs s podporou Kafka v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Použití [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) k [datového proudu událostí z Kafka v místním prostředí do Kafka povolena Služba Event Hubs v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Naučíte se Streamovat do Kafka povolené služby Event Hubs pomocí [nativních aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), nebo [Akka datové proudy](event-hubs-kafka-akka-streams-tutorial.md)

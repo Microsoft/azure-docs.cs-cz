@@ -8,42 +8,44 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: e94ba2f7f6981355f4736683b891fbdced001d03
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 98a4e8a75958b377cdbeff353db89b1cb40dea92
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425335"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406605"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Resetování okruhu ExpressRoute, který selhal
 
 Při operaci v okruhu ExpressRoute nepodaří úspěšně vyřídit, okruh může přejít do stavu "selhání". Tento článek pomáhá resetování okruhu Azure ExpressRoute, který selhal.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="reset-a-circuit"></a>Resetování okruhu
 
-1. Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/azurerm/install-azurerm-ps).
+1. Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
 
 2. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```azurepowershell-interactive
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 3. Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.
 
   ```azurepowershell-interactive
-  Get-AzureRmSubscription
+  Get-AzSubscription
   ```
 4. Určete předplatné, které chcete použít.
 
   ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
   ```
 5. Spusťte následující příkazy k resetování okruhu, který je v chybovém stavu:
 
   ```azurepowershell-interactive
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+  $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 Okruh by měl být nyní jsou v pořádku. Vytvořit lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud okruh je stále v chybovém stavu.

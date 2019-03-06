@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34fe0f35f0f2ec7f7acc129e6146d2aa1ff43ead
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 52799bb83c8872e3a461a6f363e86f02d4ae1293
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340911"
+ms.locfileid: "57407778"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -80,7 +80,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
      Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. Přihlaste se k Azure s využitím [připojit AzAccount](/powershell/module/az.profile/connect-azaccount) rutiny.
+3. Přihlaste se k Azure s využitím [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount) rutiny.
      
      ```azurepowershell-interactive
      Connect-AzAccount

@@ -1,6 +1,6 @@
 ---
-title: Správa a monitorování databází systému SQL Server na Virtuálním počítači Azure zálohovat službou Azure Backup | Dokumentace Microsoftu
-description: Tento článek popisuje, jak obnovit databáze systému SQL Server běžící na Virtuálním počítači Azure, které se zálohují v Azure Backup
+title: Správa a monitorování databází systému SQL Server na Virtuálním počítači Azure, který je zálohovaný službou Azure Backup | Dokumentace Microsoftu
+description: Tento článek popisuje, jak obnovit databáze systému SQL Server, který běží na Virtuálním počítači Azure a službou Azure Backup, která jsou zálohovány.
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,42 +8,38 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 1c2ce0ba42f0bc3efd1dcc951113b05ab6941b98
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: da4264047830b21b3ac4dae723dd1fd2f9d7a8f4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430798"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432851"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a monitorování zálohovat databáze SQL serveru 
 
 
-Tento článek popisuje běžné úlohy pro správu a monitorování databáze systému SQL Server běžící na Virtuálním počítači Azure, které budou zálohovány do služby Azure Backup Recovery Services vault podle [Azure Backup](backup-overview.md) služby. Úlohy, včetně monitorování, úlohy a výstrahy, zastavení a obnovení ochrany databáze, spuštění úloh zálohování a registrace virtuálních počítačů ze zálohy.
+Tento článek popisuje běžné úlohy pro správu a monitorování databází systému SQL Server, který běží na virtuálním počítači Azure (VM) a, která budou zálohovány do služby Azure Backup Recovery Services vault podle [Azure Backup](backup-overview.md) služby. Budete se dozvíte, jak monitorovat úlohy a výstrahy, zastavení a obnovení ochrany databáze, spuštění úloh zálohování a zrušte registraci virtuálního počítače ze zálohy.
 
 
 > [!NOTE]
-> Zálohování databází systému SQl Server běžící na Virtuálním počítači Azure pomocí služby Azure Backup je momentálně ve verzi public preview.
+> Zálohování databází systému SQL Server, na kterých běží na Virtuálním počítači Azure pomocí služby Azure Backup je momentálně ve verzi public preview.
 
 
-TIf nebyly nakonfigurované zálohování databází systému SQL Server, postupujte podle pokynů, ale [v tomto článku](backup-azure-sql-database.md)
+Pokud jste ještě nenakonfigurovali zálohování databází systému SQL Server, přečtěte si téma [zálohování databází systému SQL Server na virtuálních počítačích Azure](backup-azure-sql-database.md)
 
-## <a name="monitor-backup-jobs"></a>Monitorování úlohy zálohování
+##  <a name="monitor-manual-backup-jobs-in-the-portal"></a>Sledování ručního zálohování úloh na portálu
 
-###  <a name="monitor-ad-hoc-jobs-in-the-portal"></a>Monitorování ad hoc úloh na portálu
+Zobrazuje všechny ručně aktivované úlohy v Azure Backup **úlohy zálohování** portálu. Úlohy, naleznete v tomto zjišťování databází portálu zahrnout a registrace a zálohování a obnovení operací.
 
-Zobrazuje všechny ručně aktivované úlohy v Azure Backup **úlohy zálohování** portálu, včetně zjišťování a registrací databáze a operace zálohování a obnovení.
-
-![Úlohy zálohování portálu](./media/backup-azure-sql-database/jobs-list.png)
+![Na portálu úlohy zálohování](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> Naplánované úlohy zálohování se nezobrazují v **úlohy zálohování** portálu. Pomocí SQL Server Management Studio ke sledování naplánovaných úlohách zálohování, jak je popsáno v další části.
+> **Úlohy zálohování** portálu nezobrazí naplánovaných úloh zálohování. Pomocí SQL Server Management Studio ke sledování naplánovaných úlohách zálohování, jak je popsáno v další části.
 >
 
-### <a name="monitor-backup-jobs-with-sql-server-management-studio"></a>Monitorování úlohy zálohování pomocí aplikace SQL Server Management Studio 
+## <a name="monitor-scheduled-backup-jobs-in-sql-server-management-studio"></a>Monitorovat naplánované úlohy zálohování v aplikaci SQL Server Management Studio 
 
-Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování.
-
-Pomocí nativních rozhraní API k načtení všech informací o úlohu z [tabulku záloh SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb.
+Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování. Pomocí nativních rozhraní API k načtení všech informací o úlohu z [tabulku záloh SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb.
 
 V následujícím příkladu je dotaz, který načte všechny úlohy zálohování pro databázi s názvem **DB1**. Upravte dotaz pro rozšířené monitorování.
 
@@ -70,21 +66,21 @@ backup_size AS BackupSizeInBytes
 
 ## <a name="view-backup-alerts"></a>Zobrazit výstrahy zálohování
 
-Protože protokol zálohování každých 15 minut, může být zdlouhavé monitorování úlohy zálohování. Azure Backup usnadňuje monitorování pomocí e-mailové výstrahy.
+Protože protokol zálohování každých 15 minut, může být zdlouhavé monitorování úlohy zálohování. Azure Backup usnadňuje monitorování zasláním e-mailové výstrahy. E-mailová upozornění jsou:
 
-- Upozornění se aktivuje všechny případné selhání zálohování.
-- Upozornění konsolidované podle kódu chyby na úrovni databáze.
-- Jenom pro první selhání zálohování pro databázi přijde e-mailové upozornění. 
+- Aktivuje všechny případné selhání zálohování.
+- Konsolidované na úrovni databáze podle kódu chyby.
+- Odesílat jenom pro první selhání zálohování databáze. 
 
-Chcete-li monitorovat výstrahy zálohování:
+Chcete-li monitorovat výstrahy zálohování databáze:
 
-1. Přihlaste se ke svému předplatnému Azure v [webu Azure portal](https://portal.azure.com) monitorování výstrahy databáze.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Na řídicím panelu trezoru vyberte **výstrahy a události**.
+1. Na řídicím panelu trezoru vyberte **výstrahy a události**.
 
    ![Vyberte výstrahy a události](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-4. V **výstrahy a události**vyberte **výstrahy zálohování**.
+1. V **výstrahy a události**vyberte **výstrahy zálohování**.
 
    ![Vyberte výstrahy zálohování](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -93,49 +89,50 @@ Chcete-li monitorovat výstrahy zálohování:
 Můžete zastavit zálohování databáze serveru SQL Server v několika způsoby:
 
 * Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení.
-* Zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení beze změn.
+* Zastavit všechny budoucí úlohy zálohování a bodů obnovení nechte beze změny.
 
-Poznámky:
+Pokud se rozhodnete ponechat body obnovení, musíte mít na paměti tyto podrobnosti:
 
-Pokud necháte body obnovení, body vyčistit v souladu se zásadami zálohování. Vám účtovat poplatky za chráněné instance a spotřebovaného úložiště, dokud se vyčistí všechny body obnovení. [Další informace](https://azure.microsoft.com/pricing/details/backup/) informace o cenách.
-- Po opuštění body obnovení beze změn, i když jejich podle zásad uchovávání informací vyprší, Azure Backup vždy udržuje jeden poslední bod obnovení dokud explicitně odstranit zálohovaná data.
-- Při odstranění zdroje dat bez zastavení zálohování, začne nových záloh služeb při selhání. Znovu vyprší platnost starých bodů obnovení podle zásady, ale jeden poslední bod obnovení vždy zachová až do zastavení zálohování a odstraňte data.
-- Nelze zastavit zálohování pro databázi povolená pro automatickou ochranu, dokud je zakázáno automatické ochrany.
+* Všechny body obnovení, které vám nechat se vyčistí podle zásady zálohování. 
+* Dokud se vyčistí všechny body obnovení, bude účtovat za chráněné instance a spotřebované úložiště. Další informace najdete v tématu [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+* Azure Backup vždy udržuje jeden poslední bod obnovení, dokud je neodstraníte zálohovaná data. 
+* Při odstranění zdroje dat bez zastavení zálohování, se nezdaří nových záloh. 
+* Pokud vaše databáze není povolena pro autoprotection, dokud nezakážete autoprotection, kterou nelze zastavit zálohování.
 
 Ukončit ochranu pro databázi:
 
 1. Na řídicím panelu trezoru v části **využití**vyberte **zálohování položek**.
 
-    ![Otevřete nabídku zálohování položek](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
-
-2. V **typu správy zálohování**vyberte **SQL na virtuálním počítači Azure**.
+1. V části **typu správy zálohování**vyberte **SQL na virtuálním počítači Azure**.
 
     ![Vyberte SQL na virtuálním počítači Azure](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
 
-3. Vyberte databázi, pro kterou chcete ukončit ochranu.
+1. Vyberte databázi, pro kterou chcete ukončit ochranu.
 
     ![Vyberte databáze, kterou chcete zastavit ochranu](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
 
-5. V nabídce databáze vyberte **Zastavit zálohování**.
+1. V nabídce databáze vyberte **Zastavit zálohování**.
 
     ![Vyberte Zastavit zálohování](./media/backup-azure-sql-database/stop-db-button.png)
 
 
-6. V **Zastavit zálohování** nabídce vyberte, jestli chcete zachovat nebo odstraňovat data. Volitelně zadejte důvod a komentář.
+1. Na **Zastavit zálohování** nabídce vyberte, jestli chcete zachovat nebo odstraňovat data. Pokud chcete, zadejte důvod a komentář.
 
-    ![Zastavit zálohování nabídky](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![Uchovat nebo odstranit data v nabídce Zastavit zálohování](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. Klikněte na tlačítko **Zastavit zálohování** .
+1. Vyberte **Zastavit zálohování**.
 
   
 
-### <a name="resume-protection-for-a-sql-database"></a>Pokračovat v ochraně databáze SQL
+## <a name="resume-protection-for-a-sql-database"></a>Pokračovat v ochraně databáze SQL
 
-Pokud **zachovat zálohovaná Data** byla vybrána možnost, pokud ochranu databáze SQL se zastavila, můžete obnovit ochranu. Pokud se data záloh se uchovávají, nelze obnovit ochranu.
+Při zastavení ochrany pro SQL database, pokud jste vybrali **zachovat zálohovaná Data** možnost, můžete později obnovit ochranu. Pokud nechcete zachovat zálohovaná data, nelze obnovit ochranu.
 
-1. Chcete-li obnovit ochranu pro službu SQL database, otevřete zálohovaná položka a vyberte **obnovit zálohu**.
+Pokud chcete obnovit ochranu pro službu SQL database:
+
+1. Otevřete zálohovaná položka a vyberte **obnovit zálohu**.
 
     ![Vyberte obnovit zálohu k obnovení ochrany databáze](./media/backup-azure-sql-database/resume-backup-button.png)
 
@@ -150,11 +147,11 @@ Můžete spouštět různé typy záloh na vyžádání:
 * Rozdílové zálohování
 * Zálohování protokolů
 
-[Další informace](backup-architecture.md#sql-server-backup-types) o SQL serveru zálohování typy.
+Další informace najdete v tématu [typy zálohování systému SQL Server](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Zrušit registraci instance serveru SQL Server
 
-Zrušit registraci instance systému SQL Server po deaktivovali ochranu, ale před odstranění trezoru:
+Po zakázání ochrany, ale před odstraněním trezoru, zrušit registraci instance systému SQL Server:
 
 1. Na řídicím panelu trezoru v části **spravovat**vyberte **infrastruktura zálohování**.  
 
@@ -167,11 +164,11 @@ Zrušit registraci instance systému SQL Server po deaktivovali ochranu, ale př
 
 3. V **chráněné servery**, vyberte server ke zrušení registrace. Odstranit trezor, musíte zrušit registraci všech serverů.
 
-4. Klikněte pravým tlačítkem na chráněném serveru > **odstranit**.
+4. Klikněte pravým tlačítkem na chráněném serveru a vyberte **odstranit**.
 
    ![Vyberte odstranit](./media/backup-azure-sql-database/delete-protected-server.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-[Kontrola](backup-sql-server-azure-troubleshoot.md) řešení potíží s informace o zálohování databáze serveru SQL Server.
+Další informace najdete v tématu [řešení zálohování v databázi serveru SQL Server](backup-sql-server-azure-troubleshoot.md).

@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: ecd6dd9e8eb6d11161faf6ed3b51f06cf0d3f454
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452636"
 ---
 # <a name="what-is-microsoft-genomics"></a>Co je Microsoft Genomics?
 Microsoft Genomics nabízí cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a genomu Analysis Toolkit (GATK) pro sekundární analýzu. Služba s certifikací ISO a splňovat předpisy podle zákona HIPAA a nabízí předvídatelnost cen pro váš požadavkům na sekvenování genomu. Zjistěte, jak pomocí služby Microsoft Genomics a integrovat pomocí našich rozhraní API pomocí našich šablon rychlý start, kurzy a dokumentace pro čtení.
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>Vyhovění vašim nejnáročnějším požadavkům na sekvenování
-Místo správy vlastních datacenter využijte rozsah a zkušenosti Microsoftu s prováděním úloh v řádu exabajtů. Náš cloud skladu z BWA-GATK je vysoce concordant s širokým Institute osvědčené postupy pro kanál.
+Místo správy vlastních datacenter využijte rozsah a zkušenosti Microsoftu s prováděním úloh v řádu exabajtů. Naše Cloudová implementace BWA-GATK je vysoce concordant s širokým Institute osvědčené postupy pro kanál.
 
 
 ## <a name="keep-your-business-running"></a>Zachovat chod vašeho podnikání

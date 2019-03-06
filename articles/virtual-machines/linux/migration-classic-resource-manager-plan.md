@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bd3bd4937bd376c696df98af0b535aeda5027ddc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341330"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437084"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu classic na Azure Resource Manager
 Zatímco Azure Resource Manager nabízí spoustu skvělých funkcí, je velmi důležité naplánovat, aby to bylo jistě hladký chod průběhu migrace. Plánování zbavuje čas zajistí, že není narazíte na problémy při provádění aktivity migrace. 
@@ -124,7 +124,7 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
 
     Můžete zkontrolovat aktuální kvóty správce prostředků Azure pomocí následujících příkazů v nejnovější verzi Azure CLI.
 
-    **COMPUTE** *(počet jader, dostupnost sady)*
+    **COMPUTE** *(počet jader, sady dostupnosti)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 

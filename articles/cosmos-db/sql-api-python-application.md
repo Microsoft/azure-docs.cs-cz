@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.openlocfilehash: a59de5fad7f457fffcc36ed55fd5862bc9329a1d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2830772dd69ac94c2b8373936665b9445f9f5f10
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037153"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431194"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Tento databázový kurz se zabývá:
 
 Podle postupu uvedeného v tomto kurzu sestavíte jednoduchou hlasovací aplikaci, která vám umožní hlasovat v anketě.
 
-![Snímek obrazovky hlasovací aplikace vytvořené v tomto databázovém kurzu](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
+![Snímek obrazovky hlasovací aplikace vytvořené v tomto kurzu databáze](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
 
 ## <a name="database-tutorial-prerequisites"></a>Předpoklady pro databázový kurz
 Než budete postupovat podle pokynů tohoto článku, měli byste se ujistit, že máte následující:
@@ -52,7 +52,7 @@ Než budete postupovat podle pokynů tohoto článku, měli byste se ujistit, ž
 > [!IMPORTANT]
 > Pokud Python 2.7 instalujete poprvé, je zapotřebí na obrazovce Customize Python 2.7.13 (Přizpůsobit Python 2.7.13) vybrat **Add python.exe to Path** (Přidat python.exe do proměnné PATH).
 > 
-> ![Snímek obrazovky Customize Python 2.7.11 (Přizpůsobit Python 2.7.11), kde je nutné vybrat možnost Add python.exe to Path (Přidat python.exe do proměnné PATH)](./media/sql-api-python-application/cosmos-db-python-install.png)
+> ![Snímek obrazovky přizpůsobit Python 2.7.11, které je potřeba vybrat přidat python.exe do cesty](./media/sql-api-python-application/cosmos-db-python-install.png)
 > 
 > 
 
@@ -75,13 +75,13 @@ Teď si projdeme, jak od základů vytvořit novou webovou aplikaci Python Flask
    
     Je-li pro vás Python Flask nový, je to rozhraní pro vývoj webových aplikací, které urychluje tvorbu webových aplikací v Pythonu.
    
-    ![Snímek obrazovky okna Nový projekt v nástroji Visual Studio se zvýrazněným Pythonem vlevo, vybraným webovým projektem Python Flask uprostřed a názvem tutorial v poli Název](./media/sql-api-python-application/image9.png)
+    ![Snímek obrazovky okna Nový projekt v sadě Visual Studio se zvýrazněným vlevo, vybraným uprostřed a názvem tutorial v poli Název Python Flask webovým projektem Python](./media/sql-api-python-application/image9.png)
 4. V okně **Python Tools for Visual Studio** klikněte na **Nainstalovat do virtuálního prostředí**. 
    
-    ![Snímek obrazovky databázového kurzu – okno Python Tools for Visual Studio](./media/sql-api-python-application/python-install-virtual-environment.png)
+    ![Snímek obrazovky databázového kurzu – nástroje Python Tools for Visual Studio okno](./media/sql-api-python-application/python-install-virtual-environment.png)
 5. V okně **Přidat virtuální prostředí** v poli Vybrat interpret vyberte Python 2.7 nebo Python 3.5, přijměte ostatní výchozí hodnoty a pak klikněte na **Vytvořit**. Tím se pro projekt nastaví požadované virtuální prostředí Python.
    
-    ![Snímek obrazovky databázového kurzu – okno Python Tools for Visual Studio](./media/sql-api-python-application/image10_A.png)
+    ![Snímek obrazovky databázového kurzu – nástroje Python Tools for Visual Studio okno](./media/sql-api-python-application/image10_A.png)
    
     Jakmile je prostředí úspěšně nainstalováno, ve výstupním okně se zobrazí `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`.
 
@@ -105,7 +105,7 @@ Po nastavení projektu bude nutné do projektu přidat požadované balíčky Fl
 2. Uložte soubor **requirements.txt**. 
 3. V Průzkumníkovi řešení klikněte pravým tlačítkem na **env** a pak levým na **Nainstalovat z requirements.txt**.
    
-    ![Snímek obrazovky, na kterém je zvoleno env (Python 2.7) a v seznamu je zvýrazněna možnost Instalovat z requirements.txt](./media/sql-api-python-application/cosmos-db-python-install-from-requirements.png)
+    ![Snímek obrazovky znázorňující env (Python 2.7) vybraná při instalaci z requirements.txt v seznamu je zvýrazněna](./media/sql-api-python-application/cosmos-db-python-install-from-requirements.png)
    
     Po úspěšné instalaci se ve výstupním okně zobrazí následující:
    
@@ -344,22 +344,22 @@ def vote():
     ```
 6. Po přidání všech souborů by Průzkumník řešení měl vypadat takto:
    
-    ![Snímek obrazovky okna Průzkumníka řešení v nástroji Visual Studio](./media/sql-api-python-application/cosmos-db-python-solution-explorer.png)
+    ![Snímek obrazovky okna Průzkumníka řešení Visual Studio](./media/sql-api-python-application/cosmos-db-python-solution-explorer.png)
 
 ## <a name="step-4-run-your-web-application-locally"></a>Krok 4: Místní spuštění webové aplikace
 1. Sestavte řešení stisknutím **CTRL**+**SHIFT**+**B**.
 2. Po úspěšném sestavení spusťte web klávesou **F5**. Na obrazovce byste měli vidět následující.
    
-    ![Snímek obrazovky hlasovací aplikace vytvořené pomocí Pythonu a služby Azure Cosmos DB zobrazené ve webovém prohlížeči](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
+    ![Snímek obrazovky Python Azure Cosmos DB hlasovací aplikace a zobrazené ve webovém prohlížeči](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
 3. Klikněte na **Create/Clear the Voting Database** (Vytvořit nebo vyčistit hlasovací databázi), aby se vygenerovala databáze.
    
-    ![Snímek obrazovky webové aplikace a její stránky Vytvořit – podrobnosti o vývoji](./media/sql-api-python-application/cosmos-db-python-run-create-page.png)
+    ![Snímek obrazovky stránky vytvoření webové aplikace – podrobnosti o vývoji](./media/sql-api-python-application/cosmos-db-python-run-create-page.png)
 4. Pak vyberte svou možnost kliknutím na **Vote** (Hlasovat).
    
     ![Snímek obrazovky webové aplikace se zobrazenou otázkou k hlasování](./media/sql-api-python-application/cosmos-db-vote.png)
 5. Každý hlas, který udělíte, navýší příslušný čítač.
    
-    ![Snímek obrazovky se zobrazenou stránkou Results of the vote (Výsledek hlasování)](./media/sql-api-python-application/cosmos-db-voting-results.png)
+    ![Snímek obrazovky s výsledky hlasování stránka](./media/sql-api-python-application/cosmos-db-voting-results.png)
 6. Kombinací kláves SHIFT+F5 ukončete ladění projektu.
 
 ## <a name="step-5-deploy-the-web-application-to-azure"></a>Krok 5: Nasazení webové aplikace do Azure
@@ -388,13 +388,13 @@ Když teď máte hotovou aplikaci, která správně funguje místně se službou
 
 5. Uložte soubory, pak klikněte pravým tlačítkem na projekt v Průzkumníku řešení (ujistěte se, že aplikace již není spuštěná místně) a vyberte **Publikovat**.  
    
-     ![Snímek obrazovky projektu tutorial vybraného v Průzkumníkovi řešení se zvýrazněnou možností Publikovat](./media/sql-api-python-application/image20.png)
+     ![Snímek obrazovky tutorial vybraného v Průzkumníkovi řešení se zvýrazněnou možností publikovat](./media/sql-api-python-application/image20.png)
 6. V dialogovém okně **Publikovat** vyberte **Microsoft Azure App Service**, pak vyberte **Vytvořit novou** a klikněte na **Publikovat**.
    
-    ![Snímek obrazovky okna Publikování webu se zvýrazněnou možností Microsoft Azure App Service](./media/sql-api-python-application/cosmos-db-python-publish.png)
+    ![Snímek obrazovky okna publikování webu se zvýrazněnou službou Microsoft Azure App Service](./media/sql-api-python-application/cosmos-db-python-publish.png)
 7. V dialogovém okně **Vytvořit plán App Service** zadejte název vaší webové aplikace a vaše **předplatné**, **skupinu prostředků** a **plán služby App Service**, a pak klikněte na **Vytvořit**.
    
-    ![Snímek obrazovky okna Okno Microsoft Azure Web Apps](./media/sql-api-python-application/cosmos-db-python-create-app-service.png)
+    ![Snímek obrazovky okna okno Microsoft Azure Web Apps](./media/sql-api-python-application/cosmos-db-python-create-app-service.png)
 8. Během několika sekund sada Visual Studio dokončí kopírování souborů na server a zobrazí zprávu „The page cannot be displayed because an internal server error has occurred“ (Stránku není možné zobrazit, protože došlo k interní chybě serveru) na stránce `http://<your app service>.azurewebsites.net/`.
 
 9. Na webu Azure Portal otevřete svůj nový účet služby App Service, pak se v navigační nabídce posuňte dolů do části **Vývojové nástroje**, vyberte **Rozšíření** a klikněte na **+ Přidat**.

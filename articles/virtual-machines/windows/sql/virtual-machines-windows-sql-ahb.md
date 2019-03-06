@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c3f67cbe422ffe839018f0682fa2de6440de773
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8578cd24b585bb5f0ba4930f005d8d2b2fece7f7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823361"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449678"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
 Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL VM - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – s průběžnými platbami a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL Server používá. 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak změnit licenční model pro virtuální počítač
 Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez výpadků**, neprovede restartování virtuálního počítače, přidá **bez dalších poplatků** (ve skutečnosti aktivace AHB *snižuje* nákladů) a je **okamžitou platností**. 
 
   >[!NOTE]
-  > - Schopnost převést licenčního modelu je aktuálně k dispozici pouze při spuštění s průběžnými platbami image virtuálního počítače s SQL serverem. Pokud byste začali s bitovou kopii bring your-používání vlastní licence z portálu, nebudete mít k převedení této bitové kopie na průběžné platby.
+  > - Možnost převést licenční model je aktuálně k dispozici pouze v případě, že začnete s imagí virtuálního počítače s SQL Serverem s průběžnými platbami. Pokud začnete s imagí s použitím vlastní licence z portálu, nebudete moct tuto image převést na průběžné platby.
   > - Zákazníky CSP se můžou využívat výhody AHB tak, že nejprve nasazení virtuálního počítače s průběžnými platbami a jeho převodu do přineste svůj – používání vlastní licence. 
   > - Tato schopnost je aktuálně povolena pouze pro veřejné cloudové zařízení.
 
@@ -65,7 +65,7 @@ Následující postup k registraci poskytovatele prostředků SQL k vašemu pře
   ![Upravit poskytovatele](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
 ### <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
-Následující fragment kódu k registraci poskytovatele prostředků SQL do Azure susbcription. 
+Následující fragment kódu se zaregistrujte poskytovatele prostředků SQL ve vašem předplatném Azure. 
 
 ```cli
 # Register the new SQL resource provider for your subscription 
@@ -109,7 +109,7 @@ Jakmile se váš virtuální počítač SQL Server byl zaregistrován u poskytov
 
 
   >[!NOTE]
-  >  Schopnost převést licenčního modelu je aktuálně k dispozici pouze při spuštění s průběžnými platbami image virtuálního počítače s SQL serverem. Pokud byste začali s bitovou kopii bring your-používání vlastní licence z portálu, nebudete mít k převedení této bitové kopie na průběžné platby. 
+  >  Možnost převést licenční model je aktuálně k dispozici pouze v případě, že začnete s imagí virtuálního počítače s SQL Serverem s průběžnými platbami. Pokud začnete s imagí s použitím vlastní licence z portálu, nebudete moct tuto image převést na průběžné platby. 
 
 ### <a name="with-the-azure-portal"></a>S využitím webu Azure Portal
 Můžete změnit licenční model přímo z portálu. 

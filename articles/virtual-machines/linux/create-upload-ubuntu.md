@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 70aa49cf15b095697eb00cc2a0b8e6dfd2e07546
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 62d17670a068304e0764c85d49da0aa9a736c477
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240473"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444426"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -125,6 +125,16 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
     >[!Note]
     `walinuxagent` Může odebrat balíček `NetworkManager` a `NetworkManager-gnome` balíčky, pokud jsou nainstalovány.
 
+Pro Ubuntu 18.04/18.10 aktualizovat zdroj dat Azure, upravit: /etc/cloud/cloud.cfg.d/90-azure.cfg, přidejte tento kód na konec souboru:
+
+**Důležité: kód musí být přidán přesně tak, jak je vidět, včetně mezer.**
+
+```bash
+datasource:
+   Azure:
+     agent_command: [service, walinuxagent, start]
+```
+
 8. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
    
         # sudo waagent -force -deprovision
@@ -138,7 +148,4 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
 
 ## <a name="next-steps"></a>Další postup
 Nyní jste připraveni použít virtuální pevný disk se systémem Ubuntu Linux můžete vytvořit nové virtuální počítače v Azure. Pokud je to poprvé, že jste nahrání souboru VHD do Azure, najdete v článku [vytvoření virtuálního počítače s Linuxem z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
-
-
-
 

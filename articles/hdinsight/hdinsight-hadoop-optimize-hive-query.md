@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ba332bb0f77dc198abdd76ccf024336788a77a33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385427"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435020"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizovat dotazy Apache Hive v Azure HDInsight
 
 V Azure HDInsight existuje několik typů clusteru a technologie, které můžete spouštět dotazy Apache Hive. Při vytváření clusteru HDInsight, zvolte typ příslušného clusteru za účelem optimalizace výkonu pro potřeby vašich úloh. 
 
-Například zvolte **Interactive Query** typ optimalizace pro ad-hoc, interaktivních dotazů clusteru. Zvolte Apache **Hadoop** typ optimalizace dotazů Hive používá jako dávkové zpracování clusteru. **Spark** a **HBase** typy clusteru můžete také spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různé typy clusterů HDInsight, naleznete v tématu [co je Apache Hive a HiveQL v Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+Například zvolte **Interactive Query** typ optimalizace pro ad hoc, interaktivní dotazy clusteru. Zvolte Apache **Hadoop** typ optimalizace dotazů Hive používá jako dávkové zpracování clusteru. **Spark** a **HBase** typy clusteru můžete také spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různé typy clusterů HDInsight, naleznete v tématu [co je Apache Hive a HiveQL v Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 
 Clustery HDInsight Hadoop cluster typu nejsou optimalizovány pro výkon ve výchozím nastavení. Tento článek popisuje některé z nejběžnější metody optimalizace výkonu Hive, které můžete provést u vašich dotazů.
 

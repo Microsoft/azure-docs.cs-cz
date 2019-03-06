@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016874"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434315"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -151,12 +151,12 @@ Další informace najdete v tématu [vztahů a proti spřažení][k8s-affinity].
 
 Poslední jedním z přístupů pro Kubernetes scheduler k logické izolaci úloh používá spřažení mezi pod nebo proti spřažení. Nastavení definují této podů *by neměl* naplánovat na uzel, který má existující odpovídající pod nebo že *by měl* naplánovat. Ve výchozím nastavení Kubernetes plánovače pokusí naplánovat několik podů se v sadě uzlech replik. Můžete definovat konkrétnější pravidla kolem tohoto chování.
 
-Dobrým příkladem je webová aplikace, která se také používá pro Redis Cache Azure. Pod proti spřažení pravidla můžete požadovat, že Kubernetes Plánovač distribuuje replik napříč uzly. Pak můžete ise spřažení pravidla, abyste měli jistotu, že každá součást webové aplikace je naplánováno na stejném hostiteli jako odpovídající mezipaměti. Distribuce podů napříč uzly bude vypadat jako v následujícím příkladu:
+Dobrým příkladem je webová aplikace, která se také používá pro Redis Cache Azure. Pod proti spřažení pravidla můžete požadovat, že Kubernetes Plánovač distribuuje replik napříč uzly. Abyste měli jistotu, že každá součást webové aplikace je naplánováno na stejném hostiteli jako odpovídající mezipaměti můžete poté může pomocí pravidel přidružení. Distribuce podů napříč uzly bude vypadat jako v následujícím příkladu:
 
 | **Uzel 1** | **Uzel 2** | **Uzel 3** |
 |------------|------------|------------|
-| webové aplikace – 1   | 2 webové aplikace   | webové aplikace – 3   |
-| mezipaměť-1    | mezipaměť-2    | Cache – 3    |
+| webapp-1   | webapp-2   | webapp-3   |
+| cache-1    | cache-2    | cache-3    |
 
 V tomto příkladu je složitější nasazení než používání selektorů. uzel nebo spřažení uzlu. Nasazení umožňuje ovládat způsob Kubernetes naplánuje podů na uzlech a logicky můžete izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure Redis příkladu, naleznete v tématu [společné umístění podů na stejném uzlu][k8s-pod-affinity].
 

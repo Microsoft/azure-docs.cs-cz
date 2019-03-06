@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: b3855386f89eda71e145df6dd83d1b1e7e093735
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 55e414a35574f8437a30ffb75aebd82eded14fa9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563639"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447911"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené databáze SQL více tenantů
 
@@ -173,5 +173,5 @@ V tomto kurzu jste se naučili:
 > * Aktualizace referenčních dat ve všech databázích tenantů
 > * Vytvořit index tabulky ve všech databázích tenantů
 
-Zkuste [Ad-hoc, generování sestav kurzu](saas-multitenantdb-adhoc-reporting.md) prozkoumat spouštění distribuovaných vzorců napříč tenanta databází.
+Zkuste [vykazování Ad hoc kurzu](saas-multitenantdb-adhoc-reporting.md) prozkoumat spouštění distribuovaných vzorců napříč tenanta databází.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: f4559c05a9f3d09feef12b0391e313ecd9a88142
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b03b787e245129e5e51304a2bcc8740ebf3f6196
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241234"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406135"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
 
@@ -65,7 +65,7 @@ Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#u
 5. Klikněte na symbol tří teček (`...`) na konci řádku.
 6. V místní nabídce stahování vyberte **faktury**.
 
-Pokud nevidíte fakturu za poslední fakturační období, přečtěte si téma [Další informace]() <!-- Fix this -->
+Pokud nevidíte fakturu za poslední fakturační období, přečtěte si téma **Další informace o**. <!-- Fix this -->
 ### <a name="noinvoice"></a> Proč nevidím faktury pro poslední fakturačního období?
 
 Faktura se nemusí zobrazovat z několika důvodů:
@@ -100,7 +100,7 @@ Pokud e-mail neobdržíte po provedení kroků, ujistěte se, že je správný v
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Vyjádřit výslovný nesouhlas získání faktury vaše předplatné v e-mailu
 
-Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko můžete zrušit **vyjádřit výslovný nesouhlas faktury e-mailem**. Tato možnost odebere všechny e-mailové adresy nastaveny na přijímání faktury e-mailem. Pokud se připojíte zpět můžete překonfigurovat příjemce.
+Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko můžete zrušit **vyjádřit výslovný nesouhlas faktury e-mailem**. Tato možnost odebere všechny e-mailové adresy, pro které je nastavené zasílání faktur e-mailem. Pokud se připojíte zpět můžete překonfigurovat příjemce.
 
  ![Snímek obrazovky zobrazující tok výslovného nesouhlasu s](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 

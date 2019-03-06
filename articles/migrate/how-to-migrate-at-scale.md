@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: snehaa
-ms.openlocfilehash: c0fc4fa0bdd58b8ecdf4f26051d60324118c4b21
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 74dabc49dd3d0e38f43dc758204c35ea1c0efd99
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896655"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438478"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Migrace škálovací sady virtuálních počítačů pomocí Azure Site Recovery
 
@@ -30,8 +30,8 @@ Než začnete, budete muset provést následující kroky:
 - Ujistěte se, že trezor Site Recovery se vytvoří ve vašem předplatném Azure
 - Ujistěte se, že konfigurační Server a procesový Server jsou nainstalovány ve zdrojovém prostředí a trezor je schopná vyhledávat prostředí
 - Ujistěte se, že zásady replikace je vytvořena a přidružena konfiguračního serveru
-- Ujistěte se, že jste přidali účet správce virtuálního počítače do konfiguračního serveru (který se použije pro replikaci virtuálních počítačů v místním prostředí)
-- Ujistěte se, že jsou vytvořeny cílové artefaktů v Azure
+- Ujistěte se, že jste přidali účet správce virtuálního počítače do konfiguračního serveru (který se použije k replikovat místní virtuální počítače)
+- Ujistěte se, že se vytvoří cíl artefakty v Azure
     - Cílová skupina prostředků
     - Cílení na účet úložiště (a jeho skupina prostředků)
     - Cílová virtuální síť pro převzetí služeb při selhání (a jeho skupina prostředků)
@@ -59,7 +59,7 @@ Když sdílený svazek clusteru je připravená, můžete spustit následující
 4 | asr_propertiescheck.ps1 | Ověření, pokud jsou správně aktualizovat vlastnosti
 5 | asr_testmigration.ps1 |  Spuštění testovacího převzetí služeb při selhání virtuálních počítačů uvedených ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač
 6 | asr_cleanuptestmigration.ps1 | Po ruční ověření virtuálních počítačů, které byly testování převzetím služeb při selhání, můžete použít tento skript k vyčištění testovacího převzetí služeb virtuálních počítačů
-7 | asr_migration.ps1 | Provedení neplánovaného převzetí služeb při selhání pro virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač. Tento skript nemá vypnutí virtuální počítače v místním prostředí před aktivací převzetí služeb při selhání pro zajištění konzistence aplikace, je doporučeno, že je ručně vypněte virtuální počítače před spuštěním skriptu.
+7 | asr_migration.ps1 | Provedení neplánovaného převzetí služeb při selhání pro virtuální počítače uvedené ve sdíleném svazku clusteru, skript vytvoří výstupu CSV s podrobnostmi o úloze pro každý virtuální počítač. Tento skript nemá vypnutí místní virtuální počítače před aktivací převzetí služeb při selhání pro zajištění konzistence aplikace, je doporučeno, že je ručně vypněte virtuální počítače před spuštěním skriptu.
 8 | asr_completemigration.ps1 | Provedení operace potvrzení na virtuálních počítačích a odstranění entit Azure Site Recovery
 9 | asr_postmigration.ps1 | Pokud hodláte přiřadit skupiny zabezpečení sítě síťových adaptérů post-převzetí služeb při selhání, můžete k tomu tento skript. Přiřadí NSG na všechny jeden síťový adaptér na cílovém virtuálním počítači.
 

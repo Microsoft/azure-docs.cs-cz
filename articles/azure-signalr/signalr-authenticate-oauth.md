@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 2e6540dd88c2ae3f841aa4cb0d7529b29e28ef14
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 808a423ae6657e560f500611c21bc84d47086b6e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311269"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454472"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Kurz: Ověřování pomocí služby Azure SignalR Service
 
@@ -378,7 +378,7 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části použijete rozhraní příkazového řádku Azure (CLI) ze služby Azure Cloud Shell vytvořte novou aplikaci wev v [služby Azure App Service](https://docs.microsoft.com/azure/app-service/) hostovat aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
+V této části použijete rozhraní příkazového řádku Azure (CLI) ze služby Azure Cloud Shell vytvořte novou webovou aplikaci v [služby Azure App Service](https://docs.microsoft.com/azure/app-service/) hostovat aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
 
 Kroky v této části používají rozšíření *signalr* pro rozhraní příkazového řádku Azure. Spuštěním následujícího příkazu nainstalujte rozšíření *signalr* pro Azure CLI:
 

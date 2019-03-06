@@ -9,12 +9,12 @@ ms.author: dwgeo
 ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 016238305e12435b740da45da4ad600152cf04ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2074f074d3212f790ddb8b4990b16edb3f204a93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003835"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441316"
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Načítání prostředků do Azure Media Clipperu  
 

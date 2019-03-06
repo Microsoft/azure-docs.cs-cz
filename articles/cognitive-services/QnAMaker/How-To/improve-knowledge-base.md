@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7281fb15e91195e1dd20095d9fdf80d3d9894a26
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314819"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433055"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Využití aktivního učení k vylepšení znalostní báze
 
@@ -37,6 +37,8 @@ Některé z metod poskytuje klasifikátor s podobné dotazy, které jsou v clust
 Aktivní učení se aktivuje podle skóre nejčastější několik odpovědi vrácené QnA Maker pro libovolný daný dotaz. Pokud skóre rozdíly ležet v rozsahu malé, pak dotazu je považován za možný výskyt _návrh_ pro všechny možné odpovědi. 
 
 Všechny návrhy jsou Clusterované společně odpovědným a nejčastějších návrhů pro alternativní otázky se zobrazují na základě četnosti konkrétní dotazů koncovými uživateli. Aktivní učení nabízí nejlepší možný návrhů v případech, kde se zobrazuje koncové body přiměřené množství a různorodost dotazů na využití.
+
+Když jsou Clusterované 5 nebo další podobné dotazy, každých 30 minut, nástroj QnA Maker navrhuje dotazy založené na uživatelích do znalostní báze knowledge base návrháře přijmout nebo odmítnout.
 
 Jakmile dotazy jsou navržené v portál QnA Maker, budete muset zkontrolovat a přijmout nebo odmítnout tyto návrhy. 
 
@@ -77,7 +79,7 @@ Aktivní učení je vypnuto ve výchozím nastavení. Zapněte navrhované dotaz
 
     [![Na stránce nastavení služby přepínací tlačítko Zobrazit návrhy](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Filtrovat ve znalostní bázi s páry otázek a odpovědí pouze zobrazit návrhy tak, že vyberete **filtrovat podle návrhy**.
+1. Filtrovat ve znalostní bázi s páry otázek a odpovědí zobrazit pouze návrhy tak, že vyberete **filtrovat podle návrhy**.
 
     [![Na stránce nastavení služby filtrovat podle doporučení zobrazíte jenom na ty, otázek a odpovědí páry](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -162,6 +164,31 @@ Content-Type: application/json
 ```
 
 Další informace o tom, jak použití aktivního učení se [Azure Bot C# příklad](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktivní učení se uloží do souboru exportované aplikace tsv
+
+Když se vaše aplikace může aktivně učit povolené a exportovat do aplikace `SuggestedQuestions` sloupec v souboru tsv uchovává data aktivně učit. 
+
+`SuggestedQuestions` Sloupec je objekt JSON informací o implicitní (`autosuggested`) a explicitní (`usersuggested`) [zpětnou vazbu](#active-learning). Příkladem tohoto objektu JSON pro jeden uživatel odeslal otázku `help` je:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Když tuto aplikaci znovu naimportujete, active learning i nadále shromažďovat informace a doporučení návrhy pro znalostní báze. 
 
 ## <a name="next-steps"></a>Další postup
  

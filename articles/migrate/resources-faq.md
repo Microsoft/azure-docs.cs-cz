@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9577e2c8eea153b38475bf5126a41641b3642ae9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 26992cfe1c6cb8555a7084075fed4d9c8daed031
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991321"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444374"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -104,7 +104,7 @@ Zjišťování na základě zařízení shromažďuje metadata o místních virt
   - Sítě v
   - Síťové výstupy
 
-Zjišťování na základě agenta je druhá možnost dostupná vedle zjišťování na základě zařízení a pomáhá zákazníkům [vizualizovat závislosti](how-to-create-group-machine-dependencies.md) virtuálních počítačů v místním prostředí. Agenti závislostí shromažďují podrobnosti, jako je plně kvalifikovaný název domény, operační systém, IP adresa, adresa MAC, procesy spuštěné ve virtuálním počítači a příchozí/odchozí připojení TCP virtuálního počítače. Zjišťování na základě agenta je volitelné a můžete zvolit není nainstalovat agenty, pokud nechcete vizualizovat závislosti virtuálních počítačů.
+Zjišťování na základě agenta možnost je k dispozici nad rámec zjišťování na základě zařízení a pomáhá zákazníkům [vizualizace závislostí](how-to-create-group-machine-dependencies.md) z místní virtuální počítače. Agenti závislostí shromažďují podrobnosti, jako je plně kvalifikovaný název domény, operační systém, IP adresa, adresa MAC, procesy spuštěné ve virtuálním počítači a příchozí/odchozí připojení TCP virtuálního počítače. Zjišťování na základě agenta je volitelné a můžete zvolit není nainstalovat agenty, pokud nechcete vizualizovat závislosti virtuálních počítačů.
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
 
@@ -217,7 +217,7 @@ Seznam operačních systémů Windows nepodporuje agenta závislostí je [tady](
 Seznam operačních systémů Linux podporuje agenta závislostí je [tady](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Je možné vizualizovat závislosti ve službě Azure Migrate déle než hodinu?
-Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít protokoly Azure monitoru a [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) za delší dobu.
+Ne, Azure Migrate vám umožňuje vizualizovat závislosti pro dobu trvání až jednu hodinu. Azure Migrate vám umožní přejít zpět na konkrétní datum v historii pro až za poslední měsíc, ale až 1 hodinu, než je maximální doba trvání, pro kterou můžete vizualizovat závislosti. Například můžete použít funkci doba trvání na mapě závislostí, chcete-li zobrazit závislosti včerejška ale jenom ji mohou zobrazit okna jednu hodinu. Můžete však použít protokoly Azure monitoru a [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Platí pro skupiny s více než 10 virtuálních počítačů vizualizace závislostí?
 Je možné [vizualizace závislostí u skupin](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které mají až 10 virtuálních počítačů. Pokud máte skupinu pomocí více než 10 virtuálních počítačů, doporučujeme rozdělit skupiny v menším skupinám a vizualizace závislostí.

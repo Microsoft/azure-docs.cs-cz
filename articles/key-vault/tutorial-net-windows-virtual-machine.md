@@ -1,6 +1,6 @@
 ---
-title: Kurz – jak používat Azure Key Vault s Windows virtuální počítač Azure v .NET – Azure Key Vault | Dokumentace Microsoftu
-description: 'Kurz: Konfigurace aplikace ASP.NET Core pro čtení tajného klíče z trezoru klíčů'
+title: Kurz – použití Azure Key Vault se virtuální počítač s Windows v rozhraní .NET | Dokumentace Microsoftu
+description: V tomto kurzu nakonfigurujete aplikaci ASP.NET core pro čtení tajného klíče z trezoru klíčů.
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,52 +12,53 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: a19da45d849facc8fe7ed18d95862ab9e79eaace
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: c66a7d7af2a73e26878b92f34e0f42ce0b3ae7f2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744377"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437493"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Windows virtuální počítač Azure v .NET
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Kurz: Použití Azure Key Vault se virtuální počítač s Windows v .NET
 
-Azure Key Vault pomáhá chránit tajné klíče, jako jsou klíče rozhraní API nebo databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
+Služba Azure Key Vault pomáhá chránit tajné kódy jako jsou klíče rozhraní API, databázové připojovací řetězce, potřebujete přístup k aplikacím, služby a prostředky IT.
 
-V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci pro čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. V následujících částech získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak získat konzolovou aplikaci pro čtení informací z Azure Key Vault. To provedete tak, pomocí spravované identity pro prostředky Azure. 
+
+V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
+> * Vytvořte skupinu prostředků.
 > * Vytvoření trezoru klíčů
-> * Uložení tajného klíče v trezoru klíčů
+> * Přidání tajného klíče do trezoru klíčů.
 > * Načtení tajného klíče z trezoru klíčů
 > * Vytvoření virtuálního počítače Azure.
 > * Povolit [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač.
-> * Přidělení požadovaných oprávnění pro konzolovou aplikaci pro čtení dat ze služby key vault.
-> * Načíst tajné kódy z trezoru klíčů
+> * Přiřadíte oprávnění na identitu virtuálního počítače.
 
-Než půjdeme dál, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
+Než začnete, přečtěte si [základní koncepty služby Key Vault](key-vault-whatis.md#basic-concepts). 
+
+Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
-* Všechny platformy:
-  * Git ([stáhnout](https://git-scm.com/downloads)).
-  * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.0.4 nebo novější. K dispozici pro Windows, Mac a Linux.
 
-Tento kurz využívá identita spravované služby
+Pro Windows, Mac a Linux:
+  * [Git](https://git-scm.com/downloads)
+  * Tento kurz vyžaduje, abyste spustili Azure CLI místně. Musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Co je Identita spravované služby a jak funguje?
+## <a name="about-managed-service-identity"></a>Informace o funkci Identita spravované služby
 
-Než budeme pokračovat, seznámíme se s MSI. Azure Key Vault umožňuje bezpečné ukládání přihlašovacích údajů, aby nemusely být v kódu. Abyste je však mohli načíst, musíte se ověřit ve službě Azure Key Vault. K ověření ve službě Key Vault potřebujete přihlašovací údaje. Jedná se o klasický problém. Prostřednictvím spojení Azure a Azure AD poskytuje MSI spouštěcí identitu, která výrazně usnadňuje začátek práce.
+Azure Key Vault ukládá přihlašovací údaje bezpečně, takže nejsou zobrazeny ve vašem kódu. Však musíte pro ověření do služby Azure Key Vault k načtení klíče. K ověření do služby Key Vault, budete potřebovat přihlašovací údaje. Je classic dilema bootstrap. Identita spravované služby (MSI) řeší tento problém tím, že poskytuje _bootstrap identity_ , která zjednodušuje proces.
 
-Funguje to takto. Když povolíte MSI pro službu Azure, jako je Virtual Machines, App Service nebo Functions, Azure vytvoří [instanční objekt](key-vault-whatis.md#basic-concepts) pro instanci služby v Azure Active Directory a vloží do instance služby přihlašovací údaje k instančnímu objektu. 
+Při povolení MSI pro službu Azure, jako jsou Azure Virtual Machines, Azure App Service nebo Azure Functions, Azure vytvoří [instanční objekt služby](key-vault-whatis.md#basic-concepts). MSI se k tomu pro instanci služby v Azure Active Directory (Azure AD) a vloží pověření instančního objektu do této instance. 
 
 ![MSI](media/MSI.png)
 
-V dalším kroku váš kód volá místních metadat služba k dispozici u prostředku Azure získat přístupový token.
-Váš kód použije přístupový token, který získá z místního koncového bodu MSI_ENDPOINT, k ověření ve službě Azure Key Vault. 
+V dalším kroku k získání přístupového tokenu, váš kód volá služba místních metadat, která je k dispozici u prostředku Azure. K ověření do služby Azure Key Vault, váš kód používá přístupový token, který získá z místního koncového bodu MSI. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
+Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
 
 ```azurecli
 az login
@@ -65,86 +66,87 @@ az login
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vyberte název skupiny prostředků a nahraďte zástupný text.
-Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
+
+Potom vyberte název skupiny prostředků a vyplňte zástupný symbol. Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
 
 ```azurecli
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-V tomto článku se používá skupina prostředků, kterou jste právě vytvořili.
+Vaše nově vytvořené skupiny prostředků v celém tomto kurzu použijete.
 
 ## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-Dále ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte trezor klíčů. Zadejte tyto informace:
+Chcete-li vytvořit trezor klíčů ve skupině prostředků, kterou jste vytvořili v předchozím kroku, zadejte následující informace:
 
-* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze (0-9, a – z, A-Z a -).
-* Název skupiny prostředků.
-* Umístění: **USA – západ**.
+* Název trezoru klíčů: řetězec dlouhý 3 až 24 znaků, které mohou obsahovat pouze číslice (0 – 9), písmena (a – z, A-Z) a pomlčky (-)
+* Název skupiny prostředků
+* Umístění: **Západní USA**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
-V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+Váš účet Azure v tuto chvíli je pouze jeden, který má oprávnění k provádění operací s tímto novým trezorem klíčů.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Přidání tajného klíče do trezoru klíčů
 
-Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Mohli byste ukládat připojovací řetězec SQL nebo jakékoli jiné informace, které potřebujete zabezpečeně uchovávat a současně zpřístupnit vaší aplikaci.
+Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Tajný kód může být připojovací řetězec SQL nebo nějakých jiných informací, které potřebujete k zabezpečení a k dispozici pro vaši aplikaci.
 
-Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč **AppSecret**. V tomto tajném klíči bude uložená hodnota **MySecret**.
+Vytvoření tajného klíče v trezoru klíčů s názvem **AppSecret**, zadejte následující příkaz:
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
+Tento tajný kód ukládá hodnotu **MySecret**.
+
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-Postupujte podle následujících odkazech k vytvoření virtuálního počítače s Windows
+Vytvoření virtuálního počítače pomocí jedné z následujících metod:
 
-[Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli) 
+* [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
+* [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
+* [Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
-[Powershell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
+## <a name="assign-an-identity-to-the-vm"></a>Přiřadit identitu virtuálního počítače
+V tomto kroku vytvoření systém přiřadil identity pro virtuální počítač spuštěním následujícího příkazu v Azure CLI:
 
-[Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-
-## <a name="assign-identity-to-virtual-machine"></a>Přiřazení identit k virtuálnímu počítači
-V tomto kroku vytváříme systému identity přiřazené k virtuálnímu počítači spuštěním následujícího příkazu v rozhraní příkazového řádku Azure
-
-```
+```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Všimněte si systemAssignedIdentity vidíte níže. Výstup výše uvedený příkaz by měl 
+Všimněte si systém přiřadil identity, který se zobrazí v následujícím kódu. Výstup ve výstupu předchozího příkazu by měl: 
 
-```
+```azurecli
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-## <a name="give-vm-identity-permission-to-key-vault"></a>Udělení oprávnění identita virtuálního počítače do služby Key Vault
-Teď můžeme poskytnout výše vytvořili oprávnění identit do služby Key Vault spuštěním následujícího příkazu
+## <a name="assign-permissions-to-the-vm-identity"></a>Přiřazení oprávnění na identitu virtuálního počítače
+Nyní můžete přiřadit oprávnění identity dříve vytvořeného trezoru klíčů spuštěním následujícího příkazu:
 
-```
+```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="sign-in-to-the-virtual-machine"></a>Přihlaste se k virtuálnímu počítači
+## <a name="log-on-to-the-virtual-machine"></a>Přihlášení k virtuálnímu počítači
 
-Můžete použít tento [kurz](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)
+Přihlaste se k virtuálnímu počítači, postupujte podle pokynů v [připojit a přihlásit se k virtuálnímu počítači Azure s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
 
 ## <a name="install-net-core"></a>Instalace .NET Core
 
-.NET Core můžete nainstalovat pomocí kroků v tomto [článku](https://www.microsoft.com/net/download)
+Chcete-li nainstalovat sadu .NET Core, přejděte [soubory ke stažení rozhraní .NET](https://www.microsoft.com/net/download) stránky.
 
-## <a name="create-and-run-sample-dot-net-app"></a>Vytvoření a spuštění ukázkové aplikace .NET tečka
+## <a name="create-and-run-a-sample-net-app"></a>Vytvoření a spuštění ukázkové aplikace v .NET
 
 Otevřete příkazový řádek.
 
-Spuštěním následujících příkazů, měli byste vidět "Hello World" Tisk do konzoly
+Spuštěním následujících příkazů můžete vytisknout "Hello World" do konzoly:
 
 ```
 dotnet new console -o helloworldapp
@@ -152,8 +154,10 @@ cd helloworldapp
 dotnet run
 ```
 
-## <a name="edit-console-app"></a>Upravit aplikaci konzoly
-Otevřete soubor Program.cs a přidejte tyto balíčky
+## <a name="edit-the-console-app"></a>Upravit aplikaci konzoly
+
+Otevřít *Program.cs* a přidejte tyto balíčky:
+
 ```
 using System;
 using System.IO;
@@ -162,20 +166,21 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 krocích.
 
-1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, který pak načte token ze služby Azure Active Directory
-2. Předat token do služby Key Vault a načtou se vaše tajný klíč 
+Upravte soubor třídy tak, aby obsahovala kód v následujících krocích:
+
+1. Načtěte token z koncového bodu místní instalační služby MSI ve virtuálním počítači. Tím také načte token ze služby Azure AD.
+1. Předat token trezoru klíčů a pak načíst váš tajný klíč. 
 
 ```
  class Program
     {
         static void Main(string[] args)
         {
-            // Step 1: Get a token from local (URI) Managed Service Identity endpoint which in turn fetches it from Azure Active Directory
+            // Step 1: Get a token from the local (URI) Managed Service Identity endpoint, which in turn fetches it from Azure AD
             var token = GetToken();
 
-            // Step 2: Fetch the secret value from Key Vault
+            // Step 2: Fetch the secret value from your key vault
             System.Console.WriteLine(FetchSecretValueFromKeyVault(token));
         }
 
@@ -212,10 +217,11 @@ Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 kro
     }
 ```
 
+Předchozí kód ukazuje, jak provádět operace se službou Azure Key Vault do virtuálního počítače s Windows.
 
-Výše uvedený kód ukazuje, jak provádět operace se službou Azure Key Vault ve virtuálním počítači Windows Azure. 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-
+Pokud už je nepotřebujete, odstraňte virtuální počítač a trezor klíčů.
 
 ## <a name="next-steps"></a>Další postup
 

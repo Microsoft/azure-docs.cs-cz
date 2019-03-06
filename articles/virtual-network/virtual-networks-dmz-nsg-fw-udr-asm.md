@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c3a5cb540843c5ec4ceaf8522e9148cc7171149c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965252"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456461"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ k ochraně sítě pomocí brány Firewall, směrování definovaného uživatelem a skupiny zabezpečení sítě
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -356,7 +356,7 @@ Specifika každé pravidlo předpokladem pro dokončení v tomto příkladu jsou
   
     Toto pravidlo Pass umožňuje jakýkoli server služby IIS na front-endové podsítě k dosažení AppVM01 (IP adresy 10.0.2.5) na jiný port pomocí libovolného protokolu pro přístup k datům vyžadované webovou aplikaci.
   
-    Na tomto snímku obrazovky "\<explicitní dest\>" se používá v cílovém poli místo 10.0.2.5 jako cíl. To může být buď explicitní znázorněno nebo název objektu sítě (jak tomu bylo v rámci požadavků pro DNS server). To záleží na správce brány firewall, která bude použita metoda. Chcete-li přidat 10.0.2.5 za cíl explicitní, dvakrát klikněte na první prázdný řádek pod \<explicitní dest\> a zadejte adresu v okně nastavení.
+    Na tomto snímku obrazovky "\<explicitní dest\>" se používá v cílovém poli místo 10.0.2.5 jako cíl. To může být buď explicitní znázorněno nebo název objektu sítě (jak tomu bylo v rámci požadavků pro DNS server). To záleží na správce brány firewall, která bude použita metoda. Chcete-li přidat 10.0.2.5 jako explicitní určení, dvakrát klikněte na první prázdný řádek pod \<explicitní dest\> a zadejte adresu, která se otevře okno.
   
     S tímto pravidlem předat bez překladu adres je potřeba, protože se jedná interního provozu, takže způsob připojení může být nastaven na "Ne SNAT".
   
@@ -381,7 +381,7 @@ Specifika každé pravidlo předpokladem pro dokončení v tomto příkladu jsou
   
     ![Pravidlo brány firewall na DNS][15]
   
-    **Poznámka:** Na této obrazovce je v ceně snímek metodu připojení. Protože toto pravidlo je pro interní IP adresa na interní IP adresa provoz, žádné NATing je povinný, to metodu připojení je nastavena na "Ne SNAT" pro toto pravidlo Pass.
+    **Poznámka:** Na tomto snímku obrazovky je součástí metody připojení. Protože toto pravidlo je pro interní IP adresa na interní IP adresa provoz, žádné NATing je povinný, to metodu připojení je nastavena na "Ne SNAT" pro toto pravidlo Pass.
 * **Podsítě pro podsíť pravidlo**: Toto pravidlo Pass je výchozí pravidlo, které byla aktivována a upravit tak, aby povolit všechny servery v podsíti back-endu pro připojení k libovolnému serveru na front-endové podsítě. Toto pravidlo je všechny vnitřní provoz, takže způsob připojení může být nastavena na No SNAT.
   
     ![Pravidlo brány firewall uvnitř virtuální sítě][16]

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f5d75e817da843e0b6a8e86fb055cc723e45a2bb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109103"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449593"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -86,7 +86,7 @@ Panel **Relace** je podobný panelu **Uživatelé**.  Zatímco panel **Uživatel
     ![Časová osa relace](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Seskupení podobných uživatelů
-**Kohorta** je skupina uživatelů seskupených podle podobných vlastností.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
+A **kohorta** představují sadu uživatelů, které jsou seskupeny na podobnou charakteristikou.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
 
 1.  V nabídce vyberte **Kohorty**.
 2.  Kliknutím na **Nová** vytvořte novou kohortu.

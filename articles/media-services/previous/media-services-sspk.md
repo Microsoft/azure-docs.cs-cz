@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6aefa6b8745d14f59981520660b1f4c1323f8617
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000069"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456155"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencování Microsoft® technologie Smooth Streaming portování klienta 
 ## <a name="overview"></a>Přehled
@@ -125,7 +125,7 @@ Prozatím a finální SSPK nabyvatelů licence můžete odeslat technické dotaz
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar zakoupení Corporation
 * Enseo, Inc.
-* Filmflex Movies Limited
+* FilmFlex Movies Limited
 * Fluendo S.A.
 * Gibson Innovations Limited
 * Informace o Applicantion Haier S.R.L

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444901"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
@@ -72,7 +72,7 @@ Některé z hodnot pevně zakódované v šabloně:
 | Umístění | Západní USA |
 | Název virtuální sítě | &lt;ClusterNamePrevix >-ze sítě vnet1 |
 | Předponu adresního prostoru | 10.1.0.0/16 |
-| Název podsítě | podsíť 1 |
+| Název podsítě | subnet 1 |
 | Předpona podsítě | 10.1.0.0/24 |
 | Název podsítě (brány) | GatewaySubnet (nelze změnit) |
 | Předpona podsítě (brány) | 10.1.255.0/27 |
@@ -89,7 +89,7 @@ Některé z hodnot pevně zakódované v šabloně:
 | Umístění | USA – východ |
 | Název virtuální sítě | &lt;ClusterNamePrevix >-ze sítě vnet2 |
 | Předponu adresního prostoru | 10.2.0.0/16 |
-| Název podsítě | podsíť 1 |
+| Název podsítě | subnet 1 |
 | Předpona podsítě | 10.2.0.0/24 |
 | Název podsítě (brány) | GatewaySubnet (nelze změnit) |
 | Předpona podsítě (brány) | 10.2.255.0/27 |
@@ -136,7 +136,7 @@ K instalaci vazby, použijte následující postup:
     sudo apt-get install bind9 -y
     ```
 
-3. Konfigurace vazby předávat požadavky na název řešení na místní server DNS. K tomu použít následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. Konfigurace vazby předávat požadavky na název řešení na serveru DNS v místním prostředí. K tomu použít následující text jako obsah `/etc/bind/named.conf.options` souboru:
 
     ```
     acl goodclients {
@@ -304,21 +304,21 @@ Povinné argumenty:
 
 |Název|Popis|
 |----|-----------|
-|-s, - src-clusteru | Určuje název DNS clusteru HBase zdroje. Příklad: -s hbsrccluster, clusteru – src = hbsrccluster |
-|-d, – letního času mezi clustery | Určuje název DNS clusteru HBase cíl (replikovaného). Příklad: -s dsthbcluster, clusteru – src = dsthbcluster |
-|-sp, src –--heslo ambari | Určuje heslo správce Ambari ve zdrojovém clusteru HBase. |
-|-distribučního bodu, letního času –--heslo ambari | Určuje heslo správce Ambari v cílovém clusteru HBase.|
+|-s, --src-cluster | Určuje název DNS clusteru HBase zdroje. Příklad: -s hbsrccluster, clusteru – src = hbsrccluster |
+|-d, --dst-cluster | Určuje název DNS clusteru HBase cíl (replikovaného). Příklad: -s dsthbcluster, clusteru – src = dsthbcluster |
+|-sp, --src-ambari-password | Určuje heslo správce Ambari ve zdrojovém clusteru HBase. |
+|-dp, --dst-ambari-password | Určuje heslo správce Ambari v cílovém clusteru HBase.|
 
 Volitelné argumenty:
 
 |Název|Popis|
 |----|-----------|
-|-su nebo--src-ambari-user | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBase. Výchozí hodnota je **správce**. |
-|-du – dst ambari uživatele | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBase. Výchozí hodnota je **správce**. |
+|-su, --src-ambari-user | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBase. Výchozí hodnota je **správce**. |
+|-du, --dst-ambari-user | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBase. Výchozí hodnota je **správce**. |
 |-t,--seznam tabulek | Určuje tabulky, které chcete replikovat. Příklad:--tabulkového seznamu = "table1, table2; Tabulka3". Pokud nezadáte tabulky, se replikují všechny existujících tabulek HBase.|
 |-min, - počítač | Určuje hlavní uzel, ve kterém běží akce skriptu. Hodnota je buď **hn0** nebo **hn1** a měli na základě které je aktivní hlavní uzel. Tuto možnost použijte, pokud používáte skript hodnotou 0 USD jako akci skriptu z portálu HDInsight nebo Azure Powershellu.|
-|-prohlášení cp, - copydata | Umožňuje migraci existujících dat v tabulkách, kde je povolená replikace. |
-|-ot. / min, - replikace-phoenix-meta | Umožňuje replikaci pro Phoenix systémové tabulky. <br><br>*Tuto možnost používejte s opatrností.* Doporučujeme, abyste před použitím tohoto skriptu znovu vytvořit Phoenix tabulek v clusterech repliky. |
+|-cp, -copydata | Umožňuje migraci existujících dat v tabulkách, kde je povolená replikace. |
+|-rpm, -replicate-phoenix-meta | Umožňuje replikaci pro Phoenix systémové tabulky. <br><br>*Tuto možnost používejte s opatrností.* Doporučujeme, abyste před použitím tohoto skriptu znovu vytvořit Phoenix tabulek v clusterech repliky. |
 |-h, – Nápověda | Zobrazí informace o použití. |
 
 `print_usage()` Část [skript](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) obsahuje podrobné vysvětlení parametrů.

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9122cf5cc908d578d8b781c6fdc49d7b04b0ab58
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2800385581ea3f08fc1013e980f8c133a2f7241e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990338"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443728"
 ---
 # <a name="azure-automation-integration-modules"></a>Moduly integrace pro Azure Automation
 
@@ -227,7 +227,7 @@ I když jsou moduly integrace moduly Powershellu, je stále několik věcí, kte
     }
     ```
 
-6. Modul musí být plně obsažený v balíčku, na který můžete použít příkaz Xcopy. Moduly Azure Automation jsou distributd k sandboxy Automation, když se runbooky potřebují spustit. Moduly musí pracovat nezávisle, které běží na hostiteli. By měl být schopen Zip nahoru a přesunout balíček modulu a fungovat jako obvykle po importování do jiného hostitele prostředí PowerShell. V pořadí, které se provedou nesmí být modul závislý na žádném souboru mimo složku modulu. Tato složka je složka, kterou zazipujete při importu modulu do služby Azure Automation. Modul by neměl závisí také na žádném jedinečném nastavení registrů na hostiteli, jako je nastavena tato nastavení při instalaci produktu. Pokud tento osvědčený postup nedodržíte, modul nebude možné použít ve službě Azure Automation.  
+6. Modul musí být plně obsažený v balíčku, na který můžete použít příkaz Xcopy. Moduly Azure Automation se distribuují do sandboxy Automation při runbooky potřebují spustit. Moduly musí pracovat nezávisle, které běží na hostiteli. By měl být schopen Zip nahoru a přesunout balíček modulu a fungovat jako obvykle po importování do jiného hostitele prostředí PowerShell. V pořadí, které se provedou nesmí být modul závislý na žádném souboru mimo složku modulu. Tato složka je složka, kterou zazipujete při importu modulu do služby Azure Automation. Modul by neměl závisí také na žádném jedinečném nastavení registrů na hostiteli, jako je nastavena tato nastavení při instalaci produktu. Pokud tento osvědčený postup nedodržíte, modul nebude možné použít ve službě Azure Automation.  
 
 7. Pokud odkazující na [moduly Azure Powershellu Az](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) v modulu, ujistěte se také nejsou odkazující na `AzureRM`. `Az` Modulu nelze použít ve spojení s `AzureRM` moduly. `Az` je podporován v sadách runbook, ale nejsou ve výchozím nastavení importován. Další informace o `Az` moduly a důležité informace o vzít v úvahu, najdete v části [Az podpora modulu ve službě Azure Automation](az-modules.md).
 

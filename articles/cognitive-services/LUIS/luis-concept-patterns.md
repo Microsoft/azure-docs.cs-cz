@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1c408a77f0bdd097db1fb462fa06245133773b71
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195383"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448998"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -62,7 +62,7 @@ Entity ve vzorech jsou ohraničeny složených závorek, `{}`. Vzory mohou zahrn
 
 Vzor syntaxe podporuje následující syntaxi:
 
-|Funkce|Syntaxe|[Úroveň vnoření](#nesting-syntax)|Příklad:|
+|Funkce|Syntaxe|Úroveň vnoření|Příklad:|
 |--|--|--|--|
 |entita| {} -složené závorky|2|Kde je formulář {název entity}?|
 |nepovinné|[] - hranaté závorky<BR><BR>Je stanovený limit 3 na úrovní vnoření z jakékoli kombinace volitelné a seskupování |2|Otazník je volitelné [?]|
@@ -167,7 +167,7 @@ Označit volitelný text, který v utterance pomocí syntaxe regulárních výra
 |Vzor s volitelným textem|Význam|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` a `from {person}` jsou volitelné|
-|' Je mi může pomoci [?] | Je volitelný interpunkčního znaménka.|
+|' Je mi může pomoci [?]|Je volitelný interpunkčního znaménka.|
 
 Interpunkční znaménka (`?`, `!`, `.`) ignorovat a je potřeba je pomocí syntaxe hranatá závorka ve vzorech ignorovat. 
 
