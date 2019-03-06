@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014892"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432698"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 
@@ -116,13 +116,13 @@ Další informace najdete v článku, který se věnuje [rozdílu mezi vlastní 
 ## <a name="sdks"></a>Sady SDK
  Aktuální verze služby Data Factory poskytuje širší nabídku sad SDK, které je možné využít k vytváření, správě a monitorování kanálů.
 
-- **SADY .NET SDK**: Sada .NET SDK je aktualizovaná v aktuální verzi.
+- **.NET SDK**: Sada .NET SDK je aktualizovaná v aktuální verzi.
 
-- **Prostředí PowerShell**: Rutiny Powershellu jsou aktualizované v aktuální verzi. Rutiny pro aktuální verzi mají **DataFactoryV2** název, například: Get-AzureRmDataFactoryV2. 
+- **PowerShell**: Rutiny Powershellu jsou aktualizované v aktuální verzi. Rutiny pro aktuální verzi mají **DataFactoryV2** název, například: Get-AzDataFactoryV2. 
 
 - **Python SDK**: Tato sada SDK je nového v aktuální verzi.
 
-- **ROZHRANÍ REST API**: Rozhraní REST API se aktualizuje v aktuální verzi. 
+- **REST API**: Rozhraní REST API se aktualizuje v aktuální verzi. 
 
 Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klienty verze 1. 
 

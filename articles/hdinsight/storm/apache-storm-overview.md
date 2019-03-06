@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3bae6d93ffe7ea028d3329dcc69c2f33bdf7aa2a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ce458328967337976ed713f78ead24e2f1fcdb96
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635455"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451269"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -48,7 +48,7 @@ Storm v HDInsight poskytuje následující funkce:
 
 Seznam společností, které používají pro svá řešení pro analýzu v reálném čase Apache Storm, najdete v tématu [Společnosti využívající Apache Storm](https://storm.apache.org/documentation/Powered-By.html).
 
-Abyste mohli začít používat Storm, najdete v článku [začít pracovat s pache Storm v HDInsight][gettingstarted].
+Abyste mohli začít používat Storm, najdete v článku [Začínáme s Apache Storm v HDInsight][gettingstarted].
 
 ## <a name="how-does-apache-storm-work"></a>Jak funguje Apache Storm
 
@@ -142,7 +142,7 @@ Další informace naleznete v tématu [Záruky na zpracování dat](https://stor
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-Běžný je vzor čtení vstupní řazené kolekce členů, generování nuly nebo dalších řazených kolekcí členů a následné okamžité potvrzení vstupní řazené kolekce členů na konci metody provedení. Storm pro automatizaci tohoto vzoru poskytuje rozhraní [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html).
+Vzor čtení vstupní řazené kolekce členů, generování nuly nebo více řazených kolekcí členů a pak potvrdil vstupní řazené kolekce členů na konci metody provedení je běžné. Storm pro automatizaci tohoto vzoru poskytuje rozhraní [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html).
 
 ### <a name="joins"></a>Spojení
 

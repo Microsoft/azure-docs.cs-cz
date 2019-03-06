@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: acbd3c9ed55556ac792c3a98e6dbc1e4f7455fe1
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311300"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405109"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Jak indexovat objektů BLOB JSON pomocí indexeru Azure Search Blob
 V tomto článku se dozvíte, jak nakonfigurovat Azure Search blob [indexer](search-indexer-overview.md) extrahujte strukturované obsah z dokumentů JSON ve službě Azure Blob storage a usnadnit prohledávatelná ve službě Azure Search. Tento pracovní postup vytvoří index Azure Search a načte se existující text extrahovaný z objektů BLOB JSON. 
@@ -288,7 +288,7 @@ Sady .NET SDK má plně parity pomocí rozhraní REST API. Doporučujeme, abyste
 
 <a name="parsing-modes"></a>
 
-### <a name="parsing-modes"></a>Režimy parsování
+## <a name="parsing-modes"></a>Režimy parsování
 
 Objekty BLOB JSON, můžete předpokládat více formulářů. **ParsingMode** parametr pro JSON indexer Určuje, jak obsah objektu blob JSON je analyzovat a strukturované v indexu Azure Search:
 

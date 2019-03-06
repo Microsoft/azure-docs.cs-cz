@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9c307bbbef7b9eecc980dc6013c317f1ee231a0c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034297"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448234"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitorujte metriky výkonu a úložiště ve službě Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Metriky lze zobrazit na stránce účtu, nové metriky stránky, nebo ve služb�
 
    Na webu Azure portal zobrazuje sadu shromažďování metrik, které jsou k dispozici. Všimněte si, že propustnost, úložiště, dostupnosti, latence a konzistence metriky jsou k dispozici v samostatných kartách. Chcete-li získat další podrobnosti týkající se metrik k dispozici, klikněte na dvojitou šipku v horní části pravého podokna jednotlivých metrik.
 
-   ![Snímek obrazovky s přehledu monitorování, zobrazující sady metriky](./media/monitor-accounts/metrics-suite.png)
+   ![Snímek obrazovky přehledu monitorování, zobrazující sady metriky](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Zobrazit metriku výkonu s využitím monitorování Azure
 1. V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **monitorování** na levém panelu.
@@ -43,14 +43,14 @@ Metriky lze zobrazit na stránce účtu, nové metriky stránky, nebo ve služb�
    * Celkový počet požadavků na aktuální den.
    * Využité úložiště.
    
-   ![Snímek obrazovky okna přehledu monitorování, který popisuje požadavky a využití úložiště](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![Snímek obrazovky přehledu monitorování, který popisuje požadavky a využití úložiště](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. Kliknutím na dvojité šipky v pravé horní části **požadavky** dlaždice se otevře na konkrétní **metrika** stránky.
 4. **Metrika** stránky obsahuje podrobnosti o celkový počet požadavků. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Nastavte si upozornění na portálu
 1. V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **všechny služby**, klikněte na tlačítko **služby Azure Cosmos DB**a pak klikněte na název účtu Azure Cosmos DB, pro kterou chcete nastavit výkonu upozornění na metriku.
 2. V nabídce prostředku klikněte na tlačítko **pravidla upozornění** otevřete stránku pravidla upozornění.  
-   ![Snímek obrazovky upozornění pravidla vybrané části](./media/monitor-accounts/madocdb10.5.png)
+   ![Vybraný snímek obrazovky se část pravidla upozornění](./media/monitor-accounts/madocdb10.5.png)
 3. V **pravidla upozornění** klikněte na **přidat upozornění**.  
    ![Snímek obrazovky se zvýrazněným tlačítkem Přidat upozornění v seznamu na stránce upozornění pravidla](./media/monitor-accounts/madocdb11.png)
 4. V **přidání pravidla výstrahy** stránky, zadejte:
@@ -61,7 +61,7 @@ Metriky lze zobrazit na stránce účtu, nové metriky stránky, nebo ve služb�
    * Podmínku prahové hodnoty a období, které určují, kdy se aktivuje upozornění. Chyba serveru počet například větší než 5 za posledních 15 minut.
    * Určuje, zda správce služeb a spolusprávci jsou e-mailem při spuštění výstrahy.
    * Další e-mailové adresy pro oznámení o výstrahách.  
-     ![Snímek obrazovky okna Přidat stránku pravidlo upozornění](./media/monitor-accounts/madocdb12.png)
+     ![Snímek obrazovky Přidat stránku pravidlo upozornění](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Programové monitorování služby Azure Cosmos DB
 Účtu metriky na úrovni k dispozici na portálu, jako je například využití a celkový počet požadavků na účet úložiště, nejsou k dispozici prostřednictvím rozhraní SQL API. Však můžete načíst data o využití na úrovni kolekce pomocí rozhraní SQL API. K načtení dat na úrovni kolekce, postupujte takto:

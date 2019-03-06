@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 0d57c65c93ffcd6c4c5249a1e5effeb457ed1736
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912414"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440892"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem úložiště Azure Data Lake
 
@@ -30,7 +30,7 @@ Tento článek obsahuje doporučení pro Data Lake Storage správce pro nastaven
 Zbývající část tohoto článku předpokládá, že máte dobré znalosti souborům a složkám úrovně seznamy řízení přístupu v Azure Data Lake Storage, která je popsána v podrobností [řízení přístupu v Azure Data Lake Storage](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Nastavení úložiště data Lake pro několik clusterů HDInsight
-Dejte nám trvat složce dvě úrovně hierarchie k vysvětlení doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu s účtem Data Lake Storage s strukturu složek **/clustery/finance**. S touto strukturou můžete použít všechny clustery vyžadované finanční organizace /clusters/finance jako umístění úložiště. V budoucnu, pokud jiné organizace Řekněme, že marketingu, chce vytvořit HDInsight clustery pomocí stejného účtu Data Lake Storage, uživatel může vytvořit/clusterů nebo marketingovým oddělením. Teď použijeme **/clustery/finance**.
+Dejte nám trvat složce dvě úrovně hierarchie k vysvětlení doporučení pro používání víc clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu s účtem Data Lake Storage s strukturu složek **/clustery/finance**. S touto strukturou můžete použít všechny clustery vyžadované finanční organizace /clusters/finance jako umístění úložiště. V budoucnu, pokud jiné organizace Řekněme, že marketingu, chce vytvořit HDInsight clustery pomocí stejného účtu Data Lake Storage, uživatel může vytvořit/clusterů nebo marketingovým oddělením. Teď použijeme **/clustery/finance**.
 
 Pokud chcete povolit tuto strukturu složek, které bude efektivně využívat clustery HDInsight, musí správce úložiště Data Lake přiřadit příslušná oprávnění, jak je popsáno v tabulce. Oprávnění v tabulce odpovídají přístupové seznamy ACL a ne výchozí – seznamy ACL. 
 
@@ -54,11 +54,11 @@ Některé klíčové body ke zvážení.
 - Dvě úrovně struktury složek (**/clusterů/finance/**) musí být vytvořené a zřízené s příslušnými oprávněními správce úložiště Data Lake **před** pomocí účtu úložiště pro clustery. Tato struktura není vytvořena automaticky při vytváření clusterů.
 - Výše uvedený příklad doporučuje nastavení vlastnící skupina tohoto **/clustery/finance** jako **FINGRP** a jejímu **r-x** přístup k FINGRP do hierarchie celou složku spuštění z kořenového adresáře. Tím se zajistí, že členové FINGRP se můžete dostat strukturu složek, počínaje kořenový.
 - V případech, kdy vytvořit clustery se v rámci různých objektů služby AAD **/clustery/finance**, sticky-bit (při nastavení na **finance** složky) zajišťuje, že vytvořeny složky podle jednoho instančního objektu nelze odstranit, druhý.
-- Jakmile strukturu složek a oprávnění jsou na místě, procesu vytváření clusteru HDInsight vytvoří místo specifických pro cluster úložiště v rámci **/clusterů/finance/**. Například může být úložiště pro cluster s názvem fincluster01 **/clusters/finance/fincluster01**. Vlastnictví a oprávnění pro složky vytvoří cluster HDInsight je uveden v tabulce tady.
+- Jakmile strukturu složek a oprávnění jsou na místě, procesu vytváření clusteru HDInsight vytvoří specifických pro cluster úložiště v rámci **/clusterů/finance/**. Například může být úložiště pro cluster s názvem fincluster01 **/clusters/finance/fincluster01**. Vlastnictví a oprávnění pro složky vytvoří cluster HDInsight je uveden v tabulce tady.
 
     |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Oprávnění pro pojmenovaného uživatele | Pojmenované skupiny | Oprávnění s názvem skupiny |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/Clusters/finanace/fincluster01 | rwxr-x---  |Instanční objekt služby |FINGRP  |- |-  |-   |-  | 
+    |/Clusters/finanace/fincluster01 | rwxr-x---  |Instanční objekt |FINGRP  |- |-  |-   |-  | 
    
 
 

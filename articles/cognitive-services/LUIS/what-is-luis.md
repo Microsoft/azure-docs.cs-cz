@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 97632ad27a09451f47012dfb7bbc9d406cd37c89
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879254"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441963"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -104,7 +104,7 @@ Hlavní klientská aplikace služby LUIS je následující:
 * [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Úplné funkce chatbota zajišťuje rozhraní [Bot Framework][bot-framework] verze [3.x](https://github.com/Microsoft/BotBuilder) nebo [4.x](https://github.com/Microsoft/botbuilder-dotnet).
 
 Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
-* [Rozhraní příkazového řádku služby LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) – balíček NPM poskytuje vytváření a předpovědi jak s použitím samostatného nástroje příkazového řádku, tak v rámci importu. 
+* [Rozhraní příkazového řádku služby LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) poskytuje balíčku NPM vytváření obsahu a půjček s využitím jako nástroj příkazového řádku samostatné nebo import. 
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) – LUISGen je nástroj pro generování zdrojového kódu C# se silnými typy a zdrojového kódu TypeScript z exportovaného modelu LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) umožňuje používat z nadřazené aplikace několik aplikací LUIS a QnA Maker s využitím modelu dispečera.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) – LUDown je nástroj příkazového řádku, který pomáhá spravovat jazykové modely pro vašeho robota.

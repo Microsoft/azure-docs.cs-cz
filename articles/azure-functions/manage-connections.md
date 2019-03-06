@@ -8,33 +8,33 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: df4fcb505cce17663334d9b80245f5c981cdbe1e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989622"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450732"
 ---
-# <a name="how-to-manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
+# <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
-Funkce v aplikaci function app sdílet prostředky a mezi těmito sdílené prostředky jsou připojení &mdash; připojení HTTP, připojení k databázi a připojení ke službám Azure, jako je například úložiště. Pokud mnoho funkcí jsou spuštěny souběžně, je možné mít nedostatek dostupných připojení. Tento článek vysvětluje, jak kód vaší funkce, abyste se vyhnuli použití víc připojení než které skutečně potřebují.
+Funkce v aplikaci function app sdílení prostředků. Mezi tyto sdílené prostředky jsou připojení: Připojení prostřednictvím protokolu HTTP, připojení k databázi a připojení ke službám, jako je Azure Storage. Pokud mnoho funkcí jsou spuštěny souběžně, je možné mít nedostatek dostupných připojení. Tento článek vysvětluje, jak kód vaší funkce abyste se vyhnuli použití víc připojení než které potřebují.
 
-## <a name="connections-limit"></a>Omezení počtu připojení
+## <a name="connection-limit"></a>Limit připojení
 
-Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení (aktuálně v 600 aktivní připojení, celkový počet připojení 1200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) jednu instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
+Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení (aktuálně v 600 aktivní připojení a 1 200 celkový počet připojení)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) jednu instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
-Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) pro zpracování více požadavků, každá instance má limit nezávislé připojení.  To znamená neomezený globální připojení a celkem máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
+Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
 
-## <a name="use-static-clients"></a>Použití statických klientů
+## <a name="static-clients"></a>Statické klienty
 
-Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce.  Opětovné použití připojení klientů se doporučuje pro libovolný jazyk, který mohou psát funkce v. Třeba jako klientů .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce. Doporučujeme opětovné použití připojení klienta pro libovolný jazyk, který můžou psát funkce v. Třeba jako klientů .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ), a klienty služby Azure Storage můžete spravovat připojení, pokud používáte statické jednoho klienta.
 
-Tady jsou některé zásady dodržovat při použití klienta specifickou pro službu v aplikaci Azure Functions:
+Tady jsou některé zásady dodržovat při používání klienta specifickou pro službu v aplikaci Azure Functions:
 
-- **Ne** vytvořit nového klienta se každé volání funkce.
-- **PROVEĎTE** vytvořit jeden, statické klienta, které mohou být využívána každé volání funkce.
-- **Vezměte v úvahu** vytvoření jeden statický klienta ve sdílených pomocnou třídu, pokud různé funkce používaly stejnou službu.
+- *Ne* vytvořit nového klienta se každé volání funkce.
+- *Proveďte* vytvořit jeden, statické klienta, můžete použít každé volání funkce.
+- *Vezměte v úvahu* vytvoření jeden statický klienta ve sdílených pomocnou třídu, pokud různé funkce používaly stejnou službu.
 
 ## <a name="client-code-examples"></a>Příklady kódu klienta
 
@@ -42,7 +42,7 @@ Tato část ukazuje osvědčené postupy pro vytváření a používání klient
 
 ### <a name="httpclient-example-c"></a>Příklad HttpClient (C#)
 
-Tady je příklad C# funkční kód, který vytvoří statickou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
+Tady je příklad C# funkční kód, který vytvoří statickou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) instance:
 
 ```cs
 // Create a single, static HttpClient
@@ -55,19 +55,19 @@ public static async Task Run(string input)
 }
 ```
 
-Běžné otázky o .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) je "By měl jsem se připravuje se klient?" Obecně platí, Uvolňujte objekty, které implementují `IDisposable` po dokončení jejich používání. Ale statického klienta není vyřadit, protože není vše nastaveno použití po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
+Běžné otázky o [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v rozhraní .NET je "By měl jsem vyřadit klientovi?" Obecně platí, vyřadit objekty, které implementují `IDisposable` po dokončení jejich používání. Ale není dispose statické klienta, protože nebyly provedeny používat po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
 
 ### <a name="http-agent-examples-nodejs"></a>Příklady agenta HTTP (Node.js)
 
-Protože lepší připojení poskytuje možnosti správy, měli byste používat nativní [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) třídy místo metody není nativní, jako `node-fetch` modulu. Parametry připojení jsou nakonfigurované na použití možností `http.agent` třídy. Zobrazit [nového agenta (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) podrobné možnosti k dispozici s agentem HTTP.
+Protože lepší připojení poskytuje možnosti správy, měli byste používat nativní [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) třídy místo metody není nativní, jako `node-fetch` modulu. Parametry připojení jsou nakonfigurované přes možnosti na `http.agent` třídy. Podrobné možnosti k dispozici s agentem HTTP najdete v tématu [nového agenta (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
-Globální `http.globalAgent` používané `http.request()` má všechny tyto hodnoty příslušných výchozí nastavení. Doporučeným způsobem, jak nakonfigurovat omezení počtu připojení ve funkcích se nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro danou aplikaci funkcí:
+Globální `http.globalAgent` třídy používané `http.request()` má všechny tyto hodnoty příslušných výchozí nastavení. Doporučeným způsobem, jak nakonfigurovat omezení počtu připojení ve funkcích se nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro danou aplikaci funkcí:
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- Následující příklad vytvoří nový požadavek HTTP s vlastní agenta HTTP jenom pro tento požadavek.
+ Následující příklad vytvoří nový požadavek HTTP s vlastní agenta HTTP jenom pro tento požadavek:
 
 ```js
 var http = require('http');
@@ -110,14 +110,14 @@ public static async Task Run(string input)
 
 ## <a name="sqlclient-connections"></a>SqlClient připojení
 
-Kód vaší funkce může pomocí zprostředkovatele dat .NET Framework pro SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) a navažte kontakty do relační databáze SQL. Toto je základní poskytovatel dat rozhraní, které využívají technologie ADO.NET, jako je například rozhraní Entity Framework. Na rozdíl od [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+Kód vaší funkce můžete použít zprostředkovatele dat .NET Framework pro SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) a navažte kontakty do relační databáze SQL. Je také základní poskytovatel dat rozhraní, které spoléhají na ADO.NET, jako je třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Na rozdíl od [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) připojení ADO.NET implementuje sdružování připojení ve výchozím nastavení. Ale protože lze stále spustit z připojení, doporučujeme optimalizovat připojení k databázi. Další informace najdete v tématu [SQL sdružování připojení serveru (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Některé architektury dat, jako [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx), připojovacích řetězců z informace obvykle získáte **ConnectionStrings** oddílu konfiguračního souboru. V takovém případě musíte explicitně přidat připojovací řetězce databáze SQL na **připojovací řetězce** kolekce vaše nastavení aplikace function app a v [souboru local.settings.json](functions-run-local.md#local-settings-file) ve vašem místním projektu. Pokud vytváříte [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** u vašich připojení.
+> Některé architektury dat, jako je rozhraní Entity Framework informace obvykle získáte z připojovacích řetězců **ConnectionStrings** oddílu konfiguračního souboru. V takovém případě musíte explicitně přidat připojovací řetězce databáze SQL na **připojovací řetězce** kolekce vaše nastavení aplikace function app a v [souboru local.settings.json](functions-run-local.md#local-settings-file) ve vašem místním projektu. Pokud vytváříte instanci [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** u vašich připojení.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, proč se doporučují statické klientů, přečtěte si téma [antipattern nesprávného vytváření instancí](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+Další informace o proč doporučujeme statickou klientů najdete v tématu [antipattern nesprávného vytváření instancí](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
 Další tipy pro výkon Azure Functions najdete v části [optimalizujete tím její výkon a spolehlivost služby Azure Functions](functions-best-practices.md).

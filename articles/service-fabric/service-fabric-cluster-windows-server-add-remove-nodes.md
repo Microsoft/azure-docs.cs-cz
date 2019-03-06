@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 69680331bdad0faa36cb3df6117baf8b358da132
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9b87c19977fe35132d80729810c3a0547c486fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251015"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446108"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidávání a odebírání uzlů do samostatného clusteru Service Fabric běžící na Windows serveru
 Až budete mít [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md), může změnit potřeb (firmy) a je potřeba přidat nebo odebrat uzly do clusteru. Tento článek obsahuje podrobné pokyny k dosažení tohoto cíle. Všimněte si, že přidání nebo odebrání v uzlu funkce není podporována v místním vývojovém clusteru.
@@ -38,7 +38,7 @@ Až budete mít [vytvoření samostatného clusteru Service Fabric na počítač
     ```
     Po dokončení spuštění skriptu můžete zkontrolovat, zda byl přidán nový uzel spuštěním [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) rutiny.
 
-7. K zachování konzistence napříč různými uzly v clusteru, je nutné inicializovat konfigurace upgradu. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) získat nejnovější konfigurační soubor a přidat do části "Uzly" nově přidané uzlu. Doporučuje se také vždy mít nejnovější konfiguraci clusteru, která je k dispozici v případě, že budete muset opět nasadit cluster se stejnou konfigurací.
+7. K zachování konzistence napříč různými uzly v clusteru, je nutné inicializovat konfigurace upgradu. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) získat nejnovější konfigurační soubor a přidat do části "Uzly" nově přidané uzlu. Doporučuje se také vždy mít nejnovější konfiguraci clusteru, která je k dispozici v případě, že budete muset znovu nasadit cluster se stejnou konfigurací.
 
     ```
         {

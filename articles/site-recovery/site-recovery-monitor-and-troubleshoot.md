@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210416"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432868"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 
@@ -84,7 +84,7 @@ Aktualizace softwaru | Dostupnost nové aktualizace softwaru a informace o u nic
 **Zobrazení infrastruktury** zobrazuje součásti infrastruktury používané v replikaci a stavu připojení mezi servery a služby Azure.
 
 - Zelená čára označuje, že připojení je v pořádku.
-- Červená čára s ikonou verlaid chyba značící existenci jeden nebo více chyb Příznaky tohoto neovlivní připojení.
+- Červená čára s ikonou překryté chyba značící existenci jedné nebo více příznaků chyby tohoto neovlivní připojení.
 -  Umístěte ukazatel myši nad ikonu chybě a zobrazí se chyba a počet ovlivněných entit. Klikněte na ikonu pro filtrovaný seznam ovlivněných entity.
 
     ![Zobrazení infrastruktury Site Recovery (trezor)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)

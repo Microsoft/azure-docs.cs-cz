@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 650696d1eb3979447bffa7312e91b4fe1a57652c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865008"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447995"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Můžete generovat metadata obrázků ve službě Azure Storage pro počítačové zpracování obrazu
 
@@ -48,7 +48,7 @@ Budete muset vytvořit prostředek pro počítačové zpracování obrazu k vaš
 
 1. V dialogovém okně zadejte "pro zpracování obrazu api-key" **název** pole a vyberte **F0** jako **cenová úroveň**. Vyberte stejné **umístění** , kterou jste vybrali při nastavování účtu Azure Storage. V části **skupiny prostředků**vyberte **použít existující** a vyberte také stejnou skupinu prostředků. Zkontrolujte **potvrzuji, že** pole a potom klikněte na tlačítko **vytvořit**.
 
-    ![Subcribing k Computer Vision API](../Images/create-vision-api.png)
+    ![Předplatit Computer Vision API](../Images/create-vision-api.png)
 
 1. Vraťte se do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, který jste právě vytvořili. Zkopírujte adresu URL v části **koncový bod** k někde měli snadno k dispozici to za chvíli. Pak klikněte na tlačítko **zobrazení přístupových klíčů**.
 

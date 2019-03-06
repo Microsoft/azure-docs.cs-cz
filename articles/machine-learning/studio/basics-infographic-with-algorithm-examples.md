@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodc18
-ms.date: 12/18/2017
-ms.openlocfilehash: 0d7210bfd333a5941d25f72dc0af0743ed234f8c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.date: 03/04/2019
+ms.openlocfilehash: e29e4713cb01fcf894e09631ecca91ff07587751
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818897"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455186"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Machine learning s příklady algoritmů základy
 
@@ -23,7 +23,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Oblíbené algoritmy v nástroji Machine Learning Studio
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) přinášejí velké knihovny algoritmů pro prediktivní analýzy. Infografiku čtyři oblíbené rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - určuje a poskytuje odkazy na funkčních příkladů v [galerii Azure AI](https://gallery.azure.ai/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
+[Azure Machine Learning Studio](https://studio.azureml.net/) přinášejí velké knihovny algoritmů pro prediktivní analýzy. Tato infografika čtyři oblíbené rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - určuje a poskytuje odkazy na funkčních příkladů v [galerii Azure AI](https://gallery.azure.ai/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si informační grafiky s příklady algoritmů
 
@@ -40,7 +40,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 
 
 <!-- Module References -->
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
-[initialize-model]: https://msdn.microsoft.com/library/azure/0c67013c-bfbc-428b-87f3-f552d8dd41f6/
-[k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
-[one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
+[a-z-list]: /azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: /azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: /azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: /azure/machine-learning/studio-module-reference/one-vs-all-multiclass

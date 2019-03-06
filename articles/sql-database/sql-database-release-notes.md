@@ -8,18 +8,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: af0fd591393f9f187a75f79fea980d41085df5cb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9bd330c2be2b543bd7238dd1641df0d092a8a17d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342441"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434895"
 ---
 # <a name="sql-database-release-notes"></a>Zpráva k vydání verze SQL Database
 
-Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Database a v dokumentaci k SQL Database. Vylepšení k jiným službám Azure, najdete v části [aktualizací služby](https://azure.microsoft.com/updates).
+Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Database a v dokumentaci k SQL Database. Vylepšení služby SQL Database, najdete v článku také [aktualizace služby SQL Database](https://azure.microsoft.com/updates/?product=sql-database). Vylepšení k jiným službám Azure, najdete v části [aktualizací služby](https://azure.microsoft.com/updates).
 
 ## <a name="march-2019"></a>2019. března
 
@@ -27,15 +27,17 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-| Přidání protokolu limity pro izolované databáze|Další informace najdete v tématu [jedno omezení prostředků vCore databáze](sql-database-vcore-resource-limits-single-databases.md)|
-| Přidání protokolu limity pro elastické fondy a databáze ve fondu|Další informace najdete v tématu [vCore prostředků omezení Elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md)|
-| Přidání transakce protokolu míra zásad správného řízení| Přidat nový obsah pro [transakční protokol míra zásad správného řízení](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)|
-| Aktualizace ukázky Powershellu pro izolované databáze a elastických fondů použít az.sql modul | Další informace najdete v tématu [ukázky Powershellu pro izolované databáze a elastické fondy](sql-database-powershell-samples.md#single-database-and-elastic-pools).
+| Přidání protokolu limity pro izolované databáze|Další informace najdete v tématu [jedno omezení prostředků vCore databáze](sql-database-vcore-resource-limits-single-databases.md).|
+| Přidání protokolu limity pro elastické fondy a databáze ve fondu|Další informace najdete v tématu [vCore prostředků omezení Elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).|
+| Přidání transakce protokolu míra zásad správného řízení| Přidat nový obsah pro [transakční protokol míra zásad správného řízení](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|
+| Aktualizace ukázky Powershellu pro izolované databáze a elastických fondů použít az.sql modul | Další informace najdete v tématu [ukázky Powershellu pro izolované databáze a elastické fondy](sql-database-powershell-samples.md#single-database-and-elastic-pools).|
+| &nbsp; |
 
 ## <a name="february-2019"></a>. Února 2019
 
@@ -43,16 +45,24 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-|Vytváření obnovitelného indexu online je teď obecně dostupná| Další informace najdete v tématu [Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)|
-|Spravovaná instance podporu pro směrovací tabulky vylepšené| Další informace najdete v tématu [požadavky sítě](sql-database-managed-instance-connectivity-architecture.md#network-requirements)|
+|Vytváření obnovitelného indexu online je teď obecně dostupná| Další informace najdete v tématu [Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
+|Spravovaná instance podporu pro směrovací tabulky vylepšené| Další informace najdete v tématu [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
+|Přejmenování databáze nepodporuje spravované instance | Další podrobnosti najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) a [proceduru sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) syntaxe.|
+|Databáze SQL jako zdroje referenčních dat pro Stream Analytics. | Další informace najdete v tématu [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
+|Data Migration Assistant přidává podporu pro spravovanou instanci. |Další informace najdete v tématu [co je nového v DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|SQL Server Pomocníka s migrací přidává podporu pro vyhodnocení připravenosti na cíl pro spravovanou instanci. | Další informace najdete v tématu [SQL Server Pomocníka s migrací](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
+|Služby dat migrace podporuje migraci z Amazon vzdálené plochy do spravované instance | Další informace najdete v tématu [kurzu: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-|Přidání managed instance vyjasnění možnost nasazení|Aktualizovat řada článků o vysvětlení použitelnost pro izolované databáze, elastický fond a možnosti nasazení spravované instance |
-|Aktualizace databáze tempdb velikosti nákupní model založený na DTU | Další informace najdete v tématu [databáze Tempdb ve službě SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)|
-|Aktualizované import a export souboru bacpac pro podporu spravované instance| Další informace najdete v tématu [importovat ze souboru BACPAC](sql-database-import.md) a [exportovat do souboru BACPAC](sql-database-export.md) |
+|Přidání managed instance vyjasnění možnost nasazení|Aktualizovat řada článků o vysvětlení použitelnost pro izolované databáze, elastický fond a možnosti nasazení spravované instance. |
+|Aktualizace databáze tempdb velikosti nákupní model založený na DTU | Další informace najdete v tématu [databáze Tempdb ve službě SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|Aktualizované import a export souboru bacpac pro podporu spravované instance| Další informace najdete v tématu [importovat ze souboru BACPAC](sql-database-import.md) a [exportovat do souboru BACPAC](sql-database-export.md). |
+| &nbsp; |
+
 
 ## <a name="january-2019"></a>2019. ledna
 
@@ -62,7 +72,7 @@ Tento článek obsahuje seznam nových funkcí a vylepšení ve službě SQL Dat
 | --- | --- |
 | Členitost další možnosti pro výpočetní prostředky | Úrovně u služeb pro obecné účely a pro důležité obchodní informace [izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md) nyní obsahují další možnosti podrobné výpočetní prostředky.|
 | Zobrazení záznamů auditu pro spravovanou instanci na webu Azure Portal | Zobrazení [záznamy pro spravované instance auditu](sql-database-managed-instance-auditing.md) ve službě Azure portal teď podporuje.|
-| Funkce detekce hrozeb zálohy přejmenován na Pokročilé zabezpečení dat | Funkce detekce hrozeb zálohy přejmenován na [rozšířené zabezpečení dat](sql-advanced-threat-protection.md) pro izolované databáze, elastické fondy a spravované instance |
+| Funkce detekce hrozeb zálohy přejmenován na Pokročilé zabezpečení dat | Funkce detekce hrozeb zálohy přejmenován na [rozšířené zabezpečení dat](sql-advanced-threat-protection.md) pro izolované databáze, elastické fondy a spravované instance. |
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentace k vylepšení

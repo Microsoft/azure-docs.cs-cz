@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 046d00eec9fd5a406a1e8bf78e48d4dd913b83fd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816641"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437564"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -432,7 +432,7 @@ Microsoft Azure nabízí postupy výuky pro základní principy PdM techniky, kr
 | [Školní Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
 | [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
-| [Webináře Microsoft AI Youtube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
+| [Webináře Microsoft AI YouTube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partneři |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partneři |

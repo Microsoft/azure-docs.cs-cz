@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822744"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454149"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822744"
 
 Tento článek popisuje architekturu ukázkové řešení, která přesunu a zpracování rozsáhlých datových sad automatické a naplánovaným způsobem. Také poskytuje návod začátku do konce implementovat řešení pomocí služby Data Factory a Azure Batch.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Tento článek je delší než typické článek, protože obsahuje návod, celé ukázkové řešení. Pokud jste služby Batch a Data Factory teprve začínáte, můžete další informace o těchto službách, a jak spolu fungují. Pokud něco o službách, které znáte a jsou návrh/aplikační architektura založená na řešení, můžete se zaměřit na architekturu části tohoto článku. Pokud vytváříte prototyp nebo řešení, můžete chtít vyzkoušet podrobných pokynů v tomto návodu. Zveme komentář k tomuto obsahu a jak je používáte.
 
 Nejprve Podívejme se na jak služby Data Factory a Batch vám může pomoci zpracování velkých datových sad v cloudu.     
+
 
 ## <a name="why-azure-batch"></a>Proč Azure Batch?
  Můžete použít Batch umožňuje efektivně spouštět rozsáhlé paralelní a vysoce výkonné aplikace výpočetního prostředí (HPC) v cloudu. Je služba platformy, která plánuje výpočetně náročné práce ke spuštění ve spravované kolekci virtuálních počítačů (VM). Může automaticky škálovat výpočetní prostředky, které splňují potřeby vašich úloh.
@@ -40,7 +43,7 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 * [Základy služby Batch](../../batch/batch-technical-overview.md)
 * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
 
-Volitelně můžete další informace o službě Batch najdete v tématu [Batch documentatnion](https://docs.microsoft.com/azure/batch/).
+Volitelně můžete další informace o službě Batch najdete v tématu [dokumentace ke službě Batch](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Vytvoření spravované datové kanály, které přesun dat z místních i cloudových úložišť dat do centralizovaného úložiště dat můžete použít Data Factory. Příkladem je úložiště objektů Blob v Azure. Data Factory můžete zpracovat a transformovat data pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Můžete také naplánovat datové kanály ke spuštění naplánované způsobem (například každou hodinu, každý den a jednou týdně). Můžete monitorovat a spravovat kanály, abyste mohli rozpoznat potíže a provést akci zasáhnout.
@@ -93,7 +96,7 @@ Pokud nemáte předplatné Azure, můžete rychle vytvořit Bezplatný zkušebn�
 K uložení dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md). Ukázkové řešení využívá úložiště objektů blob.
 
 #### <a name="azure-batch-account"></a>Účet Azure Batch
-Vytvoření účtu Batch pomocí [webu Azure portal](http://portal.azure.com/). Další informace najdete v tématu [vytvořit a spravovat účty Batch](../../batch/batch-account-create-portal.md). Poznámka: Batch účtu název a klíč účtu. Můžete také použít [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) rutina pro vytvoření účtu Batch. Pokyny k používání této rutiny najdete v tématu [Začínáme s rutinami Powershellu ve službě Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Vytvoření účtu Batch pomocí [webu Azure portal](http://portal.azure.com/). Další informace najdete v tématu [vytvořit a spravovat účty Batch](../../batch/batch-account-create-portal.md). Poznámka: Batch účtu název a klíč účtu. Můžete také použít [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) rutina pro vytvoření účtu Batch. Pokyny k používání této rutiny najdete v tématu [Začínáme s rutinami Powershellu ve službě Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Ukázkové řešení Batch (nepřímo prostřednictvím kanálu datové továrny) používá ke zpracování dat paralelní způsobem ve fondu výpočetních uzlů (spravované kolekce virtuálních počítačů).
 
@@ -201,7 +204,7 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
 1. Import **služby Azure Storage** balíček NuGet do projektu. Tento balíček musíte, protože v této ukázce použijete rozhraní API pro úložiště objektů Blob:
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. Přidejte následující direktivy using pro zdrojový soubor v projektu:
 

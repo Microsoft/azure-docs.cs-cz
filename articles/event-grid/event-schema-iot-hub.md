@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5fcd7c10002e7e1ae9683fdd89d3af14a1500050
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475199"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449185"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schéma událostí Azure Event Grid pro službu IoT Hub
 
@@ -113,51 +113,51 @@ Všechny události obsahovat stejná data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| id | řetězec | Jedinečný identifikátor pro událost. |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
 | data | objekt | Data událostí služby IoT Hub.  |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Pro všechny události služby IoT Hub datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| hubName | řetězec | Název služby IoT Hub, kde byl vytvořen zařízení nebo je odstranit. |
-| deviceId | řetězec | Jedinečný identifikátor zařízení. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| hubName | string | Název služby IoT Hub, kde byl vytvořen zařízení nebo je odstranit. |
+| deviceId | string | Jedinečný identifikátor zařízení. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
 Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení připojeno** a **odpojení zařízení** události služby IoT Hub, datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| ID modulu | řetězec | Jedinečný identifikátor modulu. Toto pole je výstup pouze pro zařízení se modul. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| ID modulu | string | Jedinečný identifikátor modulu. Toto pole je výstup pouze pro zařízení se modul. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | deviceConnectionStateEventInfo | objekt | Informace o události stavu připojení zařízení
-| sequenceNumber | řetězec | Číslo, která pomáhá určit pořadí připojeno zařízení nebo zařízení odpojí události. Nejnovější událost může mít pořadové číslo, které je vyšší než předchozí události. Toto číslo může změnit ve více než 1, ale přísné zvýšení. Zobrazit [použití pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+| sequenceNumber | string | Číslo, která pomáhá určit pořadí připojeno zařízení nebo zařízení odpojí události. Nejnovější událost může mít pořadové číslo, které je vyšší než předchozí události. Toto číslo může změnit ve více než 1, ale přísné zvýšení. Zobrazit [použití pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení vytvořit** a **zařízení odstraní** události služby IoT Hub, datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| dvojče | objekt | Informace o dvojčeti zařízení, což je cloudové represenation metadat zařízení aplikace. | 
-| deviceID | řetězec | Jedinečný identifikátor dvojčeti zařízení. | 
-| etag | řetězec | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
-| deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací do registru zařízení. Každý deviceEtag je musí být jedinečný na registr zařízení. |
-| status | řetězec | Dvojče zařízení určuje, zda je povoleno nebo zakázáno. | 
-| statusUpdateTime | řetězec | Aktualizovat ISO8601 časové razítko poslední stav dvojčete zařízení. |
-| Vlastnost connectionState | řetězec | Určuje, zda je zařízení připojeno nebo odpojeno. | 
-| lastActivityTime | řetězec | ISO8601 časové razítko poslední aktivity. | 
+| dvojče | objekt | Informace o dvojčeti zařízení, což je cloudové reprezentace metadat zařízení aplikace. | 
+| deviceID | string | Jedinečný identifikátor dvojčeti zařízení. | 
+| etag | string | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
+| deviceEtag| string | Validátor pro zajištění konzistence aktualizací do registru zařízení. Každý deviceEtag je musí být jedinečný na registr zařízení. |
+| status | string | Dvojče zařízení určuje, zda je povoleno nebo zakázáno. | 
+| statusUpdateTime | string | Aktualizovat ISO8601 časové razítko poslední stav dvojčete zařízení. |
+| Vlastnost connectionState | string | Určuje, zda je zařízení připojeno nebo odpojeno. | 
+| lastActivityTime | string | ISO8601 časové razítko poslední aktivity. | 
 | cloudToDeviceMessageCount | integer | Počet cloudu na zařízení zprávy odeslané k tomuto zařízení. | 
-| authenticationType. | řetězec | Typ ověřování používaný pro toto zařízení: buď `SAS`, `SelfSigned`, nebo `CertificateAuthority`. |
-| X509Thumbprint | řetězec | Jedinečná hodnota pro x509 je kryptografický otisk certifikátu, běžně používají k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk generuje dynamicky pomocí algoritmu SHA1 a fyzicky neexistuje v certifikátu. | 
-| primaryThumbprint | řetězec | Primární kryptografický otisk pro x509 certifikátu. |
-| secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro x509 certifikátu. | 
+| authenticationType. | string | Typ ověřování používaný pro toto zařízení: buď `SAS`, `SelfSigned`, nebo `CertificateAuthority`. |
+| X509Thumbprint | string | Jedinečná hodnota pro x509 je kryptografický otisk certifikátu, běžně používají k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk generuje dynamicky pomocí algoritmu SHA1 a fyzicky neexistuje v certifikátu. | 
+| primaryThumbprint | string | Primární kryptografický otisk pro x509 certifikátu. |
+| secondaryThumbprint | string | Sekundární kryptografický otisk pro x509 certifikátu. | 
 | version | integer | Celé číslo, které je zvýšen o každý čas zařízení dvojčete se aktualizuje. |
 | požadované | objekt | Část vlastnosti, které může zapisovat pouze pomocí back endové aplikace a číst zařízení. | 
 | Hlášená | objekt | Část vlastnosti, které může zapisovat pouze podle zařízení a číst back endové aplikace. |
-| lastUpdated | řetězec | Aktualizovat ISO8601 časové razítko poslední vlastnosti dvojčete zařízení. | 
+| lastUpdated | string | Aktualizovat ISO8601 časové razítko poslední vlastnosti dvojčete zařízení. | 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b8b07db6e21fb685ed76409336c98bb5f4ce5bde
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7a478a9f73edae463a5dace1b1a28180e5d09bdc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009432"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437730"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -26,10 +26,10 @@ Začínáme s Azure SQL Data Warehouse je teď snadnější než kdy dřív při
 
 Azure Data Factory nabízí následující výhody pro načítání dat do služby Azure SQL Data Warehouse:
 
-* **Snadné nastavení**: intuitivní Průvodce kroku 5 s žádné požadované skriptování.
-* **Podpora store velké množství dat**: integrovanou podporu pro bohatou sadu místní a cloudové datové úložiště. Podrobný seznam najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Snadné nastavení**: Intuitivní Průvodce kroku 5 se žádné skripty povinné.
+* **Podpora podrobná data store**: Integrovanou podporu pro bohatou sadu místní a cloudové datové úložiště. Podrobný seznam najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
 * **Zabezpečení a dodržování**: Data se přenáší prostřednictvím protokolu HTTPS nebo ExpressRoute. Přítomnost globální služba zajišťuje, že vaše data nikdy neopustí hranice zeměpisné.
-* **Bezkonkurenční výkon pomocí PolyBase**: je nejúčinnější způsob pro přesun dat do Azure SQL Data Warehouse Polybase. Použijte funkci pracovního objektu blob k dosažení vysoké rychlosti ze všech typů úložišť dat, včetně Azure Blob storage a Data Lake Store. (Polybase podporuje Azure Blob storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu [výkonu aktivity kopírování](copy-activity-performance.md).
+* **Bezkonkurenční výkon pomocí PolyBase**: Polybase je nejúčinnější způsob pro přesun dat do Azure SQL Data Warehouse. Použijte funkci pracovního objektu blob k dosažení vysoké rychlosti ze všech typů úložišť dat, včetně Azure Blob storage a Data Lake Store. (Polybase podporuje Azure Blob storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu [výkonu aktivity kopírování](copy-activity-performance.md).
 
 Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro vytváření dat do _načtení dat ze služby Azure SQL Database do Azure SQL Data Warehouse_. Můžete použít podobným způsobem kopírovat data z jiných typů úložišť dat.
 
@@ -38,10 +38,10 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
+* Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Azure SQL Data Warehouse: Datový sklad obsahuje data, která se zkopíruje z databáze SQL. Pokud nemáte službu Azure SQL Data Warehouse, přečtěte si pokyny v [vytvořit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: V tomto kurzu kopíruje data ze služby Azure SQL database s ukázkovými daty Adventure Works LT. SQL database můžete vytvořit podle pokynů v [vytvoření Azure SQL database](../sql-database/sql-database-get-started-portal.md). 
-* Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* Účet úložiště Azure: Azure Storage se využívá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -53,9 +53,9 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
    ![Stránka Nová datová továrna](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
     * **Název**: Zadejte globálně jedinečný název pro službu Azure data factory. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadSQLDWDemo\" není k dispozici," Zadejte jiný název datové továrny. Můžete například použít název  _**vaše_jméno**_**ADFTutorialDataFactory**. Zkuste znovu vytvořit datovou továrnu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-    * **Předplatné**: vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
-    * **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-    * **Verze**: vyberte **V2**.
+    * **Předplatné**: Vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
+    * **Skupina prostředků**: Z rozevíracího seznamu vyberte existující skupinu prostředků, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+    * **Verze**: Vyberte **V2**.
     * **Umístění**: Vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používané datovou továrnou můžou být v jiných umístěních a oblastech. Úložiště těchto dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 1. Vyberte **Vytvořit**.
@@ -84,7 +84,7 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
 
     ![Výběr Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. V **Nová propojená služba** stránce, z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a passworkd. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
+    c. V **Nová propojená služba** stránce, z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a heslo. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
    
     ![Konfigurace Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
@@ -106,7 +106,7 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
 
     ![Vyberte Azure SQL data Warehouse](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. V **Nová propojená služba** stránce, z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a passworkd. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
+    c. V **Nová propojená služba** stránce, z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a heslo. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
    
     ![Konfigurovat Azure SQL data Warehouse](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 

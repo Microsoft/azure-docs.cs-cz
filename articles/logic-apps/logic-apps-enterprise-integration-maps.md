@@ -11,16 +11,16 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: da5b099a5574d34c3676819c930f3e89610cf4ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767431"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455798"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML pomocí map ve službě Azure Logic Apps sadou Enterprise Integration Pack
 
-Přenos dat XML mezi formáty pro podnikové scénáře integrace v Azure Logic Apps, můžete použít svou aplikaci logiky mapy nebo přesněji řečeno, mapuje šablony stylů transformace XSLT (Extensible Language). Dokument XML, který popisuje, jak převést data z dokumentu XML do jiného formátu je objekt map. 
+Přenos dat XML mezi formáty pro podnikové scénáře integrace v Azure Logic Apps, můžete použít svou aplikaci logiky mapy nebo přesněji řečeno, rozšiřitelné šablony stylů, které mapuje transformace XSLT (Language). Dokument XML, který popisuje, jak převést data z dokumentu XML do jiného formátu je objekt map. 
 
 Předpokládejme například, že pravidelně dostávat B2B objednávky nebo faktury od zákazníka, který používá formát data YYYMMDD. Ale vaše organizace používá MMDDYYY formát data. Můžete definovat a používat mapu, která transformuje YYYMMDD formát data do formátu MMDDYYY před uložením podrobnosti objednávky nebo faktury v databázi aktivity zákazníků.
 

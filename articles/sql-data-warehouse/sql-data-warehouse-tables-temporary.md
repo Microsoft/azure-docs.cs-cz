@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: db13064c93381f87f82959ed3386abfc0a8e4593
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238658"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434755"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Dočasné tabulky v SQL Data Warehouse
 Tento článek obsahuje základní pokyny k používání dočasné tabulky a zvýrazní zásady relace úrovni dočasné tabulky. Pomocí informací v tomto článku vám může pomoct modularizaci vašeho kódu, vylepšení opětovné použití a snadnost údržby kódu.
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-V této fázi je jedinou akcí, došlo k vytvoření uložené procedury této generatess dočasnou tabulku #stats_ddl s příkazy jazyka DDL.  Tuto uloženou proceduru #stats_ddl zahodí, pokud chcete zajistit, aby že neselže, je-li spustit více než jednou v rámci relace již existuje.  Ale protože neexistuje žádný `DROP TABLE` na konci uložené procedury, po dokončení uložené procedury, ponechá vytvořenou tabulku tak, aby je může přečíst mimo uloženou proceduru.  Ve službě SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné použít v dočasné tabulce mimo proces, který byl vytvořen.  SQL Data Warehouse dočasné tabulky je možné **kdekoli** uvnitř relace. To může vést k další modulární a dají se spravovat kód jako v následujícím příkladu:
+V této fázi je jedinou akcí, došlo k vytvoření uložené procedury, která generuje dočasné tabulky, #stats_ddl s příkazy jazyka DDL.  Tuto uloženou proceduru #stats_ddl zahodí, pokud chcete zajistit, aby že neselže, je-li spustit více než jednou v rámci relace již existuje.  Ale protože neexistuje žádný `DROP TABLE` na konci uložené procedury, po dokončení uložené procedury, ponechá vytvořenou tabulku tak, aby je může přečíst mimo uloženou proceduru.  Ve službě SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné použít v dočasné tabulce mimo proces, který byl vytvořen.  SQL Data Warehouse dočasné tabulky je možné **kdekoli** uvnitř relace. To může vést k další modulární a dají se spravovat kód jako v následujícím příkladu:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

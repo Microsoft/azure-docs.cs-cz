@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 13448f4b335d84264d4141cb4fb8c3eadcf0303e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 7a5e97b66fec040b4ec32caa8d58cf9b50169a33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092136"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433140"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Možnosti podpory pro přidání virtuálních počítačů Azure do stávající sady dostupnosti
 
@@ -27,15 +27,15 @@ Někdy můžete setkat s omezením při přidávání nových virtuálních poč
 
 Tady je Přehled podpory kombinovat různé typy virtuálních počítačů:
 
-Série a dostupnosti|Druhý virtuální počítač|A|Av2|D|Řada Dv2|Dv3|
+Série a dostupnosti|Druhý virtuální počítač|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |První virtuální počítač|||||||
 |A||OK|OK|OK|OK|OK|
 |Av2||OK|OK|OK|OK|OK|
 |D||OK|OK|OK|OK|OK|
-|Řada Dv2||OK|OK|OK|OK|OK|
+|Dv2||OK|OK|OK|OK|OK|
 |Dv3||OK|OK|OK|OK|OK|
 
 Všechny ostatní řady nebylo možné ve stejné skupině dostupnosti, nastavit, protože vyžadují konkrétní hardware.
 
-Velikosti a8/A9 virtuálního počítače nejde směšovat kvůli requirment na vyhrazenou síť back-end RDMA.
+Velikosti a8/A9 virtuálního počítače nejde směšovat z důvodu požadavků na vyhrazenou síť back-end RDMA.

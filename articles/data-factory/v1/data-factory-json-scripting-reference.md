@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7b32a493dc7dc8aa3ac2bbf1f195a43621c7449a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822863"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447179"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
@@ -26,6 +26,8 @@ ms.locfileid: "55822863"
 
 
 Tento článek obsahuje příklady a schémata JSON pro definování entit služby Azure Data Factory (kanál, aktivit, datové sady a propojené služby).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="pipeline"></a>Kanál
 Vysoké úrovně struktury kanálu je následujícím způsobem:
@@ -50,7 +52,7 @@ Následující tabulka popisuje vlastnosti v rámci kanálu definici JSON:
 | jméno | Název kanálu. Zadejte název, který představuje akci, aktivity nebo kanálu je nakonfigurovaný<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita nebo kanál slouží | Ne |
 | activities | Obsahuje seznam aktivit. | Ano |
-| start |Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
+| start |Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzDataFactoryPipelineActivePeriod později. |
 | konec |Koncové datum a čas pro kanál. Je-li zadána, musí být ve formátu ISO. Příklad: 2014-10-14T17:32:41 <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je odhad AM 6<br/><br/>Kanál spouštět bez omezení, zadejte jako hodnotu pro vlastnost end 9999-09-09. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost start, musíte zadat hodnotu pro vlastnost end.<br/><br/>Naleznete v poznámkách k **start** vlastnost. |
 | isPaused |Pokud je nastavený na hodnotu true kanál se nespustí. Výchozí hodnota = false. Tato vlastnost slouží k povolení nebo zakázání. |Ne |
 | pipelineMode |Metoda pro naplánování spuštění pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázové.<br/><br/>"Naplánované" označuje, že se kanál spustí v zadaný časový interval podle jeho aktivního období (počáteční a koncový čas). "Jednorázové" označuje, že se kanál spustí pouze jednou. Jednorázová kanály po vytvoření se nedají upravit/aktualizovat aktuálně. Zobrazit [Onetime kanálu](data-factory-create-pipelines.md#onetime-pipeline) podrobnosti o jednorázové nastavení. |Ne |
@@ -2230,13 +2232,13 @@ K definování SAP Business Warehouse (BW) propojenou službu, nastavte **typ** 
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP BW. | string | Ano
 systemNumber | Číslo systému systému SAP BW. | Dvěma číslicemi desetinné číslo reprezentované jako řetězec. | Ano
 ID klienta | ID klienta v systému SAP W klienta. | Tři číslice desetinné číslo reprezentované jako řetězec. | Ano
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | řetězec | Ano
-encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | string | Ano
+encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | string | Ne
 
 #### <a name="example"></a>Příklad:
 
@@ -2340,12 +2342,12 @@ K definování SAP HANA propojenou službu, nastavte **typ** propojené služby 
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | řetězec | Ano
+server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | string | Ano
 authenticationType. | Typ ověřování. | řetězec. "Základní" nebo "Windows" | Ano
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | řetězec | Ano
-encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
+uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | string | Ano
+heslo | Heslo pro tohoto uživatele. | string | Ano
+gatewayName | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | string | Ano
+encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | string | Ne
 
 #### <a name="example"></a>Příklad:
 
@@ -2458,7 +2460,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
-Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
+Můžete k šifrování přihlašovacích údajů a **New-AzDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -3151,7 +3153,7 @@ K definování Amazon S3 propojenou službu, nastavte **typ** propojené služby
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| accessKeyID |ID tajný přístupový klíč. |řetězec |Ano |
+| accessKeyID |ID tajný přístupový klíč. |string |Ano |
 | secretAccessKey |Vlastního klíče přístupu k tajným klíčům. |Zašifrovaný řetězec tajného kódu |Ano |
 
 #### <a name="example"></a>Příklad:
@@ -3319,7 +3321,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 | hostitel |Určuje kořenová cesta ke složce, která chcete kopírovat. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Viz ukázka propojené služby a datové sady definice příklady. |Ano |
 | ID uživatele |Zadejte ID uživatele, který má přístup k serveru. |Ne (když zvolíte encryptedCredential) |
 | heslo |Zadejte heslo pro uživatele (ID uživatele). |Ne (když zvolíte encryptedCredential |
-| encryptedCredential |Zadejte zašifrované přihlašovací údaje, které můžete získat spuštěním rutiny New-AzureRmDataFactoryEncryptValue. |Ne (když se rozhodnete zadat ID uživatele a heslo jako prostý text) |
+| encryptedCredential |Zadejte zašifrované přihlašovací údaje, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (když se rozhodnete zadat ID uživatele a heslo jako prostý text) |
 | gatewayName |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
 
 #### <a name="sample-folder-path-definitions"></a>Ukázka složky cesta definice
@@ -3732,7 +3734,7 @@ K definování HDFS propojenou službu, nastavte **typ** propojené služby pro 
 | uživatelské jméno |Ověřování uživatelského jména pro Windows. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování Windows. |Ano (pro ověřování systému Windows) |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k HDFS. |Ano |
-| encryptedCredential |[Nové AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
+| encryptedCredential |[Nové AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
 
 #### <a name="example-using-anonymous-authentication"></a>Příklad: Anonymní ověřování
 
@@ -4272,7 +4274,7 @@ K definování OData propojenou službu, nastavte **typ** propojené služby pro
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **Authorize** tlačítko Průvodce kopírováním služby Data Factory nebo editoru a zadejte svoje přihlašovací údaje, pak hodnota této vlastnosti bude možné automaticky vygenerovat. |Ano (pouze v případě, že používáte ověřování OAuth) |
-| gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat ze zdroje v místním prostředí OData. |Ne |
+| gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat z na místní zdroj OData. |Ne |
 
 #### <a name="example---using-basic-authentication"></a>Příklad: použití základního ověřování
 ```json
@@ -4462,7 +4464,7 @@ K definování ODBC propojenou službu, nastavte **typ** propojené služby pro 
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>Příklad: použití základního ověřování se zašifrovanými přihlašovacími údaji
-Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny (1.0 verzi prostředí Azure PowerShell) nebo [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 nebo starší verzi nástroje Azure Prostředí PowerShell).
+Můžete šifrovat přihlašovací údaje pomocí [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) rutiny.
 
 ```json
 {
@@ -5062,7 +5064,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
-Můžete k šifrování přihlašovacích údajů a **New-AzureRmDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
+Můžete k šifrování přihlašovacích údajů a **New-AzDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -5125,7 +5127,7 @@ V definici JSON aktivity Hive můžete zadat následující vlastnosti. Vlastnos
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| skript |Zadejte vložený skript Hive |Ne |
+| script |Zadejte vložený skript Hive |Ne |
 | Cesta ke skriptu |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
@@ -5171,7 +5173,7 @@ Zadejte následující vlastnosti v definici JSON aktivity Pig. Vlastnost typu a
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| skript |Zadejte vložený skript Pig |Ne |
+| script |Zadejte vložený skript Pig |Ne |
 | Cesta ke skriptu |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
@@ -5525,7 +5527,7 @@ Zadejte následující vlastnosti v definici JSON aktivity U-SQL. Vlastnost typu
 |:--- |:--- |:--- |
 | scriptPath |Cesta ke složce, která obsahuje skript U-SQL. Název souboru je velká a malá písmena. |Ne (když je pomocí skriptu) |
 | scriptLinkedService |Propojené služby, která propojuje úložiště, který obsahuje skript do služby data factory |Ne (když je pomocí skriptu) |
-| skript |Zadejte místo určení scriptPath a scriptLinkedService zpracování vloženého skriptu. Příklad: "skript": "Vytvořit databázi test". |Ne (když použijete scriptPath a scriptLinkedService) |
+| script |Zadejte místo určení scriptPath a scriptLinkedService zpracování vloženého skriptu. Příklad: "skript": "Vytvořit databázi test". |Ne (když použijete scriptPath a scriptLinkedService) |
 | degreeOfParallelism |Maximální počet uzlů najednou použitý ke spuštění úlohy. |Ne |
 | priorita |Určuje, které z uložených ve frontě úloh by měl být vybrané ke spuštění první. Čím nižší je číslo, tím vyšší je priorita. |Ne |
 | parameters |Parametry pro skript U-SQL |Ne |

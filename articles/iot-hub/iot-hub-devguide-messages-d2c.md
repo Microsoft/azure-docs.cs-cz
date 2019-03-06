@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dd811a48d6f3f1061bad49a81b7e833dcb40e1e3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241285"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404191"
 ---
-# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Odesílání zpráv typu zařízení cloud do různých koncových bodů pomocí směrování zpráv
+# <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv služby IoT Hub pro odesílání zpráv typu zařízení cloud do různých koncových bodů
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -35,19 +35,39 @@ Služby IoT hub má integrované-v – koncový bod (**zpráv/události**), kter
 
 ### <a name="built-in-endpoint"></a>Integrovaný koncový bod
 
-Můžete použít standardní [integraci služby Event Hubs a sady SDK](iot-hub-devguide-messages-read-builtin.md) pro příjem zpráv typu zařízení cloud z integrovaného koncového bodu (**zpráv/události**). Všimněte si, že po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu Pokud není vytvořené trasy do tohoto koncového bodu.
+Můžete použít standardní [integraci služby Event Hubs a sady SDK](iot-hub-devguide-messages-read-builtin.md) pro příjem zpráv typu zařízení cloud z integrovaného koncového bodu (**zpráv/události**). Po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu není-li do tohoto koncového bodu se vytvoří trasy.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub podporuje pouze zápis dat do Azure Blob Storage v [Apache Avro](http://avro.apache.org/) formátu. IoT Hub dávek zpráv a zapisuje data do objektu blob pokaždé, když se dosáhne určité velikosti dávky nebo uplynutí určité doby.
+IoT Hub podporuje zápis dat do Azure Blob Storage v [Apache Avro](http://avro.apache.org/) stejně jako formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Výchozí hodnota je AVRO. Můžete vybrat formát kódování pomocí IoT Hub Create nebo aktualizace REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), na webu Azure Portal [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) nebo [Azure Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). Formát kódování lze nastavit pouze, když je nakonfigurovaný koncový bod služby blob storage. Formát nelze upravovat pro existující koncový bod. Následující diagram znázorňuje postup výběru formátu kódování na webu Azure Portal.
 
-Výchozí nastavení služby IoT Hub následujícími zásadami vytváření názvů souborů:
+![Kódování koncový bod úložiště objektů BLOB](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+IoT Hub dávek zpráv a zapisuje data do objektu blob pokaždé, když se dosáhne určité velikosti dávky nebo uplynutí určité doby. Výchozí nastavení služby IoT Hub následujícími zásadami vytváření názvů souborů:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
 Můžete použít libovolné zásady vytváření názvů souborů, ale musí využívat všechny uvedené tokeny. IoT Hub bude zapisovat do prázdný objekt blob, pokud neexistuje žádná data k zápisu.
+
+Při směrování do úložiště objektů blob, doporučujeme uvedení objektů BLOB a pak iterace je zajistit, že všechny kontejnery, které jsou pro čtení bez vytváření žádných předpokladů vyhodnocený oddílu. Rozsah oddílů může potenciálně změnit během [iniciované Microsoft převzetí služeb při selhání](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo službu IoT Hub [ruční převzetí služeb při selhání](iot-hub-ha-dr.md#manual-failover-preview). Můžete použít [seznam objektů BLOB rozhraní API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) výčet seznamu objektů BLOB. Jako pokyny najdete v následující ukázce.
+
+   ```csharp
+        public void ListBlobsInContainer(string containerName, string iothub)
+        {
+            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+            if (cloudBlobContainer.Exists())
+            {
+                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+                foreach (IListBlobItem item in results)
+                {
+                    Console.WriteLine(item.Uri);
+                }
+            }
+        }
+   ```
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Fronty služby Service Bus a témat Service Bus
 
@@ -56,8 +76,6 @@ Fronty služby Service Bus a témat použít jako nesmí obsahovat koncové body
 ### <a name="event-hubs"></a>Event Hubs
 
 Kromě integrované Event Hubs kompatibilní koncový bod můžete také směrovat data do vlastní koncové body typu Event Hubs. 
-
-Při použití směrování a vlastní koncové body zprávy pouze doručovaly do integrovaného koncového bodu pokud neodpovídají žádná pravidla. Doručení zprávy na integrovaný koncový bod a vlastní koncové body, přidejte trasu, která odesílá zprávy do koncového bodu events.
 
 ## <a name="reading-data-that-has-been-routed"></a>Čtení dat, který prochází
 
@@ -77,7 +95,7 @@ Použijte v následujících kurzech se naučíte číst zprávy z koncového bo
 
 ## <a name="fallback-route"></a>Náhradní trasa
 
-Náhradní trasa odešle všechny zprávy, které není splňují podmínky dotazu na žádné existující trasy pro integrované Event Hubs (**zpráv/události**), která je kompatibilní s [Event Hubs](/azure/event-hubs/). Pokud je zapnutá směrování zpráv, můžete povolit funkci náhradní trasa. Všimněte si, že po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu, pokud není vytvořené trasy do tohoto koncového bodu. Pokud nejsou žádné trasy na integrované-v – koncový bod a je povolen záložní trasu, pošle jenom zprávy, které neodpovídají žádné podmínky dotazu na trasách integrované-v – koncový bod. Také se odstraní všechny existující trasy, musí být záložní trasy povoleno přijímat všechna data na integrované-v – koncový bod. 
+Náhradní trasa odešle všechny zprávy, které není splňují podmínky dotazu na žádné existující trasy pro integrované Event Hubs (**zpráv/události**), která je kompatibilní s [Event Hubs](/azure/event-hubs/). Pokud je zapnutá směrování zpráv, můžete povolit funkci náhradní trasa. Po vytvoření trasy data přestanou přicházet do integrované-v-koncového bodu, pokud není vytvořené trasy do tohoto koncového bodu. Pokud nejsou žádné trasy na integrované-v – koncový bod a je povolen záložní trasu, pošle jenom zprávy, které neodpovídají žádné podmínky dotazu na trasách integrované-v – koncový bod. Také se odstraní všechny existující trasy, musí být záložní trasy povoleno přijímat všechna data na integrované-v – koncový bod. 
 
 Můžete povolit nebo zakázat záložní trasy v Azure Portal -> směrování zpráv okna. Můžete použít také Azure Resource Manageru pro [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) použít vlastní koncový bod pro použití náhradní lokality trasu.
 
@@ -89,17 +107,17 @@ Kromě telemetrie zařízení směrování zpráv umožňuje odesílání událo
 
 ## <a name="testing-routes"></a>Testování trasy
 
-Když vytvoříte novou trasu nebo upravíte existující trasy, měli byste otestovat trasu dotaz s ukázkovou zprávu. Můžete testovat jednotlivé trasy nebo otestujte všechny trasy najednou a žádné zprávy jsou směrovány na koncové body během testu. Azure Portal, Azure Resource Manageru, Azure Powershellu a rozhraní příkazového řádku Azure můžete použít pro testování. Výsledky pomoct zjistit, jestli ukázková zpráva odpovídá dotazu, zpráva se neshodoval dotazu nebo test nejde spustit, protože ukázková zpráva nebo dotazu syntaxe jsou nesprávné. Další informace najdete v tématu [trasy testu](/rest/api/iothub/iothubresource/testroute) a [otestovat všechny trasy](/rest/api/iothub/iothubresource/testallroutes).
+Když vytvoříte novou trasu nebo upravíte existující trasy, měli byste otestovat trasu dotaz s ukázkovou zprávu. Můžete testovat jednotlivé trasy nebo otestujte všechny trasy najednou a žádné zprávy jsou směrovány na koncové body během testu. Azure Portal, Azure Resource Manageru, Azure Powershellu a rozhraní příkazového řádku Azure můžete použít pro testování. Výsledky pomoct zjistit, jestli ukázková zpráva odpovídá dotazu, zprávy neodpovídá dotaz nebo test nejde spustit, protože ukázková zpráva nebo dotazu syntaxe, nejsou správné. Další informace najdete v tématu [trasy testu](/rest/api/iothub/iothubresource/testroute) a [otestovat všechny trasy](/rest/api/iothub/iothubresource/testallroutes).
 
 ## <a name="latency"></a>Latence
 
 Při směrování zpráv telemetrická data typu zařízení cloud pomocí integrovaných koncových bodech, je po vytvoření prvního postupu mírné zvýšení-celkovou latenci.
 
-Ve většině případů je průměrná zvýšení latence kratší než 500ms. Můžete monitorovat pomocí latence **směrování: zpráva latence pro zprávy/události** nebo **d2c.endpoints.latency.builtIn.events** metriky služby IoT Hub. Vytvoření nebo odstranění žádné trasy po první z nich nemá žádný vliv na celkovou latenci.
+Ve většině případů průměrném zvyšování latence je menší než 500 ms. Můžete monitorovat pomocí latence **směrování: zpráva latence pro zprávy/události** nebo **d2c.endpoints.latency.builtIn.events** metriky služby IoT Hub. Vytvoření nebo odstranění žádné trasy po první z nich nemá žádný vliv na celkovou latenci.
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
-Poskytuje službě IoT Hub, několik směrování a koncový bod související metriky, které vám poskytnou přehled o stavu centra a odeslaných zpráv. Můžete kombinovat informace z několika metrik a identifikovat hlavní příčinu problémů. Například použijte metriku **směrování: počet ztracených zpráv telemetrie** nebo **d2c.telemetry.egress.dropped** identifikovat počet zpráv, které byly při neodpovídají dotazy na žádném z trasy a náhradní trasa byla zakázána. [Metriky služby IoT Hub](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolená pro službu IoT Hub.
+Poskytuje službě IoT Hub, několik směrování a koncový bod související metriky, které vám poskytnou přehled o stavu centra a odeslaných zpráv. Můžete kombinovat informace z několika metrik a identifikovat hlavní příčinu problémů. Například použijte metriku **směrování: počet ztracených zpráv telemetrie** nebo **d2c.telemetry.egress.dropped** identifikovat počet zpráv, které byly při neodpovídají dotazy na žádné trasy a náhradní trasa byla zakázána. [Metriky služby IoT Hub](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolená pro službu IoT Hub.
 
 Použití **trasy** diagnostické protokoly ve službě Azure Monitor [nastavení diagnostiky](../iot-hub/iot-hub-monitor-resource-health.md), můžete sledují chyby, ke kterým dochází při vyhodnocování směrování dotazů a koncový bod stavu vnímanou ve službě IoT Hub, například Pokud koncový bod je neaktivní. Tyto diagnostické protokoly je odeslat protokoly Azure monitoru, Event Hubs nebo Azure Storage pro vlastní zpracování.
 

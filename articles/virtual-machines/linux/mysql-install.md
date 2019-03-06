@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6062c31d1ec87d7b958feafef5824a5814995541
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888426"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431967"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.
@@ -51,7 +51,7 @@ Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    Během instalace zobrazí se dialogového okna okno poping až ask vám umožní nastavit kořenového hesla MySQL níže a budete potřebovat nastavit heslo tady.
+    Během instalace zobrazí se dialogové okno se zobrazí na vás vyzve k nastavení MySQL kořenové heslo a zde potřebovat nastavit heslo.
   
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 731b87d7958bb461466b16f2ff724ea33f234ba8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215536"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439804"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
 
@@ -78,10 +78,10 @@ Skript nasadí 17 tenantů do víceklientskou databázi za pár minut.
 
 | Ukázka | Scénář |
 |:--|:--|
-| 2 | Generování normální intenzity zatížení (přibližně 30 jednotek DTU) |
+| 2 | Generování normální intenzity zatížení (asi 30 jednotek DTU) |
 | 3 | Generování zatížení s delší nárůsty zatížení na tenanta|
 | 4 | Generování zatížení s vyššími nárůsty DTU na tenantovi (přibližně 70 DTU)|
-| 5 | Vysoká míra generovat (přibližně 90 jednotek DTU) na jednoho tenanta plus normální intenzity zatížení na všech ostatních tenantů |
+| 5 | Generovat vysoká míra (přibližně 90 jednotek DTU) na jednoho tenanta a normální intenzity zatížení na všech ostatních tenantů |
 
 Generátor zatížení použije *syntetické* zatížení jenom pro CPU na každé databázi tenantů. Generátor spustí úlohu pro každou databázi tenantů, která pravidelně volá uloženou proceduru generující zatížení. Úrovně zatížení (v jednotkách Dtu), doba trvání a intervaly jsou napříč všemi databázemi, které simulují nepředvídanou činnost tenanta různé.
 

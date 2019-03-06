@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 024a622484a83957c9ab5f4a684a346a55787ccf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f67741417c6d31c4adf1d063aac3bd3ccc310fde
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313357"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440246"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -33,6 +33,7 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "",
+  "apiProfile": "",
   "parameters": {  },
   "variables": {  },
   "functions": [  ],
@@ -45,120 +46,14 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 |:--- |:--- |:--- |
 | $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony.<br><br> Pro nasazení skupiny prostředků použijte: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatného použijte: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Tento prvek můžete zadat libovolnou hodnotu. Tato hodnota zdokumentovat významné změny v šabloně používejte. Při nasazování prostředků pomocí šablony, tato hodnota je možné, aby se zajistilo, že používá správnou šablonu. |
-| parameters |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
-| Proměnné |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
-| functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| zdroje |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
-| výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
+| apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API z profilu pro příslušný typ prostředku. Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
+| [Proměnné](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
+| [Funkce](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
+| [Prostředky](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
+| [výstupy](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
 
-Každý prvek má vlastnosti, které můžete nastavit. Následující příklad ukazuje úplnou syntaxi šablony:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "",
-  "parameters": {  
-    "<parameter-name>" : {
-      "type" : "<type-of-parameter-value>",
-      "defaultValue": "<default-value-of-parameter>",
-      "allowedValues": [ "<array-of-allowed-values>" ],
-      "minValue": <minimum-value-for-int>,
-      "maxValue": <maximum-value-for-int>,
-      "minLength": <minimum-length-for-string-or-array>,
-      "maxLength": <maximum-length-for-string-or-array-parameters>,
-      "metadata": {
-        "description": "<description-of-the parameter>" 
-      }
-    }
-  },
-  "variables": {
-    "<variable-name>": "<variable-value>",
-    "<variable-object-name>": {
-      <variable-complex-type-value>
-    },
-    "<variable-object-name>": {
-      "copy": [
-        {
-          "name": "<name-of-array-property>",
-          "count": <number-of-iterations>,
-          "input": <object-or-value-to-repeat>
-        }
-      ]
-    },
-    "copy": [
-      {
-        "name": "<variable-array-name>",
-        "count": <number-of-iterations>,
-        "input": <object-or-value-to-repeat>
-      }
-    ]
-  },
-  "functions": [
-    {
-      "namespace": "<namespace-for-your-function>",
-      "members": {
-        "<function-name>": {
-          "parameters": [
-            {
-              "name": "<parameter-name>",
-              "type": "<type-of-parameter-value>"
-            }
-          ],
-          "output": {
-            "type": "<type-of-output-value>",
-            "value": "<function-expression>"
-          }
-        }
-      }
-    }
-  ],
-  "resources": [
-    {
-      "condition": "<boolean-value-whether-to-deploy>",
-      "apiVersion": "<api-version-of-resource>",
-      "type": "<resource-provider-namespace/resource-type-name>",
-      "name": "<name-of-the-resource>",
-      "location": "<location-of-resource>",
-        "tags": {
-          "<tag-name1>": "<tag-value1>",
-          "<tag-name2>": "<tag-value2>"
-        },
-        "comments": "<your-reference-notes>",
-        "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
-          "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
-        },
-        "dependsOn": [
-          "<array-of-related-resource-names>"
-        ],
-        "properties": {
-          "<settings-for-the-resource>",
-          "copy": [
-            {
-              "name": ,
-              "count": ,
-              "input": {}
-            }
-          ]
-        },
-        "resources": [
-          "<array-of-child-resources>"
-        ]
-    }
-  ],
-  "outputs": {
-    "<outputName>" : {
-      "condition": "<boolean-value-whether-to-output-value>",
-      "type" : "<type-of-output-value>",
-      "value": "<output-value-expression>"
-    }
-  }
-}
-```
-
-Tento článek popisuje části šablony podrobněji.
+Každý prvek má vlastnosti, které můžete nastavit. Tento článek popisuje části šablony podrobněji.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -515,23 +410,274 @@ Volání funkce:
 ```
 
 ## <a name="resources"></a>Zdroje a prostředky
-V části prostředky definovat prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože musíte porozumět typům, které nasazení provádíte do zadejte správné hodnoty.
+V části prostředky definovat prostředky, které jsou nasazené a aktualizovat.
+
+### <a name="available-properties"></a>Dostupné vlastnosti
+
+Můžete definovat prostředky s následující strukturou:
 
 ```json
 "resources": [
   {
-    "apiVersion": "2016-08-01",
-    "name": "[variables('webSiteName')]",
-    "type": "Microsoft.Web/sites",
-    "location": "[resourceGroup().location]",
-    "properties": {
-      "serverFarmId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Web/serverFarms/<plan-name>"
-    }
+      "condition": "<true-to-deploy-this-resource>",
+      "apiVersion": "<api-version-of-resource>",
+      "type": "<resource-provider-namespace/resource-type-name>",
+      "name": "<name-of-the-resource>",
+      "location": "<location-of-resource>",
+      "tags": {
+          "<tag-name1>": "<tag-value1>",
+          "<tag-name2>": "<tag-value2>"
+      },
+      "comments": "<your-reference-notes>",
+      "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": <number-of-iterations>,
+          "mode": "<serial-or-parallel>",
+          "batchSize": <number-to-deploy-serially>
+      },
+      "dependsOn": [
+          "<array-of-related-resource-names>"
+      ],
+      "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+              {
+                  "name": ,
+                  "count": ,
+                  "input": {}
+              }
+          ]
+      },
+      "sku": {
+          "name": "<sku-name>",
+          "tier": "<sku-tier>",
+          "size": "<sku-size>",
+          "family": "<sku-family>",
+          "capacity": <sku-capacity>
+      },
+      "kind": "<type-of-resource>",
+      "plan": {
+          "name": "<plan-name>",
+          "promotionCode": "<plan-promotion-code>",
+          "publisher": "<plan-publisher>",
+          "product": "<plan-product>",
+          "version": "<plan-version>"
+      },
+      "resources": [
+          "<array-of-child-resources>"
+      ]
   }
-],
+]
 ```
 
-Chcete-li podmíněně zahrnout nebo vyloučit prostředku během nasazení, použijte [podmínky](resource-manager-templates-resources.md#condition). Další informace o oddílu prostředků najdete v tématu [oddíl prostředků šablon Azure Resource Manageru](resource-manager-templates-resources.md).
+| Název elementu | Požaduje se | Popis |
+|:--- |:--- |:--- |
+| condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. |
+| apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
+| type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
+| jméno |Ano |Název prostředku Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. |
+| location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
+| tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
+| Komentáře |Ne |Poznámky pro dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
+| Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit několik instancí prostředků v Azure Resource Manageru](resource-group-create-multiple.md). |
+| dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
+| properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
+| SKU | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
+| Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
+| plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
+| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
+
+### <a name="condition"></a>Podmínka
+
+Pokud během nasazení musíte rozhodnout, jestli se mají vytvořit prostředek, použijte `condition` elementu. Hodnota pro tento element se přeloží na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořený. Pokud je hodnota false, nevytvoří se prostředek. Hodnota dá používat jedině pro celý prostředek.
+
+Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo použijte již existující. Například, chcete-li určit, jestli je nasazená nový účet úložiště nebo existující účet úložiště se používá, použijte:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Kompletní příklad šablony, která se používá `condition` prvku, naleznete v tématu [virtuálního počítače s novou nebo existující virtuální sítě, úložiště a veřejnou IP adresu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+
+### <a name="resource-names"></a>Názvy prostředků
+
+Obecně platí práci s tři typy názvů prostředků v Resource Manageru:
+
+* Názvy prostředků, které musí být jedinečný.
+* Názvy prostředků, které nemusí být jedinečný, ale můžete rozhodnout pro poskytnutí název, který vám pomůže identifikovat prostředek.
+* Názvy prostředků, které mohou být obecný.
+
+Zadejte **název jedinečný prostředek** pro libovolný typ prostředku, který má koncový bod data access. Některé běžné typy prostředků, které vyžadují jedinečný název patří:
+
+* Azure Storage<sup>1</sup> 
+* Funkce Web Apps ve službě Azure App Service
+* SQL Server
+* Azure Key Vault
+* Azure Cache for Redis
+* Azure Batch
+* Azure Traffic Manager
+* Azure Search
+* Azure HDInsight
+
+<sup>1</sup> názvy účtů úložiště také musí obsahovat malá písmena, 24 znaků nebo méně, a není nutné žádné pomlčky.
+
+Při nastavování názvu, můžete ručně vytvořit jedinečný název nebo použít [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkci generování názvu. Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsledek. Úprava jedinečný název můžete vám umožní snadno identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnnou:
+
+```json
+"variables": {
+  "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]"
+}
+```
+
+Pro některé typy prostředků, můžete chtít poskytnout **název pro identifikaci**, ale název nemusí být jedinečný. Pro tyto typy prostředků zadejte název s popisem použití nebo vlastnosti.
+
+```json
+"parameters": {
+  "vmName": { 
+    "type": "string",
+    "defaultValue": "demoLinuxVM",
+    "metadata": {
+      "description": "The name of the VM to create."
+    }
+  }
+}
+```
+
+Pro typy prostředků, které většinou přístup přes jiný prostředek, můžete použít **obecný název** , který je pevně zakódované v šabloně. Můžete třeba nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
+
+```json
+{
+  "type": "firewallrules",
+  "name": "AllowAllWindowsAzureIps",
+  ...
+}
+```
+
+### <a name="resource-location"></a>Umístění prostředku
+
+Při nasazování šablony, je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Podporovaná umístění pro typ prostředku, získáte [poskytovatelé a typy prostředků Azure](resource-manager-supported-services.md).
+
+Parametr použít k určení umístění pro prostředky a nastavení výchozí hodnoty `resourceGroup().location`.
+
+Následující příklad ukazuje účet úložiště, která je nasazena do umístění zadaného jako parametr:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat('storage', uniquestring(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "apiVersion": "2018-07-01",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "storageAccountName": {
+      "type": "string",
+      "value": "[variables('storageAccountName')]"
+    }
+  }
+}
+```
+
+### <a name="child-resources"></a>Podřízené prostředky
+
+V rámci některé typy prostředků můžete také definovat pole podřízené prostředky. Podřízené prostředky jsou prostředky, které existují pouze v rámci kontextu jiný prostředek. Například databáze SQL nemůže existovat bez serveru SQL server, databázi je podřízený server. Můžete definovat databáze v rámci definice pro server.
+
+```json
+{
+  "name": "exampleserver",
+  "type": "Microsoft.Sql/servers",
+  "apiVersion": "2014-04-01",
+  ...
+  "resources": [
+    {
+      "name": "exampledatabase",
+      "type": "databases",
+      "apiVersion": "2014-04-01",
+      ...
+    }
+  ]
+}
+```
+
+Pokud vnořený, typ je nastavený na `databases` , ale jeho typ úplné prostředku je `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené nastavený na `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazeného zdroje.
+
+Formát typu podřízeného prostředku je: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+
+Formát názvu podřízených prostředků je: `{parent-resource-name}/{child-resource-name}`
+
+Ale není nutné definovat databáze v rámci serveru. Můžete definovat podřízený prostředek na nejvyšší úrovni. Tento přístup může použít, pokud se nadřazený prostředek není nasazený ve stejné šabloně, nebo pokud chcete použít `copy` vytvořit více než jeden podřízený prostředek. S tímto přístupem poskytují úplnou prostředků a zahrnout název nadřazeného prostředku v názvu prostředku podřízeného.
+
+```json
+{
+  "name": "exampleserver",
+  "type": "Microsoft.Sql/servers",
+  "apiVersion": "2014-04-01",
+  "resources": [ 
+  ],
+  ...
+},
+{
+  "name": "exampleserver/exampledatabase",
+  "type": "Microsoft.Sql/servers/databases",
+  "apiVersion": "2014-04-01",
+  ...
+}
+```
+
+Při vytváření plně kvalifikovaný odkaz na prostředek, není pořadí zkombinovat segmenty z typu a název jednoduše zřetězení těchto dvou. Místo toho za názvovým prostorem, použijte sekvenci *typ nebo název* dvojice z nejméně specifická, které budou nejvíce specifické:
+
+```json
+{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
+```
+
+Příklad:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správná
 
 ## <a name="outputs"></a>Výstupy
 
@@ -716,20 +862,6 @@ V nástroji VS Code můžete nastavit režim jazyka do formátu JSON s komentá�
 1. Vyberte **JSON s komentáři**.
 
    ![Vybrat režim jazyka](./media/resource-group-authoring-templates/select-json-comments.png)
-
-## <a name="template-limits"></a>Omezení šablony
-
-Omezení velikosti šablony pro 1 MB a každý soubor parametrů na 64 KB. Po rozšířila s definic iterativní prostředků a hodnoty pro proměnné a parametry, platí omezení 1 MB na konečný stav šablony. 
-
-Také jste omezeni na:
-
-* 256 parametry
-* 256 proměnné
-* 800 prostředky (včetně počet kopií)
-* 64 výstupní hodnoty
-* 24,576 znaků ve výrazu šablony
-
-Některá omezení šablony mohou překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Pokud chcete snížit počet parametrů, proměnných nebo výstupů, můžete kombinovat několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

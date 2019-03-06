@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823990"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441385"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
@@ -105,7 +105,7 @@ Výběr skupiny počítačů ze seznamu otevře stránku skupiny počítačů. T
 
 Klikněte na tlačítko **+ klonování** tlačítko a klonování skupiny počítačů. Zde je třeba zadat skupiny nový název a alias pro skupinu. V tuto chvíli můžete změnit definici. Po změně stiskněte dotazu **ověřit dotaz** do počítače, které by být vybrán ve verzi preview. Až budete spokojení s skupiny klikněte na tlačítko **vytvořit** vytvořit skupinu počítačů
 
-Pokud chcete vytvořit novou skupinu mchine, vyberte **+ vytvořit skupinu počítačů**. Toto tlačítko otevře **vytvořit stránku skupiny počítačů** Tady můžete definovat nové skupiny. Klikněte na tlačítko **vytvořit** vytvořit skupinu.
+Pokud chcete vytvořit novou skupinu počítačů, vyberte **+ vytvořit skupinu počítačů**. Toto tlačítko otevře **vytvořit stránku skupiny počítačů** Tady můžete definovat nové skupiny. Klikněte na tlačítko **vytvořit** vytvořit skupinu.
 
 ![Vytvořit novou skupinu počítačů](./media/automation-vm-inventory/create-new-group.png)
 

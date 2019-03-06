@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215162"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433514"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 
@@ -196,7 +196,7 @@ Pokud jednotlivé databáze ve fondu stabilně vysoké zatížení, v závislost
 Toto cvičení simuluje vliv vysokého zatížení při prodeji lístků na populární koncert v Koncertním sále Contoso.
 
 1. V **prostředí PowerShell ISE**, otevřete... \\ *Demo-PerformanceMonitoringAndManagement.ps1* skriptu.
-1. Nastavte **$DemoScenario = 5, Generování normálního a vysokého zatížení v jednom tenantovi (přibližně 95 DTU).**
+1. Nastavte **$DemoScenario = 5, generování normálního a vysokého zatížení v jednom tenantovi (přibližně 95 DTU).**
 1. Nastavte **$SingleTenantDatabaseName = contosoconcerthall**
 1. Skript proveďte pomocí **F5**.
 

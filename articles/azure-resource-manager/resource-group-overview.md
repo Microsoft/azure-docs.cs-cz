@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821896"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409835"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -51,7 +51,16 @@ Resource Manager poskytuje několik výhod:
 * Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
 * Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
 
+## <a name="understand-management-scope"></a>Vysvětlení oborem správy
+
+Azure nabízí čtyři úrovně oborem správy: skupin pro správu, předplatná, skupiny prostředků a prostředky. [Skupiny pro správu](../governance/management-groups/index.md) jsou ve verzi Preview. Následující obrázek ukazuje příklad těchto vrstev.
+
+![Rozsah](./media/resource-group-overview/scope-levels.png)
+
+Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Například při použití [zásady](../governance/policy/overview.md) do předplatného, které zásady platí pro všechny skupiny prostředků a prostředků ve vašem předplatném. Při použití zásady na skupinu prostředků, zásady se použijí skupinu prostředků a všechny její prostředky. Jiné skupiny prostředků nemá přiřazení zásad.
+
 ## <a name="guidance"></a>Doprovodné materiály
+
 Následující návrhy vám pomohou při práci s vašimi řešeními plně využít výhod Resource Manageru.
 
 * K definování a nasazení infrastruktury využijte deklarativní syntaxi v šablonách Resource Manageru, nikoli imperativní příkazy.

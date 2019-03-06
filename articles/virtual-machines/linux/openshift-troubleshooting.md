@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f94189e8f39771e0c3d7856ccbb8a23ba81d94aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085789"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447270"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Řešení potíží s nasazení OpenShift v Azure
 
 Pokud není správně nasadit OpenShift clusteru, na webu Azure portal bude poskytovat chybový výstup. Výstup může být obtížné číst, což ztěžuje identifikovat problém. Rychle prohledejte tento výstup pro kód ukončení 3, 4 nebo 5. Následující poskytuje informace o těchto tří ukončovací kód:
 
-- Ukončovací kód 3: Red Hat předplatné uživatelské jméno / heslo nebo ID organizace / aktivační klíč je nesprávný.
-- Ukončovací kód 4: vaše ID fondu Red Hat je nesprávný nebo nejsou k dispozici žádná oprávnění
-- Ukončovací kód 5: nejde zřídit svazek fondu dynamického zajišťování Dockeru
+- Kód ukončení 3: Red Hat předplatné uživatelské jméno / heslo nebo ID organizace / aktivační klíč je nesprávný.
+- Ukončovací kód 4: Vaše ID fondu Red Hat je nesprávný nebo nejsou k dispozici žádná oprávnění
+- Ukončovací kód 5: Nepovedlo se zřídit svazek fondu dynamického zajišťování Dockeru
 
 Pro všechny ostatní kódy ukončení připojení k hostiteli, které prostřednictvím ssh Chcete-li zobrazit soubory protokolu.
 

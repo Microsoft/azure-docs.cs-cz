@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b2bb5e0f9b138af5ff69599b7ba35457788c8a65
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968443"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437339"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
 
@@ -38,21 +38,21 @@ Při provádění [vyhledávání kategorie](https://docs.microsoft.com/rest/api
 | TÁBOŘIŠŤ\_ZÁKLADU | organizace Recreational, lokality obytného vozu tábořišť základu |
 | AUTO\_WASH | Auto wash |
 | CASH\_ROZPRAŠOVAČ | Automatické pokladny počítače hotovosti rozprašovač |
-| HAZARDNÍ | Hazardní |
+| CASINO | casino |
 | KINA | Drive-in kina, kina |
 | MĚSTO\_SYSTEM CENTER | detekovaná sousední oblasti pro správu, Město center System center |
 | CLUB\_PŘIDRUŽENÍ | Beach club, hokeji club, club přidružení |
 | ŠKOLE\_UNIVERSITY | nižší škole/komunitní škole, vysoké školy, Fakultě, univerzitu prep školu, university |
 | KOMERČNÍ\_SESTAVENÍ | vytváření sestavení park ústředí, obchodní Office |
 | SPOLEČENSTVÍ\_SYSTEM CENTER | Community center. |
-| SPOLEČNOSTI | daňové Electronics počítače datové služby, technologie veřejného zdraví, poradenství, zvířat chránila, letecká společnost, pronájem zařízení, služby, doručování e-mailu/balíčku a přístavů, řádky Service bus, oprava domácí spotřebiče, čištění služby, oem, výroba služby, ropy, plynu přirozeného, právní služby, konstrukce, teleobjektiv komunikace, přenosu, automobilů výroby, chemikálií, mortuaries pohřební služby, most tunelového propojení operations, automobile, strojírenství, služby, investice poradci reklamu nebo marketingových, přesunutí úložiště, úspory instituce, pojištění, počítačový software pharmaceuticals společnosti svatební služeb, zemědělská technologie, nemovitosti, taxi, limousine shuttle service, Service bus pronajme další směrování, dolování, publikování technologie, telefonní kabel, distribuce import/export, společnosti, o, uhlí mine(s), estate(s), brewery, gold mine(s) |
+| FIRMA | daňové Electronics počítače datové služby, technologie veřejného zdraví, poradenství, zvířat chránila, letecká společnost, pronájem zařízení, služby, doručování e-mailu/balíčku a přístavů, řádky Service bus, oprava domácí spotřebiče, čištění služby, oem, výroba služby, ropy, plynu přirozeného, právní služby, konstrukce, telekomunikace, přenosu, automobilů výroby, chemikálií, mortuaries pohřební služby, most tunelového propojení operations, automobile, strojírenství, služby, investice poradci reklamu nebo marketingových, přesunutí úložiště, úspory instituce, pojištění, počítačový software pharmaceuticals společnosti svatební služeb, zemědělská technologie, nemovitosti, taxi, limousine shuttle service, Service bus pronajme další směrování, dolování, publikování technologie, telefonní kabel, distribuce import/export, společnosti, o, uhlí mine(s), estate(s), brewery, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURNÍ\_SYSTEM CENTER | jazykové verze System center |
 | ZUBNÍ LÉKAŘ | zubní lékař |
 | ODDĚLENÍ\_ÚLOŽIŠTĚ | oddělení úložiště |
 | LÉKAŘ | Obecné lékaře, specialistou na produkty, lékař |
 | ELECTRIC\_VOZIDLA\_STANICE | stanice Electric vozidel |
-| APLIKACE | aplikace |
+| APLIKACE | embassy |
 | NOUZOVÉ\_LÉKAŘSKÉ\_SLUŽBY | Nouzový zdravotní služby |
 | ZÁBAVA | Zábava |
 | EXCHANGE | Zlatá exchange, exchange měny, burze, exchange |
@@ -101,15 +101,15 @@ Při provádění [vyhledávání kategorie](https://docs.microsoft.com/rest/api
 | VEŘEJNÉ\_PŘENOSU\_ZASTAVIT | Coach stop, zastavit Service bus, taxi samostatné, tramvají stop, stop dopravu, metro stanice, železniční stanice, stanice Service bus, železniční stop |
 | ŽELEZNIČNÍ\_STANICE | státní železniční vedlejší, metro, měst, železniční stanice (sub) |
 | NADŘAZENÉ\_A\_CAR\_ZAŘÍZENÍ | Rent-a-CAR zařízení |
-| NADŘAZENÉ\_A\_CAR\_PARKOVACÍ | Rent-a-car-parkovací |
+| NADŘAZENÉ\_A\_CAR\_PARKOVACÍ | rent-a-car-parking |
 | OPRAVA\_ZAŘÍZENÍ | bodyshops, služby pneumatiky (můžete zadat), opravny, car skla nahrazení kavárnách, opravy obecné auta, údržbě, prodej instalace car příslušenství, motocykl opravit, servis nákladní vůz, opravte zařízení |
 | VÝZKUM\_ZAŘÍZENÍ | výzkum zařízení |
 | DOMÁCÍ\_UBYTOVACÍ | vyřazení komunity, městský dům komplexní, bytů/komplexu apartmánů, condominium komplexní, bydliště portfolia, ubytování bydliště |
 | RESTAURACE | Němčina kreolština Cajun, Nizozemské, banket místnosti, bistro, izraelským, slovenština, Jamajský, vegetarian, ryby, vietnamština, Maltština, Sichuan, welsh, čínština, japonština, alžírská, Californian fusion, Shandong, polníček panelu Savoie, španělština, Etiopský, tchajwanských, prstence, Íránu, Kanada, American, norština, francouzština, Hunan, Polynéský, afghan, silniční, východní, Švýcarsko, erotic, crêperie, Surinamese Egyptian, maďarština, Nepálská, táborák, pot aktivní, hamburgers, Středozemního, Latinské Ameriky, tapas, British, Mexico, Guangdongu, Asie (ostatní), Švédský stůl sushi, Mongolské písmo, mezinárodní, slávek, thajština, Venezuelský, Rumanian, kuřecí, polévky kosher, steak house, panel jogurt z/džusu, italština, korejština, Cypriot, Bosenština, Bolívijský, Dominikánská, Belgie, tuniská, Skotská, Angličtina, pákistánský, čeština, Havajština, Maghrib, Tibetština, SA, Střední východ, Chilské, Šanghaj, polské, Filipínština, súdánský, arménština, Barmština, Brazílie, skandinávské, bulharština, soul food, Kolumbijském, židovský, pizza Sicilian, organické, řečtina, Baskiètina, Uruguayské, cafeterias, finština, Středoafrická, Korsičtina, Syrská, Karibská oblast, Dongbei, ruština, gril, odnést, rychlého občerstvení, Austrálie, Irská, publikování a odběru food, fondue Libanonská, indonéština, dánština, Provençal, teppanyaki, Indie, Mauricijská, západní kontinentální části Peruánský Kambodžský, občerstvení, švédština, macrobiotic, ice cream parlor, Slovanské jazyky, turečtina, Argentiské, Rakousko, exotické, portugalština, Lucembursko –, Maroko, Cuban, restaurace Sandwichovy, |
 | RESTAURACE\_OBLASTI | restaurace oblasti |
-| REST\_OBLASTI | oblast REST, místo zastavení |
+| REST\_AREA | oblast REST, místo zastavení |
 | SCENIC\_PANORAMIC\_ZOBRAZENÍ | krajiny/panoramatické zobrazení, bodu zjišťování |
-| ŠKOLA | kořeninové školy, MDG, školní obrázky, vyšší střední škole, řízení školy, jazyka škola, sport school, preschool, střední škole, střední školy, odbornou, speciální školy, podřízené péči o budovy, školní, technické školy, armádní školy, zemědělská školy |
+| SCHOOL | kořeninové školy, MDG, školní obrázky, vyšší střední škole, řízení školy, jazyka škola, sport school, preschool, střední škole, střední školy, odbornou, speciální školy, podřízené péči o budovy, školní, technické školy, armádní školy, zemědělská školy |
 | OBCHOD | objekt pro vytváření výstupu, produkty zabezpečení, vánoční/sváteční úložiště, opticians, house kachnami: osvětlení, loterie kol, hudební nástroje nail salon, organizace kachnami: upravení Malování, čas koníčku/zdarma, newsagents tobacconists, příslušenství oblečení: specializace, Zkušební zařízení, kontejnery objektů a dat leatherwear domácími zásob, oblečení příslušenství: podřízené položky, konstrukce materiálu zařízení, špercích, označí hodinky, oblečení příslušenství: obuv bot opravy, house kachnami: záclony/textilu elektrické, office ji: příjemce Electronics, elektrický, office ji: fotoaparát&#39;s fotografie, cd&#39;s, disk DVD videa, prací, příslušenství oblečení: muže, pěstiteli květin, pěšec kol, knihy kavárnách, námořního elektronických zařízení, potravin drinky den před začátkem: potravinový trh, house kachnami: carpet/podlahové krytiny , kopírovacích, plachtění zařízení příslušenství, mobilní telefon kol, toys hry, speciální foods, oblečení příslušenství: Obecné, potravin drinky den před začátkem: pekařů, přizpůsobení kol, dárků, karty, upomínky předmětů, zvířat služby, oblečení zařízení sportovní, razítko kol, elektrické zařízení elektrické, office ji: zařízení office, fotky lab/vývoj, velkoobchodní kluby, house kachnami: vybavení nábytek, místní specializací, potravin drinky den před začátkem: řezníkům, různých úložiště, potravin drinky den před začátkem: potravin kavárnách, potravin drinky den před začátkem: světě alkoholických vína, drug úložiště , nábytek či domácí kanceláře elektrické, zařízení, jeho: počítač zásob, pronájem cd/video, zařízení zdravotnických zásob, zemědělská zásob, krásy salon, house kachnami: kachnami centra služeb, potravin drinky den před začátkem: fishmongers krásy zásob, oblečení příslušenství: ženy, cestování agentů, maloobchodního prodejce, recyklace kol, house kachnami: leněný windows hardware, zástupce realitní, skla/ceramic, delicatessen, house kachnami: kuchyně koupelny, sází stanice, hairdressers barbers, potravin drinky den před začátkem: grocers, potravin drinky den před začátkem: zelený grocers pohodlí úložišť, jednotka prostřednictvím bottle kol, house kachnami: sestavili centra, starožitnosti/obrázky, kol, úložiště |
 | NÁKUPNÍ\_SYSTEM CENTER | malé, nákupní centrum |
 | SPORTOVNÍ\_SYSTEM CENTER | tematických sport vtěsnat soud, vhodnosti club centrum, sportu Centrum |

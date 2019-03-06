@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099322"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431111"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je izolované databáze ve službě Azure SQL Database
 
@@ -28,7 +28,7 @@ Možnost nasazení izolovaná databáze vytvoří databázi ve službě Azure SQ
 > [!NOTE]
 > Glosář termínů ve službě Azure SQL Database, najdete v části [SQL Database termíny glosáře](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalabilty"></a>Dynamická škálovatelnost
+## <a name="dynamic-scalability"></a>Dynamická škálovatelnost
 
 Můžete sestavit svoji první aplikaci malou izolovanou databází s nízkými náklady za měsíc cena/výkon s nízkou úrovní služeb a pak [změnit úroveň služby](sql-database-single-database-scale.md) ručně nebo prostřednictvím kódu programu kdykoli thehigher ceny a výkonu služby úroveň podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
@@ -42,7 +42,7 @@ Použít integrovaný [performance monitoring pro aplikace](sql-database-perform
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-Izolované databáze, elastické fondy a spravované instance poskytují mnoho characterics dostupnosti. Informace najdete v tématu [charakteristika dostupnosti](sql-database-technical-overview.md#availability-capabilities).
+Izolované databáze, elastické fondy a spravované instance poskytují mnoho charakteristika dostupnosti. Informace najdete v tématu [charakteristika dostupnosti](sql-database-technical-overview.md#availability-capabilities).
 
 ## <a name="transact-sql-differences"></a>Rozdíly v Transact-SQL
 

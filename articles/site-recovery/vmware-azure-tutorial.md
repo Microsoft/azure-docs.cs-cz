@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/3/2019
 ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: 45a0a70aa42449895c5a7e0aba2963e928a4b6f2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5b3dca8bd5135581afc12303ed9fa8c532c56258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340724"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438886"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -84,7 +84,7 @@ Pokud chcete nastavit konfigurační server jako vysoce dostupný virtuální po
  >Nejnovější verzi šablony konfiguračního serveru můžete stáhnout přímo z webu [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 >[!NOTE]
-Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. Zákazník musí aktivovat Windows s použitím zakoupené licence.
+Licence, které jsou součástí šablony OVF je zkušební licence, který je platný po dobu 180 dnů. Zákazník musí aktivovat systém windows s licencí opatřené.
 
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 

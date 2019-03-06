@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 44fc096fa95be3a469ada7c7dc212ce4fc04e83b
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: ff07d2197f1a0bd67a3c152941e7c9f466e5e414
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218052"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441521"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: Rozdíly a aspekty
 

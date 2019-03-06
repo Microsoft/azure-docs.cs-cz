@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8fb1b5e06e694368cf80029fe5ce2dcf0749cc62
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0e38e921121f9b44356a33641bea4c2666412cca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818370"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456189"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -101,7 +101,7 @@ Pro Hybrid Runbook Worker mohl připojit a zaregistrovat protokoly Azure monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Monitor, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+Pokud používáte proxy server pro komunikaci mezi agentem a službou Azure Monitor, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
 Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Worker ke komunikaci se službou Automation:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439159"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -254,7 +254,7 @@ Zde je prostředek samotný trezor RS a proto budete muset opakovat stejnou akci
 
 ***Všechny výstrahy vytvořené na základě protokolů aktivit a pracovní prostory LA lze zobrazit ve službě Azure Monitor v podokně "Upozornění" vlevo.***
 
-Oznámení přes protokoly aktivit můžete využít, ***služby Azure Backup důrazně doporučuje [LA využít pro monitorování ve velkém měřítku](#monitoring-at-scale) a ne protokoly aktivit z následujících důvodů***.
+Oznámení přes protokoly aktivit můžete využít, ***služby Azure Backup se důrazně doporučuje použít LA pro monitorování na škálování a ne protokolů aktivit z následujících důvodů***.
 
 - **Omezeném počtu scénářů:** Vztahuje se jenom zálohy virtuálních počítačů Azure a je potřeba zopakovat pro každý trezor RS.
 - **Podle definice:** Naplánované zálohování aktivity nevejde se nejnovější definice protokolů aktivit a v souladu s [diagnostické protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). Tato vést k neočekávaným dopad při změně dat – čerpání přes kanál protokolu aktivit, jak níže.

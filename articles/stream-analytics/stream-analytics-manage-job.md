@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: dfdccaf929aa382c8003bc4c3cc0988a7123bf2d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7f3d5caf1d8fb03e989181bb13bcce274816baa7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316008"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441539"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
@@ -236,7 +236,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 4. Vyberte **Test** a otestujte dotaz. Měly by se zobrazit následující výsledky:
 
-   ![Navýšení kapacity put z testu dotazu Stream Analytics](media/stream-analytics-manage-job/sample-test-output-restuls.png)
+   ![Výstup z testu dotazu Stream Analytics](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>Spuštění úlohy a vizualizace výstupu
 

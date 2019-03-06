@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0d782ac1ba14e58e3cc377bb55ea25bb923c5c4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 10565839148eae0db4bb374939eb3725f6262e60
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038904"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452942"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Gremlin API
 
@@ -94,7 +94,7 @@ Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete pou
 
 ## <a name="graph-database-design-considerations"></a>Na co si dát pozor při návrhu databáze grafu
 
-Pokud se při návrhu grafu rozhodnete modelovat entitu jako samostatný vrchol, a ne jako vlastnost jiných entit vrcholů, může to mít vliv na výkon a náklady. Při tomto rozhodování má rozhodující význam předpokládaný způsob dotazování na data a také škálovatelnost samotného modelu.
+Při návrhu graf rozhodnutí modelování entity jako svůj vlastní, nikoli jako vlastnost jinými entitami vrcholu vrcholu má vliv na výkon a náklady. Při tomto rozhodování má rozhodující význam předpokládaný způsob dotazování na data a také škálovatelnost samotného modelu.
 
 Než začnete plánovat model entity, odpovězte na následující otázky:
 

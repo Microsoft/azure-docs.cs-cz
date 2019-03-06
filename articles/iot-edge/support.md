@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d8059ac4965ce5582b899ebc0d765e00ae9deb35
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7e97983e1316476848eb4a051cd636339b8caff7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892792"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440960"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -40,7 +40,7 @@ Azure IoT Edge běží na většině operačních systémů, které můžete spo
     * má tento operační systém v automatizovaných testů
     * poskytne vám jejich instalačních balíčků
 * Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. To znamená, že:
-    * Microsoft provedla ad-hoc testování na platformách nebo ví partnerských úspěšně spuštěných na platformě Azure IoT Edge
+    * Microsoft má provést testování ad hoc na platformách nebo ví partnerských úspěšně spuštěných na platformě Azure IoT Edge
     * Instalační balíčky pro jiné platformy může pracovat na těchto platformách
     
 Řada hostitelský operační systém musí vždy odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Jinými slovy můžete použít pouze Linuxové kontejnery v Linuxu a kontejnery Windows ve Windows. Pokud používáte Windows, pouze samostatný proces kontejnery jsou podporované, ne technologie hyper-v izolovaných kontejnerech.  

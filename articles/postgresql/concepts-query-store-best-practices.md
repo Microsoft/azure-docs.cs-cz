@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 0c962dc6d8aff63a3b7dd34133a40c7ff9feec4c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c4fcdc43e8c88bf307e4de5727df0641616d7b78
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540737"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448131"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro Query Store
 
@@ -28,14 +28,14 @@ Query Store vám umožňují zachytit data, které vás zajímají.
 
 |**pg_qs.query_capture_mode** | **Scénář**|
 |---|---|
-|_Všechny_  |Analýza úloh důkladně z hlediska všechny dotazy a jejich Frekvence spouštění a další statistiky. Identifikujte nové dotazy ve vašich úloh. Rozpoznat, pokud ad-hoc dotazy se používají k identifikaci příležitostí pro uživatele nebo Parametrizace automaticky. _Všechny_ dodává se náklady na spotřebu zvýšenou prostředků. |
+|_Všechny_  |Analýza úloh důkladně z hlediska všechny dotazy a jejich Frekvence spouštění a další statistiky. Identifikujte nové dotazy ve vašich úloh. Rozpoznat, pokud ad hoc dotazy se používají k identifikaci příležitostí pro uživatele nebo Parametrizace automaticky. _Všechny_ dodává se náklady na spotřebu zvýšenou prostředků. |
 |_nahoru_  |Zaměřte se na nejčastější dotazy – vydávaných klienty vaši pozornost.
 |_Žádné_ |Jste zaznamenali sadě dotazu a časový interval, který chcete prozkoumat a chcete vyloučit rozptýlení, které mohou zavést další dotazy. _Žádný_ je vhodný pro testování a zkušebním označení prostředí. _Žádný_ třeba používat opatrně, protože můžete přijít o možnost sledovat a optimalizovat důležité nové dotazy. Nelze obnovit data na těchto posledních časových oken. |
 
 Query Store také úložiště pro statistiky čekání. Není dotaz režimu další snímek, který řídí statistiky čekání: **pgms_wait_sampling.query_capture_mode** může být nastaven na _žádný_ nebo _všechny_. 
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** nahrazuje **pgms_wait_sampling.query_capture_mode**. Pokud je pg_qs.query_capture_mode _žádný_, pgms_wait_sampling.query_capture_mode nastavení nemá žádný vliv. 
+> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. Pokud je pg_qs.query_capture_mode _žádný_, pgms_wait_sampling.query_capture_mode nastavení nemá žádný vliv. 
 
 
 ## <a name="keep-the-data-you-need"></a>Uchovávání dat, které potřebujete

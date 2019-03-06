@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: 5fab0446fe28cc279a732f48ca7560792f611e86
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46af936cc479770fe5db8085106c9da310a9717e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731476"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452398"
 ---
 # <a name="data-filtering"></a>Filtrování dat
 
@@ -23,7 +23,7 @@ Při odesílání dokumenty, které se použije pro trénování vlastních syst
 ## <a name="sentence-alignment"></a>Přidružení vět
 Pokud váš dokument není ve formátu XLIFF, TMX nebo zarovnání, vlastní Translator zarovná věty zdroj a cíl dokumentů k sobě navzájem, jednotlivé věty. Translator neprovádí dokumentu zarovnání – splňuje vaše pojmenování dokumenty se najít odpovídající dokument jiný jazyk. V rámci dokumentu vlastní Translator se pokusí najít odpovídající větu v jiném jazyce. Používá dokumentu značky jako vložený HTML tagy abychom vám pomohli s zarovnání.  
 
-Je-li zobrazit velký rozdíl mezi počet věty ve zdroji a cílit na straně dokumenty, dokumentu se pravděpodobně paralelní na prvním místě, nebo z jiných důvodů dobře alignable. Dokumentu společně s velký rozdíl (> 10 %) vět na každé straně žádnou záruku druhý vzhled, abyste měli jistotu, že jsou to skutečně paralelní. Vlastní Translator zobrazují upozornění vedle dokumentu, pokud počet věty se nápadně liší.  
+Je-li zobrazit velký rozdíl mezi počet věty ve zdroji a cílit na straně dokumenty, váš dokument pravděpodobně paralelní na prvním místě nebo z jiných důvodů nejde zarovnat. Dokumentu společně s velký rozdíl (> 10 %) vět na každé straně žádnou záruku druhý vzhled, abyste měli jistotu, že jsou to skutečně paralelní. Vlastní Translator zobrazují upozornění vedle dokumentu, pokud počet věty se nápadně liší.  
 
 
 ## <a name="deduplication"></a>Odstranění duplicit
@@ -53,7 +53,7 @@ Filtrování transformace neuvozené klíčová slova do uvozený uvozovacím zn
 * `&gt;` změní `&amp;gt;`
 * `&amp;` změní `&amp;amp;`
 
-## <a name="invalid-characters"></a>Neplatné znaky.
+## <a name="invalid-characters"></a>Neplatné znaky
 Vlastní Translator odebere věty, které obsahují znak Unicode U + FFFD. Znak U + FFFD označuje neúspěšné převod kódování.
 
 ## <a name="next-steps"></a>Další postup

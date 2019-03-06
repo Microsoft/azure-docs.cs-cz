@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272282"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439634"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Získání tabulek protokolu ARP v modelu nasazení classic
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Následující část obsahuje informace o tom, jak zobrazit tabulek protokolu A
 Ujistěte se, že máte následující předtím, než budete pokračovat:
 
 * Platný okruh ExpressRoute, který je nakonfigurovaný pomocí nejméně jeden partnerský vztah. Okruh musí být plně nakonfigurované poskytovatelem připojení. Vy (nebo váš poskytovatel připojení) musíte splnit aspoň jednu z partnerské vztahy (Azure privátní, veřejný Azure nebo Microsoft) nakonfigurovat na tento okruh.
-* Rozsahy IP adres, které se používají ke konfiguraci partnerských vztahů (Azure privátní, veřejný Azure a Microsoft). Projděte si příklady přiřazení IP adres v [stránce požadavky směrování ExpressRoute](expressroute-routing.md) k pomůžou pochopit, jak jsou IP adresy mapované na rozhraní na vaše aise a na straně ExpressRoute. Informace o konfiguraci partnerského vztahu můžete získat kontrolou [stránka konfigurace partnerského vztahu ExpressRoute](expressroute-howto-routing-classic.md).
+* Rozsahy IP adres, které se používají ke konfiguraci partnerských vztahů (Azure privátní, veřejný Azure a Microsoft). Projděte si příklady přiřazení IP adres v [stránce požadavky směrování ExpressRoute](expressroute-routing.md) k pomůžou pochopit, jak jsou IP adresy mapované na rozhraní na vaší straně a na straně ExpressRoute. Informace o konfiguraci partnerského vztahu můžete získat kontrolou [stránka konfigurace partnerského vztahu ExpressRoute](expressroute-howto-routing-classic.md).
 * Informace od poskytovatele síťových týmu nebo připojení o adresách MAC rozhraní, které se používají se tyto IP adresy.
 * Nejnovější modul prostředí Windows PowerShell pro Azure (verze 1.50 nebo novější).
 

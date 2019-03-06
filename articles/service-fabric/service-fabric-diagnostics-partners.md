@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: f7bf5d521f4bcb5672ff1d710a08bed2e0872545
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 45e6de347cbb3ecfcc45ca20ab03805359207565
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974399"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444663"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric monitorování partnerů
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak jeden monitorování svých aplikací Service Fabric
 
 ## <a name="dynatrace"></a>Dynatrace
 
-Naše integrace pomocí služby Dynatrace poskytuje mnoho z funkcí pole k monitorování clusterů Service Fabric. Instalace na vaše instance VMSS Dynatrace OneAgent poskytuje vám čítače výkonu a topologie nasazení Service Fabric na úrovni aplikace. Dynatrace je také skvělou volbou pro místní monitorování. Podívejte se na informace uvedené v funkce [si oznámení](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) a [pokyny](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) umožňující Dynatrace ve vašem clusteru. 
+Naše integrace pomocí služby Dynatrace poskytuje mnoho z funkcí pole k monitorování clusterů Service Fabric. Instalace na vaše instance VMSS Dynatrace OneAgent poskytuje vám čítače výkonu a topologie nasazení Service Fabric na úrovni aplikace. Dynatrace je také skvělou volbou pro místní monitorování. Podívejte se na informace uvedené v funkce [oznámení](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) a [pokyny](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/) umožňující Dynatrace ve vašem clusteru. 
 
 ## <a name="datadog"></a>Datadog
 

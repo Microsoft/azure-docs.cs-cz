@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6ad8079985925d4b9bf74b22971ca3c387af199a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964793"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455611"
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje databázových aplikací SQL Database
 
@@ -58,7 +58,7 @@ Další informace o tom, jak připravit pro události plánované údržby v Azu
 - Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány firewall Azure SQL Database](sql-database-configure-firewall-settings.md).
 - Pokud váš klientský program připojuje ke službě SQL Database, zatímco vašeho klienta běží na virtuálním počítači Azure (VM), je nutné otevřít určité rozsahy portů na virtuálním počítači. Další informace: [Porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Připojení klienta ke službě Azure SQL Database někdy obcházejí proxy a pracovat přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete [architektura připojení k Azure SQL Database](sql-database-connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4.5 a službu SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
-- Sítě configation pro spravovanou instanci, najdete v části [konfiguraci sítě pro spravované instance](sql-database-howto-managed-instance.md#network-configuration).
+- Konfigurace sítí pro managed instance, naleznete v tématu [konfiguraci sítě pro spravované instance](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>Další postup
 

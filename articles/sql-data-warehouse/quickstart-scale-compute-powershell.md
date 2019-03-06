@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4d3374bd046179e72fb0b3cefb89189716991758
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1cfc14379fce1fea346d33e8e29e4385e14f2356
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310688"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409070"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý start: Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse v Powershellu
 
@@ -31,7 +31,7 @@ Tento rychlý start předpokládá, že už máte datový sklad SQL, který lze 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí [připojit AzAccount](/powershell/module/az.profile/connect-azaccount) příkaz a postupujte podle pokynů na obrazovce pokynů.
+Přihlaste se k předplatnému Azure pomocí [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
 ```powershell
 Connect-AzAccount

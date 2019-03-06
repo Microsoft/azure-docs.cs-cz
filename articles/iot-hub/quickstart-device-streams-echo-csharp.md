@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 45f0b7deb0e14a398c4f1220e66239c3727e46e1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816927"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444222"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace zařízení pro aplikace v C# prostřednictvím datových proudů zařízení služby IoT Hub (preview)
 
@@ -140,7 +140,7 @@ dotnet run "<DeviceConnectionString>"
 dotnet run <DeviceConnectionString>
 ```
 
-Na konci posledního kroku program straně služeb opraví, zahájí se stream do vašeho zařízení a po vytvoření se odeslat vyrovnávací paměti řetězce ke službě prostřednictvím datového proudu. V této ukázce straně služby program jednoduše vrací zpět stejná data na zařízení, ukázka úspěšné obousměrnou komunikaci mezi těmito dvěma aplikacemi. Viz následující obrázek.
+Na konci posledního kroku program straně služeb opraví, zahájí se stream do vašeho zařízení a po vytvoření se odeslat vyrovnávací paměti řetězce ke službě prostřednictvím datového proudu. V této ukázce straně služby program jednoduše vrátí zpět stejná data na zařízení, ukázka úspěšné obousměrnou komunikaci mezi těmito dvěma aplikacemi. Viz následující obrázek.
 
 Na straně zařízení výstupu konzoly: ![alternativní text](./media/quickstart-device-streams-echo-csharp/device-console-output.png "výstupu na straně zařízení konzoly")
 

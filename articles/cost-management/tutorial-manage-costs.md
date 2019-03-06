@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bc1212c7ea7425e59da30478dbd58772fa1b748b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083559"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451008"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudyn
 
@@ -23,7 +23,7 @@ Ve službě Cloudyn spravujete náklady a vytváříte sestavy metody showback p
 
 Například si můžete chtít nechat uhradit náklady na vytváření. Musíte být schopni svému technickému týmu ukázat, že potřebujete konkrétní částku v závislosti na nákladech na prostředky. Můžete jim ukázat sestavu všech spotřebovaných prostředků označených značkou *engineering* (vytváření).
 
-V tomto článku se značky a kategorie někdy používají jako synonyma. Kategorie jsou rozsáhlé kolekce, které mohou představovat spoustu věcí. Mohou sem patřit obchodní jednotky, nákladová centra, webové služby nebo cokoli, co je opatřené značkou. Značky jsou dvojice název/hodnota, pomocí kterých můžete kategorizovat prostředky a zobrazovat a spravovat souhrnné fakturační údaje. Stačí, když u několika prostředků a skupin prostředků použijete stejnou značku. Ve starších verzích webu Azure Portal se *název značky* označoval jako *klíč*. Značky se vytvářejí pro jedno předplatné Azure, ve kterém jsou uložené. V AWS se značky skládají z dvojic klíč/hodnota. Protože v Azure i AWS se používá termín *klíč*, používá tento termín také Cloudyn. Správce kategorií používá klíče (názvy značek) ke sloučení značek.
+V tomto článku se značky a kategorie někdy používají jako synonyma. Kategorie jsou rozsáhlé kolekce, které mohou představovat spoustu věcí. Mohou sem patřit obchodní jednotky, nákladová centra, webové služby nebo cokoli, co je opatřené značkou. Značky jsou páry název/hodnota, které umožňují kategorizovat prostředky a umožňuje zobrazit a spravovat konsolidovat informace o fakturaci použitím stejné značky na více prostředků a skupin prostředků. Ve starších verzích webu Azure Portal se *název značky* označoval jako *klíč*. Značky se vytvářejí pro jedno předplatné Azure, ve kterém jsou uložené. V AWS se značky skládají z dvojic klíč/hodnota. Protože v Azure i AWS se používá termín *klíč*, používá tento termín také Cloudyn. Správce kategorií používá klíče (názvy značek) ke sloučení značek.
 
 V tomto kurzu se naučíte:
 

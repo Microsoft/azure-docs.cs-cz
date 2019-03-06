@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0d601df7914b7280de4b3c16c8b00c96cb5427e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015742"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435980"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – informace o zabezpečení pro přesun dat
 
@@ -45,6 +45,8 @@ V tomto článku jsme projděte si informace o zabezpečení v následujících 
 
 - **Scénář cloudu**– v tomto scénáři zdroj a cíl nacházejí veřejně přístupná prostřednictvím Internetu. Patří mezi ně úložiště spravované cloudové služby jako Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, služeb SaaS, jako je Salesforce a webové protokoly, jako je například FTP a OData. Úplný seznam podporovaných zdrojů dat můžete najít [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
 - **Hybridní scénář**– v tomto scénáři zdroji nebo cíli nachází za bránou firewall nebo uvnitř podnikové sítě v místním nebo data store je v privátní síti nebo virtuální sítě (nejčastěji zdroj) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Cloudové scénáře
 ### <a name="securing-data-store-credentials"></a>Ukládání přihlašovacích údajů, zabezpečení dat
@@ -93,7 +95,7 @@ Přihlašovací údaje pro vaše místní úložiště dat se ukládají místn�
 - Pomocí **prostého textu** (méně bezpečné) prostřednictvím protokolu HTTPS z webu Azure Portal / Průvodce kopírováním. Přihlašovací údaje se předají jako prostý text místní brány.
 - Pomocí **knihovny JavaScript kryptografie z Průvodce kopírováním**.
 - Pomocí **klikněte na možnost-po na základě přihlašovacích údajů správce aplikace**. Kliknutím na – Jakmile se aplikace spustí na místním počítači, který má přístup k bráně a nastaví přihlašovací údaje k úložišti. Tuto možnost a další příkaz, je nejbezpečnější možnosti. Aplikace Správce přihlašovacích údajů, ve výchozím nastavení, používá port 8050 na počítači s bránou pro zabezpečenou komunikaci.  
-- Použití [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) rutiny Powershellu pro šifrování přihlašovacích údajů. Rutina se používá certifikát této brány je nakonfigurován na použití pro šifrování přihlašovacích údajů. Můžete použít vrácená touto rutinou zašifrovanými přihlašovacími údaji a přidejte ho do **EncryptedCredential** elementu **connectionString** v souboru JSON, který používáte s [ Nové AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) rutiny nebo v tomto fragmentu kódu JSON v editoru služby Data Factory na portálu. Tuto možnost a kliknutím na-nejbezpečnější možnosti po aplikaci. 
+- Použití [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) rutiny Powershellu pro šifrování přihlašovacích údajů. Rutina se používá certifikát této brány je nakonfigurován na použití pro šifrování přihlašovacích údajů. Můžete použít vrácená touto rutinou zašifrovanými přihlašovacími údaji a přidejte ho do **EncryptedCredential** elementu **connectionString** v souboru JSON, který používáte s [ Nové AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) rutiny nebo v tomto fragmentu kódu JSON v editoru služby Data Factory na portálu. Tuto možnost a kliknutím na-nejbezpečnější možnosti po aplikaci. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Šifrování na základě knihovny kryptografie jazyka JavaScript
 Můžete šifrovat přihlašovací údaje úložiště dat pomocí [knihovny JavaScript kryptografie](https://www.microsoft.com/download/details.aspx?id=52439) z [Průvodce kopírováním](data-factory-copy-wizard.md). Když vyberete tuto možnost, Průvodce kopírováním načte veřejný klíč brány a použije k zašifrování dat úložiště pověření. Přihlašovací údaje jsou dešifrovat počítači brány a je chráněn Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).

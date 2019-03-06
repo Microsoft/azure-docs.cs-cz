@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0ca4b3b353dd3985680fbf71afbf5ba6a35644fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233859"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456274"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -176,7 +176,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 1. Přejděte na kartu **Jímka**, vyberte **+ Nová** a vytvořte datovou sadu jímky. 
 
     ![Datová sada jímky](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-1. V okně **Nová datová sada** zadejte do vyhledávacího pole „SQL“, abyste filtrovali konektory. Pak vyberte **Azure SQL Database** a pak vyberte **Dokončit**. V tomto kurzu zkopírujte data do databáze SQL Database. 
+1. V **nová datová sada** okno, zadejte do vyhledávacího pole filtrovat konektory a pak vyberte "SQL" **Azure SQL Database**a pak vyberte **Dokončit**. V tomto kurzu zkopírujte data do databáze SQL Database. 
 
     ![Výběr databáze SQL Database](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
 1. Do pole **Název** na kartě **Obecné** v okně **Vlastnosti** zadejte **OutputSqlDataset**. 
@@ -232,7 +232,7 @@ Před publikováním artefaktů (propojených služeb, datových sad a kanálu) 
 
 1. K ladění kanálu vyberte na panelu nástrojů **Ladit**. Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu. 
 
-1. Když jde kanál úspěšně spustit, na horním panelu nástrojů vyberte **Publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
+1. Jakmile kanál můžete spustit úspěšně, v horním panelu nástrojů vyberte **Publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
 
     ![Publikování](./media/tutorial-copy-data-portal/publish-button.png)
 

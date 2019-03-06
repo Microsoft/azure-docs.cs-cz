@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9c39b1f6987db045669c821416312f88a590cbb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f489abeab0e1374d2d40ade79c4eb55fd633b909
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982856"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443279"
 ---
 # <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
 V tomto článku se naučíte různými způsoby pro přístup k a interagování s daty v Azure Machine Learning pracovních postupů prostřednictvím úložišť.
@@ -25,7 +25,7 @@ Tento návod ukazuje příklady pro následující úlohy:
 * [Vyberte úložiště dat](#access)
 * [Získání datového úložiště](#get)
 * [Nahrávání a stahování dat do úložišť](#upload-and-download-data)
-* [Přístup k úložišti dat během cvičení](#access-datastores-for-training)
+* Přístup k úložišti dat během cvičení
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +62,7 @@ Pokud máte existující služby Azure Storage, můžete ho zaregistrovat jako �
 
 Následující příklady ukazují registraci kontejneru objektů Blob v Azure nebo sdílené složky Azure jako datového úložiště.
 
-+ Pro **úložiště kontejner objektů Blob v Azure**, použijte [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-:)
++ Pro **úložiště kontejner objektů Blob v Azure**, použijte [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 
   ```Python
   ds = Datastore.register_azure_blob_container(workspace=ws, 

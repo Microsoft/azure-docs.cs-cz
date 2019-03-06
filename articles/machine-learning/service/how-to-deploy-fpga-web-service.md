@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a82c3b3aef59ef53e5054f2beb2880e8a01dc8fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100674"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448656"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Nasazení modelu jako webové služby na FPGA s využitím služby Azure Machine Learning
 
@@ -51,7 +51,7 @@ Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](c
 Pro usnadnění práce je tento kurz k dispozici jako poznámkový blok Jupyter. Postupujte podle zde nebo spustit kód [Poznámkový blok rychlý Start](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb).
 
 ## <a name="create-and-deploy-your-model"></a>Vytvoření a nasazení modelu
-Vytvoření kanálu pro předzpracování vstupního obrázku vytrénovaných pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím třídění školení na datové sadě ImageNet.
+Vytvoření kanálu pro předzpracování vstupního obrázku, usnadňují funkce pomocí modelem ResNet 50 na FPGA a pak spusťte funkce prostřednictvím třídění školení na datové sadě ImageNet.
 
 Postupujte podle pokynů:
 

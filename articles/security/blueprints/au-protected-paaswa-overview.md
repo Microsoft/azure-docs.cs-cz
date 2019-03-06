@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 3eff78aa6b13c48868b95bae03a8406a550a42c9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243869"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440977"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – chráněné PaaS webovou aplikaci pro Austrálii
 
@@ -30,7 +30,7 @@ Toto řešení poskytuje referenční architektura pro webové aplikace PaaS s b
 
 Architektura dokáže poskytovat zabezpečené hybridní prostředí, které rozšiřuje místní síť do Azure, umožňuje webové úlohy bezpečně přistupovat ve firemní uživatelé v organizaci privátní místní síti nebo z Internetu. Pro místní řešení je zákazník agilně a zodpovědná za všechny aspekty zabezpečení, operací a dodržování předpisů.
 
-Prostředky Azure, které jsou součástí tohoto řešení můžete připojit k místní síti nebo prostředími datových center společně umístěného zařízení (např. CDC v Canbeře) prostřednictvím IPSec VPN pomocí brány sítě VPN a ExpressRoute. Rozhodnutí ohledně využití sítě VPN se má počítat s klasifikací velikost přenášených dat a síťová cesta v úvahu. Zákazníci, kteří používají ve velkém měřítku, zvažte nejdůležitější úlohy s velkými objemy dat požadavky hybridní síťové architektury pomocí služby ExpressRoute pro privátní síťové připojení ke službám Azure. Odkazovat [pokyny a doporučení](#guidance-and-recommendations) části Další podrobnosti o mechanismů připojení k Azure.
+Prostředky Azure, které jsou součástí tohoto řešení můžete připojit k místní síti nebo prostředími datových center společně umístěného zařízení (např. CDC v Canbeře) prostřednictvím IPSec VPN pomocí brány sítě VPN a ExpressRoute. Rozhodnutí, aby se začala používat síť VPN se má počítat s klasifikací velikost přenášených dat a síťová cesta v úvahu. Zákazníci, kteří používají ve velkém měřítku, zvažte nejdůležitější úlohy s velkými objemy dat požadavky hybridní síťové architektury pomocí služby ExpressRoute pro privátní síťové připojení ke službám Azure. Odkazovat [pokyny a doporučení](#guidance-and-recommendations) části Další podrobnosti o mechanismů připojení k Azure.
 
 Federace se službou Azure Active Directory by měla sloužit k uživatelům umožnit ověřování pomocí místních přihlašovacích údajů a přístup ke všem prostředkům v cloudu pomocí Active Directory Federation Services na místní infrastrukturu. Active Directory Federation Services může poskytnout identitu zjednodušenou a zabezpečenou federaci a webové jednotné možnosti přihlašování pro toto hybridní prostředí. Odkazovat [pokyny a doporučení](#guidance-and-recommendations) části Další podrobnosti o nastavení služby Azure Active Directory.
 
@@ -127,7 +127,7 @@ Azure šifruje veškerá komunikace do a z datových center Azure ve výchozím 
 
 Pro chráněná data přenášená z sítě vlastněné zákazníkem architektura používá Azure Internet nebo ExpressRoute s bránou VPN nakonfigurovaný s protokolem IPSEC.
 
-Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes protokol HTTPS s použitím protokolu TLS verze 1.2.
+Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes HTTPS pomocí verze protokolu TLS 1.2.
 
 ### <a name="data-at-rest"></a>Neaktivní uložená data
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
@@ -189,7 +189,7 @@ Služby Azure výrazně protokolu systému a aktivity uživatelů, jakož i stav
 - **Protokoly aktivit**: [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného. Protokoly aktivit, vám pomůže určit operace iniciátoru čas výskytu a stav.
 - **Diagnostické protokoly**: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) zahrnout všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows, protokoly služby Azure Storage, protokoly auditu služby Key Vault a protokolů Application Gateway přístup a brány firewall. Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci.
 
-**Protokoly Azure monitoru**: Tyto protokoly jsou konsolidovány do [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicího panelu. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožní všechna data k analýze společně bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center se integruje s protokoly Azure Monitor umožňuje zákazníkům používat Kusto dotazy pro přístup k datům událostí zabezpečení a to v kombinaci s daty z jiných služeb.
+**Protokoly Azure monitoru**: Tyto protokoly jsou konsolidovány do [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicího panelu. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožňuje společnou analýzu všech dat bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center se integruje s protokoly Azure Monitor umožňuje zákazníkům používat Kusto dotazy pro přístup k datům událostí zabezpečení a to v kombinaci s daty z jiných služeb.
 
 Následující Azure [řešení monitorování](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) jsou zahrnuty jako součást této architektury:
 -   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Kontrola stavu služby Active Directory řešení posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.

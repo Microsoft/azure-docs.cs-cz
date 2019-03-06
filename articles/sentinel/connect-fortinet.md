@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b268c6d310f773017ff57f7f937338612894f82
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8992847ed6d6c25f5384da9b74b8ddaab063ed45
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244991"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455407"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Připojit zařízení Fortinet 
 
@@ -34,7 +34,7 @@ Můžete připojit Sentinelu Azure do všech zařízení Fortinet podle ukládá
 
 ## <a name="step-1-connect-your-fortinet-appliance-using-an-agent"></a>Krok 1: Připojit zařízení Fortinet pomocí agenta
 
-Pro vaše zařízení Fortinet připojení k Azure Sentinelu, budete muset nasadit agenta na vyhrazený počítač (VM nebo v místním prostředí) mohly podporovat komunikaci mezi zařízením a Azure Sentinelu. Deploly agenta můžete automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
+Pro vaše zařízení Fortinet připojení k Azure Sentinelu, budete muset nasadit agenta na vyhrazený počítač (VM v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Deploly agenta můžete automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
 
 Alternativně můžete nasadit agenta ručně na existující virtuální počítač Azure, na virtuálním počítači v jiném cloudu nebo na místním počítači.
 
@@ -74,7 +74,7 @@ Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](c
       2. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Nasazení agenta na serveru Linux v místním prostředí
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Nasazení agenta na serveru Linux on premises
 
 Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
 

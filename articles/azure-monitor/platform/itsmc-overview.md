@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a6e4f816d3c5be9d3a4f4824ad7ed26d48763034
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813122"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433262"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný kód klienta pro každé připojení.  
     - zaškrtněte, pokud máte dostatečná oprávnění v odpovídající produktu ITSM. k vytvoření připojení.  
  - U připojení k portálu Service Manager  
-    - Zajistěte, aby byla úspěšně nasazena aplikace, webové a hybridní připojení je vytvořené. K ověření, připojení se úspěšně naváže s počítačem v místním prostředí portálu Service Manager, navštivte adresu URL webové aplikace podle popisu v dokumentaci k provádění [hybridní připojení](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+    - Zajistěte, aby byla úspěšně nasazena aplikace, webové a hybridní připojení je vytvořené. K ověření, připojení se úspěšně naváže s počítačem portálu Service Manager v místním prostředí, navštivte adresu URL webové aplikace podle popisu v dokumentaci k provádění [hybridní připojení](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Pokud se data z ServiceNow získávání nesynchronizuje do Log Analytics, ujistěte se, že ServiceNow instance není pozastaveno. Instance ServiceNow Dev někdy přechází do režimu spánku při nečinnosti dlouhou dobu. Jinak ohlaste ho.
 3.  Pokud se aktivuje upozornění Log Analytics ale fungovat položky nejsou vytvářena v produktu ITSM. nebo položky konfigurace nejsou vytvořeny nebo propojených pracovních položek nebo další obecné informace, podívejte se na následujících místech:

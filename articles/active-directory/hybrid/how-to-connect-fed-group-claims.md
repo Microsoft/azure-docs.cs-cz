@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 8e4f9e76baf07e6ea2cb4cccb63ed0a9add5d767
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012046"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410005"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarace skupiny pro aplikace pomocí Azure Active Directory (Public Preview)
 
@@ -26,8 +26,8 @@ Informace o uživatelé skupiny členství v tokeny pro použití v rámci aplik
 - Skupiny identifikovaný jejich Azure Active Directory identifikátor objektu (OID) (obecně dostupná verze)
 - Skupiny identifikovaný SAMAccountName nebo GroupSID pro synchronizaci služby Active Directory (AD), skupiny a uživatele (Public Preview)
 
->[!Note]
->Podpora pro použití názvů a místní identifikátory zabezpečení (SID) je navržená k umožnění přesun stávajících aplikací ze služby AD FS.    Skupiny spravované ve službě Azure AD neobsahují atributy nezbytné pro generování tyto deklarace.
+> [!Note]
+> Podpora pro použití názvů a místní identifikátory zabezpečení (SID) je navržená k umožnění přesun stávajících aplikací ze služby AD FS.    Skupiny spravované ve službě Azure AD neobsahují atributy nezbytné pro generování tyto deklarace.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>Deklarace skupiny pro migrace ze služby AD FS a jiných zprostředkovatelů identity aplikace
 
@@ -42,8 +42,8 @@ Podporované formáty pro deklarace skupiny jsou:
 - **NetbiosDomain\samAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
 - **DNSDomainName\samAccountName** (k dispozici pro skupiny synchronizované z Active Directory).
 
->[!NOTE]
->Atributy SAMAccountName a OnPremisesGroupSID jsou dostupné jenom pro objekty skupiny synchronizované z Active Directory.   Nejsou k dispozici na skupiny vytvořené v Azure Active Directory nebo Office 365.   Aplikace, které jsou závislé na místní skupiny atributů je získat synchronizovaných jenom pro skupiny.
+> [!NOTE]
+> Atributy SAMAccountName a OnPremisesGroupSID jsou dostupné jenom pro objekty skupiny synchronizované z Active Directory.   Nejsou k dispozici na skupiny vytvořené v Azure Active Directory nebo Office 365.   Aplikace, které jsou závislé na místní skupiny atributů je získat synchronizovaných jenom pro skupiny.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Možnosti pro aplikace pro zpracování informací o skupině
 
@@ -57,7 +57,7 @@ Pokud již existující aplikace se očekává, že využívat informace o skupi
 - Pokud je aplikace nakonfigurována k získání skupiny atributů, které jsou synchronizované z Active Directory a neobsahuje skupinu těchto atributů nebudou zahrnuty v deklaracích.
 - Skupinu deklarací identity v tokenech obsahovat vnořené skupiny.   Pokud je uživatel členem GroupB a GroupB je členem skupiny GroupA, bude obsahovat deklarace skupiny pro uživatele, GroupA a GroupB. Pro organizace s velkým využití vnořené skupiny a uživatele s velkým počtem členství ve skupinách můžete počet skupin, které jsou uvedené v tokenu zvětšit velikost tokenu.   Azure Active Directory omezuje počet skupin, které bude generovat token 150 pro kontrolní výrazy SAML a 200 pro token JWT.
 
->Předpoklady pro použití atributů skupiny synchronizované z Active Directory:   Skupiny musí být synchronizovány ze služby Active Directory pomocí služby Azure AD Connect.
+> Předpoklady pro použití atributů skupiny synchronizované z Active Directory:   Skupiny musí být synchronizovány ze služby Active Directory pomocí služby Azure AD Connect.
 
 Existují dva kroky pro konfiguraci služby Azure Active Directory a vygenerovat názvy skupiny pro skupiny služby Active Directory.
 
@@ -100,21 +100,21 @@ Vygenerovat skupiny pomocí služby Active Directory atributech namísto v Azure
 
 ![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-Některé aplikace vyžadují informace o členství ve skupině se zobrazí v deklaraci "role". Zaškrtnutím políčka "Generování skupiny, které deklarace identity role" mohou volitelně vysílat skupin uživatele jako role.  
+Některé aplikace vyžadují informace o členství ve skupině se zobrazí v deklaraci "role". Zaškrtnutím políčka "Generování skupiny, které deklarace identity role" mohou volitelně vysílat skupin uživatele jako role.
 
 ![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
->[!NOTE]
->Pokud se používá možnost generování dat skupiny jako role, jenom skupiny se zobrazí v deklarace role.  Všechny aplikační role přiřazené uživateli se nezobrazí v deklarace role.
+> [!NOTE]
+> Pokud se používá možnost generování dat skupiny jako role, jenom skupiny se zobrazí v deklarace role.  Všechny aplikační role přiřazené uživateli se nezobrazí v deklarace role.
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Konfigurace registrace aplikace Azure AD pro skupinu atributů  
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Konfigurace registrace aplikace Azure AD pro skupinu atributů
 
 Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarací identity](../../active-directory/develop/active-directory-optional-claims.md) část [Manifest aplikace](../../active-directory/develop/reference-app-manifest.md).
 
  1. Na portálu -> Azure Active Directory -> aplikace registrací -> vyberte aplikace -> manifestu
 
  2. Povolit deklarace členství skupiny tak, že změníte groupMembershipClaim
- 
+
     Platné hodnoty jsou:
 
     - "Vše"
@@ -124,10 +124,10 @@ Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarac�
 
     Příklad:
 
-    ```
+    ```json
     "groupMembershipClaims": "SecurityGroup"
     ```
- 
+
     Ve výchozím nastavení skupiny objectid bude vygenerován ve skupině hodnoty deklarace identity.  Chcete-li změnit hodnotu deklarace identity tak, aby obsahovala místní skupinu atributů, nebo chcete změnit typ deklarace identity do role, použijte konfiguraci OptionalClaims následujícím způsobem:
 
  3. Nastavit nepovinné deklarace skupiny název konfigurace.
@@ -138,12 +138,12 @@ Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarac�
     - accessToken pro přístupový token OAuth/OIDC
     - Saml2Token pro tokeny SAML.
 
-    >[!NOTE]
-    >Typ Saml2Token platí pro SAML1.1 i SAML2.0 tokenů formátu  
+    > [!NOTE]
+    > Typ Saml2Token platí pro SAML1.1 i SAML2.0 tokenů formátu
 
-    Pro každý odpovídající typ tokenu změnit na skupiny deklaraci identity pro část OptionalClaims v manifestu. Schéma OptionalClaims vypadá takto:
+    Pro každý odpovídající typ tokenu upravte deklaraci skupiny oddílů OptionalClaims v manifestu. Schéma OptionalClaims vypadá takto:
 
- ```
+ ```json
  {
     "name": "groups",
     "source": null,
@@ -163,14 +163,14 @@ Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarac�
 
  Některé aplikace vyžadují skupiny informace o uživateli v deklarace role.  Chcete-li změnit typ deklarace identity ze skupiny uplatnit na deklarace role, přidejte do další vlastnosti "emit_as_roles".  Skupinové hodnoty budou zaznamenávány do deklarace role.
 
- >[!NOTE]
- >Pokud se používá "emit_as_roles" všechny aplikační role nakonfigurované, že se uživateli přiřadila se nezobrazí v deklarace role
+ > [!NOTE]
+ > Pokud se používá "emit_as_roles" všechny aplikační role nakonfigurované, že se uživateli přiřadila se nezobrazí v deklarace role
 
 ### <a name="examples"></a>Příklady
 
 Generování skupiny jako názvy skupin v přístupových tokenů OAuth ve formátu dnsDomainName\SAMAccountName
 
-```
+```json
 "optionalClaims": {
     "accessToken": [{
         "name": "groups",
@@ -181,7 +181,7 @@ Generování skupiny jako názvy skupin v přístupových tokenů OAuth ve form�
 
 Ke generování názvů skupin, které se mají vrátit ve formátu netbiosDomain\samAccountName jako SAML a OIDC ID tokeny deklarací identity rolí:
 
-```
+```json
 "optionalClaims": {
     "saml2Token": [{
         "name": "groups",

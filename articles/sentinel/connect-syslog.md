@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: ec23d4cec5ec1dbcaba5eca73ae6aba8391f2742
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 55949da97f58f1d8c1670f69d25e92d6bb4e9eef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242135"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447298"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Připojení externích řešení pomocí protokolu Syslog
 
@@ -27,7 +27,7 @@ ms.locfileid: "57242135"
 > Azure Sentinel je aktuálně ve verzi public preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Všechny místní zařízení, která podporuje Syslog Sentinelu Azure se můžete připojit. To se provádí pomocí agenta založené na počítači s Linuxem mezi zařízením a Sentinelu Azure. Pokud je počítač s Linuxem v Azure, můžete Streamovat protokoly ze zařízení nebo aplikaci k vyhrazený pracovní prostor vytváření v Azure a jejím připojení. Pokud není počítač s Linuxem v Azure, můžete Streamovat protokoly z vašich zařízení k vyhrazené místního virtuálního počítače nebo počítač, na který instalujete agenta pro Linux. 
+Všechny místní zařízení, která podporuje Syslog Sentinelu Azure se můžete připojit. To se provádí pomocí agenta založené na počítači s Linuxem mezi zařízením a Sentinelu Azure. Pokud je počítač s Linuxem v Azure, můžete Streamovat protokoly ze zařízení nebo aplikaci k vyhrazený pracovní prostor vytváření v Azure a jejím připojení. Pokud není počítač s Linuxem v Azure, můžete Streamovat protokoly z vašeho zařízení do vyhrazené místní virtuální počítač nebo počítač, na který nainstalujete agenta pro Linux. 
 
 > [!NOTE]
 > Pokud vaše zařízení podporuje formát CEF Syslog, připojení je kompletní a měli byste tuto možnost zvolte a postupujte podle pokynů v [shromažďování dat z formátu CEF](connect-common-event-format.md).

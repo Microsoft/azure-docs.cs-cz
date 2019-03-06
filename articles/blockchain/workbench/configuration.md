@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 6024a11f518432b735ccec6a3d89db687aed8ae6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332587"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452687"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace pro konfiguraci Azure Blockchain Workbench
 
@@ -67,21 +67,21 @@ Obchodní logiku aplikace může modelovat jako stavový stroj kde provádění 
 
 Příklad najdete v tématu [příkladu konfigurační soubor](#configuration-file-example).
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 
 Podporované datové typy.
 
-| Typ | Popis |
+| Type | Popis |
 |-------|-------------|
-| Adresa  | Blockchain adresy typu, jako například *kontrakty* nebo *uživatelé*. |
+| adresa  | Blockchain adresy typu, jako například *kontrakty* nebo *uživatelé*. |
 | pole    | Jednu úroveň pole typu integer, bool, peníze nebo čas. Pole může být statická nebo dynamická. Použití **ElementType** zadat datový typ prvků v poli. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-array). |
-| BOOL     | Datový typ Boolean. |
+| bool     | Datový typ Boolean. |
 | kontrakt | Adresa Typ kontraktu. |
 | Výčet     | Výčtové sadu pojmenovaných hodnot. Při použití typu výčtu, je také zadat seznam EnumKey provede. Každá hodnota je omezený na 255 znaků. Platná hodnota znaky patří velká a malá písmena (A-Z, a-z) a čísla (0-9). Zobrazit [příklad konfigurace a použili ji při Solidity](#example-configuration-of-type-enum). |
 | int      | Datový typ celé číslo. |
 | peníze    | Datový typ money. |
 | state    | Stav pracovního postupu. |
-| řetězec  | Datový typ String. maximálně 4000 znaků. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-string). |
+| string  | Datový typ String. maximálně 4000 znaků. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-string). |
 | uživatel     | Adresa Typ uživatele. |
 | time     | Čas datového typu. |
 |`[ Application Role Name ]`| Libovolný název zadaný v roli v aplikaci. Omezení uživatelů tohoto typu role. |
@@ -312,7 +312,7 @@ Kolekce stavů jedinečný v rámci pracovního postupu. Každý stav zaznamená
     {
       "Name": "Terminated",
       "DisplayName": "Terminated",
-      "Description": "Asset transfer has been cancelled",
+      "Description": "Asset transfer has been canceled",
       "PercentComplete": 100,
       "Style": "Failure",
       "Transitions": []
@@ -988,7 +988,7 @@ Následující konfigurační soubor je pro ukázku přenos prostředku:
         {
           "Name": "Terminated",
           "DisplayName": "Terminated",
-          "Description": "Asset transfer has been cancelled",
+          "Description": "Asset transfer has been canceled",
           "PercentComplete": 100,
           "Style": "Failure",
           "Transitions": []

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d05661c131d981538dada988131c39d4fd956ee9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8f333b626fa51fa60f80350547ee53f346d6cc3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016729"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436763"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvářet, monitorovat a spravovat objekty pro vytváření dat Azure pomocí Azure Data Factory .NET SDK
 > [!NOTE]
@@ -31,6 +31,9 @@ Můžete vytvářet, monitorovat a spravovat Azure datových továren programov�
 > Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. Zobrazit [referencích rozhraní API .NET služby Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o rozhraní .NET API služby Data Factory. 
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Visual Studio 2012 nebo 2013 nebo 2015
 * Stáhněte a nainstalujte [sady Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell Podle pokynů v článku [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) si na počítač nainstalujte prostředí Azure PowerShell. K vytvoření aplikace v Azure Active Directory použijete Azure PowerShell.
@@ -42,17 +45,17 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 2. Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **&lt;NameOfAzureSubscription**&gt; zadejte název svého předplatného Azure.
 
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
    > [!IMPORTANT]
@@ -61,7 +64,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 5. Spuštěním následujícího příkazu v PowerShellu vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**.
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
     Pokud skupina prostředků už existuje, určete, jestli se má aktualizovat (Y), nebo ponechat tak, jak je (N).
@@ -70,7 +73,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 6. Vytvořte aplikaci Azure Active Directory.
 
     ```PowerShell
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
+    $azureAdApplication = New-AzADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
     Pokud se zobrazí následující chyba, zadejte jinou adresu URL a spusťte příkaz znovu.
@@ -81,12 +84,12 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 7. Vytvořte instanční objekt služby AD.
 
     ```PowerShell
-    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. Přidejte instanční objekt k roli **Přispěvatel Data Factory**.
 
     ```PowerShell
-    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. Získejte ID aplikace.
 
@@ -175,7 +178,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     ```
 
    > [!IMPORTANT]
-   > Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure. Můžete vytvořit skupinu prostředků pomocí [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) rutiny.
+   > Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure. Můžete vytvořit skupinu prostředků pomocí [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) rutiny.
    >
    > Aktualizujte název datové továrny (dataFactoryName) tak, aby byl jedinečný. Název objektu pro vytváření dat musí být globálně jedinečný. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
 7. Do metody **Main** přidejte následující kód, který vytvoří **objekt pro vytváření dat**.

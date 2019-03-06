@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c4b20b4007a4824ee2dea0e1b22f1ea886218885
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272803"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453605"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit a řešení potíží s připojením ExpressRoute. ExpressRoute, které rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení, zahrnuje následující tři odlišné sítě zóny:
 
 -   Síť zákazníka
 -   Síť poskytovatele
--   Datového centra Microsoftu
+-   Microsoft Datacenter
 
 Účelem tohoto dokumentu je pomoct uživatelům určit, kam (nebo i v případě) existuje problém s připojením a v rámci které zónu, a tím a vyhledejte nápovědu z odpovídající týmu k vyřešení daného problému. Pokud podpory společnosti Microsoft, je potřeba vyřešit problém, otevřete lístek podpory s [Microsoft Support][Support].
 
@@ -28,6 +28,8 @@ Tento článek vám pomůže ověřit a řešení potíží s připojením Expre
 > Účelem tohoto dokumentu je pomoct Diagnostika a řešení problémů jednoduché. Není určen jako náhrada za podporu Microsoftu. Vytvořit lístek podpory s [Microsoft Support] [ Support] Pokud nemůžete vyřešit problém podle pokynů.
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 Následující diagram znázorňuje připojení logické sítě do sítě Microsoftu pomocí ExpressRoute.
@@ -38,11 +40,11 @@ Na předchozím obrázku čísla udávají body klíčové sítě. Body sítě j
 V závislosti na modelu připojení ExpressRoute (Cloud Exchange společné umístění, připojení k síti Ethernet typu Point-to-Point nebo Any-to-any (IPVPN)) může být body sítě 3 a 4 přepínače (vrstva 2 zařízení). Body klíčové sítě znázorněno jsou následující:
 
 1.  Zákazník výpočetní zařízení (třeba server nebo počítač)
-2.  Webovou službu zápis certifikátů: Hraniční směrovače zákazníka 
+2.  CEs: Hraniční směrovače zákazníka 
 3.  Odkaz pEs (CE přístupem): Zprostředkovatel hraniční směrovače/přepínače, které se potýkáte hraniční směrovače zákazníka. Říká PE CEs v tomto dokumentu.
 4.  Odkaz pEs (MSEE přístupem): Zprostředkovatel hraniční směrovače/přepínače, které se potýkáte Msee. Říká Msee PE v tomto dokumentu.
 5.  Msee: Microsoft Enterprise Edge (MSEE) ExpressRoute směrovače
-6.  Brána virtuální sítě (VNet)
+6.  Virtual Network (VNet) Gateway
 7.  Zařízení ve virtuální síti Azure COMPUTE
 
 Pokud se používají modely připojení cloudu Exchange společné umístění nebo připojení k síti Ethernet typu Point-to-Point, hraniční směrovač zákazníka (2) by navázat s Msee (5) partnerského vztahu protokolu BGP. Body sítě 3 a 4 by stále existují ale poněkud transparentnost jako zařízení vrstvy 2.
@@ -88,16 +90,16 @@ Pro okruh ExpressRoute do provozu *stav okruhu* musí být *povoleno* a *stav po
 ### <a name="verification-via-powershell"></a>Ověřování pomocí Powershellu
 Chcete-li vypsat všechny okruhy ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Název skupiny prostředků můžete získat pomocí Azure. Viz předchozí část tohoto dokumentu a Všimněte si, že je název skupiny prostředků uvedené na příkladu snímku obrazovky.
+>Název skupiny prostředků můžete získat pomocí Azure. Viz předchozí část tohoto dokumentu a Všimněte si, že je název skupiny prostředků uvedené v ukázkovém snímku obrazovky.
 >
 >
 
 Pokud chcete vybrat konkrétní okruh ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
 Ukázková odpověď je:
 
@@ -186,8 +188,8 @@ V předchozím příkladu jako uvedené Azure soukromého partnerského vztahu s
 ### <a name="verification-via-powershell"></a>Ověřování pomocí Powershellu
 Podrobnosti konfigurace partnerského vztahu Azure privátní získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 Ukázková odpověď pro úspěšně nakonfiguroval privátní partnerský vztah, je:
 
@@ -210,21 +212,21 @@ Ukázková odpověď pro úspěšně nakonfiguroval privátní partnerský vztah
 
 Podrobnosti konfigurace partnerského vztahu Azure veřejné získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 Konfigurace podrobností partnerského vztahu Microsoftu získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 Pokud není nakonfigurován partnerský vztah, by se chybová zpráva. Ukázkové odpovědi, pokud uvedená partnerského vztahu (Azure veřejného partnerského vztahu v tomto příkladu) není nakonfigurovaná v rámci okruhu:
 
-    Get-AzureRmExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
-        + Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
         + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzureRmExpr...itPeeringConfig], InvalidOperationException
+            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
             + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
 
 

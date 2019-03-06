@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 55a7a26815dac1140d100c05a47057f8d5000f9d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445479"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 
@@ -160,7 +160,7 @@ New-AzRoleDefinition -Role $role
 Platí podobný vzorec s event hubs, ale nejdřív je potřeba vytvořit vyhrazený autorizační pravidlo naslouchání. Pokud budete chtít udělit, přístup k aplikaci, která potřebuje pouze k naslouchání služby související s monitorování event hubs, postupujte takto:
 
 1. Vytvořte zásady sdíleného přístupu na události rozbočovače, které byly vytvořeny pro streamování dat monitorování s jenom deklarace identity naslouchání. To můžete udělat na portálu. Například může říkat "monitoringReadOnly." Pokud je to možné můžete udělit tomuto klíči přímo pro příjemce a přejděte na další krok.
-2. Pokud příjemce musí být schopni získat klíče ad-hoc, udělte uživateli klíče Listkey akce pro tohoto centra událostí. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit nastavení diagnostiky nebo profil protokolu pro streamování do event hubs. Například může vytvořit pravidlo RBAC:
+2. Pokud příjemce musí být schopen získat klíč ad hoc, udělte uživateli klíče Listkey akce pro tohoto centra událostí. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit nastavení diagnostiky nebo profil protokolu pro streamování do event hubs. Například může vytvořit pravidlo RBAC:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 8436b530ac01f03e071604e5023b50f8de6989fd
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034803"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440655"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
@@ -39,10 +39,10 @@ Pro účely ověření služby Azure Active Directory, je třeba nejprve vytvoř
 
 Tyto kroky používají Azure CLI k vytvoření registrace aplikace a grafickým uživatelským rozhraním (portál) k nastavení oprávnění. K vytvoření registrace aplikace, budete potřebovat následující pět druhy údajů:
 
-- Zobrazovaný název: název registrace aplikace (například OCPAzureAD)
-- Domovská stránka: OpenShift konzoly adresy URL (například https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Zobrazovaný název: Název registrace aplikace (například OCPAzureAD)
+- Domovská stránka: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com/console)
 - Identifikátor URI: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Adresa URL odpovědi: Hlavní veřejnou adresu URL a název registrace aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Adresa URL odpovědi: Hlavním veřejnou adresu URL a název registrace aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Heslo: Zabezpečené heslo (použijte silné heslo)
 
 Následující příklad vytvoří registrace aplikace pomocí výše uvedených informací:
@@ -83,7 +83,7 @@ Na webu Azure Portal:
 
   ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
-6.  Klikněte na krok 1: Vyberte rozhraní API a pak klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klikněte na tlačítko **vyberte** v dolní části.
+6.  Klikněte na krok 1: Vyberte rozhraní API a potom klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klikněte na tlačítko **vyberte** v dolní části.
 
   ![Vyberte rozhraní API registrace aplikace](media/openshift-post-deployment/app-registration-select-api.png)
 

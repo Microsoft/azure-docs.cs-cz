@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d451b53868dcd3253aba2a1c3118ddcc140445c3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882990"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448369"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení rámce: Zabezpečení komunikace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[Zabezpečená komunikace do centra událostí pomocí protokolu SSL/TLS](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Zkontrolujte oprávnění k účtu služby a zkontrolujte, že vlastní služby nebo stránky ASP.NET respektovat zabezpečení CRM](#priv-aspnet)</li></ul> |
-| **Azure Data Factory** | <ul><li>[Brána správy dat používané k připojení na místní SQL Server do služby Azure Data Factory](#sqlserver-factory)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Brána správy dat používané k připojení místního SQL serveru do služby Azure Data Factory](#sqlserver-factory)</li></ul> |
 | **Serveru identit** | <ul><li>[Ujistěte se, že veškerý provoz do serveru identit přes připojení HTTPS](#identity-https)</li></ul> |
 | **Webové aplikace** | <ul><li>[Ověření X.509 certifikáty sloužící k ověření připojení SSL, TLS a DTLS](#x509-ssltls)</li><li>[Konfigurace certifikátu SSL pro vlastní domény ve službě Azure App Service](#ssl-appservice)</li><li>[Vynutit veškerý provoz do služby Azure App Service přes připojení HTTPS](#appservice-https)</li><li>[Povolit zabezpečení striktní přenosu HTTP (HSTS)](#http-hsts)</li></ul> |
 | **Database** | <ul><li>[Ujistěte se SQL server šifrování a certifikát ověření platnosti připojení](#sqlserver-validation)</li><li>[Platnost šifrované komunikace se serverem SQL](#encrypted-sqlserver)</li></ul> |
@@ -60,15 +60,15 @@ ms.locfileid: "56882990"
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Zkontrolujte oprávnění k účtu služby a zkontrolujte, že vlastní služby nebo stránky ASP.NET respektovat zabezpečení CRM |
 
-## <a id="sqlserver-factory"></a>Brána správy dat používané k připojení na místní SQL Server do služby Azure Data Factory
+## <a id="sqlserver-factory"></a>Brána správy dat používané k připojení místního SQL serveru do služby Azure Data Factory
 
 | Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Data Factory | 
 | **SDL fáze**               | Nasazení |  
 | **Použitelných technologiích** | Obecné |
-| **Atributy**              | Typy propojené služby – Azure a v místním nasazení |
-| **Odkazy**              |[Přesun dat mezi místním nasazení ve a Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brána správy dat](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **Atributy**              | Typy propojené služby – Azure i v místním prostředí |
+| **Odkazy**              |[Přesun dat mezi místními a Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brána správy dat](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Kroky** | <p>Nástroj Data Management Gateway (DMG) je nutná pro připojení ke zdrojům dat, které jsou chráněné za bránou corpnetu a bránou firewall.</p><ol><li>Uzamčení počítače izoluje nástroj DMG a zabraňuje nefunkční programům poškození nebo monitorování na zdrojovém počítači data. (Např.) musí být nainstalované nejnovější aktualizace, povolit minimální požadované porty řízené účty zřizování a auditování povoleno, na disku povoleno šifrování atd.)</li><li>Musí v pravidelných intervalech nebo pokaždé, když se tato možnost obnoví heslo účtu služby DMG obměnit klíč brány dat</li><li>Musí být šifrovaná data tranzitů přes službu propojení</li></ol> |
 
 ## <a id="identity-https"></a>Ujistěte se, že veškerý provoz do serveru identit přes připojení HTTPS

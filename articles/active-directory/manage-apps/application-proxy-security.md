@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef9dbe1bb0ed9e5aad545453c409b0959bdd3fd4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7bb9fc806779565581fa7667749402f5608edd80
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207224"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438070"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Informace o zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy
 
@@ -69,7 +69,7 @@ Další informace o konektorech najdete v tématu [pochopit Azure AD Application
 
 Získáte špičkové zabezpečení ochrany.
 
-Protože je součástí Azure Active Directory, můžou využívat Proxy aplikací [Azure AD Identity Protection](../active-directory-identityprotection.md), s daty z Microsoft Security Response Center a Digital Crimes Unit. Současně jsme aktivně identifikovat ohrožením účtů a nabízí ochranu od vysoce rizikových přihlášení. Můžeme vzít v úvahu řadu faktorů k určení, které po konci přihlášení jsou vysoce rizikové. Tyto faktory zahrnují označování nakažené zařízení, anonymizace sítě a neobvyklé nebo pravděpodobné umístění.
+Protože je součástí Azure Active Directory, můžou využívat Proxy aplikací [Azure AD Identity Protection](../active-directory-identityprotection.md), s daty z Microsoft Security Response Center a Digital Crimes Unit. Současně jsme aktivně identifikovat ohrožením účtů a nabízí ochranu od vysoce rizikových přihlášení. Můžeme vzít v úvahu řadu faktorů k určení, které pokusů o přihlášení se vysokým rizikem. Tyto faktory zahrnují označování nakažené zařízení, anonymizace sítě a neobvyklé nebo pravděpodobné umístění.
 
 Mnohé z těchto sestav a události jsou již k dispozici prostřednictvím rozhraní API pro integraci se systémy pro správu (SIEM) událostí a informací o zabezpečení.
 

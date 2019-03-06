@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fc2333b6bd41b9efdd1fcafd6168906525cb537a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406789"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440569"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí rozhraní REST
 
@@ -36,7 +36,7 @@ Zjistěte, jak použít rozhraní Apache Hive WebHCat REST API ke spuštění ú
 >
 > Rozhraní REST API se šifrují pomocí [ověřování přístupu basic](https://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí protokolu HTTPS k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
 
-1. Nastavení přihlášení ke clusteru, který se používá ve skriptech v tomto dokumentu, použijte jeden z příkazů followig:
+1. Nastavení přihlášení ke clusteru, který se používá ve skriptech v tomto dokumentu, použijte jednu z následujících příkazů:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN

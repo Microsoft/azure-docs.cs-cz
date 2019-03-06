@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565237"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441368"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Správa databází s horizontálním navýšením kapacity
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**Úlohy elastic Database** hostované zákazníků Azure Cloudová služba, která umožňuje spouštět ad-hoc a naplánované úlohy správy, které se nazývají **úlohy**. S úlohami můžete snadno a spolehlivě spravovat velké skupiny databází Azure SQL pomocí jazyka Transact-SQL skriptů k provádění operací správy.
+**Úlohy elastic Database** hostované zákazníků Azure Cloudová služba, která umožňuje spouštět ad hoc a naplánované úlohy správy, které se nazývají **úlohy**. S úlohami můžete snadno a spolehlivě spravovat velké skupiny databází Azure SQL pomocí jazyka Transact-SQL skriptů k provádění operací správy.
 
 Chcete-li správa horizontálně dělených databází s horizontálním navýšením kapacity, **úlohy elastické databáze** funkce (preview) umožňuje spolehlivě spustit skript jazyka Transact-SQL (T-SQL) napříč skupinou databází, včetně:
 
@@ -114,7 +114,7 @@ Vlastní skupiny, na druhé straně jsou pevně definovány. Musíte explicitně
 
 ## <a name="components-and-pricing"></a>Komponenty a ceny
 
-Následující součásti společně vytvářejí služby Azure Cloud, která umožňuje provádění ad-hoc Správce úloh. Součásti instalace a konfigurace automaticky během instalace, v rámci vašeho předplatného. Služby můžete identifikovat všechny mají stejnou automaticky generovaný název. Název je jedinečný a se skládá z předponu "edj" následované 21 náhodně generovaných znaků.
+Následující komponenty spolupracují na vytvoření služby Azure Cloud, který umožňuje ad hoc provádění úloh správy. Součásti instalace a konfigurace automaticky během instalace, v rámci vašeho předplatného. Služby můžete identifikovat všechny mají stejnou automaticky generovaný název. Název je jedinečný a se skládá z předponu "edj" následované 21 náhodně generovaných znaků.
 
 - Cloudová služba Azure
 

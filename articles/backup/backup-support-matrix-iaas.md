@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: da615d76e9efa0ad8d0952a6d75bc341336a6596
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 264f10be1ecb22b6261a14f7185f88b101242d36
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312966"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440773"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -157,8 +157,8 @@ Zálohování virtuálních počítačů, které se migrují do Azure  | Podporu
 **Komponenta** | **Podpora**
 --- | ---
 Azure datových disků virtuálního počítače | Zálohování virtuálního počítače s 16 nebo méně datových disků.
-Velikost datového disku | Jednotlivé disk může být až 4 095 GB.<br/><br/> Pokud používáte nejnovější verzi zálohování virtuálních počítačů Azure (označované jako rychlé obnovení), disk o velikosti až 4 TB jsou podporovány. [Další informace](backup-instant-restore-capability.md).
-Typ úložiště | Standardní HDD, SSD na úrovni standard, premium SSD. <br/><br/> SSD na úrovni standard se podporuje, pokud používáte nejnovější verzi zálohování virtuálních počítačů Azure (označují se termínem rychlé obnovení). [Další informace](backup-instant-restore-capability.md).
+Velikost datového disku | Jednotlivé disk může být až 4 095 GB.<br/><br/> Pokud vaše trezory běží nejnovější verze služby Azure Backup (označuje se jako rychlé obnovení), disk o velikosti až 4 TB jsou podporovány. [Další informace](backup-instant-restore-capability.md).
+Typ úložiště | Standardní HDD, SSD na úrovni standard, premium SSD. <br/><br/> SSD na úrovni standard se podporuje, pokud vaše trezory služby jsou upgradovány na nejnovější verzi nástroje zálohování virtuálních počítačů Azure (označují se termínem rychlé obnovení). [Další informace](backup-instant-restore-capability.md).
 Managed Disks | Podporuje se.
 Šifrovanými disky | Podporuje se.<br/><br/> Virtuální počítače Azure povolené s Azure Disk Encryption je možné zálohovat (s nebo bez aplikace Azure AD).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Je nutné obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování na virtuálních počítačích, které jsou již chráněny službou Azure Backup.
 Disky s akcelerátor zápisu | Nepodporuje se.<br/><br/> Pokud používáte nejnovější verzi zálohování virtuálních počítačů Azure (označované jako [rychlé obnovení](backup-instant-restore-capability.md)), můžete vyloučit disky s akcelerátor zápisu ze zálohy.

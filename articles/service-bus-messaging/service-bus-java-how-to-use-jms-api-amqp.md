@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312885"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453401"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -341,6 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
+## <a name="jms-topics-vs-service-bus-topics"></a>Témata JMS vs. Témata služby Service Bus
+Pomocí služby Azure Service Bus, témat a předplatných prostřednictvím jazyce Java zprávy služby JMS () rozhraní API poskytuje základní odesílání a příjem možnosti. Při přenesení aplikací od jiných zprostředkovatelů zprávu s JMS kompatibilní s rozhraními API, i když se liší od témat JMS témat sběrnice Service Bus a vyžadovat několik oprav je vhodné podle výběru. 
+
+Témata služby Azure Service Bus směrování zpráv do pojmenované, sdílené, trvalý odběry, které jsou spravované prostřednictvím rozhraní Azure Resource Manageru, nástroje příkazového řádku Azure nebo na webu Azure portal. Každé předplatné umožňuje až 2000 výběr pravidel, každý z jejichž podmínky filtru a pro SQL filtry, také akce transformace metadat. Jednotlivé shody podmínka filtru vybere vstupní zprávy, které se mají zkopírovat do tehj předplatného.  
+
+Příjem zpráv z předplatných je stejný jako přijímání zpráv z fronty. Každé předplatné má přidružené fronty nedoručených zpráv, stejně jako schopnost automaticky předávat zprávy do jiného front nebo témat. 
+
+Témata JMS klientům dynamicky vytvořit dočasných a trvalý odběratele, které volitelně povolit filtrování zpráv pomocí selektorů. zpráva. Tyto entity nesdílený nejsou podporovány ve službě Service Bus. Syntaxe pravidla filtru SQL pro Service Bus je velmi podobná syntaxe selektor zpráva JMS nepodporuje. 
+
+Téma JMS vydavatele je kompatibilní se službou Service Bus, jak je znázorněno v této ukázce, ale nejsou dynamické předplatitele. Následující topologie související JMS rozhraní API nejsou podporovány službou Service Bus. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nepodporované funkce a omezení
 Při použití JMS prostřednictvím protokolu AMQP 1.0 se Service Bus, konkrétně existují následující omezení:

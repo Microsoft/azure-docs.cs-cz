@@ -11,12 +11,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: bcc0d69024954b0b8cbf58fb3eac938ff3e1b0e6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039856"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435265"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – vytvoření aplikace Node.js Express
 
@@ -103,7 +103,7 @@ V tomto kurzu budete také potřebovat:
     * Obsluhuje všechno ve složce dist, což bude statický obsah.
     * Obsluhuje aplikaci a na každý požadavek GET, který se nenajde na serveru (pro přímé odkazy), vrátí soubor index.html.
     * Spustí server pomocí funkce app.listen.
-    * Používá funkci šipky k zaprotokolování aktivního stavu portu.
+    * Používá funkci šipky k protokolování, že port je aktivní
     
    ```node
    const express = require('express');

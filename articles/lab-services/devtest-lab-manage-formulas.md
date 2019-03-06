@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076430"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452653"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Správa vzorců Azure DevTest Labs
 
@@ -69,7 +69,7 @@ Následující kroky vás provedou procesem vytvoření vzorce z vlastní image,
     - **Konfiguraci IP adresy** – určete, zda má veřejný, privátní nebo sdílených IP adres. Další informace o sdílených IP adres najdete v tématu [Principy sdílených IP adres ve službě Azure DevTest Labs](./devtest-lab-shared-ip.md).
     - **Datum a čas vypršení** – zadejte datum vypršení platnosti a čas pro virtuální počítač tak, aby virtuální počítač se automaticky odstraní. 
     - **Nastavit tento počítač nárokovatelných** – provádění na počítači "nárokovatelných" znamená, že ho nepřiřadí vlastnictví v době vytvoření. Místo toho uživatelé testovacího prostředí budou moci převzít vlastnictví ("deklarace") počítače na stránce testovacího prostředí.     
-    - **Počet instancí nárokovatelných** – určete, kolik nárokovatelných instacnes, kterou chcete vytvořit. 
+    - **Počet instancí nárokovatelných** – určete, kolik nárokovatelných instancí, které chcete vytvořit. 
 8. Vyberte **odeslat** vytvořit vzorec.
 
 9. Po vytvoření vzorce, se zobrazí v seznamu na **vzorce** stránky.

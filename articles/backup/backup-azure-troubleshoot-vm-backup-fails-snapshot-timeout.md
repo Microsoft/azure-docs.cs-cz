@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c62560d2f80375a725464607f38b9e8adf221d16
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 530bb83d753d27db4869b5725bc6d4c4e020e179
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446601"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -229,14 +229,14 @@ Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zál
 
 ### <a name="clean_up_restore_point_collection"></a> Odstranit kolekci bodů obnovení
 Po ze zařízení zámek odebral, mají body obnovení na vyčištění. Chcete-li vyčistit body obnovení, postupovat podle některého z metody:<br>
-* [Odstranit kolekci bodů obnovení ve spuštěné zálohování ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+* [Vyčistit obnovení kolekci bodů spuštěním zálohování ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 * [Vyčistit obnovení bodu kolekce z webu Azure portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Odstranit kolekci bodů obnovení ve spuštěné zálohování ad hoc
-Po odebrání zámku aktivace ad-hoc nebo ruční zálohování. Tím se zajistí, že se že body obnovení automaticky vyčištěna. Očekávané selhání poprvé; tato operace ad-hoc nebo ruční však zajistí automatické čištění místo ruční odstranění bodů obnovení. Po vyčištění uspěli na další naplánované zálohování.
+#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Vyčistit obnovení kolekci bodů spuštěním zálohování ad hoc
+Po odebrání zámku aktivace zálohování ad hoc nebo ruční. Tím se zajistí, že se že body obnovení automaticky vyčištěna. Očekávané selhání poprvé; tento ad hoc nebo ruční operace však zajistí automatické čištění místo ruční odstranění bodů obnovení. Po vyčištění uspěli na další naplánované zálohování.
 
 > [!NOTE]
-    > Automatické čištění se stane po několik hodin spouští se záloha ad-hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
+    > Automatické čištění se stane po několik hodin aktivace zálohování ad hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Vyčistit obnovení bodu kolekce z webu Azure portal <br>
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a4e5087e53d4505d54b5ff4b8d17ad6166c6174b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002497"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437310"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migrace Contoso: Znovu sestavit místní aplikaci do Azure
 
@@ -154,7 +154,7 @@ Spusťte skript nasazení k vytvoření spravovaného clusteru Kubernetes AKS a 
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Dříve, než začnou, správce společnosti Contoso Ujistěte se, že veškerý software prerequisitie v nainstalovaný ve vývojovém počítači, který se používá pro nasazení.
+1. Dříve, než začnou, správce společnosti Contoso Ujistěte se, že nainstalován veškerý požadovaný software v ve vývojovém počítači, který se používá pro nasazení.
 2. Jejich naklonujte úložiště místním vývojovém počítači s aplikací Git: **klonu gitu https://github.com/Microsoft/SmartHotel360-Azure-backend.git**
 
 
@@ -374,15 +374,15 @@ Pokyny k tomuto oddílu používají [SmartHotel360. veřejný web](https://gith
 1.  Na webu Azure portal, otevřete účet úložiště, který byl vytvořen a klikne na tlačítko **objekty BLOB**.
 2.  Vytvoří nový kontejner (**Mazlíčci**) s úroveň veřejného přístupu nastavena na kontejner. Uživatelé odešlete své domácí mazlíčky fotky do tohoto kontejneru.
 
-    ![Úložiště objektů blob](./media/contoso-migration-rebuild/blob1.png)
+    ![Objekt blob úložiště](./media/contoso-migration-rebuild/blob1.png)
 
 3. Vytvoří druhý nový kontejner s názvem **nastavení**. Soubor se všechna nastavení front-endu aplikací budou umístěny v tomto kontejneru.
 
-    ![Úložiště objektů blob](./media/contoso-migration-rebuild/blob2.png)
+    ![Objekt blob úložiště](./media/contoso-migration-rebuild/blob2.png)
 
 4. Dojde k zachycení podrobností pro přístup k účtu úložiště v textovém souboru, pro pozdější použití.
 
-    ![Úložiště objektů blob](./media/contoso-migration-rebuild/blob2.png)
+    ![Objekt blob úložiště](./media/contoso-migration-rebuild/blob2.png)
 
 ### <a name="provision-a-cosmos-database"></a>Zřízení databáze Cosmos
 

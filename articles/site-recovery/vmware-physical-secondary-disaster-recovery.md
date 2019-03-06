@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 373d7d4b421b3e679a5bb0f843db47e28eebbcc1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895835"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451922"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
@@ -159,7 +159,7 @@ Aktualizace Scout 7 je úplné instalační program, který lze použít pro nov
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>Ruční Upgrade pro PHP a MySQL v CS, PS a příjmu
 Skriptovací platformu PHP byste upgradovat na verzi 7.2.10 na konfigurační Server, procesový Server a Server příjmu.
 Systém správy databáze MySQL byste upgradovat na verzi 5.7.23 na konfigurační Server, procesový Server a Server příjmu.
-Postupujte prosím podle manaual podle [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide) upgrade verze PHP a MySQL.
+Postupujte podle kroků ruční podle [rychlá Instalační příručka](https://aka.ms/asr-scout-quick-install-guide) upgrade verze PHP a MySQL.
 
 ### <a name="site-recovery-scout-801-update-6"></a>Aktualizace služby Site Recovery Scout 8.0.1 6 
 Aktualizováno: 12. října 2017

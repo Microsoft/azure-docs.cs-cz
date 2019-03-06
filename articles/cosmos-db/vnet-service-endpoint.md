@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0bb9ad5c3a39f4065a81fb218a4b167f6fde9b1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452036"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447553"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 
@@ -47,7 +47,7 @@ Mít přístup pouze virtuální sítě a podsítě přidán k účtu Azure Cosm
 V současné době může mít maximálně 64 podsítí povolené pro účet Azure Cosmos.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Můžete povolit přístup z VPN a Expressroute? 
-Pro přístup k účtu Azure Cosmos přes Express route z místní, musíte povolit partnerský vztah Microsoftu. Po přepnutí brány firewall protokolu IP nebo pravidla přístupu k virtuální síti, můžete přidat veřejné IP adresy používané pro partnerský vztah Microsoftu na bráně firewall IP účtu Azure Cosmos umožňuje v místním prostředí služby přístup k účtu Azure Cosmos. 
+Pro přístup k účtu Azure Cosmos přes Express route z v místním prostředí, je třeba povolit partnerský vztah Microsoftu. Po přepnutí brány firewall protokolu IP nebo pravidla přístupu k virtuální síti, můžete přidat veřejné IP adresy používané pro partnerský vztah Microsoftu na bráně firewall IP účtu Azure Cosmos umožňuje v místním prostředí služby přístup k účtu Azure Cosmos. 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Je potřeba aktualizovat pravidla skupiny zabezpečení sítě (NSG)? 
 Pravidla skupiny zabezpečení sítě umožňují omezit připojení do a z podsítě virtuální sítě. Když přidáte koncový bod služby pro službu Azure Cosmos DB k podsíti, není nutné otevřít odchozí připojení do skupiny zabezpečení sítě pro váš účet Azure Cosmos. 

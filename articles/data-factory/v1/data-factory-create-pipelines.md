@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f04903cc1ffd16edd951969c86659c8f1f33105f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 65763eb57904210b202fb30b4394deea3a1f7baf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814125"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449559"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,6 +32,8 @@ Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data 
 
 > [!NOTE]
 > Tento článek předpokládá, že jste prošli [Úvod do služby Azure Data Factory](data-factory-introduction.md). Pokud nemáte praktická-na-zkušeností s vytvořením datové továrny, probíhá [kurzu transformace dat](data-factory-build-your-first-pipeline.md) a/nebo [kurzu přesunu dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) by vám lépe porozumět v tomto článku.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke zkopírování dat z místního SQL Serveru do služby Azure Blob Storage. Pak použijete aktivitu Hive, která spouští skript Hive v clusteru Azure HDInsight, aby zpracovala/transformovala data z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec použijte druhou aktivitu kopírování, která zkopíruje výstupní data do služby Azure SQL Data Warehouse, které jsou postavena řešení tvorby sestav business intelligence (BI).
@@ -94,10 +96,10 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "\*", "%", "&", ":","\\"</li></ul> |Ano |
 | description | Určuje text popisující, k čemu se kanál používá. |Ano |
 | activities | Část **activities** může obsahovat definici jedné nebo více aktivit. V části Další podrobnosti o elementu activities formátu JSON. | Ano |
-| start | Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
+| start | Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzDataFactoryPipelineActivePeriod později. |
 | konec | Koncové datum a čas pro kanál. Je-li zadána, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je odhad AM 6<br/><br/>Kanál spouštět bez omezení, zadejte jako hodnotu pro vlastnost end 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi jeho počáteční a koncový čas. Nebude provedena před časem spuštění nebo po času ukončení. Pokud kanál je pozastavený, se nebudou provedeny bez ohledu na jejich počáteční a koncový čas. Pro kanál ke spuštění by neměly být pozastaveno. Zobrazit [plánování a provádění](data-factory-scheduling-and-execution.md) pochopit, jak funguje plánování a provádění ve službě Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost start, musíte zadat hodnotu pro vlastnost end.<br/><br/>Naleznete v poznámkách k **start** vlastnost. |
 | isPaused | Je-li nastavena hodnota true, kanál se nespustí. Je v pozastaveném stavu. Výchozí hodnota = false. Tato vlastnost slouží k povolení nebo zakázání kanálu. |Ne |
 | pipelineMode | Metoda pro naplánování spuštění pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázové.<br/><br/>"Naplánované" označuje, že se kanál spustí v zadaný časový interval podle jeho aktivního období (počáteční a koncový čas). "Jednorázové" označuje, že se kanál spustí pouze jednou. Jednorázová kanály po vytvoření se nedají upravit/aktualizovat aktuálně. Zobrazit [Onetime kanálu](#onetime-pipeline) podrobnosti o jednorázové nastavení. |Ne |

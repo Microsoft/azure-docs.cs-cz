@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4537d15f88732d4b0c3c3cf514d6b8528af10f81
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8b8d56befa49b74ba123ff250720ac581604bbd6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737463"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452313"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity (Preview)
 
@@ -172,14 +172,14 @@ Tento článek popisuje tři způsoby, jak povolit spravovanou identitu pro úlo
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry#optional-parameters) dokumentaci.
+   Další informace o výše uvedený příkaz Powershellu, přečtěte si [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentaci.
 
 ## <a name="limitations"></a>Omezení
 Tato funkce nepodporuje následující:
 
 1.  **Víceklientský přístup**: Instanční objekt služby, které jsou vytvořené pro danou úlohu Stream Analytics se bude nacházet v tenantovi Azure Active Directory, na kterém byla vytvořena úloha a nelze použít u prostředku, který se nachází v jiném tenantovi Azure Active Directory. Proto můžete použít pouze instalační služby MSI na 1. generace ADLS prostředky, které jsou ve stejném tenantovi Azure Active Directory jako vaší úlohy Azure Stream Analytics. 
 
-2.  **[Identita uživatele přiřazeny](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka/)**: není podporována. to znamená, že uživatel není možné je zadat své vlastní instanční objekt služby pro svoje úlohy Stream Analytics. Instanční objekt je generován Azure Stream Analytics. 
+2.  **[Identita uživatele přiřazeny](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: není podporována. to znamená, že uživatel není možné je zadat své vlastní instanční objekt služby pro svoje úlohy Stream Analytics. Instanční objekt je generován Azure Stream Analytics. 
 
 
 ## <a name="next-steps"></a>Další postup

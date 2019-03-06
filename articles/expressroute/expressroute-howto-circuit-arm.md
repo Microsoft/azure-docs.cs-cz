@@ -2,18 +2,18 @@
 title: 'Vytvoření a úprava okruhu ExpressRoute – prostředí PowerShell: Azure | Dokumentace Microsoftu'
 description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b32c97f636cc6b918a883ea3e2a2b540890084f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104998"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409849"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -31,37 +31,23 @@ Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazen
 Než začnete, projděte si [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
 ### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="create"></a>Vytvoření a zřízení okruhu ExpressRoute
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Přihlaste se ke svému účtu Azure a vyberte své předplatné
-Můžete začít s vaší konfigurací, přihlaste se ke svému účtu Azure. Připojení vám usnadní použijte následující příklady:
 
-Pokud používáte Azure Cloud shell, nemusíte spouštět Connect-AzureRmAccount, protože se automaticky připojí.
-
-```azurepowershell
-Connect-AzureRmAccount
-```
-
-Zkontrolujte předplatná pro tento účet:
-
-```azurepowershell-interactive
-Get-AzureRmSubscription
-```
-
-Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute pro:
-
-```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
-```
+[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Získání seznamu podporovaných zprostředkovatelů, umístění a šířky pásma
 Než začnete vytvářet okruhu ExpressRoute, budete potřebovat seznam poskytovatelů podporovaných připojení, umístění a možnosti šířky pásma.
 
-Rutiny Powershellu **Get-AzureRmExpressRouteServiceProvider** vrátí tyto informace, které budete používat v dalších krocích:
+Rutiny Powershellu **Get-AzExpressRouteServiceProvider** vrátí tyto informace, které budete používat v dalších krocích:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteServiceProvider
+Get-AzExpressRouteServiceProvider
 ```
 
 Zaškrtněte, pokud chcete zobrazit, pokud poskytovatel připojení je tu. Poznamenejte si následující informace, které budete potřebovat později při vytvoření okruhu:
@@ -70,20 +56,19 @@ Zaškrtněte, pokud chcete zobrazit, pokud poskytovatel připojení je tu. Pozna
 * PeeringLocations
 * BandwidthsOffered
 
-Nyní jste připraveni vytvořit okruh ExpressRoute.   
+Nyní jste připraveni vytvořit okruh ExpressRoute.
 
 ### <a name="3-create-an-expressroute-circuit"></a>3. Vytvoření okruhu ExpressRoute
 Pokud ještě nemáte skupinu prostředků, můžete musí vytvořit před vytvořením váš okruh ExpressRoute. Je to tak, že spustíte následující příkaz:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
+New-AzResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
-
 
 Následující příklad ukazuje, jak vytvořit okruh ExpressRoute prostřednictvím Equinix 200 MB/s v Silicon Valley. Pokud používáte jiného poskytovatele a jiné nastavení, dosaďte tyto informace při podat žádost. Požádat o nový klíč služby použijte následující příklad:
 
 ```azurepowershell-interactive
-New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
 ```
 
 Ujistěte se, že jste zadali správnou úroveň skladové položky a skladová položka rodina:
@@ -99,15 +84,15 @@ Ujistěte se, že jste zadali správnou úroveň skladové položky a skladová 
 Odpověď obsahuje klíč služby. Podrobný popis všech parametrů můžete získat spuštěním následujícího příkazu:
 
 ```azurepowershell-interactive
-get-help New-AzureRmExpressRouteCircuit -detailed
+get-help New-AzExpressRouteCircuit -detailed
 ```
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Vypsat všechny okruhy ExpressRoute
-Pokud chcete získat seznam všechny okruhy ExpressRoute, které jste vytvořili, spusťte **Get-AzureRmExpressRouteCircuit** příkaz:
+Pokud chcete získat seznam všechny okruhy ExpressRoute, které jste vytvořili, spusťte **Get-AzExpressRouteCircuit** příkaz:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 Odpověď bude vypadat podobně jako v následujícím příkladu:
@@ -134,10 +119,10 @@ Odpověď bude vypadat podobně jako v následujícím příkladu:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-Tyto informace kdykoli můžete načíst pomocí `Get-AzureRmExpressRouteCircuit` rutiny. Volání bez parametrů jsou uvedeny všechny okruhy. Klíč služby je uveden v *klíč ServiceKey* pole:
+Tyto informace kdykoli můžete načíst pomocí `Get-AzExpressRouteCircuit` rutiny. Volání bez parametrů jsou uvedeny všechny okruhy. Klíč služby je uveden v *klíč ServiceKey* pole:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -166,12 +151,6 @@ Odpověď bude vypadat podobně jako v následujícím příkladu:
     Peerings                         : []
 
 
-Podrobný popis všech parametrů můžete získat spuštěním následujícího příkazu:
-
-```azurepowershell-interactive
-get-help Get-AzureRmExpressRouteCircuit -detailed
-```
-
 ### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Poslat klíči služby svého poskytovatele připojení pro zřizování
 *Serviceproviderprovisioningstate vzájemného propojení* poskytuje informace o aktuálním stavu zřizování na straně poskytovatele služeb. Stavu poskytuje stav na straně Microsoftu. Další informace o zřizování stavy okruhu najdete v tématu [pracovních postupů](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
@@ -196,7 +175,7 @@ Abyste mohli použít okruhu ExpressRoute musí být v následujícím stavu:
 Kontroluje se stav a stav okruhu klíč vám umožňuje vědět, kdy váš poskytovatel povolil váš okruh. Po dokončení konfigurace okruh, *serviceproviderprovisioningstate vzájemného propojení* se zobrazí jako *zřízená*, jak je znázorněno v následujícím příkladu:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -236,10 +215,10 @@ Podrobné pokyny najdete v tématu [konfigurace směrování pro okruh ExpressRo
 V dalším kroku propojení virtuální sítě pro váš okruh ExpressRoute. Použití [propojení virtuálních sítí s okruhy ExpressRoute](expressroute-howto-linkvnet-arm.md) článek při práci s modelem nasazení Resource Manager.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Při získávání stavu okruhu ExpressRoute
-Tyto informace kdykoli můžete načíst pomocí **Get-AzureRmExpressRouteCircuit** rutiny. Volání bez parametrů jsou uvedeny všechny okruhy.
+Tyto informace kdykoli můžete načíst pomocí **Get-AzExpressRouteCircuit** rutiny. Volání bez parametrů jsou uvedeny všechny okruhy.
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -271,7 +250,7 @@ Odpověď bude podobná jako v následujícím příkladu:
 Název skupiny prostředků a názvu okruhu předá jako parametr volání, můžete získat informace o konkrétní okruh ExpressRoute:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -322,12 +301,12 @@ Další informace o omezení a omezení, najdete v článku [ExpressRoute – ne
 Doplněk ExpressRoute premium pro existující okruh můžete povolit pomocí následujícího fragmentu kódu Powershellu:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Premium"
 $ckt.sku.Name = "Premium_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 Okruh teď má funkce doplněk ExpressRoute premium povolené. Začneme, jakmile příkaz úspěšně spuštěn fakturace pro funkci doplněk premium.
@@ -347,12 +326,12 @@ Všimněte si následujících informací:
 Doplněk ExpressRoute premium pro existující okruh můžete zakázat pomocí následující rutiny Powershellu:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Standard"
 $ckt.sku.Name = "Standard_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Chcete-li aktualizovat šířku pásma okruhu ExpressRoute
@@ -367,11 +346,11 @@ Pro možnosti podporované šířky pásma pro vašeho poskytovatele, zkontroluj
 Až se rozhodnete, jaké velikosti budete potřebovat, použijte následující příkaz pro změnu velikosti okruhů:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
@@ -381,12 +360,12 @@ Váš okruh bude mít velikost na straně Microsoftu. Potom musí kontaktovat sv
 SKU okruhu ExpressRoute můžete změnit pomocí následujícího fragmentu kódu Powershellu:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Family = "UnlimitedData"
 $ckt.sku.Name = "Premium_UnlimitedData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Řízení přístupu k classic a Resource Manageru prostředí
@@ -402,7 +381,7 @@ Všimněte si následujících informací:
 Váš okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu:
 
 ```azurepowershell-interactive
-Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
+Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1e61ef59bba56a7cc7271c3b42f4d7986c59c004
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33dfbe70d75335eca79d32807407b97e32c2dbbf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337771"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440858"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Získání přehledů image pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -374,7 +374,7 @@ Odpověď ukazuje rozpoznaný jednu entitu.
 
 ## <a name="finding-visually-similar-products"></a>Hledání vizuálně podobné produkty  
 
-Chcete-li najít Image, které obsahují produkty, které jsou vizuálně podobné produkty v původní bitové kopie, nastavte [modueles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarProducts dotazu.  
+Chcete-li najít Image, které obsahují produkty, které jsou vizuálně podobné produkty v původní bitové kopie, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarProducts dotazu.  
 
 Následující požadavek ukazuje, jak získat Image vizuálně podobných produktů. Požadavek používá [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) dotazu parametr k identifikaci původní obrázek, který byl vrácen do předchozí žádosti. Pokud chcete zlepšit relevanci, by měl obsahovat řetězec dotazu.  
 
