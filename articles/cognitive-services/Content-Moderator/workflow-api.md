@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56b3bffc7aca1ace4dfae78cdcd4394daae9360e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0a13d86afe3d395cb34f592b03c1eb9daa18076b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872790"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454847"
 ---
 # <a name="automate-moderation-reviews-with-workflows"></a>Automatizace kontroly moderování s pracovními postupy
 
@@ -243,4 +243,4 @@ Zjistěte, jak vytvářet vlastní pracovní postupy, přečtěte si [přečtět
 
 Testovací verze [pracovního postupu rozhraní API konzoly](try-review-api-job.md) a používat rozhraní REST API ukázky kódu. 
 
-Nakonec použijte váš vlastní pracovní postupy s **úlohy** operace jako shon v [rozhraní API pro úlohu konzoly](try-review-api-job.md) a [rychlý úvod k .NET úlohy](moderation-jobs-quickstart-dotnet.md).
+Nakonec použijte váš vlastní pracovní postupy s **úlohy** operace, jak je znázorněno v [rozhraní API pro úlohu konzoly](try-review-api-job.md) a [rychlý úvod k .NET úlohy](moderation-jobs-quickstart-dotnet.md).

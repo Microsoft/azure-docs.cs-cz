@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 08009ca7f9faaa75e593670c22cf864c12236e8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413417"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450275"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Potíží s nasazením Resource Manageru s vytvářením nového virtuálního počítače Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -43,7 +43,7 @@ Proces řešení potíží, shromažďování protokolů aktivit k identifikaci 
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** Pokud operační systém Linux zobecněn a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Linux specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
+**ACOVNÍ ADRESÁŘ:** Pokud je operační systém Linux zobecněn, a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Linux specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
 
 **Chyby nahrávání:**
 
@@ -53,7 +53,7 @@ Proces řešení potíží, shromažďování protokolů aktivit k identifikaci 
 
 **Řešení:**
 
-Chcete-li oba tyto chyby vyřešit, nahrajte původní virtuální pevný disk, k dispozici v místním prostředí, stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte provést – zrušení zřízení nejprve.
+Chcete-li oba tyto chyby vyřešit, nahrajte původní virtuální pevný disk, k dispozici v místním prostředí stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte provést – zrušení zřízení nejprve.
 
 **Zachycení chyb:**
 
@@ -68,7 +68,7 @@ Chcete-li oba tyto chyby vyřešit, odstraňte aktuální image na portálu, a [
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: Vlastní / galerie a image z marketplace; došlo k chybě přidělení
 Tato chyba nastane v situacích, když je připnutá novou žádost o virtuální počítač do clusteru, který nemůže zajišťovat podporu žádá velikost virtuálního počítače, nebo nemá žádné dostupné volné místo tak, aby vyhovovaly žádosti.
 
-**1. příčina:** clusteru nepodporuje požadovanou velikost virtuálního počítače.
+**1. příčina:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
 
 **Řešení 1:**
 
@@ -79,7 +79,7 @@ Tato chyba nastane v situacích, když je připnutá novou žádost o virtuáln�
   * Po zastavení všech virtuálních počítačů, vytvoření nového virtuálního počítače v požadovanou velikost.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Start**.
 
-**2. příčina:** clusteru nemá žádné volné prostředky.
+**2. příčina:** Cluster nemá žádné volné prostředky.
 
 **Řešení 2:**
 

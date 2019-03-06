@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: yegu
-ms.openlocfilehash: e5e60e3370cc813685403cc979e6ef8dc043b7ac
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 383ea07005d7dae47cd0ef1da8a4a57d8b20d613
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233264"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435809"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Konfigurace geografické replikace pro Azure Cache pro Redis
 
@@ -175,7 +175,7 @@ Obecně se doporučuje pro mezipaměť existovat ve stejné oblasti Azure jako a
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Jak funguje přebírání služeb při selhání sekundární propojené mezipaměti
 
-V počáteční verzi geografickou replikaci mezipaměti Azure Redis nepodporuje automatické převzetí služeb při selhání v různých oblastech Azure. Geografická replikace se používá především na scénář zotavení po havárii. Ve scénáři zotavení distater by měl zákazníkům otevřete celé aplikace zásobníku v zálohování oblasti koordinované, místo aby jednotlivé součásti aplikace při rozhodování, kdy chcete přepnout na jejich zálohy na své vlastní. To je obzvláště důležité pro Redis. Jednou z klíčových výhod Redis je, že je velmi nízkou latencí úložiště. Pokud Redis používaný aplikací k převezme služby při selhání do jiné oblasti Azure, ale nikoli výpočetní vrstvě, doby odezvy přidání by měla znatelnému dopadu na výkon. Z tohoto důvodu rádi bychom, aby selhání Redis přes automaticky z důvodu problémů s dostupností přechodné.
+V počáteční verzi geografickou replikaci mezipaměti Azure Redis nepodporuje automatické převzetí služeb při selhání v různých oblastech Azure. Geografická replikace se používá především na scénář zotavení po havárii. Ve scénáři zotavení po havárii by měl zákazníkům otevřete celé aplikace zásobníku v zálohování oblasti koordinované, místo aby jednotlivé součásti aplikace při rozhodování, kdy chcete přepnout na jejich zálohy na své vlastní. To je obzvláště důležité pro Redis. Jednou z klíčových výhod Redis je, že je velmi nízkou latencí úložiště. Pokud Redis používaný aplikací k převezme služby při selhání do jiné oblasti Azure, ale nikoli výpočetní vrstvě, doby odezvy přidání by měla znatelnému dopadu na výkon. Z tohoto důvodu rádi bychom, aby selhání Redis přes automaticky z důvodu problémů s dostupností přechodné.
 
 V současné době k zahájení převzetí služeb při selhání, musíte odebrat odkaz geografické replikace na portálu Azure portal a potom změňte koncový bod připojení klienta Redis z primární propojené mezipaměti na sekundární mezipaměti (dříve propojené). Pokud nejsou přidruženy k dvě mezipamětí, repliky opět regulární mezipaměti pro čtení i zápis a přijímá požadavky od klientů Redis přímo.
 

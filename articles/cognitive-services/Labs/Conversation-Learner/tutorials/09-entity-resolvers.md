@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ebe555bfd7b34efd87d400d786049964665c76e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209142"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451055"
 ---
 # <a name="entity-resolvers"></a>Překladače entity
 
@@ -80,7 +80,7 @@ Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 8. Označte taky text "Neděle příští týden" jako "return"
 9. Klikněte na tlačítko "Skóre akce".
     - Všimněte si, jak podokno "Paměti" obsahuje kalendářní data odeslání a vraťte se.
-    - Najeďte myší každé z nich a sledujte, jak entity, které jsou objekty datum, které jasně zachycovat skutečné calandar datum na rozdíl od "Neděle" nebo "zítřejší den".
+    - Najeďte myší každé z nich a sledujte, jak entity, které jsou objekty datum, které jasně zachytit skutečný kalendářní datum na rozdíl od "Neděle" nebo "zítřejší den".
 10. Vyberte, "opouštíte na..." Odpovědi robotů.
 11. Klikněte na tlačítko "Save".
 

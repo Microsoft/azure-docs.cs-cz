@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 45a391f45d11d968818bafc97a705411a133b273
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463391"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57430845"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Květen 2018 
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v květnu 2018. 
@@ -26,7 +26,7 @@ Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje
 Zobrazit [Backendových cloudové analýzy s využitím Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) oznámení na blogu od Rohanem Kumarem, Korporátní viceprezident, Azure Data.
 
 ## <a name="auto-statistics"></a>Automatické statistiky
-Statistiky jsou důležité pro optimalizaci generování plánu dotazu. v moderním náklady na základě nástroje jako je například modul ve službě SQL Data Warehouse. Všechny dotazy znám předem, určení, jaké statistiky objekty je potřeba vytvořit při dosažitelný úloh. Však při systému je ad-hoc a náhodné dotazy, které je typický pro úlohy v datovém skladu dat, správci systému mohou je velmi obtížné odhadnout, co statistiky je třeba vytvořit vedoucí k plánům spuštění dotazů potenciálně neoptimální a delší dobu odezvy na dotazy. Jedním ze způsobů ke zmírnění tohoto problému je předem vytvářet objekty statistiku pro všechny sloupce tabulky. Tento proces však dodává s penále jako objekty statistiky třeba udržovat během procesu načítání, což způsobí delší dobu načítání tabulky.
+Statistiky jsou důležité pro optimalizaci generování plánu dotazu. v moderním náklady na základě nástroje jako je například modul ve službě SQL Data Warehouse. Všechny dotazy znám předem, určení, jaké statistiky objekty je potřeba vytvořit při dosažitelný úloh. Však při systému se potýkají s ad hoc a náhodné dotazy, které je typický pro úlohy v datovém skladu dat, správci systému může usilovat o to předpovědět, jaké statistické údaje potřeba vytvořit úvodní plánům spuštění potenciálně neoptimální dotazu a delší dobu pomalejší doby odezvy. Jedním ze způsobů ke zmírnění tohoto problému je předem vytvářet objekty statistiku pro všechny sloupce tabulky. Tento proces však dodává s penále jako objekty statistiky třeba udržovat během procesu načítání, což způsobí delší dobu načítání tabulky.
 
 SQL Data Warehouse teď podporuje automatické vytváření objektů statistiky poskytuje větší flexibilitu, produktivitu a snadnost použití pro správci systému a vývojáři přitom zajistit, že systém dál nabízí plánům spuštění kvality a nejlepší doby odezvy.
 

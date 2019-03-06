@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: d0f9002da3efd19625928a1e1f58d66f468c748f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c2d9e83b28ac18f08ca67e9c4f675b1fe9d5d17c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240673"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431780"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -70,7 +70,7 @@ Sentinelu Azure podporuje následující metody kolekce dat:
     
 ## Možnosti připojení agenta<a name="agent-options"></a>
 
-Připojení externích zařízení k Azure Sentinelu, musí být agent nasazený na vyhrazený počítač (VM nebo v místním prostředí) mohly podporovat komunikaci mezi zařízením a Azure Sentinelu. Deploly agenta můžete automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
+Připojení externích zařízení k Azure Sentinelu, musí být agent nasazený na vyhrazený počítač (VM nebo v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Azure Sentinelu. Deploly agenta můžete automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
 
 
 ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ac36502a67f9deddf14b5eeae64df6f799d25e97
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250811"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446074"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)
 
@@ -83,7 +83,7 @@ Následující kroky ukazují, jak vytvořit frontu:
     }
     ```
 
-1. V rámci **CreateQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **CreateQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -164,7 +164,7 @@ Jakmile [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy do t
     }
     ```
  
-1. V rámci **AddMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **AddMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -253,7 +253,7 @@ Tato část ukazuje, jak prohlížet zprávy ve frontě (první zprávu přečí
     }
     ```
  
-1. V rámci **PeekMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **PeekMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -337,7 +337,7 @@ V této části se dozvíte, jak číst a odebere zprávu z fronty.
     }
     ```
  
-1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -428,7 +428,7 @@ Tato část ukazuje, jak získat délku fronty (počet zpráv).
     }
     ```
  
-1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -515,7 +515,7 @@ Tato část ukazuje, jak se odstranění fronty.
     }
     ```
  
-1. V rámci **DeleteQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **DeleteQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 59bfc13053a33b8f29f09a9ab93a108e746ea012
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188490"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431151"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
 
@@ -36,7 +36,7 @@ Nelze odstranit tenanta v Azure AD, dokud nebude úspěšný několik kontrol. T
 
 ## <a name="delete-an-azure-ad-tenant"></a>Odstranit tenanta služby Azure AD
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce pro tenanta.
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má oprávnění globálního správce pro tenanta.
 
 2. Vyberte **Azure Active Directory**.
 

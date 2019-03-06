@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094198"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405860"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu site-to-site přes partnerský vztah ExpressRoute Microsoftu
 
@@ -23,6 +23,8 @@ Tento článek vám pomůže nakonfigurovat zabezpečené šifrovaná připojen�
 >Při nastavování VPN typu site-to-site přes Microsoft partnerský vztah, bude vám účtována VPN gateway a výchozí přenos dat sítě VPN. Další informace najdete v tématu [ceny služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="architecture"></a>Architektura
 
@@ -89,7 +91,7 @@ Tento příklad používá příkaz Cisco IOS-XE. V tomto příkladu virtuální
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-Následující částečný výstup ukazuje, že byly 68 předpony přijaté od souseda *.243.229.34 s 12076 ASN (MSEE):
+Následující částečný výstup ukazuje, že byly 68 předpony přijaté od souseda \*.243.229.34 s 12076 ASN (MSEE):
 
 ```
 ...
@@ -107,7 +109,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Pokud chcete potvrdit, že vám posíláme, správnou sadu předpon, můžete mezi ověřit. Následující výstup příkazového prostředí Azure PowerShell seznam předpony inzerované prostřednictvím Microsoft partnerský vztah pro každou službu a pro každou oblast Azure:
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 
 ## <a name="vpngateway"></a>3. Konfigurace brány VPN a tunelových propojení IPsec
@@ -482,7 +484,7 @@ Konfigurace brány firewall a filtrování podle vašich požadavků.
 Stav tunelových propojení IPsec dá ověřit ve službě Azure VPN gateway pomocí příkazů prostředí Powershell:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
 ```
 
 Příklad výstupu:
@@ -496,7 +498,7 @@ IngressBytesTransferred : 10538211
 Pokud chcete zkontrolovat stav tunely na instance brány Azure VPN nezávisle na sobě, použijte následující příklad:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
 ```
 
 Příklad výstupu:
@@ -618,7 +620,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 Ve službě Azure VPN gateway ověřte stav partnerského uzlu protokolu BGP:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
+Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
 ```
 
 Příklad výstupu:
@@ -634,7 +636,7 @@ Příklad výstupu:
 Pokud chcete ověřit seznam přijatých prostřednictvím eBGP ze sítě VPN koncentrátor místní předpony sítě, můžete filtrovat podle atributu "Zdroj":
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
+Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
 Ukázkový výstup je číslo ASN 65010 BGP číslo autonomního systému v síti VPN v místním.
@@ -649,7 +651,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 Pokud chcete zobrazit seznam Inzerovat trasy:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
+Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
 ```
 
 Příklad výstupu:

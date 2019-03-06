@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453048"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432103"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -42,12 +42,11 @@ Můžete analýze obrázků můžete rozpoznat a poskytují přehled o jejich vi
 |**[Vytvoření miniatury](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje vysoce kvalitní miniaturu a poté analyzuje objekty v obrázku určit *oblast zájmu*. Počítačové zpracování obrazu potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
 |**[Získat oblasti zájmu](concept-generating-thumbnails.md#area-of-interest)**|Analyzovat obsah tohoto obrázku, který má vrátit souřadnice *oblast zájmu*. To je stejné funkce, která se používá k vytvoření miniatury, ale místo oříznutí obrázku, pro počítačové zpracování obrazu Vrátí souřadnice ohraničujícího pole oblasti, takže původní obrázek podle potřeby můžete upravit volající aplikace.|
 
-
 ## <a name="extract-text-from-images"></a>Rozbalte text z obrázků
 
-Můžete použít pro počítačové zpracování obrazu k [extrahovat text pomocí optické rozpoznávání znaků (OCR)](concept-extracting-text-ocr.md) z bitové kopie do datového proudu Strojově čitelný znaků. V případě potřeby OCR opravuje otočení rozpoznaný text a poskytuje souřadnice rámec jednotlivých slov. OCR podporuje 25 jazycích a jazyk textové rozpoznaných se detekuje automaticky.
+Můžete použít pro počítačové zpracování obrazu k extrakci textu z bitové kopie do aplikace pomocí datového proudu Strojově čitelný znak [optické rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). V případě potřeby OCR opravuje otočení rozpoznaný text a poskytuje souřadnice rámec jednotlivých slov. OCR podporuje 25 jazycích a jazyk textové rozpoznaných se detekuje automaticky.
 
-Můžete také [rozpoznat tištěné a rukou psaný text](concept-recognizing-text.md) v obraze. Počítačové zpracování obrazu dokáže rozpoznat a extrahovat tištěný i rukou psaný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například účtenky, plakáty, vizitky, dopisy a tabule. V současné době rozpoznávání tištěné a rukou psaný text je ve verzi preview a jediný podporovaný jazyk je angličtina. 
+Můžete také použít [rozhraní API pro čtení](concept-recognizing-text.md#read-api) extrahovat tištěné a rukou psaný text z obrázků a textu dokumentů. Rozhraní API pro čtení používá aktualizovaný modely a funguje pro různé objekty s různými povrchy a pozadími, jako je potvrzení, plakáty, vizitek, písmena samolepicí bločky nebo Tabule. V současné době ve verzi preview je rozhraní API pro čtení a jediný podporovaný jazyk je angličtina.
 
 ## <a name="moderate-content-in-images"></a>Moderování obsahu v obrázcích
 

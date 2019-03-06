@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 727a503a2fd942e6fbef9009c760a39f90828d2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020145"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433123"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure SQL Data Warehouse pomocí služby Data Factory v oblasti 15 minut
 > [!NOTE]
@@ -199,7 +199,7 @@ Tato část ukazuje, jak na cílovém serveru nakonfigurovat: `lineitem` tabulky
 
     Můžete zobrazit podrobnosti o spuštění kopii **Průzkumníku okna aktivity** v pravém panelu, jako je objem dat ze zdroje čtení a zápisu do cílové, doba trvání a průměrná propustnost pro spuštění.
 
-    Jak je vidět v následujícím snímku obrazovky kopírování 1 TB z Azure Blob Storage do SQL Data Warehouse trvalo 14 minut, efektivně dosažení 1.22 propustností GB/s.
+    Jak je vidět na následujícím snímku obrazovky kopírování 1 TB z Azure Blob Storage do SQL Data Warehouse trvalo 14 minut, efektivně dosažení 1.22 propustností GB/s.
 
     ![Průvodce kopírováním – dialogové okno bylo úspěšné.](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

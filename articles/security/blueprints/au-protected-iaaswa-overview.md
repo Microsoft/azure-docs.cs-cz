@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: b69d49df634d3f73a04485aebd507dee567d8061
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3c82a88ea15b52672f9bed428e2e7af40a65309c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241558"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446414"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – IaaS webové aplikace pro Austrálii chráněné
 
@@ -98,7 +98,7 @@ Azure šifruje veškerá komunikace do a z datových center Azure ve výchozím 
 
 Pro chráněná data přenášená z sítě vlastněné zákazníkem architektura používá na Internetu nebo ExpressRoute s bránou sítě VPN s protokolem IPSEC nakonfigurované.
 
-Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes HTTPS využívání protokolu TLS 1.2.
+Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes HTTPS pomocí protokolu TLS 1.2.
 
 ### <a name="data-at-rest"></a>Neaktivní uložená data
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
@@ -172,7 +172,7 @@ Služby Azure výrazně protokolu systému a aktivity uživatelů, jakož i stav
 - **Protokoly aktivit**: [Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují přehled o operace prováděné s prostředky v rámci předplatného. Protokoly aktivit, vám pomůže určit operace iniciátoru čas výskytu a stav.
 - **Diagnostické protokoly**: [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) zahrnout všechny protokoly, protože ho vygeneroval každý prostředek. Tyto protokoly patří protokoly událostí systému Windows, protokoly služby Azure Storage, protokoly auditu služby Key Vault a protokolů Application Gateway přístup a brány firewall. Všechny diagnostické protokoly zápis do účtu centralizovaný a šifrovaného úložiště Azure pro archivaci. Uchovávání je uživatelem konfigurovatelné, až do 730 dnů pro splnění požadavků na uchovávání specifické pro organizaci.
 
-**Protokoly Azure monitoru**: Tyto protokoly jsou konsolidovány do [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicího panelu. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožní všechna data k analýze společně bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center se integruje s protokoly Azure Monitor umožňuje zákazníkům používat Kusto dotazy pro přístup k datům událostí zabezpečení a to v kombinaci s daty z jiných služeb.
+**Protokoly Azure monitoru**: Tyto protokoly jsou konsolidovány do [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/) pro zpracování, ukládání a vytváření sestav řídicího panelu. Po shromáždění se data organizují do samostatných tabulek pro jednotlivé datové typy, což umožňuje společnou analýzu všech dat bez ohledu na jejich původní zdroj. Kromě toho Azure Security Center se integruje s protokoly Azure Monitor umožňuje zákazníkům používat Kusto dotazy pro přístup k datům událostí zabezpečení a to v kombinaci s daty z jiných služeb.
 
 Následující Azure [řešení monitorování](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) jsou zahrnuty jako součást této architektury:
 -   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Kontrola stavu služby Active Directory řešení posuzuje rizika a stav prostředí serveru v pravidelných intervalech a poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury.

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182013"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407812"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack integrované systémy modely připojení
 Pokud máte zájem o zakoupení systémech pro Azure Stack integrované, musíte pochopit [důležité informace o integraci několika datacenter](azure-stack-datacenter-integration.md) pro nasazení Azure Stack určit, jak systém, se vejde do vašeho datového centra. Kromě toho bude nutné se rozhodnout, jak budou integrovat Azure Stack v hybridním cloudovém prostředí. Tento článek obsahuje přehled Tato hlavní rozhodnutí, včetně připojení k Azure, úložiště identit a fakturační model rozhodnutí.
@@ -38,12 +38,14 @@ Můžete nasadit Azure Stack buď připojené k Internetu (a do Azure) nebo odpo
 
 
 |Možnosti|Připojení k Azure|Odpojení od Azure|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![Podporováno](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Podporováno](media/azure-stack-connection-models/check.png)|![Podporováno](media/azure-stack-connection-models/check.png)|
 |Účtování podle využití|![Podporováno](media/azure-stack-connection-models/check.png)| |
 |Účtování podle kapacity|![Podporováno](media/azure-stack-connection-models/check.png)|![Podporováno](media/azure-stack-connection-models/check.png)|
-|Stáhnout balíčky aktualizací přímo do služby Azure Stack|![Podporováno](media/azure-stack-connection-models/check.png)|  |
+|Licencování| Smlouvy Enterprise nebo poskytovatele Cloud Solution Provider | Smlouva Enterprise |
+|Opravy a aktualizace|Balíček aktualizací můžete stáhnout přímo z Internetu do služby Azure Stack |  Požaduje se<br><br>Také vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení |
+| Registrace | Automatizované | Požaduje se<br><br>Také vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení |
 
 Poté, co jste se rozhodli na model Azure připojení budou používat při nasazení Azure Stack, závislé na připojení a další rozhodnutí třeba identity úložiště a fakturace metodu. 
 

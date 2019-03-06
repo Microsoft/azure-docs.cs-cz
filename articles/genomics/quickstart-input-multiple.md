@@ -1,27 +1,27 @@
 ---
-title: 'Rychlý start: Odeslání pracovního postupu pomocí více vstupů – Microsoft Genomics'
+title: Odeslání pracovní postupu pomocí více vstupů – Microsoft Genomics
 titleSuffix: Azure
-description: Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data.
+description: Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud váš vstupní soubor je více souborů FASTQ nebo BAM soubory pocházejí ze stejného vzorku. Už máte nainstalovaného klienta msgen a úspěšně zpracovali ukázková data ve službě.
 services: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 6d7ce959c92755a1da9eca0b069ebb7a8269e0a6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730358"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450715"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Odeslání pracovního postupu pomocí více vstupů ze stejného vzorku
 
-Tento rychlý start předvádí, jak odeslat pracovní postup službě Microsoft Genomics, pokud váš vstupní soubor obsahuje několik souborů FASTQ nebo BAM **pocházejících ze stejného vzorku**. Pokud jste například v sekvenceru spustili **stejný vzorek** na více řádcích, sekvencer může pro každý řádek vypsat dvojici souborů FASTQ. Místo řetězení těchto souborů FASTQ před porovnáváním sekvencí a detekcí variant můžete všechny tyto vstupy odeslat přímo do klienta `msgen`. Výstupem z klienta `msgen` bude jedna **sada souborů**, včetně souborů .bam, .bai a .vcf. 
+Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud váš vstupní soubor je více souborů FASTQ nebo BAM **pocházející ze stejného vzorku**. Pokud jste například v sekvenceru spustili **stejný vzorek** na více řádcích, sekvencer může pro každý řádek vypsat dvojici souborů FASTQ. Místo řetězení těchto souborů FASTQ před porovnáváním sekvencí a detekcí variant můžete všechny tyto vstupy odeslat přímo do klienta `msgen`. Výstupem z klienta `msgen` bude jedna **sada souborů**, včetně souborů .bam, .bai a .vcf. 
 
 Mějte ale na paměti, že v jednom odeslání **nelze** kombinovat soubory FASTQ a BAM. Navíc **nelze** odeslat více souborů FASTQ nebo BAM od více jednotlivců. 
 
-Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup obsahující připravená ukázková data, jste připraveni pokračovat v tomto postupu. 
+Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí připravená ukázková data, budete chtít pokračovat v tomto článku. 
 
 
 ## <a name="multiple-bam-files"></a>Více souborů BAM
@@ -154,5 +154,5 @@ output_storage_account_container: outputs
 
 Odešlete soubor `config.txt` tímto voláním: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste nahráli několik souborů BAM spárovaných souborů FASTQ do úložiště Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen`. Další informace týkající se odesílání pracovních postupů a dalších příkazů, které můžete použít se službou Microsoft Genomics, najdete v [nejčastějších dotazech](frequently-asked-questions-genomics.md). 

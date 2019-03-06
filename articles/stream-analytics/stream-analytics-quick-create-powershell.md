@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 83bcdfa1de3968fbb6fdf427879d84f917610c42
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6feeaeb71818f355c0d91d5b49b4162a33682fa0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339891"
+ms.locfileid: "57408747"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure Powershellu
 
@@ -117,7 +117,7 @@ Následující blok kódu prostředí Azure PowerShell k vytvoření úložišt�
 
 2. Načtěte kontext účtu úložiště `$storageAccount.Context` určující účet úložiště, který chcete použít. Když pracujete s účtem úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
-3. Vytvoření kontejneru úložiště pomocí [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer).
+3. Vytvoření kontejneru úložiště pomocí [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer).
 
 4. Klíč úložiště, která je výstupem kódu zkopírujte a uložte tento klíč k vytvoření výstupu úlohy streamování později.
 

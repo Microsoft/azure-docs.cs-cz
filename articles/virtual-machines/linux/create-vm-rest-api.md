@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412185"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447842"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
 
@@ -65,8 +65,8 @@ Následující běžné definice slouží k sestavení hlavní část žádosti:
 
 | Název                       | Požaduje se | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | řetězec                                                                              | Umístění prostředku. |
-| jméno                       |          | řetězec                                                                              | Název virtuálního počítače. |
+| location                   | True     | string                                                                              | Umístění prostředku. |
+| jméno                       |          | string                                                                              | Název virtuálního počítače. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |
@@ -127,7 +127,7 @@ Text požadavku příkladu jsou uvedeny níže. Je nutné zadat název virtuáln
 }
 ```
 
-Úplný seznam dostupných definic v textu požadavku, najdete v části [virtuální počítače, vytvořit nebo aktualizovat definice těla požadavku](/rest/api/compute/virtualmachines/createorupdate#definitions).
+Úplný seznam dostupných definic v textu požadavku, najdete v části [virtuálních počítačů vytvořit nebo aktualizovat definice těla požadavku](/rest/api/compute/virtualmachines/createorupdate#definitions).
 
 ## <a name="sending-the-request"></a>Odesílání požadavku
 

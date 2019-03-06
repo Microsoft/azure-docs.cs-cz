@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bdffcdee87c0c5c9c878948797ac7c6be566c7ea
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a8be44201a2181ab252dfba501469719dd675ffa
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818846"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410158"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -44,7 +44,7 @@ Tato chyba může být způsobeno z následujících důvodů:
 
 1. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit správu aktualizací pro práci.
 2. Při použití něm Klonovaná image:
-   1. V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
+   1. V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates` Pokud se zobrazí. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
    2. Spusťte `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`.
    3. Spustit `Restart-Service HealthService` restartovat `HealthService`. Tím bude znovu vytvořit klíč a vygenerujte nový identifikátor UUID.
    4. Pokud to nepomůže, nástroj sysprep na obrázku první a instalace agenta MMA po jejich výskytu.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3a1edde2f51abbe60370eefee1b0c141f772c547
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815740"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405457"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -25,7 +25,7 @@ V tomto kurzu vytvoříte tři virtuální sítě:
 
 - **Připojení typu VNet-Hub** – brána firewall je v této virtuální síti.
 - **Virtuální sítě paprsků** -virtuální sítě paprsků představuje úlohy na Azure.
-- **Připojení typu VNet-Onprem** – místní síť představuje místní virtuální sítě. Skutečné nasazení se dá připojit pomocí připojení VPN nebo trasy. Pro zjednodušení tento kurz používá připojení brány VPN a Azure umístěný virtuální síť se používá k reprezentování v místní síti.
+- **Připojení typu VNet-Onprem** – místní síť představuje místní virtuální sítě. Skutečné nasazení se dá připojit pomocí připojení VPN nebo ExpressRoute. Pro zjednodušení tento kurz používá připojení brány VPN a Azure umístěný virtuální síť se používá k reprezentování v místní síti.
 
 ![Brána firewall v hybridní síti](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 

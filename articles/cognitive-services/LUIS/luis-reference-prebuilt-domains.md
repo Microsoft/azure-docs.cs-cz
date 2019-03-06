@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 964a0e0d4dd7ebae9f2881230fec921c3740ac39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e1e579233a5ad1af1ef8ee84019cd995959d3b2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340588"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433769"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -62,7 +62,7 @@ Doména kalendáře poskytuje záměry a entity související položky v kalend�
 | Přidat | Přidáte novou položku jednorázové do kalendáře.| Vytvořit událost s Lisa ve 14 v neděli <br/><br/>Chci naplánovat schůzku<br/><br/>Je potřeba nastavit na schůzce|
 | CheckAvailability | Zjistěte dostupnost pro událost nebo schůzku na uživatele nebo jinou osobu kalendáře.| Pokud je k dispozici podle Jima? <br/><br/>Zobrazit, když Karolína je k dispozici zítra<br/><br/>Je Chris zdarma v sobotu?|
 | Odstranění | Požadavek na odstranění položku kalendáře.| Zrušte Moje s Karolínu. <br/><br/>Odstranit Moje schůzky 9: 00<br/>|
-| Upravit | Požadavek na změnu existující schůzce nebo položku kalendáře.| Přesuňte Moje schůzky 9: 00 do 10: 00.<br/><br/>Chci aktualizovat mé plán.<br/><br/>S Ryanem Reschdule Moje schůzky.|
+| Upravit | Požadavek na změnu existující schůzce nebo položku kalendáře.| Přesuňte Moje schůzky 9: 00 do 10: 00.<br/><br/>Chci aktualizovat mé plán.<br/><br/>Plánovanou zkoušku přeplánujte Moje schůzky s Ryanem.|
 | Vyhledávání | Zobrazí týdenní kalendáře.| Hledání k zubaři Zkontrolujte událost. <br/><br/>Zobrazit kalendář<br/>|
 
 ### <a name="entities"></a>Entity
@@ -106,7 +106,7 @@ Doména komunikace poskytuje záměry a entity související s e-mailu, zpráv a
 | Potvrdit| Potvrďte akci.|Ano<br/>Dobře<br/>Dobře<br/>Potvrzuji, že chcete odeslat tento e-mail.<br/>|
 | Telefonické připojení| Telefonní hovor.|Jan volání<br/>Prosím vytáčení 311<br/>|
 | FindContact| Najdete kontaktní údaje podle názvu.|Najít číslo Karolínu<br/>Zobrazit číslo Karolínu<br/>|
-| FindSpeedDial| Najdete číslo rychlé vytáčení, telefonní číslo je nastavena na a naopak.|Co je volání čísla 5?<br/>Je nutné rychlost vytáčení sady?<br/>Co je počet volání pro 941-5555-333?|
+| FindSpeedDial| Najdete číslo volání rychlost, telefonní číslo je nastavena na a naopak.|Co je volání čísla 5?<br/>Je nutné rychlost vytáčení sady?<br/>Co je počet volání pro 941-5555-333?|
 | GetForwardingsStatus| Získejte aktuální stav předávání volání.|Moje předávání volání zapnutý?<br/>Řekněte mi, pokud je můj stav volání zapnutí nebo vypnutí<br/>|
 | GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Zpět|
 | Ignorovat| Ignorujte příchozí volání.|Není odpovědět<br/>Ignorovat volání|
@@ -252,7 +252,7 @@ Doména MovieTickets poskytuje záměry a entity související rezervace letenek
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Book | Nákup lístků video.|Rezervuje dvě lístky pro vedoucího Omar a dvě musketeers<br/>Budu chtít koupit lístek filmu dneška<br/>Chci, aby lístek pro 2. část Omar Captian další středa|
+| Book | Nákup lístků video.|Rezervuje dvě lístky pro vedoucího Omar a dvě musketeers<br/>Budu chtít koupit lístek filmu dneška<br/>Chci, aby lístek pro 2. část Omar vedoucího další středa|
 |GetShowTime| Získejte showtime videa.|Když se zobrazuje vedoucího Omar?|
 
 
@@ -412,7 +412,7 @@ Doména míst poskytuje příkazy pro zpracování dotazů souvisejících s jak
 |GetMenu|Požádejte o položky nabídky pro restauraci.|Nemá Zucca sloužit nic veganská?<br/>Co je v nabídce v Sizzler<br/>Zobrazit nabídku společnosti Applebee|
 |GetPhoneNumber| Požádejte o telefonní číslo na místě.|Co je telefonní číslo nejbližší Starbucks?<br/>Zadejte číslo pro Domů Depot| 
 |GetPriceRange| Vyzve k zadání rozsahu cena na místě.|Je Zucca levné?<br/>Ve středu je Cineplex poloviční cenu?<br/>Kolik stojí celý lobster večeře v Sizzler?|
-|GetReviews|Požádejte o kontroly na místě.|Zobrazit objektu pro vytváření Cheesecase revize<br/>Přečtěte si recenze Cineplex v Yelp|
+|GetReviews|Požádejte o kontroly na místě.|Zobrazit objektu pro vytváření Cheesecake revize<br/>Přečtěte si recenze Cineplex v Yelp|
 |GetRoute|Požádejte o pokyny na místo.|Jak vás Čtvereček Bellevue<br/>Zobrazit nejkratší způsob, jak 8. a 59th odsud<br/>Získat mě pokynů k certifikační Autoritě Horská oblast zobrazení|
 |GetStarRating|Požádejte o hodnocení hvězdičkami místa.|Jak Zucca hodnocením podle Yelp?<br/>Kolik hvězdiček prací francouzština máte?<br/>Je dobré aquarium v Monterrey?|
 |GetTransportationSchedule|Získáte plán Service bus pro místo.|Kdy je další Service bus k centru?<br/>Zobrazit sběrnice v okrese King County|

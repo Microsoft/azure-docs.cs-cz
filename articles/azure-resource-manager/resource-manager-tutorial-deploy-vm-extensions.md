@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a1df94c7157823a4d7dcdcf652b1c7c926f4dbba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492782"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406503"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Kurz: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru
 
@@ -108,7 +108,7 @@ Ke stávající šabloně s následujícím obsahem přidejte prostředek rozš�
 
 Další informace o této definici prostředku, najdete v článku [odkaz na rozšíření](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Tady je několik důležitých elementů:
 
-* **Název**: Rozšíření prostředků je prostředek podřízený objekt virtuálního počítače, musí mít název prefix názvu virtuálního počítače. Viz [Podřízené prostředky](./resource-manager-templates-resources.md#child-resources).
+* **Název**: Rozšíření prostředků je prostředek podřízený objekt virtuálního počítače, musí mít název prefix názvu virtuálního počítače. Viz [Podřízené prostředky](./resource-group-authoring-templates.md#child-resources).
 * **dependsOn**: Po vytvoření virtuálního počítače, vytvořte prostředek rozšíření.
 * **fileUris**: Umístění, kde jsou uloženy soubory skriptu. Pokud se rozhodnete nepoužívat zadané umístění, budete muset aktualizovat hodnoty.
 * **commandToExecute**: Tento příkaz spustí skript.  

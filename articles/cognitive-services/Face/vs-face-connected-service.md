@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: a8c3bc7a3a659809f1602ffae303f9bd26f2c35a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857779"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435222"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Připojení k rozhraní API pro rozpoznávání tváře služeb Cognitive Services pomocí připojených služeb v sadě Visual Studio
 
@@ -79,7 +79,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/). Klikněte pravým tlačítkem na jeden z obrázků, uložte ho na místní pevný disk a potom v Průzkumníku řešení klikněte pravým tlačítkem na složku images a volbou příkazu **Přidat** > **Existující položka** ho přidejte do projektu. V Průzkumníku řešení by měl projekt vypadat takto:
+1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/). Klikněte pravým tlačítkem na některou k imagí, uložit na místní pevný disk a potom v okně Průzkumník řešení, klikněte pravým tlačítkem na složku Obrázky a zvolte **přidat** > **existující položku** ho přidat do projektu. V Průzkumníku řešení by měl projekt vypadat takto:
  
    ![Složka images se souborem obrázku](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 

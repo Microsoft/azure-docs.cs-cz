@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7625eb383beef2e86cc8a977362db09329a6ea1b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f4e14435c2ccab98619bec57fef0e121e2df4403
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556709"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431601"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití Azure čas Series Insights ve verzi Preview
 
@@ -32,7 +32,7 @@ Tento dokument obsahuje přehled, které Azure čas Series Insights ve verzi Pre
 
 ## <a name="introduction"></a>Úvod
 
-Time Series Insights je nabídka platforma jako služba začátku do konce. Používá se k ingestování, zpracování, ukládání a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas. Time Series Insights je ideální pro ad-hoc zkoumání dat a provozní analýzy. Time Series Insights je služba jednoznačně rozšiřitelný, přizpůsobené, nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
+Time Series Insights je nabídka platforma jako služba začátku do konce. Používá se k ingestování, zpracování, ukládání a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas. Time Series Insights je ideální pro zkoumání dat ad hoc a provozní analýzy. Time Series Insights je služba jednoznačně rozšiřitelný, přizpůsobené, nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Zkoumání dat a vizuální detekce anomálií
 
