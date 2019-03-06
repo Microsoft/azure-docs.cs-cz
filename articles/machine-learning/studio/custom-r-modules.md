@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 8115994d1e4ac116a410cfa69824dc800717ab6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9aebe878be97b489b460fff96001e2908cdb7b87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819230"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432375"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definování vlastních modulů R pro Azure Machine Learning Studio
 
@@ -123,7 +123,7 @@ Pravidla pro omezení znaků v prvcích modulu:
 * Obsah **popis** prvek nesmí být delší než 128 znaků.
 * Obsah **vlastníka** prvek nesmí být delší než 32 znaků.
 
-Může být deterministické výsledky modulu nebo nondeterministic.* * ve výchozím nastavení, všechny moduly jsou považovány za deterministický. To znamená, zadaný neměnné sady vstupní parametry a dat, modul by měl vrátit stejný eacRAND výsledky nebo functionh čas, ve kterém se spouští. Toto chování, Azure Machine Learning Studio zhodnotíte pouze moduly, které jsou označeny jako deterministické, pokud parametr nebo vstupní data se změnila. Vrací výsledky uložené v mezipaměti obsahuje také mnohem rychlejší spouštění experimentů.
+Může být deterministické výsledky modulu nebo nondeterministic.* * ve výchozím nastavení, všechny moduly jsou považovány za deterministický. To znamená, zadaný neměnné sady vstupní parametry a dat, modul by měl vrátit stejný eacRAND výsledky nebo funkce čas, ve kterém se spouští. Toto chování, Azure Machine Learning Studio zhodnotíte pouze moduly, které jsou označeny jako deterministické, pokud parametr nebo vstupní data se změnila. Vrací výsledky uložené v mezipaměti obsahuje také mnohem rychlejší spouštění experimentů.
 
 Jsou funkce, které jsou nedeterministické, jako je například RAND nebo funkci, která vrátí aktuální datum nebo čas. Pokud modul používá nedeterministická funkci, můžete určit, že modul je Nedeterministický nastavením nepovinný **isDeterministic** atribut **FALSE**. To zajistí, že modul se znovu spustí při každém spuštění experimentu, i v případě, že nedošlo ke změně modulu vstup a parametry. 
 

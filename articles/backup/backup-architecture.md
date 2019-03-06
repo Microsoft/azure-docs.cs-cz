@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4be483994bd7bc5bd97b1e59df230f66e9b4e24e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 034f7f6d8636ced748987c9b0e584790205c0083
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430342"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435299"
 ---
 # <a name="azure-backup-architecture"></a>Architektura služby Azure Backup
 
@@ -138,7 +138,7 @@ Všimněte si, že virtuální počítače Azure pro příkazy pro řízení pot
     - Agenta MARS využívá jenom zápisu systému Windows k zachycení snímku.
     - Agent nepoužívá žádné aplikace zapisovače VSS a proto nezachytí snímky konzistentní.
 3. Po pořízení snímek služby VSS, agenta MARS vytvoří virtuální pevný disk ve složce mezipaměti, který jste zadali při konfiguraci zálohování, a ukládá kontrolních součtů pro každé datové bloky. 
-4. Spouštět přírůstkové zálohování podle plánu, který jste zadali, není-li spustit zálohování ad hoc.
+4. Není-li spouštět ad hoc zálohování podle plánu, který zadáte, spouštět přírůstkové zálohování.
 5. V přírůstkové zálohy změněné soubory jsou identifikovány a je vytvořen nový virtuální pevný disk. Má komprimovaná a šifrovaná a odeslán do trezoru.
 6. Po dokončení přírůstkového zálohování, nový virtuální pevný disk je sloučen s virtuální disk VHD vytvořený po počáteční replikaci, poskytuje nejnovější stav má být použit pro porovnání pro probíhající zálohování. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: a61e78ff54cdc2a3db6c166686c2c51a19856a9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252300"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456206"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů BLOB stránky Azure
 
@@ -29,7 +29,7 @@ Pojďme se podívat do ní několik případů použití pro objekty BLOB strán
 
 První strany službám Microsoftu, jako je Azure Site Recovery, Azure Backup, stejně jako mnoho vývojáři třetích stran jste implementovali špičkové inovace pomocí rozhraní REST pro objekt blob stránky. Zde jsou některé jedinečné scénáře implementovat v Azure: 
 * Správa aplikace řízené přírůstkový snímek: Aplikace můžou využívat snímky objektů blob stránky a rozhraní REST API pro ukládání kontrolní body aplikace bez dalších nákladů na nákladné duplikaci dat. Azure Storage podporuje místních snímků pro objekty BLOB stránky, které nevyžadují celý objekt blob kopírování. Tyto veřejné snímku rozhraní API také umožňují přístup a kopírování rozdíly mezi snímky.
-* Migrace za provozu aplikace a data z místního cloudu: Kopírování dat v místním prostředí a pomocí REST API můžete zapisovat přímo do objektu blob stránky Azure, zatímco místního virtuálního počítače stále běží. Jakmile cíl zachytila, můžete rychle převzetí služeb při selhání virtuálního počítače Azure pomocí tato data. Tímto způsobem můžete migrovat virtuální počítače a virtuální disky z místního do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat tento virtuální počítač a výpadků potřebné pro převzetí služeb při selhání bude krátký (v minutách).
+* Migrace za provozu aplikací a dat z místního cloudu: Kopírování dat v místním prostředí a zapisovat přímo do objektu blob stránky Azure při v místním prostředí, které virtuální počítač zůstane spuštěný pomocí rozhraní REST API. Jakmile cíl zachytila, můžete rychle převzetí služeb při selhání virtuálního počítače Azure pomocí tato data. Tímto způsobem můžete migrovat virtuální počítače a virtuálních disků ze v místním prostředí do cloudu s minimálními výpadky, protože migrace dat probíhá na pozadí, zatímco budete nadále používat tento virtuální počítač a výpadků potřebné pro převzetí služeb při selhání bude krátký (v minutách).
 * [Na základě SAS](../common/storage-dotnet-shared-access-signature-part-1.md) sdílený přístup, která umožňuje scénáře, jako je několik čtenářů a jednoho zapisovače s podporou pro řízení souběžnosti.
 
 ## <a name="page-blob-features"></a>Funkce objektů blob stránky

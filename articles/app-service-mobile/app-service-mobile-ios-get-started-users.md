@@ -1,6 +1,6 @@
 ---
 title: Přidání ověřování v systému iOS pomocí Azure Mobile Apps
-description: Naučte se používat Azure Mobile Apps ověřovat uživatele vaší aplikace pro iOS prostřednictvím řady různých zprostředkovatelů identity, včetně AAD, Google, Facebook, Twitter a Microsoft.
+description: Zjistěte, jak používat Azure Mobile Apps k ověřování uživatelů vaší aplikace pro iOS prostřednictvím různých poskytovatelů identit, včetně AAD, Google, Facebook, Twitter a Microsoft.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: crdun
-ms.openlocfilehash: e0eeee05ebad2e8148752f988bbbc2f6a0d7c296
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592690"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445904"
 ---
-# <a name="add-authentication-to-your-ios-app"></a>Přidání ověřování do vaší aplikace pro iOS
+# <a name="add-authentication-to-your-ios-app"></a>Přidání ověřování do aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-V tomto kurzu přidáte ověřování [iOS rychlý start] projektu pomocí zprostředkovatele identity podporované. V tomto kurzu vychází z [iOS rychlý start] kurz, který je třeba nejprve provést.
+V tomto kurzu, přidat ověřování [Rychlý start pro iOS] projektu pomocí zprostředkovatele identity podporovaná. Tento kurz je založený na [Rychlý start pro iOS] kurzu, který je třeba nejprve provést.
 
-## <a name="register"></a>Registrace aplikace pro ověřování a nakonfigurovat App Service
+## <a name="register"></a>Registrace aplikace pro ověřování a konfigurace služby App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Přidání aplikace do adresy URL pro povolené externí přesměrování
+## <a name="redirecturl"></a>Přidání aplikace do adresy URL pro povolené externího přesměrování
 
-Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy URL pro vaši aplikaci.  To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování.  V tomto kurzu používáme schématu adresy URL _appname_ v průběhu.  Můžete však použít žádné schéma adresy URL, které zvolíte.  Musí být jedinečné pro mobilní aplikace.  Chcete povolit přesměrování na straně serveru tý:
+Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaši aplikaci.  To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování.  V tomto kurzu používáme schéma adresy URL _appname_ v průběhu.  Můžete ale použít jakékoli schéma adresy URL, kterou zvolíte.  Musí být jedinečné pro vaši mobilní aplikaci.  Pokud chcete povolit přesměrování na straně serveru th:
 
-1. V [portál Azure], vyberte svoji službu aplikace.
+1. V [Azure Portal], vyberte službu App Service.
 
-2. Klikněte **ověřování / autorizace** možnost nabídky.
+2. Klikněte na tlačítko **ověřování / autorizace** nabídky.
 
-3. Klikněte na tlačítko **Azure Active Directory** pod **zprostředkovatele ověřování** části.
+3. Klikněte na tlačítko **Azure Active Directory** pod **zprostředkovatelé ověřování** oddílu.
 
 4. Nastavte **režim správy** k **Upřesnit**.
 
-5. V **povoleno externí adres URL pro přesměrování**, zadejte `appname://easyauth.callback`.  _Appname_ v tento řetězec je schéma adresy URL pro mobilní aplikace.  Měl by splňovat specifikaci normální adresu URL pro určitý protokol (používejte písmena a čísla pouze a začněte s písmenem).  Měli byste si poznamenat řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
+5. V **povolené externí adresy URL pro přesměrování**, zadejte `appname://easyauth.callback`.  _Appname_ v tomto řetězci je schéma adresy URL pro vaši mobilní aplikaci.  Měla by odpovídat specifikaci normální adresu URL pro určitý protokol (použití písmena a čísla jenom a začíná písmenem).  By měl poznamenejte řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
 
 6. Klikněte na **OK**.
 
@@ -50,12 +50,12 @@ Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy U
 ## <a name="permissions"></a>Omezit oprávnění k ověření uživatelé
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výjimka, protože se aplikace pokusí o přístup k back-end jako neověřený uživatel, ale *TodoItem* tabulka nyní vyžaduje ověření.
+V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výjimka, protože se aplikace pokusí o přístup k back-end jako neověřený uživatel, ale *TodoItem* tabulka nyní vyžaduje ověřování.
 
-## <a name="add-authentication"></a>Přidejte ověřování do aplikace
-**Jazyka Objective-C**:
+## <a name="add-authentication"></a>Přidání ověřování do aplikace
+**Objective-C**:
 
-1. Na počítači Mac otevřete *QSTodoListViewController.m* v Xcode a přidejte následující metodu:
+1. Na počítači Mac otevřete *QSTodoListViewController.m* v prostředí Xcode a přidejte následující metodu:
 
     ```Objective-C
     - (void)loginAndGetData
@@ -77,9 +77,9 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, musíte [povolených domén Facebook] [ 1] ve vaší aplikaci.
+    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén] [ 1] ve vaší aplikaci.
 
-    Nahraďte **urlScheme** s jedinečným názvem pro vaši aplikaci.  UrlScheme by měla být stejná jako schéma adresy URL protokolu, který jste zadali v **povoleno externí adres URL pro přesměrování** pole na portálu Azure. UrlScheme je používán zpětné volání ověřování přepnout zpět do aplikace po dokončení žádosti o ověření.
+    Nahradit **urlScheme** s jedinečným názvem aplikace.  UrlScheme by měl být stejný jako schéma adresy URL protokolu, který jste zadali v **povolené externí adresy URL pro přesměrování** pole na webu Azure Portal. UrlScheme používá zpětné volání pro ověřování Pokud chcete přepnout zpět do aplikace po dokončení žádosti o ověření.
 
 2. Nahraďte `[self refresh]` v `viewDidLoad` v *QSTodoListViewController.m* následujícím kódem:
 
@@ -87,7 +87,7 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     [self loginAndGetData];
     ```
 
-3. Otevřete `QSAppDelegate.h` souboru a přidejte následující kód:
+3. Otevřít `QSAppDelegate.h` a přidejte následující kód:
 
     ```Objective-C
     #import "QSTodoService.h"
@@ -95,7 +95,7 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     @property (strong, nonatomic) QSTodoService *qsTodoService;
     ```
 
-4. Otevřete `QSAppDelegate.m` souboru a přidejte následující kód:
+4. Otevřít `QSAppDelegate.m` a přidejte následující kód:
 
     ```Objective-C
     - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -110,9 +110,9 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-   Přidejte tento kód přímo před při čtení řádku `#pragma mark - Core Data stack`.  Nahraďte _appname_ wih urlScheme hodnotu, která jste použili v kroku 1.
+   Přidejte tento kód bezprostředně před čtení řádku `#pragma mark - Core Data stack`.  Nahradit _appname_ urlScheme hodnotou, kterou jste použili v kroku 1.
 
-5. Otevřete `AppName-Info.plist` souboru (nahraďte AppName s názvem vaší aplikace) a přidejte následující kód:
+5. Otevřít `AppName-Info.plist` (nahrazení AppName s názvem vaší aplikace) a přidejte následující kód:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -128,15 +128,15 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     </array>
     ```
 
-    Tento kód by měl být umístěn uvnitř `<dict>` elementu.  Nahraďte _appname_ řetězec (v rámci pole pro **CFBundleURLSchemes**) s názvem aplikace, který jste zvolili v kroku 1.  Můžete provést také tyto změny v plist. editoru – kliknutím na tlačítko `AppName-Info.plist` souboru v XCode otevřete plist editor.
+    Tento kód by měl být umístěn uvnitř `<dict>` elementu.  Nahradit _appname_ řetězce (v rámci pole pro **CFBundleURLSchemes**) s názvem aplikace, kterou jste zvolili v kroku 1.  Můžete provést také tyto změny v souboru plist editor – kliknutím na `AppName-Info.plist` souborů v XCode otevřete plist editor.
 
-    Nahraďte `com.microsoft.azure.zumo` řetězec **CFBundleURLName** identifikátor sady vaší společnosti Apple.
+    Nahradit `com.microsoft.azure.zumo` řetězce pro **CFBundleURLName** s vaší společnosti Apple identifikátor sady prostředků.
 
-6. Stiskněte klávesu *spustit* a spusťte aplikaci a znovu přihlásili. Pokud jste se přihlásili, byste měli moct zobrazit seznam úkolů a provádět aktualizace.
+6. Stisknutím klávesy *spustit* spusťte aplikaci a pak se přihlásit. Pokud jste přihlášeni, je třeba zobrazit seznam úkolů a aktualizace.
 
-**Kód SWIFT**:
+**Swift**:
 
-1. Na počítači Mac otevřete *ToDoTableViewController.swift* v Xcode a přidejte následující metodu:
+1. Na počítači Mac otevřete *ToDoTableViewController.swift* v prostředí Xcode a přidejte následující metodu:
 
     ```swift
     func loginAndGetData() {
@@ -163,17 +163,17 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, musíte [povolených domén Facebook] [ 1] ve vaší aplikaci.
+    Změna *google* k *microsoftaccount*, *twitter*, *facebook*, nebo *windowsazureactivedirectory* Pokud nepoužíváte Google jako zprostředkovatele identity. Pokud používáte sítě Facebook, je nutné [seznamu povolených IP adres služby Facebook domén] [ 1] ve vaší aplikaci.
 
-    Nahraďte **urlScheme** s jedinečným názvem pro vaši aplikaci.  UrlScheme by měla být stejná jako schéma adresy URL protokolu, který jste zadali v **povoleno externí adres URL pro přesměrování** pole na portálu Azure. UrlScheme je používán zpětné volání ověřování přepnout zpět do aplikace po dokončení žádosti o ověření.
+    Nahradit **urlScheme** s jedinečným názvem aplikace.  UrlScheme by měl být stejný jako schéma adresy URL protokolu, který jste zadali v **povolené externí adresy URL pro přesměrování** pole na webu Azure Portal. UrlScheme používá zpětné volání pro ověřování Pokud chcete přepnout zpět do aplikace po dokončení žádosti o ověření.
 
-2. Odstranit řádky `self.refreshControl?.beginRefreshing()` a `self.onRefresh(self.refreshControl)` na konci `viewDidLoad()` v *ToDoTableViewController.swift*. Přidejte volání `loginAndGetData()` místo nich:
+2. Odebrat řádky `self.refreshControl?.beginRefreshing()` a `self.onRefresh(self.refreshControl)` na konci `viewDidLoad()` v *ToDoTableViewController.swift*. Přidejte volání do `loginAndGetData()` místo nich:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Otevřete `AppDelegate.swift` souboru a přidejte následující řádek do `AppDelegate` třídy:
+3. Otevřít `AppDelegate.swift` a přidejte následující řádek, který `AppDelegate` třídy:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -188,9 +188,9 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     }
     ```
 
-    Nahraďte _appname_ wih urlScheme hodnotu, která jste použili v kroku 1.
+    Nahradit _appname_ urlScheme hodnotou, kterou jste použili v kroku 1.
 
-4. Otevřete `AppName-Info.plist` souboru (nahraďte AppName s názvem vaší aplikace) a přidejte následující kód:
+4. Otevřít `AppName-Info.plist` (nahrazení AppName s názvem vaší aplikace) a přidejte následující kód:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -206,18 +206,18 @@ V Xcode, stiskněte klávesu **spustit** a spusťte aplikaci. Je vyvolána výji
     </array>
     ```
 
-    Tento kód by měl být umístěn uvnitř `<dict>` elementu.  Nahraďte _appname_ řetězec (v rámci pole pro **CFBundleURLSchemes**) s názvem aplikace, který jste zvolili v kroku 1.  Můžete provést také tyto změny v plist. editoru – kliknutím na tlačítko `AppName-Info.plist` souboru v XCode otevřete plist editor.
+    Tento kód by měl být umístěn uvnitř `<dict>` elementu.  Nahradit _appname_ řetězce (v rámci pole pro **CFBundleURLSchemes**) s názvem aplikace, kterou jste zvolili v kroku 1.  Můžete provést také tyto změny v souboru plist editor – kliknutím na `AppName-Info.plist` souborů v XCode otevřete plist editor.
 
-    Nahraďte `com.microsoft.azure.zumo` řetězec **CFBundleURLName** identifikátor sady vaší společnosti Apple.
+    Nahradit `com.microsoft.azure.zumo` řetězce pro **CFBundleURLName** s vaší společnosti Apple identifikátor sady prostředků.
 
-5. Stiskněte klávesu *spustit* a spusťte aplikaci a znovu přihlásili. Pokud jste se přihlásili, byste měli moct zobrazit seznam úkolů a provádět aktualizace.
+5. Stisknutím klávesy *spustit* spusťte aplikaci a pak se přihlásit. Pokud jste přihlášeni, je třeba zobrazit seznam úkolů a aktualizace.
 
-Ověřování služby App Service používá jablka Inter aplikace komunikace.  Další podrobnosti o této problematice naleznete [dokumentaci od společnosti Apple][2]
+Ověřování pomocí služby App Service používá jablka komunikaci mezi aplikacemi.  Další podrobnosti k tomuto tématu najdete [dokumentaci společnosti Apple][2]
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
-[iOS rychlý start]: app-service-mobile-ios-get-started.md
+[Rychlý start pro iOS]: app-service-mobile-ios-get-started.md
 
