@@ -76,6 +76,8 @@ items:
       href: search-limits-quotas-capacity.md
     - name: Přidělení oddílů a replik
       href: search-capacity-planning.md
+    - name: Doporučené postupy a strategie nasazení
+      href: search-performance-optimization.md
   - name: Zabezpečení
     items:
     - name: Přehled zabezpečení
@@ -228,8 +230,6 @@ items:
       href: search-manage.md
     - name: Správa PowerShellu
       href: search-manage-powershell.md
-    - name: Výkon a optimalizace
-      href: search-performance-optimization.md
   - name: Monitorování
     items:
     - name: Protokolování a monitorování aktivit
@@ -309,9 +309,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 10f61a434d509ab5dc6255ecf326a49a95380e97
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: ca754d1244a207fc4c18122e5624af218e6ef04f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213870"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404837"

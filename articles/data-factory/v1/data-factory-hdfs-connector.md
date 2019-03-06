@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e8af817c942a28cfd28d1b13303aebfcc10d31ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 45b3149c0d546be201412567041ab1c5a86036e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016042"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455968"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesun dat z místní HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,8 @@ Kopírování dat z HDFS do jakékoli podporovaného úložiště dat jímky. Se
 
 > [!NOTE]
 > Aktivita kopírování nedojde k odstranění zdrojového souboru, co se úspěšně zkopíruje do cíle. Pokud je potřeba odstranit zdrojový soubor po úspěšném kopírování, vytvoření vlastní aktivity a stejný soubor odstranit také pomocí aktivity v kanálu. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
 Služba data Factory podporuje připojení k místní HDFS pomocí brány správy dat. Zobrazit [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku se dozvíte o brána správy dat a podrobné pokyny o nastavení brány. Použití brány pro připojení k HDFS, i když je hostované ve Virtuálním počítači Azure IaaS.
@@ -70,8 +72,8 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 | authenticationType. |Anonymní, nebo Windows. <br><br> Použití **ověřování protokolem Kerberos** konektor HDFS najdete v tématu [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
 | uživatelské jméno |Ověřování uživatelského jména pro Windows. Pro ověřování protokolem Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování Windows. |Ano (pro ověřování systému Windows) |
-| Název brány |Název brány, který služba Data Factory měla použít pro připojení k HDFS. |Ano |
-| encryptedCredential |[Nové AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
+| gatewayName |Název brány, který služba Data Factory měla použít pro připojení k HDFS. |Ano |
+| encryptedCredential |[Nové AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
 
 ### <a name="using-anonymous-authentication"></a>Anonymní ověřování
 
@@ -349,8 +351,8 @@ Kanálu obsahujícího aktivitu kopírování, kterou Pokud chcete použít tyto
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Používat ověřování protokolem Kerberos pro konektor HDFS
 Existují dvě možnosti, jak nastavit v místním prostředí tak, aby používala ověřování protokolu Kerberos v konektoru HDFS. Můžete zvolit, že je lépe vyhovuje vašemu případu.
-* Možnost 1: [Připojte se k počítači brány ve sféře Kerberos](#kerberos-join-realm)
-* Možnost 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
+* Option 1: [Připojte se k počítači brány ve sféře Kerberos](#kerberos-join-realm)
+* Option 2: [Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>Možnost 1: Připojte se k počítači brány ve sféře Kerberos
 
@@ -382,7 +384,7 @@ Existují dvě možnosti, jak nastavit v místním prostředí tak, aby použív
 
 * Nakonfigurujte pomocí konektoru HDFS **ověřování Windows** společně s vaší hlavní název Kerberos a heslo pro připojení ke zdroji dat HDFS. Zkontrolujte [propojená služba HDFS vlastnosti](#linked-service-properties) části na podrobnosti o konfiguraci.
 
-### <a name="kerberos-mutual-trust"></a>Možnost 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
+### <a name="kerberos-mutual-trust"></a>Option 2: Povolit vzájemné důvěry mezi Windows doménu a sféru protokolu Kerberos
 
 #### <a name="requirement"></a>Požadavek:
 *   Počítači brány musí připojit k doméně Windows.

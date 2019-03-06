@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228959"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444629"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -114,7 +114,7 @@ Následující kroky ukazují, jak vytvořit tabulku:
     }
     ```
 
-1. V rámci **CreateTable** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **CreateTable** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -203,7 +203,7 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
     }
     ```
 
-1. V rámci **AddEntity** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **AddEntity** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -298,7 +298,7 @@ Kromě toho, že možnost [přidání entity do tabulky, jednoho po druhém](#ad
     }
     ```
 
-1. V rámci **AddEntities** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **AddEntities** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -418,7 +418,7 @@ Tato část ukazuje, jak získat jedné entity z tabulky pomocí klíč řádku 
     }
     ```
 
-1. V rámci **GetSingle** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **GetSingle** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -518,7 +518,7 @@ Jak je uvedeno v části [přidání entity do tabulky](#add-an-entity-to-a-tabl
     }
     ```
 
-1. V rámci **GetPartition** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **GetPartition** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -628,7 +628,7 @@ Tato část ukazuje, jak odstranit entity z tabulky.
     }
     ```
 
-1. V rámci **DeleteEntity** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
+1. V rámci **DeleteEntity** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure pomocí následujícího kódu: (Změnit  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(

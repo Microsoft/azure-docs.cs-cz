@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217981"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452704"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -62,7 +62,7 @@ Jsou podporovány následující podporované jádrech Ubuntu.
 
 Následující kroky pro instalaci operačního systému Ubuntu 16.04.2 64-bit.
 
-1.   Přejděte [odkaz ke stažení](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), zvolte nejbližší anddownload zrcadlení Image ISO se systémem Ubuntu 16.04.2 minimální 64-bit.
+1.   Přejděte [odkaz ke stažení](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), zvolte nejbližší zrcadlení a stáhnout soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit.
 Ponechat soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit do jednotky DVD a spuštění systému.
 
 1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
@@ -287,7 +287,6 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
 2. Poznamenejte si IP adresu konfiguračního serveru. Spusťte následující příkaz pro instalaci hlavního cílového serveru a registrace serveru u konfiguračního serveru.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

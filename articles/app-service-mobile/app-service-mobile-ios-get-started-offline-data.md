@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956870"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435129"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace u mobilních aplikací pro iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -89,7 +89,7 @@ Teď můžeme provádět operace skutečné synchronizace a získejte data ze vz
        }];
    }
    ```
-* **Kód SWIFT**:
+* **Swift**:
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -101,7 +101,7 @@ Teď můžeme provádět operace skutečné synchronizace a získejte data ze vz
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -159,50 +159,50 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 
 ![Atributy MS_TableOperations tabulky][defining-core-data-tableoperations-entity]
 
-| Atribut | Typ |
+| Atribut | Type |
 | --- | --- |
-| id | Celé číslo 64 |
-| ID položky | Řetězec |
+| id | Integer 64 |
+| itemId | String |
 | properties | Binární Data |
-| tabulka | Řetězec |
-| tableKind | Celé číslo 16 |
+| tabulka | String |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
 
  ![Atributy MS_TableOperationErrors tabulky][defining-core-data-tableoperationerrors-entity]
 
-| Atribut | Typ |
+| Atribut | Type |
 | --- | --- |
-| id |Řetězec |
-| operationId |Celé číslo 64 |
+| id |String |
+| operationId |Integer 64 |
 | properties |Binární Data |
-| tableKind |Celé číslo 16 |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Atribut | Typ |
+| Atribut | Type |
 | --- | --- |
-| id |Řetězec |
-| key |Řetězec |
-| Typ klíče |Celé číslo 64 |
-| tabulka |Řetězec |
-| hodnota |Řetězec |
+| id |String |
+| key |String |
+| keyType |Integer 64 |
+| tabulka |String |
+| hodnota |String |
 
 ### <a name="data-table"></a>Tabulka dat
 
 **TodoItem**
 
-| Atribut | Typ | Poznámka |
+| Atribut | Type | Poznámka |
 | --- | --- | --- |
 | id | Řetězec, označen jako požadovaný |primární klíč do vzdáleného úložiště |
 | Dokončení | Logická hodnota | Pole položky seznamu úkolů |
-| text |Řetězec |Pole položky seznamu úkolů |
+| text |String |Pole položky seznamu úkolů |
 | createdAt | Datum | (volitelné) Mapuje **createdAt** vlastnost systému |
 | updatedAt | Datum | (volitelné) Mapuje **updatedAt** vlastnost systému |
-| version | Řetězec | (volitelné) Slouží ke zjištění konfliktu, mapuje se na verzi |
+| version | String | (volitelné) Slouží ke zjištění konfliktu, mapuje se na verzi |
 
 ## <a name="setup-sync"></a>Změny chování aplikace při synchronizaci
 V této části upravíte aplikaci tak, aby na začátku aplikace nebo při vkládání a aktualizace položek nesynchronizuje. Synchronizuje se pouze v případě, že se provádí gesta tlačítko Aktualizovat.
@@ -224,7 +224,7 @@ V této části upravíte aplikaci tak, aby na začátku aplikace nebo při vkl�
    }
    ```
 
-**Kód SWIFT**:
+**Swift**:
 
 V `viewDidLoad`v **ToDoTableViewController.swift**, Odkomentujte následující dva řádky je znázorněno zde, zastavit, synchronizuje se při spuštění aplikace. V době psaní tohoto návodu aplikace Swift úkolů neaktualizuje službu, když někdo přidá nebo dokončení položky. Aktualizuje službu pouze při spuštění aplikace.
 
@@ -242,7 +242,7 @@ V této části se připojíte k neplatnou adresu URL pro simulaci scénáři of
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Kód SWIFT**. V ToDoTableViewController.swift:
+   **Kód SWIFT**. In ToDoTableViewController.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -270,7 +270,7 @@ Normální vytvoření, čtení, aktualizace a odstranění (CRUD) operací pro 
 
 Když jsme místní úložiště synchronizované se serverem, jsme použili **MSSyncTable.pullWithQuery** metody.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Synchronizace offline dat v mobilních aplikacích]
 * [Cloud Cover: Offline synchronizace v Azure Mobile Services] \(je videa o Mobile Services, ale mobilní aplikace offline synchronizaci funguje podobným způsobem.\)
 

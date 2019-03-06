@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d0f22360a36105e5bfb877d7478b58c37fcc4353
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4a1b1a32a488395c6a0b3f19de727802a329930a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213768"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439855"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírovat data z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,6 +138,7 @@ Ke zkopírování dat z HDFS, nastavte vlastnost typ datové sady na **sdílení
         },
         "typeProperties": {
             "folderPath": "folder/subfolder/",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
@@ -203,7 +204,7 @@ Další informace o tom, jak použití DistCp ke kopírování dat z HDFS efekti
 
 Použití DistCp ke kopírování souborů jako podpora činnosti zkopírujte-do objektů Blob v Azure (včetně [fázovaného kopírování](copy-activity-performance.md) nebo Azure Data Lake Store, v takovém případě ji můžete plně využít váš cluster power místo spouštění na modul Integration Runtime . Zejména v případě, že je velice mocný nástroj váš cluster bude poskytovat vyšší propustnost kopírování. Na základě vaší konfigurace v Azure Data Factory, aktivita kopírování automaticky vytvořit příkaz distcp, odeslat ke clusteru Hadoop a monitorovat stav kopírování.
 
-### <a name="prerequsites"></a>Prerequsites
+### <a name="prerequisites"></a>Požadavky
 
 Použití DistCp ke kopírování souborů jako-je z HDFS do objektů Blob v Azure (včetně dvoufázové instalace kopie) nebo Azure Data Lake Store, ujistěte se, že Hadoop cluster splňuje následující požadavky:
 

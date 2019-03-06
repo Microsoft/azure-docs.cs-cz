@@ -25,6 +25,9 @@
 #### [2. Vývoj více služeb](multi-service-nodejs.md)
 #### [3. Týmový vývoj](team-development-nodejs.md)
 
+## Koncepty
+### [Jak funguje Dev Spaces](how-dev-spaces-works.md)
+
 ## Postup
 ### [Vytvoření clusteru Kubernetes pomocí Azure Cloud Shellu](how-to/create-cluster-cloud-shell.md)
 ### [Sdílení Azure Dev Spaces](how-to/share-dev-spaces.md)

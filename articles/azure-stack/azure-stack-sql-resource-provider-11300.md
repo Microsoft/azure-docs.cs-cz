@@ -16,12 +16,12 @@ ms.date: 1/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 1/09/2019
-ms.openlocfilehash: aaa4dc48f237a4647cfde330e40eda91eeb1388d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 176cf22957725927f9705985bf5471a1c5e4caad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768728"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436319"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>Poznámky k verzi 1.1.30.0 poskytovatele prostředků SQL
 
@@ -49,7 +49,7 @@ Tato verze poskytovatele prostředků Azure Stack SQL zahrnuje následující vy
 
 ### <a name="fixes"></a>Opravy
 
-- **Kompatibilita Azure Stack Powershellu poskytovatele prostředků SQL**. Poskytovatele prostředků SQL byla aktualizována na pracovním profilem Azure Stack 2018-03-01hybridní prostředí PowerShell a k zajištění kompatibility se AzureRM 1.3.0 a novější.
+- **Poskytovatele prostředků SQL Azure Stack Powershellu kompatibility**. Poskytovatele prostředků SQL byla aktualizována na pracovním profilem Azure Stack 2018-03-01hybridní prostředí PowerShell a k zajištění kompatibility se AzureRM 1.3.0 a novější.
 
 - **Okno heslo změnit přihlašovací jméno SQL**. Opravili jsme problém, kde heslo nelze změnit, v okně změnit heslo. Upozornění na změnu odstraněny odkazy z hesla.
 

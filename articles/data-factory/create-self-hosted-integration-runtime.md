@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dc9f24f948e32d1b87745016852a875d440323de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493582"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443689"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -25,11 +25,13 @@ Místní prostředí integration runtime můžete spuštění aktivity kopírov�
 
 Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat v místním prostředí IR.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>Podrobný postup instalace prostředí IR
 1. Vytvořte místní prostředí Integration Runtime. Uživatelské rozhraní Azure Data Factory můžete použít pro tuto úlohu. Tady je příklad Powershellu:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39717) a nainstalovat místní prostředí integration runtime v místním počítači.
@@ -37,7 +39,7 @@ Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat v místním pro
 3. Načíst ověřovací klíč a zaregistrujte modul runtime integrace v místním prostředí s klíčem. Tady je příklad Powershellu:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Nastavení místní prostředí IR na Virtuálním počítači Azure s použitím šablony Azure Resource Manageru (Automatizace)
@@ -96,7 +98,7 @@ Stáhněte si balíček MSI Instalační program z můžete nainstalovat místn�
 9. Získání klíče ověřování pomocí Azure Powershellu. Tady je příklad Powershellu pro načtení ověřovací klíč:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Na **registrace prostředí Integration Runtime (v místním prostředí)** stránky Microsoft Integration Runtime Configuration Manageru spuštěn v počítači, proveďte následující kroky:
 
@@ -112,7 +114,7 @@ Místní prostředí integration runtime můžou být spojené s více místníc
 * Vyšší dostupnost modulu runtime integrace v místním prostředí tak, že je už jediným bodem selhání v integraci velké objemy dat řešení nebo cloudových dat pomocí Azure Data Factory, zajištění kontinuity podnikových procesů s až čtyři uzly.
 * Vylepšili jsme výkon a propustnost během přesouvání dat mezi místním prostředím a cloudem datových úložišť. Získat další informace o [porovnání výkonu](copy-activity-performance.md).
 
-Po instalaci softwaru místní prostředí integration runtime z můžete přidružit více uzlů [Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Potom, zaregistrujte ho pomocí některé z ověřovací klíče získané z **New-AzureRmDataFactoryV2IntegrationRuntimeKey** rutiny, jak je popsáno v [kurzu](tutorial-hybrid-copy-powershell.md).
+Po instalaci softwaru místní prostředí integration runtime z můžete přidružit více uzlů [Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Potom, zaregistrujte ho pomocí některé z ověřovací klíče získané z **New-AzDataFactoryV2IntegrationRuntimeKey** rutiny, jak je popsáno v [kurzu](tutorial-hybrid-copy-powershell.md).
 
 > [!NOTE]
 > Není nutné vytvořit nový modul runtime integrace v místním prostředí pro přidružení každý uzel. Můžete nainstalovat místní prostředí integration runtime na jiném počítači a zaregistrujte ho pomocí stejné ověřovací klíč. 
@@ -197,8 +199,6 @@ Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
 * Musí mít datové továrny, ve kterém se vytvoří propojené prostředí IR [MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ve výchozím nastavení objekty pro vytváření dat vytvořen na webu Azure Portal nebo rutiny prostředí PowerShell mají MSI vytvářejí implicitně. Ale když se vytvoří objekt pro vytváření dat prostřednictvím šablony Azure Resource Manageru nebo SDK, **Identity** vlastnost musí být explicitně nastaveno na Ujistěte se, že Azure Resource Manageru vytvoří objekt pro vytváření dat, která obsahuje soubor MSI. 
 
 * Azure Data Factory .NET SDK, která podporuje tuto funkci je verze 1.1.0 nebo novější.
-
-* Verze prostředí Azure PowerShell, který podporuje tuto funkci je 6.6.0 nebo novější (AzureRM.DataFactoryV2 0.5.7 nebo novější).
 
 * Udělení oprávnění, uživatel musí roli vlastníka nebo děděných rolí vlastník ve službě data factory, kde existuje sdílený reakcí na Incidenty.
 
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > Aplikace Správce přihlašovacích údajů ještě není k dispozici pro šifrování přihlašovacích údajů v Azure Data Factory V2.  
 
-Pokud zvolíte ne pro otevření portu 8060 na počítači s modulem runtime integrace v místním prostředí, použijte mechanismy než aplikace nastavení přihlašovacích údajů nakonfigurovat přihlašovací údaje úložiště dat. Například můžete použít **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** rutiny Powershellu.
+Pokud zvolíte ne pro otevření portu 8060 na počítači s modulem runtime integrace v místním prostředí, použijte mechanismy než aplikace nastavení přihlašovacích údajů nakonfigurovat přihlašovací údaje úložiště dat. Například můžete použít **New-AzDataFactoryV2LinkedServiceEncryptCredential** rutiny Powershellu.
 
 
 ## <a name="next-steps"></a>Další postup

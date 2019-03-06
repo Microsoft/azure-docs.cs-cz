@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0bed75090e82287e1239342884b5acea64e69bf0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338518"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444000"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -187,9 +187,9 @@ Další informace o požadované porty pro SAP HANA, najdete v kapitole [připoj
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : V kroku se vztahuje na všechny uzly.
-* **[1]** : V kroku se týká pouze uzlu 1.
-* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]**: V kroku se vztahuje na všechny uzly.
+* **[1]**: V kroku se týká pouze uzlu 1.
+* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Nastavení rozložení disků: **Správce logických svazků (LVM)**.
 
@@ -316,18 +316,18 @@ Kroky v této části používají následující předpony:
    * Zadejte umístění svazky s protokoly [/ hana/log/HN1]: Vyberte možnost Enter.
    * Omezit maximální přidělení paměti? [n]: Vyberte možnost Enter.
    * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Vyberte možnost Enter.
-   * Zadejte SAP hostitele agenta uživatele (sapadm) heslo: Zadejte heslo uživatele agenta hostitele.
+   * Enter SAP Host Agent User (sapadm) Password: Zadejte heslo uživatele agenta hostitele.
    * Potvrďte uživatel agenta hostitele systému SAP (sapadm) heslo: Zadejte heslo uživatele agenta hostitele znovu pro potvrzení.
    * Zadejte správce systému (hdbadm) heslo: Zadejte heslo správce systému.
    * Potvrzení správce systému (hdbadm) heslo: Zadejte heslo správce systému znovu pro potvrzení.
    * Zadejte domovského adresáře správce systému [/ usr / / sap/HN1 home]: Vyberte možnost Enter.
    * Zadejte prostředí přihlašovací jméno správce systému [/ bin/sh]: Vyberte možnost Enter.
-   * Zadejte ID uživatele pro správce systému [1001]: Vyberte možnost Enter.
+   * Enter System Administrator User ID [1001]: Vyberte možnost Enter.
    * Zadejte ID ze skupiny uživatelů (sapsys) [79]: Vyberte možnost Enter.
    * Zadejte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze.
    * Potvrďte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
    * Restartování systému po restartování počítače? [n]: Vyberte možnost Enter.
-   * Chcete pokračovat? (Ano/Ne): Souhrn ověření. Zadejte **y** pokračujte.
+   * Chcete pokračovat? (y/n): Souhrn ověření. Zadejte **y** pokračujte.
 
 1. **[A]**  Upgrade agenta hostitele SAP.
 
@@ -348,9 +348,9 @@ Kroky v této části používají následující předpony:
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : V kroku se vztahuje na všechny uzly.
-* **[1]** : V kroku se týká pouze uzlu 1.
-* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]**: V kroku se vztahuje na všechny uzly.
+* **[1]**: V kroku se týká pouze uzlu 1.
+* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Konfigurace brány firewall
 
@@ -439,9 +439,9 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : V kroku se vztahuje na všechny uzly.
-* **[1]** : V kroku se týká pouze uzlu 1.
-* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]**: V kroku se vztahuje na všechny uzly.
+* **[1]**: V kroku se týká pouze uzlu 1.
+* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Konfigurace brány firewall
 
@@ -643,7 +643,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Instalace agenta monitorování geografických zón Azure můžete otestovat tím, že zakážete síťového rozhraní na uzlu, SAP HANA se spuštěným systémem jako hlavní.
-Zobrazit [článku znalostní báze Red Hat 79523](https://access.redhat.com/solutions/79523) pro descricption o tom, jak simulovat selhání sítě. V tomto příkladu používáme skript net_breaker k blokování veškerého přístupu k síti.
+Zobrazit [článku znalostní báze Red Hat 79523](https://access.redhat.com/solutions/79523) popis o tom, jak simulovat selhání sítě. V tomto příkladu používáme skript net_breaker k blokování veškerého přístupu k síti.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>

@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 4660a45014e6afdb091fb40b8fe7f03fdb647aab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ec024f8f1cd411455a6cbb2a0b12e7b4751af5fe
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339194"
+ms.locfileid: "57405330"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob storage: Premium (preview), vrstvy úložiště Hot, Cool a archiv
 
@@ -56,6 +56,8 @@ BLOB storage a GPv2 zpřístupňují účty **úroveň přístupu** atribut na �
 Přístup k vrstvě Premium, díky kterému budou často používaná data k dispozici prostřednictvím vysoce výkonnému hardwaru je dostupná ve verzi preview. Data uložená na této úrovni se ukládají na jednotky SSD, které jsou optimalizovány pro nižší latenci a vyšší míra transakční ve srovnání s tradičními pevné disky. Přístup k úrovni Premium je k dispozici prostřednictvím pouze typ účtu úložiště objektů Blob bloku.
 
 Tato úroveň je ideální pro úlohy vyžadující rychlé a konzistentní odezvy. Data, která zahrnuje koncovým uživatelům, jako jsou úpravy, statický webový obsah, online transakce a podobně, jsou vhodnými kandidáty přístup k vrstvě Premium pro interaktivní videa. Tato úroveň je vytvořený na míru pro úlohy, které provádějí velký počet malých transakcí, jako je zachytávání telemetrická data, zasílání zpráv a transformace dat.
+
+Další informace o verzi preview najdete v tématu [Azure Blob Storage úrovně Premium ve verzi public preview](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 ## <a name="hot-access-tier"></a>Horká vrstva přístupu
 

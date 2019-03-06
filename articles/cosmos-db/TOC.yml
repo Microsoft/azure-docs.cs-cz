@@ -600,6 +600,8 @@ items:
     items:
     - name: Řešení potíží se sadou Java Async SDK
       href: troubleshoot-java-async-sdk.md
+    - name: Řešení potíží se sadou .NET SDK
+      href: troubleshoot-dot-net-sdk.md
 - name: Referenční informace
   items:
   - name: .NET
@@ -654,9 +656,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: f1f36d86466f93c0acac30364ba648391fb03095
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f42bc31661ecc14fde4d2466ccd89d91dfd5deb5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652514"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406809"

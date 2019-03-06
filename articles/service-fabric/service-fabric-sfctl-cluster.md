@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0d9ee24e9ab104fb554033802507f78fcbf38fc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e3aae5f7936204a7fe4fbce4102fc2727088e025
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170925"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442027"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Vyberte, spravovat a provozovat clustery Service Fabric.
@@ -140,7 +140,7 @@ Získejte manifestu clusteru Service Fabric. Manifest clusteru obsahuje vlastnos
 ## <a name="sfctl-cluster-operation-cancel"></a>zrušení operace clusteru sfctl
 Chyby vyvolané uživatel operaci zruší.
 
-Následující rozhraní API spustit selhání operací, které mohou být zrušeny pomocí CancelOperation\: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud platnost hodnotu false, pak zadané uživatele vyvolané operace se elegantně zastaví a vyčištění.  Pokud platnost má hodnotu true, příkaz se přeruší a mohou být zanechány některé vnitřní stav.  Platnost zadáte jako hodnotu true by měla být používána opatrně. Volající toto rozhraní API s platnost nastavenou na hodnotu true není povolena, dokud toto rozhraní API již byla volána na stejný příkaz test s platnost nastavenou na hodnotu false první, nebo pokud příkaz test už má OperationState OperationState.RollingBack. 
+Následující rozhraní API spustit selhání operací, které může být zrušen pomocí CancelOperation\: StartDataLoss StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Pokud platnost hodnotu false, pak zadané uživatele vyvolané operace se elegantně zastaví a vyčištění.  Pokud platnost má hodnotu true, příkaz se přeruší a mohou být zanechány některé vnitřní stav.  Platnost zadáte jako hodnotu true by měla být používána opatrně. Volající toto rozhraní API s platnost nastavenou na hodnotu true není povolena, dokud toto rozhraní API již byla volána na stejný příkaz test s platnost nastavenou na hodnotu false první, nebo pokud příkaz test už má OperationState OperationState.RollingBack. 
 
 Vysvětlení\: OperationState.RollingBack prostředky, které systém bude/čistí interního systému stavu způsobené provádění příkazu.  Pokud byl příkaz test způsobit ztrátu dat ho nebudou data obnovit.  Například pokud volání StartDataLoss pak volat toto rozhraní API, systém bude pouze vyčistit vnitřní stav spuštění příkazu. Ji nebude možné obnovit cílový oddíl dat, pokud příkaz provedení určité dostatečně daleko způsobit ztrátu dat. 
 

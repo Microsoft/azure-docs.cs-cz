@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 6b27c21944131d01254e75c7120520a119998132
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 39bfea8e3b04be2a5444945356f2c487ea2423e3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673764"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443296"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvoření veřejného load balanceru úrovně pomocí Azure Powershellu
 
@@ -229,7 +229,7 @@ Vytvořit virtuální síťové adaptéry vytvořené pomocí [New-AzNetworkInte
 $nicVM1 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic1' `
+-Name 'MyVM1' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule1 `
@@ -239,7 +239,7 @@ $nicVM1 = New-AzNetworkInterface `
 $nicVM2 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic2' `
+-Name 'MyVM2' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule2 `
@@ -268,7 +268,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítače s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří dva virtuální počítače a požadované komponenty virtuální sítě, pokud ještě neexistují. Při vytváření virtuálního počítače následujícím příkladu, dříve vytvořené síťové adaptéry představují přidružené virtuální počítače, protože jsou přiřazeny stejné virtuální síti (*myVnet*) a podsíti (*mySubnet*):
+Nyní můžete vytvořit virtuální počítače s [rutiny New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří dva virtuální počítače a požadované komponenty virtuální sítě, pokud ještě neexistují. V tomto příkladu, síťová rozhraní (*VM1* a *VM2*) vytvořené v předchozím kroku jsou automaticky přiřazeny k virtuálním počítačům *VM1* a *VM2*protože mají stejný název a jsou přiřazeny stejné virtuální síti (*myVnet*) a podsíti (*mySubnet*). Kromě toho protože síťová rozhraní jsou přidružené k back-endového fondu nástroje pro vyrovnávání zatížení, virtuální počítače se automaticky přidají do back-endový fond.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)

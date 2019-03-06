@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698322"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444918"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele aplikace Linux on-premises do virtuálních počítačů Azure
 
@@ -408,7 +408,7 @@ Správce společnosti Contoso jsou nyní připraven ke spuštění převzetí sl
 
 ### <a name="connect-the-vm-to-the-database"></a>Virtuální počítač připojit k databázi
 
-Posledním krokem v procesu migrace Contoso adins aktualizovat připojovací řetězec aplikace tak, aby odkazoval na databázi aplikace běžící na **OSTICKETMYSQL** virtuálního počítače. 
+Posledním krokem v procesu migrace správce společnosti Contoso aktualizovat připojovací řetězec aplikace tak, aby odkazoval na databázi aplikace běžící na **OSTICKETMYSQL** virtuálního počítače. 
 
 1. Ujistěte se, že připojení SSH ke **OSTICKETWEB** virtuálního počítače pomocí klienta Putty nebo jiného klienta SSH. Virtuální počítač je privátní, takže se připojit pomocí privátní IP adresu.
 
