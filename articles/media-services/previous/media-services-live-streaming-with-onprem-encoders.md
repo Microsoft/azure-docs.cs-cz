@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990212"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442364"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi
 
@@ -45,7 +45,7 @@ Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jak chc
 > [!NOTE]
 > Tento článek popisuje atributy kanály, které nejsou povolené provádět živé kódování. Informace o práci s kanály, které mají povolené kódování v reálném najdete v tématu [živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
 >
->Informace o doporučené místní kodéry najdete v tématu [doporučené místní kodéry](media-services-recommended-encoders.md).
+>Informace o doporučujeme používat místní kodéry, naleznete v části [doporučujeme používat místní kodéry](media-services-recommended-encoders.md).
 
 Následující diagram představuje pracovní postup živého streamování, který používá místní kodér služby live Encoding RTMP s více přenosovými rychlostmi nebo fragmentovaný MP4 (technologie Smooth Streaming) datové proudy jako výstup.
 
@@ -229,7 +229,7 @@ Tady jsou další důležité informace týkající se práce s kanály a souvis
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata
-[Doporučené místní kodéry](media-services-recommended-encoders.md)
+[Doporučujeme používat místní kodéry](media-services-recommended-encoders.md)
 
 [Azure Media Services fragmentovaného MP4 život příjem specifikace](media-services-fmp4-live-ingest-overview.md)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f6fcc4d2920841c730ef179497f9184b1f6649d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193474"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Kurz: Integrace Azure Active Directory s Syncplicity
 
@@ -206,7 +206,7 @@ Pro uživatele AAD, bude moct přihlásit musí být zřízená Syncplicity apli
    
     ![Správa uživatelů](./media/syncplicity-tutorial/ic769764.png "Správa uživatelů")
 
-1. Typ **e-mailových adres** účet AAD, které chcete zřídit, vyberte **uživatele** jako **Role**a potom klikněte na tlačítko **Další**.
+1. Typ **e-mailové adresy** účet AAD, které chcete zřídit, vyberte **uživatele** jako **Role**a potom klikněte na tlačítko **Další**.
    
     ![Informace o účtu](./media/syncplicity-tutorial/ic769765.png "informace o účtu")
    

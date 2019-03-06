@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7b436acb937216ad02289282f4a7ac5f88df2eea
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b5e42585178505ee4c23ca4054e83f61ee1254b8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245144"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436132"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub zařízení datové proudy (preview)
 
@@ -153,7 +153,7 @@ Obou stran jednotlivých datových proudech (na straně zařízení a služby) p
 ## <a name="iot-hub-device-stream-samples"></a>Ukázky Stream zařízení centra IoT
 
 Jsme publikovali dvě [ukázky quickstart](/azure/iot-hub) pro demonstraci použití datových proudů zařízení aplikací.
-* *Echo* ukázce programový použití datových proudů zařízení (pomocí přímého volání rozhraní API sady SDK).
+* *Echo* ukázce programové využívání datových proudů zařízení (pomocí přímého volání rozhraní API sady SDK).
 * *Místní proxy* ukázce tunelování provozu aplikace předem připravená klient/server (například SSH, RDP i na webu) prostřednictvím datových proudů zařízení.
 
 Tyto ukázky jsou zahrnuté podrobněji níže.

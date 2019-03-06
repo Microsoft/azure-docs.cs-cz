@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 39c4884fcca2b041603305d73526e3310ab99a21
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054842"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441878"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v SaaS aplikaci pomocí vzoru databáze na tenanta s Azure SQL Database
  
@@ -73,7 +73,7 @@ Tento kurz vyžaduje použití Powershellu k vytvoření úlohy agenta a jeho da
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Vytvoření úlohy, která u všech tenantů nasadí nová referenční data
 
-V aplikaci Wingtip Tickets Každá databáze tenanta zahrnuje sadu typů míst podporované. Každé místo je místo konkrétní typ, který definuje typ události, které je možné hostovat a určuje obrázku pozadí používané v aplikaci. Pro aplikaci, aby podporovala nové typy událostí musí být těmto referenčním datům typy míst aktualizované a nové přidán.  V tomto příkladu nasadíte aktualizaci u všech databází tenantů. Aktualizace přidá dva další typy míst: *Motorcycle Racing* (Motocyklové závody) a *Swimming Club* (Plavecký klub).
+V aplikaci Wingtip Tickets Každá databáze tenanta zahrnuje sadu typů míst podporované. Každé místo je místo konkrétní typ, který definuje typ události, které je možné hostovat a určuje obrázku pozadí používané v aplikaci. Pro aplikaci, aby podporovala nové typy událostí musí být těmto referenčním datům typy míst aktualizované a nové přidán.  V tomto cvičení nasadíte aktualizaci u všech databází tenantů přidat dva další typy míst: *Motorcycle Racing* a *Swimming Club*.
 
 Nejprve si přečtěte typy míst zahrnuta v každé databázi tenantů. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a zkontrolujte tabulku VenueTypes.  Můžete také zadávat dotazy této tabulky v editoru dotazů na webu Azure Portal k němu přistupovat z databáze. 
 
@@ -86,8 +86,8 @@ Chcete-li vytvořit novou úlohu, používáte sadu úloh systémové uložené 
 
 1. V aplikaci SSMS připojit k serveru katalogu: *katalogu-dpt -&lt;uživatele&gt;. database.windows.net* serveru 
 1. V aplikaci SSMS otevřete soubor... \\Learning Modules\\Schema Management\\DeployReferenceData.sql
-1. Upravit příkaz: nastavte @wtpUser = &lt;uživatele&gt; a nahraďte hodnotu uživatelského jste použili při nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta
-1. Zkontrolujte, že se připojení k _jobagent_ databáze a stisknutím klávesy **F5** pro spuštění skriptu
+1. Upravte příkaz: Nastavte @wtpUser = &lt;uživatele&gt; a nahraďte hodnotu uživatelského jste použili při nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta
+1. Zkontrolujte, že se připojení k _jobagent_ databáze a stisknutím klávesy **F5** pro spuštění skriptu
 
 Podívejte se následující prvky *DeployReferenceData.sql* skriptu:
 * **SP\_přidat\_cílové\_skupiny** vytvoří cílovou skupinu s názvem DemoServerGroup.
@@ -127,10 +127,10 @@ V tomto kurzu jste se naučili:
 > * Aktualizace referenčních dat ve všech databázích tenantů
 > * Vytvořit index tabulky ve všech databázích tenantů
 
-Zkuste [Ad-hoc, generování sestav kurzu](saas-tenancy-cross-tenant-reporting.md) prozkoumat spouštění distribuovaných vzorců napříč tenanta databází.
+Zkuste [vykazování Ad hoc kurzu](saas-tenancy-cross-tenant-reporting.md) prozkoumat spouštění distribuovaných vzorců napříč tenanta databází.
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Další kurzy, které vycházejí z nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Správa cloudových databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-overview.md)

@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e70a74be372e4374fac5aaa2bfda8ca955e6d305
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1ee08e4dc2f6a4616c4b427ad7d33f56e135b27a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671858"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442491"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -107,7 +107,7 @@ Pokud partner tenanta Azure AD, která je Federovaná do místní infrastruktury
 Rozdíly mezi B2B a business-to-consumer spolupráce (B2C) z hlediska, které jsou podporovány identity odebíráme. Identita používaná není dobrý důvod, proč výběr mezi použitím B2B a B2C pomocí. Informace o volbě vaše možnosti spolupráce naleznete v tématu [spolupráce porovnání B2B a B2C v Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatelů typu Host Azure B2B?
-Všechny Azure aplikace integrované s Active Directory může podporovat uživatele typu Host B2B ve službě Azure, ale bezproblémovým koncového bodu musí používat k ověření uživatele typu Host. Můžete také potřebovat [přizpůsobení deklarací identity](claims-mapping.md) v tokenu SAML, která je vydala při ověření uživatele typu Host do aplikace. 
+Všechny Azure aplikace integrované s Active Directory může podporovat uživatele typu Host B2B ve službě Azure, ale nastavit jako tenant koncového bodu musí používat k ověření uživatele typu Host. Můžete také potřebovat [přizpůsobení deklarací identity](claims-mapping.md) v tokenu SAML, která je vydala při ověření uživatele typu Host do aplikace. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Jsme v případě našich partnerů nemají ověřování službou Multi-Factor Authentication vynutit ověřování Multi-Factor Authentication pro uživatele typu Host B2B?
 Ano. Další informace najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).

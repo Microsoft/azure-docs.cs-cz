@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439022"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
@@ -59,7 +59,7 @@ Při výběru nástroj pro vyrovnávání zatížení globálního mezi Traffic 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
 |**Libovolný protokol:** Vzhledem k tomu, že Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP, atd. | **Akcelerace HTTP:** Přenosy s branou jsou směrovány přes proxy server v síti Edge z Microsoftu pro.  Z tohoto důvodu žádosti protokolu HTTP (S), najdete v článku latenci a propustnost vylepšení snížení latence pro vyjednávání protokolu SSL a používání aktivní připojení z AFD do vaší aplikace.|
-|**Místní směrování:** Směrování ve vrstvě DNS, provoz se směruje vždy bodu z bodu.  Směrování od firemní pobočka do vašeho datového centra v místním prostředí může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** Protože branou funguje s žádostí HTTP, požadavky na různých cest URL může být směrované na různé back-end / místní služby fondy (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
+|**Místní směrování:** Směrování ve vrstvě DNS, provoz se směruje vždy bodu z bodu.  Směrování od firemní pobočka do vašeho místního datového centra, může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** Protože branou funguje s žádostí HTTP, požadavky na různých cest URL může být směrované na různé back-end / místní služby fondy (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
 |**Fakturace formát:** Účtování podle DNS škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů na vyšší využití. |**Vložené zabezpečení:** Přední dveře povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
 
 </br>Z důvodu výkonu, požadavky na provoz a výhody zabezpečení pro úlohy HTTP s branou doporučujeme, abyste zákazníci využívat branou pro své úlohy HTTP.    Traffic Manager a branou umožňuje paralelní sloužit veškerý provoz pro vaši aplikaci. 

@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cae464531dee86f7a4c9ec2396b90787825ec2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172293"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439736"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrace osobních zařízení v síti vaší organizace
 Zaregistrujte své osobní zařízení (obvykle telefon nebo tablet) v síti vaší organizace. Po registraci zařízení bude mít přístup k prostředkům vaší organizace s omezeným přístupem.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 52d6781f83262162f261d094d4818f803e5f3866
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c405941417ad1a4e877cfd8fd0bdb53e186f6d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670209"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452296"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy server je volitelnou službu Azure Service Fabric, která pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http. Další informace najdete v tématu [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md). Tento článek ukazuje, jak nastavit a konfigurace reverzního proxy serveru v clusteru. 
@@ -47,7 +47,7 @@ Pro nový cluster, můžete [vytvoření vlastní šablony Resource Manageru](se
 
 Ukázkové šablony Resource Manageru, které vám umožňují nakonfigurovat zabezpečené reverzního proxy serveru pro clusteru v Azure můžete najít [zabezpečené reverzního proxy serveru ukázkové šablony](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) na Githubu. Odkazovat na [konfigurace HTTPS reverzní proxy server v zabezpečený cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) v souboru README pro pokyny a šablony pomocí konfigurace reverzní proxy server zabezpečený pomocí certifikátu a zpracovat certifikát výměny.
 
-Pro existující cluster, můžete exportovat šablonu Resource Manageru pro prostředek clusteru skupinou pomocí [webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell#export-resource-group-as-template), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli#export-resource-group-as-template).
+Pro existující cluster, můžete exportovat šablonu Resource Manageru pro prostředek clusteru skupinou pomocí [webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell), nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 
 Jakmile budete mít šablony Resource Manageru, můžete povolit reverzní proxy server pomocí následujících kroků:
 
@@ -334,7 +334,7 @@ Například můžete nastavit hodnotu **DefaultHttpRequestTimeout** nastavit ča
 
 Další informace o aktualizaci nastavení prostředků infrastruktury pro clustery Azure najdete v tématu [přizpůsobit nastavení clusteru pomocí šablon Resource Manageru](service-fabric-cluster-config-upgrade-azure.md). Samostatné clustery, naleznete v tématu [přizpůsobit nastavení clusteru pro samostatné clustery](service-fabric-cluster-config-upgrade-windows-server.md). 
 
-Několik nastavení prostředků infrastruktury slouží k navázání zabezpečené komunikace mezi reverzního proxy serveru a služby. Podrobné informace o těchto nastavení najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md).
+Několik nastavení prostředků infrastruktury slouží k navázání zabezpečené komunikace mezi reverzního proxy serveru a služby. Podrobné informace o těchto nastaveních najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Nastavení předávání do zabezpečené služba HTTP přes reverzní proxy](service-fabric-reverseproxy-configure-secure-communication.md)

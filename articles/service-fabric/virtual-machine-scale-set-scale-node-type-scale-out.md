@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
 ms.author: aljo
-ms.openlocfilehash: 01d4af8349d3f5a0f58c4c3fa56b489d739c7b42
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d732c26fd503f65bbd82bff076873ea5de4edb39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301702"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455594"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Horizontální navýšení kapacity clusteru Service Fabric tak, že přidáte škálovací sadu virtuálních počítačů
 Tento článek popisuje, jak škálování clusteru Azure Service Fabric přidáním nového typu uzlu do existujícího clusteru. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, můžete škálovat cluster horizontálně přidáním nového typu uzlu (škálovací sady virtuálních počítačů) do existujícího clusteru.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
 
 ## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Přidat další škálovací sady do existujícího clusteru
-Přidání nového typu uzlu (která je založená na škálovací sadu virtuálních počítačů) ve stávajícím clusteru je podobný [upgradu primárního uzlu typu](service-fabric-scale-up-node-type.md)s výjimkou případů nebudete používat stejné NodeTypeRef; zřejmě nebude možné zakázat některé aktivně používá škálovací sady virtuálních počítačů a neumožňuje můžete přijít o dostupnost clusteru při aktualizaci není primární typ uzlu. 
+Přidání nového typu uzlu (která je založená na škálovací sadu virtuálních počítačů) ve stávajícím clusteru je podobný [upgradu primárního uzlu typu](service-fabric-scale-up-node-type.md)s výjimkou případů nebudete používat stejné NodeTypeRef; zřejmě nebude možné zakázat některé aktivně používá škálovací sady virtuálních počítačů, a pokud aktualizujete není primární typ uzlu nedojde ke ztrátě dostupnost clusteru. 
 
 Vlastnost NodeTypeRef je deklarována v rámci virtuálního počítače škálovací sady vlastností rozšíření Service Fabric:
 ```json

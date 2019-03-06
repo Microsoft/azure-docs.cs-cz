@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e429d9577b938aea20318aa09a0247e00e4f66b6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819578"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443041"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -155,6 +155,7 @@ Další omezení:
 Řešení Change Tracking chvíli dochází k následujícím problémům:
 
 * Aktualizace hotfix se neshromažďují počítačích s Windows serverem 2016 Core RS3.
+* Změna stavu Linuxové procesy démon se můžou zobrazovat, i v případě, že žádná změna nenastala. Důvodem je způsob, jakým `SvcRunLevels` zachytit pole.
 
 ## <a name="change-tracking-data-collection-details"></a>Změnit podrobnosti sledování dat kolekce
 

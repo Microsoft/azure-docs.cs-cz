@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 03/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 8c746fc86ea4d260575eb97b16d4a190b175f754
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5c82d7ad3cf9c2318d3bf5d0157f00730a24a968
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585664"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457980"
 ---
 Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
@@ -33,4 +33,8 @@ ms.locfileid: "52585664"
     | **Šablona** | Trigger HTTP | Vytvoří se funkce, kterou aktivuje požadavek HTTP. |
     | **Účet úložiště**  | Emulátor úložiště | Trigger HTTP nepoužívá připojení účtu úložiště. Všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu úložiště. |
     | **Přístupová práva** | Anonymní | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizace najdete v části věnovaném [klíčům autorizace](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v tématu [HTTP a webhookové vazby](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    
+    > [!NOTE]
+    > Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Při výběru výchozí úrovně `Function`, je potřeba k dispozici [klíč funkce](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
+    
 4. Kliknutím na **OK** vytvoříte projekt funkce a funkci aktivovanou HTTP.

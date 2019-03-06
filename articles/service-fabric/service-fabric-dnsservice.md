@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b49df76bc5b9c4d5f469e702b65ffd5762e49a39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035906"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455832"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete povolit ve vašem clusteru na zjišťovat další služby pomocí protokolu DNS. 
@@ -53,7 +53,7 @@ Při vytváření clusteru pomocí portálu, služba DNS je povolena ve výchoz�
 Pokud nepoužíváte k vytvoření clusteru na portálu nebo pokud aktualizujete existující cluster, bude nutné povolit službu DNS v šabloně:
 
 - Pokud chcete nasadit nový cluster, můžete použít [ukázkových šablon](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) nebo vytvořit vlastní šablonu Resource Manageru. 
-- Pokud chcete aktualizovat existující cluster, můžete přejít do skupiny prostředků clusteru na portálu a klikněte na **automatizační skript** pracovat se šablonou, která odráží aktuální stav clusteru a dalších prostředků ve skupině. Další informace najdete v tématu [vyexportujte šablonu ze skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group).
+- Pokud chcete aktualizovat existující cluster, můžete přejít do skupiny prostředků clusteru na portálu a klikněte na **automatizační skript** pracovat se šablonou, která odráží aktuální stav clusteru a dalších prostředků ve skupině. Další informace najdete v tématu [vyexportujte šablonu ze skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
 
 Jakmile budete mít šablony, můžete povolit službu DNS pomocí následujících kroků:
 

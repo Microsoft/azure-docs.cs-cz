@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 47fde9099ed8172b83f9f12085c5aee219c4716c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 46e8c0185ec94d0ea3429f761b3760dcbccc25aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318015"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432613"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -33,9 +33,9 @@ Použití distribučních bodů umožňuje:
 Tento článek popisuje následující čtyři svědectví:
 
 1. [Spojte se rychle jedno zařízení, pomocí SAS](#connect-a-single-device)
-1. [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-shared-access-signatures)
+1. Připojení zařízení ve velkém měřítku pomocí SAS
 1. [Připojení zařízení ve velkém měřítku pomocí certifikátů X.509](#connect-devices-using-x509-certificates) Toto je doporučený postup pro produkční prostředí.
-1. [Připojit bez první registrace zařízení](#connect-without-first-registering-devices) 
+1. Připojit bez první registrace zařízení
 
 ## <a name="connect-a-single-device"></a>Připojení jedno zařízení
 
@@ -69,7 +69,7 @@ Zaregistrovat velký počet zařízení s vaší aplikací IoT Central, použijt
 K načtení informací o připojení pro importovaná zařízení [vyexportujete soubor CSV z vaší aplikace IoT Central](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json#export-devices).
 
 > [!NOTE]
-> Informace o tom, jak připojit zařízení i bez jejich první registrace v IoT Central, naleznete v tématu [připojit bez registrace zařízení první](#connect-without-first-registering-devices).
+> Informace o tom, jak připojit zařízení i bez jejich první registrace v IoT Central, naleznete v tématu připojit bez první registraci zařízení.
 
 ### <a name="set-up-your-devices"></a>Nastavit vaše zařízení
 
