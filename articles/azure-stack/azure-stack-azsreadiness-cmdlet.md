@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250635"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767188"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Reference k rutinám Start AzsReadinessChecker
 
@@ -301,7 +301,7 @@ V tomto příkladu nasazení a podporu týmu zpráva připravenost od zákazník
 Určuje název oblasti nasazení Azure stacku.
 |  |  |
 |----------------------------|--------------|
-|Zadejte:                       |Řetězec        |
+|Zadejte:                       |String        |
 |Pozice:                   |s názvem         |
 |Výchozí hodnota:              |Žádný          |
 |Přijměte kanálový vstup:      |False         |
@@ -312,7 +312,7 @@ Určuje název oblasti nasazení Azure stacku.
 Určuje nasazení Azure stacku externí plně kvalifikovaný název domény, také alias ExternalFQDN a ExternalDomainName.
 |  |  |
 |----------------------------|--------------|
-|Zadejte:                       |Řetězec        |
+|Zadejte:                       |String        |
 |Pozice:                   |s názvem         |
 |Výchozí hodnota:              |ExternalFQDN, ExternalDomainName |
 |Přijměte kanálový vstup:      |False         |
@@ -323,7 +323,7 @@ Určuje nasazení Azure stacku externí plně kvalifikovaný název domény, tak
 Určuje nasazení Azure stacku systém identit platné hodnoty, AAD nebo AD FS, Azure Active Directory a Active Directory Federated Services v uvedeném pořadí.
 |  |  |
 |----------------------------|--------------|
-|Zadejte:                       |Řetězec        |
+|Zadejte:                       |String        |
 |Pozice:                   |s názvem         |
 |Výchozí hodnota:              |Žádný          |
 |Platné hodnoty:               |"AAD", "ADFS"  |
@@ -357,7 +357,7 @@ Určuje zatřiďovací tabulku obsahující cesty a heslo pro certifikáty PaaS.
 Určuje konfigurační soubor JSON nasazení dat. Azure Stack. Tento soubor je vygenerován pro nasazení.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -368,7 +368,7 @@ Určuje konfigurační soubor JSON nasazení dat. Azure Stack. Tento soubor je v
 Určuje cestu k problematické certifikát, který vyžaduje rutiny importu/exportu chcete vyřešit, jak je uvedeno v ověření certifikátu v tomto nástroji.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -379,7 +379,7 @@ Určuje cestu k problematické certifikát, který vyžaduje rutiny importu/expo
 Určuje cílovou cestu pro výsledný soubor PFX z rutiny importu/exportu.  
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -405,7 +405,7 @@ Určuje typ SAN žádosti o certifikát. Valid values MultipleCSR, SingleCSR.
 
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Platné hodnoty:               |'MultipleCSR','SingleCSR' |
@@ -417,7 +417,7 @@ Určuje typ SAN žádosti o certifikát. Valid values MultipleCSR, SingleCSR.
 Určuje cílovou cestu pro soubory žádosti o certifikát, musí directory již existuje.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -439,7 +439,7 @@ Určuje správce služby Azure Active Directory se použije pro nasazení Azure 
 Určuje název služby Azure Active Directory se použije pro nasazení Azure stacku.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -450,7 +450,7 @@ Určuje název služby Azure Active Directory se použije pro nasazení Azure st
 Určuje instanci služby Azure obsahující účtů, adresářů a předplatných se použije pro nasazení Azure stacku a registraci.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Platné hodnoty:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
@@ -462,7 +462,7 @@ Určuje instanci služby Azure obsahující účtů, adresářů a předplatnýc
 Určuje účet registrace pro registrace Azure Stack.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Žádný     |
 |Přijměte kanálový vstup:      |False    |
@@ -484,7 +484,7 @@ Určuje ID předplatného registrace pro registrace Azure Stack.
 Určuje cestu pro sestavu připravenosti, výchozí hodnota je aktuální adresář a výchozí název sestavy.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Vše      |
 |Přijměte kanálový vstup:      |False    |
@@ -506,7 +506,7 @@ ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, K
 
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |.\Certificates |
 |Přijměte kanálový vstup:      |False    |
@@ -529,7 +529,7 @@ Určuje, pokud služby PaaS nebo názvy hostitelů měla být přidána do žád
 Určuje, zda jenom zobrazit souhrn, sestavy vynechá podrobností.
 |  |  |
 |----------------------------|---------|
-|Zadejte:                       |Řetězec   |
+|Zadejte:                       |String   |
 |Pozice:                   |s názvem    |
 |Výchozí hodnota:              |Vše      |
 |Platné hodnoty:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
@@ -565,7 +565,7 @@ Určuje vlastní cesta pro uložení sestavy připravenost JSON a podrobný soub
 
 |  |  |
 |----------------------------|------------------|
-|Zadejte:                       |Řetězec            |
+|Zadejte:                       |String            |
 |Pozice:                   |s názvem             |
 |Výchozí hodnota:              |$ENV:TEMP\AzsReadinessChecker  |
 |Přijměte kanálový vstup:      |False             |

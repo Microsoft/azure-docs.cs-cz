@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 9ca4ca1f-8f68-4225-81a6-1666b486d6a8
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5483d4e50770f3e4cd323c654cbab8cc7794a517
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: b929cc380d3abc03b494ff5b7823a18dceb19eaa
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984352"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Kurz: Integrace Azure Active Directory s Jostle
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3488ac27-0417-4ad9-b9a3-08325fe8ea0d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 69b68e5e29d972f95742a28250e07ba69e6a681f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867044"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Integrace Azure Active Directory s Snowflake
 

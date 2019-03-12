@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0fe4da13e8242d858d553e0532b82cf1adca450a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 04712b1ba1eccd71dcfcc9012ebcbdfcbdcd2404
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338755"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773664"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -32,7 +32,7 @@ Použití služby API Management v interní režimu, můžete dosáhnout násled
 
 * Ujistěte se, rozhraní API hostované ve vašem privátním datacentru bezpečně je zpřístupnit třetími stranami mimo něj pomocí připojení site-to-site a připojení Azure ExpressRoute VPN.
 * Povolte hybridní cloudové scénáře vystavení rozhraní API založená na cloudu a místním rozhraním API prostřednictvím společnou bránu.
-* Správa rozhraní API hostovaná v několika geografických umístěních pomocí koncového bodu jednu bránu. 
+* Správa rozhraní API hostovaná v několika geografických umístěních pomocí koncového bodu jednu bránu.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -47,7 +47,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 + **Instance služby Azure API Management**. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
-Služba API Management v interní virtuální síti je hostovaných za službou interní nástroj pro vyrovnávání zatížení (ILB).
+Služba API Management v interní virtuální síti je hostovaných za službou [interního nástroje load balancer (classic)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolit připojení k virtuální síti pomocí webu Azure portal
 
@@ -103,11 +103,12 @@ Pro přístup k tyto koncové body služby API Management, můžete vytvořit vi
 
    * 10.1.0.5 contosointernalvnet.scm.azure-api.net
 
-Potom můžete přistupovat všechny koncové body služby z virtuálního počítače, který jste vytvořili. Pokud používáte vlastní server DNS ve virtuální síti, můžete také vytvořit záznamy A DNS a přístup k tyto koncové body z libovolného místa ve virtuální síti. 
+Potom můžete přistupovat všechny koncové body služby z virtuálního počítače, který jste vytvořili.
+Pokud používáte vlastní server DNS ve virtuální síti, můžete také vytvořit záznamy A DNS a přístup k tyto koncové body z libovolného místa ve virtuální síti.
 
 ### <a name="access-on-custom-domain-names"></a>Přístup k vlastním názvům domén
 
-   1. Pokud nechcete, aby pro přístup ke službě API Management s výchozími názvy hostitelů, můžete nastavit vlastní názvy domén pro všechny vaše koncové body služby jak je znázorněno na následujícím obrázku: 
+   1. Pokud nechcete, aby pro přístup ke službě API Management s výchozími názvy hostitelů, můžete nastavit vlastní názvy domén pro všechny vaše koncové body služby jak je znázorněno na následujícím obrázku:
 
    ![Nastavení vlastní domény pro službu API Management][api-management-custom-domain-name]
 

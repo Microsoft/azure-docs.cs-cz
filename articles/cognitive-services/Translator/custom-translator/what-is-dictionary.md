@@ -5,16 +5,16 @@ description: Slovník je zarovnaný dokumentu, který určuje seznam fráze nebo
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 2b7e709a06797323cc99bfd636ee26e9bfb8026d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bfefb1fe44959bc7e5186a0f14813f41256cf2d5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731850"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775437"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8f5d98ff591cb456cbbcb3d28a63f39ab3729152
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 47f3c4bdf21d751cd3804c6a854e7f8706b0815a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308511"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767953"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
@@ -70,8 +70,8 @@ Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, mů�
    az graph query -q 'project name, type | limit 5 | order by name asc'
    ```
 
-  > [!NOTE]
-  > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
+   > [!NOTE]
+   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
 
 1. Aktualizujte dotaz tak, aby se nejprve výsledky seřadily podle názvu (nastavte `order by` na **Name**) a pak nastavte omezení (`limit`) na prvních pět výsledků:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Odstranit bránu virtuální sítě: prostředí PowerShell: Azure classic | Dokumentace Microsoftu'
+title: 'Odstraňte bránu virtuální sítě: PowerShell: Azure classic | Dokumentace Microsoftu'
 description: Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení classic.
 services: vpn-gateway
 documentationcenter: na
@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319842"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767766"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Odstranit bránu virtuální sítě pomocí prostředí PowerShell (classic)
 
@@ -46,7 +46,7 @@ Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke s
 Add-AzureAccount
 ```
 
-## <a name="export"></a>Krok 2: Export a zobrazit soubor konfigurace sítě
+## <a name="export"></a>Krok 2: Vyexportovat a zobrazit soubor konfigurace sítě
 
 Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. Tento soubor do obou zobrazení aktuální informace o konfiguraci a také upravit konfiguraci sítě používáte.
 
@@ -56,9 +56,9 @@ V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\Azure
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-V textovém editoru otevřete soubor a podívejte se na název pro klasické virtuální sítě. Při vytváření virtuální sítě na webu Azure Portal, není úplný název, který používá Azure nezobrazuje na portálu. Virtuální síť, která se zobrazí s názvem "ClassicVNet1" na webu Azure Portal, například může mít mnohem déle, název v konfiguračním souboru sítě. Název může vypadat nějak takto: "Skupina ClassicRG1 ClassicVNet1". Názvy virtuální sítě jsou uvedené jako **"VirtualNetworkSite name ="**. Při spuštění rutiny Powershellu, použijte názvy v konfiguračním souboru sítě.
+V textovém editoru otevřete soubor a podívejte se na název pro klasické virtuální sítě. Při vytváření virtuální sítě na webu Azure Portal, není úplný název, který používá Azure nezobrazuje na portálu. Virtuální síť, která se zobrazí s názvem "ClassicVNet1" na webu Azure Portal, například může mít mnohem déle, název v konfiguračním souboru sítě. Název může vypadat podobně jako: Seskupit ClassicRG1 ClassicVNet1. Názvy virtuální sítě jsou uvedené jako **"VirtualNetworkSite name ="**. Při spuštění rutiny Powershellu, použijte názvy v konfiguračním souboru sítě.
 
-## <a name="delete"></a>Krok 3: Odstranění brány virtuální sítě
+## <a name="delete"></a>Krok 3: Odstranit bránu virtuální sítě
 
 Při odstranění brány virtuální sítě, všechna připojení k virtuální síti prostřednictvím brány jsou odpojené. Pokud máte klienty P2S, kteří jsou připojení k virtuální síti, se odpojí bez předchozího upozornění.
 
@@ -156,7 +156,7 @@ Příklad:
  </Gateway>
 ```
 
-### <a name="gwsub"></a>Podsíť brány
+### <a name="gwsub"></a>GatewaySubnet
 
 Odstranit **GatewaySubnet** , který odpovídá k virtuální síti.
 

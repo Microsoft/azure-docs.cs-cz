@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 19a5dee53bee20438098d1aaeb773ebf08f252d4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d3da5cc9e0eff27fde6bcd503c033db12f49371e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993446"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767698"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -181,7 +181,7 @@ namespace Functions.Tests
 
 - **Data**: Tato vlastnost vrátí [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) kolekce ukázková data. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
 
-- **Createdictionary –**: Tato metoda přijímá dvojice klíč/hodnota jako argumenty a vrátí nový `Dictionary` použitý k vytvoření `QueryCollection` k reprezentaci hodnoty řetězce dotazu.
+- **CreateDictionary**: Tato metoda přijímá dvojice klíč/hodnota jako argumenty a vrátí nový `Dictionary` použitý k vytvoření `QueryCollection` k reprezentaci hodnoty řetězce dotazu.
 
 - **CreateHttpRequest**: Tato metoda vytvoří inicializovat pomocí parametrů řetězce dotazu daného požadavku HTTP.
 
@@ -288,10 +288,10 @@ V dalším kroku přidejte nový soubor, pojmenujte ho **defaultTimer.js**a při
 
 ```javascript
 module.exports = {
-    isPastDue: false
+    IsPastDue: false
 };
 ```
-Tento modul implementuje `isPastDue` vlastnost stát je jako instance falešné časovače.
+Tento modul implementuje `IsPastDue` vlastnost stát je jako instance falešné časovače.
 
 Pak pomocí rozšíření VS Code funkce [vytvořit novou funkci jazyka JavaScript HTTP](https://code.visualstudio.com/tutorials/functions-extension/getting-started) a pojmenujte ho *HttpTrigger*. Jakmile se vytvoří funkci, přidejte nový soubor ve stejné složce s názvem **index.test.js**a přidejte následující kód:
 

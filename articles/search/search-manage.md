@@ -7,28 +7,30 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 70343c0d66eb2a00ff2245b7e4876c2e94a96855
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314478"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775590"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Správa služby Azure Search na webu Azure Portal
 > [!div class="op_single_selector"]
-> * [Azure Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Azure Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure Search je plně spravované cloudové vyhledávací služby používá pro sestavení bohaté možnosti vyhledávání do vlastních aplikací. Tento článek popisuje úkoly pro správu služby, které můžete provádět v [webu Azure portal](https://portal.azure.com) pro vyhledávací službu, která jste zřídili. Správa služby je nenáročná záměrné, omezené jenom na následující úlohy:
 
-* Správa přístupu k *klíče api Key* používá pro čtení nebo zápis do vaší služby.
-* Upravte kapacitu služby změnou rozdělení oddílů a replik.
-* Monitorovat využití prostředků relativně k maximálními limity vaší úrovně služby.
+> [!div class="checklist"]
+> * Správa přístupu k *klíče api Key* používá pro čtení nebo zápis do vaší služby.
+> * Upravte kapacitu služby změnou rozdělení oddílů a replik.
+> * Monitorovat využití prostředků relativně k maximálními limity vaší úrovně služby.
 
 Všimněte si, že *upgradovat* není uvedena jako úlohu správy. Protože prostředky se přidělují, když je služba zřízená, přechod na jinou úroveň vyžaduje novou službu. Podrobnosti najdete v tématu [vytvoření služby Azure Search](search-create-service-portal.md).
 
@@ -58,7 +60,7 @@ Informace z hlediska obecné informace o službě, můžete získat následujíc
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>Monitorování využití prostředků
-Na řídicím panelu monitorování prostředků je omezený na informace zobrazené v řídicím panelu služby a několik metrik, které můžete získat pomocí dotazu na službu. Na řídicím panelu služby, v části využití můžete rychle zjistit, zda úrovní prostředků oddílu jsou dostatečné pro vaši aplikaci.
+Na řídicím panelu monitorování prostředků je omezený na informace zobrazené v řídicím panelu služby a několik metrik, které můžete získat pomocí dotazu na službu. Na řídicím panelu služby, v části využití můžete rychle zjistit, zda úrovní prostředků oddílu jsou dostatečné pro vaši aplikaci. Externí prostředky, jako je monitorování Azure, můžete zřizovat, pokud chcete zachytit a zachovat protokolované události. Další informace najdete v tématu [monitorování Azure Search](search-monitor-usage.md).
 
 Pomocí rozhraní REST API služby Search, můžete získat počet v dokumentech a indexech prostřednictvím kódu programu: 
 

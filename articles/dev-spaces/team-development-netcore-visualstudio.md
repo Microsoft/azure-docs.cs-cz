@@ -5,19 +5,18 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 414a45e65bac2966cda0e58b55b7459a552d03fb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25b72b6770e088a2999f1e70f3dc3559587cd0e2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193020"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774809"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ea699a2082ec24d3ebe87dead9ddea6368b7ce
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4a3823f40a81718d365d26775d2b4d02b61cb84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882752"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Integrace Azure Active Directory s TOPdesk – zabezpečení
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/25/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 5559e2fc9b9cce95bd7d5d02a64d134e5eaa03be
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 2758817d58fdd2e80b302b5f833308dbde1a6b63
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100611"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779160"
 ---
 # <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Vytvoření privátní zóny Azure DNS pomocí Azure CLI
 
@@ -47,7 +47,7 @@ az group create --name MyAzureResourceGroup --location "East US"
 
 ## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
 
-Zónu DNS vytvoříte pomocí příkazu `az network dns zone create` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup** a zpřístupní tuto zónu DNS pro virtuální síť **MyAzureVnet**.
+Zónu DNS vytvoříte pomocí příkazu `az network dns zone create` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS s názvem **private.contoso.com** ve skupině prostředků s názvem **MyAzureResourceGroup** a zpřístupňuje zóny DNS pro virtuální síť s názvem  **MyAzureVnet**.
 
 Pokud parametr **ZoneType** vynecháte, zóna se vytvoří jako veřejná zóna. Pokud potřebujete vytvořit privátní zónu, je tento parametr povinný.
 
@@ -61,7 +61,7 @@ az network vnet create \
   --subnet-prefixes 10.2.0.0/24
 
 az network dns zone create -g MyAzureResourceGroup \
-   -n contoso.local \
+   -n private.contoso.com \
   --zone-type Private \
   --registration-vnets myAzureVNet
 ```
@@ -118,12 +118,12 @@ Dokončení tohoto procesu může několik minut trvat.
 
 K vytvoření záznamu DNS použijte příkaz `az network dns record-set [record type] add-record`. Například nápovědu k přidání záznamů A získáte příkazem `azure network dns record-set A add-record --help`.
 
- Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.contoso.local**. Typ záznamu je A a IP adresa je 10.2.0.4.
+ Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **private.contoso.com**, ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
 
 ```azurecli
 az network dns record-set a add-record \
   -g MyAzureResourceGroup \
-  -z contoso.local \
+  -z private.contoso.com \
   -n db \
   -a 10.2.0.4
 ```
@@ -135,13 +135,13 @@ K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
 ```azurecli
 az network dns record-set list \
   -g MyAzureResourceGroup \
-  -z contoso.local
+  -z private.contoso.com
 ```
 Nezapomeňte, že automaticky se vytvořené záznamy A pro vaše dva testovací virtuální počítače se nezobrazí.
 
 ## <a name="test-the-private-zone"></a>Testování privátní zóny
 
-Teď můžete otestovat překlad adres pro privátní zónu **contoso.local**.
+Teď můžete otestovat překlad názvů pro vaše **private.contoso.com** privátní zónu.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
 
@@ -160,13 +160,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
    ```
-   ping myVM01.contoso.local
+   ping myVM01.private.contoso.com
    ```
    Zobrazený výstup by měl vypadat zhruba takto:
    ```
-   PS C:\> ping myvm01.contoso.local
+   PS C:\> ping myvm01.private.contoso.com
 
-   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -180,13 +180,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
    ```
 2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
    ```
-   ping db.contoso.local
+   ping db.private.contoso.com
    ```
    Zobrazený výstup by měl vypadat zhruba takto:
    ```
-   PS C:\> ping db.contoso.local
+   PS C:\> ping db.private.contoso.com
 
-   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128

@@ -9,18 +9,18 @@ editor: amsriva
 ms.assetid: 3976399b-25ad-45eb-8eb3-fdb736a598c5
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 856f23de8a8772255f570a923ecf1708dc819bb5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704706"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778344"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
@@ -40,7 +40,7 @@ V tomto příkladu jsou požadavky, které používají šifrování TLS 1.2, p�
 
 Služba Application Gateway komunikuje pouze se známými back-endovými instancemi, jejichž certifikáty jsou uvedeny v seznamu povolených certifikátů ve službě Application Gateway. Chcete-li povolit vytváření seznamu povolených certifikátů, musíte do aplikační brány nahrát veřejný klíč certifikátů back-endového serveru (nikoliv kořenový certifikát). Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy způsobí chybu brány. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Takové certifikáty také musí být uvedeny v seznamu povolených certifikátů aplikační brány (viz popis v předchozích krocích), aby bylo možné je použít.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po získání informací o koncovém šifrování protokolu SSL přejděte k tématu [Povolení koncového šifrování protokolu SSL v aplikační bráně](application-gateway-end-to-end-ssl-powershell.md) a vytvořte aplikační bránu s koncovým šifrováním protokolu SSL.
 

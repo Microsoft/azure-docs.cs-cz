@@ -2,19 +2,19 @@
 title: Použití Terraformu se službou Azure Cloud Shell
 description: Použijte Terraform se službou Azure Cloud Shell a zjednodušte si ověřování a konfiguraci šablon.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, škálovací sada, virtuální počítač, síť, úložiště, moduly
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: af71cf07ea12e605f57d34b530fcbcd61838128b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773059"
 ---
 # <a name="terraform-cloud-shell-development"></a>Vývoj v Cloud Shellu pomocí Terraformu 
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 72c0db44e1f56cab190f343a87c6b453625a7f70
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8ab1ae5d1f6db563caef5b6c27ccd4fcbbd2e255
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996035"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777630"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazby pro službu Azure Functions
 
@@ -153,7 +153,7 @@ Tento příklad odešle oznámení [šablona registrace](../notification-hubs/no
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node.js is running late!');
     }
@@ -286,7 +286,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** |neuvedeno| Musí být nastavena na "notificationHub". |
 |**direction** |neuvedeno| Musí být nastavena na "out". | 
 |**Jméno** |neuvedeno| Název proměnné používá v kódu funkce pro centra oznámení. |
-|**tagExpression** |**tagExpression** | Výrazy označení umožňují určit, že oznámení bude doručen do skupiny zařízení, které jste se zaregistrovali k přijímání oznámení, které odpovídají výrazu značky.  Další informace najdete v tématu [směrování a značky výrazy](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
+|**tagExpression** |**TagExpression** | Výrazy označení umožňují určit, že oznámení bude doručen do skupiny zařízení, které jste se zaregistrovali k přijímání oznámení, které odpovídají výrazu značky.  Další informace najdete v tématu [směrování a značky výrazy](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení na webu Azure Portal. |
 |**připojení** | **connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec centra oznámení.  Připojovací řetězec musí být nastavena *DefaultFullSharedAccessSignature* hodnotu pro vaše Centrum oznámení. Zobrazit [nastavení řetězce připojení](#connection-string-setup) dále v tomto článku.|
 |**Platforma** | **Platforma** | Vlastnost platformy označuje klientská platforma, vaše cíle oznámení. Ve výchozím nastavení pokud vlastnost platformy je vynecháno z výstupní vazbu šablony oznámení je možné cílit na libovolnou platformu nakonfigurované v centru oznámení Azure. Další informace o použití šablon obecně pro odeslání pro různé platformy oznámení pomocí centra oznámení Azure, najdete v části [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Pokud nastavíte, **platformy** musí být jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Služba nabízených oznámení společnosti Apple. Další informace o konfiguraci centra oznámení pro služby APN a přijímání oznámení v aplikaci klienta najdete v tématu [odesílání nabízených oznámení do iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro správce a přijímání oznámení do aplikace kindle a využívá, najdete v části [Začínáme se službou Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, což je nová verze služby GCM, je také podporována. Další informace najdete v tématu [odesílání nabízených oznámení do systému Android pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Služby nabízených oznámení Windows](https://msdn.microsoft.com/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) cílení na platformy Windows. Windows Phone 8.1 a novější také podporuje služby nabízených oznámení Windows. Další informace najdete v tématu [Začínáme se službou Notification Hubs pro Windows Universal Platform aplikace](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft služba nabízených oznámení](https://msdn.microsoft.com/library/windows/apps/ff402558.aspx). Tato platforma podporuje starší platformy Windows Phone a Windows Phone 8. Další informace najdete v tématu [odesílání nabízených oznámení pomocí Azure Notification Hubs ve Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |

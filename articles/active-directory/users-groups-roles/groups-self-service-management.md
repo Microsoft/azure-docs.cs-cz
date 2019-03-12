@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 211c519668d26a9972f7c34fbe8cce766936df96
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b5584e4ecc78a8805135cb3f36bd5f5cd7079129
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215128"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767069"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
 

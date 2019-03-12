@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432441"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767035"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Začínáme s Azure Automation stavu konfigurace
 
@@ -157,7 +157,6 @@ Konfigurace stavu služby Azure Automation můžete použít ke správě virtuá
    ![Snímek obrazovky okna registrace](./media/automation-dsc-getting-started/RegisterVM.png)
 
    Konfigurace uzlu, který jste zadali, se použijí k virtuálnímu počítači v intervalech stanovených **frekvence režimu konfigurace**, a virtuální počítač znovu zkontroluje aktualizace konfigurace uzlu v intervalech stanovených **aktualizovat Frekvence**. Další informace o tom, jak se používají tyto hodnoty, najdete v části [konfigurace Local Configuration Manageru](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
-1. V **přidat virtuální počítače Azure** okna, klikněte na tlačítko **vytvořit**.
 
 Azure spustí proces zprovoznění virtuálního počítače. Po jeho dokončení se virtuální počítač zobrazuje v **uzly** karty **konfigurace stavu (DSC)** stránky v účtu Automation.
 

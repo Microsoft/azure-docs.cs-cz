@@ -9,14 +9,14 @@ items:
     items:
     - name: Nejnovější aktualizace
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: aktualizace 1902
+      href: azure-stack-update-1902.md
     - name: aktualizace 1901
       href: azure-stack-update-1901.md
     - name: aktualizace 1811
       href: azure-stack-update-1811.md
     - name: aktualizace 1809
       href: azure-stack-update-1809.md
-    - name: aktualizace. 1808
-      href: azure-stack-update-1808.md
 - name: Šablony Rychlý start
   items:
   - name: Použití portálu pro správu
@@ -294,7 +294,7 @@ items:
       href: azure-stack-app-service-update.md
     - name: Aktualizace služby App Service Offline
       href: azure-stack-app-service-update-offline.md
-    - name: Přidání dalších webových rolí pracovního procesu
+    - name: Přidání rolí infrastruktury služby App Service
       href: azure-stack-app-service-add-worker-roles.md
     - name: Konfigurace zdrojů nasazení
       href: azure-stack-app-service-configure-deployment-sources.md
@@ -399,9 +399,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0a38112e8e57c685dec49a380a0e669429dc2673
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991612"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774264"

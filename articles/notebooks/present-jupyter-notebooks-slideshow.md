@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d36cbe50ab040549353efd19dd794ec7fab51b7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081417"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774400"
 ---
 # <a name="run-a-notebook-slideshow"></a>Spusťte Poznámkový blok prezentace
 
@@ -102,7 +102,7 @@ Protože prezentaci vykreslí fragmenty s více svislé mezery než když jsou v
 
 ## <a name="next-steps"></a>Další postup
 
-- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postupy: instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
-- [Postupy: práce s datovými soubory](work-with-project-data-files.md)
-- [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+- [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postup: Instalace balíčků z v rámci poznámkového bloku](install-packages-jupyter-notebook.md)
+- [Postup: Práce s datovými soubory](work-with-project-data-files.md)
+- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)

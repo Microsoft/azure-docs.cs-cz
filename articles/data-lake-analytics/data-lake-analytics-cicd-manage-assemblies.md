@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 0d9192e5ca4dba202ca5287481072bb0f8ae5621
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768021"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Doporučené postupy pro správu sestavení U-SQL v kanálu CI/CD
 
@@ -56,9 +56,9 @@ Postupujte podle těchto kroků k vytvoření projektů a přidávat odkazy.
 
     ![Data Lake Tools pro Visual Studio – vytvořit sestavení z reference](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. Přidat **spravované závislosti** a **další soubory**, pokud tam nějaké jsou. Když přidáte další soubory, nástroj používá relativní cestu k Ujistěte se, že ho můžete najít sestavení na svém místním počítači a v počítači sestavení později. 
+7. Přidat **spravované závislosti** a **další soubory**, pokud tam nějaké jsou. Když přidáte další soubory, nástroj používá relativní cestu k Ujistěte se, že ho můžete najít sestavení na svém místním počítači a v počítači sestavení později.
 
-**@_DeployTempDirectory** v editoru v dolní části okna je předdefinovaná proměnná, která se odkazuje nástroj k výstupní složce sestavení. Ve výstupní složce sestavení každé sestavení má podsložku s názvem název sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce. 
+**\@_DeployTempDirectory** v editoru v dolní části okna je předdefinovaná proměnná, která se odkazuje nástroj k výstupní složce sestavení. Ve výstupní složce sestavení každé sestavení má podsložku s názvem název sestavení. Všechny knihovny DLL a další soubory jsou v této podsložce.
 
 ## <a name="build-a-u-sql-database-project"></a>Sestavit projekt U-SQL database
 

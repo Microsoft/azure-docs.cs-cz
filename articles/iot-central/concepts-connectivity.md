@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 5f89077980cc36bb2fd08b100da4625c39302c35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: eb16778e0e7050dfda92fcc1b92afffe5860268d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311929"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767579"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -43,7 +43,7 @@ Tento přístup je užitečný při experimentování s IoT Central nebo testov�
 
 Pro připojení jedno zařízení k IoT Central, pomocí SAS, postupujte podle těchto kroků:
 
-1. Chcete-li přidat skutečné zařízení, přejděte na **Průzkumník zařízení**, zvolte šablonu zařízení a vyberte **+ nový > skutečné**:
+1. Chcete-li přidat skutečné zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a vyberte **+ nový > skutečné**:
     - Zadejte vlastní (malá písmena) **ID zařízení** nebo použijte navrhovaný ID.
     - Zadejte **název zařízení** nebo použijte navrhovaný název.
 

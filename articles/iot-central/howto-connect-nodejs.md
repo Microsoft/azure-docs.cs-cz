@@ -3,17 +3,17 @@ title: Připojit obecný klientská aplikace Node.js do Azure IoT Central | Doku
 description: Jako vývojář zařízení jak se připojit k aplikaci Azure IoT Central Obecné zařízení Node.js.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/26/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b22d719a25a93e1dffdba848e18f732b31e6e67d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c04358734923654366eb679505910e14d0e0059b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214516"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767528"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -93,7 +93,7 @@ Pole Název zadejte přesně tak, jak je znázorněno v tabulce do šablony zař
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zařízení můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Podrobné pokyny o tom, jak připojit aplikaci Node.js do IoT Central, naleznete v tématu [generovat připojovací řetězec pro skutečné zařízení z aplikace](tutorial-add-device.md#generate-connection-string-for-real-device-from-application) a [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidáte zařízení.
+V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zařízení můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Podrobné pokyny o tom, jak připojit aplikaci Node.js do IoT Central, naleznete v tématu [generovat připojovací řetězec pro skutečné zařízení z aplikace](tutorial-add-device.md#generate-connection-string) a [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidáte zařízení.
 
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
@@ -129,11 +129,10 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     var client = clientFromConnectionString(connectionString);
     ```
 
-  > [!NOTE]
-  > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu. Další nápovědu najdete taky podrobné sadu pokynů [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidat zařízení.
+    > [!NOTE]
+    > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto pokynů a [získat připojovací řetězec zařízení](concepts-connectivity.md#get-a-connection-string) a pokračujte se zbývající část tohoto kurzu. Další nápovědu najdete taky podrobné sadu pokynů [Příprava klientský kód](tutorial-add-device.md#prepare-the-client-code) v kurzech > Přidat zařízení.
 
-
-  Aktualizujte zástupný text `{your device connection string}` připojovacím řetězcem zařízení. V této ukázce jsme inicializovat `targetTemperature` na nulu, můžete volitelně provést aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení. 
+    Aktualizujte zástupný text `{your device connection string}` připojovacím řetězcem zařízení. V této ukázce jsme inicializovat `targetTemperature` na nulu, můžete volitelně provést aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení. 
 
 1. K odesílání telemetrických dat, stavu a událostí měření do aplikace Azure IoT Central, přidejte následující funkci k souboru:
 
@@ -269,7 +268,7 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 
     ![Zobrazení telemetrických dat](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Dlaždice vlastnosti zařízení jsou aktualizovány, pokud je připojení úspěšné.
+* Zobrazit hodnoty vlastností zařízení odeslané ze zařízení **vlastnosti** stránky. Vlastnosti dlaždice aktualizace zařízení Pokud je připojení úspěšné.
 
     ![Zobrazení vlastností zařízení](media/howto-connect-nodejs/viewproperties.png)
 

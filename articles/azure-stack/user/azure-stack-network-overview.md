@@ -5,17 +5,17 @@ services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: c54f1f8ed8447c69dbfa924469d854ebdd97407f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67465a64f38ce4767b384cf5395179c0dbcb99fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252196"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769893"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Úvod do práce se sítěmi na platformě Azure Stack
 
@@ -43,4 +43,4 @@ Azure Stack nabízí širokou škálu možností sítě, které lze použít spo
 
 ## <a name="next-steps"></a>Další postup
 
-* [Důležité informace týkající se sítích Azure stacku](azure-stack-network-differences.md)
+* [Aspekty sítí Azure Stack](azure-stack-network-differences.md)

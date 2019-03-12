@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: b28316242f608fcfc2b368170190a771c4abbc8e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 698e6fb861ab891a84aa43ca94769099a5c76943
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456104"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766814"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -158,9 +158,6 @@ Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifiká
 ## <a name="data-sources"></a>Zdroje dat
 
 ### <a name="tomcat"></a>Tomcat
-
->[!NOTE]
-> Pokud vaše aplikace používá Spring Framework nebo Spring Boot, můžete nastavit informace o připojení databáze pro Spring Data JPA jako proměnné prostředí [ve vlastnosti souboru aplikace]. Pak pomocí [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings) definovat tyto hodnoty pro vaši aplikaci v portálu Azure portal nebo rozhraní příkazového řádku.
 
 Tyto pokyny platí pro všechna připojení k databázi. Je potřeba vyplnit zástupné symboly s názvem třídy ovladač vybrané databáze a soubor JAR. K dispozici je také tabulka s názvy tříd a soubory ke stažení ovladače pro běžné databáze.
 

@@ -3,19 +3,18 @@ title: Vytváření prostředí pro vývoj Kubernetes Node.js v cloudu s VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: b7437264bd51bcdc1be4d378cd4fbee506a6e83f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 655efec036547dc342940c42c8b6a536ad4e793c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193649"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767879"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 
@@ -72,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.13 --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.

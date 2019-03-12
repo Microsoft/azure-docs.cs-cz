@@ -2,19 +2,19 @@
 title: Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
 description: Zjistěte, jak nainstalovat a používat rozšíření Azure Terraform editoru Visual Studio Code.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, azure, devops, visual studio code, rozšíření
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df8260cc0d8ddd8521aa5bf683402c62bc2608f4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074576"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766729"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
 

@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 7e5abf1100c09f8f28d268b3f2defe953c5f36f0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949583"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770131"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí služby Azure Scheduler – Azure Portal
 
@@ -144,7 +144,7 @@ Pokud chcete zobrazit podrobnosti historie jednotlivých spuštění, napříkla
 
 Přístup ke službě Azure Scheduler můžete pro všechny uživatele podrobně spravovat pomocí řízení přístupu na základě role Azure. Informace o nastavení přístupu na základě rolí najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o [konceptech, terminologii a hierarchii entit](scheduler-concepts-terms.md)
 * [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984303"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780010"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)
 
@@ -52,7 +52,7 @@ Pomocí automatizovaného zálohování v2, projděte si následující požadav
 
 - Cílová databáze musí použít model úplného obnovení. Další informace o dopadu úplném modelu obnovení na zálohování, naleznete v tématu [zálohování v části the úplný Model obnovení](https://technet.microsoft.com/library/ms190217.aspx).
 - Systémové databáze není potřeba použít model úplného obnovení. Pokud budete potřebovat zálohy protokolů, které mají být provedeny pro Model nasazení nebo databázi MSDB, však musíte použít model úplného obnovení.
-- Cílová databáze musí být na výchozí instanci SQL serveru. Rozšíření SQL Server IaaS nepodporuje pojmenované instance.
+- Cílová databáze musí být na buď výchozí instanci SQL serveru, nebo [správně nainstalována](virtual-machines-windows-sql-server-iaas-faq.md#administration) pojmenované instance. 
 
 > [!NOTE]
 > Automatizované zálohování se může spolehnout **rozšíření agenta SQL Server IaaS**. Aktuální Image SQL z Galerie virtuálních počítačů přidat toto rozšíření ve výchozím nastavení. Další informace najdete v tématu [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md).
@@ -107,7 +107,7 @@ Máte virtuálního počítače SQL serveru, který obsahuje počet velkých dat
 
 V pondělí povolíte automatizované zálohování v2 s následujícím nastavením:
 
-- Plán zálohování: Ručně
+- Plán zálohování: Manual
 - Frekvence úplného zálohování: Denně
 - Čas spuštění úplného zálohování: 22:00
 - Časový interval úplného zálohování: 6 hodin

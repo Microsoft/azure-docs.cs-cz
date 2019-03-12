@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cc66119eeb82eeb5448a14f2f1762822a9bc80
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c636e0974ac26dd6f653b3082bb88e123794f7bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876564"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Integrace Azure Active Directory s použitím ServiceNow
 

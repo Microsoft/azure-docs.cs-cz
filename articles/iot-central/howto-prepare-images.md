@@ -3,17 +3,17 @@ title: Nahrávání obrázků do aplikace Azure IoT Central | Dokumentace Micros
 description: Jako tvůrce informace o přípravě a nahrávání imagí do aplikace Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/31/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4378ff4155cf0b2f9c4af8176f41fe35fc433792
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310705"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767324"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
@@ -30,7 +30,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 Můžete přidat vlastní Image do následujícího umístění, v aplikaci Azure IoT Central:
 
-* **Správce aplikací** stránky
+* **Moje aplikace** stránky
 
     ![Obrázek na stránce správce aplikace](media/howto-prepare-images/applicationmanager.png)
 
@@ -70,7 +70,7 @@ Následující části popisují, jak nahrávat obrázky v různých umístění
 
 ### <a name="application-manager"></a>Správce aplikací
 
-K nahrání obrázku na **Správce aplikací**, přejděte na **nastavení aplikace** stránku **správu** oddílu. Musíte být správcem a dokončete tuto úlohu:
+Nahrát obrázek pro použití na **Moje aplikace** stránce, přejděte na **nastavení aplikace** stránku **správu** části. Musíte být správcem a dokončete tuto úlohu:
 
 ![Nahrání image aplikací](media/howto-prepare-images/uploadapplicationmanager.png)
 
@@ -78,9 +78,9 @@ Výběrem dané dlaždice aplikace Image nahrajete svou image připravená (268 
 
 ### <a name="application-dashboard"></a>Řídicí panel aplikací
 
-K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel** vaší aplikace a vyberte **upravit**. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku na řídicí panel aplikací, přejděte **řídicí panel** stránky vaší aplikace a vyberte **upravit**. Musí být Tvůrce k dokončení této úlohy:
 
-![Nahrajte obrázek řídicího panelu aplikací](media/howto-prepare-images/uploadhomepage.png)
+![Nahrajte obrázek řídicího panelu](media/howto-prepare-images/uploadhomepage.png)
 
 V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou image z místního počítače. Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px.
 
@@ -88,15 +88,15 @@ V části Konfigurace Image vyberte dlaždici s obrázkem nahrát připravenou i
 
 ### <a name="device-template"></a>Šablona zařízení
 
-K nahrání obrázku do šablony zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a pak zařízení. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku do šablony zařízení, přejděte na **šablon** a výběr šablony funkce zařízení. Musí být Tvůrce k dokončení této úlohy:
 
 ![Nahrání image šablony zařízení](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Vyberte dlaždici s obrázkem do nahrajete svou image připravená (64 × 64 pixelů) z místního počítače. 
+Vyberte dlaždici s obrázkem do nahrajete svou image připravená (64 × 64 pixelů) z místního počítače.
 
 ### <a name="device-dashboard"></a>Řídicí panel zařízení
 
-K nahrání obrázku na řídicí panel zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránku a vybrat **upravit šablonu**. Musí být Tvůrce k dokončení této úlohy:
+K nahrání obrázku na řídicí panel zařízení, přejděte na **šablon** a výběr šablony funkce zařízení. Klikněte na tlačítko **řídicí panel** kartu. Musí být Tvůrce k dokončení této úlohy:
 
 ![Nahrajte obrázek řídicího panelu zařízení](media/howto-prepare-images/uploaddevicedashboard.png)
 

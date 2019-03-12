@@ -1,18 +1,18 @@
 ---
 title: Nasazení kontejnerů s nástrojem Helm. v Kubernetes v Azure
-description: Nasazení kontejnerů v clusteru Azure Kubernetes Service (AKS) pomocí nástroje Helm balení
+description: Další informace o použití nástroje pro balení Helm k nasazení kontejnerů v clusteru Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 03/06/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f5bad20ddd0968f2e76008799494adbb55bc31
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccd98f5bf859673ae69b80dfcd0e5020ba289682
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092122"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768548"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernet
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud budete potřebovat tyto položky zobrazit, [AKS quickstart][aks-quickstart].
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
 Budete také potřebovat Helm nainstalované rozhraní příkazového řádku, klient, který běží ve vývojovém systému a umožňuje spuštění, zastavení a správu aplikací s nástrojem Helm. Pokud používáte Azure Cloud Shell, rozhraní příkazového řádku Helm je již nainstalována. Pokyny k instalaci na místní platformě najdete [instalace Helm][helm-install].
 
@@ -153,7 +153,7 @@ Následující výstup zhuštěnému příkladu zobrazuje stav nasazení Kuberne
 $ helm install stable/wordpress
 
 NAME:   wishful-mastiff
-LAST DEPLOYED: Thu Jul 12 15:53:56 2018
+LAST DEPLOYED: Wed Mar  6 19:11:38 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
@@ -201,8 +201,8 @@ Chcete-li zobrazit seznam verzí nainstalované ve vašem clusteru, použijte [p
 ```console
 $ helm list
 
-NAME             REVISION    UPDATED                     STATUS      CHART              NAMESPACE
-wishful-mastiff  1           Thu Jul 12 15:53:56 2018    DEPLOYED    wordpress-2.1.3  default
+NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
+wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -236,4 +236,6 @@ Další informace o správě aplikací nasazení Kubernetes pomocí Helm najdete
 [helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
 
 <!-- LINKS - internal -->
-[aks-quickstart]: ./kubernetes-walkthrough.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

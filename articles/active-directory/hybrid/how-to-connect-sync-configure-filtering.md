@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc09756e30cec75a1a121c25f162aa0408fd7a9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173687"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774434"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování, můžete řídit objektů, které se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přijímá všechny objekty ve všech doménách nakonfigurovaných doménových struktur. Obecně platí toto je doporučená konfigurace. Uživatele, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, těžit z globální seznam adresu odeslání e-mailu a volat všem uživatelům. Ve výchozí konfiguraci bylo by nutné stejným způsobem, který by měla s implementací místní Exchange nebo Lync.
@@ -261,7 +261,7 @@ V tomto příkladu změníte filtrování tak, aby pouze uživatelé, které maj
 4. V závislosti na verzi Connect můžete použít buď vyhledejte pravidlo s názvem **na AAD – uživatel připojit** nebo **navýšení kapacity na AAD – uživatel připojit SOAInAD**a klikněte na tlačítko **upravit**.
 5. V automaticky otevíraném okně Odpovědět **Ano** vytvořit kopii tohoto pravidla.
 6. Na **popis** stránce, změňte **prioritu** do nepoužitých hodnot, jako je 50.
-7. Klikněte na tlačítko **Scoping filtr** na levém navigačním panelu a pak klikněte na tlačítko **přidat klauzuli**. V **atribut**vyberte **e-mailu**. V **operátor**vyberte **ENDSWITH**. V **hodnotu**, typ **@contoso.com**a potom klikněte na tlačítko **přidat klauzuli**. V **atribut**vyberte **userPrincipalName**. V **operátor**vyberte **ENDSWITH**. V **hodnotu**, typ **@contoso.com**.
+7. Klikněte na tlačítko **Scoping filtr** na levém navigačním panelu a pak klikněte na tlačítko **přidat klauzuli**. V **atribut**vyberte **e-mailu**. V **operátor**vyberte **ENDSWITH**. V **hodnotu**, typ  **\@contoso.com**a potom klikněte na tlačítko **přidat klauzuli**. V **atribut**vyberte **userPrincipalName**. V **operátor**vyberte **ENDSWITH**. V **hodnotu**, typ  **\@contoso.com**.
 8. Klikněte na **Uložit**.
 9. K dokončení konfigurace budete muset spustit **Full sync**. Pokračujte ve čtení části [použít a ověřit změny](#apply-and-verify-changes).
 

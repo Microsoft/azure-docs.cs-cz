@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 995f01c39c2cca5321a67b7db64af8e3f11f7183
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ec1819bab32370d27c7a4ffc0b9ef9c80ef32c48
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448692"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772926"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

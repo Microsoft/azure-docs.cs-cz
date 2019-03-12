@@ -6,16 +6,16 @@ documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
-ms.topic: mirror-maker
+ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 83f51d2980e5cb5bc2e2a415bb3ee96778667ed7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a0f22e7940a2be442bdf836c0e76e29bad2e9b36
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095031"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769919"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Pomocí nástroje MirrorMaker Kafka s Event Hubs pro Apache Kafka
 
@@ -49,7 +49,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
-* [Stáhněte si](http://maven.apache.org/download.cgi) a [nainstalovat](http://maven.apache.org/install.html) binární archiv Maven
+* [Stáhněte si](https://maven.apache.org/download.cgi) a [nainstalovat](https://maven.apache.org/install.html) binární archiv Maven
     * Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
 * [Git](https://www.git-scm.com/downloads)
     * Na Ubuntu můžete Git nainstalovat spuštěním příkazu `sudo apt-get install git`.

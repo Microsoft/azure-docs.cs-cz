@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 86333e58a1b97d750bd59189850654d93888008d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593195"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776951"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -382,7 +382,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. Po kliknutí na **Dokončit** se jako název tabulky zobrazí **@dataset().SinkTableName**.
+ 1. Po kliknutí na tlačítko **Dokončit**, uvidíte  **\@dataset(). SinkTableName** jako název tabulky.
    
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
