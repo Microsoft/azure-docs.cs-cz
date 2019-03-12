@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 863b380d4f36e24119e64fbd4a59e8cd66c911e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670328"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779415"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -205,6 +205,13 @@ Azure Notification Hubs poskytuje několik funkcí pro řešení potíží, hlav
 ### <a name="what-telemetry-features-are-available"></a>Jaké funkce telemetrická data jsou k dispozici?
 
 Zobrazení telemetrických dat v Azure Notification Hubs umožňuje [Azure Portal]. Podrobnosti o metriky jsou k dispozici na [Notification Hubs metriky] stránky.
+
+Můžete také programově přístup k metrikám. Další informace najdete v následujících článcích:
+
+- [Načíst metriky Azure Monitor s využitím .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Tato ukázka používá uživatelské jméno a heslo. Pokud chcete použít certifikát, přetížit metodu FromServicePrincipal jak poskytnout certifikát, jak je znázorněno v [v tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
+- [Získávání metrik a protokolů aktivit pro určitý prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [Azure návod monitorování rozhraní REST API](../azure-monitor/platform/rest-api-walkthrough.md)
+
 
 > [!NOTE]
 > Úspěšná oznámení jednoduše znamená, že byly dodány nabízených oznámení do externího systému oznámení platformy (například služby APN pro Apple) nebo FCM pro Google. Je odpovědností systému oznámení platformy doručování oznámení do cílových zařízení. Systém oznámení platformy standardně nevystavuje doručování metrik třetím stranám.  

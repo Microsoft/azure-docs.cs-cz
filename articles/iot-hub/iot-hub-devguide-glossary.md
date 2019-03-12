@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011428"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551666"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -191,7 +191,7 @@ Identita modulu je jedinečný identifikátor přiřazený každého modulu, kte
 Podobně jako u dvojče zařízení, dvojče modulu je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub udržuje takové dvojče modulu pro každou identitu modulu, který zřídíte s identitou zařízení služby IoT hub. Dvojčaty modulů umožňují synchronizovat modul ujednání a konfigurací modulu a back-endu řešení. Můžete zadávat dotazy dvojčaty modulů k vyhledání konkrétních modulů a zjistit stav dlouhotrvající operace.
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) je jeden z zasílání zpráv, které protokoly [služby IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokoly zasílání zpráv, které podporuje službu IoT Hub najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
+[MQTT](https://mqtt.org/) je jeden z zasílání zpráv, které protokoly [služby IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokoly zasílání zpráv, které podporuje službu IoT Hub najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="operations-monitoring"></a>Monitorování operací
 IoT Hub [monitorování operací](iot-hub-operations-monitoring.md) vám umožní monitorovat stav operací ve službě IoT hub v reálném čase. [IoT Hub](#iot-hub) sleduje události napříč několika kategoriemi těchto operací. Můžete se rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT Hub pro zpracování. Můžete monitorovat data o chybách nebo nastavení složitější zpracování na základě způsobů data.

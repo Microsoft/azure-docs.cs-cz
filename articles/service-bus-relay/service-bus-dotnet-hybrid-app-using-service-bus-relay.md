@@ -11,15 +11,15 @@ ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0dc50da5eb302e2f1b24c265b4675d93f0a2e849
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614833"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768361"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Zpřístupňují služby WCF v místním do webové aplikace v cloudu s využitím Azure Relay 
 Tento článek popisuje, jak vytvořit hybridní cloudovou aplikaci pomocí Microsoft Azure a Visual Studia. Vytvoříte aplikaci, která používá několik prostředků Azure nahoru a běží v cloudu.
@@ -185,7 +185,7 @@ Nejdříve vytvořte systém katalogu produktů simulované místní.  Tento pro
         }
     }
     ```
-12. V Průzkumníku řešení poklikejte na soubor **App.config**.cs a otevře se v editoru Visual Studio. V dolní části `<system.ServiceModel>` – element (ale pořád ještě uvnitř `<system.ServiceModel>`), přidejte následující kód XML: Nezapomeňte nahradit *yourServiceNamespace* s názvem vašeho oboru názvů a *yourKey* SAS klíč, který jste získali dříve z portálu:
+12. V Průzkumníku řešení poklikejte na soubor **App.config**.cs a otevře se v editoru Visual Studio. V dolní části `<system.ServiceModel>` – element (ale pořád ještě uvnitř `<system.ServiceModel>`), přidejte následující kód XML: Nezapomeňte místo *yourServiceNamespace* zadat název vašeho oboru názvů a místo *yourKey* váš SAS klíč, který jste předtím získali z portálu:
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
 
    ![Přidat jako odkaz][24]
 
-6. Nyní otevřete **HomeController.cs** souboru v editoru sady Visual Studio a nahraďte definici oboru názvů následujícím kódem: Nezapomeňte nahradit *yourServiceNamespace* s názvem vaší služby obor názvů, a *yourKey* váš SAS klíč. To umožňuje klientovi umožní zavolat lokální službou, vrací se výsledek volání.
+6. Nyní otevřete **HomeController.cs** souboru v editoru sady Visual Studio a nahraďte definici oboru názvů následujícím kódem: Nezapomeňte místo *yourServiceNamespace* zadat název vašeho oboru názvů služby a místo *yourKey* váš SAS klíč. To umožňuje klientovi umožní zavolat lokální službou, vrací se výsledek volání.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -448,7 +448,7 @@ Než spustíte aplikaci v cloudu, musíte zkontrolovat, že se **ProductsPortal*
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-1. Stisknutím klávesy F5 aplikaci sestavíte a spustíte. Na místním serveru ( **ProductsServer** konzolové aplikace) by měla začínat první, pak bude **ProductsPortal** v okně prohlížeče měla spustit aplikace, jak je znázorněno na následujícím snímku obrazovky: Znovu si všimněte, že inventář produktů zobrazí seznam dat načtených ze služby v místním systému a tato data zobrazí ve webové aplikaci. Zkontrolujte adresu URL a ujistěte se, že **ProductsPortal** běží v cloudu jako webová aplikace Azure.
+1. Stisknutím klávesy F5 aplikaci sestavíte a spustíte. Na místním serveru ( **ProductsServer** konzolové aplikace) by měla začínat první, pak bude **ProductsPortal** v okně prohlížeče měla spustit aplikace, jak je znázorněno na následujícím snímku obrazovky: Znovu si všimněte, že inventář produktů zobrazí seznam dat načtených z lokálního systému služby a tato data zobrazí ve webové aplikaci. Zkontrolujte adresu URL a ujistěte se, že **ProductsPortal** běží v cloudu jako webová aplikace Azure.
 
    ![Spuštění webové aplikace v Azure][1]
 

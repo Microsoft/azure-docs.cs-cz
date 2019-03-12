@@ -1,18 +1,18 @@
 ---
-title: Službě Azure SignalR bez serveru rychlý start –C#
+title: Funkce SignalR služba bez serveru rychlý start Azure –C#
 description: Rychlý start pro vytvoření chatovací místnosti pomocí služby Azure SignalR a Azure Functions.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/23/2018
+ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: db54282563acc6afac4dada7a45f6dff0716879a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3a437d44c557d2ec53182d4f6178cbea3e54eba
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255053"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544967"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Rychlý start: Vytvoření chatovací místnosti s Azure Functions a služby SignalR pomocí jazyka C\#
 
@@ -21,6 +21,8 @@ Služba Azure SignalR umožňuje snadné přidávání funkcí do aplikací v re
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+
+V tomto kurzu může také spustit na příkazovém řádku (macOS, Windows nebo Linuxem) pomocí [nástrojů Azure Functions Core (v2)](https://github.com/Azure/azure-functions-core-tools#installing), [.NET Core SDK](https://dotnet.microsoft.com/download)a váš oblíbený editor kódu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +36,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurace a spuštění aplikace Azure Functions
 
-1. Spusťte Visual Studio a otevřete řešení ve složce *chat\src\csharp* naklonovaného úložiště.
+1. Spusťte Visual Studio (nebo jiného editoru kódu) a otevřete řešení v *chat\src\csharp* složky naklonovaného úložiště.
 
 1. V prohlížeči, ve kterém máte otevřený Azure Portal, si ověřte, že se úspěšně vytvořila instance služby SignalR, kterou jste nasadili dříve. Vyhledejte její název pomocí vyhledávacího pole v horní části stránky portálu. Instanci vyberte a otevřete.
 
@@ -53,9 +55,17 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     - **GetSignalRInfo**: Používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **SendMessage**: Přijímá zprávy chatu v textu žádosti a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
 
-1. V nabídce **Ladit** vyberte **Spustit ladění** a spusťte aplikaci.
+1. Použijte jednu z následujících možností a spusťte aplikaci Azure Function místně.
 
-    ![Ladění aplikace](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
+    - **Visual Studio**: V nabídce *Ladit* vyberte *Spustit ladění* a spusťte aplikaci.
+
+        ![Ladění aplikace](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
+
+    - **Příkazový řádek**: Spusťte následující příkaz pro spuštění funkce hostitele.
+
+        ```bash
+        func start
+        ```
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
@@ -63,7 +73,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili a spustili bezserverovou aplikaci v reálném čase přes VS Code. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
+V tomto rychlém startu vytvořené a spustili aplikaci v reálném čase bez serveru v sadě Visual Studio. Dále se dozvíte více o tom, jak vyvíjet a nasazovat Azure Functions pomocí sady Visual Studio.
 
 > [!div class="nextstepaction"]
-> [Nasazení Azure Functions přes VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [Vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md)
