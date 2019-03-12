@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: f4d6826d13f92db7a430f668c56825926d198235
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.openlocfilehash: 127e3385f1fd9cf0975ff19818d3112fe5a713d0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340095"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571010"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -29,6 +29,9 @@ Založený na DTU nákupní model omezení pro izolované databáze na server sl
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
 Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
+
+> [!IMPORTANT]
+> Škálování pokyny a důležité informace, najdete v části [škálování izolované databáze](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Obecné účely vrstvy služby: Velikosti úložiště a výpočty velikostí
 
@@ -51,7 +54,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|000
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
@@ -146,7 +149,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 
@@ -170,7 +173,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a velikost úlož
 |Maximální počet souběžných přihlášení (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si horizontální navýšení kapacity|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|Velikost databáze X 1|
 

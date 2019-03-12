@@ -4,16 +4,16 @@ description: Volání operace služby Azure Storage Services REST API, včetně 
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 771f910fce44724250ff79e770e0d1ca56e8765c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476192"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768412"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 

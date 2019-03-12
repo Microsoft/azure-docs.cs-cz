@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/2/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 38b60536a05fc726ddcd06b631078c0a5f3d89ce
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248836"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730532"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Brána Firewall před internetovými útoky Azure na základě logiky filtrování – ve verzi Public Preview
 
@@ -22,8 +22,6 @@ Filtrování podle intelligence hrozeb je možné povolit pro bránu firewall, a
 
 > [!IMPORTANT]
 > Threat intelligence na základě filtrování je aktuálně ve verzi public preview a je k dispozici ve verzi preview smlouvu o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->Threat intelligence filtrování je k dispozici ve všech veřejných oblastech. Uživatelské rozhraní přidružené konfigurace portálu je přidáte do oblastí postupně a bude k dispozici ve všech oblastech v blízké budoucnosti.
 
 Pokud je povolené filtrování podle intelligence před internetovými útoky, přidružená pravidla se zpracovávají před jakoukoli pravidel NAT, pravidla nebo pravidla aplikací. Během období preview jsou zahrnuty pouze nejvyšší spolehlivosti záznamy.
 

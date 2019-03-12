@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: HT
+ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621275"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730940"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -30,7 +30,7 @@ Vývojáři můžou službu Batch používat jako službu platformy k sestavová
 
 Za používání služby Batch se neúčtují žádné další poplatky. Platíte jenom za spotřebované základní prostředky, jako jsou virtuální počítače, úložiště a sítě.
 
-Porovnání mezi službou Batch a dalšími možnostmi řešení prostředí HCP v Azure najdete v tématu [Řešení prostředí HPC, Batch a Big Compute](../virtual-machines/linux/high-performance-computing.md).
+Porovnání mezi službou Batch a dalšími možnostmi řešení prostředí HPC v Azure najdete v tématu [vysoký výkon výpočetního prostředí (HPC) v Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Spouštění paralelních úloh
 Služba Batch pracuje s vnitřně paralelními aplikacemi úlohami (také známé jako „jednoduše paralelně zpracovatelné“). Vnitřně paralelní úlohy jsou ty, u kterých můžou aplikace pracovat odděleně a každá instance odvede určitou část práce. Při provádění můžou aplikace získávat přístup k některým společným datům, ale nekomunikují s jinými instancemi aplikace. Vnitřně paralelní úlohy proto můžou běžet ve velkém měřítku, které závisí na množství výpočetních prostředků dostupných pro souběžné spouštění aplikací.
@@ -88,7 +88,7 @@ Mějte na paměti, že toto je jenom jeden ze způsobů použití služby Batch 
 
 Podrobnější informace o prostředcích služby fondech, uzlech a úlohách a mnoha funkcích rozhraní API, které můžete používat při sestavování aplikace služby Batch, najdete v článku [Přehled funkcí Batch pro vývojáře](batch-api-basics.md). Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte pracovat se službou Azure Batch pomocí jedné z těchto šablon Rychlý start:
 * [Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure](quick-create-cli.md)

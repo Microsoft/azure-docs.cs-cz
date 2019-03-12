@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: b537dd8360c39a744cf9963376387a4c89e33838
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: a6fccb087d8a2c78bb1ad47758952b76b245dbde
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311640"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576187"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Spravovat souboru místo jednoho a ve fondu databází ve službě Azure SQL Database
 
@@ -42,7 +42,7 @@ V následujících scénářích může být potřeba monitorovat využití pros
 
 Většina metrik úložiště prostor zobrazí na webu Azure portal a rozhraní API pro následující míru jenom velikost stránky používaná data:
 
-- Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/az.insights/get-azmetric)
+- Metriky rozhraní API využívající Azure Resource Manager včetně Powershellu [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Ale následující rozhraní API také měření velikost místa vyhrazeného pro databáze a elastické fondy:

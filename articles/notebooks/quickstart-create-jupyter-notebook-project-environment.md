@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9e5f4d6f2086048e428f313bc49cc6f599ee1bec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 35b5f1e29ae125dcac79c278578e900a73ffc7be
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085327"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771377"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Rychlý start: Vytvoření projektu s vlastním prostředím
 
@@ -38,7 +38,7 @@ Projekt v poznámkových bloků Azure je kolekce souborů, jako jsou poznámkov�
 
 1. V **vytvořit nový projekt** automaticky otevírané okno, které se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **vytvořit**:
 
-    - **Název projektu**: projekt s vlastním prostředím
+    - **Název projektu**: Projekt s vlastním prostředím
     - **ID projektu**: prostředí vlastní projektu
     - **Veřejné projektu**: (zaškrtnuto)
     - **Vytvoření README.md**: (zaškrtnuto)

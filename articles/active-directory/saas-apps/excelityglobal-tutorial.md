@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e84becde-64bf-4089-be06-7555616b0965
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: a65f326498427f5180baa677ea3a22d1f5207e36
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 94ba673f7617d3df5ca51254b3d4ab9695dab0fb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406231"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Kurz: Integrace Azure Active Directory s ExcelityGlobal
 

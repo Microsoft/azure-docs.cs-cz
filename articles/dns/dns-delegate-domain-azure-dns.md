@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a952eb679810f36008425ae5daacc4261db50c77
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999608"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779772"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
 
-Služba Azure DNS umožňuje hostování vaší domény DNS a správu vašich záznamů DNS. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. 
+Služba Azure DNS umožňuje hostování vaší domény DNS a správu vašich záznamů DNS. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
 Předpokládejme například, že od registrátora názvů domén zakoupíte doménu contoso.net a potom v Azure DNS vytvoříte zónu s názvem contoso.net. Jako vlastníkovi domény vám registrátor nabídne možnost konfigurovat pro vaši doménu záznamy názvového serveru (tj. záznamy NS). Doménový registrátor uloží tyto záznamy NS v nadřazené zóně, v tomto případě .net. Internet uživatelům na celém světě jsou pak přesměrováni na vaši doménu v zóně Azure DNS, vaše při pokusu o překlad záznamů DNS v contoso.net.
 
@@ -31,6 +31,12 @@ V tomto kurzu se naučíte:
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="prerequisites"></a>Požadavky
+
+Musí mít název domény, který je k dispozici pro testování, můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
+
+Příklad doménu, kterou používá pro účely tohoto kurzu je contoso.net, ale použít vlastní název domény.
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 

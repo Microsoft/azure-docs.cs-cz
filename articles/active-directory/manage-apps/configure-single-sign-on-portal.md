@@ -12,12 +12,12 @@ ms.date: 12/06/2018
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b04831790083f9ba41f20719a7d8ffddc35348b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210403"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571401"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Kurz: Konfigurace založené na SAML jednotného přihlašování pro aplikaci pomocí Azure Active Directory
 
@@ -189,6 +189,6 @@ Provedli jste tyto akce:
 Zavedení aplikace více uživatelům ve vaší organizaci, doporučujeme používat automatické zřizování uživatelů.
 
 > [!div class="nextstepaction"]
->[Zjistěte, jak jako znak uživatelům automatické zřizování](configure-automatic-user-provisioning-portal.md)
+> [Informace o přiřazování uživatelů s využitím automatického zřizování](configure-automatic-user-provisioning-portal.md)
 
 

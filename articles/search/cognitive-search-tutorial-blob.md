@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5fe0fc5aa6bdb217a5e7a8ecb8b1898fd8d3ecf8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429413"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570177"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Zjistěte, jak volat kognitivních hledání rozhraní API (Preview)
 
@@ -55,7 +55,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. Klikněte na **Vytvořit prostředek**, vyhledejte Azure Search a klikněte na **Vytvořit**. Pokud službu Search nastavujete poprvé, přečtěte si informace v článku [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
 
-  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
+   ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto kurzu. To usnadní čištění prostředků, až kurz dokončíte.
 
@@ -63,19 +63,19 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 
-  Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
+   Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
-  ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
+   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
+   ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
 
  
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
+   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
 
 1. Po vytvoření služby, shromážděte následující informace: **Adresa URL** na stránce Přehled a **klíč api-key** (primární nebo sekundární) ze stránky klíče.
 
-  ![Informace o koncovém bodu a klíči na portálu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informace o koncovém bodu a klíči na portálu")
+   ![Informace o koncovém bodu a klíči na portálu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informace o koncovém bodu a klíči na portálu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Nastavení služby Azure Blob a načtení ukázkových dat
 
@@ -106,21 +106,21 @@ Pro tento kurz použijte rozhraní REST API a nástroj, který dokáže formulov
 ### <a name="sample-request"></a>Ukázkový požadavek
 ```http
 POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
-Content-Type: application/json  
-api-key: [admin key]  
+Content-Type: application/json
+api-key: [admin key]
 ```
 #### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json
-{   
-    "name" : "demodata",  
-    "description" : "Demo files to demonstrate cognitive search capabilities.",  
-    "type" : "azureblob",
-    "credentials" :
-    { "connectionString" :
-      "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
-    },  
-    "container" : { "name" : "<your blob container name>" }
-}  
+{
+  "name" : "demodata",
+  "description" : "Demo files to demonstrate cognitive search capabilities.",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" :
+    "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
+  },
+  "container" : { "name" : "<your blob container name>" }
+}
 ```
 Odešlete požadavek. Webový testovací nástroj by měl vrátit kód stavu 201, čímž potvrdí úspěšné provedení. 
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 #### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json
 {
-  "description": 
+  "description":
   "Extract entities, detect language and extract key-phrases",
   "skills":
   [
@@ -193,26 +193,26 @@ Content-Type: application/json
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages", 
+      "textSplitMode" : "pages",
       "maximumPageLength": 4000,
       "inputs": [
-      {
-        "name": "text",
-        "source": "/document/content"
-      },
-      { 
-        "name": "languageCode",
-        "source": "/document/languageCode"
-      }
-    ],
-    "outputs": [
-      {
-            "name": "textItems",
-            "targetName": "pages"
-      }
-    ]
-  },
-  {
+        {
+          "name": "text",
+          "source": "/document/content"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/languageCode"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
       "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
       "context": "/document/pages/*",
       "inputs": [
@@ -351,41 +351,41 @@ Content-Type: application/json
   "targetIndexName" : "demoindex",
   "skillsetName" : "demoskillset",
   "fieldMappings" : [
-        {
-          "sourceFieldName" : "metadata_storage_path",
-          "targetFieldName" : "id",
-          "mappingFunction" : 
-            { "name" : "base64Encode" }
-        },
-        {
-          "sourceFieldName" : "content",
-          "targetFieldName" : "content"
-        }
-   ],
-  "outputFieldMappings" : 
+    {
+      "sourceFieldName" : "metadata_storage_path",
+      "targetFieldName" : "id",
+      "mappingFunction" :
+        { "name" : "base64Encode" }
+    },
+    {
+      "sourceFieldName" : "content",
+      "targetFieldName" : "content"
+    }
+  ],
+  "outputFieldMappings" :
   [
-        {
-          "sourceFieldName" : "/document/organizations", 
-          "targetFieldName" : "organizations"
-        },
-        {
-          "sourceFieldName" : "/document/pages/*/keyPhrases/*", 
-          "targetFieldName" : "keyPhrases"
-        },
-        {
-            "sourceFieldName": "/document/languageCode",
-            "targetFieldName": "languageCode"
-        }      
+    {
+      "sourceFieldName" : "/document/organizations",
+      "targetFieldName" : "organizations"
+    },
+    {
+      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
+      "targetFieldName" : "keyPhrases"
+    },
+    {
+      "sourceFieldName": "/document/languageCode",
+      "targetFieldName": "languageCode"
+    }
   ],
   "parameters":
   {
     "maxFailedItems":-1,
     "maxFailedItemsPerBatch":-1,
-    "configuration": 
+    "configuration":
     {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImages"
+    }
   }
 }
 ```

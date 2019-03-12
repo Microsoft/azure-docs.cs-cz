@@ -1,24 +1,24 @@
 ---
 title: Pomocí řešení Service Map v Azure | Dokumentace Microsoftu
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobnosti o nasazení řešení Service Map ve vašem prostředí a jejich použití v různých scénářích.
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232919"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731093"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -369,14 +369,14 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 |ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
 |AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL záznamů
+### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenty řešení Service Map. Tyto záznamy mají vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--|:--|
-| Typ | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| ID prostředku | Jedinečný identifikátor pro počítač v pracovním prostoru |
+| ResourceId | Jedinečný identifikátor pro počítač v pracovním prostoru |
 | ResourceName_s | Jedinečný identifikátor pro počítač v pracovním prostoru |
 | ComputerName_s | Plně kvalifikovaný název domény počítače |
 | Ipv4Addresses_s | Seznam serveru IPv4 adres |
@@ -399,9 +399,9 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 
 | Vlastnost | Popis |
 |:--|:--|
-| Typ | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| ID prostředku | Jedinečný identifikátor procesu v rámci pracovního prostoru |
+| ResourceId | Jedinečný identifikátor procesu v rámci pracovního prostoru |
 | ResourceName_s | Jedinečný identifikátor procesu v počítači, na kterém je spuštěná|
 | MachineResourceName_s | Název prostředku počítače |
 | ExecutableName_s | Název spustitelného souboru procesu |
@@ -449,7 +449,7 @@ ServiceMapComputer_CL | kde ResourceName_s v ((vyhledávání v (ServiceMapProce
 ServiceMapProcess_CL | kde ExecutableName_s == "curl" | DISTINCT ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvořit skupinu počítačů všechny počítače se systémem CentOS
-ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | DISTINCT ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozí připojení ze skupiny počítačů
 ```

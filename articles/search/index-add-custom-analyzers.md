@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 74c47bcb4097f4db896a778bc4855c0815b967bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: dd3b4743edf8bcd7f03a89b71a8c3a6cc3fe9de9
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436459"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570874"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Vlastní analyzátory přidat do indexu Azure Search
 
@@ -66,77 +66,77 @@ A *vlastní analyzátor* je konkrétní typ [analyzátor textu](search-analyzers
 
 Analyzátor definic je součástí větší index. Zobrazit [vytvořit Index rozhraní API](https://docs.microsoft.com/rest/api/searchservice/create-index) informace o rest index.
 
-```  
-"analyzers":(optional)[  
-   {  
-      "name":"name of analyzer",  
-      "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",  
-      "charFilters":[  
-         "char_filter_name_1",  
-         "char_filter_name_2"  
-      ],  
-      "tokenizer":"tokenizer_name",  
-      "tokenFilters":[  
-         "token_filter_name_1",  
-         "token_filter_name_2"  
-      ]  
-   },  
-   {  
-      "name":"name of analyzer",  
-      "@odata.type":"#analyzer_type",  
-      "option1":value1,  
-      "option2":value2,  
-      ...  
-   }  
-],  
-"charFilters":(optional)[  
-   {  
-      "name":"char_filter_name",  
-      "@odata.type":"#char_filter_type",  
-      "option1":value1,  
-      "option2":value2,  
-      ...  
-   }  
-],  
-"tokenizers":(optional)[  
-   {  
-      "name":"tokenizer_name",  
-      "@odata.type":"#tokenizer_type",  
-      "option1":value1,  
-      "option2":value2,  
-      ...  
-   }  
-],  
-"tokenFilters":(optional)[  
-   {  
-      "name":"token_filter_name",  
-      "@odata.type":"#token_filter_type",  
-      "option1":value1,  
-      "option2":value2,  
-      ...  
-   }  
-]  
-```  
+```
+"analyzers":(optional)[
+   {
+      "name":"name of analyzer",
+      "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
+      "charFilters":[
+         "char_filter_name_1",
+         "char_filter_name_2"
+      ],
+      "tokenizer":"tokenizer_name",
+      "tokenFilters":[
+         "token_filter_name_1",
+         "token_filter_name_2"
+      ]
+   },
+   {
+      "name":"name of analyzer",
+      "@odata.type":"#analyzer_type",
+      "option1":value1,
+      "option2":value2,
+      ...
+   }
+],
+"charFilters":(optional)[
+   {
+      "name":"char_filter_name",
+      "@odata.type":"#char_filter_type",
+      "option1":value1,
+      "option2":value2,
+      ...
+   }
+],
+"tokenizers":(optional)[
+   {
+      "name":"tokenizer_name",
+      "@odata.type":"#tokenizer_type",
+      "option1":value1,
+      "option2":value2,
+      ...
+   }
+],
+"tokenFilters":(optional)[
+   {
+      "name":"token_filter_name",
+      "@odata.type":"#token_filter_type",
+      "option1":value1,
+      "option2":value2,
+      ...
+   }
+]
+```
 
 > [!NOTE]  
 >  Vlastní analyzátory, které vytvoříte, se nezobrazí na portálu Azure portal. Kód, který provádí volání rozhraní API, při definování indexu je jediný způsob, jak přidat vlastní analyzátor.  
 
  V rámci definice indexu v této části můžete umístit kamkoli v textu žádosti o vytvoření indexu, ale obvykle odkazuje na konci:  
 
-```  
-{  
-  "name": "name_of_index",  
-  "fields": [ ],  
-  "suggesters": [ ],  
-  "scoringProfiles": [ ],  
-  "defaultScoringProfile": (optional) "...",  
-  "corsOptions": (optional) { },  
-  "analyzers":(optional)[ ],  
-  "charFilters":(optional)[ ],  
-  "tokenizers":(optional)[ ],  
-  "tokenFilters":(optional)[ ]  
-}  
-```  
+```
+{
+  "name": "name_of_index",
+  "fields": [ ],
+  "suggesters": [ ],
+  "scoringProfiles": [ ],
+  "defaultScoringProfile": (optional) "...",
+  "corsOptions": (optional) { },
+  "analyzers":(optional)[ ],
+  "charFilters":(optional)[ ],
+  "tokenizers":(optional)[ ],
+  "tokenFilters":(optional)[ ]
+}
+```
 
 Definice pro filtry char, tokenizátory a token filtry jsou přidány do indexu pouze v případě, že nastavíte vlastní možnosti. Chcete-li použít existující filtr nebo tokenizátor jako-se, zadejte jeho název v definici analyzátor.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a769a71fe1e99467121eb49a490fa2d0ab4339d3
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446406"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568876"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
@@ -43,17 +43,17 @@ Dokument JSON poskytuje použitelné vstup pro tuto dovednost může být:
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "text": "The brown fox jumps over the dog" ,
-             "itemsToInsert": ["quick", "lazy"],
-             "offsets": [3, 28],
-           }
+        "text": "The brown fox jumps over the dog",
+        "itemsToInsert": ["quick", "lazy"],
+        "offsets": [3, 28],
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -62,15 +62,15 @@ Tento příklad ukazuje výstup předchozího vstup předpokladu, že *insertPre
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "mergedText": "The quick brown fox jumps over the lazy dog" 
-           }
+        "mergedText": "The quick brown fox jumps over the lazy dog"
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -86,22 +86,22 @@ Následující příklad dovednosti používá dovednosti optické rozpoznáván
   "skills":
   [
     {
-        "description": "Extract text (plain and structured) from image.",
-        "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
-        "context": "/document/normalized_images/*",
-        "defaultLanguageCode": "en",
-        "detectOrientation": true,
-        "inputs": [
-          {
-            "name": "image",
-            "source": "/document/normalized_images/*"
-          }
-        ],
-        "outputs": [
-          {
-            "name": "text"
-          }
-        ]
+      "description": "Extract text (plain and structured) from image.",
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "context": "/document/normalized_images/*",
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text"
+        }
+      ]
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
@@ -132,14 +132,14 @@ Následující příklad dovednosti používá dovednosti optické rozpoznáván
 Výše uvedený příklad předpokládá, že existuje pole normalized bitové kopie. Chcete-li získat pole normalized imagí, nastavte *imageAction* konfigurace definice indexeru pro *generateNormalizedImages* jak je znázorněno níže:
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
-      }
-   }
+{
+  //...rest of your indexer definition goes here ...
+  "parameters":{
+    "configuration":{
+        "dataToExtract":"contentAndMetadata",
+        "imageAction":"generateNormalizedImages"
+    }
+  }
 }
 ```
 

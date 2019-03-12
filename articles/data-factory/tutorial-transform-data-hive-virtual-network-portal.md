@@ -3,20 +3,20 @@ title: Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumen
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/04/2018
-ms.author: douglasl
-ms.openlocfilehash: 95c80447a1825d107b0471e69ae4828e56abb9ec
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 9c20c141f640ae5f868b350951e132d3a6479af9
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452021"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576234"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:

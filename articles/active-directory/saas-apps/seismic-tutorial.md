@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 56014c05-e37f-4f85-bcfa-5115dda2d678
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: c95e8ce960cf2ddd70e49ce6d00a882455a41bb1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c2af905cf663a9776b2f411f70b8cefcd5e50fb2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869937"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Kurz: Integrace Azure Active Directory s Seismic
 

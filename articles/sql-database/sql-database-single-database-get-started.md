@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 81b09ff3e8bb7e5a41432ff0bdaac36b657d74ea
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984879"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569123"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal
 
@@ -67,7 +67,7 @@ Vytvoření izolované databáze s ukázkovými daty AdventureWorksLT:
    > [!NOTE]
    > Tento rychlý start využívá [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) je také k dispozici.
    > [!IMPORTANT]
-   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Pro účely tohoto rychlého startu vyberte **standardní** úroveň služby a pak pomocí posuvníku vyberte **10 Dtu (S0)** a **1** GB úložiště.
 9. Vyberte **Použít**.  

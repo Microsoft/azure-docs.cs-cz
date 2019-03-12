@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 3ec6b6f22e32a628edc3146ac17a9e5d8e605b05
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 24c8ec6cfe587fbb6e1e1e5433123aad87705c04
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884210"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569055"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Javy
 
@@ -96,7 +96,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
       <artifactId>okio</artifactId>
       <version>1.13.0</version>
     </dependency>
-    <dependency> 
+    <dependency>
       <groupId>com.nimbusds</groupId>
       <artifactId>nimbus-jose-jwt</artifactId>
       <version>3.6</version>
@@ -172,7 +172,7 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
 2. Chcete-li vytvořit přihlašovací údaje služby Active Directory, které potřebujete k podání žádostí o tento kód vložte do hlavní metoda třídy aplikace:
    
     ```java
-    try {    
+    try {
         final File credFile = new File(System.getenv("AZURE_AUTH_LOCATION"));
         Azure azure = Azure.configure()
             .withLogLevel(LogLevel.BASIC)
@@ -301,23 +301,23 @@ input.nextLine();
 Pokud chcete použít stávající disk místo marketplace image, použijte tento kód: 
 
 ```java
-ManagedDisk managedDisk = azure.disks.define("myosdisk") 
-    .withRegion(Region.US_EAST) 
-    .withExistingResourceGroup("myResourceGroup") 
-    .withWindowsFromVhd("https://mystorage.blob.core.windows.net/vhds/myosdisk.vhd") 
-    .withSizeInGB(128) 
-    .withSku(DiskSkuTypes.PremiumLRS) 
-    .create(); 
+ManagedDisk managedDisk = azure.disks.define("myosdisk")
+    .withRegion(Region.US_EAST)
+    .withExistingResourceGroup("myResourceGroup")
+    .withWindowsFromVhd("https://mystorage.blob.core.windows.net/vhds/myosdisk.vhd")
+    .withSizeInGB(128)
+    .withSku(DiskSkuTypes.PremiumLRS)
+    .create();
 
-azure.virtualMachines.define("myVM") 
-    .withRegion(Region.US_EAST) 
-    .withExistingResourceGroup("myResourceGroup") 
-    .withExistingPrimaryNetworkInterface(networkInterface) 
-    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows) 
-    .withExistingAvailabilitySet(availabilitySet) 
-    .withSize(VirtualMachineSizeTypes.StandardDS1) 
-    .create(); 
-``` 
+azure.virtualMachines.define("myVM")
+    .withRegion(Region.US_EAST)
+    .withExistingResourceGroup("myResourceGroup")
+    .withExistingPrimaryNetworkInterface(networkInterface)
+    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows)
+    .withExistingAvailabilitySet(availabilitySet)
+    .withSize(VirtualMachineSizeTypes.StandardDS1)
+    .create();
+```
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
@@ -384,7 +384,7 @@ for(InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  displayStatus: " + status.displayStatus());
 }
 System.out.println("Press enter to continue...");
-input.nextLine();   
+input.nextLine();
 ```
 
 ### <a name="stop-the-vm"></a>Zastavení virtuálního počítače
@@ -451,10 +451,10 @@ Vzhledem k tomu, že se vám účtovat prostředky používané v Azure, je vžd
 
 1. Pokud chcete odstranit skupinu prostředků, tento kód vložte do bloku try v hlavní metodě:
    
-```java
-System.out.println("Deleting resources...");
-azure.resourceGroups().deleteByName("myResourceGroup");
-```
+    ```java
+    System.out.println("Deleting resources...");
+    azure.resourceGroups().deleteByName("myResourceGroup");
+    ```
 
 2. Soubor App.java uložte.
 

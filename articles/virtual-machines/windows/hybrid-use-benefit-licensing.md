@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: d692eb471c514015271a688e4660700788f1baaa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431458"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570364"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programem Software Assurance programu Azure Hybrid Benefit pro Windows Server vám umožní využít vaše licence v místním systému Windows Server a spusťte Windows virtual machines v Azure s nižšími náklady. Azure Hybrid Benefit pro Windows Server můžete použít k nasazení nových virtuálních počítačů s operačním systémem Windows. Tento článek prochází přes všechny kroky v tom, jak nasadit nové virtuální počítače s programem Azure Hybrid Benefit pro Windows Server a jak můžete aktualizovat existující spouštění virtuálních počítačů. Další informace o programu Azure Hybrid Benefit pro Windows Server najdete v článku úspory licencování a náklady [stránky licencování programu Azure Hybrid Benefit pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -77,11 +77,11 @@ az vm create \
 ### <a name="template"></a>Šablona
 V rámci své šablony Resource Manageru, další parametr `licenseType` musí být zadán. Další informace o [Tvorba šablon Azure Resource Manageru](../../resource-group-authoring-templates.md)
 ```json
-"properties": {  
-   "licenseType": "Windows_Server",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Server",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Převod existujícího virtuálního počítače pomocí programu Azure Hybrid Benefit pro Windows Server
@@ -161,7 +161,7 @@ Z virtuálního počítače nebo virtuálního počítače škálovací sady pro
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$vms = Get-AzVM 
+$vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 

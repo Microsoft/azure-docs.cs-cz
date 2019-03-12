@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 12/4/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 839c97ccccbc1ce2cf646afcd27894a190eda1b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5bf4c99d511e35b697ab383069aab1b31674621b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000881"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771631"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rychlý start: Vytvoření Azure zóny a záznamu DNS pomocí Azure Powershellu
 
@@ -38,18 +38,18 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-Zóna DNS se vytvoří pomocí rutiny `New-AzDnsZone`. Následující příklad vytvoří zónu DNS s názvem *contoso.com* ve skupině prostředků s názvem *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
+Zóna DNS se vytvoří pomocí rutiny `New-AzDnsZone`. Následující příklad vytvoří zónu DNS s názvem *contoso.xyz* ve skupině prostředků s názvem *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
 
 ```powershell
-New-AzDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
+New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 ```
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem „www“ v zóně DNS „contoso.com“ ve skupině prostředků „MyResourceGroup“. Plně kvalifikovaný název sady záznamů je „www.contoso.com“. Typ záznamu je A, IP adresa je 1.2.3.4 a hodnota TTL je 3 600 sekund.
+Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem "www" v zóně DNS "contoso.xyz" ve skupině prostředků "MyResourceGroup". Plně kvalifikovaný název sady záznamů je "www.contoso.xyz". Typ záznamu je "A" s IP adresou "10.10.10.10" a hodnota TTL je 3 600 sekund.
 
 ```powershell
-New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4")
+New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
 ```
 
 ## <a name="view-records"></a>Zobrazení záznamů
@@ -57,28 +57,40 @@ New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupN
 K výpisu záznamů DNS ve vaší zóně použijte:
 
 ```powershell
-Get-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
+Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 ```
 
-## <a name="update-name-servers"></a>Aktualizace názvových serverů
+## <a name="test-the-name-resolution"></a>Testování překladu IP adres
 
-Jakmile budete spokojeni se správným nastavením zóny a záznamů DNS, bude potřeba nakonfigurovat váš název domény tak, aby používal názvové servery DNS Azure. Tím umožníte ostatním uživatelům na internetu najít vaše záznamy DNS.
+Teď, když máte testovací zóna DNS se záznam testu "A", můžete otestovat překlad názvů s nástroj zvaný *nslookup*. 
 
-Názvové servery vaší zóny můžete zobrazit rutinou `Get-AzDnsZone`:
+**K otestování překlad názvů DNS:**
 
-```powershell
-Get-AzDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
+1. Spusťte následující rutiny můžete získat seznam názvové servery vaší zóny můžete zobrazit:
 
-Name                  : contoso.com
-ResourceGroupName     : myresourcegroup
-Etag                  : 00000003-0000-0000-b40d-0996b97ed101
-Tags                  : {}
-NameServers           : {ns1-01.azure-dns.com., ns2-01.azure-dns.net., ns3-01.azure-dns.org., ns4-01.azure-dns.info.}
-NumberOfRecordSets    : 3
-MaxNumberOfRecordSets : 5000
-```
+   ```azurepowershell
+   Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
+   ```
 
-Tyto názvové servery by měly být nakonfigurované u registrátora názvu domény (u kterého jste zakoupili název domény). Registrátor vám nabídne možnost nastavit názvové servery pro doménu. Další informace najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+1. Zkopírujte jeden z názvů názvových serverů z výstupu předchozího kroku.
+
+1. Otevřete příkazový řádek a spusťte následující příkaz:
+
+   ```
+   nslookup www.contoso.xyz <name server name>
+   ```
+
+   Příklad:
+
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+
+   By měl vypadat přibližně jako na následujícím obrázku:
+
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+Název hostitele **www.contoso.xyz** přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 

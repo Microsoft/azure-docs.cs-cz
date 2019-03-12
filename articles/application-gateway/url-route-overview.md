@@ -7,17 +7,17 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: cf3e051e4833c6b654e5ff89cd084911521b3d67
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049231"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774158"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Přehled směrování na základě cesty URL v Azure Application Gateway
 
@@ -25,7 +25,7 @@ Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-e
 
 Jedním ze scénářů je směrování požadavků na různé typy obsahu do různých fondů back-endové serveru.
 
-V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-endového serveru, například: VideoFondServeru, ObrazkyFondServeru a VychoziFondServeru.
+V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-end serverů například: Videofondserveru, Obrazkyfondserveru a Vychozifondserveru.
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
@@ -68,7 +68,7 @@ Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end 
 ```
 
 > [!NOTE]
-> PathPattern: Toto nastavení je seznam vzorů cest, které je nutné splnit. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec předávaný ke kontrole cesty neobsahuje žádný text po počátečním znaku „?“ nebo „#“ a tyto znaky zde nejsou povolené.
+> PathPattern: Toto nastavení je seznam vzorů cest tak, aby odpovídaly. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec předávaný ke kontrole cesty neobsahuje žádný text po počátečním znaku „?“ nebo „#“ a tyto znaky zde nejsou povolené.
 
 Více informací najdete v dokumentu [Šablona Resource Manageru používající směrování na základě adresy URL](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
@@ -97,6 +97,6 @@ Fragment pravidla PathBasedRouting:
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](tutorial-url-route-powershell.md) a vytvořte službu Application Gateway s pravidly směrování adres URL.

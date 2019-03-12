@@ -3,17 +3,17 @@ title: Spravovat ověřování ve službě Azure Maps | Dokumentace Microsoftu
 description: Na webu Azure portal můžete použít ke správě ověřování ve službě Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2018
+ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: eb71eab965f8d512a9f1621c2fc38c49b60ee268
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: fe0e325543d245e4415fea925fcdade32eb00614
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009167"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570500"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Spravovat ověřování ve službě Azure Maps
 

@@ -4,16 +4,16 @@ description: Zjistěte, jak zvolit řešení Azure pro přenos dat při přenosu
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 271be60bc26cf6bc9a64c459d030818d9e493a22
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158444"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772853"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro přenos periodických dat.
  
@@ -52,7 +52,7 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Příjem průběžné dat přes síť
 
-| Funkce                                       | Brána pole dat (preview) | Data Box Edge (preview)  | Azure Data Factory        |
+| Funkce                                       | Data Box Gateway (preview) | Data Box Edge (preview)  | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Uspořádání formuláře                                   | Virtuální zařízení             | Fyzické zařízení          | Služby webu Azure Portal, místního agenta                                                            |
 | Hardware                                      | Vaše hypervisoru            | Získáte ho od Microsoftu    | Není k dispozici                                                            |

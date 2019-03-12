@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: c64bf11a5e0d95e2896bb717d4069f9b0d7ea721
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994976"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569990"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
@@ -123,12 +123,12 @@ Názvy vstupy a výstupy vytvořeny v úloze Azure Stream Analytics může slou�
 
 ```json
 {
-"routes": {                                              
-    "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
-    "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream", 
-    "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")" 
+    "routes": {
+        "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
+        "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream",
+        "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")"
+    }
 }
-}   
 
 ```
 Tento příklad ukazuje trasy pro scénář popsaný v následujícím obrázku. Obsahuje hraniční úlohy nazývá "**ASA**", se vstupem s názvem "**teploty**"a výstup s názvem"**výstraha**".

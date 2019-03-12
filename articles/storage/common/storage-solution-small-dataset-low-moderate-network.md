@@ -4,16 +4,16 @@ description: Zjistěte, jak zvolit řešení Azure pro přenos dat při budete m
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: b9c19c4cd85b1ab2bc3ea010d029361957de3943
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7cdaebe62c7071b26c29e599bb0614dbe7631085
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53264109"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778021"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat pro malé datové sady s nízkými do střední šířka pásma sítě
  
@@ -51,7 +51,7 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
 | Funkce                                                            | Azure Storage Explorer                    | portál Azure  | AzCopy<br>Azure PowerShell<br>Azure CLI            | Rozhraní REST API služby Azure Storage nebo sady SDK |
 |----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
-| Dostupnost                                                       | Stažení a instalace <br>Samostatný nástroj | Nástroje na prozkoumávání založeného na webu na webu Azure portal           | Nástroj příkazového řádku |Programovatelný rozhraní v rozhraní .NET, Java, Python, JavaScript, C++, Go, Ruby a PHP                                                         |
+| Dostupnost                                                       | Stáhnout a nainstalovat <br>Samostatný nástroj | Nástroje na prozkoumávání založeného na webu na webu Azure portal           | Nástroj příkazového řádku |Programovatelný rozhraní v rozhraní .NET, Java, Python, JavaScript, C++, Go, Ruby a PHP                                                         |
 | Grafické rozhraní                                              | Ano                                       | Ano                                                     | Ne                | Ne                                                      |
 | Podporované platformy                                              | Windows, Mac, Linux                       | Webové     |Windows, Mac, Linux     |Všechny platformy                                                         |
 | Povolené operace úložiště objektů Blob<br>pro objekty BLOB a složek            | Odeslat<br>Ke stažení<br>Spravovat    | Odeslat<br>Ke stažení<br>Spravovat  |Odeslat<br>Ke stažení<br>Spravovat             | Ano, přizpůsobitelné                                                        |
@@ -64,5 +64,5 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [přenos dat pomocí Průzkumníka služby Azure Storage](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Přenos dat pomocí AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [Přenos dat pomocí nástroje AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 

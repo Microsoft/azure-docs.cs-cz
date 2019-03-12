@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b709851a0b8b4a095b5b1bf5e0f1008359b1f426
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1f1fbc49a42ec9b72ebe74a96ee099630d7416b1
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317403"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570643"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -36,21 +36,21 @@ A **$filter** výrazu můžete provést samostatná jako plně vyjádřené dota
 
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
+    }
 ```
 
 Dalším běžným případem použití je filtry zkombinovat "faceting", kde filtr snižuje styčné plochy dotaz na základě výběru uživatele řízené omezující vlastnost navigace:
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11  
-    {  
-      "search": "test",  
-      "facets": [ "tags", "baseRate,values:80|150|220" ],  
-      "filter": "rating eq 3 and category eq 'Motel'"  
-    }  
+POST /indexes/hotels/docs/search?api-version=2017-11-11
+    {
+      "search": "test",
+      "facets": [ "tags", "baseRate,values:80|150|220" ],
+      "filter": "rating eq 3 and category eq 'Motel'"
+    }
 ```
 
 ### <a name="filter-operators"></a>Operátory filtru  
@@ -89,9 +89,9 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
     Tento třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru.
 
     > [!NOTE]   
-    >  Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
-
->  Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Všimněte si, že není žádná explicitní omezený počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
+    > Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
+    >
+    > Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Všimněte si, že není žádná explicitní omezený počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
 
 -   `search.ismatch` Funkce vyhodnocuje vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají vyhledávacímu dotazu. K dispozici jsou následující přetížení této funkce:
     - `search.ismatch(search)`
@@ -130,106 +130,106 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
  Najdete všechny hotels základní sazba menší než 100 USD, který jsou hodnoceny dosahovalo nebo přesahovalo 4:  
 
-```  
-$filter=baseRate lt 100.0 and rating ge 4  
-```  
+```
+$filter=baseRate lt 100.0 and rating ge 4
+```
 
  Najdete všechny hotels než "Roach Motel", které mají byla renovovanou od 2010:  
 
-```  
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z  
-```  
+```
+$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
  Najdete všechny hotels základní sazba menší než 200 USD, které mají byla renovovanou od 2012 DateTime literál, který obsahuje informace o časovém pásmu pro Tichomořský běžný čas:  
 
-```  
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00  
-```  
+```
+$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+```
 
  Najdete všechny hotely, které mají parkovací zahrnuté a neumožňují kouření:  
 
-```  
-$filter=parkingIncluded and not smokingAllowed  
-```  
+```
+$filter=parkingIncluded and not smokingAllowed
+```
 
  \- OR -  
 
-```  
-$filter=parkingIncluded eq true and smokingAllowed eq false  
-```  
+```
+$filter=parkingIncluded eq true and smokingAllowed eq false
+```
 
  Najdete všechny hotely, které jsou luxusní nebo parkovací patří a mají hodnocení 5:  
 
-```  
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5  
-```  
+```
+$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
+```
 
  Najdete všechny hotely se značkou "Wi-Fi" (kde každý hotelu má značky, které jsou uloženy v poli Collection(Edm.String)):  
 
-```  
-$filter=tags/any(t: t eq 'wifi')  
-```  
+```
+$filter=tags/any(t: t eq 'wifi')
+```
 
  Najdete všechny hotels bez značky "motel":  
 
-```  
-$filter=tags/all(t: t ne 'motel')  
-```  
+```
+$filter=tags/all(t: t ne 'motel')
+```
 
  Najdete všechny hotely se žádné značky:  
 
-```  
-$filter=tags/any()  
-```  
+```
+$filter=tags/any()
+```
 
 Najdete všechny hotely, které nemají značky:  
 
-```  
-$filter=not tags/any()  
-```  
+```
+$filter=not tags/any()
+```
 
 
  Najdete všechny hotely v rámci 10 kilometrů bodu daného odkazu (kde umístění je pole typu Edm.GeographyPoint):  
 
-```  
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10  
-```  
+```
+$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
  Najdete všechny hotely v rámci daného zobrazení popsány mnohoúhelníku (kde umístění je pole typu Edm.GeographyPoint). Všimněte si, že je uzavřena mnohoúhelníku (první a poslední bod sad musí být stejná) a [body musí být uvedeny v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-```  
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')  
-```  
+```
+$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
  Najít všechny hotely, které buď nemají žádnou hodnotu v poli "Popis", nebo explicitně je hodnota nastavena na hodnotu null:  
 
-```  
-$filter=description eq null  
-```  
+```
+$filter=description eq null
+```
 
 Najít všechny hotels s názvem rovná buď Roach motel "nebo"Rozpočtu hotel"):  
 
-```  
-$filter=search.in(name, 'Roach motel,Budget hotel', ',') 
+```
+$filter=search.in(name, 'Roach motel,Budget hotel', ',')
 ```
 
 Najít všechny hotels s názvem rovná buď Roach motel "nebo rozpočtu hotelu oddělené" | "):  
 
-```  
-$filter=search.in(name, 'Roach motel|Budget hotel', '|') 
+```
+$filter=search.in(name, 'Roach motel|Budget hotel', '|')
 ```
 
 Nalezení hotelů všechny značky wifi nebo "fondu":  
 
-```  
-$filter=tags/any(t: search.in(t, 'wifi, pool'))  
+```
+$filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
 Najdete všechny hotels bez značky "motel" ani "kabině":  
 
-```  
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))  
-```  
+```
+$filter=tags/all(t: not search.in(t, 'motel, cabin'))
+```
 
 Najdete dokumenty obsahující slovo "waterfront". Tento dotaz filtru je stejný jako [požadavek hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront`.
 

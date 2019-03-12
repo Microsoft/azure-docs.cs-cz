@@ -4,16 +4,16 @@ description: Zjistěte, jak zvolit řešení Azure pro přenos dat, pokud máte 
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4a8a014b365974bb8c138c74197d3d89cc63e42e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214313"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771976"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s střední pro velká šířka pásma sítě
  
@@ -65,14 +65,14 @@ Pokud používáte přenos dat offline, vysvětluje rozdíly mezi klíčové fun
 |                                     |    Data Box Disk (preview)    |    Data Box                                      |    Silná pole dat (preview)              |    Import/export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Velikost dat                        |    Až 35 TB                 |    Až 80 TB za zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
-|    Typ dat                        |    Objekty BLOB Azure                  |    Objekty BLOB Azure<br>Soubory Azure                    |    Objekty BLOB Azure<br>Soubory Azure            |    Objekty BLOB Azure<br>Soubory Azure          |
-|    Uspořádání formuláře                      |    5 SSD disků na pořadí             |    1 × 50-lbs. velikost plochy zařízení podle pořadí    |    1 X ~ 500-lbs. velká zařízení podle pořadí    |    Až 10 pevné disky nebo disky SSD jednu objednávku        |
+|    Typ dat                        |    Azure Blobs                  |    Azure Blobs<br>Soubory Azure                    |    Azure Blobs<br>Soubory Azure            |    Azure Blobs<br>Soubory Azure          |
+|    Uspořádání formuláře                      |    5 SSD disků na pořadí             |    1 × 50-lbs. velikost plochy zařízení podle pořadí    |    1 X ~500-lbs. velká zařízení podle pořadí    |    Až 10 pevné disky nebo disky SSD jednu objednávku        |
 |    Počáteční instalace               |    Nízká <br>(15 minut)            |    S nízkou až střední <br> (< 30 minut)               |    Střední<br>(1 – 2 hodiny)               |    Střední na složité<br>(proměnné) |
 |    Odesílání dat do Azure               |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
 |    Export dat z Azure           |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
-|    Šifrování                       |    AES 128-bit                  |    AES 256 bitů                                   |    AES 256 bitů                           |    AES 128-bit                         |
+|    Šifrování                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    Hardware                         |     Microsoft zadaný          |    Microsoft zadaný                            |    Microsoft zadaný                    |    Zákazníka                   |
-|    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ-45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
+|    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integrace partnerských řešení              |    Někteří                         |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Někteří                                |
 |    Expedice                         |    Spravovaná Microsoftem            |    Spravovaná Microsoftem                             |    Spravovaná Microsoftem                     |    Spravovaná zákazníkem                    |
 | Použijte v případě přesunu dat         |V rámci obchodní oblasti|V rámci obchodní oblasti|V rámci obchodní oblasti|Přes geografické hranice, například nám EU|
@@ -83,7 +83,7 @@ Pokud používáte online datové přenosy, použijte v tabulce v části pro ve
 
 ### <a name="high-network-bandwidth"></a>Velká šířka pásma sítě
 
-|                                     |    Nástroje AzCopy <br>Prostředí Azure PowerShell <br>Azure CLI             |    Rozhraní REST API, sady SDK služby Azure Storage                   |    Brána pole dat nebo dat pole Edge (preview)           |    Azure Data Factory                                            |
+|                                     |    Nástroje AzCopy <br>Azure PowerShell, <br>Azure CLI             |    Rozhraní REST API, sady SDK služby Azure Storage                   |    Brána pole dat nebo dat pole Edge (preview)           |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Typ dat                  |    Objekty BLOB Azure, služba soubory Azure, tabulky Azure    |    Objekty BLOB Azure, služba soubory Azure, tabulky Azure    |    Objekty BLOB Azure, služba soubory Azure                           |   Podporuje 70 datové konektory pro úložiště dat a formáty    |
 |    Uspořádání formuláře                |    Nástroje příkazového řádku                        |    Programové rozhraní                    |    Microsoft poskytuje virtuální <br>fyzické zařízení nebo     |    Služby na webu Azure portal                                            |
@@ -107,5 +107,5 @@ Pokud používáte online datové přenosy, použijte v tabulce v části pro ve
 - [Zjistěte, jak přenos dat pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
 - Použití rozhraní REST API pro přenos dat
 
-    - [V rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [V jazyce Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f078ffd483a15954353bd14c73c8ad8c87759020
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6456e852038e1be5b244bd4d0920fea4824c310
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879131"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Integrace Azure Active Directory s Elium
 

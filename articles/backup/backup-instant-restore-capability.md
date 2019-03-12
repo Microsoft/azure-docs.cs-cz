@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 3b367619e2d22754b45e8178a25021a677cab6da
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405755"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731639"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
@@ -78,7 +78,7 @@ Alternativně můžete přejít na **vlastnosti** stránce trezoru, chcete-li z�
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurace uchovávání snímek pomocí webu Azure portal
-Tato možnost je teď dostupná v **střed USA – západ**, **Indie – jih**, **Austrálie – východ**, **Severní Evropa**,  **Kanada – střed**, **Kanada – východ**, **Francie – střed**, **Francie – jih**, **Korea – střed**,  **Korea – jih**, **Velká Británie – jih 2**, **Velká Británie – sever**, **Velká Británie – jih**, **Velká Británie – západ**, **Indie – střed** , **Austrálie – jihovýchod**, **východní Asie**, **USA (střed)**, **jihovýchodní Asie**,  **USA (střed) – sever**, **západní USA 2**, **střední část jihu USA**, **Japonsko – východ**, **Japonsko – západ**a **Východní USA 2**.
+Všechny uživatele napříč všemi **veřejných zeměpisných oblastech** se upgradovaly na rychlé obnovení.
 
 Upgradovaný uživatelů na webu Azure Portal uvidíte pole přidá **zásady zálohování virtuálních počítačů** okně v části **rychlé obnovení** části. Doba uchování snímků z můžete změnit **zásady zálohování virtuálního počítače** okno pro všechny virtuální počítače přidružené k určité zásady zálohování.
 

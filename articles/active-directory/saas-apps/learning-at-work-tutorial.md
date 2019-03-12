@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1d607174-bea1-4f40-8233-54cabe02c66a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd6eb0fd4d1821ab74e2fa26d08f2b35c81da4d
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 96630359ebf4808445a2e4382d1955f9cb9ddb7a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983604"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Kurz: Integrace Azure Active Directory s učení v práci
 

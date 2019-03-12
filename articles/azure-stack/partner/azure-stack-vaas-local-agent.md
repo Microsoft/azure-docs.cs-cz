@@ -10,36 +10,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7bf766dc0f73b37fc7de537537c7a885a50c30a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339568"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769212"
 ---
 # <a name="deploy-the-local-agent"></a>Nasazení místního agenta
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Zjistěte, jak chcete použít ověřování jako místní agent Service (VaaS) a zkontrolujte, jestli váš hardware. Místní agent musí být nasazené ve službě Azure Stack řešení se ověřují před spuštěním testů pro ověření.
+Další informace o použití ověřování jako místní agent Service (VaaS) ke spuštění ověřovacích testů. Místní agent musí být nasazený před spuštěním testů pro ověření.
 
 > [!Note]  
-> Ujistěte se, že počítači, na kterém je spuštěná místní agent nedojde ke ztrátě odesílací vázané přístup k Internetu. Tento počítač musí být přístupné pouze uživatelům, kteří mají oprávnění používat VaaS jménem svého tenanta.
+> Ujistěte se, že počítači, na kterém je spuštěná místní agent nedojde ke ztrátě odchozí přístup k Internetu. Tento počítač musí být přístupný jenom uživatelům, kteří jsou oprávněni používat VaaS jménem svého tenanta.
 
 Nasazení místního agenta:
 
-1. Nainstalujte místního agenta
-2. Provádění kontrol správnosti
-3. Spusťte místní agent
+1. Nainstalujte místního agenta.
+2. Kontrolu správnosti.
+3. Spusťte místní agent.
 
 ## <a name="download-and-start-the-local-agent"></a>Stáhněte a spusťte místní agent
 
-Stáhněte agenta do počítače, který splňuje požadavky ve vašem datovém centru, který není součástí systému Azure Stack, ale ten, který má přístup do všech koncových bodů služby Azure Stack.
+Stáhněte agenta do počítače, který splňuje požadavky ve vašem datovém centru a má přístup do všech koncových bodů služby Azure Stack. Tento počítač by neměl být součástí systému Azure Stack nebo hostované v cloudu Azure Stack.
 
 ### <a name="machine-prerequisites"></a>Požadavky na počítač
 
@@ -51,8 +51,6 @@ Zkontrolujte, že váš počítač splňuje následující kritéria:
 - Nejméně 8 procesory
 - Minimální 200 GB místa
 - Stabilní síťové připojení k Internetu
-
-Azure Stack je testovaného systému. Tento počítač by neměl být součástí služby Azure Stack nebo hostované v cloudu Azure Stack.
 
 ### <a name="download-and-install-the-agent"></a>Stažení a instalace agenta
 
@@ -95,7 +93,7 @@ Tento příkaz stáhne veřejnou image z úložiště (PIR) obrázku (operační
 
 ## <a name="checks-before-starting-the-tests"></a>Kontroly před zahájením testů
 
-Testy spustit vzdálené akce. Počítač, který spouští testy musí mít přístup ke koncovým bodům služby Azure Stack, jinak nebude fungovat testy. Pokud používáte místní agent VaaS, použijte na počítači, kde bude agent spuštěn. Můžete zkontrolovat, že váš počítač má přístup ke koncovým bodům služby Azure Stack spuštěním následující kontroly:
+Testy spouštět vzdálené operace. Počítač, který spouští testy musí mít přístup ke koncovým bodům služby Azure Stack, jinak nebude fungovat testy. Pokud používáte místní agent VaaS, použijte na počítači, kde bude agent spuštěn. Můžete zkontrolovat, že váš počítač má přístup ke koncovým bodům služby Azure Stack spuštěním následující kontroly:
 
 1. Zkontrolujte, jestli se dá kontaktovat základní identifikátor URI. Otevřete příkazový řádek nebo prostředí bash a spusťte následující příkaz a nahraďte `<EXTERNALFQDN>` s externí plně kvalifikovaný název domény vašeho prostředí:
 

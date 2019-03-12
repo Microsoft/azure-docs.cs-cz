@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f402aeb82271d4e0f5023f05b0d61713c4ab73c1
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2a88781e17313557438e64492ab84f59018f9914
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338463"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730189"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -30,7 +30,7 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 | Cílové výpočetní prostředí | Typ nasazení | Popis |
 | ----- | ----- | ----- |
 | [Azure Kubernetes Service (AKS)](#aks) | Odvození v reálném čase | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
-| Azure ML Compute | Odvození služby batch | Spusťte dávky předpovědi na výpočetní prostředí. Podporuje virtuální počítače s normální i nízkou prioritou. |
+| [Azure ML Compute](#azuremlcompute) | Odvození služby batch | Spusťte dávky předpovědi na výpočetní prostředí. Podporuje virtuální počítače s normální i nízkou prioritou. |
 | [Azure Container Instances (ACI)](#aci) | Testování | Je vhodný pro vývoj a testování. **Není vhodný pro úlohy v produkčním prostředí.** |
 | [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
 | [Pole programmable gate array (FPGA)](#fpga) | (Preview) Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
@@ -328,7 +328,7 @@ print(aks_target.provisioning_errors)
 
 #### <a name="use-an-existing-cluster"></a>Použít existující cluster
 
-Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. *, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit k existujícímu clusteru do pracovního prostoru:
+Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. ## a obsahuje alespoň 12 virtuálních procesorů, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit existující 1.11 AKS. ## clusteru do pracovního prostoru:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -346,6 +346,11 @@ aks_target.wait_for_completion(True)
 ```
 
 **Časový odhad**: Přibližně 3 minuty.
+
+Další informace o vytvoření clusteru AKS mimo sadu SDK Azure Machine Learning najdete v následujících článcích:
+
+* [Vytvoření AKS clsuter](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 #### <a name="deploy-the-image"></a>Nasazení bitové kopie
 
@@ -372,7 +377,7 @@ print(service.state)
 
 Další informace najdete v tématu v referenční dokumentaci [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) třídy.
 
-### <a id="fpga"></a> Odvození pomocí Azure ML Compute
+### <a id="azuremlcompute"></a> Odvození pomocí Azure ML Compute
 
 Azure ML cílových výpočetních prostředí se vytváří a spravují pomocí služby Azure Machine Learning. Se můžete využít k předpovědi batch z Azure ML kanály.
 
@@ -387,9 +392,14 @@ Postup nasazení model pomocí aplikace Project Brainwave, najdete v části [na
 
 ### <a id="iotedge"></a> Nasazení do Azure IoT Edge
 
-Zařízení Azure IoT Edge je na Linuxu nebo zařízení se systémem Windows, který spustí modul runtime Azure IoT Edge. Modely strojového učení je možné nasadit do těchto zařízení jako moduly IoT Edge. Nasazení modelu do zařízení IoT Edge umožňuje zařízení využívat model přímo, namísto toho, aby k zasílání dat do cloudu pro zpracování. Získáte rychlejší reakční dobu a menší datové přenosy.
+Zařízení Azure IoT Edge je na Linuxu nebo zařízení se systémem Windows, který spustí modul runtime Azure IoT Edge. Pomocí služby Azure IoT Hub, můžete nasadit modely strojového učení do těchto zařízení jako moduly IoT Edge. Nasazení modelu do zařízení IoT Edge umožňuje zařízení využívat model přímo, namísto toho, aby k zasílání dat do cloudu pro zpracování. Získáte rychlejší reakční dobu a menší datové přenosy.
 
 Moduly Azure IoT Edge se nasadí do zařízení z registru kontejneru. Po vytvoření image z modelu je uložen v registru kontejneru pro váš pracovní prostor.
+
+> [!IMPORTANT]
+> Informace v této části se předpokládá, že jste už obeznámení s nainstalovanými moduly Azure IoT Hub a Azure IoT Edge. Zatímco některé informace v této části je specifické pro službu Azure Machine Learning, se stane, většinou procesu nasazení do hraničního zařízení ve službě Azure IoT.
+>
+> Pokud nejste obeznámeni s Azure IoT, přečtěte si téma [základy Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/) a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) základní informace. Další informace o konkrétní operace použije další odkazy v této části.
 
 #### <a name="set-up-your-environment"></a>Nastavení prostředí
 
@@ -399,36 +409,11 @@ Moduly Azure IoT Edge se nasadí do zařízení z registru kontejneru. Po vytvo�
 
 * Trénovaného modelu. Příklad toho, jak pro trénování modelu, najdete v článku [trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentu. Předem natrénovaných modelů je k dispozici na [AI Toolkit pro Azure IoT Edge na Githubu úložiště](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
-#### <a name="prepare-the-iot-device"></a>Připravte zařízení IoT
-Musíte vytvořit služby IoT hub a registrace zařízení nebo opakovaně používat jeden s [tento skript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister).
+#### <a id="getcontainer"></a> Získání přihlašovacích údajů registru kontejneru
 
-``` bash
-ssh <yourusername>@<yourdeviceip>
-sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister
-sudo chmod +x createNregister
-sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
-```
-
-Uložit výsledný řetězec připojení po "cs": "{zkopírovat tento řetězec}".
-
-Inicializovat zařízení stažením [tento skript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) do UbuntuX64 IoT Edge uzlu nebo DSVM spuštěním následujících příkazů:
-
-```bash
-ssh <yourusername>@<yourdeviceip>
-sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge
-sudo chmod +x installIoTEdge
-sudo ./installIoTEdge
-```
-
-IoT Edge uzel je připraven přijmout připojovací řetězec služby IoT hub. Vyhledejte řádek ```device_connection_string:``` a vložte připojovací řetězec z výše mezi uvozovky.
-
-Můžete také zjistěte, jak zaregistrovat zařízení a nainstalovat modul runtime IoT podle [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md) dokumentu.
-
-
-#### <a name="get-the-container-registry-credentials"></a>Získání přihlašovacích údajů registru kontejneru
 Azure IoT pro nasazení modulu IoT Edge do zařízení, potřebuje přihlašovací údaje pro registr kontejneru, který ukládá Image dockeru ve službě Azure Machine Learning.
 
-Můžete snadno načíst přihlašovací údaje registru nezbytné kontejnerové dvěma způsoby:
+Přihlašovací údaje můžete získat dvěma způsoby:
 
 + **Na webu Azure Portal**:
 
@@ -469,24 +454,21 @@ Můžete snadno načíst přihlašovací údaje registru nezbytné kontejnerové
 
      Tyto přihlašovací údaje jsou nezbytné k zajištění na hraničních zařízeních IoT zařízení přístup k imagím v váš privátní registr kontejnerů.
 
+#### <a name="prepare-the-iot-device"></a>Připravte zařízení IoT
+
+Musíte zaregistrovat zařízení v Azure IoT Hub a pak nainstalujte modul runtime IoT Edge na zařízení. Pokud nejste obeznámeni s tímto procesem, přečtěte si téma [rychlý start: Nasazení prvního modulu IoT Edge do zařízení Linux x64](../../iot-edge/quickstart-linux.md).
+
+Další metody registrace zařízení jsou následující:
+
+* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
+* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
+
 #### <a name="deploy-the-model-to-the-device"></a>Model nasadit do zařízení
 
-Můžete snadno nasadit model spuštěním [tento skript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/deploymodel) a zadejte následující informace z výše uvedených kroků: registr název, uživatelské jméno, heslo, adresa url obrázku umístění, název požadovaného nasazení, název služby IoT Hub a ID zařízení, které jste vytvořili. Můžete to udělat ve virtuálním počítači pomocí následujících kroků: 
+Pokud chcete model nasadit do zařízení, použijte informace registru během dodavatelé technologií sešli v [získání přihlašovacích údajů registru kontejneru](#getcontainer) části modulu pro nasazení pomocí kroků pro moduly IoT Edge. Například když [moduly nasazení Azure IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md), musíte nakonfigurovat __nastavení registru__ pro zařízení. Použití __přihlašovací server__, __uživatelské jméno__, a __heslo__ pro svůj registr kontejneru pracovní prostor.
 
-```bash 
-wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/deploymodel
-sudo chmod +x deploymodel
-sudo ./deploymodel <ContainerRegistryName> <username> <password> <imageLocationURL> <DeploymentID> <IoTHubname> <DeviceID>
-```
-
-Alternativně můžete podle kroků v [moduly nasazení Azure IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) dokumentu k nasazení image do svého zařízení. Při konfiguraci __nastavení registru__ pro zařízení, použijte __přihlašovací server__, __uživatelské jméno__, a __heslo__ pro váš pracovní prostor registr kontejnerů.
-
-> [!NOTE]
-> Pokud nejste obeznámeni s Azure IoT Edge, naleznete v následujících dokumentech informace pro zahájení práce se službou:
->
-> * [Rychlé zprovoznění: Nasazení prvního modulu IoT Edge k Linuxovému zařízení](../../iot-edge/quickstart-linux.md)
-> * [Rychlé zprovoznění: Nasazení prvního modulu IoT Edge na zařízení s Windows](../../iot-edge/quickstart.md)
-
+Můžete také nasadit pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) a [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
 
 ## <a name="testing-web-service-deployments"></a>Testování nasazením webových služeb
 

@@ -3,19 +3,19 @@ title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Doc
 description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 10/12/2018
+ms.date: 01/29/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0f03cdb7f407e0f568b543cc09527bb6a6e4c25a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317216"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769672"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení operátora Azure IoT Central
+# <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central – operátor (návrh nové uživatelské rozhraní)
 
 Tento kurz vám jako tvůrci ukáže, jak přizpůsobit zobrazení vaší aplikace pro operátora. Když měníte aplikaci jako tvůrce, můžete zobrazit náhled zobrazení operátor v aplikaci Microsoft Azure IoT Central.
 
@@ -31,8 +31,6 @@ V tomto kurzu se naučíte:
 > * Konfigurovat výchozí řídicí panel aplikací
 > * Ve verzi Preview. výchozí řídicí panel aplikací jako operátor
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste dokončit dva předchozí kurzy:
@@ -42,86 +40,66 @@ Než začnete, měli byste dokončit dva předchozí kurzy:
 
 ## <a name="configure-your-device-dashboard"></a>Konfigurace řídicího panelu zařízení
 
-Jako tvůrce můžete definovat, které informace se zobrazí na řídicím panelu zařízení. V kurzu [Definování nového typu zařízení ve vaší aplikaci](tutorial-define-device-type.md) jste na řídicí panel **Connected Air Conditioner-1** přidali čárový graf a další informace.
+Jako tvůrce můžete definovat, které informace se zobrazí na řídicím panelu zařízení. V [definujte nový typ zařízení ve vaší aplikaci](tutorial-define-device-type.md) kurzu přidáte spojnicový graf a dalších informací **připojené Vzduchovod** řídicího panelu.
 
-1. Pokud chcete upravit šablonu zařízení **Connected Air Conditioner**, v levé navigační nabídce zvolte **Explorer** (Průzkumník):
+1. Chcete-li upravit **připojené Vzduchovod** šablona zařízení, zvolte **šablon** v levé navigační nabídce:
 
-    ![Stránka Explorer (Průzkumník)](media/tutorial-customize-operator/explorer.png)
+    ![Stránka šablony zařízení](media/tutorial-customize-operator/devicetemplates.png)
 
-2. Pokud chcete začít s přizpůsobováním řídicího panelu připojeného klimatizačního zařízení, vyberte šablonu zařízení **Connected Air Conditioner (1.0.0)**. Zvolte zařízení **Connected Air Conditioner-1**, které jste vytvořili v kurzu [Definování nového typu zařízení ve vaší aplikaci](tutorial-define-device-type.md):
+2. Chcete-li přizpůsobit řídicí panel zařízení, vyberte **připojené Vzduchovod (1.0.0)** šablony zařízení, které jste vytvořili v [definujte nový typ zařízení ve vaší aplikaci](tutorial-define-device-type.md) kurzu.
 
-    ![Výběr připojeného klimatizačního zařízení](media/tutorial-customize-operator/selectdevice.png)
-
-    Když jste uvnitř zařízení, jako je třeba **Connected Air Conditioner-1**, můžete měnit příslušnou šablonu pomocí možnosti **Upravit šablonu**. Další informace najdete v tématu [Vytvoření nové verze šablony zařízení](howto-version-devicetemplate.md).
-
-3. Pokud chcete upravit řídicí panel, zvolte **řídicí panel** a vyberte možnost **Upravit šablonu**:
-
-    ![Stránka řídicího panelu šablony zařízení](media/tutorial-customize-operator/dashboard.png)
+3. Chcete-li upravit řídicí panel, vyberte **řídicí panel** kartu.
 
 4. Pokud chcete na řídící panel přidat dlaždici Klíčový ukazatel výkonu, zvolte **KPI** (Klíčový ukazatel výkonu):
-
-    ![Přidání KPI](media/tutorial-customize-operator/addkpi.png)
 
     Při definování klíčového ukazatele výkonu použijte informace v následující tabulce:
 
     | Nastavení     | Hodnota |
     | ----------- | ----- |
     | Název        | Maximální teplota |
+    | Časové rozmezí  | Poslední 1 týden |
+    | Typ měření | Telemetrická data |
     | Měření | Teplota |
     | Agregace | Maximum |
-    | Časové rozmezí  | Poslední 1 týden |
+    | Viditelnost  | Povoleno |
 
-5. Zvolte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
+    ![Přidání KPI](media/tutorial-customize-operator/addkpi.png)
+
+5. Vyberte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
 
     ![Dlaždice KPI](media/tutorial-customize-operator/temperaturekpi.png)
 
-6. Pokud chcete přesunout dlaždici na řídicím panelu nebo změnit její velikost, přesuňte ukazatel myši na dlaždici. Dlaždici můžete přetáhnout na nové umístění nebo změnit její velikost:
-
-    ![Úprava rozložení řídicího panelu](media/tutorial-customize-operator/dashboardlayout.png)
-
-7. Vyberte **provádí** po dokončení změn.
+6. Pokud chcete přesunout dlaždici na řídicím panelu nebo změnit její velikost, přesuňte ukazatel myši na dlaždici. Můžete přetáhnout na dlaždici na nové umístění nebo změňte jeho velikost.
 
 ## <a name="configure-your-settings-layout"></a>Konfigurace rozložení nastavení
 
-Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro operátora. Operátor používá stránku nastavení zařízení ke konfiguraci zařízení. Operátor použije stránku nastavení například k nastavení cílové teploty pro připojenou klimatizaci.
+Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro operátora. Operátor používá ke konfiguraci zařízení na kartě Nastavení zařízení. Například operátor používá na kartě nastavení nastavit cílové teploty pro připojené klimatizace.
 
-1. Pokud chcete upravit rozložení nastavení pro připojenou klimatizaci, zvolte **Nastavení** a vyberte možnost **Upravit šablonu**:
-
-    ![Stránka Nastavení](media/tutorial-customize-operator/settings.png)
+1. Chcete-li upravit nastavení rozložení pro vaše připojených klimatizace, zvolte **nastavení** kartu.
 
 2. Dlaždice nastavení můžete přesunout a můžete také upravit jejich velikost:
 
     ![Úprava rozložení nastavení](media/tutorial-customize-operator/settingslayout.png)
 
-3. Vyberte **provádí** po dokončení změn.
-
-> [!NOTE]
-> V režimu **Upravit šablonu** nemůžete upravovat hodnoty nastavení.
-
 ## <a name="configure-your-properties-layout"></a>Konfigurace rozložení vlastností
 
-Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigurovat také pro vlastnosti zařízení. Operátor používá stránku vlastností zařízení ke správě metadat zařízení. Operátor použije stránku vlastností například k zobrazení sériového čísla zařízení nebo aktualizaci kontaktních údajů pro výrobce.
+Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigurovat také pro vlastnosti zařízení. Operátor používá ke správě metadat zařízení na kartě Vlastnosti zařízení. Například operátor používá na kartě Vlastnosti Zobrazit sériové číslo zařízení ani aktualizovat kontaktní údaje pro výrobce.
 
-1. Pokud chcete upravit rozložení vlastností pro připojenou klimatizaci, zvolte **Vlastnosti** a poté vyberte možnost **Upravit šablonu**:
-
-    ![Stránka Vlastnosti](media/tutorial-customize-operator/properties.png)
+1. Chcete-li upravit vlastnosti rozložení pro vaše připojených klimatizace, zvolte **vlastnosti** kartu.
 
 2. Pole vlastností můžete přesunout a můžete také upravit jejich velikost:
 
     ![Úprava rozložení vlastností](media/tutorial-customize-operator/propertieslayout.png)
 
-3. Vyberte **provádí** po dokončení změn.
-
-> [!NOTE]
-> V režimu **Upravit šablonu** nemůžete upravovat hodnoty vlastností.
-
 ## <a name="preview-the-device"></a>Zařízení ve verzi Preview
 
-V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud nejste v režimu **Upravit šablonu**, můžete aplikaci zobrazit jako operátor.
+Můžete použít **šablon** stránky k přizpůsobení karty řídicí panel, nastavení a vlastnosti pro operátor. Můžete použít **Device Explorer** stránky zobrazení a použití šablony zařízení.
 
-1. Chcete-li zobrazit jako operátor vzduchovod připojených zařízení, vyberte **provádí** ukončit úpravy šablony a vraťte se do zobrazení operátora na zařízení.
+1. Zobrazení a použití šablony vzduchovod připojené jako operátor, přejděte **Device Explorer** stránky a zvolte simulovaného zařízení tento IoT Central generován ze šablony:
 
-2. Pokud chcete aktualizovat umístění tohoto zařízení, upravte hodnotu na dlaždici s umístěním a potom zvolte **Uložit**:
+    ![Zobrazit a používat šablonu zařízení](media/tutorial-customize-operator/usetemplate.png)
+
+2. Chcete-li aktualizovat umístění tohoto zařízení, zvolte **vlastnosti** a upravit její hodnotu v dlaždici umístění. Potom vyberte **Uložit**:
 
     ![Úprava nastavení vlastnosti](media/tutorial-customize-operator/editproperty.png)
 
@@ -161,7 +139,7 @@ Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, zobrazí 
 
 ## <a name="preview-the-dashboard"></a>Ve verzi Preview řídicí panel
 
-Chcete-li zobrazit řídicí panel aplikací jako operátor náhled, vyberte **provádí** v horní části stránky
+Chcete-li zobrazit řídicí panel aplikací jako operátor náhled, vyberte **provádí** v horní části stránky.
 
 ![Přepnutí režimu návrhu](media/tutorial-customize-operator/operatorviewhome.png)
 
@@ -177,8 +155,8 @@ V tomto kurzu jste se naučili, jak přizpůsobit zobrazení aplikace pro operá
 > * Konfigurace rozložení nastavení zařízení
 > * Konfigurace rozložení vlastností zařízení
 > * Zobrazení náhledu zařízení jako operátor
-> * Konfigurovat výchozí řídicí panel aplikací
-> * Ve verzi Preview. výchozí řídicí panel aplikací jako operátor
+> * Konfigurace výchozí domovské stránky
+> * Zobrazení náhledu výchozí domovské stránky jako operátor
 
 Teď když jste se naučili, jak přizpůsobit zobrazení aplikace pro operátora, můžete přejít k dalším navrhovaným krokům:
 

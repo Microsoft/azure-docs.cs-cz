@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: monitoring
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 5de5191ee616f38404e2423c23f4e8b363240b0e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4f6076407ea4745556e59d44bd37ab85288e6bd2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308325"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772923"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 

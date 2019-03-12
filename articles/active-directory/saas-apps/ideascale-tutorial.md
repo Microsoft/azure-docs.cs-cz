@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dafb074375cc310daa747c19503f23eff6ec18
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 58b3f45d94cf3e240017c857a1092512353cd61c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879216"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Kurz: Integrace Azure Active Directory s IdeaScale
 

@@ -3,8 +3,8 @@ title: Služba metadat Azure Instance | Dokumentace Microsoftu
 description: Rozhraní rESTful a získat informace o compute, network a nadcházející údržbě události Windows Virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
-author: harijayms
-manager: jeconnoc
+author: KumariSupriya
+manager: harijayms
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
-ms.author: harijayms
-ms.openlocfilehash: 3dc610df85837c5734e9d210574d2dba6208b25a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 02/15/2019
+ms.author: sukumari
+ms.reviewer: azmetadata
+ms.openlocfilehash: 392c3a919f588e8e957222f36e1b0e059bf5adc4
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455003"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726647"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 

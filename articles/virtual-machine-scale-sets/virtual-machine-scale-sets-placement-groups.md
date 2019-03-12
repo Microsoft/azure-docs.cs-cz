@@ -12,15 +12,15 @@ ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 2a1c78a4cec595b672604c90e103ae3b9e40273f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1ec1ec0fab6947f7f07b3c387f4c8af4a0f666cb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693679"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776338"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 

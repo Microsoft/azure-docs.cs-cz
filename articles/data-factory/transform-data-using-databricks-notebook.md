@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 85c3c913564dd38ece76ddd7f72b8ea4da52958e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984760"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778820"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku Databricks ve službě Azure Data Factory
 
@@ -173,13 +173,13 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
        1. **Cesta k poznámkovému bloku** je v tomto případě **/adftutorial/mynotebook**.
 
-1.  Přepněte zpět do **nástroje pro vytváření v uživatelském rozhraní Data Factory**. Přejděte na kartu **Nastavení** pro **aktivitu Notebook1**. 
-    
+1.  Přepněte zpět do **nástroje pro vytváření v uživatelském rozhraní Data Factory**. Přejděte na kartu **Nastavení** pro **aktivitu Notebook1**.
+
     a.  Do aktivity poznámkového bloku **přidejte parametr**. Použijte stejný parametr, který jste dříve přidali do **kanálu**.
 
        ![Přidání parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Pojmenujte parametr **input** (vstup) a jako hodnotu zadejte výraz **@pipeline().parameters.name**.
+    b.  Pojmenujte parametr **vstupní** a zadejte hodnotu jako výraz  **\@kanálu ().parameters.name**.
 
 1.  Pokud chcete kanál ověřit, vyberte **ověřit** tlačítko na panelu nástrojů. Zavřete okno ověřování, vyberte **\>\>** tlačítko (šipka doprava).
 

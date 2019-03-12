@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eee0a5d-24fa-4986-9aef-3c543cfe3296
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbbcc77a58001cce8880e14b5d48b6a5e64dfd4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bad7e034949225b638cad85f1466ca86053f6048
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879794"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>Kurz: Integrace Azure Active Directory s Concur
 

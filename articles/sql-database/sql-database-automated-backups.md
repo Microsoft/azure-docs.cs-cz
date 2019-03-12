@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4a3b48be893c596f1a86bbf308a97868ed546006
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fcd1868c1b17d6c1ad895757b32293d0abc79a24
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313918"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731560"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -42,7 +42,7 @@ Můžete použít tyto zálohy na:
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
 
-Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí nákupní model a úrovně služeb. Můžete aktualizovat zálohování) doby uchování pro databáze na serveru služby SQL Database. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
+Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí nákupní model a úrovně služeb. Můžete aktualizovat období uchování zálohy pro databázi na serveru služby SQL Database. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 
@@ -66,7 +66,7 @@ Výchozí době uchování databáze vytvořené využitím nákupní model zalo
 Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), období uchování zálohy výchozí nastavení je 7 dnů (jednou, ve fondu a instanci databáze). Pro všechny databáze Azure SQL (jednoduché, ve fondu, a instance databáze, můžete [změnit období uchování zálohy 35 dnů](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
-> Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novou míru uchování období se již nebude k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
+> Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novým obdobím uchovávání již nejsou k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
 
 ## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy
 
@@ -144,9 +144,9 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ```json
 {
-  "properties":{  
-      "retentionDays":28
-   }
+  "properties":{
+    "retentionDays":28
+  }
 }
 ```
 

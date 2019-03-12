@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: fd7308e7ecb6e086dffb4bae0cc99c57dd699861
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729812"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569888"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure Data Factory mapování transformace Pivot toku dat
 
@@ -42,7 +42,7 @@ A konečně zvolíte agregaci, kterou chcete použít pro pivotovaná hodnoty a 
 
 (Volitelné) Můžete nastavit vzoru pro pojmenovávání s předponou, střední a příponu je třeba přidat do každého nový název sloupce z hodnoty řádků.
 
-Například "Oblasti" Přesun "Prodeje" výsledkem by byla hodnoty nového sloupce od každé hodnoty prodeje, tj "25", "50", "1000" atd. Ale pokud nastavíte hodnotu předpony "Prodeje" 
+Například "Oblasti" Přesun "Prodeje" výsledkem by byla hodnoty nového sloupce od každé hodnoty prodeje, tj "25", "50", "1000" atd. Ale pokud nastavíte hodnotu předpony "Sales-", každá hodnota sloupce by přidat "Sales-" začátek hodnoty.
 
 ![Otáčení možnosti](media/data-flow/pivot5.png "otáčení 5")
 
@@ -56,4 +56,8 @@ Jazyk výrazů tok ADF Data použít k podrobnému popisu transformace převeden
 
 ### <a name="how-to-rejoin-original-fields"></a>Jak se znovu připojit původní pole
 > [!NOTE]
-> Transformace Pivot bude pouze projektu sloupci používanými v agregaci, seskupení a otáčení akce. Pokud budete chtít zahrnout ostatní sloupce z předchozího kroku do vašeho toku, použít novou větev z předchozího kroku a použití vzoru spojení sama na sebe na připojení toku s původní metadata
+> Transformace Pivot bude pouze projektu sloupci používanými v agregaci, seskupení a otáčení akce. Pokud budete chtít zahrnout ostatní sloupce z předchozího kroku do vašeho toku, použít novou větev z předchozího kroku a použití vzoru spojení sama na sebe na připojení toku s původní metadata.
+
+## <a name="next-steps"></a>Další postup
+
+Zkuste [převést řádky transformace](data-flow-unpivot.md) jak proměnit hodnoty řádků hodnot sloupců. 

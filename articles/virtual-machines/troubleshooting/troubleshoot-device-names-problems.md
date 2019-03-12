@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c21ee4d1d69145a442ad0af05da830548cded237
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748048"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568875"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem
 
@@ -63,11 +63,11 @@ Aplikace používá logické jednotky k vyhledání všech připojených discíc
         ├── lun1 -> ../../../sdd
         ├── lun1-part1 -> ../../../sdd1
         ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3                                    
-                                 
+        └── lun1-part3 -> ../../../sdd3
+
 Informace o logických jednotkách z účtu systému Linux hosta je načíst s použitím `lsscsi` nebo něco podobného:
 
-       $ sudo lsscsi
+      $ sudo lsscsi
 
       [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
@@ -81,32 +81,32 @@ Informace o logických jednotkách z účtu systému Linux hosta je načíst s p
 
 Informace o logických jednotkách hosta se používá s metadaty předplatného Azure najít virtuální pevný disk ve službě Azure Storage, který obsahuje data oddílu. Například můžete použít `az` rozhraní příkazového řádku:
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks                                        
-    [                                                                                                                                                                  
-    {                                                                                                                                                                  
-    "caching": "None",                                                                                                                                              
-      "createOption": "empty",                                                                                                                                         
-    "diskSizeGb": 1023,                                                                                                                                             
-      "image": null,                                                                                                                                                   
-    "lun": 0,                                                                                                                                                        
-    "managedDisk": null,                                                                                                                                             
-    "name": "testVM-20170619-114353",                                                                                                                    
-    "vhd": {                                                                                                                                                          
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"                                                       
-    }                                                                                                                                                              
-    },                                                                                                                                                                
-    {                                                                                                                                                                   
-    "caching": "None",                                                                                                                                               
-    "createOption": "empty",                                                                                                                                         
-    "diskSizeGb": 512,                                                                                                                                              
-    "image": null,                                                                                                                                                   
-    "lun": 1,                                                                                                                                                        
-    "managedDisk": null,                                                                                                                                             
-    "name": "testVM-20170619-121516",                                                                                                                    
-    "vhd": {                                                                                                                                                           
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"                                                       
-      }                                                                                                                                                            
-      }                                                                                                                                                             
+    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+    [
+      {
+        "caching": "None",
+          "createOption": "empty",
+        "diskSizeGb": 1023,
+          "image": null,
+        "lun": 0,
+        "managedDisk": null,
+        "name": "testVM-20170619-114353",
+        "vhd": {
+          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+        }
+      },
+      {
+        "caching": "None",
+        "createOption": "empty",
+        "diskSizeGb": 512,
+        "image": null,
+        "lun": 1,
+        "managedDisk": null,
+        "name": "testVM-20170619-121516",
+        "vhd": {
+          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+        }
+      }
     ]
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Zjišťovat identifikátory UUID systému souborů pomocí blkid
@@ -150,8 +150,8 @@ Pokud chcete získat nejnovější pravidla služby Azure Storage, spusťte nás
 
 Další informace najdete v následujících článcích:
 
-- [Ubuntu: Použití UUID](https://help.ubuntu.com/community/UsingUUID)
+- [Ubuntu: Pomocí UUID](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: Trvalé pojmenování](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
-- [Linux: Identifikátory UUID přínosech pro vás](https://www.linux.com/news/what-uuids-can-do-you)
+- [Linux: Co můžete udělat identifikátory UUID pro vás](https://www.linux.com/news/what-uuids-can-do-you)
 - [Proces Udev: Úvod do správy zařízení ve službě moderního systému Linux](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

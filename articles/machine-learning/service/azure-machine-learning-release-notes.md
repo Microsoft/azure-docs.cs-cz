@@ -9,14 +9,14 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 2/25/2019
+ms.date: 03/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d72676d7eaad539fc6e023bc96ccbb16f0958a7a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bb074dd848ce5e752ba8e4ca1d3a8ee533a2f5d2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311368"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777443"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,6 +24,21 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **hlavní sada SDK pro Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-03-11"></a>2019-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning sady SDK pro Python v1.0.18
+
+ + **Změny**
+   + Balíček azureml tensorboard nahradí azureml. contrib tensorboard.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Sada SDK v1.0.17 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Nyní podporuje přidávání dvě číselné sloupce pro generování výsledné sloupce pomocí výrazu jazyka.
+
++ **Opravy chyb a vylepšení**
+  + Vylepšené dokumentace a kontroly parametrů pro random_split.
+  
 ## <a name="2019-02-27"></a>2019-02-27
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Sada SDK v1.0.16 pro přípravu dat Azure Machine Learning
@@ -37,25 +52,27 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 + **Nové funkce**
 
-  + Azure Machine Learning SDK teď podporuje [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator třídy ke zjednodušení procesu trénování a nasazování modelů pomocí vlastního kódu Chainer.
+  + Azure Machine Learning teď nabízí prvotřídní podporu pro oblíbené DNN framework Chainer. Pomocí [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) třídy uživatelů můžete snadno trénovat a nasazovat modely Chainer.
+    + Zjistěte, jak [spouštět distribuované trénování s ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
+    + Zjistěte, jak [spustit hyperparametrů s využitím HyperDrive Chainer](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure Machine Learning kanály přidat aktivační možnost změny úložiště dat na základě spuštění kanálu. Kanál [Poznámkový blok plán](https://aka.ms/pl-schedule) se aktualizuje a představte tuto funkci.
-  
+
 + **Opravy chyb a vylepšení**
   + Přidali jsme podporu Azure Machine Learning kanály pro nastavení vlastnosti source_directory_data_store na požadované úložiště dat (jako je například úložiště objektů blob) na [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , které jsou předány [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Kroky ve výchozím nastavení používají jako základní úložiště dat, který se může spustit do omezování problémy, když jsou současně spouštěny velký počet kroků úložiště souborů Azure.
 
 ### <a name="azure-portal"></a>portál Azure
 
 + **Nové funkce**
-    + Nové přetažení tabulky prostředí editoru sestav. Uživatelé můžou z vrtu přetáhnout sloupec na oblast tabulky, ve kterém se zobrazí náhled tabulky. Můžete změnit jejich uspořádání sloupců.
-    + Nový prohlížeč souborů protokolů
-    + Odkazy na experimentování spuštění, výpočetních, modely, Image a nasazení z karty aktivity
+  + Nové přetažení tabulky prostředí editoru sestav. Uživatelé můžou z vrtu přetáhnout sloupec na oblast tabulky, ve kterém se zobrazí náhled tabulky. Můžete změnit jejich uspořádání sloupců.
+  + Nový prohlížeč souborů protokolů
+  + Odkazy na experimentování spuštění, výpočetních, modely, Image a nasazení z karty aktivity
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Sada SDK v1.0.15 pro přípravu dat Azure Machine Learning
 
 + **Nové funkce**
   + Teď podporuje zápis souborů datových proudů toku dat pro přípravu dat. Také poskytuje možnost manipulace s názvy souborů datového proudu k vytvoření nové názvy souborů.
     + Postupy: Průvodce: [Práce s datové proudy souborů poznámkového bloku](https://aka.ms/aml-data-prep-file-stream-nb)
- 
+
 + **Opravy chyb a vylepšení**
   + Vylepšení výkonu t-Digest na velkých datových sad.
   + Příprava dat teď podporuje čtení dat z DataPath.

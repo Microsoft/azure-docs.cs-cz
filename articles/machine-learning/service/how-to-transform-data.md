@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c2f11b08f5d8e9bb3be7acfa8ba62100bdc55d99
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: fa6d90866be93645625fa82410f8dd0e3bd33d00
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889796"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774281"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
@@ -39,8 +39,8 @@ Obsahuje sadu SDK pro Azure Machine Learning Data Prep `substring` výrazy můž
 import azureml.dataprep as dprep
 
 # loading data
-dataflow = dprep.read_csv(path=r'data\crime0-10.csv')
-dataflow.head(3)
+dflow = dprep.read_csv(path=r'data\crime0-10.csv')
+dflow.head(3)
 ```
 
 ||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|Domácí|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
@@ -54,7 +54,7 @@ Použití `substring(start, length)` výraz, který se extrahovat předponu ze s
 
 ```python
 substring_expression = dprep.col('Case Number').substring(0, 2)
-case_category = dataflow.add_column(new_column_name='Case Category',
+case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
                                     expression=substring_expression)
 case_category.head(3)
@@ -72,7 +72,7 @@ Použití `substring(start)` výraz k extrahování pouze číslo z případ č�
 
 ```python
 substring_expression2 = dprep.col('Case Number').substring(2)
-case_id = dataflow.add_column(new_column_name='Case Id',
+case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
                               expression=substring_expression2)
 case_id = case_id.to_number('Case Id')
@@ -86,10 +86,10 @@ Sady SDK můžete dává chybějící hodnoty v zadaných sloupcích. V tomto p�
 import azureml.dataprep as dprep
 
 # loading input data
-df = dprep.read_csv(r'data\crime0-10.csv')
-df = df.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
-df = df.to_number(['Latitude', 'Longitude'])
-df.head(3)
+dflow = dprep.read_csv(r'data\crime0-10.csv')
+dflow = dflow.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
+dflow = dflow.to_number(['Latitude', 'Longitude'])
+dflow.head(3)
 ```
 
 ||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka|
@@ -103,12 +103,12 @@ Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Dává tyto chyb�
 Zkontrolujte `MEAN` hodnotu pomocí zeměpisné šířky sloupce [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) funkce. Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
 
 ```python
-df_mean = df.summarize(group_by_columns=['Arrest'],
+dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
                        summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
                                                                  summary_column_name='Latitude_MEAN',
                                                                  summary_function=dprep.SummaryFunction.MEAN)])
-df_mean = df_mean.filter(dprep.col('Arrest') == 'false')
-df_mean.head(1)
+dflow_mean = dflow_mean.filter(dprep.col('Arrest') == 'false')
+dflow_mean.head(1)
 ```
 
 ||Zadržení|Latitude_MEAN|
@@ -127,12 +127,12 @@ impute_mean = dprep.ImputeColumnArguments(column_id='Latitude',
 impute_custom = dprep.ImputeColumnArguments(column_id='Longitude',
                                             custom_impute_value=42)
 # get instance of ImputeMissingValuesBuilder
-impute_builder = df.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
+impute_builder = dflow.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
                                                    group_by_columns=['Arrest'])
 
 impute_builder.learn()
-df_imputed = impute_builder.to_dataflow()
-df_imputed.head(3)
+dflow_imputed = impute_builder.to_dataflow()
+dflow_imputed.head(3)
 ```
 
 ||ID|Zadržení|Zeměpisná šířka|Zeměpisná délka|
@@ -144,7 +144,7 @@ df_imputed.head(3)
 Jak je znázorněno výše výsledek, chybějící šířky byl splněn s `MEAN` hodnotu `Arrest=='false'` skupiny. Chybějící délky byl splněn s 42.
 
 ```python
-imputed_longitude = df_imputed.to_pandas_dataframe()['Longitude'][2]
+imputed_longitude = dflow_imputed.to_pandas_dataframe()['Longitude'][2]
 assert imputed_longitude == 42
 ```
 
@@ -154,8 +154,8 @@ Jeden z pokročilejší nástroje v sadě SDK pro Azure Machine Learning Data Pr
 
 ```python
 import azureml.dataprep as dprep
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
-dataflow.head(4)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
+dflow.head(4)
 ```
 
 ||DATE (Datum)|REPORTTYPE (Typ zprávy)|HOURLYDRYBULBTEMPF (Teplota suchého teploměru ve stupních Fahrenheita)|HOURLYRelativeHumidity (Hodinová relativní vlhkost)|HOURLYWindSpeed (Hodinová rychlost větru)|
@@ -168,8 +168,8 @@ dataflow.head(4)
 Předpokládejme, že je potřeba připojit tento soubor s datovou sadou, kde jsou data a času ve formátu "10. března 2018 | 2: 00 – 4: 00 ".
 
 ```python
-builder = dataflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
-builder.add_example(source_data=df.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
+builder = dflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
+builder.add_example(source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
 builder.preview(count=5) 
 ```
 
@@ -205,7 +205,7 @@ builder.preview(skip=30, count=5)
 Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete-li vyřešit tento problém, cílit na konkrétní záznam indexu a zadejte jiný příklad použití `add_example()` na fungovat `builder` proměnné.
 
 ```python
-builder.add_example(source_data=df.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
+builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
 builder.preview(skip=30, count=5)
 ```
 
@@ -233,7 +233,7 @@ builder.preview(skip=75, count=5)
 |4|1/29/2015 7:54|Žádný|
 
 ```python
-builder.add_example(source_data=df.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
+builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
 ||DATE (Datum)|date_timerange|
@@ -263,21 +263,21 @@ V některých případech, pokud chcete odstranit příklady, které jsou nespr�
 Volání `to_dataflow()` na tvůrce, který vrátí toku dat s požadovanou odvozených sloupců, které jsou přidány.
 
 ```python
-dataflow = builder.to_dataflow()
-df = dataflow.to_pandas_dataframe()
+dflow = builder.to_dataflow()
+df = dflow.to_pandas_dataframe()
 ```
 
 ## <a name="filtering"></a>Filtrování
 
-Sada SDK zahrnuje metody [ `Dataflow.drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) a [ `Dataflow.filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) umožňuje odfiltrovat sloupců nebo řádků.
+Sada SDK zahrnuje metody [ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) a [ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) umožňuje odfiltrovat sloupců nebo řádků.
 
 ### <a name="initial-setup"></a>Počáteční nastavení
 
 ```python
 import azureml.dataprep as dprep
 from datetime import datetime
-dataflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
-dataflow.head(5)
+dflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
+dflow.head(5)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -290,15 +290,15 @@ dataflow.head(5)
 
 ### <a name="filtering-columns"></a>Filtrování sloupce
 
-Chcete-li filtrovat sloupce, použijte `Dataflow.drop_columns()`. Tato metoda přebírá seznam sloupců, vyřaďte nebo ji volat složitější argument [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
+Chcete-li filtrovat sloupce, použijte `drop_columns()`. Tato metoda přebírá seznam sloupců, vyřaďte nebo ji volat složitější argument [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
 
 #### <a name="filtering-columns-with-list-of-strings"></a>Filtrování sloupce s seznamu řetězců
 
-V tomto příkladu `drop_columns` přebírá seznam řetězců. Každý řetězec by měl přesně odpovídat na požadovaný sloupec vyřadit.
+V tomto příkladu `drop_columns()` přebírá seznam řetězců. Každý řetězec by měl přesně odpovídat na požadovaný sloupec vyřadit.
 
 ```python
-dataflow = dataflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
-dataflow.head(2)
+dflow = dflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -311,8 +311,8 @@ dataflow.head(2)
 Můžete taky použít `ColumnSelector` výraz vyřazení sloupce, které odpovídají regulárnímu výrazu. V tomto příkladu je vyřadit všechny sloupce, které odpovídají výrazu `Column*|.*longitude|.*latitude`.
 
 ```python
-dataflow = dataflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
-dataflow.head(2)
+dflow = dflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -322,21 +322,21 @@ dataflow.head(2)
 
 ## <a name="filtering-rows"></a>Filtrování řádků
 
-Chcete-li filtrovat řádky, použijte `DataFlow.filter()`. Tato metoda přebírá sady SDK služby Azure Machine Learning Data Prep výraz jako argument a vrací nový tok dat s řádky, které se výraz vyhodnotí jako True. Výrazy se vytvářejí pomocí Tvůrce výrazů (`col`, `f_not`, `f_and`, `f_or`) a pravidelné operátory (>, <>, =, < =, ==,! =).
+Chcete-li filtrovat řádky, použijte `filter()`. Tato metoda přebírá sady SDK služby Azure Machine Learning Data Prep výraz jako argument a vrací nový tok dat s řádky, které se výraz vyhodnotí jako True. Výrazy se vytvářejí pomocí Tvůrce výrazů (`col`, `f_not`, `f_and`, `f_or`) a pravidelné operátory (>, <>, =, < =, ==,! =).
 
 ### <a name="filtering-rows-with-simple-expressions"></a>Filtrování řádků pomocí jednoduchých výrazů
 
-Tvůrce výrazů `col`, zadejte název sloupce jako argument řetězec `col('column_name')`. Tento výraz použít v kombinaci s jedním z následujících standardní operátory >, <>, =, < =, ==,! = k sestavování, jako výraz `col('Tip_amount') > 0`. A konečně, předejte sestavené výraz do `Dataflow.filter` funkce.
+Tvůrce výrazů `col`, zadejte název sloupce jako argument řetězec `col('column_name')`. Tento výraz použít v kombinaci s jedním z následujících standardní operátory >, <>, =, < =, ==,! = k sestavování, jako výraz `col('Tip_amount') > 0`. A konečně, předejte sestavené výraz do `filter()` funkce.
 
-V tomto příkladu `dataflow.filter(col('Tip_amount') > 0)` vrátí nového toku dat s řádky, ve kterém hodnotu `Tip_amount` je větší než 0.
+V tomto příkladu `dflow.filter(col('Tip_amount') > 0)` vrátí nového toku dat s řádky, ve kterém hodnotu `Tip_amount` je větší než 0.
 
 > [!NOTE] 
 > `Tip_amount` nejprve převeden na číselnou hodnotu, která umožňuje vytvářet výrazu porovnání oproti dalších číselných hodnot.
 
 ```python
-dataflow = dataflow.to_number(['Tip_amount'])
-dataflow = dataflow.filter(dprep.col('Tip_amount') > 0)
-dataflow.head(2)
+dflow = dflow.to_number(['Tip_amount'])
+dflow = dflow.filter(dprep.col('Tip_amount') > 0)
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -348,12 +348,12 @@ dataflow.head(2)
 
 Filtrovat pomocí složité výrazy, jeden nebo více jednoduché výrazy s tvůrci výrazu kombinovat `f_not`, `f_and`, nebo `f_or`.
 
-V tomto příkladu `Dataflow.filter()` vrátí nového toku dat s řádky kde `'Passenger_count'` je menší než 5 a `'Tolls_amount'` je větší než 0.
+V tomto příkladu `dflow.filter()` vrátí nového toku dat s řádky kde `'Passenger_count'` je menší než 5 a `'Tolls_amount'` je větší než 0.
 
 ```python
-dataflow = dataflow.to_number(['Passenger_count', 'Tolls_amount'])
-dataflow = dataflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
-dataflow.head(2)
+dflow = dflow.to_number(['Passenger_count', 'Tolls_amount'])
+dflow = dflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -367,10 +367,10 @@ Je také možné filtrovat řádky kombinování více než jeden Tvůrce výraz
 > `lpep_pickup_datetime` a `Lpep_dropoff_datetime` jsou nejprve převeden na typ datetime, která umožňuje vytvářet výrazu porovnání oproti jiné hodnoty data a času.
 
 ```python
-dataflow = dataflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
-dataflow = dataflow.to_number(['Total_amount', 'Trip_distance'])
+dflow = dflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
+dflow = dflow.to_number(['Total_amount', 'Trip_distance'])
 mid_2013 = datetime(2013,7,1)
-dataflow = dataflow.filter(
+dflow = dflow.filter(
     dprep.f_and(
         dprep.f_or(
             dprep.col('lpep_pickup_datetime') > mid_2013,
@@ -378,7 +378,7 @@ dataflow = dataflow.filter(
         dprep.f_and(
             dprep.col('Total_amount') > 40,
             dprep.col('Trip_distance') < 10)))
-dataflow.head(2)
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -404,8 +404,8 @@ Začněte tím, že načítání nějaká data z objektů Blob v Azure.
 import azureml.dataprep as dprep
 col = dprep.col
 
-df = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
-df.head(2)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
+dflow.head(2)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -416,10 +416,10 @@ df.head(2)
 Trim dolů datové sady a provádět některé základní transformací, včetně odebrání sloupců, nahraďte hodnoty a převod typů.
 
 ```python
-df = df.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
-df = df.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
-df = df.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
-df.head(2)
+dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
+dflow = dflow.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
+dflow = dflow.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
+dflow.head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -430,7 +430,7 @@ df.head(2)
 Vyhledejte pomocí filtru, který tyto hodnoty null.
 
 ```python
-df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
+dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -465,11 +465,11 @@ Vytvoří nový sloupec, který má název kraje a název stavu a také velké p
 Skript v jazyce Python musí definovat funkci s názvem `newvalue()` , která přijímá jeden argument `row`. `row` Argument je dict (`key`: název sloupce `val`: aktuální hodnota) a předá pro tuto funkci pro každý řádek v datové sadě. Tato funkce musí vracet hodnotu pro použití v tomto novém sloupci. Všechny knihovny, které importuje skript v jazyce Python musí existovat v prostředí, ve kterém se spouští toku.
 
 ```python
-df = df.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
+dflow = dflow.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
 def newvalue(row):
     return row['leanm10'] + ', ' + row['stnam'].title()
 """)
-df.head(2)
+dflow.head(2)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
@@ -482,12 +482,12 @@ df.head(2)
 Sestavit výraz Pythonu pomocí [ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) k filtrování sady dat pro pouze řádky, kde "Hale" není na novém `county_state` sloupce. Výraz vrací `True` Pokud my chceme zajistit řádku a `False` vyřadit řádku.
 
 ```python
-df = df.new_script_filter("""
+dflow = dflow.new_script_filter("""
 def includerow(row):
     val = row['county_state']
     return 'Hale' not in val
 """)
-df.head(2)
+dflow.head(2)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|

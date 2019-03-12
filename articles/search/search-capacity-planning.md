@@ -1,22 +1,22 @@
 ---
-title: Přidělit oddíly a replikami dotazů a indexování – Azure Search
+title: Škálování oddílů a replik pro dotazy a indexování – vyhledávání Azure
 description: Upravte oddílů a replik prostředky počítače ve službě Azure Search, kde každého prostředku se účtuje v jednotkách fakturovatelné vyhledávání.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316110"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775318"
 ---
-# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Přidělit oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
+# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálování oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
 Poté co [zvolte cenovou úroveň](search-sku-tier.md) a [při zřizování vyhledávací služby](search-create-service-portal.md), dalším krokem je Volitelně můžete zvýšit počet repliky nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet jednotek fakturace. Tento článek vysvětluje, jak přidělit jednotkách zajistit optimální konfiguraci, která vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
 
 Konfigurace prostředků je k dispozici, když nastavujete službu na [úroveň Basic](https://aka.ms/azuresearchbasic) nebo jeden z [úrovně Standard](search-limits-quotas-capacity.md). Pro služby na těchto úrovních kapacity dokupovat v jednotkách po *hledání jednotky* (su) kde jednotlivých oddílů a replik se počítá jako jeden příkaz SU. 
@@ -26,8 +26,8 @@ Použití méně výsledků SUs v proporcionálně snížení nákladů. Účtov
 > [!Note]
 > Odstraněním služby odstraníte všechno, co na něj. Neexistuje žádné zařízení v rámci Azure Search pro zálohování a obnovení trvalých dat hledání. K opětovnému nasazení existujícího indexu na novou službu, když spustíte program použitý k vytvoření a načtení původně. 
 
-## <a name="terminology-partitions-and-replicas"></a>Terminologie: oddílů a replik
-Oddílů a replik jsou primární zdroje, které zálohují vyhledávací službu.
+## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
+Repliky a oddíly, které jsou primární zdroje, které zálohují vyhledávací službu.
 
 | Prostředek | Definice |
 |----------|------------|
@@ -38,22 +38,67 @@ Oddílů a replik jsou primární zdroje, které zálohují vyhledávací služb
 > Neexistuje žádný způsob, jak přímo pracovat s nebo spravovat, které indexy spustit v replice. Jednu kopii každého index pro všemi replikami je součástí architektury služby.
 >
 
-## <a name="how-to-allocate-partitions-and-replicas"></a>Postup přidělení oddílů a replik
+
+## <a name="how-to-allocate-replicas-and-partitions"></a>Postup přidělení repliky a oddíly
 Ve službě Azure Search je služba původně přidělené minimální úroveň prostředků, který se skládá z jednoho oddílu a jednu repliku. Pro úrovně, které ho podporují můžou přírůstkově upravovat výpočetních prostředcích, které zvýšením počtu oddílů Pokud potřebujete další úložiště a vstupně-výstupní operace, nebo přidejte víc replik pro svazky větší dotazu nebo lepší výkon. Jediné služby musí mít dostatek prostředků ke zpracování všech úloh (indexování a dotazy). Nelze rozdělit zatížení mezi více službami.
 
-Chcete-li zvýšit nebo změnit přidělení repliky a oddíly, doporučujeme pomocí webu Azure portal. Na portálu vynucuje omezení na povolené kombinace, které zůstávají pod mezní hodnoty:
-
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte vyhledávací službu.
-2. V **nastavení**, otevřete **škálování** blade a pokud chcete zvýšit nebo snížit počet oddílů a replik pomocí posuvníků.
-
-Pokud budete potřebovat založené na skriptu nebo kódu zřizování přístup [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/services) se o alternativu k portálu.
+Chcete-li zvýšit nebo změnit přidělení repliky a oddíly, doporučujeme pomocí webu Azure portal. Na portálu vynucuje omezení na povolené kombinace, které zůstávají pod mezní hodnoty. Pokud budete potřebovat založené na skriptu nebo kódu zřizování přístup [prostředí Azure PowerShell](search-manage-powershell.md) nebo [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/services) alternativní řešení.
 
 Obecně platí Hledat aplikace potřebovat víc replik, než má téma oddílů, zejména pokud operace služby jsou upřednostněno dotazu úlohy. V sekci [vysoké dostupnosti](#HA) vysvětluje, proč.
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte vyhledávací službu.
+2. V **nastavení**, otevřete **škálování** stránky pro úpravu repliky a oddíly. 
+
+   Následující snímek obrazovky ukazuje standardní službu opatřena jednu repliku a oddílu. Vzorce v dolní části označuje, kolik jednotek vyhledávání se používá (1). Pokud je cena ze jednotku se 100 USD (ne skutečná cena), bude měsíční náklady na spuštění této služby 100 USD v průměru.
+
+   ![Měřítko stránky zobrazující aktuální hodnoty](media/search-capacity-planning/1-initial-values.png "měřítko stránky zobrazující aktuální hodnoty")
+
+3. Pomocí posuvníku zvyšte nebo snižte počet oddílů. Vzorce v dolní části označuje, kolik jednotek vyhledávání se používají.
+
+   V tomto příkladu zdvojnásobuje kapacitu se dvě repliky a jednotlivých oddílů. Všimněte si, že počet jednotek vyhledávání; je teď čtyři protože fakturační vzorec je repliky vynásobené oddíly (2 x 2). Zvýší kapacitu zdvojnásobuje více než náklady na provoz služby. Pokud hledání cena jednotky se 100 USD, nový měsíční faktuře bude nyní 400 dolarů.
+
+   Aktuální náklady za jednotku jednotlivé vrstvy, najdete [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
+
+   ![Přidat repliky a oddíly](media/search-capacity-planning/2-add-2-each.png "přidat repliky a oddíly")
+
+3. Klikněte na tlačítko **Uložit** potvrďte provedené změny.
+
+   ![Potvrzení změn škálování a fakturace](media/search-capacity-planning/3-save-confirm.png "potvrzení změn škálování a fakturace")
+
+   Změny v kapacitě trvat několik hodin. Po spuštění procesu a neexistuje žádná monitorování v reálném čase pro repliky a oddíl úpravy nedá zrušit. Ale tato zpráva zůstává viditelná, zatímco probíhají změny.
+
+   ![Stavová zpráva na portálu](media/search-capacity-planning/4-updating.png "stavová zpráva na portálu")
+
 
 > [!NOTE]
 > Po zřízení služby nejde upgradovat na vyšší skladovou Položku. Musíte vytvořit vyhledávací služby na novou úroveň a znovu načíst indexů. Zobrazit [vytvoření služby Azure Search na portálu](search-create-service-portal.md) nápovědu pro zřizování služby.
 >
 >
+
+<a id="chart"></a>
+
+## <a name="partition-and-replica-combinations"></a>Kombinace oddílů a replik
+
+Základní služby může obsahovat právě jeden oddíl a až tři repliky, maximum omezit tři služby SUS. Pouze měnitelné prostředek je repliky. Budete potřebovat minimálně dvě repliky pro zajištění vysoké dostupnosti pro dotazy.
+
+Všechny standardní služby, můžete předpokládat následující kombinace repliky a oddíly, v souladu s limit 36 SU. 
+
+|   | **oddíl 1** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddíly** | **12 oddíly** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1 repliky** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
+| **2 repliky** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
+| **3 repliky** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
+| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |neuvedeno |
+| **5 repliky** |5 SU |10 SU |15 SU |20 SU |30 SU |neuvedeno |
+| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |neuvedeno |
+| **12 repliky** |12 SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
+
+Su, ceny a kapacita je podrobně popsaný v na webu Azure. Další informace najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
+
+> [!NOTE]
+> Počet replik a oddíly, které jsou rovnoměrně rozděleny do 12 (konkrétně, 1, 2, 3, 4, 6 nebo 12). Je to proto, že každý index Azure Search předem rozdělí na 12 horizontálních oddílů, tak, aby bylo možné rozdělit do stejné části na všechny oddíly. Například pokud vaše služba má tři oddíly a vytvoření indexu, každý oddíl bude obsahovat čtyři horizontální oddíly indexu. Jak Azure Search horizontální oddíly, což je index je podrobnosti implementace, v budoucích vezích se můžou změnit. I když číslo 12 ještě dnes, by neměli očekávat, že jejich počet vždy být 12 v budoucnosti.
+>
+
 
 <a id="HA"></a>
 
@@ -93,32 +138,7 @@ Hledat aplikace, které vyžadují téměř aktualizace dat v reálném čase, b
 
 Indexy větší trvat delší dobu dotazu. V důsledku toho můžete zjistit, že každý další nárůst oddíly vyžaduje menší, ale proporcionální zvýšení replik. Do rychlost provádění dotazů bude převedena bude faktor složité dotazy a množství dotazů.
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Úroveň Basic: Kombinace oddílů a replik
-Základní služby může obsahovat právě jeden oddíl a až tři repliky, maximum omezit tři služby SUS. Pouze měnitelné prostředek je repliky. Budete potřebovat minimálně dvě repliky pro zajištění vysoké dostupnosti pro dotazy.
 
-<a id="chart"></a>
+## <a name="next-steps"></a>Další postup
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Úrovně Standard: Kombinace oddílů a replik
-Tato tabulka ukazuje SUs nezbytném k podpoře kombinací repliky a oddíly, v souladu s 36 SU limitu pro všechny úrovně Standard.
-
-|   | **oddíl 1** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddíly** | **12 oddíly** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **1 repliky** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
-| **2 repliky** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
-| **3 repliky** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |neuvedeno |
-| **5 repliky** |5 SU |10 SU |15 SU |20 SU |30 SU |neuvedeno |
-| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |neuvedeno |
-| **12 repliky** |12 SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
-
-Su, ceny a kapacita je podrobně popsaný v na webu Azure. Další informace najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
-
-> [!NOTE]
-> Počet replik a oddíly, které jsou rovnoměrně rozděleny do 12 (konkrétně, 1, 2, 3, 4, 6 nebo 12). Je to proto, že každý index Azure Search předem rozdělí na 12 horizontálních oddílů, tak, aby bylo možné rozdělit do stejné části na všechny oddíly. Například pokud vaše služba má tři oddíly a vytvoření indexu, každý oddíl bude obsahovat čtyři horizontální oddíly indexu. Jak Azure Search horizontální oddíly, což je index je podrobnosti implementace, v budoucích vezích se můžou změnit. I když číslo 12 ještě dnes, by neměli očekávat, že jejich počet vždy být 12 v budoucnosti.
->
->
-
-## <a name="billing-formula-for-replica-and-partition-resources"></a>Vzorec fakturace pro repliky a oddílu prostředků
-Vzorec pro výpočet počtu jednotek su se používají pro konkrétní kombinace je produktem repliky a oddíly, nebo (R X P = SU). Například tři repliky vynásobené tři oddíly se účtuje jako devět su.
-
-Náklady za SU se určuje podle úrovně, s nižšími fakturační sazba za jednotku pro základní než pro úroveň Standard. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
+[Zvolte cenovou úroveň pro službu Azure Search](search-sku-tier.md)

@@ -3,17 +3,17 @@ title: Formát dat GeoJSON monitorové geografické zóny ve službě Azure Maps
 description: Další informace o formátu GeoJSON monitorové geografické zóny dat ve službě Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/15/2018
+ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339630"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568987"
 ---
 # <a name="geofencing-geojson-data"></a>Monitorování geografických zón GeoJSON dat
 
@@ -34,7 +34,7 @@ Data pro monitorové geografické zóny nebo sadu monitorovaná geografická zó
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum a čas  | true (pravda) | Počáteční datum a čas platnosti časového období. |
 | endTime   | Datum a čas  | true (pravda) |  Koncové datum a čas platnosti časového období. |
-| recurrenceType | řetězec | false (nepravda) |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`, nebo `Yearly`. Výchozí hodnota je `Daily`.|
+| recurrenceType | string | false (nepravda) |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`, nebo `Yearly`. Výchozí hodnota je `Daily`.|
 | businessDayOnly | Logická hodnota | false (nepravda) |  Označuje, zda data pouze platné během pracovních dnů. Výchozí hodnota je `false`.|
 
 

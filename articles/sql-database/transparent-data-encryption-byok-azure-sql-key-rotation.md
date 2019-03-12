@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
-ms.date: 03/04/2019
-ms.openlocfilehash: 05398f98bb92da8bf8436f2421beacdde3fd91c9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/07/2019
+ms.openlocfilehash: 4e7f344dfa0b5cf38d36cec786169c5c7a51af3b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336560"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576510"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočit ochrana transparentní šifrování dat (TDE) pomocí Powershellu
 
@@ -43,7 +43,7 @@ Tato příručka popisuje dvě možnosti, jak otočit ochrana TDE serveru.
 
 ## <a name="manual-key-rotation"></a>Ruční obměna klíčů
 
-Ruční obměna klíčů používá [AzKeyVaultKey přidat](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [AzSqlServerKeyVaultKey přidat](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny pro přidání úplně nový klíč, který může být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. Tento přístup podporuje přidávání stejný klíč do jiných trezorech klíčů pro zajištění podpory scénářů vysoké dostupnosti a geo-dr.
+Ruční obměna klíčů používá [AzKeyVaultKey přidat](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [AzSqlServerKeyVaultKey přidat](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny pro přidání úplně nový klíč, který může být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. Tento přístup podporuje přidávání stejný klíč do jiných trezorech klíčů pro zajištění podpory scénářů vysoké dostupnosti a geo-dr.
 
 >[!NOTE]
 >Celková délka pro název trezoru klíčů a název klíče nemůže být delší než 94 znaků.
@@ -71,7 +71,7 @@ Ruční obměna klíčů používá [AzKeyVaultKey přidat](/powershell/module/a
 
 ## <a name="option-2-manual-rotation"></a>Option 2: Ruční otáčení
 
-Tato možnost používá [AzKeyVaultKey přidat](/powershell/module/az.keyvault/add-azurekeyvaultkey), [AzSqlServerKeyVaultKey přidat](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny pro přidání zcela nový klíč, který může být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. 
+Tato možnost používá [AzKeyVaultKey přidat](/powershell/module/az.keyvault/add-azkeyvaultkey), [AzSqlServerKeyVaultKey přidat](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny pro přidání zcela nový klíč, který může být v rámci nového názvu klíče nebo dokonce pro jiný trezor klíčů. 
 
 >[!NOTE]
 >Celková délka pro název trezoru klíčů a název klíče nemůže být delší než 94 znaků.

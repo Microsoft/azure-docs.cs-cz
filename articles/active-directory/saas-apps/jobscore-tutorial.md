@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 30f51b32-e55c-4c66-96e8-50a2f9c2194a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77b19cf63528a508d66f2727587a82723bfd6d69
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 47deaf7c46c4609742269cbeceaeed3b7f1ed712
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985134"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>Kurz: Integrace Azure Active Directory s JobScore
 

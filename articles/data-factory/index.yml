@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8a1f9967b51d3655c962620b9436dfe4f9ffd521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442524"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575388"
 documentType: LandingData
 title: Dokumentace ke službě Azure Data Factory
 metadata:
   title: Dokumentace ke službě Azure Data Factory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   description: Naučte se používat službu Data Factory k nastavování automatizovaných datových kanálů do místních a cloudových zdrojů a z nich s cílem přesouvat a zpracovávat data pro analýzu.
   services: data-factory
-  author: douglaslMS
+  author: sharonlo101
+  ms.author: shlo
   manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.topic: overview
   ms.date: 08/06/2018
-  ms.author: douglasl
 abstract:
   description: Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>
   aside:

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd08de2711e8584b9f2bbe17716fe14400c8bf7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 37ffea61df1091cb7517014c4796537cdd40d62b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871368"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765292"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Integrace Azure Active Directory s Mimecast osobní portálu
 

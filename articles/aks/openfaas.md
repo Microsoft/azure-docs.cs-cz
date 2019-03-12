@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542527"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571214"
 ---
 # <a name="using-openfaas-on-aks"></a>Použití OpenFaaS v AKS
 
-[OpenFaaS] [ open-faas] je architektura určená k vytváření funkcí bez serveru nad kontejnery. Jako opensourcový projekt získalo ve velkém měřítku přijetí v rámci komunity. Tento dokument podrobně popisuje instalaci a použití OpenFaas na cluster Azure Kubernetes Service (AKS).
+[OpenFaaS] [ open-faas] je architektura určená k vytváření funkcí bez serveru pomocí kontejnerů. Jako opensourcový projekt získalo ve velkém měřítku přijetí v rámci komunity. Tento dokument podrobně popisuje instalaci a použití OpenFaas na cluster Azure Kubernetes Service (AKS).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,43 +29,48 @@ Abyste mohli dokončit kroky v tomto článku, budete potřebovat.
 * Azure CLI nainstalované ve vývojovém systému.
 * Nástroje příkazového řádku Git nainstalovaný ve vašem systému.
 
-## <a name="get-openfaas"></a>Get OpenFaaS
+## <a name="add-the-openfaas-helm-chart-repo"></a>Přidání úložiště grafu helmu OpenFaaS
 
-Naklonujte úložiště OpenFaaS projektu pro váš vývojový systém.
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-Přejděte do adresáře naklonované úložiště.
+OpenFaaS udržuje svůj vlastní helmu udržovat aktuální s nejnovějšími změnami.
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>Nasazení OpenFaaS
 
 Dobrým postupem je OpenFaaS a OpenFaaS funkce by měla být uložena ve vlastním oboru názvů Kubernetes.
 
-Vytvoření oboru názvů systému OpenFaaS.
+Vytvoření oboru názvů pro systém OpenFaaS a funkce:
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Vytvoření druhého oboru názvů pro OpenFaaS funkce.
+Vytvořit heslo OpenFaaS uživatelského rozhraní portálu a rozhraní REST API:
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+Můžete získat hodnota tajného kódu s `echo $PASSWORD`.
+
+Heslo, které tady vytvoříme použije grafu helmu povolit základní ověřování na OpenFaaS brány, který je přístupný z Internetu prostřednictvím cloudu nástroj pro vyrovnávání zatížení.
 
 Grafu Helm pro OpenFaaS je součástí naklonované úložiště. Pomocí tohoto grafu OpenFaaS nasadit do clusteru AKS.
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 Výstup:
@@ -104,14 +109,23 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Otestujte systém OpenFaaS, přejděte na externí IP adresu na portu 8080, `http://52.186.64.52:8080` v tomto příkladu.
+Otestujte systém OpenFaaS, přejděte na externí IP adresu na portu 8080, `http://52.186.64.52:8080` v tomto příkladu. Zobrazí výzva k přihlášení. Chcete-li načíst heslo, zadejte `echo $PASSWORD`.
 
-![OpenFaaS uživatelského rozhraní](media/container-service-serverless/openfaas.png)
+![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
 Nakonec nainstalujte rozhraní příkazového řádku OpenFaaS. Tento příklad používá brew, najdete v článku [dokumentace k rozhraní příkazového řádku OpenFaaS] [ open-faas-cli] další možnosti.
 
 ```console
 brew install faas-cli
+```
+
+Nastavte `$OPENFAAS_URL` na veřejnou IP adresu dříve nalezené.
+
+Přihlášení pomocí Azure CLI:
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>Vytvoření první funkce
@@ -233,10 +247,11 @@ Můžete také otestovat funkci v rámci OpenFaaS uživatelského rozhraní.
 
 ## <a name="next-steps"></a>Další kroky
 
-Výchozím nasazení produktu OpenFaas musí být uzamčen pro bránu OpenFaaS i funkce. [Alex Ellis Blogový příspěvek](https://blog.alexellis.io/lock-down-openfaas/) obsahuje další podrobnosti o možnostech konfigurace zabezpečeného.
+Můžete pokračovat další s seminář OpenFaaS prostřednictvím sady praktickým cvičením, která pokrývají témata, jako je vytvoření vlastní bot Githubu využívání tajné kódy, zobrazováním metrik a automatické škálování.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

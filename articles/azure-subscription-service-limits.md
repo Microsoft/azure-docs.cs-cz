@@ -1,6 +1,6 @@
 ---
 title: Limity předplatného Azure a kvóty
-description: Obsahuje seznam běžných předplatného Azure a limity, kvóty a omezení. To zahrnuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty.
+description: Obsahuje seznam běžných předplatného Azure a limity, kvóty a omezení. Tento článek obsahuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty.
 services: multiple
 author: rothja
 manager: jeffreyg
@@ -10,33 +10,33 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00930fd99fd4c0078623aa11f3e2cd5b1c549034
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 21a6734ab8af2e35643f6e9b25500dad2418a8c2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812663"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772031"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
-Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
+Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další služby.
 
-Navštivte prosím [přehled cen Azure](https://azure.microsoft.com/pricing/) Další informace o cenách služby Azure. Existuje, chcete-li odhadnout náklady na použití [cenovou kalkulačku funkcí](https://azure.microsoft.com/pricing/calculator/) nebo na stránce s cenami podrobnosti pro službu (například [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Tipy ke správě nákladů najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing/billing-getting-started.md).
-
-> [!NOTE]
-> Pokud chcete zvýšit limit nebo výše uvedené kvóty **výchozí Limit**, [otevřete žádost o podporu online zákazníků bez poplatků](azure-resource-manager/resource-manager-quota-errors.md). Omezení nelze zvýšit nad **maximální Limit** hodnoty zobrazené v následujících tabulkách. Pokud není žádný **maximální Limit** sloupec a pak prostředku nemá nastavitelná omezení.
->
-> [Bezplatné předplatné zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p) se nevztahuje možnost zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [Upgrade bezplatné zkušební verze Azure na průběžné platby](billing/billing-upgrade-azure-subscription.md) a [nejčastější dotazy k bezplatné zkušební předplatné](https://azure.microsoft.com/free/free-account-faq).
->
-
-## <a name="limits-and-the-azure-resource-manager"></a>Omezení a Azure Resource Manageru
-Nyní je možné kombinovat více prostředkům Azure v jedné skupiny prostředků Azure. Při použití skupin prostředků, omezení, které byly jednou globální správy na místní úrovni s Azure Resource Manageru. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md).
-
-V následující omezení se přidala nová tabulka tak, aby odrážel případné rozdíly v omezení při použití Azure Resource Manageru. Například neexistuje **limity předplatného** tabulky a **limity předplatného – Azure Resource Manageru** tabulky. Když omezení platí pro oba scénáře, se zobrazí pouze v první tabulce. Pokud není uvedeno jinak, jsou ve všech oblastech globální omezení.
+Další informace o cenách Azure najdete v tématu [přehled o cenách Azure](https://azure.microsoft.com/pricing/). Existuje, odhadněte svoje náklady pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/). Můžete také přejít na stránku s cenami podrobnosti pro konkrétní službu, například [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Tipy ke správě nákladů najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Je důležité zdůraznit, že jsou v jednotlivých oblastech přístupné pro vaše předplatné kvóty pro prostředky ve skupinách prostředků Azure a nejsou na předplatné, jako jsou kvóty služby správy. Jako příklad použijeme kvóty virtuálních procesorů. Pokud potřebujete požádat o zvýšení kvóty díky podpoře pro virtuální procesory, musíte rozhodnout, kolik virtuálních procesorů, které chcete použít ve kterých oblastech a pak proveďte částky nebo oblasti, které chcete, aby konkrétní žádosti o kvóty virtuálních procesorů skupiny prostředků Azure. Proto pokud je potřeba použít ke spuštění aplikace existuje 30 virtuálních procesorů v oblasti západní Evropa, měli byste konkrétně požadovat 30 virtuálních procesorů v oblasti západní Evropa. Ale nemáte kvótu virtuálních procesorů zvyšují v kterékoli jiné oblasti – pouze oblasti západní Evropa budou mít kvóta 30 virtuálních procesorů.
+> Pokud chcete zvýšit limit nebo kvóty nad výchozí omezení [otevřete žádost o podporu online zákazníků bez poplatků](azure-resource-manager/resource-manager-quota-errors.md). Omezení nelze zvýšit nad maximální mezní hodnoty uvedené v následujících tabulkách. Pokud neexistuje žádný sloupec maximálního limitu, nemá zdroj nastavitelná omezení.
+>
+> [Bezplatné předplatné zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p) se nevztahuje možnost zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [vaší bezplatné zkušební verze Azure předplatné upgradovat na předplatné s průběžnými platbami](billing/billing-upgrade-azure-subscription.md) a [nejčastější dotazy k bezplatné zkušební předplatné](https://azure.microsoft.com/free/free-account-faq).
+>
+
+## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manageru
+Nyní je možné kombinovat více prostředků Azure na jednu skupinu prostředků Azure. Při použití skupin prostředků, omezení, které byly jednou globální správy na místní úrovni s Azure Resource Manageru. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md).
+
+V následujícím seznamu omezení nová tabulka odráží případné rozdíly v omezení při použití Azure Resource Manageru. Například neexistuje **limity předplatného** tabulky a **limity předplatného – Azure Resource Manageru** tabulky. Když omezení platí pro oba scénáře, se zobrazí pouze v první tabulce. Pokud není uvedeno jinak, jsou ve všech oblastech globální omezení.
+
+> [!NOTE]
+> Kvóty pro prostředky ve skupinách prostředků Azure jsou jednotlivých oblastech přístupné pro vaše předplatné není předplatných, jako jsou kvóty služby správy. Jako příklad použijeme kvóty virtuálních procesorů. Požádat o zvýšení kvóty díky podpoře pro virtuální procesory, musíte rozhodnout, kolik virtuálních procesorů, které chcete použít, ve kterých oblastech. Částky nebo oblasti, které chcete, aby pak provedete konkrétní žádosti o kvóty virtuálních procesorů skupiny prostředků Azure. Pokud potřebujete použít ke spuštění aplikace existuje 30 virtuálních procesorů v oblasti západní Evropa, můžete konkrétně požádat o 30 virtuálních procesorů v oblasti západní Evropa. Kvótu virtuálních procesorů není zvýšit v kterékoli jiné oblasti – pouze pro oblasti západní Evropa má kvótu 30 virtuálních procesorů.
 > <!-- -->
-> V důsledku toho může vhodné vzít v úvahu rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro vaše úlohy v jakékoli jedné oblasti a požádat o velikosti v každé oblasti, do které uvažujete o nasazení. Zobrazit [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc při zjišťování aktuální kvóty pro konkrétní oblasti.
+> V důsledku toho rozhodněte, co musí být vaše kvóty skupiny prostředků Azure pro vaše úlohy v jakékoli jedné oblasti. Potom žádost o velikosti v každé oblasti, do které chcete nasadit. Nápovědu v tom, jak zjistit aktuální kvóty pro konkrétní oblasti najdete v tématu [řešení problémů s nasazením](resource-manager-common-deployment-errors.md).
 >
 >
 
@@ -47,47 +47,47 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
+* [Azure Cache for Redis](#azure-cache-for-redis-limits)
+* [Azure Cloud Services](#azure-cloud-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
-* [Azure Event Grid](#azure-event-grid-limits)
+* [Azure DNS](#azure-dns-limits)
+* [Brány Firewall na Azure](#azure-firewall-limits)
+* [Azure Kubernetes Service](#azure-kubernetes-service-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* Azure Cache for Redis
+* [Azure Search](#azure-search-limits)
+* [Službě Azure SignalR](#azure-signalr-service-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
-* [CDN](#cdn-limits)
-* [Cloud Services](#cloud-services-limits)
 * [Container Instances](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [Služby Kubernetes](#kubernetes-service-limits)
+* [Síť pro doručování obsahu](#content-delivery-network-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [Služba Database Migration Service](#database-migration-service-limits)
-* [DNS](#dns-limits)
+* [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
-* [Brány Firewall na Azure](#azure-firewall-limits)
-* [Přední dveře](#azure-front-door-service-limits)
+* [Branou služby](#azure-front-door-service-limits)
+* [Identity Manager](#identity-manager-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
-* [Spravovaná identita](#managed-identity-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Multi-Factor Authentication](#multi-factor-authentication)
+* [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [Sítě](#networking-limits)
 * [Network Watcher](#network-watcher-limits)
-* [Služby centra oznámení](#notification-hub-service-limits)
+* [Notification Hubs](#notification-hubs-limits)
 * [Skupina prostředků](#resource-group-limits)
 * [Řízení přístupu na základě rolí](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
-* [Služba SignalR](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -100,11 +100,11 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Škálovací sady virtuálních počítačů](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Omezení předplatného
-#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Limity předplatného – Správa služeb Azure (klasické prostředky)
+#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Limity předplatného – Správa služeb Azure (model nasazení classic)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity předplatného – Azure Resource Manageru
-Následující omezení platí při používání Azure Resource Manageru a skupiny prostředků Azure. Limity, které nebyly změněny s Azure Resource Manageru nejsou uvedené níže. Najdete v předchozí tabulce tyto limity.
+Následující omezení platí při použití Azure Resource Manageru a skupin prostředků Azure. Limity, které nebyly změněny pomocí Azure Resource Manageru nejsou uvedené. Najdete v předchozí tabulce tyto limity.
 
 Informace o rozhraní API Resource Manageru čtení a zápis omezení, najdete v článku [požadavky omezení využití sítě Správce prostředků](resource-manager-request-limits.md).
 
@@ -114,15 +114,15 @@ Informace o rozhraní API Resource Manageru čtení a zápis omezení, najdete v
 [!INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 ### <a name="virtual-machines-limits"></a>Omezení virtuálních počítačů
-#### <a name="virtual-machine-limits"></a>Omezení virtuálního počítače
+#### <a name="virtual-machines-limits"></a>Omezení virtuálních počítačů
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Omezení virtuálních počítačů – Azure Resource Manageru
-Následující omezení platí při používání Azure Resource Manageru a skupiny prostředků Azure. Limity, které nebyly změněny s Azure Resource Manageru nejsou uvedené níže. Najdete v předchozí tabulce tyto limity.
+Následující omezení platí při použití Azure Resource Manageru a skupin prostředků Azure. Limity, které nebyly změněny pomocí Azure Resource Manageru nejsou uvedené. Najdete v předchozí tabulce tyto limity.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-### <a name="virtual-machine-scale-sets-limits"></a>Omezení Škálovací sady virtuálních počítačů
+### <a name="virtual-machine-scale-sets-limits"></a>Virtual machine scale sets s limity
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### <a name="container-instances-limits"></a>Limity instancí kontejneru
@@ -133,7 +133,7 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
-### <a name="kubernetes-service-limits"></a>Omezení služby Kubernetes
+### <a name="azure-kubernetes-service-limits"></a>Omezení služby Azure Kubernetes
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Síťová omezení
@@ -153,7 +153,7 @@ V následující tabulce platí pro v1, v2, Standard a SKU WAF, pokud není uved
 #### <a name="traffic-manager-limits"></a>Omezení Traffic Manageru
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-#### <a name="dns-limits"></a>Omezení DNS
+#### <a name="azure-dns-limits"></a>Omezení Azure DNS
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 #### <a name="azure-firewall-limits"></a>Omezení brány Firewall pro Azure
@@ -166,7 +166,7 @@ V následující tabulce platí pro v1, v2, Standard a SKU WAF, pokud není uved
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-Další podrobnosti o omezení účtu úložiště, najdete v části [Azure Storage škálovatelnost a cíle výkonnosti](storage/common/storage-scalability-targets.md).
+Další informace o omezení účtů úložiště najdete v tématu [škálovatelnost a výkonnostní cíle Azure Storage](storage/common/storage-scalability-targets.md).
 
 #### <a name="storage-resource-provider-limits"></a>Omezení poskytovatele prostředků úložiště 
 
@@ -176,7 +176,7 @@ Další podrobnosti o omezení účtu úložiště, najdete v části [Azure Sto
 [!INCLUDE [storage-blob-scale-targets](../includes/storage-blob-scale-targets.md)]
 
 #### <a name="azure-files-limits"></a>Omezení pro soubory Azure
-Další podrobnosti o službě soubory Azure omezení, najdete v části [škálovatelnost a výkonnostní cíle Azure Files](storage/files/storage-files-scale-targets.md).
+Další informace o omezení soubory Azure najdete v tématu [škálovatelnost a výkonnostní cíle Azure Files](storage/files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
 
@@ -193,7 +193,7 @@ Další podrobnosti o službě soubory Azure omezení, najdete v části [škál
 #### <a name="virtual-machine-disk-limits"></a>Omezením disku virtuálního počítače
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Zobrazit [velikostí virtuálních počítačů](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) další podrobnosti.
+Další informace najdete v tématu [velikostí virtuálních počítačů](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="managed-virtual-machine-disks"></a>Spravované virtuální počítače s disky
 
@@ -205,7 +205,7 @@ Zobrazit [velikostí virtuálních počítačů](virtual-machines/linux/sizes.md
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
-### <a name="cloud-services-limits"></a>Omezení cloud Services
+### <a name="azure-cloud-services-limits"></a>Omezení pro Azure Cloud Services
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Omezení služby App Service
@@ -220,12 +220,12 @@ Následující omezení služby App Service zahrnují omezení pro Web Apps, Mob
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>Omezení služby BizTalk Services
-Následující tabulka uvádí omezení pro Azure Biztalk Services.
+Následující tabulka uvádí omezení pro Azure BizTalk Services.
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Omezení služby Azure Cosmos DB
-Azure Cosmos DB je globální škálování databáze, ve které je možné škálovat propustnost a úložiště pro zpracování cokoli, co vaše aplikace vyžaduje. Pokud máte nějaké dotazy ohledně škálování služby Azure Cosmos DB nabízí, pošlete prosím e-mail na askcosmosdb@microsoft.com.
+Azure Cosmos DB je globální škálování databáze, ve které je možné škálovat propustnost a úložiště pro zpracování cokoli, co vaše aplikace vyžaduje. Pokud máte nějaké dotazy ohledně škálování služby Azure Cosmos DB nabízí, pošlete e-mail na adresu askcosmosdb@microsoft.com.
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Azure Database for MySQL – omezení, najdete v části [omezení ve službě Azure Database for MySQL](mysql/concepts-limits.md).
@@ -233,12 +233,12 @@ Azure Database for MySQL – omezení, najdete v části [omezení ve službě A
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Azure Database for postgresql – omezení, najdete v části [omezení ve službě Azure Database for PostgreSQL](postgresql/concepts-limits.md).
 
-### <a name="search-limits"></a>Omezení vyhledávání
+### <a name="azure-search-limits"></a>Omezení služby Azure Search
 Cenové úrovně určit kapacitu a limity služby search. Vrstvy patří:
 
-* *Bezplatné* víceklientská služba, které jsou sdílenou s jinými odběrateli Azure určené pro zkušební a malých vývojových projektů.
-* *Základní* zajišťují vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku pomocí až tří replik pro úlohy s vysokou dostupností dotazu.
-* *Standard (S1, S2, S3, S3 High Density)* je pro větší úlohy v produkčním prostředí. Více úrovní existují v rámci úrovně standard, takže můžete použít konfiguraci prostředků, která nejlépe odpovídá profilu zatížení.
+* **Bezplatné** víceklientské služby, sdílenou s jinými odběrateli Azure slouží k vyhodnocení a malých vývojových projektů.
+* **Základní** zajišťují vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku pomocí až tří replik pro úlohy s vysokou dostupností dotazu.
+* **Standardní**, což zahrnuje S1, S2, S3, a S3 High Density, je pro větší úlohy v produkčním prostředí. Více úrovní existují v rámci úrovně Standard, takže můžete použít konfiguraci prostředků, která nejlépe odpovídá profilu zatížení.
 
 **Omezení jednoho předplatného**
 
@@ -253,7 +253,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="media-services-limits"></a>Omezení služby Media Services
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
-### <a name="cdn-limits"></a>Omezením CDN
+### <a name="content-delivery-network-limits"></a>Omezení sítě Content Delivery Network
 [!INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
 ### <a name="mobile-services-limits"></a>Omezení Mobile Services
@@ -262,7 +262,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="monitor-limits"></a>Omezení monitorování
 [!INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
 
-### <a name="notification-hub-service-limits"></a>Omezení služby centra oznámení
+### <a name="notification-hubs-limits"></a>Omezení Notification Hubs
 [!INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
 ### <a name="event-hubs-limits"></a>Event Hubs omezení
@@ -295,7 +295,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="active-directory-limits"></a>Omezení služby Active Directory
 [!INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
 
-### <a name="azure-event-grid-limits"></a>Omezení služby Azure Event Grid
+### <a name="event-grid-limits"></a>Omezení služby Event Grid
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
 ### <a name="azure-maps-limits"></a>Omezení služby Azure Maps
@@ -313,7 +313,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="backup-limits"></a>Omezení zálohování
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
-### <a name="signalr-service-limits"></a>Limity pro služby SignalR
+### <a name="azure-signalr-service-limits"></a>Omezení služby Azure SignalR
 [!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Omezení Site Recovery
@@ -331,27 +331,25 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="key-vault-limits"></a>Omezení služby Key Vault
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication-limits"></a>Omezení ověřování službou Multi-Factor Authentication
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Omezení služby Automation
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
-### <a name="managed-identity-limits"></a>Omezení spravované Identity
+### <a name="identity-manager-limits"></a>Omezení identity Manageru
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
 ### <a name="role-based-access-control-limits"></a>Omezení řízení přístupu na základě role
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Limity SQL Database
-Omezení SQL Database najdete v tématu [limity prostředků SQL Database pro izolované databáze](sql-database/sql-database-vcore-resource-limits-single-databases.md) a [limity pro elastické fondy a databáze ve fondu prostředků databáze SQL](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
+Omezení SQL Database najdete v tématu [limity prostředků SQL Database pro izolované databáze](sql-database/sql-database-vcore-resource-limits-single-databases.md) a [limity pro elastické fondy a databáze ve fondu prostředků SQL Database](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse omezení
-SQL Data Warehouse omezení najdete v tématu [omezení SQL Data Warehouse prostředků](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+SQL Data Warehouse omezení najdete v tématu [omezení prostředků SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Principy omezení v Azure a zvýšení](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-
-[Virtuální počítač a velikost cloudových služeb pro Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-[Velikosti pro Cloud Services](cloud-services/cloud-services-sizes-specs.md)
+- [Principy omezení v Azure a zvýšení](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+- [Služby velikosti virtuálního počítače a cloud pro Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Velikosti pro Azure Cloud Services](cloud-services/cloud-services-sizes-specs.md)

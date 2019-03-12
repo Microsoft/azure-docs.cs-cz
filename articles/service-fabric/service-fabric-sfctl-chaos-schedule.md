@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f955ed63af221a08313042fcc8373b179ecbc120
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276447"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569378"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Získání a nastavení plánu chaos.
@@ -61,10 +61,10 @@ Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v z
 
 |Argument|Popis|
 | --- | --- |
-| --slovník parametrů chaosu | JSON kódovaný seznamu reprezentující mapování z názvů řetězec ChaosParameters používané úlohy. |
-| --vypršení platnosti. datum utc | Datum a čas, kdy se mají přestat používat plán naplánování Chaos.  Výchozí\: 9999-12-31T23\:59\:59.999Z. |
+| --chaos-parameters-dictionary | JSON kódovaný seznamu reprezentující mapování z názvů řetězec ChaosParameters používané úlohy. |
+| --expiry-date-utc | Datum a čas, kdy se mají přestat používat plán naplánování Chaos.  Výchozí\: 9999-12-31T23\:59\:59.999Z. |
 | – úlohy | Seznam kódování JSON ChaosScheduleJobs představující, kdy se má spustit Chaos a jaké parametry se mají spustit Chaos s. |
-| --start datum utc | Datum a čas, kdy chcete začít používat plán naplánování Chaos.  Výchozí\: 1601-01-01T00\:00\:00.000Z. |
+| --start-date-utc | Datum a čas, kdy chcete začít používat plán naplánování Chaos.  Výchozí\: 1601-01-01T00\:00\:00.000Z. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 | – verze | Číslo verze plánu. |
 
@@ -83,15 +83,15 @@ Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v z
 Následující příkaz nastaví plán (za předpokladu, že aktuální plán má verze 0), který se spustí na 2016-01-01 a končí na položku 2038-01-01, na kterém běží Chaos 24 hodin denně, 7 dní v týdnu. Chaos bude naplánováno na clusteru pro tento čas.
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
-    --chaos-parameters-dictionary 
-    [  
-    {  
+    --chaos-parameters-dictionary
+    [
+    {
         "Key":"adhoc",
-        "Value":{  
+        "Value":{
             "MaxConcurrentFaults":3,
             "EnableMoveReplicaFaults":true,
-            "ChaosTargetFilter":{  
-                "NodeTypeInclusionList":[  
+            "ChaosTargetFilter":{
+                "NodeTypeInclusionList":[
                 "N0010Ref",
                 "N0020Ref",
                 "N0030Ref",
@@ -103,12 +103,12 @@ Následující příkaz nastaví plán (za předpokladu, že aktuální plán m�
             "WaitTimeBetweenIterationsInSeconds":15,
             "WaitTimeBetweenFaultsInSeconds":30,
             "TimeToRunInSeconds":"600",
-            "Context":{  
-                "Map":{  
+            "Context":{
+                "Map":{
                 "test":"value"
                 }
             },
-            "ClusterHealthPolicy":{  
+            "ClusterHealthPolicy":{
                 "MaxPercentUnhealthyNodes":0,
                 "ConsiderWarningAsError":true,
                 "MaxPercentUnhealthyApplications":0
@@ -116,11 +116,11 @@ Následující příkaz nastaví plán (za předpokladu, že aktuální plán m�
         }
     }
     ]
-    --jobs 
-    [  
-    {  
+    --jobs
+    [
+    {
         "ChaosParameters":"adhoc",
-        "Days":{  
+        "Days":{
             "Sunday":true,
             "Monday":true,
             "Tuesday":true,
@@ -129,13 +129,13 @@ Následující příkaz nastaví plán (za předpokladu, že aktuální plán m�
             "Friday":true,
             "Saturday":true
         },
-        "Times":[  
-            {  
-                "StartTime":{  
+        "Times":[
+            {
+                "StartTime":{
                 "Hour":0,
                 "Minute":0
                 },
-                "EndTime":{  
+                "EndTime":{
                 "Hour":23,
                 "Minute":59
                 }

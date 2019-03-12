@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c44b89b66c1908c00e075606d6b0201bd3ea6af6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0c116acdc5768f10d8e5ab4047a724796c8beca2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872943"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Kurz: Integrace Azure Active Directory s hostované grafitová
 

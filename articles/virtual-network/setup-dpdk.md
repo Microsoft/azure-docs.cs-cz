@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b50f7c9b76e9309a1ee08257dd8b13ec289397a5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268272"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775913"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavit DPDK ve virtuálním počítači s Linuxem
 
@@ -87,7 +87,7 @@ yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel 
 
 ### <a name="sles-15"></a>SLES 15
 
-**Azure jádra**
+**Azure kernel**
 
 ```bash
 zypper  \
@@ -133,7 +133,7 @@ Po restartování počítače, spusťte jednou následující příkazy:
      > [!NOTE]
      > Existuje způsob, jak upravit soubor grub tak, aby hugepages jsou vyhrazené při spuštění následující [pokyny](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny se v dolní části stránky. Při použití virtuálního počítače s Linuxem v Azure, upravte soubory v rámci **/etc/config/grub.d** místo toho rezervovat hugepages mezi restartováními.
 
-2. MAC a IP adres: použití `ifconfig –a` zobrazíte MAC a IP adresy síťových rozhraní. *VF* síťové rozhraní a *NETVSC* síťové rozhraní mají stejnou adresu MAC, ale jen *NETVSC* síťové rozhraní má IP adresu. Rozhraní VF fungují jako podřízené rozhraní NETVSC rozhraní.
+2. MAC a IP adresy: Použití `ifconfig –a` zobrazíte MAC a IP adresy síťových rozhraní. *VF* síťové rozhraní a *NETVSC* síťové rozhraní mají stejnou adresu MAC, ale jen *NETVSC* síťové rozhraní má IP adresu. Rozhraní VF fungují jako podřízené rozhraní NETVSC rozhraní.
 
 3. PCI adresy
 
@@ -152,7 +152,7 @@ Spuštění aplikace DPDK přes bezporuchový PMD zaručuje, že aplikace obdrž
 
 Ke spuštění v režimu kořenové testpmd, použijte `sudo` před *testpmd* příkazu.
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Inicializace adaptéru bezporuchový, Kontrola správnosti
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Kontrola správnosti, inicializace adaptéru bezporuchový
 
 1. Spusťte následující příkazy a spusťte aplikaci testpmd jednoho portu:
 
@@ -216,7 +216,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
 
 Pokud používáte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v `app/test-pmd/txonly.c` tak, aby odpovídaly vlastní IP adresu virtuálních počítačů před kompilací. Jinak pakety nezahodí před dosažením příjemce.
 
-### <a name="advanced-single-sendersingle-forwarder"></a>Pokročilé: Předávání jednoho odesílatele/jedním
+### <a name="advanced-single-sendersingle-forwarder"></a>Pokročilé: Jednoho odesílatele nebo jeden server pro předávání
 Následující příkazy pravidelně tisk pakety Statistika za sekundu:
 
 1. Na straně Odesílání spusťte následující příkaz:
@@ -244,7 +244,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
      -w <pci address NIC2> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     -- --nb-cores <number of cores to use for test pmd> \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>

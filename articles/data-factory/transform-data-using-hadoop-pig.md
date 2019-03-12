@@ -3,23 +3,23 @@ title: Transformace dat pomocí aktivita Hadoop Pig ve službě Azure Data Facto
 description: Zjistěte, jak můžete pomocí aktivita Pig ve službě Azure data factory ke spouštění skriptů Pig na vyžádání/svůj vlastní clusteru služby HDInsight.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: a29bd64c6b18d41028c8952f531698bbfa9e01e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014705"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574912"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivita Hadoop Pig ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-pig-activity.md)
 > * [Aktuální verze](transform-data-using-hadoop-pig.md)
 
@@ -63,7 +63,7 @@ Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služb
 | type                | Pro aktivitu Hive typ aktivity je HDinsightPig | Ano      |
 | linkedServiceName   | Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
 | scriptLinkedService | Odkaz na propojená služba Azure Storage se využívá k uložení skript Pig, který se spustí. Pokud nezadáte tuto propojenou službu, použije se propojená služba Azure Storage, definované v propojené službě HDInsight. | Ne       |
-| ScriptPath          | Zadejte cestu k souboru skriptu ve službě Azure Storage odkazuje scriptLinkedService. Název souboru je velká a malá písmena. | Ne       |
+| scriptPath          | Zadejte cestu k souboru skriptu ve službě Azure Storage odkazuje scriptLinkedService. Název souboru je velká a malá písmena. | Ne       |
 | getDebugInfo        | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne       |
 | argumenty           | Určuje pole argumentů pro úlohy Hadoopu. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje             | Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig. | Ne       |

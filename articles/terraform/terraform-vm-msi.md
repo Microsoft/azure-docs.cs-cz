@@ -2,19 +2,19 @@
 title: Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravované identity
 description: Použijte image z webu Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravované identity a vzdálené správy stavu ke snadnému nasazení prostředků do Azure.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, MSI, virtuální počítač, vzdálený stav, azure
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: ae424638967de808f3ffb7d9a56a02398ed79f9e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852537"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768149"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 

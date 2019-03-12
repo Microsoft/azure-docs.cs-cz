@@ -3,18 +3,18 @@ title: Vytvoření aplikace Azure IoT Central | Microsoft Docs
 description: Vytvořte novou aplikaci Azure IoT Central. Vytvořte zkušební verzi aplikace nebo aplikaci s průběžnými platbami s využitím šablony aplikace.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 02/20/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9b66e4160dc78286f393257136dbf9375c6f61fb
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0844737288abeb8d6ab1043b4c55ba5ef1c4883c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306727"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780248"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -37,6 +37,7 @@ Vytvoření nové aplikace Azure IoT Central:
 1. Zvolte popisný název, jako je třeba **Contoso IoT**. Azure IoT Central pro vás vygeneruje jedinečnou předponu URL. Tuto předponu URL můžete změnit, aby byla snáze zapamatovatelná.
 
 1. Zvolte šablonu aplikace. Šablona aplikace může obsahovat předdefinované položky, jako jsou šablony zařízení a řídicí panely, které vám pomůžou začít.
+
     | Šablona aplikace | Popis |
     | -------------------- | ----------- |
     | Sample Contoso (Ukázka Contoso)       | Vytvoří aplikaci, která zahrnuje již vytvořenou šablonu zařízení pro chladící prodejní automat. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
@@ -44,7 +45,8 @@ Vytvoření nové aplikace Azure IoT Central:
     | Custom application (Vlastní aplikace)   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 
 1. Pokud vytváříte aplikaci s **průběžnými platbami**, musíte vybrat *adresář*, *předplatné Azure* a *oblast*. 
-    - *Adresář* je služba Azure Active Directory, ve které se vaše aplikace vytvoří. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud službu AAD nemáte, vytvoří se pro vás při vytváření předplatného Azure.
+
+    - *Adresář* je Azure Active Directory (AD) k vytvoření aplikace. Obsahuje identity uživatelů, přihlašovací údaje a další organizační informace. Pokud nemáte Azure AD, vytvoří se pro vás při vytváření předplatného Azure.
 
     - *Předplatné Azure* umožňuje vytvářet instance služeb Azure. IoT Central bude ve vašem předplatném zřizovat prostředky. Pokud předplatné Azure nemáte, můžete si ho vytvořit na [registrační stránce Azure](https://aka.ms/createazuresubscription). Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
@@ -60,4 +62,4 @@ Vytvoření nové aplikace Azure IoT Central:
 V tomto rychlém startu jste vytvořili aplikaci IoT Central. Další navrhovaný krok:
 
 > [!div class="nextstepaction"]
-> [Prohlídka IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central-tour)
+> [Prohlídka IoT Central](overview-iot-central-tour.md)

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – spuštění aplikace ve službě Azure Container Instances – PowerShell
-description: V tomto rychlém startu použijete Azure PowerShell k nasazení aplikace typu kontejner Dockeru do služby Azure Container Instances pomocí Azure Powershellu
+title: Rychlý start – nasazení kontejneru Dockeru do služby Azure Container Instances – PowerShell
+description: V tomto rychlém startu použijete Azure PowerShell k rychlému nasazení kontejnerizované webové aplikace, která běží v instanci izolovaného kontejneru Azure
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8cb84523288f45dfb719d69e4f7d227039598a9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806908"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732299"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances pomocí Azure Powershellu
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí Azure Powershellu
 
-Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container Instances. Nemusíte nasazovat virtuální počítače ani používat úplnou platformu orchestrace kontejnerů jako Kubernetes. V tomto rychlém startu pomocí webu Azure Portal vytvoříte kontejner s Windows v Azure a zpřístupníte jeho aplikaci s použitím plně kvalifikovaného názvu domény. Několik sekund po provedení příkazu k jednomu nasazení můžete přejít k běžící aplikaci:
+Pro spouštění kontejnerů bez serveru Docker v Azure se rychle a snadno pomocí Azure Container Instances. Pokud není zapotřebí platformu pro orchestraci úplné kontejneru, jako je Azure Kubernetes Service Nasaďte aplikaci do kontejneru instance na vyžádání.
+
+V tomto rychlém startu použijete Azure PowerShell k nasazení izolovaného kontejneru Windows a zpřístupnit svou aplikaci s použitím plně kvalifikovaného názvu domény (FQDN). Několik sekund, po spuštění příkazu jedno nasazení, můžete přejít k aplikaci spuštěné v kontejneru:
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
 
@@ -45,7 +47,7 @@ Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chce
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s použitím popisku názvu DNS tak, aby služba IIS je veřejně dostupný.
 
-Spuštěním následujícího příkazu spusťte instanci kontejneru. Hodnota `-DnsNameLabel` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu spusťte instanci kontejneru. Nastavte `-DnsNameLabel` hodnotu, která je jedinečný v rámci oblasti Azure, kde můžete vytvořit instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

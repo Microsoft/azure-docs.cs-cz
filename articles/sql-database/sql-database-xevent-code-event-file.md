@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 61b3c01683318ff1c686ad9e96a420f8ae5e245e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d7513c4b8ea52b28d138032879f16e5a331853d2
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306659"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574443"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události ve službě SQL Database
 
@@ -70,7 +70,7 @@ Pomocí příkazů pro vyčištění po předchozí možné spustit a rerunnable
 
 ### <a name="powershell-code"></a>Kód Powershellu
 
-Tento skript Powershellu se předpokládá, že jste již spustili rutiny Import-Module pro modul AzureRm. Odkaz na dokumentaci najdete v tématu [prohlížeče modulu prostředí PowerShell](https://docs.microsoft.com/powershell/module/).
+Tento skript Powershellu se předpokládá, že jste ještě nenainstalovali modul Az. Informace najdete v tématu [instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!

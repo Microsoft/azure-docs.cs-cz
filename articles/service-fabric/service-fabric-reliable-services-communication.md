@@ -1,6 +1,6 @@
 ---
-title: Spolehlivé služby communication – přehled | Microsoft Docs
-description: Přehled modelu komunikace spolehlivé služby, včetně otevírání moduly pro naslouchání na službách, vyřešte koncových bodů a komunikaci mezi službami.
+title: Přehled Reliable Services komunikace | Dokumentace Microsoftu
+description: Přehled komunikace modelu Reliable Services, včetně počáteční naslouchací procesy u služby, vyřešte koncových bodů a komunikace mezi službami.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 62c81368b8a3129b42262cb99cf23a5021744c1b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 49f5a74c2fcd45d03119bffbffad6fcf30e72440
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210755"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570551"
 ---
-# <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci spolehlivé služby
-Azure Service Fabric jako platformu je zcela lhostejné o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné, z UDP do HTTP. Je to na vývojáře služby zvolit komunikace služby. Rozhraní spolehlivé služby poskytuje zásobníky předdefinované komunikaci, jakož i rozhraní API, které můžete použít k vytvoření vlastních komunikační součásti.
+# <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci modelu Reliable Services
+Azure Service Fabric jako platforma je zcela bez o komunikaci mezi službami. Všechny protokoly a balíčky jsou přijatelné, z UDP pro HTTP. Záleží jen na vývojářské služby vybrat komunikaci služby. Rozhraní framework aplikace Reliable Services poskytuje integrované komunikační balíky, jakož i rozhraní API, která vám umožní vytvářet vlastní komunikační součásti.
 
-## <a name="set-up-service-communication"></a>Nastavení komunikace služby
-Spolehlivé služby API používá jednoduché rozhraní pro komunikace služby. Chcete-li spustit koncový bod služby, jednoduše toto rozhraní implementujte:
+## <a name="set-up-service-communication"></a>Nastavení komunikace služeb
+Reliable Services API používá jednoduché rozhraní pro komunikaci služby. Chcete-li otevřít koncový bod pro vaši službu, stačí pouze Implementujte toto rozhraní:
 
 ```csharp
 
@@ -50,9 +50,9 @@ public interface CommunicationListener {
 }
 ```
 
-Poté můžete přidat implementaci naslouchací proces komunikace vrácením v přepsání metody založené na službě třídy.
+Poté můžete přidat vaši implementaci naslouchací proces komunikace vrácením v přepsání metody třídy založené na službách.
 
-Pro bezstavové služby:
+U bezstavových služeb:
 
 ```csharp
 public class MyStatelessService : StatelessService
@@ -96,11 +96,11 @@ public class MyStatefulService : StatefulService
 }
 ```
 
-V obou případech vracet kolekci naslouchacího procesu. To umožňuje služba naslouchala na několik koncových bodů, potenciálně pomocí různých protokolů, s použitím více naslouchací procesy. Například můžete mít naslouchací proces protokolu HTTP a samostatné naslouchací proces protokolu WebSocket. Každý naslouchací proces získá název a výsledný kolekce *název: adresa* páry jsou reprezentovány jako objekt JSON, když klient požádá o naslouchání adresy pro instance služby nebo oddíl.
+V obou případech se vrátí kolekce naslouchacích procesů. To umožňuje službě k naslouchání na několik koncových bodů, potenciálně používající různé protokoly, pomocí více naslouchacích procesů. Například může mít naslouchací proces protokolu HTTP a samostatné naslouchací proces protokolu WebSocket. Každý naslouchací proces získá název a kolekci výsledný *název: adresa* dvojice jsou reprezentovány jako objekt JSON, když klient požádá o naslouchání adresy pro instance služby nebo oddíl.
 
-Přepsání v bezstavové služby vrátí kolekci ServiceInstanceListeners. A `ServiceInstanceListener` obsahuje funkci pro vytvoření `ICommunicationListener(C#) / CommunicationListener(Java)` a název. Přepsání pro stavové služby, vrátí kolekci ServiceReplicaListeners. To se mírně liší od jeho protějšku bezstavové, protože `ServiceReplicaListener` má možnost otevření `ICommunicationListener` na sekundárních replikách. Nejenže můžete použít více naslouchací procesy komunikace ve službě, ale můžete také určit, který naslouchací procesy přijímat požadavky na sekundárních replikách a ty, které naslouchat pouze primární repliky.
+Přepsání v bezstavovou službu, vrátí kolekci ServiceInstanceListeners. A `ServiceInstanceListener` obsahuje funkci, která vytvoří `ICommunicationListener(C#) / CommunicationListener(Java)` a dá jí název. Přepsání pro stavové služby, vrátí kolekci ServiceReplicaListeners. Tím se mírně liší od jeho protějšek bezstavové protože `ServiceReplicaListener` má možnost otevření `ICommunicationListener` na sekundárních replikách. Nejenže můžete použít několik naslouchacích procesů komunikace ve službě, ale můžete také určit, které naslouchací procesy přijímání požadavků na sekundárních replikách a ty, které naslouchá jenom na primární repliky.
 
-Například můžete mít ServiceRemotingListener, která přebírá volání RPC jenom na primární repliky a druhý, vlastní naslouchací proces, který přebírá čtení požadavky na sekundárních replikách prostřednictvím protokolu HTTP:
+Například můžete mít ServiceRemotingListener, který provede volání RPC pouze na primární repliky a druhý, vlastní naslouchací proces, který přijímá další požadavky na sekundárních replikách přes protokol HTTP:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -121,11 +121,11 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ```
 
 > [!NOTE]
-> Při vytváření více naslouchací procesy pro službu, každý naslouchací proces **musí** mít jedinečný název.
+> Při vytváření více naslouchacích procesů pro službu, každý naslouchací proces **musí** jedinečný název.
 >
 >
 
-Nakonec popisují koncové body, které jsou požadovány pro služby [service manifest](service-fabric-application-and-service-manifests.md) části u koncových bodů.
+A konečně, popisuje koncové body, které jsou požadovány pro službu [manifestu služby](service-fabric-application-and-service-manifests.md) části na koncové body.
 
 ```xml
 <Resources>
@@ -137,7 +137,7 @@ Nakonec popisují koncové body, které jsou požadovány pro služby [service m
 
 ```
 
-Naslouchací proces komunikace můžete přístup k prostředkům koncový bod přidělených z `CodePackageActivationContext` v `ServiceContext`. Naslouchací proces potom lze spustit naslouchaly žádostem, když je otevřen.
+Naslouchací proces komunikace mají přístup k prostředkům koncový bod přiřazen z `CodePackageActivationContext` v `ServiceContext`. Naslouchací proces potom můžete spustit naslouchat žádostem, když je otevřen.
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -151,12 +151,12 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 ```
 
 > [!NOTE]
-> Koncový bod prostředků, které jsou společné pro celý balíček a jsou přiděleny pomocí Service Fabric, když je aktivován balíčku služby. Víc replik služby hostované ve stejném ServiceHost může sdílet stejný port. To znamená, že by měly podporovat komunikaci naslouchací proces sdílení portů. Doporučený způsob to provést, je pro komunikaci naslouchací proces pro použití oddílu, ID a ID repliky nebo instanci, když ji vygeneruje adresu naslouchání.
+> Koncový bod prostředků jsou společné pro balíček celou službu a jejich přidělení Service Fabric při aktivaci balíčku služby. Víc replik služby hostované ve stejném ServiceHost mohou sdílet stejný port. To znamená, že by měly podporovat naslouchací proces komunikace, sdílení portů. Doporučený způsob to dělat, je pro naslouchací proces komunikace použít oddíl ID a ID repliky a instance při generování adres naslouchání.
 >
 >
 
-### <a name="service-address-registration"></a>Registrace adresy služby
-Volá se služba system *služby DNS* běží na clusterů Service Fabric. Služby DNS je doménového registrátora služeb a jejich adresy, které naslouchá na každou instanci nebo repliky služby. Když `OpenAsync(C#) / openAsync(Java)` metodu `ICommunicationListener(C#) / CommunicationListener(Java)` dokončí, vraťte se jeho hodnota získá registrované ve službě pojmenování. Tato návratovou hodnotu, která zveřejnění ve službě pojmenování je řetězec, jehož hodnota může být jakýkoli vůbec. Tato hodnota řetězce je, co klienti uvidí, když vyzvou ze služby DNS pro adresu pro službu.
+### <a name="service-address-registration"></a>Registrace adres služby
+Volá se služba system *pojmenování Service* běží na clustery Service Fabric. Pojmenování Service je doménový Registrátor služeb a jejich adresy, které každou instancí nebo replik služby naslouchá. Když `OpenAsync(C#) / openAsync(Java)` metodu `ICommunicationListener(C#) / CommunicationListener(Java)` dokončí, její návratový hodnotu zaregistruje ve službě pojmenování Service. Tuto hodnotu, která získá publikována ve službě pojmenování Service je řetězec, jehož hodnota může být cokoli – vůbec. Tato hodnota řetězce se klienti zobrazí při jejich požádat o adresu pro službu z pojmenování Service.
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
@@ -194,20 +194,20 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 }
 ```
 
-Service Fabric poskytuje rozhraní API umožňující klientů a dalším službám, a pak požádejte podle názvu služby pro tuto adresu. To je důležité, protože není statickou adresu služby. Služby se přesouvají v clusteru pro účely vyrovnávání a dostupnosti prostředků. Toto je mechanismus, který klientům umožňují překlad adresu naslouchání pro službu.
+Service Fabric poskytuje rozhraní API, díky kterým můžou klienti a dalším službám pak požádejte podle názvu služby pro tuto adresu. To je důležité, protože adresa služby není statická. Služby se přesouvat v clusteru za účelem vyrovnávání a dostupnost prostředků. Toto je mechanismus, který umožňují klientům přeložit adresu naslouchání pro službu.
 
 > [!NOTE]
-> Kompletní návod jak napsat naslouchací proces komunikace, najdete v části [Service Fabric webového rozhraní API služby s vlastním hostování OWIN](service-fabric-reliable-services-communication-webapi.md) C#, zatímco pro jazyk Java můžete napsat vlastní implementaci serveru HTTP, najdete v části EchoServer aplikace Příklad v https://github.com/Azure-Samples/service-fabric-java-getting-started.
+> Kompletní návod, jak o tom, jak psát naslouchací proces komunikace, naleznete v tématu [služeb Service Fabric webových rozhraní API s vlastním hostováním OWIN](service-fabric-reliable-services-communication-webapi.md) pro C#, že pro jazyk Java můžete napsat vlastní implementaci serveru HTTP, naleznete v tématu EchoServer aplikace – příklad v https://github.com/Azure-Samples/service-fabric-java-getting-started.
 >
 >
 
 ## <a name="communicating-with-a-service"></a>Komunikace se službou
-Spolehlivé služby API poskytuje následující knihovny zápis klienty, kteří komunikovat se službami.
+Reliable Services API nabízí následující knihovny pro zápis klienty, kteří komunikují se službami.
 
 ### <a name="service-endpoint-resolution"></a>Rozlišení koncového bodu služby
-Prvním krokem k komunikace se službou je k vyřešení adresu koncového bodu oddílu, nebo instance služby, kterou chcete, aby komunikoval s. `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` Nástroj třída je základní Primitivum, které pomáhají klientům zjistit koncový bod služby za běhu. V terminologii Service Fabric, proces určování koncový bod služby se označuje jako *rozlišení koncového bodu služby*.
+Prvním krokem při komunikaci se službou se přeložit adresy koncového bodu oddílu nebo instance služby, kterou byste se obrátit. `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` Utility třída je základní jednoduchého typu, které pomáhají klientům zjistit koncový bod služby za běhu. V Service Fabric terminologii procesu, který určuje koncový bod služby se označuje jako *rozlišení koncového bodu služby*.
 
-Pro připojení ke službám v rámci clusteru, můžete vytvořit ServicePartitionResolver pomocí výchozího nastavení. Toto je doporučený způsob většině situací:
+Pro připojení ke službám v rámci clusteru, můžete vytvořit ServicePartitionResolver pomocí výchozího nastavení. Toto je doporučené použití pro většinu situací:
 
 ```csharp
 ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
@@ -216,7 +216,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Pro připojení ke službám v jiném clusteru, lze vytvořit ServicePartitionResolver sadu koncovým bodům clusteru brány. Upozorňujeme, že jsou koncové body brány právě různými koncovými body pro připojení do stejného clusteru. Příklad:
+Pro připojení ke službám v jiném clusteru, ServicePartitionResolver vytvářet sadu koncových bodů clusteru brány. Všimněte si, že koncové body brány jsou právě různých koncových bodů pro připojení na stejném clusteru. Příklad:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -225,7 +225,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.clo
 FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
 ```
 
-Alternativně `ServicePartitionResolver` možné přidělit funkce pro vytváření `FabricClient` interně použít:
+Alternativně `ServicePartitionResolver` mohou být zadány funkce pro vytváření `FabricClient` pro vnitřní použití:
 
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
@@ -240,7 +240,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient` je objekt, který se používá ke komunikaci se cluster Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladač oddílu služby se váš cluster. `FabricClient` provede ukládání do mezipaměti interně a je obecně nákladné vytvořit, takže je potřeba znovu použít `FabricClient` instance co nejvíc.
+`FabricClient` je objekt, který se používá ke komunikaci s clusterem Service Fabric pro různé operace správy v clusteru. To je užitečné, pokud chcete mít větší kontrolu nad interakci překladače oddílu služby s vaším clusterem. `FabricClient` řeší ukládání v mezipaměti interně a je obecně jejich vytvoření náročné, takže je důležité pro opětovné použití `FabricClient` instance co největší míře.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -249,7 +249,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMy
 FabricServicePartitionResolver resolver = new  FabricServicePartitionResolver(() -> new CreateFabricClientImpl());
 ```
 
-Vyřešte metoda pak slouží k načtení adresu služby nebo služby u oddílů služby.
+Metodu resolve se pak použije k načtení adresu služby nebo oddíl služby oddílů služby.
 
 ```csharp
 ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
@@ -264,16 +264,16 @@ CompletableFuture<ResolvedServicePartition> partition =
     resolver.resolveAsync(new URI("fabric:/MyApp/MyService"), new ServicePartitionKey());
 ```
 
-Adresa služby lze vyřešit pomocí snadno ServicePartitionResolver, ale je potřeba další práci zajistěte, aby byl že vyřešen adresu je možné použít správně. Váš klient potřebuje zjistit, zda pokus o připojení se nezdařilo z důvodu přechodná chyba a můžete zkusit znovu (například služba přesunut nebo je dočasně nedostupná), nebo trvalé chybě (např. Služba je Odstraněná nebo požadovaný prostředek již existuje). Instance služby nebo repliky můžete pohyb z uzlu do uzlu kdykoli z několika důvodů. Adresa služby přeložit prostřednictvím ServicePartitionResolver může být zastaralé dobu, kterou váš klientský kód pokusí o připojení. V takovém případě znovu klient musí znovu překlad adresy. Poskytnutí předchozí `ResolvedServicePartition` ukazuje, že překladač vyžaduje pokus místo jednoduše načíst adresu v mezipaměti.
+Adresa služby lze vyřešit pomocí snadno ServicePartitionResolver, ale další práce je potřeba k tomu přeložit adresy může být použita správně. Váš klient potřebuje ke zjištění, zda pokus o připojení se nezdařilo z důvodu o přechodnou chybu a můžete opakovat (například služba přesunut nebo je dočasně nedostupná), nebo trvalé chybě (např. Služba se odstranila nebo požadovaný prostředek již existuje). Instance služby ani repliky můžete pohybovat z uzlu do uzlu v okamžiku z několika důvodů. Adresa služby prostřednictvím ServicePartitionResolver může být zastaralé v době, kdy se váš klientský kód se pokusí o připojení. V takovém případě znovu klient musí znovu přeložit adresu. Poskytuje předchozí `ResolvedServicePartition` znamená, že překladač měl znovu místo jednoduše načíst adresu v mezipaměti.
 
-Obvykle kód klienta nemusí pracovat ServicePartitionResolver přímo. Je vytvořen a k předání komunikace klienta továrny v spolehlivé rozhraní API služby. Překladač objekty Factory interně použít ke generování klientského objektu, který umožňuje komunikovat se službami.
+Obvykle klientský kód nemusí pracovat ServicePartitionResolver přímo. Je vytvořen a předán komunikace klienta továren v Reliable Services API. Překladač továren interně použít k vygenerování klientského objektu, který slouží ke komunikaci se službami.
 
 ### <a name="communication-clients-and-factories"></a>Komunikace klientů a objekty pro vytváření
-Knihovna vytváření komunikace implementuje typický vzor opakování selhání zpracování, který usnadňuje Probíhá opakování připojení ke koncovým bodům služby vyřešený. Objekt pro vytváření knihovny poskytuje mechanismus opakování, zatímco poskytují chyba obslužné rutiny.
+Objekt pro vytváření knihovny komunikace implementuje typické modelu opakování zpracování chyb, který usnadňuje opakuje připojení ke koncovým bodům služby přeložit. Objekt pro vytváření knihovny poskytuje mechanismus opakování, zatímco poskytuje obslužné rutiny chyb.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` definuje základní rozhraní implementované objekt factory komunikaci klienta, který vytváří klientů, které může kontaktovat službě Service Fabric. Implementace CommunicationClientFactory závisí na komunikačního balíku používá služba Service Fabric, kde se chce, aby klient komunikovat. Poskytuje spolehlivé rozhraní API služby `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny balíčky komunikace. (Tyto úlohy patří, použití ServicePartitionResolver k určení, koncový bod služby). Klienti obvykle implementovat abstraktní třídy CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikačního balíku.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` definuje základní rozhraní implementované factory komunikaci klienta, které vytvoří klienti, kteří můžou komunikovat s služby Service Fabric. Provádění CommunicationClientFactory závisí na komunikačního balíku využívané ve službě Service Fabric, kdy chce komunikaci klienta. Poskytuje rozhraní API služby Reliable Services `CommunicationClientFactoryBase<TCommunicationClient>`. To poskytuje základní implementaci rozhraní CommunicationClientFactory a provádí úlohy, které jsou společné pro všechny balíčky komunikace. (Tyto úlohy patří, použití ServicePartitionResolver k určení koncového bodu služby). Klienti obvykle implementace abstraktní třídy CommunicationClientFactoryBase pro zpracování logiky, která je specifická pro komunikačního balíku.
 
-Komunikace klienta pouze přijímá adresu a použije k připojení ke službě. Klienta můžete použít libovolnou protokol ho chce.
+Komunikace klienta pouze obdrží adresu a použije ho k připojení ke službě. Klienta můžete použít jakýkoli protokol chce.
 
 ```csharp
 public class MyCommunicationClient : ICommunicationClient
@@ -298,7 +298,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Dodavatel klienta především zodpovídá za vytvoření komunikace klientů. Pro klienty, kteří nejsou udržovat trvalé připojení, jako je například klientovi HTTP musí objekt pro vytváření pouze k vytvoření a vrátí klientovi. Jiné protokoly, které udržují trvalé připojení, jako je například některé binární protokoly by měl být také ověřené pomocí objektu pro vytváření k určení, zda připojení musí být znovu vytvořena.  
+Objekt factory klienta primárně zodpovídá za vytvoření komunikace klientů. Pro klienty, kteří nemusíte udržovat trvalé připojení, jako je například klientovi HTTP musí objekt pro vytváření pouze k vytvoření a vrátí klientovi. Jiné protokoly, které udržují trvalé připojení, jako je například některé binární protokoly by měl být ověřen také výrobou určit, zda připojení musí být znovu vytvořen.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
@@ -341,14 +341,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Nakonec obslužné rutiny výjimky je zodpovědná za určení, jaká opatření se mají provést, když dojde k výjimce. Výjimky jsou rozdělené do **opakovatelné** a **neopakovatelného**.
+Nakonec je odpovědností jakou akci chcete provést, když dojde k výjimce obslužné rutiny výjimky. Výjimky jsou rozdělené do kategorií **opakovatelná** a **neopakovatelného**.
 
-* **Neopakovatelného** výjimky jednoduše získat znovu vyvolány zpět k volajícímu.
-* **Opakovatelná** výjimky se dále dělí do **přechodný** a **-pouze dočasné**.
-  * **Přechodný** výjimky jsou ty, které můžete jednoduše opakovat bez znovu řešení adresa koncového bodu služby. To bude obsahovat přechodné problémy se sítí nebo služby chybové odpovědi kromě těch, které indikuje, že adresa koncového bodu služby neexistuje.
-  * **Bez přechodná** výjimky jsou ty, které vyžadují adresa koncového bodu služby do znovu přeložit. Mezi ně patří výjimky, které označují, že není dostupný koncový bod služby, označující služby se přesunul do jiného uzlu.
+* **Neopakovatelného** výjimky jednoduše získat znovu vyvolána zpět volajícímu.
+* **Opakovatelná** výjimky se dále dělí do **přechodné** a **nepřechodných**.
+  * **Přechodné** výjimky jsou ty, které můžete jednoduše opakovat bez opakování překladu adresy koncového bodu služby. Bude mezi ně patří, přechodné problémy se sítí nebo chybové odpovědi služby kromě těch, které naznačují, že adresa koncového bodu služby neexistuje.
+  * **Non-transient** výjimky jsou ty, které vyžadují adresu koncového bodu služby, které je potřeba znovu vyřešit. Patří mezi ně výjimky, které označují, že koncový bod služby není dosažitelná, označující, služba se přesunul na jiný uzel.
 
-`TryHandleException` Provádí rozhodnutí o dané výjimka. Pokud ho **neví** jaké rozhodnutí, která chcete-li o výjimku, měla by vrátit **false**. Pokud ho **vědět** jaké rozhodnutí, měl by odpovídajícím způsobem nastavit výsledek a vrátí **true**.
+`TryHandleException` Udělá rozhodnutí o daném výjimek. Pokud ho **nezná** jaká rozhodnutí o výjimku, měla by vrátit **false**. Pokud ho **vědět** jaká rozhodnutí, měl by odpovídajícím způsobem nastavit výsledek a vrátit **true**.
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler
@@ -374,7 +374,7 @@ class MyExceptionHandler : IExceptionHandler
 public class MyExceptionHandler implements ExceptionHandler {
 
     @Override
-    public ExceptionHandlingResult handleException(ExceptionInformation exceptionInformation, OperationRetrySettings retrySettings) {        
+    public ExceptionHandlingResult handleException(ExceptionInformation exceptionInformation, OperationRetrySettings retrySettings) {
 
         /* if exceptionInformation.getException() is known and is transient (can be retried without re-resolving)
          */
@@ -395,8 +395,8 @@ public class MyExceptionHandler implements ExceptionHandler {
     }
 }
 ```
-### <a name="putting-it-all-together"></a>Třeba umisťovat všechny společně
-S `ICommunicationClient(C#) / CommunicationClient(Java)`, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`, a `IExceptionHandler(C#) / ExceptionHandler(Java)` vytvořených na základě komunikační protokol, `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` všechny společně se zabalí a poskytuje řešení smyčky adresu oddílu zpracování chyb a služeb kolem těchto součástí.
+### <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
+Pomocí `ICommunicationClient(C#) / CommunicationClient(Java)`, `ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`, a `IExceptionHandler(C#) / ExceptionHandler(Java)` vybudována okolo komunikační protokol, `ServicePartitionClient(C#) / FabricServicePartitionClient(Java)` obtéká všechno dohromady a poskytuje zpracování chyb a service oddíl adresu rozlišení smyčku okolo tyto komponenty.
 
 ```csharp
 private MyCommunicationClientFactory myCommunicationClientFactory;
@@ -431,6 +431,6 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Jádro ASP.NET se službami Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
-* [Volání vzdálených procedur s vzdálenou komunikaci spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)
-* [Komunikace WCF pomocí spolehlivé služby](service-fabric-reliable-services-communication-wcf.md)
+* [ASP.NET Core s využitím Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
+* [Volání vzdálených procedur pomocí vzdálené komunikace modelu Reliable Services](service-fabric-reliable-services-communication-remoting.md)
+* [WCF komunikace s využitím Reliable Services](service-fabric-reliable-services-communication-wcf.md)

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/24/2019
-ms.openlocfilehash: ff43a55429eb69a7f98fd4da7fdbeb5d4e51513c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/11/2019
+ms.openlocfilehash: b53cd54afdf6243769602971ab77145cfa9ba9cc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991244"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758773"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
 
@@ -64,13 +64,6 @@ Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění trig
   ![Výběr konektorů ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
 * Konektory, které běží v prostředí ISE jsou dostupné v globální služba Logic Apps.
-
-<a name="vnet-access"></a>
-
-## <a name="permissions-for-virtual-network-access"></a>Oprávnění pro přístup k virtuální síti
-
-Abyste mohli vybrat virtuální síť Azure pro vkládání prostředí, musíte vytvořit oprávnění řízení přístupu na základě Role (RBAC) ve vaší virtuální síti pro službu Azure Logic Apps. Tato úloha vyžaduje, abyste přiřadili **Přispěvatel sítě** a **Přispěvatel modelu Classic** role ve službě Azure Logic Apps.
-Nastavení těchto oprávnění naleznete v tématu [připojit k virtuálním sítím Azure z aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access).
 
 <a name="create-integration-account-environment"></a>
 

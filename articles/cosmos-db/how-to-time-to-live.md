@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: c9437f69bf337f79c9531a12af6ac7868261f5b1
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a7fedf0907ecc4c8ced4c5bfe30bb30aeb8f4aca
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992433"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570891"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Nakonfigurujte čas TTL ve službě Azure Cosmos DB
 
@@ -70,6 +70,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     UriFactory.CreateDatabaseUri("myDatabaseName"),
     collectionDefinition,
     new RequestOptions { OfferThroughput = 20000 });
+```
+
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
 ```
 
 ## <a name="set-time-to-live-on-an-item"></a>Nastavit čas TTL na položku
@@ -138,6 +152,19 @@ SalesOrder salesOrder = new SalesOrder
 };
 ```
 
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+}
+```
+
+
 ## <a name="reset-time-to-live"></a>Resetovat čas TTL
 
 Můžete resetovat time to live pomocí provádí zápis na položku nebo aktualizovat operace na položce. Operace zápisu nebo aktualizace nastaví `_ts` na aktuální čas a interval TTL, ZÍSKÁ položky do vypršení platnosti začne znovu. Pokud chcete změnit interval TTL, ZÍSKÁ položky, můžete aktualizovat pole, stejně jako aktualizace jakékoli jiné pole.
@@ -177,7 +204,7 @@ response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disable-time-to-live"></a>Zakázat TTL
 
-Zakázat čas za provozu na kontejner a zastavte sledovací proces na pozadí od kontroly pro vypršela platnost položky `DefaultTimeToLive` vlastnost v kontejneru, měla by být odstraněna. Odstraňuje se tato vlastnost se liší od nastavení na hodnotu -1. Pokud ji nastavíte na hodnotu -1, nové položky přidané do tohoto kontejneru se navždy, živé však můžete přepsat tuto hodnotu na konkrétní položky v kontejneru. Při odebrání vlastnosti TTL z kontejneru položky vyprší platnost, ani když se, že je mít explicitně přepsat předchozí výchozí hodnota TTL.
+Zakázat čas za provozu na kontejner a zastavte sledovací proces na pozadí od kontroly pro vypršela platnost položky `DefaultTimeToLive` vlastnost v kontejneru, měla by být odstraněna. Odstraňuje se tato vlastnost se liší od nastavení na hodnotu -1. Pokud ji nastavíte na hodnotu -1, nové položky přidané do tohoto kontejneru se navždy, živé však můžete přepsat tuto hodnotu na konkrétní položky v kontejneru. Když odeberete vlastnost Interval TTL, ZÍSKÁ z kontejneru položky nikdy nevyprší, i když nejsou, že je mít explicitně přepsat předchozí výchozí hodnotu TTL.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

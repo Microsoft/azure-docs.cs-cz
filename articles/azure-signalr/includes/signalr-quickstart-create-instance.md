@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: c95f05127d62d366e1ad78b45df23d04ced0164a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 15eded28e38279ea01bf019566d4fda5e7ac6c3e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262756"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57588110"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Vytvoření instance služby Azure SignalR Service
 
@@ -38,3 +38,7 @@ Vaše aplikace se připojí k instanci služby SignalR Service v Azure.
     ![Vytvoření služby SignalR Service](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Pokud chcete začít nasazovat instanci služby SignalR Service, vyberte **Vytvořit**.
+
+1. Po nasazení instance, otevřete na portálu a vyhledejte jeho nastavení stránky. Změňte nastavení režimu servisu na *bez serveru*.
+
+    ![Režim služby SignalR](../media/signalr-concept-azure-functions/signalr-service-mode.png)

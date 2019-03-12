@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138408"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570857"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak odeslat měření Real User Measurements do Traffic Manager se službou Visual Studio Mobile Center
 
@@ -40,7 +40,7 @@ Získání klíče REÁLNÝCH pomocí webu Azure portal následujícím postupem
         
    ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Obrázek 1: Vygenerovat klíč měření Real User Measurements**
+   **Obrázek 1: Skutečné vygenerovat klíč měření reálných uživatelů**
 
    5.   Na stránce zobrazí REÁLNÝCH klíč, který je generován a fragment kódu jazyka JavaScript, které je potřeba vložit do HTML stránky.
  
@@ -72,7 +72,7 @@ Pokud chcete použít měření Real User Measurements, proveďte následující
     Ve vaší **app/build.gradle** souboru přidejte následující řádky:
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

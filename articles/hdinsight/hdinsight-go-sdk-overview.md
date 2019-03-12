@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: d353db3554837ebe13cc53f5adac6658b82e31ec
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ac3296937c02c3021c49dafc9a6ed7c249fe37af
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717683"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769314"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK ve verzi Preview
 
@@ -26,7 +26,7 @@ HDInsight Go SDK poskytuje třídy a funkce, které vám pomohou se správou clu
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure. Pokud ho nemáte, [získat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-* [Přejděte](https://golang.org/dl/).
+* [Go](https://golang.org/dl/).
 
 ## <a name="sdk-installation"></a>Instalace sady SDK
 
@@ -107,7 +107,7 @@ import (
     "context"
     "github.com/Azure/go-autorest/autorest/azure/auth"
     hdi "github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight"
-    "github.com/Azure/go-autorest/autorest/to"    
+    "github.com/Azure/go-autorest/autorest/to"
 )
 
 func main() {
@@ -428,13 +428,13 @@ if (err != nil) {
     fmt.Println("Error: ", err)
 }
 for (page.NotDone()) {
-    for _, script := range page.Values() {          
+    for _, script := range page.Values() {
         fmt.Println(*script.Name) //There are functions to get other properties of RuntimeScriptActionDetail besides Name, such as Status, Operation, StartTime, EndTime, etc. See reference documentation.
     }
     err = page.Next();
     if (err != nil) {
         fmt.Println("Error: ", err)
-    }    
+    }
 }
 ```
 
@@ -466,13 +466,13 @@ if (err != nil) {
     fmt.Println("Error: ", err)
 }
 for (page.NotDone()) {
-    for _, script := range page.Values() {          
+    for _, script := range page.Values() {
         fmt.Println(*script.Name) //There are functions to get other properties of RuntimeScriptActionDetail besides Name, such as Status, Operation, StartTime, EndTime, etc. See reference documentation.
     }
     err = page.Next();
     if (err != nil) {
         fmt.Println("Error: ", err)
-    }       
+    }
 }
 ```
 

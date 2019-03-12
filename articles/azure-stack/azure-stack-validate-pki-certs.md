@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 9300e60902b9234af01a64173eefcfb1bc033c61
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410192"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769367"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření certifikátů infrastruktury veřejných KLÍČŮ Azure Stack
 
@@ -75,7 +75,7 @@ K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejn
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     
     $destination = 'c:\certificates'
     
@@ -86,7 +86,7 @@ K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejn
     > Pokud používáte službu AD FS jako vašeho systému identit, se vyžadují služby AD FS a graf. Příklad:
     >
     > ```PowerShell  
-    > $directories = 'ADFS','Graph','ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     > ```
     
      - Vaše certifikáty umístíte v příslušné adresáře vytvořené v předchozím kroku. Příklad:  
@@ -254,17 +254,17 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
 
 | Adresář | Certifikát |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\< oblast >\< externalFQDN > |
-| ACSQueue  |  wildcard_queue\< oblast >\< externalFQDN > |
-| ACSTable  |  wildcard_table\< oblast >\< externalFQDN > |
-| Admin Extension Host  |  wildcard_adminhosting\< oblast >\< externalFQDN > |
-| Portál pro správu  |  adminportal\< oblast >\< externalFQDN > |
-| ARM správce  |  adminmanagement\< oblast >\< externalFQDN > |
-| Veřejné ARM  |  Správa\< oblast >\< externalFQDN > |
-| KeyVault  |  wildcard_vault\< oblast >\< externalFQDN > |
-| KeyVaultInternal  |  wildcard_adminvault\< oblast >\< externalFQDN > |
-| Public Extension Host  |  wildcard_hosting\< region>\< externalFQDN> |
-| Veřejný portál  |  portál\< oblast > _\< externalFQDN > |
+| acsBlob | wildcard_blob_\<region>_\<externalFQDN> |
+| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
+| ACSTable  |  wildcard_table_\<region>_\<externalFQDN> |
+| Admin Extension Host  |  wildcard_adminhosting_\<region>_\<externalFQDN> |
+| Portál pro správu  |  adminportal_\<region>_\<externalFQDN> |
+| ARM správce  |  adminmanagement_\<region>_\<externalFQDN> |
+| Veřejné ARM  |  management_\<region>_\<externalFQDN> |
+| KeyVault  |  wildcard_vault_\<region>_\<externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault_\<region>_\<externalFQDN> |
+| Public Extension Host  |  wildcard_hosting_\<region>_\<externalFQDN> |
+| Veřejný portál  |  portal_\<region>_\<externalFQDN> |
 
 ## <a name="using-validated-certificates"></a>Použití ověřených certifikátů
 

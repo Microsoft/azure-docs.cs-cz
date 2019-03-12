@@ -7,13 +7,13 @@ ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 54336de291d01f3741c288756095e40a43800a7f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 03/11/2019
+ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009983"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769740"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách služby Azure IoT Hub
 
@@ -28,8 +28,8 @@ ms.locfileid: "57009983"
 | Operace registru identit <br/> (vytvoření, načtení, výpis, aktualizace nebo odstranění) | Není placený. |
 | Zprávy typu zařízení-cloud | Úspěšně odeslané zprávy se účtují po 4 KB na příchozí přenos dat do služby IoT Hub. Například zpráva 6 KB se účtuje 2 zprávy. |
 | Zprávy typu cloud zařízení | Úspěšně odeslané zprávy se účtují po 4 KB, třeba zprávu 6 KB se účtuje 2 zprávy. |
-| Nahrání souborů | Přenos souborů do služby Azure Storage se měří ve službě IoT Hub. Soubor přenos zahájení a ukončení zprávy se účtují podle messaged Účtovaná podle objemu dat v přírůstcích po 4 KB. Přenos 10 MB soubor je třeba za dvě zprávy navíc náklady na úložiště Azure. |
-| Přímé metody | Úspěšná metoda žádosti se účtují po 4 KB, odpovědi s neprázdný úřadů, které se účtují v 4 KB blocích jako další zprávy. Požadavky na odpojená zařízení se účtují jako zprávy v 4 KB blocích. Například metody s tělem 6 KB, jehož výsledkem odpověď se žádný text ze zařízení, se účtuje jako dvě zprávy. Metody s tělem 6 KB, jehož výsledkem 1 KB odpověď od zařízení, se účtuje jako dvě zprávy požadavku a další zprávu pro odpověď. |
+| Nahrání souborů | Přenos souborů do služby Azure Storage se měří ve službě IoT Hub. Soubor přenos zahájení a ukončení zprávy se účtují podle messaged Účtovaná podle objemu dat v přírůstcích po 4 KB. Třeba přenesení 10 MB soubor se účtuje jako dvě zprávy navíc náklady na úložiště Azure. |
+| Přímé metody | Úspěšná metoda žádosti se účtují po 4 KB, a odpovědi se účtují po 4 KB jako další zprávy. Požadavky na odpojená zařízení se účtují jako zprávy v 4 KB blocích. Například metody s tělem 4 KB, jehož výsledkem odpověď se žádný text ze zařízení se účtuje jako dvě zprávy. Metody s tělem 6 KB, jehož výsledkem 1 KB odpověď od zařízení, se účtuje jako dvě zprávy požadavku a další zprávu pro odpověď. |
 | Čtení dvojčat zařízení a modul | Čtení dvojčat zařízení nebo modulu a z řešení zpět end se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
 | Dvojče zařízení a modul aktualizací (značek a vlastnosti) | Aktualizace dvojčat zařízení nebo modulu a z back-end řešení se účtují jako zpráv do bloků velikosti 512 bajtů. Například čtení 6-KB dvojčete se účtuje jako 12 zprávy. |
 | Dotazů na dvojčata zařízení a modul | Dotazy se účtují jako zprávy v závislosti na velikosti výsledek v blocích o velikosti 512 bajtů. |

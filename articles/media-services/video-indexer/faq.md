@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8d70fca5820dbd2152ca378916bfbcdbad4a027f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002353"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776744"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -158,6 +158,10 @@ Přístupové tokeny vyprší každou hodinu, takže je potřeba vygenerovat nov
 
 Video Indexer využívá jednoduchou s průběžnými platbami cenový model založený na době trvání obsahu vstupu, který je index. Další se můžou vztahovat poplatky pro kódování, streamování, úložiště, využití sítě a média rezervovaných jednotek. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) stránky.
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Když se mi bude účtovat pro použití nástroje Video Indexer?
+
+Při odesílání video indexovaných, uživatel bude definovat indexování na analýzu videa, analýzu zvuku nebo obojí. Bude to určit, která bude účtovat skladové jednotky. Pokud během zpracování je kritická chyba na úrovni, vrátí se chybový kód jako odpověď. V takovém případě se vyvolá bez fakturace.  Kritickou chybu může způsobovat chyba v našem kódu nebo má kritickou chybu v vnitřní závislosti služby. Chyby jako např. nesprávný extrakce identifikace nebo vhled, se nepovažují za kritické a vracení odpovědi. V každém případě pokud se vrátí odpověď platný (kód bez chyb), dojde k fakturaci.
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Nabízí funkce Video Indexer bezplatnou zkušební verzi?
 
 Ano, Video Indexer nabízí bezplatnou zkušební verzi, která poskytuje kompletní a funkce rozhraní API. Používá se kvóta 600 minut za videa pro uživatele webové rozhraní a 2 400 minut, než se uživatelé rozhraní API. 

@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f56d53d7-5a08-490a-bfb9-78fefc2751ec
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: f6c2fb58bcd3ba1de636dd258f8b8f74beb2b1d4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 67678c560564d762a2c1a6d472cd4b05315540f7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409716"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Kurz: Integrace Azure Active Directory s N2F - sestavy výdajů
 

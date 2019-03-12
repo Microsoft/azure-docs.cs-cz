@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d771f03f9f71151ef25140148d4dd4daf3d46ec
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443390"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783436"
 ---
 **Přenosy odchozích dat**: [Přenosy odchozích dat](https://azure.microsoft.com/pricing/details/bandwidth/) (data odcházející z Datacenter Azure) jsou zpoplatněné využití šířky pásma.
 
-**Transakce**: Počet transakcí, které provedete na standardní spravovaný disk vám budeme fakturovat. Azure účtuje 0.0036 na 100 000 transakcí pro standardní pevné disky. Transakcemi se rozumí operace čtení a zápisu u úložiště.
+**Transakce**: Počet transakcí, které provedete na standardní spravovaný disk vám budeme fakturovat.
 
-Standardní disky SSD pomocí jednotky v/v velikost 256 KB. Pokud přenosu dat je menší než 256 KB, se považuje za jednu jednotku vstupně-výstupních operací. Větší velikosti vstupně-výstupní operace se počítají jako více vstupně-výstupních operací velikost 256 KB. Například 1100 KB vstupně-výstupní operace se počítá jako pět jednotky vstupně-výstupních operací.
-
-Se neúčtují žádné poplatky za transakce pro spravovaný disk úrovně premium.
-
-Podrobné informace o cenách pro službu Managed Disks najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
+Podrobné informace o cenách pro službu Managed Disks, včetně náklady za transakce, naleznete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 ### <a name="ultra-ssd-vm-reservation-fee"></a>Ultra poplatku za rezervaci SSD virtuálního počítače
 

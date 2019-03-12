@@ -3,20 +3,20 @@ title: Transformace dat pomocí Sparku v Azure Data Factory | Microsoft Docs
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
-ms.author: douglasl
-ms.openlocfilehash: 0f8b2d3040a6fb5aeaa03a9508fbf17393152a9f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449525"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576850"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 

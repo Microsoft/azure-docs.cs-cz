@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1fa9eaa5f4ba399622e0b8889ab722e4a4e130a0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809968"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770472"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -44,6 +44,7 @@ Tento obrázek ukazuje, jak služby Event Grid propojuje zdroje a obslužné rut
 * Service Bus
 * Storage Blob
 * Storage univerzální v2 (GPv2)
+* Azure Maps
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
@@ -87,7 +88,7 @@ Porovnání služeb Event Grid, Event Hubs a Service Bus najdete v článku [Vý
 
 ## <a name="what-can-i-do-with-event-grid"></a>Co můžu dělat se službou Event Grid?
 
-Azure Event gridu poskytuje několik funkcí, které významně zlepšit bez serveru, automatizace operací a [integrace](http://azure.com/integration) pracovat: 
+Azure Event gridu poskytuje několik funkcí, které významně zlepšit bez serveru, automatizace operací a [integrace](https://azure.com/integration) pracovat: 
 
 ### <a name="serverless-application-architectures"></a>Architektury aplikací bez serveru
 

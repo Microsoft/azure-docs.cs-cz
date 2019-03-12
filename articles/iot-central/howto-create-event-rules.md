@@ -3,17 +3,17 @@ title: Vytvoření a Správa pravidel událostí v aplikaci Azure IoT Central | 
 description: Pravidla události ve službě Azure IoT Central umožňují monitorujte svoje zařízení téměř v reálném čase a automatickému vyvolávání akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2fd06a2164761489af6ee84d56806ef858e3b5d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307849"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782679"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření události pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -27,29 +27,21 @@ Zařízení můžete použít měření událostí k odesílání událostí dů
 
 Pokud chcete vytvořit pravidlo události, šablona zařízení musí mít alespoň jednu událost měření definovaných. Tento příklad používá Automat chladicí zařízení, která generuje sestavy ventilátor motor chybová událost. Toto pravidlo sleduje události oznámí zařízení a odešle e-mail vždy, když se použije v hlášení události.
 
-1. Pomocí Device Explorer přejděte k šabloně zařízení, pro který chcete přidat pravidlo pro.
-
-1. V části vybrané šablony vyberte ze stávajících zařízení.
-
-    >[!TIP] 
-    >Pokud šablonu nebude mít všechna zařízení, nejdříve přidejte nové zařízení.
+1. Použití **šablon** stránce, přejděte k šabloně zařízení, pro který chcete přidat pravidlo pro.
 
 1. Pokud jste dosud nevytvořili žádná pravidla, zobrazí se následující obrazovka:
 
     ![Zatím žádná pravidla](media/howto-create-event-rules/Rules_Landing_Page.png)
 
+1. Na **pravidla** kartu, vyberte možnost **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
-1. Na **pravidla** kartu, vyberte možnost **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
-
-
-1. Vyberte **události** dlaždici vytvořit událost pravidlo monitorování.
+1. Zvolte **události** dlaždici vytvořit událost pravidlo monitorování.
 
     ![Typy pravidel](media/howto-create-event-rules/Rule_Types.png)
 
-    
 1. Zadejte název, který pomáhá identifikovat pravidla v této šabloně zařízení.
 
-1. Pravidla pro všechna zařízení, které jsou vytvořené z této šablony okamžitě povolit, přepněte **Povolit pravidlo pro všechna zařízení pro tuto šablonu**.
+1. Pravidla pro všechna zařízení, které jsou vytvořené z této šablony okamžitě povolit, přepněte **Povolit pravidlo pro všechna zařízení z této šablony**.
 
     ![Podrobnosti pravidla](media/howto-create-event-rules/Rule_Detail.png)
 
@@ -63,26 +55,25 @@ Podmínka definuje kritéria, která je sledována tímto pravidlem.
 
 1. Vyberte událost, která chcete monitorovat z rozevíracího seznamu měření. V tomto příkladu **Motor chyba ventilátor** událost byla vybrána.
 
-   ![Podmínka](media/howto-create-event-rules/Condition_Filled_Out.png) 
-
+   ![Podmínka](media/howto-create-event-rules/Condition_Filled_Out.png)
 
 1. Volitelně můžete také nastavit **počet** jako **agregace** a zadejte odpovídající prahovou hodnotu.
 
-    - Bez agregace, aktivační události pravidlo pro každý datový bod událostí, který splňuje podmínky. Například pokud nakonfigurujete podmínku pravidla, která má aktivovat, když dojde k události "Ventilátor Motor chyba" pak toto pravidlo aktivuje téměř okamžitě, když zařízení ohlásí tuto událost.
-    - Pokud počet slouží jako agregační funkci a pak je nutné zadat **prahová hodnota** a **agregační interval** přes která podmínka je potřeba zhodnotit. V takovém případě je agregován počet událostí a pravidlo spustí jenom v případě, že počet agregovaných událostí odpovídá prahovou hodnotu.
- 
-    Například pokud chcete upozornění, když existuje více než tři události zařízení během 5 minut, pak vyberte události a nastavte agregační funkci "počet", operátor jako "větší než" a "prahová hodnota" jako 3. Nastavení "Agregace časové období" na "5 minut". Pravidlo aktivuje, když více než tři události jsou odeslané ze zařízení do 5 minut. Četnost vyhodnocování pravidel je stejná jako **agregační interval**, to znamená, že v tomto příkladu, pravidlo se vyhodnotí jednou každých 5 minut. 
+    - Bez agregace, aktivační události pravidlo pro každý datový bod událostí, který splňuje podmínky. Například pokud nakonfigurujete toto pravidlo podmínky pro aktivaci, kdy **Motor chyba ventilátor** pak toto pravidlo aktivuje téměř okamžitě, když zařízení ohlásí této události dojde k události.
+    - Pokud počet slouží jako agregační funkci a pak je nutné zadat **prahová hodnota** a **agregační interval** přes která podmínka je potřeba zhodnotit. V takovém případě je počet událostí, které agregují a pravidlo aktivuje jenom v případě, že počet agregovaných událostí odpovídá prahovou hodnotu.
+
+    Například pokud chcete upozornění, když existuje více než tři události zařízení během 5 minut, pak vyberte události a nastavte agregační funkci "počet", operátor jako "větší než" a "prahová hodnota" jako 3. Nastavení "Agregace časové období" na "5 minut". Pravidlo aktivuje, když více než tři události jsou odeslané ze zařízení do 5 minut. Četnost vyhodnocování pravidel je stejná jako **agregační interval**, to znamená, že v tomto příkladu, pravidlo se vyhodnotí jednou každých 5 minut.
 
     ![Přidat podmínku události](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Více než jedno měření události mohou být přidány do **podmínku**. Pokud jsou zadány více podmínek, musí být splněny všechny podmínky pro pravidlo pro aktivaci. Každá podmínka získá připojí pomocí klauzule "A" implicitně. Při použití agregace, musí být agregovaný každou měření.
 
 ### <a name="configure-actions"></a>Konfigurace akcí
 
 V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje pravidlo. Akce získat vyvoláno, pokud všechny podmínky zadaná v pravidle vyhodnocen na hodnotu true.
 
-1. Zvolte **+** vedle **akce**. Zde můžete zobrazit seznam dostupných akcí. 
+1. Zvolte **+** vedle **akce**. Zde můžete zobrazit seznam dostupných akcí.
 
     ![Přidání akce](media/howto-create-event-rules/Add_Action.png)
 
@@ -94,8 +85,6 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
    ![Konfigurace akce](media/howto-create-event-rules/Configure_Action.png)
 
 1. Chcete-li uložit pravidlo, zvolte **Uložit**. Pravidlo uvedete během několika minut a zahájí monitorování událostí odesílaných do vaší aplikace. Když se podmínka uvedená v pravidle shoduje, pravidlo aktivuje nakonfigurovaná e-mailové akce.
-
-1. Volbou **Done** (Hotovo) ukončete režim **úpravy šablony**.
 
 Pravidla, jako je Microsoft Flow a webhooky, můžete přidat další akce. Můžete přidat až 5 akcí na jedno pravidlo.
 

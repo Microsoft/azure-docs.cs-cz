@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fe77a1093bec52c3786a9ae623a2d63e1ba82ce
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750935"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779364"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
@@ -45,7 +45,7 @@ Chcete-li automaticky načíst data bez zadání typu souboru, použijte `auto_r
 ```python
 import azureml.dataprep as dprep
 
-dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
 Tato funkce je užitečná pro automatické zjišťování typu souboru, kódování a ostatních parsování argumentů vše z jednoho pohodlný vstupní bod. Funkce také automaticky provede následující kroky běžně provádějí při načítání s oddělovači dat:
@@ -61,8 +61,8 @@ Případně pokud znáte souboru zadejte předem domluvili a chcete explicitně 
 Chcete-li čtení dat jednoduchý text do toku dat, použijte `read_lines()` bez zadání volitelné parametry.
 
 ```python
-dataflow = dprep.read_lines(path='./data/text_lines.txt')
-dataflow.head(5)
+dflow = dprep.read_lines(path='./data/text_lines.txt')
+dflow.head(5)
 ```
 
 ||Perokresba|
@@ -75,7 +75,7 @@ dataflow.head(5)
 Po data ingestují, spusťte následující kód pro převod objektu toku dat do Pandas dataframe.
 
 ```python
-pandas_df = dataflow.to_pandas_dataframe()
+pandas_df = dflow.to_pandas_dataframe()
 ```
 
 ## <a name="load-csv-data"></a>Načtení dat ve formátu CSV
@@ -83,8 +83,8 @@ pandas_df = dataflow.to_pandas_dataframe()
 Při čtení textových souborů s oddělovači, lze odvodit základní spuštění analýzy parametry (oddělovač, kódování, jestli se má použít, hlavičky atd.). Spusťte následující kód, který pokus o čtení souboru CSV zadáním pouze jeho umístění.
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
-dataflow.head(5)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -97,9 +97,9 @@ dataflow.head(5)
 Chcete-li při načítání, vyloučit řádky, definujte `skip_rows` parametru. Tento parametr vynechá načítání řádků sestupně v souboru CSV (pomocí indexu se základem 1).
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1)
-dataflow.head(5)
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -110,7 +110,7 @@ dataflow.head(5)
 Spusťte následující kód k zobrazení datové typy sloupce.
 
 ```python
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Výstup:
 
@@ -126,10 +126,10 @@ Výstup:
 Ve výchozím nastavení sady SDK pro Azure Machine Learning Data Prep nemění datový typ. Zdroj dat, které právě čtete z je textový soubor, takže sady SDK čte všechny hodnoty jako řetězce. V tomto příkladu by měl být číselné sloupce analyzovat jako čísla. Nastavte `inference_arguments` parametr `InferenceArguments.current_culture()` automaticky odvodit a převést typy sloupců při čtení souboru.
 
 ```
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Výstup:
 
@@ -150,8 +150,8 @@ Několik sloupců byly správně rozpozná jako číselný a jejich typ je nasta
 Sada SDK zahrnuje `read_excel()` funkce načíst soubory aplikace Excel. Ve výchozím nastavení funkce načte první listu v sešitu. Chcete-li definovat konkrétního listu načíst, definujte `sheet_name` parametr s hodnotou řetězec názvu tabulky.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
-dataflow.head(5)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
+dflow.head(5)
 ```
 
 ||Sloupec1|Column2|Sloupec3|Column4|Column5|Column6|Column7|Column8|
@@ -165,7 +165,7 @@ dataflow.head(5)
 Výstup ukazuje, že data v druhé tabulce měli tři prázdné řádky před záhlaví. `read_excel()` Funkce obsahuje volitelné parametry pro přeskočení řádků a pomocí hlavičky. Spusťte následující kód, který přeskočí první tři řádky a použít čtvrtý řádek jako záhlaví.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
@@ -175,11 +175,11 @@ dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_c
 
 ## <a name="load-fixed-width-data-files"></a>Načíst soubory s pevnou šířkou dat
 
-K souborům loadfixed šířkou zadáte seznam znaků posunutí. První sloupec je vždy považován za začínají nulové posunutí.
+Načíst soubory s pevnou šířkou, zadáte seznam znaků posunutí. První sloupec je vždy považován za začínají nulové posunutí.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
-dataflow.head(5)
+dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
+dflow.head(5)
 ```
 
 ||010000|99999|NEPLATNÉ NORSKO|NO|NO_1|ENRS|Column7|Column8|Column9|
@@ -191,7 +191,7 @@ dataflow.head(5)
 Pokud chcete zabránit záhlaví detekce a analyzovat správná data, předat `PromoteHeadersMode.NONE` k `header` parametru.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
+dflow = dprep.read_fwf('./data/fixed_width_file.txt',
                           offsets=[7, 13, 43, 46, 52, 58, 65, 73],
                           header=dprep.PromoteHeadersMode.NONE)
 ```
@@ -221,8 +221,8 @@ ds = dprep.MSSQLDataSource(server_name="[SERVER-NAME]",
 Jakmile vytvoříte objekt zdroje dat, můžete přejít k číst data z výstupu dotazu.
 
 ```python
-dataflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
-dataflow.head(5)
+dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
+dflow.head(5)
 ```
 
 ||ProductID|Název|ProductNumber|Barva|StandardCost|ListPrice|Velikost|Hmotnost|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto nastavuje|ThumbnailPhotoFileName|ROWGUID|ModifiedDate|
@@ -246,7 +246,7 @@ Na místním počítači spusťte následující příkaz.
 ```azurecli
 az login
 az account show --query tenantId
-dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
+dflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dflow.head(5) head
 ```
 
 > [!NOTE]
@@ -299,8 +299,8 @@ from azureml.dataprep.api.datasources import DataLakeDataSource
 
 ctx = adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com')
 token = ctx.acquire_token_with_client_certificate('https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
-dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
-dataflow.to_pandas_dataframe().head()
+dflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
+dflow.to_pandas_dataframe().head()
 ```
 
 ||FMID|MarketName|Web|Ulice|city|Oblast|

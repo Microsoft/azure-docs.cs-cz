@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 5d44904d6210dbc9520ae735605699b197f38bef
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f92c8a7cca70dd9de6389c201d9589c7a31ce25f
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804124"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726987"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric soubory Azure svazku ovladače (Preview)
 Je modul plug-in Azure Files svazku [modulu plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) poskytující [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na základě svazky pro kontejnery Dockeru. Tento modul plug-in Docker svazek je zabalený jako aplikace Service Fabric, který je možné nasadit do clusterů Service Fabric. Jeho účelem je poskytnout službě soubory Azure založené na svazky pro ostatní kontejnerové aplikace Service Fabric, které jsou nasazené na clusteru.
 
 > [!NOTE]
-> Verze 6.4.571.9494 modul plug-in Azure Files svazek je verze preview, která je k dispozici s tímto dokumentem. Jako verze preview, je **není** podporovaných pro použití v produkčním prostředí.
+> Verze 6.4.571.9590 modul plug-in Azure Files svazek je verze preview, která je k dispozici s tímto dokumentem. Jako verze preview, je **není** podporovaných pro použití v produkčním prostředí.
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -39,11 +39,11 @@ Je modul plug-in Azure Files svazku [modulu plug-in svazku Docker](https://docs.
 
 * Pokud používáte kontejnery Hyper-v, je nutné přidat v části Nastavení fabricSettings šablony ARM (Azure clusteru) nebo ClusterConfig.json (samostatného clusteru) nebo ClusterManifest (místního clusteru) následující fragmenty kódu. Budete potřebovat název svazku a port, který svazek naslouchá na clusteru. 
 
-V ClusterManifest následující potřeba do ní přidat v části Hosting. V tomto příkladu je název svazku **sfazurefile** a port, který naslouchá na clusteru je **19300**.  
+V ClusterManifest následující potřeba do ní přidat v části Hosting. V tomto příkladu je název svazku **sfazurefile** a port, který naslouchá na clusteru je **19100**.  
 
 ``` xml 
 <Section Name="Hosting">
-  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19100" />
 </Section>
 ```
 
@@ -56,7 +56,7 @@ V části Nastavení fabricSettings šablony ARM (pro nasazení v Azure) nebo Cl
     "parameters": [
       {
           "name": "VolumePluginPorts",
-          "value": "sfazurefile:19300"
+          "value": "sfazurefile:19100"
       }
     ]
   }
@@ -66,7 +66,7 @@ V části Nastavení fabricSettings šablony ARM (pro nasazení v Azure) nebo Cl
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Nasazení aplikace Service Fabric Azure Files
 
-Aplikace Service Fabric, která poskytuje pro vaše kontejnery svazků si můžete stáhnout z následující [odkaz](https://aka.ms/sfvolume6.4). Aplikace je nasadit do clusteru přes [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [rozhraní příkazového řádku](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) nebo [rozhraní API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
+Aplikace Service Fabric, která poskytuje pro vaše kontejnery svazků si můžete stáhnout z následující [odkaz](http://download.microsoft.com/download/C/0/3/C0373AA9-DEFA-48CF-9EBE-994CA2A5FA2F/AzureFilesVolumePlugin.6.4.571.9590.zip). Aplikace je nasadit do clusteru přes [PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications), [rozhraní příkazového řádku](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl) nebo [rozhraní API FabricClient](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
 
 1. Pomocí příkazového řádku, změňte adresář na kořenovém adresáři stažený balíček aplikace.
 
@@ -99,14 +99,14 @@ Aplikace Service Fabric, která poskytuje pro vaše kontejnery svazků si může
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. Vytvoření aplikace v příkazu pro vytvoření aplikace níže si všimněte **ListenPort** parametr aplikace. Tato hodnota zadaná pro parametr této aplikace je port, na kterém modul plug-in Azure Files svazku čeká na požadavky z démona Dockeru. Je důležité zajistit, že port, který poskytuje k aplikaci není v konfliktu s jakýkoli jiný port, který cluster nebo vaše aplikace používat.
+4. Vytvoření aplikace v příkazu pro vytvoření aplikace níže si všimněte **ListenPort** parametr aplikace. Tato hodnota zadaná pro parametr této aplikace je port, na kterém modul plug-in Azure Files svazku čeká na požadavky z démona Dockeru. Je důležité zajistit, že port, který poskytuje tak, aby aplikace shodu VolumePluginPorts v ClusterManifest a není v konfliktu s jakýkoli jiný port, který cluster nebo vaše aplikace používat.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -118,11 +118,11 @@ Aplikace Service Fabric, která poskytuje pro vaše kontejnery svazků si může
 Výchozí počet instancí služby soubory Azure aplikace modulu plug-in svazku se -1, což znamená, že instance služby nasazené na každém uzlu v clusteru. Při nasazování aplikace modulu plug-in Azure Files svazku na místní vývojový cluster, počet instancí služby by měla zadat jako 1. Můžete to udělat pomocí **InstanceCount** parametr aplikace. Proto je příkaz pro nasazení aplikace modulu plug-in Azure Files svazku v místním vývojovém clusteru:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 ## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurace vaší aplikace, aby používaly svazku
 Následující fragment kódu ukazuje, jak lze zadat svazku soubory Azure na základě v manifestu aplikace vaší aplikace. Konkrétní elementu zájmu je **svazku** značky:

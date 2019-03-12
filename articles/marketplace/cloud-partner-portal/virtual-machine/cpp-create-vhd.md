@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233180"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575465"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Vytvoření virtuálního pevného disku kompatibilního s Azure
 
@@ -48,7 +48,7 @@ Azure také nabízí celou řadu Linuxových distribucí schválených.  Aktuál
 V Microsoftu [webu Azure portal](https://ms.portal.azure.com/), vytvořte základní image, pomocí následujících kroků.
 
 1. Přihlaste se k portálu pomocí účtu Microsoft pro předplatné Azure, že který chcete publikovat vaši nabídku virtuálního počítače.
-2. Vytvořit novou skupinu prostředků a poskytnout vaší **název skupiny prostředků**, **předplatné**, a **umístění skupiny prostředků**.  Další informace najdete v tématu [Správa skupin prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups).
+2. Vytvořit novou skupinu prostředků a poskytnout vaší **název skupiny prostředků**, **předplatné**, a **umístění skupiny prostředků**.  Další informace najdete v tématu [Správa skupin prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 3. Klikněte na **virtuálních počítačů** v levém řádku nabídek zobrazíte na stránce podrobností virtuálních počítačů. 
 4. Na tuto novou stránku, klikněte na **+ přidat** zobrazíte **Compute** okno.  Pokud se na úvodní obrazovce se nezobrazí typ virtuálního počítače, můžete vyhledat název vašeho základního virtuálního počítače, například:
 

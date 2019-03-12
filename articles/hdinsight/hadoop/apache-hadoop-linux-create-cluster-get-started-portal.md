@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 829b566469e5fd61460c1451b196eec24fd4e3f8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e46237117ae3e4a2879947be2c065bba5e720fb8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882922"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570976"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rychlý start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí webu Azure portal
 
@@ -117,11 +117,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
    
         SHOW TABLES;
 
-    ![Zobrazení Hive služby HDInsight](./media/apache-hadoop-linux-tutorial-get-started/hiveview-1.png "Editor dotazů zobrazení Hive služby HDInsight")
-   
-   > [!NOTE]  
-   > Hive vyžaduje středník.       
-
+    ![Zobrazení Hive služby HDInsight](./media/apache-hadoop-linux-tutorial-get-started/hiveview-1.png "Editor dotazů zobrazení Hive služby HDInsight")     
 
 5. Vyberte **Provést**. Karta **VÝSLEDKY** se zobrazí pod kartou **DOTAZ** a zobrazí informace o úloze. 
    

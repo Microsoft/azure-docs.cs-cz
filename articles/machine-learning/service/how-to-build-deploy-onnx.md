@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: a610c7c8189c22e8aa15e14a205b11b7f6c05b82
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f7afb6478d2780af17720fa57c17130588f7d6e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873096"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770199"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: Vytvoření a nasazení interoperabilní modely AI
 
@@ -69,7 +69,7 @@ Pomocí služby Azure Machine Learning můžete nasadit, spravovat a monitorovat
 
 ### <a name="install-and-configure-onnx-runtime"></a>Instalace a konfigurace modulu Runtime ONNX
 
-Modul Runtime ONNX je open source modul výkonné odvození pro modely ONNX. Poskytuje hardwarovou akceleraci o CPU a GPU, s rozhraními API pro Python, k dispozici C#, a podporuje C. ONNX Runtime ONNX 1.2 + modelů a běží na Linuxu, Windows a Mac. Jsou k dispozici na balíčky Pythonu [PyPi.org](https://pypi.org) ([procesoru](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# balíčku](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) na [Nuget.org](https://www.nuget.org). Další informace o projektu naleznete na [Githubu](https://github.com/Microsoft/onnxruntime). 
+Modul Runtime ONNX je open source modul výkonné odvození pro modely ONNX. Poskytuje hardwarovou akceleraci o CPU a GPU, s rozhraními API pro Python, k dispozici C#, a podporuje C. ONNX Runtime ONNX 1.2 + modelů a běží na Linuxu, Windows a Mac. Jsou k dispozici na balíčky Pythonu [PyPi.org](https://pypi.org) ([procesoru](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# balíčku](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) na [Nuget.org](https://www.nuget.org). Další informace o projektu naleznete na [Githubu](https://github.com/Microsoft/onnxruntime). Přečtěte si prosím [požadavky na systém](https://github.com/Microsoft/onnxruntime#system-requirements) před instalací.
 
 Chcete-li nainstalovat modul Runtime ONNX pro Python, použijte:
 ```python

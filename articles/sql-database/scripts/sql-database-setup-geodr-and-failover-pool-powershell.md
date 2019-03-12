@@ -11,13 +11,13 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: 8b4ecf7b070ca36683cfc3d6b02562530a6c5712
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/07/2019
+ms.openlocfilehash: aacb1aa451a1453d0648478ed359630d57f265f4
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342101"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576663"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi ve fondu ve službě Azure SQL Database pomocí Powershellu
 
@@ -27,7 +27,7 @@ Tento ukázkový skript Powershellu nakonfiguruje aktivní geografickou replikac
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 

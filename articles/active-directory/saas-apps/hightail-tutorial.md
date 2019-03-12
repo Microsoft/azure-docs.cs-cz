@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2758cffd99a70199b131337e936cf55458ce0e9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 67f931a76bf0f8071de6767d7420d88990644c8f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992069"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Integrace Azure Active Directory s Hightail
 

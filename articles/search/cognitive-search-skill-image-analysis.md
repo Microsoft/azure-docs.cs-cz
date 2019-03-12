@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 75c453c9ac501eea681af32643a40e941555ffbd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fb14b49e573770aaef13d6b5d47c265337c408c
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454914"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568919"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Obrázek analýzy kognitivní dovednosti
 
@@ -110,16 +110,16 @@ Parametry rozlišují malá a velká písmena.
     "values": [
         {
             "recordId": "1",
-            "data": {                
-                "image":  {
-                               "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
-                               "width": 500,
-                               "height": 300,
-                               "originalWidth": 5000,  
-                               "originalHeight": 3000,
-                               "rotationFromOriginal": 90,
-                               "contentOffset": 500  
-                           }
+            "data": {
+                "image": {
+                    "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
+                    "width": 500,
+                    "height": 300,
+                    "originalWidth": 5000,
+                    "originalHeight": 3000,
+                    "rotationFromOriginal": 90,
+                    "contentOffset": 500
+                }
             }
         }
     ]
@@ -132,18 +132,18 @@ Parametry rozlišují malá a velká písmena.
 ```json
 {
     "values": [
-      {
-        "recordId": "1",
+        {
+            "recordId": "1",
             "data": {
                 "categories": [
-           {
+                    {
                         "name": "abstract_",
                         "score": 0.00390625
                     },
                     {
-                "name": "people_",
+                        "name": "people_",
                         "score": 0.83984375,
-                "detail": {
+                        "detail": {
                             "celebrities": [
                                 {
                                     "name": "Satya Nadella",
@@ -214,7 +214,7 @@ Parametry rozlišují malá a velká písmena.
                     {
                         "age": 44,
                         "gender": "Male",
-                    "faceBoundingBox": {
+                        "faceBoundingBox": {
                             "left": 593,
                             "top": 160,
                             "width": 250,
@@ -236,8 +236,8 @@ Parametry rozlišují malá a velká písmena.
                     "clipArtType": 0,
                     "lineDrawingType": 0
                 }
-           }
-      }
+            }
+        }
     ]
 }
 ```

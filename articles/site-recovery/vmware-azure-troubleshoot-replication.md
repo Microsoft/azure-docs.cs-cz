@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/7/2019
+ms.date: 03/7/2019
 ms.author: mayg
-ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3417a6cb4c9af8c315cc84718330b4ab5255ee6c
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964769"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569259"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -28,6 +28,8 @@ Ujistěte se, že na počítači PS běží následující služby. Spusťte neb
 
 **Integrovaný procesový Server**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * Služba nahrávání protokolu (LogUpload)
@@ -41,6 +43,8 @@ Ujistěte se, že na počítači PS běží následující služby. Spusťte neb
 
 **Horizontální navýšení kapacity procesového serveru**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * Služba nahrávání protokolu (LogUpload)
@@ -51,6 +55,8 @@ Ujistěte se, že na počítači PS běží následující služby. Spusťte neb
 
 **Procesový Server v Azure pro navrácení služeb po obnovení**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * Služba nahrávání protokolu (LogUpload)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 341278237bc18bfbb8f4bb1e5d600e2cab894926
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 39ae76da197db0c2b4f494bd74b3c76e6ff27f8e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343353"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576799"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -129,7 +129,7 @@ V tomto kurzu se využívají dvě topologie:
     >
     > Pokud nepoužijete k vytvoření clusteru Storm šablonu v tomto dokumentu, pak musíte akci skriptu použít na cluster ručně.
     >
-    > Akce skriptu je ve složce `https://hdiconfigactions2.blob.core.windows.net/stormextlib/stormextlib.sh` a použije se na nadřízené a nimbus uzly clusteru Storm. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+    > Akce skriptu je ve složce `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` a použije se na nadřízené a nimbus uzly clusteru Storm. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 Topologie se definují pomocí komponenty [Flux](https://storm.apache.org/releases/1.1.2/flux.html). Flux byl uveden ve Stormu 0.10.x a umožňuje oddělení konfigurace topologie od kódu. Pro topologie používající architekturu Flux se topologie definuje v souboru YAML. Soubor YAML je možné zahrnout jako součást topologie. Může to ale být také samostatný soubor, který použijete při odesílání topologie. Flux také podporuje různé substituce za běhu, což se využívá i v tomto příkladu.
 
@@ -518,7 +518,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 4. Uložte soubor `dev.properties` a následujícím příkazem ho nahrajte do clusteru **Storm**:
 
      ```bash
-    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
+    scp dev.properties USERNAME@BASENAME-ssh.azurehdinsight.net:dev.properties
     ```
 
     **USERNAME** nahraďte uživatelským jménem SSH pro cluster. **BASENAME** nahraďte základním názvem použitým při vytváření clusteru.

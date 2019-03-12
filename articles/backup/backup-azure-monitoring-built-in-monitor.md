@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 72a23617440e26c9dca69cab2a06370427c49768
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 50d766eed5800c58d0b0258b2be6637f139c542a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404718"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730965"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -94,7 +94,7 @@ Pokud frekvence je nastavená na hodinový přehled a výstraha se vyvolá a vy�
 > [!NOTE]
 >
 * Pokud destruktivní operace, jako **zastavení ochrany a odstraňte data** je provést, je vyvolána výstraha a odešle e-mail na vlastníky těchto předplatných, správci a spolusprávci i v případě, že oznámení nakonfigurovaná není pro obnovení služby trezor.
-* Výstrahy se negenerují. pro úspěšné zálohy proto oznámení nebudou aktivovány. Konfigurace oznámení pro úspěšné úlohy používají [protokolu aktivit](backup-azure-monitoring-use-azuremonitor.md#using-rs-vaults-activity-logs) nebo [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+* Konfigurace oznámení pro úspěšné úlohy používají [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="next-steps"></a>Další postup
 

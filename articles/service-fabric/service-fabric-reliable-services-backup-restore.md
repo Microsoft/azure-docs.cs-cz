@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d01d2f18ed35d1752f97f405ae7f7bfb4708ca0d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095766"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570041"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení modelu Reliable Services a Reliable Actors
 Azure Service Fabric je platforma vysoké dostupnosti, která replikuje stav napříč několika uzly tento vysokou dostupnost.  Proto i když selže jeden uzel v clusteru služby nadále k dispozici. Tuto redundanci integrované poskytovaný platformou může být dostačující pro některé, v některých případech je vhodné pro službu pro zálohování dat (pro externí úložiště).
@@ -188,13 +188,13 @@ Reliable Actors rozhraní Framework je nástavbou Reliable Services. ActorServic
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo)
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo)
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -203,7 +203,7 @@ Když vytvoříte třídu vlastního objektu actor service, musíte zaregistrova
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
-   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
 Výchozího zprostředkovatele stavu Reliable actors je `KvsActorStateProvider`. Přírůstková záloha není povolena ve výchozím nastavení pro `KvsActorStateProvider`. Přírůstkové zálohování můžete povolit vytvořením `KvsActorStateProvider` s odpovídající nastavení 've svém konstruktoru a předejte jí ActorService konstruktoru, jak je znázorněno v následujícím fragmentu kódu:
@@ -211,13 +211,13 @@ Výchozího zprostředkovatele stavu Reliable actors je `KvsActorStateProvider`.
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```

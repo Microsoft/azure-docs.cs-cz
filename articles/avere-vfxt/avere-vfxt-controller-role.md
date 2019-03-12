@@ -3,17 +3,17 @@ title: Vlastní kontroler přístup role - Avere vFXT pro Azure
 description: Jak vytvořit vlastní přístup role kontroleru Avere vFXT clusteru
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
+ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7ed20ccac879ec8eba1c3fbd91e38d05b08a12d2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c408efa7ca01928e25ac03f5ca63d0aef7d88839
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55303065"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770030"
 ---
-# <a name="customized-controller-access-role"></a>Vlastní kontroler přístup role
+# <a name="customized-controller-access-role"></a>Přizpůsobená role s přístupem kontroleru
 
 VFXT Avere pro kontroler clusteru Azure používá spravované identity a řízení přístupu na základě role (RBAC) aby mohla vytvářet a spravovat cluster. 
 
