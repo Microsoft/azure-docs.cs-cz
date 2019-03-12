@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558970"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760763"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -50,13 +50,13 @@ Podívejte se na příklad specifické pro jazyk:
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
-Následující příklad ukazuje [ C# funkce](functions-dotnet-class-library.md) , který je proveden při každém spuštění minuty mají hodnotu dělitelné podle pět (třeba Pokud funkci začne v 18:57:00, se další výkon v 19:00:00):
+Následující příklad ukazuje [ C# funkce](functions-dotnet-class-library.md) , který je proveden při každém spuštění minuty mají hodnotu dělitelné podle pět (třeba Pokud funkci začne v 18:57:00, se další výkon v 19:00:00). [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>Ukázkový skript jazyka C#
 
-Následující příklad ukazuje vazby v časovacího triggeru *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt.
+Následující příklad ukazuje vazby v časovacího triggeru *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -84,7 +84,7 @@ Tady je kód skriptu jazyka C#:
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F#Příklad
 
-Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt.
+Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) Objekt je předán do funkce.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
-Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt.
+Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. A [objekt časovače](#usage) je předán do funkce.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -138,7 +138,7 @@ Tady je kód jazyka JavaScript:
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node is running late!');
     }
@@ -191,7 +191,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
 |**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace **%** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
-|**runOnStartup**|**runOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, zejména v produkčním prostředí. |
+|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, zejména v produkčním prostředí. |
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` označující, jestli plán by se měly monitorovat. Plán monitorování nevyřeší výskytů plán vám pomůže zajistit, že plán zachovaný správně, i v případě restartování instance aplikace funkce. Pokud není nastavený explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -201,7 +201,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-Při vyvolání funkce pro aktivaci časovače [objekt časovače](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) je předán do funkce. Následující kód JSON je příklad reprezentace objektu časovače. 
+Při vyvolání funkce pro aktivaci časovače časovače objekt je předán do funkce. Následující kód JSON je příklad reprezentace objektu časovače.
 
 ```json
 {
@@ -226,13 +226,13 @@ Azure Functions používá [NCronTab](https://github.com/atifaziz/NCrontab) knih
 
 Každé pole může mít jednu z následujících typů hodnot:
 
-|Typ  |Příklad:  |Při aktivaci  |
+|Type  |Příklad:  |Při aktivaci  |
 |---------|---------|---------|
-|Konkrétní hodnota |<nobr>"0 5 *** *"</nobr>|na hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
-|Všechny hodnoty (`*`)|<nobr>"0 * 5 ** *"</nobr>|na 5:mm: 00 každý den, kdy mm se každou minutu v hodině (60 za den)|
-|Rozsah (`-` operátor)|<nobr>"5-7 viz *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
+|Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|na hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
+|Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|na 5:mm: 00 každý den, kdy mm se každou minutu v hodině (60 za den)|
+|Rozsah (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
 |Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|na hh:mm:05 hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3 x minuty)|
-|Hodnota intervalu (`/` operátor)|<nobr>"0 * / 5 *** *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
+|Hodnota intervalu (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
 
 Chcete-li určit měsíců nebo i dny můžete číselné hodnoty, názvy nebo jejich zkratky názvů:
 
@@ -277,7 +277,7 @@ Nebo vytvořit nastavení aplikace pro vaši aplikaci function app s názvem `WE
 
 Při použití `WEBSITE_TIME_ZONE`, dojde k přenastavení čas pro změny času v konkrétním časovém pásmu, jako je letní čas. 
 
-## <a name="timespan"></a>Časový interval
+## <a name="timespan"></a>TimeSpan
 
  A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service.
 
@@ -287,9 +287,9 @@ Vyjádřená jako řetězec, `TimeSpan` formát je `hh:mm:ss` při `hh` je krat�
 
 |Příklad: |Při aktivaci  |
 |---------|---------|
-|"01: 00:00" | každou hodinu        |
-|"00: 01:00"|každou minutu         |
-|"24: 00:00" | každý den        |
+|"01:00:00" | každou hodinu        |
+|"00:01:00"|každou minutu         |
+|"24:00:00" | každý den        |
 
 ## <a name="scale-out"></a>Škálování na víc systémů
 

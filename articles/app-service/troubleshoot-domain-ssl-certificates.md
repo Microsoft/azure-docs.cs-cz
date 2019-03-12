@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653658"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730098"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure App Service
 
@@ -88,13 +88,84 @@ Tento problém může vzniknout z některého z následujících důvodů:
 - Odběr byl dosažen limit nákupy, které jsou povoleny v rámci předplatného.
 
     **Řešení**: Certifikáty služby App Service mají omezení na 10 nákupy certifikát pro typy předplatného s průběžnými platbami a EA. Limit pro ostatní typy předplatného je 3. Limit zvýšit, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certifikát App Service byla označena jako podvod. Dostanete se následující chybová zpráva: "Váš certifikát se označil jako potenciálně podvodný. Požadavek je právě probíhá kontrola. Pokud certifikát není autentický během 24 hodin, kontaktujte prosím podporu Azure. "
+- Certifikát App Service byla označena jako podvod. Dostanete se následující chybová zpráva: "Váš certifikát se označil jako potenciálně podvodný. Požadavek je právě probíhá kontrola. Pokud certifikát není autentický během 24 hodin, kontaktujte podporu Azure."
 
     **Řešení**: Pokud tento certifikát je označen jako podvodů a nevyřeší po 24 hodinách, postupujte podle těchto kroků:
 
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Přejděte na **služby App Service Certificate**a vyberte certifikát.
     3. Vyberte **konfigurace certifikátu** > **krok 2: Ověřte** > **ověření domény**. Tento krok odešle oznámení e-mailu certifikátů Azure poskytovatelem a vyřešit problém.
+
+## <a name="custom-domain-problems"></a>Problémy vlastní domény
+
+### <a name="a-custom-domain-returns-a-404-error"></a>Vlastní domény vrátí chybu 404 
+
+#### <a name="symptom"></a>Příznak
+
+Přejděte na web s použitím vlastního názvu domény zobrazí následující chybová zpráva:
+
+"Chyba 404webovou aplikaci nebyl nalezen."
+
+#### <a name="cause-and-solution"></a>Příčina a řešení
+
+**Příčiny 1** 
+
+Vlastní domény, který jste nakonfigurovali chybí záznam CNAME nebo A. 
+
+**Řešení příčiny 1**
+
+- Pokud jste přidali záznam A, ujistěte se, že je taky přidaný záznam TXT. Další informace najdete v tématu [vytvořte záznam a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Pokud není nutné používat kořenovou doménu pro vaši aplikaci, doporučujeme použít záznam CNAME, který místo záznam.
+- Nepoužívejte záznam CNAME i záznam stejné domény. Tento problém může způsobit konflikt a zabránit doméně Probíhá řešení. 
+
+**Příčiny 2** 
+
+Internetového prohlížeče může přesto být ukládání do mezipaměti starou IP adresu pro vaši doménu. 
+
+**Řešení příčiny 2**
+
+Zrušte v prohlížeči. Pro zařízení s Windows, můžete spustit příkaz `ipconfig /flushdns`. Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu aplikace. 
+
+### <a name="you-cant-add-a-subdomain"></a>Nelze přidat subdoménu 
+
+#### <a name="symptom"></a>Příznak
+
+Nový název hostitele nelze přidat do aplikace přiřadit subdomény.
+
+#### <a name="solution"></a>Řešení
+
+- Obraťte se na správce předplatného, abyste měli jistotu, že máte oprávnění k přidání názvu hostitele do aplikace.
+- Pokud potřebujete další subdomény, doporučujeme změnit hostování domény do Azure služby DNS (Domain Name). S využitím Azure DNS, můžete přidat hostitele 500 do vaší aplikace. Další informace najdete v tématu [přidání subdomény](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+
+### <a name="dns-cant-be-resolved"></a>Nelze přeložit DNS
+
+#### <a name="symptom"></a>Příznak
+
+Dostanete se následující chybová zpráva:
+
+"Záznam DNS nebyl nalezen."
+
+#### <a name="cause"></a>Příčina
+K tomuto problému dochází z jednoho z následujících důvodů:
+
+- Time to live (TTL) období nevypršela platnost. Zkontrolujte konfiguraci DNS pro vaši doménu k určení hodnoty TTL a potom počkejte období vypršení platnosti.
+- Konfigurace DNS je nesprávná.
+
+#### <a name="solution"></a>Řešení
+- Počkejte, až 48 hodin pro tento problém sám nevyřeší.
+- Pokud nastavení TTL můžete změnit v konfiguraci DNS, změňte hodnotu na 5 minut, pokud chcete zobrazit, zda tento problém řeší.
+- Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu aplikace. Pokud ne, nakonfigurujte záznam na správnou IP adresu aplikace.
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>Je třeba obnovit Odstraněná doména 
+
+#### <a name="symptom"></a>Příznak
+Vaše doména už nejsou viditelné na webu Azure Portal.
+
+#### <a name="cause"></a>Příčina 
+Vlastníkem předplatného může-li neúmyslně domény.
+
+#### <a name="solution"></a>Řešení
+Pokud vaše doména byla odstraněna před méně než sedm dní, doménu ještě nezačala proces odstranění. V takovém případě můžete koupit stejné domény znovu na webu Azure portal v rámci stejného předplatného. (Nezapomeňte do vyhledávacího pole zadejte název domény přesné.) Vám nebude účtovat znovu pro tuto doménu. Pokud domény byl odstraněn před více než sedm dnů, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro pomoc s obnovováním domény.
 
 ## <a name="domain-problems"></a>Problémy domény
 
@@ -196,105 +267,62 @@ K tomuto problému dochází z jednoho z následujících důvodů:
     |Typ záznamu|Hostitel|Přejděte na|
     |------|------|-----|
     |A|@|IP adresa pro aplikaci|
-    |TXT|@|< název aplikace >. azurewebsites.net|
-    |CNAME|www|< název aplikace >. azurewebsites.net|
+    |TXT|@|<app-name>.azurewebsites.net|
+    |CNAME|www|<app-name>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>Nelze přeložit DNS
+## <a name="faq"></a>Nejčastější dotazy
 
-#### <a name="symptom"></a>Příznak
+**Je nutné nakonfigurovat své vlastní domény pro můj web po můžu si koupit?**
 
-Dostanete se následující chybová zpráva:
+Při nákupu domény z portálu Azure portal aplikace App Service se automaticky nakonfiguruje používala tuto vlastní doménu. Nemáte žádné další kroky. Další informace, podívejte se [Azure App Service samoobslužné pomoci: Přidání názvu vlastní domény](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) na webu Channel 9.
 
-"Záznam DNS nebyl nalezen."
+**Můžete použít doménu zakoupit na webu Azure Portal přejděte místo toho na Virtuálním počítači Azure?**
 
-#### <a name="cause"></a>Příčina
-K tomuto problému dochází z jednoho z následujících důvodů:
+Ano, pak můžete domény do virtuálního počítače, úložiště atd. Další informace najdete v tématu [vytvořit vlastní plně kvalifikovaný název domény pro virtuální počítač s Windows na webu Azure Portal](../virtual-machines/windows/portal-create-fqdn.md).
 
-- Time to live (TTL) období nevypršela platnost. Zkontrolujte konfiguraci DNS pro vaši doménu k určení hodnoty TTL a potom počkejte období vypršení platnosti.
-- Konfigurace DNS je nesprávná.
+**Moje doména hostitelem je například GoDaddy nebo Azure DNS?**
 
-#### <a name="solution"></a>Řešení
-- Počkejte, až 48 hodin pro tento problém sám nevyřeší.
-- Pokud nastavení TTL můžete změnit v konfiguraci DNS, změňte hodnotu na 5 minut, pokud chcete zobrazit, zda tento problém řeší.
-- Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu aplikace. Pokud ne, nakonfigurujte záznam na správnou IP adresu aplikace.
+Domény služby App Service použít k hostování domén GoDaddy pro registraci domény a Azure DNS. 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Je třeba obnovit Odstraněná doména 
+**Mám automatického obnovení zapnutá, ale stále přijetí oznámení o obnovení pro Moje doména e-mailem. Co bych měl/a dělat?**
 
-#### <a name="symptom"></a>Příznak
-Vaše doména už nejsou viditelné na webu Azure Portal.
+Pokud máte automatického obnovení povoleno, není nutné provádět žádnou akci. Všimněte si, že e-mailu je k dispozici informovat, že doménu je blízko vypršení platnosti a obnovit ručně, pokud automatického obnovení není povolená.
 
-#### <a name="cause"></a>Příčina 
-Vlastníkem předplatného může-li neúmyslně domény.
+**Se mi účtovat Azure DNS hostování Moje doména?**
 
-#### <a name="solution"></a>Řešení
-Pokud vaše doména byla odstraněna před méně než sedm dní, doménu ještě nezačala proces odstranění. V takovém případě můžete koupit stejné domény znovu na webu Azure portal v rámci stejného předplatného. (Nezapomeňte do vyhledávacího pole zadejte název domény přesné.) Vám nebude účtovat znovu pro tuto doménu. Pokud domény byl odstraněn před více než sedm dnů, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nápovědu k obnovení domény.
+Počáteční náklady na nákup domény se vztahuje na pouze registraci domény. Kromě registrace náklady jsou k dispozici poplatků pro Azure DNS na základě využití. Další informace najdete v tématu [ceny Azure DNS](https://azure.microsoft.com/pricing/details/dns/) další podrobnosti.
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Vlastní domény vrátí chybu 404 
+**Můžu zakoupit Moje doména dříve z webu Azure portal a chcete přejít od GoDaddy hostitelských služeb k hostování Azure DNS. Jak mám postupovat?**
 
-#### <a name="symptom"></a>Příznak
+Není to povinné k migraci do Azure DNS hostování. Pokud chcete migrovat do Azure DNS, prostředí pro správu domény na webu Azure Portal o obsahuje informace o krocích, které jsou potřebné k přesunu do Azure DNS. Pokud domény byl zakoupen prostřednictvím služby App Service, migrace z GoDaddy hostování na Azure DNS je poměrně bezproblémové postup.
 
-Přejděte na web s použitím vlastního názvu domény zobrazí následující chybová zpráva:
+**Chci koupit doménu z doména App Service, ale můžete hostovat Moje domény GoDaddy místo Azure DNS?**
 
-"Chyba 404webovou aplikaci nebyl nalezen."
+24. července 2017, od domény služby App Service zakoupené na portálu jsou hostované na Azure DNS. Pokud upřednostňujete použití jiného poskytovatele hostitelských služeb, musí přejít na web příslušného vydavatele získat řešení hostování domény.
 
+**Musím platit za ochranu osobních údajů pro Moje doména?**
 
-#### <a name="cause-and-solution"></a>Příčina a řešení
+Při nákupu domény pomocí webu Azure portal, můžete přidat ochranu osobních údajů bez dalších poplatků. Toto je jedna z výhod nákupu služeb vaší domény prostřednictvím služby Azure App Service.
 
-**Příčiny 1** 
+**Pokud se mám rozhodnout, že Moje doména už nechci, získat Moje peníze zpět?**
 
-Vlastní domény, který jste nakonfigurovali chybí záznam CNAME nebo A. 
+Při nákupu domény, se vám neúčtují po dobu pěti dnů, během této doby můžete rozhodnout, že nechcete, aby domény. Pokud se rozhodnete, že nechcete domény během tohoto období 5 dní, se vám neúčtují poplatky. (výjimkou jsou možné domény. Pokud si koupíte možné domény, účtují se vám okamžitě a nelze refundovat.)
 
-**Řešení příčiny 1**
+**Můžete použít domény v jiné aplikaci služby Azure App Service ve svém předplatném?**
 
-- Pokud jste přidali záznam A, ujistěte se, že je taky přidaný záznam TXT. Další informace najdete v tématu [vytvořte záznam a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- Pokud není nutné používat kořenovou doménu pro vaši aplikaci, doporučujeme použít záznam CNAME, který místo záznam.
-- Nepoužívejte záznam CNAME i záznam stejné domény. To může způsobit konflikt a zabránit doméně Probíhá řešení. 
+Ano. Při přístupu k okně vlastní domény a SSL na webu Azure Portal, uvidíte doménách, které jste zakoupili. Můžete nakonfigurovat aplikaci k používání některé z těchto domén.
 
-**Příčiny 2** 
+**Je možné převést domény z jednoho předplatného do jiného předplatného?**
 
-Internetového prohlížeče může přesto být ukládání do mezipaměti starou IP adresu pro vaši doménu. 
+Domény můžete přesunout na jiné předplatné nebo prostředek skupiny pomocí [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) rutiny Powershellu.
 
-**Řešení příčiny 2**
+**Jak můžete spravovat své vlastní domény, když nemám aktuálně aplikaci služby Azure App Service?**
 
-Zrušte v prohlížeči. Pro zařízení s Windows, můžete spustit příkaz `ipconfig /flushdns`. Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu aplikace. 
+I v případě, že webová aplikace služby App Service nemáte, můžete spravovat vaši doménu. Domény můžete použít pro služby Azure, jako jsou virtuální počítače, úložiště atd. Pokud máte v úmyslu použít doménu pro App Service Web Apps, budete muset zahrnout webovou aplikaci, která není na plán Free služby App Service vázat domény na webovou aplikaci.
 
-### <a name="you-cant-add-a-subdomain"></a>Nelze přidat subdoménu 
+**Můžu přesunout webové aplikace s vlastní doménou do jiného předplatného nebo ze služby App Service Environment v1 na V2?**
 
-#### <a name="symptom"></a>Příznak
+Ano, můžete přesunout vaši webovou aplikaci napříč předplatnými. Postupujte podle pokynů v [přesunutí prostředků v Azure](../azure-resource-manager/resource-group-move-resources.md). Při přesunu webovou aplikaci existuje několik omezení. Další informace najdete v tématu [omezení pro přesun prostředků App Service](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+).
 
-Nový název hostitele nelze přidat do aplikace přiřadit subdomény.
-
-#### <a name="solution"></a>Řešení
-
-- Obraťte se na správce předplatného, abyste měli jistotu, že máte oprávnění k přidání názvu hostitele do aplikace.
-- Pokud potřebujete další subdomény, doporučujeme změnit hostování domény do Azure DNS. S využitím Azure DNS, můžete přidat hostitele 500 do vaší aplikace. Další informace najdete v tématu [přidání subdomény](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Po přesunutí webové aplikace, by měl vazby názvu hostitele z domén v rámci vlastních domén nastavení zůstávají stejné. Žádné další kroky jsou nutné ke konfiguraci vazby názvu hostitele.

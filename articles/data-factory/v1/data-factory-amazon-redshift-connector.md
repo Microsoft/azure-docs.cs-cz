@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817331"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541923"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Data Factory v současné době podporuje pouze přesouvá data z Amazon Redshif
 > K dosažení nejlepšího výkonu při kopírování velkých objemů dat z Amazon Redshift, zvažte použití předdefinovaných Redshift **uvolnění** příkaz prostřednictvím Amazon Simple Storage Service (Amazon S3). Podrobnosti najdete v tématu [uvolnění použít ke zkopírování dat z Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Požadavky
-* Pokud přesouváte data v místním úložišti dat, nainstalujte [brána správy dat](data-factory-data-management-gateway.md) na místním počítači. Udělit přístup pro bránu do clusteru Amazon Redshift s použitím IP adresy v místním počítači. Pokyny najdete v tématu [povolit přístup ke clusteru](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Pokud přesouváte data v místním úložišti dat, nainstalujte [brána správy dat](data-factory-data-management-gateway.md) na místním počítači. Udělit přístup pro bránu do clusteru Amazon Redshift s použitím IP adresy v místním počítači. Pokyny najdete v tématu [povolit přístup ke clusteru](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Pro přesun dat do úložiště dat Azure, najdete v článku [Compute IP adres a rozsahů SQL, které používají datová centra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Začínáme
@@ -100,7 +100,7 @@ Alternativně můžete použít **RelationalSource** typ, který zahrnuje Amazon
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Použití uvolnění pro kopírování dat z Amazon Redshift
 
-Amazon Redshift [ **uvolnění** ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) příkaz uvolní výsledky dotazu na jeden nebo více souborů na Amazon S3. Tento příkaz se doporučuje pro kopírování velkých datových sad z Redshift Amazon.
+Amazon Redshift [ **uvolnění** ](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) příkaz uvolní výsledky dotazu na jeden nebo více souborů na Amazon S3. Tento příkaz se doporučuje pro kopírování velkých datových sad z Redshift Amazon.
 
 **Příklad: Kopírování dat z Amazon Redshift do Azure SQL Data Warehouse**
 

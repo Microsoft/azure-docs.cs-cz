@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: ba3c6a6bd4fb330eb64b5408eb72095f4de46a7b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856634"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551020"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště obrázků kontejneru ve službě Azure Container Registry
 
@@ -40,7 +40,7 @@ Následující tabulka popisuje omezení úložiště a image kontejneru v míst
 | Image | Bez omezení |
 | Vrstvy | Bez omezení |
 | Značky | Bez omezení|
-| Úložiště | 5 TB |
+| Storage | 5 TB |
 
 Velmi vysoké počty značky a úložiště můžete mít vliv na výkon vašeho registru. Pravidelně jako součást vašeho registru údržby rutina Odstraňte nepoužívané úložišť, značky a obrázků. Odstranit registr prostředkům, jako jsou úložiště, obrázků a značek *nelze* po odstranění obnovit. Další informace o odstraňování registru prostředky, najdete v části [odstranit Image kontejnerů ve službě Azure Container Registry](container-registry-delete.md).
 
@@ -56,6 +56,6 @@ Další informace o registru kontejneru různých Azure SKU (Basic, Standard, Pr
 
 <!-- LINKS - External -->
 [portal]: https://portal.azure.com
-[pricing]: http://aka.ms/acr/pricing
+[pricing]: https://aka.ms/acr/pricing
 
 <!-- LINKS - Internal -->

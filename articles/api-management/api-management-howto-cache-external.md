@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 06052bd0cba6d119d07e86ed6aed833dec9f1f92
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7d44f7f5d97e558121c5611bc34282989b12f535
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014561"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761238"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Účely externí mezipamětí Azure Redis ve službě Azure API Management
 

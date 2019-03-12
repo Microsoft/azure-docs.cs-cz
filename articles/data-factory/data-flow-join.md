@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: f95edc881e26576df216c92ff0b94c5c19bf7fa8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727923"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726868"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Azure Data Factory Data toku spojení transformace
+# <a name="mapping-data-flow-join-transformation"></a>Mapování datového toku spojení transformace
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -24,11 +24,11 @@ Kombinovat data ze dvou tabulek v toku dat pomocí spojení. Klikněte na transf
 
 ## <a name="join-types"></a>Připojte se k typy
 
-Vyberte typ spojení se vyžaduje pro připojení k transformaci
+Výběr typu připojení je vyžadován pro připojení k transformaci.
 
 ### <a name="inner-join"></a>Vnitřní spojení
 
-Vnitřní spojení předá pouze řádky, které splňují podmínky sloupců z obou tabulek
+Vnitřní spojení předá pouze řádky, které splňují podmínky sloupců z obou tabulek.
 
 ### <a name="left-outer"></a>Levé vnější
 
@@ -40,11 +40,11 @@ Všechny řádky z pravé datového proudu nesplnění podmínek smluv podmínka
 
 ### <a name="full-outer"></a>Úplné vnější
 
-Úplné vnější vytvoří všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které není k dispozici v dalších table
+Úplné vnější vytvoří všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které není k dispozici v druhé tabulce.
 
 ### <a name="cross-join"></a>Křížové spojení
 
-Specifické pro smíšený produkt dvou datových proudů s výrazem
+Zadejte smíšený produkt dvou datových proudů s výrazem. To slouží k vytvoření vlastních spojení podmínky.
 
 ## <a name="specify-join-conditions"></a>Zadejte podmínky spojení
 
@@ -67,3 +67,7 @@ Spojení sama na sebe podmínky v toku dat ADF můžete dosáhnout použitím vy
 ![Spojení sama na sebe](media/data-flow/selfjoin.png "spojení sama na sebe")
 
 V diagramu vyberte transformací, která je v horní části. Veškeré její probíhající činnosti je aliasing původního datového proudu na "OrigSourceBatting". V zvýrazněné spojení transformací, která se pod ní uvidíte, že používáme tento datový proud vyberte alias jako pravé spojení, abychom mohli odkazovat na stejný klíč v levé a pravé straně vnitřního spojení.
+
+## <a name="next-steps"></a>Další postup
+
+Po propojení dat, můžete pak [vytvářet nové sloupce](data-flow-derived-column.md) a [do cílového úložiště dat jímky dat](data-flow-sink.md).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404191"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576329"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv služby IoT Hub pro odesílání zpráv typu zařízení cloud do různých koncových bodů
 
@@ -39,7 +39,7 @@ Můžete použít standardní [integraci služby Event Hubs a sady SDK](iot-hub-
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub podporuje zápis dat do Azure Blob Storage v [Apache Avro](http://avro.apache.org/) stejně jako formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Výchozí hodnota je AVRO. Můžete vybrat formát kódování pomocí IoT Hub Create nebo aktualizace REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), na webu Azure Portal [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) nebo [Azure Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). Formát kódování lze nastavit pouze, když je nakonfigurovaný koncový bod služby blob storage. Formát nelze upravovat pro existující koncový bod. Následující diagram znázorňuje postup výběru formátu kódování na webu Azure Portal.
+IoT Hub podporuje zápis dat do Azure Blob Storage v [Apache Avro](https://avro.apache.org/) stejně jako formátu JSON. Možnost kódování formátu JSON je ve verzi preview ve všech oblastech, které služby IoT Hub je k dispozici, s výjimkou východní USA, západní USA a západní Evropa. Výchozí hodnota je AVRO. Formát kódování lze nastavit pouze, když je nakonfigurovaný koncový bod služby blob storage. Formát nelze upravovat pro existující koncový bod. Při použití kódování JSON, musíte nastavit typ obsahu do formátu JSON a contentEncoding na UTF-8 ve zprávě [vlastnosti systému](iot-hub-devguide-routing-query-syntax.md#system-properties). Můžete vybrat formát kódování pomocí IoT Hub Create nebo aktualizace REST API, konkrétně [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), na webu Azure Portal [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) nebo [Azure Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Následující diagram znázorňuje postup výběru formátu kódování na webu Azure Portal.
 
 ![Kódování koncový bod úložiště objektů BLOB](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -118,6 +118,8 @@ Ve většině případů průměrném zvyšování latence je menší než 500 m
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
 Poskytuje službě IoT Hub, několik směrování a koncový bod související metriky, které vám poskytnou přehled o stavu centra a odeslaných zpráv. Můžete kombinovat informace z několika metrik a identifikovat hlavní příčinu problémů. Například použijte metriku **směrování: počet ztracených zpráv telemetrie** nebo **d2c.telemetry.egress.dropped** identifikovat počet zpráv, které byly při neodpovídají dotazy na žádné trasy a náhradní trasa byla zakázána. [Metriky služby IoT Hub](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolená pro službu IoT Hub.
+
+Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte [stav](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu služby Event Hubs, můžete monitorovat **d2c.endpoints.latency.eventHubs**. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.
 
 Použití **trasy** diagnostické protokoly ve službě Azure Monitor [nastavení diagnostiky](../iot-hub/iot-hub-monitor-resource-health.md), můžete sledují chyby, ke kterým dochází při vyhodnocování směrování dotazů a koncový bod stavu vnímanou ve službě IoT Hub, například Pokud koncový bod je neaktivní. Tyto diagnostické protokoly je odeslat protokoly Azure monitoru, Event Hubs nebo Azure Storage pro vlastní zpracování.
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867048"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546299"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Nastavení souborů a adresářů úrovně oprávnění pomocí Průzkumníka služby Azure Storage s Azure Data Lake Storage Gen2
 
@@ -33,7 +33,7 @@ Abyste mohli co nejlépe znázornění procesu, vyžadujeme, že provedete naše
 
 ## <a name="managing-access"></a>Správa přístupu
 
-Oprávnění můžete nastavit v kořenovém adresáři vašeho systému souborů. Uděláte to tak, klikněte pravým tlačítkem na váš systém souborů a vyberte **spravovat oprávnění**, přivedou nahoru **spravovat oprávnění** dialogové okno.
+Oprávnění můžete nastavit v kořenovém adresáři vašeho systému souborů. Uděláte to tak, musíte být přihlášeni do Průzkumníka služby Azure Storage pomocí svého individuálního účtu s právy a provede akci dle (nikoli pomocí připojovacího řetězce). Klikněte pravým tlačítkem na váš systém souborů a vyberte **spravovat oprávnění**, přivedou nahoru **spravovat oprávnění** dialogové okno.
 
 ![Průzkumník služby Microsoft Azure Storage - spravovat přístup k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -66,4 +66,4 @@ Můžete spravovat oprávnění pro jednotlivé adresáře, stejně jako jednotl
 V tomto návodu jste zjistili, jak nastavit oprávnění pro soubory a adresáři používajícími **Průzkumníka služby Azure Storage**. Další informace týkající se seznamů ACL, včetně výchozí seznamy ACL, přístup k seznamy ACL, jejich chování a jejich odpovídající oprávnění, i nadále naše konceptuální článek k tomuto tématu.
 
 > [!div class="nextstepaction"]
-> [Řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
+> [Řízení přístupu ve službě Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

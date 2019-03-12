@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 7f3b6de64343137278895d92835f080f8844dda1
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310546"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588920"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet úložiště Azure
 
@@ -26,7 +26,10 @@ Můžete nakonfigurovat vlastní doménu pro přístup k datům objektu blob v �
 > [!NOTE]  
 > Účty úložiště se aktuálně podporují jenom jeden vlastní název domény na jeden účet. Vlastní název domény nelze mapovat do koncových bodů služby web a objektů blob.
 
-Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blob, který se nachází v účtu úložiště s názvem *mystorageaccount*. Vlastní domény, který je registrovaný pro účet úložiště je *www.contoso.com*:
+> [!NOTE]  
+> Mapování funguje pouze pro subdomén (např. www.contoso.com). Pokud chcete mít k dispozici váš koncový bod webové na kořenové domény (např. contoso.com), pak budete muset [použití Azure CDN s použitím vlastních domén](storage-https-custom-domain-cdn.md)
+
+Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blob, který se nachází v účtu úložiště s názvem *mystorageaccount*. Vlastní subdomény, který je registrovaný pro účet úložiště je *www.contoso.com*:
 
 | Typ prostředku | Výchozí adresa URL | Adresa URL vlastní domény |
 | --- | --- | --- | --- |
@@ -38,9 +41,9 @@ Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blo
 > [!NOTE]  
 > Jak je znázorněno v následujících částech, pro koncový bod služby blob service ve všech příkladech platí také pro koncový bod webové služby.
 
-## <a name="direct-vs-intermediary-domain-mapping"></a>Přímé porovnání zprostředkující domény mapování
+## <a name="direct-vs-intermediary-cname-mapping"></a>Přímé porovnání zprostředkující mapování CNAME
 
-Vlastní domény může odkazovat na koncový bod objektu blob pro účet úložiště v některém ze dvou způsobů: 
+Vaši vlastní doménu s předponou subdoménu (například www.contoso.com) může odkazovat na koncový bod objektu blob pro účet úložiště v některém ze dvou způsobů: 
 * Použijte přímé mapování CNAME.
 * Použití *asverify* zprostředkující subdomény.
 
@@ -82,8 +85,8 @@ Obvykle můžete spravovat nastavení DNS pro vaši doménu na webu vašeho regi
 1. Najděte část pro správu záznamů CNAME.  
    Budete muset přejít na stránku rozšířeného nastavení a Hledat **CNAME**, **Alias**, nebo **subdomény**.
 
-1. Vytvoří nový záznam CNAME, zadejte subdoménu alias jako **www** nebo **fotografie**a potom zadejte název hostitele.  
-   Je název hostitele vašeho koncového bodu služby objektů blob. Má formát  *\<mystorageaccount >. blob.core.windows.net*, kde *mystorageaccount* je název vašeho účtu úložiště. Název hostitele pro použití se zobrazí u položky #1 **vlastní domény** v podokně [webu Azure portal](https://portal.azure.com).
+1. Vytvoří nový záznam CNAME, zadejte subdoménu alias jako **www** nebo **fotografie** (vyžádáním subdomény, kořenové domény nejsou podporovány) a potom zadejte název hostitele.  
+   Je název hostitele vašeho koncového bodu služby objektů blob. Má formát  *\<mystorageaccount >. blob.core.windows.net*, kde *mystorageaccount* je název vašeho účtu úložiště. Název hostitele pro použití se zobrazí u položky #1 **vlastní domény** v podokně [webu Azure portal](https://portal.azure.com). 
 
 1. V **vlastní domény** podokně, v textovém poli zadejte název vlastní doménu včetně poddomény.  
    Například, pokud je vaše doména *contoso.com* a je váš alias subdoménu *www*, zadejte **www.contoso.com**. Pokud je vaše subdoménu *fotografie*, zadejte **photos.contoso.com**.

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ea5084128848db7d799b1791aef528305b4f6df4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192363"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588971"
 ---
-# <a name="recognize-printed-and-handwritten-text"></a>Rozpoznat tištěné a rukou psaný text
+# <a name="recognize-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
 Počítačové zpracování obrazu poskytuje několik služeb, které detekovat a extrahovat tištěné nebo rukou psaný text, který se zobrazí v obrázcích. To je užitečné v širokou škálu scénářů, jako je zapisování, zdravotnickými záznamy, zabezpečení a bankovnictví. Následující tři části Podrobnosti o třech různých rozpoznávání textu rozhraní API, každý optimalizovaná pro použití v odlišných situacích.
 
@@ -26,7 +26,7 @@ Počítačové zpracování obrazu poskytuje několik služeb, které detekovat 
 
 Rozhraní API pro čtení detekuje textový obsah v obrázku pomocí naší nejnovější modely pro rozpoznávání a převede zjištěný text do datového proudu Strojově čitelný znaků. Je optimalizovaný pro Image hodně textu (jako jsou dokumenty, které už je zkontrolovaných digitálně) a pro Image s velkým množstvím visual šumu. Asynchronně provede protože větších může trvat několik minut, než vrácení výsledku.
 
-Operace čtení se řídí původní řádek seskupení rozpoznaná slova do výstupu. Každý řádek obsahuje pole souřadnice ohraničujícího a jednotlivých slov v rámci řádku má také svůj vlastní souřadnice. Pokud u slov velká bylo rozpoznáno s nízkou spolehlivostí, tyto informace předávají také. Zobrazit [referenční dokumentace rozhraní API pro čtení](https://westus.api.cognitive.microosft.com/vision/v2.0/read/core/asyncBatchAnalyze) Další informace.
+Operace čtení se řídí původní řádek seskupení rozpoznaná slova do výstupu. Každý řádek obsahuje pole souřadnice ohraničujícího a jednotlivých slov v rámci řádku má také svůj vlastní souřadnice. Pokud u slov velká bylo rozpoznáno s nízkou spolehlivostí, tyto informace předávají také. Zobrazit [referenční dokumentace rozhraní API pro čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) Další informace.
 
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi preview a je dostupná jenom pro anglický text.

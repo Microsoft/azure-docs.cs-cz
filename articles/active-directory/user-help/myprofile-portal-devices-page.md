@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea9a987078799436c9dcad650ee56d5d6d81512
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341336"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729097"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>Správa připojených zařízení z portálu Můj profil (preview)
 Budete moct spravovat zařízení, kterým jste připojeni, pomocí svého pracovního nebo školního účtu, zakázat některé, které už vlastníte, z **zařízení** stránku **Můj profil** portálu.
@@ -36,7 +36,7 @@ Budete moct spravovat zařízení, kterým jste připojeni, pomocí svého praco
     ![Stránka zařízení zobrazuje připojená zařízení](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Zakázání zařízení
-Kdykoli můžete zakázat kterýkoliv z připojených zařízení. To je obzvláště důležité, pokud zařízení není povědomá, nebo pokud dojde ke ztrátě nebo odcizení zařízení.
+Kdykoli můžete zakázat kterýkoliv z připojených zařízení. To je obzvláště důležité, pokud zařízení není povědomá, nebo pokud dojde ke ztrátě nebo odcizení zařízení. Po zakázání zařízení už může být ověřen pomocí vaší organizaci a bude schopen získat přístup k žádným prostředkům vaší organizace.
 
 >[!Important]
 >Pokud zařízení vypnete omylem, neexistuje žádný způsob, jak ji vrátit. Budete muset kontaktovat správce vaší organizace na zařízení znovu přidejte.

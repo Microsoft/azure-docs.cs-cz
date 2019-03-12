@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6bde6e74279fc16237c0c0436296e2d21c3a57c7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 82559c89094649b377dc2a898798ce6aad5fbcc7
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736613"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570483"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režim ladění toku dat
 
@@ -36,7 +36,7 @@ Po přepnutí na režim ladění, zobrazí výzva s formulářem postranní pane
 >Při spuštění v režimu ladění v toku dat, vaše data nebudou zapsány do jímky transformace. Ladicí relaci má sloužit jako test > prostředí pro transformaci. Jímky nejsou vyžadovány během ladění a jsou ignorovány ve svém toku data. Pokud chcete otestovat zápisu dat > vaše Sink spuštění toku dat z kanálu služby Azure Data Factory a použít spuštění ladění z kanálu.
 
 ## <a name="debug-settings"></a>Nastavení ladění
-Nastavení ladění může být každý zdroj z toku dat se zobrazí v postranní panel a můžete také upravit tak, že vyberete "nastavení zdroje" na toku dat nástrojů pro návrh. Omezení a/nebo zdrojový soubor pro použití u každého transformace zdroje Tady můžete vybrat. Můžete také vybrat, které Databricks pro cluster, který se má použít pro ladění.
+Nastavení ladění může být každý zdroj z toku dat se zobrazí v postranní panel a můžete také upravit tak, že vyberete "nastavení zdroje" na panelu nástrojů návrháře se předávají Data. Omezení a/nebo zdrojový soubor pro použití u každého transformace zdroje Tady můžete vybrat. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také nastavení vzorkování ve zdroji pro omezení řádků do transforamtion zdroje.
 
 ## <a name="cluster-status"></a>Stav clusteru
 Je indikátor stavu clusteru v horní části návrhové plochy, která se změní na zelenou při bude cluster připravený pro ladění. Pokud váš cluster již je teplo, se prakticky okamžitě zobrazí zelený ukazatel. Pokud váš cluster nebyla spuštěna při zadání režimu ladění, budete muset počkat 5-7 minut, než se cluster tak, aby mohli spustit. Až bude připravená, bude žlutý indikátoru. Jakmile cluster je připravený k ladění toku dat, se změní na zelenou indikátoru.

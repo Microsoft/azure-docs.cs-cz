@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: e8163ad34046261d9671c57db2cd2d2052fe35e0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401414"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550783"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytování nastavení vlastní domény pro službu Azure
 
@@ -41,7 +41,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
 |Název     | myfunctionapp        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
-|Typ     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
+|Type     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |Alias     | adatumfunction.azurewebsites.net        | Název DNS vytvoříte alias, v tomto příkladu je název DNS adatumfunction.azurewebsites.net dostupné ve výchozím nastavení aplikace function App.        |
@@ -54,7 +54,7 @@ Na **přidat název hostitele** okně zadejte záznam CNAME v **hostname** texto
 
 ## <a name="public-ip-address"></a>Veřejná IP adresa
 
-Konfigurace vlastní domény pro služby, které používají veřejné IP adresy prostředků, jako je například služba Application Gateway, nástroje pro vyrovnávání zatížení, cloudové služby, virtuální počítače Resource Manageru, přičemž klasické virtuální počítače, záznam CNAME se zaznamenat použít.
+Konfigurace vlastní domény pro služby, které používají veřejné IP adresy prostředků, jako je například služba Application Gateway, nástroje pro vyrovnávání zatížení, cloudové služby, virtuální počítače Resource Manageru a klasický virtuální počítač, záznam se používá.
 
 Přejděte do **sítě** > **veřejnou IP adresu**, vyberte prostředek veřejné IP adresy a klikněte na tlačítko **konfigurace**. Zaznamenání IP adresou uvedenou.
 
@@ -66,7 +66,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
 |Název     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
-|Typ     | A        | Záznam A použijte, protože prostředek IP adresy.        |
+|Type     | A        | Záznam A použijte, protože prostředek IP adresy.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |IP adresa     | <your ip address>       | Veřejnou IP adresu.|
@@ -93,7 +93,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
 |Název     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
-|Typ     | CNAME        | Použít záznam CNAME, který používá jako alias. Pokud prostředek IP adresy, záznam se použije.        |
+|Type     | CNAME        | Použít záznam CNAME, který používá jako alias. Pokud prostředek IP adresy, záznam se použije.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |Alias     | webserver.azurewebsites.net        | Název DNS vytvoříte alias, v tomto příkladu je název DNS webserver.azurewebsites.net dostupné ve výchozím nastavení do webové aplikace.        |
@@ -127,7 +127,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
 |Název     | asverify.mystorageaccount        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
-|Typ     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
+|Type     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Název DNS vytvoříte alias, v tomto příkladu je název DNS asverify.adatumfunctiona9ed.blob.core.windows.net dostupné ve výchozím nastavení do účtu úložiště.        |
@@ -155,7 +155,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
 |Název     | cdnverify.mycdnendpoint        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
-|Typ     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
+|Type     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Název DNS vytvoříte alias, v tomto příkladu je název DNS cdnverify.adatumcdnendpoint.azureedge.net dostupné ve výchozím nastavení do účtu úložiště.        |

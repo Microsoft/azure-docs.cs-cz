@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511968"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761408"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -239,7 +239,7 @@ Ano. Zrušení propojení registrační virtuální síť z privátní zónu, ak
 
 Ano. Když odstraníte virtuální síť registraci nebo řešení bez odpojení od privátní zónu, vaší operace odstranění úspěšná. Ale virtuální sítě není automaticky odpojit z vaší privátní zónu, pokud existuje. Musíte ručně zrušit propojení virtuální sítě z privátní zónu. Z tohoto důvodu odpojit před odstraněním virtuální sítě z vaší privátní zónu.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Budou překlad názvů DNS s využitím výchozí plně kvalifikovaný název domény (internal.cloudapp.net) i nadále fungovat i v případě, že privátní zóny (např. contoso.local) je propojený s virtuální sítí?
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Budou překlad názvů DNS s využitím výchozí plně kvalifikovaný název domény (internal.cloudapp.net) i nadále fungovat i v případě, že privátní zóny (například private.contoso.com) je propojený s virtuální sítí?
 
 Ano. Privátní zóny nenahrazuje rozlišení výchozí DNS pomocí Azure internal.cloudapp.net zóny. Je k dispozici další funkce nebo vylepšení. Ať už se spoléháte na internal.cloudapp.net poskytuje Azure nebo na vlastní privátní zónu, použijte plně kvalifikovaný název domény, které chcete, aby se přeložil zóny. 
 
@@ -262,7 +262,7 @@ Ano. Ve verzi public preview existují následující omezení.
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Existují všechny kvóty nebo limity na zóny a záznamy pro privátní zóny?
 
-Neplatí žádné limity počtu zón povolené na předplatné pro privátní zóny. Neplatí žádné limity na počet sad záznamů na zóny pro privátní zóny. Veřejné a privátní zóny se počítají na celkové limity DNS. Další informace najdete v tématu [omezení služeb a předplatného Azure](../azure-subscription-service-limits.md#dns-limits)
+Neplatí žádné limity počtu zón povolené na předplatné pro privátní zóny. Neplatí žádné limity na počet sad záznamů na zóny pro privátní zóny. Veřejné a privátní zóny se počítají na celkové limity DNS. Další informace najdete v tématu [omezení služeb a předplatného Azure](../azure-subscription-service-limits.md#azure-dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Je k dispozici portálu podpora pro privátní zóny?
 

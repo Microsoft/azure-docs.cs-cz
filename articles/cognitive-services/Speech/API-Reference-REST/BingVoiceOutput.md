@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f7620c29e7d00a06be6d14740f05cc7543e49837
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8f7de542610731f88104591dc27baac1406a9514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674561"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548400"
 ---
 # <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
 
@@ -71,7 +71,7 @@ Autorizace | Autorizační token |  Zobrazit <a href="#Subscription">autorizačn
 
 ### <a name="InputParam"></a>Vstupní parametry
 
-Požadavky na textu na řeč Bingu rozhraní API se provedou pomocí volání HTTP POST. Hlavičky jsou určené v předchozí části. Vstup řeči syntézu Markup Language (SSML), který představuje text, který se má syntetizovat obsahuje text. Popis kódu použít k řízení aspektů řeči, jako je například jazyk a pohlaví mluvčího, najdete v článku [specifikaci W3C SSML](http://www.w3.org/TR/speech-synthesis/).
+Požadavky na textu na řeč Bingu rozhraní API se provedou pomocí volání HTTP POST. Hlavičky jsou určené v předchozí části. Vstup řeči syntézu Markup Language (SSML), který představuje text, který se má syntetizovat obsahuje text. Popis kódu použít k řízení aspektů řeči, jako je například jazyk a pohlaví mluvčího, najdete v článku [specifikaci W3C SSML](https://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
 >Maximální velikost, která je podporována vstup SSML je 1 024 znaků, včetně všech značek.
@@ -141,42 +141,42 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>Změna hlasového výstup prostřednictvím SSML
 
-Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3C [řeči syntézu Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). V této části jsou uvedeny příklady změny některých vlastností výstupu generovaného hlasové, jako jsou mluvený přenosové rychlosti, výslovnost atd. pomocí značek SSML.
+Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3C [řeči syntézu Markup Language (SSML) verze 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). V této části jsou uvedeny příklady změny některých vlastností výstupu generovaného hlasové, jako jsou mluvený přenosové rychlosti, výslovnost atd. pomocí značek SSML.
 
 1. Přidání přerušení
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
   ```
 
 2. Mluvy frekvence změny
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 3. Výslovnost
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
   ```
 
 4. Změnit svazek
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 5. Změnit výšku
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 6. Změna prosody obrysu
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
   ```
 
 > [!NOTE]

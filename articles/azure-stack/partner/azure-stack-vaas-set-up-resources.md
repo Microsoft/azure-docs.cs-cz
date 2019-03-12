@@ -15,39 +15,37 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ef46df4d5162a08d9dc4d8674cf5867f863ce332
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342475"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762139"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Kurz: Nastavit prostředky pro ověření jako služba
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Je potřeba vytvořit řešení. Ověřování jako řešení služby (VaaS) představuje řešení typu Azure Stack s konkrétní hardware kusovník. Toto řešení bude používat ke kontrole, jestli váš hardware můžou podporovat spuštění služby Azure Stack. V tomto kurzu se připravit na používání služby v rámci řešení.
+Ověření jako služba (VaaS) je služba Azure, který slouží k ověření a podporu řešení pro Azure Stack na trhu. Než začnete používat službu pro ověření vašeho řešení postupovat podle tohoto článku.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Používáním VaaS nastavením Azure AD (Azure AD) instance.
+> * Příprava na použití VaaS tak, že nastavíte si vaše Azure Active Directory (AD).
 > * Vytvoření účtu úložiště
 
 ## <a name="configure-an-azure-ad-tenant"></a>Nakonfigurovat tenanta služby Azure AD
 
-Je vyžadován pro ověřování a registraci VaaS tenanta služby Azure AD. Funkce řízení přístupu na základě role tenanta se použije partnerem, který Pokud chcete spravovat, kdo v organizaci partnera poskytujícího používat VaaS.
-
-Registrace organizace služby Azure AD tenanta adresáře (spíše než adresář tenanta Azure AD použít pro službu Azure Stack) a vytvořit zásady pro správu uživatelských účtů v ní. Další informace najdete v tématu [Správa adresáře služby Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-administer).
+Klient služby Azure AD slouží k registraci organizace a ověřování uživatelů pomocí VaaS. Partner používat ke správě, kdo v organizaci partnera poskytujícího používat VaaS funkce řízení přístupu na základě role tenanta. Další informace najdete v tématu [Co je Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis).
 
 ### <a name="create-a-tenant"></a>Vytvoření tenanta
 
-Vytvoření tenanta speciálně pro použití s VaaS s popisný název, například `ContosoVaaS@onmicrosoft.com`.
+Vytvořte tenanta, který vaše organizace používat pro přístup ke službám VaaS. Použijte popisný název, například `ContosoVaaS@onmicrosoft.com`.
 
 1. Vytvoření tenanta Azure AD v [webu Azure portal](https://portal.azure.com), nebo použijte existujícího tenanta. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
 2. Přidáte do tenanta členové vaší organizace. Tyto uživatele bude odpovědná za používání služby zobrazit nebo naplánovat testy. Po dokončení registrace bude definovat úrovně přístupu uživatelů.
- 
+
     Autorizace uživatelů ve vašem tenantovi ke spouštění akcí v VaaS přiřazením jednu z následujících rolí:
 
     | Název role | Popis |
@@ -63,7 +61,7 @@ Vytvoření tenanta speciálně pro použití s VaaS s popisný název, napřík
     3. Vyberte **podnikové aplikace** > **služby Azure Stack ověření** aplikace.
     4. Vyberte **Uživatelé a skupiny**. **Azure Stack ověřování služba - uživatelé a skupiny** okně zobrazí seznam uživatelů s oprávněním k používání aplikace.
     5. Vyberte **+ přidat uživatele** přidat uživatele z vašeho tenanta a přiřazení role.
-   
+
     Pokud chcete izolovat VaaS prostředkům a akcím mezi různé skupiny v rámci organizace, můžete vytvořit více adresářů tenanta služby Azure AD.
 
 ### <a name="register-your-tenant"></a>Zaregistrujte vašeho tenanta
@@ -102,10 +100,7 @@ Během provádění testů výstupy VaaS diagnostických protokolů pro účet s
 
 3. V části **skupiny prostředků**vyberte **vytvořit nový**. Zadejte název nové skupiny prostředků.
 
-4. Zadejte název účtu úložiště. Název zvoleném musí být:
-    - Jedinečný v rámci Azure
-    - Dlouhý 3 až 24 znaků
-    - Obsahovat pouze číslice a malá písmena
+4. Zkontrolujte [zásady vytváření názvů](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#storage) pro účty Azure Storage. Zadejte název účtu úložiště.
 
 5. Vyberte **USA – západ** oblast pro účet úložiště.
 
@@ -119,7 +114,7 @@ Během provádění testů výstupy VaaS diagnostických protokolů pro účet s
     - **Replikace pole** je nastavena na **místně redundantní úložiště (LRS)** ve výchozím nastavení.
     - Pole **Úroveň přístupu** má výchozí nastavení **Horká**.
 
-7. Kliknutím na **Zkontrolovat a vytvořit** si prohlédněte nastavení účtu úložiště a vytvořte účet.
+7. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
 
 ## <a name="next-steps"></a>Další postup
 

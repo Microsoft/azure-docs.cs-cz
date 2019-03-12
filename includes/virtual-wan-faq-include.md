@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c0da70426d8962999fd8d2cf2852a9bd8d255fc8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98ea4d78a473123708be6e371587252acad6ffcd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736095"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554578"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
-Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měřítku a je určená pro zajištění propustnosti, škálovatelnosti a snadného použití. Funkce připojení ExpressRoute a Point-to-Site jsou v současnosti ve verzi Preview. Pobočková zařízení CPE automaticky zřizují službu Azure Virtual WAN a připojují se k ní. Tato zařízení jsou dostupná od stále rostoucího ekosystému partnerů pro SD-WAN a VPN. Zobrazit [Upřednostňovaný seznam partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měřítku a je určená pro zajištění propustnosti, škálovatelnosti a snadného použití. Funkce připojení ExpressRoute a Point-to-Site jsou v současnosti ve verzi Preview. Pobočková zařízení CPE automaticky zřizují službu Azure Virtual WAN a připojují se k ní. Tato zařízení jsou dostupná od stále rostoucího ekosystému partnerů pro SD-WAN a VPN. Viz [Seznam upřednostňovaných partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Kteří poskytovatelé zařízení (partneři pro Virtual WAN) se podporují při uvedení na trh? 
 

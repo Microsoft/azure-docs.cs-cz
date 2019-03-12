@@ -4,37 +4,37 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
-ms.openlocfilehash: 66dea07a1ff725c6707b19bc6ebdc5563f1b158b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211822"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553478"
 ---
 | Prostředek | Výchozí omezení | Poznámka |
 | --- | --- | --- |
-| Application Gateway |1 000 na předplatné | |
-| Konfigurace front-endové IP adresy |2 |1 veřejný a 1 privátní |
+| Azure Application Gateway |1 000 na předplatné | |
+| Front-endové konfigurace protokolu IP |2 |1 veřejný a 1 privátní |
 | Porty front-endu |100<sup>1</sup> | |
 | Fondy adres back endu |100<sup>1</sup> | |
-| Servery back-end na fond |1200 | |
+| Servery back-end na fond |1,200 | |
 | Naslouchací procesy HTTP |100<sup>1</sup> | |
-| Pravidla vyrovnávání zatížení HTTP |100<sup>1</sup> | |
+| Pravidla Vyrovnávání zatížení HTTP |100<sup>1</sup> | |
 | Nastavení HTTP back-end |100<sup>1</sup> | |
 | Instance na jednu bránu |32 | |
 | Certifikáty SSL |100<sup>1</sup> |1 na naslouchací proces HTTP |
 | Certifikáty pro ověřování |100 | |
 | Důvěryhodných kořenových certifikátů |100 | |
-| Minimální časový limit požadavku |1 sekunda | |
-| Maximální časový limit požadavku |24 hodin | |
+| Minimální časový limit žádosti |1 sekunda | |
+| Maximální časový limit žádosti |24 hodin | |
 | Počet webů |100<sup>1</sup> |1 na naslouchací proces HTTP |
 | Map URL na naslouchací proces |1 | |
 | Mapování maximální pravidel založené na cestě na adresu URL|100||
 | Konfigurace přesměrování |100<sup>1</sup>| |
-| Souběžná připojení pomocí protokolu WebSocket |5000| |
-| Maximální délka adresy URL|8000||
-| Maximální velikost pro odeslání Standard |2 GB | |
-| Maximální nahrávání velikost WAF |Střední WAF brány – 100 MB<br>Brány WAF velké – 500 MB| |
-| Maximální velikost textu WAF (bez souborů)|128 KB||
+| Souběžná připojení pomocí protokolu WebSocket |5 000| |
+| Maximální délka adresy URL|8 000||
+| Maximální velikost nahrání, Standard |2 GB | |
+| Maximální nahrávání velikost WAF |Střední brány WAF, 100 MB<br>Velké brány WAF, 500 MB| |
+| Omezení velikosti textu WAF, bez souborů|128 KB||
 
-<sup>1</sup> v případě povoleným WAF SKU se doporučuje omezit počet prostředků na 40 pro zajištění optimálního výkonu.
+<sup>1</sup> v případě povoleným WAF SKU, doporučujeme vám, že omezíte počet prostředků na 40 pro zajištění optimálního výkonu.

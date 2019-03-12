@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: e825e0bdd08db0e9c1b51c09859aba2e7c716f91
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856452"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728965"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manageru pro službu Azure Container Instances
 
@@ -25,15 +25,16 @@ Možnosti nasazení, najdete v článku [nasazení](#deployment) oddílu. Pokud 
 | | |
 |-|-|
 | **Aplikace** ||
-| [WordPress][app-wp] | Vytvoří web ve Wordpressu a jeho databázi MySQL v instanci kontejneru. Obsah webu WordPress a databáze MySQL se ukládají do soubory Azure sdílet. |
+| [Wordpress][app-wp] | Vytvoří web ve Wordpressu a jeho databázi MySQL v instanci kontejneru. Obsah webu WordPress a databáze MySQL se ukládají do soubory Azure sdílet. |
 | [MS NAV přes SQL Server a služby IIS][app-nav] | Nasadí jeden kontejner Windows s plně funkční samostatná Dynamics NAV nebo Dynamics 365 Business Central prostředí. |
 | **Svazky** ||
 | [emptyDir][vol-emptydir] | Nasadí dva kontejnery Linuxu, které sdílejí svazku emptyDir. |
-| [GitRepo][vol-gitrepo] | Nasazení kontejneru Linuxu, která duplicity úložiště GitHub a připojí ji jako svazek. |
-| [Tajný klíč][vol-secret] | Nasazení kontejneru Linuxu s certifikátem PFX připojit jako tajný svazek. |
+| [gitRepo][vol-gitrepo] | Nasazení kontejneru Linuxu, která duplicity úložiště GitHub a připojí ji jako svazek. |
+| [secret][vol-secret] | Nasazení kontejneru Linuxu s certifikátem PFX připojit jako tajný svazek. |
 | **Sítě** ||
 | [Vystavené UDP kontejneru][net-udp] | Nasazení kontejneru Windows nebo Linux, který zpřístupňuje UDP port. |
 | [Kontejner Linuxu s veřejnou IP adresu][net-publicip] | Nasadí jednoho kontejneru Linuxu přístupné přes veřejnou IP adresu. |
+| [Nasazení kontejneru skupiny s virtuální sítí (preview)][net-vnet] | Nasadí novou virtuální síť, podsíť, profil sítě a skupinu kontejnerů. |
 | **Prostředky Azure** ||
 | [Vytvoření účtu Azure Storage a soubory sdílené složky][az-files] | Chcete-li vytvořit účet úložiště a sdílené složky služby soubory Azure pomocí Azure CLI v instanci kontejneru.
 
@@ -43,11 +44,11 @@ Máte několik možností pro nasazení prostředků pomocí šablon Resource Ma
 
 [Azure CLI][deploy-cli]
 
-[Prostředí Azure PowerShell][deploy-powershell]
+[Azure PowerShell][deploy-powershell]
 
 [Azure portal][deploy-portal]
 
-[ROZHRANÍ REST API][deploy-rest]
+[REST API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav
@@ -55,6 +56,7 @@ Máte několik možností pro nasazení prostředků pomocí šablon Resource Ma
 [az-files]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-storage-file-share
 [net-publicip]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip
 [net-udp]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-udp
+[net-vnet]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 [repo]: https://github.com/Azure/azure-quickstart-templates
 [vol-emptydir]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-emptydir
 [vol-gitrepo]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-gitrepo

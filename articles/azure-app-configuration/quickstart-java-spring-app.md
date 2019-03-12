@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: c5e172410c7cb60888107e37064c2429caf6df9e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 83dc6436c69038a43f32588d485790a701c2e18d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195485"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549251"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Rychlý start: Vytvoření aplikace Java Spring pomocí konfigurace aplikace
 
@@ -29,7 +29,7 @@ K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, nainstalujte podporovanou [Java Development Kit (JDK)](https://aka.ms/azure-jdks) verze 8 a [Apache Maven](http://maven.apache.org/) verze 3.0 nebo vyšší.
+Abyste mohli absolvovat tento rychlý start, nainstalujte podporovanou [Java Development Kit (JDK)](https://aka.ms/azure-jdks) verze 8 a [Apache Maven](https://maven.apache.org/) verze 3.0 nebo vyšší.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

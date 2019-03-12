@@ -10,23 +10,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b313772fb2737c015a02cfc36cec87797c95f619
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 32d00a1c0daf383d41d6bbc7c9fe105b3a2a6ab1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251958"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774911"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Představení iDNS pro Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-iDNS je síťové funkce služby Azure Stack, která umožňuje překládat externí názvy DNS (například http://www.bing.com.) také umožňuje registraci názvů interní virtuální síti. Díky tomu lze vyřešit virtuální počítače ve stejné virtuální síti name spíše než IP adresu. Tento přístup eliminuje nutnost poskytnout vlastní položky serveru DNS. Další informace o DNS, najdete v článku [přehled DNS Azure](https://docs.microsoft.com/azure/dns/dns-overview).
+iDNS je síťové funkce služby Azure Stack, která umožňuje překládat externí názvy DNS (například https://www.bing.com.) také umožňuje registraci názvů interní virtuální síti. Díky tomu lze vyřešit virtuální počítače ve stejné virtuální síti name spíše než IP adresu. Tento přístup eliminuje nutnost poskytnout vlastní položky serveru DNS. Další informace o DNS, najdete v článku [přehled DNS Azure](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## <a name="what-does-idns-do"></a>Co dělá IDN?
 

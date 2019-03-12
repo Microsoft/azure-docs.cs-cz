@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 364b0bf611581f88fc87f163acbbb7529862d096
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309566"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551948"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
@@ -95,7 +95,7 @@ Existují i další varianty konfigurací.
 S typem můžu třídy skladových jednotek, svazků spouštěcí logická jednotka je uložen na, je zašifrovaný. Pro třídu typu II skladové položky z velké instance HANA je potřeba šifrovat spouštěcí logické jednotky s operačním systémem metody. Další informace obraťte se na tým Microsoft Service Management.
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Požadovaná nastavení pro větší instance HANA ve velkých instancích HANA
-Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v případech omezení velikosti souborů jako v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
+Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v omezení velikosti souborů v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16 TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
 
 > [!IMPORTANT]
 > Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini Hana
@@ -103,6 +103,7 @@ S typem můžu třídy skladových jednotek, svazků spouštěcí logická jedno
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

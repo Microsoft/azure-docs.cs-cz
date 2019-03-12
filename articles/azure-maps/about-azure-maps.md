@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 53f216e19b8e087c0052751e96f203e0db85dc13
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990284"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571299"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -26,11 +26,17 @@ Následující video vysvětluje Azure Maps do hloubky:
 
 ## <a name="map-controls"></a>Mapové ovládací prvky
 
-### <a name="web-control"></a>Webový ovládací prvek
+### <a name="web-sdk"></a>Sada Web SDK
 
-Webový ovládací prvek Azure Maps umožňuje přizpůsobit interaktivní mapy s využitím vlastního obsahu a obrázků, které chcete zobrazit ve svých webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Ovládací prvky můžete vyvíjet pomocí JavaScriptu nebo TypeScriptu.
+Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a obrázek pro zobrazení ve vašich webových nebo mobilních aplikací. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Vývoj pomocí sady SDK pomocí jazyka JavaScript nebo TypeScript.
 
-![Webový ovládací prvek Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
+![Web Azure Maps SDK](media/about-azure-maps/Introduction_WebMapControl.png)
+
+### <a name="android-sdk"></a>Android SDK
+
+Azure Maps Android SDK umožňuje vytvářet výkonné mobilní mapování aplikace. 
+
+![Azure Maps Android SDK](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Služby v rámci Azure Maps
 

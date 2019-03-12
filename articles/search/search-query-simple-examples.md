@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6037d6a1b418a4241f1133b8ca7d89764da22f61
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316263"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571367"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Příklady jednoduchá syntaxe dotazů pro tvorbu dotazů ve službě Azure Search
 
@@ -93,21 +93,21 @@ Všechny dokumenty měly jedinečný identifikátor. Vyzkoušet syntaxe vyhledá
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
- ```
+```
 
 Následující příklad je vyhledávací dotaz vrací na základě určitého dokumentu `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", která se nacházela v předchozí odpovědi. Následující dotaz vrátí celý dokument, pouze vybraná pole. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
- ```
+```
 
 ## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování dotazů
 
 [Syntaxe filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
       "select": "select=job_id, business_title, agency, salary_range_from",
@@ -123,13 +123,13 @@ Pokud chcete v nástroji Postman, pomocí GET to vyzkoušet, můžete vložit do
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
- ```
+```
 
 Další efektivní způsob, jak kombinovat filtru a vyhledávání je prostřednictvím **`search.ismatch*()`** ve výrazu filtru, kde můžete použít vyhledávací dotaz v rámci filtru. Tento výraz filtr používá zástupný znak na *plán* vyberte business_title včetně plánu termín, planner, plánování a tak dále.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
- ```
+```
 
 Další informace o této funkci najdete v části [search.ismatch v "Příklady filtrů"](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
 
@@ -142,8 +142,8 @@ Datové typy jsou důležité pro filtry rozsahu a fungují lépe, když je čí
 Následující příklady jsou ve formátu POST pro lepší čitelnost (číselného rozsahu, za nímž následuje rozsah textu):
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
       "select": "job_id, business_title, num_of_positions, agency",
@@ -155,8 +155,8 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
       "select": "job_id, business_title, agency",
@@ -175,7 +175,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
- ```
+```
 
 > [!NOTE]
 > "Faceting" nad oblastí hodnot je běžné požadavky aplikace hledání. Další informace a příklady vytváření filtry omezující vlastnost navigace struktur, naleznete v tématu ["Filtru na základě rozsahu" v *jak implementovat fasetovou navigaci*](search-faceted-navigation.md#filter-based-on-a-range).
@@ -187,8 +187,8 @@ Ukázkového indexu zahrnuje pole geo_location pomocí zeměpisné šířky a d�
 V následujícím příkladu je ve formátu POST pro lepší čitelnost:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
       "select": "job_id, business_title, work_location",

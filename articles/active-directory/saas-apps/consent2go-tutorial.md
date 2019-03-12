@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ea93bc02-58ca-4468-84ff-359888fc6183
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88388ec05d7b449578f3b0841598c34edf09f690
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8965a70c242454b78c521d8f0b223531aecf2f87
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869220"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>Kurz: Integrace Azure Active Directory s Consent2Go
 

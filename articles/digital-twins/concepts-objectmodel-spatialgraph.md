@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436921"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542943"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Principy digitální dvojče objektové modely a Prostorové řady grafu
 
@@ -99,7 +99,7 @@ Další podrobnosti o tom, jak používat Prostorové řady grafů najdete na ad
 
 Další informace o [použití Swagger](how-to-use-swagger.md).
 
-Všechna volání rozhraní API musí být ověřeny pomocí [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Postupujte podle rozhraní API [pokynů pro rozhraní API REST systému Microsoft konvence](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Většina rozhraní API, která vrací kolekce podporuje [OData](http://www.odata.org/getting-started/basic-tutorial/#queryData) možností dotazu systému.
+Všechna volání rozhraní API musí být ověřeny pomocí [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Postupujte podle rozhraní API [pokynů pro rozhraní API REST systému Microsoft konvence](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Většina rozhraní API, která vrací kolekce podporuje [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) možností dotazu systému.
 
 ## <a name="next-steps"></a>Další postup
 

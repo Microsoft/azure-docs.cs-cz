@@ -3,7 +3,6 @@ title: Azure automation úlohy SQL | Dokumentace Microsoftu
 description: Použití úlohy automatizace ke spouštění skriptů Transact-SQL (T-SQL) mezi sadu jednu nebo více databází Azure SQL
 services: sql-database
 ms.service: sql-database
-ms.subservice: database-features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 090c3919bcaee98f5ef398cd581bbf9070f5e87a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457203"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765332"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí úlohy databáze
 

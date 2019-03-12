@@ -1,180 +1,148 @@
 ---
-title: 'Příklad: Rozpoznávání tváří na obrázcích – rozhraní API pro rozpoznávání tváře'
+title: Rozpoznávání tváří v obrázku – rozhraní API pro rozpoznávání tváře
 titleSuffix: Azure Cognitive Services
-description: Rozpoznejte tváře v obrázcích pomocí rozhraní API pro rozpoznávání tváře.
+description: Další informace o použití různých data vrácená funkce rozpoznávání tváře.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
-ms.topic: sample
-ms.date: 03/01/2018
+ms.topic: conceptual
+ms.date: 02/22/2019
 ms.author: sbowles
-ms.openlocfilehash: 30d5294defe02ca6c8cfd588648429859bdf19ad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bf3af8f5d1d2f063199a8275c2f49c70140e8732
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856390"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588767"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>Příklad: Jak rozpoznávání tváří v obrázku
+# <a name="get-face-detection-data"></a>Získat data o detekci pro rozpoznávání tváře
 
-V této příručce vám ukážeme, jak v obrázku rozpoznat tváře pomocí extrahovaných atributů tváří, jako jsou pohlaví, věk a pozice hlavy. Ukázky jsou napsané v jazyce C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře. 
+Tato příručka popisuje, jak extrahovat atributů, jako je pohlaví, stáří nebo pozice z danou image pomocí rozpoznávání tváří. Fragmenty kódu v této příručce jsou napsané v C# pomocí klientské knihovny rozhraní API pro rozpoznávání tváře, ale stejné funkce je dostupná prostřednictvím [rozhraní REST API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="concepts"></a>Koncepty
+Tento průvodce se dozvíte, jak do:
 
-Pokud nejste obeznámeni s následujícími koncepty v této příručce, můžete se kdykoli podívat na definice v našem [Glosáři](../Glossary.md): 
+- Získání umístění a velikosti tváří v obrázku.
+- Získání umístění různých zajímavá pro rozpoznávání tváře (žáků nos, přidržte a tak dále) v obraze.
+- Odhad, pohlaví, věk a pro rozpoznávání emocí a dalších atributů zjištěné rozpoznávání tváře.
 
-- Rozpoznávání tváře
-- Orientační body tváře
-- Pozice hlavy
-- Atributy tváře
+## <a name="setup"></a>Nastavení
 
-## <a name="preparation"></a>Příprava
+Tento průvodce to předpokládá, že už máte vytvořený **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objekt s názvem `faceClient`, pomocí Face předplatné key a koncového bodu adresy URL. Z tohoto místa můžete použít buď voláním funkce rozpoznávání tváře **[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)** (použitá v tomto průvodci) nebo **[DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)**. Najdete v článku [detekovat čelí rychlý start pro C# ](../quickstarts/csharp-detect-sdk.md) pokyny o tom, jak nastavit tuto možnost.
 
-V tomto příkladu ukážeme následující funkce: 
+Tato příručka je zaměřena na konkrétních podrobnostech volání rozpoznat&mdash;argumenty, které můžete předat a co můžete dělat s vrácenými daty. Doporučujeme pouze dotazování na funkce, které potřebujete, protože každá operace bude vyžadovat čas navíc k dokončení.
 
-- Rozpoznání tváří v obrázku a jejich vyznačení pomocí obdélníkových rámců
-- Analýza umístění zorniček, nosu a úst a jejich vyznačení v obrázku
-- Analýza pozice hlavy, pohlaví a věku tváře
+## <a name="get-basic-face-data"></a>Získání dat základní pro rozpoznávání tváře
 
-Aby bylo možné tyto funkce provést, je potřeba připravit obrázek s alespoň jednou zřetelnou tváří. 
+Nenašli žádné tváře a získat jejich umístění v obraze, volání metody _returnFaceId_ parametr nastaven na **true** (výchozí).
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1: Povolit volání rozhraní API
-
-Ke každému volání rozhraní API pro rozpoznávání tváře potřebujete klíč předplatného. Klíč je potřeba předat jako řetězcový parametr dotazu nebo ho uvést v hlavičce žádosti. Pokud chcete klíč předplatného předat pomocí řetězce dotazu, použijte jako příklad adresu URL žádosti pro [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
-
-```
-https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
-&subscription-key=<Subscription Key>
+```csharp
+IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
 ```
 
-Jako alternativu, klíč předplatného také dá se zadat v hlavičce požadavku protokolu HTTP: **ocp-apim-subscription-key: &lt;Klíč předplatného&gt;**  při použití klientské knihovny, klíč předplatného se předává v konstruktoru třídy FaceServiceClient. Příklad:
-```CSharp
-faceServiceClient = new FaceServiceClient("<Subscription Key>");
-```
+Vrácený **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** objekty je možné zadávat dotazy pro jejich jedinečné ID a obdélník poskytující pixel souřadnice typ písma.
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>Krok 2: Nahrajte image do služby a spusťte rozpoznávání tváře
-
-Základním způsobem provádění rozpoznávání tváře je přímé odeslání obrázku. Dělá se to odesláním žádosti POST s typem obsahu aplikace/oktet-stream, s daty vyčtenými z obrázku JPEG. Maximální velikost obrázku jsou 4 MB.
-
-Při použití klientské knihovny se rozpoznávání tváře prostřednictvím odeslání dělá předáním objektu Stream. Viz následující příklad:
-
-```CSharp
-using (Stream s = File.OpenRead(@"D:\MyPictures\image1.jpg"))
+```csharp
+foreach (var face in faces)
 {
-    var faces = await faceServiceClient.DetectAsync(s, true, true);
- 
-    foreach (var face in faces)
-    {
-        var rect = face.FaceRectangle;
-        var landmarks = face.FaceLandmarks;
-    }
+    string id = face.FaceId.ToString();
+    FaceRectangle rect = face.FaceRectangle;
 }
 ```
 
-Všimněte si, že metoda DetectAsync třídy FaceServiceClient je asynchronní. Kvůli použití klauzule await musí být volající metoda také označena jako asynchronní.
-Pokud je obrázek už na webu a má adresu URL, dá se rozpoznávání tváře provést také poskytnutím adresy URL. V tomto příkladu bude textem žádosti řetězec JSON obsahující adresu URL.
-Při použití klientské knihovny se rozpoznávání tváře prostřednictvím adresy URL dá snadno provést dalším přetížením metody DetectAsync.
+Zobrazit **[FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)** informace o tom, jak analyzovat umístění a rozměry pracovní plochy. Obvykle obsahuje tento obdélník oči, obočí, nos a úst; horní části head, uší a chin nejsou nutně zahrnuty. Pokud máte v úmyslu použít obličejový obdélník oříznutí kompletní head nebo střední snímek na výšku (ID typu fotografii), můžete chtít rozšířit obdélník podle marži v každém směru.
 
-```CSharp
-string imageUrl = "http://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceServiceClient.DetectAsync(imageUrl, true, true);
- 
+## <a name="get-face-landmarks"></a>Získat orientačních bodů pro rozpoznávání tváře
+
+Rozpoznávání tváře památek jsou sadu snadno najít body na ciferníku například žáků nebo tip nos. Data orientačních bodů pro rozpoznávání tváře můžete získat tak, že nastavíte _returnFaceLandmarks_ parametr **true**.
+
+```csharp
+IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
+```
+
+Standardně existuje 27 předdefinovaných orientačních bodů. Následující obrázek znázorňuje všechny 27 body:
+
+![Diagram s všechny 27 orientačních bodů, které jsou označeny pro rozpoznávání tváře](../Images/landmarks.1.jpg)
+
+Body vrátil jsou v jednotkách, které pixelů, stejně jako obdélník rámce pro rozpoznávání tváře. Následující kód ukazuje, jak může načíst umístění nos a žáků:
+
+```csharp
 foreach (var face in faces)
 {
-    var rect = face.FaceRectangle;
     var landmarks = face.FaceLandmarks;
-}
-``` 
 
-Vlastnost FaceRectangle, která se vrátí s rozpoznanými tvářemi, je v podstatě tvořená umístěními na tváři v pixelech. Tento obdélník obvykle obsahuje oči, obočí, nos a ústa – vršek hlavy, uši a brada nejsou zahrnuté. Pokud oříznete celkový portrét hlavy nebo portrét do pasu (typ obrázku pro fotografickou identifikaci), může být potřeba rozšířit oblast obdélníkového rámce tváře, protože oblast tváře může být pro některé aplikace příliš malá. K přesnějšímu vyhledání tváře může být užitečné použít orientační body tváře (mechanismy vyhledání rysů tváře nebo směru tváře) popisované v další části.
-
-## <a name="step-3-understanding-and-using-face-landmarks"></a>Krok 3: Principy a použití orientačních bodů pro rozpoznávání tváře
-
-Orientační body tváře jsou řady podrobných bodů na obličeji – obvykle body částí obličeje, jako jsou zorničky, oční koutky a nos. Orientační body tváře jsou volitelné atributy, které můžou být analyzované během rozpoznávání tváře. Abyste zahrnuli orientační body tváře do výsledků rozpoznávání tváře, můžete buď předat logickou hodnotu „true“ do parametru dotazu returnFaceLandmarks při volání [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), nebo použít volitelný parametr returnFaceLandmarks pro metodu DetectAsync třídy FaceServiceClient.
-
-Standardně existuje 27 předdefinovaných orientačních bodů. Následující obrázek ukazuje, jak je všech 27 bodů definovaných:
-
-![Jak se rozpoznává tvář](../Images/landmarks.1.jpg)
-
-Vrácené body jsou v jednotkách pixelů, podobně jako obdélníkový rámec tváře. Jeho vytvořením se proto usnadní vyznačení konkrétních bodů zájmu v obrázku. Následující kód ukazuje získání umístění nosu a zorniček:
-
-```CSharp
-var faces = await faceServiceClient.DetectAsync(imageUrl, returnFaceLandmarks:true);
- 
-foreach (var face in faces)
-{
-    var rect = face.FaceRectangle;
-    var landmarks = face.FaceLandmarks;
- 
     double noseX = landmarks.NoseTip.X;
     double noseY = landmarks.NoseTip.Y;
- 
+
     double leftPupilX = landmarks.PupilLeft.X;
     double leftPupilY = landmarks.PupilLeft.Y;
- 
+
     double rightPupilX = landmarks.PupilRight.X;
     double rightPupilY = landmarks.PupilRight.Y;
 }
-``` 
+```
 
-Kromě vyznačení rysů tváře v obrázku můžou orientační body tváře sloužit také k přesnému výpočtu směru tváře. Směr tváře můžeme například definovat jako vektor ze středu úst do středu očí. Podrobněji to vysvětluje následující kód:
+Rozpoznávání tváře zajímavá data lze také přesný výpočet směr typ písma. Například můžete definujeme otočení obličej vektor v centru ústí do středu očí. Následující kód vypočítá tento vektoru:
 
-```CSharp
-var landmarks = face.FaceLandmarks;
- 
+```csharp
 var upperLipBottom = landmarks.UpperLipBottom;
 var underLipTop = landmarks.UnderLipTop;
- 
+
 var centerOfMouth = new Point(
     (upperLipBottom.X + underLipTop.X) / 2,
     (upperLipBottom.Y + underLipTop.Y) / 2);
- 
+
 var eyeLeftInner = landmarks.EyeLeftInner;
 var eyeRightInner = landmarks.EyeRightInner;
- 
+
 var centerOfTwoEyes = new Point(
     (eyeLeftInner.X + eyeRightInner.X) / 2,
     (eyeLeftInner.Y + eyeRightInner.Y) / 2);
- 
+
 Vector faceDirection = new Vector(
     centerOfTwoEyes.X - centerOfMouth.X,
     centerOfTwoEyes.Y - centerOfMouth.Y);
-``` 
+```
 
-Když znáte směr tváře, můžete natočit obdélníkový rámec tváře tak, aby odpovídal směru tváře. Je zřejmé, že orientační body tváře můžou poskytnout více podrobností a užitku.
+Znalost směr plošku, můžete pak otočit obdélníkové tváře rámec jeho zarovnání větší správně. Pokud chcete oříznout tváří v obrázku, můžete prostřednictvím kódu programu otočení obrázku tak, aby plochy se vždy zobrazí svislé.
 
-## <a name="step-4-using-other-face-attributes"></a>Krok 4: Pomocí dalších atributů pro rozpoznávání tváře
+## <a name="get-face-attributes"></a>Získat obličejových atributů
 
-Rozhraní API pro rozpoznávání tváře může kromě orientačních bodů tváře analyzovat také několik dalších atributů tváře. K těmto atributům patří:
+Kromě obdélníky a památek rozpoznávání tváře, rozhraní API můžete analyzovat několik atributů koncepční tváře. Mezi ně patří:
 
 - Věk
 - Pohlaví
 - Intenzita úsměvu
 - Vousy
-- 3D pozice hlavy
+- Brýle
+- 3D hlavní pozice
+- Emoce
 
-Tyto atributy se předpovídají pomocí statistických algoritmů a nemusí být vždy 100% přesné. Přesto můžou být užitečné, když chcete s jejich pomocí klasifikovat tváře. Další informace o těchto jednotlivých atributech najdete v [Glosáři](../Glossary.md).
+> [!IMPORTANT]
+> Tyto atributy jsou předpokládány pomocí statistické algoritmy a nemusí být přesné. Při rozhodování na základě atributů dat, buďte opatrní.
+>
 
-Níže je příklad extrakce atributů tváře během rozpoznávání tváře:
+Chcete-li analyzovat obličejových atributů, nastavte _returnFaceAttributes_ parametru do seznamu **[FaceAttributeType výčtu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** hodnoty.
 
-```CSharp
+```csharp
 var requiredFaceAttributes = new FaceAttributeType[] {
-                FaceAttributeType.Age,
-                FaceAttributeType.Gender,
-                FaceAttributeType.Smile,
-                FaceAttributeType.FacialHair,
-                FaceAttributeType.HeadPose,
-                FaceAttributeType.Glasses
-            };
-var faces = await faceServiceClient.DetectAsync(imageUrl,
-    returnFaceLandmarks: true,
-    returnFaceAttributes: requiredFaceAttributes);
+    FaceAttributeType.Age,
+    FaceAttributeType.Gender,
+    FaceAttributeType.Smile,
+    FaceAttributeType.FacialHair,
+    FaceAttributeType.HeadPose,
+    FaceAttributeType.Glasses,
+    FaceAttributeType.Emotion
+};
+var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
+```
 
+Potom získat odkazy na vrácená data a dělat další operace podle vašich potřeb.
+
+```csharp
 foreach (var face in faces)
 {
-    var id = face.FaceId;
     var attributes = face.FaceAttributes;
     var age = attributes.Age;
     var gender = attributes.Gender;
@@ -182,15 +150,17 @@ foreach (var face in faces)
     var facialHair = attributes.FacialHair;
     var headPose = attributes.HeadPose;
     var glasses = attributes.Glasses;
+    var emotion = attributes.Emotion;
 }
-``` 
+```
 
-## <a name="summary"></a>Souhrn
+Další informace o každého z atributů, najdete v tématu [Glosář](../Glossary.md).
 
-V této příručce jste se seznámili s funkcemi rozhraní API [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) a s tím, jak toto rozhraní může rozpoznat tváře u místně nahraných obrázků nebo u obrázků s adresami URL na webu, jak může rozpoznat tváře vrácením obdélníkových rámců tváří a jak může analyzovat orientační body tváře, 3D pozice hlavy a další atributy tváře.
+## <a name="next-steps"></a>Další postup
 
-Další informace o podrobnostech rozhraní API najdete v referenční příručce k [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+V této příručce jste zjistili, jak používat různé funkce rozpoznávání tváře. V dalším kroku najdete v článku [Glosář](../Glossary.md) pro podrobnější pohled na data pro rozpoznávání tváře jsme načtená.
 
 ## <a name="related-topics"></a>Související témata
 
-[Jak identifikovat tváře v obrázku](HowtoIdentifyFacesinImage.md)
+- [Referenční dokumentace (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+- [Referenční dokumentace (sadu .NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet)

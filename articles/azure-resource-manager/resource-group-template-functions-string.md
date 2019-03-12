@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 04a82d1ed8735954072f9549f3b2676df0935449
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269293"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762836"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -40,11 +40,12 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Délka](#length)
+* [newGuid](#newguid)
 * [padLeft](#padleft)
 * [nahradit](#replace)
 * [skip](#skip)
 * [split](#split)
-* [startsWith](resource-group-template-functions-string.md#startswith)
+* [startsWith](#startswith)
 * [řetězec](#string)
 * [dílčí řetězec](#substring)
 * [Take](#take)
@@ -53,14 +54,12 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [trim](#trim)
 * [uniqueString](#uniquestring)
 * [uri](#uri)
-* [uriComponent](resource-group-template-functions-string.md#uricomponent)
-* [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
-
-<a id="base64" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* [uriComponent](#uricomponent)
+* [uriComponentToString](#uricomponenttostring)
+* [utcNow](#utcnow)
 
 ## <a name="base64"></a>base64
+
 `base64(inputString)`
 
 Vrátí reprezentaci ve formátu base64 vstupního řetězce.
@@ -69,7 +68,7 @@ Vrátí reprezentaci ve formátu base64 vstupního řetězce.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Hodnota vrátit jako reprezentace base64. |
+| inputString |Ano |string |Hodnota vrátit jako reprezentace base64. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -124,21 +123,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="base64tojson" />
-
 ## <a name="base64tojson"></a>base64ToJson
+
 `base64tojson`
 
 Převede reprezentace base64 do objektu JSON.
@@ -147,7 +133,7 @@ Převede reprezentace base64 do objektu JSON.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace base64 pro převod na objekt JSON. |
+| base64Value |Ano |string |Reprezentace base64 pro převod na objekt JSON. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -202,21 +188,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="base64tostring" />
-
 ## <a name="base64tostring"></a>base64ToString
+
 `base64ToString(base64Value)`
 
 Převede na řetězec formátu base64.
@@ -225,7 +198,7 @@ Převede na řetězec formátu base64.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace base64 převést na řetězec. |
+| base64Value |Ano |string |Reprezentace base64 převést na řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -280,21 +253,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | toStringOutput | String | Jedna dva tři |
 | toJsonOutput | Objekt | {"jedna": "a", "2": "b"} |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
-```
-
-<a id="concat" />
-
 ## <a name="concat"></a>concat
+
 `concat (arg1, arg2, arg3, ...)`
 
 Kombinuje více řetězcových hodnot a vrací spojený řetězec nebo kombinuje několik polí a vrátí pole zřetězených.
@@ -304,7 +264,7 @@ Kombinuje více řetězcových hodnot a vrací spojený řetězec nebo kombinuje
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |řetězec nebo pole |První hodnota pro zřetězení. |
-| Další argumenty |Ne |řetězec |Další hodnoty v postupném pořadí pro zřetězení. |
+| Další argumenty |Ne |string |Další hodnoty v postupném pořadí pro zřetězení. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Řetězec nebo pole zřetězených hodnot.
@@ -338,18 +298,6 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | concatOutput | String | Předpona 5yj4yjf5mbg72 |
-
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) ukazuje, jak kombinace dvou polí.
 
@@ -392,21 +340,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | Vrátí | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-<a id="contains" />
-
 ## <a name="contains"></a>obsahuje
+
 `contains (container, itemToFind)`
 
 Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obsahuje daný podřetězec. Porovnání řetězců rozlišuje velká a malá písmena. Při testování, pokud objekt obsahuje klíč, porovnání ale velká a malá písmena.
@@ -486,21 +421,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-<a id="datauri" />
-
 ## <a name="datauri"></a>dataUri
+
 `dataUri(stringToConvert)`
 
 Převede hodnotu na identifikátor URI dat.
@@ -509,7 +431,7 @@ Převede hodnotu na identifikátor URI dat.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ano |řetězec |Hodnota převedená na identifikátor URI dat. |
+| stringToConvert |Ano |string |Hodnota převedená na identifikátor URI dat. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -554,21 +476,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Ahoj světe! |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-<a id="datauritostring" />
-
 ## <a name="datauritostring"></a>dataUriToString
+
 `dataUriToString(dataUriToConvert)`
 
 Převede data identifikátor URI ve formátu hodnotu na řetězec.
@@ -577,7 +486,7 @@ Převede data identifikátor URI ve formátu hodnotu na řetězec.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ano |řetězec |Data, která hodnotu identifikátoru URI k převedení. |
+| dataUriToConvert |Ano |string |Data, která hodnotu identifikátoru URI k převedení. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -622,21 +531,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Ahoj světe! |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
-```
-
-<a id="empty" /> 
-
 ## <a name="empty"></a>Prázdná
+
 `empty(itemToTest)`
 
 Určuje, zda je pole, objekt nebo řetězec prázdný.
@@ -700,21 +596,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | objectEmpty | Bool | True |
 | stringEmpty | Bool | True |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-<a id="endswith" />
-
 ## <a name="endswith"></a>endsWith
+
 `endsWith(stringToSearch, stringToFind)`
 
 Určuje, jestli řetězec končí určitou hodnotou. Porovnání nerozlišuje velká a malá písmena.
@@ -723,8 +606,8 @@ Určuje, jestli řetězec končí určitou hodnotou. Porovnání nerozlišuje ve
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položky, která má najít. |
-| stringToFind |Ano |řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |string |Hodnota, která obsahuje položky, která má najít. |
+| stringToFind |Ano |string |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -779,21 +662,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-<a id="first" />
-
 ## <a name="first"></a>první
+
 `first(arg1)`
 
 Vrátí první znak řetězce, nebo první prvek pole.
@@ -844,18 +714,6 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | String | jeden |
 | stringOutput | String | O |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
 ## <a name="guid"></a>identifikátor GUID
 
 `guid (baseString, ...)`
@@ -866,14 +724,14 @@ Vytvoří hodnotu ve formátu globálně jedinečný identifikátor na základě
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota určená ve funkci hash vytvořit identifikátor GUID. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat libovolný počet řetězců podle potřeby vytvořit hodnotu, která určuje úroveň jedinečnost. |
+| baseString |Ano |string |Hodnota určená ve funkci hash vytvořit identifikátor GUID. |
+| Další parametry podle potřeby |Ne |string |Můžete přidat libovolný počet řetězců podle potřeby vytvořit hodnotu, která určuje úroveň jedinečnost. |
 
 ### <a name="remarks"></a>Poznámky
 
 Tato funkce je užitečné, když budete chtít vytvořit hodnotu ve formátu globálně jedinečný identifikátor. Můžete zadat hodnoty parametrů, které omezit její obor jedinečnosti pro výsledek. Můžete určit, zda je název jedinečný na předplatné, skupinu prostředků nebo nasazení.
 
-Vrácená hodnota není náhodný řetězec, ale spíše výsledek funkce hash. Vrácená hodnota je 36 znaků. Není globálně jedinečný.
+Vrácená hodnota není náhodný řetězec, ale spíše výsledek funkce hash na parametry. Vrácená hodnota je 36 znaků. Není globálně jedinečný. Chcete-li vytvořit nový identifikátor GUID, který není založen na touto hodnotou hash parametrů, použijte [newGuid](#newguid) funkce.
 
 Následující příklady ukazují, jak vytvořit jedinečnou hodnotu pro běžně používané úrovně pomocí identifikátoru guid.
 
@@ -927,21 +785,8 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
-```
-
-<a id="indexof" />
-
 ## <a name="indexof"></a>indexOf
+
 `indexOf(stringToSearch, stringToFind)`
 
 Vrátí první pozici hodnoty v řetězci. Porovnání nerozlišuje velká a malá písmena.
@@ -950,8 +795,8 @@ Vrátí první pozici hodnoty v řetězci. Porovnání nerozlišuje velká a mal
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položky, která má najít. |
-| stringToFind |Ano |řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |string |Hodnota, která obsahuje položky, která má najít. |
+| stringToFind |Ano |string |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1001,21 +846,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-<a id="last" />
-
 ## <a name="last"></a>poslední
+
 `last (arg1)`
 
 Vrátí poslední znak řetězce nebo poslední prvek pole.
@@ -1066,21 +898,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | String | tři |
 | stringOutput | String | e |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-<a id="lastindexof" />
-
 ## <a name="lastindexof"></a>lastIndexOf
+
 `lastIndexOf(stringToSearch, stringToFind)`
 
 Vrátí poslední pozice hodnoty v řetězci. Porovnání nerozlišuje velká a malá písmena.
@@ -1089,8 +908,8 @@ Vrátí poslední pozice hodnoty v řetězci. Porovnání nerozlišuje velká a 
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položky, která má najít. |
-| stringToFind |Ano |řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |string |Hodnota, která obsahuje položky, která má najít. |
+| stringToFind |Ano |string |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1140,21 +959,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
-```
-
-<a id="length" />
-
 ## <a name="length"></a>Délka
+
 `length(string)`
 
 Vrátí počet znaků v řetězci nebo prvky v poli.
@@ -1212,21 +1018,105 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+## <a name="newguid"></a>newGuid
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+`newGuid()`
+
+Vrátí hodnotu ve formátu globálně jedinečný identifikátor. **Tuto funkci jde použít jenom ve výchozí hodnota pro parametr.**
+
+### <a name="remarks"></a>Poznámky
+
+Tato funkce ve výrazu můžete použít pouze pro výchozí hodnotu parametru. Pomocí této funkce, která je někde jinde v šabloně vrátí chybu. Funkce není povolena v další části šablony, protože pokaždé, když je volána vrací jinou hodnotu. Nasazování stejné šablony se stejnými parametry by vytvářejí spolehlivě stejné výsledky.
+
+NewGuid funkce se liší od [guid](#guid) fungovat, protože nepřijímá žádné parametry. Při volání guid s stejný parametr vrací stejný identifikátor pokaždé, když. Když budete chtít spolehlivě generovat stejný identifikátor GUID pro konkrétní prostředí, použijte identifikátor guid. NewGuid použijte, když budete potřebovat jiný identifikátor pokaždé, když, jako je například nasazení prostředků do testovacího prostředí.
+
+Pokud používáte [možnost znovu nasadit dříve úspěšné nasazení](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)a starší nasazení obsahuje parametr, který používá newGuid, již není parametr znovu. Namísto toho hodnoty parametru z předchozích nasazení je automaticky znovu použít v nasazení vrácení zpět.
+
+V testovacím prostředí budete muset opakovaně nasazovat prostředky, které pouze za krátkou dobu. Namísto vytváření jedinečné názvy, můžete použít newGuid s [uniqueString](#uniquestring) vytvořit jedinečné názvy.
+
+Buďte opatrní, znovu nasadit šablonu, která se spoléhá na funkce newGuid pro výchozí hodnotu. Když znovu nasadit a neposkytují hodnotu pro parametr funkce se již znovu. Pokud chcete aktualizovat existující prostředek, ne vytvořit nové, předejte hodnotu parametru z předchozích nasazení.
+
+### <a name="return-value"></a>Návratová hodnota
+
+Řetězec obsahující 36 znaků ve formátu globálně jedinečný identifikátor.
+
+### <a name="examples"></a>Příklady
+
+Následující příklad šablony ukazuje parametr s novým identifikátorem.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "guidValue": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "guidOutput": {
+            "type": "string",
+            "value": "[parameters('guidValue')]"
+        }
+    }
+}
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+
+Následující příklad používá funkci newGuid vytvořit jedinečný název pro účet úložiště. Tato šablona může fungovat pro testovací prostředí, kde účet úložiště existuje po krátkou dobu a není znovu nasadil.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "guidValue": {
+            "type": "string",
+            "defaultValue": "[newGuid()]"
+        }
+    },
+    "variables": {
+        "storageName": "[concat('storage', uniqueString(parameters('guidValue')))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "location": "West US",
+            "apiVersion": "2018-07-01",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+        }
+    ],
+    "outputs": {
+        "nameOutput": {
+            "type": "string",
+            "value": "[variables('storageName')]"
+        }
+    }
+}
 ```
 
-<a id="padleft" />
+Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| nameOutput | string | storagenziwvyru7uxie |
+
 
 ## <a name="padleft"></a>padLeft
+
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
 Vrátí řetězec zarovnaný doprava přidáním znaků na levé straně až do dosažení celkové určené délky.
@@ -1275,21 +1165,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
-```
-
-<a id="replace" />
-
 ## <a name="replace"></a>nahradit
+
 `replace(originalString, oldString, newString)`
 
 Vrátí nový řetězec se všemi instancemi jeden řetězec nahrazen jiným řetězcem.
@@ -1298,9 +1175,9 @@ Vrátí nový řetězec se všemi instancemi jeden řetězec nahrazen jiným ře
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| originalString |Ano |řetězec |Hodnota, která obsahuje všechny instance jeden řetězec nahrazen jiným řetězcem. |
-| Starý řetězec |Ano |řetězec |Řetězec, který má být odebrána z původního řetězce. |
-| nový řetězec |Ano |řetězec |Řetězec, který přidáte místo odebrané řetězec. |
+| originalString |Ano |string |Hodnota, která obsahuje všechny instance jeden řetězec nahrazen jiným řetězcem. |
+| Starý řetězec |Ano |string |Řetězec, který má být odebrána z původního řetězce. |
+| nový řetězec |Ano |string |Řetězec, který přidáte místo odebrané řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1341,21 +1218,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
-```
-
-<a id="skip" />
-
 ## <a name="skip"></a>přeskočit
+
 `skip(originalValue, numberToSkip)`
 
 Vrátí řetězec, všechny znaky po zadaný počet znaků, nebo pole obsahující všechny prvky po zadaný počet prvků.
@@ -1422,21 +1286,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | Pole | ["tři"] |
 | stringOutput | String | dva tři |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-<a id="split" />
-
 ## <a name="split"></a>split
+
 `split(inputString, delimiter)`
 
 Vrátí pole řetězců obsahující podřetězce vstupního řetězce, které jsou odděleny zadaného oddělovače.
@@ -1445,7 +1296,7 @@ Vrátí pole řetězců obsahující podřetězce vstupního řetězce, které j
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Řetězec, který se má rozdělit. |
+| inputString |Ano |string |Řetězec, který se má rozdělit. |
 | Oddělovač |Ano |řetězec nebo pole řetězců |Oddělovač, který má použít pro rozdělení řetězce. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -1494,21 +1345,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | firstOutput | Pole | ["jedna", "dvě", "tři"] |
 | secondOutput | Pole | ["jedna", "dvě", "tři"] |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
-```
-
-<a id="startswith" />
-
 ## <a name="startswith"></a>startsWith
+
 `startsWith(stringToSearch, stringToFind)`
 
 Určuje, jestli řetězec začíná určitou hodnotou. Porovnání nerozlišuje velká a malá písmena.
@@ -1517,8 +1355,8 @@ Určuje, jestli řetězec začíná určitou hodnotou. Porovnání nerozlišuje 
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položky, která má najít. |
-| stringToFind |Ano |řetězec |Hodnota k vyhledání. |
+| stringToSearch |Ano |string |Hodnota, která obsahuje položky, která má najít. |
+| stringToFind |Ano |string |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1573,21 +1411,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+## <a name="string"></a>string
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
-```
-
-<a id="string" />
-
-## <a name="string"></a>řetězec
 `string(valueToConvert)`
 
 Převede zadanou hodnotu na řetězec.
@@ -1657,21 +1482,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | String | ["a","b","c"] |
 | intOutput | String | 5 |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
-```
-
-<a id="substring" />
-
 ## <a name="substring"></a>dílčí řetězec
+
 `substring(stringToParse, startIndex, length)`
 
 Vrátí dílčí řetězec, který začíná na pozici zadaného znaku a obsahuje zadaný počet znaků.
@@ -1680,7 +1492,7 @@ Vrátí dílčí řetězec, který začíná na pozici zadaného znaku a obsahuj
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ano |řetězec |Původní řetězec, ze které je dílčí řetězec extrahován. |
+| stringToParse |Ano |string |Původní řetězec, ze které je dílčí řetězec extrahován. |
 | Počáteční index |Ne |int |Počáteční znak pozice s nulovým základem pro dílčí řetězec. |
 | Délka |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
 
@@ -1731,21 +1543,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | substringOutput | String | dva |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
-```
-
-<a id="take" />
-
 ## <a name="take"></a>Take
+
 `take(originalValue, numberToTake)`
 
 Vrátí řetězec s zadaný počet znaků od začátku řetězce nebo pole obsahující zadaný počet prvků od začátku pole.
@@ -1812,21 +1611,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | Pole | ["1", "dvě"] |
 | stringOutput | String | zapnuté |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-<a id="tolower" />
-
 ## <a name="tolower"></a>toLower
+
 `toLower(stringToChange)`
 
 Převede zadaný řetězec na malá písmena.
@@ -1835,7 +1621,7 @@ Převede zadaný řetězec na malá písmena.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota k převedení na malá písmena. |
+| stringToChange |Ano |string |Hodnota k převedení na malá písmena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1876,21 +1662,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | toLowerOutput | String | Jedna dva tři |
 | toUpperOutput | String | JEDNA DVA TŘI |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-<a id="toupper" />
-
 ## <a name="toupper"></a>toUpper
+
 `toUpper(stringToChange)`
 
 Převede zadaný řetězec na velká písmena.
@@ -1899,7 +1672,7 @@ Převede zadaný řetězec na velká písmena.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota převedená na velká písmena. |
+| stringToChange |Ano |string |Hodnota převedená na velká písmena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1940,21 +1713,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | toLowerOutput | String | Jedna dva tři |
 | toUpperOutput | String | JEDNA DVA TŘI |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
-```
-
-<a id="trim" />
-
 ## <a name="trim"></a>Trim
+
 `trim (stringToTrim)`
 
 Odebere všechny úvodní a koncové prázdné znaky ze zadaného řetězce.
@@ -1963,7 +1723,7 @@ Odebere všechny úvodní a koncové prázdné znaky ze zadaného řetězce.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ano |řetězec |Hodnota, která mají být odebrány. |
+| stringToTrim |Ano |string |Hodnota, která mají být odebrány. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1999,21 +1759,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | Vrátí | String | Jedna dva tři |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
-```
-
-<a id="uniquestring" />
-
 ## <a name="uniquestring"></a>uniqueString
+
 `uniqueString (baseString, ...)`
 
 Vytvoří deterministické hash řetězce na základě hodnot, které jsou poskytovány jako parametry. 
@@ -2022,8 +1769,8 @@ Vytvoří deterministické hash řetězce na základě hodnot, které jsou posky
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota ve funkci hash používá k vytvoření jedinečného řetězce. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat libovolný počet řetězců podle potřeby vytvořit hodnotu, která určuje úroveň jedinečnost. |
+| baseString |Ano |string |Hodnota ve funkci hash používá k vytvoření jedinečného řetězce. |
+| Další parametry podle potřeby |Ne |string |Můžete přidat libovolný počet řetězců podle potřeby vytvořit hodnotu, která určuje úroveň jedinečnost. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -2062,6 +1809,8 @@ Následující příklad ukazuje, jak vytvořit jedinečný název pro účet ú
     ...
 ```
 
+Pokud je potřeba vytvořit nový jedinečný název pokaždé, když nasazení šablony a záměr aktualizace prostředku není, můžete použít [utcNow](#utcnow) funkci s uniqueString. Tento přístup můžete použít v testovacím prostředí. Příklad najdete v tématu [utcNow](#utcNow).
+
 ### <a name="return-value"></a>Návratová hodnota
 
 Řetězec obsahující 13 znaků.
@@ -2088,21 +1837,8 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
-```
-
-<a id="uri" />
-
 ## <a name="uri"></a>identifikátor uri
+
 `uri (baseUri, relativeUri)`
 
 Vytvoří absolutní identifikátor URI kombinací baseUri a relativeUri řetězec.
@@ -2111,8 +1847,8 @@ Vytvoří absolutní identifikátor URI kombinací baseUri a relativeUri řetěz
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ano |řetězec |Řetězec, který základní identifikátor uri. |
-| relativeUri |Ano |řetězec |Řetězec relativní identifikátor uri pro přidání do řetězce základní identifikátor uri. |
+| baseUri |Ano |string |Řetězec, který základní identifikátor uri. |
+| relativeUri |Ano |string |Řetězec relativní identifikátor uri pro přidání do řetězce základní identifikátor uri. |
 
 Hodnota **baseUri** parametr může obsahovat konkrétní soubor, ale používá se pouze základní cestu, při vytváření identifikátor URI. Například předávání `http://contoso.com/resources/azuredeploy.json` jako parametr výsledky baseUri v základní identifikátor URI z `http://contoso.com/resources/`.
 
@@ -2165,21 +1901,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-<a id="uricomponent" />
-
 ## <a name="uricomponent"></a>uriComponent
+
 `uricomponent(stringToEncode)`
 
 Zakóduje identifikátor URI.
@@ -2188,7 +1911,7 @@ Zakóduje identifikátor URI.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ano |řetězec |Hodnota ke kódování. |
+| stringToEncode |Ano |string |Hodnota ke kódování. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2233,21 +1956,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
-```
-
-<a id="uricomponenttostring" />
-
 ## <a name="uricomponenttostring"></a>uriComponentToString
+
 `uriComponentToString(uriEncodedString)`
 
 Vrátí že hodnotu zakódovaného řetězce identifikátoru URI.
@@ -2256,7 +1966,7 @@ Vrátí že hodnotu zakódovaného řetězce identifikátoru URI.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ano |řetězec |Kódovaný identifikátor URI hodnota převedená na řetězec. |
+| uriEncodedString |Ano |string |Kódovaný identifikátor URI hodnota převedená na řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2301,16 +2011,113 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
 | toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
-Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
+## <a name="utcnow"></a>utcNow
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+`utcNow(format)`
+
+Vrátí aktuální hodnotu data a času (UTC) v zadaném formátu. Pokud je k dispozici žádný format, použije se formát ISO 8601 (RRRRMMDDThhmmssZ). **Tuto funkci jde použít jenom ve výchozí hodnota pro parametr.**
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Požaduje se | Typ | Popis |
+|:--- |:--- |:--- |:--- |
+| formát |Ne |string |Kódovaný identifikátor URI hodnota převedená na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+
+### <a name="remarks"></a>Poznámky
+
+Tato funkce ve výrazu můžete použít pouze pro výchozí hodnotu parametru. Pomocí této funkce, která je někde jinde v šabloně vrátí chybu. Funkce není povolena v další části šablony, protože pokaždé, když je volána vrací jinou hodnotu. Nasazování stejné šablony se stejnými parametry by vytvářejí spolehlivě stejné výsledky.
+
+Pokud používáte [možnost znovu nasadit dříve úspěšné nasazení](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)a starší nasazení obsahuje parametr, který používá utcNow, již není parametr znovu. Namísto toho hodnoty parametru z předchozích nasazení je automaticky znovu použít v nasazení vrácení zpět.
+
+Buďte opatrní, znovu nasadit šablonu, která se spoléhá na funkce utcNow pro výchozí hodnotu. Když znovu nasadit a neposkytují hodnotu pro parametr funkce se již znovu. Pokud chcete aktualizovat existující prostředek, ne vytvořit nové, předejte hodnotu parametru z předchozích nasazení.
+
+### <a name="return-value"></a>Návratová hodnota
+
+Aktuální hodnota data a času UTC.
+
+### <a name="examples"></a>Příklady
+
+Následující příklad šablony ukazuje různé formáty pro hodnoty data a času.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "utcValue": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
+        },
+        "utcShortValue": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
+        "utcCustomValue": {
+            "type": "string",
+            "defaultValue": "[utcNow('M d')]"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "utcOutput": {
+            "type": "string",
+            "value": "[parameters('utcValue')]"
+        },
+        "utcShortOutput": {
+            "type": "string",
+            "value": "[parameters('utcShortValue')]"
+        },
+        "utcCustomOutput": {
+            "type": "string",
+            "value": "[parameters('utcCustomValue')]"
+        }
+    }
+}
 ```
 
-Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
+Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| utcOutput | string | 20190305T175318Z |
+| utcShortOutput | string | 03/05/2019 |
+| utcCustomOutput | string | 3 5 |
+
+Následující příklad ukazuje, jak použít hodnotu z funkce při nastavování určitou hodnotou značky.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "utcShort": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
+        "rgName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "name": "[parameters('rgName')]",
+            "location": "westeurope",
+            "tags":{
+                "createdDate": "[parameters('utcShort')]"
+            },
+            "properties":{}
+        }
+    ],
+    "outputs": {
+        "utcShort": {
+            "type": "string",
+            "value": "[parameters('utcShort')]"
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Další postup

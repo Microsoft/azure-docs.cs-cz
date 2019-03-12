@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31b65dc7a73d24066bee8088b3177a1300186eba
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 98330152d8d88d538424c52b1bc5f49462010302
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316655"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727242"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -155,6 +155,10 @@ K dispozici jsou následující role správce:
 * **[Správce služby Power BI](#power-bi-service-administrator)**: Uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud se služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Power BI". Je "správce Power BI" v [webu Azure portal](https://portal.azure.com).
+
+* **[Privilegované Správce ověřování](#privileged-authentication-administrator)**: Uživatelé s touto rolí můžete nastavit nebo resetovat přihlašovací údaje bez hesla pro všechny uživatele, včetně globálních správců. Privilegovaných správců ověřování můžete vynutit uživatelům přeregistrovat na existující bez hesla k přihlášení (třeba vícefaktorové ověřování, FIDO) dokumentů a odvolání přístupu "zapamatovat MFA na zařízení", s výzvou pro vícefaktorové ověřování v příštím přihlášení všech uživatelů. Privilegovaných správců ověřování můžete:
+  * Vynutí pro opětovné zaregistrování proti existující bez hesla k přihlášení (třeba vícefaktorové ověřování, FIDO)
+  * Odvolat "zapamatovat MFA na zařízení", výzvy pro vícefaktorové ověřování pro příští přihlášení
 
 * **[Privilegované Role správce](#privileged-role-administrator)**: Uživatelé s touto rolí můžou Spravovat přiřazení rolí v Azure Active Directory, i v rámci Azure AD Privileged Identity Management. Kromě toho tato role umožňuje spravovat všechny aspekty služby Privileged Identity Management.
 
@@ -322,7 +326,6 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/organization/basic/update | Umožňuje aktualizovat základní vlastnosti organization v Azure Active Directory. |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Umožňuje aktualizovat vlastnost organization.trustedCAsForPasswordlessAuth v Azure Active Directory. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat službu Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Azure. |
 | microsoft.commerce.billing/allEntities/allTasks | Umožňuje spravovat všechny aspekty fakturace Office 365. |
@@ -451,14 +454,12 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 | microsoft.azure.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Azure. |
 | microsoft.commerce.billing/allEntities/allTasks | Umožňuje spravovat všechny aspekty fakturace Office 365. |
 | microsoft.intune/allEntities/allTasks | Umožňuje spravovat všechny aspekty Intune. |
-| microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Umožňuje spravovat všechny aspekty Správce dodržování předpisů Office 365. |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | Umožňuje spravovat všechny aspekty Desktop Analytics. |
 | microsoft.office365.exchange/allEntities/allTasks | Umožňuje spravovat všechny aspekty Exchange Online. |
 | microsoft.office365.lockbox/allEntities/allTasks | Umožňuje spravovat všechny aspekty funkce Office 365 Customer Lockbox. |
 | microsoft.office365.messageCenter/messages/read | Umožňuje číst messages v microsoft.office365.messageCenter. |
 | microsoft.office365.messageCenter/securityMessages/read | Umožňuje číst securityMessages v microsoft.office365.messageCenter. |
-| microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
 | microsoft.office365.protectionCenter/allEntities/allTasks | Umožňuje spravovat všechny aspekty Centra ochrany Office 365. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Umožňuje vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v microsoft.office365.securityComplianceCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
@@ -466,7 +467,9 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Umožňuje spravovat všechny aspekty Online Skypu pro firmy. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 | microsoft.office365.usageReports/allEntities/read | Umožňuje číst sestavy využití Office 365. |
+| microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | Umožňuje spravovat všechny aspekty Dynamics 365. |
+| microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Umožňuje číst všechny prostředky v microsoft.windows.defenderAdvancedThreatProtection. |
 
 ### <a name="compliance-administrator"></a>Správce dodržování předpisů
@@ -520,8 +523,8 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
-### <a name="customer-lockbox-access-approver"></a>Schvalovatel přístupu Lockboxu zákazníka
-Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
+### <a name="customer-lockbox-access-approver"></a>Schvalovatel přístupu ke Customer LockBoxu
+Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka.
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -785,7 +788,7 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 
 ### <a name="message-center-reader"></a>Čtenář Centra zpráv
-Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Office 365. Tato role nemá přístup k zobrazení, vytvořit nebo spravovat lístky podpory.
+Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Office 365. 
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -848,7 +851,6 @@ Nepoužívejte – nejsou určené pro obecné použití.
 | microsoft.aad.directory/groups/members/update | Umožňuje aktualizovat vlastnost groups.members v Azure Active Directory. |
 | microsoft.aad.directory/groups/restore | Umožňuje obnovovat groups v Azure Active Directory. |
 | microsoft.aad.directory/organization/basic/update | Umožňuje aktualizovat základní vlastnosti organization v Azure Active Directory. |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Umožňuje aktualizovat vlastnost organization.trustedCAsForPasswordlessAuth v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizovat vlastnost users.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Umožňuje spravovat licence uživatelů v Azure Active Directory. |
 | microsoft.aad.directory/users/basic/update | Umožňuje aktualizovat základní vlastnosti users v Azure Active Directory. |
@@ -877,6 +879,19 @@ Může spravovat všechny aspekty produktu Power BI.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat službu Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Azure. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
+| microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+
+### <a name="privileged-authentication-administrator"></a>Privilegovaný správce ověřování
+Může zobrazovat, nastavovat a resetovat informace o metodě ověření pro jakéhokoliv uživatele (který je správce nebo který není správce).
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
+| microsoft.aad.directory/users/strongAuthentication/update | Umožňuje aktualizovat vlastnosti silného ověření, třeba přihlašovací údaje MFA. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat službu Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Azure. |
 | microsoft.office365.webPortal/allEntities/basic/read | Umožňuje číst základní vlastnosti ve všech prostředcích v microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
@@ -1044,7 +1059,7 @@ Může řešit potíže s komunikací ve službě Teams pomocí základních ná
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
 ### <a name="teams-service-administrator"></a>Správce služby Teams
-Může spravovat službu Microsoft Teams. 
+Může spravovat službu Microsoft Teams.
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.

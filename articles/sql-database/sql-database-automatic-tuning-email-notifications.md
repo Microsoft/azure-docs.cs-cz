@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: f68097f7b97814bc24926b6fc1b0bb2a750855a2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 8b82955d7a4bdecf71c9cb4545249a423a5b5dd4
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311266"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577071"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -65,8 +65,6 @@ Postupujte podle těchto kroků provedete aktualizaci modulů Azure Powershellu:
 - V podokně moduly, klikněte na "**aktualizace modulů Azure**" v horní a počkejte, až se zobrazí zpráva "moduly Azure se aktualizovaly". Dokončení tohoto procesu může trvat několik minut.
 
 ![Aktualizace modulů Azure automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
-
-Požadovaná verze azurerm.resources zavedla a AzureRM.Sql moduly musí být verze 4 a vyšší.
 
 ## <a name="create-azure-automation-runbook"></a>Vytvoření Runbooku Azure Automation
 

@@ -3,20 +3,20 @@ title: Použití vlastních aktivit v kanálu Azure Data Factory
 description: Zjistěte, jak vytvořit vlastní aktivity a použít je v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: douglasl
-ms.openlocfilehash: 6947ac5819a8e096f3be4edf6f2891974829e422
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: d68910c32c53128704004d356062aca2c328e7d5
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440451"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576697"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Přesunout data do nebo z datového úložiště, že Data Factory nepodporuje, 
 Viz následující články, pokud jste ještě službu Azure Batch:
 
 * [Základy Azure Batch](../batch/batch-technical-overview.md) Přehled služby Azure Batch.
-* [Nové AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
+* [Nové AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) rutina pro vytvoření účtu Azure Batch (nebo) [webu Azure portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí webu Azure portal. Zobrazit [použití Powershellu ke správě účtu Azure Batch](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) najdete podrobné pokyny k použití rutiny.
 * [Nové AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) rutina pro vytvoření fondu služby Azure Batch.
 
 ## <a name="azure-batch-linked-service"></a>Služba Azure Batch propojené

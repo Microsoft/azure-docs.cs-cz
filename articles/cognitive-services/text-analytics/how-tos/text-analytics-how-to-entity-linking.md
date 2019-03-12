@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 5e614d7fc1b45e5a1e1c11d04ed80fbb66bfbd28
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bb315ff19aedd839c2b0638726be84343dcf4ec3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441606"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545358"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -62,7 +62,7 @@ Použití rozhraní entity linking v různých jazycích vyžaduje použití odp
 | DateTime      | Doba trvání      | "1 minutu a 45 sekundách"   | 
 | DateTime      | Nastavit           | "čtvrtek"     | 
 | DateTime      | Časové pásmo      |    | 
-| zprostředkovatele identity           | NENÍ K DISPOZICI\*         | http://www.bing.com    |
+| zprostředkovatele identity           | NENÍ K DISPOZICI\*         | https://www.bing.com    |
 | Email         | NENÍ K DISPOZICI\*         | support@contoso.com |
 \* V závislosti na vstupním a extrahované entit, může vynechat některé entity `SubType`.
 

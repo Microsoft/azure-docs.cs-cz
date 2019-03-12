@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 096bc96558f0fe33f8046622dc2443728674e405
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876849"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549217"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Rozpoznávání řeči Devices SDK licenční smlouvy
 
@@ -52,7 +52,7 @@ d) užívání softwaru jakýmkoli způsobem, který je v rozporu se zákonem, n
 
 f) software je nutné použít pouze v kombinaci s Microsoft Azure Cognitive Services, Speech service
 
-**3\. DATA KOLEKCE.** Tento software může komunikovat s dalšími produkty Microsoftu, která shromažďují data, která se přenášejí do Microsoftu. Informace o tom, jak Microsoft procesy osobní údaje Shromažďujeme, najdete v prohlášení o ochraně osobních údajů společnosti Microsoft v http://go.microsoft.com/fwlink/?LinkId=248681.
+**3\. DATA KOLEKCE.** Tento software může komunikovat s dalšími produkty Microsoftu, která shromažďují data, která se přenášejí do Microsoftu. Informace o tom, jak Microsoft procesy osobní údaje Shromažďujeme, najdete v prohlášení o ochraně osobních údajů společnosti Microsoft v https://go.microsoft.com/fwlink/?LinkId=248681.
 
 **4\. PŘEDBĚŽNOU VERZI SOFTWARU.** Software je předběžná verze. Nebude fungovat správně. Může lišit od komerčně vydávanou verzi.
 

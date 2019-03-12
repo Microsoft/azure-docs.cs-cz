@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329809"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546468"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Například ve scénáři IoT může ukládají metadata o senzorů (které se nemění často) v referenčních dat a připojte ho s datovými proudy IoT reálném čase. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. 
@@ -78,7 +78,7 @@ Azure SQL Database referenční data jsou načítána pro svou úlohu Stream Ana
 
 Pokud referenční data jsou pomalu se měnící datové sady, potřebujete pravidelně aktualizovat snímek, který se používá v úloze. Stream Analytics umožňuje nastavit obnovovací frekvence, při konfiguraci vstupní připojení k Azure SQL Database. Modul runtime Stream Analytics bude v intervalu určeném obnovovací frekvence dotazování Azure SQL Database. Nejrychlejší obnovovací frekvence podporována je jednou za minutu. Pro každé aktualizaci Stream Analytics uchovává nový snímek v účtu úložiště k dispozici.
 
-Stream Analytics nabízí dvě možnosti pro dotazování Azure SQL Database. Dotaz snímku je povinná a musí být zahrnuty v jednotlivých úlohách. Stream Analytics spustí dotaz snímku pravidelně podle vaší interval aktualizace a používá výsledek dotazu (snímek) jako referenční datové sady. Snímek dotazu by se měl vejít většinu scénářů, ale pokud narazíte na problémy s výkonem s velkými datovými sadami a rychlé obnovovací frekvence, můžete použít možnost dotazu delta.
+Stream Analytics nabízí dvě možnosti pro dotazování Azure SQL Database. Dotaz snímku je povinná a musí být zahrnuty v jednotlivých úlohách. Stream Analytics spustí dotaz snímku pravidelně podle vaší interval aktualizace a používá výsledek dotazu (snímek) jako referenční datové sady. Snímek dotazu by se měl vejít většinu scénářů, ale pokud narazíte na problémy s výkonem s velkými datovými sadami a rychlé obnovovací frekvence, můžete použít možnost dotazu delta. Dotazy, které vyžadují více než 60 sekund vrátit referenční sady dat způsobí vypršení časového limitu.
 
 S parametrem rozdílového dotazu Stream Analytics spustí dotaz snímku zpočátku Chcete-li získat základní referenční datové sady. Po spuštění Stream Analytics rozdílového dotazu pravidelně podle vaší interval aktualizace pro načtení přírůstkové změny. Tyto přírůstkové změny průběžně použity referenční sady dat, aby byl aktualizován. Použití rozdílového dotazu může pomoct snížit náklady na úložiště a sítě vstupně-výstupních operací.
 

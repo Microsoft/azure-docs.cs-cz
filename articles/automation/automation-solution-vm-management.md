@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 22347ce7296dc55d98f1ee6d4458fa6d7c5a21e6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890228"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551244"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -289,8 +289,8 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 |Dotaz | Popis|
 |----------|----------|
-|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Najít úlohy runbooku ScheduledStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "ScheduledStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno")  | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
+|Najít úlohy runbooku SequencedStartStop_Parent, která mají bylo úspěšně dokončeno | ```search Category == "JobLogs" | kde (RunbookName_s == "SequencedStartStop_Parent") | kde (hodnotu ResultType == "Dokončeno") | shrnutí |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | Seřadit podle TimeGenerated desc ".|
 
 ## <a name="viewing-the-solution"></a>Zobrazení řešení
 
@@ -300,7 +300,7 @@ Výběr řešení zobrazí **Start-Stop-VM [pracovní prostor]** stránka řeše
 
 ![Stránka řešení Update Management Automation](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-Tady můžete provádět další analýzu záznamů úlohy po kliknutí na dlaždici prstenec. Na řídicím panelu řešení zobrazuje historii úloh a předem definované vyhledávací dotazy protokolů. Přepnout na portálu Log Analytics rozšířené hledání podle vyhledávací dotazy.
+Tady můžete provádět další analýzu záznamů úlohy po kliknutí na dlaždici prstenec. Na řídicím panelu řešení zobrazuje historii úloh a předem definované vyhledávací dotazy protokolů. Přepnout na rozšířený portál log analytics pro hledání podle vyhledávací dotazy.
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 

@@ -3,22 +3,22 @@ title: Co jsou Azure Cognitive Services?
 description: Azure Cognitive Services jsou rozhraní API sady SDK a služby, které můžete použít k sestavování inteligentních aplikací pomocí Microsoft Azure.
 services: cognitive-services
 author: nitinme
-manager: nitinmed
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 03/11/2019
 ms.author: nitinme
-ms.openlocfilehash: 38ad921c7c4b2fef9d325c2e2c9eea25bd3c913b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5c6d9bbfe5cf3632b21f374c23bf5df728478ce0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734672"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761051"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
-Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k dispozici, což vývojářům sestavovat inteligentní aplikace bez nutnosti přímého AI nebo data science dovedností nebo znalostní báze. Azure Cognitive Services doplňovat rozvíjející se portfolio rozhraní API pro machine learning od Microsoftu a umožňují vývojářům snadno přidat kognitivní funkce – například rozpoznávání emocí a videa detekce; facial, řeči a rozpoznávání zpracování obrazu a řeči a language understanding – do svých aplikací. Cílem Azure Cognitive Services je pomoct vývojářům vytvářet aplikace, které můžete vidět, slyšet, mluvit, pochopit a dokonce začít důvod. Katalog služeb v rámci služeb Azure Cognitive Services můžete rozdělená na pět hlavních pilířů – zpracování obrazu, řeči, jazyka, vyhledávání a znalostní báze.
+Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k dispozici, což vývojářům sestavovat inteligentní aplikace bez nutnosti přímého AI nebo data science dovedností nebo znalostní báze. Azure Cognitive Services umožňují vývojářům snadno přidávat cognitive funkce, jako je například rozpoznávání emocí a videa detekce; facial, řeči a rozpoznávání zpracování obrazu a řeči a language understanding – do svých aplikací. Cílem Azure Cognitive Services je pomoct vývojářům vytvářet aplikace, které můžete vidět, slyšet, mluvit, pochopit a dokonce začít důvod. Katalog služeb v rámci služeb Azure Cognitive Services můžete rozdělená na pět hlavních pilířů – zpracování obrazu, řeči, jazyka, vyhledávání a znalostní báze.
 
 ## <a name="vision-apis"></a>Rozhraní API pro vizuální funkce
 
@@ -28,7 +28,6 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |[Službu Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "službu Custom Vision Service") (Preview)|Služba Custom Vision Service umožňuje vytvářet vlastní image Klasifikátory.|
 |[Rozhraní Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování pro možné urážlivé nežádoucí a rizikových obsah.|
 |[Rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "rozhraní API pro rozpoznávání tváře")|Rozhraní API pro rozpoznávání tváře poskytuje přístup k pokročilé algoritmy, povolení atribut rozpoznávání tváří a uznání.|
-|[API pro rozpoznávání emocí](https://docs.microsoft.com/azure/cognitive-services/emotion/home "API pro rozpoznávání Emocí") (Preview)|API pro rozpoznávání emocí přijímá jako vstup image a vrací sadu pro každou tvář na obrázku.|
 | [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer umožňuje extrahovat přehledy z vašeho videa.|
 
 ## <a name="speech-apis"></a>Rozhraní Speech API
@@ -36,7 +35,6 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |Název služby|Popis služby|
 |:-----------|:------------------|
 |[Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service") (Preview)|Speech Service přidá funkce s podporou řeči do aplikací.|
-|[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (Preview)|Služba Custom Speech Service umožňuje vytvářet jazykové a akustické modely přizpůsobené vaší aplikaci a uživatelům.|
 |[Rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "rozhraní API pro zpracování řeči Bingu")|Rozhraní Bing Speech API poskytuje snadný způsob, jak vytvořit funkce s podporou řeči ve svých aplikacích.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech")|Translator Speech je služba pro strojový překlad.|
 |[Rozhraní API pro rozpoznání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci mluvčího a ověření.|
@@ -47,10 +45,8 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |:-----------|:------------------|
 |[Pro kontrolu pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "pro kontrolu pravopisu Bingu")|Pro kontrolu pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrola pravopisu.|
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding service (LUIS) umožňuje, aby aplikace věděla, požadavkům člověka ve své vlastní slova.|
-|[Lingvistická analýza](https://docs.microsoft.com/azure/cognitive-services/linguisticanalysisapi/home "pro jazykovou analýzu") (Preview)|Pro jazykovou analýzu poskytuje přirozeného jazyka, nástrojů pro zpracování, které identifikují struktury textu.|
 |[Rozhraní text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "pro analýzu textu")|Rozhraní text Analytics poskytuje nezpracovaný text pro analýzu mínění, extrakci klíčových frází a rozpoznání jazyka zpracování přirozeného jazyka.|
 |[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator text obsahuje pro překlad textu založených na počítačích v téměř v reálném čase.||
-|[Web Language Model](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "Web Language Model") (Preview)|Pro predikci sekvencování aplikace word, funkci dokončování a dělení slov řetězců bez mezer zpracování přirozeného jazyka.|
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
 
@@ -64,12 +60,12 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |[Vyhledávání entit Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "vyhledávání entit Bingu")|Vyhledávání entit Bingu vrátí informace o entitách, které Bing určuje souvisí s dotazem uživatele.|
 |[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "vyhledávání obrázků Bingu")|Vyhledávání obrázků Bingu vrátí zobrazení obrázků, jestli se má být relevantní pro dotaz uživatele.|
 |[Pro vizuální vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "pro vizuální vyhledávání Bingu")|Pro vizuální vyhledávání Bingu poskytuje vrátí informace o obrázku například vizuálně podobné obrázky, nákupní zdroje pro produkty nalezen na obrázku a související hledání.|
+|[Místní pracovní vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "místní pracovní vyhledávání Bingu")| Najít kontaktní údaje a umístění informace o místních firmách na základě dotazů vyhledávání aplikacím umožňuje místní firmy hledání rozhraní API Bingu.|
 
 ## <a name="knowledge-apis"></a>Rozhraní API pro znalosti
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-| [Custom Decision Service](https://docs.microsoft.com/azure/cognitive-services/custom-decision-service/ "Custom Decision hledání") (Preview)|Custom Decision Service pomáhá vytvářet inteligentní systémy pomocí kontextové rozhodování pro individuální nastavení a optimalizovat uživatelské prostředí.|
 |[Nástroj QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Nástroj QnA Maker umožňuje vytvářet otázky a odpovědi služby z částečně Strukturovaný obsah.|
 
 ## <a name="use-free-trials"></a>Pomocí bezplatných zkušebních verzí

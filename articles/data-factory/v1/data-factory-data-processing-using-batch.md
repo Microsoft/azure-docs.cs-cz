@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454149"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548468"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -96,7 +96,7 @@ Pokud nemáte předplatné Azure, můžete rychle vytvořit Bezplatný zkušebn�
 K uložení dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md). Ukázkové řešení využívá úložiště objektů blob.
 
 #### <a name="azure-batch-account"></a>Účet Azure Batch
-Vytvoření účtu Batch pomocí [webu Azure portal](http://portal.azure.com/). Další informace najdete v tématu [vytvořit a spravovat účty Batch](../../batch/batch-account-create-portal.md). Poznámka: Batch účtu název a klíč účtu. Můžete také použít [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) rutina pro vytvoření účtu Batch. Pokyny k používání této rutiny najdete v tématu [Začínáme s rutinami Powershellu ve službě Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Vytvoření účtu Batch pomocí [webu Azure portal](https://portal.azure.com/). Další informace najdete v tématu [vytvořit a spravovat účty Batch](../../batch/batch-account-create-portal.md). Poznámka: Batch účtu název a klíč účtu. Můžete také použít [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) rutina pro vytvoření účtu Batch. Pokyny k používání této rutiny najdete v tématu [Začínáme s rutinami Powershellu ve službě Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Ukázkové řešení Batch (nepřímo prostřednictvím kanálu datové továrny) používá ke zpracování dat paralelní způsobem ve fondu výpočetních uzlů (spravované kolekce virtuálních počítačů).
 
@@ -980,4 +980,4 @@ Po zpracování dat můžete použít pomocí online nástrojů, jako je Power B
   * [Začínáme s klientskou knihovnou Batch pro .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

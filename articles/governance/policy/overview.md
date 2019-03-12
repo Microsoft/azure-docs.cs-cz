@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004726"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731682"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -22,7 +22,7 @@ Zásady správného řízení se ověřuje, že vaše organizace může splnila 
 Potýká se vaše společnost s velkým množstvím problémů v oblasti IT, které se zdánlivě nikdy nevyřeší?
 Dobré zásady správného řízení v oblasti IT zahrnují plánování iniciativ a nastavení priorit na strategické úrovni, která pomáhají překonávat problémy a předcházet jim. Strategické potřebě se řeší Azure Policy.
 
-Azure Policy je služba v Azure, která slouží k vytváření, přiřazování a správě zásad. Tyto zásady vynucují na vašich prostředcích různá pravidla a účinky, aby tyto prostředky zůstaly kompatibilní s vašimi firemními standardy a smlouvami o úrovni služeb. Služba Azure Policy splňuje tyto potřeby vyhodnocením prostředky nedodržení předpisů se zásadami přiřazený. Například můžete mít zásadu, která ve vašem prostředí povoluje jenom určitou skladovou položku virtuálních počítačů. Jakmile je implementována tato zásada, nové a stávající prostředky se vyhodnotí dodržování předpisů. S správný typ zásad může být existující prostředky přenesena do dodržování předpisů. Později v této dokumentaci projdeme další podrobnosti o tom, jak vytvořit a implementovat zásady službou Azure Policy.
+Azure Policy je služba v Azure, který použijete k vytvoření, přiřazení a Správa zásad. Tyto zásady vynucují na vašich prostředcích různá pravidla a účinky, aby tyto prostředky zůstaly kompatibilní s vašimi firemními standardy a smlouvami o úrovni služeb. Služba Azure Policy splňuje tyto potřeby vyhodnocením prostředky nedodržení předpisů se zásadami přiřazený. Například můžete mít zásadu, která ve vašem prostředí povoluje jenom určitou skladovou položku virtuálních počítačů. Jakmile je implementována tato zásada, nové a stávající prostředky se vyhodnotí dodržování předpisů. S správný typ zásad může být existující prostředky přenesena do dodržování předpisů. Později v této dokumentaci projdeme další podrobnosti o tom, jak vytvořit a implementovat zásady službou Azure Policy.
 
 > [!IMPORTANT]
 > Vyhodnocování dodržování předpisů ve službě Azure Policy je teď dostupné pro všechna přiřazení bez ohledu na cenovou úroveň. Pokud vaše přiřazení nezobrazují data dodržování předpisů, ujistěte se, že je předplatné zaregistrované u poskytovatele prostředků Microsoft.PolicyInsights.

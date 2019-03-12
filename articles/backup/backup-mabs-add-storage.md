@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ee62138a56851747e75d75b7a806b2b73ba4fbbb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251109"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544632"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -100,13 +100,13 @@ Aktualizace skupin ochrany na používání moderního úložiště záloh je vo
 
 1. V konzole pro správu, vyberte **ochrany** funkce. V **člena skupiny ochrany** seznamu, klikněte pravým tlačítkem na člena a pak vyberte **zastavit ochranu člena**.
 
-  ![Zastavit ochranu člena](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Zastavit ochranu člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. V **odebrat ze skupiny** dialogové okno pole, zkontrolujte, využité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Klikněte na **OK**.
 
   Pokud chcete využité místo na disku ihned vrátit do volného fondu úložiště, vyberte **odstranit repliku na disku** zaškrtávací políčko, chcete-li odstranit zálohovaná data (a body obnovení) přidružené k tohoto člena.
 
-  ![Odebrat ze skupiny, dialogové okno](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Odebrat ze skupiny, dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Vytvořte skupinu ochrany, která používá moderní úložiště záloh. Zahrnout ní nechráněné zdroje dat.
 
@@ -118,7 +118,7 @@ Chcete-li přidat diskové úložiště:
 
 1. V konzole pro správu, vyberte **správu** > **diskové úložiště** > **přidat**.
 
-    ![Přidat dialog diskové úložiště](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Přidat dialog diskové úložiště](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 4. V **přidat diskové úložiště** dialogového okna, vyberte **přidat disky**.
 

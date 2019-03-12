@@ -5,22 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/12/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f5560877d48513d5ac0b6a4842f45b2d91873e02
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 34a1ccbfd5214ee528bc26f2afeada322ac6ba78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004130"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552974"
 ---
-Nové centrum obsahuje bránu, jejíž vytvoření trvá 30 minut. Po vytvoření centra se vám bude centrum účtovat i v případě, že nepřipojíte žádné servery. 
-1. Na stránce sítě WAN v části **Architektura virtuální sítě WAN** kliknutím na **Centra** otevřete stránku Centra.
-2. Na stránce Centra klikněte na **+Nové centrum** a otevřete stránku **Centra**.
-3. Na stránce Centra vyplňte následující pole:
+Centrum obsahuje bránu. Po vytvoření centra se vám bude centrum účtovat i v případě, že nepřipojíte žádné servery. Bude trvat 30 minut pro vytvoření centra a brány.
+
+1. Vyhledejte virtuální sítě WAN, kterou jste vytvořili. Na virtuální WAN stránce v části **virtuální sítě WAN architektura** klikněte na tlačítko **rozbočovače**.
+2. Klikněte na stránce centra **+ nové centrum** otevřít **virtuální sítě WAN centra** stránky.
+3. Na stránce centra virtuální sítě WAN vyplňte následující pole:
 
   * Umístění
   * Název
   * Privátní adresní prostor centra
-4. Vytvořte centrum kliknutím na **Potvrdit**. Kliknutím na **Aktualizovat** zobrazíte centrum na stránce Centra.
+4. Vytvořte centrum kliknutím na **Potvrdit**. Klikněte na tlačítko **aktualizovat** zobrazíte Centrum na **rozbočovače** stránky.

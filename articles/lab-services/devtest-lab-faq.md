@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 7d845b0e434f21c6db46cddb26b7f55aeb33d080
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733771"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551819"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -99,8 +99,8 @@ Pokud používáte Azure DevOps, můžete použít [rozšíření DevTest Labs �
 Následující příspěvky nabídka pokyny a informace o použití rozšíření Azure DevOps služby:
 
 * [DevTest Labs a rozšíření Azure DevOps](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služeb Azure DevOps](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Pomocí nástroje Azure DevOps služby release management pro průběžné nasazení na DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služeb Azure DevOps](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Pomocí nástroje Azure DevOps služby release management pro průběžné nasazení na DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady nástrojů, které můžete dosáhnout stejné scénáře podle nasazení [šablon Azure Resource Manageru](https://aka.ms/dtlquickstarttemplate) pomocí [rutin prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) integrovat sady nástrojů.  
 

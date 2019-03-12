@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d7c63503d0e1c142dfc1ef685453b93e24ec52b3
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187190"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730371"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 
@@ -48,9 +48,14 @@ Pro načtení a uložení stavu pomocí služby Azure Container Instances nabíz
 
 Služba Azure Container Instances může plánovat kontejnery Windows i Linuxu pomocí stejného rozhraní API. Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) stačí jednoduše zadat typ operačního systému.
 
-Některé funkce jsou momentálně omezené jenom na linuxové kontejnery. Pracujeme na tom, abychom zajistili paritu funkcí pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+Některé funkce jsou momentálně omezené jenom na Linuxové kontejnery:
 
-Služba Azure Container Instances podporuje image Windows založené na verzích kanálu pro dlouhodobou údržbu. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
+* Více kontejnerů na skupinu kontejnerů
+* Připojení svazku ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [tajný klíč](container-instances-volume-secret.md))
+* [Nasazení virtuální sítě](container-instances-vnet.md) (preview)
+* [Prostředky GPU](container-instances-gpu.md) (preview)
+
+Služba Azure Container Instances podporuje Image Windows serveru 2016 na základě dlouhodobé údržby kanálu (LTSC) verze. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 

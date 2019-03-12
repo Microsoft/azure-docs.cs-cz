@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295353"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551751"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
 
@@ -40,7 +40,7 @@ Tento článek ukazuje, jak použít konektor Oracle Database v aplikaci logiky.
 
 * Na počítači, kam jste nainstalovali na místní bránu dat instalace klienta Oracle. Nezapomeňte nainstalovat 64bitového poskytovatele dat Oracle pro .NET ze Oracle:  
 
-  [64bitové součásti ODAC 12c verze 4 (12.1.0.2.4) pro Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64bitové součásti ODAC 12c verze 4 (12.1.0.2.4) pro Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
     > Pokud není klient Oracle nainstalovaný, dojde k chybě při pokusu o vytvoření nebo připojení. V tématu běžné chyby v tomto článku.

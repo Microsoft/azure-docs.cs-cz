@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: ebe40665b6147087c8c72f75ed0ac3b3efe80535
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 3116ddd6c42c29fa45f1f5e2fa9926f6f16a77b9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279522"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553389"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | Poznámka |
 | --- | --- | --- | --- |
-| Network Watcher | 1 na oblast  | 1 na oblast |  Povolit přístup ke službě se vytvoří prostředek Network Watcheru. 1 prostředek Network Watcher je vyžadována pouze na předplatné a oblast |
-| Relace zachycení paketů |100 na oblast | 10 000 |zaznamená počet zobrazit jenom relace, neuloženo |
+| Azure Network Watcher | 1 na oblast | 1 na oblast | Povolit přístup ke službě Network Watcher se vytvoří. Je vyžadována na předplatné a oblast pouze jedna instance služby Network Watcher. |
+| Relace zachycení paketů |100 na oblast | 10 000 |Zaznamená počet relací, nebyl uložen. |

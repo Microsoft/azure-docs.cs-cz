@@ -1,7 +1,7 @@
 ---
-title: Zabezpečení webových služeb pomocí protokolu SSL
+title: Zabezpečení webových služeb pomocí SSL
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak zabezpečit webovou službu nasazenou ve službě Azure Machine Learning. Můžete omezit přístup k webovým službám a zabezpečit data odeslaná klienty, kteří používají zabezpečené soketu vrstvy (SSL) a ověřování na základě klíče.
+description: Zjistěte, jak zabezpečit webové služby nasazené ve službě Azure Machine Learning povolením protokolu HTTPS. HTTPS zabezpečuje data odeslaná klienty, kteří používají zabezpečení transportní vrstvy (TLS), můžou nahradit aktuální soubor vrstvy zabezpečení soketu (SSL). Je také používají klienti k ověření identity webové služby.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,34 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 91958a76ffb3cafd818949c1475fd13bb978a928
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098098"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731888"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
-V tomto článku se dozvíte, jak zabezpečit webovou službu nasazenou ve službě Azure Machine Learning. Můžete omezit přístup k webovým službám a zabezpečit data odeslaná klienty, kteří používají zabezpečené soketu vrstvy (SSL) a ověřování na základě klíče.
+V tomto článku se dozvíte, jak zabezpečit webovou službu nasazenou ve službě Azure Machine Learning. Můžete omezit přístup k webovým službám a zabezpečit data odeslaná klienty, kteří používají [protokol zabezpečení HTTPS (Hypertext Transfer)](https://en.wikipedia.org/wiki/HTTPS).
+
+Protokol HTTPS se používá k zabezpečení komunikace mezi klientem a webovou službu pomocí šifrování komunikace mezi nimi. Šifrování se určují pomocí šablon [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Někdy stále označuje se jako vrstva SSL (Secure Sockets), který byl předchůdce protokol TLS.
+
+> [!TIP]
+> Sada SDK Azure Machine Learning používá termín "protokol SSL' pro vlastnosti týkající se povolení zabezpečené komunikace. To neznamená, že webová služba nepoužívá protokol TLS, stačí tento protokol SSL je více rozpoznatelných termín pro mnoho čtenáři.
+
+TLS a SSL oba spoléhají na __digitální certifikáty__, které jsou používány k provádění ověření šifrování a identity. Další informace o práci způsob, jakým digitální certifikáty, naleznete v příspěvku Wikipedia na [infrastruktury veřejných klíčů (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure).
 
 > [!Warning]
-> Pokud nepovolíte SSL, kdokoli na Internetu bude mít možnost provádět volání webové služby.
+> Pokud nemáte povolení a používání protokolu HTTPS pro webovou službu, může být k ostatním na Internetu vidět data odesílaná do a ze služby.
+>
+> HTTPS také umožňuje klientovi k ověření pravosti, která se připojuje k serveru. Tím se zajistí ochrana klientů proti [man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) útoky.
 
-SSL šifruje data odesílaná mezi klientem a webovou službu. Je také používá klient ověřit identitu serveru. Ověřování je povoleno pouze pro služby, které jste zadali certifikát SSL a klíče.  Pokud povolíte protokol SSL, ověřovací klíč je povinný při přístupu k webové službě.
-
-Nasazení webové služby povolena s protokolem SSL, nebo povolíte protokol SSL pro existující nasazenou webovou službu, postup je stejný:
+Postup zabezpečení nové webové služby nebo některý z existujících je následující:
 
 1. Získáte název domény.
 
-2. Získejte certifikát SSL.
+2. Získáte digitální certifikát.
 
 3. Nasazení nebo aktualizovat webovou službu s povoleným nastavením SSL.
 
@@ -45,7 +52,7 @@ Pokud jste již nevlastní název domény, můžete si zakoupit jeden z __regist
 
 ## <a name="get-an-ssl-certificate"></a>Získat certifikát SSL
 
-Existuje mnoho způsobů, jak získat certifikát SSL. Nejběžnější je to k nákupu z __certifikační autority__ (CA). Bez ohledu na to, kde můžete získat certifikát budete potřebovat následující soubory:
+Existuje mnoho způsobů, jak získat certifikát SSL (certifikát). Nejběžnější je to k nákupu z __certifikační autority__ (CA). Bez ohledu na to, kde můžete získat certifikát budete potřebovat následující soubory:
 
 * A __certifikát__. Certifikát musí obsahovat řetězce úplný certifikát a musí být kódovaný PEM.
 * A __klíč__. Klíč musí být kódovaný PEM.

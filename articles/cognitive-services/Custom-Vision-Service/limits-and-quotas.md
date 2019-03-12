@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: anroth
-ms.openlocfilehash: 8e96447f2a1b5b68ebf99ab4006fe43937f4c75f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 58109e17ed33e6af8dedf3ed8c1cc9ddf546a05e
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884422"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588665"
 ---
 # <a name="pricing-and-limits"></a>Ceny a omezení
 
 Existují tři úrovně klíčů pro Custom Vision service. Prostředky projektu omezené zkušební verze jsou připojené k vaší vize vlastní přihlášení (to znamená, že účet služby Azure Active Directory nebo účet MSA). Jsou určeny pro krátké zkušební verze služby. Můžete se zaregistrovat pro F0 (zdarma) nebo S0 (standard) předplatné na webu Azure portal. Zobrazit odpovídající [stránce ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) podrobnosti o cenách a transakce.
 
-Účty vytvořené během dřívější bezplatná verze preview, před zavedením Azure verze Preview (1. března 2018), si zachovají své předchozí kvóty omezené zkušební verze. 
+Účty vytvořené během dřívější bezplatná verze preview, před zavedením Azure verze Preview (1. března 2018), si zachovají své předchozí kvóty omezené zkušební verze.
 
 Počet trénovacích obrázků na projekt a značky pro každý projekt se očekává se zvýšení časem pro projekty S0.
 

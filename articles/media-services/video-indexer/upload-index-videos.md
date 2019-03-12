@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: ddf090664b1e5197603dadc26da92a0a1da1a63d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c11a206316cfb7b2d9e96b631fce01701da93565
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404939"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550478"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -36,6 +36,7 @@ Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v �
 - Velikost pro odeslání s možností bajtové pole je omezená na 2GB
 - Pole bajtů možnost vyprší po 30 min
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
+- Indexování prostředků Media Services má stejné omezení jako indexování z adresy URL
 
 > [!Tip]
 > Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.

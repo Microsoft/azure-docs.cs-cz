@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 35f9b76e27a0977a25f6d060f7362bc417e0568e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813853"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541280"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete Sharepointové farmy do Microsoft Azure mnohem stejným způsobem, který je zálohovat zdrojů dat pomocí System Center Data Protection Manager (DPM). Azure Backup poskytuje flexibilitu při plán zálohování a vytvořit každý den, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body záloh. DPM poskytuje možnost ukládat kopie místního disku pro rychlé cíle plánované doby obnovení (RTO) a k uložení kopie do Azure pro hospodárná a dlouhodobé uchovávání.
@@ -47,7 +47,7 @@ Zatímco výkon závisí na mnoha faktorech, jako je například velikost Sharep
 
 ### <a name="dpm-update-rollup-5"></a>DPM s kumulativní aktualizací 5
 Zahajte ochranu farmy služby SharePoint do Azure, budete muset nainstalovat DPM s kumulativní aktualizací 5 nebo novější. S kumulativní aktualizací 5 nabízí možnost chránit Sharepointové farmy do Azure, pokud je farma je nakonfigurovaná pomocí SQL AlwaysOn.
-Další informace najdete v blogovém příspěvku, který představuje [DPM kumulativní aktualizace 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
+Další informace najdete v blogovém příspěvku, který představuje [DPM kumulativní aktualizace 5](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### <a name="whats-not-supported"></a>Co není podporováno
 * Aplikace DPM chrání Sharepointové farmy nechrání vyhledávací indexy nebo databází aplikačních služeb. Je potřeba konfigurovat ochranu těchto databází samostatně.
@@ -240,6 +240,6 @@ Ano, položka je možné obnovit do původního webu služby SharePoint.
 Protože SharePoint databází nakonfigurovaných v SQL AlwaysOn, jejich nelze upravit, pokud je skupina dostupnosti odebrána. Aplikace DPM v důsledku toho nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server na jinou instanci systému SQL Server.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o DPM ochrany Sharepointu – viz [seriál videí – DPM ochrany služby SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+* Další informace o DPM ochrany Sharepointu – viz [seriál videí – DPM ochrany služby SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Kontrola [poznámky k verzi pro System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Kontrola [zpráva k vydání verze pro aplikaci Data Protection Manager v System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

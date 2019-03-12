@@ -3,17 +3,17 @@ title: Správa aplikace Azure IoT Central | Dokumentace Microsoftu
 description: Jako správce jak spravovat aplikace Azure IoT Central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431322"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778599"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -44,11 +44,11 @@ V **nastavení aplikace** stránky, můžete změnit název a adresu URL vaší 
 Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Kopírovat aplikaci
-Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie bude aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
+Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie je aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
 
 Vyberte **kopírování**. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Potom vyberte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central.md) rychlý start.
 
-![Stránka nastavení aplikace](media/howto-administer/appCopy2.png)
+![Stránka nastavení aplikace](media/howto-administer/appcopy2.png)
 
 Po úspěšném provedení operace kopie aplikace, můžete přejít na novou aplikaci, která byla vytvořena tak, že zkopírujete svoji aplikaci pomocí odkazu, který se zobrazí.
 
@@ -62,7 +62,7 @@ Po úspěšném provedení operace kopie aplikace, můžete přejít na novou ap
 > [!Note]
 > Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím se trvale odstraní všechna data, která má přidruženou k této aplikaci.
+Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím trvale odstraní všechna data, která má přidruženou k této aplikaci.
 
 ## <a name="manage-users"></a>Správa uživatelů
 
@@ -95,7 +95,7 @@ Pokud chcete odstranit uživatele, vyberte jeden nebo více políček na **uživ
 
 ## <a name="manage-roles"></a>Správa rolí
 
-Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy v IoT Central. Existují tři role, které můžete přiřazovat uživatelům vaší aplikace. 
+Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy v IoT Central. Existují tři role, které můžete přiřazovat uživatelům vaší aplikace.
 
 ### <a name="administrator"></a>Správce
 
@@ -111,7 +111,6 @@ Uživatelé v **Tvůrce aplikací** role můžou provádět vše v aplikaci s t�
 
 Uživatelé v **operátor aplikací** role nemůže provádět změny šablon a nelze spravovat aplikace. To znamená, že operátory lze přidání a odstranění zařízení, Správa sad zařízení a spouštět úlohy a analýzy. Operátory nebudete mít přístup k **Tvůrce aplikací** a **správu** stránky.
 
-
 ## <a name="view-your-bill"></a>Prohlédněte si fakturu
 
 Chcete-li zobrazit váš účet, přejděte na **fakturace** stránku **správy** části. Azure fakturační stránka se otevře na nové kartě, ve kterém uvidíte na faktuře pro jednotlivé aplikace Azure IoT Central.
@@ -124,14 +123,14 @@ Můžete převést zkušební verzi aplikace do aplikace s průběžnými platba
 - **Pay-As-You-Go** – Aplikace s průběžnými platbami se účtují podle počtu zařízení a prvních 5 zařízení je zdarma.
 
 Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
-    
+
 K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kroků:
 
-1. Přejděte na **fakturace** stránku **správu** oddílu. 
+1. Přejděte na **fakturace** stránku **správu** oddílu.
 
     ![Zkušební verze stavu](media/howto-administer/freetrialbilling.png)
 
-1. Vyberte **přejděte k průběžným platbám**. 
+1. Vyberte **přejděte k průběžným platbám**.
 
     ![Převést zkušební verzi](media/howto-administer/convert.png)
 
@@ -141,15 +140,15 @@ K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kr
 
 ## <a name="export-data"></a>Exportovat data
 
-Můžete povolit **nepřetržitý export dat** exportovat měření, zařízení a zařízení šablony dat do účtu úložiště objektů Blob v Azure. Další informace o tom, jak exportovat data.
+Můžete povolit **nepřetržitý export dat** exportovat měření, zařízení a zařízení šablony dat do účtu úložiště objektů Blob v Azure. Další informace o tom, jak [exportovat data](howto-export-data.md).
 
 ## <a name="manage-device-connection"></a>Spravovat připojení zařízení
 
-Připojení zařízení v měřítku ve vaší aplikaci pomocí klíčů a certifikátů tady. Další informace o připojení zařízení.
+Připojení zařízení v měřítku ve vaší aplikaci pomocí klíčů a certifikátů tady. Další informace o [připojení zařízení](concepts-connectivity.md).
 
 ## <a name="use-access-tokens"></a>Použití přístupových tokenů
 
-Generovat přístupové tokeny pro jejich použití v nástrojích pro vývojáře. Aktuálně je jeden vývojářský nástroj k dispozici tedy IoT Central explorer pro zprávy typu zařízení a změny ve vlastnosti a nastavení monitorování. Další informace o Průzkumníku IoT Central. 
+Generovat přístupové tokeny pro jejich použití v nástrojích pro vývojáře. Aktuálně je jeden vývojářský nástroj k dispozici tedy IoT Central explorer pro zprávy typu zařízení a změny ve vlastnosti a nastavení monitorování. Další informace o [IoT Central explorer](howto-use-iotc-explorer.md).
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Použití sady Azure SDK pro operace roviny řízení
 

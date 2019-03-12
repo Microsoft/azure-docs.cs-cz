@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448998"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547414"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -41,8 +41,11 @@ Způsoby řešení těchto situacích:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Vzory nejsou zárukou záměr
 Vzory pomocí kombinace technologií předpovědi. Nastavení pro šablony utterance záměru ve vzorku není zárukou záměru předpovědí, ale je silný signál. 
 
-## <a name="patterns-do-not-improve-entity-detection"></a>Vzory nevedou k lepšímu zjišťování entit
-Zatímco vzory vyžadují entity, vzor nepomůže, detekovat entity. Vzor je určená jenom usnadňují půjček s využitím záměry a rolí.  
+<a name="patterns-do-not-improve-entity-detection"/>
+
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nevedou k lepšímu zjišťování počítače zjistili entity
+
+Vzor je primárně určený účelem předpovědi záměry a rolí. Pattern.any entita se používá k extrakci entity volného tvaru. Zatímco vzorky se používají entity, vzor nepomůže, detekovat entity se zjištěné počítače.  
 
 Nečekejte zobrazíte predikcí vylepšené entity při sbalení více projevy do jednoho modelu. Pro jednoduché entity má provést, budete muset přidání projevů nebo použijte jiný seznam entit vzorku neaktivují.
 

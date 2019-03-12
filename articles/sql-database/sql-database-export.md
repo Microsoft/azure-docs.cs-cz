@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: ce5635c97d91514f3fca63162f5356cdf89a7ca6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/11/2019
+ms.openlocfilehash: 27a65a871264fa13a42acfb5be2d4b5f99d31adc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307475"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758688"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
@@ -28,6 +28,7 @@ Když je potřeba vyexportovat databázi pro archivaci nebo pro přesun do jiné
 - Pro export transakčně konzistentní, je nutné zajistit buď bez zápisu aktivity dochází při exportu nebo, který jste exportovali z [transakčně konzistentní kopie](sql-database-copy.md) pro Azure SQL database.
 - Pokud exportujete do úložiště objektů blob, maximální velikost souboru BACPAC je 200 GB. Pro archivaci souboru BACPAC s větší, exportovat do místního úložiště.
 - Export souboru BACPAC do Azure premium storage pomocí metody popsané v tomto článku se nepodporuje.
+- Úložiště za bránou firewall není aktuálně podporováno.
 - Pokud operace exportu ze služby Azure SQL Database je větší než 20 hodin, může být zrušena. Chcete-li zvýšit výkon při exportu, můžete:
 
   - Velikost výpočetních dočasně zvýšit.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: f64f2cafb15a6cae71c304282e1fe6bd9231ef71
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 978667dcd3f7bd10192a396ec3e8d097bdb73509
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432919"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577139"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -415,11 +415,7 @@ Ne každá role nebo aplikaci, která je nainstalovaná na počítači s Windows
 ## <a name="complete-recommended-configurations"></a>Dokončete doporučené konfigurace
 Tato nastavení neovlivní nahrání virtuálního pevného disku. Nicméně důrazně doporučujeme, že jste je nakonfigurovali.
 
-* Nainstalujte [agenta virtuální počítače Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Pak můžete povolit rozšíření virtuálních počítačů. Rozšíření virtuálních počítačů implementovat většinu důležitých funkcí, které může použít pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace protokolu RDP a tak dále. Další informace naleznete v tématu:
-
-    - [Agent virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
-    - [Agent virtuálního počítače a rozšíření – část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-
+* Nainstalujte [agenta virtuální počítače Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Pak můžete povolit rozšíření virtuálních počítačů. Rozšíření virtuálních počítačů implementovat většinu důležitých funkcí, které může použít pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace protokolu RDP a tak dále. Další informace najdete v tématu [agenta virtuálního počítače Azure přehled](../extensions/agent-windows.md).
 *  Po vytvoření virtuálního počítače v Azure, doporučujeme umístit stránkovacího souboru na svazku "Dočasné jednotky" pro zlepšení výkonu. Můžete nastavit to následujícím způsobem:
 
     ```PowerShell

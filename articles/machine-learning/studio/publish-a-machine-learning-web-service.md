@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: b77c21b75147a9bb5203effb20379dc208122d05
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e56ab4d74b54e1da8b07de6081766c8669bfb68a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819136"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576629"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Nasazení webové služby Azure Machine Learning Studio
 
@@ -225,7 +225,7 @@ Jednou z možností pro aktualizaci webové služby je přeučování modelu. Da
 [Převeďte jej na prediktivní experiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Nové webové služby]: #deploy-it-as-a-new-web-service
 [Klasické webové služby]: #deploy-it-as-a-classic-web-service
-[Nový]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Nový]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

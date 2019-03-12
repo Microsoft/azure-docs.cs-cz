@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218019"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576986"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -50,6 +50,8 @@ Zásada dvě brány vyžaduje dva druhy ověřovacích dat, například **e-mail
   * Správce služby proxy aplikace
   * Správce služby CRM
   * Správce služby Power BI
+  * Správce ověření
+  * Správce privilegované ověřování
 
 * Pokud ve zkušební verzi předplatného; po uplynutí 30 dnů nebo
 * Individuální doména je k dispozici, třeba contoso.com; nebo
@@ -75,13 +77,13 @@ Každý uživatelský účet, který je potřeba se přihlásit ke službě Azur
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zásady pro hesla, které se vztahují jenom na cloudové uživatelské účty
 
-Následující tabulka popisuje nastavení zásad k dispozici heslo, které lze použít u uživatelských účtů, které jsou vytvořeny a spravovat v Azure AD:
+Následující tabulka popisuje nastavení zásad hesel použitý pro uživatelské účty, které jsou vytvořeny a spravovat v Azure AD:
 
 | Vlastnost | Požadavky |
 | --- | --- |
 | Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Pouze silná hesla: Nesmí obsahovat znak tečky "." Bezprostředně před "\@ \" symbol".</li></ul> |
-| Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 16 znaků.</li><li>Pouze silná hesla: Vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
+| Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Nesmí obsahovat znak tečky "." bezprostředně předcházející "\@ \" symbol".</li></ul> |
+| Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 16 znaků.</li><li>Vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
 | Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů.</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny z Active Directory modulu Azure pro Windows PowerShell.</li></ul> |
 | Oznámení o vypršení platnosti hesla |<ul><li>Výchozí hodnota: **14** (před vypršením platnosti hesla).</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny.</li></ul> |
 | Vypršení platnosti hesla |<ul><li>Výchozí hodnota: **false** dnů (to znamená, že vypršení platnosti hesla je povoleno).</li><li>Hodnotu lze nastavit pro jednotlivé uživatelské účty pomocí `Set-MsolUser` rutiny.</li></ul> |

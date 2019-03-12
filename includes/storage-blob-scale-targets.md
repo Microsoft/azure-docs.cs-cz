@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: e8d91c3149c078e25154217ce9341216dc8acc03
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2f46d1ddc8eeefd7d05c51c1d0640f69774746c4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57458004"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553458"
 ---
 | Prostředek | Cíl |
 |----------|---------------|
-| Maximální velikost kontejneru jeden objekt blob | Stejná jako maximální velikosti úložiště účtu kapacity |
-| Max. počet bloků v objektu blob bloku nebo doplňovacího objektu blob | 50 000 bloků |
+| Maximální velikost kontejneru jeden objekt blob | Stejná jako maximální účet kapacita úložiště |
+| Maximální počet objektů blob bloků v bloku nebo doplňovacího objektu blob | 50 000 bloků |
 | Maximální velikost bloku do objektu BLOB bloku | 100 MiB |
 | Maximální velikost objektu blob bloku | 50 000 × 100 MiB (přibližně 4,75 TB) |
 | Maximální velikost blok v doplňovacím objektu blob | 4 MiB |

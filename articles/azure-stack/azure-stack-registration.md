@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405194"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764723"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -483,11 +483,18 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>Selhání registrace
 
-Při pokusu o registraci ze služby Azure Stack může zobrazit jedna z u chyb dole:
+Může se zobrazit jeden z u chyb dole při pokusu o registraci ze služby Azure Stack:
 1. Nelze načíst informace o hardwaru povinné pro $hostName. Zkontrolujte fyzického hostitele a připojení potom znovu spusťte registraci.
+
 2. Nelze se připojit k $hostName k získání informací o hardwaru – zkontrolujte fyzického hostitele a připojení potom znovu spusťte registraci.
 
-Příčina: Toto je obvykle vzhledem k tomu, pokuste se získat podrobnosti o hardwaru, jako je například UUID a procesoru a systému Bios od hostitelů, aby se zkusil jsme nebyli schopni se připojit k fyzickým hostitelem lokalizovat.
+> Příčina: to je obvykle vzhledem k tomu, pokuste se získat podrobnosti o hardwaru, jako je například UUID a procesoru a systému Bios od hostitelů, aby se zkusil jsme nebyli schopni se připojit k fyzickým hostitelem lokalizovat.
+
+Při pokusu o přístup k webu Marketplace správu, dojde k chybě při pokusu o zajistěte syndikaci produktů. 
+> Příčina: tomu obvykle dojde, když nelze získat přístup k prostředku registrace Azure Stack. Jeden z běžných důvodů to je, že při změně tenanta adresáře Azure předplatné obnoví registrace. Azure Stack marketplace nebo v sestavě využití nelze přistupovat, pokud jste změnili adresáře tenanta předplatného. Budete muset znovu zaregistrovat, pokud chcete tento problém vyřešit.
+
+Marketplace správu stále žádostí o registraci a aktivaci služby Azure Stack i v případě, že jste již registrováni razítko pomocí procesu odpojené. 
+> Příčina: jde o známý problém pro odpojené prostředí. Stav registrace můžete ověřit pomocí následujících [tyto kroky](azure-stack-registration.md#verify-azure-stack-registration). Chcete-li použít správu webu Marketplace, budete muset použít [nástroj v režimu offline](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). 
 
 ## <a name="next-steps"></a>Další postup
 

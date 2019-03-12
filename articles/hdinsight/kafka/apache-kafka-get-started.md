@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9be3bdd33546a2814af394aedfaa254feb997dcf
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976762"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576748"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
@@ -180,6 +180,9 @@ V této části můžete získat informace o hostiteli od Apache Ambari REST API
     ```
 
 2. K nastavení proměnné prostředí na název clusteru použijte následující příkaz:
+
+    > [!Important]
+    > Zadejte název clusteru v jenom malá písmena. pro tento příkaz i v případě, že byla opatřena velká písmena v názvu. Názvy velkých nelze použít s Zookeeper a broker informace.
 
     ```bash
     read -p "Enter the Kafka on HDInsight cluster name: " CLUSTERNAME

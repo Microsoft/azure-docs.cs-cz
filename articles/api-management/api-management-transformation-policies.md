@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448056"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768908"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -208,6 +208,15 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
+nebo
+
+```xml
+<set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
+```
+
+> [!NOTE]
+> Back-endu entity je možné spravovat přes správu [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) a [Powershellu](https://www.powershellgallery.com/packages?q=apimanagement).
+
 ### <a name="example"></a>Příklad:
 
 ```xml
@@ -260,8 +269,8 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 |Název|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
-|Základní adresa url|Nový back-endu základní adresa URL služby.|Ne|neuvedeno|
-|id back-endu|Identifikátor směrovat do back-endu.|Ne|neuvedeno|
+|Základní adresa url|Nový back-endu základní adresa URL služby.|Jeden z `base-url` nebo `backend-id` musí být k dispozici.|neuvedeno|
+|id back-endu|Identifikátor směrovat do back-endu. (Back-endu entity jsou spravované prostřednictvím [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) a [Powershellu](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden z `base-url` nebo `backend-id` musí být k dispozici.|neuvedeno|
 |sf-partition-key|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Použít k vyřešení konkrétního oddílu ze služby rozlišování názvů.|Ne|neuvedeno|
 |sf-replica-type|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Určuje, zda požadavek by měl přejít na primární nebo sekundární repliky oddílu. |Ne|neuvedeno|
 |sf-resolve-condition|Platí jenom při back-end služby Service Fabric. Podmínka, identifikace, pokud je volání do back-endu Service Fabric se opakuje se nové řešení.|Ne|neuvedeno|
@@ -482,17 +491,15 @@ OriginalUrl.
  Další informace najdete v tématu [výrazy zásad](api-management-policy-expressions.md) a [kontextovou proměnnou](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Více hodnot hlavičky jsou zřetězeny do sdíleného svazku clusteru řetězec, například:  
-> `headerName: value1,value2,value3`
+> Více hodnot hlavičky jsou zřetězeny do sdíleného svazku clusteru řetězec, například: `headerName: value1,value2,value3`
 >
 > Výjimky patří standardizované Hlavičky, které hodnoty:
 > - může obsahovat čárky (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
 > - může obsahovat datum (`Cookie`, `Set-Cookie`, `Warning`),
 > - obsahovat datum (`Date`, `Expires`, `If-Modified-Since`, `If-Unmodified-Since`, `Last-Modified`, `Retry-After`).
 >
-> V případě těchto výjimek více hodnot hlavičky nesmí být spojeny do jednoho řetězce a budou předány jako samostatné záhlaví, například:  
->`User-Agent: value1`  
->`User-Agent: value2`  
+> V případě těchto výjimek více hodnot hlavičky nesmí být spojeny do jednoho řetězce a budou předány jako samostatné záhlaví, například: `User-Agent: value1`
+>`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>Elementy

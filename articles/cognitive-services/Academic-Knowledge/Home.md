@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 975c36451f0f00ce374a0bbf0a6dd87ec39eb912
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871553"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551717"
 ---
 # <a name="academic-knowledge-api"></a>Rozhraní Academic Knowledge API
 
@@ -23,7 +23,7 @@ Vítáme vás u rozhraní Academic Knowledge API. Pomocí této služby můžete
 
 Data MAG se dolují z indexu webu Bingu a také z interní znalostní báze z Bingu. V důsledku probíhajícího indexování Bingu bude toto rozhraní API obsahovat čerstvé informace z webu v souladu se zjišťováním a indexováním pomocí Bingu. Na základě této datové sady rozhraní Academic Knowledge API umožňuje znalostmi řízené interaktivní dialogové okno, které bezproblémově kombinuje reaktivní vyhledávání s proaktivními návrhy prostředí, bohatými výsledky vyhledávání v grafech výzkumných dokumentů a distribuci histogramů z hodnot atributů pro sadu dokladů a souvisejících entit.
 
-Další informace o Microsoft Academic Graph naleznete na adrese [ http://aka.ms/academicgraph ](https://aka.ms/academicgraph).
+Další informace o Microsoft Academic Graph naleznete na adrese [ https://aka.ms/academicgraph ](https://aka.ms/academicgraph).
 
 Rozhraní Academic Knowledge API se přesunulo z Cognitive Services ve verzi Preview do Cognitive Services Labs. Nová domovská stránka projektu je: [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). Existující klíč rozhraní API bude funkční až do 24. května 2018. Po tomto datu si vygenerujte nový klíč rozhraní API. Upozorňujeme, že placená verze Preview nebude po vypršení platnosti existujícího klíče k dispozici. Pokud rozhraní API na úrovni Free není pro vaše účely dostatečné, obraťte se na náš tým. 
 

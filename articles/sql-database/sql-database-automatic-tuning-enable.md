@@ -12,18 +12,24 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b3a77a28945b597fe4fdd57aadfc3e05196a353
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478249"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726953"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění monitorování dotazů a zlepšit výkon úloh
 
 Azure SQL Database je automaticky spravovanou datovou službu, která neustále monitoruje dotazy a identifikuje akce, které můžete provést pro zvýšení výkonu vašich úloh. Můžete zkontrolovat doporučení a ručně aplikovat nebo nechat službu Azure SQL Database automaticky použít nápravná opatření – to se označuje jako **režim automatické optimalizace**.
 
 Automatické ladění je možné povolit na serveru nebo na úrovni databáze pomocí [webu Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [rozhraní REST API](sql-database-automatic-tuning-enable.md#rest-api) volání a [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) příkazy.
+
+> [!NOTE]
+> Pro Managed Instance je možné nakonfigurovat pomocí podporované možnosti FORCE_LAST_GOOD_PLAN [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) pouze. Portál na základě konfigurace a možnosti ladění automatických indexů popsaných v tomto článku se nevztahují na Managed Instance.
+
+> [!NOTE]
+> Konfigurace možnosti automatického ladění pomocí šablony ARM (Azure Resource Manageru) není v tuto chvíli nepodporuje.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Povolení automatického ladění na serveru
 
@@ -51,7 +57,7 @@ Další informace o použití rozhraní REST API k povolení automatického lad�
 
 Azure SQL Database umožňuje zadat konfiguraci automatického ladění pro každou databázi. Na úrovni databáze, kterou můžete dědí konfiguraci automatického ladění z nadřazeného serveru, "Azure je výchozí" nebo dědí konfiguraci. Azure výchozí hodnoty jsou nastavené FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázaná.
 
-> [!NOTE]
+> [!TIP]
 > Obecné doporučení je spravovat konfiguraci automatického ladění na **úroveň serveru** tak stejné nastavení konfigurace můžete použít na všechny databáze automaticky. Konfigurace automatického ladění na jednotlivé databáze pouze v případě, že je nutné mít jiné nastavení než ostatní databáze dědí nastavení ze stejného serveru.
 >
 

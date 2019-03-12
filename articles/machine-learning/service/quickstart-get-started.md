@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d441ed408f9c9348ba091178cf6ce84d67abb3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dabc331b13bc53a6d8e94d69c64b87c7f175c24
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672929"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762190"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal
 
@@ -25,8 +25,8 @@ Použijte portál Azure Portal k vytvoření pracovního prostoru Azure Machine 
 V tomto rychlém startu jste pomocí následujících kroků:
 
 * Vytvořit pracovní prostor ve vašem předplatném Azure.
-* Vyzkoušejte s Pythonem v Jupyter notebook a protokolu hodnoty napříč více iterací.
-* Zobrazit zaprotokolované hodnoty z vašeho pracovního prostoru.
+* Vyzkoušejte s Pythonem v poznámkovém bloku Jupyter. Poznámkový blok obsahuje kód pro odhad číslo pí a protokoly chyb v jednotlivých iteracích. 
+* Zobrazte zaznamenané chybové hodnoty v pracovním prostoru.
 
 Do vašeho pracovního prostoru se automaticky přidají následující prostředky Azure, pokud jsou regionálně dostupné:
 

@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095225"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769962"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 
@@ -41,9 +41,9 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 3. Vytvořte bránu virtuální sítě tak, že zadáte následující nastavení:
 
     - **Typ brány**: Vyberte **VPN**.
-    - **Typ sítě VPN**: vyberte **založené na trasách**.
-    - **Skladová položka**: Vyberte typ skladové položky na základě vašich požadavků.
-    - **Virtuální síť**: vyberte virtuální síť, ve kterém vytvoříte podsíť brány.
+    - **Typ sítě VPN**: Vyberte **založené na trasách**.
+    - **SKLADOVÁ POLOŽKA**: Vyberte typ skladové položky na základě vašich požadavků.
+    - **Virtuální síť**: Vyberte virtuální síť, ve kterém vytvoříte podsíť brány.
 
         ![Obrázek o nastavení brány virtuální sítě](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -74,7 +74,7 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
 3. Klikněte na tlačítko **přejděte na konfigurace lokality** > **nakonfigurovat**a pak zadejte následující nastavení:
 
     - **Fond adres**: Zadejte podsíť brány, kterou jste vytvořili v kroku 1.
-    - **Typ ověřování**: vyberte **ověřování pomocí protokolu RADIUS**.
+    - **Typ ověřování**: Vyberte **ověřování pomocí protokolu RADIUS**.
     - **IP adresa serveru**: Zadejte IP adresu serveru NPS.
 
       ![Obrázek o, přejděte na nastavení lokality](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)

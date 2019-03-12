@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – spuštění aplikace ve službě Azure Container Instances – portál
-description: V tomto rychlém startu použijete Azure portal k nasazení aplikace typu kontejner Dockeru pro spuštění v izolovaného kontejneru ve službě Azure Container Instances
+title: Rychlý start – nasazení kontejneru Dockeru do služby Azure Container Instances – portál
+description: V tomto rychlém startu použijete Azure portal k rychlému nasazení kontejnerizované webové aplikace, která běží v instanci izolovaného kontejneru Azure
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566084"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729159"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances na webu Azure Portal
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Rychlý start: Nasadit instanci kontejneru v Azure pomocí webu Azure portal
 
-Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container Instances. Nemusíte nasazovat virtuální počítače ani používat úplnou platformu orchestrace kontejnerů jako Kubernetes. V tomto rychlém startu vytvoříte pomocí webu Azure Portal kontejner v Azure a zpřístupníte jeho aplikaci s použitím plně kvalifikovaného názvu domény. Po konfiguraci několika nastavení a nasazení kontejneru můžete přejít na běžící aplikaci:
+Pro spouštění kontejnerů bez serveru Docker v Azure se rychle a snadno pomocí Azure Container Instances. Pokud není zapotřebí platformu pro orchestraci úplné kontejneru, jako je Azure Kubernetes Service Nasaďte aplikaci do kontejneru instance na vyžádání.
+
+V tomto rychlém startu použijete Azure portal k nasazení izolovaného kontejneru Dockeru a zpřístupnit svou aplikaci s použitím plně kvalifikovaného názvu domény (FQDN). Po konfiguraci několika nastavení a nasazení kontejneru můžete přejít na běžící aplikaci:
 
 ![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][aci-portal-07]
 
@@ -41,9 +43,9 @@ Do textových polí **Název kontejneru**, **Image kontejneru** a **Skupina pros
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
-Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** k nasazení `microsoft/aci-helloworld` bitovou kopii z veřejného registru Docker Hub. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
+Pro účely tohoto rychlého startu ponechte výchozí nastavení **veřejné** nasazení veřejnosti `microsoft/aci-helloworld` bitové kopie. Tento obrázek balíčky malé webové aplikace napsané v Node.js, která slouží jako statická stránka HTML.
 
-V části **Konfigurace** zadejte **Popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve které instanci kontejneru vytváříte. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`.
+V části **Konfigurace** zadejte **Popisek názvu DNS** pro váš kontejner. Název musí být jedinečný v rámci oblasti Azure, ve kterém vytváříte instanci kontejneru. Váš kontejner bude veřejně dostupný na adrese `<dns-name-label>.<region>.azurecontainer.io`. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
 U ostatních nastavení v části **Konfigurace** ponechte jejich výchozí hodnoty a výběrem **OK** ověřte konfiguraci.
 

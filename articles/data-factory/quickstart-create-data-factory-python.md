@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 264a1200ce78d85181650de716f9898033834bc0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001864"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549829"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý start: Vytvoření datové továrny a kanálu pomocí Pythonu
 
@@ -45,7 +45,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     John|Doe
     Jane|Doe
     ```
-2.  Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/), vytvořte kontejner **adfv2tutorial** a v něm složku **input**. Potom do složky **input** odešlete soubor **input.txt**.
+2.  Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/), vytvořte kontejner **adfv2tutorial** a v něm složku **input**. Potom do složky **input** odešlete soubor **input.txt**.
 
 ## <a name="install-the-python-package"></a>Instalace balíčku Pythonu
 

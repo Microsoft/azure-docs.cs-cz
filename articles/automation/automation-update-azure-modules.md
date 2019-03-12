@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/25/2019
+ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cf82a80d0b812ab5540796c8e7758e6ff85952c5
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fad3d77d15d78ffdaf1afca3675a82242b844778
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804768"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730382"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -41,7 +41,7 @@ Tady jsou některé aspekty, vezměte v úvahu při použití tohoto procesu se 
 
 * Při importu této sady runbook s původním názvem `Update-AutomationAzureModulesForAccount`, přepíše interní sady runbook s tímto názvem. V důsledku toho, importované sady runbook se spustí, když **aktualizace modulů Azure** tlačítko je nebo po vyvolání Tato sada runbook přímo prostřednictvím rozhraní API Azure Resource Manageru pro tento účet Automation.
 
-* Pouze `Azure` a `AzureRM.*` moduly jsou aktuálně podporovány. Nové [moduly Azure Powershellu Az](/powershell/azure/new-azureps-module-az) se zatím nepodporují.
+* Tato sada runbook podporuje, jenom aktualizace **Azure** a **AzureRm** aktuálně moduly. [Moduly Azure Powershellu Az](/powershell/azure/new-azureps-module-az) jsou podporované v účtech Automation, ale nelze aktualizovat pomocí tohoto runbooku.
 
 * Vyhněte se spouští tento runbook na účty Automation, které obsahují Az moduly.
 

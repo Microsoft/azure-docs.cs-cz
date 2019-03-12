@@ -4,17 +4,17 @@ description: Plány Azure slouží k vytváření, definování a je možné nas
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 845d200238c276be3f0d64afb3127864d8d9ae19
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818659"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729915"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definování a přiřazení podrobného plánu Azure na portálu
 
@@ -42,7 +42,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Vytvořit podrobný plán](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte **podrobný plán popis** zatím prázdné.  V **umístění definice** pole, klikněte na tlačítko se třemi tečkami na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ve které chcete uložit podrobný plán a klikněte na tlačítko **vyberte**.
+1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte **podrobný plán popis** zatím prázdné. V **umístění definice** pole, klikněte na tlačítko se třemi tečkami na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ve které chcete uložit podrobný plán a klikněte na tlačítko **vyberte**.
 
 1. Ověřte správnost informací ( **název podrobného plánu** a **umístění definice** pole není možné později změnit) a klikněte na tlačítko **Další: Artefakty** v dolní části stránky nebo **artefakty** kartě v horní části stránky.
 
@@ -84,7 +84,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
            },
            "location": {
                "type": "string",
-               "defaultValue": "[resourceGroup().location]",
+               "defaultValue": "[resourceGroups('ResourceGroup').location]",
                "metadata": {
                    "description": "Location for all resources."
                }
@@ -129,7 +129,7 @@ V části [Vytvoření podrobného plánu](#create-a-blueprint) se pro novou sku
 
 1. V seznamu plány, klikněte pravým tlačítkem na ten, který jste dříve vytvořili a vyberte **upravit podrobný plán**.
 
-1. V **podrobný plán popis**, poskytují několik informací o podrobný plán a artefakty, které tvoří ji.  V takovém případě zadejte vypadat: "Tento podrobný plán nastaví značku přiřazení zásady a roli v předplatném, skupina prostředků vytvoří a nasadí prostředků šablony a roli přiřazení do této skupiny prostředků."
+1. V **podrobný plán popis**, poskytují několik informací o podrobný plán a artefakty, které tvoří ji. V takovém případě zadejte vypadat: "Tento podrobný plán nastaví značku přiřazení zásady a roli v předplatném, skupina prostředků vytvoří a nasadí prostředků šablony a roli přiřazení do této skupiny prostředků."
 
 1. Klikněte na tlačítko **Další: Artefakty** v dolní části stránky nebo **artefakty** kartě v horní části stránky.
 
@@ -186,13 +186,17 @@ Jakmile podrobný plán publikujete, můžete ho přiřadit předplatnému. Při
    > [!NOTE]
    > Pro každé vybrané předplatné se vytvoří přiřazení, což umožní pozdější změny přiřazení jednoho předplatného bez nutnosti vynucení změn ve zbývajících vybraných předplatných.
 
-1. Pro **název přiřazený**, zadejte jedinečný název pro toto přiřazení.
+1. Pro **název přiřazení**, zadejte jedinečný název pro toto přiřazení.
 
-1. V **umístění**, vyberte oblast pro spravovanou identitu, ve které má být vytvořená. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+1. V **umístění**, vyberte oblast pro spravovaný objekt nasazení identity a předplatné má být vytvořen v. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. Nechte **verzi definice podrobného plánu** z rozevírací nabídky **publikováno** verzi v položce "v1" (výchozí jako naposledy **publikovaná** verze).
+1. Nechte **verze definice podrobného plánu** rozevírací nabídce **publikováno** verze v položce "v1" (výchozí hodnota je naposledy **publikováno** verze).
 
 1. Pro **zámek přiřazení**, ponechte výchozí hodnotu na **bez zámku**. Další informace naleznete v tématu [uzamčení zdrojů plánu](./concepts/resource-locking.md).
+
+   ![Přiřazení - zamykání a spravovaných identit](./media/create-blueprint-portal/assignment-locking-mi.png)
+
+1. V části **Identity spravované**, ponechte výchozí hodnotu **přiřazenou systémem**.
 
 1. Pro přiřazení role na úrovni předplatného **[skupiny uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikace nebo skupinu.
 

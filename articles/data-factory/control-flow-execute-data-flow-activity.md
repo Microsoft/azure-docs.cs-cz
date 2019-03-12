@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 17bcb9efbf28901f241d44231bc5c71ae20380b5
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4e661f838cc0b8e52ff72e4e44a43d611fa3355f
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241608"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727378"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
 Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
@@ -54,8 +54,6 @@ Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění 
 ### <a name="run-on"></a>Spustit v
 
 Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodnota je výchozí prostředí IR Azure automaticky vyřešit. Tato volba spustí tok dat v prostředí Spark ve stejné oblasti jako svou datovou továrnu. Typ výpočtu bude clusteru úloh, což znamená, že prostředí compute bude trvat několik minut na spuštění.
-
-Pokud se rozhodnete vyhrazené prostředí IR, můžete vytvořit nové prostředí Azure IR s připnutou oblastí a výpočet velikosti, které splňují vaše požadavky na toku dat. Tuto možnost, budou typu číselník up interaktivní clustery, které bude spuštění ihned poté, co je odeslána počáteční úlohy. Tento cluster zůstane zachován, dokud hodnota TTL nevyprší po poslední úlohu provedl.
 
 ### <a name="compute-type"></a>Typ výpočtu
 

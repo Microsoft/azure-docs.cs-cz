@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c9f0707f6d24ba899c89bf19066994ae860a69d5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2aa32d75edbacdfff6428a6526d9898cb6732d6b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620983"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534731"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek obsahuje několik příkladů běžných úloh po spuštění, které můžete provádět v cloudové službě. Úlohy po spuštění můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnout instalaci součásti, registrace komponent COM, nastavení klíče registru nebo spouští se dlouho běžící proces. 
@@ -186,7 +186,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Způsobí, že tato úloha **startup.cmd** dávkový soubor se spustí pokaždé, když je inicializován ve webové roli, zajistit, aby požadované **ipSecurity** části je odemknuté.
 
-Nakonec upravte [oddíl system.webServer](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) webovou roli **web.config** soubor a přidejte seznam IP adres, které je udělen přístup, jak je znázorněno v následujícím příkladu:
+Nakonec upravte [oddíl system.webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) webovou roli **web.config** soubor a přidejte seznam IP adres, které je udělen přístup, jak je znázorněno v následujícím příkladu:
 
 Tato ukázka konfigurace **umožňuje** všechny IP adresy pro přístup k serveru s výjimkou dvě definice
 

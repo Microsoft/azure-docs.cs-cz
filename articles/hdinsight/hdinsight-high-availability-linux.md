@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743659"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576714"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů systému Apache Hadoop v HDInsight
 
@@ -111,7 +111,50 @@ Při doručení na stránce Ambari, nainstalované služby jsou uvedené na lev�
 
 ![Nainstalované služby](./media/hdinsight-high-availability-linux/services.png)
 
-Existuje řada ikony, které se mohou objevit vedle služby k označení stavu. Žádné výstrahy týkající se služby lze zobrazit pomocí **výstrahy** odkazu v horní části stránky. Každá služba zobrazíte další informace v něm můžete vybrat.
+Existuje řada ikony, které se mohou objevit vedle služby k označení stavu. Žádné výstrahy týkající se služby lze zobrazit pomocí **výstrahy** odkazu v horní části stránky.  Ambari nabízí několik předdefinovaných výstrahy.
+
+Tyto výstrahy pomáhají monitorovat dostupnost clusteru:
+
+| Název výstrahy                               | Popis                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Metriky monitorování stavu                    | Tato výstraha indikuje stav metriky monitorování procesu podle monitorování stavu skriptu.                                                                                   |
+| Ambari Agent Heartbeat                   | Tato výstraha se aktivuje, pokud server ztratí kontaktu s vloženým agentem.                                                                                                                        |
+| ZooKeeper Server Process                 | Tato výstraha úrovni hostitele se aktivuje, pokud proces ZooKeeper server nemůže být určené dá zvládnout a naslouchá na síti.                                                               |
+| IOCache Metadata Server Status           | Tato výstraha úrovni hostitele se aktivuje, pokud IOCache Metadata Server nemůže být určené dá zvládnout a reagovat na žádosti klientů                                                            |
+| JournalNode Web UI                       | Pokud JournalNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                 |
+| Spark2 Thrift Server                     | Pokud Spark2 Thrift Server nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                                |
+| Proces serveru historie                   | Tato výstraha úrovni hostitele se aktivuje, pokud proces historie serveru nemůže být zavedený dá zvládnout a naslouchá na síti.                                                                |
+| Historie serveru webového uživatelského rozhraní                    | Pokud webové uživatelské rozhraní historie Server nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                              |
+| Webové uživatelské rozhraní správce prostředků                   | Tato výstraha úrovni hostitele se aktivuje, pokud nedostupný webového uživatelského rozhraní správce prostředků.                                                                                                             |
+| Souhrn stavu NodeManager               | Tato úroveň služby výstraha se aktivuje, pokud není v pořádku NodeManagers                                                                                                                    |
+| Časová osa webové aplikace uživatelského rozhraní                      | Pokud webového uživatelského rozhraní aplikace časová osa Server nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                         |
+| Souhrn stavu DataNode                  | Tato úroveň služby výstraha se aktivuje, pokud není v pořádku DataNodes                                                                                                                       |
+| NameNode webového uživatelského rozhraní                          | Pokud NameNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                    |
+| Proces převzetí služeb při selhání Kontroleru zooKeeper    | Tato výstraha úrovni hostitele se aktivuje, pokud proces převzetí služeb při selhání Kontroleru ZooKeeper nemůže být potvrzen dá zvládnout a naslouchá na síti.                                                   |
+| Oozie Server webového uživatelského rozhraní                      | Pokud server Oozie webového uživatelského rozhraní nedostupný, se aktivuje upozornění na této úrovni hostitele.                                                                                                                |
+| Stav serveru Oozie                      | Pokud Oozie server nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                      |
+| Proces Metastoru Hive                   | Tato výstraha úrovni hostitele se aktivuje, pokud proces Hive Metastore nemůže být určené dá zvládnout a naslouchá na síti.                                                                 |
+| Proces serveru HiveServer2                      | Pokud HiveServer nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                        |
+| WebHCat Server Status                    | Pokud server templeton stav není v pořádku, se aktivuje upozornění na této úrovni hostitele.                                                                                                            |
+| Procento ZooKeeper servery, které jsou k dispozici      | Tato výstraha se aktivuje, pokud počet dolů ZooKeeper servery v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol procesu ZooKeeper.     |
+| Spark2 Livy Server                       | Pokud Livy2 Server nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                                        |
+| Server historie Spark2                    | Pokud Server historie Spark2 nelze určit dá zvládnout, se aktivuje upozornění na této úrovni hostitele.                                                                                               |
+| Proces shromažďování metrik                | Tato výstraha se aktivuje, pokud kolekce metriky nemůže být potvrzen dá zvládnout a naslouchá na konfigurovaném portu pro počet sekund rovna prahové hodnoty.                                 |
+| Metriky kolekcí – proces hlavní server HBase | Tato výstraha se aktivuje, pokud hlavní procesy shromažďování metrik HBase nemůže být potvrzen dá zvládnout a naslouchání v síti pro nakonfigurovanou prahovou hodnotu kritického, zadaný v řádu sekund. |
+| Monitorování procenta metriky k dispozici       | Tato výstraha se aktivuje, pokud procento metriky monitorování procesů nejsou nahoru a naslouchá na síti nakonfigurované upozornění a kritické prahové hodnoty.                             |
+| Procento NodeManagers k dispozici           | Tato výstraha se aktivuje, pokud počet dolů NodeManagers v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol NodeManager procesu.        |
+| NodeManager Health                       | Tato výstraha úrovni hostitele kontroly stavu vlastnost uzlu, které jsou k dispozici z komponenty NodeManager.                                                                                              |
+| NodeManager Web UI                       | Pokud NodeManager webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                 |
+| Stav NameNode vysoké dostupnosti        | Tato úroveň služby výstraha se aktivuje, pokud nejsou spuštěné na aktivní NameNode nebo NameNode pohotovostní režim.                                                                                     |
+| DataNode procesu                         | Pokud jednotlivé procesy DataNode nemůže být zavedený dá zvládnout a naslouchá na síti, se aktivuje upozornění na této úrovni hostitele.                                                         |
+| DataNode webového uživatelského rozhraní                          | Pokud DataNode webového uživatelského rozhraní nedostupné, se aktivuje upozornění na této úrovni hostitele.                                                                                                                    |
+| Procento JournalNodes k dispozici           | Tato výstraha se aktivuje, pokud počet dolů JournalNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol JournalNode procesu.        |
+| Procento DataNodes k dispozici              | Tato výstraha se aktivuje, pokud počet dolů DataNodes v clusteru je větší než nastavená prahová hodnota důležité. Agreguje výsledky kontrol DataNode procesu.              |
+| Stav aplikace Zeppelinu serveru                   | Pokud Zeppelin server nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                                   |
+| Interaktivní proces serveru HiveServer2          | Pokud HiveServerInteractive nemůže být určené dá zvládnout a reagovat na požadavky klientů, se aktivuje upozornění na této úrovni hostitele.                                                             |
+| Aplikace funkcí LLAP                         | Tato výstraha se aktivuje, pokud aplikace LLAP nemůže být určené dá zvládnout a reagovat na požadavky.                                                                                    |
+
+Každá služba zobrazíte další informace v něm můžete vybrat.
 
 Když na stránku služby obsahuje informace o stavu a konfiguraci každé služby, neposkytuje informace, na které hlavního uzlu je služba spuštěna na. Chcete-li zobrazit tyto informace, použijte **hostitele** odkazu v horní části stránky. Tato stránka zobrazuje hostitele v clusteru, a to včetně hlavní uzly.
 
@@ -123,7 +166,7 @@ Vyberte odkaz pro jeden z hlavních uzlů se zobrazí služeb a součástí, kte
 
 Další informace o použití Ambari, naleznete v tématu [monitorování a správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
-### <a name="ambari-rest-api"></a>Rozhraní Ambari REST API
+### <a name="ambari-rest-api"></a>Ambari REST API
 
 Rozhraní Ambari REST API je k dispozici přes internet. HDInsight bránu veřejné zpracovává směrování žádostí na hlavní uzel, který je aktuálně hostitelem rozhraní REST API.
 
@@ -215,7 +258,7 @@ Při vytváření clusteru, můžete zadat velikost uzlů. Následující inform
 
 * **Azure Classic CLI**: Při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
 
-* **Prostředí Azure PowerShell**: Při použití `New-AzureRmHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
+* **Azure PowerShell**: Při použití `New-AzureRmHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
 
 ## <a name="next-steps"></a>Další postup
 

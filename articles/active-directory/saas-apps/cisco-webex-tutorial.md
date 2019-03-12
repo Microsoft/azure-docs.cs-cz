@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d0e5f641c46571bc941b6a3bac2debd66804872
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e4bf593473e646bbfe3d8db1df44bd48195b4cf7
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246472"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Kurz: Integrace Azure Active Directory s Cisco Webex schůzky
 
@@ -169,7 +169,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cisco Webex schůzky, prove
 
 ### <a name="configure-cisco-webex-meetings-single-sign-on"></a>Konfigurace Cisco Webex schůzky jednotného přihlašování
 
-1. Přejděte na [správu spolupráci cloudu Cisco](http://www.webex.com/go/connectadmin) pomocí svých přihlašovacích údajů pro správu.
+1. Přejděte na [správu spolupráci cloudu Cisco](https://www.webex.com/go/connectadmin) pomocí svých přihlašovacích údajů pro správu.
 
 2. Přejděte na **nastavení zabezpečení** a přejděte do **federované Konfigurace jednotného přihlašování k webu**.
  

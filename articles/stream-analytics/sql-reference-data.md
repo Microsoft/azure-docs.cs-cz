@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449576"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765080"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
 
@@ -134,19 +134,44 @@ Před nasazením úlohy do Azure, můžete otestovat logiku dotazu místně pro 
 
 Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL Database](../sql-database/sql-database-temporal-tables.md) doporučují.
 
-1. Vytvoření snímku dotazu. 
+1. Vytvořte dočasnou tabulku ve službě Azure SQL Database.
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. Vytvoření snímku dotazu. 
 
-   Použití **@snapshotTime** parametr dáte pokyn, aby modul runtime Stream Analytics získat referenční sady dat z SQL database dočasnou tabulku platnou v době systému. Pokud tento parametr nezadáte, riskujete získání nesprávné základní referenční sady dat kvůli časovým nepřesnostem. Níže je uveden příklad dotazu úplné snímku:
-
-   ![Stream Analytics snímku dotazu](./media/sql-reference-data/snapshot-query.png)
+   Použití  **\@snapshotTime** parametr dáte pokyn, aby modul runtime Stream Analytics získat referenční sady dat z SQL database dočasnou tabulku platnou v době systému. Pokud tento parametr nezadáte, riskujete získání nesprávné základní referenční sady dat kvůli časovým nepřesnostem. Níže je uveden příklad dotazu úplné snímku:
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. Autor rozdílového dotazu. 
    
-   Tento dotaz načte všechny řádky v databázi SQL, které bylo vloženo nebo odstraněno v době spuštění **@deltaStartTime**a koncový čas **@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako snímek dotazu, stejně jako sloupec  **_operace_**. V tomto sloupci definuje, jestli se řádek je vloženo nebo odstraněno mezi **@deltaStartTime** a **@deltaEndTime**. Výsledné řádky se označí jako **1** Pokud záznamy byly vloženy, nebo **2** Pokud odstraněn. 
+   Tento dotaz načte všechny řádky v databázi SQL, které bylo vloženo nebo odstraněno v době spuštění  **\@deltaStartTime**a koncový čas  **\@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako snímek dotazu, stejně jako sloupec  **_operace_**. V tomto sloupci definuje, jestli se řádek je vloženo nebo odstraněno mezi  **\@deltaStartTime** a  **\@deltaEndTime**. Výsledné řádky se označí jako **1** Pokud záznamy byly vloženy, nebo **2** Pokud odstraněn. 
 
    Pro záznamy, které byly aktualizovány dočasnou tabulku se účetnictví zachytáváním operace vložení a odstranění. Modul runtime Stream Analytics potom použije výsledky rozdílového dotazu s předchozím snímkem k udržení referenční data. Příkladem rozdílového dotazu se zobrazuje níže:
 
-   ![Stream Analytics rozdílového dotazu](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
   Všimněte si, že modul runtime Stream Analytics může pravidelně spuštění dotazu snímku kromě rozdílového dotazu k uložení kontrolní body.
 

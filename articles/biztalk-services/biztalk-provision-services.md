@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d47aab9e3d083cd7f51b1c3ba613f421fc1777a6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261957"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764094"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Vytvoření služby BizTalk Services pomocí webu Azure Portal
 
@@ -143,7 +143,7 @@ Při vytváření služby Azure BizTalk se vytvoří také adresa URL HTTPS, kte
 <br/>
 
 <ul>
-<li><strong>Rozšířené použití klíče</strong>: Služba Azure BizTalk Services vyžaduje minimálně ověření serveru.</li>
+<li><strong>Rozšířené použití klíče</strong>: Azure BizTalk Services vyžaduje minimálně ověření serveru.</li>
 <li><strong>Běžný název</strong>: Zadejte plně kvalifikovaný název domény (FQDN) adresy URL služby Azure BizTalk. Projděte si část <a HREF="#CreateService">Vytvoření služby BizTalk</a> v tomto článku.</li>
 </ul>
 <br/>
@@ -164,15 +164,15 @@ Hybridní připojení slouží k připojení webu Azure nebo mobilní služby Az
 
  Další informace, třeba o vytváření a správě hybridních připojení, najdete v článku [Hybridní připojení](integration-hybrid-connection-overview.md).
 
-## <a name="next-steps"></a>Další kroky
-Služba BizTalk je teď vytvořená a vy se můžete seznámit s různými kartami: [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md). Služba BizTalk je připravená pro vaše aplikace. Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
+## <a name="next-steps"></a>Další postup
+Teď, když služba BizTalk vytvořená, seznamte se s různými [BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md). Služba BizTalk je připravená pro vaše aplikace. Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)<br/>
 * [BizTalk Services: Tabulka stavů](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Omezování](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Název a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
+* [BizTalk Services: Omezení šířky pásma](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Název vystavitele a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hybridní připojení](integration-hybrid-connection-overview.md)
 

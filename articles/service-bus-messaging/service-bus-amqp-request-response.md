@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 13495107aff24b868a4188c25768868945e70db8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c6d6fc813a2691e821f3ef8f7c719945851a5001
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658211"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570840"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -45,72 +45,72 @@ Všechny operace popsané v tomto dokumentu se řídí vzorem žádost odpověď
 
 Vytvoří odkaz na uzlu Správa pro odesílání požadavků.  
   
-```  
-requestLink = session.attach(     
-role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
-)  
-  
-```  
+```
+requestLink = session.attach(
+role: SENDER,
+    target: { address: "<entity address>/$management" },
+    source: { address: ""<my request link unique address>" }
+)
+
+```
   
 ### <a name="create-link-for-receiving-responses"></a>Vytvoření odkazu na příjem odpovědí  
 
 Vytvoří odkaz pro přijetí odpovědi z uzlu Správa.  
   
-```  
-responseLink = session.attach(    
-role: RECEIVER,   
-    source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
-)  
-  
-```  
+```
+responseLink = session.attach(
+role: RECEIVER,
+    source: { address: "<entity address>/$management" }
+    target: { address: "<my response link unique address>" }
+)
+
+```
   
 ### <a name="transfer-a-request-message"></a>Přenos zprávy požadavku  
 
 Převede zprávu požadavku.  
 Stav transakce je možné volitelně doplnit pro operace, které podporuje transakce.
 
-```  
-requestLink.sendTransfer(  
-        Message(  
-                properties: {  
-                        message-id: <request id>,  
-                        reply-to: "<my response link unique address>"  
-                },  
-                application-properties: {  
-                        "operation" -> "<operation>",  
+```
+requestLink.sendTransfer(
+        Message(
+                properties: {
+                        message-id: <request id>,
+                        reply-to: "<my response link unique address>"
+                },
+                application-properties: {
+                        "operation" -> "<operation>",
                 }
         ),
         [Optional] State = transactional-state: {
                 txn-id: <txn-id>
         }
 )
-```  
+```
   
 ### <a name="receive-a-response-message"></a>Zpráva odpovědi  
 
 Přijímá zprávy s odpovědí z odkazu odpovědi.  
   
-```  
-responseMessage = responseLink.receiveTransfer()  
-```  
+```
+responseMessage = responseLink.receiveTransfer()
+```
   
 Zprávy s odpovědí je v následujícím tvaru:
   
-```  
-Message(  
-properties: {     
-        correlation-id: <request id>  
-    },  
-    application-properties: {  
-            "statusCode" -> <status code>,  
-            "statusDescription" -> <status description>,  
-           },         
-)  
-  
-```  
+```
+Message(
+properties: {
+        correlation-id: <request id>
+    },
+    application-properties: {
+            "statusCode" -> <status code>,
+            "statusDescription" -> <status description>,
+           },
+)
+
+```
   
 ### <a name="service-bus-entity-address"></a>Adresa entity služby Service Bus  
 
@@ -134,7 +134,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:renew-lock`|  
+|operace|string|Ano|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
  Tělo zprávy požadavku musí obsahovat oddíl amqp hodnotu obsahující mapy s následující položky:  
@@ -154,7 +154,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo.|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Tělo zprávy odpovědi musí obsahovat oddíl amqp hodnotu obsahující mapy s následující položky:  
   
@@ -172,7 +172,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:peek-message`|  
+|operace|string|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -189,7 +189,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
@@ -213,7 +213,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:schedule-message`|  
+|operace|string|Ano|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -226,10 +226,10 @@ Mapa představující zprávu musí obsahovat následující položky:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|id zprávy|řetězec|Ano|`amqpMessage.Properties.MessageId` jako datový typ string|  
-|id relace|řetězec|Ne|`amqpMessage.Properties.GroupId as string`|  
-|klíč oddílu|řetězec|Ne|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|klíč prostřednictvím oddílu|řetězec|Ne|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|id zprávy|string|Ano|`amqpMessage.Properties.MessageId` jako datový typ string|  
+|id relace|string|Ne|`amqpMessage.Properties.GroupId as string`|  
+|klíč oddílu|string|Ne|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|klíč prostřednictvím oddílu|string|Ne|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |zpráva|pole bajtů|Ano|Kódování přenosu zpráv protokolu AMQP 1.0.|  
   
 #### <a name="response"></a>Odpověď  
@@ -239,7 +239,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo.|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
   
@@ -257,7 +257,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:cancel-scheduled-message`|  
+|operace|string|Ano|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -273,7 +273,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo.|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
   
@@ -293,14 +293,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:renew-session-lock`|  
+|operace|string|Ano|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|id relace|řetězec|Ano|ID relace.|  
+|id relace|string|Ano|ID relace.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -309,7 +309,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
   
@@ -327,7 +327,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:peek-message`|  
+|operace|string|Ano|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -336,7 +336,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |---------|----------------|--------------|--------------------|  
 |číslo od pořadí|Long|Ano|Pořadové číslo, ze kterého se má spustit náhled.|  
 |počet zpráv|int|Ano|Maximální počet zpráv pro náhled.|  
-|id relace|řetězec|Ano|ID relace.|  
+|id relace|string|Ano|ID relace.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -345,7 +345,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
   
@@ -369,14 +369,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:set-session-state`|  
+|operace|string|Ano|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|id relace|řetězec|Ano|ID relace.|  
+|id relace|string|Ano|ID relace.|  
 |Stav relace|pole bajtů|Ano|Neprůhledný binární data.|  
   
 #### <a name="response"></a>Odpověď  
@@ -386,7 +386,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 ### <a name="get-session-state"></a>Získat stav relace  
 
@@ -398,14 +398,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:get-session-state`|  
+|operace|string|Ano|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|id relace|řetězec|Ano|ID relace.|  
+|id relace|string|Ano|ID relace.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -414,7 +414,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
@@ -432,7 +432,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:get-message-sessions`|  
+|operace|string|Ano|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -450,7 +450,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: Bez obsahu – žádné další zprávy|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
@@ -469,14 +469,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:add-rule`|  
+|operace|string|Ano|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Název pravidla|řetězec|Ano|Název pravidla bez zahrnutí názvu předplatného a tématu.|  
+|Název pravidla|string|Ano|Název pravidla bez zahrnutí názvu předplatného a tématu.|  
 |Popis pravidla|map|Ano|Popis pravidla uvedená v další části.|  
   
 **Popis pravidla** mapování musí zahrnovat následující položky, ve kterém **filtrem sql** a **korelační filtr** se vzájemně vylučují:  
@@ -491,27 +491,27 @@ Mapa filtrem sql, musí obsahovat následující položky:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Výraz|řetězec|Ano|Výraz filtru SQL.|  
+|Výraz|string|Ano|Výraz filtru SQL.|  
   
 **Korelační filtr** mapování musí obsahovat alespoň jeden z následujících položek:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|id korelace|řetězec|Ne||  
-|id zprávy|řetězec|Ne||  
-|na|řetězec|Ne||  
-|odpovědi|řetězec|Ne||  
-|label|řetězec|Ne||  
-|id relace|řetězec|Ne||  
-|odpověď k relaci id|řetězec|Ne||  
-|content-type|řetězec|Ne||  
+|id korelace|string|Ne||  
+|id zprávy|string|Ne||  
+|na|string|Ne||  
+|odpovědi|string|Ne||  
+|label|string|Ne||  
+|id relace|string|Ne||  
+|odpověď k relaci id|string|Ne||  
+|content-type|string|Ne||  
 |properties|map|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 **Akce pravidla sql** mapování musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Výraz|řetězec|Ano|Výraz SQL akce.|  
+|Výraz|string|Ano|Výraz SQL akce.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -520,7 +520,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 ### <a name="remove-rule"></a>Odebrat pravidlo  
   
@@ -530,14 +530,14 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:remove-rule`|  
+|operace|string|Ano|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Název pravidla|řetězec|Ano|Název pravidla bez zahrnutí názvu předplatného a tématu.|  
+|Název pravidla|string|Ano|Název pravidla bez zahrnutí názvu předplatného a tématu.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -546,7 +546,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 ### <a name="get-rules"></a>Získat pravidla
 
@@ -556,7 +556,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
 
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:enumerate-rules`|  
+|operace|string|Ano|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
 
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -587,7 +587,7 @@ Každá položka mapování pole obsahuje následující vlastnosti:
 |---------|----------------|--------------|--------------------|  
 | 0 | pole popisu objektů | Ano | `filter` jak je uvedeno níže. |
 | 1 | pole popisu objektu | Ano | `ruleAction` jak je uvedeno níže. |
-| 2 | řetězec | Ano | Název pravidla. |
+| 2 | string | Ano | Název pravidla. |
 
 `filter` může být buď z následujících typů:
 
@@ -602,20 +602,20 @@ Každá položka mapování pole obsahuje následující vlastnosti:
 
 |Index|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-| 0 | řetězec | Ano | Výraz filtru SQL |
+| 0 | string | Ano | Výraz filtru SQL |
 
 `com.microsoft:correlation-filter:list` je popisuje pole, která zahrnuje:
 
 |Index (pokud existuje)|Typ hodnoty|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-| 0 | řetězec | ID korelace |
-| 1 | řetězec | ID zprávy |
-| 2 | řetězec | Akce |
-| 3 | řetězec | Zpáteční adresa |
-| 4 | řetězec | Štítek |
-| 5 | řetězec | ID relace |
-| 6 | řetězec | ID relace zpáteční adresy|
-| 7 | řetězec | Typ obsahu |
+| 0 | string | ID korelace |
+| 1 | string | ID zprávy |
+| 2 | string | Akce |
+| 3 | string | Zpáteční adresa |
+| 4 | string | Štítek |
+| 5 | string | ID relace |
+| 6 | string | ID relace zpáteční adresy|
+| 7 | string | Typ obsahu |
 | 8 | Mapa | Mapa aplikace definované vlastnosti |
 
 `ruleAction` může být jeden z následujících typů:
@@ -639,7 +639,7 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:receive-by-sequence-number`|  
+|operace|string|Ano|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -656,7 +656,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|  
+|statusDescription|string|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
@@ -681,17 +681,17 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|operace|řetězec|Ano|`com.microsoft:update-disposition`|  
+|operace|string|Ano|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršel časový limit v milisekundách.|  
   
 Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|disposition-status|řetězec|Ano|completed<br /><br /> opuštění<br /><br /> Pozastaveno|  
+|disposition-status|string|Ano|completed<br /><br /> opuštění<br /><br /> Pozastaveno|  
 |Lock – tokeny|pole identifikátoru uuid|Ano|Tokeny uzamčení zprávy k aktualizaci stavu dispozice.|  
-|deadletter-reason|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
-|Popis nedoručených zpráv|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
+|deadletter-reason|string|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
+|Popis nedoručených zpráv|string|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
 |properties-to-modify|map|Ne|Seznam služby Service Bus zprostředkovaných vlastností zprávy upravit.|  
   
 #### <a name="response"></a>Odpověď  
@@ -701,7 +701,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěšné, jinak se nezdařilo|  
-|statusDescription|řetězec|Ne|Popis stavu.|
+|statusDescription|string|Ne|Popis stavu.|
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e262bf7e-cc7d-4d0e-aea7-861f00d8837d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecb4674139d789da8944437f6b28ba543e156df2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3e83bc0f846d631ce7bf23fefb584c585e8518da
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867656"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731443"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>Kurz: Integrace Azure Active Directory s CompetencyIQ
 

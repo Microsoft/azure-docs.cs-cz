@@ -10,26 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821537"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731050"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory
 
 Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat z SAP Business Warehouse (BW) prostřednictvím Open centra ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
-
-## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integration 
-
-[SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) je účinný způsob, jak extrahovat data z SAP BW. Následující diagram znázorňuje jeden z typických toků, zákazníci mají v jejich systému SAP, v jaké velikosti písmen datové toky z SAP ECC -> PSA -> DSO -> datové krychle.
-
-SAP BW Open Centrum cílový (OHD) definuje cíl, do které se předá SAP data. Všechny objekty podporovány službou SAP Data Transfer procesu (DTP) může sloužit jako otevřete Centrum zdrojů dat, například DSO InfoCube, zdroj dat, atd. Otevřete Centrum cílový typ – přenášená data se mají ukládat – mohou být databázových tabulek (místní nebo vzdálené) a plochých souborů. Tato podpora konektoru SAP BW Open centra kopírování dat z tabulky OHD místní BW. V případě, že používáte jiné typy, můžou přímo připojit k databázi nebo souboru systému pomocí jiné konektory.
-
-![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -41,6 +33,37 @@ Konkrétně tento konektor SAP Business Warehouse otevřete Centrum podporuje:
 - Kopírování dat přes otevřít Centrum cílový místní tabulky, který pod může být DSO InfoCube, MultiProvider, zdroj dat, atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojení k aplikační Server.
+
+## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integration 
+
+[SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) je účinný způsob, jak extrahovat data z SAP BW. Následující diagram znázorňuje jeden z typických toků, zákazníci mají v jejich systému SAP, v jaké velikosti písmen datové toky z SAP ECC -> PSA -> DSO -> datové krychle.
+
+SAP BW Open Centrum cílový (OHD) definuje cíl, do které se předá SAP data. Všechny objekty podporovány službou SAP Data Transfer procesu (DTP) může sloužit jako otevřete Centrum zdrojů dat, například DSO InfoCube, zdroj dat, atd. Otevřete Centrum cílový typ – přenášená data se mají ukládat – mohou být databázových tabulek (místní nebo vzdálené) a plochých souborů. Tato podpora konektoru SAP BW Open centra kopírování dat z tabulky OHD místní BW. V případě, že používáte jiné typy, můžou přímo připojit k databázi nebo souboru systému pomocí jiné konektory.
+
+![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+
+## <a name="delta-extraction-flow"></a>Rozdílová extrakce toku
+
+ADF konektoru SAP BW Open Hub nabízí dva volitelné vlastnosti: `excludeLastRequest` a `baseRequestId` kterých jde pro zpracování zátěže delta od Open rozbočovače. 
+
+- **excludeLastRequestId**: Jestli se mají vyloučit záznamy poslední žádosti. Výchozí hodnota je true. 
+- **baseRequestId**: ID požadavku pro rozdílové načtení. Jakmile se nastaví, budou načítat jenom data s větší než hodnota této vlastnosti ID žádosti. 
+
+Celkově extrakce z SAP InfoProviders do Azure Data Factory (ADF) zahrnuje 2 kroky: 
+
+1. **SAP BW Data Transfer procesu (DTP)** tento krok zkopíruje data ze SAP BW InfoProvider do tabulky otevřete Centrum SAP BW 
+
+1. **Kopírování dat ADF** v tomto kroku je tabulka otevřete Centrum pro čtení konektorem ADF 
+
+![Rozdílová extrakce toku](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+
+V prvním kroku je proveden DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID požadavku je uložena v tabulce otevřete Centrum a pak se používá konektorem ADF k identifikaci rozdílových. Dva kroky se spustí asynchronně: SAP se aktivuje DTP a kopírování dat ADF vyvolané prostřednictvím ADF. 
+
+Ve výchozím nastavení, není ADF čtení nejnovější rozdílový z tabulky otevřete Centrum (možnost "poslední žádosti o vyloučení" má hodnotu true). Data ve službě ADF tímto, není 100 % aktuální data v tabulce otevřete Centrum (poslední delta chybí). Tento postup na oplátku zajistí, že nejsou žádné řádky získat ztratili způsobené asynchronní extrakce. Funguje správně i v případě, že ADF je čtení tabulky otevřete Centrum, zatímco DTP je stále zapisovat do stejné tabulky. 
+
+Obvykle ukládá ID maximální zkopírovaný žádosti při posledním spuštění pomocí ADF v pracovní úložiště dat (například objektů Blob v Azure do výše diagram). Stejný požadavek se proto číst podruhé ADF v následné spuštění. Poznámka: data mezitím není automaticky odstraněn z tabulky otevřete Centrum.
+
+Pro správné delta její zpracování není povoleno mít požadavek ID z různých DTPs ve stejné tabulce otevřete Centrum. Proto nesmí vytvořit více než jeden DTP. pro každou otevřete Centrum cílový (OHD). Když potřebujete úplné a rozdílové extrakce ze stejné InfoProvider, byste měli vytvořit dvě OHDs pro stejný InfoProvider. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,6 +83,10 @@ Pokud chcete použít tento konektor SAP Business Warehouse otevřete Centrum, j
 - Vytvořit SAP otevřít Centrum cílový typ jako **databázové tabulky** se zaškrtnutým políčkem "Technické klíč".  Doporučujeme také ponechat Data odstranění z tabulky jako zaškrtnuté políčko, i když není potřeba. Využití DTP (přímo spouštět ani integrovat do existujících procesů řetězce) objevil data ze zdrojového objektu (například datové krychle) jste se rozhodli otevřete Centrum cílové tabulky.
 
 ## <a name="getting-started"></a>Začínáme
+
+> [!TIP]
+>
+> Postup použití konektoru SAP BW Open centra, najdete v části [načtení dat ze SAP Business Warehouse (BW) pomocí služby Azure Data Factory](load-sap-bw-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

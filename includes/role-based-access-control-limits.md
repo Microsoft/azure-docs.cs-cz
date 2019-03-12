@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/22/2018
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: df6164b974494aba17e9959b6d963f4e028b2aad
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e58778e60eff93847e55126f3c42733cec1afdaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344178"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553415"
 ---
 | Prostředek | Omezení |
 | --- | --- |
-| [Přiřazení rolí pro prostředky Azure za předplatné Azure](../articles/role-based-access-control/overview.md) | 2000 |
-| [Vlastní role pro prostředky Azure na tenanta](../articles/role-based-access-control/custom-roles.md) | 2000 |
+| [Přiřazení rolí pro prostředky Azure za předplatné Azure](../articles/role-based-access-control/overview.md) | 2 000 |
+| [Vlastní role pro prostředky Azure na tenanta](../articles/role-based-access-control/custom-roles.md) | 2 000 |

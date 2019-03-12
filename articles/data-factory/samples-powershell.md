@@ -2,21 +2,20 @@
 title: Ukázky Azure Powershellu pro službu Azure Data Factory | Dokumentace Microsoftu
 description: Ukázky Azure Powershellu – skripty, které vám pomůžou vytvářet a spravovat datové továrny.
 services: data-factory
-author: douglaslMS
-manager: douglaslMS
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 514e119211e92e6e056caaf895bce1bce70fa53f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: c822ebdea2bab6f4c6c05cf2d4a4b822d6e02f3f
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018921"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575677"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Ukázky Azure Powershellu pro Azure Data Factory
 

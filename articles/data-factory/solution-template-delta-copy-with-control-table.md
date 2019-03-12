@@ -1,5 +1,5 @@
 ---
-title: Rozdílové kopírování z databáze s tabulkou ovládacího prvku s Azure Data Factory | Dokumentace Microsoftu
+title: Rozdílové kopírování databází pomocí ovládacího prvku tabulky s Azure Data Factory | Dokumentace Microsoftu
 description: Zjistěte, jak přírůstkově kopírovat nové nebo aktualizované řádky pouze z databáze pomocí služby Azure Data Factory pomocí šablony řešení.
 services: data-factory
 documentationcenter: ''
@@ -13,41 +13,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: 23e1255013cd5e52166fe0e59a8931dd9ecd81a0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967167"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771153"
 ---
-# <a name="delta-copy-from-database-with-control-table"></a>Rozdílové kopírování databází pomocí ovládacího prvku tabulka
+# <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílové kopírování z databáze s tabulkou ovládacího prvku
 
-Pokud chcete přírůstkové načtení změn (nové nebo aktualizované řádky) pouze z tabulky v databázi do Azure s tabulkou externího ovládacího prvku uložení hodnoty meze.  K dispozici šablona je určena pro tento případ. 
+Tento článek popisuje šablony, která je k dispozici pro přírůstkové načtení nové nebo aktualizované řádky z tabulky databáze do Azure pomocí externího ovládacího prvku tabulky, který slouží k uložení hodnoty meze.
 
-Tato šablona vyžaduje že schématu zdrojové databáze musí obsahující časové razítko sloupec nebo zvýšení klíč k identifikaci nových nebo aktualizovaných řádků.
+Tato šablona vyžaduje, že schématu zdrojové databáze obsahuje časové razítko sloupec nebo zvýšení klíč k identifikaci nových nebo aktualizovaných řádků.
 
-Pokud máte sloupec časového razítka ve zdrojové databázi k identifikaci nových nebo aktualizovaných řádků, ale nechcete, aby k vytvoření externího ovládacího prvku tabulky povolit rozdílové kopírování, můžete použít nástroj pro kopírování dat zobrazíte kanál, který používá aktivační událost naplánované době jako proměnné pro čtení nové řádky pouze ze zdrojové databáze.
+>[!NOTE]
+> Pokud máte sloupec časového razítka ve zdrojové databázi k identifikaci nových nebo aktualizovaných řádků, ale nechcete, aby k vytvoření externího ovládacího prvku tabulky pro rozdílové kopírování, můžete místo toho použít [nástroj pro kopírování dat Azure Data Factory](copy-data-tool.md) zobrazíte kanálu. Tento nástroj používá aktivační událost naplánované době jako proměnnou ke čtení ze zdrojové databáze nové řádky.
 
 ## <a name="about-this-solution-template"></a>O tato šablona řešení
 
-Tato šablona vždy nejprve načte staré hodnoty meze a porovná ho s aktuální hodnoty meze. Potom zkopíruje pouze změny ze zdrojové databáze na základě porovnání mezi 2 hodnoty meze.  Jakmile budete hotovi, uloží novou hodnotu meze do externího ovládacího prvku tabulky pro další čas načítání rozdílová data.
+Tato šablona nejdřív načte staré hodnoty meze a porovná ho s aktuální hodnoty meze. Potom zkopíruje pouze změny ze zdrojové databáze založené na porovnání mezi službou dvěma hodnotami mezí. Nakonec uloží novou hodnotu meze do externího ovládacího prvku tabulky pro další čas načítání rozdílová data.
 
 Šablona obsahuje čtyři aktivity:
--   A **vyhledávání** aktivity k načtení původní hodnoty meze uložené v tabulce externího ovládacího prvku.
--   A **vyhledávání** aktivitu k získání aktuální hodnoty meze ze zdrojové databáze.
--   A **kopírování** aktivity kopírování změn pouze ze zdrojové databáze do cílového úložiště. Dotaz používá k identifikaci změny ze zdrojové databáze v aktivitě kopírování je podobné jako "vybrat * z Data_Source_Table kde TIMESTAMP_Column >"poslední meze"a TIMESTAMP_Column < ="aktuální meze"'.
--   A **SqlServerStoredProcedure** aktivity zapsat aktuální hodnotu meze do externího ovládacího prvku tabulky pro rozdílové kopírování při příštím.
+- **Vyhledávání** načte stará hodnota meze, která je uložena v tabulce externího ovládacího prvku.
+- Jiné **vyhledávání** aktivita získá aktuální hodnotu meze ze zdrojové databáze.
+- **Kopírování** zkopíruje pouze změny ze zdrojové databáze do cílového úložiště. Dotaz, který identifikuje změny ve zdrojové databázi je podobný "vybrat * z Data_Source_Table kde TIMESTAMP_Column >"poslední meze"a TIMESTAMP_Column < ="aktuální meze"'.
+- **SqlServerStoredProcedure** zapíše aktuální hodnotu meze do externího ovládacího prvku tabulky pro rozdílové kopírování při příštím.
 
 Šablona definuje pěti parametrů:
--   Parametr *Data_Source_Table_Name* je název tabulky ze zdrojové databáze, ve které chcete načíst data.
--   Parametr *Data_Source_WaterMarkColumn* název sloupce ve zdrojové tabulce, který slouží k identifikaci nových nebo aktualizovaných řádků. Za normálních okolností typ tohoto sloupce může být datum a čas nebo INT atd.
--   Parametr *Data_Destination_Folder_Path* nebo *Data_Destination_Table_Name* je místem, kde se data kopírují do cílového úložiště.
--   Parametr *Control_Table_Table_Name* je název tabulky externího ovládacího prvku pro ukládání hodnoty horní meze.
--   Parametr *Control_Table_Column_Name* název sloupce v tabulce externího ovládacího prvku pro ukládání hodnoty horní meze.
+- *Data_Source_Table_Name* je tabulka ve zdrojové databázi, kterou chcete načíst data.
+- *Data_Source_WaterMarkColumn* je název sloupce ve zdrojové tabulce, která se používá k identifikaci nových nebo aktualizaci řádků. Typ tohoto sloupce je obvykle *data a času*, *INT*, nebo podobného.
+- *Data_Destination_Folder_Path* nebo *Data_Destination_Table_Name* je místem, kde se data zkopírují do za cílového úložiště.
+- *Control_Table_Table_Name* je tabulka externího ovládacího prvku, který slouží k uložení hodnoty meze.
+- *Control_Table_Column_Name* je sloupec v tabulce externího ovládacího prvku, který slouží k uložení hodnoty meze.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak použít tuto šablonu řešení
 
-1. Prozkoumat zdrojová tabulka, kterou chcete načíst a definovat meze sloupec, který můžete použít k rozlišení nových nebo aktualizovaných řádků. Za normálních okolností typ tohoto sloupce může být datum a čas nebo INT atd. a jeho data udržování zvyšuje při přidání nových řádků.  Z ukázkové tabulky zdroje (název tabulky: data_source_table) níže, můžete použít sloupec *LastModifytime* jako sloupec meze.
+1. Prozkoumejte zdroje tabulky, který chcete načíst a definovat meze sloupec, který slouží k identifikaci nových nebo aktualizovaných řádků. Typ tohoto sloupce může být *data a času*, *INT*, nebo podobného. V tomto sloupci Hodnota se zvyšuje při přidání nových řádků. Z následující ukázka zdrojovou tabulku (data_source_table), můžeme použít *LastModifytime* sloupec jako sloupec meze.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -62,7 +63,7 @@ Tato šablona vždy nejprve načte staré hodnoty meze a porovná ho s aktuáln�
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. Vytvoření ovládacího prvku tabulky v SQL server nebo SQL Azure pro ukládání hodnoty horní meze pro rozdílové načítání dat. V následujícím příkladu můžete zobrazit název ovládacího prvku tabulky je *watermarktable*. V něm, je název sloupce pro ukládání hodnoty horní meze *WatermarkValue* a jejím typem je *data a času*.
+2. V systému SQL Server nebo databázi SQL Azure pro ukládání hodnoty horní meze pro rozdílové načítání dat vytvořte tabulku ovládacího prvku. V následujícím příkladu je název ovládacího prvku tabulky *watermarktable*. V této tabulce *WatermarkValue* je sloupec, který slouží k uložení hodnoty meze, a její typ je *data a času*.
 
     ```sql
             create table watermarktable
@@ -73,7 +74,7 @@ Tato šablona vždy nejprve načte staré hodnoty meze a porovná ho s aktuáln�
             VALUES ('1/1/2010 12:00:00 AM')
     ```
     
-3. Vytvořit uloženou proceduru na stejném serveru SQL nebo SQL Azure použité k vytvoření ovládacího prvku tabulky. Uložená procedura se používá k zápisu do externího ovládacího prvku tabulky pro další čas načítání rozdílových dat nová hodnota meze.
+3. Vytvořte uloženou proceduru ve stejné instanci systému SQL Server nebo databázi SQL Azure, který jste použili k vytvoření tabulky ovládacího prvku. Uložená procedura se používá k zápisu novou hodnotu meze do externího ovládacího prvku tabulky pro další čas načítání rozdílová data.
 
     ```sql
             CREATE PROCEDURE update_watermark @LastModifiedtime datetime
@@ -87,43 +88,43 @@ Tato šablona vždy nejprve načte staré hodnoty meze a porovná ho s aktuáln�
             END
     ```
     
-4. Přejděte do šablony **rozdílové kopírování z databáze**a vytvořit **nové připojení** k kde kopírování dat ze zdrojové databáze.
+4. Přejděte **rozdílové kopírování z databáze** šablony. Vytvoření **nový** připojení, který chcete kopírovat data ze zdrojové databáze.
 
     ![Vytvoření nového připojení ke zdrojové tabulky](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. Vytvoření **nové připojení** na vaše cílové úložiště dat, ve kterém kopírování dat do.
+5. Vytvoření **nový** připojení do cílového úložiště dat, který chcete zkopírovat data.
 
     ![Vytvořit nové připojení do cílové tabulky](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. Vytvoření **nové připojení** externího ovládacího prvku tabulky a uložené procedury.  Jde o připojení k databázi, ve kterém jste vytvořili tabulku ovládacího prvku a uložené procedury v kroku #2 a #3.
+6. Vytvoření **nový** připojení externího ovládacího prvku tabulky a uložené procedury, kterou jste vytvořili v kroku 2 a 3.
 
     ![Vytvořit nové připojení k úložišti ovládacího prvku tabulky dat](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Klikněte na tlačítko **pomocí této šablony**.
+7. Vyberte **pomocí této šablony**.
 
      ![Použít tuto šablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
-8. K dispozici v panelu kanálu uvidíte, jak je znázorněno v následujícím příkladu:
+8. Zobrazí se dostupné kanál, jak je znázorněno v následujícím příkladu:
 
-     ![Kontrola kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+     ![Zkontrolujte kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Klikněte na aktivitu uložená procedura, vyberte **název uložené procedury**, klikněte na tlačítko **parametr importu** a klikněte na tlačítko **Přidat dynamický obsah**.  
+9. Vyberte **uloženou proceduru**. Pro **název uložené procedury**, zvolte **[update_watermark]**. Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
 
-     ![Aktivita uložená procedura Set](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+     ![Nastavte aktivitu uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. Zapsat obsah **@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** a klikněte na tlačítko **Dokončit**.  
+10. Zapsat obsah  **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** a pak vyberte **Dokončit**.  
 
-     ![Zapsat obsah pro parametr pro uloženou proceduru](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+     ![Zapsat obsah pro parametry uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      
-11. Klikněte na tlačítko **ladění**, vstupní parametry a klikněte na tlačítko **Dokončit**.
+11. Vyberte **ladění**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na tlačítko ladění](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![Vyberte ** ladění **](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-12. K dispozici na panelu výsledků uvidíte, jak je znázorněno v následujícím příkladu:
+12. Výsledek podobný následujícím příkladu se zobrazí:
 
     ![Zkontrolujte výsledky](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
 
-13. Můžete vytvořit nové řádky ve zdrojové tabulce.  Ukázka sql k vytvoření nových řádků může být jako následující:
+13. Můžete vytvořit nové řádky ve zdrojové tabulce. Tady je ukázka jazyka SQL k vytvoření nových řádků:
 
     ```sql
             INSERT INTO data_source_table
@@ -132,16 +133,17 @@ Tato šablona vždy nejprve načte staré hodnoty meze a porovná ho s aktuáln�
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-13. Opětovné spuštění kanálu kliknutím **ladění**, vstupní parametry a klikněte na tlačítko **Dokončit**.
+14. Opětovné spuštění kanálu, vyberte **ladění**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na tlačítko ladění](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![Vyberte ** ladění **](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-14. Zobrazí se pouze nové řádky, které byly zkopírovány do cíle.
+    Uvidíte, že byly zkopírovány pouze nové řádky do cíle.
 
-15. (Volitelné) Pokud vyberete jako cíl dat SQL Data Warehouse, musíte také vstupní připojení služby Azure blob storage jako pracovní, která vyžaduje SQL Data Warehouse Polybase.  Ujistěte se prosím, že již vytvořeno kontejneru v úložišti objektů blob.  
+15. (Volitelné:) Pokud vyberete jako cíl dat SQL Data Warehouse, musíte také zadat připojení k úložišti objektů Blob v Azure pro přípravu, kterou vyžaduje SQL Data Warehouse Polybase. Ujistěte se, že kontejner již byl vytvořen v úložišti objektů Blob.
     
     ![Konfigurace funkce Polybase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
 ## <a name="next-steps"></a>Další postup
 
-- [Úvod do Azure Data Factory](introduction.md)
+- [Hromadné kopírování databází pomocí ovládacího prvku tabulky s Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+- [Kopírování souborů z několika kontejnerů pomocí Azure Data Factory](solution-template-copy-files-multiple-containers.md)

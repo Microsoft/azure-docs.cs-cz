@@ -3,21 +3,20 @@ title: Programově monitorovat objekt pro vytváření dat Azure | Dokumentace M
 description: Zjistěte, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK).
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 938392cea3e6fe001e662a60e17b936415e7e4f2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: ed1d6ab96a7658880a8784c5e03c3787cf87a8ba
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439275"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576306"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové monitorování služby Azure data factory
 Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK). 

@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: e33606e0b5be0db5306cfd42f87baf59671eb2a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451725"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569021"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>Mapování datového toku zdroj transformace
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Transformace zdrojového nakonfiguruje zdroje dat, který chcete použít k vložení dat do datového toku. V jedné toku dat může mít více než jedna transformace zdroje. Vždy začínají návrh vašich toků dat se zdrojem.
+Transformace zdrojového nakonfiguruje zdroje dat, který chcete použít k vložení dat do datového toku. V jedné toku dat může mít více než jedna transformace zdroje. Vždy začínají návrh vašich dat toky se transformace zdroje.
 
 > [!NOTE]
-> Každý tok dat vyžaduje alespoň jeden zdroj transformace. Přidejte tolik další zdroje, potřebujete k dokončení transformace data. Můžete připojit k těmto zdrojům společně s spojení nebo Union transformace.
+> Každý tok dat vyžaduje alespoň jeden zdroj transformace. Přidejte tolik další zdroje, potřebujete k dokončení transformace data. Můžete připojit k těmto zdrojům společně s spojení nebo Union transformace. Při ladění váš tok dat v ladicích relací budou číst data ze zdroje pomocí nastavení vzorkování nebo omezení ladění zdroje. Žádná data se však zapíšou do jímky, dokud neprovedete váš tok dat z aktivity toku dat kanálu. 
 
 ![Možnosti transformace zdroje](media/data-flow/source.png "zdroje")
 
-Každá transformace toku dat zdroje musí být přidružená přesně jednu datovou sadu datové továrny, který definuje tvar a umístění dat k zápisu nebo čtení z. Můžete použít zástupné znaky a soubor seznamů ve zdroji pro práci s více než jeden soubor současně.
+Každá transformace toku dat zdroje musí být přidružená přesně jednu datovou sadu služby Data Factory. Datová sada definuje tvar a umístění dat k zápisu nebo čtení z. Můžete použít zástupné znaky a soubor seznamů ve zdroji pro práci s více než jeden soubor současně při použití souboru zdroje.
 
 ## <a name="data-flow-staging-areas"></a>Tok dat pracovní oblasti
 
@@ -43,7 +43,7 @@ Pokud zdrojové sloupce se změní často, vyberte Povolit odchylek schématu. T
 Pokud příchozí verze zdroje dat se neshoduje s definované schéma, se nezdaří spuštění toku dat.
 
 ### <a name="sampling"></a>Vzorkování
-Pomocí vzorkování můžete omezit počet řádků ze zdroje.  To je užitečné, když potřebujete jen ukázkou svá zdrojová data pro účely ladění a testování.
+Pomocí vzorkování můžete omezit počet řádků ze zdroje.  To se hodí při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
 ## <a name="define-schema"></a>Definovat schéma
 

@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a48fecd910d87af23a9385270878b0d1b6737007
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ded681b8776343a778f3e9704fe05d43e8d74774
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452534"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550516"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -64,7 +64,7 @@ Další informace o definování schématu najdete v článku [Formát schématu
 
 ## <a name="generate-data"></a>Generování dat
 
-Datový soubor popisuje seznam publikací k indexování – každý řádek určuje hodnoty atributů dokumentu ve [formátu JSON](http://json.org/).  Následující příklad je jeden řádek ze souboru *Academic.data*, který je formátovaný pro zlepšení čitelnosti:
+Datový soubor popisuje seznam publikací k indexování – každý řádek určuje hodnoty atributů dokumentu ve [formátu JSON](https://json.org/).  Následující příklad je jeden řádek ze souboru *Academic.data*, který je formátovaný pro zlepšení čitelnosti:
 
 ```
 ...

@@ -3,20 +3,20 @@ title: Vytvoření prostředí Azure integration runtime ve službě Azure Data 
 description: Zjistěte, jak vytvořit prostředí Azure integration runtime ve službě Azure Data Factory, který slouží ke kopírování dat a odeslání aktivit transformace.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 93777a3d9ecbb6c2749594985494975f61cc1948
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455696"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576034"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Vytvoření a konfigurace prostředí Azure Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Další informace o prostředí IR najdete v tématu [prostředí Integration runtime](concepts-integration-runtime.md).

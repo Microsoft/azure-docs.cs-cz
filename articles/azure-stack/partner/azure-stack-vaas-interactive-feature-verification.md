@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594300"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765998"
 ---
 # <a name="interactive-feature-verification-testing"></a>Ověřovací testování interaktivní funkce  
 
@@ -35,13 +35,13 @@ Tento článek popisuje jednoduchý scénář ruční. Test ověří, Výměna d
 
 ## <a name="overview-of-interactive-testing"></a>Přehled interaktivní testování
 
-Test pro náhradní disk je běžný scénář. V tomto příkladu má test sedmi kroků:
+Test pro náhradní disk je běžný scénář. V tomto příkladu test má pět kroků:
 
-1. Vytvořte nový **průchodu testů** pracovního postupu
-1. Vyberte **identifikace Test na disku**
-1. Provedení ručního kroku po zobrazení výzvy
-1. Podívat se na výsledek scénáře
-1. Výsledek testu poslat Microsoftu
+1. Vytvořte nový **průchodu testů** pracovního postupu.
+2. Vyberte **disku identifikace Test**.
+3. Provedení ručního kroku po zobrazení výzvy.
+4. Podívat se na výsledek tohoto scénáře.
+5. Výsledek testu poslat Microsoftu.
 
 ## <a name="create-a-new-test-pass"></a>Vytvořit nový průchodu testu
 

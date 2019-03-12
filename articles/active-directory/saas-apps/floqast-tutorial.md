@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 013cb57d-567c-44d0-a119-e6ba6e607153
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 897759d6b4d8f71fab5c2ac5c14ce230ac6660af
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: f2db0ab90c1444518c80a1a83204147dc1d8ad4b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990454"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Kurz: Integrace Azure Active Directory s FloQast
 

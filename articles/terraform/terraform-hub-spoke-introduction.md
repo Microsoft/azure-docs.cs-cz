@@ -2,19 +2,19 @@
 title: Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure
 description: Kurz ilustrující vytvoření referenční architektury celý hybridní sítě v Azure pomocí Terraformu
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, partnerský vztah virtuální sítě, síťové virtuální zařízení
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 25ba7016c10fc13357b403efae6e4996de59b624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 336903b6cd451e25f7c696e445be724989c39996
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411500"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761935"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Kurz: Vytvoření centra hvězdicové hybridní topologie sítě s využitím Terraformu v Azure
 

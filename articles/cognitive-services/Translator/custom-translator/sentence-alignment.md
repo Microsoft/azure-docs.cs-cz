@@ -5,16 +5,16 @@ description: Během provádění trénování jsou věty, které jsou k dispozic
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: a3cbc3d6546a3fcea0fe3aa3bfb175f18b4622af
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737089"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777154"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování věty a zarovnání v paralelní dokumenty
 

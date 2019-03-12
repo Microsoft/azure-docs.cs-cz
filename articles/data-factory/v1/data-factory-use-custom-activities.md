@@ -3,22 +3,22 @@ title: Použití vlastních aktivit v kanálu Azure Data Factory
 description: Zjistěte, jak vytvořit vlastní aktivity a použít je v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6d7aeef415fcc53fda2f5d66d748dd38f6d644fb
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077484"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576731"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ V tomto návodu spustit vaše vlastní aktivity .NET pomocí služby Azure Batch
 
 Pro tento kurz vytvoření účtu Azure Batch s fondem virtuálních počítačů. Postup je následující:
 
-1. Vytvoření **účtu Azure Batch** pomocí [webu Azure portal](http://portal.azure.com). Zobrazit [vytvořit a spravovat účet Azure Batch] [ batch-create-account] článku instrukce.
+1. Vytvoření **účtu Azure Batch** pomocí [webu Azure portal](https://portal.azure.com). Zobrazit [vytvořit a spravovat účet Azure Batch] [ batch-create-account] článku instrukce.
 2. Poznamenejte si název účtu služby Azure Batch, klíč účtu, identifikátor URI a název fondu. Je k vytvoření služby propojené služby Azure Batch budete potřebovat.
     1. Na domovské stránce účtu Azure Batch, se zobrazí **URL** v následujícím formátu: `https://myaccount.westus.batch.azure.com`. V tomto příkladu **myaccount** je název účtu služby Azure Batch. Identifikátor URI, které můžete použít v definici propojené služby je adresa URL bez názvu účtu. Například: `https://<region>.batch.azure.com`.
     2. Klikněte na tlačítko **klíče** v levé nabídce a zkopírujte **primární přístupový klíč**.
@@ -1040,15 +1040,15 @@ namespace DataFactoryAPITestApp
 [azure-powershell-install]: https://github.com/Azure/azure-sdk-tools/releases
 
 
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 [new-azure-batch-account]: https://msdn.microsoft.com/library/mt125880.aspx
 [new-azure-batch-pool]: https://msdn.microsoft.com/library/mt125936.aspx
-[azure-batch-blog]: http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
+[azure-batch-blog]: https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
 
-[nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
+[nuget-package]: https://go.microsoft.com/fwlink/?LinkId=517478
+[adf-developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md

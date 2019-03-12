@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 03/12/2019
+ms.openlocfilehash: 8cd4cf12390ff29754b55d2827ea4750e7123a27
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660720"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730481"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
@@ -32,12 +32,18 @@ Query Store je funkce opt-in, proto není ve výchozím nastavení na server akt
 ### <a name="enable-query-store-using-the-azure-portal"></a>Povolit Query Store pomocí webu Azure portal
 1. Přihlaste se k webu Azure portal a vyberte váš server Azure Database for PostgreSQL.
 2. Vyberte **parametry serveru** v **nastavení** části nabídky.
-3. Hledat **pg_qs.query_capture_mode** parametru.
-4. Aktualizujte hodnotu NONE nahoru a uložte.
+3. Hledat `pg_qs.query_capture_mode` parametru.
+4. Nastavte hodnotu na `TOP` a **Uložit**.
 
-Případně můžete nastavit tento parametr pomocí Azure CLI.
+Pokud chcete povolit čekání statistické údaje ve vašich Query Store: 
+5. Hledat `pgms_wait_sampling.query_capture_mode` parametru.
+6. Nastavte hodnotu na `ALL` a **Uložit**.
+
+
+Případně můžete nastavit tyto parametry s využitím rozhraní příkazového řádku Azure.
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
+az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
 Povolit pro první dávku dat pro uchování v databázi azure_sys až 20 minut.

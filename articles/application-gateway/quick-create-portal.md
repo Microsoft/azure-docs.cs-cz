@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 325e06cadd2593684bc610a0387829541bea30b2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 49035bc94f0ed51abb5f7e7a4af8eb1a0b08cfe4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311793"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539821"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure portal
 
-V tomto rychlém startu se dozvíte, jak pomocí portálu Azure Portal rychle vytvořit aplikační bránu se dvěma virtuálními počítači v back-endovém fondu. Také se naučíte bránu otestovat, abyste si mohli ověřit, že správně funguje. Pomocí služby Azure Application Gateway, Přímá provozu webové aplikace ke konkrétním prostředkům pomocí: přiřazování naslouchacích procesů k portům, vytváření pravidel a přidávání prostředků do back-endový fond.
+V tomto rychlém startu se dozvíte, jak pomocí webu Azure portal k vytvoření služby application gateway.  Po vytvoření aplikační brány, můžete otestovat a ujistěte se, že funguje správně. Pomocí služby Azure Application Gateway řízení provozu webové aplikace ke konkrétním prostředkům prostřednictvím přiřazení naslouchacích procesů k portům, vytváření pravidel a přidávání prostředků do back-endový fond. Z důvodu zjednodušení tento článek používá jednoduché uspořádání s veřejnou IP adresu front-endu, základní naslouchací proces pro hostování jedné lokalitě v této brány application gateway, dva virtuální počítače pro back-endového fondu a pravidel směrování základní požadavek.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -27,7 +27,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a jinou pro back-end serverů. Virtuální síť můžete vytvořit současně s aplikační bránou.
+U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě. Můžete vytvořit novou virtuální síť, nebo použijte již existující. V tomto příkladu vytvoříme nové virtuální sítě. Virtuální síť můžete vytvořit současně s aplikační bránou. Do samostatných podsítí se vytvářejí instance Application Gateway. V tomto příkladu vytvoříte dvě podsítě: jednu pro application gateway a jinou pro back-end serverů.
 
 1. Vyberte **vytvořit prostředek** v nabídce vlevo na webu Azure portal. **Nový** zobrazí se okno.
 
@@ -46,7 +46,7 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
 
 ### <a name="settings-page"></a>Stránka Nastavení
 
-1. Na **nastavení** stránce v části **konfiguraci podsítě**vyberte **zvolit virtuální síť**.
+1. Na **nastavení** stránce v části **konfiguraci podsítě**vyberte **zvolit virtuální síť**. <br>
 
 2. Na **zvolte virtuální síť** stránce **vytvořit nový**a potom zadejte hodnoty pro následující nastavení virtuální sítě:
 
@@ -62,17 +62,28 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
 
 3. Vyberte **OK** se vrátíte **nastavení** stránky.
 
-4. V části **konfigurace protokolu IP front-endu**, ověřte **IP adres jako typu** je nastavena na **veřejné**. V části **veřejnou IP adresu**, ověřte **vytvořit nový** zaškrtnuto. 
+4. Zvolte **konfigurace protokolu IP front-endu**. V části **konfigurace protokolu IP front-endu**, ověřte **IP adres jako typu** je nastavena na **veřejné**. V části **veřejnou IP adresu**, ověřte **vytvořit nový** zaškrtnuto. <br>Můžete nakonfigurovat IP front-endu být veřejné a privátní podle vašemu případu použití. V tomto příkladu vybereme možnost veřejná IP adresa front-endu. 
 
 5. Zadejte *myAGPublicIPAddress* pro název veřejné IP adresy. 
 
-6. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.
+6. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.<br>Vybereme možnost výchozí hodnoty v tomto článku pro zjednodušení, ale můžete nakonfigurovat vlastní hodnoty u ostatních nastavení v závislosti na vašemu případu použití 
 
 ### <a name="summary-page"></a>Stránka souhrnu
 
 Zkontrolujte nastavení na **Souhrn** stránce a pak vyberte **OK** vytvořit virtuální síť, veřejnou IP adresu a application gateway. Může trvat několik minut, než Azure k vytvoření služby application gateway. Počkejte na úspěšné dokončení nasazení přejde k další části.
 
-## <a name="add-a-subnet"></a>Přidání podsítě
+## <a name="add-backend-pool"></a>Přidat back-endový fond
+
+Back-endového fondu se používá k směrovat požadavky do back-end serverů, které budou sloužit pro požadavek. Back-endové fondy se může skládat ze síťových rozhraní škálovací sady virtuálních počítačů, veřejné IP adresy, interní IP adresy nebo plně kvalifikované názvy (plně kvalifikovaný název domény) a více tenantů back EndY, jako je Azure App Service. Budete muset přidat cíle vaší back-endu do back-endový fond.
+
+V tomto příkladu budeme používat virtuální počítače jako cíl back-endu. Můžeme použít stávající virtuální počítače nebo vytvořit nové. V tomto příkladu vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu application gateway. Chcete-li to provést, provedeme následující:
+
+1. Vytvořit novou podsíť *myBackendSubnet*, ve kterém se vytvoří nové virtuální počítače. 
+2. Vytvořit 2 nové virtuální počítače, *myVM* a *myVM2*, které se použijí jako servery back-end.
+3. Instalace služby IIS na virtuálních počítačích a ověřte, že službu application gateway vytvořil úspěšně.
+4. Přidání serverů back-endu do back-endový fond.
+
+### <a name="add-a-subnet"></a>Přidání podsítě
 
 Přidání podsítě do virtuální sítě, kterou jste vytvořili pomocí následujících kroků:
 
@@ -80,42 +91,30 @@ Přidání podsítě do virtuální sítě, kterou jste vytvořili pomocí násl
 
 2. Vyberte **podsítě** v levé nabídce a pak vyberte **+ podsíť**. 
 
-    ![Vytvoření podsítě](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
+   ![Vytvoření podsítě](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
 3. Z **přidat podsíť** zadejte *myBackendSubnet* pro **název** podsíť a pak vyberte **OK**.
-
-## <a name="create-backend-servers"></a>Vytvoření serverů back-end
-
-V tomto příkladu vytvoříte dva virtuální počítače, které Azure používá jako servery back-end pro službu application gateway. Také nainstalujte IIS na virtuálních počítačích, chcete-li ověřit, že Azure application gateway úspěšně vytvořil.
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 1. Na webu Azure portal, vyberte **vytvořit prostředek**. **Nový** zobrazí se okno.
-
-2. Vyberte **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v **doporučené** seznamu. **Vytvoření virtuálního počítače** se zobrazí stránka.
-
+2. Vyberte **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v **doporučené** seznamu. **Vytvoření virtuálního počítače** se zobrazí stránka.<br>Služba Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, v jeho back-endový fond. V tomto příkladu použijete Windows Server 2016 Datacenter.
 3. Zadejte tyto hodnoty **Základy** kartu pro následující nastavení virtuálního počítače:
 
     - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro název skupiny prostředků.
     - **Název virtuálního počítače**: Zadejte *myVM* pro název virtuálního počítače.
     - **Uživatelské jméno**: Zadejte *azureuser* pro uživatelské jméno správce.
     - **Heslo**: Enter *Azure123456!* k zadání hesla správce.
-
 4. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Disky**.  
-
 5. Přijměte **disky** karta výchozí hodnoty a pak vyberte **Další: Sítě**.
+6. Na **sítě** kartu, ověřte, že **myVNet** vybraná **virtuální síť** a **podsítě** je nastavena na  **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.<br>Služba Application Gateway může komunikovat s instancemi mimo virtuální síť, která je v, ale potřebujeme zajistit, že existuje připojení pomocí IP adresy. 
+7. Na **správu** kartu, nastavte **Diagnostika spouštění** k **vypnout**. Přijměte ostatní výchozí hodnoty a pak vyberte **revize + vytvořit**.
+8. Na **zkontrolujte + vytvořit** kartu, zkontrolujte nastavení, opravte všechny chyby ověření a potom vyberte **vytvořit**.
+9. Počkejte na dokončení před pokračováním vytváření virtuálního počítače.
 
-6. Na **sítě** kartu, ověřte, že **myVNet** vybraná **virtuální síť** a **podsítě** je nastavena na  **myBackendSubnet**. Přijměte ostatní výchozí hodnoty a pak vyberte **Další: Správa**.
+### <a name="install-iis-for-testing"></a>Instalace služby IIS pro účely testování
 
-8. Na **správu** kartu, nastavte **Diagnostika spouštění** k **vypnout**. Přijměte ostatní výchozí hodnoty a pak vyberte **revize + vytvořit**.
-
-9. Na **zkontrolujte + vytvořit** kartu, zkontrolujte nastavení, opravte všechny chyby ověření a potom vyberte **vytvořit**.
-
-10. Počkejte na dokončení před pokračováním vytváření virtuálního počítače.
-
-### <a name="install-iis"></a>Instalace služby IIS
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+V tomto příkladu jsme se instalace služby IIS na virtuální počítače pouze pro účely ověření, že Azure application gateway úspěšně vytvořil. 
 
 1. Otevřít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Chcete-li to provést, vyberte **Cloud Shell** z horního navigačního panelu webu Azure portal a pak vyberte **Powershellu** z rozevíracího seznamu. 
 
@@ -124,7 +123,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
     ```azurepowershell-interactive
-    Set-AzVMExtension `
+    Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -135,9 +134,9 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
       -Location EastUS
     ```
 
-3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzVMExtension** rutiny.
+3. Vytvoření druhého virtuálního počítače a instalace služby IIS pomocí kroků, které jste dříve dokončili. Použití *myVM2* pro název virtuálního počítače a **VMName** nastavení **Set-AzureRmVMExtension** rutiny.
 
-### <a name="add-backend-servers"></a>Přidání back-endových serverů
+### <a name="add-backend-servers-to-backend-pool"></a>Přidání serverů back-endu do back-endový fond
 
 1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
@@ -155,15 +154,12 @@ V tomto příkladu vytvoříte dva virtuální počítače, které Azure použí
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-1. Najít veřejnou IP adresu pro službu application gateway na jeho **přehled** stránky.
+I když služba IIS není nutné k vytvoření služby application gateway, nainstalovaná v tomto rychlém startu k ověření úspěšného vytvoření aplikační brány Azure. Služba IIS použijte k otestování application gateway:
 
-    ![Záznam veřejné IP adresy aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
-
-    Alternativně můžete vybrat **všechny prostředky**, zadejte *myAGPublicIPAddress* do vyhledávacího pole a pak vyberte ve výsledcích hledání. Azure se zobrazí na veřejnou IP adresu **přehled** stránky.
-
+1. Najít veřejnou IP adresu pro službu application gateway na jeho **přehled** stránky.![ Zaznamenat veřejné IP adresy brány aplikace](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)Alternativně můžete vybrat **všechny prostředky**, zadejte *myAGPublicIPAddress* do vyhledávacího pole a vyberte ho v hledání výsledky. Azure se zobrazí na veřejnou IP adresu **přehled** stránky.
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+3. Zkontrolujte odpovědi. Platné odpovědi ověří, jestli application gateway se úspěšně vytvořil, se může úspěšně připojit s back-endu.![Otestování aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-    ![Otestování aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

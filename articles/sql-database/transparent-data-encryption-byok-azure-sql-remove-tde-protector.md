@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: 4a3677dc5402948fc0105190d1891d709291d0f7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317726"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575235"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 
@@ -46,7 +46,7 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachovat šifrovaná prostředky dostupné
 
-1. Vytvoření [nový klíč ve službě Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ujistěte se, že tento nový klíč je vytvořen v samostatné služby key vault z potenciálně napadeného ochrana TDE, protože je zřízený řízení přístupu na úrovni trezoru. 
+1. Vytvoření [nový klíč ve službě Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Ujistěte se, že tento nový klíč je vytvořen v samostatné služby key vault z potenciálně napadeného ochrana TDE, protože je zřízený řízení přístupu na úrovni trezoru.
 2. Přidat nový klíč k serveru pomocí [přidat AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny a aktualizovat ho jako novou ochrana TDE serveru.
 
    ```powershell
@@ -74,12 +74,12 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Přijmout [zálohování nového klíče](/powershell/module/az.keyvault/backup-azurekeyvaultkey) ve službě Key Vault.
+4. Přijmout [zálohování nového klíče](/powershell/module/az.keyvault/backup-azkeyvaultkey) ve službě Key Vault.
 
    ```powershell
    <# -OutputFile parameter is optional; 
    if removed, a file name is automatically generated. #>
-   Backup-AzureKeyVaultKey `
+   Backup-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
@@ -93,7 +93,7 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -Name <KeyVaultKeyName>
    ```
  
-6. Obnovení klíče do služby Key Vault v budoucnu pomocí [obnovení AzKeyVaultKey](/powershell/module/az.keyvault/restore-azurekeyvaultkey) rutiny:
+6. Obnovení klíče do služby Key Vault v budoucnu pomocí [obnovení AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) rutiny:
    ```powershell
    Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `

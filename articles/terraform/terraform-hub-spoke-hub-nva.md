@@ -2,19 +2,19 @@
 title: Vytvoření zařízení virtuální sítě centra s využitím Terraformu v Azure
 description: Implementuje kurz vytvoření virtuální sítě rozbočovače, který funguje jako společný bod připojení mezi všech ostatních sítí
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, centra s paprsky, rozbočovače.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: ec729a1a4ca63149b4060046ea1206b7a0e520c7
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6fd81403d7c58fc196326d360aeccea9354f1088
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411432"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762482"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Kurz: Vytvoření zařízení virtuální sítě centra s využitím Terraformu v Azure
 

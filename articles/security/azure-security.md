@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7c76f7c5810370fa396b81bcc16e7e2204393bc1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247541"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543354"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -287,7 +287,7 @@ Můžete spravovat seznam serverů DNS používaných virtuální sítě na port
 
 ### <a name="azure-dns"></a>Azure DNS
 [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx), nebo DNS, je zodpovědný za převod (nebo řešení) názvu webu nebo služby k její IP adrese. [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) je hostitelská služba určená pro domény DNS a zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. DNS podporuje aspekty dostupnosti chaloupka zabezpečení "CIA".
-### <a name="log-analytics-nsgs"></a>Log Analytics skupin zabezpečení sítě
+### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor protokolů skupiny zabezpečení sítě
 Můžete povolit následující kategorie diagnostických protokolů pro skupiny zabezpečení sítě:
 -   událost: Obsahuje položky, pro které skupina NSG pravidla se použijí u virtuálních počítačů a instancí rolí na základě adresy MAC. Stav pro tato pravidla shromažďovaných každých 60 sekund.
 

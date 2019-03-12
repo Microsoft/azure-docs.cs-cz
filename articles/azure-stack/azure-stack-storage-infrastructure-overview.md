@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: ''
-ms.date: 02/22/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
+ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: e843e09bf3a70f6deaa406642e33acc88f2b0189
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 4a8287d7ca4da380ad7c2b1e039ab3058ca07a96
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808437"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760269"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Spravovat infrastrukturu úložiště pro službu Azure Stack
 

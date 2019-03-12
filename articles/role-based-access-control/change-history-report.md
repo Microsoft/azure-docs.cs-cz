@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a06b7f66742ad7e97e4ae2ab57aabf15f21faf3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957724"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535542"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit se změny prostředků Azure RBAC
 
@@ -123,9 +123,9 @@ Tady jsou základní kroky, abyste mohli začít:
 
 1. [Konfigurovat řešení Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) pro váš pracovní prostor.
 
-1. [Zobrazení protokolů aktivit](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Activity Log Analytics je kliknout **Log Analytics** možnost.
+1. [Zobrazení protokolů aktivit](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Activity Log Analytics řešení je kliknout **Log Analytics** možnost.
 
-   ![Možnost log Analytics na portálu](./media/change-history-report/azure-log-analytics-option.png)
+   ![Azure Monitor protokoly možnost portálu](./media/change-history-report/azure-log-analytics-option.png)
 
 1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](../azure-monitor/log-query/get-started-portal.md) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../azure-monitor/log-query/portals.md).
 

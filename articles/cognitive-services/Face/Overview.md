@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455972"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588954"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
@@ -26,12 +26,12 @@ Rozhraní API pro rozpoznávání tváře poskytuje několik různých funkcí, 
 
 Rozhraní API pro rozpoznávání tváře dokáže rozpoznat lidské tváře na obrázku a vrátit souřadnice obdélníků jejich výskytu. Rozpoznávání tváře můžete volitelně extrahovat řadu souvisejících s face atributům, jako je pozice, hlavní pozice, pohlaví, věk, emoce, vousy a brýlí.
 
+> [!NOTE] 
+> Funkce detekce obličeje je k dispozici také prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale pokud chcete s daty o tvářích provádět další operace, měli byste použít rozhraní API pro rozpoznávání tváře (tuto službu).
+
 ![Obrázek ženy a muže s vykreslenými obdélníky kolem jejich tváří a zobrazeným věkem a pohlavím](./Images/Face.detection.jpg)
 
-> [!NOTE] 
-> Funkce detekce obličeje je k dispozici také prostřednictvím [rozhraní API pro počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home), ale pokud chcete s daty o tvářích provádět další operace, měli byste použít rozhraní API pro rozpoznávání tváře (tuto službu). 
-
-Další informace o detekci obličeje najdete v tématu věnovaném [rozhraní API pro rozpoznávání](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Další informace o rozpoznávání tváří, najdete v článku [příručce s postupy pro rozpoznávání tváře](face-api-how-to-topics/howtodetectfacesinimage.md), nebo přejděte [zjišťování rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) referenční dokumentaci.
 
 ## <a name="face-verification"></a>Ověření tváře
 

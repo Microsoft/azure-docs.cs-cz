@@ -3,17 +3,17 @@ title: Připojte zařízení za DevKit do aplikace Azure IoT Central | Dokumenta
 description: Jako vývojář zařízení zjistěte, jak připojit zařízení MXChip IoT DevKit do aplikace Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 150f2b9155d5e920a7394e2fa55ce28701497868
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448539"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763006"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -26,19 +26,17 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
 
+## <a name="sample-devkits-application"></a>Ukázková aplikace Devkits
 
-## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami:
 
-Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami: 
-
-- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **akcelerometr** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
+- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnetometer** (měří se podél X, Y, osy Z), **akcelerometr** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
 - Stav, který obsahuje příklad měření **stav zařízení**.
 - Měření událostí s **stiskne tlačítko B** událostí. 
 - Nastavení zobrazení **napětí**, **aktuální**, **ventilátor rychlost**a **reakcí na Incidenty** přepínací tlačítko.
 - Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění zařízení** což je vlastnost umístění stejně jako v **vyroben v** cloudové vlastnosti. 
 
-
-Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zařízení](howto-connect-devkit.md#mxchip-device-template-details)
+Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zařízení](#mxchip-device-template-details)
 
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
@@ -46,28 +44,24 @@ Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zaříze
 V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zaznamenání podrobností o připojení zařízení (**ID oboru, ID zařízení a primární klíč**).
 
 1. Přidat **skutečné zařízení** Device Explorer, vyberte **+ nový > skutečné** skutečné zařízení přidat.
+
     * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
     * Zadejte název zařízení nebo použijte navrhovaný název
-    
-    ![Přidání zařízení](media/concepts-connectivity/add-device.png)
 
+    ![Přidání zařízení](media/howto-connect-devkit/add-device.png)
 
 1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení tak, že vyberete **připojit** na stránce zařízení.
- 
-    ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
-3. Ujistěte se, že chcete uložit tyto podrobnosti, jak vám bude dočasně odpojeny z Internetu během přípravy zařízení DevKit. 
+    ![Podrobnosti připojení](media/howto-connect-devkit/device-connect.png)
 
+1. Ujistěte se, že chcete uložit tyto podrobnosti, jak vám bude dočasně odpojeny z Internetu během přípravy zařízení DevKit.
 
 ### <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit
 
 > [!NOTE]
 > Pokud jste už dřív použili zařízení a máte Wi-Fi přihlašovací údaje uloženy a chcete změnit konfiguraci zařízení používat jinou síť Wi-Fi, připojovací řetězec nebo telemetrická data měření, stiskněte klávesu i **A** a **B** tlačítka na panelu současně. Pokud to nepomůže, stiskněte **resetování** tlačítko a zkuste to znovu.
 
-
-
-#### <a name="to-prepare-the-devkit-device"></a>K přípravě DevKit zařízení:
-
+#### <a name="to-prepare-the-devkit-device"></a>Příprava zařízení DevKit
 
 1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://aka.ms/iotcentral-docs-MXChip-releases) stránku na Githubu.
 1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)**.
@@ -78,12 +72,12 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > Pokud se na obrazovce se zobrazí cokoli jiného, obnovit zařízení a stiskněte klávesu **A** a **B** tlačítka na zařízení ve stejnou dobu až po restartování zařízení. 
+    > Pokud se na obrazovce se zobrazí cokoli jiného, obnovit zařízení a stiskněte klávesu **A** a **B** tlačítka na zařízení ve stejnou dobu až po restartování zařízení.
 
 1. Zařízení je nyní v režimu přístupu bod (přístupový bod). Můžete se připojit k této přístupový bod Wi-Fi ze svého počítače nebo mobilního zařízení.
 
@@ -178,7 +172,7 @@ Kód v **iotHubClient.cpp** zdrojový soubor používá funkce z [ sadami SDK sl
 
 Informace o tom, jak změnit, vytvořit a nahrát ukázkový kód do vašeho zařízení, najdete v článku **readme.md** soubor `AZ3166` složky.
 
-## <a name="mxchip-device-template-details"></a>Podrobnosti o zařízení MXChip šablony 
+## <a name="mxchip-device-template-details"></a>Podrobnosti o zařízení MXChip šablony
 
 Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šablonu MXChip zařízení s následujícími charakteristikami:
 

@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: bfcfcbd7efdf80f48b8ab40edb2a273943142d1e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5ca9a0d5dcbf5b2525f547562b5838ded7441a66
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734927"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551893"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Vyhledávač anomálií rozhraní API pomocí jazyka Javascript
 
@@ -51,7 +51,7 @@ Kroky v příkladu jsou následující.
 <html>
 <head>
     <title>Anomaly Detection Javascript Quick Starts</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 

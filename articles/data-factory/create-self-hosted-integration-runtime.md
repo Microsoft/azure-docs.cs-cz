@@ -3,20 +3,20 @@ title: Vytvoření místního prostředí integration runtime ve službě Azure 
 description: Zjistěte, jak vytvořit místní prostředí integration runtime v Azure Data Factory, která umožňuje přístup k úložišti dat v privátní síti datové továrny.
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
+author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: dc9f24f948e32d1b87745016852a875d440323de
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+manager: craigg
+ms.openlocfilehash: d1e43924634e3c4543c244043cb06d965a4d14e0
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443689"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576833"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).

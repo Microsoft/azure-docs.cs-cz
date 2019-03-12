@@ -9,12 +9,12 @@ author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316145"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759387"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Prohledávání služby Blob Storage pomocí Azure Search
 
@@ -52,5 +52,5 @@ Služba Azure Search je přidat k objektům BLOB přímo na stránce portálu ú
 
 Klikněte na tlačítko **přidat Azure Search** ke spuštění toku, kde můžete vybrat existující službu Azure Search nebo vytvořit novou službu. Pokud vytvoříte novou službu, jsou přejde z prostředí portálu účtu úložiště. Můžete přejít zpět na stránku portálu úložiště a znovu vyberte **přidat Azure Search** možnost, kde můžete vybrat existující službu.
 
-### <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další kroky
 Další informace o Azure Search Blob indexeru v úplném [dokumentaci](https://aka.ms/azsblobindexer).

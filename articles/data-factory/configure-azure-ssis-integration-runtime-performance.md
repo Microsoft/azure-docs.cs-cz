@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
+ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 271da0a6ff443fcee28bc870821f4222b3018c91
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989071"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576867"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -61,11 +61,11 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory, včetně Azure-SSIS IR podporuje následující možnosti:
--   Standardní\_A4\_v2
--   Standardní\_A8\_v2
--   Standardní\_D1\_v2
--   Standardní\_D2\_v2
--   Standardní\_D3\_v2
+-   Standard\_A4\_v2
+-   Standard\_A8\_v2
+-   Standard\_D1\_v2
+-   Standard\_D2\_v2
+-   Standard\_D3\_v2
 -   Standardní\_D4\_v2.
 
 V neoficiální interní testování pomocí služby SSIS technický tým, řady D series pravděpodobně vhodnější pro spouštění balíčku služby SSIS než řady A series.
@@ -95,14 +95,14 @@ Pokud máte velké balíčky ke spuštění a vám nejvíce jde o celkovou propu
 Pokud už používáte výkonné pracovního uzlu ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí integration runtime. 1 – 4 paralelních úloh na uzlu Standard_D1_v2 uzly, jsou podporovány. Pro všechny ostatní typy uzlů se podporují 1-8 paralelních úloh na uzlu.
 Chcete-li odhadnout příslušnou hodnotu na základě nákladů balíčku a následujících konfigurací pracovních uzlů. Další informace najdete v tématu [velikostí virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
 
-| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
+| Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet datových disků nebo propustnost: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standardní\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2×500                         | 2 / 750                                        |
-| Standardní\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4×500                         | 2 / 1 500                                       |
-| Standardní\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
-| Standardní\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
-| Standardní\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
-| Standardní\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
+| Standard\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2×500                         | 2 / 750                                        |
+| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4×500                         | 2 / 1 500                                       |
+| Standard\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
+| Standard\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
+| Standard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
+| Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
 
 Tady jsou pokyny pro nastavení správné hodnoty pro **AzureSSISMaxParallelExecutionsPerNode** vlastnost: 
 

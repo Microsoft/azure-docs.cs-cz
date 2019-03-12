@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986018"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731653"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -87,7 +87,7 @@ Azure Stack vydává opravy hotfix v pravidelných intervalech. Nezapomeňte nai
 
     Při instalaci této aktualizace není k dispozici na portálu user portal pro Azure Stack, zatímco hostitel rozšíření je konfigurován. Konfigurace hostitele rozšíření může trvat až 5 hodin. Během této doby můžete zkontrolovat stav aktualizace nebo obnovit instalaci neúspěšné aktualizace pomocí [Azure Stack PowerShellu s oprávněními správce nebo privilegovaného koncového bodu](azure-stack-monitor-update.md).
 
-- Azure Stack je spravovaná službou System Center Operations Manager (SCOM), nezapomeňte aktualizovat sadu Management Pack for Microsoft Azure Stack na verzi 10.0.3.11 před použitím 1811.
+- Azure Stack je spravovaná službou System Center Operations Manager (SCOM), nezapomeňte aktualizovat sadu Management Pack for Microsoft Azure Stack na verzi 1.0.3.11 před použitím 1811.
 
 ## <a name="new-features"></a>Nové funkce
 

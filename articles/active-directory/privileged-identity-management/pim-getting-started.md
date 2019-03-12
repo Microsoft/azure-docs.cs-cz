@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09914de48df09dabd4069cd33e7acbea328fa89d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193148"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546853"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
 
@@ -106,7 +106,6 @@ Po nastavení PIM můžete provádět úkoly správy identity.
 | --- | --- |
 | **Moje role**  | Zobrazí seznam oprávněných a aktivních rolí přiřazených vám. Toto je místo, kde můžete aktivovat jakoukoli přiřazenou oprávněnou roli. |
 | **Moje žádosti** | Zobrazí vaše žádosti čekající na aktivaci přiřazení oprávněné role. |
-| **Přístup k aplikacím** | Umožňuje omezit potenciální zpoždění a použít roli okamžitě po aktivaci. |
 | **Schvalování žádostí** | Zobrazí seznam žádostí o aktivaci oprávněných rolí uživatelů v adresáři, které jsou určené ke schválení. |
 | **Zkontrolovat přístup** | Zobrazí seznam aktivních kontrol přístupu, které jsou přiřazeny k dokončení, ať už kontrolujete přístup sobě nebo někomu jinému. |
 | **Role Azure AD** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí adresáře Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |

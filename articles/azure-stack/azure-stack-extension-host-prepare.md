@@ -1,26 +1,26 @@
 ---
 title: Příprava pro rozšíření hostitele pro Azure Stack | Dokumentace Microsoftu
-description: Zjistěte, jak připravit pro rozšíření hostitele, který je automaticky povolený prostřednictvím balíčku budoucí aktualizaci služby Azure Stack.
+description: Zjistěte, jak připravit pro rozšíření hostitele, automaticky povoleno se balíček aktualizace budoucí Azure Stack.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/07/2019
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962362"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731919"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
-Hostitel rozšíření zabezpečení služby Azure Stack snížením počtu požadované porty TCP/IP. Tento článek ukazuje Příprava služby Azure Stack pro rozšíření hostitele, který je automaticky povolený prostřednictvím Azure Stack aktualizovat balíček po 1808 aktualizaci. Tento článek se týká služby Azure Stack aktualizace. 1808 1809 a 1811.
+Hostitel rozšíření zabezpečení služby Azure Stack snížením počtu požadované porty TCP/IP. Tento článek ukazuje Příprava služby Azure Stack pro rozšíření hostitele, který je automaticky povolen prostřednictvím balíčku aktualizace služby Azure Stack po 1808 aktualizaci. Tento článek se týká služby Azure Stack aktualizace. 1808 1809 a 1811.
 
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
 
@@ -66,15 +66,14 @@ Nástroj prerequisite Checker Azure Stack připravenosti poskytuje možnost vytv
     > [!Note]  
     > Pokud provádíte nasazení s Azure Active Directory Federated Services (AD FS) v následujících adresářích musí být přidané do **$directories** ve skriptu: `ADFS`, `Graph`.
 
-4. Spuštěním následující rutiny spuštění kontroly certifikátu:
+4. Stávající certifikáty, které používáte ve službě Azure Stack, umístěte do příslušné adresáře. Například umístit **ARM správce** v certifikátu `Arm Admin` složky. A potom se spojí nově vytvořené hostování certifikáty `Admin extension host` a `Public extension host` adresáře.
+5. Spusťte následující rutinu spuštění kontroly certifikátu:
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. Vaše certifikáty umístíte v příslušné adresáře.
 
 6. Zkontrolujte výstup a všechny jejich certifikáty projít všemi testy.
 
@@ -141,7 +140,7 @@ V článku [integrace datových center Azure Stack – publikování koncových 
 
 ### <a name="publish-new-endpoints"></a>Publikovat nové koncové body
 
-Existují dvě nové koncové body, které jsou potřebné k publikování přes bránu firewall. Přidělené IP adresy z fondu veřejných virtuálních IP adres se dá načíst pomocí následujícího kódu, který se musí spustit prostřednictvím služby Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+Existují dvě nové koncové body, které jsou potřebné k publikování přes bránu firewall. Přidělené IP adresy z fondu veřejných virtuálních IP adres se dá načíst pomocí následujícího kódu, který se musí spouštět z Azure Stack [prostředí na privilegovaný koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
 ```PowerShell
 # Create a PEP Session

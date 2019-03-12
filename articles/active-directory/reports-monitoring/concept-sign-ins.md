@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190360"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549013"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -149,23 +149,13 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 
-Je možné [stáhnout data přihlášení](quickstart-download-sign-in-report.md) Pokud budete chtít pracovat s ním mimo na webu Azure portal. Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů.  Kromě tlačítko Stáhnout na webu Azure portal také poskytuje možnost [vygenerovat skript k stáhnout data](tutorial-signin-logs-download-script.md).  
+Je možné [stáhnout data přihlášení](quickstart-download-sign-in-report.md) Pokud budete chtít pracovat s ním mimo na webu Azure portal. Kliknutím na **Stáhnout** nabízí možnost vytvořit soubor CSV nebo JSCON posledních 250 000 záznamů.  
 
 ![Stáhnout](./media/concept-sign-ins/71.png "Stáhnout")
-
-Pokud potřebujete větší flexibilitu, můžete použít řešení se skriptem. Kliknutím na **skript** vytvoří skript Powershellu, který zahrnuje všechny filtry, které jste nastavili. Stáhněte a spusťte tento skript **režimu správce** ke generování souboru CSV. 
 
 > [!IMPORTANT]
 > Počet záznamů, které si můžete stáhnout, které je omezená [zásady uchování sestav Azure Active Directory](reference-reports-data-retention.md).  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>Spuštění skriptu na počítač s Windows 10
-
-Pokud chcete spustit skript v **Windows 10** počítače, musíte nejprve provést několik dalších kroků. 
-
-1. Nainstalujte [Az modulu](/powershell/azure/install-az-ps).
-2. Otevřete příkazový řádek Powershellu a spuštěním příkazu importujte modul **Import-Module Az**.
-3. Spustit **Set-ExecutionPolicy unrestricted** a zvolte **Ano všem**. 
-4. Teď můžete spouštět staženého skriptu prostředí PowerShell v režimu správce k vygenerování souboru CSV.
 
 ## <a name="sign-ins-data-shortcuts"></a>Klávesové zkratky data přihlášení
 

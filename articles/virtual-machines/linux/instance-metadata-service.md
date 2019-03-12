@@ -3,8 +3,8 @@ title: Služba metadat Azure Instance | Dokumentace Microsoftu
 description: Rozhraní rESTful a získat informace o virtuálních počítačích s Linuxem compute, network a nadcházející údržbě události.
 services: virtual-machines-linux
 documentationcenter: ''
-author: harijayms
-manager: jeconnoc
+author: KumariSupriya
+manager: harijayms
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
-ms.author: harijayms
-ms.openlocfilehash: 388a9f37911c37e9c8921db17c0650146a76e76d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 02/15/2019
+ms.author: sukumari
+ms.reviewer: azmetadata
+ms.openlocfilehash: d6e60e1bbd31eb9f18da32cf6d2e67c9f690db87
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454034"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727174"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
 

@@ -14,25 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: bfe289e29a6a2bb048d9fd42323f32ce8c12792c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8835c4534b6dab1e8dbfb3546257ae4bc3b9d7af
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110604"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588648"
 ---
-# <a name="pen-testing"></a>Testování průniku
-Jednou z výhod používání Azure pro testování aplikací a nasazení je, že můžete rychle získat prostředí vytvořená.  Není nutné se starat o žádanek, získání a "r: sledování a stohování" v místním hardwaru.
+# <a name="penetration-testing"></a>Testování průniku
+Jednou z výhod používání Azure pro testování aplikací a nasazení je, že můžete rychle získat prostředí vytvořená. Není nutné se starat o žádanek, získání a "r: sledování a stohování" v místním hardwaru.
 
-To je skvělé – ale je stále potřeba Ujistěte se, že provádíte běžná bezpečnostní vypršení platnosti co nejopatrněji. Jednou z věcí, je třeba provést je ho otestujte nasazení aplikace v Azure.
+To je skvělé – ale je stále potřeba Ujistěte se, že provádíte běžná bezpečnostní vypršení platnosti co nejopatrněji. Jednou z věcí, budete pravděpodobně chtít provést je ho otestujte nasazení aplikace v Azure.
 
 Možná už znáte, aby Microsoft prováděl [testování průniku naše prostředí Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). To pomáhá vám zajistí vylepšení Azure.
 
-Společnost Microsoft není pera otestovat aplikaci za vás, ale rozumí tomu, že se chcete a potřebujete provést na vašich vlastních aplikací testování průniku. To je dobrá věc, protože můžete zlepšit zabezpečení vašich aplikací, vám pomoci lépe zabezpečit celý ekosystém Azure.
+Není test průniku aplikaci za vás, ale rozumí tomu, že se chcete a potřebujete provádět testování na vašich vlastních aplikací. Který je dobrá věc, protože při zvýšení zabezpečení vašich aplikací můžete pomoct zabezpečit celý ekosystém Azure.
 
-Co dělat?
-
-Od 15. června 2017 Microsoft už nevyžaduje předběžné schválení ho nechali testy s prostředky Azure. Nepodnikovým zákazníkům, kteří chtějí formálně dokumentu nadcházející testování průniku s dokumentem s Microsoft Azure k vyplnění [oznámení testování průniku Azure služby formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se týká jenom Microsoft Azure a nevztahuje se na jakékoli jiné cloudové služby Microsoftu.
+Od 15. června 2017 Microsoft už nevyžaduje předběžné schválení provést test průniku prostředků Azure. Nepodnikovým zákazníkům, kteří chtějí formálně dokumentu nadcházející testování průniku s dokumentem s Microsoft Azure k vyplnění [oznámení testování průniku Azure služby formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se týká jenom Microsoft Azure a nevztahuje se na jakékoli jiné cloudové služby Microsoftu.
 
 >[!IMPORTANT]
 >Při oznámení Microsoft aktivity testování průniku se už nevyžaduje zákazníci i nadále vyhovět [Microsoft Cloud Unified průniku testování pravidla zapojení](https://technet.microsoft.com/mt784683).
@@ -47,4 +45,4 @@ Jeden typ testu, který nelze provést, je libovolný druh [útok na dostupnost 
 
 ## <a name="next-steps"></a>Další postup
 
-- Jste připravení začít s pera testování vaší aplikace hostované v Microsoft Azure? Pokud ano, pak přejděte na na [průniku testování pravidla zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) a vyplňte formulář testovací oznámení.
+- Pokud byste chtěli formálně dokumentu nadcházející ho na vaše aplikace hostované v Microsoft Azure, přejděte na na [průniku testování pravidla zapojení](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) a vyplňte formulář testovací oznámení.

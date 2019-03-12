@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 2/12/2019
+ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2bbac21b9ac3e07cbb41ea8aa4cf93dcbd636d15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f2f109b6861e54cc613fd06f26983897f7c1a9bb
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181775"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727123"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,7 +25,8 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporované (doporučená verze) |
+| Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporované (doporučená verze) |
+| Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
 | 2019 ledna kumulativní - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | Od 14. května 2019 | Podporováno |
 | Kumulativní – aktualizace z prosince 2018 [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporováno |
 | Kumulativní aktualizace z prosince 2018 | 4.1.0.0 | 4. prosince 2018 | Podporováno |
@@ -37,6 +38,16 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-5100"></a>Verze agenta 5.1.0.0
+Následující poznámky k verzi platí pro verze 5.1.0.0 agenta Azure File Sync vydáno 7. března 2019. Tyto poznámky doplňují uvedené verze 5.0.2.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Soubory se nemusí podařit synchronizace s chybou 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED), pokud se nedaří výčtu změn na serveru
+- Pokud relace synchronizace nebo souboru se zobrazí chyba 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE), synchronizovat nyní opakujte operaci
+- Soubory se nemusí podařit synchronizovat s chybou 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE)
+- Využití velkého množství paměti může dojít při vracení souborů
+- Vylepšení vrstvení telemetrických dat v cloudu 
 
 ## <a name="agent-version-5020"></a>Verze agenta 5.0.2.0
 Následující poznámky k verzi platí pro verze 5.0.2.0 agenta Azure File Sync (vydané 12. února 2019).

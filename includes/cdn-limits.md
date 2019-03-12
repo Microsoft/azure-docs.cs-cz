@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 3c4b9f5b8533e24a5b7cee1d2b4e3a8c65473b6b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b3a610fd1c4da99d1e98a5caea9e1a4151fc1fea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279531"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553368"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | 
 | --- | --- | --- |
-| Profily CDN |25 |25 |
-| Koncové body CDN podle profilů. |10 |25 |
+| Azure Content Delivery Network profily |25 |25 |
+| Content Delivery Network koncové body podle profilů. |10 |25 |
 | Vlastní domény na koncový bod |10 |25 |
 
-Předplatné CDN může obsahovat jednu nebo víc profilů CDN a profilu CDN může obsahovat jeden nebo více koncových bodů CDN. Můžete použít více profilů a uspořádat koncové body CDN podle internetové domény, webové aplikace nebo jiných kritérií. 
+Síť Content Delivery Network předplatné může obsahovat jeden nebo více profilů sítě Content Delivery Network. Profil sítě Content Delivery Network může obsahovat jednu nebo víc koncových bodů sítě Content Delivery Network. Můžete chtít použít více profilů a uspořádat koncové body sítě Content Delivery Network internet domény, webové aplikace nebo jiných kritérií. 
 
-O aktualizaci pro vaše předplatné výchozí omezení, otevřete lístek podpory. 
+O aktualizaci pro vaše předplatné výchozí omezení, otevřete lístek podpory.
 

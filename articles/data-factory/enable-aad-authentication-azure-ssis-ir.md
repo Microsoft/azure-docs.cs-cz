@@ -3,30 +3,31 @@ title: Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS I
 description: Tento článek popisuje, jak povolit ověřování Azure Active Directory s identitou pro služby Azure Data Factory vytvořit prostředí Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 2/19/2019
-ms.author: douglasl
-ms.openlocfilehash: 159aaf017265c09c2afc4b603ed5172fead9b29d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 3/11/2019
+author: swinarko
+ms.author: sawinark
+manager: craigg
+ms.openlocfilehash: 787c436261635376ff82e8762cbc1469f4375e6b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438648"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729958"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
-V tomto článku se dozvíte, jak povolit ověřování Azure Active Directory (Azure AD) pomocí spravované identity pro váš Azure Data Factory (ADF) a používat ho místo ověřování systému SQL k vytvoření Azure-SSIS Integration Runtime (IR), pak vytvoříte služby SSIS databáze katalogu (SSISDB) v databázi Azure SQL server nebo spravované Instance vaším jménem.
+V tomto článku se dozvíte, jak povolit ověřování Azure Active Directory (Azure AD) pomocí spravované identity pro váš Azure Data Factory (ADF) a používat ho místo ověřování systému SQL k vytvoření Azure-SSIS Integration Runtime (IR), který pak bude poskytovat Služby SSIS catalog databázi (SSISDB) v databázi Azure SQL server nebo spravované Instance vaším jménem.
 
 Další informace o spravované identity pro vaše ADF [identiy spravované služby Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
-> Pokud jste již vytvořili prostředí Azure-SSIS IR pomocí ověřování SQL, nelze změnit konfiguraci prostředí IR v tuto chvíli používat ověřování Azure AD pomocí Powershellu, ale můžete udělat v aplikaci Azure portal/ADF. 
+>-  V tomto scénáři ověřování Azure AD s využitím spravované identity pro vaše ADF slouží pouze k vytvoření a další počáteční operacích SSIS IR, který bude v poskytování a připojit do databáze SSISDB. Za spouštění balíčků služby SSIS bude spojím prostředí IR služby SSIS do databáze SSISDB pomocí ověřování SQL s plně spravované účty, které jsou vytvořeny během zřizování SSISDB.
+>-  Pokud jste již vytvořili SSIS IR pomocí ověřování SQL, nelze překonfigurovat na používání ověřování Azure AD prostřednictvím prostředí PowerShell v tuto chvíli, ale můžete to udělat přes Azure portal/ADF aplikace. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
