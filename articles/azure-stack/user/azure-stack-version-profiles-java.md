@@ -16,12 +16,12 @@ ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c7a6330f8e0197092f4c581f46c3cc6e68dba247
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246360"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540209"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Použití profilů verzí API s Javou v Azure stacku
 
@@ -64,7 +64,7 @@ Instalace sady Java SDK, postupujte následovně:
 
 1.  Postupujte podle pokynů oficiální nainstalujte Git. Pokyny najdete v tématu [Začínáme - instalaci Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Oficiální pokyny k instalaci [sady Java SDK](http://zulu.org/download/) a [Maven](https://maven.apache.org/). Správná verze je verze 8 Java Developer Kit. Správné Apache Maven je verze 3.0 nebo vyšší. Proměnná prostředí JAVA_HOME musí nastavit na umístění instalace sady Java Development Kit k dokončení tohoto rychlého startu. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](../../azure-functions/functions-create-first-java-maven.md).
+2.  Oficiální pokyny k instalaci [sady Java SDK](https://zulu.org/download/) a [Maven](https://maven.apache.org/). Správná verze je verze 8 Java Developer Kit. Správné Apache Maven je verze 3.0 nebo vyšší. Proměnná prostředí JAVA_HOME musí nastavit na umístění instalace sady Java Development Kit k dokončení tohoto rychlého startu. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  K instalaci správné závislé balíčky, otevřete soubor Pom.xml ve vaši aplikaci v Javě. Přidáte závislost, jak je znázorněno v následujícím kódu:
 

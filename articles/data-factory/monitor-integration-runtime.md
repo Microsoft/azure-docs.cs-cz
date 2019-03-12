@@ -3,21 +3,20 @@ title: Monitorování prostředí integration runtime ve službě Azure Data Fac
 description: Další informace o monitorování různé typy prostředí integration runtime ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-ms.author: douglasl
-ms.openlocfilehash: 60d4d9224a6a70c8fa2702dede8721f742fa6256
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434942"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576324"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:

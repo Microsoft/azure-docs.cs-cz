@@ -1,22 +1,28 @@
 ---
 title: Zobrazení kubelet protokolů ve službě Azure Kubernetes Service (AKS)
-description: Jak zobrazit informace o odstraňování potíží v protokolů kubelet z uzlů Azure Kubernetes Service (AKS)
+description: Zjistěte, jak zobrazit informace o odstraňování potíží v protokolů kubelet z uzlů Azure Kubernetes Service (AKS)
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42441944"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534016"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)
 
-V některých případech budete muset získat *kubelet* protokoly z uzlu Azure Kubernetes Service (AKS) pro účely odstraňování potíží. Tento článek popisuje, jak můžete `journalctl` zobrazíte *kubelet* protokoly.
+Jako součást provozní AKS cluster můžete kontrolovat protokoly k vyřešení problému. Integrovaný v portálu Azure portal je možnost zobrazit protokoly pro [AKS hlavní komponenty] [ aks-master-logs] nebo [kontejnerů v clusteru AKS][azure-container-logs]. V některých případech budete muset získat *kubelet* protokoly z uzlu AKS pro účely odstraňování potíží.
+
+Tento článek popisuje, jak můžete `journalctl` zobrazíte *kubelet* přihlásí do uzlu AKS.
+
+## <a name="before-you-begin"></a>Před zahájením
+
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
 ## <a name="create-an-ssh-connection"></a>Vytvořte připojení SSH
 
@@ -63,3 +69,7 @@ Pokud potřebujete další informace o odstraňování potíží z hlavní větv
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
 [aks-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[aks-master-logs]: view-master-logs.md
+[azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md

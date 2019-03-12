@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 892e47d87fef482c6f655473278baeb5525ee09e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104328"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760023"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastních dovedností pomocí rozhraní API převede Text
 
@@ -306,7 +306,7 @@ Teď, když máte nové vlastní dovednosti, přidáte jej do vaše dovednosti. 
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Blahopřejeme! Vytvoření vaší první vlastní enricher. Teď můžete použít stejný vzor pro přidání vlastních funkcí. 
 
 + [Přidání vlastních dovedností do kanálu kognitivního vyhledávání](cognitive-search-custom-skill-interface.md)

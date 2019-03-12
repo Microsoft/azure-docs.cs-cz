@@ -14,16 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0fae47f248d5662b69a0d1a12c82b7ded33badd6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a45d6366ef3c581c00b084b7ea2e4095eaaba3f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001979"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538115"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace v Node.js pomocí Socket.IO na cloudové službě Azure
 
-Socket.IO nabízí komunikaci v reálném čase mezi node.js serverem a klienty. Tento kurz vás provede hostování soketu. Vstupně-výstupních operací na základě chatovací aplikace v Azure. Další informace o Socket.IO najdete v tématu [socket.io](http://socket.io).
+Socket.IO nabízí komunikaci v reálném čase mezi node.js serverem a klienty. Tento kurz vás provede hostování soketu. Vstupně-výstupních operací na základě chatovací aplikace v Azure. Další informace o Socket.IO najdete v tématu [socket.io](https://socket.io).
 
 Snímek obrazovky dokončené aplikace je nižší než:
 
@@ -84,11 +84,7 @@ Před testováním aplikace spustila v emulátoru Azure, musíte Usnadňujeme ma
          var port = process.env.PORT || 3000;         //Updated
 3. Pokud chcete mít jistotu, aplikace naslouchá na správný port, otevřete server.js v programu Poznámkový blok nebo svém oblíbeném editoru a potom změňte následující řádek tak, že nahradíte **3000** s **process.env.port** jak je znázorněno níže:
    
-       //app.listen(3000, function () {            //Original
-       app.listen(process.env.port, function () {  //Updated
-         var addr = app.address();
-         console.log('   app listening on http://' + addr.address + ':' + addr.port);
-       });
+       Funkce App.LISTEN. (3000, funkce () {//Original       funkce App.LISTEN. (process.env.port, (funkce) {//Updated var addr = app.address();       Console.log ("aplikace poslouchá na http://" + addr.address + ":" + addr.port);     });
 
 Po uložení změn **server.js**, postupujte následovně pro instalaci požadované moduly a otestujte aplikaci v emulátoru Azure:
 
@@ -109,7 +105,7 @@ Po uložení změn **server.js**, postupujte následovně pro instalaci požadov
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Pokud narazíte na problémy se spuštěním emulátor, např.: Start-AzureEmulator: došlo k neočekávané chybě.  Podrobnosti: Došlo k neočekávané chybě objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nelze použít pro komunikaci vzhledem k tomu, že je v chybovém stavu.
+   > Pokud narazíte na problémy se spuštěním emulátor, např.:      Start-AzureEmulator: Došlo k neočekávané chybě.  Podrobnosti: Došlo k neočekávané chybě objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nelze použít pro komunikaci, protože je v chybovém stavu.
    
       znovu nainstalujte AzureAuthoringTools v 2.7.1 a AzureComputeEmulator v 2.7 – Ujistěte se, že odpovídá této verzi.
    >
@@ -156,7 +152,7 @@ Další informace najdete v tématu taky [středisko pro vývojáře Node.js](ht
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
-[Azure SLA]: http://www.windowsazure.com/support/sla/
+[Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/

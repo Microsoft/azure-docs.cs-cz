@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 309ddcf68d03f34ca3309d76d15cc3928037c667
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ccf67aab2d393d4ee820c19e839ff3076712843d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017442"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550067"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Volání programů MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -185,7 +185,7 @@ Kanál v tomto příkladu má pouze jednu aktivitu, která je typu: HDInsightMap
 | Vlastnost | Poznámky |
 |:--- |:--- |
 | type |Typ musí být nastavený na **HDInsightMapReduce**. |
-| Název třídy |Je název třídy: **wordcount** |
+| className |Je název třídy: **wordcount** |
 | jarFilePath |Cesta k souboru jar obsahující třídu. Pokud zkopírujete/vložíte následující kód, nezapomeňte změnit název clusteru. |
 | jarLinkedService |Propojená služba Azure Storage, který obsahuje soubor jar. Tato propojená služba odkazuje na úložiště, který je spojen s clusterem HDInsight. |
 | argumenty |Aplikace wordcount přebírá dva argumenty, vstup a výstup. Vstupní soubor je soubor davinci.txt. |
@@ -236,15 +236,15 @@ Kanál v tomto příkladu má pouze jednu aktivitu, která je typu: HDInsightMap
 ## <a name="run-spark-programs"></a>Spouštět programy Spark
 Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět programy Spark. Podrobnosti najdete v článku [Vyvolání programů Spark ze služby Azure Data Factory](data-factory-spark.md).  
 
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[Azure Portal]: http://portal.azure.com
+[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Viz také
 * [Aktivita hivu](data-factory-hive-activity.md)

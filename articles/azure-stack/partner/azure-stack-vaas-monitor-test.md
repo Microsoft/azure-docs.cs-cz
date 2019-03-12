@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432239"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761162"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorování a správa testů na portálu VaaS
 
@@ -40,7 +40,7 @@ Po naplánování testů proti vašeho řešení Azure Stack, se začne ověřen
 
 ## <a name="change-workflow-parameters"></a>Změna parametrů pracovního postupu
 
-Každý typ pracovního postupu umožňuje upravit [parametry testu](azure-stack-vaas-parameters.md#test-parameters) zadali při vytvoření pracovního postupu.
+Můžete kdykoli upravit [parametry testu](azure-stack-vaas-parameters.md#test-parameters) zadali při vytvoření pracovního postupu pro jakýkoli typ pracovního postupu.
 
 1. Na stránce Souhrn testů, vyberte **upravit** tlačítko.
 
@@ -60,9 +60,9 @@ V **průchodu testů** pracovní postupy, jak **přidat testy** a **upravit** tl
 
 ## <a name="managing-test-instances"></a>Správa testu instancí
 
-Pro spuštění neoficiální (například **průchodu testů** pracovního postupu), na stránce souhrnu testy uvádí testy naplánované proti řešení Azure Stack.
+Pro spuštění neoficiální (to znamená, **průchodu testů** pracovního postupu), na stránce souhrnu testy uvádí testy naplánované proti řešení Azure Stack.
 
-Pro spuštění oficiální (například **ověření** pracovních postupů), na stránce souhrnu testy seznamy testů, které jsou potřebné k dokončení ověření řešení Azure Stack. Testy pro ověření jsou naplánovány na této stránce.
+Pro spuštění oficiální (to znamená, **ověření** pracovních postupů), na stránce souhrnu testy seznamy testů, které jsou potřebné k dokončení ověření řešení Azure Stack. Testy pro ověření jsou naplánovány na této stránce.
 
 Každá instance plánovaný test se zobrazí následující informace:
 
@@ -81,7 +81,7 @@ Každá instance plánovaný test se zobrazí následující informace:
 
 ### <a name="actions"></a>Akce
 
-Každá instance testu obsahuje seznam dostupných akcí, které můžete provést po kliknutí na její kontextovou nabídku **[...]**  v tabulce testovací instance.
+Každá instance testu obsahuje seznam dostupných akcí, které můžete provést při výběru její kontextovou nabídku **[...]**  v tabulce testovací instance.
 
 #### <a name="view-information-about-the-test-definition"></a>Zobrazit informace o definici testu
 
@@ -118,7 +118,7 @@ Vyberte **zobrazit operace** z kontextu nabídku, chcete-li zobrazit podrobný s
 
 #### <a name="download-logs-for-a-completed-test-instance"></a>Stažení protokolů pro instanci test byl dokončen
 
-Vyberte **stažení protokolů** v místní nabídce ke stažení `.zip` souboru výstupu protokolů během byly spuštění testu. Tato akce je dostupná pouze pro testy, které dokončily, to znamená, test se stavem buď `Cancelled`, `Failed`, `Aborted`, nebo `Succeeded`.
+Vyberte **stažení protokolů** v místní nabídce ke stažení `.zip` souboru výstupu protokolů během byly spuštění testu. Tato akce je dostupná pouze pro testy, které jste dokončili, to znamená, test se stavem buď `Cancelled`, `Failed`, `Aborted`, nebo `Succeeded`.
 
 #### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Testovací instance plánovanou zkoušku přeplánovat nebo naplánovat v testu
 

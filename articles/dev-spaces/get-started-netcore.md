@@ -3,19 +3,18 @@ title: Vytvoření prostoru vývoje Kubernetes v cloudu s využitím .NET Core a
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 8a8dea4ccfde403d510dcdffb8cca079c6eb3002
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fc2a74ff11e31991c72574b44a9e4874a956f78e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193785"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773006"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s Azure Dev prostory s .NET Core
 
@@ -72,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.13 --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.

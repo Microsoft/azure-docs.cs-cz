@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 753c5312987cc541456b2f7415bb7dc9d4770d05
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593348"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539153"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -36,7 +36,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
-* [Stáhněte](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv Maven.
+* [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv Maven.
 * [Git](https://www.git-scm.com/)
 * **Účtu služby Azure Storage**. Pokud ho nemáte, [vytvořit](../storage/common/storage-quickstart-create-account.md) než budete pokračovat. Úlohy Stream Analytics v tomto názorném postupu se uloží výstupní data ve službě Azure blob storage. 
 

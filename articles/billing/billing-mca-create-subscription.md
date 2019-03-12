@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 7c93911ce824bc1111e0c348070cc11817c5b45c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 686543a322d1c87760060a1f4db1b26abca75cb8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341846"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539407"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka
 
@@ -57,7 +57,7 @@ Jak vytvoříte odběr, musí být **vlastník části faktury**, **Přispěvate
 
 Přidáte uživatele jako tvůrce předplatného Azure na oddíl faktury jim dát oprávnění vytvářet předplatná Azure.
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 

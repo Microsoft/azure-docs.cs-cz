@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7e08076364cef87ec27ad34ee9af17242245bbc6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455989"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537758"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Zobrazení shromážděných protokolů
 
-Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí v pracovním prostoru Log Analytics. Na webu Azure Portal, vyberte skupinu prostředků pro váš pracovní prostor Log Analytics, jako je například *myResourceGroup*, klikněte na tlačítko prostředku Log Analytics, jako například *myAKSLogs*.
+Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí v pracovním prostoru Log Analytics. Na webu Azure Portal, vyberte skupinu prostředků pro váš pracovní prostor Log Analytics, jako je například *myResourceGroup*, klikněte na tlačítko prostředku log analytics, jako například *myAKSLogs*.
 
 ![Vyberte pracovní prostor Log Analytics pro váš cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fda80455cf3504bf992fabc3018be2d5c05612ae
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019142"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536704"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Přesun dat z Amazon Simple Storage Service pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Zkopírujte data z Amazonu S3, ujistěte se, že máte následující oprávněn
 * `s3:GetObject` a `s3:GetObjectVersion` pro operace objektu Amazon S3.
 * `s3:ListBucket` pro operace kbelíku Amazon S3. Pokud použijete Průvodce kopírováním objekt pro vytváření dat, `s3:ListAllMyBuckets` je také nutný.
 
-Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [určení oprávnění v zásadách](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [určení oprávnění v zásadách](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Amazonu S3 zdroje pomocí různých nástrojů nebo rozhraní API.
@@ -65,11 +65,11 @@ Propojená služba propojuje úložiště dat do služby data factory. Vytvořen
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| accessKeyID |ID tajný přístupový klíč. |řetězec |Ano |
+| accessKeyID |ID tajný přístupový klíč. |string |Ano |
 | secretAccessKey |Vlastního klíče přístupu k tajným klíčům. |Zašifrovaný řetězec tajného kódu |Ano |
 
 >[!NOTE]
->Tento konektor vyžaduje přístupové klíče pro účet IAM zkopírovat data z Amazonu S3. [Dočasné bezpečnostním pověřením](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) se nepodporuje.
+>Tento konektor vyžaduje přístupové klíče pro účet IAM zkopírovat data z Amazonu S3. [Dočasné bezpečnostním pověřením](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) se nepodporuje.
 >
 
 Zde naleznete příklad:
@@ -94,10 +94,10 @@ Oddíly, jako je například struktura, dostupnost a zásady jsou podobné pro v
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| bucketName |Název sektoru S3. |Řetězec |Ano |
-| key |Klíč objektu S3. |Řetězec |Ne |
-| Předpona |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, klíč je prázdný. |Řetězec |Ne |
-| version |Verze objektu S3, pokud je povolená Správa verzí S3. |Řetězec |Ne |
+| bucketName |Název sektoru S3. |String |Ano |
+| key |Klíč objektu S3. |String |Ne |
+| Předpona |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, klíč je prázdný. |String |Ne |
+| version |Verze objektu S3, pokud je povolená Správa verzí S3. |String |Ne |
 | formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jako-je mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne | |
 | Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne | |
 

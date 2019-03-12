@@ -5,19 +5,20 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: conceptual
+ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6dd378f69dbf0c7cffe04d4b6a18fd3e6cda6b8b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f1b4caba48f0637e76840f921513f1f03ce9c56f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409971"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729193"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý start: Pozastavení a obnovení výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí prostředí PowerShell
+
 Použití Powershellu k pozastavení výpočetních prostředků ve službě Azure SQL Data Warehouse vám ušetří náklady. [Obnovit výpočty](sql-data-warehouse-manage-compute-overview.md) až budete připravení použít datový sklad.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -65,6 +66,7 @@ Informace o umístění vašeho datového skladu vyhledáte pomocí následujíc
 6. Pokud využíváte server foo.database.windows.net, v rutinách PowerShellu používejte jako název serveru jen jeho první část. Na předchozím obrázku je úplný název serveru newserver-20171113.database.windows.net. Vyřaďte příponu a použít **newserver-20171113** jako název serveru ve výsledcích rutiny Powershellu.
 
 ## <a name="pause-compute"></a>Pozastavit výpočetní prostředky
+
 Abyste dosáhli nižších nákladů, lze pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databáze v noci a o víkendech, můžete pozastavit během těchto obdobích a obnovit během dne. Neplatí žádné poplatky za výpočetní prostředky, zatímco databáze je pozastavená. Můžete ale dál účtovat poplatky za úložiště.
 
 Chcete-li pozastavit databázi, použijte [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) rutiny. Následující příklad pozastaví datový sklad s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **newserver-20171113**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
@@ -86,6 +88,7 @@ $resultDatabase
 
 
 ## <a name="resume-compute"></a>Obnovit výpočetní prostředky
+
 Pokud chcete spustit databázi, použijte [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) rutiny. Následující příklad spustí databázi s názvem mySampleDataWarehouse hostovaný na serveru s názvem newserver-20171113. Server je ve skupině prostředků Azure s názvem myResourceGroup.
 
 ```Powershell
@@ -115,17 +118,18 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
     ![Vyčištění prostředků](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-1. Pokud chcete pozastavit výpočetní prostředky, klikněte na tlačítko **Pozastavit**. Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete obnovit výpočetní prostředky, klikněte na **Spustit**.
+2. Pokud chcete pozastavit výpočetní prostředky, klikněte na tlačítko **Pozastavit**. Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete obnovit výpočetní prostředky, klikněte na **Spustit**.
 
-2. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
+3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
 
-3. Pokud chcete odstranit server SQL, který jste vytvořili, klikněte na tlačítko **mynewserver-20171113.database.windows.net**a potom klikněte na tlačítko **odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odstranit server SQL, který jste vytvořili, klikněte na tlačítko **mynewserver-20171113.database.windows.net**a potom klikněte na tlačítko **odstranit**.  S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
-4. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
+5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
 ## <a name="next-steps"></a>Další postup
+
 Máte teď pozastavená a obnovit výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
->[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)
+> [Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

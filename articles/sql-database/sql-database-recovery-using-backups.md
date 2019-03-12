@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 03/07/2019
+ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409846"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576357"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -141,7 +141,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [obnovení AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
+- K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [obnovení AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
   | Rutina | Popis |
   | --- | --- |
@@ -153,7 +153,13 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
   > [!TIP]
   > Ukázkový skript prostředí PowerShell ukazuje, jak provést obnovení bodu v čase databáze, najdete v části [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 
-- Chcete-li obnovit databázi Managed Instance, naleznete v tématu [v daném okamžiku obnovení databáze na spravované instanci Azure SQL pomocí prostředí AzureRm.Sql PowerShell knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
+- Chcete-li obnovit databázi Managed Instance, naleznete v tématu [obnovení AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
+
+  | Rutina | Popis |
+  | --- | --- |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Získá jednu nebo víc spravovaných instancí. |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Získá instanci databáze. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Obnoví databázi instance. |
 
 ### <a name="rest-api"></a>REST API
 
@@ -166,7 +172,8 @@ Obnovení databáze jedné, nebo součástí fondu pomocí rozhraní REST API:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Obnovení databáze jedné, nebo součástí fondu pomocí Azure CLI, najdete v článku [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+- Obnovení databáze jedné, nebo součástí fondu pomocí Azure CLI, najdete v článku [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+- Pokud chcete obnovit spravované instance pomocí rozhraní příkazového řádku Azure, najdete v článku [az sql midb obnovení](/cli/azure/sql/db#az-sql-midb-restore)
 
 ## <a name="summary"></a>Souhrn
 

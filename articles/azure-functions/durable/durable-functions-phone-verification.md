@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 827990e03ca1bbb4bfd2ca9cf8bf0a9ceccfb51b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719383"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548145"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Lidská interakce v Durable Functions – Ukázka ověření telefonu
 
@@ -118,7 +118,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 Funkce orchestrátoru přijímá zadané telefonní číslo a okamžitě ji odešle zpráva SMS s náhodně generované 4 číslice ověřovací kód &mdash; například *2168*. Funkce potom odpověď 90 sekund čeká.
 
-Chcete-li odpovědět kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) uvnitř jiného funkci nebo volání **sendEventUrl** HTTP POST webhooku odkazuje v odpovědi 202 výše , nahrazení `{eventName}` s názvem události `SmsChallengeResponse`:
+Chcete-li odpovědět kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md) uvnitř jiného funkci nebo volání **sendEventUrl** HTTP POST webhooku odkazuje v odpovědi 202 výše , nahrazení `{eventName}` s názvem události `SmsChallengeResponse`:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: f4a2fe4c9307f7e59ca94e47683356143546d090
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 077b3e8b9aac47818b82384584d9b3cb410f9422
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310731"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541379"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -61,7 +61,7 @@ Při zálohování virtuálních počítačů Azure pomocí Azure Backup, virtu�
 Azure Backup snímky podle plánu zálohování.
 
 - **Virtuální počítače s Windows**: Pro virtuální počítače s Windows služba Backup koordinuje s Stínová kopie svazku Service (VSS) na snímek konzistentní vzhledem k diskům virtuálních počítačů.
-    - Ve výchozím nastavení Azure Backup pořídí úplné zálohy stínové kopie svazku. [Další informace](http://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
+    - Ve výchozím nastavení Azure Backup pořídí úplné zálohy stínové kopie svazku. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
     - Pokud chcete změnit nastavení tak, aby zálohování Azure trvá záložní kopie VSS, nastavte následující klíč registru z příkazového řádku: **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**.
 - **Virtuální počítače s Linuxem**: Pokud budete chtít využít konzistentní snímky virtuálního počítače s Linuxem pomocí Linuxu předzálohovací skript a framework k zápisu vlastních skriptů k zajištění konzistence pro provedení pozálohovacího skriptu.
     -  Azure Backup vyvolá pouze předzálohovacího nebo pozálohovacího skriptech psaných sami.

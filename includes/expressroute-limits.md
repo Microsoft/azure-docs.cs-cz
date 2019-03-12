@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad75b333fc7d5d37a4ac074727e4d54b67bd0321
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fa448975a5275e5aab4dc82b75433d188422e507
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45636985"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553466"
 ---
 #### <a name="expressroute-limits"></a>Limity pro ExpressRoute
-Následující omezení platí pro prostředky ExpressRoute na jedno předplatné.
+Následující omezení platí pro prostředky Azure ExpressRoute na jedno předplatné.
 
-| Prostředek | Výchozí/maximálního limitu |
+| Prostředek | Výchozí/maximální limit |
 | --- | --- |
 | Okruhy ExpressRoute podle předplatného |10 |
-| Okruhy ExpressRoute na oblast a předplatné (Azure Resource Manageru) |10 |
-| Maximální počet tras pro soukromý partnerský vztah Azure pomocí ExpressRoute standard |4,000 |
-| Maximální počet tras pro soukromý partnerský vztah Azure s doplňkem ExpressRoute premium |10 000 |
-| Maximální počet směrování pro partnerský vztah Microsoftu Azure pomocí ExpressRoute standard |200 |
-| Maximální počet směrování pro partnerský vztah s doplňkem ExpressRoute premium Microsoft Azure |200 |
+| Okruhy ExpressRoute na oblast a předplatné, pomocí Azure Resource Manageru |10 |
+| Maximální počet tras pro soukromý partnerský vztah Azure pomocí ExpressRoute Standard |4,000 |
+| Maximální počet tras pro soukromý partnerský vztah Azure s doplňkem ExpressRoute Premium |10 000 |
+| Maximální počet směrování pro partnerský vztah Microsoft Azure pomocí ExpressRoute Standard |200 |
+| Maximální počet směrování pro partnerský vztah Microsoft Azure s doplňkem ExpressRoute Premium |200 |
 | Maximální počet okruhů ExpressRoute, které jsou propojeny do stejné virtuální sítě v různých umístění partnerského vztahu |4 |
-| Počet propojení virtuální sítě povolené jeden okruh ExpressRoute |Viz Tabulka níže |
+| Počet propojení virtuální sítě povolené jeden okruh ExpressRoute |V následující tabulce. |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Počet služeb Virtual Networks jeden okruh ExpressRoute
-| **Velikosti okruhu** | **Počet propojení virtuálních sítí pro úroveň standard** | **Počet propojení virtuálních sítí s doplňkem Premium** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Počet virtuálních sítí na jeden okruh ExpressRoute
+| **Velikosti okruhu** | **Počet propojení virtuální sítě pro úroveň Standard** | **Počet propojení virtuální sítě s doplňkem Premium** |
 | --- | --- | --- |
 | 50 Mb/s |10 |20 |
 | 100 Mb/s |10 |25 |

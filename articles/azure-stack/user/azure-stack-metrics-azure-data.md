@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: b8df87e5d5091219b9b44a6b957250e254c97fec
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: fd4c1220d0652139c247ffed80e995a90a93c5b1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341785"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780830"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Monitor v Azure stacku
 

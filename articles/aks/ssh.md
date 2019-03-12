@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: d687467e6bd64363c78f60064c6a17adbc5e0d1f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846119"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538795"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení přes SSH do Azure Kubernetes Service (AKS) uzlů clusteru za účelem údržby nebo řešení potíží
 
@@ -20,21 +20,27 @@ V průběhu životního cyklu clusteru Azure Kubernetes Service (AKS) budete mus
 
 Tento článek ukazuje, jak vytvořit připojení SSH k uzlu AKS pomocí jejich privátní IP adresy.
 
+## <a name="before-you-begin"></a>Před zahájením
+
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+
+Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+
 ## <a name="add-your-public-ssh-key"></a>Přidejte veřejný klíč SSH
 
-Ve výchozím nastavení vygenerují se klíče SSH při vytváření clusteru AKS. Pokud jste nezadali klíče SSH při vytváření clusteru AKS, přidejte vaše veřejné klíče SSH pro uzly AKS. 
+Ve výchozím nastavení vygenerují se klíče SSH při vytváření clusteru AKS. Pokud jste nezadali klíče SSH při vytváření clusteru AKS, přidejte vaše veřejné klíče SSH pro uzly AKS.
 
 Chcete-li přidat klíč SSH k uzlu AKS, proveďte následující kroky:
 
 1. Získání názvu skupiny prostředků pro prostředky clusteru AKS pomocí [az aks zobrazit][az-aks-show]. Zadejte vlastní skupina základních prostředků a název clusteru AKS:
 
-    ```azurecli
+    ```azurecli-interactive
     az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
     ```
 
 1. Seznam virtuálních počítačů pomocí AKS clusteru pro skupinu prostředků [az vm list] [ az-vm-list] příkazu. Tyto virtuální počítače jsou uzly AKS:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
     ```
 
@@ -48,7 +54,7 @@ Chcete-li přidat klíč SSH k uzlu AKS, proveďte následující kroky:
 
 1. Chcete-li přidat vaše klíče SSH k uzlu, použijte [az vm se aktualizace uživatele] [ az-vm-user-update] příkazu. Zadejte název skupiny prostředků a potom jeden z uzlů AKS, kterou jste získali v předchozím kroku. Ve výchozím nastavení, uživatelské jméno pro uzly AKS. je *azureuser*. Zadejte umístění vlastní SSH veřejné klíče umístění, jako třeba *~/.ssh/id_rsa.pub*, nebo vložte obsah veřejného klíče SSH:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update \
       --resource-group MC_myResourceGroup_myAKSCluster_eastus \
       --name aks-nodepool1-79590246-0 \
@@ -58,11 +64,11 @@ Chcete-li přidat klíč SSH k uzlu AKS, proveďte následující kroky:
 
 ## <a name="get-the-aks-node-address"></a>Získání adresy uzlů AKS
 
-Uzlů AKS nejsou veřejně přístupný z Internetu. Pro připojení SSH k uzlů AKS použijte privátní IP adresu.
+Uzlů AKS nejsou veřejně přístupný z Internetu. Pro připojení SSH k uzlů AKS použijte privátní IP adresu. V dalším kroku vytvoříte pod pomocné rutiny ve vašem clusteru AKS, která vám umožní SSH tato privátní IP adresa uzlu.
 
 Zobrazit uzel clusteru AKS pomocí privátní IP adresu [az vm list-ip-addresses] [ az-vm-list-ip-addresses] příkazu. Zadejte vlastní AKS clusteru název skupiny prostředků získané v předchozím [az-aks-show] [ az-aks-show] kroku:
 
-```azurecli
+```azurecli-interactive
 az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 ```
 
@@ -154,3 +160,6 @@ Pokud potřebujete další data pro řešení problémů, můžete [zobrazení p
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

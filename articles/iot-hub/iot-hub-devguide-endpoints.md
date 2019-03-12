@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 72604f84297ddc77b9732c19789d249ac4fa7774
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010833"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539543"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
@@ -53,7 +53,7 @@ Následující seznam popisuje koncové body:
 
   * *Přijímat žádosti o přímé metody*. Zařízení používá k naslouchání pro tento koncový bod [přímá metoda](iot-hub-devguide-direct-methods.md)vaší žádosti.
 
-    Tyto koncové body jsou přístupné přes [protokoly MQTT v3.1.1](http://mqtt.org/), HTTPS 1.1 a [protokolu AMQP 1.0](https://www.amqp.org/) protokoly. Je také k dispozici prostřednictvím protokolu AMQP [objekty Websocket](https://tools.ietf.org/html/rfc6455) na portu 443.
+    Tyto koncové body jsou přístupné přes [protokoly MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 a [protokolu AMQP 1.0](https://www.amqp.org/) protokoly. Je také k dispozici prostřednictvím protokolu AMQP [objekty Websocket](https://tools.ietf.org/html/rfc6455) na portu 443.
 
 * **Koncové body služby**. Každý IoT hub zveřejňuje sadu koncových bodů pro back-endem řešení pro komunikaci ve vašich zařízeních. S jednou výjimkou tyto koncové body jsou dostupná jenom v případě použití [AMQP](https://www.amqp.org/) protokolu. Koncový bod vyvolání metody je přístupná přes protokol HTTPS.
   
@@ -83,6 +83,15 @@ Následující služby Azure IoT Hub aktuálně podporuje jako další koncové 
 * Témata služby Service Bus
 
 Omezení pro počet koncových bodů můžete přidat, naleznete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
+
+Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte stav koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku.
+
+|Stav|Popis|
+|---|---|
+|v pořádku|Koncový bod přijímá zprávy podle očekávání.|
+|Není v pořádku|Koncový bod není přijímání zpráv podle očekávání a se opakovaně pokouší o službě IoT Hub pro odesílání dat do tohoto koncového bodu. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.|
+|Neznámé|Centrum IoT ještě navázalo se připojení ke koncovému bodu. Žádné zprávy byly doručeny do nebo odmítnuta z tohoto koncového bodu.|
+|dead|Koncový bod není příjem zpráv, po služby IoT Hub opakovat dobu retrial odesílání zpráv.|
 
 ## <a name="field-gateways"></a>Bran v terénu
 

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 299ea79a7a344a57bf302aae049ba87234427343
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442779"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536942"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
@@ -507,9 +507,9 @@ Jakmile App Service dokončí nahrávání certifikátu, zobrazí se v **nastave
 
 1.  V **přidat vazbu SSL** stránky, použijte rozevírací nabídky vyberte název domény pro zabezpečení a certifikát, který chcete použít.
 
-2.  V **typ SSL**, vyberte, jestli se má použít [ **indikace názvu serveru (SNI)**](http://en.wikipedia.org/wiki/Server_Name_Indication)nebo založené na protokolu IP SSL.
+2.  V **typ SSL**, vyberte, jestli se má použít [ **indikace názvu serveru (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication)nebo založené na protokolu IP SSL.
 
--   **Na základě SNI SSL**-lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](http://wikipedia.org/wiki/Server_Name_Indication)).
+-   **Na základě SNI SSL**-lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).
 
 -   **Založené na protokolu IP SSL**-lze přidat pouze jednu vazbu SSL na základě IP adresy. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Pokud chcete zabezpečit více domén, je zabezpečte všechny používají stejný certifikát protokolu SSL. Toto je tradiční možnost vytvoření vazby SSL.
 

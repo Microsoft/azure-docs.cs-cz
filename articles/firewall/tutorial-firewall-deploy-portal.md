@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 2dd9fc5691c646a72936039b6bcc5949d227c6b5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633720"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545310"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -54,7 +54,7 @@ Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nas
 
 Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Na domovské stránce webu Azure Portal klikněte na **Skupiny prostředků** > **Přidat**.
 3. Jako **Název skupiny prostředků** zadejte **Test-FW-RG**.
 4. V části **Předplatné** vyberte své předplatné.
@@ -109,8 +109,8 @@ Teď vytvoříte virtuální počítače pro jump server a server úloh a umíst
 4. V části **příchozí pravidla portů**, pro **veřejné příchozí porty**, klikněte na tlačítko **povolit vybrané porty**.
 5. Pro **vyberte příchozí porty**vyberte **protokolu RDP (3389)**.
 
-6. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: disky**.
-7. Přijměte výchozí nastavení disku a klikněte na tlačítko **Další: sítě**.
+6. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: Disky**.
+7. Přijměte výchozí nastavení disku a klikněte na tlačítko **Další: Sítě**.
 8. Ujistěte se, že **Test-FW VN** vybraná virtuální síť a podsíť je **Jump-SN**.
 9. Pro **veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**.
 10. Typ **Srv. Jump PIP** veřejnou IP adresu, název a klikněte na **OK**.
@@ -141,9 +141,9 @@ Nasaďte do virtuální sítě bránu firewall.
    |---------|---------|
    |Název     |Test-FW01|
    |Předplatné     |\<Vaše předplatné\>|
-   |Skupina prostředků     |**Použijte existující**: Test-FW-RG. |
+   |Skupina prostředků     |**Použít existující**: Test-FW-RG |
    |Umístění     |Vyberte dříve použité umístění.|
-   |Volba virtuální sítě     |**Použijte existující**: Test-FW-VN.|
+   |Volba virtuální sítě     |**Použít existující**: Test-FW-VN|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
 5. Klikněte na **Zkontrolovat a vytvořit**.
@@ -235,12 +235,12 @@ Teď bránu firewall otestujte a ověřte, že funguje podle očekávání.
 1. Zkontrolujte na webu Azure Portal síťová nastavení virtuálního počítače **Srv-Work** a poznamenejte si privátní IP adresu.
 2. Připojte k virtuálnímu počítači **Srv-Jump** vzdálenou plochu a z ní otevřete další připojení k vzdálené ploše pomocí privátní IP adresy virtuálního počítače **Srv-Work**.
 
-3. Otevřete prohlížeč Internet Explorer a přejděte na adresu http://msn.com.
+3. Otevřete prohlížeč Internet Explorer a přejděte na adresu https://msn.com.
 4. U výstrah zabezpečení klikněte na **OK** > **Zavřít**.
 
    Zobrazí se domovská stránka služby MSN.
 
-5. Přejděte na http://www.msn.com.
+5. Přejděte na https://www.msn.com.
 
    Brána firewall by vás měla zablokovat.
 
@@ -256,4 +256,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)

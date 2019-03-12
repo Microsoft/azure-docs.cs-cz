@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3d4be0466f7f91c23666af4b155fe3b69c868d58
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449542"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538680"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -362,7 +362,7 @@ V tomto kroku vytvoříte **kanálu** s jedním **aktivity kopírování** , kte
    * V **typeProperties** části **SqlSource** je zadán jako **typ zdroje** a ** BlobSink ** je zadán jako **jímky typu**.
    * Příkaz jazyka SQL `select * from emp` je určená pro **sqlReaderQuery** vlastnost **SqlSource**.
 
-   Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
+   Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
 
    Pokud nezadáte hodnotu vlastnosti **end**, vypočítá se jako „**start + 48 hodin**“. Chcete-li kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9/9/9999**.
 
@@ -407,7 +407,7 @@ V tomto kroku budete pomocí webu Azure Portal monitorovat, co se děje v objekt
 6. Klikněte na tlačítko **X** zavřete všechny stránky dokud
 7. vrátit zpět na domovskou stránku pro **ADFTutorialOnPremDF**.
 8. (volitelné) Klikněte na tlačítko **kanály**, klikněte na tlačítko **ADFTutorialOnPremDF**a přejít k podrobnostem vstupní tabulky (**spotřebovaná**) nebo výstupní datové sady (**vyprodukováno**).
-9. Pomocí nástrojů, jako [Microsoft Storage Explorer](http://storageexplorer.com/) k ověření, že soubor/blob se vytvoří pro každou hodinu.
+9. Pomocí nástrojů, jako [Microsoft Storage Explorer](https://storageexplorer.com/) k ověření, že soubor/blob se vytvoří pro každou hodinu.
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

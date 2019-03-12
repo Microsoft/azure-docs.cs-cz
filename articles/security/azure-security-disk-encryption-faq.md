@@ -3,17 +3,16 @@ title: Časté otázky – Azure Disk Encryption pro virtuální počítače Iaa
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14804de1d8507a49cda2ce1dd8ee97dc56c0223b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c082de09cbe17bd31e50d14329cfb8f58b01d8fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439549"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781319"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -44,12 +43,14 @@ Azure Disk Encryption je podporováno v následujících Linuxových distribucí
 | --- | --- |--- |
 | Ubuntu | 16.04| Disk operačního systému a dat |
 | Ubuntu | 14.04.5</br>[s Azure vyladěný jádra aktualizovat, aby 4.15 nebo novější](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Disk operačního systému a dat |
+| RHEL | 7.6 | Operační systém a datového disku * |
 | RHEL | 7.5 | Operační systém a datového disku * |
 | RHEL | 7.4 | Operační systém a datového disku * |
 | RHEL | 7.3 | Operační systém a datového disku * |
 | RHEL | 7.2 | Operační systém a datového disku * |
 | RHEL | 6.8 | Datový disk * |
 | RHEL | 6.7 | Datový disk * |
+| CentOS | 7.5 | Disk operačního systému a dat |
 | CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |

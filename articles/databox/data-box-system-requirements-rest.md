@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4ad607ad7ef1ee91ea9c886a76faabb0f304969d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752768"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538064"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Požadavky na úložiště Azure Data Box Blob
 
@@ -53,7 +53,7 @@ Verze Public preview (Azure Data Box 1.8 a vyšší)
 |     Klientská knihovna     |     Úložiště objektů Blob pole data podporovaná verze     |     Odkaz             |     Koncový bod specifikace         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
 |    .NET                |    Z 6.2.0 k 8.7.0.                         |    Balíček Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/ <br>Verze Githubu:   https://github.com/Azure/azure-storage-net/releases                                                                      |    souboru app.config                 |
-|    Java                |    Z 4.1.0 k 6.1.0                          |    Maven balíček:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases                                                      |    Nastavení připojovací řetězce         |
+|    Java                |    Z 4.1.0 k 6.1.0                          |    Maven balíček:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases                                                      |    Nastavení připojovací řetězce         |
 |    Node.js             |    Z 1.1.0 k 2.7.0                          |    Odkaz na NPM:   https://www.npmjs.com/package/azure-storage   (Příklad: spuštění "npm nainstalujte azure-storage@2.7.0")   <br>Verze Githubu:   https://github.com/Azure/azure-storage-node/releases                            |    Deklarace instance služby    |
 |    C++                 |    Z 2.4.0 k 3.1.0                          |    Balíček Nuget:   https://www.nuget.org/packages/wastorage.v140/   <br>Verze Githubu:   https://github.com/Azure/azure-storage-cpp/releases                                                                            |    Nastavení připojovací řetězce         |
 |    PHP                 |    Z 0.15.0 nastavená na 1.0.0                         |    Verze Githubu:   https://github.com/Azure/azure-storage-php/releases   <br>Instalace přes Composer (viz podrobnosti níže)                                                                                                   |    Nastavení připojovací řetězce         |
@@ -69,7 +69,7 @@ Pro úložiště objektů Blob pole dat jsou konkrétní klientské knihovny a p
 | Klientská knihovna     |Úložiště objektů Blob pole data podporovaná verze     | Odkaz   |     Koncový bod specifikace      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    8.7.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>Verze Githubu:   https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    souboru app.config                 |
-|    Java                |    6.1.0                                           |    Maven balíček:   http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Nastavení připojovací řetězce         |
+|    Java                |    6.1.0                                           |    Maven balíček:   https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    Nastavení připojovací řetězce         |
 |    Node.js             |    2.7.0                                           |    Odkaz na NPM:   https://www.npmjs.com/package/azure-storage   (Spuštění: Nainstalujte npm azure-storage@2.7.0)   <br>Verze Githubu:   https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    Deklarace instance služby    |
 |    C++                 |    3.1.0                                           |    Balíček Nuget:   https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>Verze Githubu:   https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    Nastavení připojovací řetězce         |
 |    PHP                 |    1.0.0                                           |    Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Objekt BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Instalace přes Composer (Chcete-li získat další informace, viz podrobnosti níže.)                                                                                                             |    Nastavení připojovací řetězce         |

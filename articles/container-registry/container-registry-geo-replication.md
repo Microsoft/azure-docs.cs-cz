@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674697"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541855"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
@@ -69,7 +69,7 @@ Geografická replikace je funkce [Premium Registry](container-registry-skus.md) 
 
 ![Přepínání skladové položky na webu Azure Portal](media/container-registry-skus/update-registry-sku.png)
 
-Konfigurace geografické replikace pro svůj registr úrovně Premium, přihlaste se k webu Azure portal na http://portal.azure.com.
+Konfigurace geografické replikace pro svůj registr úrovně Premium, přihlaste se k webu Azure portal na https://portal.azure.com.
 
 Přejděte do služby Azure Container Registry a vyberte **replikace**:
 

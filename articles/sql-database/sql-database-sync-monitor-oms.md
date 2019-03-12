@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1417907bf9472137677a090906fa173c3d1ea571
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213462"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539288"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorování synchronizace dat SQL s protokoly Azure monitoru 
 
@@ -32,7 +32,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny synchronizace 
 
-Už nemusíte hledat prostřednictvím protokolů všech skupin synchronizace jednotlivě k vyhledání problémů. Všechny skupiny synchronizace z některého z vašich předplatných na jednom místě můžete monitorovat pomocí zobrazení vlastní log analytics. Toto zobrazení poskytuje informace, které je důležité informace pro zákazníky používající synchronizaci dat SQL.
+Už nemusíte hledat prostřednictvím protokolů všech skupin synchronizace jednotlivě k vyhledání problémů. Pomocí vlastních zobrazení Azure Monitor můžete sledovat všechny skupiny synchronizace z některého z vašich předplatných na jednom místě. Toto zobrazení poskytuje informace, které je důležité informace pro zákazníky používající synchronizaci dat SQL.
 
 ![Řídicí panel monitorování synchronizace dat](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
@@ -50,9 +50,9 @@ Musíte nakonfigurovat tři komponenty:
 
 -   Powershellový runbook ke kanálu dat protokolu synchronizace dat SQL na protokoly Azure monitoru.
 
--   Upozornění log analytics pro e-mailová oznámení.
+-   Azure Monitor upozornění e-mailových oznámení.
 
--   Log analytics zobrazení monitorování.
+-   Zobrazení monitorování Azure pro monitorování.
 
 ### <a name="samples-to-download"></a>Ukázky ke stažení
 
@@ -60,7 +60,7 @@ Stáhněte si následující dvě ukázky:
 
 -   [Synchronizovat data protokolu Powershellového Runbooku](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení v Log Analytics data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení Azure monitorování synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -130,7 +130,7 @@ Naplánování runbooku:
 
 Ke sledování, zda automatizace běží podle očekávání, v části **přehled** u vašeho účtu automation, vyhledejte **statistiky úlohy** zobrazení v části **monitorování**. Připnete na řídicí panel pro snadné prohlížení tohoto zobrazení. Úspěšná spuštění sady runbook zobrazit jako "Dokončeno" a neúspěšné spuštění zobrazí jako "Se nezdařilo."
 
-## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Vytvoření upozornění Čtenář Log Analytics pro e-mailových oznámení
+## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>Vytvoření výstrahy Azure Monitor čtečky e-mailových oznámení
 
 Pokud chcete vytvořit upozornění, která používá protokoly Azure monitoru, proveďte následující akce. Předpokladem je budete muset mít protokoly Azure monitoru propojený s pracovním prostorem Log Analytics.
 
@@ -152,9 +152,9 @@ Pokud chcete vytvořit upozornění, která používá protokoly Azure monitoru,
 
 6.  Klikněte na **Uložit**. Zadaným příjemcům nyní přijímat e-mailová oznámení, když dojde k chybám.
 
-## <a name="create-a-log-analytics-view-for-monitoring"></a>Vytvoření zobrazení v Log Analytics pro monitorování
+## <a name="create-an-azure-monitor-view-for-monitoring"></a>Vytvoření zobrazení Azure Monitor pro monitorování
 
-Tento krok vytvoří zobrazení v log analytics pro vizuální monitorování všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
+Tento krok vytvoří zobrazení Azure Monitor vizuálně monitorovat všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
 
 -   Dlaždice přehledu, který ukazuje, kolik chyb, úspěchy a upozornění mají všechny skupiny synchronizace.
 
@@ -162,9 +162,9 @@ Tento krok vytvoří zobrazení v log analytics pro vizuální monitorování v�
 
 -   Dlaždice pro každou skupinu synchronizace, který zobrazuje počet chyb, úspěchy a upozornění a poslední chybové zprávy.
 
-Pokud chcete nakonfigurovat zobrazení v log analytics, proveďte následující akce:
+Konfigurace zobrazení monitorování Azure, proveďte následující akce:
 
-1.  Na domovské stránce log analytics vyberte plus na levé straně otevřete **Návrhář zobrazení**.
+1.  Na domovské stránce pracovního prostoru Log Analytics vyberte plus na levé straně otevřete **Návrhář zobrazení**.
 
 2.  Vyberte **Import** na horním panelu Návrhář zobrazení. Potom vyberte ukázkový soubor "DataSyncLogOMSView".
 
@@ -196,7 +196,7 @@ Stáhněte si ukázky kódu, které jsou popsané v tomto článku v následují
 
 -   [Synchronizovat data protokolu Powershellového Runbooku](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení v Log Analytics data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení Azure monitorování synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o Synchronizaci dat SQL:

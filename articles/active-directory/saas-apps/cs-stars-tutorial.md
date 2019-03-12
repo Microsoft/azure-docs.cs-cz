@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8267eebb5193be8209737047e17bc1d4878023ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 167c1ed70fe0ba77e3ef22b829dd9ae1cf938d68
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882718"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Kurz: Integrace Azure Active Directory s CS hvězdiček
 

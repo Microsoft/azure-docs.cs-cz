@@ -12,12 +12,12 @@ ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1f9bd8503c2e8f2aa3c54d41b8585c6fbf81c92b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409713"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542079"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Omezení a kvóty služby batch AI
 
@@ -77,7 +77,7 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit k předplatnému slu�
    
     d. **Plán podpory** > vyberte váš plán podpory.
 
-    Klikněte na tlačítko **Další**.
+    Klikněte na **Další**.
 4. V **problém**:
    
     a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
@@ -86,7 +86,7 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit k předplatnému slu�
 
     c. Volitelné – nahrát všechny relevantní soubory s dalšími informacemi o váš důvod pro zvýšení.
    
-    Klikněte na tlačítko **Další**.
+    Klikněte na **Další**.
 5. V **kontaktní informace**:
    
     a. Vyberte **upřednostňovaný způsob kontaktování**.
@@ -108,4 +108,4 @@ Po seznámení s maximální kvóty, projděte si následující články pro za
 > [Další informace o prostředcích služby Batch AI](resource-concepts.md)
 
 [portal]: https://portal.azure.com
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity

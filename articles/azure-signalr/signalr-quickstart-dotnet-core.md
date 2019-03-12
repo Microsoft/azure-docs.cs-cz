@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 680036dff856eccb85e600128119b5c0cafc5711
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267746"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543674"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s služby SignalR
 
@@ -267,6 +267,6 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 V tomto rychlém startu jste vytvořili nový prostředek služby Azure SignalR a společně s webovou aplikací ASP.NET Core jste ho použili k nabízení aktualizací obsahu v reálném čase do několika připojených klientů. Další informace o použití služby Azure SignalR najdete v následujícím kurzu, který demonstruje ověřování.
 
 > [!div class="nextstepaction"]
-> [Ověřování pomocí služby Azure SignalR](./signalr-authenticate-oauth.md)
+> [Ověřování pomocí služby Azure SignalR](./signalr-concept-authenticate-oauth.md)
 
 

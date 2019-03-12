@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9db223075284b02de1cf3de8cfa7a0b5aa35f286
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754216"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538679"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch pomocí rozhraní API .NET
 
@@ -31,7 +31,7 @@ Azure Batch umožňuje efektivně spouštět v Azure rozsáhlé paralelní dávk
 > * Monitorování provádění úkolů
 > * Načtení výstupních souborů
 
-V tomto kurzu pomocí open source nástroje [ffmpeg](http://ffmpeg.org/) paralelně převedete multimediální soubory MP4 do formátu MP3. 
+V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) paralelně převedete multimediální soubory MP4 do formátu MP3. 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

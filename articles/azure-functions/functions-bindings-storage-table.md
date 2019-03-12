@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: e10c42ee7d0d1c3ec7ade576fef6cb8053fdb633
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0c9cd513f4d5842d14077bb7470ebd18c7a46340
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111353"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538200"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -422,7 +422,7 @@ Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která vrá
 @FunctionName("getallcount")
 public int run(
    @HttpTrigger(name = "req",
-                 methods = {"get"},
+                 methods = {HttpMethod.GET},
                  authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
    @TableInput(name = "items",
                 tableName = "mytablename",  partitionKey = "myparkey",

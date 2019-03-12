@@ -1,5 +1,5 @@
 ---
-title: 'Ověřování koncového uživatele: rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+title: 'Ověřování koncového uživatele: Rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak dokončit ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí rozhraní REST API
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea550c0959f5de13f013f135926251bf9f8b450f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124435"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537877"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ V tomto článku se dozvíte o tom, jak pomocí rozhraní REST API, provádět o
 
 * **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](http://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
+* **[cURL](https://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Ověřování koncového uživatele je doporučený postup, pokud chcete, aby uživatel měl přístup do vaší aplikace pomocí Azure AD. Aplikace je mít přístup k prostředkům Azure se stejnou úrovní přístupu jako přihlášený uživatel. Uživatel musí zadat přihlašovací údaje pravidelně v pořadí pro vaši aplikaci k Udržovat přístup.

@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2e3d7800-583d-46b7-a7ed-3ce3925e076c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 52a20c956f673bc6b55b8c39849bef19e258d04a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a61e4ad9381460238767a6fba77ba7297f74c9b8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456765"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fulcrum"></a>Kurz: Integrace Azure Active Directory s Fulcrum
 

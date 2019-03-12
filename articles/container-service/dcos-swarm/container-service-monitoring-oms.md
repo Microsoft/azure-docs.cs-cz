@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8ed148dfd6441d05891ef38934123a9cd3827b8b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113838"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538540"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics
 
@@ -34,7 +34,7 @@ Tento článek předpokládá, že jste nastavili DC/OS a nasazení jednoduché 
 ### <a name="pre-requisite"></a>Předpoklad
 - [Předplatné Microsoft Azure](https://azure.microsoft.com/free/) – můžete získat předplatné zdarma.  
 - Nastavení pracovního prostoru analýzy protokolu – viz "Krok 3" níže
-- [Rozhraní příkazového řádku DC/OS](http://docs.mesosphere.com/1.12/cli) nainstalované.
+- [Rozhraní příkazového řádku DC/OS](https://docs.mesosphere.com/1.12/cli) nainstalované.
 
 1. Na řídicím panelu DC/OS klikněte na světě a vyhledejte položku "OMS", jak je znázorněno níže.
 

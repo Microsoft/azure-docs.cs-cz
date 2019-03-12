@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: b-juche
-ms.openlocfilehash: 72da85fb7296d02bc6d5f7fcd3279953c312c920
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f08eaee038ad18c600826dea6fe0fd85935de59a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009214"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761969"
 ---
-# <a name="resize-a-capacity-pool-or-a-volume"></a>Změnit velikost kapacity fond nebo svazek
+# <a name="resize-a-capacity-pool-or-a-volume"></a>Změna velikosti fondu kapacity nebo svazku
 Můžete změnit velikost kapacity fondu nebo podle potřeby svazek. 
 
 ## <a name="resize-the-capacity-pool"></a>Změnit velikost kapacity fondu 
@@ -34,7 +34,7 @@ Můžete změnit velikost kapacity fondu v 4 TiB zvýší nebo sníží. Změna 
 
 ## <a name="resize-a-volume"></a>Změna velikosti svazku
 
-Můžete změnit velikost svazku, podle potřeby. Využití kapacity na svazku se počítá zřízená kapacita svůj fond.
+Můžete změnit velikost svazku, podle potřeby. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu.
 
 1. V okně Správa NetApp účtu klikněte na tlačítko **svazky**. 
 2. Klikněte pravým tlačítkem na název svazku, který chcete změnit velikost nebo klepněte na ikonu "..." na konci řádku na svazku pro zobrazení v místní nabídce.

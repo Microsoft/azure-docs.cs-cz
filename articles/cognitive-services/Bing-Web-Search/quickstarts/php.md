@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a02862d3ea2e17cfa25a2a2d96e1454699ae7f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 63e4052a2bce6c620180d682d6713d2f1547c956
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166279"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536755"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API webové vyhledávání Bingu  
 
@@ -25,7 +25,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 ## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
-* [PHP 5.6.x](http://php.net/downloads.php) nebo novější
+* [PHP 5.6.x](https://php.net/downloads.php) nebo novější
 * Klíč předplatného  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]

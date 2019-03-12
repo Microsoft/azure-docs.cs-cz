@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 0d1d4358789cce4d393143e8a243ee9a3e06bf36
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 56d392a7df2a659cf457631ec5693766fd674f91
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652395"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727191"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -140,7 +140,7 @@ Další informace najdete v tématu [doporučení Advisoru náklady](../advisor/
 
 ## <a name="reviewing-costs-at-the-end-of-your-billing-cycle"></a>Kontrola nákladů na konci fakturačního období
 
-Faktuře bude k dispozici na konci fakturačního cyklu. Můžete také [si stáhnout předchozí faktury a podrobnosti o použití souborů](billing-download-azure-invoice-daily-usage-date.md) k Ujistěte se, že se vám účtovat správně. Další informace o porovnávání denním využitím vaše faktura najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md).
+Vaše faktura bude k dispozici na konci fakturačního cyklu. Můžete také [si stáhnout předchozí faktury a podrobnosti o použití souborů](billing-download-azure-invoice-daily-usage-date.md) k Ujistěte se, že se vám účtovat správně. Další informace o porovnávání denním využitím vaše faktura najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md).
 
 ### <a name="billing-api"></a>Rozhraní API pro fakturaci
 
@@ -184,6 +184,26 @@ Pokud chcete zobrazit, pokud jste správce účtu, přejděte na [předplatných
 Pokud si nejste správce účtu, pak někdo pravděpodobně zobrazila částečný přístup s použitím [řízení přístupu na základě Role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Ke správě předplatných a změnit informace o, fakturaci [Najít účet správce](billing-subscription-transfer.md#whoisaa). Požádejte správce účtu a proveďte úlohy nebo [převést toto předplatné se vám](billing-subscription-transfer.md).
 
 Pokud správce účtu už není ve vaší organizaci a potřebujete spravovat fakturace, [kontaktujte nás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Jak požádat o kredit smlouvu o úrovni služeb pro incident služby
+
+Smlouva o úrovni služeb (SLA) popisuje závazky společnosti Microsoft týkající se dostupnosti a konektivity. Incident služby je oznamují se službami Azure zaznamenat problém tento dopad provozu nebo připojení, označovaný také jako "výpadek". Pokud není jsme dosáhnout a zachovávat úrovně služeb pro každou službu, jak je popsáno v této smlouvě SLA, pak bude pravděpodobně nárok na kredit ve výši část měsíčních poplatků za služby.
+
+Požádat o kredit:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Pokud máte více účtů, ujistěte se, že používat ten, který byl ovlivněn výpadku Azure. To pomáhá podporu automatické shromažďování na pozadí potřebné informace a rychleji vyřešit tento případ.
+2. Vytvořte novou žádost o podporu.
+3. V části **typ problému**vyberte **fakturace**.
+4. V části **typ problému**vyberte **požádat o refundaci ve výši**.
+5. Přidání podrobností k určení, že jste s žádostí o kredit SLA, uvést datum/čas/časového pásma, stejně jako ovlivněné služby (virtuální počítače, weby, atd.)
+6. Ověřte svoje kontaktní údaje a vyberte **vytvořit** tlačítko k odeslání vaší žádosti.
+
+Prahové hodnoty SLA se liší podle služby. Například webová vrstva SQL má smlouvu SLA 99,9 %, virtuální počítače mají smlouvou SLA zajišťující 99,95 % a SQL standardní úroveň má smlouvu SLA o 99,99 %.
+
+U některých služeb jsou požadavky pro smlouvu SLA k použití. Například virtuální počítače musí mít dva nebo víc instancí nasazených ve stejné sadě dostupnosti.
+
+Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentaci a [shrnutí smluv SLA pro Azure services](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentaci.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

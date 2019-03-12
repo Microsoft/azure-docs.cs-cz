@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: a871048c9d75fc6ea958cfacaa3a47b11765fb0d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: da23d8037f37174826a2b9662c39bb507367a6ae
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884439"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537802"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
 
@@ -77,7 +77,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu najdete v článku kódy na trhu.<br /><br /> **POZNÁMKA:** Rozhraní API ve verzi Preview URL aktuálně podporuje jenom USA podle zeměpisného umístění a angličtině.<br /><br />|String|Ano|
 |<a name="query" />q|Adresa URL ve verzi preview|String|Ano|
-|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](http://json-ld.org/).|String|Ne|
+|<a name="responseformat" />responseFormat|Typ média určený pro odpověď. Níže jsou uvedeny možné hodnoty velká a malá písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o JSON objektů, že odpověď obsahuje, naleznete v tématu [objekty odpovědi](#response-objects).<br /><br />Pokud chcete zadat JsonLd, tělo odpovědi obsahuje objekty JSON-LD, obsahující výsledky hledání. Informace o JSON-LD, naleznete v tématu [JSON-LD](https://json-ld.org/).|String|Ne|
 |<a name="safesearch"/>safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |String|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.|
 
 ## <a name="response-objects"></a>Objekty odpovědi

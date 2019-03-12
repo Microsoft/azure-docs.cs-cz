@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015946"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544950"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Je nutné, abyste před zahájením tohoto kurzu splňovali následující poža
 3. Stáhnout a revidovat souboru dotazu Hive (**HQL**) umístění: [ https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql ](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Tento dotaz transformuje vstupní data a generuje výstupní data. 
 4. Stáhnout a revidovat ukázkového vstupního souboru (**input.log**) umístění: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Vytvořte kontejner objektů blob s názvem **adfgetstarted** ve službě Azure Blob Storage. 
-6. Nahrát **partitionweblogs.hql** do souboru **skript** složky **adfgetstarted** kontejneru. Pomocí nástrojů, jako [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+6. Nahrát **partitionweblogs.hql** do souboru **skript** složky **adfgetstarted** kontejneru. Pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 7. Nahrát **input.log** do souboru **inputdata** složky **adfgetstarted** kontejneru. 
 
 Po dokončení požadavků, vyberte jednu z následujících nástrojů nebo sad SDK chcete kurz absolvovat: 

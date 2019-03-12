@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: ce7cc489b107ce4bd95270b9a7f8cb560a2d2398
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99371f0ae56046a328155aa2151ad8b89df93a04
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249642"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551921"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Standardní rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -30,6 +30,11 @@ ms.locfileid: "55249642"
 |**Aktuální podporované architektury**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name0110-preview0110-preview"></a><a name="0.11.0-preview"/>0.11.0-Preview
+* Byly provedeny změny konfigurace CloudTableClient. Nyní využívá objektu TableClientConfiguration během konstrukce. TableClientConfiguration poskytuje různé vlastnosti konfigurace chování klienta v závislosti na tom, jestli je cílový koncový bod Cosmos DB Table API nebo rozhraní API tabulky Azure Storage.
+* Přidání podpory pro TableQuery vracejí výsledky v seřazeném pořadí na vlastní sloupec. Tato funkce je podporována pouze na koncové body Cosmos DB Table.
+* Přidání podpory pro vystavení RequestCharges na různé typy výsledků. Tato funkce je podporována pouze na koncové body Cosmos DB Table.
 
 ### <a name="a-name0101-preview0101-preview"></a><a name="0.10.1-preview"/>0.10.1-preview
 * Přidání podpory pro SAS token, operace TablePermissions ServiceProperties a ServiceStats proti koncovým bodům Azure Storage Table. 
@@ -51,6 +56,7 @@ Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřa
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [0.11.0-Preview](#0.11.0-preview) |5. března 2019 |--- |
 | [0.10.1-preview](#0.10.1-preview) |22. ledna 2019 |--- |
 | [0.10.0-preview](#0.10.0-preview) |18. prosince 2018 |--- |
 | [0.9.1-preview](#0.9.1-preview) |18. října 2018 |--- |

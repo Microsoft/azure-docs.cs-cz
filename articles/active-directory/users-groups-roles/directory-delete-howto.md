@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/05/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59bfc13053a33b8f29f09a9ab93a108e746ea012
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3dffcfe7c4c892976a61272a2217226f512b70ed
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431151"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542552"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
-
 Při odstranění tenanta se také odstraní všechny prostředky, které jsou obsaženy v tenantovi. Je třeba připravit klienta minimalizací její přidružené prostředky před odstraněním. Jenom globální správce Azure Active Directory (Azure AD) můžete odstranit tenanta služby Azure AD z portálu.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>Příprava tenanta pro odstranění
@@ -52,7 +51,7 @@ Nelze odstranit tenanta v Azure AD, dokud nebude úspěšný několik kontrol. T
 
 ## <a name="i-have-an-expired-subscription-but-i-cant-delete-the-tenant"></a>Mám předplatné vypršelo, ale nemůžu odstranit tenanta
 
-Při konfiguraci vašeho tenanta Azure Active Directory, může také aktivaci na základě licence předplatných pro vaši organizaci, jako je Azure Active Directory Premium P2, Office 365 Business Premium nebo Enterprise Mobility + Security E5. Těchto předplatných blokovat odstranění adresáře, dokud se plně odstraní, aby se zabránilo nechtěnému úniku. Předplatná musí být v **zajištění zrušeno** stavu, povolíte odstranění tenanta. **Konec platnosti** nebo **zrušeno** předplatné přesune **zakázané** stavu a finální fáze je **Deprovisoned** stavu. 
+Při konfiguraci vašeho tenanta Azure AD může také aktivaci na základě licence předplatných pro vaši organizaci, jako je Azure AD Premium P2, Office 365 Business Premium nebo Enterprise Mobility + Security E5. Těchto předplatných blokovat odstranění adresáře, dokud se plně odstraní, aby se zabránilo nechtěnému úniku. Předplatná musí být v **zajištění zrušeno** stavu, povolíte odstranění tenanta. **Konec platnosti** nebo **zrušeno** předplatné přesune **zakázané** stavu a finální fáze je **Deprovisoned** stavu. 
 
 Co očekávat, když vyprší platnost zkušební verze předplatného Office 365, (nezahrnuje placené partnera/CSP, smlouvy Enterprise nebo multilicenčního programu) najdete v následující tabulce. Další informace o Office 365 uchování a předplatné životní cyklus dat, naleznete v tématu [co se stane s mými daty a přístupem při ukončení Moje Office 365 pro firmy předplatné?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
@@ -61,17 +60,19 @@ Stav předplatného | Data | Přístup k datům
 Aktivní (30denní zkušební verze)  | Data dostupná pro všechny    | <li>Uživatelé mají normální přístup k Office 365 souborech nebo aplikacích<li>Správci mají normální přístup k centru pro správu Office 365 a prostředky 
 Vypršela platnost (30 dnů)   | Data dostupná pro všechny    | <li>Uživatelé mají normální přístup k Office 365 souborech nebo aplikacích<li>Správci mají normální přístup k centru pro správu Office 365 a prostředky
 Zakázáno (30 dnů) | Data dostupná pouze správci  | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365, ale nelze přiřadit licence nebo aktualizace uživatelů
-Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, pokud žádné služby se používá) | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365 si kupovat a spravovat další předplatná
+Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, pokud žádné služby se používá) | <li>Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<li>Správci můžou přístup k centru pro správu Office 365 si kupovat a spravovat další předplatná 
 
-Můžete vložit do předplatného **Deprovisoned** stavu odstraníme za 3 dny. pomocí Microsoft Store pro firmy centra pro správu. Tato funkce už brzy bude k centru pro správu Office 365.
+## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Odstranění předplatného v Centru pro správu služeb Microsoft 365
 
-1. Přihlaste se k [Microsoft Store pro firmy centra pro správu](https://businessstore.microsoft.com/manage/) pomocí účtu, který je globálním správcem tenanta. Pokud se pokoušíte odstranit tenanta "Contoso", který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlásit se hlavní název uživatele, jako admin@contoso.onmicrosoft.com.
+Můžete vložit do předplatného **Deprovisoned** stavu měla odstranit během 3 dny pomocí centra pro správu služeb Microsoft 365.
 
-2. Přejděte **spravovat** kartě a vyberte **produktů a služeb**, zvolte předplatné, které chcete zrušit a vyberte **odstranit**.
+1. Přihlaste se k [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem tenanta. Pokud se pokoušíte odstranit tenanta "Contoso", který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlásit se hlavní název uživatele, jako admin@contoso.onmicrosoft.com.
+
+2. Přejděte **fakturace** kartě a vyberte **produktů a služeb**, zvolte předplatné, které chcete zrušit. Po kliknutí na **zrušit**, aktualizujte stránku.
   
   ![Odstranit odkaz pro odstranění předplatného](./media/directory-delete-howto/delete-command.png)
   
-3. Vyberte **odstranit odběr** přijali podmínky a ujednání a odstraňte odběr. Do tří dnů se trvale odstraní všechna data. Pokud změníte své rozhodnutí, můžete znovu aktivovat předplatné během následujících tří dnů.
+3. Vyberte **odstranit** k odstranění předplatného a přijali podmínky a ujednání. Do tří dnů se trvale odstraní všechna data. Předplatné období třídenní můžete znovu aktivovat, pokud změníte své rozhodnutí.
   
   ![podmínky a ujednání](./media/directory-delete-howto/delete-terms.png)
 

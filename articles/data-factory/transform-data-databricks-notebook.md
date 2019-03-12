@@ -3,21 +3,21 @@ title: Transformace dat pomocí poznámkového bloku Databricks – Azure | Doku
 description: Zjistěte, jak zpracovat nebo transformovat data pomocí poznámkového bloku Databricks.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 8ab6dad36bf47430a925d21ca2464286e7e70002
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022066"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576816"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformovat data spuštěním poznámkového bloku Databricks
 
@@ -96,7 +96,7 @@ V definici aktivity výše Databricks zadáte tyto knihovny typů: *jar*, *egg*,
         {
             "cran": {
                 "package": "ada",
-                "repo": "http://cran.us.r-project.org"
+                "repo": "https://cran.us.r-project.org"
             }
         }
     ]
