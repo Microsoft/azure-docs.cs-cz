@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dccd685c240d6e007486be6a4f73e0fce0129a82
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405228"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532321"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -39,7 +39,7 @@ Následující části nabízí obecné informace napříč implementace služby
 
 Zápis JSON (JavaScript Object) a specifikace jazyka JavaScript objekt podepisování a šifrování (blog JOSE) jsou důležité informace.  
 
--   [Webového klíče JSON (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [Webového klíče JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [Šifrování webové JSON (pomocí JWE.)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web podpis (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
@@ -166,7 +166,7 @@ Key Vault nepodporuje operace EXPORTU. Po zřízení klíčem v systému není m
 
 Uživatelé mohou omezit všechny kryptografické operace, které služby Key Vault podporuje na základě za klíč pomocí vlastnosti key_ops JWK objektu.  
 
-Další informace o objektech JWK, naleznete v tématu [JSON Web klíč (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+Další informace o objektech JWK, naleznete v tématu [JSON Web klíč (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
 
 ###  <a name="key-attributes"></a>Klíčové atributy
 
@@ -189,7 +189,7 @@ Není dosud platný a jeho platnost klíče, mimo *nbf* / *exp* okna, bude fungo
 
 Další informace o typech dat najdete v části [datové typy](#data-types).
 
-Další informace o dalších atributů je to možné, najdete v článku [JSON Web klíč (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Další informace o dalších atributů je to možné, najdete v článku [JSON Web klíč (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
 ### <a name="key-tags"></a>Klíče značek
 

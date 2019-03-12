@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a128be720675898a2512f43bf714b9ad6aca0450
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3830dc15cebe24a8fb910b641b7b986437aeec52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338531"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768974"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Ověření jako klíčové koncepty služby
 
@@ -33,7 +33,7 @@ Tento článek popisuje klíčové pojmy v ověřování jako služba (VaaS).
 ### <a name="create-a-solution-in-the-vaas-portal"></a>Vytvoření řešení na portálu VaaS
 
 1. Přihlaste se k [VaaS portál](https://azurestackvalidation.com).
-2. Na řídicím panelu řešení, vyberte na **nové řešení**.
+2. Na řídicím panelu řešení vyberte **nové řešení**.
 3. Zadejte název řešení. Návrhy pojmenování, naleznete v tématu [zásady vytváření názvů pro řešení VaaS](azure-stack-vaas-best-practice.md#naming-convention-for-vaas-solutions).
 4. Vyberte **Uložit** k vytvoření řešení.
 
@@ -41,7 +41,7 @@ Tento článek popisuje klíčové pojmy v ověřování jako služba (VaaS).
 
 Pracovní postup VaaS pracuje v rámci kontextu VaaS řešení. Představuje sadu testovacích sad, které vykonávají funkce pro nasazení služby Azure Stack. Pracovní postup musí být vytvořené pro všechny aktualizace softwaru nebo nasazení řešení Azure Stack.
 
-Pracovní postupy jsou rozděleny podle typu scénář testování. Při testování neoficiální **průchodu testů** pracovního postupu umožňuje vybrat testy ze všech dostupných VaaS dokumentaci. Při testování oficiální **ověření** pracovních postupů cílit na konkrétní scénáře testování vybraných microsoftem.
+Pracovní postupy jsou rozděleny podle typu scénář testování. Při testování neoficiální **průchodu testů** pracovního postupu vám umožní vybrat testy ze všech dostupných VaaS dokumentaci. Při testování oficiální **ověření** pracovních postupů cílit na konkrétní scénáře testování vybraných microsoftem.
 
 ![Dlaždice VaaS pracovního postupu](media/tile_all-workflows.png)
 
@@ -52,7 +52,7 @@ Další informace o typech pracovních postupů, najdete v části [co je ověř
 
 ### <a name="getting-started-with-vaas-workflows"></a>Začínáme s pracovními postupy VaaS
 
-1. Na řídicím panelu řešení vytvořte nové řešení nebo vyberte existující. Tím se aktualizuje a umožní dlaždice pracovního postupu.
+1. Na řídicím panelu řešení vytvořte nové řešení nebo vyberte existující. Tím se aktualizuje a aktivuje pracovní postup dlaždice.
 2. K vytvoření nového pracovního postupu, vyberte na **Start** na kteroukoli dlaždici. Informace specifické pro každý pracovní postup najdete v následujících článcích:
     - Průchod testu: [Rychlé zprovoznění: Použít ověření jako portál služby k naplánování prvního testu](azure-stack-vaas-schedule-test-pass.md)
     - Ověření řešení: [Ověření nové řešení Azure Stack](azure-stack-vaas-validate-solution-new.md)
@@ -65,7 +65,7 @@ Další informace o parametry a vlastnosti pracovního postupu najdete v tématu
 
 ## <a name="tests"></a>Testy
 
-Test v VaaS se skládá z sadu akcí, které spustily řešení s Azure Stack. Testy mají různé účely zamýšlený identifikovat podle kategorie, jako je funkční a spolehlivosti a cílit na jeden nebo více služeb Azure stacku. Každý test definuje vlastní sadu parametrů, z nichž některé jsou určena pomocí společných parametrů pracovního postupu obsahující.
+Test v VaaS se skládá z sadu operací, které spustily řešení s Azure Stack. Testy mají různé účely zamýšlený identifikovat podle kategorie, jako je funkční a spolehlivosti a cílit na jeden nebo více služeb Azure stacku. Každý test definuje vlastní sadu parametrů, z nichž některé jsou určena pomocí společných parametrů pracovního postupu obsahující.
 
 Další informace o správě a monitorování testů, naleznete v tématu [monitorování a správa testů na portálu VaaS](azure-stack-vaas-monitor-test.md).
 

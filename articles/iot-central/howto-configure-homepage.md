@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 033a7207765f2ee6712f8552d5c1585280250d5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312065"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773142"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicí panel aplikací
 
@@ -32,7 +32,7 @@ Výběr **upravit**, otevře se panel Knihovna řídicího panelu. Knihovna obsa
 
 ![Knihovna řídicího panelu](media/howto-configure-homepage/image2.png)
 
-Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení pro zařízení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje **nastavit teploty** nastavení vybrané pro přidání k dlaždici. Vyberte **provádí** se uložit změnu na řídicí panel.
+Například můžete přidat **nastavení a vlastnosti** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení pro zařízení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. Následující snímek obrazovky ukazuje nastavení a vlastnosti, které se rozhodli přidat dlaždici. Vyberte **provádí** se uložit změnu na řídicí panel.
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media/howto-configure-homepage/image3.png)
 

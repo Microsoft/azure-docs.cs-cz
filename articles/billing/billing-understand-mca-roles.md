@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 43bf977483e9f24eb446e1c4c7b168c890604c39
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9b14174541117878d7fd98b79d1cd139babb1027
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248822"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543453"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení smlouvy zákazníků společnosti Microsoft pro správu role v Azure
 
@@ -183,7 +183,7 @@ Následující tabulka ukazuje, jakou roli, budete potřebovat k provádění ú
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Správa fakturace rolí na portálu Azure portal
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 

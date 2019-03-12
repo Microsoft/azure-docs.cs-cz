@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5e53c427564e37e04045d59d35c0d5d5ff285d05
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a1dba3b497807841f9b86d685f5bb560ebdd9316
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403939"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532421"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení zařízení IoT Edge s virtuální čip TPM na virtuální počítač s Linuxem
 
@@ -95,7 +95,7 @@ Ve virtuálním počítači sestavení SDK pro jazyk C nástroj, který můžete
 3. Přihlaste se ke svému virtuálnímu počítači, postupujte podle pokynů v [nastavte vývojové prostředí Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) k instalaci a sestavení sady SDK pro zařízení Azure IoT pro C. 
 
    >[!TIP]
-   >V tomto článku budete kopírovat do a vložte z z virtuálního počítače, který není prostřednictvím aplikace připojení Správce technologie Hyper-V. Můžete chtít připojit k virtuálnímu počítači pomocí Správce technologie Hyper-V jednou k načtení jeho IP adresu: `ifconfig`. Potom můžete použít IP adresu pro připojení přes SSH: `ssh <username>@<ipaddress>`.
+   >V tomto článku se budete zkopírujte a vložte z virtuálního počítače, který není prostřednictvím aplikace připojení Správce technologie Hyper-V. Můžete chtít připojit k virtuálnímu počítači pomocí Správce technologie Hyper-V jednou k načtení jeho IP adresu: `ifconfig`. Potom můžete použít IP adresu pro připojení přes SSH: `ssh <username>@<ipaddress>`.
 
 4. Spusťte následující příkazy k sestavení SDK pro jazyk C nástroj, který načítá informace o zřizování vašeho zařízení. 
 

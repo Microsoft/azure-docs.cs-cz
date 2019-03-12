@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a4e64259b941a4f2c2727afc8730c6cb0102a061
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054875"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529239"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Připojte Raspberry Pi pro službu Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu začnete pomocí seznámení se základy práce s Raspberry Pi, na kterém běží Raspbian. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](about-iot-hub.md). Ukázky Windows 10 IoT Core najdete [Windows Dev Center](http://www.windowsondevices.com/).
+V tomto kurzu začnete pomocí seznámení se základy práce s Raspberry Pi, na kterém běží Raspbian. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](about-iot-hub.md). Ukázky Windows 10 IoT Core najdete [Windows Dev Center](https://www.windowsondevices.com/).
 
 Sadu ještě nemáte? Zkuste [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Nebo zakoupit sadu nových [tady](https://azure.microsoft.com/develop/iot/starter-kits).
 
@@ -83,7 +83,7 @@ Příprava pro instalaci bitové kopie Raspbian karty microSD.
 
 1. Stáhněte si Raspbian.
 
-   a. [Stáhněte si Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (soubor .zip).
+   a. [Stáhněte si Raspbian Stretch](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (soubor .zip).
 
    > [!WARNING]
    > Použijte prosím nad odkaz ke stažení `raspbian-2017-07-5` zip image. Nejnovější verzi Image Raspbian má několik známých problémů v uzlu její Pi, což by mohlo způsobit selhání v dalších krocích.
@@ -137,7 +137,7 @@ Senzor kód PIN použijte následující propojení:
 | ZEM (Pin 7G)             | ZEM (Pin 6)            | Hnědá kabel   |
 | SDI (Pin 10G)            | I2C1 SDA (Pin 3)       | Červené kabel     |
 | SCK (Pin 8G)             | I2C1 SCL (Pin 5)       | Oranžové kabel  |
-| Indikátor VDD (Pin 18F)        | GPIO 24 (Pin 18)       | Bílé kabel   |
+| LED VDD (Pin 18F)        | GPIO 24 (Pin 18)       | Bílé kabel   |
 | Indikátor zem (Pin 17F)        | ZEM (Pin 20)           | Černého kabelu pak   |
 
 Kliknutím zobrazíte [Raspberry Pi 2 a 3 mapování kódu pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro vaši informaci.
@@ -163,7 +163,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    
    **Uživatelé Windows**
   
-   a. Stáhněte a nainstalujte [PuTTY](http://www.putty.org/) pro Windows. 
+   a. Stáhněte a nainstalujte [PuTTY](https://www.putty.org/) pro Windows. 
 
    b. Zkopírujte IP adresu části Pi do názvu hostitele (nebo IP adresu) a vyberte jako typ připojení SSH.
    
@@ -187,7 +187,7 @@ Zapněte pí pomocí USB kabelu micro a napájení. Pomocí kabelu Ethernet Pi p
    Pokud je verze nižší než 4.x nebo pokud neexistuje žádný Node.js na vaše číslo pí, nainstalujte nejnovější verzi.
 
    ```bash
-   curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

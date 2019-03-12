@@ -9,18 +9,18 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7a90a0af8c6c7fd19b784d97e2ce30bea7910089
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728178"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550687"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
 Tento článek začne série článků, která pomáhají organizacím implementovat kompletní řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení bylo uvedeno jako [rozhraní digitální transformace pro hybridní Identity](https://aka.ms/aadframework). Zabývá se obchodních výsledků a cíle organizace můžou zaměřit na implementovat robustní a zabezpečené hybridní řešení identit. 
 
-První obchodního výsledku rozhraní Framework obsahuje požadavky organizace na zabezpečení procesu ověřování, když uživatelé přistupují k cloudových aplikací. První obchodní cíle v zabezpečené obchodního výsledku ověřování je možnost uživatelů přihlásit ke cloudovým aplikacím pomocí jejich místních uživatelských jmen a hesel. Tento proces přihlášení k a jak se uživatelé ověřovat umožňují vše v cloudu.
+První obchodního výsledku rozhraní Framework obsahuje požadavky organizace na zabezpečení procesu ověřování, když uživatelé přistupují k cloudových aplikací. První obchodní cíle v zabezpečené obchodního výsledku ověřování je možnost uživatelů přihlásit ke cloudovým aplikacím pomocí jejich místních uživatelských jmen a hesel. Tento proces přihlašování a ověřování umožňuje vše v cloudu.
 
 Volba správné metody ověřování je nejdůležitější pro organizace, kteří chtějí přesuňte svoje aplikace do cloudu. Nevyřídí toto rozhodnutí lehce, z následujících důvodů:
 
@@ -161,7 +161,7 @@ Následující diagramy popisují základní architektura služby komponent pot�
 
     ![Hybridní identita Azure AD se synchronizace hodnot hash hesel](media/azure-ad/azure-ad-authn-image2.png)
 
-* Požadavky agenta předávací ověřování:
+* Požadavky agenta předávací ověřování, za účelem zajištění redundance používat dva agenti:
 
     ![Hybridní identita Azure AD pomocí předávacího ověřování](media/azure-ad/azure-ad-authn-image3.png)
 
@@ -204,7 +204,7 @@ Použití nebo povolit synchronizaci hodnot hash hesel podle toho, která metoda
 
    * Organizace, které dříve zapnutá synchronizaci hodnot hash hesel změnit metodu ověřování používat synchronizaci hodnot hash hesel. Kdyby byly zpět do online režimu v řádu hodin. Pomocí přístupu k e-mailu prostřednictvím Office 365 to šlo vyřešit problémy a přístup k jiné úlohy založené na cloudu.
 
-   * Organizace, které dříve nebyly povolit synchronizaci hodnot hash hesel se museli uchýlíte k nedůvěryhodné externího příjemce e-mailových systémů komunikace a řešení problémů. V takových případech, jakou trvalo je týdny nebo další funkce začít znovu.
+   * Organizace, které dříve nebyly povolit synchronizaci hodnot hash hesel se museli uchýlíte k nedůvěryhodné externího příjemce e-mailových systémů komunikaci za účelem řešení problémů. V takových případech, jakou trvalo je týdnů k obnovení v místní infrastruktuře identity, než uživatelé byli schopni do cloudové aplikace znovu přihlásit.
 
 3. **Ochrana identity**. Jednou z nejlepších způsobů, jak chránit uživatele v cloudu je Azure AD Identity Protection s Azure AD Premium P2. Microsoft neustále kontroluje Internet pro uživatele a heslo uvádí, že prodej a zpřístupnit v dark web. Tyto informace můžete použít Azure AD k ověření, pokud některý z uživatelských jmen a hesel ve vaší organizaci dojde k ohrožení. Proto je důležité pro povolení synchronizace hodnot hash hesel bez ohledu na to, jakou metodu ověřování, které používáte, zda, která je Federovaná nebo předávací ověřování. Uniklé přihlašovací údaje se zobrazují jako sestavy. Tyto informace slouží k blokování nebo přimějte uživatele ke změně hesla při pokusu o přihlášení pomocí uniklé hesla.
 

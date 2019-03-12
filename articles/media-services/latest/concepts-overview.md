@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b346ac0ac456b7f6af078496e8dd1cb738caab67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244736"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530190"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
 
@@ -65,7 +65,7 @@ Následující obrázek ukazuje pracovní postup služby Media Services content 
 
 ![Ochrana obsahu](./media/content-protection/content-protection.svg)
 
-&#42;* dynamického šifrování podporuje AES-128 "nezašifrovaný klíč", CBCS a CENC. 
+&#42;dynamické šifrování podporuje AES-128 "nezašifrovaný klíč", CBCS a CENC. 
 
 Služba Media Services můžete použít **dynamických manifestů** Streamovat pouze konkrétní verze nebo subclips vašeho videa. V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: HLS, MPEG DASH a Smooth.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
 

@@ -3,20 +3,20 @@ title: Definování nového typu zařízení v aplikaci Azure IoT Central | Micr
 description: Tento kurz vám jako tvůrci ukáže, jak definovat nový typ zařízení v aplikaci Azure IoT Central. Pro váš typ definujete telemetrická data, stav, vlastnosti a nastavení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/30/2018
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0e872509b7971adce871daf6967c0fcd1a87e9bc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d4a7d42fad50b58c7b4be182b69650dd3d117544
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311014"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780639"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central (návrh nové uživatelské rozhraní)
 
 Tento kurz vám jako tvůrci ukáže, jak pomocí šablony zařízení definovat nový typ zařízení v aplikaci Microsoft Azure IoT Central. Šablona zařízení definuje telemetrická data, stav, vlastnosti a nastavení pro váš typ zařízení.
 
@@ -25,7 +25,7 @@ Aby bylo možné otestovat aplikaci před připojením skutečného zařízení,
 V tomto kurzu vytvoříte šablonu zařízení **Connected Air Conditioner** (Připojená klimatizace). Připojené klimatizační zařízení:
 
 * Odesílá telemetrická data, jako je teplota a vlhkost.
-* Hlásí stav, třeba jestli je vypnuté nebo zapnuté.
+* Sestavy stav například určuje, zda jsou zapnuty či vypnuty.
 * Má vlastnosti zařízení, jako je sériové číslo a verze firmwaru.
 * Má nastavení, jako je cílová teplota.
 
@@ -43,8 +43,6 @@ V tomto kurzu se naučíte:
 > * Použití příkazů
 > * Zobrazení simulovaného zařízení na řídicím panelu
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste dokončili rychlý start [Vytvoření aplikace Azure IoT Central](quick-deploy-iot-central.md), můžete znovu využít aplikaci, kterou jste v tomto rychlém startu vytvořili. Jinak použijte následující postup a vytvořte prázdnou aplikaci Azure IoT Central:
@@ -53,9 +51,9 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
 2. Zadejte e-mailovou adresu a heslo, které používáte pro přístup k vašemu předplatnému Azure:
 
-   ![Zadání účtu organizace](./media/tutorial-define-device-type/sign-in.png)
+    ![Zadání účtu organizace](./media/tutorial-define-device-type/sign-in.png)
 
-3. Pokud chcete začít vytvářet novou aplikaci Azure IoT Central, zvolte **New Application** (Nová aplikace):
+3. Chcete-li vytvořit novou aplikaci Azure IoT Central, vyberte **novou aplikaci**:
 
     ![Stránka správce aplikací Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
 
@@ -69,7 +67,7 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
     
     * Volitelně můžete zvolit popisný název aplikace, jako je třeba **Klimatizace Contoso**. Azure IoT Central pro vás vygeneruje jedinečnou předponu URL. Tuto předponu URL můžete změnit, aby byla snáze zapamatovatelná.
     
-    * Zvolte **Vytvořit**.
+    * Vyberte **Vytvořit**.
 
     ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-define-device-type/iotcentralcreate.png)
 
@@ -79,48 +77,42 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
 Jako tvůrce můžete ve vaší aplikaci vytvářet a upravovat šablony zařízení. Když vytvoříte šablonu zařízení, Azure IoT Central z této šablony vygeneruje simulované zařízení. Simulované zařízení generuje telemetrická data, která umožňuje testovat chování aplikace před připojit skutečné zařízení.
 
-Pokud chcete do vaší aplikace přidat novou šablonu zařízení, musíte přejít na stránku **Application Builder** (Tvůrce aplikací). K tomuto účelu zvolte **Application builder** (Tvůrce aplikací) v levé navigační nabídce.
+Chcete-li přidat novou šablonu zařízení pro vaši aplikaci, budete muset přejít do **šablon** stránky. Chcete proto vyberte **šablon** v levé navigační nabídce.
 
-![Stránka Application Builder (Tvůrce aplikací)](./media/tutorial-define-device-type/builderhome.png)
+![Stránka šablony zařízení](./media/tutorial-define-device-type/devicetemplates.png)
 
-## <a name="add-a-device-and-define-telemetry"></a>Přidání zařízení a definování telemetrických dat
+## <a name="add-a-device-template"></a>Přidání šablony zařízení
 
 Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connected Air Conditioner** (Připojená klimatizace) pro zařízení, která do vaší aplikace odesílají teplotní telemetrická data:
 
-1. Na stránce **Application Builder** (Tvůrce zařízení) zvolte **Create Device Template** (Vytvořit šablonu zařízení):
+1. Na **šablon** stránce **+**:
 
-    ![Stránka Application Builder (Tvůrce aplikací), vytvoření šablony zařízení](./media/tutorial-define-device-type/builderhomedevices.png)
+    ![Stránka zařízení šablon, vytvořit šablonu zařízení](./media/tutorial-define-device-type/newtemplate.png)
 
-2. Na stránce **Device Templates** (Šablony zařízení) zvolte **Custom** (Vlastní). **Vlastní** šablona zařízení umožňuje definovat všechny charakteristiky a chování připojené klimatizace:
-
-    ![Zařízení](./media/tutorial-define-device-type/builderhomedevicescustom.png)
-
-3. Na stránce **New Device Template** (Nová šablona zařízení) jako název vašeho zařízení zadejte **Connected Air Conditioner** (Připojená klimatizace) a potom zvolte **Create** (Vytvořit). Můžete také nahrát obrázek zařízení, který vidí operátoři v Device Exploreru:
+3. Na **vlastní šablonu zařízení** zadejte **připojené klimatizace** jako název zařízení a pak vyberte **vytvořit**. Můžete také nahrát obrázek zařízení, který vidí operátoři v Device Exploreru:
 
     ![Vlastní zařízení](./media/tutorial-define-device-type/createcustomdevice.png)
 
-4. V šabloně zařízení **Connected Air Conditioner** (Připojená klimatizace) zkontrolujte, že při definování telemetrických dat jste na stránce **Measurements** (Měření). Každá šablona zařízení, kterou definujete, má samostatné stránky, které umožňují:
+4. V **připojené klimatizace** zařízení šablonu, ujistěte se, že jste na **měření** kartu, kde můžete definovat telemetrická data. Každé zařízení šablony, které definujete má samostatných kartách můžete:
 
-    * Zadat měření odesílaná zařízením, jako jsou telemetrická data, události a stav
-    
-    * Definovat nastavení používaná k ovládání příslušného zařízení
-    
-    * Definovat vlastnosti, což jsou metadata zařízení.
+    * Zadejte _měření_, jako je například telemetrie, události a stav, odeslané ze zařízení.
 
-    * Definovat příkazy, které se mají spustit přímo na zařízení.
-    
-    * Definovat pravidla přidružená k zařízení
-    
-    * Přizpůsobit řídicí panel zařízení pro vaše operátory
+    * Definovat _nastavení_ používat k ovládání zařízení.
 
-    Vždy, když definujete šablonu zařízení, nejprve zvolte **Edit Template** (Upravit šablonu), abyste mohli šablonu upravit. Jakmile budete hotovi, zvolte **Done** (Hotovo). 
+    * Definovat _vlastnosti_ , které jsou metadata zařízení.
+
+    * Definovat _příkazy_ mohl být spuštěn přímo na zařízení.
+
+    * Definovat _pravidla_ přidružené k zařízení.
+
+    * Vlastní nastavení zařízení _řídicí panel_ pro operátory.
 
     ![Měření klimatizace](./media/tutorial-define-device-type/airconmeasurements.png)
 
     > [!NOTE]
-    > Chcete-li změnit název zařízení nebo zařízení šablony, vyberte text, v horní části stránky.
+    > Chcete-li změnit název zařízení šablony, vyberte název šablony v horní části stránky.
 
-5. Pokud chcete přidat měření telemetrických teplotních dat, zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **Telemetry** (Telemetrická data):
+5. Chcete-li přidat telemetrii měření teploty, **a nové měření**. Potom jako typ měření zvolte **Telemetry** (Telemetrická data):
 
     ![Měření připojené klimatizace](./media/tutorial-define-device-type/airconmeasurementsnew.png)
 
@@ -143,11 +135,11 @@ Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connec
     | Maximum                  | 110           |
     | Desetinná místa       | 0             |
 
-    Můžete také zvolit barvu pro zobrazení telemetrických dat. Pokud chcete definici telemetrických dat uložit, zvolte **Save** (Uložit):
+    Můžete také zvolit barvu pro zobrazení telemetrických dat. Chcete-li uložit definici telemetrická data, vyberte **Uložit**:
 
     ![Konfigurace simulace teploty](./media/tutorial-define-device-type/temperaturesimulation.png)
 
-7. Po chvíli se na stránce **Measurements** (Měření) zobrazí graf teplotních telemetrických dat z vašeho simulovaného připojeného klimatizačního zařízení. Pomocí ovládacích prvků můžete spravovat viditelnost a agregaci nebo můžete upravit definici telemetrických dat:
+7. Po nějakou dobu **měření** karta ukazuje graf teplotní telemetrie ze zařízení s Simulovaná připojených klimatizace. Pomocí ovládacích prvků můžete spravovat viditelnost a agregaci nebo můžete upravit definici telemetrických dat:
 
     ![Zobrazení simulace teploty](./media/tutorial-define-device-type/viewsimulation.png)
 
@@ -155,11 +147,11 @@ Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connec
 
     ![Přizpůsobení grafu](./media/tutorial-define-device-type/customizechart.png)
 
-## <a name="define-event-measurement"></a>Definování měření událostí
+## <a name="add-an-event-measurement"></a>Přidat měření událostí
 
-Událost můžete využít k definování dat v určitém časovém bodu, která se zařízení odesílají jako indikátor něčeho důležitého, například chyby nebo selhání komponenty. Stejně jako měření telemetrická data Azure IoT Central můžete simulovat zařízení událostí umožňuje testovat chování aplikace před připojit skutečné zařízení. K definování měření událostí pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
+Události použijte k definování dat bodu v čase, který zařízení odešle, když dojde události, například k chybě nebo selhání součásti. Azure IoT Central můžete simulovat zařízení událostí umožňuje testovat chování aplikace před připojit skutečné zařízení. Definovat událost měření v šabloně zařízení **měření** zobrazení.
 
-1. Pokud chcete přidat měření události **Fan Motor Error** (Chyba motoru ventilátoru), zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **Event** (Událost):
+1. Chcete-li přidat **Motor chyba ventilátor** měření událost, vyberte **a nové měření**. Potom jako typ měření zvolte **Event** (Událost):
 
     ![Měření připojené klimatizace](./media/tutorial-define-device-type/eventnew.png)
 
@@ -179,11 +171,11 @@ Událost můžete využít k definování dat v určitém časovém bodu, která
     | Název pole           | fanmotorerr       |
     | Severity             | Chyba             |
 
-    Pokud chcete definici události uložit, zvolte **Save** (Uložit):
+    Chcete-li uložit definici události, vyberte **Uložit**:
 
     ![Konfigurace měření událostí](./media/tutorial-define-device-type/eventconfiguration.png)
 
-3. Po chvíli se na stránce **Measurements** (Měření) zobrazí graf událostí náhodně vygenerovaných z vašeho simulovaného připojeného klimatizačního zařízení. Pomocí ovládacích prvků můžete spravovat viditelnost nebo můžete upravit definici události:
+3. Po nějakou dobu **měření** karta ukazuje graf náhodně vygenerované ze zařízení s Simulovaná připojených vzduchovod události. Pomocí ovládacích prvků můžete spravovat viditelnost nebo můžete upravit definici události:
 
     ![Zobrazení simulace události](./media/tutorial-define-device-type/eventview.png)
 
@@ -191,15 +183,15 @@ Událost můžete využít k definování dat v určitém časovém bodu, která
 
     ![Zobrazení podrobnosti události](./media/tutorial-define-device-type/eventviewdetail.png)
 
-## <a name="define-state-measurement"></a>Definování měření stavu
+## <a name="define-a-state-measurement"></a>Definování měření stavu
 
-Pomocí měření stavu můžete definovat a vizualizovat stav zařízení nebo jeho komponent za časové období. Stejně jako měření telemetrická data Azure IoT Central můžete simulovat stavu zařízení umožňuje testovat chování aplikace před připojit skutečné zařízení. K definování měření stavu pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
+Stav můžete použít k definování a vizualizovat stav zařízení nebo jeho součást po určitou dobu. Azure IoT Central můžete simulovat stavu zařízení umožňuje testovat chování aplikace před připojit skutečné zařízení. K definování měření stavu pro příslušný typ zařízení se použije zobrazení **Measurements** (Měření).
 
-1. Pokud chcete přidat měření **Fan Mode** (Režim ventilátoru), zvolte **New Measurement** (Nové měření). Potom jako typ měření zvolte **State** (Stav):
+1. Chcete-li přidat **ventilátor režimu** měření stavu, vyberte **a nové měření**. Potom jako typ měření zvolte **State** (Stav):
 
     ![Měření stavu připojené klimatizace](./media/tutorial-define-device-type/statenew.png)
 
-2. Každý typ stavu, který definujete pro šablonu zařízení, zahrnuje [možnosti konfigurace](howto-set-up-template.md), jako jsou:
+2. Každý typ stavu definujete pro šablonu zařízení obsahuje [možnosti konfigurace](howto-set-up-template.md) jako například:
 
    * Zobrazovaný název
 
@@ -220,31 +212,29 @@ Pomocí měření stavu můžete definovat a vizualizovat stav zařízení nebo 
     | Hodnota                | 0                 |
     | Popisek        | Zastaveno           |
 
-    Pokud chcete definici stavu uložit, zvolte **Save** (Uložit):
+    Chcete-li uložit definici měření stavu, vyberte **Uložit**:
 
     ![Konfigurace měření stavu](./media/tutorial-define-device-type/stateconfiguration.png)
 
-3. Po chvíli se na stránce **Measurements** (Měření) zobrazí graf stavů náhodně vygenerovaných z vašeho simulovaného připojeného klimatizačního zařízení. Pomocí ovládacích prvků můžete spravovat viditelnost nebo můžete upravit definici stavu:
+3. Po nějakou dobu **měření** karta ukazuje graf stavů náhodně generované ze zařízení s Simulovaná připojených klimatizace. Pomocí ovládacích prvků můžete spravovat viditelnost nebo můžete upravit definici stavu:
 
     ![Zobrazení simulace stavu](./media/tutorial-define-device-type/stateview.png)
 
-4. V případě, že zařízení v krátkém čase pošle příliš mnoho datových bodů, měření stavu se zobrazí s jiným vizuálem, jak je uvedeno níže. Pokud vyberete v grafu, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Časový rozsah můžete také zúžit a zobrazit podrobnější měření.
-
-    ![Zobrazení podrobností o stavu](./media/tutorial-define-device-type/stateviewdetail.png)
+4. Pokud existuje příliš mnoho datových bodů, které zařízení odeslalo do malé dobu trvání, zobrazí se s jiný vizuál měření stavu. Vyberte graf, pokud chcete zobrazit že všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Časový rozsah můžete také zúžit a zobrazit podrobnější měření.
 
 ## <a name="settings-properties-and-commands"></a>Nastavení, vlastnosti a příkazy
 
 Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně zařízení a přidružené k jednotlivým zařízením:
 
-* _Nastavení_ použijete k odeslání konfiguračních dat ze zařízení do aplikace. Operátor může například použít nastavení, pokud chce změnit interval telemetrie zařízení ze dvou na pět sekund. Když operátor změní nastavení, bude toto nastavení v uživatelském rozhraní označené jako čekající, dokud zařízení nepotvrdí, že realizovalo změnu nastavení.
+* _Nastavení_ použijete k odeslání konfiguračních dat ze zařízení do aplikace. Operátor může například použít nastavení, pokud chce změnit interval telemetrie zařízení ze dvou na pět sekund. Pokud se operátor změní nastavení, nastavení je čekající na vyřízení v uživatelském rozhraní, dokud se zařízení odpoví na potvrzení.
 
 * _Vlastnosti_ použijete k definování metadat přidružených k vašemu zařízení. Vlastnosti se dělí do dvou kategorií:
     
-    * _Vlastnosti aplikace_ použijete k zaznamenání informací o zařízení ve vaší aplikaci. Vlastnosti aplikace můžete použít například k zaznamenání polohy zařízení a data jeho poslední údržby. Tyto vlastnosti se ukládají v aplikaci a nesynchronizují se se zařízením. Operátor může vlastnostem přiřadit hodnotu.
+    * _Vlastnosti aplikace_ použijete k zaznamenání informací o zařízení ve vaší aplikaci. Vlastnosti aplikace můžete použít například k zaznamenání polohy zařízení a data jeho poslední údržby. Tyto vlastnosti se ukládají v aplikaci a nechcete synchronizovat s zařízení. Operátor může vlastnostem přiřadit hodnotu.
 
-    * _Vlastnosti zařízení_ použijete k tomu, abyste zařízení umožnili odeslat hodnoty vlastností do vaší aplikace. Tyto vlastnosti může měnit jenom zařízení. Pro operátora jsou vlastnosti zařízení jen pro čtení. V tomto scénáři připojené klimatizace jsou verze firmwaru a sériové číslo zařízení vlastnosti zařízení odesílané zařízením. 
+    * _Vlastnosti zařízení_ použijete k tomu, abyste zařízení umožnili odeslat hodnoty vlastností do vaší aplikace. Tyto vlastnosti může měnit jenom zařízení. Pro operátora jsou vlastnosti zařízení jen pro čtení. V tomto scénáři připojené klimatizace jsou verze firmwaru a sériové číslo zařízení vlastnosti zařízení odesílané zařízením.
     
-    Další informace najdete v části [Vlastnosti][lnk-define-template] v praktickém průvodci nastavením šablony zařízení.
+    Další informace najdete v tématu [vlastnosti](howto-set-up-template.md#properties) v Průvodci s postupy o nastavení zařízení šablony.
 
 * _Příkazy_ použijete ke vzdálené správě zařízení z aplikace. Příkazy můžete spustit přímo na zařízení z cloudu a zařízení tak ovládat. Operátor například může spouštět příkazy, jako je třeba příkaz restartování, a okamžitě zařízení restartovat.
 
@@ -252,13 +242,9 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
 *Nastavení* použijete k tomu, abyste operátorovi umožnili odeslání konfiguračních dat do zařízení. V této části do šablony zařízení **Connected Air Conditioner** přidáte nastavení, které operátorovi umožňuje nastavit cílovou teplotu připojené klimatizace.
 
-1. Přejděte ke stránce **Settings** (Nastavení) vaší šablony **Connected Air Conditioner**:
+1. Přejděte na **nastavení** kartu pro vaše **připojené Vzduchovod** šablona zařízení.
 
-    ![Příprava pro přidání nastavení](./media/tutorial-define-device-type/deviceaddsetting.png)
-
-    Můžete vytvořit nastavení různých typů, například čísla nebo text.
-
-2. Pokud chcete k zařízení přidat číselné nastavení, zvolte **Number**.
+2. Můžete vytvořit nastavení různých typů, například čísla nebo text. Vyberte **číslo** k zadejte číslo pro vaše zařízení.
 
 3. Ke konfiguraci nastavení **Set Temperature** (Nastavená teplota) použijte informace v následující tabulce:
 
@@ -273,28 +259,24 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
     | Počáteční hodnota        | 80              |
     | Popis          | Nastavení cílové teploty pro klimatizaci |
 
-    Potom zvolte **Save** (Uložit):
+    Potom vyberte **Uložit**:
 
     ![Konfigurace nastavení Set Temperature (Nastavená teplota)](./media/tutorial-define-device-type/configuresetting.png)
 
     > [!NOTE]
     > Jakmile zařízení rozpozná změnu nastavení, stav nastavení se změní na **synced** (Synchronizováno).
 
-4. Rozložení stránky **Settings** (Nastavení) můžete přizpůsobit přesunutím dlaždic nastavení a změnou jejich velikosti:
+4. Můžete upravit rozložení **nastavení** kartu tak, že přesunutí a změna velikosti dlaždice nastavení:
 
     ![Přizpůsobení rozložení nastavení](./media/tutorial-define-device-type/settingslayout.png)
 
-## <a name="use-properties"></a>Použití vlastností 
+## <a name="use-properties"></a>Použití vlastností
 
-*Vlastnosti aplikace* použijete k uložení informací o vašem zařízení v aplikaci. V této části do šablony zařízení **Connected Air Conditioner** (Připojená klimatizace) přidáte vlastnosti aplikace pro uložení polohy zařízení a data jeho poslední údržby. Všimněte si, že obě tyto vlastnosti zařízení jsou upravitelné. Zařízení odesílá i vlastnosti zařízení jen pro čtení, které nelze měnit, jako je sériové číslo a verze firmwaru zařízení.
- 
-1. Přejděte ke stránce **Properties** (Vlastnosti) vaší šablony **Connected Air Conditioner**:
+*Vlastnosti aplikace* použijete k uložení informací o vašem zařízení v aplikaci. V této části do šablony zařízení **Connected Air Conditioner** (Připojená klimatizace) přidáte vlastnosti aplikace pro uložení polohy zařízení a data jeho poslední údržby. Tyto vlastnosti lze upravit v aplikaci. Zařízení odesílá také vlastnosti, jako je sériové číslo a verze firmwaru, které jsou v aplikaci jen pro čtení.
 
-    ![Příprava pro přidání vlastnosti](./media/tutorial-define-device-type/deviceaddproperty.png)
+1. Přejděte na **vlastnosti** kartu pro vaše **připojené Vzduchovod** šablona zařízení.
 
-    Můžete vytvořit vlastnosti zařízení různých typů, například čísla nebo text. Pokud chcete do šablony zařízení přidat vlastnost umístění, zvolte **Location** (Umístění).
-
-1. Ke konfiguraci vlastnosti umístění použijte informace v následující tabulce:
+1. Můžete vytvořit vlastnosti zařízení různých typů, například čísla nebo text. Pokud chcete do šablony zařízení přidat vlastnost umístění, zvolte **Location** (Umístění). Ke konfiguraci vlastnosti umístění použijte informace v následující tabulce:
 
     | Pole                | Hodnota                |
     | -------------------- | -------------------- |
@@ -307,7 +289,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties.png)
 
-    Zvolte **Uložit**.
+    Vyberte **Uložit**.
 
 1. Pokud chcete do šablony zařízení přidat vlastnost data poslední údržby, zvolte **Date** (Datum).
 
@@ -317,20 +299,18 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
     | -------------------- | ----------------------- |
     | Zobrazovaný název         | Last Service Date (Datum poslední údržby)       |
     | Název pole           | serviceDate             |
-    | Počáteční hodnota        | 1. 1. 2018                |
+    | Počáteční hodnota        | 1/1/2019                |
     | Popis          | Last serviced (Poslední údržba)           |
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties2.png)
 
-    Zvolte **Uložit**.
+    Vyberte **Uložit**.
 
-5. Rozložení stránky **Properties** (Vlastnosti) můžete přizpůsobit přesunutím dlaždic vlastností a změnou jejich velikosti:
-
-    ![Přizpůsobení rozložení vlastností](./media/tutorial-define-device-type/propertieslayout.png)
+1. Můžete upravit rozložení **vlastnosti** kartu tak, že přesunutí a změna velikosti dlaždice vlastnosti.
 
 1. Pokud chcete do šablony zařízení přidat vlastnost zařízení, jako je verze firmwaru, zvolte **Device Property** (Vlastnost zařízení).
 
-1.  Ke konfiguraci verze firmwaru použijte informace v následující tabulce:
+1. Ke konfiguraci verze firmwaru použijte informace v následující tabulce:
 
     | Pole                | Hodnota                   |
     | -------------------- | ----------------------- |
@@ -340,8 +320,8 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
     | Popis          | Verze firmwaru klimatizace |
 
     ![Konfigurace verze firmwaru](./media/tutorial-define-device-type/configureproperties3.png)
-    
-    Zvolte **Uložit**.
+
+    Vyberte **Uložit**.
 
 1. Pokud chcete do šablony zařízení přidat vlastnost zařízení, jako je sériové číslo, zvolte **Device Property** (Vlastnost zařízení).
 
@@ -355,9 +335,9 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
     | Popis          | Sériové číslo klimatizace  |
 
     ![Konfigurace sériového čísla](./media/tutorial-define-device-type/configureproperties4.png)
-    
-    Zvolte **Uložit**.
-    
+
+    Vyberte **Uložit**.
+
     > [!NOTE]
     > Vlastnost zařízení se odešle ze zařízení do aplikace. Hodnoty verze firmwaru a sériového čísla se aktualizují při připojení skutečného zařízení k IoT Central.
 
@@ -365,11 +345,9 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
 _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkazy přímo na zařízení. V této části přidáte do šablony zařízení **Connected Air Conditioner** příkaz, který operátorovi umožní vypsat na připojené klimatizaci určitou zprávu.
 
-1. Přejděte na stránku **Commands** (Příkazy) šablony zařízení **Connected Air Conditioner** a upravte šablonu. 
+1. Přejděte na **příkazy** kartu pro vaše **připojené Vzduchovod** zařízení šablonu upravit šablonu.
 
-1. Vyberte **nový příkaz** začít konfigurovat nový příkaz a přidejte příkaz do svého zařízení.
-
-   Na základě svých požadavků můžete vytvářet příkazy různých typů. 
+1. Vyberte **+ nový příkaz** začít konfigurovat nový příkaz a přidejte příkaz do svého zařízení.
 
 1. Ke konfiguraci nového příkazu použijte informace v následující tabulce:
 
@@ -383,25 +361,19 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
 
     Můžete přidat další vstupy k příkazu výběrem **+** pro **vstupní pole**.
 
-    ![Příprava pro přidání nastavení](media/tutorial-define-device-type/commandsecho1.png)
+    ![Příprava pro přidání nastavení](./media/tutorial-define-device-type/commandsecho1.png)
 
-     Zvolte **Uložit**.
+     Vyberte **Uložit**.
 
-1. Rozložení stránky **Commands** (Příkazy) můžete přizpůsobit přesunutím dlaždic příkazů a změnou jejich velikosti:
-
-    ![Přizpůsobení rozložení nastavení](media/tutorial-define-device-type/commandstileresize1.png)
+1. Můžete upravit rozložení **příkazy** kartu tak, že přesunutí a změna velikosti dlaždice příkazu.
 
 ## <a name="view-your-simulated-device"></a>Zobrazení simulovaného zařízení
 
-Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizpůsobit její **řídicí panel**, aby zahrnoval měření, nastavení a vlastnosti, které jste definovali. Potom si můžete zobrazit náhled řídicího panelu jako operátor:
+Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si můžete přizpůsobit jeho **řídicí panel** měření, nastavení a vlastnosti, které jste definovali. Potom si můžete zobrazit náhled řídicího panelu jako operátor:
 
-1. Zvolte stránku **Dashboard** (Řídicí panel) vaší šablony **Connected Air Conditioner**:
+1. Zvolte **řídicí panel** kartu pro vaše **připojené Vzduchovod** šablona zařízení.
 
-    ![Řídicí panely připojeného klimatizačního zařízení](./media/tutorial-define-device-type/aircondashboards.png)
-
-1. Zvolte **Line Chart** (Čárový graf) a přidejte tuto komponentu na **řídicí panel**:
-
-    ![Komponenty řídicího panelu](./media/tutorial-define-device-type/dashboardcomponents1.png)
+1. Vyberte **spojnicový graf** přidat součást do **řídicí panel**.
 
 1. Ke konfiguraci komponenty **Line Chart** (Čárový graf) použijte informace v následující tabulce:
 
@@ -409,23 +381,23 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
     | ------------ | ----------- |
     | Název        | Teplota |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření     | Teplota (zvolte **Visibility** (Viditelnost) vedle **temperature**) |
+    | Měření     | Teplota (vyberte **viditelnost** vedle **teploty**) |
 
     ![Nastavení čárového grafu](./media/tutorial-define-device-type/linechartsettings.png)
 
-    Potom zvolte **Save** (Uložit).
+    Potom vyberte **Uložit**.
 
-1. Ke konfiguraci komponenty **Event History** (Historie událostí) použijte informace v následující tabulce:
+1. Vyberte **Historie událostí** komponenty s použitím informací v následující tabulce:
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Události |
+    | Název        | Ventilátor Motor události |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření     | Chyba motoru ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Motor Error**) |
+    | Měření     | Ventilátor Motor chyby (vyberte **viditelnost** vedle **Motor chyba ventilátor**) |
 
-    ![Nastavení čárového grafu](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
+    ![Nastavení grafu události](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
-    Potom zvolte **Save** (Uložit).
+    Potom vyberte **Uložit**.
 
 1. Ke konfiguraci komponenty **State History** (Historie stavu) použijte informace v následující tabulce:
 
@@ -433,60 +405,30 @@ Teď máte šablonu **Connected Air Conditioner** definovanou a můžete přizp�
     | ------------ | ----------- |
     | Název        | Režim ventilátoru |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření | Režim ventilátoru (zvolte **Visibility** (Viditelnost) vedle **Fan Mode**) |
+    | Měření | Ventilátor režimu (vyberte **viditelnost** vedle **ventilátor režimu**) |
 
     ![Nastavení čárového grafu](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
-    Potom zvolte **Save** (Uložit).
+    Potom vyberte **Uložit**.
 
-1. Pokud chcete přidat nastavení teploty na řídicí panel, zvolte **Settings and Properties** (Nastavení a vlastnosti). Vyberte **přidat nebo odebrat** přidat nastavení nebo vlastnosti, které chcete zobrazit na řídicím panelu. 
-
-    ![Komponenty řídicího panelu](./media/tutorial-define-device-type/dashboardcomponents4.png)
+1. Chcete-li přidat na řídicí panel nastavení a vlastnosti, zvolte **nastavením a vlastnostem**. Vyberte **přidat nebo odebrat** přidat nastavení nebo vlastnosti, které chcete zobrazit na řídicím panelu.
 
 1. Ke konfiguraci komponenty **Settings and Properties** (Nastavení a vlastnosti) použijte informace v následující tabulce:
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Název                   | Nastavení cílové teploty |
-    | Nastavení a vlastností | Nastavená teplota |
+    | Název                   | Vlastnosti zařízení |
+    | Nastavení a vlastností | Nastavená teplota<br/>Sériové číslo<br/>Verze firmwaru |
 
-    V části Available Columns (Dostupné sloupce) se zobrazí nastavení a vlastnosti, které jste definovali dříve na stránkách Settings (Nastavení) a Properties (Vlastnosti). 
+    Nastavení a vlastnosti, které jste dříve definovali v **nastavením a vlastnostem** stránky jsou uvedeny v **dostupných sloupců**.
 
     ![Nastavení vlastností Set Temperature (Nastavená teplota)](./media/tutorial-define-device-type/propertysettings4.png)
 
-    Pak zvolte **OK**.
+    Potom vyberte **Uložit**.
 
-1. Pokud chcete přidat sériové číslo zařízení na řídicí panel, zvolte **Settings and Properties** (Nastavení a vlastnosti):
+1. Nyní je vidět Simulovaná data pro vaše připojení Vzduchovod na řídicím panelu. Můžete upravit dlaždice a rozložení řídicího panelu:
 
-    ![Komponenty řídicího panelu](./media/tutorial-define-device-type/dashboardcomponents3.png)
-
-1. Ke konfiguraci komponenty **Settings and Properties** (Nastavení a vlastnosti) použijte informace v následující tabulce:
-
-    | Nastavení                 | Hodnota         |
-    | ----------------------- | ------------- |
-    | Název                   | Sériové číslo |
-    | Nastavení a vlastností | Sériové číslo |
-
-    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings5.png)
-
-    Pak zvolte **OK**.
-
-1. Pokud chcete přidat verzi firmwaru zařízení na řídicí panel, zvolte **Settings and Properties** (Nastavení a vlastnosti):
-
-    ![Komponenty řídicího panelu](./media/tutorial-define-device-type/dashboardcomponents4.png)
-
-1. Ke konfiguraci komponenty **Settings and Properties** (Nastavení a vlastnosti) použijte informace v následující tabulce:
-
-    | Nastavení                 | Hodnota            |
-    | ----------------------- | ---------------- |
-    | Název                   | Verze firmwaru |
-    | Nastavení a vlastností | Verze firmwaru |
-
-    ![Nastavení vlastnosti sériového čísla](./media/tutorial-define-device-type/propertysettings6.png)
-
-    Pak zvolte **OK**.
-
-1. Pokud chcete řídicí panel zobrazit jako operátor, vypněte **Edit Template** (Upravit šablonu) v pravé horní části stránky.
+    ![Zobrazení řídicího panelu](./media/tutorial-define-device-type/dashboard.png)
 
 ## <a name="next-steps"></a>Další postup
 
@@ -505,9 +447,7 @@ V tomto kurzu jste se naučili:
 > * Použití příkazů
 > * Zobrazení simulovaného zařízení na řídicím panelu
 
-Teď máte definovanou šablonu zařízení v aplikaci Azure IoT Central a můžete přejít k dalším navrhovaným krokům:
+Teď, když jste definovali šablonu zařízení v aplikaci Azure IoT Central, tady jsou další navrhované kroky:
 
 * [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md)
 * [Přizpůsobení zobrazení operátora](tutorial-customize-operator.md)
-
-[lnk-define-template]: /azure/iot-central/howto-set-up-template#properties

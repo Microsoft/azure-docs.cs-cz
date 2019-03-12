@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017374"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540126"
 ---
 # <a name="use-case---product-recommendations"></a>Příklad použití – doporučení produktu
 Azure Data Factory je jednou z mnoha služeb používaný k implementaci akcelerátorů řešení Cortana Intelligence Suite.  Zobrazit [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) stránku Podrobnosti o této sadě. V tomto dokumentu popisujeme běžným případem použití, kteří uživatelé Azure už vyřešit a implementované pomocí služby Azure Data Factory a další služby komponent Cortana Intelligence.
@@ -50,7 +50,7 @@ Všechna data se sloučí a předány do produktu systému doporučení k poskyt
 
 Gigabajtů nezpracovaná webové soubory protokolu jsou generovány, každý den z webu online prodejce jako částečně strukturované soubory. Nezpracovaná webové soubory protokolů a informace o katalogu zákazníků a produktů je pravidelně přijatých do služby Azure Blob storage pomocí Data Factory pro přesuny globálně nasazených dat jako službu. Nezpracovaných souborů protokolu pro tento den dělí (podle roku a měsíce) v úložišti objektů blob pro dlouhodobé uložení.  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) se používá k rozdělení nezpracovaných souborů protokolu v úložišti objektů blob a zpracovávat přijaté protokoly ve velkém měřítku pomocí skripty v Hivu a Pigu. Dělené webové protokoly dat je pak zpracovány extrahovat potřebné vstupy pro strojové učení doporučení systému, generovat individuální doporučení produktů.
 
-Doporučení systému, použít pro strojové učení v tomto příkladu je open source machine learning platforma pro doporučení [Apache Mahout](http://mahout.apache.org/).  Žádné [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) nebo vlastního modelu lze použít ve scénáři.  Mahout model se používá k předpovědi podobnosti mezi položkami na webu na základě celkové způsobů využití a ke generování individuální doporučení podle jednotlivých uživatelů.
+Doporučení systému, použít pro strojové učení v tomto příkladu je open source machine learning platforma pro doporučení [Apache Mahout](https://mahout.apache.org/).  Žádné [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) nebo vlastního modelu lze použít ve scénáři.  Mahout model se používá k předpovědi podobnosti mezi položkami na webu na základě celkové způsobů využití a ke generování individuální doporučení podle jednotlivých uživatelů.
 
 Nakonec sada výsledků individuální doporučení produktů se přesune do relačního datového tržiště za spotřebu na webu prodejce.  Sadu výsledků dotazu může také možné přistupovat přímo z úložiště objektů blob v jiné aplikaci, nebo přesunout do dalších úložišť pro ostatní uživatele a případy použití.
 

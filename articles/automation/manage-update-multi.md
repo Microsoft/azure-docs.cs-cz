@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 65ea01047743c5894ac2ae8b38a197b57cb6971c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817673"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531315"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -70,7 +70,7 @@ Až po dokončení registrace, povolení správy aktualizací pro virtuální po
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení správy aktualizací pro počítače a virtuální počítače umístěné mimo Azure
 
-Informace o povolení správy aktualizací pro počítače a virtuální počítače Windows Azure najdete v tématu [počítače Windows se připojit ke službě Log Analytics v Azure](../log-analytics/log-analytics-windows-agent.md).
+Informace o povolení správy aktualizací pro počítače a virtuální počítače Windows Azure najdete v tématu [počítače Windows se připojit ke službě Azure Monitor v Azure](../log-analytics/log-analytics-windows-agent.md).
 
 Další postup pro povolení správy aktualizací pro a virtuální počítače s Linuxem jiné než Azure najdete v tématu [připojení počítačů s Linuxem do Azure monitoru protokolů](../log-analytics/log-analytics-agent-linux.md).
 

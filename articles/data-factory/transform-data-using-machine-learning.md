@@ -3,20 +3,20 @@ title: Vytvořit prediktivní datové kanály pomocí Azure Data Factory | Dokum
 description: Zjistěte, jak vytvořit prediktivní kanál pomocí Azure Machine Learning – aktivita provedení dávky služby ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: fa156beba6d5eb1f7e10529d7f1287ab9a148024
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446031"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576561"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

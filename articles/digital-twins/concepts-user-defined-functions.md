@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106837"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531728"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
@@ -40,7 +40,7 @@ Zpracování dat v Azure digitální dvojče spočívá v definování tři obje
 
 ### <a name="matchers"></a>Procesy pro hledání shody
 
-Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké akce proběhla podle příchozích telemetrických dat ze senzorů. Podmínky k určení shody může obsahovat vlastnosti od senzor senzoru nadřazené zařízení a místa nadřazené senzoru. Podmínky jsou vyjádřeny jako porovnání proti [cestu JSON](http://jsonpath.com/) jak je uvedeno v tomto příkladu:
+Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké akce proběhla podle příchozích telemetrických dat ze senzorů. Podmínky k určení shody může obsahovat vlastnosti od senzor senzoru nadřazené zařízení a místa nadřazené senzoru. Podmínky jsou vyjádřeny jako porovnání proti [cestu JSON](https://jsonpath.com/) jak je uvedeno v tomto příkladu:
 
 - Všechny senzory datový typ **teploty** reprezentovaný řídicí hodnotu řetězce `\"Temperature\"`
 - S `01` v jejich portu

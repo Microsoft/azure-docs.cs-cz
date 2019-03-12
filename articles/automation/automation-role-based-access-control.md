@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823514"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544976"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -180,11 +180,11 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 |Microsoft.Insights/Metrics/*|Číst metriky pro prostředek.|
 |Microsoft.Insights/Register/Action|Zaregistrujte zprostředkovatele Microsoft.Insights.|
 |Microsoft.Insights/webtests/*|Správa webových testů Application Insights.|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Správa sad řešení Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Správa uložené výsledky hledání Log Analytics.|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Správa sad řešení protokoly Azure monitoru.|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Spravujte vyhledávání uloženy protokoly Azure monitoru.|
 |Microsoft.OperationalInsights/workspaces/search/action|Hledejte pracovní prostory Log Analytics.|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Vypsat klíče pracovního prostoru Log Analytics.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Správa konfigurace přehledu úložiště Log Analytics.|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Správa konfigurace přehledu úložiště protokoly Azure monitoru.|
 |Microsoft.Support/*|Vytvořit a spravovat lístky podpory.|
 |Microsoft.WorkloadMonitor/workloads/*|Správa úloh.|
 

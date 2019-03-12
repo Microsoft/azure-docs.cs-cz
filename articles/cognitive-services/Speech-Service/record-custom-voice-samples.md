@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864940"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530735"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -150,7 +150,7 @@ Nastavit úrovně tak, že většina dostupné dynamických rozsahů digitální
 
 Tady se používá většina rozsah (výška), ale nejvyšší špičky signál: nebylo dosaženo horní nebo dolní části okna. Zjistíte také, že blíží nečinnosti v záznamu tenká vodorovná čára označující floor nízké šumu. Tento záznam má přijatelné dynamickým a poměr signálu šumu.
 
-Záznam přímo k počítači přes zvukové rozhraní vysoce kvalitní nebo port USB, v závislosti na mic, které používáte. Pro obdobu jmenovek, zjednodušení zvuku řetězce: povinná kontrola úrovně důvěryhodnosti, preamp, zvukové rozhraní, počítač. Můžete i licence [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools) a [Adobe Audition](https://www.adobe.com/products/audition.html) měsíční za rozumnou cenu. Pokud váš rozpočet je velmi vysoké, zkuste bezplatnou [Audacity](https://www.audacityteam.org/).
+Záznam přímo k počítači přes zvukové rozhraní vysoce kvalitní nebo port USB, v závislosti na mic, které používáte. Pro obdobu jmenovek, zjednodušení zvuku řetězce: povinná kontrola úrovně důvěryhodnosti, preamp, zvukové rozhraní, počítač. Můžete i licence [Avid profesionálních nástrojů](https://www.avid.com/en/pro-tools) a [Adobe Audition](https://www.adobe.com/products/audition.html) měsíční za rozumnou cenu. Pokud váš rozpočet je velmi vysoké, zkuste bezplatnou [Audacity](https://www.audacityteam.org/).
 
 Záznam na 44,1 kHz 16bitové monophonic (CD kvality) nebo vyšší. Aktuální stav systému – moderní je 48 kHz 24-bit, pokud je vaše zařízení podporuje. Můžete se dolů – ukázka zvuku na 16 kHz 16 bitů než ji odešlete k portálu vlastní hlasové. Stále platí mít vysoce kvalitní původního záznamu v případě, že změny jsou potřeba.
 
@@ -204,7 +204,7 @@ Moderní záznam aplikace spustit na počítačích. Na konci relace obdržíte 
 
 Vlastní hlasové portál vyžaduje každý zadaný utterance ve vlastním souboru. Zvukové soubory, od sady studio obsahuje několik projevy. Proto je primární úloha postprodukční Rozdělit záznamy a jejich přípravě k odeslání. Inženýr záznam mohl umístěny značky v souboru (nebo zadané startovací samostatný list) k označení, kde začíná každý utterance.
 
-Použití poznámek k nalezení přesně přejdete a pak pomocí zvuk úpravy nástroje, jako například [Avid profesionálních nástrojů](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), nebo bezplatnou [Audacity](https://www.audacityteam.org/), kopírování utterance do nového souboru.
+Použití poznámek k nalezení přesně přejdete a pak pomocí zvuk úpravy nástroje, jako například [Avid profesionálních nástrojů](https://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), nebo bezplatnou [Audacity](https://www.audacityteam.org/), kopírování utterance do nového souboru.
 
 Ponechte pouze o 0,2 sekundách nečinnosti na začátku a konce každého klipu, s výjimkou prvního. Tento soubor by měl začínat plně pěti sekundách nečinnosti. Nepoužívejte zvuku editoru "Vynulovat" tiché části souboru. Vlastní hlasové algoritmy kompenzovat všechny šum na pozadí plyne ze zbytkových pomůže včetně tón"místo".
 

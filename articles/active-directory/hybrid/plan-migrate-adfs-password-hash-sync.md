@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867123"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532775"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -139,9 +139,9 @@ Předtím, než převedete z federovaných identit na spravovanou identitu, proh
 |-|-|
 | Plánujete dál používat službu AD FS s jinými aplikacemi (jiné než Azure AD a Office 365). | Po převodu domény použijete službu AD FS a Azure AD. Zvažte uživatelské prostředí. V některých scénářích, uživatelé musí pravděpodobně k ověření dvakrát: jednou do služby Azure AD (ve kterém uživatel získá přístup přes jednotné přihlašování k ostatním aplikacím, jako je Office 365) a opakujte pro všechny aplikace, které jsou stále vázaná na službu AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance služby AD FS je silně přizpůsobený a závisí na konkrétní vlastní nastavení v souboru onload.js (např. Pokud jste změnili přihlašovací prostředí tak, aby uživatelé používat pouze **SamAccountName** formát pro své uživatelské jméno Namísto uživatele hlavní název (UPN), nebo vaše organizace má silně pod značkou jiných přihlašovací prostředí). Soubor onload.js nemůže být duplicitní ve službě Azure AD. | Než budete pokračovat, je nutné ověřit, že Azure AD můžete požadavkům vaší aktuální vlastní nastavení. Další informace a pokyny najdete v částech o značku služby AD FS a vlastního nastavení služby AD FS.|
-| Použití služby AD FS pro blokování starší verze ověřování klientů.| Zvažte možnost nahrazení služby AD FS ovládacích prvků, které blokují starší klienti ověřování s použitím kombinace [řízení podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [Exchange Online pravidla klientského přístupu](http://aka.ms/EXOCAR). |
+| Použití služby AD FS pro blokování starší verze ověřování klientů.| Zvažte možnost nahrazení služby AD FS ovládacích prvků, které blokují starší klienti ověřování s použitím kombinace [řízení podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [Exchange Online pravidla klientského přístupu](https://aka.ms/EXOCAR). |
 | Vyžadujete, aby uživatelům provádět ověřování službou Multi-Factor Authentication u místního ověřování službou Multi-Factor Authentication server řešení při ověřování uživatele se službou AD FS.| V doméně spravovanou identitu nelze vložit výzvu ověřování službou Multi-Factor Authentication prostřednictvím místní řešení vícefaktorového ověřování do tok ověřování. Můžete však použít službu Azure Multi-Factor Authentication pro ověřování službou Multi-Factor Authentication po převodu domény.<br /><br /> Pokud uživatele není aktuálně používat ověřování Azure Multi-Factor Authentication, je vyžadována registračního kroku jednorázově uživatele. Musíte připravit a komunikaci plánované registrace pro vaše uživatele. |
-| Aktuálně používáte zásady řízení přístupu (pravidel AuthZ) ve službě AD FS pro řízení přístupu k Office 365.| Zvažte nahrazení zásady s Azure AD ekvivalentní [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) a [Exchange Online pravidla klientského přístupu](http://aka.ms/EXOCAR).|
+| Aktuálně používáte zásady řízení přístupu (pravidel AuthZ) ve službě AD FS pro řízení přístupu k Office 365.| Zvažte nahrazení zásady s Azure AD ekvivalentní [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) a [Exchange Online pravidla klientského přístupu](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Běžné vlastní nastavení služby AD FS
 
@@ -400,7 +400,7 @@ Při použití vašeho tenanta federovanou identitu, uživatelé byli přesměro
 K otestování synchronizaci hodnot hash hesel:
 
 1. Spusťte aplikaci Internet Explorer v režimu InPrivate tak, aby bezproblémového jednotného přihlašování není přihlásíte taky automaticky.
-2. Přejděte na stránku pro přihlášení k Office 365 ([http://portal.office.com](http://portal.office.com/)).
+2. Přejděte na stránku pro přihlášení k Office 365 ([https://portal.office.com](https://portal.office.com/)).
 3. Zadejte název uživatele (UPN) a pak vyberte **Další**. Ujistěte se, že zadáte hlavní název uživatele hybridní uživatele, který byl synchronizované z vaší místní instancí Active Directory a kteří dříve používali federovaného ověřování. Zobrazí se stránka, na kterém můžete zadat uživatelské jméno a heslo:
 
    ![Snímek obrazovky zobrazující přihlašovací stránku ve kterém zadáte uživatelské jméno](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

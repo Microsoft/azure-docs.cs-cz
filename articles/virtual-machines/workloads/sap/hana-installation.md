@@ -1,6 +1,6 @@
 ---
 title: Instalace SAP HANA na systému SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Postup instalace SAP HANA na systému SAP HANA v Azure (velké instance).
+description: Postup instalace SAP HANA v SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316638"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534272"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
@@ -28,7 +28,7 @@ Před čtením tohoto článku, seznamte se s [velkých instancích HANA běžn�
 Instalace SAP HANA je vaší povinností. Instalace nové SAP HANA na Azure (velké instance) serveru po navázání připojení mezi vaší virtuální sítě Azure a jednotek velká Instance HANA, můžete začít. 
 
 > [!Note]
-> Podle zásad SAP musí provést instalace SAP HANA osobou, který prošel zkoušku Certified přidružit technologie SAP, SAP HANA instalace certifikační zkoušky nebo která je certifikovaná systémový integrátor (SI).
+> Podle zásad SAP musí provést instalaci SAP HANA osoba, který prošel zkoušku Certified přidružit technologie SAP, SAP HANA instalace certifikační zkoušky nebo který je certifikací SAP systémový integrátor (SI).
 
 Pokud plánujete nainstalovat HANA 2.0, naleznete v tématu [Poznámka SAP support #2235581 – SAP HANA: Podporované operační systémy](https://launchpad.support.sap.com/#/notes/2235581/E) abyste měli jistotu, že operační systém podporuje verzi SAP HANA, který instalujete. Podporovaný operační systém pro HANA 2.0 je více omezující než podporovaný operační systém pro HANA 1.0. 
 
@@ -202,14 +202,15 @@ Verze SAP HANA 1.0 až SPS12 tyto parametry můžete udělat během instalace da
 
 Můžete také nakonfigurovat parametry po instalaci databáze SAP HANA pomocí rozhraní hdbparam. 
 
-Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v případech omezení velikosti souborů jako v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
+Úložiště využívané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na soubor. Na rozdíl od v omezení velikosti souborů v systémech souborů EXT3 HANA není vědět implicitně ve velkých instancích HANA úložiště vynucuje omezení na úložiště. v důsledku HANA automatické vytvoření neproběhne nový soubor dat při dosažení limitu velikosti souboru o velikosti 16 TB. Jak HANA pokusí o zvětšení souboru přesáhne 16 TB, bude HANA sestavu chyb a server indexu dojde k chybě na konci.
 
 > [!IMPORTANT]
-> Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini Hana
+> Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini SAP HANA
 > 
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 V SAP HANA 2.0 hdbparam framework je zastaralá. Parametry v důsledku toho musíte nastavit pomocí příkazů jazyka SQL. Další informace najdete v tématu [Poznámka SAP #2399079: Odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).

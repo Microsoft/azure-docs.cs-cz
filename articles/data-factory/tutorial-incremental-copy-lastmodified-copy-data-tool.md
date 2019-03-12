@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 22203a0e950a59cb255c8864218d4e03988e6634
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e5e184e6dadfa993e0b758ad32b54ea6ccfcb272
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647416"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546530"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nové a změněné soubory, které jsou založené na LastModifiedDate pomocí nástroje pro kopírování dat
 
@@ -43,9 +43,9 @@ V tomto kurzu budete provádět následující kroky:
 
 Připravte úložiště objektů Blob pro tento kurz provedením následujících kroků.
 
-1. Vytvořte kontejner s názvem **zdroj**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+1. Vytvořte kontejner s názvem **zdroj**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
-2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -174,7 +174,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Vytvořte prázdný textový soubor a pojmenujte ji jako file1.txt. Nahrát soubor file1.txt **zdroj** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).    
+12. Vytvořte prázdný textový soubor a pojmenujte ji jako file1.txt. Nahrát soubor file1.txt **zdroj** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
@@ -190,13 +190,13 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Vytvořte jiný prázdný textový soubor a pojmenujte ji jako Soubor2.txt. Nahrát soubor Soubor2.txt **zdroj** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).   
+15. Vytvořte jiný prázdný textový soubor a pojmenujte ji jako Soubor2.txt. Nahrát soubor Soubor2.txt **zdroj** kontejneru v účtu úložiště. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).  
     
 16. Totéž jako krok 13 a 14 a uvidíte pouze nový soubor (Soubor2.txt) byl zkopírován z **zdroj** kontejneru **cílové** kontejneru účtu úložiště v další spuštění kanálu.  
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (http://storageexplorer.com/) kontrolovala soubory.
+    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (https://storageexplorer.com/) kontrolovala soubory.
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 

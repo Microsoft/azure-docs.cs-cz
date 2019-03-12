@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b99490102dd4f2c08a11be066b2ddc5fd6b7ea7b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440655"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535831"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
 Po nasazení clusteru služby OpenShift, můžete nakonfigurovat další položky. Tento článek se týká:
 
 - Jak nakonfigurovat jednotné přihlašování pomocí Azure Active Directory (Azure AD)
-- Postup konfigurace Log Analytics k monitorování Openshiftu
+- Konfigurace protokolů Azure Monitor k monitorování Openshiftu
 - Konfigurace metrik a protokolování
 - Postup instalace zprostředkovatele Open Service Broker for Azure (OSBA)
 
@@ -179,11 +179,11 @@ sudo systemctl restart origin-master
 
 V konzole nástroje OpenShift, uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikace].
 
-## <a name="monitor-openshift-with-log-analytics"></a>OpenShift monitorování pomocí Log Analytics
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitorování OpenShift s protokoly Azure monitoru
 
 Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
 - Instalace agenta Log Analytics pro Linux přímo na každém uzlu Openshiftu
-- Povolení rozšíření Log Analytics pro virtuální počítač na každém uzlu Openshiftu
+- Povolení rozšíření virtuálního počítače Azure Monitor na každém uzlu Openshiftu
 - Instalace agenta Log Analytics jako OpenShift démon sadu
 
 Úplné pokyny se nachází tady: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.

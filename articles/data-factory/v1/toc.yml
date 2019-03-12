@@ -216,7 +216,7 @@ items:
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=data-factory
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-data-factory
+    href: https://stackoverflow.com/questions/tagged/azure-data-factory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=data-factory
   - name: Zpracování rozsáhlých datových sad pomocí služeb Data Factory a Batch
@@ -227,9 +227,9 @@ items:
       href: data-factory-customer-profiling-usecase.md
     - name: Doporučení produktů
       href: data-factory-product-reco-usecase.md
-ms.openlocfilehash: ef872162799f08919ad6810ea8341b7dd087c46e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3f1f95be4dc6327c97d5553da76529d58f2a7554
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450281"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528844"

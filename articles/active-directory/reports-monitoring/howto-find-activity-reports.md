@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46fc0a49ebae86a715685e1073b4eb7cc10e6032
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171294"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533404"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledávání sestav aktivit na webu Azure Portal
 
@@ -48,15 +48,46 @@ Sestava protokolů auditu konsoliduje následující sestavy:
 
 ### <a name="filtering-on-audit-logs"></a>Filtrování protokolů auditování
 
-Rozšířené filtrování sestavy auditu můžete použít pro přístup k určité kategorie dat auditu tak, že ho zadáte **kategorie aktivit** filtru. Například, chcete-li zobrazit všechny aktivity související se samoobslužné resetování hesla, vyberte **Samoobslužná správa hesel** kategorie. 
+Rozšířené filtrování sestavy auditu můžete použít pro přístup k určité kategorie dat auditu tak, že ho zadáte **kategorie** filtru. Například, chcete-li zobrazit všechny aktivity související s uživateli, vyberte **entit správy uživatelů** kategorie. 
 
-Kategorie aktivit patří:
+Kategorie patří:
 
+- Vše
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autorizace
+- Kontakt
+- Zařízení
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Ostatní
+- Zásada
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+Můžete také filtrovat podle konkrétní služby pomocí **služby** rozevíracího seznamu filtru. Například, chcete-li získat všechny události auditu týkající se správy hesla pomocí samoobslužné služby, vyberte **samoobslužné správy hesel** filtru.
+
+Služby patří:
+
+- Vše
+- Kontroly přístupu
+- Zřizování účtů 
+- Aplikace SSO
+- Metody ověřování
+- B2C
+- Podmíněný přístup
 - Základní adresář
-- Samoobslužná správa hesel
+- Správa nároků
+- Identity Protection
+- Pozvaní uživatelé
+- PIM
 - Samoobslužná správa skupin
-- Zřizování účtů
-
+- Správa samoobslužných služeb Passord
+- Podmínky použití
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení 
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 09/24/2018
+ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2be77cdc4a5ad38a7d8c125fd95256e77cd92019
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202940"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543182"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
 
@@ -44,7 +44,6 @@ Podmíněný přístup v nejběžnějších případech nezmění chování vaš
 
 Konkrétně následující scénáře vyžadují kód pro zpracování podmíněného přístupu "výzvy":
 
-* Aplikace přístup k Microsoft Graphu
 * Aplikace provádí tok on-behalf-of
 * Aplikace přístup k více službám nebo prostředkům
 * Jednostránkové aplikace s využitím ADAL.js
@@ -58,15 +57,28 @@ V závislosti na scénáři můžete použít podnikový zákazník a kdykoli od
 
 Některé scénáře vyžadují změny kódu pro zpracování podmíněného přístupu, zatímco ostatní funguje stejným způsobem. Tady je několik scénářů používání podmíněného přístupu provést ověřování službou Multi-Factor Authentication, která poskytuje určitý pohled na rozdíl.
 
-* Zodpovídají za tvorbu aplikace s jedním tenantem iOS a aplikovat zásady podmíněného přístupu. Přihlásí uživatele a aplikace nebude žádat o přístup k rozhraní API. Když se uživatel přihlásí, je automaticky vyvolána zásady a uživatel nemusí provádět ověřování službou Multi-Factor Authentication (MFA).
-* Vytváření víceklientských webové aplikace, která používá pro přístup k Exchangi, mimo jiné služby Microsoft Graph. Podnikový zákazník, který přijme tuto aplikaci nastaví zásadu pro Exchange. Když webové aplikace žádá token pro MS Graphu, aplikace nebude výzvou k zajištění souladu se zásadami. Koncový uživatel přihlášený pomocí platné tokeny. Když se aplikace pokusí používat tento token proti Microsoft Graph pro přístup k datům systému Exchange, deklarace identity "problém" se vrátí do webové aplikace prostřednictvím ```WWW-Authenticate``` záhlaví. Aplikace pak může použít ```claims``` v nové žádosti a koncový uživatel se vyzve k dosažení souladu s podmínkami.
+* Zodpovídají za tvorbu aplikace s jedním tenantem iOS a aplikovat zásady podmíněného přístupu. Přihlásí uživatele a aplikace nebude žádat o přístup k rozhraní API. Když se uživatel přihlásí, je automaticky vyvolána zásady a uživatel nemusí provádět ověřování službou Multi-Factor Authentication (MFA). 
 * Vytváříte nativní aplikace, která používá pro přístup k podřízené API střední vrstvy služby. Podnikový zákazník ve společnosti tuto aplikaci používat nastavení uplatní zásady na příjem dat rozhraní API. Když koncový uživatel přihlásí, nativní aplikace požaduje přístup do střední vrstvy a odešle token. Střední vrstvy provádí tok on-behalf-of požádáte o přístup k rozhraní API pro příjem. V tomto okamžiku deklarace identity "problém" se zobrazí střední vrstvy. Střední vrstva před obrovskou výzvou – odešle zpět do nativní aplikace, které musí dodržovat zásady podmíněného přístupu.
+
+#### <a name="microsoft-graph"></a>Microsoft Graph
+
+Microsoft Graph má zvláštní aspekty při sestavování aplikací v prostředích podmíněného přístupu. Obecně platí mechanics podmíněného přístupu se chovají stejně, ale zásady, které se uživatelům zobrazí budou založeny na podkladová data, které vaše aplikace požaduje z grafu. 
+
+Všechny obory Microsoft Graphu konkrétně představují některé datové sady, která můžete jednotlivě jsou použité zásady. Vzhledem k tomu, že zásady podmíněného přístupu jsou přiřazeny konkrétní datové sady, Azure AD se vynucení zásad podmíněného přístupu na základě dat za grafu – místo samotného rozhraní Graph.
+
+Například, pokud aplikace požaduje následující obory Microsoft Graphu
+
+```
+scopes="Bookings.Read.All Mail.Read"
+```
+
+Aplikaci můžete očekávat, že svým uživatelům ke splnění všech zásad nastavte na Bookings a serveru Exchange. Některé obory může mapovat do více datových sad, pokud uděluje přístup. 
 
 ### <a name="complying-with-a-conditional-access-policy"></a>V souladu se zásadami podmíněného přístupu
 
 Pro několik topologií různé aplikace se vyhodnotí zásady podmíněného přístupu při vytvoření relace. Jak zásady podmíněného přístupu pracuje členitost aplikacemi a službami, závisí do značné míry bodu, kdy je vyvolána na scénář, který se snažíte dosáhnout.
 
-Když se aplikace pokusí o přístup ke službě pomocí zásad podmíněného přístupu, setkat challenge podmíněného přístupu. Tento problém je zakódován do `claims` parametr, který je k dispozici ve odpověď ze služby Azure AD a Microsoft Graph. Tady je příklad tohoto parametru výzvy:
+Když se aplikace pokusí o přístup ke službě pomocí zásad podmíněného přístupu, setkat challenge podmíněného přístupu. Tento problém je zakódován do `claims` parametr, který je k dispozici ve odpověď ze služby Azure AD. Tady je příklad tohoto parametru výzvy: 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -84,70 +96,15 @@ Podmíněný přístup Azure AD je součástí funkce [Azure AD Premium](https:/
 
 Následující informace platí jenom v těchto scénářích podmíněného přístupu:
 
-* Aplikace přístup k Microsoft Graphu
 * Aplikace provádí tok on-behalf-of
 * Aplikace přístup k více službám nebo prostředkům
 * Jednostránkové aplikace s využitím ADAL.js
 
-Následující části popisují běžných scénářů, které jsou složitější. Základní princip je podmíněný přístup, které zásady jsou vyhodnocovány v okamžiku vyžádání tokenu pro službu, která se má použít, pokud je přistupováno prostřednictvím Microsoft Graphu zásady podmíněného přístupu.
-
-## <a name="scenario-app-accessing-microsoft-graph"></a>Scénář: Aplikace přístup k Microsoft Graphu
-
-V tomto scénáři dozvíte, jak webová aplikace žádá o přístup k Microsoft Graphu. Zásady podmíněného přístupu v tomto případě může přiřadit ke službě SharePoint, Exchange nebo některé jiné službě, která je přístupná jako úlohy prostřednictvím Microsoft Graphu. V tomto příkladu předpokládejme, že je zásady podmíněného přístupu na SharePoint Online.
-
-![Aplikace přístup k Microsoft Graphu vývojový diagram](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
-
-Aplikace poprvé požádá autorizace Microsoft graphu, která vyžaduje přístup k podřízené úlohy bez podmíněného přístupu. Požadavek bude úspěšné bez vyvolání všechny zásady a aplikace obdrží tokeny pro Microsoft Graph. V tomto okamžiku může aplikace použít přístupový token v požadavku nosiče pro požadovaný koncový bod. Nyní aplikace potřebuje přístup k Sharepointu Online koncového bodu Microsoft Graphu, například: `https://graph.microsoft.com/v1.0/me/mySite`
-
-Aplikace už má platný token pro Microsoft Graph, tak nový požadavek lze provádět bez vystavení nový token. Tento požadavek selže a deklarace identity výzvu k vyvolání z Microsoft Graph ve formě HTTP 403 Zakázáno s ```WWW-Authenticate``` challenge.
-
-Tady je příklad odpovědi:
-
-```
-HTTP 403; Forbidden
-error=insufficient_claims
-www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
-```
-
-Před obrovskou výzvou – deklarace je uvnitř ```WWW-Authenticate``` hlavičky, která může být analyzován extrahovat parametr deklarací identity pro další požadavek. Jakmile se připojí k novou žádost, mohl vyhodnocení zásad podmíněného přístupu při přihlášení uživatele Azure AD a aplikace je nyní souladu se zásadami podmíněného přístupu. Opakující se požadavek na Sharepointu Online koncový bod bude úspěšná.
-
-```WWW-Authenticate``` Záhlaví nemá strukturu jedinečný a není zrovna snadné analyzovat, aby bylo možné extrahovat hodnoty. Tady je krátké způsob, jak pomoct.
-
-```csharp
-        /// <summary>
-        /// This method extracts the claims value from the 403 error response from MS Graph.
-        /// </summary>
-        /// <param name="wwwAuthHeader"></param>
-        /// <returns>Value of the claims entry. This should be considered an opaque string.
-        /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
-        private String extractClaims(String wwwAuthHeader)
-        {
-            String ClaimsKey = "claims=";
-            String ClaimsSubstring = "";
-            if (wwwAuthHeader.Contains(ClaimsKey))
-            {
-                int Index = wwwAuthHeader.IndexOf(ClaimsKey);
-                ClaimsSubstring = wwwAuthHeader.Substring(Index, wwwAuthHeader.Length - Index);
-                string ClaimsChallenge;
-                if (Regex.Match(ClaimsSubstring, @"}$").Success)
-                {
-                    ClaimsChallenge = ClaimsSubstring.Split('=')[1];
-                }
-                else
-                {
-                    ClaimsChallenge = ClaimsSubstring.Substring(0, ClaimsSubstring.IndexOf("},") + 1);
-                }
-                return ClaimsChallenge;
-            }
-            return null;
-        }
-```
-
-Ukázky kódu, které ukazují, jak zpracovat před obrovskou výzvou – deklarace identity, najdete [vzorový kód On-behalf-of](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) pro ADAL .NET.
+Následující části popisují běžných scénářů, které jsou složitější. Základní princip je podmíněný přístup, které zásady jsou vyhodnocovány v okamžiku vyžádání tokenu pro službu, která se má použít zásady podmíněného přístupu.
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scénář: Aplikace provádí tok on-behalf-of
 
-V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá [he "on-behalf-of" toku k volání příjem dat služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon.
+V tomto scénáři provedeme tento případ, ve kterém nativní aplikace volá webové služby nebo rozhraní API. Pak tato služba nemá [he "on-behalf-of" toku k volání příjem dat služby. V našem případě jsme použili naše zásady podmíněného přístupu u podřízené služby (webové rozhraní API 2) a používají nativní aplikace namísto aplikace typu server/démon. 
 
 ![Aplikace provádí vývojový diagram on-behalf-of](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -217,7 +174,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 Naše aplikace je potřeba zachytit `error=interaction_required`. Aplikace můžete použít, pak buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` se stejným prostředkem. Uživatel musí provést ověření službou Multi-Factor Authentication. Poté, co uživatel dokončil vícefaktorové ověřování, objeví se v aplikaci nový přístupový token pro požadovaný prostředek.
 
 Vyzkoušejte si v tomto scénáři, najdete v tématu naše [vzorový kód On-behalf-of SPA v JavaScriptu](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Tento vzorový kód používá zásady podmíněného přístupu a webového rozhraní API, které jste se zaregistrovali dříve SPA v JavaScriptu k předvedení tohoto scénáře. Ukazuje, jak správně zpracovat před obrovskou výzvou – deklarace identity a získání přístupového tokenu, který lze použít pro vaše webové rozhraní API. Alternativně checkout Obecné [vzorový kód Angular.js](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) pro doprovodné materiály k Angular SPA
-
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

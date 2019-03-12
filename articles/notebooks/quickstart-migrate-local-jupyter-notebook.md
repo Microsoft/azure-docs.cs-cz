@@ -6,27 +6,27 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084498"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773949"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Rychlý start: Migrovat místní aplikace Jupyter notebook
+# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Rychlý start: Migrace místních poznámkových bloků Jupyter
 
 Poznámkové bloky Jupyter, které vytvoříte místně na vlastním počítači jsou dostupné pouze pro vás. Můžete sdílet soubory prostřednictvím různých prostředků, ale pak příjemci mít své vlastní místní kopii Poznámkový blok a je těžké za vás, abyste zapracovali všechny změny, které můžou zvolit. Můžete také ukládat poznámkových bloků v sdílené úložiště online, jako je například GitHub, ale to stále vyžaduje, aby měl každý spolupracovníka vlastní místní instalace aplikace Jupyter se stejnou konfigurací se nenachází žádný.
 
 Pomocí migrace vašich místních nebo na základě úložiště poznámkových bloků do poznámkových bloků Azure, uložit je v cloudu, ze kterého můžete okamžitě je sdílet s vaší spolupracovníky. Tyto spolupracovníci potřebujete jenom prohlížeč pro zobrazení a spuštění Poznámkový blok a pokud jsou [přihlášení](quickstart-sign-in-azure-notebooks.md) do poznámkových bloků Azure, můžete také provádět změny.
 
-Tento rychlý start popisuje proces migrace z místního počítače nebo jinou adresu URL přístupná soubor poznámkového bloku. K migraci poznámkových bloků z úložiště GitHub, najdete v článku [rychlý start: klonování Poznámkový blok](quickstart-clone-jupyter-notebook.md).
+Tento rychlý start popisuje proces migrace z místního počítače nebo jinou adresu URL přístupná soubor poznámkového bloku. K migraci poznámkových bloků z úložiště GitHub, najdete v článku [rychlý start: Klonovat Poznámkový blok](quickstart-clone-jupyter-notebook.md).
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Vytvoření projektu v poznámkových blocích Azure
 
@@ -48,7 +48,7 @@ Tento rychlý start popisuje proces migrace z místního počítače nebo jinou 
 
     ![Příkaz pro nahrání poznámkového bloku z adresy URL nebo místní počítač](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Znovu, pokud je v úložišti GitHub, postupujte podle kroků [rychlý start: klonování Poznámkový blok](quickstart-clone-jupyter-notebook.md) místo.)
+   (Znovu, pokud je v úložišti GitHub, postupujte podle kroků [rychlý start: Klonovat Poznámkový blok](quickstart-clone-jupyter-notebook.md) místo.)
 
     - Pokud používáte **z počítače**, přetažením vaše *.ipynb* soubory do automaticky otevíraného okna, nebo vyberte **vybrat soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **nahrát**. Nahrané soubory jsou uvedeny stejný název jako místní soubory. (Není nutné k nahrání obsahu jakékoli *.ipynb_checkpoints* složek.)
 

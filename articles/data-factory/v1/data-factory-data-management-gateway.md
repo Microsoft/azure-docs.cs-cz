@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 28796c753e32a3c3b18052190618152c7669c93d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437067"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539990"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -439,7 +439,7 @@ Tato část obsahuje kroky pro přesun klientovi brány z jednoho počítače do
 ## <a name="encrypting-credentials"></a>Šifrování přihlašovacích údajů
 K šifrování přihlašovacích údajů v editoru služby Data Factory, proveďte následující kroky:
 
-1. Spustit webový prohlížeč na **počítači brány**, přejděte na [webu Azure portal](http://portal.azure.com). Vyhledejte svou datovou továrnu v případě potřeby, otevřete datovou továrnu v **služby DATA FACTORY** stránce a potom klikněte na tlačítko **vytvořit a nasadit** ke spuštění editoru služby Data Factory.
+1. Spustit webový prohlížeč na **počítači brány**, přejděte na [webu Azure portal](https://portal.azure.com). Vyhledejte svou datovou továrnu v případě potřeby, otevřete datovou továrnu v **služby DATA FACTORY** stránce a potom klikněte na tlačítko **vytvořit a nasadit** ke spuštění editoru služby Data Factory.
 2. Klikněte na existující **propojená služba** ve stromovém zobrazení zobrazit své definici JSON nebo vytvořte propojenou službu, která vyžaduje bránu pro správu dat (například: SQL Server nebo Oracle).
 3. V editoru JSON pro **název brány** vlastnost, zadejte název brány.
 4. Zadejte název serveru, **zdroj dat** vlastnost **connectionString**.

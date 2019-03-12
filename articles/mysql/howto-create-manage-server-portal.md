@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537320"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528674"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správa Azure Database for MySQL pomocí webu Azure portal
 Toto téma popisuje, jak můžete rychle vytvořit nový server Azure Database for MySQL. Obsahuje také informace o tom, jak spravovat server s využitím webu Azure portal. Správa serveru obsahuje zobrazení Podrobnosti o serveru a databáze, resetuje se heslo, škálování prostředků a odstraněním serveru.
@@ -44,7 +44,7 @@ Následující postup použijte k vytvoření serveru Azure Database for MySQL s
     | *Umístění* | Jihovýchodní Asie (vyberte mezi Severní Evropa a západní USA) |
     | *Verze* | 5.7 (zvolte databázi Azure pro verzi serveru MySQL) |
 
-4. Klikněte na tlačítko **cenová úroveň** k určení úrovně vrstvy a výkon služby pro nový server. Vyberte **Obecné** kartu. *Gen 4*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**.
+4. Klikněte na tlačítko **cenová úroveň** k určení úrovně vrstvy a výkon služby pro nový server. Vyberte **Obecné** kartu. *Gen 5*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**.
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -62,7 +62,7 @@ Po zřízení nového serveru se uživatel má několik možností, jak ke konfi
 
 2. Zadejte nové heslo a potvrzení hesla v okně, jak je znázorněno:
 
-   ![resetování hesla](./media/howto-create-manage-server-portal/reset-password.png)
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Klikněte na tlačítko **OK** nové heslo uložte.
 
@@ -110,4 +110,4 @@ Klikněte na **vlastnosti**, který je umístěn v rámci **nastavení** Chcete-
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlý start: Vytvoření Azure Database for MySQL pomocí webu Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Rychlé zprovoznění: Vytvoření Azure Database for MySQL pomocí webu Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

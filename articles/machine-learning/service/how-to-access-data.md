@@ -11,21 +11,22 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f489abeab0e1374d2d40ade79c4eb55fd633b909
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7c29d1bfcc0737f76afc43cb8997d6a1d16c82b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443279"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731357"
 ---
 # <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
-V tomto článku se naučíte různými způsoby pro přístup k a interagování s daty v Azure Machine Learning pracovních postupů prostřednictvím úložišť.
 
-Tento návod ukazuje příklady pro následující úlohy: 
+Úložiště umožňují interakci s a přistupovat ke svým datům, ať už jsou spuštěné kódu místně, na výpočetním clusteru, nebo na virtuálním počítači. V tomto článku přečtěte si, že jsou k dispozici pracovní postupy Azure Machine Learning, které zajistí vaše úložiště a k dispozici k výpočetním kontextu.
+
+Tento návod ukazuje příklady pro následující úlohy:
 * [Vyberte úložiště dat](#access)
-* [Získání datového úložiště](#get)
-* [Nahrávání a stahování dat do úložišť](#upload-and-download-data)
-* Přístup k úložišti dat během cvičení
+* [Získání dat](#get)
+* [Nahrávání a stahování dat do úložišť](#up-and-down)
+* [Přístup k úložišti dat během cvičení](#train)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -85,7 +86,7 @@ Následující příklady ukazují registraci kontejneru objektů Blob v Azure n
 
 <a name="get"></a>
 
-## <a name="get-data-in-your-datastore"></a>Získání dat v vaše úložiště dat
+## <a name="find--define-datastores"></a>Najít & definovat úložišť
 
 Zadané úložiště dat zaregistrovaný do aktuálního pracovního prostoru získáte pomocí [ `get()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
 
@@ -110,7 +111,8 @@ Chcete-li definovat různé výchozí úložiště pro aktuálního pracovního 
 ws.set_default_datastore('your datastore name')
 ```
 
-## <a name="upload-and-download-data"></a>Nahrávání a stahování dat
+<a name="up-and-down"></a>
+## <a name="upload--download-data"></a>Nahrávání a stahování dat
 [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) metod popsaných v následujících příkladech jsou specifické pro a pracovat stejně jako u [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) třídy.
 
 ### <a name="upload"></a>Odeslat
@@ -142,6 +144,7 @@ ds.download(target_path='your target path',
 ```
 `target_path` je umístění pro stahování dat do místního adresáře. Chcete-li zadat cestu ke složce ve sdílené složky (nebo kontejneru objektů blob) ke stažení, zadejte cestu tak, `prefix`. Pokud `prefix` je `None`, se stáhne veškerý obsah sdílené složky (nebo kontejneru objektů blob).
 
+<a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Úložišť přístup během cvičení
 Dostanete během cvičení spuštění (například pro ověření nebo trénovací data) na cílové vzdálené výpočetní prostředí pomocí sady Python SDK pomocí datového úložiště [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) třídy.
 

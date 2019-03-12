@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 530bb83d753d27db4869b5725bc6d4c4e020e179
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3be2ab8bd4be56de945303bec9969f531be77864
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446601"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535583"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
@@ -220,7 +220,7 @@ Pro virtuální počítač s Linuxem, pokud rozšíření VMSnapshot není uvede
 Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zálohování.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodů obnovení
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V **nastavení** vyberte **zámky** zobrazíte zámků.
 4. Odebrat zámek, vyberte tři tečky a klikněte na **odstranit**.
@@ -241,7 +241,7 @@ Po odebrání zámku aktivace zálohování ad hoc nebo ruční. Tím se zajist�
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Vyčistit obnovení bodu kolekce z webu Azure portal <br>
 
 Ručně vymažte obnovení bodů kolekce, které nejsou zrušeno z důvodu zámku na skupinu prostředků, vyzkoušejte následující kroky:
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Na **centra** nabídky, klikněte na tlačítko **všechny prostředky**, vyberte skupinu prostředků v následujícím formátu AzureBackupRG_`<Geo>`_`<number>` kde je umístěn virtuální počítač.
 
     ![Zámek proti odstranění](./media/backup-azure-arm-vms-prepare/resource-group.png)

@@ -8,12 +8,12 @@ ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 60c5b7b55e417a5703010ea34cf75dcb20146c37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404547"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531675"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Poznámky k verzi Azure Data Catalog
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Poznámky k 20. listopadu 2015 verzi služby Azure Data Catalog
@@ -29,7 +29,7 @@ Pro každé situaci, problém lze vyřešit stažením a instalací nejnovějš�
 ### <a name="registering-and-connecting-to-teradata"></a>Registrace a připojování k Teradata
 Při připojování k Teradata zdroje dat uživatelé musí mít nainstalovaného správné ovladače Teradata ODBC, které odpovídají bitové verze (32bitová nebo 64bitová verze) softwaru používán.
 
-Od této ADC datum vydání, nejnovější [ovladač Teradata ODBC pro windows (verzi 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) je kompatibilní s aplikací Office 2013, ale ne s Office 2016.
+Od této ADC datum vydání, nejnovější [ovladač Teradata ODBC pro windows (verzi 15.10)](https://downloads.teradata.com/download/connectivity/odbc-driver/windows) je kompatibilní s aplikací Office 2013, ale ne s Office 2016.
 
 ## <a name="notes-for-the-july-13-2015-release-of-azure-data-catalog"></a>Poznámky k 13. července 2015 verzi služby Azure Data Catalog
 ### <a name="registering-and-connecting-to-oracle-database"></a>Registrace a připojování k databázi Oracle
@@ -53,13 +53,13 @@ Uživatelé mohou nastat situace, kdy se můžou přihlašovat na portál Azure 
 
 Existují dva možné příčiny tohoto problému chování:
 
-**1 příčina: Konfigurace služby AD FS** nástroj registrace zdroje dat používá ověřování založené na formulářích k ověření přihlášení uživatelů vůči službě Active Directory. Pro úspěšné přihlášení musí být povolené ověřování pomocí formulářů ve globální zásady ověřování microsoftem nebo správcem Active Directory.
+**1. příčina: Konfigurace služby Active Directory Federation Services** nástroj registrace zdroje dat používá ověřování založené na formulářích k ověření přihlášení uživatelů vůči službě Active Directory. Pro úspěšné přihlášení musí být povolené ověřování pomocí formulářů ve globální zásady ověřování microsoftem nebo správcem Active Directory.
 
 V některých případech chování této chybě může dojít pouze v případě, že uživatel je v podnikové síti, nebo pouze v případě, že se uživatel připojuje mimo podnikovou síť. Globální zásady ověřování umožňuje metody ověřování pro připojení z extranetu a intranetu odděleně povolit. Pokud není povolené ověřování pomocí formulářů pro síť, ze kterého se uživatel připojuje, může dojít k chybám přihlášení.
 
 Další informace najdete v tématu [konfigurace zásad ověřování](https://technet.microsoft.com/library/dn486781.aspx).
 
-**Příčiny 2: Konfigurace proxy serveru síťových** Pokud podniková síť používá proxy server, nástroje pro registraci nemusí být schopná připojit ke službě Azure Active Directory přes proxy server. Uživatele můžete zajistit, že nástroj pro registraci tak, že upravíte konfigurační soubor nástroje, v této části přidáte do souboru:
+**2. příčina: Konfigurace proxy serveru sítě** Pokud podniková síť používá proxy server, nástroje pro registraci nemusí být schopná připojit ke službě Azure Active Directory přes proxy server. Uživatele můžete zajistit, že nástroj pro registraci tak, že upravíte konfigurační soubor nástroje, v této části přidáte do souboru:
 
       <system.net>
         <defaultProxy useDefaultCredentials="true" enabled="true">

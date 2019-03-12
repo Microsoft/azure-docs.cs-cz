@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 28227ce9ebc5680f68c05cb1296a8ba35eac2c74
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1dbac37e8b3bac5ee06ac3bdc3270c04efdcd408
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338344"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536687"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
@@ -69,7 +69,7 @@ Tento konektor Oracle podporuje dvě verze ovladače:
     > Ovladač Microsoft pro Oracle v současné době podporuje pouze kopírování dat od Oraclu. Ovladač nepodporuje zápis do databáze Oracle. Funkci test připojení pro bránu správy dat. **diagnostiky** kartu nepodporuje tento ovladač. Alternativně můžete použít Průvodce kopírováním pro ověření připojení.
     >
 
-- **Poskytovatel dat Oracle pro .NET**: Poskytovatel dat Oracle můžete použít ke zkopírování dat z nebo do databáze Oracle. Tato součást je součástí [Oracle Data Access součásti pro Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Nainstalujte příslušné verze (32bitová nebo 64bitová verze) na počítači, kde je nainstalovaná brána. [Poskytovatel dat Oracle, .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mají přístup k databázi Oracle Database 10 g vydaná verze 2 a novější verze.
+- **Poskytovatel dat Oracle pro .NET**: Poskytovatel dat Oracle můžete použít ke zkopírování dat z nebo do databáze Oracle. Tato součást je součástí [Oracle Data Access součásti pro Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Nainstalujte příslušné verze (32bitová nebo 64bitová verze) na počítači, kde je nainstalovaná brána. [Poskytovatel dat Oracle, .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mají přístup k databázi Oracle Database 10 g vydaná verze 2 a novější verze.
 
     Pokud vyberete **XCopy instalace**, proveďte následující kroky jsou popsané v souboru readme.htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (ne XCopy instalační program).
 
@@ -566,7 +566,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 
 **Řešení**
 
-* Pokud jste nenainstalovali zprostředkovatele .NET pro Oracle, [ji nainstalovat](http://www.oracle.com/technetwork/topics/dotnet/downloads/)a zkuste zopakovat scénář.
+* Pokud jste nenainstalovali zprostředkovatele .NET pro Oracle, [ji nainstalovat](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a zkuste zopakovat scénář.
 * Pokud se zobrazí chybová zpráva, ani po instalaci poskytovatele, proveďte následující kroky:
     1. Otevřete konfigurační soubor počítače pro rozhraní .NET 2.0 ze složky < systémový disk\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Vyhledejte **poskytovatel dat Oracle pro .NET**. Byste měli najít položku, jak je znázorněno v následujícím příkladu v části **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`

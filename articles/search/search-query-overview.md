@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300871"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543912"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -38,15 +38,15 @@ V následující tabulce jsou uvedeny rozhraní API a detekce založené na nás
 Příklady jsou užitečné pro zavedení nových konceptů. Jak reprezentativní dotaz vytvořený v [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), tento příklad cíle [nemovitosti ukázku index](search-get-started-portal.md) , včetně společných parametrů.
 
 ```
-{  
+{
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"", 
-    "searchFields": "description, city",  
-    "count": "true", 
+    "search": "seattle townhouse* +\"lake\"",
+    "searchFields": "description, city",
+    "count": "true",
     "select": "listingId, street, status, daysOnMarket, description",
     "top": "10",
     "orderby": "daysOnMarket"
- } 
+}
 ```
 
 + **`queryType`** Nastaví analyzátor, který může být ve službě Azure Search [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) používá pro konstrukty na rozšířený dotaz jako regulární výrazy , vyhledávání blízkých výrazů, přibližných shod a hledání pomocí zástupných znaků, pár.

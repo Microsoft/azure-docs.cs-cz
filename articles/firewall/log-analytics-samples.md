@@ -7,24 +7,26 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: f639f47997fc122efde2bc223bc24b5de7630710
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240146"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533999"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Ukázky log analytics v Azure brány Firewall
 
-Následující ukázky log analytics můžete použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení Log Analytics, [Návrhář zobrazení Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
+Následující ukázky protokoly Azure monitoru lze použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení ve službě Azure Monitor [Návrhář zobrazení ve službě Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
 
-## <a name="log-analytics-view"></a>Zobrazení v Log Analytics
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Tady je konfigurace vizualizace příklad log analytics. Můžete si stáhnout příklad vizualizace z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) úložiště. Nejjednodušší způsob je klikněte pravým tlačítkem na hypertextový odkaz na tuto stránku a zvolte *uložit jako* a zadejte název, například **AzureFirewall.omsview**. 
+## <a name="azure-monitor-logs-view"></a>Zobrazit protokoly Azure monitoru
 
-Proveďte následující kroky, chcete-li přidat zobrazení do pracovního prostoru log analytics:
+Tady je konfigurace příklad vizualizace protokoly Azure monitoru. Můžete si stáhnout příklad vizualizace z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) úložiště. Nejjednodušší způsob je klikněte pravým tlačítkem na hypertextový odkaz na tuto stránku a zvolte *uložit jako* a zadejte název, například **AzureFirewall.omsview**. 
 
-1. Otevřete pracovní prostor log analytics na portálu Azure Portal.
+Proveďte následující kroky, chcete-li přidat zobrazení do pracovního prostoru Log Analytics:
+
+1. Otevřete pracovní prostor Log Analytics na portálu Azure Portal.
 2. Otevřít **zobrazení návrháře** níže **Obecné**.
 3. Klikněte na **Importovat**.
 4. Procházet a vybrat **AzureFirewall.omsview** souborů, které jste stáhli dříve.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 5833ee3964958437b7834ff25f1bce7837370fb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455955"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550579"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -160,7 +160,7 @@ Několik aspektů dotazovací jazyk služby Cosmos DB provede příklady, které
 
 * Jazyk SQL pracuje s daty bez schématu. Systém typů, třeba navázat dynamicky. Stejný výraz může přinést různé typy na různé položky. Výsledek dotazu je platnou hodnotu JSON, ale není zaručeno, že bude pevné schéma.  
 
-* Azure Cosmos DB podporuje pouze striktní položky formátu JSON. To znamená, že do systému typů a výrazy jsou omezené na řešil pouze typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
+* Azure Cosmos DB podporuje pouze striktní položky formátu JSON. To znamená, že do systému typů a výrazy jsou omezené na řešil pouze typy JSON. Odkazovat [JSON specifikace](https://www.json.org/) další podrobnosti.  
 
 * Kontejneru Cosmos DB je kolekce položek JSON bez schématu. Vztahy v datových entit v různých položek v kontejneru i jsou implicitně zachycena členství ve skupině a ne primární klíč a cizí klíče relace. To je důležitý aspekt zmínku nedávným spojení uvnitř položky popsané dále v tomto článku.
 

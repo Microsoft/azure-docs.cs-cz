@@ -12,14 +12,14 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050640"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534936"
 ---
-# <a name="traffic-manager-traffic-view"></a>Zobrazení přenosů Traffic Manageru
+# <a name="traffic-manager-traffic-view"></a>Traffic Manager Traffic View
 
 Traffic Manager poskytuje, kterým se směrováním na úrovni DNS tak, aby vaši koncoví uživatelé jsou směrované na založené na metodě směrování v dobrém stavu koncových bodů při vytváření profilu. Zobrazení přenosů poskytne přehled vaší uživatelské základny (na úrovni členitosti překladače DNS) a způsobu jejich provoz Traffic Manageru. Když povolíte Traffic View, tyto informace jsou zpracovávána poskytnout užitečné přehledy. 
 
@@ -35,6 +35,8 @@ Například můžete použít Traffic View pochopit, jaké oblasti mají velký 
 
 Zobrazení přenosů funguje tak, že Traffic Manageru, podívejte se na příchozí dotazy přijaté za posledních sedm dnů vůči profilu, který má tato funkce povolena. Zobrazení přenosů z příchozí informace dotazy extrahuje zdrojovou IP adresu Překladač DNS, který slouží jako reprezentace umístění uživatele. Tyto jsou potom seskupeny na do úrovně překladače DNS k vytvoření základních oblastech uživatele pomocí zeměpisné údaje udržované Traffic Managerem IP adresy. Traffic Manager poté hledá v oblasti Azure, ke kterým se dotaz, byla směrována a vytvoří mapování toku provozu pro uživatele z těchto oblastí.  
 V dalším kroku, Traffic Manager koreluje oblasti základní mapování oblast Azure s tabulkami intelligence latence sítě, které udržuje pro různé koncové uživatele sítě pochopit průměrnou latenci uživatelé z těchto oblastí po Probíhá připojování k oblasti Azure. Všechny tyto výpočty se následně se spojí dohromady v na místní DNS překládání IP úrovni předtím, než se budou zobrazovat uživateli. Informace v různých způsobů, jak můžete využívat.
+
+Frekvence aktualizace data zobrazení přenosů závisí na několika proměnných vnitřní chybě služby. Data se však obvykle aktualizují každých 24 hodin.
 
 >[!NOTE]
 >Latence je popsáno v zobrazení přenosů reprezentativní latence mezi koncový uživatel a oblastí Azure, ke kterým má připojené k a není latence vyhledávání DNS. Díky zobrazení přenosů vrátí nejlepší odhad úsilí latence mezi místního překladače DNS a oblasti Azure, které dotaz, byla směrována do, pokud není k dispozici dostatek dat a pak latence bude mít hodnotu null. 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 47709b84fe67c55c84bea59123d5a46a6e3940fb
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806593"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532078"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány pro směrování požadavků
 
@@ -49,7 +49,7 @@ Zde je, jak vypadá v šabloně nasazení Azure Resource Manageru (JSON):
   "name": "myGateway",
   "type": "Microsoft.ServiceFabricMesh/gateways",
   "location": "[parameters('location')]",
-  "dependsOn": [  
+  "dependsOn": [
     "Microsoft.ServiceFabricMesh/networks/myNetwork"
   ],
   "properties": {
@@ -166,53 +166,53 @@ Tady je příklad HTTP pravidlo směrování pro požadavky přicházející na 
 Tady je úplný konfiguraci prostředků brány, která bude vypadat jako (jde přizpůsobit z ukázky příchozího přenosu dat k dispozici v [Mesh vzorků úložiště](https://github.com/Azure-Samples/service-fabric-mesh/blob/2018-09-01-preview/templates/ingress/meshingress.linux.json)):
 
 ```json
-{  
+{
   "apiVersion": "2018-09-01-preview",
   "name": "ingressGatewayLinux",
   "type": "Microsoft.ServiceFabricMesh/gateways",
   "location": "[parameters('location')]",
-  "dependsOn": [  
+  "dependsOn": [
     "Microsoft.ServiceFabricMesh/networks/meshNetworkLinux"
   ],
-  "properties": {  
+  "properties": {
     "description": "Service Fabric Mesh Gateway for Linux mesh samples.",
-    "sourceNetwork": {  
+    "sourceNetwork": {
       "name": "Open"
     },
-    "destinationNetwork": {  
+    "destinationNetwork": {
       "name": "[resourceId('Microsoft.ServiceFabricMesh/networks', 'meshNetworkLinux')]"
     },
-    "http": [  
-      {  
+    "http": [
+      {
         "name": "web",
         "port": 80,
-        "hosts": [  
-          {  
+        "hosts": [
+          {
             "name": "*",
-            "routes": [  
-              {  
-                "match": {  
-                  "path": {  
+            "routes": [
+              {
+                "match": {
+                  "path": {
                     "value": "/hello",
                     "rewrite": "/",
                     "type": "Prefix"
                   }
                 },
-                "destination": {  
+                "destination": {
                   "applicationName": "meshAppLinux",
                   "serviceName": "helloWorldService",
                   "endpointName": "helloWorldListener"
                 }
               },
-              {  
-                "match": {  
-                  "path": {  
+              {
+                "match": {
+                  "path": {
                     "value": "/counter",
                     "rewrite": "/",
                     "type": "Prefix"
                   }
                 },
-                "destination": {  
+                "destination": {
                   "applicationName": "meshAppLinux",
                   "serviceName": "counterService",
                   "endpointName": "counterServiceListener"

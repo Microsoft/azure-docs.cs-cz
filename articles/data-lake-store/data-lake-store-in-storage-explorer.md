@@ -1,7 +1,7 @@
 ---
 title: Správa prostředků Azure Data Lake Storage Gen1 v Průzkumníku služby Storage
 description: Zjistěte, jak zobrazit a spravovat vaše data Azure Data Lake Storage Gen1 a prostředky v Průzkumníku služby Storage
-Keywords: Azure Data Lake Store, Azure Storage Explorer
+Keywords: Azure Data Lake Store, Azure Storage Exploreru
 services: Data Lake Store
 documentationcenter: ''
 author: jejiang
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966258"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534340"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Správa prostředků Azure Data Lake Storage Gen1 pomocí Průzkumníka služby Storage
 
@@ -195,7 +195,7 @@ Pokud máte adresu URL, můžete ji zadat do adresního řádku v Průzkumníku 
 
 
 ## <a name="next-steps"></a>Další postup
-* Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com).
+* Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](https://www.storageexplorer.com).
 * Zjistěte, jak [spravovat službu Azure Cosmos DB v Průzkumníku služby Azure Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 * [Začínáme s Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).

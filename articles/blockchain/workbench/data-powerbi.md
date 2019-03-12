@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: e50a82f0f141fec266a8348c0a1a8b5fbdb38b45
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 1e12af686a450d39332c37700b9a14b9eb620307
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329841"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530881"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Použití dat služby Azure Blockchain Workbench v Power BI
 
-Microsoft Power BI umožňuje snadno generovat výkonné sestavy z databází SQL DB pomocí Power BI Desktopu a potom je publikovat na stránku [https://www.powerbi.com](http://www.powerbi.com).
+Microsoft Power BI umožňuje snadno generovat výkonné sestavy z databází SQL DB pomocí Power BI Desktopu a potom je publikovat na stránku [https://www.powerbi.com](https://www.powerbi.com).
 
 Tento článek obsahuje podrobný návod, jak se připojit k databázi SQL Database služby Azure Blockchain Workbench z Power BI Desktopu, vytvořit sestavu a nasadit ji na stránku powerbi.com.
 

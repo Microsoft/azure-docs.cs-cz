@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e4a86585fbf1e00512e9e8e111a9a259663f8a26
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058051"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536774"
 ---
 # <a name="tpm-attestation"></a>Osvědčení TPM
 
 IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, který použijete ke konfiguraci plně automatizované zřizování zařízení pro určité Centrum IoT. Ve službě Device Provisioning Service můžete zřizovat miliony zařízení bezpečným způsobem.
 
-Tento článek popisuje postup ověření identity, při použití [TPM](./concepts-device.md). TPM zkratka Trusted Platform Module a k typu modulu hardwarového zabezpečení (HSM). Tento článek předpokládá používáte samostatné, firmwaru, nebo integrované čipu TPM. Software emulované čipy TPM se dobře hodí pro vytváření prototypů nebo testování, ale se nebude poskytovat stejnou úroveň zabezpečení jako samostatné, firmwaru, nebo proveďte integrované čipy TPM. Nedoporučujeme používání softwaru čipy TPM v produkčním prostředí. Další informace o typech čipy TPM, najdete v části [A stručný úvod do čipu TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+Tento článek popisuje postup ověření identity, při použití [TPM](./concepts-device.md). TPM zkratka Trusted Platform Module a k typu modulu hardwarového zabezpečení (HSM). Tento článek předpokládá používáte samostatné, firmwaru, nebo integrované čipu TPM. Software emulované čipy TPM se dobře hodí pro vytváření prototypů nebo testování, ale se nebude poskytovat stejnou úroveň zabezpečení jako samostatné, firmwaru, nebo proveďte integrované čipy TPM. Nedoporučujeme používání softwaru čipy TPM v produkčním prostředí. Další informace o typech čipy TPM, najdete v části [A stručný úvod do čipu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
 Tento článek platí pouze pro zařízení TPM 2.0 pomocí HMAC podporu klíčů a jejich ověřovací klíče. Není pro zařízení pomocí certifikátů X.509 pro ověřování. Čip TPM je globální standard ISO od Trusted Computing Group a další informace o čipu TPM v [kompletní specifikace TPM 2.0](https://trustedcomputinggroup.org/tpm-library-specification/) nebo [specifikace ISO/IEC 11889](https://www.iso.org/standard/66510.html). Tento článek také předpokládá, že máte zkušenosti s párů veřejných a privátních klíčů a jak se používají pro šifrování.
 
@@ -35,7 +35,7 @@ Po nastavení zařízení a připravené k použití, bude mít EK a SRK k dispo
 
 ![Převzetí vlastnictví čip TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-OneNote na převzetí vlastnictví čipu TPM: převzetí vlastnictví čip TPM závisí na mnoha faktorech, včetně výrobce čipu TPM, sadu nástrojů pro TPM se používají a operační systém zařízení. Postupujte podle pokynů relevantní pro váš systém převzít vlastnictví.
+OneNote na převzetí vlastnictví čipu TPM: Převzetí vlastnictví čip TPM závisí na mnoha faktorech, včetně výrobce čipu TPM, sadu nástrojů pro TPM se používají a operační systém zařízení. Postupujte podle pokynů relevantní pro váš systém převzít vlastnictví.
 
 Služby Device Provisioning Service používá veřejnou část EK (EK_pub) k identifikaci a registrace zařízení. Výrobce zařízení můžete přečíst EK_pub při výrobě nebo konečné testování a nahrát EK_pub ke službě zřizování tak, aby zařízení bude rozpoznán, když se připojuje ke zřízení. Služby Device Provisioning nekontroluje SRK nebo vlastník, takže "vymazání" čipu TPM vymaže zákaznická data, ale klíče (a další data dodavatele) je zachována a zařízení bude stále rozpoznán ve službě Device Provisioning při připojení ke zřízení.
 

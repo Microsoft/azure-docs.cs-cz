@@ -11,22 +11,22 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: d663a63f82878163fa2db562906edad910498be5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008759"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767257"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>Správa svazků s použitím Azure souborů NetApp
 Svazku můžete spravovat pomocí zobrazení, aktualizaci nebo odstraňování svazku. 
 
 Pokud chcete odstranit svazek, musíte nejprve odstranit všechny dílčí objekty svazku. 
 
-1.  Klikněte na tlačítko **svazky** okna v okně spravovat fondy kapacity. 
+1.  Klikněte na okno **Svazky** v okně Spravovat fondy kapacity. 
 2.  Použití **procházet svazky** zobrazení vůči zobrazení, aktualizovat nebo odstranit existující svazky. 
 
 

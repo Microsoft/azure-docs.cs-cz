@@ -7,12 +7,12 @@ ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9d80eddffaf376b6f6f0090dce74a4884b291531
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: de67ca0c209f9a61b00c5451a27a1198d0de3724
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405525"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532899"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Jak zabezpečit přístup ke katalogu dat a datových assetů
 > [!IMPORTANT]
@@ -23,7 +23,7 @@ Azure Data Catalog umožňuje určit, kdo má přístup k katalogu dat a jaké o
 ## <a name="catalog-users-and-permissions"></a>Uživatelé katalogu a oprávnění
 Zadejte uživatele nebo skupinu přístup ke katalogu dat a nastavení oprávnění:
 
-1. Na [domovskou stránku služby data catalog](http://www.azuredatacatalog.com), klikněte na tlačítko **nastavení** na panelu nástrojů.
+1. Na [domovskou stránku služby data catalog](https://www.azuredatacatalog.com), klikněte na tlačítko **nastavení** na panelu nástrojů.
 
     ![data catalog – nastavení](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. Na stránce nastavení, rozbalte **uživatelé katalogu** oddílu.

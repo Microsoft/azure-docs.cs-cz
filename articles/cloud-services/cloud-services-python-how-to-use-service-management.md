@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782960"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531827"
 ---
 # <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
 Tento průvodce vám ukáže, jak programově provést běžné úkoly správy služeb z Pythonu. **ServiceManagementService** třídy v [sady Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k většině funkcí služeb souvisejících se správou, které jsou dostupné v [Azure portál][management-portal]. Tato funkce slouží k vytvoření, aktualizace a odstranění cloudové služby, nasazení, služeb správy dat. a virtuální počítače. Tato funkce může být užitečné při vytváření aplikace, které potřebují programový přístup ke správě služby.
@@ -44,7 +44,7 @@ Pro připojení ke koncovému bodu správy služby, budete potřebovat ID vašeh
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Certifikáty pro správu na Windows/Mac/Linux (OpenSSL)
-Můžete použít [OpenSSL](http://www.openssl.org/) k vytvoření certifikátu pro správu. Je nutné vytvořit dva certifikáty, jeden pro server ( `.cer` soubor) a jeden pro klienta ( `.pem` souboru). Chcete-li vytvořit `.pem` souboru, spusťte:
+Můžete použít [OpenSSL](https://www.openssl.org/) k vytvoření certifikátu pro správu. Je nutné vytvořit dva certifikáty, jeden pro server ( `.cer` soubor) a jeden pro klienta ( `.pem` souboru). Chcete-li vytvořit `.pem` souboru, spusťte:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
@@ -52,7 +52,7 @@ Chcete-li vytvořit `.cer` certifikátu, spusťte:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Další informace o certifikátech pro Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci na [ http://www.openssl.org/docs/apps/openssl.html ](http://www.openssl.org/docs/apps/openssl.html).
+Další informace o certifikátech pro Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci na [ https://www.openssl.org/docs/apps/openssl.html ](https://www.openssl.org/docs/apps/openssl.html).
 
 Po vytvoření tyto soubory nahrát `.cer` souboru do Azure. V [webu Azure portal][management-portal]na **nastavení** kartu, vyberte možnost **nahrát**. Všimněte si, kam jste uložili `.pem` souboru.
 
@@ -399,8 +399,8 @@ Další informace o tom, jak zachytit virtuální počítač s Linuxem v modelu 
 
 Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení classic, najdete v článku [zachytit virtuální počítač s Windows](../virtual-machines/windows/classic/capture-image-classic.md).
 
-## <a name="What's Next"> </a>Další kroky
-Teď, když jste se naučili základy správy služeb, dostanete [úplné rozhraní API v dokumentaci sady Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) a provádět složité úlohy snadno ke správě vaší aplikace v Pythonu.
+## <a name="What's Next"></a>Další kroky
+Teď, když jste se naučili základy správy služeb, dostanete [úplné rozhraní API v dokumentaci sady Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) a provádět složité úlohy snadno ke správě vaší aplikace v Pythonu.
 
 Další informace naleznete ve [Středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).
 
@@ -423,7 +423,7 @@ Další informace naleznete ve [Středisku pro vývojáře Python](https://azure
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
 [cloud service]:/azure/cloud-services/

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: bccf12c4e0614ec02414001ab7cf3c4b7f189e65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c682d35872587aa238ca9d76ade3d58654963628
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455996"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551734"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
-Spouštějte paralelní úlohy v jazyce R ve velkém měřítku pomocí [doAzureParallel](http://www.github.com/Azure/doAzureParallel), nenáročného balíčku v jazyce R, který umožňuje použití služby Azure Batch přímo z relace jazyka R. Balíček doAzureParallel je nástavbou oblíbených balíčků R [foreach](http://cran.r-project.org/web/packages/foreach/index.html). Balíček doAzureParallel přenáší každou iteraci do smyčky foreach a odesílá ji jako úlohu služby Azure Batch.
+Spouštějte paralelní úlohy v jazyce R ve velkém měřítku pomocí [doAzureParallel](https://www.github.com/Azure/doAzureParallel), nenáročného balíčku v jazyce R, který umožňuje použití služby Azure Batch přímo z relace jazyka R. Balíček doAzureParallel je nástavbou oblíbených balíčků R [foreach](https://cran.r-project.org/web/packages/foreach/index.html). Balíček doAzureParallel přenáší každou iteraci do smyčky foreach a odesílá ji jako úlohu služby Azure Batch.
 
 V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě Azure Batch paralelní úlohu v jazyce R přímo v řešení RStudio. Získáte informace o těchto tématech:
  
@@ -45,7 +45,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalace balíčku doAzureParallel
 
-V konzole RStudio nainstalujte [balíček doazureparallel z Githubu](http://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
+V konzole RStudio nainstalujte [balíček doazureparallel z Githubu](https://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
 
 ```R
 # Install the devtools package  

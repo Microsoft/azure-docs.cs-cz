@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e52cf99e3bdd1960ca361ccde50d85dfaa2209c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294029"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544916"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream data z Azure Storage Blob do služby Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se dozvíte, jak pomocí Azure Data Lake Storage Gen1 jako výstup pro úlohu Azure Stream Analytics. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage blob (vstup) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -106,7 +106,7 @@ Začněte vytvořením úlohy Stream Analytics, která obsahuje vstupní zdroj a
 
     Klikněte na tlačítko **Start** spustíte úlohu. To může trvat až několik minut na spuštění úlohy.
 
-3. K aktivaci úlohy pro výběr data z objektu blob, zkopírujte ukázkový datový soubor do kontejneru objektů blob. Můžete získat soubor ukázkových dat z [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Pro účely tohoto kurzu, můžeme zkopírovat soubor **vehicle1_09142014.csv**. Můžete použít různé klienty, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/), jak nahrát data do kontejneru objektů blob.
+3. K aktivaci úlohy pro výběr data z objektu blob, zkopírujte ukázkový datový soubor do kontejneru objektů blob. Můžete získat soubor ukázkových dat z [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Pro účely tohoto kurzu, můžeme zkopírovat soubor **vehicle1_09142014.csv**. Můžete použít různé klienty, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/), jak nahrát data do kontejneru objektů blob.
 
 4. Z **přehled** ve skupině **monitorování**, naleznete v tématu Jak se zpracovávají data.
 

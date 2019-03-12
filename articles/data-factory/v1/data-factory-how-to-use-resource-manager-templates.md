@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 904b5db35281ed07745b33c364c03e3f4c4bfd2b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ca8b3930b9d9f708d83dc760be3ee89737b074dc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449202"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541583"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Použijte šablony k vytvoření entity služby Azure Data Factory
 > [!NOTE]
@@ -59,7 +59,7 @@ Následující části obsahují podrobné informace o definování prostředky 
 Nejvyšší úrovně šablonu pro definování datové továrny je:
 
 ```JSON
-"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 "contentVersion": "1.0.0.0",
 "parameters": { ...
 },

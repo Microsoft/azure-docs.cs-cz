@@ -3,7 +3,7 @@ title: Kurz – Azure Virtual Machines – skupin dostupnosti pro SQL Server | D
 description: Tento kurz ukazuje, jak vytvořit SQL Server vždy skupinu dostupnosti v Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 61a05f912e8b8e0b954dc43faeb7d6e35a08b657
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9242edb8ea08b858ae6ad092f4d855483e72d0bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820140"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777460"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
 Tento kurz ukazuje, jak vytvořit SQL Server vždy skupinu dostupnosti v Azure Virtual Machines. Úplný kurz vytvoří skupinu dostupnosti u repliky databáze na dva servery SQL.
 

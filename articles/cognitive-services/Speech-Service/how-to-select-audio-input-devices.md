@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594079"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550668"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Vyberte vstupní zvukové zařízení se sadou SDK pro řeč
 
@@ -223,7 +223,7 @@ Ukázka zařízení je ID `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4
 
 ID zařízení jsou vybrány pomocí standardní ALSA v ID zařízení.
 ID připojené k systému vstupy jsou obsaženy ve výstupu příkazu `arecord -L`.
-Alternativně je možné je získat pomocí [knihovny jazyka C ALSA](http://www.alsa-project.org/alsa-doc/alsa-lib/).
+Alternativně je možné je získat pomocí [knihovny jazyka C ALSA](https://www.alsa-project.org/alsa-doc/alsa-lib/).
 Ukázka ID jsou `hw:1,0` a `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Zvukové zařízení ID v systému macOS

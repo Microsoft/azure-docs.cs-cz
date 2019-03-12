@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 35fc7b2c713f8d4b88f4a44d9ddef5d92ba4c402
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bc9d6f8f078860000d7a2a38bf4aa1ce00ff450e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294309"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533438"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Data z Azure Data Lake Storage Gen1 v registru ve službě Azure Data Catalog
 V tomto článku se dozvíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog zjistitelnost vašich dat v organizaci pomocí integrace s katalogem Data Catalog. Další informace o vytváření katalogu dat, naleznete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Scénáře, ve které můžete použít katalog dat najdete v tématu [běžné scénáře Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -29,7 +29,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 * **Povolení předplatného Azure** pro Data Lake Storage Gen1. Viz [pokyny](data-lake-store-get-started-portal.md).
 * **Účet Data Lake Storage Gen1**. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md). Pro účely tohoto kurzu, vytvořit účet Data Lake Storage Gen1 s názvem **datacatalogstore**.
 
-    Jakmile vytvoříte účet, do něj nahrát ukázkovou datovou sadu. Pro účely tohoto kurzu, dejte nám nahrát soubor CSV v části **AmbulanceData** složky [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Můžete použít různé klienty, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/), jak nahrát data do kontejneru objektů blob.
+    Jakmile vytvoříte účet, do něj nahrát ukázkovou datovou sadu. Pro účely tohoto kurzu, dejte nám nahrát soubor CSV v části **AmbulanceData** složky [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Můžete použít různé klienty, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/), jak nahrát data do kontejneru objektů blob.
 * **Azure Data Catalog**. Vaše organizace musí už mít službu Azure Data Catalog pro vaši organizaci vytvořený. Pro každou organizaci je povolen pouze jeden katalog.
 
 ## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Data Lake Storage Gen1 zaregistrovat jako zdroj pro službu Data Catalog

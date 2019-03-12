@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 98ca3478c3a8963c3bf57143354340d6ed14900e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 03/06/2019
+ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594334"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549914"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -26,6 +26,7 @@ Možnost nasazení Managed Instance poskytuje vysokou kompatibilitu díky místn
 ![Migrace](./media/sql-database-managed-instance/migration.png)
 
 Protože stále existují určité rozdíly v syntaxi a chování, tento článek shrnuje a popisuje tyto rozdíly. <a name="Differences"></a>
+
 - [Dostupnost](#availability) včetně rozdílů v [vždy na](#always-on-availability) a [zálohy](#backup),
 - [Zabezpečení](#security) včetně rozdílů v [auditování](#auditing), [certifikáty](#certificates), [pověření](#credential), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [Přihlášení / uživatelé](#logins--users), [klíče a hlavní klíč služby služby](#service-key-and-service-master-key),
 - [Konfigurace](#configuration) včetně rozdílů v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [kolace](#collation), [úrovně kompatibility](#compatibility-levels),[databáze zrcadlení](#database-mirroring), [volby databáze](#database-options), [agenta systému SQL Server](#sql-server-agent), [možnosti tabulky](#tables),
@@ -61,10 +62,16 @@ Spravované instance mají automatické zálohování a povolí uživatelům vyt
 Omezení:  
 
 - Managed instance, můžete zálohovat databázi instance pro zálohy s až 32 pruhy, což je dostatečná pro databáze až do 4 TB, pokud se používá komprese záloh.
-- Maximální velikost záložního stripe je 195 GB (objekt blob maximální velikost). Zvýšíte počet pruhy v příkazu backup můžete snižovat velikost jednotlivých stripe a zůstat v rámci tohoto limitu.
+- Maximální počet záloh stripe velikost pomocí `BACKUP` příkaz ve spravované instanci je 195 GB (objekt blob maximální velikost). Zvýšíte počet pruhy v příkazu backup můžete snižovat velikost jednotlivých stripe a zůstat v rámci tohoto limitu.
 
-> [!TIP]
-> Obejít tato omezení on-premises zálohování `DISK` místo zálohování `URL`, nahrát záložní soubor do objektu blob a potom obnovit. Podporuje větší soubory obnovte, protože se používá typ jiný objektu blob.  
+    > [!TIP]
+    > Toto omezení obejít, při zálohování databáze z SQL Server v místním prostředí nebo na virtuálním počítači, máte následující:
+    >
+    > - Zálohování na `DISK` místo zálohování `URL`
+    > - Nahrání záložních souborů do úložiště objektů Blob
+    > - Obnovit do spravované instance
+    >
+    > `Restore` Příkaz ve spravované instance podporuje větší velikosti objektu blob v záložní soubory, protože typ jiný objektu blob se používá pro ukládání nahraného záložní soubory.
 
 Informace o zálohách pomocí jazyka T-SQL najdete v tématu [zálohování](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
@@ -125,44 +132,51 @@ Managed Instance nemají přístup k souborům, takže zprostředkovatelé krypt
 
 - Vytvoření přihlášení SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, a `FROM SID` jsou podporovány. Zobrazit [vytvořit přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory (Azure AD) server objekty zabezpečení (přihlášení) vytvořené pomocí [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) syntaxe nebo [vytvořit uživatele z přihlášení [přihlášení k Azure AD]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) syntaxe jsou podporovány (**ve verzi public preview** ). Jedná se o přihlášení, které jsou vytvářeny na úrovni serveru.
-    - Spravovaná Instance podporuje objekty zabezpečení databáze služby Azure AD se syntaxí `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Toto je také označovaný jako databázi uživatelů Azure AD, které jsou obsažené.
+
+    Spravovaná Instance podporuje objekty zabezpečení databáze služby Azure AD se syntaxí `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Toto je také označovaný jako databázi uživatelů Azure AD, které jsou obsažené.
+
 - Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány. Pomocí přihlašovacích údajů Azure Active Directory a uživatelů.
 - Obsahuje uživatele Azure AD, který vytvořil instanci [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
 - Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... Z EXTERNÍHO POSKYTOVATELE](sql-database-manage-logins.md#non-administrator-users).
 - Azure AD objekty serveru (přihlášení) podporují funkce SQL v rámci pouze jednoho MI instance. Funkce, které vyžadují různé instance interakce, bez ohledu na to, pokud v rámci stejné služby Azure AD tenant nebo jiného tenanta se nepodporuje pro uživatele Azure AD. Mezi tyto funkce patří:
-    - Transakční replikace SQL a
-    - Propojit Server
+
+  - Transakční replikace SQL a
+  - Propojit Server
+
 - Nastavení přihlášení Azure AD mapované na skupiny Azure AD, vlastník databáze není podporován.
 - Je podporováno zosobnění hlavních účtů na úrovni serveru služby Azure AD pomocí další hlavní služby Azure AD, jako [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) klauzuli. SPUŠTĚNÍ jako omezení:
-    - Když název se liší od přihlašovací jméno se pro uživatelů Azure AD nepodporuje EXECUTE AS USER. Například při vytvoření uživatele pomocí syntaxe přihlášení vytvořit uživatele [myAadUser] z [john@contoso.com], a dojde k pokusu o zosobnění prostřednictvím EXEC AS USER = _myAadUser_. Při vytváření **uživatele** z Azure AD server instančního objektu (přihlášení), zadejte uživatelské_jméno jako stejný login_name z **přihlášení**.
-    - Pouze SQL serverové objekty zabezpečení (přihlašovací údaje), které jsou součástí `sysadmin` role můžete provádět následující operace cílení na objekty zabezpečení Azure AD: 
-        - SPUŠTĚNÍ JAKO UŽIVATEL
-        - SPUSTIT JAKO PRO PŘIHLÁŠENÍ
+
+  - Když název se liší od přihlašovací jméno se pro uživatelů Azure AD nepodporuje EXECUTE AS USER. Například při vytvoření uživatele pomocí syntaxe přihlášení vytvořit uživatele [myAadUser] z [john@contoso.com], a dojde k pokusu o zosobnění prostřednictvím EXEC AS USER = _myAadUser_. Při vytváření **uživatele** z Azure AD server instančního objektu (přihlášení), zadejte uživatelské_jméno jako stejný login_name z **přihlášení**.
+  - Pouze SQL serverové objekty zabezpečení (přihlašovací údaje), které jsou součástí `sysadmin` role můžete provádět následující operace cílení na objekty zabezpečení Azure AD:
+
+    - SPUŠTĚNÍ JAKO UŽIVATEL
+    - SPUSTIT JAKO PRO PŘIHLÁŠENÍ
+
 - **Ve verzi Public preview** omezení pro objekty zabezpečení serveru Azure AD (přihlášení):
-    - Active Directory správce omezení pro spravovanou instanci:
-        - Správce služby Azure AD použít ke konfiguraci spravované instanci nelze použít k vytvoření Azure AD objekt zabezpečení serveru (přihlášení) v rámci Managed Instance. Je nutné vytvořit první Azure AD objekt zabezpečení serveru (přihlášení) pomocí účtu systému SQL Server, který je `sysadmin`. Jedná se o dočasné omezení, která bude odebrána po zavedení všeobecné dostupnosti budou objekty serveru Azure AD (přihlášení) Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se následující chyba: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - V současné době musí první přihlášení k Azure AD vytvoří v hlavní databázi vytvořit standardní účet systému SQL Server (bez Azure AD), který je `sysadmin` pomocí [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) z EXTERNÍHO poskytovatele. Příspěvek GA, toto omezení budou odebrány a počáteční přihlášení k Azure AD lze vytvořit pomocí Správce Active Directory pro spravovanou instanci.
+
+  - Active Directory správce omezení pro spravovanou instanci:
+
+    - Správce služby Azure AD použít ke konfiguraci spravované instanci nelze použít k vytvoření Azure AD objekt zabezpečení serveru (přihlášení) v rámci Managed Instance. Je nutné vytvořit první Azure AD objekt zabezpečení serveru (přihlášení) pomocí účtu systému SQL Server, který je `sysadmin`. Jedná se o dočasné omezení, která bude odebrána po zavedení všeobecné dostupnosti budou objekty serveru Azure AD (přihlášení) Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se následující chyba: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - V současné době musí první přihlášení k Azure AD vytvoří v hlavní databázi vytvořit standardní účet systému SQL Server (bez Azure AD), který je `sysadmin` pomocí [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) z EXTERNÍHO poskytovatele. Příspěvek GA, toto omezení budou odebrány a počáteční přihlášení k Azure AD lze vytvořit pomocí Správce Active Directory pro spravovanou instanci.
     - Použít s SQL Server Management Studio (SSMS) nebo SqlPackage DacFx (export a Import) se nepodporuje pro přihlášení Azure AD. Toto omezení se odeberou po zavedení všeobecné dostupnosti budou objekty serveru Azure AD (přihlášení)
     - Objekty zabezpečení serveru Azure AD (přihlášení) pomocí aplikace SSMS
-        - Skriptování přihlášení Azure AD (s použitím libovolné ověřeného přihlášení) se nepodporuje.
-        - IntelliSense nerozpozná **vytvořit z EXTERNÍHO zprostředkovatele přihlášení** příkaz a zobrazí se červené podtržení.
+
+      - Skriptování přihlášení Azure AD (s použitím libovolné ověřeného přihlášení) se nepodporuje.
+      - IntelliSense nerozpozná **vytvořit z EXTERNÍHO zprostředkovatele přihlášení** příkaz a zobrazí se červené podtržení.
+
 - Pouze hlavní přihlášení na úrovni serveru (vytvořený ve spravované instanci procesu zřizování), členové role serveru (`securityadmin` nebo `sysadmin`), nebo dalších přihlášení s oprávněními ALTER ANY LOGIN na úrovni serveru můžete vytvořit server Azure AD objekty zabezpečení (přihlášení) v hlavní databázi pro Managed Instance.
 - Pokud je přihlášení objektu zabezpečení SQL, pouze přihlašovací údaje, které jsou součástí `sysadmin` role může používat příkazu pro vytvoření k vytvoření přihlášení k účtu služby Azure AD.
 - Přihlášení k Azure AD musí být členem skupiny Azure AD v rámci stejného adresáře pro spravované Instance Azure SQL.
 - Azure AD objekty serveru (přihlášení) jsou viditelné v Průzkumníku objektů rovnou začít tématem SSMS 18.0 ve verzi preview 5.
 - Překrývající se objekty serveru Azure AD (přihlášení) pomocí účtu správce Azure AD je povolená. Azure AD objekty serveru (přihlášení) mít přednost před správce Azure AD při určování oprávnění instančního objektu a vztahující se k Managed Instance.
 - Během ověřování následující pořadí se použije k vyřešení ověřování objektu zabezpečení:
+
     1. Pokud účet Azure AD existuje jako přímo připojené k Azure AD objekt zabezpečení serveru (přihlášení) (k dispozici v sys.server_principals jako typ "E"), udělit přístup a použít oprávnění objektu zabezpečení serveru Azure AD (přihlášení).
     2. Pokud účet Azure AD je členem skupiny Azure AD, který je namapovaný na Azure AD objekt zabezpečení serveru (přihlášení) (k dispozici v sys.server_principals psaní "X"), udělit přístup a oprávnění skupiny přihlášení k Azure AD použít.
     3. Pokud účet Azure AD je speciální nakonfigurován portál správce Azure AD pro spravovanou instanci (neexistuje v systémových zobrazeních Managed Instance), použít speciální oprava oprávnění správce služby Azure AD pro spravovanou instanci (režim starší verze).
     4. Pokud účet Azure AD existuje jako přímo namapován na uživatele služby Azure AD v databázi (v sys.database_principals jako typ "E"), udělit přístup a použít oprávnění uživatele databáze služby Azure AD.
     5. Pokud účet Azure AD je členem skupiny Azure AD, který je namapovaný na uživatele služby Azure AD v databázi (v sys.database_principals jako typ "X"), udělit přístup a oprávnění skupiny přihlášení k Azure AD použít.
     6. Pokud dojde Azure AD přihlašovací jméno mapované na uživatelský účet služby Azure AD nebo účet skupiny Azure AD, řešení pro ověřování uživatele, všechna oprávnění z těchto přihlašovacích údajů Azure AD se použijí.
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>Služby a klíče hlavní klíč služby
 
@@ -320,7 +334,6 @@ Managed Instance nemůže přistupovat k sdílených složek a složek Windows, 
 - Pouze `CREATE ASSEMBLY FROM BINARY` je podporována. Zobrazit [vytvořit sestavení z binární](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` is't podporována. Zobrazit [vytvořit sestavení ze souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` nemůže odkazovat na soubory. Zobrazit [změna sestavení](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
 
 ### <a name="dbcc"></a>DBCC
 

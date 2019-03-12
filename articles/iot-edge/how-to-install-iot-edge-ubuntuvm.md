@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 7ff7671425e2a2a5dbebe2d09cadb8ef71bc7c97
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 456f7607786bd674cb6ede78d1164db033605799
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896664"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528826"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu
 
@@ -22,7 +22,7 @@ Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT 
 
 Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky ke spuštění modulu runtime Azure IoT Edge na Ubuntu 16.04 virtuálního počítače s využitím předem nakonfigurovaného [Azure IoT Edge na Ubuntu Azure Marketplace nabídku](http://aka.ms/azure-iot-edge-ubuntuvm). 
+V tomto článku jsou uvedené kroky ke spuštění modulu runtime Azure IoT Edge na Ubuntu 16.04 virtuálního počítače s využitím předem nakonfigurovaného [Azure IoT Edge na Ubuntu Azure Marketplace nabídku](https://aka.ms/azure-iot-edge-ubuntuvm). 
 
 Při prvním spuštění provede Azure IoT Edge na virtuální počítač s Ubuntu předinstalaci nejnovější verzi modulu runtime Azure IoT Edge. Obsahuje také skript, který nastavíme připojovací řetězec a potom restartujte modul runtime, který se dá spouštět vzdáleně prostřednictvím virtuálního počítače Azure pomocí portálu nebo rozhraní příkazového řádku Azure, díky tomu můžete snadno nakonfigurovat a bez spuštění SSH nebo vzdálené připojení zařízení IoT Edge relace plochy. Tento skript počká, dokud klienta IoT Edge je plně nainstalovaná, takže není nutné do vaší automatizace nastavit připojovací řetězec.
 
@@ -60,7 +60,7 @@ Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.0
     1.  Seznam vašich předplatných:
     
        ```azurecli-interactive
-       azure account list --output table
+       az account list --output table
        ```
     
     1.  Kopírování z pole ID předplatného pro předplatné, které chcete použít
@@ -79,7 +79,7 @@ Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.0
 1.  Vytvoření nového virtuálního počítače:
 
     ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+    az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
     ```
 
 1.  Nastavit připojovací řetězec zařízení (provedením [pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](how-to-register-device-cli.md) příručce s postupy, pokud nejste obeznámeni s tímto procesem):

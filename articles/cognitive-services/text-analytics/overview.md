@@ -1,38 +1,43 @@
 ---
-title: Co je Analýza textu?
+title: Co je API pro analýzu textu? – Možnosti –
 titleSuffix: Azure Cognitive Services
-description: Analýza textu ve službě Azure Cognitive Services k analýze mínění, extrakci klíčových frází, rozpoznávání jazyka a spojování entit.
+description: Rozhraní API pro analýzu textu ve službě Azure Cognitive Services pro analýzu mínění, extrakci klíčových frází, rozpoznávání jazyka a propojování entit.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889274"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533234"
 ---
-# <a name="what-is-text-analytics"></a>Co je Analýza textu?
+# <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
 Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje čtyři hlavní funkce: analýzu mínění, extrakci klíčových frází, rozpoznávání jazyka a spojování entit.
 
 Rozhraní API je součástí [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce machine learningu a algoritmů AI v cloudu pro vaše vývojové projekty.
 
-## <a name="capabilities-in-text-analytics"></a>Možnosti služby Analýza textu
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Analýza textu může znamenat různé věci, ale ve službě Cognitive Services poskytuje rozhraní API pro analýzu textu čtyři druhy analýzy, jak je popsáno v následující tabulce.
+Analýza textu může znamenat různé věci, ale ve službě Cognitive Services Text Analytics API poskytuje čtyři druhy analýzy, jak je popsáno níže.
 
-| Operace| Popis | Rozhraní API |
-|-----------|-------------|------|
-|[**Analýza mínění**](how-tos/text-analytics-how-to-sentiment-analysis.md) | Zjistěte, co si vaši zákazníci myslí o vaší značce nebo tématu díky analýze nezpracovaného textu k odhalení signálů pozitivního nebo negativního mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
-|[**Extrakce klíčových frází**](how-tos/text-analytics-how-to-keyword-extraction.md) | Automatická extrakce klíčových frází a rychlé zjištění hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**Rozpoznávání jazyka**](how-tos/text-analytics-how-to-language-detection.md) | Služba rozpozná, v jakém jazyce je vstupní text napsaný a každému odeslanému dokumentu na žádost přiřadí kód jazyka až pro 120 jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**Rozpoznávání entit (Preview)**](how-tos/text-analytics-how-to-entity-linking.md) | Identifikuje a zařadí entity v textu do kategorií jako jsou lidé, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
+## <a name="sentiment-analysis"></a>Analýza mínění
+Použití [analýzu subjektivního hodnocení](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+Automaticky [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) rychle identifikovat hlavní body. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) zde rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+
+## <a name="language-detection"></a>Rozpoznávání jazyka
+Je možné [rozpoznat jazyk, který vstupní text je napsaný v](how-tos/text-analytics-how-to-language-detection.md) a tvorba sestav jeden jazyk kódu pro každý dokument podání žádosti o až 120 jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+
+## <a name="entity-recognition-preview"></a>Rozpoznávání entit (Preview)
+[Identifikujte a kategorizaci entity](how-tos/text-analytics-how-to-entity-linking.md) text jako lidech, místech, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) rozhraní API.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
@@ -80,18 +85,10 @@ Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyj
 
 ## <a name="next-steps"></a>Další postup
 
-Nejprve zkuste [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Můžete vložit textový vstup (maximálně 5 120 znaků) Chcete-li zjistit jazyk (až 120), vypočítat skóre mínění nebo extrahovat klíčové fráze. Registrace není potřeba.
-
-Jakmile budete připraveni volat rozhraní API přímo:
-
 + [Zaregistrujte se](how-tos/text-analytics-how-to-signup.md) pro přístupový klíč a projděte si kroky pro [volání rozhraní API](how-tos/text-analytics-how-to-call-api.md).
 
-+ [Rychlý start](quickstarts/csharp.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu.
++ [Rychlý start](quickstarts/csharp.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu. Pokud dáváte přednost, můžete začít s [rychlý start Python](quickstarts/python.md) místo.
 
-+ [Referenční dokumentace k rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) obsahuje technickou dokumentaci k rozhraním API. Dokumentace podporuje vložená volání, takže můžete volat rozhraní API z každé stránky dokumentace.
++ Podrobněji trochu blíže se seznámíte s tím [kurz analýzy subjektivního hodnocení](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) pomocí Azure Databricks.
 
-+ [Externí obsah a obsah vytvořený komunitou](text-analytics-resource-external-community.md) obsahuje seznam blogových příspěvků a videí, které ukazují, jak používat službu Analýza textu s dalšími nástroji a technologiemi.
-
-## <a name="see-also"></a>Další informace najdete v tématech
-
- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
++ Projděte si náš seznam blogových příspěvků a další videa o tom, jak použít rozhraní Text Analytics API s ostatními nástroji a technologiemi v našich [externí & obsah vytvořený komunitou stránky](text-analytics-resource-external-community.md).

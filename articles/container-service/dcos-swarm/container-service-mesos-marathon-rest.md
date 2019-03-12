@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec264eb31bd1243f683ab99bf19b871b08253ef7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991708"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532390"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(NEPOUŽÍVANÉ) Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
 
@@ -191,6 +191,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o koncových bodech Mesos HTTP](http://mesos.apache.org/documentation/latest/endpoints/)
+* [Další informace o koncových bodech Mesos HTTP](https://mesos.apache.org/documentation/latest/endpoints/)
 * [Další informace o rozhraní API REST systému Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

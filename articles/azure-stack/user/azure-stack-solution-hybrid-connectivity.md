@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752655"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546717"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Kurz: Konfigurace připojení k hybridní cloud s Azure a Azure Stack
 
@@ -119,7 +119,7 @@ Následujícím postupem vytvoření virtuální sítě pomocí portálu. Může
 
 Vytvoření virtuální sítě v Azure:
 
-1. Pomocí svého prohlížeče pro připojení k [webu Azure portal](http://portal.azure.com/) a přihlaste se pomocí svého účtu Azure.
+1. Pomocí svého prohlížeče pro připojení k [webu Azure portal](https://portal.azure.com/) a přihlaste se pomocí svého účtu Azure.
 2. Vyberte **vytvořit prostředek**. V **Hledat na marketplace** zadejte `virtual network`". Najít **virtuální síť** v seznamu výsledků a pak vyberte **virtuální sítě**.
 3. Z **vybrat model nasazení** vyberte **Resource Manageru**a pak vyberte **vytvořit**.
 4. Na **vytvořit virtuální síť**, nakonfigurujte nastavení virtuální sítě. Povinná pole názvy mají předponu červenou hvězdičkou.  Při zadání platnou hodnotu hvězdičky se změní na zelená značka zaškrtnutí.
@@ -132,7 +132,7 @@ Vytvoření virtuální sítě ve službě Azure Stack:
 
 Před připojením virtuální sítě k bráně, je potřeba vytvořit podsíť brány pro virtuální síť, kterou chcete připojit k. Služby brány používají IP adresy, kterou zadáte v podsíti brány.
 
-V [webu Azure portal](http://portal.azure.com/), přejděte na virtuální síť Resource Manageru, kde chcete vytvořit bránu virtuální sítě.
+V [webu Azure portal](https://portal.azure.com/), přejděte na virtuální síť Resource Manageru, kde chcete vytvořit bránu virtuální sítě.
 
 1. Vyberte virtuální síť a otevřete **virtuální síť** stránky.
 2. V **nastavení**vyberte **podsítě**.

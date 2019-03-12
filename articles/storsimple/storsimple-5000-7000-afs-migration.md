@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 9992faa11585d49d3024e00338b4c1dc09da9195
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730164"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726664"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
@@ -87,7 +87,7 @@ Proveďte následující kroky pro migraci Windows sdílené nakonfigurované na
     Tento krok přeskočit a přejít k dalšímu kroku, pokud používáte jiného hostitele Windows serveru. Pokud používáte stejný souborový Server Windows pro AFS, nastane nyní pár minut prostojů. 
     - **Výpadek nastane** – odstranit koncový bod serveru, který jste vytvořili v *krok 1F*. 
     - Vytvořte nový koncový bod serveru se cesta kde chcete data uložená směrem vpřed.
-    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění. -  **Výpadek skončí**.
+    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění. - **Výpadek skončí**.
 5.  Pokud používáte jiný souborový Server Windows pro Azure File Sync, nebude docházet žádné výpadky. 
     - Přidáte jiný koncový bod serveru se cesta k místní úložiště, které jsou připravené k použití jako mezipaměť namísto zařízení StorSimple. 
     - Budete moci zobrazit soubory do nového serveru během několika minut. Můžete libovolně udělovat ulehčili přechod z vašeho zařízení StorSimple do tohoto nového umístění v hostiteli v každém okamžiku.

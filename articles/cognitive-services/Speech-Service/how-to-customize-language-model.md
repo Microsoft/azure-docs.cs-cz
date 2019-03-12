@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878676"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548485"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -59,7 +59,7 @@ Následující tabulka obsahuje souhrn hlavních požadavků na jazyková data.
 | Počet promluv na řádek | 1 |
 | Maximální velikost souboru | 1,5 GB |
 | Poznámky | Neopakujte znaky více než čtyřikrát, například aaaaa.|
-| Poznámky | Žádné speciální znaky jako \t ani žádné jiné znaky UTF-8 s vyšší hodnotou než U+00A1 v [tabulce znaků Unicode](http://www.utf8-chartable.de/)|
+| Poznámky | Žádné speciální znaky jako \t ani žádné jiné znaky UTF-8 s vyšší hodnotou než U+00A1 v [tabulce znaků Unicode](https://www.utf8-chartable.de/)|
 | Poznámky | identifikátory URI se také zamítnou, protože identifikátor URI není možné jednoznačně vyslovit|
 
 Text se při importu normalizuje, aby ho systém mohl zpracovat. Existuje však několik důležitých normalizací, které musí provést uživatel _před_ nahráním dat. Informace o tom, jak určit vhodný jazyk, který se použije při přípravě jazykových dat, najdete v [pokynech pro přepis](prepare-transcription.md).

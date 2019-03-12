@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328329"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549030"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotaz kontejneru Azure Cosmos
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 Následující dotaz neobsahuje filtr klíče oddílu (`DeviceId`) a distribuuje se do všech oddílů, ve kterém je spuštěn proti index oddílu. Chcete-li spustit dotaz napříč oddíly, nastavte `EnableCrossPartitionQuery` na hodnotu true (nebo `x-ms-documentdb-query-enablecrosspartition`  v rozhraní REST API).
 
-Vlastnost EnablecrossPartitionQuery přijímá hodnotu typu boolean. Pokud je nastavena na hodnotu true, a pokud váš dotaz nemá klíč oddílu, Azure Cosmos DB distribuce dotazu napříč oddíly. Ventilátor navýšení kapacity se provádí pomocí jednotlivých dotazů do všech oddílů. Přečíst výsledky quey, by měly klientské aplikace využívat výsledků FeedResponse a vyhledejte vlastnost ContinuationToken. Číst všechny výsledky, zachovejte iterace na data, dokud token ContinuationToken má hodnotu null. 
+Vlastnost EnableCrossPartitionQuery přijímá hodnotu typu boolean. Pokud je nastavena na hodnotu true, a pokud váš dotaz nemá klíč oddílu, Azure Cosmos DB distribuce dotazu napříč oddíly. Ventilátor navýšení kapacity se provádí pomocí jednotlivých dotazů do všech oddílů. Přečíst výsledky dotazu, by měly klientské aplikace využívat výsledků FeedResponse a vyhledejte vlastnost ContinuationToken. Číst všechny výsledky, zachovejte iterace na data, dokud token ContinuationToken má hodnotu null. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

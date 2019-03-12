@@ -12,51 +12,52 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
-ms.openlocfilehash: aa5f32594c295ab6a8e60af8359370f64f75a72d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967140"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543419"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z několika kontejnerů pomocí Azure Data Factory
 
-Šablona řešení popsaných v tomto článku vám umožní kopírování souborů z více souborů, kontejnerů nebo intervalů mezi úložišti souborů. Například možná chcete migrovat vaše data lake z AWS S3 do Azure Data Lake Store. Nebo možná budete chtít replikovat vše z jednoho účtu Azure Blob Storage do jiného účtu úložiště objektů Blob v Azure. Tato šablona je určená pro tyto případy použití.
+Tento článek popisuje šablonu řešení, která slouží ke kopírování souborů z několika kontejnerů mezi úložišti souborů. Například můžete použít k migraci vaše data lake z AWS S3 do Azure Data Lake Store. Nebo můžete použít šablonu k replikaci vše z jednoho účtu úložiště objektů Blob v Azure do jiné.
 
-Pokud chcete zkopírovat soubory z jedním kontejnerem nebo kontejneru, je výhodnější používat **nástroj pro kopírování dat** vytvoříte kanál s jednou aktivitou kopírování. Tato šablona je vyšší, než budete potřebovat pro tento jednoduchý případ použití.
+> [!NOTE]
+> Pokud chcete zkopírovat soubory z jednoho kontejneru, je výhodnější používat [nástroj pro kopírování dat](copy-data-tool.md) k vytvoření kanálu s aktivitou jedna kopie. Šablony v tomto článku je vyšší, než budete potřebovat pro tohoto jednoduchého scénáře.
 
 ## <a name="about-this-solution-template"></a>O tato šablona řešení
 
-Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiště a poté uložit kopie kontejnerů z úložiště zdroje do cílového úložiště. 
+Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiště. Potom zkopíruje těchto kontejnerů do cílového úložiště.
 
 Šablona obsahuje tři činnosti:
--   A **GetMetadata** aktivity kontrolovat vašeho úložiště zdrojového úložiště a získat seznam kontejnerů.
--   A **ForEach** aktivita k získání seznamu kontejneru z **GetMetadata** aktivity a iterovat přes seznam a každý kontejner předat aktivitě kopírování.
--   A **kopírování** aktivity kopírování všechny kontejnery ze zdrojového úložiště úložiště do cílového úložiště.
+- **GetMetadata** vyhledá vašeho úložiště zdrojového úložiště a získá seznam kontejnerů.
+- **ForEach** získá seznam kontejnerů z **GetMetadata** aktivita Iteruje přes seznam a předá každý kontejner aktivitě kopírování.
+- **Kopírování** zkopíruje všechny kontejnery ze zdrojového úložiště úložiště do cílového úložiště.
 
 Šablona definuje dva parametry:
--   Parametr *cestakezdrojovemusouboru* je cesta k vaší úložiště zdroje dat, kde můžete získat seznam kontejnerů nebo kontejnerů. Ve většině případů cesta je kořenový adresář, který obsahuje více složek kontejneru. Výchozí hodnota tohoto parametru je `/`.
--   Parametr *cestakcilovemusouboru* je cesta kde soubory budou zkopírovány do cílového úložiště. Výchozí hodnota tohoto parametru je `/`.
+- *Cestakezdrojovemusouboru* je cesta zdrojového úložiště dat, kde můžete získat seznam kontejnerů. Ve většině případů cesta je kořenový adresář, který obsahuje více složek kontejneru. Výchozí hodnota tohoto parametru je `/`.
+- *Cestakcilovemusouboru* je cesta kde soubory budou zkopírovány do cílového úložiště. Výchozí hodnota tohoto parametru je `/`.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak použít tuto šablonu řešení
 
-1. Přejděte do šablony **kopírování několika kontejnerů souborů mezi úložišti souborů**a vytvořit **nové připojení** do vašeho úložiště zdrojového úložiště. Zdrojové úložiště úložiště je místo, kam chcete kopírovat soubory z několika kontejnerů nebo kontejnerů.
+1. Přejděte **kopírování několika kontejnerů souborů mezi úložišti souborů** šablony. Vytvoření **nový** připojení k úložišti zdrojového úložiště. Zdrojové úložiště úložiště je, ve které chcete kopírovat soubory z několika kontejnerů z.
 
     ![Vytvoření nového připojení ke zdroji](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
-2. Vytvoření **nové připojení** s vaším úložištěm cílového úložiště.
+2. Vytvoření **nový** připojení k úložišti cílového úložiště.
 
     ![Vytvořit nové připojení k cíli](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Klikněte na tlačítko **pomocí této šablony**.
+3. Vyberte **pomocí této šablony**.
 
     ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
-4. K dispozici v panelu, kanál se zobrazí, jak je znázorněno v následujícím příkladu:
+4. Zobrazí se vám kanálu, jako v následujícím příkladu:
 
     ![Zobrazení kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Klikněte na tlačítko **ladění**, zadejte **parametry** a klikněte na tlačítko **Dokončit**.
+5. Vyberte **ladění**, zadejte **parametry**a pak vyberte **Dokončit**.
 
     ![Spuštění kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 
@@ -66,4 +67,6 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úvod do Azure Data Factory](introduction.md)
+- [Hromadné kopírování databází pomocí ovládacího prvku tabulky s Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+
+- [Kopírování souborů z několika kontejnerů pomocí Azure Data Factory](solution-template-copy-files-multiple-containers.md)

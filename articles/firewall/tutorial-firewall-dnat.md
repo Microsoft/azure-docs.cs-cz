@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582237"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531160"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: Filtrování příchozího provozu pomocí DNAT služby Azure Firewall a webu Azure Portal
 
@@ -37,7 +37,7 @@ V tomto kurzu vytvoříte dvě partnerské virtuální sítě:
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Na domovské stránce webu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na **Přidat**.
 3. Jako **Název skupiny prostředků** zadejte **RG-DNAT-Test**.
 4. V části **Předplatné** vyberte své předplatné.
@@ -152,9 +152,9 @@ Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního poč
    |---------|---------|
    |Název     |FW-DNAT-test|
    |Předplatné     |\<Vaše předplatné\>|
-   |Skupina prostředků     |**Použít existující:** RG-DNAT-Test |
+   |Skupina prostředků     |**Použít existující**: RG-DNAT-Test |
    |Umístění     |Vyberte dříve použité umístění.|
-   |Volba virtuální sítě     |**Použít existující:** VN-Hub|
+   |Volba virtuální sítě     |**Použít existující**: VN-Hub|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
 5. Klikněte na **Zkontrolovat a vytvořit**.
@@ -229,4 +229,4 @@ V tomto kurzu jste se naučili:
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)

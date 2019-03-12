@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 5a9684605de9af1cd9006810d595ae846db01661
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 141859d155383b01cfea998c6b7158848517eac2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975155"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531948"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
 
@@ -23,11 +23,11 @@ Grafana je analytická platforma, která umožňuje dotazování a vizualizace d
 
 Budete potřebovat následující dokončete tento postup:
 
-* [Grafana verze 5.3.0 nebo novější](http://docs.grafana.org/installation/) pro váš operační systém
+* [Grafana verze 5.3.0 nebo novější](https://docs.grafana.org/installation/) pro váš operační systém
 
 * [Průzkumník dat Azure plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) pro Grafana
 
-* Clusteru, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
+* Clusteru, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -51,7 +51,7 @@ Služby můžete vytvořit instanční objekt v [webu Azure portal](#azure-porta
 
     1. V [přiřazení aplikace k roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části, přiřazení role typu **čtečky** ke svému clusteru Průzkumník dat Azure.
 
-    1. V [získání hodnot pro přihlášení](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tématu, zkopírujte tři vlastnosti hodnoty uvedené v krocích: **ID adresáře** (ID tenanta), **ID aplikace**, a  **Heslo**.
+    1. V [získání hodnot pro přihlášení](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tématu, zkopírujte tři vlastnosti hodnoty uvedené v krocích: **ID adresáře** (ID tenanta), **ID aplikace**, a **heslo**.
 
 1. Na webu Azure Portal, vyberte **předplatná** zkopírujte ID předplatného, ve kterém vytvoříte instanční objekt služby.
 
@@ -211,4 +211,4 @@ Nyní jste dokončili konfiguraci Průzkumník dat Azure jako zdroj dat pro Graf
 
 [Psaní dotazů pro Azure Data Explorer](write-queries.md)
 
-[Kurz: Vizualizace počítačových dat z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)
+[Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)

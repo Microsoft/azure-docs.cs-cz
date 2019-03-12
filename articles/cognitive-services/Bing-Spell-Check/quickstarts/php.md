@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: bb952a9169710a7ba8248293e1eab30c7a2da6c0
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: dcec06113c418b6df6beb5473a282f5ffdc2faee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888929"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533608"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý start: Kontrola pravopisu s PHP a rozhraní REST API kontrolu pravopisu Bingu
 
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete provést první volání do rozhraní API Bingu
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [PHP 5.6.x](http://php.net/downloads.php)
+* [PHP 5.6.x](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -70,7 +70,7 @@ $headers = "Content-type: application/x-www-form-urlencoded\r\n" .
     "Ocp-Apim-Subscription-Key: $key\r\n";
 
 // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-// http://php.net/manual/en/function.stream-context-create.php
+// https://php.net/manual/en/function.stream-context-create.php
 $options = array (
     'http' => array (
         'header' => $headers,

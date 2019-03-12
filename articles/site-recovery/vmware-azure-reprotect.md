@@ -1,18 +1,18 @@
 ---
 title: Znovunastavení ochrany virtuálních počítačů z Azure do místní lokality během zotavení po havárii virtuálních počítačů VMware a fyzických serverů | Dokumentace Microsoftu
 description: Po převzetí služeb při selhání do Azure během zotavení po havárii virtuálních počítačů VMware a fyzických serverů zjistěte, jak převzít služby při obnovení z Azure do místní lokality.
-author: rajani-janaki-ram
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: rajanaki
-ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791873"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771805"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure
 
@@ -114,7 +114,6 @@ Všimněte si následujících informací:
 
 ## <a name="common-issues"></a>Běžné problémy
 
-- Site Recovery v současné době podporuje navrácením služeb po obnovení pouze do úložiště dat VMFS nebo síti vSAN. Systému souborů NFS datastore není podporován. Kvůli tomuto omezení vstup výběr úložiště dat na obrazovce operace opětovného zapnutí ochrany je prázdný pro systém souborů NFS úložišť, nebo zobrazuje sítě vSAN úložiště dat, ale selže v průběhu úlohy. Pokud máte v úmyslu navrácení služeb po obnovení, můžete vytvořit místní úložiště dat VMFS a navrácení služeb po obnovení se. Toto navrácení služeb po obnovení způsobí, že úplné stažení VMDK.
 - Je-li provést zjišťování serveru vCenter uživatele jen pro čtení a ochrana virtuálních počítačů, úspěšné ochrany a funguje převzetí služeb při selhání. Během opětovného nastavování ochrany převzetí služeb při selhání se nezdaří, protože úložiště dat nelze zjistit. Příznakem je, že úložiště dat nejsou uvedené během opětovného nastavování ochrany. Chcete-li vyřešit tento problém, můžete aktualizovat přihlašovací údaje vCenter se příslušný účet, který má oprávnění a poté úlohu opakujte. 
 - Při navrácení služeb po obnovení virtuálního počítače s Linuxem a spustíte ji v místním, uvidíte, že byl balíček správce sítě odinstalován z počítače. Tato odinstalace dochází, protože je odebrán balíček správce sítě, při obnovení virtuálního počítače v Azure.
 - Když virtuální počítač s Linuxem je nakonfigurovaný se statickou IP adresou a se převzaly při selhání do Azure, je ze serveru DHCP získali IP adresu. Když převzetí služeb při selhání do místního, bude virtuální počítač dál pro používání protokolu DHCP k získání IP adresy. Ručně se přihlaste k počítači a pak nastavit IP adresu zpět na statickou adresu v případě potřeby. Virtuální počítače s Windows můžete znovu získat jeho statickou IP adresu.

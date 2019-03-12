@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d09abfbec7ace3112de35869ccc95c56e113e6fe
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991831"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549183"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Hodnota Time to live ve službě Azure Cosmos DB 
 
@@ -48,6 +48,6 @@ Odstranění položek podle hodnoty TTL je zdarma. Se neúčtují žádné dalš
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o konfiguraci pro živé dlaždice v těchto článcích:
+Další informace o konfiguraci TTL v následujících článcích:
 
 * [Jak nakonfigurovat TTL](how-to-time-to-live.md)

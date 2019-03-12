@@ -1,5 +1,5 @@
 ---
-title: 'Rozhraní REST API: Operace správy účtů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+title: 'REST API: Operace správy účtů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
 description: Použití Azure Data Lake Storage Gen1 a WebHDFS REST API k provádění operací správy účtů v účtu Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7f22fe7d1c3962e59922bc4e2795ed4f899e3eca
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b2c4d38462cf617d8417b269d47a8c1bb0c266c3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121664"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530113"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operace správy účtů v Azure Data Lake Storage Gen1 pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak provádět operace správy účtů v Azure Dat
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **[cURL](http://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
+* **[cURL](https://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Jak můžu ověřovat pomocí služby Azure Active Directory?
 Ověřování pomocí služby Azure Active Directory můžete provádět dvěma přístupy.

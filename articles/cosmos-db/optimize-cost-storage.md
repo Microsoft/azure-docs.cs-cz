@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 34b151c14323e7ee22c31f22a63b07a0fb18671e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036116"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536211"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizovat náklady na úložiště ve službě Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Azure Cosmos DB očekává, že velikost položky bude 2 MB pro optimální výk
 
 ## <a name="optimize-cost-with-indexing"></a>Optimalizujte náklady s indexování
 
-Ve výchozím nastavení data se automaticky indexován, což může zvýšit celkové úložiště spotřebované. Však můžete uplatnit zásady vlastního indexového omezit tato režie. Automatické indexování, který nebyl byla vyladěný pomocí zásad je přibližně 10 – 20 % velikosti položky. Odebráním nebo přizpůsobení index zásady, neplatíte dodatečné náklady pro zápis a nevyžadují další kapacitu. Zobrazit [indexování ve službě Azure Cosmos DB](indexing-policies.md) nakonfigurovat vlastní zásady indexování. Pokud jste už pracovali s relační databází před, může si myslíte, že "indexování všeho." znamená, že možnost zdvojnásobení úložiště nebo vyšší. Ve službě Azure Cosmos DB, v případě, střední, je však mnohem nižší. Ve službě Azure Cosmos DB nároky na úložiště indexů je obvykle nízké (10-20 %) i s automatické indexování, protože je určená pro nízkou úložiště nároky. Tím, že spravuje zásady indexování, můžete řídit kompromis index nároky na místo a výkonu dotazování umožňujícímu podrobnějšího způsobem.
+Ve výchozím nastavení data se automaticky indexován, což může zvýšit celkové úložiště spotřebované. Však můžete uplatnit zásady vlastního indexového omezit tato režie. Automatické indexování, který nebyl byla vyladěný pomocí zásad je přibližně 10 – 20 % velikosti položky. Odebráním nebo přizpůsobení index zásady, neplatíte dodatečné náklady pro zápis a nevyžadují další kapacitu. Zobrazit [indexování ve službě Azure Cosmos DB](indexing-policies.md) nakonfigurovat vlastní zásady indexování. Pokud jste už pracovali s relační databází před, může si myslíte, že "indexování všeho." znamená, že možnost zdvojnásobení úložiště nebo vyšší. Ve službě Azure Cosmos DB, v případě, střední, je však mnohem nižší. Ve službě Azure Cosmos DB režijní náklady na úložiště indexů je obvykle nízké (10-20 %) i při automatické indexování, protože je určená pro nízkou úložiště nároky. Tím, že spravuje zásady indexování, můžete řídit kompromis index nároky na místo a výkonu dotazování umožňujícímu podrobnějšího způsobem.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizujte náklady s časem a živého kanálu změn
 
@@ -39,7 +39,7 @@ Pokud chcete ukládat bohatý mediální typy, například videa, obrázky, atd.
 
 ## <a name="check-storage-consumed"></a>Zkontrolujte využité úložiště
 
-Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete spustit požadavek HEAD nebo GET ke kontejneru a zkontrolovat `x-ms-request-quota` a `x-ms-request-usage` záhlaví. Můžete také při práci s využitím .net SDK, můžete použít [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), a [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) vlastnosti, které chcete získat využité úložiště.
+Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete spustit požadavek HEAD nebo GET ke kontejneru a zkontrolovat `x-ms-request-quota` a `x-ms-request-usage` záhlaví. Můžete také při práci s využitím .net SDK, můžete použít [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) vlastnosti, které chcete získat využité úložiště.
 
 ## <a name="using-sdk"></a>Pomocí sady SDK
 

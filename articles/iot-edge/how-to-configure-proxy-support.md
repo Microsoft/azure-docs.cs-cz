@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1ad1f34f51adbc177e5b4163d528dbe45ce03af
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339143"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774196"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -25,23 +25,23 @@ Konfigurace zařízení IoT Edge pro práci s proxy serverem zahrnuje následuj�
 1. Nainstalujte modul runtime IoT Edge na zařízení. 
 2. Konfigurace démona Dockeru a proces daemon IoT Edge na zařízení pro použití proxy serveru.
 3. Konfigurace vlastností edgeAgent v souboru config.yaml na vašem zařízení.
-4. Nastavení proměnných prostředí pro modul runtime IoT Edge a dalších IoT Edge moduly v manifestu nasazení. 
+4. Nastavení proměnných prostředí pro modul runtime IoT Edge a dalších IoT Edge moduly v manifestu nasazení.
 
 ## <a name="know-your-proxy-url"></a>Znát adresu URL vašeho proxy serveru
 
-Ke konfiguraci démon Dockeru i IoT Edge na zařízení, musíte znát adresu URL vašeho proxy serveru. 
+Ke konfiguraci démon Dockeru i IoT Edge na zařízení, musíte znát adresu URL vašeho proxy serveru.
 
-Adresy URL proxy serveru provést následující formát: **protokol**://**proxy_host**:**proxy_port**. 
+Adresy URL proxy serveru provést následující formát: **protokol**://**proxy_host**:**proxy_port**.
 
 * **Protokol** HTTP nebo HTTPS. Démon Dockeru můžete použít buď protokol, v závislosti na nastavení registru kontejneru, ale kontejnerů démon a modul runtime IoT Edge by měl vždycky používají protokol HTTPS.
 
-* **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy_host ve formátu **uživatele**:**heslo**@**proxy_host**. 
+* **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy_host ve formátu **uživatele**:**heslo**\@**proxy_host**.
 
-* **Proxy_port** je síťového portu, na kterém proxy serveru reaguje na síťový provoz. 
+* **Proxy_port** je síťového portu, na kterém proxy serveru reaguje na síťový provoz.
 
 ## <a name="install-the-runtime"></a>Nainstalovat modul runtime
 
-Pokud instalujete modul runtime IoT Edge na zařízení s Linuxem, konfigurace Správce balíčků na serveru proxy pro přístup k instalačnímu balíčku. Například [nastavení apt-get pro používání proxy serveru http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Jakmile správce balíčku je nakonfigurovaná, postupujte podle pokynů v [modul runtime nainstalovat Azure IoT Edge v Linuxu (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) nebo [nainstalovat modul runtime Azure IoT Edge v Linuxu (x64)](how-to-install-iot-edge-linux.md) jako obvykle. 
+Pokud instalujete modul runtime IoT Edge na zařízení s Linuxem, konfigurace Správce balíčků na serveru proxy pro přístup k instalačnímu balíčku. Například [nastavení apt-get pro používání proxy serveru http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Jakmile správce balíčku je nakonfigurovaná, postupujte podle pokynů v [modul runtime nainstalovat Azure IoT Edge v Linuxu (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) nebo [nainstalovat modul runtime Azure IoT Edge v Linuxu (x64)](how-to-install-iot-edge-linux.md) jako obvykle.
 
 Pokud instalujete modul runtime IoT Edge na zařízení s Windows, budete muset přejít přes proxy server jednou stáhnout instalační soubor skriptu, pak znovu během instalace nezbytné součásti ke stažení. Můžete nakonfigurovat informace o proxy serveru v nastavení Windows, nebo zahrnout informace o serveru proxy přímo do instalačního skriptu. Následující příkaz powershellu je příkladem systému windows pomocí instalace `-proxy` argument:
 

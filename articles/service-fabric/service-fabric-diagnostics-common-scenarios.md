@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 355b859428712b2e7b086fdfc152044814695b7b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8d6d2d83e24b5e42af5f4322021eebfe9bf09494
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243937"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551232"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
@@ -72,7 +72,7 @@ Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti mon
 
     ```kusto
     ServiceFabricOperationalEvent
-    | where EventID >= 25622 or EventID <= 25626
+    | where EventID >= 25622 and EventID <= 25626
     ```
 
 5. Klikněte na tlačítko "Nové pravidlo výstrahy" v horní části a nyní kdykoli události dorazí na tento dotaz na základě, obdržíte výstrahu zvolenou metodu komunikace.

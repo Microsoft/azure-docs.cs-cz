@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d3152eb4b2512e05cad60772f8c4c75dd929758a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051692"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535569"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použít RDMA nebo GPU instancí ve fondech služby Batch
 
@@ -45,7 +45,7 @@ RDMA nebo GPU možnosti velikosti náročné na výpočetní prostředky ve slu�
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r ND24rs NC24rs_v2 NC24rs_v3,<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, nebo<br/>Založené na centOS HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače Linux RDMA | Komunikace v rámci uzlu povolit, zakázat provedení souběžné úlohy |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, nebo<br/>Založené na centOS HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače Linux RDMA | Komunikace v rámci uzlu povolit, zakázat provedení souběžné úlohy |
 | [Síťový adaptér, řada NCv2, NCv3, NDv2 řady](../virtual-machines/linux/n-series-driver-setup.md) | GPU NVIDIA Tesla (se liší podle řady) | Ubuntu 16.04 LTS, nebo<br/>CentOS 7.3 nebo 7.4<br/>(Azure Marketplace) | NVIDIA CUDA nebo sadu nástrojů CUDA ovladače | neuvedeno | 
 | [NV NVv2 řady](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS, nebo<br/>CentOS 7.3<br/>(Azure Marketplace) | Ovladače NVIDIA GRID | neuvedeno |
 <sup>*</sup>Podporující RDMA velikostí řady N-series také zahrnovat využívá GPU NVIDIA Tesla
@@ -54,7 +54,7 @@ RDMA nebo GPU možnosti velikosti náročné na výpočetní prostředky ve slu�
 
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r ND24rs NC24rs_v2 NC24rs_v3,<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2, nebo<br/>2012 (azure Marketplace) | Microsoft MPI 2012 R2 nebo novější, nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Komunikace v rámci uzlu povolit, zakázat provedení souběžné úlohy |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2, nebo<br/>2012 (azure Marketplace) | Microsoft MPI 2012 R2 nebo novější, nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Komunikace v rámci uzlu povolit, zakázat provedení souběžné úlohy |
 | [Síťový adaptér, NCv2, NCv3, ND, NDv2 řady](../virtual-machines/windows/n-series-driver-setup.md) | GPU NVIDIA Tesla (se liší podle řady) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA nebo sadu nástrojů CUDA ovladače| neuvedeno | 
 | [NV NVv2 řady](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA GRID | neuvedeno |
 <sup>*</sup>Podporující RDMA velikostí řady N-series také zahrnovat využívá GPU NVIDIA Tesla
@@ -100,7 +100,7 @@ Pokud chcete konfigurovat specializované velikost virtuálního počítače pro
 
 Ke spouštění aplikací CUDA v fond uzlů Windows síťovým Adaptérem, musíte nainstalovat ovladače NVDIA GPU. V následujících krocích Ukázka používá balíčku aplikace k instalaci ovladačů NVIDIA GPU. Tuto možnost můžete zvolit, pokud vaše úloha závisí na konkrétní verzi ovladače GPU.
 
-1. Stáhnout instalační balíček ovladače GPU na Windows serveru 2016 z [NVIDIA webu](https://www.nvidia.com/Download/index.aspx) – například [verze 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Uložte soubor místně pomocí krátkého názvu jako *GPUDriverSetup.exe*.
+1. Stáhnout instalační balíček ovladače GPU na Windows serveru 2016 z [NVIDIA webu](https://www.nvidia.com/Download/index.aspx) – například [verze 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Uložte soubor místně pomocí krátkého názvu jako *GPUDriverSetup.exe*.
 2. Vytvořte soubor zip balíčku.
 3. Nahrání balíčku k účtu Batch. Pokyny najdete v tématu [balíčky aplikací](batch-application-packages.md) pokyny. Zadejte id aplikace, například *GPUDriver*a verze, jako *411.82*.
 1. Pomocí rozhraní API služby Batch na webu Azure portal, vytvořte fond v konfiguraci virtuálního počítače s požadovaný počet uzlů a škálování. Následující tabulka uvádí nastavení vzorku instalace ovladačů NVIDIA GPU tiše pomocí spouštěcího úkolu:
@@ -130,7 +130,7 @@ Ke spouštění aplikací CUDA na fondu uzlů Linux NC, budete muset nainstalujt
 | ---- | ---- |
 | **Typ image** | Vlastní image |
 | **Vlastní Image** | *Název bitové kopie* |
-| **SKU agenta uzlu** | batch.Node.Ubuntu 16.04 |
+| **SKU agenta uzlu** | batch.node.ubuntu 16.04 |
 | **Velikost uzlu** | NC6 Standard |
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Příklad: Microsoft MPI ve virtuálním počítači H16r Windows fondu

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313356"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530752"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Upgrade trezoru služby Backup na trezor služby Recovery Services
 
@@ -80,7 +80,7 @@ Skript prostředí PowerShell vás vyzve k zadání přihlašovacích údajů. Z
 ### <a name="pre-requisites-checking"></a>Kontrola požadavků
 Po zadání přihlašovacích údajů Azure, Azure ověří, že vaše prostředí splňuje následující požadavky:
 
-- **Minimální verze agenta** – trezory služby Backup upgradovat na trezory služby Recovery Services vyžaduje agenta MARS na minimální verzi 2.0.9083.0. Pokud máte položky zaregistrované do trezoru služby Backup pomocí agenta starší než 2.0.9083.0 kontrolu požadovaných součástí se nezdaří. Pokud selže kontrola splnění předpokladů, aktualizujte agenta a zkuste upgrade trezoru znovu. Můžete si stáhnout nejnovější verzi agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Minimální verze agenta** – trezory služby Backup upgradovat na trezory služby Recovery Services vyžaduje agenta MARS na minimální verzi 2.0.9083.0. Pokud máte položky zaregistrované do trezoru služby Backup pomocí agenta starší než 2.0.9083.0 kontrolu požadovaných součástí se nezdaří. Pokud selže kontrola splnění předpokladů, aktualizujte agenta a zkuste upgrade trezoru znovu. Můžete si stáhnout nejnovější verzi agenta z [ https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **Konfigurace úlohy probíhající**: Pokud někdo je konfigurace úlohy pro nastavení k upgradu trezoru služby Backup nebo zápis položky, selže kontrola splnění předpokladů. Dokončete konfiguraci, nebo ukončení registrace položky a potom zahájit upgrade trezoru.
 - **Model fakturace založený na úložiště**: Trezory služby Recovery Services podporují model fakturace založený na instancích. Pokud spustíte upgrade trezoru v trezoru služby Backup, která využívá model fakturace založený na úložiště, budete vyzváni k upgradu váš model fakturace spolu s trezoru. V opačném případě můžete aktualizovat váš model fakturace první, a poté spusťte upgrade trezoru.
 - Identifikujte skupinu prostředků pro trezor služby Recovery Services. Abyste mohli využívat funkce nasazení Resource Manageru, je nutné umístit trezor služby Recovery Services ve skupině prostředků. Pokud si nejste jisti, kterou skupinu prostředků chcete použít, zadejte název a procesu upgradu pro vás vytvoří skupinu prostředků. Proces upgradu také přidruží k trezoru novou skupinu prostředků.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 3cd1bbf1852c440172913467c5c8523c520cac2f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337511"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533625"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení účtu fakturační zákaznické smlouvy Microsoft
 
@@ -136,7 +136,7 @@ Následující části obsahují další informace o fakturačním účtu.
 
 ### <a name="no-service-downtime"></a>Žádný výpadek služby
 
-Služby Azure ve vašem předplatném zachovat spuštěna bez výpadku. Jsme pouze přechod fakturační vztah pro vaše předplatná Azure. Nebudou dopad na stávající prostředky, skupiny prostředků nebo skupin pro správu.
+Služby Azure ve vašem předplatném poběží i nadále bez přerušení. Převedeme pouze fakturační vztah pro vaše předplatná Azure. Stávající prostředky, skupiny prostředků ani skupiny pro správu to neovlivní.
 
 ### <a name="user-access-to-azure-resources"></a>Přístup uživatelů k prostředkům Azure
 
@@ -144,7 +144,7 @@ Přístup k prostředkům Azure, která byla nastavena pomocí Azure RBAC (říz
 
 ### <a name="azure-reservations"></a>Azure Reservations
 
-Žádné rezervace Azure v smlouvu Enterprise se přesune do nového fakturačního účtu. Během přechodu nebudou změny slevy rezervace, které se používají pro vaše předplatná.
+Žádné rezervace Azure v smlouvu Enterprise se přesune do nového fakturačního účtu. Během přechodu nedojde k žádným změnám slev za rezervace, které se u vašich předplatných uplatňují.
 
 ### <a name="azure-marketplace-products"></a>Produkty Azure Marketplace
 
@@ -203,7 +203,7 @@ K dokončení instalace, musíte mít přístup k nové fakturační účet a sm
 
 ### <a name="azure-subscriptions"></a>Předplatná Azure
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 
@@ -219,7 +219,7 @@ Předplatná Azure, které jsou přešel ze smlouvu Enterprise k nové fakturač
 
 ### <a name="azure-reservations"></a>Azure Reservations
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 
@@ -239,7 +239,7 @@ Azure rezervace, které jsou přesunuty z smlouva Enterprise Agreement enrollmen
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Přístup k podnikovým správcům na fakturační profil
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 
@@ -255,7 +255,7 @@ Tito správci jsou uvedené jako vlastníky profil při organizace, které jsou 
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Přístup k podnikovým správcům, správcům oddělení a vlastníci účtu v části faktury
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 

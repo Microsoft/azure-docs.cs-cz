@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8b443d0002b600860597710792054e9531b6cc41
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880695"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532898"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: Zřízení serveru Azure Database for MySQL pomocí šablony Azure Resource Manageru
 
@@ -87,8 +87,8 @@ V této žádosti, které je potřeba upravit hodnoty jsou:
 +   `storageProfile/geoRedundantBackup` -Zadejte povolení nebo zakázání v závislosti na požadavcích Geo-DR.
 +   `sku/tier` -Zadejte úroveň Basic, GeneralPurpose nebo MemoryOptimized pro nasazení.
 +   `sku/capacity` -Zadejte kapacity vCore. Možné hodnoty zahrnují 2, 4, 8, 16, 32 nebo 64.
-+   `sku/family` -Zadejte Gen4 nebo Gen5 zvolte generace hardwaru pro nasazení serveru.
-+   `sku/name` -Zadejte TierPrefix_family_capacity. Například B_Gen4_1 GP_Gen5_16, MO_Gen5_32. Zobrazit [cenové úrovně](./concepts-pricing-tiers.md) dokumentaci o platné hodnoty v jedné oblasti a na úroveň.
++   `sku/family` -Zadejte Gen5 zvolit generace hardwaru pro nasazení serveru.
++   `sku/name` -Zadejte TierPrefix_family_capacity. Například B_Gen5_1 GP_Gen5_16, MO_Gen5_32. Zobrazit [cenové úrovně](./concepts-pricing-tiers.md) dokumentaci o platné hodnoty v jedné oblasti a na úroveň.
 +   `resources/properties/virtualNetworkSubnetId` -Zadejte identifikátor Azure v podsíti ve virtuální síti, kam umístit server Azure MySQL. 
 +   `tags(optional)` -Zadat volitelný značky jsou páry klíč-hodnota, které můžete využít ke kategorizaci prostředky pro fakturaci atd.
 
@@ -127,8 +127,8 @@ Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },

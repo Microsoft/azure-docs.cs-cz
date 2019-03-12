@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3689c93c392d910d6b3979291bc5a6c81080418c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233010"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551802"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze služby Salesforce
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Salesforce má omezení pro celkový počet požadavků rozhraní API a souběž
 - Pokud počet souběžných požadavků překročí limit, dojde k omezení šířky pásma a zobrazí se náhodné chyby.
 - Pokud celkový počet požadavků překročí limit, účet služby Salesforce se zablokuje po dobu 24 hodin.
 
-V obou případech může být také zobrazí chyba "REQUEST_LIMIT_EXCEEDED". V části "Rozhraní API omezení počtu požadavků" v [limity pro vývojáře Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) , kde najdete podrobnosti.
+V obou případech může být také zobrazí chyba "REQUEST_LIMIT_EXCEEDED". V části "Rozhraní API omezení počtu požadavků" v [limity pro vývojáře Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) , kde najdete podrobnosti.
 
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z produktu Salesforce pomocí různých nástrojů a rozhraní API.

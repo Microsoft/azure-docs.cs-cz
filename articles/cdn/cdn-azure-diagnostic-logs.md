@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: edb2bbee8df24dc9f9747ff13f5e3526192d91b2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5b80dcfa5cef116bb2558f154a54d343e467ae83
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874014"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546649"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -45,11 +45,13 @@ Následující diagram ukazuje typické CDN core analytics přehled data.
 
 Další informace o diagnostických protokolech najdete v tématu [diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="enable-logging-with-the-azure-portal"></a>Povolit protokolování pomocí webu Azure portal
 
 Postupujte podle těchto kroků povolit protokolování pomocí CDN core analytics:
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com). Pokud není již jste povolili CDN pro pracovní postup [vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md) předtím, než budete pokračovat.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud není již jste povolili CDN pro pracovní postup [vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md) předtím, než budete pokračovat.
 
 1. Na webu Azure Portal, přejděte na **profil CDN**.
 
@@ -168,7 +170,7 @@ Následující příklad ukazuje, jak povolit diagnostické protokoly prostředn
 Tato část popisuje schéma CDN core analytics, jak je uspořádaný v rámci účtu úložiště Azure a poskytuje ukázkový kód pro stahování protokolů v souboru CSV.
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>Pomocí Průzkumníka služby Microsoft Azure Storage
-Pro přístup k základní analytických dat z účtu služby Azure storage, musíte nejdřív nástroj pro přístup k obsahu v účtu úložiště. Na trhu jsou k dispozici několik nástrojů, je ten, který doporučujeme Průzkumníka služby Microsoft Azure Storage. Stáhněte si nástroj, najdete v článku [Průzkumníka služby Azure Storage](http://storageexplorer.com/). Po stažení a instalace softwaru, nakonfigurujte ho na použití stejného účtu úložiště Azure, který byl nakonfigurovaný jako cíl, aby CDN diagnostické protokoly.
+Pro přístup k základní analytických dat z účtu služby Azure storage, musíte nejdřív nástroj pro přístup k obsahu v účtu úložiště. Na trhu jsou k dispozici několik nástrojů, je ten, který doporučujeme Průzkumníka služby Microsoft Azure Storage. Stáhněte si nástroj, najdete v článku [Průzkumníka služby Azure Storage](https://storageexplorer.com/). Po stažení a instalace softwaru, nakonfigurujte ho na použití stejného účtu úložiště Azure, který byl nakonfigurovaný jako cíl, aby CDN diagnostické protokoly.
 
 1.  Otevřít **Průzkumníka služby Microsoft Azure Storage**
 2.  Najděte účet úložiště
@@ -225,11 +227,11 @@ Pokud chcete používat Azure Monitor, je nutné [povolit protokolování](#enab
 
 Data můžete zobrazit v různých způsobů, jak pomocí řešení pro správu. Můžete získat z řešení pro správu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Řešení pro správu můžete nainstalovat z webu Azure marketplace výběrem **získat** odkaz na konci každé řešení.
+Monitorování řešení můžete nainstalovat z webu Azure marketplace výběrem **získat** odkaz na konci každé řešení.
 
-### <a name="add-a-azure-monitor-cdn-management-solution"></a>Přidejte řešení pro správu CDN Azure Monitor
+### <a name="add-a-azure-monitor-cdn-monitoring-solution"></a>Přidání řešení pro monitorování sítě CDN Azure Monitor
 
-Postupujte podle těchto kroků přidejte řešení pro správu monitorování Azure:
+Postupujte podle těchto kroků přidejte řešení pro monitorování Azure monitoru:
 
 1.   Přihlaste se k webu Azure portal pomocí svého předplatného Azure a přejděte na řídicí panel.
     ![Řídicí panel Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +445,7 @@ Příklad vlastnosti:
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýza přes doplňkový portál Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Protokoly Azure Monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Rozhraní REST API Azure Log Analytics](https://docs.microsoft.com/rest/api/loganalytics)
 
 

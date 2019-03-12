@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním Azure | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním Azure
+title: Azure CLI ukázkový skript – vytvoření virtuálního počítače s Linuxem pomocí Azure Monitor | Dokumentace Microsoftu
+description: Azure CLI ukázkový skript – vytvoření virtuálního počítače s Linuxem pomocí Azure monitoru
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732783"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535617"
 ---
-# <a name="monitor-a-vm-with-azure-monitoring"></a>Monitorování virtuálního počítače s využitím monitorování Azure
+# <a name="monitor-a-vm-with-azure-monitor"></a>Monitorování virtuálního počítače pomocí Azure monitoru
 
 Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 
@@ -51,7 +51,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Spustí pro virtuální počítač rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics používá rozšíření agenta Log Analytics. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Spustí pro virtuální počítač rozšíření virtuálního počítače. V takovém případě rozšíření agenta Azure Monitor se používá pro instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup

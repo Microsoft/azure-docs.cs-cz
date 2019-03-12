@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c622b95572a078d3f5a3e4791f959fd264eddc3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4aac24072bcebb0095c12cee1cfa21cfb9868dc5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182166"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548588"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Odebrání uživatele nebo skupiny přiřazení podnikové aplikace v Azure Active Directory
 Je snadné odeberte uživatele nebo skupiny z přiřazení přístupu k jednomu s vašimi firemními aplikacemi v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
@@ -51,7 +51,7 @@ Je snadné odeberte uživatele nebo skupiny z přiřazení přístupu k jednomu 
     > Je potřeba nainstalovat modul Azure AD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nový modul Powershellu pro Azure Active Directory V2, zadejte Y a stiskněte klávesu ENTER.
 
 2. Spustit `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
-3. Pomocí následujícího skriptu uživatele a roli přiřadit aplikace:
+3. Pomocí následujícího skriptu z aplikace odebrat uživatele a role:
 
     ```powershell
     # Store the proper parameters

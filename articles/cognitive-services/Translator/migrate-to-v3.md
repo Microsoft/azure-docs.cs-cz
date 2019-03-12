@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a6aab8fda2459804b38afc113be58db7c31b54c5
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 89a97b583407b448f296b1a54f5aabbf825b8b65
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586847"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537741"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -136,13 +136,13 @@ Pokud používáte api.cognitive.microsofttranslator.com koncový bod používá
 * Poskytuje přístup k vlastní překlad systémy vytvořené pomocí Microsoft Translatoru Hub.
 * Pokud používáte api.microsofttranslator.com koncový bod používáte verze 2 rozhraní Translator Text API.
 
-Žádná verze Translator API vytvoří záznam překlady. Překlady jsou nikdy sdílet s kýmkoli. Další informace o [bez trasování Translator](http://www.aka.ms/NoTrace) webové stránky.
+Žádná verze Translator API vytvoří záznam překlady. Překlady jsou nikdy sdílet s kýmkoli. Další informace o [bez trasování Translator](https://www.aka.ms/NoTrace) webové stránky.
 
 ## <a name="links"></a>Odkazy
 
 * [Zásady ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement)
 * [Právní informace týkající se Microsoft Azure](https://azure.microsoft.com/support/legal)
-* [Podmínky online služeb](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Podmínky online služeb](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Další postup
 

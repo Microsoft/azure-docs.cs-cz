@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 70a611f6a9b52ba6a4c904cc4cfa9bc8f0b4df8e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 65a3aa41c72341aa57c8cb2ddca5d1ed10f0ec06
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409580"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530837"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení disku Azure Data Box
 
@@ -46,7 +46,7 @@ Nejnovější informace o omezení služby Azure storage a osvědčené postupy 
 
 - Nekopírovat data přímo do disky. Kopírování dat do předem vytvořené *BlockBlob*,*PageBlob*, a *AzureFile* složek.
 - Složku ve složce *BlockBlob* a *PageBlob* je kontejner. Například kontejnery jsou vytvořeny jako *BlockBlob/kontejneru* a *PageBlob/kontejneru*.
-- Pokud máte existující objekt Azure (třeba jako objekt blob) v cloudu se stejným názvem jako objekt, který je kopírování disku Data Box přepíše soubor v cloudu.
+- Pokud máte existující objekt Azure (třeba jako objekt blob) v cloudu se stejným názvem jako objekt, který je kopírování disku Data Box přejmenuje soubor jako file(1) v cloudu.
 - Každý soubor zapsán do *BlockBlob* a *PageBlob* sdílené složky se nahraje jako objekt blob bloku a objektů blob stránky.
 - Všechny prázdné hierarchii adresářů (bez jakékoli soubory) vytvořené v rámci *BlockBlob* a *PageBlob* složky nebylo odesláno.
 - Pokud nejsou žádné chyby při odesílání dat do Azure, vytvoří se protokol chyb v účtu cílového úložiště. Cesta k tento protokol chyb je k dispozici na portálu, když se nahrávání dokončí, a vy můžete zkontrolovat protokol k provedení nápravné akce. Neodstraňujte data ze zdroje bez ověření odesílaná data.

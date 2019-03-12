@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633857"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537224"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak funguje fulltextové vyhledávání ve službě Azure Search
 
@@ -55,14 +55,14 @@ V následujícím příkladu je žádost o vyhledávání můžete odeslat pomoc
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 Pro tento požadavek vyhledávací web provede následující akce:
@@ -117,7 +117,7 @@ Ve výchozím nastavení (`searchMode=any`), vyhledávací web předpokládá š
 Předpokládejme, že teď nastavíme `searchMode=all`. V takovém případě znak je interpretován jako operace "a". Všechny zbývající podmínky musí být přítomen v dokumentu k vyfiltrování jako shoda. Výsledný dotaz ukázka by být interpretován takto: 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 Upravený dotaz stromu pro tento dotaz by měl vypadat takto, kde odpovídajících dokumentů je průsečík všechny tři poddotazy: 
@@ -155,7 +155,7 @@ Pokud výchozí analyzátor zpracovává termín, bude malé písmeno "zobrazen�
 Chování analyzátor lze otestovat pomocí [analyzovat rozhraní API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Zadejte text, který chcete analyzovat Pokud chcete zobrazit, co bude generovat podmínky daný analyzátor. Například pokud chcete zobrazit, jak by standardní analyzátor zpracovat text "air-condition", můžete vydat následující žádosti:
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Chování analyzátor lze otestovat pomocí [analyzovat rozhraní API](https://d
 Standardní analyzátor konce vstupního textu do následujících dvou tokenů poznámky s vlastností, jako je počáteční a koncové posunutí (používá se pro zvýrazňování shod), stejně jako jejich pozice (použije k porovnání s fráze):
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Lexikální analýzu platí pouze pro typy dotazů, které vyžadují úplný po
 Načítání dokumentu odkazuje na hledání dokumentů s odpovídajícími podmínky v indexu. Tato fáze nejlépe odhalíte obsahuje příklad. Začněme indexu hotels následující jednoduché schéma: 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ Načítání dokumentu odkazuje na hledání dokumentů s odpovídajícími podm
 Dál Předpokládejme, že tento index obsahuje následující čtyři dokumenty: 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -257,11 +257,11 @@ Vrací pro náš příklad pro **název** pole, index obrácenou vypadá napří
 |------|---------------|
 | atman | 1 |
 | Beach | 2 |
-| hotelu | 1, 3 |
+| hotel | 1, 3 |
 | oceánu | 4  |
 | playa | 3 |
 | možnost | 3 |
-| Retreat | 4 |
+| retreat | 4 |
 
 V poli s názvem pouze *hotelu* zobrazí dva dokumenty: 1, 3.
 
@@ -291,7 +291,7 @@ Pro **popis** pole indexu je následujícím způsobem:
 | na | 1
 | zobrazit | 1, 2, 3
 | procházení | 1
-| with | 3
+| s | 3
 
 
 **Odpovídající výrazy proti indexované podmínky**
@@ -327,7 +327,7 @@ Odvolat tři dokumenty, které odpovídají náš příklad dotazu:
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc20a3739c7dab68728535cc05db400545fbcdf8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436387"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542739"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Aktivovat Moje role adresáře Azure AD v PIM
 
@@ -71,25 +71,15 @@ Pokud potřebujete provést pro role adresáře Azure AD, můžete žádost o ak
 
 1. Klikněte na tlačítko **aktivovat**.
 
-    Pokud roli nevyžaduje schválení, je aktivováno a přidán do seznamu aktivních rolí. Pokud chcete okamžitě použít roli, postupujte podle kroků v další části.
+    Pokud roli nevyžaduje schválení, **stav aktivace** otevře se podokno, který zobrazuje stav aktivace.
+
+    ![Stav aktivace](./media/pim-how-to-activate-role/activation-status.png)
+
+    Po dokončení všech fázích, klikněte na tlačítko **Odhlásit** odkaz se odhlásit z webu Azure portal. Když se přihlásíte zpátky na portál, můžete nyní použít roli.
 
     Pokud [role vyžaduje schválení](./azure-ad-pim-approval-workflow.md) k aktivaci, zobrazí se oznámení v pravém horním rohu prohlížeče informování, žádost čeká na schválení.
 
     ![Žádost čeká na oznámení](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Použijte roli okamžitě po aktivaci
-
-Při aktivaci role v PIM trvá minimálně 10 minut, než můžete přístup k portálu pro správu požadované nebo provádění funkcí v rámci konkrétní úlohy správy. Chcete-li vynutit aktualizaci oprávnění, použijte **přístupu k aplikacím** stránce, jak je popsáno v následujících krocích.
-
-1. Otevřete Azure AD Privileged Identity Management.
-
-1. Klikněte na tlačítko **přístupu k aplikacím** stránky.
-
-    ![Přístup k aplikaci PIM](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. Klikněte na tlačítko **Azure Active Directory** odkaz pro znovuotevření na portálu **všichni uživatelé** stránky.
-
-    Po kliknutí na tento odkaz, platnost aktuálního tokenu a na webu Azure portal získat nový token, který by měl obsahovat aktualizované oprávnění vynutit.
 
 ## <a name="view-the-status-of-your-requests"></a>Zobrazit stav vašich požadavků
 
@@ -139,7 +129,7 @@ Pokud nechcete, aby aktivace role, která vyžaduje schválení, můžete kdykol
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>Oprávnění se neudělilo až po dokončení aktivace role
 
-Při aktivaci role v PIM trvá minimálně 10 minut, než můžete přístup k portálu pro správu požadované nebo provádění funkcí v rámci konkrétní úlohy správy. Chcete-li vynutit aktualizaci oprávnění, použijte **přístupu k aplikacím** stránce, jak je popsáno výše v [použít roli okamžitě po aktivaci](#use-a-role-immediately-after-activation).
+Při aktivaci role v PIM trvá minimálně 10 minut, než můžete přístup k portálu pro správu požadované nebo provádění funkcí v rámci konkrétní úlohy správy. Po dokončení aktivace odhlásit z webu Azure portal a znovu se přihlaste k použití nově aktivovaného role.
 
 Další postup řešení potíží najdete v tématu [řešení potíží s zvýšenou úroveň oprávnění](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 

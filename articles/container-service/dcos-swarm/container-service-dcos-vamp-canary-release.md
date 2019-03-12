@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cd2eb3ba1d3207f4f210aa259e938bb42b44d37a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002075"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535446"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(NEPOUŽÍVANÉ) Testovací verze mikroslužeb s využitím Vampu v clusteru Azure Container Service DC/OS
 
@@ -31,7 +31,7 @@ V tomto názorném postupu nastavíme využitím Vampu ve službě Azure Contain
 
 [Testovací uvolnění](https://martinfowler.com/bliki/CanaryRelease.html) je přijatý inovativní organizacím, jako jsou Netflix, Facebook a Spotify strategie inteligentní nasazení. Je přístup, který dává smysl, protože se omezuje problémy, představuje bezpečný přístup z více sítí a zvyšuje inovace. Tak proč nejsou všechny cloudy využívají společnosti ho? Rozšíření kanálu CI/CD pro zahrnují testovací strategie zvyšuje složitost a vyžaduje devops rozsáhlé znalosti a zkušenosti. To je dost informací k blokování menší firem a podniků nabídne před tím i začít. 
 
-[Vamp](http://vamp.io/) vydává systém open source navržené pro usnadnění tohoto přechodu a přiřaďte testovací funkce, které váš Plánovač upřednostňované kontejneru. Využitím vampu vaší testovací funkce jde nad rámec založený na procentech uvedení. Provoz můžete filtrovat a rozdělit na širokou škálu podmínky, třeba pro cílové konkrétní uživatele, rozsahy IP adres nebo zařízení. Využitím vampu sleduje a analyzuje metrik výkonu, povolení pro službu automation na základě dat v reálném světě. Můžete nastavit automatické vrácení zpět na chyby, nebo varianty jednotlivých služeb na základě vytížení nebo latence.
+[Vamp](https://vamp.io/) vydává systém open source navržené pro usnadnění tohoto přechodu a přiřaďte testovací funkce, které váš Plánovač upřednostňované kontejneru. Využitím vampu vaší testovací funkce jde nad rámec založený na procentech uvedení. Provoz můžete filtrovat a rozdělit na širokou škálu podmínky, třeba pro cílové konkrétní uživatele, rozsahy IP adres nebo zařízení. Využitím vampu sleduje a analyzuje metrik výkonu, povolení pro službu automation na základě dat v reálném světě. Můžete nastavit automatické vrácení zpět na chyby, nebo varianty jednotlivých služeb na základě vytížení nebo latence.
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>Nastavení služby Azure Container Service s DC/OS
 
@@ -129,7 +129,7 @@ Jakmile Elasticsearch sestavy jako **systémem**, můžete přidat balíček Vam
 
 Nyní tento využitím Vampu je vytvořená a spuštěná, nasazení služby z podrobný plán. 
 
-Ve své nejjednodušší podobě [podrobného plánu využitím Vampu](http://vamp.io/documentation/using-vamp/blueprints/) popisuje koncové body (brány), clusterů a služeb pro nasazení. Využitím vampu využívá clustery seskupit různé varianty stejné služby do logických skupin pro testovací uvolněním nebo A / B testování.  
+Ve své nejjednodušší podobě [podrobného plánu využitím Vampu](https://vamp.io/documentation/using-vamp/blueprints/) popisuje koncové body (brány), clusterů a služeb pro nasazení. Využitím vampu využívá clustery seskupit různé varianty stejné služby do logických skupin pro testovací uvolněním nebo A / B testování.  
 
 Tento scénář používá ukázkovou monolitické aplikaci s názvem [ **Sávy**](https://github.com/magneticio/sava), což je ve verzi 1.0. V kontejneru Dockeru, který se nachází v Docker Hubu v rámci magneticio/sava:1.0.0 je zabalená monolitu. Aplikace obvykle běží na portu 8080, ale chcete v tomto případě vystavit na portu 9050. Nasazení aplikace prostřednictvím využitím Vampu pomocí jednoduchého podrobného plánu.
 
@@ -187,7 +187,7 @@ Když se všechno, co byl vytvořen, přejděte do **přehled** okno nástroje p
 
 ![Azure portal – získat veřejnou IP adresu](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
-![Sávy](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
+![sava](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
 
 
 ## <a name="run-a-canary-release"></a>Spustit testovací verze
@@ -200,7 +200,7 @@ Chcete-li sloučit novou službu Sávy 1.1 s běžícím nasazení:
 
 1. V Uživatelském rozhraní Vamp klikněte na tlačítko **plány**.
 
-2. Klikněte na tlačítko **přidat** a vložte následující podrobný plán YAML: podrobný plán popisuje novou variantu service (Sávy: 1.1.0) k nasazení do existujícího clusteru (sava_cluster).
+2. Klikněte na tlačítko **přidat** a vložte následující podrobný plán YAML: Tento podrobný plán popisuje novou variantu service (Sávy: 1.1.0) k nasazení do existujícího clusteru (sava_cluster).
 
   ```YAML
   name: sava:1.1.0      # blueprint name
@@ -291,9 +291,9 @@ Můžeme také nakousli některé výkonné funkce využitím Vampu: sloučení 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o správě akcí s využitím Vampu prostřednictvím [Vamp rozhraní REST API](http://vamp.io/documentation/api/api-reference/).
+* Další informace o správě akcí s využitím Vampu prostřednictvím [Vamp rozhraní REST API](https://vamp.io/documentation/api/api-reference/).
 
 * Vytváření skriptů pro automatizaci využitím Vampu v Node.js a spouštět je jako [Vamp pracovních postupů](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
 
-* Zjistěte víc [využitím VAMPU kurzy](http://vamp.io/documentation/tutorials/).
+* Zjistěte víc [využitím VAMPU kurzy](https://vamp.io/documentation/tutorials/).
 

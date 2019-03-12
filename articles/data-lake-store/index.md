@@ -1,22 +1,16 @@
 ---
-title: Dokumentace ke službě Azure Data Lake Storage Gen1 – kurzy, reference k rozhraní API | Microsoft Docs
-description: Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.
+title: 'Dokumentace ke službě Azure Data Lake Storage Gen1 – kurzy, reference k rozhraní API | Microsoft Docs'
+description: 'Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.'
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869190"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
@@ -198,7 +192,7 @@ Naučte se používat Azure Data Lake Storage Gen1 (dříve označované jako Az
                         <p><a href="/java/api/overview/azure/datalake">Java</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
                         <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (správa účtů)</a></p>
-                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (správa systému souborů)</a></p>
+                        <p><a href="https://azure-datalake-store.readthedocs.io/en/latest">Python (správa systému souborů)</a></p>
                     </div>
                 </div>
             </div>

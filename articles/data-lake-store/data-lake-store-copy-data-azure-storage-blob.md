@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7e218cea543b48371647531cf6d62d8c10a07978
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230746"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544630"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * **Azure Storage blob** kontejneru s daty.
 * **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Účet Azure Data Lake Analytics (volitelné)** – viz [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) pokyny o tom, jak vytvořit účet Data Lake Analytics.
-* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ http://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
+* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ https://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxi nástroje pomocí AdlCopy
 Použijte následující syntaxi pro práci s nástrojem AdlCopy

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95e2a17407ad7d9e108b4ac38e8ff0ff62abf857
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188551"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529680"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box pomocí webu Azure portal
 
@@ -43,7 +43,7 @@ Než začnete:
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="order"></a>Objednání
 
@@ -86,7 +86,7 @@ Když obdržíte Data Box, zapojte kabely a zařízení připojte a zapněte pod
 
 Tento krok trvá 5 až 7 minut.
 
-1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](http://portal.azure.com) na **Obecné > Podrobnosti o zařízení**.
+1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**.
 2. Na adaptéru sítě Ethernet na počítači, pomocí kterého se připojujete k Data Boxu, nakonfigurujte statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut. 
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
 4. Standardně je pro nastavení sítě pro datové rozhraní 10 Gb/s (nebo 1 Gb/s) nakonfigurovaný protokol DHCP. V případě potřeby můžete toto rozhraní nakonfigurovat jako statické a zadat IP adresu. 

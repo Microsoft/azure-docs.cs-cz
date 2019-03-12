@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246357"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547635"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikace a problémy s dostupností služby pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -41,8 +41,8 @@ První žádost o přijetí Webový Server nejprve znovu zkompiluje kód a poté
 Aplikace Internetové informační služby (IIS), které fondy mohou být pravidelně recyklovat, aby se zabránilo nestabilitě stavy, které můžou vést k aplikaci dojde k chybě, zablokování nebo nevracení paměti.
 
 Následující dokumenty vám pomůžou pochopit a tento problém zmírnit:
-* [Oprava pomalé počátečním načtení pro službu IIS](http://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
-* [První požadavek službu IIS 7.5 webové aplikace po recyklaci fondu aplikací velmi pomalé.](http://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
+* [Oprava pomalé počátečním načtení pro službu IIS](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
+* [První požadavek službu IIS 7.5 webové aplikace po recyklaci fondu aplikací velmi pomalé.](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
 
 Pokud chcete změnit výchozí chování služby IIS, je potřeba pomocí úlohy po spuštění, protože pokud ručně aplikovat změny na instance webové Role, změny se nakonec ztratí.
 

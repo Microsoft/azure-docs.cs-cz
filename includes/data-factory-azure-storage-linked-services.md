@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e5f2afa4bc8a4b8eae523fde323d835c0c53fe8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f7c189c59b5098ef22491a914a618afda2b5f51e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571963"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554724"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojenou službu Azure Storage** umožňuje propojit účet úložiště Azure do služby Azure data factory pomocí **klíč účtu**, který nabízí služby data factory a globální přístup ke službě Azure Storage. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu Azure Storage.
@@ -19,24 +19,24 @@ ms.locfileid: "51571963"
 | type |Vlastnost type musí být nastavená na: **AzureStorage** |Ano |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
 
-Naleznete v následující části najdete postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
+Najdete v následující části najdete postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [Přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Příklad:**  
 
 ```json
-{  
-    "name": "StorageLinkedService",  
-    "properties": {  
-        "type": "AzureStorage",  
-        "typeProperties": {  
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"  
-        }  
-    }  
-}  
+{
+    "name": "StorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+        }
+    }
+}
 ```
 
 ### <a name="azure-storage-sas-linked-service"></a>Propojená služba Azure Storage Sas
-Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje udělit že klienta omezená oprávnění k objektům v účtu úložiště na dobu určitou dobu a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu. PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, musí klient pouze a zajistěte tak předání SAS odpovídajícího konstruktoru nebo metody. Podrobné informace o SAS najdete v tématu [sdílené přístupové podpisy: vysvětlení modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje udělit že klienta omezená oprávnění k objektům v účtu úložiště na dobu určitou dobu a s konkrétní sadou oprávnění, aniž byste museli sdílet přístupové klíče vašeho účtu. PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, musí klient pouze a zajistěte tak předání SAS odpovídajícího konstruktoru nebo metody. Podrobné informace o SAS najdete v tématu [sdílené přístupové podpisy: Vysvětlení modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 > [!IMPORTANT]
 > Azure Data Factory podporuje nyní pouze **SAS služby** , ale ne SAS účtu. V tématu [typy z sdílené přístupové podpisy](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) podrobné informace o těchto dvou typů a jak sestavit. Poznámka: adresa URL SAS generable z webu Azure portal nebo Průzkumníka služby Storage je SAS účtu, který není podporován.
@@ -55,15 +55,15 @@ Služby Azure Storage SAS propojené umožňuje propojit účet úložiště Azu
 **Příklad:**
 
 ```json
-{  
-    "name": "StorageSasLinkedService",  
-    "properties": {  
-        "type": "AzureStorageSas",  
-        "typeProperties": {  
-            "sasUri": "<Specify SAS URI of the Azure Storage resource>"   
-        }  
-    }  
-}  
+{
+    "name": "StorageSasLinkedService",
+    "properties": {
+        "type": "AzureStorageSas",
+        "typeProperties": {
+            "sasUri": "<Specify SAS URI of the Azure Storage resource>"
+        }
+    }
+}
 ```
 
 Při vytváření **identifikátor URI SAS**, vzhledem k tomu následující:  

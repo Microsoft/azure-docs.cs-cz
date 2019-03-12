@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d702810ae7de03a14e50f56c2b8e819c31f3ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e7a45e85b35ab48f95ecff07043484b322f237a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192706"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538047"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stáhněte si sestavu auditování pomocí webu Azure portal
 
-V tomto rychlém startu se dozvíte, jak stáhnout protokoly auditu pro vašeho tenanta za posledních 24 hodin. Až 5000 záznamů si můžete stáhnout z webu Azure portal. Záznamy jsou seřazeny podle většinu poslední, tak ve výchozím nastavení, můžete získat nejnovější 5000 záznamů. 
+V tomto rychlém startu se dozvíte, jak stáhnout soubor CSV protokolů auditu pro vašeho tenanta za posledních 24 hodin. Až 250 000 záznamů si můžete stáhnout z webu Azure portal. Záznamy jsou seřazeny podle většinu poslední, tak ve výchozím nastavení, můžete získat nejnovější 250 000 záznamů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Budete potřebovat:
 2. Z levého navigačního podokna vyberte **Azure Active Directory** a pomocí tlačítka **Přepnout adresář** vyberte aktivní adresář.
 3. Z řídicího panelu vyberte **Azure Active Directory** a pak vyberte **Protokoly auditu**. 
 4. Pokud chcete zobrazit protokoly auditu za posledních 24 hodin, v rozevíracím seznamu filtru **Rozsah data** zvolte **Posledních 24 hodin** a vyberte **Použít**. 
-5. Pokud chcete stáhnout soubor CSV obsahující filtrované záznamy, klikněte na tlačítko **Stáhnout**. 
+5. Vyberte **Stáhnout** tlačítka, vyberte **sdíleného svazku clusteru** jako soubor formátu a zadejte název souboru ke stažení souboru CSV se filtrované záznamy. 
 
 ![Vytváření sestav](./media/quickstart-download-audit-report/download-audit-logs.png)
 

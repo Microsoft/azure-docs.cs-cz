@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: d2aa05d6648a76b02e09c660d7e6f6f30988db53
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330864"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542161"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Nahrání první image do soukromého registru kontejnerů Dockeru pomocí rozhraní příkazového řádku Dockeru
 
-Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů [Dockeru](http://hub.docker.com) podobným způsobem, jakým [Docker Hub](https://hub.docker.com/) uchovává veřejné image Dockeru. Můžete použít [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) pro [přihlášení](https://docs.docker.com/engine/reference/commandline/login/), [nabízených](https://docs.docker.com/engine/reference/commandline/push/), [o přijetí změn](https://docs.docker.com/engine/reference/commandline/pull/)a další operace na kontejnerech registru.
+Registr kontejnerů Azure uchovává a spravuje privátní image kontejnerů [Dockeru](https://hub.docker.com) podobným způsobem, jakým [Docker Hub](https://hub.docker.com/) uchovává veřejné image Dockeru. Můžete použít [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) pro [přihlášení](https://docs.docker.com/engine/reference/commandline/login/), [nabízených](https://docs.docker.com/engine/reference/commandline/push/), [o přijetí změn](https://docs.docker.com/engine/reference/commandline/pull/)a další operace na kontejnerech registru.
 
 V následujících krocích stažení oficiální [image serveru Nginx](https://store.docker.com/images/nginx) z veřejného registru Docker Hub, označte ji pro váš privátní registr kontejnerů Azure, nahrajte ho do vašeho registru a pak přetahování z registru.
 

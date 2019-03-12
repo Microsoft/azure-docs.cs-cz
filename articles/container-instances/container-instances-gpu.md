@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: adb893a9d37219409f81b2fb402f2d4afd36aa34
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f35b2cd8d360bd46913eaa34b91e1fd19bc1ba9b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338854"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533591"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
 
@@ -28,15 +28,7 @@ Jak je znázorněno v tomto článku, když nasadíte skupinu kontejnerů s vyu�
 
 Ve verzi preview platí následující omezení při použití GPU zdrojů v skupinách kontejnerů. 
 
-**Podporované oblasti**:
-
-* USA – východ (eastus)
-* Západní USA 2 (westus2)
-* Střed USA – Jih (southcentralus)
-* Západní Evropa (westeurope)
-* Severní Evropa (northeurope)
-* Východní Asie (východní Asie)
-* Střed Indie (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 Podpora bude postupně přibudou další oblasti.
 
@@ -59,21 +51,9 @@ Chcete-li použít grafickými procesory v instanci kontejneru, zadejte *GPU pro
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>Procesor a paměť
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-Při nasazování prostředků GPU, nastavte prostředky procesoru a paměti vhodné pro úlohy, až do maximální hodnoty uvedené v následující tabulce. Tyto hodnoty jsou aktuálně větší než omezení procesoru a paměti ve službě container instances bez prostředků GPU.  
-
-| GPU SKU | Počet GPU | Procesor |  Paměť (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+Při nasazování prostředků GPU, nastavte prostředky procesoru a paměti vhodné pro úlohy, až do maximální hodnoty uvedené v předchozí tabulce. Tyto hodnoty jsou aktuálně větší než prostředky procesoru a paměti, které jsou k dispozici ve skupinách kontejnerů bez prostředků GPU.  
 
 ### <a name="things-to-know"></a>Co je potřeba vědět
 

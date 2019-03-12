@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a24ba9c0f19ce0a040671e4515dc2e7d2468fb5c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e4402be7108f242e1d285ebe91dfece744f0805
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985576"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532146"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Nasazení Kubernetes pro Azure Stack pomocí Azure Active Directory
 
@@ -53,7 +53,7 @@ Abyste mohli začít, ujistěte se, že máte správná oprávnění a že služ
 
 Nastavení instančního objektu v Azure. Služby, které poskytuje vaše aplikace přístup k prostředkům Azure Stack.
 
-1. Přihlaste se na globální [webu Azure portal](http://portal.azure.com).
+1. Přihlaste se na globální [webu Azure portal](https://portal.azure.com).
 
 1. Zkontrolujte, že jste přihlášení pomocí tenanta Azure AD přidružené k instanci služby Azure Stack. Vaše přihlášení můžete přepnout kliknutím na ikonu filtru v panelu nástrojů webu Azure.
 

@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 15f5fe6e74cbe8cbffff31114e8aa588ec4a7ebb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546092"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537996"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Přesun možnosti úložiště a data pro vykreslení asset a výstupní soubory
 
@@ -25,7 +25,7 @@ Zpřístupnění soubory scény a prostředků pro vykreslování aplikace ve fo
   * Tuto možnost má výhodu, že je nákladově velmi efektivní, jako jsou požadovány pro systém souborů žádné virtuální počítače a navíc blobfuse ukládání do mezipaměti na virtuálních počítačích se vyhnete opakované stahování stejné soubory, které pro více úloh a úkolů.  Přesun dat je také jednoduchý, jako jsou soubory jednoduše objekty BLOB a standardní rozhraní API a nástroje, jako je například azcopy, slouží ke kopírování souborů mezi místním systému souborů a úložiště Azure.
 * Systém souborů nebo sdílení souborů:
   * V závislosti na operačním systému virtuálního počítače a požadavky na výkon a škálování, pak mezi možnosti patří [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)pomocí virtuálního počítače s připojenými disky pro systém souborů NFS, použití několika virtuálních počítačů s připojenými disky pro systém souborů DFS například GlusterFS, nebo pomocí nabídky třetí strany.
-  * [Systémy Avere](http://www.averesystems.com/) je nyní součástí Microsoftu a budou mít v blízké budoucnosti řešení, které jsou ideální pro vykreslování ve velkém měřítku, vysoce výkonné.  Avere řešení vám umožní systému souborů NFS založené na Azure nebo mezipaměť SMB má být vytvořen, který funguje ve spojení s úložištěm objektů blob nebo na místních zařízeních NAS.
+  * [Systémy Avere](https://www.averesystems.com/) je nyní součástí Microsoftu a budou mít v blízké budoucnosti řešení, které jsou ideální pro vykreslování ve velkém měřítku, vysoce výkonné.  Avere řešení vám umožní systému souborů NFS založené na Azure nebo mezipaměť SMB má být vytvořen, který funguje ve spojení s úložištěm objektů blob nebo na místních zařízeních NAS.
   * Systém souborů, souborů může číst nebo zapisovat přímo do systému souborů nebo je možné zkopírovat mezi systém souborů a fond virtuálních počítačů.
   * Sdílený systém souborů umožňuje velký počet prostředků sdílet mezi projekty a úlohy, které se budou využívat, s vykreslováním úlohy přístup pouze k co je potřeba.
 

@@ -3,17 +3,17 @@ title: Použití zařízení nastaví v aplikaci Azure IoT Central | Dokumentace
 description: Jakožto Obsluha nastaví použití zařízení v aplikaci Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: b24c7c6d08b7d7914c7bdef6d2a55eb88689b6ad
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315193"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759811"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
@@ -48,9 +48,11 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
-1. Zvolte **řídicí panel** kartu.
+1. Vyberte vaši sadu zařízení.
 
-1. Vyberte **upravit šablonu**.
+1. Vyberte kartu **Dashboard** (Řídicí panel).
+
+1. Vyberte **Upravit**.
 
     ![Režim návrhu](media/howto-use-device-sets/image3.png)
 
@@ -69,9 +71,6 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Přidáte mřížku. Mřížka je tabulka zařízení na zařízení, nastavit pomocí sloupce, které zvolíte.
     1. Zvolte **mřížky** v pravém podokně.
-
-        ![Zvolte mřížky](media/howto-use-device-sets/image8.png)
-
     1. Poskytují vaší mřížkou **Title**.
     1. Vyberte sloupce, které chcete zobrazit výběrem **přidat nebo odebrat**. V panelu, která se otevře zvolte sloupec má a klikněte na šipku doprava a vyberte ji.
     1. Vyberte **OK**.
@@ -81,31 +80,24 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
     1. Přetáhnout myší na tabulku a umístěte ho na **řídicí panel**.
 
-    > [!NOTE]
-    > Můžete přidat více imagí, odkazy a mřížky.
+        > [!NOTE]
+        > Můžete přidat více imagí, odkazy a mřížky.
   
     1. Vyberte **Done** (Hotovo).
 
-    ![Návrh režimu mimo](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel 
 Můžete přidat mapu umístění, která bude vizualizovat umístění zařízení nastaví v objektu Map.
 
 Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídicí panel, musíte mít vlastnost nakonfigurovaného umístění ve vaší šabloně zařízení, najdete v článku [vytvoření vlastnosti umístění používá technologii Azure Maps](howto-set-up-template.md).
 
-
 1. Na zařízení nastavit řídicím panelu vyberte mapování z knihovny.
-
-    ![Nastaví mapy řídicího panelu zařízení](media/howto-use-device-sets/LocationMaps1.png)
-
 2. Zadejte název a vyberte vlastnost umístění, které jste dříve nakonfigurovali v rámci vlastnosti zařízení.
 3. Uložit a můžete se zobrazí na mapě dlaždici zobrazení umístění zařízení v nastavení zařízení.
-4. Nyní když operátor zobrazení řídicího panelu sady zařízení, operátor, který můžete vidět všechny dlaždice, které jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
-    
-> [!NOTE] 
-> Budete moct změnit velikost mapování na požadovanou velikost. Výběrem PIN kód na mapě zobrazíte informace o zařízení, název a umístění. Můžete vybrat automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
+4. Nyní když operátor zobrazení řídicího panelu sady zařízení, operátor, který můžete vidět všechny dlaždice, které jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled!
 
+> [!NOTE]
+> Na mapě můžete změnit velikost na požadovanou velikost. Výběr PIN kód na mapě zobrazí informace o zařízení, název a umístění. Můžete vybrat automaticky otevírané okno, přejděte na stránku vlastností zařízení.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení
 
@@ -127,7 +119,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat **seznamu**. **Seznamu*
 
 ## <a name="analytics"></a>Analýzy
 
-Analýzy ve skupinách zařízení je stejný jako hlavní analytics kartu v levé navigační nabídce. Další informace o analýze v článku na [vytvoření analytics](howto-create-analytics.md).
+Analýzy ve skupinách zařízení je stejný jako hlavní analytics kartu v levé navigační nabídce. Další informace o analýze v článku na [vytvoření analytics](howto-use-device-sets.md).
 
 ## <a name="next-steps"></a>Další postup
 

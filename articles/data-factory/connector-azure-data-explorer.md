@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 94cf153d7d88e0589edfb3c126c18e04e25e2ef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431916"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531636"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory
 
@@ -68,9 +68,9 @@ Průzkumník dat Azure, propojené služby jsou podporovány následující vlas
 | type | **Typ** musí být vlastnost nastavena na **AzureDataExplorer** | Ano |
 | endpoint | Adresa URL koncového bodu clusteru Průzkumník dat Azure, ve formátu jako `https://<clusterName>.<regionName>.kusto.windows.net `. | Ano |
 | databáze | Název databáze. | Ano |
-| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení ukázáním pomocí myši v pravém horním rohu webu Azure portal. | Ano |
-| servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. To je, co je obvykle říká "**ID úřadu**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Načtení ukázáním pomocí myši v pravém horním rohu webu Azure portal. | Ano |
+| servicePrincipalId | Zadejte ID klienta vaší aplikace. To je, co je obvykle říká "**ID klienta aplikace AAD**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ano |
+| servicePrincipalKey | Zadejte klíč aplikace. To je, co je obvykle říká "**klíč aplikace AAD**" v [Kusto připojovací řetězec](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad vlastnosti propojené služby:**
 
@@ -139,7 +139,7 @@ Ke zkopírování dat z Průzkumníka služby Azure Data, nastavte **typ** vlast
 | queryTimeout | Doba čekání před požadavkem dotazu vyprší časový limit. Výchozí hodnota je 10 minut (00:10:00); povolené maximum je 1 hodina (01: 00:00). | Ne |
 
 >[!NOTE]
->Azure zdroj Průzkumník dat ve výchozím nastavení má omezení velikosti 500 000 záznamů nebo 64 MB. Pokud chcete načíst všechny záznamy nezkrácený, můžete zadat `set notruncation;` na začátku dotazu. Odkazovat na [dotazování omezení](https://docs.microsoft.com/en-us/azure/kusto/concepts/querylimits) na další podrobnosti.
+>Azure zdroj Průzkumník dat ve výchozím nastavení má omezení velikosti 500 000 záznamů nebo 64 MB. Pokud chcete načíst všechny záznamy nezkrácený, můžete zadat `set notruncation;` na začátku dotazu. Odkazovat na [dotazování omezení](https://docs.microsoft.com/azure/kusto/concepts/querylimits) na další podrobnosti.
 
 **Příklad:**
 

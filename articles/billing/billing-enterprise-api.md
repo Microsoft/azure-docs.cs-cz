@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265630"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535395"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro generování sestav pro podnikové zákazníky
 Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure prostřednictvím kódu programu o přijetí změn využití a fakturace data do nástrojů pro analýzu dat upřednostňované. Podnikoví zákazníci si zaregistrovali [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) s Azure a ujistěte se, vyjednávaný peněžní závazky a získat přístup k získání vlastních cen pro prostředky Azure.
@@ -34,7 +34,7 @@ Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure
 |Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {klíč rozhraní API}** <br/> Příklad: nosiče eyr... 09| 
 
 ## <a name="consumption-apis"></a>Využití rozhraní API
-Koncový bod Swaggeru je k dispozici [tady](https://consumption.azure.com/swagger/ui/index) pro rozhraní API je popsáno níže, které by měly umožnit snadné introspekci rozhraní API a možnost k vygenerování klientských sad SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1. května 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
+Koncový bod Swaggeru je k dispozici [tady](https://consumption.azure.com/swagger/ui/index) pro rozhraní API je popsáno níže, které by měly umožnit snadné introspekci rozhraní API a možnost k vygenerování klientských sad SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](https://swagger.io/swagger-codegen/). Data od 1. května 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
 
 * **Zůstatek a Souhrn** – [zůstatek a souhrn rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční souhrnné informace o zůstatcích, nové nákupy, poplatků za služby Azure Marketplace, úpravy a poplatky za Nadlimitní využití.
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 801f6dddfb3aaea850d76c80d43de93181c3d41c
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3850623f5918ea9405131edb1821b941019ac34
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913474"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532319"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for MySQL pomocí Azure CLI
 
@@ -94,14 +94,14 @@ K vytvoření serveru pomocí geograficky redundantní zálohy, použijte rozhra
 Geografické obnovení serveru příkazového řádku Azure CLI zadejte následující příkaz:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
+az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
 ```
-Tento příkaz vytvoří nový server volá *mydemoserver georestored* v oblasti východní USA, který bude patřit *myresourcegroup*. Je obecné účely Gen 4 server s 8 jádry VCORE. Na serveru je vytvořený z geograficky redundantní zálohy *mydemoserver*, což je také ve skupině prostředků *myresourcegroup*
+Tento příkaz vytvoří nový server volá *mydemoserver georestored* v oblasti východní USA, který bude patřit *myresourcegroup*. Je pro obecné účely, generace 5 server s 8 jádry VCORE. Na serveru je vytvořený z geograficky redundantní zálohy *mydemoserver*, což je také ve skupině prostředků *myresourcegroup*
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, pak v `--source-server` parametr by kvalifikovat název serveru, jako v následujícím příkladu:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
+az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
@@ -113,7 +113,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 |jméno | mydemoserver georestored | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy se používají. |
 |location | eastus | Umístění nového serveru. |
-|sku-name| GP_Gen4_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen4_8 mapuje pro obecné účely Gen 4 server s 8 jádry VCORE.|
+|sku-name| GP_Gen5_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen5_8 mapuje pro obecné účely Gen 5 server s 8 jádry VCORE.|
 
 
 >[!Important]

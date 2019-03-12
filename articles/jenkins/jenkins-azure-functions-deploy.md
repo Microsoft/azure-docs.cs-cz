@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: 1138af0e073f68842861df86acd4d9d6eb467782
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 93504de6384be530ba037f662f7b043729aa3f99
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825041"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536909"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Nasazení do služby Azure Functions pomocí modulu plug-in Jenkins Azure Functions
 
@@ -89,6 +89,14 @@ Následující postup vysvětluje, jak připravit Jenkins server:
 
 1. "Microsoft Azure Service instančního objektu" typ přihlašovacích údajů pomocí instančního objektu Azure, přidejte v Jenkinsu. Odkazovat [nasazení do služby Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) kurzu.
 
+## <a name="fork-the-sample-github-repo"></a>Rozvětvení ukázkového úložiště GitHub
+
+1. [Přihlaste se k úložišti Githubu pro aplikaci liché nebo dokonce ukázka](https://github.com/VSChina/odd-or-even-function.git).
+
+1. V pravém horním rohu v Githubu, zvolte **Forku**.
+
+1. Postupujte podle pokynů dokončit větvení a vyberte účet GitHub.
+
 ## <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu Jenkins
 
 V této části vytvoříte [kanálu Jenkins](https://jenkins.io/doc/book/pipeline/).
@@ -107,7 +115,27 @@ V této části vytvoříte [kanálu Jenkins](https://jenkins.io/doc/book/pipeli
     
 1. V **kanálu -> definice** vyberte **kanálu skriptu ze Správce řízení služeb**.
 
-1. Zadejte správce řízení služeb úložiště adresy URL a skript cestu pomocí zadaných [ukázkový skript](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Zadejte svého forku Githubu adresy URL a skript cestu ("doc/zdroje/jenkins/souboru JenkinsFile") pro použití v [příklad souboru JenkinsFile](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+
+   ```
+   node {
+    stage('Init') {
+        checkout scm
+        }
+
+    stage('Build') {
+        sh 'mvn clean package'
+        }
+
+    stage('Publish') {
+        azureFunctionAppPublish appName: env.FUNCTION_NAME, 
+                                azureCredentialsId: env.AZURE_CRED_ID, 
+                                filePath: '**/*.json,**/*.jar,bin/*,HttpTrigger-Java/*', 
+                                resourceGroup: env.RES_GROUP, 
+                                sourceDirectory: 'target/azure-functions/odd-or-even-function-sample'
+        }
+    }
+    ```
 
 ## <a name="build-and-deploy"></a>Vytvoření a nasazení
 

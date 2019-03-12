@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 04707a747edb7cf26b4e7f4e3251b958f6f11f38
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: df1542d6d20120a9b1e087fadf3743479ecebf07
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962293"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533829"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času dělené názvu souboru s použitím nástroje pro kopírování dat
 
@@ -43,14 +43,14 @@ V tomto kurzu budete provádět následující kroky:
 
 Připravte úložiště objektů Blob pro tento kurz provedením následujících kroků.
 
-1. Vytvořte kontejner s názvem **zdroj**.  Vytvořit jako cestu ke složce **2019/02/26/14** ve vašem kontejneru. Vytvořte prázdný textový soubor a pojmenujte ji jako **file1.txt**. Nahrát file1.txt cesty ke složce **zdroj/2019/02/26/14** ve vašem účtu úložiště.  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+1. Vytvořte kontejner s názvem **zdroj**.  Vytvořit jako cestu ke složce **2019/02/26/14** ve vašem kontejneru. Vytvořte prázdný textový soubor a pojmenujte ji jako **file1.txt**. Nahrát file1.txt cesty ke složce **zdroj/2019/02/26/14** ve vašem účtu úložiště.  K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
     
     ![Nahrání souborů](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
     > Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 14:03:00 26. února 2019 můžete vytvořit cestu ke složce jako **zdroj/2019/02/26/14/** pravidlem z **zdroj / {Year} / {Month} / {Day} / {Hour} /**.
 
-2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -175,10 +175,10 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
 
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (http://storageexplorer.com/) kontrolovala soubory.
+    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (https://storageexplorer.com/) kontrolovala soubory.
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Vytvořte jiný prázdný textový soubor s novým názvem jako **Soubor2.txt**. Nahrajte soubor Soubor2.txt cesty ke složce **zdroj/2019/02/26/15** ve vašem účtu úložiště.   K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).    
+12. Vytvořte jiný prázdný textový soubor s novým názvem jako **Soubor2.txt**. Nahrajte soubor Soubor2.txt cesty ke složce **zdroj/2019/02/26/15** ve vašem účtu úložiště.   K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).   
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
@@ -197,7 +197,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (http://storageexplorer.com/) kontrolovala soubory v **cílové** kontejneru
+    Stejné můžete také ověřit pomocí Průzkumníka služby Azure Storage (https://storageexplorer.com/) kontrolovala soubory v **cílové** kontejneru
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

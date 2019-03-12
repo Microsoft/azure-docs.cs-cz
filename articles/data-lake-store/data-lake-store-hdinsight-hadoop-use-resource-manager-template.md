@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e8aa310d518ff26d2d0224797b2feb0745896d1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5694f8eead2b0fd4be75ee858c3c124dd8c53e03
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864902"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540370"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Pokud chcete mít jistotu, že je přístupný z clusteru HDInsight, který nahr
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spouštění testů úloh na clusteru HDInsight pro použití služby Data Lake Storage Gen1
 Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy na clusteru pro testování, aby mohli získat přístup ke clusteru HDInsight Gen1 úložiště Data Lake. Uděláte to tak, provedeme ukázkové úlohy Hive, který vytvoří tabulku pomocí ukázkových dat, který jste dříve nahráli do svého účtu Data Lake Storage Gen1.
 
-V této části se SSH do clusteru HDInsight s Linuxem a spustit ukázkový dotaz Hive. Pokud používáte klienta Windows, doporučujeme použít **PuTTY**, který si můžete stáhnout z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části se SSH do clusteru HDInsight s Linuxem a spustit ukázkový dotaz Hive. Pokud používáte klienta Windows, doporučujeme použít **PuTTY**, který si můžete stáhnout z [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o použití klienta PuTTY, naleznete v tématu [použití SSH se systémem Linux Hadoop v HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -124,7 +124,7 @@ Další informace o použití klienta PuTTY, naleznete v tématu [použití SSH 
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Přístup k Data Lake Storage Gen1 pomocí příkazů HDFS
 Po konfiguraci clusteru HDInsight pro použití služby Data Lake Storage Gen1, můžete použít příkazy prostředí HDFS pro přístup k úložišti.
 
-V této části budete do HDInsight Linux SSH clusteru a spuštění příkazů HDFS. Pokud používáte klienta Windows, doporučujeme použít **PuTTY**, který si můžete stáhnout z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části budete do HDInsight Linux SSH clusteru a spuštění příkazů HDFS. Pokud používáte klienta Windows, doporučujeme použít **PuTTY**, který si můžete stáhnout z [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o použití klienta PuTTY, naleznete v tématu [použití SSH se systémem Linux Hadoop v HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

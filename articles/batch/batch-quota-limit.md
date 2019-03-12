@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: f8941f84e85f330713cb4b263f2154acb80b520c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753195"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532391"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -99,14 +99,14 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batc
    
     d. **Plán podpory** > **kvóty podpora – zahrnuto**
    
-    Klikněte na tlačítko **Další**.
+    Klikněte na **Další**.
 1. V **problém**:
    
     a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
    
     b. V **podrobnosti**, zadejte každá kvóta, kterou chcete změnit název účtu Batch a nový limit.
    
-    Klikněte na tlačítko **Další**.
+    Klikněte na **Další**.
 1. V **kontaktní informace**:
    
     a. Vyberte **upřednostňovaný způsob kontaktování**.
@@ -135,6 +135,6 @@ Tyto prostředky se přidělují v předplatném, která obsahuje virtuální s�
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

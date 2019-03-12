@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: b-juche
-ms.openlocfilehash: e6792d994c01fb77739ad7a044bc7193e350e173
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1cce1883295277f6c6c36d686d90370238265dbf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053785"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775845"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Vysvětlení hierarchie úložiště služby Azure NetApp Files
 
@@ -59,5 +59,5 @@ Následující příklad znázorňuje vztahy předplatného Azure, účtů NetAp
 
 ## <a name="next-steps"></a>Další postup
 
-- [Omezení prostředků pro soubory Azure NetApp](azure-netapp-files-resource-limits.md)
+- [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 - [Registrace pro soubory Azure NetApp](azure-netapp-files-register.md)

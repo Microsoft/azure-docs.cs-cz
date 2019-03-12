@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 073d1b54b1c6da2b1178f482d17b4de7abcc8a51
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a7976c0798bd78fd51632d3025147526a645b041
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888919"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528792"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rychlý start: Vytvoření centra událostí pomocí webu Azure portal
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -60,7 +60,7 @@ Obor názvů služby Event Hubs poskytuje jedinečný kontejner oboru, na který
    ![Přidání tlačítka panelu nástrojů](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Na **vytvoření oboru názvů** stránce, proveďte následující kroky:
     1. Zadejte název pro obor názvů. Systém okamžitě kontroluje, jestli je název dostupný.
-    2. Shoose cenovou úroveň (Basic nebo Standard).
+    2. Zvolte cenovou úroveň (Basic nebo Standard).
     3. Vyberte **předplatné** ve kterém chcete vytvořit obor názvů.
     4. Vyberte **umístění** pro obor názvů.
     5. Vyberte **Vytvořit**. Možná budete muset několik minut počkat, než systém úplně zřídí prostředky.

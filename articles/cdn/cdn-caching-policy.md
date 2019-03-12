@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: ac94370b1c6a8f48ad55f0e277d93cd2f8388cb1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242598"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540143"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa Azure CDN ve službě Azure Media Services zásady ukládání do mezipaměti
-Azure Media Services nabízí adaptivní streamování a progresivní stahování založený na HTTP. Streamování na základě protokolu HTTP je vysoce škálovatelná výhody ukládání do mezipaměti v proxy serveru a vrstvy CDN, stejně jako ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné funkce streamování a také konfigurace mezipaměti hlaviček protokolu HTTP. Koncové body streamování nastaví HTTP Cache-Control: maximální stáří a záhlaví Expires. Můžete získat další informace o mezipaměti hlavičky protokolu HTTP z [adrese W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
+Azure Media Services nabízí adaptivní streamování a progresivní stahování založený na HTTP. Streamování na základě protokolu HTTP je vysoce škálovatelná výhody ukládání do mezipaměti v proxy serveru a vrstvy CDN, stejně jako ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné funkce streamování a také konfigurace mezipaměti hlaviček protokolu HTTP. Koncové body streamování nastaví HTTP Cache-Control: maximální stáří a záhlaví Expires. Můžete získat další informace o mezipaměti hlavičky protokolu HTTP z [adrese W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
 ## <a name="default-caching-headers"></a>Výchozí záhlaví ukládání do mezipaměti
 Ve výchozím nastavení se vztahují 3denní hlavičky mezipaměti pro streamovaná data na vyžádání (fragmentů samotný mediální bloků dat) a manifest(playlist) – koncové body streamování. Pro živé streamování koncové body streamování použít 3denní hlavičky mezipaměti pro data (fragmentů samotný mediální bloků dat) a záhlaví manifest(playlist) žádostí do mezipaměti 2 sekundy. Když živou program se změní na vyžádání (živý archív), pak použijte hlavičky mezipaměti streamování na vyžádání.
@@ -40,7 +40,7 @@ Azure portal nebo rozhraní API služeb Azure Media Services můžete použít k
 
 1. Konfigurace hlaviček mezipaměti pomocí webu Azure portal, najdete v tématu [jak spravovat koncové body streamování](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) oddíl konfigurace koncového bodu streamování.
 2. Rozhraní REST API služby Azure Media Services [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK [StreamingEndpointCacheControl vlastnosti](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl Properties](https://go.microsoft.com/fwlink/?LinkId=615302).
 
 ## <a name="cache-configuration-precedence-order"></a>Pořadí priority konfigurace mezipaměti
 1. Azure Media Services nakonfigurovaná hodnota mezipaměti přepíše výchozí hodnotu.

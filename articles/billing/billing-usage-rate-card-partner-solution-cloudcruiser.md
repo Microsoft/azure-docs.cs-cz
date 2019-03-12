@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: erikre
-ms.openlocfilehash: 79582e59d9ad9396acf29d6e35d640edcb20dca3
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bae35f9e153227ddcca6e0d20ce862317b968eb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275951"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536007"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser a fakturaci integrace rozhraní API Microsoft Azure
 Tento článek popisuje, jak můžete použít informace shromážděné z rozhraní nového Microsoft Azure API pro fakturaci v Cloud Cruiser pro pracovní postup náklady simulaci a analýzu.
@@ -137,7 +137,7 @@ S novou Azure Usage API můžete Cloud Cruiser aktivního získávání informac
 Na straně zpoplatnění Cloud Cruiser automatizuje proces sestav metod Showback a Chargeback a můžete použít informace o značkách a jejich zapojení využití odpovídající příjemci (oddělení, divize, Project, atd.). Tato automatizace poskytuje obrovskou zlepšování a může zajistit konzistentní a auditovatelných zpoplatnění proces.
 
 ### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>Vytváří se skupina prostředků pomocí značek v Microsoft Azure
-Prvním krokem v tomto kurzu je vytvořte skupinu prostředků na webu Azure Portal, pak vytvořte nové značky pro přidružení k prostředkům. V tomto příkladu budeme vytvářet následující značky: oddělení, prostředí, vlastník projektu.
+Prvním krokem v tomto kurzu je vytvořte skupinu prostředků na webu Azure Portal, pak vytvořte nové značky pro přidružení k prostředkům. V tomto příkladu budeme vytvářet následující značky: Oddělení, prostředí, vlastník projektu.
 
 Následující snímek obrazovky ukazuje příklad skupinu prostředků s přidružených značek.
 
@@ -200,7 +200,7 @@ Teď potřebujeme přidat krok pro publikování dat o využití. Během tohoto 
 Nejlepší je, že máte jenom jednou projít tento proces. Po dokončení sešitu, stačí ho přidat do plánovače a spouští každou hodinu nebo každý den v naplánovaném čase. Pak je jenom na vás vytváření nových sestav nebo přizpůsobení existující aplikace, aby bylo možné analyzovat data a získat smysluplné přehledy z využití cloudu.
 
 ### <a name="next-steps"></a>Další kroky
-* Podrobné pokyny k vytvoření Cloud Cruiser sešitů a sestav, najdete v tématu Cloud Cruiser online [dokumentaci](http://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Obraťte se na další informace o Cloud Cruiser [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
+* Podrobné pokyny k vytvoření Cloud Cruiser sešitů a sestav, najdete v tématu Cloud Cruiser online [dokumentaci](https://docs.cloudcruiser.com/) (vyžaduje se platné přihlášení).  Obraťte se na další informace o Cloud Cruiser [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
 * Zobrazit [získání přehledů o spotřebě prostředků Microsoft Azure](billing-usage-rate-card-overview.md) přehledné informace o využití prostředků Azure a RateCard API.
 * Podívejte se [Azure Billing Reference k REST API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) Další informace o obou rozhraní API, které jsou součástí sady rozhraní API poskytovaných službou Azure Resource Manageru.
 * Pokud chcete rovnou do ukázkového kódu, prohlédněte si naše Microsoft Azure Billing ukázky kódu rozhraní API na [vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?term=billing).

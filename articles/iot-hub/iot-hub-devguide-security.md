@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 5d360e0959a61cde763f5aafe62de38f6c03e806
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011173"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534357"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -74,7 +74,7 @@ Každý podporovaný protokol, jako je protokol MQTT, AMQP a protokolu HTTPS, p�
 
 Pokud používáte protokol MQTT, paket připojit má ID zařízení jako ClientId, `{iothubhostname}/{deviceId}` do pole uživatelské jméno a SAS token do pole heslo. `{iothubhostname}` by měl být úplný záznam CName služby IoT hub (například contoso.azure-devices.net).
 
-Při použití [AMQP](https://www.amqp.org/), IoT Hub podporuje [SASL prostý](http://tools.ietf.org/html/rfc4616) a [AMQP deklarace identity – zabezpečení na základě-](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
+Při použití [AMQP](https://www.amqp.org/), IoT Hub podporuje [SASL prostý](https://tools.ietf.org/html/rfc4616) a [AMQP deklarace identity – zabezpečení na základě-](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
 Pokud používáte AMQP deklarace identity na základě – zabezpečením, standardní Určuje, jak přenést tyto tokeny.
 

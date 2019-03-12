@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303704"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551692"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
-Na webu Azure portal poskytuje dva způsoby, jak vám pomůže vytvořit a nasadit cloudovou službu: *rychlé vytvoření* a *vytvořit vlastní*.
+Na webu Azure portal poskytuje dva způsoby, jak vám pomůže vytvořit a nasadit cloudovou službu: *Rychlé vytvoření* a *vytvořit vlastní*.
 
 Tento článek vysvětluje, jak používat metodu rychlého vytvoření k vytvořit novou cloudovou službu a pak pomocí **nahrát** nahrát a nasadit balíček cloudové služby v Azure. Při použití této metody s portálem Azure je k dispozici užitečné odkazy pro dokončení všech požadavků, co využijete. Pokud jste připravení nasadit cloudovou službu, při vytváření, můžete mít obojí současně pomocí vytvořit vlastní.
 
@@ -54,11 +54,11 @@ Tři cloudové služby funkce vyžadují zvláštní konfigurace před exportem 
 
 Chcete-li vytvořit cloudovou službu s nasazení webové role nebo role pracovního procesu, musíte [vytvořit balíček služby](cloud-services-model-and-package.md#servicepackagecspkg).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 * Pokud jste nenainstalovali sadu Azure SDK, klikněte na tlačítko **nainstalujte sadu Azure SDK** otevřít [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/)a pak si stáhnout sady SDK pro jazyk, ve kterém chcete vyvíjet váš kód. (Budete mít možnost to udělat později.)
 * Pokud všechny instance rolí v nástroji vyžadují certifikát, vytvořte certifikáty. Cloudové služby vyžadují soubor .pfx s privátním klíčem. Certifikáty můžete nahrát do Azure, jak vytvořit a nasadit cloudovou službu.
 
-## <a name="create-and-deploy"></a>Vytvoření a nasazení
+## <a name="create-and-deploy"></a>Vytváření a nasazování
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na tlačítko **vytvořit prostředek > Compute**a potom přejděte dolů k položce a klikněte na tlačítko **Cloudovou službu**.
 
@@ -90,7 +90,7 @@ Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používali certifi
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
 ## <a name="next-steps"></a>Další postup
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).

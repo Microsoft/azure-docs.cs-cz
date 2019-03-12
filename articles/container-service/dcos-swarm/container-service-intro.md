@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001983"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528861"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(NEPOUŽÍVANÉ) Úvod do řešení pomocí služby Azure Container Service pro hostování kontejnerů Docker 
 
@@ -38,7 +38,7 @@ Pokud chcete začít používat službu Azure Container Service, nasaďte cluste
 Služba Azure Container Service poskytuje možnost orchestrace prostřednictvím Docker Swarmu, systému DC/OS nebo Kubernetes. Způsob nasazení aplikace závisí na zvoleném orchestrátoru.
 
 ### <a name="using-dcos"></a>S použitím systému DC/OS
-DC/OS je distribuovaný operační systém založený na jádru distribuovaných systémů Apache Mesos. Apache Mesos spravuje nadace Apache Software Foundation a mezi jeho uživatele a přispěvatele patří i [největší osobnosti IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/).
+DC/OS je distribuovaný operační systém založený na jádru distribuovaných systémů Apache Mesos. Apache Mesos spravuje nadace Apache Software Foundation a mezi jeho uživatele a přispěvatele patří i [největší osobnosti IT](https://mesos.apache.org/documentation/latest/powered-by-mesos/).
 
 ![Služba Azure Container Service nakonfigurovaná pro systém DC/OS se zobrazením agentů a nadřízených serverů.](media/acs-intro/dcos.png)
 

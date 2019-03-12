@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: b12e696260793a79bab6b384fc7be810eb2a803c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3f23f62554ce7f4b90b4116fdd6085027e71650d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240824"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770157"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -108,7 +108,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |Name     |Tenant1VNet1         |
+   |Název     |Tenant1VNet1         |
    |Adresní prostor     |10.1.0.0/16|
    |Název podsítě     |Tenant1 Sub1|
    |Rozsah adres podsítě     |10.1.1.0/24|

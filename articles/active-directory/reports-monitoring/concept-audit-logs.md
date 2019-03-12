@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895ad1f1452b5a0c13765821c5b623472a0bb1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 65bc0c0ee1ccc1e1f3da5e364582534dfbc0d425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447111"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530701"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -41,7 +41,7 @@ Tento článek obsahuje přehled sestavy auditu.
  
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
-* Uživatelé v **správce zabezpečení**, **Čtenář zabezpečení** nebo **globálního správce** role
+* Uživatelé v **zabezpečení uživatelské**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role
 * Kromě toho všichni uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity auditu
 
 ## <a name="audit-logs"></a>Protokoly auditu
@@ -53,38 +53,93 @@ Auditování Azure AD protokoly obsahují záznamy aktivit systému kvůli dodr�
 Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
 - datum a čas výskytu
-- iniciátor/aktér aktivity (*kdo*) 
-- aktivita (*co*) 
+- Služba, která způsobila výskytu
+- kategorie a název aktivity (*co*) 
+- Stav aktivity (úspěch nebo neúspěch)
 - cíl
+- Iniciátor / objektu actor (kdo) aktivity
 
-![Protokoly auditu](./media/concept-audit-logs/18.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/listview.png "Protokoly auditu")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Protokoly auditu](./media/concept-audit-logs/19.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/columns.png "Protokoly auditu")
 
 To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
-![Protokoly auditu](./media/concept-audit-logs/21.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/columnselect.png "Protokoly auditu")
 
 Vyberte položku v zobrazení seznamu zobrazíte podrobnější informace.
 
-![Protokoly auditu](./media/concept-audit-logs/22.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/details.png "Protokoly auditu")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
 
 Můžete filtrovat data auditu pro následující pole:
 
-- Rozsah dat
-- Spustil(a) (činitel)
+- Služba
 - Kategorie
-- Typ prostředku aktivity
 - Aktivita
+- Status
+- Cíl
+- Spustil(a) (činitel)
+- Rozsah dat
 
-![Protokoly auditu](./media/concept-audit-logs/23.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditu")
 
-Filtr pro **rozsah dat** umožňuje definovat časový rámec pro vracená data.  
+**Služby** filtr umožňuje vyberte z rozevíracího seznamu z následujících služeb:
+
+- Vše
+- Kontroly přístupu
+- Zřizování účtů 
+- Aplikace SSO
+- Metody ověřování
+- B2C
+- Podmíněný přístup
+- Základní adresář
+- Správa nároků
+- Identity Protection
+- Pozvaní uživatelé
+- PIM
+- Samoobslužná správa skupin
+- Správa samoobslužných služeb Passord
+- Podmínky použití
+
+**Kategorie** filtr umožňuje vybrat jednu z následujících filtrů:
+
+- Vše
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Autorizace
+- Kontakt
+- Zařízení
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Ostatní
+- Zásada
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+**Aktivity** filtr podle kategorií a aktivit prostředků typ výběru provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
+
+Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
+
+**Stav** filtrování umožňuje filtrovat na základě stavu operace auditu. Stav může být jeden z následujících akcí:
+
+- Vše
+- Úspěch
+- Selhání
+
+**Cílové** filtr umožňuje hledat podle názvu nebo hlavní název uživatele (UPN) pro konkrétní cíl. Název cíle a hlavní název uživatele jsou malá a velká písmena. 
+
+**Iniciovaných** filtr umožňuje definovat jméno prvek "actor" nebo univerzální hlavní název (UPN). Název a hlavní název uživatele jsou malá a velká písmena.
+
+**Rozsah kalendářních dat** filtr umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
 
 - 1 měsíc
@@ -94,41 +149,9 @@ Možné hodnoty:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-**Iniciovaných** filtr umožňuje definovat jméno prvek "actor" nebo univerzální hlavní název (UPN).
+Můžete také stáhnout tak, že vyberete filtrovaná data, až 250 000 záznamů, **Stáhnout** tlačítko. Můžete stáhnout protokoly ve formátu CSV nebo JSON. Počet záznamů, které si můžete stáhnout, které je omezená [zásady uchování sestav Azure Active Directory](reference-reports-data-retention.md).
 
-Filtr **Kategorie** umožňuje vybrat jeden z následujících filtrů:
-
-- Vše
-- Základní kategorie
-- Základní adresář
-- Samoobslužná správa hesel
-- Samoobslužná správa skupin
-- Zřizování účtů – automatická změna hesel
-- Pozvaní uživatelé
-- Služba MIM
-- Identity Protection
-- B2C
-
-Filtr **Typ prostředku aktivity** umožňuje vybrat jeden z následujících filtrů:
-
-- Vše 
-- Skupina
-- Adresář
-- Uživatel
-- Aplikace
-- Zásada
-- Zařízení
-- Ostatní
-
-Když jako **Typ prostředku aktivity** vyberete **Skupina**, zobrazí se další kategorie filtru, která umožňuje zadat také **Zdroj**:
-
-- Azure AD
-- O365
-
-
-**Aktivity** filtr podle kategorií a aktivit prostředků typ výběru provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
-
-Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
+![Protokoly auditu](./media/concept-audit-logs/download.png "Protokoly auditu")
 
 ## <a name="audit-logs-shortcuts"></a>Zástupci pro protokoly auditu
 
@@ -157,9 +180,13 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 - Jaké licence byly přiřazeny skupině nebo uživateli?
 
-Pokud chcete jenom zkontrolovat data auditování týkající se uživatelů a skupin, najdete filtrované zobrazení v sekci **Protokoly auditu** v oddílu **Aktivity** v části **Uživatelé a skupiny**. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Uživatelé a skupiny**.
+Pokud chcete jenom zkontrolovat data auditování týkající se uživatelů, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **uživatelé** kartu. Tento vstupní bod má **entit správy uživatelů** jako Zkontrolujte předem vybrané kategorie.
 
-![Protokoly auditu](./media/concept-audit-logs/93.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditu")
+
+Pokud chcete jenom zkontrolovat data auditování týkající se skupiny, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **skupiny** kartu. Tento vstupní bod má **GroupManagement** jako Zkontrolujte předem vybrané kategorie.
+
+![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditu")
 
 ### <a name="enterprise-applications-audit-logs"></a>Protokoly auditu podnikových aplikací
 
@@ -171,13 +198,9 @@ S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi 
 * Změnily se názvy aplikací?
 * Kdo udělil souhlas pro aplikaci?
 
-Pokud chcete zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **podnikové aplikace** okno. Tento vstupní bod má **podnikové aplikace** Zkontrolujte předem vybrané jako **typ prostředku aktivity**.
+Pokud chcete zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **podnikové aplikace** okno. Tento vstupní bod má **podnikové aplikace** Zkontrolujte předem vybrané jako **typ aplikace**.
 
-![Protokoly auditu](./media/concept-audit-logs/134.png "Protokoly auditu")
-
-Můžete filtrovat toto zobrazení dolů na **skupiny** nebo **uživatelé**.
-
-![Protokoly auditu](./media/concept-audit-logs/25.png "Protokoly auditu")
+![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditu")
 
 ## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 

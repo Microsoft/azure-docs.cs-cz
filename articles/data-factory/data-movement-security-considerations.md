@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447944"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532266"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Data Factory má certifikaci pro:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Pokud vás zajímá dodržování předpisů Azure a jak zabezpečuje svou vlastní infrastrukturu Azure, přejděte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Nejnovější seznam všech nabídek kontrola dodržování předpisů Azure – http://aka.ms/AzureCompliance.
+Pokud vás zajímá dodržování předpisů Azure a jak zabezpečuje svou vlastní infrastrukturu Azure, přejděte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Nejnovější seznam všech nabídek kontrola dodržování předpisů Azure – https://aka.ms/AzureCompliance.
 
 V tomto článku jsme projděte si informace o zabezpečení v následujících scénářích Přesun do dvou datových: 
 
@@ -91,10 +91,10 @@ Azure Data Lake Store také zajišťuje šifrování dat uložených v účtu. P
 Azure Blob storage a Azure Table storage podporuje šifrování služby Storage (SSE), který automaticky šifruje vaše data před zachováním v úložišti a dešifruje před načítání. Další informace najdete v tématu [šifrování služby Azure Storage pro neaktivní uložená Data](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 podporuje klient i server šifrování dat v klidovém stavu. Další informace najdete v tématu [ochranu dat pomocí šifrování](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Amazon S3 podporuje klient i server šifrování dat v klidovém stavu. Další informace najdete v tématu [ochranu dat pomocí šifrování](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift podporuje clusteru šifrování pro neaktivní uložená data. Další informace najdete v tématu [šifrování databáze Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Amazon Redshift podporuje clusteru šifrování pro neaktivní uložená data. Další informace najdete v tématu [šifrování databáze Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce podporuje šifrování platformy Shield, který umožňuje šifrování všech souborů, příloh a vlastních polí. Další informace najdete v tématu [Principy tok webového serveru pro ověřování OAuth](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -186,7 +186,7 @@ Následující cloudovými úložišti dat vyžadují IP adresu počítače mís
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

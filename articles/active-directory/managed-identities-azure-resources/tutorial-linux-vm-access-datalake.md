@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1d0540ccfb9b4aac03b750b5c0002055bdd536a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204657"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546734"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systémem pro virtuální počítač s Linuxem získat přístup ke Cosmos DB. Získáte informace o těchto tématech: 
+V tomto kurzu se dozvíte, jak používat systém přiřadil spravovanou identitu pro virtuální počítač s Linuxem (VM) pro přístup k Azure Data Lake Store. Získáte informace o těchto tématech: 
 
 V tomto kurzu se naučíte:
 

@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341350"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546245"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testování výkonu cloudové služby místně v emulátoru Azure Compute pomocí sady Visual Studio Profiler
 Různé nástroje a techniky jsou k dispozici pro testování výkonu cloudové služby.
@@ -30,8 +30,8 @@ Můžete také chtít profilování aplikace místně v emulátoru služby compu
 
 Tento článek se věnuje metodě profilování pomocí vzorkování procesoru, která se dá dělat místně v emulátoru. Vzorkování procesoru je metoda profilování, která není velmi nežádoucí. V intervalech určené vzorkování profileru pořídí snímek zásobníku volání. Data se shromažďují po určitou dobu a zobrazí v sestavě. Tato metoda profilování ukazuje kde ve výpočetně náročné aplikaci většina práce procesoru se provádí.  Získáte tak možnost se zaměřit na "kritické cestě" kde je vaše aplikace spotřebuje většinu času.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: konfigurace pro profilaci sady Visual Studio
-Nejprve se pár možností konfigurace sady Visual Studio, které můžou být užitečné při profilování. Dávat smysl profilování sestavy, budete potřebovat symboly (soubory PDB) pro aplikace a také symboly pro systémové knihovny. Bude potřeba Ujistěte se, že odkazují na servery symbolů k dispozici. K tomu, na **nástroje** nabídku v sadě Visual Studio, zvolte **možnosti**, klikněte na tlačítko **ladění**, pak **symboly**. Ujistěte se, že servery symbolů společnosti Microsoft je uveden v části **Symbol umístění souborů (.pdb)**.  Je také možné odkazovat http://referencesource.microsoft.com/symbols, který může mít soubory dalších symbolů.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurace sady Visual Studio pro profilaci
+Nejprve se pár možností konfigurace sady Visual Studio, které můžou být užitečné při profilování. Dávat smysl profilování sestavy, budete potřebovat symboly (soubory PDB) pro aplikace a také symboly pro systémové knihovny. Bude potřeba Ujistěte se, že odkazují na servery symbolů k dispozici. K tomu, na **nástroje** nabídku v sadě Visual Studio, zvolte **možnosti**, klikněte na tlačítko **ladění**, pak **symboly**. Ujistěte se, že servery symbolů společnosti Microsoft je uveden v části **Symbol umístění souborů (.pdb)**.  Je také možné odkazovat https://referencesource.microsoft.com/symbols, který může mít soubory dalších symbolů.
 
 ![Možnosti symbolů][4]
 
@@ -77,7 +77,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 Sestavení a spuštění cloudové služby místně bez ladění (Ctrl + F5), se konfigurace řešení nastavená na **vydání**. Tím se zajistí, že všechny soubory a složky jsou vytvořeny pro spuštění aplikace místně a zajistí, že jsou spuštěné všechny emulátorech. Začněte Uživatelském prostředí emulátoru výpočtů z hlavního panelu ověřte, zda je spuštěna vaše role pracovního procesu.
 
-## <a name="2-attach-to-a-process"></a>2: připojit k procesu
+## <a name="2-attach-to-a-process"></a>2: Připojit k procesu
 Místo profilování aplikace jeho zahájením z integrovaného vývojového prostředí Visual Studio 2010, je nutné připojit profiler ke spuštěnému procesu. 
 
 Připojit profiler k procesu, na **analyzovat** nabídce zvolte **Profiler** a **Attach/Detach**.
@@ -113,7 +113,7 @@ Pokud chcete profilaci zastavit, vyberte **zastavit profilaci** odkaz.
 
 ![Zastavit profilování možnost][10]
 
-## <a name="3-view-performance-reports"></a>3: zobrazení sestav výkonu
+## <a name="3-view-performance-reports"></a>3: Zobrazení sestav výkonu
 Zobrazí se sestava výkonu pro vaši aplikaci.
 
 V tomto okamžiku profiler zastaví provádění, uloží data do souboru .vsp a zobrazí zprávu, která uvádí analýzu těchto dat.
@@ -130,7 +130,7 @@ Pokud jste přidali kód pro zřetězení řetězců v tomto článku, měli bys
 
 ![Upozornění výkonu][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: proveďte změny a porovnání výkonu
+## <a name="4-make-changes-and-compare-performance"></a>4: Proveďte změny a porovnání výkonu
 Můžete také porovnat výkon před a po změně kódu.  Zastavení spuštěného procesu a upravit kód nahraďte operace zřetězení řetězců pomocí StringBuilder:
 
 ```csharp
@@ -162,14 +162,14 @@ Blahopřejeme! Začnete s profilerem.
 * Chcete-li zobrazit stav vaší aplikace pomocí Uživatelském prostředí emulátoru výpočtů. 
 * Pokud máte potíže se spuštěním aplikace v emulátoru nebo připojuje se profiler vypnout emulátor služby výpočty dolů a restartujte ji. Pokud se problém nevyřeší, zkuste restartovat. Tomuto problému může dojít, pokud pomocí emulátoru Compute můžete pozastavit a odebrat spuštěné nasazení.
 * Pokud jste použili některý z příkazů profilace z příkazového řádku, zejména globální nastavení, ujistěte se, že byla volána VSPerfClrEnv /globaloff a že VsPerfMon.exe byl vypnut.
-* Pokud při vzorkování, zobrazí se zpráva "PRF0025: Nebyla shromážděna žádná data," Zkontrolujte, jestli jste se připojili k procesu aktivity procesoru. Aplikace, které nejsou provádějící všechny výpočetní práce nemusí vracet žádné data vzorkování.  Je také možné, že proces byl ukončen před provedením jakékoli vzorkování. Zkontrolujte, že spuštění metody pro roli, která profilujete neukončí.
+* Pokud při vzorkování, zobrazí se zpráva "PRF0025: Nebyla shromážděna žádná data,"Zkontrolujte, jestli jste se připojili k procesu aktivity procesoru. Aplikace, které nejsou provádějící všechny výpočetní práce nemusí vracet žádné data vzorkování.  Je také možné, že proces byl ukončen před provedením jakékoli vzorkování. Zkontrolujte, že spuštění metody pro roli, která profilujete neukončí.
 
 ## <a name="next-steps"></a>Další kroky
-Instrumentace Azure binárních souborů se spustila v emulátoru není podporován v profileru sady Visual Studio, ale pokud chcete otestovat přidělení paměti, můžete tuto možnost zvolte, pokud profilace. Můžete také zvolit profilace souběžnosti, který vám pomůže určit, zda jsou vlákna plýtvání čas soutěží o ceny zámky, nebo profilaci interakce vrstev pomáhá sledovat problémy s výkonem při interakci mezi vrstvami aplikace, které nejvíce často mezi datovou vrstvou a role pracovního procesu.  Můžete zobrazit databázové dotazy, které vaše aplikace generuje a profilování údaje použít ke zkvalitnění používání databáze. Informace o profilování interakce vrstev, najdete v příspěvku blogu [návod: použití Profiler interakce vrstvy v aplikaci Visual Studio Team System 2010][3].
+Instrumentace Azure binárních souborů se spustila v emulátoru není podporován v profileru sady Visual Studio, ale pokud chcete otestovat přidělení paměti, můžete tuto možnost zvolte, pokud profilace. Můžete také zvolit profilace souběžnosti, který vám pomůže určit, zda jsou vlákna plýtvání čas soutěží o ceny zámky, nebo profilaci interakce vrstev pomáhá sledovat problémy s výkonem při interakci mezi vrstvami aplikace, které nejvíce často mezi datovou vrstvou a role pracovního procesu.  Můžete zobrazit databázové dotazy, které vaše aplikace generuje a profilování údaje použít ke zkvalitnění používání databáze. Informace o profilování interakce vrstev, najdete v příspěvku blogu [názorný postup: Pomocí Profiler interakce vrstvy v sadě Visual Studio Team System 2010][3].
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

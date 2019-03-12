@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače Azure Log Analytics pro Windows | Dokumentace Microsoftu
+title: Rozšíření virtuálního počítače Azure Monitor pro Windows | Dokumentace Microsoftu
 description: Nasaďte agenta Log Analytics na virtuálním počítači Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 66240ffebcd98bb8e14fb21bcb5c54b8fceb7a64
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7c56b54f2d5be2bd47644e07369120468bb6015e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406384"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533693"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozšíření virtuálního počítače pro Windows
+# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Azure Monitor pro Windows
 
-Log Analytics poskytuje možnosti monitorování napříč cloudovou a místní prostředky. Rozšíření virtuálního počítače agenta Log Analytics pro Windows je publikována a podporované společností Microsoft. Rozšíření nainstaluje agenta Log Analytics ve službě Azure virtual machines a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro virtuální počítač rozšíření Log Analytics pro Windows.
+Protokoly Azure monitoru poskytuje funkce sledování v rámci cloudových a místních prostředků. Rozšíření virtuálního počítače agenta Log Analytics pro Windows je publikována a podporované společností Microsoft. Rozšíření nainstaluje agenta Log Analytics ve službě Azure virtual machines a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače Azure Monitor pro Windows.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +36,7 @@ Rozšíření agenta Log Analytics pro Windows můžete spustit na Windows Serve
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center automaticky zřídí agenta Log Analytics a připojí ji s výchozí pracovní prostor log analytics předplatného Azure. Pokud používáte Azure Security Center, nespouštějte kroky v tomto dokumentu. Tím přepíšete nakonfigurovaný pracovní prostor a zrušit propojení s Azure Security Center.
+Azure Security Center automaticky zřídí agenta Log Analytics a připojí ji k pracovnímu prostoru Log Analytics výchozího předplatného Azure. Pokud používáte Azure Security Center, nespouštějte kroky v tomto dokumentu. Tím přepíšete nakonfigurovaný pracovní prostor a zrušit propojení s Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 Rozšíření agenta Log Analytics pro Windows vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
@@ -85,7 +87,7 @@ Rozšíření virtuálního počítače Azure je možné nasadit s využitím š
 
 JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění ve formátu JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 
-V následujícím příkladu se předpokládá, že rozšíření Log Analytics je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
+V následujícím příkladu se předpokládá, že rozšíření Azure Monitor je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
 
 
 ```json

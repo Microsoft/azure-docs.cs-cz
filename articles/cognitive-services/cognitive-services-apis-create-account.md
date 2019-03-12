@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: c69e8b7360774971316b5a060aff9e7057d3e9aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873968"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534799"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 
@@ -35,7 +35,7 @@ Následující části vás provede vytvořením jedné nebo víc služeb předp
 
 ### <a name="single-service-subscription"></a>Jednoúčelovou předplatného
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com)a klikněte na tlačítko **+ vytvořit prostředek**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a klikněte na tlačítko **+ vytvořit prostředek**.
 
     ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
@@ -57,7 +57,7 @@ Následující části vás provede vytvořením jedné nebo víc služeb předp
 
 ### <a name="multi-service-subscription"></a>Víc služeb předplatného
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com)a klikněte na tlačítko **+ vytvořit prostředek**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a klikněte na tlačítko **+ vytvořit prostředek**.
 
     ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 

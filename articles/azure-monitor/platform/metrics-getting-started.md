@@ -8,25 +8,21 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9d23d4b30ca4d394fb4afd0bb6620be6df179600
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444935"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537333"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
 ## <a name="where-do-i-start"></a>Kde mám začít
+Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje zobrazování grafů, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Spusťte v následujícím pořadí:
 
-> [!NOTE]
-> Tento článek popisuje klíčové koncepty, které pomáhají novým uživatelům Začínáme s Průzkumníkem metrik Azure monitoru. Podrobnější dokumentaci a informace o nastavení pokročilé grafu a metriky, najdete v článku [pokročilé funkce Průzkumníka metrik Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts).
+1. [Vyberte prostředek a metriku](#create-your-first-metric-chart) a zobrazí se základní graf. Potom [vyberte časový rozsah](#select-a-time-range) , který je relevantní pro šetření.
 
-Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Spusťte v následujícím pořadí:
-
-1. Začněte tím, že [výběr prostředku a metriku](#creating-your-first-metric-chart) a zobrazí se základní graf. Potom [vyberte časový rozsah](#picking-time-range) , který je relevantní pro šetření.
-
-1. Zkuste [použití filtrů dimenzí a rozdělování](#applying-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
+1. Zkuste [použití filtrů dimenzí a rozdělování](#apply-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
 
 1. Použití [upřesňující nastavení](#advanced-chart-settings-and-next-steps) přizpůsobení grafu před připnutím na řídicí panely. [Konfigurace výstrah](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotou.
 
@@ -49,7 +45,7 @@ Chcete-li vytvořit grafu metrik z prostředků, skupinu prostředků, předplat
 > [!NOTE]
 > Použití **přidat metriku** tlačítko a opakujte tyto kroky, pokud chcete zobrazit několik metrik zobrazených ve stejném grafu. Několik grafů v jednom zobrazení, vyberte **přidat graf** tlačítko v horní části.
 
-## <a name="pick-a-time-range"></a>Vyberte časový rozsah
+## <a name="select-a-time-range"></a>Vybrat časový rozsah
 
 Tento graf zobrazuje ve výchozím nastavení, posledních 24 hodin data metrik. Použití **výběr času** panel změnit časový rozsah, Přiblížit nebo oddálit v grafu. 
 
@@ -57,7 +53,7 @@ Tento graf zobrazuje ve výchozím nastavení, posledních 24 hodin data metrik.
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Použití filtrů dimenzí a rozdělení
 
-[Filtrování](metrics-charts.md#apply-filters-to-charts) a [rozdělení](metrics-charts.md#apply-splitting-to-a-chart) jsou výkonné diagnostické nástroje pro metriky, které mají dimenze. Tyto funkce Zobrazit různých metrik segmentů ("hodnoty dimenze") mít vliv na celkovou hodnotu metriky a umožní vám identifikovat odlehlé hodnoty je to možné.
+[Filtrování](metrics-charts.md#apply-filters-to-charts) a [rozdělení](metrics-charts.md#apply-splitting-to-a-chart) jsou výkonné diagnostické nástroje pro metriky, které mají dimenze. Tyto funkce Zobrazit celkovou hodnotu metriky dopad jak různé metriky segmentů ("hodnoty dimenze") a umožní vám identifikovat možné odlehlé hodnoty.
 
 - **Filtrování** umožní vybrat hodnot dimenzí, které jsou zahrnuty v grafu. Například můžete chtít zobrazit úspěšné žádosti při vytvoření grafu *doba odezvy serveru* metriku. Je třeba použít filtr *úspěch požadavku* dimenze. 
 

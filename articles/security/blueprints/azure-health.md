@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441793"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544558"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -272,7 +272,7 @@ Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientadmissio
 
 **2. Key Vault** požadovaná pro tajný klíč, který je přidružen k požadovaný token.
 
-**3. Role Azure ověření žádosti a autorizaci žádost o přístup ke službě Key Vault.
+**3. Role Azure** požadavek na ověření a autorizaci žádost o přístup ke službě Key Vault.
 
 **4. Key Vault** vrací tajný klíč, v tomto případě SQL DB připojovací řetězec.
 

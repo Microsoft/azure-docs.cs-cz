@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbde6eda2bd532b1a26a58e4ca82c9b5fab4e6c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188592"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531109"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím služby Azure Active Directory pomocí toku přidělení kódu OAuth 2.0
 
@@ -145,7 +145,7 @@ grant_type=authorization_code
 | client_id |povinné |Id aplikace přiřazené vaší aplikaci, když je zaregistrován ve službě Azure AD. To můžete najít na webu Azure Portal. Id aplikace se zobrazí v nastavení registrace aplikací. |
 | grant_type |povinné |Musí být `authorization_code` pro tok autorizačního kódu. |
 | kód |povinné |`authorization_code` , Kterou jste získali v předchozí části |
-| redirect_uri |povinné |Stejné `redirect_uri` hodnotu, která byla použita k získání `authorization_code`. |
+| redirect_uri |povinné | A `redirect_uri`zaregistrovat v klientské aplikaci. |
 | client_secret |vyžaduje se pro webové aplikace, není povolena pro veřejné klienty |Tajný klíč aplikace, kterou jste vytvořili na webu Azure Portal pro vaši aplikaci v rámci **klíče**. Nelze se použít v nativní aplikaci (veřejným klientem), protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API (všechny důvěrní klienti), které mají možnost ukládat `client_secret` bezpečně na straně serveru. Hodnotu client_secret by měl být kódovaná adresou URL před odesláním. |
 | prostředek | Doporučené |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeným prostředkům). Identifikátor ID URI aplikace najdete na webu Azure Portal klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, otevřete aplikaci **nastavení** stránce a potom klikněte na  **Vlastnosti**. Může být také externí prostředek jako `https://graph.microsoft.com`. Vyžaduje se v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy umístěte žádost o autorizaci, ujistěte se, že přijetí souhlasu uživatele. Pokud žádost o autorizaci a token požadavku, prostředek ' parametry musí odpovídat. | 
 | code_verifier | nepovinné | Stejné code_verifier, který se používá k získání authorization_code. Povinné, pokud PKCE použila žádost o udělení autorizace kódu. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |

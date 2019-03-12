@@ -1,18 +1,18 @@
 ---
-title: Službě Azure SignalR bez serveru rychlý start – JavaScript
+title: Funkce SignalR služba bez serveru rychlý start Azure – JavaScript
 description: Rychlý start pro vytvoření chatovací místnosti pomocí služby Azure SignalR a Azure Functions.
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/23/2018
+ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f0044ca206d15762d44d8d4ea2d58c93950c5e1e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252452"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535610"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Rychlý start: Vytvoření chatovací místnosti s Azure Functions a služby SignalR pomocí jazyka JavaScript
 
@@ -81,7 +81,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto Rychlém zprovoznění jste vytvořili a spustili bezserverovou aplikaci v reálném čase v sadě Visual Studio. Dále se dozvíte více o tom, jak vyvíjet a nasazovat Azure Functions pomocí sady Visual Studio.
+V tomto rychlém startu vytvořené a spustili aplikaci v reálném čase bez serveru v nástroji VS Code. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
 
 > [!div class="nextstepaction"]
-> [Vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md)
+> [Nasazení Azure Functions přes VS Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

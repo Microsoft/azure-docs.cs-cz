@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: fc56fe3a5bdfa0f5e1ef4bc309932cb7f57cf27d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978089"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530956"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu o aliasu pro podporu vrcholu názvy domén s Traffic Managerem 
 
 Pro vrchol názvu svojí domény můžete vytvořit záznam aliasu, který bude odkazovat na profil služby Azure Traffic Manager. Příklad: contoso.com. Místo použití služby přesměrování nakonfigurujete službu Azure DNS tak, aby přímo z vaší zóny odkazovala na profil služby Traffic Manager. 
 
@@ -33,13 +33,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
-Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
+Pokyny k hostování domény v Azure DNS najdete v tématu [kurzu: Hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastní název domény.
 
 ## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
-1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-TM**.
 3. Vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Servers**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-TM** a podsíť pojmenujte **SN-Web**.
@@ -116,7 +116,7 @@ Vytvořte záznam aliasu, který odkazuje na profil služby Traffic Manager.
 
 Pokud už prostředky vytvořené pro účely tohoto kurzu nepotřebujete, odstraňte skupinu prostředků **RG-DNS-Alias-TM**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili záznam aliasu umožňující použít vrchol názvu vaší domény k odkazování na profil služby Traffic Manager. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 

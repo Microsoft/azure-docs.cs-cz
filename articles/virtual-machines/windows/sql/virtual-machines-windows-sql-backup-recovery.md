@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 47d06ce5a03fe51ba345f60e2feff958ed4a890b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec147355d6f61a282a0e6b0950fe03ba0e2341f5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871158"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530368"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -144,7 +144,7 @@ V následující tabulce najdete souhrn možností jednotlivých možností zál
 | Záloha na připojené disky na virtuálním počítači |   |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Centrální přizpůsobitelných sestav zálohování |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Konsolidované e-mailové výstrahy při selhání |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Přizpůsobení monitorování založené na Log Analytics |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Přizpůsobení monitorování založené na protokoly Azure monitoru |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Monitorování úlohy zálohování pomocí aplikace SSMS nebo příkazů jazyka Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Obnovení databáze pomocí SSMS nebo příkazů jazyka Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

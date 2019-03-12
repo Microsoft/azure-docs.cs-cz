@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 8f2130c1927522a587136fde3423e971a0555026
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5f0198581c83522f42a6742a0578adfd6c0cb781
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010034"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535729"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Úlohy vysílání a plánování (Node)
 
@@ -273,4 +273,4 @@ Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma 
 [lnk-fwupdate]: tutorial-firmware-update.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

@@ -10,17 +10,17 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bba257c61509d862bb3161625750f05a86af8770
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854791"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532163"
 ---
 # <a name="data-format"></a>Formát dat
 
 Popisuje datový soubor seznamu objektů pro indexování.
-Každý řádek v souboru určuje hodnoty atributů objektu v [formátu JSON](http://json.org/) s kódováním UTF-8.
+Každý řádek v souboru určuje hodnoty atributů objektu v [formátu JSON](https://json.org/) s kódováním UTF-8.
 Kromě atributů, které jsou definovány v [schématu](SchemaFormat.md), každý objekt má atribut volitelné "logprob", který určuje relativní protokolu pravděpodobnost mezi objekty.
 Při služba vrátí objekty v pořadí podle snižuje pravděpodobnost, můžeme použít "logprob" k označení vrácení pořadí sesouhlasení objektů.
 Zadaný pravděpodobnost *p* mezi 0 a 1, nelze vypočítat odpovídající pravděpodobnost protokolu protokolu (*p*), kde je log() funkci přirozený protokolu.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: dfd55ac12587cf99cc3fc3ff8eac4f4572229396
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753495"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539696"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -198,7 +198,7 @@ Nastavení testu:
 \* Latence Brazílie je typický příklad, kde lineární vzdálenost výrazně liší od fiber spustit vzdálenost. Můžu očekáváte, že by měly být v okolí 160 ms latenci, ale je ve skutečnosti 189 ms. Tento rozdíl oproti Moje očekávání může znamenat někde potíže se sítí, ale pravděpodobně, aby běžela fiber nepřekračuje Brazílie v rovné čáry a dalších 1 000 km nebo, cesty k získání Brazílie ze Seattlu.
 
 ## <a name="next-steps"></a>Další postup
-1. Stáhnout z Githubu v Azure připojení Toolkit [http://aka.ms/AzCT][ACT]
+1. Stáhnout z Githubu v Azure připojení Toolkit [https://aka.ms/AzCT][ACT]
 2. Postupujte podle pokynů pro [propojit testování výkonu][Performance Doc]
 
 <!--Image References-->
@@ -212,7 +212,7 @@ Nastavení testu:
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
-[ACT]: http://aka.ms/AzCT
+[ACT]: https://aka.ms/AzCT
 
 
 

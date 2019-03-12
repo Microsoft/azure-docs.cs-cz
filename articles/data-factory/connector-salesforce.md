@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: c4d694621e4ac5428256346e3994bc3233d399a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f06dd47a519d992e52ac0010c0ae7d81870a4842
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441402"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544516"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ Salesforce má omezení pro celkový počet požadavků rozhraní API a souběž
 - Pokud počet souběžných požadavků překročí limit, dojde k omezení šířky pásma a zaznamenat náhodných chyb.
 - Pokud celkový počet požadavků překročí limit, se po dobu 24 hodin zablokuje účtu Salesforce.
 
-V obou případech může být také zobrazí chybová zpráva "REQUEST_LIMIT_EXCEEDED". Další informace najdete v části "Omezení žádostí o rozhraní API" v [limity pro vývojáře Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
+V obou případech může být také zobrazí chybová zpráva "REQUEST_LIMIT_EXCEEDED". Další informace najdete v části "Omezení žádostí o rozhraní API" v [limity pro vývojáře Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
 
 ## <a name="get-started"></a>Začínáme
 
