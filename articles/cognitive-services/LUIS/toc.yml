@@ -10,6 +10,14 @@ items:
   items:
   - name: Sestavení aplikace předem připravené domény
     href: luis-get-started-create-app.md
+  - name: Použití portálu LUIS
+    items:
+    - name: 1. Vytvoření aplikace
+      displayName: intent, entity, create app, test, example utterance
+      href: get-started-portal-build-app.md
+    - name: 2. Nasazení aplikace
+      displayName: assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish
+      href: get-started-portal-deploy-app.md
   - name: Použití sady .NET SDK
     items:
     - name: Koncový bod předpovědi dotazů
@@ -251,6 +259,7 @@ items:
   - name: Ochrana osobních údajů uživatele
     href: luis-user-privacy.md
   - name: Oblasti
+    displayName: failover, fail-over, fail over, Europe, EU, Austrailia, business continuity, bcdr
     href: luis-reference-regions.md
   - name: Hranice
     href: luis-boundaries.md
@@ -394,9 +403,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Znalostní báze
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 1bc49d2665c143a434f56d9d58bbe3d51cb42404
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 59950ced82f3b50ec5d0fe340157016954d2ff0b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338721"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779755"

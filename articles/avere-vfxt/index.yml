@@ -6,9 +6,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/31/2018
 ms.locfileid: "50669145"
 documentType: LandingData
-title: Dokumentace k Avere vFXT pro Azure
+title: Dokumentace k Avere vFXT for Azure
 metadata:
-  title: Dokumentace k Avere vFXT pro Azure
+  title: Dokumentace k Avere vFXT for Azure
   description: Využijte Avere vFXT jako mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) náročné na čtení
   services: avere-vfxt
   author: ekpgh
@@ -17,9 +17,9 @@ metadata:
   ms.date: 10/31/2018
   ms.author: v-erkell
 abstract:
-  description: Avere vFXT pro Azure poskytuje cloudovou mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Ukládáním souborů do mezipaměti blízko vašich výpočetních uzlů Avere vFXT zrychluje čtení a umožňuje plynulejší práci i při zátěžové špičce. Avere vFXT nejlépe funguje pro systémy, které mají 1 000 až 40 000 klientských jader. <p>Systém Avere vFXT může využívat vaše stávající místní úložiště dat k tomu, aby výpočetním prostředkům založeným na Azure umožnil místní přístup k aktivním souborům, které jsou dlouhodobě uložené ve vašem datovém centru.
+  description: Avere vFXT for Azure poskytuje cloudovou mezipaměťovou vrstvu pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Ukládáním souborů do mezipaměti blízko vašich výpočetních uzlů Avere vFXT zrychluje čtení a umožňuje plynulejší práci i při zátěžové špičce. Avere vFXT nejlépe funguje pro systémy, které mají 1 000 až 40 000 klientských jader. <p>Systém Avere vFXT může využívat vaše stávající místní úložiště dat k tomu, aby výpočetním prostředkům založeným na Azure umožnil místní přístup k aktivním souborům, které jsou dlouhodobě uložené ve vašem datovém centru.
 sections:
-- title: Začínáme s Avere vFXT pro Azure
+- title: Začínáme s Avere vFXT for Azure
   items:
   - type: list
     style: unordered

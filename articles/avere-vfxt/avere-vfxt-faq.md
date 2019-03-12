@@ -13,13 +13,13 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57404633"
 ---
-# <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT pro Azure – nejčastější dotazy
+# <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
 Tento článek obsahuje odpovědi na otázky, které vám můžou pomoct rozhodnout, jestli je vhodná pro vaše potřeby Avere vFXT pro Azure. Poskytuje základní informace o Avere vFXT a vysvětluje, jak to funguje s dalšími komponentami Azure a produkty od jiných dodavatelů. 
 
 ## <a name="general"></a>Obecné 
 
-### <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT pro Azure?
+### <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT for Azure?
 
 Avere vFXT pro Azure je systém souborů vysoce výkonné, který ukládá do mezipaměti aktivní data v Azure compute, aby umožňovala efektivní zpracování důležité úlohy.
 

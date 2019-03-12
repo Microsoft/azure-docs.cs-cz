@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Backup a obnovení
     href: backup-recovery.md
-  - name: Vysokovýkonné výpočetní prostředí (HPC)
-    href: high-performance-computing.md
   - name: Aspekty nasazování
     items:
     - name: Pokyny pro infrastrukturu
@@ -398,7 +396,7 @@ items:
       - name: MS SQL v Linuxu
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Vysokovýkonné výpočetní prostředí (HPC)
-      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: Architektura
@@ -407,49 +405,52 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: Správa úložiště
     items:
-    - name: Nejčastější dotazy k diskům
-      href: faq-for-disks.md
     - name: Přidání disku
       items:
       - name: Azure CLI
         href: add-disk.md
       - name: portál Azure
         href: attach-disk-portal.md
-    - name: Srovnávací test disku
-      href: disks-benchmarks.md
     - name: Odpojení disku
       href: detach-disk.md
+    - name: Nasazení disků pomocí šablony
+      href: using-managed-disks-template-deployments.md
     - name: Změna velikosti disku
       href: expand-disks.md
     - name: Pořízení snímku disku
       href: snapshot-copy-managed-disk.md
     - name: Zálohování nespravovaných disků
       href: incremental-snapshots.md
-    - name: Převod na Managed Disks
-      href: convert-unmanaged-to-managed-disks.md
-    - name: Převod disku mezi úrovněmi Standard a Premium
-      href: convert-disk-storage.md
+    - name: Migrace a převod
+      items:
+      - name: Migrace na Premium Storage s Azure Site Recovery
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Převod na Managed Disks
+        href: convert-unmanaged-to-managed-disks.md
+      - name: Převod disku mezi úrovněmi Standard a Premium
+        href: convert-disk-storage.md
     - name: Kopírování souborů do virtuálního počítače
       href: copy-files-to-linux-vm-using-scp.md
-    - name: Migrace na Premium Storage s Azure Site Recovery
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: Vyhledání nepřipojených disků
-      href: find-unattached-disks.md
-    - name: Použití úložiště souborů
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: Nasazení disků pomocí šablony
-      href: using-managed-disks-template-deployments.md
-    - name: Použití akcelerátoru zápisu
-      href: how-to-enable-write-accelerator.md
-    - name: Povolení disků SSD úrovně Ultra
-      href: disks-enable-ultra-ssd.md
-    - name: Optimalizace výkonu
-      href: optimization.md
+    - name: Výkon
       items:
+      - name: Použití akcelerátoru zápisu
+        href: how-to-enable-write-accelerator.md
+      - name: Povolení disků SSD úrovně Ultra
+        href: disks-enable-ultra-ssd.md
+      - name: Srovnávací test disku
+        href: disks-benchmarks.md
+      - name: Optimalizace výkonu
+        href: optimization.md
       - name: Konfigurace softwarového pole RAID
         href: configure-raid.md
       - name: Konfigurace LVM
         href: configure-lvm.md
+    - name: Vyhledání nepřipojených disků
+      href: find-unattached-disks.md
+    - name: Použití úložiště souborů
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: Nejčastější dotazy k diskům
+      href: faq-for-disks.md
   - name: Správa sítí
     items:
     - name: Vytvoření virtuální sítě
@@ -559,9 +560,9 @@ items:
     href: faq.md
 - name: Řešení potíží
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ade43488288949aa22942c8df2d6900e4522615a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438285"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732022"

@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Backup a obnovení
     href: backup-recovery.md
-  - name: Vysokovýkonné výpočetní prostředí (HPC)
-    href: high-performance-computing.md
   - name: Příklad infrastruktury
     href: infrastructure-example.md
 - name: Návody
@@ -313,43 +311,46 @@ items:
         href: excel-cluster-hpcpack.md
   - name: Správa úložiště
     items:
-    - name: Nejčastější dotazy k diskům
-      href: faq-for-disks.md
     - name: Přidání disku
       items:
       - name: Azure Powershell
         href: attach-disk-ps.md
       - name: portál Azure
         href: attach-managed-disk-portal.md
-    - name: Srovnávací test disku
-      href: disks-benchmarks.md
     - name: Odpojení disku
       href: detach-disk.md
+    - name: Nasazení disků pomocí šablony
+      href: using-managed-disks-template-deployments.md
     - name: Změna velikosti disku
       href: expand-os-disk.md
     - name: Pořízení snímku disku
       href: snapshot-copy-managed-disk.md
     - name: Zálohování nespravovaných disků
       href: incremental-snapshots.md
-    - name: Převod disku mezi úrovněmi Standard a Premium
-      href: convert-disk-storage.md
-    - name: Migrace na Premium Storage s Azure Site Recovery
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: Migrace a převod
+      items:
+      - name: Převod disku mezi úrovněmi Standard a Premium
+        href: convert-disk-storage.md
+      - name: Migrace na Premium Storage s Azure Site Recovery
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Migrace na spravované disky
+        href: migrate-to-managed-disks.md
+      - name: Nespravované virtuální počítače na spravovaného disky
+        href: convert-unmanaged-to-managed-disks.md
+    - name: Výkon
+      items:
+      - name: Povolení akcelerátoru zápisu
+        href: how-to-enable-write-accelerator.md
+      - name: Povolení disků SSD úrovně Ultra
+        href: disks-enable-ultra-ssd.md
+      - name: Srovnávací test disku
+        href: disks-benchmarks.md
     - name: Vyhledání nepřipojených disků
       href: find-unattached-disks.md
     - name: Použití úložiště souborů
-      href: mount-azure-file-storage.md
-    - name: Nasazení disků pomocí šablony
-      href: using-managed-disks-template-deployments.md
-    - name: Povolení akcelerátoru zápisu
-      href: how-to-enable-write-accelerator.md
-    - name: Povolení disků SSD úrovně Ultra
-      href: disks-enable-ultra-ssd.md
-    - name: Migrace na spravované disky
-      href: migrate-to-managed-disks.md
-      items:
-      - name: Nespravované virtuální počítače na spravovaného disky
-        href: convert-unmanaged-to-managed-disks.md
+      href: ../../storage/files/storage-files-quick-create-use-windows.md
+    - name: Nejčastější dotazy k diskům
+      href: faq-for-disks.md
   - name: Správa sítí
     href: ps-common-network-ref.md
     items:
@@ -461,9 +462,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 3ddf84852fee0dc30aa9bc7e9d49f06493f6b0cc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 78a321bbf5bbf3c970d7b6caef3409d55d33c808
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448437"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732524"

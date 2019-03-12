@@ -1,6 +1,6 @@
 ---
-title: Avere vFXT pro Azure
-description: Úvod do Avere vFXT pro Azure, cloudové vrstvy mezipaměti pro prostředí HPC
+title: Avere vFXT for Azure
+description: Úvod do Avere vFXT for Azure, cloudové vrstvy mezipaměti pro prostředí HPC
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
@@ -13,9 +13,9 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2019
 ms.locfileid: "56989315"
 ---
-# <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT pro Azure? 
+# <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT for Azure? 
 
-Avere vFXT pro Azure je řešení ukládání do mezipaměti na úrovni systému souborů pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Umožňuje využít škálovatelnost cloud computingu ke zpřístupnění dat kdykoli a kdekoli jsou potřeba, a to i dat uložených na vlastním místním hardwaru.
+Avere vFXT for Azure je řešení ukládání do mezipaměti na úrovni systému souborů pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Umožňuje využít škálovatelnost cloud computingu ke zpřístupnění dat kdykoli a kdekoli jsou potřeba, a to i dat uložených na vlastním místním hardwaru.
 
 Avere vFXT podporuje tyto běžné scénáře výpočetního prostředí: 
 
@@ -24,7 +24,7 @@ Avere vFXT podporuje tyto běžné scénáře výpočetního prostředí:
 
 ![Diagram znázorňující podrobnosti o systému Avere vFXT v předplatném Azure připojeném k úložišti objektů blob a místnímu datacentru](media/avere-vfxt-hybrid.png)
 
-Avere vFXT pro Azure je nejvhodnější pro tyto situace: 
+Avere vFXT for Azure je nejvhodnější pro tyto situace: 
 
 * Operace s velkými nároky na čtení pro úlohy HPC
 * Aplikace využívající běžný protokol NFS
@@ -33,7 +33,7 @@ Avere vFXT pro Azure je nejvhodnější pro tyto situace:
 
 Další informace najdete na adrese <https://azure.microsoft.com/services/storage/avere-vfxt/>.
 
-## <a name="who-uses-avere-vfxt-for-azure"></a>Kdo používá Avere vFXT pro Azure? 
+## <a name="who-uses-avere-vfxt-for-azure"></a>Kdo používá Avere vFXT for Azure? 
 
 Avere vFXT může pomáhat s nejrůznějšími výpočetními úlohami náročnými na čtení:
 

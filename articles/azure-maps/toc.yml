@@ -63,33 +63,41 @@ items:
       href: how-to-search-for-address.md
     - name: Vykreslování vlastních dat na statické mapě
       href: how-to-render-custom-data.md
-  - name: Vytvoření javascriptových map
+  - name: Vývoj s využitím sady Web SDK
     items:
-    - name: Použití mapového ovládacího prvku
-      href: how-to-use-map-control.md
-    - name: Vytvoření mapy
-      href: map-create.md
-    - name: Výběr stylu mapy
-      href: choose-map-style.md
-    - name: Přidání mapových ovládacích prvků
-      href: map-add-controls.md
-    - name: Přidání vrstvy symbolů
-      href: map-add-pin.md
-    - name: Přidání místního okna
-      href: map-add-popup.md
-    - name: Přidání vrstvy bublin
-      href: map-add-bubble-layer.md
-    - name: Přidání obrazce
-      href: map-add-shape.md
-    - name: Přidání vrstvy heat mapy
-      href: map-add-heat-map-layer.md
-    - name: Přidání vrstvy obrázků
-      href: map-add-image-layer.md
-    - name: Přidání vrstvy dlaždic
-      href: map-add-tile-layer.md
-    - name: Přidání značek HTML
-      href: map-add-custom-html.md
-    - name: Služby
+    - name: Mapový ovládací prvek
+      items:
+      - name: Použití mapového ovládacího prvku
+        href: how-to-use-map-control.md
+      - name: Vytvoření mapy
+        href: map-create.md
+      - name: Výběr stylu mapy
+        href: choose-map-style.md
+      - name: Přidání ovládacích prvků do mapy
+        href: map-add-controls.md
+      - name: Přidání vrstvy symbolů
+        href: map-add-pin.md
+      - name: Přidání místního okna
+        href: map-add-popup.md
+      - name: Přidání vrstvy bublin
+        href: map-add-bubble-layer.md
+      - name: Přidání tvarů
+        href: map-add-shape.md
+      - name: Přidání vrstvy heat mapy
+        href: map-add-heat-map-layer.md
+      - name: Překryv obrázku
+        href: map-add-image-layer.md
+      - name: Přidání vrstev dlaždic
+        href: map-add-tile-layer.md
+      - name: Značky HTML
+        href: map-add-custom-html.md
+      - name: Zobrazení provozu
+        href: map-show-traffic.md
+      - name: Interakce s využitím událostí myši
+        href: map-events.md
+      - name: Zpřístupnění aplikace
+        href: map-accessibility.md
+    - name: Modul služeb
       items:
       - name: Zobrazení výsledků hledání
         href: map-search-location.md
@@ -97,13 +105,7 @@ items:
         href: map-get-information-from-coordinate.md
       - name: Zobrazení pokynů pro trasu z A do B
         href: map-route.md
-    - name: Zobrazení provozu
-      href: map-show-traffic.md
-    - name: Interakce s využitím událostí myši
-      href: map-events.md
-    - name: Přístupné aplikace map
-      href: map-accessibility.md
-  - name: Vytvoření map pro Android
+  - name: Vývoj s využitím sady Android SDK
     items:
     - name: Jak používat mapový ovládací prvek pro Android
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: Zdroje a prostředky
   items:
   - name: Podmínky použití služby Azure Maps
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Cenová kalkulačka
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: Sady SDK pro zařízení IoT
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336729"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569225"
