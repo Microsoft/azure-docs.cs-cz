@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 4a9a1b5599468df6bc85cc1d535b577c508dd0a9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995642"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533135"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzních záznamů DNS pro služby hostované v Azure
 
@@ -252,7 +252,7 @@ Technické možnost odesílat e-maily přímo z nasazení služby Azure závisí
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o reverzních záznamů DNS najdete v tématu [zpětného vyhledávání DNS v encyklopedii Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Další informace o reverzních záznamů DNS najdete v tématu [zpětného vyhledávání DNS v encyklopedii Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Zjistěte, jak [hostování zóny zpětného vyhledávání pro váš rozsah IP přiřazené poskytovatele internetových služeb v Azure DNS](dns-reverse-dns-for-azure-services.md).
 

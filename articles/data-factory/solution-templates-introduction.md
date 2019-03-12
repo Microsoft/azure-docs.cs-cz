@@ -3,21 +3,20 @@ title: Přehled šablon pro Azure Data Factory | Dokumentace Microsoftu
 description: Další informace o použití předem definované šablony, abyste mohli rychle začít s Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: douglasl
-ms.reviewer: douglasl
-ms.openlocfilehash: c3571aec55d5050df01f740a163db18e9c6c1095
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: c684d275052e011d965210c132e09bab679cf166
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967248"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576243"
 ---
 # <a name="templates"></a>Šablony
 

@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 7479f651a9fce5d65b1faf4113febb6e79c426b2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439074"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730423"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -80,11 +80,9 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
 4. Po stažení sestavy pomocí aplikace Excel přejděte do složky stažené a otevřete ho v aplikaci Excel k jeho zobrazení.
 
-### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Ukazuje údaje o výkonu pro adaptéry disků a sítí, jako nuly
+### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Údaje o výkonu pro využití procesoru, paměti a disky zobrazují jako nuly
 
-Tato situace může nastat, pokud je na méně než tři nastavte úroveň nastavení statistiky na vCenter serveru. Na úrovni 3 nebo vyšší ukládá vCenter historie výkonu virtuálních počítačů pro výpočetní prostředky, úložiště a sítě. Pro nejméně úrovni tři vCenter nejsou uloženy v úložiště a data sítě, ale jenom data využití procesoru a paměti. V tomto scénáři výkonu zobrazí data jako nula ve službě Azure Migrate a Azure Migrate nabízí doporučení velikosti disků a sítí na základě metadat shromážděných z místních počítačů.
-
-Pokud chcete povolit shromažďování dat o výkonu disku a sítě, změňte úroveň nastavení statistiky na tři. Potom počkejte aspoň jeden den do prostředí pro zkoumání a posouzení ho.
+Azure Migrate průběžně profily v místním prostředí pro shromažďování dat z místních virtuálních počítačů. Pokud jste právě spustili zjišťování prostředí, budete muset počkat aspoň jeden den pro shromažďování dat výkonu provádět. Pokud posouzení se vytvoří bez čekání na jeden den, metriky výkonu se zobrazí jako nuly. Po uplynutí za den, můžete vytvořit nové posouzení nebo aktualizovat existující posouzení pomocí možnosti "Přepočítat" v sestavě posouzení.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Zeměpisná oblast Azure, zadané při vytváření projektu migrace, jak zjistím přesné oblast Azure, kde budou uloženy zjištěná metadata?
 

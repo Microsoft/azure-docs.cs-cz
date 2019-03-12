@@ -4,16 +4,16 @@ description: Zjistěte, jak zvolit řešení Azure pro přenos dat, když máte 
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 54a51f5f124857419727ed7ca574f717e17b125a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263801"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776661"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat pro rozsáhlé datové sady s nízkým nebo žádné šířky pásma sítě
  
@@ -48,14 +48,14 @@ Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 |                                     |    Data Box Disk (preview)    |    Data Box                                      |    Silná pole dat (preview)              |    Import/export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Velikost dat                        |    Až 35 TB                 |    Až 80 TB za zařízení                       |    Až 800 TB na zařízení               |    Proměnná                            |
-|    Typ dat                        |    Objekty BLOB Azure                  |    Objekty BLOB Azure<br>Soubory Azure                    |    Objekty BLOB Azure<br>Soubory Azure            |    Objekty BLOB Azure<br>Soubory Azure          |
-|    Uspořádání formuláře                      |    5 SSD disků na pořadí             |    1 × 50-lbs. velikost plochy zařízení podle pořadí    |    1 X ~ 500-lbs. velká zařízení podle pořadí    |    Až 10 pevné disky nebo disky SSD jednu objednávku        |
+|    Typ dat                        |    Azure Blobs                  |    Azure Blobs<br>Soubory Azure                    |    Azure Blobs<br>Soubory Azure            |    Azure Blobs<br>Soubory Azure          |
+|    Uspořádání formuláře                      |    5 SSD disků na pořadí             |    1 × 50-lbs. velikost plochy zařízení podle pořadí    |    1 X ~500-lbs. velká zařízení podle pořadí    |    Až 10 pevné disky nebo disky SSD jednu objednávku        |
 |    Počáteční instalace               |    Nízká <br>(15 minut)            |    S nízkou až střední <br> (< 30 minut)               |    Střední<br>(1 – 2 hodiny)               |    Střední na složité<br>(proměnné) |
 |    Odesílání dat do Azure               |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
 |    Export dat z Azure           |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
-|    Šifrování                       |    AES 128-bit                  |    AES 256 bitů                                   |    AES 256 bitů                           |    AES 128-bit                         |
+|    Šifrování                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    Hardware                         |     Microsoft zadaný          |    Microsoft zadaný                            |    Microsoft zadaný                    |    Zákazníka                   |
-|    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ-45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
+|    Síťové rozhraní                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
 |    Integrace partnerských řešení              |    Někteří                         |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Vysoká](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Někteří                                |
 |    Expedice                         |    Spravovaná Microsoftem            |    Spravovaná Microsoftem                             |    Spravovaná Microsoftem                     |    Spravovaná zákazníkem                    |
 | Použijte v případě přesunu dat         |V rámci obchodní oblasti|V rámci obchodní oblasti|V rámci obchodní oblasti|Přes geografické hranice, například nám EU|

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 053cabfa29bd5e436fecd922e4bcdbca9483d25a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455679"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549200"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -130,9 +130,9 @@ Zobrazit [objektu pro vytváření dat monitorování kanálů pomocí Azure Pow
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
 
 [azure-portal]: https://portal.azure.com/
 

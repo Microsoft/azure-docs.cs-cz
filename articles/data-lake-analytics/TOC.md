@@ -85,6 +85,6 @@
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videa](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

@@ -7,16 +7,16 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164615"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772170"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
@@ -260,7 +260,7 @@ Následuje ukázka objektu výsledků vráceného funkcí pool.get.
 Tyto úkoly budou spouštěné paralelně, nasazené v několika uzlech a orchestrované službou Azure Batch.
 
 > [!Tip]
-> Pomocí vlastnosti [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete zadat maximální počet úkolů, které můžou být spuštěné současně v jednom uzlu.
+> Pomocí vlastnosti [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete zadat maximální počet úkolů, které můžou být spuštěné současně v jednom uzlu.
 >
 >
 
@@ -273,7 +273,7 @@ Pro uzly s Linuxem obvykle můžete mít skript prostředí, který požadavky n
 Skript můžete nahrát do účtu služby Azure Storage a vygenerovat identifikátor URI SAS pro přístup ke skriptu. Tento proces je také možné automatizovat pomocí sady SDK služby Azure Storage pro Node.js.
 
 > [!Tip]
-> Přípravný úkol pro úlohu se spustí pouze na uzlech virtuálních počítačů, na kterých je potřeba spustit konkrétní úkol. Pokud chcete, aby se požadované programy nainstalovaly na všech uzlech bez ohledu na to, jaké úkoly se na nich spouští, můžete během přidávání fondu použít vlastnost [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Pro srovnání můžete použít následující definici přípravného úkolu.
+> Přípravný úkol pro úlohu se spustí pouze na uzlech virtuálních počítačů, na kterých je potřeba spustit konkrétní úkol. Pokud chcete, aby se požadované programy nainstalovaly na všech uzlech bez ohledu na to, jaké úkoly se na nich spouští, můžete během přidávání fondu použít vlastnost [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add). Pro srovnání můžete použít následující definici přípravného úkolu.
 >
 >
 
@@ -349,7 +349,7 @@ var container_list = ["con1","con2","con3","con4"]
 
 Kód do fondu přidá několik úkolů. Každý z úkolů se provede na uzlu ve vytvořeném fondu virtuálních počítačů. Pokud počet úkolů překročí počet virtuálních počítačů ve fondu nebo hodnotu vlastnosti maxTasksPerNode, úkoly počkají na uvolnění uzlu. Tuto orchestraci automaticky zařizuje služba Azure Batch.
 
-Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také použít funkce list a get v sadě SDK Azure pro Node.js. Podrobnosti jsou uvedeny v [dokumentaci](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
+Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také použít funkce list a get v sadě SDK Azure pro Node.js. Podrobnosti jsou uvedeny v [dokumentaci](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
 ## <a name="next-steps"></a>Další postup
 

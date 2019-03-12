@@ -9,18 +9,18 @@ editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 862d587442b4d3b752092810c33a197ba15a6b51
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 60ea054f6a3305e523e0843690bf58f7998cf0bb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994078"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783207"
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>Vytvoření, spuštění nebo odstranění aplikační brány pomocí PowerShellu 
 
@@ -35,7 +35,7 @@ Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrs
 
 Tenhle článek vás provede kroky k vytvoření, konfiguraci, spuštění a odstranění aplikační brány.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 1. Nainstalujte nejnovější verzi rutin prostředí Azure PowerShell pomocí instalační služby webové platformy. Nejnovější verzi můžete stáhnout a nainstalovat v části **Windows PowerShell** na stránce [Položky ke stažení](https://azure.microsoft.com/downloads/).
 2. Pokud už máte virtuální síť, vyberte buď existující prázdnou podsíť, nebo vytvořte novou podsíť výhradně pro účely služby Application Gateway v existující virtuální síti. Službu Application Gateway nelze nasadit do jiné virtuální sítě, než prostředky, které máte v úmyslu nasadit za službou Application Gateway, pokud nepoužijete partnerský vztah virtuálních sítí. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
@@ -50,9 +50,9 @@ Hodnoty jsou:
 
 * **Fond back-end serverů:** Seznam IP adres back-end serverů. Uvedené IP adresy by měly buď patřit do podsítě virtuální sítě, nebo by měly být veřejnými nebo virtuálními IP adresami.
 * **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se vážou na fond a používají se na všechny servery v rámci fondu.
-* **Front-end port:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, ke kterému fondu back-end serverů se má provoz směrovat při volání příslušného naslouchacího procesu.
+* **Front-endový port:** Toto je veřejný port, který se otevírá ve službě application gateway. Když datový přenos dorazí na tento port, přesměruje se na některý back-end server.
+* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, kterému fondu back endového serveru provoz směrovat při volání příslušného naslouchacího procesu.
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 

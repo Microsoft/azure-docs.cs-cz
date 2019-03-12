@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308886"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727140"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -230,28 +230,28 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
 
 **Rutiny Powershellu (včetně podpory klauzule WHERE pro další filtrování)**:
 
-- [Vytvořit nebo aktualizovat objekt Blob databáze auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Vytvořit nebo aktualizovat objekt Blob Server auditování zásad (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Vytvořit nebo aktualizovat databázi auditování zásad (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Vytvořit nebo aktualizovat zásady auditování serveru (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
 - [Získat databázi zásady auditu (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Získat (Get-AzSqlServerAuditing) objektů Blob serveru zásady auditu](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [Získání Server zásad auditování (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ukázkový skript, naleznete v tématu [konfigurace auditování a detekce hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a id="subheading-9"></a>Spravovat auditování služby SQL database pomocí rozhraní REST API
 
-**Rozhraní REST API – auditování objektů Blob**:
+**REST API**:
 
-- [Vytvořit nebo aktualizovat objekt Blob databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Vytvořit nebo aktualizovat objekt Blob Server zásady auditu](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Získat zásady auditování objektů Blob v databázi](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Získat zásady auditování objektů Blob v serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Vytvořit nebo aktualizovat databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Vytvořit nebo aktualizovat Server zásady auditu](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Získat databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Získání Server zásad auditování](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 
-- [Vytvořit nebo aktualizovat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Vytvořit nebo aktualizovat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Vytvořit nebo aktualizovat databázi *rozšířené* zásad auditování](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Vytvořit nebo aktualizovat Server *rozšířené* zásad auditování](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Získat databázi *rozšířené* zásad auditování](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Získat Server *rozšířené* zásad auditování](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Spravovat auditování služby SQL database pomocí šablon ARM
 

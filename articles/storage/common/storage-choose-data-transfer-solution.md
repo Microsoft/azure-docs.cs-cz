@@ -4,16 +4,16 @@ description: Zjistěte, jak zvolit řešení Azure pro přenos dat na základě 
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: b90e84082eb73dde5a2303f166e9aa254c6f3101
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263815"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773431"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolte řešení Azure pro přenos dat
 
@@ -77,5 +77,5 @@ Odpovězte na následující otázky vám pomohou s výběrem řešení pro pře
 - [Zjistěte, co je Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - Použití rozhraní REST API pro přenos dat
 
-    - [V rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [V jazyce Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cddc6ccd8360ef88c95cd33c0bc8e141d721042d
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010510"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766874"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -277,7 +277,8 @@ Nová verze je ve verzi Preview a má následující vlastnosti.
 * Novou funkci integrace virtuální sítě nefunguje pro aplikace ve službě App Service Environment.
 * Nelze odstranit virtuální síť, která integrované aplikace.  
 * Směrovací tabulky a globální partnerský vztah ještě nejsou k dispozici díky nově zavedené integraci virtuální sítě.  
-* Jedna adresa se používá pro všechny instance plánu služby App Service. Protože se po přiřazení nelze změnit velikost podsítě, použijte podsíť, která může zahrnovat více než maximální měřítko. Možnost/27 s 32 adres je doporučená velikost, která by odpovídala plán služby App Service, který je škálovat, aby 20 instancí.  Můžete využívat koncový bod služby Zabezpečené prostředky díky nové funkci integrace virtuální sítě. Uděláte to tak, povolte koncové body služby v podsíti pro integrace virtuální sítě.
+* Jedna adresa se používá pro všechny instance plánu služby App Service. Protože se po přiřazení nelze změnit velikost podsítě, použijte podsíť, která může zahrnovat více než maximální měřítko. Možnost/27 s 32 adres je doporučená velikost, která by odpovídala plán služby App Service, který je škálovat, aby 20 instancí.
+* Můžete využívat koncový bod služby Zabezpečené prostředky díky nové funkci integrace virtuální sítě. Uděláte to tak, povolte koncové body služby v podsíti pro integrace virtuální sítě.
 
 Chcete-li používat nové funkce:
 

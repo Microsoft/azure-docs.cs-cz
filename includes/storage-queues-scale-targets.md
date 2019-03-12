@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: e345f4641f44efb45cec55bb15cbf710a435cf6d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 781087023bf9783bc3a153578b60b4941dc75c0e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964552"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553470"
 ---
 | Prostředek | Cíl |
 |----------|---------------|
 | Maximální velikost jedné frontě | 500 TiB |
 | Maximální velikost zprávy ve frontě | 64 KiB |
 | Maximální počet uložené zásady přístupu za každou frontu | 5 |
-| Maximální frekvence požadavků na účet úložiště | 20 000 zpráv na druhém předpokladu 1 KiB velikost zprávy |
-| Nastavte propustnost s ohledem jedné frontě (1 KiB zprávy) | Až 2000 zpráv za sekundu |
+| Maximální frekvence požadavků na účet úložiště | 20 000 zpráv za sekundu, což předpokládá, že velikost zprávy 1 KiB |
+| Nastavte propustnost s ohledem jedné frontě (1-KiB zprávy) | Až 2 000 zpráv za sekundu |

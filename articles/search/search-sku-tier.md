@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467437"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762921"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -32,30 +32,57 @@ Přestože všechny úrovně, včetně **Free** vrstvy, obecně nabízí paritu 
 > Výjimka, která má paritu funkcí je [indexery](search-indexer-overview.md), které nejsou k dispozici na S3HD.
 >
 
-V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) pro optimalizaci výkonu. Může začínat dva nebo tři jednotlivých a dočasně zvýšit váš výpočetní výkon pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
+V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-capacity-planning.md) zvýšení nebo snížení škálování. Můžete začít s jednou nebo dvěma jednotlivých a dočasně zvýšit váš výpočetní výkon pro náročné úlohy indexování. Schopnost optimalizovat úrovně prostředků v rámci úrovně zvyšuje flexibilitu, ale také mírně komplikuje analýzy. Budete muset experimentovat, uvidíte, jestli nižší úrovně s vyšší prostředky/replik nabízí lepší výkon než vyšší úroveň s nižší prostředky a hodnotu. Další informace o kdy a proč by upravit kapacitu, najdete v článku [aspekty týkající se výkonu a optimalizace](search-performance-optimization.md).
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Úrovně pro službu Azure Search
+
+V následující tabulce jsou uvedeny dostupné úrovně. Zahrnout další zdroje informací úroveň [stránce s cenami](https://azure.microsoft.com/pricing/details/search/), [limity služby a data](search-limits-quotas-capacity.md)a stránka portálu při zřizování služby.
+
+|Úroveň | Kapacita |
+|-----|-------------|
+|Free | Sdílenou s jinými odběrateli. Neškálovatelná, omezená na 3 indexy a přes 50 MB úložiště. |
+|Basic | Vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku. Jeden oddíl 2 GB a až tři repliky. |
+|Standard 1 (S1) | Z S1 na nahoru vyhrazených počítačů s další kapacitou úložiště a zpracování na všech úrovních. Velikost oddílu je 25 GB na oddíl (maximálně 300 GB dokumentů na službu) pro S1. |
+|Standard 2 (S2) | Podobně jako na S1, ale s 100 GB/oddíly (max. 1,2 TB dokumentů na službu) |
+|Standard 3 (S3) | 200 GB na oddíl (max. 2,4 TB dokumentů na službu). |
+|Standardní 3 Vysoká hustota (S3 – HD, High Density) | S vysokou hustotou je *hostující režim* pro S3. Základního hardwaru je optimalizovaná pro velký počet menší indexy, které jsou určené pro scénáře víceklientské architektury. S3 HD má stejné poplatky za jednotky S3, ale hardware je optimalizovaný pro rychlejší čtení na spoustu menších indexy.|
+
 
 ## <a name="how-billing-works"></a>Jak funguje fakturace
 
-Ve službě Azure Search existují čtyři způsoby, jak vám může mít za následek náklady při vytváření prostředku search na portálu:
+Ve službě Azure Search existují tři způsoby, jak vynakládá ve službě Azure Search a existují proměnlivé a dlouhodobý komponent. Této části se probírají zase na jednotlivé součásti fakturace.
 
-* Přidání repliky a oddíly, které používají pro pravidelné indexování a dotazování úlohy. Začněte s jedním z každé, ale jedno nebo obě přidat kapacitu, můžete zvýšit, výběru a platíte za další úrovně prostředky. 
-* Poplatky za odchozí přenos dat během indexování. Při přijetí dat z Azure SQL Database nebo Cosmos DB zdroje dat, zobrazí se poplatky za transakce v faktury za tyto prostředky.
-* Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma.
-* Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze na základě obohacení [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
+### <a name="1-core-service-costs-fixed-and-variable"></a>1. Náklady na službu Core (pevné a proměnné)
+
+Pro samotnou službu minimální sazba je první částí vyhledávání (1 repliky x 1 oddílu) a tato velikost je konstantní po dobu životnosti služby, protože službu nelze spustit žádnou menší než tato konfigurace. 
+
+Na následujícím snímku obrazovky za cenu jednotky je označen pro Free a Basic, S1 (S2 a S3 se nezobrazí). Pokud jste vytvořili základní služby nebo služeb standard, váš měsíční náklady by průměrná hodnota, která se zobrazí pro *cena 1* a *cena 2* v uvedeném pořadí. Náklady na jednotku zvýší pro každou vrstvu protože je větší na jednotlivých úrovních po sobě jdoucích výpočetní výkon a výpočetní kapacitu.
+
+![Za cenu jednotky](./media/search-sku-tier/per-unit-pricing.png "za cenu jednotky")
+
+Další repliky a oddíly, které jsou doplněk k počáteční náklady. Vyhledávací služba vyžaduje repliky a oddíl jednu roli od každého je minimální požadavky na konfiguraci. Nad rámec minimální je přidat repliky a oddíly, nezávisle na sobě. Například můžete přidat pouze repliky nebo pouze oddíly. 
+
+Další repliky a oddíly, které se účtují na základě [vzorec](#search-units). Náklady na nejsou lineární (zvýší kapacitu více než zdvojnásobí náklady). Příklad toho, jak vzorec funguje, najdete v části ["Postup přidělení repliky a oddíly"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+
+### <a name="2-data-egress-charges-during-indexing"></a>2. Poplatky za odchozí přenos dat během indexování
+
+Při přijetí dat z Azure SQL Database nebo Cosmos DB zdroje dat, zobrazí se poplatky za transakce v faktury za tyto prostředky. Tyto poplatky nejsou měřiče Azure Search, ale jsou vzhledem k tomu, že pokud používáte indexery k načítání dat z Azure SQL Database nebo Azure Cosmos DB, zobrazí se vám tento poplatek ve vašem vyúčtování tady uvedené.
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI obohacené indexování s využitím služeb Cognitive Services
+
+Pro [kognitivního vyhledávání](cognitive-search-concept-intro.md) pouze extrakce image během hádání dokumentu se účtuje na základě počtu imagí, které jsou extrahovány z vašich dokumentů. Extrakce textu je aktuálně zdarma. Na základě jiné obohacení [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) se účtují podle prostředku služeb Cognitive Services. Obohacení se účtují za stejnou sazbu jako kdyby jste provedli úloh přímo pomocí služeb Cognitive Services.
 
 Pokud nepoužíváte [kognitivního vyhledávání](cognitive-search-concept-intro.md) nebo [indexerů Azure Search](search-indexer-overview.md), jsou pouze náklady související s repliky a oddíly v aktivním využití pro pravidelné úlohy indexování a dotazování.
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>Fakturace pro indexování pro obecné účely a dotazy
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>Fakturace podle jednotek vyhledávání
 
 Pro operace Azure Search je nejdůležitější fakturační koncept pochopit *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly pro indexování a dotazy, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou. 
 
 SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
 
-Každá služba začíná u jedné SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky, nebo replik pro 3 oddíly x 12 pár. Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. 
+Každá služba začíná u jedné SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky, nebo replik pro 3 oddíly x 12 pár. Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. Můžete zkontrolovat [tento graf](search-capacity-planning.md#chart) zobrazíte platné kombinace na první pohled.
 
 Fakturační sazba je **po hodinách za SU**, kde každá úroveň s postupně vyšší sazba. Vyšší úrovně součástí větší a zrychlit oddíly přispívající k celkové vyšší hodinové sazby za tuto úroveň. Sazby za pro každou vrstvu můžete najít na [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/). 
 

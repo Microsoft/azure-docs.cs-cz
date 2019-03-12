@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4f10a1ae406ab8a560051ac6305df8f8f9fbbd7b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 32e92cb8cd6cd5d16ea8d38d178bb440420e6784
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438631"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546360"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Windows v Azure
 
@@ -142,7 +142,7 @@ Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete pro
 Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
-Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Zvolte Log Analytics pracovní prostor a účet automation a klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
@@ -150,11 +150,11 @@ Pokud během připojování chyběla některá z následujících požadovaných
 * [Automation](../../automation/automation-offering-get-started.md)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation a klikněte na tlačítko **povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 ![Povolení řešení Update Management](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení začnou do Log Analytics proudit informace o chybějících aktualizacích na virtuálních počítačích. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
+Povolení řešení může trvat až 15 minut. Během této doby byste neměli zavírat okno prohlížeče. Po povolení řešení informace o chybějících aktualizacích na virtuálním počítači jsou přenášeny do protokoly Azure monitoru. Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -226,7 +226,7 @@ Povolení správy změn a inventáře pro virtuální počítač:
 2. V seznamu vyberte virtuální počítač.
 3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Inventory** nebo **Change Tracking**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
 
-Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
+Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation a klikněte na tlačítko **povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
 
 ![Povolení sledování změn a inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -282,7 +282,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru Log Analytics.
 
-![Okno Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Okno pracovních prostorů log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>Další postup
 

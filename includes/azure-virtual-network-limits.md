@@ -8,86 +8,86 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: d43424e1377f7fa9cb8b272cc4ffbf3e5323f2ba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457784"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553398"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Virtuální sítě |50 |100 |
-| Místní síťové lokality |20 |kontaktovat podporu |
+| Místní síťové lokality |20 |Kontaktujte podporu. |
 | Servery DNS na virtuální síť |20 |20 |
-| Privátní IP adresy na virtuální síť |4 096 |4 096 |
-| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 tisíc až 1 000 kB pro dva nebo více síťových adaptérů |500 tisíc až 1 000 kB pro dva nebo více síťových adaptérů |
-| Skupiny zabezpečení sítě (NSG) |100 |200 |
-| Počet pravidel NSG na skupinu NSG |200 |1000 |
-| Směrovací tabulky definované uživatelem |100 |200 |
+| Privátní IP adresy na virtuální síť |4,096 |4,096 |
+| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 až 1 000 000 pro nejmíň dva síťové adaptéry. |500 000 až 1 000 000 pro nejmíň dva síťové adaptéry. |
+| Skupiny zabezpečení sítě (Nsg) |100 |200 |
+| Počet pravidel NSG na skupinu NSG |200 |1 000 |
+| Uživatelem definovaná trasa tabulky |100 |200 |
 | Trasy definované uživatelem na směrovací tabulku |100 |400 |
-| Veřejné IP adresy (dynamické) |5 |kontaktovat podporu |
-| Vyhrazené veřejné IP adresy |20 |kontaktovat podporu |
-| Veřejné virtuální IP adresy na nasazení |5 |kontaktovat podporu |
-| Privátní virtuální IP adresy (ILB) na nasazení |1 |1 |
-| Seznamy řízení přístupu (ACL) koncového bodu |50 |50 |
+| Veřejné IP adresy (dynamické) |5 |Kontaktujte podporu. |
+| Vyhrazené veřejné IP adresy |20 |Kontaktujte podporu. |
+| Veřejné virtuální IP adresy na nasazení |5 |Kontaktujte podporu. |
+| Privátní virtuální IP adresy (interní Vyrovnávání zatížení) na nasazení |1 |1 |
+| Seznamy koncový bod řízení přístupu (ACL) |50 |50 |
 
-#### <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manager
+#### <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manageru
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> Zvětšili jsme nedávno všechny výchozí omezení maximální mezí. Pokud není žádný **maximální Limit** sloupec a pak prostředku nemá nastavitelná omezení. Pokud jste využili tyto limity zvýšit podpora v minulosti a nezobrazí aktualizované omezení, jak je uvedeno níže, můžete [otevřete žádost o podporu online zákazníků bez poplatků](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> Zvětšili jsme nedávno všechny výchozí omezení maximální mezí. Pokud neexistuje žádný sloupec maximálního limitu, nemá zdroj nastavitelná omezení. Pokud jste tyto limity zvýšit podpora v minulosti a nezobrazí aktualizované omezení v následujících tabulkách [otevřete žádost o podporu online zákazníků bez poplatků](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
 | Prostředek | Výchozí omezení | 
 | --- | --- |
-| Virtuální sítě |1000 |
+| Virtuální sítě |1 000 |
 | Podsítě na virtuální síť |3000 |
 | Partnerské vztahy virtuálních sítí na virtuální síť |100 |
 | Servery DNS na virtuální síť |20 |
-| Privátní IP adresy na virtuální síť |65536 |
+| Privátní IP adresy na virtuální síť |65,536 |
 | Privátní IP adresy na síťové rozhraní |256 |
 | Privátní IP adresy na virtuální počítač |256 |
-| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |
-| Síťová rozhraní (NIC) |65536 |
-| Skupiny zabezpečení sítě (NSG) |5000 |
-| Počet pravidel NSG na skupinu NSG |1000 |
-| IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4000 |
+| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500,000 |
+| Síťové karty |65,536 |
+| Network Security Groups (Skupiny zabezpečení sítě) |5 000 |
+| Počet pravidel NSG na skupinu NSG |1 000 |
+| IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4,000 |
 | Skupiny zabezpečení aplikací |3000 |
 | Skupiny zabezpečení aplikace podle konfigurace protokolu IP pro síťové rozhraní |20 |
-| Konfigurace IP na skupiny zabezpečení aplikací |4000 |
+| Konfigurace IP na skupiny zabezpečení aplikací |4,000 |
 | Skupiny zabezpečení aplikací, které se dá nastavit v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |100 |
-| Směrovací tabulky definované uživatelem |200 |
+| Uživatelem definovaná trasa tabulky |200 |
 | Trasy definované uživatelem na směrovací tabulku |400 |
-| Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |
+| Point-to-site kořenových certifikátů na službu Azure VPN Gateway |20 |
 | Klepne virtuální sítě |100 |
 | Klepněte na konfiguraci síťového rozhraní na virtuální síť, klepněte na |100 |
 
 #### <a name="publicip-address"></a>Veřejné IP adresy omezení
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Veřejné IP adresy – dynamická |1000 (základní) |kontaktovat podporu |
-| Veřejné IP adresy – statické |200 (základní) |kontaktovat podporu |
-| Veřejné IP adresy – statické |(Standard) 200 |kontaktovat podporu |
-| Velikost veřejného předpony IP (preview) | /28 | /28 |
+| Veřejné IP adresy – dynamická | 1000 pro jazyk Basic. |Kontaktujte podporu. |
+| Veřejné IP adresy – statické | 200 pro jazyk Basic. |Kontaktujte podporu. |
+| Veřejné IP adresy – statické | 200 pro úroveň Standard.|Kontaktujte podporu. |
+| Velikost předpony veřejných IP (preview) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
-Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)
+Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Nástroje pro vyrovnávání zatížení | 1000 | 
+| Nástroje pro vyrovnávání zatížení | 1 000 | 
 | Pravidla pro každý prostředek, Basic | 250 |
-| Pravidla pro každý prostředek, Standard | 1 500 | 
+| Pravidla pro každý prostředek, Standard | 1,500 | 
 | Pravidla na konfiguraci IP adresy | 299 |
 | Pravidla pro síťové rozhraní | 500 |
-| Konfigurace protokolu IP front-endu, Basic | 200 |
-| Konfigurace protokolu IP front-endu, Standard | 600 |
-| Back-endový fond Basic | 100, jedna skupina dostupnosti |
-| Back-endový fond Standard | 1 000, jedna virtuální síť |
-| Back-Endovým prostředkům za nástroj pro vyrovnávání zatížení, standardní * | 150 |
-| HA portů a Standard | 1 za interní front-endu |
+| Front-endové konfigurace protokolu IP, Basic | 200 |
+| Front-endové konfigurace protokolu IP, Standard | 600 |
+| Back endový fond Basic | 100, jedné skupiny dostupnosti |
+| Back endový fond Standard | 1 000, jedné virtuální sítě |
+| Back endové prostředky za nástroj pro vyrovnávání zatížení, standardní<sup>1</sup> | 150 |
+| Vysoké dostupnosti portů, standardní | 1 za interní front-endu |
 
-** Až do 150 zdrojů, jakékoli kombinace prostředků samostatný virtuální počítač, ke skupinám dostupnosti prostředků a škálovací sady virtuálních počítačů prostředky.
+<sup>1</sup>až 150 prostředky v libovolné kombinace prostředků samostatný virtuální počítač je limit, skupinu dostupnosti, prostředky a prostředky škálovací sady virtuálních počítačů.
 

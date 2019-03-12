@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: fd57c344c640974e9c73156902848fb1685861f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163139"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780316"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co je místní firmy vyhledávání Bingu?
 Místní firmy API pro vyhledávání Bingu je služba RESTful, která umožňuje aplikace vyhledejte informace o místních firmách na základě dotazů vyhledávání. Například `q=<business-name> in Redmond, Washington`, nebo `q=Italian restaurants near me`. 

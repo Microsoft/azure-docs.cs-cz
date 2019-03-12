@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: d84e3f834bd598bbd2cf84dfc46f6cd5507f6d8b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587119"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546667"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -50,30 +50,30 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 |:---|:----------:|:--------------------:|
 | USA – střed |  | X |
 | USA – východ |  | X |
-| Východní USA 2 | X | X |
-| Středoseverní USA | X | X |
+| Východní USA 2 |  | X |
+| Středoseverní USA |  | X |
 | Středojižní USA | X | X |
-| Západní USA | X | X |
+| Západní USA |  | X |
 | Západní USA 2 |  | X |
-| Brazílie – jih | X | X |
-| Kanada – střed | X | X |
-| Kanada – východ | X | X |
+| Brazílie – jih |  | X |
+| Kanada – střed |  | X |
+| Kanada – východ |  | X |
 | Severní Evropa | X | X |
 | Západní Evropa |  | X |
 | Francie – střed |  | X |
 | Velká Británie – jih |  | X |
 | Spojené království – západ |  | X |
-| Východní Asie | X | X |
+| Východní Asie |  | X |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
 | Austrálie – střed |  | X |
 | Austrálie – střed 2 |  | X |
 | Austrálie – jihovýchod |  | X |
-| Střed Indie | X | X |
+| Střed Indie |  | X |
 | Indie – jih |  | X |
-| Indie – západ | X | X |
+| Indie – západ |  | X |
 | Japonsko – východ | X | X |
-| Japonsko – západ | X | X |
+| Japonsko – západ |  | X |
 | Jižní Korea – střed |  | X |
 | Jižní Korea – jih |  | X |
 | Východní Čína 1 | X |  |

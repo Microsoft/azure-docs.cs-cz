@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343623"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726733"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -110,14 +110,14 @@ Pokud vaše řešení nemůže používat některý z podporovaných protokolů,
 
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
 
-Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální omezení je 10 center IoT pro každé předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další podrobnosti o limitech kvót:
+Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit na bázi předplatného je 50 IoT hub na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další podrobnosti o limitech kvót:
 
 * [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md)
 
 * [Omezování služby IoT Hub a vy](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete vyzkoušet komplexní řešení IoT, projděte si rychlé starty pro službu IoT Hub:
 
-* [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md)
+* [Rychlé zprovoznění: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md)

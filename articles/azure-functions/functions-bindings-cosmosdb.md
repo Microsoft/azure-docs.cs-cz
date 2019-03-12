@@ -6,16 +6,16 @@ author: craigshoemaker
 ms.author: cshoe
 manager: jeconnoc
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7194c28e4e0620afb2ab6e5c817b2f9b322248a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0421ec62d25bbfaba2909d16498cac5afd038a53
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728059"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776321"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-d
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [rozhraní API služby Azure Cosmos DB pro MongoDB](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [rozhraní Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
+> Vazby Azure Cosmos DB se podporují jenom pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API, by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně [rozhraní API služby Azure Cosmos DB pro MongoDB](../cosmos-db/mongodb-introduction.md), [Apache Cassandra API](../cosmos-db/cassandra-introduction.md), [ Gremlin API](../cosmos-db/graph-introduction.md), a [Table API](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 

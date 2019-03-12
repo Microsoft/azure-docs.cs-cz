@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: f67741417c6d31c4adf1d063aac3bd3ccc310fde
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440246"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781897"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -46,7 +46,7 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 |:--- |:--- |:--- |
 | $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony.<br><br> Pro nasazení skupiny prostředků použijte: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatného použijte: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Tento prvek můžete zadat libovolnou hodnotu. Tato hodnota zdokumentovat významné změny v šabloně používejte. Při nasazování prostředků pomocí šablony, tato hodnota je možné, aby se zajistilo, že používá správnou šablonu. |
-| apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API z profilu pro příslušný typ prostředku. Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API pro příslušný typ prostředku, který je definován v profilu.<br><br>Vlastnost profilu rozhraní API je zvláště užitečné při nasazování šablony do různých prostředí, jako je Azure Stack a globální Azure. Ujistěte se, že vaše šablona automaticky používá verze, které jsou podporovány v obou prostředích pomocí profilu verze rozhraní API. Seznam aktuální profilu verze rozhraní API a prostředků verze rozhraní API, které jsou definovány v profilu najdete v tématu [profil API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
 | [Proměnné](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
 | [Funkce](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
@@ -57,17 +57,38 @@ Každý prvek má vlastnosti, které můžete nastavit. Tento článek popisuje 
 
 ## <a name="syntax"></a>Syntaxe
 
-Základní syntaxe šablony je JSON. Výrazy a funkce však vztahují i k dispozici v rámci šablony hodnoty JSON.  Výrazy se zapisují v rámci JSON řetězcové literály, jehož první a poslední znaky jsou závorky: `[` a `]`v uvedeném pořadí. Hodnota tohoto výrazu je vyhodnocen při nasazení šablony. Zatímco zapisují jako řetězcový literál, výsledek vyhodnocení výrazu může být jiného typu JSON, jako je například pole nebo celé číslo, v závislosti na skutečné výrazu.  Aby řetězcový literál začínat se hranatá závorka `[`, ale ne bylo interpretováno jako výraz, přidejte další závorku spustit řetězec s `[[`.
-
-Obvykle použijete výrazy s využitím functions k provádění operací pro konfiguraci nasazení. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů tečkou a [index].
-
-Následující příklad ukazuje, jak použít několik funkcí při vytváření hodnotu:
+Základní syntaxe šablony je JSON. Však můžete použít výrazy k rozšíření k dispozici v rámci šablony hodnoty JSON.  Výrazy začínat a končit závorky: `[` a `]`v uvedeném pořadí. Hodnota tohoto výrazu je vyhodnocen při nasazení šablony. Výraz může vrátit řetězec, celé číslo, logickou hodnotu, pole nebo objekt. Následující příklad ukazuje výraz výchozí hodnoty parametru:
 
 ```json
-"variables": {
-  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
-}
+"parameters": {
+  "location": {
+    "type": "string",
+    "defaultValue": "[resourceGroup().location]"
+  }
+},
 ```
+
+V rámci výrazu, syntaxe `resourceGroup()` volání jedné z funkcí, které poskytuje správce prostředků pro použití v rámci šablony. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Syntaxe `.location` načte jednu vlastnost z objekt vrácený rutinou tuto funkci.
+
+Šablony funkcí a jejich parametrů rozlišují velikost písmen. Například Resource Manageru překládá **variables('var1')** a **VARIABLES('VAR1')** za stejné. Při vyhodnocování, pokud funkci výslovně upraví případu (například toUpper nebo toLower), funkce zachová případu. Některé typy prostředků mohou mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
+
+Aby řetězcový literál začínat se hranatá závorka `[`, ale ne bylo interpretováno jako výraz, přidejte další závorku spustit řetězec s `[[`.
+
+Předat hodnotu řetězce jako parametr funkce, použijte jednoduché uvozovky.
+
+```json
+"name": "[concat('storage', uniqueString(resourceGroup().id))]"
+```
+
+K návratu dvojité uvozovky ve výrazu, jako je například přidávání objektu JSON v šabloně použijte zpětné lomítko.
+
+```json
+"tags": {
+    "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+},
+```
+
+Výraz šablony nemůže být delší než 24,576 znaků.
 
 Úplný seznam funkcí šablon najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md). 
 

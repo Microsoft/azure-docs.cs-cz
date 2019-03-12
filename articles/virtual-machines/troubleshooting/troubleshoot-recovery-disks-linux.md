@@ -3,7 +3,7 @@ title: Použít s Linuxem, řešení potíží s virtuálního počítače pomoc
 description: Informace o řešení potíží virtuální počítač s Linuxem pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: dfb85b0f9f1dda611c613cb296177cf28391adc0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753278"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776882"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Řešení potíží s virtuálního počítače s Linuxem připojením disku s operačním systémem k obnovení virtuálního počítače pomocí Azure CLI
 Pokud virtuální počítač s Linuxem (VM), zaznamená chybám spouštění nebo disku, budete muset provést postup řešení potíží na samotném virtuálním pevném disku. Běžným příkladem by byla neplatná položka v `/etc/fstab` virtuální počítač, který brání tomu nebudou moct úspěšně spustil. Tento článek podrobně popisuje, jak připojit virtuální pevný disk k jinému virtuálnímu počítači Linux opravte všechny chyby a pak znovu vytvořit původní virtuální počítač pomocí Azure CLI. 

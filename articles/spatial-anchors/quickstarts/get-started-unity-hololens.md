@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b2bfec47bc92ebf5db1561d8fca33940dc376866
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: ede1f031c3c38e714d076b861ba2abdad81c6702
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752221"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726851"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-using-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace HoloLens Unity pomocí prostorových kotev vztahů Azure
 
@@ -35,7 +35,7 @@ Dozvíte se, jak provést tyto akce:
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 - Počítače s Windows s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> součástí **vývoj pro univerzální platformu Windows** pracovního vytížení.
-- Zařízení HoloLens s [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) povolena.
+- Zařízení HoloLens s [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) povolena. Tento článek vyžaduje zařízení HoloLens se [Windows 10. října 2018 Update](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (označované také jako RS5). Chcete-li aktualizovat na nejnovější verzi na HoloLens, otevřete **nastavení** aplikaci, přejděte na **aktualizace a zabezpečení**, vyberte **vyhledat aktualizace** tlačítko.
 - Aplikaci musíte nastavit **SpatialPerception** funkce v rámci **nastavení sestavení**->**Player nastavení**->**publikování Nastavení**->**možnosti**.
 - Aplikace musí povolit **podporované virtuální realitu** s **Windows SDK smíšené Reality** pod **nastavení sestavení**->**nastavení přehrávače** -> **XR nastavení**.
 
@@ -51,7 +51,7 @@ Otevřít **nastavení sestavení** tak, že vyberete **souboru** -> **nastaven�
 
 V **platformy** vyberte **univerzální platformu Windows**. Potom přejděte **cílové zařízení** k **HoloLens**.
 
-Vyberte **přepínač platformy** platformy s cílem změnit **univerzální platformu Windows**.
+Vyberte **přepínač platformy** platformy s cílem změnit **univerzální platformu Windows**. Unity vás může požádat o nainstalovat součásti UPW podpory, pokud v nich chybí.
 
 ![Nastavení buildu Unity](./media/get-started-unity-hololens/unity-build-settings.png)
 

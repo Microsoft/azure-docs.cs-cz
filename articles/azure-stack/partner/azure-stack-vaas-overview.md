@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 12/20/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6126bacf50d47029c29772b35f6dc1d552d47029
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ca22f29597cb452d6d33338b8ba0367c9377f6fb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592634"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772513"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co je ověření jako služba pro službu Azure Stack?
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [rychlý start: Použít ověření jako por
 |----|------------|
 | [Nové řešení ověřování](azure-stack-vaas-validate-solution-new.md) | Simulace modulu cloudu<br>COMPUTE provozní sady SDK<br>Test identifikace disku<br>Provozní sady SDK rozšíření služby KeyVault<br>Provozní sady SDK služby KeyVault<br>Provozní sadě SDK sítě<br>Provozní sady SDK účtu úložiště<br> |
 | [Ověření balíčku výrobce OEM](azure-stack-vaas-validate-oem-package.md) | Ověřování balíčků rozšíření výrobce OEM<br>Simulace modulu cloudu |
-| [Ověření měsíční aktualizace](azure-stack-vaas-validate-microsoft-updates.md) | Měsíční aktualizace AzureStack ověření<br>Simulace modulu cloudu<br> |
+| [Ověření měsíční aktualizace](azure-stack-vaas-validate-microsoft-updates.md) | Měsíční aktualizace ověřovací služby Azure Stack<br>Simulace modulu cloudu<br> |
 
 ## <a name="next-steps"></a>Další postup
 

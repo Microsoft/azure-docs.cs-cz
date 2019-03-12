@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: sngun
-ms.openlocfilehash: 5d80c0a8464a9672859a3fbd305bbd4ab322b092
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 203bb0d9630ad50b1a80fcd674322524220b3147
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037085"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545239"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Budete také potřebovat [balíček NuGet Microsoft.Azure.DocumentDB](https://ww
 > 
 
 ## <a name="database-examples"></a>Příklady pro databáze
-Metoda [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) ukázky projektu DatabaseManagement ukazuje, jak provádět následující úlohy.
+Metoda [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) ukázky projektu DatabaseManagement ukazuje, jak provádět následující úlohy. Další informace o databázi Azure Cosmos před spuštěním následující ukázky, naleznete v tématu [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -59,7 +59,7 @@ Metoda [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/5
 | [Odstranění databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L118) |[DocumentClient.DeleteDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedatabaseasync.aspx) |
 
 ## <a name="collection-examples"></a>Příklady pro kolekce
-Metoda [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) ukázky projektu CollectionManagement ukazuje, jak provádět následující úlohy.
+Metoda [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) ukázky projektu CollectionManagement ukazuje, jak provádět následující úlohy. Další informace o kolekcích Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -71,7 +71,7 @@ Metoda [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob
 | [Odstranění kolekce](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L175) |[DocumentClient.DeleteDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync.aspx) |
 
 ## <a name="document-examples"></a>Příklady pro dokumenty
-Metoda [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) ukázky projektu DocumentManagement ukazuje, jak provádět následující úlohy.
+Metoda [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) ukázky projektu DocumentManagement ukazuje, jak provádět následující úlohy. Další informace o dokumenty Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -87,7 +87,7 @@ Metoda [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/
 | [Čtení dokumentu jenom v případě, že došlo k jeho změně](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx)<br>[Documents.Client.AccessConditionType](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accessconditiontype.aspx) |
 
 ## <a name="indexing-examples"></a>Příklady indexování
-Metoda [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) ukázky projektu IndexManagement ukazuje, jak provádět následující úlohy.
+Metoda [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) ukázky projektu IndexManagement ukazuje, jak provádět následující úlohy. Další informace o indexování ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [zásadám indexování](index-policy.md), [indexování typů](index-types.md), a [indexování cesty](index-paths.md) koncepčních článků. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -102,7 +102,8 @@ Metoda [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c
 Další informace o indexování najdete v tématu pojednávajícím o [zásadách indexování služby Azure DB Cosmos](index-policy.md).
 
 ## <a name="geospatial-examples"></a>Příklady geoprostorových funkcí
-Ukázkový soubor pro geoprostorové funkce [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) ukazuje, jak provádět následující úlohy.  
+Ukázkový soubor pro geoprostorové funkce [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) ukazuje, jak provádět následující úlohy.  Další informace o GeoJSON a Geoprostorová data před spuštěním následující ukázky, viz [jak používat data o poloze geoprostorové a GeoJSON](geospatial.md) konceptuální článek. 
+
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -116,7 +117,7 @@ Ukázkový soubor pro geoprostorové funkce [azure-documentdb-dotnet/samples/cod
 Další informace o práci s geoprostorovými daty najdete v tématu věnovaném [práci s geoprostorovými daty v Azure Cosmos DB](geospatial.md).  
 
 ## <a name="query-examples"></a>Příklady dotazů
-Dokumentační soubor dotazů [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) ukazuje, jak provést následující úlohy pomocí gramatiky dotazů SQL, pomocí zprostředkovatele LINQ s dotazem a pomocí Lambdy.
+Dokumentační soubor dotazů [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) ukazuje, jak provést následující úlohy pomocí gramatiky dotazů SQL, pomocí zprostředkovatele LINQ s dotazem a pomocí Lambdy. Další informace o odkaz na dotaz SQL ve službě Azure Cosmos DB před spuštěním následující ukázky, viz [Příklady dotazů SQL](how-to-sql-query.md) konceptuální článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -138,7 +139,8 @@ Dokumentační soubor dotazů [azure-documentdb-dotnet/samples/code-samples/Quer
 Další informace o psaní dotazů najdete v tématu věnovaném [dotazům SQL ve službě Azure Cosmos DB](how-to-sql-query.md).
 
 ## <a name="change-feed-examples"></a>Příklady kanálů změn 
-Ukázka kanálu změn [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy. 
+Ukázka kanálu změn [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy. Další informace o kanálu ve službě Azure Cosmos DB před spuštěním následující ukázky změn najdete v tématu [možnosti ke čtení kanálu změn](read-change-feed.md) a [Change feed procesoru](change-feed-processor.md) koncepčních článků. 
+
 
 | Úkol | API – referenční informace |
 | --- | --- |
@@ -148,7 +150,7 @@ Ukázka kanálu změn [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/P
 Ukázka procesoru informačního kanálu změn:  [Změna kanálu nástroje pro migraci](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) ukazuje, jak používat knihovny procesoru kanálu změn k replikaci dat do jiné kolekce Cosmos DB.   
 
 ## <a name="server-side-programming-examples"></a>Příklady programování na straně serveru
-Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy.
+Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy. Další informace o programování na straně serveru ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md) konceptuální článek. 
 
 | Úkol | API – referenční informace |
 | --- | --- |

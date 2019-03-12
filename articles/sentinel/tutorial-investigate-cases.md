@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d44c1448296df16e9dd58a486d4cfb21bb053de
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7c4994863f3c145c7095bcc12dd69ff02fab8455
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244192"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540222"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Kurz: Prozkoumat případů s Azure Sentinelu ve verzi Preview
 
@@ -42,7 +42,7 @@ Případ může obsahovat více výstrah. Je souhrn všech důkazy, které jsou 
 
 1. Vyberte **případů**. **Případů** stránky vám umožňuje vědět, kolik případů budete mít, kolik se otevře, kolik jste nastavili **probíhá**, a kolik jsou zavřené. Pro každý případ můžete zobrazit čas, kdy se k němu došlo a stav případu. Podívejte se na závažnosti při rozhodování o zpracování první. V **případů** stránky, klikněte na tlačítko **výstrahy** kartu zobrazíte všechny výstrahy, které souvisí s případem. Entity, které jste namapovali jako součást tento případ, lze zobrazit v dříve **entity** kartu.  Případy můžete filtrovat podle potřeby, například podle stavu nebo závažnosti. Když se podíváte **případů** kartě, zobrazí se vám otevřených případů, které obsahují upozornění aktivované testováním vaše pravidla detekce, které jsou definované v **Analytics**. V horní části uvidíte aktivních obchodních případů, nové případy a v průběhu případy. Naleznete v tématu Přehled o všech případů podle závažnosti.
 
-  ![Řídicí panel výstrah](./media/tutorial-detect-threats/alert-dashboard.png)
+  ![Řídicí panel výstrah](./media/tutorial-investigate-cases/cases.png)
 
 2. Pokud chcete začít šetření, klikněte na zvláštní případ. Na pravé straně zobrazí se podrobné informace o tento případ, včetně závažnosti, souhrn počtu účastnící se entity (podle mapování pracovního). Každý případ má jedinečné ID. Závažnost případu se určuje podle nejvyšší závažnost výstrahy, které jsou zahrnuté v případě.  
 

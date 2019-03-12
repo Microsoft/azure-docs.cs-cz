@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313479"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550766"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -40,19 +40,13 @@ Při nasazení skupin kontejneru k virtuální síti platí určitá omezení.
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-Tato funkce je ve verzi preview, platí následující omezení při nasazování instancí kontejneru k virtuální síti. 
+Tato funkce je ve verzi preview, platí následující omezení při nasazování skupiny kontejnerů na virtuální síť. 
 
-**Podporované oblasti a omezení prostředků**
-
-| Umístění | Operační systém | Procesor | Paměť (GB) |
-| -------- | :---: | :---: | :-----------: |
-| Západní Evropa | Linux | 4 | 14 |
-| USA – východ, USA – západ | Linux | 2 | 3,5 |
-| Austrálie – východ, Severní Evropa | Linux | 1 | 1,5 |
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 Omezení prostředků kontejner může lišit od limity pro jiné síťové container instances v těchto oblastech. Momentálně se podporuje jenom na Linuxové kontejnery jsou podporovány pro tuto funkci. Podpora Windows je naplánovaná.
 
-**Nepodporovaná síťových prostředků a funkcí**
+### <a name="unsupported-network-resources-and-features"></a>Nepodporovaná síťových prostředků a funkcí
 
 * Nástroj pro vyrovnávání zatížení Azure
 * Partnerské vztahy virtuálních sítí

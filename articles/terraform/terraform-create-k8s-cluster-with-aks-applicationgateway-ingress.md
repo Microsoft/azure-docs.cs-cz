@@ -2,19 +2,19 @@
 title: Vytvoření clusteru Kubernetes pomocí služby Application Gateway jako kontroler příchozího přenosu dat pomocí Azure Kubernetes Service (AKS)
 description: Kurz znázorňující způsob vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí služby Application Gateway jako kontroler příchozího přenosu dat
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtuální počítač, azure, kubernetes, příchozího přenosu dat, služba application gateway
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7eb88f0bd30c9f28f8980cdc0e16ba46a9da9551
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891977"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765590"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes s Application Gateway kontroler příchozího přenosu dat pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje vaše hostované prostředí Kubernetes. AKS umožňuje rychle a snadno nasadit a spravovat kontejnerizované aplikace bez znalosti Orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.

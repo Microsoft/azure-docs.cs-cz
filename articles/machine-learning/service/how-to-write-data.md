@@ -12,16 +12,16 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1853ff4141a7af3260ef9575bb2457819ab2d4a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8bf61e6506e0d109b83fa323439348c3803bd5ce
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735012"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731029"
 ---
-# <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>Zápis dat pomocí sady SDK pro Azure Machine Learning Data Prep
+# <a name="write-and-configure-data-using-azure-machine-learning"></a>Zápis a konfiguraci dat pomocí Azure Machine Learning
 
-V tomto článku najdete informace k zápisu dat pomocí různých metod [Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk). Výstupní data lze zapsat v libovolném bodě toku dat a zápisy jsou přidány jako kroky pro výsledný toku dat a spouštějí se pokaždé, když je datový tok. Data se zapisují do více souborů oddíl umožňuje paralelní zápisy.
+V tomto článku najdete informace k zápisu dat pomocí různých metod [Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk) a konfigurace dat pro experimentování s využitím [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  V libovolném bodě toku dat je možné zapsat výstupní data. Zápisy jsou přidány jako kroky pro výsledný toku dat a postup spustit pokaždé, když se data spouštění toků. Data se zapisují do více souborů oddíl umožňuje paralelní zápisy.
 
 Vzhledem k tomu, že neexistují žádná omezení, kolik zapsat kroky jsou v kanálu, můžete snadno přidat další zápis kroky k získání průběžné výsledky při odstraňování problémů nebo jiných kanálů.
 
@@ -90,7 +90,6 @@ Příklad výstupu:
 |3| 10013.0 | 99999.0 | CHYBA | NO | NO |     | NaN | NaN | NaN |
 |4| 10014.0 | 99999.0 | CHYBA | NO | NO | ENSO |    59783.0 | 5350.0 |  500.0|
 
-
 V předchozím výstupu se zobrazí několik chyb v číselných sloupcích z důvodu čísla, která nebyla správně parsovat. Při zápisu do sdíleného svazku clusteru, jsou hodnoty null řetězcem "Chyba" nahrazuje výchozí.
 
 Přidáte parametry jako součást vaší zápisu volání a specifikaci řetězec použitý k reprezentaci hodnoty null.
@@ -139,6 +138,51 @@ Předchozí kód vytvoří tento výstup:
 |2| 10010.0 | 99999.0 | MiscreantData | NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
 |3| 10013.0 | 99999.0 | MiscreantData | NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
 |4| 10014.0 | 99999.0 | MiscreantData | NO| NO| ENSO|   59783.0|    5350.0| 500.0|
+
+## <a name="configure-data-for-automated-machine-learning-training"></a>Konfigurace dat pro trénování automatizované machine learning
+
+Předejte souboru nově zapsaná data do [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#automlconfig) objektu při přípravě na školení automatizované machine learning. 
+
+Následující příklad kódu ukazuje, jak převést váš tok dat Pandas dataframe a následně ho rozdělte do učení a testovací datové sady pro trénování automatizované machine learning.
+
+```Python
+from azureml.train.automl import AutoMLConfig
+from sklearn.model_selection import train_test_split
+
+dflow = dprep.auto_read_file(path="")
+X_dflow = dflow.keep_columns([feature_1,feature_2, feature_3])
+y_dflow = dflow.keep_columns("target")
+
+X_df = X_dflow.to_pandas_dataframe()
+y_df = y_dflow.to_pandas_dataframe()
+
+X_train, X_test, y_train, y_test = train_test_split(X_df, y_df, test_size=0.2, random_state=223)
+
+# flatten y_train to 1d array
+y_train.values.flatten()
+
+#configure 
+automated_ml_config = AutoMLConfig(task = 'regression',
+                               X = X_train.values,  
+                   y = y_train.values.flatten(),
+                   iterations = 30,
+                       Primary_metric = "AUC_weighted",
+                       n_cross_validation = 5
+                       )
+
+```
+
+Pokud nechcete, aby všechny přípravné kroky dočasných dat, jako je v předchozím příkladu, můžete předat přímo do vašeho toku `AutoMLConfig`.
+
+```Python
+automated_ml_config = AutoMLConfig(task = 'regression', 
+                   X = X_dflow,   
+                   y = y_dflow, 
+                   iterations = 30, 
+                   Primary_metric = "AUC_weighted",
+                   n_cross_validation = 5
+                   )
+```
 
 ## <a name="next-steps"></a>Další postup
 * Sada SDK [přehled](https://aka.ms/data-prep-sdk) vzory návrhu a příklady použití 

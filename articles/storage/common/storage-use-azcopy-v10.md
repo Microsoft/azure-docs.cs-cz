@@ -5,15 +5,15 @@ services: storage
 author: artemuwka
 ms.service: storage
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: 86d2569d0ab920bd32a25e1331d74ed4f623143a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 111c24c1cd608542a5ef7da85f93ca22082af6d9
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437662"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726715"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
 
@@ -24,9 +24,9 @@ AzCopy v10 je nástroj příkazového řádku příští generace pro kopírová
 - Synchronizujte systém souborů Azure Blob nebo naopak. Použití `azcopy sync <source> <destination>`. Ideální pro scénáře přírůstkového kopírování.
 - Podporuje rozhraní API pro Azure Data Lake Storage Gen2. Použití `myaccount.dfs.core.windows.net` jako identifikátor URI pro volání rozhraní API ADLS Gen2.
 - Podporuje kopírování celý účet (pouze služby Blob service) na jiný účet.
-- Účet pro účet kopie teď používá nový [umístit z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) rozhraní API. Žádný přenos dat do klienta je potřeba rychleji díky přenosu!
+- Účet pro účet kopie teď používá nový [Vložit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) rozhraní API. Žádný přenos dat do klienta je potřeba rychleji díky přenosu!
 - Seznam nebo odebrat soubory a objekty BLOB v zadané cestě.
-- Stejně jako – zahrnout a--vyloučit příznaky podporuje jeden vzor zástupných znaků v cestě.
+- Podporuje jeden vzor zástupných znaků v cestě stejně jako v parametru--vyloučit příznak.
 - Odolnost: Každá instance nástroje AzCopy se vytvoří pořadí úloh a související protokol. Můžete zobrazit a restartujte předchozí úlohy a pokračování úlohy. AzCopy taky automaticky zopakuje přenos po selhání.
 - Vylepšení obecné informace o výkonu.
 
@@ -35,9 +35,9 @@ AzCopy v10 je nástroj příkazového řádku příští generace pro kopírová
 ### <a name="latest-preview-version-v10"></a>Nejnovější verze preview (v10)
 
 Stáhněte si nejnovější verzi AzCopy ve verzi preview:
-- [Windows](https://aka.ms/downloadazcopy-v10-windows)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac)
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (cíl)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 ### <a name="latest-production-version-v81"></a>Nejnovější produkční verzi (v8.1)
 
@@ -49,18 +49,23 @@ Stáhněte si [AzCopy v7.3 podporuje kopírování dat do a ze služby Microsoft
 
 ## <a name="post-installation-steps"></a>Kroky po instalaci
 
-AzCopy v10 nevyžaduje instalaci. Otevřete upřednostňované aplikace příkazového řádku a přejděte do složky, kde `azcopy.exe` spustitelný soubor se nachází. V případě potřeby můžete přidat umístění složky AzCopy do systémové cesty.
+AzCopy v10 nevyžaduje instalaci. Otevřete upřednostňované aplikace příkazového řádku a přejděte do složky, kde `azcopy.exe` (Windows) nebo `azcopy` spustitelný soubor (Linux) se nachází. V případě potřeby můžete přidat umístění složky AzCopy do systémové cesty.
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 
 AzCopy v10 umožňuje při ověřování pomocí služby Azure Storage, použijte následující možnosti:
-- **Azure Active Directory [podporované pro služby objektů Blob a ADLS Gen2]**. Použití ```.\azcopy login``` k přihlášení pomocí Azure Active Directory.  Uživatel by měl mít [přiřazenou roli "Přispěvatel dat objektu Blob úložiště"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) k zápisu do úložiště objektů Blob pomocí ověřování Azure Active Directory.
+- **Azure Active Directory [podporované pro služby objektů Blob a ADLS Gen2]**. Použití ```.\azcopy login``` k přihlášení pomocí Azure Active Directory.  Uživatel by měl mít [přiřazenou roli "Přispěvatel dat objektu Blob úložiště"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) k zápisu do úložiště objektů Blob pomocí ověřování Azure Active Directory. Pro ověřování pomocí Identity spravované služby (MSI), použijte `azcopy login --identity` po udělení role Přispěvatel data instance výpočetní prostředky Azure.
 - **Tokeny SAS [podporované pro služby objektů Blob a souboru]**. Do cesty objektu blob na příkazovém řádku ji používat, připojte SAS token. Můžete vygenerovat token SAS pomocí webu Azure Portal [Průzkumníka služby Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [Powershellu](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), nebo jiné nástroje podle vašeho výběru. Další informace najdete v tématu [příklady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
-> [!IMPORTANT]
-> Při odesílání žádosti o podporu pro Microsoft Support (nebo řešení potíží týkajících se všechny 3. stran) prosím sdílené složky, kterou zrevidovaně verzi příkaz, který se snažíte provést k zajištění sdíleného přístupového podpisu není nechtěně sdílet s kýmkoli. Můžete najít zrevidovaně verzi na začátku souboru protokolu. Zkontrolujte v části řešení problémů dále v tomto článku najdete další podrobnosti.
-
 ## <a name="getting-started"></a>Začínáme
+
+> [!TIP]
+> **Dáváte přednost grafického uživatelského rozhraní?**
+>
+> Zkuste [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), klient pro stolní počítače, která zjednodušuje správu daty Azure Storage a **teď využívá nástroj AzCopy** ke zrychlení přenos dat do a z Azure Storage.
+>
+> Jednoduše povolte funkci AzCopy v Průzkumníku služby Storage v nabídce "Náhled". Průzkumník služby Storage se pak pomocí nástroje AzCopy při nahrávání a stahování dat do úložiště objektů Blob za účelem vylepšení výkonu.
+> ![Povolte AzCopy jako modul přenosu v Průzkumníku služby Storage](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
 AzCopy v10 má jednoduché svým zdokumentovaných syntaxi. Obecná syntaxe vypadá takto, po přihlášení do služby Azure Active Directory:
 
@@ -80,7 +85,7 @@ AzCopy v10 má jednoduché svým zdokumentovaných syntaxi. Obecná syntaxe vypa
 Zde je, jak získat seznam dostupných příkazů:
 
 ```azcopy
-.\azcopy -help
+.\azcopy --help
 # Using the alias instead
 .\azcopy -h
 ```
@@ -88,7 +93,7 @@ Zde je, jak získat seznam dostupných příkazů:
 Pokud chcete zobrazit stránku nápovědy a příklady pro konkrétní příkaz spusťte následující příkaz:
 
 ```azcopy
-.\azcopy <cmd> -help
+.\azcopy <cmd> --help
 # Example:
 .\azcopy cp -h
 ```
@@ -153,7 +158,7 @@ Kopírování dat mezi dva účty úložiště používá [Vložit blok z adresy
 
 Chcete-li kopírovat data mezi dva účty úložiště, použijte následující příkaz:
 ```azcopy
-.\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
+.\azcopy cp "https://account.blob.core.windows.net/<sastoken>" "https://otheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
 > [!NOTE]
@@ -161,27 +166,35 @@ Chcete-li kopírovat data mezi dva účty úložiště, použijte následující
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Kopírovat obraz virtuálního pevného disku do účtu úložiště
 
-AzCopy v10 ve výchozím nastavení odesílá data do objektů BLOB bloku. Ale pokud zdrojového souboru má příponu virtuálního pevného disku, AzCopy v10 bude ve výchozím nastavení nahrajte ho do objektů blob stránky. Toto chování není aktuálně konfigurovatelné.
+Použití `--blob-type=PageBlob` k nahrání image disku do úložiště objektů Blob jako objekt Blob stránky.
 
-## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Synchronizace: přírůstkové kopírování a delete (pouze úložiště objektů Blob)
+```azcopy
+.\azcopy cp "C:\myimages\diskimage.vhd" "https://account.blob.core.windows.net/mycontainer/diskimage.vhd<sastoken>" --blob-type=PageBlob
+```
+
+## <a name="sync-incremental-copy-and-optional-delete-blob-storage-only"></a>Synchronizace: přírůstkové kopírování a delete (volitelné) (pouze úložiště objektů Blob)
+
+Příkaz Synchronizovat Synchronizuje obsah zdrojového adresáře do jiného adresáře v cílovém porovnání názvy souborů a naposledy upravené časové razítko. Volitelně můžete tuto operaci zahrnuje odstranění cílové soubory, pokud jsou ve zdroji neexistují při `--delete-destination=prompt|true` příznak je k dispozici. Ve výchozím nastavení je zakázáno odstranit chování.
 
 > [!NOTE]
-> Příkaz Synchronizovat Synchronizuje obsah ze zdroje do cíle a to zahrnuje odstranění cílové soubory, pokud jsou ve zdroji neexistuje. Ujistěte se, že používáte cíl, kterou chcete synchronizovat.
+> Použití `--delete-destination` příznak opatrně. Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkce před povolením chování při odstraňování prevence náhodného odstranění ve vašem účtu synchronizace.
+>
+> Když `--delete-destination` je nastavena na hodnotu true, AzCopy odstraní soubory, které neexistují ve zdroji z cílového bez jakékoli výzvy uživateli. Pokud chcete být vyzváni k potvrzení, použít `--delete-destination=prompt`.
 
 K synchronizaci vašeho místního systému souborů do účtu úložiště, použijte následující příkaz:
 
 ```azcopy
-.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer<sastoken>"
 ```
 
 Stejným způsobem můžete synchronizovat kontejner objektů Blob až místního systému souborů:
 
 ```azcopy
 # If you're using Azure Active Directory authentication the sastoken is not required
-.\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
+.\azcopy sync "https://account.blob.core.windows.net/mycontainer" "C:\local\path"
 ```
 
-Tento příkaz umožňuje přírůstkové synchronizace zdroje do cíle, na základě časových razítek poslední změny. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy v10 bude totéž v cílovém umístění. Před odstraněním AzCopy zobrazí výzvu k potvrzení odstranění souborů.
+Tento příkaz umožňuje přírůstkové synchronizace zdroje do cíle, na základě časových razítek poslední změny. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy v10 bude totéž v cílovém umístění. Pokud chování odstranění je povolena v příkazu synchronizovat, AzCopy Pokud ještě neexistují ve zdroji už odstraní soubory z cílového umístění.
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
@@ -214,13 +227,6 @@ export AZCOPY_CONCURRENCY_VALUE=<value>
 # If the value is blank then the default value is currently in use
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
-
-AzCopy v10 vytvoří plán soubory pro všechny úlohy a soubory protokolu. Protokoly můžete prozkoumat a vyřešit potenciální problémy. Tyto protokoly budou obsahovat stav selhání (UPLOADFAILED COPYFAILED a DOWNLOADFAILED), úplnou cestu a důvod selhání. Protokoly úlohy a plán soubory jsou umístěny ve složce % USERPROFILE\\.azcopy složky na Windows nebo $HOME\\.azcopy složky na Mac a Linux.
-
-> [!IMPORTANT]
-> Při odesílání žádosti o podporu pro Microsoft Support (nebo řešení potíží týkajících se všechny 3. stran) prosím sdílené složky, kterou zrevidovaně verzi příkaz, který se snažíte provést k zajištění sdíleného přístupového podpisu není nechtěně sdílet s kýmkoli. Můžete najít zrevidovaně verzi na začátku souboru protokolu.
-
 ### <a name="change-the-location-of-the-log-files"></a>Změnit umístění souboru protokolu
 
 Můžete změnit umístění souboru protokolu v případě potřeby nebo zabránili zaplnění disku s operačním systémem.
@@ -237,6 +243,17 @@ export AZCOPY_LOG_LOCATION=<value>
 # If the value is blank then the default value is currently in use
 ```
 
+### <a name="change-the-default-log-level"></a>Změnit výchozí úroveň protokolování
+
+Ve výchozím nastavení je nástroj AzCopy úroveň protokolu nastavena na informace. Pokud chcete snížit úroveň podrobností protokolu k ušetřit místo na disku, přepíše nastavení pomocí ``--log-level`` možnost. Dostupné úrovně jsou: LADĚNÍ, informace, upozornění, chyby, PANIKOU a závažná chyba
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+AzCopy v10 vytvoří plán soubory pro všechny úlohy a soubory protokolu. Protokoly můžete prozkoumat a vyřešit potenciální problémy. Tyto protokoly budou obsahovat stav selhání (UPLOADFAILED COPYFAILED a DOWNLOADFAILED), úplnou cestu a důvod selhání. Protokoly úlohy a plán soubory jsou umístěny ve složce % USERPROFILE %\\.azcopy složky na Windows nebo $HOME\\.azcopy složky na Mac a Linux.
+
+> [!IMPORTANT]
+> Při odesílání žádosti o podporu pro Microsoft Support (nebo řešení potíží týkajících se všechny 3. stran) prosím sdílené složky, kterou zrevidovaně verzi příkaz, který se snažíte provést k zajištění sdíleného přístupového podpisu není nechtěně sdílet s kýmkoli. Můžete najít zrevidovaně verzi na začátku souboru protokolu.
+
 ### <a name="review-the-logs-for-errors"></a>Zkontrolujte protokoly chyb
 
 Následující příkaz získá všechny chyby se stavem UPLOADFAILED z 04dc9ca9-158f-7945-5933-564021086c79 protokolu:
@@ -244,6 +261,8 @@ Následující příkaz získá všechny chyby se stavem UPLOADFAILED z 04dc9ca9
 ```azcopy
 cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
+
+Případně můžete zobrazit názvy souborů, které se nepodařilo přenést pomocí `azcopy jobs show <jobid> --with-status=Failed` příkazu.
 
 ### <a name="view-and-resume-jobs"></a>Zobrazit a obnovit úlohy
 
@@ -265,15 +284,11 @@ Chcete-li filtrovat přenosy podle stavu, použijte následující příkaz:
 .\azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Můžete obnovit úlohu se nepovedlo nebo zrušilo pomocí jeho identifikátoru spolu s tokenem SAS (není trvalé z bezpečnostních důvodů):
+Můžete obnovit úlohu se nepovedlo zrušit pomocí jeho identifikátoru spolu s tokenem SAS (není trvalé z bezpečnostních důvodů):
 
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
-
-### <a name="change-the-default-log-level"></a>Změnit výchozí úroveň protokolování
-
-Ve výchozím nastavení je nástroj AzCopy úroveň protokolu nastavena na informace. Pokud chcete snížit úroveň podrobností protokolu k ušetřit místo na disku, přepíše nastavení pomocí ``--log-level`` možnost. Dostupné úrovně jsou: LADĚNÍ, informace, upozornění, chyby, PANIKOU a závažná chyba
 
 ## <a name="next-steps"></a>Další postup
 

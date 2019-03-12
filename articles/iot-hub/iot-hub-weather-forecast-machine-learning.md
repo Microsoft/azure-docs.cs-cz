@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666870"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534255"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí s využitím dat snímačů ze služby IoT hub ve službě Azure Machine Learning
 
@@ -79,13 +79,13 @@ Zjistíte, jak pomocí Azure Machine Learning (pravděpodobnost deště) předpo
 1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
 1. Zadejte o úloze následující informace.
 
-   **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný.
+   **Název úlohy**: Název úlohy. Název musí být globálně jedinečný.
 
-   **Skupina prostředků**: použijte stejnou skupinu prostředků, která používá službu IoT hub.
+   **Skupina prostředků**: Použijte stejnou skupinu prostředků, která používá službu IoT hub.
 
-   **Umístění**: určit stejné umístění jako skupina prostředků.
+   **Umístění**: Použijte stejné umístění jako skupina prostředků.
 
-   **Připnout na řídicí panel:** Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+   **Připnout na řídicí panel**: Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
 
    ![Vytvoření úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
@@ -97,11 +97,11 @@ Zjistíte, jak pomocí Azure Machine Learning (pravděpodobnost deště) předpo
 1. V části **Topologie úlohy** klikněte na **Vstupy**.
 1. V **vstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
 
-   **Vstupní alias**: jedinečný alias pro vstup.
+   **Vstupní alias**: Jedinečný alias pro vstup.
 
-   **Zdroj**: vyberte **služby IoT hub**.
+   **Zdroj**: Vyberte **služby IoT hub**.
 
-   **Skupina uživatelů**: Vyberte skupinu uživatelů, kterou jste vytvořili.
+   **Skupina uživatelů**: Vyberte skupinu příjemců, který jste vytvořili.
 
    ![Přidat vstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
@@ -112,15 +112,15 @@ Zjistíte, jak pomocí Azure Machine Learning (pravděpodobnost deště) předpo
 1. V části **Topologie úlohy** klikněte na **Výstupy**.
 1. V **výstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
 
-   **Alias pro výstup:** Jedinečný alias pro výstup.
+   **Alias pro výstup**: Jedinečný alias pro výstup.
 
-   **Jímka**: vyberte **úložiště objektů Blob**.
+   **Jímka**: Vyberte **úložiště objektů Blob**.
 
-   **Účet úložiště**: účet úložiště pro úložiště objektů blob. Můžete vytvořit účet úložiště nebo použijte již existující.
+   **Účet úložiště**: Účet úložiště pro úložiště objektů blob. Můžete vytvořit účet úložiště nebo použijte již existující.
 
-   **Kontejner**: kontejner, ve kterém je uložený objekt blob. Můžete vytvořit kontejner nebo použijte již existující.
+   **kontejner**: Kontejner, ve kterém je uložený objekt blob. Můžete vytvořit kontejner nebo použijte již existující.
 
-   **Formát serializace události**: vyberte **sdíleného svazku clusteru**.
+   **Formát serializace události**: Vyberte **sdíleného svazku clusteru**.
 
    ![Přidat výstup do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
@@ -133,11 +133,11 @@ Zjistíte, jak pomocí Azure Machine Learning (pravděpodobnost deště) předpo
 
    **Alias funkce**: Zadejte `machinelearning`.
 
-   **Typ funkce**: vyberte **Azure ML**.
+   **Typ funkce**: Vyberte **Azure ML**.
 
-   **Možnost importu**: vyberte **Import z jiného předplatného**.
+   **Možnost importu**: Vyberte **Import z jiného předplatného**.
 
-   **Adresa URL**: Zadejte adresu URL webové služby, který jste si poznamenali z Excelového sešitu.
+   **ADRESA URL**: Zadejte adresu URL webové služby, který jste si poznamenali z Excelového sešitu.
 
    **Klíč**: Zadejte přístupový klíč, který jste si poznamenali z Excelového sešitu.
 
@@ -175,7 +175,7 @@ V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Ja
 
 Spusťte klientská aplikace mohla zahájit shromažďování a odesílání teploty a vlhkosti dat do služby IoT hub. Pro každou zprávu, která bude přijímat vaše Centrum IoT úlohy Stream Analytics volat webovou službu předpovědi počasí pro vytvoření pravděpodobnost deště. Výsledek se pak uloží do úložiště objektů blob v Azure. Průzkumník služby Azure Storage je nástroj, který můžete použít k zobrazení výsledku.
 
-1. [Stáhněte a nainstalujte Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+1. [Stáhněte a nainstalujte Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 1. Otevřete Průzkumníka služby Azure Storage.
 1. Přihlaste se ke svému účtu Azure.
 1. Vyberte své předplatné.

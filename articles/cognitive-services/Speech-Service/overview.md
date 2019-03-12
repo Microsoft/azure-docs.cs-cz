@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: d60e5f881e44f397090a3ba5e467c08f20137d72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9beab6f30d42a7fd2c424971d602a581732eb946
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858823"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543045"
 ---
 # <a name="what-is-speech-services"></a>Co je hlasové služby?
 
 Stejně jako jiné služby Azure řeči hlasové služby využívají řeči technologií používaných pro produkty, jako je Cortana a Microsoft Office.
 
-Hlasové služby sjednocení Azure Řečové funkce na dříve k dispozici prostřednictvím [rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home), a [vlastní Hlasové](http://customvoice.ai/) služby. Teď přístup ke všem těmto funkcím poskytuje jedno předplatné.
+Hlasové služby sjednocení Azure Řečové funkce na dříve k dispozici prostřednictvím [rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home), a [vlastní Hlasové](https://customvoice.ai/) služby. Teď přístup ke všem těmto funkcím poskytuje jedno předplatné.
 
 ## <a name="main-speech-services-functions"></a>Funkce Main hlasové služby
 

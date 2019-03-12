@@ -13,14 +13,17 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6618e5317db1a7a4332a35b7ee9cd74934c8a787
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ee39d2d2cf85b8de52804ac764b17db348a053e0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737888"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538217"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
+
+> [!NOTE] 
+> Platformu Java Enterprise Edition v App Service pro Linux je aktuálně ve verzi Preview. Tento stack je **není** doporučuje pro produkční přístupem k práci. Podrobnosti najdete [Příručka pro vývojáře Java](app-service-linux-java.md) informace o našich zásobníků Java SE a Tomcat.
 
 Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [Wildfly](https://wildfly.org/) aplikačního serveru.
 

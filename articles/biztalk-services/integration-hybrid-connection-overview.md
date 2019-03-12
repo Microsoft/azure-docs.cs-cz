@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 18e65fc51f99aa19162daa3f6e5b9b7012214f64
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234030"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765539"
 ---
 # <a name="hybrid-connections-overview"></a>Přehled hybridních připojení
 
@@ -90,13 +90,13 @@ Hybridní připojení používají tyto porty TCP:
 | 5671 |Pokud se k přenosům dat používá port 9352, port 5671 slouží jako řídicí kanál. <br/><br/>Povolte odchozí připojení k tomuto portu. |
 | 80, 443 |Tyto porty se používají při některých žádostech o data zasílaných do Azure. Kromě toho platí, že pokud porty 9352 a 5671 nejsou použitelné, *potom* se pro přenos dat a jako řídicí kanál použijí záložní porty 80 a 443.<br/><br/>Povolte odchozí připojení k těmto portům. <br/><br/>**Poznámka:** Tyto porty nedoporučujeme používat jako záložní porty pro jiné porty TCP. Jako protokol pro datové kanály se místo nativního protokolu TCP používá HTTP/WebSocket. To může způsobit snížení výkonu. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Vytváření a správa hybridních připojení](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Viz také
 [Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)  
 [Vytvoření služby BizTalk](biztalk-provision-services.md)  
-[BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md)  
+[BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md)  
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png

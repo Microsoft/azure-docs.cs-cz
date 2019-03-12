@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: ce18d773d55495a215b9cef9183b497c55976e15
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0664134e29f1b5a6ea6c4e100db925e9055d836d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453741"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547924"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -31,7 +31,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 

@@ -3,20 +3,20 @@ title: Průběžná integrace a doručování ve službě Azure Data Factory | D
 description: Další informace o použití průběžnou integraci a doručování kanálů Data Factory přesunout z jednoho prostředí (vývojové, testovací, produkční) do jiného.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
+author: gauravmalhot
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.author: douglasl
-ms.openlocfilehash: bfab3c94892b94eaf1c0585ee47a6dcbdb161776
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 415299b93edb28155ade4f1e95203e97bb02f0af
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452721"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577020"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 

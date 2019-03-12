@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 8a839d33d66ed434fe04b2c0df742606c11dff2c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c907b26d8ffbcf50b8b03376fec32723d171c6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217934"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779702"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
 

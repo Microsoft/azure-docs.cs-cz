@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 69fbcad92d31744cae798b7ff376e77f655f6440
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e1af2ef3be2b6cf4b75357107caf9d74c7199e8d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877554"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539778"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
@@ -32,7 +32,7 @@ API pro generování sestav Collaborative Translation Framework (CTF) vrátí st
 * Nevrátí automatizovaný překlad (strojový překlad).
 
 ## <a name="endpoint"></a>Koncový bod
-Koncový bod rozhraní API CTF generování sestav http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+Koncový bod rozhraní API CTF generování sestav https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Metody

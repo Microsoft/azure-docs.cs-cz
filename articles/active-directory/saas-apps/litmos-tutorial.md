@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cfaae4bb-e8e5-41d1-ac88-8cc369653036
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada3c9a6ed08895727d395363b7e8a9cb1f2f08f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9e7f462431e286492691796db20d719cb2e0aff4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864392"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Kurz: Integrace Azure Active Directory s Litmos
 

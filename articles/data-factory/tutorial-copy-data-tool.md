@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: ebc0f93055a014888d01fa9bffc7702b99380234
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 553e87cacf407da2333da3105647719679feaabf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417461"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544201"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -54,7 +54,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     Jane|Doe
     ```
 
-1. Vytvořte kontejner **adfv2tutorial** a nahrajte do něj soubor inputEmp.txt. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+1. Vytvořte kontejner **adfv2tutorial** a nahrajte do něj soubor inputEmp.txt. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 

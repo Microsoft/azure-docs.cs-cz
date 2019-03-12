@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 69dc9c974c259f51ac0c6c9d64bfcda7ee65e181
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844581"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588750"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Přehled služby Service Bus zpracování transakcí
 
-Tento článek popisuje možnosti transakce služby Microsoft Azure Service Bus. Velká část diskuse je znázorněn ve [atomické transakce s ukázkou služby Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions). Tento článek je omezená na základní informace o zpracování transakcí a *odeslat prostřednictvím* funkcí ve službě Service Bus, zatímco ukázka atomické transakce je širší a složitější v oboru.
+Tento článek popisuje možnosti transakce služby Microsoft Azure Service Bus. Velká část diskuse je znázorněn ve [AMQP transakce s ukázkou služby Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). Tento článek je omezená na základní informace o zpracování transakcí a *odeslat prostřednictvím* funkcí ve službě Service Bus, zatímco ukázka atomické transakce je širší a složitější v oboru.
 
 ## <a name="transactions-in-service-bus"></a>Transakce ve službě Service Bus
 
-A [ *transakce* ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions) seskupuje dva nebo více operací do *provádění oboru*. Podle povahy musíte tyto transakce zajistit, že všechny operace, které patří k dané skupině operací úspěšné, nebo selže společně. V tomto ohledu transakce fungují jako jednu jednotku, která se často označuje jako *atomicitu*. 
+A *transakce* seskupuje dva nebo více operací do *provádění oboru*. Podle povahy musíte tyto transakce zajistit, že všechny operace, které patří k dané skupině operací úspěšné, nebo selže společně. V tomto ohledu transakce fungují jako jednu jednotku, která se často označuje jako *atomicitu*.
 
 Service Bus je zprostředkovatel transakčních zpráv a zajišťuje transakční integrity pro všechny interní operace s jeho úložiště zpráv. Všechny přenosy zpráv v rámci služby Service Bus, jako je například přesun zpráv [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) nebo [automatické přesměrování](service-bus-auto-forwarding.md) zpráv mezi entitami, které jsou transakční. V důsledku toho pokud služby Service Bus přijme zprávu, je již uloženy a popisek s pořadovým číslem. Od té chvíle případné přenosy zpráv v rámci služby Service Bus jsou koordinovat operace napříč entitami a ani povede ke ztrátě (úspěšný zdroj a cíl selže) nebo k duplikaci (zdroj selže a úspěšné cíl) zprávy.
 
@@ -55,26 +55,47 @@ Výkon této transakční funkce pocítíte, když samotné fronty přenosu je z
 Chcete-li nastavit tyto převody, můžete vytvořit odesílatele zprávy, který cílí na cílové fronty prostřednictvím fronty přenosu. Máte také příjemce, která si přetáhne zprávy z této fronty stejné. Příklad:
 
 ```csharp
-var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
-var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
+var connection = new ServiceBusConnection(connectionString);
+
+var sender = new MessageSender(connection, QueueName);
+var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Jednoduché transakce pak používá tyto prvky, jako v následujícím příkladu:
+Jednoduché transakce pak používá tyto prvky, jako v následujícím příkladu. K odkazování Úplný příklad, přečtěte si [zdrojového kódu na Githubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
-var msg = receiver.Receive();
+var receivedMessage = await receiver.ReceiveAsync();
 
-using (scope = new TransactionScope())
+using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 {
-    // Do whatever work is required 
+    try
+    {
+        // do some processing
+        if (receivedMessage != null)
+            await receiver.CompleteAsync(receivedMessage.SystemProperties.LockToken);
 
-    var newmsg = ... // package the result 
+        var myMsgBody = new MyMessage
+        {
+            Name = "Some name",
+            Address = "Some street address",
+            ZipCode = "Some zip code"
+        };
 
-    msg.Complete(); // mark the message as done
-    sender.Send(newmsg); // forward the result
+        // send message
+        var message = myMsgBody.AsMessage();
+        await sender.SendAsync(message).ConfigureAwait(false);
+        Console.WriteLine("Message has been sent");
 
-    scope.Complete(); // declare the transaction done
-} 
+        // complete the transaction
+        ts.Complete();
+    }
+    catch (Exception ex)
+    {
+        // This rolls back send and complete in case an exception happens
+        ts.Dispose();
+        Console.WriteLine(ex.ToString());
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Další postup

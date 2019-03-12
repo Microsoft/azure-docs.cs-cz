@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730072"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540007"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
 
@@ -315,7 +315,7 @@ Zobrazí se výsledky provést uloženou proceduru v dokumentu Cosmos DB. Zde je
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Namísto použití [webu Azure portal](http://portal.azure.com), můžete provést kroky IoT Hubu pomocí rozhraní příkazového řádku Azure. Podrobnosti najdete na stránkách rozhraní příkazového řádku Azure pro [vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [vytvoření zařízení IoT](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
+Namísto použití [webu Azure portal](https://portal.azure.com), můžete provést kroky IoT Hubu pomocí rozhraní příkazového řádku Azure. Podrobnosti najdete na stránkách rozhraní příkazového řádku Azure pro [vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [vytvoření zařízení IoT](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

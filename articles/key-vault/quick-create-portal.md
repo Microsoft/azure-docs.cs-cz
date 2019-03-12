@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4e31e5d6f1f08012c2ab0dbccb7a0f6c2df89a9a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117098"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728878"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure portal
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
@@ -70,7 +70,11 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření tajného kódu, můžete na něj kliknout v seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 
-![Vlastnosti tajného klíče](./media/quick-create-portal/version.png)
+![Vlastnosti tajného klíče](./media/quick-create-portal/current-version-hidden.png)
+
+Kliknutím na tlačítko "Zobrazit hodnota tajného kódu" v pravém podokně se zobrazí skrytá hodnota. 
+
+![Tajná hodnota objevily](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

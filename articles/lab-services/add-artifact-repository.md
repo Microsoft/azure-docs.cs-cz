@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 393a5c0af5ff7ccaef8aa462391c5c9457aa9c08
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 85763a895b61d184db033c09a413cc897ef6eaa3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011106"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551598"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo VSTS Git. 
@@ -377,7 +377,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 Skript přidá nový prostředek do aktuálního předplatného. Použití [Get-AzContext](/powershell/module/az.accounts/get-azcontext) tyto informace zobrazit. Použití [Set-AzContext](/powershell/module/az.accounts/set-azcontext) nastavení aktuálního tenanta a předplatné.
 
-Nejlepší způsob, jak zjistit název prostředku a informace o typu prostředek se má používat [Test Drive REST API služby Azure](https://azure.github.io/projects/apis/) webu. Podívejte se [DevTest Labs – 2016-05-15](http://aka.ms/dtlrestapis) poskytovatele dostupná rozhraní API REST pro zprostředkovatele DevTest Labs. Uživatelé skriptu následující ID prostředku. 
+Nejlepší způsob, jak zjistit název prostředku a informace o typu prostředek se má používat [Test Drive REST API služby Azure](https://azure.github.io/projects/apis/) webu. Podívejte se [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) poskytovatele dostupná rozhraní API REST pro zprostředkovatele DevTest Labs. Uživatelé skriptu následující ID prostředku. 
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"

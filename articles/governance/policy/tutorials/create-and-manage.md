@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343557"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780282"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -87,32 +87,32 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
       - Pravidla a podmínky zásady, v tomto případě – velikost skladové položky virtuálního počítače se rovná řadě G Series.
       - Účinek zásady, v tomto případě – **Deny** (Zamítnutí).
 
-    Tady je ukázka kódu JSON. Vložte svůj upravený kód na web Azure Portal.
+   Tady je ukázka kódu JSON. Vložte svůj upravený kód na web Azure Portal.
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    *Pole* vlastnost v pravidlu zásad musí být jedna z následujících hodnot: Název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
+   *Pole* vlastnost v pravidlu zásad musí být jedna z následujících hodnot: Název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
 
-    Další ukázky zásad Azure najdete v [ukázkách pro Azure Policy](../samples/index.md).
+   Další ukázky zásad Azure najdete v [ukázkách pro Azure Policy](../samples/index.md).
 
 1. Vyberte **Uložit**.
 

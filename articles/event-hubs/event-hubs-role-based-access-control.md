@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384254"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540075"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -52,7 +52,7 @@ Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IA
 
 Předtím, než spustíte ukázkovou aplikaci zaregistrovat ve službě Azure AD a schválit výzva k povolení spuštění, který umožňuje aplikaci přístup k Event Hubs svým jménem. 
 
-Protože ukázková aplikace je konzolová aplikace, musí registrovat nativní aplikaci a přidejte oprávnění k rozhraní API pro **Microsoft.EventHub** do sady "požadováno oprávnění". Nativní aplikace také potřebují **redirect-URI** ve službě Azure AD, který slouží jako identifikátor URI není potřeba se cílové sítě. Použití `http://eventhubs.microsoft.com` v tomto příkladu vzhledem k tomu, že ukázkový kód již používá tento identifikátor URI.
+Protože ukázková aplikace je konzolová aplikace, musí registrovat nativní aplikaci a přidejte oprávnění k rozhraní API pro **Microsoft.EventHub** do sady "požadováno oprávnění". Nativní aplikace také potřebují **redirect-URI** ve službě Azure AD, který slouží jako identifikátor URI není potřeba se cílové sítě. Použití `https://eventhubs.microsoft.com` v tomto příkladu vzhledem k tomu, že ukázkový kód již používá tento identifikátor URI.
 
 Podrobné registrační kroky jsou vysvětlené v [v tomto kurzu](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Postupujte podle pokynů pro registraci **nativní** aplikace a pak postupujte podle pokynů aktualizace a přidejte **Microsoft.EventHub** rozhraní API požadovaná oprávnění. Jak budete postupovat podle kroků, poznamenejte si **TenantId** a **ApplicationId**, protože ji budete potřebovat tyto hodnoty ke spuštění aplikace.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 298c5f718d10a318ff241cf000f24b5484485489
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408577"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546921"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Rychlý start: Nasazení disku Azure Data Box pomocí webu Azure portal
 
@@ -32,7 +32,7 @@ Než začnete:
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
+Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs).
 
 ## <a name="order"></a>Objednání
 

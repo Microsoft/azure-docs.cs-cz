@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 0011ee646215c01e84aec71c7b992afca1ca3c2a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997161"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543266"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 Tyto kroky ukazují, jak migrovat infrastrukturu jako službu (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manageru pomocí příkazů rozhraní příkazového řádku Azure (CLI). Tento článek vyžaduje [klasické rozhraní příkazového řádku Azure](../../cli-install-nodejs.md). Vzhledem k tomu, že rozhraní příkazového řádku Azure jde použít jenom pro prostředky Azure Resource Manageru, nelze použít pro tuto migraci.
@@ -85,7 +85,7 @@ Pro tento krok je potřeba přepnout na `arm` režimu. To lze proveďte pomocí 
 azure config mode arm
 ```
 
-Následující příkaz rozhraní příkazového řádku můžete použít ke kontrole aktuální počet virtuálních procesorů, které máte v Azure Resource Manageru. Další informace o kvóty virtuálních procesorů, naleznete v tématu [limity a Azure Resource Manageru](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
+Následující příkaz rozhraní příkazového řádku můžete použít ke kontrole aktuální počet virtuálních procesorů, které máte v Azure Resource Manageru. Další informace o kvóty virtuálních procesorů, naleznete v tématu [limity a Azure Resource Manageru](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"

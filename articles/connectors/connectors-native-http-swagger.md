@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817746"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551964"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Koncové body REST s HTTP + Swagger pro volání konektoru v Azure Logic Apps
 
@@ -60,7 +60,7 @@ Tady je postup pro vytvoření, konfiguraci a ukládat dokumenty Swagger ve slu�
 
 3. Nahrajte soubor Swagger do objektu blob. 
 
-   Tento krok můžete provést [webu Azure portal](https://portal.azure.com) nebo z nástroje, jako je [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+   Tento krok můžete provést [webu Azure portal](https://portal.azure.com) nebo z nástroje, jako je [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
 4. Odkazovat na odkazu HTTPS do dokumentu ve službě Azure Blob storage. 
 
@@ -104,11 +104,11 @@ Hvězdička (*) znamená, že požadované pole.
 
 Odpověď protokolu HTTP
 
-| Název vlastnosti | Typ dat | Popis |
+| Property Name | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky odpovědi |
 | Tělo |objekt |Objekt odpovědi |
-| Kód stavu |int |Stavový kód HTTP |
+| Stavový kód |int |Stavový kód HTTP |
 
 ### <a name="http-responses"></a>Odpovědi protokolu HTTP
 Při volání různé akce, může se zobrazit některé odpovědi. Následuje tabulka, která bude uvádět odpovídající odpovědí a popisy.

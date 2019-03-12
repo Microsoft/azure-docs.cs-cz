@@ -10,15 +10,15 @@ ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818035"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776304"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Jde to provést bez otevření portu v bráně firewall nebo nežádoucí změny infrastruktury podnikové sítě. 
@@ -82,7 +82,7 @@ Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí
 5. Brána přesměruje požadavek na připojení do správné brány uvedené v úložišti brány. 
 6. Brána odešle do čekajícího klienta požadavek na vytvoření dočasného kanálu k uzlu brány, která je nejblíže odesílajícímu klientovi. 
 7. Čekající klient vytvoří dočasný kanál k bráně, která je nejblíže odesílajícímu klientovi. Když je teď navázané připojení mezi klienty prostřednictvím brány firewall, můžou si klienti mezi sebou vyměňovat zprávy. 
-8. Brána přesměruje všechny zprávy z čekajícího klienta do odesílajícího klienta. 
+8. Brány předá všechny zprávy z klient posílá klienta. 
 9. Brána přesměruje všechny zprávy z odesílajícího klienta do čekajícího klienta.  
 
 ## <a name="next-steps"></a>Další postup

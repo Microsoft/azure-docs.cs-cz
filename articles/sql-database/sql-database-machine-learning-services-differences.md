@@ -3,7 +3,6 @@ title: Hlavní rozdíly pro Azure SQL Database Machine Learning Services (previe
 description: Toto téma popisuje hlavní rozdíly mezi Azure SQL Database Machine Learning Services (s jazykem R) a SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
-ms.subservice: machine-learning-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242118"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771846"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Hlavní rozdíly mezi služby Machine Learning v Azure SQL Database (preview) a SQL Server
 
@@ -59,10 +58,6 @@ Pokud je pro R k dispozici dostatek paměti, zobrazí se chybová zpráva. Běž
 - Došlo k chybě externího skriptu: Chyba: Nelze přidělit vektor velikost.
 
 Využití závisí na tom, kolik paměti se používá v svoje skripty jazyka R a počet paralelních dotazů, které se spouští. Pokud se zobrazí výše uvedené chyby, je možné škálovat databáze na vyšší úroveň služby na tento problém vyřešit.
-
-## <a name="security-isolation"></a>Izolace zabezpečení
-
-Vrstva abstrakce platformy SQL (SQLPAL) ve službě Azure SQL Database poskytuje izolaci pro externí proces. Tato izolace poskytuje další úroveň zabezpečení pro spouštění skriptů R.
 
 ## <a name="next-steps"></a>Další postup
 

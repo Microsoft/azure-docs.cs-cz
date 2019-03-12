@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a978e1054367620f25043ab810c3fb78c45d9f72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb7fe0689ce54031880565c0c6409afeab2ff523
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310671"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777887"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
@@ -33,6 +33,7 @@ Optické rozpoznávání znaků (OCR) dovednosti rozpozná tištěné a rukou ps
 + .PNG
 + .BMP
 + .GIF
++ .TIFF
 
 > [!NOTE]
 > Od 21. prosince 2018 můžete [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md) s dovednosti Azure Search. To umožňuje spouštění poplatků za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ba268806dccb7c2671825c794383396a2ff20299
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352457"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548809"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -121,7 +121,7 @@ Ke zkopírování dat z SAP ECC, nastavte typ zdroje v aktivitě kopírování d
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SapEccSource** | Ano |
-| query | Možnosti dotazu OData k filtrování dat Příklad: "$select = název, popis a $top = 10".<br/><br/>Konektor SAP ECC kopíruje data z adresy URL pro kombinované: (adresa url zadaná v propojené službě) / (Cesta zadaná v datové sadě)? (dotaz zadaný v zdroj aktivita kopírování). Odkazovat na [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| query | Možnosti dotazu OData k filtrování dat Příklad: "$select = název, popis a $top = 10".<br/><br/>Konektor SAP ECC kopíruje data z adresy URL pro kombinované: (adresa url zadaná v propojené službě) / (Cesta zadaná v datové sadě)? (dotaz zadaný v zdroj aktivita kopírování). Odkazovat na [OData pro adresy URL komponenty](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad:**
 
@@ -161,20 +161,20 @@ Kopírování dat ze SAP ECC, následující mapování se používají z datov�
 
 | Typ dat OData | Data factory dočasné datový typ |
 |:--- |:--- |:--- |
-| Edm.Binary | Řetězec |
-| Edm.Boolean | BOOL |
-| Edm.Byte | Řetězec |
+| Edm.Binary | String |
+| Edm.Boolean | Bool |
+| Edm.Byte | String |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Desítkově |
+| Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | Jednoduchá |
-| Edm.Guid | Řetězec |
+| Edm.Single | Single |
+| Edm.Guid | String |
 | Edm.Int16 | Int16 |
-| Edm.Int32 | Datový typ Int32 |
+| Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Řetězec |
-| Edm.Time | Časový interval |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

@@ -2,16 +2,16 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e483ecfcbddfcf5aa7f8a41c1ee75136c86b656
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 104bd13a0cf97a8605670adde479c2a2eeb29c15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440055"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786324"
 ---
-Pokud chcete přidat značku k prostředku během nasazení, přidejte k nasazovanému prostředku element `tags`. Zadejte název a hodnotu značky.
+Chcete-li značku k prostředku během nasazení, přidejte `tags` prostředku nasazujete element. Zadejte název a hodnotu značky.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Použití literálové hodnoty na název značky
 Následující příklad ukazuje účet úložiště se dvěma značkami (`Dept` a `Environment`) nastavenými na literálové hodnoty:
@@ -39,6 +39,8 @@ Následující příklad ukazuje účet úložiště se dvěma značkami (`Dept`
     ]
 }
 ```
+
+Nastavit značku na hodnotu data a času, použijte [utcNow funkce](../articles/azure-resource-manager/resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>Použití objektu na element značky
 Můžete definovat parametr objektu, ve kterém je uloženo několik značek, a použít tento objekt na element značky. Každá vlastnost v objektu se stane samostatnou značkou pro prostředek. V následujícím příkladu je na element značky použitý parametr `tagValues`.
@@ -75,7 +77,7 @@ Můžete definovat parametr objektu, ve kterém je uloženo několik značek, a 
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>Použití řetězce JSON na název značky
 
-Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, který představuje hodnoty. Celý řetězec JSON je uložený jako jedna značka, která nesmí překročit 256 znaků. V následujícím příkladu je jedna značka `CostCenter`, která obsahuje několik hodnot z řetězce JSON:  
+Pokud chcete uložit mnoho hodnot v jedné značce, použijte řetězec JSON, který představuje hodnoty. Celý řetězec JSON je uložený jako jedna značka, která nemůže být delší než 256 znaků. V následujícím příkladu je jedna značka `CostCenter`, která obsahuje několik hodnot z řetězce JSON:  
 
 ```json
 {

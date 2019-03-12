@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: pareshmu
-ms.openlocfilehash: edefb983ee7796e9eb06d9f7abd513726cd1a545
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92cb69ba6d1ee34160cf2015fdf8083c8d37327b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449281"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780027"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -85,7 +85,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Kapské město** | Teraco | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Čennaj** | Tata Communications | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Čennaj2** | Airtel | Airtel |
-| **Chicago** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Comcast, Coresite, Equinix, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
+| **Chicago** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
 | **Dallas** | Equinix | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet+, Telia Carrier, Verizon, Zayo|
 | **Denver** | CoreSite | CoreSite, Megaport |
 | **Dublin** | Equinix | Colt, eir, Equinix, Interxion, Megaport |
@@ -105,7 +105,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **New York** | Equinix | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Zayo |
 | **Newport(Wales)** | Next Generation Data | British Telecom, Level 3 Communications, příští generace |
 | **Ósaka** | Equinix | Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
-| **Paříž** | Interxion | Colt, Intercloud, Interxion, Equinix, Orange |
+| **Paříž** | Interxion | Colt, Equinix, Intercloud, Interxion, Orange, Zayo |
 | **Perth** | NextDC | NextDC |
 | **Québec** | 4Degrees | Bell Canada, Megaport |
 | **San Antonio** | CyrusOne | CenturyLink Cloud Connect, Megaport |
@@ -114,7 +114,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Soul** | KINX | KINX, LG CNS, Sejong Telecom |
 | **Silicon Valley** | Equinix | Aryaka Networks, AT & T NetBond, British Telecom, CenturyLink Cloud Connect, tak Coresite, Equinix, InterCloud, IX oslovit PacketFabric, Level 3 Communications, Megaport, Orange, Sprintu, Tata Communications, Verizon, Zayo |
 | **Singapur** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
-| **Singapur2** | Globální přepínač | SingTel Colt, Megaport, |
+| **Singapur2** | Globální přepínač | Colt epsilon – globální Communications, Megaport, SingTel |
 | **Sydney** | Equinix | AARNet, AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, NTT Communications, Optus, Orange, Telstra Corporation, Verizon |
 | **Tchaj-pej** | Hlavní telekomunikaci | Hlavní telekomunikaci |
 | **Tokio** | Equinix | Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japan Inc. - IIJ, NTT Communications, NTT EAST, Orange, Softbank, Verizon |
@@ -159,11 +159,11 @@ Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsa
 Pokud poskytovatel připojení není v předchozích částech uvedený, můžete přesto vytvořit připojení.
 
 * Zkontrolujte u svého poskytovatele připojení, jestli je připojený k některé z výměn v předchozí tabulce. Můžete zkontrolovat následující odkazy, abyste získali další informace o službách nabízených poskytovateli výměny. Několik poskytovatelů připojení je už připojeno k ethernetovým výměnám.
-  * [Cologix](http://www.cologix.com/)
+  * [Cologix](https://www.cologix.com/)
   * [CoreSite](http://www.coresite.com/)
-  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
-  * [InterXion](http://www.interxion.com/)
-  * [NextDC](http://www.nextdc.com/)
+  * [Equinix Cloud Exchange](https://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
+  * [InterXion](https://www.interxion.com/)
+  * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
   

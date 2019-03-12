@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244487"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550118"
 ---
-# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Kurz: Zasílání faktur procesu EDIFACT pomocí Azure BizTalk Services
+# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Kurz: Zpracování faktur EDIFACT pomocí Azure BizTalk Services
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -55,11 +55,11 @@ Společnost Contoso využívá k dosažení této podnikový scénář, funkce p
 K dokončení tohoto scénáře, můžeme používat fronty Service Bus fakturu odešlete ze společnosti Contoso Northwind nebo přijetí potvrzení z databáze Northwind. Tyto fronty je možné vytvářet pomocí klientské aplikace, která je k dispozici ke stažení a je součástí ukázkového balíčku, který je k dispozici v rámci tohoto kurzu.  
 
 ## <a name="prerequisites"></a>Požadavky
-* Musíte mít obor názvů služby Service Bus. Pokyny k vytvoření oboru názvů, naleznete v tématu [postupy: vytvoření nebo úpravě Namespace služby Service Bus služby](https://msdn.microsoft.com/library/azure/hh674478.aspx). Předpokládejme, že už máte obor názvů Service Bus, které jsou zřízené, volá **edifactbts**.
+* Musíte mít obor názvů služby Service Bus. Pokyny k vytvoření oboru názvů, naleznete v tématu [How To: Vytvořte nebo upravte Namespace služby Service Bus služby](https://msdn.microsoft.com/library/azure/hh674478.aspx). Předpokládejme, že už máte obor názvů Service Bus, které jsou zřízené, volá **edifactbts**.
 * Musíte mít předplatné služby BizTalk Services. Pro účely tohoto kurzu Předpokládejme, máte předplatné služby BizTalk Services, volá **contosowabs**.
 * Zaregistrujte své předplatné služby BizTalk Services na portálu BizTalk Services. Pokyny najdete v tématu [registrace nasazení služby BizTalk na portálu BizTalk Services](https://msdn.microsoft.com/library/hh689837.aspx)
 * Musíte mít nainstalovanou sadu Visual Studio.
-* Je nutné nainstalovat sadu SDK pro BizTalk Services. Můžete stáhnout sady SDK z [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
+* Je nutné nainstalovat sadu SDK pro BizTalk Services. Můžete stáhnout sady SDK z [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>Krok 1: Vytvoření fronty služby Service Bus
 Toto řešení používá fronty Service Bus umožňuje výměnu zpráv mezi obchodními partnery. Contoso a Northwind odesílání zpráv do front z kde je využívat mosty EAI a EDI. Pro tohle řešení musíte tři fronty služby Service Bus:
@@ -106,7 +106,7 @@ Smluv s obchodními partnery se vytvoří mezi profily obchodní obchodními par
    3. Na **protokol** ve skupině **schémata** části tím, že nahrajete **EFACT_D93A_INVOIC.xsd** schématu. Toto schéma je k dispozici s ukázkového balíčku.
       
       ![][4]  
-   4. Na **přenosu** kartu, zadejte podrobnosti pro fronty služby Service Bus. Straně odesílání smlouvy se používá **northwindreceive** frontu pro odesílání faktur EDIFACT Northwind a **pozastaveno** fronty směrovat všechny zprávy, které během zpracování selhat a jsou pozastavena. Vytvoří tyto fronty v **krok 1: vytvoření fronty služby Service Bus** (v tomto tématu).
+   4. Na **přenosu** kartu, zadejte podrobnosti pro fronty služby Service Bus. Straně odesílání smlouvy se používá **northwindreceive** frontu pro odesílání faktur EDIFACT Northwind a **pozastaveno** fronty směrovat všechny zprávy, které během zpracování selhat a jsou pozastavena. Vytvoří tyto fronty v **krok 1: Vytvoření fronty služby Service Bus** (v tomto tématu).
       
       ![][5]  
       
@@ -223,7 +223,7 @@ BizTalk Services projektu **InvoiceProcessingBridge**, transformací zprávy je 
    
    V podokně výstup zkopírovat koncového bodu, které přemostění EAI se nasadí, třeba `https://contosowabs.biztalk.windows.net/default/ProcessInvoiceBridge`. Tuto adresu URL koncového bodu budete potřebovat později.  
 
-## <a name="step-4-test-the-solution"></a>Krok 4: Testování řešení
+## <a name="step-4-test-the-solution"></a>Krok 4: Otestování řešení
 V tomto tématu se podíváme na to, jak pomocí otestování řešení **kurzu klienta** aplikace poskytuje jako součást vzorku.  
 
 1. V sadě Visual Studio, stiskněte klávesu F5 pro spuštění **kurzu klienta**.
@@ -246,7 +246,7 @@ V tomto tématu se podíváme na to, jak pomocí otestování řešení **kurzu 
    
    ![][16]  
 
-## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>Krok 5 (volitelné): Odeslat EDIFACT faktury v dávkách
+## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>Krok 5 (volitelné): Poslat fakturu EDIFACT v dávkách
 BizTalk Services EDI přemostění také podporuje dávkování odchozích zpráv. Tato funkce je užitečná pro příjem partnery, kteří dávají přednost dávku zpráv (splňující určité kritérium) namísto jednotlivých zpráv.
 
 Nejdůležitější aspekty při práci s dávky je skutečná verze služby batch, také nazývané kritéria uvolnění. Kritéria uvolnění můžou týkat jak přijímajícího partnera chce, aby se pro příjem zpráv. Pokud je povolené dávkování, EDI most neodesílá odchozí zprávy do přijímajícího partnera dokud není splněna kritéria uvolnění. Například dávkování kritéria na základě odešle zprávu velikost dávky pouze tehdy, když n zprávy jsou dávce. Kritéria batch může být také založené na čase tak, aby dávky je odeslána na pevně stanovený čas každý den. V tomto řešení se snažíme velikost zprávy na základě kritérií.

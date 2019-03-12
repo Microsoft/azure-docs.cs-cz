@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 49751a98-bfde-48b4-a8f8-b96e1d18aefa
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 619dc9bbc70531436492a4aa1bef0bd26a78c4ed
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ae06b11737c46d494f5a8e5e39be8ee16ca1bef4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875283"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>Kurz: Integrace Azure Active Directory s MindTickle
 

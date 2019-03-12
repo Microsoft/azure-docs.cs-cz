@@ -6,15 +6,15 @@ keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 675848f26b991978dce2e8686a71d86756180586
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: d28776b8501a1467a77cd0ad4225d1267d768052
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806724"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767812"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 Service Fabric mřížky rozhraní příkazového řádku (CLI) je potřeba nasadit a spravovat prostředky, místně i v Azure Service Fabric mřížky. 

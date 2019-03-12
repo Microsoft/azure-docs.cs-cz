@@ -12,12 +12,12 @@ ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 03e91726dd8f37fb2c3b8ffe2c8e89762e8d3dd6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178817"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546377"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz:  Nastavení PHS jako zálohu pro službu AD FS v Azure AD Connect
 
@@ -60,7 +60,7 @@ Teď vám ukážeme, jak přepnout na synchronizaci hodnot hash hesel. Než zač
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1.  Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.</br>
 ![Ověření](media/tutorial-password-hash-sync/verify1.png)</br>
 

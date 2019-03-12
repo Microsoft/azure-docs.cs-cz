@@ -3,17 +3,16 @@ title: Azure Disk Encryption pomocí Azure AD App Linuxem v režimu IaaS virtuá
 description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro virtuální počítače IaaS s Linuxem.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 292dafb88362d7f7d0ec07a2a7961b98e6518204
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 659530d1dcea5593e86edf85cb6c2b15da57618e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339381"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775624"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Povolit Azure Disk Encryption pro virtuální počítače s Linuxem IaaS (předchozí verze)
 
@@ -32,38 +31,8 @@ Přijmout [snímku](../virtual-machines/windows/snapshot-copy-managed-disk.md) n
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_NewLinux"></a> Nasazení nového virtuálního počítače s Linuxem IaaS s povoleným šifrováním disku 
-
-1. Použití [šablony Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) vytvořte nový šifrovaných virtuálních počítačů IaaS s Linuxem. Šablona vytvoří nový virtuální počítač RedHat Linuxu 7.2 s 200 GB diskového pole RAID-0 pole a šifrování celého disku použití spravovaných disků. Na [nejčastější dotazy k](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) článku, můžete si všimnout, že některých Linuxových distribucích pro datové disky podporují pouze šifrování. Tato šablona však nabízí příležitost seznámit se s nasazením šablony a ověřuje stav šifrování pomocí několika metod. 
- 
-1. Klikněte na tlačítko **nasadit do Azure** na šablony Azure Resource Manageru.
-
-2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, parametry, právní podmínky a smlouvy. Klikněte na tlačítko **vytvořit** chcete povolit šifrování na existující nebo spuštěného virtuálního počítače IaaS.
-
-3. Po nasazení šablony, ověřte stav šifrování virtuálního počítače pomocí upřednostňované metody:
-     - Ověření pomocí Azure CLI pomocí [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) příkazu. 
-
-         ```azurecli-interactive 
-         az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
-         ```
-
-     - Ověření pomocí Azure Powershellu pomocí [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) rutiny. 
-
-         ```azurepowershell-interactive
-         Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-         ```
-
-     - Vyberte virtuální počítač a potom klikněte na **disky** pod **nastavení** záhlaví a ověřit stav šifrování na portálu. V grafu v části **šifrování**, uvidíte, jestli je povolené. 
-
-| Parametr | Popis |
-| --- | --- |
-| ID klienta AAD | ID klienta aplikace Azure AD, který má oprávnění k zápisu tajných klíčů do služby key vault. |
-| Tajný kód klienta AAD | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných klíčů do trezoru klíčů. |
-| Název trezoru klíčů | Název trezoru klíčů, klíč by měl umístit. |
-| Skupina prostředků trezoru klíčů | Skupina prostředků trezoru klíčů. |
-
-
 ## <a name="bkmk_RunningLinux"> </a> Povoluje šifrování na existující nebo spuštěné IaaS virtuálního počítače s Linuxem
+
 V tomto scénáři můžete povolit šifrování pomocí šablony Resource Manageru, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku. 
 
 >[!IMPORTANT]

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 542fe0064de84e6266d2d0274809d7b2046b855c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c07f01acb95523171f0297f7e2fd531713f1facf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874405"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550152"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 
@@ -34,7 +34,7 @@ Tento článek obsahuje přehled rozšíření virtuálních počítačů, poža
 Několik různých rozšíření virtuálního počítače Azure jsou k dispozici, každý s konkrétním případu použití. Možné příklady:
 
 - Použijte PowerShell Desired State konfigurace virtuálního počítače pomocí rozšíření DSC pro Windows. Další informace najdete v tématu [rozšíření Azure Desired State configuration](dsc-overview.md).
-- Konfigurace monitorování virtuálního počítače pomocí rozšíření Microsoft Monitoring Agent virtuálního počítače. Další informace najdete v tématu [připojit virtuální počítače Azure do Log Analytics](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Konfigurace monitorování virtuálního počítače pomocí rozšíření Microsoft Monitoring Agent virtuálního počítače. Další informace najdete v tématu [připojit virtuální počítače Azure s protokoly Azure monitoru](../../log-analytics/log-analytics-azure-vm-extension.md).
 - Konfigurace virtuálního počítače Azure pomocí Chefu. Další informace najdete v tématu [nasazení automatizace virtuálních počítačů Azure pomocí Chefu](../windows/chef-automation.md).
 - Konfigurace sledování infrastruktury Azure pomocí služby Datadog rozšíření. Další informace najdete v tématu [blog služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 

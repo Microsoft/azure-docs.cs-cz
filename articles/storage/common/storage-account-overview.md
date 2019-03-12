@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c95fcd2e6369fae920481db2623124342c34a730
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447626"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544235"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -38,7 +38,7 @@ Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvoři
 > [!NOTE]
 > Microsoft doporučuje používat účet úložiště pro obecné účely verze 2 pro většinu scénářů. Pro obecné účely v1 nebo účtu služby Blob storage můžete snadno upgradovat na účet pro obecné účely v2 došlo k výpadku a bez nutnosti kopírovat data.
 >
-> Další informace o upgradu na účet pro obecné účely v2 najdete v tématu [upgradovat na účet úložiště pro obecné účely v2](storage-account-upgrade.md). 
+> Další informace o upgradu na účet pro obecné účely v2 najdete v tématu [upgradovat na účet úložiště pro obecné účely v2](storage-account-upgrade.md).
 
 Účty úložiště pro obecné účely verze 2 nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
 
@@ -85,7 +85,7 @@ Azure Storage nabízí různé možnosti pro přístup k datům objektu blob blo
 K dispozici přístup úrovně jsou:
 
 > [!NOTE]
-> [Přístup na úrovni Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) je k dispozici ve verzi limited preview jako účet místně redundantního úložiště (LRS) v oblastech severní Evropa, USA – východ 2, USA – střed a USA – západ. Zjistěte, jak zaregistrovat verzi preview, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](https://aka.ms/premiumblob).
+> [Přístup úrovně premium (preview)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), která je optimalizována pro citlivé aplikace s výkonem, nabízí nízkou a konzistentní latence Díky vysoké propustnosti a transakcí míry. Přístup k úrovni premium je k dispozici jenom s účty úložiště objektů Blob bloku (preview). Další informace najdete v tématu [Azure Blob Storage úrovně Premium ve verzi public preview](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 * **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou o něco vyšší náklady na úložiště. Nové účty úložiště jsou vytvořené v horké vrstvy ve výchozím nastavení.
 * **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být trochu nákladnější než přístup k datům v horké úrovni.

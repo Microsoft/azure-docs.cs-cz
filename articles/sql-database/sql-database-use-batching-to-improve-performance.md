@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0ef6d258be0165c7a73ce060879f55f1c7f404f9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76b53132cca536f66aa2f739b27d74b08a3f16cf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781387"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkování pro zvýšení výkonu aplikací SQL Database
 
@@ -168,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-V předchozím příkladu **SqlCommand** objekt vloží řádků z parametru s hodnotou tabulky, **@TestTvp**. Dříve vytvořený **DataTable** je přiřazen objekt pro tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vložení v jednom volání výrazně zvyšuje výkon přes sekvenční operace vložení.
+V předchozím příkladu **SqlCommand** objekt vloží řádků z parametru s hodnotou tabulky,  **\@TestTvp**. Dříve vytvořený **DataTable** je přiřazen objekt pro tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vložení v jednom volání výrazně zvyšuje výkon přes sekvenční operace vložení.
 
 Aby se zvýšil z předchozího příkladu dále, použití uložené procedury místo příkazu založený na textu. Následující příkaz jazyka Transact-SQL vytvoří uloženou proceduru, která přebírá **SimpleTestTableType** parametr s hodnotou tabulky.
 

@@ -12,20 +12,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 468de59408ae3403fb16e6272bb2f7517e0c2190
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2038ce62e252260dda73813df97a68ee4b3fff61
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445496"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548894"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics Nozzle pro monitorování systému Cloud Foundry
 
-[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) je služba v Azure. Pomáhá shromažďovat a analyzovat data, která se generuje z vašeho cloudu a místních prostředích.
+[Azure Monitor](https://azure.microsoft.com/services/log-analytics/) je služba v Azure. Pomáhá shromažďovat a analyzovat data, která se generuje z vašeho cloudu a místních prostředích.
 
-Log Analytics Nozzle (Nozzle) je komponenta Cloud Foundry (CR), která předává metriky z [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose ke službě Log Analytics. Nozzle můžete shromažďovat, zobrazit a analyzovat vaše CF systému stavu a výkonu metrik, mezi několika nasazeními.
+Log Analytics Nozzle (Nozzle) je komponenta Cloud Foundry (CR), která předává metriky z [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose protokoly Azure monitoru. Nozzle můžete shromažďovat, zobrazit a analyzovat vaše CF systému stavu a výkonu metrik, mezi několika nasazeními.
 
-V tomto dokumentu se dozvíte, jak k nasazení Nozzle pro CF prostředí a pak přístup k datům z konzoly pro Log Analytics.
+V tomto dokumentu se dozvíte, jak k nasazení Nozzle pro CF prostředí a pak přístup k datům z konzoly pro protokoly Azure monitoru.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,11 +55,11 @@ Před nastavením klienta příkazového řádku UAA, ujistěte se, že je nains
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Vytvoření pracovního prostoru Log Analytics v Azure
 
-Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaná zobrazení klíčových ukazatelů výkonu a upozornění pro konzolu Log Analytics. 
+Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaná zobrazení klíčových ukazatelů výkonu a výstrahy pro protokoly konzoly Azure Monitor. 
 
 #### <a name="to-create-the-workspace-manually"></a>Ruční vytvoření pracovního prostoru:
 
-1. Na webu Azure Portal v seznamu služeb na webu Azure Marketplace vyhledejte a vyberte Log Analytics.
+1. Na webu Azure Portal v seznamu služeb na webu Azure Marketplace vyhledejte a pak vyberte pracovní prostory Log Analytics.
 2. Vyberte **vytvořit**a podle potřeby změňte hodnoty následujících položek:
 
    * **Pracovní prostor log Analytics**: Zadejte název pro váš pracovní prostor.
@@ -66,7 +68,7 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
    * **Umístění**: Zadejte umístění.
    * **Cenová úroveň**: Vyberte **OK** dokončete.
 
-Další informace najdete v tématu [Začínáme se službou Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Chcete-li vytvořit pracovní prostor Log Analytics prostřednictvím monitorování šablony z Tržiště Azure:
 
@@ -91,7 +93,7 @@ Existuje několik různých způsobů, jak nasadit Nozzle: jako dlaždici PCF ne
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Nasazení Nozzle jako dlaždice správce PCF Ops
 
-Uvedený postup [instalace a konfigurace Azure Log Analytics Nozzle pro PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Toto je zjednodušený přístup, automaticky nakonfiguruje a push nozzle dlaždice správce PCF Ops. 
+Uvedený postup [instalace a konfigurace Azure Log Analytics Nozzle pro PCF](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Toto je zjednodušený přístup, automaticky nakonfiguruje a push nozzle dlaždice správce PCF Ops. 
 
 ### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Ruční nasazení Nozzle jako aplikace CF
 
@@ -136,9 +138,9 @@ Nyní můžete nastavit proměnné prostředí v souboru manifest.yml v aktuáln
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Azure Monitor logs. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Azure Monitor logs. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Azure Monitor logs. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -148,8 +150,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Azure Monitor logs as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azure Monitor logs. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>Předejte aplikaci z vývojového počítače
@@ -176,7 +178,7 @@ Ujistěte se, že je OMS Nozzle aplikace spuštěna.
 
 ## <a name="view-the-data-in-the-azure-portal"></a>Zobrazení dat na webu Azure Portal
 
-Pokud jste nasadili řešení pro monitorování šablonou Marketplace, přejděte na web Azure portal a vyhledejte řešení. Řešení můžete najít ve skupině prostředků, které jste zadali v šabloně. Klikněte na řešení, vyhledejte "Log Analytics konzole", jsou uvedeny předem nakonfigurovaná zobrazení, klíčové ukazatele výkonu systému nejvyšší Cloud Foundry, data aplikací, výstrahy a metriky stavu virtuálního počítače. 
+Pokud jste nasadili řešení pro monitorování šablonou Marketplace, přejděte na web Azure portal a vyhledejte řešení. Řešení můžete najít ve skupině prostředků, které jste zadali v šabloně. Klikněte na řešení, vyhledejte "log analytics konzole", jsou uvedeny předem nakonfigurovaná zobrazení, klíčové ukazatele výkonu systému nejvyšší Cloud Foundry, data aplikací, výstrahy a metriky stavu virtuálního počítače. 
 
 Pokud jste vytvořili pracovní prostor Log Analytics ručně, postupujte podle následujících kroků a vytvořte výstrahy a zobrazení:
 
@@ -200,7 +202,7 @@ Je možné [vytvoření výstrahy](https://docs.microsoft.com/azure/log-analytic
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Počet výsledků > 0   | Konzul pravidelně vydává její dobrý stav. 0 znamená, že systém je v pořádku a 1 znamená, že vysílače trasy zjistí, že konzul dolů. |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Počet výsledků > 0 | Rozdílová počet zpráv podle Doppler záměrně vynechaný kvůli protitlak. |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Počet výsledků > 0   | Vysílá Loggregator **LGR** případné problémy s procesem protokolování. Příkladem takových problém při výstupní zprávy protokolu je příliš vysoká. |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Když se Nozzle obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** ValueMetric ke službě Log Analytics. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Počet výsledků > 0   | Nozzle obdrží upozornění na pomalé příjemce od loggregator, odešle **slowConsumerAlert** protokoly ValueMetric do Azure monitoru. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Počet výsledků > 0   | Pokud počet delta ke ztrátě událostí, které dosáhne prahové hodnoty, znamená to, že nozzle máte problém se spuštěním. |
 
 ## <a name="scale"></a>Měřítko
@@ -235,7 +237,7 @@ V okně rozhraní příkazového řádku CF zadejte:
 cf delete <App Name> -r
 ```
 
-Pokud odeberete Nozzle, se automaticky odeberou data v portálu OMS. Vypršení platnosti podle nastavení uchovávání dat Log Analytics.
+Pokud odeberete Nozzle, se automaticky odeberou data v portálu OMS. Vypršení platnosti podle vaší uchovávání protokolů Azure Monitor nastavení.
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 
@@ -243,6 +245,6 @@ Azure Log Analytics Nozzle je open source. Posílat dotazy a zpětnou vazbu, kte
 
 ## <a name="next-step"></a>Další krok
 
-Z PCF2.0 jsou metriky výkonu virtuálních počítačů k Azure log analytics nozzle přenáší systémové metriky předávání a integrovat do pracovního prostoru Log Analytics. Už nepotřebujete agenta Log Analytics pro metriky výkonu virtuálních počítačů. Agenta Log Analytics ale můžete použít ke shromažďování informací Syslog. Agenta Log Analytics je nainstalován jako doplněk Bosh k vašim virtuálním počítačům CF. 
+Z PCF2.0 jsou metriky výkonu virtuálních počítačů k Azure Log Analytics nozzle přenáší systémové metriky předávání a integrovat do pracovního prostoru Log Analytics. Už nepotřebujete agenta Log Analytics pro metriky výkonu virtuálních počítačů. Agenta Log Analytics ale můžete použít ke shromažďování informací Syslog. Agenta Log Analytics je nainstalován jako doplněk Bosh k vašim virtuálním počítačům CF. 
 
 Podrobnosti najdete v tématu [agenta Log Analytics nasazení do nasazení Cloud Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).

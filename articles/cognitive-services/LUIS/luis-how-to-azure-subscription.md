@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7c9f3c72d94955286d05cf68dbe698a46df3cdf3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867027"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781693"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Použití klíčů předplatného s aplikací LUIS
 
-Není nutné k vytvoření klíčů předplatného používat dotazy zdarma prvních 1 000 koncových bodů. Jakmile se používají tyto dotazy koncového bodu, vytvořte prostředek Azure v [webu Azure portal](http://portal.azure.com), daný prostředek přiřadit aplikace LUIS v [LUIS portál](https://www.luis.ai).
+Není nutné k vytvoření klíčů předplatného používat dotazy zdarma prvních 1 000 koncových bodů. Jakmile se používají tyto dotazy koncového bodu, vytvořte prostředek Azure v [webu Azure portal](https://portal.azure.com), daný prostředek přiřadit aplikace LUIS v [LUIS portál](https://www.luis.ai).
 
 Pokud se zobrazí _překročení kvóty_ chyby ve formuláři HTTP 403 a 429, budete muset vytvořit klíč a přiřaďte ho do své aplikace. 
 
 Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte. Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. Nepoužívejte [vytváření klíč](luis-concept-keys.md#authoring-key) za dotazy na koncový bod v produkčním prostředí.
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>Vytvoření klíče koncového bodu Language Understanding na webu Azure Portal
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Vytvoření predikcí koncový bod runtimový prostředek na webu Azure Portal
 
-Tato procedura vytváří **Language Understanding** prostředků. Pokud chcete prostředek, který lze použít v rámci služeb Cognitive Services, vytvořte klíč All-in-one **[služby Cognitive Services](../cognitive-services-apis-create-account.md)** místo Language Understanding prostředků. 
-
-Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. Nepoužívejte tento klíč se změny modelu nebo na aplikaci. 
-
-1. Přihlaste se k  **[webu Azure portal](https://ms.portal.azure.com/)**. 
-1. Vyberte zelené **+** přihlásit v horním levém panelu a vyhledejte `Language Understanding` na webu Marketplace, pak vyberte na **Language Understanding** a postupujte podle pokynů  **Vytvoření prostředí** k vytvoření účtu předplatného služba LUIS. 
-
-    ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
-
-1. Nakonfigurování odběru s nastavením název účtu, včetně cenové úrovně, atd. 
-
-    ![Volbou Azure API](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. Jakmile vytvoříte prostředek Language Understanding, můžete zobrazit přístupové klíče vygenerované v **správy prostředků -> klíče**. Jak propojit tento nový prostředek na aplikaci LUIS na portálu služby LUIS se zobrazí v další části. Budete potřebovat název prostředku služby LUIS z kroku 3.
-
-    ![Azure klíče](./media/luis-azure-subscription/azure-keys.png)
+Další informace najdete [sestavit aplikaci](get-started-portal-build-app.md) rychlý start.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ Tento klíč by měla sloužit pouze pro dotazy předpovědi s koncový bod. Nep
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Klíč prostředku přiřadit aplikace LUIS portálu LUIS
 
-1. Přihlaste se k portálu služby LUIS, zvolte aplikaci, kterou chcete přidat nový klíč a vyberte **spravovat** v pravé horní nabídce vyberte **klíče a koncových bodů**.
-
-    [![Stránku klíče a koncových bodů](./media/luis-manage-keys/keys-and-endpoints.png)](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. Chcete-li přidat LUIS, vybrat **přiřazení prostředků +**.
-
-    ![Přiřadit prostředek vaší aplikace](./media/luis-manage-keys/assign-key.png)
-
-1. Vyberte Tenanta v dialogovém okně přidružené k e-mailu adresa vaší slouží k přihlášení na web služby LUIS.  
-
-1. Zvolte **název předplatného** spojené s prostředky Azure, které chcete přidat.
-
-1. Vyberte **název prostředku služby LUIS**. 
-
-1. Vyberte **přiřazení prostředků**. 
-
-1. Nalezení nový řádek v tabulce a zkopírujte adresu URL koncového bodu. Je vytvořen správně provést požadavek HTTP GET na koncový bod služby LUIS pro předpověď. 
+Další informace najdete [nasazení](get-started-portal-deploy-app.md) rychlý start.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

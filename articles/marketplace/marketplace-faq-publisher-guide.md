@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3ad38b215cf33bda0c9f9d0bcd7403b6201282ee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437152"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542144"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k tržišti Marketplace
 

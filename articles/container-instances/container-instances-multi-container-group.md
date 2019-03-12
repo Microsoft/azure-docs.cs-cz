@@ -1,6 +1,6 @@
 ---
 title: Nasazení skupin více kontejnerů ve službě Azure Container Instances
-description: Zjistěte, jak nasadit skupinu kontejnerů s několika kontejnerů ve službě Azure Container Instances.
+description: Zjistěte, jak nasadit skupinu kontejnerů s několika kontejnerů ve službě Azure Container Instances pomocí šablony Azure Resource Manageru.
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856467"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729494"
 ---
-# <a name="deploy-a-container-group"></a>Nasazení skupiny kontejnerů
+# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Nasazení skupiny více kontejnerů pomocí šablony Resource Manageru
 
 Služba Azure Container Instances podporuje nasazení několika kontejnerů na jednom hostiteli pomocí [skupinu kontejnerů](container-instances-container-groups.md). To je užitečné při vytváření sajdkára aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci Pokud služba potřebuje druhý připojený proces.
 
@@ -28,6 +28,8 @@ Nasazení pomocí šablony Resource Manageru se doporučuje, pokud potřebujete 
 
 > [!NOTE]
 > Skupiny vícekontejnerové jsou momentálně omezené jenom na Linuxové kontejnery. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+
+Další šablony ukázky najdete v tématu [šablony Azure Resource Manageru pro Azure Container Instances](container-instances-samples-rm.md). 
 
 ## <a name="configure-the-template"></a>Konfigurace šablony
 

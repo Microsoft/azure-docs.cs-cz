@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565577"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569744"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
 Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 
@@ -64,8 +64,8 @@ Tyto poznámky zjednodušují připojení zprostředkovaných podle Klientská k
 Tento příklad kódu (z doprovodných ukázky) ukazuje přístupu, kde je klíč horizontálního dělení poskytnutý aplikací ke knihovně pro zprostředkování připojení ke správné horizontálních oddílů.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                     key: tenantId1, 
-                     connectionString: connStrBldr.ConnectionString, 
+                     key: tenantId1,
+                     connectionString: connStrBldr.ConnectionString,
                      options: ConnectionOptions.Validate))
     {
         var blog = new Blog { Name = name };
@@ -87,13 +87,13 @@ Objekt map horizontálních oddílů vytvoří připojení do horizontálního o
 Dotazy fungují velmi podobně jako když stejné – prvním otevření připojení pomocí [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak můžete pomocí regulárních Dapper rozšiřující metody do objektů .NET mapovat výsledky dotazu SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId1, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId1,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate ))
-    {    
+    {
            // Display all Blogs for tenant 1
            IEnumerable<Blog> result = sqlconn.Query<Blog>(@"
-                                SELECT * 
+                                SELECT *
                                 FROM Blog
                                 ORDER BY Name");
 
@@ -112,8 +112,8 @@ Dapperem se dodává s ekosystémem další rozšíření, které můžete zadat
 Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Správa připojení k databázi. Zodpovídá za stále aplikace k otevření připojení a pravidelné objekty připojení klienta SQL se očekává metodami rozšíření. Spoléháme na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) jak je uvedeno výš. Jak ukazují následující ukázky kódu, pouze změny je, že už máte psát příkazy jazyka T-SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            var blog = new Blog { Name = name2 };
@@ -123,8 +123,8 @@ Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Sprá
 A tady je příklad dotazu: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            // Display all Blogs for tenant 2
@@ -143,7 +143,7 @@ Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přecho
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
-       using (SqlConnection sqlconn = 
+       using (SqlConnection sqlconn =
           shardingLayer.ShardMap.OpenConnectionForKey(tenantId2, connStrBldr.ConnectionString, ConnectionOptions.Validate))
           {
               var blog = new Blog { Name = name2 };

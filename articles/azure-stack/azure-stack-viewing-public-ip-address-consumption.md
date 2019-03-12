@@ -10,16 +10,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d97674940f0af91bf50af87cfe96fda9644d469b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2cb1dde60f8d8aa76e0b678347df9be120c39e7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242048"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782101"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Zobrazení spotřeby veřejných IP adres ve službě Azure Stack
 

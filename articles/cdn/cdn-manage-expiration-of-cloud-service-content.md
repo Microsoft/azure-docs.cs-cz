@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b070b302917d69e0145c1a10c90685b55aa4dcc2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253121"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540218"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Správa vypršení platnosti webového obsahu v Azure CDN
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Následující příklad konfigurační soubor XML ukazuje, jak nastavit `<clien
 </configuration>
 ```
 
-Použít **cacheControlMaxAge** atribut, musíte nastavit hodnotu **cacheControlMode** atribut `UseMaxAge`. Toto nastavení způsobila hlavičky protokolu HTTP a směrnice, `Cache-Control: max-age=<nnn>`, přidat do odpovědi. Formát hodnoty timespan pro **cacheControlMaxAge** atribut je `<days>.<hours>:<min>:<sec>`. Jeho hodnota je převedena na sekundy a slouží jako hodnotu `Cache-Control` `max-age` směrnice. Další informace o `<clientCache>` prvku, naleznete v tématu [mezipaměti klienta <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Použít **cacheControlMaxAge** atribut, musíte nastavit hodnotu **cacheControlMode** atribut `UseMaxAge`. Toto nastavení způsobila hlavičky protokolu HTTP a směrnice, `Cache-Control: max-age=<nnn>`, přidat do odpovědi. Formát hodnoty timespan pro **cacheControlMaxAge** atribut je `<days>.<hours>:<min>:<sec>`. Jeho hodnota je převedena na sekundy a slouží jako hodnotu `Cache-Control` `max-age` směrnice. Další informace o `<clientCache>` prvku, naleznete v tématu [mezipaměti klienta <clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Nastavení hlavičky Cache-Control prostřednictvím kódu programu
 Pro aplikace ASP.NET, můžete řídit chování ukládání do mezipaměti prostřednictvím kódu programu nastavením CDN **HttpResponse.Cache** vlastnosti rozhraní .NET API. Informace o **HttpResponse.Cache** vlastnost, naleznete v tématu [HttpResponse.Cache vlastnost](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) a [HttpCachePolicy třídy](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
@@ -128,10 +128,10 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Testování hlavičku Cache-Control
-Můžete snadno ověřit nastavení TTL webového obsahu. V prohlížeči [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, který zahrnuje webový obsah `Cache-Control` hlavičky odpovědi. Můžete také použít nástroje jako **wget**, [Postman](https://www.getpostman.com/), nebo [Fiddler](http://www.telerik.com/fiddler) a prověří hlavičky odpovědi.
+Můžete snadno ověřit nastavení TTL webového obsahu. V prohlížeči [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, který zahrnuje webový obsah `Cache-Control` hlavičky odpovědi. Můžete také použít nástroje jako **wget**, [Postman](https://www.getpostman.com/), nebo [Fiddler](https://www.telerik.com/fiddler) a prověří hlavičky odpovědi.
 
 ## <a name="next-steps"></a>Další kroky
-* [Přečtěte si podrobnosti o **clientCache** – element](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+* [Přečtěte si podrobnosti o **clientCache** – element](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Přečtěte si jejich dokumentaci **HttpResponse.Cache** vlastnost](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
 * [Přečtěte si jejich dokumentaci **HttpCachePolicy třídy**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [Další informace o ukládání do mezipaměti koncepty](cdn-how-caching-works.md)

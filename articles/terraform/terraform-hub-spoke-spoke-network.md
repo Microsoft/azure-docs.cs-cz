@@ -2,19 +2,19 @@
 title: Vytvoření sítě paprsků s využitím Terraformu v Azure
 description: Zjistěte, jak implementovat dvě paprsku, virtuální sítě připojené k centrum v topologii centra s paprsky
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, VNet peering, paprsku, centra s paprsky
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 71e8c9f50c4540308380e3f29acfc7bed4b427d7
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3487d062fb9c3334bcf06c525a3c42faac3014be
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411404"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780503"
 ---
 # <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření virtuální sítě paprsků s využitím Terraformu v Azure
 

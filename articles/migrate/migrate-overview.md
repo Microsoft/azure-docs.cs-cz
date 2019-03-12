@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e2cafe0c8c5d8194519428839ec3c73f5dc726c0
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: bbb3e4f319584740f165b64948e1fd4dca2722b0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992021"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729516"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -30,7 +30,8 @@ Azure Migrate vám pomůže s následujícími úlohami:
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware se musí spravovat přes vCenter Server (verze 5.5, 6.0, 6.5 nebo 6.7).
-- Pokud chcete posoudit fyzické servery a virtuální počítače Hyper-V, použijte [Plánovač nasazení služby Azure Site Recovery](https://aka.ms/asr-dp-hyperv-doc) pro Hyper-V a [partnerské nástroje](https://azure.microsoft.com/migration/partners/) pro fyzické počítače.
+- Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí, pokud máte zájem o vyzkoušení, zaregistrujte se prosím [tady.](http://aka.ms/migratefuture)
+- Pro účely posouzení fyzických serverů, můžete využít naše [partnerské nástroje](https://azure.microsoft.com/migration/partners/).
 - Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
@@ -38,7 +39,7 @@ Azure Migrate vám pomůže s následujícími úlohami:
     **Zeměpisné oblasti** | **Umístění úložiště**
     --- | ---
     Azure Government | USA (Gov) – Virginia
-    Asie | Jihovýchodní Asie
+    Asie | Jihovýchodní Asie a jihovýchodní Asie
     Evropa | Severní Evropa a západní Evropa
     Spojené státy | USA – východ nebo USA (střed) – západ
 

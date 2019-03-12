@@ -3,25 +3,25 @@ title: Transformace dat pomocí skriptu U-SQL – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak zpracovat nebo transformovat data spuštěním skriptů U-SQL na výpočetní služby Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020842"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777290"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformovat data spuštěním skriptů U-SQL v Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-usql-activity.md)
 > * [Verze 2 (aktuální verze)](../transform-data-using-data-lake-analytics.md)
 
@@ -50,8 +50,8 @@ Následující tabulka obsahuje popis obecných vlastností použitých v defini
 | --- | --- | --- |
 | **type** |Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. |Ano |
 | **accountName** |Název účtu Azure Data Lake Analytics. |Ano |
-| **dataLakeAnalyticsUri** |Identifikátor URI, Azure Data Lake Analytics. |Ne |
-| **ID předplatného** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Ne |
+| **subscriptionId** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
 | **resourceGroupName** |Název skupiny prostředků Azure |Ne (když není určeno, skupina prostředků objektu pro vytváření dat se používá). |
 
 ### <a name="service-principal-authentication-recommended"></a>Ověřování instančních objektů (doporučeno)
@@ -210,14 +210,14 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | Vlastnost type musí být nastavená na **DataLakeAnalyticsU SQL**. | Ano                                      |
 | linkedServiceName   | Referenční dokumentace k Azure Data Lake Analytics zaregistrovaný jako propojenou službu ve službě Data Factory | Ano                                      |
-| ScriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru je velká a malá písmena. | Ne (když je pomocí skriptu)                   |
+| scriptPath          | Cesta ke složce, která obsahuje skript U-SQL. Název souboru je velká a malá písmena. | Ne (když je pomocí skriptu)                   |
 | scriptLinkedService | Propojené služby, která propojuje úložiště, který obsahuje skript do služby data factory | Ne (když je pomocí skriptu)                   |
-| skript              | Zadejte místo určení scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když použijete scriptPath a scriptLinkedService) |
-| z degreeOfParallelism | Maximální počet uzlů najednou použitý ke spuštění úlohy. | Ne                                       |
+| script              | Zadejte místo určení scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když použijete scriptPath a scriptLinkedService) |
+| degreeOfParallelism | Maximální počet uzlů najednou použitý ke spuštění úlohy. | Ne                                       |
 | priorita            | Určuje, které z uložených ve frontě úloh by měl být vybrané ke spuštění první. Čím nižší je číslo, tím vyšší je priorita. | Ne                                       |
 | parameters          | Parametry pro skript U-SQL          | Ne                                       |
 | runtimeVersion      | Verze modulu runtime U-SQL stroje používat | Ne                                       |
-| Vlastnost CompilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot:</p> <ul><li>**Sémantické:** Proveďte pouze sémantické kontroly a kontrol správnosti nezbytné.</li><li>**Úplné:** Proveďte úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd.</li><li>**SingleBox:** Proveďte úplná kompilace s TargetType nastavení SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. </p> | Ne                                       |
+| compilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot:</p> <ul><li>**Sémantické:** Proveďte pouze sémantické kontroly a kontrol správnosti nezbytné.</li><li>**Úplné:** Proveďte úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd.</li><li>**SingleBox:** Proveďte úplná kompilace s TargetType nastavení SingleBox.</li></ul><p>Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. </p> | Ne                                       |
 
 V tématu [SearchLogProcessing.txt skript definice](#sample-u-sql-script) pro definici skriptu. 
 
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Hodnoty pro **@in** a **@out** parametry ve skriptu U-SQL jsou předávány dynamicky ADF pomocí sekci "parametrů". V části "parametrů" v definici kanálu.
+Hodnoty pro  **\@v** a  **\@si** parametry ve skriptu U-SQL jsou předávány dynamicky ADF pomocí sekci "parametrů". V části "parametrů" v definici kanálu.
 
 Také můžete zadat další vlastnosti, například z degreeOfParallelism a priority v definici kanálu pro úlohy, které běží ve službě Azure Data Lake Analytics.
 

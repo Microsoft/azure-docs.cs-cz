@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e1898e6e7f038bdeda1b7c87fab31728bd7317
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: ed2792c3bb599a0e5654be836d440b61fc803012
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409784"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Integrace Azure Active Directory s aplikací Workday
 

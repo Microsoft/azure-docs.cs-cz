@@ -3,21 +3,20 @@ title: Vytvoření datové továrny Azure pomocí šablony Resource Manageru | D
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: 7d02dedc6979f1b9b78ef1ec3f74728c67574f56
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 1d4eb3d2978be98d81b42dd66a75b21563c23a1a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437050"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576646"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
 
@@ -53,7 +52,7 @@ Ve složce **C:\ADFTutorial** vytvořte soubor JSON s názvem **ADFTutorialARM.j
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
         "dataFactoryName": {
             "type": "string",

@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: e4e2a01bbac7aebb70852b93c51c32933cc75eec
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f6e604940c9e2e84f119fdd1859ad4b2cda23aef
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652174"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588699"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
 
@@ -30,20 +30,19 @@ Jako vlastník testovacího prostředí můžete konfigurovat virtuální počí
 
 Díky této funkci můžete použít skript zadat nový nebo existující skupiny prostředků v rámci vašeho předplatného Azure pro všechny vaše testovací prostředí virtuálních počítačů. Azure DevTest Labs v současné době podporuje tuto funkci prostřednictvím rozhraní API.
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Rozhraní API konfigurace skupiny prostředků pro testovací prostředí virtuálních počítačů
-Máte následující možnosti jako vlastník testovacího prostředí při použití tohoto rozhraní API:
+## <a name="use-azure-portal"></a>Použití webu Azure Portal
+Následujícím postupem určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 
 
-- Zvolte **skupiny prostředků testovacího prostředí** pro všechny virtuální počítače.
-- Zvolte **existující skupinu prostředků** než skupina prostředků testovacího prostředí pro všechny virtuální počítače.
-- Zadejte **novou skupinu prostředků** název pro všechny virtuální počítače.
-- Pokračujte v používání existujícího chování, ve kterém se vytvoří skupinu prostředků pro každý virtuální počítač v testovacím prostředí.
- 
-Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače ve vaší laboratoři, které byly vytvořeny ve své vlastní skupiny prostředků zůstanou beze změny. Prostředí, které jsou vytvořeny ve vaší laboratoři dál zůstanou ve své vlastní skupiny prostředků.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby** v navigační nabídce vlevo. 
+3. Ze seznamu vyberte **DevTest Labs**.
+4. V seznamu testovacích prostředí, vyberte vaše **lab**.  
+5. Vyberte **konfigurace a zásad** v **nastavení** části v nabídce vlevo. 
+6. Vyberte **nastavení testovacího prostředí** v nabídce vlevo. 
+7. Vyberte **všechny virtuální počítače v jedné skupině prostředků**. 
+8. Vyberte existující skupinu prostředků v rozevíracím seznamu (nebo) vyberte **vytvořit nový**, zadejte **název** pro skupinu prostředků a vyberte **OK**. 
 
-Jak používat toto rozhraní API:
-- Použití rozhraní API verze **2018_10_15_preview**.
-- Pokud chcete zadat novou skupinu prostředků, ujistěte se, že máte **oprávnění k zápisu na skupiny prostředků** ve vašem předplatném. Pokud nemáte oprávnění k zápisu, vytváření nových virtuálních počítačů v zadané skupině prostředků se nezdaří.
-- Při použití rozhraní API, předejte **úplné ID skupiny prostředků**. Například: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že skupina prostředků je ve stejném předplatném jako testovacího prostředí. 
+    ![Vyberte skupinu prostředků pro všechny virtuální počítače testovacího prostředí](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell 
 Následující příklad ukazuje, jak použít skript prostředí PowerShell k vytvoření všech virtuálních počítačů testovací prostředí v nové skupině prostředků.
@@ -97,6 +96,22 @@ Pokud používáte šablonu Azure Resource Manageru k vytvoření testovacího p
             "dependsOn": []
         },
 ```
+
+
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>Rozhraní API konfigurace skupiny prostředků pro testovací prostředí virtuálních počítačů
+Máte následující možnosti jako vlastník testovacího prostředí při použití tohoto rozhraní API:
+
+- Zvolte **skupiny prostředků testovacího prostředí** pro všechny virtuální počítače.
+- Zvolte **existující skupinu prostředků** než skupina prostředků testovacího prostředí pro všechny virtuální počítače.
+- Zadejte **novou skupinu prostředků** název pro všechny virtuální počítače.
+- Pokračujte v používání existujícího chování, ve kterém se vytvoří skupinu prostředků pro každý virtuální počítač v testovacím prostředí.
+ 
+Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače ve vaší laboratoři, které byly vytvořeny ve své vlastní skupiny prostředků zůstanou beze změny. Prostředí, které jsou vytvořeny ve vaší laboratoři dál zůstanou ve své vlastní skupiny prostředků.
+
+Jak používat toto rozhraní API:
+- Použití rozhraní API verze **2018_10_15_preview**.
+- Pokud chcete zadat novou skupinu prostředků, ujistěte se, že máte **oprávnění k zápisu na skupiny prostředků** ve vašem předplatném. Pokud nemáte oprávnění k zápisu, vytváření nových virtuálních počítačů v zadané skupině prostředků se nezdaří.
+- Při použití rozhraní API, předejte **úplné ID skupiny prostředků**. Například: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že skupina prostředků je ve stejném předplatném jako testovacího prostředí. 
 
 
 ## <a name="next-steps"></a>Další postup

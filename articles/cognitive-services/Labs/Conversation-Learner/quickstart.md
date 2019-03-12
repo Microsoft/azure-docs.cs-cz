@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 82738d6d97dc2c14c83ed483c4a1d76604d0cd91
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251431"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545311"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření modelu konverzace Learner pomocí Node.js
 
@@ -33,7 +33,7 @@ Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota 
   
 - Služba LUIS vytváření klíč:
 
-  1. Přihlaste se do [ http://www.luis.ai ](http://www.luis.ai).
+  1. Přihlaste se do [ https://www.luis.ai ](https://www.luis.ai).
 
   2. Klikněte na své jméno v pravém horním rohu klikněte na "nastavení"
 

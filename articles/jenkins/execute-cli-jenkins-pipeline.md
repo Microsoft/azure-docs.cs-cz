@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: dfdc572810cfcfd275faa4502e508b9c8ccec9b6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727837"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546139"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí Jenkinse a Azure CLI
 K nasazení webové aplikace v Javě do Azure můžete použít Azure CLI v [kanálu Jenkinse](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
@@ -117,7 +117,7 @@ Jakmile bude definice webové aplikace připravená, v Azure CLI se zobrazí pod
 
 Ve službě Cloud Shell pomocí příkazu [az appservice web config update](/cli/azure/webapp/config) nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace.
 
-Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě Java 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě Java 8 JDK a [Apache Tomcat](https://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 

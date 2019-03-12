@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfc01667f1fee7e57929e1990b5cf8c99a0fd595
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737497"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588716"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>Vyčištění vaší úlohy Azure Stream Analytics
 
-Úlohy Azure Stream Analytics můžete snadno odstranit prostřednictvím webu Azure portal, prostředí Azure PowerShell, sady Azure SDK for .net nebo REST API.
+Úlohy Azure Stream Analytics můžete snadno odstranit prostřednictvím webu Azure portal, prostředí Azure PowerShell, sady Azure SDK for .net nebo REST API. Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
 
 >[!NOTE] 
 >Při zastavení vaší úlohy Stream Analytics, data se uchovávají pouze ve vstupní a výstupní úložiště, jako jsou Event Hubs nebo Azure SQL Database. V případě potřeby k odebrání dat z Azure je potřeba provést proces odebrání za vstupní a výstupní prostředky vaší úlohy Stream Analytics.

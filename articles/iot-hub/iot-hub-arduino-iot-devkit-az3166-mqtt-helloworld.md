@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 8959c1d773a7e4ea79c7a7531c2bba578f2801e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158478"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552006"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odeslání zprávy serveru MQTT
 
 Internet věcí (IoT) systémy často řešit Přerušovaná, nízké kvality nebo pomalé připojení k Internetu. MQTT je protokol připojení machine-to-machine (modelů M2M), které se tyto výzvy v úvahu vyvinula. 
 
-Knihovna klienta MQTT se tady použít. je součástí [Eclipse Paho](http://www.eclipse.org/paho/) projektu, který poskytuje rozhraní API pomocí protokolu MQTT přes více způsob přenosu.
+Knihovna klienta MQTT se tady použít. je součástí [Eclipse Paho](https://www.eclipse.org/paho/) projektu, který poskytuje rozhraní API pomocí protokolu MQTT přes více způsob přenosu.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
@@ -57,7 +57,7 @@ Typ `Ctrl+P` (macOS: `Cmd+P`) ke spuštění `task device-upload`. Po dokončen�
 ![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> Může se zobrazit "Chyba: AZ3166 SE: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Může se zobrazit "Chyba: AZ3166: Neznámý balíček"chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tuto chybu vyřešit, přečtěte si [části vývoj nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
@@ -77,7 +77,7 @@ Sériový Monitor má zobrazit všechny zprávy odeslané sketch vzorku. Náčrt
 
 Pokud narazíte na potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
 
-* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Další informace najdete v tématech

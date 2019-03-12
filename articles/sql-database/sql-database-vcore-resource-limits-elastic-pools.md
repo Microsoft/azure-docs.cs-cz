@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: a372a955578f3621c1b8a9226809671927c9bfd3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.openlocfilehash: a1e76aafa271ff021517c3d06c3c6e02103413d3
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342747"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571469"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity pro elastické fondy pomocí omezení založený na virtuálních jádrech nákupní model prostředků
 
@@ -30,6 +30,8 @@ Založený na DTU nákupní model omezení najdete v tématu [omezení prostřed
 
 Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikost úložiště [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraní REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
+> [!IMPORTANT]
+> Škálování pokyny a důležité informace, najdete v části [škálování elastického fondu](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > Omezení prostředků jednotlivých databází v elastických fondech jsou obvykle stejné jako u izolovaných databází mimo fondy, které má stejnou výpočetní velikost. Maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je například 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databáze ve fondu GP_Gen4_1 je tedy také 200 pracovních procesů. Všimněte si, že se celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
 

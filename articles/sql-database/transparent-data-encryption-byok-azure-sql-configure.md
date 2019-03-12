@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/15/2019
-ms.openlocfilehash: b2c3e4067fd8e08440f9fe6e15212160aef002f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 6669be82877ae5d9465e23dad3c8b310cf24af89
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312915"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576765"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s použitím klíče spravovaného zákazníkem ze služby Azure Key Vault
 
@@ -175,7 +175,7 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k problému zkontrolujte následující:
-- Pokud nelze najít trezor klíčů, ujistěte se, že jste pomocí správného předplatného [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) rutiny.
+- Pokud nelze najít trezor klíčů, ujistěte se, že jste pomocí správného předplatného [Get-AzSubscription](/powershell/module/az.account/get-azsubscription) rutiny.
 
    ```powershell
    Get-AzSubscription `

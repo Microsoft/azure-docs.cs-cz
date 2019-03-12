@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe4134d322c87c199f24cbd7966a8d6fca7256d9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241544"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538863"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro ukládání vlastních artefaktů a šablony Resource Manageru
 
@@ -89,7 +89,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 
 ### <a name="related-blog-posts"></a>Související blogové příspěvky
 * [Řešení potíží s selhání artefaktů ve službě DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Připojte se k virtuální počítač do existující domény služby Active Directory pomocí šablony Resource Manageru ve službě DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Připojte se k virtuální počítač do existující domény služby Active Directory pomocí šablony Resource Manageru ve službě DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

@@ -3,18 +3,18 @@ title: Interaktivní hledání v mapách pomocí Azure Maps | Dokumentace Micros
 description: Rychlý start Azure – vytvoření ukázku interaktivního hledání v mapách s využitím Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 03/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 681a76de02d91b39ee74d1e4fa764c06d79ff3ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: cc16c47f3b1764ba6887fd832656dfe2567ba0e4
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065133"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588937"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Vytvořte mapu interaktivního hledání s využitím Azure Maps
 
@@ -47,7 +47,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="download-the-application"></a>Stažení aplikace
 
-1. Stáhněte nebo zkopírujte obsah souboru [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html).
+1. Stáhněte nebo zkopírujte obsah souboru [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html).
 2. Uložte obsah tohoto souboru místně jako **AzureMapDemo.html**. Otevřete ho v textovém editoru.
 3. Vyhledejte řetězec `<insert-key>`. Nahraďte ho hodnotou **primární klíč** hodnotu z předchozí části.
 

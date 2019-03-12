@@ -26,10 +26,10 @@
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
-## [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
+## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Ceny](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Poznámky k verzi](biztalk-release-notes.md)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/biztalk-services)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

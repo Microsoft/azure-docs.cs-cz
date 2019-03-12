@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1135a879-8f00-43b0-ac8a-831593d9586d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 024f157d5f5dc184a8432f8716734fbb03cca616
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3d441381c03dad7ac8a0a2cafafef261038bcc3e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240707"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Kurz: Integrace Azure Active Directory s Moxi zapojení
 

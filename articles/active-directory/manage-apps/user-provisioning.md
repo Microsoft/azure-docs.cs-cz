@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 198f32b5f3d7572807b6af3e41ccf8085d9cbc0b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186348"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576935"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -108,11 +108,11 @@ Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizován�
 
 ![Nastavení](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Filtry oborů** zjistit službu zřizování, kteří uživatelé a skupiny ve zdrojovém systému musí zřízení nebo zrušení zřízení cílového systému. Existují dva aspekty filtry, které jsou vyhodnocovány společně oborů, které definují, kdo je v oboru pro zřizování:
+* **Filtry oborů** říkají službě zřizování, které uživatele a skupiny ve zdrojovém systému je potřeba zřídit nebo zrušit v cílovém systému. U filtrů oborů se společně vyhodnocují dva aspekty, na základě kterých se určí, kdo spadá do oboru pro zřízení:
 
-    * **Filtrováním podle hodnot atributů** -nabídky "Obor zdrojového objektu" v mapování atributů umožňuje filtrování podle hodnoty konkrétního atributu. Například můžete určit, že pouze uživatelé s atributem "Oddělení", "Prodeje" by měla být v oboru pro zřizování. Další informace najdete v tématu [pomocí filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
+    * **Filtrování podle hodnot atributů** – Nabídka Obor zdrojového objektu v mapování atributů umožňuje filtrovat podle konkrétních hodnot atributů. Můžete například určit, že v oboru pro zřízení mají být pouze uživatelé s atributem Department (Oddělení) s hodnotou Sales (Prodej). Další informace najdete v tématu [Používání filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
-    * **Filtrováním podle přiřazení** -zajištěním z nabídky "Scope" > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazení" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měl být všichni uživatelé v adresáři Azure AD zřízené. Informace o "přiřazení" uživatelů a skupin najdete v tématu [přiřadit podnikové aplikace v Azure Active Directory uživatele nebo skupinu](assign-user-or-group-access-portal.md).
+    * **Filtrováním podle přiřazení** -zajištěním z nabídky "Scope" > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazení" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měl být všichni uživatelé v adresáři Azure AD zřízené. Informace o přiřazování uživatelů a skupin najdete v tématu [Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
     
 * **Nastavení** řídí provoz služby zřizování pro aplikace, včetně toho, jestli je aktuálně spuštěna, nebo ne.
 
@@ -260,7 +260,7 @@ Ano. Když nakonfigurovaný "synchronizovat jenom přiřazené uživatelům a sk
 
 Použití dynamických skupin může mít vliv na celkový výkon začátku do konce zřizování uživatelů z Azure AD pro aplikace SaaS. Při použití dynamické skupiny, prosím mějte tyto upozornění a doporučení:
 
-* Jak je rychle uživatele v dynamické skupině zřízení nebo zrušení zřízení v aplikaci SaaS, závisí na jak rychle vyhodnotit změny členství dynamické skupiny. Informace o tom, jak zkontrolovat stav zpracování dynamickou skupinu najdete v tématu [zkontrolovat stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+* Jak je rychle uživatele v dynamické skupině zřízení nebo zrušení zřízení v aplikaci SaaS, závisí na jak rychle vyhodnotit změny členství dynamické skupiny. Informace o tom, jak zkontrolovat stav zpracování dynamickou skupinu najdete v tématu [zkontrolovat stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
 
 * Při použití dynamické skupiny pravidel je třeba pečlivě zvážit s uživatelem, zřizování a zrušení zřizování v úvahu, zrušení zřízení události dojde ke ztrátě členství.
 

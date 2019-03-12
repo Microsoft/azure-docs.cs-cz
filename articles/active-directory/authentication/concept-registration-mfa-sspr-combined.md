@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d28eb63ffb700dc0f20020ac4007c5485b0edb
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588970"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550186"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -33,6 +33,8 @@ Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na s
 
 > [!IMPORTANT]
 > Pokud je uživatel povolen pro původní verzi preview a vylepšené kombinovaná registrace prostředí, zobrazí se nové prostředí. Uživatelé, kteří jsou povoleny pro obě možnosti se zobrazí pouze nové prostředí Můj profil. Nové Můj profil v souladu s vzhledu a chování kombinovaná registrace a poskytuje bezproblémové prostředí pro uživatele. Uživatelé vidí můj profil tak, že přejdete do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+
+Můj profil stránky jsou lokalizovány na základě aktuální nastavení jazyka na počítači přistoupit ke stránce. Společnost Microsoft ukládá jiným mezipaměť prohlížeče k vykreslení v poslední jazyk používaný bude pokračovat následné pokusy o přístup k nejnovější jazyk. Vymazání mezipaměti způsobí, že stránky, které znovu zpracovat. Pokud chcete vynutit konkrétní jazyk přidávání `?lng=de-DE` na konec adresy URL kde `de-DE` je nastavena na příslušný jazyk kódu vynutí stránky k vykreslení v daném jazyce.
 
 ![Můj profil rozhraní zobrazuje informace o zabezpečení a možnosti pro nastavení samoobslužného resetování HESLA nebo jiné metody další bezpečnostní ověření.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 

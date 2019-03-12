@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c9c0fd8bf7dc893ce07a6e3ce9cb392fc652a560
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079864"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535848"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents pomocí služby Event Grid
 
-Kromě jeho [výchozí událost schéma](event-schema.md), nativně podporuje události v Azure Event Grid [schématu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) je [otevřete specifikace](https://github.com/cloudevents/spec/blob/master/spec.md) pro data události popisující.
+Kromě jeho [výchozí událost schéma](event-schema.md), nativně podporuje události v Azure Event Grid [schématu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](https://cloudevents.io/) je [otevřete specifikace](https://github.com/cloudevents/spec/blob/master/spec.md) pro data události popisující.
 
 CloudEvents zjednodušuje vzájemná funkční spolupráce poskytnutím společné schéma události pro publikování a využívání cloudu na základě událostí. Toto schéma umožňuje jednotnou nástroje, standardních způsobů směrování a zpracování událostí a univerzální způsoby deserializaci schématu vnější události. Se společným schématem lze snadněji práci integrovat napříč platformami.
 
@@ -60,16 +60,16 @@ Tady je příklad událost Azure Blob Storage ve formátu CloudEvents:
 
 CloudEvents v0.1 má k dispozici následující vlastnosti:
 
-| CloudEvents        | Typ     | Příklad hodnoty JSON             | Popis                                                        | Event Grid mapování
+| CloudEvents        | Type     | Příklad hodnoty JSON             | Popis                                                        | Event Grid mapování
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | Řetězec   | "com.example.someevent"          | Typ došlo k výskytu                                   | eventType
-| eventTypeVersion   | Řetězec   | "1.0"                            | Verze typ eventType (volitelné)                            | dataVersion
-| cloudEventsVersion | Řetězec   | "0.1"                            | Verzi CloudEvents specifikace, které používá událost        | *předat prostřednictvím*
+| eventType          | String   | "com.example.someevent"          | Typ došlo k výskytu                                   | eventType
+| eventTypeVersion   | String   | "1.0"                            | Verze typ eventType (volitelné)                            | dataVersion
+| cloudEventsVersion | String   | "0.1"                            | Verzi CloudEvents specifikace, které používá událost        | *předat prostřednictvím*
 | source             | Identifikátor URI      | "/ mycontext"                     | Popisuje Tvůrce událostí                                       | téma #subject
-| ID události            | Řetězec   | "1234-1234-1234"                 | ID události                                                    | id
+| ID události            | String   | "1234-1234-1234"                 | ID události                                                    | id
 | čas události          | Časové razítko| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | čas události
 | schemaURL          | Identifikátor URI      | https://myschema.com           | Odkaz na schéma, které používá atribut dat (volitelné) | *Nepoužito*
-| contentType        | Řetězec   | "application/json"               | Popište formát kódování dat (volitelné)                       | *Nepoužito*
+| contentType        | String   | "application/json"               | Popište formát kódování dat (volitelné)                       | *Nepoužito*
 | Rozšíření         | Mapa      | {"nadbytečné": "posouzení ohrožení zabezpečení", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *Nepoužito*
 | data               | Objekt   | {"objA": "posouzení ohrožení zabezpečení", "objB", "vB"}  | Datová část události (volitelné)                                       | data
 

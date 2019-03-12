@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 2/20/2019
+ms.date: 3/5/2019
 ms.author: moderakh
-ms.openlocfilehash: a090f40bcbc0dab1f685c02308243aff8fbac9fd
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588462"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570092"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -43,6 +43,12 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 | **Minimální podporovaný modul runtime**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
+* Opravu pro nevrácení prostředků client#close() ([githubu #88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).
+
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
+* Přidání pokračování token podpory pro různé dotazy oddílu.
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 * Některé chyby opravené v přímém režimu.
@@ -140,6 +146,8 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.4.3](#2.4.3) |5. března 2019|--- |
+| [2.4.2](#2.4.2) |1. března 2019|--- |
 | [2.4.1](#2.4.1) |20. února 2019|--- |
 | [2.4.0](#2.4.0) |8. února 2019|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |4. února 2019|--- |

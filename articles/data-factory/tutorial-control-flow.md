@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 53540128b5a9a1e2690179a35f26a9a82c6cb584
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446949"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551632"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
@@ -56,7 +56,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     John|Doe
     Jane|Doe
     ```
-2. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/), vytvořte kontejner **adfv2branch** a odešlete soubor **input.txt** do tohoto kontejneru.
+2. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/), vytvořte kontejner **adfv2branch** a odešlete soubor **input.txt** do tohoto kontejneru.
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 

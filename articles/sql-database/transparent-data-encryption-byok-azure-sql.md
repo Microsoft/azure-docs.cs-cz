@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: a0f909dcb78a782945517b6691805ea66f2d0cfd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 03/07/2019
+ms.openlocfilehash: 13642827a6a0f6524a1f9222b72e75f51a5442a3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456376"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576901"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL transparentního šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault: Your Own Key podpoře
 
@@ -88,11 +88,11 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
 
 - Použití klíče bez data vypršení platnosti – a nemají nastavený datum vypršení platnosti klíče již používán: **po vypršení platnosti tohoto klíče, šifrovaným databázím ztratíte přístup k jejich ochrana TDE a budou pro během 24 hodin**.
 - Zkontrolujte klíč zapnutá a nemá oprávnění k provedení *získat*, *zabalit klíč*, a *rozbalit klíč* operace.
-- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) příkazu.
+- Před použitím klíč ve službě Azure Key Vault prvním vytvoření zálohy klíče Azure Key Vault. Další informace o [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) příkazu.
 - Vytvořit novou zálohu pokaždé, když se všechny změny provedené klíč (třeba přidání seznamy ACL, přidání značek, přidání klíčových atributů).
 - **Zachovat předchozí verze** klíče v trezoru klíčů při obměně klíčů, můžete obnovit tak starší zálohy databáze. Při změně ochrana TDE pro databázi, starší zálohy databáze **se neaktualizují** použít nejnovější ochrana TDE.  Každá záloha musí ochrana TDE byl vytvořen v době obnovení. Střídání klíčů lze provést podle pokynů [otočit transparentní ochrana šifrování dat pomocí Powershellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Po změně klíče spravované zákazníkem služby zachovat všechny dříve použitých klíče ve službě Azure Key Vault.  Tím se zajistí, že zálohování databáze je možné obnovit pomocí ochrany transparentní šifrování dat uložených ve službě Azure Key Vault.  Transparentní šifrování dat ochrany vytvořené pomocí Azure Key Vault musí být zachovány, dokud všechny uložené zálohy byly vytvořeny s použitím klíčů spravovaných služeb.  
-- Vytvořte obnovitelné kopie tyto klíče pomocí [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Vytvořte obnovitelné kopie tyto klíče pomocí [zálohování AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey).
 - Odebrání potenciálně ohrožený klíč během incidentu zabezpečení bez rizika ztráty dat, postupujte podle kroků uvedených v [odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 ## <a name="high-availability-geo-replication-and-backup--restore"></a>Vysoká dostupnost, geografickou replikaci a zálohování a obnově
@@ -126,7 +126,7 @@ Následující části se přenášejí prostřednictvím kroky instalace a konf
   - Klíč RSA/RSA-HSA 2048
   - Žádná data vypršení platnosti
   - Klíč je povolená a má oprávnění k provedení get, zabalit klíč a rozbalit klíčové operace
-- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) a [obnovení AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
+- Zálohování primárního klíče a obnovení klíče na druhý trezoru klíčů.  Zobrazit [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) a [obnovení AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 ### <a name="azure-sql-database-configuration-steps"></a>Postup konfigurace Azure SQL Database
 

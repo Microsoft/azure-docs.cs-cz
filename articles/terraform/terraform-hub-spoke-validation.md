@@ -2,19 +2,19 @@
 title: Ověření hvězdicové sítě s využitím Terraformu v Azure
 description: Kurz k ověření rozbočovač a uvedenou síťovou topologii se všechny virtuální sítě připojené k mezi sebou.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, střed a paprsek, sítí, hybridní sítě, devops, virtuální počítač, azure, vnet peering
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: eac86ac5d56d4aef4a8220ff9b40f053d241a356
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 83e6585027aa6ca30192a93c2ec1bfc8c525d6d0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411416"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781302"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Kurz: Ověření hvězdicové sítě s využitím Terraformu v Azure
 

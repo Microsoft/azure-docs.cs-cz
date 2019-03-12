@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248057"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550101"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastní image ze souboru virtuálního pevného disku
 
@@ -60,9 +60,9 @@ Následující kroky vás provedou procesem vytvoření vlastní image ze soubor
 
 1. Pokud image použitá k vytvoření vlastní image není licencované image (vydáno nakladatelstvím Microsoft), můžete zadat také název plánu, plán nabídky a vydavatel plánu.
 
-   - **Název plánu:** zadejte název image Marketplace (SKU) z vlastní image se vytvoří 
-   - **Nabídka plánu:** zadejte produkt (nabídku) Image Marketplace, ze kterého se vytvoří vlastní image 
-   - **Vydavatel plánu:** zadejte vydavatele image Marketplace, ze kterého se vytvoří vlastní image
+   - **Název plánu:** Zadejte název image Marketplace (SKU) z vlastní image se vytvoří 
+   - **Nabídka plánu:** Zadejte produkt (nabídku) Image Marketplace, ze kterého se vytvoří vlastní image 
+   - **Vydavatel plánu:** Zadejte vydavatele image Marketplace, ze kterého se vytvoří vlastní image
 
    > [!NOTE]
    > Pokud je obrázek, který používáte k vytvoření vlastní image **není** licencované image a pak tato pole jsou prázdné a může být vyplněna, pokud se rozhodnete. Pokud image **je** licencované image a pak pole jsou automaticky vyplněna informacemi o plánu. Pokud se pokusíte v tomto případě je změnit, zobrazí se zpráva s upozorněním.
@@ -81,7 +81,7 @@ Po několika minutách se vlastní image se vytvoří a je uložený v účtu ú
 ## <a name="related-blog-posts"></a>Související blogové příspěvky
 
 - [Vlastní Image nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopírování vlastních Imagí mezi Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Kopírování vlastních Imagí mezi Azure DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Další postup
 

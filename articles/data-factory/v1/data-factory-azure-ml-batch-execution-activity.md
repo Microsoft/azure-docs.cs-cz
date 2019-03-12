@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6c71956bf43a0147d5abff4b708be93f62fe34fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894101"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545033"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 
@@ -303,7 +303,7 @@ Doporučujeme vám projít si [sestavit svůj první kanál pomocí služby Data
     }
     ```
 
-      Obě **start** a **end** času musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+      Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
       > [!NOTE]
       > Zadání vstupu pro AzureMLBatchExecution aktivita je volitelné.
@@ -407,7 +407,7 @@ Pokud používáte modul čtečky v jednom experimentu Azure Machine Learning, m
 V předchozím příkladu JSON:
 
 * V nasazované službě Azure Machine Learning Web používá čtečky a zapisovače modulu pro čtení a zápis dat z/do Azure SQL Database. Tato webová služba poskytuje následující čtyři parametry:  Název databázového serveru, název databáze, název serveru uživatelského účtu a heslo uživatelského účtu serveru.
-* Obě **start** a **end** času musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+* Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
 ### <a name="other-scenarios"></a>Další scénáře
 #### <a name="web-service-requires-multiple-inputs"></a>Webová služba vyžaduje více vstupů
@@ -555,9 +555,9 @@ Běžný scénář použití parametrů webové služby je použití Azure SQL �
 Podrobnosti o čtení/zápis Azure Blob nebo Azure SQL najdete v tématu [čtečky](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [zapisovače](https://msdn.microsoft.com/library/azure/dn905984.aspx) témata v knihovně MSDN. V příkladu v předchozí části používá, objektů Blob v Azure čtečky a zapisovače objektů Blob v Azure. Tato část popisuje použití Azure SQL čtečky a zapisovače Azure SQL.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-**DOTAZ:** Mám několik souborů, které se vygenerovaly Moje kanály velkých objemů dat. Můžete použít aktivitu AzureMLBatchExecution pro práci se soubory?
+**Otázka:** Mám několik souborů, které se vygenerovaly Moje kanály velkých objemů dat. Můžete použít aktivitu AzureMLBatchExecution pro práci se soubory?
 
-**ODPOVĚĎ:** Ano. Zobrazit **pomocí modulu Reader na čtení dat z více souborů v Azure Blob** podrobné informace.
+**Odpověď:** Ano. Zobrazit **pomocí modulu Reader na čtení dat z více souborů v Azure Blob** podrobné informace.
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure Machine Learning studio dávkové bodování aktivity
 Pokud používáte **AzureMLBatchScoring** aktivity můžete integrovat s Azure Machine Learning, doporučujeme používat nejnovější **AzureMLBatchExecution** aktivity.
@@ -634,4 +634,4 @@ Můžete také použít [funkce Data Factory](data-factory-functions-variables.m
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
-[azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
+[azure-machine-learning]: https://azure.microsoft.com/services/machine-learning/

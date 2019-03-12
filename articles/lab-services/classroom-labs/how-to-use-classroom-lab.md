@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7b5d9c85a790252b403a04439f326da1d9ea28c6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965014"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782951"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak získat přístup k testovacímu prostředí v učebně, připojit se k virtuálnímu počítači v daném testovacím prostředí a zastavit daný virtuální počítač. 
@@ -46,9 +46,9 @@ Až dokončíte registraci na tato praktická cvičení, můžete zobrazit všec
 
 1. Spuštění virtuálního počítače, pokud ještě není spuštěná, vyberte **Start** na dlaždici. 
 2. Na dlaždici, která představuje virtuální počítač v testovacím prostředí, ke kterému chcete získat přístup, vyberte **Připojit**. 
-3. Uložte soubor protokolu RDP (pro virtuální počítač Windows) na pevný disk a otevřete jej. 
-4. Pro přihlášení k počítači použijte **uživatelské jméno** a **heslo**, která jste dostali od vyučujícího. 
-
+3. Proveďte jednu z následujících kroků: 
+    1. Pro **Windows** ukládat virtuální počítače, **RDP** soubor na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Použití **uživatelské jméno** a **heslo** získáte od educator/profesor se přihlaste k počítači. 
+    3. Pro **Linux** virtuální počítače, zkopírujte a uložte připojovací řetězec SSH na **připojit k virtuálnímu počítači** dialogové okno. Použít tento připojovací řetězec z terminálu SSH (například [Putty](https://www.putty.org/)) pro připojení k virtuálnímu počítači.
 ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Zastavení virtuálního počítače v testovacím prostředí v učebně
 
 Chcete-li zastavit virtuální počítač, vyberte **Zastavit** na dlaždici. Po zastavení virtuálního počítače se na dané dlaždici zpřístupní tlačítko **Spustit**. 

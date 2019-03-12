@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 78e3f6a5f4a55fd4bf1925672205eb490e7c6b24
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 69cf0815a8418df4c8a36adf99770640df327d49
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695681"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568851"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Vyberte styl map ve službě Azure Maps
 
@@ -21,14 +21,14 @@ Azure Maps má čtyři různé mapy styly lze vybírat. Další informace o mapo
 
 ## <a name="set-style-on-map-load"></a>Styl sady zátěž mapy
 
-<iframe height='500' scrolling='no' title='Nastavení stylu na mapě zatížení' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>nastavení stylu na mapě zatížení</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Nastavení stylu na mapě zatížení' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>nastavení stylu na mapě zatížení</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map stylu nastavena na grayscale_dark. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
 ## <a name="update-the-style"></a>Aktualizace stylu
 
-<iframe height='500' scrolling='no' title='Aktualizuje se styl' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>aktualizace styl</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Aktualizuje se styl' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>aktualizace styl</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Blok kódu výše nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
@@ -37,7 +37,7 @@ Druhý blok kódu pomocí mapy [setStyle](https://docs.microsoft.com/javascript/
 
 ## <a name="add-the-style-picker"></a>Přidat nástroj pro výběr stylu
 
-<iframe height='500' scrolling='no' title='Přidání nástroje pro výběr stylu' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>přidání nástroje pro výběr stylu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání nástroje pro výběr stylu' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>přidání nástroje pro výběr stylu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 První blok kódu ve výše uvedeném kódu nastaví klíč předplatného a vytvoří objekt Map, grayscale_dark předem je nastaven styl mapy. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.

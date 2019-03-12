@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 6748f168624a20e17491a2f84b63b966ce5ad4c6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/12/2019
+ms.openlocfilehash: cdb53685e744401f9d2d229a5deaffa72502e26b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539282"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730205"
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití Ruby k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [Ruby](https://www.ruby-lang.org). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Ruby a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
@@ -23,36 +23,9 @@ Tento rychlý start využívá jako výchozí bod prostředky vytvořené v něk
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
 
-## <a name="install-ruby"></a>Instalace Ruby
-Nainstalujte Ruby na vlastní počítač. 
-
-### <a name="windows"></a>Windows
-- Stáhněte a nainstalujte nejnovější verzi [Ruby](https://rubyinstaller.org/downloads/).
-- Na poslední obrazovce instalačního programu MSI zaškrtněte políčko s textem „Run 'ridk install' to install MSYS2 and development toolchain“ (Spustit ridk install pro instalaci MSYS2 a vývojářské sady nástrojů). Potom kliknutím na **Finish** (Dokončit) spusťte další instalační program.
-- Spustí se instalační program RubyInstaller2 pro Windows. Zadejte 2 pro instalaci aktualizace úložiště MSYS2. Po dokončení a navrácení na příkazový řádek instalace zavřete příkazové okno.
-- Z nabídky Start spusťte nový příkazový řádek (cmd).
-- Příkazem `ruby -v` otestujte instalaci Ruby a zobrazte nainstalovanou verzi.
-- Příkazem `gem -v` otestujte instalaci nástroje Gem a zobrazte nainstalovanou verzi.
-- Pomocí nástroje Gem sestavte modul PostgreSQL pro Ruby spuštěním příkazu `gem install pg`.
-
-### <a name="macos"></a>MacOS
-- Nainstalujte Ruby pomocí Homebrew spuštěním příkazu `brew install ruby`. Další možnosti instalace najdete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/#homebrew) Ruby.
-- Příkazem `ruby -v` otestujte instalaci Ruby a zobrazte nainstalovanou verzi.
-- Příkazem `gem -v` otestujte instalaci nástroje Gem a zobrazte nainstalovanou verzi.
-- Pomocí nástroje Gem sestavte modul PostgreSQL pro Ruby spuštěním příkazu `gem install pg`.
-
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Nainstalujte Ruby spuštěním příkazu `sudo apt-get install ruby-full`. Další možnosti instalace najdete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/) Ruby.
-- Příkazem `ruby -v` otestujte instalaci Ruby a zobrazte nainstalovanou verzi.
-- Nainstalujte nejnovější aktualizace pro nástroj Gem spuštěním příkazu `sudo gem update --system`.
-- Příkazem `gem -v` otestujte instalaci nástroje Gem a zobrazte nainstalovanou verzi.
-- Nainstalujte gcc, make a další nástroje sestavení spuštěním příkazu `sudo apt-get install build-essential`.
-- Nainstalujte knihovny PostgreSQL spuštěním příkazu `sudo apt-get install libpq-dev`.
-- Pomocí nástroje Gem sestavte modul pg pro Ruby spuštěním příkazu `sudo gem install pg`.
-
-## <a name="run-ruby-code"></a>Spuštění kódu Ruby 
-- Uložte kód do textového souboru s příponou .rb a soubor uložte do složky projektu, například `C:\rubypostgres\read.rb` nebo `/home/username/rubypostgres/read.rb`.
-- Pokud chcete kód spustit, spusťte příkazový řádek nebo prostředí Bash. Pokud chcete aplikaci spustit, změňte adresář na složku projektu příkazem `cd rubypostgres` a pak zadejte příkaz `ruby read.rb`.
+Také musíte mít nainstalovaný:
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- Pg pro Ruby, modul PostgreSQL pro Ruby
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
@@ -63,12 +36,17 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  ![Název serveru Azure Database for PostgreSQL](./media/connect-ruby/1-connection-string.png)
 
+> [!NOTE]
+> `@` Symbol uživatelské jméno Azure Postgres byl zakódován jako adresa url `%40` v připojovacích řetězcích. 
+
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
 
 Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazů DROP, CREATE TABLE a INSERT INTO. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
 
 Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
+
+
 ```ruby
 require 'pg'
 
@@ -76,7 +54,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -119,7 +97,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -153,7 +131,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -187,7 +165,7 @@ begin
     # Initialize connection variables.
     host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mydemoserver')
+    user = String('mylogin%40mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.

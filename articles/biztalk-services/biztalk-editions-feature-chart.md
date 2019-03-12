@@ -1,6 +1,6 @@
 ---
 title: Funkce v různých edicích služby BizTalk Services | Dokumentace Microsoftu
-description: 'Porovnejte možnosti různých edic služby BizTalk Services: Free, Developer, Basic, Standard a Premium. MABS, WABS.'
+description: 'Porovnejte možnosti různých edicích služby BizTalk Services: Free, Developer, Basic, Standard a Premium. MABS, WABS.'
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d16bf73c1d9871e4de8940e4ab9bbd7ed0f39384
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240507"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765624"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Tabulka edic
 
@@ -34,7 +34,7 @@ Dokáže vytvořit a spravovat hybridní připojení. Hybridní připojení je s
 
 **Developer**
 
-Zahrnuje hybridní připojení, zpracování zpráv EAI a EDI se snadnou použitelným portálem pro správu obchodních partnerů a podporu společných schémat EDI a rozšířeného zpracování EDI přes X12 a AS2. Dokáže vytvářet společné scénáře EAI, které propojují služby v cloudu s protokoly HTTP/S, REST, FTP, WCF a SFTP pro čtení a zápis zpráv.  Využívá připojení k místním systémům LOB pomocí připravených adaptérů pro SAP, Oracle eBusiness, Oracle DB, Siebel a SQL Server. Používá prostředí zaměřené na vývojáře s nástroji sady Visual Studio, které umožňují snadný vývoj a nasazení. Omezuje se jenom na účely vývoje a testování a nenabízí smlouvu o úrovni služeb (SLA).
+Zahrnuje hybridní připojení, zpracování zpráv EAI a EDI se snadnou použitelným portálem pro správu obchodních partnerů a podporu společných schémat EDI a rozšířeného zpracování EDI přes X12 a AS2. Dokáže vytvářet společné scénáře EAI, které propojují služby v cloudu s protokoly HTTP/S, REST, FTP, WCF a SFTP pro čtení a zápis zpráv.  Využívá připojení k místním systémům LOB pomocí připravených adaptérů pro SAP, Oracle eBusiness, Oracle DB, Siebel a SQL Server. Pro snadný vývoj a nasazení pomocí prostředí zaměřené na vývojáře s nástroji Visual Studio. Omezuje se jenom na účely vývoje a testování a nenabízí smlouvu o úrovni služeb (SLA).
 
 **Basic**
 
@@ -239,20 +239,20 @@ Nebudete moct nasazovat žádné nové mosty ani vytvářet nové smlouvy. Pokud
 #### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Jak provedu migraci z jedné vrstvy služby BizTalk Services na jinou?
 Edice Free neumožňuje migraci ani vertikální navýšení kapacity na jinou vrstvu a nedá se zálohovat a obnovit v jiné vrstvě. Pokud potřebujete jinou vrstvu, vytvořte novou službu BizTalk pomocí nové vrstvy. Všechny artefakty vytvořené pomocí edice Free, včetně hybridních připojení, bude potřeba v nové službě BizTalk znovu vytvořit. 
 
-U ostatních edic můžete k migraci artefaktů z jedné vrstvy do druhé použít funkci zálohování a obnovení. Můžete třeba zálohovat artefakty na vrstvě Standard a potom je obnovit na vrstvě |Premium. Článek [Služba BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md) popisuje podporované cesty migrace a uvádí, jaké artefakty se dají zálohovat. Upozorňujeme, že hybridní připojení se nezálohují. Po zálohování a obnovení na nové vrstvě musíte hybridní připojení znovu vytvořit.  
+U ostatních edic můžete k migraci artefaktů z jedné vrstvy do druhé použít funkci zálohování a obnovení. Můžete třeba zálohovat artefakty na vrstvě Standard a potom je obnovit na vrstvě |Premium. [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md) popisuje podporované cesty migrace a uvádí, jaké artefakty se dají zálohovat. Upozorňujeme, že hybridní připojení se nezálohují. Po zálohování a obnovení na nové vrstvě musíte hybridní připojení znovu vytvořit.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Je součástí služby i služba BizTalk Adapter Service? Jak tento software získám?
 Ano, součástí [stažení](https://www.microsoft.com/download/details.aspx?id=39087) sady SDK Azure BizTalk Services je také služba BizTalk Adapter Service se sadou BizTalk Adapter Pack.
 
-## <a name="next-steps"></a>Další kroky
-Pokud chcete vytvořit službu BizTalk Services na webu Azure Portal, přejděte na článek [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
+## <a name="next-steps"></a>Další postup
+Vytvoření služby Azure BizTalk Services na webu Azure Portal, přejděte na [BizTalk Services: Zřízení pomocí webu Azure portal](biztalk-provision-services.md). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
-## <a name="additional-resources"></a>Další zdroje
-* [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md)<br/>
+## <a name="additional-resources"></a>Další materiály
+* [BizTalk Services: Zřízení pomocí webu Azure portal](biztalk-provision-services.md)<br/>
 * [BizTalk Services: Tabulka stavů zřízení](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+* [BizTalk Services: Karty řídicí panel, sledování a škálování](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Omezování](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Název a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
+* [BizTalk Services: Omezení šířky pásma](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk Services: Název vystavitele a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
 * [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

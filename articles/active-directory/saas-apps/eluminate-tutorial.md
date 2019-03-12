@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 94c28db4-dbca-446b-8eef-9b728f18ca9a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a179864cbbf59c2b51cfefa45cb3036f81f58b9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1f26dc7050fdee23b9503c631a833927f4731562
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881630"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eluminate"></a>Kurz: Integrace Azure Active Directory s eLuminate
 

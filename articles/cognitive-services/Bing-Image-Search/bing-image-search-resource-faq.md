@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: dea09c60fddcec83662d2f5bafa529f115530c7e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341659"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539016"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Nejčastější dotazy (FAQ) k rozhraní API Bingu pro vyhledávání obrázků
 
@@ -65,4 +65,4 @@ Je vaše otázky týkající se chybějící funkce nebo funkce? Vezměte v úva
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
- [Přetečení zásobníku: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Přetečení zásobníku: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

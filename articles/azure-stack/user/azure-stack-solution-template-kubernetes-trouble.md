@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s nasazení Kubernetes tak, aby Azure Stackk | Dokumentace Microsoftu
+title: Řešení potíží s Kubernetes nasazení do služby Azure Stack | Dokumentace Microsoftu
 description: Informace o řešení potíží s Kubernetes nasazení do služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -11,16 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: mabrigg
+ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752292"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729643"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
@@ -87,7 +86,7 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
 Shromažďování protokolů na virtuálních počítačích, které podporují vašemu clusteru Kubernetes. Můžete také zkontrolovat protokol nasazení. Možná budete muset obraťte se na správce služby Azure Stack k ověření verze služby Azure Stack, které potřebujete k používání a získat protokoly z Azure Stack, která se vztahují na vaše nasazení.
 
 1. Zkontrolujte [stav nasazení](#review-deployment-status) a [tyto protokoly načíst](#get-logs-from-a-vm) z hlavního uzlu v clusteru Kubernetes.
-2. Ujistěte se, že používáte nejnovější verzi služby Azure Stack. Pokud si nejste jistí, kterou verzi používáte, obraťte se na svého správce služby Azure Stack. Čas marketplace clusteru Kubernetes 0.3.0 vyžaduje verzi služby Azure Stack 1808 nebo vyšší.
+2. Ujistěte se, že používáte nejnovější verzi služby Azure Stack. Pokud si nejste jistí, kterou verzi používáte, obraťte se na svého správce služby Azure Stack.
 3.  Projděte si soubory vytvoření virtuálního počítače. Může mít vyskytly následující problémy:  
     - Veřejný klíč může být neplatný. Projděte si klíč, který jste vytvořili.  
     - Vytvoření virtuálního počítače může mít aktivuje vnitřní chybu nebo Chyba při vytváření aktivované. Několika faktory mohou způsobit chyby, včetně omezení kapacity pro vaše předplatné služby Azure Stack.
@@ -148,21 +147,26 @@ Pokud chcete získat protokoly, proveďte následující kroky:
 3. Ve stejné relaci, spusťte následující příkaz s parametry, aktualizovat, aby odpovídaly vašemu prostředí:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
     ```
 
 4. Zkontrolujte parametry a nastavte hodnoty podle vašeho prostředí.
     | Parametr           | Popis                                                                                                      | Příklad:                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i,-identity soubor | RSA souboru privátního klíče pro připojení Kubernetes hlavním virtuálním počítači. Tento klíč musí začínat znakem `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
-    | -h, --host          | Veřejnou IP adresu nebo název plně kvalifikované domény (FQDN) hlavního uzlu clusteru Kubernetes virtuálního počítače. Název virtuálního počítače začíná `k8s-master-`.                       | IP adresa: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -d, --vmd-host       | Veřejná IP adresa nebo plně kvalifikovaný název domény DVM. Název virtuálního počítače začíná `vmd-`.                                                       | IP adresa: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -f,--force | Nezobrazovat výzvu před nahráním privátní klíč. | |
+    | -i,-identity soubor | RSA souboru privátního klíče pro připojení Kubernetes hlavním virtuálním počítači. Tento klíč musí začínat znakem: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
+    | -h, – Nápověda  | Použití příkazu pro tisk `getkuberneteslogs.sh` skriptu. | |
+    | -m, --master-host          | Veřejnou IP adresu nebo název plně kvalifikované domény (FQDN) hlavního uzlu clusteru Kubernetes virtuálního počítače. Název virtuálního počítače začíná `k8s-master-`.                       | IP adresa: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, --user          | Uživatelské jméno hlavního uzlu clusteru Kubernetes virtuálního počítače. Tento název se nastavit při konfiguraci položku marketplace.                                                                    | azureuser                                                                     |
-    | -d, --vmdhost       | Veřejná IP adresa nebo plně kvalifikovaný název domény DVM. Název virtuálního počítače začíná `vmd-`.                                                       | IP adresa: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+
+
+
 
    Když přidáte všechny hodnoty parametrů, může vypadat jako v následujícím kódu:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
      ```
 
     Úspěšné spuštění vytvoří v protokolech.

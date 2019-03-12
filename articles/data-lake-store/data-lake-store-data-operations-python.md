@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 33abaf7488579a501dc7e2d0b63645726b86c28b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ed28c502bb407c65b388704c177fca13cecc38d6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390718"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548622"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Pro práci s Data Lake Storage Gen1 pomocí Pythonu, je nutné nainstalovat tři
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
 * `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-mgmt-datalake-store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store systému souborů](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store systému souborů](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -131,5 +131,5 @@ Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Storage
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Referenční informace k Azure Data Lake Storage Gen1 Pythonu (systém souborů)](http://azure-datalake-store.readthedocs.io/en/latest)
+* [Referenční informace k Azure Data Lake Storage Gen1 Pythonu (systém souborů)](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Aplikace typu Open zdroj velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

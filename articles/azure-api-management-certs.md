@@ -7,19 +7,19 @@ author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
-ms.service: na
+ms.service: api-management
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 62bc6507e4b56c9df31a561f7677907486b0d562
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421585"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765794"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrát certifikát pro správu služby Azure
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic poskytovaný platformou Azure. Mnoho programech a nástrojích (např. Visual Studio nebo pomocí sady SDK Azure) použijte tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. 
@@ -33,7 +33,7 @@ Pokud chcete další informace o Azure certifikáty (včetně vytvoření certif
 
 Můžete také použít [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) k ověření kódu klienta pro účely automatizace.
 
-**Poznámka:** musí být spolupracující správce daného předplatného provádět jakékoli operace v rámci certifikáty pro správu. [Další informace](https://go.microsoft.com/fwlink/?linkid=849300) o tom, jak přidat nebo odebrat Spolusprávce z nového portálu Azure Portal 
+**Poznámka:** Musíte být spolusprávcem předplatného provádět jakékoli operace v rámci certifikáty pro správu. [Další informace](https://go.microsoft.com/fwlink/?linkid=849300) o tom, jak přidat nebo odebrat Spolusprávce z nového portálu Azure Portal 
 
 ## <a name="upload-a-management-certificate"></a>Nahrání certifikátu pro správu
 Jakmile budete mít vytvořený certifikát správy, (soubor .cer s pouze veřejný klíč) nahrajte ho do portálu. Je-li certifikát k dispozici na portálu, každý, kdo má odpovídajícího certifikátu (privátní klíč) připojení přes rozhraní API pro správu a přístup k prostředkům pro přidružené předplatné.

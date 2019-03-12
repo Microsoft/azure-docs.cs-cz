@@ -7,13 +7,13 @@ ms.author: davidmu
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: b2c
-ms.openlocfilehash: 5f771e51a0114c321d1dfcbaf305dd9923040032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: B2C
+ms.openlocfilehash: dbb4789773ae9f1cd29f4a8e3ae415d450707a17
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149031"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771323"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: c704fdba22138eb8e4610a7bc34bd4c2cc98f4ca
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432086"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726919"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapování datového toku datových sad
 
@@ -20,7 +20,7 @@ ms.locfileid: "57432086"
 
 Datové sady jsou definující tvar dat, které pracujete ve vašem kanálu služby Data Factory konstrukce. V toku dat řádků a sloupců dat na úrovni vyžaduje definici jemně odstupňovaná datové sady. Stejná hloubka pochopení dat nevyžadují žádné datové sady použité v kanálů toků řízení.
 
-Datové sady v toku dat se používají v transformace zdroje a jímky. Používají se vytvoří definici schémat základní data. Pokud schéma ve vašich datech nemáte, můžete nastavit odchylek schématu na pro zdroje a jímky. Pomocí schématu definice z datové sady budete mít souvisejících datových typů, formáty dat, umístění souboru a informace o připojení z přidružené propojené služby. Metadata z datové sady se zobrazí ve vaší zdrojové transformace jako zdroj "Projekce".
+Datové sady v toku dat se používají v transformace zdroje a jímky. Používají se vytvoří definici schémat základní data. Pokud schéma ve vašich datech nemáte, můžete nastavit odchylek schématu na pro zdroje a jímky. Pomocí schématu definice z datové sady budete mít souvisejících datových typů, formáty dat, umístění souboru a informace o připojení z přidružené propojené služby. Metadata z datové sady se zobrazí ve vaší zdrojové transformace jako zdroj "Projekce". Schéma v datové sadě představuje fyzický datový typ a tvar, zatímco projekce v transformaci zdroj představuje znázornění dat toku dat s definované názvy a typy.
 
 ## <a name="dataset-types"></a>Typů datových sad
 
@@ -29,7 +29,7 @@ Aktuálně v toku dat, najdete čtyři typy datové sady:
 * Azure SQL DB
 * Datový sklad Azure SQL
 * Parquet (z ADLS a objektů Blob)
-* Text s oddělovači (z nástroji ADLB & objektů Blob)
+* Text s oddělovači (z ADLS a objektů Blob)
 
 Tok datové sady dat samostatné *typ zdroje* z *typ propojené služby připojení*. Obvykle ve službě Data Factory vyberte typ připojení (objekt Blob, ADLS atd.) a potom definovat typ souboru v datové sadě. Uvnitř toku dat vybere typů zdroje, které je možné přidružit různé typy připojení propojenou službu.
 
@@ -43,7 +43,13 @@ Při vytváření nové datové sady, je zaškrtávací políčko s popiskem "Da
 
 Při importu schématu datové sady se předávají Data, zobrazí se na tlačítko Importovat schéma. Kliknutím na toto tlačítko zobrazíte dvě možnosti: Import ze zdroje nebo importovat z místního souboru. Ve většině případů budete importovat schéma přímo ze zdroje. Nicméně pokud máte existující soubor schématu (soubory Parquet nebo CSV se záhlavími), může odkazovat na místní soubor a Data Factory se budou definovat schéma na základě tohoto souboru schématu.
 
+## <a name="delimited-text-dataset"></a>Datová sada obsahující text oddělený znaky
+
+V datové sadě obsahující text oddělený znaky, bude nastaven oddělovač, který má zpracovat buď jeden oddělovače ('\t 'pro TSV,',' pro sdílený svazek clusteru, "|"...) nebo několika znaky oddělovače. Nastavte přepínač záhlaví řádku a přejděte do transformace zdroje k automatické detekci datových typů.
+
 ## <a name="next-steps"></a>Další postup
 
 Začněte tím, že [vytvoření nového toku dat](data-flow-create.md) a přidejte zdroje transformace. Nakonfigurujte datovou sadu pro zdroj.
+
+Použití [aktivity kopírování](copy-activity-overview.md) k načtení dat z jakékoli ADF zdroje dat a jejich přípravy ADLS nebo objekt Blob se předávají Data k němu měli přístup.
 

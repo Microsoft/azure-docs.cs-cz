@@ -1,6 +1,7 @@
 ---
-title: Bezpečně používat službu Azure Machine Learning
-description: Další informace o funkcích zabezpečení, která je k dispozici ve službě Azure Machine Learning. V tomto článku se dozvíte o ověřování, autorizace, zabezpečení sítě, šifrování dat a monitorování.
+title: Podnikové zabezpečení
+titleSuffix: Azure Machine Learning service
+description: 'Bezpečně používat službu Azure Machine Learning: ověřování, autorizace, zabezpečení sítě, šifrování dat a monitorování.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,15 +9,15 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 02/26/2018
-ms.openlocfilehash: a4111766da35d7ff558f00c3498a8fb4d9c40e55
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 03/10/2019
+ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196338"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731326"
 ---
-# <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
+# <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
 
 V tomto článku se dozvíte o funkcích zabezpečení, které jsou dostupné s Azure Machine learning service.
 

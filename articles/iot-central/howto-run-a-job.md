@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/15/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: f08167b4f37193c9a04da02fdd31e066a97aec66
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 142881e0a72ef9db7397276f092a4b7502b61fed
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317658"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781438"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -40,8 +40,6 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Každý krok proch�
 1. Na pravé straně zvolte byste chtěli spouštět úlohy zařízení. Zaškrtnutím políčka horní jsou vybrány všechna zařízení v sadě celého zařízení. Pokud vyberete zaškrtávací políčko vedle názvu, jsou vybrány všechna zařízení na aktuální stránce.
 
 1. Jakmile požadované zařízení jste vybrali, zvolte **spustit**. Úloha se teď budou zobrazovat na vaší hlavní **úlohy** stránky. V tomto zobrazení budete moct zobrazit aktuálně spuštěné úlohy a historii některého dříve spouštění úloh. Spuštěná úloha se vždy zobrazí v horní části seznamu.
-
-    ![Spuštění úlohy](./media/howto-run-a-job/runjob.png)
 
     ![Zobrazit úlohu](./media/howto-run-a-job/viewjob.png)
 

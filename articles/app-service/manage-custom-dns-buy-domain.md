@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 44252274cc3c0050ba138c3115deeceb2f06f8d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594232"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782764"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -102,7 +102,7 @@ V **vlastní domény** klikněte na **koupit domény**.
 ### <a name="configure-the-domain-purchase"></a>Konfigurace zakoupení domény
 
 V **doména App Service** stránku, **hledat domény** zadejte název domény, které chcete koupit a zadejte `Enter`. Navržené domény k dispozici jsou uvedeny přímo pod textové pole. Vyberte jednu nebo více domén, které chcete koupit.
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,15 +111,15 @@ V **doména App Service** stránku, **hledat domény** zadejte název domény, k
 >
 
 Klikněte na tlačítko **kontaktní údaje** a vyplňte formulář kontaktní údaje domény. Až budete hotovi, klikněte na tlačítko **OK** se vrátíte na stránku doména App Service.
-   
-Je důležité, vyplňte všechna povinná pole s co nejvíce přesnost nejvíce. Nesprávná data kontaktní informace může způsobit selhání při nákupu domény. 
+
+Je důležité, vyplňte všechna povinná pole s co nejvíce přesnost nejvíce. Nesprávná data kontaktní informace může způsobit selhání při nákupu domény.
 
 Potom vyberte požadované možnosti pro vaši doménu. V následující tabulce najdete vysvětlení:
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
 |Ochrana osobních údajů | Povolení | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
-| Přiřadit výchozí hostitelské názvy | **WWW** a **@** | Vyberte požadovaný název hostitele vazeb v případě potřeby. Po dokončení operace nákupu domény vaší aplikace je přístupný na vybrané názvy hostitelů. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože nemá podporu záznamy O Traffic Manageru. Můžete provedete změny přiřazení názvu hostitele po dokončení nákupu domény. |
+| Přiřadit výchozí hostitelské názvy | **WWW** a **\@** | Vyberte požadovaný název hostitele vazeb v případě potřeby. Po dokončení operace nákupu domény vaší aplikace je přístupný na vybrané názvy hostitelů. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože nemá podporu záznamy O Traffic Manageru. Můžete provedete změny přiřazení názvu hostitele po dokončení nákupu domény. |
 
 ### <a name="accept-terms-and-purchase"></a>Přijměte podmínky a nákup
 

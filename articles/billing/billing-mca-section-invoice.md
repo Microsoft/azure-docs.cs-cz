@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: f903f85dfafb61562698a437465f8421aaf3a3d8
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339483"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551615"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Vytvořit oddíly na vaší faktuře uspořádat svoje náklady
 
@@ -28,7 +28,7 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 K vytvoření oddílu faktury, musíte být **fakturační vlastníka profilu** nebo **fakturační Přispěvatel profilu**. Další informace najdete v tématu [spravovat části faktury pro fakturační profil](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Hledat na **Cost Management a fakturace**.
 

@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 4cd94a0d5891c2d34e152dad87d21cbb45a2ec39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336865"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766560"
 ---
 # <a name="scheduling-a-test"></a>Plánování testu
 
@@ -53,7 +53,7 @@ Přihlaste se k portálu, vyberte nebo vytváření řešení a vyberte řešen�
 
 ![Alternativní Text](media/vaas_test_pass_parameters.png)
 
-Definování pracovního postupu pro vaše řešení. Pracovní postup obsahuje kroky procesu, které se použily k testování vašich řešení.
+Zadejte parametry, které platí pro všechny testy v rámci pracovního postupu.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,22 +63,23 @@ Definování pracovního postupu pro vaše řešení. Pracovní postup obsahuje 
 
 ## <a name="select-tests-to-run"></a>Vybrat testy ke spuštění
 
-Vyberte testy, které chcete spustit v pracovním postupu.
+Po vytvoření pracovního postupu bude naplánována testy, které jste vybrali.
 
 1. Vyberte testy, které chcete spustit v pracovním postupu.
 
     Pokud chcete přepsat společné parametry (to znamená, že parametry uvedené v předchozí části) pro jakýkoli test, vyberte na **upravit** odkaz potom můžete zadat nové hodnoty.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. Vyberte **Další** Kontrola pracovního postupu.
 
 ## <a name="review-and-submit"></a>Zkontrolovat a odeslat
 
-Přečtěte si, vytváření a plánování můžete pracovní postup.
+Dokončení vytvoření pracovního postupu.
 
 1. Zkontrolujte zobrazené informace.
 
-    Služby vytvoří váš pracovní postup pomocí zadaných informací a bude naplánováno vybraných testů.
+    Služba vytvoří pracovního postupu pomocí zadaných informací a bude naplánováno vybrané testy.
 
     Pokud se zobrazí hodnota nesprávné, použijte **předchozí** tlačítka přejít na předchozí části.
 

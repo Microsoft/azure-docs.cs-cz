@@ -3,17 +3,16 @@ title: Příloha - Azure Disk Encryption pro virtuální počítače IaaS | Doku
 description: Tento článek je dodatek pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/14/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6632647c7782411d0d124c325f9bf0afff7e699d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990676"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767784"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -164,14 +163,6 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 
 - [Vytvoření nové šifrované Windows IaaS spravovaného disku virtuálního počítače z image z Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - Tato šablona vytvoří nový virtuální počítač šifrovaný Windows se spravovanými disky, které používají image z galerie systému Windows Server 2012.
-
-- [Nasazení RHEL 7.2 šifrování celého disku se spravovanými disky](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - Tato šablona vytvoří plně zašifrované virtuální počítač s RHEL 7.2 v Azure s použitím spravovaných disků. Obsahuje zašifrované jednotky operačního systému 30 GB a šifrované pole 200 GB (RAID-0) připojil /mnt/raidencrypted. Zobrazit [nejčastější dotazy k](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) článku podporované distribuce systému Linux server. 
-
-- [Nasazení RHEL 7.2 šifrování celého disku s nespravovanými disky](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
-    - Tato šablona vytvoří plně zašifrované virtuální počítač s RHEL 7.2 v Azure pomocí zašifrované jednotky operačního systému 30 GB a šifrované pole 200 GB (RAID-0) připojil /mnt/raidencrypted. Zobrazit [nejčastější dotazy k](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) článku podporované distribuce systému Linux server. 
-
-- [Povolit šifrování disku v předem šifrované virtuální pevný disk pro Windows nebo Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
 
 - [Vytvoření nové šifrované spravovaného disku z předem šifrované virtuální pevný disk nebo úložiště objektů blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - Vytvoří nové šifrované spravovaného disku k dispozici předem šifrované virtuální pevný disk a odpovídajících nastavení šifrování
@@ -555,7 +546,7 @@ Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajn
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Tajný kód disk encryption není šifrován KEK
-Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
+Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
 
 #### <a name="windows-bek-file"></a>Soubor klíče BEK Windows
 ```powershell
@@ -604,7 +595,7 @@ $SecretUrl
 Použití `$secretUrl` v dalším kroku pro [připojení disku s operačním systémem bez použití KEK](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Tajný kód disk encryption šifrován KEK
-Před odesláním do služby key vault tajný klíč, které můžete volitelně šifrovat pomocí šifrovací klíč klíče. Použít obtékání [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) nejprve šifrování tajného klíče pomocí klíče šifrovacího klíče. Výstupem této operace zalamování řádků je řetězec kódování URL ve formátu base64, který pak můžete nahrát jako tajný kód pomocí [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) rutiny.
+Před odesláním do služby key vault tajný klíč, které můžete volitelně šifrovat pomocí šifrovací klíč klíče. Použít obtékání [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) nejprve šifrování tajného klíče pomocí klíče šifrovacího klíče. Výstupem této operace zalamování řádků je řetězec kódování URL ve formátu base64, který pak můžete nahrát jako tajný kód pomocí [ `Set-AzKeyVaultSecret` ](/powershell/module/az.keyvault/set-azkeyvaultsecret) rutiny.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

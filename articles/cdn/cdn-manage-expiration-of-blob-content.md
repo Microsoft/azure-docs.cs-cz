@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 39271bdda7adf7e8e65d3b5d5ea1844be1ecf233
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237939"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531925"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa platnosti objektů Blob v Azure storage v Azure CDN
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ Můžete použít [rozhraní REST API služby Azure storage](https://msdn.micros
    - [Nastavit vlastnosti objektu Blob](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Testování hlavičku Cache-Control
-Můžete snadno ověřit nastavení TTL objektů BLOB. V prohlížeči [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, který obsahuje objekt blob `Cache-Control` hlavičky odpovědi. Můžete také použít nástroje jako [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), nebo [Fiddler](http://www.telerik.com/fiddler) a prověří hlavičky odpovědi.
+Můžete snadno ověřit nastavení TTL objektů BLOB. V prohlížeči [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test, který obsahuje objekt blob `Cache-Control` hlavičky odpovědi. Můžete také použít nástroje jako [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), nebo [Fiddler](https://www.telerik.com/fiddler) a prověří hlavičky odpovědi.
 
 ## <a name="next-steps"></a>Další kroky
 * [Zjistěte, jak spravovat platnost obsahu cloudové služby v Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)

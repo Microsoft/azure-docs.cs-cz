@@ -3,7 +3,6 @@ title: Řešení Azure SQL Analytics ve službě Log Analytics | Dokumentace Mic
 description: Řešení Azure SQL Analytics vám usnadní správu vašich databází Azure SQL
 services: log-analytics
 ms.service: log-analytics
-ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
@@ -11,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 5f4589e9423beb932e1192d44291315331884eba
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 991032a603844e697c122d8a26923f4c95a4a78c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314785"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778786"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 

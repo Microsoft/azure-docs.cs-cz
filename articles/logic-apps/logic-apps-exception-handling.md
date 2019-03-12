@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308719"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779143"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -23,7 +23,7 @@ Tak, aby všechny Architektura integrace správně zpracovává výpadky nebo pr
 
 <a name="retry-policies"></a>
 
-## <a name="retry-policies"></a>Zásady opakování
+## <a name="retry-policies"></a>Zásady opakování pokusů
 
 Většina základních výjimek a zpracování chyb, můžete použít *zásady opakování* v libovolné akci nebo aktivační události, kde je podporován. Zásady opakování určuje, zda a jak akci nebo triggeru opakování žádosti při původní žádost vyprší časový limit nebo selže, tedy všechny požadavky, které vede 408, 429 nebo odpověď 5xx. Pokud žádné jiné zásady opakování se používá, použije se výchozí zásady. 
 
@@ -223,9 +223,9 @@ Omezení u oborů najdete v tématu [omezení a konfigurace](../logic-apps/logic
 
 I když zachytávání chyb z oboru je užitečné, můžete také kontext vám pomohou pochopit, přesně plus všechny chyby nebo stavové kódy, které byly vráceny akce, které se nezdařilo. `@result()` Výraz poskytuje kontext, o výsledku všechny akce v oboru.
 
-`@result()` Výraz přijímá jeden parametr (název oboru) a vrátí pole všechny akce výsledky z v rámci tohoto oboru. Mezi tyto akce objekty patří stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupů, ID korelace a výstupy akce. Kontext pro všechny akce, které se nepodařilo odeslat v rámci oboru, je jasné,  **@result()** pracovat **runAfter** vlastnost.
+`@result()` Výraz přijímá jeden parametr (název oboru) a vrátí pole všechny akce výsledky z v rámci tohoto oboru. Mezi tyto akce objekty patří stejné atributy, jako  **\@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupů, ID korelace a výstupy akce. Kontext pro všechny akce, které se nepodařilo odeslat v rámci oboru, je jasné,  **\@result()** pracovat **runAfter** vlastnost.
 
-Spustit akci pro každou akci v oboru, který má **neúspěšné** výsledek, a pro filtrování pole výsledky dolů nezdařené akce, spárujte  **@result()** s **[Filtrování pole](../connectors/connectors-native-query.md)** akce a [ **pro každou** ](../logic-apps/logic-apps-control-flow-loops.md) smyčky. Můžete využít pole filtrovaných výsledků a provést akci pro každý selhání pomocí **pro každou** smyčky. 
+Spustit akci pro každou akci v oboru, který má **neúspěšné** výsledek, a pro filtrování pole výsledky dolů nezdařené akce, spárujte  **\@result()** s **[ Filtrování pole](../connectors/connectors-native-query.md)** akce a [ **pro každou** ](../logic-apps/logic-apps-control-flow-loops.md) smyčky. Můžete využít pole filtrovaných výsledků a provést akci pro každý selhání pomocí **pro každou** smyčky. 
 
 Tady je příklad, za nímž následuje podrobné vysvětlení, který pošle požadavek HTTP POST s tělo odpovědi pro všechny akce, které se nepodařilo v rámci oboru "My_Scope":
 
@@ -317,7 +317,7 @@ Pro referenci tady je příklad jednoho `@result()` položky, zobrazuje **název
 }
 ```
 
-K provádění různých vzorů pro zpracování výjimek, můžete použít výrazy výše popsaný v tomto článku. Může zvolit ke spuštění jedné výjimky zpracování akce mimo rozsah, který přijímá celé filtrovaného pole selhání a odebrat **pro každou** akce. Můžete použít také další užitečné vlastnosti z  **@result()** odpověď, jak je uvedeno výše.
+K provádění různých vzorů pro zpracování výjimek, můžete použít výrazy výše popsaný v tomto článku. Může zvolit ke spuštění jedné výjimky zpracování akce mimo rozsah, který přijímá celé filtrovaného pole selhání a odebrat **pro každou** akce. Můžete použít také další užitečné vlastnosti z  **\@result()** odpověď, jak je uvedeno výše.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostika a metriky
 

@@ -1,18 +1,18 @@
 ---
 title: Vytvoření HTTPS příchozí přenos dat pomocí clusteru Azure Kubernetes Service (AKS)
-description: Zjistěte, jak nainstalovat a nakonfigurovat kontrolér příchozího přenosu dat serveru NGINX, která používá umožňuje šifrování pro automatické generování certifikátu SSL v clusteru služby Azure Kubernetes Service (AKS).
+description: Zjistěte, jak nainstalovat a nakonfigurovat kontrolér příchozího přenosu dat serveru NGINX, která používá umožňuje šifrování pro automatické generování certifikátu TLS v clusteru služby Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 03/06/2019
 ms.author: iainfou
-ms.openlocfilehash: cb441aeab8f6f2cfbaa099ee17a3af9e767fc218
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 879b3cabcab6f10d46904bd3a479568756d877b4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235695"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777800"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -30,9 +30,11 @@ Můžete také:
 
 ## <a name="before-you-begin"></a>Před zahájením
 
+Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
+
 Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat, správce certifikátů a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Ujistěte se, že používáte nejnovější verzi nástroje Helm. Pokyny k upgradu, najdete v článku [Helm instalace dokumentace][helm-install]. Další informace o konfiguraci a použití Helm, naleznete v tématu [instalace aplikací s nástrojem Helm ve službě Azure Kubernetes Service (AKS)][use-helm].
 
-Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.41 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.59 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Vytvoření řadiče příchozího přenosu dat
 
@@ -52,9 +54,9 @@ Chcete-li získat veřejnou IP adresu, použijte `kubectl get service` příkazu
 ```
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
+NAME                                             TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+billowing-kitten-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+billowing-kitten-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 Žádná pravidla příchozího přenosu dat dosud nebyly vytvořeny. Pokud přejdete na veřejnou IP adresu, zobrazí se stránka 404 výchozí kontroler příchozího přenosu dat serveru NGINX.
@@ -63,7 +65,7 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 
 HTTPS certifikáty, které budou fungovat správně nakonfigurujte plně kvalifikovaný název domény pro IP adresu příchozího přenosu dat kontroleru. Tento skript aktualizace s IP adresou vašeho kontroler příchozího přenosu dat a jedinečný název, který chcete použít pro plně kvalifikovaný název:
 
-```console
+```azurecli-interactive
 #!/bin/bash
 
 # Public IP address of your ingress controller
@@ -100,8 +102,11 @@ helm install stable/cert-manager \
     --namespace kube-system \
     --set ingressShim.defaultIssuerName=letsencrypt-staging \
     --set ingressShim.defaultIssuerKind=ClusterIssuer \
-    --version v0.6.0
+    --version v0.6.6
 ```
+
+> [!TIP]
+> Pokud se zobrazí chyba, jako `Error: failed to download "stable/cert-manager"`, ujistěte se, že jste úspěšně spustil `helm repo update` zobrazíte seznam nejnovějších k dispozici grafy Helm.
 
 Pokud váš cluster není povoleno RBAC, místo toho použijte následující příkaz:
 
@@ -117,7 +122,7 @@ helm install stable/cert-manager \
     --set ingressShim.defaultIssuerKind=ClusterIssuer \
     --set rbac.create=false \
     --set serviceAccount.create=false \
-    --version v0.6.0
+    --version v0.6.6
 ```
 
 Další informace o konfiguraci správce certifikátů, najdete v článku [cert správce projektu][cert-manager].
@@ -148,6 +153,54 @@ Chcete-li vytvořit vydavatele, použijte `kubectl apply -f cluster-issuer.yaml`
 $ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
+```
+
+## <a name="create-a-certificate-object"></a>Vytvořte objekt certifikátu
+
+V dalším kroku musí být vytvořen prostředek certifikátu. Prostředek certifikátu definuje požadovaný certifikát X.509. Další informace najdete v tématu [cert správce certifikátů][cert-manager-certificates].
+
+Certifikát správce pravděpodobně automaticky vytvoří za vás pomocí příchozího přenosu dat překrytí, které je nasazeno pomocí Správce certifikátů od v0.2.2 objekt certifikátu. Další informace najdete v tématu [příchozího přenosu dat překrytí dokumentaci][ingress-shim].
+
+Chcete-li ověřit, že certifikát byl úspěšně vytvořen, použijte `kubectl describe certificate tls-secret` příkazu. Pokud certifikát vydala, výstup v *události* výstup se podobá následujícímu příkladu:
+
+```
+Type    Reason          Age   From          Message
+----    ------          ----  ----          -------
+  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
+  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
+  Normal  IssueCert       10m   cert-manager  Issuing certificate...
+  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
+  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
+```
+
+Pokud je potřeba vytvořit prostředek certifikátu, udělat s manifestem následující příklad. Aktualizace *dnsNames* a *domén* jako název DNS, kterou jste vytvořili v předchozím kroku. Pokud používáte řadič jen vnitřní příchozího přenosu dat, zadejte interní název DNS pro vaši službu.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+```
+
+Chcete-li vytvořit prostředek certifikátu, použijte `kubectl apply -f certificates.yaml` příkazu.
+
+```
+$ kubectl apply -f certificates.yaml
+
+certificate.certmanager.k8s.io/tls-secret created
 ```
 
 ## <a name="run-demo-applications"></a>Spuštění ukázkové aplikace
@@ -216,55 +269,6 @@ $ kubectl apply -f hello-world-ingress.yaml
 ingress.extensions/hello-world-ingress created
 ```
 
-## <a name="create-a-certificate-object"></a>Vytvořte objekt certifikátu
-
-V dalším kroku musí být vytvořen prostředek certifikátu. Prostředek certifikátu definuje požadovaný certifikát X.509. Další informace najdete v tématu [cert správce certifikátů][cert-manager-certificates].
-
-Správce certifikátů pravděpodobně automaticky vytvořila objekt certifikátu pomocí příchozího přenosu dat překrytí, který je nasazen automaticky pomocí Správce certifikátů od v0.2.2. Další informace najdete v tématu [příchozího přenosu dat překrytí dokumentaci][ingress-shim].
-
-Chcete-li ověřit, že certifikát byl úspěšně vytvořen, použijte `kubectl describe certificate tls-secret` příkazu.
-
-Pokud certifikát vydala, zobrazí se výstup podobný následujícímu:
-```
-Type    Reason          Age   From          Message
-----    ------          ----  ----          -------
-  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
-  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
-  Normal  IssueCert       10m   cert-manager  Issuing certificate...
-  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
-  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
-```
-
-Pokud potřebujete k vytvoření prostředku další certifikáty, udělat s manifestem následující příklad. Aktualizace *dnsNames* a *domén* jako název DNS, kterou jste vytvořili v předchozím kroku. Pokud používáte řadič jen vnitřní příchozího přenosu dat, zadejte interní název DNS pro vaši službu.
-
-```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Certificate
-metadata:
-  name: tls-secret
-spec:
-  secretName: tls-secret
-  dnsNames:
-  - demo-aks-ingress.eastus.cloudapp.azure.com
-  acme:
-    config:
-    - http01:
-        ingressClass: nginx
-      domains:
-      - demo-aks-ingress.eastus.cloudapp.azure.com
-  issuerRef:
-    name: letsencrypt-staging
-    kind: ClusterIssuer
-```
-
-Chcete-li vytvořit prostředek certifikátu, použijte `kubectl apply -f certificates.yaml` příkazu.
-
-```
-$ kubectl apply -f certificates.yaml
-
-certificate.certmanager.k8s.io/tls-secret created
-```
-
 ## <a name="test-the-ingress-configuration"></a>Otestujte konfiguraci příchozího přenosu dat
 
 Otevřete webový prohlížeč na plně kvalifikovaný název domény řadiče příchozího přenosu dat Kubernetes, jako například *https://demo-aks-ingress.eastus.cloudapp.azure.com*.
@@ -300,10 +304,10 @@ Nyní seznamu Helm vydané verze s `helm list` příkazu. Vyhledejte grafy s ná
 $ helm list
 
 NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-billowing-kitten        1           Tue Oct 16 17:24:05 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
-loitering-waterbuffalo  1           Tue Oct 16 17:26:16 2018    DEPLOYED    cert-manager-v0.3.4     v0.3.2      kube-system
-flabby-deer             1           Tue Oct 16 17:27:06 2018    DEPLOYED    aks-helloworld-0.1.0                default
-linting-echidna         1           Tue Oct 16 17:27:02 2018    DEPLOYED    aks-helloworld-0.1.0                default
+billowing-kitten        1           Wed Mar  6 19:37:43 2019    DEPLOYED    nginx-ingress-1.3.1     0.22.0      kube-system
+loitering-waterbuffalo  1           Wed Mar  6 20:25:01 2019    DEPLOYED    cert-manager-v0.6.6     v0.6.2      kube-system
+flabby-deer             1           Wed Mar  6 20:27:54 2019    DEPLOYED    aks-helloworld-0.1.0                default
+linting-echidna         1           Wed Mar  6 20:27:59 2019    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
 Odstranit vydané verze s `helm delete` příkazu. Následující příklad odstraní nasazení serveru NGINX příchozího přenosu dat, správce certifikátů a dvě ukázkové AKS hello world aplikace.
@@ -349,7 +353,7 @@ Můžete také:
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
-[ingress-shim]: http://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
+[ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
 [cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
@@ -366,3 +370,6 @@ Můžete také:
 [aks-ingress-basic]: ingress-basic.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

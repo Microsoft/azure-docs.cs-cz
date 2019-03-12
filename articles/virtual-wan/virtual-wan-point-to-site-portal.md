@@ -5,15 +5,15 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 38ef2d9e95bda21b1b348d996b8856213c657fd7
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a13e8d7b97fcca95c0d90b9dd283b9bafbb4a21f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410175"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541962"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu Point-to-Site pomocí Azure virtuální sítě WAN (Preview)
 
@@ -109,7 +109,7 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
   *  **Název kořenového certifikátu** – Popisný název certifikátu.
   *  **Data kořenového certifikátu** – Data certifikátu X.509 s kódováním Base-64.
 
-5. Kliknutím na **Vytvořit** vytvořte konfiguraci.
+6. Kliknutím na **Vytvořit** vytvořte konfiguraci.
 
 ## <a name="hub"></a>5. Úprava přiřazení k rozbočovači
 
@@ -117,15 +117,16 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 2. Vyberte rozbočovač, ke kterému chcete konfiguraci point-to-site přiřadit.
 3. Klikněte na **...** a vyberte **Edit virtual hub** (Upravit virtuální rozbočovač).
 4. Zaškrtněte možnost **Include point-to-site gateway** (Zahrnout bránu point-to-site).
-5. Vyberte **Gateway scale units** (Jednotky škálování brány) a pro klienty vyberte **Point-to-site configuration** (Konfigurace point-to-site) a **Address pool** (Fond adres).
-6. Klikněte na **Confirm** (Potvrdit). 
-7. Operace může trvat až 30 minut.
+5. Z rozevíracího seznamu, vyberte **jednotek škálování brány**.
+6. Z rozevíracího seznamu, vyberte **KonfiguracePoint-to-site** , kterou jste vytvořili.
+7. Konfigurace **fondu adres** pro klienty.
+8. Klikněte na **Confirm** (Potvrdit). Operace může trvat až 30 minut.
 
 ## <a name="vnet"></a>6. Připojení virtuální sítě k rozbočovači
 
 V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
 
-1. Na stránce vaší virtuální sítě WAN klikněte na **Virtual network connection** (Připojení k virtuální síti).
+1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
 2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
 3. Na stránce **Add connection** (Přidat připojení) zadejte údaje do následujících polí:
 
@@ -133,6 +134,7 @@ V tomto kroku vytvoříte partnerské připojení mezi rozbočovačem a určitou
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
+4. Klikněte na tlačítko **OK** přidat připojení.
 
 ## <a name="device"></a>7. Stažení profilu sítě VPN
 

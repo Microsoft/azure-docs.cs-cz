@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: dc798dc78ed0cdbf11bbe3bc2dd805433b127a4d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976910"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569973"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s práv hostování více klientů 
 Víceklientská hostování práva pro Windows 10 pro zákazníky s Windows 10 Enterprise E3 nebo E5 na Windows Virtual Desktop přístup uživatele nebo na uživatele (licence uživatelského předplatného nebo licence uživatelského předplatného doplněk), umožňuje přenést vaše licence na Windows 10 do cloudu a spouštět virtuální počítače s Windows 10 v Azure bez nutnosti platit za další licenci. Další informace najdete v tématu [Multitenant hostování pro Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -72,11 +72,11 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 
 **Nasazení pomocí Azure Resource Manageru šablony nasazení** v rámci své šablony Resource Manageru, další parametr pro `licenseType` lze zadat. Další informace o [Tvorba šablon Azure Resource Manageru](../../resource-group-authoring-templates.md). Jakmile budete mít virtuální pevný disk nahrát do Azure, upravte šablonu Resource Manageru, které chcete zahrnout jako součást poskytovatele výpočetních typ licence a nasazení vaší šablony jako za normálních okolností:
 ```json
-"properties": {  
-   "licenseType": "Windows_Client",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Client",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 **Nasazení přes PowerShell** po nasazení virtuálního počítače s Windows serverem pomocí Powershellu, budete mít další parametr pro `-LicenseType`. Jakmile budete mít virtuální pevný disk nahrát do Azure, můžete vytvořit virtuální počítač pomocí `New-AzVM` a zadejte licencování následujícím způsobem:

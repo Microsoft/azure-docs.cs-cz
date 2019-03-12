@@ -3,7 +3,7 @@ title: Modrá obrazovka chyby při dalším spuštění virtuálního počítač
 description: Zjistěte, jak problém vyřešit modrá obrazovka chyby přijaté při dalším spuštění | Dokumentace Microsoftu
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 3d7bdb3f7d3343c5c165636b131f9a5c3a1458fd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7e37d8e732408e70dbcdc86d3e21556f553506cd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674595"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768480"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows se zobrazuje chyba modrá obrazovka při dalším spuštění virtuálního počítače Azure
 Tento článek popisuje modrá obrazovka chyby, které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje kroky při shromažďování dat pro lístek podpory. 

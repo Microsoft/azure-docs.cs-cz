@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/03/2019
+ms.date: 03/07/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442609"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727072"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -123,11 +123,15 @@ Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Reco
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Jak můžete změnit účet úložiště, jakmile je chráněný počítač?
 
-Pro probíhající replikaci může účet úložiště jenom upgradovat na úroveň premium. Pokud chcete použít standardní ceny, musíte zakázat replikaci zdrojového počítače a znovu povolte ochranu pomocí spravovaných disků úrovně standard. Kromě toho neexistuje žádné další způsob, jak změnit účet úložiště po povolení ochrany.
+Budete muset zakázat a povolit replikaci upgradovat nebo downgradovat typ účtu úložiště.
 
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak mohu změnit typ spravovaného disku po aktivaci ochrany počítače?
 
-Ano, můžete snadno změnit typ spravovaného disku. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
+Ano, můžete snadno změnit typ spravovaného disku. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Ale po změníte typ spravovaného disku, ujistěte se čekat body obnovení čerstvé chcete vygenerovat, pokud je potřeba testovat převzetí služeb při selhání nebo převzetí služeb při selhání odeslat tuto aktivitu.
+
+### <a name="can-i-switch-the-replication-from-managed-disks-to-unmanaged-disks"></a>Můžete přepínat replikace z spravované disky do nespravované disky?
+
+Ne, přepínání ze spravovaného do nespravovaného kódu není podporováno.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč se můžu replikovat přes síť VPN?
 

@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb5a06aa4eb21ba374344623f9f96ce92a59ff5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39f3f0954a271f3abd30e99e306ebfc940e20a7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168813"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547805"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy přihlášení pomocí webu Azure portal
 
-V tomto rychlém startu se dozvíte, jak stáhnout data přihlašování pro vašeho tenanta za posledních 24 hodin. Až 5000 záznamů si můžete stáhnout z webu Azure portal. Záznamy jsou seřazeny podle většinu poslední, tak ve výchozím nastavení, můžete získat nejnovější 5000 záznamů. 
+V tomto rychlém startu se dozvíte, jak stáhnout data přihlašování pro vašeho tenanta za posledních 24 hodin. Až 250 000 záznamů si můžete stáhnout z webu Azure portal. Záznamy jsou seřazeny podle většinu poslední, tak ve výchozím nastavení, můžete získat nejnovější 250 000 záznamů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Budete potřebovat:
 2. Z levého navigačního podokna vyberte **Azure Active Directory** a pomocí tlačítka **Přepnout adresář** vyberte aktivní adresář.
 3. Z řídicího panelu vyberte **Azure Active Directory** a pak vyberte **Přihlášení**. 
 4. Pokud chcete zobrazit přihlášení za posledních 24 hodin, ve filtru rozevíracího seznamu **Datum** zvolte **Posledních 24 hodin** a vyberte **Použít**. 
-5. Pokud chcete stáhnout soubor CSV obsahující filtrované záznamy, klikněte na tlačítko **Stáhnout**. 
+5. Vyberte **Stáhnout** tlačítka, vyberte **sdíleného svazku clusteru** jako soubor formátu a zadejte název souboru ke stažení souboru CSV se filtrované záznamy. 
 
 ![Vytváření sestav](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 

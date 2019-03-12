@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223336"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548724"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>Kurz: Detekce anomálií pomocí aplikace v Javě
 
@@ -28,7 +28,7 @@ V příkladu budou do rozhraní API pro detekci anomálií odeslána data časov
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Tento kurz jsme vyvinuli v [IntelliJ IDEA](https://www.jetbrains.com/idea). Také je potřeba nainstalovat [Java Development Kit (JDK)](https://aka.ms/azure-jdks) verze 1.8 nebo vyšší a aktuální kompilátor [Apache's Maven](http://maven.apache.org/).
+Tento kurz jsme vyvinuli v [IntelliJ IDEA](https://www.jetbrains.com/idea). Také je potřeba nainstalovat [Java Development Kit (JDK)](https://aka.ms/azure-jdks) verze 1.8 nebo vyšší a aktuální kompilátor [Apache's Maven](https://maven.apache.org/).
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Předplaťte si službu detekce anomálií a získejte klíč předplatného 
 

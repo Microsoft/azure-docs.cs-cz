@@ -1,24 +1,24 @@
 ---
 title: Řešení Service Map integrace s nástrojem System Center Operations Manager | Dokumentace Microsoftu
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek popisuje použitím řešení Service Map automaticky vytvořit distribuovanou aplikaci diagramy v nástroji Operations Manager.
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
-ms.author: bwren
-ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: magoedte
+ms.openlocfilehash: 878abe79754c3286b77aef744d1bc4973a8af841
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818749"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729403"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start Azure: Vytvoření objektu blob v úložišti objektů pomocí sady Java Storage SDK V10 | Microsoft Docs'
+title: 'Rychlý start Azure: Vytvoření objektu blob v úložišti objektů pomocí Javy Storage SDK V10 | Dokumentace Microsoftu'
 description: V tomto rychlém startu vytvoříte kontejner v úložišti objektů (Azure Blob), nahrajete soubor a vypíšete a stáhnete objekty pomocí sady Java Storage SDK.
 services: storage
 author: roygara
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 43db4ca12fbdf8ee637ca86e1a90cc3baf4ec572
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 136f9912e5a296629f76998e5843d6cccd81d3e3
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713278"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570568"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí sady Java Storage SDK V10
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí V10 Java úložiště sady SDK
 
 V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. Nová sada Java SDK používá reaktivní programovací model s implementací RxJava, který umožňuje asynchronní operace. Přečtěte si další informace o [reaktivních rozšířeních pro virtuální počítače s Javou](https://github.com/ReactiveX/RxJava) RxJava. 
 
@@ -176,9 +176,9 @@ Vzorový kód vytvoří místní soubor, který se použije k nahrání a staže
 
 ```java
 static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
-    
+
     FileChannel fileChannel = FileChannel.open(sourceFile.toPath());
-            
+
     // Uploading a file to the blobURL using the high-level methods available in TransferManager class
     // Alternatively call the Upload/StageBlock low-level methods from BlockBlobURL type
     TransferManager.uploadFileToBlockBlob(fileChannel, blob, 8*1024*1024, null)
@@ -198,20 +198,20 @@ Seznam objektů v kontejneru můžete získat pomocí metody [ContainerURL.listB
 ```java
 static void listBlobs(ContainerURL containerURL) {
     // Each ContainerURL.listBlobsFlatSegment call return up to maxResults (maxResults=10 passed into ListBlobOptions below).
-    // To list all Blobs, we are creating a helper static method called listAllBlobs, 
+    // To list all Blobs, we are creating a helper static method called listAllBlobs,
     // and calling it after the initial listBlobsFlatSegment call
     ListBlobsOptions options = new ListBlobsOptions(null, null, 10);
 
     containerURL.listBlobsFlatSegment(null, options)
-        .flatMap(containersListBlobFlatSegmentResponse -> 
-            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))    
+        .flatMap(containersListBlobFlatSegmentResponse ->
+            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))
                 .subscribe(response-> {
                     System.out.println("Completed list blobs request.");
                     System.out.println(response.statusCode());
                 });
 }
 
-private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {                
+private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {
     // Process the blobs returned in this result segment (if the segment is empty, blobs() will be null.
     if (response.body().blobs() != null) {
         for (Blob b : response.body().blobs().blob()) {
@@ -225,7 +225,7 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
     else {
         System.out.println("There are no more blobs to list off.");
     }
-    
+
     // If there is not another segment, return this response as the final response.
     if (response.body().nextMarker() == null) {
         return Single.just(response);
@@ -234,17 +234,17 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
         IMPORTANT: ListBlobsFlatSegment returns the start of the next segment; you MUST use this to get the next
         segment (after processing the current result segment
         */
-            
+
         String nextMarker = response.body().nextMarker();
 
         /*
         The presence of the marker indicates that there are more blobs to list, so we make another call to
         listBlobsFlatSegment and pass the result through this helper function.
         */
-            
-    return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
-        .flatMap(containersListBlobFlatSegmentResponse ->
-            listAllBlobs(url, containersListBlobFlatSegmentResponse));
+
+        return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
+            .flatMap(containersListBlobFlatSegmentResponse ->
+                listAllBlobs(url, containersListBlobFlatSegmentResponse));
     }
 }
 ```

@@ -1,6 +1,6 @@
 ---
-title: Příklad Powershellu – vytvoření Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu k vytvoření Azure SQL Database Managd Instance
+title: Příklad Powershellu – vytvoření ve službě Azure SQL Database managed instance | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu pro vytvoření spravované instance Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,27 +11,28 @@ author: jovanpop-msft
 ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: eeceb72ef73b5bbe241835a70b37255c12fc9eee
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 416a989f672aadcec2f1871bcea635500d1d0a93
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311387"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575694"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>Použití Powershellu k vytvoření Azure SQL Database Managed Instance pomocí šablony Azure Resource Manageru
+# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Vytvoření spravované instance Azure SQL Database pomocí prostředí PowerShell pomocí šablony Azure Resource Manageru
 
-Azure SQL Database Managed Instance můžete vytvořit pomocí Azure Powershellu knihovny a šablony Azure Resource Manageru. 
+Azure SQL Database Managed Instance můžete vytvořit pomocí Azure Powershellu knihovny a šablony Azure Resource Manageru.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, v tomto kurzu vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Nasazení pomocí předdefinované šablony Azure Resource Manageru můžete spustit příkazy Azure Powershellu. V šabloně můžete zadat následující vlastnosti:
+
 - Název instance
-- Uživatelské jméno správce SQL a heslo. 
+- Uživatelské jméno správce SQL a heslo.
 - Velikost instance (počet jader a maximální velikost úložiště).
 - Virtuální síť a podsíť, kde budou umístěné na instanci.
 - Serverové kolace instance (Preview).
@@ -50,6 +51,7 @@ Install-Module AzureRM.Resources
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
 Následující obsah musí být umístěné ve soubor, který představuje, který se použije k vytvoření instance šablony:
+
 ```
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -74,7 +76,7 @@ Následující obsah musí být umístěné ve soubor, který představuje, kter
             "location": "West Central US",
             "tags": {
                 "Description":"GP Instance with custom instance collation - Serbian_Cyrillic_100_CS_AS"
-            },          
+            },
             "sku": {
                 "name": "GP_Gen4",
                 "tier": "GeneralPurpose"
@@ -86,7 +88,7 @@ Následující obsah musí být umístěné ve soubor, který představuje, kter
                 "storageSizeInGB": 256,
                 "vCores": 8,
                 "licenseType": "LicenseIncluded",
-                "hardwareFamily": "Gen4", 
+                "hardwareFamily": "Gen4",
                 "collation": "Serbian_Cyrillic_100_CS_AS"
             },
             "type": "Microsoft.Sql/managedInstances",
@@ -98,9 +100,10 @@ Následující obsah musí být umístěné ve soubor, který představuje, kter
     ]
 }
 ```
-Předpokladem je, že už existuje virtuální sítě Azure s podsítí správně nakonfigurovaný. Pokud to není případ, Příprava síťového prostředí na použití samostatných [spravovaných prostředků Azure šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) , který můžete spustit nezávisle nebo obsažená v šabloně.
 
-Uložte obsah tohoto souboru jako soubor .json, cesta k souboru vložte následující skript prostředí PowerShell a změnit názvy objektů ve skriptu: 
+Předpokladem je, že už existuje virtuální sítě Azure s podsítí správně nakonfigurovaný. Pokud nemáte podsíť správně nakonfigurovaný, Příprava síťového prostředí na použití samostatných [spravovaných prostředků Azure šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) , který můžete spustit nezávisle nebo obsažená v šabloně.
+
+Uložte obsah tohoto souboru jako soubor .json, cesta k souboru vložte následující skript prostředí PowerShell a změnit názvy objektů ve skriptu:
 
 ```powershell
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"
@@ -126,13 +129,11 @@ New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGr
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```
-Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres. 
+
+Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
 Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../sql-database-powershell-samples.md).
-
-
-

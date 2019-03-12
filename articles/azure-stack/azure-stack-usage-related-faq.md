@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9f835382cbfe56c1601267ae994a94b56c0c3692
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888760"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727038"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Nejčastější dotazy v rozhraní API pro využití služby Azure Stack
 
@@ -197,15 +197,15 @@ Využití hlášené pro následující poskytovatele prostředků:
 **Jednotka**: GB\*měsíc      
 **Poznámky k**: Skutečná velikost na disku premium spravovaný disk 
 
-**ID měřiče**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**ID měřiče**: 108fa95b-be0d-4cd9-96e8-5b0d59505df1  
 **Název měřiče**: ActualStandardSnapshotSize   
 **Jednotka**: GB\*měsíc   
 **Poznámky k**: Skutečná velikost na disku standardní spravovaný snímek.  
 
-**ID měřiče**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**ID měřiče**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
 **Název měřiče**: ActualPremiumSnapshotSize   
 **Jednotka**: GB\*měsíc   
-**Poznámky k**: Skutečná velikost na disku, spravované premium.   
+**Poznámky k**: Skutečná velikost na disku ze snímku spravované premium.   
 
 **ID měřiče**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Název měřiče**: S4   
@@ -285,7 +285,11 @@ Využití hlášené pro následující poskytovatele prostředků:
 **ID měřiče**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Název měřiče**: ActualPremiumSnapshotSize   
 **Jednotka**: Bajtů\*hodin   
-**Poznámky k**: Skutečná velikost na disku, spravované premium (zastaralé) 
+**Poznámky k**: Skutečná velikost na disku ze snímku spravované premium (zastaralé) 
+
+**ID měřiče**: 75d4b707-1027-4403-9986-6ec7c05579c8 **název měřiče**: ActualStandardSnapshotSize **jednotka**: GB\*měsíc **poznámky**: Skutečná velikost na disku standardní spravovaný snímek (zastaralé)  
+
+**ID měřiče**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e **název měřiče**: ActualPremiumSnapshotSize **jednotka**: GB\*měsíc **poznámky**: Skutečná velikost na disku ze snímku spravované premium (zastaralé)  
 
 ### <a name="sql-rp"></a>Poskytovatele prostředků SQL
   

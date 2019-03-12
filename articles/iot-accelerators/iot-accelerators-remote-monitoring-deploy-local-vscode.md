@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6e2fafa398b09d0822c4582e196345b812e6fc52
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 68f82c7e5b66cf94824bde930923f11423046e9a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392242"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544252"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio Code
 
@@ -34,7 +34,7 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 * [Git](https://git-scm.com/)
 * [.Net Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
-* [Server Nginx](http://nginx.org/en/download.html)
+* [Server Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [VS Code C# rozšíření](https://code.visualstudio.com/docs/languages/csharp)
 * [Node.js v8](https://nodejs.org/) -tento software je předpokladem pro počítače s CLI, skripty použít k vytvoření prostředků Azure. Nepoužívejte Node.js v10
@@ -88,7 +88,7 @@ Reverzní proxy server nastavte propojení webové aplikace a mikroslužeb spou�
 * Kopírování **nginx.conf** soubor **webui\scripts\localhost** složku **nginx\conf** instalační adresář.
 * Spustit **nginx**.
 
-Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](http://nginx.org/en/docs/windows.html).
+Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6a66dfaee4c0492523239888b91333256cc66c3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670698"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547008"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní API v jazyce Java v Androidu
 
@@ -30,7 +30,7 @@ Tento článek provádí ukázková aplikace předvádí způsob použití kniho
 
 ### <a name="platform-requirements"></a>Požadavky platformy
 
-Ukázka je vyvinutý [Android Studio](http://developer.android.com/sdk/index.html) pro Windows v jazyce Java.
+Ukázka je vyvinutý [Android Studio](https://developer.android.com/sdk/index.html) pro Windows v jazyce Java.
 
 ### <a name="get-the-client-library-and-sample-application"></a>Získání klienta knihovny a ukázkové aplikace
 

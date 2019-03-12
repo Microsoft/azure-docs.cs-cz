@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468297"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535735"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schéma událostí Azure Event Grid pro skupiny prostředků
 
@@ -236,29 +236,29 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
-| eventType | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
-| id | řetězec | Jedinečný identifikátor pro událost. |
+| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | string | Vydavatel definované cesta předmět události. |
+| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data událostí skupiny prostředků. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | Autorizace | objekt | Požadovaná oprávnění pro operaci. |
-| deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | řetězec | ID operace odstraňování potíží. |
+| deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | string | ID operace odstraňování potíží. |
 | httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
-| resourceProvider | řetězec | Poskytovatel prostředků pro operaci. |
-| resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
-| operationName | řetězec | Operace, která byla provedena. |
-| status | řetězec | Stav operace. |
-| subscriptionId | řetězec | ID předplatného prostředku. |
-| ID Tenanta | řetězec | ID tenanta prostředku. |
+| resourceProvider | string | Poskytovatel prostředků pro operaci. |
+| resourceUri | string | Identifikátor URI prostředku v operaci. |
+| operationName | string | Operace, která byla provedena. |
+| status | string | Stav operace. |
+| subscriptionId | string | ID předplatného prostředku. |
+| ID Tenanta | string | ID tenanta prostředku. |
 
 ## <a name="next-steps"></a>Další postup
 

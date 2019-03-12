@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: fdad2893-41f4-4056-b6d2-ec3d050eb350
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aee3474741e7483dabe31eec80b42badda40baf
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab3380790ae489ffed34cc3c3f1a59fd532972e7
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875493"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Kurz: Integrace Azure Active Directory s CorpTax
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: fdeef8be1cfaabde326f68a1207f7c38d037a502
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4359a90bb511b538499848effea7be22a23fac0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313292"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570619"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -173,7 +173,9 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
   - Azure Site Recovery požadovaných pro ověřování přístupu k rozsahy IP adres Office 365.
     Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server pravidla nebo brána firewall sítě Azure zabezpečení skupiny (NSG), zajistěte, aby že byla povolena komunikace s O365 rozsahy IP adres. Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
         - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
-
+>[!NOTE]
+> Pokud jsou virtuální počítače za bránou **standardní** interního nástroje load balancer pak nebude mít přístup k O365 IP adresy tj Login.micorsoftonline.com ve výchozím nastavení. Buď změňte ji na **základní** vnitřní typ nástroje pro vyrovnávání zatížení nebo vytváření out vázané přístupu, jak je uvedeno v [článek] (https://aka.ms/lboutboundrulescli).
+>
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Úkol 3: (151197) se nepovedlo nakonfigurovat službu Site Recovery
 - **Možná příčina** </br>

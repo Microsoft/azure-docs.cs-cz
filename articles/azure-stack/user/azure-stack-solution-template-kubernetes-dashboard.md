@@ -1,6 +1,6 @@
 ---
-title: Povolit řídicí panel Kubernetes v Azure stacku | Dokumentace Microsoftu
-description: Informace o povolení řídicí panel Kubernetes ve službě Azure Stack
+title: Přístup k řídicímu panelu Kubernetes v Azure stacku | Dokumentace Microsoftu
+description: Zjistěte, jak získat přístup k řídicímu panelu Kubernetes ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242407"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729850"
 ---
-# <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Povolit řídicí panel Kubernetes v Azure stacku 
+# <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Přístup k řídicímu panelu Kubernetes v Azure stacku 
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit* 
 > [!Note]   
 > Kubernetes ve službě Azure Stack je ve verzi preview. Azure Stack odpojené scénář není aktuálně podporován ve verzi preview. 
 
-Kubernetes zahrnuje webové řídicí panel, který můžete použít pro operací základní správy. Tento řídicí panel umožňuje zobrazit základní stav a metriky pro vaše aplikace, vytvoření a nasazení služeb a upravit stávající aplikace. Tento článek ukazuje, jak povolit řídicímu panelu Kubernetes ve službě Azure Stack.
+Kubernetes zahrnuje webové řídicí panel, který můžete použít pro operací základní správy. Tento řídicí panel umožňuje zobrazit základní stav a metriky pro vaše aplikace, vytvoření a nasazení služeb a upravit stávající aplikace. V tomto článku se dozvíte, jak nastavit řídicí panel Kubernetes ve službě Azure Stack.
 
 ## <a name="prerequisites-for-kubernetes-dashboard"></a>Požadavky na řídicí panel Kubernetes
 

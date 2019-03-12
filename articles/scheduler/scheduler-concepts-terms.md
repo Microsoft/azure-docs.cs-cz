@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a58b247732125574a067deff1d5b03859cd036fc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334223"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782288"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -69,9 +69,9 @@ Azure Scheduler podporuje několik typů úloh:
 Úloha služby Scheduler se skládá z těchto tří základních částí:
 
 * Akce, která se spustí, když se aktivuje časovač úlohy
-* Volitelné: Čas, kdy se má úloha spustit
+* Volitelné: Čas spuštění úlohy
 * Volitelné: Kdy a jak často se má úloha opakovat
-* Volitelné: Akce při chybě, která se spustí, pokud primární akce selže
+* Volitelné: Chyba akce, která se spustí v případě selhání primární akce
 
 Úloha obsahuje také data poskytnutá systémem, jako je například čas dalšího plánovaného spuštění úlohy. Definice kódu úlohy je objekt ve formátu JSON (JavaScript Object Notation), který obsahuje tyto elementy:
 
@@ -239,7 +239,7 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 },
 ```
 
-| Vlastnost | Požaduje se | Hodnota | Popis | 
+| Vlastnost | Požaduje se | Value | Popis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
@@ -269,7 +269,7 @@ Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nasta
 },
 ```
 
-| Vlastnost | Požaduje se | Hodnota | Popis | 
+| Vlastnost | Požaduje se | Value | Popis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
 | **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/07/2019
 ms.author: diberry
-ms.openlocfilehash: 093c60287b16073a6c04e824dc439f5dc069ec96
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863665"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765166"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblasti a přidružené klíče
 
@@ -95,6 +95,9 @@ Následující tabulka popisuje parametry, které jsou označeny složených zá
 |ID aplikace|ID aplikace LUIS používaných pro trasu adresy URL a najít na řídicí panel aplikací|
 |q|text utterance odeslané z klientské aplikace, jako je chatovací robot|
 
+## <a name="failover-regions"></a>Převzetí služeb při selhání oblasti
+
+Každá oblast má k převzetí služeb při selhání do sekundární oblasti. Evropa selže v rámci Evropy a Austrálie převezme služby při selhání v Austrálii.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,16 +10,16 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860282"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544320"
 ---
 # <a name="grammar-format"></a>Formát gramatiky
 
-Gramatika je soubor XML, který určuje vážený sadu, které služba dokáže interpretovat, a také jak se tyto dotazy v přirozeném jazyce jsou přeloženy do sémantického dotazu výrazy dotazů v přirozeném jazyce.  Gramatika syntaxe je založena na [SRGS](http://www.w3.org/TR/speech-grammar/), W3C standard pro gramatiky rozpoznávání řeči, pomocí rozšíření pro podporu integrace dat index a sémantické funkce.
+Gramatika je soubor XML, který určuje vážený sadu, které služba dokáže interpretovat, a také jak se tyto dotazy v přirozeném jazyce jsou přeloženy do sémantického dotazu výrazy dotazů v přirozeném jazyce.  Gramatika syntaxe je založena na [SRGS](https://www.w3.org/TR/speech-grammar/), W3C standard pro gramatiky rozpoznávání řeči, pomocí rozšíření pro podporu integrace dat index a sémantické funkce.
 
 Následující část popisuje jednotlivých syntaktické prvků, které lze použít v gramatika.  Zobrazit [v tomto příkladu](#example) pro dokončení gramatiku, která ukazuje použití těchto prvků v kontextu.
 

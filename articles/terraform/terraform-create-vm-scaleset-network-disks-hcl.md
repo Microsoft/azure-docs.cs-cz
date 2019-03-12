@@ -2,18 +2,18 @@
 title: Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
 description: Kurz o použití Terraformu ke konfiguraci a správě verzí škálovací sady virtuálních počítačů Azure s virtuální sítí a spravovanými připojenými disky
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtuální počítač, Azure, škálovací sada, síť, úložiště, moduly
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 7d23e9113b83970d0cfee8f96989faa2c2760421
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 12f1e69aeb1021ed7bc97b0c54248c798cfd75b9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745822"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762819"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 4808d390-a74e-4c98-8538-391a4a58aa62
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce4fa99335f6e5b8a829cfa2605312f3ace988a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c354f620ea58a98a480bfb0b48ad219f1f5e86c6
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880933"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Kurz: Integrace Azure Active Directory s PICCO cloudové služby
 

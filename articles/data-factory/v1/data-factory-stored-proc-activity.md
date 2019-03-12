@@ -3,22 +3,22 @@ title: SQL Server aktivita uložených procedur
 description: Zjistěte, jak můžete pomocí SQL serveru aktivitě uložené procedury k vyvolání uložené procedury do služby Azure SQL Database a Azure SQL Data Warehouse z kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5604767b49e6234bba5c16179bebe717938170cf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753261"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775353"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server aktivita uložených procedur
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -85,7 +85,7 @@ Následující návod používá aktivitu uložená procedura v kanálu vyvolat 
     ```
 
    > [!IMPORTANT]
-   > **Název** a **malých a velkých písmen** parametru (datum a čas v tomto příkladu) se musí shodovat s parametru zadané v kódu JSON kanálu a aktivity. V definici uloženou proceduru, ujistěte se, že **@** slouží jako předpona pro parametr.
+   > **Název** a **malých a velkých písmen** parametru (datum a čas v tomto příkladu) se musí shodovat s parametru zadané v kódu JSON kanálu a aktivity. V definici uloženou proceduru, ujistěte se, že **\@** slouží jako předpona pro parametr.
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).

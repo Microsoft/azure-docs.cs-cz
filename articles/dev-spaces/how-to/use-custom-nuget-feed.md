@@ -3,7 +3,6 @@ title: Jak používat vlastní NuGet informačního kanálu Azure Dev mezery
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
@@ -11,12 +10,12 @@ ms.topic: conceptual
 description: Použijte vlastní NuGet informační kanál k přistupovat a používat balíčky NuGet v prostoru vývoj Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 manager: ghogen
-ms.openlocfilehash: ff13e4d8670e4ad1712ce2335711f86b9cc14436
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192475"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772462"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Použít vlastní NuGet kanálu v prostoru vývoj Azure
 

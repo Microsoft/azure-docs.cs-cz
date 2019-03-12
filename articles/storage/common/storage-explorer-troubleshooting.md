@@ -7,13 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.subservice: common
-ms.openlocfilehash: 15ceaf1a75859ca53ddb946555880b360b29ee58
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405687"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775165"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
 
@@ -97,13 +96,11 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem podle 
 
 Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dotazem, Průzkumníka služby Storage provádět přesměrování, který nepodporuje elektronovým. Chcete-li vyřešit tento problém může pokusit použít tok kódu zařízení pro přihlášení do. To provedete podle následujících kroků:
 
-1. "Přejít na experimentální" -> "Pomocí přihlášení zařízení kód".
+1. "Přejděte na verzi Preview" -> "Pomocí přihlášení zařízení kód".
 2. Otevřete dialogové okno připojit, (buď prostřednictvím moduly ikonu na levé straně svislá čára, nebo "Přidat účet" na panel účtu).
 3. Vyberte prostředí, jaké chcete k přihlášení k.
 4. Klikněte na tlačítko "Přihlásit" tlačítku.
 5. Postupujte podle pokynů na další panel.
-
-Poznámka: Tato funkce je aktuálně k dispozici pouze v 1.7.0 ve verzi Preview.
 
 Pokud se potíže při přihlašování k účtu, který chcete použít, protože váš výchozí prohlížeč se už přihlásili do jiného účtu, můžete buď:
 
@@ -244,6 +241,14 @@ Pro distribuce Linuxu než Ubuntu 16.04 budete muset ručně nainstalovat někte
 * Aktuální GCC
 
 V závislosti na vaší distribuci může být ostatní balíčky, které je potřeba nainstalovat. Storage Explorer [zpráva k vydání verze](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) obsahují konkrétní kroky pro některých distribucích.
+
+## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Otevřít v Průzkumníku z webu Azure portal nebude fungovat.
+
+Pokud pro vás nebude fungovat na tlačítko "Otevřít v Průzkumníku" na webu Azure portal, ujistěte se, že používáte kompatibilní prohlížeče. Následující prohlížeče byly testovány z hlediska kompatibility.
+* Microsoft Edge
+* Mozilla Firefox
+* Google Chrome
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Další postup
 

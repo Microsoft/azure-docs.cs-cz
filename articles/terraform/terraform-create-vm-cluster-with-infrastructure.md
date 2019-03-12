@@ -2,19 +2,19 @@
 title: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 description: Použijte Terraform a jazyk konfigurace společnosti HashiCorp (HCL) k vytvoření clusteru virtuálních počítačů s Linuxem a nástrojem pro vyrovnávání zatížení v Azure.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtuální počítač, síť, moduly
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: a53fee8ee492de4d9eaa8b45a8d4a88e692da02d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: bf16d963a83bc720cc39e47cc928c1926a92859d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410366"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771459"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 

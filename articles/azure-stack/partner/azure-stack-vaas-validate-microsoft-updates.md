@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7fa03cdf52fc3218e9556c9664daafdc60243f3
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ad9d5057c18d316dcf3254dc57a3184c1b75fc50
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593213"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780829"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Ověření aktualizace softwaru od Microsoftu
 
@@ -56,7 +56,7 @@ Následující testy by měl provádět v uvedeném pořadí pro měsíční ov�
 1. Zadejte umístění pro balíček rozšíření pro výrobce OEM aktuálně nasazené na toto razítko a umístění pro rozšíření balíčku výrobce OEM, která se použije při aktualizaci. Ke konfiguraci adres URL pro tyto balíčky, naleznete v tématu [Správa balíčků pro ověření](azure-stack-vaas-validate-oem-package.md#managing-packages-for-validation).
 1. Postupujte podle kroků v uživatelském rozhraní z vybraných agenta.
 
-Pokud máte dotazy nebo připomínky, obraťte se prosím [VaaS nápovědy](mailto:vaashelp@microsoft.com).
+Pokud máte dotazy nebo připomínky, obraťte se na [VaaS nápovědy](mailto:vaashelp@microsoft.com).
 
 ## <a name="next-steps"></a>Další postup
 

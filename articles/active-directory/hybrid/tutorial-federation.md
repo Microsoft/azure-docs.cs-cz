@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6d1d53fd292a936c833450fee3af91671eec86
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a242e2419c64b0b80665aa2a8859f73143210bab
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171159"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552193"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Federace prostředí jedné doménové struktury služby AD do cloudu
 
@@ -281,7 +281,7 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
+1.  Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.
 ![Ověření](media/tutorial-password-hash-sync/verify1.png)
 

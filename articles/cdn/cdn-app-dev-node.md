@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 70bae1558860b763d17d04e10d5d926b39300101
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321241"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548639"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "54321241"
 
 Můžete použít [Azure CDN SDK pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) automatizovat vytváření a správa koncových bodů a profilů CDN.  Tento kurz vás provede vytvořením jednoduchou konzolovou aplikaci Node.js, který ukazuje několik dostupných operací.  V tomto kurzu není určená k podrobnému popisu, všechny aspekty Azure CDN SDK pro Node.js.
 
-K dokončení tohoto kurzu byste už měli mít [Node.js](http://www.nodejs.org) **4.x.x** nebo novější nainstalován a nakonfigurován.  Můžete použít libovolný textový editor, kterou chcete vytvořit aplikaci Node.js.  Zápis v tomto kurzu, můžu použít [Visual Studio Code](https://code.visualstudio.com).  
+K dokončení tohoto kurzu byste už měli mít [Node.js](https://www.nodejs.org) **4.x.x** nebo novější nainstalován a nakonfigurován.  Můžete použít libovolný textový editor, kterou chcete vytvořit aplikaci Node.js.  Zápis v tomto kurzu, můžu použít [Visual Studio Code](https://code.visualstudio.com).  
 
 > [!TIP]
 > [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na webu MSDN.
@@ -363,9 +363,9 @@ A konečně můžeme odstranit naše profil.
 ## <a name="next-steps"></a>Další kroky
 Dokončený projekt z tohoto návodu, zobrazíte [Stáhněte ukázku](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-Chcete-li zobrazit odkaz pro Azure CDN SDK pro Node.js, zobrazte [odkaz](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+Chcete-li zobrazit odkaz pro Azure CDN SDK pro Node.js, zobrazte [odkaz](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
 
-Chcete-li vyhledat další dokumentaci na sadu Azure SDK pro Node.js, podívejte se [úplné referenční](http://azure.github.io/azure-sdk-for-node/).
+Chcete-li vyhledat další dokumentaci na sadu Azure SDK pro Node.js, podívejte se [úplné referenční](https://azure.github.io/azure-sdk-for-node/).
 
 Správa prostředků CDN pomocí [Powershellu](cdn-manage-powershell.md).
 

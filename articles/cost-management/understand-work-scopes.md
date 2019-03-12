@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 3a1d363e08d4c7e9899f034b2260e764d07ed79d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344693"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773788"
 ---
-# <a name="understand-and-work-with-scopes"></a>Pochopení a práci s obory
+# <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
 Tento článek vám pomůže pochopit fakturaci a prostředků obory správy k dispozici v Azure a použití rozsahů Cost Management a rozhraní API.
 
@@ -31,7 +31,7 @@ Obory jsou kde spravovat fakturačních dat, mají konkrétní role k platbám, 
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá obory
 
-Cost Management funguje na všech rozsahy nad prostředky, které umožňuje organizacím spravovat náklady na úrovni, na které mají přístup, zda je celý fakturační účet nebo jedné skupiny prostředků. I když fakturační obory se liší v závislosti na vaší smlouvě Microsoft (typ předplatného), není obory RBAC.
+Cost Management funguje na všech rozsahy nad prostředky, které umožňuje organizacím spravovat náklady na úrovni, na které mají přístup, zda je celý fakturační účet nebo jedné skupiny prostředků. I když fakturační obory se liší v závislosti na vaší smlouvě Microsoft (typ předplatného), obory RBAC to nejde.
 
 ## <a name="azure-rbac-scopes"></a>Obory Azure RBAC
 
@@ -145,6 +145,10 @@ Fakturace uživatelé nemají přístup ke skupinám pro správu, protože není
 ## <a name="cloud-solution-provider-csp-scopes"></a>Obory cloud Solution Provider (CSP)
 
 Partnery cloud Solution Provider (CSP) nejsou podporovány ve službě Cost Management ještě dnes. Místo toho můžete použít [partnerského centra](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+
+## <a name="how-to-switch-between-scopes-within-cost-management"></a>Jak přepínat mezi oborů v rámci Cost Management
+
+Zahrnout všechny činnosti správy nákladů na webu Azure portal **oboru** obranné v levé horní části okna, která poskytuje přístup k rychle změnit obor. Kliknutím **oboru** obranné otevře výběr oboru, který ukazuje fakturační účty, skupinu root management a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** tlačítko dole. Když přejdete k podrobnostem vnořené obory (například skupiny prostředků v rámci předplatného), klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, <scope>**  tlačítko v horní části Výběr oboru.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Určení ID prostředku pro obor
 

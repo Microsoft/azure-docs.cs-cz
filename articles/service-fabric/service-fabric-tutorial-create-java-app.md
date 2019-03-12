@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 3309690212f8c2e92c4a2328721624a83928f315
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 92cee8e95888d5084165413ce49d4c884e476e71
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247473"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571435"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
 
@@ -108,7 +108,7 @@ Pokud chcete přidat uživatelské rozhraní, které lze vykreslit Bezstavová s
 <body>
 
 <script>
-var app = angular.module('VotingApp', ['ui.bootstrap']); 
+var app = angular.module('VotingApp', ['ui.bootstrap']);
 app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeout', function ($rootScope, $scope, $http, $timeout) {
     $scope.votes = [];
     
@@ -116,8 +116,8 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
         $http.get('getStatelessList')
             .then(function successCallback(response) {
         $scope.votes = Object.assign(
-          {},
-          ...Object.keys(response.data) .
+            {},
+            ...Object.keys(response.data) .
             map(key => ({[decodeURI(key)]: response.data[key]}))
         )
         },
@@ -126,7 +126,7 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
         });
     };
 
-    $scope.remove = function (item) {            
+    $scope.remove = function (item) {
        $http.get("removeItem", {params: { item: encodeURI(item) }})
             .then(function successCallback(response) {
                 $scope.refresh();
@@ -137,14 +137,14 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
     };
 
     $scope.add = function (item) {
-        if (!item) {return;}        
+        if (!item) {return;}
         $http.get("addItem", {params: { item: encodeURI(item) }})
             .then(function successCallback(response) {
                 $scope.refresh();
             },
             function errorCallback(response) {
                 alert(response);
-            });        
+            });
     };
 }]);
 </script>
@@ -219,7 +219,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
     EndpointResourceDescription endpoint = this.getServiceContext().getCodePackageActivationContext().getEndpoint(webEndpointName);
     int port = endpoint.getPort();
-    
+
     List<ServiceInstanceListener> listeners = new ArrayList<ServiceInstanceListener>();
     listeners.add(new ServiceInstanceListener((context) -> new HttpCommunicationListener(context, port)));
     return listeners;
@@ -271,10 +271,10 @@ public class HttpCommunicationListener implements CommunicationListener {
 
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
     private static final int STATUS_OK = 200;
-    private static final int STATUS_NOT_FOUND = 404; 
+    private static final int STATUS_NOT_FOUND = 404;
     private static final int STATUS_ERROR = 500;
     private static final String RESPONSE_NOT_FOUND = "404 (Not Found) \n";
-    private static final String MIME = "text/html";  
+    private static final String MIME = "text/html";
     private static final String ENCODING = "UTF-8";
 
     private static final String ROOT = "wwwroot/";
@@ -285,12 +285,12 @@ public class HttpCommunicationListener implements CommunicationListener {
     private final int port;
 
     public HttpCommunicationListener(StatelessServiceContext context, int port) {
-        this.partitionKey = new ServicePartitionKey(0); 
+        this.partitionKey = new ServicePartitionKey(0);
         this.context = context;
         this.port = port;
     }
 
-    // Called by openAsync when the class is instantiated 
+    // Called by openAsync when the class is instantiated
     public void start() {
         try {
             logger.log(Level.INFO, "Starting Server");
@@ -306,14 +306,14 @@ public class HttpCommunicationListener implements CommunicationListener {
             public void handle(HttpExchange t) {
                 try {
                     File file = new File(ROOT + FILE_NAME).getCanonicalFile();
-    
+
                     if (!file.isFile()) {
                       // Object does not exist or is not a file: reject with 404 error.
                       t.sendResponseHeaders(STATUS_NOT_FOUND, RESPONSE_NOT_FOUND.length());
                       OutputStream os = t.getResponseBody();
                       os.write(RESPONSE_NOT_FOUND.getBytes());
                       os.close();
-                    } else {    
+                    } else {
                       Headers h = t.getResponseHeaders();
                       h.set(HEADER_CONTENT_TYPE, MIME);
                       t.sendResponseHeaders(STATUS_OK, 0);
@@ -328,7 +328,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
                       fs.close();
                       os.close();
-                    }  
+                    }
                 } catch (Exception e) {
                     logger.log(Level.WARNING, null, e);
                 }
@@ -394,9 +394,9 @@ Po vytvoření front-endové služby VotingWeb vybere Service Fabric port, na kt
 ```xml
 <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
+        <!-- This endpoint is used by the communication listener to obtain the port on which to
+            listen. Please note that if your service is partitioned, this port is shared with
+            replicas of different partitions that are placed in your code. -->
         <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
     </Endpoints>
   </Resources>
@@ -427,7 +427,7 @@ package statefulservice;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -443,14 +443,14 @@ import microsoft.servicefabric.data.collections.ReliableHashMap;
 import microsoft.servicefabric.data.utilities.AsyncEnumeration;
 import microsoft.servicefabric.data.utilities.KeyValuePair;
 
-import system.fabric.StatefulServiceContext; 
+import system.fabric.StatefulServiceContext;
 
-import rpcmethods.VotingRPC; 
+import rpcmethods.VotingRPC;
 
 class VotingDataService extends StatefulService implements VotingRPC {
     private static final String MAP_NAME = "votesMap";
     private ReliableStateManager stateManager;
-    
+
     protected VotingDataService (StatefulServiceContext statefulServiceContext) {
         super (statefulServiceContext);
     }
@@ -459,50 +459,50 @@ class VotingDataService extends StatefulService implements VotingRPC {
     protected List<ServiceReplicaListener> createServiceReplicaListeners() {
         this.stateManager = this.getReliableStateManager();
         ArrayList<ServiceReplicaListener> listeners = new ArrayList<>();
-        
+
         listeners.add(new ServiceReplicaListener((context) -> {
             return new FabricTransportServiceRemotingListener(context,this);
         }));
-        
+
         return listeners;
     }
-    
+
     // Method that will be invoked via RPC from the front end to retrieve the complete set of votes in the map
     public CompletableFuture<HashMap<String,String>> getList() {
         HashMap<String, String> tempMap = new HashMap<String, String>();
 
-        try {                    
+        try {
 
             ReliableHashMap<String, String> votesMap = stateManager
                     .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
-                        
+
             Transaction tx = stateManager.createTransaction();
             AsyncEnumeration<KeyValuePair<String, String>> kv = votesMap.keyValuesAsync(tx).get();
             while (kv.hasMoreElementsAsync().get()) {
                 KeyValuePair<String, String> k = kv.nextElementAsync().get();
-                tempMap.put(k.getKey(), k.getValue()); 
+                tempMap.put(k.getKey(), k.getValue());
             }
-            
-            tx.close();                    
-            
+
+            tx.close();
+
 
         } catch (Exception e) {
             e.printStackTrace();
-        }  
-        
+        }
+
         return CompletableFuture.completedFuture(tempMap);
     }
-    
+
     // Method that will be invoked via RPC from the front end to add an item to the votes list or to increase the
     // vote count for a particular item
     public CompletableFuture<Integer> addItem(String itemToAdd) {
-        AtomicInteger status = new AtomicInteger(-1); 
+        AtomicInteger status = new AtomicInteger(-1);
 
         try {
-            
+
             ReliableHashMap<String, String> votesMap = stateManager
-                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();                    
-            
+                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
+
             Transaction tx = stateManager.createTransaction();
             votesMap.computeAsync(tx, itemToAdd, (k, v) -> {
                 if (v == null) {
@@ -510,42 +510,42 @@ class VotingDataService extends StatefulService implements VotingRPC {
                 }
                 else {
                     int numVotes = Integer.parseInt(v);
-                    numVotes = numVotes + 1;                            
+                    numVotes = numVotes + 1;
                     return Integer.toString(numVotes);
                 }
-            }).get(); 
-            
-            tx.commitAsync().get();
-            tx.close(); 
+            }).get();
 
-            status.set(1);                            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return CompletableFuture.completedFuture(new Integer(status.get()));
-    }
-    
-    // Method that will be invoked via RPC from the front end to remove an item
-    public CompletableFuture<Integer> removeItem(String itemToRemove) {
-        AtomicInteger status = new AtomicInteger(-1); 
-        try {
-            ReliableHashMap<String, String> votesMap = stateManager
-                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
-            
-            Transaction tx = stateManager.createTransaction();
-            votesMap.removeAsync(tx, itemToRemove).get();
             tx.commitAsync().get();
-            tx.close();                    
-            
+            tx.close();
+
             status.set(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return CompletableFuture.completedFuture(new Integer(status.get()));
     }
-    
+
+    // Method that will be invoked via RPC from the front end to remove an item
+    public CompletableFuture<Integer> removeItem(String itemToRemove) {
+        AtomicInteger status = new AtomicInteger(-1);
+        try {
+            ReliableHashMap<String, String> votesMap = stateManager
+                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
+
+            Transaction tx = stateManager.createTransaction();
+            votesMap.removeAsync(tx, itemToRemove).get();
+            tx.commitAsync().get();
+            tx.close();
+
+            status.set(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return CompletableFuture.completedFuture(new Integer(status.get()));
+    }
+
 }
 ```
 
@@ -578,7 +578,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
     
         CompletableFuture<Integer> removeItem(String itemToRemove);
     }
-    ``` 
+    ```
 
 4. Vytvořte prázdný soubor s názvem *build.gradle* v *Voting/VotingRPC* adresáře a vložit následující dovnitř. Tento soubor gradle slouží k sestavení a vytvoření souboru .jar, který importují ostatní služby. 
 
@@ -612,7 +612,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
     jar {
         from configurations.compile.collect {
             (it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+
         manifest {
                 attributes(
                 'Main-Class': 'rpcmethods.VotingRPC')
@@ -620,15 +620,15 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
             destinationDir = file('./')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
-    
+
     defaultTasks 'clean', 'jar'
     ```
 
 5. Do souboru *Voting/settings.gradle* přidejte řádek, který do sestavení zahrne nově vytvořený projekt. 
 
-    ```gradle 
+    ```gradle
     include ':VotingRPC'
     ```
 
@@ -638,13 +638,13 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
     server.createContext("/getStatelessList", new HttpHandler() {
         @Override
         public void handle(HttpExchange t) {
-            try {                    
+            try {
                 t.sendResponseHeaders(STATUS_OK,0);
                 OutputStream os = t.getResponseBody();
-                
+    
                 HashMap<String,String> list = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").getList().get();
                 String json = new Gson().toJson(list);
-                os.write(json.getBytes(ENCODING));                   
+                os.write(json.getBytes(ENCODING));
                 os.close();
             } catch (Exception e) {
                 logger.log(Level.WARNING, null, e);
@@ -657,14 +657,14 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
         public void handle(HttpExchange t) {
             try {
                 OutputStream os = t.getResponseBody();
-                URI r = t.getRequestURI();     
+                URI r = t.getRequestURI();
     
                 Map<String, String> params = queryToMap(r.getQuery());
-                String itemToRemove = params.get("item");                    
-                
+                String itemToRemove = params.get("item");
+
                 Integer num = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").removeItem(itemToRemove).get();
-                
-                if (num != 1) 
+    
+                if (num != 1)
                 {
                     t.sendResponseHeaders(STATUS_ERROR, 0);
                 } else {
@@ -688,10 +688,10 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
                 URI r = t.getRequestURI();
                 Map<String, String> params = queryToMap(r.getQuery());
                 String itemToAdd = params.get("item");
-                
+
                 OutputStream os = t.getResponseBody();
                 Integer num = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").addItem(itemToAdd).get();
-                if (num != 1) 
+                if (num != 1)
                 {
                     t.sendResponseHeaders(STATUS_ERROR, 0);
                 } else {
@@ -735,14 +735,14 @@ V této části se pro projekt nakonfigurují skripty Gradle.
 
 1. Nahraďte obsah souboru *Voting/build.gradle* následujícím kódem.
 
-    ```gradle 
+    ```gradle
     apply plugin: 'java'
     apply plugin: 'eclipse'
     
     subprojects {
         apply plugin: 'java'
-    } 
-        
+    }
+    
     defaultTasks 'clean', 'jar', 'copyDeps'
     ```
 
@@ -782,7 +782,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
         configurations.compile.filter {!it.toString().contains("native")}.each{
             from it
         }
-        
+    
         configurations.compile.filter {it.toString().contains("native")}.each{
             from zipTree(it)
         }
@@ -802,7 +802,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
     
     jar {
         from configurations.compile.collect {(it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+    
         manifest {
             attributes(
                 'Main-Class': 'statelessservice.VotingWebServiceHost')
@@ -810,11 +810,11 @@ V této části se pro projekt nakonfigurují skripty Gradle.
             destinationDir = file('../VotingApplication/VotingWebPkg/Code/')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
     
     defaultTasks 'clean', 'jar', 'copyDeps'
-    ``` 
+    ```
 
 3. Nahraďte obsah souboru *Voting/VotingDataService/build.gradle*. 
 
@@ -852,7 +852,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
         configurations.compile.filter {!it.toString().contains("native")}.each{
             from it
         }
-        
+    
         configurations.compile.filter {it.toString().contains("native")}.each{
             from zipTree(it)
         }
@@ -873,7 +873,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
     jar {
         from configurations.compile.collect {
             (it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+    
         manifest {
             attributes('Main-Class': 'statefulservice.VotingDataServiceHost')
     
@@ -881,7 +881,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
             destinationDir = file('../VotingApplication/VotingDataServicePkg/Code/')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
     
     defaultTasks 'clean', 'jar', 'copyDeps'
@@ -899,7 +899,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
-    ``` 
+    ```
     Přečtěte si podrobné pokyny v [Průvodce nastavením OS X.](service-fabric-get-started-mac.md)
 
     Pokud používáte počítač s Linuxem, spustíte místní cluster pomocí následujícího příkazu: 

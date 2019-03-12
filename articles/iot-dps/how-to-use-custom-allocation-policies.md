@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 4c02df5684036aef078b0f79c70d3b66d60e013b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 739780bedc701cc63747db6100242d0d6cad6085
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881511"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542671"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -90,7 +90,7 @@ V této části použijete Azure Cloud Shell vytvořte dvě nové služby IoT hu
 
 V této části vytvoříte novou skupinu registrace, který používá vlastní přidělení zásad. Pro zjednodušení tohoto článku používá [symetrického klíče ověření](concepts-symmetric-key-attestation.md) se registrace. Bezpečnější řešení, zvažte použití [ověření certifikátu X.509](concepts-security.md#x509-certificates) s řetěz certifikátů.
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com)a otevřete vaší instanci služby Device Provisioning.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete vaší instanci služby Device Provisioning.
 
 2. Vyberte **Správa registrací** kartu a potom klikněte na tlačítko **přidat skupinu registrací** tlačítko v horní části stránky. 
 

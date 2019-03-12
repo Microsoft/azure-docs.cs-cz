@@ -3,23 +3,23 @@ title: Transformace dat pomocí aktivity Hadoop MapReduce ve službě Azure Data
 description: Zjistěte, jak můžete zpracovávat data pomocí spouštění Hadoop MapReduce programů v clusteru Azure HDInsight ze služby Azure data factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214500"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576391"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-map-reduce.md)
 > * [Aktuální verze](transform-data-using-hadoop-map-reduce.md)
 
@@ -66,7 +66,7 @@ Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using
 | description       | Text popisující, k čemu aktivita slouží | Ne       |
 | type              | Pro činnost MapReduce typ aktivity je HDinsightMapReduce | Ano      |
 | linkedServiceName | Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
-| Název třídy         | Název třídy, který se spustí         | Ano      |
+| className         | Název třídy, který se spustí         | Ano      |
 | jarLinkedService  | Odkaz na propojená služba Azure Storage pro ukládání souborů Jar. Pokud nezadáte tuto propojenou službu, použije se propojená služba Azure Storage, definované v propojené službě HDInsight. | Ne       |
 | jarFilePath       | Zadejte cestu pro soubory Jar uložené ve službě Azure Storage, která odkazují jarLinkedService. Název souboru je velká a malá písmena. | Ano      |
 | jarlibs           | Pole cesty k souborům knihovny soubor Jar odkazovat úlohy ve službě Azure Storage definované v jarLinkedService řetězce. Název souboru je velká a malá písmena. | Ne       |

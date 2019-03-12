@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822829"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763363"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak se připojit ke svým předplatným Azure Stac
 > [!NOTE]  
 > Existuje několik nástrojů, které jsou k dispozici pro přesun dat do a z úložiště služby Azure Stack. Další informace najdete v tématu [nástroje pro Azure Stack úložiště pro přenos dat](azure-stack-storage-transfer.md).
 
-Pokud jste nenainstalovali Průzkumníka služby storage, [stáhněte si Průzkumníka služby storage](http://www.storageexplorer.com/) a nainstalujte ho.
+Pokud jste nenainstalovali Průzkumníka služby storage, [stáhněte si Průzkumníka služby storage](https://www.storageexplorer.com/) a nainstalujte ho.
 
 Po připojení k předplatnému Azure Stack nebo účet úložiště, můžete použít [služby Azure storage explorer články](../../vs-azure-tools-storage-manage-with-storage-explorer.md) pro práci s daty Azure Stack. 
 

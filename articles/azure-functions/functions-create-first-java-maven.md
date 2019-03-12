@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bafaf23791bef1bac42b5227d7775de0f5be2217
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 96ac8522f94a3555fe63575baca8bbfbabc272d9
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246030"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570449"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
 
@@ -166,6 +166,9 @@ Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistu
 ```
 
 Otestujte aplikaci funkcí spuštěnou v Azure pomocí `cURL`. V níže uvedené ukázce budete muset změnit adresu URL, aby odpovídala adrese URL nasazené vlastní aplikace funkcí z předchozího kroku.
+
+> [!NOTE]
+> Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Při výběru výchozí úrovně `Function`, je potřeba k dispozici [klíč funkce](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions

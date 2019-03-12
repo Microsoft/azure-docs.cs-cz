@@ -12,23 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527615"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766746"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablon Azure Resource Manageru
-Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manageru.
-
-Přidat funkce do šablony jejich uzavřením do hranatých závorek: `[` a `]`v uvedeném pořadí. Výraz se vyhodnotí během nasazování. Zatímco zapisují jako řetězcový literál, výsledek vyhodnocení výrazu může být jiného typu JSON, jako je například pole, objekt nebo celé číslo. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Vlastnosti odkazovat pomocí operátorů tečkou a [index].
-
-Výraz šablony nemůže být delší než 24,576 znaků.
-
-Šablony funkcí a jejich parametrů rozlišují velikost písmen. Například Resource Manageru překládá **variables('var1')** a **VARIABLES('VAR1')** za stejné. Při vyhodnocování, pokud funkci výslovně upraví případu (například toUpper nebo toLower), funkce zachová případu. Některé typy prostředků mohou mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
+Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manageru. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](resource-group-authoring-templates.md#syntax).
 
 Vytvoření vašich vlastních funkcích najdete v tématu [uživatelem definované funkce](resource-group-authoring-templates.md#functions).
 
@@ -60,14 +54,14 @@ Resource Manager poskytuje několik funkcí pro práci s poli a objekty.
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [prázdný](resource-group-template-functions-array.md#empty)
 * [první](resource-group-template-functions-array.md#first)
-* [Průnik](resource-group-template-functions-array.md#intersection)
+* [intersection](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [poslední](resource-group-template-functions-array.md#last)
+* [last](resource-group-template-functions-array.md#last)
 * [Délka](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [rozsah](resource-group-template-functions-array.md#range)
-* [Přeskočit](resource-group-template-functions-array.md#skip)
+* [skip](resource-group-template-functions-array.md#skip)
 * [Take](resource-group-template-functions-array.md#take)
 * [sjednocení](resource-group-template-functions-array.md#union)
 
@@ -83,7 +77,7 @@ Resource Manager poskytuje několik funkcí pro provádění porovnání v šabl
 * [rovná se](resource-group-template-functions-comparison.md#equals)
 * [méně](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [větší](resource-group-template-functions-comparison.md#greater)
+* [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" />
@@ -110,7 +104,7 @@ Resource Manager poskytuje následující funkce pro práci s logických podmín
 * [BOOL](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [Not](resource-group-template-functions-logical.md#not)
-* [Nebo](resource-group-template-functions-logical.md#or)
+* [nebo](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
 <a id="copyindex" />
@@ -126,7 +120,7 @@ Resource Manager poskytuje následující funkce pro práci s logických podmín
 ## <a name="numeric-functions"></a>Numerické funkce
 Resource Manager poskytuje následující funkce pro práci s celými čísly:
 
-* [Přidat](resource-group-template-functions-numeric.md#add)
+* [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [plovoucí desetinnou čárkou](resource-group-template-functions-numeric.md#float)
@@ -204,12 +198,13 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [první](resource-group-template-functions-string.md#first)
 * [identifikátor GUID](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [poslední](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Délka](resource-group-template-functions-string.md#length)
+* [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [nahradit](resource-group-template-functions-string.md#replace)
-* [Přeskočit](resource-group-template-functions-string.md#skip)
+* [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
 * [řetězec](resource-group-template-functions-string.md#string)
@@ -217,11 +212,12 @@ Resource Manager poskytuje následující funkce pro práci s řetězci:
 * [Take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [Trim](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [Identifikátor URI](resource-group-template-functions-string.md#uri)
+* [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Další postup
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md)

@@ -7,17 +7,17 @@ documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: c1693b6e5ef9abbd1c72c10581a9f36325cf6478
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5687075b8b63755b8b04f8c8fd0d0706ec8e27bc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243988"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774519"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 

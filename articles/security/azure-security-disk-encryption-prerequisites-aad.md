@@ -3,17 +3,16 @@ title: Azure Disk Encryption pomocí Azure AD App požadavky (předchozí verze)
 description: Tento článek obsahuje požadavky pro používání Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb00c30375d77e31a41398e9cae1a09c1eadecc9
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2d080b96d8e574c6f88a4c81a5a479625fb1354e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407522"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778633"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 

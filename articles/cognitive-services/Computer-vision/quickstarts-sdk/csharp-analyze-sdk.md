@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4af3e175c334c082e4520343d6c8ad3a62db431d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 21ee4f8b0fe20588646287945ba35efa5bc55606
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308991"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542977"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku pomocí sady SDK služby pro zpracování obrazu počítač aC#
 
@@ -59,7 +59,7 @@ Pokud chcete spustit ukázku, postupujte takto:
             private const string localImagePath = @"<LocalImage>";
 
             private const string remoteImageUrl =
-                "http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg";
+                "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg";
 
             // Specify the features to return
             private static readonly List<VisualFeatureTypes> features =
@@ -154,7 +154,7 @@ Pokud chcete spustit ukázku, postupujte takto:
 Zobrazit [rozhraní API, šablony rychlý start: Analýza místní image použijte C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) příklad nezpracovaném formátu JSON výstupu.
 
 ```
-http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
+https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```
 

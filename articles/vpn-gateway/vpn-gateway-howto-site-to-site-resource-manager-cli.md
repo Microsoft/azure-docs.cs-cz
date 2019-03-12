@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730352"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773176"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Vytvoření virtuální sítě s připojením VPN typu Site-to-Site pomocí rozhraní příkazového řádku
 
@@ -36,7 +36,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
-* Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN. Tato IP adresa nesmí být umístěná za překladem adres (NAT).
+* Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
 * Azure Cloud Shell můžete použít ke spuštění příkazů rozhraní příkazového řádku (níže uvedených pokynů). Pokud chcete spustit příkazům místně, ověřte však, že máte nainstalovanou nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli). 
  
@@ -115,7 +115,7 @@ Brána místní sítě obvykle odkazuje na vaše místní umístění. Pro toto 
 
 Použijte následující hodnoty:
 
-* *--gateway-ip-address* je IP adresa vašeho místního zařízení VPN. Zařízení VPN nesmí být umístěné za překladem adres (NAT).
+* *--gateway-ip-address* je IP adresa vašeho místního zařízení VPN.
 * *--local-address-prefixes* jsou vaše místní adresní prostory.
 
 Pomocí příkazu [az network local-gateway create](/cli/azure/network/local-gateway) přidejte bránu místní sítě s několika předponami adres:

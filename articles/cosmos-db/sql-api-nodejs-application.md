@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 47a4b3bc1e71c9dacc53ca3ff507768d4a0f20e9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d9374a7815451c2ae3d9f6a84f4bfdadf1ad676d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510574"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777613"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Node.js pomocí sady JavaScript SDK ke správě účtu rozhraní SQL API ve službě Azure Cosmos DB 
 
@@ -99,7 +99,7 @@ Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu.
    npm install async --save
    ```
 
-2. Nainstalujte přes npm modul **@azure/cosmos**. 
+2. Nainstalujte  **\@azure/cosmos** pomocí npm modul. 
 
    ```bash
    npm install @azure/cosmos

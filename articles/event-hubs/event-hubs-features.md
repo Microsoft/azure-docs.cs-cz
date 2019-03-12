@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a54c01385b06aeaf4c894677ea95262ab2135893
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 242c2f63735be33fe933ae3229f7aa28356ea697
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456138"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548383"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologii používané v Azure Event Hubs
 
@@ -43,7 +43,7 @@ Každá entita, která odesílá data do centra událostí se Tvůrce událostí
 
 ### <a name="publishing-an-event"></a>Publikování události
 
-Můžete publikovat události pomocí protokolu AMQP 1.0, Kafka, 1.0 (nebo novější) nebo HTTPS. Služba Event Hubs poskytuje [klientských knihoven a třídy](event-hubs-dotnet-framework-api-overview.md) k publikování událostí z klientů .NET do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](http://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) je stanovený limit 1 MB, bez ohledu na to, zda se jedná o jedinou událost nebo dávku. Publikování události větší než tato prahová hodnota dojde k chybě. Nejvhodnějším postupem pro zdroje je nezajímat se o oddíly v centru událostí a specifikovat pouze *klíč oddílu* (představíme v další části) nebo svoji identitu prostřednictvím tokenu SAS.
+Můžete publikovat události pomocí protokolu AMQP 1.0, Kafka, 1.0 (nebo novější) nebo HTTPS. Služba Event Hubs poskytuje [klientských knihoven a třídy](event-hubs-dotnet-framework-api-overview.md) k publikování událostí z klientů .NET do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) je stanovený limit 1 MB, bez ohledu na to, zda se jedná o jedinou událost nebo dávku. Publikování události větší než tato prahová hodnota dojde k chybě. Nejvhodnějším postupem pro zdroje je nezajímat se o oddíly v centru událostí a specifikovat pouze *klíč oddílu* (představíme v další části) nebo svoji identitu prostřednictvím tokenu SAS.
 
 Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má vyšší náklady na síť při inicializaci relace, ale HTTPS pro každý požadavek vyžaduje další režii SSL. AMQP má pro často používané zdroje vyšší výkon.
 

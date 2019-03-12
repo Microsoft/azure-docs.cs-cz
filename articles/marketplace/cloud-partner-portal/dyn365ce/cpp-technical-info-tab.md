@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082639"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731477"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 pro kartu technické informace o zapojení zákazníků
 
@@ -58,7 +58,7 @@ Následující tabulka popisuje tato pole.
 |  Název souboru balíčku     |  Název souboru balíčku (.zip).  Tento název se *není* veřejné a se používá interně týmem certifikační Dynamics 365.  |
 |  URL                          |  Adresa URL účtu Azure Storage, která obsahuje soubor nahraného balíčku. Tato adresa URL by měla obsahovat jen pro čtení klíč SAS pro povolení náš tým ke sbírání vašeho balíčku pro ověření.  |
 | Více než jeden balíček crm     | Vyberte Ano pouze pokud podporujete více verzí aplikace crm pomocí různých balíčků.  Každá verze bude mít odpovídající vazby soubor balíčku, které je třeba vytvořit samostatně.  |
-| Scénář a použití případu asset   | Umožňuje nahrát dokument funkční specifikace pro vaši aplikaci pro použití týmem ověření Dynamics 365.  Upřednostňované formát tato specifikace je [E2E uživatelské scénáře šablony](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx).  |
+| Scénář a použití případu asset   | Umožňuje nahrát dokument funkční specifikace pro vaši aplikaci pro použití týmem ověření Dynamics 365.  Upřednostňované formát tato specifikace je [E2E uživatelské scénáře šablony](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
 |  |  |
 
 
