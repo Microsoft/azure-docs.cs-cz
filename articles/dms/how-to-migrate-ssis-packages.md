@@ -2,7 +2,7 @@
 title: Migrace balíčků SQL Server Integration Services do Azure | Dokumentace Microsoftu
 description: Zjistěte, jak přenést balíčky SQL Server Integration Services do Azure.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/15/2018
-ms.openlocfilehash: 2fa37d31e984399c1b676cf6c6112617fac43fd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 1113e203f92c2362d0a7a5da002179a8c3ebb793
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721933"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791830"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>Migrace balíčků SQL Server Integration Services do Azure
 Pokud používáte SQL Server Integration Services (SSIS) a chcete provést migraci vašich projektů/balíčků služby SSIS ze zdroje databází SSISDB hostovanou službou SQL Server do cílového umístění databází SSISDB hostovanou ve serveru Azure SQL Database nebo Azure SQL Database Managed Instance, můžete znovu nasadit pomocí Průvodce nasazením integračního služby. Můžete spustit Průvodce spustíte z v rámci SQL Server Management Studio (SSMS).

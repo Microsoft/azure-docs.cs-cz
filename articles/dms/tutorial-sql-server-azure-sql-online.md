@@ -2,7 +2,7 @@
 title: 'Kurz: Online migrace z SQL serveru do databáze ve fondu a jeden ve službě Azure SQL Database pomocí Azure Database Migration Service | Dokumentace Microsoftu'
 description: Zjistěte, jak provést online migrace z místního SQL serveru pro izolovanou databázi nebo databázi ve fondu ve službě Azure SQL Database s využitím Azure Database Migration Service.
 services: dms
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2019
-ms.openlocfilehash: 3581bc5d3cb1a0120e8be3df7f2a2ba262453a18
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 605986a61ee6a09ccc3bfd6c58719a1d82604c8e
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990964"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792017"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Kurz: Migrace SQL serveru do izolované databáze nebo databázi ve fondu ve službě Azure SQL Database pomocí DMS online
 

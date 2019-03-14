@@ -3,14 +3,16 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 002/08/2019
-ms.openlocfilehash: 12c86ca71b7421678b68684cccca86411d604d61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 03/06/2019
+ms.openlocfilehash: b20ee2df1f468323c3298854371c97950c017e49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741513"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57788818"
 ---
+Účtují se podle cenové úrovně prostředků Azure používá pro dotazy do kontejneru `<ApiKey>`.
+
 Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
 `docker run` Používá následující argumenty pro účely fakturace:

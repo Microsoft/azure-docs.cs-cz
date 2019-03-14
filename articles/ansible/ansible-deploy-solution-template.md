@@ -1,19 +1,19 @@
 ---
 title: Nasazení šablony Ansible řešení pro Azure a CentOS
 description: Zjistěte, jak nasadit šablonu řešení Ansible na virtuálním počítači s CentOS hostovaný v Azure, společně s nástroji, které jsou nakonfigurovány pro práci s Azure.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, šablona řešení, virtuálních počítačů spravovaných identit pro prostředky azure, centos, red hat
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6dfc1c0f9dcf29d9cf24df19fbd043c71852aeac
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770278"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790955"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Nasazení šablony Ansible řešení pro Azure a CentOS
 Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance virtuálního počítače CentOS spolu s Ansible a sada nástrojů, které jsou nakonfigurovány pro práci s Azure. Mezi tyto nástroje patří:

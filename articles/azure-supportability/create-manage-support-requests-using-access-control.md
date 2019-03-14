@@ -1,44 +1,44 @@
 ---
-title: Azure na základě rolí řízení přístupu (RBAC) do ovládacího prvku přístupová práva k vytváření a správě žádosti o podporu | Microsoft Docs
-description: Azure na základě rolí řízení přístupu (RBAC) do ovládacího prvku přístupová práva k vytváření a správě žádosti o podporu
+title: Azure na základě rolí řízení přístupu (RBAC) k řízení přístupová práva k vytváření a správě žádostí o podporu | Dokumentace Microsoftu
+description: Azure na základě rolí řízení přístupu (RBAC) k řízení přístupová práva k vytváření a správě žádostí o podporu
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392897"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792476"
 ---
-# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure na základě rolí řízení přístupu (RBAC) do ovládacího prvku přístupová práva k vytváření a správě žádosti o podporu
+# <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure na základě rolí řízení přístupu (RBAC) k řízení přístupová práva k vytváření a správě žádostí o podporu
 
-[Řízení přístupu na základě rolí (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umožňuje vyladění správy přístupu pro Azure.
-Při vytváření žádosti o podporu na portálu Azure [portal.azure.com](https://portal.azure.com), používá Azure RBAC model můžete definovat, kdo může vytvářet a spravovat žádosti o podporu.
-Přístup uděluje přiřazením příslušné role RBAC uživatelům, skupinám a aplikacím na určité obor, což může být předplatné, skupinu prostředků nebo prostředek.
+[Řízení přístupu na základě rolí (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umožňuje přesnou správu přístupu pro Azure.
+Vytvoření žádosti o podporu na webu Azure Portal, [portal.azure.com](https://portal.azure.com), používá Azure RBAC model definovat, kdo může vytvářet a spravovat žádosti o podporu.
+Přístup uděluje přiřazením příslušné role RBAC pro uživatele, skupiny nebo aplikace v určitém rozsahu, který může být předplatné, skupinu prostředků nebo prostředek.
 
-Podívejme příklad: jako vlastník skupiny prostředků s oprávněními ke čtení v oboru předplatné, můžete spravovat všechny prostředky ve skupině prostředků, jako jsou weby, virtuální počítače a podsítě.
-Ale když se pokusíte vytvořit žádost o podporu pro prostředek virtuálního počítače, dojde k následující chybě
+Vezměme si příklad: Jako vlastníka skupiny prostředků s oprávněním pro čtení v oboru předplatného můžete spravovat všechny prostředky ve skupině prostředků, jako jsou weby, virtuální počítače a podsítě.
+Ale při pokusu o vytvoření žádosti o podporu pro prostředek virtuálního počítače narazíte na následující chybu
 
 ![Chyba odběru](./media/create-manage-support-requests-using-access-control/subscription-error.png)
 
-Ve správě žádosti o podporu třeba zápisu oprávnění nebo role, kterou má akce podporu Microsoft.Support/* na obor předplatného, abyste mohli vytvářet a spravovat žádosti o podporu.
+Ve správě žádost o podporu třeba psát oprávnění nebo roli, která má akce podporu Microsoft.Support/* v oboru předplatného, abyste mohli vytvářet a spravovat žádosti o podporu.
 
-V následujícím článku vysvětluje, jak můžete vytvořit a spravovat žádosti o podporu na portálu Azure pomocí Azure vlastní na základě rolí řízení přístupu (RBAC).
+V následujícím článku vysvětluje, jak můžete Azure vlastní Role-Based řízení přístupu (RBAC) můžete vytvářet a spravovat žádosti o podporu na webu Azure Portal.
 
 ## <a name="getting-started"></a>Začínáme
 
-Pomocí výše uvedeném příkladu, bude moci vytvořit žádost o podporu pro prostředek, pokud vlastní role RBAC u předplatného se přiřadila vlastník předplatného.
-[Vlastní role RBAC](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) lze vytvořit pomocí Azure PowerShell, rozhraní příkazového řádku Azure (CLI) a rozhraní REST API.
+Použití výše uvedeného příkladu, bude moct vytvořit žádost o podporu pro prostředek, pokud byly přiřazeny vlastní roli RBAC pro předplatné vlastníkem předplatného.
+[Vlastní role RBAC](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) lze vytvořit pomocí Azure Powershellu, rozhraní příkazového řádku Azure (CLI) a rozhraní REST API.
 
-Vlastnost akce vlastní role určuje činnosti Azure, ke kterým roli udělí přístup.
-Pokud chcete vytvořit vlastní role pro správu žádosti o podporu, musí mít roli akce Microsoft.Support/*
+Vlastnost akcí vlastní role určuje operací Azure, do kterých role uděluje přístup.
+Chcete-li vytvořit vlastní role pro správu žádost o podporu, musí mít roli akce Microsoft.Support/*
 
-Tady je příklad vlastní roli, které můžete použít k vytvoření a správa žádostí o podporu.
-Jsme jste s názvem "Přispěvatel žádosti o podporu" této role, kterým je, jak jsme odkazují na vlastní role v tomto článku.
+Tady je příklad vlastní roli, která vám pomůže vytvořit a spravovat žádosti o podporu.
+Jsme Pojmenovali jste tuto roli "Podpory požádat o Přispěvatel" a to je, jak jsme odkazovat na vlastní roli, v tomto článku.
 
 ``` Json
 {
@@ -57,54 +57,54 @@ Jsme jste s názvem "Přispěvatel žádosti o podporu" této role, kterým je, 
 }
 ```
 
-Postupujte podle kroků uvedených v [toto video](https://www.youtube.com/watch?v=-PaBaDmfwKI) se dozvíte, jak vytvářet vlastní role pro vaše předplatné.
+Postupujte podle kroků uvedených v [toto video](https://www.youtube.com/watch?v=-PaBaDmfwKI) se naučíte vytvářet vlastní role pro vaše předplatné.
 
-## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Vytvoření a správa žádostí o podporu na portálu Azure
+## <a name="create-and-manage-support-requests-in-the-azure-portal"></a>Vytvořit a spravovat žádosti o podporu na webu Azure Portal
 
-Podívejme příklad – jste vlastníkem předplatného "Visual Studio předplatné MSDN."
-Jan je vaše sdílená, kdo je vlastníkem prostředku pro některé skupiny prostředků v tomto předplatném a má oprávnění ke čtení pro předplatné.
-Chcete poskytnout přístup k vaší sdílené, Jan, umožňuje vytvářet a spravovat lístky žádostí o podporu pro prostředky pod tímto předplatným.
+Vezměme si příklad – je vlastníkem předplatného "MSDN předplatné sady Visual Studio."
+U Jana se uplatní vašeho partnera, který je vlastníkem prostředku do některých skupin prostředků v tomto předplatném a má oprávnění ke čtení pro předplatné.
+Chcete poskytnout přístup k partnerské, Joe, možnost vytvářet a spravovat lístky podpory pro prostředky v rámci tohoto předplatného.
 
-1. Prvním krokem je přejděte na předplatné a v části "Nastavení" zobrazí seznam uživatelů. Klikněte na uživatele Jan, kdo má přístup čtečky u předplatného a umožňuje přiřadit novou vlastní roli mu.
+1. Prvním krokem je přejít na předplatné a v části "Nastavení" se zobrazí seznam uživatelů. Klikněte na uživatele Joe, kdo má přístup Čtenář pro předplatné a můžeme mu přiřadit novou vlastní roli.
 
-    ![Přidání role](./media/create-manage-support-requests-using-access-control/add-role.png)
+    ![Přidat roli](./media/create-manage-support-requests-using-access-control/add-role.png)
 
-2. V části "Uživatelé" okna klikněte na tlačítko "Přidat". Vyberte vlastní roli "Přispěvatel žádosti o podporu" ze seznamu rolí
+2. Klikněte na tlačítko "Přidat" pod oknem "Users". Vyberte vlastní roli "Podpory požádat o Přispěvatel" ze seznamu rolí
 
-    ![Přidání role Přispěvatel podpory](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
+    ![Přidání podpory role přispěvatele](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
 
-3. Po výběru název role, klikněte na tlačítko "Přidat uživatele" a zadejte přihlašovací údaje Michalův e-mailu. Klikněte na tlačítko "Vyberte"
+3. Po výběru název role, klikněte na tlačítko "Přidat uživatele" a zadejte přihlašovací údaje Joe e-mailu. Klikněte na Vybrat.
 
     ![Přidání uživatelů](./media/create-manage-support-requests-using-access-control/add-users.png)
 
-4. Klikněte na tlačítko "Ok", aby bylo možné pokračovat
+4. Klikněte na tlačítko "Ok" aby bylo možné pokračovat
 
     ![Přidat přístup](./media/create-manage-support-requests-using-access-control/add-access.png)
 
-5. Nyní se zobrazí uživatele s nově přidané vlastní role "Podporu požadavků Přispěvatel" v rámci předplatného, pro který jste vlastníkem
+5. Nyní vidíte uživatele s nově přidané "Podpory požádat o Přispěvatel" v rámci předplatného, u kterého jste vlastníkem vlastní role
 
-    ![Přidat uživatele](./media/create-manage-support-requests-using-access-control/user-added.png)
+    ![Uživatel přidal](./media/create-manage-support-requests-using-access-control/user-added.png)
 
-    Jan přihlásí na portálu, zjistí předplatné, do které byl přidán.
+    Joe protokoly na portálu, zjistí předplatné, do které byl přidán.
 
-7. Jan klikne na možnost "Nová žádost o podporu" v okně "Nápověda a podpora" a můžete vytvořit žádosti o podporu pro "Visual Studio Ultimate s MSDN"
+7. Jan klikne na tlačítko "Novou žádost o podporu" v okně "Nápověda a podpora" a můžete vytvořit žádosti o podporu pro "Visual Studio Ultimate s MSDN"
 
     ![Nová žádost o podporu](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kliknutím na tlačítko "Podporují všechny požadavky" Jan můžete zobrazit seznam žádostí o podporu pro toto předplatné vytvořit ![případ zobrazení podrobností](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Kliknutím na "Všechny žádosti o podporu" Joe můžete zobrazit seznam žádostí o podporu pro toto předplatné vytvořili ![případ zobrazení podrobností](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
-## <a name="remove-support-request-access-in-the-azure-portal"></a>Odebrat přístup žádosti o podporu na portálu Azure
+## <a name="remove-support-request-access-in-the-azure-portal"></a>Odebrání podpory požádat o přístup na webu Azure Portal
 
-Stejně, jako je možné k udělení přístupu k uživatelům vytvářet a spravovat žádosti o podporu, je možné k odebrání přístupu pro uživatele i.
-Chcete-li odebrat možnost vytvořit a spravovat žádosti o podporu, přejděte na předplatné, klikněte na tlačítko "Nastavení" a klikněte na uživateli (v tomto případě Jan).
-Klikněte pravým tlačítkem na název role, "Přispěvatel žádosti o podporu" a klikněte na tlačítko "Odebrat"
+Stejně, jako je možné udělit přístup k uživateli a vytvářet a spravovat žádosti o podporu, je možné odebrat přístup pro uživatele i.
+Chcete-li odebrat možnost vytvářet a spravovat žádosti o podporu, přejděte na předplatné, klikněte na "Nastavení" a klikněte na uživatele (v tomto případě Joe).
+Klikněte pravým tlačítkem na název role, "Podpory požádat o Přispěvatel" a klikněte na "Remove"
 
-![Odebrat přístup žádosti o podporu](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
+![Odebrání podpory požádat o přístup](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
 
-Když Jan přihlásí k portálu a pokusí se vytvořit žádost o podporu, mohl dojde k následující chybě
+Joe přihlásí k portálu a pokusí se vytvořit žádost o podporu, má k následující chybě dochází
 
-![Předplatné chyba-2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
+![Předplatné chyby-2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
-Jan nelze zobrazit žádné podporovat požadavky, pokud klikne "Podporují všechny požadavky"
+Joe nelze zobrazit žádné žádosti o podporu, když se klikne na tlačítko "Všechny žádosti o podporu"
 
-![zobrazení podrobností případu-2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)
+![Zobrazit podrobnosti o případu-2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

@@ -1,19 +1,19 @@
 ---
 title: Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure
 description: Zjistěte, jak pomocí Ansible vytvořit virtuální počítač s Linuxem v Azure.
-ms.service: ansible
+ms.service: virtual-machines-linux
 keywords: ansible, azure, devops, virtual machine
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: 1f7f4809e064de15bb0a18c404f0df81307b1b9a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 40631d706f287f9a4b0475a21e25ef65b15b31b5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073981"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790930"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure
 Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Jednotlivé části tohoto článku ukazují, jak můžou vypadat jednotlivé části playbooku Ansible pro vytváření a konfiguraci různých aspektů virtuálního počítače s Linuxem. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.

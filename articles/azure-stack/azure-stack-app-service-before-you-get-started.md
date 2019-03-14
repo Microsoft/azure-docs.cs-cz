@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990515"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791949"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -147,11 +147,11 @@ Certifikát identity musí obsahovat subjektem, který odpovídá formátu.
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-
 ### <a name="validate-certificates"></a>Ověřování certifikátů
-Před nasazením poskytovatele prostředků app service, měli byste [ověřit certifikáty, které se použije](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) s použitím nástroje prerequisite Checker připravenosti Azure Stack k dispozici [Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker). Nástroj Azure Stack připravenosti kontrola ověří, že generované certifikáty PKI jsou vhodné pro nasazení služby app. 
 
-Jako osvědčený postup, při práci s některým z nezbytné [certifikáty Azure Stack PKI](azure-stack-pki-certs.md), měli byste naplánovat ponechat dostatek času k testování a v případě potřeby znovu vystavit certifikáty. 
+Před nasazením poskytovatele prostředků app service, měli byste [ověřit certifikáty, které se použije](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) s použitím nástroje prerequisite Checker připravenosti Azure Stack k dispozici [Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker). Nástroj Azure Stack připravenosti kontrola ověří, že generované certifikáty PKI jsou vhodné pro nasazení služby app.
+
+Jako osvědčený postup, při práci s některým z nezbytné [certifikáty Azure Stack PKI](azure-stack-pki-certs.md), měli byste naplánovat ponechat dostatek času k testování a v případě potřeby znovu vystavit certifikáty.
 
 ## <a name="virtual-network"></a>Virtuální síť
 
@@ -170,6 +170,15 @@ Podsítě
 - PublishersSubnet /24
 - WorkersSubnet /21
 
+## <a name="licensing-concerns-for-required-file-server-and-sql-server"></a>Licencování připomínky pro požadovaný soubor server a SQL Server
+
+Azure App Service ve službě Azure Stack vyžaduje souborového serveru a provoz serveru SQL Server.  Můžete libovolně udělovat používat existující prostředky se sídlem mimo nasazení Azure Stack nebo nasazení v rámci jejich Azure Stack výchozí předplatné poskytovatele prostředků.
+
+Pokud budete chtít nasadit prostředky v rámci zásobníku výchozí zprostředkovatel předplatného Azure, licencí pro tyto prostředky (licencemi na Windows Server a licence SQL serveru) jsou zahrnutá v ceně služby Azure App Service ve službě Azure Stack v souladu s tímto omezení:
+
+- infrastrukturu se nasazuje do **výchozí předplatné poskytovatele**;
+- Infrastruktura slouží výhradně ve službě Azure App Service na poskytovatele prostředků služby Azure Stack.  Jsou povolené žádné úlohy pro správu (ostatní poskytovatele prostředků, například SQL-RP) nebo tenantovi (například klienta aplikace, které vyžadují databázi), chcete-li použít tuto infrastrukturu.
+
 ## <a name="prepare-the-file-server"></a>Příprava souborového serveru
 
 Azure App Service vyžaduje použití souborového serveru. Pro nasazení v produkčním prostředí musí být souborový server nakonfigurovaný jako vysoce dostupné a umožňuje zpracovávat chyby.
@@ -180,7 +189,7 @@ Pouze nasazení Azure Stack Development Kit, můžete použít [příklad šablo
 
 ### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Šablony rychlý start pro vysoce dostupný souborový Server a SQL Server
 
-A [šablonu pro rychlý start referenční architektury](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) je nyní k dispozici, který bude nasazení souborového serveru, systému SQL Server, podporu služby Active Directory infrastruktury ve virtuální síti nakonfigurovat tak, aby podporují nasazení s vysokou dostupností Azure App Service v Azure stacku.  
+A [šablonu pro rychlý start referenční architektury](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) je nyní k dispozici, který bude nasazení souborového serveru, systému SQL Server, podporu služby Active Directory infrastruktury ve virtuální síti nakonfigurovat tak, aby podporují nasazení s vysokou dostupností Azure App Service v Azure stacku.
 
 ### <a name="steps-to-deploy-a-custom-file-server"></a>Postup nasazení souborových serverů se vlastní
 
@@ -303,12 +312,11 @@ Pro všechny role systému SQL Server můžete použít výchozí instance nebo 
 Instalační program služby App Service zkontroluje, ujistěte se, že systém SQL Server má povolené členství ve skupině databází. Pokud chcete povolit omezení databáze na SQL serveru, který bude hostitelem databáze služby App Service, spusťte tyto příkazy SQL:
 
 ```sql
-sp_configure 'contained database authentication', 1;  
-GO  
-RECONFIGURE;  
+sp_configure 'contained database authentication', 1;
+GO
+RECONFIGURE;
 GO
 ```
-
 
 >[!IMPORTANT]
 > Pokud budete chtít nasadit službu App Service v existující virtuální sítě serveru SQL Server musí být nasazené do samostatné podsítě služby App Service a souborový Server.

@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: ea4931bee17b57260660cc5ba80807a8ae25ca3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20553db8c79c960aabda5aba708d315517462126
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553419"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57805165"
 ---
 Následující tabulka uvádí omezení spojená s různými úrovněmi služeb S1, S2, S3 a F1. Informace o nákladech jednotlivých *jednotky* v každé úrovni najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -70,8 +70,8 @@ IoT Hub omezuje žádosti při překročení následujících kvót.
 | Příjem typu cloud-zařízení |833.33/sec/Unit (50 000/min/jednotku) (pro S3), 16.67/sec/unit (1 000/min/jednotku) (pro S1 a S2). |
 | Operace nahrávání souborů |(pro S1 a S2) odeslat 83.33 soubor oznámení/s/jednotku (5 000/min/jednotku) (pro S3), souboru 1.67 odesílání oznámení/s/jednotku (100/min/jednotku). <br/> 10 000 identifikátorů URI SAS může být si pro účet služby Azure Storage v jednom okamžiku.<br/> Najednou může existovat 10 identifikátorů URI SAS/zařízení. |
 | Přímé metody | 24 MB/s/jednotku (pro S3), 480 KB/s/jednotku (pro S2), 160 KB/s/jednotku (pro S1).<br/> Podle velikosti 8 KB omezení velikosti měřidla. |
-| Čtení dvojčat zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1). |
-| Aktualizace dvojčat zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1). |
+| Čtení dvojčat zařízení | 500/s/jednotku (pro S3), maximálně 100/s nebo 10/s/jednotku (pro S2), 100/s (pro S1) |
+| Aktualizace dvojčat zařízení | 250/s/jednotku (pro S3), maximálně 50/s nebo 5/s/jednotku (pro S2), 50/s (pro S1) |
 | Operace úloh <br/> (vytvoření, aktualizace, seznam a odstranění) | (5 000/min/jednotku) (pro S3), 1.67/sec/unit 83.33/sec/Unit (100/min/jednotku) (pro S2), 1.67/sec/unit (100/min/jednotku) (pro S1). |
 | Propustnost operací úloh jednotlivých zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1). |
 | Rychlost zahájení streamování zařízení | 5 nových datových proudů za sekundu (pro S1, S2, S3 a pouze F1). |

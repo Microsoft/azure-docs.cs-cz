@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 4e661f838cc0b8e52ff72e4e44a43d611fa3355f
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727378"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792408"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
 Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
@@ -54,6 +54,12 @@ Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění 
 ### <a name="run-on"></a>Spustit v
 
 Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodnota je výchozí prostředí IR Azure automaticky vyřešit. Tato volba spustí tok dat v prostředí Spark ve stejné oblasti jako svou datovou továrnu. Typ výpočtu bude clusteru úloh, což znamená, že prostředí compute bude trvat několik minut na spuštění.
+
+### <a name="debugging-pipelines-with-data-flows"></a>Ladění kanálů s toky dat
+
+![Ladění tlačítko](media/data-flow/debugbutton.png "tlačítko ladit.")
+
+Použijte na datový tok ladění využívat topným zařízením clusteru pro interaktivní testování datové toky v kanálu ladění spustit. Použijte možnost Pipleine ladění k testování vašich toků dat v kanálu.
 
 ### <a name="compute-type"></a>Typ výpočtu
 

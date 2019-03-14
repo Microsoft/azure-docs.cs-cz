@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 03/12/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7687cb4eb6cacd604a05a820e04f71755e0b66b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e2e8a3c923f18d0e3d481539bb7278bc8fd7aaf
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201410"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792323"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -51,25 +51,43 @@ Díky zásadám podmíněného přístupu můžete řídit, jak vaši uživatel�
 
 Zásady podmíněného přístupu můžete přiřadit následující cloudové aplikace od Microsoftu:
 
-- Azure Information Protection – [Další informace](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
-- Azure RemoteApp
-
-- Azure SQL Database – [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
-
-- Microsoft Dynamics 365
-
-- Microsoft Office 365 Yammeru
-
-- Microsoft Office 365 Exchange Online
-
-- Microsoft Office 365 SharePoint Online (včetně OneDrive pro firmy a Projectu Online)
-
-- Microsoft Power BI 
-
+- Azure Analysis Services
 - Azure DevOps
+- Azure SQL Database a Data Warehouse – [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
+- Dynamics CRM Online
+- Microsoft Application Insights Analytics
+- Microsoft Azure Information Protection – [Další informace](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Microsoft Azure Management – [Další informace](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- Microsoft Azure RemoteApp
+- Správa předplatného Microsoft Azure
+- Microsoft Cloud App Security
+- Nástroje Microsoft Commerce Portal řízení přístupu
+- Služba ověřování nástroje Microsoft Commerce
+- Microsoft Flow
+- Microsoft Forms
+- Microsoft Intune
+- Registrace v Microsoft Intune
+- Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerApps
+- Vyhledávání v Bingu
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams 
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Office 365 Yammer
+- Office Delve
+- Office Sway 
+- Outlook Groups
+- Project Online
+- Online Skype pro firmy
+- Virtuální privátní síť (VPN)
+- Visual Studio App Center
+- Windows Defender ATP
 
-- Microsoft Teams
+
 
 
 ### <a name="other-applications"></a>Další aplikace 

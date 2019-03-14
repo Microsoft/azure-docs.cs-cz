@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 43256e13dc1dd3263b213cc1e4a1e1c07af3b5c8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/12/2019
+ms.openlocfilehash: 23cce4d846cdf183f41b25663ba21d3bf1d27013
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2019
-ms.locfileid: "57786581"
+ms.locfileid: "57790996"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím mock data nastavením statické výsledky
 
@@ -67,6 +67,10 @@ Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, 
 
    ![Ikona znázorňující povolené statické výsledky](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
+   Po spuštění aplikace logiky, historie spouštění vaší aplikace logiky **statické výsledky** sloupci se zobrazuje, zda konkrétního spuštění zahrnuje takové akce, které mají povolené, například statické výsledky:
+
+   ![Historie - spuštění statické výsledky sloupec](./media/test-logic-apps-mock-data-static-results/run-history.png)
+
 <a name="reuse-sample-outputs"></a>
 
 ## <a name="reuse-previous-outputs"></a>Opakované použití předchozích výstupy
@@ -101,7 +105,7 @@ Pokud má vaše aplikace logiky předchozí spuštění s výstupy, které můž
 
    ![Režim JSON](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Pokud budete hotovi, zvolte **provádí**. Nebo se vraťte do návrháře, zvolte **přepnout Editor režimu** (![zvolit "Přepnout režim editoru"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+1. Jakmile budete hotovi, zvolte **Done** (Hotovo). Nebo se vraťte do návrháře, zvolte **přepnout Editor režimu** (![zvolit "Přepnout režim editoru"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
 
 ## <a name="disable-static-results"></a>Zakázat statické výsledky
 

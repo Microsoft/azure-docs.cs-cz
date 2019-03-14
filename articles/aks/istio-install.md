@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: f34d8c547738921374eaf5edcfcec4911423d9dc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 25a68f55eb9a6deb037029d5d8a984ce74f12be5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699207"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791456"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -82,7 +82,7 @@ Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 `istioctl` Klienta binární běží na klientském počítači a umožňuje vám spravovat zásady a Istio pravidla směrování. Postup instalace znovu, se mírně liší mezi klientskými operačními systémy. Zvolte jeden z následujících instalace kroků pro vaše preferované prostředí.
 
 > [!IMPORTANT]
-> Spusťte všechny zbývající kroky ze složky nejvyšší úrovně z verze Istio stažené a rozbalené v předchozí části.
+> Nezapomeňte spustit kroky v této části, ze složky nejvyšší úrovně verzi Istio, že jste stažené a rozbalené.
 
 ### <a name="macos"></a>MacOS
 
@@ -145,6 +145,9 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 ```
 
 ## <a name="install-the-istio-kubernetes-components"></a>Nainstalujte součásti Istio Kubernetes
+
+> [!IMPORTANT]
+> Nezapomeňte spustit kroky v této části, ze složky nejvyšší úrovně verzi Istio, že jste stažené a rozbalené.
 
 Instalace součásti Istio do clusteru AKS, použijte příkaz Helm. Nainstalujte Istio prostředků do `istio-system` obor názvů a povolit další možnosti zabezpečení a monitorování následujícím způsobem:
 

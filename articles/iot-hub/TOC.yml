@@ -274,19 +274,14 @@ items:
         href: iot-hub-configure-file-upload-powershell.md
       - name: Použití Azure CLI
         href: iot-hub-configure-file-upload-cli.md
-    - name: Monitorování s diagnostikou
+    - name: Metriky na platformě Azure Monitor
+      href: iot-hub-metrics.md
+    - name: Nastavení diagnostických protokolů
       href: iot-hub-monitor-resource-health.md
-      items:
-      - name: Migrace do nastavení diagnostiky
-        href: iot-hub-migrate-to-diagnostics-settings.md
-      - name: Monitorování operací
-        href: iot-hub-operations-monitoring.md
     - name: Zabezpečení vašeho centra s využitím certifikátu X.509
       href: iot-hub-security-x509-get-started.md
     - name: Upgrade IoT Hubu
       href: iot-hub-upgrade.md
-    - name: Metriky využití
-      href: iot-hub-metrics.md
     - name: Povolení trasování zpráv
       href: iot-hub-distributed-tracing.md
     - name: Konfigurace filtrování IP
@@ -378,6 +373,12 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/certificates
   - name: Šablona Resource Manageru
     href: /azure/templates/microsoft.devices/iothub-allversions
+  - name: Vyřazení funkcí a rozhraní API z provozu
+    items:
+    - name: Monitorování operací
+      href: iot-hub-operations-monitoring.md
+    - name: Migrace do nastavení diagnostiky
+      href: iot-hub-migrate-to-diagnostics-settings.md
 - name: Související
   items:
   - name: Řešení
@@ -444,9 +445,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: cdeb8f013ee8a0dff212d5fc9facc199ed81828e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3bde9a6b9abcb5b99224ae9397756fe410cc0708
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530871"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791864"

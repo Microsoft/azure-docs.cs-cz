@@ -2,7 +2,7 @@
 title: 'Kurz: Migrace na spravované instanci Azure SQL Database pomocí DMS | Dokumentace Microsoftu'
 description: Zjistěte, jak migrovat z místního SQL serveru do spravované instance Azure SQL Database s využitím Azure Database Migration Service.
 services: dms
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2019
-ms.openlocfilehash: 100b2d9b6b39786675edb6683574409f96a6e9c7
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 243ffb4167060fb2b74d9b7ebf280fec6a540da5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992579"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791762"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Kurz: Migrace SQL serveru do spravované instance Azure SQL Database pomocí DMS do offline režimu
 

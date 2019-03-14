@@ -3,17 +3,18 @@ title: Odeslání pracovní postupu pomocí více vstupů – Microsoft Genomics
 titleSuffix: Azure
 description: Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud váš vstupní soubor je více souborů FASTQ nebo BAM soubory pocházejí ze stejného vzorku. Už máte nainstalovaného klienta msgen a úspěšně zpracovali ukázková data ve službě.
 services: genomics
+ms.service: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 6d7ce959c92755a1da9eca0b069ebb7a8269e0a6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450715"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791354"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Odeslání pracovního postupu pomocí více vstupů ze stejného vzorku
 

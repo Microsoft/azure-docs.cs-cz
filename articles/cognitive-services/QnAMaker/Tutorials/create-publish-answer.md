@@ -8,16 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: bc1099603114d6191c41a71230a856a7a5c7c497
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: dd307e4abf4145bad9e0be79d261abf98d7bb3b7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402151"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792357"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Pomocí C#, vytvořte základní znalosti pak odpověď na otázku
 

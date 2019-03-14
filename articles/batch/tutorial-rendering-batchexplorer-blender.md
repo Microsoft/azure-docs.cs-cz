@@ -2,18 +2,19 @@
 title: Vykreslení scény Blenderu pomocí služby Azure Batch a nástroje Batch Explorer
 description: Kurz – Vykreslení několika snímků ze scény Blenderu pomocí služby Azure Batch a klientské aplikace Batch Explorer
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392547"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791422"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény Blenderu pomocí nástroje Batch Explorer
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény s blendrem. Tato použití Průzkumníka služby Batch
 
 V tomto kurzu se dozvíte, jak vykreslit několik snímků ukázkové scény Blenderu. V tomto kurzu se používá Blender, protože je pro klientské i vykreslovací virtuální počítače zdarma, ale postup je velmi podobný i při použití jiných aplikací, jako je Maya nebo 3ds Max.
 
@@ -89,7 +90,7 @@ Vytvořte fond Batch s využitím image vykreslovacího virtuálního počítač
 > [!WARNING]
 > Mějte na paměti, že když fond obsahuje virtuální počítače, náklady na tyto virtuální počítače se účtují na vaše předplatné Azure. Pokud chcete účtování těchto poplatků zastavit, je potřeba odstranit fond nebo virtuální počítače. Na konci tohoto kurzu fond odstraňte, aby vám zbytečně nenabíhaly poplatky.
 
-Stav fondu a virtuálních počítačů můžete monitorovat v zobrazení Pools (Fondy). Následující příklad ukazuje přidělení všech tří virtuálních počítačů, z nichž dva jsou spuštěné a nečinné a jeden se stále spouští: ![Heat mapa fondu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+Stav fondu a virtuální počítače můžete sledovat v zobrazení 'Fondy'; Následující příklad ukazuje všechny tři virtuální počítače se přidělilo, dvě spuštění a jsou nečinné, stále se spouští: ![Fond heatmapu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>Vytvoření úlohy vykreslování
 
@@ -108,25 +109,25 @@ Vytvořte úlohu vykreslování pro vykreslení několika snímků s využitím 
 
 ![Šablona úlohy pro Blender](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-Po vytvoření úlohy a všech úkolů se zobrazí úloha i s úkoly: ![Seznam úkolů úlohy](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+Po vytvoření úlohy a všechny úkoly úlohy se zobrazí spolu s úkoly úlohy: ![Seznam úkolů](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Při prvním spuštění úkolu na virtuálním počítači fondu se spustí přípravný úkol úlohy Batch, který zkopíruje soubory scény ze skupiny souborů úložiště do virtuálního počítače, aby k nim měl Blender přístup.
 Stav vykreslování můžete určit zobrazením souboru protokolu stdout.txt, který vytváří Blender.  Vyberte úkol a ve výchozím nastavení se zobrazí Task Outputs (Výstupy úkolu). Pak můžete vybrat a zobrazit soubor stdout.txt.
 ![Soubor stdout](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-Pokud vyberete fond blender-windows, virtuální počítače fondu se zobrazí ve spuštěném stavu: ![Heat mapa fondu se spuštěnými uzly](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+Pokud fond blenderu pro windows fondu virtuálních počítačů se projeví ve spuštěném stavu: ![Heatmapu fondu se spouštěním uzly](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 Vykreslení obrázků bude v závislosti na vybrané velikosti virtuálních počítačů trvat několik minut.  Při použití virtuálních počítačů F16 zadaných dříve trvalo vykreslení snímků přibližně 16 minut.
 
 ## <a name="view-the-rendering-output"></a>Zobrazení výstupu vykreslování
 
-Po dokončení vykreslování snímků se příslušné úkoly zobrazí jako dokončené: ![Dokončování úkolů](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Po dokončení vykreslení rámce, zobrazí se jako dokončené úkoly: ![Dokončení úlohy](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-Vykreslený obrázek se nejprve zapíše do virtuálního počítače a pak ho můžete zobrazit výběrem složky wd: ![Vykreslený obrázek v uzlu fondu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+Vykreslený obrázek se zapisují do virtuálního počítače, nejprve a lze je zobrazit tak, že vyberete složku "wd": ![Vykreslení obrázku na uzlech fondu](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-Šablona úlohy také určuje, že se výstupní soubory snímku a protokolu zapíší zpět do skupiny souborů účtu služby Azure Storage, kterou jste zadali při vytváření úlohy.  K zobrazení výstupních souborů a protokolů můžete použít uživatelské rozhraní Data. V tomto uživatelském rozhraní můžete soubory také stáhnout: ![Vykreslené obrázky ve skupině souborů úložiště](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+Šablona úlohy také určuje, že se výstupní soubory snímku a protokolu zapíší zpět do skupiny souborů účtu služby Azure Storage, kterou jste zadali při vytváření úlohy.  'Data' uživatelského rozhraní je možné zobrazit výstupní soubory a protokoly. To také umožňuje stahovat soubory: ![Vykreslení obrázku ve skupině souborů úložiště](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Po dokončení všech úkolů se úloha označí jako dokončená: ![Dokončená úloha se všemi úkoly](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Když se dokončí všechny úlohy, úlohy budou označeny jako probíhá její dokončování: ![Úloha a všechny úkoly dokončené](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -137,7 +138,7 @@ Po dokončení všech úkolů se úloha označí jako dokončená: ![Dokončená
 * Vyberte fond blender-windows.
 * Klikněte na něj pravým tlačítkem a vyberte Delete (Odstranit) nebo vyberte ikonu koše nad fondem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * V části Gallery (Galerie) prozkoumejte vykreslovací aplikace, které jsou v nástroji Batch Explorer k dispozici.
 * Pro každou aplikaci je k dispozici několik šablon a jejich počet se časem bude rozšiřovat.  Pro Blender například existují šablony, které rozdělí obrázek na čtverce, aby bylo možné části obrázku vykreslit paralelně.
 * Komplexní popis možností vykreslování najdete v [této](https://docs.microsoft.com/azure/batch/batch-rendering-service) sadě článků.

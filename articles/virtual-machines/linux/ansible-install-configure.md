@@ -1,19 +1,19 @@
 ---
 title: Instalace Ansible na virtuálních počítačích Azure
 description: Zjistěte, jak nainstalovat a nakonfigurovat Ansible pro správu prostředků Azure v Ubuntu, CentOS a SLES.
-ms.service: ansible
+ms.service: virtual-machines-linux
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: 3c57e46ebb8828cbf2e44ced95d2d37afe5671c5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 38a1ffdc815b357f7bb7ebe2c337b55a738fb6b5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893910"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790422"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Instalace Ansible na virtuálních počítačích Azure
 

@@ -2,16 +2,17 @@
 title: Azure Batch Rendering možnosti –
 description: Možnosti vykreslování konkrétní ve službě Azure Batch
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: a1408720a5387d044416ded377189e4539f782a7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543032"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791796"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -31,8 +32,8 @@ Příklad konfigurace fondu, najdete v článku [rozhraní příkazového řádk
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze |
 |---------|---------|---------|--------|
-| dávka | vykreslování centos73 | vykreslování | nejnovější |
-| dávka | vykreslování windows2016 | vykreslování | nejnovější |
+| dávka | rendering-centos73 | vykreslování | nejnovější |
+| dávka | rendering-windows2016 | vykreslování | nejnovější |
 
 Další možnosti jsou k dispozici, pokud jsou vyžadovány další aplikace ve fondu virtuálních počítačů:
 
@@ -65,12 +66,12 @@ Aby bylo možné vytvořit příkazového řádku pro úlohy vykreslování, mus
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|Render.exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|Render.exe|MAYA_2018_EXEC|
+|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
+|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
 |Chaos Group V-Ray samostatné|vray.exe|VRAY_3.60.4_EXEC|
 Arnold 2017 příkazového řádku|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018 příkazového řádku|kick.exe|ARNOLD_2018_EXEC|
-|Blenderu|Blender.exe|BLENDER_2018_EXEC|
+|Blenderu|blender.exe|BLENDER_2018_EXEC|
 
 ### <a name="azure-vm-families"></a>Azure rodiny virtuálních počítačů
 

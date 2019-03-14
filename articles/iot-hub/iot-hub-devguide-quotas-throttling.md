@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 31d3c404d22c9b8ad66c2d5d1adf34c38cc4a682
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010850"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791369"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -42,8 +42,8 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | Cloudové zařízení obdrží<sup>1</sup> <br/> (pouze pokud zařízení používá protokol HTTPS)| 16.67/sec/Unit (1 000/min/jednotku) | 16.67/sec/Unit (1 000/min/jednotku) | 833.33/sec/Unit (50000/min/jednotku) |
 | Nahrání souboru | Soubor 1.67 odesílání oznámení/s/jednotku (100/min/jednotku) | Soubor 1.67 odesílání oznámení/s/jednotku (100/min/jednotku) | soubor 83.33 odesílání oznámení/s/jednotku (5 000/min/jednotku) |
 | Přímé metody<sup>1</sup> | 160KB/s/jednotku<sup>2</sup> | 480KB/s/jednotku<sup>2</sup> | 24MB/s/jednotku<sup>2</sup> | 
-| (Zařízení a modul) čtení dvojčat<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
-| Dvojče aktualizace (zařízení a modul)<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
+| (Zařízení a modul) čtení dvojčat<sup>1</sup> | 100/s | Vyšší 100/s nebo 10/s/jednotku | 500/sec/unit |
+| Dvojče aktualizace (zařízení a modul)<sup>1</sup> | 50/sec | Vyšší 50/s nebo 5/s/jednotku | 250/s/jednotku |
 | Úlohy operace<sup>1,3</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |
 | Úlohy zařízení operace<sup>1</sup> <br/> (aktualizovat dvojče, vyvolání přímé metody) | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Konfigurace a nasazení hraniční<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) |
@@ -52,7 +52,7 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | Přenos dat stream maximální zařízení<sup>4</sup> (agregovat svazku za den) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>funguje omezování měření velikosti 8 KB. <br/><sup>3</sup>současně můžete mít jenom jednu úlohu importu/exportu aktivních zařízení. <br/><sup>4</sup>datové proudy IoT Hub zařízení jsou dostupné jenom pro S1, S2, S3 a F1 SKU.
+<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>omezení měřiče velikost je 4 KB. <br/><sup>3</sup>současně můžete mít jenom jednu úlohu importu/exportu aktivních zařízení. <br/><sup>4</sup>datové proudy IoT Hub zařízení jsou dostupné jenom pro S1, S2, S3 a F1 SKU.
 
 *Připojení zařízení* řídí omezení frekvence, ve kterém je možné navázat nová připojení zařízení pomocí služby IoT hub. *Připojení zařízení* omezení neřídí maximální počet současně připojených zařízení. *Připojení zařízení* omezení frekvence závisí na počtu jednotek, které jsou zřízené pro službu IoT hub.
 

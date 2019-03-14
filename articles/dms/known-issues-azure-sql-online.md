@@ -2,7 +2,7 @@
 title: Článek o omezeních známé problémy a migrace s online migraci do Azure SQL Database | Dokumentace Microsoftu
 description: Přečtěte si o známých problémech a migrace omezení online migraci do Azure SQL Database.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: a5f44e5f7f19507723eeb75518a9a573d6563e2b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2261e2143a460bad812a49ba9d8a593c3f3b7b00
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337205"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792102"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 

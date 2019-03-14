@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: arvindh
+ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186bc220778ed669672bfbc689dad6471195f4ce
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448556"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792034"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí při přihlašování uživatelů k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody přihlašování a vám pomůže vybrat nejvhodnější metodu jednotného přihlašování, při konfiguraci vašich aplikací.
@@ -35,14 +35,14 @@ Existuje několik způsobů, jak nakonfigurovat aplikaci pro jednotné přihlaš
 
 Tato vývojový diagram pomáhá při rozhodování, jakou metodu jednotné přihlašování je nejvhodnější pro vaše konkrétní potřeby. 
 
-![Zvolte jednotné přihlašování – metoda](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
+![Zvolte jednotné přihlašování – metoda](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
 
 Následující tabulka shrnuje metody přihlašování a odkazy na další podrobnosti. 
 
 | Metoda jednotného přihlašování | Typy aplikací | Kdy je použít |
 | :------ | :------- | :----- |
 | [OpenID Connect a OAuth](#openid-connect-and-oauth) | Jen v cloudu | Při vývoji nových aplikací pomocí OpenID Connect a OAuth. Tento protokol zjednodušuje konfiguraci aplikací, má snadno použitelné sady SDK a umožňuje vaší aplikaci použít MS Graphu.
-| [SAML](#saml-sso) | Jen v cloudu | Zvolte SAML, kdykoli je to možné pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth. SAML funguje pro aplikace, které se ověřují pomocí jednoho z protokolů SAML.|
+| [SAML](#saml-sso) | cloudové a místní | Zvolte SAML, kdykoli je to možné pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth. SAML funguje pro aplikace, které se ověřují pomocí jednoho z protokolů SAML.|
 | [Založené na heslech](#password-based-sso) | cloudové a místní | Zvolte založené na heslech, když se aplikace ověřuje pomocí uživatelského jména a hesla. Založené na heslech jednotné přihlašování umožňuje zabezpečené uložení hesel aplikace a jejich přehrání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Tato metoda používá existující přihlašovací proces poskytovaný aplikací, ale umožňuje správcům spravovat hesla. |
 | [Propojené](#linked-sso) | cloudové a místní | Zvolte propojené jednotného přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá jednotné přihlašování k aplikaci. Aplikace může být však již jednotného přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services.|
 | [Disabled](#disabled-sso) (Zakázáno) | cloudové a místní | Zvolte zakázané jednotného přihlašování, pokud aplikace není připraveno ke konfiguraci jednotného přihlašování. Uživatelé potřebují k zadání uživatelského jména a hesla při každém spuštění této aplikace.|

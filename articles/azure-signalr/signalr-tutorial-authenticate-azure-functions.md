@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 3d3188afa54232e51efefa9bcf2fe8cd065a99cb
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 52bdbd1f7fb02c33e9cd6eef862d5be299bf1dad
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570959"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792340"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Azure SignalR služby ověřování s využitím Azure Functions
 
@@ -113,7 +113,7 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
         },
         "Host": {
             "LocalHttpPort": 7071,
-            "CORS": "http://localhost:5500",
+            "CORS": "http://127.0.0.1:5500",
             "CORSCredentials": true
         }
     }
@@ -122,6 +122,9 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
     * Do nastavení `AzureSignalRConnectionString` zadejte připojovací řetězec služby Azure SignalR. Tuto hodnotu získáte na stránce **Klíče** v prostředku služby Azure SignalR na webu Azure Portal. Můžete použít primární nebo sekundární připojovací řetězec.
     * Nastavení `WEBSITE_NODE_DEFAULT_VERSION` se místně nepoužívá, ale vyžaduje se při nasazení do Azure.
     * V části `Host` se konfigurují nastavení portu a CORS pro místního hostitele služby Functions (při spuštění v Azure nemá toto nastavení žádný vliv).
+
+        > [!NOTE]
+        > Serveru za provozu je typicky nakonfigurován k poskytování obsahu z http://127.0.0.1:5500. Pokud zjistíte, že používá jinou adresu URL nebo používáte jiný server HTTP, změna `CORS` nastavení tak, aby odrážely správnou původu.
 
     ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 

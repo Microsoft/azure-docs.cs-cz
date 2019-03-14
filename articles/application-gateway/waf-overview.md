@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: e53dde549034e8029fdb7f9c780a7880a1ca515d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.topic: conceptual
+ms.openlocfilehash: 914583747d4e0e045d5023d9072451983037e57f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733822"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790353"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 

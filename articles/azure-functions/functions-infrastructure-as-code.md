@@ -7,17 +7,18 @@ author: ggailey777
 manager: jeconnoc
 keywords: Azure functions, funkce, architektura bez serverů, infrastruktury jako kódu, azure resource Manageru
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
+ms.service: azure-functions
 ms.server: functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 488b3797c7e18855a60b84a77a05e4e0a5654475
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fc55e2b3ebb1e932a991e0da2c78a980abbc953
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023653"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792493"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazování prostředků pro vaši aplikaci funkcí ve službě Azure Functions
 
@@ -39,7 +40,7 @@ Aplikace function app vyžaduje tyto prostředky:
 
 Syntaxi JSON a vlastnosti pro tyto prostředky naleznete v tématu:
 
-* [Microsoft.Storage/storageAccounts.](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
 * [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
 

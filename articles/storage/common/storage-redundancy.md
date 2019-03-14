@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cbe8970e3e7b924025a93b50f9b8c9e46643b349
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872042"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791235"
 ---
 # <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
@@ -51,7 +51,7 @@ Informace o službě Azure Storage záruky dostupnosti a odolnosti najdete v čl
 > Premium Storage podporuje jen místně redundantní úložiště (LRS).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
-Můžeme vám umožňují změnit strategie replikace účtu úložiště pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden mnoho [ Klientské knihovny Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
+Strategie replikace účtu úložiště můžete změnit pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden z [klient služby Azure knihovny](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
 
    > [!NOTE]
    > V současné době nelze použít na portálu nebo rozhraní API pro převod účtu na ZRS. Pokud chcete převést svůj účet replikaci ZRS, přečtěte si téma [zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md) podrobnosti.
@@ -59,7 +59,9 @@ Můžeme vám umožňují změnit strategie replikace účtu úložiště pomoc�
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Existují všechny náklady na měnící se strategie replikace Můj účet?
 To závisí na vaší cestě pro převod. Z nejlevnější řazení nejdražší nabídky redundance máme LRS, ZRS, GRS a RA-GRS. Například, že přejdete *z* LRS k ničemu budou účtovat další poplatky, protože se chystáte sofistikovanější úroveň redundance. Přechod *k* GRS nebo RA-GRS, se budou účtovat poplatek za výstupní šířky pásma vzhledem k tomu, že vaše data (v primární oblasti) je právě replikován pro vaše vzdálené sekundární oblasti. Toto je jednorázový poplatek při počáteční instalaci. Po zkopírování dat neúčtují žádné další poplatky převodu. Vám naúčtujeme vám jenom pro replikaci žádné nové aktualizace nebo aktualizace na existující data. Podrobnosti o poplatky za šířku pásma, naleznete v tématu [stránku s cenami za Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Pokud změníte z GRS na LRS, se neúčtují žádné další poplatky, ale replikovaná data se odstraní ze sekundárního umístění.
+Pokud váš účet úložiště z GRS se převést na LRS, se neúčtují žádné další poplatky, ale replikovaná data se odstraní ze sekundárního umístění.
+
+Pokud převedete účtu úložiště RA-GRS na GRS nebo LRS, tento účet se účtuje jako RA-GRS dalších 30 dní po datu, který byl převeden.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

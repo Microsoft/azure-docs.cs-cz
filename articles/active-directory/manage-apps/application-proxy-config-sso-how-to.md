@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: asteen
+ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df7469a6975fa5e84b43487b524ca888718d7d2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f9c4f2c618851b596cd8f2dfa1fd45820a05049
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162318"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791677"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak nakonfigurovat jednotné přihlašování k aplikaci Proxy aplikací
 
@@ -43,6 +43,8 @@ Nakonfigurujte konkrétní typ jednotného přihlašování. Metody přihlašov�
 
 -   **Přihlašování na základě záhlaví**: Přihlašování na základě hlaviček je povolená Díky partnerství a vyžaduje určitou další konfiguraci. Podrobnosti o partnerství a podrobné pokyny pro konfiguraci jednotného přihlašování k aplikaci, která používá hlavičky pro ověřování najdete v tématu [PingAccess pro dokumentaci k Azure AD](application-proxy-configure-single-sign-on-with-ping-access.md).
 
+-   **Jednotné přihlašování SAML**: Služba Azure AD se ověřuje pomocí SAML jednotného přihlašování, k aplikaci pomocí účtu uživatele Azure AD. Azure AD komunikuje informace přihlašování k aplikaci pomocí připojení protokolu. S založené na SAML jednotného přihlašování můžete mapování uživatelů na konkrétní aplikační role na základě pravidel, které definujete váš SAML deklaracemi identity. Informace o nastavení SAML jednotného přihlašování najdete v tématu [SAML pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).
+
 Každá z těchto možností najdete tak, že přejdete do vaší aplikace v oddílu "Podnikové aplikace" a otevírání **Single Sign-On** stránky v nabídce vlevo. Všimněte si, že pokud vaše aplikace byla vytvořena na starém portálu, nemusí zobrazit všechny tyto možnosti.
 
 Na této stránce se také zobrazí jedna další možnosti přihlašování: Propojené přihlašování. Tato možnost je také podporována službou Proxy aplikací. Ale tato možnost nepřidá jednotné přihlašování do aplikace. Ale nutné dodat, že aplikace už můžete mít jednotného přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services. 
@@ -50,4 +52,7 @@ Na této stránce se také zobrazí jedna další možnosti přihlašování: Pr
 Tato možnost umožňuje správce pro vytvoření odkazu na aplikaci první pozemního tohoto uživatele na při přístupu k aplikaci. Například pokud je aplikace, která je nakonfigurovaná k ověřování uživatelů pomocí služby Active Directory Federation Services 2.0, správce použít možnost "propojené přihlašování" pro vytvoření odkazu na něj na přístupovém panelu.
 
 ## <a name="next-steps"></a>Další postup
-[Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
+- [Heslo vaulting pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-password-vaulting.md)
+- [Omezené delegování protokolu Kerberos pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md)
+- [Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-ping-access.md) 
+- [SAML pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-on-premises-apps.md).

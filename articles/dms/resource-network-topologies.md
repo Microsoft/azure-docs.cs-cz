@@ -2,7 +2,7 @@
 title: Síťové topologie pro migrace Azure SQL Database Managed Instance pomocí Azure Database Migration Service | Dokumentace Microsoftu
 description: Přečtěte si požadavky na zdrojovou a cílovou konfiguraci pro služby Database Migration Service.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: bc54b3dbcdb304b18f916e5fbd4866ff54d1bfa2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 82c91515ac3fae65623e3750471fec46b5d4bf5b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713192"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790675"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro migrace Azure SQL DB Managed Instance pomocí Azure Database Migration Service
 Tento článek popisuje různé topologie sítě, které Azure Database Migration Service můžete pracovat na poskytovat komplexní migrace z místních SQL serverů do Azure SQL Database Managed Instance.
@@ -66,13 +66,13 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje nejméně jed
 
 ## <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| **JMÉNO**   | **PORT** | **PROTOKOL** | **ZDROJ** | **CÍL** | **AKCE** |
+| **JMÉNO**   | **PORT** | **PROTOCOL** | **ZDROJ** | **CÍL** | **AKCE** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Všechny      | Všechny          | DMS PODSÍTĚ | Všechny             | Povolit      |
+| DMS_subnet | Všechny      | Všechny          | DMS SUBNET | Všechny             | Povolit      |
 
 ## <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| **JMÉNO**                  | **PORT**                                              | **PROTOKOL** | **ZDROJ** | **CÍL**           | **AKCE** | **Důvod pro pravidlo**                                                                                                                                                                              |
+| **JMÉNO**                  | **PORT**                                              | **PROTOCOL** | **ZDROJ** | **CÍL**           | **AKCE** | **Důvod pro pravidlo**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Správa                | 443,9354                                              | TCP          | Všechny        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím služby Service bus a Azure blob storage. <br/>(Pokud je zapnutá partnerský vztah Microsoftu, možná nebudete potřebovat toto pravidlo.)                                                             |
 | Diagnostika               | 12000                                                 | TCP          | Všechny        | Všechny                       | Povolit      | DMS toto pravidlo používá ke shromažďování diagnostických informací pro účely odstraňování potíží.                                                                                                                      |

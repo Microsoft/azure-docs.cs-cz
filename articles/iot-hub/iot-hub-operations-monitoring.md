@@ -1,26 +1,26 @@
 ---
-title: Monitorování operací Azure IoT Hub | Dokumentace Microsoftu
+title: Na provoz Azure IoT Hub (nepoužívané) monitorování | Dokumentace Microsoftu
 description: Jak používat Azure IoT Hub operace monitorování ke sledování stavu operací ve službě IoT hub v reálném čase.
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160044"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791575"
 ---
-# <a name="iot-hub-operations-monitoring"></a>Monitorování operací služby IoT Hub
+# <a name="iot-hub-operations-monitoring-deprecated"></a>Operací služby IoT Hub monitorování (zastaralé)
 
 Monitorování operací služby IoT Hub umožňuje monitorovat stav operací ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategoriemi těchto operací. Můžete se rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT hub pro zpracování. Můžete monitorovat data o chybách nebo nastavení složitější zpracování na základě způsobů data.
 
 >[!NOTE]
->Monitorování operací služby IoT Hub je zastaralá a bude odebrán ze služby IoT Hub na 10. března 2019. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží][lnk-monitor]. Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health][lnk-blog-announcement].
+>IoT Hub **monitorování operací je zastaralý a odebral ze služby IoT Hub na 10. března 2019**. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží][lnk-monitor]. Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health][lnk-blog-announcement].
 
 IoT Hub monitoruje šest kategorie události:
 
@@ -96,7 +96,7 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází za služby 
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Příkazy typu cloud zařízení
+### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
 
 Příkazy typu cloud zařízení kategorie sleduje chyby, ke kterým dochází za služby IoT hub, jež se vztahují k kanál zpracování zpráv typu cloud zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází při odesílání zprávy typu cloud zařízení (například neautorizovaného odesílatele), příjem zpráv typu cloud zařízení (například překročení počtu doručených položek) a příjem zpráv typu cloud zařízení zpětnou vazbu (např. zpětnou vazbu s prošlou platností). Tato kategorie nebude zachytávat chyby ze zařízení, která zpracovává nesprávně zprávu typu cloud zařízení, pokud byl úspěšně doručit zprávu typu cloud zařízení.
 

@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 9bad9b6fb285c27264c8c0567aebd4d4f2850582
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731339"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792459"
 ---
 # <a name="azure-stack-1902-update"></a>Aktualizace služby Azure Stack 1902
 
@@ -73,9 +73,34 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 <!-- ## Fixed issues -->
 
-## <a name="changes"></a>Změny
+## <a name="improvements"></a>Vylepšení
 
 - Sestavení 1902 zavádí nové uživatelské rozhraní na portálu Správce služby Azure Stack pro vytváření plánů, nabídek, kvót a doplňkové plány. Další informace, včetně snímků obrazovky najdete v části [vytváření plánů, nabídek a kvót](azure-stack-create-plan.md).
+
+<!--
+1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
+1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
+1398846 Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance    PNU
+1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
+1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
+-->
+- Ke zlepšení balíček integrity a zabezpečení, jakož i snadnější správu za účelem ingestování datových offline, Microsoft změnil formátu balíčku aktualizace ze souborů .exe a Bin na soubor .zip. Nový formát přidá další spolehlivost dekomprimace procesu, který v některých případech může způsobit přípravy aktualizace zpomalí. Stejný formát balíčku platí také pro aktualizace balíčků z vašeho OEM dodavatele.
+- Při spuštění testu AzureStack, vylepšit celkovou funkčnost operátor Azure stacku, operátory teď můžete jednoduše použít, "Test-AzureStack-UpdateReadiness skupiny" na rozdíl od předání dalších parametrů deset po příkazu zahrnout.
+
+  ```powershell
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- Pokud chcete zlepšit celkovou spolehlivost a dostupnost základní služby infrastruktury během procesu aktualizace, nativního zprostředkovatele prostředků aktualizace jako součást plánu aktualizace akce rozpozná a vyvolat automatické nápravy globální podle potřeby. Pracovní postupy nápravy globální "opravy" patří:
+    - Kontrola pro infrastrukturu virtuálních počítačů, které jsou v neoptimálních stavu a zkusit opravit podle potřeby 
+    - Zkontrolovat problémy se službou SQL jako součást plánu ovládacího prvku a zkusit opravit podle potřeby
+    - Zkontrolujte stav služby nástroje pro vyrovnávání zatížení softwaru (SLB) jako součást sady řadiči sítě (NC) a zkusit opravit podle potřeby
+    - Zkontrolujte stav služby Network síťovým Adaptérem a pokusí se ji opravit, podle potřeby
+    - Zkontrolujte stav nouze obnovení konzoly služby (ERCS) služby prostředků infrastruktury uzly a opravit, podle potřeby
+    - Zkontrolujte stav uzly XRP service fabric a opravit, podle potřeby
+    - Kontrola stavu prostředků infrastruktury uzly služby konzistentní úložiště Azure (ACS) a opravit, podle potřeby
+
+
 
 ## <a name="common-vulnerabilities-and-exposures"></a>Běžnými ohroženími zabezpečení a rizika
 

@@ -2,7 +2,7 @@
 title: 'Kurz: Pomocí Azure Database Migration Service online migraci MongoDB API služby Azure Cosmos DB pro MongoDB | Dokumentace Microsoftu'
 description: Zjistěte, jak migrovat místních MongoDB API služby Azure Cosmos DB pro MongoDB online s využitím Azure Database Migration Service.
 services: dms
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2019
-ms.openlocfilehash: 85455020099ee738425fde9c03df152669f73863
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 8bcd51a771b9f0389bb44f916e3ef900cc6aad71
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992494"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792187"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB online pomocí DMS (Preview)
 Azure Database Migration Service můžete použít k provedení migrace databází do online (minimálními prostoji) z místní nebo cloudové instance MongoDB API služby Azure Cosmos DB pro MongoDB.

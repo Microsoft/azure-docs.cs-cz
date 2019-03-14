@@ -1,19 +1,19 @@
 ---
 title: Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Azure Database for MySQL.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 85f3957af599c80c46871a126681d29dfa513431
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 23530dbda06ba99a9c9b2e1665abb09afd8161b1
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051012"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791065"
 ---
 # <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. 
