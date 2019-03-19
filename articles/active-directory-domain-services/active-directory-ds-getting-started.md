@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 4c533921b0c88a4f61cd96896b72306adb9a23cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122905"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí webu Azure portal.
@@ -62,14 +62,13 @@ V **Základy** stránku průvodce, zadejte název domény DNS pro spravovanou do
    > [!NOTE]
    > **Pokyny pro výběr názvu domény DNS**
    > * **Název předdefinované domény:** Ve výchozím nastavení, průvodce určuje název výchozí/vestavěné domény adresáře (s **. onmicrosoft.com** přípona) za vás. Pokud se rozhodnete povolit přístup ke spravované doméně secure LDAP přes internet, očekávat, že problémy s vytvořením veřejný záznam DNS nebo získání certifikátem protokolu secure LDAP od veřejné certifikační Autority pro tento název domény. Microsoft je vlastníkem *. onmicrosoft.com* domény a certifikačních autorit nevydá certifikáty ručící pro tuto doménu.
-   * **Vlastní názvy domén:** Můžete také zadat název vlastní domény. V tomto příkladu je použit vlastní název domény *contoso100.com*.
-   * **Přípony směrovatelných v jiných domén:** Obecně doporučujeme přípony názvu nesměrovatelných domény. Například je lepší vyhýbat vytváření domény s názvem domény DNS "contoso.local". Přípona DNS ".local" není směrovatelný a může způsobit problémy s překladem DNS.
-   * **Omezení předpona domény:** Předpona zadaného názvu domény (například contoso100 v případě názvu domény *contoso100.com*) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků.
-   * **Název konflikty v síti:** Ujistěte se, že vámi zvolený název domény DNS pro spravovanou doménu ještě ve virtuální síti neexistuje. Zejména zkontrolujte, zda:
-       * Už máte doménu služby Active Directory se stejným názvem domény DNS ve virtuální síti.
-       * Virtuální síť, ve kterém budete chtít povolit spravované domény má připojení VPN s vaší místní sítí. V tomto scénáři Ujistěte se, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
-       * Ve virtuální síti existuje cloudová služba s tímto názvem.
-    >
+   > * **Vlastní názvy domén:** Můžete také zadat název vlastní domény. V tomto příkladu je použit vlastní název domény *contoso100.com*.
+   > * **Přípony směrovatelných v jiných domén:** Obecně doporučujeme přípony názvu nesměrovatelných domény. Například je lepší vyhýbat vytváření domény s názvem domény DNS "contoso.local". Přípona DNS ".local" není směrovatelný a může způsobit problémy s překladem DNS.
+   > * **Omezení předpona domény:** Předpona zadaného názvu domény (například *contoso100* v případě názvu domény *contoso100.com*) musí obsahovat nejvýše 15 znaků. Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků.
+   > * **Název konflikty v síti:** Ujistěte se, že vámi zvolený název domény DNS pro spravovanou doménu ještě ve virtuální síti neexistuje. Zejména zkontrolujte, zda:
+   >     * Už máte doménu služby Active Directory se stejným názvem domény DNS ve virtuální síti.
+   >     * Virtuální síť, ve kterém budete chtít povolit spravované domény má připojení VPN s vaší místní sítí. V tomto scénáři Ujistěte se, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
+   >     * Ve virtuální síti existuje cloudová služba s tímto názvem.
 
 2. Vyberte Azure **předplatné** ve kterém chcete vytvořit spravovanou doménu.
 
