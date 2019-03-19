@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46466ac85a8be1dec273440751489833f12c00db
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ade40287bd38580a1e3f6377e54017bfe92bf452
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166807"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Kurz: Integrace Azure Active Directory s Replicon
 
@@ -196,7 +196,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Replicon.
 
     ![Profil uživatele](./media/replicon-tutorial/ic777808.png "profilu uživatele")
 
-    a. V **přihlašovací jméno** textové pole, typ služby Azure AD e-mailová adresa uživatele Azure AD, které chcete zřídit jako **BrittaSimon@contoso.com**.
+    a. V **přihlašovací jméno** textové pole, typ služby Azure AD e-mailová adresa uživatele Azure AD, které chcete zřídit jako **BrittaSimon\@contoso.com**.
 
     b. Jako **typ ověřování**vyberte **jednotného přihlašování**.
 

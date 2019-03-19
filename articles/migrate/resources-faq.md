@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 3744e51ffb4e0836eba4b1641413d8c0ee240f87
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003717"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -21,7 +21,7 @@ Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pok
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Podporuje Azure Migrate posouzení pouze úloh VMware?
 
-Ano, Azure Migrate aktuálně podporuje pouze posouzení úloh VMware. Podpora pro Hyper-V je ve verzi preview, zaregistrujte se prosím [tady](http://aka.ms/migratefuture) získat přístup k verzi preview. V budoucnu bude povolena podpora pro fyzické servery.
+Ano, Azure Migrate aktuálně podporuje pouze posouzení úloh VMware. Podpora pro Hyper-V je ve verzi preview, zaregistrujte se prosím [tady](https://aka.ms/migratefuture) získat přístup k verzi preview. V budoucnu bude povolena podpora pro fyzické servery.
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Serveru ke zjištění prostředí VMware vCenter potřebuje Azure Migrate?
 
@@ -42,7 +42,7 @@ Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deploym
 
 **Migraci z VMware do Azure**: Pokud máte v úmyslu migrace místních úloh do Azure, použijte pro plánování migrace Azure Migrate. Azure Migrate posuzuje místní úlohy a poskytuje pokyny, přehledy a mechanismy, které vám pomohou při migraci do Azure. Až budete připravení plán migrace zrealizovat, můžete počítače migrovat do Azure služeb, jako je Azure Site Recovery a Azure Database Migration Service.
 
-**Migrace z technologie Hyper-V do Azure**: Obecně dostupnou verzi Azure Migrate aktuálně podporuje posouzení virtuálních počítačů VMware pro migraci do Azure. Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí. Pokud máte zájem o vyzkoušení verze preview, zaregistrujte [tady](http://aka.ms/migratefuture).
+**Migrace z technologie Hyper-V do Azure**: Obecně dostupnou verzi Azure Migrate aktuálně podporuje posouzení virtuálních počítačů VMware pro migraci do Azure. Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí. Pokud máte zájem o vyzkoušení verze preview, zaregistrujte [tady](https://aka.ms/migratefuture).
 
 **Zotavení po havárii z VMware/Hyper-V do Azure**: Pokud máte v úmyslu provést zotavení po havárii (DR) v Azure pomocí Azure Site Recovery (služba Site Recovery), použijte Plánovač nasazení služby Site Recovery pro plánování zotavení po Havárii. Plánovač nasazení služby Site Recovery nemá podrobné, specifické pro Azure Site Recovery hodnocení v místním prostředí. Poskytuje doporučení, která jsou vyžadované Site Recovery pro úspěšné operace zotavení po Havárii, jako je replikace, převzetí služeb při selhání virtuálních počítačů.  
 

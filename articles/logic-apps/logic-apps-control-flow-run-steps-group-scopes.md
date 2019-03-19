@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455900"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080450"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -89,7 +89,8 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
       | **Typ přenosu typu datum** | Žádný | Platí pro pouze v režimu přenosu. | 
       ||||  
 
-1. [Přidat podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální dobu trvání cesty s provozem překročí určitou dobu. V tomto příkladu postupujte podle těchto kroků:
+1. [Přidat podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální dobu trvání cesty s provozem překročí určitou dobu. 
+   V tomto příkladu postupujte podle těchto kroků:
 
    1. Přejmenujte podmínku s použitím tohoto popisu: **Pokud doba provozu je více než určený čas**
 
@@ -105,7 +106,8 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
       ![Dokončená podmínka](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. V **při hodnotě true** větve, přidejte akci "Odeslat e-mail" pro vašeho poskytovatele e-mailu. Nastavte tuto akci podle postupu pod tímto obrázkem:
+1. V **při hodnotě true** větve, přidejte akci "Odeslat e-mail" pro vašeho poskytovatele e-mailu. 
+   Nastavte tuto akci podle postupu pod tímto obrázkem:
 
    ![Přidat akci "Odeslat e-mail" k "při hodnotě true" větve](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -124,7 +126,7 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
    1. V seznamu dynamického obsahu vyberte **Výraz**.
 
    1. Vyhledejte a vyberte **div()** funkce. 
-   Umístěte kurzor v dovnitř závorek funkce.
+      Umístěte kurzor v dovnitř závorek funkce.
 
    1. Kurzor je v závorkách funkce, zvolte **dynamický obsah** tak, aby zobrazil seznam dynamického obsahu. 
    
@@ -144,11 +146,11 @@ Můžete kdykoli uložit aplikaci logiky, tak často uložte svou práci.
 
    1. Jakmile budete hotovi, zvolte **OK**.
 
-  1. Po výraz se přeloží, přidejte tento text s přední místa: ``` minutes```
+   1. Po výraz se přeloží, přidejte tento text s přední místa: ``` minutes```
   
-     Vaše **tělo** pole bude vypadat jako v tomto příkladu:
+       Vaše **tělo** pole bude vypadat jako v tomto příkladu:
 
-     ![Dokončení pole "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![Dokončení pole "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
 1. Uložte svou aplikaci logiky.
 

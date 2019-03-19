@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096703"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -181,7 +181,7 @@ Ke generování certifikátů testů na zařízení s Linuxem pomocí kroků v t
 
 V této části vytvoříte tři certifikáty a připojit je v řetězu. Uvedení certifikáty v řetězu souboru umožňuje snadno je instalovat na vaše zařízení brány IoT Edge a všechny podřízené zařízení.  
 
-1.  Vytvořte certifikát certifikační Autority vlastníka a jeden zprostředkující certifikát. Tyto certifikáty jsou umístěny v  *\<WRKDIR >*.
+1. Vytvořte certifikát certifikační Autority vlastníka a jeden zprostředkující certifikát. Tyto certifikáty jsou umístěny v  *\<WRKDIR >*.
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -193,7 +193,7 @@ V této části vytvoříte tři certifikáty a připojit je v řetězu. Uveden�
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  Pomocí následujícího příkazu vytvořte certifikát hraniční zařízení certifikační Autority a privátního klíče. Zadejte název pro zařízení brány, který se použije pro pojmenování souborů a během generování certifikátů. 
+2. Pomocí následujícího příkazu vytvořte certifikát hraniční zařízení certifikační Autority a privátního klíče. Zadejte název pro zařízení brány, který se použije pro pojmenování souborů a během generování certifikátů. 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

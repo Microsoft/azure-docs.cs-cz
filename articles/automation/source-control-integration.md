@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 400cf53172fbd1ce5803cf3de298749afbf45cd4
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 49a28901e2ea471f97270c0407e2f6c0a4a533fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58169149"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -140,6 +140,10 @@ Správy zdrojových kódů vyžaduje některé minimální sadu oprávnění pro
 Chcete-li odpojit od úložiště správy zdrojového kódu, otevřete **(Preview) správy zdrojového kódu** pod **nastavení účtu** ve vašem účtu Automation.
 
 Vyberte modul správy zdrojových kódů, které chcete odebrat. Na **souhrnný ovládací prvek zdroje** klikněte na **odstranit**.
+
+## <a name="encoding"></a>Kódování
+
+Pokud více osob jsou úpravy sady runbook v svým úložištěm řízení zdrojů s různými editory může se stát narazíte na problémy s kódováním. To můžete vložit nesprávné znaky ve své sadě runbook. Další informace o tom najdete v tématu [běžných příčin některých kódování problémy](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
 ## <a name="next-steps"></a>Další postup
 

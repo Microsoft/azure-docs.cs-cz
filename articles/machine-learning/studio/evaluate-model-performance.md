@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f5e7a923ed5eb692f5fb05082c73b969081c739b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891582"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Jak vyhodnotit výkon modelu ve službě Azure Machine Learning Studio
 
@@ -83,7 +83,7 @@ Po spuštění experimentu si můžete prohlédnout výsledky vyhodnocení po kl
 Obrázek 4. Cross-Validation výsledky regresní Model.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Vyhodnocení binární klasifikační Model
-Ve scénáři binární klasifikace Cílová proměnná obsahuje pouze dva možné výsledky, třeba: {0, 1} nebo {false, true}, {záporný, kladné}. Předpokládejme, máte datovou sadu pro dospělé zaměstnanci s některými demografických a zaměstnání proměnné a zobrazí se výzva k předpovědi úroveň příjmů, binární proměnnou s hodnotami {"< = 50 tis.", "> 50 tis."}. Jinými slovy záporná třída reprezentuje zaměstnanci, kteří žádají menší než nebo rovna 50 tisíc za rok a kladné třída reprezentuje všechny ostatní zaměstnanci. Jako ve scénáři regrese jsme by trénování modelu, stanovení skóre nějaká data a vyhodnoťte výsledky. Hlavní rozdíl je volba metriky, které vypočítá Azure Machine Learning Studio a výstupy. Pro ilustraci úroveň predikce scénář příjmu, budeme používat [dospělé](http://archive.ics.uci.edu/ml/datasets/Adult) datovou sadu, která Studio experiment vytvořit a vyhodnotit výkon modelu logistické regrese dvěma třídami, běžně používané binární třídění.
+Ve scénáři binární klasifikace Cílová proměnná obsahuje pouze dva možné výsledky, třeba: {0, 1} nebo {false, true}, {záporný, kladné}. Předpokládejme, máte datovou sadu pro dospělé zaměstnanci s některými demografických a zaměstnání proměnné a zobrazí se výzva k předpovědi úroveň příjmů, binární proměnnou s hodnotami {"< = 50 tis.", "> 50 tis."}. Jinými slovy záporná třída reprezentuje zaměstnanci, kteří žádají menší než nebo rovna 50 tisíc za rok a kladné třída reprezentuje všechny ostatní zaměstnanci. Jako ve scénáři regrese jsme by trénování modelu, stanovení skóre nějaká data a vyhodnoťte výsledky. Hlavní rozdíl je volba metriky, které vypočítá Azure Machine Learning Studio a výstupy. Pro ilustraci úroveň predikce scénář příjmu, budeme používat [dospělé](https://archive.ics.uci.edu/ml/datasets/Adult) datovou sadu, která Studio experiment vytvořit a vyhodnotit výkon modelu logistické regrese dvěma třídami, běžně používané binární třídění.
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Přidejte následující moduly do pracovního prostoru Azure Machine Learning Studio:
@@ -133,7 +133,7 @@ Obrázek 8. Křížové ověření binární klasifikační Model.
 Obrázek 9. Výsledků křížového ověřování binární třídění.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Vyhodnocení modelu klasifikace víc tříd
-V tomto experimentu budeme používat Oblíbené [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") datovou sadu, která obsahuje instance 3 různé typy (třídy) zařízení iris. Existují 4 hodnoty funkcí (sepal length či šířku a petal délka a šířka) pro každou instanci. V předchozí pokusy jsme natrénovali a testováním modelů pomocí stejné datové sady. Tady budeme používat [rozdělení dat] [ split] modulu, který chcete vytvořit 2 podmnožiny dat, trénování na první a stanovení skóre a vyhodnotit na druhé. Je veřejně dostupná na datovou sadu Iris [UCI Machine Learning úložiště](http://archive.ics.uci.edu/ml/index.html)a můžete ji stáhnout prostřednictvím [Import dat] [ import-data] modulu.
+V tomto experimentu budeme používat Oblíbené [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") datovou sadu, která obsahuje instance 3 různé typy (třídy) zařízení iris. Existují 4 hodnoty funkcí (sepal length či šířku a petal délka a šířka) pro každou instanci. V předchozí pokusy jsme natrénovali a testováním modelů pomocí stejné datové sady. Tady budeme používat [rozdělení dat] [ split] modulu, který chcete vytvořit 2 podmnožiny dat, trénování na první a stanovení skóre a vyhodnotit na druhé. Je veřejně dostupná na datovou sadu Iris [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml/index.html)a můžete ji stáhnout prostřednictvím [Import dat] [ import-data] modulu.
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Přidejte následující moduly do pracovního prostoru Azure Machine Learning Studio:

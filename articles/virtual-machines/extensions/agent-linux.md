@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243875"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011595"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Princip a používání agenta Azure Linux
 
@@ -73,17 +73,17 @@ Tok informací z platformy k agentovi dojde k přes dva kanály:
 Tyto systémy byly testovány a jsou známé pro práci s agentem Azure Linux:
 
 > [!NOTE]
-> Tento seznam může lišit od oficiálního seznamu podporovaných systémech na platformě Microsoft Azure, jak je popsáno zde: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Tento seznam může lišit od oficiálního seznamu podporovaných systémech na platformě Microsoft Azure, jak je popsáno zde: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
-* CentOS 6.3 +
+* CentOS 6.3+
 * Red Hat Enterprise Linux 6.7 +
 * Debian 7.0 +
-* Ubuntu 12.04 +
+* Ubuntu 12.04+
 * openSUSE 12.3 +
-* SLES 11 SP3 +
+* SLES 11 SP3+
 * Oracle Linux 6.4 +
 
 Další podporované systémy:
@@ -108,11 +108,11 @@ V dokumentaci [agenta Azure Linux úložišti na Githubu](https://github.com/Azu
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 ### <a name="flags"></a>příznaky
-* verbose: zvyšte úroveň podrobností zadaný příkaz
-* Vynutit: přeskočit interaktivní potvrzení pro některé příkazy
+* verbose: Zvýšit úroveň podrobností zadaný příkaz
+* platnost: Interaktivní potvrzení přeskočení pro některé příkazy
 
 ### <a name="commands"></a>Příkazy
-* Nápověda: seznam podporovaných příkazů a příznaky.
+* Pomoc: Seznam podporovaných příkazů a příznaky.
 * zrušení zřízení: Pokus o vyčištění systému a že je vhodný pro neukončil. Následující operace odstranění:
   
   * Všechny klíče hostitele SSH (Pokud Provisioning.RegenerateSshHostKeyPair "y" v konfiguračním souboru)
@@ -126,11 +126,11 @@ V dokumentaci [agenta Azure Linux úložišti na Githubu](https://github.com/Azu
 > 
 > 
 
-* zrušení zřízení + uživatel: provádí všechno, co v – zrušení zřízení (viz výše) a také odstranění posledního zřízeného uživatelského účtu (získané z /var/lib/waagent) a přidružená data. Tento parametr je při zrušení zřizování bitovou kopii, která byla dříve zřizování v Azure, tak může zachytit a znovu použít.
-* verze: Zobrazí verzi waagent
-* serialconsole: nakonfiguruje GRUB k označení ttyS0 (první sériový port) jako spouštěcí konzoly. Tím se zajistí, že jsou protokoly spouštění jádra odesílat sériového portu a k dispozici pro ladění.
-* Démon procesu: spustit waagent jako démon ke správě interakci s platformou. Tento argument je určena k waagent ve skriptu waagent init.
-* Start: spuštění waagent jako proces na pozadí
+* zrušení zřízení a uživatele: Provádí všechno, co v – zrušení zřízení (viz výše) a také odstranění posledního zřízeného uživatelského účtu (získané z /var/lib/waagent) a přidružená data. Tento parametr je při zrušení zřizování bitovou kopii, která byla dříve zřizování v Azure, tak může zachytit a znovu použít.
+* Verze: Zobrazí verzi waagent
+* serialconsole: Nakonfiguruje GRUB k označení ttyS0 (první sériový port) jako spouštěcí konzoly. Tím se zajistí, že jsou protokoly spouštění jádra odesílat sériového portu a k dispozici pro ladění.
+* Démon procesu: Spusťte waagent jako démon ke správě interakci s platformou. Tento argument je určena k waagent ve skriptu waagent init.
+* Spusťte: Spustit waagent jako proces na pozadí
 
 ## <a name="configuration"></a>Konfigurace
 Konfigurační soubor (/ etc/waagent.conf) řídí akce waagent. Následuje ukázkový soubor konfigurace:
@@ -175,7 +175,7 @@ To umožňuje uživatelům povolit nebo zakázat funkci zřizování v agentovi.
 > 
 > 
 
-**U Provisioning.DeleteRootPassword:**  
+**Provisioning.DeleteRootPassword:**  
 ```
 Type: Boolean  
 Default: n
@@ -234,8 +234,8 @@ Default: 6
 {Algoritmus používaný crypt při generování hodnoty hash hesla.  
  1 - MD5  
  2a - Blowfish  
- 5 – SHA-256  
- 6 – SHA-512  
+ 5 - SHA-256  
+ 6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
 ```
@@ -300,7 +300,7 @@ Default: n
 ```
 Pokud sada, agent se pokusí nainstalovat a pak načíst ovladač jádra rozhraní RDMA, který odpovídá verzi firmwaru v základním hardwaru.
 
-**OPERAČNÍ SYSTÉM. RootDeviceScsiTimeout:**  
+**OS.RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
@@ -330,7 +330,7 @@ Povolí nebo zakáže automatické aktualizace pro cílový stav zpracování; V
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu cloudových Imagí
+## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
 Využití cloudu Imagemi Ubuntu [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) provádět mnoho úloh konfigurace, které by jinak spravovaly pomocí agenta Azure Linux. Platí následující rozdíly:
 
 * **Provisioning.Enabled** výchozí hodnota je "n" Cloud imagemi Ubuntu, který pomocí cloud-init k provedení úloh pro zřízení.

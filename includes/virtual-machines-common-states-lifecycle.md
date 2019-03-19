@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54122798"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125347"
 ---
 Azure Virtual Machines (VM), projděte si různé stavy, které lze zařadit do *zřizování* a *power* stavy. Cílem tohoto článku je popisují tyto stavy a konkrétně zvýraznit, když se zákazníkům účtuje pro instanci využití. 
 
@@ -255,14 +255,14 @@ Po dokončení operace virtuálního počítače přejde do jedné z následují
 - **Úspěšné** – dokončení akce zahájená uživatelem.
 
     ```
- "statuses": [ 
- {
+  "statuses": [ 
+  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
- }
- ]
+  }
+  ]
     ```
 
  
@@ -270,7 +270,7 @@ Po dokončení operace virtuálního počítače přejde do jedné z následují
 - **Nepovedlo** – představuje neúspěšnou operaci. Odkazovat na kódy chyb, chcete-li získat další informace a možná řešení.
 
     ```
- "statuses": [
+  "statuses": [
     {
       "code": "ProvisioningState/failed/InternalOperationError",
       "level": "Error",

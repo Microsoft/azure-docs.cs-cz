@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447103"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886113"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Python
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Tento článek ukazuje, jak použít službu rozpoznávání řeči pomocí sadou SDK pro řeč pro Python. To ukazuje, jak rozpoznávání řeči ze vstupu mikrofon.
+Tento článek ukazuje, jak používat hlasové služby prostřednictvím sadou SDK pro řeč pro Python. To ukazuje, jak rozpoznávání řeči ze vstupu mikrofon.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* Klíč předplatného pro hlasové služby. [Získat zdarma](get-started.md).
 * [Python 3.5 nebo novější](https://www.python.org/downloads/).
-* Balíček sadou SDK pro řeč Python je k dispozici pro tyto operační systémy: 
+* Balíček sadou SDK pro řeč Python je k dispozici pro tyto operační systémy:
     * Windows: x64 a x86.
     * Mac: macOS X verze 10.12 nebo novější.
     * Linux: Ubuntu 16.04 nebo 18.04 na x64.
@@ -50,11 +50,11 @@ Tento příkaz nainstaluje balíček Pythonu z [PyPI](https://pypi.org/) pro sad
 pip install azure-cognitiveservices-speech
 ```
 
-## <a name="support-and-updates"></a>Podpora a aktualizace 
+## <a name="support-and-updates"></a>Podpora a aktualizace
 
 Aktualizace balíčku Python SDK řeči se distribuují prostřednictvím PyPI a jsme oznámili v [poznámky k verzi](./releasenotes.md).
 Pokud je dostupná nová verze, můžete do něj aktualizovat pomocí příkazu `pip install --upgrade azure-cognitiveservices-speech`.
-Zkontrolujte, že se podíváte aktuálně nainstalované verze `azure.cognitiveservices.speech.__version__` proměnné. 
+Zkontrolujte, že se podíváte aktuálně nainstalované verze `azure.cognitiveservices.speech.__version__` proměnné.
 
 Pokud máte potíže nebo máte chybějící funkce, přečtěte si téma [možnosti podporu a nápovědu](./support.md).
 
@@ -68,7 +68,7 @@ Můžete zkopírovat [ukázkový kód](#sample-code) z tohoto rychlého startu d
 python quickstart.py
 ```
 
-Nebo si můžete stáhnout jako tento rychlý úvodní kurz [Jupyter](https://jupyter.org) Poznámkový blok z [sadou SDK pro řeč ukázkové úložiště](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spusťte ho jako poznámkový blok. 
+Nebo si můžete stáhnout jako tento rychlý úvodní kurz [Jupyter](https://jupyter.org) Poznámkový blok z [sadou SDK pro řeč ukázkové úložiště](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spusťte ho jako poznámkový blok.
 
 ### <a name="sample-code"></a>Ukázka kódu
 
@@ -86,13 +86,13 @@ Nebo si můžete stáhnout jako tento rychlý úvodní kurz [Jupyter](https://ju
 1. Ve Visual Studio Code, vyberte **souboru** ikonu. Potom otevřete složku, kterou jste vytvořili.
 
    ![Otevřít složku](media/sdk/qs-python-vscode-python-open-folder.png)
-   
+
 1. Vytvořte nový zdrojový soubor Pythonu, `speechsdk.py`, tak, že vyberete ikonu nového souboru.
 
    ![Vytvoření souboru](media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Kopírovat, Vložit a uložit [kódu Pythonu](#sample-code) na nově vytvořený soubor.
-1. Vložte informace o předplatném služby řeči.
+1. Vložte informace o předplatném hlasové služby.
 1. Pokud vybraná, interpret Pythonu se zobrazí na levé straně stavového řádku v dolní části okna.
    V opačném případě otevřete seznam dostupných interpretů Pythonu. Otevřete paletu příkazů (Ctrl + Shift + P) a zadejte **Pythonu: Vyberte interpret**. Vyberte odpovídající ten.
 1. Můžete nainstalovat balíček Python SDK řeči z v rámci Visual Studio Code. Udělat, pokud není nainstalovaná, ale pro interpret Pythonu jste vybrali.

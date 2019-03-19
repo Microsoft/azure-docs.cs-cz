@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011313"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Kurz: Prohledávání nestrukturovaných dat v cloudovém úložišti
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Když vytvoříte účet úložiště, máte možnost vytvořit novou skupinu prostředků nebo použijte existující skupinu prostředků. Tento kurz vytvoří novou skupinu prostředků.
 
-Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ V tomto kurzu uložíte textové soubory získané z webu clinicaltrials.gov do 
 
 5. Kliknutím na **OK** kontejner vytvoříte.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/storageactinfo.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>Nahrání ukázkových dat
 
@@ -77,7 +77,7 @@ Vytvořili jste kontejner a teď do něj můžete nahrát ukázková data.
 
 4. Zvolte **Nahrát**, aby se zahájil proces nahrávání.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/upload.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/upload.png)
 
 Proces nahrávání může chvíli trvat.
 
@@ -107,7 +107,7 @@ V tomto kurzu použijete k vyhledat textové soubory získané z clinicaltrials.
 
 8. Vytvořte vyhledávací službu kliknutím na **Vytvořit**.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/createsearch2.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>Propojení služby Search s kontejnerem
 
@@ -127,13 +127,13 @@ Vytvořili jste vyhledávací službu a teď ji můžete připojit ke svému úl
 
 2. Nastavit, protože používáte objekty BLOB jsou textové soubory, **analýze režimu** k **Text**.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datasources.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datasources.png)
 
 3. Zvolte **Kontejner úložiště**. Zobrazí se seznam dostupných účtů úložiště.
 
 4. Vyberte svůj účet úložiště a potom vyberte kontejner, který jste vytvořili dříve.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datacontainer.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datacontainer.png)
 
 5. Klikněte na tlačítko **vyberte** se vraťte do **nový zdroj dat**a vyberte **OK** pokračujte.
 
@@ -147,7 +147,7 @@ Vytvořili jste vyhledávací službu a teď ji můžete připojit ke svému úl
 
 3. Vyberte **Retrievable** atributu zaškrtávací políčko v oblasti **metadata_storage_name**.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/valuestoselect.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/valuestoselect.png)
 
 4. Vyberte **OK**, která se vyvolá **vytvořit Indexer**.
 
@@ -172,7 +172,7 @@ Parametry jsou uvedené ve sloupci **NÁZEV POLE**. Následující tabulka obsah
 
 1. Do pole **Název** zadejte název a klikněte na **OK**.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exindexer.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exindexer.png)
 
 2. Budete přesměrováni zpět **Import dat**. Vyberte **OK** dokončete proces připojení.
 
@@ -186,19 +186,19 @@ Následující postup vám napoví, kde Průzkumníka služby Hledání najít, 
 
 1. Přejít na všechny prostředky a najděte si nově vytvořený vyhledávací službu.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exampleurl.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exampleurl.png)
 
 2. Vyberte indexu tak, aby ho otevřete.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/overview.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/overview.png)
 
 3. Vyberte **Průzkumníka služby Search** otevřete Průzkumníka služby search, kde můžete provádět živých dotazů na data.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/indexespane.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/indexespane.png)
 
 4. Při prázdném poli řetězce dotazu zvolte **Hledat**. Prázdný dotaz vrátí *všechna* data z objektů blob.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/emptySearch.png)
+   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>Fulltextové vyhledávání
 

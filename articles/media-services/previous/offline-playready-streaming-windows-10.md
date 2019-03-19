@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 9f5ccccaffbd11b482ed04875563fc33fb054d03
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7d907e3d06e8c2817b1fc4a30a7f808d06b022ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884706"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10  
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Verze 3](../latest/offline-plaready-streaming-for-windows-10.md)
+> * [Verze 2](offline-playready-streaming-windows-10.md)
 
 Azure Media Services podporují offline stažení/přehrávání s ochranou DRM. Tento článek se zaměřuje na offline podporu Azure Media Services pro Windows 10/PlayReady klientů. Si můžete přečíst o podporu offline režimu pro iOS/FairPlay a zařízení s Androidem/Widevine v následujících článcích:
 
@@ -41,7 +45,7 @@ Výzvy, se kterými jsme setkat při implementaci offline režimu je následují
 * MP4 podporuje mnoho hráči kodér nástroje, ale neexistuje žádná vazba mezi MP4 kontejneru a DRM;
 * V dlouhodobém horizontu vývojového diagramu křížového procesu s CENC je způsob, jak přejít. Ale v současné době ekosystému podpory nástroje/player existuje ještě není. Řešení, potřebujeme ještě dnes.
  
-Spočívá v: technologie smooth streaming ([PIFF](http://go.microsoft.com/?linkid=9682897)) formát souboru s H264/AAC má vazbu pomocí technologie PlayReady (AES-128 KONT). Jednotlivé smooth streamování .ismv soubor (za předpokladu, že zvuk se muxed ve videu) je sama o sobě fMP4 a lze použít pro přehrávání. V případě technologie smooth streaming obsahu pomocí šifrování PlayReady, každý soubor .ismv stane PlayReady chráněné fragmentovaného MP4. Můžete zvolit soubor .ismv s upřednostňované přenosové rychlosti a přejmenujte ho jako MP4 ke stažení.
+Spočívá v: technologie smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) formát souboru s H264/AAC má vazbu pomocí technologie PlayReady (AES-128 KONT). Jednotlivé smooth streamování .ismv soubor (za předpokladu, že zvuk se muxed ve videu) je sama o sobě fMP4 a lze použít pro přehrávání. V případě technologie smooth streaming obsahu pomocí šifrování PlayReady, každý soubor .ismv stane PlayReady chráněné fragmentovaného MP4. Můžete zvolit soubor .ismv s upřednostňované přenosové rychlosti a přejmenujte ho jako MP4 ke stažení.
 
 Existují dvě možnosti pro hostování PlayReady chráněné MP4 pro progresivní stahování:
 
@@ -57,12 +61,12 @@ Níže jsou uvedeny dvě sady testovací prostředky, první z nich naším vlas
 
 Asset #1:
 
-* Adresa URL progresivního stahování: [http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* Adresa URL progresivního stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 Asset #2:
 
-* Adresa URL progresivního stahování: [http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* Adresa URL progresivního stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (v místním prostředí): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 Pro účely testování přehrávání, můžu použít univerzální aplikace pro Windows ve Windows 10. V [univerzální pro Windows 10 ukázky](https://github.com/Microsoft/Windows-universal-samples), nachází přehrávače příklad volá [adaptivní streamování ukázka](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Všechno, co musíme udělat, je přidejte kód, abychom mohli vybrat stahování videa a použít ho jako zdroj, namísto adaptivní streamování zdroje. Změny jsou v tlačítko klikněte na tlačítko obslužné rutiny události:

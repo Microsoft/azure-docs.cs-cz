@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898789"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Pomocí projekt U-SQL database můžete vyvíjet databáze U-SQL pro Azure Data Lake
 
@@ -57,7 +57,7 @@ Nástroj pro sestavení objektu, poskytuje uživatelsky přívětivé Editoru u�
 
 Výstup pro databázový projekt U-SQL je U-SQL database balíček pro nasazení s názvem s příponou sestavení `.usqldbpack`. `.usqldbpack` Balíček je soubor .zip, který zahrnuje všechny příkazy jazyka DDL v jeden skript U-SQL v **DDL** složky a všechny knihovny DLL a dalších souborů sestavení v **Temp** složky.
 
-Další informace o [způsob, jakým se sestavit projekt U-SQL database s MSBuild příkazového řádku a ke službám Azure DevOps sestavení úloh](data-lake-analytics-cicd-overview.md).
+Další informace o [způsob, jakým se sestavit projekt U-SQL database s MSBuild příkazového řádku a Azure DevOps služby sestavení úloh](data-lake-analytics-cicd-overview.md).
 
 ## <a name="deploy-a-u-sql-database"></a>Nasazení databáze U-SQL
 
@@ -100,8 +100,8 @@ Můžete nasadit databázi U-SQL pomocí databázový projekt U-SQL nebo .usqldb
 
 Projekt v U-SQL můžete odkazovat na databázový projekt U-SQL. Odkaz má vliv na dvě úlohy:
 
-- *Sestavení projektu*: nastavení prostředí odkazovaná databáze před sestavením skriptů U-SQL. 
-- *Místní spuštění proti (local projektu) účet*: prostředí odkazovaná databáze jsou nasazené do (místní projektu) účtu před spuštěním skriptu U-SQL. [Další informace o místní spuštění a rozdíl mezi (místní počítače) (místní projekt) a účet tady](data-lake-analytics-data-lake-tools-local-run.md).
+- *Sestavení projektu*: Nastavení prostředí odkazovaná databáze před sestavením skriptů U-SQL. 
+- *Místní spuštění proti (local projektu) účet*: Odkazovaná databáze prostředí jsou nasazené do (místní projektu) účtu před spuštěním skriptu U-SQL. [Další informace o místní spuštění a rozdíl mezi (místní počítače) (místní projekt) a účet tady](data-lake-analytics-data-lake-tools-local-run.md).
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>Jak přidat odkaz na databázi U-SQL
 

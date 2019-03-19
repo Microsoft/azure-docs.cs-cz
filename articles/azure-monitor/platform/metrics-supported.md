@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a4b6bc8f6e621cda921d599b5368c6a671defcc2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548605"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113295"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -358,8 +358,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
-|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
-|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých na všech síťových rozhraní virtuálních počítačů (příchozí provoz)|Žádné dimenze|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
 |Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
 |Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
 |Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
@@ -682,7 +682,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 ### <a name="latency-metrics"></a>Metriky latence
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Využití |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | ReplicationLatency    | Latence replikace|  Milisekundy|   Minimum, Maximum, průměr | Latencí P99 replikace mezi zdrojovou a cílovou oblastí pro účet povolenou geografickou| SourceRegion TargetRegion| Vše | Používá k monitorování P99 latence replikace mezi jakékoli dvě oblasti geograficky replikovaného účtu. |
 
 ### <a name="availability-metrics"></a>Metriky dostupnosti
@@ -694,7 +694,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 ### <a name="cassandra-api-metrics"></a>Metriky rozhraní Cassandra API
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze| Čas přírůstcích| Využití |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | CassandraRequests | Požadavky Cassandra |  Počet|  Počet|  Počet zpracovaných požadavků Apache Cassandra API|  DatabaseName, CollectionName, kód chyby, oblast, typem operace OperationType, typ prostředku|   Vše| Používá ke sledování požadavků Cassandra v minutovými intervaly. Pokud chcete získat průměrných požadavků za sekundu, použití agregace počet za minutu a dělit 60.|
 | CassandraRequestCharges|  Poplatky za žádost Cassandra| Počet|   Sum, Min, Max, Avg| Požadované jednotky spotřebované žádostmi o rozhraní Cassandra API|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Vše| Používá k monitorování jednotek ru za minutu používá účet Cassandra API.|
 | CassandraConnectionClosures   | Uzávěry připojení Cassandra |Počet| Počet   |Počet Cassandra ukončená připojení|    ClosureReason oblasti|  Vše | Používá k monitorování připojení mezi klienty a rozhraní Azure Cosmos DB Cassandra API.|
@@ -1296,7 +1296,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
 |physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
-|log_write_percent|Procento v/v protokolu|Procento|Průměr|Procento v/v protokolu|Žádné dimenze|
+|log_write_percent|Procento V/V protokolu|Procento|Průměr|Procento V/V protokolu|Žádné dimenze|
 |dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Žádné dimenze|
 |úložiště|Celkovou velikost databáze|B|Maximum|Celkovou velikost databáze|Žádné dimenze|
 |connection_successful|Úspěšná připojení|Počet|Celkem|Úspěšná připojení|Žádné dimenze|
@@ -1305,7 +1305,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Zablokování|Zablokování|Počet|Celkem|Zablokování|Žádné dimenze|
 |storage_percent|Procento velikosti databáze|Procento|Maximum|Procento velikosti databáze|Žádné dimenze|
 |xtp_storage_percent|Procento úložiště OLTP v paměti|Procento|Průměr|Procento úložiště OLTP v paměti|Žádné dimenze|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné dimenze|
+|workers_percent|Procento prac. procesů|Procento|Průměr|Procento prac. procesů|Žádné dimenze|
 |sessions_percent|Procento relací|Procento|Průměr|Procento relací|Žádné dimenze|
 |dtu_limit|Omezení jednotek DTU|Počet|Průměr|Omezení jednotek DTU|Žádné dimenze|
 |dtu_used|DTU použít|Počet|Průměr|DTU použít|Žádné dimenze|
@@ -1321,10 +1321,10 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádné dimenze|
 |physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádné dimenze|
-|log_write_percent|Procento v/v protokolu|Procento|Průměr|Procento v/v protokolu|Žádné dimenze|
+|log_write_percent|Procento V/V protokolu|Procento|Průměr|Procento V/V protokolu|Žádné dimenze|
 |dtu_consumption_percent|Procento DTU|Procento|Průměr|Procento DTU|Žádné dimenze|
 |storage_percent|Procento úložiště|Procento|Průměr|Procento úložiště|Žádné dimenze|
-|workers_percent|Procento pracovních procesů|Procento|Průměr|Procento pracovních procesů|Žádné dimenze|
+|workers_percent|Procento prac. procesů|Procento|Průměr|Procento prac. procesů|Žádné dimenze|
 |sessions_percent|Procento relací|Procento|Průměr|Procento relací|Žádné dimenze|
 |eDTU_limit|omezení eDTU|Počet|Průměr|omezení eDTU|Žádné dimenze|
 |storage_limit|Limit úložiště.|B|Průměr|Limit úložiště.|Žádné dimenze|

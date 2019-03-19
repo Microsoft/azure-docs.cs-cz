@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/01/2017
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013287"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -28,8 +28,6 @@ Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte d
 Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požadavky HTTP, výjimky a některé systémové metriky. Od verze 0.20 dokáže sada SDK monitorovat také některé běžné balíčky třetích stran, například MongoDB, MySQL nebo Redis. Všechny události související s příchozím požadavkem HTTP se korelují za účelem rychlejšího řešení potíží.
 
 Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitorovat další aspekty aplikace a systému. Rozhraní TelemetryClient API popisujeme podrobněji dále v tomto článku.
-
-![Příklady tabulek sledování výkonu](./media/nodejs/10-perf.png)
 
 ## <a name="get-started"></a>Začínáme
 
@@ -49,11 +47,7 @@ Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte
 1. Přihlaste se na web [Azure Portal][portal].
 2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**. Prostředek zahrnuje koncový bod pro příjem telemetrických dat, úložiště pro tato data, uložené sestavy a řídicí panely, konfigurace pravidel a upozornění a ještě více.
 
-  ![Vytvořte prostředek Application Insights](./media/nodejs/03-new_appinsights_resource.png)
-
 3. Na stránce vytváření prostředku v poli **Typ aplikace** vyberte **Aplikace Node.js**. Typ aplikace určuje výchozí řídicí panely a sestavy, které se vytvoří. (Každý prostředek Application Insights může shromažďovat data z jakéhokoli jazyka a libovolné platformy.)
-
-  ![Formulář Nový prostředek Application Insights](./media/nodejs/04-create_appinsights_resource.png)
 
 ### <a name="sdk"></a>Nastavení sady Node.js SDK
 
@@ -61,29 +55,29 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
 
 1. Zkopírujte instrumentační klíč vašeho prostředku (označuje se také jako *ikey*) z webu Azure Portal. Application Insights pomocí instrumentačního klíče mapuje data na váš prostředek Azure. Než bude sada SDK moci váš instrumentační klíč použít, musíte jej zadat v proměnné prostředí nebo ve svém kódu.  
 
-  ![Zkopírování instrumentačního klíče](./media/nodejs/05-appinsights_ikey_portal.png)
+   ![Zkopírování instrumentačního klíče](./media/nodejs/instrumentation-key-001.png)
 
 2. Přidejte do závislostí aplikace knihovnu sady Node.js SDK prostřednictvím souboru package.json. Z kořenové složky aplikace spusťte:
 
-  ```bash
-  npm install applicationinsights --save
-  ```
+   ```bash
+   npm install applicationinsights --save
+   ```
 
 3. Explicitně načtěte knihovnu v kódu. Vzhledem k tomu, že sada SDK vkládá instrumentaci do mnoha dalších knihoven, načtěte knihovnu co nejdříve, dokonce ještě před dalšími příkazy `require`. 
 
-  Na začátek vašeho prvního souboru .js přidejte následující kód. Metoda `setup` konfiguruje instrumentační klíč (a tedy prostředek Azure), který se použije jako výchozí pro všechny sledované položky.
+   Na začátek vašeho prvního souboru .js přidejte následující kód. Metoda `setup` konfiguruje instrumentační klíč (a tedy prostředek Azure), který se použije jako výchozí pro všechny sledované položky.
 
-  ```javascript
-  const appInsights = require("applicationinsights");
-  appInsights.setup("<instrumentation_key>");
-  appInsights.start();
-  ```
+   ```javascript
+   const appInsights = require("applicationinsights");
+   appInsights.setup("<instrumentation_key>");
+   appInsights.start();
+   ```
    
-  Instrumentační klíč můžete místo ručního předávání do metody `setup()` nebo `new appInsights.TelemetryClient()` zadat také přes proměnnou prostředí APPINSIGHTS\_INSTRUMENTATIONKEY. Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče.
+   Instrumentační klíč můžete místo ručního předávání do metody `setup()` nebo `new appInsights.TelemetryClient()` zadat také přes proměnnou prostředí APPINSIGHTS\_INSTRUMENTATIONKEY. Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče.
 
-  Další možnosti konfigurace najdete v následujících částech.
+   Další možnosti konfigurace najdete v následujících částech.
 
-  Sadu SDK můžete vyzkoušet bez odesílání telemetrie nastavením `appInsights.defaultClient.config.disableAppInsights = true`.
+   Sadu SDK můžete vyzkoušet bez odesílání telemetrie nastavením `appInsights.defaultClient.config.disableAppInsights = true`.
 
 ### <a name="monitor"></a> Monitorování aplikace
 
@@ -91,15 +85,13 @@ Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node.js a někter
 
 Potom na webu [Azure Portal][portal] přejděte k prostředku Application Insights, který jste vytvořili dříve. V části **Časová osa přehledu** vyhledejte vašich prvních pár datových bodů. Pokud chcete zobrazit podrobnější data, vyberte v grafech různé komponenty.
 
-![První datové body](./media/nodejs/12-first-perf.png)
-
 Pokud chcete zobrazit zjištěnou topologii vaší aplikace, vyberte tlačítko **Mapa aplikace**. Výběrem komponent na mapě zobrazíte další podrobnosti.
 
-![Mapa jedné aplikace](./media/nodejs/06-appinsights_appmap.png)
+![Mapa jedné aplikace](./media/nodejs/application-map-002.png)
 
 Výběrem dalších dostupných zobrazení v části **PROZKOUMÁVÁNÍ** můžete zjistit další informace o vaší aplikaci a řešit problémy.
 
-![Část Prozkoumávání](./media/nodejs/07-appinsights_investigate_blades.png)
+![Část Prozkoumávání](./media/nodejs/007-investigate-pane.png)
 
 #### <a name="no-data"></a>Žádná data?
 

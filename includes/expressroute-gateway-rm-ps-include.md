@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c50e2b082c3181c37e9d129766d4bf400075d5a8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 03a56951b68163a9160cc4a57f15354b5f210eb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410668"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125330"
 ---
 Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odkaz Konfigurace virtuální sítě. Další nastavení a názvy jsou také popsány v tomto seznamu. I když můžeme přidat proměnné na základě hodnot v tomto seznamu, budeme není přímo v žádném z kroků, pomocí tohoto seznamu. Můžete zkopírovat seznam, aby používal jako odkaz, nahraďte hodnoty vlastními.
 
@@ -34,52 +34,52 @@ Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odk
 ## <a name="add-a-gateway"></a>Přidání brány
 1. Připojte se ke svému předplatnému Azure.
 
-  [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
+   [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
 2. Deklarujte proměnné pro účely tohoto cvičení. Nezapomeňte upravit vzorku tak, aby odrážely nastavení, které chcete použít.
 
-  ```azurepowershell-interactive 
-  $RG = "TestRG"
-  $Location = "East US"
-  $GWName = "GW"
-  $GWIPName = "GWIP"
-  $GWIPconfName = "gwipconf"
-  $VNetName = "TestVNet"
-  ```
+   ```azurepowershell-interactive 
+   $RG = "TestRG"
+   $Location = "East US"
+   $GWName = "GW"
+   $GWIPName = "GWIP"
+   $GWIPconfName = "gwipconf"
+   $VNetName = "TestVNet"
+   ```
 3. Store objekt virtuální sítě jako proměnnou.
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
+   ```
 4. Přidáte podsíť brány k virtuální síti. Podsíť brány musí mít název "GatewaySubnet". Měli byste vytvořit podsíť brány, která je/27 nebo větší (/ 26, / 25 atd.).
 
-  ```azurepowershell-interactive
-  Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
-  ```
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
 5. Nastavte konfiguraci.
 
-  ```azurepowershell-interactive
-  $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+   ```
 6. Podsíť brány Store jako proměnnou.
 
-  ```azurepowershell-interactive
-  $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+   ```
 7. Vyžádejte si veřejnou IP adresu. IP adresa je požadována před vytvořením brány. Nelze zadat IP adresu, kterou chcete použít; se přidělí dynamicky. Tuto IP adresu použijete v části s další konfigurací. AllocationMethod musí být dynamické.
 
-  ```azurepowershell-interactive
-  $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
+   ```
 8. Vytvořte konfiguraci brány. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. V tomto kroku musíte zadat konfigurace, který se použije při vytváření brány. Tento krok nevytvoří objektu brány. Podle následující ukázky vytvořte vlastní konfiguraci brány.
 
-  ```azurepowershell-interactive
-  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+   ```
 9. Vytvoření brány. V tomto kroku **- GatewayType** je obzvláště důležité. Je nutné použít hodnotu **ExpressRoute**. Po spuštění těchto rutin, brány může trvat 45 minut nebo více otázek a vytvořit.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
+   ```
 
 ## <a name="verify-the-gateway-was-created"></a>Ověřte, že vytvoření brány
 Pokud chcete ověřit vytvoření brány použijte následující příkazy:

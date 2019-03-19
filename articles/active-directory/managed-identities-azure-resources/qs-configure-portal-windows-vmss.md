@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ab1f046e5ab6c5b777e9253dd21e47fa9d593a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c922e0ef005b0e0b22af32f52d8bf28aff0e9515
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187929"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998693"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím webu Azure portal
 
@@ -59,7 +59,7 @@ Pokud chcete povolit systém přiřadil spravovanou identitu ve škálovací sad
 
 3. V části **přiřazenou systémem**, **stav**vyberte **na** a potom klikněte na tlačítko **Uložit**:
 
-   ![Snímek obrazovky stránky konfigurace](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
+   ![Snímek obrazovky stránky konfigurace](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Odeberte systém přiřadil spravovanou identitu ze škálovací sady virtuálních počítačů
 
@@ -73,7 +73,7 @@ Pokud máte škálovací sady virtuálního počítače, který už je systém p
 
    ![Snímek obrazovky stránky konfigurace](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části se dozvíte, jak přidávat a odebírat spravované identity přiřazené uživateli z virtuálního počítače škálovací sady s použitím webu Azure portal.
 

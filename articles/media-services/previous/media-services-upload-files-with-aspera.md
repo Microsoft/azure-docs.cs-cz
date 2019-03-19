@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f5d47d75e80a583b6613eb36fd3da9c61d707
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 28b6732745947043847ce944243bc87398e159fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892143"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Nahrávání souborů do účtu Media Services pomocí služby Aspera Server On Demand v Azure 
 
@@ -89,44 +89,44 @@ Po přihlášení na webu Azure Marketplace postupujte podle těchto základníc
 
     Následující snímek obrazovky ukazuje vytvoření přístupu. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     Následující snímek obrazovky ukazuje rozhraní sestav využívání na portálu. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>Nahrávání souborů pomocí Aspery
 
 1. Stáhněte a nainstalujte klientský software Aspery:
     
-    * [Modul plug-in prohlížeče](http://downloads.asperasoft.com/connect2/)
-    * [Plně funkční klient](http://downloads.asperasoft.com/en/downloads/2)
+    * [Modul plug-in prohlížeče](https://downloads.asperasoft.com/connect2/)
+    * [Plně funkční klient](https://downloads.asperasoft.com/en/downloads/2)
 
 2. Proveďte svůj první přenos. Abyste mohli k přenosu pomocí přenosové služby Aspera použít klienta Aspery, je třeba provést následující: 
 
-    1. Vytvořit přístupový klíč pomocí portálu Aspera.  
-    2. Stáhnout, nainstalovat a licencovat klienta Aspery (software najdete na portálu Aspera).  
+   1. Vytvořit přístupový klíč pomocí portálu Aspera.  
+   2. Stáhnout, nainstalovat a licencovat klienta Aspery (software najdete na portálu Aspera).  
 
-    >[!NOTE]
-    >Informace o konfiguraci najdete v příručce klienta Aspery.
+      >[!NOTE]
+      >Informace o konfiguraci najdete v příručce klienta Aspery.
     
-    3. Načíst některé informace o účtu úložiště přidruženém k účtu Azure Media Services pomocí webu [Azure Portal](https://portal.azure.com/). Konkrétně název, klíč a název kontejneru objektů blob úložiště, do kterého chcete obsah umístit. 
+   3. Načíst některé informace o účtu úložiště přidruženém k účtu Azure Media Services pomocí webu [Azure Portal](https://portal.azure.com/). Konkrétně název, klíč a název kontejneru objektů blob úložiště, do kterého chcete obsah umístit. 
 
-        * Získání informací o úložišti z portálu: vyhledejte svůj účet úložiště, klikněte na Přístupové klíče a zkopírujte název a klíč účtu.
-        * Získání názvu kontejneru: vyhledejte svůj účet úložiště, vyberte **Objekty blob** a vyberte název kontejneru, do kterého chcete obsah nahrát. 
+       * Získání informací o úložišti z portálu: vyhledejte svůj účet úložiště, klikněte na Přístupové klíče a zkopírujte název a klíč účtu.
+       * Získání názvu kontejneru: vyhledejte svůj účet úložiště, vyberte **Objekty blob** a vyberte název kontejneru, do kterého chcete obsah nahrát. 
 
-    Zde je snímek obrazovky **Správce připojení** klienta Aspery, kde je nutné zadat typ úložiště „Azure“, přihlašovací údaje a kontejner objektů blob.
+      Zde je snímek obrazovky **Správce připojení** klienta Aspery, kde je nutné zadat typ úložiště „Azure“, přihlašovací údaje a kontejner objektů blob.
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>Zdroje a prostředky
 
 V tomto článku byly zmíněny následující zdroje informací. 
 
-* [Modul plug-in prohlížeče Connect](http://downloads.asperasoft.com/connect2/)
-* [Příručka modulu Connect](http://downloads.asperasoft.com/en/documentation/8)
-* [Klient Aspera](http://downloads.asperasoft.com/en/downloads/2)
-* [Příručka klienta](http://downloads.asperasoft.com/en/documentation/2)
+* [Modul plug-in prohlížeče Connect](https://downloads.asperasoft.com/connect2/)
+* [Příručka modulu Connect](https://downloads.asperasoft.com/en/documentation/8)
+* [Klient Aspera](https://downloads.asperasoft.com/en/downloads/2)
+* [Příručka klienta](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>Další postup
 

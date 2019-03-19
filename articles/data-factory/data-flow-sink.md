@@ -3,16 +3,15 @@ title: Azure Data Factory mapování transformace jímky toku dat
 description: Azure Data Factory mapování transformace jímky toku dat
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: dba043721c2d81b7fe2c254f62328e54bb959cdc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729368"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852436"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapování datového toku jímky transformace
 
@@ -35,27 +34,17 @@ Pro Data Lake nebo Azure Storage Blob jímky typy bude výstup Transformovaná d
 
 ![Jímka možnosti](media/data-flow/opt001.png "jímky možnosti")
 
-### <a name="output-settings"></a>Nastavení výstupu
-
-Přepsání vymazat data z tabulky, pokud existuje, znovu ji vytvořte a nahrajte data. Připojte se nové řádky vložit. Pokud tabulky z tabulky název datové sady v cíli rozpoznáno ADW neexistuje vůbec, toku dat zobrazí vytvořit tabulku a načíst data.
-
-Pokud zrušíte zaškrtnutí políčka "Automatické mapy", můžete ho namapovat pole cílové tabulky ručně.
-
-![Jímka rozpoznáno ADW možnosti](media/data-flow/adw2.png "rozpoznáno adw jímky")
-
-#### <a name="field-mapping"></a>Mapování polí
+## <a name="field-mapping"></a>Mapování polí
 
 Na kartě mapování vaší jímky transformace můžete mapování sloupců příchozí (levá strana) na cílovém umístění (pravá strana). Když jímky toků dat k souborům, ADF vždy psát nové soubory do složky. Při připojování k datové sadě databáze, můžete buď vygenerovat novou tabulku s toto schéma (nastavená na "přepsat" uložení zásad) nebo nové řádky vložit do existující tabulky a mapování polí do existující schéma.
 
 Vícenásobný výběr v tabulce mapování můžete propojit více sloupců s jedním kliknutím, zrušit odkaz více sloupců nebo mapovat více řádků na stejný název sloupce.
 
+Když chcete vždy přijmout příchozí sada polí a jejich namapování na cíl jako-nastavena, nastavení "Povolit schématu odchylek".
+
 ![Mapování polí](media/data-flow/multi1.png "více možností")
 
 Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování" Chcete-li obnovit mapování.
-
-![Připojení](media/data-flow/maxcon.png "připojení")
-
-### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>Aktualizace do jímky transformaci pro verzi GA ADF V2
 
 ![Jímka možnosti](media/data-flow/sink1.png "jímky jeden")
 
@@ -65,9 +54,9 @@ Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování"
 
 * Vymažte složce. ADF bude obsah složky jímky zkrátit před zápisem cílové soubory v této cílové složky.
 
-* Možnosti názvu souboru
+## <a name="file-name-options"></a>Možnosti názvu souboru
 
-   * Výchozí: Spark umožňuje soubory název založeném na výchozím nastavení součástí
+   * Výchozí hodnota: Spark umožňuje soubory název založeném na výchozím nastavení součástí
    * Vzor: Zadejte název výstupních souborů
    * Na oddíl: Zadejte název souboru na oddíl
    * Jako data ve sloupci: Nastavte na hodnotu sloupce výstupního souboru
@@ -75,14 +64,19 @@ Pokud chcete obnovit mapování sloupců, stiskněte tlačítko "Přemapování"
 > [!NOTE]
 > Operace se soubory se spustí, jenom Pokud spouštíte aktivitu spuštění toku dat, není v režimu tok dat ladění
 
-Typ jímky SQL můžete nastavit:
+## <a name="database-options"></a>Možnosti databáze
 
-* Truncate table
-* Vytvořte tabulku (provádí přetažení a vytváření)
-* Velikost dávky pro načítání velkých objemů dat Zadejte číslo do kbelíku zápisy do bloků.
+* Povolte insert, update, delete, upsertuje. Výchozí hodnota je umožňující vložení. Pokud chcete aktualizace funkcí upsert a vložit řádky, musí nejprve přidat transformaci alter řádek do řádků značky pro tyto konkrétní akce.
+* Truncate table (odebere všechny řádky z cílové tabulce před dokončením toku dat)
+* Vytvořte tabulku (provádí rozevírací/vytvoření cílové tabulky před dokončením toku dat)
+* Velikost dávky pro načítání velkých objemů dat Zadejte číslo do kbelíku zápisy do bloků dat
+* Zapnout pracovní režim: To bude dát pokyn ADF pomocí Polybase při načítání Azure Data Warehouse jako datové sady jímky
 
-![Mapování polí](media/data-flow/sql001.png "možnosti SQL")
+![SQL jímky možnosti](media/data-flow/alter-row2.png "možnosti SQL")
+
+> [!NOTE]
+> Při aktualizaci nebo odstraňování řádků v databázi pro jímku, je nutné nastavit klíčový sloupec. Tímto způsobem Alter řádek je schopna určit jedinečném řádku v DML.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste vytvořili tok dat, přidejte [aktivitu spuštění toku dat do kanálu](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).
+Teď, když jste vytvořili tok dat, přidejte [aktivitu spuštění toku dat do kanálu](concepts-data-flow-overview.md).

@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/14/2019
-ms.openlocfilehash: 4b5934123f5bb7fa9eaa2c67c212bcef2a5de0aa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 01115524ae3890c1d6a0220bcf89e86090d148cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078869"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Rychlý start: Ingestování dat z Logstash do Průzkumníku dat Azure
 
@@ -108,7 +108,7 @@ output {
 ```
 
 | Název parametru | Popis |
-| --- | --- | --- |
+| --- | --- |
 | **Cesta** | Modul plug-in zapisuje události do dočasné soubory před jejich odesláním do Průzkumníku dat Azure. Tento parametr obsahuje cestu, kam by měly být zapsány soubory a výrazu času pro rotaci souborů k aktivaci nahrávání ve službě Průzkumník dat Azure.|
 | **ingest_url** | Kusto koncový bod pro komunikaci týkající se přijímání.|
 | **app_id**, **app_key**, a **app_tenant**| Přihlašovací údaje požadované pro připojení do Průzkumníku dat Azure. Nezapomeňte použít aplikace s oprávněními pro ingestování. |

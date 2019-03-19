@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50b8f6c54cbefde2120dd61643c23f5175927c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8706e839005d43ab9fa2662d13d7d3c3994c136
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077747"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Kurz: Archivovat protokoly služby Azure AD do účtu služby Azure storage (preview)
 
@@ -45,11 +45,11 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 3. Vyberte **Exportovat nastavení**. 
 
 4. V podokně **Nastavení diagnostiky** proveďte jednu z následujících akcí:
-    * Pokud chcete změnit stávající nastavení, vyberte **Upravit nastavení**.
-    * Pokud chcete přidat nové nastavení, vyberte **Přidat nastavení diagnostiky**.  
-      Můžete mít až tři nastavení. 
+   * Pokud chcete změnit stávající nastavení, vyberte **Upravit nastavení**.
+   * Pokud chcete přidat nové nastavení, vyberte **Přidat nastavení diagnostiky**.  
+     Můžete mít až tři nastavení. 
 
-    ![Export nastavení](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![Export nastavení](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. Zadejte pro nastavení popisný název, který vám bude připomínat jeho účel (například *Odeslání do účtu úložiště Azure*). 
 

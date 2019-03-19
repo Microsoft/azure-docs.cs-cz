@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 689f9ccc12769ac93f30d112b3f6066d509d93e1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544490"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075164"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu Site-to-Site pomocí Azure virtuální sítě WAN
 
@@ -64,12 +64,12 @@ Můžete vytvořit libovolný počet lokalit odpovídajících fyzickým umíst�
 2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
 3. Na stránce **Create site** (Vytvořit lokalitu) zadejte údaje do následujících polí:
 
-  * **Name** (Název) – název, kterým chcete odkazovat na místní lokalitu.
-  * **Public IP address** (Veřejná IP adresa) – veřejná IP adresa zařízení VPN, které se nachází v místní lokalitě.
-  * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality.
-  * **Subscription** (Předplatné) – ověřte předplatné.
-  * **Resource Group** (Skupina prostředků) – skupina prostředků, kterou chcete použít.
-  * **Umístění**.
+   * **Name** (Název) – název, kterým chcete odkazovat na místní lokalitu.
+   * **Public IP address** (Veřejná IP adresa) – veřejná IP adresa zařízení VPN, které se nachází v místní lokalitě.
+   * **Private address space** (Privátní adresní prostor) – prostor IP adres, který se nachází v místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality.
+   * **Subscription** (Předplatné) – ověřte předplatné.
+   * **Resource Group** (Skupina prostředků) – skupina prostředků, kterou chcete použít.
+   * **Umístění**.
 4. Další nastavení zobrazíte kliknutím na **Show advanced** (Zobrazit rozšířené nastavení). Výběrem možnosti **BGP** můžete povolit BGP. Tím se tato funkce povolí pro všechna připojení vytvořená pro tuto lokalitu v Azure. Můžete také zadat **Informace o zařízení** (volitelná pole). Týmu Azure to může pomoct lépe pochopit vaše prostředí a v budoucnu přidávat další možnosti optimalizace, případně vám asistovat při řešení potíží.
 5. Klikněte na **Confirm** (Potvrdit).
 6. Po kliknutí na **Potvrdit** se podívejte na stav na stránce Lokality VPN. Stav lokality se změní ze **Zřizování** na **Zřízeno**.

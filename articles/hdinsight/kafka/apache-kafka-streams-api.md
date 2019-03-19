@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112785"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Apache Kafka streams API
 
@@ -199,13 +199,13 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Témata slouží k následujícím účelům:
 
-    * `test`: Toto téma je, kde jsou přijímány záznamy. Odtud čte data aplikace streamování.
-    * `wordcounts`: Toto téma je, kde streamování aplikace ukládá svůj výstup.
-    * `RekeyedIntermediateTopic`: V tomto tématu se používá k znovu rozdělovat data, jako je počet aktualizovat `countByKey` operátor.
-    * `wordcount-example-Counts-changelog`: Toto téma je stav úložiště používané konvencemi `countByKey` operace
+   * `test`: Toto téma je, kde jsou přijímány záznamy. Odtud čte data aplikace streamování.
+   * `wordcounts`: Toto téma je, kde streamování aplikace ukládá svůj výstup.
+   * `RekeyedIntermediateTopic`: V tomto tématu se používá k znovu rozdělovat data, jako je počet aktualizovat `countByKey` operátor.
+   * `wordcount-example-Counts-changelog`: Toto téma je stav úložiště používané konvencemi `countByKey` operace
 
-    > [!IMPORTANT]  
-    > Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
+     > [!IMPORTANT]  
+     > Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Spuštění kódu
 

@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/08/2018
 ms.author: mjbrown
-ms.openlocfilehash: 374bc040cf43f89899bbe1fc5b0835cff187ec9b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037595"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998620"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup registrace a použití uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB
 
-Rozhraní SQL API ve službě Azure Cosmos DB podporuje registrace a vyvolání uložené procedury, triggery a uživatelem definované funkce (UDF) napsané v jazyce JavaScript. Můžete použít rozhraní SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md) nebo [Python](sql-api-sdk-python.md) sady SDK k registraci a volání uložené procedury. Pokud jste definovali jeden nebo více uložené procedury, triggery a uživatelem definované funkce, můžete načíst a zobrazit v [webu Azure portal](https://portal.azure.com/) pomocí Průzkumníku dat.
+Rozhraní SQL API ve službě Azure Cosmos DB podporuje registrace a vyvolání uložené procedury, triggery a uživatelem definované funkce (UDF) napsané v jazyce JavaScript. Můžete použít rozhraní SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md), nebo [Python](sql-api-sdk-python.md) sady SDK k registraci a volání uložené procedury. Pokud jste definovali jeden nebo více uložené procedury, triggery a uživatelem definované funkce, můžete načíst a zobrazit v [webu Azure portal](https://portal.azure.com/) pomocí Průzkumníku dat.
 
 ## <a id="stored-procedures"></a>Spuštění uložených procedur
 
-Uložené procedury jsou zapsány pomocí jazyka JavaScript. Uživatelé moct vytvářet, aktualizovat, číst, dotazu a odstraňovat položky v rámci kontejneru Azure Cosmos. Další informace o tom, jak psát uložených procedurách najdete v tématu služby Azure Cosmos DB [jak psát uložené procedury ve službě Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) článku.
+Uložené procedury jsou zapsány pomocí jazyka JavaScript. Uživatelé moct vytvářet, aktualizovat, číst, dotazu a odstraňovat položky v rámci kontejneru Azure Cosmos. Další informace o tom, jak psát uložené procedury ve službě Azure Cosmos DB najdete v tématu [jak psát uložené procedury ve službě Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) článku.
 
 Následující příklady ukazují, jak zaregistrovat a volání uložené procedury s použitím se sadami SDK služby Azure Cosmos DB. Odkazovat na [vytvořit dokument](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru se uloží jako `spCreateToDoItem.js`.
 
@@ -423,7 +423,7 @@ Následující příklady ukazují, jak zaregistrovat uživatelem definované fu
 Následující kód ukazuje, jak zaregistrovat uživatelem definované funkce pomocí sady .NET SDK:
 
 ```csharp
-string udfId = "udfTax";
+string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
@@ -439,7 +439,7 @@ Následující kód ukazuje, jak volat uživatelsky definované funkce pomocí s
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
-var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000"));
+var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000"));
 
 foreach (var result in results)
 {
@@ -453,7 +453,7 @@ Následující kód ukazuje, jak zaregistrovat uživatelem definované funkce po
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String udfId = "udfTax";
+String udfId = "Tax";
 UserDefinedFunction udf = new UserDefinedFunction();
 udf.setId(udfId);
 udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js", udfId)))));
@@ -465,7 +465,7 @@ Následující kód ukazuje, jak volat uživatelsky definované funkce pomocí s
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000", new FeedOptions());
+Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000", new FeedOptions());
 final CountDownLatch completionLatch = new CountDownLatch(1);
 queryObservable.subscribe(
         queryResultPage -> {
@@ -491,7 +491,7 @@ Následující kód ukazuje, jak zaregistrovat uživatelem definované funkce po
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const udfId = "udfTax";
+const udfId = "Tax";
 await container.userDefinedFunctions.create({
     id: udfId,
     body: require(`../js/${udfId}`)
@@ -501,7 +501,7 @@ Následující kód ukazuje, jak volat uživatelsky definované funkce pomocí s
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sql = "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000";
+const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
@@ -514,7 +514,7 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'trgPostUpdateMetadata',
+            'id': 'Tax',
             'serverScript': file_contents,
         }
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
@@ -524,7 +524,7 @@ Následující kód ukazuje, jak volat uživatelsky definované funkce pomocí s
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000'))
+results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>Další postup

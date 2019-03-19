@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 6659b49ecfbcb6bf571fccc258a65aa547f72f86
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453809"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012342"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -32,7 +32,7 @@ S nejnovější verzí cloudového rozhraní API Chef poskytuje bezproblémovou 
 V tomto článku se nastavení prostředí Chef ke zřízení virtuálních počítačů Azure a vás provedou vytvořením zásady nebo "Kuchařka" a poté nasaďte tento kuchařka pro virtuální počítač Azure.
 
 ## <a name="chef-basics"></a>Základní informace o chefu
-Než začnete, [přečtěte si o základních konceptech služby Chef](http://www.chef.io/chef).
+Než začnete, [přečtěte si o základních konceptech služby Chef](https://www.chef.io/chef).
 
 Následující diagram znázorňuje základní architektura Chef.
 

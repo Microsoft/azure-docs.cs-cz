@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901266"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Síť detekce neoprávněných vniknutí pomocí opensourcových nástrojů a Network Watcher
 
@@ -39,7 +39,7 @@ Obě open source nástrojů lze nastavit na Virtuálním počítači Azure, abys
 
 ### <a name="install-suricata"></a>Nainstalujte Suricata
 
-Všechny ostatní metody instalace najdete na webu http://suricata.readthedocs.io/en/latest/install.html
+Všechny ostatní metody instalace najdete na webu https://suricata.readthedocs.io/en/latest/install.html
 
 1. V terminálu příkazového řádku vašeho virtuálního počítače spusťte následující příkazy:
 
@@ -58,7 +58,7 @@ V této fázi nemáme všechna pravidla pro Suricata ke spuštění. Můžete vy
 Stáhněte si sadu pravidel a zkopírujte do adresáře:
 
 ```
-wget http://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
+wget https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
 tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```

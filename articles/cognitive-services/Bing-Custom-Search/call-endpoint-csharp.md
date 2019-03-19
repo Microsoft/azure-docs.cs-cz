@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: bf3c556d93bc9b2769cd5fe9259c5994adfcc0f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a775c1c864a8a5513be546195da5c0891f8bb1f6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539305"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849393"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání BinguC# 
 
@@ -24,7 +24,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
 ## <a name="prerequisites"></a>Požadavky
 
 - Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
-- Microsoft [.Net Core](https://www.microsoft.com/net/download/core)
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Any edition of [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 - Nainstalovaný balíček [NuGet pro vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
@@ -102,7 +102,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
+   ## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
 
 1. Iterujte přes objekt odpovědi k zobrazení informací o jednotlivých výsledek hledání, včetně názvu, adresu url a datum, byl naposledy procházen webovou stránku.
 

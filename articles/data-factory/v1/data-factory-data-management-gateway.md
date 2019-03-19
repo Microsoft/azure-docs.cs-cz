@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9008c98a086ed2d45b7339fa3f76b33240789db8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102447"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -93,7 +93,7 @@ Brána správy dat lze nainstalovat následujícím způsobem:
 
 ### <a name="install-the-gateway-from-download-center"></a>Instalace brány ze služby Stažení softwaru
 1. Přejděte do [stránku pro stažení brány správy dat Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Klikněte na tlačítko **Stáhnout**, vyberte odpovídající verzi (**32-bit** vs. **64-bit**) a klikněte na tlačítko **Další**.
+2. Klikněte na tlačítko **Stáhnout**, vyberte **64-bit** verze (32 bitů je podporovaná žádných dalších) a klikněte na tlačítko **Další**.
 3. Spustit **MSI** přímo nebo uložit na pevný disk a spusťte.
 4. Na **úvodní** stránce **jazyk** klikněte na tlačítko **Další**.
 5. **Přijměte** licenční smlouvu a klikněte na tlačítko **Další**.
@@ -291,7 +291,7 @@ Můžete zakázat nebo povolit funkci Automatické aktualizace provedením násl
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-[Pro vysoce dostupnou a škálovatelnou bránu několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
+   [Pro vysoce dostupnou a škálovatelnou bránu několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Spusťte Windows PowerShell na počítači brány.
 2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
 3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).
@@ -467,7 +467,7 @@ K šifrování přihlašovacích údajů v editoru služby Data Factory, proveď
         }
     }
     ```
-Pokud přístup k portálu z počítače, který se liší od počítače brány, musí se ujistěte, zda aplikace Správce přihlašovacích údajů může připojit k počítači brány. Pokud aplikace nemá přístup počítači brány, nepovoluje se nastavit přihlašovací údaje pro zdroj dat a chcete otestovat připojení ke zdroji dat.
+   Pokud přístup k portálu z počítače, který se liší od počítače brány, musí se ujistěte, zda aplikace Správce přihlašovacích údajů může připojit k počítači brány. Pokud aplikace nemá přístup počítači brány, nepovoluje se nastavit přihlašovací údaje pro zdroj dat a chcete otestovat připojení ke zdroji dat.
 
 Při použití **nastavení přihlašovacích údajů** aplikace, na portálu šifruje přihlašovací údaje s certifikát uvedený v **certifikát** karty **Správce konfigurace brány**  na počítači brány.
 
@@ -511,7 +511,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V prostředí Azure PowerShell přejděte do složky: **C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
+1. V prostředí Azure PowerShell přejděte do složky: **C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -529,7 +529,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
     ```PowerShell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-Můžete odebrat bránu pomocí **odebrat AzDataFactoryGateway** brány pomocí rutiny a aktualizace popis **Set-AzDataFactoryGateway** rutiny. Syntaxe a další podrobnosti o těchto rutinách najdete v tématu Reference k rutinám Data Factory.  
+   Můžete odebrat bránu pomocí **odebrat AzDataFactoryGateway** brány pomocí rutiny a aktualizace popis **Set-AzDataFactoryGateway** rutiny. Syntaxe a další podrobnosti o těchto rutinách najdete v tématu Reference k rutinám Data Factory.  
 
 ### <a name="list-gateways-using-powershell"></a>Seznam Gateway pomocí Powershellu
 

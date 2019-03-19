@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964108"
 ---
 Každý klientský počítač, který můžete připojit k virtuální síti pomocí připojení Point-to-Site musí mít nainstalovaný certifikát klienta. Generovat z kořenového certifikátu a nainstalujte ho na každý klientský počítač. Pokud nechcete nainstalovat platný klientský certifikát, ověření se nezdaří, když se klient pokusí připojit k virtuální síti.
 
@@ -22,7 +22,7 @@ Klientské certifikáty můžete vygenerovat pomocí následujících metod:
 
 - **Podnikový certifikát:**
 
-  - Pokud používáte podnikové certifikační řešení, vygenerujte klientský certifikát s běžným názvem formátu *name@yourdomain.com*. Použijte tento formát místo *domény\uživatelské jméno* formátu.
+  - Pokud používáte podnikové certifikační řešení, vygenerujte klientský certifikát s běžným názvem formátu *název\@vasedomena.com*. Použijte tento formát místo *domény\uživatelské jméno* formátu.
   - Ujistěte se, že klientský certifikát je založen na šabloně certifikátu uživatele, který má *ověření klienta* uvedená jako první položku v seznamu uživatelů. Zkontrolujte certifikát tak, že na něj kliknuli dvakrát a zobrazení **rozšířené použití klíče** v **podrobnosti** kartu.
 
 - **Certifikát podepsaný svým držitelem:** Postupujte podle pokynů v některém z následujících článků P2S tak, aby klientské certifikáty, které vytvoříte, budou kompatibilní s připojení P2S. Kompatibilní klientský certifikát můžete vytvořit postupu v těchto článcích: 

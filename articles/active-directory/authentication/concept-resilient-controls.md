@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082139"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -94,18 +94,18 @@ Vaše organizace také můžete vytvořit taky zásady řešení nepředvídaný
 Principy vystavení během přerušení pomáhá snižovat riziko a je zásadní součástí procesu plánování. Chcete-li vytvořit plán řešení nepředvídaných událostí, nejprve určete následující podnikové požadavky vaší organizace:
 
 1. Určení vaší stěžejní aplikace předem: Co jsou aplikace, je nutné udělit přístup, i s nižší stav rizika/zabezpečení? Sestavte seznam těchto aplikací a ujistěte se, že vaše další zainteresované uživatele (business, zabezpečení, právní, vedení) všechny svůj souhlas, že pokud všechny řízení přístupu zmizí, tyto aplikace stále nemusí dál běžet. Pravděpodobně budete za účelem s kategorií:
-  * **Kategorie 1 stěžejní aplikace** , který nemůže být více než několik minut, například aplikace, které mají bezprostřední vliv na výnosy z organizace není k dispozici.
-  * **Kategorie 2 důležitých aplikací** , podnik musí být přístupné během pár hodin.
-  * **Aplikace s nízkou prioritou kategorie 3** , který dokázal zvládnout situaci přerušení několik dní.
+   * **Kategorie 1 stěžejní aplikace** , který nemůže být více než několik minut, například aplikace, které mají bezprostřední vliv na výnosy z organizace není k dispozici.
+   * **Kategorie 2 důležitých aplikací** , podnik musí být přístupné během pár hodin.
+   * **Aplikace s nízkou prioritou kategorie 3** , který dokázal zvládnout situaci přerušení několik dní.
 2. Pro aplikace v kategorii 1 a 2 Microsoft doporučuje že dopředu plánovat, jaké úroveň přístupu, která chcete povolit:
-  * Opravdu chcete povolit úplný přístup, nebo s omezeným přístupem relace, jako jsou omezení soubory ke stažení?
-  * Opravdu chcete povolit přístup k části aplikace, ale ne celou aplikaci?
-  * Opravdu chcete povolit přístup k informacím pracovního procesu a blokovat přístup správce, dokud se obnovení řízení přístupu?
+   * Opravdu chcete povolit úplný přístup, nebo s omezeným přístupem relace, jako jsou omezení soubory ke stažení?
+   * Opravdu chcete povolit přístup k části aplikace, ale ne celou aplikaci?
+   * Opravdu chcete povolit přístup k informacím pracovního procesu a blokovat přístup správce, dokud se obnovení řízení přístupu?
 3. Pro tyto aplikace Microsoft také doporučuje že naplánovat cesty, které vedoucí přístupu záměrně otevřete a ty, které se zavře:
-  * Opravdu chcete povolit prohlížeči pouze přístupu a blokovat bohatých klientů, které můžete uložit data v režimu offline?
-  * Opravdu chcete povolit přístup jenom pro uživatele v podnikové síti a zachovat mimo uživatelům Zablokovaná?
-  * Opravdu chcete povolit přístup z určitých zemí nebo oblastí pouze během narušení?
-  * Chcete, aby zásady, které řešení nepředvídaných událostí zásady, zejména u zásadně důležitých aplikací, neúspěšné nebo úspěšné, pokud ovládací prvek alternativní přístup není k dispozici?
+   * Opravdu chcete povolit prohlížeči pouze přístupu a blokovat bohatých klientů, které můžete uložit data v režimu offline?
+   * Opravdu chcete povolit přístup jenom pro uživatele v podnikové síti a zachovat mimo uživatelům Zablokovaná?
+   * Opravdu chcete povolit přístup z určitých zemí nebo oblastí pouze během narušení?
+   * Chcete, aby zásady, které řešení nepředvídaných událostí zásady, zejména u zásadně důležitých aplikací, neúspěšné nebo úspěšné, pokud ovládací prvek alternativní přístup není k dispozici?
 
 #### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
 
@@ -251,7 +251,7 @@ Vrátit zpět změny provedené v rámci aktivované plán řešení nepředvíd
 Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můžete zvážit následující alternativní:
 
 1. Pokud máte podnikové síti odchozí IP adresa, můžete je přidat jako důvěryhodné IP adresy, pokud chcete povolit ověřování pouze k podnikové síti.
- 2. Pokud nemáte inventáře odchozí IP adresy nebo vyžaduje pro povolení přístupu uvnitř i mimo podnikovou síť, můžete přidat celého adresního prostoru IPv4 jako důvěryhodné IP adresy zadáním 0.0.0.0/1 a 128.0.0.0/1.
+   1. Pokud nemáte inventáře odchozí IP adresy nebo vyžaduje pro povolení přístupu uvnitř i mimo podnikovou síť, můžete přidat celého adresního prostoru IPv4 jako důvěryhodné IP adresy zadáním 0.0.0.0/1 a 128.0.0.0/1.
 
 >[!IMPORTANT]
  > Pokud můžete rozšířit důvěryhodné IP adresy pro odblokování přístupu, nebude vygenerováno rizikové události přidružené IP adresy (například neuskutečnitelné cesty nebo neznámých míst).
@@ -264,9 +264,9 @@ Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můž
 * [Dokumentace ke službě Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Konfigurace pojmenovaných umístění ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Jak nakonfigurovat zařízení Azure Active Directory připojená k hybridní](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Průvodce nasazením Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [Heslo – doprovodné materiály týmem Microsoft Research.](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [Heslo – doprovodné materiály týmem Microsoft Research.](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Jaké jsou podmínky podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

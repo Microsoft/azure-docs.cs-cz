@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391517"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168703"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Použití Distcp ke kopírování dat mezi objekty BLOB Azure Storage a Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -33,9 +33,6 @@ Pokud máte cluster HDInsight s přístupem k Azure Data Lake Storage Gen1, mů�
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen1. Zobrazit [vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
-
-## <a name="do-you-learn-fast-with-videos"></a>Pomáhají vám při učení videa?
-[V tomto videu](https://mix.office.com/watch/1liuojvdx6sie) o tom, jak kopírovat data mezi objekty BLOB Azure Storage a Data Lake Storage Gen1 pomocí DistCp.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití Distcp z clusteru HDInsight Linux
 
@@ -79,7 +76,7 @@ Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximáln�
 
 Tady je několik rad, kterými se můžete řídit.
 
-* **Krok 1: Určení celkové paměti YARN** -prvním krokem je určit, k dispozici pro cluster, kde spouštíte úlohy DistCp YARN paměti. Tyto informace jsou k dispozici na portálu Ambari přidružené ke clusteru. Přejděte na YARN a zobrazte kartu Konfigurace pro zobrazení paměti YARN. Chcete-li získat celkové paměti YARN, vynásobte paměti YARN na uzel s počtem uzlů, že máte ve vašem clusteru.
+* **Krok 1: Určit celkové paměti YARN** -prvním krokem je určit, k dispozici pro cluster, kde spouštíte úlohy DistCp YARN paměti. Tyto informace jsou k dispozici na portálu Ambari přidružené ke clusteru. Přejděte na YARN a zobrazte kartu Konfigurace pro zobrazení paměti YARN. Chcete-li získat celkové paměti YARN, vynásobte paměti YARN na uzel s počtem uzlů, že máte ve vašem clusteru.
 
 * **Krok 2: Vypočítat počet mapovačů** – hodnota **m** rovná podíl celkové paměti YARN děleného velikostí kontejneru YARN. Informace o velikosti kontejneru YARN je k dispozici na portálu Ambari. Přejděte na YARN a zobrazit na kartě konfigurace. V tomto okně je zobrazena velikost kontejneru YARN. Rovnice, můžete přejít na počet mapovačů (**m**) je
 

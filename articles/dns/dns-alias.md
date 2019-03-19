@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446089"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105052"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -58,7 +58,7 @@ Toto omezení představuje problém pro počet vlastníků aplikace, kteří maj
 
 Tento problém můžete vyřešit pomocí záznamů aliasů. Na rozdíl od záznamů CNAME alias záznamy se dají vytvářet ve vrcholu zóny a vlastníky aplikace. můžete ji použít k jejich záznamu vrcholu zóny přejděte na profil Traffic Manageru, který má externí koncové body. Počet vlastníků aplikace může odkazovat na stejný profil Traffic Manageru, který se používá u všech ostatních domén v rámci jejich zóny DNS.
 
-Například contoso.com a www.contoso.com může odkazovat na stejný profil Traffic Manageru. Další informace o záznamů aliasů pomocí profilů Azure Traffic Manageru, najdete v části Další kroky.
+Například contoso.com a www\.contoso.com může odkazovat na stejný profil Traffic Manageru. Další informace o záznamů aliasů pomocí profilů Azure Traffic Manageru, najdete v části Další kroky.
 
 ## <a name="next-steps"></a>Další postup
 

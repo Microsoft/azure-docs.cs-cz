@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 4963114f3646453510e20c7071157c952e52c40f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: e7d01a6512c2d39c86da9f7020aa3988c9680c6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995226"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
 
@@ -31,7 +31,7 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 | [Data sčítání USA](https://www.census.gov/data.html) | Statistická data o populaci USA | Datové sady jsou v různých formátech. |
 | [Data Earth science z NASA](https://earthdata.nasa.gov/) | Zemědělství, prostředí, biosféra, klimatu, cryosphere, lidské dimenze, hydrosféra, pozemního surface, oceánů, sun earth interakce, a další kolekce více než 32 000 data. | Datové sady jsou v různých formátech. |
 | [Zpoždění letů letecká společnost a další data doprava](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "USA Ministerstva dopravy vaší kanceláře sleduje Transportation statistiky (BTS) o včasných odletech domácí letů provozovaný ve vzduchu velký prostředníci (tečka). Souhrnné informace o počtu včas, opožděné, zrušené a odkloněných lety se zobrazí... v souhrnné tabulky zveřejňované na tomto webu." | Soubory jsou ve formátu CSV. |
-| [Provoz úmrtí - nám Fatality analýzy generování sestav System (FARS)](http://www.nhtsa.gov/FARS) | "FARS je celostátní sčítání poskytuje NHTSA kongresu, a American veřejné roční data týkající se schopnost se zranit při závažné utrpělo v vozidla selhání provozu." | "Vytvořit svoje vlastní data fatality spustíte online s použitím systému FARS dotazu. Nebo si stáhněte všechna data FARS z 1975 zobrazíte ze serveru FTP." |
+| [Provoz úmrtí - nám Fatality analýzy generování sestav System (FARS)](https://www.nhtsa.gov/FARS) | "FARS je celostátní sčítání poskytuje NHTSA kongresu, a American veřejné roční data týkající se schopnost se zranit při závažné utrpělo v vozidla selhání provozu." | "Vytvořit svoje vlastní data fatality spustíte online s použitím systému FARS dotazu. Nebo si stáhněte všechna data FARS z 1975 zobrazíte ze serveru FTP." |
 | [Toxické chemických dat – data EPA Toxicity uživatel (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA pro většinu aktualizace, data veřejně dostupné toxicity vysokou propustností na tisíce chemikálií. Tato data je generován pomocí úsilí v oblasti výzkumu EPA ToxCast." | Datové sady jsou k dispozici v různých formátech, včetně tabulek, balíčky R a soubory databáze MySQL. |
 | [Toxické chemických dat – NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 Tox21 data před obrovskou výzvou – slouží k pochopení potenciál chemikálií a sloučeniny testován prostřednictvím toxikologie v rámci iniciativy 21st Century narušit biologické cest takovým způsobem, který může mít za následek toxické účinky odborníci přes." | Datové sady jsou k dispozici v ÚSMĚVY a SDF formátů. Poskytuje data "stanovení obsahu data aktivit a chemických struktury v kolekci Tox21 sloučeniny ~ 10 000 (Tox21 10 kB)." |
 | [Biotechnologie a genomu data z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Více datových sad pokrývá genů genomů a bílkovin. | Datové sady jsou v textu, XML, DOSAH a dalších formátech. VÝBUCHU aplikace je k dispozici. |
@@ -42,12 +42,12 @@ Projdete seznam veřejných datových sadách pro data, která vám pomůže se 
 |---|---|---|
 | [New York City taxi data](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr dropoff data/časy odběr a dropoff umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počítá ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
 | [Microsoft Research datové sady – "Datové vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Více datových sad, interakce s počítačem, zvuk/video, načítání dat dolování nebo informace, Geoprostorové/umístění, zpracování přirozeného jazyka a pro robotiku a počítačové zpracování obrazu. | Datové sady jsou v různých formátech, ZIP ke stažení. |
-| [Data veřejného genomu](http://www.completegenomics.com/public-data/) | "Různorodé datové sady plné lidské genomů jsou volně dostupných veřejně přístupný pro zvýšení jakékoli genomický studie..." Privátní komerční corporation je poskytovatel, dokončení Genomics. | Po extrakci, nastavení datových sad a jsou v textovém formátu UNIX. Nástroje pro analýzu jsou také k dispozici. |
+| [Data veřejného genomu](https://www.completegenomics.com/public-data/) | "Různorodé datové sady plné lidské genomů jsou volně dostupných veřejně přístupný pro zvýšení jakékoli genomický studie..." Privátní komerční corporation je poskytovatel, dokončení Genomics. | Po extrakci, nastavení datových sad a jsou v textovém formátu UNIX. Nástroje pro analýzu jsou také k dispozici. |
 | [Open Science Data Cloud data](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |
-| [Globální klimatu dat – WorldClim](http://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](http://worldclim.org/formats1). |
-| [Data o lidských společnosti - GDELT projekt](http://www.gdeltproject.org/data.html) | "GDELT projektu je největší, nejúplnější a nejvyšší řešení otevřít databázi lidské společnosti, kdy byly vytvořeny." | Soubory nezpracovaná data jsou ve formátu CSV. |
-| [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
-| [ClueWeb09 text dolování datové sady z Lemur projekt](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 datové sady bylo vytvořeno pro podporu research na načítání informací a související jazyk lidské technologie. Skládá se z přibližně 1 miliardy webových stránek v 10 jazycích, které byly shromážděny v lednu a únor 2009." | Zobrazit [informací o datové sadě](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
+| [Globální klimatu dat – WorldClim](https://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](https://worldclim.org/formats1). |
+| [Data o lidských společnosti - GDELT projekt](https://www.gdeltproject.org/data.html) | "GDELT projektu je největší, nejúplnější a nejvyšší řešení otevřít databázi lidské společnosti, kdy byly vytvořeny." | Soubory nezpracovaná data jsou ve formátu CSV. |
+| [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [ClueWeb09 text dolování datové sady z Lemur projekt](https://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 datové sady bylo vytvořeno pro podporu research na načítání informací a související jazyk lidské technologie. Skládá se z přibližně 1 miliardy webových stránek v 10 jazycích, které byly shromážděny v lednu a únor 2009." | Zobrazit [informací o datové sadě](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Data online služby
 

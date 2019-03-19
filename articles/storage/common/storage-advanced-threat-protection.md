@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/14/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 5147db952e885cb404c1f1fe646c940e45331ccd
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133225"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -22,7 +22,9 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje da
 Pokud dojde k anomálie v aktivitě se aktivují upozornění zabezpečení.  Tyto výstrahy zabezpečení jsou integrované s [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány e-mailem správci předplatného s podrobnostmi o podezřelé aktivitě a doporučení o tom, jak vyšetřením a odstraněním hrozeb.
 
 > [!NOTE]
-> Rozšířená ochrana před internetovými útoky pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob. Podrobnosti o nový cenový model je k dispozici v [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) cenách, včetně možnosti pro zkušební období, během prvních 30 dnů bez poplatků.
+> * Rozšířená ochrana před internetovými útoky pro Azure Storage je momentálně dostupná jenom pro úložiště objektů Blob. 
+> * Podrobnosti o nový cenový model je k dispozici v [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) cenách, včetně možnosti pro zkušební období, během prvních 30 dnů bez poplatků. 
+> * Ochrana ATP v programu pro funkce Azure storage není aktuálně dostupná v oblastech suverénních cloudů a Azure government.
 
 Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje diagnostické protokoly pro čtení, zápisu a žádosti o odstranění do úložiště objektů Blob pro detekci hrozeb. K prozkoumání výstrahy z rozšířené ochrany před internetovými útoky, můžete zobrazit aktivitu související úložiště pomocí Storage Analytics protokolování. Další informace najdete v tématu Jak [konfigurace protokolování Storage Analytics](storage-monitor-storage-account.md#configure-logging).
 
@@ -56,12 +58,13 @@ Příkazy rozhraní Rest API k vytvoření, aktualizaci nebo získat nastavení 
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Rozšířená ochrana před internetovými útoky - Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-<!-- ### Using Azure PowerShell-->
-<!--   -->
-<!-- Use the following PowerShell cmdlets:-->
-<!-- * Enable Advanced Threat Protection-->
-<!-- * Get Advanced Threat Protection -->
-<!--* Disable Advanced Threat Protection -->
+### <a name="using-azure-powershell"></a>Použití Azure Powershell
+
+Pomocí následujících rutin prostředí PowerShell:
+
+  * [Povolit rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [Získáte tak rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+  * [Zakázat rozšířené ochrany před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ## <a name="explore-security-anomalies"></a>Prozkoumejte bezpečnostních anomálií
 

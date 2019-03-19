@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: eb16778e0e7050dfda92fcc1b92afffe5860268d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835828"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -33,9 +33,9 @@ Použití distribučních bodů umožňuje:
 Tento článek popisuje následující čtyři svědectví:
 
 1. [Spojte se rychle jedno zařízení, pomocí SAS](#connect-a-single-device)
-1. [Připojení zařízení ve velkém měřítku pomocí SAS](#connect-devices-at-scale-using-shared-access-signatures)
+1. Připojení zařízení ve velkém měřítku pomocí SAS
 1. [Připojení zařízení ve velkém měřítku pomocí certifikátů X.509](#connect-devices-using-x509-certificates) Toto je doporučený postup pro produkční prostředí.
-1. [Připojit bez první registrace zařízení](#connect-without-first-registering-devices) 
+1. Připojit bez první registrace zařízení 
 
 ## <a name="connect-a-single-device"></a>Připojení jedno zařízení
 
@@ -69,7 +69,7 @@ Zaregistrovat velký počet zařízení s vaší aplikací IoT Central, použijt
 K načtení informací o připojení pro importovaná zařízení [vyexportujete soubor CSV z vaší aplikace IoT Central](howto-manage-devices.md#export-devices).
 
 > [!NOTE]
-> Informace o tom, jak připojit zařízení i bez jejich první registrace v IoT Central, naleznete v tématu [připojit bez registrace zařízení první](#connect-without-first-registering-devices).
+> Informace o tom, jak připojit zařízení i bez jejich první registrace v IoT Central, naleznete v tématu připojit bez první registraci zařízení.
 
 ### <a name="set-up-your-devices"></a>Nastavit vaše zařízení
 

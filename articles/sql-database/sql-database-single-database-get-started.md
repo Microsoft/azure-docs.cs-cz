@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 81b09ff3e8bb7e5a41432ff0bdaac36b657d74ea
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075181"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal
 
@@ -42,8 +42,8 @@ Vytvoření izolované databáze s ukázkovými daty AdventureWorksLT:
    - **Skupina prostředků**: Vyberte **vytvořit nový**, typ *myResourceGroup*a vyberte **OK**.
    - **Výběr zdroje**: Rozevírací seznam a vyberte **ukázka (AdventureWorksLT)**.
 
-    > [!IMPORTANT]
-    > Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle snadno tato a další rychlé starty Azure SQL Database, která tato data použít.
+     > [!IMPORTANT]
+     > Je nutné vybrat **ukázka (AdventureWorksLT)** dat, takže můžete postupovat podle snadno tato a další rychlé starty Azure SQL Database, která tato data použít.
   
    ![Vytvoření izolované databáze](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -76,9 +76,9 @@ Vytvoření izolované databáze s ukázkovými daty AdventureWorksLT:
 
 10. Na **SQL Database** formuláře, vyberte **vytvořit** k nasazení a zřizování skupiny prostředků, server a databáze.
 
-   Nasazení trvá několik minut. Můžete vybrat **oznámení** na panelu nástrojů můžete sledovat průběh nasazení.
+    Nasazení trvá několik minut. Můžete vybrat **oznámení** na panelu nástrojů můžete sledovat průběh nasazení.
 
-   ![Oznámení](./media/sql-database-get-started-portal/notification.png)
+    ![Oznámení](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Dotaz na databázi
 

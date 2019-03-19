@@ -1,6 +1,6 @@
 ---
-title: Vytvoření koncového bodu vlastní převod řeči s Speech Service v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit vlastního koncového bodu převodu řeči na text pomocí Speech Service ve službě Cognitive Services.
+title: Vytvoření koncového bodu vlastní převod řeči s hlasové služby v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit vlastního koncového bodu převodu řeči na text pomocí hlasové služby Azure.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,19 +9,19 @@ ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862994"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Vytvoření vlastního koncového bodu pro převod řeči na text
 
-Po vytvoření vlastních akustických modelů nebo jazykové modely, je můžete nasadit do vlastního koncového bodu převodu řeči na text. 
+Po vytvoření vlastních akustických modelů nebo jazykové modely, je můžete nasadit do vlastního koncového bodu převodu řeči na text.
 
 ## <a name="create-an-endpoint"></a>Vytvoření koncového bodu
-Chcete-li vytvořit nové vlastní koncový bod, vyberte **koncové body** na **Custom Speech** nabídce v horní části stránky. Tím přejdete do **koncové body** stránku, která obsahuje tabulku aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, je tabulka prázdná. Aktuální národní prostředí se odráží v názvu tabulky. 
+Chcete-li vytvořit nové vlastní koncový bod, vyberte **koncové body** na **Custom Speech** nabídce v horní části stránky. Tím přejdete do **koncové body** stránku, která obsahuje tabulku aktuální vlastní koncové body. Pokud jste ještě nevytvořili žádné koncové body, je tabulka prázdná. Aktuální národní prostředí se odráží v názvu tabulky.
 
 Chcete-li vytvořit nasazení pro jiný jazyk, vyberte **změnu národního prostředí**. Další informace o podporovaných jazycích.
 
@@ -44,6 +44,6 @@ Při nasazení je připraveno, bude název koncového bodu odkaz. Výběrem odka
 ## <a name="next-steps"></a>Další postup
 
 Další kurzy najdete na stránce:
-- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Vytvoření vlastního akustického modelu](how-to-customize-acoustic-models.md)
 - [Vytvoření vlastního jazykového modelu](how-to-customize-language-model.md)

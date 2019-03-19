@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: aa3f2bc23b731f1e2c02d84edd6079debfbae134
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088039"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -158,12 +158,12 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 * Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-    * Vytvářet a odstraňovat kontejnery
-    * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-    * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-    * Vytvoření nové složky
-    * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-    * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+  * Vytvářet a odstraňovat kontejnery
+  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
+  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
+  * Vytvoření nové složky
+  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
+  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
     
     Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
 * Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.
@@ -227,12 +227,12 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 * Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-    * Vytvářet a odstraňovat kontejnery
-    * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-    * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-    * Vytvoření nové složky
-    * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-    * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+  * Vytvářet a odstraňovat kontejnery
+  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
+  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
+  * Vytvoření nové složky
+  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
+  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
     
     Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
 * Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.
@@ -282,12 +282,12 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 * Můžete teď použít Průzkumníka služby Storage pro přístup k datům objektu Blob prostřednictvím [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Pokud jste přihlášeni a Průzkumníka služby Storage není schopen načíst klíče pro váš účet úložiště, pak OAuth token se použije k ověření při interakci s vašimi daty.
 * Průzkumník služby Storage teď podporuje účty úložiště ADLS Gen2. Když Průzkumníka služby Storage zjistí, že hierarchického oboru názvů je povolená pro účet úložiště, bude viz "(ADLS Gen2 ve verzi Preview)" vedle názvu účtu úložiště. Průzkumník služby Storage je možné zjistit, jestli hierarchického oboru názvů je povolená, když jste přihlášeni, nebo jestli připojení účtu úložiště pomocí názvu a klíče. Pro účty úložiště ADLS Gen2 můžete použít Průzkumníka služby Storage pro:
-    * Vytvářet a odstraňovat kontejnery
-    * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
-    * Umožňuje zobrazit a procházet data uvnitř kontejnerů
-    * Vytvoření nové složky
-    * Nahrání, stažení, přejmenování a odstraňování souborů a složek
-    * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
+  * Vytvářet a odstraňovat kontejnery
+  * Spravovat oprávnění (levá strana) a vlastnosti kontejneru
+  * Umožňuje zobrazit a procházet data uvnitř kontejnerů
+  * Vytvoření nové složky
+  * Nahrání, stažení, přejmenování a odstraňování souborů a složek
+  * Spravujte vlastnosti souborů a složek a oprávnění (pravá strana).
     
     Další typické funkce objektů Blob, jako je obnovitelné odstranění nebo snímky nejsou aktuálně k dispozici. Správa oprávnění je také k dispozici pouze při přihlášení. Kromě toho se Průzkumník služby Storage při práci v účtu ADLS Gen2 úložiště pomocí nástroje AzCopy pro nahrávání a stahování a standardně používá název a klíč přihlašovací údaje pro všechny operace, pokud je k dispozici.
 * Po zpětné vazby uživatelů silné přerušení zapůjčení opět umožňuje najednou přerušit zapůjčení u několika objektů BLOB.

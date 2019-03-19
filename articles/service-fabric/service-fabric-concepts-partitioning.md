@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 492afcdd5143aa5a6597ba8c296d15059f9c7d64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852743"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
 Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -113,7 +113,7 @@ Důležitou součástí algoritmu hash je výběr hashovací algoritmus. Je pot�
 
 Vlastnosti algoritmu hash správné distribuční jsou snadno vypočítat, má několik kolize a rovnoměrně distribuuje klíče. Dobrým příkladem efektivní hashovací algoritmus je [FNV 1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hashovací algoritmus.
 
-Je vhodným místem k zadání obecné hash kód algoritmu volby [stránky Wikipedia na funkce hash](http://en.wikipedia.org/wiki/Hash_function).
+Je vhodným místem k zadání obecné hash kód algoritmu volby [stránky Wikipedia na funkce hash](https://en.wikipedia.org/wiki/Hash_function).
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>Vytvoření stavové služby s více oddílů
 Pojďme vytvořit první spolehlivé stavové služby s více oddílů. V tomto příkladu vytvoříte velmi jednoduchá aplikace, kam chcete uložit všechny poslední s názvy začínajícími stejné písmeno do stejného oddílu.

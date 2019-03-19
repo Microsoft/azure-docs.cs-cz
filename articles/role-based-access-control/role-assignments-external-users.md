@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343856"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012019"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC
 
 Řízení přístupu na základě role (RBAC) umožňuje lepší zabezpečení správy pro velké organizace a pro SMB práce s externími spolupracovníky, dodavatelům nebo freelancers, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně celý všechny obory, týkající se účtování nebo infrastruktury. RBAC umožňuje flexibilitu vlastnící jedno předplatné Azure, které spravuje správce účtu (role Správce služby na úrovni předplatného) a pro práci v rámci stejného předplatného, ale nemají žádné oprávnění pro správu pro něj pozvali více uživatelů .
 
 > [!NOTE]
-> Předplatná Office 365 nebo licence Azure Active Directory (například: Přístup k Azure Active Directory) z kanceláře zřízení správce Office 365 center nejde použít pro pomocí RBAC.
+> Předplatná Office 365 nebo licence Azure Active Directory (například: Přístup k Azure Active Directory) zajištěného z Microsoft 365, centra pro správu nejde použít pro pomocí RBAC.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Přiřadíte role RBAC v oboru předplatného
 

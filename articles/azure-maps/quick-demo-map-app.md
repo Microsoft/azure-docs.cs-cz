@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cc16c47f3b1764ba6887fd832656dfe2567ba0e4
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: be6d9ab0011e3d6b5d8ae1da489fc60c316e2867
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095462"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Vytvořte mapu interaktivního hledání s využitím Azure Maps
 
@@ -34,14 +34,14 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V **Hledat na Marketplace** zadejte **mapy**.
 3. Ve **výsledcích** vyberte **Maps**. Vyberte **vytvořit** tlačítko, které se zobrazí pod mapou.
 4. Na **vytvořit účet Azure Maps** stránky, zadejte následující hodnoty:
-    - **Název** vašeho nového účtu.
-    - **Předplatné**, které chcete pro tento účet použít.
-    - **Skupinu prostředků** pro tento účet. Můžete zvolit **vytvořit nový** nebo **použít existující** skupinu prostředků.
-    - Vyberte **cenová úroveň** podle vašeho výběru.
-    - Přečtěte si **licence** a **prohlášení o zásadách**. Zaškrtněte políčko pro přijetí podmínek.
-    - Nakonec vyberte **vytvořit** tlačítko.
+   - **Název** vašeho nového účtu.
+   - **Předplatné**, které chcete pro tento účet použít.
+   - **Skupinu prostředků** pro tento účet. Můžete zvolit **vytvořit nový** nebo **použít existující** skupinu prostředků.
+   - Vyberte **cenová úroveň** podle vašeho výběru.
+   - Přečtěte si **licence** a **prohlášení o zásadách**. Zaškrtněte políčko pro přijetí podmínek.
+   - Nakonec vyberte **vytvořit** tlačítko.
 
-    ![Vytvoření účtu Azure Maps na portálu](./media/quick-demo-map-app/create-account.png)
+     ![Vytvoření účtu Azure Maps na portálu](./media/quick-demo-map-app/create-account.png)
 
 5. Po úspěšném vytvoření účtu ho otevřete a vyhledejte část nastavení v nabídce účtu. Vyberte **klíče** zobrazíte primární a sekundární klíče pro váš účet Azure Maps. Zkopírujte do místní schránky hodnotu **primárního klíče** pro použití v následující části.
 

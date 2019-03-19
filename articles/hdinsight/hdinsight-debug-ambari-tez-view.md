@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105263"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight
 
@@ -90,14 +90,14 @@ Ke spuštění dotazu Hive, který používá Tez, postupujte následovně:
 
 5. Karty na této stránce umožňují zobrazit následující informace:
 
-    * **Podrobnosti dotazu**: Podrobnosti o dotazu Hive.
-    * **Časová osa**: Informace o tom, jak dlouho trvalo každá fáze zpracování.
-    * **Konfigurace**: Konfigurace použitá pro tento dotaz.
+   * **Podrobnosti dotazu**: Podrobnosti o dotazu Hive.
+   * **Časová osa**: Informace o tom, jak dlouho trvalo každá fáze zpracování.
+   * **Konfigurace**: Konfigurace použitá pro tento dotaz.
 
-    Z __podrobnosti dotazu__ můžete pomocí odkazů můžete získat informace o __aplikace__ nebo __DAG__ pro tento dotaz.
+     Z __podrobnosti dotazu__ můžete pomocí odkazů můžete získat informace o __aplikace__ nebo __DAG__ pro tento dotaz.
     
-    * __Aplikace__ odkaz zobrazí informace o aplikaci YARN pro tento dotaz. Odsud můžete přístup k protokolům aplikace YARN.
-    * __DAG__ odkaz zobrazí informace o orientovaného acyklického grafu pro tento dotaz. Odsud můžete zobrazit grafická reprezentace tomto orientovaném acyklickém grafu. Můžete také najít informace o vrcholy v tomto orientovaném acyklickém grafu.
+   * __Aplikace__ odkaz zobrazí informace o aplikaci YARN pro tento dotaz. Odsud můžete přístup k protokolům aplikace YARN.
+   * __DAG__ odkaz zobrazí informace o orientovaného acyklického grafu pro tento dotaz. Odsud můžete zobrazit grafická reprezentace tomto orientovaném acyklickém grafu. Můžete také najít informace o vrcholy v tomto orientovaném acyklickém grafu.
 
 ## <a name="next-steps"></a>Další kroky
 

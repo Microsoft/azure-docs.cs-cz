@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898682"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -25,7 +25,7 @@ Nástroj WAImportExport je jednotka přípravy a opravit nástroj, který vám p
 
 - **Konfigurace počítače**
   - Windows 7, Windows Server 2008 R2 nebo novějším operačním systému Windows
-  - Musí být nainstalované rozhraní .NET framework 4. Zobrazit [nejčastější dotazy k](#faq) o tom, jak zkontrolovat, jestli rozhraní .net Framework je na počítači nainstalovaný.
+  - Musí být nainstalované rozhraní .NET framework 4. Zobrazit [nejčastější dotazy k](#faq) o tom, jak zkontrolovat, pokud je v počítači nainstalováno rozhraní .NET Framework.
 - **Klíč účtu úložiště** – budete potřebovat alespoň jeden z klíčů účtu pro účet úložiště.
 
 ### <a name="preparing-disk-for-import-job"></a>Příprava disku pro úlohu importu
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 Pokud data se nevejdou jednotky v InitialDriveset, jeden použijte nástroj přidejte další disky do stejné relace kopírování. 
 
->[!NOTE] 
->Id relace musí odpovídat id předchozí relace. Soubor deníku by měl odpovídat účtu zadanému v předchozí relaci.
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> Id relace musí odpovídat id předchozí relace. Soubor deníku by měl odpovídat účtu zadanému v předchozí relaci.
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **Příklad:**
 
@@ -364,7 +364,7 @@ Aby bylo možné zakázat TPM v Bitlockeru, projděte si následující kroky:<b
 
 Všechny verze rozhraní Microsoft .NET Framework jsou nainstalovány v následujícím adresáři: %windir%\Microsoft.NET\Framework\
 
-Přejděte do části výše uvedené na vaší cílovém počítači, kde je potřeba spustit nástroj. Vyhledejte název složky počínaje "v4". Absence takových adresáře znamená, že rozhraní .NET 4 není na vašem počítači nainstalovaný. Můžete si stáhnout rozhraní .net 4 počítače [rozhraní Microsoft .NET Framework 4 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=17851).
+Přejděte do části výše uvedené na vaší cílovém počítači, kde je potřeba spustit nástroj. Vyhledejte název složky počínaje "v4". Absence takových adresáře znamená, že rozhraní .NET 4 není na vašem počítači nainstalovaný. Můžete si stáhnout rozhraní .NET 4 počítače [rozhraní Microsoft .NET Framework 4 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=17851).
 
 ### <a name="limits"></a>Omezení
 

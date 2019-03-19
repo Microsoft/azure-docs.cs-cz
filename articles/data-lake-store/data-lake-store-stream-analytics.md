@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: e52cf99e3bdd1960ca361ccde50d85dfaa2209c0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1b18bd5aae398d2ec942120af5d96943636c346c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101107"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream data z Azure Storage Blob do služby Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se dozvíte, jak pomocí Azure Data Lake Storage Gen1 jako výstup pro úlohu Azure Stream Analytics. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage blob (vstup) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -54,17 +54,17 @@ Začněte vytvořením úlohy Stream Analytics, která obsahuje vstupní zdroj a
 
     ![Přidat vstup pro úlohu](./media/data-lake-store-stream-analytics/create.input.2.png "přidat vstup pro úlohu")
 
-    * Pro **vstupní alias**, zadejte jedinečný název pro vstup úlohy.
-    * Pro **typ zdroje**vyberte **datový proud**.
-    * Pro **zdroj**vyberte **úložiště objektů Blob**.
-    * Pro **předplatné**vyberte **používání úložiště blob z aktuálního předplatného**.
-    * Pro **účtu úložiště**, vyberte účet úložiště, který jste vytvořili jako součást požadavků. 
-    * Pro **kontejneru**, vyberte kontejner, který jste vytvořili v účtu úložiště.
-    * Pro **formát serializace události**vyberte **sdíleného svazku clusteru**.
-    * Pro **oddělovač**vyberte **kartu**.
-    * Pro **kódování**vyberte **UTF-8**.
+   * Pro **vstupní alias**, zadejte jedinečný název pro vstup úlohy.
+   * Pro **typ zdroje**vyberte **datový proud**.
+   * Pro **zdroj**vyberte **úložiště objektů Blob**.
+   * Pro **předplatné**vyberte **používání úložiště blob z aktuálního předplatného**.
+   * Pro **účtu úložiště**, vyberte účet úložiště, který jste vytvořili jako součást požadavků. 
+   * Pro **kontejneru**, vyberte kontejner, který jste vytvořili v účtu úložiště.
+   * Pro **formát serializace události**vyberte **sdíleného svazku clusteru**.
+   * Pro **oddělovač**vyberte **kartu**.
+   * Pro **kódování**vyberte **UTF-8**.
 
-    Klikněte na možnost **Vytvořit**. Na portálu teď přidá vstupu a otestuje připojení k němu.
+     Klikněte na možnost **Vytvořit**. Na portálu teď přidá vstupu a otestuje připojení k němu.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Vytvoření Data Lake Storage Gen1 výstupu úlohy
@@ -84,15 +84,15 @@ Začněte vytvořením úlohy Stream Analytics, která obsahuje vstupní zdroj a
 
     ![Přidat výstup pro vaši úlohu](./media/data-lake-store-stream-analytics/create.output.3.png "přidat výstup pro vaši úlohu")
 
-    * Pro **název účtu**, vyberte účet Data Lake Storage Gen1 jste už vytvořili, kde chcete úlohu k odeslání do výstupu.
-    * Pro **vzor předpony cesty**, zadejte cestu k souboru použitý k zápisu souborů v rámci zadaného účtu Data Lake Storage Gen1.
-    * Pro **formát data**, pokud jste použili token kalendářního data v předponovou cestu, můžete vybrat formát data, ve kterém jsou uspořádány souborů.
-    * Pro **formát času**, pokud jste použili čas tokenu v předponovou cestu, zadat formát času, ve kterém jsou uspořádány souborů.
-    * Pro **formát serializace události**vyberte **sdíleného svazku clusteru**.
-    * Pro **oddělovač**vyberte **kartu**.
-    * Pro **kódování**vyberte **UTF-8**.
+   * Pro **název účtu**, vyberte účet Data Lake Storage Gen1 jste už vytvořili, kde chcete úlohu k odeslání do výstupu.
+   * Pro **vzor předpony cesty**, zadejte cestu k souboru použitý k zápisu souborů v rámci zadaného účtu Data Lake Storage Gen1.
+   * Pro **formát data**, pokud jste použili token kalendářního data v předponovou cestu, můžete vybrat formát data, ve kterém jsou uspořádány souborů.
+   * Pro **formát času**, pokud jste použili čas tokenu v předponovou cestu, zadat formát času, ve kterém jsou uspořádány souborů.
+   * Pro **formát serializace události**vyberte **sdíleného svazku clusteru**.
+   * Pro **oddělovač**vyberte **kartu**.
+   * Pro **kódování**vyberte **UTF-8**.
     
-    Klikněte na možnost **Vytvořit**. Na portálu teď přidá výstup a otestuje připojení k němu.
+     Klikněte na možnost **Vytvořit**. Na portálu teď přidá výstup a otestuje připojení k němu.
     
 ## <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 

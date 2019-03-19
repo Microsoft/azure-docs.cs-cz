@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 1a7f58960111b3fba6283830b262a9b901b8e2fd
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886418"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Řešení problémů s připojením ke službě Azure Database for PostgreSQL
 
@@ -48,7 +48,7 @@ Pokud aplikace trvale nepodaří připojit ke službě Azure Database for Postgr
 
 * Konfigurace brány firewall serveru: Ujistěte se, že Azure Database for PostgreSQL serverová brána firewall nakonfigurována, aby umožňovala připojení z klienta, včetně proxy servery a brány.
 * Konfigurace brány firewall klienta: Brána firewall na váš klient musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty, ke které nelze na serveru musí být povoleny a také názvy aplikací, například PostgreSQL v některé brány firewall.
-* Chyba uživatele: Může být chybně parametry připojení, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
+* Chyba uživatele: Může být chybně parametry připojení, jako je například název serveru v připojovacím řetězci nebo chybějící  *\@servername* příponu do pole uživatelské jméno.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3165adf09281f4ad35b77c2e0fbb89e40c04c631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120954"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -31,21 +31,21 @@ RTVS vylepšuje pracovního postupu R tím, že nabízí nástroje, jako [intera
 2. Vyberte *pro datové vědy a analytické aplikace* úloh, vyberte **podpora jazyka R**, **podpora modulu CLR pro vývoj v jazyce R**, a  **Microsoft R Client** možnosti.
 
 3. Musíte mít veřejného a privátního klíče pro ověřování SSH.
-<!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
+   <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
 4. Nainstalujte [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na svém počítači. ML Server poskytuje [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark` funkce.
 
 5. Nainstalujte [PuTTY](https://www.putty.org/) poskytnout výpočetního kontextu pro spuštění `RevoScaleR` funkcí z místního klienta do clusteru HDInsight.
 
 6. Máte možnost použít nastavení pro datové vědy pro prostředí sady Visual Studio, který poskytuje nové rozložení pro váš pracovní prostor pro nástroje R.
-    1. Chcete-li uložit aktuální nastavení sady Visual Studio, použijte **nástroje > Nastavení importu a exportu** příkaz a pak vyberte **exportovat vybrané nastavení prostředí** a zadejte název souboru. Obnovení těchto nastavení, použijte stejný příkaz a vyberte **importovat vybrané nastavení prostředí**.
+   1. Chcete-li uložit aktuální nastavení sady Visual Studio, použijte **nástroje > Nastavení importu a exportu** příkaz a pak vyberte **exportovat vybrané nastavení prostředí** a zadejte název souboru. Obnovení těchto nastavení, použijte stejný příkaz a vyberte **importovat vybrané nastavení prostředí**.
 
-    2. Přejděte **nástroje R** nabídka položek, vyberte **nastavení pro datové vědy...** .
+   2. Přejděte **nástroje R** nabídka položek, vyberte **nastavení pro datové vědy...** .
 
-        ![Nastavení pro datové vědy...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Nastavení pro datové vědy...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]  
-    > Pomocí přístupu v kroku 1, můžete také uložit a obnovit rozložení mezi odborníky přes data individuální namísto opakování **nastavení pro datové vědy** příkazu.
+      > [!NOTE]  
+      > Pomocí přístupu v kroku 1, můžete také uložit a obnovit rozložení mezi odborníky přes data individuální namísto opakování **nastavení pro datové vědy** příkazu.
 
 ## <a name="execute-local-r-methods"></a>Spusťte místní metody R
 

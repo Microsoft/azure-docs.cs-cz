@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 7452ed3606817c71285f3ad32a6069995604d528
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 08a1980a8855fc119a5066e058e9bb4d2df6646e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998871"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Co je služba Cloudyn?
 
@@ -24,6 +24,35 @@ Cloudyn, pobočka Microsoftu, umožňuje sledovat využití cloudu a výdaje za 
 Pokud chcete zhlédnout úvodní video, podívejte se na video [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo) (Seznámení s Azure Cloudyn).
 
 Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
+
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Funkce Cloudyn přesunutí do služby Azure Cost Management
+
+Společnost Microsoft získali Cloudyn a migruje jeho funkce pro správu nákladů na portálu Cloudyn nativně do Azure. Pokud chcete používat nové funkce, přihlásit se k webu Azure portal a přejděte do [Cost Management a fakturace](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) v seznamu služeb Azure. Ve srovnání s Cloudyn, nativního prostředí nabízí lepší výkon a nižší latenci a data o osmi hodin.
+
+Dokončení migrace klíčovou funkcí pro smlouvu Enterprise s průběžnými platbami a MSDN kategorie nabídky do služby Azure Cost Management. Předplatná CSP se právě migruje přes do služby Azure Cost Management.
+
+Pokud máte kategorii nabídka ještě nebyly migrovány, by měla dál používat na portálu Cloudyn. Všichni ostatní můžete použít Azure Cost Management.
+
+| Nabídky Microsoft Azure a funkce | Služba správy doporučené náklady |
+| --- | --- |
+| Azure Enterprise Agreement | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Web Direct (průběžné platby/MSDN.) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
+| Cloudu nákladů podporu analýzy pro AWS (ve verzi preview) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Doporučení AWS | [Cloudyn](https://azure.cloudyn.com) |
+
+Některé z následujících funkcí jsou k dispozici ve službě Cloudyn, ale všechny z nich jsou teď dostupné ve službě Azure Cost Management.
+
+- Rozhraní API
+- Doporučení pro výpočetní prostředky Azure
+- Doporučení Azure rezervace
+- Rozpočty
+- Analýza nákladů
+- Export dat do účtu služby Azure storage
+- Nižší latence
+- Balíček obsahu Power BI a konektoru
+- Podpora značek prostředků
 
 ## <a name="monitor-usage-and-spending"></a>Monitorování využití a výdajů
 
@@ -46,6 +75,7 @@ Upozorňování pomáhá snižovat náklady tím, že vás automaticky upozorňu
 Pomocí Cloudynu můžete určit optimální využití virtuálních počítačů a identifikovat nečinné virtuální počítače nebo odebrat nečinné virtuální počítače a nepřipojené disky. Pomocí informací v sestavách optimalizace velikosti a nedostatků můžete vytvořit plán pro zmenšení nebo odebrání nečinných virtuálních počítačů. Sestavy optimalizace se však aktuálně nepodporují pro partnerské účty ani předplatná poskytovatele CSP.
 
 Pokud jste zřídili rezervované instance AWS, můžete využití těchto rezervovaných instancí vylepšit pomocí sestav optimalizace, kde můžete zobrazit doporučení k nákupu, upravit nepoužívané rezervace a plánovat zřizování.
+
 
 ## <a name="next-steps"></a>Další postup
 

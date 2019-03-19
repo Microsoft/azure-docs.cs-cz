@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: ae1828210345eb35f9d22664285a0d348ea50d48
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085639"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování v Microsoft Azure Virtual Machines, Cloud Services a webových aplikací
 Tento článek popisuje, co Microsoft Azure při automatickém škálování je, jeho výhody a jak začít používat.  
@@ -66,15 +66,15 @@ Automatické škálování použít následující terminologie a struktura.
 
 - **Nastavení automatického škálování** přečte modul automatického škálování k určení, jestli chcete vertikálně navýšit nebo snížit kapacitu. Obsahuje jeden nebo více profilů, informace o cílový prostředek a nastavení oznámení.
 
-    - **Profil automatického škálování** je kombinací a:
+  - **Profil automatického škálování** je kombinací a:
 
-        - **Nastavení kapacity**, která určuje minimální, maximální a výchozí hodnoty pro počet instancí.
-        - **Sada pravidel**, z nichž každý obsahuje aktivační událost (čas nebo metriky) a akce škálování (nahoru nebo dolů).
-        - **opakování**, což znamená, že při vložení tohoto profilu platit automatického škálování.
+    - **Nastavení kapacity**, která určuje minimální, maximální a výchozí hodnoty pro počet instancí.
+    - **Sada pravidel**, z nichž každý obsahuje aktivační událost (čas nebo metriky) a akce škálování (nahoru nebo dolů).
+    - **opakování**, což znamená, že při vložení tohoto profilu platit automatického škálování.
 
-        Můžete mít více profilů, které umožňují postará o jinou překrývající se požadavky. Profily automatického škálování různých pro různou den nebo dny v týdnu, můžete mít třeba.
+      Můžete mít více profilů, které umožňují postará o jinou překrývající se požadavky. Profily automatického škálování různých pro různou den nebo dny v týdnu, můžete mít třeba.
 
-    - A **nastavení oznámení** definuje, jaká oznámení se budou objevovat při výskytu události automatického škálování podle toho, které splňují kritéria jeden z profilů nastavení automatického škálování. Automatické škálování může upozornit jeden nebo více e-mailové adresy nebo volat minimálně jeden webhook.
+  - A **nastavení oznámení** definuje, jaká oznámení se budou objevovat při výskytu události automatického škálování podle toho, které splňují kritéria jeden z profilů nastavení automatického škálování. Automatické škálování může upozornit jeden nebo více e-mailové adresy nebo volat minimálně jeden webhook.
 
 
 ![Zadané nastavení automatického škálování Azure, profil a pravidla struktury](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)

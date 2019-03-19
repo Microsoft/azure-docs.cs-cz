@@ -12,22 +12,28 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fcfe8ed0bc132377fbaefaccb03e1d6a9374b8d6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312470"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854836"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí v začleňování paměťových technologií ve službě SQL Database
 
-V začleňování paměťových technologií ve službě Azure SQL Database vám umožní zlepšit výkon vaší aplikace a potenciálně snížili množství náklady na vaši databázi. S použitím technologií v paměti ve službě Azure SQL Database, můžete dosáhnout zlepšení výkonu pomocí různých úloh:
+V začleňování paměťových technologií ve službě Azure SQL Database vám umožní zlepšit výkon vaší aplikace a potenciálně snížili množství náklady na vaši databázi. 
+
+## <a name="when-to-use-in-memory-technologies"></a>Kdy použít v začleňování paměťových technologií
+
+S použitím technologií v paměti ve službě Azure SQL Database, můžete dosáhnout zlepšení výkonu pomocí různých úloh:
 
 - **Transakční** (online zpracování transakcí (OLTP)) kde většinu požadavků, číst a aktualizovat menší sadu dat (například operace CRUD).
 - **Analytické** (online analytického zpracování (OLAP)) kdy většina dotazů, které mají složité výpočty pro generování sestav účely s počtem dotazy, které načíst a připojovat data do existující tabulky (tak jako hromadné načtení) nebo odstranit data z tabulek. 
 - **Smíšené** (hybridní transakce/analytického zpracování (HTAP)) ve kterých se spouští dotazy OLTP a OLAP na stejnou sadu data.
 
-V začleňování paměťových technologií může zlepšit výkon z těchto úloh udržováním data, která by se měly zpracovat do paměti pomocí nativní kompilace dotazu, nebo pokročilé zpracování těchto jako dávkové zpracování a SIMD pokyny, které jsou k dispozici na základní hardware.
+V začleňování paměťových technologií může zlepšit výkon z těchto úloh udržováním data, která by se měly zpracovat do paměti pomocí nativní kompilace dotazu, nebo pokročilé zpracování těchto jako dávkové zpracování a SIMD pokyny, které jsou k dispozici na základní hardware. 
+
+## <a name="overview"></a>Přehled
 
 Azure SQL Database má následující v začleňování paměťových technologií:
 - *[OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)*  zvyšuje počet transakcí za sekundu a snižuje latenci a zpracování transakcí. Scénáře využívající OLTP v paměti jsou: zpracování například obchodní a hry, příjem dat ze zařízení IoT, ukládání do mezipaměti, načtení dat a dočasné tabulky a scénáře proměnné tabulky nebo událostí vysokou propustnost transakcí.

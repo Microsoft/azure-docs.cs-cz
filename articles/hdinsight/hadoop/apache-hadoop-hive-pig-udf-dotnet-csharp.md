@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 139fe946b013b1c86404bdef6ed06314af349c89
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 08910cbae9f370dde7b8718ca4868dc7b3510f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108895"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoop v HDInsight
 
@@ -172,13 +172,13 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 6. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
 
-    * Pokud používáte __účet služby Azure Storage__, klikněte na tlačítko Nahrát ikonu a potom vyhledejte **bin\debug** složku pro **HiveCSharp** projektu. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **Ok**.
+   * Pokud používáte __účet služby Azure Storage__, klikněte na tlačítko Nahrát ikonu a potom vyhledejte **bin\debug** složku pro **HiveCSharp** projektu. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **Ok**.
 
-        ![Nahrát ikonu](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![Nahrát ikonu](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřít**.
+   * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřít**.
 
-    Jednou __HiveCSharp.exe__ nahrávání dokončí, opakujte proces nahrávání __PigUDF.exe__ souboru.
+     Jednou __HiveCSharp.exe__ nahrávání dokončí, opakujte proces nahrávání __PigUDF.exe__ souboru.
 
 ## <a name="run-an-apache-hive-query"></a>Spuštění dotazu Apache Hive
 

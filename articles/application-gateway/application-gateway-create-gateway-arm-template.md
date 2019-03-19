@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084925"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
 
@@ -60,16 +60,16 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 1. Otevřete soubor, který jste uložili a prohlédněte si jeho obsah v části **parametry** řádku
 1. Parametry šablony Azure Resource Manageru představují zástupce hodnot, které můžete doplnit během nasazování.
 
-  | Parametr | Popis |
-  | --- | --- |
-  | **subnetPrefix** |Blok CIDR podsítě služby application gateway. |
-  | **applicationGatewaySize** | Velikost služby application gateway.  WAF se povoluje jenom střední a velké. |
-  | **backendIpaddress1** |IP adresa prvního webového serveru. |
-  | **backendIpaddress2** |IP adresa druhého webového serveru. |
-  | **wafEnabled** | Nastavení k určení, zda je povoleno WAF.|
-  | **wafMode** | Režim brány firewall webových aplikací.  K dispozici jsou možnosti **ochrany před únikem informací** nebo **detekce**.|
-  | **wafRuleSetType** | Typ sady pravidel pro WAF.  OWASP je aktuálně jedinou podporovanou možností. |
-  | **wafRuleSetVersion** |Verze sady pravidel. OWASP CRS 2.2.9 a 3.0 jsou aktuálně podporované možnosti. |
+   | Parametr | Popis |
+   | --- | --- |
+   | **subnetPrefix** |Blok CIDR podsítě služby application gateway. |
+   | **applicationGatewaySize** | Velikost služby application gateway.  WAF se povoluje jenom střední a velké. |
+   | **backendIpaddress1** |IP adresa prvního webového serveru. |
+   | **backendIpaddress2** |IP adresa druhého webového serveru. |
+   | **wafEnabled** | Nastavení k určení, zda je povoleno WAF.|
+   | **wafMode** | Režim brány firewall webových aplikací.  K dispozici jsou možnosti **ochrany před únikem informací** nebo **detekce**.|
+   | **wafRuleSetType** | Typ sady pravidel pro WAF.  OWASP je aktuálně jedinou podporovanou možností. |
+   | **wafRuleSetVersion** |Verze sady pravidel. OWASP CRS 2.2.9 a 3.0 jsou aktuálně podporované možnosti. |
 
 1. Prohlédněte si obsah v části **prostředky** a Všimněte si, že následující vlastnosti:
 
@@ -82,44 +82,44 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
 1. Uložte soubor do místní složky v počítači.
 1. Otevřete soubor, který jste uložili, a upravte hodnoty parametrů. K nasazení služby Application Gateway popsané v tomto scénáři použijte následující hodnoty.
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. Uložte soubor. Šablonu JSON a šablonu parametrů můžete otestovat pomocí online ověřovacích nástrojů JSON, jako je třeba [JSlint.com](https://www.jslint.com/).
 

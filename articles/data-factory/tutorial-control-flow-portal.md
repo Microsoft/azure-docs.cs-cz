@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 1ee3b3cccd01e4a767a8d1212967b57ff29bea62
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548094"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099538"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, kanál odešle podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, kanál odešle podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
@@ -199,10 +199,10 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
    ![Nová propojená služba Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Jako složku zadejte `@pipeline().parameters.sourceBlobContainer` a jako název souboru zadejte `emp.txt`. Parametr kanálu sourceBlobContainer použijete k nastavení cesty ke složce pro datovou sadu. 
 
-    ![Nastavení zdrojové datové sady](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![Nastavení zdrojové datové sady](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. Přepněte na kartu s **kanálu** (nebo) klikněte na kanál ve stromovém zobrazení. Ověřte, že jako **Zdrojová datová sada** je vybraná datová sada **SourceBlobDataset**. 
 
-   ![Zdrojová datová sada](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![Zdrojová datová sada](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. V okně Vlastnosti přepněte na kartu **Jímka** a klikněte na **+ Nová** v části **Datová sada jímky**. V tomto kroku pro aktivitu kopírování vytvoříte datovou sadu jímky podobným způsobem, jako jste vytvořili zdrojovou datovou sadu. 
 
     ![Tlačítko Nová datová sada jímky](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
         ![Nastavení datové sady jímky](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. V horní části přepněte na kartu **kanálu**. Na panelu nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Web** na plochu návrháře kanálu. Nastavte název aktivity na **SendSuccessEmailActivity**. Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o této aktivitě najdete v tématu věnovaném [aktivitě webu](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu pro e-maily Logic Apps. 
 
-   ![Přetažení první aktivity webu](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![Přetažení první aktivity webu](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. Z karty **Obecné** přepněte na kartu **Nastavení** a proveďte následující kroky: 
     1. Jako **Adresa URL** zadejte adresu URL pracovního postupu aplikace logiky, který odešle e-mail informující o úspěchu.  
     2. Jako **Metoda** vyberte **POST**. 
@@ -235,12 +235,12 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
         ```
         Text zprávy obsahuje následující vlastnosti:
 
-        - Message – Předání hodnoty `@{activity('Copy1').output.dataWritten`. Má přístup k vlastnosti předchozí aktivity kopírování a předává hodnotu dataWritten. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
-        - DataFactoryName – Předání hodnoty `@{pipeline().DataFactory}`. Toto je systémová proměnná, která umožňuje přístup k názvu odpovídající datové továrny. Seznam systémových proměnných najdete v článku [Systémové proměnné](control-flow-system-variables.md).
-        - PipelineName – Předání hodnoty `@{pipeline().Pipeline}`. Toto je také systémová proměnná, která umožňuje přístup k názvu odpovídajícího kanálu. 
-        - Receiver – Předání hodnoty \@pipeline().parameters.receiver. Má přístup k parametrům kanálu.
+       - Message – Předání hodnoty `@{activity('Copy1').output.dataWritten`. Má přístup k vlastnosti předchozí aktivity kopírování a předává hodnotu dataWritten. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
+       - DataFactoryName – Předání hodnoty `@{pipeline().DataFactory}`. Toto je systémová proměnná, která umožňuje přístup k názvu odpovídající datové továrny. Seznam systémových proměnných najdete v článku [Systémové proměnné](control-flow-system-variables.md).
+       - PipelineName – Předání hodnoty `@{pipeline().Pipeline}`. Toto je také systémová proměnná, která umožňuje přístup k názvu odpovídajícího kanálu. 
+       - Receiver – Předání hodnoty \@pipeline().parameters.receiver. Má přístup k parametrům kanálu.
     
-        ![Nastavení první aktivity webu](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![Nastavení první aktivity webu](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Připojte aktivitu **Kopírování** k aktivitě **Web** přetažením zeleného tlačítka vedle aktivity kopírování na aktivitu webu. 
 
     ![Připojení aktivity kopírování k první aktivitě webu](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)

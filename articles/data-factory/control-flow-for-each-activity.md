@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092000"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach ve službě Azure Data Factory
 Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
@@ -71,8 +71,8 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost položky je kolekce a
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název pro každou aktivitu. | Řetězec | Ano
-type | Musí být nastaveno na **ForEach** | Řetězec | Ano
+jméno | Název pro každou aktivitu. | String | Ano
+type | Musí být nastaveno na **ForEach** | String | Ano
 isSequential | Určuje, zda smyčky by měl provádět sekvenčně nebo paralelně.  Maximálně 20 průchod cyklem lze provést najednou paralelně). Například, pokud máte iterace aktivity ForEach přes 10 různé zdroje a jímky datové sady s aktivitou kopírování **isSequential** nastavena na hodnotu False, jsou všechny kopie spouštěny najednou. Výchozí hodnota je False. <br/><br/> "IsSequential" je nastavený na hodnotu False, ujistěte se, že se správnou konfiguraci, kterou chcete spustit více spustitelných souborů. V opačném případě by měl tuto vlastnost použít opatrně vyhnout konflikty při zápisu. Další informace najdete v tématu [paralelní provádění](#parallel-execution) oddílu. | Logická hodnota | Ne. Výchozí hodnota je False.
 batchCount | Počet v dávce má být použit pro řízení počet paralelních spuštění (Pokud isSequential je nastavena na hodnotu false). | Celé číslo (maximální 50) | Ne. Výchozí hodnota je 20.
 Items | Výraz, který vrátí pole JSON na provést iteraci. | Výraz (který vrací pole JSON) | Ano
@@ -474,7 +474,7 @@ Je možné k iteraci přes několik aktivit (například: kopírování a webov�
 
 ## <a name="aggregating-outputs"></a>Agregování výstupy
 
-Do agregační výstupů __foreach__ aktivity, _Variable_s, využijte prosím a _připojit proměnné_ aktivity.
+Do agregační výstupů __foreach__ aktivity, využijte prosím _proměnné_ a _připojit proměnné_ aktivity.
 
 Nejprve deklarujte `array` _proměnné_ v kanálu. Potom vyvolat _připojit proměnné_ aktivity v rámci jednotlivých __foreach__ smyčky. Následně můžete načíst agregaci z vašeho pole.
 

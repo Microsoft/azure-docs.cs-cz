@@ -14,12 +14,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 261efda18b7cecc6370743c604622a8884ff8364
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 519046081a7f9778fb430daa0cd418cf9863a2b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732311"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975623"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -47,7 +47,7 @@ Export kořenového certifikátu ASDK ve formátu PEM:
 
 2. Přihlaste se k počítači, otevřete řádku Powershellu se zvýšenými oprávněními a spusťte následující skript:
 
-      ```powershell  
+    ```powershell  
       $label = "AzureStackSelfSignedRootCert"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
@@ -56,13 +56,13 @@ Export kořenového certifikátu ASDK ve formátu PEM:
           Write-Error "Certificate with subject CN=$label not found"
           return
       }
-      
+
     Write-Host "Exporting certificate"
     Export-Certificate -Type CERT -FilePath root.cer -Cert $root
 
     Write-Host "Converting certificate to PEM format"
     certutil -encode root.cer root.pem
-```
+    ```
 
 3. Zkopírujte certifikát do svého místního počítače.
 
@@ -75,15 +75,15 @@ Můžete nastavit veřejně přístupném koncovém bodu, který je hostitelem s
 
 2. Stáhněte si [ukázkový soubor](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z Githubu.
 
-4. Vytvoření účtu úložiště ve službě Azure Stack. Po dokončení, vytvořte kontejner objektů blob. Nastavit zásady přístupu k "public".  
+3. Vytvoření účtu úložiště ve službě Azure Stack. Po dokončení, vytvořte kontejner objektů blob. Nastavit zásady přístupu k "public".  
 
-3. Nahrajte soubor JSON do nového kontejneru. Po dokončení, který se zobrazí adresa URL objektu blob. Vyberte název objektu blob a pak vyberete adresu URL z vlastností objektu blob.
+4. Nahrajte soubor JSON do nového kontejneru. Po dokončení, který se zobrazí adresa URL objektu blob. Vyberte název objektu blob a pak vyberete adresu URL z vlastností objektu blob.
 
-### <a name="install-or-ugrade-cli"></a>Nainstalovat nebo upgradovat rozhraní příkazového řádku
+### <a name="install-or-upgrade-cli"></a>Instalace nebo upgrade rozhraní příkazového řádku
 
 Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure Stack vyžaduje verzi 2.0 nebo novější z rozhraní příkazového řádku Azure. Nejnovější verze profilů rozhraní API vyžaduje aktuální verzi rozhraní příkazového řádku.  Rozhraní příkazového řádku můžete nainstalovat pomocí kroků popsaných v [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, zda byla instalace úspěšná, otevřete okno příkazového řádku nebo terminálu a spusťte následující příkaz:
 
-```azurecli
+```shell
 az --version
 ```
 
@@ -151,7 +151,7 @@ Tato část vás provede procesem nastavení rozhraní příkazového řádku Po
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
 
-Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí intregrated systémy.
+Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí integrovaných systémů.
 
 Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přidejte je do existujícího certifikátu Python.
 
@@ -206,11 +206,12 @@ Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přid
     ```
 
 2. Zaregistrujte vašeho prostředí. Při běhu používat následující parametry `az cloud register`.
+
     | Hodnota | Příklad: | Popis |
     | --- | --- | --- |
     | Název prostředí | AzureStackUser | Použití `AzureStackUser` pro uživatelské prostředí. Pokud operátor, zadat `AzureStackAdmin`. |
-    | Koncový bod služby resource manager | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
-    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Intregrated systému můžete použít koncový bod pro váš systém.  |
+    | Koncový bod Resource Manageru | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
+    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Přípona Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Image virtuálního počítače alias doc koncový bod- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identifikátor URI dokumentu, který obsahuje aliasy image virtuálního počítače. Další informace najdete v tématu [### nastavení koncového bodu virtuálního počítače aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -235,24 +236,24 @@ Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přid
  
 1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-  - Přihlaste se jako *uživatele*: 
+   - Přihlaste se jako *uživatele*: 
 
-    Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
+     Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
 
-    ```azurecli
-    az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
-    ```
+     ```azurecli
+     az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     ```
 
-    > [!NOTE]
-    > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
+     > [!NOTE]
+     > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
 
-  - Přihlaste se jako *instanční objekt služby*: 
+   - Přihlaste se jako *instanční objekt služby*: 
     
-    Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
+     Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
 
-    ```azurecli  
-    az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
-    ```
+     ```azurecli  
+     az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
+     ```
 
 ### <a name="test-the-connectivity"></a>Otestovat připojení
 
@@ -272,7 +273,7 @@ Tato část vás provede procesem nastavení rozhraní příkazového řádku Po
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
 
-Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí intregrated systémy.
+Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí integrovaných systémů.
 
 1. Najdete umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
 
@@ -325,11 +326,12 @@ Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifika�
     ```
 
 2. Zaregistrujte vašeho prostředí. Při běhu používat následující parametry `az cloud register`.
+
     | Hodnota | Příklad: | Popis |
     | --- | --- | --- |
     | Název prostředí | AzureStackUser | Použití `AzureStackUser` pro uživatelské prostředí. Pokud operátor, zadat `AzureStackAdmin`. |
-    | Koncový bod služby resource manager | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
-    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Intregrated systému můžete použít koncový bod pro váš systém.  |
+    | Koncový bod Resource Manageru | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
+    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Přípona Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Image virtuálního počítače alias doc koncový bod- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identifikátor URI dokumentu, který obsahuje aliasy image virtuálního počítače. Další informace najdete v tématu [### nastavení koncového bodu virtuálního počítače aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -354,34 +356,34 @@ Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifika�
 
 1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-  - Přihlaste se jako *uživatele*:
+   - Přihlaste se jako *uživatele*:
 
-    Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
+     Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
 
-    ```azurecli
-    az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
-    ```
+     ```azurecli
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
+     ```
 
-    > [!NOTE]
-    > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
+     > [!NOTE]
+     > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
 
-  - Přihlaste se jako *instanční objekt služby*: 
+   - Přihlaste se jako *instanční objekt služby*: 
     
-    Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
+     Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
 
-    Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu instančního objektu služby, jako pfx pomocí soukromého klíče umístěné na `cert:\CurrentUser\My`; certifikátu název má stejný název jako objekt zabezpečení.
+     Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu instančního objektu služby, jako pfx pomocí soukromého klíče umístěné na `cert:\CurrentUser\My`; certifikátu název má stejný název jako objekt zabezpečení.
 
-    Převeďte soubor pfx na pem (použijte nástroj OpenSSL).
+     Převeďte soubor pfx na pem (použijte nástroj OpenSSL).
 
-    Přihlaste se k rozhraní příkazového řádku:
+     Přihlaste se k rozhraní příkazového řádku:
   
-    ```azurecli  
-    az login --service-principal \
+     ```azurecli  
+     az login --service-principal \
       -u <Client ID from the Service Principal details> \
       -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
       --tenant <Tenant ID> \
       --debug 
-    ```
+     ```
 
 ### <a name="test-the-connectivity"></a>Otestovat připojení
 
@@ -402,7 +404,7 @@ Tato část vás provede procesem nastavení rozhraní příkazového řádku Po
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
 
-Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí intregrated systémy.
+Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí integrovaných systémů.
 
 Důvěřujete certifikátu kořenové certifikační Autority Azure stacku připojením k existující certifikát Python.
 
@@ -416,17 +418,17 @@ Důvěřujete certifikátu kořenové certifikační Autority Azure stacku přip
 
 2. Spusťte následující příkaz prostředí bash s cestou k vašemu certifikátu.
 
-  - Pro vzdáleném počítači s Linuxem:
+   - Pro vzdáleném počítači s Linuxem:
 
-    ```bash  
-    sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
+     ```
 
-  - Pro počítače s Linuxem v prostředí Azure Stack:
+   - Pro počítače s Linuxem v prostředí Azure Stack:
 
-    ```bash  
-    sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
+     ```
 
 ### <a name="connect-to-azure-stack"></a>Připojení ke službě Azure Stack
 
@@ -440,11 +442,12 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
    ```
 
 2. Zaregistrujte vašeho prostředí. Při běhu používat následující parametry `az cloud register`.
+
     | Hodnota | Příklad: | Popis |
     | --- | --- | --- |
     | Název prostředí | AzureStackUser | Použití `AzureStackUser` pro uživatelské prostředí. Pokud operátor, zadat `AzureStackAdmin`. |
-    | Koncový bod služby resource manager | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
-    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Intregrated systému můžete použít koncový bod pro váš systém.  |
+    | Koncový bod Resource Manageru | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
+    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Přípona Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Image virtuálního počítače alias doc koncový bod- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identifikátor URI dokumentu, který obsahuje aliasy image virtuálního počítače. Další informace najdete v tématu [### nastavení koncového bodu virtuálního počítače aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -469,30 +472,30 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 5. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](../../active-directory/develop/app-objects-and-service-principals.md). 
 
-    * Přihlaste se jako *uživatele*:
+   * Přihlaste se jako *uživatele*:
 
-    Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
+     Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
 
-      ```azurecli
-      az login \
-        -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> \
-        --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
-      ```
+     ```azurecli
+     az login \
+       -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> \
+       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     ```
 
-    > [!NOTE]
-    > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
+     > [!NOTE]
+     > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login` příkaz bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
    
-    * Přihlaste se jako *instančního objektu*
+   * Přihlaste se jako *instančního objektu*
     
-    Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
+     Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
 
-      ```azurecli  
-      az login \
-        --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
-        --service-principal \
-        -u <Application Id of the Service Principal> \
-        -p <Key generated for the Service Principal>
-      ```
+     ```azurecli  
+     az login \
+       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
+       --service-principal \
+       -u <Application Id of the Service Principal> \
+       -p <Key generated for the Service Principal>
+     ```
 
 ### <a name="test-the-connectivity"></a>Otestovat připojení
 
@@ -512,7 +515,7 @@ Tato část vás provede procesem nastavení rozhraní příkazového řádku Po
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
 
-Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí intregrated systémy.
+Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí integrovaných systémů.
 
 Důvěřujete certifikátu kořenové certifikační Autority Azure stacku připojením k existující certifikát Python.
 
@@ -526,17 +529,17 @@ Důvěřujete certifikátu kořenové certifikační Autority Azure stacku přip
 
 2. Spusťte následující příkaz prostředí bash s cestou k vašemu certifikátu.
 
-  - Pro vzdáleném počítači s Linuxem:
+   - Pro vzdáleném počítači s Linuxem:
 
-    ```bash  
-    sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
+     ```
 
-  - Pro počítače s Linuxem v prostředí Azure Stack:
+   - Pro počítače s Linuxem v prostředí Azure Stack:
 
-    ```bash  
-    sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
-    ```
+     ```bash  
+     sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
+     ```
 
 ### <a name="connect-to-azure-stack"></a>Připojení ke službě Azure Stack
 
@@ -550,11 +553,12 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
    ```
 
 2. Zaregistrujte vašeho prostředí. Při běhu používat následující parametry `az cloud register`.
+
     | Hodnota | Příklad: | Popis |
     | --- | --- | --- |
     | Název prostředí | AzureStackUser | Použití `AzureStackUser` pro uživatelské prostředí. Pokud operátor, zadat `AzureStackAdmin`. |
-    | Koncový bod služby resource manager | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
-    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Intregrated systému můžete použít koncový bod pro váš systém.  |
+    | Koncový bod Resource Manageru | https://management.local.azurestack.external | **ResourceManagerUrl** je v Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** v integrovaných systémech je: `https://management.<region>.<fqdn>/` Načíst metadata vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Pokud máte dotaz týkající se koncový bod integrovaný systém, obraťte se na váš operátor cloudu. |
+    | Koncový bod úložiště | local.azurestack.external | `local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Přípona Keyvalut | . vault.local.azurestack.external | `.vault.local.azurestack.external` je ASDK. Pro integrovaný systém můžete použít koncový bod pro váš systém.  |
     | Image virtuálního počítače alias doc koncový bod- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Identifikátor URI dokumentu, který obsahuje aliasy image virtuálního počítače. Další informace najdete v tématu [### nastavení koncového bodu virtuálního počítače aliasy](#set-up-the-virtual-machine-aliases-endpoint). |
 
@@ -581,24 +585,24 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 6. Přihlásit se: 
 
-  *  Jako **uživatele** pomocí webového prohlížeče s kódem zařízení:  
+   *  Jako **uživatele** pomocí webového prohlížeče s kódem zařízení:  
 
-  ```azurecli  
+   ```azurecli  
     az login --use-device-code
-  ```
+   ```
 
-  > [!NOTE]  
-  >Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
+   > [!NOTE]  
+   >Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
 
-  * Jako hlavní název služby:
+   * Jako hlavní název služby:
         
-    Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
+     Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
 
       * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu instančního objektu služby, jako pfx pomocí soukromého klíče umístěné na `cert:\CurrentUser\My`; certifikátu název má stejný název jako objekt zabezpečení.
   
       * Převeďte soubor pfx na pem (použijte nástroj OpenSSL).
 
-    Přihlaste se k rozhraní příkazového řádku:
+     Přihlaste se k rozhraní příkazového řádku:
 
       ```azurecli  
       az login --service-principal \

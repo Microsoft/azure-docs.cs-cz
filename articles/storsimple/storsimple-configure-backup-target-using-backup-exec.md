@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747590"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011144"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování se službou Backup Exec
 
@@ -94,6 +94,7 @@ Následující tabulky popisují základní pokyny k architektuře modelu zaří
 |------------------------|---------------|-----------------|
 | Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Velikost úložiště předpokládá bez odstranění duplicitních dat nebo kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohování**
@@ -206,16 +207,16 @@ Nastavení řešení podle pokynů v následujících částech.
 
 ### <a name="operating-system-best-practices"></a>Osvědčené postupy operačního systému
 
--   Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
--   Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
--   Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
--   Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
--   Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
-   - Vypněte configuratoru údržby v Plánovači úloh Windows.
-   - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Azure PowerShell jako správce a zadejte:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Zakážete šifrování Windows serveru a odstranění duplicitních dat pro systém souborů NTFS.
+- Zakážete defragmentace serveru systému Windows na svazky zařízení StorSimple.
+- Zakážete indexování serveru systému Windows na svazky zařízení StorSimple.
+- Spusťte antivirovou kontrolu na zdrojovém hostiteli (ne u svazků StorSimple).
+- Vypnout výchozí [údržby systému Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) ve Správci úloh. To lze proveďte v jednom z následujících způsobů:
+  - Vypněte configuratoru údržby v Plánovači úloh Windows.
+  - Stáhněte si [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) z webu Windows Sysinternals. Po stažení nástroje PsExec, spusťte prostředí Azure PowerShell jako správce a zadejte:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Osvědčené postupy pro StorSimple
 
@@ -259,6 +260,7 @@ Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku p
 | Ročně úplné | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Další kvótu  | 4  |   | 42 celkový požadavek GFS  |
+
 \* Násobitel GFS je počet kopií, které potřebujete k ochraně a uchovat pro splnění požadavků na zásady zálohování.
 
 ## <a name="set-up-backup-exec-storage"></a>Nastavení úložiště Backup Exec
@@ -311,8 +313,8 @@ Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
 | Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
 |---|---|---|
 | Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
-| Měsíční  | Sobota  |   |
-| Ročně | Sobota  |   |   |
+| měsíčně  | Sobota  |   |
+| Ročně | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Backup Exec úlohy zálohování přiřadit svazky zařízení StorSimple
@@ -373,6 +375,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Měsíční úplné |StorSimple disku (dlouhodobé) | 1 | 12 | 12 |
 | Ročně úplné |StorSimple disku (dlouhodobé) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | 18*|
+
 \* Celková kapacita zahrnuje 17 TiB StorSimple disky a 1 TiB místní svazek RAID.
 
 
@@ -384,8 +387,8 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
-| Ročně | Každý rok StorSimple  |   |   |   |   |   |   |
+| měsíčně | Každý měsíc StorSimple |   |   |   |   |   |
+| Ročně | Každý rok StorSimple  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Přiřadit Backup Exec archivní svazky zařízení StorSimple a úlohy odstranění duplicitních dat
@@ -445,15 +448,15 @@ Následující část popisuje, jak vytvořit krátké skript ke spuštění a o
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Ke spuštění nebo odstranění snímek v cloudu
 
-1.  [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
+1. [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
 2. Stažení a instalace [spravovat CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) skript prostředí PowerShell.
 3. Na serveru, na kterém běží, spuštění skriptu prostředí PowerShell jako správce. Zkontrolujte, jestli jste spustili skript s `-WhatIf $true` chcete zobrazit, co se změní skript provede. Po dokončení ověření předat `-WhatIf $false`. Spustit následující příkaz:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Přidáte skript pro vaši úlohu zálohování v Backup Exec úpravou možnosti Backup Exec úlohy předběžného zpracování a následné zpracování příkazů.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Přidáte skript pro vaši úlohu zálohování v Backup Exec úpravou možnosti Backup Exec úlohy předběžného zpracování a následné zpracování příkazů.
 
-    ![Zálohování konzoly Exec, možnosti zálohování, karta provedení před instrumentací a následného zpracování příkazů](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
+   ![Zálohování konzoly Exec, možnosti zálohování, karta provedení před instrumentací a následného zpracování příkazů](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
 > Doporučujeme, abyste spustili zásady zálohování StorSimple cloudových snímků jako následného zpracování skriptu na konci vaší každodenní úlohy zálohování. Další informace o tom, jak zálohovat a obnovovat vaše aplikace pro zálohování prostředí, které pomáhá splnit i ty RPO a RTO, obraťte se na zálohování architect.

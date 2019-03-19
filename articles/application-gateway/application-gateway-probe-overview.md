@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120546"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -59,12 +59,12 @@ Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfi
 | Adresa URL testu |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Množství času během několika sekund se má čekat před dalším sondu stavu se odesílají.|
 | Časový limit |30 |Množství času v sekundách application gateway čeká na odpověď testu před označením testu jako není v pořádku. Pokud test vrátí jako v pořádku, odpovídající back-endu okamžitě označen jako v pořádku.|
-| Prahová hodnota pro poškozený stav |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota špatného stavu |3 |Určuje, kolik testy k odeslání v případě, že dojde k selhání sondy stavu regulárních. Tyto testy další stavu se odesílají rychle po sobě do rychle určit stav back-endu a nečekat na interval testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!NOTE]
 > Port, který je stejný port jako nastavení HTTP back-end.
 
-Výchozí kontroly zabývá pouze http://127.0.0.1:\<port\> k určení stavu. Pokud je potřeba nakonfigurovat sondu stavu přejděte na vlastní adresu URL nebo upravovat ostatní nastavení, musíte použít vlastní sondy.
+Výchozí kontroly zjistí pouze protokolu http:\//127.0.0.1:\<port\> k určení stavu. Pokud je potřeba nakonfigurovat sondu stavu přejděte na vlastní adresu URL nebo upravovat ostatní nastavení, musíte použít vlastní sondy.
 
 ### <a name="probe-intervals"></a>Intervaly testu
 
@@ -88,7 +88,7 @@ Následující tabulka obsahuje definice pro vlastnosti sondu stavu vlastní.
 | Cesta |Relativní cesta testu. Platná cesta začíná od "/". |
 | Interval |Interval testu paměti v sekundách. Tato hodnota je časový interval mezi dvěma po sobě jdoucích sondy. |
 | Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný.  |
-| Prahová hodnota pro poškozený stav |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 > [!IMPORTANT]
 > Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.

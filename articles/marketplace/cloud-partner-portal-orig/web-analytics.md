@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 20a4e24800b2fa05990d294cb374841c50c4f79b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809234"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097470"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -32,7 +32,7 @@ Teď, když jste vytvořili a publikování vaší nabídky, je další část v
 
 Zobrazí se panel s bohatými funkcemi pro vaše ID vydavatele, která byla vytvořena pomocí Microsoft Power BI a umožní vám prohlédnout všechny svoje nabídky\' data, která se aktualizují každý den.
 
-<a name="microsoft-campaigns"></a>**Microsoft kampaně**
+<a name="microsoft-campaigns"></a>**Microsoft Campaigns**
 -----------------------
 
 Abyste mohli rozvíjet vaše nabídky a sledovat růstu vaší nabídky, zavedli jsme možnost používat **kampaně Microsoftu** na portál partnerů cloudu. Kampaní jsou nově podporované funkce pro web marketplace, které vám umožní si můžete sledovat různé kanály, které odesílají zákazníky na stránce s podrobnostmi o vaší aplikaci.
@@ -49,11 +49,11 @@ Existují dva způsoby, jak generovat vlastní kampaně.
 
 Například můžete použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-2. (Rozšířené): použijte jednu z našich podporovaných, obecný kampaně ID v adrese URL. Chceme narážely s další ref značky, které je třeba použít, aby podporujeme konvence automaticky rozpoznat tyto další značky:
+1. (Rozšířené): Použijte jednu z našich podporovaných, obecný kampaně ID v adrese URL. Chceme narážely s další ref značky, které je třeba použít, aby podporujeme konvence automaticky rozpoznat tyto další značky:
     
     1. **UTM\_kampaně**
     2. **UTM\_zdroje**
-    3. **REF**
+    3. **ref**
     4. **src**
 
 Například můžete použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>

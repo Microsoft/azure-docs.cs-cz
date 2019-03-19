@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 13c5d194ca5e6a606b319a42fdba7a597a8d4852
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c7e6640bdb17e9f996545c2c3315c0c1ade42d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902208"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikací na platformy Azure a Azure Stack
 
@@ -78,17 +78,17 @@ V tomto kurzu se předpokládá, že máte některé základní znalosti o Azure
 ### <a name="azure-stack-requirements"></a>Požadavky služby Azure Stack
 
 * Použít systémech pro Azure Stack integrované nebo nasadit Azure Stack Development Kit (ASDK). Nasazení ASDK:
-    * [Kurz: nasazení ASDK pomocí instalačního programu](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) poskytuje podrobné pokyny.
-    * Použití [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skript Powershellu pro automatizaci ASDK kroky po nasazení.
+  * [Kurz: nasazení ASDK pomocí instalačního programu](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) poskytuje podrobné pokyny.
+  * Použití [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skript Powershellu pro automatizaci ASDK kroky po nasazení.
 
     > [!Note]
     > Instalace ASDK trvá přibližně sedm hodin k dokončení, takže Plánujte odpovídajícím způsobem.
 
- * Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služeb PaaS do služby Azure Stack.
- * Vytvoření [plánu nebo nabídky](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) ve službě Azure Stack.
- * Vytvoření [tenanta předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) ve službě Azure Stack.
- * Vytvoření webové aplikace v rámci předplatného tenanta. Poznamenejte si nový URL webové aplikace pro později použít.
- * Nasazení virtuálního počítače Windows serveru 2012 v rámci předplatného tenanta. Tento server bude používat jako váš server sestavení a ke spouštění služeb Azure DevOps.
+  * Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služeb PaaS do služby Azure Stack.
+  * Vytvoření [plánu nebo nabídky](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) ve službě Azure Stack.
+  * Vytvoření [tenanta předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) ve službě Azure Stack.
+  * Vytvoření webové aplikace v rámci předplatného tenanta. Poznamenejte si nový URL webové aplikace pro později použít.
+  * Nasazení virtuálního počítače Windows serveru 2012 v rámci předplatného tenanta. Tento server bude používat jako váš server sestavení a ke spouštění služeb Azure DevOps.
 * Zadejte bitovou kopii systému Windows Server 2016 s .NET 3.5 pro virtuální počítač (VM). Tento virtuální počítač bude vytvořen ve vaší službě Azure Stack jako privátní sestavovacího agenta.
 
 ### <a name="developer-tool-requirements"></a>Požadavky na nástroj pro vývojáře
@@ -97,8 +97,8 @@ V tomto kurzu se předpokládá, že máte některé základní znalosti o Azure
 * [Instalace sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [přihlášení ke službám Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Připojte se k projektu a [místně ho naklonujte](https://www.visualstudio.com/docs/git/gitquickstart).
 
- > [!Note]
- > Vaším prostředím Azure Stack potřebuje správný imagí syndikovat do spuštění systému Windows Server a SQL Server. Musí také mít nasazení služby App Service.
+  > [!Note]
+  > Vaším prostředím Azure Stack potřebuje správný imagí syndikovat do spuštění systému Windows Server a SQL Server. Musí také mít nasazení služby App Service.
 
 ## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Příprava privátní agent Azure kanály pro integraci služby Azure DevOps
 
@@ -363,7 +363,7 @@ Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použit�
 
 2. Přejděte **sestavit webovou aplikaci** stránky pro projekt.
 
-3. V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s.Net Core.
+3. V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s .NET Core.
 
     ![Přidat argument sestavení kanálu](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402298"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119492"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
       * `Microsoft.Azure.DataLake.Store` – Tento kurz používá verzi v1.0.0.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Tento kurz používá verzi v2.3.1.
     
-    Zavřete **Správce balíčků NuGet**.
+      Zavřete **Správce balíčků NuGet**.
 
 6. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
 

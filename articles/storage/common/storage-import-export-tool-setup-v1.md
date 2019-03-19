@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 6d8cf874032449e362a35d106bba3b430a80ea48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467607"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087444"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Import/Export Azure
 Nástroje Microsoft Azure Import/Export je jednotka přípravy a opravit nástroj, který vám pomůže se služby Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
@@ -45,36 +45,36 @@ Pokud jsou Příprava disků pro úlohu importu, musíte splňovat následujíc�
   
 Pokud se pokoušíte import, který má částečně se nepodařilo opravit, budete potřebovat:  
   
--   Kopií souborů protokolu  
+- Kopií souborů protokolu  
   
--   Klíč účtu úložiště  
+- Klíč účtu úložiště  
   
   Pokud se pokoušíte export, který má částečně se nepodařilo opravit, budete potřebovat:  
   
--   Kopií souborů protokolu  
+- Kopií souborů protokolu  
   
--   Soubory manifestu (volitelné)  
+- Soubory manifestu (volitelné)  
   
--   Klíč účtu úložiště  
+- Klíč účtu úložiště  
   
 ## <a name="installing-the-azure-importexport-tool"></a>Instalace nástroje Azure Import/Export  
  Nástroje Azure Import/Export se skládá z následujících souborů:  
   
--   WAImportExport.exe  
+- WAImportExport.exe  
   
--   WAImportExport.exe.config  
+- WAImportExport.exe.config  
   
--   WAImportExportCore.dll  
+- WAImportExportCore.dll  
   
--   WAImportExportRepair.dll  
+- WAImportExportRepair.dll  
   
--   Microsoft.WindowsAzure.Storage.dll  
+- Microsoft.WindowsAzure.Storage.dll  
   
--   Hddid.dll  
+- Hddid.dll  
   
- Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. Dále otevřete okno příkazového řádku v režimu správce a nastavit výše uvedené adresáře jako aktuální adresář.  
+  Zkopírujte tyto soubory do pracovního adresáře, například `c:\WAImportExport`. Dále otevřete okno příkazového řádku v režimu správce a nastavit výše uvedené adresáře jako aktuální adresář.  
   
- Pokud chcete výstup nápovědy pro příkaz, spusťte nástroj bez parametrů:  
+  Pokud chcete výstup nápovědy pro příkaz, spusťte nástroj bez parametrů:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  

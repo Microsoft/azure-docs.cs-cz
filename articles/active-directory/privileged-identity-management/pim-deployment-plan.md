@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 804000b781ca1fc8d9f8834e3a8c0f0a78c52c11
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878478"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -179,11 +179,11 @@ Je důležité k určení priority ochrana role Azure AD, které mají nejvíce 
 
 1. Globální správce
 1. Správce zabezpečení
-1. Správce uživatelských účtů
+1. Správce uživatelů
 1. Správce Exchange
-1. Správce Sharepointu
-1. Správce služby Intune
-1. Čtecí zařízení pro zabezpečení
+1. Správce SharePointu
+1. Správce Intune
+1. Čtenář zabezpečení
 1. Správce služeb
 1. Správce fakturace
 1. Správce Skypu pro firmy
@@ -259,13 +259,13 @@ Následující tabulka popisuje jednotlivé nastavení.
 | Nastavení | Popis |
 | --- | --- |
 | Role | Název role, kterou definujete nastavení. |
-| Vyžadování MFA | Určuje, zda oprávněný uživatel potřebuje provést MFA před aktivací roli.<br/><br/>:heavy_check_mark: **Společnost Microsoft doporučuje** vynucení vícefaktorového ověřování pro všechny role správce, zejména v případě, že mají uživatelé typu Host. |
+| Vyžadování MFA | Určuje, zda oprávněný uživatel potřebuje provést MFA před aktivací roli.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** vynucení vícefaktorového ověřování pro všechny role správce, zejména v případě, že mají uživatelé typu Host. |
 | Oznámení | Pokud nastavena na hodnotu true, globálního správce, správce privilegovaných rolí, správce zabezpečení v organizaci dostanou oznámení e-mailem když oprávněný uživatel aktivuje roli.<br/><br/>**Poznámka:** Některé organizace nemají e-mailovou adresu, vázané na svých účtů správce, chcete-li získat tyto e-mailová oznámení, měli byste nastavit alternativní e-mailovou adresu, takže správci budou dostávat tyto e-maily. |
-| Lístek incidentu | Určuje, zda oprávněný uživatel potřebuje k zaznamenání číslo lístku incidentu při aktivaci jejich role. Toto nastavení pomáhá organizacím identifikovat každou aktivaci s interní číslo incidentu ke zmírnění aktivace nežádoucí serverům.<br/><br/>:heavy_check_mark: **Společnost Microsoft doporučuje** výhod čísla incidentů a jejich zapojení PIM s váš interní systém. To je užitečné hlavně pro schvalovatelů, kteří potřebují kontext pro aktivaci. |
-| Vyžadovat schválení | Určuje, zda oprávněný uživatel potřebuje získat schválení aktivaci této role.<br/><br/>:heavy_check_mark: **Společnost Microsoft doporučuje** můžete nastavit schválení pro role s nejvíce oprávnění. Na základě způsobů využití u všech zákazníků PIM, globální správce, Správce uživatelů, správce Exchange, správce zabezpečení a správce hesel je nejběžnější role s instalačním programem schválení. |
-| Schvalovatel | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/>:heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
+| Lístek incidentu | Určuje, zda oprávněný uživatel potřebuje k zaznamenání číslo lístku incidentu při aktivaci jejich role. Toto nastavení pomáhá organizacím identifikovat každou aktivaci s interní číslo incidentu ke zmírnění aktivace nežádoucí serverům.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** výhod čísla incidentů a jejich zapojení PIM s váš interní systém. To je užitečné hlavně pro schvalovatelů, kteří potřebují kontext pro aktivaci. |
+| Vyžadovat schválení | Určuje, zda oprávněný uživatel potřebuje získat schválení aktivaci této role.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** můžete nastavit schválení pro role s nejvíce oprávnění. Na základě způsobů využití u všech zákazníků PIM, globální správce, Správce uživatelů, správce Exchange, správce zabezpečení a správce hesel je nejběžnější role s instalačním programem schválení. |
+| Schvalovatel | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
 | Doba trvání aktivace | Dlouhá doba, kterou uživatel aktivuje se v roli předtím, než vyprší platnost. |
-| Trvalého správce | Seznam uživatelů, kteří se budou pro roli správce je trvalý (nikdy muset aktivovat).<br/><br/>:heavy_check_mark: **Společnost Microsoft doporučuje** mít žádný stávající správce u všech rolí s výjimkou globální správci. Přečtěte si více o řezu kdo je třeba oprávnění a trvale aktivní části tohoto plánu, která má být. |
+| Trvalého správce | Seznam uživatelů, kteří se budou pro roli správce je trvalý (nikdy muset aktivovat).<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** mít žádný stávající správce u všech rolí s výjimkou globální správci. Přečtěte si více o řezu kdo je třeba oprávnění a trvale aktivní části tohoto plánu, která má být. |
 | Správce Active | Správce active pro prostředky Azure, je seznam uživatelů, kteří se už nikdy nemusíte použít roli aktivovat. To se označuje jako správce je trvalý stejně jako v Azure AD role vzhledem k tomu, že můžete nastavit dobu vypršení platnosti pro Pokud uživatel ztratí této role. |
 | Aktivní vypršení platnosti | Po dokončení konfigurace toto časové období vypršení platnosti aktivní přiřazení role pro role prostředků Azure. Můžete si vybrat z 15 dnů, 1 měsíc, 3 měsíce, 6 měsíců, 1 rok nebo trvale aktivní. |
 | Vypršení platnosti oprávnění | Po dokončení konfigurace toto časové období vypršení platnosti přiřazení oprávněné role pro role prostředků Azure. Můžete si vybrat z 15 dnů, 1 měsíc, 3 měsíce, 6 měsíců, 1 rok nebo trvalá způsobilost. |

@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176170"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -56,7 +56,7 @@ Zobrazit stav Azure Active Directory Domain Services tak, že vyberete **stavu**
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Vytvořit a autorizovat spravované identity
 
-A **uživatelsky přiřazené identity spravované** slouží ke zjednodušení a bezpečný provoz služby domény. Když přiřadíte roli přispěvatele služby HDInsight domény pro spravovanou identitu, ho čtení, vytvořit, upravit a Odstranit operacích v doméně služby. Některé operace, jako je vytvoření organizační jednotky služby domain services a zásady služby jsou nezbytné k HDInsight Enterprise Security Package. Spravované identity je možné vytvořit v libovolné předplatné. Další informace najdete v tématu [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+A **uživatelsky přiřazené identity spravované** slouží ke zjednodušení a bezpečný provoz služby domény. Když přiřadíte roli přispěvatele služby HDInsight domény pro spravovanou identitu, ho čtení, vytvořit, upravit a Odstranit operacích v doméně služby. Některé operace, jako je vytvoření organizační jednotky služby domain services a zásady služby jsou nezbytné k HDInsight Enterprise Security Package. Spravované identity je možné vytvořit v libovolné předplatné. Další informace o spravovaných identit obecně platí, najdete v části [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Další informace o spravovaných pracovních identit v Azure HDInsight, naleznete v tématu [spravovaných identit v Azure HDInsight](../hdinsight-managed-identities.md).
 
 Pokud chcete nastavit ESP clustery, vytvoření uživatelsky přiřazené spravovanou identitu Pokud již nemáte. Zobrazit [Create, seznam, delete nebo přiřadit roli, kterou chcete přiřadit uživatele spravovanou identitu pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) pokyny. Dále přiřaďte **Přispěvatel služby HDInsight domény** role spravované identity v Azure AD DS Access control (oprávnění správce AAD DS jsou nezbytné pro toto přiřazení role).
 

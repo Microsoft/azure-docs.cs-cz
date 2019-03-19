@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/05/2019
+ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e7f2f2d798a82bed3247197da6bb09aa8110d9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Integrace Azure Active Directory s přiblížení
 
@@ -112,20 +112,20 @@ Ke konfiguraci Azure AD jednotné přihlašování s přiblížení, proveďte n
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory přiblížení klienta](https://support.zoom.us/hc/en-us) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-5. Přiblížení aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+5. Přiblížení aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+6. Kromě výše, přiblížení aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
     | Název | Obor názvů  |  Zdrojový atribut|
     | ---------------| --------------- | --------- |
-    | E-mailová adresa  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
-    | Jméno  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
-    | Příjmení  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
-    | Telefonní číslo  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
-    | Oddělení  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
-    | role |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+    | E-mailová adresa  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | Jméno  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
+    | Příjmení  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
+    | Telefonní číslo  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
+    | Oddělení  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
+    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
     > Po klepnutí na [tady](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) vědět, jak nakonfigurovat Role ve službě Azure AD
@@ -159,7 +159,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s přiblížení, proveďte n
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor služby Azure Ad
+    b. Identifikátor Azure AD
 
     c. Adresa URL – odhlášení
 
@@ -179,13 +179,23 @@ Ke konfiguraci Azure AD jednotné přihlašování s přiblížení, proveďte n
 
     a. V **přihlašovací adresa URL stránky** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    b. V **adresy URL odhlašovací stránky** textového pole vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
+    b. Pro **adresy URL odhlašovací stránky** hodnotu, budete muset přejít na web Azure Portal a klikněte na **Azure Active Directory** na levé straně přejděte na **registrace aplikací**.
 
-    c. V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát poskytovatele Identity** textového pole.
+    ![Tlačítko Azure Active Directory](./media/zoom-tutorial/appreg.png)
 
-    d. V **vystavitele** textového pole vložte hodnotu **Azure Ad identifikátor** zkopírovanou z webu Azure portal. 
+    c. Klikněte na **koncových bodů**
 
-    e. Klikněte na **Uložit**.
+    ![Tlačítko koncový bod](./media/zoom-tutorial/endpoint.png)
+
+    d. Kopírovat **koncový bod odhlašování SAML-P** a vložte ho do **adresy URL odhlašovací stránky** textového pole.
+
+    ![Tlačítko kopírování koncový bod](./media/zoom-tutorial/endpoint1.png)
+
+    e. V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát poskytovatele Identity** textového pole.
+
+    f. V **vystavitele** textového pole vložte hodnotu **Azure AD identifikátor** zkopírovanou z webu Azure portal. 
+
+    g. Klikněte na **Uložit**.
 
     > [!NOTE]
     > Další informace najdete v dokumentaci k přiblížení [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
@@ -208,7 +218,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

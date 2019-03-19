@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110490"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti
 
@@ -35,12 +35,12 @@ Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtu�
 
 1. V **trezor** > **replikované položky**, klikněte pravým tlačítkem na neúspěšný selhání pro virtuální počítač a vyberte **znovu nastavit ochranu**. Směr opětovného nastavování ochrany by měly vykazovat ze sekundární do primární.
 
-  ![Operace opětovného zapnutí ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Operace opětovného zapnutí ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 2. Projděte si sady skupiny, sítě, úložiště a dostupnosti prostředků. Pak klikněte na **OK**. Pokud jsou všechny prostředky označené jako nové, jsou vytvořeny jako součást procesu opětovného nastavování ochrany.
 3. Úloha opětovného nastavování ochrany přidá do cílové lokality nejnovější data. Po dokončení, která se provádí rozdílová replikace. Potom můžete převzít služby zpět do primární lokality. Můžete vybrat účet úložiště nebo sítě, kterou chcete použít během znovu nastavit ochranu, pomocí možnosti přizpůsobit.
 
-  ![Možnost přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Možnost přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>Přizpůsobení nastavení zpětné replikace
 

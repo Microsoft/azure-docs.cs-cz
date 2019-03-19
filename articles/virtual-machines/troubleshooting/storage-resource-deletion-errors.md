@@ -11,22 +11,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089977"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředků úložiště
 
 V některých scénářích, může dojít k jedné z následujících dojít k chybám, když se pokoušíte odstranit objektů blob v nasazení Azure Resource Manageru, kontejneru nebo účtu úložiště Azure:
 
->**Nepovedlo se odstranit účet úložiště "StorageAccountName". Chyba: Účet úložiště nejde odstranit, protože některé jeho artefakty používá.**
-
->**Nepovedlo se odstranit # mimo # kontejnerů:<br>virtuální pevné disky: V kontejneru je aktuálně zapůjčení a v požadavku bylo zadáno žádné ID zapůjčení.**
-
->**Nepovedlo se odstranit # mimo # objektů blob:<br>BlobName.vhd: V požadavku bylo zadáno žádné ID zapůjčení u objektu blob je aktuálně zapůjčení.**
+> **Nepovedlo se odstranit účet úložiště "StorageAccountName". Chyba: Účet úložiště nejde odstranit, protože některé jeho artefakty používá.**
+> 
+> **Nepovedlo se odstranit # mimo # kontejnerů:<br>virtuální pevné disky: V kontejneru je aktuálně zapůjčení a v požadavku bylo zadáno žádné ID zapůjčení.**
+> 
+> **Nepovedlo se odstranit # mimo # objektů blob:<br>BlobName.vhd: V požadavku bylo zadáno žádné ID zapůjčení u objektu blob je aktuálně zapůjčení.**
 
 Virtuální pevné disky používané ve virtuálních počítačích Azure jsou soubory .vhd uložené jako objekty BLOB stránky v účtu úložiště úrovně standard nebo premium v Azure. Další informace o disků v Azure najdete v tématu naše [Úvod do managed disks](../linux/managed-disks-overview.md).
 

@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1966a0f360a1b214f8fc7b3d3c94ec817e5a4232
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: e2e6b6c22f94a35b50ff51f19b1959135b3c4c34
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875494"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Vytvoření a vyhledejte ukotvení pomocí prostorových kotvy Azure v jazyce C + +/ WinRT
 
@@ -25,9 +25,11 @@ ms.locfileid: "56752973"
 > * [C + +/ NDK](create-locate-anchors-cpp-ndk.md)
 > * [C + +/ WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními. Má se vyladěných pro práci s vývojové prostředí podle vašeho výběru. V tomto článku začneme budete zabývat jak to udělat v jazyce C + +/ WinRT.
+Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými zařízeními. Podporuje několik vývojových prostředích. V tomto článku začneme budete zabývat jak to udělat v jazyce C + +/ WinRT.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Další informace o [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) třídy.
 
 ```cpp
     SpatialAnchorsFactory m_asafactory{ nullptr };
@@ -39,6 +41,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Další informace o [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) třídy.
 
 ```cpp
     auto configuration = m_cloudSession.Configuration();
@@ -53,6 +57,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Další informace o [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) delegovat.
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -101,11 +107,23 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
+Další informace o [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) metody.
+
 ```cpp
     m_cloudSession.Start();
 ```
 
+[!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
+
+Další informace o [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#processframe) metody.
+
+```cpp
+    m_cloudSession->ProcessFrame(ar_frame_);
+```
+
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Další informace o [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) delegovat.
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -118,6 +136,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Další informace o [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) třídy.
 
 ```cpp
     // Initialization
@@ -153,6 +173,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Další informace o [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) metody.
+
 ```cpp
     SessionStatus status = co_await m_cloudSession.GetSessionStatusAsync();
     if (value.RecommendedForCreateProgress() < 1.0f) return;
@@ -160,6 +182,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
+
+Další informace o [objekt AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) metody.
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = m_asafactory.CreateCloudSpatialAnchor();
@@ -172,6 +196,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Další informace o [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) metody.
+
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
     anchor.AppProperties().Insert(LR"(last-user-access)", LR"(just now)");
@@ -179,6 +205,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Další informace o [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) metody.
 
 ```cpp
     CloudSpatialAnchor anchor = co_await m_cloudSession.GetAnchorPropertiesAsync(LR"(anchorId)");
@@ -191,6 +219,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Další informace o [vypršení platnosti](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) metody.
+
 ```cpp
     const int64_t oneWeekFromNowInHours = 7 * 24;
     const DateTime oneWeekFromNow = DateTime::clock::now() + std::chrono::hours(oneWeekFromNowInHours);
@@ -199,6 +229,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Další informace o [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) metody.
+
 ```cpp
     AnchorLocateCriteria criteria = m_asafactory.CreateAnchorLocateCriteria();
     criteria.Identifiers({ LR"(id1)", LR"(id2)", LR"(id3)" });
@@ -206,6 +238,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Další informace o [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) delegovat.
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -235,6 +269,8 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Další informace o [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) metody.
+
 ```cpp
     co_await m_cloudSession.DeleteAnchorAsync(cloudAnchor);
     // Perform any processing you may want when delete finishes
@@ -242,11 +278,15 @@ Azure prostorových kotvy umožňují sdílet kotvy na světě mezi různými za
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Další informace o [Zastavit](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) metody.
+
 ```cpp
     m_cloudSession.Stop();
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Další informace o [resetování](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) metody.
 
 ```cpp
     m_cloudSession.Reset();

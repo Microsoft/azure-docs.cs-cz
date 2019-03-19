@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838812"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznat loga služeb Azure v fotoaparátu
 
@@ -101,7 +101,6 @@ Dále otevřete *Source\VisualProvision\AppSettings.cs* souboru a naplnit `Compu
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 Aplikace vyžaduje účet instančního objektu služby Azure k nasazení služeb do vašeho předplatného Azure. Instanční objekt služby umožňuje delegovat konkrétní oprávnění k aplikaci pomocí řízení přístupu na základě rolí. Další informace najdete v tématu [instanční objekty průvodce](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
@@ -131,6 +130,7 @@ Po úspěšném dokončení byste měli vidět následující výstup ve formát
   ...
 }
 ```
+
 Poznamenejte si `clientId` a `tenantId` hodnoty. Přidat do příslušných polí v *Source\VisualProvision\AppSettings.cs* souboru.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,9 +138,10 @@ Poznamenejte si `clientId` a `tenantId` hodnoty. Přidat do příslušných pol�
 ## <a name="run-the-app"></a>Spuštění aplikace
 
 V tomto okamžiku jste dali přístup k aplikaci pro:
-* trénovaného modelu Custom Vision
-* službu pro počítačové zpracování obrazu
-* instanční objekt 
+
+- trénovaného modelu Custom Vision
+- službu pro počítačové zpracování obrazu
+- instanční objekt
 
 Postupujte podle těchto kroků a spusťte aplikaci:
 
@@ -163,7 +164,6 @@ Postupujte podle těchto kroků a spusťte aplikaci:
 
     ![Na obrazovce aplikace zobrazuje pole rozevíracího seznamu pro předplatné Azure cílového](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. Aktivuje se používání fotoaparátu v zařízení. Pořiďte fotku jedné služby Azure log, které jste školení. Okno nasazení by měl vyzvat k výběru oblast a skupinu prostředků pro nové služby (jak byste udělali, pokud byly jejich nasazení na webu Azure Portal). 
 
@@ -171,7 +171,7 @@ Postupujte podle těchto kroků a spusťte aplikaci:
 
     ![Obrazovce aplikace zobrazí pole pro nasazení oblast a skupinu prostředků](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud jste postupovali podle všech kroků v tomto scénáři a používá aplikace k nasazení služby Azure do vašeho účtu, přejděte [webu Azure portal](https://ms.portal.azure.com/). Zrušte, služby, které nechcete použít.
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6b3318ced4c6e40b80172b19d7f664c53e5569cc
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087954"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -46,15 +46,15 @@ Další informace o práci se sadou WebJobs SDK najdete v tématu [použití sad
 
 1. Nainstalujte nejnovější stabilní 3.x verze následující balíčky NuGet:
 
-    * `Microsoft.Azure.WebJobs`
-    * `Microsoft.Azure.WebJobs.Extensions`
+   * `Microsoft.Azure.WebJobs`
+   * `Microsoft.Azure.WebJobs.Extensions`
 
-    Tady je **Konzola správce balíčků** příkazy pro verzi 3.0.4:
+     Tady je **Konzola správce balíčků** příkazy pro verzi 3.0.4:
 
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs -version 3.0.4
-    Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
-    ```
+     ```powershell
+     Install-Package Microsoft.Azure.WebJobs -version 3.0.4
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
+     ```
 
 ## <a name="create-the-host"></a>Vytvořte hostitele
 
@@ -293,7 +293,7 @@ V této části sestavení a spusťte projekt lokálně a aktivovat funkci tak, 
 
    Z důvodu [dotazování exponenciálního omezení rychlosti fronty](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm), může trvat až 2 minuty, než modul runtime vyhledat zprávu a vyvolat funkci. Tato čekací doba může snížit spuštěním v [vývojový režim](webjobs-sdk-how-to.md#host-development-settings).
 
-  Výstup konzoly by měl vypadat takto:
+   Výstup konzoly by měl vypadat takto:
 
    ```console
     info: Function.ProcessQueueMessage[0]

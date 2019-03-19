@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a8cc730e6e03e3d1adce1a584a20e8111116f40c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013055"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -52,7 +52,7 @@ Tyto nástroje můžete použít k vytvoření nebo konfigurace virtuální sít
 * Soubor konfigurace sítě (netcfg - pro jenom klasické virtuální sítě). Zobrazit [konfigurace virtuální sítě pomocí souboru konfigurace sítě](virtual-networks-using-network-configuration-file.md) článku.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Jaké rozsahy adres můžete použít ve své virtuální sítě?
-Všechny rozsahy IP adres definované v [RFC 1918](http://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16. Nelze přidat následující rozsahy adres:
+Všechny rozsahy IP adres definované v [RFC 1918](https://tools.ietf.org/html/rfc1918). Například 10.0.0.0/16. Nelze přidat následující rozsahy adres:
 * 224.0.0.0/4 (vícesměrové vysílání)
 * 255.255.255.255/32 (vysílání)
 * 127.0.0.0/8 (adresu zpětné smyčky)
@@ -370,7 +370,7 @@ Odstranění účtu služby Azure je nezávislé operace a je podporován i v p�
 Pokud jsou povolené koncové body služeb virtuální sítě, zdrojové IP adresy prostředků v podsíti virtuální sítě se přepne z používání veřejných IPV4 adres na Azure virtual network privátní IP adresy pro provoz do služby Azure. Všimněte si, že to může způsobit konkrétní brány firewall protokolu IP, která jsou nastavena na veřejnou IPV4 adresu předtím selhání služby Azure. 
 
 ### <a name="does-service-endpoint-route-always-take-precedence"></a>Trasy koncového bodu služby vždy přednost?
-Koncové body služby přidat systémová trasa, která má přednost před trasy protokolu BGP a poskytují optimální směrování provozu koncových bodů služeb. Koncové body služby vždy směrují provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Další informace o tom, jak Azure vybírá trasu, najdete v článku [Azure Virtual network směrování provozu] (virtual sítě udr-overview.md).
+Koncové body služby přidat systémová trasa, která má přednost před trasy protokolu BGP a poskytují optimální směrování provozu koncových bodů služeb. Koncové body služby vždy směrují provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Další informace o tom, jak Azure vybírá trasu, naleznete v tématu [směrováním provozu v Azure Virtual network](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak funguje skupina NSG v podsíti s koncovými body služby?
 Ke zpřístupnění služby Azure, skupiny zabezpečení sítě potřeba povolit odchozí připojení. Skupiny Nsg nejsou otevřené veškerý odchozí internetový provoz, by měly fungovat na provoz koncového bodu služby. Můžete také omezit odchozí provoz do služby IP adresy jenom pomocí značky služeb.  

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Integrace Azure Active Directory s xMatters OnDemand.
 
@@ -114,6 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<companyname>.xmatters.com.au/`|
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -209,9 +211,9 @@ Cílem této části je vytvořte uživatele Britta Simon v xMatters OnDemand.
 
 1. Přihlaste se k vaší **XMatters OnDemand** tenanta.
 
-1.  Klikněte na tlačítko **uživatelé** kartu a pak klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **uživatelé** kartu a pak klikněte na tlačítko **přidat uživatele**.
 
-    ![Uživatelé](./media/xmatters-ondemand-tutorial/IC781048.png "uživatelů")
+   ![Uživatelé](./media/xmatters-ondemand-tutorial/IC781048.png "uživatelů")
 
 1. V **přidání uživatele** části, proveďte následující kroky:
 

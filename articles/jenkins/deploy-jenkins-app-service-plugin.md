@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 98e1f982eb627db2a7d2126109e5897c45649ce9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545120"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864809"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
@@ -90,7 +90,7 @@ Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service
 ### <a name="set-up-the-jenkins-job"></a>Nastavení úlohy Jenkinse
 
 1. Na řídicím panelu Jenkinse vytvořte nový projekt **freestyle** (Volný projekt).
-2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http://github.com/&lt;vaše_ID>/javawebappsample.
+2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http:\//github.com/&lt;your_ID > / javawebappsample.
 3. Přidáním příkazu **Execute shell** (Spustit prostředí) přidejte krok nasazení projektu pomocí Mavenu. V tomto příkladu potřebujeme další příkaz k přejmenování souboru \*.war v cílové složce na **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Před nastavením úlohy v Jenkinsu budete potřebovat webovou aplikaci v Linuxu
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Nastavení úlohy Jenkinse pro Docker
 
 1. Na řídicím panelu Jenkinse vytvořte nový projekt **freestyle** (Volný projekt).
-2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http://github.com/&lt;vaše_ID>/javawebappsample.
+2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http:\//github.com/&lt;your_ID > / javawebappsample.
 3. Přidáním příkazu **Execute shell** (Spustit prostředí) přidejte krok nasazení projektu pomocí Mavenu. Do příkazu přidejte následující řádek:
     ```bash
     mvn clean package

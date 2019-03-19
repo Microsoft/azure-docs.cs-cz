@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 607c3ff128c82c7baa268cf8f068232428ec5331
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 63ce3587a2c48e7e03503e50a548ed372f511e37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733146"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082054"
 ---
 # <a name="load-data-from-sap-business-warehouse-bw-by-using-azure-data-factory"></a>Načtení dat ze SAP Business Warehouse (BW) pomocí služby Azure Data Factory
 
@@ -42,7 +42,7 @@ Tento článek popisuje návod na použití služby Data Factory _načtení dat 
 
   2. Stáhněte si [64-bit SAP .NET konektor 3.0](https://support.sap.com/en/product/connectors/msnet.html) z webu SAP a nainstalujte ho na místní prostředí IR počítače.  Při instalaci, v okně "pokynů k instalaci" Zkontrolujte, zda jste vybrali "**nainstalovat sestavení do GAC**" možnost, jak je znázorněno na následujícím obrázku.
 
-     ![Nastavení konektoru SAP .NET](media\connector-sap-business-warehouse-open-hub\install-sap-dotnet-connector.png)
+     ![Nastavení konektoru SAP .NET](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
 ## <a name="full-copy-from-sap-bw-open-hub"></a>Úplná kopie z SAP BW Open centra
 
@@ -56,7 +56,7 @@ Na portálu Azure portal, přejděte do služby data factory -> vyberte **vytvo�
 
 4. Na **připojení zadejte SAP BW Open rozbočovače** stránky, 
 
-   ![Vytvoření SAP BW Open Centrum propojené služby](media\load-sap-bw-data\create-sap-bw-open-hub-linked-service.png)
+   ![Vytvoření SAP BW Open Centrum propojené služby](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
    1. Zvolte **připojit prostřednictvím prostředí Integration Runtime**: klikněte na rozevírací seznam a vyberte existující místní prostředí IR, nebo pokud nemáte místní prostředí IR nastavit ještě nevytvořili. 
 
@@ -72,88 +72,88 @@ Na portálu Azure portal, přejděte do služby data factory -> vyberte **vytvo�
 
 5. Na **vyberte Otevřít Centrum cíle** stránce, přejděte k dispozici v SAP BW Open centra cíle a vyberte ten, který chcete zkopírovat data z a pak klikněte na **Další**.
 
-   ![Vyberte tabulku, otevřít Centrum SAP BW](media\load-sap-bw-data\select-sap-bw-open-hub-table.png)
+   ![Vyberte tabulku, otevřít Centrum SAP BW](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
 6. V případě potřeby zadejte filtr. Pokud otevřete Centrum cíl obsahuje pouze data z jednoho procesu přenosu dat (DTP) spuštění s ID jedné žádosti, nebo jste jisti, že dokončení vaší DTP a chcete všechna data, zrušte zaškrtnutí políčka **vyloučení posledního požadavku**. Přečtěte si více o tom, jak tato nastavení se týkají konfigurace SAP BW [konfigurace SAP BW otevřít Centrum cílový](#sap-bw-open-hub-destination-configurations) oddílu. Klikněte na tlačítko **ověřit** pečlivě zkontrolujte údaje vrátili, pak vyberte **Další**.
 
-   ![Otevřete Centrum SAP BW filtru](media\load-sap-bw-data\configure-sap-bw-open-hub-filter.png)
+   ![Otevřete Centrum SAP BW filtru](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
 7. V **cílového úložiště dat** klikněte na **+ vytvořit nové připojení**a pak vyberte **Azure Data Lake Storage Gen2**a vyberte **pokračovat**.
 
 8. V **připojení zadejte Azure Data Lake Storage** stránky, 
 
-   ![Vytvoření ADLS Gen2 propojené služby](media\load-sap-bw-data\create-adls-gen2-linked-service.png)
+   ![Vytvoření ADLS Gen2 propojené služby](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Vyberte vaše Data Lake Storage Gen2 podporující účet z "názvu účtu úložiště" rozevírací seznam.
    2. Vyberte **Dokončit** k vytvoření připojení. Pak vyberte **Další**.
 
 9. V **zvolte výstupní soubor nebo složku** stránky, zadejte "copyfromopenhub" jako název složky výstupu a vyberte **Další**.
 
-   ![Zvolte výstupní složka](media\load-sap-bw-data\choose-output-folder.png)
+   ![Zvolte výstupní složka](media/load-sap-bw-data/choose-output-folder.png)
 
 10. V **nastavení formátu souboru** stránce **Další** použít výchozí nastavení.
 
-   ![Zadejte formát jímky](media\load-sap-bw-data\specify-sink-format.png)
+    ![Zadejte formát jímky](media/load-sap-bw-data/specify-sink-format.png)
 
 11. V **nastavení** stránce, rozbalte **nastavení výkonu**a nastavte **stupeň paralelismu kopírování** například 5-li načíst z SAP BW paralelně. Klikněte na **Další**.
 
-    ![Konfigurace nastavení kopírování](media\load-sap-bw-data\configure-copy-settings.png)
+    ![Konfigurace nastavení kopírování](media/load-sap-bw-data/configure-copy-settings.png)
 
 12. V **Souhrn** stránky, zkontrolujte nastavení a vyberte **Další**.
 
 13. V **nasazení** stránce **monitorování** a začněte monitorovat kanál.
 
-    ![Stránka Nasazení](media\load-sap-bw-data\deployment.png)
+    ![Stránka Nasazení](media/load-sap-bw-data/deployment.png)
 
 14. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. **Akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivit a opětovné spuštění kanálu:
 
-    ![Monitorování kanálu](media\load-sap-bw-data\pipeline-monitoring.png)
+    ![Monitorování kanálu](media/load-sap-bw-data/pipeline-monitoring.png)
 
 15. Pokud chcete zobrazit spuštění aktivit, které jsou spojeny se spuštěním kanálu, vyberte **zobrazit spuštění aktivit** odkaz v **akce** sloupce. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přepnout zpět na zobrazení spuštění kanálu, vyberte **kanály** odkazu v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
 
-    ![Monitorování aktivit](media\load-sap-bw-data\activity-monitoring.png)
+    ![Monitorování aktivit](media/load-sap-bw-data/activity-monitoring.png)
 
 16. Pokud chcete monitorovat spuštění podrobnosti o každé aktivitě kopírování, vyberte **podrobnosti** odkaz (obrázek brýlí) ve skupinovém rámečku **akce** v aktivitě zobrazení monitorování. Podobně jako objem dat zkopírovanou ze zdroje do jímky, propustnost dat, provádění kroků s určitou dobu a použít konfigurace, můžete sledovat informace:
 
-    ![Podrobnosti monitorování aktivit](media\load-sap-bw-data\activity-monitoring-details.png)
+    ![Podrobnosti monitorování aktivit](media/load-sap-bw-data/activity-monitoring-details.png)
 
 17. Zkontrolujte **maximální ID žádosti** , který je zkopírován. Přejděte zpět na aktivitu zobrazení monitorování, klikněte na tlačítko **výstup** pod **akce**.
 
-    ![Výstup aktivity](media\load-sap-bw-data\activity-output.png)
+    ![Výstup aktivity](media/load-sap-bw-data/activity-output.png)
 
-    ![Podrobnosti o aktivitě výstupu](media\load-sap-bw-data\activity-output-details.png)
+    ![Podrobnosti o aktivitě výstupu](media/load-sap-bw-data/activity-output-details.png)
 
 ## <a name="incremental-copy-from-sap-bw-open-hub"></a>Přírůstkové kopírování z SAP BW Open centra
 
 > [!TIP]
-
+> 
 > Odkazovat na [SAP BW Open centra konektorem delta extrakce](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) Další informace o tom, jak funguje ADF aktivitu kopírování ke zkopírování dat z SAP BW.
 
 Teď můžeme pokračovat v konfiguraci přírůstkového kopírování z SAP BW Open centra. 
 
 Přírůstkové kopírování používá mechanismus meze založené na požadavku ID automaticky generovány v SAP BW otevřít Centrum cílový DTP. Pracovní postup pro tento přístup je znázorněn v následujícím diagramu:
 
-![Pracovní postup přírůstkového kopírování](media\load-sap-bw-data\incremental-copy-workflow.png)
+![Pracovní postup přírůstkového kopírování](media/load-sap-bw-data/incremental-copy-workflow.png)
 
 V Uživatelském rozhraní ADF **pusťme se do práce** stránce **vytvořit kanál**. 
 
 1. Přetáhněte tři aktivity – **vyhledávání, kopírování dat a Web** – na plátno a zkontrolujte jejich zřetězené v případě úspěchu. V tomto návodu použijeme objektů Blob v Azure k ukládání meze - max zkopírovaný žádosti. Můžete také používat SQL database a uložit a používat aktivity uložené procedury místo webová aktivita ji aktualizovat.
 
-   ![Kanálu přírůstkového kopírování](media\load-sap-bw-data\incremental-copy-pipeline.png)
+   ![Kanálu přírůstkového kopírování](media/load-sap-bw-data/incremental-copy-pipeline.png)
 
 2. Konfigurace aktivity vyhledávání:
 
    1. V aktivitě vyhledávání **nastavení** kartě **pouze první řádek** možnost.
 
-      ![Nastavení vyhledávání](media\load-sap-bw-data\lookup-settings.png)
+      ![Nastavení vyhledávání](media/load-sap-bw-data/lookup-settings.png)
 
    2. Konfigurace **zdrojovou datovou sadu** datovou sadou objektů Blob v **cesta k souboru**, přejděte na objekt blob, kam chcete uložit ID maximální zkopírovaný žádosti jako horní mez a zachovat formát ve formátu textu.
 
-      ![Nastavení datové sady objektů BLOB](media\load-sap-bw-data\blob-dataset.png)
+      ![Nastavení datové sady objektů BLOB](media/load-sap-bw-data/blob-dataset.png)
 
    3. V odpovídající cesta objektu blob vytvoření objektu blob s obsahem 0.
 
-      ![Obsah objektu blob](media\load-sap-bw-data\blob.png)
+      ![Obsah objektu blob](media/load-sap-bw-data/blob.png)
 
 3. Konfigurace aktivity kopírování: 
 
@@ -166,17 +166,17 @@ V Uživatelském rozhraní ADF **pusťme se do práce** stránce **vytvořit kan
 
    3. Přejděte zpět na aktivitu kopírování, která **zdroj** kartu, nakonfigurujte výraz hodnotu "requestId" (Přidat dynamický obsah) `@{activity('<look up activity name>').output.firstRow.Prop_0}`. Odpovídajícím způsobem měnit "vyhledávací název aktivity" v tomto výrazu.
 
-      ![Nastavení zdroje kopírování](media\load-sap-bw-data\copy-source.png)
+      ![Nastavení zdroje kopírování](media/load-sap-bw-data/copy-source.png)
 
 4. Konfigurace webové aktivity: tuto aktivitu webu bude volat aplikaci logiky pro uložení ID žádosti o maximální zkopírovaný do objektu blob.
 
    1. Přejít na webu Azure portal -> Nový **aplikace logiky** s jedním **požadavku HTTP** a jeden **vytvořit objekt blob** následujícím způsobem. Použijte stejný soubor blob nakonfigurované ve výše uvedené zdroje aktivity vyhledávání. A zkopírujte **adresa URL operace HTTP POST** který se použije v aktivitu webu.
 
-      ![Konfigurace aplikace logiky](media\load-sap-bw-data\logic-app-config.png)
+      ![Konfigurace aplikace logiky](media/load-sap-bw-data/logic-app-config.png)
 
    2. Vraťte se k úpravě ADF **webové aktivity** nastavení, jak je uvedeno níže. Konfigurace textu jako výraz (Přidat dynamický obsah) `{"sapOpenHubMaxRequestId":"@{activity('CopyFromSap').output.sapOpenHubMaxRequestId}"}`.
 
-      ![Nastavení aktivity webu](media\load-sap-bw-data\web-activity-settings.png)
+      ![Nastavení aktivity webu](media/load-sap-bw-data/web-activity-settings.png)
 
 5. Potom můžete kliknout na **ladění** ověření konfigurace, nebo vyberte **Publikovat vše** chcete publikovat všechny změny a klikněte na **aktivační událost** provést spuštění.
 
@@ -197,19 +197,19 @@ Pokud potřebujete historické kopie a přírůstkového kopírování nebo pouz
    - **Klíč v tabulce:** *Technické klíč*
    - **Extrakce:** *Zachovat Data a záznamy vložit do tabulky*
 
-   ![Vytvoření extrakce delta SAP BW OHD](media\load-sap-bw-data\create-sap-bw-ohd-delta.png)
+   ![Vytvoření extrakce delta SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![create-sap-bw-ohd-delta2](media\load-sap-bw-data\create-sap-bw-ohd-delta2.png)
+   ![create-sap-bw-ohd-delta2](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
    Může zvýšit počet paralelních spuštění SAP pracovní procesy pro DTP:
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data\create-sap-bw-ohd-delta3.png)
+   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. Plán DTP v procesu řetězců
 
    DTP rozdílů pro datovou krychli pouze funguje, když není potřebný řádky komprimované ještě. Proto musíte, BW komprese datové krychle není spuštěn před DTP do tabulky otevřete Centrum. Nejsnadnějším způsobem, jak to integruje do vaší stávající řetězy procesu tento DTP. V následujícím příkladu je vložen DTP (Chcete-li OHD) v řetězci procesu mezi kroku upravit (souhrnného) a sbalit (komprese datové krychle).
 
-   ![create-sap-bw-process-chain](media\load-sap-bw-data\create-sap-bw-process-chain.png)
+   ![create-sap-bw-process-chain](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
 ### <a name="configure-full-extraction-in-sap-bw"></a>Konfigurace úplné extrakce v SAP BW
 
@@ -217,7 +217,7 @@ Kromě delta extrakce můžete chtít mít úplnou extrakce stejné InfoProvider
 
 Pro stejnou OHD nesmí mít více než jeden DTP. Proto je potřeba vytvořit další OHD než delta extrakce.
 
-![create-sap-bw-ohd-full](media\load-sap-bw-data\create-sap-bw-ohd-full.png)
+![create-sap-bw-ohd-full](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
 Úplné načtení OHD zvolte různé možnosti než extrakce rozdílů:
 
@@ -225,7 +225,7 @@ Pro stejnou OHD nesmí mít více než jeden DTP. Proto je potřeba vytvořit da
 
 - V DTP: nastavení "Režim extrakce" jako "*úplné*". Automaticky vytvořený DTP v rozdílovém musíte změnit na úplné pouze po vytvoření OHD:
 
-   ![create-sap-bw-ohd-full2](media\load-sap-bw-data\create-sap-bw-ohd-full2.png)
+   ![create-sap-bw-ohd-full2](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
 - V konektoru ADF SAP BW Open centra: Vypněte možnost "*vyloučení posledního požadavku*". Jinak by být extrahovat hodnotu nothing. 
 

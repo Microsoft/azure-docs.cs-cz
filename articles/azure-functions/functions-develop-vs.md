@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 58c7506b71ade8ff70519b895995153896006ade
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092663"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -163,7 +163,7 @@ Stejně jako u triggerů, vstupní a výstupní vazby jsou přidány do funkce j
         }
     }
     ```
-Připojení k frontě úložiště se získává z `AzureWebJobsStorage` nastavení. Další informace najdete v článku odkaz pro konkrétní vazbu. 
+   Připojení k frontě úložiště se získává z `AzureWebJobsStorage` nastavení. Další informace najdete v článku odkaz pro konkrétní vazbu. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: magoedte
-ms.openlocfilehash: 878abe79754c3286b77aef744d1bc4973a8af841
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110099"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
 
@@ -67,11 +67,11 @@ Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
 
     Pro integraci sestavení diagramu distribuované aplikace pro server musí být na serveru:
 
-    * Spravovaných nástrojem Operations Manager
-    * Spravuje řešení Service Map
-    * Uveden ve skupině serverů Service Map
+   * Spravovaných nástrojem Operations Manager
+   * Spravuje řešení Service Map
+   * Uveden ve skupině serverů Service Map
 
-    ![Skupina konfigurace Operations Manageru](media/service-map-scom/scom-config-group.png)
+     ![Skupina konfigurace Operations Manageru](media/service-map-scom/scom-config-group.png)
 
 6. Volitelné: Vyberte fond zdrojů serveru pro správu komunikovat s Log Analytics, a potom klikněte na **přidat pracovní prostor**.
 

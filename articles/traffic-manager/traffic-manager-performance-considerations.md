@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453656"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007944"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
@@ -42,11 +42,11 @@ Nástroje na tyto weby míru DNS latenci a zobrazení přeložit IP adresy pro k
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>Ukázka nástroje pro měření výkonu
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS nabízí celou řadu nástrojů výkonu. Nástroj porovnání DNS můžete zobrazit, jak dlouho trvá přeložit název DNS a, který srovnání s ostatními poskytovateli služby DNS.
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     Jedním z nejjednodušší nástrojů je WebSitePulse. Zadejte adresu URL zobrazíte dobu překladu názvů DNS, první bajt, poslední bajt a další statistiky výkonu. Můžete vybrat ze tří různých testovacích míst. V tomto příkladu uvidíte, že dojde k prvnímu spuštění ukazuje, že trvá vyhledání DNS 0.204 sekundu.
 
@@ -62,15 +62,15 @@ Nástroje na tyto weby míru DNS latenci a zobrazení přeložit IP adresy pro k
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     Tento nástroj poskytuje statistiku výkonu pro každý prvek na webové stránce. Analýza stránky karta zobrazuje procento času stráveného na vyhledávání DNS.
 
-* [Co je Moje DNS?](http://www.whatsmydns.net/)
+* [Co je Moje DNS?](https://www.whatsmydns.net/)
 
     Tato lokalita provede vyhledávání DNS z 20 různých míst a zobrazí výsledky na mapě.
 
-* [Ponořte se webové rozhraní](http://www.digwebinterface.com)
+* [Ponořte se webové rozhraní](https://www.digwebinterface.com)
 
     Tento web obsahuje že podrobnější informace o DNS, včetně záznamů CNAME a záznamů. Ujistěte se, že zkontrolujte 'Kolorovat výstup' a "Statistiky" v části Možnosti a vyberte "Vše" na názvové servery.
 

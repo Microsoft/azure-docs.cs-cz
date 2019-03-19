@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 3ec91b564647e4eda4696a249c77739daff2ece3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044225"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111493"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -44,19 +44,19 @@ V této příručce budete používat funkce služby Table Storage nebo Azure Co
 ## <a name="get-the-client-library"></a>Získání klientské knihovny
 
 1. V kořenovém adresáři vašeho projektu vytvořte soubor composer.json a přidejte do něj následující kód:
-```json
-{
-  "require": {
+   ```json
+   {
+   "require": {
     "microsoft/azure-storage-table": "*"
-  }
-}
-```
+   }
+   }
+   ```
 2. Do kořenového adresáře stáhněte soubor [composer.phar](https://getcomposer.org/composer.phar). 
 3. Otevřete příkazový řádek a spusťte následující příkaz v kořenovém adresáři vašeho projektu:
-```
-php composer.phar install
-```
-Případně můžete přejít do úložiště [klientské knihovny služby Azure Table Storage pro PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) na GitHubu a zkopírovat si zdrojový kód.
+   ```
+   php composer.phar install
+   ```
+   Případně můžete přejít do úložiště [klientské knihovny služby Azure Table Storage pro PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) na GitHubu a zkopírovat si zdrojový kód.
 
 
 ## <a name="add-required-references"></a>Přidání požadovaných odkazů

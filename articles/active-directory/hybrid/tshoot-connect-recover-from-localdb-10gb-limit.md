@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e0942f028752b1e3db89802ee889eac7157815d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205609"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105178"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
 Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Můžete použít buď výchozí databázi SQL Server 2012 Express LocalDB nainstalovanou se službou Azure AD Connect, nebo vlastní plnou verzi SQL. SQL Server Express má omezení velikosti 10 GB. Pokud při použití LocalDB dosáhnete tohoto limitu, synchronizační služba Azure AD Connect se už nemůže spustit ani správně synchronizovat. Tento článek popisuje kroky obnovení.
@@ -81,13 +81,13 @@ Název databáze vytvořené pro Azure AD Connect je **ADSync**. K provedení op
 ### <a name="delete-run-history-data"></a>Odstranění dat historie spuštění
 Ve výchozím nastavení služby Azure AD Connect zachová až do data historie spuštění za sedm dní. V tomto kroku odstraníme dat historie spouštění a uvolněním místa v databázi tak, aby služba Azure AD Connect synchronizaci můžete provést synchronizaci znovu.
 
-1.  Spustit **Synchronization Service Manager** tak, že přejdete na ZAČÁTKU → synchronizační služba.
+1. Spustit **Synchronization Service Manager** tak, že přejdete na ZAČÁTKU → synchronizační služba.
 
-2.  Přejděte **operace** kartu.
+2. Přejděte **operace** kartu.
 
-3.  V části **akce**vyberte **vymazat spuštění**...
+3. V části **akce**vyberte **vymazat spuštění**...
 
-4.  Můžete si vybrat **zrušte všechna spuštění** nebo **vymazat spuštěn dříve, než... <date>**  možnost. Doporučujeme začít tím, že zrušíte spustit data historie, která jsou starší než dvou dnů. Pokud narazíte na problém velikost databáze, klikněte na tlačítko **zrušte všechna spuštění** možnost.
+4. Můžete si vybrat **zrušte všechna spuštění** nebo **vymazat spuštěn dříve, než... <date>**  možnost. Doporučujeme začít tím, že zrušíte spustit data historie, která jsou starší než dvou dnů. Pokud narazíte na problém velikost databáze, klikněte na tlačítko **zrušte všechna spuštění** možnost.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Zkraťte dobu uchování dat historie spuštění
 Tento krok je snížit pravděpodobnost, že narazíte na problém 10 GB limitu po několik synchronizačních cyklů.

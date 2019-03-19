@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8cfe902ff8a679dfeaee49cbf0631530e53cf0d4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092272"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Připojit zařízení Barracuda 
 
@@ -30,8 +30,8 @@ ms.locfileid: "57240180"
 Barracuda Firewall webových aplikací (WAF) konektoru můžete snadno připojit vaše protokoly Barracuda s vaší Azure Sentinelu zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepší. To poskytuje lepší přehled o síti vaší organizace a zlepšuje schopnosti operace zabezpečení. Azure Sentinel využívá nativní integraci mezi službami **Barracuda** a Microsoft Azure OMS zajistit bezproblémovou integraci. 
 
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Konfigurace a připojení Barracuda WAF

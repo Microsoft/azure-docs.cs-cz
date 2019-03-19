@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995790"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -180,20 +180,20 @@ Nastavení testu:
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>Umístění|Azure<br/>Oblast|Odhad<br/>Distance (km)|Latence|1 relace<br/>Šířka pásma|Maximum<br/>Šířka pásma|
-| Seattle | Západní USA 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu | 21
-| Seattle | Západní USA          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu | 20
-| Seattle | USA – střed       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu | 17
-| Seattle | Středojižní USA |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu | 19
-| Seattle | Středoseverní USA |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu | 18
-| Seattle | Východní USA 2        |  3,769 km |  73 ms |  21.3 Mbit/s |  1.79 Gbits za sekundu | 16
-| Seattle | USA – východ          |  3,699 km |  74 ms |  21.1 Mbit/s |  1.78 Gbits za sekundu | 15
-| Seattle | Japonsko – východ       |  7,705 km | 106 ms |  14.6 Mbit/s |  1.22 Gbits za sekundu | 28
-| Seattle | Velká Británie – jih         |  7,708 km | 146 ms |  10.6 Mbit/s |   896 Mbit/s | 24
-| Seattle | Západní Evropa      |  7,834 km | 153 ms |  10.2 Mbit/s |   761 Mbit/s | 23
-| Seattle | Austrálie – východ   | 12,484 km | 165 ms |   9.4 Mbit/s |   794 Mbit/s | 26
-| Seattle | Jihovýchodní Asie   | 12,989 km | 170 ms |   9.2 Mbit/s |   756 Mbit/s | 25
-| Seattle | Brazílie – jih *   | 10,930 km | 189 ms |   8.2 Mbit/s |   699 Mbit/s | 22
-| Seattle | Indie – jih      | 12,918 km | 202 ms |   7.7 Mbit/s |   634 Mbit/s | 27
+| Seattle | Západní USA 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu |
+| Seattle | Západní USA          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu |
+| Seattle | USA – střed       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu |
+| Seattle | Středojižní USA |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu |
+| Seattle | Středoseverní USA |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu |
+| Seattle | Východní USA 2        |  3,769 km |  73 ms |  21.3 Mbit/s |  1.79 Gbits za sekundu |
+| Seattle | USA – východ          |  3,699 km |  74 ms |  21.1 Mbit/s |  1.78 Gbits za sekundu |
+| Seattle | Japonsko – východ       |  7,705 km | 106 ms |  14.6 Mbit/s |  1.22 Gbits za sekundu |
+| Seattle | Velká Británie – jih         |  7,708 km | 146 ms |  10.6 Mbit/s |   896 Mbit/s |
+| Seattle | Západní Evropa      |  7,834 km | 153 ms |  10.2 Mbit/s |   761 Mbit/s |
+| Seattle | Austrálie – východ   | 12,484 km | 165 ms |   9.4 Mbit/s |   794 Mbit/s |
+| Seattle | Jihovýchodní Asie   | 12,989 km | 170 ms |   9.2 Mbit/s |   756 Mbit/s |
+| Seattle | Brazílie – jih *   | 10,930 km | 189 ms |   8.2 Mbit/s |   699 Mbit/s |
+| Seattle | Indie – jih      | 12,918 km | 202 ms |   7.7 Mbit/s |   634 Mbit/s |
 
 \* Latence Brazílie je typický příklad, kde lineární vzdálenost výrazně liší od fiber spustit vzdálenost. Můžu očekáváte, že by měly být v okolí 160 ms latenci, ale je ve skutečnosti 189 ms. Tento rozdíl oproti Moje očekávání může znamenat někde potíže se sítí, ale pravděpodobně, aby běžela fiber nepřekračuje Brazílie v rovné čáry a dalších 1 000 km nebo, cesty k získání Brazílie ze Seattlu.
 
@@ -213,14 +213,3 @@ Nastavení testu:
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT
-
-
-
-
-
-
-
-
-
-
-

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008943"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
@@ -59,7 +59,7 @@ K dosažení správné kultury DevOps musí být veškerá infrastruktura tvoře
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure postupně zavádí podporu nástroje [cloud-init](http://cloud-init.io/) ve většině distribucí Linuxu, které ho podporují.  Aktuálně se s povoleným nástrojem cloud-init ve výchozím nastavení nasazují virtuální počítače s Ubuntu od firmy Canonical.  RHEL od Red Hatu, CentOS i Fedora podporují cloud-init, ale v imagích Azure, které udržuje Red Hat, není aktuálně nástroj cloud-init nainstalovaný.  Pokud chcete používat cloud-init v operačních systémech rodiny Red Hat, musíte vytvořit vlastní image s nainstalovaným nástrojem cloud-init.
+Azure postupně zavádí podporu nástroje [cloud-init](https://cloud-init.io/) ve většině distribucí Linuxu, které ho podporují.  Aktuálně se s povoleným nástrojem cloud-init ve výchozím nastavení nasazují virtuální počítače s Ubuntu od firmy Canonical.  RHEL od Red Hatu, CentOS i Fedora podporují cloud-init, ale v imagích Azure, které udržuje Red Hat, není aktuálně nástroj cloud-init nainstalovaný.  Pokud chcete používat cloud-init v operačních systémech rodiny Red Hat, musíte vytvořit vlastní image s nainstalovaným nástrojem cloud-init.
 
 * [Použití cloud-init na virtuálních počítačích Azure s Linuxem](using-cloud-init.md)
 

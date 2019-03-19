@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402145"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011658"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.
@@ -74,6 +74,7 @@ Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro vi
 > RHEL 6 sadu bitových kopií nepřesunula k novým zásadám vytváření názvů.
 
 Tyto nabídky jsou že skladové položky jsou aktuálně k dispozici pro obecné použití:
+
 Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
 RHEL | NEZPRACOVANÁ 7 | RAW | Linuxový agent | RHEL 7 řady imagí

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: b-juche
-ms.openlocfilehash: dc24165d3a5ee4d72c259753edd4028752828dce
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122331"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 Než začnete používat soubory Azure NetApp, musíte odeslat žádost o registraci ve službě soubory Azure NetApp.  Po registraci je potom zaregistrovat k používání služby.
@@ -61,7 +61,7 @@ K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azur
     
         az provider show --namespace Microsoft.NetApp
 
-  Výstup tohoto příkazu se zobrazí takto:
+   Výstup tohoto příkazu se zobrazí takto:
    
         {
         "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",

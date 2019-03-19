@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51f1d47a5412e77b7113fccfd2e9a54e1d2ff7f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 274675c3b9f04877f5665efbcbf7951a5bbb0e27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730201"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833176"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se sestav Azure Active Directory
 
@@ -29,13 +29,13 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azu
 
 ## <a name="getting-started"></a>Začínáme 
 
-**Otázka: Aktuálně používám https://graph.windows.net/&lt; název tenanta&gt;/reports/ koncový bod rozhraní API pro Azure AD o přijetí změn auditu a využití integrované aplikace zprávy na naše systémy pro generování sestav prostřednictvím kódu programu. Co by měl přepnout na?**
+**Otázka: Aktuálně používám `https://graph.windows.net/<tenant-name>/reports/` koncový bod rozhraní API pro Azure AD o přijetí změn auditu a využití integrované aplikace zprávy na naše systémy pro generování sestav prostřednictvím kódu programu. Co by měl přepnout na?**
 
 **Odpověď:** Vyhledat [reference k rozhraní API](https://developer.microsoft.com/graph/) zobrazíte, jak můžete [pomocí rozhraní API pro přístup k sestavám aktivity](concept-reporting-api.md). Tento koncový bod má dvě sestavy (**auditu** a **přihlášení**) poskytující všechna data, které jste získali v původní koncový bod rozhraní API. Tento nový koncový bod má také sestavy přihlášení s licencí Azure AD Premium, který můžete použít k získání využití aplikace, využití zařízení a uživatele přihlašovací údaje.
 
 ---
 
-**Otázka: Aktuálně používám https://graph.windows.net/&lt; název tenanta&gt;/reports/ koncový bod rozhraní API do naše systémy pro generování sestav o přijetí změn zprávy o zabezpečení Azure AD (konkrétní typy detekce, třeba uniklé přihlašovací údaje nebo přihlášení z anonymních IP adres) prostřednictvím kódu programu. Co by měl přepnout na?**
+**Otázka: Aktuálně používám `https://graph.windows.net/<tenant-name>/reports/` koncový bod rozhraní API k vyžádání zprávy o zabezpečení Azure AD (konkrétní typy detekce, třeba uniklé přihlašovací údaje nebo přihlášení z anonymních IP adres) na naše systémy pro generování sestav prostřednictvím kódu programu. Co by měl přepnout na?**
 
 **Odpověď:** Můžete použít [události rizika Identity Protection API](../identity-protection/graph-get-started.md) detekcí zabezpečení přístupu prostřednictvím Microsoft Graphu. Tento nový formát poskytuje větší flexibilitu v jak můžete dotazovat data pomocí rozšířené filtrování, výběr pole a další a do jednoho typu pro jednodušší integraci do sady Siem a další nástroje pro shromažďování dat standardizuje rizikové události. Protože data jsou v jiném formátu, je nelze nahradit nový dotaz pro staré dotazy. Ale [používá nové rozhraní API Microsoft Graphu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), což je standard Microsoft pro tato rozhraní API jako O365 nebo Azure AD. Takže práce vyžaduje buď rozšířit vaše stávající investice MS Graphu nebo nápovědy začnete přechod na tuto novou standardní platformu.
 
@@ -89,7 +89,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azu
 
 **Otázka: Můžete získat informace o protokolu aktivit Office 365 na webu Azure portal?**
 
-**Odpověď:** I když protokoly aktivit Office 365 a Azure AD sdílejí velké množství prostředků adresáře, pokud chcete získat kompletní přehled protokolů aktivit Office 365, měli byste pro získání těchto informací přejít do centra pro správu Office 365.
+**Odpověď:** I když aktivit Office 365 a Azure AD aktivity protokoly sdílejí velké množství prostředků adresáře, pokud chcete, aby úplný přehled protokolů aktivit Office 365, by měl přejít na [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) k získání protokolu aktivit Office 365 informace.
 
 ---
 
@@ -140,24 +140,27 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azu
 **Otázka: Jak mám začít?**
 
 **Odpověď:** Jak začít:
-    * Přejděte na sestavu přihlášení [webu Azure portal](https://portal.azure.com). 
-    * Klikněte na přihlášení, který chcete vyřešit.
-    * Přejděte **podmíněného přístupu** kartu. Tady můžete zobrazit všechny zásady, které se to týká přihlášení a výsledek pro jednotlivé zásady. 
+
+* Přejděte na sestavu přihlášení [webu Azure portal](https://portal.azure.com).
+* Klikněte na přihlášení, který chcete vyřešit.
+* Přejděte **podmíněného přístupu** kartu. Tady můžete zobrazit všechny zásady, které se to týká přihlášení a výsledek pro jednotlivé zásady. 
     
 **Otázka: Jaké jsou všechny možné hodnoty pro stav podmíněného přístupu?**
 
 **Odpověď:** Stav podmíněného přístupu může mít následující hodnoty:
-    * **Nebyly použity**: To znamená, že se bez zásad podmíněného přístupu s uživatelem a aplikace v oboru. 
-    * **Úspěch**: To znamená, že byl zásad podmíněného přístupu s uživatelem a aplikace v oboru a zásad podmíněného přístupu byly úspěšně splněny. 
-    * **Selhání**: To znamená, že došlo zásad podmíněného přístupu s uživatelem a aplikace v oboru a zásad podmíněného přístupu nebyly splněny. 
+
+* **Nebyly použity**: To znamená, že se bez zásad podmíněného přístupu s uživatelem a aplikace v oboru. 
+* **Success**: To znamená, že byl zásad podmíněného přístupu s uživatelem a aplikace v oboru a zásad podmíněného přístupu byly úspěšně splněny. 
+* **Selhání**: To znamená, že došlo zásad podmíněného přístupu s uživatelem a aplikace v oboru a zásad podmíněného přístupu nebyly splněny. 
     
 **Otázka: Jaké jsou všechny možné hodnoty ve výsledku zásady podmíněného přístupu?**
 
 **Odpověď:** Zásady podmíněného přístupu může mít následující výsledky:
-    * **Úspěch**: Zásady byla úspěšně vyřešena.
-    * **Selhání**: Zásada nebyla splněná.
-    * **Nebyly použity**: To může být, protože nesplňuje podmínky zásad.
-    * **Není povoleno**: Toto je z důvodu zásad v zakázaném stavu. 
+
+* **Success**: Zásady byla úspěšně vyřešena.
+* **Selhání**: Zásada nebyla splněná.
+* **Nebyly použity**: To může být, protože nesplňuje podmínky zásad.
+* **Není povoleno**: Toto je z důvodu zásad v zakázaném stavu. 
     
 **Otázka: Název zásady v sestavě všechna přihlášení neodpovídá názvu zásady v certifikační Autoritě. Proč?**
 

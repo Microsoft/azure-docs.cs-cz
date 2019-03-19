@@ -1,21 +1,21 @@
 ---
-title: Migrace analytics z Excelu do Azure Machine Learning Studio
+title: Migrace analytics z Excelu
 titleSuffix: Azure Machine Learning Studio
 description: Porovnání modelů lineární regrese v aplikaci Excel a nástroji Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 706fe0afb004109ee591eab0efe99cadf9045d33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864826"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrace analytics z Excelu do Azure Machine Learning Studio
 
@@ -102,11 +102,11 @@ Naším řešením bylo zprovoznění náš model strojového učení regrese vy
 
 *Řídicího panelu webové služby* část obsahuje ke stažení Excelový sešit. Sešit obsahuje předem formátovaný webové rozhraní API a schémat informace o služby vložené. Po kliknutí na *stáhněte si Excelový sešit*, sešit se otevře, a můžete ji uložit do místního počítače. 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![Stáhněte si Excelový sešit na řídicím panelu webové služby](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 S otevřete sešit zkopírujte předdefinované parametry do modré části, jak je znázorněno níže. Po zadání parametrů, Excel, volá do webové služby Machine Learning a predikované skóre popisků se zobrazí v části zelené Předpovězeným hodnotám. Sešit nadále vytvářet předpovědi pro parametry podle trénovaný model pro všechny položky řádku zadaný v poli parametrů. Další informace o tom, jak tuto funkci používat, naleznete v tématu [využívání webové služby Azure Machine Learning z Excelu](consuming-from-excel.md). 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![Šablona Excelový sešit propojíte s nasazenou webovou službu](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizace a další pokusy
 Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesunuli dopředu optimalizovat náš Model strojového učení lineární regrese. Jsme použili modulu [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zlepšení našich výběru počáteční data prvky a to nám povedlo dosáhnout zlepšení výkonu 4.6 % znamená absolutní chyba. Pro všechny budoucí projekty budeme používat tuto funkci, která se dá ušetřit nám týdny v iterace v rámci datové atributy k nalezení správné sady funkcí pro modelování. 
@@ -132,13 +132,9 @@ Možnost přenášet prediktivních analytických odhady ze sady Studio do aplik
 ## <a name="resources"></a>Zdroje a prostředky
 Tady jsou některé prostředky pro dokážete pracovat regrese: 
 
-* Regrese v aplikaci Excel. Pokud jste se pokusili nikdy Regrese v Excelu, v tomto kurzu umožňuje snadno: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Regrese v aplikaci Excel. Pokud jste se pokusili nikdy Regrese v Excelu, v tomto kurzu umožňuje snadno: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Prognózování regrese vs. Tyler Chessman napsal blogový článek s vysvětlením, jak časové řady Prognózování v aplikaci Excel, která obsahuje popis pro začátečníky dobré lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Běžné nejméně Squares lineární regrese: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* Běžné nejméně Squares lineární regrese: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

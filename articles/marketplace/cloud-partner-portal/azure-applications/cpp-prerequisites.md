@@ -3,7 +3,7 @@ title: Nabídka požadavky aplikace na Azure | Dokumentace Microsoftu
 description: Požadavky pro publikování aplikací Azure nabízet na webu Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097786"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007155"
 ---
 # <a name="azure-application-prerequisites"></a>Požadavky na aplikace Azure
 
-Tento článek popisuje technické a podnikové požadavky pro publikování nabídka spravované aplikace na Azure Marketplace.  Pokud jste tak již neučinili, podívejte se na video [sestavování řešení šablony a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+Tento článek popisuje technické a podnikové požadavky pro publikování nabídka spravované aplikace na Azure Marketplace.  Pokud jste tak již neučinili, projděte si následující zdroje informací:
+- V závislosti na vaší typ SKU buď [aplikací Azure: Šablona řešení nabízí průvodce publikováním](../../marketplace-solution-templates.md) nebo [aplikace Azure: Nabídka spravované aplikace, Průvodce publikováním](../../marketplace-managed-apps.md)
+- [Vytváření šablon řešení a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) videa
 
 
 ## <a name="technical-requirements"></a>Technické požadavky
@@ -43,7 +45,7 @@ Další informace najdete v tématu [vytvořit Azure portal uživatelského rozh
 
 Obchodní požadavky zahrnují následující procesní, smluvní a právní závazky:
 
-* Musí být registrovaný vydavatele na webu Marketplace cloudu. Pokud jste se nezaregistrovali, postupujte podle kroků v článku stát vydavatele na webu Marketplace cloudu.
+* Musí být registrovaný vydavatele na webu Marketplace cloudu. Pokud nejsou zaregistrovány, postupujte podle kroků v článku [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
 
 >[!NOTE]
 >K přihlášení na portál Cloud Partner musí použít stejný účet registrace Microsoft Developer Center. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Tento účet nesmí být specifické pro jednotlivé služby nebo nabídky.
@@ -65,8 +67,8 @@ Chcete-li publikovat novou nabídku aplikací Azure, musí splňovat následují
   * Název
   * Popis (ve formátu HTML)
   * Obrázek loga (ve formátu PNG) a v nich pevné velikosti obrázků: 40 x 40 pixelů, 90 x 90 pixelů, 115 x 115 pixelů a 255 x 115 pixelů.
-* A *podmínky použití* a *zásady ochrany osobních údajů*
-* Dokumentace
+* A *Terms of Use* a *zásady ochrany osobních údajů* dokumentů
+* Dokumentace ke službě Application
 * Kontaktní údaje podpory
 
 

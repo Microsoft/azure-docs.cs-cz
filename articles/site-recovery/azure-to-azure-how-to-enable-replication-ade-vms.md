@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456227"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117451"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure disk encryption (ADE) povolena virtuální počítače replikovat do jiné oblasti Azure
 
@@ -123,8 +123,8 @@ Můžete upravit výchozí nastavení cíle používané pro Site Recovery.
 
 
 2. Klikněte na tlačítko **vlastní:** vedle 'Nastavení šifrování' Chcete-li změnit pod výchozí nastavení:
-    - V **služby key vault cílový disk encryption**, vyberte trezor klíčů šifrování disku cílového seznamu všem trezorům klíčů v cílovém umístění předplatného.
-  - V **cílové šifrování klíče služby key vault**, vyberte cíl šifrování klíče služby key vault ze seznamu všem trezorům klíčů v cílovém umístění předplatného.
+   - V **služby key vault cílový disk encryption**, vyberte trezor klíčů šifrování disku cílového seznamu všem trezorům klíčů v cílovém umístění předplatného.
+     - V **cílové šifrování klíče služby key vault**, vyberte cíl šifrování klíče služby key vault ze seznamu všem trezorům klíčů v cílovém umístění předplatného.
 
 3. Klikněte na tlačítko **vytvořit cílový prostředek** > **povolením replikace**.
 4. Po virtuální počítače jsou povolena pro replikaci, můžete zkontrolovat stav stav virtuálního počítače v rámci **replikované položky**

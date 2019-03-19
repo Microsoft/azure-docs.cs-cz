@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
-ms.author: kumud
+ms.date: 03/18/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167061"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavit převzetí služeb při selhání mezi několika koncových bodů Azure CDN pomocí Azure Traffic Manageru
 
@@ -77,7 +77,7 @@ Po nastavení profily CDN a Traffic Manager postupujte podle těchto kroků při
     >
 
 
-2.  Váš profil Azure CDN vyberte první koncový bod CDN (Akamai). Vyberte **přidat vlastní doménu** a vstupní *cdndemo101akamai.azureedge.net*. Ověřte, zda je zelenou značku zaškrtnutí k ověření vlastní domény. 
+2.  Váš profil Azure CDN vyberte první koncový bod CDN (Akamai). Vyberte **přidat vlastní doménu** a vstupní *cdndemo101.dustydogpetcare.online*. Ověřte, zda je zelenou značku zaškrtnutí k ověření vlastní domény. 
 
     Azure CDN pomocí *cdnverify* subdoménu ověřit mapování DNS k dokončení tohoto procesu registrace. Další informace najdete v tématu [vytvořit záznam CNAME DNS](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Tento krok povoluje tak, aby můžou reagovat na požadavky na jeho rozpoznání vlastní doménu Azure CDN.
 
@@ -87,7 +87,7 @@ Po nastavení profily CDN a Traffic Manager postupujte podle těchto kroků při
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. V profilu Azure CDN vyberte druhý koncový bod CDN (Verizon) a opakujte krok 2. Vyberte **přidat vlastní doménu**a vstupní *cdndemo101akamai.azureedge.net*.
+4. V profilu Azure CDN vyberte druhý koncový bod CDN (Verizon) a opakujte krok 2. Vyberte **přidat vlastní doménu**a vstupní *cdndemo101.dustydogpetcare.online*.
  
 Po dokončení těchto kroků služby s více než CDN s funkcí převzetí služeb při selhání se nastavuje pomocí Azure Traffic Manageru. Budete mít přístup k testu adresy URL z vaší vlastní domény. Chcete-li otestovat funkci, zakažte primární koncový bod CDN a ověřte, že žádost je správně přesouvá sekundárního koncového bodu CDN. 
 

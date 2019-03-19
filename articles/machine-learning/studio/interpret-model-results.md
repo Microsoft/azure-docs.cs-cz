@@ -1,21 +1,21 @@
 ---
-title: Interpretace výsledků modelu ve službě Machine Learning Studio
+title: Interpretace výsledků modelu
 titleSuffix: Azure Machine Learning Studio
 description: Jak vybrat optimální parametr nastavit pro objekt pomocí algoritmu a vypíše vizualizovat určení skóre modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 778f713fb1046d3c1987b065c9dc25c4ad9825cb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822544"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877271"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
 Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
@@ -52,7 +52,7 @@ Azure Machine Learning Studio nabízí různé moduly pro každý z těchto typ�
 ### <a name="two-class-classification"></a>Klasifikace dvěma třídami
 **Příklad experimentu**
 
-Příklad dvěma třídami klasifikace problému je klasifikace iris květin. Úloha je klasifikace iris květin na základě jejich funkcí. Datové sady Iris k dispozici v nástroji Azure Machine Learning Studio je podmnožinou Oblíbené [datovou sadu Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dva květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každou datovou (sepal length, sepal width, petal length a petal width).
+Příklad dvěma třídami klasifikace problému je klasifikace iris květin. Úloha je klasifikace iris květin na základě jejich funkcí. Datové sady Iris k dispozici v nástroji Azure Machine Learning Studio je podmnožinou Oblíbené [datovou sadu Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dva květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každou datovou (sepal length, sepal width, petal length a petal width).
 
 ![Snímek obrazovky iris experimentu](./media/interpret-model-results/1.png)
 

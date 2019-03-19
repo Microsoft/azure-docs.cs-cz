@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/07/2019
-ms.openlocfilehash: 3594ff05e0f58671e8566b3b69972de32a58855a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: ec0c3b7943db87e5c6fb31dc173a5c3b36377e6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308444"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855465"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
@@ -75,6 +75,8 @@ Zobrazení záloh, které jsou zachovány určité databáze s zásady LTR a obn
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Konfigurace zásady dlouhodobou uchovávání a obnovení záloh pomocí Powershellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Následující části ukazují, jak pomocí prostředí PowerShell můžete nakonfigurovat dlouhodobé uchovávání záloh, zobrazení záloh v Azure SQL storage a obnovení ze zálohy v úložišti Azure SQL.
 

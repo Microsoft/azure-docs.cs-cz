@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997792"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
 
@@ -83,7 +83,7 @@ Pokud jsou k dispozici, ujistěte se, že je schopen správně přeložit plně 
 
 | Vlastnosti testu | Hodnota | Popis |
 | --- | --- | --- |
-| Adresa URL testu |http://127.0.0.1/ |Cesta URL |
+| Adresa URL testu |`http://127.0.0.1/` |Cesta URL |
 | Interval |30 |Interval testu v sekundách |
 | Časový limit |30 |Časový limit testu v sekundách |
 | Prahová hodnota pro poškozený stav |3 |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
@@ -92,7 +92,7 @@ Pokud jsou k dispozici, ujistěte se, že je schopen správně přeložit plně 
 
 * Ujistěte se, že výchozí web je nakonfigurován a naslouchá na 127.0.0.1.
 * Pokud nastavení BackendHttpSetting určuje jiný port než 80, výchozí server musí být nakonfigurovaný tak, aby naslouchala na tento port.
-* Volání http://127.0.0.1:port by měla vrátit výsledek kód HTTP 200. To má být vrácen v rámci časového limitu 30 sekund.
+* Volání `http://127.0.0.1:port` by měla vrátit výsledek kód HTTP 200. To má být vrácen v rámci časového limitu 30 sekund.
 * Ujistěte se, že je otevřený port nakonfigurovaný a, že neexistují žádná pravidla brány firewall nebo skupin zabezpečení sítě Azure, které blokovat příchozí nebo odchozí provoz přes port nakonfigurovaný.
 * Pokud virtuální počítače Azure classic nebo Cloudovou službu se používá s plně kvalifikovaný název domény nebo veřejné IP adresy, ujistěte se, že odpovídající [koncový bod](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) je otevřen.
 * Pokud bude virtuální počítač je nakonfigurovaný přes Azure Resource Manageru a mimo virtuální síť nasazená služba Application Gateway, [skupinu zabezpečení sítě](../virtual-network/security-overview.md) musí být nakonfigurována pro povolení přístupu na požadovaný port.
@@ -118,7 +118,7 @@ Povolit vlastních testů stavu paměti větší flexibilitu pro výchozí chov�
 Ověřte, že vlastní sondu stavu je nakonfigurované správně jako v předchozí tabulce. Kromě předchozích kroků Ujistěte se také následující:
 
 * Zajistěte, aby tato kontrola je správně zadán jak je uvedeno [průvodce](application-gateway-create-probe-ps.md).
-* Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako "127.0.0.1", pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
+* Pokud služba Application Gateway je nakonfigurována pro jednu lokalitu, ve výchozím nastavení hostitele název musí být zadán jako `127.0.0.1`, pokud nebudou jinak nakonfigurovaná v vlastní test paměti.
 * Ujistěte se, že volání http://\<hostitele\>:\<port\>\<cesta\> vrátí výsledek kód HTTP 200.
 * Ujistěte se, že Interval, časový limit a UnhealtyThreshold jsou v přijatelných rozsazích.
 * Pokud pomocí sondu protokolu HTTPS, ujistěte se, že back-end server nevyžaduje SNI nakonfigurováním certifikát pro použití náhradní lokality na vlastním serveru back-endu.

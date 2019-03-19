@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001236"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonnosti v poměru závažnost trasování (preview)
 
@@ -26,7 +26,7 @@ Trasování se běžně používají v aplikacích, protože pomoci vyprávíte 
 Tato funkce vyžaduje žádné speciální instalační program, než je konfigurace protokolování trasování pro aplikaci (v tématu Postup konfigurace naslouchacího procesu trasování protokolu pro [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) nebo [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Je aktivní, když vaše aplikace generuje dostatek telemetrie výjimek.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Při obdržení tohoto typu upozornění inteligentního zjišťování
-Tento typ upozornění se mohou zobrazovat, pokud poměr mezi "good" trasování (protokolována s úrovní trasování *informace* nebo *Verbose*) a "špatné" trasování (protokolována s úrovní trasování *upozornění*, * Chyby, nebo *závažná chyba*) je snížení úrovně v určitý den, ve srovnání s směrný plán počítá v průběhu posledních sedmi dnů.
+Tento typ upozornění se mohou zobrazovat, pokud poměr mezi "good" trasování (protokolována s úrovní trasování *informace* nebo *Verbose*) a "špatné" trasování (protokolována s úrovní trasování *upozornění*, *Chyba*, nebo *závažná chyba*) je snížení úrovně v určitý den, ve srovnání s směrný plán počítá v průběhu posledních sedmi dnů.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Moje aplikace jednoznačně má problém?
 Ne, oznámení neznamená, že vaše aplikace jednoznačně došlo k problému. I když se pokles poměr mezi "good" a "špatné" trasování může značit problém aplikace, může být neškodné tuto změnu v poměru. Například zvýšení může být z důvodu nového toku v aplikaci generování další "špatné" trasování než stávající toky).

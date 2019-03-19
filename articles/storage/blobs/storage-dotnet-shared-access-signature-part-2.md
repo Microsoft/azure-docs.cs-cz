@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244908"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012542"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob
 
@@ -33,7 +33,7 @@ V tomto kurzu vytvoříme dvě konzolové aplikace, které ukazují, vytvářen�
 **Aplikace 2**: Klientská aplikace. Přístupy do kontejneru a objektu blob prostředky použití sdílených přístupových podpisů, který je vytvořen s první aplikací. Používá sdílené přístupové podpisy ke kontejneru přístup a objektů blob prostředky – provádí *není* zahrnují přístupový klíč účtu úložiště.
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Část 1: Vytvořte konzolovou aplikaci pro generování sdílených přístupových podpisů
-Nejprve ujistěte se, že máte Klientská knihovna Azure Storage pro .NET nainstalovat. Můžete nainstalovat [balíček NuGet](http://nuget.org/packages/WindowsAzure.Storage/ "balíček NuGet") obsahující aktuální sestavení klientské knihovny. Toto je doporučená metoda pro zajištění, že máte nejnovější opravy. Klientská knihovna můžete také stáhnout jako součást nejnovější verzi [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/).
+Nejprve ujistěte se, že máte Klientská knihovna Azure Storage pro .NET nainstalovat. Můžete nainstalovat [balíček NuGet](https://nuget.org/packages/WindowsAzure.Storage/ "balíček NuGet") obsahující aktuální sestavení klientské knihovny. Toto je doporučená metoda pro zajištění, že máte nejnovější opravy. Klientská knihovna můžete také stáhnout jako součást nejnovější verzi [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
 V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows s názvem **GenerateSharedAccessSignatures**. Přidání odkazů na [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) pomocí jedné z následujících postupů:
 

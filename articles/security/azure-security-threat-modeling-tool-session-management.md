@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18dfc6badf640afb418e661e6c464442fbb41945
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232738"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875165"
 ---
 # <a name="security-frame-session-management"></a>Zabezpečení rámce: Správa relací
 | Produkt nebo službu | Článek |
@@ -34,7 +34,7 @@ ms.locfileid: "51232738"
 
 ## <a id="logout-adal"></a>Implementace správné odhlašování pomocí knihovny ADAL metod při použití služby Azure AD
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -69,7 +69,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="finite-tokens"></a>Použití omezeného životnost generovaných tokenů SaS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -80,7 +80,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="resource-tokens"></a>Pomocí minimální životností tokenů pro generovaných tokenů prostředku
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -91,7 +91,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="wsfederation-logout"></a>Implementace správné odhlašování pomocí metod WsFederation při použití služby AD FS
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | ADFS | 
 | **SDL fáze**               | Sestavení |  
@@ -140,7 +140,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="proper-logout"></a>Implementace správné odhlášení při používání serveru identit
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Sestavení |  
@@ -151,7 +151,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="https-secure-cookies"></a>Aplikace je k dispozici prostřednictvím protokolu HTTPS, musíte použít bezpečné soubory cookie
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -170,7 +170,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 ```
 Nastavení se nevynucuje i v případě protokolu HTTP se používá pro přístup k aplikaci. Pokud HTTP slouží k přístupu k aplikaci, přeruší nastavení aplikace, protože soubory cookie jsou nastavené s atributem zabezpečené a prohlížeč nebude odeslat zpět do aplikace.
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -192,7 +192,7 @@ Nastavení se nevynucuje i v případě protokolu HTTP se používá pro příst
 
 ## <a id="cookie-definition"></a>Všechny aplikace na základě protokolu http měla určit pouze pro definici souboru cookie http
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -213,7 +213,7 @@ Všechny aplikace založené na protokolu HTTP, které používají soubory cook
 </system.web>
 ```
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -230,7 +230,7 @@ Následující příklad kódu nastaví atribut requireSSL v souboru Web.config.
 </authentication>
 ```
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -255,7 +255,7 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 
 ## <a id="csrf-asp"></a>Pomáhá zmírnit dopady útoků proti padělání žádosti mezi weby (CSRF) na rozhraní ASP.NET web pages
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -264,13 +264,13 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Proti padělání požadavků mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provádět akce v kontextu zabezpečení navázanou relaci jiného uživatele na webovém serveru. Cílem je upravit nebo odstranit obsah, pokud cílové webové stránky spoléhá výhradně na soubory cookie relace k ověření přijatý požadavek. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získáme prohlížeče jiný uživatel se načíst adresu URL pomocí příkazu z ohrožených lokality, na kterém je již přihlášeni. Existuje mnoho způsobů pro útočníka, stačí, třeba hostování na jiný web, který načítá prostředku z ohrožených serveru nebo získávání uživatel kliknutím na odkaz. Útok lze zabránit, pokud je server odešle klientovi další token, vyžaduje klient mají být zahrnuty všechny budoucí žádosti o token a ověřuje, že všechny budoucí požadavky zahrnují token, který se týká aktuální relace, například s použitím technologie ASP.NET AntiForgeryToken nebo vlastnosti ViewState. |
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
+| **Odkazy**              | [Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **Kroky** | Anti-útokům CSRF a formulářů rozhraní ASP.NET MVC – použijte `AntiForgeryToken` pomocnou metodu pro zobrazení; put `Html.AntiForgeryToken()` do formuláře, například|
 
 ### <a name="example"></a>Příklad:
@@ -304,7 +304,7 @@ Filtr autorizace, která kontroluje, zda:
 * Tyto soubory cookie a `Request.Form` shody hodnoty za předpokladu, že všechny je dobře, požadavek prochází normálním způsobem. Ale pokud ne, pak chybě autorizace se zprávou "požadovaný token proti padělání nebyl zadán nebo byl neplatný". 
 
 ### <a name="example"></a>Příklad:
-Anti-útokům CSRF a AJAX: tokenu formuláře může být problém pro odesílání požadavků AJAX, protože požadavek AJAX může odesílat data JSON, ne data formuláře HTML. Jedním z řešení je odesílat tokeny ve vlastní hlavičku HTTP. Následující kód používá syntaxi Razor ke generování tokenů a pak přidá tokenů pro požadavek AJAX. 
+Anti-CSRF and AJAX: Token formuláře může být problém pro odesílání požadavků AJAX, protože požadavek AJAX může odesílat data JSON, ne data formuláře HTML. Jedním z řešení je odesílat tokeny ve vlastní hlavičku HTTP. Následující kód používá syntaxi Razor ke generování tokenů a pak přidá tokenů pro požadavek AJAX. 
 ```csharp
 <script>
     @functions{
@@ -350,7 +350,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 }
 ```
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -370,13 +370,13 @@ void Page_Init (object sender, EventArgs e) {
 
 ## <a id="inactivity-lifetime"></a>Nastavení relace po dobu platnosti nečinnosti
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Vlastnost HttpSessionState.Timeout](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
+| **Odkazy**              | [HttpSessionState.Timeout Property](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
 | **Kroky** | Časový limit relace představuje událost, ke kterým dochází, když uživatel neprovede žádnou akci na webové stránce během intervalu (definované webový server). Událost na straně serveru a změnit stav relace uživatele na "neplatný" (například "nepoužívá už") a dáte pokyn, aby webový server ke zničení ho (odstranění všech dat obsažených do něj). Následující příklad kódu nastaví atribut časového limitu relace na 15 minut v souboru Web.config.|
 
 ### <a name="example"></a>Příklad:
@@ -406,7 +406,7 @@ void Page_Init (object sender, EventArgs e) {
 </forms>
 ```
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -441,7 +441,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ## <a id="proper-app-logout"></a>Implementace správné odhlášení z aplikace
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -452,7 +452,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ## <a id="csrf-api"></a>Pomáhá zmírnit dopady útoků proti padělání žádosti mezi weby (CSRF) na rozhraní ASP.NET Web API
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -461,14 +461,14 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Proti padělání požadavků mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provádět akce v kontextu zabezpečení navázanou relaci jiného uživatele na webovém serveru. Cílem je upravit nebo odstranit obsah, pokud cílové webové stránky spoléhá výhradně na soubory cookie relace k ověření přijatý požadavek. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získáme prohlížeče jiný uživatel se načíst adresu URL pomocí příkazu z ohrožených lokality, na kterém je již přihlášeni. Existuje mnoho způsobů pro útočníka, stačí, třeba hostování na jiný web, který načítá prostředku z ohrožených serveru nebo získávání uživatel kliknutím na odkaz. Útok lze zabránit, pokud je server odešle klientovi další token, vyžaduje klient mají být zahrnuty všechny budoucí žádosti o token a ověřuje, že všechny budoucí požadavky zahrnují token, který se týká aktuální relace, například s použitím technologie ASP.NET AntiForgeryToken nebo vlastnosti ViewState. |
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Prevence útoků proti padělání (CSRF) žádosti více webů v ASP.NET Web API](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **Kroky** | Anti-útokům CSRF a AJAX: tokenu formuláře může být problém pro odesílání požadavků AJAX, protože požadavek AJAX může odesílat data JSON, ne data formuláře HTML. Jedním z řešení je odesílat tokeny ve vlastní hlavičku HTTP. Následující kód používá syntaxi Razor ke generování tokenů a pak přidá tokenů pro požadavek AJAX. |
+| **Odkazy**              | [Prevence útoků proti padělání (CSRF) žádosti více webů v ASP.NET Web API](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
+| **Kroky** | Anti-CSRF and AJAX: Token formuláře může být problém pro odesílání požadavků AJAX, protože požadavek AJAX může odesílat data JSON, ne data formuláře HTML. Jedním z řešení je odesílat tokeny ve vlastní hlavičku HTTP. Následující kód používá syntaxi Razor ke generování tokenů a pak přidá tokenů pro požadavek AJAX. |
 
 ### <a name="example"></a>Příklad:
 ```Javascript
@@ -548,13 +548,13 @@ Filtr autorizace, která kontroluje, zda:
 * Příchozí požadavek má `Request.Form` položka __RequestVerificationToken
 * Tyto soubory cookie a `Request.Form` shody hodnoty za předpokladu, že všechny je dobře, požadavek prochází normálním způsobem. Ale pokud ne, pak chybě autorizace se zprávou "požadovaný token proti padělání nebyl zadán nebo byl neplatný".
 
-| Titul                   | Podrobnosti      |
+| Název                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC5, MVC6 |
 | **Atributy**              | Poskytovatel Identity poskytovatele – služby AD FS, identity – Azure AD |
-| **Odkazy**              | [Zabezpečení webového rozhraní API s jednotlivých účtů a místní přihlášení v rozhraní ASP.NET Web API 2.2](http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
+| **Odkazy**              | [Zabezpečení webového rozhraní API s jednotlivých účtů a místní přihlášení v rozhraní ASP.NET Web API 2.2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
 | **Kroky** | Pokud je webové rozhraní API zabezpečené pomocí OAuth 2.0, potom očekává, že nosného tokenu v autorizační hlavičce požadavku a udělí přístup k požadavku, pouze pokud je token platný. Na rozdíl od ověřování na základě souborů cookie prohlížeče nepřipojujte nosné tokeny požadavků. Klienta, který je potřeba explicitně připojte nosný token v hlavičce požadavku. Pro ASP.NET webová rozhraní API chráněné pomocí OAuth 2.0, proto jsou nosné tokeny za obrana proti útokům CSRF. Všimněte si, že pokud se část aplikace MVC používá ověřování pomocí formulářů (tj, soubory cookie používá), tokenů proti padělání muset používat webové aplikace MVC. |
 
 ### <a name="example"></a>Příklad:

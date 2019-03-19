@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011806"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
@@ -75,7 +75,7 @@ Po dokončení předchozích kroků můžete zobrazit doporučení pro optimaliz
 Nejprve Pojďme se podívat nanejvýš běžný scénář, který způsobí, že uživatelské účty, chcete-li získat *initiallySuspended*.
 
 > Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Jeho organizace je začít využívat Cloudyn.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cloudyn a přihlásí do portálu Cloudyn, se *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn mohl vytvořit účty Azure a nastaví hierarchie entit. Admin1 informuje Admin2, správce klienta, který mu je potřeba zaregistrovat ve službě Cloudyn a přihlaste se k portálu Cloudyn.
-
+> 
 > Admin2 zaregistruje na webu Azure portal. Ale při snaží se přihlaste k portálu Cloudyn, že získá chyba s oznámením o svém účtu je **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro příslušné entity a umožňuje přístup ke správě uživatelů a aktivní uživatelský účet.
 
 
@@ -126,9 +126,9 @@ Cloudyn automaticky detekuje vaše předplatné měny smlouvy Enterprise a zobra
 
 Cloudyn zahrnuje následující aktualizace časových dat:
 
-- **Počáteční**: Po nastavení, může trvat až 24 hodin, chcete-li zobrazit náklady na data ve službě Cloudyn. Můžete taky využít až 10 dní pro Cloudyn shromažďovat dostatek dat k zobrazení doporučení velikosti.
-- **Denní**: po desátém dni na konci každého měsíce Cloudyn by měla zobrazit vaše data aktuální z předchozího dne po o UTC + 3 dalšího dne.
-- **Měsíční**: od prvního dne desátý den v měsíci, může být Cloudyn zobrazit data jenom do konce předchozího měsíce.
+- **Počáteční**: Po při nastavování může trvat až 24 hodin, chcete-li zobrazit náklady na data ve službě Cloudyn. Můžete taky využít až 10 dní pro Cloudyn shromažďovat dostatek dat k zobrazení doporučení velikosti.
+- **Denní**: Po desátém dni na konci každého měsíce Cloudyn by měla zobrazit vaše data aktuální z předchozího dne po o UTC + 3 dalšího dne.
+- **Měsíční**: Od prvního dne desátý den každého měsíce Cloudyn můžou zobrazovat data pouze do konce předchozího měsíce.
 
 Cloudyn zpracovává data pro předchozího dne, když jsou k dispozici úplná data z předchozího dne. Data z předchozího dne je obvykle k dispozici ve službě Cloudyn podle o UTC + 3 každý den. Některá data, jako jsou například značky, může trvat dalších 24 hodin ke zpracování.
 

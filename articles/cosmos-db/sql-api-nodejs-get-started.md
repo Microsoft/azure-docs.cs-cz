@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fe925ed408f64424de8da98f6e182a06a41bf015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075045"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Sestavení aplikace konzoly Node.js pomocí sady JavaScript SDK ke správě dat SQL API služby Azure Cosmos DB
 
@@ -338,7 +338,7 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
 Dále vytvořte kontejner v účtu Azure Cosmos DB, tak, že můžete ukládat a dotazovat data. 
 
 > [!WARNING]
-Vytvoření kontejneru se hradí. Navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) abyste věděli, co mají očekávat.
+> Vytvoření kontejneru se hradí. Navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) abyste věděli, co mají očekávat.
 
 Kontejner můžete vytvořit buď pomocí `createIfNotExists` nebo vytvoření funkce z **kontejnery** třídy.  Kontejner se skládá z položek (v případě rozhraní SQL API to jsou dokumenty JSON) a přidružené logiky javascriptové aplikace.
 
@@ -462,7 +462,7 @@ Položky můžete vytvořit pomocí funkce vytvořit **položky** třídy. Pokud
    /**
    * Create family item if it does not exist
    */
-  async function createFamilyItem(itemBody) {
+   async function createFamilyItem(itemBody) {
      try {
          // read the item to see if it exists
          const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
@@ -612,9 +612,9 @@ Azure Cosmos DB podporuje odstraňování položek JSON.
 1. Zkopírujte funkci **deleteFamilyItem** a vložte ji pod funkci **replaceFamilyItem**.
 
    ```javascript
-  /**
-  * Delete the item by ID.
-  */
+   /**
+   * Delete the item by ID.
+   */
    async function deleteFamilyItem(itemBody) {
       await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
       console.log(`Deleted item:\n${itemBody.id}\n`);

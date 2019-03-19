@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 797838b077993ddcb4120bcf48b026063abbe1ab
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105317"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014995"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura pro zotavení po havárii Azure do Azure
 
@@ -102,9 +102,10 @@ Následující tabulka vysvětluje různé typy konzistence.
 Snímek konzistentní s havárií shromažďuje data, která byla na disku při pořízení snímku. Nic neobsahuje v paměti.<br/><br/> Obsahuje ekvivalentní data na disku, která by byla k dispozici, pokud došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v okamžiku, která pořízení snímku.<br/><br/> Konzistentní při selhání nezaručuje konzistenci dat pro operační systém nebo aplikace na virtuálním počítači. | Site Recovery vytvoří body obnovení konzistentní při selhání každých 5 minut, ve výchozím nastavení. Toto nastavení nejde změnit.<br/><br/>  | V současné době většina aplikací můžete obnovit také ze body konzistentní při selhání.<br/><br/> Body obnovení konzistentní při selhání jsou obvykle stačí pro replikaci operačních systémů a aplikací, jako jsou servery DHCP a tiskových serverů.
 
 ### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
+
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentní vzhledem k.<br/><br/> Konzistentní vzhledem k snímku obsahovat všechny informace v snímky konzistentní s havárií a veškerá data v paměti a probíhající transakce. | Snímky konzistentní s pomocí svazků služby Stínová kopie (VSS):<br/><br/>   1) při zahájení snímku VSS provést operaci kopírování při zápisu (krávy) na svazku.<br/><br/>   (2) předtím, než provede krávy, informuje VSS každá aplikace na počítači, který je třeba vyprázdnění rezidentní data na disk.<br/><br/>   (3) stínové kopie svazku pak umožní aplikaci obnovení zálohování/zotavení po havárii (v tomto případě Site Recovery) číst data snímku a pokračovat. | Snímky konzistentní s přejdete v souladu s frekvencí, kterou zadáte. Četnost odesílání by měla být vždy nižší než nastavení pro zachování body obnovení. Například pokud můžete zachovat body obnovení pomocí výchozího nastavení 24 hodin, měli byste nastavit frekvenci, s méně než 24 hodin.<br/><br/>Jsou mnohem složitější a trvat déle než snímky konzistentní při selhání.<br/><br/> Jejich vliv na výkon aplikace, které běží na virtuálním počítači povolena replikace. | <br/><br/>Body obnovení konzistentní se doporučují pro databázi operačních systémů a aplikací, jako jsou SQL.<br/><br/> Snímky konzistentní se podporují jenom pro virtuální počítače se systémem Windows.
+Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentní vzhledem k.<br/><br/> Konzistentní vzhledem k snímku obsahovat všechny informace v snímky konzistentní s havárií a veškerá data v paměti a probíhající transakce. | Snímky konzistentní s pomocí svazků služby Stínová kopie (VSS):<br/><br/>   1) při zahájení snímku VSS provést operaci kopírování při zápisu (krávy) na svazku.<br/><br/>   (2) předtím, než provede krávy, informuje VSS každá aplikace na počítači, který je třeba vyprázdnění rezidentní data na disk.<br/><br/>   (3) stínové kopie svazku pak umožní aplikaci obnovení zálohování/zotavení po havárii (v tomto případě Site Recovery) číst data snímku a pokračovat. | Snímky konzistentní s přejdete v souladu s frekvencí, kterou zadáte. Četnost odesílání by měla být vždy nižší než nastavení pro zachování body obnovení. Například pokud můžete zachovat body obnovení pomocí výchozího nastavení 24 hodin, měli byste nastavit frekvenci, s méně než 24 hodin.<br/><br/>Jsou mnohem složitější a trvat déle než snímky konzistentní při selhání.<br/><br/> Jejich vliv na výkon aplikace, které běží na virtuálním počítači povolena replikace. 
 
 ## <a name="replication-process"></a>Proces replikace
 
@@ -116,8 +117,7 @@ Když povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 4. Site Recovery zpracovává data v mezipaměti a posílá ji do cílového účtu úložiště nebo do repliky spravovaných disků.
 5. Po zpracování dat, vygenerují se body obnovení konzistentní při selhání každých pět minut. Body obnovení konzistentní se generují podle nastavení nakonfigurované v zásadách replikace.
 
-
-   ![Povolit replikaci, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Povolit replikaci, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Proces replikace**
 

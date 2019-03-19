@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c04358734923654366eb679505910e14d0e0059b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097970"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -41,7 +41,7 @@ Přidejte následující telemetrii v **měření** stránky:
 | Tlak     | tlak    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  Datový typ telemetrických dat měření je plovoucí číslo bodu.
+>   Datový typ telemetrických dat měření je plovoucí číslo bodu.
 
 Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí se neshodují s názvy vlastností v odpovídajícím kódu zařízení, nelze zobrazit telemetrická data v aplikaci.
 
@@ -54,7 +54,7 @@ Přidat následující stav v **měření** stránky:
 | Režim ventilátoru     | fanmode     | 1       | Spuštěno      | 0       | Zastaveno      |
 
 > [!NOTE]
-  Datový typ měření stavu je řetězec.
+>   Datový typ měření stavu je řetězec.
 
 Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí se neshodují s názvy vlastností v odpovídajícím kódu zařízení, stavu nelze zobrazit v aplikaci.
 
@@ -67,7 +67,7 @@ Přidejte následující událost v **měření** stránky:
 | Přehřívání  | overheat    | Chyba    |
 
 > [!NOTE]
-  Datový typ měření událostí je řetězec.
+>   Datový typ měření událostí je řetězec.
 
 ### <a name="device-properties"></a>Vlastnosti zařízení
 
@@ -279,5 +279,5 @@ Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili, jak připojit obecného klienta Node.js do aplikace Azure IoT Central, tady jsou další navrhované kroky:
-* [Příprava a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md)
+* [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: c11a206316cfb7b2d9e96b631fce01701da93565
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877866"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -26,7 +26,7 @@ Při nahrávání videí pomocí služby Video Indexer API, máte následující
 
 Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů. <br/>Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
 
-Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
+Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
 
 ## <a name="uploading-considerations"></a>Aspekty nahrávání videí na server
 
@@ -60,20 +60,20 @@ Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku
     
         |Název|Popis|
         |---|---|
-        |id|ID videa|
+        |id|Id videa|
         |state|Stav videa|  
     - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osobu identifikovanou ve videu:
-    - Vlastnosti
+  - Vlastnosti
     
-        |Název|Popis|
-        |---|---|
-        |id| ID videa|
-        |funkci faceId|Face ID, které se zobrazí v rejstřík videí|
-        |knownPersonId|ID osoby, které jsou jedinečné v rámci modelu pro rozpoznávání tváře|
-        |PersonName|Jméno osoby|
+      |Název|Popis|
+      |---|---|
+      |id| Id videa|
+      |funkci faceId|Face ID, které se zobrazí v rejstřík videí|
+      |knownPersonId|ID osoby, které jsou jedinečné v rámci modelu pro rozpoznávání tváře|
+      |PersonName|Jméno osoby|
         
-     - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Poznámky
 

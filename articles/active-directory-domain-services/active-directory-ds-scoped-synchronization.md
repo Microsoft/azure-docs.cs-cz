@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180683"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117604"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
 V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.
@@ -39,12 +39,10 @@ Následující tabulka vám pomůže určit, jak používat vymezenou synchroniz
 
 > [!WARNING]
 > **Změna rozsahu synchronizace způsobí, že kvůli tomu provádět znovu synchronizovat vaši spravovanou doménu.**
->
- * Při změně oboru synchronizace pro spravovanou doménu, dojde k úplné opětovné synchronizace.
- * Objekty, které jsou již není požadován ve spravované doméně se odstraní. Vytvoření nových objektů ve spravované doméně.
- * Opětovná synchronizace může trvat dlouhou dobu v závislosti na počtu objektů (uživatelů, skupin a členství ve skupinách) ve vaší spravované domény a adresáře služby Azure AD. Pro velké adresáře s mnoha stovek tisíc objektů může pár dní trvat opětovné synchronizace.
->
->
+> 
+>  * Při změně oboru synchronizace pro spravovanou doménu, dojde k úplné opětovné synchronizace.
+>  * Objekty, které jsou již není požadován ve spravované doméně se odstraní. Vytvoření nových objektů ve spravované doméně.
+>  * Opětovná synchronizace může trvat dlouhou dobu v závislosti na počtu objektů (uživatelů, skupin a členství ve skupinách) ve vaší spravované domény a adresáře služby Azure AD. Pro velké adresáře s mnoha stovek tisíc objektů může pár dní trvat opětovné synchronizace.
 
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Vytvořit nové spravované domény a povolit na základě skupin s vymezeným oborem synchronizace pomocí webu Azure portal
@@ -58,46 +56,46 @@ Dokončete tuto sadu kroků pomocí prostředí PowerShell. Přečtěte si pokyn
 Proveďte následující kroky konfigurace na základě skupin s vymezeným oborem synchronizace se spravovanou doménou:
 
 1. Proveďte následující úkoly:
-  * [Úloha 1: Nainstalujte požadované moduly Powershellu](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
-  * [Úloha 2: Vytvoření instančního objektu požadovaná služba v adresáři služby Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
-  * [Úloha 3: Vytvořte a nakonfigurujte skupinu "Správci AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
-  * [Úloha 4: Registrace poskytovatele prostředků služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
-  * [Úloha 5: Vytvořte skupinu prostředků](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
-  * [Krok 6: Vytvoření a konfigurace virtuální sítě](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
+   * [Úloha 1: Nainstalujte požadované moduly Powershellu](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules).
+   * [Úloha 2: Vytvoření instančního objektu požadovaná služba v adresáři služby Azure AD](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory).
+   * [Úloha 3: Vytvořte a nakonfigurujte skupinu "Správci AAD DC"](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group).
+   * [Úloha 4: Registrace poskytovatele prostředků služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider).
+   * [Úloha 5: Vytvořte skupinu prostředků](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group).
+   * [Krok 6: Vytvoření a konfigurace virtuální sítě](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network).
 
 2. Vyberte skupiny, které chcete synchronizovat, a zadání zobrazovaného názvu skupiny, které chcete synchronizovat vaši spravovanou doménu.
 
 3. Uložit [skript v následujícím oddílu](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) do souboru s názvem ```Select-GroupsToSync.ps1```. Spusťte skript podobná níže uvedenému příkladu:
 
-  ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-  ```
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
 
-  > [!WARNING]
-  > **Nezapomeňte zahrnout skupinu "Správci AAD DC".**
-  >
-  > V seznamu skupiny nakonfigurované pro synchronizaci s vymezeným oborem musí obsahovat skupinu "Správci AAD DC". Pokud není zadána tuto skupinu, budou spravované domény nepoužitelné.
-  >
+   > [!WARNING]
+   > **Nezapomeňte zahrnout skupinu "Správci AAD DC".**
+   >
+   > V seznamu skupiny nakonfigurované pro synchronizaci s vymezeným oborem musí obsahovat skupinu "Správci AAD DC". Pokud není zadána tuto skupinu, budou spravované domény nepoužitelné.
+   >
 
 4. Teď vytvořte spravovanou doménu a povolte na základě skupin s vymezeným oborem synchronizace pro spravovanou doménu. Zahrnout vlastnost ```"filteredSync" = "Enabled"``` v ```Properties``` parametru. Pro instanci, najdete v následující fragment skriptu zkopírovanými z [7 úloh: Zřízení spravované doméně služby Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain).
 
-  ```powershell
-  $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-  $ManagedDomainName = "contoso100.com"
-  $ResourceGroupName = "ContosoAaddsRg"
-  $VnetName = "DomainServicesVNet_WUS"
-  $AzureLocation = "westus"
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso100.com"
+   $ResourceGroupName = "ContosoAaddsRg"
+   $VnetName = "DomainServicesVNet_WUS"
+   $AzureLocation = "westus"
 
-  # Enable Azure AD Domain Services for the directory.
-  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
-  ```
+   -ApiVersion 2017-06-01 -Force -Verbose
+   ```
 
-  > [!TIP]
-  > Nezapomeňte zahrnout ```"filteredSync" = "Enabled"``` v ```-Properties``` parametrů, takže s vymezeným oborem synchronizace je povolena pro spravovanou doménu.
+   > [!TIP]
+   > Nezapomeňte zahrnout ```"filteredSync" = "Enabled"``` v ```-Properties``` parametrů, takže s vymezeným oborem synchronizace je povolena pro spravovanou doménu.
 
 
 ## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skript a vyberte skupiny, které chcete synchronizovat do spravované domény (Select-GroupsToSync.ps1)

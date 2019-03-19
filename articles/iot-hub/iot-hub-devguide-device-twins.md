@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4cbb8e389f403aeb149998acc21956ebce40be78
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 4ad75a7ba4e2f6060824f3cf1c87a42f8fa32843
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011496"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113134"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 
@@ -180,44 +180,44 @@ Back-end řešení funguje v dvojčeti zařízení pomocí následující atomic
 
 * **Dostávat oznámení dvojčete**. Tato operace umožňuje back-end řešení která vás upozorní, když se upraví dvojčeti. Uděláte to tak, musí vaše řešení IoT má být vytvořena trasa a nastavení zdroje dat rovná *twinChangeEvents*. Ve výchozím nastavení tyto trasy předem existují, takže žádná oznámení dvojčete jsou odeslány. Pokud je příliš vysoká frekvence změn nebo z jiných důvodů, jako je například interní chyby služby IoT Hub může odeslat pouze jedno oznámení, která obsahuje všechny změny. Proto pokud vaše aplikace potřebuje spolehlivé auditování a protokolování všech průběžných stavů, abyste používali zpráv typu zařízení cloud. Zpráva oznámení dvojčete obsahuje vlastnosti a text.
 
-   - Vlastnosti
+  - Vlastnosti
 
-   | Název | Hodnota |
-   | --- | --- |
-   $content-type | application/json |
-   $iothub-enqueuedtime |  Čas odeslání oznámení |
-   $iothub-message-source | twinChangeEvents |
-   $content-encoding | utf-8 |
-   deviceId | ID zařízení |
-   hubName | Name of IoT Hub |
-   operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | "replaceTwin" nebo "updateTwin" |
+    | Název | Hodnota |
+    | --- | --- |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  Čas odeslání oznámení |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
+    deviceId | ID zařízení |
+    hubName | Name of IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) časové razítko operace |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" nebo "updateTwin" |
 
-   Vlastnosti zprávy systému začínají `$` symbol.
+    Vlastnosti zprávy systému začínají `$` symbol.
 
-   - Tělo
+  - Tělo
         
-   Tato část obsahuje všechny změny dvojčete ve formátu JSON. Používá stejný formát jako opravy, s tím rozdílem, že může obsahovat všechny oddíly dvojčete: značek, properties.reported, properties.desired a že obsahuje prvky "$metadata". Například:
+    Tato část obsahuje všechny změny dvojčete ve formátu JSON. Používá stejný formát jako opravy, s tím rozdílem, že může obsahovat všechny oddíly dvojčete: značek, properties.reported, properties.desired a že obsahuje prvky "$metadata". Například:
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 Předchozí operace podporují [optimistického řízení souběžnosti](iot-hub-devguide-device-twins.md#optimistic-concurrency) a vyžadují **ServiceConnect** oprávnění, jak jsou definovány v [řízení přístupu ke službě IoT Hub](iot-hub-devguide-security.md).
 

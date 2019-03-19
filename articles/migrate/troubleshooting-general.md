@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119169"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -53,28 +53,28 @@ Pokud nemůžete exportovat sestavu posouzení je z portálu, zkuste použít n�
 
 1. Nainstalujte *armclient* ve vašem počítači (Pokud nemáte je již nainstalována):
 
-  a. V okně příkazového řádku správce spusťte následující příkaz: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+   a. V okně příkazového řádku správce spusťte následující příkaz: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-  b. V okně Správce Windows PowerShell spusťte následující příkaz: ```choco install armclient```
+   b. V okně Správce Windows PowerShell spusťte následující příkaz: ```choco install armclient```
 
-2.  Získat adresu URL pro stažení sestavy posouzení pomocí Azure Migrate rozhraní REST API
+2. Získat adresu URL pro stažení sestavy posouzení pomocí Azure Migrate rozhraní REST API
 
-  a.    V okně Správce Windows PowerShell spusťte následující příkaz: ```armclient login```
+   a.    V okně Správce Windows PowerShell spusťte následující příkaz: ```armclient login```
 
-  Tím se otevře Azure místní přihlášení potřebujete-li přihlásit k Azure.
+   Tím se otevře Azure místní přihlášení potřebujete-li přihlásit k Azure.
 
-  b.    Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
+   b.    Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-       Ukázka požadavku a výstup:
+      Ukázka požadavku a výstup:
 
-       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-018_12_16_21/downloadUrl?api-version=2018-02-02
-{
-  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+   018_12_16_21/downloadUrl?api-version=2018-02-02
+   {
+   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Zkopírujte adresu URL z odpovědi a otevřít ji v prohlížeči si chcete stáhnout sestavu posouzení.
 
@@ -97,9 +97,9 @@ Můžete přejít na **Essentials** tématu **přehled** stránce projektu k ide
 1. Ověření, pokud je soubor Azure Migrate Collector OVA správně stáhnout tak, že zkontrolujete jeho hodnotu hash. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash neodpovídá, znovu stáhnout soubor OVA a pokusem o nasazení.
 2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud stále nedaří, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webovém klientovi vSphere a chcete nasadit virtuální počítač na serveru vCenter Server verze 6.5 nebo 6.7, zkuste nasazení OVA přímo na hostiteli ESXi pomocí následujících následujících kroků:
-  - Připojení k hostiteli ESXi přímo (namísto serveru vCenter) pomocí webového klienta (https:// <*hostitele IP adresy*> /ui)
-  - Přejděte na domovskou stránku > inventáře
-  - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení
+   - Připojení k hostiteli ESXi přímo (namísto serveru vCenter) pomocí webového klienta (https:// <*hostitele IP adresy*> /ui)
+   - Přejděte na domovskou stránku > inventáře
+   - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
 
@@ -301,15 +301,15 @@ Shromažďovat události trasování pro Windows, postupujte takto:
 1. Otevřete prohlížeč a přejděte a přihlaste se [k portálu](https://portal.azure.com).
 2. Stisknutím klávesy F12 ke spuštění nástroje pro vývojáře. V případě potřeby zrušte nastavení **Vymazat položky při navigaci**.
 3. Klikněte na tlačítko **sítě** kartu a spustit zachytávání síťového provozu:
- - V prohlížeči Chrome, vyberte **zachovat protokolu**. Tento záznam má spustit automaticky. Červené kolečko označuje, že provoz probíhá zachytávání. Pokud se nezobrazí, klikněte na kruh černé spuštění
- - V aplikaci Microsoft Edge/IE, záznam má spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
+   - V prohlížeči Chrome, vyberte **zachovat protokolu**. Tento záznam má spustit automaticky. Červené kolečko označuje, že provoz probíhá zachytávání. Pokud se nezobrazí, klikněte na kruh černé spuštění
+   - V aplikaci Microsoft Edge/IE, záznam má spustit automaticky. Pokud tomu tak není, klikněte na zelené tlačítko Přehrát.
 4. Zkuste chybu reprodukovat.
 5. Poté, co jste došlo k chybě při nahrávání, zastavit záznam a uložit kopii zaznamenaná aktivita:
- - V prohlížeči Chrome, klikněte pravým tlačítkem myši a klikněte na tlačítko **uložit jako HAR s obsahem**. To zips a exportuje protokoly jako soubor .har.
- - V aplikaci Microsoft Edge/IE, klikněte **Export zachycené provoz** ikonu. To zips a exportuje do protokolu.
+   - V prohlížeči Chrome, klikněte pravým tlačítkem myši a klikněte na tlačítko **uložit jako HAR s obsahem**. To zips a exportuje protokoly jako soubor .har.
+   - V aplikaci Microsoft Edge/IE, klikněte **Export zachycené provoz** ikonu. To zips a exportuje do protokolu.
 6. Přejděte **konzoly** kartu zkontrolujte všechna upozornění a chyby. Uložení protokolu konzoly:
- - V prohlížeči Chrome klikněte pravým tlačítkem na libovolné místo v protokolu konzoly. Vyberte **uložit jako**, abyste mohli exportovat a zip do protokolu.
- - V aplikaci Microsoft Edge/IE, klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
+   - V prohlížeči Chrome klikněte pravým tlačítkem na libovolné místo v protokolu konzoly. Vyberte **uložit jako**, abyste mohli exportovat a zip do protokolu.
+   - V aplikaci Microsoft Edge/IE, klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
 7. Zavřít Developer Tools.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kódy chyb kolekcí a doporučené akce

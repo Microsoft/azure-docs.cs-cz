@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: b8bd57953845278aa75e8cbdf41ae28300edad58
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184903"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095513"
 ---
 # <a name="azure-stack-capacity-planning"></a>Plánování kapacity v Azure stacku
 Při vyhodnocování řešení s Azure Stack, existují možnosti konfigurace hardwaru, které mají přímý vliv na celkovou kapacitu cloudu Azure Stack. Jedná se o classic volby procesoru, paměti hustota, konfiguraci úložiště a celkové řešení škálování nebo počet serverů. Na rozdíl od tradiční virtualizaci řešení jednoduché aritmetické operace těchto komponent k určení využitelné kapacity se nevztahuje. Prvním důvodem je, že Azure Stack je navržený pro hostování součásti infrastruktury nebo správu v rámci vlastním řešením. Druhý důvodem je, že některé z kapacity řešení nebylo vyhrazeno podporu odolnost; aktualizace softwaru řešení tak, aby se minimalizovalo přerušení úlohy klientů.
@@ -49,7 +49,7 @@ Další popis složité výpočty kapacity je v této části popisují později
 |     |     |     |     |     |     |     |     |
 
 > <sup>1</sup> virtuální počítače standard D2.
-
+> 
 > <sup>2</sup> virtuálních jader fyzických jader poměr.
 
 Jak je uvedeno výše, je určena kapacitu virtuálních počítačů dostupné paměti. Virtuálních jader na fyzické procesory poměrech exemplify jak hustotu virtuálních počítačů se změní dostupné kapacity procesoru, pokud toto řešení je vytvořený pomocí větší počet fyzických jader (zvolili jiný procesoru). Totéž platí sady kapacitou úložiště a kapacity úložiště mezipaměti.

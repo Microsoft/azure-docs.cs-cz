@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088430"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -304,10 +304,10 @@ Pro produkci a vysokou dostupnost, doporučujeme použít plnou verzi SQL Server
 
 Instanci systému SQL Server pro službu Azure App Service ve službě Azure Stack musí být přístupné ze všech rolí služby App Service. Můžete nasadit SQL Server v rámci výchozí předplatné poskytovatele ve službě Azure Stack. Můžete taky použít stávající infrastruktury v rámci vaší organizace (za předpokladu, že je připojení ke službě Azure Stack). Pokud používáte image Azure Marketplace, nezapomeňte nakonfigurovat bránu firewall odpovídajícím způsobem.
 
->[!NOTE]
+> [!NOTE]
 > Počet imagí virtuálních počítačů SQL IaaS jsou dostupné prostřednictvím funkce pro správu webu Marketplace. Ujistěte se, že můžete kdykoli stáhnout nejnovější verzi rozšíření SQL IaaS, před nasazením virtuálního počítače pomocí položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou dostupné v Azure. Pro virtuální počítače vytvořené z těchto imagí rozšíření IaaS a odpovídající portálu vylepšení SQL poskytují funkce, jako jsou automatické opravy a zálohování.
->
-Pro všechny role systému SQL Server můžete použít výchozí instance nebo pojmenované instance. Pokud používáte pojmenovanou instanci, je potřeba ručně spusťte službu SQL Server Browser a otevřete port 1434.
+> 
+> Pro všechny role systému SQL Server můžete použít výchozí instance nebo pojmenované instance. Pokud používáte pojmenovanou instanci, je potřeba ručně spusťte službu SQL Server Browser a otevřete port 1434.
 
 Instalační program služby App Service zkontroluje, ujistěte se, že systém SQL Server má povolené členství ve skupině databází. Pokud chcete povolit omezení databáze na SQL serveru, který bude hostitelem databáze služby App Service, spusťte tyto příkazy SQL:
 

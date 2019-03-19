@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: bfc80318eb43992e292159a0cd99a9b2f4a3c041
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d5a411e227704eb80b0020f68fad072491576f18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883793"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Interakce se sestavami Power BI pomocí rozhraní API pro JavaScript
 
@@ -43,29 +43,29 @@ Pomocí rozhraní API pro JavaScript API můžete spravovat sestavy, přejít na
 ### <a name="manage-reports"></a>Správa sestav
 Rozhraní API pro Javascript umožňuje spravovat chování na úrovni sestav a stránek:
 
-* Zabezpečené vložení konkrétní sestavy Power BI do vaší aplikace – vyzkoušejte si [ukázkovou aplikaci s vložením](http://azure-samples.github.io/powerbi-angular-client/#/scenario1)
+* Zabezpečené vložení konkrétní sestavy Power BI do vaší aplikace – vyzkoušejte si [ukázkovou aplikaci s vložením](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
   * Nastavení přístupového tokenu
 * Konfigurace sestavy
-  * Povolení a zákaz podokna filtru a podokna navigace stránkami – vyzkoušejte si [ukázkovou aplikaci s aktualizací nastavení](http://azure-samples.github.io/powerbi-angular-client/#/scenario6)
-  * Nastavení výchozích hodnot pro stránky a filtry – vyzkoušejte si [ukázku nastavení výchozích hodnot](http://azure-samples.github.io/powerbi-angular-client/#/scenario5)
+  * Povolení a zákaz podokna filtru a podokna navigace stránkami – vyzkoušejte si [ukázkovou aplikaci s aktualizací nastavení](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
+  * Nastavení výchozích hodnot pro stránky a filtry – vyzkoušejte si [ukázku nastavení výchozích hodnot](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
 * Nastavení a ukončení režimu zobrazení na celé obrazovce
 
 [Další informace o vkládání sestav](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embedding-Basics)
 
 ### <a name="navigate-to-pages-in-a-report"></a>Přechod na stránky v sestavě
-Rozhraní API pro JavaScript umožňuje prohlédnout všechny stránky sestavy a nastavit aktuální stránku. Vyzkoušejte si [ukázkovou aplikaci s navigací](http://azure-samples.github.io/powerbi-angular-client/#/scenario3).
+Rozhraní API pro JavaScript umožňuje prohlédnout všechny stránky sestavy a nastavit aktuální stránku. Vyzkoušejte si [ukázkovou aplikaci s navigací](https://azure-samples.github.io/powerbi-angular-client/#/scenario3).
 
 [Další informace o navigaci stránkami](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Page-Navigation)
 
 ### <a name="filter-a-report"></a>Filtrování sestavy
-Rozhraní API pro JavaScript poskytuje základní a rozšířené možnosti filtrování pro vložené sestavy a stránky sestav. Vyzkoušejte si [ukázkovou aplikaci filtrování](http://azure-samples.github.io/powerbi-angular-client/#/scenario4) a prohlédněte si základní kód.
+Rozhraní API pro JavaScript poskytuje základní a rozšířené možnosti filtrování pro vložené sestavy a stránky sestav. Vyzkoušejte si [ukázkovou aplikaci filtrování](https://azure-samples.github.io/powerbi-angular-client/#/scenario4) a prohlédněte si základní kód.
 
 #### <a name="basic-filters"></a>Základní filtry
 Základní filtr je postavený na úrovni hierarchie nebo sloupce a obsahuje seznam hodnot, které se mají zahrnout nebo vyloučit.
 
 ```typescript
 const basicFilter: pbi.models.IBasicFilter = {
-  $schema: "http://powerbi.com/product/schema#basic",
+  $schema: "https://powerbi.com/product/schema#basic",
   target: {
     table: "Store",
     column: "Count"
@@ -94,7 +94,7 @@ Rozšířené filtry využívají logické operátory AND a OR a přijímají je
 
 ```typescript
 const advancedFilter: pbi.models.IAdvancedFilter = {
-  $schema: "http://powerbi.com/product/schema#advanced",
+  $schema: "https://powerbi.com/product/schema#advanced",
   target: {
     table: "Store",
     column: "Name"

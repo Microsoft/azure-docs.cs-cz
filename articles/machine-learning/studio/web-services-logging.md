@@ -3,7 +3,7 @@ title: Webová služba protokolování - nástroji Azure Machine Learning Studio
 description: Informace o povolení protokolování pro webové služby Machine Learning Studio. Protokolování poskytuje další informace k řešení potíží se rozhraní API.
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 23a160ee15547bea7d5ee832cd1032b2e899966b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857551"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Povolení protokolování pro webové služby Azure Machine Learning Studio
 Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning Studio. Protokolování poskytuje další informace, jenom číslo chyby a zprávy, které vám můžou pomoct vyřešit vaše volání rozhraní API pro Machine Learning Studio.  
@@ -57,7 +57,7 @@ Povolení protokolování z [webových služeb Azure Machine Learning Studio](ht
 
    3. Pokud kontejner **ml-diagnostics** neexistuje, klikněte na tlačítko **+ kontejner**, zadejte název "ml-diagnostics" kontejneru a pak vyberte **získat přístup k typu** jako "Blob". Klikněte na **OK**.
 
-      ![Vyberte úroveň protokolování](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Vytvořit nový kontejner pro uložení diagnostických protokolů](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3ee582e2541e4eb55e5ea1424782df132ecf3575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116550"
 ---
 # <a name="connect-to-other-cognitive-services"></a>Připojte se k jiné služby cognitive services
 
@@ -33,27 +33,27 @@ Content Moderator zahrnuje tyto výchozí konektory:
 
 Před definováním pracovního postupu, ujistěte se, že máte platné přihlašovací údaje pro konektor API, které chcete použít:
 
-1.  Na nástroj pro recenze řídicího panelu, vyberte **nastavení** > **konektory**.
+1. Na nástroj pro recenze řídicího panelu, vyberte **nastavení** > **konektory**.
 
-  ![Content Moderator vyberte konektory](images/connectors-2.png)
+   ![Content Moderator vyberte konektory](images/connectors-2.png)
 
-2.  Vyberte **upravit** symbol vedle konektor, který chcete ověřit přihlašovací údaje.
+2. Vyberte **upravit** symbol vedle konektor, který chcete ověřit přihlašovací údaje.
 
-  ![Content Moderator, vyberte symbol úpravy](images/connectors-3.png)
+   ![Content Moderator, vyberte symbol úpravy](images/connectors-3.png)
 
-3.  Zobrazí se klíč předplatného. Pokud provedete jakékoli úpravy, vyberte **Uložit** až budete hotoví.
+3. Zobrazí se klíč předplatného. Pokud provedete jakékoli úpravy, vyberte **Uložit** až budete hotoví.
 
-  ![Stránka obsahu moderátor upravit konektory](images/connectors-4-1.png)
+   ![Stránka obsahu moderátor upravit konektory](images/connectors-4-1.png)
  
 ## <a name="add-a-connector"></a>Přidat konektor
 
-1.  Předtím, než přidáte konektor, potřebujete klíč předplatného. Na nástroj pro recenze řídicího panelu, vyberte **nastavení** > **pověření**. Vyberte a zkopírujte hodnotu, která je v **Ocp-Admin-Subscription-Key** pole.
+1. Předtím, než přidáte konektor, potřebujete klíč předplatného. Na nástroj pro recenze řídicího panelu, vyberte **nastavení** > **pověření**. Vyberte a zkopírujte hodnotu, která je v **Ocp-Admin-Subscription-Key** pole.
 
-2.  Vyberte **konektory**. Vyberte jednu z dostupných konektorů, které jsou zobrazeny v řídicím panelu Nástroje pro recenze. Vyberte **připojit**. 
+2. Vyberte **konektory**. Vyberte jednu z dostupných konektorů, které jsou zobrazeny v řídicím panelu Nástroje pro recenze. Vyberte **připojit**. 
 
-  ![Stránka obsahu moderátor přidat konektor](images/connectors-5.png)
+   ![Stránka obsahu moderátor přidat konektor](images/connectors-5.png)
 
-3.  V **Ocp-Admin-Subscription-Key** vložte klíč, který jste zkopírovali. Potom vyberte **Uložit**.
+3. V **Ocp-Admin-Subscription-Key** vložte klíč, který jste zkopírovali. Potom vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další postup
 

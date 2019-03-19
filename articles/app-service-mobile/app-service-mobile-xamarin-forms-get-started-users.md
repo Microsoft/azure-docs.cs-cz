@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1bbd481218128c482769cd6a28910e135c1ce16d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001035"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Přidání ověřování do aplikace Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -132,7 +132,7 @@ Tato část ukazuje, jak implementovat **IAuthenticate** rozhraní v projektu ap
         public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
 5. Aktualizace **MainActivity** třídy tak, že přidáte **MobileServiceUser** pole a **ověřit** metodu, která vyžaduje **IAuthenticate** rozhraní následujícím způsobem:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -192,7 +192,7 @@ Tato část ukazuje, jak implementovat **IAuthenticate** rozhraní v projektu ap
 
 **Aplikace došlo k chybě s `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-V některých případech je v konfliktu v podpůrných balíčků zobrazí jako varování v sadě Visual studio, ale selhání aplikace s touto výjimkou za běhu. V tomto případě musíte Ujistěte se, že všechny podporu balíčky v projektu mají stejnou verzi. [Balíčku NuGet pro Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má `Xamarin.Android.Support.CustomTabs` závislostí pro platformy Android, tak pokud váš projekt používá novější podporu balíčky je nutné nainstalovat tento balíček s požadovanou verzi přímo, aby nedocházelo ke konfliktům.
+V některých případech je v konfliktu v podpůrných balíčků zobrazí jako varování v sadě Visual studio, ale selhání aplikace s touto výjimkou za běhu. V tomto případě musíte Ujistěte se, že všechny podporu balíčky v projektu mají stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Přidání ověřování do aplikace pro iOS
 Tato část ukazuje, jak implementovat **IAuthenticate** rozhraní v projektu aplikace pro iOS. Tuto část přeskočte, pokud nejsou podporuje zařízení s Iosem.
@@ -208,7 +208,7 @@ Tato část ukazuje, jak implementovat **IAuthenticate** rozhraní v projektu ap
         public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 5. Aktualizace **AppDelegate** třídy tak, že přidáte **MobileServiceUser** pole a **ověřit** metodu, která vyžaduje **IAuthenticate** rozhraní následujícím způsobem:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -279,7 +279,7 @@ Tato část ukazuje, jak implementovat **IAuthenticate** rozhraní v projekty ap
         public sealed partial class MainPage : IAuthenticate
 5. Aktualizace **MainPage** třídy tak, že přidáte **MobileServiceUser** pole a **ověřit** metodu, která vyžaduje **IAuthenticate**rozhraní následujícím způsobem:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()

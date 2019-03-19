@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 6ee05af0391311b4782211807f41ce099a6c24a2
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889932"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876676"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso – nasazení infrastruktury migrace
 
@@ -101,10 +101,10 @@ Contoso po platit za Azure, musí zjistit, jak spravovat předplatná Azure. Con
 - Registrace Azure Enterprise definuje jak společnost obrazce a používá služby Azure a definuje strukturu zásad správného řízení core.
 - Jako první krok Contoso určil struktuře (označované jako vygenerované uživatelské rozhraní enterprise pro podnikové registrace. Contoso používá [v tomto článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance) vám pomůže pochopit a navrhnout vygenerované uživatelské rozhraní.
 - Prozatím se rozhodl používat funkční přístup ke správě předplatných Contoso.
-    - V podnikové síti se bude používat jednoho oddělení IT, která určuje rozpočet Azure. Toto bude jedinou skupinu s předplatnými.
-    - Tento model contoso rozšíří v budoucnu, tak, aby další podnikové skupiny se může připojit k jako oddělením ve podnikového zápisu.
-    - V IT oddělení společnosti Contoso má strukturované dva odběry, produkcí a vývojem.
-    - Contoso potřebuje další předplatná v budoucnu, je potřeba spravovat přístup, zásady a dodržování předpisů u těchto předplatných. Společnosti Contoso, který se zavedením [skupin pro správu Azure](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), jako další vrstvu nad předplatných.
+  - V podnikové síti se bude používat jednoho oddělení IT, která určuje rozpočet Azure. Toto bude jedinou skupinu s předplatnými.
+  - Tento model contoso rozšíří v budoucnu, tak, aby další podnikové skupiny se může připojit k jako oddělením ve podnikového zápisu.
+  - V IT oddělení společnosti Contoso má strukturované dva odběry, produkcí a vývojem.
+  - Contoso potřebuje další předplatná v budoucnu, je potřeba spravovat přístup, zásady a dodržování předpisů u těchto předplatných. Společnosti Contoso, který se zavedením [skupin pro správu Azure](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), jako další vrstvu nad předplatných.
 
     ![Struktura organizace](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ Poskytuje tak a řízení přístupu uživatelů k prostředkům Azure pomocí s
 
 Contoso je pomocí bezplatné edice Azure AD, který je součástí s předplatným Azure. Správce společnosti Contoso adresář služby AD nastavíte takto:
 
-1. V [webu Azure portal](http://portal.azure.com/), uživatel přejde na **vytvořit prostředek** > **Identity** > **Azure Active Directory**.
+1. V [webu Azure portal](https://portal.azure.com/), uživatel přejde na **vytvořit prostředek** > **Identity** > **Azure Active Directory**.
 2. V **vytvořit adresář**, určí název adresáře, počáteční název domény a oblasti, ve kterém se vytvoří v adresáři Azure AD.
 
     ![Vytvoření služby Azure AD](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -581,18 +581,18 @@ Po aktualizaci nastavení sítě, správce společnosti Contoso připraveni k se
 
 1. Na webu Azure Portal jejich nasazení nového virtuálního počítače Windows serveru do příslušné virtuální sítě.
 2. Vytváření skupiny dostupnosti v každém umístění pro virtuální počítač. Skupiny dostupnosti, postupujte takto:
-    - Ujistěte se, že prostředky infrastruktury Azure rozděluje virtuálních počítačů do jiné infrastruktury v oblasti Azure. 
-    -  Umožňuje společnosti Contoso se 99,95 % smlouva SLA pro virtuální počítače v Azure.  [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
+   - Ujistěte se, že prostředky infrastruktury Azure rozděluje virtuálních počítačů do jiné infrastruktury v oblasti Azure. 
+   - Umožňuje společnosti Contoso se 99,95 % smlouva SLA pro virtuální počítače v Azure.  [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
-    ![Skupina dostupnosti](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![Skupina dostupnosti](./media/contoso-migration-infrastructure/availability-group.png) 
 3. Po nasazení virtuálního počítače, otevřete místní síťové rozhraní virtuálního počítače. Nastavte na statickou privátní IP adresu a zadejte platnou adresu.
 
     ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. Nyní jsou připojit nový datový disk k virtuálnímu počítači. Tento disk obsahuje databázi služby Active Directory a sdílené složky sysvol. 
-    - Velikost disku určí počet vstupně-výstupních operací, který ji podporuje.
-    - V čase velikost disku může být nutné zvýšit růst objemu prostředí.
-    - Jednotka neměla být nastavena pro čtení a zápis pro použití mezipaměti u hostitele. Databáze služby Active Directory to nepodporuje.
+   - Velikost disku určí počet vstupně-výstupních operací, který ji podporuje.
+   - V čase velikost disku může být nutné zvýšit růst objemu prostředí.
+   - Jednotka neměla být nastavena pro čtení a zápis pro použití mezipaměti u hostitele. Databáze služby Active Directory to nepodporuje.
 
      ![Active Directory disku](./media/contoso-migration-infrastructure/ad-disk.png)
 

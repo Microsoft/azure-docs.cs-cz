@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: c6bba6a428e5ff339b1d269965fa1948bddc696e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764424"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081453"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Vytvoření disku úložiště virtuálního počítače ve službě Azure Stack
 
@@ -68,56 +68,56 @@ Každý nespravovaný disk, který přidáte měly být umístěny v samostatný
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Použití portálu k vytvoření a připojení nového datového disku
 
-1.  Na portálu, vyberte **všechny služby** > **virtuálních počítačů**.    
-    ![Příklad: Řídicí panel virtuálního počítače](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. Na portálu, vyberte **všechny služby** > **virtuálních počítačů**.    
+   ![Příklad: Řídicí panel virtuálního počítače](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  Vyberte virtuální počítač, který předtím nebyl vytvořen.   
-    ![Příklad: Vyberte virtuální počítač na řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. Vyberte virtuální počítač, který předtím nebyl vytvořen.   
+   ![Příklad: Vyberte virtuální počítač na řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Pro virtuální počítač vyberte **disky** > **přidat datový disk**.       
-    ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. Pro virtuální počítač vyberte **disky** > **přidat datový disk**.       
+   ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Pro datový disk:
-    -  Zadejte **logickou jednotku**. Logická jednotka musí být platné číslo.
-    -  Vyberte **vytvořit disk**.
-    ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. Pro datový disk:
+   -  Zadejte **logickou jednotku**. Logická jednotka musí být platné číslo.
+   -  Vyberte **vytvořit disk**.
+   ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  V části Vytvoření spravovaného disku okno:
-    -  Zadejte **název** disku.
-    -  Vyberte existující nebo vytvořte novou **skupiny prostředků**.
-    -  Vyberte **umístění**. Ve výchozím umístění se nastaví do kontejneru, který obsahuje disk s operačním systémem.
-    -  Vyberte **typ účtu**. 
-        ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. V části Vytvoření spravovaného disku okno:
+   - Zadejte **název** disku.
+   - Vyberte existující nebo vytvořte novou **skupiny prostředků**.
+   - Vyberte **umístění**. Ve výchozím umístění se nastaví do kontejneru, který obsahuje disk s operačním systémem.
+   - Vyberte **typ účtu**. 
+      ![Příklad: Připojit nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **Premium SSD**  
-        Disky úrovně Premium (SSD) se zálohují na jednotky SSD a nabízejí konzistentní, nízkou latenci výkon. Nabízí nejlepší poměr mezi cenou a výkonem a jsou ideální pro aplikace I vstupně-výstupními operacemi a úloh v produkčním prostředí.
+      **Premium SSD**  
+      Disky úrovně Premium (SSD) se zálohují na jednotky SSD a nabízejí konzistentní, nízkou latenci výkon. Nabízí nejlepší poměr mezi cenou a výkonem a jsou ideální pro aplikace I vstupně-výstupními operacemi a úloh v produkčním prostředí.
        
-        **Standard HDD**  
-        Standardní disky (HDD) se zálohují na magnetické jednotky a jsou vhodnější pro aplikace, kde se data přistupovat moc často. Zóna - redundantní disky jsou zajišťované Zónově redundantní úložiště (ZRS), který se replikuje vaše data napříč několika zónami a jsou k dispozici i v případě, že jedna zóna není mimo provoz. 
+      **Standard HDD**  
+      Standardní disky (HDD) se zálohují na magnetické jednotky a jsou vhodnější pro aplikace, kde se data přistupovat moc často. Zóna - redundantní disky jsou zajišťované Zónově redundantní úložiště (ZRS), který se replikuje vaše data napříč několika zónami a jsou k dispozici i v případě, že jedna zóna není mimo provoz. 
 
-    -  Vyberte **typ zdroje**.
+   - Vyberte **typ zdroje**.
 
-       Vytvořte disk ze snímku jiného disku nebo objektu blob v účtu úložiště nebo vytvořte prázdný disk.
+     Vytvoření disku ze snímku jiného disku, objektů blob v účtu úložiště, nebo vytvořte prázdný disk.
 
-        **snímek**  
-        Vyberte snímek, který, pokud je k dispozici. Snímek musí být v dostupných v předplatném a umístění Virtuálního počítače.
+      **snímek**  
+      Vyberte snímek, který, pokud je k dispozici. Snímek musí být v dostupných v předplatném a umístění Virtuálního počítače.
 
-        **Úložiště objektů blob**  
-        - Přidejte identifikátor URI objektu blob úložiště, který obsahuje image disku.  
-        - Vyberte **Procházet** a otevřete tak okno účty úložiště. Pokyny najdete v tématu [přidat datový disk z účtu úložiště](#add-a-data-disk-from-a-storage-account).
-        - Vyberte typ operačního systému z bitové kopie, a to buď **Windows**, **Linux**, nebo **žádný (datový disk)**.
+      **Úložiště objektů blob**  
+     - Přidejte identifikátor URI objektu blob úložiště, který obsahuje image disku.  
+     - Vyberte **Procházet** a otevřete tak okno účty úložiště. Pokyny najdete v tématu [přidat datový disk z účtu úložiště](#add-a-data-disk-from-a-storage-account).
+     - Vyberte typ operačního systému z bitové kopie, a to buď **Windows**, **Linux**, nebo **žádný (datový disk)**.
 
-        **Žádný (prázdný disk)**
+       **Žádný (prázdný disk)**
 
-    -  Vyberte **velikost (GiB)**.
+   - Vyberte **velikost (GiB)**.
 
-       Náklady na standardní disk se zvyšují podle velikosti disku. Premium disku náklady a výkon se zvyšují podle velikosti disku. Další informace najdete v tématu [cenami služby Managed Disks](https://go.microsoft.com/fwlink/?linkid=843142).
+     Náklady na standardní disk se zvyšují podle velikosti disku. Premium disku náklady a výkon se zvyšují podle velikosti disku. Další informace najdete v tématu [cenami služby Managed Disks](https://go.microsoft.com/fwlink/?linkid=843142).
 
-    -  Vyberte **Vytvořit**. Azure Stack vytvoří a ověří spravovaného disku.
+   - Vyberte **Vytvořit**. Azure Stack vytvoří a ověří spravovaného disku.
 
-5.  Poté, co Azure Stack disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.   
+5. Poté, co Azure Stack disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.   
 
-    ![Příklad: Zobrazení disku](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![Příklad: Zobrazení disku](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>Přidání datového disku z účtu úložiště
 

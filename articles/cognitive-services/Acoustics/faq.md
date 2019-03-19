@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy ohledně Akustika projektu
+title: Projekt Akustika – nejčastější dotazy
 titlesuffix: Azure Cognitive Services
 description: Tato stránka nabízí odpovědi na často kladené Akustika projektu, včetně otázky pokyny ke stažení a vytvoření procesu.
 services: cognitive-services
@@ -7,25 +7,29 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: resources
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 12dda5d7af1236ec2d7eddbe025b8fdba47d7bca
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881070"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138044"
 ---
-# <a name="frequently-asked-questions"></a>Nejčastější dotazy
+# <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustika – nejčastější dotazy
 
 ## <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 
-Modul plug-in Akustika Unity projektu je Akustika systém, který vypočítá zvuk wave chování před runtime podobají statické osvětlení. Cloud nemá rutinní wave fyzika výpočtů, tedy nízké náklady na modul runtime procesoru.  
+Projekt Akustika sadu modulů plug-in je Akustika systém, který vypočítá zvuk wave chování před runtime podobají statické osvětlení. Cloud nemá rutinní wave fyzika výpočtů, tedy nízké náklady na modul runtime procesoru.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Kde lze stáhnout modul plug-in?
 
-Pokud si chcete vyzkoušet akustický modul plug-in, [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) se můžete zaregistrovat k verzi Designer Preview.
+Můžete si stáhnout Akustika projektu z [webu služby Stažení softwaru Akustika projektu](https://www.microsoft.com/en-us/download/details.aspx?id=57346).
+
+## <a name="does-project-acoustics-support-x-platform"></a>Podporuje projektu Akustika <x> platformy?
+
+Podpora platformy projektu Akustika vyvíjí podle potřeb zákazníků. Kontaktujte nás prosím na [projektu Akustika fóra](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) mohli dotázat na podporu pro další platformy.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure používá za běhu?
 
@@ -45,17 +49,17 @@ Ne. Systém bude ingestovat podrobné úrovni geometrie přímo. Bude voxelized 
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Novinky ve vyhledávací tabulce modulu runtime
 
-ACE soubor představuje tabulku akustický parametrů mezi mnoha dvojice umístění zdroje a naslouchacího procesu.
+Zahrnutí souborů ACE je tabulka akustický parametrů mezi mnoha zdroj a umístění páry naslouchací proces, jakož i geometrie scény voxelized použitý pro parametr interpolace.
  
-## <a name="can-it-handle-moving-sources"></a>Dokáže zpracovat přesunutí zdrojů?
+## <a name="can-project-acoustics-handle-moving-sources"></a>Dokáže zpracovat projektu Akustika přesunutí zdrojů?
 
-Ano, **Microsoft Acoustics** modulu plug-in spatializer Unity consults vyhledávací tabulky na jednotlivé takty zpracování zvuku s aktuální umístění zdroje a naslouchacího procesu. Spatializer DSP plynule aktualizuje akustický zpracování parametrů na jednotlivé takty.
+Ano, projekt Akustika consults vyhledávací tabulky a aktualizuje DSP zvuku na jednotlivé takty, takže mohou zpracovat přesunutí zdrojů a naslouchacího procesu.
  
-## <a name="can-it-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Dokáže zpracovat dynamické geometrie? Zavření dveře? Stěn úžasné hned?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Dokáže zpracovat Akustika projektu dynamické geometrie? Zavření dveře? Stěn úžasné hned?
 
-Ne. Akustický parametry jsou-li předpočítané na základě statické stavu her úroveň. Můžeme navrhnout opuštění dveře geometrie mimo Akustika a pak použít další uzavření na základě stavu zničitelné a přesouvatelný herním objektům, které jsou zavedené technik.
+Ne. Akustický parametry jsou-li předpočítané na základě statické stavu her úroveň. Doporučujeme ponechat dveře geometrie mimo Akustika a potom se použijí na základě stavu zničitelné další uzavření a nastavení přesouvatelný herním objektům pomocí techniky.
  
-## <a name="does-it-handle-materials"></a>Zpracování materiály?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>Používá projektu Akustika akustický materiály?
 
 Ano. Materiály se vybírají z fyzických materiálu názvů ve vaší úrovni řízení absorptivity.
  
@@ -65,12 +69,12 @@ Testy jsou novým možné player umístění. Každý test představuje samostat
  
 ## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Proč trávit tolik výpočty v cloudu? Co ji zakoupit mě?
 
-Projekt Akustika poskytuje přesným a spolehlivým akustický parametry i pro mimořádně složité virtuální prostředí, s ohledem všechny aspekty architektury. Nabízí hladký uzavření/překážka bez ruční práce a dynamické dozvuku variace bez kreslení svazky. Vše se zbývající světla na procesoru za běhu.
+Projekt Akustika poskytuje přesným a spolehlivým akustický parametry i pro mimořádně složité virtuální prostředí, s ohledem všechny aspekty architektury. Poskytuje smooth uzavření a překážky a dynamické dozvuku varianta bez dělat něco ručně kreslení svazky. Vše se zbývající světla na procesoru za běhu.
 
 ## <a name="what-exactly-happens-during-baking"></a>Co se stane přesně během "pečení"?
 
-Systém bere v úvahu potenciální umístění player generují sadu rovnoměrně rozmístěné "probe" Ukázkový pozic. Která má označení vytvoření pro úroveň se skládá z nezávislých úloh, které pro každý test: Systém bude považovat za cuboid "Simulace oblasti" na střed v testu a nemá podrobné wave simulace v dané oblasti až 25 cm rozlišením.
+Která má označení vytvoření se skládá z akustický wave simulace cuboid simulace oblastí střed na každý test naslouchacího procesu.
 
-## <a name="next-steps"></a>Další kroky
-* Prozkoumejte [ukázková Scéna](sample-walkthrough.md)
+## <a name="next-steps"></a>Další postup
+* Zkuste [Unity projektu Akustika ukázkový obsah](unity-quickstart.md) nebo [Unreal ukázkový obsah](unreal-quickstart.md)
 

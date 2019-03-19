@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: b12e7aad5fbdf65a8936b943f5053eda76dbd883
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c9f7ec5009c9299e317d9b10f857e326d25fa005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037476"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120104"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: Migrace dat do účtu rozhraní Cassandra API ve službě Azure Cosmos DB
 
@@ -35,31 +35,31 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * **Odhadněte propustnost musí:** Před migrací dat k rozhraní Cassandra API účtu ve službě Azure Cosmos DB, by měl odhadnou propustnost potřebám vaší zátěže. Obecně se doporučuje začít s průměrnou propustností vyžadovanou pro operace CRUD a potom přidat další propustnost požadovanou pro extrakci, transformaci a načítání (ETL) a nárazové operace. K naplánování migrace budete potřebovat následující podrobnosti: 
 
-   * **Odhadovaná velikost dat nebo stávající velikost dat:** Definuje minimální velikosti a propustnosti požadavek na databázi. Při odhadování velikosti dat pro novou aplikaci můžete předpokládat, že data jsou rovnoměrně distribuována mezi řádky, a odhadnout hodnotu vynásobením velikostí dat. 
+  * **Odhadovaná velikost dat nebo stávající velikost dat:** Definuje minimální velikosti a propustnosti požadavek na databázi. Při odhadování velikosti dat pro novou aplikaci můžete předpokládat, že data jsou rovnoměrně distribuována mezi řádky, a odhadnout hodnotu vynásobením velikostí dat. 
 
-   * **Požadované propustnosti:** Přibližná čtení (dotaz/get) a propustnost zápisu (update, delete nebo insert). Tato hodnota je nutná k výpočtu požadovaných jednotek žádostí (RU) spolu s velikostí dat při stabilním stavu.  
+  * **Požadované propustnosti:** Přibližná čtení (dotaz/get) a propustnost zápisu (update, delete nebo insert). Tato hodnota je nutná k výpočtu požadovaných jednotek žádostí (RU) spolu s velikostí dat při stabilním stavu.  
 
-   * **Schéma:** Připojte se do existujícího clusteru Cassandra prostřednictvím cqlsh a export schématu z Cassandra: 
+  * **Schéma:** Připojte se do existujícího clusteru Cassandra prostřednictvím cqlsh a export schématu z Cassandra: 
 
-     ```bash
-     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-     ```
+    ```bash
+    cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+    ```
 
-   Po identifikaci požadavků vašeho existujícího pracovního zatížení byste měli vytvořit účet Azure Cosmos, databáze a kontejnerů podle požadavků získaná propustnost.  
+    Po identifikaci požadavků vašeho existujícího pracovního zatížení byste měli vytvořit účet Azure Cosmos, databáze a kontejnerů podle požadavků získaná propustnost.  
 
-   * **Určení RU poplatky za operace:** Pomocí některé z podporovaných rozhraní Apache Cassandra API sady SDK můžete určit jednotky RU. Tento příklad ukazuje získání poplatků za RU pro verzi .NET.
+  * **Určení RU poplatky za operace:** Pomocí některé z podporovaných rozhraní Apache Cassandra API sady SDK můžete určit jednotky RU. Tento příklad ukazuje získání poplatků za RU pro verzi .NET.
 
-     ```csharp
-     var tableInsertStatement = table.Insert(sampleEntity);
-     var insertResult = await tableInsertStatement.ExecuteAsync();
+    ```csharp
+    var tableInsertStatement = table.Insert(sampleEntity);
+    var insertResult = await tableInsertStatement.ExecuteAsync();
 
-     foreach (string key in insertResult.Info.IncomingPayload)
-       {
-          byte[] valueInBytes = customPayload[key];
-          string value = Encoding.UTF8.GetString(valueInBytes);
-          Console.WriteLine($"CustomPayload:  {key}: {value}");
-       }
-     ```
+    foreach (string key in insertResult.Info.IncomingPayload)
+      {
+         byte[] valueInBytes = customPayload[key];
+         string value = Encoding.UTF8.GetString(valueInBytes);
+         Console.WriteLine($"CustomPayload:  {key}: {value}");
+      }
+    ```
 
 * **Přidělte požadované propustnosti:** Azure Cosmos DB může automaticky škálovat úložiště a propustnost podle rostoucích požadavků. S odhadem vašich potřeb z hlediska propustnosti vám pomůže [kalkulačka jednotek žádostí služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner). 
 

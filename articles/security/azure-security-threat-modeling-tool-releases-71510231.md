@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: eb1b3c04d3714280c1d1ba6c91b3a4c728a3d1af
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 6f7699ece97be1941ef5235b92f2c76b3bed140e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883487"
 ---
-# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Vydání aktualizace nástroj pro modelování hrozeb 7.1.51023.1 – 11/1. února 2018
+# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 11. 2018
 
 V původním jste si poznamenali v [zpráva k vydání verze GA](./azure-security-threat-modeling-tool-releases-71509112.md), jsme vydali aktualizaci (7.1.51023.1) do Microsoft Threat modelování nástroj, který bude nutné upgradovat na uživatele verze Preview (Náhled klienty s verzí < 7.1.50911.2) podporované verze GA. Tato verze neobsahuje žádné nové funkce nebo opravy.
 
@@ -38,7 +38,7 @@ V původním jste si poznamenali v [zpráva k vydání verze GA](./azure-securit
 - Podporované operační systémy
   - Microsoft Windows 10
 - Požadovaná verze rozhraní .NET
-  - .Net 3.5.2
+  - .NET 3.5.2
 - Další požadavky
   - Připojení k Internetu je potřebný k přijetí aktualizací nástroje, jakož i šablon.
 

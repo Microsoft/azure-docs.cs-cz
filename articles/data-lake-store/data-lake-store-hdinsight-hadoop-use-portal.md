@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 25e4c308b55b66038be6825a239f185e5e813af5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085758"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -136,7 +136,7 @@ Se nakonfiguruje se liší v závislosti na tom, jestli účet se používá jak
 
     ![Přidání instančního objektu pro HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "přidat instančního objektu pro HDInsight cluster")
 
-  Ve výchozím nastavení __čtení__, __zápisu__, a __EXECUTE__ jsou vybrané všechny.
+   Ve výchozím nastavení __čtení__, __zápisu__, a __EXECUTE__ jsou vybrané všechny.
 
 3. Klikněte na tlačítko **vyberte** v dolní části stránky.
 4. Klikněte na tlačítko **spustit** můžete přiřadit oprávnění.

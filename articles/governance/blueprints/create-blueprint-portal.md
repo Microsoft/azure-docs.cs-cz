@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 845d200238c276be3f0d64afb3127864d8d9ae19
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004915"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definování a přiřazení podrobného plánu Azure na portálu
 
@@ -249,9 +249,9 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](./how-to/update-existing-assignments.md)
-- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](./troubleshoot/general.md)
+- Další informace o [podrobný plán životního cyklu](./concepts/lifecycle.md).
+- Vysvětlení použití [statické a dynamické parametry](./concepts/parameters.md).
+- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](./concepts/sequencing-order.md).
+- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](./concepts/resource-locking.md).
+- Zjistěte, jak [aktualizovat existující přiřazení](./how-to/update-existing-assignments.md).
+- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](./troubleshoot/general.md).

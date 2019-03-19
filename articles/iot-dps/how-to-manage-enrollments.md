@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055651"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089382"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Správa registrací zařízení pomocí webu Azure Portal
 
@@ -28,15 +28,15 @@ Existují dva způsoby, jak můžete zaregistrovat svoje zařízení pomocí zř
 
     Vytvořit skupinu registrací na portálu pro skupinu zařízení pomocí následujících kroků:
 
-    1. Přihlaste se k webu Azure portal a klikněte na tlačítko **všechny prostředky** z nabídky na levé straně.  
-    1. Klikněte na službu Device Provisioning chcete zaregistrovat zařízení v seznamu prostředků.  
-    1. Ve vaší službě zřizování:  
-       a. Klikněte na tlačítko **Správa registrací**a pak **skupiny registrací** kartu.  
-       b. Klikněte na tlačítko **Přidat** v horní části.  
-       c. Jakmile se zobrazí na panelu "Přidat skupinu registrací", zadejte informace pro položku seznamu registrací.  **Název skupiny** je povinný. Také vyberte "CA nebo zprostředkující" pro **typ certifikátu**a nahrajte kořenový adresář **primární certifikát** pro skupinu zařízení.  
-       d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny pro registraci, zobrazí se název skupiny se zobrazí v rámci **skupiny registrací** kartu.  
+  1. Přihlaste se k webu Azure portal a klikněte na tlačítko **všechny prostředky** z nabídky na levé straně.  
+  1. Klikněte na službu Device Provisioning chcete zaregistrovat zařízení v seznamu prostředků.  
+  1. Ve vaší službě zřizování:  
+     a. Klikněte na tlačítko **Správa registrací**a pak **skupiny registrací** kartu.  
+     b. Klikněte na tlačítko **Přidat** v horní části.  
+     c. Jakmile se zobrazí na panelu "Přidat skupinu registrací", zadejte informace pro položku seznamu registrací.  **Název skupiny** je povinný. Také vyberte "CA nebo zprostředkující" pro **typ certifikátu**a nahrajte kořenový adresář **primární certifikát** pro skupinu zařízení.  
+     d. Klikněte na **Uložit**. Po úspěšném vytvoření skupiny pro registraci, zobrazí se název skupiny se zobrazí v rámci **skupiny registrací** kartu.  
 
-       [![Skupiny pro registraci na portálu](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Skupiny pro registraci na portálu](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * **Jednotlivou registraci** je záznam pro jedno zařízení, který může zaregistrovat. Jednotlivé registrace můžou používat x509 certifikáty nebo tokeny SAS (z fyzického nebo virtuálního čipu TPM) jako mechanismus ověřování. Doporučujeme používat jednotlivé registrace pro zařízení, která vyžadují jedinečnou počáteční konfiguraci, nebo zařízení, které můžou využívat pouze tokeny SAS prostřednictvím skutečného nebo virtuálního čipu TPM jako mechanismus ověřování. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.

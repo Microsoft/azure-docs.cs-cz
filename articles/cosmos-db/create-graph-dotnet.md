@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2979f64934b2ea4517800f5bf0a17e96a1b238dc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587850"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170101"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý start: Vytvoření aplikace .NET Framework nebo .NET Core pomocí účtu Azure Cosmos DB Gremlin API
 
@@ -160,7 +160,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Na webu [Azure Portal](https://portal.azure.com/) přejděte k vašemu účtu databáze grafů. Na kartě **Přehled** se zobrazují dva koncové body: 
  
-   **.Net SDK URI** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Microsoft.Azure.Graphs. 
+   **.NET SDK URI** – tato hodnota se používá při připojení k účtu grafu s použitím knihovna Microsoft.Azure.Graphs. 
 
    **Koncový bod Gremlin** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Gremlin.Net.
 

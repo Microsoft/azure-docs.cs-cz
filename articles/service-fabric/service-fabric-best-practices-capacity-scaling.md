@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: f91ea4c4ec887a9f9fe0c15000e3810109caeb96
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 425154958e4c60902b56f320f714a011b9095830
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997346"
 ---
 # <a name="capacity-planning-and-scaling"></a>Plánování kapacity a škálování
 
@@ -159,6 +159,13 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 
 scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
+
+> [!NOTE]
+> Když horizontálně snížíte kapacitu clusteru seznamu se zobrazí odebral uzel nebo instanci virtuálního počítače. zobrazí ve stavu není v pořádku v Service Fabric Exploreru. Vysvětlení tohoto chování najdete v tématu [chování můžete sledovat v Service Fabric Exploreru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer).
+> 
+> Můžete:
+> * Volání [odebrat ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) s názvem příslušný uzel.
+> * Nasazení [aplikace service fabric automatického škálování pomocné rutiny](https://github.com/Azure/service-fabric-autoscale-helper/) ve vašem clusteru, který zajišťuje škálovanou dolů uzly jsou vymazány ze Service Fabric Explorer.
 
 ## <a name="reliability-levels"></a>Úroveň spolehlivosti
 

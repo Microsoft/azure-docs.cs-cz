@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 83bbb7f6a683265e4f2ed20801d0c7541a54e9f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 63ce2be847017ed7e80fe5e573d5553311f6af2f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244957"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107674"
 ---
 # <a name="use-notebooks-to-hunt-for-anomalies"></a>Použití poznámkových bloků na dost možná nejlepší anomálií
 
@@ -48,15 +48,15 @@ V následujícím příkladu zajišťuje každodenní provoz integrované pozná
   
    ![Vyberte poznámkového bloku](./media/notebooks/select-notebook.png)
 
-3.  Klikněte na tlačítko **Import** naklonujte úložiště GitHub do svého projektu poznámkových bloků Azure.
-  ![Import poznámkového bloku](./media/notebooks/import1.png)
-4.  Každý Poznámkový blok vás provede kroky pro provádění hunt nebo šetření. Modely, knihovny a další závislosti a konfigurace pro připojení k Azure Sentinelu je automaticky naimportován do povolit spuštění jedním kliknutím. Všechny kódu a knihoven, které jsou potřebné ke spuštění poznámkového bloku se načítají předem. Můžete okamžitě začít spuštěným Poznámkový blok pro váš pracovní prostor Log Analytics bez konfigurace.
+3. Klikněte na tlačítko **Import** naklonujte úložiště GitHub do svého projektu poznámkových bloků Azure.
+   ![Import poznámkového bloku](./media/notebooks/import1.png)
+4. Každý Poznámkový blok vás provede kroky pro provádění hunt nebo šetření. Modely, knihovny a další závislosti a konfigurace pro připojení k Azure Sentinelu je automaticky naimportován do povolit spuštění jedním kliknutím. Všechny kódu a knihoven, které jsou potřebné ke spuštění poznámkového bloku se načítají předem. Můžete okamžitě začít spuštěným Poznámkový blok pro váš pracovní prostor Log Analytics bez konfigurace.
 
    ![Import úložiště](./media/notebooks/import2.png)
 
-5.  Prozkoumejte, upravit a spustit všechny ukázkové poznámkové bloky k dispozici. Toto může sloužit jako stavební bloky pro řadu různých scénářů.
+5. Prozkoumejte, upravit a spustit všechny ukázkové poznámkové bloky k dispozici. Toto může sloužit jako stavební bloky pro řadu různých scénářů.
 
-  ![Vyberte poznámkového bloku](./media/notebooks/import3.png)
+   ![Vyberte poznámkového bloku](./media/notebooks/import3.png)
 
 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e0cff6725db52601b4639ad638216370dd3cfda
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ac214e9d29bade37bcb00f804859db730131752b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087325"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -137,7 +137,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 4. Vyberte pro replikovaná data účet úložiště **contosovmsacct1910171607**, který jste vytvořili v předchozím kurzu, a síť **ContosoASRnet**, do které se umístí virtuální počítače Azure po převzetí služeb při selhání.
 5. V části **Virtuální počítače** > **Vybrat** vyberte virtuální počítač, který chcete replikovat. Pak klikněte na **OK**.
 
- Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **Dokončení ochrany** bude počáteční replikace dokončený a virtuální počítač bude připravený na převzetí služeb při selhání.
+   Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **Dokončení ochrany** bude počáteční replikace dokončený a virtuální počítač bude připravený na převzetí služeb při selhání.
 
 ## <a name="next-steps"></a>Další postup
 [Spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md)

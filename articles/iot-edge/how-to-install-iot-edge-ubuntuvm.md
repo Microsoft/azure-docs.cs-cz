@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 456f7607786bd674cb6ede78d1164db033605799
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528826"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116414"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spusťte Azure IoT Edge na virtuálních počítačích se systémem Ubuntu
 
@@ -45,48 +45,48 @@ Při prvním spuštění provede Azure IoT Edge na virtuální počítač s Ubun
 Na webu Azure Portal, vyhledejte "Azure IoT Edge" a vyberte **Ubuntu Server 16.04 LTS a modul runtime Azure IoT Edge** zahájíte pracovní postup vytvoření virtuálního počítače. Odtud proveďte kroky 3 a 4 ve výše uvedených pokynů "Nasazení z Azure Marketplace".
 
 ## <a name="deploy-from-azure-cli"></a>Nasazení z příkazového řádku Azure
-1.  Pokud je to poprvé nasazení virtuálního počítače z příkazového řádku, budete muset povolit programové nasazení u předplatného Azure:
-    1. Otevřít [Azure IoT Edge na Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) nabídky Marketplace
-    1. Vyberte **získat** a **pokračovat** na následující dialogové okno
-    1. Vyberte **chcete nasadit prostřednictvím kódu programu? Začínáme** v dolní části dialogového okna portálu
-    1. Klikněte na **povolit** tlačítko **konfigurovat programové nasazení** stránce a potom klikněte na **uložit**
-1.  Pokud používáte rozhraní příkazového řádku Azure na pracovní ploše, začněte přihlášením:
+1. Pokud je to poprvé nasazení virtuálního počítače z příkazového řádku, budete muset povolit programové nasazení u předplatného Azure:
+   1. Otevřít [Azure IoT Edge na Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) nabídky Marketplace
+   1. Vyberte **získat** a **pokračovat** na následující dialogové okno
+   1. Vyberte **chcete nasadit prostřednictvím kódu programu? Začínáme** v dolní části dialogového okna portálu
+   1. Klikněte na **povolit** tlačítko **konfigurovat programové nasazení** stránce a potom klikněte na **uložit**
+1. Pokud používáte rozhraní příkazového řádku Azure na pracovní ploše, začněte přihlášením:
 
-    ```azurecli-interactive
-    az login
-    ```
+   ```azurecli-interactive
+   az login
+   ```
     
-1.  Pokud máte více předplatných, vyberte předplatné, které chcete použít:
-    1.  Seznam vašich předplatných:
+1. Pokud máte více předplatných, vyberte předplatné, které chcete použít:
+   1. Seznam vašich předplatných:
     
-       ```azurecli-interactive
-       az account list --output table
-       ```
+      ```azurecli-interactive
+      az account list --output table
+      ```
     
-    1.  Kopírování z pole ID předplatného pro předplatné, které chcete použít
-    1.  S ID, které jste zkopírovali, spusťte tento příkaz:
+   1. Kopírování z pole ID předplatného pro předplatné, které chcete použít
+   1. S ID, které jste zkopírovali, spusťte tento příkaz:
     
-       ```azurecli-interactive 
-       az account set -s {SubscriptionId}
-       ```
+      ```azurecli-interactive 
+      az account set -s {SubscriptionId}
+      ```
     
-1.  Vytvořte novou skupinu prostředků (nebo zadejte existující v dalších krocích):
+1. Vytvořte novou skupinu prostředků (nebo zadejte existující v dalších krocích):
 
-    ```azurecli-interactive
-    az group create --name IoTEdgeResources --location westus2
-    ```
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus2
+   ```
     
-1.  Vytvoření nového virtuálního počítače:
+1. Vytvoření nového virtuálního počítače:
 
-    ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
-    ```
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   ```
 
-1.  Nastavit připojovací řetězec zařízení (provedením [pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](how-to-register-device-cli.md) příručce s postupy, pokud nejste obeznámeni s tímto procesem):
+1. Nastavit připojovací řetězec zařízení (provedením [pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge](how-to-register-device-cli.md) příručce s postupy, pokud nejste obeznámeni s tímto procesem):
 
-    ```azurecli-interactive
-    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
-    ```
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   ```
 
 Pokud chcete se SSH do tohoto virtuálního počítače po dokončení instalace, použití publicIpAddress pomocí příkazu: `ssh azureuser@{publicIpAddress}`
 

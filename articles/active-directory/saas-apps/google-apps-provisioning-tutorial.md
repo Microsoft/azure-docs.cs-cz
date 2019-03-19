@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 99c6999e437abbef1920f6de771173e4e6e007f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211083"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116907"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
@@ -53,7 +53,7 @@ Než začnete konfigurovat a povolit službu zřizování, musíte se rozhodnout
 
 > [!IMPORTANT]
 > Doporučujeme jeden uživatele Azure AD přiřadit ke G Suite k otestování konfigurace zřizování. Další uživatelé a skupiny můžete později přiřadit.
-
+> 
 > Když přiřadíte uživatele k G Suite, vyberte **uživatele** nebo **skupiny** v dialogovém okně přiřazení role. **Výchozího přístupu k** role nebude fungovat pro zřizování.
 
 ## <a name="enable-automated-user-provisioning"></a>Povolit zřizování automatizované uživatelů
@@ -80,8 +80,8 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
    
     ![Vyberte Reference k rozhraní API.][16]
 
-    > [!IMPORTANT]
-    > Pro každého uživatele, který máte v úmyslu zřídíte v G Suite, svoje uživatelské jméno ve službě Azure Active Directory *musí* být spojený s vlastní doménou. Například uživatel názvy tento vzhled jako bob@contoso.onmicrosoft.com nejsou přijal G Suite. Na druhé straně bob@contoso.com je přijat. Existujícího uživatele domény lze změnit úpravou jejich vlastností ve službě Azure AD. Přidali jsme pokyny, jak nastavit vlastní doménu pro Azure Active Directory a G Suite v následujících krocích.
+   > [!IMPORTANT]
+   > Pro každého uživatele, který máte v úmyslu zřídíte v G Suite, svoje uživatelské jméno ve službě Azure Active Directory *musí* být spojený s vlastní doménou. Například uživatel názvy tento vzhled jako bob@contoso.onmicrosoft.com nejsou přijal G Suite. Na druhé straně bob@contoso.com je přijat. Existujícího uživatele domény lze změnit úpravou jejich vlastností ve službě Azure AD. Přidali jsme pokyny, jak nastavit vlastní doménu pro Azure Active Directory a G Suite v následujících krocích.
       
 1. Pokud ještě jste nepřidali vlastního názvu domény do Azure Active Directory, pak proveďte následující kroky:
   
@@ -105,8 +105,8 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
     e. Zopakujte předchozí kroky pro všechny domény, které chcete přidat do vašeho adresáře.
 
-    > [!NOTE]
-    Pro zřizování uživatelů, musí odpovídat vlastní doménu, název domény zdroje služby Azure AD. Pokud shodné nejsou, bude pravděpodobně možné vyřešit problém s implementací přizpůsobení mapování atributů.
+   > [!NOTE]
+   >  Pro zřizování uživatelů, musí odpovídat vlastní doménu, název domény zdroje služby Azure AD. Pokud shodné nejsou, bude pravděpodobně možné vyřešit problém s implementací přizpůsobení mapování atributů.
 
 
 1. Teď, když po ověření všech domén s Azure AD, musíte ověřit, je znovu s Google Apps. Pro každou doménu, která již není zaregistrovaný u Google proveďte následující kroky:
@@ -149,13 +149,13 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 1. Nastavte **režim zřizování** k **automatické**. 
 
-     ![Zřizování](./media/google-apps-provisioning-tutorial/provisioning.png)
+      ![Zřizování](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovacích údajů správce** vyberte **Authorize**. Otevře se dialogové okno ověřování Google v novém okně prohlížeče.
 
 1. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do svého tenanta služby G Suite. Vyberte **Přijmout**.
     
-     ![Zkontrolujte oprávnění.][28]
+      ![Zkontrolujte oprávnění.][28]
 
 1. Na webu Azure Portal, vyberte **Test připojení** zajistit, že Azure AD může připojit k vaší aplikaci. Pokud se nepovede, ujistěte se, že váš účet G Suite má oprávnění správce týmu. Poté **Authorize** krok znovu.
 

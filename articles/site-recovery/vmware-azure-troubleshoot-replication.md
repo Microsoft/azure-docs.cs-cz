@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/7/2019
+ms.date: 03/14/2019
 ms.author: mayg
-ms.openlocfilehash: 3417a6cb4c9af8c315cc84718330b4ab5255ee6c
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1aaf13f01c7e7197001f3099fabd4b8be8545f0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094697"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -63,13 +63,18 @@ Ujistěte se, že na počítači PS běží následující služby. Spusťte neb
 
 Ujistěte se, zda programu všechny služby nastaven na **automaticky nebo automaticky (zpožděné spuštění)**. Služba Microsoft Azure Recovery Services Agent (obengine) nemusí mít jeho programu nastavit jak je uvedeno výše.
 
-## <a name="initial-replication-issues"></a>Potíže s úvodní replikací
+## <a name="replication-issues"></a>Potíže s replikací
 
-Počáteční replikace selhání často jsou způsobeny problémy s připojením mezi zdrojovým serverem a že procesový server nebo mezi procesovým serverem a Azure. Ve většině případů při řešení těchto problémů podle postupu uvedeného v následujících částech.
+Počáteční a průběžné replikace selhání často jsou způsobeny problémy s připojením mezi zdrojovým serverem a že procesový server nebo mezi procesovým serverem a Azure. Ve většině případů při řešení těchto problémů podle postupu uvedeného v následujících částech.
 
-### <a name="check-the-source-machine"></a>Zkontrolujte zdrojový počítač
+>[!Note]
+>Ujistěte se, že:
+>1. Systém se synchronizuje data času pro chráněnou položku.
+>2. Žádný antivirový software neblokuje Azure Site Recovery. Přečtěte si [Další](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) na vyloučení složek, které jsou potřebné pro Azure Site Recovery.
 
-Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
+### <a name="check-the-source-machine-for-connectivity-issues"></a>Zkontrolujte zdrojový počítač pro problémy s připojením
+
+Seznam ukazuje takto můžete zkontrolovat zdrojový počítač.
 
 *  Na příkazovém řádku na zdrojovém serveru použijte příkaz ping na procesovém serveru přes HTTPS port spuštěním následujícího příkazu Telnet. Protokol HTTPS Port 9443 je jako výchozí procesový Server pro odesílání a příjem provozu replikace. Můžete upravit tento port v době registrace. Následující příkaz ověří pro problémy se síťovým připojením a problémy tento blok port brány firewall.
 
@@ -94,7 +99,7 @@ Seznam ukazuje takto můžete zkontrolovat zdrojový počítač:
 
        C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
-### <a name="check-the-process-server"></a>Zkontrolujte, že procesový server
+### <a name="check-the-process-server-for-connectivity-issues"></a>Zkontrolujte pro problémy s připojením k procesového serveru
 
 Seznam ukazuje takto můžete zkontrolovat procesový server:
 
@@ -102,66 +107,66 @@ Seznam ukazuje takto můžete zkontrolovat procesový server:
 > Procesový Server musí mít statickou adresu IPv4 a nemůže na něm konfigurována překladu adres IP.
 
 * **Zkontrolujte připojení mezi zdrojové počítače a procesového serveru**
-1. V případě, je možné k Telnetu ze zdrojového počítače a zatím není PS ze zdroje dostupný, zkontrolujte připojení k začátku do konce se cxprocessserver ze zdrojového virtuálního počítače spuštěním nástroje cxpsclient na zdrojovém virtuálním počítači:
+* V případě, je možné k Telnetu ze zdrojového počítače a zatím není PS ze zdroje dostupný, zkontrolujte připojení k začátku do konce se cxprocessserver ze zdrojového virtuálního počítače spuštěním nástroje cxpsclient na zdrojovém virtuálním počítači:
 
-       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+      <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
 
-    V protokolech generovaných na PS v následujících adresářích podrobnosti o příslušné chyby:
+   V protokolech generovaných na PS v následujících adresářích podrobnosti o příslušné chyby:
 
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
-       and
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
-2. V případě, že neexistuje žádný prezenční signál z PS, zkontrolujte následující protokoly na PS:
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+      and
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+* Zkontrolujte následující protokoly na PS v případě, že neexistuje žádný prezenční signál z PS. To je identifikován **kód chyby: 806** na portálu.
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+      C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+      and
+      C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-*  **Zkontrolujte, zda procesový server je aktivně doručením (push) dat do Azure**.
+* **Zkontrolujte, zda procesový server je aktivně doručením (push) dat do Azure**.
 
-   1. Na procesovém serveru otevřete Správce úloh (stisknutím klávesy Ctrl + Shift + Esc).
-   2. Vyberte **výkonu** kartu a potom vyberte **Monitor otevřít zdroj** odkaz. 
-   3. Na **sledování prostředků** stránky, vyberte **sítě** kartu. V části **procesů pomocí síťové aktivity**, zkontrolujte, zda **cbengine.exe** aktivně odesílá velké objemy dat.
+  1. Na procesovém serveru otevřete Správce úloh (stisknutím klávesy Ctrl + Shift + Esc).
+  2. Vyberte **výkonu** kartu a potom vyberte **Monitor otevřít zdroj** odkaz. 
+  3. Na **sledování prostředků** stránky, vyberte **sítě** kartu. V části **procesů pomocí síťové aktivity**, zkontrolujte, zda **cbengine.exe** aktivně odesílá velké objemy dat.
 
-        ![Snímek obrazovky zobrazující svazky v rámci procesů pomocí síťové aktivity](./media/vmware-azure-troubleshoot-replication/cbengine.png)
+       ![Snímek obrazovky zobrazující svazky v rámci procesů pomocí síťové aktivity](./media/vmware-azure-troubleshoot-replication/cbengine.png)
 
-   Pokud cbengine.exe neodesílá velké objemy dat, proveďte kroky v následujících částech.
+  Pokud cbengine.exe neodesílá velké objemy dat, proveďte kroky v následujících částech.
 
-*  **Zkontrolujte, zda procesový server můžete připojit k úložišti objektů Blob v Azure**.
+* **Zkontrolujte, zda procesový server můžete připojit k úložišti objektů Blob v Azure**.
 
-   Vyberte **cbengine.exe**. V části **připojení TCP**, zkontrolujte, zda je připojení z procesového serveru na adresu URL blogu o Azure storage.
+  Vyberte **cbengine.exe**. V části **připojení TCP**, zkontrolujte, zda je připojení z procesového serveru na adresu URL blogu o Azure storage.
 
-   ![Snímek obrazovky zobrazující spojení mezi cbengine.exe a adresu URL úložiště objektů Blob v Azure](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
+  ![Snímek obrazovky zobrazující spojení mezi cbengine.exe a adresu URL úložiště objektů Blob v Azure](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
-   Pokud není k dispozici připojení z procesového serveru na adresu URL blogu o Azure storage, v Ovládacích panelech vyberte **služby**. Zkontrolujte, zda jsou spuštěné následující služby:
+  Pokud není k dispozici připojení z procesového serveru na adresu URL blogu o Azure storage, v Ovládacích panelech vyberte **služby**. Zkontrolujte, zda jsou spuštěné následující služby:
 
-   *  cxprocessserver
-   *  Nástroje InMage Scout VX Agent – Sentinel/Outpost
-   *  Agent Microsoft Azure Recovery Services
-   *  Služba Microsoft Azure Site Recovery
-   *  tmansvc
+  *  cxprocessserver
+  *  Nástroje InMage Scout VX Agent – Sentinel/Outpost
+  *  Agent Microsoft Azure Recovery Services
+  *  Služba Microsoft Azure Site Recovery
+  *  tmansvc
 
-   Spusťte nebo restartujte jakoukoliv službu, která není spuštěná. Zkontrolujte, zda problém přetrvává.
+  Spusťte nebo restartujte jakoukoliv službu, která není spuštěná. Zkontrolujte, zda problém přetrvává.
 
-*  **Zkontrolujte, zda procesový server může připojit k Azure veřejnou IP adresu pomocí portu 443**.
+* **Zkontrolujte, zda procesový server může připojit k Azure veřejnou IP adresu pomocí portu 443**.
 
-   V %programfiles%\Microsoft Azure Recovery Services Agent\Temp otevřete nejnovější CBEngineCurr.errlog soubor. V souboru vyhledejte **443** nebo řetězce **pokus o připojení se nezdařilo**.
+  V %programfiles%\Microsoft Azure Recovery Services Agent\Temp otevřete nejnovější CBEngineCurr.errlog soubor. V souboru vyhledejte **443** nebo řetězce **pokus o připojení se nezdařilo**.
 
-   ![Snímek obrazovky zobrazující chybu protokoly ve složce Temp](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+  ![Snímek obrazovky zobrazující chybu protokoly ve složce Temp](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 
-   Pokud se zobrazí problémy, na příkazovém řádku na procesovém serveru použijte službu Telnet příkaz ping Azure veřejné IP adresy (IP adresa je maskované na předchozím obrázku). Azure veřejné IP adresy najdete v souboru CBEngineCurr.currLog pomocí portu 443:
+  Pokud se zobrazí problémy, na příkazovém řádku na procesovém serveru použijte službu Telnet příkaz ping Azure veřejné IP adresy (IP adresa je maskované na předchozím obrázku). Azure veřejné IP adresy najdete v souboru CBEngineCurr.currLog pomocí portu 443:
 
-   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
+  `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-   Pokud se nemůžete připojit, zkontrolujte, zda problém s přístupem k je z důvodu nastavení brány firewall nebo proxy serveru, jak je popsáno v dalším kroku.
+  Pokud se nemůžete připojit, zkontrolujte, zda problém s přístupem k je z důvodu nastavení brány firewall nebo proxy serveru, jak je popsáno v dalším kroku.
 
-*  **Zkontrolujte, zda brány firewall protokolu IP adres založené na procesovém serveru blokuje přístup**.
+* **Zkontrolujte, zda brány firewall protokolu IP adres založené na procesovém serveru blokuje přístup**.
 
-   Pokud použijete pravidla brány firewall založená na adresu IP serveru, stáhněte si úplný seznam [rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Přidejte rozsahy IP adres pro konfiguraci brány firewall tak, aby Ujistěte se, že brána firewall umožňuje komunikaci do Azure (a výchozí port HTTPS 443). Povolte rozsahy IP adres pro oblast Azure svého předplatného a oblasti Azure USA – Západ, který se (používané pro řízení přístupu a identit správě).
+  Pokud použijete pravidla brány firewall založená na adresu IP serveru, stáhněte si úplný seznam [rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Přidejte rozsahy IP adres pro konfiguraci brány firewall tak, aby Ujistěte se, že brána firewall umožňuje komunikaci do Azure (a výchozí port HTTPS 443). Povolte rozsahy IP adres pro oblast Azure svého předplatného a oblasti Azure USA – Západ, který se (používané pro řízení přístupu a identit správě).
 
-*  **Zkontrolujte, zda bránu firewall založenou na adresu URL na procesovém serveru blokuje přístup**.
+* **Zkontrolujte, zda bránu firewall založenou na adresu URL na procesovém serveru blokuje přístup**.
 
-   Pokud používáte pravidlo brány firewall na základě adresy URL na serveru, přidejte adresy URL uvedené v následující tabulce ke konfiguraci brány firewall:
+  Pokud používáte pravidlo brány firewall na základě adresy URL na serveru, přidejte adresy URL uvedené v následující tabulce ke konfiguraci brány firewall:
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -178,6 +183,7 @@ Seznam ukazuje takto můžete zkontrolovat procesový server:
 *  **Zkontrolujte, zda omezení šířky pásma je omezená na procesovém serveru**.
 
    Zvětšit šířku pásma a potom zkontrolujte, jestli problém přetrvává.
+
 
 ## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>Zdrojový počítač není uvedená na webu Azure Portal
 
@@ -196,6 +202,96 @@ Při pokusu o vyberte zdrojový počítač k replikaci pomocí Site Recovery po�
 ## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Chráněné virtuální počítače jsou zobrazena šedě out na portálu
 
 Virtuální počítače, které se replikují v rámci obnovení lokality nejsou k dispozici na webu Azure Portal, pokud existují duplicitní položky v systému. Zjistěte, jak odstranit zastaralé položky a tento problém vyřešit, najdete v tématu [Azure Site Recovery VMware do Azure: Návod k vyčištění duplicitní nebo zastaralý položky](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+
+## <a name="common-errors-and-recommended-steps-for-resolution"></a>Běžné chyby a doporučené kroky pro řešení
+
+### <a name="initial-replication-issues-error-78169"></a>Počáteční replikace problémů [Chyba 78169]
+
+Prostřednictvím výše zajistit, že existují žádné připojení, šířku pásma nebo čas synchronizovat spojeného s potížemi, ujistěte se, že:
+
+- Žádný antivirový software neblokuje Azure Site Recovery. Přečtěte si [Další](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) na vyloučení složek, které jsou potřebné pro Azure Site Recovery.
+
+### <a name="application-consistency-recovery-point-missing-error-78144"></a>[Chyba 78144] chybí bod obnovení konzistence aplikací
+
+ K tomu dochází z důvodu problémů s Stínová kopie svazku Service (VSS). Řešení je následující: 
+ 
+- Ověřte, že nainstalovaná verze agenta Azure Site Recovery alespoň 9.22.2. 
+- Ověřte, zda je jako služba ve Windows Services nainstalován poskytovatel služby VSS a taky ověřit konzoly MMC služby komponenty ke kontrole, zda je uveden Azure Site Recovery VSS Provider.
+- Pokud není nainstalovaný poskytovatel služby VSS, podívejte se [článek pro řešení potíží při selhání instalace](vmware-azure-troubleshoot-push-install.md#vss-installation-failures).
+
+- Pokud se stínové kopie svazku je zakázaná,
+    - Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
+    - Restartuje následující služby:
+        - Služba VSS
+        - Azure Site Recovery VSS Provider
+        - Služba VDS
+
+### <a name="high-churn-on-source-machine-error-78188"></a>Vysokou četností změn dat na zdrojovém počítači [Chyba 78188]
+
+Možné příčiny:
+- Četnost změn dat (zapisované bajty/s) na uvedené disky virtuálního počítače více než [podporované limity Azure Site Recovery](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) pro typ účtu cílového úložiště replikace.
+- Náhlá Špička je četnost změn dat kvůli které vysoké množství dat čeká na vyřízení pro nahrávání.
+
+Řešení tohoto problému:
+- Ujistěte se, že je zřízený cílový typ účtu úložiště (Standard nebo Premium) podle požadavku frekvence změn ve zdroji.
+- Pokud zjištěné změny jsou dočasné, počkejte pár hodin dat čeká na nahrání dohnat a k vytvoření bodů obnovení.
+- Pokud problém nezmizí, použijte služby ASR [plánovače nasazení služby](site-recovery-deployment-planner.md#overview) abyste mohli naplánovat replikace.
+
+### <a name="no-heartbeat-from-source-machine-error-78174"></a>Žádný prezenční signál ze zdrojového počítače [Chyba 78174]
+
+To se stane, když se agent Azure Site Recovery Mobility na zdrojový počítač nekomunikuje s konfigurační Server (CS).
+
+K vyřešení problému, použijte následující kroky k ověření připojení k síti ze zdrojového virtuálního počítače na konfigurační server:
+
+1. Ověřte, že na zdrojovém počítači běží.
+2. Přihlaste se ke zdrojovému počítači pomocí účtu, který má oprávnění správce.
+3. Zkontrolujte, že tyto služby běží a ne restartujte služby, pokud:
+   - Svagents (InMage Scout VX Agent)
+   - InMage Scout Application Service
+4. Na zdrojovém počítači zkontrolujte protokoly v umístění pro podrobnosti o chybě:
+
+       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    
+### <a name="no-heartbeat-from-process-server-error-806"></a>Žádný prezenční signál z procesového serveru [Chyba 806]
+V případě, že neexistuje žádný prezenční signál z procesu serveru (PS), zkontrolujte, že:
+1. PS Virtuálního počítače je v provozu
+2. Zkontrolujte následující přihlásí PS pro podrobnosti o chybě:
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+
+### <a name="no-heartbeat-from-master-target-error-78022"></a>Žádný prezenční signál z hlavního cíle [Chyba 78022]
+
+To se stane, když agenta Azure Site Recovery Mobility na hlavním cíli nekomunikuje s konfiguračním serverem.
+
+Řešení tohoto problému, pomocí následujících kroků ověřte stav služby:
+
+1. Ověřte, zda je spuštěna hlavního cílového virtuálního počítače.
+2. Přihlaste se do hlavního cílového virtuálního počítače pomocí účtu, který má oprávnění správce.
+    - Ověřte, zda je spuštěna služba svagents. Pokud je spuštěná, restartujte službu
+    - Zkontrolujte protokoly v umístění pro podrobnosti o chybě:
+        
+          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+
+### <a name="process-server-is-not-reachable-from-the-source-machine-error-78186"></a>Procesový Server není dostupný ze zdrojového počítače [Chyba 78186]
+
+Tato chyba vede k aplikaci a havárií konzistentní body naprostou vygeneruje, když není určeno. Pokud chcete problém vyřešit, postupujte níže řešení potíží s odkazy:
+1. Ujistěte se, že [jsou spuštěny služby PS](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
+2. [Zkontrolovat problémy s připojením zdrojového počítače](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
+3. [Zkontrolovat problémy s připojením serveru procesu](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues) a postupujte podle pokynů, které jste pro:
+    - Kontroluje se dostupnost připojení se zdrojem
+    - Problémy s bránou firewall a proxy
+
+### <a name="data-upload-blocked-from-source-machine-to-process-server-error-78028"></a>Nahrání dat je zablokované ze zdrojového počítače k procesového serveru [Chyba 78028]
+
+Tato chyba vede k aplikaci a havárií konzistentní body naprostou vygeneruje, když není určeno. Pokud chcete problém vyřešit, postupujte níže řešení potíží s odkazy:
+
+1. Ujistěte se, že [jsou spuštěny služby PS](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
+2. [Zkontrolovat problémy s připojením zdrojového počítače](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
+3. [Zkontrolovat problémy s připojením serveru procesu](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues) a postupujte podle pokynů, které jste pro:
+    - Kontroluje se dostupnost připojení se zdrojem
+    - Problémy s bránou firewall a proxy
 
 ## <a name="next-steps"></a>Další postup
 

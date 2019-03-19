@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473342"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847361"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Nástroje Machine learning a datové vědy
 Azure virtuální počítače pro datové vědy obsahuje bohatou sadu nástrojů a knihovny pro machine learning (ML) k dispozici v oblíbených jazyků, jako je Python, R a Julie. 
@@ -71,7 +71,7 @@ Tady jsou některé z knihoven na virtuální počítače pro datové vědy a ML
 | Podporované edice     | Windows, Linux     |
 | Typické použití      | Obecné nástroje ML     |
 | Jak používat nebo ji spustit      | Na Windows vyhledejte v nabídce Start Weka. V Linuxu, přihlaste se pomocí X2Go a potom přejděte ke **aplikací** > **vývoj** > **Weka**. |
-| Odkaz na ukázky      | [Ukázky weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Odkaz na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Související nástroje      |XGBoost LightGBM Rattle,   |
 
 ## <a name="rattle"></a>Rattle

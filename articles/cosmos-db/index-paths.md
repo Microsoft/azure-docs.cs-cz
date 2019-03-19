@@ -1,17 +1,17 @@
 ---
 title: Práce s cestami indexu ve službě Azure Cosmos DB
 description: Přehled cesty indexu ve službě Azure Cosmos DB
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: c22d8d69284c546a4fccc86302672d81ce65b9e8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: d0fce763822ded374eab2f70c3f319aba0c89267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992822"
 ---
 # <a name="index-paths-in-azure-cosmos-db"></a>Index cesty ve službě Azure Cosmos DB
 
@@ -25,12 +25,12 @@ Tady jsou běžné vzory pro zadání cesty k indexu:
 
 | **Cesta** | **Popis/případ** |
 | ---------- | ------- |
-| /   | Výchozí cesta pro kolekci. Rekurzivní a platí pro celý dokument stromu.|
-| / prop /?  | Cesta index zapotřebí pro zpracování dotazů jako následující (s typy hodnot Hash nebo rozsahu, v uvedeném pořadí):<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop > 5<br><br>Vyberte z kolekce c ORDER BY c.prop  |
-| / prop / *  | Cesta index u všech cest v rámci zadaného popisku. Funguje s následující dotazy<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop.subprop > 5<br><br>Vyberte z kolekce c WHERE c.prop.subprop.nextprop = "hodnota"<br><br>Vyberte z kolekce c ORDER BY c.prop |
-| / Vlastnosti / [] /?  | Požadované index cestu iterace a připojte se k dotazy na pole skaláry, jako je ["a", "b", "c"]:<br><br>Vyberte značku ze značky v collection.props značky WHERE = "hodnota"<br><br>Vyberte značku z kolekce c spojení značky v c.props kde označit > 5  |
-| [] /subprop/ /props/? | Index cesta zapotřebí pro zpracování iterace a spojení dotazy na pole objektů, jako je [{subprop: "a"}, {subprop: "b"}]:<br><br>Vyberte značku ze značky v collection.props WHERE tag.subprop = "hodnota"<br><br>Vyberte značku z kolekce c spojení značky v c.props WHERE tag.subprop = "hodnota" |
-| / prop/subprop /? | Cesta indexu, které jsou zapotřebí pro zpracování dotazů (s typy hodnot Hash nebo rozsahu, v uvedeném pořadí):<br><br>Vyberte z kolekce c WHERE c.prop.subprop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop.subprop > 5  |
+| /          | Výchozí cesta pro kolekci. Rekurzivní a platí pro celý dokument stromu.|
+| /prop/?    | Cesta index zapotřebí pro zpracování dotazů jako následující (s typy rozsahu, v uvedeném pořadí): <br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop > 5 <br><br>Vyberte z kolekce c ORDER BY c.prop  |
+| /prop/*    | Cesta index u všech cest v rámci zadaného popisku. Funguje s následující dotazy <br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop.subprop > 5<br><br>Vyberte z kolekce c WHERE c.prop.subprop.nextprop = "hodnota"<br><br>Vyberte z kolekce c ORDER BY c.prop |
+| /props/[]/?| Požadované index cestu iterace a připojte se k dotazy na pole skaláry, jako je ["a", "b", "c"]:<br><br>Vyberte značku ze značky v collection.props značky WHERE = "hodnota"<br><br>Vyberte značku z kolekce c spojení značky v c.props kde označit > 5 |
+| /props/[]/subprop/? | Index cesta zapotřebí pro zpracování iterace a spojení dotazy na pole objektů, jako je [{subprop: "a"}, {subprop: "b"}]:<br><br>Vyberte značku ze značky v collection.props WHERE tag.subprop = "hodnota"<br><br>Vyberte značku z kolekce c spojení značky v c.props WHERE tag.subprop = "hodnota" |
+| /prop/subprop/? | Cesta indexu, které jsou zapotřebí pro zpracování dotazů (s typy rozsahu, v uvedeném pořadí):<br><br>Vyberte z kolekce c WHERE c.prop.subprop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop.subprop > 5  |
 
 Když nastavíte vlastní index cesty, je nutné zadat výchozí pravidlo indexování pro celou položku udávají zvláštní cesta `/*`.
 

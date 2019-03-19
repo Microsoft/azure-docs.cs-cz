@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099929"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Nasazení služby Azure Cognitive Services k Azure Stack
 
@@ -67,12 +67,12 @@ Než začnete, budete muset:
 
 Vytvořte prostředek služby Cognitive Services v Azure ve verzi preview pro rozpoznávání tváře, LUIS nebo rozpoznat Text kontejnery, v uvedeném pořadí. Je potřeba použít předplatné key a koncového bodu adresy URL z prostředku nástroje pro vytvoření instance kontejnerů služby cognitive Services.
 
-1.  Vytvoření prostředku Azure na webu Azure Portal. Pokud chcete zobrazit náhled kontejnery pro rozpoznávání tváře, musíte nejprve vytvořit odpovídající prostředek pro rozpoznávání tváře na webu Azure Portal. Další informace najdete v tématu [rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1. Vytvoření prostředku Azure na webu Azure Portal. Pokud chcete zobrazit náhled kontejnery pro rozpoznávání tváře, musíte nejprve vytvořit odpovídající prostředek pro rozpoznávání tváře na webu Azure Portal. Další informace najdete v tématu [rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-    >  [!Note]  
-    >  Prostředek pro rozpoznávání tváře nebo pro počítačové zpracování obrazu musí používat F0 cenovou úroveň.
+   > [!Note]
+   >  Prostředek pro rozpoznávání tváře nebo pro počítačové zpracování obrazu musí používat F0 cenovou úroveň.
 
-2.  Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure. Po vytvoření prostředku Azure musíte použít předplatné key a koncového bodu adresy URL z tohoto prostředku pro vytvoření instance kontejneru odpovídající pro rozpoznávání tváře, LUIS nebo rozpoznat Text ve verzi Preview.
+2. Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure. Po vytvoření prostředku Azure musíte použít předplatné key a koncového bodu adresy URL z tohoto prostředku pro vytvoření instance kontejneru odpovídající pro rozpoznávání tváře, LUIS nebo rozpoznat Text ve verzi Preview.
 
 ## <a name="create-a-kubernetes-secret"></a>Vytvoření tajného kódu Kubernetes 
 

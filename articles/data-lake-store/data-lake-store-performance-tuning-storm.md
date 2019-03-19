@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129229"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084806"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Průvodce laděním výkonu pro Storm v HDInsight a Azure Data Lake Storage Gen1
 
@@ -82,7 +82,7 @@ Můžete upravit následující nastavení a vylaďte spout.
 
 - **Spout maximální počet čekajících: topology.max.spout.pending**. Toto nastavení určuje počet řazených kolekcí členů, které mohou být v letu (ještě nebyla potvrzena na všechny uzly v topologii) na vlákno spout kdykoli.
 
- Dobré výpočtu provedete je odhadovat velikost všech vašich řazené kolekce členů. Poté zjistěte, kolik paměti jeden spout vlákno má. Celková paměť přidělená pro vlákno, rozdělené podle této hodnoty by vám měl dát horní mez pro maximální spout čekající na parametr.
+  Dobré výpočtu provedete je odhadovat velikost všech vašich řazené kolekce členů. Poté zjistěte, kolik paměti jeden spout vlákno má. Celková paměť přidělená pro vlákno, rozdělené podle této hodnoty by vám měl dát horní mez pro maximální spout čekající na parametr.
 
 ## <a name="tune-the-bolt"></a>Vyladění bolt
 Při psaní do Data Lake Storage Gen1, nastavte zásady synchronizace velikost (vyrovnávací paměti na straně klienta) na 4 MB. Vyprazdňování nebo hsync() pak proběhne pouze v případě, že je velikost vyrovnávací paměti v této hodnotě. Data Lake Storage Gen1 ovladače na pracovním procesu virtuálního počítače automaticky provede toto ukládání do vyrovnávací paměti, pokud explicitně provádět hsync().
@@ -98,7 +98,7 @@ V Storm spout udržuje řazené kolekce členů dokud ho explicitně potvrzena f
 Pro zajištění nejlepšího výkonu v Data Lake Storage Gen1 mají bolt vyrovnávací paměti 4 MB dat řazené kolekce členů. Potom zapište do Data Lake Storage Gen1 zpět koncový jako jeden zápis 4 MB. Po data byla úspěšně zapsána do úložiště (podle volání hflush()) bolt můžete potvrdit data zpět spout. To je, co dělá zadaný v tomto příkladu bolt. Také je přijatelné pro uchování větší počet řazených kolekcí členů, než je uskutečněn hovor hflush() a řazených kolekcí členů potvrzených. Tím se ale zvyšuje počet řazených kolekcí členů v letu, že spout musí obsahovat, a proto zvýšení množství paměti požadované na JVM.
 
 > [!NOTE]
-Aplikace může požadovat potvrzení řazené kolekce členů častěji (na velikosti dat menší než 4 MB) z jiných důvodů než výkonu. Nicméně, která může ovlivnit propustnost vstupně-výstupní operace úložiště back-endu. Pečlivě zvažují tento kompromis proti bolt vstupně-výstupní výkon.
+> Aplikace může požadovat potvrzení řazené kolekce členů častěji (na velikosti dat menší než 4 MB) z jiných důvodů než výkonu. Nicméně, která může ovlivnit propustnost vstupně-výstupní operace úložiště back-endu. Pečlivě zvažují tento kompromis proti bolt vstupně-výstupní výkon.
 
 Pokud není vysoký počet příchozích řazených kolekcí členů, tak vyrovnávací paměti 4 MB trvá dlouhou dobu na to, zvažte snížení rizik souvisejících s tím, že:
 * Snížení počtu bolty, takže jsou menší počet vyrovnávacích pamětí tak, aby vyplnil.

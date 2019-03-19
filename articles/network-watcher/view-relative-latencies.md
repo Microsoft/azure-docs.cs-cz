@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 4df134c6644a9480460635cbe3565f030d4bf779
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440943"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117849"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence do oblastí Azure z konkrétních míst
 
@@ -119,8 +119,8 @@ Get-AzureRmNetworkWatcherReachabilityReport `
   -EndTime "2017-12-15"
 ```
 
->[!NOTE]
-Na rozdíl od při zadávání na jednom místě, pokud nechcete zadat umístění nebo zadejte několika místy, jako je například "Západní USA 2", "Západní USA", je nutné zadat poskytovatele služeb Internetu při spuštění příkazu. 
+> [!NOTE]
+> Na rozdíl od při zadávání na jednom místě, pokud nechcete zadat umístění nebo zadejte několika místy, jako je například "Západní USA 2", "Západní USA", je nutné zadat poskytovatele služeb Internetu při spuštění příkazu. 
 
 ## <a name="view-available"></a>Zobrazit dostupné země, státy, města a poskytovatelé
 

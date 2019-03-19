@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 165617270bef58f7a92fab0adc75c916129ef317
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902786"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -38,7 +38,7 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 ## <a name="data-protection"></a>Ochrana dat
 **Oddělení dat**: Data se ukládají logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
-**Přístup k datům**: Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů se stavem systému, události vytváření procesů, snímků disku virtuálního počítače a artefakty, zahrnující mohou neúmyslně zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Podmínky online služeb společnosti Microsoft a Prohlášení o zásadách ochrany osobních údajů](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na informace o zákaznících zůstávají ve vašem vlastnictví.
+**Přístup k datům**: Aby bylo možné poskytovat doporučení týkající se zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím shromažďovaným nebo analyzovaným službami Azure, včetně souborů se stavem systému, události vytváření procesů, snímků disku virtuálního počítače a artefakty, zahrnující mohou neúmyslně zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Podmínky online služeb společnosti Microsoft a Prohlášení o zásadách ochrany osobních údajů](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), ve kterých je uvedeno, že společnost Microsoft nebude informace o zákaznících používat ani z nich odvozovat další informace pro reklamní nebo podobné obchodní účely. Informace o zákaznících podle potřeby používáme pouze k poskytování služeb Azure a k účelům slučitelným s poskytováním těchto služeb. Všechna práva na informace o zákaznících zůstávají ve vašem vlastnictví.
 
 **Za využívání dat**: Společnost Microsoft používá vzory a analýzy hrozeb napříč několika klienty k vylepšení našich schopnosti prevence a detekce; uděláme v souladu se závazky ochrany osobních údajů je popsáno v našem [prohlášení o zásadách](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
 

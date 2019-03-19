@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245401"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080892"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet fakturace celkové velikosti kontejneru objektů blob
 
@@ -101,17 +101,17 @@ Tady je rozpis:
 * Pro každý blok metadat, která je uložena přidáte délka názvu (uložené ve formátu ASCII), a navíc délka řetězcové hodnoty.
 
 * Pro objekty BLOB bloku:
-    * 8 bajtů pro do seznamu zakázaných položek.
-    * Počet bloků časový limit velikosti bloku ID v bajtech.
-    * Velikost dat ve všech bloků nepotvrzené a potvrzené.
+  * 8 bajtů pro do seznamu zakázaných položek.
+  * Počet bloků časový limit velikosti bloku ID v bajtech.
+  * Velikost dat ve všech bloků nepotvrzené a potvrzené.
 
     >[!NOTE]
     >Zadáním snímky tato velikost obsahuje pouze jedinečné data pro tento základní nebo snímek objektu blob. Pokud po týdnu nejsou použity nepotvrzené bloky, jsou uvolnění paměti. Po tomto není počet směrem k fakturaci.
 
 * Pro objekty BLOB stránky:
-    * Počet rozsahů nejdou stránky s daty vyprší 12 bajtů. Toto je počet jedinečných rozsahů se zobrazí při volání **GetPageRanges** rozhraní API.
+  * Počet rozsahů nejdou stránky s daty vyprší 12 bajtů. Toto je počet jedinečných rozsahů se zobrazí při volání **GetPageRanges** rozhraní API.
 
-    * Velikost dat v bajtech všech uložených stránek.
+  * Velikost dat v bajtech všech uložených stránek.
 
     >[!NOTE]
     >Zadáním snímky tato velikost obsahuje pouze jedinečné stránek pro základní objekt blob nebo pořízení snímku objektu blob, který se právě počítá.

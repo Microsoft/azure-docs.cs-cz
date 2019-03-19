@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240467"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858133"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Zřízení virtuálního počítače geografickou umělou inteligenci v Azure 
 
@@ -33,7 +33,7 @@ Geo-DSVM obsahuje několik nástrojů pro AI včetně:
 - Nástroje pro získání a předběžného zpracování obrazu, textová data 
 - Nástroje pro vývoj pro aktivity, jako je Microsoft R Server Developer Edition, Anaconda Python, poznámkové bloky Jupyter pro Python a jazyka R, Integrovaná vývojová prostředí pro Python nebo R, SQL databáze
 - ArcGIS Pro desktopového softwaru společnosti ESRI spolu s Pythonu a r. rozhraní, které budou fungovat s geoprostorových dat z vašich aplikací AI. 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Vytvoření vaší geografické AI pro datové vědy virtuálního počítače
 
@@ -67,16 +67,16 @@ Tady je postup pro vytvoření instance virtuální počítač pro geograficky A
    - **Souhrn**: Ověřte správnost všech informací, které jste zadali.
 
    - **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Pomocí odkazu uvedeného na podmínky služby. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
-
+ 
 >[!NOTE]
 > Zřizování zabere asi 20 – 30 minut. Stav zřizování se zobrazí na portálu Azure portal.
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak získat přístup k počítač pro virtuální Geo AI datové vědy
 
-Po vytvoření virtuálního počítače, jste připraveni začít používat nástroje, které jsou nainstalovány a předem nakonfigurované na něj. Existují dlaždic nabídky start a ikony na ploše pro celou řadu nástrojů. Vzdálená plocha můžete do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím **Základy** oddílu. 
+ Po vytvoření virtuálního počítače, jste připraveni začít používat nástroje, které jsou nainstalovány a předem nakonfigurované na něj. Existují dlaždic nabídky start a ikony na ploše pro celou řadu nástrojů. Vzdálená plocha můžete do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím **Základy** oddílu. 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>Použití ArcGIS Pro nainstalované ve virtuálním počítači
 
 Geo-DSVM již desktop ArcGIS Pro předem nainstalované a prostředí předem nakonfigurované pro práci se všemi nástroji datové VĚDY. Spuštění ArcGIS budete vyzváni k přihlášení ke svému účtu ArcGIS. Pokud již máte účet ArcGIS a máte licencemi na software, můžete vaše stávající přihlašovací údaje.  
@@ -87,7 +87,7 @@ V opačném případě můžete zaregistrovat nový účet ArcGIS a licence nebo
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Jakmile budete mít registrace buď na placené nebo bezplatné zkušební verze účtu ArcGIS, můžete povolit ArcGIS Pro pro váš účet podle pokynů v [Začínáme se službou dokumentace ArcGIS Pro](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Jakmile budete mít registrace buď na placené nebo bezplatné zkušební verze účtu ArcGIS, můžete povolit ArcGIS Pro pro váš účet podle pokynů v [Začínáme se službou dokumentace ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Po přihlášení k ploše ArcGIS Pro pomocí svého účtu ArcGIS, jste připraveni začít používat nástrojů pro datové vědy, které jsou nainstalované a nakonfigurované na virtuálním počítači pro geoprostorové analýzy a machine learningu projekty.
 

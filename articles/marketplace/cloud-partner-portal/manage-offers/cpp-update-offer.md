@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 690ce08aa15a9677b04931ed1965ef819614ee84
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102141"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualizace nabídky Azure Marketplace a AppSource
 
@@ -68,19 +68,19 @@ Tyto změny implementovat, postupujte podle následujících kroků.
 
 Nabídky Azure Marketplace:
 
-2. Vyberte **SKU** kartu.  Vyberte skladovou Položku změnit.
-3. Klikněte na tlačítko **vybrat země** tlačítko **země/oblast dostupnosti** pole.
-4. V oblasti dostupnosti dialogovém okně Přidat nebo odebrat oblasti pro tato skladová položka.
+1. Vyberte **SKU** kartu.  Vyberte skladovou Položku změnit.
+1. Klikněte na tlačítko **vybrat země** tlačítko **země/oblast dostupnosti** pole.
+1. V oblasti dostupnosti dialogovém okně Přidat nebo odebrat oblasti pro tato skladová položka.
 
 AppSource nabídky:
 
-2. Vyberte **podrobnosti z prodejních míst** kartu.
-3. Vedle položky **podporované země/oblasti** popisek, klikněte na tlačítko **podporované země/oblasti**. 
-4. V dialogovém okně podporované země/oblasti přidání nebo odebrání oblastí pro v rámci této nabídky.
+1. Vyberte **podrobnosti z prodejních míst** kartu.
+1. Vedle položky **podporované země/oblasti** popisek, klikněte na tlačítko **podporované země/oblasti**. 
+1. V dialogovém okně podporované země/oblasti přidání nebo odebrání oblastí pro v rámci této nabídky.
 
 Pro buď marketplace:
 
-5. Klikněte na tlačítko **publikovat** zahájíte proces publikování. 
+1. Klikněte na tlačítko **publikovat** zahájíte proces publikování. 
 
 Pokud SKU je k dispozici v nové oblasti, máte možnost určit ceny pro tuto konkrétní oblast prostřednictvím **exportovat Data ceny** funkce. Pokud chcete přidat zpět oblast, která byla dříve k dispozici, nelze aktualizovat, jeho ceny, protože o změně v cenách nejsou povolené.
 

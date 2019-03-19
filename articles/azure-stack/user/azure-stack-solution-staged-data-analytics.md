@@ -15,12 +15,12 @@ ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 1115e11d6bf830afad3746eb41d6368cb89bdbf3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c3ea877e3271dcb5bea527d661e12827eb64fa0c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997413"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvořit řešení analýzy pracovních dat s využitím Azure a Azure Stack 
 
@@ -175,25 +175,25 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Vytvoření funkce aktivované službou Blob Storage
 
-1.  Rozbalte aplikaci function app a vyberte **+** vedle **funkce**.
+1. Rozbalte aplikaci function app a vyberte **+** vedle **funkce**.
 
-2.  Do vyhledávacího pole zadejte `blob` a zvolte jazyk požadovaný pro **aktivační událost objektů Blob** šablony.
+2. Do vyhledávacího pole zadejte `blob` a zvolte jazyk požadovaný pro **aktivační událost objektů Blob** šablony.
 
-  ![Vyberte šablonu funkce aktivované úložištěm objektů blob.](media/azure-stack-solution-staged-data-analytics/image10.png)
+   ![Vyberte šablonu funkce aktivované úložištěm objektů blob.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
-3.  Použijte nastavení uvedená v následující tabulce:
+3. Použijte nastavení uvedená v následující tabulce:
 
-    | Nastavení | Navrhovaná hodnota | Popis |
-    | ------- | ------- | ------- |
-    | Název | Jedinečný název v rámci aplikace Function App | Název této funkce aktivované objektem blob. |
-    | Cesta | \<cesta z výše uvedených umístění úložiště > | Monitorované umístění ve službě Blob Storage. Název souboru objektu blob se předá v rámci vazby jako parametr name. |
-    | Připojení účtu úložiště | Připojení aplikace – funkce | Můžete použít připojení k účtu úložiště už používá vaši aplikaci function app, nebo vytvořte novou. |
+   | Nastavení | Navrhovaná hodnota | Popis |
+   | ------- | ------- | ------- |
+   | Název | Jedinečný název v rámci aplikace Function App | Název této funkce aktivované objektem blob. |
+   | Cesta | \<cesta z výše uvedených umístění úložiště > | Monitorované umístění ve službě Blob Storage. Název souboru objektu blob se předá v rámci vazby jako parametr name. |
+   | Připojení účtu úložiště | Připojení aplikace – funkce | Můžete použít připojení k účtu úložiště už používá vaši aplikaci function app, nebo vytvořte novou. |
 
-    **Příklad:**
+   **Příklad:**
 
-    ![Vytvoření funkce aktivované službou Blob Storage](media/azure-stack-solution-staged-data-analytics/image11.png)
+   ![Vytvoření funkce aktivované službou Blob Storage](media/azure-stack-solution-staged-data-analytics/image11.png)
 
-4.  Vyberte **vytvořit** vytvořte novou funkci.
+4. Vyberte **vytvořit** vytvořte novou funkci.
 
 ### <a name="test-the-function"></a>Testování funkce
 
@@ -253,21 +253,21 @@ Tyto kroky a použijte nastavení uvedené výše vytvořte další účet a obj
 
 ## <a name="test-the-queue-triggered-function"></a>Funkce aktivovaná testu do fronty
 
-1.  Na portálu Azure Stack přejděte do funkce. Rozbalte **protokoly** v dolní části stránky a ujistěte se, není pozastavené streamování protokolů.
+1. Na portálu Azure Stack přejděte do funkce. Rozbalte **protokoly** v dolní části stránky a ujistěte se, není pozastavené streamování protokolů.
 
-2.  Otevřete Průzkumníka služby Storage a připojte se k účtu úložiště, vytvořili na začátku této části.
+2. Otevřete Průzkumníka služby Storage a připojte se k účtu úložiště, vytvořili na začátku této části.
 
-3.  Rozbalte účet úložiště **kontejnery objektů Blob**, a objekt blob jste vytvořili dříve. Vyberte **nahrát** a potom **nahrávání souborů.**
+3. Rozbalte účet úložiště **kontejnery objektů Blob**, a objekt blob jste vytvořili dříve. Vyberte **nahrát** a potom **nahrávání souborů.**
 
-    ![Nahrání souboru do kontejneru objektů blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
+   ![Nahrání souboru do kontejneru objektů blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
-4.  V dialogovém okně nahrávání souborů vyberte pole soubory. Přejděte k souboru na místním počítači, jako je například soubor obrázku, vyberte ho a vyberte **otevřít** a potom **nahrát**.
+4. V dialogovém okně nahrávání souborů vyberte pole soubory. Přejděte k souboru na místním počítači, jako je například soubor obrázku, vyberte ho a vyberte **otevřít** a potom **nahrát**.
 
-5.  Vraťte se do protokolů funkce a ověřte, zda že byl načten objekt blob.
+5. Vraťte se do protokolů funkce a ověřte, zda že byl načten objekt blob.
 
-  **Příklad:**
+   **Příklad:**
 
-    ![Zobrazte si zprávy v protokolech.](media/azure-stack-solution-staged-data-analytics/image13.png)
+   ![Zobrazte si zprávy v protokolech.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Bezpečně uložená a využívaných dat odpovídající
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 536ca8895d130fd9273d556332830d020a485dc3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 812b3752bfffd16c09b466b036fb0ac91e77d5a4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104348"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí Powershellu
 
@@ -91,14 +91,12 @@ Ze svého místního počítače nebo s použitím Azure Cloud Shell, můžete p
 
 > [!WARNING]
 > I když nastavení privátní IP adresy můžete přidat do operačního systému, doporučujeme, pokud to neuděláte, dokud se po přečtení [přidejte privátní IP adresu pro operační systém](virtual-network-network-interface-addresses.md#private).
->
->
-<a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
-
+> 
+> 
+> <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
+> 
 > [!IMPORTANT]
 > Pro přístup k virtuálnímu počítači z Internetu, musíte přiřadit veřejnou IP adresu k virtuálnímu počítači. Můžete také změnit dynamické přiřazení privátní adresy IP na statické přiřazení. Podrobnosti najdete v tématu [přidání nebo změna IP adresy](virtual-network-network-interface-addresses.md). Kromě toho se doporučuje, tím, že přidružíte skupinu zabezpečení sítě pro síťové rozhraní a podsítě, kterou jste vytvořili síťové rozhraní v omezení síťového provozu směřujícího do svého virtuálního počítače. Podrobnosti najdete v tématu [Správa skupin zabezpečení sítě](manage-network-security-group.md).
->
->
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

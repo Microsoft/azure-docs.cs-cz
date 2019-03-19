@@ -1,25 +1,18 @@
 ---
 title: Podpora protokolu WebSocket ve službě Azure Application Gateway | Dokumentace Microsoftu
 description: Tato stránka poskytuje přehled podpory Application Gateway pomocí protokolu WebSocket.
-documentationcenter: na
-services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 8968dac1-e9bc-4fa1-8415-96decacab83f
-ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: cc6e2480ea117a288ae94c9cd66be6a354d8230f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.service: application-gateway
+ms.topic: conceptual
+ms.workload: infrastructure-services
+ms.date: 03/18/2019
+ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993325"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168115"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket ve službě Application Gateway
 
@@ -29,7 +22,15 @@ Protokol WebSocket standardizaci [RFC6455](https://tools.ietf.org/html/rfc6455) 
 
 Můžete pokračovat v používání standardní naslouchací proces protokolu HTTP na portu 80 nebo 443 pro příjem provozu pomocí protokolu WebSocket. Přenos pomocí protokolu WebSocket je pak přesměrované na serveru povoleno back-end protokolu WebSocket pomocí odpovídající back-endový fond jak je uvedeno v pravidlech brány application. Back-end serveru musí odpovědět na sond brány aplikací, které jsou popsány v [přehled sondy stavu](application-gateway-probe-overview.md) oddílu. Sondy stavu služby Application gateway jsou jenom HTTP/HTTPS. Každý back-end serveru musí odpovědět na sondy protokolu HTTP služby application gateway pro směrování provozu objektu websocket na straně serveru.
 
-## <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
+Používá se v aplikacích, které využívají samosprávné komunikace rychlé, v reálném čase, jako jsou konverzace, řídicí panel a herních aplikací.
+
+## <a name="how-does-websocket-work"></a>Jak funguje objektu websocket na straně
+
+K navázání připojení soketu WebSocket, konkrétní metody handshake založené na protokolu HTTP se vyměňují mezi klientem a serverem. V případě úspěšného ověření application layer protocol je "upgradovat" z HTTP na protokoly Websocket, pomocí dříve navázaném připojení TCP. Jakmile k tomu dojde, HTTP je zcela mimo obrázku; data mohou být odeslány nebo přijaty pomocí protokolu WebSocket oba koncové body, dokud není zavřena připojení soketu WebSocket. 
+
+![addcert](./media/application-gateway-websocket/websocket.png)
+
+### <a name="listener-configuration-element"></a>Konfigurační prvek naslouchacího procesu
 
 Existující naslouchací proces protokolu HTTP slouží k podpoře přenos pomocí protokolu WebSocket. Tady je fragment prvku httpListeners ze souboru šablony vzorku. Je třeba naslouchacích procesů HTTP a HTTPS pro podporu protokolu WebSocket a zabezpečený přenos pomocí protokolu WebSocket. Podobně můžete použít [portál](application-gateway-create-gateway-portal.md) nebo [Powershellu](application-gateway-create-gateway-arm.md) k vytvoření služby application gateway s moduly pro naslouchání na portu 80/443 podporují přenos pomocí protokolu WebSocket.
 

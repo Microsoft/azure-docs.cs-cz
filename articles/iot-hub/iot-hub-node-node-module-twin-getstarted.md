@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: ed60e379837a2c2af2a0cc2c3b27eec314bff56b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80132a2d15333308766b62e89262133b1f05b394
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888719"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí Node.js zařízení a back-end Node.js
 
@@ -43,7 +43,7 @@ V této části vytvoříte aplikaci Node.js, která v registru identit ve služ
 
 1. Vytvořte adresář k uložení kódu.
 2. V tomto adresáři při prvním spuštění **npm init -y** vytvořte prázdný soubor package.json pomocí výchozích hodnot. Toto je soubor projektu pro svůj kód.
-3. Spustit **npm nainstalujte -S azure-iothub@modules-preview ** instalace sady SDK služby uvnitř **node_modules** podadresáře.
+3. Spustit **npm nainstalujte azure-iothub - S\@moduly ve verzi preview** instalace sady SDK služby uvnitř **node_modules** podadresáře.
 
     > [!NOTE]
     > Node_modules název podadresáře používá modul slovo znamená "knihovna uzel". Termín zde nemá nic společného s moduly služby IoT Hub.
@@ -107,7 +107,7 @@ V této části vytvoříte aplikaci Node.js, která v registru identit ve služ
 
 Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identity modul s ID **myFirstModule** zařízení **myFirstDevice**. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
 
-5. Spusťte pomocí add.js uzlu. Poskytne vám připojovací řetězec pro vaši identitu zařízení a druhou pro svoji identitu modulu.
+1. Spusťte pomocí add.js uzlu. Poskytne vám připojovací řetězec pro vaši identitu zařízení a druhou pro svoji identitu modulu.
 
     > [!NOTE]
     > V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].
@@ -120,7 +120,7 @@ V této části vytvoříte Node.js aplikace na zařízení s Simulovaná, kter�
 
     ![Podrobnosti o modulu na webu Azure Portal][15]
 
-2. . Podobá se vám to udělali v předchozím kroku, vytvořte adresář pro kód vašeho zařízení a inicializujte ho a nainstalujte sady SDK pro zařízení pomocí NPM (**npm nainstalujte -S azure-iot-device-amqp@modules-preview** ).
+2. . Podobá se vám to udělali v předchozím kroku, vytvořte adresář pro kód vašeho zařízení a inicializujte ho a nainstalujte sady SDK pro zařízení pomocí NPM (**npm nainstalujte -S azure-iot-device-amqp\@moduly ve verzi preview**).
 
     > [!NOTE]
     > Mohou mít pocit instalačního příkazu npm pomalé. Buďte prosím trpěliví. to je potažením dolů velké množství kódu z úložiště balíčků.

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a45d6a6064173cea7ed15065ab3464718cc8578e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888817"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998500"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure
-[MongoDB](http://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. Tento článek vás provede instalací a konfigurací MongoDB na virtuálním počítači Windows serveru 2016 (VM) v Azure. Můžete také [instalace MongoDB na virtuální počítač s Linuxem v Azure](../linux/install-mongodb.md).
+[MongoDB](https://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. Tento článek vás provede instalací a konfigurací MongoDB na virtuálním počítači Windows serveru 2016 (VM) v Azure. Můžete také [instalace MongoDB na virtuální počítač s Linuxem v Azure](../linux/install-mongodb.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Než nainstalujete a nakonfigurujete MongoDB, budete muset vytvořit virtuální počítač a v ideálním případě by k ní přidat datový disk. Naleznete v následujících článcích pro vytvoření virtuálního počítače a přidat datový disk:
@@ -34,7 +34,7 @@ Chcete-li zahájit instalaci a konfiguraci MongoDB, [Přihlaste se k virtuální
 
 ## <a name="install-mongodb"></a>Instalace MongoDB
 > [!IMPORTANT]
-> MongoDB funkce zabezpečení, jako je například ověřování a vazbu adresy IP, nejsou povolené ve výchozím nastavení. Funkce zabezpečení musí být aktivována před nasazením do produkčního prostředí MongoDB. Další informace najdete v tématu [MongoDB zabezpečení a ověřování](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> MongoDB funkce zabezpečení, jako je například ověřování a vazbu adresy IP, nejsou povolené ve výchozím nastavení. Funkce zabezpečení musí být aktivována před nasazením do produkčního prostředí MongoDB. Další informace najdete v tématu [MongoDB zabezpečení a ověřování](https://www.mongodb.org/display/DOCS/Security+and+Authentication).
 
 
 1. Po připojení k virtuálnímu počítači pomocí vzdálené plochy, spusťte aplikaci Internet Explorer z hlavního panelu.
@@ -46,7 +46,7 @@ Chcete-li zahájit instalaci a konfiguraci MongoDB, [Přihlaste se k virtuální
    * Klikněte na tlačítko **lokality** tlačítko. Přidat *https://\*. mongodb.com* do seznamu důvěryhodných serverů a potom dialogové okno zavřete.
      
      ![Konfigurovat nastavení zabezpečení aplikace Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
-4. Přejděte [MongoDB – soubory ke stažení](http://www.mongodb.com/downloads) stránky (http://www.mongodb.com/downloads).
+4. Přejděte [MongoDB – soubory ke stažení](https://www.mongodb.com/downloads) stránky (https://www.mongodb.com/downloads).
 5. V případě potřeby vyberte **Community Server** edition a pak vyberte nejnovější aktuální stabilní verzi pro*systému Windows Server 2008 R2 64-bit a novější*. Stažení instalačního programu, klikněte na tlačítko **stahování (msi)**.
    
     ![Stažení instalačního programu MongoDB](./media/install-mongodb/download-mongodb.png)

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 27a013bee98447de591d373917c2cbaae7ca08b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495412"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857653"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .net SDK pro Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .NET SDK pro Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) poskytuje dvě primární možnosti pro práci s daty: [dotazy Apache Hive a volání rozhraní RESTful API HBase na](apache-hbase-tutorial-get-started-linux.md). Může spolupracovat přímo s použitím rozhraní REST API `curl` příkaz nebo podobného nástroje.
+[Apache HBase](apache-hbase-overview.md) poskytuje dvě primární možnosti pro práci s daty: [Dotazy Apache Hive a volání rozhraní RESTful API HBase na](apache-hbase-tutorial-get-started-linux.md). Může spolupracovat přímo s použitím rozhraní REST API `curl` příkaz nebo podobného nástroje.
 
 Pro aplikace C# a .NET [Microsoft HBase REST Client Library pro .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) poskytuje knihovna klienta nad HBase REST API.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250182"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887455"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Zobrazení a úpravy názvů hostitelů
 Pokud chcete povolit vaše instance rolí se nesmí odkazovat podle názvu hostitele, musíte nastavit hodnotu pro název hostitele v konfiguračním souboru služby pro každou roli. Můžete to udělat tak, že přidáte název požadovaného hostitele do **vmName** atribut **Role** elementu. Hodnota **vmName** atribut se používá jako základ pro název hostitele instance každé role. Například pokud **vmName** je *webrole* a existují tři instance dané role, budou se názvy hostitelů instancí *webrole0*, *webrole1*, a *webrole2*. Není potřeba zadat název hostitele pro virtuální počítače v konfiguračním souboru, protože název hostitele pro virtuální počítač se vyplní na základě názvu virtuálního počítače. Další informace o konfiguraci služby Microsoft Azure najdete v tématu [schématu konfigurace služby Azure (.cscfg souboru)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -40,9 +40,9 @@ Po povolení vzdálené plochy (Windows), vzdálené komunikace Windows Powershe
 ### <a name="azure-service-management-rest-api"></a>Rozhraní REST API pro správu služeb Azure
 Z klienta REST postupujte podle těchto pokynů:
 
-1. Ujistěte se, že máte certifikát klienta pro připojení k webu Azure portal. Získejte klientský certifikát, postupujte podle kroků v [postupy: stažení a Import nastavení publikování a informace o předplatném](https://msdn.microsoft.com/library/dn385850.aspx). 
+1. Ujistěte se, že máte certifikát klienta pro připojení k webu Azure portal. Získejte klientský certifikát, postupujte podle kroků v [jak: Stažení a Import nastavení a informace o předplatném publikování](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Nastavte položku záhlaví x-ms-version s hodnotou 2013-11-01 s názvem.
-3. Odeslat požadavek v následujícím formátu: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
+3. Odeslat požadavek v následujícím formátu: https:\//management.core.windows.net/\<subscrition id\>/services/hostedservices/\<název služby\>? vložení podrobností = true
 4. Hledat **HostName** – element pro každé **instance role** elementu.
 
 > [!WARNING]
@@ -58,7 +58,7 @@ Název hostitele pro virtuální počítač nebo instanci role můžete upravit 
 
 [Schéma konfigurace služby Azure (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Schéma konfigurace Azure Virtual Network](https://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network Configuration Schema](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [Zadání nastavení DNS pomocí konfiguračních souborech sítě](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

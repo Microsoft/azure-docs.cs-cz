@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 5687075b8b63755b8b04f8c8fd0d0706ec8e27bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5141cd083469d51a067bbc993f598393768fe99f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774519"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000186"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -59,11 +59,12 @@ Každá virtuální síť, bez ohledu na to, jestli má navázaný partnerský v
 
 Když jsou nakonfigurovány obě možnosti pro propojení virtuálních sítí, přenos dat mezi těmito sítěmi probíhá s použitím konfigurace partnerského vztahu (t.j. přes páteřní síť Azure).
 
-Když je mezi virtuálními sítěmi navázán partnerský vztah ve stejné oblasti, můžete také v partnerské virtuální síti nakonfigurovat bránu, která bude sloužit jako tranzitní bod pro místní síť. V tomto případě virtuální síť, která používá vzdálenou bránu, nemůže mít svou vlastní bránu. Virtuální síť může mít pouze jednu bránu. Může jí být buď místní brána, nebo vzdálená brána (v partnerské virtuální síti), jak ukazuje následující obrázek:
+Když je mezi virtuálními sítěmi navázán partnerský vztah, můžete také v partnerské virtuální síti nakonfigurovat bránu, která bude sloužit jako tranzitní bod pro místní síť. V tomto případě virtuální síť, která používá vzdálenou bránu, nemůže mít svou vlastní bránu. Virtuální síť může mít pouze jednu bránu. Může jí být buď místní brána, nebo vzdálená brána (v partnerské virtuální síti), jak ukazuje následující obrázek:
 
 ![přenos dat při partnerských vztazích virtuálních sítí](./media/virtual-networks-peering-overview/figure04.png)
 
-Průchod branou není podporován v případě, že jde o partnerský vztah mezi virtuálními sítěmi vytvořenými v různých oblastech. Pokud chcete používat průchod branou, musí obě partnerské virtuální sítě existovat ve stejné oblasti. Průchod branou mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení (Resource Manager a classic), je podporován pouze v případě, že je brána (síť VPN nebo ExpressRoute) ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod branou, je podporován pro VNet Peering i globální VNet Peering (preview). Můžete používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview.
+Průchod branou mezi virtuálními sítěmi vytvořenými pomocí různých modelů nasazení (Resource Manager a Klasický model) je podporován pouze v případě, že brána je ve virtuální síti (Resource Manager). Další informace o použití brány k průchodu najdete v tématu o [konfiguraci brány VPN pro průchod v partnerském vztahu virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Po nastavení partnerského vztahu mezi virtuálními sítěmi sdílejícími jedno připojení Azure ExpressRoute přenos dat prochází skrze partnerský vztah (tj. prostřednictvím páteřní sítě Azure). K připojení k místnímu okruhu lze v obou sítích nadále používat místní brány. Alternativním postupem je použití sdílené brány a konfigurace průchodu pro místní připojení.
 
@@ -78,8 +79,8 @@ Můžete také zkusit [Poradce při potížích pro partnerský vztah virtuáln�
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
 Pouze když partnerské virtuální sítě jsou globálně platí následující omezení:
-- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard existuje v obou případech globální partnerské vztahy a partnerské vztahy virtuálních sítí. 
-- Nemůžete používat vzdálené brány ani povolit průchod bránou. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, virtuální sítě v partnerském vztahu musí být ve stejné oblasti.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná za globální VNet Peering.  -Prostředků v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná pro VNet Peering i globální VNet Peering.
+- Můžete používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview.
 
 Další informace o požadavcích a omezeních najdete v tématu [Požadavky a omezení partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints). Informace o omezeních počtu partnerských vztahů, které pro virtuální síť můžete vytvořit, najdete v tématu popisujícím [omezení sítí Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 

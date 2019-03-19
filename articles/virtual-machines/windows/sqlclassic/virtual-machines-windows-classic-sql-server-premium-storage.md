@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8686e2c518bb2dc778c120350657aa54c856aec6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440314"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905116"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 
@@ -140,17 +140,17 @@ U každého disku postupujte následovně:
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-2. Poznámka: DiskName a logické jednotky.
+1. Poznámka: DiskName a logické jednotky.
 
     ![DisknameAndLUN][2]
-3. Vzdálené plochy k virtuálnímu počítači. Pak přejděte na **Správa počítače** | **Správce zařízení** | **diskové jednotky**. Podívejte se na vlastnosti každého "Microsoft virtuálních disků.
+1. Vzdálené plochy k virtuálnímu počítači. Pak přejděte na **Správa počítače** | **Správce zařízení** | **diskové jednotky**. Podívejte se na vlastnosti každého "Microsoft virtuálních disků.
 
     ![VirtualDiskProperties][3]
-4. Číslo logické jednotky tady se odkaz na číslo logické jednotky, kterou zadáte při připojování virtuálního pevného disku k virtuálnímu počítači.
-5. "Microsoft virtuální Disk" najdete **podrobnosti** kartu, pak v **vlastnost** seznamu, přejděte na **klíč ovladače**. V **hodnotu**, Poznámka **posun**, což je 0002 na následujícím snímku obrazovky. 0002 označuje PhysicalDisk2 odkazující na fondu úložiště.
+1. Číslo logické jednotky tady se odkaz na číslo logické jednotky, kterou zadáte při připojování virtuálního pevného disku k virtuálnímu počítači.
+1. "Microsoft virtuální Disk" najdete **podrobnosti** kartu, pak v **vlastnost** seznamu, přejděte na **klíč ovladače**. V **hodnotu**, Poznámka **posun**, což je 0002 na následujícím snímku obrazovky. 0002 označuje PhysicalDisk2 odkazující na fondu úložiště.
 
     ![VirtualDiskPropertyDetails][4]
-6. Pro každý fond úložiště a vypsat si přidružené disky:
+1. Pro každý fond úložiště a vypsat si přidružené disky:
 
 ```powershell
 Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
@@ -294,7 +294,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 Tento scénář předvádí, kde se nachází existující přizpůsobené Image, které se nacházejí v účtu úložiště úrovně Standard. Jak je uvedeno, pokud chcete umístit virtuální pevný disk operačního systému na Premium Storage, budete muset zkopírovat bitovou kopii, která existuje v účtu úložiště úrovně Standard a předtím, než je možné přenést do služby Premium Storage. Pokud máte image v místním, můžete také pomocí této metody můžete zkopírovat, který přímo do účtu Premium Storage.
 
-#### <a name="step-1-create-storage-account"></a>Krok 1: Vytvořit účet úložiště
+#### <a name="step-1-create-storage-account"></a>Krok 1: Vytvoření účtu úložiště
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -750,7 +750,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 
 ##### <a name="client-application-settings"></a>Nastavení klienta aplikace
 
-Pokud klientské aplikace SQL podporuje rozhraní .net 4.5 SQLClient a pak můžete použít "MULTISUBNETFAILOVER = TRUE" – klíčové slovo. Toto klíčové slovo bude použito, protože to umožňuje rychlejší připojení k SQL skupiny dostupnosti Always On během převzetí služeb při selhání. Vytvoří výčet prostřednictvím všechny IP adresy přidružené k naslouchání Always On paralelně a provede agresivnější rychlost opakovat připojení TCP při selhání.
+Pokud klientské aplikace SQL podporuje .NET 4.5 SQLClient, pak můžete použít "MULTISUBNETFAILOVER = TRUE" – klíčové slovo. Toto klíčové slovo bude použito, protože to umožňuje rychlejší připojení k SQL skupiny dostupnosti Always On během převzetí služeb při selhání. Vytvoří výčet prostřednictvím všechny IP adresy přidružené k naslouchání Always On paralelně a provede agresivnější rychlost opakovat připojení TCP při selhání.
 
 Další informace o předchozích nastavení najdete v tématu [MultiSubnetFailover – klíčové slovo a související funkce](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Viz také [podpora klienta SqlClient pro vysokou dostupnost, zotavení po havárii](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
@@ -973,7 +973,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET Azure ACLs or Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
@@ -1218,7 +1218,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET ACLs or Azure Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
 #### <a name="step-23-test-failover"></a>Krok 23: Testovací převzetí služeb při selhání

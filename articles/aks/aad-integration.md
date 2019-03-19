@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087529"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
@@ -40,47 +40,47 @@ První aplikaci Azure AD slouží k získání členství ve skupině uživatel�
 
 1. Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
 
-  Pojmenujte aplikaci, vyberte **webovou aplikaci nebo API** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **přihlašovací adresa URL**. Vyberte **vytvořit** až budete hotovi.
+   Pojmenujte aplikaci, vyberte **webovou aplikaci nebo API** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **přihlašovací adresa URL**. Vyberte **vytvořit** až budete hotovi.
 
-  ![Vytvoření registrace služby Azure AD](media/aad-integration/app-registration.png)
+   ![Vytvoření registrace služby Azure AD](media/aad-integration/app-registration.png)
 
 2. Vyberte **Manifest** a upravit `groupMembershipClaims` hodnota, která se `"All"`.
 
-  Aktualizace po dokončení uložte.
+   Aktualizace po dokončení uložte.
 
-  ![Aktualizovat členství ve skupině pro všechny](media/aad-integration/edit-manifest.png)
+   ![Aktualizovat členství ve skupině pro všechny](media/aad-integration/edit-manifest.png)
 
 3. Zpět v aplikaci Azure AD, vyberte **nastavení** > **klíče**.
 
-  Přidat popis klíče, vyberte termín vypršení platnosti a vyberte **Uložit**. Poznamenejte si hodnotu klíče. Při nasazení Azure AD povolené clusteru AKS, tato hodnota se označuje jako `Server application secret`.
+   Přidat popis klíče, vyberte termín vypršení platnosti a vyberte **Uložit**. Poznamenejte si hodnotu klíče. Při nasazení Azure AD povolené clusteru AKS, tato hodnota se označuje jako `Server application secret`.
 
-  ![Získání privátní klíč aplikace](media/aad-integration/application-key.png)
+   ![Získání privátní klíč aplikace](media/aad-integration/application-key.png)
 
 4. Vraťte se do aplikace Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat**  >   **Vyberte rozhraní API** > **Microsoft Graphu** > **vyberte**.
 
-  ![Vyberte rozhraní graph API](media/aad-integration/graph-api.png)
+   ![Vyberte rozhraní graph API](media/aad-integration/graph-api.png)
 
 5. V části **oprávnění aplikace** přidejte zaškrtnutí vedle **čtení dat adresáře**.
 
-  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/read-directory.png)
+   ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/read-directory.png)
 
 6. V části **DELEGOVANÁ oprávnění**, přidejte zaškrtnutí vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte změny, až to bude hotové.
 
-  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/delegated-permissions.png)
+   ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/delegated-permissions.png)
 
-  Vyberte **Done** (Hotovo).
+   Vyberte **Done** (Hotovo).
 
 7. Zvolte *Microsoft Graphu* ze seznamu rozhraní API, vyberte **udělit oprávnění**. Tento krok selže, pokud není aktuální účet správce tenanta.
 
-  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/grant-permissions.png)
+   ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/grant-permissions.png)
 
-  Když úspěšně udělena oprávnění se zobrazí následující oznámení na portálu:
+   Když úspěšně udělena oprávnění se zobrazí následující oznámení na portálu:
 
-  ![Oznámení o úspěšném oprávnění udělená](media/aad-integration/permissions-granted.png)
+   ![Oznámení o úspěšném oprávnění udělená](media/aad-integration/permissions-granted.png)
 
 8. Vraťte se do aplikace a poznamenejte si **ID aplikace**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Server application ID`.
 
-  ![Získání ID aplikace](media/aad-integration/application-id.png)
+   ![Získání ID aplikace](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>Vytvořit klientskou aplikaci
 
@@ -88,27 +88,27 @@ Druhá aplikace Azure AD se používá při přihlášení s využitím rozhran�
 
 1. Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
 
-  Pojmenujte aplikaci, vyberte **nativní** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **identifikátor URI pro přesměrování**. Vyberte **vytvořit** až budete hotovi.
+   Pojmenujte aplikaci, vyberte **nativní** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **identifikátor URI pro přesměrování**. Vyberte **vytvořit** až budete hotovi.
 
-  ![Vytvoření registrace AAD](media/aad-integration/app-registration-client.png)
+   ![Vytvoření registrace AAD](media/aad-integration/app-registration-client.png)
 
 2. V aplikaci Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat** > **vybrat Rozhraní API** a vyhledávání pro název serveru aplikace vytvořené v předchozím kroku tohoto dokumentu.
 
-  ![Konfigurace oprávnění aplikace](media/aad-integration/select-api.png)
+   ![Konfigurace oprávnění aplikace](media/aad-integration/select-api.png)
 
 3. Zaškrtněte políčko vedle aplikace a klikněte na tlačítko **vyberte**.
 
-  ![Vyberte koncový bod aplikace AKS AAD serveru](media/aad-integration/select-server-app.png)
+   ![Vyberte koncový bod aplikace AKS AAD serveru](media/aad-integration/select-server-app.png)
 
-  Vyberte **Hotovo**
+   Vyberte **Hotovo**
 
 4. Vyberte svůj server API ze seznamu a klikněte na tlačítko **udělit oprávnění**:
 
-  ![Udělení oprávnění](media/aad-integration/grant-permissions-client.png)
+   ![Udělení oprávnění](media/aad-integration/grant-permissions-client.png)
 
 5. Zpět na aplikace AD, poznamenejte si **ID aplikace**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Client application ID`.
 
-  ![Získání ID aplikace](media/aad-integration/application-id-client.png)
+   ![Získání ID aplikace](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>Získání ID tenanta
 

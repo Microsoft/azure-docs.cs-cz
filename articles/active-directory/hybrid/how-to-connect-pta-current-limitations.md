@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de42312c580b6bd5b4a5148fd877d55aa00e8804
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204589"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011968"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Předávací ověřování služby Azure Active Directory: Aktuální omezení
 
@@ -34,7 +34,7 @@ Jsou podporovány následující scénáře:
 
 - Přihlášení uživatelů do webové aplikace založené na prohlížeči.
 - Přihlášení uživatelů do Outlookové klienty pomocí starší verze protokoly, například Exchange ActiveSync, EAS, SMTP, POP a IMAP.
-- Přihlášení uživatele do starší klientské aplikace Office a aplikace Office, které podporují [moderní ověřování](https://aka.ms/modernauthga): Verze sady Office 2010, 2013 a 2016.
+- Přihlášení uživatele do starší klientské aplikace Office a aplikace Office, které podporují [moderní ověřování](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview): Office 2013 a 2016 verze.
 - Přihlašování uživatelů na starší verzi protokolu aplikace, jako je PowerShell verze 1.0 a další.
 - Azure AD připojí pro zařízení s Windows 10.
 - Hesla aplikací pro ověřování službou Multi-Factor Authentication.
@@ -47,11 +47,11 @@ Následující scénáře jsou _není_ podporovány:
 - Azure AD Domain Services musí být na tenantovi povolena synchronizaci hodnot Hash hesel. Proto tenanty, které používají předávací ověřování _pouze_ nefungují pro scénáře, které je třeba Azure AD Domain Services.
 - Předávací ověřování není integrován s [Azure AD Connect Health](whatis-hybrid-identity-health.md).
 
->[!IMPORTANT]
->Jako alternativní řešení pro nepodporované scénáře _pouze_ (s výjimkou integrace Azure AD Connect Health), povolte na synchronizaci hodnot Hash hesel [volitelné funkce](how-to-connect-install-custom.md#optional-features) stránky v průvodci službou Azure AD Connect.
-
->[!NOTE]
-Povolení synchronizace hodnot Hash hesel nabízí možnost převzetí služeb při selhání ověřování je-li přerušit vaši místní infrastrukturu. Toto převzetí služeb při selhání z předávací ověřování na synchronizaci hodnot Hash hesel nebude automatická. Budete potřebovat přepnout metodu přihlašování ručně pomocí služby Azure AD Connect. Pokud server se službou Azure AD Connect ocitne mimo provoz, bude vyžadovat pomoc od společnosti Microsoft Support vypnout předávací ověřování.
+> [!IMPORTANT]
+> Jako alternativní řešení pro nepodporované scénáře _pouze_ (s výjimkou integrace Azure AD Connect Health), povolte na synchronizaci hodnot Hash hesel [volitelné funkce](how-to-connect-install-custom.md#optional-features) stránky v průvodci službou Azure AD Connect.
+> 
+> [!NOTE]
+> Povolení synchronizace hodnot Hash hesel nabízí možnost převzetí služeb při selhání ověřování je-li přerušit vaši místní infrastrukturu. Toto převzetí služeb při selhání z předávací ověřování na synchronizaci hodnot Hash hesel nebude automatická. Budete potřebovat přepnout metodu přihlašování ručně pomocí služby Azure AD Connect. Pokud server se službou Azure AD Connect ocitne mimo provoz, bude vyžadovat pomoc od společnosti Microsoft Support vypnout předávací ověřování.
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start](how-to-connect-pta-quick-start.md): Uvedení do provozu pomocí předávacího ověřování Azure AD.

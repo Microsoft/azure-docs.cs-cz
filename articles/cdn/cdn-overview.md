@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bdc98a87a71dc7f8552f4bf869ec035409e0535e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843670"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co je síť pro doručování obsahu v Azure?
 Síť pro doručování obsahu (CDN) je distribuovaná síť serverů umožňující efektivní doručování webového obsahu uživatelům. Sítě CDN za účelem minimalizace latence uchovávají obsah uložený v mezipaměti na hraničních serverech, které jsou v lokalitách POP (Point of Presence) blízko koncovým uživatelům. 
@@ -59,7 +59,7 @@ Každé předplatné Azure má výchozí omezení pro následující prostředky
  - Počet koncových bodů, které je možné vytvořit v profilu CDN. 
  - Počet vlastních domén, které je možné namapovat na koncový bod.
 
-Další informace o omezeních předplatného CDN najdete v tématu věnovaném [omezením CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits).
+Další informace o omezeních předplatného CDN najdete v tématu věnovaném [omezením CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits).
     
 ## <a name="azure-cdn-features"></a>Funkce Azure CDN
 Azure CDN nabízí následující klíčové funkce:
@@ -73,10 +73,9 @@ Azure CDN nabízí následující klíčové funkce:
 
 Úplný seznam funkcí, které jednotlivé produkty Azure CDN podporují, najdete v [porovnání funkcí produktů Azure CDN](cdn-features.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Pokud chcete začít se sítí CDN, přečtěte si téma [Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 - Koncové body CDN můžete spravovat prostřednictvím webu [Microsoft Azure Portal](https://portal.azure.com) nebo pomocí [PowerShellu](cdn-manage-powershell.md).
 - Přečtěte si informace o automatizaci Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
 - Pokud chcete vidět Azure CDN v akci, podívejte se na [videa k Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest).
 - Další informace o nejnovějších funkcích Azure CDN najdete na [blogu Azure CDN](https://azure.microsoft.com/blog/tag/azure-cdn/).
-

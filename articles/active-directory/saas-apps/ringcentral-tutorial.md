@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d86dc27822c91bd6b2b1cb3ec53b07978061cc7d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9cd97bc226ec69441b933a9f7bf3caec17f1478
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Kurz: Integrace Azure Active Directory s RingCentral
 
@@ -127,6 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
     d. V **přihlašovací adresa URL** textového pole zadejte adresu URL:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -140,6 +141,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 6. Pokud nemáte **soubor metadat poskytovatele služeb**, proveďte následující kroky:
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL:
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -148,12 +150,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://service.ringcentral.eu` |
 
     b. V **identifikátor** textového pole zadejte adresu URL:
+
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL:
+    
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -223,7 +227,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

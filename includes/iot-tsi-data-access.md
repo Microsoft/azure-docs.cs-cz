@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: anshan
 ms.custom: include file
-ms.openlocfilehash: fb45ea02f365cf4e7b394e249f9b91a784e5469f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c9daa86bf36b260001d9969385b9e8a98a8ac0cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368606"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124994"
 ---
 ## <a name="grant-data-access"></a>Udělení přístupu k datům
 
@@ -33,12 +33,12 @@ Použijte následující postup udělení přístupu k datům pro uživatele ins
     ![Správa zdroje Time Series Insights – přidat](media/iot-tsi-data-access/getstarted-grant-data-access2.png)
 
 6. Vyberte **vybrat roli**. Zvolte roli odpovídající přístup pro uživatele:
-    - Vyberte **Přispěvatel** Pokud budete chtít povolit uživateli měnit referenční data a sdílené složky, které jsou uloženy dotazů a perspektiv s ostatními uživateli prostředí. 
-    - V opačném případě vyberte **čtečky** povolení data dotazu uživatele v prostředí a ukládání osobních (ne sdílených) dotazů v prostředí.
+   - Vyberte **Přispěvatel** Pokud budete chtít povolit uživateli měnit referenční data a sdílené složky, které jsou uloženy dotazů a perspektiv s ostatními uživateli prostředí. 
+   - V opačném případě vyberte **čtečky** povolení data dotazu uživatele v prostředí a ukládání osobních (ne sdílených) dotazů v prostředí.
 
-    Vyberte **Ok** k potvrzení volby role.
+     Vyberte **Ok** k potvrzení volby role.
 
-    ![Správa zdroje Time Series Insights – vybrat uživatele](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
+     ![Správa zdroje Time Series Insights – vybrat uživatele](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
 
 7. Vyberte **Ok** v **vybrat roli uživatele** stránky.
 

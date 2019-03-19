@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 094d8f842c49905636eb4b79a97540267227b241
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116686"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementujte proces aktualizace firmwaru zařízení
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --hub-name $hubname -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 V tomto kurzu jste zjistili, jak pro svá připojená zařízení implementovat proces aktualizace firmwaru. Přejděte k dalšímu kurzu, kde se naučíte, jak použít nástroje na portálu Azure IoT Hub a příkazy rozhraní příkazového řádku Azure k testování připojení zařízení.
 
 > [!div class="nextstepaction"]
-[Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)
+> [Použití simulovaného zařízení pro otestování připojení k IoT Hubu](tutorial-connectivity.md)

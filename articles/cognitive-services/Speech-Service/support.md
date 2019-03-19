@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: b8e6c8b125e8eeaadac2e6864b06d55c42d3b173
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877696"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
-Jste zrovna začínáte a prozkoumejte funkci Speech service? Jsou implementace novou funkci pro vaši aplikaci? Tady jsou návrhy kde můžete získat pomoc jako vývojář.
+Jste zrovna začínáte a prozkoumejte funkci hlasových služeb? Jsou implementace novou funkci pro vaši aplikaci? Tady jsou návrhy kde můžete získat pomoc jako vývojář.
 
 > [!div class="checklist"]
 > * Budete informováni o nové vývoj *Azure Cognitive Services*, nebo najít nejnovější informace související s *Speech service*.
@@ -30,7 +30,7 @@ Jste zrovna začínáte a prozkoumejte funkci Speech service? Jsou implementace 
 
 ## <a name="stay-informed"></a>Aktuální informace
 
-Novinky o službě Cognitive Services se shromažďují v [blog služeb Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Nejnovější informace o službě pro zpracování řeči, sledovat [blog služby řeči](https://azure.microsoft.com/blog/tag/speech-service/).
+Novinky o službě Cognitive Services se shromažďují v [blog služeb Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Nejnovější informace o hlasové služby sledování [hlasové služby blogu](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="search"></a>Search
 

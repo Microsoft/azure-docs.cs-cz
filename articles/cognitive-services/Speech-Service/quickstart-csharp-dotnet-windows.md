@@ -10,18 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: cff3f526586eb52466883247d41a57dae919dd21
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838608"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Pomocí této příručky vytvoříte konzolovou aplikaci pro převod řeči na text s využitím rozhraní .NET Framework pro Windows a sady Speech SDK. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
+
+Rychlé ukázku (bez sestavování projektu sady Visual Studio sami, jak je uvedeno níže):
+
+Získat všechny nejnovější [sadou SDK pro řeč Cognitive Services](https://github.com/Azure-Samples/cognitive-services-speech-sdk) z Githubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +45,7 @@ K dokončení tohoto projektu budete potřebovat:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Vyhledejte řetězec `YourSubscriptionKey` a nahraďte ho vaším klíčem předplatného služby Speech.
+1. Najít a nahradit řetězec `YourSubscriptionKey` s klíči předplatného hlasové služby.
 
 1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](regions.md) přidruženou k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
 
@@ -57,7 +61,7 @@ K dokončení tohoto projektu budete potřebovat:
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí se okno konzoly s výzvou k mluvení. Teď řekněte něco v angličtině. Vaše řeč se v reálném čase přenese do služby Speech a přepíše na text. Výsledek se zobrazí v konzole.
+1. Zobrazí se okno konzoly s výzvou k mluvení. Teď řekněte něco v angličtině. Vaše řeči se přenášejí do služeb řeči a převede na text v reálném čase. Výsledek se zobrazí v konzole.
 
     ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Výstup konzoly po úspěšném rozpoznání")
 

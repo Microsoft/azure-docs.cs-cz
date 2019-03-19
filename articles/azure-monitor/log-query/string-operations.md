@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4998084ed15e6ed455789689674e134c6cd9d0a8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749762"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012216"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
 
@@ -64,9 +64,9 @@ Operátor       |Popis                         |Malá a velká písmena|Příkla
 `hasprefix_cs`    |Pravé straně je předpona termín v levé straně         |Ano            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Pravé straně není předponu termín v levé straně     |Ano            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Pravé straně je výraz přípony v levé straně         |Ne            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Pravé straně není výraz přípony v levé straně     |Ne            |`"North America" !hassuffix "americ"
+`!hassuffix`   |Pravé straně není výraz přípony v levé straně     |Ne            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Pravé straně je výraz přípony v levé straně         |Ano            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Pravé straně není výraz přípony v levé straně     |Ano            |`"North America" !hassuffix_cs "icA"
+`!hassuffix_cs`   |Pravé straně není výraz přípony v levé straně     |Ano            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Dojde k pravé straně jako dílčí sekvenci z levé straně  |Ne            |`"FabriKam" contains "BRik"`
 `!contains`    |V levé straně nedojde, pravé straně           |Ne            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Dojde k pravé straně jako dílčí sekvenci z levé straně  |Ano           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 Může mít následující výsledky:
+
 Aktivita                                        |nahradit
 ------------------------------------------------|----------------------------------------------------------
 4663 – byl k pokusu o přístup k objektu  |ID aktivity 4663: Došlo pokusu o přístup k objektu.

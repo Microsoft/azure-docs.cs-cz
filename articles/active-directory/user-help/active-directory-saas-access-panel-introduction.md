@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: asteen
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df034264e54d7d421d9508fb3c08cc6675cb10d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 47c624a9f1d3989e9146f7c32745ca892f6467e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113805"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -82,11 +82,11 @@ Pro přihlášení k založené na heslech jednotného přihlašování, je nutn
 
 > [!NOTE]
 > Další funkce jsou dostupné jenom pro Microsoft Edge, Chrome a Firefox.
->
-Rozšíření si můžete stáhnout přímo z následujících webů:
-- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+> 
+> Rozšíření si můžete stáhnout přímo z následujících webů:
+> - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+> - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+> - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Pokud používáte Moje adresy URL aplikací jiných než `https://myapps.microsoft.com`, nakonfigurujte adresu URL svého výchozí následujícím způsobem:
 1. Když jste *není* přihlášení k rozšíření, klikněte pravým tlačítkem na ikonu rozšíření.

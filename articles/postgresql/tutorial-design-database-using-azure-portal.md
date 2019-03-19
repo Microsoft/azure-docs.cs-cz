@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 2c613319e635cf83b171da4975fe384b2ea80a2c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: aed539484ac01d1b18b8374ffb57456364f9bd2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119256"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure portal
 
@@ -39,33 +39,33 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 Server Azure Database for PostgreSQL se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Server se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 
 Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1.  Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2.  Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
-  ![Azure Database for PostgreSQL – vytvoření databáze](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
+1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
+2. Na stránce **Nový** vyberte **Databáze** a na stránce **Databáze** vyberte **Azure Database for PostgreSQL**.
+   ![Azure Database for PostgreSQL – vytvoření databáze](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
-3.  Do formuláře podrobností o novém serveru zadejte následující informace:
+3. Do formuláře podrobností o novém serveru zadejte následující informace:
 
-    ![Vytvoření serveru](./media/tutorial-design-database-using-azure-portal/2-create.png)
+   ![Vytvoření serveru](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
-    - Název serveru: **mydemoserver** (název serveru se mapuje na název DNS a proto musí být globálně jedinečný) 
-    - Předplatné: Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje.
-    - Skupina prostředků: **myresourcegroup**
-    - Přihlašovací jméno správce serveru a heslo dle vašeho výběru
-    - Umístění
-    - Verze PostgreSQL
+   - Název serveru: **mydemoserver** (název serveru se mapuje na název DNS a proto musí být globálně jedinečný) 
+   - Předplatné: Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje.
+   - Skupina prostředků: **myresourcegroup**
+   - Přihlašovací jméno správce serveru a heslo dle vašeho výběru
+   - Umístění
+   - Verze PostgreSQL
 
    > [!IMPORTANT]
    > Zde zadané přihlašovací jméno a heslo správce serveru se vyžadují pro přihlášení k serveru a jeho databázím dále v tomto kurzu. Tyto informace si zapamatujte nebo poznamenejte pro pozdější použití.
 
-4.  Klikněte na **Cenová úroveň** a určete cenovou úroveň pro nový server. Pro účely tohoto kurzu vyberte **Obecné**, **generace 5** výpočetní generaci 2 **virtuálních jader**, 5 GB **úložiště** a 7 dní  **období uchování zálohy**. Vyberte možnost redundance záloh **Geograficky redundantní**, aby se automatické zálohy vašeho serveru ukládali v geograficky redundantním úložišti.
- ![Azure Database for PostgreSQL – výběr cenové úrovně](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
+4. Klikněte na **Cenová úroveň** a určete cenovou úroveň pro nový server. Pro účely tohoto kurzu vyberte **Obecné**, **generace 5** výpočetní generaci 2 **virtuálních jader**, 5 GB **úložiště** a 7 dní  **období uchování zálohy**. Vyberte možnost redundance záloh **Geograficky redundantní**, aby se automatické zálohy vašeho serveru ukládali v geograficky redundantním úložišti.
+   ![Azure Database for PostgreSQL – výběr cenové úrovně](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
 
-5.  Klikněte na tlačítko **OK**.
+5. Klikněte na tlačítko **OK**.
 
-6.  Klikněte na **Vytvořit**, aby se server zřídil. Zřizování trvá několik minut.
+6. Klikněte na **Vytvořit**, aby se server zřídil. Zřizování trvá několik minut.
 
-7.  Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
- ![Azure Database for PostgreSQL – zobrazení oznámení](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
+7. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
+   ![Azure Database for PostgreSQL – zobrazení oznámení](./media/tutorial-design-database-using-azure-portal/3-notifications.png)
 
    > [!TIP]
    > Zaškrtněte možnost **Připnout na řídicí panel**, abyste povolili snadné sledování vašich nasazení.
@@ -76,17 +76,17 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 
 Služba Azure Database for PostgreSQL využívá bránu firewall na úrovni serveru. Tato brána firewall ve výchozím nastavení brání všem externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud není vytvořené pravidlo brány firewall k otevření brány firewall pro konkrétní rozsah IP adres. 
 
-1.  Jakmile se nasazení dokončí, klikněte na **Všechny prostředky** v nabídce vlevo a zadejte název **mydemoserver**. Vyhledáte tak nově vytvořený server. Klikněte na název serveru uvedený ve výsledcích hledání. Otevře se stránka **Přehled** vašeho serveru a poskytne vám možnosti další konfigurace.
+1. Jakmile se nasazení dokončí, klikněte na **Všechny prostředky** v nabídce vlevo a zadejte název **mydemoserver**. Vyhledáte tak nově vytvořený server. Klikněte na název serveru uvedený ve výsledcích hledání. Otevře se stránka **Přehled** vašeho serveru a poskytne vám možnosti další konfigurace.
 
    ![Azure Database for PostgreSQL – hledání serveru](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  Na stránce serveru vyberte **Zabezpečení připojení**. 
+2. Na stránce serveru vyberte **Zabezpečení připojení**. 
 
-3.  Klikněte do textového pole pod **Názvem pravidla** a přidejte nové pravidlo brány firewall, kterým povolíte připojení rozsahu IP adres. Zadejte rozsahu IP adresy. Klikněte na **Uložit**.
+3. Klikněte do textového pole pod **Názvem pravidla** a přidejte nové pravidlo brány firewall, kterým povolíte připojení rozsahu IP adres. Zadejte rozsahu IP adresy. Klikněte na **Uložit**.
 
    ![Azure Database for PostgreSQL – vytvoření pravidla brány firewall](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
-4.  Klikněte na **Uložit** a pak kliknutím na **X** zavřete stránku **Zabezpečení připojení**.
+4. Klikněte na **Uložit** a pak kliknutím na **X** zavřete stránku **Zabezpečení připojení**.
 
    > [!NOTE]
    > Server Azure PostgreSQL komunikuje přes port 5432. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 5432 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 5432.
@@ -184,11 +184,11 @@ SELECT * FROM inventory;
 ## <a name="restore-data-to-a-previous-point-in-time"></a>Obnovení dat k dřívějšímu bodu v čase
 Představte si, že jste tuto tabulku omylem odstranili. Taková situace se těžko napravuje. Azure Database for PostgreSQL umožňuje přejít zpět k jakémukoli bodu v čase, pro který má server zálohy (závisí na konfigurovaném období uchovávání záloh), a obnovit tento bod v čase na nový server. Tento nový server můžete použít k obnovení odstraněných dat. Následující kroky obnoví server **mydemoserver** do bodu před přidáním tabulky inventáře.
 
-1.  Na stránce **Přehled** Azure Database for PostgreSQL pro váš server klikněte na **Obnovit** na panelu nástrojů. Otevře se stránka **Obnovit**.
+1. Na stránce **Přehled** Azure Database for PostgreSQL pro váš server klikněte na **Obnovit** na panelu nástrojů. Otevře se stránka **Obnovit**.
 
    ![Azure Portal – Možnosti formuláře Obnovit](./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png)
 
-2.  Do formuláře **Restore** zadejte požadované údaje:
+2. Do formuláře **Restore** zadejte požadované údaje:
 
    ![Azure Portal – Možnosti formuláře Obnovit](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
@@ -196,7 +196,7 @@ Představte si, že jste tuto tabulku omylem odstranili. Taková situace se tě�
    - **Cílový server**: Zadejte nový název serveru, kterou chcete obnovit
    - **Umístění**: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
    - **Cenová úroveň**: Tuto hodnotu nemůžete změnit, při obnovování serveru. Je stejná jako u zdrojového serveru. 
-3.  Kliknutím na **OK** provedete [obnovení serveru k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Obnovení serveru k jinému bodu v čase vytvoří duplicitní nový server k původnímu serveru v bodu v čase, který zadáte, a to za předpokladu, že spadá do doby uchování pro vaši [cenovou úroveň](./concepts-pricing-tiers.md).
+3. Kliknutím na **OK** provedete [obnovení serveru k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Obnovení serveru k jinému bodu v čase vytvoří duplicitní nový server k původnímu serveru v bodu v čase, který zadáte, a to za předpokladu, že spadá do doby uchování pro vaši [cenovou úroveň](./concepts-pricing-tiers.md).
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili, jak pomocí webu Azure Portal a dalších nástrojů provádět následující úlohy:

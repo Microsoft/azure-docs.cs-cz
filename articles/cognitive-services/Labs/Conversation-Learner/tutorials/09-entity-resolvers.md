@@ -1,5 +1,5 @@
 ---
-title: Překladače entit v modelu konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Překladače entit v modelu Learner konverzace – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
 description: Další informace o použití překladačů Entity v Learner konverzace.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ebe555bfd7b34efd87d400d786049964665c76e6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cca78e2536a922165f40bbcbabcae005021aa70b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451055"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167843"
 ---
 # <a name="entity-resolvers"></a>Překladače entity
 
@@ -26,7 +26,7 @@ Tento kurz ukazuje použití překladačů Entity v Learner konverzace
 [![Entita překladače kurz ve verzi Preview](https://aka.ms/cl_Tutorial_v3_EntityResolvers_Preview)](https://aka.ms/cl_Tutorial_v3_EntityResolvers)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
+Tento kurz vyžaduje, zda je spuštěna obecné kurzu robota
 
     npm run tutorial-general
 
@@ -37,39 +37,44 @@ Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 
 ## <a name="steps"></a>Kroky
 
-### <a name="create-a-new-model"></a>Vytvořit nový Model
+Začněte na domovskou stránku webového uživatelského rozhraní.
 
-1. Ve webové uživatelské rozhraní klikněte na tlačítko "Nový Model".
-2. V poli "Name" typ "Entity překladače", stiskněte klávesu enter nebo klikněte na tlačítko "Vytvořit".
+### <a name="create-the-model"></a>Vytvoření modelu
+
+1. Vyberte **nový Model**.
+2. Zadejte **Entity překladače** pro **název**.
+3. Vyberte **Vytvořit**.
 
 ### <a name="create-a-pair-of-entities"></a>Vytvoření páru entit
 
-1. Na levém panelu klikněte na tlačítko "," subjekty a pak klikněte na tlačítko "Nová entita".
-2. Do pole "Název Entity" zadejte "Výchozí".
-3. V rozevíracím seznamu "Typ překladače" Vyberte "datetimeV2".
-4. Klikněte na tlačítko "Vytvořit".
-5. Po přečtení informací automaticky otevírané okno, klikněte na tlačítko "OK".
-6. Následující stejné kroky vytvoření jiná entita s názvem "return", která má také typ překladače "datetimeV2".
+1. Vyberte **entity** na levém panelu, pak **novou entitu**.
+2. Zadejte **odeslání** pro **název Entity**.
+3. Vyberte **datetimeV2** pro **typ překladače**.
+4. Vyberte **Vytvořit**. Zavřít informační automaticky otevírané okno výběrem **OK**.
+5. Opakujte kroky 1 až 4 vytvořte druhý entitu s názvem **vrátit** s **datetimeV2** typ překladače.
+
+![](../media/T09_entities.png)
 
 ### <a name="create-a-pair-of-actions"></a>Vytvoření páru akce
 
-1. Na levém panelu klikněte na tlačítko "Akce" a pak klikněte na tlačítko "Nová akce".
-2. V odpovědi bodu robotů také"" typ pole "jste opuštění na $departure a vrací na $return".
-    - DŮLEŽITÉ – když zadáte "$[entityName]" je potřeba přístupů zadejte nebo klikněte na některou entitu v rozevíracím seznamu, jinak konverzace Learner zohlední to jako textu místo Entity.
-    - Všimněte si, že pole "požadováno subjekty" zobrazí také tyto entity a nelze odebrat. To zabrání tato akce poté jsou dostupné, dokud se oba požadované že entity jsou k dispozici.
-3. Klikněte na tlačítko "Vytvořit".
-4. Klepnutím na tlačítko "Nová akce" znovu vytvoří druhou akci.
-5. Pole v "bodu robotů také odpovědi" typ "Pokud plánujete cestovní?".
-6. V "Vyřazení entity" typ pole, "odeslání" a také typ "return".
-    - Tyto soubory určují naše Bot není provádělo tuto akci, pokud některý z těchto entit obsahovat hodnotu.
-7. Klikněte na tlačítko "Vytvořit".
+1. Vyberte **akce** na levém panelu, pak **novou akci**.
+2. Zadejte **jsou opuštění na $departure a vrácení na $return** pro **odezvy bodu robotů také...** .
+    - DŮLEŽITÉ – při zadávání $[entityName] je potřeba přístupů zadejte nebo klikněte na entity v rozevíracím seznamu jinak Learner konverzace bude předpokládat, že to bude textu místo Entity.
+    - Všimněte si, že **požadované entity** pole se zobrazí také tyto entity a nelze ji odebrat. To zabrání tato akce poté jsou dostupné, dokud se oba požadované že entity jsou k dispozici.
+3. Vyberte **Vytvořit**.
+4. Vyberte **novou akci** vytvořit druhou akci.
+5. Zadejte **když plánujete cestovní?** pro **odezvy bodu robotů také...** .
+6. Zadejte **odeslání** a **vrátit** pro **vyřazení entity**. Tyto soubory určují naše Bot není provádělo tuto akci, pokud některý z těchto entit obsahovat hodnotu.
+7. Vyberte **Vytvořit**.
 
+![](../media/T09_actions.png)
 
 ### <a name="training"></a>Školení
 
-1. Podívejte "školení: [Status]" v horní levé části stránky a počkejte na její "Dokončit".
+1. Podívejte **školení: [Status]** v levém horním rohu pro **dokončeno**.
     - Pokud to trvá příliš dlouho, můžete kliknout na odkaz "Obnovit".
     - Školení stav "Dokončeno" je nutné, aby naše Entity překladače fungovat, když jsme trénování modelu.
+
 2. Na levém panelu klikněte na tlačítko "Dialogů Train" a pak klikněte na tlačítko "Dialogové okno Nový Train".
 3. Typ v první utterance uživatele "rezervovat mě let". 
 4. Klikněte na tlačítko "Skóre akce".
@@ -83,6 +88,8 @@ Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
     - Najeďte myší každé z nich a sledujte, jak entity, které jsou objekty datum, které jasně zachytit skutečný kalendářní datum na rozdíl od "Neděle" nebo "zítřejší den".
 10. Vyberte, "opouštíte na..." Odpovědi robotů.
 11. Klikněte na tlačítko "Save".
+
+![](../media/T09_training.png)
 
 ## <a name="next-steps"></a>Další postup
 

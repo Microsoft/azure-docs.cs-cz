@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576986"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901130"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -36,19 +36,19 @@ Zásada dvě brány vyžaduje dva druhy ověřovacích dat, například **e-mail
   * Správce fakturace
   * Podpora partnerů úrovně 1
   * Podpora partnerů úrovně 2
-  * Správce služby Exchange
-  * Správce služby Lync
-  * Správce uživatelských účtů
+  * Správce Exchange
+  * Správce Skypu pro firmy
+  * Správce uživatelů
   * Uživatelé zapisující do adresáře
   * Globální správce ani správce společnosti
-  * Správce služeb Sharepointu
+  * Správce SharePointu
   * Správce dodržování předpisů
   * Správce aplikace
   * Správce zabezpečení
   * Správce privilegovaných rolí
-  * Správce služby Microsoft Intune
+  * Správce Intune
   * Správce služby proxy aplikace
-  * Správce služby CRM
+  * Správce Dynamics 365
   * Správce služby Power BI
   * Správce ověření
   * Správce privilegované ověřování
@@ -81,7 +81,7 @@ Následující tabulka popisuje nastavení zásad hesel použitý pro uživatels
 
 | Vlastnost | Požadavky |
 | --- | --- |
-| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
+| Povolený počet znaků |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
 | Znaky nejsou povoleny |<ul><li>Znaky Unicode.</li><li>Mezery.</li><li> Nesmí obsahovat znak tečky "." bezprostředně předcházející "\@ \" symbol".</li></ul> |
 | Omezení pro heslo |<ul><li>Minimálně 8 znaků a maximálně 16 znaků.</li><li>Vyžaduje tři ze čtyř z následujících akcí:<ul><li>Malá písmena.</li><li>Velká písmena.</li><li>Číslice (0 – 9).</li><li>Symboly (viz předchozí omezení pro heslo).</li></ul></li></ul> |
 | Doba vypršení platnosti hesla |<ul><li>Výchozí hodnota: **90** dnů.</li><li>Hodnota je konfigurovatelná pomocí `Set-MsolPasswordPolicy` rutiny z Active Directory modulu Azure pro Windows PowerShell.</li></ul> |
@@ -110,7 +110,7 @@ Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerSh
 1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
 1. Spustí jednu z následujících příkazů:
 
-   * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Pokud chcete zobrazit, pokud jeden uživatel heslo se nastavilo na nekonečnou platnost, spusťte následující rutinu pomocí hlavního názvu uživatele (například *aprilr\@contoso.onmicrosoft.com*) nebo ID uživatele, kterého chcete zkontrolovat: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Pokud chcete zobrazit **platnost hesla nikdy nevyprší** nastavení pro všechny uživatele, spusťte následující rutinu: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>Nastavení vypršení platnosti hesla

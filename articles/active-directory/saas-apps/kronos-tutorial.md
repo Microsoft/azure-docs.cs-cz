@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56918db207e9a2b0675d5409d2608ed40f28e59c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 126d5b501b9c4239fbdbe06318604bcfaf861150
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>Kurz: Integrace Azure Active Directory s Kronos
 
@@ -68,7 +68,7 @@ Konfigurace integrace Kronos do služby Azure AD, budete muset přidat Kronos z 
 4. Do vyhledávacího pole zadejte **Kronos**vyberte **Kronos** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
      ![Kronos v seznamu výsledků](common/search-new-app.png)
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Kronos podle testovacího uživatele volá **Britta Simon**.
 Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Kronos.
@@ -155,7 +155,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

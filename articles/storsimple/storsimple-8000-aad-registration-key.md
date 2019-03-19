@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079908"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Použití nové ověřování pro StorSimple
 
@@ -47,7 +47,7 @@ Pokud používáte StorSimple řady 8000, ujistěte se, že následující adres
 
 | Vzor adresy URL                         | Cloud | Komponenta nebo funkce         |
 |------------------------------------|-------|----------------------------------|
-| `https://login.windows.net`        | Veřejné Azure |Služba ověřování AAD      |
+| `https://login.windows.net`        | Azure Public |Služba ověřování AAD      |
 | `https://login.microsoftonline.us` | US Government |Služba ověřování AAD      |
 
 Pro úplný seznam URL vzory pro řadu zařízení StorSimple 8000, přejděte na [vzory adres URL pro pravidla brány firewall](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules).
@@ -59,9 +59,9 @@ Pokud adresa URL pro ověřování nejsou zahrnuté v pravidlech brány firewall
 Pokud používáte zařízení řady StorSimple 8000, použijte k určení akce, které musíte provést na základě zařízení software verze, které jsou spuštěné v následující tabulce.
 
 | Pokud vaše zařízení se systémem| Proveďte následující akci                                    |
-|--------------------------|------------------------|--------------------|--------------------------------------------------------------|
+|--------------------------|------------------------|
 | S aktualizací Update 5 nebo novější a zařízení je offline. <br> Zobrazí upozornění, že adresa URL není na seznamu povolených.|1. Upravte pravidla brány firewall zahrnout ověřovací adresa URL. Zobrazit [ověřovací adresy URL](#url-changes-for-aad-authentication).<br>2. [Získání registračního klíče AAD ze služby](#aad-based-registration-keys).<br>3. [Připojení k rozhraní prostředí Windows PowerShell zařízení StorSimple řady 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Použití `Redo-DeviceRegistration` rutiny k registraci zařízení pomocí Windows Powershellu. Zadejte klíč, který jste získali v předchozím kroku.|
-| S aktualizací Update 5 nebo novější a je zařízení online.| Nemusíte nic dělat.                                       |
+| S aktualizací Update 5 nebo novější a je zařízení online.| Nevyžaduje se žádná akce.                                       |
 | S aktualizací Update 4 nebo dřívější a zařízení je offline. |1. Upravte pravidla brány firewall zahrnout ověřovací adresa URL.<br>2. [Stáhnout Update 5 prostřednictvím serveru katalogu](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Použít aktualizace 5 prostřednictvím metody opravy hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Získání registračního klíče AAD ze služby](#aad-based-registration-keys).<br>5. [Připojení k rozhraní prostředí Windows PowerShell zařízení StorSimple řady 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Použití `Redo-DeviceRegistration` rutiny k registraci zařízení pomocí Windows Powershellu. Zadejte klíč, který jste získali v předchozím kroku.|
 | S aktualizací Update 4 nebo dřívější a zařízení je online. |Upravte pravidla brány firewall zahrnout ověřovací adresa URL.<br> Instalace aktualizace 5 prostřednictvím webu Azure portal.              |
 | Obnovení továrního nastavení verze než Update 5.      |Na portálu se zobrazí na základě registrační klíč AAD starší softwaru spuštěného zařízení. Postupujte podle kroků v předchozím scénáři pro když je na zařízení spuštěný Update 4 nebo dřívější.              |

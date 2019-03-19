@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 6c4c001fc538e5ad93a5c4fc3d6405209be7fc53
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 1d60e875b12f02c957ebd6259eb0e7267f23ee51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897601"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k SQL Database z kódu
 
@@ -26,8 +26,8 @@ Vytvoření a Správa služby SQL Database z kódu je nutné zaregistrovat aplik
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvořit instanční objekt pro přístup k prostředkům z aplikace
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Je potřeba mít na nejnovější verzi [prostředí Azure PowerShell](/powershell/azure) nainstalovaná a spuštěná. Podrobné informace najdete v tématu [postup instalace Azure Powershellu](/powershell/azure/install-az-ps).
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Následující skript prostředí PowerShell vytvoří aplikaci Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší aplikace v jazyce C#. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -47,7 +47,7 @@ Následující skript prostředí PowerShell vytvoří aplikaci Active Directory
     $uri = "http://{app-name}"
     $secret = "{app-password}"
 
-    # Create a AAD app
+    # Create an AAD app
     $azureAdApplication = New-AzADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
     # Create a Service Principal for the app

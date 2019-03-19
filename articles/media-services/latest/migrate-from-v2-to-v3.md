@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/04/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340344"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841119"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -72,6 +72,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
     * Živé události nahradí kanálu.<br/>Živé události se účtuje podle měřiče živý kanál. Další informace najdete v tématu [fakturační](live-event-states-billing.md) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Živé nahradí výstup programu.
 * Výstupy za provozu není nutné explicitně spustit, spusťte na vytváření a zastavit při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
+*  Pokud chcete získat informace o úloze, musíte znát název transformace, ve kterém byla úloha vytvořena. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkce mezer s ohledem na rozhraní API v2
 
@@ -98,6 +99,7 @@ V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné
 |Vytvoření assetu a nahrání souboru |[Příklad .NET v2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Příklad .NET v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Odeslání úlohy|[Příklad .NET v2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Příklad .NET v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Předvádí postup při prvním vytvoření transformace a odešlete úlohu.|
 |Publikování assetu pomocí šifrování AES |1. Create ContentKeyAuthorizationPolicyOption<br/>2. Create ContentKeyAuthorizationPolicy<br/>3. Create AssetDeliveryPolicy<br/>4. Vytvoření prostředku a nahrát obsah nebo odeslat úlohu a použití prostředku výstupu<br/>5. Přiřazení k AssetDeliveryPolicy Assetu<br/>6. Vytvoření ContentKey<br/>7. Připojit ContentKey k Assetu<br/>8. Vytvoření AccessPolicy<br/>9. Vytvoření lokátoru<br/><br/>[Příklad .NET v2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Vytvoření obsahu klíče zásad<br/>2. Vytvoření prostředku<br/>3. Nahrát obsah nebo Asset používat jako JobOutput<br/>4. Vytvořit lokátor streamování<br/><br/>[Příklad .NET v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Získání podrobností o úlohách a Správa úloh |[Správa úloh pomocí v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Správa úloh pomocí v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Známé problémy
 

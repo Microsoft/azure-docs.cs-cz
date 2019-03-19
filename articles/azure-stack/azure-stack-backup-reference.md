@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b35b069f05f117b227a2edbf5595f2682b7f6e86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997268"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odkaz na službu Backup infrastruktury
 
@@ -89,17 +89,20 @@ Požadavky zahrnují:
 Infrastruktura zálohování řadič bude zálohovat data na vyžádání. Doporučuje se zálohování alespoň dvakrát den a udržování maximálně sedmidenní zálohy. 
 
 **1811 a novější**
+
 | Škálování prostředí | Očekávaná velikost zálohy | Celkové množství místa potřebné |
 |-------------------|--------------------------|--------------------------------|
 | 4 až 16 uzlů        | 20 GB                    | 280 GB                        |
 | ASDK              | 10 GB                    | 140 GB                        |
 
 **Pre-1811**
+
 | Škálování prostředí | Očekávaná velikost zálohy | Celkové množství místa potřebné |
 |-------------------|--------------------------|--------------------------------|
 | 4 až 16 uzlů, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>Síťové požadavky
+
 | Umístění úložiště                                                                 | Podrobnosti                                                                                                                                                                                 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sdílené složky SMB hostované na zařízení úložiště v rámci prostředí důvěryhodné sítě | Port 445 je vyžadována, pokud instance služby Azure Stack se nachází v prostředí s bránou firewall. Infrastruktura zálohování řadič bude inicializovat připojení a souborový server SMB přes port 445. |
@@ -131,6 +134,7 @@ Certifikát používaný při obnovení cloudu s privátním klíčem (. PFX) ne
 Tato omezení zvažte při plánování, nasazení a provozování vašich instancí služby Microsoft Azure Stack. Následující tabulka popisuje tyto limity.
 
 ### <a name="infrastructure-backup-limits"></a>Omezení infrastruktury zálohování
+
 | Identifikátor omezení                                                 | Omezení        | Komentáře                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Typ zálohování                                                      | Pouze úplné    | Infrastruktura zálohování kontroler podporuje pouze úplné zálohy. Přírůstkové zálohování se nepodporují.                                          |

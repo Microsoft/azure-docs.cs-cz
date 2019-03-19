@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5544be37015368173f3f8eb39288b7a97ae11c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183420"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084993"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizace ve spravované doméně služby Azure AD Domain Services
 Následující diagram znázorňuje, jak funguje synchronizace ve službě Azure AD Domain Services spravované domény.
@@ -70,8 +70,6 @@ Následující tabulka uvádí některé běžné atributy a popisuje, jak se sy
 
 > [!NOTE]
 > **Přihlaste se k spravované doméně pomocí formátu UPN:** Atribut SAMAccountName může být automaticky generované pro některé uživatelské účty ve vaší spravované doméně. Pokud máte více uživatelů stejné atributu mailNickname nebo uživatelé mají příliš dlouhou předpony (UPN), může být automaticky generované SAMAccountName pro tyto uživatele. Proto formátu SAMAccountName (například "CONTOSO100\joeuser') není vždy spolehlivě pro přihlášení k doméně. Automaticky generované SAMAccountName uživatele může lišit od jejich předpona názvu UPN. Použijte formát hlavního názvu uživatele (například "joeuser@contoso100.com") se přihlásit ke spravované doméně spolehlivě.
->
->
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Mapování atributů pro uživatelské účty
 Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské objekty ve vašem tenantovi Azure AD jsou synchronizovány do odpovídající atributy ve vaší spravované doméně.

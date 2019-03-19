@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ff0a70d8b370655df1eef55dac68804a1db406b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f83ee40c97e49add539a44a6ba764024a8e47bfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082142"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081487"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytvoření a správa nárokovatelných virtuálních počítačů ve službě Azure DevTest Labs
 Podobným způsobem, jak přidat nárokovatelných virtuálních počítačů do testovacího prostředí můžete [přidat virtuální počítače standard](devtest-lab-add-vm.md) – od *základní* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md) , nebo [image z Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede přidání nárokovatelných virtuálních počítačů pro testovací prostředí v DevTest Labs pomocí webu Azure portal a procesy, které ukazuje, že uživatel sleduje deklarace identity a jejich převzetí zruší virtuálního počítače.
@@ -64,12 +64,12 @@ Uživatel si může nárokovat libovolný virtuální počítač ze seznamu "Ná
 
 * Ze seznamu "Nárokovatelných virtuálních počítačů" v dolní části podokna "Přehled" testovací prostředí, klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu a zvolte **nárokovat počítač**.
 
- ![Požádat o konkrétní nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
+  ![Požádat o konkrétní nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
 * V horní části podokna "Přehled", zvolte **nárokovat libovolný**. Ze seznamu nárokovatelných virtuálních počítačů je náhodný virtuální počítač přiřazený.
 
- ![Požádat o žádné nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Požádat o žádné nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
 Jakmile uživatel deklarací identity virtuálního počítače, přesunuty do svého seznamu "Moje virtual machines" a není už nárokovatelných žádný uživatel.

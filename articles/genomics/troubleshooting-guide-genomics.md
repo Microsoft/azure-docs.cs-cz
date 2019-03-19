@@ -11,12 +11,12 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 01f4cca8e177d8f9c9325a7920eb7e72c005bbd6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078053"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -73,8 +73,8 @@ Existují tři povinné argumenty:
                 Bases Processed : 1,348,613,600 (1 GBase)
         ```
 
- > [!NOTE]
- >  Případně můžete zahrnout cesty do konfiguračního souboru nemusí přímo zadávat adresu URL a klíč. Pokud zahrnete tyto argumenty příkazového řádku, jakož i konfiguračním souboru, argumenty příkazového řádku bude mít přednost.  
+  > [!NOTE]
+  >  Případně můžete zahrnout cesty do konfiguračního souboru nemusí přímo zadávat adresu URL a klíč. Pokud zahrnete tyto argumenty příkazového řádku, jakož i konfiguračním souboru, argumenty příkazového řádku bude mít přednost.  
 
 Pro pracovní postup ID 1001 a umístěn ve stejné cestě jako msgen spustitelného souboru config.txt bude příkaz vypadat například takto:
 
@@ -116,7 +116,7 @@ Tyto chyby jsou užitečné uživatele. Podle typu souboru a kód chyby, služby
 
 | Typ souboru | Kód chyby | Chybová zpráva                                                                           | Doporučený postup při řešení potíží                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Všechny          | 701        | Čtení [readId] má základních tříd [numberOfBases], ale limit je [maxReadLength]           | Nejčastější příčinou této chyby je poškození souboru, což vede ke zřetězení dvou čtení. Zkontrolujte vstupní soubory. |                                |
+| Všechny          | 701        | Čtení [readId] má základních tříd [numberOfBases], ale limit je [maxReadLength]           | Nejčastější příčinou této chyby je poškození souboru, což vede ke zřetězení dvou čtení. Zkontrolujte vstupní soubory. |
 | BAM          | 200        |   Nelze načíst soubor "[yourFileName]".                                                                                       | Zkontrolujte formát souboru BAM. Znovu odešlete pracovní postup s správně formátovaného souboru.                                                                           |
 | BAM          | 201        |  Nelze načíst soubor BAM [název_souboru].                                                                                      |Zkontrolujte formát souboru BAM.  Odešlete pracovní postup s správně formátovaného souboru.                                                                            |
 | BAM          | 202        | Nelze načíst soubor BAM [název_souboru]. Příliš malé a chybějící záhlaví souboru.                                                                                        | Zkontrolujte formát souboru BAM.  Odešlete pracovní postup s správně formátovaného souboru.                                                                            |

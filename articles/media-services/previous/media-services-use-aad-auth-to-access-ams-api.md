@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa13ffe450b60bd8c896636911268a98b49bbc0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994097"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104127"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD  
  
@@ -71,20 +71,20 @@ Následující diagram znázorňuje tok ověřování Typická interaktivní apl
 1. Vyzvat uživatele k zadání přihlašovacích údajů.
 2. Žádost o přístupový token Azure AD s následujícími parametry:  
 
-    * Koncový bod pro tenanta Azure AD.
+   * Koncový bod pro tenanta Azure AD.
 
-        Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
-    * Identifikátor URI prostředku služby Media Services. 
+       Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
+   * Identifikátor URI prostředku služby Media Services. 
 
-        Pomocí tohoto identifikátoru URI je stejný pro účty Media Services, které jsou ve stejném prostředí Azure (například https://rest.media.azure.net).
+       Pomocí tohoto identifikátoru URI je stejný pro účty Media Services, které jsou ve stejném prostředí Azure (například https://rest.media.azure.net).
 
-    * ID klienta aplikace služby Media Services (nativní).
-    * Identifikátor URI pro přesměrování aplikace služby Media Services (nativní).
-    * Identifikátor URI pro REST Media Services.
+   * ID klienta aplikace služby Media Services (nativní).
+   * Identifikátor URI pro přesměrování aplikace služby Media Services (nativní).
+   * Identifikátor URI pro REST Media Services.
         
-        Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
+       Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
 
-    K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) pomocí možnosti ověřování uživatele.
+     K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) pomocí možnosti ověřování uživatele.
 
 3. Přístupový token Azure AD posílá do klienta.
 4. Klient odešle žádost na rozhraní REST API Azure Media pomocí přístupového tokenu Azure AD.
@@ -113,20 +113,20 @@ Po vytvoření aplikace Azure AD, zobrazí se hodnoty pro následující nastave
     
 1. Aplikace střední vrstvy (webového rozhraní API nebo webové aplikace) požaduje přístupový token Azure AD, který má následující parametry:  
 
-    * Koncový bod pro tenanta Azure AD.
+   * Koncový bod pro tenanta Azure AD.
 
-        Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
-    * Identifikátor URI prostředku služby Media Services. 
+       Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
+   * Identifikátor URI prostředku služby Media Services. 
 
-        Pomocí tohoto identifikátoru URI je stejný pro účtů Media Services, které se nacházejí ve stejné prostředí Azure (například https://rest.media.azure.net).
+       Pomocí tohoto identifikátoru URI je stejný pro účtů Media Services, které se nacházejí ve stejné prostředí Azure (například https://rest.media.azure.net).
 
-    * Identifikátor URI pro REST Media Services.
+   * Identifikátor URI pro REST Media Services.
 
-        Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
+       Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
 
-    * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta.
+   * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta.
     
-    K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) s využitím ověřování instančních objektů možnost služby.
+     K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) s využitím ověřování instančních objektů možnost služby.
 
 2. Přístupový token Azure AD se odešle do střední vrstvy.
 4. Střední vrstva odešle požadavek REST API služby Azure Media s tokenem Azure AD.

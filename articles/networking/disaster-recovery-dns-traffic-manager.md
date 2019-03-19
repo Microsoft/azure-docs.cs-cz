@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391347"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120733"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
@@ -33,13 +33,13 @@ Většina podnikoví zákazníci volí architektura pro více oblastí pro odoln
     
     *Obrázek – aktivní/pasivní vysoká dostupnost s konfigurace zotavení po havárii studenou pohotovostním režimu*
 
-- **Aktivní/pasivní vysoká dostupnost s kontrolka**: V tomto řešení převzetí služeb při selhání je nastavit pohotovostního prostředí s minimální konfigurací. Instalační program obsahuje pouze nezbytné služby spuštěné na podporu pouze náročné a minimální sadu aplikací. V nativním formátu tento scénář můžete provést minimální funkce, ale můžete vertikálně navýšit kapacitu a spustit další služby provést hromadné provozního zatížení, pokud dojde k selhání.
+- **Aktivní/pasivní vysoká dostupnost s kontrolka**: V tomto řešení převzetí služeb při selhání pohotovostní prostředí je nastavený s minimální konfigurací. Instalační program obsahuje pouze nezbytné služby spuštěné na podporu pouze náročné a minimální sadu aplikací. V nativním formátu tento scénář můžete provést minimální funkce, ale můžete vertikálně navýšit kapacitu a spustit další služby provést hromadné provozního zatížení, pokud dojde k selhání.
     
     ![Aktivní/pasivní vysoká dostupnost s kontrolka](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Obrázek: Aktivní/pasivní vysoká dostupnost s kontrolka konfigurace zotavení po havárii*
 
-- **Aktivní/pasivní vysoká dostupnost s záložním pohotovostním režimu**: V tomto řešení převzetí služeb při selhání pohotovostní oblasti předem zahřívají a je připravena vytvořit základní zatížení, automatické škálování je zapnuté a všechny instance jsou spuštěné. Toto řešení není škálovat, aby trvat plného zatížení, ale je funkční, a všechny služby jsou spuštěny. Toto řešení je rozšířená verze kontrolka přístup.
+- **Aktivní/pasivní vysoká dostupnost s záložním pohotovostním režimu**: V tomto řešení převzetí služeb při selhání pohotovostní oblasti je předem topným zařízením a je připravena vytvořit základní zatížení, automatické škálování je zapnuté a všechny instance jsou spuštěné. Toto řešení není škálovat, aby trvat plného zatížení, ale je funkční, a všechny služby jsou spuštěny. Toto řešení je rozšířená verze kontrolka přístup.
     
     ![Aktivní/pasivní s záložním pohotovostním režimem:](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -71,29 +71,30 @@ Je důležité porozumět několika konceptům ve službě DNS, který se často
 *Obrázek – ruční převzetí služeb při selhání pomocí Azure DNS*
 
 Předpoklady pro řešení jsou:
--   Primární a sekundární koncové body mají statické IP adresy, která se často nemění. Dejme tomu, že primární lokalita je IP adresa 100.168.124.44 a 100.168.124.43 se IP adresa pro sekundární lokalitu.
--   Zóny DNS existuje pro primární a sekundární lokality. Dejme tomu, že pro danou primární lokalitu na koncový bod je prod.contoso.com a pro zálohování lokality dr.contoso.com. Existuje také záznam DNS pro hlavní aplikaci označuje jako www.contoso.com.   
--   Hodnota TTL je v nebo nižší než SLA RTO, nastavte v organizaci. Pokud třeba organizace nastaví RTO s odpověď po havárii aplikace bude 60 minut, a hodnota TTL musí být menší než 60 minut, pokud možno nižší lepší. Můžete nastavit Azure DNS pro ruční převzetí služeb při selhání následujícím způsobem:
-1. Vytvoření zóny DNS
-2. Vytvoření záznamů DNS zóny
-3. Aktualizace záznamu CNAME
+- Primární a sekundární koncové body mají statické IP adresy, která se často nemění. Dejme tomu, že primární lokalita je IP adresa 100.168.124.44 a 100.168.124.43 se IP adresa pro sekundární lokalitu.
+- Zóny DNS existuje pro primární a sekundární lokality. Dejme tomu, že pro danou primární lokalitu na koncový bod je prod.contoso.com a pro zálohování lokality dr.contoso.com. Záznam DNS pro hlavní aplikaci označuje jako www\.contoso.com také existuje.   
+- Hodnota TTL je v nebo nižší než SLA RTO, nastavte v organizaci. Pokud třeba organizace nastaví RTO s odpověď po havárii aplikace bude 60 minut, a hodnota TTL musí být menší než 60 minut, pokud možno nižší lepší. 
+  Můžete nastavit Azure DNS pro ruční převzetí služeb při selhání následujícím způsobem:
+- Vytvoření zóny DNS
+- Create DNS zone records
+- Aktualizace záznamu CNAME
 
-### <a name="step-1-create-a-dns"></a>Krok 1: Vytvoření serveru DNS
-Vytvoření zóny DNS (například www.contoso.com), jak je znázorněno níže:
+### <a name="step-1-create-a-dns"></a>Krok 1: Vytvoření DNS
+Vytvoření zóny DNS (například www\.contoso.com) jak je znázorněno níže:
 
 ![Vytvoření zóny DNS v Azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
 *Obrázek – vytvoření zóny DNS v Azure*
 
-### <a name="step-2-create-dns-zone-records"></a>Krok 2: Vytvoření záznamů DNS zóny
+### <a name="step-2-create-dns-zone-records"></a>Krok 2: Create DNS zone records
 
-V rámci této zóny vytvořte tři záznamy (například - www.contoso.com, prod.contoso.com a dr.consoto.com) jako dole nezobrazují.
+V této zóně vytvořte tři záznamy (například - www\.contoso.com, prod.contoso.com a dr.consoto.com) jako dole nezobrazují.
 
-![Vytvoření záznamů DNS zóny](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
+![Create DNS zone records](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Obrázek – vytvoření záznamů zóny DNS v Azure*
 
-V tomto scénáři webu, www.contoso.com má hodnotu TTL 30 minut, je také níže uvedená RTO, který odkazuje na webu prod.contoso.com produkčního prostředí. Tato konfigurace je během běžné obchodní operace. Hodnota TTL prod.contoso.com a dr.contoso.com je nastavená na 300 sekund nebo 5 minut. Můžete použít monitorování služby, jako je Azure Monitor nebo Azure App Insights Azure nebo partnerského řešení, jako je například Dynatrace monitorování se dá dokonce využít domácí pěstuje řešení, které můžete monitorování nebo zjišťování aplikace nebo selhání virtuální infrastruktury na úrovni.
+V tomto scénáři, web, www\.contoso.com má hodnotu TTL 30 minut, je také níže uvedená RTO, který odkazuje na webu prod.contoso.com produkčního prostředí. Tato konfigurace je během běžné obchodní operace. Hodnota TTL prod.contoso.com a dr.contoso.com je nastavená na 300 sekund nebo 5 minut. Můžete použít monitorování služby, jako je Azure Monitor nebo Azure App Insights Azure nebo partnerského řešení, jako je například Dynatrace monitorování se dá dokonce využít domácí pěstuje řešení, které můžete monitorování nebo zjišťování aplikace nebo selhání virtuální infrastruktury na úrovni.
 
 ### <a name="step-3-update-the-cname-record"></a>Krok 3: Aktualizace záznamu CNAME
 
@@ -103,7 +104,7 @@ Po selhání detekuje, změňte hodnotu záznamu tak, aby odkazoval na dr.contos
 
 *Obrázek – aktualizace záznam CNAME v Azure*
 
-Do 30 minut, během nichž většina překladače aktualizuje soubor v mezipaměti zóny, budete přesměrováni na dr.contoso.com jakýkoli dotaz na www.contoso.com.
+Do 30 minut, během nichž většina překladače aktualizuje soubor v mezipaměti zóny dotazu na www\.contoso.com přesměrováni na dr.contoso.com.
 Můžete také spustit následující příkaz Azure CLI ke změně hodnoty CNAME:
  ```azurecli
    az network dns record-set cname set-record \
@@ -142,7 +143,7 @@ Vytvoření nového profilu Azure Traffic Manageru s contoso123 název a vyberte
 ![Vytvořit profil služby Traffic Manager](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 *obrázek – vytvoření profilu Traffic Manageru*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Vytvoření koncových bodů v rámci profilu Traffic Manageru
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Krok 2: Vytváření koncových bodů v rámci profilu Traffic Manageru
 
 V tomto kroku vytvoříte koncové body, které přejděte na produkčního prostředí a servery pro zotavení po havárii. Tady, zvolte **typ** jako externí koncový bod, ale pokud prostředek je hostované v Azure, pak se můžete rozhodnout **koncový bod Azure** také. Pokud se rozhodnete **koncový bod Azure**a pak **cílový prostředek** , který je buď **služby App Service** nebo **veřejnou IP adresu** , která je přidělena Azure. Priorita je nastavena jako **1** protože jde o primární služeb pro oblast 1.
 Podobně vytvořte po havárii obnovení koncový bod v Traffic Manageru také.
@@ -153,7 +154,7 @@ Podobně vytvořte po havárii obnovení koncový bod v Traffic Manageru také.
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Krok 3: Nastavení konfigurace stavu zaškrtnutí a převzetí služeb při selhání
 
-V tomto kroku nastavíte hodnotu TTL pro DNS na 10 sekund, což je respektovat většina rekurzivní překladače přístupem k Internetu. Tato konfigurace znamená, že žádné překladače DNS bude ukládat do mezipaměti informace o více než 10 sekund. Nastavení monitorování koncového bodu, cesta je v aktuální sadě / nebo kořenový, ale můžete přizpůsobit nastavení koncového bodu se vyhodnotit cestu, například prod.contoso.com/index. Na příkladu níže **https** jako protokol pro zjišťování. Ale můžete zvolit **http** nebo **tcp** také. Výběr protokolu závisí na ukončení aplikace. Zjišťování interval je nastavený na 10 sekund, což umožňuje rychlé zjišťování a opakování je nastavena na hodnotu 3. V důsledku toho Traffic Manageru se převzetí služeb při selhání do druhého koncového bodu případě tří po sobě jdoucích intervalech zaregistrovat k chybě. Na následující vzorec definuje celkový čas automatické převzetí služeb při selhání: čas pro převzetí služeb při selhání = TTL + opakujte * interval zjišťování a v takovém případě hodnota je 10 + 3 * 10 = 40 sekund (Max.).
+V tomto kroku nastavíte hodnotu TTL pro DNS na 10 sekund, což je respektovat většina rekurzivní překladače přístupem k Internetu. Tato konfigurace znamená, že žádné překladače DNS bude ukládat do mezipaměti informace o více než 10 sekund. Nastavení monitorování koncového bodu, cesta je v aktuální sadě / nebo kořenový, ale můžete přizpůsobit nastavení koncového bodu se vyhodnotit cestu, například prod.contoso.com/index. Na příkladu níže **https** jako protokol pro zjišťování. Ale můžete zvolit **http** nebo **tcp** také. Výběr protokolu závisí na ukončení aplikace. Zjišťování interval je nastavený na 10 sekund, což umožňuje rychlé zjišťování a opakování je nastavena na hodnotu 3. V důsledku toho Traffic Manageru se převzetí služeb při selhání do druhého koncového bodu případě tří po sobě jdoucích intervalech zaregistrovat k chybě. Tento vzorec definuje celkový čas automatické převzetí služeb při selhání: Čas pro převzetí služeb při selhání = TTL + opakujte * interval zjišťování a v takovém případě hodnota je 10 + 3 * 10 = 40 sekund (Max.).
 Pokud se nový pokus je nastavena na 1 a hodnota TTL je nastavena na 10 sekund, potom čas pro převzetí služeb při selhání 10 + 1 * 10 = 20 sekund. Nastavení opakování na hodnotu větší než **1** eliminovat riziko převzetí služeb při selhání z důvodu počet falešně pozitivních výsledků nebo jakékoli blips menší sítě. 
 
 

@@ -12,12 +12,12 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: d9a17bdad0bfa4965d36fbe2a2cf3a7890060e98
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 39298d34a0d29eb1e5a4234ffe0e0fcca844226e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858180"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí portálu Azure Stack
 
@@ -43,7 +43,7 @@ Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí por
 
    Pokud používáte Azure Stack Development Kit (ASDK), nebudete mít přístup k klienta SSH. Pokud budete potřebovat klienta, existuje několik balíčků, které zahrnují klienta SSH. Například PuTTY zahrnuje generátor klíče SSH (puttygen.exe) a služby klienta SSH. Další informace o dostupných balíčků přečtěte si následující článek k Azure: [Jak používat klíče SSH s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
-   Tento rychlý start využívá PuTTY generování klíčů SSH a připojte se k virtuálnímu počítači Linux serverem. Stáhněte si a nainstalujte PuTTY, přejděte na [ https://www.putty.org/ ](http://www.putty.org).
+   Tento rychlý start využívá PuTTY generování klíčů SSH a připojte se k virtuálnímu počítači Linux serverem. Stáhněte si a nainstalujte PuTTY, přejděte na [ https://www.putty.org/ ](https://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
@@ -77,8 +77,8 @@ Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, k
 
 4. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH**. Vložte veřejný klíč SSH, který jste uložili a klikněte na **OK**.
 
-   >[!NOTE]
- Zajistěte, aby že pro tyto klíče se odebere všechny úvodní a koncové prázdné znaky.
+   > [!NOTE]
+   > Zajistěte, aby že pro tyto klíče se odebere všechny úvodní a koncové prázdné znaky.
 
    ![Základní informace o panelu – Konfigurace virtuálního počítače](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
@@ -88,10 +88,10 @@ Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, k
 
 6. Na **nastavení** stránce, proveďte požadované změny výchozích hodnot.
    
-    - Počínaje verzí Azure Stack. 1808, můžete nakonfigurovat **úložiště** kde je možné použít *spravované disky*. Starší než verze. 1808 lze použít pouze nespravované disky.    
-      ![Konfigurace úložiště pro spravované disky](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   - Počínaje verzí Azure Stack. 1808, můžete nakonfigurovat **úložiště** kde je možné použít *spravované disky*. Starší než verze. 1808 lze použít pouze nespravované disky.    
+     ![Konfigurace úložiště pro spravované disky](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-    Pokud vaše konfigurace jsou připravené, vyberte **OK** pokračujte.
+     Pokud vaše konfigurace jsou připravené, vyberte **OK** pokračujte.
 
 7. Na **Souhrn** klikněte na **OK** spusťte nasazení virtuálního počítače.  
    ![Nasazení](media/azure-stack-quick-linux-portal/deploy.png)

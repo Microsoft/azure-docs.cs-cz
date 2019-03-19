@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884116"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: Datový model Application Insights
 
@@ -29,7 +29,7 @@ Položky telemetrie požadavku (v [Application Insights](../../azure-monitor/app
 
 Název žádosti představuje cestu kódu potřebný ke zpracování požadavku. Kardinalita s nízkou hodnotu umožňující lepší seskupení požadavků. Pro požadavky HTTP, to představuje metodu HTTP a šablonu cesty URL jako `GET /values/{id}` bez skutečného `id` hodnotu.
 
-Application Insights web SDK odešle žádost o název "tak jak jsou" s ohledem na písmen. Seskupení podle uživatelského rozhraní je velká a malá písmena, `GET /Home/Index` se počítá samostatně z `GET /home/INDEX` i v případě, že jsou často výsledkem stejné provádění kontroleru a akce. Důvod, která je obecně jsou adresy URL [malá a velká písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zobrazit, když všechny `404` se naplnilo pro adresy URL zadané na velká písmena. Můžete si přečíst další na žádost o název kolekce pomocí sady SDK webové technologie ASP.Net v [blogový příspěvek](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights web SDK odešle žádost o název "tak jak jsou" s ohledem na písmen. Seskupení podle uživatelského rozhraní je velká a malá písmena, `GET /Home/Index` se počítá samostatně z `GET /home/INDEX` i v případě, že jsou často výsledkem stejné provádění kontroleru a akce. Důvod, která je obecně jsou adresy URL [malá a velká písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zobrazit, když všechny `404` se naplnilo pro adresy URL zadané na velká písmena. Můžete si přečíst další na žádost o název kolekce pomocí sady SDK webové technologie ASP.NET v [blogový příspěvek](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maximální délka: 1024 znaků.
 

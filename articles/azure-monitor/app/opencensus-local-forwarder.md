@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus distribuované trasování místní předávání | Dokumentace Microsoftu
+title: Azure Application Insights OpenCensus distribuované trasování místní předávání (Preview) | Dokumentace Microsoftu
 description: Dopředné OpenCensus distribuované trasování a časem ukončení jazyky, jako je Python a přejděte do služby Azure Application Insights
 services: application-insights
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002817"
 ---
-# <a name="local-forwarder"></a>Místní předávání
+# <a name="local-forwarder-preview"></a>Místní server pro předávání (Preview)
 
 Místní služba předávání je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z nejrůznějších sad SDK a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Je také možné spouštět v systému macOS, ale není oficiálně podporován v tuto chvíli.
 
@@ -79,14 +79,14 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 Pro určité případy použití, může být užitečné spustit místní server pro předávání jako konzolové aplikace. Verze obsahuje následující spustitelný soubor verze hostitele konzoly:
 * binární soubor .NET Core závisí na architektuře */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Tento binární soubor spuštění vyžaduje .NET Core runtime, který má být nainstalována. Přečtěte si tento soubor ke stažení [stránky](https://www.microsoft.com/net/download/dotnet-core/2.1) podrobnosti.
-```batchfile
-E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
-```
-* samostatná sada .NET Core, binární soubory pro x86 a x64 platformy. Ty nevyžadují .NET Core runtime pro spuštění. */ConsoleHost/Win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
-```batchfile
-E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
+  ```
+* samostatná sada .NET Core, binární soubory pro x86 a x64 platformy. Ty nevyžadují .NET Core runtime pro spuštění. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+  ```batchfile
+  E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  ```
 
 ### <a name="linux"></a>Linux
 
@@ -97,7 +97,7 @@ Stejně jako u Windows, verze obsahuje následující spustitelný soubor verze 
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* samostatná .NET Core je sada binární soubory pro linux-64. Ten nevyžaduje, aby modul runtime .NET Core pro spuštění. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
+* samostatná .NET Core je sada binární soubory pro linux-64. Ten nevyžaduje, aby modul runtime .NET Core pro spuštění. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost

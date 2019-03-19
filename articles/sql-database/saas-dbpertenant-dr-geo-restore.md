@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 14c43fbc138d6d70b65f6afd1ef174488e066796
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116771"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geografické obnovení použijte k obnovení ze zálohy databáze víceklientské aplikace SaaS
 
@@ -32,13 +32,13 @@ Geografické obnovení je řešení zotavení po havárii nejnižšími náklady
 
 Tento kurz se věnuje obnovení a vrácení pracovních postupů. Získáte informace o těchto tématech:
 > [!div class="checklist"]
-
->* Synchronizace databáze a elastický fond konfigurační informace do katalogu tenanta.
->* Nastavte zrcadlový obraz prostředí v oblasti obnovení, který zahrnuje aplikace, servery a fondy.   
->* Obnovení databáze katalogu a tenanta pomocí geografického obnovení.
->* Použití geografické replikace repatriovat základní katalogu tenanta a změněných tenantských databázích, až se výpadek vyřeší.
->* Aktualizovat katalog, jak jednotlivé databáze obnovit (nebo repatriated) ke sledování aktuálního umístění aktivní kopie databáze na každého tenanta.
->* Ujistěte se, že aplikace a databáze tenanta vždy ve společném umístění do stejné oblasti Azure pro snížení latence. 
+> 
+> * Synchronizace databáze a elastický fond konfigurační informace do katalogu tenanta.
+> * Nastavte zrcadlový obraz prostředí v oblasti obnovení, který zahrnuje aplikace, servery a fondy.   
+> * Obnovení databáze katalogu a tenanta pomocí geografického obnovení.
+> * Použití geografické replikace repatriovat základní katalogu tenanta a změněných tenantských databázích, až se výpadek vyřeší.
+> * Aktualizovat katalog, jak jednotlivé databáze obnovit (nebo repatriated) ke sledování aktuálního umístění aktivní kopie databáze na každého tenanta.
+> * Ujistěte se, že aplikace a databáze tenanta vždy ve společném umístění do stejné oblasti Azure pro snížení latence. 
  
 
 Než začnete tento kurz, zajistěte splnění následujících požadavků:
@@ -194,13 +194,13 @@ Zatímco koncový bod aplikace je v Traffic Manageru zakázán, aplikace je k di
 
 * Po databáze katalogu byla obnovena, ale předtím, než klienti se zpátky do online režimu, aktualizujte Centrum akcí Wingtip Tickets ve webovém prohlížeči.
 
-    * V zápatí, Všimněte si, že název serveru katalogu teď má příponu – obnovení a nachází se v oblasti obnovení.
+  * V zápatí, Všimněte si, že název serveru katalogu teď má příponu – obnovení a nachází se v oblasti obnovení.
 
-    * Všimněte si, že klienty, kteří se ještě neobnoví jsou označeny jako offline a se nedá vybrat.   
+  * Všimněte si, že klienty, kteří se ještě neobnoví jsou označeny jako offline a se nedá vybrat.   
  
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Pokud otevřete stránku události klienta přímo tenanta je offline, na stránce se zobrazí oznámení offline tenanta. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall.
+  * Pokud otevřete stránku události klienta přímo tenanta je offline, na stránce se zobrazí oznámení offline tenanta. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall.
 
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -245,13 +245,13 @@ Po dokončení procesu obnovení, aplikace a všech tenantů jsou plně funkčn�
 
 4. Otevřete skupinu prostředků, obnovení a Všimněte si, že následující položky:
 
-    * Verze obnovení serverů katalogu a tenants1 s příponou - obnovení. Obnovené databáze katalogu a tenanta na těchto serverech všechny mají názvy používanými v původní oblast.
+   * Verze obnovení serverů katalogu a tenants1 s příponou - obnovení. Obnovené databáze katalogu a tenanta na těchto serverech všechny mají názvy používanými v původní oblast.
 
-    * Tenants2-dpt -&lt;uživatele&gt;– obnovení SQL serveru. Tento server slouží ke zřizování nových tenantů během výpadku.
+   * Tenants2-dpt -&lt;uživatele&gt;– obnovení SQL serveru. Tento server slouží ke zřizování nových tenantů během výpadku.
 
-    * Služby app service s názvem události-wingtip-dpt -&lt;recoveryregion&gt;-&lt;uživatele&gt;, což je instance obnovení události aplikace.
+   * Služby app service s názvem události-wingtip-dpt -&lt;recoveryregion&gt;-&lt;uživatele&gt;, což je instance obnovení události aplikace.
 
-    ![Contoso prostředky v oblasti obnovení](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
+     ![Contoso prostředky v oblasti obnovení](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
 5. Otevřete tenants2-dpt -&lt;uživatele&gt;– obnovení SQL serveru. Všimněte si, že obsahuje hawthornhall databáze a elastického fondu Pool1. Hawthornhall databáze je nakonfigurovaný jako elastické databáze v elastickém fondu Pool1.
 
@@ -367,12 +367,12 @@ Databáze tenanta můžou být rozložená v obnovení a původní oblasti nechy
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
-
->* Použití katalogu tenanta pro uložení pravidelně aktualizovat konfigurační informace, které umožňuje obnovení prostředí zrcadlový obraz má být vytvořen v jiné oblasti.
->* Obnovení databází Azure SQL s využitím geografického obnovení do oblasti pro zotavení.
->* Aktualizujte katalog klienta tak, aby odrážely umístění tenanta obnovené databáze. 
->* Umožňuje aplikaci připojovat ke katalogu tenanta v celém bez změny konfigurace pomocí DNS alias.
->* Použití geografické replikace repatriovat základní obnovené databáze do jejich původního oblasti po výpadku je vyřešený.
+> 
+> * Použití katalogu tenanta pro uložení pravidelně aktualizovat konfigurační informace, které umožňuje obnovení prostředí zrcadlový obraz má být vytvořen v jiné oblasti.
+> * Obnovení databází Azure SQL s využitím geografického obnovení do oblasti pro zotavení.
+> * Aktualizujte katalog klienta tak, aby odrážely umístění tenanta obnovené databáze. 
+> * Umožňuje aplikaci připojovat ke katalogu tenanta v celém bez změny konfigurace pomocí DNS alias.
+> * Použití geografické replikace repatriovat základní obnovené databáze do jejich původního oblasti po výpadku je vyřešený.
 
 Zkuste [zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze](saas-dbpertenant-dr-geo-replication.md) kurzu se dozvíte, jak pomocí georeplikace výrazně zkracuje dobu potřebnou k obnovení víceklientské aplikace ve velkém měřítku.
 

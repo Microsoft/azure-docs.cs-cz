@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: ca1778688f160fc918bd456f92ebe8935bb05d03
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a24f0810a5b785a57a8a255f3f762f2d2a8e6ee4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008742"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170815"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (.NET)
 
@@ -93,7 +93,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 Potřebujete také _připojovací řetězec služby_ IoT Hub, který back-endové aplikaci umožní připojení k vašemu centru a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:

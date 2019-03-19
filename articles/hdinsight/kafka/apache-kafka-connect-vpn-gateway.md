@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0b1ba5c6d342fb0bf6f888af4bc3a4e1c8ef939e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074705"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight pomocí služby Azure Virtual Network
 
@@ -31,29 +31,29 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
 
 * Připojení privátní sítě, jako je vaše místní sítě k virtuální síti. Tato konfigurace umožňuje klientům ve vaší místní síti a pracovat přímo s využitím Kafka. Pokud chcete povolit tuto konfiguraci, proveďte následující úkoly:
 
-    1. Vytvořte virtuální síť.
-    2. Vytvoření brány VPN, který používá konfiguraci site-to-site. Konfigurace použitá v tomto dokumentu se připojí k zařízení brány sítě VPN v místní síti.
-    3. Vytvoření serveru DNS ve virtuální síti.
-    4. Konfigurace předávání mezi serverem DNS v každé síti.
-    5. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
+  1. Vytvořte virtuální síť.
+  2. Vytvoření brány VPN, který používá konfiguraci site-to-site. Konfigurace použitá v tomto dokumentu se připojí k zařízení brány sítě VPN v místní síti.
+  3. Vytvoření serveru DNS ve virtuální síti.
+  4. Konfigurace předávání mezi serverem DNS v každé síti.
+  5. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
 
-    Další informace najdete v tématu [připojení k Apache Kafka z místní sítě](#on-premises) oddílu. 
+     Další informace najdete v tématu [připojení k Apache Kafka z místní sítě](#on-premises) oddílu. 
 
 * Připojení jednotlivých počítačů k virtuální síti pomocí sítě VPN gateway a klienta VPN. Pokud chcete povolit tuto konfiguraci, proveďte následující úkoly:
 
-    1. Vytvořte virtuální síť.
-    2. Vytvoření brány VPN, který používá konfiguraci point-to-site. Tuto konfiguraci můžete použít s klienty Windows a MacOS.
-    3. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
-    4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit pomocí zprostředkovatele IP adres místo názvů domény.
-    5. Stažení a použití klienta VPN ve vývojovém systému.
+  1. Vytvořte virtuální síť.
+  2. Vytvoření brány VPN, který používá konfiguraci point-to-site. Tuto konfiguraci můžete použít s klienty Windows a MacOS.
+  3. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
+  4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit pomocí zprostředkovatele IP adres místo názvů domény.
+  5. Stažení a použití klienta VPN ve vývojovém systému.
 
-    Další informace najdete v tématu [připojit k Apache Kafka se službou klienta VPN](#vpnclient) oddílu.
+     Další informace najdete v tématu [připojit k Apache Kafka se službou klienta VPN](#vpnclient) oddílu.
 
-    > [!WARNING]  
-    > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
-    >
-    > * Každý klient musí připojit pomocí softwarového klienta sítě VPN.
-    > * Klient VPN nepředává požadavky na název řešení do virtuální sítě, proto je nutné použít IP adres ke komunikaci se systémem Kafka. Komunikace IP vyžaduje další konfiguraci v clusteru Kafka.
+     > [!WARNING]  
+     > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
+     >
+     > * Každý klient musí připojit pomocí softwarového klienta sítě VPN.
+     > * Klient VPN nepředává požadavky na název řešení do virtuální sítě, proto je nutné použít IP adres ke komunikaci se systémem Kafka. Komunikace IP vyžaduje další konfiguraci v clusteru Kafka.
 
 Další informace o používání HDInsight ve virtuální síti najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Networks](../hdinsight-extend-hadoop-virtual-network.md).
 
@@ -232,8 +232,8 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]  
-  > Tento proces trvá přibližně 15 minut.
+   > [!WARNING]  
+   > Tento proces trvá přibližně 15 minut.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro reklamní účely IP
 
@@ -323,23 +323,23 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
 
 3. K odesílání dat do Kafka, použijte následující kód Pythonu:
 
-  ```python
-  from kafka import KafkaProducer
-  # Replace the `ip_address` entries with the IP address of your worker nodes
-  # NOTE: you don't need the full list of worker nodes, just one or two.
-  producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
-  for _ in range(50):
+   ```python
+   from kafka import KafkaProducer
+   # Replace the `ip_address` entries with the IP address of your worker nodes
+   # NOTE: you don't need the full list of worker nodes, just one or two.
+   producer = KafkaProducer(bootstrap_servers=['kafka_broker_1','kafka_broker_2'])
+   for _ in range(50):
       producer.send('testtopic', b'test message')
-  ```
+   ```
 
     Nahradit `'kafka_broker'` položky s adresami vrácená z kroku 1 v této části:
 
-    * Pokud používáte __klientského softwaru VPN__, nahraďte `kafka_broker` položky s IP adresou navyšte kapacitu pracovních uzlů.
+   * Pokud používáte __klientského softwaru VPN__, nahraďte `kafka_broker` položky s IP adresou navyšte kapacitu pracovních uzlů.
 
-    * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky s plně kvalifikovaný název domény uzlů pracovního procesu.
+   * Pokud máte __povolen překlad názvů pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky s plně kvalifikovaný název domény uzlů pracovního procesu.
 
-    > [!NOTE]
-    > Tento kód odešle řetězec `test message` do tématu `testtopic`. Výchozí konfigurace kafka v HDInsight se má vytvořit téma, pokud neexistuje.
+     > [!NOTE]
+     > Tento kód odešle řetězec `test message` do tématu `testtopic`. Výchozí konfigurace kafka v HDInsight se má vytvořit téma, pokud neexistuje.
 
 4. Pokud chcete načíst zprávy z Kafka, použijte následující kód Pythonu:
 

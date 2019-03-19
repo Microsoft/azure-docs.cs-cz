@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5c6cda735f946fc510129f688ebedf85dd054d0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a1d8984b8c9d0859ff754e3d5bfb35bd98236b54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098555"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Správa nákladů a využití pro Log Analytics
 
@@ -163,7 +163,7 @@ Chcete-li pochopit počet počítačů (uzlů), vytváření sestav dat každý 
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat [_IsBillable](log-standard-properties.md#isbillable) vlastnost:
+Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat [_IsBillable](log-standard-properties.md#_isbillable) vlastnost:
 
 `union withsource = tt * 
 | where _IsBillable == true 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 6a8c4583d86b41e767e8a2057bae4cef8943a1c1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193414"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112309"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -93,8 +93,8 @@ Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak
    1. Vyberte **odesílat do Log Analytics**. 
    2. V části **Log Analytics**, zvolte **konfigurovat**. 
    3. V části **pracovních prostorů OMS**, vyberte pracovní prostor pro protokolování.
-   > [!NOTE]
-   > Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
+      > [!NOTE]
+      > Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
    4. V části **protokolu**, vyberte **WorkflowRuntime** kategorie.
    5. Zvolte metriky interval.
    6. Jakmile budete hotoví, vyberte **Uložit**.

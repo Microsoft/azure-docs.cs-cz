@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: c711ea3636a3ea045b4a145481f9da156b8c5bfc
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246980"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852190"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -43,8 +43,9 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 - Oprávnění přispěvatele pro vašeho tenanta umožňuje Azure Sentinelu
 
 - Tenant globální nebo oprávnění správce zabezpečení
+ 
 
-## <a name="enable-azure-sentinel"></a>Povolit Azure Sentinel
+## Povolit Azure Sentinel <a name="enable"></a>
 
 1. Přejděte na web Azure Portal.
 2. Ujistěte se, že je vybrané předplatné, ve kterém se vytvoří Sentinelu Azure. 
@@ -54,11 +55,12 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 1. Klikněte na tlačítko **+ přidat**.
 1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.
 
-   ![hledat](./media/quickstart-onboard/choose-workspace.png)
+   ![search](./media/quickstart-onboard/choose-workspace.png)
 
-  >[!NOTE] 
-  > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  
-  > - Výchozí pracovních prostorů vytvořených službou Azure Security Center se nezobrazí v seznamu. Azure Sentinelu nelze nainstalovat na ně.
+   >[!NOTE] 
+   > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  
+   > - Výchozí pracovních prostorů vytvořených službou Azure Security Center se nezobrazí v seznamu. Azure Sentinelu nelze nainstalovat na ně.
+   > - Azure Sentinel můžete spustit na pracovní prostory, které jsou nasazené v některém z následujících oblastí:  Austrálie – jihovýchod, Kanada – střed, střed Indie, východní USA, Východ USA 2 EUAP (testovací), Japonsko – východ, Asie – jihovýchod, Velká Británie – Jih, západní Evropa, západní USA 2.
 
 6. Klikněte na tlačítko **přidat Azure Sentinel**.
   

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e39bdcde896bca094b60b87308127a6ea01f1dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Kurz: Integrace Azure Active Directory s IriusRisk
 
@@ -89,7 +89,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s IriusRisk, kter
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele IriusRisk](#create-a-iriusrisk-test-user)**  – Pokud chcete mít protějšek Britta Simon IriusRisk, který je propojený s Azure AD reprezentace uživatele.
+1. **[Vytvořit testovacího uživatele IriusRisk](#create-a-iriusrisk-test-user)**  – Pokud chcete mít protějšek Britta Simon IriusRisk, který je propojený s Azure AD reprezentace uživatele.
 1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -164,7 +164,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-a-iriusrisk-test-user"></a>Vytvoření zkušebního uživatele IriusRisk
+### <a name="create-an-iriusrisk-test-user"></a>Vytvořit testovacího uživatele IriusRisk
 
 Cílem této části je vytvořte uživatele Britta Simon v IriusRisk. IriusRisk podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k IriusRisk, pokud ještě neexistuje.
 

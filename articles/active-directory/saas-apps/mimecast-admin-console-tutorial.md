@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7badd00d6d68b9bb27ff55b5954a44abc74b22
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778294"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Kurz: Integrace Azure Active Directory pomocí konzoly pro správu Mimecast
 
@@ -106,6 +106,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí konzoly pro správu M
     ![Mimecast správce konzoly domény a adresy URL jednotného přihlašování – informace](common/sp-signonurl.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL:
+    
     | |
     | -- |
     | `https://webmail-uk.mimecast.com`|
@@ -187,7 +188,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

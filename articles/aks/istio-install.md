@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: 25a68f55eb9a6deb037029d5d8a984ce74f12be5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: d85b830b63e2d52f3eeb5df8645edccfccf43c76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791456"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138146"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Nainstalovat a používat Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Tento článek odděluje Istio pokyny instalaci do několika diskrétní kroky. 
 
 ## <a name="download-istio"></a>Stáhněte si Istio
 
-Nejprve stáhnout a extrahovat nejnovější vydaná verze Istio. Kroky pro prostředí bash v systému MacOS, Linux nebo subsystému Windows pro Linux a prostředí PowerShell mírně liší. Zvolte jeden z následujících instalace kroků pro vaše preferované prostředí:
+Nejprve stáhnout a extrahovat nejnovější vydaná verze Istio. Postup se mírně liší pro prostředí bash v systému MacOS, Linux nebo subsystému Windows pro Linux a prostředí PowerShell. Zvolte jeden z následujících instalace kroků pro vaše preferované prostředí:
 
 * [Bash v systému MacOS, Linux nebo subsystému Windows pro Linux](#bash)
 * [PowerShell](#powershell)
@@ -148,6 +148,9 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 
 > [!IMPORTANT]
 > Nezapomeňte spustit kroky v této části, ze složky nejvyšší úrovně verzi Istio, že jste stažené a rozbalené.
+
+> [!NOTE]
+> Verze `1.0.6` a novější z grafu helmu Istio má rozbíjející změny. Pokud vyberete tuto verzi nainstalovat, budou teď muset ručně vytvořit tajný klíč pro Kiali. Budete také muset ručně vytvořit tajný klíč pro Grafana, pokud jste nastavili `grafana.security.enabled=true`. Zobrazit grafu helmu Istio [README.md](https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio#installing-the-chart) další podrobnosti o tom, jak vytvořit tyto tajné kódy.
 
 Instalace součásti Istio do clusteru AKS, použijte příkaz Helm. Nainstalujte Istio prostředků do `istio-system` obor názvů a povolit další možnosti zabezpečení a monitorování následujícím způsobem:
 

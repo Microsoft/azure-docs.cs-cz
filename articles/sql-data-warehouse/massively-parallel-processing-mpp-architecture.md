@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 236009a3292f26d7fda73013c022f40535aa1ecb
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992324"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835029"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
 Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
@@ -51,7 +51,7 @@ SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživ
 
 Výpočetní uzly poskytují výpočetní výkon. Distribuce namapovat na výpočetních uzlech pro zpracování. Protože platíte za další výpočetní prostředky, SQL Data Warehouse znovu mapuje distribucí do výpočetních uzlů k dispozici. Počet výpočetních uzlů v rozmezí od 1 do 60 a je určen podle úrovně služeb pro datový sklad.
 
-Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](http://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Služba pro přesun dat
 Přesun dat Service (DMS) je technologie přenosu dat, která koordinuje přesun dat mezi jednotlivými výpočetními uzly. Některé dotazy vyžadují přesunu dat pro zajištění přesných výsledků vrátí paralelní dotazy. Při přesunu dat je potřeba, DMS zajišťuje že ta správná data načte do správného umístění. 
@@ -124,9 +124,9 @@ Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychl
 [Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Fórum MSDN]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

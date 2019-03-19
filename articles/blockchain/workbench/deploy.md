@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7fead05e7404e042d923631f4ba745553085943a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098106"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -108,20 +108,20 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
 
     *Použít existující* možnost umožňuje zadat síť blockchain ethereum během testování of-Authority (PoA). Koncové body mají následující požadavky.
 
-    * Koncový bod musí být síť blockchain ethereum během testování of-Authority (PoA).
-    * Koncový bod musí být veřejně přístupná přes síť.
-    * Síťové blockchainové PoA by měl být povolen mají cenu plynu nastaven na hodnotu nula.
+   * Koncový bod musí být síť blockchain ethereum během testování of-Authority (PoA).
+   * Koncový bod musí být veřejně přístupná přes síť.
+   * Síťové blockchainové PoA by měl být povolen mají cenu plynu nastaven na hodnotu nula.
 
-    > [!NOTE]
-    > Blockchain Workbench účty nejsou financování. Pokud jsou vyžadovány fondy, transakce se nezdaří.
+     > [!NOTE]
+     > Blockchain Workbench účty nejsou financování. Pokud jsou vyžadovány fondy, transakce se nezdaří.
 
-    ![Upřesňující nastavení pro existující síť blockchain](media/deploy/advanced-blockchain-settings-existing.png)
+     ![Upřesňující nastavení pro existující síť blockchain](media/deploy/advanced-blockchain-settings-existing.png)
 
-    | Nastavení | Popis  |
-    |---------|--------------|
-    | Ethereum RPC Endpoint | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
-    | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
-    | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
+     | Nastavení | Popis  |
+     |---------|--------------|
+     | Ethereum RPC Endpoint | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná na https:// nebo http:// a končí číslem portu. Například `http<s>://<network-url>:<port>`. |
+     | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
+     | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
 
 9. Vyberte **OK** dokončete Upřesnit nastavení.
 
@@ -223,18 +223,18 @@ Dále je třeba upravit manifest pro použití aplikačních rolí v rámci Azur
 
     ``` json
     "appRoles": [
-         {
-           "allowedMemberTypes": [
-             "User",
-             "Application"
-           ],
-           "displayName": "Administrator",
-           "id": "<A unique GUID>",
-           "isEnabled": true,
-           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
-           "value": "Administrator"
-         }
-       ],
+         {
+           "allowedMemberTypes": [
+             "User",
+             "Application"
+           ],
+           "displayName": "Administrator",
+           "id": "<A unique GUID>",
+           "isEnabled": true,
+           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
+           "value": "Administrator"
+         }
+       ],
     ```
 
     > [!IMPORTANT]

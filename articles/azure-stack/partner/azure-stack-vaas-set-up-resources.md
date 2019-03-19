@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081759"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Kurz: Nastavit prostředky pro ověření jako služba
 
@@ -56,13 +56,13 @@ Vytvořte tenanta, který vaše organizace používat pro přístup ke službám
 
     Přiřadit role v **služby Azure Stack ověření** aplikace:
 
-    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-    2. Vyberte **všechny služby** > **Azure Active Directory** pod **Identity** oddílu.
-    3. Vyberte **podnikové aplikace** > **služby Azure Stack ověření** aplikace.
-    4. Vyberte **Uživatelé a skupiny**. **Azure Stack ověřování služba - uživatelé a skupiny** okně zobrazí seznam uživatelů s oprávněním k používání aplikace.
-    5. Vyberte **+ přidat uživatele** přidat uživatele z vašeho tenanta a přiřazení role.
+   1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+   2. Vyberte **všechny služby** > **Azure Active Directory** pod **Identity** oddílu.
+   3. Vyberte **podnikové aplikace** > **služby Azure Stack ověření** aplikace.
+   4. Vyberte **Uživatelé a skupiny**. **Azure Stack ověřování služba - uživatelé a skupiny** okně zobrazí seznam uživatelů s oprávněním k používání aplikace.
+   5. Vyberte **+ přidat uživatele** přidat uživatele z vašeho tenanta a přiřazení role.
 
-    Pokud chcete izolovat VaaS prostředkům a akcím mezi různé skupiny v rámci organizace, můžete vytvořit více adresářů tenanta služby Azure AD.
+      Pokud chcete izolovat VaaS prostředkům a akcím mezi různé skupiny v rámci organizace, můžete vytvořit více adresářů tenanta služby Azure AD.
 
 ### <a name="register-your-tenant"></a>Zaregistrujte vašeho tenanta
 

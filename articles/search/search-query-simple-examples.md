@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6037d6a1b418a4241f1133b8ca7d89764da22f61
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571367"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136474"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Příklady jednoduchá syntaxe dotazů pro tvorbu dotazů ve službě Azure Search
 
@@ -195,7 +195,7 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
       "count": "true"
     }
 ```
-Výsledky hledání jsou výsledků dosáhnete lépe čitelný, oříznut id úlohy, pracovní pozice a pracovní umístění. Souřadnice počátečního byly získány z náhodných dokument v indexu (v takovém případě pro pracovní umístění na ostrově Staten.
+Výsledky hledání jsou výsledků dosáhnete lépe čitelný, oříznut ID úlohy, pracovní pozice a pracovní umístění. Souřadnice počátečního byly získány z náhodných dokument v indexu (v takovém případě pro pracovní umístění na ostrově Staten.
 
 Můžete také vyzkoušet to v nástroji Postman, pomocí GET:
 
@@ -273,7 +273,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Zkuste zadat dotazy ve vašem kódu. Následující odkazy popisují, jak nastavit vyhledávacích dotazů pro .NET a rozhraní REST API pomocí jednoduché syntaxe výchozí.
 
 * [Dotazování indexu Azure Search pomocí .NET SDK](search-query-dotnet.md)
-* [Dotazování indexu Azure Search pomocí rozhraní REST API](search-query-rest-api.md)
+* [Dotazování indexu Azure Search pomocí rozhraní REST API](search-create-index-rest-api.md)
 
 Odkaz na další syntaxi dotazu architektury a příklady najdete v následujících odkazů:
 

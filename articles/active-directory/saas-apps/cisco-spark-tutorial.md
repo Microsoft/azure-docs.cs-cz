@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d72961fdbb5a0cfd349adc83e6cd90b6a06493
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eb64495d727429ff4dcfc233adee7dd5c60aaa8d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441215"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Integrace Azure Active Directory s Cisco Webex
 
@@ -192,7 +192,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -245,7 +245,7 @@ V této části vytvořte uživatele Britta Simon v Cisco Webex. V této části
 
     b. V **příjmení** textového pole zadejte příjmení uživatele, jako je **Simon**.
 
-    c. V **e-mailová adresa** , jako je textové pole, typ e-mailovou adresu uživatele **britta.simon@contoso.com**.
+    c. V **e-mailová adresa** , jako je textové pole, typ e-mailovou adresu uživatele **britta.simon\@contoso.com**.
 
 5. Klikněte symbol plus přidejte Britta Simon. Pak klikněte na **Další**.
 

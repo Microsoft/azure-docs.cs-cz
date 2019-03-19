@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907511b7f20311479e7b11a30f3d5719daea3f87
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853000"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -93,7 +93,8 @@ Je důležité, abyste měli jistotu, že jste naplánovali dostatečnou kapacit
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* Tento počítač používat vlastní nastavení pro vyvolání některé výchozí limity připojení nad rámec .net doporučené nastavení. Doporučujeme spustit test s výchozím nastavením, než se obrátíte na podporu, abyste mohli tento limit změnit pro vašeho tenanta.
+
+\* Tento počítač používat vlastní nastavení pro vyvolání některé výchozí limity připojení nad rámec .NET doporučené nastavení. Doporučujeme spustit test s výchozím nastavením, než se obrátíte na podporu, abyste mohli tento limit změnit pro vašeho tenanta.
  
 >[!NOTE]
 >Není k dispozici velký rozdíl v maximální TPS mezi 4, 8 a 16 jader počítače. Hlavní rozdíl mezi těmito probíhá očekávaná latence.  

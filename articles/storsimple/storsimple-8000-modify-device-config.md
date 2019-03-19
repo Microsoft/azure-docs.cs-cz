@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008376"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Upravit konfiguraci zařízení StorSimple pomocí služby Správce zařízení StorSimple
 
@@ -71,7 +71,7 @@ Zařízení musí synchronizovat čas, aby bylo možné ověřit pomocí poskyto
 
 Při konfiguraci serveru NTP, ujistěte se, že vaše síť povoluje dat NTP z vašeho datového centra k Internetu. Při zadáním veřejného serveru NTP, musíte se ujistit, že brány firewall sítě a dalších zařízení zabezpečení umožňují do a z vnější síti přenos dat NTP. Pokud není povolený obousměrný přenos dat NTP, je nutné použít interní server NTP (Tato funkce poskytuje řadič domény Windows). Pokud zařízení nemůže synchronizovat čas, nemusí být schopen komunikovat se svým poskytovatelem cloud storage.
 
-Chcete-li zobrazit seznam veřejných servery NTP, přejděte [webové servery NTP](http://support.ntp.org/bin/view/Servers/WebHome).
+Chcete-li zobrazit seznam veřejných servery NTP, přejděte [webové servery NTP](https://support.ntp.org/bin/view/Servers/WebHome).
 
 ### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Co se stane, pokud se zařízení nasazuje v jiném časovém pásmu?
 

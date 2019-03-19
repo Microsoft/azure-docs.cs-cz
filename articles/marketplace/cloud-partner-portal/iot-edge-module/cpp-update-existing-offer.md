@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 071837aac9fce405fcc5ef92e044a0265e0e5969
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430814"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170305"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Aktualizace stávající nabídky modul IoT Edge
 
@@ -49,7 +49,7 @@ Následující operace update jsou společná.
 
 ### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Aktualizace verze bitové kopie modulu IoT Edge pro SKU
 
-Je běžné, že image s modulem IoT Edge pravidelně aktualizovat opravy zabezpečení, další funkce a tak dále. V tomto scénáři budete chtít aktualizovat image s modulem IoT Edge, odkazující na vaši skladovou jednotku s použitím následujících kroků:
+Je běžné, že image modulu IoT Edge pravidelně aktualizovat opravy zabezpečení, další funkce a tak dále. V tomto scénáři budete chtít aktualizovat image s modulem IoT Edge, odkazující na vaši skladovou jednotku s použitím následujících kroků:
 
 1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
 

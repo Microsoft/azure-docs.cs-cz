@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893012"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -29,7 +29,7 @@ Návrh a vytváření správy digitálních práv (DRM) subsystém pro over-the-
 
 Cílové čtecí zařízení pro tento dokument se techniků, kteří pracují v DRM subsystémy OTT nebo řešení online streamování/s více obrazovkami nebo čtenáře, kteří mají zájem o subsystémy DRM. Předpokladem je, že čtečky obeznámeni s alespoň jedním technologií DRM na trhu, jako je PlayReady, Widevine, FairPlay nebo Adobe přístup.
 
-V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: Common Encryption (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
+V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: Common Encryption (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
 
 Mezi výhody používání nativní s více variantami DRM pro ochranu obsahu se, že:
 
@@ -49,7 +49,7 @@ Cíle tohoto článku je:
 Následující tabulka shrnuje nativní podpora DRM na různých platformách a podpora rozšíření EME v různých prohlížečích.
 
 | **Klientskou platformu** | **Nativní DRM** | **ROZŠÍŘENÍ EME** |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Smart TV, externích zařízení** | PlayReady, Widevine, nebo jiné | Vložený prohlížeče/EME PlayReady nebo Widevine|
 | **Windows 10** | PlayReady | Microsoft Edge/11 pro PlayReady|
 | **Zařízení s androidem (telefony, tablety, TV)** |Widevine |Chrome pro Widevine |
@@ -145,7 +145,7 @@ V následující tabulce jsou uvedeny mapování.
 | **Správa klíčů** |Nevyžaduje se pro referenční implementace |
 | **Správa obsahu** |Konzolová aplikace jazyka C# |
 
-Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services a Azure Media Player podporu prostřednictvím technologie smooth streaming nebo šifrování AES-128 pro DASH, HLS nebo smooth CENC přes DASH, přes HLS FairPlay, PlayReady.
+Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení jsou k dispozici ve službě Azure AD. [Rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Azure Media Services a Azure Media Player podporu prostřednictvím technologie smooth streaming nebo šifrování AES-128 pro DASH, HLS nebo smooth CENC přes DASH, přes HLS FairPlay, PlayReady.
 
 Následující diagram ukazuje celkovou strukturu a tok s předchozím mapování technologie:
 
@@ -199,7 +199,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Vytvoření s použitím přehrávače [rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
+8. Vytvoření s použitím přehrávače [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
 
 9. V následující tabulce jsou uvedeny testovací matrice.
 
@@ -365,7 +365,7 @@ Existují dva typy bezpečnostních klíčů:
 
 > [!NOTE]
 > Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Jde o požadavek třídy System.IdentityModel.Tokens.X509AsymmetricSecurityKey v rozhraní .NET Framework. V opačném případě je vyvolána následující výjimka:
-
+> 
 > IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" pro podepisování nesmí být menší než "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>Dokončené systému a testování

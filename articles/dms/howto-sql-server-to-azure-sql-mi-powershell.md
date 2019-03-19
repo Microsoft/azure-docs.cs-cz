@@ -3,20 +3,20 @@ title: Migrace SQL serveru do spravované Instance Azure SQL Database pomocí sl
 description: Zjistěte, jak migrovat z místního SQL serveru do Azure SQL DB Managed Instance pomocí Azure Powershellu.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 3543b7c7410b31b50a6654d3d9807128fff9fd19
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 19fb53e73da40a65b074cb0c2f14f11bb130b586
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177615"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Migrace místního SQL serveru do Azure SQL Database Managed Instance pomocí Azure Powershellu
 V tomto článku, migrujete **Adventureworks2012** databáze obnovit k místní instanci systému SQL Server 2005 nebo novější do Azure SQL Database Managed Instance pomocí prostředí Azure PowerShell. Můžete migrovat databáze z místní instance systému SQL Server do Azure SQL Database Managed Instance pomocí `AzureRM.DataMigration` modulu v prostředí Azure PowerShell.

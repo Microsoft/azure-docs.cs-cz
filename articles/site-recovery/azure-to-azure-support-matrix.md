@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: f1a8646502a11f9c17023587302d7f2f7a4e4234
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dbee223e6c8e878d017026531dd06301fe6aaf84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673254"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093867"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -33,7 +33,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 ## <a name="resource-support"></a>Podpora prostředků
 
 **Akce prostředku** | **Podrobnosti**
---- | --- | ---
+--- | --- 
 **Přesun trezoru mezi skupinami prostředků** | Nepodporuje se
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikaci virtuálního počítače, musíte zakázat a znovu povolte replikaci pro virtuální počítač.
 **Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory.

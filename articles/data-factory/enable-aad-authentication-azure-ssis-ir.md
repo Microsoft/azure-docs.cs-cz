@@ -12,12 +12,12 @@ ms.date: 3/11/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 787c436261635376ff82e8762cbc1469f4375e6b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729958"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848724"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS Integration Runtime
 
@@ -76,37 +76,55 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou zásadu pom
 
 Je možné [konfigurovat a spravovat ověřování Azure AD s SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
 
-1.  Na webu Azure portal, vyberte **všechny služby** -> **SQL servery** v levém navigačním panelu.
+1.  Na webu Azure portal, vyberte **všechny služby** -> **SQL servery** v levém navigačním panelu.
 
 2.  Vyberte váš server Azure SQL Database nakonfigurovat s ověřováním Azure AD.
 
-3.  V **nastavení** části okna vyberte **správce Active Directory**.
+3.  V **nastavení** části okna vyberte **správce Active Directory**.
 
-4.  Na panelu příkazů vyberte **nastavit správce**.
+4.  Na panelu příkazů vyberte **nastavit správce**.
 
-5.  Vyberte uživatelský účet služby Azure AD provádí správce serveru a potom vyberte **vyberte.**
+5.  Vyberte uživatelský účet služby Azure AD provádí správce serveru a potom vyberte **vyberte.**
 
-6.  Na panelu příkazů vyberte **uložit.**
+6.  Na panelu příkazů vyberte **uložit.**
 
 ### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Vytvořte uživatele na serveru Azure SQL Database představující skupinu Azure AD
 
 Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-1.  Spusťte aplikaci SSMS.
+1. Spusťte aplikaci SSMS.
 
-2.  V **připojit k serveru** dialogové okno, zadejte název vašeho serveru Azure SQL Database v **název serveru** pole.
+2. V **připojit k serveru** dialogové okno, zadejte název vašeho serveru Azure SQL Database v **název serveru** pole.
 
-3.  V **ověřování** pole, vyberte **univerzální podporující vícefaktorové ověřování služby Active Directory –** (můžete také použít druhou dva typy ověřování služby Active Directory, naleznete v tématu [ Konfigurace a Správa služby Azure AD ověřování pomocí SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
+3. V **ověřování** pole, vyberte **univerzální podporující vícefaktorové ověřování služby Active Directory –** (můžete také použít druhou dva typy ověřování služby Active Directory, naleznete v tématu [konfigurovat a spravovat Ověřování Azure AD s SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
 
-4.  V **uživatelské jméno** pole, zadejte název účtu Azure AD, kterou jste nastavili jako správce serveru, třeba testuser@xxxonline.com.
+4. V **uživatelské jméno** pole, zadejte název účtu Azure AD, kterou jste nastavili jako správce serveru, třeba testuser@xxxonline.com.
 
-5.  Vyberte **připojit** a dokončete proces přihlašování.
+5. Vyberte **připojit** a dokončete proces přihlašování.
 
-6.  V **Průzkumník objektů**, rozbalte **databází** -> **systémové databáze** složky.
+6. V **Průzkumník objektů**, rozbalte **databází** -> **systémové databáze** složky.
 
-7.  Klikněte pravým tlačítkem na **hlavní** databáze a vyberte **nový dotaz**.
+7. Klikněte pravým tlačítkem na **hlavní** databáze a vyberte **nový dotaz**.
 
-8.  V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+8. V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+
+   ```sql
+   CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
+   ```
+
+   Příkaz je úspěšně dokončena, vytváření uživatele k reprezentování skupiny.
+
+9. Zrušte v okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+
+   ```sql
+   ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
+   ```
+
+   Příkaz je úspěšně dokončena, poskytování omezením uživateli možnost vytvářet databáze (SSISDB).
+
+10. Pokud vaše databáze SSISDB byl vytvořen pomocí ověřování SQL a chcete přejít k němu přístup pomocí ověřování Azure AD pro Azure-SSIS IR, klikněte pravým tlačítkem na **SSISDB** databáze a vyberte **nový dotaz**.
+
+11. V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -114,25 +132,7 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
 
     Příkaz je úspěšně dokončena, vytváření uživatele k reprezentování skupiny.
 
-9.  Zrušte v okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
-
-    ```sql
-    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
-    ```
-
-    Příkaz je úspěšně dokončena, poskytování omezením uživateli možnost vytvářet databáze (SSISDB).
-
-10.  Pokud vaše databáze SSISDB byl vytvořen pomocí ověřování SQL a chcete přejít k němu přístup pomocí ověřování Azure AD pro Azure-SSIS IR, klikněte pravým tlačítkem na **SSISDB** databáze a vyberte **nový dotaz**.
-
-11.  V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
-
-    ```sql
-    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
-    ```
-
-    Příkaz je úspěšně dokončena, vytváření uživatele k reprezentování skupiny.
-
-12.  Zrušte v okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+12. Zrušte v okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
 
     ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
@@ -191,9 +191,9 @@ Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio]
     
     Příkaz je úspěšně dokončena, poskytování spravovanou identitu pro vaši ADF možnost vytvářet databáze (SSISDB).
 
-8.  Pokud vaše databáze SSISDB byl vytvořen pomocí ověřování SQL a chcete přejít k němu přístup pomocí ověřování Azure AD pro Azure-SSIS IR, klikněte pravým tlačítkem na **SSISDB** databáze a vyberte **nový dotaz**.
+8.  Pokud vaše databáze SSISDB byl vytvořen pomocí ověřování SQL a chcete přejít k němu přístup pomocí ověřování Azure AD pro Azure-SSIS IR, klikněte pravým tlačítkem na **SSISDB** databáze a vyberte **nový dotaz**.
 
-9.  V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
+9.  V okně dotazu zadejte následující příkaz jazyka T-SQL a vyberte **Execute** na panelu nástrojů.
 
     ```sql
     CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo

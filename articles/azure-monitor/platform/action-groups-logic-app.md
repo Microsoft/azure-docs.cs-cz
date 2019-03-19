@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121124"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Jak aktivovat složité akce s Azure Monitor výstrah
 
@@ -275,19 +275,19 @@ Je podobný procesu pro vytváření upozornění na metriku [vytvoření upozor
 - Kroky 9 a 10 jsou stejné.
 - K provedení kroků 11 až 14 použijte následující postup:
 
-   1. Vyberte **+** **nový krok** a klikněte na tlačítko **přidat podmínku**. Nastavte následující podmínky, aby aplikace logiky se provádí pouze v případě, že se vstupní data odpovídá tyto hodnoty níže. Pokud zadáte hodnotu verze do textového pole, umístěte kolem něj ("2.0") uvozovky k zajišťuje, že se vyhodnotí jako řetězec a není číselného typu.  Systém se nezobrazují-li se vrátit na stránku, ale základní kód stále udržuje typ řetězce uvozovky. 
-       - `schemaId == AzureMonitorMetricAlert`
-       - `version == "2.0"`
+  1. Vyberte **+** **nový krok** a klikněte na tlačítko **přidat podmínku**. Nastavte následující podmínky, aby aplikace logiky se provádí pouze v případě, že se vstupní data odpovídá tyto hodnoty níže. Pokud zadáte hodnotu verze do textového pole, umístěte kolem něj ("2.0") uvozovky k zajišťuje, že se vyhodnotí jako řetězec a není číselného typu.  Systém se nezobrazují-li se vrátit na stránku, ale základní kód stále udržuje typ řetězce uvozovky. 
+     - `schemaId == AzureMonitorMetricAlert`
+     - `version == "2.0"`
        
        !["Podmínka metriky upozornění datovou část"](media/action-groups-logic-app/metric-alert-payload-condition.png "podmínka metriky upozornění datové části")
 
-   1. V **při hodnotě true** podmínky, přidejte **pro každou** smyčky a akce Microsoft Teams. Definujte zprávy pomocí kombinace HTML a dynamický obsah.
+  1. V **při hodnotě true** podmínky, přidejte **pro každou** smyčky a akce Microsoft Teams. Definujte zprávy pomocí kombinace HTML a dynamický obsah.
 
-       !["Akci po metriky true vyskytl výstražný stav"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "akci po upozornění true podmínku metriky")
+      !["Akci po metriky true vyskytl výstražný stav"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "akci po upozornění true podmínku metriky")
 
-   1. V **případě hodnoty false** podmínky, definujte akce Microsoft Teams pro komunikaci, že upozornění metriky neodpovídá požadavkům aplikace logiky. Zahrnout datovou část JSON. Všimněte si, jak odkazovat `triggerBody` dynamický obsah `json()` výrazu.
+  1. V **případě hodnoty false** podmínky, definujte akce Microsoft Teams pro komunikaci, že upozornění metriky neodpovídá požadavkům aplikace logiky. Zahrnout datovou část JSON. Všimněte si, jak odkazovat `triggerBody` dynamický obsah `json()` výrazu.
 
-       !["Akci po metriky false vyskytl výstražný stav"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "akci po upozornění false podmínku metriky")
+      !["Akci po metriky false vyskytl výstražný stav"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "akci po upozornění false podmínku metriky")
 
 - Krok 15 je stejný. Postupujte podle pokynů pro svou aplikaci logiky a aktualizaci vaší skupiny akcí.
 

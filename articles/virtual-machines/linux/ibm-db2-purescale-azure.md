@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327404"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003502"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
@@ -66,7 +66,7 @@ Tento přístup je šablonu, která můžete změnit pro dimenzování a škálo
 
 ### <a name="compute-considerations"></a>Důležité informace o COMPUTE
 
-Tato architektura spouští aplikace, úložiště a data úrovní, na virtuálních počítačích Azure. [Instalačních skriptů nasazení](http://aka.ms/db2onazure) vytvořte následující:
+Tato architektura spouští aplikace, úložiště a data úrovní, na virtuálních počítačích Azure. [Instalačních skriptů nasazení](https://aka.ms/db2onazure) vytvořte následující:
 
 -   DB2 pureScale clusteru. Typ výpočetní prostředky, které budete potřebovat v Azure závisí na nastavení. Obecně platí můžete použít dvě metody:
 

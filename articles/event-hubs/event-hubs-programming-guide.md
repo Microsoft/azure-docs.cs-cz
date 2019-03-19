@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ab067d09d1e161e463922eeae90fe3b46e887150
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835431"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -26,7 +26,6 @@ Odesíláte události do centra událostí, buď pomocí HTTP POST nebo prostře
 Pokud používáte rozhraní API spravované pomocí .NET, budou primárními konstrukcemi pro publikování dat ve službě Event Hubs třídy [EventHubClient][] a [EventData][]. [EventHubClient][] poskytuje komunikační kanál AMQP, přes který se události posílají do centra událostí. [EventData][] třída představuje událost a slouží k publikování zpráv do centra událostí. Tato třída obsahuje tělo, některá metadata a záhlaví s informacemi o události. Další vlastnosti jsou přidány do [EventData][] objektu prostřednictvím centra událostí.
 
 ## <a name="get-started"></a>Začínáme
-
 Třídy, které podporují službu Event Hubs jsou k dispozici v rozhraní .NET [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) balíček NuGet. Můžete nainstalovat pomocí Průzkumníka řešení v sadě Visual Studio nebo [Konzola správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) v sadě Visual Studio. V tom případě je potřeba zadat v okně [konzoly Správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) následující příkaz:
 
 ```shell
@@ -99,7 +98,6 @@ Jeden batch nesmí překročit 1 MB omezení pro událost. Kromě toho každá z
 Asynchronně odesíláte události do centra událostí. Asynchronní odesílání zvýší rychlost, s jakou je klient schopný odesílat události. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) vrátí [úloh](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektu. Můžete použít [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) možnosti opakování třídy na straně klienta pro klienta ovládacího prvku.
 
 ## <a name="event-consumers"></a>Příjemci událostí
-
 Třída [EventProcessorHost][] zpracovává data z center událostí (Event Hubs). Tuto implementaci byste měli používat při vytváření čtenářů událostí na platformě .NET. Třída [EventProcessorHost][] poskytuje pro implementace zpracovatelů událostí bezpečné prostředí runtime, které umožňuje bezpečné použití vláken a více procesů. Taky poskytuje možnost vytváření kontrolních bodů a správy „půjčování“ oddílu.
 
 K použití třídy [EventProcessorHost][] může být potřeba implementovat rozhraní [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor). Toto rozhraní obsahuje čtyři metody:
@@ -110,6 +108,9 @@ K použití třídy [EventProcessorHost][] může být potřeba implementovat ro
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
 Abyste mohli zahájit zpracování událostí, vytvořit instanci [EventProcessorHost][], poskytnutím příslušných parametrů pro vaše Centrum událostí. Příklad:
+
+> [!NOTE]
+> EventProcessorHost a související třídy jsou součástí **Microsoft.Azure.EventHubs.Processor** balíčku. Přidání balíčku do projektu sady Visual Studio podle pokynů v [v tomto článku](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package) nebo po vydání následujícího příkazu v [Konzola správce balíčků](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) okna:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

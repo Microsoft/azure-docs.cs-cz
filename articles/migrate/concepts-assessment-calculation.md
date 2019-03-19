@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417935"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122803"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -118,14 +118,14 @@ K určení velikosti na základě výkonu potřebuje Azure Migrate data o využi
 
    Níže jsou důvody týkající se důvod, proč posouzení můžete narazit nízkou spolehlivosti:
 
-   - Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte interní hodnocení s dobou výkonu nastavenou na 1 den, budete muset počkat aspoň jeden den po spuštění zjišťování, aby se shromáždily všechny datové body.
+- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte interní hodnocení s dobou výkonu nastavenou na 1 den, budete muset počkat aspoň jeden den po spuštění zjišťování, aby se shromáždily všechny datové body.
 
-   - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nebudeme schopni za toto období shromáždit data o výkonu.
+- Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nebudeme schopni za toto období shromáždit data o výkonu.
 
-   - Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.
+- Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.
 
-   > [!NOTE]
-   > Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 5 hvězdiček, doporučujeme vám počkat aspoň jeden den pro zařízení, která má být profilována prostředí a potom *přepočítat* posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
+  > [!NOTE]
+  > Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 5 hvězdiček, doporučujeme vám počkat aspoň jeden den pro zařízení, která má být profilována prostředí a potom *přepočítat* posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
 
 ## <a name="monthly-cost-estimation"></a>Odhad měsíčních nákladů
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041182"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123772"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní prostředí bez serveru databázi s využitím služby Azure Cosmos DB a Azure Functions
 
@@ -97,11 +97,11 @@ V implementacích maloobchodního prodeje když uživatel přidá položky do n�
 
 1. Víc funkcí Azure můžete vytvořit přidáním aktivace služby Azure Cosmos DB ke každému – které naslouchat na stejný změnit informační kanál data nákupního košíku. Všimněte si, že při naslouchání více funkcí pro stejný kanálu změn novou kolekci zapůjčení se vyžaduje pro každou funkci. Další informace o zapůjčení kolekcí najdete v tématu [Principy knihovnou Change Feed Processor](change-feed-processor.md).
 2. Pokaždé, když uživatelé nákupní košík přidá nová položka, každá funkce nezávisle na sobě vyvolá kanál z nákupního košíku kontejneru změn.
-    * Jednu funkci použít ke změně zobrazení položek, které uživatel může zajímat obsah aktuální nákupní košík.
-    * Jiné funkce může aktualizovat inventáře součty.
-    * Jiné funkce může posílat informace o zákaznících pro určité produkty marketingovém oddělení, který jim zašle propagační poštovní modul. 
+   * Jednu funkci použít ke změně zobrazení položek, které uživatel může zajímat obsah aktuální nákupní košík.
+   * Jiné funkce může aktualizovat inventáře součty.
+   * Jiné funkce může posílat informace o zákaznících pro určité produkty marketingovém oddělení, který jim zašle propagační poštovní modul. 
 
-    Oddělení můžete vytvořit aktivační událost Azure Cosmos DB prostřednictvím naslouchání kanálu změn a ujistěte se, že se nebude zpoždění důležité pořadí zpracování událostí v procesu.
+     Oddělení můžete vytvořit aktivační událost Azure Cosmos DB prostřednictvím naslouchání kanálu změn a ujistěte se, že se nebude zpoždění důležité pořadí zpracování událostí v procesu.
 
 Ve všech těchto případů použití, protože funkce má oddělené vlastní aplikaci, není nutné aktivovat nových instancí aplikace neustále. Místo toho Azure Functions rozjede jednotlivých funkcí k dokončení samostatné procesy podle potřeby.
 

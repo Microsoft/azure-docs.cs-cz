@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089892"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Použití Jenkinse k vytvoření a nasazení Linuxové aplikace
 Jenkins je oblíbený nástroj pro průběžnou integraci a nasazování aplikací. Tady je postup, kterým můžete sestavit a nasadit aplikaci Azure Service Fabric s využitím Jenkinse.
@@ -253,24 +253,24 @@ Kroky v této části ukazují, jak konfigurace úlohy Jenkinse reagovat na změ
       ```
    
    * **Pro Jenkins běží mimo cluster:** Použijte následující postup zkopírujte certifikát clusteru do kontejneru:
-      1. Certifikát musí být ve formátu PEM. Pokud nemáte soubor PEM, můžete vytvořit jednu ze souboru certifikátu PFX. Pokud váš soubor PFX není chráněn heslem, spusťte následující příkaz z hostitele:
+     1. Certifikát musí být ve formátu PEM. Pokud nemáte soubor PEM, můžete vytvořit jednu ze souboru certifikátu PFX. Pokud váš soubor PFX není chráněn heslem, spusťte následující příkaz z hostitele:
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
+        ``` 
 
-      Pokud je soubor PFX chráněný heslem, obsahovat hesla `-passin` parametru. Příklad:
+        Pokud je soubor PFX chráněný heslem, obsahovat hesla `-passin` parametru. Příklad:
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
+        ``` 
 
-      1. Chcete-li získat ID kontejneru pro váš kontejner s Jenkinsem, spusťte `docker ps` z hostitele.
-      1. Zkopírujte soubor PEM, který do vašeho kontejneru pomocí následujícího příkazu Docker:
+     1. Chcete-li získat ID kontejneru pro váš kontejner s Jenkinsem, spusťte `docker ps` z hostitele.
+     1. Zkopírujte soubor PEM, který do vašeho kontejneru pomocí následujícího příkazu Docker:
     
-         ```sh
-         docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
-         ``` 
+        ```sh
+        docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
+        ``` 
 
 Budete téměř hotovi! Ponechte otevřené úlohy Jenkinse. Jediný zbývající úkolu je konfigurace po sestavení kroky k nasazení aplikace do clusteru Service Fabric:
 

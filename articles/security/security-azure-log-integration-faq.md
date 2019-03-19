@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005852"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace protokolů Azure – nejčastější dotazy
 
@@ -99,7 +99,7 @@ Chyba:
 
 Chyba:
 
-  *Vytváří se přiřazení Role - AuthorizationFailed upozornění: Klient janedo@microsoft.com"s objektem id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' nemá oprávnění k provedení akce"Microsoft.Authorization/roleAssignments/write"rozsahu"/ subscriptions/70 d 95299-d689-4 c 97 – b971-0d8ff0000000".*
+  *Vytváří se přiřazení Role - AuthorizationFailed upozornění: Janedo klienta\@microsoft.com "id"fe9e03e4-4dad-4328-910f-fd24a9660bd2"s objektem nemá autorizaci k provedení akce"Microsoft.Authorization/roleAssignments/write"rozsahu" /subscriptions/ 70d 95299-d689-4c 97 – b971-0d8ff0000000 ".*
 
 **Azlog Autorizovat** příkaz přiřadí roli Čtenář instančnímu objektu služby Azure AD (vytvořené pomocí **azlog createazureid**) pro zadaná předplatná. Pokud přihlášení k Azure není spolupracujícího správce nebo vlastníka předplatného, selže s chybovou zprávou "Ověření se nezdařilo". Azure na základě rolí řízení přístupu (RBAC) spolupracujícího správce nebo vlastníka je potřeba k dokončení této akce.
 

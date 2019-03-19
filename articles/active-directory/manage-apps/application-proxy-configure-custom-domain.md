@@ -16,16 +16,16 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3918030925022ac20144f9adac6e7683bac64aa4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106793"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
-Při publikování aplikace prostřednictvím Azure Active Directory Application Proxy můžete vytvořit externí adresu URL pro vaše uživatele zobrazíte, když pracují vzdáleně. Tuto adresu URL získá výchozí doménu *yourtenant.msappproxy.net*. Například pokud jste publikovali aplikaci s názvem výdaje a váš tenant je s názvem Contoso, pak je externí adresa URL https://expenses-contoso.msappproxy.net. Pokud chcete použít vlastní název domény, konfigurace vlastní domény pro vaši aplikaci. 
+Při publikování aplikace prostřednictvím Azure Active Directory Application Proxy můžete vytvořit externí adresu URL pro vaše uživatele zobrazíte, když pracují vzdáleně. Tuto adresu URL získá výchozí doménu *yourtenant.msappproxy.net*. Například pokud jste publikovali aplikaci s názvem výdaje a váš tenant je s názvem Contoso, pak je externí adresa URL `https://expenses-contoso.msappproxy.net`. Pokud chcete použít vlastní název domény, konfigurace vlastní domény pro vaši aplikaci. 
 
 Doporučujeme, abyste nastavili vlastní domény pro vaše aplikace, kdykoli je to možné. Mezi výhody vlastních domén, patří:
 

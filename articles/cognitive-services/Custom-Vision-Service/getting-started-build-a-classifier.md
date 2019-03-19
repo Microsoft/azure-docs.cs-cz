@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088005"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -100,7 +100,7 @@ K nahrání jinou sadu bitových kopií, vraťte se na začátku této části a
 
 > [!NOTE]
 > Custom Vision Service podporuje zpracování některých automatické negativní obrázku. Například pokud zodpovídají za tvorbu hroznového vs. banánů třídění a odešlou obrázek bot pro predikci, třídění by měla stanovení skóre této bitové kopie jako blízko 0 % hroznového a banánů.
-
+> 
 > Na druhé straně v případech, kdy negativní bitové kopie jsou jen varianta Image použité v školení, je pravděpodobné, že model bude klasifikovat negativní bitové kopie jako třída s popiskem obarvené skvělé. Například pokud máte oranžová vs. grapefruity třídění a kanálu v obraze clementine, ho může skóre clementine jako oranžová protože mnoho funkcí clementine se podobají těm oranges. Pokud negativní obrázky jsou této povaha, doporučujeme, abyste vytvořili nejmíň jeden další značky (například **jiných**) a označovat pomocí popisků negativní obrázky s touto značkou při školení, které umožňují lepší rozlišovat mezi tyto třídy modelu .
 
 ## <a name="train-the-classifier"></a>Trénování klasifikátoru

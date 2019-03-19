@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a1d0dab08c4beb93d323bcd1a5f5b00a190daa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003810"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Naplánování vaší implementace připojení k hybridní službě Azure Active Directory
 
@@ -41,6 +41,8 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 
 Tento článek předpokládá, že máte zkušenosti s [Úvod ke správě zařízení ve službě Azure Active Directory](../device-management-introduction.md).
 
+>[!NOTE]
+>  Minimální požadovaná funkčnosti domény a funkční úrovně doménové struktury pro připojení k hybridní službě Azure AD Windows 10 je Windows Server 2008 R2. Na nižší verze uživatel nemůže získat primární aktualizovat Token během přihlašování Windows kvůli problémům s LSA 
 
 ## <a name="plan-your-implementation"></a>Plánování implementace
 

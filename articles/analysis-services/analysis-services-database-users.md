@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993195"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat databázové role a uživatele
 
@@ -71,6 +71,7 @@ K přidání rolí a uživatelů do nasazené modelovou databázi, musíte být 
 2. V **vytvořit roli**, zadejte název role a popis.
 
 3. Vyberte oprávnění.
+
    |Oprávnění|Popis|  
    |----------------|-----------------|  
    |**Úplné řízení (správce)**|Členové mohou změnit schéma modelu zpracování a zadávat dotazy všechna data.| 
@@ -123,8 +124,8 @@ V této ukázce B2B externího uživatele a skupiny se přidají do role analyti
   
 |Rutina|Popis|
 |------------|-----------------| 
-|[Přidat RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Přidáte člena do role databáze.| 
-|[Odebrat RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Odebrání člena z role databáze.|   
+|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Přidáte člena do role databáze.| 
+|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Odebrání člena z role databáze.|   
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Spusťte skript TMSL.|
 
 ## <a name="row-filters"></a>Filtry řádků  
@@ -139,7 +140,7 @@ Filtry řádků platí pro zadané řádky a související řádky. Pokud má ta
   
 |Table|Výraz jazyka DAX|  
 |-----------|--------------------|  
-|Oblast|= Oblast [Země] = "USA"|  
+|Oblast|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [název] = "Jízdní kola"|  
 |Transakce|= Transakce [rok] = 2016|  
   

@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 0f444a4ce41a700af4c55795bca95dbbf95003a4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105246"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Připojit zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování
 
@@ -40,7 +40,7 @@ Otevřete ukázkový vzdálené monitorování v nástroji VS Code:
 
 1. Najít **vzdálené monitorování** a klikněte na tlačítko **otevřít ukázkové**. Otevře se nové okno VS Code zobrazující složku projektu:
 
-  ![Aplikace IoT Workbench, vyberte příklad vzdáleného monitorování](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![Aplikace IoT Workbench, vyberte příklad vzdáleného monitorování](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>Konfigurace zařízení
 
@@ -99,11 +99,11 @@ Chcete-li změnit barvu jednoho DevKit LED, použijte **LedColor** metody:
 
 1. Konfigurace úloh pomocí následující hodnoty a klikněte na tlačítko **použít**:
 
-    * Vyberte úlohu: **Run – metoda**
-    * Název metody: **LedColor**
-    * Název úlohy: **ChangeLedColor**
+   * Vyberte úlohu: **Run – metoda**
+   * Název metody: **LedColor**
+   * Název úlohy: **ChangeLedColor**
 
-    ![Nastavení úlohy](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![Nastavení úlohy](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. Za pár sekund, barva RGB LED (pod tlačítko A) na DevKit změny:
 

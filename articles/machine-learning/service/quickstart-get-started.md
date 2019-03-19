@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
-ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dabc331b13bc53a6d8e94d69c64b87c7f175c24
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7665066a28343f1d2ca46d5210b210f8f103abd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896666"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal
 
@@ -37,7 +36,7 @@ Do vašeho pracovního prostoru se automaticky přidají následující prostře
 
 Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Machine Learning. Stejně jako u ostatních služeb Azure platí pro službu Machine Learning omezení určitých prostředků. Příkladem je velikost výpočetního clusteru. Další informace o [výchozí omezení a o tom, aby vám zvýšila kvótu](how-to-manage-quotas.md).
 
-Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru 
@@ -65,11 +64,11 @@ Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si p
 
 1. Na stránce pracovního prostoru vyberte **prozkoumání služby Azure Machine Learning Workspace**.
 
- ![Prozkoumejte pracovního prostoru](./media/quickstart-get-started/explore_aml.png)
+   ![Prozkoumejte pracovního prostoru](./media/quickstart-get-started/explore_aml.png)
 
 1. Vyberte **otevřít poznámkových bloků Azure** vyzkoušet prvního experimentu v Azure poznámkových bloků.  Poznámkových bloků Azure je samostatná služba, která umožňuje spouštět poznámkové bloky Jupyter zdarma v cloudu.  Pokud použijete tento odkaz na službu, informace o tom, jak se připojit k vašemu pracovnímu prostoru se přidají do knihovny, kterou jste vytvořili v poznámkových bloků Azure.
 
- ![Otevření služby Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
+   ![Otevření služby Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
 1. Přihlaste se k Azure poznámkových bloků.  Ujistěte se, že se že přihlásíte pomocí stejného účtu, který jste použili pro přihlášení na webu Azure portal. Vaše organizace může před přihlášením vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent).
 
@@ -79,7 +78,7 @@ Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si p
 
 1. Vyberte **klonování**.
 
- ![Klonovat do knihovny](./media/quickstart-get-started/clone.png)
+   ![Klonovat do knihovny](./media/quickstart-get-started/clone.png)
 
 1. Pokud se zobrazí, že v zastaveném stavu projektu, klikněte na **zdarma v počítačích** používat server zdarma poznámkového bloku.
 

@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 247198e9ba1cdc6cd43b3fe60a20cd81280113cd
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a8556edd793cbde47c14d2b79792dbe42f8e44b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894287"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v model nákupu založený na DTU
 
@@ -33,7 +33,7 @@ ms.locfileid: "57569939"
 Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikových procesů, úložiště a požadavky na výkon.
 
 ||Basic|Standard|Premium|
-| :-- | --: |--:| --:| --:|
+| :-- | --: |--:| --:|
 |Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz|
 |Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|
 |Uchování záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
@@ -52,10 +52,10 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [nákupní model založený na DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Basic|Standard|Premium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální počet jednotek Dtu | 5 | 3000 | 4000 | 
-||||||
+|||||
 
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
@@ -63,13 +63,13 @@ Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení databázi ve fondu, úložiště a eDTU pro elastický fond
 
 | | **Basic** | **Standard** | **Premium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
 | Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
 | Maximální počet Edtu na databázi | 5 | 3000 | 4000 |
 | Maximální počet Edtu na fond | 1600 | 3000 | 4000 |
 | Maximální počet databází na fond | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
 > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  

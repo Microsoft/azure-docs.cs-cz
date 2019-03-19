@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51ee5362a01a846378228a42343cc0e2b9f72497
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014890"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Seznam prostředků služby Azure Storage v C++
 Operace výpisu jsou klíčem k mnoha vývojové scénáře se službou Azure Storage. Tento článek popisuje, jak co nejefektivněji vytvořit výčet objektů ve službě Azure Storage pomocí seznamu rozhraní API poskytovaných v Microsoft Azure Storage Client Library jazyka C++.
 
 > [!NOTE]
-> Tento průvodce, zaměřuje Klientská knihovna Azure Storage pro C++ verze 2.x, která je k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
+> Tento průvodce, zaměřuje Klientská knihovna Azure Storage pro C++ verze 2.x, která je k dispozici prostřednictvím [NuGet](https://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
 > 
 > 
 
@@ -34,7 +34,7 @@ Klientská knihovna pro úložiště poskytuje celou řadu metod na objekty sezn
 Každá z těchto metod je zobrazit díky jiné přetížení pro různé scénáře.
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchronní a synchronní
-Protože klientskou knihovnu pro úložiště pro C++ je postavený na [knihovny C++ REST](https://github.com/Microsoft/cpprestsdk), podporujeme ze své podstaty asynchronní operace s použitím [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
+Protože klientskou knihovnu pro úložiště pro C++ je postavený na [knihovny C++ REST](https://github.com/Microsoft/cpprestsdk), podporujeme ze své podstaty asynchronní operace s použitím [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -194,7 +194,7 @@ Další informace o Azure Storage a Klientská knihovna pro C++ naleznete v tém
 * [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Azure Klientská knihovna pro úložiště pro dokumentaci k rozhraní API jazyka C++.](http://azure.github.io/azure-storage-cpp/)
+* [Azure Klientská knihovna pro úložiště pro dokumentaci k rozhraní API jazyka C++.](https://azure.github.io/azure-storage-cpp/)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 

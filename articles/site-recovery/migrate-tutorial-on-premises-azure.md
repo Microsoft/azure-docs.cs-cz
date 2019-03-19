@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116163"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110303"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -36,6 +36,8 @@ Toto je třetí kurz ze specializované série. Tento kurz předpokládá, že j
 
 Než začnete, doporučujeme zkontrolovat architekturu [VMware](vmware-azure-architecture.md) nebo [Hyper-V](hyper-v-azure-architecture.md) určenou pro zotavení po havárii.
 
+> [!TIP]
+> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Kliknutím sem](https://aka.ms/migrateVMs-signup)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +56,6 @@ Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
    ![Nový trezor](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny prostředky** a na hlavní stránku **Trezory Recovery Services**.
-
 
 
 ## <a name="select-a-replication-goal"></a>Výběr cíle replikace
@@ -112,10 +113,10 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 5. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
 6. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. To provede následující akce:
 
-    - Proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro virtuální počítač.
-    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
+   - Proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro virtuální počítač.
+   - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
 
-    ![Dokončení migrace](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Dokončení migrace](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]

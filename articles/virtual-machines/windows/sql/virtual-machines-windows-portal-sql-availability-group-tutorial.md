@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 9242edb8ea08b858ae6ad092f4d855483e72d0bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777460"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003446"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -415,6 +415,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, budete muset vytvořit 
 1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
 
 1. Nastavte následujícím způsobem pravidel Vyrovnávání zatížení naslouchacího procesu.
+
    | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ Služby WSFC IP adresa musí být také v nástroji pro vyrovnávání zatížen
 1. Nastavte pravidla Vyrovnávání zatížení. Klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
 
 1. Nastavte následujícím způsobem pravidla Vyrovnávání zatížení adresa IP clusteru core.
+
    | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | WSFCEndPoint |
@@ -505,15 +507,15 @@ Chcete-li otestovat připojení:
 
 1. Použití **sqlcmd** nástroj k testování připojení. Například následující skript vytvoří **sqlcmd** připojení k primární replice prostřednictvím naslouchací proces s ověřováním Windows:
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  Pokud je naslouchací proces používá jiný port než výchozí port (1433), zadejte port, který v připojovacím řetězci. Například následující příkaz sqlcmd se připojí k naslouchání na portu 1435:
+   Pokud je naslouchací proces používá jiný port než výchozí port (1433), zadejte port, který v připojovacím řetězci. Například následující příkaz sqlcmd se připojí k naslouchání na portu 1435:
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 Připojení SQLCMD se automaticky připojí k libovolným instance systému SQL Server hostuje primární repliku.
 

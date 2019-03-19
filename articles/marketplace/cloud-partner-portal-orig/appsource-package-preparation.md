@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837027"
 ---
 # <a name="appsource-package-preparation"></a>Příprava balíčků na AppSource
 
@@ -40,7 +40,7 @@ Balíček pro Package Deployer je jednou ze součástí balíčku AppSource.
 Chcete-li vytvořit balíček pro Package Deployer, použijte následující pokyny: [ https://msdn.microsoft.com/library/dn688182.aspx ](https://msdn.microsoft.com/library/dn688182.aspx). Jakmile budete hotovi, váš balíček bude obsahovat následující prostředky:
 
 1. Složka balíčku: obsahuje všechna řešení, konfigurační data, plochých souborů a obsah pro balíček. _Poznámka: V následujícím příkladu budeme předpokládat, že složka balíčku se nazývá "PkgFolder"_
-2. knihovny DLL: sestavení obsahuje vlastní kód pro svůj balíček. _Poznámka: V následujícím příkladu budeme předpokládat, že tento soubor se nazývá "MicrosoftSample.dll."_
+2. knihovny DLL: Sestavení obsahuje vlastní kód pro svůj balíček. _Poznámka: V následujícím příkladu budeme předpokládat, že tento soubor se nazývá "MicrosoftSample.dll."_
 
 Teď, budete muset vytvořit soubor s názvem "**Content_Types.xml**" Tento soubor se zobrazí všechny, které jsou součástí vašeho balíčku rozšíření prostředků. Tady je ukázkový kód pro soubor.
 
@@ -63,7 +63,7 @@ Posledním krokem je následující kód do jednoho souboru zip. Pojmenujte ji *
 
 1. PkgFolder (včetně všechno ve složce)
 2. knihovny DLL
-3. **Content_Types.XML**
+3. **Content_Types.xml**
 
 Postup vytvoření package.zip:
 
@@ -71,11 +71,11 @@ Postup vytvoření package.zip:
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. Vybrat všechny položky ve složce klikněte pravým tlačítkem a vyberte složku, odeslat do komprimované (zip)
+1. Vybrat všechny položky ve složce klikněte pravým tlačítkem a vyberte složku, odeslat do komprimované (zip)
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. Změňte název na package.zip
+1. Změňte název na package.zip
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ Tady je ukázkový kód pro input.xml. Viz definice v níže uvedená tabulka.
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -115,12 +115,12 @@ Tady je ukázkový kód pro input.xml. Viz definice v níže uvedená tabulka.
 |ProviderName|Kdo je z řešení. Pokud tým Microsoftu, je třeba Microsoft.|
 |PackageFile |Balíček nástroje pro nasazení prostředků spolu s obsahem je zazipovaný\_types.xml souboru. Tento soubor zip by měl obsahovat package deployer sestavení a složku s prostředky nástroje pro nasazení balíčku. To znamená, package.zip|
 |SolutionAnchorName |Název souboru zip řešení v package deployer, který se používá pro zobrazovaný název a popis prostředků řešení.|
-| Datum zahájení| Toto je datum, které bude k dispozici balíček řešení. Je ve formátu MM/DD/RRRR|
-|Datum ukončení|Toto je datum, že bude balíček řešení přestane být k dispozici. Je ve formátu MM/DD/RRRR |
-|SupportedCountries |Toto je čárkami oddělený seznam zemí, které by se měla zobrazit tento balíček. Obraťte se na seznam všech aktuální kódy zemí online služeb. V době, byl to zápis seznamu: AE, AL, AM, AO, AR, AT, Austrálie, AZ, BA, BB, BD, BE, BG, BH, BM, BN, BO, Brazílie, BY, certifikační Autority, CH, CI, CL, CM, CO, CR, CV, SH, CY, CZ, DE, DK, proveďte, DZ, ES, EE, například , ES, FI, FR, GB, GE, GV, GR, GT, HK, HN, HR, HU, ID, IE, IL, IN, IQ, JE HO, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, MĚ, MK, MN, MĚSÍC, MT, JEDNOTKU ZASÍLÁNÍ ZPRÁV, MX, MY , NG, NI, NL, NE, NZ, OPERATIONS MANAGERU, PA, PE, PH, PK, PL, ŽÁDOSTI O PŘIJETÍ ZMĚN, PS, PT, PY, DOTAZŮ A ODPOVĚDÍ, RO, R, RU, RW, SA, SE, SG, MA, SK, SÉRIOVÉ ČÍSLO, SV, TH, TM, TN, TR, TT, TW, UŽIVATELSKÝ AGENT, USA, UY, UZ, VE, VI, VN, ZA, ZW |
+| StartDate| Toto je datum, které bude k dispozici balíček řešení. Je ve formátu MM/DD/RRRR|
+|EndDate|Toto je datum, že bude balíček řešení přestane být k dispozici. Je ve formátu MM/DD/RRRR |
+|SupportedCountries |Toto je čárkami oddělený seznam zemí, které by se měla zobrazit tento balíček. Obraťte se na seznam všech aktuální kódy zemí online služeb. V době psaní tohoto textu byl seznam: AE, AL, AM, AO, AR, AT, AUSTRÁLIE, AZ, BA, BB, BD, BÝT, BG, BH, BM, BN, BO, BRAZÍLIE, PODLE CERTIFIKAČNÍ AUTORITY, CH, PRŮBĚŽNÁ INTEGRACE, CL, CM, CO, CR, CV, SH, CY, CZ, DE, DK, PROVEĎTE, DZ, ES, EE, TŘEBA, ES, FI, FR, GB, GE, GV, GR, GT, HK , HN, HR, HU, ID, IE, IL, IN, IQ, JE HO, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, MĚ, MK, MN, MĚSÍC, MT, JEDNOTKU ZASÍLÁNÍ ZPRÁV, MX, MY, NG, NI, NL, NE, NZ, OBJEKTOVÝ MODEL, PA, PE, PH , PK, PL, ŽÁDOSTI O PŘIJETÍ ZMĚN, PS, PT, PY, DOTAZŮ A ODPOVĚDÍ, RO, RS, RU, RW, SA, SE, SG, SI, SK, SÉRIOVÉ ČÍSLO, SV, TH, TM, TN, TR, TT, TW, UŽIVATELSKÝ AGENT, USA, UY, UZ, ULOŽIT, VI, VN, ZA, ZW |
 |LearnMoreLink | Adresa URL na stránku pro další informace pro tento balíček. |
 |Národní prostředí|Jedna instance tohoto uzlu pro každý jazyk uživatelského prostředí, které chcete podporovat v upřednostňované řešení uživatelské prostředí Tento uzel obsahuje podřízené položky, které popisují národní prostředí, loga a podmínky pro jednotlivé jazyky|
-|Národní prostředí: PackageLocale.Code|LCID jazyka pro tento uzel. Příklad: Je 1033 pro jazykovou verzi US English|
+|Národní prostředí: PackageLocale.Code|LCID jazyka pro tento uzel. Příklad: Je 1033 jazykovou verzi US English|
 |Národní prostředí: PackageLocale.IsDefault|Označuje, že toto je výchozí jazyk. Toto se používá jako na podzim zpět jazyka, pokud jazyk uživatelského prostředí zákazníkem zvolené není k dispozici.|
 |Národní prostředí: Logo|To pokud logo, které chcete použít pro tento balíček. Velikost ikony je 32 x 32. Povolené formáty jsou PNG a JPG|
 |Národní prostředí: podmínky: PackageTerm.File|Toto je název souboru dokumentu HTML, který obsahuje licenční podmínky.|
@@ -132,10 +132,10 @@ Zde je, kde bude zobrazeno:
 Posledním krokem je následující kód do jednoho souboru zip.
 
 1. ZIP (vytvořenou dříve)
-2. **Content_Types.XML**
+2. **Content_Types.xml**
 3. xml
 4. PNG
-5. HTML
+5. html
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 

@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408931"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093224"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru pro úlohy trénování služby Batch AI pomocí webu Azure portal
 
@@ -45,7 +45,7 @@ ssh-keygen -t rsa -b 2048
 
 Podrobnější informace o vytvoření páru klíčů SSH najdete v článku o [vytvoření a použití páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -59,7 +59,7 @@ Před vytvořením pracovního prostoru Batch AI si uspořádejte prostředky Ba
 
 3. Zadejte hodnoty **Název pracovního prostoru** a **Skupina prostředků**. Pokud chcete, můžete v polích **Předplatné** a **Umístění** vybrat pro pracovní prostor jinou možnost. Vyberte **Vytvořit pracovní prostor**.
 
-  ![Vytvoření pracovního prostoru Batch AI](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![Vytvoření pracovního prostoru Batch AI](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte k vytvořenému prostředku a vyberte pracovní prostor.
 
@@ -73,7 +73,7 @@ Souborový server Batch AI je systém souborů NFS s jedním uzlem, který můž
 
 3. Zadejte **uživatelské jméno správce** a zkopírujte obsah souboru s veřejným klíčem SSH do pole **Klíč SSH**. Ve zbývajících polích potvrďte výchozí hodnoty a vyberte **Vytvořit souborový server**.
 
-  ![Vytvoření souborového serveru Batch AI](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![Vytvoření souborového serveru Batch AI](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 Nasazení souborového serveru zabere jen pár minut.
 

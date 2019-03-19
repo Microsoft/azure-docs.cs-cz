@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 4e9abb20e6548d8612bc3b59aba4f7384913d081
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b09c80e08689768ab3e9646b7d6f60f72c33f764
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761544"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077781"
 ---
 # <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Jak provést živé streamování pomocí služby Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí webu Azure portal  
 > [!div class="op_single_selector"]
@@ -41,18 +41,16 @@ Následující část představuje obecné kroky, které jsou součástí proces
 
 > [!NOTE]
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
-> 
-> 
 
 1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
-   
+
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořte a spusťte kanál. 
 3. Načtěte adresu URL ingestování kanálu. 
-   
+
     Adresu URL ingestování používá kodér po kódování v reálném čase k odesílání datového proudu do kanálu.
 4. Načtěte adresu URL náhledu kanálu. 
-   
+
     Tuto adresu URL můžete použít, když chcete ověřit, jestli kanál správně přijímá proud živého vysílání.
 5. Vytvořte událost nebo program (tím se vytvoří také asset). 
 6. Publikujte událost (tím se vytvoří lokátor OnDemand pro přidružený asset).    
@@ -83,31 +81,31 @@ K dokončení kurzu potřebujete následující:
 1. Na webu [Azure Portal](https://portal.azure.com/) vyberte Media Services a klikněte na název účtu Media Services.
 2. Vyberte **Živé streamování**.
 3. Vyberte **Vytvořit vlastní**. Tato možnost vám umožní vytvořit kanál, který má povolené kódování v reálném čase.
-   
+
     ![Vytvoření kanálu](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. Klikněte na **Nastavení**.
-   
+
    1. Jako typ kanálu zvolte **Live Encoding**. Tento typ určuje, že chcete vytvořit kanál, který má povolené kódování v reálném čase. To znamená, že příchozí datový proud s jednou přenosovou rychlostí se odesílá do kanálu a překóduje se na datový proud s více přenosovými rychlostmi pomocí určených nastavení kodéru pro kódování v reálném čase. Další informace najdete v článku [Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md). Klikněte na tlačítko OK.
    2. Zadejte název kanálu.
    3. V dolní části obrazovky klikněte na OK.
 5. Vyberte kartu **Ingestovat**.
-   
+
    1. Na této stránce můžete vybrat protokol streamování. Pro kanál typu **Live Encoding** jsou platné tyto možnosti:
-      
+
       * Fragmentovaný soubor MP4 s jednou přenosovou rychlostí (technologie Smooth Streaming)
       * RTMP s jednou přenosovou rychlostí
-        
+
         Podrobné vysvětlení jednotlivých protokolů najdete v článku [Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
-        
+
         Možnost protokolu nelze změnit, pokud kanál nebo jeho přidružené události nebo programy právě běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý protokol streamování.  
    2. Na ingestování můžete použít omezení IP adres. 
-      
+
        Můžete definovat IP adresy, které mají v tomto kanálu povoleno ingestování videa. Povolené IP adresy můžete zadat buď jako jednu IP adresu (např. '10.0.0.1'), rozsah IP adres pomocí IP adresy a masky podsítě s technologií CIDR (např. '10.0.0.1/22') nebo jako rozsah IP adres pomocí IP adresy a masky podsítě zapsané jako čísla oddělená tečkami (např. '10.0.0.1(255.255.252.0)').
-      
+
        Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 6. Na kartě **Náhled** použijte na náhled omezení IP adres.
 7. Na kartě **Kódování** zadejte předvolbu kódování. 
-   
+
     Momentálně je dostupná jenom jedna možnost: **Výchozí 720 p**. Chcete-li zadat vlastní předvolbu, otevřete lístek podpory společnosti Microsoft. Poté zadejte název vytvořené předvolby. 
 
 > [!NOTE]
@@ -153,18 +151,18 @@ Jakmile datový proud plyne do kanálu, můžete událost streamování zahájit
 Událost můžete spustit dvěma způsoby: 
 
 1. Na stránce **Kanál** stisknutím **Živá událost** přidejte novou událost.
-   
+
     Zadejte název události, název assetu, archivační okno a možnost šifrování.
-   
+
     ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
-   
+
     Pokud jste nechali zaškrtnuté políčko **Publikovat událost nyní**, budou vytvořeny ADRESY URL PRO PUBLIKOVÁNÍ události.
-   
+
     Kdykoli budete připraveni událost streamovat, stiskněte **Spustit**.
-   
+
     Po spuštění události můžete stisknout **Přehrát** a spustit přehrávání obsahu.
 2. Případně můžete použít zástupce a na stránce **Kanál** stisknout tlačítko **Spustit streamování**. Tím vytvoříte výchozí asset, program a lokátor streamování.
-   
+
     Událost získá název **default** a archivační okno bude nastaveno na 8 hodin.
 
 Publikovanou událost můžete sledovat na stránce **Živá událost**. 

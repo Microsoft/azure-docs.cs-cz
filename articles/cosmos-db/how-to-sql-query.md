@@ -1,17 +1,17 @@
 ---
 title: Dotazy SQL pro službu Azure Cosmos DB
-description: Další informace o syntaxi jazyka SQL, databázových koncepcí a dotazů SQL pro službu Azure Cosmos DB. SQL můžete použít jako dotazovací jazyk typu JSON ve službě Azure Cosmos DB.
+description: Další informace o syntaxi jazyka SQL, databázových koncepcí a dotazů SQL pro službu Azure Cosmos DB. Můžete použít SQL jako dotazovací jazyk typu JSON ve službě Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5833ee3964958437b7834ff25f1bce7837370fb1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013898"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -2113,9 +2113,9 @@ Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků 
 
 Pokud výsledky dotazu se nemůže vejít na jedné stránce výsledky a potom vrátí token pro pokračování prostřednictvím rozhraní REST API `x-ms-continuation-token` hlavičky odpovědi. Klienti můžou stránkovat výsledky včetně záhlaví v dalších výsledků. Počet výsledků na stránku je možné řídit také prostřednictvím `x-ms-max-item-count` číslo hlavičky. Pokud zadaný dotaz obsahuje agregační funkci jako `COUNT`, pak na stránce dotazů může vracet částečně agregovaná hodnota na stránku s výsledky. Klienti musí provést druhé úrovně agregace přes tyto výsledky poslední výsledky, například, součet přes počty vrácené v jednotlivých stránek vrátit celkový počet.
 
-Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví stejně jako všechny požadavky rozhraní REST API. Pro zajištění konzistence relace, je potřeba také echo nejnovější `x-ms-session-token` hlavička Cookie v dotazu žádosti. Zásady indexování dotazované kontejner může také ovlivnit konzistence výsledky dotazu. S výchozí nastavení zásady indexování pro kontejnery indexu je vždy s obsahem položky aktuální a výsledky dotazu odpovídat konzistence, které jste zvolili pro data. Pokud k opožděné je mírnější zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [Azure Cosmos DB úrovním][consistency-levels].
+Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví stejně jako všechny požadavky rozhraní REST API. Pro zajištění konzistence relace, je potřeba také echo nejnovější `x-ms-session-token` hlavička Cookie v dotazu žádosti. Zásady indexování dotazované kontejner může také ovlivnit konzistence výsledky dotazu. S výchozí nastavení zásady indexování pro kontejnery indexu je vždy s obsahem položky aktuální a výsledky dotazu odpovídat konzistence, které jste zvolili pro data. Další informace najdete v tématu [Azure Cosmos DB úrovním][consistency-levels].
 
-Pokud nakonfigurované zásady indexování v kontejneru nepodporuje zadaný dotaz, server služby Azure Cosmos DB vrátí 400 "Chybný požadavek". Tato chybová zpráva se vrací pro dotazy na rozsah proti cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnost) a explicitně vyloučené z indexování cesty. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
+Pokud nakonfigurované zásady indexování v kontejneru nepodporuje zadaný dotaz, server služby Azure Cosmos DB vrátí 400 "Chybný požadavek". Tato chybová zpráva se vrací pro dotazy s cestami, které jsou explicitně vyloučené z indexování. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
 
 Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Azure Cosmos DB](sql-api-query-metrics.md).
 

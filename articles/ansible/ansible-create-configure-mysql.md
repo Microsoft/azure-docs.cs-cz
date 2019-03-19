@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 23530dbda06ba99a9c9b2e1665abb09afd8161b1
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 63472cf9c4b6b16f74ececfb6c6e61cf5f89ff9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095394"
 ---
 # <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. 
@@ -134,14 +134,14 @@ ansible-playbook mysql_firewall.yml
 Zadejte další příkazy: 
 
 1. Připojení k serveru pomocí nástroje pro příkazový řádek **mysql**:
-```azurecli-interactive
- mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
-```
+   ```azurecli-interactive
+   mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
+   ```
 
 2. Zobrazení stavu serveru:
-```sql
- mysql> status
-```
+   ```sql
+   mysql> status
+   ```
 
 Pokud vše půjde dobře, měl by výstupem nástroje příkazového řádku být následující text:
 

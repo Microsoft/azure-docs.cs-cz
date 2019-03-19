@@ -11,13 +11,13 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/18/2018
-ms.openlocfilehash: 2351bdbc9675ddaf4a801457ab5bd0e158b6d01d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/13/2019
+ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844122"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrovat na nové úlohy elastické databáze
 
@@ -28,33 +28,31 @@ Pokud máte existující verze zákazníka hostované [úlohy Elastic Database](
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
 Upgradovaná verze úlohy elastické databáze má nová sada rutin prostředí PowerShell pro použití během migrace. Tyto nové rutiny přenesou všechny vaše stávající přihlašovací údaje k úloze, zaměřuje (včetně databází, serverů, vlastní kolekce), aktivační události úlohy, plány úloh, obsah úlohy a úlohy prostřednictvím nového agenta Elastických úloh.
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Nainstalujte nejnovější rutiny Elastických úloh
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Nainstalujte modul **AzureRM.Sql** 4.8.1 ve verzi Preview, se kterým získáte nejnovější rutiny pro elastické úlohy. Spusťte následující příkazy v PowerShellu s přístupem pro správu.
+Nainstalujte **Az.Sql** 1.1.1-preview modulu zobrazíte nejnovější rutiny Elastických úloh. Spusťte následující příkazy v PowerShellu s přístupem pro správu.
 
 ```powershell
-# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+# Installs the latest PackageManagement powershell package which PowerShellGet v1.6.5 is dependent on
 Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
 
-# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+# Installs the latest PowerShellGet module which adds the -AllowPrerelease flag to Install-Module
 Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 
 # Restart your powershell session with administrative access
 
-# Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
+# Places Az.Sql preview cmdlets side by side with existing Az.Sql version
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
-# Import the AzureRM.Sql 4.8.1 module
-Import-Module AzureRM.Sql -RequiredVersion 4.8.1
+# Import the Az.Sql module
+Import-Module Az.Sql -RequiredVersion 1.1.1
 
-# Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-Get-Module AzureRM.Sql
+# Confirm if module successfully imported - if the imported version is 1.1.1, then continue
+Get-Module Az.Sql
 ```
 
 ### <a name="create-a-new-elastic-job-agent"></a>Vytvořit nového agenta Elastických úloh

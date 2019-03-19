@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117876"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -30,20 +30,20 @@ Službu síťové zásady a přístup poskytuje organizacím možnost:
 
 * Přiřaďte centrální umístění pro správu a řízení síťových požadavků k určení:
 
-    * Kdo se může připojit 
+  * Kdo se může připojit 
     
-    * Dobu připojení den jsou povoleny. 
+  * Dobu připojení den jsou povoleny. 
     
-    * Doba připojení
+  * Doba připojení
     
-    * Úroveň zabezpečení, které musí klienti používat pro připojení
+  * Úroveň zabezpečení, které musí klienti používat pro připojení
 
     Místo určení zásad na každém serveru sítě VPN nebo Brána vzdálené plochy, tak učinit po jejich v centrálním umístění. Protokol RADIUS slouží k poskytování centralizované ověřování, autorizaci a monitorování (AAA). 
 
 * Vytvořit a vynucovat zásady stavu klienta ochrany NAP (Network Access), které určují, jestli zařízení jsou udělena neomezeného nebo omezeného přístupu k síťovým prostředkům.
 
 * Poskytují způsob k vynucení ověřování a autorizace pro přístup k protokolu 802. 1 x podporuje bezdrátových přístupových bodů a přepínače sítě Ethernet.   
-Další informace najdete v tématu [Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
+  Další informace najdete v tématu [Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
 
 Umožňuje zvýšit zabezpečení a poskytovat vysokou úroveň dodržování předpisů, organizace může integrovat NPS ověřování Azure Multi-Factor Authentication k zajištění, že uživatelé použít dvoustupňové ověřování pro připojení k virtuálnímu portu na serveru VPN. Pro uživatele, který má být udělen přístup musíte zadat svoje uživatelské jméno a hesla a další informace, které řídí. Tyto informace musí být důvěryhodné a není lehké. Může obsahovat číslo mobilního telefonu, číslo linky nebo aplikace na mobilním zařízení.
 

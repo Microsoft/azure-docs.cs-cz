@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 3e5fa15bbd6890bc6f36c97aadf3aeaa980b5031
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 65064707374ba76701566e061b77bfd6cdf520ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833381"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
@@ -35,7 +35,7 @@ Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, ja
 
 6. Vyberte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci e-mailová oznámení dostávat, když se aktivuje upozornění.
 
-7. Pokud chcete odeslat oznámení na další e-mailové adresy, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělte středníky v následujícím formátu:  *email@contoso.com;email2@contoso.com*
+7. Pokud chcete odeslat oznámení na další e-mailové adresy, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělte středníky v následujícím formátu: *e-mailu\@contoso.com;email2\@contoso.com*
 
 8. Vložit platný identifikátor URI, **Webhooku** pole, pokud má být volána, když se aktivuje upozornění.
 
@@ -127,7 +127,7 @@ Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zo
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klasické upozornění pravidla je možné vytvořit již prostřednictvím prostředí PowerShell. Chcete-li vytvořit pravidlo výstrahy je třeba použít nový ["Přidat AzMetricAlertRule"](https://docs.microsoft.com/powershell/module/az.insights/add-azmetricalertrule?view=azurermps-6.13.0) příkazu.
+8. Klasické upozornění pravidla je možné vytvořit již prostřednictvím prostředí PowerShell. Chcete-li vytvořit pravidlo výstrahy je třeba použít nový ["Přidat AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) příkazu.
 
 ## <a name="next-steps"></a>Další postup
 

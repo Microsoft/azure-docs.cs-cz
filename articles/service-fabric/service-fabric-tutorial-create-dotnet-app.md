@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851359"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
@@ -187,7 +187,7 @@ Otevřete **Views/Shared/_Layout.cshtml**, což je výchozí rozložení aplikac
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -621,22 +621,22 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 4. Vraťte se do prohlížeče a klikněte na některou možnost hlasování nebo přidejte novou. Dostanete se k první zarážce v kontroleru rozhraní API webového front-endu.
     
 
-    1. Tady JavaScript v prohlížeči odesílá požadavek do kontroleru webového rozhraní API ve front-end službě.
+   1. Tady JavaScript v prohlížeči odesílá požadavek do kontroleru webového rozhraní API ve front-end službě.
 
-    ![Front-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![Front-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)**.
-    3. Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)**.
-    4. Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
+   2. Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)**.
+   3. Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)**.
+   4. Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
 
 5. Pokračujte stisknutím **F5**.
-    1. Nyní jste se dostali k zarážce v back-end službě.
+   1. Nyní jste se dostali k zarážce v back-end službě.
 
-    ![Back-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![Back-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. Na prvním řádku v metodě **(1)** se pomocí `StateManager` načte nebo přidá spolehlivý slovník `counts`.
-    3. Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)**.
-    4. V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)**. Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
+   2. Na prvním řádku v metodě **(1)** se pomocí `StateManager` načte nebo přidá spolehlivý slovník `counts`.
+   3. Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)**.
+   4. V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)**. Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
 6. Pokračujte stisknutím **F5**.
 
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.

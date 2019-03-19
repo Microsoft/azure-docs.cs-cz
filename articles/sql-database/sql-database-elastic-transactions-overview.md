@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 65940aa07c532ae3bc708d475b2d6ac60cf8d636
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901912"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 
@@ -127,6 +127,8 @@ Všimněte si, že instalační program pro verzi .NET 4.6.1 může vyžadovat d
 ## <a name="transactions-across-multiple-servers"></a>Transakce napříč několika servery
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Transakcí elastické databáze jsou podporovány na různé servery SQL Database ve službě Azure SQL Database. Když transakce překračují hranice databáze SQL serveru, zúčastněných serverů nejdřív zadat do vztahu vzájemnou komunikaci. Jakmile je navázaný vztah komunikace, všechny databáze v libovolné ze dvou serverů mohou účastnit elastické transakce s databází z jiného serveru. Vztahu komunikace s transakcemi pokrývající více než dva servery SQL Database, musí být nastavené pro jakýkoli pár servery SQL Database.
 

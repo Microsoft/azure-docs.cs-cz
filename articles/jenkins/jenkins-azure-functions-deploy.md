@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: 93504de6384be530ba037f662f7b043729aa3f99
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117077"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Nasazení do služby Azure Functions pomocí modulu plug-in Jenkins Azure Functions
 
@@ -24,8 +24,8 @@ ms.locfileid: "57536909"
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - **Jenkins server**: Pokud nemáte server Jenkins nainstalovali, najdete v článku [vytvoření serveru Jenkins v Azure](./install-jenkins-solution-template.md).
 
- > [!TIP]
- > Zdrojový kód používá pro účely tohoto kurzu je umístěn v [úložiště Visual Studio China GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
+  > [!TIP]
+  > Zdrojový kód používá pro účely tohoto kurzu je umístěn v [úložiště Visual Studio China GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
 
 ## <a name="create-a-java-function"></a>Vytvoření funkce jazyka Java
 

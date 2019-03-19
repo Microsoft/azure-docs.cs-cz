@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 099c7a456e67eae981b2e68e73e2bed7557c7372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094850"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Zřízení a správě Azure čas Series Insights ve verzi Preview
 
@@ -67,7 +67,7 @@ Následující kroky popisují, jak vytvořit prostředí Azure čas Series Insi
      > [!TIP]
      > Čas zařazení do fronty zpráv nemusí být nejvhodnější nakonfigurované nastavení používané k události služby batch nebo historická data nahrávání scénáře. Ujistěte se, že k ověření rozhodnout a použít nebo není v takových případech vlastnost časového razítka.
 
-    ![Karta Zdroj události][2]
+     ![Karta Zdroj události][2]
 
 1. Potvrďte, že vaše prostředí byly zajišťovaný pomocí požadovaného nastavení.
 

@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 09/25/2017
-ms.openlocfilehash: 3ca08f12e3f389265fd3a77b3aa82c086085a10a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403690"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092986"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění služby Azure Key Vault
 
@@ -44,9 +44,9 @@ Volitelné chování služby Key Vault se obnovitelného odstranění a je **nen
 ### <a name="purge-protection--flag"></a>Vymazat příznak ochrany
 Vyprázdnit ochrany (**--enable--ochrany** v Azure CLI) příznak je vypnuto ve výchozím nastavení. Když tento příznak zapnutý, trezor nebo objektu ve stavu odstraněno nelze vyprázdnit až do uplynutí uchovávají 90 dnů. Takové trezor nebo objektu je stále možné obnovit. Tento příznak dává zákazníkům jistotu, že trezor nebo objekt může nikdy být trvale odstraněn až do uplynutí doby uchování. Můžete zapnout příznak vyprázdnění ochranu pouze v případě, že je zapnutý příznak obnovitelného odstranění, nebo při vytváření trezoru zapnout v obou obnovitelného odstranění a mazání ochrany.
 
-> [!NOTE] 
-   Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění.
-To je v Azure CLI 2 pomocí příkazu
+> [!NOTE]
+>    Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění.
+> To je v Azure CLI 2 pomocí příkazu
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

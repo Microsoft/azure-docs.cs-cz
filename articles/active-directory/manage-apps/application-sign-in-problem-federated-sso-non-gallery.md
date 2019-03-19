@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba47f7a80ee88f3a2d0089aae0183cdba62be24f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009058"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci mimo Galerii konfigurované pro federované jednotné přihlašování
 
@@ -32,7 +32,7 @@ ms.locfileid: "56820191"
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři
 
-*Chyba AADSTS70001: Aplikace s identifikátorem "https://contoso.com' nebyl nalezen v adresáři*.
+*Chyba AADSTS70001: Aplikace s identifikátorem `https://contoso.com` nebyl nalezen v adresáři*.
 
 **Možná příčina**
 
@@ -42,27 +42,27 @@ Atribut odesílá z aplikace do služby Azure AD v požadavku SAML vystavitele n
 
 Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier nakonfigurovanou ve službě Azure AD. Pokud používáte [testování prostředí](../develop/howto-v1-debug-saml-sso-issues.md) webu Azure Portal a pomocí rozšíření prohlížeče zabezpečení Moje aplikace, není nutné ručně provést následující kroky.
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
+8. Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřte, jestli hodnota v textovém poli Identifikátor odpovídá hodnotě pro hodnotu identifier zobrazují v chybě.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci. 
 
-*Chyba AADSTS50011: Zpáteční adresu https://contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci* 
+*Chyba AADSTS50011: Adresa pro odpovědi `https://contoso.com` neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci* 
 
 **Možná příčina** 
 
@@ -72,29 +72,29 @@ Hodnota AssertionConsumerServiceURL v požadavku SAML neodpovídá hodnotu adres
 
 Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier nakonfigurovanou ve službě Azure AD. Pokud používáte [testování prostředí](../develop/howto-v1-debug-saml-sso-issues.md) webu Azure Portal a pomocí rozšíření prohlížeče zabezpečení Moje aplikace, není nutné ručně provést následující kroky.
  
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.** 
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.** 
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo. 
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo. 
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky. 
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky. 
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory. 
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory. 
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací. 
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací. 
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
   
-6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování
+6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřit nebo aktualizujte hodnotu v textovém poli Adresa URL odpovědi tak, aby odpovídaly `AssertionConsumerServiceURL` hodnota v požadavku SAML.    
+8. Po načtení aplikace, otevřete **konfigurace základní SAML**. Ověřit nebo aktualizujte hodnotu v textovém poli Adresa URL odpovědi tak, aby odpovídaly `AssertionConsumerServiceURL` hodnota v požadavku SAML.    
     
 Poté, co jste aktualizovali hodnotu adresy URL odpovědi ve službě Azure AD a odpovídá hodnotě, kterou aplikace odeslala, v požadavku SAML, by měl být schopni se přihlásit k aplikaci.
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel není přiřazený k roli
 
-*Chyba AADSTS50105: Přihlášený uživatel "brian@contoso.com" není přiřazen k roli pro aplikaci*
+*Chyba AADSTS50105: Přihlášený uživatel `brian\@contoso.com` není přiřazen k roli pro aplikaci*
 
 **Možná příčina**
 
@@ -104,25 +104,25 @@ Uživateli nebyl udělen přístup k aplikaci ve službě Azure AD.
 
 Jeden nebo více uživatelů přiřadit přímo k aplikaci, použijte následující postup. Pokud používáte [testování prostředí](../develop/howto-v1-debug-saml-sso-issues.md) webu Azure Portal a pomocí rozšíření prohlížeče zabezpečení Moje aplikace, není nutné ručně provést následující kroky.
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
+6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
-7.  Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** levé navigační nabídce aplikace.
 
-8.  Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
+8. Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
 
-9.  Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
+9. Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
 
 10. Zadejte **celý název** nebo **e-mailová adresa** uživatele zájem o přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
 
@@ -146,9 +146,9 @@ Po krátké době možné ke spouštění těchto aplikací pomocí metod popsan
 
 Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné přihlášení. Mezi běžné problémy patří:
 
--   Chybí povinná pole. v požadavku SAML
+-   V požadavku SAML chybí povinná pole.
 
--   Požadavek SAML zakódoval metodu
+-   Kódovaná metoda požadavku SAML
 
 **Řešení**
 
@@ -202,25 +202,25 @@ Poškozený objekt aplikace a služby Azure AD nerozpoznal certifikátu nakonfig
 
 Pokud chcete odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Klikněte na tlačítko **vytvořit nový certifikát** pod **podpisového certifikátu SAML** oddílu.
+8. Klikněte na tlačítko **vytvořit nový certifikát** pod **podpisového certifikátu SAML** oddílu.
 
-9.  Vyberte datum vypršení platnosti. Potom klikněte na **uložit.**
+9. Vyberte datum vypršení platnosti. Potom klikněte na **uložit.**
 
 10. Zkontrolujte **nastavit nový certifikát jako aktivní** přepsat aktivní certifikát. Potom klikněte na **Uložit** v horní části podokna a přijměte aktivaci certifikátu výměny.
 

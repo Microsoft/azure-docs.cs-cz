@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119339"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek obsahuje informace o odstraňování potíží s pomocí brány správy dat.
@@ -169,8 +169,8 @@ Brána se nemůže připojit ke cloudové službě prostřednictvím služby Ser
 Následujícím postupem získejte bránu zpět do režimu online:
 
 1. Odchozí pravidla na počítači brány a podnikové brány firewall povolit IP adresy. IP adresy můžete najít v protokolu událostí Windows (ID == 401): Byl proveden pokus o přístup k soketu tak její přístupová oprávnění XX připojení zakázáno. XX. XX. XX:9350.
-* Konfigurace nastavení proxy serveru na bráně. Najdete v části aspekty Proxy serveru podrobnosti.
-* Povolte Odchozí porty firewallu Windows na počítači brány a podnikové brány firewall 9350-9354 a 5671. Najdete v části porty a brány firewall pro podrobnosti. Tento krok je volitelný, ale doporučujeme ho pro posouzení výkonu.
+1. Konfigurace nastavení proxy serveru na bráně. Najdete v části aspekty Proxy serveru podrobnosti.
+1. Povolte Odchozí porty firewallu Windows na počítači brány a podnikové brány firewall 9350-9354 a 5671. Najdete v části porty a brány firewall pro podrobnosti. Tento krok je volitelný, ale doporučujeme ho pro posouzení výkonu.
 
 ### <a name="3-problem"></a>3. Problém
 Zobrazí následující chyba.
@@ -184,7 +184,7 @@ Přechodné chybě připojení k síti.
 Následujícím postupem získejte bránu zpět do režimu online:
 
 1. Počkejte několik minut, připojení se automaticky obnoví při chyba je pryč.
-* Pokud chyba přetrvává, restartujte službu brány.
+1. Pokud chyba přetrvává, restartujte službu brány.
 
 ## <a name="failed-to-author-linked-service"></a>Nepovedlo se vytvořit propojené služby
 ### <a name="problem"></a>Problém
@@ -282,6 +282,6 @@ Informace protokolu podrobné brány najdete v protokolu událostí Windows.
 1. Spusťte Windows **Prohlížeč událostí**.
 2. Vyhledejte v protokolech **protokoly aplikací a služeb** > **brána správy dat** složky.
 
- Pokud řešíte problémy související s brány, hledejte události úrovně chyby v události prohlížeč.
+   Pokud řešíte problémy související s brány, hledejte události úrovně chyby v události prohlížeč.
 
 ![Brána správy dat protokolů v prohlížeči událostí](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

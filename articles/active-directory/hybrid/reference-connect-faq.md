@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840898"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
 ## <a name="general-installation"></a>Obecné instalace
+
+**Otázka: Jak můžete posílit ochranu serveru služby Azure AD Connect ke snížení útokům na zabezpečení?**
+
+Společnost Microsoft doporučuje posílit zabezpečení serveru služby Azure AD Connect se útoky zabezpečení pro tato zásadní součástí sady řešení IT prostředí.  Následující doporučení níže se sníží bezpečnostní rizika pro vaši organizaci.
+
+* Nasazení služby Azure AD Connect na server připojený k doméně a omezit přístup pro správu pro správce domény nebo jiné skupiny přísně řízenými zabezpečení
+
+Další informace naleznete v tématu: 
+
+* [Skupiny zabezpečení administrators](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Zabezpečení účtů předdefinovaného účtu administrator](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Zvýšení zabezpečení a sustainment snížením rovin útoku](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Omezení prostoru pro útok služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **Otázka: Bude instalace fungovat, pokud globální správce Azure Active Directory (Azure AD) je povolené dvoufaktorové ověřování (2FA)?**  
 Tento scénář se podporuje od verze sestavení. února 2016.
 

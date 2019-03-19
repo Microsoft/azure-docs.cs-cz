@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998344"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894355"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services 
 
@@ -28,7 +28,7 @@ Návrh a vytváření digitálních práv subsystému (DRM Správa) pro over-the
 
 Cílové čtecí zařízení pro tento dokument se techniků, kteří pracují v DRM subsystémy OTT nebo řešení online streamování/s více obrazovkami nebo čtenáře, kteří mají zájem o subsystémy DRM. Předpokladem je, že čtečky obeznámeni s alespoň jedním technologií DRM na trhu, jako je PlayReady, Widevine, FairPlay nebo Adobe přístup.
 
-V této diskuzi DRM zahrnujeme také používat standard common encryption (CENC) s více technologiemi DRM. Hlavní trendu v oboru OTT a online streamování je použití šifrování CENC s více nativní DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
+V této diskuzi DRM zahrnujeme také používat standard common encryption (CENC) s více technologiemi DRM. Hlavní trendu v oboru OTT a online streamování je použití šifrování CENC s více nativní DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
 
 Výhody šifrování CENC s více technologiemi DRM jsou to:
 
@@ -156,7 +156,7 @@ V následující tabulce jsou uvedeny mapování.
 | **Správa klíčů** |Nevyžaduje se pro referenční implementace |
 | **Správa obsahu** |Konzolová aplikace jazyka C# |
 
-Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení se používají s Azure AD. [Rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Media Player a Media Services podporují DASH a šifrování CENC s více technologiemi DRM.
+Jinými slovy zprostředkovatele identity a služba tokenů zabezpečení se používají s Azure AD. [Rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/) se používá pro přehrávač. Media Player a Media Services podporují DASH a šifrování CENC s více technologiemi DRM.
 
 Následující diagram ukazuje celkovou strukturu a tok s předchozím mapování technologie:
 
@@ -208,7 +208,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Vytvoření s použitím přehrávače [rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
+8. Vytvoření s použitím přehrávače [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](https://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
 
 9. V následující tabulce jsou uvedeny testovací matrice.
 

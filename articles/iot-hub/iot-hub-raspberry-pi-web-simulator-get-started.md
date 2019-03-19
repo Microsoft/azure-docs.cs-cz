@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113779"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojte se ke službě Azure IoT Hub (Node.js) online simulátor Raspberry Pi
 
@@ -56,7 +56,7 @@ Připojení simulovaného Raspberry Pi do služby IoT hub, kterou vytvoříte. P
 Klikněte na tlačítko Spustit simulátor Raspberry Pi online.
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Spusťte simulátor Raspberry Pi</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Spusťte simulátor Raspberry Pi</a>
 
 Existují tři oblasti v webový simulátor.
 
@@ -70,8 +70,8 @@ Existují tři oblasti v webový simulátor.
    * **Resetovat** -obnovíte výchozí ukázkovou aplikaci v oblasti kódování.
    * **Sbalení a rozbalení** – na pravé straně je tlačítko pro rozbalení/sbalení v okně konzoly.
 
-> [!NOTE] 
-Webový simulátor Raspberry Pi je teď dostupná ve verzi preview. Jsme rádi bychom znali váš hlas v [Gitteru Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Zdrojový kód je ve veřejné [Githubu](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
+> [!NOTE]
+> Webový simulátor Raspberry Pi je teď dostupná ve verzi preview. Jsme rádi bychom znali váš hlas v [Gitteru Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Zdrojový kód je ve veřejné [Githubu](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
 ![Přehled platformy online simulátoru](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 

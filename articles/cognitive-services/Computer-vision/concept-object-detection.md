@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ee85e6bd171fc9415e5c7606d6e18a7a22fa6570
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cc5b40b6a800ff185c6c52652435b558fabe091f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866912"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57873882"
 ---
 # <a name="object-detection"></a>Detekce objektů
 
-Detekce objektů je podobný [označování](concept-tagging-images.md), ale rozhraní API Vrátí souřadnice ohraničujícího pole (v pixelech) pro každý objekt se nenašel. Například pokud image obsahuje pes, cat a osoby, rozpoznat operace se zobrazí seznam těchto objektů spolu s jejich souřadnice na obrázku. Tato funkce slouží ke zpracování vztahy mezi objekty v obrázku. Můžete ho taky určit, pokud existuje více instancí stejné značky v obraze.
+Detekce objektů je podobný [označování](concept-tagging-images.md), ale rozhraní API Vrátí souřadnice ohraničujícího pole (v pixelech) pro každý objekt se nenašel. Například pokud image obsahuje pes, cat a osoby, rozpoznat operace se zobrazí seznam těchto objektů spolu s jejich souřadnice na obrázku. Tato funkce slouží ke zpracování vztahy mezi objekty v obrázku. Můžete ho taky určit, zda existuje více instancí stejné značky v obraze.
 
-Rozhraní API pro detekci se vztahuje na základě objektů nebo věci živých identifikovat na obrázku značky. Všimněte si, že v tomto okamžiku, není žádný formální vztah mezi taxonomii pro označování a taxonomie použitých pro zjištění objektu. Na koncepční úroveň rozhraní API pro detekci pouze vyhledá objekty a živých věcí, zatímco rozhraní API pro značku použít také jako "vnitřních" kontextové podmínkami, které nelze lokalizovat s funkcí ohraničování polí.
+Rozhraní API pro detekci se vztahuje na základě objektů nebo věci živých identifikovat na obrázku značky. V tomto okamžiku není žádné formální vztah mezi taxonomii značek a taxonomie zjišťování objektu. Na koncepční úroveň rozhraní API pro detekci pouze vyhledá objekty a živých věcí, zatímco rozhraní API pro značku použít také jako "vnitřních" kontextové podmínkami, které nelze lokalizovat s funkcí ohraničování polí.
 
 ## <a name="object-detection-example"></a>Příklad zjištění objektu
 
@@ -89,13 +89,15 @@ Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu
 
 ## <a name="limitations"></a>Omezení
 
-Je důležité si uvědomit omezení pro funkci zjišťování objektu můžete vyhnout nebo důsledky falešně negativní (chybějící objekty) a omezené podrobnosti.
-* Objekty nejsou zjištěny obecně v případě, že jsou velmi malé (méně než 5 % obrázku).
-* Objekty nejsou zjištěny obecně, pokud jsou velmi úzce spolupracují uspořádané (stoh talířů shora, například).
+Je důležité si uvědomit omezení objektu zjišťování můžete vyhnout nebo důsledky falešně negativní (chybějící objekty) a omezené podrobnosti.
+
+* Objekty nejsou zjištěny obecně v případě, že jsou malé (méně než 5 % obrázku).
+* Objekty nejsou zjištěny obecně, pokud jsou uspořádané pod úzce spolupracují (stoh talířů shora, například).
 * Objekty nejsou rozlišené pomocí značky nebo názvy produktů (různé druhy sodovky na polici úložiště, například). Však můžete získat značku informace z bitové kopie pomocí [vytvoření detekce](concept-brand-detection.md) funkce.
 
 ## <a name="use-the-api"></a>Použití rozhraní API
-Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Když získáte úplnou odpověď JSON, jednoduše analyzovat řetězec pro obsah `"objects"` oddílu.
+
+Funkce zjišťování objektu je součástí [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API. Můžete volat toto rozhraní API prostřednictvím nativní sadou SDK nebo volání REST. Když získáte úplnou odpověď JSON, analyzovat řetězec pro obsah `"objects"` oddílu.
 
 * [Rychlé zprovoznění: Analýza obrázku (sadu .NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

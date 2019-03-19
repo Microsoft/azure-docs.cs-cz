@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244779"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088702"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení virtuálních polí StorSimple – Příprava na webu Azure portal
 
@@ -155,15 +155,15 @@ Proveďte následující kroky v [webu Azure portal](https://ms.portal.azure.com
 3. Klikněte na tlačítko **Add** (Přidat).
 4. V **přidání účtu úložiště** okno, postupujte takto:
    
-    1. Pro **předplatné**vyberte **aktuální**.
+   1. Pro **předplatné**vyberte **aktuální**.
    
-    2. Zadejte název účtu služby Azure storage.
+   2. Zadejte název účtu služby Azure storage.
    
-    3. Vyberte **povolit** vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudu. Vyberte **zakázat** pouze v případě, že pracujete v privátním cloudu.
+   3. Vyberte **povolit** vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudu. Vyberte **zakázat** pouze v případě, že pracujete v privátním cloudu.
    
-    4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště, se zobrazí oznámení.<br></br>
+   4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště, se zobrazí oznámení.<br></br>
    
-     ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Další krok
 

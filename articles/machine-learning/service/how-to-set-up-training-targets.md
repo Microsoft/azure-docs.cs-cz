@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a549a46912b0d60f878a18cae1e70a763afc0243
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122365"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -139,16 +139,16 @@ Trvalé Azure Machine Learning Compute můžete použít opakovaně napříč ú
     * **vm_size**: Virtuální počítač řady uzly vytvořené pomocí Azure Machine Learning Compute.
     * **max_nodes**: Maximální počet uzlů na automatické škálování až při spuštění úlohy v Azure Machine Learning Compute.
     
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-  Můžete také nakonfigurovat několik upřesňující vlastnosti při vytváření Azure Machine Learning Compute. Vlastnosti umožňují vytvářet trvalé clusteru s pevnou velikostí, nebo v rámci existující virtuální síť Azure v rámci vašeho předplatného.  Zobrazit [AmlCompute třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   Můžete také nakonfigurovat několik upřesňující vlastnosti při vytváření Azure Machine Learning Compute. Vlastnosti umožňují vytvářet trvalé clusteru s pevnou velikostí, nebo v rámci existující virtuální síť Azure v rámci vašeho předplatného.  Zobrazit [AmlCompute třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) podrobnosti.
     
- Nebo můžete vytvořit a připojit trvalý prostředek Azure Machine Learning Compute [na webu Azure Portal](#portal-create).
+   Nebo můžete vytvořit a připojit trvalý prostředek Azure Machine Learning Compute [na webu Azure Portal](#portal-create).
 
 1. **Konfigurace**: Vytvoření konfigurace spuštění pro cílové trvalé výpočetní prostředí.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Teď, když jste připojené tak výpočetní prostředky a nakonfigurovat spuštění, dalším krokem je [odeslat spuštění školení](#submit).
 
@@ -168,34 +168,34 @@ Použití Azure Data virtuálního počítače VĚDY jako virtuální počítač
 
 1. **Připojit**: Připojit existující virtuální počítač jako cílové výpočetní prostředí, musíte zadat plně kvalifikovaný název domény (FQDN), uživatelské jméno a heslo pro virtuální počítač. V tomto příkladu nahraďte \<plně kvalifikovaný název domény > s veřejný plně kvalifikovaný název domény virtuálního počítače nebo veřejnou IP adresu. Nahraďte \<uživatelské jméno > a \<heslo > s SSH uživatelské jméno a heslo pro virtuální počítač.
 
- ```python
- from azureml.core.compute import RemoteCompute, ComputeTarget
+   ```python
+   from azureml.core.compute import RemoteCompute, ComputeTarget
 
- # Create the compute config 
- compute_target_name = "attach-dsvm"
- attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   # Create the compute config 
+   compute_target_name = "attach-dsvm"
+   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
 
- # If you authenticate with SSH keys instead, use this code:
- #                                                  ssh_port=22,
- #                                                  username='<username>',
- #                                                  password=None,
- #                                                  private_key_file="<path-to-file>",
- #                                                  private_key_passphrase="<passphrase>")
+   # If you authenticate with SSH keys instead, use this code:
+   #                                                  ssh_port=22,
+   #                                                  username='<username>',
+   #                                                  password=None,
+   #                                                  private_key_file="<path-to-file>",
+   #                                                  private_key_passphrase="<passphrase>")
 
- # Attach the compute
- compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
+   # Attach the compute
+   compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
 
- compute.wait_for_completion(show_output=True)
- ```
+   compute.wait_for_completion(show_output=True)
+   ```
 
- Nebo datové VĚDY můžete připojit k vašemu pracovnímu prostoru [pomocí webu Azure portal](#portal-reuse).
+   Nebo datové VĚDY můžete připojit k vašemu pracovnímu prostoru [pomocí webu Azure portal](#portal-reuse).
 
 1. **Konfigurace**: Vytvoření konfigurace spuštění pro DSVM cílového výpočetního prostředí. Docker a conda slouží k vytvoření a konfigurace prostředí pro školení na datové VĚDY.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 Teď, když jste připojené tak výpočetní prostředky a nakonfigurovat spuštění, dalším krokem je [odeslat spuštění školení](#submit).
@@ -212,11 +212,11 @@ Azure HDInsight je oblíbená platforma pro analýzy velkých objemů dat. Tato 
 
 1. **Připojit**: Připojit cluster HDInsight jako cílové výpočetní prostředí, musíte zadat název hostitele, uživatelské jméno a heslo pro HDInsight cluster. Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V tomto příkladu nahraďte \<Název_clusteru > s názvem vašeho clusteru. Nahraďte \<uživatelské jméno > a \<heslo > s SSH uživatelské jméno a heslo pro cluster.
 
-  ```python
- from azureml.core.compute import ComputeTarget, HDInsightCompute
- from azureml.exceptions import ComputeTargetException
+   ```python
+   from azureml.core.compute import ComputeTarget, HDInsightCompute
+   from azureml.exceptions import ComputeTargetException
 
- try:
+   try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
     attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
                                                           ssh_port=22, 
@@ -226,17 +226,17 @@ Azure HDInsight je oblíbená platforma pro analýzy velkých objemů dat. Tato 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
 
- except ComputeTargetException as e:
+   except ComputeTargetException as e:
     print("Caught = {}".format(e.message))
 
- hdi_compute.wait_for_completion(show_output=True)
-  ```
+   hdi_compute.wait_for_completion(show_output=True)
+   ```
 
-  Nebo clusteru HDInsight můžete připojit k vašemu pracovnímu prostoru [pomocí webu Azure portal](#portal-reuse).
+   Nebo clusteru HDInsight můžete připojit k vašemu pracovnímu prostoru [pomocí webu Azure portal](#portal-reuse).
 
 1. **Konfigurace**: Vytvoření konfigurace spuštění pro cílové výpočetní prostředí Hdinsight. 
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
 Teď, když jste připojené tak výpočetní prostředky a nakonfigurovat spuštění, dalším krokem je [odeslat spuštění školení](#submit).

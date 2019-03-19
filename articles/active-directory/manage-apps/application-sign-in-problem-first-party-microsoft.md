@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09f1ef137bbad50e72771c4368346716336c4faf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104144"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -53,7 +53,7 @@ Následuje seznam obecné problémových oblastí, které můžete zobrazit dal�
 
 Toto jsou některé běžné problémy, které lidé tyto problémy při jejich uživatelé přihlásit k aplikaci Microsoftu.
 
--   Obecné problémy a proveďte nejprve kontrolu
+- Obecné problémy a proveďte nejprve kontrolu
 
   * Ujistěte se, že uživatel přihlašuje k **opravit URL** a ne adresu URL místní aplikace.
 
@@ -65,31 +65,31 @@ Toto jsou některé běžné problémy, které lidé tyto problémy při jejich 
 
   * Ujistěte se, že uživatele **není platnost vypršela nebo zapomněli heslo.** [Resetovat heslo uživatele](#reset-a-users-password) nebo [povolit samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-   * Ujistěte se, že **ověřování službou Multi-Factor Authentication** neblokuje přístup uživatelů. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
+  * Ujistěte se, že **ověřování službou Multi-Factor Authentication** neblokuje přístup uživatelů. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
-   * Ujistěte se, že **zásady podmíněného přístupu** nebo **Identity Protection** zásad neblokuje přístup uživatelů. [Zkontrolujte zásady podmíněného přístupu konkrétní](#problems-with-conditional-access-policies) nebo [zkontrolujte zásady podmíněného přístupu pro konkrétní aplikaci](#check-a-specific-applications-conditional-access-policy) nebo [zakázat zásadu konkrétní podmíněného přístupu](#disable-a-specific-conditional-access-policy)
+  * Ujistěte se, že **zásady podmíněného přístupu** nebo **Identity Protection** zásad neblokuje přístup uživatelů. [Zkontrolujte zásady podmíněného přístupu konkrétní](#problems-with-conditional-access-policies) nebo [zkontrolujte zásady podmíněného přístupu pro konkrétní aplikaci](#check-a-specific-applications-conditional-access-policy) nebo [zakázat zásadu konkrétní podmíněného přístupu](#disable-a-specific-conditional-access-policy)
 
-   * Ujistěte se, že uživatele **kontaktní údaje pro ověření** neustále aktuální, aby ověřování službou Multi-Factor Authentication nebo podmíněného přístupu zásady vynucení. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
+  * Ujistěte se, že uživatele **kontaktní údaje pro ověření** neustále aktuální, aby ověřování službou Multi-Factor Authentication nebo podmíněného přístupu zásady vynucení. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
--   Pro **Microsoft** **aplikace, které vyžadují licenci** (např. Office 365), tady jsou některé konkrétní problémy, zkontrolujte po nevyloučí výše obecné problémy:
+- Pro **Microsoft** **aplikace, které vyžadují licenci** (např. Office 365), tady jsou některé konkrétní problémy, zkontrolujte po nevyloučí výše obecné problémy:
 
-   * Zkontrolujte, že uživatel, nebo má **přiřazenou licenci.** [Zkontrolujte přiřazené licence uživatele](#check-a-users-assigned-licenses) nebo [Zkontrolujte skupiny přiřazené licence](#check-a-groups-assigned-licenses)
+  * Zkontrolujte, že uživatel, nebo má **přiřazenou licenci.** [Zkontrolujte přiřazené licence uživatele](#check-a-users-assigned-licenses) nebo [Zkontrolujte skupiny přiřazené licence](#check-a-groups-assigned-licenses)
 
-   * Pokud je licence **přiřazeno** **statická skupina**, ujistěte se, že **je uživatel členem** této skupiny. [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+  * Pokud je licence **přiřazeno** **statická skupina**, ujistěte se, že **je uživatel členem** této skupiny. [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
 
-   * Pokud je licence **přiřazeno** **dynamická skupina**, ujistěte se, že **dynamická skupina pravidla nastavena správně**. [Zkontrolujte kritéria členství dynamické skupiny](#check-a-dynamic-groups-membership-criteria)
+  * Pokud je licence **přiřazeno** **dynamická skupina**, ujistěte se, že **dynamická skupina pravidla nastavena správně**. [Zkontrolujte kritéria členství dynamické skupiny](#check-a-dynamic-groups-membership-criteria)
 
-   * Pokud je licence **přiřazená** **dynamická skupina**, ujistěte se, že dynamickou skupinu má **bylo dokončeno zpracování** členství a že **je uživatel členem**  (to může nějakou dobu trvat). [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+  * Pokud je licence **přiřazená** **dynamická skupina**, ujistěte se, že dynamickou skupinu má **bylo dokončeno zpracování** členství a že **je uživatel členem**  (to může nějakou dobu trvat). [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
 
-   *  Jakmile budete mít jistotu, přiřazené licence, ujistěte se, že je licence **nevypršela**.
+  *  Jakmile budete mít jistotu, přiřazené licence, ujistěte se, že je licence **nevypršela**.
 
-   *  Ujistěte se, že je licence **aplikace** přistupují.
+  *  Ujistěte se, že je licence **aplikace** přistupují.
 
--   Pro **Microsoft** **aplikace, které nevyžadují licenci**, tady jsou některé další možnosti ke kontrole:
+- Pro **Microsoft** **aplikace, které nevyžadují licenci**, tady jsou některé další možnosti ke kontrole:
 
-   * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "přístup k poštovní schránky uživatele"), ujistěte se, že uživatel přihlásil k aplikaci a byla provedena **operace vyjádření souhlasu uživatele** umožňuje aplikaci získat přístup k jeho datům.
+  * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "přístup k poštovní schránky uživatele"), ujistěte se, že uživatel přihlásil k aplikaci a byla provedena **operace vyjádření souhlasu uživatele** umožňuje aplikaci získat přístup k jeho datům.
 
-   * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "přístup k poštovním schránkám všechny uživatele"), ujistěte se, že byla provedena jako globální správce **operace schválením na úrovni správce jménem všech uživatelů** v organizaci.
+  * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "přístup k poštovním schránkám všechny uživatele"), ujistěte se, že byla provedena jako globální správce **operace schválením na úrovni správce jménem všech uživatelů** v organizaci.
 
 ## <a name="problems-with-the-users-account"></a>Problémy s účtem uživatele
 
@@ -187,25 +187,25 @@ Pokud chcete povolit samoobslužné resetování hesla, postupujte podle násled
 
 Pokud chcete zkontrolovat stav služby Multi-Factor authentication, postupujte podle těchto kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4. Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
-5.  Klikněte na tlačítko **všichni uživatelé**.
+5. Klikněte na tlačítko **všichni uživatelé**.
 
-6.  Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** tlačítko v horní části podokna.
+6. Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** tlačítko v horní části podokna.
 
-7.  Jednou **portál pro správu ověřování službou Multi-Factor Authentication** zatížením, ujistěte se na **uživatelé** kartu.
+7. Jednou **portál pro správu ověřování službou Multi-Factor Authentication** zatížením, ujistěte se na **uživatelé** kartu.
 
-8.  Vyhledejte uživatele pomocí hledání, filtrování a řazení v seznamu uživatelů.
+8. Vyhledejte uživatele pomocí hledání, filtrování a řazení v seznamu uživatelů.
 
-9.  Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** ověřování službou Multi-Factor Authentication podle potřeby.
+9. Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** ověřování službou Multi-Factor Authentication podle potřeby.
 
-  * **Poznámka:** Pokud je uživatel v **vynucené** stavu, může je nastavená na **zakázané** dočasně a informovat je zpátky do svého účtu. Poté, co jsou zpět v, můžete změnit jejich stav na **povoleno** znovu, aby je znovu zaregistrovat svoje kontaktní údaje při příštím přihlášení v vyžadují. Alternativně můžete podle kroků v [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.
+   * **Poznámka:** Pokud je uživatel v **vynucené** stavu, může je nastavená na **zakázané** dočasně a informovat je zpátky do svého účtu. Poté, co jsou zpět v, můžete změnit jejich stav na **povoleno** znovu, aby je znovu zaregistrovat svoje kontaktní údaje při příštím přihlášení v vyžadují. Alternativně můžete podle kroků v [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Zkontrolujte kontaktní údaje pro ověření uživatele
 
@@ -365,21 +365,21 @@ Pokud chcete zkontrolovat skupiny přiřazené licence, postupujte takto:
 
 Za účelem opětovného zpracování skupiny přiřazené licence, postupujte podle těchto kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4. Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
-5.  Klikněte na tlačítko **všechny skupiny**.
+5. Klikněte na tlačítko **všechny skupiny**.
 
-6.  **Hledání** pro skupiny, které vás zajímají a **klikněte na odpovídající řádek** k výběru.
+6. **Hledání** pro skupiny, které vás zajímají a **klikněte na odpovídající řádek** k výběru.
 
-7.  Klikněte na tlačítko **licence** zobrazíte, které aktuálně licence skupině přiřadila.
+7. Klikněte na tlačítko **licence** zobrazíte, které aktuálně licence skupině přiřadila.
 
-8.  Klikněte na tlačítko **znovu zpracovat** tlačítko a ujistěte se, že na licence přiřazené členům této skupiny jsou aktuální. To může trvat dlouhou dobu, v závislosti na velikosti a složitosti skupiny.
+8. Klikněte na tlačítko **znovu zpracovat** tlačítko a ujistěte se, že na licence přiřazené členům této skupiny jsou aktuální. To může trvat dlouhou dobu, v závislosti na velikosti a složitosti skupiny.
 
    >[!NOTE]
    >Provedete to tak rychlejší, vezměte v úvahu dočasně přiřazování licencí pro uživatele přímo. [Přiřadit uživateli licenci](#problems-with-application-consent).
@@ -390,32 +390,32 @@ Za účelem opětovného zpracování skupiny přiřazené licence, postupujte p
 
 Chcete-li přiřadit licenci ke skupině, postupujte takto:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4. Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
-5.  Klikněte na tlačítko **všechny skupiny**.
+5. Klikněte na tlačítko **všechny skupiny**.
 
-6.  **Hledání** pro skupiny, které vás zajímají a **klikněte na odpovídající řádek** k výběru.
+6. **Hledání** pro skupiny, které vás zajímají a **klikněte na odpovídající řádek** k výběru.
 
-7.  Klikněte na tlačítko **licence** zobrazíte, které aktuálně licence skupině přiřadila.
+7. Klikněte na tlačítko **licence** zobrazíte, které aktuálně licence skupině přiřadila.
 
-8.  Klikněte na tlačítko **přiřadit** tlačítko.
+8. Klikněte na tlačítko **přiřadit** tlačítko.
 
-9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
+9. Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
 
 10. **Volitelné** klikněte na tlačítko **možnosti přiřazení** položku, kterou chcete zásady přiřazovat produktů. Klikněte na tlačítko **Ok** po dokončení.
 
 11. Klikněte na tlačítko **přiřadit** tlačítko tyto licence přiřadit k této skupině. To může trvat dlouhou dobu, v závislosti na velikosti a složitosti skupiny.
 
-   >[!NOTE]
-   >Provedete to tak rychlejší, vezměte v úvahu dočasně přiřazování licencí pro uživatele přímo. [Přiřadit uživateli licenci](#problems-with-application-consent).
-   > 
-   >
+    >[!NOTE]
+    >Provedete to tak rychlejší, vezměte v úvahu dočasně přiřazování licencí pro uživatele přímo. [Přiřadit uživateli licenci](#problems-with-application-consent).
+    > 
+    >
 
 ## <a name="problems-with-conditional-access-policies"></a>Problémy se zásadami podmíněného přístupu
 
@@ -423,19 +423,19 @@ Chcete-li přiřadit licenci ke skupině, postupujte takto:
 
 Zkontrolujte nebo ověřit zásady podmíněného přístupu jeden:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** v navigační nabídce.
+4. Klikněte na tlačítko **podnikové aplikace** v navigační nabídce.
 
-5.  Klikněte na tlačítko **podmíněného přístupu** navigační položka.
+5. Klikněte na tlačítko **podmíněného přístupu** navigační položka.
 
-6.  Klikněte na zásadu, která vás zajímají kontrola.
+6. Klikněte na zásadu, která vás zajímají kontrola.
 
-7.  Zkontrolujte, že neexistují žádné zvláštní podmínky, přiřazení nebo jiné nastavení, která může blokovat přístup uživatelů.
+7. Zkontrolujte, že neexistují žádné zvláštní podmínky, přiřazení nebo jiné nastavení, která může blokovat přístup uživatelů.
 
    >[!NOTE]
    >Možná budete chtít dočasně zakázat tuto zásadu zajistit není by to ovlivnilo přihlášení. Chcete-li to provést, nastavte **povolit zásady** přepnutím **ne** a klikněte na tlačítko **Uložit** tlačítko.

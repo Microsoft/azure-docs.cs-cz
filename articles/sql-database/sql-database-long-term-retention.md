@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 68bcddeee2cec1a77f20f8f470669f170fa50743
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 85757ace20501bea1db22ecfdd2fdb63284038d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108742"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store Azure SQL Database zálohy až 10 let
 
@@ -56,22 +56,20 @@ W = 12 týdnů (84 dní), M = 12 měsíců (365 dní), Y = 10 let (3650 dnů) We
    ![Příklad zleva doprava.](./media/sql-database-long-term-retention/ltr-example.png)
 
 
- 
+
 Pokud byste chtěli upravit výše uvedenou zásadu a změní W = 0 (žádné týdenní zálohy), tempo sadu záložní kopie jako zobrazené v tabulce výše zvýrazněná data. Velikost úložiště potřebných k zajištění tyto zálohy by došlo ke snížení odpovídajícím způsobem. 
 
 > [!NOTE]
-1. Kopie zleva doprava jsou vytvořeny pomocí služby Azure storage tak proces kopírování nemá žádný vliv na výkon na existující databázi.
-2. Zásady platí pro budoucí zálohy. Například Pokud zadaný WeekOfYear je v minulosti, kdy jsou nakonfigurované zásady, první zálohování LTR bude vytvořen příští rok. 
-3. Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohy založené na její časové razítko.   Databázi můžete obnovit do jakékoli existující server ve stejném předplatném jako původní databáze. 
-> 
+> 1. Kopie zleva doprava jsou vytvořeny pomocí služby Azure storage tak proces kopírování nemá žádný vliv na výkon na existující databázi.
+> 2. Zásady platí pro budoucí zálohy. Například Pokud zadaný WeekOfYear je v minulosti, kdy jsou nakonfigurované zásady, první zálohování LTR bude vytvořen příští rok. 
+> 3. Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohy založené na její časové razítko.   Databázi můžete obnovit do jakékoli existující server ve stejném předplatném jako původní databáze. 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Geografická replikace a dlouhodobé uchovávání záloh
 
 Pokud používáte aktivní geografickou replikaci, převzetí služeb při selhání nebo skupiny jako řešení obchodní kontinuity podnikových procesů pro by měla připravit konečné převzetí služeb při selhání a nakonfigurovat stejné zásady LTR na geograficky sekundární databázi. To nezvýší vaše náklady na úložiště LTR jako zálohy se negenerují ze sekundární databáze. Pouze v případě, že sekundární stane primární zálohy se vytvoří. Tímto způsobem, bez přerušení generování zálohování LTR bude zaručit, při aktivaci převzetí služeb při selhání a primární přesune do sekundární oblasti. 
 
 > [!NOTE]
-Pokud původní primární databáze provádí zotavení z výpadku, který způsobí, že převzetí služeb při selhání, bude nový sekundární. Proto nebude pokračovat vytvoření zálohy a existující zásady LTR neprojeví, dokud nebude primární znovu. 
-> 
+> Pokud původní primární databáze provádí zotavení z výpadku, který způsobí, že převzetí služeb při selhání, bude nový sekundární. Proto nebude pokračovat vytvoření zálohy a existující zásady LTR neprojeví, dokud nebude primární znovu. 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurace dlouhodobého uchovávání záloh
 

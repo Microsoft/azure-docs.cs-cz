@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dff6d07f4df1da3de083934e0d8240beb957292e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883589"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Media Services pomocí REST
 
@@ -60,8 +60,8 @@ Pro přístup k rozhraní API služby Media Services, budete muset shromažďov�
 
 |Nastavení|Příklad:|Popis|
 |---|-------|-----|
-|Doména tenanta služby Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
-|Koncový bod rozhraní REST API|https://amshelloworld.restv2.westus.media.azure.net/api/|Toto je koncový bod, oproti které všechny REST API služby Media Services ve vaší aplikaci volání.|
+|Doména tenanta Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
+|Koncový bod rozhraní REST API|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Toto je koncový bod, oproti které všechny REST API služby Media Services ve vaší aplikaci volání.|
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD ID aplikace (klient). ID klienta je požadováno pro získání přístupového tokenu. |
 |Tajný kód klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD klíče aplikace (tajný klíč klienta). Chcete-li získat přístupový token se vyžaduje tajný klíč klienta.|
 
@@ -69,7 +69,7 @@ Pro přístup k rozhraní API služby Media Services, budete muset shromažďov�
 
 Pokud chcete získat informace, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do instance služby AMS.
 3. Vyberte **přístup přes rozhraní API**.
 4. Klikněte na **připojit k rozhraní API služby Azure Media Services pomocí instančního objektu**.
@@ -83,33 +83,33 @@ Pokud chcete získat informace, postupujte takto:
 
     Pokud je potřeba vytvořit novou aplikaci AD, postupujte podle těchto kroků:
     
-    1. Stisknutím klávesy **vytvořit nový**.
-    2. Zadejte název.
-    3. Stisknutím klávesy **vytvořit nový** znovu.
-    4. Stiskněte **Uložit**.
+   1. Stisknutím klávesy **vytvořit nový**.
+   2. Zadejte název.
+   3. Stisknutím klávesy **vytvořit nový** znovu.
+   4. Stiskněte **Uložit**.
 
-    ![Přístup přes rozhraní API](./media/connect-with-rest/new-app.png)
+      ![Přístup přes rozhraní API](./media/connect-with-rest/new-app.png)
 
-    Nová aplikace se zobrazí na stránce.
+      Nová aplikace se zobrazí na stránce.
 
 6. Získejte **ID klienta** (ID aplikace).
     
-    1. Vyberte aplikaci.
-    2. Získejte **ID klienta** z okna na pravé straně. 
+   1. Vyberte aplikaci.
+   2. Získejte **ID klienta** z okna na pravé straně. 
 
-    ![Přístup přes rozhraní API](./media/connect-with-rest/existing-client-id.png)
+      ![Přístup přes rozhraní API](./media/connect-with-rest/existing-client-id.png)
 
-7.  Získat aplikace **klíč** (tajný klíč klienta). 
+7. Získat aplikace **klíč** (tajný klíč klienta). 
 
-    1. Klikněte na tlačítko **spravovat aplikaci** tlačítko (Všimněte si, že informace o ID klienta je v části **ID aplikace**). 
-    2. Stisknutím klávesy **klíče**.
+   1. Klikněte na tlačítko **spravovat aplikaci** tlačítko (Všimněte si, že informace o ID klienta je v části **ID aplikace**). 
+   2. Stisknutím klávesy **klíče**.
     
-        ![Přístup přes rozhraní API](./media/connect-with-rest/manage-app.png)
-    3. Vygenerovat klíč aplikace (tajný klíč klienta) vyplněním **popis** a **EXPIRES** a stisknutím klávesy **Uložit**.
+       ![Přístup přes rozhraní API](./media/connect-with-rest/manage-app.png)
+   3. Vygenerovat klíč aplikace (tajný klíč klienta) vyplněním **popis** a **EXPIRES** a stisknutím klávesy **Uložit**.
     
-        Jakmile **Uložit** stiskne tlačítko, zobrazí se hodnota klíče. Hodnotu klíče si zkopírujte před zavřením okna.
+       Jakmile **Uložit** stiskne tlačítko, zobrazí se hodnota klíče. Hodnotu klíče si zkopírujte před zavřením okna.
 
-    ![Přístup přes rozhraní API](./media/connect-with-rest/connect-with-rest03.png)
+   ![Přístup přes rozhraní API](./media/connect-with-rest/connect-with-rest03.png)
 
 Přidejte hodnoty pro parametry připojení AD do souboru web.config nebo app.config pro pozdější použití v kódu.
 

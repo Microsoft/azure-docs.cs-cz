@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 846fc5de6470326fbd51d19397503e4eee2ee15b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8e01ac4efa3c310b17e88351383861cbdccb68e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171104"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS pomocí aktivity spustit balíčků služby SSIS v Azure Data Factory
 Tento článek popisuje, jak spustit balíček služby SSIS pomocí aktivity spustit balíčků služby SSIS v kanálu Azure Data Factory (ADF). 
@@ -51,19 +51,19 @@ V tomto kroku použijete k vytvoření kanálu ADF uživatelského rozhraní neb
 
    ![Nastavte vlastnosti na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Na **nastavení** kartu pro aktivity spuštění balíčku služby SSIS, vyberte prostředí Azure-SSIS IR, který je spojen s databází SSISDB, ve kterém je balíček nasazen. Pokud váš balíček potřebuje 32bitový modul runtime pro spuštění, zkontrolujte, **32bitový modul runtime** zaškrtávací políčko. Pro **úroveň protokolování**, vyberte předdefinovaný obor protokolování pro spouštění vašeho balíčku. Zkontrolujte, **vlastní** zaškrtávací políčko, pokud chcete místo toho zadejte název vaší vlastní protokolování. Při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko je zaškrtnuté políčko, můžete vyhledat a vybrat existující složky/projektů/balíčků nebo prostředí SSISDB. Klikněte na tlačítko **aktualizovat** tlačítko načíst nově přidané složky/projektů/balíčků nebo prostředí z SSISDB, takže jsou k dispozici pro procházení a výběr. 
+4. Na **nastavení** kartu pro aktivity spuštění balíčku služby SSIS, vyberte prostředí Azure-SSIS IR, který je spojen s databází SSISDB, ve kterém je balíček nasazen. Pokud váš balíček používá ověřování Windows pro přístup k úložišti dat, například SQL servery pro/sdílené složky v místním prostředí, soubory Azure, atd., zkontrolujte **ověřování Windows** zaškrtávací políčko a zadejte doména/uživatelské jméno/heslo pro svůj balíček pro spuštění. Pokud váš balíček potřebuje 32bitový modul runtime pro spuštění, zkontrolujte, **32bitový modul runtime** zaškrtávací políčko. Pro **úroveň protokolování**, vyberte předdefinovaný obor protokolování pro spouštění vašeho balíčku. Zkontrolujte, **vlastní** zaškrtávací políčko, pokud chcete místo toho zadejte název vaší vlastní protokolování. Při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko je zaškrtnuté políčko, můžete vyhledat a vybrat existující složky/projektů/balíčků nebo prostředí SSISDB. Klikněte na tlačítko **aktualizovat** tlačítko načíst nově přidané složky/projektů/balíčků nebo prostředí z SSISDB, takže jsou k dispozici pro procházení a výběr. 
 
    ![Nastavte vlastnosti na kartě nastavení - automaticky](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Když se prostředí Azure-SSIS IR neběží nebo **ruční položky** je zaškrtnuté políčko, můžete zadat balíček a prostředí cesty z databáze SSISDB uvedené v následujících formátech: `<folder name>/<project name>/<package name>.dtsx` a `<folder name>/<environment name>`.
+   Když se prostředí Azure-SSIS IR neběží nebo **ruční položky** je zaškrtnuté políčko, můžete zadat balíček a prostředí cesty z databáze SSISDB přímo v následujících formátech: `<folder name>/<project name>/<package name>.dtsx` a `<folder name>/<environment name>`.
 
    ![Nastavte vlastnosti na kartě Nastavení – ruční](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. Na **SSIS parametry** kartu pro aktivity spuštění balíčku služby SSIS, při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko na **nastavení** karta není zaškrtnutá, Zobrazí se stávající parametry služby SSIS v vybraný projekt/balíčku z databáze SSISDB přiřazení hodnoty k nim. V opačném případě můžete zadat jejich jeden po druhém ručně přiřadit hodnoty k nim – Ujistěte se prosím, že existují a jsou správně zadány pro spouštění balíčku proběhla úspěšně. Můžete také přidat dynamický obsah na hodnoty pomocí výrazů, functions, ADF systémové proměnné a proměnné parametrů kanálu ADF.
+5. Na **SSIS parametry** kartu pro aktivity spuštění balíčku služby SSIS, při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko na **nastavení** karta není zaškrtnutá, Zobrazí se stávající parametry služby SSIS v vybraný projekt/balíčku z databáze SSISDB přiřazení hodnoty k nim. V opačném případě můžete zadat jejich jeden po druhém ručně přiřadit hodnoty k nim – Ujistěte se prosím, že existují a jsou správně zadány pro spouštění balíčku proběhla úspěšně. Přidat dynamický obsah na hodnoty pomocí výrazů, functions, ADF systémové proměnné a proměnné parametrů kanálu ADF. Alternativně můžete použít tajnými kódy uloženými v trezoru klíč Azure (AKV) jako jejich hodnoty. Pokud chcete udělat, klikněte na **AZURE KEY VAULT** zaškrtávací políčko vedle příslušný parametr, vyberte nebo upravit existující AKV propojené služby nebo vytvořte novou a pak vyberte verzi tajného klíče název a hodnotu parametru.  Když vám vytvořit či upravit AKV propojené služby, můžete vybrat nebo upravit existující AKV nebo vytvořte novou, ale prosím udělit přístup identit ADF spravovaných vaší službou AZURE, pokud jste tak již neučinili. Můžete také zadat tajné klíče přímo v následujícím formátu: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![Nastavte vlastnosti na kartě Parametry služby SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-6. Na **připojení správci** kartu pro aktivity spuštění balíčku služby SSIS, při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko na **nastavení** karta není zaškrtnutá, Zobrazí se existující připojení správci v vybraný projekt/balíčku z databáze SSISDB přiřazení hodnoty k nim. V opačném případě můžete zadat jejich jeden po druhém ručně přiřadit hodnoty k nim – Ujistěte se prosím, že existují a jsou správně zadány pro spouštění balíčku proběhla úspěšně. Můžete také přidat dynamický obsah na hodnoty pomocí výrazů, functions, ADF systémové proměnné a proměnné parametrů kanálu ADF.
+6. Na **připojení správci** kartu pro aktivity spuštění balíčku služby SSIS, při spuštění prostředí Azure-SSIS IR a **ruční položky** zaškrtávací políčko na **nastavení** karta není zaškrtnutá, Zobrazí se existující připojení správci v vybraný projekt/balíčku z databáze SSISDB přiřazení hodnot k jejich vlastností. V opačném případě můžete zadat jejich jeden po druhém ruční přiřazení hodnot k jejich vlastností – Ujistěte se prosím, že existují a jsou správně zadány pro spouštění balíčku proběhla úspěšně. Přidat dynamický obsah k jejich hodnoty vlastností, pomocí výrazů, functions, ADF systémové proměnné a proměnné parametrů kanálu ADF. Alternativně můžete použít tajnými kódy uloženými v trezoru klíč Azure (AKV) jako hodnoty jejich vlastností. Pokud chcete udělat, klikněte na **AZURE KEY VAULT** zaškrtávací políčko vedle příslušné vlastnosti, vyberte nebo upravit existující AKV propojené služby nebo vytvořte novou a pak vyberte verzi tajného klíče název a hodnotu vlastnosti.  Když vám vytvořit či upravit AKV propojené služby, můžete vybrat nebo upravit existující AKV nebo vytvořte novou, ale prosím udělit přístup identit ADF spravovaných vaší službou AZURE, pokud jste tak již neučinili. Můžete také zadat tajné klíče přímo v následujícím formátu: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![Nastavte vlastnosti na kartě Správce připojení](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
@@ -139,6 +139,14 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                        "referenceName": "myAzureSSISIR",
                        "type": "IntegrationRuntimeReference"
                    },
+                   "executionCredential": {
+                       "domain": "MyDomain",
+                       "userName": "MyUsername",
+                       "password": {
+                           "type": "SecureString",
+                           "value": "**********"
+                       }
+                   },
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
@@ -148,11 +156,27 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                    "projectParameters": {
                        "project_param_1": {
                            "value": "123"
+                       },
+                       "project_param_2": {
+                           "value": {
+                               "value": "@pipeline().parameters.MyPipelineParameter",
+                               "type": "Expression"
+                           }
                        }
                    },
                    "packageParameters": {
                        "package_param_1": {
                            "value": "345"
+                       },
+                       "package_param_2": {
+                           "value": {
+                               "type": "AzureKeyVaultSecret",
+                               "store": {
+                                   "referenceName": "myAKV",
+                                   "type": "LinkedServiceReference"
+                               },
+                               "secretName": "MySecret"
+                           }
                        }
                    },
                    "projectConnectionManagers": {
@@ -171,12 +195,20 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                    "packageConnectionManagers": {
                        "MyOledbCM": {
                            "userName": {
-                               "value": "sa"
+                               "value": {
+                                   "value": "@pipeline().parameters.MyUsername",
+                                   "type": "Expression"
+                               }
                            },
                            "passWord": {
                                "value": {
-                                   "type": "SecureString",
-                                   "value": "def"
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyPassword",
+                                   "secretVersion": "3a1b74e361bf4ef4a00e47053b872149"
                                }
                            }
                        }

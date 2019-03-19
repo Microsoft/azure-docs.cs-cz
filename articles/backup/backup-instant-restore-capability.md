@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731639"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844703"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Získejte lepší zálohování a obnovení výkonu pomocí funkce Azure Backup rychlé obnovení
 
 > [!NOTE]
 > Na základě zpětné vazby od uživatelů jsme přejmenovali **zásobník záloh virtuálních počítačů V2** k **rychlé obnovení** abyste snížili nejasnosti s funkcemi Azure Stack.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 
@@ -27,7 +29,6 @@ Nový model pro rychlé obnovení obsahuje následující vylepšení funkcí:
 * Podporuje disk o velikosti až 4 TB.
 * Podporuje disky SSD na úrovni Standard.
 *   Možnost používat nespravovaného virtuálního počítače na původní účty úložiště (na disk), při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů
-
 
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
@@ -91,19 +92,19 @@ Pokud chcete samoobslužné a upgradovat na rychlé obnovení, spusťte následu
 1.  Přihlaste se ke svému účtu Azure:
 
     ```
-    PS C:> Connect-AzureRmAccount
+    PS C:> Connect-AzAccount
     ```
 
 2.  Vyberte předplatné, pro kterou chcete zaregistrovat:
 
     ```
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
     ```
 
 3.  Zaregistrujte toto předplatné:
 
     ```
-    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
 ## <a name="upgrade-to-instant-restore-using-cli"></a>Upgrade provést rychlé obnovení pomocí rozhraní příkazového řádku
@@ -134,7 +135,7 @@ Spusťte následující příkazy z prostředí:
 Prostředí PowerShell terminálu se zvýšenými oprávněními spusťte následující rutinu:
 
 ```
-Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
+Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ### <a name="cli"></a>Rozhraní příkazového řádku

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 07fee8e5d051f0d2c04d3b5e34b66299734ca29c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078002"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -24,7 +24,7 @@ Tento kurz popisuje různé scénáře, ve kterých chcete přesunout virtuáln�
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-
+> 
 > * Důvody pro přesun virtuálních počítačů
 > * Typické architektury
 > * Přesun virtuálních počítačů, protože je v cílové oblasti
@@ -99,8 +99,8 @@ Na základě [architektury](#typical-architectures-for-a-multi-tier-deployment) 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-
+> 
 > * [Přesuňte virtuální počítače Azure do jiné oblasti](azure-to-azure-tutorial-migrate.md)
-
+> 
 > * [Přesuňte virtuální počítače Azure do zóny dostupnosti](move-azure-vms-avset-azone.md)
 

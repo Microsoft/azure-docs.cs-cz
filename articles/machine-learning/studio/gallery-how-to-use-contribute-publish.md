@@ -6,20 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 53104aeaa88464a666a6ece495e51bf58bd1f002
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816857"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885415"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a vyhledání prostředků v galerii Azure AI
 
-**[Galerie Azure AI](http://gallery.azure.ai)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Azure AI.
+**[Galerie Azure AI](https://gallery.azure.ai)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Azure AI.
 Galerie má širokou škálu prostředků, které můžete použít k vývoji vlastních řešení pro analýzu.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co lze najít v galerii?
@@ -201,4 +201,4 @@ Chceme, aby Galerie tak, aby měl vycházet v našich uživatelů a pro naše u�
 
 ![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.azure.ai)**
+**[PŘEJÍT NA VE GALERII &GT;&GT;](https://gallery.azure.ai)**

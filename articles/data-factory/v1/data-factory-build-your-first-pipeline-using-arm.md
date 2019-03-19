@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ae162c6e0ced1021272f08e3e645596586d847d4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d0eda93855c3be66d4c733774a6cc1d5875a8394
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535755"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998307"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -52,6 +52,7 @@ Kanál v tomto kurzu má jednu aktivitu: **Aktivita HDInsight Hive**. Tato aktiv
 * Informace o šablonách Azure Resource Manageru najdete v článku [Vytváření šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md). 
 
 ## <a name="in-this-tutorial"></a>V tomto kurzu
+
 | Entita | Popis |
 | --- | --- |
 | Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Účet služby Azure Storage v této ukázce obsahuje vstupní a výstupní data pro kanál. |
@@ -317,17 +318,17 @@ Vytvořte soubor JSON s názvem **ADFTutorialARM-Parameters.json**, který obsah
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
 1. Otevřete prostředí **Azure PowerShell** a spusťte následující příkaz: 
    * Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.
-    ```PowerShell
-    Connect-AzAccount
-    ```  
+     ```PowerShell
+     Connect-AzAccount
+     ```  
    * Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.
-    ```PowerShell
-    Get-AzSubscription
-    ``` 
+     ```PowerShell
+     Get-AzSubscription
+     ``` 
    * Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Mělo by to být stejné předplatné, které jste použili na webu Azure Portal.
-    ```
-    Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-    ```   
+     ```
+     Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
+     ```   
 2. Spuštěním následujícího příkazu nasaďte entity služby Data Factory pomocí šablony Resource Manageru, kterou jste vytvořili v kroku 1. 
 
     ```PowerShell
@@ -621,6 +622,7 @@ Tady je ukázka šablony Resource Manageru pro vytvoření logické brány v poz
 Tato šablona vytvoří objekt pro vytváření dat s názvem gatewayusingarmdf, který má bránu s názvem: GatewayUsingARM. 
 
 ## <a name="see-also"></a>Viz také
+
 | Téma | Popis |
 |:--- |:--- |
 | [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

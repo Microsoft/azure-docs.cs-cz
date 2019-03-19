@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: d3cabbcc04766d4a209ecf96db3f842902b465a5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894049"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režim ladění toku dat
 
@@ -46,7 +46,7 @@ Až budete hotovi s vaší ladění, zapněte ladění vypnout tak, aby váš cl
 <img src="media/data-flow/datapreview.png" width="400">
 
 ## <a name="data-preview"></a>Náhled dat
-Ladicí program na kartě Náhled dat bude světla nahoru na dolním panelu. Bez režimu ladění na toku dat zobrazí pouze aktuální metadata do a z transformace na kartě zkontrolujte, jestli se. Náhled dat bude pouze dotaz na počet řádků, které jste nastavili jako svůj limit v nastavení zdroje. Budete možná muset kliknout na "Načíst data" aktualizace dat ve verzi preview.
+Ladicí program na kartě Náhled dat bude světla nahoru na dolním panelu. Bez režimu ladění na toku dat zobrazí pouze aktuální metadata do a z transformace na kartě zkontrolujte, jestli se. Náhled dat bude pouze dotaz na počet řádků, které jste nastavili jako svůj limit v nastavení ladění. Budete možná muset kliknout na "Načíst data" aktualizace dat ve verzi preview.
 
 <img src="media/data-flow/stats.png" width="400">
 

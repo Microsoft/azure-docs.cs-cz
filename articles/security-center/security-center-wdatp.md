@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 09e8ee05017c47c5b01bc529135004eff19b846f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124163"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -64,11 +64,11 @@ Na servery připojit ke službě Security Center, klikněte na tlačítko **pře
 1. V **připojování** okna Vybrat nebo vytvořit pracovní prostor, ve kterých se mají uložit data. <br>
 2. Pokud nevidíte všechny pracovní prostory, je možné kvůli chybějícímu oprávnění, ujistěte se, že váš pracovní prostor je nastaven na úroveň Standard zabezpečení Azure. Další informace najdete v části [upgradovat na Security Center úrovně Standard pro zvýšení zabezpečení](security-center-pricing.md).
     
-3.  Vyberte **přidat servery** zobrazíte pokyny o tom, jak nainstalovat agenta Microsoft Monitoring Agent. 
+3. Vyberte **přidat servery** zobrazíte pokyny o tom, jak nainstalovat agenta Microsoft Monitoring Agent. 
 
-4.  Po připojení, můžete monitorovat počítače v rámci **výpočetní prostředky a aplikace**.
+4. Po připojení, můžete monitorovat počítače v rámci **výpočetní prostředky a aplikace**.
 
-  ![Připojení počítače](media/security-center-wdatp/onboard-computers.png)
+   ![Připojení počítače](media/security-center-wdatp/onboard-computers.png)
 
 
 ## <a name="enable-windows-defender-atp-integration"></a>Povolení integrace ochrany ATP v programu Windows Defender

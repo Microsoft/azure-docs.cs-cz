@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085999"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesla a účtu na spravované domény
 Tento článek vysvětluje výchozí zásady hesel ve spravované doméně. Věnuje se také, jak můžete nakonfigurovat tyto zásady.
@@ -89,28 +89,28 @@ Pokud chcete vytvořit vlastní podrobných zásad pro HESLA ve vaší spravovan
 7. Na **úlohy** panelu klikněte pravým tlačítkem, **nový** a klikněte na tlačítko **nastavení hesla**.
 8. V **vytvořit nastavení hesla** dialogové okno, zadejte nastavení vlastní heslo použít jako součást vlastní podrobných zásad pro HESLA. Nezapomeňte si odpovídajícím způsobem nastavit prioritu přepsat výchozí nastavení podrobných zásad pro HESLA.
 
-  ![Vytvořit vlastní podrobných zásad pro HESLA](./media/how-to/custom-fgpp.png)
+   ![Vytvořit vlastní podrobných zásad pro HESLA](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **Nezapomeňte zrušit zaškrtnutí chránit před náhodným odstraněním možnost.** Pokud je vybraná tato možnost, nelze uložit podrobných zásad pro HESLA.
-  >
-  >
+   > [!TIP]
+   > **Nezapomeňte zrušit zaškrtnutí chránit před náhodným odstraněním možnost.** Pokud je vybraná tato možnost, nelze uložit podrobných zásad pro HESLA.
+   >
+   >
 
 9. V **vztahuje se přímo na**, klikněte na tlačítko **přidat** tlačítko. V **vybrat uživatele nebo skupiny** dialogového okna, klikněte na tlačítko **umístění** tlačítko.
 
-  ![Vyberte uživatele a skupiny](./media/how-to/fgpp-applies-to.png)
+   ![Vyberte uživatele a skupiny](./media/how-to/fgpp-applies-to.png)
 
 10. V **umístění** dialogového okna, rozbalte název domény a klikněte na tlačítko **uživatelé AADDC**. Nyní můžete vybrat skupinu z předdefinovaných uživatele organizační jednotky, pro kterou chcete použít podrobných zásad pro HESLA.
 
-  ![Vybrat organizační jednotky této skupiny patří do](./media/how-to/fgpp-container.png)
+    ![Vybrat organizační jednotky této skupiny patří do](./media/how-to/fgpp-container.png)
 
 11. Zadejte název skupiny a klikněte na tlačítko **Kontrola názvů** tlačítko Ověřit skupině existuje.
 
-  ![Vyberte skupinu, kterou chcete použít podrobné zásady pro HESLA](./media/how-to/fgpp-apply-group.png)
+    ![Vyberte skupinu, kterou chcete použít podrobné zásady pro HESLA](./media/how-to/fgpp-apply-group.png)
 
 12. Název skupiny se zobrazí v **vztahuje se přímo na** oddílu. Klikněte na tlačítko **OK** tlačítka tyto změny uložit.
 
-  ![Podrobné zásady pro HESLA použít](./media/how-to/fgpp-applied.png)
+    ![Podrobné zásady pro HESLA použít](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **K uplatnění zásad vlastního hesla pro uživatelské účty ve vlastní organizační jednotce:** Zásady pro hesla jemné jemněji lze použít pouze do skupin. Konfigurace zásad vlastní heslo jenom pro uživatele z vlastní organizační jednotky, vytvořte skupinu, která obsahuje uživatele v dané organizační jednotce.

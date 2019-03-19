@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06bfc29b1efdd9263ca4a568dda700ed100731c4
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Kurz: Integrace Azure Active Directory s zastřešující Cisco
 
@@ -173,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -229,7 +229,7 @@ V případě Cisco zastřešující zřizování je ruční úloha.
 
     c. Z **zvolte Role delegovaný správce**, vyberte svou roli.
   
-    d. V **e-mailovou adresu** zadejte emailaddress uživatele jako **brittasimon@contoso.com**.
+    d. V **e-mailovou adresu** zadejte emailaddress uživatele jako **brittasimon\@contoso.com**.
 
     e. V **heslo** pole, zadejte své heslo.
 

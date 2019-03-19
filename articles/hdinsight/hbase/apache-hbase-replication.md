@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444901"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112530"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
@@ -288,15 +288,15 @@ Následující kroky popisují, jak volat skript akce skriptu z webu Azure porta
 4. V horní části stránky vyberte **odeslat novou**.
 5. Vyberte nebo zadejte následující informace:
 
-  1. **Název**: Zadejte **povolit replikaci**.
-  2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **Hlavní**: Ujistěte se, že je vybrána tato možnost. Zrušte jiné typy uzlů.
-  4. **Parametry**: Následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
+   1. **Název**: Zadejte **povolit replikaci**.
+   2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   3. **Hlavní**: Ujistěte se, že je vybrána tato možnost. Zrušte jiné typy uzlů.
+   4. **Parametry**: Následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    > [!NOTE]
-    > Použijte název hostitele místo plně kvalifikovaný název domény pro zdrojový i cílový název DNS clusteru.
+      > [!NOTE]
+      > Použijte název hostitele místo plně kvalifikovaný název domény pro zdrojový i cílový název DNS clusteru.
 
 6. Vyberte **Vytvořit**. Skript může trvat nějakou dobu, zvláště když používáte **- copydata** argument.
 

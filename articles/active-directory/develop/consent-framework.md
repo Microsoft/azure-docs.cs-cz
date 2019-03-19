@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbac6fe421864f9479c9a4ee7eecde97c13f6052
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200526"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124172"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Rozhraní pro udělování souhlasu Azure Active Directory
 
@@ -58,14 +58,14 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro aplikace pro
 
     **Souhlas pro aplikaci prvku delegovaná oprávnění**
 
-    1. Přejděte **nastavení** stránka aplikace
-    1. Vyberte **požadovaná oprávnění**.
-    1. Klikněte na **udělit oprávnění** tlačítko.
+   1. Přejděte **nastavení** stránka aplikace
+   1. Vyberte **požadovaná oprávnění**.
+   1. Klikněte na **udělit oprávnění** tlačítko.
 
-    ![Udělení oprávnění pro vyjádření souhlasu explicitní správce](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Udělení oprávnění pro vyjádření souhlasu explicitní správce](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
-  > [!IMPORTANT]
-  > Explicitní udělení souhlasu pomocí **udělit oprávnění** je aktuálně vyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js tlačítko. V opačném případě aplikace selže při vyžádání tokenu přístupu.
+   > [!IMPORTANT]
+   > Explicitní udělení souhlasu pomocí **udělit oprávnění** je aktuálně vyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js tlačítko. V opačném případě aplikace selže při vyžádání tokenu přístupu.
 
 ## <a name="next-steps"></a>Další postup
 

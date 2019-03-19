@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111442"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Nasazení clusteru Service Fabric, která používá namísto kryptografický otisk certifikátu běžný název
 Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje clusteru certifikáty vyměnit nebo správy. Více certifikátů, ale mají stejný běžný název nebo předmětu.  Clusteru běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu. Tento článek popisuje, jak nasadit cluster Service Fabric běžný název certifikátu použít místo kryptografického otisku certifikátu.
@@ -158,36 +158,36 @@ Dále otevřete *azuredeploy.json* souboru v textovém editoru a provést tři a
           },
     ```
 
-4.  V **Microsoft.ServiceFabric/clusters** prostředků, verze aktualizace rozhraní API pro "2018-02-01".  Také přidat **certificateCommonNames** nastavení **commonNames** vlastnost a odebrat **certifikát** nastavení (pomocí vlastnosti kryptografický otisk), viz následující příklad Příklad:
-    ```json
-    {
-        "apiVersion": "2018-02-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
-            }
-            ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
-        ...
-    ```
-> [!NOTE]
-> Pole 'certificateIssuerThumbprint' umožňuje očekávané vystavitelů certifikátů s daným subjektem běžný název. Toto pole přijímá čárkami výčet kryptografických otisků, SHA1. Všimněte si, že jde o posílení ověření certifikátu – v případě, když není zadaný Vystavitel nebo prázdná, certifikát přijme pro ověřování, pokud jeho řetězci může být sestaven a končí v kořenové důvěryhodné validátorem. Pokud je zadaný vystavitel, certifikát přijme, pokud kryptografický otisk vystavitele přímé odpovídá některému z hodnoty zadané v tomto poli – bez ohledu na to, zda je kořen důvěryhodné nebo ne. Mějte prosím na paměti, že infrastruktura veřejných KLÍČŮ může používat odlišnými certifikačními autoritami k vydávání certifikátů pro stejnou předmět, a proto je důležité určit všechny kryptografické otisky očekávaný název vystavitele pro daného subjektu.
->
-> Určení Vystavitel je považován za osvědčený postup; Při vynechání se budou dál fungovat – pro certifikáty řetězení pro důvěryhodného kořenového - toto chování má omezení a může být postupně v blízké budoucnosti. Všimněte si také, že clusterech nasazených v Azure a zabezpečený pomocí X509 certifikáty vydané soukromé infrastruktury veřejných KLÍČŮ a deklaroval subjektu nebudou moct ověřit ve službě Azure Service Fabric (pro komunikaci clusteru to-service), pokud se zásady certifikátu PKI. není k dispozici a vyhledatelnost multimediálních souborů. 
+4. V **Microsoft.ServiceFabric/clusters** prostředků, verze aktualizace rozhraní API pro "2018-02-01".  Také přidat **certificateCommonNames** nastavení **commonNames** vlastnost a odebrat **certifikát** nastavení (pomocí vlastnosti kryptografický otisk), viz následující příklad Příklad:
+   ```json
+   {
+       "apiVersion": "2018-02-01",
+       "type": "Microsoft.ServiceFabric/clusters",
+       "name": "[parameters('clusterName')]",
+       "location": "[parameters('clusterLocation')]",
+       "dependsOn": [
+       "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+       ],
+       "properties": {
+       "addonFeatures": [
+           "DnsService",
+           "RepairManager"
+       ],        
+       "certificateCommonNames": {
+           "commonNames": [
+           {
+               "certificateCommonName": "[parameters('certificateCommonName')]",
+               "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
+           }
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+       },
+       ...
+   ```
+   > [!NOTE]
+   > Pole 'certificateIssuerThumbprint' umožňuje očekávané vystavitelů certifikátů s daným subjektem běžný název. Toto pole přijímá čárkami výčet kryptografických otisků, SHA1. Všimněte si, že jde o posílení ověření certifikátu – v případě, když není zadaný Vystavitel nebo prázdná, certifikát přijme pro ověřování, pokud jeho řetězci může být sestaven a končí v kořenové důvěryhodné validátorem. Pokud je zadaný vystavitel, certifikát přijme, pokud kryptografický otisk vystavitele přímé odpovídá některému z hodnoty zadané v tomto poli – bez ohledu na to, zda je kořen důvěryhodné nebo ne. Mějte prosím na paměti, že infrastruktura veřejných KLÍČŮ může používat odlišnými certifikačními autoritami k vydávání certifikátů pro stejnou předmět, a proto je důležité určit všechny kryptografické otisky očekávaný název vystavitele pro daného subjektu.
+   >
+   > Určení Vystavitel je považován za osvědčený postup; Při vynechání se budou dál fungovat – pro certifikáty řetězení pro důvěryhodného kořenového - toto chování má omezení a může být postupně v blízké budoucnosti. Všimněte si také, že clusterech nasazených v Azure a zabezpečený pomocí X509 certifikáty vydané soukromé infrastruktury veřejných KLÍČŮ a deklaroval subjektu nebudou moct ověřit ve službě Azure Service Fabric (pro komunikaci clusteru to-service), pokud se zásady certifikátu PKI. není k dispozici a vyhledatelnost multimediálních souborů. 
 
 ## <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
 Nasaďte aktualizovanou šablonu znovu po provedení změn.

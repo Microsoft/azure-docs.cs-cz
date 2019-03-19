@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 85693ec6aa67dc69cd65aae8e66e66e2118672ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898478"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -135,7 +135,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 * Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace o [Power BI a přístup ke stažení šablony](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
-* Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+* Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
     * Po stažení souboru protokolu místně, dvakrát klikněte na soubor otevřít, zobrazení a analýza protokolů v aplikaci SSMS.
     * Můžete také stáhnout více souborů najednou pomocí Průzkumníka služby Azure Storage. Klikněte pravým tlačítkem na konkrétní podsložku a vyberte **uložit jako** uložit do místní složky.
 
@@ -150,8 +150,9 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 
 
 <br>
+
 ### <a name="database-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni databáze
-Protokoly auditování na úrovni databáze se agregují v kolekci Store tabulek s **SQLDBAuditLogs** předponu v účtu úložiště Azure, který jste zvolili během instalace. Můžete zobrazit soubory protokolů pomocí nástroje, jako například [Průzkumníka služby Azure Storage](http://azurestorageexplorer.codeplex.com).
+Protokoly auditování na úrovni databáze se agregují v kolekci Store tabulek s **SQLDBAuditLogs** předponu v účtu úložiště Azure, který jste zvolili během instalace. Můžete zobrazit soubory protokolů pomocí nástroje, jako například [Průzkumníka služby Azure Storage](https://azurestorageexplorer.codeplex.com).
 
 Je k dispozici jako šablona sestavy řídicí panel předkonfigurovaného [ke stažení Excelové tabulce](https://go.microsoft.com/fwlink/?LinkId=403540) umožňují rychle analyzovat data protokolů. Použití šablony v protokolech auditu, budete potřebovat Excel 2013 nebo novější a Power Query, který můžete [stáhnete tady](https://www.microsoft.com/download/details.aspx?id=39379).
 
@@ -176,14 +177,19 @@ Můžete taky nakonfigurovat auditování ve službě Azure SQL Data Warehouse p
 
 * **Rutiny Powershellu**:
 
+<!-- None of the following links exist anymore 3-12-2019
    * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
    * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
    * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
    * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
    * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
    * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
-   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy) -->
 
+   * [Get-AzSqlDatabaseAuditing](/powershell/module/az.sql/get-azsqldatabaseauditing)
+   * [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing)
+   * [Get-AzSqlServerAuditing](/powershell/module/az.sql/get-azsqlserverauditing)
+   * [Set-AzSqlServerAuditing](/powershell/module/az.sql/set-azsqlserverauditing)
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Podpora klientů nižší úrovně pro auditování a dynamické maskování dat
 Auditování spolupracuje s klienti SQL, která podporují přesměrování TDS.

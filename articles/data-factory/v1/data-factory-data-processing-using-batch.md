@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548468"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124146"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -802,8 +802,8 @@ V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivita, kterou j
    * **LinkedServiceName** vlastnost vlastní aktivity odkazuje na **AzureBatchLinkedService**, který dává pokyn služby Data Factory, který vlastní aktivita je potřeba spustit na služby Batch.
    * **Souběžnosti** nastavení je důležité. Pokud použijete výchozí hodnotu, která je 1, i v případě, že máte dva nebo víc výpočetních uzlů ve fondu služby Batch, se zpracovávají řezy jeden po druhém. Proto nejsou využívat paralelní zpracování funkce služby Batch. Pokud nastavíte **souběžnosti** na vyšší hodnotu, Dejme tomu, že 2, znamená to, že dva řezy (odpovídá možnosti dvě úlohy ve službě Batch) může být zpracována ve stejnou dobu. V takovém případě budou použity oba virtuální počítače ve fondu služby Batch. Odpovídajícím způsobem nastavte vlastnost souběžnosti.
    * Pouze jeden úkol (řezu) je spustit na virtuálním počítači v libovolném bodě ve výchozím nastavení. Ve výchozím nastavení **maximální počet úloh na virtuální počítač** je nastavena na hodnotu 1 pro fond služby Batch. Jako součást požadavků vytvořili fond se tato vlastnost nastavena na hodnotu 2. Proto se dva datové továrny řezy můžete spustit na virtuálním počítači ve stejnou dobu.
-    - **IsPaused** je vlastnost nastavena na hodnotu false, ve výchozím nastavení. Kanálu se spustí okamžitě v tomto příkladě vzhledem k tomu, že řezy spustit v minulosti. Tuto vlastnost lze nastavit **true** k pozastavení kanálu a nastavte ji zpět na **false** restartovat.
-    -   **Start** a **end** časy jsou od sebe pět hodin. Řezy se tvoří po hodinách, takže pět řezy se tvoří kanál.
+     - **IsPaused** je vlastnost nastavena na hodnotu false, ve výchozím nastavení. Kanálu se spustí okamžitě v tomto příkladě vzhledem k tomu, že řezy spustit v minulosti. Tuto vlastnost lze nastavit **true** k pozastavení kanálu a nastavte ji zpět na **false** restartovat.
+     -   **Start** a **end** časy jsou od sebe pět hodin. Řezy se tvoří po hodinách, takže pět řezy se tvoří kanál.
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte kanál.
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778ae1aa9d5517912b9c67b27066a75d14358087
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186047"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118591"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -43,8 +43,8 @@ Tyto tři funkce zachovat propojení práce bez ohledu na to, kde jsou vaši už
  
 > [!NOTE]
 > Poslední možnost je pouze pro klienty, kteří pro všechno, co z důvodu, nelze použít vlastní domény k mají stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v článku Pokud [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md) může pro vás nejvhodnější. 
-
->Nebo, pokud je aplikace, je potřeba nakonfigurovat s odkazem na překlad služby SharePoint, naleznete v tématu [konfigurace alternativních mapování přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
+> 
+> Nebo, pokud je aplikace, je potřeba nakonfigurovat s odkazem na překlad služby SharePoint, naleznete v tématu [konfigurace alternativních mapování přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
 
  
 ### <a name="option-1-intune-managed-browser-integration"></a>Option 1: Intune Managed Browser integrace 

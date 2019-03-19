@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 641218e6a9a366d8c3b0d269223a98c08b860bdb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877067"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
@@ -48,10 +48,10 @@ V současné době MSDN je team Media Services primární komunitním fóru.
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 Tým také sleduje otázek na Stack Overflow označené "azure media services".
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Kontaktovat tým
-Azure Media Services je podpora primární e-mailu: **amshelp@microsoft.com**.
+Azure Media Services je podpora primární e-mailu: **amshelp\@microsoft.com**.
 
 V následující tabulce jsou uvedeny e-mailu týmů dílčí funkce:
 

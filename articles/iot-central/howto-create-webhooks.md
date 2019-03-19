@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e5b0f3ce685aa7af441a670fd3124d5ebee2f0c8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22167de6676837c45c48a0bafd19b1ba69578827
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003662"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Vytvoření akce webhooku pro pravidla v Azure IoT Central
 
@@ -25,7 +25,7 @@ Webhooky umožňují propojení aplikace IoT Central pro další aplikace a slu�
 
 V tomto příkladu připojíte k RequestBin nechte se informovat pravidla vyvolat pomocí webhooků.
 
-1. Otevřít [RequestBin](http://requestbin.net/).
+1. Otevřít [RequestBin](https://requestbin.net/).
 
 1. Vytvořte nový RequestBin a zkopírujte **URL přihrádky**.
 

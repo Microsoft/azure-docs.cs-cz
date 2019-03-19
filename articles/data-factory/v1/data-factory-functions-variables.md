@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57976772"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -27,6 +27,7 @@ ms.locfileid: "54353002"
 Tento článek obsahuje informace o funkcích a proměnné, které podporované službou Azure Data Factory.
 
 ## <a name="data-factory-system-variables"></a>Data Factory systémové proměnné
+
 | Název proměnné | Popis | Objekt oboru | Rozsah JSON a případy použití |
 | --- | --- | --- | --- |
 | WindowStart |Začátek časový interval pro spuštění okno aktuální aktivity |aktivita |<ol><li>Zadejte dotazech pro výběr data. Najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.</li> |
@@ -94,7 +95,7 @@ V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 | Datum |EndOfDay(X) |X: DateTime |Získá datum a čas, který představuje konec dne (součást den) x.<br/><br/>Příklad: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Datum |EndOfMonth(X) |X: DateTime |Získá Konec měsíce reprezentována složku měsíce parametru X. <br/><br/>Příklad: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datum a čas, který představuje konec dne měsíce) |
 | Datum |StartOfDay(X) |X: DateTime |Získá začátek dne reprezentována komponentu dne z hodnoty parametru X.<br/><br/>Příklad: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |From(X) |X: Řetězec |Analyzovat řetězec X na datum čas. |
+| DateTime |From(X) |X: String |Analyzovat řetězec X na datum čas. |
 | DateTime |Ticks(X) |X: DateTime |Získá dílků vlastnost parametru X. Jedna značka se rovná 100 nanosekund. Hodnota této vlastnosti představuje počet taktů, které uplynuly od 12:00:00, 1. ledna 0001. |
 | Text |Format(X) |X: Řetězcová hodnota |Formátuje text (použijte `\\'` kombinaci řídicí `'` znak).|
 

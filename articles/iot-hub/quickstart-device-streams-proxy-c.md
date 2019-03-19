@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 300b42c9452fc58c857d075a7fd8c42fd6a1c409
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 59a84190386b554716472b4cb46c94030a66a4cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731729"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077101"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>Rychlý start: SSH nebo RDP over datové proudy zařízení služby IoT Hub pomocí jazyka C proxy aplikace (preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT Hub v současné době podporuje datové proudy zařízení jako [funkce ve verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Datové proudy zařízení služby IoT Hub](./iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Zobrazit [na této stránce](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) přehledné informace o nastavení.
 
@@ -29,7 +31,6 @@ Tento dokument popisuje nastavení pro tunelové propojení provoz SSH (s použi
 Na následujícím obrázku vidíte nastavení jak proxy aplikací místních zařízení a služby vám umožní připojení k začátku do konce mezi klienta SSH a procesy démon procesu SSH. Ve verzi public preview je v SDK pro jazyk C podporuje pouze datové proudy zařízení na straně zařízení. Tento rychlý start v důsledku toho pokrývá jenom pokyny ke spuštění aplikace proxy pro místní zařízení. Byste měli spustit doprovodné místní službu proxy aplikací, která je k dispozici v [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) nebo [rychlý úvod k Node.js](./quickstart-device-streams-proxy-nodejs.md) vodítka.
 
 ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "nastavení místní proxy server")
-
 
 1. Místní služba proxy připojí k centru IoT a zahájí datovém proudu zařízení na cílové zařízení.
 
@@ -48,6 +49,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
+* Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro vytvoření centra IoT hub v těchto oblastech:
+
+  * **USA (střed)**
+  * **Střed USA – EUAP**
+
 * Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/vs/) s povolenou sadou funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
 
@@ -55,24 +61,23 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pro účely tohoto rychlého startu budete používat [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). Připravte vývojové prostředí klonovat a vytvářet [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) z Githubu. Ukázkový kód, který se používá v tomto rychlém startu, je součástí sady SDK na GitHubu. 
 
-
-1. Stáhněte si verzi 3.11.4 [sestavovací systém CMake](https://cmake.org/download/) z [Githubu](https://github.com/Kitware/CMake/releases/tag/v3.11.4). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
+1. Stáhněte si verzi 3.13.4 [sestavovací systém CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá prostředí Windows PowerShell k ověření kryptografické hodnoty hash verze 3.13.4 x64 distribuce MSI:
 
     ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
     ```
-    
-    V době psaní tohoto textu byly na webu CMake uvedené tyto hodnoty hash pro verzi 3.11.4:
+
+    Následující hodnoty hash pro verzi 3.13.4 byly uvedeny na webu CMake v době psaní tohoto textu:
 
     ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
+    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
+    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
+    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
     ```
 
-    Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
+    Je důležité, že požadavky sady Visual Studio (Visual Studio a úlohy "Vývoj desktopových aplikací pomocí C++") jsou nainstalovány na vašem počítači **před** spouští `CMake` instalace. Jakmile požadované součásti jsou na místě a ověřit soubor ke stažení, instalace sestavovací systém CMake.
 
 2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
     
@@ -80,7 +85,6 @@ Pro účely tohoto rychlého startu budete používat [sadu SDK pro zařízení 
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
     Velikost tohoto úložiště je aktuálně přibližně 220 MB. Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
-
 
 3. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. 
 
@@ -90,28 +94,27 @@ Pro účely tohoto rychlého startu budete používat [sadu SDK pro zařízení 
     cd cmake
     ```
 
-4. Spuštěním následujícího příkazu sestavte verzi sady SDK určenou pro platformu vašeho vývojového klienta. Ve Windows, řešení sady Visual Studio pro simulované zařízení se vygeneruje `cmake` adresáře. 
+4. Spusťte následující příkazy z `cmake` adresář pro sestavení verze sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj.
 
-```
-    # In Linux
-    cmake ..
-    make -j
-```
+   * V systému Linux:
 
-Ve Windows spusťte následující příkazy v Developer Command Prompt pro Visual Studio 2015 nebo 2017 řádku:
+      ```bash
+      cmake ..
+      make -j
+      ```
 
-```
-    rem In Windows
-    rem For VS2015
-    cmake .. -G "Visual Studio 15 2015"
+   * Ve Windows spusťte následující příkazy v Developer Command Prompt pro sadu Visual Studio 2015 nebo 2017. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení.
 
-    rem Or for VS2017
-    cmake .. -G "Visual Studio 15 2017"
+      ```cmd
+      rem For VS2015
+      cmake .. -G "Visual Studio 14 2015"
 
-    rem Then build the project
-    cmake --build . -- /m /p:Configuration=Release
-```
-    
+      rem Or for VS2017
+      cmake .. -G "Visual Studio 15 2017"
+
+      rem Then build the project
+      cmake --build . -- /m /p:Configuration=Release
+      ```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -146,65 +149,64 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v tomto rychlém startu.
 
-
 ## <a name="ssh-to-a-device-via-device-streams"></a>Přístup k zařízení prostřednictvím datových proudů zařízení přes SSH
 
 ### <a name="run-the-device-local-proxy-application"></a>Spuštění aplikace proxy pro místní zařízení
 
-- Upravte zdrojový soubor `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c` a zadejte připojovací řetězec zařízení, cílové zařízení IP nebo název hostitele, jakož i protokol RDP port 22:
-```C
-  /* Paste in the your iothub connection string  */
-  static const char* connectionString = "[Connection string of IoT Hub]";
-  static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
-  static const size_t localPort = 22; // Port of the local server to connect to.
-```
+1. Upravte zdrojový soubor `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c` a poté zadejte připojovací řetězec zařízení, cílové zařízení IP nebo název hostitele a port 22 pro SSH:
 
-- Kompilace vzorku následujícím způsobem:
+   ```C
+   /* Paste in the your iothub connection string  */
+   static const char* connectionString = "[Connection string of IoT Hub]";
+   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   static const size_t localPort = 22; // Port of the local server to connect to.
+   ```
 
-```
+2. Kompilace vzorku:
+
+   ```bash
     # In Linux
     # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     make -j
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
     rem Go to cmake at root of repository
     cmake --build . -- /m /p:Configuration=Release
-```
+   ```
 
-- Zkompilovaný program spouštět v zařízení:
-```
+3. Zkompilovaný program spouštět v zařízení:
+
+   ```bash
     # In Linux
-    # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
+    # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     ./iothub_client_c2d_streaming_proxy_sample
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
-    rem Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
+    rem Go to the sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
-```
+   ```
 
 ### <a name="run-the-service-local-proxy-application"></a>Spuštění místní služby proxy aplikace
 
-Jak je popsáno [nad](#how-it-works) navázání začátku do konce datového proudu k tunelování SSH provoz vyžaduje místní proxy server na každém konci (tj. služby a zařízení). Ve verzi public preview SDK pro IoT Hub C podporuje pouze datové proudy zařízení na straně zařízení ale. Pro místní službu proxy server, použít doprovodné příručky v [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) nebo [rychlý úvod k Node.js](./quickstart-device-streams-proxy-nodejs.md) místo.
-
+Jak je popsáno [dříve](#how-it-works), zřízení začátku do konce datového proudu k tunelování SSH provoz vyžaduje místní proxy server na každém konci (i ve službě a zařízení). Ve verzi public preview je v C SDK pro IoT Hub podporuje pouze datové proudy zařízení na straně zařízení. Sestavte a spusťte místní službu proxy serveru, postupujte podle kroků uvedených v [ C# rychlý Start](./quickstart-device-streams-proxy-csharp.md) nebo [rychlý úvod k Node.js](./quickstart-device-streams-proxy-nodejs.md).
 
 ### <a name="establish-an-ssh-session"></a>Relaci SSH
 
-Za předpokladu, že proxy serverů s místním zařízení a služby běží, teď pomocí programu klienta SSH a připojení k proxy serveru místní služby na port 2222 (namísto démon procesu SSH přímo). 
+Po spuštění proxy serverů s místním zařízení a služba používat váš klientský program SSH a připojení k proxy serveru místní služby na port 2222 (namísto démon procesu SSH přímo).
 
-```
+```cmd/sh
 ssh <username>@localhost -p 2222
 ```
 
 V tomto okamžiku zobrazí se výzva k přihlášení SSH k zadání přihlašovacích údajů.
 
-
 Výstup na místní zařízení proxy serveru, který se připojuje k proces démon programu SSH v konzole `IP_address:22`: ![Alternativní text](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "výstupní zařízení místní proxy server")
 
-Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH na port 22, kde služba místní proxy server naslouchá připojením): ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "výstup klienta SSH")
+Výstup programu klienta SSH konzole (klient SSH komunikuje se proces démon programu SSH propojením na port 22, který služba místní proxy server naslouchá na): ![Alternativní text](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "výstup klienta SSH")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

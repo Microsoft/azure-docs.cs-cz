@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf55cef00c0600963f8363e617c24fdc9113eae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122973"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Proveďte změnu výchozí konfigurace
 Cílem tohoto článku je pro vás provedou postupem provést změny ve výchozí konfiguraci ve službě Azure Active Directory (Azure AD) Connect sync. Obsahuje postup pro některé běžné scénáře. Se znalostí by měl být schopen provést jednoduché změny do vaší vlastní konfigurace na základě vlastních obchodních pravidel.
@@ -349,8 +349,8 @@ Následující kroky můžete ověřit změny při spuštění ruční kroky, kt
    3. V místním dialogovém okně vyberte **úplný Import** a potom klikněte na tlačítko **OK**.
    4. Počkejte na dokončení operace.
 
-    > [!NOTE]
-    > Úplný import, můžete přeskočit na místní AD Connector. Pokud zdrojový atribut je již zahrnut v seznamu importu atributy. Jinými slovy nemáte žádné změny během [krok 2: Přidejte zdrojový atribut pro místní AD Connector. schéma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+      > [!NOTE]
+      > Úplný import, můžete přeskočit na místní AD Connector. Pokud zdrojový atribut je již zahrnut v seznamu importu atributy. Jinými slovy nemáte žádné změny během [krok 2: Přidejte zdrojový atribut pro místní AD Connector. schéma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Spuštění **úplný import** na **konektor služby Azure AD**:
 

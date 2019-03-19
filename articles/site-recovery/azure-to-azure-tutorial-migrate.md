@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0ea0c00924c41216232522cf62d8f33dd38cec9e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7619b8831d75ce639c6f6c773c7c7d491abc93e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122025"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -24,13 +24,13 @@ Můžete použít [Azure Site Recovery](site-recovery-overview.md) služby ke sp
 V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-
+> 
 > * Ověřte požadavky pro přesunutí
 > * Příprava zdrojových virtuálních počítačů a cílová oblast
 > * Zkopírujte data a povolení replikace
 > * Otestujte konfiguraci a provedení přesunu
 > * Odstranit prostředky ve zdrojové oblasti
-
+> 
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiného je. Pokud potřebujete kvůli zlepšení dostupnosti díky přesunu virtuálních počítačů ve skupině dostupnosti zóny připojené virtuální počítače v jiné oblasti, najdete v článku [přesunout virtuální počítače Azure do zóny dostupnosti kurzu](move-azure-vms-avset-azone.md).
 
@@ -72,9 +72,9 @@ V tomto kurzu provedete následující:
 
      Vytvořit většinu běžně používá síťové prostředky, které jsou relevantní pro vás v závislosti na konfiguraci zdrojového virtuálního počítače, naleznete v následující dokumentaci:
 
-    - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Veřejná IP adresa](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
+   - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [Veřejná IP adresa](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
     
      Ostatními síťovými součástmi, najdete v článku [sítě dokumentaci](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 

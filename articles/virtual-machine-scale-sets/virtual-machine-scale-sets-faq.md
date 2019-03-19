@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 610ac10e757ef422ce130c0cfe8253af6ba4b7b9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542467"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999559"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -234,7 +234,7 @@ Veřejné klíče SSH ve formátu prostého textu můžete zadat při vytvářen
 ```
 
 Název elementu linuxConfiguration | Požaduje se | Typ | Popis
---- | --- | --- | --- |  ---
+--- | --- | --- | --- 
 SSH | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux
 path | Ano | Řetězec | Určuje soubor Linuxová cesta kde klíče SSH nebo certifikát má být umístěn
 data klíče | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
@@ -309,7 +309,7 @@ Dokumentace ke službě Azure Key Vault hlásí, že REST API služby získat ta
 
 Metoda | zprostředkovatele identity
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
 Nahradit {*název tajného kódu*} s názvem a nahrazení {*tajný kód verze*} verzi tajného klíče, které chcete načíst. Verze tajného kódu může být vyloučen. V takovém případě se načte aktuální verzi.
 
@@ -535,7 +535,7 @@ Pokud chcete nasadit škálovací sadu virtuálních počítačů nastavení pro
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Jak přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů?
 
-Chcete-li přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů, přečtěte si téma [Azure Resource Manageru: Získat virtual machine scale sets s privátní IP adresy](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Chcete-li přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů, přečtěte si téma [Azure Resource Manageru: Získat virtual machine scale sets s privátní IP adresy](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Můžete používat škálovací sady s Akcelerovanými síťovými službami?
 
@@ -721,3 +721,26 @@ Hlavní rozdíl mezi odstranění virtuálního počítače ve škálovací sad�
 - Chcete spustit sadu virtuálních počítačů rychleji, než by mohla horizontální navýšení kapacity škálovací sady virtuálních počítačů.
   - Související s tímto scénářem, pravděpodobně jste vytvořili vlastní modul automatického škálování a chcete rychlejší škálování začátku do konce.
 - Máte škálovací sadu virtuálních počítačů, které nerovnoměrně distribuovaná napříč doménami selhání a aktualizačních doménách. To může být kvůli selektivně odstranění virtuální počítače, nebo virtuální počítače byly odstraněny po předimenzování. Spuštění `stop deallocate` následovaný `start` na virtuálním počítači škálovací sady se rovnoměrně distribuuje virtuálních počítačů napříč doménami selhání a aktualizačních doménách.
+
+### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>Jak můžu udělat snímek instanci VMSS?
+Vytvoření snímku ze instance VMSS.
+
+```azurepowershell-interactive
+$rgname = "myResourceGroup"
+$vmssname = "myVMScaleSet"
+$Id = 0
+$location = "East US"
+ 
+$vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
+$snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
+New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
+``` 
+ 
+Vytvoření spravovaného disku ze snímku.
+
+```azurepowershell-interactive
+$snapshotName = "myShapshot"
+$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
+$diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+```

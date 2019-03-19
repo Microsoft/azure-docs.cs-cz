@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09fef060a58723624796fe6192fef2444251cc1c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076992"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí Azure čas Series Insights ve verzi Preview
 
@@ -90,7 +90,7 @@ Time Series Insights je vysoce dostupná služba, která používá redundance n
 Informace o integrovaných funkcí v Azure pro provozní kontinuitu a zotavení po havárii (BCDR), najdete v části [technickou pomoc Azure obchodní kontinuity podnikových procesů](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Doprovodné materiály k architektuře týkající se strategií pro aplikace Azure, abyste dosáhli vysoké dostupnosti a zotavení po havárii, naleznete dokumentu na [zotavení po havárii a vysoká dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-
+> 
 >  Time Series Insights nemá vestavěné BCDR.
 > Ve výchozím nastavení mají obnovení vytvořené Azure Storage, Azure IoT Hub a Azure Event Hubs.
 

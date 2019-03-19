@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 053d400a9986d0997344b2be09140d8afb0e1faf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996371"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -29,7 +29,7 @@ Plán obnovení vám umožní definovat proces systematické obnovení, tak, že
 
 * Modelujte aplikaci kolem jeho závislosti.
 * Automatizace úloh obnovení ke snížení RTO.
-- Ověřte, že jste přípravy na migraci nebo po havárii pro obnovení tím, že zajišťuje, že vaše aplikace jsou součástí plánu obnovení.
+* Ověřte, že jste přípravy na migraci nebo po havárii pro obnovení tím, že zajišťuje, že vaše aplikace jsou součástí plánu obnovení.
 * Spusťte testovací převzetí služeb při selhání na plány obnovení, a zajišťuje zotavení po havárii nebo migrace funguje podle očekávání.
 
 
@@ -42,10 +42,10 @@ Můžete naplánovat a vytvořte skupinu obnovení k zachycení vlastnosti speci
     - Toto pořadí zajistí, že když middleware spustí a pokusí se připojit k vrstvě SQL serveru, na úrovni serveru SQL Server je již spuštěna. 
     - Toto pořadí také pomáhá zajistit, aby front-endový server spustí poslední, tak, aby koncoví uživatelé nemusíte připojit adresu URL aplikace předtím, než se všechny součásti nahoru a spuštění a aplikace je připravena přijímat požadavky.
 
-Pokud chcete vytvořit toto pořadí, přidejte skupiny do skupiny pro obnovení a přidat počítače do skupin. 
-    - Pokud je zadáno pořadí, řazení se používá. Akce při paralelním spuštění, kde je to vhodné, ke zlepšení obnovení aplikace RTO.
-    - Počítače v jedné skupině převzetí služeb při selhání paralelně.
-    - Počítače v různých skupinách převzetí služeb při selhání v pořadí skupin tak, aby počítače 2. skupina spustí jejich převzetí služeb při selhání až po převzetí služeb při selhání a spustit všechny počítače v 1 skupině.
+Pokud chcete vytvořit toto pořadí, přidejte skupiny do skupiny pro obnovení a přidat počítače do skupin.
+- Pokud je zadáno pořadí, řazení se používá. Akce při paralelním spuštění, kde je to vhodné, ke zlepšení obnovení aplikace RTO.
+- Počítače v jedné skupině převzetí služeb při selhání paralelně.
+- Počítače v různých skupinách převzetí služeb při selhání v pořadí skupin tak, aby počítače 2. skupina spustí jejich převzetí služeb při selhání až po převzetí služeb při selhání a spustit všechny počítače v 1 skupině.
 
     ![Příklad plánu obnovení](./media/recovery-plan-overview/rp.png)
 
@@ -93,4 +93,4 @@ Podívejte se na rychlý příklad video zobrazující kliknutím na převzetí 
 ## <a name="next-steps"></a>Další postup
 
 - [Vytvoření](site-recovery-create-recovery-plans.md) plánu obnovení.
-* Další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).  
+- Další informace o [spuštění převzetí služeb při selhání](site-recovery-failover.md).  

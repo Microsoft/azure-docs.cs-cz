@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c74a96e3dcce1394e0af5447c07ad38c54b960fa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825730"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125225"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -95,7 +95,7 @@ $vmConfig = Set-AzVMSourceImage `
 
 Podobá se to jak aktuálně určíte pomocí vydavatele, nabídky a skladové položky pro [Image Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) získat nejnovější verzi Marketplace image. Každá definice image s myslete na to, musí mít jedinečnou sadu tyto hodnoty.  
 
-##<a name="create-an-image-version"></a>Vytvoření image verze
+## <a name="create-an-image-version"></a>Vytvoření image verze
 
 Vytvoření image verze ze spravované image pomocí [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . V tomto příkladu je verze image *1.0.0* a se replikuje do obou *střed USA – západ* a *střed USA – jih* datových centrech.
 

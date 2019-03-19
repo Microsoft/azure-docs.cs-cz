@@ -1,18 +1,18 @@
 ---
 title: Příloha - Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek je dodatek pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/06/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6632647c7782411d0d124c325f9bf0afff7e699d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5152058643b97e11c7487d470d4f7d3fc9d96b6e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767784"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878121"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -130,7 +130,7 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 - [Povolit šifrování disku v existující nebo spouštění virtuálních počítačů IaaS s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)
 - [Zakázat šifrování disku v existující nebo spouštění virtuálních počítačů IaaS s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
 - [Povolit šifrování disku v existující nebo spuštěné IaaS virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
- -  [Zakažte šifrování u spuštěného virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
+  - [Zakažte šifrování u spuštěného virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Zakázáním šifrování je povolena pouze u svazků s daty pro virtuální počítače s Linuxem.  
 
 ### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Šifrování nebo dešifrování škálovací sady virtuálních počítačů
@@ -139,9 +139,9 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 
 - [Povolit šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
- - [Nasadit počítače VM Scale Sets ze systému Linux s jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Nasadit počítače VM Scale Sets ze systému Linux s jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
- - [Nasadit počítače VM Scale Sets z Windows pomocí jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Nasadit počítače VM Scale Sets z Windows pomocí jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Zakázat šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -215,22 +215,22 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 ### <a name="steps"></a>Kroky
 1. Vytvoření virtuálního počítače pomocí jedné z distribuce zadali dřív.
 
- Pro 7.2 CentOS je podporováno šifrování disku operačního systému přes speciální image. Pokud chcete použít tuto bitovou kopii, zadejte "7.2n" jako SKU při vytváření virtuálního počítače:
+   Pro 7.2 CentOS je podporováno šifrování disku operačního systému přes speciální image. Pokud chcete použít tuto bitovou kopii, zadejte "7.2n" jako SKU při vytváření virtuálního počítače:
 
- ```powershell
+   ```powershell
     Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
- ```
+   ```
 2. Konfigurace virtuálního počítače podle vašich potřeb. Pokud budete k šifrování všech (operační systém + data) jednotkami, musí být zadané a možnost připojit z /etc/fstab datové jednotky.
 
- > [!NOTE]
- > Použijte UUID =... k určení datové jednotky v/etc/fstab místo zadávání názvu zařízení blok (například/dev/sdb1). Během šifrování se změní pořadí jednotky na virtuálním počítači. Pokud váš virtuální počítač závisí na konkrétní pořadí blokovat zařízení, dojde k selhání připojení po šifrování.
+   > [!NOTE]
+   > Použijte UUID =... k určení datové jednotky v/etc/fstab místo zadávání názvu zařízení blok (například/dev/sdb1). Během šifrování se změní pořadí jednotky na virtuálním počítači. Pokud váš virtuální počítač závisí na konkrétní pořadí blokovat zařízení, dojde k selhání připojení po šifrování.
 
 3. Odhlaste se z relace SSH.
 
 4. K šifrování operačního systému, určete volumeType jako **všechny** nebo **OS** když povolíte šifrování.
 
- > [!NOTE]
- > Všechny procesy uživatelskou, které nejsou spuštěné jako `systemd` služby by měl ukončen s `SIGKILL`. Restartujte virtuální počítač. Když povolíte šifrování disku operačního systému spuštěného virtuálního počítače, naplánujte výpadky virtuálního počítače.
+   > [!NOTE]
+   > Všechny procesy uživatelskou, které nejsou spuštěné jako `systemd` služby by měl ukončen s `SIGKILL`. Restartujte virtuální počítač. Když povolíte šifrování disku operačního systému spuštěného virtuálního počítače, naplánujte výpadky virtuálního počítače.
 
 5. Pravidelně sledovat průběh šifrování pomocí pokynů [další části](#monitoring-os-encryption-progress).
 
@@ -244,7 +244,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-Předtím, než je restartovat, doporučujeme uložit [Diagnostika spouštění](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) virtuálního počítače.
+   Předtím, než je restartovat, doporučujeme uložit [Diagnostika spouštění](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) virtuálního počítače.
 
 ## <a name="monitoring-os-encryption-progress"></a>Sledování průběhu šifrování operačního systému
 Můžete sledovat průběh šifrování operačního systému třemi způsoby:
@@ -256,14 +256,14 @@ Můžete sledovat průběh šifrování operačního systému třemi způsoby:
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk encryption started
     ```
- Po virtuálním počítači dosáhne "Zahájeno šifrování disku operačního systému", trvá přibližně 40 až 50 minut na Premium storage zálohy virtuálního počítače.
+  Po virtuálním počítači dosáhne "Zahájeno šifrování disku operačního systému", trvá přibližně 40 až 50 minut na Premium storage zálohy virtuálního počítače.
 
- Z důvodu [vydat #388](https://github.com/Azure/WALinuxAgent/issues/388) v WALinuxAgent, `OsVolumeEncrypted` a `DataVolumesEncrypted` jako `Unknown` v některých distribucích. S WALinuxAgent verze 2.1.5 a později je tento problém automaticky opraven. Pokud se zobrazí `Unknown` ve výstupu, můžete ověřit stav šifrování disku pomocí Průzkumníka prostředků Azure.
+  Z důvodu [vydat #388](https://github.com/Azure/WALinuxAgent/issues/388) v WALinuxAgent, `OsVolumeEncrypted` a `DataVolumesEncrypted` jako `Unknown` v některých distribucích. S WALinuxAgent verze 2.1.5 a později je tento problém automaticky opraven. Pokud se zobrazí `Unknown` ve výstupu, můžete ověřit stav šifrování disku pomocí Průzkumníka prostředků Azure.
 
- Přejděte na [Azure Resource Exploreru](https://resources.azure.com/)a potom rozbalte tuto hierarchii na levém panelu výběr:
+  Přejděte na [Azure Resource Exploreru](https://resources.azure.com/)a potom rozbalte tuto hierarchii na levém panelu výběr:
 
- ~~~~
- |-- subscriptions
+  ~~~~
+  |-- subscriptions
      |-- [Your subscription]
           |-- resourceGroups
                |-- [Your resource group]
@@ -272,11 +272,11 @@ Můžete sledovat průběh šifrování operačního systému třemi způsoby:
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-~~~~                
+  ~~~~                
 
- V InstanceView přejděte dolů a zobrazit stav šifrování jednotky.
+  V InstanceView přejděte dolů a zobrazit stav šifrování jednotky.
 
- ![Zobrazení Instance virtuálního počítače](./media/azure-security-disk-encryption/vm-instanceview.png)
+  ![Zobrazení Instance virtuálního počítače](./media/azure-security-disk-encryption/vm-instanceview.png)
 
 * Podívejte se na [Diagnostika spouštění](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Zprávy z rozšíření ADE musí předcházet `[AzureDiskEncryption]`.
 
@@ -284,7 +284,7 @@ Můžete sledovat průběh šifrování operačního systému třemi způsoby:
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
- Doporučujeme vám, že není přihlásíte do virtuálního počítače probíhá šifrování operačního systému. Kopírovat protokoly jenom v případě, že tyto dvě metody se nezdařilo.
+  Doporučujeme vám, že není přihlásíte do virtuálního počítače probíhá šifrování operačního systému. Kopírovat protokoly jenom v případě, že tyto dvě metody se nezdařilo.
 
 ## <a name="bkmk_preLinux"></a> Připravit předem šifrované linuxového virtuálního pevného disku
 Příprava předem šifrované virtuální pevné disky se může lišit v závislosti na distribuci. Příklady o přípravě [Ubuntu 16](#bkmk_Ubuntu), [openSUSE 13.2](#bkmk_openSUSE), a [CentOS 7](#bkmk_CentOS) jsou k dispozici. 
@@ -294,23 +294,23 @@ Konfigurace šifrování během instalace distribučního provedením následuj�
 
 1. Vyberte **konfigurace šifrovaných svazcích** při rozdělit disky.
 
- ![Ubuntu 16.04 nastavení – konfigurace šifrované svazky](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+   ![Ubuntu 16.04 nastavení – konfigurace šifrované svazky](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Vytvoření samostatné spouštěcí jednotka, která nesmí být zašifrovaná. Šifrování kořenové jednotce.
 
- ![Instalační program Ubuntu 16.04 – vyberte zařízení k šifrování](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+   ![Instalační program Ubuntu 16.04 – vyberte zařízení k šifrování](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Zadejte heslo. Toto je heslo, které jste nahráli do služby key vault.
 
- ![Ubuntu 16.04 instalace – zadejte přístupové heslo](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+   ![Ubuntu 16.04 instalace – zadejte přístupové heslo](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Dokončení vytváření oddílů.
 
- ![Ubuntu 16.04 instalace – dokončení rozdělení do oddílů](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+   ![Ubuntu 16.04 instalace – dokončení rozdělení do oddílů](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Při spuštění virtuálního počítače a vyzváni k zadání přístupového hesla použijte heslo, které jste zadali v kroku 3.
 
- ![Ubuntu 16.04 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+   ![Ubuntu 16.04 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Příprava virtuálního počítače pro jeho odeslání do Azure s využitím [tyto pokyny](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -351,32 +351,32 @@ Konfigurace šifrování pro práci s Azure provedením následujících kroků:
      else
         echo "Success loading keyfile!" >&2
     fi
-```
+   ```
 
 2. Změna konfigurace kryptografie v */etc/crypttab*. Mělo by to vypadat takto:
- ```
+   ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
 
 3. Pokud upravujete *azure_crypt_key.sh* ve Windows a zkopírován do Linuxu spusťte `dos2unix /usr/local/sbin/azure_crypt_key.sh`.
 
 4. Přidáte spustitelný soubor oprávnění ke skriptu:
- ```
+   ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
- ```
+   ```
 5. Upravit */etc/initramfs-tools/modules* přidáním řádků:
- ```
+   ```
     vfat
     ntfs
     nls_cp437
     nls_utf8
     nls_iso8859-1
-```
+   ```
 6. Spustit `update-initramfs -u -k all` aktualizovat initramfs provést `keyscript` projeví.
 
 7. Nyní můžete zrušit zřízení virtuálního počítače.
 
- ![Instalační program Ubuntu 16.04 - aktualizace initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+   ![Instalační program Ubuntu 16.04 - aktualizace initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Pokračovat k dalšímu kroku a nahrajte virtuální pevný disk do Azure.
 
@@ -384,11 +384,11 @@ Konfigurace šifrování pro práci s Azure provedením následujících kroků:
 Pokud chcete nakonfigurovat šifrování během instalace distribučního, proveďte následující kroky:
 1. Když je rozdělit disky, vyberte **šifrování svazku skupiny**a pak zadejte heslo. Jedná se o heslo, který nahrajete do trezoru klíčů.
 
- ![openSUSE 13.2 Instalační program – šifrování skupiny svazků](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+   ![openSUSE 13.2 Instalační program – šifrování skupiny svazků](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Spuštění virtuálního počítače pomocí hesla.
 
- ![openSUSE 13.2 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+   ![openSUSE 13.2 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. Příprava virtuálního počítače pro jeho odeslání do Azure podle pokynů v [Příprava virtuálního počítače se SLES nebo openSUSE pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -398,7 +398,7 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. Okomentujte řádky na konci souboru /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
- ```bash
+   ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -408,20 +408,20 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
     #        systemd-ask-password systemd-tty-ask-password-agent
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
- ```
+   ```
 
 3. Připojte následující řádek na začátek souboru /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
- ```bash
+   ```bash
     DRACUT_SYSTEMD=0
- ```
-A změňte všechny výskyty položky:
- ```bash
+   ```
+   A změňte všechny výskyty položky:
+   ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
- ```
-na:
-```bash
+   ```
+   na:
+   ```bash
     if [ 1 ]; then
-```
+   ```
 4. Upravit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh a přidejte je do "# Otevřít LUKS zařízení":
 
     ```bash
@@ -452,19 +452,19 @@ na:
 Pokud chcete nakonfigurovat šifrování během instalace distribučního, proveďte následující kroky:
 1. Vyberte **šifrovat data** při rozdělit disky.
 
- ![Instalační program centOS 7 – cíl instalace](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+   ![Instalační program centOS 7 – cíl instalace](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Ujistěte se, že **šifrovat** je vybrán pro kořenový oddíl.
 
- ![Instalační program centOS 7 – výběr šifrování pro kořenový oddíl.](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+   ![Instalační program centOS 7 – výběr šifrování pro kořenový oddíl.](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Zadejte heslo. Toto je heslo, které nahrajete do trezoru klíčů.
 
- ![Instalační program centOS 7 – zadejte přístupové heslo](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+   ![Instalační program centOS 7 – zadejte přístupové heslo](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Při spuštění virtuálního počítače a vyzváni k zadání přístupového hesla použijte heslo, které jste zadali v kroku 3.
 
- ![CentOS 7 nastavení – zadejte přístupové heslo na spuštění](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+   ![CentOS 7 nastavení – zadejte přístupové heslo na spuštění](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. Příprava virtuálního počítače pro jeho odeslání do Azure s využitím pokynů "CentOS 7.0 +" [Příprava virtuálního počítače založeného na CentOS pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -478,7 +478,7 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     ```
 
 2. Okomentujte řádky na konci souboru /usr/lib/dracut/modules.d/90crypt/module-setup.sh:
-```bash
+   ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -488,20 +488,20 @@ Ke konfiguraci šifrování pro práci s Azure, proveďte následující kroky:
     #        $systemdsystemunitdir/sysinit.target.wants/cryptsetup.target \
     #        systemd-ask-password systemd-tty-ask-password-agent
     #        inst_script "$moddir"/crypt-run-generator.sh /sbin/crypt-run-generator
-```
+   ```
 
 3. Připojte následující řádek na začátek souboru /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh:
-```bash
+   ```bash
     DRACUT_SYSTEMD=0
-```
-A změňte všechny výskyty položky:
-```bash
+   ```
+   A změňte všechny výskyty položky:
+   ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
-```
-na
-```bash
+   ```
+   na
+   ```bash
     if [ 1 ]; then
-```
+   ```
 4. Upravit /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh a přidat následující za "otevřené LUKS zařízení #":
     ```bash
     MountPoint=/tmp-keydisk-mount

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0699686338a14ed6cc1ddcb076e14de86d0249d9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c57dff2e0f0c1edb887ddd8f0e5ca206ba8b912
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438599"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110388"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
@@ -310,7 +310,7 @@ Balíčky R nainstalovat na pracovní uzly clusteru, musíte použít akci skrip
 
    * Pro **název**, zadejte název akce skriptu.
 
-    * Pro **URI skriptu Bash**, zadejte `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který se nainstaluje na pracovní uzel další balíčky r.
+     * Pro **URI skriptu Bash**, zadejte `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který se nainstaluje na pracovní uzel další balíčky r.
 
    * Vyberte zaškrtávací pole pouze pro **pracovního procesu**.
 
