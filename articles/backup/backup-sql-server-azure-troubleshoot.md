@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 8bfa9f2fcdc3047ed5541db058f670a4bc464164
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449899"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007178"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
 Tento článek obsahuje informace o odstraňování potíží pro ochranu virtuálních počítačů SQL serverem v Azure (Preview).
 
-## <a name="public-preview-limitations"></a>Omezení veřejné verze Preview
+## <a name="feature-consideration-and-limitations"></a>Funkce aspektů a omezení
 
-Chcete-li zobrazit omezení veřejné verze Preview, najdete v článku, [zálohovat databázi systému SQL Server v Azure](backup-azure-sql-database.md#preview-limitations).
+Zobrazit funkce zvážit, najdete v článku, [zálohování serveru SQL Server na virtuálních počítačích Azure](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Oprávnění SQL Serveru
 
@@ -37,7 +37,7 @@ Použijte informace v následujících tabulkách k řešení problémů a chyb 
 
 | Severity | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
-| Upozornění | Aktuální nastavení pro tuto databázi nepodporují určitý druh typy v přidružené zásady zálohování. | <li>**Master DB**: Pouze úplné zálohování lze provést v hlavní databázi. ani **rozdílové** zálohování ani transakce **protokoly** zálohování jsou možné. </li> <li>Všechny databáze v **jednoduchý model obnovení** neumožňuje transakce **protokoly** zálohování, které mají být provedeny.</li> | Změňte nastavení databáze tak, aby se podporují všechny typy zálohování v zásadách. Můžete také změňte aktuální zásady zahrnout pouze podporované typy zálohování. V opačném případě se přeskočí nepodporované typy zálohování během naplánovaného zálohování nebo se nezdaří úlohy zálohování ad hoc záloha.
+| Upozornění | Aktuální nastavení pro tuto databázi nepodporují určitý druh typy v přidružené zásady zálohování. | <li>**Master DB**: Pouze úplné zálohování lze provést v hlavní databázi. ani **rozdílové** zálohování ani transakce **protokoly** zálohování. </li> <li>Všechny databáze v **jednoduchý model obnovení** neumožňuje transakce **protokoly** zálohování, které mají být provedeny.</li> | Změňte nastavení databáze tak, aby se podporují všechny typy zálohování v zásadách. Můžete také změňte aktuální zásady zahrnout pouze podporované typy zálohování. V opačném případě se přeskočí nepodporované typy zálohování během naplánovaného zálohování nebo se nezdaří úlohy zálohování ad hoc záloha.
 
 
 ## <a name="backup-failures"></a>Selhání zálohování
@@ -136,6 +136,35 @@ Následující chybové kódy jsou pro konfiguraci zálohování selhání.
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Záměr automatické ochrany byla buď odebrána nebo je více platný. | Když povolíte automatické ochrany na instanci SQL, **konfigurace zálohování** úloha pro všechny databáze v této instanci. Pokud zakážete automatickou ochranu jsou spuštěné úlohy, které pak bude **probíhá** zrušení úloh s tímto kódem chyby. | Povolte automatickou ochranu znovu k ochraně všech zbývajících databází. |
+
+## <a name="re-registration-failures"></a>Opětovná registrace selhání
+
+Vyhledat jeden nebo více [příznaky](#symptoms) před aktivací operace znovu zaregistrovat.
+
+### <a name="symptoms"></a>Příznaky
+
+* Všechny operace, jako je zálohování, obnovení a konfiguraci zálohování se nedaří na virtuálním počítači s jedním z následující kódy chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**
+* **Stav zálohování** záložní položky zobrazuje **nedostupný**. Přestože třeba vyloučit všechny jiné důvody, které může také způsobit ve stejném stavu:
+
+  * Nedostatečná oprávnění k provedení zálohování souvisejících operací na virtuálním počítači  
+  * Virtuální počítač se vypnul kvůli které zálohování nelze provést
+  * Problémy se sítí  
+
+    ![Zopakujte registraci virtuálního počítače](./media/backup-azure-sql-database/re-register-vm.png)
+
+* V případě skupiny dostupnosti always on spustit zálohování po změně předvolby zálohování nebo při převzetí služeb při selhání
+
+### <a name="causes"></a>Příčiny
+Tyto příznaky mohou vzniknout z důvodu nejméně jeden z následujících důvodů:
+
+  * Rozšíření byla odstraněna nebo odinstalována z portálu 
+  * Rozšíření byla odinstalována ze **ovládací panely** virtuálního počítače v rámci **odinstalovat nebo změnit Program** uživatelského rozhraní
+  * Virtuální počítač se obnovila zpět v čase s použitím místní disky obnovení
+  * Virtuální počítač byl vypnut delší dobu kvůli které konfiguraci rozšíření na něm vypršela
+  * Odstranění virtuálního počítače a další virtuální počítač vytvořila se stejným názvem a ve stejné skupině prostředků jako odstraněného virtuálního počítače
+  * Jeden z uzlů AG nedostali kompletní konfiguraci zálohování, k tomu může dojít buď v době registrace skupiny dostupnosti v úložišti nebo když přidá nový uzel  <br>
+    Ve výše uvedených scénářích se doporučuje spustit znovu zaregistrovat operace na virtuálním počítači. Tato možnost dostupná jenom přes PowerShell a brzy bude k dispozici na webu Azure Portal i.
+
 
 ## <a name="next-steps"></a>Další postup
 

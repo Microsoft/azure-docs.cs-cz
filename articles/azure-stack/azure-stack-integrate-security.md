@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009473"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integrace datových center Azure Stack – předávání syslog
 
@@ -63,8 +63,8 @@ Parametry pro *Set-SyslogServer* rutiny:
 
 | Parametr | Popis | Type | Požaduje se |
 |---------|---------|---------|---------|
-|*ServerName* | Plně kvalifikovaný název domény nebo IP adresa serveru syslog | Řetězec | ano|
-|*ServerPort* | Číslo portu serveru syslog naslouchá | Řetězec | ano|
+|*ServerName* | Plně kvalifikovaný název domény nebo IP adresa serveru syslog | String | ano|
+|*ServerPort* | Číslo portu serveru syslog naslouchá | String | ano|
 |*NoEncryption*| Platnost klienta k odeslání zprávy syslog ve formátu prostého textu | Příznak | ne|
 |*SkipCertificateCheck*| Přeskočit ověření certifikátu poskytnutého na server syslog během počáteční TLS handshake | Příznak | ne|
 |*SkipCNCheck*| Přeskočit ověření hodnoty běžný název certifikátu poskytnutého na server syslog během počáteční TLS handshake | Příznak | ne|
@@ -72,9 +72,10 @@ Parametry pro *Set-SyslogServer* rutiny:
 |*odebrat*| Odebrat konfiguraci serveru z klienta a ukončit předávání syslog| Příznak | ne|
 
 Parametry pro *Set-SyslogClient* rutiny:
+
 | Parametr | Popis | Type |
 |---------|---------| ---------|
-| *pfxBinary* | soubor PFX obsahující certifikát, který se použije klient jako identita k ověření vůči serveru syslog  | Byte] |
+| *pfxBinary* | soubor PFX obsahující certifikát, který se použije klient jako identita k ověření vůči serveru syslog  | Byte[] |
 | *CertPassword* |  Heslo pro import privátní klíč, který je přidružený k souboru pfx | SecureString |
 |*RemoveCertificate* | Odeberte certifikát z klienta | Příznak|
 
@@ -264,7 +265,7 @@ Tabulka závažnost období:
 |8|Chyba| Hodnota: 2. Označuje chybu v protokolech|
 |5|Upozornění|Hodnota: 3. Označuje informace pro upozornění|
 |2|Informace|Hodnota: 4. Označuje informace pro informační zpráva|
-|0|Podrobný|Hodnota: 5. Označuje protokolů na všech úrovních|
+|0|Podrobnosti|Hodnota: 5. Označuje protokolů na všech úrovních|
 
 ### <a name="cef-mapping-for-recovery-endpoint-events"></a>CEF mapování pro události koncového bodu obnovení
 
@@ -287,6 +288,7 @@ Tabulka událostí pro koncový bod obnovení:
 |RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
 
 Tabulka zástupce závažnosti:
+
 | Severity | Úroveň | Číselná hodnota |
 |----------|-------| ----------------|
 |0|Nedefinováno|Hodnota: 0. Označuje protokolů na všech úrovních|
@@ -294,7 +296,7 @@ Tabulka zástupce závažnosti:
 |8|Chyba| Hodnota: 2. Označuje chybu v protokolech|
 |5|Upozornění|Hodnota: 3. Označuje informace pro upozornění|
 |2|Informace|Hodnota: 4. Označuje informace pro informační zpráva|
-|0|Podrobný|Hodnota: 5. Označuje protokolů na všech úrovních|
+|0|Podrobnosti|Hodnota: 5. Označuje protokolů na všech úrovních|
 
 ### <a name="cef-mapping-for-windows-events"></a>CEF mapování pro události Windows
 
@@ -306,6 +308,7 @@ Tabulka zástupce závažnosti:
 ```
 
 Tabulka závažnosti události Windows:
+
 | Hodnota závažnosti CEF | Úroveň události Windows | Číselná hodnota |
 |--------------------|---------------------| ----------------|
 |0|Nedefinováno|Hodnota: 0. Označuje protokolů na všech úrovních|
@@ -313,9 +316,10 @@ Tabulka závažnosti události Windows:
 |8|Chyba| Hodnota: 2. Označuje chybu v protokolech|
 |5|Upozornění|Hodnota: 3. Označuje informace pro upozornění|
 |2|Informace|Hodnota: 4. Označuje informace pro informační zpráva|
-|0|Podrobný|Hodnota: 5. Označuje protokolů na všech úrovních|
+|0|Podrobnosti|Hodnota: 5. Označuje protokolů na všech úrovních|
 
 Tabulka vlastní rozšíření pro události Windows ve službě Azure Stack:
+
 | Název vlastní rozšíření | Příklad události Windows | 
 |-----------------------|---------|
 |MasChannel | Systémový|
@@ -352,6 +356,7 @@ Tabulka vlastní rozšíření pro události Windows ve službě Azure Stack:
 ```
 
 Tabulka závažnost výstrahy:
+
 | Severity | Úroveň |
 |----------|-------|
 |0|Nedefinováno|
@@ -359,6 +364,7 @@ Tabulka závažnost výstrahy:
 |5|Upozornění|
 
 Vlastní rozšíření tabulky pro upozornění vytvořená ve službě Azure Stack:
+
 | Název vlastní rozšíření | Příklad: | 
 |-----------------------|---------|
 |MasEventDescription|POPIS: Uživatelský účet \<TestUser\> bylo vytvořeno za \<TestDomain\>. Je možné bezpečnostní riziko. --OPRAVY: Kontaktujte podporu. K vyřešení tohoto problému je nutné pomoc zákazníkům. Nepokoušejte se vyřešit tento problém bez jejich pomoci. Než otevřete žádost o podporu, spusťte proces shromažďování souborů protokolů pomocí pokynů z https://aka.ms/azurestacklogfiles |

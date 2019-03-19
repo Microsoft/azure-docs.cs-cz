@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec05c513d89dc8a590cbd0f586f382d699edc5e3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122516"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
@@ -29,7 +29,7 @@ Tady jsou některé nápravná opatření pro běžné problémy se spoluprací 
 V případech, kdy nejsou naplněny externí uživatele v seznamu objekt může trvat několik minut, než replikaci.
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Uživatel typu Host B2B se nezobrazuje v Sharepointu Online a Onedrivu výběr osob 
- 
+ 
 Možnost vyhledat existující uživatele typu Host v Sharepointu Online (SPO) výběr osob je vypnuto ve výchozím nastavení tak, aby odpovídaly starší verzi chování.
 
 Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForGuestUsers" na úrovni kolekce klienta a serveru. Můžete nastavit funkci pomocí rutiny Set-SPOTenant a Set-SPOSite, který umožní členům hledat všechny existující uživatele typu Host do adresáře. Změny v rámci tenanta neovlivní již zřízených SPO webů.

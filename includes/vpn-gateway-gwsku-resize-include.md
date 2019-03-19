@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 081352a23e6a0d8f9e2daa77eca1f8ac85172ff6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f6fd4039614dbd7c1a2b2c6ba8403502a6420fe3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418224"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908548"
 ---
 Pro aktuální SKU (VpnGw1, VpnGw2 a VPNGW3), kterého chcete změnit velikost skladová položka pro upgrade na výkonnější jedna brána lze použít `Resize-AzVirtualNetworkGateway` rutiny Powershellu. Můžete také provést downgrade použití této rutiny velikost SKU brány. Pokud používáte základní bránu SKU, [místo toho použijte tyto pokyny](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) Změna velikosti brány.
 
 Následující příklad PowerShell ukazuje během změny velikosti pro VpnGw2 skladové položky brány.
 
-```powershell
+```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```

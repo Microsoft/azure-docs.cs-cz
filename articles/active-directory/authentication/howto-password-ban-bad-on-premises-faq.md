@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 91ab8e8757c4a5313fde5f4d883e45648c9143b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984544"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901351"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Verze Preview: Azure AD ochrana heslem v místním – nejčastější dotazy
 
@@ -86,6 +86,10 @@ Ne. Protože je Bezstavová proxy server, není důležité který konkrétní p
 **Otázka: Je možné nasadit službu Proxy ochrana hesel Azure AD vedle dalších služeb, jako je například Azure AD Connect?**
 
 Ano. Služba Proxy ochrana hesel Azure AD a Azure AD Connect by nikdy konfliktu navzájem přímo.
+
+**Otázka: V jakém pořadí by řadiče domény agenty a servery proxy instalaci a registraci?**
+
+Žádné řazení instalace agenta Proxy, instalace agenta pro řadič domény, registrace doménové struktury a registrace proxy serveru je podporována.
 
 **Otázka: Zajímat o výkonu, klikněte na Moje řadičů domény z nasazení této funkce?**
 

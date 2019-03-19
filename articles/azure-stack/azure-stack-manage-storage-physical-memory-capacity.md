@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 875e823aa2958ee38b3510e93ffac7918be661cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cb5b64869a26133e1c08095a816c2d2854f85b94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774009"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103498"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Správa kapacity fyzické paměti pro službu Azure Stack
 
@@ -39,11 +39,11 @@ Následující vývojový diagram ukazuje obecné postup přidávání paměti n
 ## <a name="add-memory-to-an-existing-node"></a>Přidejte do existující uzel paměť
 Následující kroky obsahují podrobný přehled procesu přidávání paměti. 
 
-> [!Warning]  
-Nepostupujte podle těchto kroků bez ohledu na dokumentaci k poskytnutou výrobcem OEM.
-
-> [!Warning]  
-Celá jednotka škálování musí být vypnut, protože paměti se zajištěním provozu není podporováno.
+> [!Warning]
+> Nepostupujte podle těchto kroků bez ohledu na dokumentaci k poskytnutou výrobcem OEM.
+> 
+> [!Warning]
+> Celá jednotka škálování musí být vypnut, protože paměti se zajištěním provozu není podporováno.
 
 1. Zastavit pomocí kroků popsaných v Azure Stack [spouštění a zastavování služby Azure Stack](azure-stack-start-and-stop.md) článku.
 2. Upgrade paměti na každý fyzický počítač s použitím dokumentace od výrobce hardwaru.

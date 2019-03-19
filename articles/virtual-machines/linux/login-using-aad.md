@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cbe9e5c734708701828b2b70f062d88c960dc224
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848690"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -186,7 +186,7 @@ Access denied
 
 Pokud úspěšně dokončit krok ověřování ve webovém prohlížeči, budete okamžitě vyzváni znovu přihlásil nový kód. Tato chyba je obvykle způsobeno neshodou mezi přihlašovací jméno, které jste zadali do příkazového řádku SSH a účet, který jste přihlášení k Azure AD se službou. K vyřešení tohoto problému:
 
-- Ověřte správnost přihlašovací jméno, které jste zadali do příkazového řádku SSH. Máte překlep v názvu přihlášení může způsobit nesoulad mezi přihlašovací jméno, které jste zadali do příkazového řádku SSH a účet, který jste přihlášení k Azure AD se službou. Například jste zadali *azuresuer@contoso.onmicrosoft.com* místo *azureuser@contoso.onmicrosoft.com*.
+- Ověřte správnost přihlašovací jméno, které jste zadali do příkazového řádku SSH. Máte překlep v názvu přihlášení může způsobit nesoulad mezi přihlašovací jméno, které jste zadali do příkazového řádku SSH a účet, který jste přihlášení k Azure AD se službou. Například jste zadali *azuresuer\@contoso.onmicrosoft.com* místo *azureuser\@contoso.onmicrosoft.com*.
 - Pokud máte víc uživatelských účtů, ujistěte se, že neposkytnete jiného uživatelského účtu v okně prohlížeče při přihlašování k Azure AD.
 - Linux je velká a malá písmena operačního systému. Existuje rozdíl mezi "Azureuser@contoso.onmicrosoft.com"a"azureuser@contoso.onmicrosoft.com", což vedlo k neshodě. Ujistěte se, že je zadat hlavní název uživatele s správné rozlišování řádku SSH.
 

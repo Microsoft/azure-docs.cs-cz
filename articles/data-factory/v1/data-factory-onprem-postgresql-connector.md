@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081827"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,12 +50,12 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úloži�
 
 - Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 - Tyto nástroje můžete také použít k vytvoření kanálu:
-    - portál Azure
-    - Visual Studio
-    - Azure PowerShell
-    - Šablona Azure Resource Manageru
-    - .NET API
-    - REST API
+  - portál Azure
+  - Visual Studio
+  - Azure PowerShell
+  - Šablona Azure Resource Manageru
+  - .NET API
+  - REST API
 
     Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
@@ -306,46 +306,46 @@ Při přesouvání dat k PostgreSQL, se používají následující mapování z
 
 | Typ databáze PostgreSQL | Aliasy PostgresSQL | Typ rozhraní .NET framework |
 | --- | --- | --- |
-| abstime | |Datum a čas | &nbsp;
+| abstime | |Datum a čas |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte [], řetězce | &nbsp;
+| bit [(n)] | |Byte [], řetězce |
 | bit různou [(n)] |varbit |Byte [], řetězce |
-| Boolean |BOOL |Logická hodnota |
-| box | |Byte [], řetězce |&nbsp;
-| bytea | |Byte [], řetězce |&nbsp;
-| znak [(n)] |char [(n)] |Řetězec |
-| znak různé [(n)] |varchar [(n)] |Řetězec |
-| CID | |Řetězec |&nbsp;
-| cidr | |Řetězec |&nbsp;
-| Kruh | |Byte [], řetězce |&nbsp;
-| date | |Datum a čas |&nbsp;
-| DateRange | |Řetězec |&nbsp;
+| Boolean |bool |Logická hodnota |
+| box | |Byte [], řetězce |
+| bytea | |Byte [], řetězce |
+| znak [(n)] |char [(n)] |String |
+| znak různé [(n)] |varchar [(n)] |String |
+| CID | |String |
+| cidr | |String |
+| Kruh | |Byte [], řetězce |
+| date | |Datum a čas |
+| DateRange | |String |
 | dvojitou přesností |float8 |Double |
-| inet | |Byte [], řetězce |&nbsp;
-| intarry | |Řetězec |&nbsp;
-| int4range | |Řetězec |&nbsp;
-| int8range | |Řetězec |&nbsp;
-| integer |int, int4 |Datový typ Int32 |
-| Interval [pole] [(p).] | |Časový interval |&nbsp;
-| json | |Řetězec |&nbsp;
-| jsonb | |Byte] |&nbsp;
-| Řádek | |Byte [], řetězce |&nbsp;
-| lseg | |Byte [], řetězce |&nbsp;
-| macaddr | |Byte [], řetězce |&nbsp;
-| peníze | |Desítkově |&nbsp;
-| numerické [(p, s)] |desetinné číslo [(p, s)] |Desítkově |
-| numrange | |Řetězec |&nbsp;
-| identifikátor objektu | |Datový typ Int32 |&nbsp;
-| path | |Byte [], řetězce |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| Bod | |Byte [], řetězce |&nbsp;
-| Mnohoúhelník | |Byte [], řetězce |&nbsp;
-| Real |FLOAT4 |Jednoduchá |
+| inet | |Byte [], řetězce |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
+| integer |int, int4 |Int32 |
+| Interval [pole] [(p).] | |Časový interval |
+| json | |String |
+| jsonb | |Byte[] |
+| řádek | |Byte [], řetězce |
+| lseg | |Byte [], řetězce |
+| macaddr | |Byte [], řetězce |
+| peníze | |Decimal |
+| numerické [(p, s)] |desetinné číslo [(p, s)] |Decimal |
+| numrange | |String |
+| identifikátor objektu | |Int32 |
+| path | |Byte [], řetězce |
+| pg_lsn | |Int64 |
+| bod | |Byte [], řetězce |
+| Mnohoúhelník | |Byte [], řetězce |
+| Real |FLOAT4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
-| sériové |serial4 |Datový typ Int32 |
-| text | |Řetězec |&nbsp;
+| sériové |serial4 |Int32 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

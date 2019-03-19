@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895579"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Přehled směrování na základě cesty URL v Azure Application Gateway
 
@@ -29,7 +29,7 @@ V následujícím příkladu služba Application Gateway obsluhuje provoz pro co
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-Požadavky na adresu http://contoso.com/video/ se směrují na VideoServerPool a požadavky na adresu http://contoso.com/images/ na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Žádosti o <http://contoso.com/video/*> jsou směrovány na Videofondserveru, a <http://contoso.com/images/*> jsou směrovány na Obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.

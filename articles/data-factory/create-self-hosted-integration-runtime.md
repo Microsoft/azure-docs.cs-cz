@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d1e43924634e3c4543c244043cb06d965a4d14e0
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576833"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838795"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -61,7 +61,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Předpoklady pro použití v místním prostředí IR
 
 - Jeden místní prostředí integration runtime je použít pro více zdrojů dat v místním. Jeden místní prostředí integration runtime je sdílet s jinou data factory ve stejném tenantovi Azure Active Directory. Další informace najdete v tématu [sdílení místního prostředí integration runtime](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Může mít pouze jednu instanci z místního prostředí integration runtime nainstalovaný na jednom počítači. Pokud máte dva datové továrny, které je potřeba přístup k místním zdrojům dat, budete muset nainstalovat místní prostředí integration runtime na dvou místních počítačů. Jinými slovy, místní prostředí integration runtime se váže na konkrétní datové továrny.
+- Může mít pouze jednu instanci z místního prostředí integration runtime nainstalovaný na jednom počítači. Pokud máte dva datové továrny, které potřebují přístup k místním zdrojům dat, budete muset nainstalovat místní prostředí integration runtime ve dvou místních počítačích každý z datových továren nebo použít [sdílení funkceprostředíIRvmístnímprostředí](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)sdílet místní prostředí integration runtime pomocí jiné služby Data Factory.  
 - Místní prostředí IR nemusí být ve stejném počítači jako zdroj dat. Však s místní prostředí integration runtime blíže ke zdroji dat snižuje čas potřebný pro místní prostředí integration runtime připojit ke zdroji dat. Doporučujeme nainstalovat místní prostředí integration runtime na počítač, který se liší od zdroje dat v místním hostiteli. Když místního prostředí integration runtime a zdroje dat jsou na různých počítačích, místní prostředí integration runtime není soutěží o prostředky se zdrojem dat.
 - Na různých počítačích, které se připojují ke stejnému zdroji dat v místním může mít více modulů runtime integrace v místním prostředí. Například můžete mít dva moduly runtime integrace v místním prostředí, které slouží dva datové továrny, ale stejného zdroje dat v místním zaregistruje datové továrny.
 - Pokud už máte nainstalovanou ve vašem počítači k obsluze scénáři Power BI bránu, nainstalujte samostatnou místní prostředí integration runtime pro službu Azure Data Factory na jiném počítači.
@@ -145,7 +145,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Certifikáty, které používají klíče CNG nejsou podporovány.  
 
 > [!NOTE]
-> Tento certifikát se používá k šifrování portů na uzel v místním prostředí IR použít pro **komunikace mezi uzly** (pro stav synchronizace) a současně přitom **Powershellu pomocí rutiny pro propojenou službu přihlašovacích údajů nastavení**z v rámci místní sítě. Doporučujeme použít tento certifikát, pokud prostředí privátní síť není zabezpečená, nebo pokud chcete k zabezpečení komunikace mezi uzly v rámci vaší privátní sítě. Přesun dat při přenosu z místní prostředí IR do dalších úložišť dat. dojde vždy pomocí šifrovaného kanálu, bez ohledu na tento certifikát nastavené. 
+> Tento certifikát se používá k šifrování portů na uzel v místním prostředí IR použít pro **komunikace mezi uzly** (pro stav synchronizace, která zahrnuje propojené služby pověření synchronizace mezi uzly) a při **pomocí Powershellu rutinu pro propojenou službu přihlašovacích údajů nastavení** z v rámci místní sítě. Doporučujeme použít tento certifikát, pokud prostředí privátní síť není zabezpečená, nebo pokud chcete k zabezpečení komunikace mezi uzly v rámci vaší privátní sítě. Přesun dat při přenosu z místní prostředí IR do dalších úložišť dat. dojde vždy pomocí šifrovaného kanálu, bez ohledu na tento certifikát nastavené. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Sdílení místního prostředí integration runtime s více objekty pro vytváření dat
 

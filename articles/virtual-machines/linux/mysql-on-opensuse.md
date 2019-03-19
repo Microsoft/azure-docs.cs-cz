@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 06fb4b9c39b773393d7a58bba44f240265e2200f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 19f53449e21b39eb212f94b100eaf5d26ca4cf13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006667"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL do virtuálního počítače se spuštěným OpenSUSE Linuxem v Azure
 
-[MySQL](http://www.mysql.com) je Oblíbené, open source databáze SQL. V tomto kurzu se dozvíte, jak k vytvoření virtuálního počítače se systémem OpenSUSE Linux, potom nainstalovat MySQL.
+[MySQL](https://www.mysql.com) je Oblíbené, open source databáze SQL. V tomto kurzu se dozvíte, jak k vytvoření virtuálního počítače se systémem OpenSUSE Linux, potom nainstalovat MySQL.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -163,7 +163,7 @@ quit
 
 
 ## <a name="next-steps"></a>Další postup
-Podrobnosti o MySQL, najdete v článku [dokumentace ke službě MySQL](http://dev.mysql.com/doc).
+Podrobnosti o MySQL, najdete v článku [dokumentace ke službě MySQL](https://dev.mysql.com/doc).
 
 
 

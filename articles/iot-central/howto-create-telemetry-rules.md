@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4668ffd30742f81552cd29f6cdba4c0f82549687
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773499"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081555"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrická data a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -56,13 +56,13 @@ Podmínka definuje kritéria, která je sledována tímto pravidlem.
 1. Vyberte telemetrie, kterou chcete monitorovat z **měření** rozevíracího seznamu.
 
 1. Dále zvolte **agregace**, **operátor**a poskytují **prahová hodnota** hodnotu.
-    - Agregace je volitelný. Bez agregace, aktivační události pravidlo pro každý datový bod telemetrických dat, který splňuje podmínky. Například pokud pravidlo bylo nakonfigurováno pro aktivační událost, když teplota je víc než 80 a následné pravidlo aktivuje prakticky okamžitě když zařízení ohlásí teploty > 80.
-    - Pokud agregační funkce, jako je průměr, minimum, maximum, počet je vybrán, potom musí uživatel **agregační interval** přes která podmínka je potřeba zhodnotit. Například pokud nastavíte období jako "5 minut" a vaše pravidlo hledá průměrná teplota nad 80, pravidlo aktivuje, když je průměrná teplota nad 80 pro alespoň 5 minut. Četnost vyhodnocování pravidel je stejná jako **agregační interval**, to znamená, že v tomto příkladu, pravidlo se vyhodnotí jednou každých 5 minut.
+   - Agregace je volitelný. Bez agregace, aktivační události pravidlo pro každý datový bod telemetrických dat, který splňuje podmínky. Například pokud pravidlo bylo nakonfigurováno pro aktivační událost, když teplota je víc než 80 a následné pravidlo aktivuje prakticky okamžitě když zařízení ohlásí teploty > 80.
+   - Pokud agregační funkce, jako je průměr, minimum, maximum, počet je vybrán, potom musí uživatel **agregační interval** přes která podmínka je potřeba zhodnotit. Například pokud nastavíte období jako "5 minut" a vaše pravidlo hledá průměrná teplota nad 80, pravidlo aktivuje, když je průměrná teplota nad 80 pro alespoň 5 minut. Četnost vyhodnocování pravidel je stejná jako **agregační interval**, to znamená, že v tomto příkladu, pravidlo se vyhodnotí jednou každých 5 minut.
 
-    ![Podmínka](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+     ![Podmínka](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE]
-    >Více než jedno měření telemetrická data mohou být přidány do **podmínku**. Pokud jsou zadány více podmínek, musí být splněny všechny podmínky pro pravidlo pro aktivaci. Každá podmínka získá připojí pomocí klauzule "A" implicitně. Při použití agregace, musí být agregovaný každou měření.
+     >[!NOTE]
+     >Více než jedno měření telemetrická data mohou být přidány do **podmínku**. Pokud jsou zadány více podmínek, musí být splněny všechny podmínky pro pravidlo pro aktivaci. Každá podmínka získá připojí pomocí klauzule "A" implicitně. Při použití agregace, musí být agregovaný každou měření.
 
 ### <a name="configure-actions"></a>Konfigurace akcí
 

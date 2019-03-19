@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 73f810072fce9345208593342df597b72c522a73
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359557"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894508"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace MongoDB v Azure App Service a Node.js v Linuxu
 
@@ -336,7 +336,7 @@ V místním úložišti MEAN.js otevřete soubor _modules/articles/server/models
 Do `ArticleSchema` přidejte typ `String` s názvem `comment`. Až skončíte, měl by váš kód schématu vypadat takto:
 
 ```javascript
-var ArticleSchema = new Schema({
+let ArticleSchema = new Schema({
   ...,
   user: {
     type: Schema.ObjectId,
@@ -362,7 +362,7 @@ Do funkce `update` přidejte přiřazení pro `article.comment`. Následující 
 
 ```javascript
 exports.update = function (req, res) {
-  var article = req.article;
+  let article = req.article;
 
   article.title = req.body.title;
   article.content = req.body.content;

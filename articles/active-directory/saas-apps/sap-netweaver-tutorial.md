@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d211e1e106ff849d2634c6788b96284be0585ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
@@ -179,9 +179,9 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Netweaverem, proveď
 
     > [!NOTE]
     > Jsme viděli někteří zákazníci ohlášení chyby nesprávné adresy URL odpovědi nakonfigurované na jejich instanci. Pokud se zobrazí tato chyba, můžete použít následující skript prostředí PowerShell jako alternativní přibližně nastavení správné adresy URL odpovědi pro vaši instanci.:
-    ```
-    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
-    ``` 
+    > ```
+    > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+    > ``` 
     > ID objektu ServicePrincipal je nejprve je nutné nastavit sami nebo můžete předat, který také zde.
 
 12. Aplikace SAP NetWeaver očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
@@ -316,7 +316,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

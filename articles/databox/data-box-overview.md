@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117740"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -44,11 +44,11 @@ Data Box slouží k přesunu velkých objemů dat do Azure bez výraznějšího 
 - **Rychlost** – Data Box používá k přesunutí až 80 TB dat do Azure síťová rozhraní 1 Gb/s nebo 10 Gb/s.
 
 - **Zabezpečení** – Data Box má integrovanou ochranu zařízení, dat a samotné služby.
-    - Zařízení má robustní obal, který zabezpečují šroubky odolné vůči neoprávněné manipulaci a nálepky odhalující manipulaci. 
-    - Data na zařízení nepřetržitě chrání 256bitové šifrování AES.
-    - Zařízení je možné odemknout pouze heslem, které najdete na webu Azure Portal.
-    - Služba samotná je chráněna funkcemi zabezpečení Azure.
-    - Po nahrání dat do Azure se disky na zařízení zcela vymažou podle standardů NIST 800-88r1.
+  - Zařízení má robustní obal, který zabezpečují šroubky odolné vůči neoprávněné manipulaci a nálepky odhalující manipulaci. 
+  - Data na zařízení nepřetržitě chrání 256bitové šifrování AES.
+  - Zařízení je možné odemknout pouze heslem, které najdete na webu Azure Portal.
+  - Služba samotná je chráněna funkcemi zabezpečení Azure.
+  - Po nahrání dat do Azure se disky na zařízení zcela vymažou podle standardů NIST 800-88r1.
     
     Další informace najdete v článku o [zabezpečení a ochraně dat ve službě Azure Data Box](data-box-security.md).
 

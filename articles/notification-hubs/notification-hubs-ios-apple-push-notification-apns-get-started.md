@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: e4a2bb6d68562781592e1dfe5ad820044e8da708
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 520d01327b5809d453bb777165899770ea4c130b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313935"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885029"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace pro iOS pomocí Azure Notification Hubs
 
@@ -50,8 +50,8 @@ Dokončený kód v tomto kurzu lze najít v části [Github](https://github.com/
 * Zařízení podporující iOS 10 (nebo novější verzi)
 * Členství v [programu pro vývojáře Apple](https://developer.apple.com/programs/).
   
- > [!NOTE]
- > Z důvodu požadavků na konfiguraci pro nabízená oznámení musíte nasadit a otestovat nabízená oznámení na fyzickém zařízení iOS (iPhone nebo iPad) namísto simulátoru iOS.
+  > [!NOTE]
+  > Z důvodu požadavků na konfiguraci pro nabízená oznámení musíte nasadit a otestovat nabízená oznámení na fyzickém zařízení iOS (iPhone nebo iPad) namísto simulátoru iOS.
   
 Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notification Hubs pro aplikace iOS.
 
@@ -131,11 +131,11 @@ Právě jste své centrum oznámení nakonfigurovali pro práci se službou APNS
 
    - Integrace tak, že zkopírujete binární soubory do projektu
 
-       1. Stáhněte si [sadu SDK služby Azure Notification Hubs](https://github.com/Azure/azure-notificationhubs-ios/releases) framework k dispozici jako soubor zip a rozbalte ho.
+     1. Stáhněte si [sadu SDK služby Azure Notification Hubs](https://github.com/Azure/azure-notificationhubs-ios/releases) framework k dispozici jako soubor zip a rozbalte ho.
 
-       2. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
+     2. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
 
-       ![Rozbalte Azure SDK][10]
+        ![Rozbalte Azure SDK][10]
 
 6. Přidejte nový soubor záhlaví projektu s názvem `HubInfo.h`. V tomto souboru jsou konstanty vašeho centra oznámení. Přidejte následující definice a nahraďte zástupné symboly literálu řetězce ve vašem *názvu centra* a *DefaultListenSharedAccessSignature*, který jste si předtím poznamenali.
 
@@ -249,17 +249,17 @@ V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše regis
 [35]: ./media/notification-hubs-ios-get-started/notification-hubs-test3.png
 
 <!-- URLs. -->
-[Windows Azure Messaging Framework]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
-[Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Windows Azure Messaging Framework]: https://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
+[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/?LinkID=266533
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[iOS Provisioning Portal]: https://go.microsoft.com/fwlink/p/?LinkId=272456
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-[Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure Portal]: https://portal.azure.com

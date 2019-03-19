@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe676cbba89a99a3dbd29609f181274062b37d86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779364"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000267"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
@@ -89,7 +89,7 @@ dflow.head(5)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
-|0||stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
+|0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |1|ALABAMA|1|101710|Hale kraj|10171002158| |
 |2|ALABAMA|1|101710|Hale kraj|10171002162| |
 
@@ -103,7 +103,7 @@ dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|------|-----|
+|-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|1|101710|Hale kraj|10171002158|29|
 |1|ALABAMA|1|101710|Hale kraj|10171002162|40 |
 
@@ -154,12 +154,12 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
 dflow.head(5)
 ```
 
-||Sloupec1|Column2|Sloupec3|Column4|Column5|Column6|Column7|Column8|
-|------|------|------|-----|------|-----|-------|----|-----|
-|0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
-|1|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
-|2|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
-|3|pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
+| |Sloupec1|Column2|Sloupec3|Column4|Column5|Column6|Column7|Column8| | |
+|-|-------|-------|-------|-------|-------|-------|-------|-------|-|-|
+|0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný| |
+|1|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný| |
+|2|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný| |
+|3|pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^| |
 |4|1|Miniatury|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 Výstup ukazuje, že data v druhé tabulce měli tři prázdné řádky před záhlaví. `read_excel()` Funkce obsahuje volitelné parametry pro přeskočení řádků a pomocí hlavičky. Spusťte následující kód, který přeskočí první tři řádky a použít čtvrtý řádek jako záhlaví.
@@ -225,8 +225,8 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-||ProductID|Název|ProductNumber|Barva|StandardCost|ListPrice|Velikost|Hmotnost|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto nastavuje|ThumbnailPhotoFileName|ROWGUID|ModifiedDate|
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| |ProductID|Název|ProductNumber|Barva|StandardCost|ListPrice|Velikost|Hmotnost|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto nastavuje|ThumbnailPhotoFileName|ROWGUID|ModifiedDate| |
+|-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|HL Road Frame – Black, 58|FR-R92B 58|Black|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
 |1|706|HL Road Frame – Red, 58|FR-R92R 58|Červená|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000 + 00:00|
 |2|707|Sport – 100 Helmet, Red|HL-U509-R|Červená|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000 + 00:00|
@@ -307,7 +307,7 @@ dflow.to_pandas_dataframe().head()
 |----|------|-----|----|----|----|----|
 |0|1012063|Přidružení - Danville Kaledonie Farmářům uvedení na trh|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledonie|
 |1|1011871|Věci odvál čas Stearns Farmářům ' trhu|http://Stearnshomestead.com |Silniční ridge 6975|Parma|Cuyahoga|
-|2|1011878|100 přepočet mílí na trhu|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
+|2|1011878|100 přepočet mílí na trhu|https://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. hlavní ulice Farmářům trhu|http://thetownofsixmile.wordpress.com/ |106 S. hlavní ulice|Šest míle|||
 |4|1010691|Ulice 10 Farmářům trh|https://agrimissouri.com/... |Ulice 10 a topolů|Lamar|Barton|
 

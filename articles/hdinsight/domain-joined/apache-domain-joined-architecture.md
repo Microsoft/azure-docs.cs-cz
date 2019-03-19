@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088090"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -64,33 +64,33 @@ Pomocí místní služby Active Directory nebo Active Directory na virtuálních
 
 Pokud federace se právě používá a jsou správnou synchronizaci hodnot hash hesel ale se zobrazuje počet selhání ověření, zkontrolujte, jestli je povolené ověřování pomocí hesla cloud pro instanční objekt prostředí PowerShell. Pokud ne, je nutné nastavit [domácí sféry zjišťování domovské SFÉRY zásad](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) pro vašeho tenanta Azure AD. Ke kontrole a nastavení zásad HRD:
 
- 1. Instalace modulu Azure AD PowerShell.
+1. Instalace modulu Azure AD PowerShell.
 
- ```
-    Install-Module AzureAD
- ```
+   ```
+   Install-Module AzureAD
+   ```
 
- 2. Zadejte `Connect-AzureAD` s použitím přihlašovacích údajů globálního správce (správce klienta).
+2. Zadejte `Connect-AzureAD` s použitím přihlašovacích údajů globálního správce (správce klienta).
 
- 3. Zkontrolujte, zda prostředí Azure PowerShell instanční objekt již byl vytvořen.
+3. Zkontrolujte, zda prostředí Azure PowerShell instanční objekt již byl vytvořen.
 
- ```
-    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
- ```
+   ```
+   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```
 
- 4. Pokud neexistuje (tj. Pokud `($powershellSPN -eq $null)`), pak vytvoření instančního objektu služby.
+4. Pokud neexistuje (tj. Pokud `($powershellSPN -eq $null)`), pak vytvoření instančního objektu služby.
 
- ```
-    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
- ```
+   ```
+   $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+   ```
 
- 5. Vytvořte a připojte zásady na tento instanční objekt.
+5. Vytvořte a připojte zásady na tento instanční objekt.
 
- ```
-    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```
+   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
-    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
- ```
+   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+   ```
 
 ## <a name="next-steps"></a>Další postup
 

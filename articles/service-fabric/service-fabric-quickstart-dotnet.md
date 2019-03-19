@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099065"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikací .NET do Service Fabric reliable services
 
@@ -47,9 +47,10 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 2. [Nainstalovat Git](https://git-scm.com/).
 3. [Nainstalovat sadu Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK).
 4. Spusťte následující příkaz a povolte sadě Visual Studio nasazování do místního clusteru Service Fabric:
-    ```powershell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-    ```
+
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+   ```
     
 ## <a name="build-a-cluster"></a>Sestavení clusteru
 
@@ -63,14 +64,14 @@ Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a m�
 1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
 2. Vývojový cluster vytvoříte spuštěním následujícího příkazu PowerShellu:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+   ```
 3. Spuštěním následujícího příkazu spusťte nástroj Správce místního clusteru:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
+   ```
 
 >[!NOTE]
 > Ukázková aplikace v tomto rychlém startu používá funkce, které nejsou dostupné v systému Windows 7.
@@ -131,23 +132,23 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 2. Otevřete soubor **/VotingData/Controllers/VoteDataController.cs** a nastavte zarážku v metodě **Put** tohoto webového rozhraní API (řádek 54).
 
 3. Vraťte se do prohlížeče a klikněte na některou možnost hlasování nebo přidejte novou. Dostanete se k první zarážce v kontroleru rozhraní API webového front-endu.
-    * Tady JavaScript v prohlížeči odesílá požadavek do kontroleru webového rozhraní API ve front-end službě.
+   * Tady JavaScript v prohlížeči odesílá požadavek do kontroleru webového rozhraní API ve front-end službě.
 
-    ![Front-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![Front-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    * Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)**.
-    * Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)**.
-    * Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
+   * Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)**.
+   * Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)**.
+   * Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
 
 4. Pokračujte stisknutím **F5**.
-    - Po zobrazení výzvy v prohlížeči udělte skupině ServiceFabricAllowedUsers oprávnění ke čtení a provádění v režimu ladění.
-    - Nyní jste se dostali k zarážce v back-end službě.
+   - Po zobrazení výzvy v prohlížeči udělte skupině ServiceFabricAllowedUsers oprávnění ke čtení a provádění v režimu ladění.
+   - Nyní jste se dostali k zarážce v back-end službě.
 
-    ![Back-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     ![Back-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    * Na prvním řádku v metodě **(1)** `StateManager` načte nebo přidá spolehlivý slovník `counts`.
-    * Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)**.
-    * V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)**. Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
+   - Na prvním řádku v metodě **(1)** `StateManager` načte nebo přidá spolehlivý slovník `counts`.
+   - Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)**.
+   - V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)**. Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
 5. Pokračujte stisknutím **F5**.
 
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.

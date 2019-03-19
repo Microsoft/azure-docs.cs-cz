@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: ff7513f197b3035b88748e2e73c38789d9010d9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251312"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082666"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegovaných koncového bodu ve službě Azure Stack
 
@@ -60,52 +60,52 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
-    - Na integrovaný systém:
-      ```PowerShell
-        $cred = Get-Credential
+   - Na integrovaný systém:
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
-    - Pokud spouštíte ASDK:
+       Enter-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
+   - Pokud spouštíte ASDK:
      
-      ```PowerShell
-        $cred = Get-Credential
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Po zobrazení výzvy použijte následující pověření:
+       Enter-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Po zobrazení výzvy použijte následující pověření:
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
-      - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
+     - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
+     - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
-    > [!NOTE]
-    > Pokud se nemůžete připojit ke koncovému bodu ERCS, opakujte kroky 1 a 2 opakujte s IP adresou ERCS virtuálního počítače do které jste už nevyzkoušeli pro připojení.
+     > [!NOTE]
+     > Pokud se nemůžete připojit ke koncovému bodu ERCS, opakujte kroky 1 a 2 opakujte s IP adresou ERCS virtuálního počítače do které jste už nevyzkoušeli pro připojení.
 
-3.  Až se připojíte, příkazovém řádku se změní na **[*IP adresa nebo virtuální počítač ERCS pojmenujte*]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí. Z tohoto místa spuštění `Get-Command` zobrazíte seznam dostupných rutin.
+3. Až se připojíte, příkazovém řádku se změní na **[*IP adresa nebo virtuální počítač ERCS pojmenujte*]: PS >** nebo **[azs-ercs01]: PS >**, v závislosti na prostředí. Z tohoto místa spuštění `Get-Command` zobrazíte seznam dostupných rutin.
 
-    Mnohé z těchto rutin jsou určena pouze pro prostředí integrovaného systému (například rutiny související s integrací datového centra). V ASDK ověřily následující rutiny:
+   Mnohé z těchto rutin jsou určena pouze pro prostředí integrovaného systému (například rutiny související s integrací datového centra). V ASDK ověřily následující rutiny:
 
-    - Clear hostitel
-    - Zavřít PrivilegedEndpoint
-    - Ukončení relace PSSession
-    - Get-AzureStackLog
-    - Get-AzureStackStampInformation
-    - Get-Command
-    - Get-FormatData
-    - Get-Help
-    - Get-ThirdPartyNotices
-    - Objekt míry
-    - New-CloudAdminUser
-    - Výchozí out-Buffer:
-    - Remove-CloudAdminUser
-    - Select-Object
-    - Set-CloudAdminUserPassword
-    - Test-AzureStack
-    - Stop-AzureStack
-    - Get-ClusterLog
+   - Clear hostitel
+   - Zavřít PrivilegedEndpoint
+   - Ukončení relace PSSession
+   - Get-AzureStackLog
+   - Get-AzureStackStampInformation
+   - Get-Command
+   - Get-FormatData
+   - Get-Help
+   - Get-ThirdPartyNotices
+   - Objekt míry
+   - New-CloudAdminUser
+   - Výchozí out-Buffer:
+   - Remove-CloudAdminUser
+   - Select-Object
+   - Set-CloudAdminUserPassword
+   - Test-AzureStack
+   - Stop-AzureStack
+   - Get-ClusterLog
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Tipy pro používání privilegovaných koncového bodu 
 
@@ -132,26 +132,26 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
-    - Na integrovaný systém:
-      ```PowerShell
-        $cred = Get-Credential
-
-        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
-    - Pokud spouštíte ASDK:
-     
-      ```PowerShell
+   - Na integrovaný systém:
+     ```PowerShell
        $cred = Get-Credential
 
-       $session = New-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Po zobrazení výzvy použijte následující pověření:
+       $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
+   - Pokud spouštíte ASDK:
+     
+     ```PowerShell
+      $cred = Get-Credential
 
-      - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
-      - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
+      $session = New-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Po zobrazení výzvy použijte následující pověření:
+
+     - **Uživatelské jméno**: Zadejte účet CloudAdmin ve formátu  **&lt; *doméně služby Azure Stack*&gt;\cloudadmin**. (ASDK, uživatelské jméno je **azurestack\cloudadmin**.)
+     - **Heslo**: Zadejte stejné heslo, které jste zadali během instalace pro účet správce domény AzureStackAdmin.
 
 3. Importovat relace období do místního počítače
     ```PowerShell 

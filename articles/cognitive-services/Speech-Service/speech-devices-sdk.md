@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d7ef018b376b96f967a065857839761fc5822239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900484"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Informace o zařízeních řeči SDK (Preview)
 
-[Speech Service](overview.md) funguje se širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+[Hlasové služby](overview.md) fungují s širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
 
 Vám můžou pomoct sadou SDK pro řeč zařízení:
 * Rychle otestujte nové hlasové scénáře.
-* Speech service založené na cloudu mnohem snazší integrate do zařízení.
+* Mnohem snazší integrate hlasové služby založené na cloudu do zařízení.
 * Vytvoření mimořádné uživatelské prostředí pro vaše zákazníky.
 
-Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Používá sadou SDK pro řeč pro posílat zvuk, který je zpracován našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [Speech service](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
+Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Používá sadou SDK pro řeč pro posílat zvuk, který je zpracován našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [hlasové služby](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
 
 Sadou SDK pro řeč zařízení můžete použít také k vytváření okolí zařízení, které mají vlastní [přizpůsobit probuzení slovo](speech-devices-sdk-create-kws.md)– upozornění, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky.
 
@@ -39,7 +39,7 @@ Tyto referenční návrhy dokončení, začátku do konce systému v současné 
 
 |||
 |-|-|
-|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní umělé inteligence (AI) systému řešení electric spotřebičů, automobily, robotů, toys a další obory. Referenční návrhy společnosti ROOBO výrazně zkrátit vývoj dobu uvedení na trh prostřednictvím integrace se službou Microsoft Speech. [Navštivte ROOBO](http://ddk.roobo.com/).|
+|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní umělé inteligence (AI) systému řešení electric spotřebičů, automobily, robotů, toys a další obory. Referenční návrhy společnosti ROOBO výrazně zkrátit vývoj dobu uvedení na trh prostřednictvím integrace se službami Azure řeči. [Navštivte ROOBO](http://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>Další postup
 

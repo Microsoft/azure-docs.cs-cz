@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894015"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -34,7 +34,7 @@ Toto téma popisuje běžné scénáře, ve kterém pomocí filtrů by být uži
 ## <a name="overview"></a>Přehled
 Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vaším cílem je poskytovat vysoce kvalitní videa pro různá zařízení v různých síťových podmínkách. K dosažení tohoto cíle provést následující kroky:
 
-* zakódovat váš datový proud s více přenosovými rychlostmi ([s adaptivní přenosovou rychlostí](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) datový proud videa (to se postará o kvalitu i síťové podmínky) a 
+* zakódovat váš datový proud s více přenosovými rychlostmi ([s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) datový proud videa (to se postará o kvalitu i síťové podmínky) a 
 * pomocí Media Services [dynamické balení](media-services-dynamic-packaging-overview.md) a dynamicky znovu zabalte datový proud do různých protokolů (to se postará o streamování na různá zařízení). Služba Media Services podporuje doručování následujících adaptivní přenosové rychlosti streamování technologií: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG DASH. 
 
 ### <a name="manifest-files"></a>Soubory manifestu
@@ -72,7 +72,7 @@ Tady je příklad souboru manifestu:
 
     </SmoothStreamingMedia>
 
-### <a name="dynamic-manifests"></a>Dynamických manifestů
+### <a name="dynamic-manifests"></a>Dynamické manifesty
 Existují [scénáře](media-services-dynamic-manifest-overview.md#scenarios) když klient potřebuje více flexibility než co je popsána v souboru manifestu výchozí asset. Příklad:
 
 * Konkrétní zařízení: doručování pouze zadaný interpretace nebo zadané jazykové stopy, které podporuje zařízení, která se používá k přehrávání obsahu ("verze filtrování"). 

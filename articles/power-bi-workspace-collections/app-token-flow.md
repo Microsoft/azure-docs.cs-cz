@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 1dd6be61aab91bb15cc42939689e3c7399bee3db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e9b240a17614593cd04280a13e006c4d06e832fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236528"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904269"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI
 
@@ -182,4 +182,4 @@ Po **kolekce pracovních prostorů Power BI** odešle zprávu pro uživatele, u�
 [Začínáme s kolekcemi pracovních prostorů Microsoft Power BI](get-started.md)  
 [PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)
 
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)

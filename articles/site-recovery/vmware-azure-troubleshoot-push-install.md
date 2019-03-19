@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 3b46ffe49aeb31aaf9040be038e8a9e83641ae51
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078648"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -171,11 +171,11 @@ Konfigurační soubory GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ 
 
 
 - Následující řádek je ze souboru GRUB **/boot/grub2/grub.cfg**. <br>
-*Linux /boot/vmlinuz-3.12.49-11-default **root = / dev/sda2** ${extra_cmdline} **obnovit = / dev/sda1** splash = silent bezobslužný showopts*
+  *Linux /boot/vmlinuz-3.12.49-11-default **root = / dev/sda2** ${extra_cmdline} **obnovit = / dev/sda1** splash = silent bezobslužný showopts*
 
 
 - Následující řádek je ze souboru GRUB **/boot/grub/menu.lst**
-*jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1 ** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
+  *jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1 ** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 
 Pokud zjistíte tučné řetězec výše, GRUB má skutečné zařízení názvy parametrů "root" a "obnovit" místo UUID.
  
@@ -184,15 +184,15 @@ Názvy zařízení mělo být nahrazeno s odpovídající identifikátor UUID.<b
 
 
 1. Najít identifikátor UUID zařízení spuštěním příkazu "blkid <device name>". Příklad:<br>
-```
-blkid /dev/sda1
-/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-blkid /dev/sda2 
-/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
-```
+   ```
+   blkid /dev/sda1
+   /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+   blkid /dev/sda2 
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```
 
 2. Nyní nahraďte její identifikátor UUID v následujícím formátu název zařízení "kořenový = UUID =<UUID>". Například, pokud jsme nahradit názvy zařízení UUID pro kořenové a pokračovat v parametru zmíněné v souborech "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" nebo "/ etc/výchozí/grub: pak řádky v souborech vypadat. <br>
-*jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
+   *jádra /boot/vmlinuz-3.0.101-63-default **kořenové = UUID = 62927e85 f7ba-40bc-9993-cc1feeb191e4** **obnovit = UUID = 6f614b44 433b-431b-9ca1-4dd2f6f74f6b** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 3. Opětné spuštění ochrany znovu
 
 ## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Nainstalovat službu Mobility dokončeno s upozorněním restartování (ID chyby: 95265 & 95266)
@@ -284,20 +284,20 @@ Pokud není konzistence aplikace důležité pro vaše požadavky na zotavení p
 Instalace zprostředkovatele Azure Site Recovery VSS obejít a ručně nainstalujte zprostředkovatele Azure Site Recovery VSS po instalaci:
 
 1. Instalace služby mobility. 
-> [!Note]
-> 
-> Instalace se nezdaří v kroku "Poinstalační konfigurace". 
+   > [!Note]
+   > 
+   > Instalace se nezdaří v kroku "Poinstalační konfigurace". 
 2. Obejít instalace služby VSS:
    1. Otevřete v instalačním adresáři Azure Site Recovery Mobility Service:
    
-    C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent
-   2.  Upravit skripty instalace zprostředkovatele Azure Site Recovery VSS **nMageVSSProvider_Install** a **InMageVSSProvider_Uninstall.cmd** vždy úspěšné tak, že přidáte následující řádky:
+      C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent
+   2. Upravit skripty instalace zprostředkovatele Azure Site Recovery VSS **nMageVSSProvider_Install** a **InMageVSSProvider_Uninstall.cmd** vždy úspěšné tak, že přidáte následující řádky:
     
-    ```     
-    rem @echo off
-    setlocal
-    exit /B 0
-    ```
+      ```     
+      rem @echo off
+      setlocal
+      exit /B 0
+      ```
 
 3. Znovu spusťte ruční instalace agenta Mobility. 
 4. Po úspěšné instalaci a přesune k dalšímu kroku, **konfigurovat**, odebrání řádků, které jste přidali.
@@ -305,7 +305,7 @@ Instalace zprostředkovatele Azure Site Recovery VSS obejít a ručně nainstalu
    
     **C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
 
-9.  Ověřte, zda je nainstalován Azure Site Recovery VSS Provider jako služba ve Windows Services a otevřete konzolu MMC komponenty Service k ověření, že je uvedena Azure Site Recovery VSS Provider.
+9. Ověřte, zda je nainstalován Azure Site Recovery VSS Provider jako služba ve Windows Services a otevřete konzolu MMC komponenty Service k ověření, že je uvedena Azure Site Recovery VSS Provider.
 10. Pokud poskytovatel služby VSS nainstalovat i nadále nezdaří, pracovat s CX vyřeší chyby oprávnění v CAPI2.
 
 ## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Instalace zprostředkovatele služby VSS se nepovedlo kvůli služby clusteru se povoluje na počítači bez clusteru

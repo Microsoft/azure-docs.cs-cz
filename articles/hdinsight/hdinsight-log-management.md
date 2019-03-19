@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c1618d3402b37e91b3cf17365d6ccbf1285f4847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993775"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -77,7 +77,7 @@ Typické clusteru HDInsight používá několik služeb a open source softwaru (
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazit nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
 
-Apache Ambari ve skupinách usnadňuje správu, konfiguraci a monitorování HDInsight cluster poskytují webové uživatelské rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight založených na Linuxu. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight a otevřete **"řídicí panely clusteru** stránka odkazu.  V dalším kroku vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva pro přihlašovací údaje clusteru.
+Apache Ambari ve skupinách usnadňuje správu, konfiguraci a monitorování HDInsight cluster poskytují webové uživatelské rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight založených na Linuxu. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight a otevřete**řídicí panely clusteru** stránka odkazu.  V dalším kroku vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva pro přihlašovací údaje clusteru.
 
 Pokud chcete otevřít seznam zobrazení, služby, vyberte **zobrazení Ambari** podokně na stránky portálu Azure pro HDInsight.  Tento seznam se liší, v závislosti na tom, které knihovny jste nainstalovali.  Může se zobrazit třeba správce fronty YARN, Hive zobrazení a zobrazení Tez.  Vyberte všechny služby odkaz zobrazíte konfiguraci a informace o službě.  Uživatelské rozhraní Ambari **zásobníku a verze** stránka obsahuje informace o konfiguraci Clusterové služby a historie verzí služby. Chcete-li přejít do této části uživatelského rozhraní Ambari, vyberte **správce** nabídky a pak **zásobníky a verze**.  Vyberte **verze** kartu pro zobrazení informací o verzi služby.
 
@@ -128,7 +128,7 @@ Chcete-li využívat nástroje příkazového řádku YARN, se musí se poprvé 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
-#### <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní správce prostředků YARN
+#### <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 
 Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clusteru a je přístupný prostřednictvím webového uživatelského rozhraní Ambari. Chcete-li zobrazit protokoly YARN, postupujte následovně:
 

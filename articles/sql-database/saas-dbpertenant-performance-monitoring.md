@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100424"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 
@@ -28,7 +28,7 @@ Aplikace Wingtip Tickets SaaS databáze na Tenanta používá model dat s jední
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-
+> 
 > * Simulace použití v databázích tenantů pomocí dodaného generátoru zatížení
 > * Monitorování databází tenantů při reakci na zvýšení zatížení
 > * Vertikální navýšení kapacity elastického fondu v reakci na zvýšení zatížení databáze
@@ -171,17 +171,17 @@ Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístět
 1. Klikněte na tlačítko **+ nový fond** vytvořit fond na aktuálním serveru.
 1. Na **elastického fondu** šablony:
 
-    1. Nastavte **název** k *Pool2*.
-    1. Cenovou úroveň nechte jako **Fond Standard**.
-    1. Klikněte na **Konfigurovat fond**
-    1. Nastavte **eDTU fondu** k *50 eDTU*.
-    1. Klikněte na tlačítko **přidat databáze** zobrazíte seznam databází na serveru, který lze přidat do *Pool2*.
-    1. Vyberte všechny 10 databáze je přesunout do nového fondu, a potom klikněte na **vyberte**. Pokud jste byl spuštěn generátor zatížení, služba již ví, že váš profil výkonu vyžaduje větší než výchozí velikost 50 eDTU fondu a doporučuje, začínající 100 eDTU nastavení.
+   1. Nastavte **název** k *Pool2*.
+   1. Cenovou úroveň nechte jako **Fond Standard**.
+   1. Klikněte na **Konfigurovat fond**
+   1. Nastavte **eDTU fondu** k *50 eDTU*.
+   1. Klikněte na tlačítko **přidat databáze** zobrazíte seznam databází na serveru, který lze přidat do *Pool2*.
+   1. Vyberte všechny 10 databáze je přesunout do nového fondu, a potom klikněte na **vyberte**. Pokud jste byl spuštěn generátor zatížení, služba již ví, že váš profil výkonu vyžaduje větší než výchozí velikost 50 eDTU fondu a doporučuje, začínající 100 eDTU nastavení.
 
-    ![doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. Pro účely tohoto kurzu ponechte výchozí nastavení na 50 Edtu a klikněte na tlačítko **vyberte** znovu.
-    1. Vyberte **OK** vytvořit nový fond a přemístěte do něho vybrané databáze.
+   1. Pro účely tohoto kurzu ponechte výchozí nastavení na 50 Edtu a klikněte na tlačítko **vyberte** znovu.
+   1. Vyberte **OK** vytvořit nový fond a přemístěte do něho vybrané databáze.
 
 Vytvoření fondu a přesunutí databází trvá několik minut. Jak přesunu databází zůstat online a plně přístupná až do okamžiku, poslední, v tomto okamžiku všechna otevřená připojení zavřou. Za předpokladu, budete mít nějaké logiky opakování, klienti se pak připojení k databázi v novém fondu.
 

@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit potíže s prostředky Azure Automation, kte
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902820"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Řešení potíží s chybami se sdílenými prostředky
 
@@ -137,6 +137,30 @@ Na úrovni skupiny prostředků nemáte příslušná oprávnění, které je po
 Vytvořit nebo aktualizovat účet Spustit jako, musí mít příslušná oprávnění k různým prostředkům používá účet Spustit jako. Další informace o oprávnění potřebná k vytvoření nebo aktualizace účtu spustit jako najdete v tématu [oprávnění účtu spustit jako](../manage-runas-account.md#permissions).
 
 Pokud se problém z důvodu zámku, ověřte, že je v pořádku. odeberte zámek. Potom přejděte k prostředku, který je uzamčen, klikněte pravým tlačítkem na zámek a zvolte **odstranit** odebrat zámek.
+
+### <a name="iphelper"></a>Scénář: Zobrazí chybová zpráva "Nepodařilo se najít vstupní bod s názvem"GetPerAdapterInfo"v knihovně DLL"iplpapi.dll"" při spuštění sady runbook.
+
+#### <a name="issue"></a>Problém
+
+Při spuštění runbooku se zobrazí následující výjimku:
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba je pravděpodobně způsobeno chybně nakonfigurovaným [účet Spustit jako](../manage-runas-account.md).
+
+#### <a name="resolution"></a>Řešení
+
+Ujistěte se, že vaše [účet Spustit jako](../manage-runas-account.md) správně nakonfigurovaný. Jakmile je správně nakonfigurován, ujistěte se, že máte správný kód v sadě runbook, k ověření pomocí Azure. Následující příklad ukazuje fragment kódu pro ověření do Azure v sadě runbook, pomocí účtu spustit jako.
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 58773dded162ea51ccc6e502bbbdd4e13965c1d6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c312433832f7402eaff8b40c4e0a2a61397f6f87
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203484"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123500"
 ---
 # <a name="stringcollection-claims-transformations"></a>Třída StringCollection deklarace identity transformace
 
@@ -29,7 +29,7 @@ Přidá řetězec deklarace identity do nové třída stringCollection deklarace
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Položka | řetězec | Přidat do výstupu deklarace typu deklarace identity. |
+| InputClaim | Položka | string | Přidat do výstupu deklarace typu deklarace identity. |
 | InputClaim | kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
 | outputClaim | kolekce | stringCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. |
 
@@ -52,10 +52,10 @@ Přidá následující transformace deklarací identity **e-mailu** typu deklara
 ### <a name="example"></a>Příklad:
 
 - Vstupní deklarace identity:
-    - **kolekce**: ["someone@outlook.com"]
-    - **Položka**: "admin@contoso.com"
+  - **kolekce**: ["someone@outlook.com"]
+  - **Položka**: "admin@contoso.com"
 - Výstupní deklarace identit: 
-    - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
+  - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
@@ -64,7 +64,7 @@ Přidá novou deklaraci třída stringCollection parametr řetězce.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
-| InputParameter | Položka | řetězec | Hodnota přidávaného do výstupní deklarací. |
+| InputParameter | Položka | string | Hodnota přidávaného do výstupní deklarací. |
 | outputClaim | kolekce | stringCollection | ClaimTypes, který bude vytvořen po zavolání této ClaimsTransformation. |
 
 Použijte Tato transformace přidat hodnotu řetězce nové nebo existující třída stringCollection deklarací identity. Následující příklad přidá konstanty e-mailovou adresu (admin@contoso.com) k **otherMails** deklarací identity. 
@@ -86,11 +86,11 @@ Použijte Tato transformace přidat hodnotu řetězce nové nebo existující t�
 ### <a name="example"></a>Příklad:
 
 - Vstupní deklarace identity:
-    - **kolekce**: ["someone@outlook.com"]
+  - **kolekce**: ["someone@outlook.com"]
 - Vstupní parametry 
-    - **Položka**: "admin@contoso.com"
+  - **Položka**: "admin@contoso.com"
 - Výstupní deklarace identit:
-    - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
+  - **kolekce**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
@@ -99,7 +99,7 @@ Získá první položku z kolekce zadaný řetězec.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | kolekce | stringCollection | ClaimTypes, které jsou používány transformace deklarací identity k získání položky. |
-| outputClaim | extractedItem | řetězec | ClaimTypes vytvořený po zavolání této ClaimsTransformation. První položka v kolekci. |
+| outputClaim | extractedItem | string | ClaimTypes vytvořený po zavolání této ClaimsTransformation. První položka v kolekci. |
 
 Následující příklad načte **otherMails** deklarace identity a vrátí první položku do **e-mailu** deklarací identity. 
 
@@ -117,7 +117,7 @@ Následující příklad načte **otherMails** deklarace identity a vrátí prvn
 ### <a name="example"></a>Příklad:
 
 - Vstupní deklarace identity:
-    - **kolekce**: ["someone@outlook.com","someone@contoso.com"]
+  - **kolekce**: ["someone@outlook.com","someone@contoso.com"]
 - Výstupní deklarace identit: 
-    - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**: "someone@outlook.com"
 

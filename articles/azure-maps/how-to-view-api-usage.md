@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f8977a0a50103b3c2935ee27a69a53e636f5aecb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079874"
 ---
 # <a name="view-azure-maps-api-usage"></a>Zobrazit využití rozhraní API služby Azure Maps
 
@@ -37,10 +37,10 @@ Pokračujte k další části, pokud je potřeba upravit tyto grafy pro konkrét
 
 4. Na **metriky** podokně zvolit jednu z následujících akcí:
 
-    1. **Dostupnost** -vidíme *průměrné* dostupnost rozhraní API po určitou dobu.
-    2. **Využití** – který ukazuje způsob použití *počet* pro váš účet.
+   1. **Dostupnost** -vidíme *průměrné* dostupnost rozhraní API po určitou dobu.
+   2. **Využití** – který ukazuje způsob použití *počet* pro váš účet.
 
-    ![Podokno Azure Maps metriky](media/how-to-view-api-usage/portal-metrics.png)
+      ![Podokno Azure Maps metriky](media/how-to-view-api-usage/portal-metrics.png)
 
 5. Dále můžete vybrat *časový rozsah* kliknutím **posledních 24 hodin (automaticky)**. Ve výchozím nastavení je čas rozsah nastavený na 24 hodin. Po kliknutí na tlačítko, zobrazí se všechny volitelné časového rozsahu. Můžete vybrat *časové intervaly* a chcete zobrazit čas jako *místní* nebo *GMT* ve stejném rozevíracího seznamu. Klikněte na tlačítko **Použít**.
 

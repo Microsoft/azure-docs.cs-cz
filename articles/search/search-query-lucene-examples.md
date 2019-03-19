@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631834"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136542"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Příklady dotazů syntaxe Lucene pro vytváření upřesňující dotazy ve službě Azure Search
 Při vytváření dotazů pro službu Azure Search, můžete nahradit výchozí [jednoduchý analyzátor dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) s více obsáhlém [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) formulovat specializované a pokročilé dotazu definice. 
@@ -172,7 +172,7 @@ Vezměte v úvahu bodovací profil, který zvyšuje odpovídá určité pole, ja
 Po nastavení úrovně faktor, tím větší faktor zesílení, více odpovídajících termín, budou relativní vůči jiné podmínky hledání. Ve výchozím nastavení je faktor zesílení 1. I když faktor zesílení musí být kladná, může být menší než 1 (například 0,2).
 
 
-## <a name="example-6-regex"></a>Příklad 6: regulární výraz
+## <a name="example-6-regex"></a>Příklad 6: Regex
 
 Hledání regulárního výrazu najde shodu na základě obsahu mezi lomítka "/", jako zdokumentované v [Třída RegExp](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
 
@@ -206,7 +206,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Zkuste zadat analyzátor dotazů Lucene ve vašem kódu. Následující odkazy popisují, jak nastavit vyhledávacích dotazů pro .NET a rozhraní REST API. Odkazy používat jednoduchá syntaxe výchozí, budete muset použít, co jste se naučili v tomto článku k určení **queryType**.
 
 * [Dotazování indexu Azure Search pomocí .NET SDK](search-query-dotnet.md)
-* [Dotazování indexu Azure Search pomocí rozhraní REST API](search-query-rest-api.md)
+* [Dotazování indexu Azure Search pomocí rozhraní REST API](search-create-index-rest-api.md)
 
 Odkaz na další syntaxi dotazu architektury a příklady najdete v následujících odkazů:
 

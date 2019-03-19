@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: df1fe833a5b0cb65372f8df73fb17231463d4d64
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b2377466ba830eed9fed0e9a4033b3eca3d351c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834598"
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 V tomto kurzu si ukážeme, jak se pomocí Power BI připojit k SQL Data Warehouse a vytvořit pár základních vizualizací.
@@ -93,4 +93,4 @@ Při používání s přímým přístupem připojení:
 Těchto omezení a poznámky může změnit, protože prostředí vylepšit.
 
 ## <a name="next-steps"></a>Další postup
-Vyzkoušeli jste si tedy práci s ukázkovými daty a teď se podívejte, jak na [vývoj](sql-data-warehouse-overview-develop.md), [načítání](design-elt-data-loading.md) nebo [migraci](sql-data-warehouse-overview-migrate.md). Nebo se podívejte na [web Power BI](http://www.powerbi.com/).
+Vyzkoušeli jste si tedy práci s ukázkovými daty a teď se podívejte, jak na [vývoj](sql-data-warehouse-overview-develop.md), [načítání](design-elt-data-loading.md) nebo [migraci](sql-data-warehouse-overview-migrate.md). Nebo se podívejte na [web Power BI](https://www.powerbi.com/).

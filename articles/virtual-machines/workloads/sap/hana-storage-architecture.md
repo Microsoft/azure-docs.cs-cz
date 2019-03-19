@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006104"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
-Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na model nasazení classic na SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper.
+Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na model nasazení classic na SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper.
 
 Velká Instance HANA typu můžu třídy součástí čtyřikrát paměti svazek jako svazek úložiště. Pro třídu typu II velká Instance HANA jednotek není čtyřnásobnou úložiště. Jednotky se dodávají s svazku, který je určený pro ukládání záloh protokolů transakcí HANA. Další informace najdete v tématu [nainstalujte a nakonfigurujte SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -100,10 +100,10 @@ S typem můžu třídy skladových jednotek, svazků spouštěcí logická jedno
 > [!IMPORTANT]
 > Aby nedošlo k HANA pokusu o zvětšení datových souborů nad limit velikosti souboru 16 TB úložiště pro velké Instance HANA, je nutné nastavit následující parametry v konfiguračním souboru global.ini Hana
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Viz také SAP Poznámka [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Mějte na paměti ze Poznámka SAP [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

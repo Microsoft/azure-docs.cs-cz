@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 1cfba4bf824d381e1b40ea0228ee902a1d6b5a9a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993203"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na Virtuálním počítači Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "57763210"
 
 - Zapojte ovladač USB, který má klíč Bitlockeru
 
-- Máte uzamčen! Zadejte obnovovací klíč do znovu (klávesnice: USA) chybného přihlašovacím údajům bylo zadáno příliš mnohokrát tak, že váš počítač byl uzamčen pro ochranu vašich osobních údajů. Pokud chcete načíst obnovovací klíč, přejděte na http://windows.microsoft.com/recoverykeyfaq z jiného počítače nebo mobilního zařízení. V případě, že ji klíč budete potřebovat ID je XXXXXXX. Nebo můžete resetovat vašemu počítači.
+- Máte uzamčen! Zadejte obnovovací klíč do znovu (klávesnice: USA) chybného přihlašovacím údajům bylo zadáno příliš mnohokrát tak, že váš počítač byl uzamčen pro ochranu vašich osobních údajů. Pokud chcete načíst obnovovací klíč, přejděte na https://windows.microsoft.com/recoverykeyfaq z jiného počítače nebo mobilního zařízení. V případě, že ji klíč budete potřebovat ID je XXXXXXX. Nebo můžete resetovat vašemu počítači.
 
 - Zadejte heslo k odemknutí tento disk [] č. stisknutím klávesy Insert zobrazíte heslo při psaní.
 - Zadejte obnovovacímu klíči zatížení obnovovací klíč z USB zařízení.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7f3b8101b633c977201b6c413ad12e4bbe55e9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054839"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011777"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 
@@ -88,21 +88,21 @@ Vyberte **zobrazení** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > 
 
 - Vytvoření jednoho souboru:
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
 - Tři soubory jsou změny (Další poznámky přidané zvýrazněte změny):
 
-  - _appSettings.JSON_:
+  - _appsettings.json_:
 
     ```json
     {
@@ -148,7 +148,7 @@ Vyberte **zobrazení** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > 
     </Project>
     ```
 
-  -  _Soubor program.cs_:
+  -  _Program.cs_:
 
       ```csharp
       using System;
@@ -181,11 +181,15 @@ Vyberte **zobrazení** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > 
       }
       ```
 
+## <a name="send-ilogger-logs-to-application-insights"></a>Odeslání protokolů s ILogger Application Insights
+
+Application Insights podporuje zachytávající protokoly se odeslaly prostřednictvím objektu ILogger. Nastavení protokolování checkout ukázky kódu [tady](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
+
 ## <a name="synthetic-transactions-with-powershell"></a>Syntetické transakce s využitím Powershellu
 
 K automatizaci požadavky na vaši aplikaci za použití syntetických transakcí:
 
-1. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) ikona.
+1. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) icon.
 
 2. Zkopírujte adresu URL z adresního řádku prohlížeče. Adresa URL je ve formátu `http://localhost:<port number>`.
 
@@ -213,7 +217,7 @@ V nabídce sady Visual Studio vyberte **projektu** > **Application Insights** > 
 
 ## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>Shromažďovat neúspěšné požadavky, Live Stream a doba načtení zobrazení stránky
 
-### <a name="failed-requests"></a>Neúspěšné žádosti
+### <a name="failed-requests"></a>Neúspěšné požadavky
 
 Technicky je shromažďováno neúspěšné požadavky, ale žádné neúspěšné žádosti ještě nedošlo. Pokud chcete urychlit proces, můžete přidat vlastní výjimky do existujícího projektu k simulaci reálné výjimky. Pokud vaše aplikace stále běží v sadě Visual Studio, než budete pokračovat, vyberte **Zastavit ladění** (Shift + F5).
 
@@ -276,7 +280,7 @@ Zobrazí se více výzvy k potvrzení. Přečíst a přijmout vyjadřujete souhl
 
 Pro testování a potvrďte, že vše funguje:
 
-1. Spuštění aplikace. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) ikona.
+1. Spuštění aplikace. Ke spuštění vaší aplikace, vyberte ![Snímek obrazovky sady Visual Studio ikonu IIS Express](./media/asp-net-core/004-iis-express.png) icon.
 
 2. Přejděte **o** stránky k aktivaci výjimku testu. (Pokud jste v režimu ladění v sadě Visual Studio, vyberte **pokračovat** výjimky objeví ve službě Application Insights.)
 
@@ -338,7 +342,7 @@ Funkce je možné, v části protože balíček NuGet _metabalíček_ trvá [ _M
 
 ![Snímek obrazovky s NuGet graf závislostí pro metabalíček](./media/asp-net-core/013-dependency.png)
 
-Mimo sadu Visual Studio kterou jste dříve upravovali projekt ASP.NET Core v VSCode nebo jiném editoru, tato sestavení by zatížení automaticky během ladění Pokud jste nepřidali explicitně Application Insights do projektu.
+Mimo sadu Visual Studio kterou jste dříve upravovali projektu aplikace ASP.NET Core v VSCode nebo jiném editoru, tato sestavení by zatížení automaticky během ladění Pokud jste nepřidali explicitně Application Insights do projektu.
 
 V sadě Visual Studio, ale tento osvětlení si místní funkce Application Insights z externí sestavení se provádí pomocí [IHostingStartup rozhraní](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1). Rozhraní dynamicky přidá Application Insights během ladění.
 

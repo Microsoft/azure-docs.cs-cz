@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 733ae4451988651df2a62a22aa6eb1b6fae44309
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ea4cf03b368cebbfc7d1229be28014b54f2c11d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004313"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Blob Storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,6 +181,7 @@ Podívejme se na tom, jak rychle zkopírovat data do a z Azure blob storage. V t
     John, Doe
     Jane, Doe
     ```
+
 ### <a name="create-the-data-factory"></a>Vytvoření datové továrny
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **vytvořit prostředek** z levého horního rohu, klikněte na tlačítko **inteligence a analýza**a klikněte na tlačítko **služby Data Factory**.
@@ -249,14 +250,14 @@ Podívejme se na tom, jak rychle zkopírovat data do a z Azure blob storage. V t
     4. Vyberte svůj účet úložiště Azure.
     5. Klikněte na **Další**.
 10. Na **zvolte výstupní soubor nebo složku** stránky:  
-    6. Zadejte **cesta ke složce** jako **adfblobconnector/output / {year} / {month} / {day}**. Zadejte **kartu**.
-    7. Pro **rok**vyberte **rrrr**.
-    8. Pro **měsíc**, potvrďte, že je nastavena **MM**.
-    9. Pro **den**, potvrďte, že je nastavena **dd**.
-    10. Ujistěte se, že **typ komprese** je nastavena na **žádný**.
-    11. Ujistěte se, že **zkopírujte chování** je nastavena na **sloučit soubory**. Pokud výstupní soubor se stejným názvem už existuje, je stejný soubor na konci přidal nový obsah.
-    12. Klikněte na **Další**.
-    ![Nástroj pro kopírování – volba výstupní soubor nebo složku](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    1. Zadejte **cesta ke složce** jako **adfblobconnector/output / {year} / {month} / {day}**. Zadejte **kartu**.
+    1. Pro **rok**vyberte **rrrr**.
+    1. Pro **měsíc**, potvrďte, že je nastavena **MM**.
+    1. Pro **den**, potvrďte, že je nastavena **dd**.
+    1. Ujistěte se, že **typ komprese** je nastavena na **žádný**.
+    1. Ujistěte se, že **zkopírujte chování** je nastavena na **sloučit soubory**. Pokud výstupní soubor se stejným názvem už existuje, je stejný soubor na konci přidal nový obsah.
+    1. Klikněte na **Další**.
+       ![Nástroj pro kopírování – volba výstupní soubor nebo složku](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Na **nastavení formátu souboru** stránky, zkontrolujte nastavení a klikněte na tlačítko **Další**. Jedním z dalších možností je přidat hlavičku do výstupního souboru. Pokud tuto možnost vyberete, se přidá řádek záhlaví s názvy sloupců ze schématu zdroje. Při zobrazení schémat pro zdroj, můžete změnit výchozí názvy sloupců. Například můžete změnit na první sloupec na křestní jméno a příjmení druhý sloupec. Potom výstupní soubor je vytvořen s záhlaví s těmito názvy jako názvy sloupců.
     ![Nástroj pro kopírování – nastavení formátu souboru pro cíl](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. Na **nastavení výkonu** stránky, ujistěte se, že **cloudu jednotky** a **paralelní kopie** jsou nastaveny na **automaticky**a klikněte na tlačítko Další. Podrobnosti o těchto nastaveních najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md#parallel-copy).
@@ -281,7 +282,7 @@ Podívejme se na tom, jak rychle zkopírovat data do a z Azure blob storage. V t
     2017/04/24
     2017/04/25
     ```
-Podrobné informace o monitorování a Správa datových továren najdete v tématu [monitorování a Správa kanálu služby Data Factory](data-factory-monitor-manage-app.md) článku.
+   Podrobné informace o monitorování a Správa datových továren najdete v tématu [monitorování a Správa kanálu služby Data Factory](data-factory-monitor-manage-app.md) článku.
 
 ### <a name="data-factory-entities"></a>Entit datové továrny
 Nyní přejděte zpět na kartu s Domovská stránka datové továrny. Všimněte si, že jsou dvě propojené služby, dvě datové sady a jeden kanál v datové továrně nyní.

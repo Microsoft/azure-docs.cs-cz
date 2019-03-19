@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: e9ef73bbed83587f635492553f3e467922481ede
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 76d2794d45e9cd73ae8faf203ba29c4dbba64eae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309668"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004623"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -86,7 +86,7 @@ Neexistuje žádné další poplatky za použití této funkce. Stejným způsob
 
 ## <a name="getting-started"></a>Začínáme
 
-Nejnovější verze [webu Azure portal](http://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), a [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) podporují neměnné úložiště pro úložiště objektů Blob v Azure. [Podpora knihovny klienta](#client-libraries) je také k dispozici.
+Nejnovější verze [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), a [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) podporují neměnné úložiště pro úložiště objektů Blob v Azure. [Podpora knihovny klienta](#client-libraries) je také k dispozici.
 
 > [!NOTE]
 >

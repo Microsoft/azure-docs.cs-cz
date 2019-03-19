@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634350"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999950"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
@@ -60,6 +60,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
    | Filter Year (Filtr roku) |2013 |
    | Filter Period (Filtr období) |January (Leden) |
    | Fields (Pole) |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   
    Zrušte zaškrtnutí všech ostatních polí. 
 
 3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.

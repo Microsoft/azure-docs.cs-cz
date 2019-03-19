@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901538"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integrace správy zdrojového kódu ve službě Azure Automation – starší verze
 
@@ -66,22 +66,22 @@ Pokud už máte účet GitHub a úložiště, který chcete propojit s Azure Aut
      | **Parametr** | **Hodnota** |
      |:--- |:--- |
      | Název |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Typ |Řetězec |
+     | Type |String |
      | Hodnota |{"Větve":\<*název vaší větve*>, "RunbookFolderPath":\<*cesta ke složce Runbooků*>, "typ zprostředkovatele":\<*má hodnotu 1 pro GitHub*>, "Úložiště":\<*název vašeho úložiště*>, "Username":\<*GitHub si uživatelské jméno*>} |
 
-    * Proměnná **Microsoft.Azure.Automation.SourceControl.OAuthToken**, obsahuje zabezpečené zašifrovanou hodnotu vaše OAuthToken.  
+     * Proměnná **Microsoft.Azure.Automation.SourceControl.OAuthToken**, obsahuje zabezpečené zašifrovanou hodnotu vaše OAuthToken.  
 
-    |**Parametr**            |**Hodnota** |
-    |:---|:---|
-    | Název  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | Typ | Unknown(Encrypted) |
-    | Hodnota | <*Šifrované OAuthToken*> |  
+     |**Parametr**            |**Hodnota** |
+     |:---|:---|
+     | Název  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | Type | Unknown(Encrypted) |
+     | Hodnota | <*Šifrované OAuthToken*> |  
 
-    ![Proměnné](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
+     ![Proměnné](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automatizace správy zdrojového kódu** se přidá jako autorizovanou aplikaci ke svému účtu GitHub. Chcete-li zobrazit aplikaci: Na domovské stránce Githubu, přejděte k vaší **profilu** > **nastavení** > **aplikací**. Tato aplikace umožňuje službě Azure Automation k synchronizaci vašeho úložiště GitHub s účtem Automation.  
+     * **Automatizace správy zdrojového kódu** se přidá jako autorizovanou aplikaci ke svému účtu GitHub. Chcete-li zobrazit aplikaci: Na domovské stránce Githubu, přejděte k vaší **profilu** > **nastavení** > **aplikací**. Tato aplikace umožňuje službě Azure Automation k synchronizaci vašeho úložiště GitHub s účtem Automation.  
 
-    ![Libovolná aplikace](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
+     ![Libovolná aplikace](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
 
 ## <a name="using-source-control-in-automation"></a>Pomocí správy zdrojového kódu ve službě Automation
@@ -124,10 +124,6 @@ Tlačítko Synchronizovat na stránce synchronizace úložiště umožňuje stá
 
     > [!NOTE] 
     > Přepíše verzi konceptu sady runbook, které momentálně existují ve vašem účtu Automation pro synchronizaci ze správy zdrojových kódů **všechny** sady runbook, které jsou aktuálně ve správy zdrojového kódu. Je Git ekvivalentní instrukce příkazového řádku pro synchronizaci **o přijetí změn git**
-
-
-## <a name="troubleshooting-source-control-problems"></a>Řešení potíží se ovládací prvek zdroje
-Pokud jsou nějaké chyby pomocí vrácení se změnami nebo úloha synchronizace, měl by být pozastaven stav úlohy a další podrobnosti o chybě můžete zobrazit na stránce úlohy.  **Všechny protokoly** části se dozvíte, všechny Powershellu datové proudy přidružené k této úlohy. To vám poskytne informace potřebné k vám pomůžou s opravit všechny problémy s vrácení se změnami nebo synchronizace. Taky se naučíte posloupnost akcí, ke kterým došlo při synchronizaci nebo vrácení se změnami sadu runbook.  
 
 ![AllLogs image](media/automation-source-control-integration-legacy/automation_13_AllLogs.png)
 

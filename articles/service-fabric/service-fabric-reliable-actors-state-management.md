@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77fa369a3085a3d11d5bf03406b4ddb885a24009
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847395"
 ---
 # <a name="reliable-actors-state-management"></a>Správa stavu Reliable Actors
 Reliable Actors jsou jednovláknových objektů zapouzdřujících logiky a stavových. Actors spustit v modelu Reliable Services, proto jejich stav udržovat spolehlivě s použitím stejného trvalosti a mechanismech replikace. Tímto způsobem actors neztratili po selhání, po aktivaci po uvolnění paměti nebo se přesouvat mezi uzly v clusteru kvůli vyrovnávání prostředků nebo upgrady jejich stav.
@@ -29,9 +29,9 @@ Všechny Reliable Actors jsou považovány za *stavová* vzhledem k tomu, že ka
 
 I když actors jsou považovány za stavová, neznamená, že musí spolehlivé ukládání stavu. Účastníky můžete zvolit úroveň trvalost stavu a replikace na základě svých dat požadavky na úložiště:
 
-* **Trvalý stav**: stav ukládaný na disk a replikovaný pro tři nebo více replikami. Trvalý stav je nejvíce trvalý možnost úložiště stavu, ve kterém můžete zachovat stav prostřednictvím výpadek celého clusteru.
-* **Volatile stavu**: stav je replikovat do tří nebo více replikami a uchovávají pouze v paměti. Volatile stavu poskytuje odolnost proti selhání uzlu a selhání objektu actor a během upgradu a vyrovnávání prostředků. Nicméně, není stav ukládaný na disk. Takže pokud všechny repliky byly ztraceny najednou, stav je ztraceny i.
-* **Žádný trvalý stav**: stav není replikovány nebo zapisují na disk, používat jenom pro objekty actor, které není potřeba spolehlivě zachovat stav.
+* **Trvalý stav**: Stav ukládaný na disk a replikovaný pro tři nebo více replikami. Trvalý stav je nejvíce trvalý možnost úložiště stavu, ve kterém můžete zachovat stav prostřednictvím výpadek celého clusteru.
+* **Volatile stavu**: Stav je replikovat do tří nebo více replikami a uchovávají pouze v paměti. Volatile stavu poskytuje odolnost proti selhání uzlu a selhání objektu actor a během upgradu a vyrovnávání prostředků. Nicméně, není stav ukládaný na disk. Takže pokud všechny repliky byly ztraceny najednou, stav je ztraceny i.
+* **Žádný trvalý stav**: Stav není replikovány nebo zapisují na disk, používat jenom pro objekty actor, které není potřeba spolehlivě zachovat stav.
 
 Každá úroveň trvalosti je jednoduše jiný *zprostředkovatele stavu* a *replikace* konfigurace vaší služby. Určuje, jestli se stav je zapsaný na disk závisí na poskytovateli stavu – součástí spolehlivé služby, který ukládá stav. Replikace závisí na tom, kolik repliky služby se nasazuje s. Stejně jako Reliable Services zprostředkovatele stavu i počet replik lze snadno nastavit ručně. Rozhraní objektu actor poskytuje atribut, který, pokud použít na prvek "actor", automaticky vybere výchozího zprostředkovatele stavu a automaticky generuje nastavení pro počet replik dosáhnout jednoho z těchto tří nastavení trvalosti. Atribut StatePersistence není zděděn z odvozené třídy, každý typ objektu Actor musíte zadat jeho StatePersistence úroveň.
 
@@ -86,7 +86,7 @@ Když používáte `StatePersistence` atribut zprostředkovatele stavu je automa
 Tyto parametry můžete změnit ručně. Ale pokaždé, když `StatePersistence` změnit atribut, parametry jsou nastaveny na výchozí hodnoty velikost sady replik pro vybranou `StatePersistence` atribut přepsání jakékoli předchozí hodnoty. Jinými slovy, jsou hodnoty, které jste nastavili v souboru ServiceManifest.xml *pouze* přepsat v okamžiku sestavení při změně `StatePersistence` hodnotu atributu.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />

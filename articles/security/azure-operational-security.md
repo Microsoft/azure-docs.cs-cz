@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5a407db97803d3c3be898893b7da6c1cb4aa94bb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901504"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -57,7 +57,7 @@ Tento dokument white paper popisuje přístup Microsoftu k provozní zabezpečen
 
 Protokoly Microsoft Azure Monitor je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo pro rozšíření stávajícího nasazení nástroje System Center, protokoly Azure monitoru poskytuje maximální flexibilitu a řízení pro správu cloudové infrastruktury.
 
-![Protokoly Azure monitoru](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Protokoly služby Azure Monitor](./media/azure-operational-security/azure-operational-security-fig1.png)
 
 S protokoly Azure monitoru můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, protokoly Azure Monitor nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
 
@@ -67,12 +67,12 @@ Základní funkce protokoly Azure monitoru poskytuje sadu služeb, které běž�
 
 | Služba  | Popis|
 | :------------- | :-------------|
-| Protokoly Azure monitoru | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
+| Protokoly služby Azure Monitor | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
 |Automation | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |
 | Backup | Zálohování a obnovení kritických dat. |
 | Site Recovery | Poskytnutí vysoké dostupnosti pro důležitá data |
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 [Protokoly Azure monitoru](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
@@ -80,7 +80,7 @@ Základní funkce protokoly Azure monitoru poskytuje sadu služeb, které běž�
 Tato metoda umožňuje konsolidovat data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
 
 
-![Protokoly Azure monitoru](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Protokoly služby Azure Monitor](./media/azure-operational-security/azure-operational-security-fig2.png)
 
 Služby Azure Monitor bezpečně spravuje vaše data založené na cloudu pomocí následujících metod:
 -   oddělení dat
@@ -149,7 +149,7 @@ Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, dete
 
 -   **Oddělení dat**: Data se ukládají logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená podle organizace. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby.
 
--   **Přístup k datům**: K poskytování doporučení zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím o shromážděných nebo analyzovaným službami Azure, včetně souborů se stavem systému, zpracování události vytváření snímků disku virtuálního počítače a artefakty, které mohou náhodně zahrnovat informace zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Microsoft Online Services podmínky a prohlášení o zásadách](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), která stanoví, že společnost Microsoft použije zákaznická Data nebo získávání informací pro reklamní nebo podobné obchodní účely.
+-   **Přístup k datům**: K poskytování doporučení zabezpečení a prošetřovat potenciální ohrožení zabezpečení, mají pracovníci společnosti Microsoft přístup k informacím o shromážděných nebo analyzovaným službami Azure, včetně souborů se stavem systému, zpracování události vytváření snímků disku virtuálního počítače a artefakty, které mohou náhodně zahrnovat informace zákaznických dat ani osobní data z vašich virtuálních počítačů. Dodržujeme [Microsoft Online Services podmínky a prohlášení o zásadách](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), která stanoví, že společnost Microsoft použije zákaznická Data nebo získávání informací pro reklamní nebo podobné obchodní účely.
 
 -   **Za využívání dat**: Společnost Microsoft používá vzory a analýzy hrozeb napříč několika klienty k vylepšení našich schopnosti prevence a detekce; uděláme v souladu se závazky ochrany osobních údajů je popsáno v našem [prohlášení o zásadách](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
@@ -271,6 +271,7 @@ Následující typy ověřený a anonymní žádosti jsou protokolovány.
 | Požadavky pomocí sdílený přístupový podpis (SAS), včetně úspěšné a neúspěšné požadavky |Chyby časového limitu pro klienta a serveru |
 |   Požadavky na analytických dat |    Neúspěšné požadavky GET s kódem chyby 304 (Neupraveno) |
 | Storage Analytics, jako je protokol vytvoření nebo odstranění, žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) témata. | Všechny ostatní neúspěšné anonymní žádosti se neprotokolují. Úplný seznam dat protokolu jsou uvedené v [stavové zprávy a Storage Analytics protokolovanými operacemi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) a [formát Log Analytics úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). |
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
 Azure AD také zahrnuje kompletní sadu možností pro správu identit včetně ověření službou Multi-Factor Authentication, registrace zařízení, Samoobslužná správa hesel, Samoobslužná správa skupin, správu privilegovaných účtů, přístup na základě rolí ovládací prvek, sledování využití aplikací, bohaté auditování a monitorování zabezpečení a upozorňování.
@@ -293,7 +294,7 @@ Sestavy poskytují záznam auditu pro název události objektu actor, který pro
 |Přihlášení z možných nakažených zařízení |Aktivity jednotlivých uživatelů |   |
 |Uživatelé s neobvyklou přihlašovací aktivitou |Sestava aktivit skupin |   |
 | |Sestava aktivit registrace resetování hesla |   |
-| |Aktivity resetování hesla |   | |
+| |Aktivity resetování hesla |   |
 
 
 

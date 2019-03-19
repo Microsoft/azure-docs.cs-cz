@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 75a3f8e6c872e0bbb9fde8c5776d99ba0cf2c3d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116588"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
@@ -27,17 +27,17 @@ Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service F
 ## <a name="prerequisites"></a>Požadavky
 1. Nejdřív musíte odinstalovat stávající sadu Java SDK.
 
-  ```bash
-  sudo dpkg -r servicefabricsdkjava
-  ```
+   ```bash
+   sudo dpkg -r servicefabricsdkjava
+   ```
 2. Pomocí kroků uvedených [tady](service-fabric-cli.md) nainstalujte nejnovější rozhraní příkazového řádku Service Fabric.
 
 3. Pokud chcete sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK 1.8 a Gradle. Pokud ještě nejsou instalované, můžete sadu JDK 1.8.(openjdk-1.8-jdk) a Gradle nainstalovat spuštěním následujícího kódu:
 
- ```bash
- sudo apt-get install openjdk-8-jdk-headless
- sudo apt-get install gradle
- ```
+   ```bash
+   sudo apt-get install openjdk-8-jdk-headless
+   sudo apt-get install gradle
+   ```
 4. Aktualizujte instalační/odinstalační skripty vaší aplikace, aby používaly nové rozhraní příkazového řádku Service Fabric, a to pomocí kroků uvedených [tady](service-fabric-application-lifecycle-sfctl.md). Pro srovnání si můžete prohlédnout naše úvodní [příklady](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 >[!TIP]

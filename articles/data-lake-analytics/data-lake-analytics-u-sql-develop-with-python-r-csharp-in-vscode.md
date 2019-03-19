@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 53859f5a81cf1d797ec93e83d75df5a329590dce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051628"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087478"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL pomocí Pythonu, R a C# pro Azure Data Lake Analytics v aplikaci Visual Studio Code
 Zjistěte, jak používat Visual Studio Code (VSCode) pro zápis Python, R a C# kódu na pozadí pomocí U-SQL a odesílání úloh do služby Azure Data Lake. Další informace o Azure Data Lake Tools pro VSCode, naleznete v tématu [pomocí nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -30,10 +30,10 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
 3. Vyberte **nainstalovat rozšíření U-SQL**. 
 4. Po instalaci rozšíření U-SQL, zobrazí se potvrzovací zpráva. 
 
-  ![Nastavení prostředí pro python a r.](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Nastavení prostředí pro python a r.](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
-  > [!Note]
-  > Pro nejlepší prostředí na službě jazyka Python nebo R Nainstalujte prosím VSCode Pythonu a r. rozšíření. 
+   > [!Note]
+   > Pro nejlepší prostředí na službě jazyka Python nebo R Nainstalujte prosím VSCode Pythonu a r. rozšíření. 
 
 ## <a name="develop-python-file"></a>Vývoj soubor Pythonu
 1. Klikněte na tlačítko **nový soubor** ve vašem pracovním prostoru.
@@ -58,7 +58,7 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
         USING Outputters.Csv();
     ```
     
-3. Klikněte pravým tlačítkem na soubor skriptu a pak vyberte **ADL: vygenerování kódu Pythonu za soubor**. 
+3. Klikněte pravým tlačítkem na soubor skriptu a pak vyberte **ADL: Generovat soubor kódu Python**. 
 4. **Xxx.usql.py** soubor je vygenerován ve své pracovní složce. Napište svůj kód v souboru Python. Následuje vzorový kód.
 
     ```Python
@@ -115,7 +115,7 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: generování kódu R za soubor**. 
+3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: Generovat soubor kódu R**. 
 4. **Xxx.usql.r** soubor je vygenerován ve své pracovní složce. Napište svůj kód v R souboru. Následuje vzorový kód.
 
     ```R
@@ -125,7 +125,7 @@ Registrace Pythonu a r. sestavení rozšíření pro váš účet ADL.
 5. Klikněte pravým tlačítkem na **USQL** soubor, můžete kliknout na **kompilaci skriptu** nebo **odeslat úlohu** ke spuštění úlohy.
 
 ## <a name="develop-c-file"></a>Vývoj soubor jazyka C#
-Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skript U-SQL. Můžete definovat skript vyhrazené pro UDO, UDA, UDT a systému souborů UDF v souboru kódu na pozadí. UDO, UDA, UDT a UDF lze použít přímo ve skriptu i bez registrace sestavení první. Použití modelu code-behind soubor je umístěn ve stejné složce jako jeho vytvoření partnerského vztahu soubor skriptu U-SQL. Pokud tento skript má název xxx.usql, je jako xxx.usql.cs název modelu code-behind. Pokud ručně odstraňte soubor kódu na pozadí, je zakázaná použití modelu code-behind pro jeho přidružené skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [psaní a použití vlastní kód v U-SQL: uživatelsky definovaných funkcí]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skript U-SQL. Můžete definovat skript vyhrazené pro UDO, UDA, UDT a systému souborů UDF v souboru kódu na pozadí. UDO, UDA, UDT a UDF lze použít přímo ve skriptu i bez registrace sestavení první. Použití modelu code-behind soubor je umístěn ve stejné složce jako jeho vytvoření partnerského vztahu soubor skriptu U-SQL. Pokud tento skript má název xxx.usql, je jako xxx.usql.cs název modelu code-behind. Pokud ručně odstraňte soubor kódu na pozadí, je zakázaná použití modelu code-behind pro jeho přidružené skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [psaní a použití vlastní kód v U-SQL: Uživatelem definované funkce]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Klikněte na tlačítko **nový soubor** ve vašem pracovním prostoru.
 2. Napište svůj kód v souboru U-SQL. Následuje vzorový kód.
@@ -157,7 +157,7 @@ Použití modelu code-behind soubor je soubor jazyka C# přidružený jeden skri
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: vygenerovat CS za soubor s kódem**. 
+3. Klikněte pravým tlačítkem na **USQL** souboru a pak vyberte **ADL: Generovat soubor kódu CS**. 
 4. **Xxx.usql.cs** soubor je vygenerován ve své pracovní složce. Napište svůj kód v souboru CS. Následuje vzorový kód.
 
     ```CS

@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f1fefb863770c4b71249e924162c543cc217c9d2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cc74bfe9bf9e5f33b7cf05ebb19b44ab8b3bea43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864639"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
-Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#capacity). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
+Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
 
 Funkce Event Hubs Capture umožňuje zpracovávat v reálném čase a dávkově kanály pro stejný datový proud. To znamená, že můžete vytvářet řešení, které podle vašich potřeb v čase. Ať už vytváříte systémy batch ještě dnes s přehled směrem k budoucímu zpracování v reálném čase, nebo chcete přidat do existujícího řešení v reálném čase efektivní studené cesty, Event Hubs Capture usnadňuje práci se streamovanými daty jednodušší.
+
+> [!NOTE]
+> Funkce Event Hubs Capture v současné době podporuje pouze Gen 1 z Azure Data Lake Store, ne 2. generace. 
 
 ## <a name="how-event-hubs-capture-works"></a>Princip funkce Event Hubs Capture
 
@@ -51,7 +54,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ### <a name="scaling-to-throughput-units"></a>Škálování s jednotkami propustnosti
 
-Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-features.md#capacity). Jedna jednotka propustnosti za sekundu nebo 1000 událostí za sekundu dvakrát šířka odchozích přenosů dat a příchozího přenosu dat umožňuje 1 MB. Event Hubs úrovně standard se dá nakonfigurovat s 1 až 20 jednotek propustnosti, a můžete koupit další s kvótou zvýšit [žádost o podporu][support request]. Použití nad rámec vašeho zakoupené jednotky propustnosti se omezí. Funkce Event Hubs Capture kopíruje data přímo z interní úložiště služby Event Hubs, obejít kvóty odchozího přenosu dat jednotky propustnosti a ukládání vašich odchozího přenosu dat pro jiné čtečky zpracování, jako je například Stream Analytics nebo Spark.
+Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-features.md#throughput-units). Jedna jednotka propustnosti za sekundu nebo 1000 událostí za sekundu dvakrát šířka odchozích přenosů dat a příchozího přenosu dat umožňuje 1 MB. Event Hubs úrovně standard se dá nakonfigurovat s 1 až 20 jednotek propustnosti, a můžete koupit další s kvótou zvýšit [žádost o podporu][support request]. Použití nad rámec vašeho zakoupené jednotky propustnosti se omezí. Funkce Event Hubs Capture kopíruje data přímo z interní úložiště služby Event Hubs, obejít kvóty odchozího přenosu dat jednotky propustnosti a ukládání vašich odchozího přenosu dat pro jiné čtečky zpracování, jako je například Stream Analytics nebo Spark.
 
 Po nakonfigurování funkce Event Hubs Capture automaticky spustí, když posíláte první událost a bude nadále spuštěn. Aby bylo snazší pro příjem dat zpracování vědět, že proces funguje, Event Hubs zapíše prázdné soubory, když nejsou žádná data. Tento proces zajišťuje předvídatelný tempo a značky, který může zadat procesorů služby batch.
 

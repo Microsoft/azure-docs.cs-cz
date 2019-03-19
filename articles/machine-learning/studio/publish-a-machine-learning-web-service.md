@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e56ab4d74b54e1da8b07de6081766c8669bfb68a
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895721"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Nasazení webové služby Azure Machine Learning Studio
 
@@ -93,17 +93,17 @@ Na stránce RRS testu zobrazí globální parametry, které jste definovali pro 
 
 Pokud chcete otestovat, pomocí RRS, v režimu zobrazení seznamu, zadejte odpovídající hodnoty pro vstupy a klikněte na **testování Request-Response**. Ve sloupci výstup na levé straně se zobrazí predikované výsledky.
 
-![Nasazení webové služby](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![Zadejte odpovídající hodnoty pro testování webové služby](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 K otestování vaší BES, klikněte na tlačítko **Batch**. Na stránce testovací služby Batch v rámci váš vstup, klikněte na tlačítko Procházet a vyberte soubor CSV obsahující hodnoty odpovídající vzorku. Pokud nemáte soubor CSV a vytvoření prediktivního experimentu pomocí Machine Learning Studio, můžete stáhnout sady dat pro prediktivní experiment a používat ho.
 
 Chcete-li stáhnout sadu dat, otevřete Machine Learning Studio. Otevřete prediktivní experiment a vstup pro experimentu klikněte pravým tlačítkem myši. V místní nabídce vyberte **datovou sadu** a pak vyberte **Stáhnout**.
 
-![Nasazení webové služby](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![Stáhněte si sadu dat z plátna Studio](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 Klikněte na tlačítko **Test**. Stav vaší úlohy provedení dávky služby se zobrazí vpravo pod **Test dávkových úloh**.
 
-![Nasazení webové služby](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![Otestování úlohy provedení dávky služby na portálu webových služeb](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
@@ -161,7 +161,7 @@ Teď, když prediktivní experiment dostatečně připravený, ho můžete nasad
 
 Prediktivní experiment nasadit, klikněte na tlačítko **spustit** v dolní části experiment plátno a potom klikněte na tlačítko **nasadit webovou službu**. Webová služba je nastavena a jsou umístěny v řídicím panelu webové služby.
 
-![Nasazení webové služby](./media/publish-a-machine-learning-web-service/figure-2.png)
+![Nasazení webové služby ze sady Studio](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>Test webové služby Classic
 
@@ -181,7 +181,7 @@ Můžete zadat popis pro vstupní data, výstupních dat a webové služby param
 
 Můžete povolit protokolování diagnostikovat všechny chyby, které zobrazuje se vám při přístupu k webové službě. Další informace najdete v tématu [povolení protokolování pro webové služby Machine Learning Studio](web-services-logging.md).
 
-![Konfigurovat webovou službu](./media/publish-a-machine-learning-web-service/figure-4.png)
+![Povolit protokolování na webovém portálu služby](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 Můžete také nakonfigurovat koncové body pro webovou službu na portálu Azure Machine Learning Web Services podobný postup uvedenému výše v části nové webové služby. Možnosti se liší, můžete přidat nebo změnit popis služby, povolte protokolování a povolit ukázková data pro účely testování.
 
@@ -218,7 +218,6 @@ Jednou z možností pro aktualizaci webové služby je přeučování modelu. Da
 * Podrobnosti o tom, jak připravit nasazení modelu najdete v tématu [přípravu modelu pro nasazení v Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
 
 * Existuje několik způsobů, jak využít REST API a komunikovat s webovou službou. Zobrazit [jak využívání webové služby Azure Machine Learning Studio](consume-web-services.md).
-
 
 <!-- internal links -->
 [Vytvořit výukový experiment]: #create-a-training-experiment

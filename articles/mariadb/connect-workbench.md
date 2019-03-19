@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 121766a312db1970981b7ffb1c718f27c9f5d3d1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538739"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888225"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database pro MariaDB: Použití aplikace MySQL Workbench k připojení a dotazování dat
 
@@ -41,37 +41,37 @@ Získejte informace potřebné pro připojení k instanci Azure Database for Mar
 
 4. Na stránce **Přehled** serveru si poznamenejte hodnoty **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na této stránce také resetovat.
 
- ![Název serveru Azure Database for MariaDB a přihlašovací jméno správce serveru](./media/connect-workbench/1_server-overview-name-login.png)
+   ![Název serveru Azure Database for MariaDB a přihlašovací jméno správce serveru](./media/connect-workbench/1_server-overview-name-login.png)
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Připojení k serveru pomocí aplikace MySQL Workbench
 
 Připojení k serveru Azure Database for MariaDB pomocí aplikace MySQL Workbench:
 
-1.  Na svém počítači otevřete MySQL Workbench. 
+1. Na svém počítači otevřete MySQL Workbench. 
 
-2.  V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
+2. V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-    | Nastavení | Navrhovaná hodnota | Popis pole |
-    |---|---|---|
-    |   Název připojení | **Ukázkové připojení** | Zadejte popisek pro toto připojení. |
-    | Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
-    | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili při vytváření instance Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (\*.mariadb.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
-    | Port | **3306** | Při připojování ke službě Azure Database for MariaDB vždy používejte port 3306. |
-    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření instance Azure Database for MariaDB. Uživatelské jméno v našem příkladu je **myadmin@mydemoserver**. Pokud si přihlašovací jméno správce serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
-    | Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
+   | Nastavení | Navrhovaná hodnota | Popis pole |
+   |---|---|---|
+   |   Název připojení | **Ukázkové připojení** | Zadejte popisek pro toto připojení. |
+   | Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
+   | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili při vytváření instance Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (\*.mariadb.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
+   | Port | **3306** | Při připojování ke službě Azure Database for MariaDB vždy používejte port 3306. |
+   | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření instance Azure Database for MariaDB. Náš příklad uživatelské jméno je **myadmin\@mydemoserver**. Pokud si přihlašovací jméno správce serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
+   | Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
 
-    ![Nastavení nového připojení](./media/connect-workbench/2-setup-new-connection.png)
+   ![Nastavení nového připojení](./media/connect-workbench/2-setup-new-connection.png)
 
-3.   Pokud chcete zkontrolovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**. 
+3. Pokud chcete zkontrolovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**. 
 
-4.   Vyberte **OK** a uložte připojení. 
+4. Vyberte **OK** a uložte připojení. 
 
-5.   V části **Připojení k MySQL** vyberte dlaždici odpovídající vašemu serveru. Počkejte na navázání připojení.
+5. V části **Připojení k MySQL** vyberte dlaždici odpovídající vašemu serveru. Počkejte na navázání připojení.
 
-    Otevře se nová karta SQL s prázdným editorem, do kterého můžete zadávat dotazy.
+   Otevře se nová karta SQL s prázdným editorem, do kterého můžete zadávat dotazy.
     
-    > [!NOTE]
-    > Ve výchozím nastavení se na serveru Azure Database for MariaDB vyžaduje a vynucuje zabezpečení připojení protokolem SSL. Přestože aplikace MySQL Workbench obvykle pro připojení k serveru nevyžaduje žádnou další konfiguraci certifikátů SSL, doporučujeme vytvořit vazbu certifikace SSL CA s aplikací MySQL Workbench. Pokud potřebujete SSL zakázat, v nabídce na stránce přehledu serveru na webu Azure Portal vyberte **Zabezpečení připojení**. V části **Vynutit připojení SSL** vyberte **Zakázáno**.
+   > [!NOTE]
+   > Ve výchozím nastavení se na serveru Azure Database for MariaDB vyžaduje a vynucuje zabezpečení připojení protokolem SSL. Přestože aplikace MySQL Workbench obvykle pro připojení k serveru nevyžaduje žádnou další konfiguraci certifikátů SSL, doporučujeme vytvořit vazbu certifikace SSL CA s aplikací MySQL Workbench. Pokud potřebujete SSL zakázat, v nabídce na stránce přehledu serveru na webu Azure Portal vyberte **Zabezpečení připojení**. V části **Vynutit připojení SSL** vyberte **Zakázáno**.
 
 ## <a name="create-table-and-insert-read-update-and-delete-data"></a>Vytvoření tabulky a vložení, čtení, aktualizace a odstranění dat
 

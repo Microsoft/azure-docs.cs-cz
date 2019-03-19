@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 76c1543f5d9979d46b303f12c495dcaa403cef1d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588977"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078070"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Nastavení služby Azure NetApp Files a vytvoření svazku 
 
@@ -56,14 +56,14 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
      ![Vytvořit nový účet NetApp](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
 3. V okně Nový účet NetApp zadejte následující informace: 
-    1. Zadejte **myaccount1** pro název účtu. 
-    2. Vyberte své předplatné.
-    3. Vyberte **vytvořit nový** a vytvořte novou skupinu prostředků. Zadejte **myRG1** pro název skupiny prostředků. Klikněte na **OK**. 
-    4. Vyberte umístění vašeho účtu.  
+   1. Zadejte **myaccount1** pro název účtu. 
+   2. Vyberte své předplatné.
+   3. Vyberte **vytvořit nový** a vytvořte novou skupinu prostředků. Zadejte **myRG1** pro název skupiny prostředků. Klikněte na **OK**. 
+   4. Vyberte umístění vašeho účtu.  
 
-    ![Nové okno účtu NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Nové okno účtu NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
 
-    ![Okno skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
+      ![Okno skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
 4. Klikněte na tlačítko **vytvořit** k vytvoření nového účtu NetApp.
 
@@ -99,22 +99,22 @@ Musíte být součástí programu ve verzi Public Preview a pro přístup k posk
     ![Klikněte na tlačítko Přidat svazky](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
 
 3. V části Vytvoření svazku okna poskytují informace o svazku: 
-    1. Zadejte **myvol1** jako název svazku. 
-    2. Zadejte **myfilepath1** jako cesta k souboru, který se použije k vytvoření cesty exportu svazku.
-    3. Vyberte kapacitu fondu (**mypool1**).
-    4. Použijte výchozí hodnotu pro kvótu. 
-    5. V rámci virtuální sítě, klikněte na tlačítko **vytvořit nový** vytvořit novou virtuální síť Azure (Vnet).  Potom zadejte následující informace:
-        * Zadejte **myvnet1** jako název virtuální sítě.
-        * Zadejte adresní prostor, například 10.7.0.0/16.
-        * Zadejte **myANFsubnet** jako název podsítě.
-        * Zadejte rozsah adres podsítě, například 10.7.0.0/24.
-        * Vyberte **Microsoft.NetApp/volumes** pro delegování podsítě.
-        * Klikněte na tlačítko **OK** vytvořte síť Vnet.
-    6. V podsíti, vyberte nově vytvořenou virtuální síť (**myvnet1**) jako podsítě delegáta.
+   1. Zadejte **myvol1** jako název svazku. 
+   2. Zadejte **myfilepath1** jako cesta k souboru, který se použije k vytvoření cesty exportu svazku.
+   3. Vyberte kapacitu fondu (**mypool1**).
+   4. Použijte výchozí hodnotu pro kvótu. 
+   5. V rámci virtuální sítě, klikněte na tlačítko **vytvořit nový** vytvořit novou virtuální síť Azure (Vnet).  Potom zadejte následující informace:
+       * Zadejte **myvnet1** jako název virtuální sítě.
+       * Zadejte adresní prostor, například 10.7.0.0/16.
+       * Zadejte **myANFsubnet** jako název podsítě.
+       * Zadejte rozsah adres podsítě, například 10.7.0.0/24.
+       * Vyberte **Microsoft.NetApp/volumes** pro delegování podsítě.
+       * Klikněte na tlačítko **OK** vytvořte síť Vnet.
+   6. V podsíti, vyberte nově vytvořenou virtuální síť (**myvnet1**) jako podsítě delegáta.
 
-    ![Vytvoření svazku okna](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Vytvoření svazku okna](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
 
-    ![Vytvořit okno virtuální sítě](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Vytvořit okno virtuální sítě](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
 4. Klikněte na **Zkontrolovat a vytvořit**.
 

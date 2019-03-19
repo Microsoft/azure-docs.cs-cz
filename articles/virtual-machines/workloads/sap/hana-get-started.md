@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001699"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -49,7 +49,7 @@ Typy virtuálních počítačů Azure, které lze použít pro produkční scén
 Podrobné informace o virtuálním počítači operace a konfigurace najdete dokumentu [konfigurace infrastruktury SAP HANA a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
 Pro zajištění vysoké dostupnosti SAP HANA, naleznete v tématu [vysoké dostupnosti SAP HANA pro Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
-Pokud hledáte získejte instance SAP HANA nebo S/4HANA nebo BW/4HANA systému nasazené ve velmi rychlé uvedení, měli byste zvážit použití [SAP Cloud Appliance Library](http://cal.sap.com). Můžete najít dokumentaci k nasazení, například systém S/4HANA přes SAP CAL na Azure v [Tato příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Je všechno, co je potřeba mít předplatné Azure a SAP uživatele, který lze dokument zaregistrovat u SAP Cloud Appliance Library.
+Pokud hledáte získejte instance SAP HANA nebo S/4HANA nebo BW/4HANA systému nasazené ve velmi rychlé uvedení, měli byste zvážit použití [SAP Cloud Appliance Library](https://cal.sap.com). Můžete najít dokumentaci k nasazení, například systém S/4HANA přes SAP CAL na Azure v [Tato příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Je všechno, co je potřeba mít předplatné Azure a SAP uživatele, který lze dokument zaregistrovat u SAP Cloud Appliance Library.
 
 ## <a name="additional-resources"></a>Další materiály
 ### <a name="sap-hana-backup"></a>Zálohování SAP HANA
@@ -70,7 +70,7 @@ Informace o SAP HANA podporované operační systémy, najdete v části [SAP Su
 Další dokumentaci k SAP o SAP HANA a různých operačních systémech Linux najdete v článku:
 
 * [SAP Support Poznámka 171356 # - softwaru SAP v Linuxu:  Obecné informace](https://launchpad.support.sap.com/#/notes/1984787)
-* [Poznámka: podpora #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES pro SAP](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [Poznámka: podpora #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES pro SAP](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 * [Poznámka: podpora SAP #2205917 – databáze SAP HANA doporučené nastavení operačního systému pro SLES 12 pro aplikace SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
 * [Poznámka: podpora SAP 1984787 # - operačním systémem SUSE Linux Enterprise Server 12:  Poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
 * [Poznámka: podpora 1391070 # – Linux UUID řešení SAP](https://launchpad.support.sap.com/#/notes/1391070)
@@ -195,7 +195,7 @@ Na základě [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/d
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-V konfiguraci navrhované disku objemu dat HANA a svazek s protokolem umísťují na stejnou sadu disky Azure premium storage, které jsou rozložené s LVM nebo MDADM. Není nutné definovat všechny úrovně redundance diskového pole RAID, protože Azure Premium Storage udržuje tři imagí disků pro zajištění redundance. Pokud chcete mít jistotu, že nakonfigurujete dostatečně velké úložiště, najdete [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) a [Průvodce instalací serveru SAP HANA a aktualizací](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Zvažte také jiný virtuální pevný disk (VHD) propustnost objem disky různých Azure premium storage, jak je uvedeno v [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](../../windows/disks-types.md). 
+V konfiguraci navrhované disku objemu dat HANA a svazek s protokolem umísťují na stejnou sadu disky Azure premium storage, které jsou rozložené s LVM nebo MDADM. Není nutné definovat všechny úrovně redundance diskového pole RAID, protože Azure Premium Storage udržuje tři imagí disků pro zajištění redundance. Pokud chcete mít jistotu, že nakonfigurujete dostatečně velké úložiště, najdete [požadavky na úložiště pro SAP HANA TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) a [Průvodce instalací serveru SAP HANA a aktualizací](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Zvažte také jiný virtuální pevný disk (VHD) propustnost objem disky různých Azure premium storage, jak je uvedeno v [vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače](../../windows/disks-types.md). 
 
 Můžete přidat další disky storage úrovně premium pro virtuální počítače HANA DBMS pro ukládání záloh databáze nebo transakčního protokolu.
 
@@ -251,7 +251,7 @@ Není nutné strukturovat vaše systémy souborů tímto způsobem. Máte dalš�
 
 Během instalace databáze týkající se virtuální počítač SAP HANA DB, při použití SAPinst (SWPM) a **typické** možnost instalace, všechno, co je nainstalované v /hana a /usr/sap. Výchozím umístěním pro zálohu protokolu SAP HANA je pod /usr/sap. Znovu protože je důležité, chcete-li zabránit nedostatku místa v úložišti kořenové systému souborů, ujistěte se, že není dostatek volného místa v rámci /hana a /usr/sap před instalací SAP HANA s využitím SWPM.
 
-Popis rozložení standardní systém souborů systému SAP HANA, najdete v článku [Průvodce instalací serveru SAP HANA a aktualizací](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
+Popis rozložení standardní systém souborů systému SAP HANA, najdete v článku [Průvodce instalací serveru SAP HANA a aktualizací](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
 
 ![Další souborové systémy vytvořené na aplikační server SAP virtuálního počítače](./media/hana-get-started/image009.jpg)
 
@@ -403,7 +403,7 @@ Další informace o nástroji pro HANA HDBLCM najdete v tématu:
 
 * [Výběr HDBLCM správné SAP HANA pro úkol](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)
 * [Nástroje pro správu životního cyklu SAP HANA](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)
-* [Průvodce instalací serveru SAP HANA a aktualizací](http://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
+* [Průvodce instalací serveru SAP HANA a aktualizací](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
 
 Pokud chcete zabránit potížím s výchozí nastavení ID skupiny pro `\<HANA SID\>adm user` (vytvořené nástrojem HDBLCM), definovat novou skupinu s názvem `sapsys` s použitím ID skupiny `1001` před instalací SAP HANA přes HDBLCM:
 

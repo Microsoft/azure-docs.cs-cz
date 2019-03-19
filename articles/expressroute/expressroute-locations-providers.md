@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: pareshmu
-ms.openlocfilehash: 92cb69ba6d1ee34160cf2015fdf8083c8d37327b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 54fb871f653e74606d54f98c9ca695c33b7b5f37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849138"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -50,11 +50,8 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Indie** | 2 |Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | 2 |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
 | **Jižní Korea** | 2 |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
-| **Jižní Afrika** | 3 |[Jižní Afrika – západ+, Jižní Afrika – sever+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapské město, Johannesburg |
+| **Jižní Afrika** | 3 |Jihoafrická republika – Západ, Jihoafrická republika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | 3 |Brazílie – jih |Sao Paulo |
-
- **+** označuje brzké uvedení.
-
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
@@ -160,7 +157,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 
 * Zkontrolujte u svého poskytovatele připojení, jestli je připojený k některé z výměn v předchozí tabulce. Můžete zkontrolovat následující odkazy, abyste získali další informace o službách nabízených poskytovateli výměny. Několik poskytovatelů připojení je už připojeno k ethernetovým výměnám.
   * [Cologix](https://www.cologix.com/)
-  * [CoreSite](http://www.coresite.com/)
+  * [CoreSite](https://www.coresite.com/)
   * [Equinix Cloud Exchange](https://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
   * [InterXion](https://www.interxion.com/)
   * [NextDC](https://www.nextdc.com/)

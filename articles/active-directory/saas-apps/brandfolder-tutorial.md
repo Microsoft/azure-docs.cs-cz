@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df015465322c39d6e319390c2cf98a9c76e10da
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 675ce4f9b6b34f98c81ad85f03a7c7cb178f1d6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>Kurz: Integrace Azure Active Directory s Brandfolder
 
@@ -140,7 +140,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

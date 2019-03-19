@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842562"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -42,7 +42,7 @@ Zápis JSON (JavaScript Object) a specifikace jazyka JavaScript objekt podepisov
 -   [Webového klíče JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [Šifrování webové JSON (pomocí JWE.)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON Web podpis (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON Web podpis (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Typy dat
 
@@ -112,7 +112,7 @@ Kryptografických modulů, které používá služby Key Vault, zda HSM nebo sof
 #### <a name="curve-types"></a>Typy křivky
 
 -   **P-256** – The NIST křivky p-256, definované v [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** – The s křivky SECP256K1 definované na [s 2: Doporučené parametry domény eliptické křivky](http://www.secg.org/sec2-v2.pdf).
+-   **P-256_K** – The s křivky SECP256K1 definované na [s 2: Doporučené parametry domény eliptické křivky](https://www.secg.org/sec2-v2.pdf).
 -   **P-384** – The NIST křivky p-384 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521** – The NIST křivky p-521 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -409,10 +409,10 @@ Kontakty certifikátu obsahovat kontaktní informace k zasílání oznámení ak
 
 Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oznámení o následujících událostech.  
 
--   Před obnovením certifikátu
--   Po obnovení certifikátu, s informacemi o tom, pokud byl úspěšně obnovený certifikát, nebo pokud došlo k chybě, které vyžadují ruční prodloužení platnosti certifikátu.  
+- Před obnovením certifikátu
+- Po obnovení certifikátu, s informacemi o tom, pokud byl úspěšně obnovený certifikát, nebo pokud došlo k chybě, které vyžadují ruční prodloužení platnosti certifikátu.  
 
- Když se zásady certifikátu, který je nastaven na ručně obnovit (pouze pro e-mailu), jsou oznámení odesílána až nastane čas na obnovení certifikátu.  
+  Když se zásady certifikátu, který je nastaven na ručně obnovit (pouze pro e-mailu), jsou oznámení odesílána až nastane čas na obnovení certifikátu.  
 
 ### <a name="certificate-access-control"></a>Řízení přístupu na certifikát
 

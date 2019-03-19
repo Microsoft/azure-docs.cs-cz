@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/14/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1c21cc778ed398c28077ef1a20ebbb7b295c2baa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012398"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Důležité informace o integraci Datacenter pro integrované systémy Azure Stack
 Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
@@ -162,7 +162,7 @@ Následující tabulka shrnuje seznam aktuálně dostupných možností.
 | Oblast | Externí řešení monitorování |
 | -- | -- |
 | Azure Stack software | [Azure Stack sady Management Pack pro nástroj Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Modul plug-in Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Volání rozhraní API založených na REST | 
-| Fyzické servery (pro správu základní desky přes rozhraní IPMI) | Výrobce OEM hardware - sady management pack Operations Manageru dodavatele<br>Výrobce OEM hardwaru poskytnutých dodavatelem řešení<br>Dodavatel hardwaru Nagios moduly plug-in | Výrobce OEM partnera podporováno monitorování řešení (zahrnout) | 
+| Fyzické servery (pro správu základní desky přes rozhraní IPMI) | Výrobce OEM hardware - sady management pack Operations Manageru dodavatele<br>Výrobce OEM hardwaru poskytnutých dodavatelem řešení<br>Dodavatel hardwaru Nagios moduly plug-in.<br>Výrobce OEM partnera podporováno monitorování řešení (zahrnout) | 
 | Síťová zařízení (SNMP) | Zjišťování síťových zařízení pomocí Operations Manageru<br>Výrobce OEM hardwaru poskytnutých dodavatelem řešení<br>Přepnout modul plug-in Nagios |
 | Monitorování stavu předplatného tenanta | [System Center Management Pack pro Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 

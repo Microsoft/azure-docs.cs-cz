@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 02c05bc7d8488a5fd4d0698f13a1ba354dbbb0e8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ac1384827ceede0f66fd08c6c08fa8e934b1ae42
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076152"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuální rozbočovač řídit provoz do síťového virtuálního zařízení
 
@@ -49,37 +49,37 @@ Ujistěte se, že jste si nainstalovali nejnovější verzi rutin Powershellu pr
 
 1. Otevřete konzolu Powershellu se zvýšenými oprávněními a přihlaste se ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů přihlásit. Po přihlášení se stáhne nastavení účtu, aby byly k dispozici pro prostředí Azure PowerShell.
 
-  ```powershell
-  Connect-AzAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 2. Načtěte seznam předplatných Azure.
 
-  ```powershell
-  Get-AzSubscription
-  ```
+   ```powershell
+   Get-AzSubscription
+   ```
 3. Určete předplatné, které chcete použít.
 
-  ```powershell
-  Select-AzSubscription -SubscriptionName "Name of subscription"
-  ```
+   ```powershell
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```
 
 ## <a name="rg"></a>2. Vytvoření prostředků
 
 1. Vytvořte skupinu prostředků.
 
-  ```powershell
-  New-AzResourceGroup -Location "West US" -Name "testRG"
-  ```
+   ```powershell
+   New-AzResourceGroup -Location "West US" -Name "testRG"
+   ```
 2. Vytvořte virtuální síť WAN.
 
-  ```powershell
-  $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-  ```
+   ```powershell
+   $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+   ```
 3. Vytvořte virtuální rozbočovač.
 
-  ```powershell
-  New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
-  ```
+   ```powershell
+   New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+   ```
 
 ## <a name="connections"></a>3. Vytvoření připojení
 

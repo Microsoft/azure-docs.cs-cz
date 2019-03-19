@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113596"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093765"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Kurz: Nainstalovat Azure Data Box Edge (preview)
 
@@ -94,15 +94,15 @@ Zařízení musí být nainstalován na standardní 19 palec stojanu. Pomocí n�
     ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. Nainstalujte vnější rails CAB svislé členy stojanu. Abyste při orientaci, jsou označeny snímky lišty **Front**, a proto je směrem dopředu skříň.    
-    1. Vyhledejte čepy v přední a zadní části montážní lišty. Roztáhněte kolejnici tak, aby se vešla mezi sloupky racku. Nejprve připevněte vnější kolejnici do zadní části racku. Upravte zadní připojení závorky umístěte do zadní děr montáže do racku.   
+   1. Vyhledejte čepy v přední a zadní části montážní lišty. Roztáhněte kolejnici tak, aby se vešla mezi sloupky racku. Nejprve připevněte vnější kolejnici do zadní části racku. Upravte zadní připojení závorky umístěte do zadní děr montáže do racku.   
 
-    2. Stlačte a přidržte západku na zadním držáku, aby se odhalily kovové háčky. Zarovnat a vložit zpět závorky do otvorů připojení a uvolněte aktivační událost.
+   2. Stlačte a přidržte západku na zadním držáku, aby se odhalily kovové háčky. Zarovnat a vložit zpět závorky do otvorů připojení a uvolněte aktivační událost.
 
-    3. Zarovnejte přední držák s montážním otvorem.
+   3. Zarovnejte přední držák s montážním otvorem.
 
-    4. Přední závorky by měl nyní pevného v racku. Volitelně můžete M5 X 10L šrouby slouží k zabezpečení rails s příspěvky v případě potřeby. 
+   4. Přední závorky by měl nyní pevného v racku. Volitelně můžete M5 X 10L šrouby slouží k zabezpečení rails s příspěvky v případě potřeby. 
 
-    ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. Připojit vnitřní lišty ve skříni, ujistěte se, že klíčové dírky otvory na vnitřní lišty jsou v souladu s vyhledáním PIN kódy Toolbar skříni. Zkontrolujte, že hlavičky pomocných čepů na skříni procházejí otvory ve vnitřní kolejnici. Vytáhněte kolejnici směrem dopředu skříně, dokud kolejnice se slyšitelným cvaknutím nezapadne na místo. To samé zopakujte i s druhou vnitřní kolejnicí. Dokončete instalaci do racku tím, že zasunete skříň s vnitřní kolejnicí do vodicí lišty.
 

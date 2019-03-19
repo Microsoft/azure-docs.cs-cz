@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768908"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105280"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -289,13 +289,13 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 > [!IMPORTANT]
 >  Všimněte si, že ve výchozím nastavení, když se dostanete zprávu textu pomocí `context.Request.Body` nebo `context.Response.Body`, původní text zprávy je ztracené a musí být nastavena tak, že vrací text zpět ve výrazu. Chcete-li zachovat obsah textu, nastavte `preserveContent` parametr `true` při přístupu ke zprávě. Pokud `preserveContent` je nastavena na `true` a jiný subjekt se vracenému výrazem, používají vráceného text.
->
+> 
 >  Mějte prosím na paměti následující aspekty při používání `set-body` zásad.
->
->  -   Pokud používáte `set-body` zásady vrácení nové nebo aktualizované text není nutné nastavit `preserveContent` k `true` vzhledem k tomu, že jsou explicitně poskytuje nový obsah.
-> -   Zachování obsahu odpovědi v příchozí kanál nemá smysl, protože nepřijde žádná odpověď ještě.
-> -   Zachování obsahu požadavku na výstupní kanál nemá smysl, protože žádost již byl odeslán do back-endu v tomto okamžiku.
-> -   Pokud tato zásada se používá, pokud neexistuje žádný text zprávy, třeba v příchozí GET, je vyvolána výjimka.
+> 
+> - Pokud používáte `set-body` zásady vrácení nové nebo aktualizované text není nutné nastavit `preserveContent` k `true` vzhledem k tomu, že jsou explicitně poskytuje nový obsah.
+>   -   Zachování obsahu odpovědi v příchozí kanál nemá smysl, protože nepřijde žádná odpověď ještě.
+>   -   Zachování obsahu požadavku na výstupní kanál nemá smysl, protože žádost již byl odeslán do back-endu v tomto okamžiku.
+>   -   Pokud tato zásada se používá, pokud neexistuje žádný text zprávy, třeba v příchozí GET, je vyvolána výjimka.
 
  Další informace najdete v tématu `context.Request.Body`, `context.Response.Body`a `IMessage` oddíly v [kontextovou proměnnou](api-management-policy-expressions.md#ContextVariables) tabulky.
 
@@ -586,11 +586,11 @@ OriginalUrl.
 ##  <a name="RewriteURL"></a> Přepisování adres URL
  `rewrite-uri` Zásad převede adrese URL žádosti z jeho veřejné formuláře do formuláře, byl očekáván webová služba, jak je znázorněno v následujícím příkladu.
 
--   Veřejná adresa URL – `http://api.example.com/storenumber/ordernumber`
+- Veřejná adresa URL – `http://api.example.com/storenumber/ordernumber`
 
--   Adresa URL požadavku – `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- Adresa URL požadavku – `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
- Tuto zásadu lze použít, když lidské a/nebo prohlížeč přívětivá adresy URL by měla transformuje na formát adresy URL byl očekáván webová služba. Tyto zásady se použijí při zpřístupňování alternativní formátu adresy URL, například čisté adresy URL, rozhraní RESTful adresy URL, srozumitelné adresy URL optimalizace pro vyhledávací weby přátelské adresy URL, které jsou čistě strukturální adresy URL, které nebude obsahovat řetězec dotazu a místo toho obsahují pouze cestu k prostředku (pouze musí Po schéma a autoritu). To se často provádí aesthetic, použitelnost nebo vyhledávacího webu účelem optimalizace (vyhledávací weby SEO).
+  Tuto zásadu lze použít, když lidské a/nebo prohlížeč přívětivá adresy URL by měla transformuje na formát adresy URL byl očekáván webová služba. Tyto zásady se použijí při zpřístupňování alternativní formátu adresy URL, například čisté adresy URL, rozhraní RESTful adresy URL, srozumitelné adresy URL optimalizace pro vyhledávací weby přátelské adresy URL, které jsou čistě strukturální adresy URL, které nebude obsahovat řetězec dotazu a místo toho obsahují pouze cestu k prostředku (pouze musí Po schéma a autoritu). To se často provádí aesthetic, použitelnost nebo vyhledávacího webu účelem optimalizace (vyhledávací weby SEO).
 
 > [!NOTE]
 >  Pouze můžete přidat parametry řetězce dotazu, která zásadu používá. Přepisování adres URL nelze přidat parametry cesty další šablony.

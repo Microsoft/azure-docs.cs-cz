@@ -8,53 +8,67 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/22/2017
+ms.date: 03/14/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f0ac5ee77bf4a479e48bbe048d2a558d78b18fe3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136406"
 ---
-# <a name="create-an-azure-search-index-using-the-net-sdk"></a>Vytvoření indexu Azure Search pomocí sady .NET SDK
+# <a name="quickstart-create-load-and-query-an-azure-search-index-using-the-net-sdk"></a>Rychlý start: Vytvoření, načtení a dotazování indexu Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]
-> * [Přehled](search-what-is-an-index.md)
+> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [Postman (REST)](search-fiddler.md)
 > * [Azure Portal](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
 > 
 
-Tento článek vás provede procesem vytvoření [indexu](https://docs.microsoft.com/rest/api/searchservice/Create-Index) Azure Search pomocí sady [Azure Search .NET SDK](https://aka.ms/search-sdk).
-
-Předtím, než podle těchto pokynů vytvoříte index, byste už měli mít [vytvořenou službu Azure Search](search-create-service-portal.md).
+Tento článek vás provede procesem vytvoření, načtení a dotazování Azure Search [index](search-what-is-an-index.md) pomocí [Azure Search .NET SDK](https://aka.ms/search-sdk).
 
 > [!NOTE]
 > Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
 
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
-Teď, když máte zřízenou službu Azure Search, jste skoro připraveni vydávat žádosti na koncový bod služby pomocí sady .NET SDK. Nejprve budete muset získat jeden z klíčů správce (api-key) vytvořených pro vyhledávací službu, kterou jste zřídili. .NET SDK bude tento klíč api-key odesílat v každém požadavku na vaši službu. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
++ [Vytvoření služby Azure Search](search-create-service-portal.md). Můžete použít bezplatnou službou pro tento rychlý start.
 
-1. Pokud chcete najít klíče api-key svojí služby, přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte do okna služby Azure Search.
-3. Klikněte na ikonu klíčů.
++ [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
 
-Vaše služba bude mít *klíče správce* a *klíče dotazů*.
++ Koncový bod adresy URL a správce klíč rozhraní api služby Search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-* Primární a sekundární *klíče správce* udělují úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat. Existují dva klíče, takže pokud se rozhodnete znovu vygenerovat primární klíč, můžete dál používat sekundární klíč, a naopak.
-* Vaše *klíče dotazů* udělují přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.
+    1. Na webu Azure Portal [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
 
-Pro účely vytvoření indexu můžete použít primární nebo sekundární klíč správce.
+    2. V **přehled**, získat adresu URL. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
+
+    3. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. Na vaši žádost můžete použít buď primárním nebo sekundárním klíčem.
+
+    ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+
+    Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+
+## <a name="1---create-a-new-project"></a>1 – Vytvoření nového projektu
+
+V sadě Visual Studio vytvořte nový vizuál C# projektu. Správné šablony pro tento rychlý start je vizuál C# > Začínáme > webové aplikace. Tato šablona vám soubor appsettings.json.  
+
+V souboru appsettings.json, nahraďte výchozí obsah níže uvedený příklad a potom zadejte název služby a správu rozhraní api-key pro vaši službu. Pro název služby stačí samotný název. Například, pokud je vaše adresa URL https://mydemo.search.windows.net, přidejte `mydemo` do souboru JSON.
+
+
+```json
+{
+    "SearchServiceName": "Put your search service name here",
+    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+}
+```
 
 <a name="CreateSearchServiceClient"></a>
 
-## <a name="create-an-instance-of-the-searchserviceclient-class"></a>Vytvoření instance třídy SearchServiceClient
+## <a name="2---create-an-instance-of-the-searchserviceclient-class"></a>2. vytvoření instance třídy SearchServiceClient
 Chcete-li začít používat sadu Azure Search .NET SDK, budete muset vytvořit instanci třídy `SearchServiceClient`. Tato třída obsahuje několik konstruktorů. Ten, který chcete, přijímá jako parametry název vaší vyhledávací služby a objekt `SearchCredentials`. `SearchCredentials` zabalí váš klíč api-key.
 
-Následující kód vytvoří novou instanci `SearchServiceClient` pomocí hodnot pro název vyhledávací služby a klíč api-key, které jsou uložené v konfiguračním souboru aplikace (v případě [ukázkové aplikace](https://aka.ms/search-dotnet-howto) `appsettings.json`):
+Do souboru Program.js zkopírujte následující kód. Následující kód vytvoří novou `SearchServiceClient` pomocí hodnot pro název vyhledávací služby a klíč api-key, které jsou uložené v konfiguračním souboru aplikace (appsettings.json).
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -76,10 +90,11 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 <a name="DefineIndex"></a>
 
-## <a name="define-your-azure-search-index"></a>Definování indexu Azure Search
+## <a name="3---define-an-index-schema"></a>3 - definování schématu indexu
 Jediné volání metody `Indexes.Create` vytvoří váš index. Tato metoda přebírá jako parametr objekt `Index`, který definuje index Azure Search. Je nutné vytvořit objekt `Index` a provést jeho inicializaci následujícím způsobem:
 
 1. Nastavte vlastnost `Name` objektu `Index` na název indexu.
+
 2. Nastavte vlastnost `Fields` objektu `Index` na pole objektů `Field`. Nejjednodušším způsobem vytvoření objektů `Field` je zavolání metody `FieldBuilder.BuildForType` a předání třídy modelu pro příslušný parametr typu. Třída modelu obsahuje vlastnosti, které se mapují na pole vašeho indexu. Díky tomu můžete vytvořit vazbu mezi dokumenty z indexu Search a instancemi třídy modelu.
 
 > [!NOTE]
@@ -166,7 +181,7 @@ var definition = new Index()
 };
 ```
 
-## <a name="create-the-index"></a>Vytvoření indexu
+## <a name="4---create-the-index-on-the-service"></a>4 – vytvoření indexu ve službě
 Nyní, když jste inicializovali objekt `Index`, můžete vytvořit index jednoduchým voláním metody `Indexes.Create` pro objekt `SearchServiceClient`:
 
 ```csharp
@@ -185,6 +200,7 @@ serviceClient.Indexes.Delete("hotels");
 > Příklad kódu v tomto článku používá pro jednoduchost synchronní metody sady Azure Search .NET SDK. Doporučujeme ve vlastních aplikacích použít asynchronní metody, aby aplikace byly škálovatelné a dobře reagovaly. Například ve výše uvedených příkladech můžete použít `CreateAsync` a `DeleteAsync` namísto `Create` a `Delete`.
 > 
 > 
+
 
 ## <a name="next-steps"></a>Další postup
 Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.

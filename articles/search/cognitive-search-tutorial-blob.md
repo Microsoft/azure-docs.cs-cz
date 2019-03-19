@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fe0fc5aa6bdb217a5e7a8ecb8b1898fd8d3ecf8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075846"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Zjistěte, jak volat kognitivních hledání rozhraní API (Preview)
 
@@ -59,7 +59,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto kurzu. To usnadní čištění prostředků, až kurz dokončíte.
 
-1. Pro umístění, zvolte jednu z [podporované oblasti](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions) pro Kognitivního vyhledávání.
+1. Pro umístění doporučujeme zvolíte oblast, která se nachází blízko vašich dat a další cloudové aplikace.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 
@@ -89,7 +89,7 @@ Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová d
 
 1. Až se ukázkové soubory nahrají, získejte název kontejneru a připojovací řetězec vaší služby Blob Storage. Najdete je, když přejdete na účet úložiště na portálu Azure Portal. V části **Přístupové klíče** zkopírujte pole **Připojovací řetězec**.
 
-  Připojovací řetězec by měl být adresa URL, která vypadá nějak takto:
+   Připojovací řetězec by měl být adresa URL, která vypadá nějak takto:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
@@ -256,7 +256,7 @@ V tomto oddílu definujete schéma indexu, a to tak, že zadáte, která pole se
 
 V tomto cvičení použijeme následující pole a jejich typy:
 
-| Názvy polí: | id       | content   | languageCode | keyPhrases         | organizations     |
+| Názvy polí: | `id`       | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -443,7 +443,7 @@ Content-Type: application/json
 
 Tento postup opakujte pro další pole v tomto cvičení: content, language, keyphrases a organizations. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
 
-V závislosti na složitosti a délce řetězce dotazu můžete použít operace GET nebo POST. Další informace najdete v článku o [dotazování pomocí rozhraní REST API](https://docs.microsoft.com/azure/search/search-query-rest-api).
+V závislosti na složitosti a délce řetězce dotazu můžete použít operace GET nebo POST. Další informace najdete v článku o [dotazování pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="access-enriched-document"></a>
 

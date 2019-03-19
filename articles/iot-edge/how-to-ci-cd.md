@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896224"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
@@ -47,7 +47,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
 >
 >Další informace najdete v tématu [vytvoření kanálu sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Přihlaste se k vaší organizaci Azure DevOps ( **https://dev.azure.com/{your organizace} /**) a otevřete projekt, který obsahuje vaše úložiště řešení IoT Edge.
+1. Přihlaste se k vaší organizaci Azure DevOps (**https:\//dev.azure.com/{your organizace} /**) a otevřete projekt, který obsahuje vaše úložiště řešení IoT Edge.
 
    Pro účely tohoto článku jsme vytvořili úložiště volána **IoTEdgeRepo**. Daného úložiště obsahuje **IoTEdgeSolution** který má kód pro modul s názvem **filtermodule**. 
 
@@ -69,13 +69,13 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
 
 4. Po vytvoření kanálu, budete přesměrováni na editor kanálu. V popisu kanálu zvolte fond správnými založené na cílové platformě: 
     
-    * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Linuxu, zvolte **hostované 1604 Ubuntu**
+   * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Linuxu, zvolte **hostované 1604 Ubuntu**
 
-    * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Windows 1809, budete muset [nastavte v místním prostředí agenta na Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Pokud chcete vytvářet moduly v amd64 platformu pro kontejnery Windows 1809, budete muset [nastavte v místním prostředí agenta na Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-    * Pokud chcete vytvářet moduly v arm32v7 platformu pro kontejnery Linuxu, budete muset [nastavení agenta v místním prostředí v Linuxu](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
+   * Pokud chcete vytvářet moduly v arm32v7 platformu pro kontejnery Linuxu, budete muset [nastavení agenta v místním prostředí v Linuxu](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-    ![Konfigurace fondu agentů sestavení](./media/how-to-ci-cd/configure-env.png)
+     ![Konfigurace fondu agentů sestavení](./media/how-to-ci-cd/configure-env.png)
 
 5. Kanál je součástí předkonfigurovaného úlohu s názvem **úlohu agenta 1**. Vyberte znaménko plus (**+**) přidáte tři úkoly do úlohy: **Azure IoT Edge** dvakrát a **publikujte artefakty sestavení** po. (Při najetí myší na název každé úlohy zobrazíte **přidat** tlačítko.)
 
@@ -158,11 +158,11 @@ Vytvoření nového kanálu a konfigurace první fáze pro zajištění kvality 
 
 10. Vyberte novou úlohu Azure IoT Edge a nakonfigurujte následující hodnoty:
 
-   * **Zobrazovaný název**: Zobrazovaný název se aktualizuje automaticky při změně pole akce. 
-   * **Akce**: Pomocí rozevíracího seznamu vyberte **nasadit do zařízení IoT Edge**. Změna hodnoty akce rovněž aktualizuje tak, aby odpovídaly zobrazovaný název úlohy.
-   * **Předplatné Azure**: Vyberte předplatné, které obsahuje váš IoT Hub.
-   * **Název centra IoT**: Vyberte své Centrum IoT. 
-   * **Vyberte jeden nebo několik zařízení**: Vyberte, zda má kanál pro vydávání verzí pro nasazení na jeden nebo více zařízení. 
+    * **Zobrazovaný název**: Zobrazovaný název se aktualizuje automaticky při změně pole akce. 
+    * **Akce**: Pomocí rozevíracího seznamu vyberte **nasadit do zařízení IoT Edge**. Změna hodnoty akce rovněž aktualizuje tak, aby odpovídaly zobrazovaný název úlohy.
+    * **Předplatné Azure**: Vyberte předplatné, které obsahuje váš IoT Hub.
+    * **Název centra IoT**: Vyberte své Centrum IoT. 
+    * **Vyberte jeden nebo několik zařízení**: Vyberte, zda má kanál pro vydávání verzí pro nasazení na jeden nebo více zařízení. 
       * Pokud provádíte nasazení na jedno zařízení, zadejte **ID zařízení IoT Edge**. 
       * Pokud provádíte nasazení na více zařízeních, zadejte zařízení **cílová podmínka**. Cílová podmínka se filtr tak, aby odpovídaly sadu hraničních zařízení ve službě IoT Hub. Pokud chcete použít značky zařízení jako podmínka, musíte aktualizovat dvojče zařízení služby IoT Hub zařízení odpovídající značky. Aktualizace **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v upřesňujících nastaveních. Další informace o vytváření nasazení pro různá zařízení, najdete v části [vysvětlení nasazení IoT Edge automatické](module-deployment-monitoring.md).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6551eab45fdfb5070b29de4152cf2b3e3d008f69
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0138ea8dcbd780ca8aa87178dad41bdca1a72267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082656"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900654"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Vytvoření Dynamics 365 Customer Engagement aplikace nabídky
 
@@ -28,7 +28,7 @@ Tato část popisuje, jak vytvářet a publikovat Dynamics 365 Customer Engageme
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **Dynamics 365 for Customer Engagement**:
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **Dynamics 365 for Customer Engagement**:
 
 ![Nová položka nabídky nabídky pro Dynamics 365 Customer Engagement aplikace](./media/new-dyn365ce-menu-item.png)
 

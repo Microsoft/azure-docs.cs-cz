@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080433"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
 
@@ -43,16 +43,16 @@ Několik běžných důvodů, proč se nemusí zobrazovat data v [Průzkumníka 
 
 - Klíč zdroje událostí chybí požadované oprávnění.
 
-    * Pro službu IoT hub, je potřeba zadat klíč, který má **služba připojit** oprávnění.
+  * Pro službu IoT hub, je potřeba zadat klíč, který má **služba připojit** oprávnění.
 
     ![Konfigurace][3]
 
-    * Jak je znázorněno na předchozím obrázku, obě zásady **iothubowner** a **služby** fungovat, protože mají **služba připojit** oprávnění.
-    * Pro Centrum událostí, je potřeba zadat klíč, který má **naslouchání** oprávnění.
+  * Jak je znázorněno na předchozím obrázku, obě zásady **iothubowner** a **služby** fungovat, protože mají **služba připojit** oprávnění.
+  * Pro Centrum událostí, je potřeba zadat klíč, který má **naslouchání** oprávnění.
   
     ![Oprávnění][4]
 
-    * Jak je znázorněno na předchozím obrázku, obě **čtení** a **spravovat** zásady fungují, protože mají **naslouchání** oprávnění.
+  * Jak je znázorněno na předchozím obrázku, obě **čtení** a **spravovat** zásady fungují, protože mají **naslouchání** oprávnění.
 
 - Vaše skupina uživatelů, které jsou k dispozici není výhradně pro Time Series Insights.
 

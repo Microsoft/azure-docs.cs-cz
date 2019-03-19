@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c51804748e4313d79cc3a369b659974d2d32e2e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163850"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložiště dat rozhraní ODBC pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-odbc-connector.md)
 > * [Aktuální verze](connector-odbc.md)
 
@@ -51,7 +51,7 @@ Pro rozhraní ODBC propojené služby jsou podporovány následující vlastnost
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Rozhraní ODBC** | Ano |
+| type | Vlastnost type musí být nastavená na: **Odbc** | Ano |
 | připojovací řetězec | Připojovací řetězec, s výjimkou části přihlašovací údaje. Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači modul Runtime integrace s `"DSN=<name of the DSN on IR machine>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem).<br>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).| Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC.<br/>Povolené hodnoty jsou: **Základní** a **anonymní**. | Ano |
 | uživatelské jméno | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
@@ -240,7 +240,7 @@ Nastavte modul Integration Runtime na počítači s přístupem s vaším úlož
 
 Než použijete zdroji Informix v řešení Data Factory, ověřte, zda prostředí Integration Runtime může připojit k úložišti dat podle pokynů v [řešit problémy s připojením](#troubleshoot-connectivity-issues) oddílu.
 
-Vytvoření služby propojené ODBC můžete propojit úložiště dat IBM Informix do služby Azure data factory, jak je znázorněno v následujícím příkladu:
+Vytvoření služby ODBC propojené propojení nebo IBM Informix úložiště dat do služby Azure data factory, jak je znázorněno v následujícím příkladu:
 
 ```json
 {

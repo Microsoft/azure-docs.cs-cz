@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316519"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884519"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
 
 Databáze s více modely umožňují snadno ukládat a pracovat s daty v několika datových formátů, jako jsou relační data, grafy, JSON a XML dokumenty, páry klíč hodnota atd.
 
-Azure SQL Database je navržen pro práci s relačními model, který poskytuje nejlepší výkon ve většině případů pro širokou škálu aplikací pro obecné účely. Však není omezen na relační data pouze Azure SQL Database. Azure SQL Database umožňuje používat různé nerelačních formáty, které jsou úzce integrovány do relačního modelu. Azure SQL poskytuje následující funkce pro více modelů:
+## <a name="when-to-use-multi-model-capabilities"></a>Kdy použít možnosti pro více modelů
+
+Azure SQL Database je navržen pro práci s relačními model, který poskytuje nejlepší výkon ve většině případů pro širokou škálu aplikací pro obecné účely. Však není omezen na relační data pouze Azure SQL Database. Azure SQL Database umožňuje používat různé nerelačních formáty, které jsou úzce integrovány do relačního modelu.
+Měli byste zvážit použití více modelů možnosti služby Azure SQL Database v následujících případech:
+- Máte nějaké informace nebo struktury, které jsou lépe vyhovovaly pro modely NoSQL a vy nechcete použít samostatné databáze NoSQL.
+- Většina vašich dat je vhodné pro relační model a budete muset model některé části svoje data stylově NoSQL.
+- Budete chtít využívat bohaté možnosti jazyka Transact-SQL k dotazování a analýze relační a dat NoSQL a integraci s celou řadu nástrojů a jejich, můžete použít jazyk SQL.
+- Chcete použít databázové funkce, jako [v začleňování paměťových technologií](sql-database-in-memory.md) zvýšit výkon vašeho analytického nebo zpracování vašich strucutres data NoSQL použijte [transakční replikace](sql-database-managed-instance-transactional-replication.md) nebo [replik pro čtení připravených](sql-database-read-scale-out.md) k vytvoření kopie vašich dat na jiném místě a snižování zátěže některé analytické úlohy z primární databáze.
+
+## <a name="overview"></a>Přehled
+
+Azure SQL poskytuje následující funkce pro více modelů:
 - [Funkce rozhraní Graph](#graph-features) umožňují reprezentaci dat jako sada uzlů a hran a použijte standardní dotazy Transact-SQL, vylepšené o grafu `MATCH` operátor k dotazování dat grafu.
 - [Funkce JSON](#json-features) umožňují dokumenty JSON uložte do tabulky, transformace relačních dat na dokumenty JSON a naopak. Můžete použít standardní jazyk Transact-SQL, rozšířeného s funkcemi JSON k analýze dokumentů a optimalizaci dotazů pomocí jiné Clusterované indexy, indexy columnstore nebo paměťově optimalizovaných tabulkách.
 - [Prostorové funkce](#spatial-features) umožňuje ukládat data zeměpisné a geometrické, je pomocí prostorové indexy indexu a načtení dat pomocí prostorových dotazů.
@@ -56,7 +67,7 @@ Nic, které můžete dosáhnout databázi grafu, který není možné dosáhnout
 
 ## <a name="json-features"></a>Funkce JSON
 
-Azure SQL Database umožňuje analyzovat a dotazování dat v jazyce JavaScript Object Notation [(JSON)](http://www.json.org/) formátování a exportovat relačních dat jako JSON text.
+Azure SQL Database umožňuje analyzovat a dotazování dat v jazyce JavaScript Object Notation [(JSON)](https://www.json.org/) formátování a exportovat relačních dat jako JSON text.
 
 JSON je oblíbenými datovými formát používaný pro výměnu dat v moderních webových a mobilních aplikací. JSON se také používá pro ukládání částečně strukturovaných dat v souborech protokolů nebo databáze NoSQL jako [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Mnoho webových služeb REST vráceny výsledky formátovat jako JSON text nebo přijímat data naformátovaná jako JSON. Většina Azure services, jako [Azure Search](https://azure.microsoft.com/services/search/), [služby Azure Storage](https://azure.microsoft.com/services/storage/), a [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) mít koncové body REST, které vrátí nebo využívají JSON.
 

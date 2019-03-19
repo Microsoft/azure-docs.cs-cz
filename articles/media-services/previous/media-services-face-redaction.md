@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako;
-ms.openlocfilehash: eee0d5365c515f8a7764b9d5636ae3d1b34cb934
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188250"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Zákona o svobodném přístupu tváří pomocí Azure Media Analytics 
 ## <a name="overview"></a>Přehled
@@ -41,10 +41,10 @@ Tímto se vytvoří zrevidovaně mp4 automaticky bez jakékoli manuální vstup.
 | Výstupního prostředku |foo_redacted.mp4 |Video s rozostření použít |
 
 #### <a name="input-example"></a>Příklad vstupu:
-[Zobrazit toto video](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>Příklad výstupu:
-[Zobrazit toto video](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
+[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>Analýza režimu
 **Analyzovat** pass dvoufázovou pracovního postupu přebírá video vstup a vytvoří soubor JSON pro rozpoznávání tváře umístění a obrázky ve formátu jpg jednotlivých zjistila pro rozpoznávání tváře.
@@ -125,7 +125,7 @@ Výstup z průchodu analyzovat nezahrnuje původního videa. Video musí nahrál
 #### <a name="example-output"></a>Příklad výstupu
 Toto je výstup z IDList s jedno ID vybrané.
 
-[Zobrazit toto video](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
+[Zobrazit toto video](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
 Příklad foo_IDList.txt
  
@@ -373,5 +373,5 @@ namespace FaceRedaction
 ## <a name="related-links"></a>Související odkazy
 [Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 12c0ee08435ca4b3077bc3a8c28b217ebaf70e08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310042"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993326"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 
@@ -98,7 +98,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://docs.micro
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
 
 Například pokud chcete načíst definice metrik pro účet služby Azure Storage, žádost by vypadat takto:
 
@@ -242,7 +242,7 @@ Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požada
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{id předplatného}*/resourceGroups/*{resource-group name}*/poskytovatelé/*{-– obor názvů zprostředkovatele prostředků}* / *{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics?metricnames=*{metrika}*& časový rozsah =*{starttime a endtime}*& $filter =*{filter}*& hodnotu resultType = & metadat rozhraní api-version =*{apiVersion}*
+**Identifikátor URI žádosti**: https\://management.azure.com/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/poskytovatelé/*{ – obor názvů zprostředkovatele prostředků}*/*{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics? metricnames =*{metrika}*& časový rozsah =*{starttime a endtime}*& $filter =*{filter}*& hodnotu resultType = & metadat rozhraní api-version = *{apiVersion}*
 
 Například chcete-li načíst seznam hodnot dimenzí, které byly vygenerován pro název rozhraní API dimenzi metriky "Transakcí", kde dimenze GeoType = 'Primární' během zadaného časového rozsahu, žádost by měl vypadat takto:
 
@@ -394,7 +394,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://msdn.micro
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
 
 Například pokud chcete načíst definice metrik pro aplikaci logiky Azure, žádost by vypadat takto:
 

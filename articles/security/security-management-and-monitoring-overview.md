@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 7dfc4329b338a65169c81521360264753bafa9d6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239912"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892893"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled monitorování a Správa zabezpečení Azure
 
@@ -50,7 +50,7 @@ S Azure můžete použít antimalwarový software od hlavních dodavatelů zabez
 
 Microsoft Antimalware pro Azure Cloud Services a Virtual Machines nabízí možnost instalace agenta antimalwaru pro role PaaS a virtuální počítače. Založené na System Center Endpoint Protection, tato funkce přináší prověřené místní technologie zabezpečení do cloudu.
 
-Nabízíme také hluboce integrovány se pro společnosti Trend [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) a [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produkty na platformě Azure. Deep Security je antivirová řešení a SecureCloud je řešení pro šifrování. Deep Security se nasazuje uvnitř virtuální počítače prostřednictvím modelu rozšíření. Pomocí webu Azure portal uživatelského rozhraní a prostředí PowerShell můžete použít Deep Security uvnitř nové virtuální počítače, které jsou prováděných výpočtů nebo existující virtuální počítače, které jsou už nasazené.
+Nabízíme také hluboce integrovány se pro společnosti Trend [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) a [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produkty na platformě Azure. Deep Security je antivirová řešení a SecureCloud je řešení pro šifrování. Deep Security se nasazuje uvnitř virtuální počítače prostřednictvím modelu rozšíření. Pomocí webu Azure portal uživatelského rozhraní a prostředí PowerShell můžete použít Deep Security uvnitř nové virtuální počítače, které jsou prováděných výpočtů nebo existující virtuální počítače, které jsou už nasazené.
 
 Symantec Endpoint Protection (SEP) je také podporována na Azure. Prostřednictvím integrace portálu můžete určit, že máte v úmyslu použít září na virtuálním počítači. ZÁŘÍ se dá nainstalovat na nový virtuální počítač prostřednictvím portálu Azure portal, nebo je možné nainstalovat na existující virtuální počítač pomocí Powershellu.
 
@@ -123,7 +123,7 @@ Tím, že poskytuje oznámení a doporučenou nápravu, Identity Protection pom�
 Další informace:
 
 * [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Kanál 9: Azure AD a Identity Show: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Kanál 9: Azure AD a Identity zobrazit: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
@@ -144,7 +144,7 @@ Další informace:
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 
-Intelligent Security Graph poskytuje ochranu v reálném čase před internetovými útoky ve svých produktů a služeb. Používá pokročilou analýzu, který odkaz obrovské množství inteligentní funkce a zabezpečení data o ohrožení k poskytování přehledů, které můžete posílit zabezpečení organizace. Microsoft využívá pokročilé analýzy – zpracovává více než 450 miliard ověření za měsíc, skenování 400 miliard e-mailů pro malware a útoky phishing a aktualizuje jednu miliardu zařízení – poskytovat podrobnější přehledy. Tyto insights může pomoct vaší organizaci zjišťovat a rychle reagovat vůči útokům.
+Intelligent Security Graph poskytuje ochranu v reálném čase před internetovými útoky ve svých produktů a služeb. Používá pokročilou analýzu, který odkaz obrovské množství inteligentní funkce a zabezpečení data o ohrožení k poskytování přehledů, které můžete posílit zabezpečení organizace. Microsoft využívá pokročilé analýzy – zpracovává více než 450 miliard ověření za měsíc, skenování 400 miliard e-mailů pro malware a útoky phishing a aktualizuje jednu miliardu zařízení – poskytovat podrobnější přehledy. které mohou vaší organizaci pomoci zjišťovat útoky a rychle na ně reagovat.
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b8b157b890bcdda8c06a0dd1b208a82f7f9058
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3642bea878ca4d1582319e5e1d964dfa43ff061
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209128"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893505"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Integrace Azure Active Directory službami pro správu měřítka
 
@@ -206,7 +206,7 @@ Povolit uživatele Azure AD pro přihlášení k účasti Management Services, m
 
     ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. V **OBCiD** , jako je textové pole, typ e-mailu uživatele **BrittaSimon@contoso.com**.
+    a. V **OBCiD** , jako je textové pole, typ e-mailu uživatele **BrittaSimon\@contoso.com**.
 
     b. V **heslo** textového pole zadejte heslo uživatele.
 

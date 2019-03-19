@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: decc63ad7ce0b35de41ec53e6b5e02276aa33705
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456070"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013911"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Úvod do služby StorSimple Virtual Array
 
@@ -74,8 +74,8 @@ Následující tabulka popisuje některé z klíčových výhod, které poskytuj
 
 Přehled podporovaných úloh StorSimple v následující tabulce.
 
-|Scénář     |Úloha     |Podporováno      |Omezení               |
-|-------------|-------------|---------------|---------------------------|
+|Scénář     |Úloha     |Podporováno      |Omezení               | Příslušné verze|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |Vzdálené kanceláře či firemní Office (ROBO)  |Sdílení souborů     |Ano      |Zobrazit [maximálními limity pro souborový server se](storsimple-ova-limits.md).<br></br>Zobrazit [požadavky na systém pro podporované verze protokolu SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
 |Archivace v cloudu  |Archivní soubor pro sdílení obsahu     |Ano      |Zobrazit [maximálními limity pro souborový server se](storsimple-ova-limits.md).<br></br>Zobrazit [požadavky na systém pro podporované verze protokolu SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ae123638e26c9fb6c82666efddabf06874c7b7a8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085095"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Sada Adafruit Feather HUZZAH ESP8266 připojit ke službě Azure IoT Hub v cloudu
 
@@ -180,15 +180,15 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
 
 12. Klikněte na tlačítko **nainstalovat** tlačítko pro esp8266.
 
-   Panely Správce znamená, že je nainstalována ESP8266 s verzí 2.2.0 nebo novější.
+    Panely Správce znamená, že je nainstalována ESP8266 s verzí 2.2.0 nebo novější.
 
-   ![Je nainstalovaný balíček esp8266](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
+    ![Je nainstalovaný balíček esp8266](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
 13. Zadejte `F1`, zadejte **Arduino** a vyberte **Arduino: Board Config**.
 
 14. Klikněte na pole pro **panelu vybrali:** a typ **esp8266**a pak vyberte **sada Adafruit HUZZAH ESP8266 (esp8266)**.
 
-   ![Vybrat esp8266 panel](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
+    ![Vybrat esp8266 panel](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>Nainstalujte potřebné knihovny
 

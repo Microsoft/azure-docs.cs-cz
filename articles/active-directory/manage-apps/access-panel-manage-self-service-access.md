@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c7c7236b54ef44b0cc8602c0dce531c09f7d29
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3afe915f4fa1d9c1c36860d23912ac0e01088724
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169594"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093503"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Jak používat samoobslužný přístup k aplikacím
 
@@ -49,25 +49,25 @@ Obchodní skupině schvalovat přístup k těmto aplikacím samoobslužného př
 
 Povolení samoobslužného přístupu k aplikaci, postupujte podle následujících kroků:
 
-1.  Otevřít [ **webu Azure Portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure Portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní navigační nabídce vlevo hlavní.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** z navigační nabídce vlevo Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** z navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete povolit samoobslužné služby přístup ze seznamu.
+6. Vyberte aplikaci, kterou chcete povolit samoobslužné služby přístup ze seznamu.
 
-7.  Po načtení aplikace, klikněte na tlačítko **samoobslužné** z navigační nabídce vlevo aplikaci.
+7. Po načtení aplikace, klikněte na tlačítko **samoobslužné** z navigační nabídce vlevo aplikaci.
 
-8.  Povolení samoobslužného přístupu k aplikacím pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
+8. Povolení samoobslužného přístupu k aplikacím pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
 
-9.  V dalším kroku vyberte skupiny, kterým uživatelé, kteří žádají o přístup k této aplikaci by měly být přidány, klepněte na volič vedle popisku **do které skupiny by měl přiřazení uživatelé měli přidat?** a vyberte skupinu.
+9. V dalším kroku vyberte skupiny, kterým uživatelé, kteří žádají o přístup k této aplikaci by měly být přidány, klepněte na volič vedle popisku **do které skupiny by měl přiřazení uživatelé měli přidat?** a vyberte skupinu.
 
 10. **Volitelné:** Pokud chcete vyžadovat schválení firmy před uživatelé mají povolen přístup, nastavte **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
 
@@ -75,7 +75,7 @@ Povolení samoobslužného přístupu k aplikaci, postupujte podle následujíc�
 
 12. **Volitelné:** Pokud chcete zadat firemními schvalovateli, kteří se může schvalovat přístup k této aplikaci, klepněte na volič vedle popisku **kdo může schvalovat přístup k této aplikaci?** vybrat až 10 jednotlivé firemními schvalovateli.
 
-   * Skupiny se nepodporují.
+    * Skupiny se nepodporují.
 
 13. **Volitelné:** **Pro aplikace, které zpřístupňují role**, pokud chcete přiřadit k roli schválených uživatelů samoobslužných služeb, klepněte na volič vedle **ke které roli by měla být přiřazena uživatelům v této aplikaci?** vyberte role, ke kterému Tito uživatelé měla být přiřazena.
 

@@ -8,12 +8,12 @@ ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 881677916bb22d4b1046f19047819a636027290d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880258"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí .NET SDK a Azure Cosmos DB
 
@@ -144,7 +144,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 5. Uložte soubor Program.cs.
     
-## <a name="run-the-net-app"></a>Spuštění aplikace .Net
+## <a name="run-the-net-app"></a>Spuštění aplikace .NET
 
 1. V sadě Visual Studio vyberte **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 

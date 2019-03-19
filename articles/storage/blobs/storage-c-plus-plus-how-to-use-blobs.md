@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236934"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993215"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště Blob z jazyka C++
 
-Tato příručka ukazuje, jak provádět běžné scénáře pomocí úložiště objektů Blob v Azure. Příklady ukazují, jak nahrání, výpisu, stahování a odstraňování objektů BLOB. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
+Tato příručka ukazuje, jak provádět běžné scénáře pomocí úložiště objektů Blob v Azure. Příklady ukazují, jak nahrání, výpisu, stahování a odstraňování objektů BLOB. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
 
 Další informace o službě Blob storage najdete v tématu [seznámení se službou Azure Blob storage](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Společnost Microsoft doporučuje používat nejnovější verzi klientské knihovny úložiště pro C++, k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
+> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Společnost Microsoft doporučuje používat nejnovější verzi klientské knihovny úložiště pro C++, k dispozici prostřednictvím [NuGet](https://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -34,7 +34,7 @@ Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Az
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
 * **Linux:** Postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.  
-* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.  
+* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.  
   
      Install-Package wastorage
 
@@ -258,7 +258,7 @@ Teď, když jste se naučili základy používání blob storage, použijte tyto
 * [Používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Seznam prostředků služby Azure Storage v C++](../storage-c-plus-plus-enumeration.md)
-* [Klientská knihovna pro úložiště pro C++ – referenční informace](http://azure.github.io/azure-storage-cpp)
+* [Klientská knihovna pro úložiště pro C++ – referenční informace](https://azure.github.io/azure-storage-cpp)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](../storage-use-azcopy.md)
 

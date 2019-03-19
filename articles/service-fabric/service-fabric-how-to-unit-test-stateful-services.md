@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093901"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Vytvoření testovaní částí pro stavové služby
 Testování stavové služby Service Fabric řešit běžné chyby, které nemusí nutně být zachycena konvenční aplikace nebo testování částí specifického pro doménu. Při vývoji, testování částí pro stavové služby, jsou některé důležité informace, které se uchovávají v úvahu.
@@ -42,13 +42,13 @@ Od verze 3.3.0 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabri
 Jako součást uspořádat část testu nastavte mock repliky a vytvoří se správce stavu. Sady replik se pak vlastní vytvoření instance otestované služby pro jednotlivé repliky. Například ho budou spuštěné události životního cyklu také vlastní `OnChangeRole` a `RunAsync`. Správce stavu mock zajistí jsou všechny operace provedené na správce stavu spuštění a nejlépe by správce stavu.
 
 1. Vytvořte objekt pro vytváření delegáta služby, který vytvoří instanci služby testování. To by měl být podobné nebo stejné jako zpětné volání objekt pro vytváření služeb se většinou nacházejí ve `Program.cs` pro službu Service Fabric nebo objektu actor. To by měl postupovat podle následující podpis:
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. Vytvoření instance `MockReliableStateManager` třídy. To bude napodobení všechny interakce s správce stavu.
 3. Vytvoření instance `MockStatefulServiceReplicaSet<TStatefulService>` kde `TStatefulService` je typ služby testování. To vyžaduje delegáta vytvořili v kroku #1 a správce stavu instance v #2
 4. Přidání repliky do sady replik. Zadejte role (jako je primární, ActiveSecondary, IdleSecondary) a s ID repliky
-> Blokovat repliky ID! Jedná se pravděpodobně použijí během operace a vyhodnocení části testování částí.
+   > Blokovat repliky ID! Jedná se pravděpodobně použijí během operace a vyhodnocení části testování částí.
 
 ```csharp
 //service factory to instruct how to create the service instance

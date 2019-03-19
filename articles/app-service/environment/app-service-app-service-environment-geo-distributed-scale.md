@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188318"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geograficky distribuované škálování v prostředí App Service Environments
 ## <a name="overview"></a>Přehled
@@ -46,7 +46,7 @@ Zbývající část tohoto tématu vás provede jednotlivými kroky nastavení d
 ## <a name="planning-the-topology"></a>Plánování topologie
 Před sestavením si nároky distribuované aplikace, umožňuje mít několik částí informace předem.
 
-* **Vlastní doména aplikace:**  Co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci?  Pro ukázkovou aplikaci vlastní název domény je *www.scalableasedemo.com*
+* **Vlastní doména aplikace:**  Co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci?  Pro ukázkovou aplikaci vlastní název domény je `www.scalableasedemo.com`
 * **Doménu Traffic Manageru:**  Název domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru][AzureTrafficManagerProfile].  Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager.  Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*.  Díky tomu úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
 * **Strategie pro škálování app nároky:**  Bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti?  Více oblastech?  -Kombinovat oba přístupy poskytují?  Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu.  Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment.  Pomocí 15 + veřejných oblastech Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace.  Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
 * **Zásady vytváření názvů pro App Service Environment:**  Každá služba App Service Environment vyžaduje jedinečný název.  Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment.  Ukázkové aplikace byl použit jednoduché zásady vytváření názvů.  Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
@@ -87,7 +87,7 @@ Všimněte si, jak je jedno volání *přidat AzureTrafficManagerEndpointConfig*
 Všechny tři koncové body používat stejnou hodnotu (10) *váha* parametru.  Výsledkem rozprostření požadavky zákazníků z Traffic Manageru napříč všemi instancemi tři aplikace relativně rovnoměrně. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Odkazuje aplikaci vlastní domény na doménu Traffic Manageru
-V posledním kroku potřeby se tak, aby odkazoval vlastní doménu aplikace na doménu Traffic Manageru.  Ukázkové aplikace to znamená, že odkazující *www.scalableasedemo.com* na *škálovatelné služby ase demo.trafficmanager.net*.  Tento krok je potřeba dokončit u registrátora domény, který spravuje vlastní doménu.  
+V posledním kroku potřeby se tak, aby odkazoval vlastní doménu aplikace na doménu Traffic Manageru.  Ukázkové aplikace to znamená, že odkazující `www.scalableasedemo.com` na `scalable-ase-demo.trafficmanager.net`.  Tento krok je potřeba dokončit u registrátora domény, který spravuje vlastní doménu.  
 
 Pomocí nástrojů pro správu vašeho registrátora domény záznam CNAME zaznamenává musí být vytvořen, která odkazuje vlastní domény na doménu Traffic Manageru.  Následující obrázek ukazuje příklad vypadá tato konfigurace CNAME:
 
@@ -95,16 +95,16 @@ Pomocí nástrojů pro správu vašeho registrátora domény záznam CNAME zazna
 
 I když nejsou zahrnuta v tomto tématu, mějte na paměti, že každá instance jednotlivých aplikací musí mít vlastní doménu v něm zaregistrovaný poskytovatel také.  Jinak pokud žádost o zajišťuje instance aplikace a aplikace nemá žádné vlastní domény zaregistrovaný s aplikací, požadavek selže.  
 
-V tomto příkladu je vlastní doména *www.scalableasedemo.com*, a každá instance aplikace má vlastní domény s ním spojená.
+V tomto příkladu je vlastní doména `www.scalableasedemo.com`, a každá instance aplikace má vlastní domény s ním spojená.
 
 ![Vlastní doména][CustomDomain] 
 
 Rekapitulace registrace vlastní domény s aplikacemi Azure App Service, najdete v následujícím článku na [registrace vlastní domény][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Vyzkoušejte si Distributed topologii
-Konečný výsledek konfigurace Traffic Manageru a DNS je, že žádosti pro *www.scalableasedemo.com* budou směrovat přes následující posloupnost:
+Konečný výsledek konfigurace Traffic Manageru a DNS je, že žádosti pro `www.scalableasedemo.com` budou směrovat přes následující posloupnost:
 
-1. Prohlížeč nebo zařízení provede vyhledávání DNS *www.scalableasedemo.com*
+1. Prohlížeč nebo zařízení provede vyhledávání DNS `www.scalableasedemo.com`
 2. Záznam CNAME u registrátora domény způsobí, že vyhledávání DNS přesměrováni do Azure Traffic Manageru.
 3. Vyhledávání DNS se provádí *škálovatelné služby ase demo.trafficmanager.net* proti jeden ze serverů DNS Azure Traffic Manageru.
 4. Na základě zásada vyrovnávání zatížení ( *trafficroutingmethod funkce* parametr použili dříve při vytváření profilu služby Traffic Manager), bude vyberte jednu z nakonfigurované koncové body a vrátí plně kvalifikovaný název domény tohoto koncového bodu do Traffic Manageru prohlížeč nebo zařízení.

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 698e6fb861ab891a84aa43ca94769099a5c76943
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d944a51f7e0ee24d5a3768ba28d7a8294c30b99b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118761"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -250,21 +250,21 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
 #### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>A konečně umístěte JAR ovladač v cestě Tomcat a restartujte službu App Service
 
 1. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je `/home/tomcat/lib` adresáře. (Pokud ještě neexistuje, vytvořte tento adresář.) Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:  
-    1. Instalace rozšíření webpp služby Azure App Service:
+   1. Instalace rozšíření webpp služby Azure App Service:
 
       ```azurecli-interactive
       az extension add –name webapp
       ```
 
-    1. Spusťte následující příkaz rozhraní příkazového řádku a vytvořte tunel SSH z místního systému do služby App Service:
+   1. Spusťte následující příkaz rozhraní příkazového řádku a vytvořte tunel SSH z místního systému do služby App Service:
 
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
 
-    1. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
+   1. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
 
-    Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
+      Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 2. Pokud jste nevytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci.
 

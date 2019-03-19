@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 2038ce62e252260dda73813df97a68ee4b3fff61
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111459"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics Nozzle pro monitorování systému Cloud Foundry
 
@@ -73,10 +73,10 @@ Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Chcete-li vytvořit pracovní prostor Log Analytics prostřednictvím monitorování šablony z Tržiště Azure:
 
 1. Otevřete Azure portal.
-2. Klikněte na znaménko "+" nebo "Vytvořit prostředek" v levém horním rohu.
-3. V okně hledání zadejte "Cloud Foundry" a vyberte "Cloud Foundry řešení pro monitorování".
-4. Cloud Foundry je načten monitorování front-stránka šablony řešení, klikněte na možnost "Vytvořit", spusťte okno šablonu.
-5. Zadejte požadované parametry:
+1. Klikněte na znaménko "+" nebo "Vytvořit prostředek" v levém horním rohu.
+1. V okně hledání zadejte "Cloud Foundry" a vyberte "Cloud Foundry řešení pro monitorování".
+1. Cloud Foundry je načten monitorování front-stránka šablony řešení, klikněte na možnost "Vytvořit", spusťte okno šablonu.
+1. Zadejte požadované parametry:
     * **Předplatné**: Vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejným způsobem pracovat s Cloud Foundry nasazení.
     * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte nový pracovní prostor Log Analytics.
     * **Umístění skupiny prostředků**: Vyberte umístění skupiny prostředků.
@@ -84,7 +84,7 @@ Další informace najdete v tématu [začít pracovat s protokoly Azure monitoru
     * **OMS_Workspace_Region**: Vyberte umístění pro pracovní prostor.
     * **OMS_Workspace_Pricing_Tier**: Vyberte pracovní prostor Log Analytics SKU. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
     * **Právní podmínky**: Klikněte na právní podmínky a pak klikněte na "Vytvořit", aby přijal právní podmínky.
-- Jakmile jsou zadány všechny parametry, klikněte na možnost "Vytvořit" k nasazení šablony. Když se nasazení dokončí, stav se zobrazí na kartě oznámení.
+1. Jakmile jsou zadány všechny parametry, klikněte na možnost "Vytvořit" k nasazení šablony. Když se nasazení dokončí, stav se zobrazí na kartě oznámení.
 
 
 ## <a name="deploy-the-nozzle"></a>Nasazení Nozzle

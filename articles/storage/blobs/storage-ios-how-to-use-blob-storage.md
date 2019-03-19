@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811660"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007279"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
@@ -124,7 +124,7 @@ Každý objekt blob ve službě Azure Storage se musí nacházet v kontejneru. N
 }
 ```
 
-Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověříte, že *newcontainer* je v seznamu kontejnerů pro váš účet úložiště.
+Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](https://storageexplorer.com) a ověříte, že *newcontainer* je v seznamu kontejnerů pro váš účet úložiště.
 
 ## <a name="set-container-permissions"></a>Nastavit oprávnění pro kontejner
 Kontejneru oprávnění jsou nakonfigurované pro **privátní** přístup ve výchozím nastavení. Ale kontejnerů poskytuje několik různých možností přístupu ke kontejneru:
@@ -203,7 +203,7 @@ Následující příklad ukazuje, jak nahrát objekt blob bloku ze NSString. Pok
 }
 ```
 
-Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověříte, že kontejner, *containerpublic*, obsahuje objekt blob, *sampleblob*. V této ukázce jsme použili veřejném kontejneru, tak můžete také ověřit, zda tato aplikace funguje tak, že přejdete na identifikátor URI pro objekty BLOB:
+Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](https://storageexplorer.com) a ověříte, že kontejner, *containerpublic*, obsahuje objekt blob, *sampleblob*. V této ukázce jsme použili veřejném kontejneru, tak můžete také ověřit, zda tato aplikace funguje tak, že přejdete na identifikátor URI pro objekty BLOB:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -378,10 +378,10 @@ Následující příklad ukazuje, jak odstranit kontejner.
 Teď, když jste zjistili, jak používat úložiště objektů Blob z iOS, použijte tyto odkazy na další informace o službě úložiště a knihovny iOS.
 
 * [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
-* [Azure Storage iOS referenční dokumentaci](http://azure.github.io/azure-storage-ios/)
+* [Azure Storage iOS referenční dokumentaci](https://azure.github.io/azure-storage-ios/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
 
-Pokud máte dotazy týkající se této knihovny, neváhejte přidat do našich [fóra MSDN Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Pokud máte dotazy týkající se této knihovny, neváhejte přidat do našich [fóra MSDN Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Pokud máte návrhy funkcí pro službu Azure Storage, přidejte příspěvek do [zpětné vazby úložiště Azure](https://feedback.azure.com/forums/217298-storage/).
 

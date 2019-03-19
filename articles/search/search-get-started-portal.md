@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270330"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137823"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Rychlý start: Integrované nástroje portálu použijte pro import Azure Search, indexování a dotazy
 
@@ -34,13 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Vytvořte službu Azure Search](search-create-service-portal.md) nebo ve svém aktuálním předplatném najděte stávající službu.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Otevřete řídící panel služby Azure Search. Pokud jste dlaždici této služby nepřipnuli řídicí panel, můžete službu najít takto:
-
-   * Na panelu v levém navigačním podokně klikněte na **Všechny služby**.
-   * Do vyhledávacího pole zadejte *vyhledávání*. Zobrazí se seznam vyhledávacích služeb pro vaše předplatné. Klikněte na **Služby vyhledávání**. V seznamu by se měla objevit i vaše služba.
+[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
 
 ### <a name="check-for-space"></a>Kontrola místa
 

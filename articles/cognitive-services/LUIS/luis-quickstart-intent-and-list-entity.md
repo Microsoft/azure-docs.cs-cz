@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 23a94f7b2054692feedb3b7755dad1e840809be7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734114"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119662"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
 
@@ -134,7 +134,7 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 1. Na konec adresy URL zadejte `shift Joe Smith to IT`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `TransferEmployeeToDepartment` s extrahovanou hodnotou `Department`.
 
-  ```json
+   ```json
     {
       "query": "shift Joe Smith to IT",
       "topScoringIntent": {
@@ -165,7 +165,7 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
         }
       ]
     }
-  ```
+   ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105297"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu load balanceru úrovně Basic na webu Azure Portal
 
@@ -185,7 +185,7 @@ Pravidlo nástroje pro vyrovnávání zatížení s názvem **MyLoadBalancerRule
    
 1. Vyberte **OK**.
    
-  ![Přidat pravidlo služby load balancer](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
+   ![Přidat pravidlo služby load balancer](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 

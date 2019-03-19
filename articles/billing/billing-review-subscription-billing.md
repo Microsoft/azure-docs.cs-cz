@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 3a487b56c3ce81f3a13add767a9bf7ad59cf79cd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315941"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890759"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Zkontrolujte fakturace předplatného pomocí rozhraní REST API
 
@@ -92,7 +92,7 @@ Každá položka v **hodnotu** představuje podrobnosti týkající se použív�
 |**meterDetails** | Podrobné informace o použití. |
 |**nextLink**| Při nastavení, určuje adresu URL pro další "stránky" podrobnosti. Prázdný, když je stránka poslední z nich. |
 
-Tento příklad je zkrácený; Zobrazit [vypsat podrobnosti o použití](https://docs.microsoft.com/rest/api/consumption/usagedetails/listbybillingperiod#usagedetailslistresult) úplný popis každého pole odpovědi.
+Tento příklad je zkrácený; Zobrazit [vypsat podrobnosti o použití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) úplný popis každého pole odpovědi.
 
 Jiné stavové kódy označují chybové stavy. V těchto případech objektu odpovědi vysvětluje, proč žádost selhala.
 

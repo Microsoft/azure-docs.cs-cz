@@ -9,12 +9,12 @@ ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039839"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880037"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK asynchronní s účty SQL API služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, alternativní řešení, kroky pro diagnostiku a nástroje, při použití [sady Java SDK pro asynchronní](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
@@ -58,7 +58,7 @@ Pokud vaše aplikace je nasazená ve službě Azure Virtual Machines bez veřejn
     Když je povolený koncový bod služby, žádosti už odesílají z veřejnou IP adresu do služby Azure Cosmos DB. Místo toho jsou odeslány virtuální síť a podsíť identity. Tato změna může vést drops brány firewall, pokud pouze veřejné IP adresy jsou povoleny. Pokud používáte bránu firewall, při povolení koncového bodu služby, přidejte podsíť brány firewall pomocí [virtuální sítě ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).
 * Přiřadíte veřejnou IP adresu svého virtuálního počítače Azure.
 
-#### <a name="http-proxy"></a>Proxy server HTTP
+#### <a name="http-proxy"></a>HTTP proxy
 
 Pokud používáte proxy server HTTP, ujistěte se, že počet připojení nakonfigurovaná v sadě SDK, které může podporovat `ConnectionPolicy`.
 Jinak kterými se setkáváte problémy s připojením.
@@ -150,6 +150,40 @@ Tato chyba je selhání na straně serveru. Znamená to, že spotřebované zř�
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Neúspěšné připojení k emulátoru služby Azure Cosmos DB
 
 Certifikát HTTPS emulátor služby Azure Cosmos DB je podepsaný svým držitelem. Sady SDK pracovat s emulátorem importujte certifikát emulátor do Java TrustStore. Další informace najdete v tématu [certifikátů emulátoru Export služby Azure Cosmos DB](local-emulator-export-ssl-certificates.md).
+
+### <a name="dependency-conflict-issues"></a>Problémy s konflikt závislostí
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+Výše uvedené výjimce naznačuje, že jsou závislé na starší verzi RxJava lib (například 1.2.2). Naše sada SDK spoléhá na RxJava 1.3.8, který má rozhraní API není k dispozici v předchozích verzích RxJava. 
+
+Alternativním řešením je takové issuses k identifikaci které závislosti přináší RxJava 1.2.2 vyloučit tranzitivní závislost na RxJava 1.2.2 a povolit služby cosmos DB SDK přenést na novější verzi.
+
+Chcete-li určit, která knihovna přináší RxJava-1.2.2 vedle souboru projektu pom.xml spuštěním následujícího příkazu:
+```bash
+mvn dependency:tree
+```
+Další informace najdete v tématu [maven závislost stromu Průvodce](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
+
+Jakmile identifikujete RxJava 1.2.2 je tranzitivní závislost jaké další závislosti projektu můžete upravit závislost na lib v souboru pom a vyloučit RxJava přechodné závislosti:
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+Další informace najdete v tématu [vyloučit přechodné závislosti průvodce](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
 ## <a name="enable-client-sice-logging"></a>Povolení protokolování sady SDK klienta

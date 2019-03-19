@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086577"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Nasazení ZIP pro službu Azure Functions
 
@@ -51,13 +51,13 @@ Může jste ale vytvořili funkce pomocí editoru na webu Azure Portal. Si můž
 
 + **Na webu Azure Portal:**
 
-    1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a potom přejděte ke své aplikaci function app.
+  1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a potom přejděte ke své aplikaci function app.
 
-    2. Na **přehled** kartu, vyberte možnost **stáhnout obsah aplikace**. Vyberte si některou možnost stažení a pak vyberte **Stáhnout**.
+  2. Na **přehled** kartu, vyberte možnost **stáhnout obsah aplikace**. Vyberte si některou možnost stažení a pak vyberte **Stáhnout**.
 
-        ![Stáhněte si projekt aplikace funkcí](./media/deployment-zip-push/download-project.png)
+      ![Stáhněte si projekt aplikace funkcí](./media/deployment-zip-push/download-project.png)
 
-    Soubor ZIP staženého je ve správném formátu se znovu publikovat aplikaci function App pomocí nabízené nasazení ZIP. Stažení portálu můžete také přidat soubory potřebné k otevření aplikace function app přímo v sadě Visual Studio.
+     Soubor ZIP staženého je ve správném formátu se znovu publikovat aplikaci function App pomocí nabízené nasazení ZIP. Stažení portálu můžete také přidat soubory potřebné k otevření aplikace function app přímo v sadě Visual Studio.
 
 + **Pomocí rozhraní REST API:**
 

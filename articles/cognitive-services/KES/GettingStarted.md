@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ded681b8776343a778f3e9704fe05d43e8d74774
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550516"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994940"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Začínáme se službou Knowledge Exploration Service
 
@@ -207,7 +207,7 @@ Až budete mít XML specifikaci gramatiky, můžete ji zkompilovat do binární 
 
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>Hostování gramatiky a indexu ve webové službě
 
-Při rychlém vytváření prototypů můžete gramatiku a index hostovat ve webové službě na místním počítači pomocí příkazu [`kes.exe host_service`](CommandLine.md#host_service-command). Ke službě se pak můžete dostat prostřednictvím [webových rozhraní API](WebAPI.md) a ověřit správnost dat a návrh gramatiky. V tomto příkladu budete hostovat soubor gramatiky *Academic.grammar* a soubor indexu *Academic.index* na http://localhost:8000/. Použijte následující příkaz:
+Při rychlém vytváření prototypů můžete gramatiku a index hostovat ve webové službě na místním počítači pomocí příkazu [`kes.exe host_service`](CommandLine.md#host_service-command). Ke službě se pak můžete dostat prostřednictvím [webových rozhraní API](WebAPI.md) a ověřit správnost dat a návrh gramatiky. V tomto příkladu budete hostovat soubor gramatiky *Academic.grammar* a soubor indexu *Academic.index* na `http://localhost:8000/`. Použijte následující příkaz:
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 

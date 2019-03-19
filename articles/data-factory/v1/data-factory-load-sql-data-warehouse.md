@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 727a503a2fd942e6fbef9009c760a39f90828d2f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077016"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure SQL Data Warehouse pomocí služby Data Factory v oblasti 15 minut
 > [!NOTE]
@@ -109,7 +109,7 @@ Tento článek obsahuje podrobné pokyny pro přesouvání dat do Azure SQL Data
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-Požadované kroky dokončit jsme se nyní připraveno ke konfiguraci aktivitou kopírování pomocí Průvodce kopírováním.
+  Požadované kroky dokončit jsme se nyní připraveno ke konfiguraci aktivitou kopírování pomocí Průvodce kopírováním.
 
 ## <a name="launch-copy-wizard"></a>Spuštění průvodce kopírováním
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).

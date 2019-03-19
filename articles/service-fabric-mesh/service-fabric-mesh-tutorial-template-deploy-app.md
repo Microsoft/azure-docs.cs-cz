@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 773a466f9619f162fe3f7cbeeab0b766d3ca32ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864860"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -211,7 +211,7 @@ Pokud jsou v šabloně hodnoty, které plánujete po nasazení aplikace změnit,
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       ...
@@ -229,7 +229,7 @@ Služby se v šabloně určují jako vlastnosti prostředku aplikace.  Aplikace 
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     ...
@@ -344,6 +344,7 @@ Specifika aplikace seznamu úkolů najdete v souboru [šablony nasazení mesh_rp
 Pomocí následujícího příkazu vytvořte aplikaci a související prostředky. Použijte přihlašovací údaje z předchozího kroku [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).
 
 V souboru parametrů aktualizujte hodnoty následujících parametrů:
+
 |Parametr|Hodnota|
 |---|---|
 |location|Oblast, do které se má aplikace nasadit.  Příklad: eastus|

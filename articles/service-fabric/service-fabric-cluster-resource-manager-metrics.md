@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093345"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric s metrikami
 *Metriky* jsou prostředky, které vaše služby péče o a které jsou k dispozici uzly v clusteru. Metriky je všechno, co potřebujete ke správě za účelem zlepšení nebo sledovat výkon vašich služeb. Například může sledovat využití paměti vědět, pokud je vaše služba přetížená. Další možností použití je zjistit, zda služba přesunout jinde kde paměti je že menší, aby bylo možné dosáhnout lepšího výkonu omezené.
@@ -45,6 +45,7 @@ Pro základní úlohy poskytují metriky výchozí vrazíme rozdělení práce v
 Zde je, co získáte:
 
 <center>
+
 ![Rozložení clusteru s výchozí metriky][Image1]
 </center>
 
@@ -215,6 +216,7 @@ Připomínáme Tato syntaxe je ("MetricName MetricWeight, PrimaryDefaultLoad, Se
 Podívejme se, jaké jeden rozložení možné clusteru může vypadat:
 
 <center>
+
 ![Rovnováha clusteru s výchozí a vlastní metriky][Image2]
 </center>
 
@@ -239,6 +241,7 @@ Skutečný dopad různé metriky váhy v clusteru je, že Cluster Resource Manag
 Pojďme se podívat na příklad některých sestav zátěžových a jak různé metriky oceňuje výsledky v různých přidělení v clusteru. V tomto příkladu vidíme, že přepínání relativní váha metriky způsobí, že Cluster Resource Manageru k vytvoření různých uspořádání služeb.
 
 <center>
+
 ![Příklad váha metriky a její vliv na řešení vyrovnávání][Image3]
 </center>
 
@@ -256,6 +259,7 @@ Existuje více váhy, které jsou sledovány pro každý metriku. První váha j
 Co by mohlo dojít, pokud Cluster Resource Manager nebyl záleží globální a místní zůstatek? Dobře je snadné vytvořit řešení, která se globálně vyvažují, ale který má za následek nízký prostředků zůstatku pro jednotlivé služby. V následujícím příkladu Pojďme podívejte se na službu nakonfigurovanou jenom výchozí metriky a naleznete v tématu co se stane, když se považuje za pouze globální vyrovnávání:
 
 <center>
+
 ![Dopad globální pouze řešení][Image4]
 </center>
 

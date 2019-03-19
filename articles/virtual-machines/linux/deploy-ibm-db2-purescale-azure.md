@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 104730d94134d935f56fb95fd55d05b515e9f501
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245561"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014976"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení pureScale IBM DB2 v Azure
 
 Tento článek popisuje, jak nasadit [příklad architektury](ibm-db2-purescale-azure.md) , který podnikový zákazník naposledy použité k migraci z databáze IBM DB2 prostředí používají z/OS a pureScale IBM DB2 v Azure.
 
-Postupujte podle kroků pro migraci, najdete v tématu Instalace skripty v [DB2onAzure](http://aka.ms/db2onazure) úložišti na Githubu. Tyto skripty jsou založené na architektuře pro úlohy zpracování (OLTP) typické, online transaction.
+Postupujte podle kroků pro migraci, najdete v tématu Instalace skripty v [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu. Tyto skripty jsou založené na architektuře pro úlohy zpracování (OLTP) typické, online transaction.
 
 ## <a name="get-started"></a>Začínáme
 
-Tuto architekturu nasadit, stáhněte a spusťte skript deploy.sh součástí [DB2onAzure](http://aka.ms/db2onazure) úložišti na Githubu.
+Tuto architekturu nasadit, stáhněte a spusťte skript deploy.sh součástí [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu.
 
 Úložiště také obsahuje skripty pro nastavení řídicím panelem Grafana. Řídicí panel můžete použít k dotazování Prometheus, open source monitorování a systém výstrah, které jsou součástí DB2.
 
@@ -76,27 +76,27 @@ Po vytvoření skriptů zařízení iSCSI, posledním krokem je instalace DB2 pu
 Úložiště GitHub zahrnuje DB2server.rsp, soubor odpovědí (.rsp), který umožňuje generovat automatizovaný skript pro instalaci pureScale DB2. Následující tabulka uvádí možnosti pureScale DB2, které používá soubor odpovědí pro instalaci. Soubor odpovědí můžete přizpůsobit podle potřeby pro vaše prostředí.
 
 > [!NOTE]
-> Je součástí ukázkového souboru odpovědí DB2server.rsp, [DB2onAzure](http://aka.ms/db2onazure) úložišti na Githubu. Pokud používáte tento soubor, musíte upravit předtím, než můžete pracovat ve vašem prostředí.
+> Je součástí ukázkového souboru odpovědí DB2server.rsp, [DB2onAzure](https://aka.ms/db2onazure) úložišti na Githubu. Pokud používáte tento soubor, musíte upravit předtím, než můžete pracovat ve vašem prostředí.
 
 | Název obrazovky               | Pole                                        | Hodnota                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Uvítání                   |                                              | Nová instalace                                                                                           |
 | Vyberte produkt          |                                              | DB2 verze 11.1.3.3. Edice serveru s DB2 pureScale                                              |
-| Konfigurace             | Adresář                                    | /Data1/OPT/IBM/DB2/V11.1                                                                              |
+| Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Vybrat typ instalace                 | Typické                                                                                               |
 |                           | Souhlasím s podmínkami IBM                     | Zaškrtnuté                                                                                               |
 | Vlastníka instance            | Existující Instance pro uživatele, uživatelského jména        | DB2sdin1                                                                                              |
 | Ohraničených uživatele               | Existující uživatele, uživatelského jména                     | DB2sdfe1                                                                                              |
-| Systém souborů clusteru       | Sdílené cesty k disku oddílu zařízení            | /dev/DM-2                                                                                             |
-|                           | Bod připojení                                  | / DB2sd\_1804a                                                                                         |
-|                           | Sdíleném disku pro data                         | /dev/DM-1                                                                                             |
-|                           | Přípojný bod (Data)                           | / DB2fs/datafs1                                                                                        |
-|                           | Sdílený disk protokolu                          | /dev/DM-0                                                                                             |
-|                           | Přípojný bod (protokolu)                            | / DB2fs/logfs1                                                                                         |
-|                           | DB2 Rozhodujícího prvku clusteru služby. Cesta k zařízení | /dev/DM-3                                                                                             |
+| Systém souborů clusteru       | Sdílené cesty k disku oddílu zařízení            | /dev/dm-2                                                                                             |
+|                           | Bod připojení                                  | /DB2sd\_1804a                                                                                         |
+|                           | Sdíleném disku pro data                         | /dev/dm-1                                                                                             |
+|                           | Přípojný bod (Data)                           | /DB2fs/datafs1                                                                                        |
+|                           | Sdílený disk protokolu                          | /dev/dm-0                                                                                             |
+|                           | Přípojný bod (protokolu)                            | /DB2fs/logfs1                                                                                         |
+|                           | DB2 Rozhodujícího prvku clusteru služby. Cesta k zařízení | /dev/dm-3                                                                                             |
 | Seznam hostitelů                 | D1 [eth1] d2 [eth1] cf1 [eth1] F2 [eth1] |                                                                                                       |
 |                           | Upřednostňované primární CF                         | cf1                                                                                                   |
-|                           | Upřednostňované sekundární CF                       | F2                                                                                                   |
+|                           | Upřednostňované sekundární CF                       | cf2                                                                                                   |
 | Soubor odpovědí a souhrn | první možnost                                 | Nainstalujte DB2 Server Edition s funkcí pureScale IBM DB2 a uložit Moje nastavení v souboru odpovědí. |
 |                           | Název souboru odpovědí                           | /root/DB2server.rsp                                                                                   |
 
@@ -138,7 +138,7 @@ Po vytvoření skriptů zařízení iSCSI, posledním krokem je instalace DB2 pu
 
 -   Odstraňujete DB2 pureScale a IBM spektra škálování.
 
-Další informace o těchto a dalších známých problémů naleznete v souboru kb.md v [DB2onAzure](http://aka.ms/DB2onAzure) úložiště.
+Další informace o těchto a dalších známých problémů naleznete v souboru kb.md v [DB2onAzure](https://aka.ms/DB2onAzure) úložiště.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -148,7 +148,7 @@ Další informace o těchto a dalších známých problémů naleznete v souboru
 
 -   [DB2icrt - vytvořit instanci příkaz](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [DB2 pureScale clustery Data řešení](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [DB2 pureScale clustery Data řešení](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 

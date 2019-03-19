@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 71d97481b4d3bff1ef93839f57939875ac9268ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189899"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -3333,7 +3333,7 @@ substring('<text>', <startIndex>, <length>)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ano | String | Řetězec, jehož znaků |
-| <*startIndex*> | Ano | Integer | Kladné číslo pro počáteční pozice, nebo hodnotu indexu |
+| <*startIndex*> | Ano | Integer | Kladné číslo větší nebo rovna 0, který chcete použít jako počáteční hodnota pozice nebo index |
 | <*Délka*> | Ano | Integer | Kladný počet znaků, které chcete v dílčí řetězec |
 |||||
 
