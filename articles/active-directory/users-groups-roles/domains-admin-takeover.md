@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af2628e1da24bd790e94306703aab797a0d56a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f166555e2f21ed38e78e659ec181c2d5d90d6bf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886996"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registrace pro službu, najdete v článku [co je Samoobslužná registrace do služby Azure Active Directory?](directory-self-service-signup.md)
@@ -44,11 +44,11 @@ Některé produkty, které obsahují služby SharePoint a OneDrive, jako je Offi
 
 4. Přihlaste se k [centra pro správu Office 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Obdržíte zprávu, která dává pokyn k **stát se správcem** názvu domény, který už je ověřený v nespravovaného tenanta. Vyberte **Ano, chci se stát správcem**.
   
-  ![První obrazovka pro stát se správcem](./media/domains-admin-takeover/become-admin-first.png)
+   ![První obrazovka pro stát se správcem](./media/domains-admin-takeover/become-admin-first.png)
   
 5. Přidání záznamu TXT prokázat, že jste vlastníkem názvu domény **fourthcoffee.xyz** registrátora názvu domény. V tomto příkladu je GoDaddy.com.
   
-  ![Přidejte záznam txt pro název domény](./media/domains-admin-takeover/become-admin-txt-record.png)
+   ![Přidejte záznam txt pro název domény](./media/domains-admin-takeover/become-admin-txt-record.png)
 
 Při ověření záznamů DNS TXT vašeho registrátora názvu domény můžete spravovat tenanta Azure AD.
 
@@ -57,22 +57,22 @@ Po dokončení předchozích kroků nyní jste globální správce tenanta Fourt
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do nespravovaného tenanta na spravovaného ve službě Azure AD
 
 1. Otevřít [centra pro správu Office 365](https://portal.office.com/admintakeover).
-2. Vyberte **uživatelé** kartu a vytvořit nový uživatelský účet s názvem, jako je *user@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastního názvu domény. 
+2. Vyberte **uživatelé** kartu a vytvořit nový uživatelský účet s názvem, jako je *uživatele\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastního názvu domény. 
 3. Ujistěte se, že nový uživatelský účet má oprávnění globálního správce pro tenanta Azure AD.
 4. Otevřít **domén** kartě v Centru pro správu Office 365, vyberte název domény a vyberte **odebrat**. 
   
-  ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Pokud máte uživatelé nebo skupiny v Office 365, které odkazují na název domény odebrané, musí být přejmenován na. domény onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé jsou automaticky přejmenovány v tomhle příkladu *user@fourthcoffeexyz.onmicrosoft.com*.
+5. Pokud máte uživatelé nebo skupiny v Office 365, které odkazují na název domény odebrané, musí být přejmenován na. domény onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé jsou automaticky přejmenovány v tomhle příkladu *uživatele\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Přihlaste se k [centrum pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který má oprávnění globálního správce pro tenanta Azure AD.
   
 7. Vyberte **vlastní názvy domén**, pak přidejte název domény. Budete muset zadat záznamy DNS TXT ověřit vlastnictví názvu domény. 
   
-  ![doména přidána do služby Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![doména přidána do služby Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všechny uživatele služby Power BI nebo Azure Rights Management, kteří mají licenci přidělenou v tenantovi Office 365 musíte uložit svoje řídicí panely, pokud je odebrat název domény. Musíte se přihlásit pomocí uživatelského jména, jako je *user@fourthcoffeexyz.onmicrosoft.com* spíše než *user@fourthcoffee.xyz*.
+> Všechny uživatele služby Power BI nebo Azure Rights Management, kteří mají licenci přidělenou v tenantovi Office 365 musíte uložit svoje řídicí panely, pokud je odebrat název domény. Musíte se přihlásit pomocí uživatelského jména, jako je *uživatele\@fourthcoffeexyz.onmicrosoft.com* spíše než *uživatele\@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Externí správu převzetí
 
@@ -132,42 +132,42 @@ cmdlet | Využití
 ### <a name="powershell-example"></a>Příklad PowerShellu
 
 1. Připojení k Azure AD pomocí přihlašovacích údajů, které byly použity na nabídku samoobslužné služby:
-  ```
+   ```
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ```
+   ```
 2. Získáte seznam domén:
   
-  ```
+   ```
     Get-MsolDomain
-  ```
+   ```
 3. Spuštěním rutiny Get-MsolDomainVerificationDns způsobit:
-  ```
+   ```
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ```
+   ```
 
 4. Zkopírujte hodnotu (výzva), která je vrácena z tohoto příkazu. Příklad:
-  ```
+   ```
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ```
+   ```
 5. Ve vašem oboru názvů veřejné DNS vytvořte záznam DNS txt, který obsahuje hodnotu, kterou jste zkopírovali v předchozím kroku. Název tohoto záznamu je název nadřazené domény, takže pokud vytvoříte tento záznam o prostředku DNS role ze systému Windows Server, ponechte název prázdné a stačí vložit záznam hodnotu do textového pole.
 6. Spusťte rutinu Confirm-MsolDomain ověření před obrovskou výzvou –:
   
-  ```
+   ```
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ```
+   ```
   
-  Příklad:
+   Příklad:
   
-  ```
+   ```
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ```
+   ```
 
 Úspěšné výzvy se vrátíte na příkazový řádek bez chyby.
 

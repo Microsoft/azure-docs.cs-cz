@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109159"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086951"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -93,25 +93,25 @@ Formát OVF (Open Virtualization) šablona nasadí konfigurační server virtuá
 Pokud je potřeba, můžete znovu zaregistrujte konfigurační server ve stejném trezoru. Pokud máte počítače serveru s další proces, kromě výchozí procesový server běží na počítači konfigurační server, zaregistrujte ho znovu oba počítače.
 
 
-  1. V trezoru, otevřete **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**.
-  2. V **servery**vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
-  3. Přihlaste se k počítači konfigurační server.
-  4. V **%ProgramData%\ASR\home\svsystems\bin**, otevřete **cspsconfigtool.exe**.
-  5. Na **registrace trezoru** kartu, vyberte možnost **Procházet**a vyhledejte souboru s přihlašovacími údaji, který jste stáhli.
-  6. V případě potřeby zadejte podrobnosti o serveru proxy. Potom vyberte **Zaregistrovat**.
-  7. Otevřete okno příkazového prostředí PowerShell správce a spusťte následující příkaz:
+1. V trezoru, otevřete **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**.
+2. V **servery**vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
+3. Přihlaste se k počítači konfigurační server.
+4. V **%ProgramData%\ASR\home\svsystems\bin**, otevřete **cspsconfigtool.exe**.
+5. Na **registrace trezoru** kartu, vyberte možnost **Procházet**a vyhledejte souboru s přihlašovacími údaji, který jste stáhli.
+6. V případě potřeby zadejte podrobnosti o serveru proxy. Potom vyberte **Zaregistrovat**.
+7. Otevřete okno příkazového prostředí PowerShell správce a spusťte následující příkaz:
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >Za účelem **o přijetí změn nejnovější certifikáty** z konfiguračního serveru pro horizontální navýšení kapacity procesového serveru spusťte příkaz *"< Drive\Microsoft instalace Azure Recovery\agent\cdpcli.exe lokality >"--registermt*
+    >[!NOTE]
+    >Za účelem **o přijetí změn nejnovější certifikáty** z konfiguračního serveru pro horizontální navýšení kapacity procesového serveru spusťte příkaz *"< Drive\Microsoft instalace Azure Recovery\agent\cdpcli.exe lokality >"--registermt*
 
-  8. Nakonec spuštěním následujícího příkazu restartujte obengine.
-  ```
-          net stop obengine
-          net start obengine
+8. Nakonec spuštěním následujícího příkazu restartujte obengine.
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 

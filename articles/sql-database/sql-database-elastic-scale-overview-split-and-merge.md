@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 195b513d7cc878045449ed137a2ea72f291a9f6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308146"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901929"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
@@ -29,7 +29,7 @@ Nástroj split-merge běží jako webová služba Azure. Správce nebo vývojá�
 
 ## <a name="download"></a>Ke stažení
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentace
 
@@ -136,7 +136,7 @@ Balíček služby dělení a slučování obsahuje roli pracovního procesu a we
 
 - **Mapy horizontálních oddílů**
 
- Parametry žádosti v další části najdete informace o mapy horizontálních oddílů a hostování mapy horizontálních oddílů databáze. Zejména musíte zadat název serveru Azure SQL Database a databázi hostování shardmap, přihlašovací údaje pro připojení k databázi mapování horizontálních oddílů a nakonec název mapy horizontálních oddílů. V současné době operaci přijímá pouze jedinou sadu přihlašovacích údajů. Tyto přihlašovací údaje musí mít dostatečná oprávnění k provedení změny mapy horizontálních oddílů, stejně jako uživatelská data na horizontální oddíly.
+  Parametry žádosti v další části najdete informace o mapy horizontálních oddílů a hostování mapy horizontálních oddílů databáze. Zejména musíte zadat název serveru Azure SQL Database a databázi hostování shardmap, přihlašovací údaje pro připojení k databázi mapování horizontálních oddílů a nakonec název mapy horizontálních oddílů. V současné době operaci přijímá pouze jedinou sadu přihlašovacích údajů. Tyto přihlašovací údaje musí mít dostatečná oprávnění k provedení změny mapy horizontálních oddílů, stejně jako uživatelská data na horizontální oddíly.
 
 - **Zdrojový rozsah (rozdělení a sloučení)**
 
@@ -217,6 +217,8 @@ Služby dělení a slučování používá Azure Diagnostics založené na Azure
 ## <a name="deploy-diagnostics"></a>Nasazení diagnostiky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Pokud chcete povolit monitorováním a diagnostikou pomocí konfigurace diagnostiky pro webové a pracovní role poskytovaný balíček NuGet, spusťte následující příkazy pomocí Azure Powershellu:
 

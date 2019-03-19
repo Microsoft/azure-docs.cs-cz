@@ -1,0 +1,196 @@
+---
+title: Ukázkový – ISO 27001 podrobného plánu – mapování ovládacích prvků
+description: Mapování ovládacího prvku vzorku ISO 27001 se zásadami podrobného plánu.
+services: blueprints
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 03/14/2019
+ms.topic: conceptual
+ms.service: blueprints
+manager: carmonm
+ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
+ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 03/15/2019
+ms.locfileid: "58009244"
+---
+# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku vzorku podrobného plánu se standardy ISO 27001 Azure podrobné plány.
+
+Následující článek podrobně popisuje, jak Azure plány ISO 27001 Shared Services podrobný plán vzorku mapy k ovládacím prvkům ISO 27001 se zásadami. Další informace o ovládacích prvcích najdete v tématu [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
+
+Následující mapování **ISO 27001: 2013** ovládacích prvků. Pomocí navigace na pravé straně můžete přejít přímo na určitý ovládací prvek mapování. Mnohé z namapované ovládací prvky jsou implementovány pomocí [Azure Policy](../../../policy/overview.md) iniciativy. Si Pokud chcete projít kompletní iniciativu, otevřete **zásady** v Azure portal a vyberte **definice** stránky. Poté vyhledejte a vyberte  **[Preview] auditu ISO 27001: 2013 ovládací prvky a nasadit konkrétní rozšíření virtuálního počítače pro podporu požadavků na auditování** iniciativa předdefinovaných zásad.
+
+## <a name="a612-segregation-of-duties"></a>A.6.1.2 zodpovědnosti
+
+Pro správu redundance neumožňuje mít pouze jeden vlastník předplatného Azure. Naopak s příliš mnoho vlastníků. předplatné Azure může zvýšit riziko porušení zabezpečení přes účet ohroženým. Tento podrobný plán slouží ke správě odpovídající počet vlastníků předplatných Azure přiřazením dvě [Azure Policy](../../../policy/overview.md) definice, které auditování počet vlastníků předplatných Azure. Správa oprávnění vlastníka předplatného vám můžou pomoct implementovat odpovídající oddělení povinností.
+
+- [Preview]: Audit minimum number of owners for subscription
+- [Preview]: Audit maximum number of owners for a subscription
+
+## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 přístup k sítím a síťové služby
+
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) pro správu, kdo má přístup k prostředkům Azure. Tento podrobný plán umožňuje řídit přístup k prostředkům Azure pomocí přiřazení sedm [Azure Policy](../../../policy/overview.md) definice. Tyto zásady auditování typy prostředků a konfigurace, které vám umožní mnohem mírnější přístup k prostředkům.
+Principy prostředky, které jsou v rozporu se tyto zásady lze provést opravné akce k zajištění přístupu k prostředkům Azure nápovědy je omezené na autorizované uživatele.
+
+- [Preview]: Deploy VM extension to audit Linux VM accounts with no passwords
+- [Preview]: Deploy VM extension to audit Linux VM allowing remote connections from accounts with no
+  Heslas
+- [Preview]: Audit Linux VM accounts with no passwords
+- [Preview]: Audit Linux VM allowing remote connections from accounts with no passwords
+- Auditovat používání klasických účtů úložiště
+- Auditovat používání klasických virtuálních počítačů
+- Auditovat virtuální počítače, které nepoužívají spravované disky
+
+## <a name="a922-user-access-provisioning"></a>Zřizování A.9.2.2 uživatele přístup
+
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) pro správu, kdo má přístup k prostředkům Azure. Tento podrobný plán přiřadí tři [Azure Policy](../../../policy/overview.md) definice auditovat použití [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) ověřování pro servery SQL a [Service Fabric](../../../../service-fabric/service-fabric-overview.md). Ověřování pomocí Azure Active Directory umožňuje správu oprávnění zjednodušené a centralizované identity management uživatelů databáze a dalším službám společnosti Microsoft. Tento podrobný plán také přiřadí definici zásad Azure kontrolovat použití vlastních pravidel RBAC. Principy, kde jsou implementovat vlastní pravidla RBAC můžete ověřit potřebujete a správnou implementaci vlastní pravidla RBAC jsou náchylné k chybám.
+
+- Auditovat zřizování správce Azure Active Directory pro server SQL
+- Auditovat používání Azure Active Directory k ověřování klientů v Service Fabricu
+- Auditovat používání vlastních pravidel RBAC
+
+## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 správy privilegovaného přístupová práva
+
+Tento podrobný plán vám pomůže omezit a řídit práva privilegovaného přístupu přiřazením čtyři [Azure Policy](../../../policy/overview.md) definice a auditovat externí účty s vlastníkem a/nebo zápis oprávnění a účty s vlastníkem a/nebo oprávnění k zápisu které nemají povolené vícefaktorové ověřování.
+
+- [Preview]: Audit accounts with owner permissions who are not MFA enabled on a subscription
+- [Preview]: Audit accounts with write permissions who are not MFA enabled on a subscription
+- [Preview]: Audit external accounts with owner permissions on a subscription
+- [Preview]: Audit external accounts with write permissions on a subscription
+
+## <a name="a924-management-of-secret-authentication-information-of-users"></a>Správa A.9.2.4 informace secret ověřování uživatelů
+
+Tento podrobný plán přiřadí tři [Azure Policy](../../../policy/overview.md) definice auditovat účty, které nemají povolené vícefaktorové ověřování. Multi-Factor authentication pomáhá zabezpečit účty i v případě, že dojde k narušení jednu část ověřovacích informací. Díky monitorování účtů bez povolení ověřování službou Multi-Factor Authentication, můžete určit účty, které mohou být pravděpodobně došlo k narušení. Tento podrobný plán také přiřadí dvěma definicemi zásad Azure, které audit virtuálních počítačů s Linuxem heslo souboru oprávnění pro výstrahy v případě, že máte správně nastavené. Toto nastavení umožňuje využít nápravné akce, která Ujistěte se, že nebudou ohroženy ověřovací data.
+
+- [Preview]: Audit accounts with owner permissions who are not MFA enabled on a subscription
+- [Preview]: Audit accounts with read permissions who are not MFA enabled on a subscription
+- [Preview]: Audit accounts with write permissions who are not MFA enabled on a subscription
+- [Preview]: Deploy VM extension to audit Linux VM passwd file permissions
+- [Preview]: Audit Linux VM /etc/passwd file permissions are set to 0644
+
+## <a name="a925-review-of-user-access-rights"></a>Přehled A.9.2.5 uživatelská přístupová práva
+
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) k pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí webu Azure portal, můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí čtyři [Azure Policy](../../../policy/overview.md) definice auditovat účty, které by měl být nastaveno jako prioritní ke kontrole, včetně odepsanou účtů a externí účty se zvýšenými oprávněními.
+
+- [Preview]: Audit deprecated accounts on a subscription
+- [Preview]: Audit deprecated accounts with owner permissions on a subscription
+- [Preview]: Audit external accounts with owner permissions on a subscription
+- [Preview]: Audit external accounts with write permissions on a subscription
+
+## <a name="a926-removal-or-adjustment-of-access-rights"></a>Odebrání A.9.2.6 nebo úpravu přístupová práva
+
+Azure implementuje [řízení přístupu na základě rolí](../../../../role-based-access-control/overview.md) (RBAC) k pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) a RBAC, můžete aktualizovat role uživatele tak, aby odrážely změn v organizaci. Pokud je nepotřebujete, účtů může blokovat přihlášení (nebo odstranit), která okamžitě Odebere přístupová práva k prostředkům Azure. Tento podrobný plán přiřadí dva [Azure Policy](../../../policy/overview.md) definice auditovat odepsanou účet, který by měl být pro odebrání.
+
+- [Preview]: Audit deprecated accounts on a subscription
+- [Preview]: Audit deprecated accounts with owner permissions on a subscription
+
+## <a name="a943-password-management-system"></a>Systém správy A.9.4.3 heslo
+
+Tento podrobný plán umožňuje vynucování silných hesel přiřazením 10 [Azure Policy](../../../policy/overview.md) definice, které auditovat virtuální počítače s Windows, který nevynucují minimální sílu a další požadavky na heslo. Sledování virtuálních počítačů v rozporu se zásadami sílu hesel umožňuje provést opravné akce k zajištění, že jsou kompatibilní s zásady hesla pro všechny uživatelské účty virtuálního počítače.
+
+- [Preview]: Deploy VM extension to audit Windows VM enforces password complexity requirements
+- [Preview]: Deploy VM extension to audit Windows VM maximum password age 70 days
+- [Preview]: Deploy VM extension to audit Windows VM minimum password age 1 day
+- [Preview]: Deploy VM extension to audit Windows VM passwords must be at least 14 characters
+- [Preview]: Deploy VM extension to audit Windows VM should not allow previous 24 passwords
+- [Preview]: Audit Windows VM enforces password complexity requirements
+- [Preview]: Audit Windows VM maximum password age 70 days
+- [Preview]: Audit Windows VM minimum password age 1 day
+- [Preview]: Audit Windows VM passwords must be at least 14 characters
+- [Preview]: Audit Windows VM should not allow previous 24 passwords
+
+## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 zásady týkající se použití kryptografie
+
+Tento podrobný plán umožňuje vynucovat zásady týkající se použití ovládacích prvků cryptograph přiřazením 13 [Azure Policy](../../../policy/overview.md) definice, které vynucují konkrétní cryptograph ovládací prvky a auditu použití nastavení slabého šifrování.
+Principy, kde vašich prostředků Azure může mít optimální kryptografické konfigurace můžete provést opravné akce k zajištění, že prostředky jsou nakonfigurované v souladu se zásadami zabezpečení vašich informací. Konkrétně zásady přiřazené službou Tento podrobný plán vyžadovat šifrování pro účty blob storage a účty úložiště data lake; vyžadovat transparentní šifrování dat v databázích SQL; Auditovat chybějící šifrování na účty úložiště, databáze SQL, disky virtuálních počítačů a proměnných účtu automation; Auditovat nezabezpečené připojení k účtům úložiště, aplikace Function App, webové aplikace, aplikace API a Redis Cache Auditovat šifrování hesla malý virtuální počítač; a auditovat nešifrovaná komunikace Service Fabric.
+
+- [Preview]: Audit HTTPS only access for a Function App
+- [Preview]: Audit HTTPS only access for a Web Application
+- [Preview]: Audit HTTPS only access for an API App
+- [Preview]: Audit missing blob encryption for storage accounts
+- [Preview]: Deploy VM extension to audit Windows VM should not store passwords using reversible
+  šifrovánín
+- [Preview]: Audit Windows VM should not store passwords using reversible encryption
+- [Preview]: Monitor unencrypted SQL database in Azure Security Center
+- [Preview]: Monitor unencrypted VM Disks in Azure Security Center
+- Auditovat povolení šifrování proměnných účtu Automation
+- Auditovat povolení výhradně zabezpečených připojení k Redis Cache
+- Auditovat zabezpečený přenos na účty úložiště
+- Auditovat nastavení vlastnosti ClusterProtectionLevel v Service Fabricu na EncryptAndSign
+- Auditování stavu transparentního šifrování dat
+
+## <a name="a1241-event-logging"></a>Protokolování událostí A.12.4.1
+
+Tento podrobný plán vám pomůže zajistit systémové události jsou protokolovány přiřazením sedm [Azure Policy](../../../policy/overview.md) definice, které auditování protokolu nastavení pro prostředky Azure. Přiřazených zásad se taky Audituje, jestli virtuální počítače nejsou posílá protokoly do pracovního prostoru zadané log analytics.
+
+- [Preview]: Nasazení agenta závislostí auditu - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
+- [Preview]: Auditovat nasazení agenta závislostí v VMSS - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
+- [Preview]: Auditovat nasazení agenta Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
+- [Preview]: Auditovat nasazení agenta Log Analytics v VMSS - obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
+- [Preview]: Monitor unaudited SQL database in Azure Security Center
+- Auditování nastavení diagnostiky
+- Auditovat nastavení auditování SQL na úrovni serveru
+
+## <a name="a121-management-of-technical-vulnerabilities"></a>Správa A.12.1 technické ohrožení zabezpečení
+
+Tento podrobný plán slouží ke správě systému informace o ohrožení zabezpečení přiřazením pět [Azure Policy](../../../policy/overview.md) definice, které monitorovat chybějící aktualizace systému, ohrožení zabezpečení operačního systému, SQL ohrožení zabezpečení a virtuální počítač ohrožení zabezpečení. Tyto přehledy poskytují v reálném čase informace o stavu zabezpečení nasazených prostředků a můžete určit prioritu nápravné akce.
+
+- [Preview]: Monitor missing Endpoint Protection in Azure Security Center
+- [Preview]: Monitor missing system updates in Azure Security Center
+- [Preview]: Monitor OS vulnerabilities in Azure Security Center
+- [Preview]: Monitor SQL vulnerability assessment results in Azure Security Center
+- [Preview]: Monitor VM Vulnerabilities in Azure Security Center
+
+## <a name="a1262-restrictions-on-software-installation"></a>A.12.6.2 omezení týkající se instalace softwaru
+
+Adaptivní řízení aplikací je řešení ze služby Azure Security Center, které pomáhá řídit aplikace, které můžete spouštět na vašich virtuálních počítačích v Azure. Tento podrobný plán přiřadí definici rozhraní Azure Policy, která sleduje změny sadu povolených aplikací. Omezení týkající se instalace softwaru můžete snížit pravděpodobnost, že zavedení chybami zabezpečení softwaru.
+
+- [Preview]: Monitor possible app Whitelisting in Azure Security Center
+
+## <a name="a1311-network-controls"></a>Ovládací prvky A.13.1.1 sítě
+
+Tento podrobný plán umožňuje spravovat a řídit sítě tak, že přiřadíte [Azure Policy](../../../policy/overview.md) definice, která monitoruje skupiny zabezpečení sítě s benevolentními pravidly. Pravidla, která jsou příliš benevolentními může povolit nežádoucí síťový přístup a byste měli zkontrolovat.
+
+- [Preview]: Monitor permissive network access in Azure Security Center
+
+## <a name="a1321-information-transfer-policies-and-procedures"></a>Zásady přenosu A.13.2.1 informace a postupy
+
+Podrobný plán vám pomůže zajistit přenosu informací pomocí služeb Azure je zabezpečený přiřazením dvě [Azure Policy](../../../policy/overview.md) definice auditovat nezabezpečené připojení k účtům úložiště a Redis Cache.
+
+- Auditovat povolení výhradně zabezpečených připojení k Redis Cache
+- Auditovat zabezpečený přenos na účty úložiště
+
+## <a name="a1413-protecting-application-services-transactions"></a>Transakce služeb A.14.1.3 Ochrana aplikací
+
+Tento podrobný plán vám pomůže chránit informace prostředků systému přiřazením tři [Azure Policy](../../../policy/overview.md) definice, které monitorovat nechráněné koncové body, aplikacím a účtům úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem můžete povolit nežádoucí přístup informace obsažené v informačním systému.
+
+- [Preview]: Monitor unprotected network endpoints in Azure Security Center
+- [Preview]: Monitor unprotected web application in Azure Security Center
+- Auditovat neomezený síťový přístup k účtům úložiště
+
+## <a name="a1613-reporting-information-security-weaknesses"></a>A.16.1.3 slabá místa zabezpečení informace o vytváření sestav
+
+Tento podrobný plán slouží ke správě povědomí o ohrožení zabezpečení systému přiřazením pět [Azure Policy](../../../policy/overview.md) definice, které monitorovat ohrožení zabezpečení, patch stav a výstrahy malwaru ve službě Azure Security Center. Azure Security Center nabízí možnosti vytváření sestav, které vám umožní mít v reálném čase přehled o stavu zabezpečení nasazených prostředků Azure.
+
+- [Preview]: Monitor missing Endpoint Protection in Azure Security Center
+- [Preview]: Monitor missing system updates in Azure Security Center
+- [Preview]: Monitor OS vulnerabilities in Azure Security Center
+- [Preview]: Monitor SQL vulnerability assessment results in Azure Security Center
+- [Preview]: Monitor VM Vulnerabilities in Azure Security Center
+
+## <a name="next-steps"></a>Další postup
+
+Teď, když jste zkontrolovali mapování ovládacích prvků podrobného plánu ISO 27001 sdílené služby, najdete v následujících článcích najdete informace o architektuře a jak nasadit tuto ukázku:
+
+> [!div class="nextstepaction"]
+> [Podrobný plán ISO 27001 Shared Services - přehled](./index.md)
+> [ISO 27001 Shared Services podrobný plán – kroky nasazení](./deploy.md)
+
+Další články o podrobné plány a jejich použití:
+
+- Další informace o [podrobný plán životního cyklu](../../concepts/lifecycle.md).
+- Vysvětlení použití [statické a dynamické parametry](../../concepts/parameters.md).
+- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](../../concepts/sequencing-order.md).
+- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](../../concepts/resource-locking.md).
+- Zjistěte, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

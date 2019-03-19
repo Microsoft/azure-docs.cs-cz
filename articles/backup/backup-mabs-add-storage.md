@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: ee62138a56851747e75d75b7a806b2b73ba4fbbb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852853"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -75,7 +75,7 @@ U služby úložiště zohledňující úlohy můžete vybrat svazky, které ukl
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Úložiště zohledňující úlohy můžete nastavit pomocí rutiny Powershellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na Azure Backup serveru. 
+Úložiště zohledňující úlohy můžete nastavit pomocí rutiny Powershellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na Server služby Azure Backup. 
 
 Syntaxe:
 
@@ -100,13 +100,13 @@ Aktualizace skupin ochrany na používání moderního úložiště záloh je vo
 
 1. V konzole pro správu, vyberte **ochrany** funkce. V **člena skupiny ochrany** seznamu, klikněte pravým tlačítkem na člena a pak vyberte **zastavit ochranu člena**.
 
-  ![Zastavit ochranu člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Zastavit ochranu člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. V **odebrat ze skupiny** dialogové okno pole, zkontrolujte, využité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Klikněte na **OK**.
 
-  Pokud chcete využité místo na disku ihned vrátit do volného fondu úložiště, vyberte **odstranit repliku na disku** zaškrtávací políčko, chcete-li odstranit zálohovaná data (a body obnovení) přidružené k tohoto člena.
+   Pokud chcete využité místo na disku ihned vrátit do volného fondu úložiště, vyberte **odstranit repliku na disku** zaškrtávací políčko, chcete-li odstranit zálohovaná data (a body obnovení) přidružené k tohoto člena.
 
-  ![Odebrat ze skupiny, dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Odebrat ze skupiny, dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Vytvořte skupinu ochrany, která používá moderní úložiště záloh. Zahrnout ní nechráněné zdroje dat.
 

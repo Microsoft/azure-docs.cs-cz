@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 9a9fe0a92f8a8eadbd72ae56303348413a9d10c3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011617"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak začít s Azure Table storage a Visual Studio připojené služby
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak začít používat Azure Table storage v sadě Visu
 
 Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat. Další obecné informace o používání služby Azure Table storage najdete v tématu [Začínáme s Azure Table storage pomocí .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-Abyste mohli začít, nejprve vytvořte tabulku v účtu úložiště. Tento článek popisuje pak v tom, jak vytvořit tabulku v jazyce C# a jak provádět základní tabulka operace, jako jsou přidání, úprava, čtení a odebrání položky tabulky.  Tento kód použije klientskou knihovnu pro úložiště Azure pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
+Abyste mohli začít, nejprve vytvořte tabulku v účtu úložiště. Tento článek popisuje pak v tom, jak vytvořit tabulku v jazyce C# a jak provádět základní tabulka operace, jako jsou přidání, úprava, čtení a odebrání položky tabulky.  Tento kód použije klientskou knihovnu pro úložiště Azure pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](https://www.asp.net).
 
 Některé z rozhraní API služby Azure Storage jsou asynchronní a kódu v tomto článku se předpokládá, že se používají asynchronní metody. Zobrazit [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) Další informace.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: eeb3b2098cf477004ba7ad85a903f1a8e2267392
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117825"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -52,14 +52,14 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
-| Oracle |Zprostředkovatel Microsoft OLE DB pro Oracle, poskytovatel dat Oracle pro .NET |Poskytovatel dat Oracle pro .NET | |
-| Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Data Provider for .NET |Poskytovatel Teradata dat pro .NET | |
+| Oracle |Zprostředkovatel Microsoft OLE DB pro Oracle, poskytovatel dat Oracle pro .NET |Poskytovatel dat Oracle pro .NET |
+| Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Data Provider for .NET |Poskytovatel Teradata dat pro .NET |
 | | | |
 
 ### <a name="in-memory-only"></a>V paměti pouze
 
 |Zdroj dat  |  
-|---------|---------|
+|---------|
 |Databáze aplikace Access     |  
 |Služby Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
@@ -83,7 +83,7 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 |SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Databáze Sybase     |  
 |Tabulky XML<sup>[1](#tab1400b)</sup>    |  
-|||
+||
  
 <a name="tab1400b">1</a> pouze vyšší modely a model tabulkový 1400.
 

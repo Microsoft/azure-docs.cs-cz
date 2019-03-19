@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ec90c230674799d9b2f56f1659d61032d0eb834c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848673"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 
@@ -132,8 +132,8 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 5. Pak přidejte knihovny Azure Notification Hubs. Do souboru `Build.Gradle` pro aplikaci přidejte následující řádky v části obsahující závislosti.
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     Přidejte následující úložiště za část obsahující závislosti.
@@ -141,7 +141,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. Stáhněte a rozbalte sadu [Baidu Push Android SDK](http://push.baidu.com/doc/android/api). Zkopírujte soubor `pushservice-x.y.z jar` do složky libs. Pak zkopírujte soubory s příponou `.so` do složek `src/main/jniLibs` (vytvořte novou složku) vaší aplikace pro Android.
+6. Stáhněte a rozbalte sadu [Baidu Push Android SDK](https://push.baidu.com/doc/android/api). Zkopírujte soubor `pushservice-x.y.z jar` do složky libs. Pak zkopírujte soubory s příponou `.so` do složek `src/main/jniLibs` (vytvořte novou složku) vaší aplikace pro Android.
 
     ![Azure Notification Hubs – Knihovny sady Baidu SDK](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -497,7 +497,7 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    Tento příkaz přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+    Tento příkaz přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ Pro odeslání testovacího oznámení můžete použít kartu ladění na webu 
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
-[portál Baidu]: http://www.baidu.com/
+[portál Baidu]: https://www.baidu.com/
