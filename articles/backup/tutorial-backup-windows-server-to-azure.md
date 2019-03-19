@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 0664134e29f1b5a6ea6c4e100db925e9055d836d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097419"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -88,11 +88,11 @@ Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení m
 
 1. Vyhledejte a dvakrát klikněte na stažený soubor **MARSagentinstaller.exe**.
 2. Zobrazí se **Průvodce instalací agenta služby Microsoft Azure Recovery Services**. Při procházení průvodce zadejte po zobrazení výzev následující informace a pak klikněte na **Zaregistrovat**.
-    - Umístění instalace a složky mezipaměti.
-    - Informace o proxy serveru, pokud pro připojování k internetu používáte proxy server.
-    - Vaše uživatelské jméno a heslo, pokud používáte ověřený proxy server.
+   - Umístění instalace a složky mezipaměti.
+   - Informace o proxy serveru, pokud pro připojování k internetu používáte proxy server.
+   - Vaše uživatelské jméno a heslo, pokud používáte ověřený proxy server.
 
-    ![Příprava infrastruktury](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![Příprava infrastruktury](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. Na konci průvodce klikněte na **Pokračovat k registraci** a zadejte soubor s **přihlašovacími údaji trezoru**, který jste stáhli v předchozím postupu.
  

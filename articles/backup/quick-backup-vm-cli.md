@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 961f231f9d8ab339d06e9521830c58d175c4a9e3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8a7c722944aacaca9780939a1726c6e47be79be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112037"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač v Azure pomocí Azure CLI. K provedení těchto kroků můžete také využít [Azure PowerShell](quick-backup-vm-powershell.md) nebo [Azure Portal](quick-backup-vm-portal.md).
@@ -58,7 +58,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!NOTE]
-Pokud se virtuální počítač nenachází ve stejné skupině prostředků jako trezor, potom skupina myResourceGroup odkazuje na skupinu prostředků, ve které byl trezor vytvořen. Místo názvu virtuálního počítače uveďte ID virtuálního počítače, jak je uvedeno níže.
+> Pokud se virtuální počítač nenachází ve stejné skupině prostředků jako trezor, potom skupina myResourceGroup odkazuje na skupinu prostředků, ve které byl trezor vytvořen. Místo názvu virtuálního počítače uveďte ID virtuálního počítače, jak je uvedeno níže.
 
 ```azurecli-interactive 
 az backup protection enable-for-vm \

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ad607ad7ef1ee91ea9c886a76faabb0f304969d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012253"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Požadavky na úložiště Azure Data Box Blob
 
@@ -96,7 +96,7 @@ Spustit: Nainstalujte php composer.phar.
 
 ### <a name="endpoint-declaration"></a>Koncový bod deklarace
 
-Koncový bod úložiště objektů Blob v Azure Data Box obsahuje dvě části: název oblasti a domény zařízení Data Box. V poli datový objekt Blob storage SDK, je výchozí koncový bod <serial no. of the device>. microsoftdatabox.com.  Další informace o koncový bod služby blob service, přejděte na [připojit přes pole datový objekt Blob úložiště](data-box-deploy-copy-data-via-rest.md).
+Koncový bod úložiště objektů Blob v Azure Data Box obsahuje dvě části: název oblasti a domény zařízení Data Box. V poli datový objekt Blob storage SDK, je výchozí koncový bod \<Sériové č. zařízení >. microsoftdatabox.com.  Další informace o koncový bod služby blob service, přejděte na [připojit přes pole datový objekt Blob úložiště](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Příklady
 

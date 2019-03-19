@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16763827c043d56ea9a3d461873dc78456cf678d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084077"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -76,8 +76,8 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 5. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte následující pokyny pro nastavení:
    - **Interní adresa URL**: Obvykle je zadat adresu URL, která vás na přihlašovací stránce aplikace, když jste v podnikové síti. V tomto scénáři konektoru je potřeba považovat za PingAccess proxy serveru na přední stránce aplikace. Použijte tento formát: `https://<host name of your PA server>:<port>`. Port, který je 3000 ve výchozím nastavení, ale můžete ho nakonfigurovat PingAccess.
 
-    > [!WARNING]
-    > Pro tento typ jednotného přihlašování interní adresa URL musí používat protokol https a http nelze použít.
+     > [!WARNING]
+     > Pro tento typ jednotného přihlašování interní adresa URL musí používat protokol https a http nelze použít.
 
    - **Metoda předběžného ověřování služby**: Azure Active Directory
    - **Přeložit adresy URL v hlavičkách**: Ne
@@ -91,49 +91,49 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 9. V okně správy aplikace vyberte **jednotného přihlašování**.
 10. Zvolte **přihlašování na základě záhlaví** z rozevírací nabídky. Vyberte **Uložit**.
 
-   >[!TIP]
-   >Pokud je toto vaše první přihlášení pomocí založeným na hlavičkách jednotného přihlašování, budete muset nainstalovat PingAccess. Ujistěte se, že vaše předplatné Azure je automaticky přiřazen k instalaci PingAccess, použijte odkaz na této stránce jednotné přihlašování ke stažení PingAccess. Můžete teď otevřít server pro stahování nebo vraťte na tuto stránku později. 
+    >[!TIP]
+    >Pokud je toto vaše první přihlášení pomocí založeným na hlavičkách jednotného přihlašování, budete muset nainstalovat PingAccess. Ujistěte se, že vaše předplatné Azure je automaticky přiřazen k instalaci PingAccess, použijte odkaz na této stránce jednotné přihlašování ke stažení PingAccess. Můžete teď otevřít server pro stahování nebo vraťte na tuto stránku později. 
 
-   ![Vyberte přihlašování na základě záhlaví](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
+    ![Vyberte přihlašování na základě záhlaví](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
 
 11. Zavřete okno podnikových aplikací nebo posuňte se úplně vlevo se vraťte do nabídky Azure Active Directory.
 12. Vyberte **Registrace aplikací**.
 
-   ![Výběr registrace aplikací](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
+    ![Výběr registrace aplikací](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
 
 13. Vyberte aplikace, které jste právě přidali, pak **adresy URL odpovědí**.
 
-   ![Vyberte adresy URL odpovědí](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
+    ![Vyberte adresy URL odpovědí](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
 
 14. Zaškrtněte, pokud chcete zjistit, jestli externí adresu URL, který jste přiřadili do vaší aplikace v kroku 5 v seznamu adres URL odpovědí. Pokud není, přidejte ji.
 15. V okně Nastavení app vyberte **požadovaná oprávnění**.
 
-  ![Vyberte požadovaná oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+    ![Vyberte požadovaná oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
 16. Vyberte **Přidat**. Rozhraní API, zvolte **Windows Azure Active Directory**, pak **vyberte**. Oprávnění, zvolte **pro čtení a zápis všech aplikací** a **přihlášení a čtení profilu uživatele**, pak **vyberte** a **provádí**.  
 
-  ![Vybrat oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
+    ![Vybrat oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
 
 17. Před zavřením okna oprávnění udělit oprávnění. 
-![Udělení oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+    ![Udělení oprávnění](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
 
 ### <a name="collect-information-for-the-pingaccess-steps"></a>Shromáždit data za PingAccess kroky
 
 1. V okně Nastavení aplikace, vyberte **vlastnosti**. 
 
-  ![Výběr vlastností](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
+   ![Výběr vlastností](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
 
 2. Uložit **Id aplikace** hodnotu. Používá se pro ID klienta při konfiguraci PingAccess.
 3. V okně Nastavení app vyberte **klíče**.
 
-  ![Vyberte klíče](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
+   ![Vyberte klíče](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
 
 4. Vytvořte klíč tak, že zadáte popis klíče a zvolíte datum vypršení platnosti z rozevírací nabídky.
 5. Vyberte **Uložit**. Identifikátor GUID se zobrazí v **hodnotu** pole.
 
-  Uložte tuto hodnotu, nebudou moct podívat, jak to znovu po zavření tohoto okna.
+   Uložte tuto hodnotu, nebudou moct podívat, jak to znovu po zavření tohoto okna.
 
-  ![Vytvořit nový klíč](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
+   ![Vytvořit nový klíč](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
 
 6. Zavřete okno registrace aplikace a posuňte se úplně vlevo se vraťte do nabídky Azure Active Directory.
 7. Vyberte **vlastnosti**.

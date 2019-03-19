@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2970ef58e177d10eac80d46825f3fb985b98af61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842444"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -49,14 +49,14 @@ Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. H
 
 ## <a name="2-create-a-microsoft-account"></a>2. Vytvoření účtu Microsoft  
 | 15 min |  
-Účet Microsoft, například *@outlook.com nebo @live.com*, se používá pro přístup k mnoha Microsoft zařízení a služeb. Je vyžadována pro transact nabídky Azure Marketplace, a doporučujeme jeho použití pro všechny vydavatele cloudu. Další informace o výhodách a používá účet Microsoft [tuto stránku](https://account.microsoft.com/account/). Osobní účet Microsoft budete používat pro přístup na portál Cloud Partner, nabízí platforma pro publikování, který budete používat k vytváření a správě vašeho webu marketplace. 
+Účet Microsoft, například  *\@outlook.com nebo \@live.com*, se používá pro přístup k mnoha Microsoft zařízení a služeb. Je vyžadována pro transact nabídky Azure Marketplace, a doporučujeme jeho použití pro všechny vydavatele cloudu. Další informace o výhodách a používá účet Microsoft [tuto stránku](https://account.microsoft.com/account/). Osobní účet Microsoft budete používat pro přístup na portál Cloud Partner, nabízí platforma pro publikování, který budete používat k vytváření a správě vašeho webu marketplace. 
 
 [! [Důležité] nezapomeňte prosím, že účet Microsoft spojený s pracovní e-mailu vám neumožní přístup k portálu.
 
->[!Note]
->Pokud už máte účet Microsoft, přečtěte si [pokyny k tvorbě ID Microsoftu ke správě účtu marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) k určení, pokud lze použít pro publikování na webu marketplace. 
-
->Uživatelé s podnikovým účtem Azure Active Directory federated byste si přečíst [v tomto článku](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) než se pokusíte vytvořit nebo použít existující Account Microsoft.
+> [!Note]
+> Pokud už máte účet Microsoft, přečtěte si [pokyny k tvorbě ID Microsoftu ke správě účtu marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) k určení, pokud lze použít pro publikování na webu marketplace. 
+> 
+> Uživatelé s podnikovým účtem Azure Active Directory federated byste si přečíst [v tomto článku](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) než se pokusíte vytvořit nebo použít existující Account Microsoft.
 
 *   Nápovědu k vytváření a správě vašeho účtu Microsoft, přejděte [stránky podpory nápovědy účtu Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 

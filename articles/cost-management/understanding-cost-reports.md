@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103417"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109810"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy Cloudyn sestav správy nákladů
 
@@ -41,7 +41,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
       - Správa majetku
       - Optimalizace
 
-  Zadejte název filtru a kliknutím na **Uložit**.
+   Zadejte název filtru a kliknutím na **Uložit**.
 
 3. **Značky**
 
@@ -71,55 +71,55 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
       - Značky entit nákladů Cloudyn
       - Kategorie značky předplatného pro účely přidělování nákladů
 
-  Příklady můžou zahrnovat:
-     - Nákladové středisko
-     - Oddělení
-     - Aplikace
-     - Prostředí
-     - Cenově kódu
+   Příklady můžou zahrnovat:
+   - Nákladové středisko
+   - Oddělení
+   - Aplikace
+   - Prostředí
+   - Cenově kódu
 
-    Tady je seznam předdefinovaných skupin v sestavách dostupná:
+     Tady je seznam předdefinovaných skupin v sestavách dostupná:
 
-    - **Typ nákladu pro přenos**
-      - Vyberte typ nákladů nebo více typů náklady, nebo všechny. Typy nákladů patří:
-        - Jednorázový poplatek
-        - Podpora
-        - Poplatky za využití
-    - **Zákazníka**
-        - Vyberte konkrétního zákazníka, více zákazníků, nebo všechny zákazníky.
-    - **Název účtu**
-        - Název účtu nebo předplatného. V Azure je název předplatného Azure.
-    - **Číslo účtu**
-        - Vyberte účet, více účtů nebo pro všechny účty. V Azure je GUID předplatného Azure.
-    - **Nadřazené účtu**
-        - Vyberte účet nadřazené, více účtů nebo select.
-    - **Služba**
-        - Vyberte službu, více služeb, nebo všechny služby.
-    - **Poskytovatel**
-        - Rozhraní poskytovatele cloudu, kde jsou přidružené prostředky a náklady.
-    - **Oblast**
-        - Oblast, ve které je hostitelem prostředku.
-    - **Zóna dostupnosti**
-        - AWS izolované umístění v rámci oblasti.
-    - **Typ prostředku**
-        - Typ prostředku používá.
-    - **Dílčí typ**
-        - Výběr dílčí typu.
-    - **Operace**
-        - Vyberte operaci, nebo **Zobrazit vše**.
-    - **Cenový Model**
-        - Všechny předem
-        - Bez předem
-        - Částečné předem
-        - Na vyžádání
-        - Rezervace
-        - Místo
-    - **Poplatek za typ**
-        - Vyberte typ poplatku záporné nebo kladné nebo obojí.
-    - **Tenantů**
-        - Určuje, zda počítač běží jako vyhrazený počítač.
-    -   **Typ využití**
-          - Typ využití může být jednorázové poplatky nebo opakované poplatky.
+     - **Typ nákladu pro přenos**
+     - Vyberte typ nákladů nebo více typů náklady, nebo všechny. Typy nákladů patří:
+       - Jednorázový poplatek
+       - Podpora
+       - Poplatky za využití
+     - **Zákazníka**
+       - Vyberte konkrétního zákazníka, více zákazníků, nebo všechny zákazníky.
+     - **Název účtu**
+       - Název účtu nebo předplatného. V Azure je název předplatného Azure.
+     - **Číslo účtu**
+       - Vyberte účet, více účtů nebo pro všechny účty. V Azure je GUID předplatného Azure.
+     - **Nadřazené účtu**
+       - Vyberte účet nadřazené, více účtů nebo select.
+     - **Služba**
+       - Vyberte službu, více služeb, nebo všechny služby.
+     - **Poskytovatel**
+       - Rozhraní poskytovatele cloudu, kde jsou přidružené prostředky a náklady.
+     - **Oblast**
+       - Oblast, ve které je hostitelem prostředku.
+     - **Zóna dostupnosti**
+       - AWS izolované umístění v rámci oblasti.
+     - **Typ prostředku**
+       - Typ prostředku používá.
+     - **Dílčí typ**
+       - Výběr dílčí typu.
+     - **Operace**
+       - Vyberte operaci, nebo **Zobrazit vše**.
+     - **Cenový Model**
+       - Všechny předem
+       - Bez předem
+       - Částečné předem
+       - Na vyžádání
+       - Rezervace
+       - Místo
+     - **Poplatek za typ**
+       - Vyberte typ poplatku záporné nebo kladné nebo obojí.
+     - **Tenantů**
+       - Určuje, zda počítač běží jako vyhrazený počítač.
+     - **Typ využití**
+       - Typ využití může být jednorázové poplatky nebo opakované poplatky.
 
 5. **Filtry**
 
@@ -139,7 +139,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
     - Poplatky za nákupy rezervovaných instancí
     - Některé položky Azure Marketplace.
 
-  V části amortizace, vyberte **Amortizovaných nákladů** nebo **skutečné náklady**.
+   V části amortizace, vyberte **Amortizovaných nákladů** nebo **skutečné náklady**.
 
 8. **Řešení**
 
@@ -162,7 +162,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Zobrazit/Skrýt možnost nemá žádný efekt v sestavách.
 
-12.   **Formáty zobrazení**
+12. **Formáty zobrazení**
 
     Pomocí formátů zobrazení vyberte různá zobrazení grafu nebo tabulce.
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864090"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113729"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytvoření kontroly přepis videa pomocí .NET
 
@@ -246,10 +246,10 @@ Kromě přidání přepis videa shrnutí, je také přidat výsledek moderován�
 1. Název týmu Content Moderatoru.
 1. ID videa kontroly vrácený **CreateVideoReviews**.
 1. Objekt IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** má následující vlastnosti:
-- **Podmínky**. Objekt IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
-- **Index**. Index založený na nule termín.
-- **Termín**. Řetězec, který obsahuje výraz.
-- **Časové razítko**. Řetězec, který obsahuje během několika sekund, čas v přepisu, ve kterém se nacházejí podmínky.
+1. **Podmínky**. Objekt IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** má následující vlastnosti:
+1. **Index**. Index založený na nule termín.
+1. **Termín**. Řetězec, který obsahuje výraz.
+1. **Časové razítko**. Řetězec, který obsahuje během několika sekund, čas v přepisu, ve kterém se nacházejí podmínky.
 
 Zápis musí být ve formátu WebVTT. Další informace najdete v tématu [WebVTT: Text videa na webu sleduje formátu](https://www.w3.org/TR/webvtt1/).
 

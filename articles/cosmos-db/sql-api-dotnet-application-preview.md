@@ -1,6 +1,6 @@
 ---
-title: Kurz pro vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .net ve verzi preview SDK.
-description: Tento kurz popisuje, jak vytvořit ASP .net MVC webovou aplikaci pomocí služby Azure Cosmos DB. Budete ukládat a přistupovat k datům JSON z aplikace seznamu úkolů hostované v Azure.
+title: Kurz k vývoji webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB s použitím rozhraní .NET ve verzi preview SDK.
+description: Tento kurz popisuje, jak vytvořit webovou aplikaci ASP .NET MVC s použitím služby Azure Cosmos DB. Budete ukládat a přistupovat k datům JSON z aplikace seznamu úkolů hostované v Azure.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: fa2657fbc4e5fe734b8e026494351fef2aea1c2a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bf1da7e8a1041b15076ebda6eeac9b0a75c567c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857160"
 ---
-# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .net ve verzi preview SDK 
+# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET MVC pomocí služby Azure Cosmos DB pomocí rozhraní .NET ve verzi preview SDK 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -26,7 +26,7 @@ ms.locfileid: "57454200"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure Cosmos DB k ukládání a přístup k datům z aplikace ASP.NET MVC, která je hostována v Azure. V tomto kurzu pomocí .net SDK V3, který je v současné době ve verzi preview. Následující obrázek ukazuje webové stránky, které vytvoříte pomocí ukázky v tomto článku:
+V tomto kurzu se dozvíte, jak pomocí služby Azure Cosmos DB k ukládání a přístup k datům z aplikace ASP.NET MVC, která je hostována v Azure. V tomto kurzu použijete V3 sady SDK .NET, který je aktuálně ve verzi preview. Následující obrázek ukazuje webové stránky, které vytvoříte pomocí ukázky v tomto článku:
  
 ![Snímek obrazovky aplikace seznam úkolů vytvořené v tomto kurzu – podrobný kurz ASP.NET MVC krok za krokem webové aplikace MVC](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
 
@@ -77,7 +77,7 @@ V další části můžete vytvořit novou aplikaci ASP.NET MVC.
 
 3. Do pole **Název** zadejte název projektu. Tento kurz používá název todo. Pokud se rozhodnete použít něco jiného, pak bez ohledu na to v tomto kurzu bude zmíněn obor názvů todo, upravte poskytnuté ukázky kódu pro používaly vámi zvolený název aplikace. 
 
-4. Vyberte **Procházet** přejděte do složky, ve kterém chcete vytvořit projekt a klikněte na tlačítko **rozhraní .net framework 4.6.1** nebo vyšší. Vyberte **OK**. 
+4. Vyberte **Procházet** přejděte do složky, ve kterém chcete vytvořit projekt a klikněte na tlačítko **rozhraní .NET framework 4.6.1** nebo vyšší. Vyberte **OK**. 
 
 5. Zobrazí se dialogové okno **Nová webová aplikace ASP.NET**. V podokně šablon vyberte **MVC**.
 
@@ -235,7 +235,7 @@ První věc, kterou zde potřeba udělat, je přidat třídu, která obsahuje lo
    defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
    ```
 
-  Tento kód nyní technologii ASP.NET MVC řekne, že pokud jste nezadali hodnotu v adrese URL pro řízení chování směrování, namísto **Domů**, používá **položky** jako kontroler a **Index**jako zobrazení.
+   Tento kód nyní technologii ASP.NET MVC řekne, že pokud jste nezadali hodnotu v adrese URL pro řízení chování směrování, namísto **Domů**, používá **položky** jako kontroler a **Index**jako zobrazení.
 
 Teď Pokud aplikaci spouštíte, zavolá do vašeho **ItemController** , která volá metodu getitems, pomocí z TodoItemService třídy, které definujete v další části. 
 

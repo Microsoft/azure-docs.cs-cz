@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: a3a259b9734a1cc313e046d9946a090232cd14a1
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088413"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -65,9 +65,9 @@ Ve verzi 2.x, byly provedeny následující změny:
 
 * Konfigurační soubor hostitele (host.json) by měl být prázdný nebo obsahovat řetězec `"version": "2.0"`.
 
-* Ke zlepšení monitorování na řídicím panelu webjobs nechat na portálu, který používá [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) nastavení se nahradí pomocí Azure Application Insights, který používá [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsightsinstrumentationkey) nastavení. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+* Ke zlepšení monitorování na řídicím panelu webjobs nechat na portálu, který používá [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) nastavení se nahradí pomocí Azure Application Insights, který používá [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) nastavení. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-* Všechny funkce v aplikaci function app musí sdílet stejný jazyk. Když vytvoříte aplikaci function app, musíte zvolit zásobník modulu runtime pro aplikace. Zásobník modulu runtime je určená [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functionsworkerruntime) hodnota v nastavení aplikace. Tento požadavek byl přidán do zrychlit uvádění nároky na místo a spuštění. Při vývoji místně, musíte taky zahrnout toto nastavení [souboru local.settings.json](functions-run-local.md#local-settings-file).
+* Všechny funkce v aplikaci function app musí sdílet stejný jazyk. Když vytvoříte aplikaci function app, musíte zvolit zásobník modulu runtime pro aplikace. Zásobník modulu runtime je určená [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) hodnota v nastavení aplikace. Tento požadavek byl přidán do zrychlit uvádění nároky na místo a spuštění. Při vývoji místně, musíte taky zahrnout toto nastavení [souboru local.settings.json](functions-run-local.md#local-settings-file).
 
 * Výchozí hodnota časového limitu pro funkce v plánu služby App Service se změní na 30 minut. Časový limit můžete ručně změnit zpět na neomezený počet pomocí [functionTimeout](functions-host-json.md#functiontimeout) nastavení v host.json.
 
@@ -109,7 +109,7 @@ Pro vývoj pro Visual Studio Code, budete také muset aktualizovat nastavení hl
 
 ### <a name="changing-version-of-apps-in-azure"></a>Změna verze aplikace v Azure
 
-Verze modulu runtime Functions používá publikované aplikace v Azure závisí [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functionsextensionversion) nastavení aplikace. Hodnota `~2` zaměřuje na modul runtime verze 2.x a `~1` zaměřuje na modul runtime verze 1.x. Není libovolně toto nastavení změnit, protože jsou pravděpodobně vyžaduje další změny nastavení aplikace a změny kódu ve vašich funkcí. Další informace o doporučeným způsobem, jak migrovat aplikace function app na různé verze, najdete v článku [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
+Verze modulu runtime Functions používá publikované aplikace v Azure závisí [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) nastavení aplikace. Hodnota `~2` zaměřuje na modul runtime verze 2.x a `~1` zaměřuje na modul runtime verze 1.x. Není libovolně toto nastavení změnit, protože jsou pravděpodobně vyžaduje další změny nastavení aplikace a změny kódu ve vašich funkcí. Další informace o doporučeným způsobem, jak migrovat aplikace function app na různé verze, najdete v článku [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
 
 ## <a name="bindings"></a>Vazby
 

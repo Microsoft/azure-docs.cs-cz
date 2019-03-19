@@ -9,16 +9,19 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7eb841a0f4a34e708734cf433fac82ab35ef35b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8898280e887392591873f1fc832bfd0c105689fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097282"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
 
-Konfigurace stavu Azure Automation může odesílat data stav uzlu Desired State Configuration (DSC) do pracovního prostoru Log Analytics. Stav dodržování předpisů se zobrazí na webu Azure Portal nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu. Protokoly Azure Monitor vám umožní:
+Konfigurace Azure Automation stavu uchovává data o stavu uzlu po dobu 30 dnů.
+Do pracovního prostoru Log Analytics můžete odeslat data o stavu uzlu, pokud chcete tato data uchovávat po delší dobu.
+Stav dodržování předpisů se zobrazí na webu Azure Portal nebo v prostředí PowerShell pro uzly a pro jednotlivé prostředky DSC v konfigurace uzlu.
+Protokoly Azure Monitor vám umožní:
 
 - Získejte informace o dodržování předpisů pro spravované uzly i jednotlivé prostředky
 - Aktivace e-mailem nebo výstrahu na základě stavu dodržování předpisů
@@ -44,23 +47,23 @@ Pokud chcete začít, import dat z Azure Automation DSC do protokolů Azure Moni
 1. Přihlaste se ke svému účtu Azure v prostředí PowerShell. Zobrazit [přihlášení pomocí Azure Powershellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
 1. Získejte _ResourceId_ vašeho účtu automation, spuštěním následujícího příkazu Powershellu: (Pokud máte více než jeden účet služby automation, zvolte _ResourceID_ pro účet, který chcete nakonfigurovat).
 
-  ```powershell
-  # Find the ResourceId for the Automation Account
-  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
-  ```
+   ```powershell
+   # Find the ResourceId for the Automation Account
+   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   ```
 
 1. Získejte _ResourceId_ pracovního prostoru Log Analytics, spuštěním následujícího příkazu Powershellu: (Pokud máte více než jeden pracovní prostor, zvolte _ResourceID_ pracovního prostoru, kterou chcete nakonfigurovat).
 
-  ```powershell
-  # Find the ResourceId for the Log Analytics workspace
-  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
-  ```
+   ```powershell
+   # Find the ResourceId for the Log Analytics workspace
+   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   ```
 
 1. Spuštěním následujícího příkazu Powershellu nahraďte `<AutomationResourceId>` a `<WorkspaceResourceId>` s _ResourceId_ hodnoty ze všech předchozích kroků:
 
-  ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
-  ```
+   ```powershell
+   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   ```
 
 Pokud chcete zastavit import dat z Azure Automation stavu konfigurace na protokoly Azure monitoru, spusťte následující příkaz Powershellu:
 

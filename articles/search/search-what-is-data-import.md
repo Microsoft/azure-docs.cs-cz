@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85a2810e8ab8de5ad2967aaf17f421d871368063
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2c3da9470668fa2987195c26e98eee51f14027f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136340"
 ---
-# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indexování externích dat u dotazů ve službě Azure Search
+# <a name="data-import-overview---azure-search"></a>Import dat přehled – Azure Search
 
 Ve službě Azure Search se dotazy provádějí nad obsahem nahrán a uložili v [indexu vyhledávání](search-what-is-an-index.md). Tento článek zkoumá dva základní přístupy pro naplňování indexu: *nabízených* vaše data do indexu prostřednictvím kódu programu, nebo přejděte [indexeru Azure Search](search-indexer-overview.md) na podporovaný zdroj dat k  *o přijetí změn* v datech.
 
@@ -36,7 +36,31 @@ Pomocí následujících rozhraní API můžete do indexu načíst jeden nebo n�
 
 Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
-Úvod k jednotlivým metodologiím najdete v tématu [Import dat pomocí REST](search-import-data-rest-api.md) nebo [Import dat pomocí .NET](search-import-data-dotnet.md).
+Úvod k jednotlivým metodologiím najdete v tématu [rychlý start: Vytvoření indexu Azure Search pomocí prostředí PowerShell a rozhraní REST API](search-create-index-rest-api.md) nebo [rychlý start: Vytvoření indexu Azure Search v C# ](search-import-data-dotnet.md).
+
+<a name="indexing-actions"></a>
+
+### <a name="indexing-actions-upload-merge-uploadormerge-delete"></a>Indexování akce: odeslání, sloučení, uploadOrMerge, odstranit
+
+Při používání REST API budete na URL koncového bodu indexu Azure Search vydávat požadavky HTTP POST s textem žádosti ve formátu JSON. Objekt JSON v požadavku HTTP bude obsahovat jedno pole JSON s názvem „value“ s objekty JSON reprezentujícími dokumenty, které si přejete přidat do indexu, aktualizovat nebo odstranit.
+
+Každý objekt JSON v poli „value“ reprezentuje dokument, který se má indexovat. Každá z těchto objektů obsahuje klíč dokumentu a určuje požadovanou akci indexování (odeslání, sloučení, odstranění). V závislosti na zvolené akci musí objekt pro každý dokument obsahovat pouze určitá pole.
+
+| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
+| -------------- | ----------- | ---------------------------------- | ----- |
+| `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
+| `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. To zahrnuje i pole typu `Collection(Edm.String)`. Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
+| `mergeOrUpload` |Pokud již dokument s daným klíčem v indexu existuje, chová se tato akce jako `merge`. Pokud dokument neexistuje, chová se s novým dokumentem jako `upload`. |klíč a další pole, která si přejete definovat |- |
+| `delete` |Odebere z indexu zadaný dokument. |pouze klíč |Všechna zadaná pole kromě pole klíče budou ignorována. Chcete-li odebrat z dokumentu jednotlivá pole, použijte místo toho `merge` a jednoduše nastavte hodnotu pole na „null“. |
+
+### <a name="formulate-your-query"></a>Formulování dotazu
+Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
+
+U metody POST i GET budete muset v URL požadavku poskytnout *název služby*, *název indexu* a správnou *verzi rozhraní API* (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2017-11-11`). U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
+
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+
+Formát pro metodu POST je stejný, ale jako parametr řetězce dotazu obsahuje pouze api-version.
 
 
 ## <a name="pulling-data-into-an-index"></a>Přetáhnutí dat do indexu

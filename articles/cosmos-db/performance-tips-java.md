@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 747f58ba5062bd8bcc3995bbfa73cea49e8ddc4b
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a3f194150d1ce452f79db273266d3c9d77e560fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094731"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a Javou
 
@@ -36,25 +36,25 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
    1. [Brána (výchozí)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
    2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
 
-    Režim brány se podporuje na všech platformách sady SDK a je nakonfigurované výchozí nastavení.  Pokud je aplikace spuštěná v rámci podnikové sítě s omezeními striktní brány firewall, brána je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Tento režim brány zahrnuje směrování další síti pokaždé, když se data číst nebo zapisovat do služby Azure Cosmos DB je ale úkor výkonu. Z tohoto důvodu režimu DirectHttps nabízí lepší výkon z důvodu menší počet segmentů směrování. 
+      Režim brány se podporuje na všech platformách sady SDK a je nakonfigurované výchozí nastavení.  Pokud je aplikace spuštěná v rámci podnikové sítě s omezeními striktní brány firewall, brána je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Tento režim brány zahrnuje směrování další síti pokaždé, když se data číst nebo zapisovat do služby Azure Cosmos DB je ale úkor výkonu. Z tohoto důvodu režimu DirectHttps nabízí lepší výkon z důvodu menší počet segmentů směrování. 
 
-    Sada Java SDK používá jako přenosový protokol HTTPS. Protokol HTTPS používá protokol SSL pro počáteční ověřování a šifrování přenosu. Při použití sady Java SDK, musí být otevřené pouze na port HTTPS 443. 
+      Sada Java SDK používá jako přenosový protokol HTTPS. Protokol HTTPS používá protokol SSL pro počáteční ověřování a šifrování přenosu. Při použití sady Java SDK, musí být otevřené pouze na port HTTPS 443. 
 
-    Během procesu vytváření instance DocumentClient, který se má parametr ConnectionPolicy je nakonfigurovaný ConnectionMode. 
+      Během procesu vytváření instance DocumentClient, který se má parametr ConnectionPolicy je nakonfigurovaný ConnectionMode. 
 
-    ```Java
-    public ConnectionPolicy getConnectionPolicy() {
+      ```Java
+      public ConnectionPolicy getConnectionPolicy() {
         ConnectionPolicy policy = new ConnectionPolicy();
         policy.setConnectionMode(ConnectionMode.DirectHttps);
         policy.setMaxPoolSize(1000);
         return policy;
-    }
+      }
         
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
-    ```
+      ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+      DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
+      ```
 
-    ![Obrázek připojení zásad služby Azure Cosmos DB](./media/performance-tips-java/connection-policy.png)
+      ![Obrázek připojení zásad služby Azure Cosmos DB](./media/performance-tips-java/connection-policy.png)
 
    <a id="same-region"></a>
 2. **Společné umístění klienty ve stejné oblasti Azure pro výkon**
@@ -147,7 +147,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     ```             
 
     Vrácená v hlavičce tohoto platí požadavek se zlomek zřízené propustnosti. Například pokud máte 2000 zřízené RU/s, a pokud předchozí dotaz vrací 1000 1KB – dokumenty, náklady na operace je 1000. V rámci jedné sekundy, v důsledku toho serveru respektuje pouze dva takové požadavky před tady následných žádostí. Další informace najdete v tématu [jednotky žádostí](request-units.md) a [Kalkulačka jednotek žádosti](https://www.documentdb.com/capacityplanner).
-<a id="429"></a>
+   <a id="429"></a>
 1. **Zpracování frekvence omezení/požadavků míra příliš velká**
 
     Když se klient pokusí překročí vyhrazené propustnosti pro účet, neexistuje žádné snížení výkonu na serveru a používat sady kapacitou propustnosti mimo úroveň rezervované. Server preventivně ukončení požadavku s RequestRateTooLarge (kód stavu HTTP 429), který se vrátit [x-ms opakování po ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) záhlaví určující dobu v milisekundách, které musí uživatel čekat před opakováním požadavek.

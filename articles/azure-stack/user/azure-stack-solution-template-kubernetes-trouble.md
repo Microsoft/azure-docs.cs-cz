@@ -14,12 +14,12 @@ ms.topic: article
 ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729643"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002058"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Řešení potíží s Kubernetes nasazení do služby Azure Stack
 
@@ -151,6 +151,7 @@ Pokud chcete získat protokoly, proveďte následující kroky:
     ```
 
 4. Zkontrolujte parametry a nastavte hodnoty podle vašeho prostředí.
+
     | Parametr           | Popis                                                                                                      | Příklad:                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -d, --vmd-host       | Veřejná IP adresa nebo plně kvalifikovaný název domény DVM. Název virtuálního počítače začíná `vmd-`.                                                       | IP adresa: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
@@ -174,7 +175,7 @@ Pokud chcete získat protokoly, proveďte následující kroky:
     ![Generované protokoly](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
 
 
-4. Načtěte protokoly ve složkách, které byly vytvořeny pomocí příkazu. Tento příkaz vytvoří nové složky a opatří je.
+1. Načtěte protokoly ve složkách, které byly vytvořeny pomocí příkazu. Tento příkaz vytvoří nové složky a opatří je.
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
         - Acsengine-kubernetes-dvm.log

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rimman
-ms.openlocfilehash: 3d05da5f62a076dc168bef029cd0babc3946ee6b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d37f373e98835846c2d29130781706c400086c0e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077237"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – přehled
 
@@ -57,7 +57,7 @@ Pojďme se podívat zpět v předchozím seznamu – kolik tyto požadavky na za
 Pojďme se podívat do každé z nich podrobněji.
 
 |Požadavek na zabezpečení|Postup zabezpečení služby Azure Cosmos DB|
-|---|---|---|
+|---|---|
 |Zabezpečení sítě|Použití brány firewall protokolu IP je první vrstvu ochrany a zabezpečení vaší databáze. Azure Cosmos DB podporuje zásady řízení přístupu na základě IP adresy pro podporu brány firewall pro příchozí řízené. Řízení přístupu na základě IP adresy jsou podobné pravidla brány firewall tradiční databázové systémy, ale jsou rozbaleny tak, aby k účtu databáze Azure Cosmos DB je přístupná pouze ze schválenou sadu počítačů nebo cloudových služeb. <br><br>Azure Cosmos DB umožňuje povolit konkrétní IP adresu (168.61.48.0), rozsah IP adres (168.61.48.0/8) a kombinace IP adresy a rozsahy adres. <br><br>Služba Azure Cosmos DB jsou blokovány všechny požadavky z počítačů mimo tento seznam povolených. Požadavky ze schválených počítače a cloudové služby pak musíte dokončit proces ověřování má být poskytnut řízení přístupu k prostředkům.<br><br>Další informace najdete v [podpora brány firewall služby Azure Cosmos DB](firewall-support.md).|
 |Autorizace|Azure Cosmos DB používá ověřovací kód zprávy na základě hodnoty hash (HMAC) pro autorizaci. <br><br>Každý požadavek je zakódována pomocí tajný klíč a následné base-64 kódovaných hash posílá se každé volání do služby Azure Cosmos DB. Pro ověření žádosti, služby Azure Cosmos DB používá správný tajný klíč a vlastnosti ke generování hodnoty hash a poté porovnává hodnotu se v žádosti. Pokud tyto dvě hodnoty odpovídají, je operace úspěšná autorizace a zpracuje požadavek, jinak je chybě autorizace a žádost se zamítá.<br><br>Můžete použít buď [hlavní klíč](secure-access-to-data.md#master-keys), nebo [tokenu prostředku](secure-access-to-data.md#resource-tokens) umožňuje velice přesně kontrolovat přístup k prostředku, jako je například dokument.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům služby Azure Cosmos DB](secure-access-to-data.md).|
 |Uživatele a oprávnění|Použití hlavního klíče pro účet, můžete vytvořit uživatele a oprávnění prostředků na databázi. Token prostředku je spojen s oprávnění v databázi a určuje, zda má uživatel přístup (čtení a zápis, jen pro čtení, nebo žádný přístup) na prostředek aplikace v databázi. Prostředky aplikace obsahují kontejneru, dokumenty, přílohy, uložené procedury, triggery a uživatelem definovanými funkcemi. Token prostředku se pak použije při ověřování zadat nebo odepřít přístup k prostředku.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům služby Azure Cosmos DB](secure-access-to-data.md).|

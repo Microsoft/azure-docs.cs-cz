@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549914"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903126"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -477,7 +477,11 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 ### <a name="tempdb-size"></a>Velikost databáze TEMPDB
 
-`tempdb` je rozdělený do 12 soubory s maximální velikost 14 GB na soubor. Tento maximální velikost jednoho souboru nelze změnit, a nové soubory mohou být přidány do `tempdb`. Toto omezení bude brzy odebráno. Některé dotazy může vrátit chybu, pokud je nutné do více než 168 GB `tempdb`.
+Maximální velikost souboru `tempdb` nemůže být větší než 24 GB/core v úrovni General Purpose. Maximální počet `tempdb` limitují velikost na úrovni pro důležité obchodní informace s velikostí úložiště instance. `tempdb` vždy je rozdělený do 12 datových souborů. Tento maximální velikost jednoho souboru nelze změnit, a nové soubory mohou být přidány do `tempdb`. Některé dotazy může vrátit chybu, pokud je nutné více než 24GB za jádro v `tempdb`.
+
+### <a name="cannot-restore-contained-database"></a>Nelze obnovit databáze s omezením
+
+Nelze obnovit spravované Instance [databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). Obnovení bodu v čase z existující databáze s omezením nefungují na Managed Instance. Tento problém bude brzy odebráno a do té doby doporučujeme k odebrání možnost omezení databáze, které se umístí na spravované instanci a nepoužívejte možnost členství ve skupině pro produkční databáze.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení prostoru úložiště se soubory malé databáze
 
@@ -510,7 +514,7 @@ Několik zobrazení systému, čítače výkonu, chybové zprávy, XEvents a zá
 
 ### <a name="database-mail-profile"></a>Profil databázového e-mailu
 
-Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`.
+Profil databázové pošty používat SQL Agent musí být volána `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Protokoly chyb jsou trvalé not
 
@@ -524,7 +528,7 @@ Podrobné informace o Managed Instance umístí protokoly chyb a mnoho z nich ne
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance se nepodporuje.
 
-`TransactionScope` třídy v rozhraní .net nefunguje, pokud dva dotazy se odesílají do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
+`TransactionScope` třídy v rozhraní .NET nefunguje, pokud dva dotazy se odesílají do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
 
 ```C#
 using (var scope = new TransactionScope())

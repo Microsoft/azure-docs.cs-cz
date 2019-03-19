@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 608abd09227014513a0ad358d7a2c225b5ab2b97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863368"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Kódování prostředku pomocí kodéru Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [
 >
 > Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj rozhraní REST API pro Media Services](media-services-rest-how-to-use.md).
 >
-> Při pomocí formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například k odkazu na odkazovaný objekt), je nutné nastavit **přijmout** záhlaví [JSON podrobný formát](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Přijměte: application/json; odata = verbose.
+> Při pomocí formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například k odkazu na odkazovaný objekt), je nutné nastavit **přijmout** záhlaví [JSON podrobný formát](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Přijměte: application/json; odata = verbose.
 >
 >
 
@@ -151,7 +151,7 @@ Pokud chcete povolit řetězení úloh:
 * Musí existovat alespoň jeden úkol, jejichž vstup je výstup jiný úkol v úloze.
 
 ## <a name="use-odata-batch-processing"></a>Použít dávkovým zpracováním OData
-Následující příklad ukazuje způsob použití dávkovým zpracováním OData k vytvoření úlohy a úkolů. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Následující příklad ukazuje způsob použití dávkovým zpracováním OData k vytvoření úlohy a úkolů. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx

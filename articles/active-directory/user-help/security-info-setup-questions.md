@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 831b17eefb971a5ed617e5cb30730ce23c87e374
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901878"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>Upravit informace o zabezpečení (preview) tak, aby použít bezpečnostní otázky
 Můžete následujícím postupem přidáte, že vaše heslo resetováno metoda. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
@@ -31,10 +31,12 @@ V závislosti na nastavení vaší organizace je možné vybrat a zodpovězení 
 
 Pokud používáte bezpečnostní otázky, doporučujeme používat je společně s jinou metodu. Bezpečnostní otázky může být méně bezpečné než jiné metody, protože někteří lidé znát odpovědi na své otázky.
 
->[!Note]
->Bezpečnostní otázky jsou uloženy privátně a bezpečně na objekt uživatele v adresáři a jako odpověď získat pouze poskytnete během registrace. Neexistuje žádný způsob, jak správce, aby číst nebo upravovat otázek a odpovědí.
-
->Pokud nevidíte možnost otázky zabezpečení, je možné, že vaše organizace nepovoluje budete moci použít bezpečnostní otázky pro ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+> [!Note]
+> Bezpečnostní otázky jsou uloženy privátně a bezpečně na objekt uživatele v adresáři a jako odpověď získat pouze poskytnete během registrace. Neexistuje žádný způsob, jak správce, aby číst nebo upravovat otázek a odpovědí.
+> 
+> Pokud nevidíte možnost otázky zabezpečení, je možné, že vaše organizace nepovoluje budete moci použít bezpečnostní otázky pro ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+> 
+> Účty správců nesmíte použít bezpečnostní otázky, jako metoda pro vytvoření nového hesla. Pokud jste přihlášení jako účet správce úrovně neuvidíte tyto možnosti.
 
 ### <a name="to-set-up-your-security-questions"></a>Nastavení bezpečnostních otázek
 

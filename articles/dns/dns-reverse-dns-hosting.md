@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: f0ab7d4063eea50b58c809aee1b0ea70f8c21c6b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118251"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel zón reverzního vyhledávání DNS v Azure DNS
 
@@ -131,7 +131,7 @@ Následující příklad vás provede procesem vytvoření záznamů PTR v zpět
 1. Pro **název domény**, zadejte plně kvalifikovaný název domény (FQDN) prostředku, který používá IP adresu.
 1. Vyberte **OK** v dolní části podokna DNS vytvořit záznam.
 
- !["Přidat sadu záznamů" podokno s vyplněno pole](./media/dns-reverse-dns-hosting/figure5.png)
+   !["Přidat sadu záznamů" podokno s vyplněno pole](./media/dns-reverse-dns-hosting/figure5.png)
 
 Následující příklady ukazují, jak tento úkol provést pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 

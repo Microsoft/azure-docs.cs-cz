@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 88d94492cb6ed3191e146f117a648293bc9e50f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892468"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Zobrazovat a stahovat, ceny za Azure vaší organizace
 
-Zákazníci Azure se smlouvou Enterprise (EA) nebo [smlouvy zákazníka se společností Microsoft](#check-your-access-to-a-microsoft-customer-agreement) může zobrazovat a stahovat, jejich ceny na webu Azure Portal. Pokud máte smlouvu zákazníků společnosti Microsoft, přečtěte si téma [zobrazit a stáhnout ceny pro smlouvy Microsoft zákazníka](#View-and-download-pricing-for-your-billing-profile).
+Zákazníci Azure se smlouvou Enterprise (EA) nebo [smlouvy zákazníka se společností Microsoft](#check-your-access-to-a-microsoft-customer-agreement) může zobrazovat a stahovat, jejich ceny na webu Azure Portal. Pokud máte smlouvu Microsoft zákazníka, naleznete v tématu ke stažení ceny pro smlouvy Microsoft zákazníka a zobrazení.
 
 ## <a name="view-and-download-ea-pricing"></a>Zobrazovat a stahovat ceny EA
 

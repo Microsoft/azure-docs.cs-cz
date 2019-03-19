@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: cf16f27a8d39871491b7cf46a509b9714a669667
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873810"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086611"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikovat běžné záměry a entity
 
@@ -55,13 +55,13 @@ Služba LUIS poskytuje několik předem připravených záměrů, které vám po
 
 1. Vyberte následující záměry a pak vyberte **Done** (Hotovo): 
 
-    * Utilities.Cancel
-    * Utilities.Confirm
-    * Utilities.Help
-    * Utilities.StartOver
-    * Utilities.Stop
+   * Utilities.Cancel
+   * Utilities.Confirm
+   * Utilities.Help
+   * Utilities.StartOver
+   * Utilities.Stop
 
-    Tyto příkazy jsou užitečná k určení toho, pokud v konverzaci, uživatel je a co se žádáme provést. 
+     Tyto příkazy jsou užitečná k určení toho, pokud v konverzaci, uživatel je a co se žádáme provést. 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Přidat předem připravených entit, abychom vám pomohli s společný typ extrakce
@@ -74,12 +74,12 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. Vyberte ze seznamu předem připravených entit následující entity a pak vyberte **provádí**:
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
-    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-    ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-    Tyto entity můžete přidat název a místo rozpoznávání do klientské aplikace.
+     Tyto entity můžete přidat název a místo rozpoznávání do klientské aplikace.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidání projevů příklad na hodnotu None záměru 
 

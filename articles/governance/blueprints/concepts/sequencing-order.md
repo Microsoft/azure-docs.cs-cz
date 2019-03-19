@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308613"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990570"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Vysvětlení pořadí nasazení v Azure podrobné plány
 
@@ -112,8 +112,8 @@ Který by změnit výchozí pořadí je deklarované jako závislost artefakt, s
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
-- Principy použití [statických a dynamických parametrů](parameters.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
-- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)
+- Další informace o [podrobný plán životního cyklu](lifecycle.md).
+- Vysvětlení použití [statické a dynamické parametry](parameters.md).
+- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](resource-locking.md).
+- Zjistěte, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
+- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](../troubleshoot/general.md).

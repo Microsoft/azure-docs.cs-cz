@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 0f500ec776d90755d6738af80c34866105d354f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ff7bb6fa087ab7fa362c13ca03d6f3100a505ce3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858953"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Správa entit Media Services pomocí REST  
 
@@ -29,7 +29,7 @@ ms.locfileid: "55999398"
 > 
 > 
 
-Microsoft Azure Media Services je založená na protokolu OData v3 služba založená na protokolu REST. Můžete přidat, dotazy, aktualizace a odstranění entit prakticky stejně jako jakékoli jiné služby OData. Výjimky zavolá navýšení kapacity v případě potřeby. Další informace o protokolu OData najdete v tématu [Open Data Protocol dokumentaci](http://www.odata.org/documentation/).
+Microsoft Azure Media Services je založená na protokolu OData v3 služba založená na protokolu REST. Můžete přidat, dotazy, aktualizace a odstranění entit prakticky stejně jako jakékoli jiné služby OData. Výjimky zavolá navýšení kapacity v případě potřeby. Další informace o protokolu OData najdete v tématu [Open Data Protocol dokumentaci](https://www.odata.org/documentation/).
 
 Toto téma ukazuje, jak spravovat entity Azure Media Services pomocí REST.
 

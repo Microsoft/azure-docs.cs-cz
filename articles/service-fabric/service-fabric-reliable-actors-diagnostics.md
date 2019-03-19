@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 61c01e8ea3b4cbe7b5f7ab83ab35383d74df3105
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855831"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Generuje runtime Reliable Actors [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) události a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o jak modul runtime pracuje a pomoci při řešení potíží a monitorování výkonu.
@@ -27,7 +27,7 @@ Generuje runtime Reliable Actors [EventSource](https://msdn.microsoft.com/librar
 ## <a name="eventsource-events"></a>Událostí EventSource
 Název zprostředkovatele EventSource pro modul runtime Reliable Actors je "Microsoft-ServiceFabric – objekty actor". Události z tohoto zdroje událostí se zobrazí v [diagnostické události](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) okno, když se aplikace objektu actor [ladit v sadě Visual Studio](service-fabric-debugging-your-application.md).
 
-Příklady nástrojů a technologií, které pomáhají při shromažďování nebo zobrazování událostí EventSource [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [sémantického protokolování](https://msdn.microsoft.com/library/dn774980.aspx)a [ Knihovna Microsoft knihovny TraceEvent](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Příklady nástrojů a technologií, které pomáhají při shromažďování nebo zobrazování událostí EventSource [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [sémantického protokolování](https://msdn.microsoft.com/library/dn774980.aspx)a [ Knihovna Microsoft knihovny TraceEvent](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ### <a name="keywords"></a>Klíčová slova
 Všechny události, které patří k Reliable Actors EventSource jsou přidruženy k jedné nebo více klíčových slov. To umožňuje filtrování událostí, které byly shromážděny. Jsou definovány následující bits – klíčové slovo.
@@ -94,8 +94,8 @@ Modul runtime Reliable Actors vysílá následující události související s 
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Podrobný |0x2 |Modul runtime actors je volání metody objektu actor. |
-| ActorMethodStop |8 |Podrobný |0x2 |Metoda objektu actor byl dokončen. To znamená vrátila modul runtime asynchronního volání metody objektu actor a dokončení úlohy vrácený metodou objektu actor. |
+| ActorMethodStart |7 |Podrobnosti |0x2 |Modul runtime actors je volání metody objektu actor. |
+| ActorMethodStop |8 |Podrobnosti |0x2 |Metoda objektu actor byl dokončen. To znamená vrátila modul runtime asynchronního volání metody objektu actor a dokončení úlohy vrácený metodou objektu actor. |
 | ActorMethodThrewException |9 |Upozornění |0x3 |Došlo k výjimce při provádění metody objektu actor, buď během asynchronního volání metody objektu actor modulu runtime nebo během provádění úkolu vrácený metodou objektu actor. Tato událost ukazuje na nějaké chyby v kódu objektu actor, který je potřeba vyšetřit. |
 
 Modul runtime Reliable Actors publikuje následující čítače výkonu související s provedením metody objektu actor.
@@ -111,7 +111,7 @@ Modul runtime Reliable Actors vysílá následující události související s 
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Podrobný |0x8 |Tato událost se zapíše na začátku každé nové zapnout v prvek "actor". Obsahuje počet nevyřízených volání objektu actor, které čekají na získání zámku na objektu actor, který vynucuje souběžnosti založená na řadě vy. |
+| ActorMethodCallsWaitingForLock |12 |Podrobnosti |0x8 |Tato událost se zapíše na začátku každé nové zapnout v prvek "actor". Obsahuje počet nevyřízených volání objektu actor, které čekají na získání zámku na objektu actor, který vynucuje souběžnosti založená na řadě vy. |
 
 Modul runtime Reliable Actors publikuje následující čítače výkonu související se souběžností.
 
@@ -126,15 +126,15 @@ Modul runtime Reliable Actors vysílá následující události související s 
 
 | Název události | ID události | Úroveň | Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Podrobný |0x4 |Modul runtime actors je uložení stavu objektu actor. |
-| ActorSaveStateStop |11 |Podrobný |0x4 |Modul runtime actors bylo dokončeno ukládání stavu objektu actor. |
+| ActorSaveStateStart |10 |Podrobnosti |0x4 |Modul runtime actors je uložení stavu objektu actor. |
+| ActorSaveStateStop |11 |Podrobnosti |0x4 |Modul runtime actors bylo dokončeno ukládání stavu objektu actor. |
 
 Modul runtime Reliable Actors publikuje následující čítače výkonu související se správou stavu objektu actor.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
 | Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci uložení stavu |Doba v milisekundách, jakou trvalo uložení stavu objektu actor |
-| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Doba v milisekundách, jakou trvalo načtení stavu objektu actor |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Čas potřebný k načtení stavu objektu actor v milisekundách |
 
 ### <a name="events-related-to-actor-replicas"></a>Události související s objektů actor
 Modul runtime Reliable Actors vysílá následující události související s [objektů actor](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
@@ -156,7 +156,7 @@ Modul runtime Reliable Actors publikuje následující čítače výkonu souvise
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Objekt actor pro Service Fabric |Průměrná doba metody OnActivateAsync v milisekundách |Doba v milisekundách, jakou trvalo provádění metody OnActivateAsync |
+| Objekt actor pro Service Fabric |Průměrná doba metody OnActivateAsync v milisekundách |Čas potřebný k provádění metody OnActivateAsync v milisekundách |
 
 ### <a name="actor-request-processing-performance-counters"></a>Čítače výkonu zpracování požadavku objektu actor
 Když klient volá metodu přes proxy server objektu actor, výsledkem zprávu požadavku, odeslání přes síť do služby objektu actor. Služba zpracovává zprávy s požadavkem a odešle odpověď zpět klientovi. Modul runtime Reliable Actors publikuje následující čítače výkonu související s zpracování požadavku na objekt actor.

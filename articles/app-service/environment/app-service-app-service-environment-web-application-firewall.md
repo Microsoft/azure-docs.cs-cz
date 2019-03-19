@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089314"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -31,7 +31,7 @@ Kromě služby Azure Application Gateway je k dispozici několik možností na w
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za několika instancemi Barracuda WAF s vyrovnáváním zatížení, aby se do služby App Service Environment dostal pouze provoz z této brány WAF a aby služba nebyla přístupná z DMZ. Před instancí Barracuda WAF také máme službu Azure Traffic Manager, která vyrovnává zatížení napříč datovými centry a oblastmi Azure. Podrobný diagram nastavení bude podobný jako na následujícím obrázku:
 
 ![Architektura][Architecture] 
@@ -66,7 +66,7 @@ Přidejte koncový bod správy umožňující konfiguraci Barracuda WAF, jak je 
 
 ![Přidání koncového bodu správy][AddManagementEndpoint]
 
-Pomocí prohlížeče přejděte na koncový bod správy vaší cloudové služby. Pokud má vaše cloudová aplikace název test.cloudapp.net, můžete k tomuto koncovému bodu přejít na adrese http://test.cloudapp.net:8000. Měla by se zobrazit přihlašovací stránka jako na následujícím obrázku, kde se můžete přihlásit pomocí přihlašovacích údajů, které jste zadali ve fázi nastavování virtuálního počítače s WAF.
+Pomocí prohlížeče přejděte na koncový bod správy vaší cloudové služby. Pokud má vaše cloudová aplikace název test.cloudapp.net, můžete k tomuto koncovému bodu přejít na adrese `http://test.cloudapp.net:8000`. Měla by se zobrazit přihlašovací stránka jako na následujícím obrázku, kde se můžete přihlásit pomocí přihlašovacích údajů, které jste zadali ve fázi nastavování virtuálního počítače s WAF.
 
 ![Správa – Přihlašovací stránka][ManagementLoginPage]
 

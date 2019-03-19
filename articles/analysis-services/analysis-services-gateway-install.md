@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110864"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -23,7 +23,7 @@ Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblast
 
 **Minimální požadavky:**
 
-* 4.5 rozhraní .NET framework
+* .NET 4.5 Framework
 * 64bitová verze Windows 7 / Windows Server 2008 R2 (nebo novější)
 
 **Doporučené:**
@@ -90,19 +90,19 @@ Po nainstalovaný a zaregistrovaný bránu, je potřeba vytvořit prostředek br
 
 2. V **vytvořit připojení brány**, zadejte tato nastavení:
 
-    * **Název**: Zadejte název pro prostředek brány. 
+   * **Název**: Zadejte název pro prostředek brány. 
 
-    * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k prostředku brány. 
+   * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k prostředku brány. 
    
-      Výchozí odběr je založený na účtu Azure, který jste použili k přihlášení.
+     Výchozí odběr je založený na účtu Azure, který jste použili k přihlášení.
 
-    * **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující.
+   * **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující.
 
-    * **Umístění**: Vyberte oblast, které jste zaregistrovali bránu.
+   * **Umístění**: Vyberte oblast, které jste zaregistrovali bránu.
 
-    * **Název instalace**: Pokud se instalace brány není vybrána, vyberte bránu, zaregistrovaný. 
+   * **Název instalace**: Pokud se instalace brány není vybrána, vyberte bránu, zaregistrovaný. 
 
-    Jakmile budete hotovi, klikněte na tlačítko **vytvořit**.
+     Jakmile budete hotovi, klikněte na tlačítko **vytvořit**.
 
 ## <a name="connect-servers"></a>Připojení serverů k prostředku brány
 

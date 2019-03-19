@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fee8604bece0ae7249b0735f6952bfa35a4590fb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 682a20b7f8f560fdbffd731ff600c8306ee3617c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443160"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57833757"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Obnovení odstraněné skupiny Office 365 v Azure Active Directory
 Když odstraníte skupinu Office 365 v Azure Active Directory (Azure AD), uchovává se tato odstraněná skupina po dobu 30 dnů od data odstranění, ale není viditelná. Je to kvůli tomu, abyste v případě potřeby mohli skupinu, včetně jejího obsahu, obnovit. Tato funkce je omezená výhradně pro skupiny Office 365 v Azure AD. Není dostupná pro skupiny zabezpečení a distribuční skupiny.
@@ -30,13 +30,13 @@ K obnovení skupiny jsou potřebná některá z následujících oprávnění:
 
 Role | Oprávnění
 --------- | ---------
-Správce společnosti, podpora partnerů úrovně 2 a správci služby Intune | Můžou obnovit jakoukoli odstraněnou skupinu Office 365.
-Správce uživatelských účtů a podpora partnerů úrovně 1 | Můžete obnovit všechny odstraněné skupiny Office 365 s výjimkou těchto skupin přiřazen k roli správce společnosti
-Uživatel | Můžou obnovit jakoukoli odstraněnou skupinu Office 365, kterou vlastnili.
+Globální správce, podpora partnerů úrovně 2 a Správce služby Intune | Můžou obnovit jakoukoli odstraněnou skupinu Office 365.
+Správce uživatelů a partnerů partnerská podpora úrovně 1 | Můžete obnovit všechny odstraněné skupiny Office 365 s výjimkou těchto skupin přiřazen k roli správce společnosti
+Uživatel | Můžete obnovit všechny odstraněné skupiny Office 365, které vlastní
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Umožňuje zobrazit a spravovat odstraněné skupiny Office 365, které jsou k dispozici pro obnovení
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) s účtem správce.
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
 
 2. Vyberte **skupiny**a pak vyberte **odstraněných skupin** zobrazíte odstraněné skupiny, které jsou k dispozici pro obnovení.
 
@@ -44,8 +44,8 @@ Uživatel | Můžou obnovit jakoukoli odstraněnou skupinu Office 365, kterou vl
 
 3. Na **odstraněných skupin** okně můžete:
 
-  - Obnovení odstraněné skupiny a její obsah tak, že vyberete **obnovení skupiny**.
-  - Trvale odebrat z odstraněné skupiny tak, že vyberete **trvale odstranit**. Pokud chcete trvale odebrat skupinu, musíte být správcem.
+   - Obnovení odstraněné skupiny a její obsah tak, že vyberete **obnovení skupiny**.
+   - Trvale odebrat z odstraněné skupiny tak, že vyberete **trvale odstranit**. Pokud chcete trvale odebrat skupinu, musíte být správcem.
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Zobrazit odstraněné skupiny Office 365, které jsou k dispozici pro obnovení pomocí prostředí Powershell
 K zobrazení odstraněných skupin a ověření, že ty, které vás zajímají, ještě nejsou trvale vymazané, můžete použít následující rutiny. Tyto rutiny jsou součástí [modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/). Další informace o tomto modulu najdete v článku [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).

@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak přidávat a spravovat systém VMware 
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 6c00ed6f3bec1e16b2a3cb8588335c1741a92883
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849033"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855125"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Spravovat VMware vCenter server
 
@@ -26,7 +26,7 @@ Site Recovery potřebuje přístup k VMware na procesovém serveru a automatick�
 2. Otevřete spuštění cspsconfigtool.exe pomocí zástupce na ploše.
 3. Klikněte na tlačítko **přidat účet** na **spravovat účet** kartu.
 
-  ![Přidat účet](./media/vmware-azure-manage-vcenter/addaccount.png)
+   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 1. Zadejte podrobnosti o účtu a klikněte na **OK** a přidejte ji.  Tento účet by měl mít oprávnění shrnuté v následující tabulce. 
 
 Trvá přibližně 15 minut pro informace o účtu možné synchronizovat se službou Site Recovery.
@@ -42,7 +42,7 @@ Trvá přibližně 15 minut pro informace o účtu možné synchronizovat se slu
 
 ## <a name="add-vmware-server-to-the-vault"></a>Chcete do trezoru přidat VMware server
 
-1. Na webu Azure portal otevřete svůj trezor > **infrastruktura Site Recovery** > **konfigurace přeruší**a otevřete konfigurační server.
+1. Na webu Azure Portal otevřete svůj trezor > **infrastruktura Site Recovery** > **konfigurace přeruší**a otevřete konfigurační server.
 2. Na **podrobnosti** klikněte na **+ vCenter**.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -54,14 +54,14 @@ Upravte přihlašovací údaje použité pro připojení k serveru vCenter nebo 
 1. Přihlaste se konfigurační server a spusťte cspsconfigtool.exe z plochy.
 2. Klikněte na tlačítko **přidat účet** na **spravovat účet** kartu.
 
-  ![Přidat účet](./media/vmware-azure-manage-vcenter/addaccount.png)
+   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Zadejte podrobnosti o novém účtu a klikněte na **OK** a přidejte ji. Tento účet by měl mít oprávnění uvedená [nad](#account-permissions).
 4. Na webu Azure portal, otevřete trezor > **infrastruktura Site Recovery** > **konfigurace přeruší**a otevřete konfigurační server.
 5. V **podrobnosti** klikněte na **aktualizovat Server**.
 6. Po dokončení úlohy aktualizace serveru vyberte vCenter Server vCenter otevřete **Souhrn** stránky.
 7. Vyberte nově přidaný účet v **účet vCenter serveru nebo serveru vSphere hostitele** pole a klikněte na tlačítko **Uložit**.
 
-    ![Upravit účet](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
+   ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Odstranění serveru vCenter
 
@@ -69,7 +69,53 @@ Upravte přihlašovací údaje použité pro připojení k serveru vCenter nebo 
 2. Na **podrobnosti** stránky, vyberte vCenter server.
 3. Klikněte na **odstranit** tlačítko.
 
-  ![Odstranit účet](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
+   ![Odstranit účet](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
+
+## <a name="modify-the-vcenter-ip-address-and-port"></a>Upravit IP adresu vCenter a port
+
+1. Přihlaste se k portálu Azure.
+2. Přejděte do **trezor služby Recovery Services** > **infrastruktura Site Recovery** > **konfigurační servery**.
+3. Kliknutím na konfiguračním serveru vCenter se přiřadí.
+4. V **serverů vCenter** části, klikněte na vCenter, kterou chcete upravit.
+5. Na stránce Souhrn serveru vCenter aktualizujte IP adresu a port serveru vCenter do příslušných polí a potom změny uložte.
+
+   ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
+
+6. Změny začnou platit, počkejte 15 minut nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+
+## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>Všechny chráněné virtuální počítače migrovat do nového serveru vCenter
+
+Pokud chcete migrovat všechny virtuální počítače na nový server vCenter, nepřidávejte jiný účet vCenter. To může vést k duplicitní položky. Jen aktualizujte IP adresu vcenter nové:
+
+1. Přihlaste se k portálu Azure.
+2. Přejděte do **trezor služby Recovery Services** > **infrastruktura Site Recovery** > **konfigurační servery**.
+3. Kliknutím na konfiguračním serveru starý server vCenter je přiřazen.
+4. V **serverů vCenter** části, klikněte na vCenter, máte v úmyslu migrovat z.
+5. Na stránce Souhrn serveru vCenter, aktualizujte IP adresu nového serveru vCenter v poli **vCenter serveru nebo serveru vSphere název hostitele nebo IP adresa**. Uložte provedené změny.
+
+Poté, co se aktualizuje IP adresu, součásti Site Recovery se začít přijímat informace o zjišťování virtuálních počítačů z nového serveru vCenter. Nebude to mít vliv na činnosti probíhající replikaci.
+
+## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Několik chráněné virtuální počítače migrovat do nového serveru vCenter
 
 > [!NOTE]
-Pokud potřebujete změnit IP adresu vCenter, plně kvalifikovaný název domény nebo port, budete muset odstranit vCenter server a přidejte ji zpět na portál.
+> Tato část se vztahuje pouze když migrujete některé z vašich chráněných virtuálních počítačů do nového serveru vCenter. Pokud chcete chránit nové sady virtuálních počítačů z nové vCenter [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault) a začínat  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)**.
+
+Přesunout do nového serveru vCenter několik virtuálních počítačů:
+
+1. [Přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault).
+2. [Zakázat replikaci virtuálních počítačů](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) máte v úmyslu migrovat.
+3. Dokončení migrace vybrané virtuální počítače na nový server vCenter.
+4. Nyní, ochrana migrovaných virtuálních počítačů podle [vyberete nový vCenter při povolení ochrany](vmware-azure-tutorial.md#enable-replication).
+
+> [!TIP]
+> Pokud je počet migrovaných virtuálních počítačů **vyšší** , že počet virtuálních počítačů v původní vCenter aktualizovat IP adresu nového serveru vCenter pomocí pokynů [tady](#modify-vcenter-ip-address-port). Pro několik virtuálních počítačů, které se zachovají na starý server vCenter [zakázat replikaci](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault)a spusťte  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)**.
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+1. Pokud chráněných virtuálních počítačů jsou přesunuty z jednoho hostitele ESXi do druhého, ovlivní to replikace?
+
+    Ne, nebude to mít vliv probíhající replikaci. Ale [nezapomeňte nasadit hlavní cílový server s dostatečnými oprávněními](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
+
+2. Co jsou čísla portů používaných k ke komunikaci mezi vCenter a dalších Site Recovery komponenty?
+
+    Výchozí port je 443. Konfigurační server bude přístup k serveru vCenter nebo hostiteli vSphere informace přes tento port. Pokud chcete tyto informace aktualizujete, klikněte na tlačítko [tady](#modify-the-vcenter-ip-address-and-port).

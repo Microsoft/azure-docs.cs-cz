@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841017"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 
@@ -35,7 +35,7 @@ Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric v Javě
 
-Pro aplikace v Javě [více rozhraní protokolování](http://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Protože `java.util.logging` je výchozí možnost, pomocí prostředí JRE, se také používá pro [příklady v Githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuse vysvětluje postup konfigurace `java.util.logging` rozhraní framework.
+Pro aplikace v Javě [více rozhraní protokolování](https://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Protože `java.util.logging` je výchozí možnost, pomocí prostředí JRE, se také používá pro [příklady v Githubu kódu](https://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuse vysvětluje postup konfigurace `java.util.logging` rozhraní framework.
 
 Pomocí java.util.logging můžete přesměrovat protokolů aplikace, paměti, výstupní datové proudy, soubory konzoly nebo sokety. Pro každou z těchto možností jsou obsaženy v rámci výchozích obslužných rutin. Můžete vytvořit `app.properties` souboru nakonfigurujte popisovač souboru pro vaši aplikaci do místního souboru přesměrovat všechny protokoly.
 
@@ -64,7 +64,7 @@ Tuto konfiguraci výsledky v protokolech shromažďovaných otáčení způsobem
 
 Ve výchozím nastavení je-li explicitně nastavená žádná obslužná rutina, registrována obslužná rutina konzoly. V protokolu syslog v rámci /var/log/syslog jeden můžete zobrazit protokoly.
 
-Další informace najdete v tématu [příklady v Githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).
+Další informace najdete v tématu [příklady v Githubu kódu](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Ladění aplikace Service Fabric C#

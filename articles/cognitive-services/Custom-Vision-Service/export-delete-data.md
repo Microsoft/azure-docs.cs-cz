@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4c395a062b1132710f888cc5a315529db082a805
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308498"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850022"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Export nebo odstranění údajů uživatele ve službě Custom Vision
 
-Shromažďuje data uživatele pro provoz služby Custom Vision, ale zákazníci mají plnou kontrolu nad zobrazení, exportu a odstranění jejich dat pomocí služby Custom Vision Service [školení API](https://go.microsoft.com/fwlink/?linkid=865446).
+Shromažďuje data uživatele pro provoz služby Custom Vision, ale zákazníci mají plnou kontrolu nad zobrazení, exportu a odstranění dat s využitím Custom Vision [školení API](https://go.microsoft.com/fwlink/?linkid=865446).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Další informace o tom, jak exportovat a odstraňovat údajů uživatele ve službě Custom Vision najdete v následující tabulce.
+Informace o exportu a odstranění údajů uživatele ve službě Custom Vision, najdete v následující tabulce.
 
 | Data | Operace exportu | Operace odstranění |
 | ---- | ---------------- | ---------------- |
@@ -34,4 +34,4 @@ Další informace o tom, jak exportovat a odstraňovat údajů uživatele ve slu
 | Projekty a podrobnosti o projektu | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) a [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Obrázek značky | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) a [gettags slouží k načtení](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Image | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (obsahuje identifikátor uri pro stažení bitové kopie) a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (obsahuje identifikátor uri pro stažení bitové kopie) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Exportované modelů | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Odstraní při odstranění účtu | 
+| Exportované modelů | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Odstraní při odstranění účtu |

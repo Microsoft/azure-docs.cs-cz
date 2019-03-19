@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079993"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps
 
@@ -162,14 +162,14 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
    ![Vytvoření nového odběru události](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Vytvořte odběr události s následujícími hodnotami: 
-    * **Typ události**: Zrušte zaškrtnutí políčka přihlásit k odběru pro všechny typy událostí a vyberte **zařízení vytvořit** z nabídky.
-    * **Podrobnosti o koncovém bodu**: Vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
+   * **Typ události**: Zrušte zaškrtnutí políčka přihlásit k odběru pro všechny typy událostí a vyberte **zařízení vytvořit** z nabídky.
+   * **Podrobnosti o koncovém bodu**: Vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
 
-    ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
+     ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **Podrobnosti o předplatném události**: Zadejte popisný název a vyberte **schématu Event Grid**
+   * **Podrobnosti o předplatném události**: Zadejte popisný název a vyberte **schématu Event Grid**
 
-  Až to budete mít hotové, měl by formulář vypadat asi jako v následujícím příkladu: 
+   Až to budete mít hotové, měl by formulář vypadat asi jako v následujícím příkladu: 
 
     ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
@@ -177,8 +177,8 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 6. Vytvořte následující filtry:
 
-  * **Předmět začíná**: Zadejte `devices/Building1_` Chcete-li filtrovat události zařízení v budově 1.
-  * **Předmět končí**: Zadejte `_Temperature` pro filtrování zařízení události související s teploty.
+   * **Předmět začíná**: Zadejte `devices/Building1_` Chcete-li filtrovat události zařízení v budově 1.
+   * **Předmět končí**: Zadejte `_Temperature` pro filtrování zařízení události související s teploty.
 
 5. Výběrem možnosti **Vytvořit** uložte odběr události.
 

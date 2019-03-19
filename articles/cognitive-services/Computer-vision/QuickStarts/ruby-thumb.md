@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 957dd6faf1ca2c445b09300382796ad07186714c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bc0941175538c36190999e8c6d191fb8c3701c2b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839623"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>Rychlý start: Generování miniatur pomocí rozhraní REST API a Ruby v počítačové zpracování obrazu
 
@@ -77,10 +77,6 @@ end
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
 Úspěšná odpověď se vrátí jako binární data, která představují data miniatury obrázku. Pokud požadavek selže, odpověď se zobrazí v okně konzoly. Odpověď požadavku, který selhal, bude obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už soubor nepotřebujete, odstraňte ho.
 
 ## <a name="next-steps"></a>Další postup
 

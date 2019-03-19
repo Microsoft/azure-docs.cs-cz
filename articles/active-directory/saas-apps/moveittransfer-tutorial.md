@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2cd63069a584ccef05236f925f99c3740c6a3402
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f6b9c85fa3462486a32cf55b10cb06bb84b0072
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Integrace Azure Active Directory s přenosem MOVEit – integrace služby Azure AD
 
@@ -149,10 +149,10 @@ K Azure AD nakonfigurovat jednotné přihlašování s přenosem MOVEit – inte
 
     ![Adresa URL služby zprostředkovatele metadat](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-    * Ověřte **entityID** odpovídá **identifikátor** v **základní konfiguraci SAML** oddílu.
-    * Ověřte **AssertionConsumerService** adresa URL umístění odpovídá **adresy URL odpovědi** v **základní konfiguraci SAML** oddílu.
+   * Ověřte **entityID** odpovídá **identifikátor** v **základní konfiguraci SAML** oddílu.
+   * Ověřte **AssertionConsumerService** adresa URL umístění odpovídá **adresy URL odpovědi** v **základní konfiguraci SAML** oddílu.
     
-    ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+     ![Nakonfigurovat jednotné přihlašování v aplikaci na straně](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
 5. Klikněte na tlačítko **přidat zprostředkovatele Identity** tlačítko pro přidání nového poskytovatele federované Identity.
 
@@ -198,7 +198,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

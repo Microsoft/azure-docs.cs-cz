@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d68910c32c53128704004d356062aca2c328e7d5
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576697"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855865"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -324,9 +324,9 @@ Pro přístup k vlastnostem typu *SecureString* z vlastní aktivitu, přečtěte
 
 ## <a name="compare-v2-v1"></a> Porovnání v2 pro vlastní aktivity a verze 1 (vlastní) aktivity DotNet
 
-Ve službě Azure Data Factory verze 1 implementujete aktivity DotNet (vlastní) tak, že vytvoříte .net projekt knihovny tříd s třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Metoda spuštění se předá propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jako silně typované objekty. Podrobnosti o chování verzi 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu této implementaci váš kód aktivity DotNet verze 1 má cílit na rozhraní .NET Framework 4.5.2. Verze 1 aktivity DotNet také musí být spuštěn na uzlech Azure Batch Pool se systémem Windows.
+Ve službě Azure Data Factory verze 1 implementujete aktivity DotNet (vlastní) tak, že vytvoříte projekt knihovny tříd .NET vytvoříte třídou, která implementuje `Execute` metodu `IDotNetActivity` rozhraní. Metoda spuštění se předá propojené služby, datové sady a rozšířené vlastnosti v datové části JSON aktivity DotNet (vlastní) jako silně typované objekty. Podrobnosti o chování verzi 1 najdete v tématu [DotNet (vlastní) ve verzi 1](v1/data-factory-use-custom-activities.md). Z důvodu této implementaci váš kód aktivity DotNet verze 1 má cílit na rozhraní .NET Framework 4.5.2. Verze 1 aktivity DotNet také musí být spuštěn na uzlech Azure Batch Pool se systémem Windows.
 
-Ve vlastních aktivit Azure Data Factory V2 nemusíte implementovat rozhraní .net. Můžete nyní přímo spustit příkazy, skripty a vlastní kód, kompilovány jako spustitelný soubor. Pokud chcete nakonfigurovat tuto implementaci, zadejte `Command` vlastnost spolu s `folderPath` vlastnost. Vlastní aktivita nahraje spustitelného souboru a jeho závislosti do `folderpath` a provede příkaz za vás.
+Ve vlastních aktivit Azure Data Factory V2 nemusíte implementovat rozhraní .NET. Můžete nyní přímo spustit příkazy, skripty a vlastní kód, kompilovány jako spustitelný soubor. Pokud chcete nakonfigurovat tuto implementaci, zadejte `Command` vlastnost spolu s `folderPath` vlastnost. Vlastní aktivita nahraje spustitelného souboru a jeho závislosti do `folderpath` a provede příkaz za vás.
 
 Propojené služby, datové sady (definováno v referenceObjects) a rozšířené vlastnosti definované v datové části JSON služby Data Factory v2, který vlastní aktivita je přístupný spustitelný soubor jako soubory JSON. Můžete přistupovat pomocí serializátor JSON, jak je znázorněno v předchozí ukázce kódu SampleApp.exe požadované vlastnosti.
 
@@ -337,18 +337,18 @@ Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity 
 
 |Rozdíly      | Vlastní aktivity      | verze 1 (vlastní) aktivity DotNet      |
 | ---- | ---- | ---- |
-|Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací .net knihovny DLL      |
+|Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací knihovny DLL .NET      |
 |Prostředí pro spouštění vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
-|Spouštění skriptů      |Podporuje spouštění skriptů přímo (například "cmd /c odezvu hello world" na virtuálním počítači Windows)      |Vyžaduje implementaci v rozhraní .net knihovny DLL      |
+|Spouštění skriptů      |Podporuje spouštění skriptů přímo (například "cmd /c odezvu hello world" na virtuálním počítači Windows)      |Vyžaduje implementaci v knihovně DLL .NET      |
 |Datová sada, povinné      |Nepovinné      |Požadované aktivity zřetězit a předávají informace      |
 |Předávání informací z aktivity do vlastní logiku      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (Vlastnosti)      |Prostřednictvím ExtendedProperties (Vlastnosti), vstupní a výstupní datové sady      |
-|Načtení informací vlastní logiku      |Analyzuje activity.json linkedServices.json a datasets.json uloženy ve stejné složce spustitelného souboru      |Pomocí .net SDK (rámce .net 4.5.2)      |
-|Protokolování      |Zapisuje přímo do STDOUT      |Implementace protokolování v prostředí .net knihovny DLL      |
+|Načtení informací vlastní logiku      |Analyzuje activity.json linkedServices.json a datasets.json uloženy ve stejné složce spustitelného souboru      |Pomocí sady .NET SDK (rámce .NET 4.5.2)      |
+|Protokolování      |Zapisuje přímo do STDOUT      |Implementace protokolovací nástroj v knihovně DLL .NET      |
 
 
-Pokud máte stávající kód technologie .net, které jsou vytvořené pro verze 1 aktivity DotNet (vlastní), budete muset upravit kód pro práci s aktuální verzí pro vlastní aktivity. Aktualizujte svůj kód pomocí následujících tyto podrobné pokyny:
+Pokud máte stávající kód technologie .NET, které jsou vytvořené pro verze 1 aktivity DotNet (vlastní), budete muset upravit kód pro práci s aktuální verzí pro vlastní aktivity. Aktualizujte svůj kód pomocí následujících tyto podrobné pokyny:
 
-  - Změnit projekt z .net knihovny tříd pro aplikace konzoly.
+  - Změňte projekt z knihovny tříd .NET do konzolové aplikace.
   - Spustit aplikaci `Main` metody. `Execute` Metodu `IDotNetActivity` rozhraní se už nevyžaduje.
   - Přečíst a parsovat propojené služby, datové sady a aktivitu s serializátor JSON a ne jako silně typované objekty. Předání hodnot požadovaných vlastností hlavní kód vlastní logikou. Předchozí kód SampleApp.exe označujeme jako příklad.
   - Objekt protokolovací nástroj se už nepodporuje. Výstup z spustitelný soubor lze vytisknout na konzole a uložení do umístění stdout.txt.

@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: c7e1ff10f9698bf57ce86a7e9686ef13e5248db7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f5c5a980a99bac3bf02eaaf9c072861ca753d449
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545905"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860444"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení problémů s připojením ke službě Azure Database pro MariaDB
 
@@ -48,7 +48,7 @@ Pokud aplikace trvale nepodaří připojit ke službě Azure Database pro MariaD
 
 * Konfigurace brány firewall: Azure Database pro MariaDB serveru nebo na straně klienta brána firewall blokuje připojení.
 * Změna konfigurace na straně klienta: Byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: Například může být chybně se zadala některá připojení parametry, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
+* Chyba uživatele: Například může být chybně se zadala některá připojení parametry, jako je například název serveru v připojovacím řetězci nebo chybějící  *\@servername* příponu do pole uživatelské jméno.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
 

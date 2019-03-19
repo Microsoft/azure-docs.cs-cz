@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fa0ba7aabcd03297b076ccbc1fcc3d2453676cc1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782662"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869808"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Basic pomocí webu Azure portal
 
@@ -28,7 +28,7 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálov�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-Provádění úkolů v rámci tohoto rychlého startu, přihlaste se k [webu Azure portal](http://portal.azure.com).
+Provádění úkolů v rámci tohoto rychlého startu, přihlaste se k [webu Azure portal](https://portal.azure.com).
 
 ## <a name="create-a-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
 
@@ -207,7 +207,7 @@ Pravidlo nástroje pro vyrovnávání zatížení s názvem **MyLoadBalancerRule
    
 1. Vyberte **OK**.
    
-  ![Přidat pravidlo služby load balancer](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![Přidat pravidlo služby load balancer](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
@@ -259,6 +259,7 @@ Otevřete prohlížeč a vyrovnávání zatížení veřejnou IP adresu vložte 
 
 ![Webový server služby IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Chcete-li odstranit nástroj pro vyrovnávání zatížení a všech souvisejících prostředků, když je už nepotřebujete, otevřete **MyResourceGroupLB** prostředku, skupiny a vyberte **odstranit skupinu prostředků**.

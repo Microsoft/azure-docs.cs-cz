@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991616"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855669"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -36,11 +36,11 @@ Profiler zapisuje zprávy trasování a vlastní události do prostředku Applic
     ```
     Následující obrázek ukazuje dva příklady vyhledávání ze dvou zdrojů AI: 
     
-    * Na levé straně aplikace nepřijímá požadavky, je spuštěn Profiler. Zpráva vysvětluje, že nahrávání byla zrušena z důvodu žádná aktivita. 
+   * Na levé straně aplikace nepřijímá požadavky, je spuštěn Profiler. Zpráva vysvětluje, že nahrávání byla zrušena z důvodu žádná aktivita. 
 
-    * Na pravé straně Profiler spuštění a odeslání vlastních událostí při zjištění požadavků, které se stalo při běhu Profiler. Pokud se zobrazí ServiceProfilerSample vlastní událost, znamená to, že Profiler připojen trasování na žádost a trasování můžete zobrazit **Application Insights výkon** podokně.
+   * Na pravé straně Profiler spuštění a odeslání vlastních událostí při zjištění požadavků, které se stalo při běhu Profiler. Pokud se zobrazí ServiceProfilerSample vlastní událost, znamená to, že Profiler připojen trasování na žádost a trasování můžete zobrazit **Application Insights výkon** podokně.
 
-    Pokud se zobrazí žádnou telemetrii, není spuštěn Profiler. Řešení potíží, najdete v části řešení potíží pro váš typ konkrétní aplikace později v tomto článku.  
+     Pokud se zobrazí žádnou telemetrii, není spuštěn Profiler. Řešení potíží, najdete v části řešení potíží pro váš typ konkrétní aplikace později v tomto článku.  
 
      ![Hledat telemetrii Profiler][profiler-search-telemetry]
 
@@ -90,7 +90,7 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 
 1. V **webový ovládací prvek aplikace** otevřeným podoknem **nastavení**.
 
-1. Nastavte **rozhraní .net Framework verze** k **v4.6**.
+1. Nastavte **verzi rozhraní .NET Framework** k **v4.6**.
 
 1. Nastavte **Always On** k **na**.
 
@@ -124,7 +124,7 @@ Profiler běží jako nepřetržitá webová úloha ve webové aplikaci. Můžet
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Poradce při potížích s Profiler a diagnostice Azure
 
-  >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler.
+  >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler. Pokud používáte sadu Visual Studio na starší verzi verze sady App Insights SDK, se může zobrazit chyba přesměrování vazby v době běhu. Je to proto, že "newVersion" v souboru web.config pro Microsoft.ApplicationInsights musí být nastavená na "2.7.2.0" po downgradu sady Application Insights SDK, ale nebude aktualizovat automaticky.
 
 Chcete-li zjistit, zda je Profiler správně nakonfigurován pomocí Azure Diagnostics, proveďte následující tři věci: 
 1. Nejprve zkontrolujte, zda jsou obsah konfigurace diagnostiky Azure, které jsou nasazeny, co očekáváte. 

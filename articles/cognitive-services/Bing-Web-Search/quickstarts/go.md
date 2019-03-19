@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186858"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843879"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Go
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace Go odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v cestách, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tato aplikace Go odešle požadavek hledání do rozhraní API a ukázka odezvy. Zatímco tato aplikace je napsána v cestách, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
@@ -309,7 +309,7 @@ func main() {
 
 ## <a name="sample-response"></a>Ukázková odpověď  
 
-Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. K formátování této ukázkové odpovědi byla použita struktura `BingAnswer`, která zobrazí hodnoty `result.Name` a `result.URL`.
+Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď je formátován pomocí `BingAnswer` struktury a zobrazí `result.Name` a `result.URL`.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 24792a0099d4e45e100fa6cf0b211c62fc8630de
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: adedc8bc1f574ae089f2a11033fab4f390c57a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087019"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Hunt hrozby s ve verzi Preview Sentinelu Azure
 
@@ -128,19 +128,19 @@ Vytvořte nový dotaz typu:
 1. Klikněte na tlačítko **nový dotaz** a vyberte **Uložit**.
 2. Vyplňte všechna pole prázdné a vyberte **Uložit**.
 
- ![Nový dotaz](./media/tutorial-hunting/new-query.png)
+   ![Nový dotaz](./media/tutorial-hunting/new-query.png)
 
 Klonovat a upravit existující dotaz typu:
 
 1. Výběr typu dotazu v tabulce, kterou chcete upravit.
 2. Vyberte tři tečky (...) na řádku dotazu, kterou chcete upravit a možnost **klonovat dotaz**.
 
- ![klonovat dotaz](./media/tutorial-hunting/clone-query.png)
+   ![klonovat dotaz](./media/tutorial-hunting/clone-query.png)
  
 
-3.  Úprava dotazu a vyberte **vytvořit**.
+3. Úprava dotazu a vyberte **vytvořit**.
 
- ![vlastní dotaz](./media/tutorial-hunting/custom-query.png)
+   ![vlastní dotaz](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak spustit šetření typu s Sentinelu Azure. Další informace o Azure Sentinelu, naleznete v následujících článcích:

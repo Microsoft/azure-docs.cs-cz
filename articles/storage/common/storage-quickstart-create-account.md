@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5266ca3f50a2d8163dbab95109cb967fb5a63ed8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebe23c606d95baa6c79c668fc929177c8bc37e44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474577"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862943"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -55,6 +55,10 @@ Toto tlačítko spustí interaktivní prostředí, které můžete použít k p
 
 Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Žádné.
+
 ---
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
@@ -80,6 +84,10 @@ Pro přihlášení k místní instalaci rozhraní příkazového řádku spusťt
 ```cli
 az login
 ```
+
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+neuvedeno
 
 ---
 
@@ -170,6 +178,33 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využit
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
 
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Prostředí Azure Powershell nebo rozhraní příkazového řádku Azure můžete použít k nasazení šablony Resource Manageru k vytvoření účtu úložiště. Šablona použitá v tomto rychlém startu je z [šablon rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+Další informace o vytváření šablon najdete v tématu:
+
+- [Dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/).
+- [Odkaz na šablonu účtu úložiště](/azure/templates/microsoft.storage/allversions).
+- [Ukázkové šablony účtu úložiště](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+
 ---
 
 Další informace o dostupných možnostech replikace najdete v tématu věnovaném [možnostem replikace služby Storage](storage-redundancy.md).
@@ -202,6 +237,21 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, vč
 az group delete --name storage-quickstart-resource-group
 ```
 
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
 ---
 
 ## <a name="next-steps"></a>Další postup
@@ -222,5 +272,10 @@ V tomto rychlém startu jste vytvořili účet úložiště úrovně standard pr
 
 > [!div class="nextstepaction"]
 > [Práce s objekty BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+
+# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+
+> [!div class="nextstepaction"]
+> [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
 ---

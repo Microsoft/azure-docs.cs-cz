@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8218da62eb8c3d8c454ca1dca1bd1071e0de67b0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003582"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -156,12 +156,12 @@ Prostřednictvím kódu:
 
 - Odebrat ServerTelemetryChannel z konfiguračního souboru
 - Přidejte tento fragment kódu do vaší konfigurace:
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -237,6 +237,7 @@ Ale můžete implementovat této funkce ve vaší aplikaci. Všechny sady SDK za
 Sady SDK se liší mezi platformami a je několik komponent, které můžete nainstalovat. (Odkazovat [Application Insights – přehled][start].) Jednotlivé komponenty odešle jiná data.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Třídy data odeslaná v různých scénářích
+
 | Vaše akce | Shromážděná data třídy (viz následující tabulka) |
 | --- | --- |
 | [Přidejte Application Insights SDK do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
@@ -252,6 +253,7 @@ Sady SDK se liší mezi platformami a je několik komponent, které můžete nai
 Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty.
 
 #### <a name="the-classes-of-collected-data"></a>Třídy shromážděných dat
+
 | Třída shromážděných dat | Zahrnuje (ne o vyčerpávající seznam) |
 | --- | --- |
 | **Vlastnosti** |**Všechna data – určeno kódu** |

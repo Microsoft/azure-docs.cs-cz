@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038428"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108065"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
 [Durable Functions](durable-functions-overview.md) rozšíření pro službu Azure Functions je zahrnutý v balíčku NuGet [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Toto rozšíření musí být nainstalován ve své aplikaci function app. Tento článek popisuje, jak se Tenhle balíček nainstalovat, takže můžete vyvíjet odolná služba functions na webu Azure Portal.
 
->[!NOTE]
->
->* Pokud vyvíjíte odolná služba functions v C#, měli byste místo toho zvážit [vývoje sady Visual Studio 2017](durable-functions-create-first-csharp.md).
-* Pokud vyvíjíte odolná služba functions v JavaScriptu, měli byste místo toho zvážit [vývoj pro Visual Studio Code](./quickstart-js-vscode.md).
+> [!NOTE]
+> 
+> * Pokud vyvíjíte odolná služba functions v C#, měli byste místo toho zvážit [vývoje sady Visual Studio 2017](durable-functions-create-first-csharp.md).
+> * Pokud vyvíjíte odolná služba functions v JavaScriptu, měli byste místo toho zvážit [vývoj pro Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
@@ -56,7 +56,7 @@ Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [
     }
     ```
 
-   ![Kudu nahrát soubor package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
 4. Jednou vaše `package.json` nahraje, spusťte `npm install` příkaz z konzoly Kudu pro vzdálené spuštění.
 

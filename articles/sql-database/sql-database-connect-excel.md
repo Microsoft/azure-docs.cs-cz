@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103396"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databáze ve službě Azure SQL database a vytvoření sestavy
 
@@ -43,10 +43,10 @@ Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2
 
 4. V **databázi systému SQL Server** dialogu **databáze** na levé straně na straně a pak zadejte vaše **uživatelské jméno** a **heslo** pro Server služby SQL Database, kterou chcete připojit. Vyberte **připojit** otevřít **Navigátor**. 
 
-  ![Zadejte název a přihlašovací údaje serveru.](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Zadejte název a přihlašovací údaje serveru.](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > V závislosti na vašem síťovém prostředí nemusíte být schopni se připojit nebo může dojít ke ztrátě připojení (pokud server databáze SQL nepovoluje přenos dat z IP adresy vašeho klienta). Přejděte na [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, v nastavení klikněte na bránu firewall a přidejte IP adresu svého klienta. Podrobnosti najdete v tématu [Jak nakonfigurovat nastavení brány firewall](sql-database-configure-firewall-settings.md).
+   > [!TIP]
+   > V závislosti na vašem síťovém prostředí nemusíte být schopni se připojit nebo může dojít ke ztrátě připojení (pokud server databáze SQL nepovoluje přenos dat z IP adresy vašeho klienta). Přejděte na [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, v nastavení klikněte na bránu firewall a přidejte IP adresu svého klienta. Podrobnosti najdete v tématu [Jak nakonfigurovat nastavení brány firewall](sql-database-configure-firewall-settings.md).
 
 5. V **Navigátor**vyberte databáze, kterou chcete pracovat v seznamu vyberte tabulky a zobrazení, kterým chcete pracovat s (jsme zvolili **vGetAllCategories**) a pak vyberte **zatížení**pro přesun dat z databáze do Excelové tabulky.
 
@@ -75,17 +75,17 @@ Teď, když jste vytvořili připojení, máte několik různých možností, ja
 Trvale uložit podrobné informace o připojení, můžete vytvořit soubor ODC a vytvoření volitelnou možnost v rámci tohoto připojení **existující připojení** dialogové okno. 
 
 1. V panelu nabídek v horní části stránky vyberte **Data** kartu a potom vyberte **existující připojení** ke spuštění **existující připojení** dialogové okno. 
-    1. Vyberte **vyhledat další** otevřít **vybrat zdroj dat** dialogové okno.   
-    2. Vyberte **+NewSqlServerConnection.odc** souboru a pak vyberte **otevřete** otevřít **Průvodce datovým připojením**.
+   1. Vyberte **vyhledat další** otevřít **vybrat zdroj dat** dialogové okno.   
+   2. Vyberte **+NewSqlServerConnection.odc** souboru a pak vyberte **otevřete** otevřít **Průvodce datovým připojením**.
 
-    ![Nové připojení](media/sql-database-connect-excel/new-connection.png)
+      ![Nové připojení](media/sql-database-connect-excel/new-connection.png)
 
 2. V **Průvodce datovým připojením**, zadejte název vašeho serveru a přihlašovací údaje vaší databáze SQL. Vyberte **Další**. 
-    1. Vyberte databázi, která obsahuje vaše data z rozevíracího seznamu. 
-    2. Vyberte tabulku nebo zobrazení, které vás zajímají. Rozhodli jsme se vGetAllCategories.
-    3. Vyberte **Další**. 
+   1. Vyberte databázi, která obsahuje vaše data z rozevíracího seznamu. 
+   2. Vyberte tabulku nebo zobrazení, které vás zajímají. Rozhodli jsme se vGetAllCategories.
+   3. Vyberte **Další**. 
 
-    ![Průvodce datovým připojením](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![Průvodce datovým připojením](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. Vyberte umístění vašeho souboru **název_souboru**a **popisný název** na další obrazovce Průvodce datovým připojením. Můžete také uložit heslo v souboru, i když to může potenciálně vystavit nežádoucí přístup k datům. Vyberte **Dokončit** Jakmile budete připraveni. 
 

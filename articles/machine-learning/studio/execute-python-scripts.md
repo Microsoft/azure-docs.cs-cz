@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 03/05/2019
-ms.openlocfilehash: f508d16330bad7044a69ccff2ddf84ece74e78a2
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.date: 03/12/2019
+ms.openlocfilehash: 4b4f3877b56752756050de0af226571ac2a93293
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729427"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888143"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 
@@ -62,13 +62,14 @@ Datové sady Studio nejsou stejná jako Panda datových rámců. V důsledku toh
 | Index vektorů | Nepodporovaná * |
 | Názvy sloupců non-string | Volání `str` na názvy sloupců |
 | Duplicitní názvy sloupců | Přidáte číselnou příponou: (1), (2), (3), a tak dále.
+
 **Všechny snímky vstupní data v Pythonu – funkce mají vždy 64-bit číselný index od 0 do počtu řádků odečte 1.*
 
 ## <a id="import-modules"></a>Import existující moduly skriptu Pythonu
 
-Back-endu ke spuštění Pythonu je založen na [Anaconda](https://store.continuum.io/cshop/anaconda/), vědecké distribuci jazyka Python nejběžněji používané. Obsahuje blízko 200 nejběžnější balíčky Pythonu používaných pro datově orientovaných úlohy. Však může být potřeba začlenit další knihovny.
+Back-endu ke spuštění Pythonu je založen na [Anaconda](https://store.continuum.io/cshop/anaconda/), vědecké distribuci jazyka Python nejběžněji používané. Obsahuje blízko 200 nejběžnější balíčky Pythonu používaných pro datově orientovaných úlohy. Studio aktuálně nepodporuje použití systémy správy balíčků, jako je Pip nebo Conda, instalaci a správě externí knihovny.  Pokud zjistíte potřeba začlenit další knihovny, použijte jako vodítko následující scénář.
 
-Běžným případem použití je začlenit stávající skripty Python do Studio experimentů. [Execute Python Script] [ execute-python-script] modul přijímá souboru zip, který obsahuje moduly Pythonu na třetí vstupní port. Soubor je odblokujte rozhraním spuštění za běhu a obsah se přidají do knihovny cesta k interpretu Pythonu. `azureml_main` Vstupní bod funkce pak můžete importovat tyto moduly přímo.
+Běžným případem použití je začlenit stávající skripty Python do Studio experimentů. [Execute Python Script] [ execute-python-script] modul přijímá souboru zip, který obsahuje moduly Pythonu na třetí vstupní port. Soubor je odblokujte rozhraním spuštění za běhu a obsah se přidají do knihovny cesta k interpretu Pythonu. `azureml_main` Vstupní bod funkce pak můžete importovat tyto moduly přímo. 
 
 Jako příklad vezměte v úvahu souboru Hello.py obsahující jednoduchou funkci "Hello, World".
 
@@ -87,6 +88,25 @@ Nahrání souboru zip jako datovou sadu do sady Studio. Pak vytvoření a spušt
 Modul výstup ukazuje, že soubor zip nezabalené a které funkce `print_hello` byl spuštěn.
 
 ![Výstup modulu zobrazující uživatelem definované funkce](./media/execute-python-scripts/figure7.png)
+
+## <a name="accessing-azure-storage-blobs"></a>Přístup k objektům BLOB Azure Storage
+
+Můžete přístup k datům uloženým v účtu služby Azure Blob Storage pomocí těchto kroků:
+
+1. Stáhněte si [balíček Azure Blob Storage pro Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) místně.
+1. Nahrání souboru zip do pracovního sadě Studio prostoru jako datová sada.
+1. Vytvoření objektu BlobService s `protocol='http'`
+
+```
+from azure.storage.blob import BlockBlobService
+
+# Create the BlockBlockService that is used to call the Blob service for the storage account
+block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
+```
+
+1. Zakázat **vyžadovat zabezpečený přenos** ve službě Storage **konfigurace** na kartě nastavení
+
+![Zakázání zabezpečeného přenosu na webu Azure Portal](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
 ## <a name="operationalizing-python-scripts"></a>Až po zprovoznění skriptů Pythonu
 

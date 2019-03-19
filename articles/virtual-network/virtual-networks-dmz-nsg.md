@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 68655ea03f53fe7100f67d111fcd3c8595bdf4c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109388"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Příklad 1 – Vytvoření jednoduché DMZ pomocí skupin zabezpečení sítě pomocí šablony Azure Resource Manageru
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -97,14 +97,14 @@ Každé pravidlo je podrobněji takto:
     ``` 
 
 2. V tomto příkladu první pravidlo povoluje provoz DNS mezi všechny interní sítě na serveru DNS na podsíť back-endu. Toto pravidlo má některé důležité parametry:
-  * "destinationAddressPrefix" - předpona cílové adresy nastavena na "10.0.2.4" tak, aby provoz DNS se moct připojit k serveru DNS.
-  * "Směr" označuje, že ve směru toku provozu toto pravidlo projeví. Směr je z hlediska podsítí nebo virtuálních počítačů (v závislosti na tom, kde je vázána tato skupina zabezpečení sítě). Proto pokud je směr "Příchozí" a provoz vstupující podsítě, pravidlo vztahuje a nebude mít vliv přenosů z podsítě tímto pravidlem.
-  * "Priority" Nastaví pořadí, ve kterém je tok přenosů vyhodnoceny. Čím nižší číslo vyšší je priorita. Když pravidlo platí pro konkrétní tok, žádná další pravidla se zpracovávají. Proto pokud pravidlo s prioritou 1 umožňuje provoz a pravidlo s prioritou 2 odepření provozu a obě pravidla se vztahují na provoz pak provoz by bylo možné flow (protože pravidlo 1 má vyšší prioritu vstoupily v platnost a byly použity žádná další pravidla).
-  * "Access" označuje, že pokud je provoz, které jsou ovlivněny tímto pravidlem blokované ("Zakázat") nebo povolených ("Povolit").
+   * "destinationAddressPrefix" - předpona cílové adresy nastavena na "10.0.2.4" tak, aby provoz DNS se moct připojit k serveru DNS.
+   * "Směr" označuje, že ve směru toku provozu toto pravidlo projeví. Směr je z hlediska podsítí nebo virtuálních počítačů (v závislosti na tom, kde je vázána tato skupina zabezpečení sítě). Proto pokud je směr "Příchozí" a provoz vstupující podsítě, pravidlo vztahuje a nebude mít vliv přenosů z podsítě tímto pravidlem.
+   * "Priority" Nastaví pořadí, ve kterém je tok přenosů vyhodnoceny. Čím nižší číslo vyšší je priorita. Když pravidlo platí pro konkrétní tok, žádná další pravidla se zpracovávají. Proto pokud pravidlo s prioritou 1 umožňuje provoz a pravidlo s prioritou 2 odepření provozu a obě pravidla se vztahují na provoz pak provoz by bylo možné flow (protože pravidlo 1 má vyšší prioritu vstoupily v platnost a byly použity žádná další pravidla).
+   * "Access" označuje, že pokud je provoz, které jsou ovlivněny tímto pravidlem blokované ("Zakázat") nebo povolených ("Povolit").
 
-    ```JSON
-    "properties": {
-    "securityRules": [
+     ```JSON
+     "properties": {
+     "securityRules": [
       {
         "name": "enable_dns_rule",
         "properties": {
@@ -119,7 +119,7 @@ Každé pravidlo je podrobněji takto:
           "direction": "Inbound"
         }
       },
-    ```
+     ```
 
 3. Toto pravidlo umožňuje provoz protokolu RDP, které mají být předány portu RDP na libovolný server, na vázané podsítě z Internetu. 
 
@@ -221,23 +221,23 @@ Každé pravidlo je podrobněji takto:
 1. Internetu uživatel požádá o stránku protokolu HTTP z veřejné IP adresy přidružené k síťovému rozhraní IIS01 síťové karty
 2. Veřejná IP adresa předává provoz do virtuální sítě směrem k IIS01 (webový server)
 3. Front-endové podsítě začíná zpracování příchozí pravidlo:
-  1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-  3. Vztahuje se 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01), provoz je povolený, zastavte pravidla zpracování
+   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
+   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+   3. Vztahuje se 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01), provoz je povolený, zastavte pravidla zpracování
 4. Provoz narazí na interní IP adresa webového serveru IIS01 (adresa 10.0.1.5)
 5. IIS01 naslouchá pro webový provoz, získá tento požadavek a spustí zpracování požadavku
 6. IIS01 dotazem SQL serveru na AppVM01 informace
 7. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
 8. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-  1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-  3. 3 pravidlo skupiny zabezpečení sítě (Internet do brány Firewall) nebude použít, přejděte k další pravidla
-  4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
+   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
+   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+   3. 3 pravidlo skupiny zabezpečení sítě (Internet do brány Firewall) nebude použít, přejděte k další pravidla
+   4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
 9. AppVM01 obdrží dotaz SQL a odpovídá
 10. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povoleno odpovědi
 11. Front-endové podsítě začíná zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-  2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
+    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
+    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
 12. Server služby IIS obdrží odpověď SQL a dokončí odpovědi HTTP a pošle žadateli
 13. Protože nejsou žádná odchozí pravidla ve front-endové podsíti, odpovědi je povolený a Internet uživatel obdrží požadované webové stránky.
 
@@ -245,8 +245,8 @@ Každé pravidlo je podrobněji takto:
 1. Správce serveru k Internetu vyžaduje relaci RDP na IIS01 na veřejnou IP adresu síťové karty přidružená k síťové KARTĚ IIS01 (tuto veřejnou IP adresu můžete najít pomocí portálu nebo Powershellu)
 2. Veřejná IP adresa předává provoz do virtuální sítě směrem k IIS01 (webový server)
 3. Front-endové podsítě začíná zpracování příchozí pravidlo:
-  1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-  2. Použít pravidlo NSG 2 (RDP), provoz je povolený, zastavte pravidla zpracování
+   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
+   2. Použít pravidlo NSG 2 (RDP), provoz je povolený, zastavte pravidla zpracování
 4. Žádná odchozí pravidla použít výchozí pravidla a zpětný provoz je povolený.
 5. Povolené relace protokolu RDP
 6. IIS01 vyzve k zadání uživatelského jména a hesla
@@ -261,7 +261,7 @@ Každé pravidlo je podrobněji takto:
 2. Konfiguraci sítě pro virtuální síť seznamy DNS01 (10.0.2.4 v back-endové podsíti) jako primární server DNS, IIS01 odešle žádosti DNS DNS01
 3. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
 4. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-  * Vztahuje se 1 pravidlo skupiny zabezpečení sítě (DNS), provoz je povolený, zastavte pravidla zpracování
+   * Vztahuje se 1 pravidlo skupiny zabezpečení sítě (DNS), provoz je povolený, zastavte pravidla zpracování
 5. DNS server obdrží požadavek
 6. DNS server nemá adresu do mezipaměti a požádá kořenový server DNS na Internetu
 7. Žádná odchozí pravidla na back-endové podsítě je povolený provoz
@@ -269,23 +269,23 @@ Každé pravidlo je podrobněji takto:
 9. DNS server, odpověď do mezipaměti a reaguje na původní žádost zpět na IIS01
 10. Žádná odchozí pravidla na back-endové podsítě je povolený provoz
 11. Front-endové podsítě začíná zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-  2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz
+    1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
+    2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz
 12. IIS01 obdrží odpověď od DNS01
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Povolené*) přístup k souboru webového serveru na AppVM01
 1. IIS01 vyzve k zadání souboru na AppVM01
 2. Žádná odchozí pravidla na front-endové podsítě je povolený provoz
 3. Podsíť back-endu se začne zpracovávat příchozí pravidlo:
-  1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-  3. 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01) nebude použít, přejděte k další pravidla
-  4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
+   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
+   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+   3. 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01) nebude použít, přejděte k další pravidla
+   4. 4 pravidlo skupiny zabezpečení sítě (IIS01 k AppVM01) použít, je povolený provoz, zastavit zpracování pravidla
 4. AppVM01 obdrží požadavek a odpovídá zprávou souboru (za předpokladu, že přístup je autorizovaný)
 5. Protože nejsou žádná odchozí pravidla v back-endové podsíti, je povoleno odpovědi
 6. Front-endové podsítě začíná zpracování příchozí pravidlo:
-  1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
-  2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
+   1. Neexistuje žádné pravidlo NSG, které platí pro příchozí provoz z podsítě back-end k front-endové podsítě, tak žádné skupiny zabezpečení sítě pravidla použít
+   2. Systém výchozí pravidlo povolení provozu mezi podsítěmi by tento provoz povolit, aby provoz.
 7. Server služby IIS obdrží soubor
 
 #### <a name="denied-rdp-to-backend"></a>(*Byl odepřen*) připojení RDP k back-endu
@@ -312,9 +312,9 @@ Každé pravidlo je podrobněji takto:
 1. Internet uživatele požádá IIS01 dat SQL
 2. Protože nejsou žádné veřejné IP adresy přidružené k této síťové karty serverům, tento provoz by nikdy zadejte virtuální síť a nebude připojit k serveru
 3. Pokud z nějakého důvodu byl povolen veřejnou IP adresu, podsíť Frontend začíná zpracování příchozí pravidlo:
-  1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
-  2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
-  3. Vztahuje se 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01), provoz je povolený, zastavte pravidla zpracování
+   1. 1 pravidlo skupiny zabezpečení sítě (DNS) nelze použít, přejděte k další pravidlo
+   2. Není použít, přejděte k další pravidla NSG pravidlo 2 (RDP)
+   3. Vztahuje se 3 pravidlo skupiny zabezpečení sítě (Internet k IIS01), provoz je povolený, zastavte pravidla zpracování
 4. Provoz narazí na interní IP adresa IIS01 (adresa 10.0.1.5)
 5. IIS01 nenaslouchá na portu 1433, takže žádná odezva na žádosti
 

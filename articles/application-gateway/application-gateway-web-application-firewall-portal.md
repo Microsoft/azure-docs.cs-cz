@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: d89e5d6fd21fdc37bffcc730fb20bae30ecc4f7c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074959"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Vytvoření služby application gateway s firewallem webových aplikací, pomocí webu Azure portal
 
@@ -45,21 +45,21 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
 3. Pro aplikační bránu zadejte tyto hodnoty:
 
-    - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
-    - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
-    - Vyberte *WAF* pro úroveň služby application gateway.
+   - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
+   - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
+   - Vyberte *WAF* pro úroveň služby application gateway.
 
-    ![Vytvoření nové aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+     ![Vytvoření nové aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
 4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
-    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
-    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
-    - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+   - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
+   - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
+   - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
+   - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
 
-    ![Vytvoření virtuální sítě](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+     ![Vytvoření virtuální sítě](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
 6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.

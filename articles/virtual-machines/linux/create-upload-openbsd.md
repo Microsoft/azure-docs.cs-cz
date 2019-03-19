@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007602"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image disku OpenBSD do Azure
 V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po odeslání, můžete ho použít jako vlastní image k vytvoření virtuálního počítače (VM) v Azure pomocí Azure CLI.
@@ -56,7 +56,7 @@ Na virtuálním počítači, kam jste nainstalovali operačního systému OpenBS
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Ve výchozím nastavení `root` je uživatel zakázán na virtuálních počítačích v Azure. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí `doas` příkaz na virtuálním počítači OpenBSD. Doas je standardně povolená. Další informace najdete v tématu [doas.conf](http://man.openbsd.org/doas.conf.5). 
+4. Ve výchozím nastavení `root` je uživatel zakázán na virtuálních počítačích v Azure. Uživatelé můžou spouštět příkazy se zvýšenými oprávněními pomocí `doas` příkaz na virtuálním počítači OpenBSD. Doas je standardně povolená. Další informace najdete v tématu [doas.conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Nainstalujte a nakonfigurujte požadované součásti pro agenta Azure následujícím způsobem:
 
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete získat další informace o podporu technologie Hyper-V na OpenBSD6.1, přečtěte si [OpenBSD 6.1](https://www.openbsd.org/61.html) a [hyperv.4](http://man.openbsd.org/hyperv.4).
+Pokud chcete získat další informace o podporu technologie Hyper-V na OpenBSD6.1, přečtěte si [OpenBSD 6.1](https://www.openbsd.org/61.html) a [hyperv.4](https://man.openbsd.org/hyperv.4).
 
 Pokud chcete vytvořit virtuální počítač ze spravovaného disku, přečtěte si [az disk](/cli/azure/disk). 

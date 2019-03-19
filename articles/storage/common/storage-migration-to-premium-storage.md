@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: bb88bf7ddaa93336c812b1ddc9794dad8daa64b7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330575"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006506"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -138,7 +138,7 @@ Pokud nahráváte virtuálního pevného disku, který se použije k vytvoření
 
     ![][1]
 
-Pro virtuální počítač s Ubuntu použijte to samé virt nástroje sysprep. Zobrazit [virt sysprep](http://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) další podrobnosti. Viz také některé z oblasti open source [zřizování serveru Linux softwaru](http://www.cyberciti.biz/tips/server-provisioning-software.html) u ostatních operačních systémů Linux.
+Pro virtuální počítač s Ubuntu použijte to samé virt nástroje sysprep. Zobrazit [virt sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) další podrobnosti. Viz také některé z oblasti open source [zřizování serveru Linux softwaru](https://www.cyberciti.biz/tips/server-provisioning-software.html) u ostatních operačních systémů Linux.
 
 ##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Použijte jedinečné virtuální pevný disk operačního systému k vytvoření jedné instance virtuálního počítače
 Pokud máte aplikaci spuštěné na virtuálním počítači, který vyžaduje data konkrétního počítače, ne zobecnit virtuální pevný disk. Zobecněný virtuální pevný disk je možné vytvořit instanci virtuálního počítače Azure jedinečný. Například pokud máte řadiče domény na virtuální pevný disk, provádění programu sysprep filtrovacího řetězce se neúčinná jako řadič domény. Projděte si aplikace spuštěné na virtuálním počítači a dopad na nich spuštěné nástroje sysprep před zobecňuje se virtuální pevný disk.
@@ -467,9 +467,9 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
 
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
-    http://azure.microsoft.com/documentation/articles/powershell-install-configure/
-    http://azure.microsoft.com/documentation/articles/storage-powershell-guide-full/
-    http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/
+    https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+    https://azure.microsoft.com/documentation/articles/storage-powershell-guide-full/
+    https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/
 
     #>
 
@@ -558,7 +558,7 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
     }
     else
     {
-        Write-Host "[ERROR] - There is no valid Azure subscription found in PowerShell. Please refer to this article http://azure.microsoft.com/documentation/articles/powershell-install-configure/ to connect an Azure subscription. Exiting." -ForegroundColor Red
+        Write-Host "[ERROR] - There is no valid Azure subscription found in PowerShell. Please refer to this article https://azure.microsoft.com/documentation/articles/powershell-install-configure/ to connect an Azure subscription. Exiting." -ForegroundColor Red
         Exit
     }
 
@@ -759,7 +759,7 @@ Viz následující prostředky pro konkrétní scénáře pro migraci virtuáln�
 * [Migrace virtuálních počítačů Azure mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 * [Vytvoření a nahrání virtuálního pevného disku Windows serverem do Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Vytvoření a nahrání linuxového virtuálního pevného disku do Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Migrace virtuálních počítačů z služeb Amazon AWS k Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Migrace virtuálních počítačů z služeb Amazon AWS k Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 Viz také následující prostředky pro další informace o Azure Storage a Azure Virtual Machines:
 
@@ -770,4 +770,4 @@ Viz také následující prostředky pro další informace o Azure Storage a Azu
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
-[4]: http://technet.microsoft.com/library/hh831739.aspx
+[4]: https://technet.microsoft.com/library/hh831739.aspx

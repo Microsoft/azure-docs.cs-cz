@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207366"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108657"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Vytvoření a nastavení vývojového prostředí
 
@@ -55,8 +55,8 @@ Tento rychlý start je rozdělený na dva scénáře v závislosti na typu aplik
 
 > [!TIP]
 > Pokud potřebujete zjistit ID tenanta, můžete to provést následovně:
-* Najeďte myší na název vašeho účtu, aby se zobrazilo ID adresáře nebo tenanta.
-* Nebo na webu Azure Portal vyberte **Azure Active Directory > Vlastnosti > ID adresáře**.
+> * Najeďte myší na název vašeho účtu, aby se zobrazilo ID adresáře nebo tenanta.
+> * Nebo na webu Azure Portal vyberte **Azure Active Directory > Vlastnosti > ID adresáře**.
 
 Pokud existujícího tenanta přidruženého k účtu nemáte, zobrazí se pod názvem vašeho účtu GUID a než dokončíte postup v následující části, nebudete moct provádět akce, jako jsou třeba registrace aplikací.
 

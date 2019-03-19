@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 7a944b87192236ba7401fe62d52275bea8be5076
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769791"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898078"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -209,7 +209,7 @@ Spouští se ladicí program VS Code může někdy vést k této chybě.
 Spuštění ladicího programu VS Code zaznamená chybu: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Důvod
-Rozšíření VS Codu pro jazyk C# nainstalována na vývojovém počítači nemáte. Rozšíření jazyka C# obsahuje podporu ladění pro.Net Core (CoreCLR).
+Rozšíření VS Codu pro jazyk C# nainstalována na vývojovém počítači nemáte. C# Rozšíření obsahuje podporu ladění pro .NET Core (CoreCLR).
 
 ### <a name="try"></a>Zkuste:
 Nainstalujte [rozšíření VS Codu pro jazyk C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).

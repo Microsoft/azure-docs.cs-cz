@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978929"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990624"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlaste se k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív připojit k virtuálnímu počítači a pak přihlásit.
@@ -32,7 +32,7 @@ Pro připojení k virtuálnímu počítači s Windows z Macu, budete muset nains
 2. V nabídce vlevo vyberte **virtuálních počítačů**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Nahoře na stránce pro virtuální počítač, vyberte **připojit**.
-2. Na **připojit k virtuálnímu počítači** vyberte správnou IP adresu a port. Ve většině případů by měla sloužit výchozí IP adresu a port. Vyberte **soubor stáhnout RDP**RDP stáhnout soubor **. Pokud má virtuální počítač just-in-time zásad nastavit, musíte nejprve vybrat **žádat o přístup** tlačítko požádat o přístup, než si můžete stáhnout soubor RDP. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
+2. Na **připojit k virtuálnímu počítači** vyberte správnou IP adresu a port. Ve většině případů by měla sloužit výchozí IP adresu a port. Vyberte **Stáhnout soubor RDP**. Pokud má virtuální počítač just-in-time zásad nastavit, musíte nejprve vybrat **žádat o přístup** tlačítko požádat o přístup, než si můžete stáhnout soubor RDP. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
 2. Otevřete stažený soubor RDP a vyberte **připojit** po zobrazení výzvy. 
 2. Zobrazí se upozornění, která `.rdp` souboru je od neznámého vydavatele. To se očekává. V **připojení ke vzdálené ploše** okně **připojit** pokračujte.
    

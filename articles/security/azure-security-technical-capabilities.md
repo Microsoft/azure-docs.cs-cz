@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839096"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -75,7 +75,7 @@ Výhody zabezpečení Azure Active Directory (Azure AD) zahrnují možnost:
 
 - Zřízení zabezpečený vzdálený přístup k místním webovým aplikacím prostřednictvím Proxy aplikací Azure AD.
 
-[Portálu Azure Active Directory](http://aad.portal.azure.com/) je k dispozici část na webu Azure portal. Na tomto řídicím panelu můžete získat přehled o stavu vaší organizace a snadno podrobně spravovat adresář, uživatele nebo přístupu k aplikacím.
+[Portálu Azure Active Directory](https://aad.portal.azure.com/) je k dispozici část na webu Azure portal. Na tomto řídicím panelu můžete získat přehled o stavu vaší organizace a snadno podrobně spravovat adresář, uživatele nebo přístupu k aplikacím.
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Nejen uživatele není potřeba spravovat víc kopií uživatelských jmen a hes
 
 Monitorování zabezpečení a upozornění a machine learning sestav založených na, které rozpoznávají nekonzistentní vzorce přístupu můžete pomoct chránit vaši firmu. Přístup k Azure Active Directory a sestavy využití můžete získat náhled do integrity a zabezpečení adresáři vaší organizace. Pomocí těchto informací adresáře správce můžete zjistit, kde můžou být potenciální bezpečnostní rizika, mohli odpovídajícím způsobem plánovat pro zmírnění rizika.
 
-Na webu Azure Portal nebo prostřednictvím [portálu Azure Active Directory](http://aad.portal.azure.com/), [sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) jsou rozdělené do následujících způsobů:
+Na webu Azure Portal nebo prostřednictvím [portálu Azure Active Directory](https://aad.portal.azure.com/), [sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) jsou rozdělené do následujících způsobů:
 
 - Sestavy anomálií – obsahovat události, které jsme zjištěna neobvyklá přihlášení. Naším cílem je informovat vás tyto aktivity a umožní vám moct rozhodnout o tom, zda je podezřelé události.
 
@@ -274,7 +274,7 @@ Další informace o možnosti Azure VPN najdete v článku [plánování a návr
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) využívá zásady šifrování, identity a autorizace, aby napomohla zabezpečení souborů a e-mailu. Azure RMS funguje napříč více zařízeními – telefony, tablety a počítače s ochranou v rámci vaší organizace i mimo vaši organizaci. Tato funkce je možné, protože Azure RMS přidá úroveň ochrany, která zůstává s daty, i když opustí hranice vaší organizace.
 
-Při použití služby Azure RMS k ochraně souborů použijete standardní kryptografie s plnou podporou [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Při využití Azure RMS pro ochranu dat, máte jistotu, že zůstane ochrana se souborem, i v případě, že je zkopírován do úložiště, které není pod kontrolou oddělení IT, třeba do cloudového úložiště. Stejné dojde k souborů sdílených prostřednictvím e-mailu, je soubor chráněný jako příloha e-mailovou zprávu s pokyny, jak chráněnou přílohu otevřít.
+Při použití služby Azure RMS k ochraně souborů použijete standardní kryptografie s plnou podporou [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Při využití Azure RMS pro ochranu dat, máte jistotu, že zůstane ochrana se souborem, i v případě, že je zkopírován do úložiště, které není pod kontrolou oddělení IT, třeba do cloudového úložiště. Stejné dojde k souborů sdílených prostřednictvím e-mailu, je soubor chráněný jako příloha e-mailovou zprávu s pokyny, jak chráněnou přílohu otevřít.
 Při plánování přechodu na službu Azure RMS, doporučujeme následující:
 
 - Nainstalujte [aplikace pro sdílení obsahu RMS](https://technet.microsoft.com/library/dn339006.aspx). Tato aplikace integruje Office aplikace nainstalováním Office doplňku tak, aby uživatelé mohli snadno chránit soubory přímo.
@@ -406,11 +406,11 @@ Provozní zabezpečení Azure je postavená na systém, který zahrnuje poznatky
 
 Díky nástroji Azure Monitor můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, Azure Monitor nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
 [Protokoly Azure monitoru](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
-![Protokoly Azure monitoru](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Protokoly služby Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Tato metoda umožňuje konsolidovat data z nejrůznějších zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
 

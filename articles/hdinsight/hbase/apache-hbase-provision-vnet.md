@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: af5a261ba57c406335fb75260d6af797af70a1b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101444"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBase v HDInsight ve virtuální síti Azure
 Zjistěte, jak vytvářet clustery Azure HDInsight Apache HBase v [Azure Virtual Network][1].
@@ -90,9 +90,9 @@ Pokud chcete začít pracovat s nového clusteru HBase pomocí postupů v [začn
      2. Klikněte na tlačítko **hostitele** z hlavní nabídky.
    * Použití Curl k volání REST:
 
-    ```bash
+     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
-    ```
+     ```
 
      V datech JavaScript Object Notation (JSON) vrátila vyhledejte položku "název_hostitele". Obsahuje plně kvalifikovaný název domény pro uzly v clusteru. Příklad:
 
@@ -105,7 +105,7 @@ Pokud chcete začít pracovat s nového clusteru HBase pomocí postupů v [začn
 
      Pomocí následujícího skriptu prostředí Azure PowerShell k registraci **Get-ClusterDetail** funkce, které lze použít k vrácení přípona DNS:
 
-    ```powershell
+     ```powershell
         function Get-ClusterDetail(
             [String]
             [Parameter( Position=0, Mandatory=$true )]
@@ -195,13 +195,13 @@ Pokud chcete začít pracovat s nového clusteru HBase pomocí postupů v [začn
                 Write-host $Suffix
             }
         }
-    ```
+     ```
 
      Po spuštění skriptu Azure Powershellu, použijte následující příkaz k vrácení příponu DNS s využitím **Get-ClusterDetail** funkce. Při použití tohoto příkazu zadejte název clusteru HDInsight HBase, jméno správce a heslo správce.
 
-    ```powershell
+     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
-    ```
+     ```
 
      Tento příkaz vrátí příponu DNS. Například **yourclustername.b4.internal.cloudapp.net**.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382a32d0ff9de0a7b372e3b7ff2de7170a791aab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085078"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Nastavení informací zabezpečení (preview) pro použití telefonních hovorů
 Provedením následujících kroků pro přidání dvoufaktorového ověřování a metody pro resetování hesla. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
@@ -26,10 +26,10 @@ Pokud se zobrazí výzva k nastavení ihned po přihlášení ke svému pracovn�
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
->[!Note]
->Informace o zabezpečení nepodporuje používání telefonní linky. I v případě, že přidáte správný formát, jsou odebrány 4255551234 + 1 X 12345, rozšíření předtím, než je umístěn volání.
-
->Pokud nevidíte možnost Telefon, je možné, že vaše organizace nepovoluje budete moci použít telefonní číslo pro ověření. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+> [!Note]
+> Informace o zabezpečení nepodporuje používání telefonní linky. I v případě, že přidáte správný formát, jsou odebrány 4255551234 + 1 X 12345, rozšíření předtím, než je umístěn volání.
+> 
+> Pokud nevidíte možnost Telefon, je možné, že vaše organizace nepovoluje budete moci použít telefonní číslo pro ověření. V takovém případě budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>Nastavení telefonních hovorů na stránce informace o zabezpečení
 V závislosti na nastavení vaší organizace je možné použít telefonní hovory jako jeden z vašich metodách informace o zabezpečení.

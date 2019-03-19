@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727498"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892710"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Kontroly přístupu Azure AD použijte ke správě uživatelů vyloučit ze zásad podmíněného přístupu
 
@@ -102,7 +102,7 @@ Pojďme zahrnují dva příklady, kde můžete použít kontroly přístupu ke s
 Řekněme, že máte, která zablokuje přístup pro zásady podmíněného přístupu v určitých zemích. Obsahuje skupinu, která je vyloučena ze zásad. Tady je kontrola doporučené přístupu ve kterém jsou kontrolovány členy skupiny.
 
 > [!NOTE]
-> Vytvoření kontroly přístupu se vyžaduje roli Globální správce nebo správce uživatelských účtů.
+> Globální správce nebo role uživatele správce se vyžaduje k vytvoření kontroly přístupu.
 
 1. Kontrola bude se každý týden.
 

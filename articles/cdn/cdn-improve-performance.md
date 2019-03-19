@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: 4d1725b0559c34692d1a89d016fd2d6b7b1b26c1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096448"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů je jednoduchou a efektivní způsob zlepšit rychlost přenosu souborů a zvýšení výkonu načítání stránek díky snížení velikosti souboru před odesláním ze serveru. Komprese můžete snížit náklady na šířku pásma a poskytnout pohotovější prostředí pro vaše uživatele.
@@ -31,13 +31,11 @@ Existují dva způsoby, jak povolit kompresi souborů:
 
 > [!IMPORTANT]
 > Změny konfigurace Azure CDN může trvat nějakou dobu šířit přes síť: 
-- Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
-- V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
-- V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut. 
->
+> - Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+> - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
+> - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut. 
+> 
 > Pokud nastavujete komprese poprvé pro koncový bod CDN, zvažte, zda nevyčkat 1 až 2 hodin, než je řešit Ujistěte se, že jste nastavení komprese rozšíří do bodů POP.
-> 
-> 
 
 ## <a name="enabling-compression"></a>Povolení komprese
 CDN úrovně standard a premium poskytují stejné funkce kompresi, ale uživatelské rozhraní se liší. Další informace o rozdílech mezi CDN úrovně standard a premium najdete v tématu [přehled sítě CDN Azure](cdn-overview.md).
@@ -49,28 +47,28 @@ CDN úrovně standard a premium poskytují stejné funkce kompresi, ale uživate
 > 
 
 1. Na stránce profilu CDN vyberte koncový bod CDN, které chcete spravovat.
-   
+
     ![Koncové body profilu CDN](./media/cdn-file-compression/cdn-endpoints.png)
-   
+
     Otevře se stránka koncového bodu CDN.
 2. Vyberte **komprese**.
 
     ![Výběr CDN komprese](./media/cdn-file-compression/cdn-compress-select-std.png)
-   
+
     Otevře se stránka komprese.
 3. Vyberte **na** zapnutí komprese.
-   
+
     ![Možnosti komprese souborů CDN](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Použít výchozí typ MIME, nebo upravit seznam přidáním nebo odebráním typy MIME.
-   
+
    > [!TIP]
    > I když je možné, není doporučeno použít kompresi komprimovaných formátů. Například ZIP, MP3, MP4 nebo JPG.
    > 
-   
+
    > [!NOTE]
    > Změna výchozí seznam typů MIME se aktuálně nepodporuje v Azure CDN Standard od společnosti Microsoft.
    > 
- 
+
 5. Po provedení změny, vyberte **Uložit**.
 
 ### <a name="premium-cdn-profiles"></a>Profily CDN úrovně Premium
@@ -79,23 +77,23 @@ CDN úrovně standard a premium poskytují stejné funkce kompresi, ale uživate
 > 
 
 1. Na stránce profilu CDN vyberte **spravovat**.
-   
+
     ![Spravovat CDN vyberte](./media/cdn-file-compression/cdn-manage-btn.png)
-   
+
     Otevře se na portálu pro správu CDN.
 2. Najeďte myší **HTTP velké** kartu a pak najeďte myší **nastavení mezipaměti** Kontextová nabídka. Vyberte **komprese**.
 
     ![Výběr CDN komprese](./media/cdn-file-compression/cdn-compress-select.png)
-   
+
     Zobrazí se možnosti komprese.
-   
+
     ![Možnosti komprese souborů CDN](./media/cdn-file-compression/cdn-compress-files.png)
 3. Povolit kompresi tak, že vyberete **povolena komprese**. Zadejte typy MIME chcete komprimovat jako seznam oddělený čárkami (bez mezer) **typy souborů** pole.
-   
+
    > [!TIP]
    > I když je možné, není doporučeno použít kompresi komprimovaných formátů. Například ZIP, MP3, MP4 nebo JPG.
    > 
-    
+
 4. Po provedení změny, vyberte **aktualizace**.
 
 ## <a name="compression-rules"></a>Komprese pravidla
@@ -110,7 +108,7 @@ Pro **Azure CDN Standard od společnosti Microsoft** profilů, pouze vhodné sou
 Tyto profily podporují následující kódování komprese:
 - GZIP (GNU zip)
 - brotli 
- 
+
 Pokud požadavek podporuje více než jeden typ komprese, komprese brotli přednost.
 
 Když žádost pro určitý prostředek určuje kompresi gzip a výsledky požadavku v neúspěšnému přístupu do mezipaměti, Azure CDN provádí kompresi gzip majetku přímo na serveru POP. Následně komprimovaný soubor se načítají z mezipaměti.
@@ -120,13 +118,13 @@ Když žádost pro určitý prostředek určuje kompresi gzip a výsledky požad
 Pro **Azure CDN Standard od Verizonu** a **Azure CDN Premium od Verizonu** profilů, pouze vhodné soubory jsou komprimované. Způsobilé pro kompresi, musíte soubor:
 - Být větší než 128 bajtů
 - Být menší než 3 MB
- 
+
 Tyto profily podporují následující kódování komprese:
 - GZIP (GNU zip)
 - DEFLATE
 - bzip2
 - brotli 
- 
+
 Pokud požadavek podporuje více než jeden typ komprese, tyto typy komprese přednost před brotli komprese.
 
 Když žádost pro určitý prostředek určuje brotli komprese (hlavička HTTP je `Accept-Encoding: br`) a výsledkem žádosti Neúspěšné přístupy do mezipaměti, Azure CDN provádí kompresi brotli majetku přímo na serveru POP. Následně komprimovaný soubor se načítají z mezipaměti.

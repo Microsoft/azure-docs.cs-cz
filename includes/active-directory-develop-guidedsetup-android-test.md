@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: e87a63a0dad5e1f93b1bea62039abee8ded78ab7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0a2e5982832dcf1747389eb78c6a1b1cb5762b64
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964113"
 ---
 ## <a name="test-your-app"></a>Testování aplikace
 
 1. Vaše zařízení nebo emulátoru spustíte kód.
-2. Zkuste se přihlásit pomocí účtu Azure Active Directory (pracovní nebo školní účet) nebo účet Microsoft (live.com, outlook.com). 
+2. Zkuste se přihlásit pomocí účtu služby Azure Active Directory (pracovní nebo školní účet) nebo účet Microsoft (live.com, outlook.com). 
 
     ![Testování aplikace](media/active-directory-develop-guidedsetup-android-test/mainwindow.png)
     <br/><br/>

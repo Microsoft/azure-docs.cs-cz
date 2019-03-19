@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205745"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Kurz: Integrace Azure Active Directory s Work.com
 
@@ -262,9 +262,9 @@ Pro uživatele Azure Active Directory bude moct přihlásit musí být poskytnut
     
     c. V **Alias** textové pole, typ **název** uživatele **BrittaS**.
     
-    d. V **e-mailu** textové pole, typ **e-mailová adresa** uživatele **Brittasimon@contoso.com**.
+    d. V **e-mailu** textové pole, typ **e-mailová adresa** uživatele **Brittasimon\@contoso.com**.
     
-    e. V **uživatelské jméno** textové pole, typ uživatelskému jménu uživatele jako **Brittasimon@contoso.com**.
+    e. V **uživatelské jméno** textové pole, typ uživatelskému jménu uživatele jako **Brittasimon\@contoso.com**.
     
     f. V **Přezdívka** textového pole zadejte **Přezdívka** uživatele **Simon**.
     

@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af01d924036e5d31de5498e51b56efdf1defc9f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201444"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083933"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: Podrobné technické informace
 
@@ -60,7 +60,7 @@ Tok přihlášení ve webovém prohlížeči vypadá takto:
 3. Uživatel zadá své uživatelské jméno na přihlašovací stránce služby Azure AD.
 
    >[!NOTE]
-   >Pro [některých aplikací](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), jsou kroky 2 a 3 přeskočeny.
+   >Pro [některých aplikací](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso), jsou kroky 2 a 3 přeskočeny.
 
 4. Pomocí jazyka JavaScript na pozadí, Azure AD vyzve prohlížeče prostřednictvím 401 neoprávněný odpověď, zadejte lístek protokolu Kerberos.
 5. Prohlížeč, pak vyžádá lístek ze služby Active Directory pro `AZUREADSSOACC` účtu počítače (který představuje Azure AD).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364661"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999741"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Použití klienta Windows v Azure pro scénáře vývoje/testování
 Můžete použít Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) v Azure pro scénáře vývoje a testování za předpokladu, že máte příslušné předplatné sady Visual Studio (dříve MSDN). Tento článek popisuje, jak požadavky zakládající nárok pro spouštění Windows 7, Windows 8.1, Windows 10 Enterprise v Azure a použití následujících imagí Galerie Azure.
@@ -59,7 +59,7 @@ Pokud si nejste jisti vaše ID nabídky, můžete ho získat prostřednictvím w
 
 - Nebo klikněte na tlačítko **fakturace** a potom klikněte na ID vašeho předplatného. ID se zobrazí v nabídce *fakturace* okna.
 
-Můžete také zobrazit ID nabídky z [kartu "Předplatné"](http://account.windowsazure.com/Subscriptions) portálu účtů Azure:
+Můžete také zobrazit ID nabídky z [kartu "Předplatné"](https://account.windowsazure.com/Subscriptions) portálu účtů Azure:
 
 ![Podrobnosti o nabídce ID z portálu účtu Azure](./media/client-images/offer-id-azure-account-portal.png) 
 

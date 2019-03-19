@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c9e08cd1daef919fa4bd919c06e402da1c48d5db
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095411"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odeslat vlastní metriky pro prostředek Azure k úložišti Azure Monitor metriky pomocí rozhraní REST API
 
@@ -78,13 +78,13 @@ Uložte přístupový token z odpovědi.
     ``` 
 
 1. V okně příkazového řádku publikovat data metriky: 
-    - **azureRegion**. Oblast nasazení prostředku, který jste generování metriky pro se musí shodovat. 
-    - **resourceID**.  ID prostředku Azure, které sledujete metriky oproti prostředku.  
-    - **AccessToken**. Vložte token, který jste získali dříve.
+   - **azureRegion**. Oblast nasazení prostředku, který jste generování metriky pro se musí shodovat. 
+   - **resourceID**.  ID prostředku Azure, které sledujete metriky oproti prostředku.  
+   - **AccessToken**. Vložte token, který jste získali dříve.
 
-    ```Shell 
-    curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. Změňte časové razítko a hodnot v souboru JSON. 
 1. Opakujte předchozí dva kroky několikrát, takže budete mít data za několik minut.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985984"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899542"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
 
@@ -41,7 +41,7 @@ K tomuto kurzu také můžete použít [Azure CLI](load-balancer-standard-public
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>Vytvoření veřejné instance Standard Load Balanceru
 
@@ -63,7 +63,7 @@ Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když p�
     |Zóna dostupnosti| Vyberte **1**.    |
 3. V **revize + vytvořit** klikněte na tlačítko **vytvořit**.   
 
- ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+   ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V této části vytvoříte virtuální síť. Vytvoříte také dva virtuální počítače ve stejné zóně (konkrétně v zóně 1) oblasti a přidáte je do back-endového fondu nástroje pro vyrovnávání zatížení. Potom na virtuální počítače nainstalujete službu IIS, abyste mohli zónově redundantní nástroj pro vyrovnávání zatížení otestovat. Pokud jeden virtuální počítač selže, ohlásí chybu i sonda stavu virtuálního počítače ve stejné zóně. K zajištění provozu se použijí další virtuální počítače ve stejné zóně.
 
@@ -80,8 +80,8 @@ V této části vytvoříte virtuální síť. Vytvoříte také dva virtuální
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte **Skupina zabezpečení sítě**. Na stránce skupiny zabezpečení sítě vyberte **Vytvořit**.
 2. Na stránce **Vytvořit skupinu zabezpečení sítě** zadejte tyto hodnoty:
-    - **myNetworkSecurityGroup** – název skupiny zabezpečení sítě.
-    - **myResourceGroupLBAZ** – název existující skupiny prostředků.
+   - **myNetworkSecurityGroup** – název skupiny zabezpečení sítě.
+   - **myResourceGroupLBAZ** – název existující skupiny prostředků.
    
      ![Vytvoření skupiny zabezpečení sítě](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 

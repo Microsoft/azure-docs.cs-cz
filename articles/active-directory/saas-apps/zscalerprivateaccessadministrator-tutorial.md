@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba2bde039cec65a1afe33efac58752d26f22c2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cdb842c4cebe48f2f6534417a7fe6aa4686d1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171889"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Kurz: Integrace s Azure Active Directory se Zscalerem privátní přístup správce
 
@@ -217,7 +217,7 @@ Přihlaste se k Zscalerem privátní přístup správce Azure AD uživatelům po
 
     ![Správce uživatelů Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. V **uživatelské jméno** textového pole zadejte e-mailu uživatele, jako je **BrittaSimon@contoso.com**.
+    a. V **uživatelské jméno** textového pole zadejte e-mailu uživatele, jako je **BrittaSimon\@contoso.com**.
 
     b. V **heslo** textového pole zadejte heslo.
 
@@ -225,7 +225,7 @@ Přihlaste se k Zscalerem privátní přístup správce Azure AD uživatelům po
 
     d. Vyberte **Role** jako **Zscalerem privátní přístup správce**.
 
-    e. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **BrittaSimon@contoso.com**.
+    e. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **BrittaSimon\@contoso.com**.
 
     f. V **Phone** textového pole zadejte telefonní číslo.
 

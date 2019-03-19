@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997966"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
 
@@ -386,7 +386,7 @@ V této volitelné části řídí spuštění libovolného [OMI](https://github
 
 Element | Hodnota
 ------- | -----
-Obor názvů | (volitelné) OMI obor názvů, ve kterém by měl provést dotaz. Pokud tento parametr zadán, výchozí hodnota je "kořenový/scx", implementovaných [poskytovatelé Cross-platform System Center](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+Obor názvů | (volitelné) OMI obor názvů, ve kterém by měl provést dotaz. Pokud tento parametr zadán, výchozí hodnota je "kořenový/scx", implementovaných [poskytovatelé Cross-platform System Center](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 query | OMI dotazu, který má být proveden.
 tabulka | (volitelné) V tabulce Azure storage, v účtu úložiště určený (viz [nastavení chráněné](#protected-settings)).
 frequency | (volitelné) Počet sekund mezi provádění dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.

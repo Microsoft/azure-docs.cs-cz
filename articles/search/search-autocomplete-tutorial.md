@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b66e5201de2c01aaf6a579d3b71b085dd14b1b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997158"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900892"
 ---
 # <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatické dokončování vaší vyhledávací pole s použitím Azure Search
 
@@ -35,7 +35,7 @@ Provedete následující úlohy:
 > * Přidání informací o vyhledávací službě do nastavení aplikace
 > * Implementace vstupního vyhledávacího pole
 > * Přidání podpory pro automatické dokončování seznam, který si vyžádá ze vzdáleného zdroje 
-> * Načíst návrhy a pomocí .net SDK a rozhraní REST API pro automatické dokončování
+> * Načíst návrhy a pomocí sady .NET SDK a rozhraní REST API pro automatické dokončování
 > * Zvýšení výkonu prostřednictvím podpory ukládání do mezipaměti na straně klienta 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -65,7 +65,7 @@ Postup v této části použijte v případě, že chcete importovat data pro uk
 
 ### <a name="running-the-sample"></a>Spuštění ukázky
 
-Teď jste připraveni spustit ukázkovou aplikaci.  V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln a spusťte kurz.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  Možnost jazyka C# volá z prohlížeče kontroler HomeController a k načtení výsledků používá sadu .NET SDK služby Azure Search.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost se obvykle mít výrazně vyšší výkon, protože trvá kontroleru mimo tento tok.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Na stránce s pokyny pro každou obsahují několik příkladů automatické dokončování.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
+Teď jste připraveni spustit ukázkovou aplikaci.  V sadě Visual Studio otevřete soubor řešení AutocompleteTutorial.sln a spusťte kurz.  Řešení obsahuje projekt ASP.NET MVC.  Stisknutím klávesy F5 projekt spusťte a načtěte stránku v libovolném prohlížeči.  V horní části se zobrazí možnost výběru jazyka C# nebo JavaScriptu.  C# Možnost zavolá HomeController z prohlížeče a používá Azure Search .NET SDK k načtení výsledků.  Možnost JavaScriptu volá přímo z prohlížeče rozhraní REST API služby Azure Search.  Tato možnost se obvykle mít výrazně vyšší výkon, protože trvá kontroleru mimo tento tok.  Můžete si vybrat možnost, která vyhovuje vašim potřebám a upřednostňovanému jazyku.  Na stránce s pokyny pro každou obsahují několik příkladů automatické dokončování.  U každého příkladu je uvedený doporučený ukázkový text, který můžete vyzkoušet.  Zkuste do každého vyhledávacího pole zadat několik písmen a sledujte, co se stane.
 
 ## <a name="how-this-works-in-code"></a>Jak to funguje v kódu
 
@@ -213,11 +213,11 @@ Pokud tento kód porovnáte s předchozím příkladem, který volal kontroler H
 
 ## <a name="takeaways"></a>Shrnutí
 
-Tento kurz ukazuje základní kroky pro vytváření vyhledávacího pole, která podporuje automatické dokončování a návrhy.  Viděli jste, jak můžete vytvořit aplikaci ASP.NET MVC a načítat návrhy pomocí sady SDK nebo rozhraní REST API služby Azure Search.
+Tento kurz ukazuje základní kroky pro vytváření vyhledávacího pole, která podporuje automatické dokončování a návrhy.  Jste viděli, jak může vytvářet aplikace ASP.NET MVC a používat Azure Search .NET SDK nebo rozhraní REST API k načíst návrhy.
 
 ## <a name="next-steps"></a>Další postup
 
-Integrace návrhů a automatické dokončování do prostředí pro vyhledávání.  Zamyslete se nad tím, jak můžete zvýšit produktivitu uživatelů tím, že jim při psaní poskytnete výkon služby Azure Search pomocí sady .NET SDK nebo přímo rozhraní REST API.
+Integrace návrhů a automatické dokončování do prostředí pro vyhledávání.  Zvažte, jak pomocí sady .NET SDK nebo rozhraní REST API přímo vám může pomoct využití možností Azure Search uživatelům psaní tak, aby byly zvýšit produktivitu práce.
 
 > [!div class="nextstepaction"]
 > [Rozhraní REST API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

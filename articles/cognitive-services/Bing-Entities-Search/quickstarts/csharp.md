@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 1d25e9c5abce36665827c87e1a05908e61d6338b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861447"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý start: Odeslat žádost o vyhledávání pomocí API REST pro vyhledávání entit BinguC#
 
@@ -28,6 +28,11 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 
 * Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
+    * Chcete-li nainstalovat balíček NuGet v sadě Visual studio:
+        1. Klikněte pravým tlačítkem myši klikněte na tlačítko ve Správci řešení
+        2. Klikněte na tlačítko **spravovat balíčky NuGet...**
+        3. Vyhledejte **newtonsoft.json** a instalace balíčku
+
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
 
@@ -38,6 +43,7 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
     
     ```csharp
+    using Newtonsoft.Json;
     using System;
     using System.Net.Http;
     using System.Text;
@@ -68,25 +74,26 @@ Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kom
 
 1. V rámci třídy, vytvořte funkci s názvem `Search()`. Vytvořte nový `HttpClient` objektu a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
 
-    1. Vytvořte identifikátor URI pro vaši žádost kombinací hostitele a cestu. Pak přidejte trhu a kódování URL dotazu.
-    2. Operátor await `client.GetAsync()` získat odpověď HTTP, a potom ukládat odpověď json tak, že čekají na `ReadAsStringAsync()`.
-    3. Vypsat řetězec do konzoly.
+   1. Vytvořte identifikátor URI pro vaši žádost kombinací hostitele a cestu. Pak přidejte trhu a kódování URL dotazu.
+   2. Operátor await `client.GetAsync()` získat odpověď HTTP, a potom ukládat odpověď json tak, že čekají na `ReadAsStringAsync()`.
+   3. Formátovací řetězec JSON s `JsonConvert.DeserializeObject()` a vypíše do konzoly.
 
-    ```csharp
-    async static void Search()
-    {
-        //...
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+      ```csharp
+      async static void Search()
+      {
+       //...
+       HttpClient client = new HttpClient();
+       client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
+       string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
 
-        HttpResponseMessage response = await client.GetAsync(uri);
+       HttpResponseMessage response = await client.GetAsync(uri);
 
-        string contentString = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(JsonPrettyPrint(contentString));
-    }
-    ```
+       string contentString = await response.Content.ReadAsStringAsync();
+       dynamic parsedJson = JsonConvert.DeserializeObject(contentString);
+       Console.WriteLine(parsedJson);
+      }
+      ```
 
 2. V hlavní metodě vaší aplikace, zavolejte `Search()` funkce.
     

@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870926"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Pomocí služby Azure Functions spravovat výpočetní prostředky ve službě Azure SQL Data Warehouse
 
@@ -57,14 +57,14 @@ Po nasazení šablony, by měl mít tři nové prostředky: bezplatný plán Azu
 
 4. V oblasti plánu přidejte libovolný čas v podobě výrazu CRON, který odráží, jak často chcete vertikálně navyšovat kapacitu služby SQL Data Warehouse. 
 
-  ![Změna plánu funkce](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![Změna plánu funkce](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  Hodnota `schedule` je [výraz CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression), který zahrnuje těchto šest polí: 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   Hodnota `schedule` je [výraz CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression), který zahrnuje těchto šest polí: 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  Například *"0 30 9 ** 1-5"* by odpovídala triggeru Každý všední den v 9:30:00. Další informace najdete v [příkladech plánů][schedule examples] služby Azure Functions.
+   Například *"0 30 9 ** 1-5"* by odpovídala triggeru Každý všední den v 9:30:00. Další informace najdete v [příkladech plánů][schedule examples] služby Azure Functions.
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>Změnit čas operace škálování

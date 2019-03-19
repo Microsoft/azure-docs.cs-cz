@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a43a41b2e115f5bf7cc6b4bf3ca1bd352f5918
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729769"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Integrace Azure Active Directory s Egnyte
 
@@ -178,7 +178,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -229,7 +229,7 @@ Přihlaste se k Egnyte Azure AD uživatelům umožnit, musí být poskytnuty do 
     
     ![Nového standardního uživatele](./media/egnyte-tutorial/ic787825.png "nového standardního uživatele")   
 
-    a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon@contoso.com**.
+    a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon\@contoso.com**.
 
     b. V **uživatelské jméno** textové pole, zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 

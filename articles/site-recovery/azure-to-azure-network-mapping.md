@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 99c7309e22d8ebe61a0a85b38c92bd3027977848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338949"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013123"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavte mapování sítě a IP adresy pro virtuální sítě
 
@@ -76,6 +76,7 @@ IP adresa pro jednotlivé síťové karty na cílový virtuální počítač nak
 **Zdrojové a cílové podsítě** | **Podrobnosti**
 --- | ---
 Stejného adresního prostoru | IP adresa zdroje síťové karty virtuálního počítače je nastavena jako cílové síťové karty IP adresu virtuálního počítače.<br/><br/> Pokud tato adresa není k dispozici, nastavit je jako cíl další dostupnou IP adresu.
+
 Jiným adresním prostorem<br/><br/> Další dostupnou IP adresu v cílové podsíti je nastavena jako cíl adresa síťové karty virtuálního počítače.
 
 

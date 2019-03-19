@@ -4,19 +4,19 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2019
-ms.openlocfilehash: 493810e85ef535005e75f4ac37fcb1920e5d8549
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0745e4987ca602a41f2d93ddc0a93cb061ce127d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58051893"
 ---
 Pokud je potřeba nakonfigurovat proxy server HTTP pro provedení odchozích požadavků, použijte tyto dva argumenty:
 
 | Název | Typ dat | Popis |
 |--|--|--|
-|HTTP_PROXY|řetězec|Tento proxy server používat, například http://proxy:8888|
-|HTTP_PROXY_CREDS|řetězec|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
+|HTTP_PROXY|string|Tento proxy server používat, například `http://proxy:8888`|
+|HTTP_PROXY_CREDS|string|žádné přihlašovací údaje potřebné k ověření vůči proxy serveru, například uživatelské_jméno.|
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \

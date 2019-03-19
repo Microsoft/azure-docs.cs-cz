@@ -9,17 +9,17 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 489f81842cca864ad1d55d7bb524fea7af960c65
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001274"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Vytvoření základní šablony Terraformu v Azure pomocí Yeomanu
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
-) poskytuje způsob, jak snadno vytvořit infrastrukturu v Azure. [Yeoman](http://yeoman.io/) výrazně usnadňuje úlohy vývojáře modulu při vytváření modulů Terraformu a současně poskytuje vynikající *rámec osvědčených postupů*.
+) poskytuje způsob, jak snadno vytvořit infrastrukturu v Azure. [Yeoman](https://yeoman.io/) výrazně usnadňuje úlohy vývojáře modulu při vytváření modulů Terraformu a současně poskytuje vynikající *rámec osvědčených postupů*.
 
 V tomto článku se dozvíte, jak používat generátor modulů Yeoman k vytvoření základní šablony Terraform. Potom se dozvíte, jak otestovat nové šablony Terraformu pomocí dvěma způsoby:
 

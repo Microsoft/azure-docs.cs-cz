@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820667"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858873"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -44,6 +44,14 @@ Na řídicím panelu FTP, klikněte na tlačítko **kopírování** kopírován�
 
 Doporučuje se, že používáte **aplikace pověření** nasadit do vaší aplikace, protože je pro každou aplikaci jedinečné. Nicméně pokud klepnete na tlačítko **přihlašovací údaje uživatele**, můžete nastavit přihlašovací údaje na úrovni uživatele, které můžete použít pro přihlášení k FTP/S pro všechny aplikace služby App Service v rámci vašeho předplatného.
 
+> [!NOTE]
+> Ověřování FTP/FTPS koncový bod pomocí requirers přihlašovací údaje na úrovni uživatele s uživatelským jménem v následujícím formátu: 
+>
+>`<app-name>\<user-name>`
+>
+> Protože přihlašovací údaje na úrovni uživatele jsou propojeny s uživateli a konkrétní prostředek, uživatelské jméno musí být v tomto formátu pro přesměrování akce přihlásit ke koncovému bodu té správné aplikace.
+>
+
 ## <a name="deploy-files-to-azure"></a>Nasazení souborů do Azure
 
 1. Ze svého klienta FTP (například [sady Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), nebo [WinSCP](https://winscp.net/index.php)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
@@ -58,7 +66,6 @@ Doporučuje se, že používáte **aplikace pověření** nasadit do vaší apli
 > - generování souboru Web.config (tady je [příkladu Node.js](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Generovat tyto nezbytné soubory ručně na místním počítači a potom je nasadit společně s vaší aplikace.
->
 >
 
 ## <a name="enforce-ftps"></a>Vynutit FTPS

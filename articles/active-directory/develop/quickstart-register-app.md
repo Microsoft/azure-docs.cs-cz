@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d99c25d6203bd86987430bdccd08f770022dc28c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 366d6fe8921a5330f48da2879444e0b80cbc9bd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090708"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Registrace aplikace s platformou identity Microsoft (Preview)
 
@@ -41,20 +41,20 @@ Abyste mohli začít, musíte se na webu Azure Portal přihlásit k prostředí 
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak **Registrace aplikací (Preview) > Nová registrace**.
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 
-    - **Název** – Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace.
-    - **Podporované typy účtu** – Vyberte účty, které chcete, aby vaše aplikace podporovala.
+   - **Název** – Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace.
+   - **Podporované typy účtu** – Vyberte účty, které chcete, aby vaše aplikace podporovala.
 
-        | Podporované typy účtu | Popis |
-        |-------------------------|-------------|
-        | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte obchodní aplikaci. Tato možnost není dostupná, pokud neregistrujete aplikaci v adresáři.<br><br>Tato možnost se mapuje pouze na účty Azure AD s jedním tenantem.<br><br>Tato možnost je výchozí, pokud neregistrujete aplikaci mimo adresář. V případech, kdy je aplikace zaregistrovaná mimo adresář, jsou výchozí možností účty Azure AD s více tenanty a osobní účty Microsoft. |
-        | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí.<br><br>Tato možnost se mapuje pouze na účty Azure AD s více tenanty.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD pouze s jedním tenantem, v okně **Ověřování** ji můžete převést na účet Azure AD s více tenanty a zpět na účet Azure AD s jedním tenantem. |
-        | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Tato možnost se mapuje na účty Azure AD s více tenanty a osobní účty Microsoft.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD s více tenanty a osobní účty Microsoft, nemůžete to v uživatelském rozhraní změnit. Místo toho musíte ke změně podporovaných typů účtu použít editor manifestu aplikace. |
+       | Podporované typy účtu | Popis |
+       |-------------------------|-------------|
+       | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte obchodní aplikaci. Tato možnost není dostupná, pokud neregistrujete aplikaci v adresáři.<br><br>Tato možnost se mapuje pouze na účty Azure AD s jedním tenantem.<br><br>Tato možnost je výchozí, pokud neregistrujete aplikaci mimo adresář. V případech, kdy je aplikace zaregistrovaná mimo adresář, jsou výchozí možností účty Azure AD s více tenanty a osobní účty Microsoft. |
+       | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí.<br><br>Tato možnost se mapuje pouze na účty Azure AD s více tenanty.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD pouze s jedním tenantem, v okně **Ověřování** ji můžete převést na účet Azure AD s více tenanty a zpět na účet Azure AD s jedním tenantem. |
+       | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Tato možnost se mapuje na účty Azure AD s více tenanty a osobní účty Microsoft.<br><br>Pokud jste při registraci aplikace použili možnost s účty Azure AD s více tenanty a osobní účty Microsoft, nemůžete to v uživatelském rozhraní změnit. Místo toho musíte ke změně podporovaných typů účtu použít editor manifestu aplikace. |
 
-    - **Identifikátor URI pro přesměrování (volitelné)** – Vyberte typ vytvářené aplikace: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**. Pak pro vaši aplikaci zadejte identifikátor URI pro přesměrování (neboli adresu URL odpovědi).
-        - V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
-        - V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
+   - **Identifikátor URI pro přesměrování (volitelné)** – Vyberte typ vytvářené aplikace: **Web** nebo **Veřejný klient (mobilní a desktopová zařízení)**. Pak pro vaši aplikaci zadejte identifikátor URI pro přesměrování (neboli adresu URL odpovědi).
+       - V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
+       - V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
 
-    Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).
+     Konkrétní příklady webových nebo nativních aplikací najdete v našich [rychlých startech](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).
 
 1. Až budete hotovi, vyberte **Zaregistrovat**.
 

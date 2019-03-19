@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0efbabf658210c733a7a7f201cb4a36f63456b28
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835339"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
 
@@ -41,7 +41,7 @@ Jak začít s vývojem pomocí služby Media Services pomocí rozhraní REST API
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Přehled o tom, jak vývoj s využitím REST API služby Media Services. Další informace najdete v tématu [přehled rozhraní REST API pro Media Services](media-services-rest-how-to-use.md).
-* Aplikace podle vašeho výběru, který může odesílat požadavky a odpovědi HTTP. Tento kurz používá [Fiddler](http://www.telerik.com/download/fiddler).
+* Aplikace podle vašeho výběru, který může odesílat požadavky a odpovědi HTTP. Tento kurz používá [Fiddler](https://www.telerik.com/download/fiddler).
 
 Tyto úlohy jsou uvedeny v tomto rychlém startu.
 
@@ -331,7 +331,7 @@ V případě úspěchu se vrátí následující odpověď:
 Jakmile budete mít AccessPolicy a Lokátor nastavit, skutečný soubor nahraje do kontejneru úložiště objektů blob v Azure pomocí rozhraní REST API služby Azure Storage. Musíte nahrát soubory jako objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány službou Azure Media Services.  
 
 > [!NOTE]
-> Je nutné přidat název souboru pro soubor, který chcete nahrát do Lokátor **cesta** hodnotu přijatou v předchozí části. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?. . . .
+> Je nutné přidat název souboru pro soubor, který chcete nahrát do Lokátor **cesta** hodnotu přijatou v předchozí části. Například, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
@@ -459,7 +459,7 @@ Následující kód požádá o id kodér.
     }
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
-Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API můžete vytvořit úloh a jejich související úlohy v jedné ze dvou způsobů: Úkoly mohou být definována vložením prostřednictvím navigační vlastnost úkoly u úlohy entit nebo dávkovým zpracováním OData. Media Services SDK používá dávkové zpracování. Pro lepší čitelnost příklady kódu v tomto článku, ale úlohy jsou definována vložením. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API můžete vytvořit úloh a jejich související úlohy v jedné ze dvou způsobů: Úkoly mohou být definována vložením prostřednictvím navigační vlastnost úkoly u úlohy entit nebo dávkovým zpracováním OData. Media Services SDK používá dávkové zpracování. Pro lepší čitelnost příklady kódu v tomto článku, ale úlohy jsou definována vložením. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Následující příklad ukazuje, jak vytvořit a odeslat úlohu pomocí jednoho úkolu nastavená na kódování videa na konkrétní řešení a kvalitu. Následující část dokumentace obsahuje seznam všech [předvolby úloh](https://msdn.microsoft.com/library/mt269960) podporován pomocí procesoru Media Encoder Standard.  
 
@@ -817,8 +817,6 @@ Jakmile budete mít AccessPolicy a Lokátor nastavit, si můžete stáhnout soub
 
 > [!NOTE]
 > Je nutné přidat název souboru pro soubor, který chcete stáhnout Lokátor **cesta** hodnotu přijatou v předchozí části. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?. . . .
->
->
 
 Další informace o práci s objekty BLOB služby Azure storage najdete v tématu [rozhraní REST API služby Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
@@ -912,7 +910,7 @@ Streamování MPEG DASH, připojte (format = mpd-time-csf) po "/ manifest".
 
 
 ## <a id="play"></a>Přehrání obsahu
-Pokud chcete video streamovat, použijte [přehrávač služby Azure Media Services](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+Pokud chcete video streamovat, použijte [přehrávač služby Azure Media Services](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 Pokud chcete otestovat progresivní stahování, vložte adresu URL do prohlížeče (například aplikace Internet Explorer, Chrome, Safari).
 

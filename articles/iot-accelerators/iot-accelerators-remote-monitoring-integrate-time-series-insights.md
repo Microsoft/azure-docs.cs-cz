@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633735"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085146"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -92,11 +92,12 @@ Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Ujistěte se
     | Zdroj | **IoT Hub** |
     | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
     | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Název centra IOT | **contosorma57a6**. Použijte název vašeho centra IoT z vašeho řešení vzdáleného monitorování. |
-    | Název zásad centra IOT | **iothubowner** zkontrolujte zásady používané zásady vlastníka. |
-    | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
-    | Skupina uživatelů centra IOT | **timeseriesinsights** |
-    | Formát serializace události | **JSON**     | Název vlastnosti časového razítka | Ponechte prázdné |
+    | Název centra IoT Hub | **contosorma57a6**. Použijte název vašeho centra IoT z vašeho řešení vzdáleného monitorování. |
+    | Název zásady centra IoT Hub | **iothubowner** zkontrolujte zásady používané zásady vlastníka. |
+    | Klíč zásad centra IoT Hub | Toto pole se vyplní automaticky. |
+    | Skupina uživatelů centra IoT Hub | **timeseriesinsights** |
+    | Formát serializace události | **JSON**     | 
+    | Název vlastnosti časového razítka | Ponechte prázdné |
 
     ![Vytvoření zdroje událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 

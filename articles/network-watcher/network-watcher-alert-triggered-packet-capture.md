@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876642"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro Proaktivní monitorování sítě pomocí výstrah a Azure Functions
 
@@ -110,13 +110,13 @@ Pokud chcete používat rutiny Powershellu sledovací proces sítě, nahrajte do
 
     V tomto příkladu obsahuje místní cestu modulů Azure Powershellu. Tyto složky se používají v pozdějším kroku. Moduly, které se používají v tomto scénáři jsou:
 
-    * AzureRM.Network
+   * AzureRM.Network
 
-    * AzureRM.Profile
+   * AzureRM.Profile
 
-    * AzureRM.Resources
+   * AzureRM.Resources
 
-    ![Složky prostředí PowerShell][functions5]
+     ![Složky prostředí PowerShell][functions5]
 
 1. Vyberte **fungovat nastavení aplikace** > **přejít do App Service Editor**.
 
@@ -344,7 +344,7 @@ Přejít na existující virtuální počítač a pak přidejte pravidlo upozorn
   |**Nastavení** | **Hodnota** | **Podrobnosti** |
   |---|---|---|
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
-  |**Popis**|Byla překročena prahová hodnota odeslaných segmentů TCP|Popis pro pravidlo upozornění.||
+  |**Popis**|Byla překročena prahová hodnota odeslaných segmentů TCP|Popis pro pravidlo upozornění.|
   |**Metrika**|Odeslání segmentů TCP| Metrika používat pro aktivaci upozornění. |
   |**Podmínka**|Větší než| Podmínka má použít při vyhodnocování metriku.|
   |**Prahová hodnota**|100| Hodnota, která aktivuje upozornění metriky. Tato hodnota by měla nastavena na platnou hodnotu pro vaše prostředí.|
@@ -362,7 +362,7 @@ Za kritéria pro výstrahy aktivační události se vytvoří zachytávání pak
 
 Pokud zachytávací soubor je uložený místně, můžete je načíst po přihlášení k virtuálnímu počítači.
 
-Pokyny týkající se stahování souborů z účtů služby Azure storage najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, můžete použít, je [Průzkumníka služby Storage](http://storageexplorer.com/).
+Pokyny týkající se stahování souborů z účtů služby Azure storage najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Dalším nástrojem, můžete použít, je [Průzkumníka služby Storage](https://storageexplorer.com/).
 
 Po stažení vaše zachycení, je můžete zobrazit pomocí libovolného nástroje, který může číst **CAP** souboru. Tady jsou odkazy na dvě z těchto nástrojů:
 

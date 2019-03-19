@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: a7fedf0907ecc4c8ced4c5bfe30bb30aeb8f4aca
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: bb5997c2ae8f93068b0ad2a77b5109f6c79b9b30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570891"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003510"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Nakonfigurujte čas TTL ve službě Azure Cosmos DB
 
@@ -115,8 +115,8 @@ Následujícím postupem povolte TTL na položku:
 
 5. Dále přejděte k položce, pro kterou chcete nastavit dobu live, přidejte `ttl` vlastnosti a vyberte **aktualizace**. 
 
-  ```json
-  {
+   ```json
+   {
     "id": "1",
     "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
     "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
@@ -124,8 +124,8 @@ Následujícím postupem povolte TTL na položku:
     "_attachments": "attachments/",
     "ttl": 10,
     "_ts": 1551307496
-  }
-  ```
+   }
+   ```
 
 ### <a id="dotnet-set-ttl-item"></a>.NET SDK
 
@@ -161,7 +161,6 @@ const itemDefinition = {
           key: "value", 
           ttl: 2
         };
-}
 ```
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 320a23e425ecb11e36af3efe988b25e598948132
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3b302c60aefec1c4cd37a7dde82a2f11a9eeed33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862858"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -28,7 +28,7 @@ Služba Azure Key Vault je Cloudová služba, která chrání šifrovací klíč
 
 ## <a name="access-model-overview"></a>Přehled přístupu k modelu
 
-Přístup k trezoru klíčů je řízen prostřednictvím dvou rozhraní: *roviny správy* a *rovina dat*. Rovina správy je, kde Správa služby Key Vault, samotného. Operace v této rovině zahrnovat vytváření a odstraňování trezorů klíčů, načítání vlastností služby Key Vault a aktualizují se zásady přístupu. Rovina dat je místo, kde můžete pracovat s daty uloženými ve službě key vault. Můžete přidat, odstranit a upravit klíče, tajné kódy a certifikáty.
+Přístup k trezoru klíčů je řízen prostřednictvím dvou rozhraní: **roviny správy** a **rovina dat**. Rovina správy je, kde Správa služby Key Vault, samotného. Operace v této rovině zahrnovat vytváření a odstraňování trezorů klíčů, načítání vlastností služby Key Vault a aktualizují se zásady přístupu. Rovina dat je místo, kde můžete pracovat s daty uloženými ve službě key vault. Můžete přidat, odstranit a upravit klíče, tajné kódy a certifikáty.
 
 Pro přístup k službě key vault v jedné rovině, musí mít všichni volající (uživatelé a aplikace) řádné ověření a autorizace. Ověření určí identitu volajícího. Autorizace následně určí, které operace má volající může spustit. 
 
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny koncových bodů správy a roviny dat.
 
 ## <a name="management-plane-and-rbac"></a>Rovina správy a RBAC
 
-V rovině správy pomocí RBAC můžete autorizovat operace, které můžete provést volající. Každé předplatné Azure má v modelu RBAC, instance služby Azure AD. Udělit přístup k uživatelům, skupinám a aplikacím z tohoto adresáře. Ke správě prostředků v předplatném Azure, které používají model nasazení Azure Resource Manageru je udělen přístup. Chcete-li udělit přístup, použijte [webu Azure portal](https://portal.azure.com/), [rozhraní příkazového řádku Azure](../cli-install-nodejs.md), [prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), nebo [rozhraní REST API Azure Resource Manageru](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+V rovině správy pomocí RBAC (řízení přístupu založený Role) můžete autorizovat operace, které můžete provést volající. Každé předplatné Azure má v modelu RBAC, instance služby Azure AD. Udělit přístup k uživatelům, skupinám a aplikacím z tohoto adresáře. Ke správě prostředků v předplatném Azure, které používají model nasazení Azure Resource Manageru je udělen přístup. Chcete-li udělit přístup, použijte [webu Azure portal](https://portal.azure.com/), [rozhraní příkazového řádku Azure](../cli-install-nodejs.md), [prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), nebo [rozhraní REST API Azure Resource Manageru](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
 Vytvoření trezoru klíčů ve skupině prostředků a správa přístupu pomocí služby Azure AD. Uživatelům nebo skupinám schopnost spravovat trezory klíčů ve skupině prostředků. Udělit přístup na úrovni konkrétním oboru přiřazením odpovídajících rolí RBAC. K udělení přístupu uživatelům ke správě trezorů klíčů, přiřadíte i předdefinovanou `key vault Contributor` role pro uživatele v konkrétním oboru. Následující úrovně obory je možné přiřadit k roli RBAC:
 

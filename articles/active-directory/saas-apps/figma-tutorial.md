@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 6e4bf95489a584a9f882ce616a6aef297b0a53e5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f95eac0cdb0fa7d5f9a2882138affc09ff489956
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Kurz: Integrace Azure Active Directory s Figma
 
@@ -164,7 +164,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Figma, proveďte následuj�
 
     ![Konfigurace jednotného přihlašování](./media/figma-tutorial/configure01.png)
 
-    a. V **e-mailová adresa** textové pole, zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    a. V **e-mailová adresa** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
     b. V **jméno** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
 
@@ -194,7 +194,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3d9106fb682a370e18fc78d35ca31662bae44524
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310637"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080061"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -85,22 +85,22 @@ Kolekce musí úspěšně projít několik kontroly splnění podmínek se můž
 - IP adresu nebo plně kvalifikovaný název domény Proxy serveru by měl být zadán jako *http://IPaddress* nebo *http://FQDN*.
 - Podporuje se jen proxy protokolu HTTP. Servery proxy server založený na protokolu HTTPS nepodporuje Kolektoru.
 - Pokud proxy server je prověřuje zachycovací proxy server, musíte importovat certifikát proxy serveru na virtuálním počítači Kolektoru.
-    1. Přejděte ve virtuálním počítači kolektoru **nabídky Start** > **spravovat certifikáty počítače**.
-    2. V nástroji pro certifikáty v části **certifikáty - místní počítač**, Najít **Důvěryhodní vydavatelé** > **certifikáty**.
+  1. Přejděte ve virtuálním počítači kolektoru **nabídky Start** > **spravovat certifikáty počítače**.
+  2. V nástroji pro certifikáty v části **certifikáty - místní počítač**, Najít **Důvěryhodní vydavatelé** > **certifikáty**.
 
-        ![Nástroje pro certifikáty](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![Nástroje pro certifikáty](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. Zkopírujte certifikát proxy serveru na virtuálním počítači kolektoru. Možná budete muset získat od správce sítě.
-    4. Dvojitým kliknutím otevřete certifikát a klikněte na tlačítko **nainstalovat certifikát**.
-    5. V Průvodci importem certifikátu > Store umístění, zvolte **místního počítače**.
+  3. Zkopírujte certifikát proxy serveru na virtuálním počítači kolektoru. Možná budete muset získat od správce sítě.
+  4. Dvojitým kliknutím otevřete certifikát a klikněte na tlačítko **nainstalovat certifikát**.
+  5. V Průvodci importem certifikátu > Store umístění, zvolte **místního počítače**.
 
-    ![Umístění úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![Umístění úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. Vyberte **všechny certifikáty umístit v následujícím úložišti** > **Procházet** > **Důvěryhodní vydavatelé**. Klikněte na tlačítko **Dokončit** importujte certifikát.
+  6. Vyberte **všechny certifikáty umístit v následujícím úložišti** > **Procházet** > **Důvěryhodní vydavatelé**. Klikněte na tlačítko **Dokončit** importujte certifikát.
 
-    ![Úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![Úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. Zkontrolujte, že je certifikát importován podle očekávání a zkontrolujte, že internetové připojení kontrolu požadovaných součástí funguje podle očekávání.
+  7. Zkontrolujte, že je certifikát importován podle očekávání a zkontrolujte, že internetové připojení kontrolu požadovaných součástí funguje podle očekávání.
 
 
 ### <a name="urls-for-connectivity"></a>Adresy URL pro připojení

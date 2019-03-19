@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 19dbddc635041d0e5cf617cbe20713abc07cefaf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 05915e2059e45c002a9dfa71a538ed6391caa157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775743"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078325"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak používat analýzu k analýze dat zařízení
 
@@ -30,7 +30,7 @@ Budete muset zvolit **sada zařízení**, přidat **filtr** (volitelné) a vyber
 * **Filtry:** Volitelně můžete přidat filtry hledání můžete doladit vaše data. Najednou můžete přidat až 10 filtry. Například v rámci všech chladniček v Oakland najdete ty, které jste využili teploty přejít překročí 60 stupňů.
 * **Časové období:** Ve výchozím nastavení načteme data z posledních 10 minut. Můžete změnit tuto hodnotu na jednom z rozsahů předem definovaný čas nebo vyberte vlastní časové období.
 
- ![Analytický dotaz](media/howto-create-analytics/analytics-query.png)
+  ![Analytický dotaz](media/howto-create-analytics/analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Vizualizace dat
 
@@ -51,7 +51,7 @@ Máte různé způsoby, jak změnit podle svých potřeb vizualizace výsledků 
 * **Zobrazit mřížku:** Výsledky jsou k dispozici ve formátu tabulky, můžete podívat konkrétní hodnotu pro každý datový bod. Toto zobrazení také splňuje standardy usnadnění.
 * **Zobrazit graf:** Vaše výsledky se zobrazují ve formátu řádku ke snadnější identifikaci směrem nahoru nebo klesající trendy a anomálie.
 
- ![Zobrazením mřížky pro analýzu](media/howto-create-analytics/analytics-showgrid.png)
+  ![Zobrazením mřížky pro analýzu](media/howto-create-analytics/analytics-showgrid.png)
 
 Přiblížení umožňuje na domovskou stránku v s vašimi daty. Pokud najdete časové období, které by raději se zaměřuji na v rámci ve výsledné sadě, použijte kurzor a zkopírovat oblasti, která byste chtěli přiblížit a pomocí dostupných ovládacích prvků proveďte jeden z následujících akcí:
 
@@ -59,7 +59,7 @@ Přiblížení umožňuje na domovskou stránku v s vašimi daty. Pokud najdete 
 * **Horizonální oddálení:** Tento ovládací prvek umožňuje zmenšit o jednu úroveň z poslední přiblížení. Například pokud jste zvětšení v vaše data třikrát zmenšit přejdete zpět jeden krok najednou.
 * **Obnovit zvětšení:** Jakmile jste provedli různé úrovně přiblížení, můžete ovládací prvek lupy resetování vrátit na původní sadě výsledků.
 
- ![Provést změna měřítka zobrazení dat.](media/howto-create-analytics/analytics-zoom.png)
+  ![Provést změna měřítka zobrazení dat.](media/howto-create-analytics/analytics-zoom.png)
 
 Můžete změnit styl čáry podle svých potřeb. Máte čtyři možnosti:
 
@@ -68,7 +68,7 @@ Můžete změnit styl čáry podle svých potřeb. Máte čtyři možnosti:
 * **Krok:** Řádek mezi každý bod na grafu představuje krok.
 * **Bodový:** Všechny body jsou zobrazeny v grafu bez řádky jejich propojení.
 
- ![Jiný řádek typů dostupných v Analytics](media/howto-create-analytics/analytics-linetypes.png)
+  ![Jiný řádek typů dostupných v Analytics](media/howto-create-analytics/analytics-linetypes.png)
 
 A konečně můžete uspořádat data napříč osy y výběrem jedné ze tří režimů:
 
@@ -76,7 +76,7 @@ A konečně můžete uspořádat data napříč osy y výběrem jedné ze tří 
 * **Neskládaných:** Graf pro každá míra je vykreslenou vůči jednu osu y, ale jsou mění v závislosti na míru zvýrazněné hodnoty pro osy y. Neskládaných grafy jsou užitečné, pokud chcete překrýt více měr a chcete zobrazit vzory napříč tato opatření pro ve stejném časovém rozmezí.
 * **Sdílená osa y:** Všechny grafy sdílet stejnou osu y a hodnoty na ose se nezmění. Sdílené osy y grafy jsou užitečné, pokud se chcete podívat na jedinou při dělení dat s rozdělit podle.
 
- ![Uspořádání dat napříč osy y pomocí vizualizací režimy](media/howto-create-analytics/analytics-yaxis.png)
+  ![Uspořádání dat napříč osy y pomocí vizualizací režimy](media/howto-create-analytics/analytics-yaxis.png)
 
 ## <a name="next-steps"></a>Další postup
 

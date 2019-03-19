@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58052254"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
 
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. Pokud chcete vypsat všechny prostředky Galerie obrázků sdílené napříč předplatnými, že máte přístup k webu Azure portal, postupujte podle následujících kroků:
 
- 1. Otevřete web [Azure Portal](https://portal.azure.com).
- 1. Přejděte na **všechny prostředky**.
- 1. Vyberte všechny odběry, za kterých byste chtěli vypíše všechny prostředky.
- 1. Vyhledejte prostředky typu **privátní Galerie**.
+1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Přejděte na **všechny prostředky**.
+1. Vyberte všechny odběry, za kterých byste chtěli vypíše všechny prostředky.
+1. Vyhledejte prostředky typu **privátní Galerie**.
  
- Definice image a image verze zobrazíte musí také vybrat **zobrazit skryté typy**.
+   Definice image a image verze zobrazíte musí také vybrat **zobrazit skryté typy**.
  
- Seznam všech prostředků Galerie obrázků sdílené napříč předplatnými, ke kterým máte oprávnění k, použijte následující příkaz v rozhraní příkazového řádku Azure:
+   Seznam všech prostředků Galerie obrázků sdílené napříč předplatnými, ke kterým máte oprávnění k, použijte následující příkaz v rozhraní příkazového řádku Azure:
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **Otázka:** Jak se dá sdílet Moje Image napříč předplatnými?
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  Scénář 2: Pokud máte nespravované generalizované image, můžete vytvoření spravované image z něj a pak vytvořte definici image a image verze z něj. 
 
- Scénář 3: Pokud máte virtuální pevný disk ve vašem místním systému souborů, budete muset nahrát virtuální pevný disk, vytvořte spravovanou image, můžete vytvořit a obrazu definice a verze image z něj. 
-    - Pokud virtuální pevný disk z virtuálního počítače s Windows, přečtěte si téma [nahrání generalizovaného virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-    - Pokud virtuální pevný disk pro virtuální počítač s Linuxem, přečtěte si téma [nahrání virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+ Scénář 3: Pokud máte virtuální pevný disk ve vašem místním systému souborů, budete muset nahrát virtuální pevný disk, vytvořte spravovanou image, můžete vytvořit a obrazu definice a verze image z něj.
+- Pokud virtuální pevný disk z virtuálního počítače s Windows, přečtěte si téma [nahrání generalizovaného virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+- Pokud virtuální pevný disk pro virtuální počítač s Linuxem, přečtěte si téma [nahrání virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 
 **Otázka:** Můžete vytvořit image verze ze specializovaného disku?

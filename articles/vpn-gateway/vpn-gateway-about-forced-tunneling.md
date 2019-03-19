@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: cf566811f1e5fe7fde20d148e68417acf6d42f54
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008324"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 
@@ -28,7 +28,7 @@ Vynucené tunelování umožňuje přesměrování nebo "Vynutit" veškerý prov
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení classic. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelování pro model nasazení Resource Manager, vyberte z rozevíracího seznamu následující klasické článku:
+Tento článek vás provede konfigurací vynuceného tunelového propojení virtuální sítě vytvořené pomocí modelu nasazení classic. Vynucené tunelování se dá konfigurovat pomocí prostředí PowerShell, na portálu. Pokud chcete nakonfigurovat vynucené tunelování pro model nasazení Resource Manager, vyberte z rozevíracího seznamu následující článek Resource Manageru:
 
 > [!div class="op_single_selector"]
 > * [PowerShell – Classic](vpn-gateway-about-forced-tunneling.md)
@@ -41,9 +41,9 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sít
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
 
-  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** pro Azure VPN gateway.
-  * **Výchozí trasa:** přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+  * **Místní virtuální sítě trasy:** Přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
+  * **Místní trasy:** Ke službě Azure VPN gateway.
+  * **Výchozí trasy:** Přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 * S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky do vaší virtuální síti tento počet podsítí: Povolit vynucené tunelování na těchto podsítí.
 * Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti.
 * Vynucené tunelování musí být přidružen virtuální síť, která má bránu dynamického směrování VPN (není statická brána).
@@ -104,7 +104,7 @@ Následující postup vám pomůže určit vynucené tunelové propojení pro vi
     </VirtualNetworkSite>
 ```
 
-Virtuální síť "MultiTier virtuální sítě" v tomto příkladu má tři podsítě: "Frontend", "Midtier" a "Backend" podsítě s připojeními čtyři místy: "DefaultSiteHQ" a tři větve. 
+Virtuální síť "MultiTier virtuální sítě" v tomto příkladu má tři podsítě: "Frontend", "Midtier" a "Backend" podsítí s čtyři místy připojení: "DefaultSiteHQ" a tři větve. 
 
 Postup "DefaultSiteHQ" nastavit jako výchozí web připojení pro vynucené tunelování a nakonfigurovat Midtier a back-endové podsítě používat vynucené tunelování.
 

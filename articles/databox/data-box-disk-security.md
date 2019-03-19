@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093452"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochranu dat.
 
@@ -71,17 +71,17 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 
 - **Údaje objednávky** – po vytvoření objednávky se na webu Azure Portal uloží dodací adresa, e-mail a kontaktní informace uživatelů. Uložené údaje zahrnují:
 
-    - Jméno kontaktu
-    - Telefonní číslo
-    - Email
-    - Ulice a číslo
-    - Město
-    - PSČ
-    - Stav
-    - Provincie/kraj/oblast
-    - ID disku
-    - Číslo účtu dopravce
-    - Sledovací číslo zásilky
+  - Jméno kontaktu
+  - Telefonní číslo
+  - Email
+  - Ulice a číslo
+  - Město
+  - PSČ
+  - Stav
+  - Provincie/kraj/oblast
+  - ID disku
+  - Číslo účtu dopravce
+  - Sledovací číslo zásilky
 
     Údaje objednávky služba Data Box smaže po dokončení úlohy nebo když objednávku smažete.
 

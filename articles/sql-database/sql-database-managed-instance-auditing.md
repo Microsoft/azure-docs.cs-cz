@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 20c893aa0ff5bc1f20ecfd95d33038937f3af466
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576969"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086050"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
 
@@ -50,7 +50,7 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
 
    1. Zadejte kontejner **název**, nastavte úroveň pro veřejný přístup **privátní**a potom klikněte na tlačítko **OK**.
 
-     ![Vytvoření konfigurace kontejneru objektů blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Vytvoření konfigurace kontejneru objektů blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. Po vytvoření kontejneru pro Audit existuje protokoly jsou dva způsoby, jak ho nakonfigurovat jako cíl pro protokoly auditu: [pomocí jazyka T-SQL](#blobtsql) nebo [pomocí SQL Server Management Studio (SSMS) uživatelského rozhraní](#blobssms):
 
@@ -113,7 +113,7 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
         GO
         ```
 
-      1. Pokračujte [vytváření specifikace auditu serveru nebo specifikací auditu databáze](#createspec)
+        1. Pokračujte [vytváření specifikace auditu serveru nebo specifikací auditu databáze](#createspec)
 
    - <a id="blobssms"></a>Konfigurace úložiště objektů blob k protokolům auditu pomocí SQL Server Management Studio (SSMS) 18 (Preview):
 

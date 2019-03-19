@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a269c15b9b38b190196e6c2e77ff5b4b3826ba65
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 57905b3d3c062c299a0f414ae6110dd0b6249198
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848026"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k Azure SQL
 
@@ -103,7 +103,7 @@ Kód spuštěný na virtuálním počítači teď může ze spravované identity
 
 Azure SQL nativně podporuje ověřování Azure AD, takže může přímo přijímat přístupové tokeny získané pomocí spravovaných identit pro prostředky Azure. Pomocí metody s využitím **přístupového tokenu** můžete vytvořit připojení k SQL. Jedná se o součást integrace Azure SQL s Azure AD a liší se od zadávání přihlašovacích údajů v připojovacím řetězci.
 
-Tady je příklad kódu .NET, který otevře připojení k SQL pomocí přístupového tokenu. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity přiřazené systémem virtuálního počítače. **Rozhraní .NET framework 4.6** nebo vyšší se vyžaduje token metody přístupu. Nahraďte hodnoty AZURE-SQL-SERVERNAME a DATABASE odpovídajícím způsobem. Všimněte si, že ID prostředku pro Azure SQL je https://database.windows.net/.
+Tady je příklad kódu .NET otevření připojení k SQL pomocí přístupového tokenu. Tento kód je potřeba spustit na virtuálním počítači, aby byl možný přístup ke koncovému bodu spravované identity přiřazené systémem virtuálního počítače. **Rozhraní .NET framework 4.6** nebo vyšší se vyžaduje token metody přístupu. Nahraďte hodnoty AZURE-SQL-SERVERNAME a DATABASE odpovídajícím způsobem. Poznamenejte si ID prostředku pro Azure SQL je `https://database.windows.net/`.
 
 ```csharp
 using System.Net;

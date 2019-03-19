@@ -16,12 +16,12 @@ ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: 02c5d063246844d5ed8945aba38aaada87691627
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1d9dd7d19c196679ead9b552bcf296b4acd4ca68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842885"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Změnit vlastníka předplatného uživatele Azure stacku
 
@@ -49,7 +49,7 @@ Nahraďte následující hodnoty ve skriptu, před jejím spuštěním:
 - **$ArmEndpoint**: Koncový bod Resource Manageru pro vaše prostředí.
 - **$TenantId**: ID vašeho Tenanta.
 - **$SubscriptionId**: ID vašeho předplatného.
-- **$OwnerUpn**: Účet, například **user@example.com**, chcete-li přidat jako nový vlastník fakturace.
+- **$OwnerUpn**: Účet, například **uživatele\@example.com**, chcete-li přidat jako nový vlastník fakturace.
 
 ```powershell
 # Set up Azure Stack admin environment

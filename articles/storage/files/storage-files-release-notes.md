@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f2f109b6861e54cc613fd06f26983897f7c1a9bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118608"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -55,7 +55,7 @@ Následující poznámky k verzi platí pro verze 5.0.2.0 agenta Azure File Sync
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a vyřešené problémy
 
 - Podpora pro cloud Azure Government
-    - Přidali jsme podporu cloudu Azure Government ve verzi preview. To vyžaduje předplatné uvedené prázdné a stažení speciální agenta od Microsoftu. Chcete-li získat přístup k verzi preview, prosím pošlete nám e-mail přímo na [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
+  - Přidali jsme podporu cloudu Azure Government ve verzi preview. To vyžaduje předplatné uvedené prázdné a stažení speciální agenta od Microsoftu. Chcete-li získat přístup k verzi preview, prosím pošlete nám e-mail přímo na [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
 - Podpora pro odstranění duplicitních dat
     - Odstranění duplicitních dat jsou nyní plně podporovány s cloudem ovládání datových vrstev na Windows serveru 2016 a Windows Server 2019 zapnout. Povolení odstranění duplicitních dat na svazku s povoleno vrstvení cloudu umožňuje ukládat do mezipaměti další soubory lokálně bez zřizování úložiště.
 - Podpora pro offline datové přenosy (např. zařízení Data Box)

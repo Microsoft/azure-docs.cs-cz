@@ -1,6 +1,6 @@
 ---
-title: Zobrazovat a spravovat výstrahy pro zařízení řady StorSimple 8000 | Microsoft Docs
-description: Popisuje výstrahy podmínek StorSimple a závažnost, jak nakonfigurovat oznámení výstrah a jak výstrahy můžete spravovat pomocí služby StorSimple Manager zařízení.
+title: Umožňuje zobrazit a spravovat výstrahy pro zařízení StorSimple řady 8000 | Dokumentace Microsoftu
+description: Popisuje podmínky upozornění StorSimple a závažnost, jak konfigurovat výstražná oznámení a jak pomocí služby Správce zařízení StorSimple ke správě výstrah.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,219 +12,220 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: e86b6af562208e51e36b4679fd088ea399ce70b8
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27745774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838710"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Pomocí služby StorSimple Manager zařízení můžete zobrazit a spravovat výstrahy StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Pomocí služby Správce zařízení StorSimple můžete zobrazit a spravovat výstrahy StorSimple
 
 ## <a name="overview"></a>Přehled
 
-**Výstrahy** okno ve službě StorSimple Manager zařízení poskytuje způsob, jak ke kontrole a vymazat výstrahy související s zařízení StorSimple na základě v reálném čase. V tomto okně můžete centrálně monitorovat problémy stavu zařízení StorSimple a celkového řešení Microsoft Azure StorSimple.
+**Výstrahy** okno ve službě Správce zařízení StorSimple poskytuje způsob, jak ke kontrole a zrušte výstrahy související s zařízení StorSimple na základě v reálném čase. Z tohoto okna můžete centrálně monitorovat stav problémy zařízení StorSimple a celkového řešení Microsoft Azure StorSimple.
 
-Tento kurz popisuje běžné výstrahy podmínek, úrovně závažnosti výstrah a postup konfigurace oznámení výstrah. Kromě toho zahrnuje výstrahy Stručná referenční tabulky, které vám umožní rychle vyhledat konkrétní výstrahu a reagují odpovídajícím způsobem.
+Tento kurz popisuje běžné podmínky upozornění úrovně závažnosti výstrah a jak nakonfigurovat oznámení výstrah. Kromě toho zahrnuje upozornění Stručná referenční příručka tabulek, které vám umožní rychle najít konkrétní výstrahu a reagují odpovídajícím způsobem.
 
-![stránka výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
+![Stránky s upozorněními](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
-## <a name="common-alert-conditions"></a>Obecné podmínky výstrah
+## <a name="common-alert-conditions"></a>Běžné podmínky upozornění
 
-Zařízení StorSimple generuje výstrahy v reakci na celou řadu podmínek. Následují nejčastější typy výstrah podmínek:
+Zařízení StorSimple generuje výstrahy v reakci na různé podmínky. Následují nejčastější typy podmínky upozornění:
 
-* **Problémy s hardwarem** – tyto výstrahy vás informovat o stav hardwaru. Umožňují vám vědět, pokud jsou potřeba upgrady firmwaru, pokud rozhraní sítě má problémy nebo pokud došlo k potížím s jedním z datových jednotkách.
-* **Problémy s připojením k** – tyto výstrahy dojít, když se potíže při přenosu dat. Problémy s komunikací může dojít během přenosu dat do a z účtu úložiště Azure nebo z důvodu nedostatku možností připojení mezi zařízeními a služby StorSimple Manager zařízení. Problémy s komunikací jsou některé nejtěžší opravit, protože nejsou k dispozici mnoho body selhání. Měli byste vždy nejprve ověřit, že než budete pokračovat k více pokročilá řešení problémů jsou k dispozici síťové připojení a přístup k Internetu. Nápovědu k řešení potíží, přejděte na [Poradce při potížích s rutinu Test-Connection](storsimple-8000-troubleshoot-deployment.md).
-* **Problémy s výkonem** – tyto výstrahy jsou nastat, když systém nepracuje optimálně, například když je v případě velkého zatížení.
+* **Problémy s hardwarem** – tyto výstrahy je informovat o stavu hardwaru. Umožňují vědět, pokud jsou potřeba upgrady firmwaru, pokud je síťové rozhraní má problémy nebo pokud dojde k nějakému problému s jednou z vašich datových jednotek.
+* **Problémy s připojením** – tyto výstrahy zobrazují tehdy, když se potíže při přenášení dat. Problémy s komunikací může dojít při přenosu dat do a z účtu úložiště Azure nebo z důvodu nedostatku možností připojení mezi zařízeními a služby Správce zařízení StorSimple. Problémy s komunikací jsou některé z těch nejtěžších opravit, protože tolik bodů selhání. Vždy nejdříve je nutné ověřit, že před pokračováním pokročilejší řešení potíží jsou k dispozici připojení k síti a přístup k Internetu. Pomoc při řešení potíží, přejděte na [řešení potíží pomocí rutiny Test-Connection](storsimple-8000-troubleshoot-deployment.md).
+* **Problémy s výkonem** – tyto výstrahy jsou způsobeny, když váš systém nepracuje optimálně, například pokud je v případě velkého zatížení.
 
-Kromě toho se může zobrazit upozornění týkající se zabezpečení, aktualizací nebo selhání úlohy.
+Kromě toho se může zobrazit upozornění týkající se zabezpečení, aktualizace nebo selhání úloh.
 
 ## <a name="alert-severity-levels"></a>Úrovně závažnosti výstrah
 
-Výstrahy mají různé úrovně závažnosti, v závislosti na dopadu, který bude mít výstrahy situaci a není nutné pro reakci na výstrahy. Jsou úrovně závažnosti:
+Výstrahy mají různé úrovně závažnosti, v závislosti na dopadu, který bude mít výstrah situace a není nutné pro reakci na upozornění. Existují tyto úrovně závažnosti:
 
-* **Kritické** – Tato výstraha je v reakci na podmínku, která ovlivňuje úspěšné výkon systému. Je potřeba zajistit, aby StorSimple služba není přerušena.
-* **Upozornění** – tento stav může být důležité, pokud není vyřešené. Měli prozkoumat situaci a proveďte akce požadované zrušte problém.
+* **Kritické** – Tato výstraha se v reakci na určitou podmínku, která ovlivňuje úspěšné výkon vašeho systému. Akce je potřeba zajistit, aby StorSimple služba není přerušena.
+* **Upozornění** – tento stav může být důležité, pokud nebyl vyřešen. By měl prozkoumat situace a provádět žádnou akci potřeba vymazat problém.
 * **Informace o** – Tato výstraha obsahuje informace, které mohou být užitečné při sledování a správa systému.
 
 ## <a name="configure-alert-settings"></a>Konfigurace nastavení výstrah
 
-Můžete zvolit, zda chcete oznámení e-mailové výstrahy podmínek pro každý z vašich zařízení StorSimple. Kromě toho můžete identifikovat ostatní příjemci oznámení výstrah zadáním jejich e-mailové adresy ve **ostatní příjemci e-mailu** pole, oddělené středníky.
+Můžete zvolit, jestli chcete dostat e-mailové výstrahy podmínky pro každé z vašich zařízení StorSimple. Kromě toho můžete identifikovat dalších příjemců oznámení výstrah tak, že zadáte své e-mailové adresy **další příjemci e-mailu** pole, oddělené středníky.
 
 > [!NOTE]
-> Můžete zadat maximálně 20 e-mailové adresy na jedno zařízení.
+> Můžete zadat maximálně 20 e-mailových adres na jedno zařízení.
 
-Jakmile povolíte e-mailové oznámení pro zařízení, členové seznamu adresátů oznámení e-mailovou zprávu, dojde k kritickou výstrahu pokaždé, když obdrží. Odešle zprávy ze  *storsimple-alerts-noreply@mail.windowsazure.com*  a popíše podmínka upozornění. Můžete kliknout na příjemci **Unsubscribe** sami odebrat ze seznamu adresátů oznámení e-mailu.
+Po povolení e-mailové oznámení pro zařízení se v seznamu oznámení obdrží e-mailovou zprávu, vyvolá se pokaždé, když kritickou výstrahu. Pošle zprávy z *storsimple oznámení noreply\@mail.windowsazure.com* a popíše se vyskytl výstražný stav. Můžete kliknout na příjemce **Unsubscribe** sami odebrat ze seznamu e-mailové oznámení.
 
-#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Chcete-li povolit e-mailové oznámení výstrah pro zařízení.
-1. Přejděte do služby Správce zařízení StorSimple. Seznam zařízení vyberte a klikněte na zařízení, které chcete nakonfigurovat.
+#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Chcete-li povolit e-mailové oznámení o výstrahách pro zařízení
+1. Přejděte do služby Správce zařízení StorSimple. Ze seznamu zařízení vyberte a klikněte na zařízení, které chcete nakonfigurovat.
 2. Přejděte na **nastavení** > **Obecné** pro zařízení.
 
    ![Okno výstrahy](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
-2. V **obecné nastavení** okno, přejděte na **výstrahy nastavení** a nastavte následující:
+2. V **obecné nastavení** okno, přejděte na **nastavení výstrah** a nastavte následující:
    
-   1. V **odesílání e-mailové oznámení** pole, vyberte **Ano**.
-   2. V **e-mailem správci služeb** pole, vyberte **Ano** do mají Správce služby a všechny spolusprávci přijímat oznámení výstrah.
-   3. V **ostatní příjemci e-mailu** pole, zadejte e-mailové adresy všech příjemců, kterým mají být doručena oznámení výstrah. Zadejte názvy ve formátu  *someone@somewhere.com* . K oddělení e-mailové adresy použijte středníky. Můžete nakonfigurovat maximálně 20 e-mailové adresy na jedno zařízení. 
+   1. V **odeslat e-mailové oznámení** pole, vyberte **Ano**.
+   2. V **e-mailem správci služeb** pole, vyberte **Ano** chcete mít správce služeb a všichni spolusprávci dostávali oznámení výstrah.
+   3. V **další příjemci e-mailu** zadejte e-mailové adresy všech příjemců, kteří mají dostávat oznámení výstrah. Zadejte názvy ve formátu *někdo\@somewhere.com*. K oddělení e-mailových adres použijte středníky. Nakonfigurovat můžete nanejvýš 20 e-mailových adres na jedno zařízení. 
       
-3. Pokud chcete poslat testovací e-mailová oznámení, klikněte na tlačítko **odeslat zkušební e-mail**. Služby StorSimple Manager zařízení se zobrazí stavové zprávy, jak předává testovací oznámení.
+3. Pokud chcete poslat testovací e-mailové oznámení, klikněte na tlačítko **odeslat zkušební email**. Služba Správce zařízení StorSimple se zobrazí stavové zprávy, jak předává testovací oznámení.
 
-    ![nastavení výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![Nastavení výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
-4. Při odesílání e-mailu, test se zobrazí upozornění. 
+4. Při odeslání testovacího e-mailu se zobrazí oznámení. 
    
-    ![Výstrahy testování odeslaných e-mailové oznámení](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
+    ![Upozornění testovací odeslání e-mailové oznámení](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
    
    > [!NOTE]
-   > Pokud nelze odeslat testovací zprávu oznámení, služby StorSimple Manager zařízení se zobrazí příslušná chybová zpráva. Počkejte několik minut a potom se pokusíte odeslat testovací zprávu oznámení znovu. 
+   > Pokud nelze odeslat testovací oznámení, se zobrazí ve službě Správce zařízení StorSimple příslušnou chybovou zprávu. Počkejte pár minut a pak zkuste znovu odeslat zprávu oznámení vašeho testu. 
 
 5. Jakmile dokončíte konfiguraci, klikněte na tlačítko **Uložit**. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-     ![Výstrahy testování odeslaných e-mailové oznámení](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![Upozornění testovací odeslání e-mailové oznámení](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
-## <a name="view-and-track-alerts"></a>Zobrazení a sledovat výstrahy
+## <a name="view-and-track-alerts"></a>Zobrazení a sledování výstrah
 
-V okně Souhrn služby StorSimple Manager zařízení vám poskytne rychlý přehled na počet výstrah v zařízeních, uspořádané podle úrovně závažnosti.
+Okně s přehledem služby Správce zařízení StorSimple poskytuje rychlý přehled na počet výstrah v zařízeních, uspořádané podle úrovně závažnosti.
 
-![Řídicí panel výstrahy](./media/storsimple-8000-manage-alerts/device-summary4.png)
+![Řídicí panel výstrah](./media/storsimple-8000-manage-alerts/device-summary4.png)
 
-Kliknutím na úroveň závažnosti otevře **výstrahy** okno. Výsledky budou zahrnovat pouze upozornění, která odpovídají této úrovně závažnosti.
+Kliknutím na úroveň závažnosti se otevře **výstrahy** okno. Budou výsledky obsahovat pouze výstrahy, které odpovídají této úrovni závažnosti.
 
-Kliknutím na výstrahu v seznamu vám poskytne další podrobnosti k výstraze, včetně doby poslední výstrahy ohlásil, počet výskytů výstrahy na zařízení a doporučené akce k vyřešení výstrahy. Pokud je výstraha hardwaru, bude rovněž určit hardwarová součást.
+Kliknutím na výstrahu v seznamu vám poskytuje další podrobnosti k výstraze, včetně posledního upozornění byla nahlášena, počet výskytů prvku oznámení na zařízení a doporučenou akci pro tuto výstrahu vyřešíte tak. Pokud je výstraha hardwaru, budou rovněž určit hardwarová komponenta.
 
-![Příklad oznámení hardwaru](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
+![Příklad výstrahy hardwaru](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
 
-Podrobnosti výstrahy můžete zkopírovat do textového souboru, pokud je potřeba poslat informace o Microsoft Support. Poté, co jste postupovali podle doporučení a vyřešit podmínka pro upozornění na místě, byste měli Vymazat výstrahu ze zařízení, tak, že vyberete výstrahy v **výstrahy** okno a kliknutím na **vymazat**. Zrušte více výstrah, vyberte jednotlivé výstrahy, klikněte na možnost žádný sloupec s výjimkou **výstraha** sloupec a pak klikněte na tlačítko **vymazat** po výběru všechny výstrahy vymazat. Všimněte si, že jsou některé výstrahy automaticky vymazány po vyřešení problému nebo když systém se novými informacemi aktualizují výstrahy.
+Do textového souboru můžete zkopírovat podrobnosti výstrahy, pokud je potřeba poslat informace o Microsoft Support. Až budete mít postupovali podle doporučení a vyskytl výstražný stav v místním, byste měli Vymazat výstrahu v zařízení tak, že vyberete výstrahu v **výstrahy** okno a kliknutím na **vymazat**. Pokud chcete vymazat více výstrah, vyberte jednotlivé výstrahy, klikněte na všechny sloupce s výjimkou **výstraha** sloupec a pak klikněte na tlačítko **vymazat** po výběru všech výstrah vymazání. Všimněte si, že jsou některé výstrahy automaticky vymazány, když dojde k vyřešení problému nebo když systém aktualizuje novými informacemi výstrahu.
 
-Když kliknete na tlačítko **zrušte**, máte možnost zadat komentář výstraha a kroky, které jste si k vyřešení problému. Některé události budou vymazána v systému, pokud jiná událost se aktivuje se novými informacemi. V takovém případě se zobrazí následující zprávu.
+Po kliknutí na **vymazat**, budete mít příležitost k poskytování poznámky o upozornění a kroky, které jste provedli v zájmu vyřešení problému. Některé události bude vymazáno systém, pokud jiné událost se aktivuje pomocí nové informace. V takovém případě se zobrazí následující zpráva.
 
 ![Vymazat výstrahu](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
-## <a name="sort-and-review-alerts"></a>Řazení a zkontrolujte výstrahy
+## <a name="sort-and-review-alerts"></a>Řazení a kontrola upozornění
 
-Možná bude efektivnější spustit sestavy na výstrahy, takže můžete zkontrolovat a poté je smažte ve skupinách. Kromě toho **výstrahy** okně může zobrazit až 250 výstrahy. Pokud byl překročen počet výstrah, zobrazí se ve výchozím zobrazení ne všechny výstrahy. Zkombinováním k přizpůsobení, které výstrahy se zobrazují následující pole:
+Může být pro vás mnohem efektivnější ke spouštění sestav o výstrahách, takže můžete zkontrolovat a poté je smažte ve skupinách. Kromě toho **výstrahy** okně můžete zobrazit až 250 výstrahy. Pokud byl překročen počet výstrah, ne všechny výstrahy, zobrazí se ve výchozím zobrazení. Můžete kombinovat přizpůsobení, které výstrahy se zobrazují následující pole:
 
-* **Stav** – můžete zobrazit buď **Active** nebo **nezaškrtnuto** výstrahy. Aktivní výstrahy se stále aktivují v systému, když byly buď ručně vymazat správcem nebo prostřednictvím kódu programu vymazat, protože systém aktualizovat podmínka upozornění s informací o novém nezaškrtnuté výstrahy.
-* **Závažnost** – můžete zobrazit výstrahy všechny úrovně závažnosti (kritická, upozornění, informace o) nebo pouze určité závažnosti, například pouze kritické výstrahy.
-* **Zdroj** – můžete zobrazit výstrahy ze všech zdrojů nebo omezit výstrahy na ty, které pocházejí z službu nebo jeden nebo všechna zařízení.
-* **Čas rozsah** – zadáním **z** a **k** kalendářních dat a časových razítek, můžete se podívat na výstrahy během časové období, které vás zajímají.
+* **Stav** – můžete zobrazit buď **aktivní** nebo **nezaškrtnuto** výstrahy. Aktivní výstrahy se stále aktivují ve vašem systému, zatímco nezaškrtnuté výstrahy byla buď ručně zrušena správcem nebo programově vymazat, protože systém se vyskytl výstražný stav aktualizuje novými informacemi.
+* **Závažnost** – můžete zobrazit výstrahy všechny úrovně závažnosti (kritická, upozornění, informace o), nebo jenom určité závažnosti, jako je například pouze kritické výstrahy.
+* **Zdroj** – můžete zobrazit výstrahy ze všech zdrojů nebo omezit oznámení na ty, které pocházejí ze služby nebo jeden nebo všechna zařízení.
+* **Časový rozsah** – zadáním **z** a **k** data a časová razítka, můžete se podívat na výstrahy během časového období, které vás zajímají.
 
 ![Seznam výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
 ## <a name="alerts-quick-reference"></a>Stručná referenční příručka výstrahy
 
-V následujících tabulkách jsou uvedeny některé z Microsoft Azure StorSimple výstrahy, které se můžete setkat, a také další informace a doporučení tam, kde je k dispozici. Výstrahy zařízení StorSimple spadat do jednoho z následujících kategorií:
+V následujících tabulkách jsou uvedeny některé výstrahy Microsoft Azure StorSimple, které může dojít, a také další informace a doporučení tam, kde je k dispozici. Upozornění zařízení StorSimple spadají do jedné z následujících kategorií:
 
 * [Výstrahy připojení cloudu](#cloud-connectivity-alerts)
-* [Výstrahy clusteru](#cluster-alerts)
+* [Upozornění clusteru](#cluster-alerts)
 * [Výstrahy pro zotavení po havárii](#disaster-recovery-alerts)
-* [Výstrahy hardwaru](#hardware-alerts)
-* [Upozornění na selhání úlohy](#job-failure-alerts)
+* [Hardwarové výstrahy](#hardware-alerts)
+* [Výstrahy na selhání úloh](#job-failure-alerts)
 * [Místně vázaný svazek výstrahy](#locally-pinned-volume-alerts)
 * [Výstrahy sítě](#networking-alerts)
 * [Výstrahy výkonu](#performance-alerts)
 * [Výstrahy zabezpečení](#security-alerts)
-* [Podpora balíček výstrah](#support-package-alerts)
+* [Podpora balíčku upozornění](#support-package-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Výstrahy připojení cloudu
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Připojení k <*název přihlašovacího údaje cloudu*> nelze navázat. |Nelze se připojit k účtu úložiště. |Zdá se, může být problém s připojením s vaším zařízením. Spusťte `Test-HcsmConnection` rutiny z rozhraní Windows Powershellu pro StorSimple na vašem zařízení a identifikovat a opravit potíže. Pokud jsou nastavení správná, může být problém s přihlašovacími údaji účtu úložiště, pro který byla výstraha vyvolána. V takovém případě použijte `Test-HcsStorageAccountCredential` rutiny určí, jestli jsou problémy, které lze vyřešit.<ul><li>Zkontrolujte nastavení sítě.</li><li>Zkontrolujte své přihlašovací údaje účtu úložiště.</li></ul> |
-| Jsme neobdrželi prezenční signál ze zařízení pro poslední <*číslo*> minut. |Nelze se připojit k zařízení. |Zdá se, nastane problém s připojením s vaším zařízením. Použijte prosím `Test-HcsmConnection` rutiny z rozhraní Windows Powershellu pro StorSimple na vašem zařízení a identifikovat a opravit problém nebo se obraťte na správce sítě. |
+| Připojení k <*název přihlašovacího údaje cloudu*> nelze navázat. |Nelze se připojit k účtu úložiště. |Zdá se, může být problém s připojením s vaším zařízením. Spusťte prosím `Test-HcsmConnection` rutiny z rozhraní Windows PowerShell pro StorSimple na vašem zařízení a identifikovat a opravit tento problém. Pokud je nastavení správné, může být problém s přihlašovacími údaji účtu úložiště, pro který byla výstraha vyvolána. V takovém případě použijte `Test-HcsStorageAccountCredential` rutiny k určení, jestli jsou nějaké problémy, které lze vyřešit.<ul><li>Zkontrolujte nastavení sítě.</li><li>Zkontrolujte přihlašovací údaje účtu úložiště.</li></ul> |
+| Jsme nedostali prezenční signál z vašeho zařízení za posledních <*číslo*> minut. |Nelze se připojit k zařízení. |Zdá se, nastane problém s připojením s vaším zařízením. Použijte prosím `Test-HcsmConnection` rutiny z rozhraní Windows PowerShell pro StorSimple na svém zařízení identifikovat a tento problém vyřešit nebo se obraťte na správce sítě. |
 
-### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple chování při selhání připojení cloudu
+### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple chování při selhání připojení ke cloudu
 
-Co se stane, pokud se nezdaří cloudu připojení zařízení StorSimple spuštění v produkčním prostředí?
+Co se stane, když selže připojení ke cloudu pro zařízení StorSimple běžících v produkčním prostředí?
 
-Pokud cloudové připojení selže na produkční zařízení StorSimple, pak v závislosti na stavu zařízení, následující se může objevit:
+Pokud připojení ke cloudu na zařízení StorSimple produkční selže, pak v závislosti na stavu zařízení, následující může dojít:
 
-* **Pro místní data na zařízení**: po určitou dobu, bude bez přerušení a čtení bude pokračovat ke zpracování. Však jako počet nezpracovaných vstupně-výstupních zvyšuje, překračuje limit, může spustit čtení selhání.
+* **Pro místní data na vašem zařízení**: Nějakou dobu bude bez přerušení a čtení bude pokračovat ke zpracování. Ale počet nezpracovaných vstupně zvyšuje a překročí limit, může spustit čtení selhání.
 
-    V závislosti na množství dat na zařízení zápisů bude také dochází k výskytu první několik hodin po přerušení připojení k cloudu. Zápisů bude potom zpomalit a nakonec spusťte nezdaří, pokud připojení cloudu dojde k narušení po několik hodin. (Není dočasné úložiště na zařízení pro data, která se vloží do cloudu. Při odesílání dat vyprázdní této oblasti. V případě selhání připojení dat v této oblasti úložiště nebude vloží do cloudu, a vstupně-výstupní operace se nezdaří.)
-* **Pro data v cloudu**: pro většinu cloudu k chybám připojení, je vrácena chyba. Po obnovení připojení jsou obnovit IOs, aniž by uživatel musel obnovit svazku online. Ve výjimečných případech může být potřeba navrácení svazek online z portálu Azure zásahu uživatele.
-* **Pro cloudové snímky v průběhu**: operace je opakována několikrát v rámci 4 až 5 hodin a připojení není obnovena, se nezdaří cloudových snímků.
+    V závislosti na objemu dat na vašem zařízení také nadále zápisů dojde k první několik hodin po narušení připojení cloudu. Zápisy se pak zpomalovat a nakonec začnou mít problémy, pokud naruší se připojení ke cloudu pro několik hodin. (Není dočasného úložiště na zařízení pro data, které mají být vloženy do cloudu. Tato oblast vyprázdní data při odeslání. Pokud připojení selže, neodešle se data v této oblasti úložiště do cloudu, a vstupně-výstupní operace se nezdaří.)
+* **Pro data v cloudu**: Většina chyb připojení cloudu je vrácena chyba. Po obnovení připojení jsou obnovit IOs, aniž by uživatel musel svazku online. Ve výjimečných případech může být nutný zásah uživatele požadované vrací do stavu online hlasitosti na webu Azure Portal.
+* **Pro cloudové snímky v průběhu**: Operace je opakovat několikrát v rámci 4 až 5 hodin a pokud připojení se obnoví, cloudové snímky se nezdaří.
 
-### <a name="cluster-alerts"></a>Výstrahy clusteru
+### <a name="cluster-alerts"></a>Upozornění clusteru
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Zařízení je v režimu údržby. |Zařízení se nezdařila. důvod zadáním nebo ukončení režimu údržby. To je normální a není vyžadována žádná akce. Po této výstrahy mít potvrzené, zrušte na stránce výstrahy. |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Právě bylo aktualizováno firmwaru zařízení nebo softwaru. |Došlo clusteru převzetí služeb při selhání kvůli aktualizaci. To je normální a není vyžadována žádná akce. Po této výstrahy mít potvrzené, zrušte na stránce výstrahy. |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Řadič vypnout nebo restartovat. |Zařízení při selhání, protože řadič active byl vypnutý nebo restartovaný správcem. Není vyžadována žádná akce. Po této výstrahy mít potvrzené, zrušte na stránce výstrahy. |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Plánované převzetí služeb při selhání. |Ověřte, že bylo plánované převzetí služeb při selhání. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Neplánované převzetí služeb při selhání. |StorSimple je integrována se automaticky zotavit neplánované převzetí služeb při selhání. Pokud se zobrazí velký počet tyto výstrahy, obraťte se na Microsoft Support. |
-| Zařízení se nepodařilo přes <*název zařízení*>. |Jiné nebo neznámé příčina. |Pokud se zobrazí velký počet tyto výstrahy, obraťte se na Microsoft Support. Jakmile je problém vyřešen, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| Služba kritické zařízení hlásí stav jako neúspěšná. |DataPath selhání služby. |Požádejte o pomoc Microsoft Support. |
-| Virtuální IP adresy pro síťové rozhraní <*DATA #*> oznámení stavu jako neúspěšná. |Jiné nebo neznámé příčina. |Někdy dočasné stavy může způsobit, že tyto výstrahy. Pokud je to tento případ, pak tato výstraha bude automaticky vymazán po určité době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
-| Virtuální IP adresy pro síťové rozhraní <*DATA #*> oznámení stavu jako neúspěšná. |Název rozhraní: <*DATA #*> IP adresu <IP address> nelze do online režimu, protože byla zjištěna duplicitní IP adresu v síti. |Ujistěte se, že duplicitní IP adresa je odebrat ze sítě nebo překonfigurujte rozhraní s jinou IP adresu. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Zařízení je v režimu údržby. |Zařízení se nezdařila. důvod spustil nebo ukončil režim údržby. To je běžné a není potřeba žádná akce. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Firmwaru zařízení nebo software byl právě aktualizován. |Došlo k selhání clusteru z důvodu aktualizace. To je běžné a není potřeba žádná akce. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Kontroler se vypnul nebo restartoval. |Zařízení se nepodařilo přes, protože byla aktivní kontroler vypnul nebo restartoval microsoftem nebo správcem. Není nutné provádět žádnou akci. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Plánované převzetí služeb při selhání. |Ověřte, že bylo plánované převzetí služeb při selhání. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Neplánované převzetí služeb při selhání. |StorSimple je navržená k automaticky zotavit po neplánovaném převzetí služeb při selhání. Pokud zjistíte velký počet těchto výstrahách, obraťte se na Microsoft Support. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Ostatní/Neznámý důvod. |Pokud zjistíte velký počet těchto výstrahách, obraťte se na Microsoft Support. Jakmile je problém vyřešen, vymažte toto upozornění ze stránky s upozorněními. |
+| Služba kritické zařízení hlásí stav jako neúspěšný. |DataPath selhání služby. |Požádejte o pomoc Microsoft Support. |
+| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Ostatní/Neznámý důvod. |Někdy dočasné situace může způsobit, že tyto výstrahy. Pokud je to tento případ, pak tato výstraha bude automaticky vymazán po nějaké době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
+| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Název rozhraní: <*dat #*> IP adresa <IP address> nelze do online režimu, protože byla zjištěna duplicitní IP adresa v síti. |Ujistěte se, že duplicitní IP adresa se odebere ze sítě nebo změnit konfiguraci rozhraní s jinou IP adresu. |
 
 ### <a name="disaster-recovery-alerts"></a>Výstrahy pro zotavení po havárii
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Operace obnovení nelze obnovit všechna nastavení pro tuto službu. Data konfigurace zařízení je v nekonzistentním stavu pro některá zařízení. |Data byla zjištěna nekonzistence po zotavení po havárii. |Šifrovaná data ve službě není synchronizován s, v zařízení. Autorizace zařízení <*název zařízení*> ve Správci zařízení zahájíte proces synchronizace StorSimple. Použít rozhraní Windows Powershellu pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` na zařízení <*název zařízení*> rutiny poskytování staré heslo jako vstup do této rutiny obnovit profil zabezpečení. Spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutiny aktualizovat šifrovacího klíče dat služby. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
+| Operace obnovení nemohly obnovit všechna nastavení pro tuto službu. Data konfigurace zařízení je v nekonzistentním stavu pro některá zařízení. |Data byla zjištěna nekonzistence po zotavení po havárii. |Šifrovaná data ve službě není synchronizován s, která na zařízení. Povolit zařízení <*název zařízení*> ze Správce StorSimple zařízení k zahájení procesu synchronizace. Použijte rozhraní Windows PowerShell pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` na zařízení <*název zařízení*> rutina zadání starého hesla jako vstup do této rutiny obnovit profil zabezpečení. Spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutina pro aktualizaci šifrovací klíč dat služby. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
 
-### <a name="hardware-alerts"></a>Výstrahy hardwaru
+### <a name="hardware-alerts"></a>Hardwarové výstrahy
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Hardwarová součást <*ID součásti*> oznámení stavu jako <*stav*>. | |Někdy dočasné stavy může způsobit, že tyto výstrahy. Pokud ano, tato výstraha bude automaticky vymazán po určité době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
-| Chybně fungující pasivní řadiče. |Pasivní (sekundární) řadič nefunguje. |Zařízení je funkční, ale jeden z vašich řadičů nepracuje správně. Zkuste restartovat kontroleru. Pokud se problém nevyřeší, obraťte se na Microsoft Support. |
+| Hardwarová komponenta <*ID komponenty*> hlásí stav <*stav*>. | |Někdy dočasné situace může způsobit, že tyto výstrahy. Pokud ano, tato výstraha bude automaticky vymazán po nějaké době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
+| Pasivní kontroler nefunguje správně. |Pasivní kontroler (sekundární) nebude fungovat správně. |Vaše zařízení je funkční, ale jeden z řadičů nefunguje správně. Zkuste restartovat tento kontroler. Pokud se problém nevyřeší, obraťte se na Microsoft Support. |
 
-### <a name="job-failure-alerts"></a>Upozornění na selhání úlohy
+### <a name="job-failure-alerts"></a>Výstrahy na selhání úloh
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Zálohování <*ID skupiny svazku zdroje*> se nezdařilo. |Úloha zálohování se nezdařila. |Problémy s připojením k může bránit úspěšně dokončení operace zálohování. Pokud nejsou žádné problémy s připojením, může bylo dosaženo maximálního počtu záloh. Odstraňte všechny zálohy, které již nejsou potřebné a operaci opakujte. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| Klonovat z <*zdroje ID zálohování prvků*> pro <*cílový svazek sériová čísla*> se nezdařilo. |Úloha klonování se nezdařila. |Aktualizace seznamu zálohování a ověřte, zda zálohování je stále platný. Pokud záloha není platná, je možné, že úspěšně dokončení operace klonování brání problémy s připojením k cloudu. Pokud nejsou žádné problémy s připojením, pravděpodobně bylo dosaženo limitu úložiště. Odstraňte všechny zálohy, které již nejsou potřebné a operaci opakujte. Po přijetí příslušné akce k vyřešení problému, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| Obnovení z <*zdroje ID zálohování prvků*> se nezdařilo. |Obnovení úlohy se nezdařilo. |Aktualizace seznamu zálohování a ověřte, zda zálohování je stále platný. Pokud záloha není platná, je možné, že potíže s připojením k cloudu brání úspěšně dokončení operace obnovení. Pokud nejsou žádné problémy s připojením, pravděpodobně bylo dosaženo limitu úložiště. Odstraňte všechny zálohy, které již nejsou potřebné a operaci opakujte. Po přijetí příslušné akce k vyřešení problému, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
+| Zálohování <*ID skupiny svazku zdrojového*> se nezdařilo. |Úloha zálohování se nezdařila. |Problémy s připojením může bránit operaci zálohování nejde úspěšně dokončit. Pokud nejsou žádné problémy s připojením, může dosáhli jste maximálního počtu záloh. Odstraňte všechny zálohy, které jsou už je nepotřebujete a zkuste operaci zopakovat. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
+| Klon <*zdroje ID elementu zálohování*> do <*cílový svazek sériová čísla*> se nezdařilo. |Úloha klonování se nezdařilo. |Aktualizace seznamu zálohování a ověřte, že je záloha stále platná. Pokud je záloha platná, je možné, že potíže s připojením cloudu brání operaci klonování úspěšně dokončit. Pokud nejsou žádné problémy s připojením, pravděpodobně bylo dosaženo limitu úložiště. Odstraňte všechny zálohy, které jsou už je nepotřebujete a zkuste operaci zopakovat. Poté, co jste udělali vhodná opatření, aby tento problém vyřešit, vymažte toto upozornění ze stránky s upozorněními. |
+| Obnovení <*zdroje ID elementu zálohování*> se nezdařilo. |Obnovte zpracování úlohy se nezdařilo. |Aktualizace seznamu zálohování a ověřte, že je záloha stále platná. Pokud je záloha platná, je možné, že brání problémy s připojením cloud operace obnovení úspěšně dokončit. Pokud nejsou žádné problémy s připojením, pravděpodobně bylo dosaženo limitu úložiště. Odstraňte všechny zálohy, které jsou už je nepotřebujete a zkuste operaci zopakovat. Poté, co jste udělali vhodná opatření, aby tento problém vyřešit, vymažte toto upozornění ze stránky s upozorněními. |
 
 ### <a name="locally-pinned-volume-alerts"></a>Místně vázaný svazek výstrahy
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Vytvoření místního svazku <*název svazku*> se nezdařilo. |Úloha vytvoření svazku se nezdařilo. <*Chybová zpráva odpovídající pomocí kódu chyby se nezdařila*>. |Problémy s připojením k může bránit úspěšné dokončení operace vytváření místa. Místně vázaných svazků jsou tlustě zřízený a proces vytváření místo zahrnuje přesahu vrstvené svazky do cloudu. Pokud nejsou žádné problémy s připojením, může pravděpodobně vyčerpala volné místo v zařízení. Určení, zda místo existuje v zařízení před opakovaným pokusem o tuto operaci. |
-| Rozšíření místní svazek <*název svazku*> se nezdařilo. |Úloha změny svazku se nezdařila z důvodu <*chybová zpráva odpovídající pomocí kódu chyby se nezdařila*>. |Problémy s připojením k může bránit úspěšné dokončení operace rozšíření svazku. Místně vázaných svazků jsou tlustě zřízený a proces rozšíření stávající prostor zahrnuje přesahu vrstvené svazky do cloudu. Pokud nejsou žádné problémy s připojením, může pravděpodobně vyčerpala volné místo v zařízení. Určení, zda místo existuje v zařízení před opakovaným pokusem o tuto operaci. |
-| Převod svazku <*název svazku*> se nezdařilo. |Úloha převedení svazku převod na typ svazku z místně připnut k vrstvené se nezdařilo. |Převod svazku typu místně vázaný k vrstvené nebylo možné dokončit. Ujistěte se, že neexistují žádné problémy s připojením k zabránění úspěšně dokončení operace. Pro řešení potíží s připojením problémy, přejděte na [Poradce při potížích s rutinu Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní místně vázaný svazek nyní byl označen jako vrstvený svazek vzhledem k tomu, že některá data z místně vázaný svazek má uniknout do cloudu při převodu. Výsledná vrstvený svazek je stále zabírá volné místo na zařízení, které nelze znovu použít pro budoucí místní svazky.<br>Vyřešte problémy s připojením, vymažte výstrahy a tento svazek převést zpět na původní typ místně vázaný svazek k zajištění všech dat je k dispozici místně znovu. |
-| Převod svazku <*název svazku*> se nezdařilo. |Úloha převedení svazku pro převod z typu svazku vrstvené pro místně vázaný se nezdařilo. |Převod svazku typu vrstvené pro místně vázaný nelze dokončit. Ujistěte se, že neexistují žádné problémy s připojením k zabránění úspěšně dokončení operace. Pro řešení potíží s připojením problémy, přejděte na [Poradce při potížích s rutinu Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní vrstvený svazek je nyní označena jako místně vázaný svazek, jako součást procesu převodu nadále data uložená v cloudu, zatímco se už nedá uvolnit místo na tlustě zřízený v zařízení pro tento svazek pro budoucí místní svazky.<br>Vyřešte problémy s připojením, vymažte výstrahy a převést zpátky na původní typ vrstvený svazek k zajištění, že místní místo tlustě zřízený v zařízení můžete znovu použít tento svazek. |
-| Blíží energie volné místo pro místní snímky <*název skupiny svazku*> |Místní snímky zásady zálohování může být brzy k dispozici dostatek místa a byla zneplatněna k vyloučení chyb při zápisu hostitele. |Časté místní snímky spolu s vysokou data změn ve svazcích, spojených s touto skupinou zásady zálohování způsobují volné místo na zařízení využívat rychle. Odstraňte všechny místní snímky, které už nejsou potřeba. Také aktualizujte vaše místní snímek plány pro tyto zásady zálohování k pořízení snímků méně častá místní a zajistit, aby se pravidelně přijata cloudových snímků. Pokud tyto akce se nezavedou, volné místo pro tyto snímky brzy byl vyčerpán a systém se automaticky odstraní, abyste zajistili, že zápisy hostitele dále úspěšně zpracovat. |
-| Místní snímky pro <*název skupiny svazku*> se zrušila platnost. |Místní snímky pro <*název skupiny svazku*> byla zrušena a poté odstranit, protože jejich byly překročení volné místo v zařízení. |Aby to není v budoucnu opakovat, zkontrolujte místní snímek plány pro tyto zásady zálohování a odstraňte všechny místní snímky, které už nejsou potřeba. Časté místní snímky spolu s vysokou data změn ve svazcích, spojených s touto skupinou zásady zálohování může způsobit volné místo na zařízení využívat rychle. |
-| Obnovení z <*zdroje ID zálohování prvků*> se nezdařilo. |Úlohu obnovení se nezdařilo. |Pokud máte místně vázaný nebo směs místně vázaný a vrstvené svazky v zásady zálohování, obnovení seznamu zálohování a ověřte, že zálohování je stále platný. Pokud záloha není platná, je možné, že potíže s připojením k cloudu brání úspěšně dokončení operace obnovení. Místně vázaných svazků obnovených v rámci této skupiny snímku všechna svá data do zařízení stahovat nemají, a pokud máte směs vrstvené a místně vázaných svazků v této skupině snímku, nebudou synchronizovány mezi sebou. Chcete-li úspěšně dokončit operaci obnovení, trvat svazky v této skupině do offline režimu na hostiteli a opakujte operaci obnovení. Všimněte si, že veškeré úpravy data na svazku, které byly provedeny během procesu obnovení budou ztraceny. |
+| Vytvoření místní svazek <*název svazku*> se nezdařilo. |Úloha vytvoření svazku se nezdařilo. <*Odpovídající kód se chybová zpráva*>. |Problémy s připojením může bránit operaci vytvoření prostoru nejde úspěšně dokončit. Místně připojené svazky se zřídilo hodně a proces vytvoření prostoru je přesunutí vrstvených svazků do cloudu. Pokud nejsou žádné problémy s připojením, může mít vyčerpali místní prostor na zařízení. Zjistěte, zda prostor existuje na zařízení, než to zkusíte znovu. |
+| Rozšíření místní svazek <*název svazku*> se nezdařilo. |Úloha změnu svazku se nezdařila z důvodu <*odpovídající kód se chybová zpráva*>. |Problémy s připojením může bránit operaci rozšíření svazku nejde úspěšně dokončit. Místně připnuté se zřídilo hodně svazků a součástí procesu rozšíření existujícího prostoru je přesunutí vrstvených svazků do cloudu. Pokud nejsou žádné problémy s připojením, může mít vyčerpali místní prostor na zařízení. Zjistěte, zda prostor existuje na zařízení, než to zkusíte znovu. |
+| Převod svazku <*název svazku*> se nezdařilo. |Úloha převodu svazků pro převod typu svazku z místně připnuté na vrstvené se nezdařilo. |Převod typu svazku z typu místně připnuté na vrstvené nebylo možné dokončit. Ujistěte se, že neexistují žádné problémy s připojením operaci dokončit úspěšně. Řešení potíží s připojením problémy najdete [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní místně vázaný svazek teď byl označen jako vrstvený svazek vzhledem k tomu, že některá data z místně vázaný svazek je při převodu přesahovat do cloudu. Výsledná vrstvený svazek je pořád využívá místní prostor zařízení, které nelze znovu použít pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, vymažte upozornění a tento svazek převést zpět na původní typ místně vázaný svazek k zajištění všech dat je k dispozici místně znovu. |
+| Převod svazku <*název svazku*> se nezdařilo. |Úloha převodu svazků pro převod typu svazku z vrstveného na místně připnutý se nezdařilo. |Převod typu svazku z typu vrstveného na místně připnutý nebylo možné dokončit. Ujistěte se, že neexistují žádné problémy s připojením operaci dokončit úspěšně. Řešení potíží s připojením problémy najdete [řešení potíží pomocí rutiny Test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Původní vrstvený svazek je nyní označena jako místně vázaný svazek, část procesu převodu se stále mít data uložená v cloudu, když se už nedá uvolnit tlustě zřízené místo na zařízení pro tento svazek pro budoucí místní svazky.<br>Vyřešte všechny problémy s připojením, vymažte upozornění a tento svazek převést zpět na původní typ vrstvený svazek k zajištění, že se místní prostor tlustě zřízený v zařízení se nedá uvolnit. |
+| Už brzy spotřebovávat místní prostor pro místní snímky <*název skupiny svazků*> |Místní snímky pro zásadu zálohování, která může brzy dostatek místa a lze zrušit platnost, aby se zabránilo chybám zápisu hostitele. |Časté pořizování vysoká četnost změn dat ve svazcích přidružených k této skupině zásad zálohování místních snímků způsobují v zařízení bude rychle spotřebovávat místní prostor. Odstraňte místní snímky, které už nejsou potřeba. Také aktualizujte vaše plány místních snímků pro tyto zásady zálohování využít méně častá místních snímků a ujistěte se, že cloudové snímky jsou pravidelně udělali. Pokud se provedou tyto akce, místní prostor pro tyto snímky mohou brzy dojít k vyčerpání a systém se automaticky odstraní je zajistit, že zápisy hostitele i nadále úspěšně zpracována. |
+| Místní snímky pro <*název skupiny svazků*> byly zneplatněny. |Místní snímky pro <*název skupiny svazků*> byla zrušena a pak odstranit, protože jejich byly překročení místní prostor na zařízení. |K zajištění, že to není opakování v budoucnu, projděte si plány místních snímků pro tyto zásady zálohování a odstraňte místní snímky, které už nejsou potřeba. Časté pořizování vysoká četnost změn dat ve svazcích přidružených k této skupině zásad zálohování místních snímků může způsobit, že místní prostor na zařízení bude rychle spotřebovávat. |
+| Obnovení <*zdroje ID elementu zálohování*> se nezdařilo. |Úloha obnovení se nezdařilo. |Pokud máte místně připnuté nebo kombinaci místně připnuté a vrstvené svazky v této zásadě zálohování, obnovení seznamu zálohování a ověřte, že je záloha stále platné. Pokud je záloha platná, je možné, že brání problémy s připojením cloud operace obnovení úspěšně dokončit. Místně vázaných svazků obnovených jako součást tohoto snímku skupiny nemají všechna svoje data do zařízení stahovat, a pokud máte v této skupině snímku kombinaci místně připnuté a vrstvené svazky, nebudou vzájemná synchronizace. K úspěšnému dokončení operace obnovení, uveďte svazky do této skupiny do offline režimu na hostiteli a opakujte operaci obnovení. Všimněte si, že všechny úpravy dat svazku, které byly provedeny během procesu obnovení budou ztraceny. |
 
 ### <a name="networking-alerts"></a>Výstrahy sítě
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
 | Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
-| Pro 'Data0' zjištěna duplicitní IP adresu. | |Systém zjistil konflikt pro IP adresu, 10.0.0.1'. Síťovému prostředku 'Data0' na zařízení  *<device1>*  je offline. Ujistěte se, že tato IP adresa není používán ostatní entity v této síti. K odstraňování problémů se sítí, přejděte na [Poradce při potížích s rutinu Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Obraťte se na správce sítě pro pomoc při řešení tohoto problému. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
-| Adresa IPv4 (nebo IPv6) pro 'Data0' je offline. | |Síťovému prostředku "Data0" s IP adresou, 10.0.0.1." a délka, 22, na zařízení předpony  *<device1>*  je offline. Zajistěte, aby byly provozní porty přepínače, ke kterým je připojen toto rozhraní. K odstraňování problémů se sítí, přejděte na [Poradce při potížích s rutinu Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat se používá k ověření není dostupný. Ujistěte se, že vašich pravidlech brány firewall zahrnují vzory adresa URL zadaná pro zařízení StorSimple. Další informace o vzorů adresy URL na portálu Azure přejděte na https://aka.ms/ss-8000-network-reqs. Pokud používáte Azure Cloud vlády, přejděte na adresu URL vzory v https://aka.ms/ss8000-gov-network-reqs.|
+| Duplicitní IP adresa se nedetekovaly "Data0". | |Systém zjistil konflikt pro IP adresu '10.0.0.1'. Síťový prostředek "Data0" na zařízení *<device1>* je offline. Ujistěte se, že je tato IP adresa nepoužívá žádná jiná entita v této síti. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Obraťte se na správce sítě o pomoc s řešením tohoto problému. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
+| Adresa IPv4 (nebo IPv6) pro 'Data0' je v režimu offline. | |Síťový prostředek "Data0" s IP adresou '10.0.0.1'. a délka "22" na zařízení předpony *<device1>* je offline. Ujistěte se, že jsou funkční porty přepínače, ke kterým je toto rozhraní připojené. Chcete-li vyřešit problémy se sítí, přejděte na [řešení potíží pomocí rutiny Get-NetAdapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat slouží k ověřování není k dispozici. Ujistěte se, že pravidla brány firewall zahrnout vzory adres URL zadaná pro zařízení StorSimple. Další informace o vzorech adres URL na webu Azure portal, přejděte na https://aka.ms/ss-8000-network-reqs. Pokud používáte Azure Government Cloud, přejděte na vzory adresy URL na https://aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Výstrahy výkonu
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
-|:--- |:--- |:--- |
-| Byla překročena zatížení zařízení <*prahová hodnota*>. |Nižší než očekávané doby odezvy. |Vaše zařízení sestavy využití v případě velkého zatížení vstupu a výstupu. To může způsobit, že vaše zařízení nebude fungovat stejně jako by měl. Zkontrolujte zatížení připojit do zařízení a určí, zda jsou k dispozici, může přesunout na jiné zařízení nebo které již nejsou potřebné.| Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |a aktuální stav, přejděte na [použít službu StorSimple Manager zařízení k monitorování zařízení](storsimple-8000-monitor-device.md) |
+| Text upozornění | Událost | Další informace o / doporučené akce | |
+|:--- |:--- |:--- | --- |
+| Zatížení zařízení překročilo <*prahová hodnota*>. |Pomalejší než očekávané doby odezvy. |Vaše zařízení hlásí využití při velké zátěži uchovalo vstupu a výstupu. To může způsobit vaše zařízení nebude pracovat stejně jako by měl. Zkontrolujte úlohy připojili k zařízení a určí, zda jsou k dispozici, která by mohla přesunout na jiné zařízení nebo jestli nějaké už nejsou potřebná.|
+| Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. |
 
 ### <a name="security-alerts"></a>Výstrahy zabezpečení
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Zahájení relace Microsoft Support. |Relace používaná podporu jiných výrobců. |Potvrďte, že je tento přístup oprávnění. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| Heslo pro <*element*> do vypršení platnosti <*dobu*>. |Se blíží vypršení platnosti hesla. |Změňte si heslo dřív, než vyprší. |
-| Informace o konfiguraci zabezpečení pro <*ID elementu*>. | |Svazky přidružené k tomuto kontejneru svazků nelze použít k replikaci konfiguraci zařízení StorSimple. Aby se zajistilo, že data bezpečně uložena, doporučujeme odstranění kontejneru svazků a svazky přidružené kontejneru svazků. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
-| <*číslo*> pokusů o přihlášení se nezdařilo pro <*ID elementu*>. |Více neúspěšné pokusy o přihlášení. |Vaše zařízení může být terčem útoku nebo se autorizovaný uživatel snaží připojit pomocí nesprávného hesla.<ul><li>Obraťte se na oprávněným uživatelům a ověřte, že tyto pokusy byly ze skutečného zdroje. Pokud budete pokračovat v tématu velkého počtu neúspěšných pokusů o přihlášení, zvažte zakázání vzdálené správy a kontaktovat správce sítě. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy.</li><li>Zkontrolujte, zda vaše instance Snapshot Manager jsou nakonfigurovány s správné heslo. Po přijetí příslušné akce, zrušte zaškrtnutí této výstrahy na stránce výstrahy.</li></ul>Další informace, přejděte na [změnit heslo k zařízení s vypršenou platností](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password). |
-| Jedno nebo více selhání došlo k chybě při změně šifrovacího klíče dat služby. | |Došlo k při změně šifrovacího klíče dat služby došlo k chybám. Po mít řešit chybové stavy, spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutiny z rozhraní Windows Powershellu pro StorSimple na zařízení k aktualizaci služby. Pokud potíže potrvají, kontaktujte podporu Microsoftu. Po vyřešení problému, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
+| Byla zahájena relace Microsoft Support. |Relace používaná podporu třetí strany. |Zkontrolujte prosím, že tento přístup je autorizovaný. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
+| Heslo pro <*element*> vyprší za <*dobu*>. |Blíží se vypršení platnosti hesla. |Změňte si heslo dřív, než vyprší. |
+| Chybí informace o konfiguraci zabezpečení <*ID elementu*>. | |Svazky přidružené k tomuto kontejneru svazků nejde používanou k replikaci konfigurace StorSimple. Aby bylo zajištěno, že vaše data jsou bezpečně uložená, doporučujeme odstranit kontejner svazků a svazky přidružené k kontejner svazků. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
+| <*číslo*> neúspěšných pokusů o přihlášení k <*ID elementu*>. |Několik neúspěšných pokusů o přihlášení. |Vaše zařízení může být terčem útoku nebo se autorizovaný uživatel snaží připojit pomocí nesprávného hesla.<ul><li>Kontaktujte autorizované uživatele a ověřte, že tyto pokusy pocházejí z legitimního zdroje. Pokud bude pořád zobrazovat velké množství neúspěšných pokusů o přihlášení, zvažte zakázání vzdálené správy a kontaktovat správce sítě. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními.</li><li>Zkontrolujte, že vaše instance Snapshot Manageru jsou nakonfigurovány s správné heslo. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními.</li></ul>Další informace najdete v části [změnit heslo k zařízení s vypršenou platností](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password). |
+| Během změny šifrovacího klíče dat služby došlo k nejméně jednomu selhání. | |Došlo k během změny šifrovacího klíče dat služby došlo k chybám. Poté, co jste vyřešili chybové stavy, spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutiny z rozhraní Windows PowerShell pro StorSimple na vašem zařízení k aktualizaci služby. Pokud potíže potrvají, kontaktujte podporu Microsoftu. Po vyřešení problému, vymažte toto upozornění ze stránky s upozorněními. |
 
-### <a name="support-package-alerts"></a>Podpora balíček výstrah
+### <a name="support-package-alerts"></a>Podpora balíčku upozornění
 
-| Textu výstrahy | Událost | Další informace / doporučené akce |
+| Text upozornění | Událost | Další informace o / doporučené akce |
 |:--- |:--- |:--- |
-| Vytvoření balíčku pro podporu se nezdařilo. |Balíček nelze generovat StorSimple. |Tuto operaci opakujte. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. Po vyřešení problému, zrušte zaškrtnutí této výstrahy na stránce výstrahy. |
+| Nepovedlo se vytvořit balíček pro podporu. |StorSimple nejde generovat balíček. |Tuto operaci opakujte. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. Po vyřešení problému, vymažte toto upozornění ze stránky s upozorněními. |
 
 ## <a name="next-steps"></a>Další postup
 

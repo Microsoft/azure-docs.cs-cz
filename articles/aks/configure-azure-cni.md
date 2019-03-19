@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d91366ee0fec2930484f7aaa7468e6d1d62f233
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002187"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -143,7 +143,7 @@ Platí následující dotazy a odpovědi k **Azure CNI** konfiguraci sítě.
 
 * *Můžete nakonfigurovat zásady sítě než pod?*
 
-  Ne. Zásady sítě než pod nejsou aktuálně podporovány.
+  Zásady sítě Kubernetes je nyní dostupná jako funkci ve verzi preview ve službě AKS. Abyste mohli začít, najdete v článku [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě AKS][network-policy].
 
 * *Maximální počet podů je nasadit do uzlu konfigurovatelné?*
 
@@ -201,3 +201,4 @@ Clustery Kubernetes vytvořili pomocí modulu AKS podporovat [kubenet] [ kubenet
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[network-policy]: use-network-policies.md

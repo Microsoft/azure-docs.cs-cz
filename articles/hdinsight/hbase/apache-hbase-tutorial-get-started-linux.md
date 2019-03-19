@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 556d67bb67e9eb01c442cdf158561f16a5bcf922
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875936"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
@@ -111,7 +111,7 @@ V HBase (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)), vy
 
 HBase obsahuje několik metod načítání dat do tabulek.  Další informace naleznete v tématu [Hromadné načítání](https://hbase.apache.org/book.html#arch.bulk.load).
 
-Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Obsah datového souboru je:
+Ukázkový datový soubor nachází v kontejneru objektů blob veřejný, *wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt*.  Obsah datového souboru je:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ Data v tabulkách HBase můžete dotazovat pomocí [Apache Hive](https://hive.ap
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
 
-2. Pomocí následujícího příkazu můžete zobrazit seznam existujících tabulek HBase:
+1. Pomocí následujícího příkazu můžete zobrazit seznam existujících tabulek HBase:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Pokud chcete vytvořit novou tabulku HBase se dvěma skupinami sloupců, použijte následující příkaz:
+1. Pokud chcete vytvořit novou tabulku HBase se dvěma skupinami sloupců, použijte následující příkaz:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
     ```
 
     Schéma je k dispozici ve formátu JSon.
-4. Chcete-li vložit nějaká data použijte následující příkaz:
+1. Chcete-li vložit nějaká data použijte následující příkaz:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -207,12 +207,12 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
    
     Hodnoty určené v přepínači -d musíte zakódovat base64. V tomto příkladu:
    
-   * MTAwMA ==: 1000
-   * UGVyc29uYWw6TmFtZQ ==: Osobní: Name
-   * Sm9obiBEb2xl: Jan Dole
+   * MTAwMA==: 1000
+   * UGVyc29uYWw6TmFtZQ==: Osobní: Name
+   * Sm9obiBEb2xl: John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) umožňuje vložit více (dávkových) hodnot.
-5. Pro získání řádku použijte následující příkaz:
+1. Pro získání řádku použijte následující příkaz:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -247,15 +247,15 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 2. V nabídce vlevo klikněte na **HBase**.
 3. V horní části stránky klikněte na **Rychlé odkazy**, najeďte myší na odkaz na aktivní uzel Zookeeper a klikněte na **Hlavní uživatelské rozhraní HBase**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
-  ![Hlavní uživatelské rozhraní HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![Hlavní uživatelské rozhraní HDInsight HBase](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  Hlavní uživatelské rozhraní HBase obsahuje tyto části:
+   Hlavní uživatelské rozhraní HBase obsahuje tyto části:
 
-  - oblastní servery
-  - zálohování hlavních serverů
-  - tabulky
-  - úlohy
-  - atributy softwaru
+   - oblastní servery
+   - zálohování hlavních serverů
+   - tabulky
+   - úlohy
+   - atributy softwaru
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru.

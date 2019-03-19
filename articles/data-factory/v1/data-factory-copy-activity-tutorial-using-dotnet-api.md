@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ac0ef463f05c2f361c75827e300b2866e16dfef1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 647b2ae5f23ef6f94e3a56eb777053a7eb3e0097
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446975"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090436"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
 > [!div class="op_single_selector"]
@@ -515,9 +515,9 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
     ```
 18. Ukázku spusťte kliknutím na **Ladit** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
 19. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
-   * Propojené služby: **LinkedService_AzureStorage**
-   * Datová sada: **InputDataset** a **OutputDataset**.
-   * Kanál: **PipelineBlobSample**
+    * Propojené služby: **LinkedService_AzureStorage**
+    * Datová sada: **InputDataset** a **OutputDataset**.
+    * Kanál: **PipelineBlobSample**
 20. Ověřte, že se v tabulce **emp** vytvořily dva záznamy zaměstnanců v zadané databázi Azure SQL.
 
 ## <a name="next-steps"></a>Další postup

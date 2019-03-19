@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b8f343c2293df6a1dec808addf8881c27514fc06
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436643"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082037"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 2
 Verze 2 pro rozšíření vlastního skriptu stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakoukoliv jinou úlohu konfigurace a správy. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je lze zadat rozšíření modulu runtime. 
@@ -124,7 +124,7 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 ### <a name="property-value-details"></a>Podrobnosti o hodnotě vlastnosti
 * `skipDos2Unix`: (volitelné, logická hodnota) přeskočit dos2unix převodu adres URL založených na skriptech souboru nebo skriptu.
 * `timestamp` (volitelné, 32bitové celé číslo), použijte toto pole pouze pro aktivaci znovu spusťte tento skript změnou hodnoty tohoto pole.  Libovolné celé číslo je přijatelné; musí být pouze jiný než předchozí hodnota.
- * `commandToExecute`: (**požadované** Pokud skript není nastavený, string) skript vstupního bodu ke spuštění. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy jako jsou hesla.
+  * `commandToExecute`: (**požadované** Pokud skript není nastavený, string) skript vstupního bodu ke spuštění. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy jako jsou hesla.
 * `script`: (**požadované** Pokud commandToExecute není nastavený, string) kódováním base64 (a volitelně gzip'ed) skript spuštěn pomocí/Bin/sh.
 * `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory ke stažení.
 * `storageAccountName`: (volitelné, string) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště všechny `fileUris` musí být adresy URL pro objekty BLOB Azure.

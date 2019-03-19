@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a2081bab2aebf0d49f3bde2467dac1fa683452ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008719"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů na webu Azure Portal.
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 
 ## <a name="create-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
@@ -43,10 +43,10 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 4. Vyberte požadovaný typ operačního systému, například *Windows Server 2016 Datacenter*.
 5. Zadejte požadovaný název skupiny prostředků, například *myResourceGroup*, a umístění, například *USA – východ*.
 6. Zadejte požadované uživatelské jméno a vyberte upřednostňovaný typ ověřování.
-    - **Heslo** musí mít alespoň 12 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v [požadavcích na uživatelské jméno a heslo](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
-    - Pokud vyberete image disku s operačním systémem Linux, můžete místo toho zvolit **Veřejný klíč SSH**. Stačí zadat veřejný klíč, například *~/.ssh/id_rsa.pub*. K [vytvoření a použití klíčů SSH](../virtual-machines/linux/mac-create-ssh-keys.md) můžete použít Azure Cloud Shell na portálu.
+   - **Heslo** musí mít alespoň 12 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v [požadavcích na uživatelské jméno a heslo](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
+   - Pokud vyberete image disku s operačním systémem Linux, můžete místo toho zvolit **Veřejný klíč SSH**. Stačí zadat veřejný klíč, například *~/.ssh/id_rsa.pub*. K [vytvoření a použití klíčů SSH](../virtual-machines/linux/mac-create-ssh-keys.md) můžete použít Azure Cloud Shell na portálu.
 
-    ![Nastavení základní podrobnosti a vytvořte škálovací sadu virtuálních počítačů na webu Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+     ![Nastavení základní podrobnosti a vytvořte škálovací sadu virtuálních počítačů na webu Azure Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
 1. Vyberte možnosti, jako například Vyrovnávání zatížení *nástroj pro vyrovnávání zatížení*v části **zvolit možnosti vyrovnávání zatížení**. Zadejte zbývající informace pro možnost Vyrovnávání zatížení. Například pro *nástroje pro vyrovnávání zatížení* vám stačí zadat **název veřejné IP adresy** a **Popisek názvu domény**.
 1. Zadejte podrobnosti virtuální sítě v části **konfigurace virtuálních sítí**. Například můžete vytvořit novou virtuální síť, *myVirtualNetwork*a nová podsíť *výchozí*.
 1. Potvrďte možnosti škálovací sady výběrem možnosti **Vytvořit**.

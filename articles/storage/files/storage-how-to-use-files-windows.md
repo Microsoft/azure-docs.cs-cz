@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: f12f5f1f7791fa09b07c3035db65f2f488f36d7f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776576"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076339"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -303,5 +303,5 @@ Po vytvoření tohoto klíče registru musíte server restartovat, aby se protok
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
-* [Nejčastější dotazy](../storage-files-faq.md)
-* [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Nejčastější dotazy](../storage-files-faq.md)
+- [Řešení potíží ve Windows](storage-troubleshoot-windows-file-connection-problems.md)      

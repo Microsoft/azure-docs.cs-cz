@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3064b3eb5f29e2b2d1ff8516dce97bbb3fb8062
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09ff573683ef681a053f2bcd37325d48b3823371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100815"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS 2.0
 
@@ -32,7 +32,9 @@ Pro zabezpečení AD FS 2.0 pomocí proxy serveru nainstalujte Azure Multi-Facto
 2. Klikněte na kartu **Založené na formulářích**.
 3. Klikněte na tlačítko **Add** (Přidat).
 
-   <center>![Nastavení](./media/howto-mfaserver-adfs-2/setup1.png)</center>
+   <center>
+   
+   ![Nastavení](./media/howto-mfaserver-adfs-2/setup1.png)</center>
 
 4. Pokud chcete automaticky detekovat uživatelské jméno, heslo a proměnné domény, zadejte adresu URL pro přihlášení (například https://sso.contoso.com/adfs/ls) v dialogovém okně Automatická konfigurace webové stránky s formuláři a klikněte na **OK**.
 5. Zaškrtněte políčko **Vyžadovat porovnání uživatele Azure Multi-Factor Authentication**, pokud byli nebo budou všichni uživatelé importováni na server a podstoupí dvoustupňové ověření. Pokud ještě na server nebyl importován velký počet uživatelů nebo budou uživatelé vyloučení z dvoustupňového ověření, nechte toto políčko nezaškrtnuté.
@@ -41,7 +43,9 @@ Pro zabezpečení AD FS 2.0 pomocí proxy serveru nainstalujte Azure Multi-Facto
 8. Formát požadavku nastavte na **POST nebo GET**.
 9. Zadejte Proměnnou uživatelského jména (ctl00$ContentPlaceHolder1$UsernameTextBox) a Proměnnou hesla (ctl00$ContentPlaceHolder1$PasswordTextBox). Pokud vaše formulářová přihlašovací stránka zobrazí pole pro doménu, zadejte taky Proměnnou domény. Pokud chcete vyhledat názvy vstupních polí na přihlašovací stránce, přejděte ve webovém prohlížeči na přihlašovací stránku, klikněte na stránku pravým tlačítkem myši a vyberte **Zobrazit zdrojový kód**.
 10. Zaškrtněte políčko **Vyžadovat porovnání uživatele Azure Multi-Factor Authentication**, pokud byli nebo budou všichni uživatelé importováni na server a podstoupí dvoustupňové ověření. Pokud ještě na server nebyl importován velký počet uživatelů nebo budou uživatelé vyloučení z dvoustupňového ověření, nechte toto políčko nezaškrtnuté.
-    <center>![Nastavení](./media/howto-mfaserver-adfs-2/manual.png)</center>
+    <center>
+    
+    ![Nastavení](./media/howto-mfaserver-adfs-2/manual.png)</center>
 11. Klikněte na **Upřesnit...** a zkontrolujte upřesňující nastavení. Mezi nastavení, která můžete konfigurovat, patří:
 
     - Výběr vlastního souboru odmítnutí stránky
@@ -63,13 +67,17 @@ Povolili jste ověřování IIS, ale abyste mohli provádět předběžné ově�
 1. Klikněte na ikonu **Integrace adresáře**.
 2. Na kartě Nastavení vyberte přepínač **Použít specifickou konfiguraci LDAP**.
 
-   <center>![Nastavení](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
+   <center>
+    
+   ![Nastavení](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
 
 3. Klikněte na **Upravit**.
 4. V dialogovém okně Upravit konfiguraci LDAP vyplňte pole pomocí informací požadovaných pro připojení k řadiči domény AD. Popisy těchto polí jsou uvedeny v souboru nápovědy Azure Multi-Factor Authentication Serveru.
 5. Otestujte připojení LDAP kliknutím na tlačítko **Test**.
 
-   <center>![Nastavení](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
+   <center>
+    
+   ![Nastavení](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
 
 6. Pokud byl test připojení LDAP úspěšný, klikněte na **OK**.
 
@@ -81,7 +89,9 @@ Povolili jste ověřování IIS, ale abyste mohli provádět předběžné ově�
 
 Ověřte, že se uživatelé naimportovali z Active Directory do Serveru. Pokud chcete vytvořit bílou listinu interních IP adres, aby při přihlašování k webu z těchto umístění nebylo potřeba dvoustupňové ověření, projděte si část [Důvěryhodné IP adresy](#trusted-ips).
 
-<center>![Nastavení](./media/howto-mfaserver-adfs-2/reg.png)</center>
+<center>
+
+![Nastavení](./media/howto-mfaserver-adfs-2/reg.png)</center>
 
 ## <a name="ad-fs-20-direct-without-a-proxy"></a>AD FS 2.0 Direct bez serveru proxy
 AD FS můžete zabezpečit, i když se server proxy AD FS nepoužívá. Nainstalujte Azure Multi-Factor Authentication Server na server služby ADFS a nakonfigurujte ho podle následujícího postupu:
@@ -94,7 +104,9 @@ AD FS můžete zabezpečit, i když se server proxy AD FS nepoužívá. Nainstal
 6. Zaškrtněte políčko **Vyžadovat porovnání uživatele Azure Multi-Factor Authentication**, pokud byli nebo budou všichni uživatelé importováni na server a podstoupí dvoustupňové ověření. Pokud ještě na server nebyl importován velký počet uživatelů nebo budou uživatelé vyloučení z dvoustupňového ověření, nechte toto políčko nezaškrtnuté.
 7. V případě potřeby zaškrtněte políčko mezipaměti souborů cookie.
 
-   <center>![Nastavení](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
+   <center>
+   
+   ![Nastavení](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
 
 8. Klikněte na **OK**.
 9. Klikněte na kartu **Nativní modul** a vyberte server, web (jako Výchozí web) nebo aplikaci služby AD FS (jako „ls“ v části „adfs“) pro povolení modulu plug-in IIS na požadované úrovni.
@@ -113,4 +125,6 @@ Důvěryhodné IP adresy umožňují uživatelům obejít ověřování Azure Mu
 3. Jakmile se zobrazí dialogové okno Přidat důvěryhodné IP adresy, vyberte přepínač **Jedna IP adresa**, **Rozsah IP adres** nebo **Podsíť**.
 4. Zadejte IP adresu, rozsah IP adres nebo podsíť, které chcete zařadit na seznam povolených adres. Pokud zadáváte podsíť, vyberte příslušnou síťovou masku a klikněte na tlačítko **OK**. Seznam důvěryhodných adres IP se přidal.
 
-<center>![Nastavení](./media/howto-mfaserver-adfs-2/trusted.png)</center>
+<center>
+
+![Nastavení](./media/howto-mfaserver-adfs-2/trusted.png)</center>

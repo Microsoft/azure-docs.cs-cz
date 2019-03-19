@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9021bb2a030472d4e83d78c8fc6363db570c3554
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864452"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Jak indexovat Cosmos DB pomocí indexeru Azure Search
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nakonfigurovat služby Azure Cosmos DB [indexe
 
 Vzhledem k tomu, že terminologie může být matoucí, je vhodné poznamenat, který [indexování služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) a [indexování Azure Search](search-what-is-an-index.md) jsou různé operace, které jsou jedinečná pro každou službu. Než můžete začít s Azure Search indexování, databázi Azure Cosmos DB musí již existovat a obsahují data.
 
-Můžete použít [portál](#cosmos-indexer-portal), [rozhraní REST API](#cosmos-indexer-rest), nebo [sady .NET SDK](#cosmos-indexer-dotnet) indexovat obsah Cosmos. Indexer Cosmos DB ve službě Azure Search Procházet [položky Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) přistupovat prostřednictvím těchto protokolů:
+Můžete použít [portál](#cosmos-indexer-portal), rozhraní REST API nebo .NET SDK k indexování obsahu Cosmos. Indexer Cosmos DB ve službě Azure Search Procházet [položky Azure Cosmos](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) přistupovat prostřednictvím těchto protokolů:
 
 * [ROZHRANÍ SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [Rozhraní MongoDB API](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (podpora Azure Search pro toto rozhraní API je ve verzi public preview)  

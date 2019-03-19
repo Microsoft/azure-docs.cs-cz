@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bf272262d8279dea034440c9ffcf8c49f9fd75ab
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964117"
 ---
 Tento článek obsahuje informace o velikostech virtuálních počítačů předchozí generace. Tyto velikosti je stále možné, ale nejsou k dispozici novější generace.
 
 
 ## <a name="ds-series"></a>DS-series
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Premium Storage:  Podporováno
 
@@ -33,11 +33,12 @@ Premium Storage ukládání do mezipaměti:  Podporováno
 | Standard_DS3 |4 |14 |28 |16 |16 000 / 128 (172) |12 800 / 128 |4 / 2 000 |
 | Standard_DS4 |8 |28 |56 |32 |32 000 / 256 (344) |25 600 / 256 |8 / 4 000 |
 
+<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="ds-series---memory-optimized"></a>DS-series – optimalizované z hlediska paměti
 
-ACU: 160 <sup>1</sup>
+ACU: 160-250 <sup>1,2</sup>
 
 Premium Storage:  Podporováno
 
@@ -52,11 +53,11 @@ Premium Storage ukládání do mezipaměti:  Podporováno
 
 <sup>1</sup> maximální propustnost disku (IOPS nebo MB/s) s DS-series virtuálních počítačů může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [návrh pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-
+<sup>2</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 
 ## <a name="d-series"></a>D-series 
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Premium Storage:  Nepodporuje se
 
@@ -69,11 +70,12 @@ Premium Storage ukládání do mezipaměti:  Nepodporuje se
 | Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 2 000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 4 000                     |
 
+<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="d-series---memory-optimized"></a>D-series – optimalizované z hlediska paměti
 
-ACU: 160
+ACU: 160-250 <sup>1</sup>
 
 Premium Storage:  Nepodporuje se
 
@@ -86,6 +88,7 @@ Premium Storage ukládání do mezipaměti:  Nepodporuje se
 | Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 4 000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 8000                |
 
+<sup>1</sup> řadu virtuálních počítačů můžete spustit na jednom z následujících procesoru: 2.2 GHz Intel E5-2660 v2 Xeon®, 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon
@@ -127,6 +130,7 @@ Premium Storage ukládání do mezipaměti:  Nepodporuje se
 | Standard_A5 |2 |14 |135 |4 |4×500 |2 / 500 |
 | Standard_A6 |4 |28 |285 |8 |8×500 |2 / 1 000 |
 | Standard_A7 |8 |56 |605 |16 |16×500 |4 / 2 000 |
+
 <br>
 
 <sup>1</sup> je velikost the A0 využívá fyzický hardware. Pouze pro tuto konkrétní velikost můžou výkon vašich spuštěných úloh ovlivnit jiná zákaznická nasazení. Relativní výkon je popsaný níže jako očekávaný základ, přičemž se dá očekávat variabilita přibližně 15 procent.

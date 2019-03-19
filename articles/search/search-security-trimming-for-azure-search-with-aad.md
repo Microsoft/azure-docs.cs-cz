@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099689"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102522"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledky Azure Search pomocí identity služby Active Directory
 
@@ -22,13 +22,13 @@ Tento článek ukazuje, jak používat identity zabezpečení Azure Active Direc
 
 Tento článek se zabývá následujícími úkony:
 > [!div class="checklist"]
-- Vytvořit uživatele a skupiny AAD
-- Přiřadit uživatele ke skupině, kterou jste vytvořili
-- Nové skupiny do mezipaměti
-- Indexování dokumentů s související skupiny
-- Vydejte žádost o vyhledávání pomocí filtr identifikátorů skupiny
-
->[!NOTE]
+> - Vytvořit uživatele a skupiny AAD
+> - Přiřadit uživatele ke skupině, kterou jste vytvořili
+> - Nové skupiny do mezipaměti
+> - Indexování dokumentů s související skupiny
+> - Vydejte žádost o vyhledávání pomocí filtr identifikátorů skupiny
+> 
+> [!NOTE]
 > Ukázka fragmentu kódu v tomto článku jsou napsané v C#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Požadavky

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6d2d83e24b5e42af5f4322021eebfe9bf09494
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2eb395b4f3d922aa116e01c5de080a54d81e10ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551232"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118642"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
@@ -111,15 +111,15 @@ Ve stejném zobrazení se všechny grafy zobrazí se některé dlaždice pro vý
 
 3. Klikněte na Data > čítače výkonu Windows (Data > Linuxovými čítači výkonu pro počítače s Linuxem) spustíte shromažďování specifické čítače aplikací z uzly pomocí agenta Log Analytics. Tady jsou příklady formát pro čítače, které chcete přidat
 
-    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
-    * `Processor(_Total)\\% Processor Time`
+   * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
+   * `Processor(_Total)\\% Processor Time`
 
-    V tomto rychlém startu, VotingData a VotingWeb jsou názvy procesů používá, takže tyto čítače pro sledování může vypadat třeba
+     V tomto rychlém startu, VotingData a VotingWeb jsou názvy procesů používá, takže tyto čítače pro sledování může vypadat třeba
 
-    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
-    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![Čítače výkonu služby log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Čítače výkonu služby log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
 4. To umožní zobrazit, jak je infrastrukturu zpracování vašich úloh a nastavte příslušné výstrahy na základě využití prostředků. Například – můžete nastavit výstrahu v případě více než 90 % nebo méně než 5 % celkové využití procesoru v aplikaci. Název čítače, které můžete využít k tomu je "% Processor Time". Může to provedete tak, že vytvoříte pravidlo upozornění pro následující dotaz:
 

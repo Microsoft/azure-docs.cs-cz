@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Přístup k Azure Data Lake Storage Gen2 dat pomocí Azure Databricks pomocí Spark | Dokumentace Microsoftu'
-description: Tento kurz ukazuje, jak spustit dotazy Spark na clusteru Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
+description: Tento kurz ukazuje, jak spustit dotazy Spark na clusteru služby Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 services: storage
 author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 422bf9a3fb4e3168857a78f4f50ac771ef80c6a6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cd851502f901302987f562976c3c2f5d324cdeb5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902939"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Kurz: Data Lake Storage Gen2 pro přístup k datům Azure Databricks pomocí Spark
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Vytvoření účtu Azure Data Lake Storage Gen2.
 
-  Zobrazit [vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+  Zobrazit [vytvoření účtu služby Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
 * Ujistěte se, že váš uživatelský účet má [role Přispěvatel dat objektu Blob úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) přiřazené.
 
@@ -147,12 +147,12 @@ V této části vytvoříte systém souborů a složky v účtu úložiště.
 
    * `storage-account-name` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
-    > [!NOTE]
-    > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
+   > [!NOTE]
+   > V produkčním prostředí, zvažte uložení ověřovací klíč ve službě Azure Databricks. Pak přidejte vyhledávací klíč pro vaše blok kódu namísto ověřovací klíč. Po dokončení tohoto rychlého startu, najdete v článku [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks příklady tohoto přístupu.
 
 19. Stisknutím klávesy **SHIFT + ENTER** klíče pro spuštění kódu v tomto bloku.
 
-    Tento poznámkový blok nechte otevřené, protože příkazy se do ní přidat později.
+   Tento poznámkový blok nechte otevřené, protože příkazy se do ní přidat později.
 
 ## <a name="ingest-data"></a>Ingestace dat
 
@@ -182,7 +182,7 @@ Pomocí AzCopy můžete kopírovat data z vašeho *CSV* souborů do účtu Data 
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Použití poznámkového bloku Databricks k převodu CSV na formát Parquet
 
-V poznámkovém bloku, který jste dříve vytvořili přidejte novou buňku a vložte následující kód do buňky. Nahraďte `storage-account-name` hodnotu zástupného symbolu v tento fragment kódu s názvem složka, kterou jste uložili soubor csv.
+V poznámkovém bloku, který jste dříve vytvořili přidejte novou buňku a vložte následující kód do buňky. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.

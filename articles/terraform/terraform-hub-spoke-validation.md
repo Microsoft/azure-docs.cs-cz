@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 83e6585027aa6ca30192a93c2ec1bfc8c525d6d0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781302"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006169"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Kurz: Ověření hvězdicové sítě s využitím Terraformu v Azure
 
@@ -41,7 +41,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Po dokončení [požadavky](#prerequisites), ověřte, zda jsou k dispozici odpovídající konfigurační soubory.
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

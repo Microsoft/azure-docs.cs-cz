@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Znalostní báze služby QnA Maker v tomto příkladu je vytvořená z jednoduché webové stránky s nejčastějšími dotazy a poskytuje odpovědi na otázky týkající se obnovení klíče nástroje BitLocker.
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f7b24af3d48075150ae7c192ccf421b928a7aa3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876993"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113695"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Vytvoření, trénování a publikování znalostní báze služby QnA Maker
 
@@ -53,7 +54,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 10. V pravém horním rohu vyberte **Add QnA pair** (Přidat pár otázky a odpovědi) a přidejte nový řádek do části **Editorial** (Redakční) znalostní báze. V části **Question** (Otázka) zadejte **Hi** (Dobrý den). V části **Answer** (Odpověď) zadejte **Hello. Ask me bitlocker questions.** (Dobrý den. Můžete mi klást otázky týkající se nástroje BitLocker).
 
-   ![Přidání páru otázky a odpovědi](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![Přidání páru otázky a odpovědi](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 11. V pravém horním rohu vyberte **Save and train** (Uložit a natrénovat), aby se uložily provedené úpravy a natrénoval model služby QnA Maker. Úpravy se nezachovají, pokud se neuloží.
 
@@ -61,7 +62,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 13. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Okno Test slouží k testování změn znalostní báze před publikováním.
 
-   ![Panel Test](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Panel Test](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
 14. Znovu vyberte **Test** (Otestovat) a zavřete automaticky otevírané okno **Test**.
 
@@ -69,7 +70,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 16. Služba QnA Maker je teď úspěšně publikovaná. Koncový bod můžete použít v kódu aplikace nebo chatbota.
 
-   ![Publikování](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Publikování](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>Další postup
 

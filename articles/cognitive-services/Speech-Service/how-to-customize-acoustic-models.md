@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Vytvoření akustický model s Speech Service'
 titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak vytvořit akustický model s využitím služby Speech ve službách Azure Cognitive Services.
+description: Zjistěte, jak vytvořit akustický model používání hlasové služby na Azure.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: b644d1d227b5dbd69af38cc32defffb8152b0cde
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2a111558fa3f515b797745dc51e32f625bbd91f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878115"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844020"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -33,9 +33,9 @@ Pokud ještě nemáte účet služeb Azure Cognitive Services, vytvořte si [bez
 
 Ujistěte se, že je váš účet služeb Cognitive Services připojený k předplatnému, a to otevřením stránky s [předplatnými služeb Cognitive Services](https://cris.ai/Subscriptions).
 
-Můžete vybrat **Connect existing subscription** (Připojit stávající předplatné) a připojit se k předplatnému služby Speech vytvořenému na webu Azure Portal.
+Můžete se připojit k hlasové služby předplatné, které jste vytvořili na webu Azure Portal výběrem **připojit stávající předplatné**.
 
-Informace o vytvoření předplatného služby Speech na webu Azure Portal najdete na stránce [Vyzkoušejte si službu Speech zdarma](get-started.md).
+Informace o vytváření odběru hlasové služby na webu Azure Portal najdete v tématu [hlasové služby si můžete vyzkoušet zdarma](get-started.md).
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
@@ -69,7 +69,7 @@ Akustický datové sady pro přizpůsobení akustického modelu se skládá ze d
 | Vzorkovací frekvence | 8 000 hertzů (Hz) nebo 16 000 Hz |
 | Kanály | 1 (mono) |
 | Vzorkovací formát | PCM, 16bitový celočíselný |
-| Doba trvání souboru | 0,1 sekundy < doba trvání < 12 sekund | 
+| Doba trvání souboru | 0,1 sekundy < doba trvání < 12 sekund |
 | Ticho na začátku a na konci | > 0,1 sekund |
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2 GB |
@@ -96,19 +96,19 @@ Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. K
 
 Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existuje však několik důležitých normalizací, které musí uživatel provést _před_ nahráním dat do služby Custom Speech Service. Informace o tom, jak určit vhodný jazyk, který se použije při přípravě přepisů, najdete v [pokynech pro přepis pro službu Speech](prepare-transcription.md).
 
-Kroky v následujících částech proveďte na [portálu služby Speech](https://cris.ai).
+Proveďte kroky v následujících částech pomocí [hlasové služby portálu](https://cris.ai).
 
 ## <a name="import-the-acoustic-dataset"></a>Import sady akustických dat
 
 Jakmile připravíte zvukové soubory a přepisy, bude možné je importovat na webový portál služby.
 
-Pokud je chcete importovat, nejprve se ujistěte, že jste přihlášeni k [portálu služby Speech](https://cris.ai). Pak v rozevíracím seznamu **Custom Speech** na pásu karet vyberte **Adaptation Data** (Adaptační data). Pokud do služby Custom Speech Service nahráváte data poprvé, zobrazí se prázdná tabulka **Datasets** (Datové sady). 
+Importovat, nejdřív zkontrolujte, že jste přihlášeni k [hlasové služby portálu](https://cris.ai). Pak v rozevíracím seznamu **Custom Speech** na pásu karet vyberte **Adaptation Data** (Adaptační data). Pokud do služby Custom Speech Service nahráváte data poprvé, zobrazí se prázdná tabulka **Datasets** (Datové sady).
 
 Na řádku **Acoustic Datasets** (Sady akustických dat) vyberte tlačítko **Import** (Importovat) a na webu se zobrazí stránka pro nahrání nové sady dat.
 
 ![Stránka Import Acoustic Data (Import akustických dat)](media/stt/speech-acoustic-datasets-import.png)
 
-Do polí **Name** (Název) a **Description** (Popis) zadejte odpovídající informace. K udržení přehledu o různých sadách dat, které nahráváte, jsou užitečné uživatelsky přívětivé popisy. 
+Do polí **Name** (Název) a **Description** (Popis) zadejte odpovídající informace. K udržení přehledu o různých sadách dat, které nahráváte, jsou užitečné uživatelsky přívětivé popisy.
 
 V polích **Transcriptions file (.txt)** (Soubor s přepisy – .txt) and **Audio files (.zip)** (Zvukové soubory – .zip) vyberte **Browse** (Procházet) a pak vyberte soubor prostého textu s přepisem a archiv ZIP se soubory WAV. Po dokončení přípravy nahrajte data výběrem možnosti **Import** (Importovat). Vaše data se nahrají. U větších datových sad může proces importu trvat několik minut.
 
@@ -126,11 +126,11 @@ Pokud chcete změnit název nebo popis sady dat, můžete vybrat odkaz **Edit** 
 
 Jakmile bude stav sady akustických dat *Complete* (Dokončeno), můžete ji použít k vytvoření vlastního akustického modelu. Pokud to chcete udělat, v rozevíracím seznamu **Custom Speech** vyberte **Acoustic Models** (Akustické modely). V tabulce **Your models** (Vaše modely) se zobrazí všechny vaše vlastní akustické modely. Pokud se jedná o vaše první použití, bude tato tabulka prázdná. V názvu tabulky se zobrazí aktuální národní prostředí. V současné době můžete akustické modely vytvářet jenom pro americkou angličtinu.
 
-Pokud chcete vytvořit nový model, pod názvem tabulky vyberte **Create New** (Vytvořit nový). Tak jako dříve zadejte název a popis, které vám pomůžou tento model identifikovat. Do pole **Description** (Popis) můžete například zaznamenat počáteční model a sadu akustických dat, pomocí kterých jste daný model vytvořili. 
+Pokud chcete vytvořit nový model, pod názvem tabulky vyberte **Create New** (Vytvořit nový). Tak jako dříve zadejte název a popis, které vám pomůžou tento model identifikovat. Do pole **Description** (Popis) můžete například zaznamenat počáteční model a sadu akustických dat, pomocí kterých jste daný model vytvořili.
 
 Pak v rozevíracím seznamu **Base Acoustic Model** (Základní akustický model) vyberte základní model. Základní model je výchozím bodem pro vaše přizpůsobení. Můžete si vybrat ze dvou základních akustických modelů:
-* **Akustický model pro vyhledávání a diktování Microsoftu** je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. 
-* **Konverzační model Microsoftu** je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. 
+* **Akustický model pro vyhledávání a diktování Microsoftu** je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování.
+* **Konverzační model Microsoftu** je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách.
 
 Latence pro částečné výsledky je v konverzačních modelech vyšší než v modelech pro vyhledávání a diktování.
 
@@ -153,6 +153,6 @@ V tabulce akustických modelů se zobrazí nová položka, která odpovídá tom
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)
 - [Ukázková data Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234063"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843559"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Koncové body služeb virtuální sítě pomocí Azure Service Bus
 
@@ -48,7 +48,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>Povolení koncových bodů služby pomocí služby Service Bus
 
-Což je důležité při používání koncových bodů služby virtuální sítě pomocí služby Service Bus je, že by neměla být povolena těchto koncových bodů v aplikacích, které kombinovat názvů služby Service Bus úrovně Standard a Premium. Protože standardní úroveň nepodporuje virtuální sítě, je omezen na obory názvů úrovně Premium pouze koncový bod. Virtuální síť bude blokovat provoz na obor názvů Standard.
+Což je důležité při používání koncových bodů služby virtuální sítě pomocí služby Service Bus je, že by neměla být povolena těchto koncových bodů v aplikacích, které kombinovat názvů služby Service Bus úrovně Standard a Premium. Protože standardní úroveň nepodporuje virtuální sítě, je omezen na obory názvů úrovně Premium pouze koncový bod.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé zabezpečení scénáře povolené ve integrace virtuální sítě 
 

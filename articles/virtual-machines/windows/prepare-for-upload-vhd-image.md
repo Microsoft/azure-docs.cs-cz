@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 978667dcd3f7bd10192a396ec3e8d097bdb73509
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093799"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -320,14 +320,14 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 
 9. Zkontrolujte tyto zásady AD, abyste měli jistotu, že neodstraníte kterýkoli z následujících požadovaných přístupové účty:
 
-    - Počítače Konfigurace počítače\Nastavení systému Windows\Místní uživatelských práv Assignment\Access tato výpočetní ze sítě
+   - Počítače Konfigurace počítače\Nastavení systému Windows\Místní uživatelských práv Assignment\Access tato výpočetní ze sítě
 
-    Tato zásada by měly být uvedeny následující skupiny:
+     Tato zásada by měly být uvedeny následující skupiny:
 
-    - Správci
-    - Backup Operators
-    - Všichni
-    - Uživatelé
+   - Správci
+   - Backup Operators
+   - Všichni
+   - Uživatelé
 
 10. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
 
@@ -416,12 +416,12 @@ Ne každá role nebo aplikaci, která je nainstalovaná na počítači s Windows
 Tato nastavení neovlivní nahrání virtuálního pevného disku. Nicméně důrazně doporučujeme, že jste je nakonfigurovali.
 
 * Nainstalujte [agenta virtuální počítače Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Pak můžete povolit rozšíření virtuálních počítačů. Rozšíření virtuálních počítačů implementovat většinu důležitých funkcí, které může použít pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace protokolu RDP a tak dále. Další informace najdete v tématu [agenta virtuálního počítače Azure přehled](../extensions/agent-windows.md).
-*  Po vytvoření virtuálního počítače v Azure, doporučujeme umístit stránkovacího souboru na svazku "Dočasné jednotky" pro zlepšení výkonu. Můžete nastavit to následujícím způsobem:
+* Po vytvoření virtuálního počítače v Azure, doporučujeme umístit stránkovacího souboru na svazku "Dočasné jednotky" pro zlepšení výkonu. Můžete nastavit to následujícím způsobem:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
-    ```
-Pokud je datový disk, který je připojen k virtuálnímu počítači, písmeno diskové jednotky svazku dočasné jednotky je obvykle "D" Toto označení se může lišit v závislosti na počtu dostupných jednotek a nastavení, které jste provedli.
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  Pokud je datový disk, který je připojen k virtuálnímu počítači, písmeno diskové jednotky svazku dočasné jednotky je obvykle "D" Toto označení se může lišit v závislosti na počtu dostupných jednotek a nastavení, které jste provedli.
 
 ## <a name="next-steps"></a>Další postup
 * [Nahrání image virtuálního počítače Windows Azure pro nasazení Resource Manager](upload-generalized-managed.md)

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: 460bb6b9c7c5700d2c59dbe88d3089be64bb3a31
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: cd486fa504ac819684d8c547e7a0f740b3eed4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216437"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109623"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 
@@ -41,6 +41,9 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 **Četnost změn dat vypozorovaná typických za den (GB)**: Průměrná četnost změn dat vysledovat v všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
 
 ## <a name="recommendations"></a>Doporučení
+
+>[!Note]
+>Při replikaci přímo na spravované disky, ignorujte doporučení pro počet účtů úložiště.
 
 List sestavy nasazení VMware do Azure s doporučeními obsahuje následující podrobné údaje pro vybraný požadovaný cíl bodu obnovení:
 
@@ -155,6 +158,9 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 ![Dosažitelný cíl bodu obnovení pro šířku pásma 500 Mb/s](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>Umístění virtuálních počítačů v účtech úložiště
+
+>[!Note]
+>Při replikaci přímo na spravované disky, není nutné se starat o počet účtů úložiště. Pro úložiště použijte pouze doporučení pro typ služby storage (Standard nebo Premium). Totéž platí pro spravované disky.
 
 ![Umístění virtuálních počítačů v účtech úložiště](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 

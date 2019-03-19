@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888953"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002686"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Linuxem
 Tento článek vás provede vytvoření příkladu infrastruktury aplikace. Můžeme podrobně navrhování infrastruktury pro jednoduché online úložiště, který spojuje všechny zásady a rozhodnutí týkající se vytváření názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů (VM).
@@ -54,7 +54,7 @@ Všechny výše uvedené použijte tyto zásady vytváření názvů:
 
 * Adventure Works Cycles používá **[IT úlohy]-[umístění]-[prostředků Azure]** jako předponu
   * V tomto příkladu "**azos**" (Azure On-line Store) je název úlohy IT a "**použít**" je umístění (východní USA 2)
-* Virtuální sítě pomocí AZOS. POUŽIJTE VN **[číslo]**
+* Virtuální sítě pomocí AZOS. POUŽIJTE VN<strong>[číslo]</strong>
 * Skupiny dostupnosti použijte azos-použití-jako-**[role]**
 * Názvy virtuálních počítačů použít azos-použití-vm -**[název_virtuálního_počítače]**
 

@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c020d3c7513efda93d7ac5d3bdd79f21f8bc77dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818472"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843619"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -41,14 +41,19 @@ V následující tabulce jsou uvedeny podporované mapování:
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
+
+> [!NOTE]
+> Z důvodu poptávky nemusí být oblasti k dispozici při vytváření pracovního prostoru účtu Automation a Log Analytics.  Pokud je to tento případ, ujistěte se, že používáte v předchozí tabulce, která může vytvářet prostředky v oblasti.
 
 Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
 
@@ -72,7 +77,7 @@ Pokud vybraný pracovní prostor dosud nemá řešení Update Management nebo Ch
 
 Pokud je vybraný pracovní prostor už řešení, se znovu nasadí řešení a konfigurace oboru se nepřidal do něj.
 
-## <a name="saved-searches"></a>Uložené výsledky hledání
+## <a name="saved-searches"></a>Uložená hledání
 
 Když počítač se přidá do Update Management nebo Change Tracking a Inventory řešení, se přidají do jedné ze dvou uložené výsledky hledání ve vašem pracovním prostoru. Tyto uložené výsledky hledání jsou dotazy, které obsahují počítače, které cílí na tato řešení.
 
@@ -85,13 +90,13 @@ Přejděte do účtu Automation a vyberte **uložená hledání** pod **Obecné*
 
 Vyberte buď uložené výsledky hledání, chcete-li zobrazit dotaz použitý k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky:
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
 ## <a name="onboard-azure-vms"></a>Připojení virtuálních počítačů Azure
 
 Z vaší automatizace účtu vyberte **inventáře** nebo **řešení Change tracking** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **UPDATE MANAGEMENT**.
 
-Klikněte na tlačítko **+ přidat virtuální počítače Azure**, vyberte jeden nebo více virtuálních počítačů ze seznamu. Virtuální počítače, které není možné jsou zobrazena šedě, out a nemůže být vybrán. Na **povolit řešení Update Management** klikněte na **povolit**. Tato akce přidá vybrané virtuální počítače do skupiny počítačů, které jsou uložené výsledky hledání pro řešení.
+Klikněte na tlačítko **+ přidat virtuální počítače Azure**, vyberte jeden nebo více virtuálních počítačů ze seznamu. Virtuální počítače, které není možné jsou zobrazena šedě, out a nemůže být vybrán. Virtuální počítače Azure mohou existovat v libovolné oblasti bez ohledu na umístění účtu Automation. Na **povolit řešení Update Management** klikněte na **povolit**. Tato akce přidá vybrané virtuální počítače do skupiny počítačů, které jsou uložené výsledky hledání pro řešení.
 
 ![Povolit virtuální počítače Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -107,7 +112,7 @@ Ručně nainstalovat počítače nebo počítače, které již hlásí do vašeh
 
 Vyberte **spravovat počítače**. Tato akce otevře **Správa počítačů** stránky. Tato stránka umožňuje povolit řešení na vybraná sada počítačů, všech dostupných počítačích nebo povolit řešení pro všechny aktuální počítače a jeho povolení pro všechny budoucí počítače. **Spravovat počítače** může být tlačítko zašedlé, pokud jste dříve vybrali možnost **povolit na všech dostupných a budoucích počítačích**.
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Všechny dostupné počítače
 

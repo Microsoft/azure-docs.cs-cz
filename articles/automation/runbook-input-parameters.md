@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef0dfafce33837a80ec00ba58e6be99784e652a2
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117196"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -338,10 +338,10 @@ Spusťte následující příkazy Powershellu:
    Connect-AzureRmAccount
    ```
 
-  Budete vyzváni k zadání přihlašovacích údajů Azure.
+   Budete vyzváni k zadání přihlašovacích údajů Azure.
 
-  > [!IMPORTANT]
-  > **Add-AzureRmAccount** je nyní alias pro **Connect-AzureRMAccount**. Při vyhledávání knihovny položky, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo ve vašem účtu Automation můžete aktualizovat moduly.
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** je nyní alias pro **Connect-AzureRMAccount**. Při vyhledávání knihovny položky, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo ve vašem účtu Automation můžete aktualizovat moduly.
 
 1. Získat obsah souboru JSON a převést na řetězec:
 

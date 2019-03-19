@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b5c4779605922bf6d523a9bc6e65e4d9a27f32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Integrace Azure Active Directory s TalentLMS
 
@@ -219,7 +219,7 @@ Přihlaste se k TalentLMS Azure AD uživatelům umožnit, musí být poskytnuty 
 
     b. V **příjmení** textového pole zadejte příjmení uživatele, jako je **Simon**.
  
-    c. V **e-mailová adresa** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    c. V **e-mailová adresa** textového pole zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
     d. Klikněte na tlačítko **přidat uživatele**.
 

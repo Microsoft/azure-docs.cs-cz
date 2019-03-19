@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119594"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 1.0
 
@@ -52,16 +52,16 @@ Abyste mohli začít, ujistěte se, že máte tenanta Azure AD, kterého můžet
 
 1. Když se zobrazí stránky **Vytvořit**, zadejte registrační informace vaší aplikace: 
 
-    - **Jméno:** Zadejte název smysluplné aplikace
-    - **Typ aplikace:**
-      - Vyberte **Nativní** pro [klientské aplikace](developer-glossary.md#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](developer-glossary.md#native-client) OAuth.
-      - Vyberte **Webová aplikace / webové rozhraní API** pro [klientské aplikace](developer-glossary.md#client-application) a [aplikace prostředků / rozhraní API](developer-glossary.md#resource-server), které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá pro důvěrné [webové klienty](developer-glossary.md#web-client) OAuth a veřejné [klienty na základě uživatelského agenta](developer-glossary.md#user-agent-based-client). Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
-    - **Přihlašovací adresa URL:** Pro "webové aplikace a rozhraní API" aplikace, zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. 
-    - **Identifikátor URI pro přesměrování:** U aplikací "Nativní" Zadejte identifikátor URI, které používají Azure AD k vracení odpovědí na tokeny. Zadejte konkrétní hodnotu pro vaši aplikaci, například `http://MyFirstAADApp`.
+   - **Jméno:** Zadejte název smysluplné aplikace
+   - **Typ aplikace:**
+     - Vyberte **Nativní** pro [klientské aplikace](developer-glossary.md#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](developer-glossary.md#native-client) OAuth.
+     - Vyberte **Webová aplikace / webové rozhraní API** pro [klientské aplikace](developer-glossary.md#client-application) a [aplikace prostředků / rozhraní API](developer-glossary.md#resource-server), které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá pro důvěrné [webové klienty](developer-glossary.md#web-client) OAuth a veřejné [klienty na základě uživatelského agenta](developer-glossary.md#user-agent-based-client). Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
+   - **Přihlašovací adresa URL:** Pro "webové aplikace a rozhraní API" aplikace, zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci. 
+   - **Identifikátor URI pro přesměrování:** U aplikací "Nativní" Zadejte identifikátor URI, které používají Azure AD k vracení odpovědí na tokeny. Zadejte konkrétní hodnotu pro vaši aplikaci, například `http://MyFirstAADApp`.
 
-      ![Registrace nové aplikace – Vytvořit](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![Registrace nové aplikace – Vytvořit](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    Pokud chcete konkrétní příklady webových nebo nativních aplikací, podívejte se na **Rychlé starty** v naší dokumentaci.
+     Pokud chcete konkrétní příklady webových nebo nativních aplikací, podívejte se na **Rychlé starty** v naší dokumentaci.
 
 1. Po dokončení vyberte **Vytvořit**.
 

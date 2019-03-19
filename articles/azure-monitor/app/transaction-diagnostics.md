@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903619"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostika jednotné transakcí mezi komponentami
 
@@ -50,7 +50,7 @@ Tento graf obsahuje časovou osu s vodorovné pruhy po dobu trvání požadavků
 * Vyberte libovolný řádek zobrazíte jeho [podrobnosti na pravé straně](#details-of-the-selected-telemetry). 
 
 > [!NOTE]
-Volání na jiné komponenty obsahuje dva řádky: odchozích volání (závislosti) z komponenty volající představuje jeden řádek a druhý řádek odpovídá příchozí žádosti názvem komponenty. Přední ikonu a různé styly pruhy doba trvání pomoci rozlišit mezi nimi.
+> Volání na jiné komponenty obsahuje dva řádky: odchozích volání (závislosti) z komponenty volající představuje jeden řádek a druhý řádek odpovídá příchozí žádosti názvem komponenty. Přední ikonu a různé styly pruhy doba trvání pomoci rozlišit mezi nimi.
 
 ## <a name="all-telemetry-with-this-operation-id"></a>Veškerá telemetrie s tímto Id operace
 
@@ -74,9 +74,9 @@ V tomto podokně sbalitelné zobrazuje výsledky, které splňují kritéria fil
 
 [Application Insights profileru](../../azure-monitor/app/profiler.md) nebo [snapshot debuggeru](snapshot-debugger.md) pomoct s diagnostikou úroveň kódu systému problémy s výkonem a selhání. Pomocí této možnosti můžete zobrazit trasování profileru nebo klikněte na tlačítko snímky u každé komponenty s jedním.
 
-Pokud Profiler práce nelze získat, obraťte se prosím **serviceprofilerhelp@microsoft.com**
+Pokud Profiler práce nelze získat, obraťte se prosím **serviceprofilerhelp\@webu microsoft.com**
 
-Pokud nelze získat Snapshot Debugger práce, obraťte se prosím **snapshothelp@microsoft.com**
+Pokud pracovní Snapshot Debugger nelze získat, obraťte se prosím **snapshothelp\@webu microsoft.com**
 
 ![Profiler integrace](media/transaction-diagnostics/profilerTraces.png)
 

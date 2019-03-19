@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e8ca9d3a7fbdf1926ac642ac60a37d298af0129
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476849"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176612"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: Streamování velkých objemů dat do datového skladu
 Azure [služby Event Grid](overview.md) je služba inteligentního směrování událostí, která umožňuje reagovat na upozornění (události) z aplikací a služeb. Může například aktivovat funkci Azure Functions pro zpracování dat služby Event Hubs, která byla zachycena do služby Azure Blob storage nebo Azure Data Lake Storage a migraci dat do jiných úložišť dat. To [ukázka integrace Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak pomocí služby Event Hubs s využitím služby Event Grid můžou hladce migrovat zachycená data Event Hubs ze služby blob storage do SQL Data Warehouse.
@@ -39,6 +39,9 @@ V tomto článku proveďte následující kroky:
 > * Zobrazte migrovaná data v datovém skladu.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -129,7 +132,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu s [šablony Resource Manager
     1. Zkopírujte a vložte do okna služby Cloud Shell následující příkaz.
 
         ```powershell
-        New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
     2. Zadejte název **skupiny prostředků**.
     3. Stiskněte klávesu ENTER. 
@@ -137,7 +140,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu s [šablony Resource Manager
     1. Zkopírujte a vložte příkaz do okna služby Cloud Shell. Alternativně můžete kopírovat/vložit do editoru podle vašeho výběru, nastavte hodnoty a pak zkopírujte do Cloud Shellu příkaz. 
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
+        New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
         ```
     2. Zadejte hodnoty pro následující entity:
         1. Název skupiny prostředků, kterou jste vytvořili dříve.

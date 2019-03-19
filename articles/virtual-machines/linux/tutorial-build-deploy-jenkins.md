@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 3b23ea83a0fc710a5b664f31ad997b843d18f6fe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901419"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace do virtuálních počítačů s Linuxem v Azure s využitím Jenkinse a Azure DevOps služby
 
@@ -35,7 +35,7 @@ do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release
 > * Konfigurace Jenkins pro integraci Azure DevOps Services
 > * Vytvoření koncového bodu služby Jenkins
 > * Vytvoření skupiny nasazení pro virtuální počítače Azure
-> * Vytvoření kanálu verze Azure Pipelines
+> * Vytvoření kanálu Azure kanálů verze.
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
 ## <a name="before-you-begin"></a>Před zahájením
@@ -60,7 +60,7 @@ V tomto kurzu doporučujeme použít [tuto ukázkovou aplikaci dostupnou na GitH
 Vytvořte fork této aplikace a poznačte si umístění (adresu URL), které použijete později v tomto kurzu. Další informace najdete v článku o [vytvoření forku úložiště](https://help.github.com/articles/fork-a-repo/).    
 
 > [!NOTE]
-> Tato aplikace byla vytvořena přes [Yeoman](http://yeoman.io/learning/index.html). Používá Express, Bower a Grunt. Jako závislosti také obsahuje několik balíčků npm.
+> Tato aplikace byla vytvořena přes [Yeoman](https://yeoman.io/learning/index.html). Používá Express, Bower a Grunt. Jako závislosti také obsahuje několik balíčků npm.
 > Součástí této ukázky je také skript, který nainstaluje Nginx a nasadí tuto aplikaci. Spouští se na virtuálních počítačích. Tento skript konkrétně:
 > 1. Nainstaluje Node, Nginx a PM2
 > 2. Nakonfiguruje Nginx a PM2
@@ -141,7 +141,7 @@ Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jen
 8. Po instalaci budete vyzváni k zadání značek skupiny nasazení. Přijměte výchozí hodnoty.
 9. Ve službě Azure DevOps Services vyhledejte v seznamu **Cíle** v oblasti **Skupiny nasazení** nově registrovaný virtuální počítač.
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Vytvoření kanálu verze Azure Pipelines
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Vytvoření kanálu Azure kanály verze
 
 Kanál verze určuje proces, který Azure Pipelines používá k nasazení aplikace. V tomto příkladu spustíte skript prostředí.
 

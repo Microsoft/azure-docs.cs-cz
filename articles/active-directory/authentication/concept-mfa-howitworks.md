@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabb47d4c4f39d30d8e19e8d8f41b5b84c57fd42
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c7c05c9a7db7f8e8c6e84232009780988d77aa14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088328"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
@@ -26,7 +26,9 @@ Zabezpečení dvoustupňové ověřování spočívá v jeho vrstveného příst
 * Něco, co máte (důvěryhodné zařízení, které není lehké duplikovat, jako je telefon)
 * Něco, co že je (vaše biometrika)
 
-<center>![Koncepční ověřovací metody image](./media/concept-mfa-howitworks/methods.png)</center>
+<center>
+
+![Koncepční ověřovací metody image](./media/concept-mfa-howitworks/methods.png)</center>
 
 Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím při zachování jednoduchosti pro uživatele. Poskytuje dodatečné zabezpečení vyžadováním druhou formu ověřování a poskytuje silné ověřování přes celou řadu snadno použitelné [metody ověřování](concept-authentication-methods.md). Uživatelé můžou nebo nemusí být ovlivňuje vícefaktorové ověřování na základě konfigurace rozhodnutí, které provádí správce.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a00c9cb0ce1bd8a6f36070e81df1185ef23a307
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 450fcbcdfab8e90728fbbbd0068123768f3cef4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201761"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>Kurz: Integrace Azure Active Directory s Sugar CRM
 
@@ -114,6 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování](./media/sugarcrm-tutorial/tutorial_sugarcrm_url.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<companyname>.sugarondemand.com` |

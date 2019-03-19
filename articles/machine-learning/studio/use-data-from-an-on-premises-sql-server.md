@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 77e8a951d806d93eb2a0a59152ec8388e2a6397b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818608"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888344"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Provádět analýzy k místní databázi SQL serveru pomocí Azure Machine Learning Studio
 
@@ -51,10 +51,10 @@ Vezměte v úvahu následující při nastavování a pomocí Data Factory modul
 * V jednom počítači můžete nainstalovat jenom jednu instanci reakcí na Incidenty.
 * Jednotné prostředí IR můžete použít pro více zdrojů dat v místním prostředí.
 * Více IRs na různé počítače můžete připojit ke stejnému zdroji dat místní.
-* Nakonfigurujte IRs pro jenom jeden pracovní prostor v čase. V současné době IRs se nedají sdílet mezi pracovními prostory.
+* Konfigurace finančnímu úřadu pro jenom jeden pracovní prostor v čase. V současné době IRs se nedají sdílet mezi pracovními prostory.
 * Můžete nakonfigurovat více IRs pro jeden pracovní prostor. Můžete například použít prostředí IR, který je připojený ke zdrojům dat testu během vývoje a provozu reakcí na Incidenty až budete připraveni na zprovoznění.
 * Prostředí IR nemusí být ve stejném počítači jako zdroj dat. Ale zůstává blíž ke zdroji dat snižuje čas potřebný pro bránu pro připojení ke zdroji dat. Doporučujeme nainstalovat prostředí IR v počítači, který je jiný než ten, který je hostitelem místního zdroje dat tak, aby brána a zdroj dat není soutěží o prostředky.
-* Pokud už máte IR nainstalovaný ve vašem počítači obsluhující scénářů Power BI nebo služby Azure Data Factory, nainstalujte samostatné prostředí IR pro Azure Machine Learning Studio na jiném počítači.
+* Pokud už máte prostředí IR nainstalovaný ve vašem počítači obsluhující scénářů Power BI nebo služby Azure Data Factory, nainstalujte samostatné prostředí IR pro Azure Machine Learning studia v jiném počítači.
 
   > [!NOTE]
   > Data Factory modul Integration Runtime a Power BI Gateway nelze spustit ve stejném počítači.
@@ -65,7 +65,7 @@ Vezměte v úvahu následující při nastavování a pomocí Data Factory modul
 Podrobné informace o požadavky na instalaci, instalační kroky a tipy pro řešení potíží najdete v článku [prostředí Integration Runtime ve službě Data Factory](../../data-factory/concepts-integration-runtime.md).
 
 ## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Příchozí přenos dat z místní databáze SQL serveru do Azure Machine Learning
-V tomto podrobném návodu nastavit modul Runtime integrace Azure Data Factory v pracovním prostoru Azure Machine Learning, nakonfigurujte ji a pak si můžete přečíst data z databáze SQL serveru v místním.
+V tomto podrobném návodu nastavení Azure Data Factory Integration Runtime v pracovním prostoru Azure Machine Learning, nakonfigurujte ji a pak si můžete přečíst data z databáze SQL serveru v místním.
 
 > [!TIP]
 > Než začnete, zakažte v prohlížeči blokování automaticky otevíraných oken pro `studio.azureml.net`. Pokud používáte prohlížeč Google Chrome, stáhnout a nainstalovat některou z několika moduly plug-in k dispozici v Google Chrome WebStore [klikněte jednou rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).

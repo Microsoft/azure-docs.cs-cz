@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: bfc6bf8cab1358c47e66660303f3303f4e9c763a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845368"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
@@ -46,7 +46,7 @@ Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předpl
 Pokud chcete odebrat limit útraty, postupujte takto:
 
 1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions).
-1. Vyberte předplatné. Pokud předplatné je zakázané z důvodu dosažení limitu útraty, klikněte na toto oznámení: „Subscription reached the Spending Limit and has been disabled to prevent charges“ (Dosáhli jste limitu útraty a předplatné se vypnulo, aby nedošlo k účtování poplatků). V opačném případě klikněte na tlačítko **odebrat limit útraty** v **stav PŘEDPLATNÉHO** oblasti.
+1. Vyberte předplatné. Pokud je předplatné vyčerpané, klikněte na toto oznámení: „Subscription reached the Spending Limit and has been disabled to prevent charges“ (Dosáhli jste limitu útraty a předplatné se vypnulo, aby nedošlo k účtování poplatků). V opačném případě klikněte na tlačítko **odebrat limit útraty** v **stav PŘEDPLATNÉHO** oblasti.
 1. Vyberte vhodnou možnost.
 
 ![Vyberete možnost pro odebrání limitu útraty](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -86,4 +86,4 @@ Vlastní limity útraty nejsou k dispozici.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

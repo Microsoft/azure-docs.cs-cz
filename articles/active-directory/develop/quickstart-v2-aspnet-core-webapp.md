@@ -17,12 +17,12 @@ ms.date: 12/05/2018
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1d6c13dd5f345840c77f54fada3dded9d75cb81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013378"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 
@@ -143,7 +143,7 @@ Na řádek obsahující `.AddAzureAd` přidává ověřování Azure AD pro vaš
 > |Kde  |  |
 > |---------|---------|
 > | ClientId  | ID aplikace (klient) z aplikace zaregistrované na webu Azure Portal. |
-> | Autorita | Koncový bod služby tokenů zabezpečení pro uživatele ověřit. To je obvykle https://login.microsoftonline.com/{tenant}/v2.0 pro veřejný cloud, kde {klient} je název vašeho klienta nebo ID vašeho tenanta, nebo *běžné* odkazu na společný koncový bod (používá se pro aplikace s více tenanty) |
+> | Autorita | Koncový bod služby tokenů zabezpečení pro uživatele ověřit. To je obvykle <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {klient} je název vašeho klienta nebo ID vašeho tenanta, nebo *běžné* odkazu na společný koncový bod (používá se pro aplikace s více tenanty) |
 > | Parametry tokenvalidationparameters. | Seznam parametrů pro ověřování tokenů; V takovém případě `ValidateIssuer` je nastavena na `false` k označení, aby mohl přijímat přihlášení z jakékoli osobní, nebo pracovní nebo školní účty. |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče

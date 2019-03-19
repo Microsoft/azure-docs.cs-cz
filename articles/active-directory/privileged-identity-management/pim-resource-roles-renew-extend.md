@@ -16,12 +16,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cec018eec6e298e27329c03964dccf5809c1791
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190632"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004227"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM
 
@@ -49,7 +49,7 @@ Následující kroky popisují proces vyžádání, řešení nebo Správa k roz
 
 Pokud je datum a čas konce přiřazení do 14 dnů, na tlačítko **rozšířit** stane aktivní odkaz v uživatelském rozhraní. V následujícím příkladu se předpokládá aktuální datum následuje 27. března.
 
-![Tlačítko "Rozšířit"](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![Rozšíření tlačítka](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
 Chcete-li požádat o rozšíření přiřazení této role, vyberte **rozšířit** otevřete formulář žádosti.
 
@@ -64,11 +64,11 @@ Chcete-li zobrazit informace o původní přiřazení, rozbalte **podrobnosti o 
 
 Během několika okamžiků správci prostředků dostávat e-mailové oznámení, požadování, že si žádost o rozšíření. Pokud již byla odeslána žádost o rozšíření, zobrazí se v horní části webu Azure portal s vysvětlením, chyba oznámení s informační zprávou.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
+![Oznámení s vysvětlením chyb](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
 Přejděte **žádosti čekající na vyřízení** kartu v levém podokně, chcete-li zobrazit stav své žádosti, nebo chcete ho zrušit.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
+![Žádosti čekající na vyřízení](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>Schválení správce
 
@@ -80,7 +80,7 @@ Kromě použití následujícího odkaz z e-mailu, správci mohli schválit nebo
 
 Pokud správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti žádosti, spolu s polem zadávat odůvodnění k protokolům auditu.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![Schválit žádost o přiřazení role](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
 Při schválení žádosti o rozšíření přiřazení role, prostředek mohou správci nové datum zahájení, datum ukončení a typ přiřazení. Změna přiřazení typu může být nutné v případě, že správce chce omezený přístup k dokončení úkolu (jeden den, například). V tomto příkladu může správce změnit přiřazení z **oprávněné** k **aktivní**. To znamená, že můžete poskytují přístup žadateli bez nutnosti jejich nutnost aktivovat.
 
@@ -100,7 +100,7 @@ I když je koncepčně podobá procesu žádosti o rozšíření, se proces obno
 
 Členové, kteří už přístup k prostředkům můžete přistupovat až 30 dní historie vypršela platnost přiřazení. Uděláte to tak, že při procházení **Moje role** v levém podokně a pak vyberte **platnost rolí** kartu v části role prostředků Azure.
 
-![Na kartě "Prošlé role"](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
+![Karta platnost rolí](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
 Seznam rolí, které jsou uvedené výchozí hodnota je **oprávněných rolí**. Pomocí rozevírací nabídky můžete přepnout mezi oprávněných a aktivních přiřazené role.
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600710"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895851"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních rozhraní API můžete volat z Azure Logic Apps
 
@@ -25,7 +25,7 @@ I když Azure Logic Apps nabízí [více než 100 integrovaných konektorů](../
 * Pomozte zákazníkům vaši službu používat ke správě úloh edice professional nebo osobní.
 * Rozšiřte dosah, vyhledatelnost a použití pro vaši službu.
 
-V podstatě konektory jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](http://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. Vzhledem k tomu, že konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js, pro tvorbu konektorů. Můžete také hostování svých rozhraní API na [služby Azure App Service](../app-service/overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje jeden ze způsobů, jak nejlepší, nejjednodušší a největší škálovatelné pro hostování rozhraní API. 
+V podstatě konektory jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](https://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. Vzhledem k tomu, že konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js, pro tvorbu konektorů. Můžete také hostování svých rozhraní API na [služby Azure App Service](../app-service/overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje jeden ze způsobů, jak nejlepší, nejjednodušší a největší škálovatelné pro hostování rozhraní API. 
 
 Pro vlastní rozhraní API pro práci s logic apps, můžete zadat vaše rozhraní API [ *akce* ](./logic-apps-overview.md#logic-app-concepts) , které provádějí konkrétní úlohy v pracovních postupů aplikace logiky. Vaše rozhraní API se mohou chovat i jako [ *aktivační událost* ](./logic-apps-overview.md#logic-app-concepts) , který spouští pracovní postup aplikace logiky, když nová data nebo událost splňují zadanou podmínku. Toto téma popisuje běžné vzory, které můžete použít pro vytváření akcí a triggerů v rozhraní API založené na chování, které chcete, aby vaše rozhraní API pro poskytnutí.
 
@@ -41,11 +41,11 @@ Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/ov
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Rozhraní API ukázky krásných aplikací s pro logic apps, najdete [úložiště Azure Logic Apps GitHub](http://github.com/logicappsio) nebo [blogu](https://aka.ms/logicappsblog).
+> Rozhraní API ukázky krásných aplikací s pro logic apps, najdete [úložiště Azure Logic Apps GitHub](https://github.com/logicappsio) nebo [blogu](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Jak vlastní rozhraní API se liší od vlastní konektory?
 
-Vlastní rozhraní API a [vlastních konektorů](../logic-apps/custom-connector-overview.md) jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](http://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. A vzhledem k tomu, že tato rozhraní API a konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js pro vývoj vlastních rozhraní API a konektory.
+Vlastní rozhraní API a [vlastních konektorů](../logic-apps/custom-connector-overview.md) jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](https://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. A vzhledem k tomu, že tato rozhraní API a konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js pro vývoj vlastních rozhraní API a konektory.
 
 Vlastní rozhraní API umožňují volat rozhraní API, která nejsou konektory a poskytují koncové body, které lze volat pomocí protokolu HTTP + Swagger, Azure API Management nebo App Services. Vlastní konektory fungují jako vlastní rozhraní API, ale také mít tyto atributy:
 
@@ -63,7 +63,7 @@ Další informace o vlastních konektorech najdete v tématu
 
 ## <a name="helpful-tools"></a>Užitečné nástroje
 
-Vlastní rozhraní API funguje nejlépe s logic apps při rozhraní API má také [dokument Swagger](http://swagger.io/specification/) , který popisuje operace a parametry rozhraní API.
+Vlastní rozhraní API funguje nejlépe s logic apps při rozhraní API má také [dokument Swagger](https://swagger.io/specification/) , který popisuje operace a parametry rozhraní API.
 Mnoho knihoven, jako jsou [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle), můžete automaticky vygenerovat soubor Swagger za vás. Chcete-li přidat poznámku k souboru Swagger pro zobrazované názvy, typy vlastností a tak dále, můžete použít také [TRex](https://github.com/nihaue/TRex) tak, aby vašeho souboru Swagger dobře funguje pro aplikace logiky.
 
 <a name="actions"></a>
@@ -167,8 +167,8 @@ Tady jsou konkrétní kroky cyklického dotazování aktivační události, je p
 
 | Najít nová data nebo událost?  | Odpověď rozhraní API | 
 | ------------------------- | ------------ |
-| Najít | Vrátí HTTP `200 OK` stavu datové části odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
-| Nenalezeno | Vrátí HTTP `202 ACCEPTED` stavu `location` záhlaví a `retry-after` záhlaví. <br/>Aktivačních událostí `location` by měl také obsahovat záhlaví `triggerState` parametr dotazu, což je obvykle "timestamp." Vaše rozhraní API můžete použít tento identifikátor pro sledování posledního času, který se aktivuje aplikace logiky. | 
+| Nalezeno | Vrátí HTTP `200 OK` stavu datové části odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
+| Nenalezené | Vrátí HTTP `202 ACCEPTED` stavu `location` záhlaví a `retry-after` záhlaví. <br/>Aktivačních událostí `location` by měl také obsahovat záhlaví `triggerState` parametr dotazu, což je obvykle "timestamp." Vaše rozhraní API můžete použít tento identifikátor pro sledování posledního času, který se aktivuje aplikace logiky. | 
 ||| 
 
 Například aby pravidelně kontrolovaly vaši službu pro nové soubory, může sestavení cyklického dotazování aktivační událost, která má tyto chování:

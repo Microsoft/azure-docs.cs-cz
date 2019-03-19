@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168081"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Učení klíčové koncepty pracovního postupu Windows Powershellu pro automatizaci sady runbook
 
@@ -226,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Kontrolní body
 
-A *kontrolního bodu* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu proměnných a jakéhokoli výstupu generovaného do tohoto bodu. Pokud pracovní postup skončí s chybou nebo je pozastavená, pak při příštím spuštění spustí od svého posledního kontrolního bodu namísto spuštění pracovního postupu.  Kontrolní bod můžete nastavit v pracovním postupu se **Checkpoint-Workflow** aktivity.
+A *kontrolního bodu* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu proměnných a jakéhokoli výstupu generovaného do tohoto bodu. Pokud pracovní postup skončí s chybou nebo je pozastavená, pak při příštím spuštění spustí od svého posledního kontrolního bodu namísto spuštění pracovního postupu.  Kontrolní bod můžete nastavit v pracovním postupu se **Checkpoint-Workflow** aktivity. Azure Automation obsahuje funkci s názvem [spravedlivé sdílení](automation-runbook-execution.md#fair-share), kde je každý runbook, který běží 3 hodiny uvolněných umožňující další sady runbook spouštět. Nakonec znovu načte uvolněny sadě runbook a ji při provádění bude pokračovat, od posledního kontrolního bodu provést v sadě runbook. Aby bylo možné zaručit, že sada runbook se nakonec dokončí, je nutné přidat kontrolní body v intervalech, které běžel míň než 3 hodiny. Pokud při každém spuštění se přidá nový kontrolní bod a sadu runbook získá vyřazen po 3 hodiny, protože došlo k chybě, bude sada runbook obnovena po neomezenou dobu.
 
 V následujícím vzorovém kódu dojde k výjimce po "activity2" způsobí ukončení pracovního postupu. Při spuštění pracovního postupu znova spustí spuštěním aktivity Activity2, protože byla poslední po nastavení posledního kontrolního bodu.
 

@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453167"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105722"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Rychlý start: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
@@ -95,21 +95,21 @@ Nejdříve přidáme modul, který odebere **normalized-losses** sloupec úplně
 
 1. Klikněte na modul [Výběr sloupců v datové sadě][select-columns] a v podokně **Vlastnosti** klikněte na **Spustit selektor sloupců**.
 
-    - Vlevo klikněte na **S pravidly**.
-    - V části **Začít s** klikněte na **Všechny sloupce**. Tato pravidla s přímým přístupem [výběr sloupců v datové sadě] [ select-columns] aby prošel všechny sloupce (kromě sloupců, které vyloučíme).
-    - V rozevíracích seznamech vyberte **Vyloučit** a **názvy sloupců** a klikněte do textového pole. Zobrazí se seznam sloupců. Vyberte sloupec **normalized-losses**, který se tak přidá do textového pole.
-    - Kliknutím na tlačítko zaškrtnutí (OK) zavřete selektor sloupců (vpravo dole).
+   - Vlevo klikněte na **S pravidly**.
+   - V části **Začít s** klikněte na **Všechny sloupce**. Tato pravidla s přímým přístupem [výběr sloupců v datové sadě] [ select-columns] aby prošel všechny sloupce (kromě sloupců, které vyloučíme).
+   - V rozevíracích seznamech vyberte **Vyloučit** a **názvy sloupců** a klikněte do textového pole. Zobrazí se seznam sloupců. Vyberte sloupec **normalized-losses**, který se tak přidá do textového pole.
+   - Kliknutím na tlačítko zaškrtnutí (OK) zavřete selektor sloupců (vpravo dole).
 
-    ![Spusťte selektor sloupců a vylučte sloupec normalized-losses."](./media/create-experiment/launch-column-selector.png)
+     ![Spusťte selektor sloupců a vylučte sloupec normalized-losses."](./media/create-experiment/launch-column-selector.png)
 
-    Podokno vlastností modulu **Výběr sloupců v datové sadě** teď indikuje, že modul bude procházet všechny sloupce datové sady kromě **normalized-losses**.
+     Podokno vlastností modulu **Výběr sloupců v datové sadě** teď indikuje, že modul bude procházet všechny sloupce datové sady kromě **normalized-losses**.
 
-    ![V podokně vlastností ukazuje, že sloupec normalized-losses."je vyloučený](./media/create-experiment/showing-excluded-column.png)
+     ![V podokně vlastností ukazuje, že sloupec normalized-losses."je vyloučený](./media/create-experiment/showing-excluded-column.png)
 
-    > [!TIP] 
-    > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě klikněte dvakrát na modul [Výběr sloupců v datové sadě][select-columns] a zadejte komentář Vyloučit normalized-losses.
+     > [!TIP] 
+     > Kliknutím dvakrát na modul a zadáním textu je možné přidat k modulu komentář. To vám může pomoci rychle poznat, jaký je účel modulu v experimentu. V tomto případě klikněte dvakrát na modul [Výběr sloupců v datové sadě][select-columns] a zadejte komentář Vyloučit normalized-losses.
 
-    ![Klikněte dvakrát na modul a přidejte komentář.](./media/create-experiment/add-comment.png)
+     ![Klikněte dvakrát na modul a přidejte komentář.](./media/create-experiment/add-comment.png)
 
 1. Přetáhněte modul [Vyčištění chybějících dat][clean-missing-data] na plátno experimentu a propojte jej s modulem [Výběr sloupců v datové sadě][select-columns]. V podokně **Vlastnosti** vyberte v části **Režim čištění** možnost **Odstranit celý řádek**. Tyto možnosti s přímým přístupem [vyčištění chybějících dat] [ clean-missing-data] k vyčištění dat odstraněním řádků, které mají chybí některé hodnoty. Klikněte dvakrát na modul a zadejte komentář Odstranění řádků s chybějícími hodnotami.
 

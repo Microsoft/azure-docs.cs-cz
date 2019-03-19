@@ -1,23 +1,23 @@
 ---
-title: Jak model strojového učení stane webové služby
+title: Jak modelu stává webové služby
 titleSuffix: Azure Machine Learning Studio
-description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning Studio z vývojového zprovozněné webové službě.
+description: Přehled o mechanismu jak experimentovat vaše postupuje model Azure Machine Learning Studio z vývojového do webové služby.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835118"
 ---
-# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu webové služby
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
 
 * Vstupní data do svého experimentu
@@ -32,7 +32,7 @@ Jakmile budete spokojeni s experimentu, ji můžete nasadit jako ***Classic Azur
 V tomto článku jsme poskytují přehled o mechanismu jak experimentovat vaše postupuje model Machine Learning z vývojového zprovozněné webové službě.
 
 > [!NOTE]
-> Existují jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na tom, jak používat Machine Learning Studio. Například popis toho, jak vytvořit prediktivní webové služby classic s jazykem R najdete v blogovém příspěvku [sestavení a nasazení prediktivní webové aplikace pomocí nástroje RStudio a Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Existují jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na tom, jak používat Machine Learning Studio. Například popis toho, jak vytvořit prediktivní webové služby classic s jazykem R najdete v blogovém příspěvku [sestavení a nasazení prediktivní webové aplikace pomocí nástroje RStudio a Azure Machine Learning studio](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
 >
 >
 

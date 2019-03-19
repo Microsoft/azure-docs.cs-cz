@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: bdfeb41c7881bfbd577cdf1a9190617e09979a7f
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961010"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098487"
 ---
 # <a name="monitor-and-tune"></a>Monitorování a ladění
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přeh
 Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Popis|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Procento procesoru používá.|
 |memory_percent|Paměť v procentech|Procento|Procento paměti používá.|
 |io_consumption_percent|V/v úrovně procent|Procento|Procentuální podíl vstupně-výstupní operace používá.|

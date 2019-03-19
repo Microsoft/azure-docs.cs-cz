@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240450"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090963"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování ve službě Azure Stack
 
@@ -42,15 +42,15 @@ Zobrazení stavu jednotky škálování:
 3. Ve výsledcích vyberte jednotky škálování.
 4. Na levé straně v části **Obecné**vyberte **uzly**.
 
-  Zobrazte následující informace:
+   Zobrazte následující informace:
 
-  - Seznam jednotlivých uzlů
-  - Operační stav (viz následující seznam)
-  - Stav napájení (spuštěná nebo zastavená)
-  - model serveru
-  - IP adresa řadiče pro správu základní desky (BMC)
-  - Celkový počet jader
-  - Celková velikost paměti
+   - Seznam jednotlivých uzlů
+   - Operační stav (viz následující seznam)
+   - Stav napájení (spuštěná nebo zastavená)
+   - model serveru
+   - IP adresa řadiče pro správu základní desky (BMC)
+   - Celkový počet jader
+   - Celková velikost paměti
 
 ![Stav jednotky škálování](media/azure-stack-node-actions/multinodeactions.png)
 

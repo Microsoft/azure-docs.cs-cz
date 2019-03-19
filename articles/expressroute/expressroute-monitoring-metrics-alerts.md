@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108793"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
@@ -43,18 +43,18 @@ Můžete zobrazit metriky pro privátní, veřejný a Microsoftu partnerský vzt
 
 1. Pokud chcete nakonfigurovat výstrahy, přejděte na **Azure Monitor**, pak klikněte na tlačítko **výstrahy**.
 
-  ![výstrahy](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![výstrahy](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. Klikněte na tlačítko **+ vyberte cíl** a vyberte prostředek brány připojení ExpressRoute.
 
-  ![cíl]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![cíl]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Definujte podrobnosti o upozornění.
 
-  ![Skupina akcí](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![Skupina akcí](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. Definovat a přidat skupinu akcí.
 
-  ![Přidat skupinu akcí](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![Přidat skupinu akcí](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>Výstrahy založené na každý partnerský vztah
 

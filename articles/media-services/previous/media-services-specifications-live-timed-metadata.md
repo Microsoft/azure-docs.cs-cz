@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a953f4b77f896d3943cd996abf8c1fc1306ee9d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881992"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace časovaných metadat v živém streamování 
 
@@ -120,6 +120,7 @@ Okno ' moov ' by měla obsahovat **TrackHeaderBox (tkhd)** pole definované v [I
 | **Název pole** | **Typ pole**          | **Vyžaduje?** | **Popis**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
 | doba trvání       | 64bitové celé číslo bez znaménka | Požaduje se      | By měla být 0, protože políčka sledování nemá žádnou ukázky a celková doba trvání vzorků v poli sledování, které je 0. |
+
 -------------------------------------
 
 Okno ' moov ' by měla obsahovat **HandlerBox (hdlr)** jak jsou definovány v [ISO-14496-12] s následujícími omezeními:
@@ -127,6 +128,7 @@ Okno ' moov ' by měla obsahovat **HandlerBox (hdlr)** jak jsou definovány v [I
 | **Název pole** | **Typ pole**          | **Vyžaduje?** | **Popis**   |
 |----------------|-------------------------|---------------|-------------------|
 | handler_type   | 32bitové celé číslo bez znaménka | Požaduje se      | MUSÍ být 'meta'. |
+
 -------------------------------------
 
 Do pole 'stsd' by MĚL obsahovat MetaDataSampleEntry pole s názvem kódování, jak jsou definovány v [ISO-14496-12].  Například pro zprávy SCTE 35 kódování název by MĚL být "scte".
@@ -225,11 +227,11 @@ Vypršel časový limit metadat pro Apple HTTP Live Streaming (HLS), může být
 
 | **Název atributu** | **Typ**                      | **Vyžaduje?**                             | **Popis**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| UPOZORNĚNÍ                | řetězec v uvozovkách                 | Požaduje se                                  | Zpráva zakódován jako řetězec ve formátu base64, jak je popsáno v [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). Zprávy [SCTE – 35] Toto je splice_info_section() kódování base64.                                                                                                |
+| UPOZORNĚNÍ                | řetězec v uvozovkách                 | Požaduje se                                  | Zpráva zakódován jako řetězec ve formátu base64, jak je popsáno v [IETF RFC 4648](https://tools.ietf.org/html/rfc4648). Zprávy [SCTE – 35] Toto je splice_info_section() kódování base64.                                                                                                |
 | TYP               | řetězec v uvozovkách                 | Požaduje se                                  | Název URN nebo adresy URL identifikující zprávu schéma. Typ trvá v zájmu zprávy [SCTE – 35] zvláštní hodnota "scte35".                                                                                                                                |
 | ID                 | řetězec v uvozovkách                 | Požaduje se                                  | Jedinečný identifikátor pro událost. Pokud ID není zadáno, když se přijaté zprávy, Azure Media Services bude generovat jedinečný identifikátor.                                                                                                                                          |
 | DOBA TRVÁNÍ           | desítkové číslo s plovoucí desetinnou | Požaduje se                                  | Doba trvání události. Pokud je neznámý, hodnota musí být 0. Jednotky jsou factional sekund.                                                                                                                                                                                           |
-| UPLYNUL            | desítkové číslo s plovoucí desetinnou | Volitelné, ale vyžaduje posuvné okno | Když signál, který se právě opakuje pro podporu posuvné okno prezentace, toto pole musí být prezentace dobu, která uplynula od začátku události. Jednotky jsou zlomků sekund. Tato hodnota může být delší než původní zadaná doba trvání spojení nebo segmentu. |
+| UPLYNULO            | desítkové číslo s plovoucí desetinnou | Volitelné, ale vyžaduje posuvné okno | Když signál, který se právě opakuje pro podporu posuvné okno prezentace, toto pole musí být prezentace dobu, která uplynula od začátku události. Jednotky jsou zlomků sekund. Tato hodnota může být delší než původní zadaná doba trvání spojení nebo segmentu. |
 | ČAS               | desítkové číslo s plovoucí desetinnou | Požaduje se                                  | Prezentace čas události. Jednotky jsou zlomků sekund.                                                                                                                                                                                                                    |
 
 
@@ -280,8 +282,8 @@ EventStream element má následující atributy:
 
 | **Název atributu** | **Typ**                | **Vyžaduje?** | **Popis**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | řetězec                  | Požaduje se      | Určuje schéma zprávy. Schéma nastavena na hodnotu atributu schéma do pole Live manifestu serveru. Hodnota musí být název URN nebo adresa URL identifikaci schéma zprávy; například "urn: scte:scte35:2013a:bin".                                                                |
-| hodnota              | řetězec                  | Nepovinné      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více datových proudů událostí se stejným schématem, musí být hodnota nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování). |
+| scheme_id_uri      | string                  | Požaduje se      | Určuje schéma zprávy. Schéma nastavena na hodnotu atributu schéma do pole Live manifestu serveru. Hodnota musí být název URN nebo adresa URL identifikaci schéma zprávy; například "urn: scte:scte35:2013a:bin".                                                                |
+| hodnota              | string                  | Nepovinné      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více datových proudů událostí se stejným schématem, musí být hodnota nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování). |
 | Timescale          | 32bitové celé číslo bez znaménka | Požaduje se      | Časové osy v taktech za sekundu, časy a doba trvání polí v rámci pole "emsg".                                                                                                                                                                                                       |
 
 
@@ -292,7 +294,7 @@ Nula nebo více prvků události jsou obsaženy v rámci elementu EventStream a 
 | presentation_time   | 64bitové celé číslo bez znaménka | Nepovinné      | MUSÍ být médium prezentace čas události vzhledem k počátku období. Čas prezentace a doba trvání by MĚLO odpovídat s Stream přístup body (SAP) typu 1 nebo 2, jak jsou definovány v [ISO-14496-12] přílohy I. |
 | doba trvání            | 32bitové celé číslo bez znaménka | Nepovinné      | Doba trvání události. Toto musí být vynechána, pokud doba trvání neznámý.                                                                                                                                                 |
 | id                  | 32bitové celé číslo bez znaménka | Nepovinné      | Určuje tato instance zprávy. Zprávy se sémantikou ekvivalentní musí mít stejnou hodnotu. Pokud ID není zadáno, když se přijaté zprávy, Azure Media Services bude generovat jedinečný identifikátor.             |
-| Hodnota elementu Event | řetězec                  | Požaduje se      | Zpráva o události jako řetězec ve formátu base64, jak je popsáno v [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
+| Hodnota elementu Event | string                  | Požaduje se      | Zpráva o události jako řetězec ve formátu base64, jak je popsáno v [IETF RFC 4648](https://tools.ietf.org/html/rfc4648).                                                                                                                   |
 
 #### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>Příklad pro DASH a syntaxe jazyka XML manifestu signalizační (MPD)
 
@@ -365,8 +367,8 @@ Pole DASHEventMessageBox jsou definovány takto:
 
 | **Název pole**          | **Typ pole**          | **Vyžaduje?** | **Popis**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | řetězec                  | Požaduje se      | Určuje schéma zprávy. Schéma nastavena na hodnotu atributu schéma do pole Live manifestu serveru. Hodnota musí být název URN nebo adresy URL identifikující zprávu schéma. Zprávy [SCTE – 35] to trvá v zájmu zvláštní hodnota "urn: scte:scte35:2013a:bin", přestože [SCTE 67] doporučí něco jiného. |
-| Hodnota                   | řetězec                  | Požaduje se      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více streamů událostí s stejné schéma, hodnota bude nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování).                                                                  |
+| scheme_id_uri           | string                  | Požaduje se      | Určuje schéma zprávy. Schéma nastavena na hodnotu atributu schéma do pole Live manifestu serveru. Hodnota musí být název URN nebo adresy URL identifikující zprávu schéma. Zprávy [SCTE – 35] to trvá v zájmu zvláštní hodnota "urn: scte:scte35:2013a:bin", přestože [SCTE 67] doporučí něco jiného. |
+| Hodnota                   | string                  | Požaduje se      | Další řetězcová hodnota, vlastníky schéma používané k úpravám sémantiku zprávy. Rozlišení více streamů událostí s stejné schéma, hodnota bude nastavena na název datového proudu událostí (trackName pro protokol Smooth ingestování nebo tuk název zprávy pro RTMP ingestování).                                                                  |
 | Timescale               | 32bitové celé číslo bez znaménka | Požaduje se      | Časové osy v taktech za sekundu, časy a doba trvání polí v rámci pole "emsg".                                                                                                                                                                                                                                                                        |
 | Presentation_time_delta | 32bitové celé číslo bez znaménka | Požaduje se      | Prezentace media časový rozdíl času prezentace události a Nejdřívější čas prezentace v tomto segmentu. Čas prezentace a doba trvání by MĚLO odpovídat s Stream přístup body (SAP) typu 1 nebo 2, jak jsou definovány v [ISO-14496-12] přílohy I.                                                                                            |
 | event_duration          | 32bitové celé číslo bez znaménka | Požaduje se      | Trvání události, nebo hodnotu 0xFFFFFFFF označující Neznámý doby trvání.                                                                                                                                                                                                                                                                                          |
@@ -396,7 +398,7 @@ Ingestování technologie Smooth Streaming, které musí obsahovat Data Box méd
 
 **[MS-SSTR]**  ["Microsoft Smooth Streaming protokol", 15. května 2014](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
-**[AMF0]**  ["AMF0 formát zprávy akce"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
+**[AMF0]**  ["AMF0 formát zprávy akce"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
 **[LIVE FMP4]**  [Specifikace Ingestování fragmentovaného MP4 za služby azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 

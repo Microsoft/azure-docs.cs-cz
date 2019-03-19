@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 6e0339808d65cd5b4acd7b77284ccedf7cdf1989
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835262"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Změnit předplatné Azure s průběžnými platbami na jinou nabídku
 
@@ -55,7 +55,7 @@ Jako [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p
 1. Klikněte na **Přepnout na jinou nabídku**. Toto tlačítko je dostupné, jenom když používáte průběžné platby a ukončili jste první fakturační období.
 
    ![Všimněte si, že tlačítko nabídky přepnout na pravé straně stránky](./media/billing-how-to-switch-azure-offer/switchbutton.png)
-1. **Vyberte nabídku služby chcete** ze seznamu nabídky předplatného je možné vypnout. Tento seznam se liší v závislosti na členství ve skupinách, které je přidružené k účtu. Pokud nic není k dispozici, zkontrolujte, [seznam dostupných nabídek můžete přepnout na](#whats-supported) a ujistěte se, že máte správný členství ve skupinách. 
+1. **Vyberte nabídku služby chcete** ze seznamu nabídky předplatného je možné vypnout. Tento seznam se liší v závislosti na členstvích, ke kterým je váš účet přidružený. Pokud nic není k dispozici, zkontrolujte, [seznam dostupných nabídek můžete přepnout na](#whats-supported) a ujistěte se, že máte správný členství ve skupinách. 
 
    ![Vyberte nabídky, kterou chcete přepnout na](./media/billing-how-to-switch-azure-offer/selectoffer.png)
 1. V závislosti na nabídku, kterou přecházíte k může se zobrazit poznámky o důsledcích přepnutí. Projděte si tento seznam pečlivě a postupujte podle pokynů, než budete pokračovat.
@@ -78,7 +78,7 @@ Nabídka Azure je *typ* předplatného Azure, máte. Například [s průběžný
 
 Nemusíte to vidět **přepnout na jinou nabídku** tlačítko, pokud:
 
-* Nejste na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/). Aktuálně lze převést pouze předplatná s průběžnými platbami na jinou nabídku.
+* Nejste na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/). V současné době je možné na jinou nabídku převést pouze předplatná s průběžnými platbami.
   * Pokud ale používáte [bezplatnou zkušební verzi](https://azure.microsoft.com/free/), zjistěte, jak [upgradovat na průběžné platby](billing-upgrade-azure-subscription.md).
   * Přejít na jinou nabídku z jiného předplatného, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 * Už brzo budete stále jste první fakturační období; je nutné počkat jste první fakturační období ukončit předtím, než přepnete nabídky.
@@ -116,4 +116,4 @@ V den, kdy můžete přepnout je generována faktury pro všechny nezaplacené p
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

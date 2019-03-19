@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852979"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107031"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
 
@@ -213,7 +213,7 @@ V některých případech je třeba přihlásit pouze část události ke sníž
 
 1. `IsEnabled(<OperationName>, string entity, null)` například `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Všimněte si, že na konci není žádná 'Start' nebo 'Stop'. Můžete filtrovat na konkrétní operace nebo fronty. Pokud zpětného volání vrátí `false`, se nebude posílat události pro operace
 
-  * Pro operace "Proces" a "Entitami ProcessSession", obdržíte také `IsEnabled(<OperationName>, string entity, Activity activity)` zpětného volání. Umožňuje filtrovat události podle `activity.Id` nebo značky vlastnosti.
+   * Pro operace "Proces" a "Entitami ProcessSession", obdržíte také `IsEnabled(<OperationName>, string entity, Activity activity)` zpětného volání. Umožňuje filtrovat události podle `activity.Id` nebo značky vlastnosti.
   
 2. `IsEnabled(<OperationName>.Start)` například `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Kontroluje, zda by měl být vyvolala událost 'Start'. Výsledek se týká pouze události 'Start', ale další instrumentace není závislý na něj.
 

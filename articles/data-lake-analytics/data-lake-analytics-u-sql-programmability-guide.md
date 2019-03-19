@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: eca1379c4f721a0201b01f149b581859c49c6540
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835448"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
 
@@ -133,7 +133,7 @@ Jak bylo zmíněno dříve, spustí kód U-SQL ve formátu 64bitovou (x 64). Pro
 
 Každý nahraný sestavení knihovny DLL a soubor prostředků, jako je jiný modul runtime, nativní sestavení nebo konfigurační soubor může obsahovat nejvýše 400 MB. Celková velikost nasazené prostředky prostřednictvím nasazení prostředků nebo přes odkazy na sestavení a další soubory, nemůže být delší než 3 GB.
 
-Nakonec si všimněte, že každou databázi U-SQL může obsahovat pouze jednu verzi jakékoli dané sestavení. Například pokud potřebujete verze 7 a 8 verzi knihovny NewtonSoft Json.Net, musíte k registraci ve dvou různých databázích. Kromě toho každý skript mohou odkazovat pouze na jednu verzi dané sestavení knihovny DLL. V tomto ohledu následuje U-SQL C# sestavení správy a správy verzí sémantiku.
+Nakonec si všimněte, že každou databázi U-SQL může obsahovat pouze jednu verzi jakékoli dané sestavení. Například pokud potřebujete verze 7 a 8 verzi knihovny NewtonSoft Json.NET, musíte k registraci ve dvou různých databázích. Kromě toho každý skript mohou odkazovat pouze na jednu verzi dané sestavení knihovny DLL. V tomto ohledu následuje U-SQL C# sestavení správy a správy verzí sémantiku.
 
 ## <a name="use-user-defined-functions-udf"></a>Použití uživatelem definovaných funkcí: UDF
 Uživatelem definované funkce U-SQL nebo UDF, jsou programovací postupy, které přijímají parametry, provedení akce (například složité výpočty) a vrátí výsledek akce jako hodnotu. Návratová hodnota UDF lze pouze jednu skalární hodnota. UDF U-SQL je možné volat v základní skript U-SQL, stejně jako jakékoli jiné funkce jazyka C# skalární.

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673560"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094105"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Rychlý start: Odeslat žádost o vyhledávání sadou SDK vyhledávání entit Bingu pro Javu
 
@@ -67,7 +67,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
 
 ## <a name="create-a-search-client"></a>Vytvoření klienta vyhledávání
 
-2. Implementace `dominantEntityLookup` klienta, které vyžaduje váš koncový bod rozhraní API a instance `ServiceClientCredentials` třídy.
+1. Implementace `dominantEntityLookup` klienta, které vyžaduje váš koncový bod rozhraní API a instance `ServiceClientCredentials` třídy.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -80,47 +80,47 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
 
     K implementaci `ServiceClientCredentials`, postupujte podle těchto kroků:
 
-    1. Přepsat `applyCredentialsFilter()` funkce, se `OkHttpClient.Builder` objektu jako parametr. 
+   1. Přepsat `applyCredentialsFilter()` funkce, se `OkHttpClient.Builder` objektu jako parametr. 
         
-        ```java
-        //...
-        new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                //...
-                }
-        //...
-        ```
+       ```java
+       //...
+       new ServiceClientCredentials() {
+               @Override
+               public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+               //...
+               }
+       //...
+       ```
     
-    2. V rámci `applyCredentialsFilter()`, volání `builder.addNetworkInterceptor()`. Vytvořte nový `Interceptor` objektu a přepsat její `intercept()` metoda trvat `Chain` zachycování objektu.
+   2. V rámci `applyCredentialsFilter()`, volání `builder.addNetworkInterceptor()`. Vytvořte nový `Interceptor` objektu a přepsat její `intercept()` metoda trvat `Chain` zachycování objektu.
 
-        ```java
-        //...
-        builder.addNetworkInterceptor(
-            new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                //...    
-                }
-            });
-        ///...
-        ```
+       ```java
+       //...
+       builder.addNetworkInterceptor(
+           new Interceptor() {
+               @Override
+               public Response intercept(Chain chain) throws IOException {
+               //...    
+               }
+           });
+       ///...
+       ```
 
-    3. V rámci `intercept` funkce, vytváření proměnných pro vaši žádost. Použití `Request.Builder()` na vaši žádost o sestavení. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a vraťte se `chain.proceed()` na objekt žádosti.
+   3. V rámci `intercept` funkce, vytváření proměnných pro vaši žádost. Použití `Request.Builder()` na vaši žádost o sestavení. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví a vraťte se `chain.proceed()` na objekt žádosti.
             
-        ```java
-        //...
-        public Response intercept(Chain chain) throws IOException {
-            Request request = null;
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request = requestBuilder.build();
-            return chain.proceed(request);
-        }
-        //...
-        ```
-## <a name="send-a-request-and-receive-a-response"></a>Žádost o odeslání a přijetí odpovědi
+       ```java
+       //...
+       public Response intercept(Chain chain) throws IOException {
+           Request request = null;
+           Request original = chain.request();
+           Request.Builder requestBuilder = original.newBuilder()
+                   .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+           request = requestBuilder.build();
+           return chain.proceed(request);
+       }
+       //...
+       ```
+      ## <a name="send-a-request-and-receive-a-response"></a>Žádost o odeslání a přijetí odpovědi
 
 1. Vytvořte novou instanci třídy klienta vyhledávání s klíči předplatného. použít `client.entities().search()` odeslat žádost o vyhledávání vyhledávacího dotazu `satya nadella`a získat odpověď. 
     
@@ -130,7 +130,7 @@ Nainstalujte si závislosti sady SDK Bingu pro vyhledávání entit pomocí syst
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-2. Nebyly vráceny žádné entity, převeďte je do seznamu. Iterovat přes ně a vytisknout dominantní entity.
+1. Nebyly vráceny žádné entity, převeďte je do seznamu. Iterovat přes ně a vytisknout dominantní entity.
 
     ```java
     if (entityData.entities().value().size() > 0){

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f5d54f90c0b53105953726b1f26dab98192b40a6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833794"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Přehled služby Azure prostorových kotvy
 
@@ -30,7 +30,7 @@ Některé příklady případů použití umožněné prostorových kotvy zahrnu
 
 - [Způsob zjištění](concepts/anchor-relationships-way-finding.md). Také můžou vývojáři připojit prostorových kotvy společně vytváření vztahů mezi nimi. Aplikace může například obsahovat prostředí, které má dva nebo víc bodů zájmu, které uživatel musí spolupracovat s k dokončení úkolu. Tyto body zájmu možné vytvářet propojené způsobem. Později když uživatel dokončuje vícekrokových úkolů, aplikaci požádat o kotev vztahů, které jsou poblíž tu nasměrovat uživatele na další krok v úloze.
 
-- [Zachování virtuální obsahu v reálném světě](concepts/create-locate-anchors-unity.md#creating-a-cloud-spatial-anchor). Aplikace můžete nechat uživatele umístit virtuální kalendáře na zeď místnosti konference, uživatelé mohou zobrazit aplikaci pro telefon nebo na zařízení HoloLens. V průmyslových nastavení, může uživatel zobrazit kontextové informace o počítači pouhým ukázáním fotoaparát podporovaných zařízení.
+- [Zachování virtuální obsahu v reálném světě](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Aplikace můžete nechat uživatele umístit virtuální kalendáře na zeď místnosti konference, uživatelé mohou zobrazit aplikaci pro telefon nebo na zařízení HoloLens. V průmyslových nastavení, může uživatel zobrazit kontextové informace o počítači pouhým ukázáním fotoaparát podporovaných zařízení.
 
 Azure prostorových ukotvení se skládá z spravovaných služeb a klientských sad SDK pro podporované platformy zařízení. Následující části obsahují informace o začátcích se vytváření aplikací s použitím Azure prostorových ukotvení.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842528"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Integrace Azure Active Directory s Riskware
 
@@ -110,6 +110,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Riskware domény a adresy URL jednotného přihlašování – informace](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | Prostředí| Vzor adresy URL|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -118,6 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     |||
 
     b. V **identifikátor (Entity ID)** textového pole zadejte adresu URL:
+    
     | Prostředí| Vzor adresy URL|
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
@@ -247,7 +249,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Riskware, mus�
 
     a. V části **ověřování** vyberte **ověřování** režimu, který jste nastavili, jako je AZURE konfiguraci pro jednotné přihlašování.
 
-    b. V části **přihlašovací údaje** sekci **ID uživatele** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    b. V části **přihlašovací údaje** sekci **ID uživatele** textového pole zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
     c. V **heslo** textového pole zadejte heslo uživatele.
 

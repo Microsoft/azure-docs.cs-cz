@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: f4b42ff2639bf7e6a982f7c21b6ac4f2a8c84c5e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 29d0dc032bd14161674c58d6e502ad77c3bf75e5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538914"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108776"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Rychlý start: Hledat videa pomocí rozhraní REST API pro vyhledávání Bingu Video aC#
 
@@ -52,7 +52,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na Githubu](https://github.com/A
 
 ### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Vytvoření struktury k formátování odpovědi API pro vyhledávání videí Bingu
 
-3. Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrázků, a informace v hlavičce JSON.
+1. Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrázků, a informace v hlavičce JSON.
 
     ```csharp
     struct SearchResult

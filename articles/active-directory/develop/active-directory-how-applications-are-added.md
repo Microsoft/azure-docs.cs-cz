@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173887"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124214"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
 
@@ -133,8 +133,9 @@ Pokud stále chcete zabránit uživatelům ve vašem adresáři v registraci apl
 * Chcete uživatelům zabránit v vyjádření souhlasu s aplikací na jejich vlastní účet:
   1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) části podnikových aplikací.
   2. Změna **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem** k **ne**. 
-      > [!NOTE]
-      > Pokud se rozhodnete vypnout souhlas uživatele, bude správce muset vyjádřit souhlas s všechny nové aplikace, které uživatel potřebuje používat.    
+     
+     > [!NOTE]
+     > Pokud se rozhodnete vypnout souhlas uživatele, bude správce muset vyjádřit souhlas s všechny nové aplikace, které uživatel potřebuje používat.    
 * Chcete-li uživatelé nemohli registrovat vlastní aplikace:
   1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) části Azure Active Directory
   2. Změna **uživatelé můžou registrovat aplikace** k **ne**.

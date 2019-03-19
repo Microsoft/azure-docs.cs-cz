@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: 00bdc5ff63e78b0f96b794ca907bc28158e62c62
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075266"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
 
@@ -172,36 +172,36 @@ Tato tabulka obsahuje podrobné informace o souvisejících s úlohami pole.
 
 Tato tabulka obsahuje podrobnosti o týkající se zásad pole.
 
-| Pole | Typ dat | Popis |
-| --- | --- | --- |
-| EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, ale **V2** |
-| State_s |Text |Aktuální stav objektu zásad, například aktivní, odstraněno |
-| BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
-| OperationName |Text |Toto pole představuje název aktuální akce – zásady |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
-| Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
-| PolicyUniqueId_g |Text |Jedinečný identifikátor zásad |
-| PolicyName_s |Text |Název definice zásady |
-| BackupFrequency_s |Text |Frekvence, se kterým se spouštět zálohování, třeba každý den, každý týden |
-| BackupTimes_s |Text |Datum a čas, kdy jsou naplánované zálohy |
-| BackupDaysOfTheWeek_s |Text |Dny v týdnu, kdy bylo naplánováno zálohy |
-| RetentionDuration_s |Celé číslo |Doba uchování pro nastavená zálohování |
-| DailyRetentionDuration_s |Celé číslo |Doba trvání celkový uchování ve dnech pro nastavená zálohování |
-| DailyRetentionTimes_s |Text |Datum a čas, kdy byl nakonfigurován denní uchovávání |
-| WeeklyRetentionDuration_s |Desetinné číslo |Celková doba uchování týdenní v týdnech nakonfigurované zálohování |
-| WeeklyRetentionTimes_s |Text |Datum a čas, kdy nakonfigurovat týdenní uchovávání |
-| WeeklyRetentionDaysOfTheWeek_s |Text |Vybrané dny v týdnu pro týdenní uchovávání |
-| MonthlyRetentionDuration_s |Desetinné číslo |Doba uchování celkový počet měsíců pro nastavená zálohování |
-| MonthlyRetentionTimes_s |Text |Datum a čas, kdy je nakonfigurován měsíční uchovávání |
-| MonthlyRetentionFormat_s |Text |Typ konfigurace pro měsíční uchovávání informací, například každý den za den základě týdně podle týdnů |
-| MonthlyRetentionDaysOfTheWeek_s |Text |Vybrané dny v týdnu pro měsíční uchovávání |
-| MonthlyRetentionWeeksOfTheMonth_s |Text |Týdny v měsíci, když je nakonfigurovaná měsíční uchovávání informací, například první, poslední atd. |
-| YearlyRetentionDuration_s |Desetinné číslo |Doba uchování celkový počet v letech nastavená zálohování |
-| YearlyRetentionTimes_s |Text |Datum a čas, kdy je nakonfigurován roční uchovávání |
-| YearlyRetentionMonthsOfTheYear_s |Text |Měsíce roku vybraných pro roční uchovávání |
-| YearlyRetentionFormat_s |Text |Typ konfigurace pro roční uchovávání informací, například každý den za den základě týdně podle týdnů |
-| YearlyRetentionDaysOfTheMonth_s |Text |Data v měsíci vybraných pro roční uchovávání |
+| Pole | Typ dat | Příslušné verze | Popis |
+| --- | --- | --- | --- |
+| EventName_s |Text ||Toto pole představuje název této události, je vždy AzureBackupCentralReport |
+| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu, ale **V2** |
+| State_s |Text ||Aktuální stav objektu zásad, například aktivní, odstraněno |
+| BackupManagementType_s |Text ||Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
+| OperationName |Text ||Toto pole představuje název aktuální akce – zásady |
+| Kategorie |Text ||Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
+| Prostředek |Text ||Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
+| PolicyUniqueId_g |Text ||Jedinečný identifikátor zásad |
+| PolicyName_s |Text ||Název definice zásady |
+| BackupFrequency_s |Text ||Frekvence, se kterým se spouštět zálohování, třeba každý den, každý týden |
+| BackupTimes_s |Text ||Datum a čas, kdy jsou naplánované zálohy |
+| BackupDaysOfTheWeek_s |Text ||Dny v týdnu, kdy bylo naplánováno zálohy |
+| RetentionDuration_s |Celé číslo ||Doba uchování pro nastavená zálohování |
+| DailyRetentionDuration_s |Celé číslo ||Doba trvání celkový uchování ve dnech pro nastavená zálohování |
+| DailyRetentionTimes_s |Text ||Datum a čas, kdy byl nakonfigurován denní uchovávání |
+| WeeklyRetentionDuration_s |Desetinné číslo ||Celková doba uchování týdenní v týdnech nakonfigurované zálohování |
+| WeeklyRetentionTimes_s |Text ||Datum a čas, kdy nakonfigurovat týdenní uchovávání |
+| WeeklyRetentionDaysOfTheWeek_s |Text ||Vybrané dny v týdnu pro týdenní uchovávání |
+| MonthlyRetentionDuration_s |Desetinné číslo ||Doba uchování celkový počet měsíců pro nastavená zálohování |
+| MonthlyRetentionTimes_s |Text ||Datum a čas, kdy je nakonfigurován měsíční uchovávání |
+| MonthlyRetentionFormat_s |Text ||Typ konfigurace pro měsíční uchovávání informací, například každý den za den základě týdně podle týdnů |
+| MonthlyRetentionDaysOfTheWeek_s |Text ||Vybrané dny v týdnu pro měsíční uchovávání |
+| MonthlyRetentionWeeksOfTheMonth_s |Text ||Týdny v měsíci, když je nakonfigurovaná měsíční uchovávání informací, například první, poslední atd. |
+| YearlyRetentionDuration_s |Desetinné číslo ||Doba uchování celkový počet v letech nastavená zálohování |
+| YearlyRetentionTimes_s |Text ||Datum a čas, kdy je nakonfigurován roční uchovávání |
+| YearlyRetentionMonthsOfTheYear_s |Text ||Měsíce roku vybraných pro roční uchovávání |
+| YearlyRetentionFormat_s |Text ||Typ konfigurace pro roční uchovávání informací, například každý den za den základě týdně podle týdnů | |
+| YearlyRetentionDaysOfTheMonth_s |Text ||Data v měsíci vybraných pro roční uchovávání |
 | SynchronisationFrequencyPerDay_s |Celé číslo |v2|Počet, kolikrát za den, synchronizaci souboru zálohy SC DPM a MABS |
 | DiffBackupFormat_s |Text |v2|Formát pro rozdílové zálohování pro SQL v zálohování virtuálních počítačů Azure |
 | DiffBackupTime_s |Čas |v2|Čas pro rozdílové zálohování pro SQL v Azure Backup pro virtuální počítače|
@@ -209,35 +209,35 @@ Tato tabulka obsahuje podrobnosti o týkající se zásad pole.
 | LogBackupFrequency_s |Desetinné číslo |v2|Frekvence zálohování protokolu SQL|
 | LogBackupRetentionDuration_s |Desetinné číslo |v2|Doba uchování pro zálohy protokolu SQL v Azure Backup pro virtuální počítače|
 | DiffBackupDaysofTheWeek_s |Text |v2|Dny v týdnu pro rozdílové zálohování pro SQL v Azure Backup pro virtuální počítače|
-| SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| ResourceId |Text |Identifikátor URI pro shromažďovaných údajů. Například id prostředku trezoru služby Recovery Services |
-| SubscriptionId |Text |Identifikátor předplatného prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
-| ResourceGroup |Text |Skupina prostředků prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
-| ResourceProvider |Text |Poskytovatel prostředků, pro které se shromažďují data. Například Microsoft.recoveryservices. |
-| ResourceType |Text |Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
+| SourceSystem |Text ||Zdrojový systém aktuálních dat – Azure |
+| ResourceId |Text ||Identifikátor URI pro shromažďovaných údajů. Například id prostředku trezoru služby Recovery Services |
+| SubscriptionId |Text ||Identifikátor předplatného prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
+| ResourceGroup |Text ||Skupina prostředků prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
+| ResourceProvider |Text ||Poskytovatel prostředků, pro které se shromažďují data. Například Microsoft.recoveryservices. |
+| ResourceType |Text ||Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
 
 ### <a name="policyassociation"></a>PolicyAssociation
 
 Tato tabulka obsahuje podrobné informace o přidružení zásady s různými entitami.
 
-| Pole | Typ dat | Popis |
-| --- | --- | --- |
-| EventName_s |Text |Toto pole představuje název této události, je vždy AzureBackupCentralReport |
-| SchemaVersion_s |Text |Toto pole označuje aktuální verzi schématu, ale **V2** |
-| State_s |Text |Aktuální stav objektu zásad, například aktivní, odstraněno |
-| BackupManagementType_s |Text |Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
-| OperationName |Text |Toto pole představuje název aktuální operace - PolicyAssociation |
-| Kategorie |Text |Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
-| Prostředek |Text |Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
-| PolicyUniqueId_g |Text |Jedinečný identifikátor zásad |
-| VaultUniqueId_s |Text |Jedinečné Id trezoru, ke kterému patří tato zásada |
+| Pole | Typ dat | Příslušné verze | Popis |
+| --- | --- | --- | --- |
+| EventName_s |Text ||Toto pole představuje název této události, je vždy AzureBackupCentralReport |
+| SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu, ale **V2** |
+| State_s |Text ||Aktuální stav objektu zásad, například aktivní, odstraněno |
+| BackupManagementType_s |Text ||Typ zprostředkovatele pro server provádění úlohy zálohování, například IaaSVM, FileFolder |
+| OperationName |Text ||Toto pole představuje název aktuální operace - PolicyAssociation |
+| Kategorie |Text ||Toto pole představuje kategorie diagnostická data do Azure monitoru protokoly, je AzureBackupReport |
+| Prostředek |Text ||Toto je prostředek, pro kterou se data shromažďují, zobrazuje název trezoru služby Recovery Services |
+| PolicyUniqueId_g |Text ||Jedinečný identifikátor zásad |
+| VaultUniqueId_s |Text ||Jedinečné Id trezoru, ke kterému patří tato zásada |
 | BackupManagementServerUniqueId_s |Text |v2 |Pole k jednoznačné identifikaci serveru pro správu zálohování zálohovaná položka je chráněný, pokud je k dispozici        |
-| SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
-| ResourceId |Text |Identifikátor URI pro shromažďovaných údajů. Například id prostředku trezoru služby Recovery Services |
-| SubscriptionId |Text |Identifikátor předplatného prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
-| ResourceGroup |Text |Skupina prostředků prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
-| ResourceProvider |Text |Poskytovatel prostředků, pro které se shromažďují data. Například Microsoft.recoveryservices. |
-| ResourceType |Text |Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
+| SourceSystem |Text ||Zdrojový systém aktuálních dat – Azure |
+| ResourceId |Text ||Identifikátor URI pro shromažďovaných údajů. Například id prostředku trezoru služby Recovery Services |
+| SubscriptionId |Text ||Identifikátor předplatného prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
+| ResourceGroup |Text ||Skupina prostředků prostředku (např.) Trezor služby Recovery Services) pro které se shromažďují data |
+| ResourceProvider |Text ||Poskytovatel prostředků, pro které se shromažďují data. Například Microsoft.recoveryservices. |
+| ResourceType |Text ||Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
 
 ### <a name="protected-container"></a>Chráněné kontejneru
 
@@ -355,7 +355,7 @@ Tato tabulka obsahuje související pole Základní chráněných instancí.
 Tato tabulka obsahuje základní obnovení bodu související pole.
 
 | Pole | Typ dat | Popis |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | BackupItemUniqueId_s |Text |Jedinečné Id, které slouží k identifikaci zálohované položky virtuálních počítačů zálohovat pomocí DPM, MABS|
 | OldestRecoveryPointTime_s |Text |Datum a čas nejstarší bod obnovení pro zálohovaná položka|
 | OldestRecoveryPointLocation_s |Text |Umístění nejstarší bod obnovení pro zálohovaná položka|

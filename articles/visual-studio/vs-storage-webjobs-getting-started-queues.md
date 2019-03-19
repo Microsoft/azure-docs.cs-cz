@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722902"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999547"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -27,7 +27,7 @@ Tento článek popisuje, jak začít používat Azure Queue storage v projektu V
 
 Tento článek obsahuje ukázky kódu C#, které ukazují, jak pomocí sady Azure WebJobs SDK verze 1.x službou Azure Queue storage.
 
-Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Zobrazit [Začínáme s Azure Queue Storage pomocí .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) Další informace. Další informace o ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Zobrazit [Začínáme s Azure Queue Storage pomocí .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) Další informace. Další informace o ASP.NET najdete v tématu [ASP.NET](https://www.asp.net).
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Jak aktivovat funkci při doručení zprávy do fronty
 Chcete-li vytvořit funkci, která volá sada WebJobs SDK, při doručení zprávy do fronty, použijte **QueueTrigger** atribut. Konstruktor atributu má řetězcový parametr, který určuje název fronty posílat do služby. Chcete-li zjistit, jak dynamicky nastavte název fronty, přečtěte si [nastavení konfigurace možností](#how-to-set-configuration-options).
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Kromě **řetězec**, hodnota parametru může být bajtové pole, **CloudQueueMessage** objektu nebo POCO, který určíte.
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
 V následujícím příkladu zpráva fronty obsahuje JSON pro **BlobInformation** objekt, který zahrnuje **BlobName** vlastnost. Sada SDK automaticky deserializuje objekt.
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-Sada SDK používá [balíček Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zprávy. Pokud vytvoříte frontu zpráv v aplikaci, která nepodporuje použití sady WebJobs SDK, můžete napsat kód jako v následujícím příkladu, k vytvoření zprávy fronty POCO, které mohou analyzovat sady SDK.
+Sada SDK používá [balíček Newtonsoft.Json NuGet](https://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zprávy. Pokud vytvoříte frontu zpráv v aplikaci, která nepodporuje použití sady WebJobs SDK, můžete napsat kód jako v následujícím příkladu, k vytvoření zprávy fronty POCO, které mohou analyzovat sady SDK.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Asynchronní funkce může trvat [token zrušení](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak je znázorněno v následujícím příkladu, který zkopíruje objekt blob. (Vysvětlení **queueTrigger** zástupného symbolu, najdete v článku [objekty BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) části.)
+Asynchronní funkce může trvat [token zrušení](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak je znázorněno v následujícím příkladu, který zkopíruje objekt blob. (Vysvětlení **queueTrigger** zástupného symbolu, najdete v článku [objekty BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) části.)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
 K vytvoření zprávy fronty, která obsahuje POCO, spíše než řetězec, předejte typ POCO jako výstupní parametr pro **fronty** konstruktor atributu.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(Plain původního objektu CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) fronty zpráv
 Pro POCO uloží jako dokumenty JSON ve zprávě fronty, můžete použít zástupné znaky, které název vlastnosti v objektu **fronty** atributu **blobPath** parametru. Názvy vlastností fronty metadat také slouží jako zástupné symboly. Zobrazit [získat fronty nebo fronty zpráv metadata](#get-queue-or-queue-message-metadata).
 
 Následující příklad zkopíruje objekt blob do nového objektu blob s jinou příponou. Fronta zpráv je **BlobInformation** objekt, který zahrnuje **BlobName** a **BlobNameWithoutExtension** vlastnosti. Názvy vlastností, které se používají jako zástupné symboly v cestě k objektu blob pro **Blob** atributy.
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-Sada SDK používá [balíček Newtonsoft.Json NuGet](http://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zprávy. Pokud vytvoříte frontu zpráv v aplikaci, která nepodporuje použití sady WebJobs SDK, můžete napsat kód jako v následujícím příkladu, k vytvoření zprávy fronty POCO, které mohou analyzovat sady SDK.
+Sada SDK používá [balíček Newtonsoft.Json NuGet](https://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zprávy. Pokud vytvoříte frontu zpráv v aplikaci, která nepodporuje použití sady WebJobs SDK, můžete napsat kód jako v následujícím příkladu, k vytvoření zprávy fronty POCO, které mohou analyzovat sady SDK.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
@@ -442,7 +442,7 @@ static void Main(string[] args)
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Nastavení hodnot pro WebJobs SDK parametry konstruktoru v kódu
 Někdy chcete zadat název fronty, název objektu blob nebo kontejneru, nebo tabulka název v kódu namísto pevně zakódovat. Například můžete chtít určit název fronty **QueueTrigger** v konfigurační soubor nebo prostředí proměnnou.
 
-Můžete to udělat předáním **NameResolver** objektu **JobHostConfiguration** typu. Zahrnout speciální zástupné symboly ohraničen symboly procent (%) v parametry konstruktoru atributu sada WebJobs SDK a vaše **NameResolver** kód určuje skutečné hodnoty, které mají být zastoupen tyto zástupné symboly.
+Můžete to udělat předáním **NameResolver** objektu **JobHostConfiguration** typu. Zahrnout speciální zástupné symboly v procentech (%) přihlásí parametry konstruktoru atributu sada WebJobs SDK a vaše **NameResolver** kód určuje skutečné hodnoty, které mají být zastoupen tyto zástupné symboly.
 
 Předpokládejme například, že chcete použít frontu s názvem logqueuetest v testovacím prostředí a jednu s názvem logqueueprod v produkčním prostředí. Místo názvu pevně zakódované fronty, kterou chcete zadat název položky v **appSettings** kolekce, která bude mít na skutečný název. Pokud **appSettings** logqueue je klíč, funkce by měl vypadat jako v následujícím příkladu.
 

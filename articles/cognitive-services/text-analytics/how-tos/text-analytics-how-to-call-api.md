@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886873"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122871"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
 
@@ -58,7 +58,7 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
    + Vložte koncový bod, který jste zkopírovali ze stránky portálu.
    + Připojte prostředek.
 
-  Koncové body prostředků jsou následujícím způsobem (vaší oblasti se mohou lišit):
+   Koncové body prostředků jsou následujícím způsobem (vaší oblasti se mohou lišit):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
@@ -71,7 +71,7 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
    + `Content-Type`: application/json.
    + `Accept`: application/json.
 
-  Váš požadavek by měl vypadat podobně jako na následujícím snímku obrazovky, za předpokladu, že **/keyPhrases** prostředků.
+   Váš požadavek by měl vypadat podobně jako na následujícím snímku obrazovky, za předpokladu, že **/keyPhrases** prostředků.
 
    ![Snímek obrazovky s koncovým bodem a hlavičky požadavku](../media/postman-request-keyphrase-1.png)
 
@@ -81,15 +81,15 @@ Služba přijímá požádat o velikost až 1 MB. Pokud používáte Postman (ne
 
 5. Vložte několik dokumentů JSON ve formátu, který je platný pro určené analýzy. Další informace o konkrétní analýzy najdete v tématech níže:
 
-  + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
-  + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
-  + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
-  + [Rozpoznávání entit (Preview)](text-analytics-how-to-entity-linking.md)  
+   + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
+   + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
+   + [Analýza subjektivního hodnocení](text-analytics-how-to-sentiment-analysis.md)  
+   + [Rozpoznávání entit (Preview)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Klikněte na tlačítko **odeslat** odešlete žádost. Můžete odeslat až 100 požadavků za minutu. 
 
-  V nástroji Postman by se odpověď zobrazí v dalším okně dolů, jako jeden dokument JSON, s položkou pro každé ID dokumentu, který je zadaný v požadavku.
+   V nástroji Postman by se odpověď zobrazí v dalším okně dolů, jako jeden dokument JSON, s položkou pro každé ID dokumentu, který je zadaný v požadavku.
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 

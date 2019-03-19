@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f23f29d15c4c8f05551b20d42b92dda5632cde08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078733"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Příručka k převodu webové a pracovní role pro bezstavové služby Service Fabric
 Tento článek popisuje, jak migrovat Cloud Services – webové a pracovní role do bezstavové služby Service Fabric. Toto je nejjednodušší postupu migrace ze služby Cloud Services do Service Fabric pro aplikace, jejichž architektury se to zůstat přibližně stejná.
@@ -43,7 +43,7 @@ Podobně jako u rolí pracovního procesu, webové Role také představuje bezst
 | --- | --- | --- |
 | Webové formuláře ASP.NET |Ne |Převést na ASP.NET Core 1 MVC |
 | ASP.NET MVC |S migrací |Upgrade na technologie ASP.NET Core 1 MVC |
-| Webové rozhraní API technologie ASP.NET |S migrací |Použít server v místním prostředí nebo ASP.NET Core 1 |
+| Webové rozhraní API ASP.NET |S migrací |Použít server v místním prostředí nebo ASP.NET Core 1 |
 | ASP.NET Core 1 |Ano |neuvedeno |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Vstupní bod rozhraní API a životního cyklu
@@ -110,8 +110,8 @@ Obě mají primární "spustit" přepsání, ve kterém začíná zpracování. 
 
 Existuje několik klíčových rozdílů mezi životního cyklu a životního cyklu služeb rolí pracovního procesu a Service Fabric:
 
-* **Životní cyklus** největším rozdílem je, že Role pracovního procesu je virtuální počítač a tak jeho životní cyklus se váže k virtuálnímu počítači, který zahrnuje události spuštění a zastavení virtuálního počítače. Služba Service Fabric obsahuje životního cyklu, která je oddělená od životního cyklu virtuálního počítače, takže neobsahuje události spuštění a zastavení, hostitele virtuálního počítače nebo počítače, protože nesouvisí.
-* **Doba života:** instance Role pracovního procesu se recyklovat, pokud `Run` metoda ukončení. `RunAsync` Metoda ve službě Service Fabric můžete ale doběhla do konce a bude zajištěna instance služby. 
+* **Životní cyklus:** Největší rozdíl je, že Role pracovního procesu je virtuální počítač a tak jeho životní cyklus se váže k virtuálnímu počítači, který zahrnuje události spuštění a zastavení virtuálního počítače. Služba Service Fabric obsahuje životního cyklu, která je oddělená od životního cyklu virtuálního počítače, takže neobsahuje události spuštění a zastavení, hostitele virtuálního počítače nebo počítače, protože nesouvisí.
+* **Doba života:** Instance Role pracovního procesu se recyklovat, pokud `Run` metoda ukončení. `RunAsync` Metoda ve službě Service Fabric můžete ale doběhla do konce a bude zajištěna instance služby. 
 
 Service Fabric představuje vstupní bod nastavení volitelné komunikace pro služby, které naslouchat žádostem klienta. Vstupní bod RunAsync i komunikaci jsou volitelné přepsání služby Service Fabric – vaše služba se rozhodnout naslouchají pouze na požadavky klientů, nebo pouze spustit smyčku zpracování, nebo obojí – to je důvod, proč metodě RunAsync může ukončit bez restartování instance služby, protože může dál pro naslouchání požadavků klienta.
 
@@ -209,7 +209,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 Úlohy po spuštění jsou akce prováděné před spuštěním aplikace. Úlohy po spuštění se obvykle používá ke spouštění skriptů instalace použitím zvýšených oprávnění. Cloud Services a Service Fabric podporovat úlohy při spuštění. Hlavní rozdíl je, že v cloudových službách, úlohy po spuštění se váže k virtuálnímu počítači protože je součástí role instance, zatímco v Service Fabric úlohy po spuštění je vázán na službu, která není vázána k žádné konkrétní virtuální počítač.
 
 | Service Fabric | Cloud Services |
-| --- | --- | --- |
+| --- | --- |
 | Umístění konfigurace |ServiceDefinition.csdef |
 | Oprávnění |"omezené" nebo "se zvýšenými oprávněními" |
 | Pořadí úloh |"jednoduchý", "pozadí", "popředí" |

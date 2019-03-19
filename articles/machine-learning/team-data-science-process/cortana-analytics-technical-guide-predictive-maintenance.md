@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d0e62edd156e8fafbf16437af33941a99f4607fd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885432"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce do šablony řešení Cortana Intelligence pro prediktivní údržby v leteckém průmyslu
 
->[!Important]
-Tento článek je zastaralá. Diskuze o prediktivní údržby v leteckém průmyslu je stále relevantní, ale aktuální informace, přečtěte si [přehled řešení pro firmy cílovým skupinám na místě](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
+> [!Important]
+> Tento článek je zastaralá. Diskuze o prediktivní údržby v leteckém průmyslu je stále relevantní, ale aktuální informace, přečtěte si [přehled řešení pro firmy cílovým skupinám na místě](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace).
 
 
 Šablony řešení jsou určeny ke zrychlení procesu vytváření ukázku E2E nad Cortana Intelligence Suite. Se nasadila šablona zřídí předplatnému pomocí komponenty potřebné Cortana Intelligence a poté sestaví vztahy mezi nimi. Nasazení také nasazuje datový kanál s ukázkovými daty z aplikace generátor dat, který si stáhnete a nainstalujete na místním počítači po nasazení šablony řešení. Data z generátor hydráty datového kanálu a spuštění generování predikcí strojového učení, které lze následně vizualizovat na řídicím panelu Power BI.
@@ -51,7 +51,7 @@ Následující části popisují části řešení.
 ### <a name="synthetic-data-source"></a>Zdroj dat syntetického
 Pro tuto šablonu je použitý zdroj dat generovaných desktopová aplikace, stáhněte a spusťte místně po úspěšném nasazení.
 
-K vyhledání pokynů ke stažení a instalace této aplikace, vyberte první uzel generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny jsou součástí na panelu Vlastnosti. Tato aplikace se předají [Azure Event Hubs](#azure-event-hub) služba s datové body nebo události, použita ve zbytku toku řešení. Tento zdroj dat je odvozen z veřejně dostupných dat z [úložiště dat NASA](https://c3.nasa.gov/dashlink/resources/139/) pomocí [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
+K vyhledání pokynů ke stažení a instalace této aplikace, vyberte první uzel generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny jsou součástí na panelu Vlastnosti. Tato aplikace se předají [Azure Event Hubs](#azure-event-hub) služba s datové body nebo události, použita ve zbytku toku řešení. Tento zdroj dat je odvozen z veřejně dostupných dat z [úložiště dat NASA](https://c3.nasa.gov/dashlink/resources/139/) pomocí [Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
 Generování aplikace události naplní Azure Event Hubs pouze tehdy, když je spuštěn v počítači.  
 
@@ -79,7 +79,7 @@ Použití [Power BI](https://powerbi.microsoft.com) zobrazíte řídicí panel, 
 ## <a name="how-to-bring-in-your-own-data"></a>Jak umožňuje přinést si vlastní data
 Tato část popisuje, jak přineste si vlastní data do Azure a oblasti, které vyžadují změny dat, než převedete do této architektury.
 
-Není pravděpodobné, že vaše datová sada odpovídá datové sady používané [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) použít pro tuto šablonu řešení. Vysvětlení dat a požadavky jsou zásadní v tom, jak změnit tato šablona fungovala s vlastními daty. 
+Není pravděpodobné, že vaše datová sada odpovídá datové sady používané [Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) použít pro tuto šablonu řešení. Vysvětlení dat a požadavky jsou zásadní v tom, jak změnit tato šablona fungovala s vlastními daty. 
 
 Následující části popisují části šablony, které vyžadují změny, když je zavedená nová datová sada.
 
@@ -143,7 +143,7 @@ To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentovat použité pro tuto šablonu řešení poskytuje zbývající dobu životnosti (RUL) leteckého motoru. Experiment je specifická pro datové sady spotřebované a vyžaduje úpravy nebo nahrazení specifické pro data režimu.
 
-Informace o způsobu vytvoření experimentu Azure Machine Learning najdete v tématu [prediktivní údržby: Krok 1 ze 3, přípravy dat a vytváření funkcí](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
+Informace o způsobu vytvoření experimentu Azure Machine Learning najdete v tématu [prediktivní údržby: Krok 1 ze 3, přípravy dat a vytváření funkcí](https://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
 ## <a name="monitor-progress"></a>Sledování průběhu
 Po spuštění generátor dat kanálu začne nechávají dehydratovat a různých komponent řešení start aktivace do akce následující příkazy vydané službou data factory. Existují dva způsoby a začněte monitorovat kanál.
@@ -186,7 +186,7 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
    * V dalším pop si okno se zobrazí dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databáze'**, vyplňte vaše **'Jméno uživatele'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoří Azure SQL database). V ***jaké úroveň, která se použije toto nastavení vyberte***, zaškrtněte možnost na úrovni databáze. Pak klikněte na tlačítko **"Připojit"**.
    * Klikněte na druhé tabulky **PMResult** klikněte ![ikona navigace](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) vedle **'Source'** pod **použitý postup** na pravé straně **"Nastavení dotazu"** panelu a aktualizujte název serveru a databáze jako výše uvedené kroky a klikněte na tlačítko OK.
    * Jakmile budete s asistencí zpět na předchozí stránku, zavřete okno. Zobrazí se zpráva – klikněte na tlačítko **použít**. A konečně, klikněte na tlačítko **Uložit** tlačítko Uložit změny. Váš soubor Power BI má nyní navázalo se připojení k serveru. Pokud vaše vizualizace jsou prázdné, nezapomeňte že vymazat výběry na vizualizace, která bude vizualizovat všechna data kliknutím na ikonu gumy v pravém horním rohu legend. Pomocí tlačítka aktualizovat tak, aby odrážely nová data na vizualizace. Na začátku zobrazí jenom data počáteční hodnoty na vaše vizualizace jako služby data factory je naplánovaná aktualizace každé 3 hodiny. Po 3 hodiny zobrazí se nových předpovědí projeví ve svých vizualizacích při aktualizaci data.
-3. (Volitelné) Publikovat na řídicím panelu studené cesty [Power BI online](http://www.powerbi.com/). Všimněte si, že tento krok potřebuje účet Power BI (nebo účet Office 365).
+3. (Volitelné) Publikovat na řídicím panelu studené cesty [Power BI online](https://www.powerbi.com/). Všimněte si, že tento krok potřebuje účet Power BI (nebo účet Office 365).
    
    * Klikněte na tlačítko **"Publikovat"** a několik sekund později se zobrazí okno zobrazení "Publikování do Power BI úspěch!" s zelená značka zaškrtnutí. Klikněte na odkaz níže "Otevřít PredictiveMaintenanceAerospace.pbix v Power BI". Podrobné pokyny najdete v tématu [publikování z Power BI Desktopu](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko **+** podepsat vedle **řídicí panely** části v levém podokně. Zadejte název "Ukázka prediktivní údržby" pro tento nový řídicí panel.
@@ -206,13 +206,13 @@ Následující kroky vás o tom, jak připojit soubor pbix do SQL Database, kter
    * Naplánujte aktualizaci na základě vašich potřeb. Další informace najdete v tématu [aktualizace dat v Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
 
 ### <a name="setup-hot-path-dashboard"></a>Nastavení řídicího panelu kritickou cestu
-Následující kroky vás provedou, jak vizualizovat výstup dat z úloh Stream Analytics, které byly vytvořeny v době nasazení řešení. A [Power BI online](http://www.powerbi.com/) účtu se vyžaduje k provedení následujících kroků. Pokud účet nemáte, můžete si [vytvořit](https://powerbi.microsoft.com/pricing).
+Následující kroky vás provedou, jak vizualizovat výstup dat z úloh Stream Analytics, které byly vytvořeny v době nasazení řešení. A [Power BI online](https://www.powerbi.com/) účtu se vyžaduje k provedení následujících kroků. Pokud účet nemáte, můžete si [vytvořit](https://powerbi.microsoft.com/pricing).
 
 1. Přidáte výstup Power BI v Azure Stream Analytics (ASA).
    
    * Postupujte podle pokynů v [Azure Stream Analytics a Power BI: Analytickém řídicím panelu pro streamování dat v reálném čase viditelnost](../../stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI.
    * Dotaz Azure Stream Analytics obsahuje tři výstupy, které jsou **aircraftmonitor**, **aircraftalert**, a **flightsbyhour**. Zobrazí se dotaz po kliknutí na kartě dotazu. Odpovídající každé z těchto tabulek, musíte přidat výstup Azure Stream Analytics. Když přidáte první výstup (**aircraftmonitor**) ujistěte se, že **Alias pro výstup**, **název datové sady** a **název tabulky** jsou stejné (**aircraftmonitor**). Opakujte postup pro přidání výstupy pro **aircraftalert**, a **flightsbyhour**. Po přidání všech tří výstupní tabulky a spuštění úlohy Azure Stream Analytics, měli byste obdržet potvrzovací zpráva ("spouští se Stream Analytics úlohy maintenancesa02asapbi bylo úspěšné").
-2. Přihlaste se k [Power BI online](http://www.powerbi.com)
+2. Přihlaste se k [Power BI online](https://www.powerbi.com)
    
    * Na levém panelu části datové sady v pracovním prostoru ***datovou sadu*** názvy **aircraftmonitor**, **aircraftalert**, a **flightsbyhour** by se zobrazit. Toto je streamovaných dat, které jste nasdíleli z Azure Stream Analytics v předchozím kroku. Datová sada **flightsbyhour** pravděpodobně nezobrazí ve stejnou dobu jako další dvě datové sady vzhledem k povaze jazyka SQL za ní. Nicméně by se měla zobrazit za hodinu.
    * Ujistěte se, ***vizualizace*** podokně je otevřený a je zobrazena na pravé straně obrazovky.

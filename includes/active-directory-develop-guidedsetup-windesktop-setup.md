@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 29b7893bbe813ece7cece9d1591dd574158f4482
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 4dbc296729f9dd6efaab39457fcedc6d5f60c785
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125013"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -59,7 +59,7 @@ V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je zpr
     ```csharp
     using Microsoft.Identity.Client;
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 
 2. Aktualizujte třídu aplikace takto:
 

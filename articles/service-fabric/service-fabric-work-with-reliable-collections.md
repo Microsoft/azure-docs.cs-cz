@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2019
 ms.author: aljo
-ms.openlocfilehash: 38aef6e5ba65f67a1dd30ba2c18e180cd92624c6
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805303"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872683"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model k dispozici pro vývojáře na platformě .NET pomocí spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé fronty třídy a spolehlivého slovníku. Při použití těchto tříd je svůj stav rozdělit na oddíly (pro zajištění škálovatelnosti), replikuje (dostupnosti) a nepodporuje transakce v rámci oddílu (pro odpovídající zásadám ACID sémantiku). Pojďme podívat se na Typickým použitím spolehlivého slovníku objektu a zobrazit, co se skutečně dělají.
@@ -143,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definování typů neměnnými daty aby programátor chyba
-V ideálním případě by rádi bychom kompilátor pro hlášení chyb při neúmyslně vytvořit kód, který mění stav objektu, který se má vzít v úvahu neměnné. Ale, C# kompilátoru nemá možnost to udělat. Tak, aby se zabránilo potenciální chyby programátora, důrazně doporučujeme, že definujete typy s reliable collections vám být neměnné typy. Konkrétně to znamená, že Zůstaňte k základní typy hodnot (například čísla [Int32, UInt64, atd.], DateTime, Guid, TimeSpan a podobně). Můžete také použít řetězec. To se nedoporučuje vlastnosti kolekce jako serializaci a deserializaci je můžete často snížit výkon. Nicméně pokud chcete použít vlastnosti kolekce, důrazně doporučujeme použití. Knihovna NET pro neměnné kolekce ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Tato knihovna je k dispozici ke stažení z http://nuget.org. Doporučujeme také zapečetění tříd a provádění pole jen pro čtení, kdykoli je to možné.
+V ideálním případě by rádi bychom kompilátor pro hlášení chyb při neúmyslně vytvořit kód, který mění stav objektu, který se má vzít v úvahu neměnné. Ale, C# kompilátoru nemá možnost to udělat. Tak, aby se zabránilo potenciální chyby programátora, důrazně doporučujeme, že definujete typy s reliable collections vám být neměnné typy. Konkrétně to znamená, že Zůstaňte k základní typy hodnot (například čísla [Int32, UInt64, atd.], DateTime, Guid, TimeSpan a podobně). Můžete také použít řetězec. To se nedoporučuje vlastnosti kolekce jako serializaci a deserializaci je můžete často snížit výkon. Nicméně pokud chcete použít vlastnosti kolekce, důrazně doporučujeme použití. Knihovna NET pro neměnné kolekce ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Tato knihovna je k dispozici ke stažení z https://nuget.org. Doporučujeme také zapečetění tříd a provádění pole jen pro čtení, kdykoli je to možné.
 
 Typ informací o uživateli níže ukazuje, jak definovat typ neměnné výhod výše uvedených doporučení.
 

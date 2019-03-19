@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09b652b236e1fbe68d93298f0f8793854e411aad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095666"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight
 
@@ -161,13 +161,13 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
 
 5. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
 
-    * Pokud používáte __účet služby Azure Storage__, klikněte na tlačítko Nahrát ikonu a potom vyhledejte **bin\debug** složku pro **Mapovač** projektu. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **Ok**.
+   * Pokud používáte __účet služby Azure Storage__, klikněte na tlačítko Nahrát ikonu a potom vyhledejte **bin\debug** složku pro **Mapovač** projektu. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **Ok**.
 
-        ![Nahrát ikonu](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+       ![Nahrát ikonu](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **otevřít**.
+   * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **otevřít**.
 
-    Jednou __mapper.exe__ nahrávání dokončí, opakujte proces nahrávání __reducer.exe__ souboru.
+     Jednou __mapper.exe__ nahrávání dokončí, opakujte proces nahrávání __reducer.exe__ souboru.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>Spuštění úlohy: Pomocí relace SSH
 
@@ -175,32 +175,32 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
 
 2. Pomocí jedné z následujících příkazů spusťte úlohu MapReduce:
 
-    * Pokud používáte __Data Lake Storage Gen2__ jako výchozí úložiště:
+   * Pokud používáte __Data Lake Storage Gen2__ jako výchozí úložiště:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    * Pokud používáte __Data Lake Storage Gen1__ jako výchozí úložiště:
+   * Pokud používáte __Data Lake Storage Gen1__ jako výchozí úložiště:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
     
-    * Pokud používáte __služby Azure Storage__ jako výchozí úložiště:
+   * Pokud používáte __služby Azure Storage__ jako výchozí úložiště:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    Následující seznam popisuje, co dělá každý parametr:
+     Následující seznam popisuje, co dělá každý parametr:
 
-    * `hadoop-streaming.jar`: Soubor jar, který obsahuje funkce datových proudů MapReduce.
-    * `-files`: Přidá `mapper.exe` a `reducer.exe` soubory do této úlohy. `abfs:///`,`adl:///` Nebo `wasb:///` před každého souboru je cesta ke kořenové výchozí úložiště pro cluster.
-    * `-mapper`: Určuje soubor, který implementuje Mapovač.
-    * `-reducer`: Určuje soubor, který implementuje redukční funkci.
-    * `-input`: Vstupní data.
-    * `-output`: Výstupní adresář.
+   * `hadoop-streaming.jar`: Soubor jar, který obsahuje funkce datových proudů MapReduce.
+   * `-files`: Přidá `mapper.exe` a `reducer.exe` soubory do této úlohy. `abfs:///`,`adl:///` Nebo `wasb:///` před každého souboru je cesta ke kořenové výchozí úložiště pro cluster.
+   * `-mapper`: Určuje soubor, který implementuje Mapovač.
+   * `-reducer`: Určuje soubor, který implementuje redukční funkci.
+   * `-input`: Vstupní data.
+   * `-output`: Výstupní adresář.
 
 3. Po dokončení úlohy MapReduce, použijte následující postupy k zobrazení výsledků:
 

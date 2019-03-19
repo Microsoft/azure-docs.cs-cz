@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773788"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002934"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -146,9 +146,9 @@ Fakturace uživatelé nemají přístup ke skupinám pro správu, protože není
 
 Partnery cloud Solution Provider (CSP) nejsou podporovány ve službě Cost Management ještě dnes. Místo toho můžete použít [partnerského centra](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-## <a name="how-to-switch-between-scopes-within-cost-management"></a>Jak přepínat mezi oborů v rámci Cost Management
+## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory ve službě Cost Management
 
-Zahrnout všechny činnosti správy nákladů na webu Azure portal **oboru** obranné v levé horní části okna, která poskytuje přístup k rychle změnit obor. Kliknutím **oboru** obranné otevře výběr oboru, který ukazuje fakturační účty, skupinu root management a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** tlačítko dole. Když přejdete k podrobnostem vnořené obory (například skupiny prostředků v rámci předplatného), klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, <scope>**  tlačítko v horní části Výběr oboru.
+Zahrnout všechna zobrazení Cost Management na webu Azure Portal **oboru** obranné v levé horní části zobrazení. Můžete rychle změnit obor. Klikněte na tlačítko **oboru** obranné otevřete výběr oboru. Zobrazuje fakturační účty, skupiny pro správu kořenového a pokud je jakékoliv předplatné, které nejsou vnořené pod skupinu root management. Chcete-li vybrat rozsah, klikněte na pozadí požadovanou položku zvýrazněte a pak klikněte na tlačítko **vyberte** v dolní části. Přejít do vnořené obory, jako jsou skupiny prostředků v předplatném, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na libovolné úrovni vnořené, klikněte na tlačítko **tuto možnost vyberte, &lt;oboru&gt;**  v horní části Výběr oboru.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Určení ID prostředku pro obor
 
@@ -218,7 +218,7 @@ Při práci s rozhraními API služby Cost Management je vědět, že obor je ve
 4. Zkopírujte hodnotu pole ID prostředku.
 5. Váš obor je: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Služba Cost Management je aktuálně podporován ve Azure globální (https://management.azure.com) a Azure Government (https://management.usgovcloudapi.net). Další informace o službě Azure Government najdete v tématu [koncových bodů rozhraní API Government a Azure globální](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+Služba Cost Management je aktuálně podporován ve [Azure globální](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net). Další informace o službě Azure Government najdete v tématu [koncových bodů rozhraní API Government a Azure globální](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013570"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -54,7 +54,7 @@ Při prvním spuštění emulátoru úložiště Místní úložiště prostřed
 Emulátor úložiště je nainstalovaný ve výchozím nastavení `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`.
 
 > [!TIP]
-> Můžete použít [Microsoft Azure Storage Explorer](http://storageexplorer.com) pro práci s prostředky emulátor místního úložiště. Vyhledejte "(vývoj)" v části "Účty" ve stromové struktuře Průzkumníka služby Storage prostředků po instalaci a spuštění emulátoru úložiště.
+> Můžete použít [Microsoft Azure Storage Explorer](https://storageexplorer.com) pro práci s prostředky emulátor místního úložiště. Vyhledejte "(vývoj)" v části "Účty" ve stromové struktuře Průzkumníka služby Storage prostředků po instalaci a spuštění emulátoru úložiště.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Inicializovat emulátor úložiště k použití jiné databáze SQL
@@ -64,15 +64,15 @@ Nástroj příkazového řádku emulátor úložiště můžete inicializovat em
 1. Otevřete okno konzoly emulátor úložiště, jak je popsáno v [Start a inicializovat emulátor úložiště](#start-and-initialize-the-storage-emulator) oddílu.
 1. V okně konzoly, zadejte následující příkaz, kde `<SQLServerInstance>` je název instance systému SQL Server. Chcete-li použít databázi LocalDB, zadejte `(localdb)\MSSQLLocalDb` jako instanci systému SQL Server.
 
-  `AzureStorageEmulator.exe init /server <SQLServerInstance>`
+   `AzureStorageEmulator.exe init /server <SQLServerInstance>`
 
-  Můžete také použít následující příkaz, který přesměruje emulátor používat výchozí instanci SQL serveru:
+   Můžete také použít následující příkaz, který přesměruje emulátor používat výchozí instanci SQL serveru:
 
-  `AzureStorageEmulator.exe init /server .`
+   `AzureStorageEmulator.exe init /server .`
 
-  Nebo můžete použít následující příkaz, který znovu inicializuje databázi na instanci LocalDB výchozí:
+   Nebo můžete použít následující příkaz, který znovu inicializuje databázi na instanci LocalDB výchozí:
 
-  `AzureStorageEmulator.exe init /forceCreate`
+   `AzureStorageEmulator.exe init /forceCreate`
 
 Další informace o těchto příkazech najdete v tématu [odkaz na nástroj příkazového řádku emulátor úložiště](#storage-emulator-command-line-tool-reference).
 
@@ -91,7 +91,7 @@ Další informace o připojovacích řetězcích najdete v tématu [připojovac�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Některé knihovny klienta úložiště Azure, jako je například knihovna pro Xamarin, podporují pouze ověřování pomocí token sdíleného přístupového podpisu (SAS). Můžete vytvořit token SAS pomocí některého nástroje, například [Průzkumníka služby Storage](http://storageexplorer.com/) nebo jinou aplikaci, která podporuje ověřování pomocí sdíleného klíče.
+Některé knihovny klienta úložiště Azure, jako je například knihovna pro Xamarin, podporují pouze ověřování pomocí token sdíleného přístupového podpisu (SAS). Můžete vytvořit token SAS pomocí některého nástroje, například [Průzkumníka služby Storage](https://storageexplorer.com/) nebo jinou aplikaci, která podporuje ověřování pomocí sdíleného klíče.
 
 SAS token můžete vygenerovat také pomocí Azure Powershellu. Následující příklad generuje token SAS s úplnými oprávněními pro kontejner objektů blob:
 
@@ -281,4 +281,4 @@ Oprava chyby, kde se vrací emulátor úložiště `DataServiceVersion` záhlav�
 
 * Vyhodnocení emulátor úložiště napříč platformami, Udržovat komunity open source [Azurite](https://github.com/arafato/azurite). 
 * [Ukázky pro Azure Storage pomocí .NET](../storage-samples-dotnet.md) obsahuje odkazy na několik vzorových kódů můžete použít při vývoji vaší aplikace.
-* Můžete použít [Microsoft Azure Storage Explorer](http://storageexplorer.com) pro práci s prostředky ve vašem cloudovém účtu úložiště a v emulátoru úložiště.
+* Můžete použít [Microsoft Azure Storage Explorer](https://storageexplorer.com) pro práci s prostředky ve vašem cloudovém účtu úložiště a v emulátoru úložiště.

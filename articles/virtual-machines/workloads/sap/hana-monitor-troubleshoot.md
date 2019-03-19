@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fb81dd5bb94e09ba3583658a61e5c7cb8a74cf6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014398"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Monitorování a řešení potíží s ze strany HANA
 
@@ -65,7 +65,7 @@ Graf zatížení může zobrazovat vysoké využití procesoru nebo vysoké vyu�
 
 Upozornění aktivuje z důvodu vysoké využití procesoru může být způsobeno několika důvodů, včetně, ale nikoli výhradně: provádění určitých transakce, načítání dat, předsazení úloh dlouho běžící příkazy SQL a výkonu neplatný dotaz (například s BW on HANA datové krychle).
 
-Odkazovat [SAP, řešení potíží s HANA: Související způsobí, že využití procesoru a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
+Odkazovat [SAP, řešení potíží s HANA: Související způsobí, že využití procesoru a řešení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
 ## <a name="operating-system"></a>Operační systém
 
@@ -87,7 +87,7 @@ Podívat se, že množství paměti přidělené v databázi SAP HANA větší n
 - Využití paměti hlavní úložiště tabulek sloupec Store (45 výstrah)
 - Soubory s výpisem paměti modulu CLR (upozornění 46)
 
-Odkazovat [SAP, řešení potíží s HANA: Problémy s pamětí](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
+Odkazovat [SAP, řešení potíží s HANA: Problémy s pamětí](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
 ## <a name="network"></a>Síť
 
@@ -104,7 +104,7 @@ Odkazovat na [SAP Poznámka #2081065 – řešení potíží s SAP HANA sítě](
 
 Navíc pomocí open source [IPERF](https://iperf.fr/) nástroje (nebo podobnou) k měření aplikace skutečný výkon sítě.
 
-Odkazovat [SAP, řešení potíží s HANA: Výkon sítě a potíže s připojením k](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
+Odkazovat [SAP, řešení potíží s HANA: Výkon sítě a potíže s připojením k](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
 ## <a name="storage"></a>Storage
 
@@ -116,7 +116,7 @@ Připojené svazky v dolní části obrazovky uvidíte podrobnosti svazků, jako
 
 ![Připojené svazky v dolní části obrazovky uvidíte podrobnosti svazků, jako jsou soubory a Statistika](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Odkazovat [SAP, řešení potíží s HANA: Vstupně-výstupní operace související s hlavní příčiny a řešení](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) a [SAP, řešení potíží s HANA: Související hlavní příčiny potíží a řešení disku](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
+Odkazovat [SAP, řešení potíží s HANA: Vstupně-výstupní operace související s hlavní příčiny a řešení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) a [SAP, řešení potíží s HANA: Související hlavní příčiny potíží a řešení disku](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) lokality podrobné kroky pro řešení potíží.
 
 ## <a name="diagnostic-tools"></a>Diagnostické nástroje
 

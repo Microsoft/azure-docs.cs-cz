@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 19895ef706ab5a5ec0aa390465ce260e68d71d78
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2da6a5c93d4bf4fcf8763be47b9eb629b930e3b3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903107"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843469"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč zakázána svoje předplatné Azure a jak ho znovu?
 
@@ -36,7 +36,7 @@ Když zaregistrujete bezplatný účet Azure, získáte bezplatné zkušební p�
 Předplatná Azure s kreditem například bezplatnou zkušební verzi a Visual Studio Enterprise mají limitech útraty na ně. To znamená, že smíte používat jenom služby až po zahrnuté kredit. Pokud vaše využití dosáhne limitu útraty, Azure zakáže vaše předplatné pro zbývající daném fakturačním období. Vaše předplatné je zakázané, aby neúmyslně nechcete poplatky za využití nad rámec kredit součástí vašeho předplatného. Pokud chcete odebrat limit útraty, naleznete v tématu [odebrat limit útraty v centru účtů](billing-spending-limit.md#remove).
 
 > [!NOTE] 
-> Pokud máte bezplatnou zkušební verzi předplatného a odebrat limit útraty, vaše předplatné převede na průběžné platby na konci této bezplatné zkušební verze. Zbývající kredit si zachováte plnou 30 dnů po vytvoření předplatného. Máte také přístup k bezplatné služby po dobu 12 měsíců.
+> Pokud máte bezplatnou zkušební verzi předplatného a odebrat limit útraty, vaše předplatné převede na průběžné platby na konci této bezplatné zkušební verze. Zbývající kredit si zachováte plnou 30 dnů po vytvoření předplatného. Také budete mít 12měsíční přístup k bezplatným službám.
 
 Monitorovat a řídit fakturaci pro Azure najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
@@ -63,4 +63,4 @@ U jiných typů předplatného [obraťte se na podporu](https://portal.azure.com
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

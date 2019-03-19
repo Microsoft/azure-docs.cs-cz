@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 296005f68592a8c89f3ec78da8ece4d1741f253f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874456"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880819"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for MariaDB pomocí webu Azure Portal
 
@@ -72,11 +72,11 @@ Služba Azure Database for MariaDB vytváří bránu firewall na úrovni serveru
 
 Vytvoření pravidla brány firewall na úrovni serveru:
 
-1.   Po dokončení nasazení přejděte ke svému serveru. V případě potřeby ho můžete vyhledat. V nabídce vlevo vyberte například **Všechny prostředky**. Pak zadejte název serveru. Například nově vytvořený server vyhledáte zadáním**mydemoserver**. Vyberte název serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru. Na této stránce můžete měnit další nastavení.
+1. Po dokončení nasazení přejděte ke svému serveru. V případě potřeby ho můžete vyhledat. V nabídce vlevo vyberte například **Všechny prostředky**. Pak zadejte název serveru. Například nově vytvořený server vyhledáte zadáním**mydemoserver**. Vyberte název serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru. Na této stránce můžete měnit další nastavení.
 
 2. Na stránce přehledu serveru vyberte **Zabezpečení připojení**.
 
-3.  V části **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. Určete přesný rozsah IP adres klientů, kteří se budou připojovat k tomuto serveru.
+3. V části **Pravidla brány firewall** vyberte prázdné textové pole ve sloupci **Název pravidla** a začněte vytvářet pravidlo brány firewall. Určete přesný rozsah IP adres klientů, kteří se budou připojovat k tomuto serveru.
    
    ![Zabezpečení připojení – Pravidla brány firewall](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
@@ -94,7 +94,7 @@ Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný
 
 2. Pokud chcete tyto hodnoty zkopírovat, umístěte kurzor na pole, které chcete zkopírovat. Napravo od textu se zobrazí ikona kopírování. Podle potřeby hodnoty zkopírujte výběrem ikony kopírování.
 
-V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>Připojení ke službě Azure Database for MariaDB pomocí příkazového řádku mysql
 
@@ -103,9 +103,9 @@ Pro připojení k serveru Azure Database for MariaDB můžete použít řadu apl
 Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazový řádek [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html). Můžete použít také webový prohlížeč a Azure Cloud Shell, a to bez instalace softwaru. Pokud máte nástroj mysql nainstalovaný místně, můžete se připojit i z něj.
 
 1. Spusťte Azure Cloud Shell pomocí ikony terminálu (**>_**) na pravém horním panelu nástrojů na webu Azure Portal.
-![Symbol terminálu Azure Cloud Shell](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
+   ![Symbol terminálu Azure Cloud Shell](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
 
-2.  Ve vašem prohlížeči se otevře Azure Cloud Shell. Ve službě Cloud Shell můžete používat příkazy prostředí Bash.
+2. Ve vašem prohlížeči se otevře Azure Cloud Shell. Ve službě Cloud Shell můžete používat příkazy prostředí Bash.
 
    ![Příkazový řádek – příklad příkazového řádku mysql](./media/quickstart-create-mariadb-server-database-using-azure-portal/8-bash.png)
 
@@ -126,7 +126,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     Parametr mysql |Navrhovaná hodnota|Popis
     ---|---|---
     --host | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mariadb.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
-    --user | *přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    --user | *přihlašovací jméno správce serveru* |Přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
     -p | *Vaše heslo*<br>(počkejte na zobrazení výzvy) |Po zobrazení výzvy zadejte heslo, které jste použili při vytváření serveru. Při zadávání hesla se na příkazovém řádku Bash zadávané znaky nezobrazí. Po zadání hesla stiskněte Enter.
 
    Jakmile se nástroj mysl připojí, zobrazí se příkazový řádek `mysql>`. Na tomto příkazovém řádku můžete zadávat příkazy. 
@@ -165,14 +165,14 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
    > [!TIP]
    > Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-5.  Zadáním následujícího příkazu na příkazovém řádku `mysql>` vytvořte prázdnou databázi:
+5. Zadáním následujícího příkazu na příkazovém řádku `mysql>` vytvořte prázdnou databázi:
 
-    ```sql
-    CREATE DATABASE quickstartdb;
-    ```
-    Dokončení příkazu může trvat několik minut. 
+   ```sql
+   CREATE DATABASE quickstartdb;
+   ```
+   Dokončení příkazu může trvat několik minut. 
 
-    Na serveru Azure Database for MariaDB můžete vytvořit jednu nebo několik databází. Pro každý server můžete vytvořit jednu databázi, která bude využívat všechny prostředky, nebo několik databází, které budou prostředky sdílet. Neexistuje žádné omezení počtu databází, které můžete vytvořit, ale více databází sdílí stejné prostředky serveru. 
+   Na serveru Azure Database for MariaDB můžete vytvořit jednu nebo několik databází. Pro každý server můžete vytvořit jednu databázi, která bude využívat všechny prostředky, nebo několik databází, které budou prostředky sdílet. Neexistuje žádné omezení počtu databází, které můžete vytvořit, ale více databází sdílí stejné prostředky serveru. 
 
 6. Pokud chcete zobrazit seznam databází, na příkazovém řádku `mysql>` zadejte následující příkaz:
 
@@ -180,7 +180,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     SHOW DATABASES;
     ```
 
-7.  Zadejte **\q** a stisknutím klávesy Enter ukončete nástroj mysql. Pak můžete zavřít Azure Cloud Shell.
+7. Zadejte **\q** a stisknutím klávesy Enter ukončete nástroj mysql. Pak můžete zavřít Azure Cloud Shell.
 
 Připojili jste se k serveru Azure Database for MariaDB a vytvořili jste prázdnou uživatelskou databázi. V další části se ke stejnému serveru připojíte pomocí dalšího běžného nástroje MySQL Workbench.
 
@@ -202,7 +202,7 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
     Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
     Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.mariadb.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
      Port | 3306 | Port, který se má použít při připojování k serveru Azure Database for MariaDB. |
-    Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Uživatelské jméno v našem příkladu je **myadmin@mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *username@servername*.
+    Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Náš příklad uživatelské jméno je **myadmin\@mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *uživatelské jméno\@servername*.
     Heslo | *Vaše heslo* | Výběrem možnosti **Uložit v trezoru** heslo uložte. |
 
 4. Pokud chcete zkontrolovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**. Potom vyberte **OK** a uložte připojení. 
@@ -227,13 +227,13 @@ Odstranění celé skupiny prostředků, včetně nově vytvořeného serveru:
 
 Odstranění pouze nově vytvořeného serveru:
 
-1.  Na webu Azure Portal vyhledejte váš server, pokud ho ještě nemáte otevřený. V nabídce vlevo vyberte **Všechny prostředky**. Pak vyhledejte server, který jste vytvořili.
+1. Na webu Azure Portal vyhledejte váš server, pokud ho ještě nemáte otevřený. V nabídce vlevo vyberte **Všechny prostředky**. Pak vyhledejte server, který jste vytvořili.
 
-2.  Na stránce **Přehled** vyberte **Odstranit**. 
+2. Na stránce **Přehled** vyberte **Odstranit**. 
 
    ![Azure Database for MariaDB – Odstranění serveru](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3.  Potvrďte název serveru, který chcete odstranit. Zobrazte databáze na tomto serveru, které odstranění ovlivní. Potvrďte odstranění zadáním názvu vašeho serveru (v našem příkladě je to**mydemoserver**). Vyberte **Odstranit**.
+3. Potvrďte název serveru, který chcete odstranit. Zobrazte databáze na tomto serveru, které odstranění ovlivní. Potvrďte odstranění zadáním názvu vašeho serveru (v našem příkladě je to**mydemoserver**). Vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 

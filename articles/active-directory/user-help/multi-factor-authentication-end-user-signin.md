@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840867"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication
 > [!NOTE]
@@ -34,7 +34,7 @@ Vaše přihlášení se liší v závislosti na tom, co si přejete použít jak
 | [Pomocí telefonního hovoru na telefon Můj mobilní telefon nebo office](#signing-in-with-a-phone-call) |
 | [S textem do mi na mobilní telefon](#signing-in-with-a-text-message)
 | [Oznámení z aplikace Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| [Pomocí ověřovacích kódů z aplikace Microsoft Authenticator](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
+| Pomocí ověřovacích kódů z aplikace Microsoft Authenticator |
 | [S alternativní metodu protože nelze použít upřednostňovanou metodu hned teď](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Přihlášení pomocí telefonního hovoru
@@ -58,7 +58,7 @@ Následující informace popisují funkce pomocí aplikace Microsoft Authenticat
 1. Přihlaste se k aplikaci nebo službu, jako je Office 365 pomocí uživatelského jména a hesla.
 2. Microsoft pošle oznámení do aplikace Microsoft Authenticator na vašem zařízení.
 
-  ![Microsoft pošle oznámení](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Microsoft pošle oznámení](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. Otevřete oznámení na telefon a vyberte **ověřte** klíč. Pokud vaše společnost vyžaduje, PIN kód, zadejte ho sem.
 4. By měla nyní být přihlásíte.
@@ -70,7 +70,7 @@ Pokud používáte aplikaci Microsoft Authenticator získat ověřovací kódy, 
 1. Přihlaste se k aplikaci nebo službu, jako je Office 365 pomocí uživatelského jména a hesla.
 2. Microsoft vás vyzve k zadání ověřovacího kódu.
 
-  ![Zadejte ověřovací kód.](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Zadejte ověřovací kód.](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Otevřete aplikaci Microsoft Authenticator na vašem telefonu a zadejte kód do pole, ve kterém se přihlašujete.
 
@@ -81,7 +81,7 @@ Někdy není nutné telefonu nebo zařízení, které jste nastavili jako vaše 
 2. Vyberte **použít jinou možnost ověření**. Zobrazí možnosti různých ověřování založené na kolik máte nastavený.
 3. Zvolte alternativní metodu a přihlaste se.
 
-  ![Použití alternativní metody](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Použití alternativní metody](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Další postup
 - Pokud máte potíže při přihlašování pomocí dvoustupňového ověření, získejte další informace na [potíže s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).

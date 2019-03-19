@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 02/07/2019
 ms.author: lahugh
-ms.openlocfilehash: 734c16111ab859b55d87525cdc8a644c8114f6d2
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874757"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure proměnné prostředí výpočetních uzlů služby Batch
 
@@ -62,7 +62,6 @@ Příkazové řádky provedených úloh na výpočetních uzlech nespouštějte 
 | AZ_BATCH_TASK_DIR               | Úplná cesta [adresáře úkolu] [ files_dirs] na uzlu. Tento adresář obsahuje `stdout.txt` a `stderr.txt` úkolu a AZ_BATCH_TASK_WORKING_DIR. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy, s výjimkou spuštění úlohy. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Cestu k adresáři, který je stejný jako primární úlohy a každý dílčí úkol [úkoly s více instancemi][multi_instance]. Cesta existuje na všech uzlech, na kterém více instancemi úloha běží a je pro čtení/zápis přístupné pro příkazy úlohy běžící na tomto uzlu (jak [koordinace příkaz] [ coord_cmd] a [ příkaz aplikace][app_cmd]). Dílčí úkoly nebo primární úkol spustit na jiných uzlech nemají vzdálený přístup k tomuto adresáři (není adresář "sdílené"). | Primární více instancemi a dílčí úkoly. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
-| AZ_BATCH_TASK_SHARED_DIR        | Společný adresář pro uložení dat určené ke sdílení mezi úkoly na uzlu. | Všechny úlohy. | C:\user\tasks\shared |
 | AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu] [ files_dirs] na uzlu. Aktuálně spuštěná úloha má přístup pro čtení a zápis do tohoto adresáře. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | Seznam uzlů a počet jader na uzel, který jsou přiděleny [úkoly s více instancemi][multi_instance]. Uzly a počet jader, které jsou uvedeny ve formátu `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde počet uzlů následuje jedna nebo víc IP adres uzlu a počet jader pro každý. |  Primární více instancemi a dílčí úkoly. |`2 10.0.0.4 1 10.0.0.5 1` |
 

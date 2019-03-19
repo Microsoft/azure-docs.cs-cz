@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078752"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytuje partnerů Microsoftu, cíl připojení zákazníků služby na podporu a rozšiřují jejich používání Azure a obchodních cílů. 
@@ -41,12 +41,12 @@ Prodejní místa jsou v souladu s cílovým skupinám na místě a produkty spol
 
 Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a Power BI mají nárok na uvedené na AppSource. Další informace najdete v tématu [Microsoft AppSource konzultačních služeb pokyny pro výpis](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
->[!Note]
->Konzultační služby na webu Azure Marketplace by je měli využít nabídky zaměřena ** technické cílovou skupinu se zaměřuje na *technická řešení a služeb Azure.* ** Konzultační služby v AppSource by je měli využít nabídky zaměřených na své znalosti v zajištění kvality řešení pro Dynamics 365, Power BI nebo PowerApps seznamu svých nabídek konzultační služby na AppSource
-
-
->[!TIP]
->Pokud chcete publikovat webu Azure Marketplace z prodejních míst, provedete výběr zvolením "Azure" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu. Chcete-li publikovat na webu AppSource, bude zařaďte tuto volbu výběrem "Dynamics 365," "Power BI" nebo "Powerapps" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu.
+> [!Note]
+> Konzultační služby na webu Azure Marketplace by je měli využít nabídky zaměřena ** technické cílovou skupinu se zaměřuje na *technická řešení a služeb Azure.* ** Konzultační služby v AppSource by je měli využít nabídky zaměřených na své znalosti v zajištění kvality řešení pro Dynamics 365, Power BI nebo PowerApps seznamu svých nabídek konzultační služby na AppSource
+> 
+> 
+> [!TIP]
+> Pokud chcete publikovat webu Azure Marketplace z prodejních míst, provedete výběr zvolením "Azure" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu. Chcete-li publikovat na webu AppSource, bude zařaďte tuto volbu výběrem "Dynamics 365," "Power BI" nebo "Powerapps" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu.
 
 ## <a name="eligible-partners-and-supported-countries"></a>Pro partnery s nárokem a podporované země
 
@@ -56,7 +56,7 @@ Partneři musí mít **stříbrné nebo zlaté úrovně kompetence** v příslu�
 
 |S kompetencí  |Oblast řešení  |
 |---------|---------|
-|Cloudová platforma a infrastruktura     |   Cloudová platforma, datového centra      |
+|Cloudová platforma a infrastruktura     |   Cloud Platform, Data Center      |
 |Vývoj aplikací a nezávislé výrobce softwaru     |  DevOps Application Development, integrace aplikací       |
 |Správa dat a analýz    |  Analýza dat, datová platforma       |
 

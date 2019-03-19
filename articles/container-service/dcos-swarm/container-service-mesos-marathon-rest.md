@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ec264eb31bd1243f683ab99bf19b871b08253ef7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532390"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109286"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(NEPOUŽÍVANÉ) Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
 
@@ -124,8 +124,6 @@ Z tunelového připojení spusťte následující příkaz pro horizontální na
 
 > [!NOTE]
 > Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, která je k dispozici, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
-> 
-> 
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -183,8 +181,6 @@ Spusťte následující příkaz pro horizontální navýšení kapacity aplikac
 
 > [!NOTE]
 > Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, které jsou k dispozici zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
-> 
-> 
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

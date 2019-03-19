@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 895499865fb1d47669fcca2aeaa571b2fb79237b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100458"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
@@ -52,7 +52,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 
        Odebrání koncového bodu služby, zrušte výběr služby, kterou chcete odstranit koncový bod služby pro. Další informace o koncových bodů služby a služby, je možné povolit pro najdete v tématu [přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md). Po povolení koncového bodu služby pro službu, musíte také povolit přístup k síti, podsíti pro prostředek vytvořený ve službě. Například, pokud povolíte koncový bod služby pro *Microsoft.Storage*, musíte také povolit síťový přístup všem účtům Azure Storage, kterým chcete udělit přístup k síti na. Podrobnosti o tom, jak povolit přístup k síti na podsítě, které je povolený koncový bod služby pro, najdete v dokumentaci pro jednotlivé služby povolíte koncový bod služby pro.
 
-    Chcete-li ověřit, že koncový bod služby je povolená pro určitou podsíť, zobrazte [efektivní trasy](diagnose-network-routing-problem.md) u všech síťových rozhraních v podsíti. Když je nakonfigurovaný koncový bod, zobrazí *výchozí* trasy s předpony adres služby a typ dalšího segmentu z **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+     Chcete-li ověřit, že koncový bod služby je povolená pro určitou podsíť, zobrazte [efektivní trasy](diagnose-network-routing-problem.md) u všech síťových rozhraních v podsíti. Když je nakonfigurovaný koncový bod, zobrazí *výchozí* trasy s předpony adres služby a typ dalšího segmentu z **VirtualNetworkServiceEndpoint**. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
 6. Chcete-li přidat podsíť pro virtuální síť, kterou jste vybrali, **OK**.
 
 **Příkazy**

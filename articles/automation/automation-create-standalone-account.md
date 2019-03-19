@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 197d7529a52b400cd078ead79bbb6db5f5849ee6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093173"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -62,12 +62,12 @@ Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte nás
 
 1. Na další obrazovce vyberte **vytvořit**.
 
-  ![Přidat účet služby Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+   ![Přidat účet služby Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
-  > [!NOTE]
-  > Pokud se zobrazí následující zpráva **přidat účet Automation** podokno, váš účet není členem role správců předplatného a spolusprávce předplatného.
-  >
-  > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-without-perms.png)
+   > [!NOTE]
+   > Pokud se zobrazí následující zpráva **přidat účet Automation** podokno, váš účet není členem role správců předplatného a spolusprávce předplatného.
+   >
+   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-without-perms.png)
 
 1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán. *Názvy účtů Automation jsou na oblast a skupinu prostředků jedinečné. Názvy pro účty Automation, které se odstranily nemusí být hned dostupné.*
 1. Pokud máte více než jedno předplatné, v **předplatné** , určete předplatné, které chcete použít pro nový účet.
@@ -75,13 +75,13 @@ Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte nás
 1. Pro **umístění**, vyberte umístění datového centra Azure.
 1. Pro **vytvoření účtu Azure spustit jako** možnost, ujistěte se, že **Ano** je vybrané a pak vyberte **vytvořit**.
 
-  > [!NOTE]
-  > Pokud se rozhodnete vytvořit účet Spustit jako výběrem **č** pro **vytvoření účtu Azure spustit jako**, zobrazí se zpráva v **přidat účet Automation** podokně. I když je účet vytvořený na webu Azure Portal, nemá účet odpovídající identitu ověřování ve vašem předplatném modelu nasazení classic nebo v adresářové službě předplatného Azure Resource Manageru. Účet Automation proto nemá přístup k prostředkům ve vašem předplatném. To zabraňuje všechny runbooky odkazující na tento účet tomu nebudou moct ověřit a provádět úlohy s prostředky v těchto modelech nasazení.
-  >
-  > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
-  >
-  > Pokud nevytvoříte objekt služby, nebude přiřazená role přispěvatele.
-  >
+   > [!NOTE]
+   > Pokud se rozhodnete vytvořit účet Spustit jako výběrem **č** pro **vytvoření účtu Azure spustit jako**, zobrazí se zpráva v **přidat účet Automation** podokně. I když je účet vytvořený na webu Azure Portal, nemá účet odpovídající identitu ověřování ve vašem předplatném modelu nasazení classic nebo v adresářové službě předplatného Azure Resource Manageru. Účet Automation proto nemá přístup k prostředkům ve vašem předplatném. To zabraňuje všechny runbooky odkazující na tento účet tomu nebudou moct ověřit a provádět úlohy s prostředky v těchto modelech nasazení.
+   >
+   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   >
+   > Pokud nevytvoříte objekt služby, nebude přiřazená role přispěvatele.
+   >
 
 1. Chcete-li sledovat průběh vytváření účtu Automation, v nabídce vyberte **oznámení**.
 

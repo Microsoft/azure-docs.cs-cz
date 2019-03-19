@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e19e21ab31fcee87aac6e7e8a0e1d0fbd0a7452c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409903"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893200"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Při migraci vašeho zprostředkovatele identity Azure Active Directory B2C (Azure AD B2C), budete pravděpodobně potřebovat k migraci uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z libovolného poskytovatele identit do Azure AD B2C. Článek neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnost obou těchto přístupů.
@@ -63,7 +63,7 @@ Migrace aplikace nejprve zaregistrujte ve službě Azure AD. Potom vytvořte kl�
 1. Vytvoření nové aplikace následujícím způsobem:
    - Pro **název**, použijte **B2CUserMigration** nebo žádným jiným názvem, který chcete.
    - Pro **typ aplikace**, použijte **webové aplikace nebo rozhraní API**.
-   - Pro **přihlašovací adresa URL**, použijte **https://localhost** (protože není relevantní pro tuto aplikaci).
+   - Pro **přihlašovací adresa URL**, použijte `https://localhost` (protože není relevantní pro tuto aplikaci).
    - Vyberte **Vytvořit**.
    
 1. Po vytvoření aplikace, v **aplikací** vyberte nově vytvořený **B2CUserMigration** aplikace.
@@ -94,7 +94,7 @@ Teď máte aplikaci s oprávněním vytvářet, číst a aktualizovat uživatele
 Čtení a zápis adresář dat oprávnění provést *není* zahrnovat právo odstranit uživatele. K vaší aplikaci poskytuje možnost odstranit uživatele (Chcete-li vyčistit prostředí), je nutné provést další krok, který zahrnuje spuštění prostředí PowerShell pro nastavení oprávnění správce uživatelských účtů. Jinak můžete přeskočit k další části.
 
 > [!IMPORTANT]
-> Je nutné použít účet správce tenanta B2C, který je *místní* do tenanta B2C. Syntaxe názvu účtu se *admin@contosob2c.onmicrosoft.com*.
+> Je nutné použít účet správce tenanta B2C, který je *místní* do tenanta B2C. Syntaxe názvu účtu se *správce\@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > Následující skript prostředí PowerShell vyžaduje [Azure Active Directory PowerShell verze 2][AD-Powershell].

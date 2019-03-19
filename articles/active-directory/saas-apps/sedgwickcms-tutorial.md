@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7783da2e3e5fe2ee79942b246e452ad7998e278
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Kurz: Integrace Azure Active Directory s Sedgwick CMS
 
@@ -112,12 +112,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Sedgwick CMS domény a adresy URL jednotného přihlašování – informace](./media/sedgwickcms-tutorial/tutorial_sedgwickcms_url.png)
 
     a. V **identifikátor** textového pole zadejte adresu URL: 
+
     | |
     |--|
     | `expresspreview.sedgwickcms.net/voe/sso` |
     | `claimlookup.com/Voe/sso` |
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<subdomain>.sedgwickcms.net/voe/sso` |

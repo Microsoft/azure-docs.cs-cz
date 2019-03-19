@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101461"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Vytvoření kontroly z konzoly pro rozhraní API
 
@@ -33,35 +33,35 @@ Mohli vyzkoušet rozhraní API pomocí konzole online, budete potřebovat někol
 
 Nejjednodušší způsob, jak přistupovat k testovací konzoly je z **pověření** okna.
 
-1.  V **pověření** okně [reference k rozhraní API pro kontrolu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+1. V **pověření** okně [reference k rozhraní API pro kontrolu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-  **Zkontrolovat – vytvoření** otevře se stránka.
+   **Zkontrolovat – vytvoření** otevře se stránka.
 
-2.  Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
 
-  ![Zkontrolujte: vytvoření stránky oblast výběru](images/test-drive-region.png)
+   ![Zkontrolujte: vytvoření stránky oblast výběru](images/test-drive-region.png)
 
-  **Zkontrolovat – vytvoření** otevře se konzola rozhraní API.
+   **Zkontrolovat – vytvoření** otevře se konzola rozhraní API.
   
-3.  Zadejte hodnoty pro požadované parametry dotazu, typu obsahu a klíč předplatného. V **text žádosti** zadejte obsah (například umístění bitové kopie), metadata a další informace související s obsahem.
+3. Zadejte hodnoty pro požadované parametry dotazu, typu obsahu a klíč předplatného. V **text žádosti** zadejte obsah (například umístění bitové kopie), metadata a další informace související s obsahem.
 
-  ![Projděte si – vytvoření parametry dotazu konzoly, záhlaví a pole textu požadavku](images/test-drive-review-1.PNG)
+   ![Projděte si – vytvoření parametry dotazu konzoly, záhlaví a pole textu požadavku](images/test-drive-review-1.PNG)
   
-4.  Vyberte **Poslat**. ID revize se vytvoří. Zkopírujte toto ID se má použít v následujících krocích.
+4. Vyberte **Poslat**. ID revize se vytvoří. Zkopírujte toto ID se má použít v následujících krocích.
 
-  ![Projděte si – vytvoření konzoly odpovědi obsahu pole se zobrazí ID revize](images/test-drive-review-2.PNG)
+   ![Projděte si – vytvoření konzoly odpovědi obsahu pole se zobrazí ID revize](images/test-drive-review-2.PNG)
   
-5.  Vyberte **získat**a pak otevřete rozhraní API tak, že vyberete tlačítko, které odpovídá vaší oblasti. Na stránce výsledný zadejte hodnoty pro **teamName**, **ReviewID**, a **klíč předplatného**. Vyberte **odeslat** tlačítko na stránce. 
+5. Vyberte **získat**a pak otevřete rozhraní API tak, že vyberete tlačítko, které odpovídá vaší oblasti. Na stránce výsledný zadejte hodnoty pro **teamName**, **ReviewID**, a **klíč předplatného**. Vyberte **odeslat** tlačítko na stránce. 
 
-  ![Projděte si – vytvoření konzoly získat výsledky](images/test-drive-review-3.PNG)
+   ![Projděte si – vytvoření konzoly získat výsledky](images/test-drive-review-3.PNG)
   
-6.  Zobrazí se výsledky kontroly.
+6. Zobrazí se výsledky kontroly.
 
-  ![Projděte si – vytvoření pole obsahu odpovědi konzoly](images/test-drive-review-4.PNG)
+   ![Projděte si – vytvoření pole obsahu odpovědi konzoly](images/test-drive-review-4.PNG)
   
-7.  Na řídicím panelu Content Moderator, vyberte **revize** > **Image**. Obrázek, který jste se zobrazí, připravena pro recenze prováděné lidmi.
+7. Na řídicím panelu Content Moderator, vyberte **revize** > **Image**. Obrázek, který jste se zobrazí, připravena pro recenze prováděné lidmi.
 
-  ![Zkontrolujte nástroj image soccer koule](images/test-drive-review-5.PNG)
+   ![Zkontrolujte nástroj image soccer koule](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>Další postup
 

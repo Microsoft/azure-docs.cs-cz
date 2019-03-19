@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: ec7221837145db73386f146aa839b83ee23c1510
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863895"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použijte vyhledávání na webu Bingu sady SDK pro Python
 
@@ -81,7 +81,9 @@ Nastavili jste virtuální prostředí a nainstalovali závislosti. Teď vytvoř
 Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskne se první výsledek každé kategorie.
 
 1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
-2. Tento ukázkový kód zkopírujte do svého projektu:  
+
+1. Tento ukázkový kód zkopírujte do svého projektu:  
+
     ```python
     # Import required modules.
     from azure.cognitiveservices.search.websearch import WebSearchAPI
@@ -161,19 +163,22 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
     else:
         print("Didn't find any videos...")
     ```
-3. Hodnotu `subscription_key` nahraďte platným klíčem předplatného.
-4. Spusťte program. Například: `python your_program.py`.
+
+1. Hodnotu `subscription_key` nahraďte platným klíčem předplatného.
+
+1. Spusťte program. Například: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
-Po prvním volání rozhraní API Bingu pro vyhledávání na webu se pojďme podívat na několik funkcí, které doplňují funkce sady SDK o přesnější dotazy a filtrování výsledků. Každou funkci můžete přidat do programu v Pythonu, který jste vytvořili v předchozí části.
+Teď, když jste provedli první volání do rozhraní API webové vyhledávání Bingu, Podívejme se na několik funkcí. V dalších částech zvýrazněte funkce sady SDK pro upřesnění dotazy a filtrování výsledků. Každá funkce lze přidat do programu Python, kterou jste vytvořili v předchozí části.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Omezení počtu výsledků vrácených Bingem
 
-V této ukázce jsou použité parametry `count` a `offset` k omezení počtu výsledků vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce jsou použité parametry `count` a `offset` k omezení počtu výsledků vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Vytiskne se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
-    ```python
+
+   ```python
     # Declare the function.
     def web_results_with_count_and_offset(subscription_key):
         client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
@@ -203,13 +208,15 @@ V této ukázce jsou použité parametry `count` a `offset` k omezení počtu v�
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. Spusťte program.
+
+1. Spusťte program.
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrování zpráv podle stáří
 
-V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
+
     ```python
     # Declare the function.
     def web_search_with_response_filter(subscription_key):
@@ -251,13 +258,15 @@ V této ukázce použijeme parametry `response_filter` a `freshness` k filtrová
     # Call the function.
     web_search_with_response_filter(subscription_key)
     ```
-2. Spusťte program.
+
+1. Spusťte program.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
-V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Zobrazí se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k filtrování výsledků hledání vrácených [metodou `search`](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) sady SDK. Zobrazí se `name` a `url` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
+
     ```python
     # Declare the function.
     def web_search_with_answer_count_promote_and_safe_search(subscription_key):
@@ -294,7 +303,8 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. Spusťte program.
+
+1. Spusťte program.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191183"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108354"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -68,13 +68,13 @@ Dokončete následující postup můžete použít Visual Studio Code. Další i
 
 1. Inicializace projektu .NET a přidat požadované balíčky NuGet, spusťte následující příkazy:
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. Otevřít `pisample` složky ve Visual Studio Code. Otevřete **pisample.csproj** souboru projektu. Přidat `<RuntimeIdentifiers>` značka je znázorněno v následujícím fragmentu kódu:
 
@@ -281,10 +281,10 @@ Přidání konkrétní zařízení připojovací řetězec do kódu pro zaříze
 
 1. V prostředí příkazového řádku spusťte následující příkaz:
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. Kopírovat `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` složku pro Raspberry Pi zařízení. Můžete použít **spojovací bod služby** příkaz pro kopírování souborů, například:
 
@@ -313,13 +313,13 @@ Přidání konkrétní zařízení připojovací řetězec do kódu pro zaříze
 
 1. V aplikaci Azure IoT Central uvidíte, jak kód spuštěný na Raspberry Pi komunikuje s aplikací:
 
-    * Na **měření** stránky pro skutečné zařízení, zobrazí se telemetrie.
-    * Na **vlastnosti** stránky, zobrazí se hodnota hlášení **kostka číslo** vlastnost.
-    * Na **nastavení** stránky, můžete změnit různá nastavení na Raspberry Pi, jako je například napětí a podporuje a rychlost.
+   * Na **měření** stránky pro skutečné zařízení, zobrazí se telemetrie.
+   * Na **vlastnosti** stránky, zobrazí se hodnota hlášení **kostka číslo** vlastnost.
+   * Na **nastavení** stránky, můžete změnit různá nastavení na Raspberry Pi, jako je například napětí a podporuje a rychlost.
 
-    Následující snímek obrazovky ukazuje Raspberry Pi přijetí změny nastavení:
+     Následující snímek obrazovky ukazuje Raspberry Pi přijetí změny nastavení:
 
-    ![Změna nastavení obdrží Raspberry Pi](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Změna nastavení obdrží Raspberry Pi](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Podrobnosti šablony Raspberry PI zařízení

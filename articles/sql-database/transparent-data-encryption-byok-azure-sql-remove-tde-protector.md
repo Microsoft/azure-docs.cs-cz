@@ -11,19 +11,21 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575235"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895166"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 - Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné
 - Musíte mít Azure PowerShell nainstalovaný a spuštěný. 
@@ -85,7 +87,7 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. Odstranit ohrožený klíč ze služby Key Vault pomocí [odebrat AzKeyVaultKey](/powershell/module/az.keyvault/remove-azurekeyvaultkey) rutiny. 
+5. Odstranit ohrožený klíč ze služby Key Vault pomocí [odebrat AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) rutiny. 
 
    ```powershell
    Remove-AzKeyVaultKey `

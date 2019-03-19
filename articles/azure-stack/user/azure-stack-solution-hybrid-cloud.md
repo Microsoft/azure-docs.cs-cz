@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243483"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097316"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Kurz: Nasazení řešení s hybridní cloud s Azure a Azure Stack
 
@@ -65,7 +65,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
   - Image Windows serveru 2016
   - Windows Server 2016 s bitovou kopii systému Microsoft SQL Server
   - Příslušné plány a nabídky
- - A domain name for your web application. Pokud nemáte název domény můžete zakoupit od poskytovatele domény, jako je například GoDaddy, Bluehost a InMotion.
+  - A domain name for your web application. Pokud nemáte název domény můžete zakoupit od poskytovatele domény, jako je například GoDaddy, Bluehost a InMotion.
 - Certifikát SSL od důvěryhodné certifikační autority, jako je například LetsEncrypt vaší domény.
 - Webové aplikace, která komunikuje s databází serveru SQL Server a podporuje Application Insights. Můžete stáhnout [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) ukázkovou aplikaci z Githubu.
 - Hybridní síť mezi virtuální sítí Azure a virtuální sítě Azure Stack. Podrobné pokyny najdete v tématu [konfigurace připojení k hybridní cloud s Azure a Azure Stackem](azure-stack-solution-hybrid-connectivity.md).
@@ -94,19 +94,19 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
 
 7. V části **Nastavení > Konfigurace volitelných funkcí**, nakonfigurujte následující nastavení:
 
-    - **Účet úložiště**. Pokud budete potřebovat vytvořte nový účet.
-    - **Virtuální síť**
+   - **Účet úložiště**. Pokud budete potřebovat vytvořte nový účet.
+   - **Virtuální síť**
 
-      > [!Important]  
-      > Ujistěte se, že váš virtuální počítač s SQL serverem je nasazen ve stejné virtuální síti jako brány sítě VPN.
+     > [!Important]  
+     > Ujistěte se, že váš virtuální počítač s SQL serverem je nasazen ve stejné virtuální síti jako brány sítě VPN.
 
-    - **Veřejná IP adresa:** Můžete použít výchozí nastavení.
-    - **Skupina zabezpečení sítě** (NSG). Vytvoření nové skupiny zabezpečení sítě.
-    - **Monitorování a rozšíření**. Nechte výchozí nastavení.
-    - **Účet úložiště diagnostiky**. Pokud budete potřebovat vytvořte nový účet.
-    - Vyberte **OK** uložte konfiguraci.
+   - **Veřejná IP adresa:** Můžete použít výchozí nastavení.
+   - **Skupina zabezpečení sítě** (NSG). Vytvoření nové skupiny zabezpečení sítě.
+   - **Monitorování a rozšíření**. Nechte výchozí nastavení.
+   - **Účet úložiště diagnostiky**. Pokud budete potřebovat vytvořte nový účet.
+   - Vyberte **OK** uložte konfiguraci.
 
-    ![Konfigurace volitelných funkcí](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![Konfigurace volitelných funkcí](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. V části **nastavení systému SQL Server**, nakonfigurujte následující nastavení:
    - Pro **připojení SQL**kliknutím **veřejné (Internet)**.
@@ -118,7 +118,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
 
    - Pro zbytek nastavení ponechte výchozí nastavení. Vyberte **OK**.
 
-    ![Konfigurace nastavení SQL serveru](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![Konfigurace nastavení SQL serveru](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. Na **Souhrn**, zkontrolujte konfiguraci virtuálního počítače a pak vyberte **OK** ke spuštění nasazení.
 
@@ -251,7 +251,7 @@ Chcete-li přidat SSL ke službě Azure Stack:
 
 Budete konfigurovat kód aplikace, který sestavu telemetrických dat do správné instanci Application Insights a konfigurace webové aplikace pomocí správný připojovací řetězce. Další informace o Application Insights najdete v tématu [co je Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
-### <a name="add-application-insights"></a>Přidat Application Insights
+### <a name="add-application-insights"></a>Přidat službu Application Insights
 
 1. Otevřete webové aplikace v sadě Microsoft Visual Studio.
 
@@ -391,7 +391,7 @@ Vytvoříte profil Traffic Manageru v Azure a pak nakonfigurujte koncové body u
 
     ![Vytvořit profil služby Traffic Manager](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- Po dokončení globálního nasazení profilu Traffic Manageru se zobrazí v seznamu prostředků pro skupinu prostředků, kterou jste vytvořili, ho pod.
+   Po dokončení globálního nasazení profilu Traffic Manageru se zobrazí v seznamu prostředků pro skupinu prostředků, kterou jste vytvořili, ho pod.
 
 ### <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
