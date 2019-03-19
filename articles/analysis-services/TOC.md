@@ -43,8 +43,6 @@
 ### [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)
 
 ## Model
-### [Import souboru Power BI Desktop](analysis-services-import-pbix.md)
-### [Vytvoření modelu na webu Azure Portal (Preview)](analysis-services-create-model-portal.md)
 ### [Nasazení ze sady Visual Studio (SSDT)](analysis-services-deploy.md)
 ### [Aktualizace pomocí REST API](analysis-services-async-refresh.md)
 ### [Modelování dat v sadě Visual Studio – Kurz k Adventure Works (1400)](tutorials/aas-adventure-works-tutorial.md)
@@ -78,6 +76,7 @@
 
 ## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
+## [Šablona Resource Manageru](/azure/templates/microsoft.analysisservices/servers)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Jazyk TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
@@ -96,13 +95,3 @@
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [Videa](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
-
-
-
-
-
-
-
-
-
-

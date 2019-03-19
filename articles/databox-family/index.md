@@ -1,6 +1,6 @@
 ---
 title: Dokumentace ke službě Azure Data Box
-description: Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.
+description: 'Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.'
 services: databox
 author: alkohli
 manager: twooley
@@ -11,16 +11,10 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157101"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Řada Azure Data Box nabízí produkty s různou úložnou kapacitou, které pomáhají rychle, spolehlivě a bez velkých nákladů odesílat do Azure terabajty (TB) dat. Microsoft urychluje zabezpečený přenos dat dodávkou vlastnických úložných zařízení, která umožňují přenos dat offline nebo přes síť.</p>
-
 <h2>Offline přenos dat</h2>
 <p>Pro omezenou (nebo žádnou) šířku pásma sítě</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -79,7 +73,6 @@ ms.locfileid: "54157101"
         </a>
     </li>
 </ul>
-
 <h2>Online přenos dat</h2>
 <p>Pro síťový přenos</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -120,3 +113,4 @@ ms.locfileid: "54157101"
         </a>
     </li>
 </ul>
+</div>

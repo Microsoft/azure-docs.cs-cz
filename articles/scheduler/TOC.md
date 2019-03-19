@@ -32,7 +32,7 @@
 ## [Plán služby Azure Scheduler](https://azure.microsoft.com/updates/?product=scheduler)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/updates/)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Ceny](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=scheduler)

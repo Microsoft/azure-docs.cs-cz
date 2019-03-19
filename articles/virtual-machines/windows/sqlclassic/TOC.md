@@ -20,7 +20,7 @@
 ### [Použití rozšíření agenta SQL Server IaaS](virtual-machines-windows-classic-sql-server-agent-extension.md)
 ### [Automatizované opravy](virtual-machines-windows-classic-sql-automated-patching.md)
 ### [Integrace se službou Azure Key Vault](virtual-machines-windows-classic-ps-sql-keyvault.md)
-### [Použití služby Storage úrovně Premium](virtual-machines-windows-classic-sql-server-premium-storage.md)
+### [Použití služby Premium Storage](virtual-machines-windows-classic-sql-server-premium-storage.md)
 ### [Aspekty zabezpečení](../sql/virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## Zálohování a obnovení
 ### [Zálohování a obnovení](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
@@ -40,11 +40,11 @@
 ## [Ovladače SQL Serveru](https://docs.microsoft.com/sql/connect/sql-server-drivers)
 ## [REST](/rest/api/)
 
-# Zdroje
+# Zdroje a prostředky
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
 ## [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 ## [Nástroje SQL Serveru](https://docs.microsoft.com/sql/tools/overview-sql-tools)
-## [Stack Overflow](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
+## [Stack Overflow](https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
 
