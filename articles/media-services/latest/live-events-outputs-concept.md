@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189355"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -150,5 +150,4 @@ Další informace najdete v tématu [pomocí cloudového DVR](live-event-cloud-d
 
 ## <a name="next-steps"></a>Další postup
 
-- [Streamování události v reálném čase](live-streaming-overview.md)
-- [Živé streamování kurz](stream-live-tutorial-with-api.md)
+[Živé streamování kurz](stream-live-tutorial-with-api.md)

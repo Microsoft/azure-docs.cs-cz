@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897295"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení rámce: Zabezpečení komunikace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -146,7 +146,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Zabezpečení striktní přenosu HTTP OWASP Tahák](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Kroky** | <p>Striktní přenos HTTP zabezpečení (HSTS) je vylepšení zabezpečení přihlášení, která je zadána webovou aplikaci pomocí hlavičky speciální odpovědi. Jakmile podporovaný prohlížeč obdrží toto záhlaví prohlížeče zabrání jakékoli komunikační nezabránil odesílání prostřednictvím protokolu HTTP k zadané doméně a místo toho pošle veškerou komunikaci přes protokol HTTPS. Zabrání také klikněte na protokol HTTPS pomocí pokynů v prohlížečích.</p><p>K implementaci HSTS následující hlavičky odpovědi musí být nakonfigurované pro web globálně, v kódu nebo v konfiguraci. Strict –-zabezpečení přenosu: max-age = 300; includeSubDomains HSTS řeší následující hrozby:</p><ul><li>Záložky uživatele, nebo ručně typy http://example.com a se může útočník man-in-the-middle: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Webovou aplikaci, která má být čistě HTTPS neúmyslně obsahuje odkazy protokolu HTTP nebo poskytuje obsah prostřednictvím protokolu HTTP: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Man-in-the-middle útočník pokusí zachytávat provoz z victim uživatele s využitím neplatný certifikát a doufá, že uživatel bude nesprávný certifikát přijmout: HSTS neumožňuje uživateli ignorovat neplatný certifikát</li></ul>|
+| **Kroky** | <p>Striktní přenos HTTP zabezpečení (HSTS) je vylepšení zabezpečení přihlášení, která je zadána webovou aplikaci pomocí hlavičky speciální odpovědi. Jakmile podporovaný prohlížeč obdrží toto záhlaví prohlížeče zabrání jakékoli komunikační nezabránil odesílání prostřednictvím protokolu HTTP k zadané doméně a místo toho pošle veškerou komunikaci přes protokol HTTPS. Zabrání také klikněte na protokol HTTPS pomocí pokynů v prohlížečích.</p><p>K implementaci HSTS následující hlavičky odpovědi musí být nakonfigurované pro web globálně, v kódu nebo v konfiguraci. Strict –-zabezpečení přenosu: max-age = 300; includeSubDomains HSTS řeší následující hrozby:</p><ul><li>Záložky uživatele, nebo ručně typy https://example.com a se může útočník man-in-the-middle: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Webovou aplikaci, která má být čistě HTTPS neúmyslně obsahuje odkazy protokolu HTTP nebo poskytuje obsah prostřednictvím protokolu HTTP: HSTS automaticky přesměruje požadavky HTTP na HTTPS pro cílové domény</li><li>Man-in-the-middle útočník pokusí zachytávat provoz z victim uživatele s využitím neplatný certifikát a doufá, že uživatel bude nesprávný certifikát přijmout: HSTS neumožňuje uživateli ignorovat neplatný certifikát</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Ujistěte se SQL server šifrování a certifikát ověření platnosti připojení
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | MVC5, MVC6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Vynucování SSL v Kontroleru webového rozhraní API](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **Odkazy**              | [Vynucování SSL v Kontroleru webového rozhraní API](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **Kroky** | Pokud aplikace má vazbu HTTP i HTTPS, klienti můžou pořád používat HTTP přístup k webu. Chcete-li tomu zabránit, použijte filtr akce ujistit, že požadavky na chráněné rozhraní API jsou vždy prostřednictvím protokolu HTTPS.|
 
 ### <a name="example"></a>Příklad: 

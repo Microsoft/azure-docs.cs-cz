@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576d3d4b9c793c564410335ce35ddd4c40697e4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095445"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a jak spravovat Azure AD Connect
 Přizpůsobení služby Azure Active Directory (Azure AD) Connect pro splnění potřeb vaší organizace a požadavky pomocí provozní postupy v tomto článku.  
@@ -51,12 +51,16 @@ Pomocí webu Azure portal a zkontrolujte stav synchronizace.
 4. V horní části stránky adresáře vyberte **integrace adresáře**.
 5. V části **integraci s místní službou active directory**, poznamenejte si čas poslední synchronizace.
 
-<center>![Čas synchronizace adresáře](./media/how-to-connect-post-installation/verify.png)</center>
+<center>
+
+![Čas synchronizace adresáře](./media/how-to-connect-post-installation/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>Spuštění úlohy naplánované synchronizace
 Pokud je potřeba spustit úlohu synchronizace, můžete to provést opětovným spuštěním Průvodce Azure AD Connect.  Budete muset zadat svoje přihlašovací údaje Azure AD.  V průvodci vyberte **přizpůsobit možnosti synchronizace** úloh a klikněte na tlačítko **Další** procházení průvodce. Na konci, ujistěte se, že **spustit proces synchronizace ihned po dokončení počáteční konfigurace** je zaškrtnuté políčko.
 
-<center>![Spustit synchronizaci](./media/how-to-connect-post-installation/startsynch.png)</center>
+<center>
+
+![Spustit synchronizaci](./media/how-to-connect-post-installation/startsynch.png)</center>
 
 Další informace o Plánovač synchronizace Azure AD Connect najdete v tématu [Azure AD Connect Scheduler](how-to-connect-sync-feature-scheduler.md).
 

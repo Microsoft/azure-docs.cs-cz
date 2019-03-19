@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: d13e0ea365b25bc17ff2d23dfaf86bc057774744
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415489"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996316"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Stažení skriptů konfigurace zařízení VPN pro připojení k síti VPN S2S
 
@@ -53,7 +53,7 @@ Vytvoření služby Azure VPN gateway, bránu místní sítě a prostředek při
 
 Jakmile se vytvoří prostředek připojení, postupujte podle níže uvedených pokynů ke stažení konfiguračních skriptů zařízení VPN:
 
-1. V prohlížeči přejděte [webu Azure portal](http://portal.azure.com) a v případě potřeby, přihlaste se pomocí svého účtu Azure
+1. V prohlížeči přejděte [webu Azure portal](https://portal.azure.com) a v případě potřeby, přihlaste se pomocí svého účtu Azure
 2. Přejdete k prostředku připojení, které jste vytvořili. Seznam všech prostředků připojení můžete najít kliknutím na "Všechny služby" a "Sítě" a "Připojení".
 
     ![seznam připojení](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afe467d56d0247e17f73bb85a39246c4c04629cd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173449"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079192"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Potíže s konfigurací heslem jednotného přihlašování pro aplikaci Galerie Azure AD
 
@@ -37,23 +37,23 @@ Zatímco Microsoft technologiemi, které automaticky rozpoznat, kdy se integrace
 
 Chcete-li tento problém vyřešit, nejdřív pokusí použít tyto věci:
 
--   Požádejte uživatele, zkuste je napřed **přihlásit na web aplikaci přímo** přihlašovacími údaji pro ně.
+- Požádejte uživatele, zkuste je napřed **přihlásit na web aplikaci přímo** přihlašovacími údaji pro ně.
 
   * Pokud přihlášení funguje, pak je mít uživatele, klikněte na tlačítko **aktualizovat přihlašovací údaje** tlačítko **dlaždice aplikace** v **aplikace** část [přístup k aplikaci Panel](https://myapps.microsoft.com/) je aktualizovat na poslední známé funkční uživatelské jméno a heslo.
 
-   * Pokud vy nebo jiný správce dostali přihlašovací údaje pro tohoto uživatele, vyhledejte uživatele nebo skupiny přiřazení aplikací tak, že přejdete na **uživatelů a skupin** kartu aplikace výběrem přiřazení a kliknutím na  **Aktualizace přihlašovacích údajů** tlačítko.
+  * Pokud vy nebo jiný správce dostali přihlašovací údaje pro tohoto uživatele, vyhledejte uživatele nebo skupiny přiřazení aplikací tak, že přejdete na **uživatelů a skupin** kartu aplikace výběrem přiřazení a kliknutím na  **Aktualizace přihlašovacích údajů** tlačítko.
 
--   Pokud uživatel přiřazenou svoje vlastní přihlašovací údaje, požádejte uživatele **kontrolu, abyste měli jistotu, že nevypršela platnost jejich hesla v aplikaci** a pokud ano, **aktualizovat své heslo služby vypršela platnost** přihlášením k aplikaci přímo.
+- Pokud uživatel přiřazenou svoje vlastní přihlašovací údaje, požádejte uživatele **kontrolu, abyste měli jistotu, že nevypršela platnost jejich hesla v aplikaci** a pokud ano, **aktualizovat své heslo služby vypršela platnost** přihlášením k aplikaci přímo.
 
-   * Po aktualizaci hesla v aplikaci požádat o uživatel klepne na tlačítko **aktualizovat přihlašovací údaje** tlačítko **dlaždice aplikace** v **aplikace** část [Přístupového panelu aplikací](https://myapps.microsoft.com/) je aktualizovat na poslední známé funkční uživatelské jméno a heslo.
+  * Po aktualizaci hesla v aplikaci požádat o uživatel klepne na tlačítko **aktualizovat přihlašovací údaje** tlačítko **dlaždice aplikace** v **aplikace** část [Přístupového panelu aplikací](https://myapps.microsoft.com/) je aktualizovat na poslední známé funkční uživatelské jméno a heslo.
 
-   * Pokud vy nebo jiný správce dostali přihlašovací údaje pro tohoto uživatele, vyhledejte uživatele nebo skupiny přiřazení aplikací tak, že přejdete na **uživatelů a skupin** kartu aplikace výběrem přiřazení a kliknutím na  **Aktualizace přihlašovacích údajů** tlačítko.
+  * Pokud vy nebo jiný správce dostali přihlašovací údaje pro tohoto uživatele, vyhledejte uživatele nebo skupiny přiřazení aplikací tak, že přejdete na **uživatelů a skupin** kartu aplikace výběrem přiřazení a kliknutím na  **Aktualizace přihlašovacích údajů** tlačítko.
 
--   Požádejte uživatele rozšíření prohlížeče přístupového panelu aktualizovat pomocí následujících kroků v [instalace rozšíření prohlížeče Panel přístupu](#how-to-install-the-access-panel-browser-extension) oddílu.
+- Požádejte uživatele rozšíření prohlížeče přístupového panelu aktualizovat pomocí následujících kroků v [instalace rozšíření prohlížeče Panel přístupu](#how-to-install-the-access-panel-browser-extension) oddílu.
 
--   Ujistěte se, že rozšíření prohlížeče přístupového panelu je spuštěné a povolený v prohlížeči uživatele.
+- Ujistěte se, že rozšíření prohlížeče přístupového panelu je spuštěné a povolený v prohlížeči uživatele.
 
--   Ujistěte se, že vaši uživatelé nejsou pokoušel se přihlásit do aplikace na přístupovém panelu při v **privátní, se službou inPrivate nebo anonymní režim**. V těchto režimech nepodporuje rozšíření přístupového panelu.
+- Ujistěte se, že vaši uživatelé nejsou pokoušel se přihlásit do aplikace na přístupovém panelu při v **privátní, se službou inPrivate nebo anonymní režim**. V těchto režimech nepodporuje rozšíření přístupového panelu.
 
 V případě, že předchozí návrhy, nebudou fungovat, může to být případ, že došlo ke změně na straně aplikace, která se má dočasně fungovat, aplikace integraci s Azure AD. Například tato situace může nastat při dodavatele aplikace představuje, že skript na své stránce, která se chová jinak pro ruční a automatizované vstup, který spustí automatizované integrace, jako jsou vlastní, přerušení. V mnoha případech naštěstí Microsoft můžete pracovat s dodavatele aplikací jak tyto problémy rychle vyřešit.
 
@@ -65,13 +65,13 @@ Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** u
 
 Existují dvě hlavní příčiny tohoto problému:
 
--   V závislosti na nastavení zabezpečení v Internet Exploreru povolená, pokud web není součástí **zóny Důvěryhodné**, někdy skriptu blokovat spuštění aplikace.
+- V závislosti na nastavení zabezpečení v Internet Exploreru povolená, pokud web není součástí **zóny Důvěryhodné**, někdy skriptu blokovat spuštění aplikace.
 
   *  Tento problém vyřešit, požádejte uživatele, aby **přidat web aplikace** k **Důvěryhodné servery** seznamu v rámci jejich **nastavení zabezpečení aplikace Internet Explorer**. Uživatelům můžete odeslat [přidání webu do seznamu důvěryhodných webů](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) najdete podrobné pokyny.
 
--   Ve výjimečných případech ověření zabezpečení aplikace Internet Explorer může způsobit stránky načítají se pomaleji než provádění skriptu.
+- Ve výjimečných případech ověření zabezpečení aplikace Internet Explorer může způsobit stránky načítají se pomaleji než provádění skriptu.
 
-   * Bohužel této situaci může lišit podle verze prohlížeče, rychlost počítače nebo webu nenavštívil. V takovém případě doporučujeme budete kontaktovat podporu, abychom mohli problém integrace pro tuto konkrétní aplikaci.
+  * Bohužel této situaci může lišit podle verze prohlížeče, rychlost počítače nebo webu nenavštívil. V takovém případě doporučujeme budete kontaktovat podporu, abychom mohli problém integrace pro tuto konkrétní aplikaci.
 
 Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](../develop/howto-app-gallery-listing.md) zobrazíte jejich spuštění.
 

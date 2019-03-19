@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bc0c801feb787861af480c60af4345103f5325
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781778"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Kurz: Integrace Azure Active Directory s SuccessFactors
 
@@ -106,6 +106,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SuccessFactors, proveďte n
     ![SuccessFactors domény a adresy URL jednotného přihlašování – informace](common/sp-identifier-reply.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -114,6 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SuccessFactors, proveďte n
     | `https://<companyname>.sapsf.eu`|
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://www.successfactors.com/<companyname>`|
@@ -127,6 +129,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SuccessFactors, proveďte n
     | `https://www.successfactors.cn/<companyname>`|
 
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -242,7 +245,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

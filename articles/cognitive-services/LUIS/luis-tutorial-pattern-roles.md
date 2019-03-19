@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 866e93c81e5c4f7ad38528ae937317fde3a3f45d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106589"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrahovat kontextově související vzory používání rolí
 
@@ -369,7 +369,7 @@ Názvy měst jsou, stejně jako jména lidí, nevypočitatelné. Můžou obsahov
         "label": "neutral",
         "score": 0.5
       }
-}
+   }
     ```
 
 Skóre záměru je mnohem vyšší a názvy rolí jsou součástí odpovědi entity.

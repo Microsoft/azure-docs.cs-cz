@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207292"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103158"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory verze 1.0
 
@@ -102,11 +102,11 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
 - Oprávnění `Read` a `ReadWrite` by prostředky měly definovat explicitně a zvlášť.
 - Prostředky by měly všechna oprávnění povolující přístup k datům různých uživatelů označovat jako oprávnění `Admin`.
 - Prostředky by měly dodržovat formát pojmenování `Subject.Permission[.Modifier]`, kde:
-    - `Subject` odpovídá typu dat, která je k dispozici
-    - `Permission` odpovídá akci, která uživatel může trvat na tato data
-    - `Modifier` Volitelně slouží k popisu specializace jiné oprávnění
+  - `Subject` odpovídá typu dat, která je k dispozici
+  - `Permission` odpovídá akci, která uživatel může trvat na tato data
+  - `Modifier` Volitelně slouží k popisu specializace jiné oprávnění
     
     Příklad:
-    * Mail.Read – Umožňuje uživatelům číst poštu.
-    * Mail.ReadWrite – Umožňuje uživatelům číst nebo psát poštu.
-    * Mail.ReadWrite.All – Umožňuje správci nebo uživateli přístup k poště v organizaci.
+  - Mail.Read – Umožňuje uživatelům číst poštu.
+  - Mail.ReadWrite – Umožňuje uživatelům číst nebo psát poštu.
+  - Mail.ReadWrite.All – Umožňuje správci nebo uživateli přístup k poště v organizaci.

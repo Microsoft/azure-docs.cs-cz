@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1d0a0c2c6a965ac14002257484c5f840666e6fc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885262"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Následují příklady manifestů aplikace a služby pro aplikaci Service Fabric s front-endového webového rozhraní ASP.NET Core a stavovým back endem. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [rychlý úvod k Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifesty.
 
 Jsou zobrazeny následující funkce:
+
 |Manifest|Funkce|
 |---|---|
 |[Manifest aplikace](#application-manifest)| [zásady správného řízení prostředků](service-fabric-resource-governance.md), [spuštění služby jako účet místního správce](service-fabric-application-runas-security.md), [výchozí zásady platí pro všechny balíčky kódu služby](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [vytvoření uživatelů a skupin objektů zabezpečení](service-fabric-application-runas-security.md), sdílené složky balíčku dat mezi instancemi služeb [přepsat koncové body služby](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
@@ -37,7 +38,7 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingData_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VotingData_PartitionCount" DefaultValue="1" />
@@ -174,8 +175,8 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->
@@ -238,8 +239,8 @@ Naleznete v tématu [elementy manifestu aplikace](#application-manifest-elements
 <ServiceManifest Name="VotingDataPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->

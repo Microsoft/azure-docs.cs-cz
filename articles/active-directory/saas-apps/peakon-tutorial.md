@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b841cbe838156cd00876a9a13c7a9cbe1790ea80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211304"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Kurz: Integrace Azure Active Directory s Peakon
 
@@ -190,7 +190,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -220,7 +220,7 @@ V případě Peakon zřizování se ruční úlohy.
 
     a. V **název** textové pole, typ křestní jméno jako **Britta** a příjmení jako **simon**.
 
-    b. V **e-mailu** textové pole, typ, jako jsou e-mailovou adresu **Brittasimon@contoso.com**.
+    b. V **e-mailu** textové pole, typ, jako jsou e-mailovou adresu **Brittasimon\@contoso.com**.
 
     c. Klikněte na tlačítko **vytvořit zaměstnance**.
 

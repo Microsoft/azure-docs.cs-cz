@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c71528ed8453bcde05e29eb609ca2cde64bad8de
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309413"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121991"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje Průvodce řešením potíží pro všechny výstrahy, které mohou nastat ve vaší spravované doméně.
@@ -103,13 +103,13 @@ Ve virtuální síti může být počítače požadavky na prostředky Azure, kt
 
 1. [Odstranit vaši spravovanou doménu](active-directory-ds-disable-aadds.md) z adresáře.
 2. Odstranit rozsah IP adres podsítě
-  1. Přejděte [stránce virtuální sítě na portálu Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Vyberte virtuální síť, kterou chcete použít pro službu Azure AD Domain Services.
-  3. Klikněte na **adresní prostor** v části Nastavení
-  4. Aktualizujte rozsah adres kliknutím na stávající rozsah adres a úpravy nebo přidání další rozsah adres. Ujistěte se, že se nový rozsah adres rozsah privátních IP. Uložte provedené změny.
-  5. Klikněte na **podsítě** v levém navigačním panelu.
-  6. Klikněte na podsíť, kterou chcete upravit v tabulce.
-  7. Aktualizovat rozsah adres a uložte provedené změny.
+   1. Přejděte [stránce virtuální sítě na portálu Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Vyberte virtuální síť, kterou chcete použít pro službu Azure AD Domain Services.
+   3. Klikněte na **adresní prostor** v části Nastavení
+   4. Aktualizujte rozsah adres kliknutím na stávající rozsah adres a úpravy nebo přidání další rozsah adres. Ujistěte se, že se nový rozsah adres rozsah privátních IP. Uložte provedené změny.
+   5. Klikněte na **podsítě** v levém navigačním panelu.
+   6. Klikněte na podsíť, kterou chcete upravit v tabulce.
+   7. Aktualizovat rozsah adres a uložte provedené změny.
 3. Postupujte podle [Průvodce Začínáme spuštění pomocí Azure AD Domain Services](active-directory-ds-getting-started.md) znovu vytvořit vaši spravovanou doménu. Ujistěte se, že vyberete virtuální síť s rozsah privátních IP adres.
 4. Připojení k doméně virtuálních počítačů, aby vaše nová doména, postupujte podle [Tato příručka](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. K zajištění, že výstraha vyřeší, zkontrolujte stav vaší domény do dvou hodin.
@@ -160,13 +160,13 @@ Přesuňte předplatné spojené s zpět na předchozí adresář Azure AD Domai
 
 Azure AD Domain Services vytvoří konkrétní prostředky při nasazování mohl fungovat správně, včetně veřejných IP adres, síťových adaptérů a nástroj pro vyrovnávání zatížení. Pokud se odstraní všechny pojmenované, to způsobí vaší spravované domény v nepodporovaném stavu a zabrání spravované domény. Tato výstraha se nachází, když někdo, kdo může upravovat prostředky služby Azure AD Domain Services odstraní potřebných prostředků. Následující kroky popisují postup při obnovení vaší spravované domény.
 
-1.  Přejděte na stránku stavu Azure AD Domain Services
-  1.    Dopravíte do [stránku Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) na webu Azure Portal.
-  2.    V levém navigačním panelu klikněte na tlačítko **stavu**
-2.  Zaškrtněte, pokud chcete zjistit, jestli je výstraha méně než 4 hodiny
-  1.    Na stránce stavu, klikněte na upozornění s ID **AADDS109**
-  2.    Výstraha bude mít časové razítko pro kdy byl nalezen první. Pokud tento časové razítko je menší než 4 hodinami, může se stát, že Azure AD Domain Services, můžete znovu vytvořit odstraněný prostředek.
-3.  Pokud je výstraha více než 4 hodiny, spravovanou doménu je ve stavu neobnovitelná. Je potřeba odstranit a znovu vytvořit Azure AD Domain Services.
+1. Přejděte na stránku stavu Azure AD Domain Services
+   1.    Dopravíte do [stránku Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) na webu Azure Portal.
+   2.    V levém navigačním panelu klikněte na tlačítko **stavu**
+2. Zaškrtněte, pokud chcete zjistit, jestli je výstraha méně než 4 hodiny
+   1.    Na stránce stavu, klikněte na upozornění s ID **AADDS109**
+   2.    Výstraha bude mít časové razítko pro kdy byl nalezen první. Pokud tento časové razítko je menší než 4 hodinami, může se stát, že Azure AD Domain Services, můžete znovu vytvořit odstraněný prostředek.
+3. Pokud je výstraha více než 4 hodiny, spravovanou doménu je ve stavu neobnovitelná. Je potřeba odstranit a znovu vytvořit Azure AD Domain Services.
 
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Podsíť přidružené k vaší spravované domény je plná
@@ -203,13 +203,13 @@ Naše instanční objekty potřebují přístup k mohli spravovat a vytvářet p
 
 1. Odstraňte vaši spravovanou doménu z vašeho tenanta.
 2. Odstranit rozsah IP adres podsítě
-  1. Přejděte [stránce virtuální sítě na portálu Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Vyberte virtuální síť, kterou chcete použít pro službu Azure AD Domain Services.
-  3. Klikněte na **adresní prostor** v části Nastavení
-  4. Aktualizujte rozsah adres kliknutím na stávající rozsah adres a úpravy nebo přidání další rozsah adres. Uložte provedené změny.
-  5. Klikněte na **podsítě** v levém navigačním panelu.
-  6. Klikněte na podsíť, kterou chcete upravit v tabulce.
-  7. Aktualizovat rozsah adres a uložte provedené změny.
+   1. Přejděte [stránce virtuální sítě na portálu Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Vyberte virtuální síť, kterou chcete použít pro službu Azure AD Domain Services.
+   3. Klikněte na **adresní prostor** v části Nastavení
+   4. Aktualizujte rozsah adres kliknutím na stávající rozsah adres a úpravy nebo přidání další rozsah adres. Uložte provedené změny.
+   5. Klikněte na **podsítě** v levém navigačním panelu.
+   6. Klikněte na podsíť, kterou chcete upravit v tabulce.
+   7. Aktualizovat rozsah adres a uložte provedené změny.
 3. Postupujte podle [Průvodce Začínáme spuštění pomocí Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) znovu vytvořit vaši spravovanou doménu. Ujistěte se, že vyberete virtuální síť s rozsah privátních IP adres.
 4. Připojení k doméně virtuálních počítačů, aby vaše nová doména, postupujte podle [Tato příručka](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Kontrola stavu domény do dvou hodin k zajištění, že jste dokončili postup správně.

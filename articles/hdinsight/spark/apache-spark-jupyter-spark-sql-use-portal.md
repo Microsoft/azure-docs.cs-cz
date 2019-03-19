@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 5833571bc1c1ac2674723abf286437c3e5e0a5ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111765"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí webu Azure portal
 Zjistěte, jak vytvořit cluster Apache Spark v Azure HDInsight a jak spustit dotazy Spark SQL na tabulky Hive. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku v HDInsight najdete v tématu [přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
@@ -49,16 +49,16 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
     Výběrem **Další** pokračujte na stránku **Úložiště**.
 3. V části **Úložiště** zadejte tyto hodnoty:
 
-    - **Vyberte účet úložiště:** vyberte **Vytvořit nový** a pak zadejte název nového účtu úložiště. V tomto rychlém startu se používá název účtu úložiště **myspark20180403store**.
+   - **Vyberte účet úložiště:** vyberte **Vytvořit nový** a pak zadejte název nového účtu úložiště. V tomto rychlém startu se používá název účtu úložiště **myspark20180403store**.
 
-    ![Vytvoření clusteru Spark v HDInsight s konfigurací úložiště](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Vytvoření clusteru Spark v HDInsight s konfigurací úložiště")
+     ![Vytvoření clusteru Spark v HDInsight s konfigurací úložiště](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Vytvoření clusteru Spark v HDInsight s konfigurací úložiště")
 
-    > [!NOTE]  
-    > Na snímku obrazovky je vidět **Vybrat existující**. Odkaz se přepíná mezi **Vytvořit nový** a **Vybrat existující**.
+     > [!NOTE]  
+     > Na snímku obrazovky je vidět **Vybrat existující**. Odkaz se přepíná mezi **Vytvořit nový** a **Vybrat existující**.
 
-    **Výchozí kontejner** má výchozí název.  Pokud chcete, můžete název změnit.
+     **Výchozí kontejner** má výchozí název.  Pokud chcete, můžete název změnit.
 
-    Pomocí **Další** pokračujte na stránku **Souhrn**. 
+     Pomocí **Další** pokračujte na stránku **Souhrn**. 
 
 
 3. V **Souhrnu** vyberte **Vytvořit**. Vytvoření clusteru trvá přibližně 20 minut. Než budete moct pokračovat k další relaci, musí se cluster nejdříve vytvořit.

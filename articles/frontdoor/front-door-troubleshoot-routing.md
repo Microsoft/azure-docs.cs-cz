@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 78370b004d18f70ae4d485f3ad7cfd910e6dd70a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047294"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100305"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží směrování
 Tento článek popisuje, jak řešení běžných problémů směrování, které mohou nastat pro vaši konfiguraci služby Azure branou. 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak řešení běžných problémů směrování, kter�
 ### <a name="symptom"></a>Příznak
 - Přední dveře jste vytvořili, ale požadavek na hostitele front-endu vrací stavový kód HTTP 400.
 
- - Jste vytvořili DNS mapování z vlastní domény pro hostování front-endu jste nakonfigurovali. Ale odesílá požadavek na název hostitele vlastní domény vrátí stavový kód HTTP 400 a zřejmě směrovat backend(s) nakonfigurovali.
+  - Jste vytvořili DNS mapování z vlastní domény pro hostování front-endu jste nakonfigurovali. Ale odesílá požadavek na název hostitele vlastní domény vrátí stavový kód HTTP 400 a zřejmě směrovat backend(s) nakonfigurovali.
 
 ### <a name="cause"></a>Příčina
 - K tomuto problému může dojít, pokud jste nenakonfigurovali pravidlo směrování pro vlastní doménu, ke které jste přidali jako hostitele front-endu. Pravidlo směrování musí být explicitně přidán pro tohoto hostitele front-endu i v případě, že již byla nakonfigurována pro hostitele front-endu v rámci branou subdoménu (*. azurefd.net), vaše vlastní doména má mapování DNS.
@@ -54,11 +54,11 @@ Existuje několik možných příčin pro tento příznak:
     - Ujistěte se, že mají čekat přibližně 10 minut, než se konfigurace mají být nasazeny.
 
 2. Zkontrolujte nastavení back-endu
-     - Přejděte do back-endový fond, který požadavek by měl směrování (závisí na tom, jak máte nakonfigurované pravidlo směrování) a ověřte, zda _typ hostitele back-endu_ a název hostitele back-end jsou správné. Pokud back-end je vlastního hostitele, ujistěte se, že jste zadali správně. 
+   - Přejděte do back-endový fond, který požadavek by měl směrování (závisí na tom, jak máte nakonfigurované pravidlo směrování) a ověřte, zda _typ hostitele back-endu_ a název hostitele back-end jsou správné. Pokud back-end je vlastního hostitele, ujistěte se, že jste zadali správně. 
 
-     - Zkontrolujte vaše portech HTTP a HTTPS. Ve většině případů 80 a 443 (v uvedeném pořadí), jsou správné a se nevyžaduje žádné změny. Ale je pravděpodobné, že back-endu není nakonfigurována tímto způsobem a naslouchá na jiném portu.
+   - Zkontrolujte vaše portech HTTP a HTTPS. Ve většině případů 80 a 443 (v uvedeném pořadí), jsou správné a se nevyžaduje žádné změny. Ale je pravděpodobné, že back-endu není nakonfigurována tímto způsobem a naslouchá na jiném portu.
 
-    - Zkontrolujte _hlavičku hostitele back-endu_ nakonfigurovaný pro back-EndY, který by měl směrování hostitele front-endu. Ve většině případů toto záhlaví by měl být stejný jako _název hostitele back-endu_. Nesprávná hodnota však může způsobit různé stavové kódy HTTP 4xx, pokud back-end očekává, že něco jiného. Pokud zadáte IP adresu vaší back-end, je nutné nastavit _hlavičku hostitele back-endu_ na název hostitele z back-endu.
+     - Zkontrolujte _hlavičku hostitele back-endu_ nakonfigurovaný pro back-EndY, který by měl směrování hostitele front-endu. Ve většině případů toto záhlaví by měl být stejný jako _název hostitele back-endu_. Nesprávná hodnota však může způsobit různé stavové kódy HTTP 4xx, pokud back-end očekává, že něco jiného. Pokud zadáte IP adresu vaší back-end, je nutné nastavit _hlavičku hostitele back-endu_ na název hostitele z back-endu.
 
 
 3. Zkontrolujte nastavení pravidla směrování

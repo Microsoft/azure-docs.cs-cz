@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56246782"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125095"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpečení Internetu věcí (IoT)
 
@@ -182,11 +182,11 @@ V každém z kategorií uvedených v architektuře Azure IoT pokusí zmírnit ce
 | **Komponenta** | **Před internetovými útoky** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
 | Zařízení |S |Přiřazení identit zařízení a ověřování zařízení |Nahrazení část zařízení nebo zařízení s jiným zařízením. Jak víte, že jsou kdekoliv na správné zařízení? |Ověřování zařízení, pomocí zabezpečení TLS (Transport Layer) nebo protokol IPSec. Infrastruktura by měla podporovat použití předsdílený klíč (PSK) na těchto zařízeních, které nelze zpracovat úplnou asymetrické šifrování. Využijte Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TRID |Použijte mechanismy tamperproof do zařízení, například tím, že pevné na možné extrahovat klíčů a dalších kryptografický materiál ze zařízení. |Riziko je, pokud někdo je falšování zařízení (fyzické rušení). Jak jste si jisti, že zařízení nebylo manipulováno. |Nejúčinnější omezení rizik je TPM module (TPM), která umožňuje ukládat klíče ve speciální na čipu obvod, ze kterého klíče nelze číst, ale jde použít jenom pro kryptografické operace využívající klíč, ale nikdy odkrývat klíč. Paměť šifrování zařízení. Klíčová Správa pro zařízení. Podepisování kódu. | |
-|| E |S řízení přístupu zařízení. Schéma autorizace. |Pokud zařízení povoluje pro jednotlivé akce, která se má provést podle příkazy z vnějšího zdroje nebo dokonce ohrožených senzory, umožňuje útoku k provádění operací jinak nejsou přístupné. |Povolení režimu pro zařízení s | |
+|| TRID |Použijte mechanismy tamperproof do zařízení, například tím, že pevné na možné extrahovat klíčů a dalších kryptografický materiál ze zařízení. |Riziko je, pokud někdo je falšování zařízení (fyzické rušení). Jak jste si jisti, že zařízení nebylo manipulováno. |Nejúčinnější omezení rizik je TPM module (TPM), která umožňuje ukládat klíče ve speciální na čipu obvod, ze kterého klíče nelze číst, ale jde použít jenom pro kryptografické operace využívající klíč, ale nikdy odkrývat klíč. Paměť šifrování zařízení. Klíčová Správa pro zařízení. Podepisování kódu. |
+|| E |S řízení přístupu zařízení. Schéma autorizace. |Pokud zařízení povoluje pro jednotlivé akce, která se má provést podle příkazy z vnějšího zdroje nebo dokonce ohrožených senzory, umožňuje útoku k provádění operací jinak nejsou přístupné. |Povolení režimu pro zařízení s |
 | Brána pole |S |Brána pole do cloudové brány ověřování (například certifikátu na základě PSK, nebo na základě deklarací identity.) |Pokud někdo může zfalšovat Field Gateway, pak se může zobrazit jako jakékoli zařízení. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Stejné zásadními obavami úložiště a ověření zařízení v obecné – nejlepší případ je pomocí čipu TPM. 6LowPAN rozšíření pro protokol IPSec pro podporu sítí senzor bezdrátové sítě (WSN). |
-|| TRID |Ochrana hraniční brána proti manipulaci (TPM)? |Falšování útokům, které se přesvědčit přemýšlení brány cloud se mluví na hraniční brána může způsobit zpřístupnění informací a úpravám dat. |Paměť šifrování, TPM společnosti, ověřování. | |
-|| E |Mechanismus řízení přístupu pro bránu | | | |
+|| TRID |Ochrana hraniční brána proti manipulaci (TPM)? |Falšování útokům, které se přesvědčit přemýšlení brány cloud se mluví na hraniční brána může způsobit zpřístupnění informací a úpravám dat. |Paměť šifrování, TPM společnosti, ověřování. |
+|| E |Mechanismus řízení přístupu pro bránu | | |
 
 Tady je několik příkladů hrozby v této kategorii:
 

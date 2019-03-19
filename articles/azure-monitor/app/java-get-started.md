@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: 224da9285ab0aef312688e4dfa1da49451abfa5a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ece8b4ac3946f543c13975e40b1025bb3cc222f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013268"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -39,10 +39,9 @@ Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Sprin
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
 2. Vytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
-    ![Zadejte název, vyberte webovou aplikaci Java a klikněte na možnost Vytvořit](./media/java-get-started/02-create.png)
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
 
-    ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/java-get-started/03-key.png)
+    ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/java-get-started/instrumentation-key-001.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Do projektu přidejte Application Insights SDK pro jazyk Java
 *Zvolte vhodný způsob pro váš projekt.*
@@ -301,13 +300,13 @@ Vraťte se do prostředku Application Insights na web [Microsoft Azure Portal](h
 
 Data požadavků HTTP se zobrazí v okně přehledu. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
 
-![ukázková data](./media/java-get-started/5-results.png)
+![Snímek obrazovky Přehled ukázkových dat.](./media/java-get-started/overview-graphs.png)
 
 [Další informace o metrikách.][metrics]
 
 Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších agregovaných metrik.
 
-![](./media/java-get-started/6-barchart.png)
+![Application Insights selhání podokno s grafy](./media/java-get-started/006-barcharts.png)
 
 > Application Insights předpokládá, že formát požadavků HTTP pro aplikace MVC je: `VERB controller/action`. Například `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` a `GET Home/Product/sdf96vws` se seskupí do `GET Home/Product`. Toto seskupení umožňuje smysluplné agregace požadavků, jako je počet požadavků a průměrná doba provádění pro požadavky.
 >
@@ -316,16 +315,12 @@ Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších
 ### <a name="instance-data"></a>Data instance
 Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednotlivých instancí.
 
-Ve službě Application Insights se zobrazí dva druhy dat: agregovaná data, uložená a zobrazená jako průměry, počty a součty; a data instancí – jednotlivé sestavy požadavků protokolu HTTP, výjimky, zobrazení stránek nebo uživatelské události.
-
-Při zobrazení vlastností požadavku uvidíte telemetrické události související s například požadavky a výjimkami.
-
-![](./media/java-get-started/7-instance.png)
+![Přejít k podrobnostem konkrétní ukázkové zobrazení](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: Výkonný dotazovací jazyk
 Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](../../azure-monitor/app/analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
 
-![Příklad analýz](./media/java-get-started/025.png)
+![Příklad analýz](./media/java-get-started/0025.png)
 
 ## <a name="7-install-your-app-on-the-server"></a>7. Nainstalujte aplikaci na server
 Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte telemetrii zobrazenou na portálu.
@@ -343,11 +338,25 @@ Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte tel
 
     (Tato komponenta povoluje čítače výkonu.)
 
+## <a name="azure-app-service-config-spring-boot"></a>Konfigurace Azure App Service (Spring Boot)
+
+Spring Boot aplikace běžící na Windows vyžadovat dodatečnou konfiguraci ke spuštění v Azure App Service. Upravit **web.config** a přidejte následující:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers>
+            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
+        </handlers>
+        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
+        </httpPlatform>
+    </system.webServer>
+</configuration>
+```
 
 ## <a name="exceptions-and-request-failures"></a>Výjimky a chyby požadavků
-Nezpracované výjimky jsou shromažďovány automaticky:
-
-![Otevřete Nastavení, Selhání.](./media/java-get-started/21-exceptions.png)
+Neošetřené výjimky jsou shromažďovány automaticky.
 
 Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 
@@ -366,9 +375,9 @@ Příchozí konfigurace sady SDK je vysvětleno dále v náš článek věnovan�
 Odchozí konfigurace sady SDK je definována v [AI Agent.xml](java-agent.md) souboru.
 
 ## <a name="performance-counters"></a>Čítače výkonu
-Klikněte na **Nastavení**, **Servery** a uvidíte rozsah čítačů výkonu.
+Otevřít **prošetření**, **metriky**, uvidíte rozsah čítačů výkonu.
 
-![](./media/java-get-started/11-perf-counters.png)
+![Snímek obrazovky podokna metriky s vybrali privátní bajty procesu](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Vlastní nastavení kolekce čítačů výkonu
 Pro zakázání shromažďování standardní sady čítačů výkonu přidejte následující kód do kořenového uzlu souboru ApplicationInsights.xml:
@@ -418,10 +427,6 @@ Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/w
 * counterName – název čítače výkonu.
 * instanceName – název instance kategorie čítače výkonu nebo prázdný řetězec (""), pokud kategorie obsahuje jednu instanci. Pokud je categoryName proces a čítač výkonu, který chcete shromáždit, pochází z aktuálního procesu JVM, na kterém běží vaše aplikace, zadejte `"__SELF__"`.
 
-Čítače výkonu jsou zobrazené jako vlastní metriky v [Průzkumníku metrik][metrics].
-
-![](./media/java-get-started/12-custom-perfs.png)
-
 ### <a name="unix-performance-counters"></a>Čítače výkonu Unix
 * [Nainstalujte collectd s modulem plug-in Application Insights](java-collectd.md) a získejte celou řadu dat systému a sítě.
 
@@ -465,22 +470,12 @@ Teď, když jste nainstalovali sadu SDK, můžete použít rozhraní API k odesl
 * [Prohledávejte události a protokoly][diagnostic] pro pomoc s diagnostikou problémů.
 
 ## <a name="availability-web-tests"></a>Testy dostupnosti webu
-Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje. [Nastavíte je][availability] kliknutím na Webové testy.
+Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje.
 
-![Klikněte na Webové testy a pak přidejte webový test.](./media/java-get-started/31-config-web-test.png)
-
-Získáte tabulky s dobami odezvy a navíc e-mailová oznámení, pokud váš web nefunguje.
-
-![Příklad webového testu](./media/java-get-started/appinsights-10webtestresult.png)
-
-[Další informace o testech dostupnosti webu.][availability]
+[Další informace o tom, jak nastavit testy dostupnosti webu.][availability]
 
 ## <a name="questions-problems"></a>Máte dotazy? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další postup
 * [Monitorování volání závislostí](java-agent.md)

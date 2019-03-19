@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
-ms.openlocfilehash: 2aeab9be28a61f4e185be7192e7965cbf02bfed9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 8ea80d557185f4489a96384b77ddd2519e7bd049
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791983"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992182"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
 
@@ -40,7 +40,7 @@ Výhody použití služby Blob service pro hostování artefakty sestavení agil
   
     Pokud momentálně nemáte k dispozici řešení Jenkins CI, můžete spustit řešení Jenkins CI následujícím způsobem:
   
-  1. Na počítači s podporou Javy, stáhněte si jenkins.war z <http://jenkins-ci.org>.
+  1. Na počítači s podporou Javy, stáhněte si jenkins.war z <https://jenkins-ci.org>.
   2. Na příkazovém řádku, který se otevírá ve složce, která obsahuje jenkins.war spusťte:
      
       `java -jar jenkins.war`
@@ -48,7 +48,7 @@ Výhody použití služby Blob service pro hostování artefakty sestavení agil
   3. V prohlížeči otevřete `http://localhost:8080/` otevřete řídicí panel Jenkinse, který použijete k instalaci a konfiguraci modulu plug-in Azure Storage.
      
       Během typického řešení Jenkins CI by nastavit tak, aby se spouštěl jako služba, systémem Jenkins war na příkazovém řádku jsou dostatečné pro účely tohoto kurzu.
-* Účet Azure. Můžete se zaregistrovat pro účet Azure na <http://www.azure.com>.
+* Účet Azure. Můžete se zaregistrovat pro účet Azure na <https://www.azure.com>.
 * Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete vytvořit pomocí postupu v [vytvořit účet úložiště](../common/storage-quickstart-create-account.md).
 * Znalost řešení Jenkins CI je doporučeno, avšak není nutné, protože následující obsah bude používat jako základní příklad zobrazit kroky potřebné při použití služby Blob service pro Jenkins CI jako úložiště artefaktů sestavení.
 
@@ -118,7 +118,7 @@ Následující postup ukazuje, ke konfiguraci kroku sestavení na stažení polo
 1. V **sestavení** část konfigurace úlohy, vyberte **přidat krok sestavení** a vyberte **stáhnout z úložiště objektů Blob v Azure**.
 2. Pro **název účtu úložiště**, vyberte účet úložiště.
 3. Pro **název kontejneru**, zadejte název kontejneru, který obsahuje objekty BLOB, kterou chcete stáhnout. Můžete použít proměnné prostředí.
-4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\***  zadáte všechny objekty BLOB, jejichž jména začínají **projektu**.
+4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\*** vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
 5. [Volitelné] Pro **cestu pro stažení**, zadejte cestu na počítač Jenkinse, kam chcete soubory stáhnout z úložiště objektů blob v Azure. Můžete také použít proměnné prostředí. (Pokud nezadáte hodnotu **cestu pro stažení**, stáhnou se soubory z Azure blob storage do pracovního prostoru úlohy.)
 
 Pokud máte další položky, které chcete stáhnout z úložiště objektů blob v Azure, můžete vytvořit další kroky sestavení.

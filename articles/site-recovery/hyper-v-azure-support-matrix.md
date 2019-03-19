@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 84b1cfd54f5ff9e6a29c975622847e3ae6304bf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107147"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -91,7 +91,7 @@ Akcelerované síťové služby | Ne | Ne
 ## <a name="hyper-v-host-storage"></a>Úložiště hostitele Hyper-V
 
 **Storage** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
---- | --- | --- | ---
+--- | --- | --- 
 NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
 SAN (ISCSI) | Ano | Ano
@@ -180,7 +180,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 Pokud chcete mít jistotu, že vaše nasazení je kompatibilní s nastaveními v tomto článku, ujistěte se, že používáte nejnovější zprostředkovatel a agent verze.
 
 **Název** | **Popis** | **Podrobnosti**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Zprostředkovatel Azure Site Recovery | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Technologie Hyper-V s Virtual Machine Manager: Nainstalovat na servery Virtual Machine Manager<br/><br/> Technologie Hyper-V bez Virtual Machine Manager: Nainstalovat na hostitelích Hyper-V| Nejnovější verze: 5.1.2700.1 (k dispozici na webu Azure Portal)<br/><br/> [Nejnovější funkce a opravy](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agenta služeb zotavení Microsoft Azure | Řídí replikaci mezi virtuálními počítači Hyper-V a Azure<br/><br/> Nainstalovat na místní servery Hyper-V (s nebo bez Virtual Machine Manager) | Nejnovější verzi agenta, které jsou k dispozici z portálu
 

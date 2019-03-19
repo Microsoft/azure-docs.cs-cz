@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ae1fbd93b26838b262dc6f07081f20b63e853d5c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104739"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Registrace zařízení TPM do služby IoT Hub Device Provisioning pomocí sady SDK služby pro Javu
 
@@ -65,53 +65,53 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 2. Ve staženém zdrojovém kódu přejděte do složky s ukázkou **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**. Otevřete soubor **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** v libovolném editoru a přidejte následující podrobnosti:
 
-    1. Následujícím způsobem přidejte `[Provisioning Connection String]` pro vaši službu zřizování z portálu:
-        1. Přejděte k vaší službě zřizování na webu [Azure Portal](https://portal.azure.com). 
-        2. Otevřete **Zásady sdíleného přístupu** a vyberte zásadu s oprávněním *EnrollmentWrite*.
-        3. Zkopírujte **Primární připojovací řetězec klíče**. 
+   1. Následujícím způsobem přidejte `[Provisioning Connection String]` pro vaši službu zřizování z portálu:
+       1. Přejděte k vaší službě zřizování na webu [Azure Portal](https://portal.azure.com). 
+       2. Otevřete **Zásady sdíleného přístupu** a vyberte zásadu s oprávněním *EnrollmentWrite*.
+       3. Zkopírujte **Primární připojovací řetězec klíče**. 
 
-            ![Získání připojovacího řetězce pro zřizování z portálu](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
+           ![Získání připojovacího řetězce pro zřizování z portálu](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-        4. V souboru se vzorovým kódem **_ServiceEnrollmentSample.java_** nahraďte `[Provisioning Connection String]` za **Primární připojovací řetězec klíče**.
+       4. V souboru se vzorovým kódem **_ServiceEnrollmentSample.java_** nahraďte `[Provisioning Connection String]` za **Primární připojovací řetězec klíče**.
     
-            ```Java
-            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
-            ```
+           ```Java
+           private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
+           ```
 
-    2. Přidejte podrobnosti o zařízení TPM:
-        1. Podle postupu vedoucího k části [Simulace zařízení TPM](quick-create-simulated-device.md#simulatetpm) získejte *ID registrace* a *Ověřovací klíč TPM* pro simulaci zařízení TPM.
-        2. Použijte **_ID registrace_** a **_Ověřovací klíč_** z výstupu předchozího kroku k nahrazení `[RegistrationId]` a `[TPM Endorsement Key]` v souboru se vzorovým kódem **_ServiceEnrollmentSample.java_**:
+   2. Přidejte podrobnosti o zařízení TPM:
+       1. Podle postupu vedoucího k části [Simulace zařízení TPM](quick-create-simulated-device.md#simulatetpm) získejte *ID registrace* a *Ověřovací klíč TPM* pro simulaci zařízení TPM.
+       2. Použijte **_ID registrace_** a **_Ověřovací klíč_** z výstupu předchozího kroku k nahrazení `[RegistrationId]` a `[TPM Endorsement Key]` v souboru se vzorovým kódem **_ServiceEnrollmentSample.java_**:
         
+           ```Java
+           private static final String REGISTRATION_ID = "[RegistrationId]";
+           private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+           ```
+
+   3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
+      - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
+        1. Na webu [Azure Portal](https://portal.azure.com) přejděte k centru IoT propojenému s vaší službou zřizování. Otevřete kartu **Přehled** tohoto centra a zkopírujte **Název hostitele**. Přiřaďte tento **Název hostitele** k parametru *IOTHUB_HOST_NAME* (NÁZEV_HOSTITELE_CENTRA_IOT).
             ```Java
-            private static final String REGISTRATION_ID = "[RegistrationId]";
-            private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+            private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
             ```
-
-    3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
-        - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
-            1. Na webu [Azure Portal](https://portal.azure.com) přejděte k centru IoT propojenému s vaší službou zřizování. Otevřete kartu **Přehled** tohoto centra a zkopírujte **Název hostitele**. Přiřaďte tento **Název hostitele** k parametru *IOTHUB_HOST_NAME* (NÁZEV_HOSTITELE_CENTRA_IOT).
-                ```Java
-                private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
-                ```
-            2. Parametru *DEVICE_ID* (ID_ZAŘÍZENÍ) přiřaďte popisný název a u parametru *PROVISIONING_STATUS* (STAV_ZŘIZOVÁNÍ) ponechte výchozí hodnotu *ENABLED* (POVOLENO). 
+        2. Parametru *DEVICE_ID* (ID_ZAŘÍZENÍ) přiřaďte popisný název a u parametru *PROVISIONING_STATUS* (STAV_ZŘIZOVÁNÍ) ponechte výchozí hodnotu *ENABLED* (POVOLENO). 
     
-        - NEBO, pokud se rozhodnete svoji službu zřizování nekonfigurovat, nezapomeňte okomentovat nebo odstranit následující příkazy v souboru _ServiceEnrollmentSample.java_:
-            ```Java
-            // The following parameters are optional. Remove it if you don't need.
-            individualEnrollment.setDeviceId(DEVICE_ID);
-            individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
-            individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
-            ```
+      - NEBO, pokud se rozhodnete svoji službu zřizování nekonfigurovat, nezapomeňte okomentovat nebo odstranit následující příkazy v souboru _ServiceEnrollmentSample.java_:
+          ```Java
+          // The following parameters are optional. Remove it if you don't need.
+          individualEnrollment.setDeviceId(DEVICE_ID);
+          individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
+          individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
+          ```
 
-    4. Prostudujte si vzorový kód. Tento kód vytvoří, aktualizuje, dotazuje a odstraní jednotlivou registraci zařízení TPM. Pokud chcete ověřit úspěšnou registraci na portálu, dočasně okomentujte následující řádky kódu na konci souboru _ServiceEnrollmentSample.java_:
+   4. Prostudujte si vzorový kód. Tento kód vytvoří, aktualizuje, dotazuje a odstraní jednotlivou registraci zařízení TPM. Pokud chcete ověřit úspěšnou registraci na portálu, dočasně okomentujte následující řádky kódu na konci souboru _ServiceEnrollmentSample.java_:
     
-        ```Java
-        // *********************************** Delete info of individualEnrollment ************************************
-        System.out.println("\nDelete the individualEnrollment...");
-        provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
-        ```
+       ```Java
+       // *********************************** Delete info of individualEnrollment ************************************
+       System.out.println("\nDelete the individualEnrollment...");
+       provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
+       ```
 
-    5. Uložte soubor _ServiceEnrollmentSample.java_.
+   5. Uložte soubor _ServiceEnrollmentSample.java_.
 
 <a id="runjavasample"></a>
 

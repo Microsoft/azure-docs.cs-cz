@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7fc7f63539e65618f00d75d5392ad1e96b7aab3e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dfbf9a3a9b800fec5df4cf527ddd4ec8e3f55b37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853235"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -42,7 +42,7 @@ Oozie můžete také použít k plánování úloh, které jsou specifické pro 
 * **Možné změny úložiště konfigurace.**  Zobrazit [konfiguraci úložiště](#storage-configuration) při použití druhu účtu úložiště `BlobStorage`.
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
-Není vyžadována žádná akce, pokud je účet úložiště používané druhu `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`.  Proces v článku vygeneruje výstup do alespoň `/mapreducestaging`.  Výchozí konfigurace hadoop bude obsahovat `/mapreducestaging` v `fs.azure.page.blob.dir` konfigurační proměnnou v `core-site.xml` služby `HDFS`.  Způsobí, že tato konfigurace výstup do adresáře se objekty BLOB stránky, která se nepodporuje pro druh účtu úložiště `BlobStorage`.  Použití `BlobStorage` pro účely tohoto článku, odeberte `/mapreducestaging` z `fs.azure.page.blob.dir` konfigurační proměnnou.  Konfigurace je přístupný z [uživatelského rozhraní Ambari](/hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva: `Page blob is not supported for this account type.`
+Není vyžadována žádná akce, pokud je účet úložiště používané druhu `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`.  Proces v článku vygeneruje výstup do alespoň `/mapreducestaging`.  Výchozí konfigurace hadoop bude obsahovat `/mapreducestaging` v `fs.azure.page.blob.dir` konfigurační proměnnou v `core-site.xml` služby `HDFS`.  Způsobí, že tato konfigurace výstup do adresáře se objekty BLOB stránky, která se nepodporuje pro druh účtu úložiště `BlobStorage`.  Použití `BlobStorage` pro účely tohoto článku, odeberte `/mapreducestaging` z `fs.azure.page.blob.dir` konfigurační proměnnou.  Konfigurace je přístupný z [uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva: `Page blob is not supported for this account type.`
 
 > [!NOTE]  
 > Účet úložiště používané v tomto článku obsahuje [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) povolena. proto `wasbs` spíše než `wasb` se používá v celém článku.
@@ -130,11 +130,11 @@ Pomocí následujících kroků vytvořte skript jazyka (HiveQL) dotaz Hive, kte
 
     Existují dvě proměnné používané ve skriptu:
 
-    * `${hiveTableName}`: Obsahuje název tabulky, který se má vytvořit.
+   * `${hiveTableName}`: Obsahuje název tabulky, který se má vytvořit.
 
-    * `${hiveDataFolder}`: Obsahuje umístění pro uložení souborů dat pro tabulku.
+   * `${hiveDataFolder}`: Obsahuje umístění pro uložení souborů dat pro tabulku.
 
-    Soubor definice pracovního postupu, workflow.xml v tomto kurzu se tyto hodnoty předá tento skript HiveQL v době běhu.
+     Soubor definice pracovního postupu, workflow.xml v tomto kurzu se tyto hodnoty předá tento skript HiveQL v době běhu.
 
 4. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.  
 
@@ -307,7 +307,7 @@ Definici úlohy popisuje, kde se mají hledat workflow.xml. Také popisuje, kde 
 
     |Hodnotu zástupného symbolu| Nahrazená hodnota|
     |---|---|
-    |wasbs://mycontainer@mystorageaccount.blob.core.windows.net| Hodnotu přijatou z kroku 1.|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Hodnotu přijatou z kroku 1.|
     |admin| Vaše přihlašovací jméno pro clusteru HDInsight a pokud ne správce.|
     |název_serveru| Název serveru databáze Azure SQL.|
     |sqlLogin| Azure database přihlášení k SQL serveru.|

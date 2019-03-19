@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ccf67aab2d393d4ee820c19e839ff3076712843d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110524"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Volání programů MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -110,7 +110,7 @@ V definici JSON aktivity HDInsight:
         }
     }
     ```
-Aktivita MapReduce HDInsight můžete použít ke spuštění souboru jar jakékoli MapReduce v clusteru HDInsight. V následující definici JSON ukázkový kanál je nakonfigurován na aktivitu HDInsight umožňuje spustit soubor Mahout JAR.
+   Aktivita MapReduce HDInsight můžete použít ke spuštění souboru jar jakékoli MapReduce v clusteru HDInsight. V následující definici JSON ukázkový kanál je nakonfigurován na aktivitu HDInsight umožňuje spustit soubor Mahout JAR.
 
 ## <a name="sample-on-github"></a>Ukázka na Githubu
 Si můžete stáhnout ukázku pomocí aktivity MapReduce HDInsight: [Ukázky data Factory na Githubu](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  

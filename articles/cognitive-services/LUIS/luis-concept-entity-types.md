@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859606"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844584"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -201,7 +201,7 @@ Některé z těchto předem připravených entit jsou definovány v open-source 
 
 ## <a name="regular-expression-entity"></a>Entiay regulárního výrazu 
 
-Regulární výraz je nejvhodnější pro nezpracované utterance text. Ignoruje velikost písmen a ignoruje kulturní variant.  Porovnávání regulárních výrazů se použije po kontrolu pravopisu změny na úrovni znak není úroveň tokenu. Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejste schopni přidat výraz do modelu. Využívá část, ale ne všechny [.Net regulární výraz](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) knihovny. 
+Regulární výraz je nejvhodnější pro nezpracované utterance text. Ignoruje velikost písmen a ignoruje kulturní variant.  Porovnávání regulárních výrazů se použije po kontrolu pravopisu změny na úrovni znak není úroveň tokenu. Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejste schopni přidat výraz do modelu. Využívá část, ale ne všechny [regulární výraz .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) knihovny. 
 
 Entita je vhodná podle při:
 

@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95bec451c556ff9f3c5bcccee68f900543639733
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004107"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Přizpůsobení a opakované nasazení mikroslužby
 
@@ -44,7 +44,7 @@ V této části volat výchozí IoT hub správci mikroslužeb rozhraní API. Roz
 
 1. Zajistěte, aby že řešení vzdáleného monitorování je spuštěn místně v počítači.
 2. Vyhledejte, kam jste stáhli Postman a otevřete jej.
-3. V nástroji Postman, zadejte následující v GET: http://localhost:8080/iothubmanager/v1/status.
+3. V nástroji Postman, zadejte následující v GET: `http://localhost:8080/iothubmanager/v1/status`.
 4. Zobrazit návrat a byste měli vidět, "Stavu": "OK: aktivní a dobře".
 
     ![Aktivní a dobře Postman zprávy](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Nakonec znovu nasadit instanci místní řešení vzdáleného monitorování a 
     ```
 
 3. Vyhledejte, kam jste stáhli Postman a otevřete jej.
-4. V nástroji Postman, zadejte na požadavek GET na následující: http://localhost:8080/iothubmanager/v1/status. Teď byste měli vidět, "Stavu": "OK: Nové úpravy tady! ".
+4. V nástroji Postman, zadejte na požadavek GET na následující: `http://localhost:8080/iothubmanager/v1/status`. Teď byste měli vidět, "Stavu": "OK: Nové úpravy tady! ".
 
 ![Nová úpravy provedené v tomto poli postman zpráva](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

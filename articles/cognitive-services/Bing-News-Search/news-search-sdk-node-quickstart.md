@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 71d42f1f7627b7f223f92c264cfb23b829a229dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1930ef761b4be9d8085fd6e1785e78146c6b5547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109156"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Rychlý start: Provádění sadou SDK pro vyhledávání zpráv Bingu pro vyhledávání zpráv pro Node.js
 
@@ -52,7 +52,7 @@ Nastavení konzolovou aplikaci pomocí sady SDK vyhledávání zpráv Bingu:
 
 ## <a name="send-a-search-query"></a>Odeslat vyhledávací dotaz
 
-3. Pomocí klienta na hledání termín dotazu, v tomto případě "Olympijské hry":
+1. Pomocí klienta na hledání termín dotazu, v tomto případě "Olympijské hry":
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {
@@ -72,4 +72,4 @@ Kód vytiskne položky `result.value` do konzoly bez analýzy textu. Případné
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-[Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

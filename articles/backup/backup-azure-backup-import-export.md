@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107453"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Procesem offline předvyplnění Azure Backup můžete používat disky k odesílání dat offline zálohování do Azure.
@@ -73,7 +73,7 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
 
     ![Obrazovka importu](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-  Popis vstupy vypadá takto:
+   Popis vstupy vypadá takto:
 
     * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
     * **Účet úložiště Azure Resource Manageru**: Název Typ účtu úložiště Resource Manageru v jakéhokoli předplatného Azure.
@@ -81,7 +81,7 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
     * **ID předplatného Azure**: ID předplatného Azure, ve kterém se vytvoří účet služby Azure Storage.
     * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure. 
   
-  Zadejte vstupy na obrazovce a klikněte na **Další**. Uložit zadaných *pracovní umístění* a *název úlohy importu Azure*, jak tyto informace jsou nezbytné k přípravě disky.
+   Zadejte vstupy na obrazovce a klikněte na **Další**. Uložit zadaných *pracovní umístění* a *název úlohy importu Azure*, jak tyto informace jsou nezbytné k přípravě disky.
 
 2. Po zobrazení výzvy se přihlaste do vašeho předplatného Azure. Musíte se přihlásit, aby Azure Backup můžete vytvořit aplikaci Azure Active Directory a zadejte požadovaná oprávnění pro přístup ke službě Azure Import.
 
@@ -106,14 +106,14 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
 
 1. Přejděte do adresáře a zkopírujte **AzureOfflineBackupDiskPrep** adresáře do jiného počítače, ve kterém jsou připojené disky SATA. Na počítači s připojených disků SATA zkontrolujte:
 
-    * Kopírování počítač získá přístup k pracovní umístění pro pracovní postup offline předvyplnění pomocí stejné cesty sítě, která byla součástí **zahájení offline zálohování** pracovního postupu.
-    * Povolení nástroje BitLocker v počítači kopírování.
-    * Je nainstalovaný Azure PowerShell 3.7.0.
-    * Jsou nainstalované nejnovější kompatibilní prohlížeče (Microsoft Edge nebo Internet Explorer 11) a je povolen jazyk JavaScript. 
-    * Počítač kopírování získá přístup k webu Azure portal. V případě potřeby kopírování počítač může být stejný jako zdrojový počítač.
+   * Kopírování počítač získá přístup k pracovní umístění pro pracovní postup offline předvyplnění pomocí stejné cesty sítě, která byla součástí **zahájení offline zálohování** pracovního postupu.
+   * Povolení nástroje BitLocker v počítači kopírování.
+   * Je nainstalovaný Azure PowerShell 3.7.0.
+   * Jsou nainstalované nejnovější kompatibilní prohlížeče (Microsoft Edge nebo Internet Explorer 11) a je povolen jazyk JavaScript. 
+   * Počítač kopírování získá přístup k webu Azure portal. V případě potřeby kopírování počítač může být stejný jako zdrojový počítač.
     
-    > [!IMPORTANT] 
-    > Pokud zdrojový počítač je virtuální počítač, počítač kopie musí být jiný fyzický server nebo klientský počítač ze zdrojového počítače.
+     > [!IMPORTANT] 
+     > Pokud zdrojový počítač je virtuální počítač, počítač kopie musí být jiný fyzický server nebo klientský počítač ze zdrojového počítače.
 
 2. Otevřete příkazový řádek se zvýšenými oprávněními na počítači kopírování s *AzureOfflineBackupDiskPrep* nástroj adresář jako aktuálního adresáře a spusťte následující příkaz:
 
@@ -137,11 +137,11 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
     Příprava na disku a zkopírování dat zálohování poté zahájí nástroj. Budete muset připojit další disky po zobrazení výzvy nástroj v případě, že zadaný disk nemá dostatek místa pro zálohovaná data. <br/>
 
     Na konci úspěšné spuštění nástroje příkazového řádku poskytuje tři údaje:
-    1. Jeden nebo víc disků, které jste zadali, jsou připravené k odeslání do Azure. 
-    2. Se zobrazí potvrzení, že se vytvořil úlohu importu. Úlohy importu použije název, který jste zadali.
-    3. Nástroj zobrazí dodací adresu pro datové centrum Azure.
+   1. Jeden nebo víc disků, které jste zadali, jsou připravené k odeslání do Azure. 
+   2. Se zobrazí potvrzení, že se vytvořil úlohu importu. Úlohy importu použije název, který jste zadali.
+   3. Nástroj zobrazí dodací adresu pro datové centrum Azure.
 
-    ![Příprava Azure disku dokončení](./media/backup-azure-backup-import-export/console2.png)<br/>
+      ![Příprava Azure disku dokončení](./media/backup-azure-backup-import-export/console2.png)<br/>
 
 6. Na konci provedení příkazu můžete aktualizovat dodací informace.
 

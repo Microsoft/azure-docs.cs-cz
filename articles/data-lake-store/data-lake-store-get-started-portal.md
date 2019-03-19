@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005697"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal
 
@@ -76,9 +76,9 @@ Pokud jste použili klíče z Azure Key Vault ke konfiguraci šifrování pro ú
 
 > [!NOTE]
 > Můžete také vytvořit účet Data Lake Storage Gen1 pomocí šablon Azure Resource Manageru. Tyto šablony jsou dostupné na stránce [Šablony rychlého startu Azure](https://azure.microsoft.com/resources/templates/?term=data+lake+store):
-    - Bez šifrování dat: [Nasazení účtu Azure Data Lake Storage Gen1 bez šifrování dat](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
-    - S šifrováním dat pomocí služby Data Lake Storage Gen1: [Nasazení účtu Data Lake Storage Gen1 s šifrováním (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
-    - S šifrováním dat pomocí služby Azure Key Vault: [Nasazení účtu Data Lake Storage Gen1 s šifrováním (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
+> - Bez šifrování dat: [Nasazení účtu Azure Data Lake Storage Gen1 bez šifrování dat](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
+> - S šifrováním dat pomocí služby Data Lake Storage Gen1: [Nasazení účtu Data Lake Storage Gen1 s šifrováním (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
+> - S šifrováním dat pomocí služby Azure Key Vault: [Nasazení účtu Data Lake Storage Gen1 s šifrováním (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
 > 
 > 
 

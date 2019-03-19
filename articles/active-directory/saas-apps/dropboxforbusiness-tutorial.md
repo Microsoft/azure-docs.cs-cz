@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab452ec427b50097959f3733548fda9a20ca41a6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54ea079789ddfb2a6d85f808453589637522f1d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Kurz: Integrace Azure Active Directory s Dropbox for Business
 
@@ -184,7 +184,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

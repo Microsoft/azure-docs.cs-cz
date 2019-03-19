@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810078"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111884"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -172,7 +172,7 @@ Můžete se automaticky vloží do nouzový shell Pokud SLES nemůže normálně
 1. Vyhledejte řádek jádra, který se spustí s `linux`
 1. Připojit `systemd.unit=emergency.target` na konec řádku
 1. Stisknutím kláves Ctrl + X restartujte s těmito nastaveními a zadejte nouzový prostředí
-> Všimněte si, že se vloží do nouzový prostředí s _jen pro čtení_ systému souborů. Pokud chcete provádět žádné úpravy všech souborů, musíte pro opětovné připojení systému souborů pomocí oprávnění pro čtení i zápis. Chcete-li to provést, zadejte `mount -o remount,rw /` do prostředí
+   > Všimněte si, že se vloží do nouzový prostředí s _jen pro čtení_ systému souborů. Pokud chcete provádět žádné úpravy všech souborů, musíte pro opětovné připojení systému souborů pomocí oprávnění pro čtení i zápis. Chcete-li to provést, zadejte `mount -o remount,rw /` do prostředí
 
 ## <a name="access-for-oracle-linux"></a>Přístup pro Oracle Linux
 Podobně jako je Red Hat Enterprise Linux, režimu jednoho uživatele v Oracle Linuxu vyžaduje GRUB a uživatel root, aby byla povolená. 

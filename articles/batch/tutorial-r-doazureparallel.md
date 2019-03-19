@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c682d35872587aa238ca9d76ade3d58654963628
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551734"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106436"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -260,7 +260,7 @@ stopCluster(cluster)
 V tomto kurzu jste se naučili tyto postupy:
 
 > [!div class="checklist"]
-Instalace balíčku doAzureParallel a jeho konfigurace pro přístup k účtům Batch a úložiště
+> Instalace balíčku doAzureParallel a jeho konfigurace pro přístup k účtům Batch a úložiště
 > * Vytvoření fondu služby Batch jako paralelního back-endu pro relaci jazyka R
 > * Spuštění ukázkové paralelní simulace v tomto fondu
 

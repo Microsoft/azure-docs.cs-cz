@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 904598573b79640bf6547bb172702b3a1b200a49
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1d7c8d8a02358b4eb9f52f1a9bd04b797fcd934f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531757"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110796"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí back-end Python a zařízení Python
 
@@ -87,7 +87,7 @@ V této části vytvoříte Python aplikace na zařízení s Simulovaná, která
 
 1. **Získání připojovacího řetězce modulu** – Teď se přihlaste k webu [Azure Portal][lnk-portal]. Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Najít myFirstDevice, otevřít a zobrazit myFirstModule byl úspěšně vytvořen. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
-  ![Podrobnosti o modulu na webu Azure Portal][15]
+   ![Podrobnosti o modulu na webu Azure Portal][15]
 
 1. **Vytvoření aplikace UpdateModuleTwinReportedProperties** přidejte následující `using` příkazů v horní části **Program.cs** souboru:
 

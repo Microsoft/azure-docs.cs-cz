@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857806"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Dodržování předpisů GDPR portál partnerů cloudu
 ====================================
 
-[Obecné nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)je zákon ochrany a soukromí dat Evropské unie (EU). GDPR ukládá pravidla pro společnosti, státních úřadů, – neziskové organizace a jinými organizacemi, které nabízejí zboží a služby lidem v EU, nebo že shromažďovat a analyzovat data svázaná s pobytem v EU.
+[Obecné nařízení (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm)je zákon ochrany a soukromí dat Evropské unie (EU). GDPR ukládá pravidla pro společnosti, státních úřadů, – neziskové organizace a jinými organizacemi, které nabízejí zboží a služby lidem v EU, nebo že shromažďovat a analyzovat data svázaná s pobytem v EU.
 
 Portál partnerů cloudu poskytuje podrobné informace týkající se zpracování zákaznických dat a bezpečnostních opatření použitým k zamknutí tato data. Tyto informace jsou přístupné přes svého prostředí v rámci produktu.
 

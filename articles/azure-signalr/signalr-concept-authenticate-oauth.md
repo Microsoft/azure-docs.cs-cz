@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 8c66b603bd8c974bcaa63ee2aad58f7fd8fe04e6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554955"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003678"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR Service
 
@@ -61,9 +61,9 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
     | Název nastavení | Navrhovaná hodnota | Popis |
     | ------------ | --------------- | ----------- |
     | Název aplikace | *Azure SignalR Chat* | GitHub uživatel měl nerozpozná a nenahraje a aplikace, které se ověřují pomocí vztahu důvěryhodnosti.   |
-    | Adresa URL domovské stránky | *http://localhost:5000/home* | |
+    | Adresa URL domovské stránky | `http://localhost:5000/home` | |
     | Popis aplikace | *Konverzační ukázky Githubu ověřování pomocí služby Azure SignalR* | Popis aplikace je užitečný, protože pomůže uživatelům vaší aplikace zjistit, v jakém kontextu se ověřování používá. |
-    | Adresa URL zpětného volání autorizace | *http://localhost:5000/signin-github* | Toto nastavení je nejdůležitějším nastavením vaší aplikace OAuth. Je to adresa URL pro zpětné volání, na kterou GitHub po úspěšném ověření uživatele vrátí. V tomto kurzu musíte použít výchozí adresu URL pro zpětné volání pro balíček *AspNet.Security.OAuth.GitHub*, */signin-github*.  |
+    | Adresa URL zpětného volání autorizace | `http://localhost:5000/signin-github` | Toto nastavení je nejdůležitějším nastavením vaší aplikace OAuth. Je to adresa URL pro zpětné volání, na kterou GitHub po úspěšném ověření uživatele vrátí. V tomto kurzu musíte použít výchozí adresu URL pro zpětné volání pro balíček *AspNet.Security.OAuth.GitHub*, */signin-github*.  |
 
 4. Jakmile je registrace nové aplikace OAuth hotová, přidejte *ID klienta* a *tajný klíč klienta* do nástroje Secret Manager, a to pomocí následujících příkazů. Hodnoty *Your_GitHub_Client_Id* a *Your_GitHub_Client_Secret* nahraďte hodnotami pro vaši aplikaci OAuth.
 

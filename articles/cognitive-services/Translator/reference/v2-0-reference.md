@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: c87e1b42aa8474aa62e979e0d7ec1f8bf948910f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075249"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -327,7 +327,7 @@ Typ obsahu odpovědi: application/xml
 |text|(prázdné)   |Povinná hodnota. Řetězec obsahující věty nebo věty zadaného jazyka, který má být používaný wave Stream. Velikost textu mluvit nesmí přesáhnout 2000 znaků.|query|string|
 |language|(prázdné)   |Povinná hodnota. Řetězec představující kód podporovaného jazyka mluvit textu. Kód musí být uvedený v seznamu kódů vrátil z metody `GetLanguagesForSpeak`.|query|string|
 |formát|(prázdné)|Volitelné. Řetězec určující identifikátor typu obsahu V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|string|
-|Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára.|` to include multiple options. For example  `MaxQuality|Muž ".</li></li></ul> |query|string|
+|Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára <code>\|</code> zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul> |query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
 

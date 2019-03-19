@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b02facd19929c2d875ffc6266f4c0bfccc6eda52
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781880"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078308"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Machine Learning jako modulu IoT Edge (preview)
 
@@ -128,8 +128,8 @@ V této části převeďte trénovaného strojového učení soubory modelu a do
 
 12. Spustit všechny buňky v poznámkovém bloku tak, že je vyberete a vyberete **spustit** nebo stiskněte `Shift + Enter`.
 
-   >[!TIP]
-   >Některé z buněk, kurz notebook detekce anomálií jsou volitelné, protože vytvářejí prostředky, které někteří uživatelé mohou nebo nemusí mít ještě, jako jsou služby IoT Hub. Když vložíte stávající informace o prostředku do první buňky, obdržíte chyb při spuštění buňky, které vytvářet nové prostředky, protože Azure nebude vytvářet duplicitní prostředky. To je v pořádku, a můžete ignorovat chyby nebo zcela Přeskočit tyto volitelné části. 
+    >[!TIP]
+    >Některé z buněk, kurz notebook detekce anomálií jsou volitelné, protože vytvářejí prostředky, které někteří uživatelé mohou nebo nemusí mít ještě, jako jsou služby IoT Hub. Když vložíte stávající informace o prostředku do první buňky, obdržíte chyb při spuštění buňky, které vytvářet nové prostředky, protože Azure nebude vytvářet duplicitní prostředky. To je v pořádku, a můžete ignorovat chyby nebo zcela Přeskočit tyto volitelné části. 
 
 Po dokončení všech kroků v poznámkovém bloku, které budou mít natrénovali model detekce anomálií, který je sestaven jako image kontejneru Dockeru a jste image Nasdíleli do služby Azure Container Registry. Potom Testovat model a nakonec ji nasadit do zařízení IoT Edge. 
 

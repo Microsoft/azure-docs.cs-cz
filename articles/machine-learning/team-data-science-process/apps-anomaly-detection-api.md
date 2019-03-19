@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469817"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899345"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Ve službě Machine Learning rozhraní API pro detekci anomálií
 ## <a name="overview"></a>Přehled
@@ -32,7 +32,7 @@ Tyto detektory machine learning sledovat tyto změny hodnot v průběhu času a 
 
 Detekce anomálií nabídka obsahuje užitečných nástrojů, které vám pomůžou začít.
 
-* [Webovou aplikaci](http://anomalydetection-aml.azurewebsites.net/) vám pomůže vyhodnotit a vizualizaci výsledků rozhraní API pro detekci anomálií na vašich datech.
+* [Webovou aplikaci](https://anomalydetection-aml.azurewebsites.net/) vám pomůže vyhodnotit a vizualizaci výsledků rozhraní API pro detekci anomálií na vašich datech.
 
 > [!NOTE]
 > Zkuste **řešení přehledů anomálií IT** technologii [toto rozhraní API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
@@ -110,9 +110,9 @@ Rozhraní API pro detekci anomálií podporuje detektorů v 3 rozsáhlých kateg
 | Detektor kategorie | Detektor | Popis | Vstupní parametry | Výstupy |
 | --- | --- | --- | --- | --- |
 | Detektory zásobníku |Detektor TSpike |Zjistit provozní špičky a vyhrazené IP adresy na základě hodnot daleko jsou od první a třetí Kvartily |*tspikedetector.Sensitivity:* přebírá hodnotu celého čísla v rozsahu 1-10, výchozí: 3; Vyšší hodnoty zachytí další extrémní hodnoty, díky čemuž míň citlivými informacemi |TSpike: binární hodnoty – 1, pokud se zjistí zásobníku/dip, '0' jinak |
-| Detektory zásobníku | Detektor ZSpike |Zjistit provozní špičky a vyhrazené IP adresy na základě toho, jak daleko se datapoints od jejich střední hodnoty |*zspikedetector.Sensitivity:* trvat celočíselnou hodnotu v rozsahu 1 až 10, výchozí: 3; Vyšší hodnoty zachytí další extrémní hodnoty díky tomu je míň citlivými informacemi |ZSpike: binární hodnoty – 1, pokud se zjistí zásobníku/dip, '0' jinak | |
+| Detektory zásobníku | Detektor ZSpike |Zjistit provozní špičky a vyhrazené IP adresy na základě toho, jak daleko se datapoints od jejich střední hodnoty |*zspikedetector.Sensitivity:* trvat celočíselnou hodnotu v rozsahu 1 až 10, výchozí: 3; Vyšší hodnoty zachytí další extrémní hodnoty díky tomu je míň citlivými informacemi |ZSpike: binární hodnoty – 1, pokud se zjistí zásobníku/dip, '0' jinak |
 | Pomalé Trend Detectoru |Pomalé Trend Detectoru |Zjišťování pomalého pozitivní trend podle nastavení citlivosti |*trenddetector.Sensitivity:* prahovou hodnotu na skóre detektor (výchozí: 3,25, 3,25 – 5 je rozumné oblast a vyberte z; Čím vyšší méně citlivé) |tscore: číslo s plovoucí představující hodnocení anomálie na trend |
-| Změna úrovně detektory | Úroveň obousměrného změnu Detectoru |Zjištění Změna úrovně nahoru i dolů podle nastavení citlivosti |*bileveldetector.Sensitivity:* prahovou hodnotu na skóre detektor (výchozí: 3,25, 3,25 – 5 je rozumné oblast a vyberte z; Čím vyšší méně citlivé) |rpscore: číslo s plovoucí představující hodnocení anomálie při změně úrovně nahoru a dolů | |
+| Změna úrovně detektory | Úroveň obousměrného změnu Detectoru |Zjištění Změna úrovně nahoru i dolů podle nastavení citlivosti |*bileveldetector.Sensitivity:* prahovou hodnotu na skóre detektor (výchozí: 3,25, 3,25 – 5 je rozumné oblast a vyberte z; Čím vyšší méně citlivé) |rpscore: číslo s plovoucí představující hodnocení anomálie při změně úrovně nahoru a dolů |
 
 ### <a name="parameters"></a>Parametry
 Podrobnější informace o těchto vstupní parametry jsou uvedeny v následující tabulce:

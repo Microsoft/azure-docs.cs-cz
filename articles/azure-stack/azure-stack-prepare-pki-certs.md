@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6e11df8bedb88d3e505b7fa3c55ade13282911a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656715"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106477"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Přidejte certifikáty Azure Stack PKI pro použití v nasazení nebo otočení
 
@@ -32,23 +32,23 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
 
 ### <a name="import-the-certificate"></a>Importovat certifikát
 
-1.  Kopírovat původní verze certifikát [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) do adresáře nasazení hostitele. 
-  > [!WARNING]
-  > Nekopírovat soubory, které již byly importovat, exportovat nebo změnit žádným způsobem ze souborů poskytovaných certifikační Autoritou.
+1. Kopírovat původní verze certifikát [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) do adresáře nasazení hostitele. 
+   > [!WARNING]
+   > Nekopírovat soubory, které již byly importovat, exportovat nebo změnit žádným způsobem ze souborů poskytovaných certifikační Autoritou.
 
-1.  Klikněte pravým tlačítkem na certifikát a vyberte **nainstalovat certifikát** nebo **instalovat soubor PFX** v závislosti na tom, jak byla doručena certifikát z certifikační Autority.
+1. Klikněte pravým tlačítkem na certifikát a vyberte **nainstalovat certifikát** nebo **instalovat soubor PFX** v závislosti na tom, jak byla doručena certifikát z certifikační Autority.
 
 1. V **Průvodce importem certifikátu**vyberte **místního počítače** jako umístění importu. Vyberte **Další**. Na následujícím obrázku klikněte na tlačítko Další akci.
 
     ![Umístění importu v místním počítači](./media/prepare-pki-certs/1.png)
 
-1.  Zvolte **všechny certifikáty umístit v následujícím úložišti** a pak vyberte **vztah důvěryhodnosti podnikové** jako umístění. Klikněte na tlačítko **OK** zavřete dialogové okno pro výběr úložiště certifikátů a pak **Další**.
+1. Zvolte **všechny certifikáty umístit v následujícím úložišti** a pak vyberte **vztah důvěryhodnosti podnikové** jako umístění. Klikněte na tlačítko **OK** zavřete dialogové okno pro výběr úložiště certifikátů a pak **Další**.
 
-    ![Konfigurace úložiště certifikátů](./media/prepare-pki-certs/3.png)
+   ![Konfigurace úložiště certifikátů](./media/prepare-pki-certs/3.png)
 
-    a. Pokud importujete PFX, zobrazí se další dialogového okna. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
+   a. Pokud importujete PFX, zobrazí se další dialogového okna. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
 
-    ![Označit klíč jako exportovatelný](./media/prepare-pki-certs/2.png)
+   ![Označit klíč jako exportovatelný](./media/prepare-pki-certs/2.png)
 
 1. Kliknutím na tlačítko Dokončit bylo možné import dokončit.
 
@@ -70,19 +70,19 @@ Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifi
 
 1. V konzole Správce úloh panelu certifikátu vyberte **akce** > **všechny úkoly** > **exportovat**. Vyberte **Další**.
 
-  > [!NOTE]
-  > V závislosti na tom, kolik Azure Stack možná muset certifikáty, že který máte, musíte to provést více než jednou.
+   > [!NOTE]
+   > V závislosti na tom, kolik Azure Stack možná muset certifikáty, že který máte, musíte to provést více než jednou.
 
 1. Vyberte **Ano, exportovat soukromý klíč**a potom klikněte na tlačítko **Další**.
 
 1. V části formát souboru pro Export:
     
-    - Vyberte **zahrnout všechny certifikáty v certifikátu, pokud je to možné**.  
-    - Vyberte **exportovat všechny rozšířené vlastnosti**.  
-    - Vyberte **povolit ochranu osobních údajů certifikát**.  
-    - Klikněte na **Další**.  
+   - Vyberte **zahrnout všechny certifikáty v certifikátu, pokud je to možné**.  
+   - Vyberte **exportovat všechny rozšířené vlastnosti**.  
+   - Vyberte **povolit ochranu osobních údajů certifikát**.  
+   - Klikněte na **Další**.  
     
-    ![Průvodce exportem certifikátu se vybrané možnosti](./media/prepare-pki-certs\azure-stack-save-cert.png)
+     ![Průvodce exportem certifikátu se vybrané možnosti](./media/prepare-pki-certs/azure-stack-save-cert.png)
 
 1. Vyberte **heslo** a zadejte heslo pro certifikáty. Vytvořte heslo, které splňuje následující požadavky na složitost hesla. Minimální délku osmi znaků. Heslo obsahuje alespoň tři z následujících možností: velká písmena, malé písmeno, číslice 0-9, speciální znaky, abecední znak, který není velká písmena ani malá písmena. Poznamenejte si toto heslo. Použijete ji jako parametr nasazení.
 

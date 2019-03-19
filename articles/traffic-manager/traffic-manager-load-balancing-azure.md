@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: 8c4d890633a8d588b51f876a361a77e6533b5db4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099014"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služby Vyrovnávání zatížení v Azure
 
@@ -68,26 +68,26 @@ Následující diagram znázorňuje architekturu tento scénář:
 1. Na webu Azure Portal, klikněte na tlačítko **vytvořit prostředek** > **sítě** > **profil služby Traffic Manager**  >   **Vytvoření**.
 2. Zadejte následující informace:
 
-  * **Název**: Zadejte svůj profil Traffic Manageru DNS název předpony.
-  * **Metody směrování**: Vyberte zásadu metodu směrování provozu. Další informace o metodách, naleznete v tématu [metody směrování provozu Traffic Manageru](traffic-manager-routing-methods.md).
-  * **Předplatné**: Vyberte předplatné, obsahuje profil.
-  * **Skupina prostředků**: Vyberte skupinu prostředků, který obsahuje profil. Může být nové nebo existující skupinu prostředků.
-  * **Umístění skupiny prostředků**: Služba Traffic Manager je globální a není vázaná na místo. Musíte však zadat oblast pro skupinu, ve kterém se budou metadata spojená s profilem Traffic Manager nachází. Toto umístění nemá žádný vliv na běhovou dostupnost profilu.
+   * **Název**: Zadejte svůj profil Traffic Manageru DNS název předpony.
+   * **Metody směrování**: Vyberte zásadu metodu směrování provozu. Další informace o metodách, naleznete v tématu [metody směrování provozu Traffic Manageru](traffic-manager-routing-methods.md).
+   * **Předplatné**: Vyberte předplatné, obsahuje profil.
+   * **Skupina prostředků**: Vyberte skupinu prostředků, který obsahuje profil. Může být nové nebo existující skupinu prostředků.
+   * **Umístění skupiny prostředků**: Služba Traffic Manager je globální a není vázaná na místo. Musíte však zadat oblast pro skupinu, ve kterém se budou metadata spojená s profilem Traffic Manager nachází. Toto umístění nemá žádný vliv na běhovou dostupnost profilu.
 
 3. Klikněte na tlačítko **vytvořit** k vygenerování profilu služby Traffic Manager.
 
-  !["Vytvořit Traffic Manageru" okno](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   !["Vytvořit Traffic Manageru" okno](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
 ### <a name="step-2-create-the-application-gateways"></a>Krok 2: Vytvoření brány application Gateway
 
 1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **vytvořit prostředek** > **sítě** > **Application Gateway**.
 2. Zadejte následující informace o službě application gateway:
 
-  * **Název**: Název služby application gateway.
-  * **Velikost SKU**: Velikost application gateway, k dispozici jako malé, střední nebo velké.
-  * **Počet instancí**: Počet instancí, hodnota od 2 do 10.
-  * **Skupina prostředků**: Skupina prostředků, která obsahuje službu application gateway. Může být existující skupinu prostředků nebo nové.
-  * **Umístění**: Oblast pro službu application gateway, která je na stejném umístění jako skupina prostředků. Umístění je důležité, protože virtuální sítě a veřejné IP adresy musí být ve stejném umístění jako brána.
+   * **Název**: Název služby application gateway.
+   * **Velikost SKU**: Velikost application gateway, k dispozici jako malé, střední nebo velké.
+   * **Počet instancí**: Počet instancí, hodnota od 2 do 10.
+   * **Skupina prostředků**: Skupina prostředků, která obsahuje službu application gateway. Může být existující skupinu prostředků nebo nové.
+   * **Umístění**: Oblast pro službu application gateway, která je na stejném umístění jako skupina prostředků. Umístění je důležité, protože virtuální sítě a veřejné IP adresy musí být ve stejném umístění jako brána.
 3. Klikněte na **OK**.
 4. Definujte virtuální sítě, podsítě, front-end IP adresu a konfigurace naslouchacího procesu pro službu application gateway. V tomto scénáři je front-endovou IP adresu **veřejné**, což umožňuje přidat jako koncový bod do profilu služby Traffic Manager později.
 5. Nakonfigurujte naslouchací proces s jedním z následujících možností:
@@ -104,11 +104,11 @@ Při výběru back endového fondu trvá aplikační brány, který je nakonfigu
 2. V části **nastavení**vyberte **back-endové fondy**a pak vyberte **přidat** přidáte virtuální počítače, které chcete přidružit k fondy back endové webové vrstvy.
 3. Zadejte název back endového fondu a všechny IP adresy počítačů, které se nacházejí ve fondu. V tomto scénáři se připojujete dva fondy back endového serveru, virtuálních počítačů.
 
-  ![Služba Application Gateway "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Služba Application Gateway "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. V části **nastavení** služby application gateway, vyberte **pravidla**a potom klikněte na tlačítko **na základě cest** tlačítko pro přidání pravidlo.
 
-  ![Tlačítko "Na základě cest" pravidla bránu aplikace](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Tlačítko "Na základě cest" pravidla bránu aplikace](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. Tím, že poskytuje následující informace o konfiguraci pravidla.
 
@@ -138,13 +138,13 @@ V tomto scénáři je Traffic Manager připojené k branám application Gateway 
 1. Otevřete svůj profil Traffic Manageru. Uděláte to tak, podívejte se ve vaší skupině prostředků nebo vyhledejte název profilu Traffic Manageru z **všechny prostředky**.
 2. V levém podokně vyberte **koncové body**a potom klikněte na tlačítko **přidat** k přidání koncového bodu.
 
-  ![Traffic Manager koncové body "Přidat" tlačítko](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Traffic Manager koncové body "Přidat" tlačítko](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
 3. Vytvořte koncový bod tak, že zadáte následující informace:
 
-  * **Typ**: Vyberte typ koncový bod Vyrovnávání zatížení. V tomto scénáři vyberte **koncový bod Azure** vzhledem k tomu, že se připojujete k instancím brány aplikací, které byly dříve nakonfigurovány.
-  * **Název**: Zadejte název koncového bodu.
-  * **Typ cílového prostředku**: Vyberte **veřejnou IP adresu** a pak v části **cílový prostředek**, vyberte veřejné IP adresy služby application gateway, která byla dříve nakonfigurovaná.
+   * **Typ**: Vyberte typ koncový bod Vyrovnávání zatížení. V tomto scénáři vyberte **koncový bod Azure** vzhledem k tomu, že se připojujete k instancím brány aplikací, které byly dříve nakonfigurovány.
+   * **Název**: Zadejte název koncového bodu.
+   * **Typ cílového prostředku**: Vyberte **veřejnou IP adresu** a pak v části **cílový prostředek**, vyberte veřejné IP adresy služby application gateway, která byla dříve nakonfigurovaná.
 
    ![Traffic Manager "Přidat koncový bod"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -171,7 +171,7 @@ Další informace o konfiguraci interního nástroje najdete v tématu [vytvoře
 1. Z vaší skupiny prostředků vyhledejte nástroj pro vyrovnávání zatížení, který byl vytvořen v předchozích krocích.
 2. V části **nastavení**, klikněte na tlačítko **back-endové fondy**a potom klikněte na tlačítko **přidat** přidat back endového fondu.
 
-  ![Nástroj pro vyrovnávání zatížení "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Nástroj pro vyrovnávání zatížení "Přidat back-endový fond"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. Zadejte název back endového fondu.
 4. Přidejte jednotlivé počítače nebo dostupnosti do back endového fondu.
@@ -180,7 +180,7 @@ Další informace o konfiguraci interního nástroje najdete v tématu [vytvoře
 
 1. Ve službě load balancer v části **nastavení**vyberte **sondy**a potom klikněte na tlačítko **přidat** přidat sondu.
 
- ![Nástroj pro vyrovnávání zatížení "Přidat test"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Nástroj pro vyrovnávání zatížení "Přidat test"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Zadejte název pro test paměti.
 3. Vyberte **protokol** pro test paměti. Pro databázi může být vhodné sondu protokolu TCP spíše než sondu protokolu HTTP. Chcete-li další informace o sondy nástroje pro vyrovnávání zatížení, přečtěte si [porozumění testům nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md).

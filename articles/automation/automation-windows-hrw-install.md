@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a434453d6164dbb9fed7aebc3b3636b45daafa21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313238"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842494"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -138,14 +138,9 @@ Protože primárním účelem funkce Hybrid Runbook Worker je můžou spravovat 
 
 Moduly, které jsou nainstalované musí být v umístění odkazuje **PSModulePath** proměnnou prostředí tak, aby je automaticky importovat procesu hybrid worker. Další informace najdete v tématu [úpravy Instalační_cesta PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 
-## <a name="troubleshoot"></a>Řešení potíží
-
-Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku [řešení potíží s Windows Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows)
-
-Další pokyny o tom, jak řešit problémy pomocí správy aktualizací najdete v tématu [Update Management: řešení potíží s](troubleshoot/update-management.md).
-
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
 * Pokyny k odebrání funkce Hybrid Runbook Worker, naleznete v tématu [odebrat Azure Automation Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku [řešení potíží s Windows Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows)
+* Další pokyny o tom, jak řešit problémy pomocí správy aktualizací najdete v tématu [Update Management: řešení potíží s](troubleshoot/update-management.md).

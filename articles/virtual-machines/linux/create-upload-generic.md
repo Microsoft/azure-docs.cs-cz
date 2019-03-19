@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235968"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105518"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -144,10 +144,10 @@ Pokud vlastní jádra je potřeba, doporučujeme nejnovější verze jádra (nap
 Následující opravy musí být součástí jádra. Tento seznam nelze dokončit pro všechny distribuce.
 
 * [ata_piix: ve výchozím nastavení odložení disky k ovladačům Hyper-V](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc: účet pro použití během přenosu paketů na cestě k RESETOVÁNÍ](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc: Účet pro použití během přenosu paketů na cestě k RESETOVÁNÍ](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc: Vyhněte se použití WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc: zakázat zápis stejné diskového pole RAID a ovladače adaptéru virtuální hostitel](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc: oprava přesměrování ukazatele NULL](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: Zakázat zápis stejné diskového pole RAID a ovladače adaptéru virtuální hostitel](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc: Oprava dereference ukazatele s hodnotou NULL](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc: selhání kanál vyrovnávací paměti může způsobit zablokování vstupně-výstupních operací](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs: ochrana proti double provádění __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
@@ -172,13 +172,13 @@ Následující opravy musí být součástí jádra. Tento seznam nelze dokonči
     ```
     Grafické a quiet spouštěcí není užitečné v cloudovém prostředí, ve kterém chceme, aby všechny protokoly se odeslaly do sériového portu. `crashkernel` Možnost může být levé straně nakonfigurované v případě potřeby, ale Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači na nejméně 128 MB, což může být problematické pro menší velikosti virtuálních počítačů.
 
-2. Instalace agenta Azure Linux.
+1. Instalace agenta Azure Linux.
   
     Azure Linux Agent je vyžadován pro zřizování image Linuxu v Azure.  Množství distribucí poskytují agenta jako balíčku RPM nebo Deb (balíček je obvykle volána WALinuxAgent nebo walinuxagent).  Agenta můžete také nainstalovat ručně pomocí následujících kroků v [Průvodce Agent systému Linux](../extensions/agent-linux.md).
 
-3. Zkontrolujte, zda je SSH server nainstalován a nakonfigurován na spuštění při spuštění.  Tato konfigurace je obvykle výchozí.
+1. Zkontrolujte, zda je SSH server nainstalován a nakonfigurován na spuštění při spuštění.  Tato konfigurace je obvykle výchozí.
 
-4. Nevytvářejte velikosti odkládacího souboru v disku s operačním systémem.
+1. Nevytvářejte velikosti odkládacího souboru v disku s operačním systémem.
   
     Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Je disku místního prostředku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (kroku 2 výše), upravte následující parametry v /etc/waagent.conf podle potřeby.
     ```  
@@ -188,15 +188,15 @@ Následující opravy musí být součástí jádra. Tento seznam nelze dokonči
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-* Spusťte následující příkazy ke zrušení zřízení virtuálního počítače.
+1. Spusťte následující příkazy ke zrušení zřízení virtuálního počítače.
   
-    ```
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
-    ```  
-  > [!NOTE]
-  > Na Virtualbox může se zobrazit následující chyba po spuštění `waagent -force -deprovision` , která říká `[Errno 5] Input/output error`. Tato chybová zpráva není důležité a můžete ignorovat.
+     ```
+     sudo waagent -force -deprovision
+     export HISTSIZE=0
+     logout
+     ```  
+   > [!NOTE]
+   > Na Virtualbox může se zobrazit následující chyba po spuštění `waagent -force -deprovision` , která říká `[Errno 5] Input/output error`. Tato chybová zpráva není důležité a můžete ignorovat.
 
 * Vypnout virtuální počítač a nahrání virtuálního pevného disku do Azure.
 

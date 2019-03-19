@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b6950e3445f2320f2e3a45f55726befd7077119a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835905"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
@@ -82,28 +82,28 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
     ![App Service Installer][3]
 
 7. Na další stránce:
-    1. Klikněte na tlačítko **připojit** vedle **předplatná Azure Stack** pole.
-        - Zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a klikněte na tlačítko **Sign In**.
-    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
+   1. Klikněte na tlačítko **připojit** vedle **předplatná Azure Stack** pole.
+      - Zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a klikněte na tlačítko **Sign In**.
+   2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
     
-    > [!NOTE]
-    > App Service můžete nasadit jenom do **výchozí předplatné poskytovatele**.
-    >
+      > [!NOTE]
+      > App Service můžete nasadit jenom do **výchozí předplatné poskytovatele**.
+      >
     
-    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
-    4. Klikněte na **Další**.
+   3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
+   4. Klikněte na **Další**.
 
-    ![App Service Installer][4]
+      ![App Service Installer][4]
 
 8. Teď máte možnost nasadit do existující virtuální síť nakonfigurované kroky [tady](azure-stack-app-service-before-you-get-started.md#virtual-network), nebo povolíte Instalační služby App Service k vytvoření virtuální sítě a přidružené podsítě.
-    1. Vyberte **vytvořit virtuální síť s výchozími nastaveními**, přijměte výchozí hodnoty a pak klikněte na tlačítko **Další**, nebo;
-    2. Vyberte **použít existující virtuální síť a podsítě**.
-        1. Vyberte **skupiny prostředků** obsahující vaší virtuální sítě.
-        2. Zvolte správný **virtuální sítě** název pro nasazení.
-        3. Vyberte správné **podsítě** hodnoty pro každé z podsítí požadované role;
-        4. Klikněte na **Další**
+   1. Vyberte **vytvořit virtuální síť s výchozími nastaveními**, přijměte výchozí hodnoty a pak klikněte na tlačítko **Další**, nebo;
+   2. Vyberte **použít existující virtuální síť a podsítě**.
+       1. Vyberte **skupiny prostředků** obsahující vaší virtuální sítě.
+       2. Zvolte správný **virtuální sítě** název pro nasazení.
+       3. Vyberte správné **podsítě** hodnoty pro každé z podsítí požadované role;
+       4. Klikněte na **Další**
 
-    ![App Service Installer][5]
+      ![App Service Installer][5]
 
 9. Zadejte informace o sdílené složce a pak klikněte na tlačítko **Další**. Plně kvalifikovaný název domény nebo IP adresa souborového serveru se musí používat adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.  Pokud používáte souborový server, který je k doméně, je nutné zadat úplné uživatelské jméno včetně domény, například myfileserverdomain\FileShareOwner.
 
@@ -152,7 +152,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
     > ```
     > Odkazovat [poznámky k verzi pro služby Azure App Service v Azure stacku 1.3](azure-stack-app-service-release-notes-update-three.md) další podrobnosti.
    
-   ![App Service Installer][12]
+    ![App Service Installer][12]
 
 13. Seznamte se s role instance a skladovou Položku možnosti. Minimální počet instancí a minimální SKU pro každou roli v nasazení ASDK se vyplní výchozí hodnoty. Abyste mohli naplánovat nasazení poskytuje přehled požadavků na virtuální procesor a paměť. Po provedení výběru klikněte na tlačítko **Další**.
 
@@ -253,7 +253,7 @@ Po nasazení a zaregistrujte poskytovatele prostředků App Service, otestujte a
 
 1. Na portálu Azure Stack tenanta, klikněte na tlačítko **+**, přejděte na Azure Marketplace, nasazení webu Django a počkat na úspěšné dokončení. Webové platformě Django používá databázi založené na systému souborů. Nevyžaduje žádné další prostředků poskytovatele, jako je SQL nebo MySQL.
 
-2. Pokud jste nasadili také poskytovatele prostředků MySQL, můžete nasadit web ve Wordpressu z Tržiště. Po zobrazení výzvy pro parametry databáze, zadejte uživatelské jméno jako *User1@Server1*, uživatelské jméno a název serveru podle vašeho výběru.
+2. Pokud jste nasadili také poskytovatele prostředků MySQL, můžete nasadit web ve Wordpressu z Tržiště. Po zobrazení výzvy pro parametry databáze, zadejte uživatelské jméno jako *User1\@Server1*, uživatelské jméno a název serveru podle vašeho výběru.
 
 3. Pokud jste nasadili také poskytovatele prostředků SQL serveru, můžete nasadit DNN webu z Tržiště. Po zobrazení výzvy pro parametry databáze, zvolte databázi v počítači se systémem SQL Server, který je připojený ke zprostředkovateli prostředků.
 

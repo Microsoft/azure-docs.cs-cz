@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8438bfa567c207e543ed716a2940bce991cc19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78b069e6534d8394de1f9a9fcdf51b871441c386
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Kurz: Integrace Azure Active Directory s Questetra BPM Suite
 
@@ -210,9 +210,9 @@ Cílem této části je vytvořte uživatele Britta Simon Questetra BPM Suite.
    
     ![Vytvořit testovacího uživatele][300] 
    
-    a. V **název** textové pole, typ **název** uživatele **britta.simon@contoso.com**.
+    a. V **název** textové pole, typ **název** uživatele **britta.simon\@contoso.com**.
    
-    b. V **e-mailu** textové pole, typ **e-mailu** uživatele **britta.simon@contoso.com**
+    b. V **e-mailu** textové pole, typ **e-mailu** uživatele **britta.simon\@contoso.com**
    
     c. V **heslo** textového pole zadejte **heslo** uživatele.
     

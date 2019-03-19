@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d8912b67656cb9862f31b03eb9a899dfc650f377
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1fba2c4e5191d4c827035362a8eb6876fcbb67cc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081742"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: Nasazení Azure funguje jako moduly IoT Edge
 
@@ -27,6 +27,7 @@ Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši
 > * Zobrazit filtrovaná data.
 
 <center>
+
 ![Diagram – kurz architektury, Příprava a nasazení modulu – funkce](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 

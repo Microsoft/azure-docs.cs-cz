@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ff0589b87ae031db5bda96dc238359bf9cfb3b11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 03/11/2019
+ms.openlocfilehash: e5f400bb25fce58a4fb63ca1ad76ddf2b71fbd9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835414"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Zvolte vpravo systému SQL Server v Azure
 
@@ -75,15 +75,15 @@ Následující tabulka shrnuje hlavní vlastnosti SQL Database a SQL Serveru na 
 | | Izolované databáze SQL Database a elastické fondy | SQL Database managed instance |Virtuální počítače Azure s SQL serverem |
 | --- | --- | --- |---|
 | **Nejvhodnější pro:** |Nové aplikace navržené pro cloud, které chcete použít nejnovější stabilní funkcí systému SQL Server a mají časová omezení z hlediska vývoje a marketingu. | Nové aplikace nebo stávající místní aplikace, které chcete použít nejnovější stabilní funkcí systému SQL Server a že se migrují do cloudu s minimálními změnami.  | Existující aplikace, které vyžadují rychlou migraci do cloudu s minimálními změnami nebo žádné změny. Scénáře rychlého vývoje a testování, když si nechcete koupit hardware pro místní neprodukční SQL Server. |
-|  | Týmy, které potřebují integrovanou vysokou dostupnost, možnost zotavení po havárii a možnost upgradu databáze. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Týmy, které můžete nakonfigurovat, správně vyladit, přizpůsobení a správa vysoké dostupnosti, zotavení po havárii a opravy pro SQL Server. Některé poskytované automatizované funkce to značně zjednodušují. | |
-|  | Týmy, které nechtějí spravovat příslušný operační systém a nastavení konfigurace. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Budete potřebovat přizpůsobené prostředí s úplnými právy. | |
+|  | Týmy, které potřebují integrovanou vysokou dostupnost, možnost zotavení po havárii a možnost upgradu databáze. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Týmy, které můžete nakonfigurovat, správně vyladit, přizpůsobení a správa vysoké dostupnosti, zotavení po havárii a opravy pro SQL Server. Některé poskytované automatizované funkce to značně zjednodušují. |
+|  | Týmy, které nechtějí spravovat příslušný operační systém a nastavení konfigurace. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Budete potřebovat přizpůsobené prostředí s úplnými právy. |
 |  | Databáze o velikosti až 100 TB. | Až do 8 TB. | Instance systému SQL Server s úložištěm o velikosti až 64 TB. Instance může podporovat tolik databází, kolik je potřeba. |
 | **Kompatibilita** | Podporuje většinu místních funkcí úrovni databáze. | Podporuje téměř všechny místní funkce na úrovni instance a databáze. | Podporuje všechny místních funkcí. |
 | **Zdroje a prostředky:** | Nechcete využívat prostředky IT ke konfiguraci a správě základní infrastruktury, ale chcete se soustředit na aplikační vrstvu. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Máte některé prostředky IT ke konfiguraci a správě. Některé poskytované automatizované funkce to značně zjednodušují. |
 | **Celkové náklady na vlastnictví:** | Eliminuje náklady na hardware a snižuje náklady na správu. | Stejné jako jednoduchá a ve fondu databází SQL Database. | Eliminuje náklady na hardware. |
 | **Kontinuita podnikových procesů:** |Kromě [funkcí infrastruktury s předdefinovanou odolnost proti chybám](sql-database-high-availability.md), Azure SQL Database nabízí funkce, jako například [automatické zálohování](sql-database-automated-backups.md), [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore), [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore), [aktivní geografickou replikaci](sql-database-active-geo-replication.md), a [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) pro zvýšení kontinuity. Další informace najdete v tématu [Databáze SQL – kontinuita podnikových procesů (přehled)](sql-database-business-continuity.md). | Stejně jako jednoduchá a ve fondu databází SQL Database, jen rozšířené o uživatelem iniciované, pouze kopie zálohy jsou k dispozici. | SQL Server na virtuálních počítačích Azure umožňuje nastavit vysoce dostupné řešení s možností zotavení po havárii pro konkrétní potřeby vaší databáze. Můžete tak mít systém, který je vysoce optimalizovaný pro vaši aplikaci. Sami podle potřeby můžete otestovat a spustit převzetí služeb při selhání. Další informace najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md). |
 | **Hybridní cloud:** |Vaše místní aplikace mohou přistupovat k datům v Azure SQL Database. | [Implementace nativní virtuální sítě](sql-database-managed-instance-vnet-configuration.md) a připojení k vaší místní prostředí pomocí Azure Express Route nebo VPN Gateway. | V případě SQL Serveru na virtuálních počítačích Azure můžete mít aplikace, které běží částečně v cloudu a částečně místně. Můžete si například rozšířit místní síť a služby Active Directory Domain do cloudu přes [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Další informace o hybridní Cloudová řešení, najdete v části [rozšíření místních řešení pro data do cloudu](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
-|  | Podporuje [transakční replikaci systému SQL Server](https://msdn.microsoft.com/library/mt589530.aspx) jako předplatitel k replikaci dat. | Replikace je podporována pro spravovanou instanci jako funkci ve verzi preview. | Plně podporuje [transakční replikaci systému SQL Server](https://msdn.microsoft.com/library/mt589530.aspx), [skupin dostupnosti Always On](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md), integrační služby a přesouvání protokolu k replikaci dat. Navíc jsou plně podporované tradiční zálohy systému SQL Server. | |
+|  | Podporuje [transakční replikaci systému SQL Server](https://msdn.microsoft.com/library/mt589530.aspx) jako předplatitel k replikaci dat. | Replikace je podporována pro spravovanou instanci jako funkci ve verzi preview. | Plně podporuje [transakční replikaci systému SQL Server](https://msdn.microsoft.com/library/mt589530.aspx), [skupin dostupnosti Always On](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md), integrační služby a přesouvání protokolu k replikaci dat. Navíc jsou plně podporované tradiční zálohy systému SQL Server. |
 |  | | |
 
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Motivace firem pro zvolení Azure SQL Database nebo SQL Serveru na virtuálních počítačích Azure
@@ -91,7 +91,7 @@ Následující tabulka shrnuje hlavní vlastnosti SQL Database a SQL Serveru na 
 Existuje několik faktorů, které můžou ovlivnit vaše rozhodnutí zvolit PaaS nebo IaaS k hostování vašich databází SQL:
 
 - [Náklady na](#cost) -i PaaS a IaaS možnost zahrnovat základní ceny přidané titulní licencování a základní infrastruktury. Nicméně s možností IaaS musíte investovat další čas i prostředky ke správě databáze, zatímco v modelu PaaS se zobrazuje zahrnutá v ceně tyto funkce pro správu. IaaS umožňuje vypnutí vašich prostředků při jejich snížit náklady, zatímco verze PaaS bude vždy spuštěn, pokud nepoužíváte-li vyřadit a znovu vytvořit prostředky, když jsou potřeba.
-- [Správa](#administration) – možnosti PaaS omezit množství času, které je potřeba investovat ke správě databáze. Ale to také nebudete vykonávat některé vlastní správy, které může zlepšit výkon vašich úloh.
+- [Správa](#administration) – možnosti PaaS omezit množství času, které je potřeba investovat ke správě databáze. Ale také omezuje řadu vlastní správu úlohy a skripty, které můžete provést nebo spustit. Například modul CLR nepodporuje jeden nebo součástí fondu, ale je podporována pro spravovanou instanci. Žádné možnosti nasazení PaaS navíc podporují použití příznaků trasování.
 - [Smlouvu o úrovni služeb](#service-level-agreement-sla) -i IaaS a PaaS poskytují nejvyšší, oborový standard smlouvu SLA. Možnost PaaS zaručuje 99,99 % smlouva SLA, zatímco IaaS zaručuje GARANTOVANÁ dostupnost 99,95 % pro infrastrukturu, což znamená, že je potřeba implementovat další mechanismy pro zajištění dostupnosti vaší databáze. V extrémním případě Pokud chcete implementovat řešení vysoké dostupnosti, které je odpovídající PaaS, potřebujete vytvořit další systému SQL Server na virtuálním počítači a konfigurace skupin dostupnosti AlwaysOn, které může být dvojí náklady na vaši databázi.
 - [Čas do Azure přesunout](#market) – SQL Server na virtuálním počítači Azure je přesnou shodu prostředí, proto migrace z místního na virtuální počítač SQL Azure není liší od přesunutí databází z jednoho místního serveru na jiný. Spravovaná instance také umožňuje velmi snadno migrace; může však být některé změny, které je potřeba ještě před migrací do spravované instance.
 

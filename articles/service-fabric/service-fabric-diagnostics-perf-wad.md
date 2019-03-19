@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 12ea25b9f1b9f13c153348c285ee6641a69909f0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0ab14d41c149ec6e0ce76d24afb0e88a6af53935
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823174"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884553"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -192,15 +192,15 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
  >[!NOTE]
  >I když můžete použít `*` určit skupiny čítačů výkonu, které jsou pojmenovány podobně, odesílání všechny čítače prostřednictvím jímky (do Application Insights) vyžaduje, že jsou jednotlivě deklarovány. 
 
-4. Po přidání odpovídající čítače, které je potřeba shromáždit, budete muset upgradovat váš prostředek clusteru tak, aby tyto změny se projeví v spuštěný cluster. Uložte upravený `template.json` a otevřete prostředí PowerShell. Upgradem clusteru pomocí `New-AzureRmResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, soubor aktualizovanou šablonu a soubor parametrů a vyzve správce prostředků na prostředky, které jste provedli odpovídající změny. Po přihlášení k účtu a jsou ve správné předplatné, použijte následující příkaz ke spuštění upgradu:
+1. Po přidání odpovídající čítače, které je potřeba shromáždit, budete muset upgradovat váš prostředek clusteru tak, aby tyto změny se projeví v spuštěný cluster. Uložte upravený `template.json` a otevřete prostředí PowerShell. Upgradem clusteru pomocí `New-AzureRmResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, soubor aktualizovanou šablonu a soubor parametrů a vyzve správce prostředků na prostředky, které jste provedli odpovídající změny. Po přihlášení k účtu a jsou ve správné předplatné, použijte následující příkaz ke spuštění upgradu:
 
     ```sh
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut v závislosti na tom, zda je prvním nasazení a velikost vaší skupiny prostředků), WAD by měl být shromažďování čítačů výkonu a jejich odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
+1. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut v závislosti na tom, zda je prvním nasazení a velikost vaší skupiny prostředků), WAD by měl být shromažďování čítačů výkonu a jejich odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Další postup
 * Shromažďování dalších čítačů výkonu pro váš cluster. Zobrazit [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md) seznam čítačů, na které se mají shromažďovat.
 * [Použití monitorováním a diagnostikou pomocí šablony Azure Resource Manageru a virtuální počítač Windows](../virtual-machines/windows/extensions-diagnostics-template.md) provádět další úpravy vaše `WadCfg`, včetně dalších účtů úložiště k odesílání diagnostických dat konfigurace.
-* Přejděte [WadCfg Tvůrce](http://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.
+* Přejděte [WadCfg Tvůrce](https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.

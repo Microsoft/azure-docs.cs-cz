@@ -5,29 +5,29 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/20/2017
+ms.date: 03/14/2019
 ms.author: danlep
-ms.openlocfilehash: cbfbe5bf0df1b4f40752b5b233dff6416bcdd309
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0a3d2d0e858dc052095c0a58287970d10c06f0ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770597"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099844"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Použití webhooků v Azure Container Registry
 
-Registr kontejnerů Azure uchovává a spravuje privátní Image kontejnerů Dockeru, podobným způsobem, jakým Docker Hub uchovává veřejné Image Dockeru. Webhooky k aktivační události při určité akce proběhla v jednom z vašich úložišť registru můžete použít. Webhooky můžou reagovat na události na úrovni registru nebo může být oboru dolů značku konkrétního úložiště.
+Registr kontejnerů Azure uchovává a spravuje privátní Image kontejnerů Dockeru, podobným způsobem, jakým Docker Hub uchovává veřejné Image Dockeru. Můžou hostovat taky úložiště pro [grafy Helm](container-registry-helm-repos.md) (preview), formátování balení nasadit aplikace do Kubernetes. Webhooky k aktivační události při určité akce proběhla v jednom z vašich úložišť registru můžete použít. Webhooky můžou reagovat na události na úrovni registru nebo může být oboru dolů značku konkrétního úložiště.
 
 Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace schématu Azure Container Registry webhooku](container-registry-webhook-reference.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure container registry – vytvoření registru kontejnerů ve vašem předplatném Azure. Například použít [webu Azure portal](container-registry-get-started-portal.md) nebo [rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md).
+* Azure container registry – vytvoření registru kontejnerů ve vašem předplatném Azure. Například použít [webu Azure portal](container-registry-get-started-portal.md) nebo [rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md). [Skladové jednotky Azure Container Registry](container-registry-skus.md) mají různé webhooky kvóty.
 * Instalace rozhraní příkazového řádku – nastavení místního počítače jako hostitele Docker a přístup k příkazům rozhraní příkazového řádku Dockeru, dockeru [modul Docker](https://docs.docker.com/engine/installation/).
 
-## <a name="create-webhook-azure-portal"></a>Vytvořit webhook webu Azure portal
+## <a name="create-webhook---azure-portal"></a>Vytvořit webhook – Azure portal
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte do registru kontejneru, ve kterém chcete vytvořit webhook.
 1. V části **služby**vyberte **Webhooky**.
 1. Vyberte **přidat** na panelu nástrojů webhooku.
@@ -35,20 +35,20 @@ Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace s
 
 | Hodnota | Popis |
 |---|---|
-| Název | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom malá písmena a číslice a musí mít délku 5 až 50 znaků. |
+| Název | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5 až 50 znaků. |
 | Identifikátor URI služby | Identifikátor URI, kde by měl webhook odesílání oznámení příspěvku. |
 | Vlastní záhlaví | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
-| Aktivační událost akce | Akce, které aktivují webhook. Webhooky můžou být aktivované nabízených image a/nebo odstranit některé akce. |
+| Aktivační událost akce | Akce, které aktivují webhook. Akce zahrnují nabízená image, image delete, push grafu helmu, odstranění grafu helmu a karantény image. Můžete použít jeden nebo více akcí a aktivovat webhook. |
 | Status | Stav pro webhook po jeho vytvoření. Ve výchozím nastavení je povoleno. |
-| Rozsah | Rozsah, kdy se webhook funguje. Ve výchozím nastavení je oboru pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka". |
+| Rozsah | Rozsah, kdy se webhook funguje. Pokud není zadán, rozsah je pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka" nebo "úložiště: *" pro všechny značky v úložišti. |
 
 Ukázkový formulář webhooku:
 
 ![ACR webhook vytváření uživatelského rozhraní na webu Azure Portal](./media/container-registry-webhook/webhook.png)
 
-## <a name="create-webhook-azure-cli"></a>Vytvořit webhook, rozhraní příkazového řádku Azure
+## <a name="create-webhook---azure-cli"></a>Vytvořit webhook – rozhraní příkazového řádku Azure
 
-Chcete-li vytvořit webhook pomocí Azure CLI, použijte [az acr webhook vytvořit](/cli/azure/acr/webhook#az-acr-webhook-create) příkazu.
+Chcete-li vytvořit webhook pomocí Azure CLI, použijte [az acr webhook vytvořit](/cli/azure/acr/webhook#az-acr-webhook-create) příkazu. Následující příkaz vytvoří webhook pro všechny bitové kopie odstranit události v registru *mycontainerregistry*:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -58,7 +58,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-portal"></a>portál Azure
 
-Předchozí pomocí webhooku v kontejneru obrázků nabízených oznámení a akce odstranění, můžete ho otestovat **Ping** tlačítko. Příkaz ping odešle obecný požadavek POST na zadaný koncový bod a protokoly odpovědi. Pomocí příkazu ping funkce můžete ověřit, že jste správně nakonfigurovali webhooku.
+Před použitím webhooku, takže ji můžete otestovat s **Ping** tlačítko. Příkaz ping odešle obecný požadavek POST na zadaný koncový bod a protokoly odpovědi. Pomocí příkazu ping funkce můžete ověřit, že jste správně nakonfigurovali webhooku.
 
 1. Vyberte, kterou chcete otestovat webhook.
 2. V horním panelu nástrojů vyberte **Ping**.

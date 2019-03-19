@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 61bec775fc8be963ee6fd0768a297420e6eb7ab2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095207"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot Service v3
 
@@ -90,12 +90,12 @@ Robot odpoví "nastavte QnAKnowledgebaseId a QnASubscriptionKey v nastavení apl
 
 1. Na kartě nastavení znalostní báze na portálu pro nástroj QnA Maker získáte vaše ID znalostní báze knowledge base, adresa url hostitele a klíče koncového bodu.
 
-    - Přihlaste se k [QnA Maker](https://qnamaker.ai)
-    - Přejděte do znalostní báze
-    - Vyberte **nastavení** kartu
-    - **Publikování** znalostní báze, pokud ještě neprovedli
+   - Přihlaste se k [QnA Maker](https://qnamaker.ai)
+   - Přejděte do znalostní báze
+   - Vyberte **nastavení** kartu
+   - **Publikování** znalostní báze, pokud ještě neprovedli
 
-    ![Nástroj QnA Maker hodnoty](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+     ![Nástroj QnA Maker hodnoty](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>Testování robota
 

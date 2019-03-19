@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76cc22f614b7877db54fb5af0e58ff90105a8194
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d921d0907d7481b842fd98db2c0d7cb5f402f24f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835973"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
 
-Tento článek popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](http://pandas.pydata.org/) balíček Pythonu.
+Tento článek popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](https://pandas.pydata.org/) balíček Pythonu.
 
 Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
 
@@ -53,7 +53,7 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-2. Načtení dat do pandas DataFrame ze staženého souboru.
+1. Načtení dat do pandas DataFrame ze staženého souboru.
 
 ```python
 #LOCALFILE is the file path
@@ -71,7 +71,7 @@ Tady je pár příkladů, jak zkoumat data pomocí pandas:
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-2. **Kontrola** několik prvním nebo posledním **řádky** v datové sadě následující:
+1. **Kontrola** několik prvním nebo posledním **řádky** v datové sadě následující:
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,33 +79,33 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-3. Zkontrolujte, **datový typ** každý sloupec byl importován jako následující ukázkový kód, pomocí
+1. Zkontrolujte, **datový typ** každý sloupec byl importován jako následující ukázkový kód, pomocí
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-4. Zkontrolujte, **základní statistiky** pro sloupce v datech nastavte následujícím způsobem
+1. Zkontrolujte, **základní statistiky** pro sloupce v datech nastavte následujícím způsobem
 
 ```python
 dataframe_blobdata.describe()
 ```
 
-5. Podívejte se na počet položek pro každou hodnotu sloupce, které následujícím způsobem
+1. Podívejte se na počet položek pro každou hodnotu sloupce, které následujícím způsobem
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-6. **Počet chybějících hodnot** a skutečný počet položek v jednotlivých sloupcích pomocí následujícího ukázkového kódu
+1. **Počet chybějících hodnot** a skutečný počet položek v jednotlivých sloupcích pomocí následujícího ukázkového kódu
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-7. Pokud máte **chybějící hodnoty** pro konkrétní sloupec v datech, můžete zrušit je následujícím způsobem:
+1. Pokud máte **chybějící hodnoty** pro konkrétní sloupec v datech, můžete zrušit je následujícím způsobem:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -118,7 +118,7 @@ Dalším způsobem, jak nahradit chybějících hodnot je ve funkci režimu:
 dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-8. Vytvoření **histogram** vykreslení pomocí proměnný počet intervalů k vykreslení distribuce proměnné
+1. Vytvoření **histogram** vykreslení pomocí proměnný počet intervalů k vykreslení distribuce proměnné
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -126,7 +126,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-9. Podívejte se na **korelace** mezi proměnné pomocí diagnostického nebo funkcí vestavěné korelace
+1. Podívejte se na **korelace** mezi proměnné pomocí diagnostického nebo funkcí vestavěné korelace
 
 ```python
 #relationship between column_a and column_b using scatter plot

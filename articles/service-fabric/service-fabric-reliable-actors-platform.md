@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 82818df267fc08bf200178fda2c8d621bdd832ca
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f6594ccaa4d11361c3aacb8f774327600d3ffdde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889246"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
 Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní framework, která je hostována v implementaci spolehlivé stavové služby Reliable Actors volá se, *služba objektu actor*. Služba objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odesílání vašeho actors zpráva:
@@ -101,7 +101,7 @@ Při používání identifikátorů GUID/UUID a řetězce, jsou hodnoty mají ho
 * [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
 * [Referenční dokumentace rozhraní API objektů actor](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
 * [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Vzorový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

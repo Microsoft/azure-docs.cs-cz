@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098642"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58175163"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,14 +97,14 @@ Výstrahy umožňují automaticky zasílání oznámení účastníkům útraty 
 
 V tomto příkladu **Actual Cost Over Time** sestavy k odesílání oznámení, pokud vaší útraty na Virtuálním počítači Azure přiblíží celkový rozpočet. V tomto scénáři máte celkový rozpočet 20 000 a chcete dostávat oznámení, když náklady se začali přibližovat polovinu vašemu rozpočtu, 9 000 $ a další výstrahy po náklady na 10 000 USD.
 
-1. V nabídce v horní části portálu Cloudyn, zvolte **náklady** > **Cost Analysis** > **Actual Cost Over Time**. 
-2. U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). 
+1. V nabídce v horní části portálu Cloudyn, zvolte **náklady** > **Cost Analysis** > **Actual Cost Over Time**.
+2. U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač).
 3. V horní části přímo ze sestavy, vyberte **akce** a pak vyberte **Naplánování sestavy**.
-4. Pošlete sami sobě e-mail sestavy v naplánovaných intervalech, vyberte **plánování** kartu **uložit nebo naplánovat tuto** dialogové okno sestavy. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Všechny značky, seskupení a filtry, které jste použití jsou zahrnuty v e-mailem sestavu. 
-5. Vyberte **prahová hodnota** kartu a potom vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). 
-   1. V **červenou výstrahu** prahovou hodnotu zadejte 10000. 
-   2. V **žlutá výstraha** zadejte 9000 prahovou hodnotu. 
-   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. 
+4. Pošlete sami sobě e-mail sestavy v naplánovaných intervalech, vyberte **plánování** kartu **uložit nebo naplánovat tuto** dialogové okno sestavy. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Všechny značky, seskupení a filtry, které jste použití jsou zahrnuty v e-mailem sestavu.
+5. Vyberte **prahová hodnota** kartu a potom vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota).
+   1. V **červenou výstrahu** prahovou hodnotu zadejte 10000.
+   2. V **žlutá výstraha** zadejte 9000 prahovou hodnotu.
+   3. V **počet po sobě jdoucích výstrah** zadejte počet po sobě jdoucích výstrah pro příjem. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou.
 6. Vyberte **Uložit**.
 
 ![Příklad zobrazující červené a žluté výstrahy podle útraty prahové hodnoty](./media/tutorial-review-usage/schedule-alert01.png)

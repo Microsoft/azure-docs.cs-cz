@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099980"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ I když Data Factory je dostupná jenom v několika oblastech, služba pro přes
 Azure Data Factory neukládá data s výjimkou přihlašovacích údajů propojené služby pro cloudovými úložišti dat, které jsou šifrované pomocí certifikátů. Pomocí služby Data Factory vytvoříte pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracování dat pomocí [výpočetních služeb](compute-linked-services.md) v jiných oblastech nebo v v místním prostředí. Můžete také sledovat a spravovat pracovní postupy pomocí sady SDK a Azure Monitor.
 
 Data Factory má certifikaci pro:
+
 | **[Certifikace CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |

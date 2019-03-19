@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 87f608163e20d98179eb6c666158386a99858eeb
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188376"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -41,7 +41,7 @@ Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.ecl
 -   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse, přejděte do části **Help** > **Check for Updates** (Nápověda > Vyhledat aktualizace).
 
 Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse, přejděte do části **Help** > **Install New Software** (Nápověda > Instalace nového softwaru).
-1. Do pole **Work with** (Pracovat s) zadejte **http://dl.microsoft.com/eclipse**.
+1. V **pracovat** zadejte https:\//dl.microsoft.com/eclipse.
 2. Klikněte na tlačítko **Add** (Přidat).
 
    ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
@@ -54,7 +54,7 @@ Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnov
 3. Jakmile aktualizujete modul plug-in Service Fabric, aktualizujte také projekt Gradle.  Klikněte pravým tlačítkem na **build.gradle** a vyberte **Aktualizovat**.
 
 > [!NOTE]
-> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě políčka odkazujícího na umístění modulu plug-in Service Fabric (http://dl.microsoft.com/eclipse/azure/servicefabric)).
+> Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě políčka odkazujícího na umístění modulu plug-in Service Fabric (https://dl.microsoft.com/eclipse/azure/servicefabric)).
 
 > [!NOTE]
 >Pokud Eclipse nefunguje na vašem počítači Mac podle očekávání nebo vyžaduje spuštění od superuživatele, přepněte se do složky **ECLIPSE_INSTALLATION_PATH** a přejděte do podsložky **Eclipse.app/Contents/MacOS**. Spusťte Eclipse spuštěním příkazu `./eclipse`.
@@ -141,8 +141,8 @@ Můžete publikovat svoji aplikaci do cloudu, postupujte podle těchto kroků:
    - `ClientKey` Pole by měla odkazovat na ve formátu PEM .pem nebo .key soubor na místním počítači, který obsahuje privátní klíč certifikátu klienta nebo v clusteru.
    - `ClientCert` Pole by měl přejděte formátem PEM soubor .pem nebo CRT v místním počítači, který obsahuje data certifikátu klienta nebo clusteru. certifikát. 
 
-    ```bash
-    {
+     ```bash
+     {
          "ClusterConnectionParameters":
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
@@ -150,8 +150,8 @@ Můžete publikovat svoji aplikaci do cloudu, postupujte podle těchto kroků:
             "ClientKey": "[path_to_your_pem_file_on_local_machine]",
             "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
-    }
-    ```
+     }
+     ```
 
 2. Klikněte pravým tlačítkem na aplikaci Service Fabric a potom vyberte **Service Fabric**.
 3. V místní nabídce klikněte na tlačítko **publikovat aplikaci...** .
@@ -159,8 +159,8 @@ Můžete publikovat svoji aplikaci do cloudu, postupujte podle těchto kroků:
 
     ![Dialogové okno publikování – cloud](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
-4.  Můžete sledovat průběh operace publikování v okně konzoly.
-5.  Pokud chcete ověřit, že je aplikace spuštěná, otevřete Service Fabric Explorer na clusteru Azure v okně prohlížeče. Pro výše uvedeném příkladu by toto byl: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozbalte **aplikací** uzlu a ujistěte se, že je aplikace spuštěná. 
+4. Můžete sledovat průběh operace publikování v okně konzoly.
+5. Pokud chcete ověřit, že je aplikace spuštěná, otevřete Service Fabric Explorer na clusteru Azure v okně prohlížeče. Pro výše uvedeném příkladu by toto byl: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Rozbalte **aplikací** uzlu a ujistěte se, že je aplikace spuštěná. 
 
 
 Na zabezpečené clusterech s Linuxem Pokud vaše aplikace obsahuje služby Reliable Services je také potřeba nakonfigurovat certifikát, který vaše služby můžete použít k volání rozhraní API modulu runtime Service Fabric. Další informace najdete v tématu [konfigurace aplikace Reliable Services ke spuštění na clusterech s Linuxem](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).

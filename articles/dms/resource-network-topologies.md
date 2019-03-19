@@ -3,20 +3,20 @@ title: Síťové topologie pro migrace Azure SQL Database Managed Instance pomoc
 description: Přečtěte si požadavky na zdrojovou a cílovou konfiguraci pro služby Database Migration Service.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 82c91515ac3fae65623e3750471fec46b5d4bf5b
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: d12d6b1274a756bfb13761ab999a1539bcee3657
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790675"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178114"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro migrace Azure SQL DB Managed Instance pomocí Azure Database Migration Service
 Tento článek popisuje různé topologie sítě, které Azure Database Migration Service můžete pracovat na poskytovat komplexní migrace z místních SQL serverů do Azure SQL Database Managed Instance.

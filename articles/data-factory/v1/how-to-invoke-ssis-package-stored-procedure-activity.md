@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 859cd6cfd3db68dad2607f1dc8905facb43dd290
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ed53f9bf2e22e1d69a4e00de1e8d71291a5be46d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453767"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108708"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě Azure Data Factory
 Tento článek popisuje, jak vyvolat z kanálu služby Azure Data Factory balíčku SSIS pomocí aktivity uložených procedur. 
@@ -54,20 +54,20 @@ Prvním krokem je vytvoření datové továrny pomocí webu Azure portal.
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
-      - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
+   - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
+   - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../../azure-resource-manager/resource-group-overview.md).  
 4. Vyberte **V1** pro **verze**.
 5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
 
-    ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka datové továrny](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     ![Domovská stránka datové továrny](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Klikněte na tlačítko **vytvořit a nasadit** dlaždice editoru služby Data Factory.
 
     ![Data Factory Editor](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
@@ -304,13 +304,13 @@ V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivita vyvol
 
 ### <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-2. Spustit **Get-AzDataFactorySlice** získat tak podrobné údaje o všech řezech datové sady výstupní datovou sadu **, která je výstupní tabulkou kanálu.
+1. Spustit **Get-AzDataFactorySlice** získat tak podrobné údaje o všech řezech datové sady výstupní datovou sadu **, která je výstupní tabulkou kanálu.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. 
-3. Spustit **Get-AzDataFactoryRun** získáte podrobnosti o spouštění aktivity pro určitý řez.
+1. Spustit **Get-AzDataFactoryRun** získáte podrobnosti o spouštění aktivity pro určitý řez.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

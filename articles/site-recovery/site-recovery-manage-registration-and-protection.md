@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 20d5c4628d729b8dff8b1d72f80beac0ec2e8f67
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569736"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122786"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -158,11 +158,11 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 
 1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
 2. V **zakázat replikaci**, můžete vybrat následující možnosti:
-    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-    - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
+   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
+   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
 
-    > [!NOTE]
-    > Pokud jste zvolili **odebrat** možnost pak spusťte následující sadu skriptů a vyčistit nastavení replikace v místním serveru technologie Hyper-V.
+     > [!NOTE]
+     > Pokud jste zvolili **odebrat** možnost pak spusťte následující sadu skriptů a vyčistit nastavení replikace v místním serveru technologie Hyper-V.
 1. Na zdrojovém Hyper-V hostitelském serveru, chcete-li odebrat replikaci pro virtuální počítač. Nahraďte názvem vašeho virtuálního počítače SQLVM1 a spusťte skript ze správy prostředí PowerShell
 
 ```powershell
@@ -177,11 +177,11 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
 2. V **zakázat replikaci**, vyberte jednu z těchto možností:
 
-    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-    - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
+   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
+   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
 
-    > [!NOTE]
-    > Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
+     > [!NOTE]
+     > Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
 3. Tento skript spusťte na zdrojovém serveru VMM pomocí konzoly VMM pomocí Powershellu (vyžaduje oprávnění správce). Nahraďte zástupný text **SQLVM1** s názvem virtuálního počítače.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
@@ -201,10 +201,10 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
 2. V **zakázat replikaci**, vyberte jednu z těchto možností:
 
-    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
-    - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. Spusťte následující sadu skriptů vyčistit nastavení replikace místních virtuálních počítačů.
-> [!NOTE]
-> Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
+   - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
+   - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. Spusťte následující sadu skriptů vyčistit nastavení replikace místních virtuálních počítačů.
+     > [!NOTE]
+     > Pokud jste zvolili **odebrat** možnost, pak tyto skripty, které vyčistit nastavení replikace tun místní VMM Server.
 
 3. Tento skript spusťte na zdrojovém serveru VMM pomocí konzoly VMM pomocí Powershellu (vyžaduje oprávnění správce). Nahraďte zástupný text **SQLVM1** s názvem virtuálního počítače.
 

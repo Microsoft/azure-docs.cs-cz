@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 2baae0a1932bdcb7fa5e29ac06dd8ae7a7020a30
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421840"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992393"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (classic) pomocí souboru konfigurace sítě
 > [!IMPORTANT]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager.
 
 Můžete vytvořit a nakonfigurovat virtuální síť (klasická) s konfiguračním souboru sítě pomocí rozhraní příkazového řádku Azure classic (rozhraní příkazového řádku) nebo Azure Powershellu. Nejde vytvořit nebo upravit virtuální sítě pomocí modelu nasazení Azure Resource Manageru pomocí souboru konfigurace sítě. Na webu Azure portal k vytvoření nebo úpravě virtuální sítě (classic) pomocí souboru konfigurace sítě, ale můžete využívat na webu Azure portal k vytvoření virtuální sítě (classic), nelze použít bez použití konfiguračního souboru sítě.
 
@@ -71,7 +71,7 @@ Soubor konfigurace sítě následující příklad vytvoří virtuální síť s
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns />
     <VirtualNetworkSites>

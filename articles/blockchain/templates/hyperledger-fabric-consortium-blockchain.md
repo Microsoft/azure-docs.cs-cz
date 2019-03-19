@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005810"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sítě konsorcia Hyperledger Fabric
 
@@ -78,11 +78,11 @@ V **Základy**, zadejte hodnoty pro standardní parametry pro každé nasazení.
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Předpona prostředků**| Předpona názvu prostředků, které jsou zřízené jako součást svého nasazení |6 znaků nebo méně |
-**Uživatelské jméno**| Uživatelské jméno správce pro jednotlivé virtuální počítače nasazené pro tento člen |1 – 64 znaků. |
-**Typ ověřování**| Metodu k ověření k virtuálnímu počítači |Heslo nebo SSH veřejný klíč|
-**Heslo (typ ověřování = heslo)**|Heslo pro účet správce pro jednotlivé virtuální počítače nasazené. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení|12 – 72 znaků|
-**Klíč SSH (typ ověřování = veřejný klíč SSH)**|Klíč zabezpečeného prostředí používá pro vzdálené přihlášení ||
+**Předpona prostředků** | Předpona názvu prostředků, které jsou zřízené jako součást svého nasazení |6 znaků nebo méně |
+**Uživatelské jméno** | Uživatelské jméno správce pro jednotlivé virtuální počítače nasazené pro tento člen |1 – 64 znaků. |
+**Typ ověřování** | Metodu k ověření k virtuálnímu počítači |Heslo nebo SSH veřejný klíč|
+**Heslo (typ ověřování = heslo)** |Heslo pro účet správce pro jednotlivé virtuální počítače nasazené. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení|12 – 72 znaků|
+**Klíč SSH (typ ověřování = veřejný klíč SSH)** |Klíč zabezpečeného prostředí používá pro vzdálené přihlášení ||
 **Předplatné** |Předplatné, do které chcete nasadit ||
 **Skupina prostředků** |Skupinu prostředků, do které chcete nasadit sítě konsorcia ||
 **Umístění** |Oblasti Azure, do které chcete nasadit prvního člena v ||
@@ -97,10 +97,10 @@ V **nastavení sítě**zadejte vstupy pro vytvoření nebo připojení existují
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Konfigurace sítě**|Můžete vytvořit novou síť nebo se připojit ke stávající. Pokud se rozhodnete *připojte se k existující*, budete muset zadat další hodnoty. |Nové sítě <br/> Připojte se k existující |
-**Heslo HLF certifikační Autority**|Heslo použité pro certifikáty generované infrastrukturou certifikačních autorit, které jsou vytvořeny jako součást svého nasazení. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|1 - 25 znaků |
-**Nastavení organizace** |Můžete přizpůsobit název vaší organizace a certifikát nebo mají výchozí hodnoty, který se má použít.|Výchozí <br/> Rozšířený  |
-**Nastavení sítě VPN**| Zřízení bránu tunelového propojení sítě VPN pro přístup k virtuálním počítačům | Ano <br/> Ne |
+**Konfigurace sítě** |Můžete vytvořit novou síť nebo se připojit ke stávající. Pokud se rozhodnete *připojte se k existující*, budete muset zadat další hodnoty. |Nové sítě <br/> Připojte se k existující |
+**Heslo HLF certifikační Autority** |Heslo použité pro certifikáty generované infrastrukturou certifikačních autorit, které jsou vytvořeny jako součást svého nasazení. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|1 - 25 znaků |
+**Nastavení organizace** |Můžete přizpůsobit název vaší organizace a certifikát nebo mají výchozí hodnoty, který se má použít.|Výchozí <br/> Upřesňující |
+**Nastavení sítě VPN** | Zřízení bránu tunelového propojení sítě VPN pro přístup k virtuálním počítačům | Ano <br/> Ne |
 
 Vyberte **OK**.
 
@@ -112,8 +112,8 @@ V **konfigurace infrastruktury**, odpovídající konfigurací výkonu a velikos
 
 | Název parametru | Popis | Povolené hodnoty |
 |---|---|---|
-**Typ škálování**|Typ nasazení jeden virtuální počítač s několika kontejnery nebo více virtuálních počítačů v modelu horizontální navýšení kapacity.|Jeden virtuální počítač nebo víc virtuálních počítačů |
-**Typ disku virtuálního počítače**|Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o typech disků k dispozici, najdete v tématu [vyberte typ disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
+**Typ škálování** |Typ nasazení jeden virtuální počítač s několika kontejnery nebo více virtuálních počítačů v modelu horizontální navýšení kapacity.|Jeden virtuální počítač nebo víc virtuálních počítačů |
+**Typ disku virtuálního počítače** |Typ úložiště, zálohování, každý z nasazených uzlů. <br/> Další informace o typech disků k dispozici, najdete v tématu [vyberte typ disku](../../virtual-machines/windows/disks-types.md).|SSD úrovně Standard <br/> Premium SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Nasazení více virtuálních počítačů (Další nastavení)
 
@@ -123,8 +123,8 @@ V **konfigurace infrastruktury**, odpovídající konfigurací výkonu a velikos
 |---|---|---|
 **Počet uzlů orderer** |Počet uzlů, které pořadí (organizace) transakce do bloku. <br />Další podrobnosti o řazení služby, najdete Hyperledger [dokumentace](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1 – 4 |
 **Velikost virtuálního počítače uzlu orderer** |Velikost virtuálního počítače pro uzly orderer v síti|Standard Bs<br />Standard Ds<br />Standard FS |
-**Počet partnerské uzly**| Uzly, které jsou vlastněny consortium členy, které provádějí transakce a Udržovat stav a kopii hlavní knihy.<br />Další podrobnosti o řazení služby, najdete Hyperledger [dokumentaci](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
-**Trvalost stavu uzlu** |Trvalost modul používaný partnerské uzly. Můžete nakonfigurovat tento modul za partnerský uzel. Viz podrobnosti níže pro více partnerské uzly.|CouchDB </br>LevelDB |
+**Počet partnerské uzly** | Uzly, které jsou vlastněny consortium členy, které provádějí transakce a Udržovat stav a kopii hlavní knihy.<br />Další podrobnosti o řazení služby, najdete Hyperledger [dokumentaci](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
+**Trvalost stavu uzlu** |Trvalost modul používaný partnerské uzly. Můžete nakonfigurovat tento modul za partnerský uzel. Viz podrobnosti níže pro více partnerské uzly.|CouchDB <br />LevelDB |
 **Velikost virtuálního počítače uzlu peer** |Velikost virtuálního počítače použít pro všechny uzly v síti|Standard Bs<br />Standard Ds<br />Standard FS |
 
 ### <a name="multiple-peer-node-configuration"></a>Konfigurace uzlu několika partnera

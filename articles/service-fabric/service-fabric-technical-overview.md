@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: ryanwi
-ms.openlocfilehash: 787a25a822e4ee7e13a2f1429bacd8d5cd2139ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fda6af0f253457aaf3aef1e8444850592255b318
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113669"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Je možné [clustery hostitelů Service Fabric, kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru, nebo jakýkoli jiný poskytovatel cloudu.  Service Fabric je orchestrátor, která je základem [Azure Service Fabric mřížky](/azure/service-fabric-mesh). K psaní služeb a rozhodnete, jak spustit aplikaci z několika možností prostředí můžete použít libovolné architektury. Tento článek obsahuje podrobnosti o terminologii používané k pochopení termínů používaných v dokumentaci k Service Fabric.
@@ -162,14 +162,14 @@ Service Fabric je technologie open source platforma, která na základě několi
 Různá prostředí mají různé úrovně podpory platformy a modely nasazení. Následující tabulka popisuje podporované architektury a kombinace modelu nasazení.
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 | Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | Podporováno |Nepodporuje se | Windows – podporováno, Linux a Mac – není podporované | Windows – není podporované |
 |Nativní aplikace Service Fabric | Model nativní aplikace (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
 
 Následující tabulka popisuje různé aplikačních modelů a nástrojů, která existuje pro ně pro Service Fabric.
 
 | Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporuje se – pouze prostředí sítě | Nepodporuje se|
 |Nativní aplikace Service Fabric | Model nativní aplikace (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
 

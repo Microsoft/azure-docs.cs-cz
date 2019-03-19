@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8d21c39a428049594237900aa76f783a3ed0ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005450"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860343"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API služby Media Services operace 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -35,7 +35,7 @@ Ověřování rozhraní REST API pro Media Services se provádí pomocí ověřo
 Při používání REST, platí následující aspekty.
 
 * Při dotazování entit, platí limit 1 000 entit najednou vrátit, protože veřejné v2 REST omezuje výsledky dotazu na 1000 výsledky. Je třeba použít **přeskočit** a **trvat** (.NET) / **horní** (REST), jak je popsáno v [v tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a [toto rozhraní REST API Příklad](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
-* Když pomocí formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například k odkazu na odkazovaný objekt) je nutné nastavit **přijmout** záhlaví [JSON podrobný formát](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)(viz následující příklad). OData nerozumí **__metadata** vlastnost v požadavku, pokud ho nastavíte na verbose.  
+* Když pomocí formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například k odkazu na odkazovaný objekt) je nutné nastavit **přijmout** záhlaví [JSON podrobný formát](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)(viz následující příklad). OData nerozumí **__metadata** vlastnost v požadavku, pokud ho nastavíte na verbose.  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -101,7 +101,7 @@ Následuje úplný seznam příkazů HTTP, které se dá použít při vytváře
 | PUT |Nahradí objekt nebo vytvoří objekt s názvem (Pokud se používá). |
 | DELETE |Odstraní objekt. |
 | SLOUČENÍ |Aktualizuje existující objekt změn s názvem vlastnosti. |
-| HLAVNÍ |Vrátí metadata objektu pro získání odpovědi. |
+| HEAD |Vrátí metadata objektu pro získání odpovědi. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Vyhledat a procházet entity model služby Media Services
 Chcete-li zjistitelnější entity Media Services, je možné $metadata operace. Umožňuje načíst všechny typy entit platný, vlastností entity, přidružení, funkce, akce a tak dále. Přidáním $metadata operaci za účelem váš koncový bod REST API služby Media Services, dostanete tuto službu zjišťování.

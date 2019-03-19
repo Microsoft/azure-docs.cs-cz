@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 25841971a2e7921c89c63032e8fd48bc528263aa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 118ac858103776e880e7304199279a7d50ad71b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112275"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
@@ -135,8 +135,8 @@ Vyzkoušejte promluvu blízkou opravené promluvě.
 
 2. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-  ```json
-  {
+   ```json
+   {
     "query": "are there any natural language processing jobs in my department right now?",
     "topScoringIntent": {
       "intent": "GetJobInformation",
@@ -228,11 +228,11 @@ Vyzkoušejte promluvu blízkou opravené promluvě.
       "label": "positive",
       "score": 0.8251864
     }
-  }
-  }
-  ```
+   }
+   }
+   ```
 
-  Správný záměr je predikovaný s vysokým skóre a entita **Job** je detekovaná jako `natural language processing`. 
+   Správný záměr je predikovaný s vysokým skóre a entita **Job** je detekovaná jako `natural language processing`. 
 
 ## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Dá se kontrola nahradit přidáním dalších promluv? 
 Asi vás napadá, proč nepřidat další ukázkové promluvy. Jaký je účel kontrol promluv koncového bodu? V reálných aplikacích LUIS jsou promluvy koncového bodu od uživatelů a mají volbu slov a uspořádání, které jste ještě nepoužili. Pokud jste použili stejnou volbu slov a uspořádání, původní predikce by měla vyšší procentní hodnocení. 

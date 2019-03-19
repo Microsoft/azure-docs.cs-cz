@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5bb5993ea47bfcaca96662fbb3d34341e137b929
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2576a0489ad62aba0a85a45f110acb8ac220847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107181"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Syntaxe dotazů Lucene ve službě Azure Search
 Můžete psát dotazy ve službě Azure Search založený na získáte bohaté [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) syntaxe pro formuláře specializovaném dotazovacím: zástupný znak, vyhledávání přibližných shod, vyhledávání blízkých výrazů regulární výrazy je pár příkladů. Velká část syntaxe analyzátor dotazů Lucene [Internet implementované ve službě Azure Search](search-lucene-query-architecture.md), s výjimkou produktů *rozsahu vyhledávání* které jsou vytvořeny ve službě Azure Search prostřednictvím `$filter` výrazy. 
@@ -65,13 +65,13 @@ Další příklady najdete v tématu [příklady syntaxe dotazů Lucene pro tvor
 ##  <a name="bkmk_fields"></a> Dotazy v rámci pole  
  Můžete zadat `fieldname:searchterm` konstrukce k definování operace fielded dotazu, kde je pole jednoho slova, a hledaný termín je také jedno slovo nebo slovní spojení, volitelně s logickými operátory. Mezi příklady patří následující:  
 
--   rozšířením podle tematických: jazz není historie  
+- rozšířením podle tematických: jazz není historie  
 
--   vašim animátorům: ("mil Davis" "Jan Coltrane")
+- vašim animátorům: ("mil Davis" "Jan Coltrane")
 
- Je potřeba umístit více řetězce v uvozovkách, pokud chcete obou řetězců má být vyhodnocen jako jedna entita v tomto případě hledání dvě odlišné umělci v `artists` pole.  
+  Je potřeba umístit více řetězce v uvozovkách, pokud chcete obou řetězců má být vyhodnocen jako jedna entita v tomto případě hledání dvě odlišné umělci v `artists` pole.  
 
- V zadané pole `fieldname:searchterm` musí být `searchable` pole.  Zobrazit [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.  
+  V zadané pole `fieldname:searchterm` musí být `searchable` pole.  Zobrazit [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.  
 
 ##  <a name="bkmk_fuzzy"></a> vyhledávání přibližných shod  
  Přibližné vyhledávání vyhledá odpovídající položky v podmínkách, které mají podobné konstrukce. Za [Lucene dokumentaci](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), vyhledávání přibližných shod, které jsou založeny na [Damerau Levenshtein vzdálenost](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).  

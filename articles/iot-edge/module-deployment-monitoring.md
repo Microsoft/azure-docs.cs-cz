@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 72238db8322132f42e14656c106b82d8604af21f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107810"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
 
@@ -32,7 +32,7 @@ Tento článek se zaměřuje na konfiguraci a monitorování fáze pro flotily n
 2. Služba IoT Hub komunikuje se všechna cílová zařízení nakonfigurovat požadované moduly. 
 3. Služba IoT Hub načítá stav ze zařízení IoT Edge a zpřístupní je operátor.  Operátor můžete třeba zjistit, když se úspěšně nakonfigurovala hraničního zařízení nebo pokud modulu nezdaří za běhu. 
 4. V každém okamžiku nová zařízení IoT Edge, které splňují podmínky cílení jsou nakonfigurované pro nasazení. Například nasazení, které cílí na všechna zařízení IoT Edge ve státě Washington automaticky nakonfiguruje nová zařízení IoT Edge je zřízený a přidán do skupiny zařízení státě Washington. 
- 
+ 
 Tento článek popisuje jednotlivých komponent zahrnutých v konfiguraci a monitorování nasazení. Postup vytvoření a nasazení aktualizace, najdete v části [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Nasazení

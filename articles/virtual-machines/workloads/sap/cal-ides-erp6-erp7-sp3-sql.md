@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194194"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011269"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
 Tento článek popisuje, jak nasadit systém SAP IDES provozu s využitím SQL serveru a operačního systému Windows v Azure prostřednictvím SAP Cloud Appliance Library (SAP CAL) 3.0. Snímky obrazovky zobrazit podrobný proces. Pokud chcete nasadit jiné řešení, postupujte podle stejných kroků.
 
-Pokud chcete začít se SAP CAL, přejděte na [SAP Cloud Appliance Library](https://cal.sap.com/) webu. SAP má také blogu o nové [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Pokud chcete začít se SAP CAL, přejděte na [SAP Cloud Appliance Library](https://cal.sap.com/) webu. SAP má také blogu o nové [SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
 > Od 29. května 2017 můžete kromě modelu nasazení classic méně než upřednostňovaný model nasazení Azure Resource Manageru pro nasazení SAP CAL. Doporučujeme, abyste pomocí nového modelu nasazení Resource Manager a modelu nasazení classic ignorovat.
@@ -46,8 +46,8 @@ Po přihlášení k SAP CAL na první stránce obvykle povede k **řešení** st
     
     c. Udělit oprávnění SAP CAL pro nasazení do vašeho předplatného Azure.
 
-    > [!NOTE]
-    Následující kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Resource Manager. Pokud už máte účet SAP CAL, který je propojený s modelem nasazení classic můžete *potřebovat* postupovat podle těchto kroků a vytvořte nový účet SAP CAL. Nový účet SAP CAL je potřeba nasadit v modelu Resource Manager.
+   > [!NOTE]
+   >  Následující kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Resource Manager. Pokud už máte účet SAP CAL, který je propojený s modelem nasazení classic můžete *potřebovat* postupovat podle těchto kroků a vytvořte nový účet SAP CAL. Nový účet SAP CAL je potřeba nasadit v modelu Resource Manager.
 
 1. Chcete-li vytvořit nový účet SAP CAL **účty** stránky zobrazí dvě možnosti pro Azure: 
 
@@ -71,7 +71,7 @@ Po přihlášení k SAP CAL na první stránce obvykle povede k **řešení** st
 
 1. Pokud je uveden více než jednoho uživatele, zvolte účet Microsoft, který je propojen se spolusprávce předplatného Azure, které jste vybrali. Na záložce prohlížeče, zobrazí se následující stránka:
 
-    ![Potvrzení aplikace Internet Explorer cloud services](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
+    ![Internet Explorer cloud services confirmation](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
 1. Klikněte na tlačítko **přijmout**. Pokud je ověřování úspěšné, znovu zobrazí definici účet SAP CAL. Po krátkou dobu zobrazí se zpráva potvrzující, že proces autorizace byla úspěšná.
 
@@ -91,7 +91,7 @@ Po přihlášení k SAP CAL na první stránce obvykle povede k **řešení** st
 - Nasazení systémů SAP do vašeho předplatného Azure.
 
 > [!NOTE]
-Před nasazením SAP IDES řešení založené na Windows a SQL Server, můžete si zaregistrovat předplatné SAP CAL. V opačném případě může být řešení zobrazí jako **uzamčené** na stránce Přehled.
+> Před nasazením SAP IDES řešení založené na Windows a SQL Server, můžete si zaregistrovat předplatné SAP CAL. V opačném případě může být řešení zobrazí jako **uzamčené** na stránce Přehled.
 
 ### <a name="deploy-a-solution"></a>Nasazení řešení
 1. Jakmile nastavíte účet SAP CAL, vyberte **řešení SAP IDES na Windows a SQL Server** řešení. Klikněte na tlačítko **vytvořit instanci**a zkontrolujte využití a podmínky podmínky. 

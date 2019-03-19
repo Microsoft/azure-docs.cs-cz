@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 383f65ea925a3575afd988e07784be643201c6b8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214490"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120750"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta technické informace o SaaS aplikace
 
@@ -44,7 +44,7 @@ K vytvoření tohoto prostředí budete muset nakonfigurovat následující:
 - Připojte svůj web služby SaaS s rozhraními API SaaS společnosti Microsoft. [Zákazník SaaS pomocí Azure – rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) článek vysvětluje, jak vytvořit toto připojení.
 - Povolit dá prodávat prostřednictvím Azure na portál partnerů cloudu v podobě technických konfigurace a zadejte požadované informace. Další informace o tomto modelu fakturace a jak je implementován najdete v tématu [SaaS – prodávat prostřednictvím Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
- ![Prodej přes Microsoft formuláře](./media/saas-techinfo-sellthrough-ms.png)
+  ![Prodej přes Microsoft formuláře](./media/saas-techinfo-sellthrough-ms.png)
 
 Následující tabulka popisuje povinná pole pro prodej prostřednictvím společnosti Microsoft.
 

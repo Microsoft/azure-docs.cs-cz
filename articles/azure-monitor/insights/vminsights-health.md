@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 7eecd7f5da2b20cb80d8a04d105460baaf9ed4a2
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984709"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076815"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Azure monitoru, nebyl navržen pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -29,22 +29,22 @@ Tento článek vám pomůže pochopit, jak rychle posoudit, prozkoumat a vyřeš
 
 Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-onboard.md).
 
->[!NOTE]
->Od 11. února 2019 začneme můžete migrovat z aktuální stav modelu ve službě Azure Monitor pro funkci stav virtuální počítače, který se zobrazí, když jste v prostředí diagnostiku stavu v současné době na novou verzi modelu stavu. Tato aktualizace zlepšuje výkon při zpracování stavu kumulativní a obsahuje model zpracovaných stavů zobrazí v zobrazení stavu diagnostiky. 
->
->Na novém modelu stavu kumulativní podřízené kritéria kritéria úrovně stavu nadřazená/entita bude rychleji a proto stav aktualizace nadřazené do požadovaného nebo cílovém stavu s nižší latencí. Stále můžete filtrovat kritéria stavu v rámci **výkonu** a **dostupnosti** kategorie na rozdíl od předchozích metodu založenou na kartu k výběru obou kategorie v zobrazení.
->
->Podrobné informace o stavu diagnostiky najdete stav diagnostiky [části](#health-diagnostics) v tomto článku. 
->
->Tato aktualizace zlepší následující: 
->
->- Souhrn stavu zpracování s nižší latencí  
->- Rychleji upozorňuje na ně změn stavů 
->- Rychlejší aktualizace stavu v zobrazení pro agregované virtuálního počítače pro všechny virtuální počítače 
->
->Neexistuje žádná regrese funkcí doručit ještě dnes s funkcí stavu služby Azure Monitor pro virtuální počítače.
-
->V důsledku této změny dvě prostředí ve stavu diagnostiky se to týká – obnoví historii změn stavu a předchozí změny stavu pro kritéria nebudou k dispozici ke kontrole ve sloupci stav změní stav stránky diagnostiky. Pokud vás zajímají historických datech kteréhokoli stěžejní kritické virtuální počítač, pak můžete pořídit snímek kritéria data o stavu a odpovídající změny stavu pro vaši informaci. 
+> [!NOTE]
+> Od 11. února 2019 začneme můžete migrovat z aktuální stav modelu ve službě Azure Monitor pro funkci stav virtuální počítače, který se zobrazí, když jste v prostředí diagnostiku stavu v současné době na novou verzi modelu stavu. Tato aktualizace zlepšuje výkon při zpracování stavu kumulativní a obsahuje model zpracovaných stavů zobrazí v zobrazení stavu diagnostiky. 
+> 
+> Na novém modelu stavu kumulativní podřízené kritéria kritéria úrovně stavu nadřazená/entita bude rychleji a proto stav aktualizace nadřazené do požadovaného nebo cílovém stavu s nižší latencí. Stále můžete filtrovat kritéria stavu v rámci **výkonu** a **dostupnosti** kategorie na rozdíl od předchozích metodu založenou na kartu k výběru obou kategorie v zobrazení.
+> 
+> Podrobné informace o stavu diagnostiky najdete stav diagnostiky [části](#health-diagnostics) v tomto článku. 
+> 
+> Tato aktualizace zlepší následující: 
+> 
+> - Souhrn stavu zpracování s nižší latencí  
+> - Rychleji upozorňuje na ně změn stavů 
+> - Rychlejší aktualizace stavu v zobrazení pro agregované virtuálního počítače pro všechny virtuální počítače 
+> 
+> Neexistuje žádná regrese funkcí doručit ještě dnes s funkcí stavu služby Azure Monitor pro virtuální počítače.
+> 
+> V důsledku této změny dvě prostředí ve stavu diagnostiky se to týká – obnoví historii změn stavu a předchozí změny stavu pro kritéria nebudou k dispozici ke kontrole ve sloupci stav změní stav stránky diagnostiky. Pokud vás zajímají historických datech kteréhokoli stěžejní kritické virtuální počítač, pak můžete pořídit snímek kritéria data o stavu a odpovídající změny stavu pro vaši informaci. 
 
 ## <a name="monitoring-configuration-details"></a>Podrobnosti o konfiguraci monitorování
 Tato část popisuje výchozí stav kritéria definovat za účelem monitorování Windows Azure a virtuální počítače s Linuxem. Všechna kritéria stavu jsou nakonfigurovaná tak, aby upozornění, když je splněna podmínka není v pořádku. 

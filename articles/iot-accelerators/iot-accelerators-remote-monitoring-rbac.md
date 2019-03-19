@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 08/06/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180751"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -21,7 +21,7 @@ Tento článek obsahuje informace o tom, jak nakonfigurovat řízení přístupu
 
 ## <a name="default-settings"></a>Výchozí nastavení
 
-Při prvním nasazení řešení vzdáleného monitorování, existují dvě role: **správce** a **jen pro čtení**.
+Při prvním nasazení řešení vzdáleného monitorování, existují dvě role: **Správce** a **jen pro čtení**.
 
 Žádný uživatel ve **správce** role má úplný přístup k řešení, včetně následujících oprávnění níže. Uživatel v **jen pro čtení** role budou mít přístup jenom k zobrazení řešení.
 
@@ -77,7 +77,7 @@ Jako vlastníka aplikace Azure Active Directory můžete na webu Azure portal p�
 
 1. Můžete odstranit uživatele z aplikace na **uživatelů a skupin** stránky na portálu.
 
-## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
+## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
 Řešení vzdáleného monitorování obsahuje **správce** a **jen pro čtení** role při prvním nasazení. Můžete přidat vlastní role s jinou sadu oprávnění. Pokud chcete definovat vlastní roli, budete muset:
 

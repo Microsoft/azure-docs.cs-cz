@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2ed64bbf0da252285184e2ca6fef0555a85ce149
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955317"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850849"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojit svazek s vysokou dostupností Service Fabric Reliable založené na disku v aplikaci Service Fabric mřížky 
 Běžnou metodu zachování stavu s využitím kontejnerové aplikace je použití vzdáleného úložiště, jako je Azure File Storage nebo databáze, jako je Azure Cosmos DB. Tím se spojují významné pro čtení a zápisu latence sítě do vzdáleného úložiště.
@@ -36,7 +36,7 @@ V tomto příkladu má aplikace čítač služby ASP.NET Core s webovou stránko
 
 K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud chcete použít rozhraní příkazového řádku Azure v tomto článku, ujistěte se, že `az --version` vrátí alespoň `azure-cli (2.0.43)`.  Nainstalovat (nebo aktualizovat) rozšiřující modul Azure mřížky příkazového řádku Service Fabric pomocí těchto [pokyny](service-fabric-mesh-howto-setup-cli.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k Azure a nastavte své předplatné.
 

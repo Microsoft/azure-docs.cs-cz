@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1ca6988158d1cd15b6c802a8dcda1c91850c91
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112207"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -134,7 +134,7 @@ error=access_denied
 
 Pouhého získání tokentu id_token není dostatečná k ověření uživatele. musí také ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu na základě požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
-Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-idtoken) a [důležité informace o podepisování výměny klíčů](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
+Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-id_token) a [důležité informace o podepisování výměny klíčů](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
 
 Také můžete chtít ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
 

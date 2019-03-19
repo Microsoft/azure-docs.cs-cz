@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 16741461df2431cbf4433899dd375741e944ce0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112564"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -87,24 +87,24 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
 1. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
 1. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
-      - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
+   - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
+   - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 1. Jako **verzi** vyberte **V2**.
 1. Vyberte **umístění** pro datovou továrnu. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 1. Zaškrtněte **Připnout na řídicí panel**.     
 1. Klikněte na možnost **Vytvořit**.
 1. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
 
-    ![nasazování dlaždice datové továrny](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
+     ![nasazování dlaždice datové továrny](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka datové továrny](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
+     ![Domovská stránka datové továrny](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 1. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:  
 
-    ![Stránka Začínáme](./media/tutorial-bulk-copy-portal/get-started-page.png)
+     ![Stránka Začínáme](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 Vytvoříte propojené služby, které propojí vaše úložiště dat a výpočetní prostředí s datovou továrnou. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti dat za běhu. 
@@ -179,10 +179,10 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 
 1. Přepněte na kartu **Připojení** a proveďte následující kroky: 
 
-    1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-    1. Jako **Tabulka** vyberte jakoukoli tabulku. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze SQL Azure. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
+   1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
+   1. Jako **Tabulka** vyberte jakoukoli tabulku. Tato tabulka je fiktivní. Při vytváření kanálu zadáte dotaz na zdrojovou datovou sadu. Tento dotaz se použije k extrakci dat z databáze SQL Azure. Případně můžete kliknout na zaškrtávací políčko **Upravit** a jako název tabulky zadat **dummyName**. 
 
-    ![Stránka Připojení ke zdrojové datové sadě](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
+      ![Stránka Připojení ke zdrojové datové sadě](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Vytvoření datové sady pro SQL Data Warehouse jímky

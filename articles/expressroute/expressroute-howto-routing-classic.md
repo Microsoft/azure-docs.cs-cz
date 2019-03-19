@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: b7ac8c0f5c45382dd3beb943699efb198a94e0eb
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5542d61c5e615361ca96f911cfe11540fcd09037
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103821"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (classic)
 > [!div class="op_single_selector"]
@@ -58,25 +58,25 @@ Přihlásit se ke svému účtu Azure, použijte následující příklady:
 
 1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu.
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. Zkontrolujte předplatná pro příslušný účet.
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="azure-private-peering"></a>Soukromý partnerský vztah Azure
 
@@ -86,59 +86,59 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 
 1. **Vytvoření okruhu ExpressRoute.**
 
-  Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
+   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
 2. **Zkontrolujte okruh ExpressRoute, abyste měli jistotu, že je zřízený.**
    
-  Zaškrtněte, pokud chcete zobrazit, pokud je okruh ExpressRoute zřízený a také povolený.
+   Zaškrtněte, pokud chcete zobrazit, pokud je okruh ExpressRoute zřízený a také povolený.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Návratová hodnota:
+   Návratová hodnota:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Ujistěte se, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
+   Ujistěte se, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Nakonfigurujte soukromý partnerský vztah Azure pro okruh.**
 
-  Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
+   Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
    
-  * Podsíť /30 pro primární propojení. Nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
-  * Podsíť /30 pro sekundární propojení. Nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
-  * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Ověřte, že žádný jiný partnerský vztah v okruhu používá stejné ID sítě VLAN.
-  * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Ověřte, že nepoužíváte 65515.
-  * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné**.
+   * Podsíť /30 pro primární propojení. Nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
+   * Podsíť /30 pro sekundární propojení. Nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
+   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Ověřte, že žádný jiný partnerský vztah v okruhu používá stejné ID sítě VLAN.
+   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Ověřte, že nepoužíváte 65515.
+   * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné**.
      
-  V následujícím příkladu můžete použít ke konfiguraci soukromého partnerského vztahu Azure pro váš okruh:
+   V následujícím příkladu můžete použít ke konfiguraci soukromého partnerského vztahu Azure pro váš okruh:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
-  ```    
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
+   ```    
 
-  Pokud chcete použít hodnotu hash MD5, použijte ke konfiguraci soukromého partnerského vztahu pro váš okruh v následujícím příkladu:
+   Pokud chcete použít hodnotu hash MD5, použijte ke konfiguraci soukromého partnerského vztahu pro váš okruh v následujícím příkladu:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
+   ```
      
-  > [!IMPORTANT]
-  > Ověřte, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
-  > 
+   > [!IMPORTANT]
+   > Ověřte, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
+   > 
 
 ### <a name="to-view-azure-private-peering-details"></a>Zobrazení podrobností soukromého partnerského vztahu Azure
 
@@ -189,59 +189,59 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 
 1. **Vytvoření okruhu ExpressRoute**
 
-  Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil veřejný partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
+   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil veřejný partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
 2. **Zkontrolujte okruh ExpressRoute a ověřte, že je zřízený**
 
-  Nejdřív musíte zkontrolovat, že stav okruhu ExpressRoute je Zřízený a také Povolený.
+   Nejdřív musíte zkontrolovat, že stav okruhu ExpressRoute je Zřízený a také Povolený.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Návratová hodnota:
+   Návratová hodnota:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Ověřte, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
+   Ověřte, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 4. **Nakonfigurujte veřejný partnerský vztah Azure pro okruh**
    
-  Ujistěte se, že máte následující informace předtím, než budete pokračovat:
+   Ujistěte se, že máte následující informace předtím, než budete pokračovat:
    
-  * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
-  * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
-  * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Ověřte, že žádný jiný partnerský vztah v okruhu používá stejné ID sítě VLAN.
-  * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-  * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné**.
+   * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
+   * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
+   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Ověřte, že žádný jiný partnerský vztah v okruhu používá stejné ID sítě VLAN.
+   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
+   * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné**.
 
-  > [!IMPORTANT]
-  > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN a ne zákaznické číslo ASN.
-  >  
+   > [!IMPORTANT]
+   > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN a ne zákaznické číslo ASN.
+   >  
      
-  V následujícím příkladu můžete použít ke konfiguraci veřejného partnerského vztahu Azure pro váš okruh:
+   V následujícím příkladu můžete použít ke konfiguraci veřejného partnerského vztahu Azure pro váš okruh:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
+   ```
      
-  Pokud chcete použít hodnotu hash MD5, použijte ke konfiguraci váš okruh v následujícím příkladu:
+   Pokud chcete použít hodnotu hash MD5, použijte ke konfiguraci váš okruh v následujícím příkladu:
      
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
+   ```
      
 ### <a name="to-view-azure-public-peering-details"></a>Zobrazení podrobností veřejného partnerského vztahu Azure
 
@@ -293,34 +293,34 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 
 1. **Vytvoření okruhu ExpressRoute**
   
-  Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
+   Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
 2. **Zkontrolujte okruh ExpressRoute a ověřte, že je zřízený**
 
-  Ověřte, že je okruh ukazovat zřízená a povolen. 
+   Ověřte, že je okruh ukazovat zřízená a povolen. 
    
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Návratová hodnota:
+   Návratová hodnota:
    
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Ověřte, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
+   Ověřte, že je okruh ukazovat zřízená a povolen. Pokud tomu tak není, fungovat u svého poskytovatele připojení, chcete-li získat váš okruh k požadovanému stavu a stavu.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Konfigurace partnerského vztahu Microsoftu pro okruh**
    
     Před pokračováním se ujistěte, že máte k dispozici následující informace.
@@ -334,11 +334,11 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    * Název registru směrování: Můžete zadat RIR / IRR, kde AS jsou registrované předpony a číslo.
    * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné.**
      
-  Spuštěním následující rutiny můžete nakonfigurovat partnerský vztah Microsoftu pro váš okruh:
+   Spuštěním následující rutiny můžete nakonfigurovat partnerský vztah Microsoftu pro váš okruh:
  
-  ```powershell
-  New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
+   ```
 
 ### <a name="to-view-microsoft-peering-details"></a>Zobrazení podrobností partnerského vztahu Microsoftu
 

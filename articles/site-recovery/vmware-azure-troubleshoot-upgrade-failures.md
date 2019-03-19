@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 3a3e9da66cf9ca6e08bb25b4f4b9d09aa0c5b6e7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117298"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
 
@@ -48,21 +48,21 @@ Pro úspěch upgradu nesmí přejmenovat složku 3. stran.
 
 K vyřešení daného problému.
 
-2. Spusťte Editor registru (regedit.exe) a otevřete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 větve.
-3. Zkontrolujte `Build_Version` hodnotu klíče. Pokud se nastaví na nejnovější verzi, snižte číslo verze. Například, pokud je nejnovější verze 9.22. \* a `Build_Version` klíč nastavený na tuto hodnotu a pak snížit na 9.21.\*.
-4. Stáhněte si nejnovější instalaci Microsoft Azure Site Recovery Unified:
+1. Spusťte Editor registru (regedit.exe) a otevřete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 větve.
+1. Zkontrolujte `Build_Version` hodnotu klíče. Pokud se nastaví na nejnovější verzi, snižte číslo verze. Například, pokud je nejnovější verze 9.22. \* a `Build_Version` klíč nastavený na tuto hodnotu a pak snížit na 9.21.\*.
+1. Stáhněte si nejnovější instalaci Microsoft Azure Site Recovery Unified:
    1. V části "Odkazy na aktuálně podporovaných kumulativních aktualizací" [aktualizací ve službě Azure Site Recovery služby](service-updates-how-to.md##links-to-currently-supported-update-rollups) článek, vyberte poskytovatele, do které provádíte upgrade.
    2. Na stránce Souhrn vyhledejte **aktualizovat informace o** části a stáhněte si kumulativní aktualizace pro Microsoft Azure Site Recovery sjednocené instalace.
-5. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace a extract instalační soubory z položky ke stažení pomocí následujícího příkazu, MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q/x:&lt;cesta ke složce pro rozbalené soubory&gt;.
+1. Otevřete příkazový řádek a přejděte do složky, do které jste stáhli soubor sjednocené instalace a extract instalační soubory z položky ke stažení pomocí následujícího příkazu, MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q/x:&lt;cesta ke složce pro rozbalené soubory&gt;.
 
     Příklad příkazu:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
-4. V příkazovém řádku přejděte do složky, do které jste extrahovali soubory a spusťte následující příkazy pro instalaci:
+1. V příkazovém řádku přejděte do složky, do které jste extrahovali soubory a spusťte následující příkazy pro instalaci:
    
     CX_THIRDPARTY_SETUP. / NORESTART /SUPPRESSMSGBOXES /VERYSILENT EXE
 
-5. Použijte Správce úloh můžete sledovat průběh instalace. Pokud proces CX_THIRDPARTY_SETUP. Už není viditelná ve Správci úloh EXE, pokračujte k dalšímu kroku.
-6. Ověřte, že C:\thirdparty existuje a že složka obsahuje RRD knihovny.
+1. Použijte Správce úloh můžete sledovat průběh instalace. Pokud proces CX_THIRDPARTY_SETUP. Už není viditelná ve Správci úloh EXE, pokračujte k dalšímu kroku.
+1. Ověřte, že C:\thirdparty existuje a že složka obsahuje RRD knihovny.
 1. Vraťte se do složky, do které jste stáhli sjednocené instalace a spuštění MicrosoftAzureSiteRecoveryUnifiedSetup.exe dokončit upgrade. 

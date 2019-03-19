@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101529"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -80,11 +80,11 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
    Je možné [mapování existujícího názvu DNS do vaší aplikace][customdomain]. Vlastní název domény pro aplikace se nesmí překrývat s názvem domény používaným vaší službou ASE. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení s názvem domény _contoso.com_ není možné použít vlastní názvy domény pro aplikace podobné těmto:
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    Pokud znáte vlastní názvy domén pro vaše aplikace, vyberte si pro službu ASE s interním nástrojem pro vyrovnávání zatížení doménu, která nebude s těmito vlastními názvy domén v konfliktu. V tomto příkladu můžete použít pro službu ASE třeba doménu *contoso-internal.com*, ta totiž nebude v konfliktu s vlastními názvy domén, které končí *.contoso.com*.
 
@@ -222,7 +222,7 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 ## <a name="get-started"></a>Začínáme ##
 
 * Pokud chcete začít používat službu ASE, prostudujte si téma [Úvod do služby App Service Environment][Intro].
- 
+ 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

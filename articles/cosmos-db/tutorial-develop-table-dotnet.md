@@ -1,346 +1,402 @@
 ---
-title: Vývoj s využitím rozhraní Table API pomocí sady .NET SDK
-titleSuffix: Azure Cosmos DB
-description: Další informace jak vyvíjet s rozhraním Table API ve službě Azure Cosmos DB s použitím sady .NET SDK
+title: Začínáme s Azure Cosmos DB Table API pomocí .NET Standard SDK
+description: Store strukturovaných dat v cloudu s využitím rozhraní Azure Cosmos DB Table API.
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: tutorial
-ms.date: 12/07/2018
-author: wmengmsft
-ms.author: wmeng
-ms.custom: seodec18
-ms.reviewer: sngun
-ms.openlocfilehash: 0f0e5219298cf0bce30e2a1e9d66135b4146db5d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.topic: sample
+ms.date: 03/11/2019
+ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036779"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880785"
 ---
-# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Vývoj s využitím služby Azure Cosmos DB Table API pomocí sady .NET SDK
+# <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s Azure Cosmos DB Table API a Azure Table storage pomocí .NET SDK
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-Tento kurz se zabývá následujícími úkony: 
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-> [!div class="checklist"] 
-> * Vytvoření účtu služby Azure Cosmos DB 
-> * Povolení funkcí v souboru app.config 
-> * Vytvoření tabulky pomocí rozhraní [Table API](table-introduction.md)
-> * Přidání entity do tabulky 
-> * Vložení dávky entit 
-> * Načtení jedné entity 
-> * Dotazování entit s využitím automatických sekundárních indexů 
-> * Nahrazení entity 
-> * Odstranění entity 
-> * Odstranění tabulky
- 
-## <a name="tables-in-azure-cosmos-db"></a>Tabulky ve službě Azure Cosmos DB 
+Azure Cosmos DB Table API nebo Azure Table storage můžete použít k ukládání strukturovaných NoSQL ukládat data v cloudu, a poskytují klíčů/atributů s pomocí schématu méně návrhu. Vzhledem k tomu Azure Cosmos DB Table API a Table storage schématu méně, je snadné data přizpůsobovat měnícím potřebám vaší aplikace. Azure Cosmos DB Table API nebo Table storage můžete použít k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení nebo dalších typů metadat, které vaše služba vyžaduje. 
 
-Azure Cosmos DB poskytuje rozhraní [Table API](table-introduction.md) pro aplikace, které potřebují úložiště párů klíč-hodnota s návrhem bez schématu. Rozhraní Table API služby Azure Cosmos DB i [Azure Table Storage](../storage/common/storage-introduction.md) teď podporují stejné sady SDK a stejná rozhraní REST API. Azure Cosmos DB můžete použít k vytvoření tabulek s požadavky na vysokou propustnost.
+Tento kurz popisuje vzorku, který ukazuje způsob použití [Microsoft Azure Cosmos DB Table Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) se scénáři Azure Cosmo DB Table API a Azure Table storage. Je nutné použít připojení, které jsou specifické pro službu Azure. Tyto scénáře jsou probírány pomocí C# příklady, které ukazují, jak vytvářet tabulky, vložení / aktualizaci dat, dotazování na data a odstranění tabulek.
 
-Tento kurz je určený pro vývojáře, kteří znají sadu SDK služby Azure Table Storage a chtějí využít prémiové funkce dostupné ve službě Azure Cosmos DB. Vychází z kurzu [Začínáme se službou Azure Table Storage pomocí .NET](table-storage-how-to-use-dotnet.md) a ukazuje, jak využívat další možnosti, jako jsou sekundární indexy, zřízená propustnost a vícenásobné navádění. Tento kurz popisuje použití webu Azure Portal k vytvoření účtu služby Azure Cosmos DB a následnému sestavení a nasazení aplikace Table API. Projdeme také příklady v .NET, ve kterých se vytvoří a odstraní tabulka a také vkládají, aktualizují a odstraňují data v tabulce nebo se na ně zadávají dotazy. 
+## <a name="prerequisites"></a>Požadavky
 
-Pokud aktuálně používáte službu Azure Table Storage, získáte s rozhraním Table API služby Azure Cosmos DB následující výhody:
+Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
-- [Globální distribuce](distribute-data-globally.md) na klíč s vícenásobným naváděním a [automatickým i ručním převzetím služeb při selhání](high-availability.md)
-- Podpora automatického indexování nezávislého na schématu pro všechny vlastnosti (sekundární indexy) a rychlé dotazy 
-- Podpora [nezávislého škálování úložiště a propustnosti](partition-data.md) v jakémkoli počtu oblastí
-- Podpora [vyhrazené propustnosti pro jednotlivé tabulky](request-units.md), kterou je možné škálovat na stovky až miliony požadavků za sekundu
-- Podpora [pěti přizpůsobitelných úrovní konzistence](consistency-levels.md) pro využití dostupnosti, latence a konzistence na základě potřeb vašich aplikací
-- 99,99% dostupnost v rámci jedné oblasti, možnost přidat další oblasti pro zajištění vyšší dostupnosti a [nejlepší komplexní smlouvy SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) týkající se obecné dostupnosti
-- Práce s existující sadou .NET SDK pro Azure Storage beze změn kódu aplikace
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
-Tento kurz se věnuje používání rozhraní Table API služby Azure Cosmos DB s využitím sady .NET SDK. Sadu [.NET SDK pro rozhraní Table API služby Azure Cosmos DB](https://aka.ms/tableapinuget) si můžete stáhnout z NuGet.
+* [Microsoft Azure cosmos DB Table Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) -této knihovny je aktuálně dostupné pro .NET Standard a .NET framework. 
 
-Další informace o složitých úlohách služby Azure Table Storage najdete tady:
+* [Účet Azure Cosmos DB Table API](create-table-dotnet.md#create-a-database-account).
 
-* [Úvod do rozhraní Table API služby Azure Cosmos DB](table-introduction.md)
-* Referenční dokumentace ke službě Table service s úplnými podrobnostmi o dostupných rozhraních API: [Sada .NET SDK pro rozhraní Table API služby Azure Cosmos DB](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet)
+## <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
 
-### <a name="about-this-tutorial"></a>O tomto kurzu
-Tento kurz je určený pro vývojáře, kteří znají sadu SDK služby Azure Table Storage a chtějí využít prémiové funkce dostupné ve službě Azure Cosmos DB. Vychází z kurzu [Začínáme se službou Azure Table Storage pomocí .NET](table-storage-how-to-use-dotnet.md) a ukazuje, jak využívat další možnosti, jako jsou sekundární indexy, zřízená propustnost a vícenásobné navádění. Popisujeme použití webu Azure Portal k vytvoření účtu služby Azure Cosmos DB a následnému sestavení a nasazení aplikace Table. Projdeme také příklady v .NET, ve kterých se vytvoří a odstraní tabulka a také vkládají, aktualizují a odstraňují data v tabulce nebo se na ně zadávají dotazy. 
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+## <a name="create-a-net-console-project"></a>Vytvořit projekt konzoly .NET
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+V sadě Visual Studio vytvořte novou konzolovou aplikaci .NET. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v sadě Visual Studio 2017. Kroky u ostatních verzí sady Visual Studio jsou podobné. Můžete použít knihovnu tabulky Azure Cosmos DB z libovolného typu aplikace .NET, včetně Azure cloud service nebo do webové aplikace a desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
-## <a name="create-a-database-account"></a>Vytvoření účtu databáze
+1. Vyberte **Soubor** > **Nový** > **Projekt**.
 
-Začněme vytvořením účtu služby Azure Cosmos DB na webu Azure Portal.  
- 
-> [!IMPORTANT]  
-> Abyste mohli pracovat s obecně dostupnými sadami Table API SDK, musíte si vytvořit nový účet Table API. Obecně dostupné sady SDK nepodporují účty Table API vytvořené během období Preview. 
->
+1. Vyberte **nainstalované** > **Visual C#**   >  **aplikace (.NET Core) konzoly**.
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
+1. V **název** pole, zadejte název pro vaši aplikaci, například **CosmosTableSamples** (můžete zadat jiný název podle potřeby).
 
-## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+1. Vyberte **OK**.
 
-Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Všechny příklady kódu v této ukázce lze přidat do metody Main() vaší konzolové aplikace **Program.cs** souboru.
 
-1. Otevřete okno terminálu Git, třeba Git Bash, a pomocí příkazu `cd` přejděte do složky, do které chcete nainstalovat ukázkovou aplikaci. 
+## <a name="install-the-required-nuget-package"></a>Nainstalujte požadovaný balíček NuGet
 
-    ```bash
-    cd "C:\git-samples"
-    ```
+Pokud chcete získat balíček NuGet, postupujte takto:
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace. 
+1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
 
-    ```bash
-    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
-    ```
+1. Online hledání `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` a vyberte **nainstalovat** k instalaci knihovny Microsoft Azure Cosmos DB Table.
 
-3. Potom otevřete soubor řešení v sadě Visual Studio. 
+## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
+1. Z [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **připojovací řetězec**. Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC**.
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
-
-1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. 
-
-    Pomocí tlačítka pro kopírování na pravé straně obrazovky zkopírujte PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC.
-
-    ![Zobrazení a zkopírování hodnoty PŘIPOJOVACÍ ŘETĚZEC v podokně Připojovací řetězec](./media/create-table-dotnet/connection-string.png)
-
-2. V sadě Visual Studio otevřete soubor app.config. 
-
-3. Vzhledem k tomu, že v tomto kurzu se nepoužívá emulátor úložiště, zrušte komentář u StorageConnectionString na řádku 8 a přidejte komentář u StorageConnectionString na řádku 7. Řádky 7 a 8 by teď měly vypadat takto:
-
-    ```
-    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-    ```
-
-4. Vložte PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC z portálu do hodnoty StorageConnectionString na řádku 8. Řetězec vložte do uvozovek.
+   ![Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec](./media/create-table-dotnet/connection-string.png)
    
-    > [!IMPORTANT]
-    > Pokud váš koncový bod používá adresu documents.azure.com, znamená to, že máte účet Preview, a pokud chcete pracovat s obecně dostupnou sadou Table API SDK, musíte si vytvořit [nový účet Table API](#create-a-database-account). 
-    >
+1. Pokud chcete konfigurovat připojovací řetězec, ze sady visual studio klikněte pravým tlačítkem na projekt **CosmosTableSamples**.
 
-    Řádek 8 by teď měl vypadat nějak takto:
+1. Vyberte **přidat** a potom **nová položka**. Vytvořte nový soubor **Settings.json** s typem souboru jako **TypeScript JSON konfigurace** souboru. 
 
-    ```
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
-    ```
+1. Nahraďte kód v souboru Settings.json následujícím kódem a přiřaďte primární připojovací řetězec:
 
-5. Uložte soubor app.config.
+   ```csharp
+   {
+   "StorageConnectionString": <Primary connection string of your Azure Cosmos DB account>
+   }
+   ```
 
-Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **nová položka** a přidejte třídu pojmenovanou **AppSettings.cs**.
 
-## <a name="azure-cosmos-db-capabilities"></a>Možnosti služby Azure Cosmos DB
-Azure Cosmos DB podporuje řadu možností, které nejsou dostupné v rozhraní API služby Azure Table Storage. 
+1. Přidejte následující kód do souboru AppSettings.cs. Tento soubor načte připojovací řetězec ze souboru Settings.json a přiřadí ji k konfigurační parametr:
 
-K určitým funkcím se přistupuje přes nová přetížení CreateCloudTableClient, která umožňují zadat zásady připojení a úroveň konzistence.
-
-| Nastavení připojení tabulky | Popis |
-| --- | --- |
-| Režim připojení  | Azure Cosmos DB podporuje dva režimy připojení. V režimu `Gateway` se požadavky vždy provádějí na bránu služby Azure Cosmos DB, která je směruje do odpovídajících datových oddílů. V režimu připojení `Direct` klient načítá mapování tabulek na oddíly a požadavky se provádějí přímo na datové oddíly. Doporučujeme výchozí režim `Direct`.  |
-| Protokol připojení | Azure Cosmos DB podporuje dva protokoly připojení – `Https` a `Tcp`. Protokol `Tcp` je výchozí a doporučený, protože je jednodušší. |
-| Upřednostňovaná umístění | Čárkami oddělený seznam upřednostňovaných (vícenásobné navádění) umístění pro čtení. Ke každému účtu služby Azure Cosmos DB je možné přiřadit 1 až více než 30 oblastí. Každá instance klienta může určit podmnožinu těchto oblastí v upřednostňovaném pořadí pro zajištění nízké latence čtení. Oblasti musí být pojmenované pomocí jejich [zobrazovaného názvu](https://msdn.microsoft.com/library/azure/gg441293.aspx), například `West US`. Viz také [Rozhraní API pro vícenásobné navádění](tutorial-global-distribution-table.md). |
-| Úrovně konzistence | Můžete zvolit kompromis mezi latencí, konzistencí a dostupností, a to volbou z pěti jasně definovaných úrovní konzistence: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix` a `Eventual`. Výchozí je `Session`. Volba úrovně konzistence má za následek výrazný rozdíl ve výkonu v nastaveních s více oblastmi. Podrobnosti najdete v tématu [Úrovně konzistence](consistency-levels.md). |
-
-Další funkce je možné povolit prostřednictvím následujících hodnot konfigurace `appSettings`.
-
-| Klíč | Popis |
-| --- | --- |
-| TableQueryMaxItemCount | Konfiguruje maximální počet položek vracených jednotlivými dotazy na tabulku v jedné době odezvy. Výchozí hodnota je `-1`, která umožňuje službě Azure Cosmos DB dynamicky určovat hodnotu za běhu. |
-| TableQueryEnableScan | Pokud dotaz pro nějaký filtr nemůže použít index, přesto se spustí s využitím prohledávání. Výchozí hodnota je `false`.|
-| TableQueryMaxDegreeOfParallelism | Stupeň paralelismu provádění dotazu napříč oddíly. Hodnota `0` znamená sériové provádění bez předběžného načítání, hodnota `1` znamená sériové provádění s předběžným načítáním a vyšší hodnoty zvyšují míru paralelismu. Výchozí hodnota je `-1`, která umožňuje službě Azure Cosmos DB dynamicky určovat hodnotu za běhu. |
-
-Pokud chcete změnit výchozí hodnotu, z Průzkumníku řešení v sadě Visual Studio otevřete soubor `app.config`. Přidejte obsah níže uvedeného prvku `<appSettings>`. Hodnotu `account-name` nahraďte názvem svého účtu úložiště a hodnotu `account-key` nahraďte přístupovým klíčem účtu. 
-
-```xml
-<configuration>
-    ...
-    <appSettings>
-      <!-- Client options -->
-      <add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
-      <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!-- Table query options -->
-      <add key="TableQueryMaxItemCount" value="-1"/>
-      <add key="TableQueryEnableScan" value="false"/>
-      <add key="TableQueryMaxDegreeOfParallelism" value="-1"/>
-      <add key="TableQueryContinuationTokenLimitInKb" value="16"/>
-            
-    </appSettings>
-</configuration>
-```
-
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor `Program.cs` a zjistíte, že tyto řádky kódu vytvářejí prostředky tabulky. 
-
-## <a name="create-the-table-client"></a>Vytvoření klienta tabulky
-Pro připojení k účtu tabulky inicializujete klienta `CloudTableClient`.
-
-```csharp
-CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-```
-Tento klient se inicializuje s použitím hodnot konfigurace `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` a `TablePreferredLocations`, pokud jsou zadané v nastavení aplikace.
-
-## <a name="create-a-table"></a>Vytvoření tabulky
-
-Pak vytvoříte tabulku pomocí metody `CloudTable`. Tabulky ve službě Azure Cosmos DB se můžou nezávisle škálovat z hlediska úložiště a propustnosti a služba automaticky zajišťuje jejich dělení. 
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-400
-table.CreateIfNotExists(throughput: 800);
-```
-
-Ve způsobu vytváření tabulek je důležitý rozdíl. Azure Cosmos DB vyhrazuje propustnost, na rozdíl od modelu založeném na spotřebě transakcí úložiště Azure. Vaše propustnost je vyhrazená, takže nikdy nedojde k omezení, pokud vaše frekvence požadavků dosáhne stejné nebo nižší hodnoty, než je vaše zřízená propustnost.
-
-Výchozí propustnost můžete nakonfigurovat tím, že ji vložíte jako parametr metody CreateIfNotExists.
-
-Čtení 1kB entity se normalizuje jako 1 RU a další operace se normalizují na pevnou hodnotu RU na základě jejich spotřeby CPU, paměti a IOPS. Další informace o [jednotkách žádostí ve službě Azure Cosmos DB](request-units.md), zejména pro [úložiště párů klíč-hodnota](key-value-store-cost.md).
-
-Dále si projdeme jednoduché operace čtení a zápisu (CRUD) pomocí sady SDK služby Azure Table Storage. Tento kurz předvádí předvídatelné nízké latence v řádu milisekund a rychlé dotazy, které poskytuje Azure Cosmos DB.
-
-## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
-Entity ve službě Azure Table Storage vycházejí z třídy `TableEntity` a musí mít vlastnosti `PartitionKey` a `RowKey`. Tady je ukázková definice entity zákazníka.
-
-```csharp
-public class CustomerEntity : TableEntity
-{
-    public CustomerEntity(string lastName, string firstName)
+   ```csharp
+   namespace CosmosTableSamples
+   {
+    using Microsoft.Extensions.Configuration;
+    public class AppSettings
     {
-        this.PartitionKey = lastName;
-        this.RowKey = firstName;
+        public string StorageConnectionString { get; set; }
+        public static AppSettings LoadAppSettings()
+        {
+            IConfigurationRoot configRoot = new ConfigurationBuilder()
+                .AddJsonFile("Settings.json")
+                .Build();
+            AppSettings appSettings = configRoot.Get<AppSettings>();
+            return appSettings;
+        }
+    }
+   }
+   ```
+
+## <a name="parse-and-validate-the-connection-details"></a>Provádění analýzy a ověření podrobností o připojení 
+
+1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **nová položka** a přidejte třídu pojmenovanou **Common.cs**. Budete psát kód pro ověření podrobností o připojení a vytvoření tabulky v rámci této třídy.
+
+1. Definujte metodu `CreateStorageAccountFromConnectionString` jak je znázorněno níže. Tato metoda se analyzovat podrobnosti o připojovacím řetězci a ověřit, že název účtu a účet klíče podrobné informace uvedené v souboru "Settings.json" jsou platné. 
+
+   ```csharp
+   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+    {
+            CloudStorageAccount storageAccount;
+            try
+            {
+                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
+                throw;
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+                Console.ReadLine();
+                throw;
+            }
+
+            return storageAccount;
+        }
+   ```
+
+
+## <a name="create-a-table"></a>Vytvoření tabulky 
+
+Třída [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) vám umožňuje načíst tabulky a entity, které jsou uložené ve službě Table Storage. Protože nemáme žádné tabulky v účtu Cosmos DB Table API, přidáme `CreateTableAsync` metodu **Common.cs** třídy za účelem vytvoření tabulky:
+
+```csharp
+public static async Task<CloudTable> CreateTableAsync(string tableName)
+  {
+    string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
+
+    // Retrieve storage account information from connection string.
+    CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
+
+    // Create a table client for interacting with the table service
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
+
+    Console.WriteLine("Create a Table for the demo");
+
+    // Create a table client for interacting with the table service 
+    CloudTable table = tableClient.GetTableReference(tableName);
+    if (await table.CreateIfNotExistsAsync())
+    {
+      Console.WriteLine("Created Table named: {0}", tableName);
+    }
+    else
+    {
+      Console.WriteLine("Table {0} already exists", tableName);
     }
 
-    public CustomerEntity() { }
-
-    public string Email { get; set; }
-
-    public string PhoneNumber { get; set; }
+    Console.WriteLine();
+    return table;
 }
 ```
 
-Následující fragment kódu ukazuje přidání entity pomocí sady SDK úložiště Azure. Služba Azure Cosmos DB je navržená pro zajištění záruky nízké latence v jakémkoli měřítku po celém světě.
+## <a name="define-the-entity"></a>Definování entity 
 
-Zápisy se dokončují do 15 ms při p99 a přibližně do 6 ms při p50 pro aplikace spuštěné ve stejné oblasti jako účet služby Azure Cosmos DB. Tato doba trvání je způsobená také tím, že se do klienta zpětně potvrdí zápisy teprve po jejich synchronní replikaci, odolném potvrzení a indexování veškerého obsahu.
+Entity se mapují na C# objekty pomocí vlastní třídy odvozené z [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity.
 
-
-```csharp
-// Create a new customer entity.
-CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-customer1.Email = "Walter@contoso.com";
-customer1.PhoneNumber = "425-555-0101";
-
-// Create the TableOperation object that inserts the customer entity.
-TableOperation insertOperation = TableOperation.Insert(customer1);
-
-// Execute the insert operation.
-table.Execute(insertOperation);
-```
-
-## <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
-Azure Table Storage podporuje rozhraní API pro dávkové operace, které umožňuje kombinovat aktualizace, odstraňování a vkládání ve stejné dávkové operaci.
+Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **novou složku** a pojmenujte ji jako **modelu**. Ve složce modelu přidejte třídu pojmenovanou **CustimerEntity.cs** a přidejte do ní následující kód.
 
 ```csharp
-// Create the batch operation.
-TableBatchOperation batchOperation = new TableBatchOperation();
-
-// Create a customer entity and add it to the table.
-CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-customer1.Email = "Jeff@contoso.com";
-customer1.PhoneNumber = "425-555-0104";
-
-// Create another customer entity and add it to the table.
-CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-customer2.Email = "Ben@contoso.com";
-customer2.PhoneNumber = "425-555-0102";
-
-// Add both customer entities to the batch insert operation.
-batchOperation.Insert(customer1);
-batchOperation.Insert(customer2);
-
-// Execute the batch operation.
-table.ExecuteBatch(batchOperation);
-```
-## <a name="retrieve-a-single-entity"></a>Načtení jedné entity
-Načítání (GET) ve službě Azure Cosmos DB se dokončují do 10 ms při p99 a přibližně do 1 ms při p50 ve stejné oblasti Azure. Do svého účtu můžete přidat jakýkoli počet oblastí pro zajištění nízké latence čtení a nasazovat aplikace pro čtení z místní oblasti (s vícenásobným naváděním) pomocí nastavení `TablePreferredLocations`. 
-
-Pomocí následujícího fragmentu kódu můžete načíst jednu entitu:
-
-```csharp
-// Create a retrieve operation that takes a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
-
-// Execute the retrieve operation.
-TableResult retrievedResult = table.Execute(retrieveOperation);
-```
-> [!TIP]
-> Informace o rozhraních API pro vícenásobné navádění najdete v tématu [Vývoj s využitím více oblastí](tutorial-global-distribution-table.md).
->
-
-## <a name="query-entities-using-automatic-secondary-indexes"></a>Dotazování entit s využitím automatických sekundárních indexů
-Tabulky je možné dotazovat pomocí třídy `TableQuery`. Azure Cosmos DB má databázový stroj optimalizovaný pro zápisy, který automaticky indexuje všechny sloupce ve vaší tabulce. Indexování ve službě Azure Cosmos DB je nezávislé na schématu. Proto se schéma automaticky indexuje i v případě, že se liší mezi řádky nebo se v průběhu času vyvíjí. Vzhledem k tomu, že Azure Cosmos DB podporuje automatické sekundární indexy, můžou index využívat dotazy na jakoukoli vlastnost, které se díky tomu zpracují efektivně.
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-
-// Filter against a property that's not partition key or row key
-TableQuery<CustomerEntity> emailQuery = new TableQuery<CustomerEntity>().Where(
-    TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "Ben@contoso.com"));
-
-foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
+namespace CosmosTableSamples.Model
 {
-    Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-        entity.Email, entity.PhoneNumber);
+    using Microsoft.Azure.Cosmos.Table;
+    public class CustomerEntity : TableEntity
+    {
+        public CustomerEntity()
+        {
+        }
+
+        public CustomerEntity(string lastName, string firstName)
+        {
+            PartitionKey = lastName;
+            RowKey = firstName;
+        }
+
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+    }
 }
 ```
 
-Azure Cosmos DB podporuje v rozhraní Table API stejné funkce dotazů jako Azure Table Storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Přehled těchto možností najdete v tématu [Dotazování služby Azure Cosmos DB](how-to-sql-query.md). 
+Tento kód definuje třídu entity, která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu. V tabulce ji pak jednoznačně identifikuje kombinace klíče oddílu a řádku entity. Entity se stejným klíčem oddílu můžete dotazovat rychleji než entity mají různé klíče oddílů, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Entity, které se ukládají do tabulek musí být podporovaného typu, například odvozené ze [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) třídy. Vlastnosti entity, které chcete uložit do tabulky, musí být veřejné vlastnosti typu a musí podporovat získávání i nastavování hodnot. Typ entity navíc musí vystavit konstruktor bez parametrů.
 
-## <a name="replace-an-entity"></a>Nahrazení entity
-Pokud chcete entitu aktualizovat, načtěte ji ze služby Table service, upravte objekt entity a potom uložte změny zpět do služby Table service. Následující kód změní telefonní číslo stávajícího zákazníka. 
+## <a name="insert-or-merge-an-entity"></a>Vložit nebo sloučit entity
+
+Následující příklad kódu vytvoří objekt entity a přidá ji do tabulky. Metoda InsertOrMerge v rámci [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) třída slouží k vložení nebo sloučit entity. [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) metoda je volána k provedení operace. 
+
+Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **přidat**, **nová položka** a přidejte třídu pojmenovanou **SamplesUtils.cs**. Tato třída uchovává všechny je kód potřebný k provádění operací CRUD u entity. 
 
 ```csharp
-TableOperation updateOperation = TableOperation.Replace(updateEntity);
-table.Execute(updateOperation);
+public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+    {
+      if (entity == null)
+    {
+       throw new ArgumentNullException("entity");
+    }
+    try
+    {
+       // Create the InsertOrReplace table operation
+       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+
+       // Execute the operation.
+       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
+        
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+          {
+            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+          }
+
+        return insertedCustomer;
+        }
+        catch (StorageException e)
+        {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+        }
+    }
 ```
-Podobným způsobem můžete provádět operace `InsertOrMerge` nebo `Merge`.  
+
+### <a name="get-an-entity-from-a-partition"></a>Načtení entity z oddílu
+
+Entity můžete získat z oddílu pomocí metody načtení [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) třídy. Následující příklad kódu získá klíč řádku klíče oddílu, e-mailu a telefonní číslo entity zákazník. Tento příklad také vytiskne jednotky žádostí spotřebované dotaz pro entitu. Chcete-li dotaz pro entitu, přidejte následující kód, který **SamplesUtils.cs** souboru: 
+
+```csharp
+public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
+    {
+      try
+      {
+        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
+        TableResult result = await table.ExecuteAsync(retrieveOperation);
+        CustomerEntity customer = result.Result as CustomerEntity;
+        if (customer != null)
+        {
+          Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
+        }
+
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+        {
+           Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
+        }
+
+        return customer;
+        }
+        catch (StorageException e)
+        {
+           Console.WriteLine(e.Message);
+           Console.ReadLine();
+           throw;
+        }
+    }
+```
 
 ## <a name="delete-an-entity"></a>Odstranění entity
-Entitu můžete po jejím načtení snadno odstranit, a to pomocí stejného vzoru zobrazovaného pro aktualizaci entity. Následující kód načte a odstraní entitu zákazníka.
+
+Entitu můžete po jejím načtení snadno odstranit, a to pomocí stejného vzoru zobrazovaného pro aktualizaci entity. Následující kód načte a odstraní entitu zákazníka. Chcete-li odstranit entitu, přidejte následující kód, který **SamplesUtils.cs** souboru: 
 
 ```csharp
-TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-table.Execute(deleteOperation);
+public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
+   {
+     try
+     {
+        if (deleteEntity == null)
+     {
+        throw new ArgumentNullException("deleteEntity");
+     }
+
+    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+    TableResult result = await table.ExecuteAsync(deleteOperation);
+
+    // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+    if (result.RequestCharge.HasValue)
+    {
+       Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
+    }
+
+    }
+    catch (StorageException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
 ```
 
-## <a name="delete-a-table"></a>Odstranění tabulky
-Následující příklad kódu nakonec odstraní tabulku z účtu úložiště. Pomocí služby Azure Cosmos DB můžete odstranit tabulku a okamžitě ji znovu vytvořit.
+## <a name="execute-the-crud-operations-on-sample-data"></a>Provádění operací CRUD na ukázková data
+
+Po definování metody vytvoření entity tabulky, vložení nebo sloučení, spusťte tyto metody na ukázková data. Uděláte to tak, klikněte pravým tlačítkem myši na projekt **CosmosTableSamples**. Vyberte **přidat**, **nová položka** a přidejte třídu pojmenovanou **soubor BasicSamples.cs** a přidejte do ní následující kód. Tento kód vytvoří tabulku, přidá entity do něj. Pokud chcete odstranit entitu a tabulky na konci projekt odstranit znaky komentářů z `table.DeleteIfExistsAsync()` a `SamplesUtils.DeleteEntityAsync(table, customer)` metody následující kód:
 
 ```csharp
-CloudTable table = tableClient.GetTableReference("people");
-table.DeleteIfExists();
+using System;
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Model;
+
+    class BasicSamples
+    {
+        public async Task RunSamples()
+        {
+            Console.WriteLine("Azure Cosmos DB Table - Basic Samples\n");
+            Console.WriteLine();
+
+            string tableName = "demo" + Guid.NewGuid().ToString().Substring(0, 5);
+
+            // Create or reference an existing table
+            CloudTable table = await Common.CreateTableAsync(tableName);
+
+            try
+            {
+                // Demonstrate basic CRUD functionality 
+                await BasicDataOperationsAsync(table);
+            }
+            finally
+            {
+                // Delete the table
+                // await table.DeleteIfExistsAsync();
+            }
+        }
+
+        private static async Task BasicDataOperationsAsync(CloudTable table)
+        {
+            // Create an instance of a customer entity. See the Model\CustomerEntity.cs for a description of the entity.
+            CustomerEntity customer = new CustomerEntity("Harp", "Walter")
+            {
+                Email = "Walter@contoso.com",
+                PhoneNumber = "425-555-0101"
+            };
+
+            // Demonstrate how to insert the entity
+            Console.WriteLine("Insert an Entity.");
+            customer = await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+
+            // Demonstrate how to Update the entity by changing the phone number
+            Console.WriteLine("Update an existing Entity using the InsertOrMerge Upsert Operation.");
+            customer.PhoneNumber = "425-555-0105";
+            await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+            Console.WriteLine();
+
+            // Demonstrate how to Read the updated entity using a point query 
+            Console.WriteLine("Reading the updated Entity.");
+            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
+            Console.WriteLine();
+
+            // Demonstrate how to Delete an entity
+            //Console.WriteLine("Delete the entity. ");
+            //await SamplesUtils.DeleteEntityAsync(table, customer);
+            //Console.WriteLine();
+        }
+    }
+}
 ```
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+Předchozí kód vytvoří tabulku, která začíná textem "ukázka" a vytvářenému identifikátoru GUID je připojena k názvu tabulky. Potom přidá entita zákazník s křestní jméno a příjmení jako "Waltera Harpa" a později aktualizuje telefonní číslo uživatele. 
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+V tomto kurzu jste vytvořili kód k provádění základních operací CRUD s daty uloženými v účet Table API. Můžete také provádět pokročilé operace, jako – dávkové vkládání dat, dotaz všechna data v rámci oddílu, dotaz rozsahu dat v rámci oddílu, seznamy tabulek v účtu, jejichž názvy začínají se zadanou předponou. Můžete si stáhnout úplný ukázkový formulář [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) úložiště GitHub. [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) třída má více operací, které můžete provést na datech.  
+
+## <a name="run-the-project"></a>Spuštění projektu
+
+Nyní sestavte řešení a stiskněte klávesu F5 a spusťte projekt. Při spuštění projektu se zobrazí následující výstup v příkazovém řádku:
+
+![Výstup z příkazového řádku](./media/tutorial-develop-table-standard/output-from-sample.png)
+
+Pokud se zobrazí chybová zpráva s upozorněním, že nebyl nalezen soubor Settings.JSON v nástroji při spuštění projektu, ho mohli vyřešit přidáním následujících položky XML do nastavení projektu. Klikněte pravým tlačítkem na CosmosTableSamples, vyberte Upravit CosmosTableSamples.csproj a přidejte následující element itemGroup: 
+
+```csharp
+  <ItemGroup>
+    <None Update="Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+```
+Nyní můžete přihlásit na webu Azure portal a ověřte, že data v tabulce existuje. 
+
+![Výsledky v portálu](./media/tutorial-develop-table-standard/results-in-portal.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jsme se věnovali začátkům používání služby Azure Cosmos DB s rozhraním Table API a provedli jste následující: 
-
-> [!div class="checklist"] 
-> * Vytvořili jste účet služby Azure Cosmos DB. 
-> * Povolili jste funkce v souboru app.config. 
-> * Vytvořili jste tabulku. 
-> * Přidali jste do tabulky entitu. 
-> * Vložili jste dávku entit. 
-> * Načetli jste jednu entitu. 
-> * Dotazovali jste entity s využitím automatických sekundárních indexů. 
-> * Nahradili jste entitu. 
-> * Odstranili jste entitu. 
-> * Odstranili jste tabulku.  
-
-Teď můžete pokračovat k dalšímu kurzu, kde najdete další informace o dotazování tabulkových dat. 
+Teď můžete pokračovat k dalšímu kurzu a zjistěte, jak migrovat data do účtu Azure Cosmos DB Table API. 
 
 > [!div class="nextstepaction"]
-> [Dotazování pomocí rozhraní Table API](tutorial-query-table.md)
+>[Jak provádět dotazy na data](../cosmos-db/table-import.md)

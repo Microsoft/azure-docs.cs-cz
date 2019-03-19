@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17a297d3099d51b3a58a6654560a67f9a4192a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aadb3188969e099a709711ac18916b67c83b5da1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208312"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Kurz: Integrace Azure Active Directory s Zoho jeden
 
@@ -223,7 +223,7 @@ Pokud chcete povolit Azure AD uživatelům se přihlásit k jednomu Zoho, musí 
     
     a. V **název** textové pole, zadejte jméno uživatele, jako je **Britta simon**.
     
-    b. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    b. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
     >[!Note]
     >Vyberte ověřenou doménu v seznamu domény.

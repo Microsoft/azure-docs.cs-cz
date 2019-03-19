@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e8a28634e554ee75eea79e69c0b73e8adec3447
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700532"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117315"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
 
@@ -94,17 +94,17 @@ Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti při
 
 1. Jakmile je brána virtuální sítě vytvořená, přejděte do části **Nastavení** na stránce brány virtuální sítě. V části **Nastavení** klikněte na **Konfigurace Point-to-site (P2S)**.
 
-  ![Stránka Point-to-Site](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
+   ![Stránka Point-to-Site](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
 2. Klikněte na tlačítko **Nakonfigurovat**, aby se otevřela stránka s konfigurací.
 
-  ![Nakonfigurovat](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
+   ![Nakonfigurovat](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. Na stránce konfigurace **Point-to-Site** přidejte do pole **Fond adres** rozsah privátních IP adres, který chcete použít. Klienti VPN dynamicky obdrží IP adresu z rozsahu, který zadáte. Kliknutím na **Uložit** ověřte a uložte nastavení.
 
-  ![Fond adres klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![Fond adres klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
-  >[!NOTE]
-  >Pokud se na této stránce portálu nezobrazí typ tunelu nebo typ ověřování, vaše brána používá skladovou položku Basic. Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
-  >
+   >[!NOTE]
+   >Pokud se na této stránce portálu nezobrazí typ tunelu nebo typ ověřování, vaše brána používá skladovou položku Basic. Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
+   >
 
 ## <a name="tunneltype"></a>7. Konfigurace typu tunelového propojení
 
@@ -126,13 +126,13 @@ Můžete nahrát další důvěryhodné kořenové certifikáty až do celkovéh
 2. Ujistěte se, že jste kořenový certifikát vyexportovali jako soubor .cer X.509 s kódováním Base-64. Je nutné certifikát exportovat v tomto formátu, abyste ho mohli otevřít v textovém editoru.
 3. Otevřete certifikát v textovém editoru, například v Poznámkovém bloku. Při kopírování dat certifikátu se ujistěte, že kopírujete text jako jeden souvislý řádek bez konců řádků nebo odřádkování. Pokud chcete zobrazit konce řádků a odřádkování, může být nutné upravit zobrazení v textovém editoru na Zobrazit symbol / Zobrazit všechny znaky. Zkopírujte pouze tuto část jako jeden souvislý řádek:
 
-  ![Data certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
+   ![Data certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
 4. Vložte data certifikátu do pole **Data veřejného certifikátu**. Zadejte **Název** certifikátu a pak klikněte na tlačítko **Uložit**. Můžete přidat až 20 důvěryhodných kořenových certifikátů.
 
-  ![Nahrání certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
+   ![Nahrání certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. Uložte všechna konfigurační nastavení kliknutím na **Uložit** v horní části stránky.
 
-  ![Uložení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![Uložení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
 ## <a name="installclientcert"></a>10. Instalace exportovaného klientského certifikátu
 
@@ -159,10 +159,10 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 2. Připojení spustíte kliknutím na tlačítko **Připojit** na stavové stránce **Připojení**. Pokud uvidíte obrazovku **Výběr certifikátu**, ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát, a poté klikněte na **OK**.
 
-  ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
 3. Vaše připojení bylo vytvořeno.
 
-  ![Vytvořené připojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![Vytvořené připojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>Řešení potíží s připojeními P2S v systému Windows
 
@@ -183,8 +183,8 @@ Tyto pokyny platí pro klienty se systémem Windows.
 1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -194,7 +194,7 @@ Tyto pokyny platí pro klienty se systémem Windows.
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connectVM"></a>Připojení k virtuálnímu počítači
 

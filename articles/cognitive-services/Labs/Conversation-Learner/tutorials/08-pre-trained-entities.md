@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224169"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163782"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Postup přidání Pre-trained entity
 Tento kurz ukazuje, jak přidat Pre-Trained entity do modelu Learner konverzace.
@@ -25,7 +25,7 @@ Tento kurz ukazuje, jak přidat Pre-Trained entity do modelu Learner konverzace.
 [![Kurz ve verzi Preview předem Vytrénovaných entity](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
+Tento kurz vyžaduje, zda je spuštěna obecné kurzu robota
 
     npm run tutorial-general
 
@@ -35,50 +35,49 @@ Předem Vytrénovaných entity rozpoznávání běžných typů entit, jako je n
 
 ## <a name="steps"></a>Kroky
 
+Začněte na domovskou stránku webového uživatelského rozhraní.
+
 ### <a name="create-the-model"></a>Vytvoření modelu
 
-1. Ve webové uživatelské rozhraní klikněte na tlačítko "Nový Model."
-2. V poli "Name" typ "PretrainedEntities" a stiskněte enter.
-3. Klikněte na tlačítko "Vytvořit".
+1. Vyberte **nový Model**.
+2. Zadejte **PretrainedEntities** pro **název**.
+3. Vyberte **Vytvořit**.
 
 ### <a name="entity-creation"></a>Vytvoření entity
 
-1. Na levém panelu klikněte na tlačítko "," subjekty a potom na tlačítko "Nová entita".
-2. Vyberte "Předprodukční-Trained/datetimeV2" u "Typu Entity."
-3. Zkontrolujte "Více Vážíme si toho" zaškrtávací políčko.
-    - Vícehodnotový entity accumulate jednu nebo více hodnot v dané entitě.
-    - Negatable vlastnosti jsou zakázané Pre-Trained entit.
-4. Klikněte na tlačítko "Vytvořit".
+1. Vyberte **entity** na levém panelu, pak **novou entitu**.
+2. Vyberte **Trained Předprodukčním, datetimeV2** pro **typ Entity**.
+3. Zkontrolujte **více Vážíme si toho** umožňující Entity accumulate jednu nebo více hodnot. Mějte na paměti, nemůže být negatable Pre-Trained entity.
+4. Vyberte **Vytvořit**.
 
-![](../media/tutorial7_entities_a.PNG)
+![](../media/T08_entity_create.png)
 
-### <a name="create-the-first-action"></a>Vytvoření první akci
+1. Vyberte **akce** na levém panelu, pak **novou akci**.
+2. Zadejte **datum je $builtin-datetimev2** pro **odezvy bodu robotů také...** .
+3. Vyberte **Vytvořit**.
 
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-2. "Bodu robotů také odpovědi na..." pole, zadejte "datum je $builtin-datetimev2"
-3. Klikněte na tlačítko "Vytvořit".
-
-![](../media/tutorial7_actions_a.PNG)
+![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>Vytvořte druhou akci
 
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-2. "Bodu robotů také odpovědi na..." pole, zadejte "Jaké je datum?"
-    - Předem Vytrénovaných entity nemůže být požadované entity rozpoznané ve výchozím nastavení pro všechny projevy uživatele.
-3. V poli "Vyřazení opravňuje" typ "builtin datetimev2."
-4. Klikněte na tlačítko "Vytvořit".
+1. Vyberte **akce** na levém panelu, pak **novou akci**.
+2. Zadejte **jaké je datum?** pro **odezvy bodu robotů také...** . Předem Vytrénovaných entity nemůže být **požadované entity** rozpoznané ve výchozím nastavení pro všechny projevy.
+3. Zadejte **builtin datetimev2** pro **vyřazení opravňuje**.
+4. Vyberte **Vytvořit**.
 
-![](../media/tutorial7_actions2_a.PNG)
+![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>Trénování modelu
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "hello".
-3. Klikněte na tlačítko "Skóre akce".
-4. Vyberte odpověď na "Jaké je datum?"
-5. V panelu chatu, kde stavu "Typ zprávy...", zadejte "dnes"
-    - Informací o dnešku utterance je automaticky rozpoznán předem natrénovaných modelů služby LUIS.
+1. Vyberte **trénování dialogů** na levém panelu, pak **dialogové okno Nový trénování**.
+2. Zadejte **hello** pro uživatele utterance na panelu vlevo konverzace.
+3. Vyberte **skóre akce**.
+4. Vyberte **jaké je datum?** ze seznamu akcí
+5. Zadejte **Dnes** pro uživatele utterance na panelu vlevo konverzace.
+    - **Dnes** utterance je automaticky rozpoznán předem natrénovaných modelů služby LUIS.
     - Ukazatel myši hodnoty entit Pre-Trained zobrazuje další data poskytované služby LUIS.
+
+![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>Další postup
 

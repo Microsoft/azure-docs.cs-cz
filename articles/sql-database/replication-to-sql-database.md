@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467692"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860699"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
 
@@ -40,7 +40,7 @@ Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pr
 - SQL Server 2014 (12.x) RTM CU10
 - SQL Server 2012 (11.x) SP2 CU8 nebo s aktualizací SP3
 - Přistoupíte ke konfiguraci replikace pomocí starší verze může vést k chybě číslo MSSQL_REPL20084 (procesu nemůže připojit k odběrateli.) a MSSQL_REPL40532 (nejde otevřít server \<name > požadovaný v přihlášení. Přihlášení se nezdařilo.).  
-- Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).  
+- Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Poznámky
 

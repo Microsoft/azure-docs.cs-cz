@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4761a50905f28c215a47d579b931ab5db9d7e424
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468066"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079175"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Jak vytvořit lístek podpory pro SQL Data Warehouse
 Pokud máte se službou SQL Data Warehouse problémy, vytvořte si lístek podpory, aby vám mohl náš technický tým pomoct.
@@ -35,8 +35,8 @@ Pokud máte se službou SQL Data Warehouse problémy, vytvořte si lístek podpo
      
      Pokud máte plán podpory Premier Support, můžete také problémy týkající se služby SQL Data Warehouse nahlásit na [online portálu Microsoft Premier][Microsoft Premier online portal].  Další informace o různých plánech podpory, včetně rozsahu, doby odezvy, cen atd. najdete v tématu věnovaném [plánům podpory Azure][Azure support plan].  Nejčastější dotazy týkající se podpory Azure najdete v [nejčastějších dotazech týkajících se podpory k Azure][Azure support FAQs].  
         
-    ![Okno Základní informace](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
-    ![Okno Základní informace1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
+     ![Okno Základní informace](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
+     ![Okno Základní informace1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
 4. Vyplňte okno **Problém**.
     ![Problem_blade](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
@@ -46,7 +46,7 @@ Pokud máte se službou SQL Data Warehouse problémy, vytvořte si lístek podpo
    > 
    
 5. Vyplňte své **Kontaktní informace**.
-![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
+   ![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
 
     
 6. Kliknutím na **Vytvořit** odešlete žádost o podporu.

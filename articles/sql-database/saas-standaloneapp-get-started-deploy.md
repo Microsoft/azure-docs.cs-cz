@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012675"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 
@@ -76,11 +76,11 @@ Aplikace prezentuje místa, které jsou hostiteli události.  Místa jsou klient
 
 1. Otevřete stránku události pro každé tři tenantů v samostatných prohlížeče karty:
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    (V každé adrese URL nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)
+     (V každé adrese URL nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.)
 
    ![Události](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ V produkčním prostředí, obvykle můžete vytvořit záznam CNAME DNS k [ *na
 
 Pojďme se podívat na některé z nasazených prostředků:
 
-1. V [webu Azure portal](http://portal.azure.com), přejděte na seznam skupin prostředků.
+1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam skupin prostředků.
 2. Měli byste vidět tři tenanta skupiny prostředků.
 3. Otevřít **wingtip-sa-fabrikam -&lt;uživatele&gt;**  skupinu prostředků, která obsahuje prostředky pro nasazení společnosti Fabrikam Jazz Club.  **Fabrikamjazzclub -&lt;uživatele&gt;**  obsahuje server **fabrikamjazzclub** databáze.
 

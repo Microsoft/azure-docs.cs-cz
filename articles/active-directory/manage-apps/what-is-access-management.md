@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109320"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 Probíhající access managementu, využití hodnocení a vytváření sestav i nadále být náročné z těchto po integraci aplikace do systému identity vaší organizace. V mnoha případech třeba provádět průběžnou aktivní roli při správě přístupu k vašim aplikacím správci IT nebo helpdesk. Přiřazení v některých případech se provádí pomocí obecné nebo oddělení IT tým. Často se má rozhodnutí přiřazení delegovat na obchodní rozhodovací pravomocí vyžadující schválení před IT díky přiřazení.  Další organizace investovat do integrace s existující automatizované identit a přístupu systémem správy, jako je řízení přístupu na základě Role (RBAC) nebo řízení přístupu na základě atributů (ABAC). Integrace a vývoje pravidla jsou obvykle specializovaných a drahých. Monitorování a vytváření sestav o buď způsob správy je svůj vlastní samostatný, nákladné a komplexní investice.
@@ -29,7 +29,7 @@ Probíhající access managementu, využití hodnocení a vytváření sestav i 
 
 * [Přidat nové nebo existující aplikace](configure-single-sign-on-portal.md)
 
- Přiřazení aplikací Azure AD se zaměřuje na dva režimy primární přiřazení:
+  Přiřazení aplikací Azure AD se zaměřuje na dva režimy primární přiřazení:
 
 * **Jednotlivé přiřazení** správce IT s oprávněními globálního správce adresáře můžete vybrat jednotlivé uživatelské účty a udělovat oprávnění pro přístup k aplikaci.
 * **Přiřazení na základě skupin (placené pouze Azure AD)** správce IT s oprávněními globálního správce adresáře můžete přiřadit skupiny k aplikaci. Přístup k určitým uživatelům je určeno, jestli jsou členové skupiny při pokusu o přístup k aplikaci. Jinými slovy správce může efektivně vytvořit pravidlo přiřazení s oznámením "všechny aktuální člen přiřazená skupina má přístup k aplikaci". Použití této možnosti přiřazení správců mohou těžit z některé z možností správy skupiny Azure AD, včetně [dynamické skupiny podle atributů](../fundamentals/active-directory-groups-create-azure-portal.md), externí systémové skupiny (například v místním Active Directory nebo pracovní den) nebo skupiny řízená správcem nebo spravovanými na samoobslužných služeb. Jednu skupinu lze snadno přiřadit k více aplikacemi, a ujistěte se, že můžete sdílet aplikace s přiřazení spřažení pravidla přiřazení zjednodušit celkové správy. Všimněte si, že vnořené členství ve skupinách na základě skupin přiřazování k aplikacím v tuto chvíli nepodporuje.

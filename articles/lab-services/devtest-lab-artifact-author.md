@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: e4fd8d226ebe1cb993e11fb5c9617df3eef08bdc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532572"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116822"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Při vytváření vlastních artefaktů pro virtuální počítač DevTest Labs
 
@@ -79,7 +79,7 @@ Pokud chcete definovat parametry, použijte následující strukturu:
 | Název elementu | Povinné? | Popis |
 | --- | --- | --- |
 | type |Ano |Typ hodnoty parametru. Najdete v následujícím seznamu povolených typů. |
-| displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. | |
+| displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
 | description |Ano |Popis parametru, který se zobrazí v testovacím prostředí. |
 
 Povolené typy jsou:

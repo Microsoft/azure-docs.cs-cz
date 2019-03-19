@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: b-juche
-ms.openlocfilehash: b67f7a613cd72e7a69b40741d971382276a38334
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104620"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro soubory Azure NetApp pomocí rozhraní REST API 
 
@@ -29,23 +29,23 @@ Rozhraní REST API pro službu Azure NetApp Files definuje operace HTTP s prost�
 
 1. [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pokud jste tak již neučinili.
 2. Vytvoření instančního objektu v Azure Active Directory (Azure AD):
-    1. Ověřte, že máte [dostatečná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Ověřte, že máte [dostatečná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-    1. Zadejte následující příkaz v rozhraní příkazového řádku Azure:  
+   1. Zadejte následující příkaz v rozhraní příkazového řádku Azure:  
 
-            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-    Podobně jako v následujícím příkladu je výstup tohoto příkazu:  
+      Podobně jako v následujícím příkladu je výstup tohoto příkazu:  
 
-            { 
-                "appId": "appIDgoeshere", 
-                "displayName": "APPNAME", 
-                "name": "http://APPNAME", 
-                "password": "supersecretpassword", 
-                "tenant": "tenantIDgoeshere" 
-            } 
+           { 
+               "appId": "appIDgoeshere", 
+               "displayName": "APPNAME", 
+               "name": "http://APPNAME", 
+               "password": "supersecretpassword", 
+               "tenant": "tenantIDgoeshere" 
+           } 
 
-    Zachovejte výstup příkazu.  Budete potřebovat `appId`, `password`, a `tenant` hodnoty. 
+      Zachovejte výstup příkazu.  Budete potřebovat `appId`, `password`, a `tenant` hodnoty. 
 
 3. Žádost o přístupový token OAuth:
 

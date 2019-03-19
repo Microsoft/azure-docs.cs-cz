@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116890"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package
 
@@ -38,9 +38,9 @@ Oozie můžete také použít k plánování úloh, které jsou specifické pro 
 Další informace o Secure Shell (SSH) najdete v tématu [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. Připojte se ke clusteru HDInsight pomocí SSH:  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. Pokud chcete ověřit úspěšné ověřování protokolem Kerberos, použijte `klist` příkazu. Pokud ne, použijte `kinit` spustit ověřování protokolem Kerberos.
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>Definování pracovního postupu
 Definice pracovního postupu Oozie jsou napsané v Apache Hadoop procesu Definition Language (hPDL). hPDL je jazyk definice procesu XML. Proveďte následující kroky k definování pracovního postupu:
 
-1.  Nastavte pracovní prostor uživatele domény:
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-Nahraďte `DomainUser` s doména uživatelské jméno. Nahraďte `DomainUserPath` s cestou domovský adresář pro uživatele domény. Nahraďte `ClusterVersion` s vaší verze clusteru Hortonworks Data Platform (HDP).
+1. Nastavte pracovní prostor uživatele domény:
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   Nahraďte `DomainUser` s doména uživatelské jméno. 
+   Nahraďte `DomainUserPath` s cestou domovský adresář pro uživatele domény. 
+   Nahraďte `ClusterVersion` s vaší verze clusteru Hortonworks Data Platform (HDP).
 
-2.  Pomocí následujícího příkazu vytvořte a upravte nový soubor:
- ```bash
-nano workflow.xml
- ```
+2. Pomocí následujícího příkazu vytvořte a upravte nový soubor:
+   ```bash
+   nano workflow.xml
+   ```
 
 3. Jakmile se otevře nano editor, zadejte následující kód XML jako obsah souboru:
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. Nahraďte `clustername` s názvem clusteru. 
 
 5. K uložení souboru, vyberte kombinaci kláves Ctrl + X. Zadejte `Y`. Potom vyberte **Enter**.
 
     Pracovní postup je rozdělena na dva oddíly:
-    *   **Části přihlašovací údaje.** Tato část má přihlašovací údaje, které se používají k ověřování Oozie akce:
+   * **Části přihlašovací údaje.** Tato část má přihlašovací údaje, které se používají k ověřování Oozie akce:
 
-       Tento příklad používá ověřování pro Hive akce. Další informace najdete v tématu [ověřování akce](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
+     Tento příklad používá ověřování pro Hive akce. Další informace najdete v tématu [ověřování akce](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
-       Přihlašovací údaje služby umožňuje Oozie zosobnit uživatele pro přístup ke službám Hadoop.
+     Přihlašovací údaje služby umožňuje Oozie zosobnit uživatele pro přístup ke službám Hadoop.
 
-    *   **Část akce.** Tato část obsahuje tři akce: pro redukci map, Hive server 2 a Hive server 1:
+   * **Část akce.** Tato část obsahuje tři akce: pro redukci map, Hive server 2 a Hive server 1:
 
-      - Příklad z balíčku pro Oozie pro redukci map spustí akce, které Vypíše počet agregovaných slov redukci map.
+     - Příklad z balíčku pro Oozie pro redukci map spustí akce, které Vypíše počet agregovaných slov redukci map.
 
-       - Hive server 2 a Hive server 1 akce na vzorovou tabulkou Hive s HDInsight spustí dotaz.
+     - Hive server 2 a Hive server 1 akce na vzorovou tabulkou Hive s HDInsight spustí dotaz.
 
-        Hive akce používají přihlašovací údaje definované v části s přihlašovacími údaji pro ověřování pomocí klíčového slova `cred` v prvku akce.
+     Hive akce používají přihlašovací údaje definované v části s přihlašovacími údaji pro ověřování pomocí klíčového slova `cred` v prvku akce.
 
 6. Použijte následující příkaz pro kopírování `workflow.xml` soubor `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash

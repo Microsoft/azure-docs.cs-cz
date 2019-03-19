@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575465"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096567"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Vytvoření virtuálního pevného disku kompatibilního s Azure
 
@@ -55,18 +55,18 @@ V Microsoftu [webu Azure portal](https://ms.portal.azure.com/), vytvořte zákla
     ![Okno Nový virtuální počítač COMPUTE](./media/publishvm_014.png)
 
 5. Po výběru správné virtuální image, zadejte následující hodnoty:
-  * Na **Základy** okno, zadejte **název** u virtuálních počítačů mezi 1 až 15 znaků. (Tento příklad používá `DemoVm009`.)
-  * Zadejte **uživatelské jméno** a silné **heslo**, které se používají k vytvoření místního účtu ve virtuálním počítači.  (Tady `adminUser` se používá.)  Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v tématu [požadavcích na uživatelské jméno a heslo](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-  * Vyberte skupinu prostředků, kterou jste vytvořili (zde `DemoResourceGroup`).
-  * Vyberte adresu Datacentra Azure **umístění** (zde `West US`).
-  * Klikněte na tlačítko **OK** uložte tyto hodnoty. 
+   * Na **Základy** okno, zadejte **název** u virtuálních počítačů mezi 1 až 15 znaků. (Tento příklad používá `DemoVm009`.)
+   * Zadejte **uživatelské jméno** a silné **heslo**, které se používají k vytvoření místního účtu ve virtuálním počítači.  (Tady `adminUser` se používá.)  Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v tématu [požadavcích na uživatelské jméno a heslo](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Vyberte skupinu prostředků, kterou jste vytvořili (zde `DemoResourceGroup`).
+   * Vyberte adresu Datacentra Azure **umístění** (zde `West US`).
+   * Klikněte na tlačítko **OK** uložte tyto hodnoty. 
 
-6.  Vyberte velikost virtuálního počítače k nasazení můžete použít následující doporučení:
-  * Pokud se chystáte vyvíjet virtuální pevný disk v místním, velikost není důležitá. Zvažte možnost použít jeden z menších virtuálních počítačů.
-  * Pokud se chystáte vyvíjet image v Azure, zvažte možnost použít pro zvolenou image jednu z doporučených velikostí virtuálního počítače.
-  * Informace o cenách najdete **doporučené cenové úrovně** selektoru zobrazeném na portálu. Zobrazí tři doporučené velikosti poskytnuté vydavatelem. (Tady je vydavatelem Microsoft.)
+6. Vyberte velikost virtuálního počítače k nasazení můžete použít následující doporučení:
+   * Pokud se chystáte vyvíjet virtuální pevný disk v místním, velikost není důležitá. Zvažte možnost použít jeden z menších virtuálních počítačů.
+   * Pokud se chystáte vyvíjet image v Azure, zvažte možnost použít pro zvolenou image jednu z doporučených velikostí virtuálního počítače.
+   * Informace o cenách najdete **doporučené cenové úrovně** selektoru zobrazeném na portálu. Zobrazí tři doporučené velikosti poskytnuté vydavatelem. (Tady je vydavatelem Microsoft.)
 
-    ![Okno velikost nového virtuálního počítače](./media/publishvm_015.png)
+   ![Okno velikost nového virtuálního počítače](./media/publishvm_015.png)
 
 7. V **nastavení** okno, nastavte **použití spravovaného disku** umožňuje **ne**.  To umožňuje spravovat ručně nový virtuální pevný disk. ( **Nastavení** okna také umožňuje změnit jiné změny úložiště a síťové možnosti, například výběrem **úrovně Premium (SSD)** v **typ disku**.)  Klikněte na tlačítko **OK** pokračujte.
 

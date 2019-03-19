@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901844"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -39,7 +39,7 @@ Budete potřebovat předplatné Azure, trezor služby Recovery Services, účet 
 Pokud si nejste správce předplatného, máte oprávnění replikace, které potřebujete. Pokud si nejste, potřebujete oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci Site Recovery a oprávnění k zápisu do vybraného účtu úložiště nebo spravovaných disků na základě vaší konfigurace. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Můžete použít licenční server hostovaný operační systém v Azure?
-Ano, můžete použít Microsoft Software Assurance zákazníci [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) a Šetřete na náklady na licencování **počítače s Windows serverem** , které se migrují do Azure nebo použijte Azure pro zotavení po havárii.
+Ano, můžete použít Microsoft Software Assurance zákazníci [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) a Šetřete na náklady na licencování **počítače s Windows serverem** , které se migrují do Azure nebo použijte Azure pro zotavení po havárii.
 
 ## <a name="pricing"></a>Ceny
 
@@ -50,6 +50,27 @@ Nejčastější dotazy o licencování najdete [tady](https://aka.ms/asr_pricing
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Jak můžete vypočítat přibližné náklady během používání služby Site Recovery?
 
 Můžete použít [cenové kalkulačky](https://aka.ms/asr_pricing_calculator) odhadnout náklady při používání služby Azure Site Recovery. Podrobný odhad nákladů na spuštění nástroje plánovače nasazení (https://aka.ms/siterecovery_deployment_planner) a analyzovat [sestavy odhadu nákladů](https://aka.ms/asr_DP_costreport).
+
+### <a name="is-there-any-difference-in-cost-when-i-replicate-directly-to-managed-disk"></a>Existuje rozdíl v náklady zajišťujete při replikaci přímo do spravovaného disku?
+
+Spravované disky se účtují poněkud liší od účty úložiště. Podrobnosti najdete na níže uvedeném příkladu pro zdrojový disk o velikosti 100 GB. V příkladu je specifický pro rozdílové náklady na úložiště. Tyto náklady nezahrnuje náklady za snímky, mezipaměti úložiště a transakce.
+
+* Účet úložiště úrovně Standard Vs. Standardní HDD spravovaný Disk
+
+    - **Disk zřízeného úložiště pomocí Azure Site Recovery**: S10
+    - **Účet úložiště úrovně standard se účtují po využité svazku**: 5 USD za měsíc
+    - **Spravovaných disků úrovně Standard vám účtovat na svazku zřízené**: 5.89 $ za měsíc
+
+* Účet Premium storage Vs. Premium SSD Managed Disk 
+    - **Disk zřízeného úložiště pomocí Azure Site Recovery**: P10
+    - **Za účet úložiště úrovně Premium na svazku zřízené**: 17.92 $ za měsíc
+    - **Spravovaný disk úrovně Premium účtuje na svazku zřízené**: 17.92 $ za měsíc
+
+Další informace najdete na [podrobné informace o cenách spravovaných disků](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="do-i-incur-additional-charges-for-cache-storage-account-with-managed-disks"></a>Účtují se mi účtovat další poplatky pro účet úložiště mezipaměti se spravovanými disky?
+
+Ne, není účtovat další poplatky za mezipaměti. Mezipaměť je vždy součástí VMware do Azure architektury. Při replikaci do účtu úložiště úrovně standard, toto úložiště mezipaměti je součástí stejný cílový účet úložiště.
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Používám Azure Site Recovery už víc než měsíc. Získám i tak prvních 31 dní pro každou chráněnou instanci zadarmo?
 
@@ -125,6 +146,14 @@ Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Reco
 
 Budete muset zakázat a povolit replikaci upgradovat nebo downgradovat typ účtu úložiště.
 
+### <a name="can-i-replicate-to-storage-accounts-for-new-machine"></a>Můžete replikovat do účtů úložiště pro nový počítač?
+
+Ne, od března "19, můžete replikovat do managed disks v Azure z portálu. Replikace do účtů úložiště pro nový počítač se pouze k dispozici prostřednictvím rozhraní REST API a Powershellu. Pomocí rozhraní API ve verzi 2016-08-10 nebo 2018-01-10 se replikuje do účtů úložiště.
+
+### <a name="what-are-the-benefits-in-replicating-to-managed-disks"></a>Jaké jsou výhody v replikaci na spravované disky?
+
+Přečtěte si článek věnovaný tomu, jak [Azure Site Recovery zjednodušuje zotavení po havárii se spravovanými disky](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/).
+
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Jak mohu změnit typ spravovaného disku po aktivaci ochrany počítače?
 
 Ano, můžete snadno změnit typ spravovaného disku. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Ale po změníte typ spravovaného disku, ujistěte se čekat body obnovení čerstvé chcete vygenerovat, pokud je potřeba testovat převzetí služeb při selhání nebo převzetí služeb při selhání odeslat tuto aktivitu.
@@ -148,10 +177,10 @@ Při replikaci virtuálních počítačů VMware do Azure je průběžné replik
 Ano, můžete zachovat IP adresu na převzetí služeb při selhání. Ujistěte se, že cílová IP adresa zmíníte v okně "výpočty a síť' před převzetí služeb při selhání. Také se ujistěte, vypnutí počítače v okamžiku převzetí služeb při selhání aby nedocházelo ke konfliktům IP během navrácení služeb po obnovení.
 
 ### <a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
-Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
-Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Vyloučení disků
 Ano, můžete vyloučit disky z replikace.
@@ -208,9 +237,11 @@ Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru po
 Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Úspěšné navrácení služeb po obnovení se při navrácení služeb obnoví virtuální počítač musí existovat v databázi konfigurací serveru a konfiguračního serveru musí být spuštěn a v připojeném stavu. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Když mám jsem nastavíte konfigurační server, můžete I stáhnout a nainstalovat MySQL ručně?
+
 Ano. Stáhnout MySQL a jeho umístění **C:\Temp\ASRSetup** složky. Nainstalujte je ručně. Když nastavíte konfigurační server virtuálního počítače a přijměte podmínky, MySQL bude uvedeno **už nainstalovaná** v **stáhnout a nainstalovat**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Můžete vyhnout stahování MySQL ale nechat nainstalovat Site Recovery?
+
 Ano. Stáhněte instalační program MySQL a umístěte ho **C:\Temp\ASRSetup** složky.  Když nastavíte konfigurační server VM, přijměte podmínky a klikněte na **stáhnout a nainstalovat**, portál použije instalační program přidá k instalaci MySQL.
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Můžete použít konfigurační server virtuálního počítače na něco jiného?

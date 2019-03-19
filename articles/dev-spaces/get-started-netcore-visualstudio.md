@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: 1a4f1a5f8dac4f202f641111105da3cdfb70c823
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9b5f5d41a35b608ecec5e9ab2161a6c122e7aa82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894151"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Začínáme s Azure Dev prostorů s .NET Core a Visual Studio
 
@@ -36,15 +36,14 @@ V tomto průvodci se naučíte:
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Služba Kubernetes** > **Vytvořit**.
 
-   Pod jednotlivými nadpisy formuláře pro vytvoření clusteru AKS proveďte následující kroky.
+   Proveďte následující kroky v rámci každého čísla *clusteru Kubernetes vytvořit* formuláře a ověřit vybranou [oblasti podporuje prostory Azure Dev](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
 
-    - **PODROBNOSTI O PROJEKTU:** Vyberte předplatné Azure a novou nebo existující skupinu prostředků Azure.
-    - **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast (v současné době můžete vybrat pouze oblast USA – východ, USA – východ 2, USA – střed, Západní Evropa, USA – západ 2, Jihovýchodní Asie, Kanada – střed nebo Kanada – východ), verzi a předponu názvu DNS pro cluster AKS.
-    - **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly agentů AKS a počet uzlů. Pokud s Azure Dev Spaces začínáte, na prozkoumání všech funkcí vám stačí jeden uzel. Počet uzlů můžete po nasazení clusteru kdykoli snadno upravit. Mějte na paměti, že velikost virtuálního počítače není možné po vytvoření clusteru AKS změnit. Pokud však potřebujete vertikálně navýšit kapacitu, po nasazení clusteru AKS můžete snadno vytvořit nový cluster AKS s většími virtuálními počítači a pomocí Dev Spaces provést opětovné nasazení do tohoto většího clusteru.
-
-   Nezapomeňte vybrat Kubernetes verze 1.9.6 nebo novější.
+   - **Podrobnosti o projektu**: Vyberte předplatné Azure a nové nebo existující skupinu prostředků Azure.
+   - **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast, verzi a předponu názvu DNS pro cluster AKS.
+   - **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly agentů AKS a počet uzlů. Pokud s Azure Dev Spaces začínáte, na prozkoumání všech funkcí vám stačí jeden uzel. Počet uzlů můžete po nasazení clusteru kdykoli snadno upravit. Mějte na paměti, že velikost virtuálního počítače není možné po vytvoření clusteru AKS změnit. Pokud však potřebujete vertikálně navýšit kapacitu, po nasazení clusteru AKS můžete snadno vytvořit nový cluster AKS s většími virtuálními počítači a pomocí Dev Spaces provést opětovné nasazení do tohoto většího clusteru.
 
    ![Nastavení konfigurace Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
+
 
    Vyberte **Další: Ověřování** po dokončení.
 
@@ -62,7 +61,7 @@ V tomto průvodci se naučíte:
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Vytvoření webové aplikace spuštěné v kontejneru
 
-V této části vytvoříte webovou aplikaci ASP.NET Core a spustíte ji v kontejneru v Kubernetes.
+V této části vytvoříte webovou aplikaci ASP.NET Core a získat jeho spuštění v kontejneru v Kubernetes.
 
 ### <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 

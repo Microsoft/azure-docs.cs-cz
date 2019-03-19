@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5e7e405bdb251bbebc5da81253eea2414b434cb8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838305"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
@@ -26,7 +26,7 @@ Pomocí rozšíření Azure Machine Learning v sadě Visual Studio code pomocí 
 ## <a name="prerequisites"></a>Požadavky
 
 
-+ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
++ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 + Musí být nainstalované Visual Studio Code. VS Code je zdroj jednoduchý, ale výkonný editor kódu, který běží na vaší ploše. Obsahuje integrovanou podporu pro Python a další.  [Informace o instalaci VS Code](https://code.visualstudio.com/docs/setup/setup-overview).
 

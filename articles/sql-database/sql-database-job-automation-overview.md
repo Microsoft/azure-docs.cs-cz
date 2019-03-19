@@ -11,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 090c3919bcaee98f5ef398cd581bbf9070f5e87a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765332"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901963"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí úlohy databáze
 
 Azure SQL Database vám umožňuje vytvářet a plánovat úlohy, které může pravidelně provést jeden nebo více databází, které ke spuštění dotazů T-SQL a provádění úloh údržby. Každá úloha zaznamená stav spuštění a také automaticky opakuje operace, pokud dojde k žádné chybě.
 Můžete definovat cílovou databázi nebo skupiny databází Azure SQL, ve kterém se spustí úlohy a také nastavit plány, které ke spuštění úlohy.
 Úloha zpracuje úloh přihlášení do cílové databáze. Můžete také definujte, udržovat a zachovat skriptů Transact-SQL, který se spustí v rámci skupiny databází Azure SQL.
+
+## <a name="when-to-use-automated-jobs"></a>Kdy použít automatizované úlohy
 
 Existuje několik scénářů, když můžete použít automatizaci úloh:
 
@@ -35,8 +37,10 @@ Existuje několik scénářů, když můžete použít automatizaci úloh:
   - Agregace dat z kolekce databází Azure SQL do jedné cílové tabulky.
   - Spouštění dlouhotrvajících dotazů na zpracování dat pro velkou sadu databází, například shromažďování telemetrických dat uživatelů. Výsledky se pro účely další analýzy shromažďují do jedné cílové tabulky.
 - Přesuny dat
- - Vytvoření úlohy, které replikovat změny provedené ve vašich databázích jiných databází nebo shromažďovat aktualizace provedené v vzdálené databáze a použít změny v databázi.
- - Vytvoření úlohy, které načítají data z nebo do vaší databáze pomocí SQL Server Integration Services (SSIS).
+  - Vytvoření úlohy, které replikovat změny provedené ve vašich databázích jiných databází nebo shromažďovat aktualizace provedené v vzdálené databáze a použít změny v databázi.
+  - Vytvoření úlohy, které načítají data z nebo do vaší databáze pomocí SQL Server Integration Services (SSIS).
+
+## <a name="overview"></a>Přehled
 
 Následující technologie plánování úlohy jsou k dispozici ve službě Azure SQL Database:
 
@@ -157,9 +161,9 @@ Některé funkce agenta SQL, které jsou k dispozici v systému SQL Server nejso
 - Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.
 - Povolit/zakázat agenta není aktuálně podporován ve spravované instanci. Vždy je spuštěn Agent serveru SQL.
 - Jsou podporovány jen částečně oznámení
- - Operátor není podporován.
- - Příkazu není podporován.
- - Výstrahy se ještě nepodporuje.
+  - Operátor není podporován.
+  - Příkazu není podporován.
+  - Výstrahy se ještě nepodporuje.
 - Nepodporuje proxy servery.
 - Protokol událostí se nepodporuje.
 

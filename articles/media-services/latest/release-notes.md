@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343991"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877356"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -182,7 +182,7 @@ Pokud jste vytvořili prostředky nebo filtry účtů 09/28 až 10/12 pomocí Me
 
 ### <a name="net-sdk"></a>.NET SDK
 
-Následující funkce jsou k dispozici v rozhraní .net SDK:
+Následující funkce jsou k dispozici v sadě .NET SDK:
 
 * **Transformuje** a **úlohy** k zakódování nebo analyzovat mediálního obsahu. Příklady najdete v tématu [Stream soubory](stream-files-tutorial-with-api.md) a [analyzovat](analyze-videos-tutorial-with-api.md).
 * **Lokátory streamování** pro publikování a streamování obsahu do zařízení koncových uživatelů

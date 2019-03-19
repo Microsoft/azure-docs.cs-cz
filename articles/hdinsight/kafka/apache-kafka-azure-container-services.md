@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112173"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s využitím Apache Kafka v HDInsight
 
@@ -81,17 +81,17 @@ Pokud již nemáte AKS cluster, použijte jednu z následujících dokumentech s
 
 5. Pokud chcete nakonfigurovat partnerský vztah mezi HDInsight sítě a sítě clusteru AKS, vyberte virtuální síť a pak vyberte __partnerské vztahy__. Vyberte __+ přidat__ a k naplnění formuláře použijte následující hodnoty:
 
-    * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
-    * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě **clusteru AKS**.
+   * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
+   * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě **clusteru AKS**.
 
-    Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
+     Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
 
 6. Pokud chcete nakonfigurovat partnerský vztah mezi sítě clusteru AKS a síť HDInsight, vyberte __virtuální sítě clusteru AKS__a pak vyberte __partnerské vztahy__. Vyberte __+ přidat__ a k naplnění formuláře použijte následující hodnoty:
 
-    * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
-    * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě __clusteru HDInsight__.
+   * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
+   * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě __clusteru HDInsight__.
 
-    Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
+     Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Instalace Apache Kafka v HDInsight
 

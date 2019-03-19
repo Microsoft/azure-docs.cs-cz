@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478045"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835080"
 ---
 # <a name="feature-engineering-in-data-science"></a>Konstrukce funkcí v datové vědy
 Tento článek vysvětluje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Příklady slouží ke znázornění tohoto procesu jsou vykreslovány vedle z Azure Machine Learning Studio. 
@@ -46,7 +46,7 @@ Jaký druh funkcí měl by být vytvořen při cvičení modelu rozšířit dato
 
 Při spuštění pomocí služby Azure Machine Learning, je nejjednodušší pochopit její podstatu tohoto procesu namítají použití ukázek, které jsou součástí sady Studio. Dva příklady jsou uvedeny zde:
 
-* Příklad regrese [předpovědi počet pronajatých kol za](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v pod dohledem experiment, ve kterém se ví, cílové hodnoty
+* Příklad regrese [předpovědi počet pronajatých kol za](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) v pod dohledem experiment, ve kterém se ví, cílové hodnoty
 * Text dolování klasifikace příklad použití [Hashování](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Příklad 1: Přidat dočasné funkce pro regresní model

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f2bf811bfb0856b7ceb2fca2fd84c0d9830fb65d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebe5c65f701c0a1c7c02182800a35bfbeed5b0be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181380"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
@@ -109,10 +109,10 @@ Jakmile je úložiště na šablony Azure Resource Manageru není nakonfigurovan
     > [!NOTE]
     > Existuje několik hodnot parametrů, které – i v případě, že je zadaný – zobrazují jako prázdné hodnoty. Proto pokud uživatelé přiřazovat tyto hodnoty parametrů v šabloně Azure Resource Manageru, DevTest Labs nezobrazí hodnoty. Prázdný vstupní pole místo toho se zobrazí, kde uživatelé testovacího prostředí musíte zadat hodnotu, při vytváření prostředí.
     > 
-    > - OBECNÉ JEDINEČNÝ
-    > - -JEDINEČNÉ - GEN [N]
+    > - GEN-UNIQUE
+    > - GEN-UNIQUE-[N]
     > - OBECNÉ SSH-PUB-KEY
-    > - OBECNÉ – HESLO 
+    > - GEN-PASSWORD 
  
 1. Vyberte **přidat** vytvořte prostředí. Prostředí spustí zřizování okamžitě v zobrazení stavu v **Moje virtual machines** seznamu. Podle testovacího prostředí a zřiďte všechny prostředky definované v šabloně Azure Resource Manageru se automaticky vytvoří novou skupinu prostředků.
 1. Po vytvoření prostředí, vyberte prostředí v **Moje virtual machines** seznamu otevřete podokno skupiny prostředků a procházet všechny prostředky, které jsou zřízené v prostředí.
@@ -127,10 +127,119 @@ Jakmile je úložiště na šablony Azure Resource Manageru není nakonfigurovan
 
     ![Akce prostředí](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
-## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>Nasazení šablony Resource Manageru k vytvoření virtuálního počítače
-Po uložení šablony Resource Manageru a přizpůsobené vašim potřebám, můžete k automatizovanému vytvoření virtuálního počítače. 
-- [Nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) popisuje, jak nasadit prostředky do Azure pomocí šablon Resource Manageru pomocí prostředí Azure PowerShell. 
-- [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) popisuje, jak nasadit prostředky do Azure pomocí rozhraní příkazového řádku Azure pomocí šablon Resource Manageru.
+## <a name="automate-deployment-of-environments"></a>Automatizace nasazení prostředí
+Azure DevTest Labs poskytuje možnost používat [šablony Azure Resource Management Manageru](../azure-resource-manager/resource-group-authoring-templates.md) k vytvoření prostředí se sada prostředků v testovacím prostředí. Tato prostředí může obsahovat veškeré prostředky Azure, které lze vytvořit pomocí šablon Resource Manageru. Prostředí DevTest Labs umožňuje uživatelům snadno nasazovat komplexní infrastruktury konzistentním způsobem v rámci tohoto prostředí. V současné době přidání prostředí do testovacího prostředí pomocí webu Azure portal je možné při vytváření jednou, ale v vývoj nebo testování situace, kdy dojde k vytvoření více, automatické nasazení umožňuje lepší prostředí.
+
+Dokončete následující kroků v [nakonfigurovat vlastní šablony úložišť](#configure-your-own-template-repositories) části než budete pokračovat: 
+
+1. Vytvoření šablony Resource Manageru, který definuje vytvářené prostředky. 
+2. Nastavení šablony Resource Manageru v úložišti Git úložiště. 
+3. Připojte úložiště Git do testovacího prostředí. 
+
+### <a name="powershell-script-to-deploy-the-resource-manager-template"></a>Skript Powershellu pro nasazení šablony Resource Manageru
+Uložte skript prostředí PowerShell v další části a pevného disku (například: deployenv.ps1) a spusťte skript po zadání hodnoty pro SubscriptionId, ResourceGroupName, LabName, RepositoryName, v úložišti Git, EnvironmentName TemplateName (složka).
+
+```powershell
+./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"  
+```
+
+#### <a name="sample-script"></a>Ukázkový skript
+Tady je ukázkový skript k vytvoření prostředí ve vaší laboratoři. Komentáře ve skriptu umožňují lépe porozumět skriptu. 
+
+```powershell
+#Requires -Version 3.0
+#Requires -Module AzureRM.Resources
+
+[CmdletBinding()]
+
+param (
+# ID of the Azure Subscription where the lab is created.
+[string] [Parameter(Mandatory=$true)] $SubscriptionId,
+
+# Name of the lab (existing) in which to create the environment.
+[string] [Parameter(Mandatory=$true)] $LabName,
+
+# Name of the connected repository in the lab. 
+[string] [Parameter(Mandatory=$true)] $RepositoryName,
+
+# Name of the template (folder name in the Git repository) based on which the environment will be created.
+[string] [Parameter(Mandatory=$true)] $TemplateName,
+
+# Name of the environment to be created in the lab.
+[string] [Parameter(Mandatory=$true)] $EnvironmentName,
+
+# The parameters to be passed to the template. Each parameter is prefixed with “-param_”. 
+# For example, if the template has a parameter named “TestVMName” with a value of “MyVMName”, the string in $Params will have the form: `-param_TestVMName MyVMName`. 
+# This convention allows the script to dynamically handle different templates.
+[Parameter(ValueFromRemainingArguments=$true)]
+    $Params
+)
+
+# Save this script as the deployenv.ps1 file
+# Run the script after you specify values for SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (folder) in the Git repo, EnvironmentName
+# ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"    
+
+# Comment this statement to completely automate the environment creation.    
+# Sign in to Azure. 
+Connect-AzureRmAccount
+
+# Select the subscription that has the lab.  
+Set-AzureRmContext -SubscriptionId $SubscriptionId | Out-Null
+
+# Get information about the user, specifically the user ID, which is used later in the script.  
+$UserId = $((Get-AzureRmADUser -UserPrincipalName (Get-AzureRmContext).Account).Id.Guid)
+        
+# Get information about the lab such as lab location. 
+$lab = Get-AzureRmResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
+if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
+    
+# Get information about the repository in the lab. 
+$repository = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
+    -ResourceName $LabName `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
+
+# Get information about the Resource Manager template based on which the environment will be created. 
+$template = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
+    -ResourceName "$LabName/$($repository.Name)" `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
+
+# Build the template parameters with parameter name and values.     
+$parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
+$templateParameters = @()
+
+# The custom parameters need to be extracted from $Params and formatted as name/value pairs.
+$Params | ForEach-Object {
+    if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
+        $name = $Matches[1]                
+    } elseif ( $name ) {
+        $templateParameters += @{ "name" = "$name"; "value" = "$_" }
+        $name = $null #reset name variable
+    }
+}
+
+# Once name/value pairs are isolated, create an object to hold the necessary template properties
+$templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
+
+# Now, create or deploy the environment in the lab by using the New-AzureRmResource command. 
+New-AzureRmResource -Location $Lab.Location `
+    -ResourceGroupName $lab.ResourceGroupName `
+    -Properties $templateProperties `
+    -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
+    -ResourceName "$LabName/$UserId/$EnvironmentName" `
+    -ApiVersion '2016-05-15' -Force 
+ 
+Write-Output "Environment $EnvironmentName completed."
+```
+
+Můžete také použít rozhraní příkazového řádku Azure k nasazení prostředků pomocí šablon Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 > [!NOTE]
 > Pouze uživatel s oprávněními vlastníka testovacího prostředí můžete vytvořit virtuální počítače ze šablony Resource Manageru pomocí prostředí Azure PowerShell. Pokud chcete automatizovat vytvoření virtuálního počítače pomocí šablony Resource Manageru a máte oprávnění pro uživatele, můžete použít [ **az lab vm vytvořit** v rozhraní příkazového řádku příkaz](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).

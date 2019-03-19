@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 6dfc1c0f9dcf29d9cf24df19fbd043c71852aeac
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104212"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Nasazení šablony Ansible řešení pro Azure a CentOS
 Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance virtuálního počítače CentOS spolu s Ansible a sada nástrojů, které jsou nakonfigurovány pro práci s Azure. Mezi tyto nástroje patří:
@@ -37,30 +37,30 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. V **vytvořit Ansible** stránku, uvidíte několik karet. Na **Základy** kartu, zadejte požadované informace:
 
-    - **Název** – zadejte název vaší instance Ansible. Pro účely ukázky, název `ansiblehost` se používá.
-    - **Uživatelské jméno:** – zadejte uživatelské jméno, které budou mít přístup k instanci Ansible. Pro účely ukázky, název `ansibleuser` se používá.
-    - **Typ ověřování:** – vyberte buď **heslo** nebo **veřejný klíč SSH**. Pro účely ukázky **veřejný klíč SSH** zaškrtnuto.
-    - **Heslo** a **potvrzení hesla** – Pokud vyberete **heslo** pro **typ ověřování**, zadejte heslo pro tyto hodnoty.
-    - **Veřejný klíč SSH** – Pokud vyberete **veřejný klíč SSH** pro **typ ověřování**, zadejte veřejný klíč RSA v jednořádkovém formátu – od verze `ssh-rsa`.
-    - **Předplatné** – z rozevíracího seznamu vyberte své předplatné Azure.
-    - **Skupina prostředků** – z rozevíracího seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit nový** a zadejte název pro novou skupinu prostředků. Pro účely ukázky novou skupinu prostředků s názvem `ansiblerg` se používá.
-    - **Umístění** – vyberte umístění, z rozevíracího seznamu, která je vhodná pro váš scénář.
+   - **Název** – zadejte název vaší instance Ansible. Pro účely ukázky, název `ansiblehost` se používá.
+   - **Uživatelské jméno:** – zadejte uživatelské jméno, které budou mít přístup k instanci Ansible. Pro účely ukázky, název `ansibleuser` se používá.
+   - **Typ ověřování:** – vyberte buď **heslo** nebo **veřejný klíč SSH**. Pro účely ukázky **veřejný klíč SSH** zaškrtnuto.
+   - **Heslo** a **potvrzení hesla** – Pokud vyberete **heslo** pro **typ ověřování**, zadejte heslo pro tyto hodnoty.
+   - **Veřejný klíč SSH** – Pokud vyberete **veřejný klíč SSH** pro **typ ověřování**, zadejte veřejný klíč RSA v jednořádkovém formátu – od verze `ssh-rsa`.
+   - **Předplatné** – z rozevíracího seznamu vyberte své předplatné Azure.
+   - **Skupina prostředků** – z rozevíracího seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit nový** a zadejte název pro novou skupinu prostředků. Pro účely ukázky novou skupinu prostředků s názvem `ansiblerg` se používá.
+   - **Umístění** – vyberte umístění, z rozevíracího seznamu, která je vhodná pro váš scénář.
 
-    ![Azure portal kartu pro základní nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![Azure portal kartu pro základní nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. Vyberte **OK**.
 
 1. V **další nastavení** kartu, zadejte požadované informace:
 
-    - **Velikost** – Azure portal výchozí hodnota je standardní velikosti. Pokud chcete zadat jinou velikost, který přizpůsobuje váš konkrétní scénář, vyberte šipku a zobrazte seznam různých velikostí.
-    - **Typ disku virtuálního počítače** – vyberte buď **SSD** (Premium Solid-State Drive) nebo **HDD** (pevný disk). Pro účely ukázky **SSD** je vybrán pro jeho výhody výkonu. Další informace o všech těchto typů diskové úložiště, naleznete v tématu v následujících článcích:
-        - [Vysoce výkonná služba Premium Storage a spravované disky pro virtuální počítače](/azure/virtual-machines/windows/premium-storage)
-        - [Standardní spravované disky SSD pro úlohy Azure virtuálních počítačů](/azure/virtual-machines/windows/disks-standard-ssd)
-    - **Veřejná IP adresa** – toto nastavení zadat, pokud chcete ke komunikaci s virtuálním počítačem mimo virtuální počítač. Výchozí hodnota je novou veřejnou IP adresu, která má název `ansible-pip`. Pokud chcete zadat jinou IP adresu, vyberte šipku určit atributy – například název, skladovou Položku a přiřazení této IP adresy. 
-    - **Popisek názvu domény** – zadejte název domény veřejně přístupných virtuálního počítače. Název musí být jedinečný a musí splňovat požadavky na pojmenování. Další informace o zadávání názvu virtuálního počítače najdete v tématu [zásady vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
-    - **Verze Ansible** – zadejte číslo verze nebo hodnotu `latest` k nasazení nejnovější verze. Vyberte ikonu informace vedle **Ansible verze** zobrazíte další informace o dostupných verzí.
+   - **Velikost** – Azure portal výchozí hodnota je standardní velikosti. Pokud chcete zadat jinou velikost, který přizpůsobuje váš konkrétní scénář, vyberte šipku a zobrazte seznam různých velikostí.
+   - **Typ disku virtuálního počítače** – vyberte buď **SSD** (Premium Solid-State Drive) nebo **HDD** (pevný disk). Pro účely ukázky **SSD** je vybrán pro jeho výhody výkonu. Další informace o všech těchto typů diskové úložiště, naleznete v tématu v následujících článcích:
+       - [Vysoce výkonná služba Premium Storage a spravované disky pro virtuální počítače](/azure/virtual-machines/windows/premium-storage)
+       - [Standardní spravované disky SSD pro úlohy Azure virtuálních počítačů](/azure/virtual-machines/windows/disks-standard-ssd)
+   - **Veřejná IP adresa** – toto nastavení zadat, pokud chcete ke komunikaci s virtuálním počítačem mimo virtuální počítač. Výchozí hodnota je novou veřejnou IP adresu, která má název `ansible-pip`. Pokud chcete zadat jinou IP adresu, vyberte šipku určit atributy – například název, skladovou Položku a přiřazení této IP adresy. 
+   - **Popisek názvu domény** – zadejte název domény veřejně přístupných virtuálního počítače. Název musí být jedinečný a musí splňovat požadavky na pojmenování. Další informace o zadávání názvu virtuálního počítače najdete v tématu [zásady vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
+   - **Verze Ansible** – zadejte číslo verze nebo hodnotu `latest` k nasazení nejnovější verze. Vyberte ikonu informace vedle **Ansible verze** zobrazíte další informace o dostupných verzí.
 
-    ![Azure portal kartu pro další nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![Azure portal kartu pro další nastavení Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. Vyberte **OK**.
 
@@ -72,7 +72,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. **Souhrn** znázorňující postup ověření a výpis zadaná kritéria pro nastavení Ansible, zobrazí se stránka. Odkaz v dolní části karty umožňuje **stáhnout šablonu a parametry** pro použití se službou Azure podporované jazyky a platformy. 
 
-    ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. Vyberte **OK**.
 
@@ -80,7 +80,7 @@ Ansible šablona řešení pro Azure slouží ke konfiguraci Ansible instance vi
 
 1. Vyberte **oznámení** ikonu v horní části stránky portálu ke sledování nasazení Ansible. Po dokončení nasazení vyberte **přejít ke skupině prostředků**. 
 
-    ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Azure portal kartu karta se souhrnem Ansible](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. Na stránce skupiny prostředků získejte IP adresu hostitele Ansible a přihlaste se ke správě prostředků Azure pomocí Ansible.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861039"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -67,7 +67,7 @@ Ve službě Azure Search, požadavek se specifikuje prostřednictvím jednoho ne
 
 Přesnost, porozuměl jsem jim jako možnost filtrování irelevantní přístupů, můžete dosáhnout jeden nebo oba z těchto výrazů:
 
--   **hledání =**  
+-   **search=**  
     Hodnota tohoto parametru představuje hledaný výraz. Může být jednoduchým text nebo komplexní hledaný výraz, který obsahuje více podmínek a operátory. Na serveru je použit výraz vracející vyhledávání pro fulltextové vyhledávání, dotazování prohledávatelná pole v indexu pro odpovídající podmínky, vrátí výsledky v pořadí řazení. Pokud nastavíte `search` na hodnotu null, dotazu je spuštění přes celý index (to znamená `search=*`). V takovém případě další prvky dotazu, například `$filter` nebo bodovací profil, budou primárními faktory ovlivňující dokumenty, které jsou vráceny `($filter`) a v jakém pořadí (`scoringProfile` nebo `$orderby`).
 
 -   **$filter =**  
@@ -435,7 +435,7 @@ Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na ná
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
+[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
 [Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

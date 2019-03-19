@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae3b4787928b3a578df30dd7f8a2791ce487305d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433786"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100492"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -115,8 +115,8 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
     * [Vytvoření HDInsight pomocí rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Vytvoření HDInsight pomocí šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]  
-  > Přidání HDInsight k virtuální síti je volitelná konfigurace krok. Je nutné vybrat virtuální síť, při konfiguraci clusteru.
+   > [!IMPORTANT]  
+   > Přidání HDInsight k virtuální síti je volitelná konfigurace krok. Je nutné vybrat virtuální síť, při konfiguraci clusteru.
 
 ## <a id="multinet"></a>Připojení víc sítí
 
@@ -128,8 +128,8 @@ Azure nabízí řešení názvů pro služby Azure, které jsou nainstalovány v
 
 * Prostředek, který je ve stejné virtuální síti Azure, pomocí __interní název DNS__ prostředku. Například při použití výchozí název rozhodnutí, následují interní názvy DNS příklad přiřazené pracovní uzly HDInsight:
 
-    * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
-    * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Oba tyto uzly může komunikovat přímo s a dalších uzlů v HDInsight, pomocí interní názvy DNS.
 
@@ -148,29 +148,29 @@ Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích p
 
 4. Konfigurace předávání mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
 
-    * Pokud vzdálené sítě je v místní síti, nakonfigurujte DNS následujícím způsobem:
+   * Pokud vzdálené sítě je v místní síti, nakonfigurujte DNS následujícím způsobem:
         
-        * __Vlastní DNS__ (ve virtuální síti):
+     * __Vlastní DNS__ (ve virtuální síti):
 
-            * Směrovala požadavky pro příponu DNS virtuální sítě do Azure rekurzivní překladače (168.63.129.16). Zpracovává požadavky na prostředky ve virtuální síti Azure
+         * Směrovala požadavky pro příponu DNS virtuální sítě do Azure rekurzivní překladače (168.63.129.16). Zpracovává požadavky na prostředky ve virtuální síti Azure
 
-            * Předávání všech ostatních požadavků na místní server DNS. DNS v místním zpracovává všechny ostatní požadavky na rozlišení názvů, dokonce i požadavky na internetové prostředky, jako je například Microsoft.com.
+         * Předávání všech ostatních požadavků na místní server DNS. DNS v místním zpracovává všechny ostatní požadavky na rozlišení názvů, dokonce i požadavky na internetové prostředky, jako je například Microsoft.com.
 
-        * __On-premises DNS__: Směrovala požadavky pro příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se potom předá do Azure rekurzivní překladače.
+     * __On-premises DNS__: Směrovala požadavky pro příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se potom předá do Azure rekurzivní překladače.
 
-        Žádosti o konfiguraci této trasy pro plně kvalifikované názvy domény, které obsahují přípony DNS virtuální sítě na vlastní server DNS. Na místním serveru DNS jsou zpracovány všechny ostatní požadavky (i pro veřejné internetové adresy).
+       Žádosti o konfiguraci této trasy pro plně kvalifikované názvy domény, které obsahují přípony DNS virtuální sítě na vlastní server DNS. Na místním serveru DNS jsou zpracovány všechny ostatní požadavky (i pro veřejné internetové adresy).
 
-    * Pokud vzdálené sítě se dvěma virtuálními sítěmi Azure, nakonfigurujte DNS následujícím způsobem:
+   * Pokud vzdálené sítě se dvěma virtuálními sítěmi Azure, nakonfigurujte DNS následujícím způsobem:
 
-        * __Vlastní DNS__ (v obou virtuálních sítích):
+     * __Vlastní DNS__ (v obou virtuálních sítích):
 
-            * Požadavky pro příponu DNS virtuální sítě se předávají do vlastní servery DNS. DNS v obou virtuálních sítích je zodpovědná za překlad prostředků v rámci příslušné síti.
+         * Požadavky pro příponu DNS virtuální sítě se předávají do vlastní servery DNS. DNS v obou virtuálních sítích je zodpovědná za překlad prostředků v rámci příslušné síti.
 
-            * Předávání všech ostatních požadavků na Azure rekurzivní překladač. Rekurzivní překladač zodpovídá za řešení místním prostředím a internetovými prostředky.
+         * Předávání všech ostatních požadavků na Azure rekurzivní překladač. Rekurzivní překladač zodpovídá za řešení místním prostředím a internetovými prostředky.
 
-        DNS server pro každou síť směruje požadavky do jiné, na základě přípony DNS. Ostatní požadavky jsou vyřešeny použitím překladač Azure rekurzivní.
+       DNS server pro každou síť směruje požadavky do jiné, na základě přípony DNS. Ostatní požadavky jsou vyřešeny použitím překladač Azure rekurzivní.
 
-    Příklad každou konfiguraci, najdete v článku [příkladu: Vlastní DNS](#example-dns) oddílu.
+     Příklad každou konfiguraci, najdete v článku [příkladu: Vlastní DNS](#example-dns) oddílu.
 
 Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
@@ -647,9 +647,9 @@ Tento příklad vytvoří následující předpoklady:
     };
     ```
     
-    * Nahradit `10.0.0.0/16` a `10.1.0.0/16` hodnot pomocí IP adresy rozsahů virtuálních sítí. Tato položka umožňuje prostředky v každé sítě k podání žádostí o serverů DNS.
+   * Nahradit `10.0.0.0/16` a `10.1.0.0/16` hodnot pomocí IP adresy rozsahů virtuálních sítí. Tato položka umožňuje prostředky v každé sítě k podání žádostí o serverů DNS.
 
-    Všechny žádosti, které nejsou určené pro přípony DNS virtuální sítě (např. microsoft.com) zařizuje služba Azure rekurzivní překladač.
+     Všechny žádosti, které nejsou určené pro přípony DNS virtuální sítě (např. microsoft.com) zařizuje služba Azure rekurzivní překladač.
 
 4. Pokud chcete použít konfiguraci, restartujte vazby. Například `sudo service bind9 restart` na obou serverech DNS.
 

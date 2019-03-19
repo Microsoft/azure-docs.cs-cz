@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/06/2019
+ms.date: 03/15/2019
 ms.author: magoedte
-ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188964"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -33,10 +33,20 @@ Existují interně vygenerovanému vlastnosti, které můžete použít k identi
 
 Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozmezí může existovat více záznamů, dotazy mohou vracet víc než jeden záznam pro stejný počítač nebo procesu. Chcete-li zahrnout pouze poslední záznam, přidejte "| Při odstraňování duplicitních dat ResourceId"v dotazu.
 
-### <a name="connections"></a>Připojení
-Metrik připojení jsou zapsány do nové tabulky v Azure Monitor protokoly – VMConnection. Tato tabulka obsahuje informace o připojení pro počítač (příchozí a odchozí). Metrik připojení jsou přístupné také pomocí rozhraní API, která poskytují způsob, jak získat určité metriky během časového intervalu.  Připojení TCP vyplývající z "*přijmout*- ing naslouchání soketu se příchozí při vytvořených *připojení*- ing k dané IP adresy a portu jsou odchozí. Směr připojení je reprezentována vlastnost směr, který může být nastaven na hodnotu **příchozí** nebo **odchozí**. 
+### <a name="connections-and-ports"></a>Připojení a porty
+Metrik připojení funkce uvádí dvou nových tabulek v Azure Monitor protokoly – VMConnection a VMBoundPort. Tyto tabulky obsahují informace o připojení pro počítač (příchozí a odchozí), stejně jako server porty, které jsou open/aktivní s nimi. ConnectionMetrics jsou přístupné také prostřednictvím rozhraní API, která poskytují způsob, jak získat určité metriky během časového intervalu. Připojení TCP vyplývající z *přijímá* naslouchání soketu se příchozí při vytvořených *připojení* k dané IP adresy a portu jsou odchozí. Směr připojení je reprezentována vlastnost směr, který může být nastaven na hodnotu **příchozí** nebo **odchozí**. 
 
-Z data, která agenta závislostí se generují záznamy v těchto tabulkách. Každý záznam představuje hodnotu v minutových časovém intervalu. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace k identifikaci příslušné entity, to znamená, připojení nebo port, jakož i metriky, které jsou přidružené k dané entitě. V současné době se hlásí pouze síťové aktivity, ke které dojde, pomocí protokolu TCP přes protokol IPv4.
+Z data, která agenta závislostí se generují záznamy v těchto tabulkách. Každý záznam představuje hodnotu za interval 1 minuta čas. Vlastnost TimeGenerated označuje začátek časového intervalu. Každý záznam obsahuje informace k identifikaci příslušné entity, to znamená, připojení nebo port, jakož i metriky, které jsou přidružené k dané entitě. V současné době se hlásí pouze síťové aktivity, ke které dojde, pomocí protokolu TCP přes protokol IPv4. 
+
+#### <a name="common-fields-and-conventions"></a>Společné pole a konvence 
+VMConnection a VMBoundPort platí následující pole a konvence: 
+
+- Počítač: Plně kvalifikovaný název domény počítače generování sestav 
+- ID agenta: Jedinečný identifikátor pro počítač pomocí agenta Log Analytics  
+- Počítač: Název prostředku Azure Resource Manageru pro počítač vystavené ServiceMap. Je ve formátu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta  
+- Proces: Název prostředku Azure Resource Manageru pro proces vystavené ServiceMap. Je ve formátu *p-{hexadecimální řetězec}*. Proces je jedinečný v rámci oboru počítače a ke generování ID procesu jedinečný mezi počítači, kombinovat pole počítače a procesu. 
+- Název procesu: Název spustitelného souboru procesu vytváření sestav.
+- Všechny IP adresy jsou řetězce v kanonickém formátu IPv4, například *13.107.3.160* 
 
 Pokud chcete spravovat náklady a složitost, záznamy o připojení nepředstavují jednotlivých fyzických síťových připojení. Víc fyzických síťových připojení jsou seskupeny do logických připojení, který je pak v příslušné tabulce.  Význam, zaznamená *VMConnection* tabulce představují logické seskupení a nikoli jednotlivé fyzické připojení, která jsou sledována. Fyzické připojení sdílejí stejnou hodnotu pro následující atributy během danému intervalu jedné minuty se agregují do jednoho logického záznamu v *VMConnection*. 
 
@@ -81,7 +91,7 @@ Tady jsou některé důležité body ke zvážení:
 1. Pokud proces akceptuje připojení na stejnou IP adresu, ale přes několik síťových rozhraní, uvádět bude samostatný záznam pro každé rozhraní. 
 2. Záznamů se zástupnými znaky IP bude obsahovat žádná aktivita. Jsou zahrnuty představují skutečnost, že port na počítači je otevřená pro příchozí provoz.
 3. Pokud chcete snížit úroveň podrobností a objem dat, záznamů se zástupnými znaky IP budou vypuštěny po odpovídající záznam (pro stejný proces, port a protokol) s konkrétní IP adresu. Pokud záznam IP zástupných znaků je vynechán, vlastnost záznamu IsWildcardBind s konkrétní IP adresu, bude nastavena na hodnotu "True" k označení, že port, který je přístupný přes každých rozhraní vytváření sestav počítačů.
-4. Porty, které jsou vázány pouze na určité rozhraní mají IsWildcardBind nastavena na hodnotu "False".
+4. Porty, které jsou vázány pouze na určité rozhraní mají IsWildcardBind nastavena na *False*.
 
 #### <a name="naming-and-classification"></a>Zásady vytváření názvů a klasifikace
 Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součástí RemoteIp vlastnost. Pro příchozí připojení, RemoteIp je stejný jako SourceIp, zatímco pro odchozí připojení, je stejný jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje hlášených počítači pro RemoteIp canonical názvy DNS. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
@@ -111,6 +121,36 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 |IsActive |Označuje deaktivují se s indikátory *True* nebo *False* hodnotu. |
 |ReportReferenceLink |Obsahuje odkazy na sestavy související se daný pozorovat. |
 |AdditionalInformation |Poskytuje další informace, pokud je k dispozici informace o zjištěných hrozeb. |
+
+### <a name="ports"></a>Porty 
+Porty na počítači, které aktivně přijímat příchozí provoz nebo potenciálně může přijímat provoz, ale jsou nečinné generování sestav časovém období se zapisují do tabulky VMBoundPort.  
+
+Ve výchozím nastavení se data zapisují v této tabulce. Pokud chcete, aby data zapsaná do této tabulky, pošlete prosím e-mail na vminsights@microsoft.com spolu s ID pracovního prostoru a oblasti pracovního prostoru.   
+
+Každý záznam v VMBoundPort je identifikován následující pole: 
+
+| Vlastnost | Popis |
+|:--|:--|
+|Proces | Identita procesu (nebo skupiny procesů) se kterými port, který je přidružen.|
+|IP adresa | Port IP adresa (může být zástupný znak IP *0.0.0.0*) |
+|Port |Číslo portu |
+|Protocol (Protokol) | Protokol.  Například *tcp* nebo *udp* (pouze *tcp* momentálně se podporuje).|
+ 
+Identita port je odvozen z výše uvedených pěti oblastech a je uložená ve vlastnosti identifikátor PortId. Tato vlastnost umožňuje rychle vyhledat záznamy specifického portu v čase. 
+
+#### <a name="metrics"></a>Metriky 
+Port záznamy zahrnout metriky představující připojení k nim má přiřazené. V současné době se tyto metriky se vykazují (podrobnosti pro jednotlivé metriky jsou popsané v předchozí části): 
+
+- BytesSent a BytesReceived 
+- LinksLive LinksEstablished LinksTerminated, 
+- ResposeTime ResponseTimeSum ResponseTimeMin ResponseTimeMax, 
+
+Tady jsou některé důležité body ke zvážení:
+
+- Pokud proces akceptuje připojení na stejnou IP adresu, ale přes několik síťových rozhraní, uvádět bude samostatný záznam pro každé rozhraní.  
+- Záznamů se zástupnými znaky IP bude obsahovat žádná aktivita. Jsou zahrnuty představují skutečnost, že port na počítači je otevřená pro příchozí provoz. 
+- Pokud chcete snížit úroveň podrobností a objem dat, záznamů se zástupnými znaky IP budou vypuštěny po odpovídající záznam (pro stejný proces, port a protokol) s konkrétní IP adresu. Pokud záznam IP zástupných znaků je vynechán, *IsWildcardBind* vlastnost pro záznam s konkrétní IP adresu, bude nastavena na *True*.  To znamená, že port, který je přístupný přes každých rozhraní vytváření sestav počítačů. 
+- Porty, které jsou vázány pouze na určité rozhraní mají IsWildcardBind nastavena na *False*. 
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Záznamy typu *ServiceMapComputer_CL* mít data inventáře pro servery s agenta závislostí. Tyto záznamy mají vlastnosti v následující tabulce:
@@ -165,55 +205,124 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
 ### <a name="list-all-known-machines"></a>Seznam všech známých počítačů
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Pokud byl virtuální počítač poslední restartovat
-`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```kusto
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Přehled virtuálních počítačů Azure pomocí bitové kopie, umístění a skladové položky
-`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```kusto
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Seznam kapacita fyzické paměti všech spravovaných počítačů.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Název počítače seznamu, DNS, IP a operačního systému.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najít všechny procesy s "sql" v příkazovém řádku
-`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Najít počítač (poslední záznam) podle názvu prostředku
-`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Najít počítač (poslední záznam) podle IP adresy
-`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Seznam všech známých procesů v zadaném počítači
-`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-computers-running-sql-server"></a>Seznam všech počítačů s SQL serverem
-`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Zobrazí seznam všech verzí produktu jedinečné nástroje curl do svého datacentra
-`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```kusto
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvořit skupinu počítačů všechny počítače se systémem CentOS
-`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```
 
 ### <a name="bytes-sent-and-received-trends"></a>Bajty odeslané a přijaté trendů
-`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```kusto
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Které virtuální počítače Azure na maximum bajtů přenosu
-`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```kusto
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```
 
 ### <a name="link-status-trends"></a>Trendy stavu propojení
-`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```kusto
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```
 
 ### <a name="connection-failures-trend"></a>Trend selhání připojení
-`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```kusto
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```
+
+### <a name="bound-ports"></a>Vázané porty
+```kusto
+VMBoundPort
+| where TimeGenerated >= ago(24hr)
+| where Computer == 'admdemo-appsvr'
+| distinct Port, ProcessName
+```
+
+### <a name="number-of-open-ports-across-machines"></a>Počet otevřených portů v počítačích
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by Computer, Machine, Port, Protocol
+| summarize OpenPorts=count() by Computer, Machine
+| order by OpenPorts desc
+```
+
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Skóre procesů ve vašem pracovním prostoru podle čísla portů, které se mají otevřít
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by ProcessName, Port, Protocol
+| summarize OpenPorts=count() by ProcessName
+| order by OpenPorts desc
+```
+
+### <a name="aggregate-behavior-for-each-port"></a>Agregační chování pro každý z portů
+Tento dotaz lze potom použít ke stanovení skóre porty podle počtu aktivit, například portů se většina odchozího/příchozího provozu, porty se většina připojení
+```kusto
+// 
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize BytesSent=sum(BytesSent), BytesReceived=sum(BytesReceived), LinksEstablished=sum(LinksEstablished), LinksTerminated=sum(LinksTerminated), arg_max(TimeGenerated, LinksLive) by Machine, Computer, ProcessName, Ip, Port, IsWildcardBind
+| project-away TimeGenerated
+| order by Machine, Computer, Port, Ip, ProcessName
+```
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozí připojení ze skupiny počítačů
-```
+```kusto
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
 // map of ip to monitored machine in the environment
