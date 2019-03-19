@@ -76,6 +76,6 @@
 ## [Ceny](https://azure.microsoft.com/pricing)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionální dostupnost](https://azure.microsoft.com/regions/services/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [Videa](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)
 
