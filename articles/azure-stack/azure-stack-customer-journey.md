@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad58b8f1034a0e2818d3aca53c023736da9370cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119917"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Integrace datových center Azure Stack
 
@@ -116,32 +116,32 @@ Partnera musí provést několik kroků před řešení je předáno zákazníko
 
 Akce, které by měl být partnerem OEM jsou:
 
--   [Spustit test azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+- [Spustit test azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
 
--   [Registrace ve službě Azure](azure-stack-registration.md)
+- [Registrace ve službě Azure](azure-stack-registration.md)
 
--   [Syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
+- [Syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Zálohování konfigurace přepínače a HLH konfiguračních souborů
+- Zálohování konfigurace přepínače a HLH konfiguračních souborů
 
--   Odebrat DVM
+- Odebrat DVM
 
--   Při přípravě souhrnu zákazník nasazení
+- Při přípravě souhrnu zákazník nasazení
 
--   [Zkontrolovat dostupnost aktualizací, abyste měli jistotu, že software řešení se aktualizuje na nejnovější verzi](.\azure-stack-updates.md)
+- [Zkontrolovat dostupnost aktualizací, abyste měli jistotu, že software řešení se aktualizuje na nejnovější verzi](./azure-stack-updates.md)
 
 Existuje několik kroků, které jsou povinné nebo volitelné v závislosti na typu instalace.
 
--   Pokud nasazení byla dokončena pomocí [služby AD FS](azure-stack-integrate-identity.md), pak Azure Stack razítko muset možné integrovat se službou zákazníka je vlastní služba AD FS.
+- Pokud nasazení byla dokončena pomocí [služby AD FS](azure-stack-integrate-identity.md), pak Azure Stack razítko muset možné integrovat se službou zákazníka je vlastní služba AD FS.
 
   > [!NOTE]
   > Tento krok je zodpovědností zákazníků, i když k nabízení služeb k tomu volitelně partnera.
 
--   Integrace s existujícím monitorování systému od příslušného partnera.
+- Integrace s existujícím monitorování systému od příslušného partnera.
 
-    -   [Integrace nástroje System Center Operations Manager](azure-stack-integrate-monitor.md) také podporuje správu vozového parku funkce.
+  -   [Integrace nástroje System Center Operations Manager](azure-stack-integrate-monitor.md) také podporuje správu vozového parku funkce.
 
-    -   [Integrace Nagios](azure-stack-integrate-monitor.md#integrate-with-nagios)
+  -   [Integrace Nagios](azure-stack-integrate-monitor.md#integrate-with-nagios)
 
 ## <a name="overall-timeline"></a>Celkové časové osy
 

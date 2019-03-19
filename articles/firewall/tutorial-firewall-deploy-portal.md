@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 3/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2dd9fc5691c646a72936039b6bcc5949d227c6b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 288a6e1b1d88fcef6fbd5554ba811acc1dab776e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994254"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -168,7 +168,7 @@ U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, k
 9. Klikněte na **Aktualizovat** a potom klikněte na směrovací tabulku **Firewall-route**.
 10. Klikněte na **Podsítě** > **Přidružit**.
 11. Klikněte na **Virtuální síť** > **Test-FW-VN**.
-12. V části **Podsíť** klikněte na **Workload-SN**. Dbejte na to, abyste pro tuto trasu vybrali jenom podsíť **Workload-SN**, jinak nebude vaše brána firewall pracovat správně.
+12. V části **Podsíť** klikněte na **Workload-SN**. Ujistěte se, že jste vybrali pouze **úloh-SN** podsítě pro tuto trasu, jinak brána firewall nebude fungovat správně.
 
 13. Klikněte na **OK**.
 14. Klikněte na **Trasy** > **Přidat**.
@@ -218,7 +218,7 @@ Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Změna primární a sekundární adresy DNS u síťového rozhraní **Srv-Work**
 
-Pro účely testování v tomto kurzu nakonfigurujete primární a sekundární adresy DNS. Toto se obecně u brány Azure Firewall nevyžaduje.
+Pro účely testování v tomto kurzu nakonfigurujete primární a sekundární adresy DNS. Není to povinné obecné Brána Firewall služby Azure.
 
 1. Na webu Azure Portal otevřete skupinu prostředků **Test-FW-RG**.
 2. Klikněte na síťové rozhraní virtuálního počítače **Srv-Work**.
@@ -244,7 +244,7 @@ Teď bránu firewall otestujte a ověřte, že funguje podle očekávání.
 
    Brána firewall by vás měla zablokovat.
 
-Nyní jste ověřili, že pravidla brány firewall fungují:
+Teď jste ověřili funkčnost pravidla brány firewall:
 
 - Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 - Názvy DNS můžete přeložit pomocí nakonfigurovaného externího serveru DNS.

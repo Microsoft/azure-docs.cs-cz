@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: a0a6c2d6171b4b383c97cc80d8a64efef9d193f5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086135"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio
 
@@ -36,10 +36,10 @@ Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní pr
 
 4. Zadejte informace o pracovním prostoru:
 
-    - *Název pracovního prostoru* může být až 260 znaků, není koncovou mezerou. Název nemůže obsahovat tyto znaky: `< > * % & : \ ? + /`
-    - *Plán web service* vyberete (nebo vytvoření), spolu s přidruženou *cenovou úroveň* vybrat, se používá při nasazení webové služby z tohoto pracovního prostoru.
+   - *Název pracovního prostoru* může být až 260 znaků, není koncovou mezerou. Název nemůže obsahovat tyto znaky: `< > * % & : \ ? + /`
+   - *Plán web service* vyberete (nebo vytvoření), spolu s přidruženou *cenovou úroveň* vybrat, se používá při nasazení webové služby z tohoto pracovního prostoru.
 
-    ![Vytvořit nový pracovní prostor Studio](./media/create-workspace/create-new-workspace.png)
+     ![Vytvořit nový pracovní prostor Studio](./media/create-workspace/create-new-workspace.png)
 
 5. Klikněte na možnost **Vytvořit**.
 

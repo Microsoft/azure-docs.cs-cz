@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900076"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Vytvořit novou nabídku kontejneru s portálem Cloud Partner
 
@@ -34,7 +34,7 @@ Tento článek popisuje postup vytvoření a publikování položky nabídky kon
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky 
 
-Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **kontejnery** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky kontejneru.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **kontejnery** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky kontejneru.
 
 ![Vyberte možnost kontejnery pro nové nabídky.](./media/azure-container-offer.png)
 

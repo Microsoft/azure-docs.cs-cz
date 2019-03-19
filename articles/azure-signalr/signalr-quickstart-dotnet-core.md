@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 680036dff856eccb85e600128119b5c0cafc5711
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004816"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s služby SignalR
 
@@ -97,7 +97,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
     Nástroj Secret Manager se použije pouze k testování webové aplikace, zatímco je hostovaná v místním prostředí. V některém dalším kurzu nasadíte webovou chatovací aplikaci do Azure. Po nasazení webové aplikace do Azure použijete místo nástroje Secret Manager k uložení připojovacího řetězce nastavení aplikace.
 
-    K tomuto tajnému klíči se přistupuje pomocí konfiguračního rozhraní API. Dvojtečka (:) v názvu konfigurace funguje s konfiguračním rozhraním API na všech podporovaných platformách, viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
+    Tento tajný kód je přistupováno pomocí rozhraní API konfigurace. Dvojtečka (:) v názvu konfigurace funguje s konfiguračním rozhraním API na všech podporovaných platformách, viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
 4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `services.AddSignalR().AddAzureSignalR()`:

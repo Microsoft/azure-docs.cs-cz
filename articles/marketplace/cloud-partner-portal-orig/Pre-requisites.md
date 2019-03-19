@@ -12,17 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 46a12307a70125973d36cf0a09b44b32d3279a97
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a4596b711cd90610051faee0d09501c075548062
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809401"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991882"
 ---
-<a name="prerequisites-for-application-curation"></a>Požadavky na aplikace Kurátorování
-===============================
+# <a name="prerequisites-for-application-curation"></a>Požadavky na aplikace Kurátorování
 
 Microsoft vyžaduje určité revize, chcete-li ověřit, že jsou splněny následující požadavky:
 
@@ -43,4 +42,5 @@ V současné době musí partneři prokázat, že jsou splněné tyto požadavky
 - Modely (kód a testy)
 - Obsah marketing
 
-Zobrazit [požadavky na aplikace kurátorování](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions) pro další informace.
+Další informace o technické a procesní požadavky najdete v tématu [ověření aplikací pro Finance and Operations](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Také pokud jste tak již neučinili, zkontrolujte [Office 365, Dynamics 365, PowerApps a Power BI nabízí průvodce publikováním](../appsource-offer-publishing-guide.md).
+

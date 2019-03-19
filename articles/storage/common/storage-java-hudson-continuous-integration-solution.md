@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011108"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled
@@ -25,7 +25,7 @@ V tomto kurzu budete používat modul plug-in Azure Storage pro Hudson CI k disp
 ## <a name="introduction-to-hudson"></a>Úvod do Hudson
 Hudson umožňuje průběžnou integraci softwarovém projektu umožňuje vývojářům snadno integrovat svoje změny kódu a je tvořen sestavení automaticky a často, a tím zvýšit produktivitu vývojářů. Sestavení se systémovou správou verzí a artefakty sestavení může být odeslán do různých úložišť. Tento článek vám ukáže, jak používat úložiště objektů Blob v Azure jako úložiště artefaktů sestavení. Zobrazí také ke stažení závislosti z úložiště objektů Blob v Azure.
 
-Další informace o Hudson najdete [splňovat Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
+Další informace o Hudson najdete [splňovat Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
 
 ## <a name="benefits-of-using-the-blob-service"></a>Výhody použití služby Blob service
 Výhody použití služby Blob service pro hostování artefakty sestavení agilního vývoje patří:
@@ -52,7 +52,7 @@ Budete potřebovat následující příkaz pro použití služby Blob service s 
   5. Po dokončete počáteční nastavení, zrušit spuštěné instance Hudson WAR, znovu spusťte Hudson WAR a znovu otevřete tak řídicí panel Hudson `http://localhost:8080/`, který použijete k instalaci a konfiguraci modulu plug-in Azure Storage.
      
       Během typického řešení Hudson CI by nastavit tak, aby se spouštěl jako služba s Hudson war na příkazovém řádku jsou dostatečné pro účely tohoto kurzu.
-* Účet Azure. Můžete se zaregistrovat pro účet Azure na <http://www.azure.com>.
+* Účet Azure. Můžete se zaregistrovat pro účet Azure na <https://www.azure.com>.
 * Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete vytvořit pomocí postupu v [vytvořit účet úložiště](../common/storage-quickstart-create-account.md).
 * Seznámení se s Hudson CI řešení se doporučuje, ale není nutné, protože následující obsah bude používat jako základní příklad zobrazit kroky potřebné při použití služby Blob service pro Hudson CI jako úložiště artefaktů sestavení.
 
@@ -134,7 +134,7 @@ Následující kroky ukazují, jak nakonfigurovat krok sestavení ke stažení p
 1. V **sestavení** část konfigurace úlohy můžete kliknout na tlačítko **přidat krok sestavení** a zvolte **stáhnout z úložiště objektů Blob v Azure**.
 2. Pro **název účtu úložiště**, vyberte účet úložiště.
 3. Pro **název kontejneru**, zadejte název kontejneru, který obsahuje objekty BLOB, kterou chcete stáhnout. Můžete použít proměnné prostředí.
-4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\***  zadáte všechny objekty BLOB, jejichž jména začínají **projektu**.
+4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\*** vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
 5. [Volitelné] Pro **cestu pro stažení**, zadejte cestu na počítači Hudson, kam chcete soubory stáhnout z úložiště objektů Blob v Azure. Můžete také použít proměnné prostředí. (Pokud nezadáte hodnotu **cestu pro stažení**, stáhnou se soubory z úložiště objektů Blob v Azure do pracovního prostoru úlohy.)
 
 Pokud máte další položky, které chcete stáhnout z úložiště objektů Blob v Azure, můžete vytvořit další kroky sestavení.
@@ -158,7 +158,7 @@ Následující body nabízí přehled komponent služby objektů Blob.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Další postup
-* [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK pro Javu](https://github.com/azure/azure-storage-java)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

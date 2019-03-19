@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088464"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
 
@@ -87,14 +87,14 @@ Tento článek obsahuje podrobnosti o používání funkce připojené služby s
 
 Do projektu jste přidali podporu rozhraní API Bingu pro vyhledávání zpráv. Tady je postup použití rozhraní API k přidání inteligentního vyhledávání do webové stránky.
 
-1.  V souboru *Startup.cs* přidejte do metody `ConfigureServices` volání `IServiceCollection.AddSingleton`. Tím se vytvoří objekt konfigurace obsahující klíčová nastavení, která jsou k dispozici pro kód ve vašem projektu.
+1. V souboru *Startup.cs* přidejte do metody `ConfigureServices` volání `IServiceCollection.AddSingleton`. Tím se vytvoří objekt konfigurace obsahující klíčová nastavení, která jsou k dispozici pro kód ve vašem projektu.
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 

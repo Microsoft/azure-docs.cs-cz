@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c66a937ffd9155569820c47c99946d186c55cce
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884218"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení problémů s výkonem pomalých aplikace ve službě Azure App Service
 V tomto článku vám pomůžou s řešením problémů s výkonem pomalých aplikací v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -109,7 +109,7 @@ Můžete povolit nebo zakázat následující typy protokolů:
 #### <a name="enable-application-diagnostics"></a>Povolení rozhraní application diagnostics
 Existuje několik možností, jak shromažďovat data o výkonu aplikace ze služby App Service, profil svou aplikaci živě ze sady Visual Studio nebo upravit kód aplikace nemusel Další informace a trasování. Můžete zvolit možnosti založené na nástroje vyjadřuje rozsah přístupu budete muset aplikaci a zjištěnými z monitorování.
 
-##### <a name="use-application-insights-profiler"></a>Použití Application Insights Profiler
+##### <a name="use-application-insights-profiler"></a>Use Application Insights Profiler
 Můžete povolit Application Insights Profiler spustit zachytávání trasování podrobné výkonu. Přistupujete k trasování zachytit až pět dnů když potřebujete k prozkoumání problémů došlo v minulosti. Tuto možnost můžete za předpokladu, máte přístup k prostředku Application Insights aplikací na portálu Azure portal.
 
 Application Insights Profiler poskytuje statistické údaje na dobu odezvy jednotlivých webových volání a trasování, která určuje, který řádek kódu způsobil pomalé odezvy. Aplikace služby App Service je někdy pomalý, protože některé kód není zapsán výkonným způsobem. Mezi příklady patří sekvenční kód, který je možné spustit v paralelní a nežádoucí databáze zámků. Odebrání těchto problémová místa v kódu zvyšuje výkon vaší aplikace, ale jsou obtížné rozpoznat bez nastavování propracované trasování a protokolování. Trasování shromážděných službou Application Insights Profiler pomáhá identifikaci řádků kódu, který může zpomalit aplikaci a pro aplikace služby App Service pro tento problém vyřešili.
@@ -162,7 +162,7 @@ Kromě toho můžete spustit aplikaci ve více než jednu instanci. Horizontáln
 Můžete nastavit jako ruční nebo automatické škálování.
 
 #### <a name="use-autoheal"></a>Používají AutoHeal
-AutoHeal recykluje pracovní proces pro vaši aplikaci na základě nastavení, které zvolíte (například změny konfigurace, požadavky, omezení na základě paměti nebo doba potřebná k provedení požadavku). Ve většině případů, recyklace procesu je nejrychlejší způsob, jak zotavení po chybě. I když můžete vždy restartovat aplikaci přímo z portálu Azure portal, AutoHeal postará automaticky za vás. Všechno, co musíte udělat, je přidání některých aktivačních událostí v kořenovém souboru web.config pro vaši aplikaci. Tato nastavení bude fungovat stejným způsobem, i když vaše aplikace není aplikace .net.
+AutoHeal recykluje pracovní proces pro vaši aplikaci na základě nastavení, které zvolíte (například změny konfigurace, požadavky, omezení na základě paměti nebo doba potřebná k provedení požadavku). Ve většině případů, recyklace procesu je nejrychlejší způsob, jak zotavení po chybě. I když můžete vždy restartovat aplikaci přímo z portálu Azure portal, AutoHeal postará automaticky za vás. Všechno, co musíte udělat, je přidání některých aktivačních událostí v kořenovém souboru web.config pro vaši aplikaci. Tato nastavení bude fungovat stejným způsobem, i když vaše aplikace není aplikace .NET.
 
 Další informace najdete v tématu [Samoopravení weby Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

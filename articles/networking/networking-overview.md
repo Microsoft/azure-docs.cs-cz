@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880921"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
@@ -149,7 +149,7 @@ Azure poskytuje následující nástroje pro monitorování a Správa sítě:
 
 Můžete nasadit a nakonfigurovat síťovými prostředky Azure s žádným z následujících nástrojů:
 
-- **Azure portal:** Grafické uživatelské rozhraní, na kterém běží v prohlížeči. Otevřete web [Azure Portal](http://portal.azure.com).
+- **Azure portal:** Grafické uživatelské rozhraní, na kterém běží v prohlížeči. Otevřete web [Azure Portal](https://portal.azure.com).
 - **Azure PowerShell:** Nástroje příkazového řádku pro správu Azure z počítačů s Windows. Další informace o Azure Powershellu najdete [Přehled prostředí Azure PowerShell](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Rozhraní příkazového řádku Azure (CLI):** Nástroje příkazového řádku pro správu Azure z počítačů systému Linux, macOS nebo Windows. Další informace o rozhraní příkazového řádku Azure pro čtení [přehled Azure CLI](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Šablony Azure Resource Manageru:** Soubor (ve formátu JSON), která definuje infrastrukturu a konfiguraci řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. Další informace o vytváření šablon najdete v článku [osvědčené postupy pro vytváření šablon](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. Šablony můžete nasadit pomocí webu Azure portal, rozhraní příkazového řádku nebo Powershellu. Začínáme se šablonami hned, nasaďte jednu z mnoha předem nakonfigurovaných šablon v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?term=network) knihovny. 

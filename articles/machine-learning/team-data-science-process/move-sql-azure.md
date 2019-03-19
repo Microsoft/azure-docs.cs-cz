@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 291872ca25b8674528b47e695c0d5135296e3451
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1634552522a3d1056f9af29386b6ae32754cae0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834082"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 
@@ -39,7 +39,7 @@ Postupy, podle zde uvedeného vyžadují, abyste měli:
 * Přístup **Azure SQL Database**. Pokud je nutné nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-**Data**: Procesu migrace je ukázán pomocí [datovou sadu NYC taxislužby](http://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxislužby datová sada obsahuje informace o data o jízdách a veletrhů a je k dispozici ve službě Azure blob storage: [Data taxislužby města NYC](http://www.andresmh.com/nyctaxitrips/). Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
+**Data**: Procesu migrace je ukázán pomocí [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxislužby datová sada obsahuje informace o data o jízdách a veletrhů a je k dispozici ve službě Azure blob storage: [Data taxislužby města NYC](https://www.andresmh.com/nyctaxitrips/). Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
 
 Můžete přizpůsobit podle postupů popsaných tady na sadu vlastních dat nebo postupujte podle pokynů, jak je popsáno s použitím datové sady NYC taxislužby. K odeslání NYC taxislužby datovou sadu do místní databáze SQL serveru, postupujte podle postupu uvedeného v [hromadného importu dat do databáze SQL serveru](sql-walkthrough.md#dbload). Tyto pokyny jsou určené pro SQL Server na virtuálním počítači Azure, ale postup pro jeho odeslání do místního SQL serveru je stejný.
 

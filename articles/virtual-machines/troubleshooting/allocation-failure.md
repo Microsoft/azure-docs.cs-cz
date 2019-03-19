@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510472"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007063"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s přidělováním při vytváření, restartování nebo změna velikosti virtuálních počítačů v Azure
 
@@ -25,7 +25,7 @@ Při vytvoření virtuálního počítače (VM), restartování zastaveno (přid
 
 **Kód chyby:**: AllocationFailed nebo ZonalAllocationFailed
 
-**Chybová zpráva**: "Přidělení se nezdařilo. V této oblasti nemáme pro požadovanou velikost virtuálního počítače dostatečnou kapacitu. Další informace o pravděpodobnost, že úspěch přidělení na http://aka.ms/allocation-guidance"
+**Chybová zpráva**: "Přidělení se nezdařilo. V této oblasti nemáme pro požadovanou velikost virtuálního počítače dostatečnou kapacitu. Další informace o pravděpodobnost, že úspěch přidělení na `https://aka.ms/allocation-guidance`"
 
 Tento článek popisuje některé běžné chyby v přidělení příčiny a navrhne mezi možné nápravy.
 
@@ -86,7 +86,7 @@ S rozšiřováním infrastrukturu Azure, můžeme nasadit hardwaru novější ge
 |Starší verze řady/velikost virtuálního počítače|Doporučené novější řady/velikost virtuálního počítače|Další informace|
 |----------------------|----------------------------|--------------------|
 |Av1-series|[Av2-series](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 nebo DSv1-series (D1 až D5)|[Dv3 nebo DSv3-series](../windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 nebo DSv1-series (D1 až D5)|[Dv3 nebo DSv3-series](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Dv1 nebo DSv1-series (D11 až D14)|[Ev3 nebo ESv3-series](../windows/sizes-memory.md#ev3-series)|
 |D15v2 nebo DS15v2|Pokud používáte model nasazení Správce theResource abyste mohli využívat větší velikosti virtuálních počítačů, zvažte přesunutí D16v3/DS16v3 nebo D32v3/DS32v3. Ty jsou navržené ke spuštění na nejnovější generace hardwaru. Pokud používáte model nasazení Resource Manageru zajistit, aby že vaše instance virtuálního počítače je izolovaná na hardware vyhrazený pro jediného zákazníka, zvažte přesunutí na nový izolovaný velikosti virtuálních počítačů, E64i_v3 nebo E64is_v3, které jsou navrženy pro spouštění na nejnovější generace hardwaru. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 

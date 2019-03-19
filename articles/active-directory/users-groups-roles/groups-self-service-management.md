@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5584e4ecc78a8805135cb3f36bd5f5cd7079129
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5122c9142eccf12193e7e429a3af5ac44fbb8fd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111323"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
 
@@ -46,8 +46,8 @@ Skupiny vytvořené v | Chování výchozí skupiny zabezpečení | Výchozí ch
 2. Vyberte **Uživatelé a skupiny** a pak vyberte **Nastavení skupin**.
 3. Nastavte možnost **Samoobslužná správa skupin povolena** na **Ano**.
 4. Nastavte možnost **Uživatelé můžou vytvářet skupiny zabezpečení** nebo **Uživatelé můžou vytvářet skupiny Office 365** na **Ano**.
-  * Pokud jsou tato nastavení povolena, všichni uživatelé ve vašem adresáři mají povoleno vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou ostatní uživatelé vytvářet žádosti o připojení k těmto skupinám. 
-  * Pokud jsou tato nastavení zakázána, uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, ve kterých figurují jako vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
+   * Pokud jsou tato nastavení povolena, všichni uživatelé ve vašem adresáři mají povoleno vytvářet nové skupiny zabezpečení a přidávat do těchto skupin členy. Tyto nové skupiny se zobrazí také všem ostatním uživatelům na přístupovém panelu. Pokud to nastavení zásad skupiny umožňuje, můžou ostatní uživatelé vytvářet žádosti o připojení k těmto skupinám. 
+   * Pokud jsou tato nastavení zakázána, uživatelé nemůžou vytvářet skupiny a nemůžou měnit existující skupiny, ve kterých figurují jako vlastníci. Můžou však stále spravovat členství v těchto skupinách a schvalovat žádosti o členství od jiných uživatelů.
 
 Pomocí možností **Uživatelé, kteří můžou spravovat skupiny zabezpečení** a **Uživatelé, kteří můžou spravovat skupiny Office 365** můžete také zajistit podrobnější řízení přístupu, který vám samoobslužná správa skupin nenabídne. Pokud je povolená možnost **Uživatelé můžou vytvářet skupiny**, mají všichni uživatelé ve vašem tenantovi povoleno vytvářet nové skupiny a přidávat do těchto skupin členy. Nastavením těchto možností na **Někteří** omezíte správu skupin pouze na omezenou skupinu uživatelů. Pokud je tento přepínač nastavený na možnost **Někteří**, musíte uživatele nejprve přidat do skupiny SSGMSecurityGroupsUsers a teprve potom budou tito uživatelé moct vytvářet nové skupiny a přidávat do nich členy. Nastavením možností **Uživatelé, kteří můžou využívat samoobslužné funkce pro skupiny zabezpečení** a **Uživatelé, kteří můžou spravovat skupiny Office 365** na **Všichni** povolíte všem uživatelům ve vašem tenantovi vytvářet nové skupiny.
 

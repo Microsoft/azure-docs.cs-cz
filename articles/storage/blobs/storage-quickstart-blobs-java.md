@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999931"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí klientské knihovny pro Javu v7
 
@@ -34,7 +34,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 * Případně můžete nainstalovat a nakonfigurovat Maven pro práci z příkazového řádku.
 
-Tato příručka používá [Eclipse](http://www.eclipse.org/downloads/) s konfigurací "Eclipse IDE pro vývojáře v jazyce Java".
+Tato příručka používá [Eclipse](https://www.eclipse.org/downloads/) s konfigurací "Eclipse IDE pro vývojáře v jazyce Java".
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
@@ -87,7 +87,7 @@ Deleting the source, and downloaded files
 Než budete pokračovat, zkontrolujte, jestli váš výchozí adresář (pro uživatele Windows je to adresář *C:\Users\<user>\AppData\Local\Temp*) obsahuje ukázkový soubor. Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Pokud porovnáte ukázkový soubor ve vašem adresáři s obsahem uloženým v úložišti objektů blob, uvidíte, že se shodují. 
 
   >[!NOTE]
-  >K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště.
+  >K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště.
 
 Po ověření souborů stiskněte klávesu **Enter** a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor **AzureApp.java** a prohlédněte si kód. 
 

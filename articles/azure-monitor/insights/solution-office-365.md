@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 003d5da137c88097d9555a9884286251af92d6f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996708"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -71,7 +71,7 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
 1. Klikněte na **Registrace nové aplikace**.
 
     ![Přidat registraci aplikace](media/solution-office-365/add-app-registration.png)
-1. Zadejte aplikace **název** a **přihlašovací adresa URL**.  Název by měl být popisný.  Použití _http://localhost_ pro adresu URL a zachovat _webové aplikace a rozhraní API_ pro **typu aplikace**
+1. Zadejte aplikace **název** a **přihlašovací adresa URL**.  Název by měl být popisný.  Použití `http://localhost` pro adresu URL a zachovat _webové aplikace a rozhraní API_ pro **typu aplikace**
     
     ![Vytvořit aplikaci](media/solution-office-365/create-application.png)
 1. Klikněte na tlačítko **vytvořit** a ověřit informace o aplikaci.
@@ -91,11 +91,11 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
     ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
 
 1. V části **vyberte oprávnění** vyberte následující možnosti pro obě **oprávnění aplikace** a **delegovaná oprávnění**:
-    - Přečíst informace o stavu služby pro organizaci
-    - Čtení dat o aktivitách pro vaši organizaci
-    - Přečíst sestavy aktivit pro organizaci
+   - Přečíst informace o stavu služby pro organizaci
+   - Čtení dat o aktivitách pro vaši organizaci
+   - Přečíst sestavy aktivit pro organizaci
 
-    ![Vybrat rozhraní API](media/solution-office-365/select-permissions.png)
+     ![Vybrat rozhraní API](media/solution-office-365/select-permissions.png)
 
 1. Klikněte na tlačítko **vyberte** a potom **provádí**.
 1. Klikněte na tlačítko **udělit oprávnění** a potom klikněte na tlačítko **Ano** žádost o ověření.
@@ -524,7 +524,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Běžná<br>Rezervováno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Normální<br>Rezervováno<br>ServicePrincipal<br>Systémový |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
@@ -705,7 +705,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 | Dotaz | Popis |
 | --- | --- |
 |Počet všech operací v rámci předplatného Office 365 |OfficeActivity &#124; summarize count() by Operation |
-|Využití webů služby SharePoint|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | Seřadit podle počtu asc|
+|Využití webů služby SharePoint|OfficeActivity &#124; kde OfficeWorkload = ~ "sharepoint" &#124; shrnout count() by SiteUrl \| seřadit podle počtu asc|
 |Operacemi přístupu k souboru jednotlivými typy uživatelů|hledání v OfficeWorkload (OfficeActivity) = ~ "azureactivedirectory" a "Test"|
 |Dejte hledat klíčové klíčovému slovu.|Typ = OfficeActivity OfficeWorkload "Test" azureactivedirectory =|
 |Externí akce monitorování na serveru Exchange|OfficeActivity &#124; kde OfficeWorkload = ~ "exchange" a ExternalAccess == true|

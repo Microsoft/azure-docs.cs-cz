@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104263"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při selhání a škálování služeb kontejneru pomocí Service Fabric
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při více a škálování služeb kontejneru pomocí Service Fabric
 
-Tento kurz je třetí částí série. V tomto kurzu se dozvíte, jak se v aplikacích Service Fabric typu kontejner zpracovává převzetí služeb při selhání. Kromě toho se naučíte škálovat kontejnery. V tomto kurzu jste:
+Tento kurz je třetí částí série. V tomto kurzu se dozvíte, jak se v aplikacích Service Fabric typu kontejner zpracovává převzetí služeb při selhání. Kromě toho se naučíte škálovat kontejnery. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Seznámili jste se s převzetím služeb při selhání kontejneru v clusteru Service Fabric.
@@ -63,16 +63,16 @@ Pokud chcete škálovat webový front-end, proveďte následující kroky:
 
 Nyní můžete škálovat počet instancí webového front-endu.
 
-3. Změňte počet na **2** a klikněte na **Škálovat službu**.
-4. Ve stromovém zobrazení klikněte na uzel **fabric:/TestContainer/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
+1. Změňte počet na **2** a klikněte na **Škálovat službu**.
+1. Ve stromovém zobrazení klikněte na uzel **fabric:/TestContainer/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
 ![sfxscaledone][sfxscaledone]
 
-Nyní je vidět, že má služba dvě instance. Ve stromovém zobrazení vidíte, na kterých uzlech jsou instance spuštěné.
+Teď je vidět, že má služba dvě instance. Ve stromovém zobrazení vidíte, na kterých uzlech jsou instance spuštěné.
 
 Touto jednoduchou úlohou správy jsme zdvojnásobili prostředky, které má naše front-end služba k dispozici pro zpracování uživatelské zátěže. Je důležité si uvědomit, že pro spolehlivý provoz služby nepotřebujete více jejích instancí. Pokud služba selže, Service Fabric zajistí v clusteru spuštění nové instance služby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jsme předvedli převzetí služeb při selhání kontejneru a také škálování aplikace. Dokončili jste následující kroky:
 

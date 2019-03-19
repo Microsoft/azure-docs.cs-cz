@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 810ccae08b540c417a0e7dfecb6ad5a8b110cd7b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108521"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -105,16 +105,16 @@ Předchozí dva kohorty byly definovány pomocí rozevíracího seznamu polí. A
     ![Kohorta uživatelů prázdné](./media/usage-cohorts/001.png)
 
     Existují tři části:
-    * Markdownu text oddílu, ve kterém popíšete kohorta podrobněji pro ostatní uživatele ve vašem týmu.
+   * Markdownu text oddílu, ve kterém popíšete kohorta podrobněji pro ostatní uživatele ve vašem týmu.
 
-    * Parametry části, kde provádět vlastní parametry, jako je **aktivity** a další pole rozevíracího seznamu v předchozích dvou příkladech.
+   * Parametry části, kde provádět vlastní parametry, jako je **aktivity** a další pole rozevíracího seznamu v předchozích dvou příkladech.
 
-    * Oddíl dotazu Tady můžete definovat kohortu pomocí dotazu analytics.
+   * Oddíl dotazu Tady můžete definovat kohortu pomocí dotazu analytics.
 
-    V části dotazu je [napsat dotaz analytics](/azure/kusto/query). Dotaz vybere určité sady řádků, které popisují, které chcete definovat kohortu. Nástroji kohorty implicitně přidá "| vytvořit souhrn podle user_Id"klauzule dotazu. Tato data je zobrazen pod dotaz v tabulce, abyste měli jistotu, že dotaz vrací výsledky.
+     V části dotazu je [napsat dotaz analytics](/azure/kusto/query). Dotaz vybere určité sady řádků, které popisují, které chcete definovat kohortu. Nástroji kohorty implicitně přidá "| vytvořit souhrn podle user_Id"klauzule dotazu. Tato data je zobrazen pod dotaz v tabulce, abyste měli jistotu, že dotaz vrací výsledky.
 
-    > [!NOTE]
-    > Pokud se dotaz, zkuste změnit velikost oddílu, který má byl vyšší a zobrazit dotaz. Animovaný obrázek GIF na začátku této části ukazuje chování změny velikosti.
+     > [!NOTE]
+     > Pokud se dotaz, zkuste změnit velikost oddílu, který má byl vyšší a zobrazit dotaz. Animovaný obrázek GIF na začátku této části ukazuje chování změny velikosti.
 
 2. Zkopírujte a vložte následující text do editoru dotazů:
 

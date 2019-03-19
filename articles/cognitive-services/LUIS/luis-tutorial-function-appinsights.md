@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878165"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098759"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Přidání služby LUIS výsledky do Application Insights a Azure functions
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
@@ -26,9 +26,9 @@ Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-* Přidejte Application Insights knihovnu použijete web app bot
-* Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
-* Dotaz Application Insights pro hlavní záměr, skóre a utterance
+> * Přidejte Application Insights knihovnu použijete web app bot
+> * Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
+> * Dotaz Application Insights pro hlavní záměr, skóre a utterance
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075761"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Sledování a zpracování událostí zabezpečení v Azure Security Center
 Řídicí panel události poskytuje přehled o počet událostí zabezpečení, které jsou shromážděné v průběhu času a seznam významné události, které mohou vyžadovat vaši pozornost.  
@@ -57,30 +57,30 @@ Přístup **události** řídicího panelu z hlavní nabídky služby Security C
 1. V části **Security Center** hlavní nabídky, vyberte **události**.
 2. **Řídicí panel události** selektor pracovního prostoru může otevřít. Pokud máte jenom jeden pracovní prostor, nezobrazí se tento selektor pracovního prostoru. Pokud máte více než jeden pracovní prostor, musíte vybrat pracovní prostor zobrazíte její podrobnosti zpracovaných událostí. V seznamu vyberete pracovní prostor, pokud máte více než jednomu pracovnímu prostoru.
 
-  ![Seznam pracovních prostorů][3]
+   ![Seznam pracovních prostorů][3]
 
 3. **Řídicí panel události** otevře se zobrazí detaily události pro vybraný pracovní prostor. Můžete zobrazit všechny události podle typu a významné události.  V tomto příkladu jsme vybrali **významné události**.
 
-  ![Významná událost][4]
+   ![Významná událost][4]
 
 4. Můžete zadat dotaz na další data v části pracovní prostor tak, že vyberete typ události. V tomto příkladu jsme vybrali **SecurityEvent**.
 
-  ![Vyberte typ události][5]
+   ![Vyberte typ události][5]
 
 5. **Prohledávání protokolů** otevře se další podrobnosti o typ události.
 
-  ![Prohledávání protokolů][6]
+   ![Prohledávání protokolů][6]
 
 ## <a name="add-a-notable-event"></a>Přidat významnou událost
 Security Center poskytuje out-of-the-box významné události. Můžete přidat významné události podle vlastní pomocí dotazu [Kusto dotazovací jazyk](../log-analytics/log-analytics-search-reference.md). Vrátí na **řídicí panel události** přidat významnou událost.
 
 1. Vyberte **přidat významnou událost**.
 
-  ![Přidat významnou událost][7]
+   ![Přidat významnou událost][7]
 
 2. **Přidejte vlastní významnou událost** otevře.  V části **zobrazovaný název**, zadejte název pro významnou událost. V části **vyhledávací dotaz**, zadejte dotaz. pro událost.
 
-  ![Zadejte dotaz.][8]
+   ![Zadejte dotaz.][8]
 
 4. Vyberte **OK**.
 
@@ -104,19 +104,19 @@ Pokud řádek pracovního prostoru:
 1. Vyberte pracovní prostor, který **vyžaduje aktualizaci**.
 2. **Hledat Upgrade** otevře. Vyberte **upgradovat**.
 
-  ![Upgradovat][10]
+   ![Upgradovat][10]
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>Upgrade na Security Center úrovně Standard
 1. Vyberte pracovní prostor s **UPGRADUJTE plán**.
 2. **Řídicí panel události** otevře. Vyberte **řídicí panel události zkuste**.
 
-  ![Vyzkoušet řídicí panel][11]
+   ![Vyzkoušet řídicí panel][11]
 
 3. V části **připojení k rozšířenému zabezpečení**, vyberte pracovní prostor, kterou upgradujete.
 4. V části **ceny**vyberte **standardní**.
 5. Vyberte **Uložit**.
 
-  ![Upgradujte na úroveň Standard][12]
+   ![Upgradujte na úroveň Standard][12]
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat řídicí panel Security Center událostí. Další informace o tom, jak funguje řídicí panel a psát dotazy, vlastní událost, najdete v tématu:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078535"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role virtuálních počítačů, virtuálních počítačů škálovat sady a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../../azure-monitor/overview.md).
@@ -50,6 +50,9 @@ Máte také možnost odeslání dat do databáze časových řad metrik Azure mo
 * Použít zástupný znak operátoru v čítače výkonu jako dimenze "Instance" na vaše metriky.  Například pokud jste shromáždili "logický disk (\*) / DiskWrites za sekundu" čítače by být schopen filtr a rozdělit na dimenzi "Instanci" do diagramů nebo upozorňovat na zápis disku/s pro jednotlivé logické disky na virtuálním počítači (například C:)
 
 Další informace o tom, jak nakonfigurovat tento jímky, najdete v tématu [dokumentace schématu Azure diagnostics.](diagnostics-extension-schema-1dot3.md)
+
+## <a name="costs"></a>Náklady
+Každý z výše uvedených mohou vám být naúčtovány náklady. Ujistěte se, že jste výzkumné a předejít neočekávané faktury.  Application Insights v Centru událostí a Azure Storage mají samostatné náklady spojené s ingestování a čas uložený. Konkrétně se služby Azure Storage bude obsahovat všechna data navždy, možná budete chtít odstranit starší data za určité časové období pro neplaťte víc.    
 
 ## <a name="versioning-and-configuration-schema"></a>Schéma vytváření verzí a konfigurace
 Zobrazit [historie verzí diagnostiky Azure a schéma](diagnostics-extension-schema.md).

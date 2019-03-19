@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ab13b0db843e5a2652ed1dd61a0e5ab5f7541244
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021981"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120257"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu pomocí uživatelského rozhraní služby Azure Data Factory vytvoříte kanál datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
@@ -134,11 +134,11 @@ Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s n
 1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
    
-      - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
+   - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
+   - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.
         
-    Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
+     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 1. Jako **Verzi** vyberte **V2**.
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných oblastech.
 1. Zaškrtněte **Připnout na řídicí panel**. 

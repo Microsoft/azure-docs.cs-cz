@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c2b0343ff472fe380750152712ca88d9ebb404e2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aae3ec8ff713959c5cc2485951aba025a6f89a1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113278"
 ---
 # <a name="validate-oem-packages"></a>Ověření balíčky výrobce OEM
 
@@ -185,30 +185,30 @@ Následující testy jsou požadovány pro ověřování balíčku výrobce OEM:
 
     Ověřování balíčků rozšíření OEM se dělí do dvou ruční kroky: Aktualizace služby Azure Stack a aktualizace pro výrobce OEM.
 
-    1. **Vyberte** "Spustit" v uživatelském rozhraní pro spuštění precheck skriptu. Toto je automatické testování, který trvá asi 5 minut na dokončení a nevyžaduje zásah uživatele.
+   1. **Vyberte** "Spustit" v uživatelském rozhraní pro spuštění precheck skriptu. Toto je automatické testování, který trvá asi 5 minut na dokončení a nevyžaduje zásah uživatele.
 
-    1. Po dokončení skriptu precheck provedení ručního kroku: **nainstalovat** nejnovější dostupné služby Azure Stack aktualizace pomocí portálu Azure Stack.
+   1. Po dokončení skriptu precheck provedení ručního kroku: **nainstalovat** nejnovější dostupné služby Azure Stack aktualizace pomocí portálu Azure Stack.
 
-    1. **Spustit** AzureStack Test na razítko. Pokud dojde k selhání, nepokračujte s testováním a kontakt [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
+   1. **Spustit** AzureStack Test na razítko. Pokud dojde k selhání, nepokračujte s testováním a kontakt [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
 
-        Informace o tom, jak spustit příkaz Test-AzureStack najdete v tématu [stavu systému ověřit Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+       Informace o tom, jak spustit příkaz Test-AzureStack najdete v tématu [stavu systému ověřit Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
 
-    1. **Vyberte** tlačítko Další"pro spuštění postcheck skriptu. Toto je automatické testování a označuje konec procesu aktualizace služby Azure Stack.
+   1. **Vyberte** tlačítko Další"pro spuštění postcheck skriptu. Toto je automatické testování a označuje konec procesu aktualizace služby Azure Stack.
 
-    1. **Vyberte** "Spustit" ke spuštění precheck skript pro aktualizaci výrobce OEM.
+   1. **Vyberte** "Spustit" ke spuštění precheck skript pro aktualizaci výrobce OEM.
 
-    1. Po dokončení předběžná kontrola provedení ručního kroku: **nainstalovat** rozšíření balíčku výrobce OEM prostřednictvím portálu.
+   1. Po dokončení předběžná kontrola provedení ručního kroku: **nainstalovat** rozšíření balíčku výrobce OEM prostřednictvím portálu.
 
-    1. **Spustit** AzureStack Test na razítko.
+   1. **Spustit** AzureStack Test na razítko.
 
-        > [!NOTE]
-        > Stejně jako dříve nepokračovat s testováním a kontaktujte [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Pokud selže. Tento krok je kritický, protože jste se uloží opětovné nasazení.
+      > [!NOTE]
+      > Stejně jako dříve nepokračovat s testováním a kontaktujte [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Pokud selže. Tento krok je kritický, protože jste se uloží opětovné nasazení.
 
-    1. **Vyberte** tlačítko Další"pro spuštění postcheck skriptu. To označuje konec krok aktualizace výrobce OEM.
+   1. **Vyberte** tlačítko Další"pro spuštění postcheck skriptu. To označuje konec krok aktualizace výrobce OEM.
 
-    1. Všechny zbývající dotazy na konci testu a **vyberte** "Odeslat".
+   1. Všechny zbývající dotazy na konci testu a **vyberte** "Odeslat".
 
-    1. To označuje konec interaktivního testu.
+   1. To označuje konec interaktivního testu.
 
 5. Zkontrolujte výsledky pro výrobce OEM ověřování balíčků rozšíření. Jakmile test proběhl úspěšně, naplánujte cloudu simulace modul pro spuštění.
 

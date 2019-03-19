@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 01/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4e9e9b76469554f5519626eed37a5b64586f5eb4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265392"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995598"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
@@ -105,18 +105,39 @@ Pomocí metody XML, je nutné restartování aplikace při změně hodnoty.
 
 Chcete-li získat další informace o tom, co se děje v rozhraní API, přidejte `<SDKLogger/>` do kořenového uzlu souboru ApplicationInsights.xml konfigurace.
 
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+
 Také můžete dát pokyn protokolovací nástroj pro výstup do souboru:
 
 ```XML
-
-    <SDKLogger type="FILE">
-      <enabled>True</enabled>
-      <UniquePrefix>JavaSDKLog</UniquePrefix>
-    </SDKLogger>
+  <SDKLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
+</SDKLogger>
 ```
 
-Soubory lze nalézt v `%temp%\javasdklogs` nebo `java.io.tmpdir` v případě serveru Tomcat.
+### <a name="spring-boot-starter"></a>Aplikace Spring Boot Starter
 
+Pokud chcete povolit protokolování sady SDK s aplikace Spring Boot pomocí Application Insights aplikace Spring Boot Starter, přidejte následující text do `application.properties` souboru.:
+
+```yaml
+azure.application-insights.logger.type=file
+azure.application-insights.logger.base-folder-path=C:/agent/AISDK
+azure.application-insights.logger.level=trace
+```
+
+### <a name="java-agent"></a>Agenta Java
+
+Povolení protokolování agenta JVM aktualizace [AI Agent.xml souboru](java-agent.md).
+
+```xml
+<AgentLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
+</AgentLogger>
+```
 
 ## <a name="the-azure-start-screen"></a>Na obrazovce start pro Azure
 **Dívám se tam na [na webu Azure portal](https://portal.azure.com). Na mapě informace něco o mé aplikace?**

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: b21d9fe7c92edef13e717399c1f7a2b0e704e583
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433480"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011555"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace brány Golden Oracle na virtuálním počítači Azure s Linuxem 
 
@@ -349,79 +349,79 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Stáhnout software Golden brány
 Chcete-li stáhnout a příprava softwaru Oracle Golden brány, proveďte následující kroky:
 
-1. Stáhněte si **fbo_ggs_Linux_x64_shiphome.zip** soubor [stránku pro stažení brány Golden Oracle](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Pod nadpisem stahování **12.x.x.x Oracle GoldenGate pro Oracle Linux x86 – x 64**, měla by existovat sadu souborů ZIP ke stažení.
+1. Stáhněte si **fbo_ggs_Linux_x64_shiphome.zip** soubor [stránku pro stažení brány Golden Oracle](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Pod nadpisem stahování **12.x.x.x Oracle GoldenGate pro Oracle Linux x86 – x 64**, měla by existovat sadu souborů ZIP ke stažení.
 
 2. Po stažení souborů ZIP na klientském počítači, zkopírujte soubory do virtuálního počítače pomocí protokolu Secure Copy (SCP):
 
-  ```bash
-  $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
-  ```
+   ```bash
+   $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
+   ```
 
 3. Přesunout soubory .zip **/ opt** složky. Potom změníte vlastníka souborů následujícím způsobem:
 
-  ```bash
-  $ sudo su -
-  # mv <folder>/*.zip /opt
-  ```
+   ```bash
+   $ sudo su -
+   # mv <folder>/*.zip /opt
+   ```
 
 4. Rozbalte soubory (instalace Linuxu rozbalte nástroj, pokud ještě není nainstalovaná):
 
-  ```bash
-  # yum install unzip
-  # cd /opt
-  # unzip fbo_ggs_Linux_x64_shiphome.zip
-  ```
+   ```bash
+   # yum install unzip
+   # cd /opt
+   # unzip fbo_ggs_Linux_x64_shiphome.zip
+   ```
 
 5. Změna oprávnění:
 
-  ```bash
-  # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
-  ```
+   ```bash
+   # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
+   ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Připravit klienta a virtuální počítač běžel x11 (pouze klienti Windows)
 Tento krok je volitelný. Tento krok přeskočit, pokud používáte klienta Linux nebo již x11 instalační program.
 
 1. Stáhněte si PuTTY a Xming do počítače s Windows:
 
-  * [Stáhněte si PuTTY](http://www.putty.org/)
-  * [Stáhněte si Xming](https://xming.en.softonic.com/)
+   * [Stáhněte si PuTTY](https://www.putty.org/)
+   * [Stáhněte si Xming](https://xming.en.softonic.com/)
 
-2.  Po instalaci klienta PuTTY, ve složce PuTTY (například C:\Program Files\PuTTY), spusťte puttygen.exe (generátor klíče PuTTY).
+2. Po instalaci klienta PuTTY, ve složce PuTTY (například C:\Program Files\PuTTY), spusťte puttygen.exe (generátor klíče PuTTY).
 
-3.  V PuTTY Key Generator:
+3. V PuTTY Key Generator:
 
-  - Chcete-li vygenerovat klíč, vyberte **generovat** tlačítko.
-  - Zkopírujte obsah klíče (**Ctrl + C**).
-  - Vyberte **uložit privátní klíč** tlačítko.
-  - Ignorovat upozornění, která se zobrazí a pak vyberte **OK**.
+   - Chcete-li vygenerovat klíč, vyberte **generovat** tlačítko.
+   - Zkopírujte obsah klíče (**Ctrl + C**).
+   - Vyberte **uložit privátní klíč** tlačítko.
+   - Ignorovat upozornění, která se zobrazí a pak vyberte **OK**.
 
-    ![Snímek obrazovky stránky PuTTY key generator](./media/oracle-golden-gate/puttykeygen.png)
+   ![Snímek obrazovky stránky PuTTY key generator](./media/oracle-golden-gate/puttykeygen.png)
 
-4.  Ve virtuálním počítači spusťte tyto příkazy:
+4. Ve virtuálním počítači spusťte tyto příkazy:
 
-  ```bash
-  # sudo su - oracle
-  $ mkdir .ssh (if not already created)
-  $ cd .ssh
-  ```
+   ```bash
+   # sudo su - oracle
+   $ mkdir .ssh (if not already created)
+   $ cd .ssh
+   ```
 
 5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah klíče v tomto souboru a pak soubor uložte.
 
-  > [!NOTE]
-  > Klíč musí obsahovat řetězce `ssh-rsa`. Obsah klíče musí být také jeden řádek textu.
-  >  
+   > [!NOTE]
+   > Klíč musí obsahovat řetězce `ssh-rsa`. Obsah klíče musí být také jeden řádek textu.
+   >  
 
 6. Spusťte PuTTY. V **kategorie** vyberte **připojení** > **SSH** > **Auth**. V **soubor privátního klíče pro ověřování** pole, přejděte na klíč, který jste vygenerovali dříve.
 
-  ![Snímek obrazovky stránky nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
+   ![Snímek obrazovky stránky nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
 
 7. V **kategorie** vyberte **připojení** > **SSH** > **X11**. Vyberte **povolit X11 předávání** pole.
 
-  ![Snímek obrazovky stránky povolit X11](./media/oracle-golden-gate/enablex11.png)
+   ![Snímek obrazovky stránky povolit X11](./media/oracle-golden-gate/enablex11.png)
 
 8. V **kategorie** podokně přejděte na **relace**. Zadejte informace o hostiteli a pak vyberte **otevřít**.
 
-  ![Snímek obrazovky stránky relace](./media/oracle-golden-gate/puttysession.png)
+   ![Snímek obrazovky stránky relace](./media/oracle-golden-gate/puttysession.png)
 
 ### <a name="install-golden-gate-software"></a>Instalace softwaru Golden brány
 
@@ -429,43 +429,43 @@ Instalace brány Golden Oracle, proveďte následující kroky:
 
 1. Přihlaste se jako oracle. (Musí být schopni se přihlásit bez zobrazování výzev k zadání hesla.) Ujistěte se, že Xming běží před zahájením instalace.
  
-  ```bash
-  $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
-  $ ./runInstaller
-  ```
+   ```bash
+   $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
+   $ ./runInstaller
+   ```
 2. Vyberte "Oracle GoldenGate pro Oracle Database 12c". Potom vyberte **Další** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_01.png)
+   ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_01.png)
 
 3. Změňte umístění softwaru. Vyberte **spustit správce** pole a zadejte umístění databáze. Pokračujte výběrem tlačítka **Next** (Další).
 
-  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_02.png)
+   ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_02.png)
 
 4. Změňte adresář inventáře a pak vyberte **Další** pokračujte.
 
-  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Na **Souhrn** obrazovky, vyberte **nainstalovat** pokračujte.
 
-  ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Snímek obrazovky stránky instalace vyberte Instalační program](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. Můžete být vyzváni ke spuštění skriptu jako "root". Pokud ano, otevřete samostatnou relaci ssh k virtuálnímu počítači, sudo do kořenového adresáře a potom spusťte skript. Vyberte **OK** pokračovat.
 
-  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Po dokončení instalace, vybrat **Zavřít** proces dokončete.
 
-  ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Snímek obrazovky stránky vyberte instalace](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby Azure na myVM1 (primární)
 
 1. Vytvořit nebo aktualizovat souboru tnsnames.ora:
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -478,7 +478,7 @@ Instalace brány Golden Oracle, proveďte následující kroky:
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -490,13 +490,13 @@ Instalace brány Golden Oracle, proveďte následující kroky:
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. Vytvoření brány Golden vlastníka a k uživatelským účtům.
 
-  > [!NOTE]
-  > Vlastník účtu musí mít předponu C ##.
-  >
+   > [!NOTE]
+   > Vlastník účtu musí mít C## předponu.
+   >
 
     ```bash
     $ sqlplus / as sysdba
@@ -510,124 +510,124 @@ Instalace brány Golden Oracle, proveďte následující kroky:
 
 3. Vytvoření brány Golden testovací uživatelský účet:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> @demo_ora_insert
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> @demo_ora_insert
+   SQL> EXIT;
+   ```
 
 4. Nakonfigurujte extrahovat soubor parametrů.
 
- Spuštění rozhraní příkazového řádku zlaté brány (ggsci):
+   Spuštění rozhraní příkazového řádku zlaté brány (ggsci):
 
-  ```bash
-  $ sudo su - oracle
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
-  Successfully logged into database  pdb1
-  GGSCI>  ADD SCHEMATRANDATA pdb1.test
-  2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
-  2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
+   ```bash
+   $ sudo su - oracle
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
+   Successfully logged into database  pdb1
+   GGSCI>  ADD SCHEMATRANDATA pdb1.test
+   2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
+   2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
 
-  GGSCI> EDIT PARAMS EXTORA
-  ```
+   GGSCI> EDIT PARAMS EXTORA
+   ```
 5. Přidejte následující k EXTRAHOVAT parametr soubor (pomocí editoru vi příkazů). Stiskněte klávesu Esc, ": QW!" Uložte soubor. 
 
-  ```bash
-  EXTRACT EXTORA
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTRAIL ./dirdat/rt  
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT 
-  LOGALLSUPCOLS
-  UPDATERECORDFORMAT COMPACT
-  TABLE pdb1.test.TCUSTMER;
-  TABLE pdb1.test.TCUSTORD;
-  ```
+   ```bash
+   EXTRACT EXTORA
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTRAIL ./dirdat/rt  
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT 
+   LOGALLSUPCOLS
+   UPDATERECORDFORMAT COMPACT
+   TABLE pdb1.test.TCUSTMER;
+   TABLE pdb1.test.TCUSTORD;
+   ```
 6. Registr extrahovat – integrované extrakce:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
 
-  GGSCI> dblogin userid C##GGADMIN, password ggadmin
-  Successfully logged into database CDB$ROOT.
+   GGSCI> dblogin userid C##GGADMIN, password ggadmin
+   Successfully logged into database CDB$ROOT.
 
-  GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
+   GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
 
-  2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
+   2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
 
-  GGSCI> exit
-  ```
+   GGSCI> exit
+   ```
 7. Nastavit kontrolní body extrakce a spustit v reálném čase extrakce:
 
-  ```bash
-  $ ./ggsci
-  GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
-  EXTRACT (Integrated) added.
+   ```bash
+   $ ./ggsci
+   GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
+   EXTRACT (Integrated) added.
 
-  GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
-  RMTTRAIL added.
+   GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
+   RMTTRAIL added.
 
-  GGSCI>  START EXTRACT EXTORA
+   GGSCI>  START EXTRACT EXTORA
 
-  Sending START request to MANAGER ...
-  EXTRACT EXTORA starting
+   Sending START request to MANAGER ...
+   EXTRACT EXTORA starting
 
-  GGSCI > info all
+   GGSCI > info all
 
-  Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+   Program     Status      Group       Lag at Chkpt  Time Since Chkpt
 
-  MANAGER     RUNNING
-  EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
-  ```
-V tomto kroku zjistíte, počáteční oznámení změny stavu, který se použije později v jiné části:
+   MANAGER     RUNNING
+   EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
+   ```
+   V tomto kroku zjistíte, počáteční oznámení změny stavu, který se použije později v jiné části:
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> SELECT current_scn from v$database;
-  CURRENT_SCN
-  -----------
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> SELECT current_scn from v$database;
+   CURRENT_SCN
+   -----------
       1857887
-  SQL> EXIT;
-  ```
+   SQL> EXIT;
+   ```
 
-  ```bash
-  $ ./ggsci
-  GGSCI> EDIT PARAMS INITEXT
-  ```
+   ```bash
+   $ ./ggsci
+   GGSCI> EDIT PARAMS INITEXT
+   ```
 
-  ```bash
-  EXTRACT INITEXT
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTASK REPLICAT, GROUP INITREP
-  TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
-  ```
+   ```bash
+   EXTRACT INITEXT
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTASK REPLICAT, GROUP INITREP
+   TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
+   ```
 
-  ```bash
-  GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
-  ```
+   ```bash
+   GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
+   ```
 
 ### <a name="set-up-service-on-myvm2-replicate"></a>Nastavení služby Azure na myVM2 (replikace)
 
 
 1. Vytvořit nebo aktualizovat souboru tnsnames.ora:
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -640,7 +640,7 @@ V tomto kroku zjistíte, počáteční oznámení změny stavu, který se použi
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -652,72 +652,72 @@ V tomto kroku zjistíte, počáteční oznámení změny stavu, který se použi
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. Vytvoření replikace účtu:
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> create user repuser identified by rep_pass container=current;
-  SQL> grant dba to repuser;
-  SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
-  SQL> connect repuser/rep_pass@pdb1 
-  SQL> EXIT;
-  ```
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> create user repuser identified by rep_pass container=current;
+   SQL> grant dba to repuser;
+   SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
+   SQL> connect repuser/rep_pass@pdb1 
+   SQL> EXIT;
+   ```
 
 3. Vytvoření brány Golden testovací uživatelský účet:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> EXIT;
+   ```
 
 4. Soubor parametrů REPLICAT replikovat změny: 
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> EDIT PARAMS REPORA  
-  ```
-  Obsah souboru parametrů REPORA:
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> EDIT PARAMS REPORA  
+   ```
+   Obsah souboru parametrů REPORA:
 
-  ```bash
-  REPLICAT REPORA
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT
-  DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;
-  ```
+   ```bash
+   REPLICAT REPORA
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT
+   DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;
+   ```
 
 5. Nastavení replikace kontrolního bodu:
 
-  ```bash
-  GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
-  GGSCI> EDIT PARAMS INITREP
+   ```bash
+   GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
+   GGSCI> EDIT PARAMS INITREP
 
-  ```
+   ```
 
-  ```bash
-  REPLICAT INITREP
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;   
-  ```
+   ```bash
+   REPLICAT INITREP
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;   
+   ```
 
-  ```bash
-  GGSCI> ADD REPLICAT INITREP, SPECIALRUN
-  ```
+   ```bash
+   GGSCI> ADD REPLICAT INITREP, SPECIALRUN
+   ```
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>Nastavení replikace (myVM1 a myVM2)
 

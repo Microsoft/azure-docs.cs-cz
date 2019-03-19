@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ab6da597457fa94c171a1e2547c1d48cf35cd0f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893046"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -51,7 +51,7 @@ Následující diagram znázorňuje, jak se dají různá prostředí Integratio
 Prostředí Azure Integration Runtime nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu.
-- Odesílání následujících aktivit transformace ve veřejné síti: Aktivita HDInsight Hive, aktivita Pig s HDInsight, aktivita MapReduce s HDInsight, aktivita HDInsight Spark, aktivita streamování HDInsight, aktivita provedení dávky služby Machine Learning, aktivity aktualizace prostředku služby Machine Learning, aktivity uložené procedury Aktivita data Lake Analytics U-SQL, vlastní aktivita .net, webová aktivita, aktivita vyhledávání a aktivita načtení metadat.
+- Odesílání následujících aktivit transformace ve veřejné síti: Aktivita HDInsight Hive, aktivita Pig s HDInsight, aktivita MapReduce s HDInsight, aktivita HDInsight Spark, aktivita streamování HDInsight, aktivita provedení dávky služby Machine Learning, aktivity aktualizace prostředku služby Machine Learning, aktivity uložené procedury Aktivita data Lake Analytics U-SQL, vlastní aktivita .NET, webová aktivita, aktivita vyhledávání a aktivita načtení metadat.
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
 Prostředí Azure Integration Runtime podporuje připojení k úložištím dat a výpočetním službám ve veřejné síti s veřejně přístupnými koncovými body. Pro prostředí Azure Virtual Network používejte prostředí Integration Runtime v místním prostředí.
@@ -69,7 +69,7 @@ Informace o vytváření a konfiguraci prostředí najdete v návodu k vytvořen
 Prostředí IR v místním prostředí nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu a úložištěm dat v privátní síti.
-- Odesílání následujících aktivit transformace proti výpočetních prostředků na místní nebo Azure Virtual Network: Aktivitu Hivu HDInsight (BYOC přineste si vlastní Cluster), aktivita Pig s HDInsight (BYOC), aktivita MapReduce s HDInsight (BYOC), aktivita HDInsight Spark (BYOC), HDInsight streamované aktivitě (BYOC), aktivita provedení dávky služby Machine Learning, Machine Learning Aktualizace aktivity prostředků, aktivita uložené procedury, aktivita Data Lake Analytics U-SQL, vlastní aktivita .net, aktivita vyhledávání a aktivita načtení metadat.
+- Odesílání následujících aktivit transformace proti výpočetních prostředků na místní nebo Azure Virtual Network: Aktivitu Hivu HDInsight (BYOC přineste si vlastní Cluster), aktivita Pig s HDInsight (BYOC), aktivita MapReduce s HDInsight (BYOC), aktivita HDInsight Spark (BYOC), HDInsight streamované aktivitě (BYOC), aktivita provedení dávky služby Machine Learning, Machine Learning Aktualizace aktivity prostředků, aktivita uložené procedury, aktivita Data Lake Analytics U-SQL, vlastní aktivita .NET, aktivita vyhledávání a aktivita načtení metadat.
 
 > [!NOTE] 
 > Prostředí Integration Runtime v místním prostředí umožňuje podporu úložišť dat, která vyžadují vlastní ovladač, jako je SAP Hana, MySQL atd.  Další informace najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).

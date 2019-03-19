@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003122"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí Windows Powershellu pro StorSimple
 
@@ -47,7 +47,7 @@ Lze použít rutinu prostředí Windows PowerShell pro StorSimple pomocí jedné
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Připojení k prostředí Windows PowerShell pro StorSimple prostřednictvím konzoly sériového portu zařízení
 
-Je možné [stáhněte si PuTTY](http://www.putty.org/) nebo podobné software pro emulaci terminálu pro připojení k prostředí Windows PowerShell pro StorSimple. Musíte nakonfigurovat PuTTY speciálně pro přístup k zařízení Microsoft Azure StorSimple. Následující témata obsahují podrobné pokyny o tom, jak konfigurace PuTTy a připojení k zařízení. Také jsou vysvětlené různé možnosti nabídky v konzole sériového portu.
+Je možné [stáhněte si PuTTY](https://www.putty.org/) nebo podobné software pro emulaci terminálu pro připojení k prostředí Windows PowerShell pro StorSimple. Musíte nakonfigurovat PuTTY speciálně pro přístup k zařízení Microsoft Azure StorSimple. Následující témata obsahují podrobné pokyny o tom, jak konfigurace PuTTy a připojení k zařízení. Také jsou vysvětlené různé možnosti nabídky v konzole sériového portu.
 
 ### <a name="putty-settings"></a>Nastavení PuTTY
 
@@ -110,8 +110,8 @@ Můžete vybrat z následujících nastavení:
    * Instalace aktualizací
    * Instalace opravy hotfix
 
-    > [!NOTE]
-    > Toto je upřednostňovanou možnost, pokud jste zapomněli heslo správce zařízení a nemůžete připojit přes možnost 1 nebo 2.
+     > [!NOTE]
+     > Toto je upřednostňovanou možnost, pokud jste zapomněli heslo správce zařízení a nemůžete připojit přes možnost 1 nebo 2.
 
 4. **Změnit jazyk** tato možnost vám umožní změnit jazyk zobrazení v rozhraní Windows PowerShell. Podporované jazyky jsou angličtina, japonština, ruština, francouzština, Jižní Koreu, španělština, italština, němčina, čínština a brazilské portugalštině.
 
@@ -159,7 +159,7 @@ Následující tabulka uvádí přehled všechny běžné úlohy správy a kompl
 
 V prostředí Windows PowerShell pro StorSimple je k dispozici rutiny nápovědy. Online a aktuální verzi této nápovědy je také k dispozici, což vám umožní aktualizovat nápovědu ve vašem systému.
 
-Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s nápovědou bude fungovat. Nápověda pro Windows PowerShell online můžete najít na stránkách TechNet Library: [skriptování v prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s nápovědou bude fungovat. Nápověda pro Windows PowerShell online najdete v knihovně TechNet: [Skriptování v prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
 
 Následuje stručný popis typů nápovědy pro toto rozhraní prostředí Windows PowerShell, včetně aktualizace v nápovědě.
 

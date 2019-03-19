@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: cb892ddf6414b270d891042c9849137f1e2fdb35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834585"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Připojení k Azure SQL Database pomocí služby Active Directory MFA
 
@@ -99,7 +99,7 @@ Další informace o Správci Azure AD a uživatelů pro službu Azure SQL Databa
 
 Správce Azure AD pro server služby SQL Database můžete spustit C# ukázkový program. Uživatele služby Azure AD můžete spustit program, pokud jsou v databázi. Správce Azure AD SQL nebo uživatele Azure AD, který v databázi již existuje a má `ALTER ANY USER` oprávnění v databázi můžete přidat uživatele.
 
-Můžete přidat uživatele do databáze s SQL [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=sql-server-2017) příkazu. Například, `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
+Můžete přidat uživatele do databáze s SQL [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) příkazu. Například, `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
 Další informace najdete v tématu [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database, mi nebo SQL Data Warehouse](sql-database-aad-authentication.md).
 
@@ -126,7 +126,7 @@ Pro C# k úspěšnému spuštění programu, je potřeba přiřadit statická po
 | Statické pole název | Příklad hodnoty | Pokud na webu Azure portal |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **SQL servery** > **filtrovat podle názvu** |
-| AzureAD_UserID | auser@abc.onmicrosoft.com | **Azure Active Directory** > **uživatele** > **nový uživatel typu Host** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Azure Active Directory** > **uživatele** > **nový uživatel typu Host** |
 | Initial_DatabaseName | "myDatabase" | **SQL servery** > **databáze SQL** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** > **registrace aplikací** > **hledat podle názvu** > **ID aplikace** |
 | RedirectUri | nový identifikátor Uri ("https://mywebserver.com/") | **Azure Active Directory** > **registrace aplikací** > **hledat podle názvu** > *[Your-App-regis]*  >  **Nastavení** > **RedirectURIs**<br /><br />Pro účely tohoto článku libovolnou platnou hodnotu je v pořádku pro identifikátor URI pro přesměrování, jak se tady nepoužívá. |
@@ -342,5 +342,7 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 ## <a name="next-steps"></a>Další postup
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 - [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

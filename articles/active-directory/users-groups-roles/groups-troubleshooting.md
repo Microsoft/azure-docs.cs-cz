@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1210360690384b07e6d88007ccd118731ecce0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897669"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Odstraňovat potíže a řešit problémy skupiny
 
@@ -28,15 +28,15 @@ ms.locfileid: "57405432"
 Chcete-li zakázat vytvoření skupiny pro uživatele bez oprávnění správce v prostředí Powershell:
 1. Ověřte, že uživatelé bez oprávnění správce můžou vytvářet skupiny:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Vrátí-li `UsersPermissionToCreateGroupsEnabled : True`, pak uživatelé bez oprávnění správce můžou vytvářet skupiny. Chcete zakázat tuto funkci:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
 
 <br/>**Zobrazila se mi maximální počet skupin povolena Chyba při pokusu o vytvoření dynamické skupiny v prostředí Powershell**<br/>
 Pokud se zobrazí zpráva v prostředí Powershell, která označuje _dynamická skupina zásady maximální povolený počet skupin dosaženo_, to znamená, že jste dosáhli maximálního limitu pro dynamické skupiny ve vašem tenantovi. Maximální počet dynamické skupiny na tenanta je 5 000.
@@ -47,7 +47,7 @@ Vytvářet žádné nové dynamické skupiny, budete nejdřív muset odstraňte 
 
 **Mohu konfigurovat pravidlo pro skupinu, ale aktualizovat žádné členství ve skupině**<br/>
 1. Ověřte hodnoty pro uživatele nebo zařízení atributy v pravidle. Ujistěte se, že uživatelé, kteří splňují pravidla. Pro zařízení zkontrolujte vlastnosti zařízení, aby všechny synchronizované atributy obsahují očekávané hodnoty.<br/>
-2. Zkontrolujte členství zpracování stavu potvrzení, pokud je kompletní. Můžete zkontrolovat [členství stav zpracování](\groups-create-rule.md#check-processing-status-for-a-rule) a datum poslední aktualizace na **přehled** stránce pro skupinu.
+2. Zkontrolujte členství zpracování stavu potvrzení, pokud je kompletní. Můžete zkontrolovat [členství stav zpracování](groups-create-rule.md#check-processing-status-for-a-rule) a datum poslední aktualizace na **přehled** stránce pro skupinu.
 
 Pokud vše vypadá v pořádku, počkejte prosím chvíli se skupina naplní. V závislosti na velikosti tenanta může první naplnění skupiny nebo její naplnění po změně pravidel trvat až 24 hodin.
 

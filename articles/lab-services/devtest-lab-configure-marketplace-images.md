@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 2bf059b9ebf73f6ea801b8e5a5440baa2e6c19c4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0375713c4881c0b73b91fc07bda3ceac2dbc620
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249604"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093486"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení image Azure Marketplace ve službě Azure DevTest Labs
 DevTest Labs podporuje vytváření virtuálních počítačů založených na imagích Azure Marketplace v závislosti na tom, jak jste nakonfigurovali Image Azure Marketplace pro použití ve vaší laboratoři. Tento článek ukazuje, jak určit, které případně Image Azure Marketplace lze použít při vytváření virtuálních počítačů v testovacím prostředí. Tím se zajistí, že váš tým má přístup pouze k Image Marketplace, které potřebují. 
@@ -36,7 +36,7 @@ DevTest Labs podporuje vytváření virtuálních počítačů založených na i
    * Obrázek použije ke zřízení virtuálních počítačů, Azure Resource Manageru **a**
    * Na obrázku nevyžaduje, aby zakoupení dalších licenčního plánu
      
-    Pokud chcete povolit se žádné Image, nebo chcete zadat imagí, které je možné, vyberte **ne**.
+     Pokud chcete povolit se žádné Image, nebo chcete zadat imagí, které je možné, vyberte **ne**.
      
      ![Možnost, povolíte všechny Image Marketplace, které má být použit jako základní Image pro virtuální počítače](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
 7. Pokud vyberete **ne** na předchozí krok **povolené Image/vybrat všechny** zaškrtávací políčko je povolená. 
@@ -44,7 +44,7 @@ DevTest Labs podporuje vytváření virtuálních počítačů založených na i
    * Vyberte Image Azure Marketplace, které chcete povolit vytváření virtuálních počítačů jednotlivě zaškrtnutím políčka odpovídající každé image.
    * Pokud už nechcete, aby všechny Image Azure Marketplace, který se má použít v testovacím prostředí, vyberte ze seznamu žádnou akci.
    
-    ![Můžete určit, které Image Azure Marketplace můžete použít jako základní Image pro virtuální počítače](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
+     ![Můžete určit, které Image Azure Marketplace můžete použít jako základní Image pro virtuální počítače](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

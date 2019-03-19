@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 915ccc60216f3f206bcdc53825decac4d6d020d0
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 0fefe01e413e30e4aa3c1fa90de77cbdece39c38
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001691"
 ---
 # <a name="sql-database-audit-log-format"></a>Formát protokolu auditování databáze SQL
 
@@ -35,7 +35,7 @@ Například pro databáze `Database1` na `Server1` tady je možné platnou cestu
 
 ### <a name="event-hub"></a>Centrum událostí
 
-Události auditu se zapisují do obor názvů a Centrum událostí, který byl určen během konfigurace auditování a jsou zachyceny v těle [Apache Avro](http://avro.apache.org/) události a uložit pomocí formátování JSON s kódováním UTF-8. Čtení protokolů auditu, můžete použít [nástroje Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobné nástroje, které zpracovávají tento formát.
+Události auditu se zapisují do obor názvů a Centrum událostí, který byl určen během konfigurace auditování a jsou zachyceny v těle [Apache Avro](https://avro.apache.org/) události a uložit pomocí formátování JSON s kódováním UTF-8. Čtení protokolů auditu, můžete použít [nástroje Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobné nástroje, které zpracovávají tento formát.
 
 ### <a name="log-analytics"></a>Log Analytics
 

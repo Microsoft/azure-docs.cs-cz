@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4067a54326d0a4a8ab9029dd4afceea384cf6aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188626"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107742"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak přidat uživatele s licencí pro skupinu pro licencování v Azure Active Directory
 
@@ -39,17 +39,17 @@ Nejdůležitějším principem brát v úvahu je, že byste se měli vyhnout sit
 
 4. Ověřte, že licence byla použita pro všechny uživatele v těchto skupinách. Tuto aplikaci můžete udělat tak, že zkontrolujete stav zpracování pro každou skupinu a kontrolou protokolů auditu.
 
-  - Můžete místo zaškrtnutí jednotlivých uživatelů podle jejich podrobnosti licence. Uvidíte, že mají stejné licence přiřazené "přímo" a "dědí" ze skupin.
+   - Můžete místo zaškrtnutí jednotlivých uživatelů podle jejich podrobnosti licence. Uvidíte, že mají stejné licence přiřazené "přímo" a "dědí" ze skupin.
 
-  - Můžete spustit skript prostředí PowerShell, který [ověřte přiřazení licencí uživatelům](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Můžete spustit skript prostředí PowerShell, který [ověřte přiřazení licencí uživatelům](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-  - Pokud licenci na stejný produkt je přiřazená uživateli i přímo nebo prostřednictvím skupiny, pouze jedna licence se spotřebovává uživatelem. Proto žádné další licence jsou potřebná k provedení migrace.
+   - Pokud licenci na stejný produkt je přiřazená uživateli i přímo nebo prostřednictvím skupiny, pouze jedna licence se spotřebovává uživatelem. Proto žádné další licence jsou potřebná k provedení migrace.
 
 5. Ověřte, že se žádná přiřazení licencí se nezdařilo kontrolou každé skupiny uživatelů v chybovém stavu. Další informace najdete v tématu [určení a řešení problémů pro skupinu](licensing-groups-resolve-problems.md).
 
 6. Zvažte odebrání původní přímého přiřazení můžete chtít provést postupně, "vlny", nejprve sledovat výsledek na určitou podskupinu uživatelů.
 
-  Původní přímých přiřazení by mohl nechat na uživatele, ale při jejich licencované skupiny nechte uživatele, zůstanou původní licence, který může být nechcete.
+   Původní přímých přiřazení by mohl nechat na uživatele, ale při jejich licencované skupiny nechte uživatele, zůstanou původní licence, který může být nechcete.
 
 ## <a name="an-example"></a>Příklad
 
@@ -61,25 +61,25 @@ Tady je proces migrace by mohla vypadat:
 
 2. Pro každou skupinu potvrďte, že byla dokončena přiřazení licencí pro všechny uživatele. Přejděte do okna pro každou skupinu, vyberte **licence**a zjistit stav zpracování v horní části **licence** okno.
 
-  - Vyhledejte "Licence nejnovější změny se použily pro všechny uživatele" potvrďte zpracování bylo dokončeno.
+   - Vyhledejte "Licence nejnovější změny se použily pro všechny uživatele" potvrďte zpracování bylo dokončeno.
 
-  - Hledejte v horní části o všichni uživatelé, pro které licence možná nebyl přiřazen úspěšně oznámení. Jsme dostatek licencí pro některé uživatele? Mají někteří uživatelé konfliktní licence skladových položek, které jim zabránit dědění licencí skupiny?
+   - Hledejte v horní části o všichni uživatelé, pro které licence možná nebyl přiřazen úspěšně oznámení. Jsme dostatek licencí pro některé uživatele? Mají někteří uživatelé konfliktní licence skladových položek, které jim zabránit dědění licencí skupiny?
 
 3. Přímé zkontrolujte někteří uživatelé ověřit, že mají obě s přímým přístupem a skupinových licence použít. Přejděte do okna pro uživatele, vyberte **licence**a zkontrolovat stav licencí.
 
-  - Tento stav byl očekáván typ user je během migrace:
+   - Tento stav byl očekáván typ user je během migrace:
 
       ![byl očekáván typ user stavu](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-  Tím potvrdíte, že uživatel má licence s přímým přístupem a zděděná. Vidíme, že oba **EMS** a **E3** jsou přiřazeny.
+   Tím potvrdíte, že uživatel má licence s přímým přístupem a zděděná. Vidíme, že oba **EMS** a **E3** jsou přiřazeny.
 
-  - Vyberte každou licenci k zobrazení podrobností o povolené služby. To lze použít ke kontrole, pokud licence s přímým přístupem a skupinových povolit přesně stejné plánů služeb pro uživatele.
+   - Vyberte každou licenci k zobrazení podrobností o povolené služby. To lze použít ke kontrole, pokud licence s přímým přístupem a skupinových povolit přesně stejné plánů služeb pro uživatele.
 
       ![Zkontrolujte plány služeb](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Po potvrzení, zda jsou ekvivalentní s přímým přístupem a skupiny licencí, můžete začít odebrání přímé licencí od uživatelů. Můžete otestovat tak, že odeberete pro jednotlivé uživatele na portálu a potom spustit skripty pro automatizaci nechat na nich odebrat hromadně. Tady je příklad stejného uživatele s licencí s přímým přístupem odebrat na portálu. Všimněte si, že stav licence zůstane beze změny, ale už vidíme přímých přiřazení.
 
-  ![přímé licence byly odebrány](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+   ![přímé licence byly odebrány](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 
 ## <a name="next-steps"></a>Další postup

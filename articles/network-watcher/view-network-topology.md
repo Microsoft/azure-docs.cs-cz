@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809891"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112734"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie služby Azure virtual network
 
@@ -42,7 +42,7 @@ Můžete použít [webu Azure portal](#azure-portal), [rozhraní příkazového 
     - V rámci stejné skupiny prostředků a oblasti jako *myVnet* virtuální sítě. Například skupinu zabezpečení sítě, který existuje ve skupině prostředků než *MyResourceGroup*, není zobrazený, i když je skupina zabezpečení sítě přidružená k podsíti v *MyVnet* virtuální sítě .
     - V průběhu nebo přidružit k prostředkům v rámci, *myVnet* virtuální sítě. Například skupinu zabezpečení sítě, která není přidružená k podsíti nebo síťovému rozhraní ve *myVnet* virtuální sítě není zobrazený, i v případě, že se skupina zabezpečení sítě *MyResourceGroup* Skupina prostředků.
 
-  Topologie na obrázku je pro virtuální síť vytvořili po nasazení **směrování provozu přes síťové virtuální zařízení skript ukázku**, které můžete nasadit pomocí [rozhraní příkazového řádku Azure](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), nebo [Powershellu](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+   Topologie na obrázku je pro virtuální síť vytvořili po nasazení **směrování provozu přes síťové virtuální zařízení skript ukázku**, které můžete nasadit pomocí [rozhraní příkazového řádku Azure](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), nebo [Powershellu](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 6. Vyberte **stáhnout typologii** stáhnout jako soubor upravovat ve formátu svg.
 
@@ -79,7 +79,7 @@ Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-per
 
     Informace o topologii dochází pouze za prostředky, které jsou ve stejné skupině prostředků jako *MyResourceGroup* skupinu prostředků a stejné oblasti jako sledovací proces sítě. Například skupinu zabezpečení sítě, který existuje ve skupině prostředků než *MyResourceGroup*, není zobrazený, i když je skupina zabezpečení sítě přidružená k podsíti v *MyVnet* virtuální sítě .
 
-  Další informace o vztazích a [vlastnosti](#properties) ve vrácené výstupu. Pokud nemáte k dispozici k zobrazení topologie pro existující virtuální síť, můžete vytvořit jednu [směrování provozu přes síťové virtuální zařízení](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ukázkový skript. Chcete-li zobrazit diagram topologie a stáhněte ho v souboru upravovat, použijte [portál](#azure-portal).
+   Další informace o vztazích a [vlastnosti](#properties) ve vrácené výstupu. Pokud nemáte k dispozici k zobrazení topologie pro existující virtuální síť, můžete vytvořit jednu [směrování provozu přes síťové virtuální zařízení](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ukázkový skript. Chcete-li zobrazit diagram topologie a stáhněte ho v souboru upravovat, použijte [portál](#azure-portal).
 
 ## <a name = "powershell"></a>Zobrazení topologie – PowerShell
 
@@ -123,7 +123,7 @@ Vámi používaný účet musí mít potřebná [oprávnění](required-rbac-per
 
    Informace o topologii dochází pouze za prostředky, které jsou ve stejné skupině prostředků jako *MyResourceGroup* skupinu prostředků a stejné oblasti jako sledovací proces sítě. Například skupinu zabezpečení sítě, který existuje ve skupině prostředků než *MyResourceGroup*, není zobrazený, i když je skupina zabezpečení sítě přidružená k podsíti v *MyVnet* virtuální sítě .
 
-  Další informace o vztazích a [vlastnosti](#properties) ve vrácené výstupu. Pokud nemáte k dispozici k zobrazení topologie pro existující virtuální síť, můžete vytvořit jednu [směrování provozu přes síťové virtuální zařízení](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ukázkový skript. Chcete-li zobrazit diagram topologie a stáhněte ho v souboru upravovat, použijte [portál](#azure-portal).
+   Další informace o vztazích a [vlastnosti](#properties) ve vrácené výstupu. Pokud nemáte k dispozici k zobrazení topologie pro existující virtuální síť, můžete vytvořit jednu [směrování provozu přes síťové virtuální zařízení](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ukázkový skript. Chcete-li zobrazit diagram topologie a stáhněte ho v souboru upravovat, použijte [portál](#azure-portal).
 
 ## <a name="relationships"></a>Relace
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 4b7e2a8d5eb981fc30dd14fed8f7efcfc094af0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110881"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
 
@@ -148,10 +148,10 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 
     * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že ji by měl vrátit pouze data ze souborů s koncovkou. log.
 
-  > [!NOTE]  
-  > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat operaci MapReduce nebo procesu.
-  >
-  > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
+   > [!NOTE]  
+   > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat operaci MapReduce nebo procesu.
+   >
+   > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
 
     Výstup tohoto příkazu se podobá následujícímu textu:
 
@@ -198,12 +198,12 @@ Pomocí následujících kroků vytvořte soubor a pak ji spustit pomocí Beelin
 
     Tyto příkazy provádět následující akce:
 
-    * **Vytvoření tabulky IF NOT EXISTS** – Pokud tabulka již neexistuje, vytvoří se. Vzhledem k tomu, **externí** – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou kompletně spravované pomocí Hive.
-    * **ULOŽENÉ jako ORC** – ukládá data ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Formát ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
-    * **VLOŽIT PŘEPSÁNÍ... Vyberte** -vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]**, pak vloží data do **nepřenesl** tabulky.
+   * **Vytvoření tabulky IF NOT EXISTS** – Pokud tabulka již neexistuje, vytvoří se. Vzhledem k tomu, **externí** – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou kompletně spravované pomocí Hive.
+   * **ULOŽENÉ jako ORC** – ukládá data ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Formát ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
+   * **VLOŽIT PŘEPSÁNÍ... Vyberte** -vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]**, pak vloží data do **nepřenesl** tabulky.
 
-    > [!NOTE]  
-    > Na rozdíl od externích tabulek vyřadit interní tabulku odstraní podkladová data.
+     > [!NOTE]  
+     > Na rozdíl od externích tabulek vyřadit interní tabulku odstraní podkladová data.
 
 3. Chcete-li uložit soubor, použijte **Ctrl**+**_X**, zadejte **Y**a nakonec **Enter**.
 

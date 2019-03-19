@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: c64c3bddd3bd2fc674e0444fba85a21c9d36404b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839725"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Vysvětlení podmínek na faktuře smlouvy zákazníka se společností Microsoft
 
@@ -105,7 +105,7 @@ Pokud máte ve vašem vyúčtování služeb třetích stran, název a adresu ka
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další postup
 

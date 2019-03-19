@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d1e896aee4ba699704ce01e0cff8210d53700993
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265024"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899804"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -37,7 +37,7 @@ Můžete shromažďovat:
 * Předdefinované sady čítačů výkonu operačního systému a protokoly událostí nebo je můžete určit, které se mají shromažďovat. 
 * Všechny požadavky a/nebo neúspěšné požadavky na webový server služby IIS
 * Výstupní protokoly trasování aplikace .NET
-* Trasování událostí pro Windows (ETW) 
+* Události pro Trasování událostí pro Windows (ETW) 
 * Shromažďovat události protokolu syslog  
 * Výpisy stavu systému 
 
@@ -52,7 +52,7 @@ Agenta diagnostiky Azure byste měli použít, když chcete:
 * Nakonfigurujte Log Analytics pro import metrik a protokolování data shromážděná ze služby Cloud Services, klasické virtuální počítače, a uzly Service Fabricu uložených v účtu služby Azure storage.
 
 ## <a name="log-analytics-agent"></a>Agenta log Analytics
-U rozšířené monitorování, které je potřeba shromažďovat více než metriky a podmnožinu protokolů, se vyžaduje agenta Log Analytics pro Windows a Linux. Agenta Log Analytics byla vyvinuta pro komplexní správu napříč místní fyzické a virtuální počítače, System Center Operations Manager monitoruje počítače a hostované virtuální počítače v jiných cloudech. Agenti Windows a Linux se připojit k pracovnímu prostoru Log Analytics ke shromažďování dat monitorování na základě řešení i vlastní zdroje dat, které nakonfigurujete.
+U rozšířené monitorování, které je potřeba shromažďovat více než metriky a podmnožinu protokolů, se vyžaduje agenta Log Analytics pro Windows (také označované jako Microsoft Monitoring Agent (MMA)) a Linux. Agenta Log Analytics byla vyvinuta pro komplexní správu napříč místní fyzické a virtuální počítače, System Center Operations Manager monitoruje počítače a hostované virtuální počítače v jiných cloudech. Agenti Windows a Linux se připojit k pracovnímu prostoru Log Analytics ke shromažďování dat monitorování na základě řešení i vlastní zdroje dat, které nakonfigurujete.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

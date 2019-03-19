@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 1/11/2019
+ms.date: 3/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5552ca80059b4aa7ef96caf7984b4c15ec177d38
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 96bd9e679e1766e87a0bb807204df744bb3cca95
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316587"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897703"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -93,6 +93,8 @@ Ve službě application gateway se podporuje jenom jednu veřejnou IP adresu.
 
 Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití.
 Například, pokud služby application gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě application gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
+
+Jako nejlepší postup použijte aspoň o velikosti/28 velikost podsítě. To vám dává 11 použitelné adresy. Pokud zatížení aplikace vyžaduje víc než 10 instancí, měli byste zvážit možnost/27 nebo/26 velikost podsítě.
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Otázka: Je možné nasadit více než jeden prostředek aplikační brány pro jednu podsíť?
 

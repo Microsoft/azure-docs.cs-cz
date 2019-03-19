@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864464"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57977407"
 ---
 # <a name="graph-search-method"></a>Metoda prohledávání grafů
 
@@ -29,6 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>Parametry žádosti  
+
 Název     | Hodnota | Povinné?  | Popis
 -----------|-----------|---------|--------
 **Režim**       | Textový řetězec | Ano | Název režimu, který chcete použít. Hodnota je buď *json* nebo *lambda*.
@@ -45,7 +46,9 @@ Pro *json* hledání textu POST je objekt JSON. Objekt JSON popisuje vzor cesty 
 Pro *lambda* hledání textu POST je řetězec ve formátu prostého textu. Tělo POST je řetězec LIKQ lambda dotazu, což je jeden příkaz jazyka C# (najdete v článku [specifikace řetězec dotazu](LambdaSearchSyntax.md) pro *lambda* vyhledávání). 
 
 <br>
+
 ## <a name="response-json"></a>Odpověď (JSON)
+
 Název | Popis
 -------|-----   
 **výsledky** | Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje hodnoty požadovaných atributů. Toto pole je k dispozici v případě, že byla žádost úspěšně zpracována.
@@ -55,6 +58,7 @@ Název | Popis
 Pokud dotaz nelze zpracovat v rámci _800 ms_, _vypršení časového limitu_ se vrátí chyba. 
 
 <br>
+
 #### <a name="example"></a>Příklad:
 
 ##### <a name="json-search"></a>Hledání JSON

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 394cb2d77d77772bd7ead82f0937a186472f5229
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: df7e7b426a8c85c8051d7f588c706a6f8811e183
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085741"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Používejte IoT DevKit AZ3166 se službou Azure Functions a Cognitive Services, aby převaděč jazyka
 
@@ -50,55 +50,55 @@ K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 1. V nástroji VS Code, klikněte na tlačítko `F1`zadejte a vyberte **Workbench zařízení Azure IoT: Zřízení služby Azure...** . ![Zřízení služby Azure](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. Postupujte podle kroků k dokončení zřizování Azure IoT Hub a Azure Functions.
-  ![Postup zřizování](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
+   ![Postup zřizování](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-  Poznamenejte si název zařízení Azure IoT Hub, kterou jste vytvořili.
+   Poznamenejte si název zařízení Azure IoT Hub, kterou jste vytvořili.
 
 1. Otevřít `Functions\DevKitTranslatorFunction.cs` a aktualizujte následující řádky kódu s názvem zařízení a klíč Speech Service, které jste si poznamenali.
-  ```csharp
-  // Subscription Key of Speech Service
-  const string speechSubscriptionKey = "";
+   ```csharp
+   // Subscription Key of Speech Service
+   const string speechSubscriptionKey = "";
 
-  // Region of the speech service, see https://docs.microsoft.com/azure/cognitive-services/speech-service/regions for more details.
-  const string speechServiceRegion = "";
+   // Region of the speech service, see https://docs.microsoft.com/azure/cognitive-services/speech-service/regions for more details.
+   const string speechServiceRegion = "";
 
-  // Device ID
-  const string deviceName = "";
-  ```
+   // Device ID
+   const string deviceName = "";
+   ```
 
 1. Klikněte na tlačítko `F1`zadejte a vyberte **Workbench zařízení Azure IoT: Nasazení do Azure...** . Pokud VS Code požádá o potvrzení pro opětovné nasazení, klikněte na tlačítko **Ano**.
-  ![Nasazení upozornění](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
+   ![Nasazení upozornění](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
 1. Ujistěte se, že je nasazení úspěšné.
-  ![Úspěšné nasazení](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
+   ![Úspěšné nasazení](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
 1. Na webu Azure portal, přejděte na **aplikace Function App** části, najít aplikace funkcí Azure právě vytvořili. Klikněte na tlačítko `devkit_translator`, pak klikněte na tlačítko **<> / získat adresu URL funkce** zkopírujte adresu URL.
-  ![Zkopírujte adresu URL funkce](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
+   ![Zkopírujte adresu URL funkce](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
 
 1. Vložte adresu URL do `azure_config.h` souboru.
-  ![Konfigurace Azure](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-config.png)
+   ![Konfigurace Azure](media/iot-hub-arduino-iot-devkit-az3166-translator/azure-config.png)
 
-  > [!NOTE]
-  > Pokud aplikace Function app nebude správně fungovat, zaškrtněte toto políčko [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) části k jeho vyřešení.
+   > [!NOTE]
+   > Pokud aplikace Function app nebude správně fungovat, zaškrtněte toto políčko [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq#compilation-error-for-azure-function) části k jeho vyřešení.
 
 ## <a name="build-and-upload-device-code"></a>Vytvoření a nahrání kód zařízení
 
 1. Přepnout DevKit k **režim konfigurace** podle:
-  * Podržte tlačítko **A**.
-  * Stisknutím a uvolněním **resetování** tlačítko.
+   * Podržte tlačítko **A**.
+   * Stisknutím a uvolněním **resetování** tlačítko.
 
-  Se zobrazí na obrazovce se zobrazí DevKit ID a **konfigurace**.
+   Se zobrazí na obrazovce se zobrazí DevKit ID a **konfigurace**.
 
-  ![Režim konfigurace DevKit](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
+   ![Režim konfigurace DevKit](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
 1. Klikněte na tlačítko `F1`zadejte a vyberte **Workbench zařízení Azure IoT: Konfigurace nastavení zařízení... > připojovací řetězec zařízení Config**. Vyberte **vyberte připojovací řetězec zařízení IoT Hub** k jeho konfiguraci DevKit.
-  ![Konfigurace připojovacího řetězce](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
+   ![Konfigurace připojovacího řetězce](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. Po úspěšném dokončení se zobrazí oznámení.
-  ![Nakonfigurovat připojovací řetězec úspěch](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
+   ![Nakonfigurovat připojovací řetězec úspěch](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
 
 1. Klikněte na tlačítko `F1` znovu, zadejte a vyberte **Workbench zařízení Azure IoT: Nahrát kód zařízení**. Spustí se kompilace a nahrajte kód do DevKit.
-  ![Nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
+   ![Nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
 
 ## <a name="test-the-project"></a>Testování projektu
 

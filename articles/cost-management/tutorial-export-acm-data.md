@@ -1,21 +1,21 @@
 ---
 title: 'Kurz: Vytvoření a správa exportovaných dat ze služby Azure Cost Management | Microsoft Docs'
-description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
+description: V tomto článku se dozvíte, jak můžete vytvořit a spravovat exportovaná data Azure Cost Management, takže ho můžete použít v externích systémech.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 5c33538513388a4093a205b44a1e049072402179
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337587"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014130"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaná data
 
@@ -45,9 +45,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-daily-export"></a>Vytvořit každodenní export
 
-Správa nákladů a fakturace &gt; Cost Management &gt; vyberte předplatné nebo skupinu prostředků v předplatném &gt; Exportovat &gt; **Přidat**.
+Vytvářeli a prohlíželi exportování dat nebo naplánovat export, otevřete v Azure portal a vyberte požadovaný obor **analýza nákladů** v nabídce. Například, přejděte na **předplatná**, vyberte předplatné, ze seznamu a pak vyberte **analýza nákladů** v nabídce. V horní části stránky analýzy nákladů, klikněte na položku **exportovat** a pak zvolte možnost exportu. Klikněte například na **naplánovat export**. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
-Zadejte název pro export, vyberte **denní export náklady za měsíc k datu** možnost. Klikněte na **Další**.
+Klikněte na tlačítko **přidat**, zadejte název pro export a pak vyberte **denní export náklady za měsíc k datu** možnost. Klikněte na **Další**.
 
 ![Nový příklad pro export zobrazující export typu](./media/tutorial-export-acm-data/basics_exports.png)
 

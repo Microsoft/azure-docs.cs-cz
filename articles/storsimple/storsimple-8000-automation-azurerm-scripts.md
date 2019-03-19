@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4184d3605c464b5da495de0698155dda1ae4e474
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b7cc47c449b91693831dda74bf987f595fe65681
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438707"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997875"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití skriptů založených na Azure Resource Manageru SDK ke správě zařízení StorSimple
 
@@ -77,7 +77,7 @@ Skript, které v tomto příkladu obsahuje seznam všech úloh na zařízení St
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Stáhněte si rozhraní příkazového řádku NuGet](http://www.nuget.org/downloads) v rámci složky vytvořené v předchozím kroku. Existují různé verze _nuget.exe_. Zvolte verzi odpovídající sady SDK. Každý odkaz ke stažení odkazuje přímo _.exe_ souboru. Nezapomeňte klikněte pravým tlačítkem a uložte soubor do počítače, spíše než jeho spuštění v prohlížeči.
+2. [Stáhněte si rozhraní příkazového řádku NuGet](https://www.nuget.org/downloads) v rámci složky vytvořené v předchozím kroku. Existují různé verze _nuget.exe_. Zvolte verzi odpovídající sady SDK. Každý odkaz ke stažení odkazuje přímo _.exe_ souboru. Nezapomeňte klikněte pravým tlačítkem a uložte soubor do počítače, spíše než jeho spuštění v prohlížeči.
 
     Můžete také spustit následující příkaz ke stažení a uložení skriptu ve stejné složce, kterou jste vytvořili dříve.
     

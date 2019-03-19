@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55205996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086305"
 ---
 # <a name="how-to-use-version-tagging"></a>Jak používat označování verzí
 
@@ -67,9 +67,9 @@ Vytvoříme jednu akci pro verze 1.
 
 Nyní jsme budete označit jako "Verze 1" z modelu.
 
-4. Na levém panelu klikněte na "nastavení" a potom klikněte na ![](../media/tutorial18_version_tags.PNG)"Verze Tags" ikonu zobrazíte `New Tag` tlačítko, které by měl kliknete.
+1. Na levém panelu klikněte na "nastavení" a potom klikněte na ![](../media/tutorial18_version_tags.PNG)"Verze Tags" ikonu zobrazíte `New Tag` tlačítko, které by měl kliknete.
     - Pojmenujte ho "Verze 1"
-4. V "Live značka" rozevírací nabídka vyberte "verze 1".  
+1. V "Live značka" rozevírací nabídka vyberte "verze 1".  
     - Kanály pomocí této robota nyní použije "Verze 1" z našeho modelu.
     - Entit, akce a dialogová okna trénování modelu tato verze 1 můžete již změnit.
     - Pokud vyberete možnost "Verze 1" jako "Úpravy značky" bude pouze zobrazení modelu a nelze ji upravit.

@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452364"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086713"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 Pro přípravu jeden nebo více pevných disků pro úlohu importu, postupujte podle těchto kroků:
 
--   Identifikovat data, která mají naimportovat do služby Blob service
+- Identifikovat data, která mají naimportovat do služby Blob service
 
--   Určení cílové virtuální adresáře a objekty BLOB ve službě Blob service
+- Určení cílové virtuální adresáře a objekty BLOB ve službě Blob service
 
--   Určit, kolik jednotek, které budete potřebovat
+- Určit, kolik jednotek, které budete potřebovat
 
--   Kopírovat data na všech pevných disků
+- Kopírovat data na všech pevných disků
 
- Ukázkový pracovní postup v tématu [ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
+  Ukázkový pracovní postup v tématu [ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
 
 ## <a name="identify-the-data-to-be-imported"></a>Identifikovat data, která mají být importována
  Prvním krokem k vytvoření úlohy importu je určit, které adresářů a souborů, které chcete importovat. To může být seznam adresářů, seznam jedinečných souborů nebo kombinaci těchto dvou. Po zahrnuté adresáře se budou všechny soubory v adresáři a jeho podadresářích součástí úlohy importu.
@@ -51,11 +51,11 @@ Pro přípravu jeden nebo více pevných disků pro úlohu importu, postupujte p
 ## <a name="determine-how-many-drives-are-needed"></a>Určit, kolik jednotek jsou potřeba.
  Dále je třeba určit:
 
--   Počet pevných disků potřebě ukládat data.
+- Počet pevných disků potřebě ukládat data.
 
--   Adresářů a/nebo samostatné soubory, které budou zkopírovány do všech pevném disku.
+- Adresářů a/nebo samostatné soubory, které budou zkopírovány do všech pevném disku.
 
- Ujistěte se, že máte počet pevných disků, které potřebujete k ukládání dat, která jsou přenosu.
+  Ujistěte se, že máte počet pevných disků, které potřebujete k ukládání dat, která jsou přenosu.
 
 ## <a name="copy-data-to-your-hard-drive"></a>Kopírování dat na pevném disku
  Tato část popisuje, jak volat nástrojem Import/Export Azure ke zkopírování dat na jeden nebo více pevných disků. Pokaždé, když voláte nástroje Import/Export Azure, vytvoříte nový *zkopírujte relace*. Vytvoření relace alespoň jedna kopie pro každou jednotku, ke kterému je zkopírovat data. v některých případech můžete potřebovat více než jedna relace kopírování pro kopírování všech vašich dat na jeden disk. Zde jsou některé důvody, že potřebujete více relací kopírování:

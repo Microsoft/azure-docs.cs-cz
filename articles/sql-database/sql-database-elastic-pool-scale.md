@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 3/06/2019
-ms.openlocfilehash: b2ad701115a69520658c2aa9cea53dbda90cf868
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.date: 3/14/2019
+ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015365"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování elastického fondu prostředků ve službě Azure SQL Database
 
@@ -26,7 +26,6 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Změna výpočetní prostředky (virtuální jádra nebo Dtu)
 
 Po počátečním výběru počet virtuálních jader nebo Edtu, můžete vertikálně elastického fondu navýšení nebo snížení kapacity dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [rozhraní příkazového řádku Azure ](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
-
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Změna velikost výpočetní služby vrstvě nebo změny měřítka
 
@@ -71,6 +70,9 @@ Latence změnit úroveň služby nebo změnit velikost výpočetních izolovanou
 Se vám účtovat každá hodina existence databáze pomocí nejvyšší úroveň služby a vypočítat velikost, která během této hodiny využívalo, bez ohledu na využití nebo na to, jestli byl databáze aktivní kratší dobu než hodinu. Například pokud vytvoření izolované databáze a po pěti minutách ji odstraníte vyúčtování projeví účtovat jedna hodina používání databáze.
 
 ## <a name="change-elastic-pool-storage-size"></a>Změnit velikost úložiště elastického fondu
+
+> [!IMPORTANT]
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 

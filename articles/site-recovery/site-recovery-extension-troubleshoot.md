@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 7a4ff22bbb4c7c13d8c2feae3638ce8e33a8f7ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103532"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
 
@@ -21,39 +21,39 @@ Tento článek popisuje postup řešení potíží, které vám může pomoct vy
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery rozšíření časový limit  
 
-Chybová zpráva: "provádění úkolu vypršel během operace rozšíření spustit sledování"<br>
+Chybová zpráva: "Provádění úkolu vypršel během operace rozšíření spustit sledování"<br>
 Kód chyby: "151076"
 
  Azure Site Recovery nainstalovat rozšíření virtuálního počítače jako součást úlohu zapnutí ochrany. Některé z následujících podmínek by mohly bránit ochranu před se aktivuje a selhání úlohy. Dokončení následujících kroků pro řešení problémů a opakujte operaci:
 
-**1. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**2. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. příčina: [rozšíření služby Site Recovery se nepodařilo aktualizovat nebo načíst](#the-site-recovery-extension-fails-to-update-or-load)**  
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. důvod: [Rozšíření služby Site Recovery se nepodařilo aktualizovat nebo načíst](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Chybová zpráva: "operace rozšíření site recovery předchozí trvá déle, než se očekávalo."<br>
+Chybová zpráva: "Předchozí operace rozšíření site recovery trvá déle, než se očekávalo."<br>
 Kód chyby: "150066"<br>
 
-**1. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**2. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. příčina: [stav rozšíření služby Site Recovery je nesprávný](#the-site-recovery-extension-fails-to-update-or-load)**  
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. důvod: [Stav rozšíření služby Site Recovery je nesprávný](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Ochrana se nezdaří, protože agent virtuálního počítače nereaguje
 
-Chybová zpráva: "provádění úkolu vypršel při sledování operace rozšíření spustit."<br>
+Chybová zpráva: "Provádění úkolu vypršel při sledování operace rozšíření spustit."<br>
 Kód chyby: "151099"<br>
 
 K této chybě může dojít, pokud na virtuálním počítači agent hosta Azure není v připraveném stavu.
 Můžete zkontrolovat stav agenta hosta Azure v [webu Azure portal](https://portal.azure.com/). Přejděte na virtuální počítač, který se pokoušíte chránit a zkontrolovat stav "virtuální počítač > Nastavení > Vlastnosti > Stav agenta". Ve většině případů se stav agenta po restartování virtuálního počítače připraví. Ale pokud Restart není možné nebo jsou stále k problému, proveďte následující kroky pro řešení potíží.
 
-**1. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**2. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-Chybová zpráva: "provádění úkolu vypršel při sledování operace rozšíření spustit."<br>
+Chybová zpráva: "Provádění úkolu vypršel při sledování operace rozšíření spustit."<br>
 Kód chyby: "151095"<br>
 
 Tato situace nastat, když je stará verze agenta na počítači s Linuxem. Proveďte následující krok odstraňování problémů.<br>
-  **1. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+  **1. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)
@@ -77,15 +77,15 @@ Většina souvisejících s agenty nebo souvisejících s rozšířením selhán
 
 1. Postupujte podle pokynů pro [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md).
 
- > [!NOTE]
- > Jsme *důrazně doporučujeme* , že aktualizujete agenta pouze prostřednictvím distribuce úložiště. Nedoporučujeme stažením kódu agenta přímo z Githubu a aktualizacích. Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. Vyhledat nejnovější agent, přejděte [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
+   > [!NOTE]
+   > Jsme *důrazně doporučujeme* , že aktualizujete agenta pouze prostřednictvím distribuce úložiště. Nedoporučujeme stažením kódu agenta přímo z Githubu a aktualizacích. Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. Vyhledat nejnovější agent, přejděte [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
 
 2. Ujistěte se, že Azure agent běží na virtuálním počítači spuštěním následujícího příkazu: `ps -e`
 
- Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
+   Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
 
- * Pro Ubuntu: `service walinuxagent start`
- * Pro jiné distribuce: `service waagent start`
+   * Pro Ubuntu: `service walinuxagent start`
+   * Pro jiné distribuce: `service waagent start`
 
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Povolení ochrany virtuálního počítače.

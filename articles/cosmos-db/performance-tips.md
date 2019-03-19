@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d9d2b58ff249e765620e2fbae5c9677e9412f1ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861889"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -38,37 +38,37 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
    * Přímý režim
 
-     Přímý režim podporuje připojení přes protokoly TCP a HTTPS. Pokud používáte nejnovější verzi rozhraní .net SDK, přímé připojení k režimu je podporováno v .NET Standard 2.0 a .net framework. Když používáte přímý režim, nejsou k dispozici dvě možnosti protokolu:
+     Přímý režim podporuje připojení přes protokoly TCP a HTTPS. Pokud používáte nejnovější verzi sady .NET SDK, přímé připojení k režimu je podporováno v .NET Standard 2.0 a .NET framework. Když používáte přímý režim, nejsou k dispozici dvě možnosti protokolu:
 
-    * TCP
-    * HTTPS
+     * TCP
+     * HTTPS
 
-    Když používáte režim brány, Cosmos DB používá port 443 a porty 10250, 10255 a 10256 při používání rozhraní API služby Azure Cosmos DB pro MongoDB. Mapy 10250 port pro výchozí instanci databáze MongoDB bez geografickou replikaci a mapování portů 10255/10256 k instanci MongoDB pomocí funkce geografické replikace. Při použití protokolu TCP v přímém režimu, kromě portů brány, je potřeba zajistit port v rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud tyto porty nejsou otevřené a při pokusu o použití protokolu TCP, zobrazí se chyba 503 Služba není dostupná. Následující tabulka uvádí dostupné režimy připojení různých rozhraní API a porty uživatele služby pro každé rozhraní API:
+     Když používáte režim brány, Cosmos DB používá port 443 a porty 10250, 10255 a 10256 při používání rozhraní API služby Azure Cosmos DB pro MongoDB. Mapy 10250 port pro výchozí instanci databáze MongoDB bez geografickou replikaci a mapování portů 10255/10256 k instanci MongoDB pomocí funkce geografické replikace. Při použití protokolu TCP v přímém režimu, kromě portů brány, je potřeba zajistit port v rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud tyto porty nejsou otevřené a při pokusu o použití protokolu TCP, zobrazí se chyba 503 Služba není dostupná. Následující tabulka uvádí dostupné režimy připojení různých rozhraní API a porty uživatele služby pro každé rozhraní API:
 
-    |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
-    |---------|---------|---------|---------|
-    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-    |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
-    |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
+     |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
+     |---------|---------|---------|---------|
+     |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
+     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
+     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 
-    Azure Cosmos DB nabízí jednoduchý a otevřené rozhraní RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také RESTful svůj model komunikace a je dostupný prostřednictvím klienta .NET SDK. Přímé TCP i protokol HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosu. Pro zajištění nejlepšího výkonu použijte protokol TCP, pokud je to možné.
+     Azure Cosmos DB nabízí jednoduchý a otevřené rozhraní RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také RESTful svůj model komunikace a je dostupný prostřednictvím klienta .NET SDK. Přímé TCP i protokol HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosu. Pro zajištění nejlepšího výkonu použijte protokol TCP, pokud je to možné.
 
-    Během procesu vytváření instance DocumentClient, který se má parametr ConnectionPolicy nastaven režim připojení. Pokud se používá přímý režim, můžete v rámci má parametr ConnectionPolicy nastavit protokol.
+     Během procesu vytváření instance DocumentClient, který se má parametr ConnectionPolicy nastaven režim připojení. Pokud se používá přímý režim, můžete v rámci má parametr ConnectionPolicy nastavit protokol.
 
-    ```csharp
-    var serviceEndpoint = new Uri("https://contoso.documents.net");
-    var authKey = new "your authKey from the Azure portal";
-    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-    new ConnectionPolicy
-    {
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = new "your authKey from the Azure portal";
+     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+     new ConnectionPolicy
+     {
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp
-    });
-    ```
+     });
+     ```
 
-    Protože TCP je podporovaný jenom v režimu přímého, pokud se používá režim brány, protokol HTTPS se vždy používá ke komunikaci s bránou a hodnoty protokolu v ConnectionPolicy se ignoruje.
+     Protože TCP je podporovaný jenom v režimu přímého, pokud se používá režim brány, protokol HTTPS se vždy používá ke komunikaci s bránou a hodnoty protokolu v ConnectionPolicy se ignoruje.
 
-    ![Obrázek připojení zásad služby Azure Cosmos DB](./media/performance-tips/connection-policy.png)
+     ![Obrázek připojení zásad služby Azure Cosmos DB](./media/performance-tips/connection-policy.png)
 
 2. **Volání OpenAsync, aby se zabránilo latenci při spuštění na první požadavek**
 

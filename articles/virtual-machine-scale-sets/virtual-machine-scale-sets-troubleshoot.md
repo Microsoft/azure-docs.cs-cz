@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005315"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s automatickým Škálováním se Škálovacími sadami virtuálních počítačů
 **Problém** – jste vytvořili automatické škálování infrastruktury v Azure Resource Manageru pomocí škálovací sady virtuálních počítačů – například tím, že nasazení šablony, jako je ten: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte vaše škálovací pravidla definovaná a funguje to fungovalo, s výjimkou ne důležité, jakým je zatížením vložíte na virtuálních počítačích, nebude automatického škálování.
@@ -52,7 +52,7 @@ Některé věci k uvážení patří:
     Azure Resource Exploreru je nepostradatelným řešení problémů s nástrojem, který vám ukáže stav svých prostředků Azure Resource Manageru. Klikněte na předplatné a podívejte se na skupinu prostředků, řešení potíží. V poskytovateli prostředků Compute podívejte se na škálovací sadu virtuálních počítačů jste vytvořili a zkontrolujte zobrazení Instance, která zobrazuje stav nasazení. Zkontrolujte taky, zobrazení instance virtuálních počítačů ve škálovací sadě virtuálních počítačů. Potom přejděte do poskytovatele prostředků Microsoft.Insights a zkontrolujte, že pravidla automatického škálování tak, jak.
 * Diagnostické rozšíření je práce a generování dat výkonu?
   
-    **Aktualizace:** automatické škálování v Azure je vylepšená použití kanálu metriky hostitele, který už nevyžaduje diagnostické rozšíření k instalaci. Pár odstavců dále už nebude platit, pokud vytvoříte aplikaci automatické škálování pomocí nový kanál. Příklad šablony Azure, které byly převedeny na použití kanálu hostitele je k dispozici zde: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Aktualizace:** Automatické škálování v Azure je vylepšená použití kanálu metriky hostitele, který už nevyžaduje diagnostické rozšíření k instalaci. Pár odstavců dále už nebude platit, pokud vytvoříte aplikaci automatické škálování pomocí nový kanál. Příklad šablony Azure, které byly převedeny na použití kanálu hostitele je k dispozici zde: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
     Pomocí automatického škálování využívající metriky hostitele je lepší z následujících důvodů:
   
@@ -72,14 +72,14 @@ Některé věci k uvážení patří:
     
     ![Průzkumník cloudu][explorer]
     
-   Zobrazí spousta tabulek je právě ukládat data z každého virtuálního počítače. Vezměte Linuxu a metriky procesoru jako příklad a podívejte se na poslední řádky. Průzkumníka cloudu sady Visual Studio podporuje dotazovací jazyk, abyste mohli spustit dotaz. Například můžete spustit dotaz pro "časové razítko gt data a času" 2016-02-02T21:20:00Z "" k Ujistěte se, že získáte nejnovější události. Odpovídá časové pásmo UTC. Podporuje data, která se zobrazí, že existuje odpovídají pravidel škálování můžete nastavit? V následujícím příkladu procesor pro počítač 20 spuštěna, zvětšení na 100 % za posledních pět minut.
+    Zobrazí spousta tabulek je právě ukládat data z každého virtuálního počítače. Vezměte Linuxu a metriky procesoru jako příklad a podívejte se na poslední řádky. Průzkumníka cloudu sady Visual Studio podporuje dotazovací jazyk, abyste mohli spustit dotaz. Například můžete spustit dotaz pro "časové razítko gt data a času" 2016-02-02T21:20:00Z "" k Ujistěte se, že získáte nejnovější události. Odpovídá časové pásmo UTC. Podporuje data, která se zobrazí, že existuje odpovídají pravidel škálování můžete nastavit? V následujícím příkladu procesor pro počítač 20 spuštěna, zvětšení na 100 % za posledních pět minut.
     
     ![Úložiště tabulek][tables]
     
     Pokud není data, znamená to, že je problém s diagnostického rozšíření ve virtuálních počítačích. Pokud jsou data existuje, znamená to, že je problém pravidlům škálování nebo službou Insights. Zkontrolujte [stav Azure](https://azure.microsoft.com/status/).
     
     Jakmile jste tyto kroky, pokud stále máte potíže s automatickým Škálováním můžete vyzkoušet následující prostředky: 
-    * Přečtěte si fóra na [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), nebo [přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure) 
+    * Přečtěte si fóra na [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), nebo [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure) 
     * Volání podpory protokolu. Buďte připraveni sdílet šablony a zobrazení dat výkonu.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

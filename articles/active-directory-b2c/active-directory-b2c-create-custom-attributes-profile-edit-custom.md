@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094622"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Použití vlastních atributů ve vlastním profilu upravit zásadu
 
@@ -260,20 +260,20 @@ ID token odeslaných zpět do vaší aplikace obsahuje nové vlastnosti rozší�
 
 1. Přidá novou deklaraci na toky pro přihlášení k účtů na sociálních sítích tak, že změníte následující **TechnicalProfiles**. Účty sociálních sítí a federované pomocí těchto dvou **TechnicalProfiles** k přihlášení. Zapisují a čtou data uživatele pomocí **alternativeSecurityId** jako Lokátor objektu user.
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. Použijte stejné atributy rozšíření mezi předdefinované a vlastní zásady. Když přidáte rozšíření nebo vlastní atributy přes portál, tyto atributy jsou registrované pomocí **b2c-extensions-app** , která existuje v každé tenanta B2C. Proveďte následující kroky a použít atributy rozšíření ve vlastních zásadách:
 
-  a. V rámci vašeho tenanta B2C na stránce portal.azure.com, přejděte na **Azure Active Directory** a vyberte **registrace aplikací**.  
-  b. Najít vaše **b2c-extensions-app** a vyberte ji.  
-  c. V části **Essentials**, zadejte **ID aplikace** a **ID objektu**.  
-  d. Zahrnutí do vaší **AAD běžné** metadat technický profil:  
+   a. V rámci vašeho tenanta B2C na stránce portal.azure.com, přejděte na **Azure Active Directory** a vyberte **registrace aplikací**.  
+   b. Najít vaše **b2c-extensions-app** a vyberte ji.  
+   c. V části **Essentials**, zadejte **ID aplikace** a **ID objektu**.  
+   d. Zahrnutí do vaší **AAD běžné** metadat technický profil:  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,14 +285,14 @@ ID token odeslaných zpět do vaší aplikace obsahuje nové vlastnosti rozší�
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. Zůstane konzistentní s prostředím portálu. Vytvoření těchto atributů pomocí uživatelské rozhraní portálu předtím, než je použijete v vlastních zásad. Při vytváření atributu **ActivationStatus** na portálu, musíte na ni můžete odkazovat následujícím způsobem:
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>Referenční informace
 

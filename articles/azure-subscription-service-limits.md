@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: 21a6734ab8af2e35643f6e9b25500dad2418a8c2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a32ebb3fc2448b189aa5970446e2ceb29aed51e2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838778"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další služby.
@@ -344,7 +344,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Limity SQL Database
-Omezení SQL Database najdete v tématu [limity prostředků SQL Database pro izolované databáze](sql-database/sql-database-vcore-resource-limits-single-databases.md) a [limity pro elastické fondy a databáze ve fondu prostředků SQL Database](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
+Omezení SQL Database najdete v tématu [limity prostředků SQL Database pro izolované databáze](sql-database/sql-database-vcore-resource-limits-single-databases.md), [limity pro elastické fondy a databáze ve fondu prostředků SQL Database](sql-database/sql-database-vcore-resource-limits-elastic-pools.md), a [limity prostředků SQL Database pro spravované instance](sql-database/sql-database-managed-instance-resource-limits.md).
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse omezení
 SQL Data Warehouse omezení najdete v tématu [omezení prostředků SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a2e056baa2dd27ca0bf054d0dacf15d35e0ef384
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977915"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991195"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních počítačů s Windows pomocí Azure Powershellu
 
@@ -180,6 +180,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 ### <a name="vm-sizes"></a>Velikosti virtuálních počítačů
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
+
 | Type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |

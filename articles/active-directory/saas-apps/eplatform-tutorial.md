@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: fb606e914e0fb2b9721f3ca1e8927be500270795
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 75c65d9fe7cf884f1c76439fc2f8d5373fadd5ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>Kurz: Integrace Azure Active Directory s ePlatform
 
@@ -109,15 +109,43 @@ Ke konfiguraci Azure AD jednotné přihlašování s ePlatform, proveďte násle
     > [!NOTE]
     > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta ePlatform](https://help.eplatform.co/hc/en-us) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-4. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+5. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
 
     ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
 
-5. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
+6. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
 
     ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-6. Na **nastavení ePlatform** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. Vaše aplikace ePlatform očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+
+    ![image](common/edit-attribute.png)
+
+8. Kromě toho výše ePlatform aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+
+    | Název | Zdrojový atribut |
+    | ---------------| --------------- |
+    | upn | user.userprincipalname |
+
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+
+    c. Nechte **Namespace** prázdné.
+
+    d. Vyberte zdroj jako **atribut**.
+
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+
+    f. Klikněte na tlačítko **Ok**
+
+    g. Klikněte na **Uložit**.
+
+9. Na **nastavení ePlatform** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -149,7 +177,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

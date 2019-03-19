@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 875548b8277e50ccb813cf6b36541a053abdbb70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c91fa2c269b507988d2bdefcd2882b2ab55fec35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094861"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -51,6 +51,8 @@ Než začnete, je vhodné se seznámit s architekturou Azure Site Recovery pro [
 Pokud chcete migrovat virtuální počítače Hyper-V s Windows Serverem 2008 nebo Windows Serverem 2008 R2, postupujte podle kroků v kurzu [migrace místních počítačů do Azure](migrate-tutorial-on-premises-azure.md).
 
 Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuální počítače VMware a fyzické servery s Windows Serverem 2008 nebo 2008 R2.
+> [!TIP]
+> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Kliknutím sem](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: f36d9eed11685d1bb35a46a97eb58fe870970075
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019428"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998718"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivita spuštění kanálu ve službě Azure Data Factory
 Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný kanál.
@@ -59,13 +59,14 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 ```
 
 ## <a name="type-properties"></a>Typ vlastnosti
+
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity spuštění kanálu. | Řetězec | Ano
-type | Musí být nastaveno na: **ExecutePipeline**. | Řetězec | Ano
+jméno | Název aktivity spuštění kanálu. | String | Ano
+type | Musí být nastaveno na: **ExecutePipeline**. | String | Ano
 kanál | Odkaz na závislé kanál, který volá tento kanál. Odkaz na objekt kanálu má dvě vlastnosti: **referenceName** a **typ**. Vlastnost referenceName Určuje název odkazu kanálu. Vlastnost type musí být nastavená na PipelineReference. | PipelineReference | Ano
 parameters | Parametry se mají předat vyvolaný kanál | Objekt JSON, která mapuje názvy parametrů hodnoty argumentů | Ne
-waitOnCompletion | Definuje, zda provádění aktivity čeká na spuštění kanálu závislé na dokončení. | Výchozí hodnota je false. | Logická hodnota | Ne
+waitOnCompletion | Definuje, zda provádění aktivity čeká na spuštění kanálu závislé na dokončení. Výchozí hodnota je false. | Logická hodnota | Ne
 
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:

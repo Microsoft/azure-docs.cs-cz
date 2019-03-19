@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 84c6a88449844d3a2f59b3b93dd95b102b653679
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f73f6a9cf274de207305cfd90e089a549088dd06
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817610"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088736"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -55,27 +55,27 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 
 ## <a name="installation-error-codes"></a>Kódy chyb instalace
 
-| Kód chyby | Význam |
-| --- | --- |
+| Kód chyby | Význam | |
+| --- | --- | --- |
 | NOT_DEFINED | Protože nejsou nainstalované potřebné závislosti, nenainstalují se modul plug-in auoms démona auditd | Instalace se nezdařila, auoms nainstalovat balíček auditd. |
-| 2 | Neplatná možnost sadě prostředí k dispozici. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití |
-| 3 | Žádná možnost není k dispozici pro prostředí sady. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití. |
-| 4 | Neplatný balíček typu nebo neplatné nastavení proxy serveru; omsagent -*ot. / min*.sh balíčky lze nainstalovat pouze na systémy založené na ot. / min a omsagent -*deb*.sh balíčky můžete nainstalovat jenom v systémech založených na Debian. To se doporučuje použít univerzální instalačního programu z [nejnovější vydaná verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Také zkontrolujte ověřit vaše nastavení proxy serveru. |
-| 5 | Prostředí sady je nutné provést jako uživatel root nebo se Chyba 403 vrátil během registrace. Spuštění příkazu s `sudo`. |
-| 6 | Neplatný balíček architektury nebo Chyba 200 chyba vrátil během připojování; omsagent -*x64.sh balíčky lze nainstalovat pouze v 64bitových systémech složku a omsagent*x86.sh balíčky můžete nainstalovat jenom na 32bitových systémech. Stáhněte si správný balíček architektury z [nejnovější vydaná verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
-| 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. |
-| 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. |
-| 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. |
-| 21 | Instalace zprostředkovatele sady se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. |
-| 22 | Instalace balíčku jako součást balíčku se nezdařila. Prohlédněte si výstup příkazu kořenové selhání |
-| 23 | Balíček SCX nebo OMI už nainstalovaná. Použití `--upgrade` místo `--install` k instalaci sady prostředí. |
-| 30 | Interní sada došlo k chybě. Soubor [problém Githubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. |
-| 55 | Nepodporovaná openssl verze nemůže připojit ke službě Log Analytics nebo dpkg je uzamčené nebo chybějící curl programu. |
-| 61 | Chybějící ctypes knihovnu Pythonu. Nainstalujte Python ctypes knihovny nebo balíčku (python-ctypes). |
-| 62 | Chybějící program tar, cíl instalace. |
-| 63 | Chybějící sed program, instalace sed. |
-| 64 | Chybějící program curl, instalace curl. |
-| 65 | Chybějící gpg program, instalace gpg. |
+| 2 | Neplatná možnost sadě prostředí k dispozici. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití | |
+| 3 | Žádná možnost není k dispozici pro prostředí sady. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití. | |
+| 4 | Neplatný balíček typu nebo neplatné nastavení proxy serveru; omsagent -*ot. / min*.sh balíčky lze nainstalovat pouze na systémy založené na ot. / min a omsagent -*deb*.sh balíčky můžete nainstalovat jenom v systémech založených na Debian. To se doporučuje použít univerzální instalačního programu z [nejnovější vydaná verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Také zkontrolujte ověřit vaše nastavení proxy serveru. | |
+| 5 | Prostředí sady je nutné provést jako uživatel root nebo se Chyba 403 vrátil během registrace. Spuštění příkazu s `sudo`. | |
+| 6 | Neplatný balíček architektury nebo Chyba 200 chyba vrátil během připojování; omsagent -\*x64.sh balíčky lze nainstalovat pouze v 64bitových systémech složku a omsagent\*x86.sh balíčky můžete nainstalovat jenom na 32bitových systémech. Stáhněte si správný balíček architektury z [nejnovější vydaná verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). | |
+| 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. | |
+| 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. | |
+| 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. | |
+| 21 | Instalace zprostředkovatele sady se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. | |
+| 22 | Instalace balíčku jako součást balíčku se nezdařila. Prohlédněte si výstup příkazu kořenové selhání | |
+| 23 | Balíček SCX nebo OMI už nainstalovaná. Použití `--upgrade` místo `--install` k instalaci sady prostředí. | |
+| 30 | Interní sada došlo k chybě. Soubor [problém Githubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) s podrobnostmi z výstupu. | |
+| 55 | Nepodporovaná openssl verze nemůže připojit ke službě Log Analytics nebo dpkg je uzamčené nebo chybějící curl programu. | |
+| 61 | Chybějící ctypes knihovnu Pythonu. Nainstalujte Python ctypes knihovny nebo balíčku (python-ctypes). | |
+| 62 | Chybějící program tar, cíl instalace. | |
+| 63 | Chybějící sed program, instalace sed. | |
+| 64 | Chybějící program curl, instalace curl. | |
+| 65 | Chybějící gpg program, instalace gpg. | |
 
 ## <a name="onboarding-error-codes"></a>Kódy chyb registrace
 
@@ -161,17 +161,17 @@ Následující modul plug-in výstup, zrušte komentář u následující část
 
 ### <a name="resolution"></a>Řešení
 1. Reonboard do služby Log Analytics pomocí agenta Log Analytics pro Linux pomocí následujícího příkazu s parametrem `-v` povolena. To umožňuje podrobný výstup agenta připojeným přes proxy do služby Log Analytics. 
-`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
+   `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
-2. Projděte si část [aktualizovat nastavení proxy serveru](agent-manage.md#update-proxy-settings) k ověření aplikace správně nakonfigurována, aby mohli agenti komunikovat přes proxy server.    
-* Pečlivě zkontrolujte, že následující koncové body Log Analytics jsou povolené:
+1. Projděte si část [aktualizovat nastavení proxy serveru](agent-manage.md#update-proxy-settings) k ověření aplikace správně nakonfigurována, aby mohli agenti komunikovat přes proxy server.    
+1. Pečlivě zkontrolujte, že následující koncové body Log Analytics jsou povolené:
 
-    |Prostředek agenta| Porty | Směr |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | Port 443| Příchozí a odchozí |  
-    |*.oms.opinsights.azure.com | Port 443| Příchozí a odchozí |  
-    |*.blob.core.windows.net | Port 443| Příchozí a odchozí |  
-    |*.azure-automation.net | Port 443| Příchozí a odchozí | 
+     |Prostředek agenta| Porty | Směr |
+     |------|---------|----------|  
+     |*.ods.opinsights.azure.com | Port 443| Příchozí a odchozí |  
+     |*.oms.opinsights.azure.com | Port 443| Příchozí a odchozí |  
+     |*.blob.core.windows.net | Port 443| Příchozí a odchozí |  
+     |*.azure-automation.net | Port 443| Příchozí a odchozí | 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Při pokusu o připojení se zobrazí Chyba 403
 
@@ -366,15 +366,15 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 * Nastavení **Moje servery s Linuxem použijte následující konfiguraci** nebyla vybrána.
 * omsconfig nebyl neexistoval nejnovější konfiguraci vlastního protokolu ze služby.
 * Agenta log Analytics pro Linux uživatele `omsagent` nemá přístup k vlastní protokol problémy s oprávněními nebo nebyl nalezen.  Mohou se zobrazit následující chyby:
- * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
- * `[DATETIME] [error]: file not accessible by omsagent.`
+  * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
+  * `[DATETIME] [error]: file not accessible by omsagent.`
 * Známý problém s opravených agenta Log Analytics pro Linux verze 1.1.0-217 konflikt časování
 
 ### <a name="resolution"></a>Řešení
 1. Připojení ke službě Log Analytics proběhlo úspěšně kontrolou, jestli existuje následující soubor: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`. Pokud ne, buď:  
 
-  1. Pomocí příkazového řádku omsadmin.sh Reonboard [pokyny](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
-  2. V části **Upřesnit nastavení** na webu Azure Portal, ujistěte se, že nastavení **Moje servery s Linuxem použijte následující konfiguraci** je povolená.  
+   1. Pomocí příkazového řádku omsadmin.sh Reonboard [pokyny](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
+   2. V části **Upřesnit nastavení** na webu Azure Portal, ujistěte se, že nastavení **Moje servery s Linuxem použijte následující konfiguraci** je povolená.  
 
 2. Zkontrolujte, že `omsconfig` agent může komunikovat se službou Log Analytics spuštěním následujícího příkazu `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  Tento příkaz vrátí konfiguraci, že daný agent přijímá ze služby, včetně nastavení Syslog, čítače výkonu systému Linux a vlastní protokoly. Pokud tento příkaz selže, spusťte následující příkaz `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Tento příkaz vynutí omsconfig agenta pro komunikaci služby Log Analytics a načíst nejnovější konfiguraci.
 
@@ -408,9 +408,9 @@ Můžete dál reonboard po použití `--purge` možnost
 ### <a name="resolution"></a>Řešení 
 Proveďte následující kroky, chcete-li opravit tento problém.
 1. Odeberte rozšíření z webu Azure portal.
-2. Nainstalujte agenta po [pokyny](../../azure-monitor/learn/quick-collect-linux-computer.md).
-3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-* Počkejte pár minut a změní stav zřizování **Zřizování proběhlo úspěšně**.
+1. Nainstalujte agenta po [pokyny](../../azure-monitor/learn/quick-collect-linux-computer.md).
+1. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Počkejte pár minut a změní stav zřizování **Zřizování proběhlo úspěšně**.
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problém: Log Analytics agent upgrade na vyžádání

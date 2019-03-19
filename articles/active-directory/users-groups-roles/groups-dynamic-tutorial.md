@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564cfe0bb0b95d12d91b7d8d4e3f1f0549ec73e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: f1110ef9383798ddeb8a04a0e19deb441e3d207c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081300"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidání nebo odebrání členů skupiny automaticky
 
@@ -46,13 +46,13 @@ Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z je
 
 1. Přihlaste se k webu Azure portal (https://portal.azure.com) pomocí účtu, který má oprávnění globálního správce pro vašeho tenanta.
 2. Vyberte **Azure Active Directory** > **Skupiny** > **Nová skupina**.
-  ![výběr příkazu Nová skupina](./media/groups-dynamic-tutorial/new-group.png)
+   ![výběr příkazu Nová skupina](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:
   
-  * Jako typ skupiny vyberte **Zabezpečení**.
-  * Jako název a popis skupiny zadejte `Guest users Contoso`.
-  * Změňte **Typ členství** na **Dynamický uživatel**.
-  * Vyberte **Přidat dynamický dotaz**.
+   * Jako typ skupiny vyberte **Zabezpečení**.
+   * Jako název a popis skupiny zadejte `Guest users Contoso`.
+   * Změňte **Typ členství** na **Dynamický uživatel**.
+   * Vyberte **Přidat dynamický dotaz**.
   
 4. Vyberte **Pokročilé pravidlo** a do pole **Pokročilé pravidlo** zadejte `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`.
 5. Výběrem možnosti **Přidat dotaz** zavřete okno.

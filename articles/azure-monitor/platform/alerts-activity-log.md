@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: da7556b909ec4eb544a6b4e4fab7af4a0919a158
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090810"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -27,13 +27,13 @@ Tyto výstrahy jsou pro prostředky Azure, můžete vytvořit pomocí šablony A
 ## <a name="azure-portal"></a>portál Azure
 
 > [!NOTE]
-
+> 
 >  Při vytváření pravidel upozornění, zkontrolujte následující:
-
+> 
 > - Předplatné v oboru není liší od předplatného, kde se vytvoří výstraha.
-- Kritéria musí být úroveň/status/volající / skupiny prostředků nebo id prostředku / typ prostředku / kategorie událostí, ve které je nakonfigurována oznámení.
-- Není žádný "anyOf" podmínky nebo vnořené podmínky v konfiguraci výstrahy JSON (v podstatě u žádné další allOf/anyOf je povoleno pouze jeden allOf).
-- Pokud je kategorie "správce". Musíte zadat alespoň jeden z předchozích kritéria v upozornění. Nelze vytvořit výstrahu, která se aktivuje vždy, když se vytvoří událost v protokolech aktivit.
+> - Kritéria musí být úroveň/status/volající / skupiny prostředků nebo id prostředku / typ prostředku / kategorie událostí, ve které je nakonfigurována oznámení.
+> - Není žádný "anyOf" podmínky nebo vnořené podmínky v konfiguraci výstrahy JSON (v podstatě u žádné další allOf/anyOf je povoleno pouze jeden allOf).
+> - Pokud je kategorie "správce". Musíte zadat alespoň jeden z předchozích kritéria v upozornění. Nelze vytvořit výstrahu, která se aktivuje vždy, když se vytvoří událost v protokolech aktivit.
 
 ### <a name="create-with-azure-portal"></a>Vytvořit pomocí webu Azure portal
 
@@ -50,35 +50,36 @@ Použijte následující postup:
 
 3. **V části definovat výstražný stav** zadejte následující informace a klikněte na tlačítko **provádí**.
 
-    - **Cíl upozornění:** Chcete-li zobrazit a vybrat cíl pro nové výstrahy, použijte **filtrovat podle předplatného** / **filtrovat podle typu prostředku** a ze zobrazeného seznamu vyberte prostředek nebo skupinu prostředků.
+   - **Cíl upozornění:** Chcete-li zobrazit a vybrat cíl pro nové výstrahy, použijte **filtrovat podle předplatného** / **filtrovat podle typu prostředku** a ze zobrazeného seznamu vyberte prostředek nebo skupinu prostředků.
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > můžete vybrat prostředek, skupinu prostředků nebo celé předplatné pro signálu protokolu aktivit.
 
-    > můžete vybrat prostředek, skupinu prostředků nebo celé předplatné pro signálu protokolu aktivit.
+     **Cíl ukázkové zobrazení výstrahy**
+     ![vyberte cíl](media/alerts-activity-log/select-target.png)
 
-    **Cíl ukázkové zobrazení výstrahy** ![vyberte cíl](media/alerts-activity-log/select-target.png)
+   - V části **cílová kritéria**, klikněte na tlačítko **přidat kritéria** a jsou zobrazeny všechny dostupné signály pro cíl, včetně těch, které z různých kategorií **protokolu aktivit**; nebyla úspěšná Název kategorie připojí v **Monitor Service** název.
 
-    - V části **cílová kritéria**, klikněte na tlačítko **přidat kritéria** a jsou zobrazeny všechny dostupné signály pro cíl, včetně těch, které z různých kategorií **protokolu aktivit**; nebyla úspěšná Název kategorie připojí v **Monitor Service** název.
+   - Vyberte signál, který se v seznamu zobrazí různých operací možné pro daný typ **protokolu aktivit**.
 
-    - Vyberte signál, který se v seznamu zobrazí různých operací možné pro daný typ **protokolu aktivit**.
+     Můžete vybrat na časové ose historie protokolu a odpovídající logika upozornění pro tento cíl signál:
 
-    Můžete vybrat na časové ose historie protokolu a odpovídající logika upozornění pro tento cíl signál:
+     **Přidání obrazovky kritéria**
 
-    **Přidání obrazovky kritéria**
+     ![Přidat kritéria](media/alerts-activity-log/add-criteria.png)
 
-    ![Přidat kritéria](media/alerts-activity-log/add-criteria.png)
+     **Historie čas**: Události, které jsou k dispozici pro vybranou operaci je mohou být vykreslena za posledních 6/12/24 hodin (nebo) za poslední týden.
 
-    **Historie čas**: Události, které jsou k dispozici pro vybranou operaci je mohou být vykreslena za posledních 6/12/24 hodin (nebo) za poslední týden.
-
-    **Upozornění logiky**:
+     **Upozornění logiky**:
 
      - **Úroveň události**– úroveň závažnosti události. _Podrobné_, _informační_, _upozornění_, _chyba_, nebo _kritické_.
      - **Stav**: Stav události. _Spuštění_, _nepovedlo_, nebo _úspěšné_.
      - **Zahájit událost**: Označuje se taky jako volajícího E-mailovou adresu nebo Azure Active Directory identifikátor uživatele, který provedl operaci.
 
-        Ukázkový graf signál s logika upozornění použít:
+       Ukázkový graf signál s logika upozornění použít:
 
-        ![ kritéria vybraná](media/alerts-activity-log/criteria-selected.png)
+       ![ kritéria vybraná](media/alerts-activity-log/criteria-selected.png)
 
 4. V části **definujte podrobnosti pravidla upozornění**, zadejte následující podrobnosti:
 
@@ -115,15 +116,15 @@ Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na který
 
     Můžete použít k dispozici tyto filtry – _předplatné_, _skupiny prostředků_, _prostředků_, _typ signálu_, nebo _stav_  najít pravidlo aktivit, které chcete upravit.
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > Můžete upravit pouze **popis** , **cílová kritéria** a **skupiny akcí**.
 
-    > Můžete upravit pouze **popis** , **cílová kritéria** a **skupiny akcí**.
+3. Vyberte pravidlo a dvakrát klikněte pro úpravu možností pravidla. Proveďte požadované změny a pak klikněte na tlačítko **Uložit**.
 
-3.  Vyberte pravidlo a dvakrát klikněte pro úpravu možností pravidla. Proveďte požadované změny a pak klikněte na tlačítko **Uložit**.
+   ![ Spravovat pravidla výstrah](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ Spravovat pravidla výstrah](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  Zakázání, povolení nebo odstranění pravidla. Vyberte příslušnou možnost v horní části okna, po výběru pravidla, jak je uvedeno v kroku 2.
+4. Zakázání, povolení nebo odstranění pravidla. Vyberte příslušnou možnost v horní části okna, po výběru pravidla, jak je uvedeno v kroku 2.
 
 
 ## <a name="azure-resource-template"></a>Šablony Azure Resource

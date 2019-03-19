@@ -1,6 +1,6 @@
 ---
-title: 'Vytvořit jednotku D: datový disk virtuálního počítače | Microsoft Docs'
-description: 'Popisuje, jak změnit písmena jednotek pro virtuální počítač s Windows, tak, aby D: jednotku můžete používat jako datový disk.'
+title: 'Vytvořit jednotku D: datového disku virtuálního počítače | Dokumentace Microsoftu'
+description: 'Popisuje, jak změnit písmena jednotek pro virtuální počítač s Windows tak, aby jednotce D: lze používat jako datový disk.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: a4e29ce7ebb20753c3313e1148e1c91e853f49f5
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27577441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007286"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Jako datový disk pro virtuální počítač Windows jednotku D:
-Pokud aplikace potřebuje využívat diskovou jednotku d k ukládání dat, postupujte podle těchto pokynů můžete použít jiné písmeno jednotky pro dočasné disku. Nikdy nepoužívejte dočasným diskovým k ukládání dat, který je třeba zachovat.
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Použití disku D: jako datový disk na virtuálním počítači s Windows
+Pokud vaše aplikace potřebuje k použití jednotky D k ukládání dat, postupujte podle těchto pokynů můžete použít jiné písmeno jednotky pro dočasný disk. Nikdy použít dočasný disk k uložení dat, která je potřeba nechat.
 
-Při změně velikosti nebo **zastavení (Deallocate)** virtuální počítač, to může aktivovat umístění virtuálního počítače do nového hypervisoru. Události plánované i neplánované údržby, může se spustit toto umístění. V tomto scénáři bude přiřazen dočasným diskovým první dostupné písmeno jednotky. Pokud máte aplikaci, která vyžaduje konkrétně jednotky D:, budete muset následujícím postupem dočasně přesunout pagefile.sys, připojit nový datový disk a přiřaďte ho písmeno D a poté přesuňte pagefile.sys zpět na dočasné jednotce. Po dokončení Azure nebude zpět D: Pokud virtuální počítač přesune do různých hypervisoru.
+Při změně velikosti nebo **Stop (přidělení)** virtuální počítač, může to vyvolávat umístění virtuálního počítače do nového hypervisoru. Události plánované i neplánované údržby můžou také aktivovat toto umístění. V tomto scénáři se znovu přiřadí dočasný disk první dostupné písmeno jednotky. Pokud máte aplikaci, která vyžaduje konkrétně jednotce D:, budete muset postupovat podle tohoto postupu dočasně přesunout soubor pagefile.sys, připojte nový datový disk a přiřazení písmena D a pak přejděte zpět do dočasné jednotky pagefile.sys. Jakmile budete hotovi, Azure nepořizuje zpět D: Pokud virtuální počítač přesune do jiné hypervisoru.
 
-Další informace o tom, jak Azure používá dočasným diskovým najdete v tématu [pochopení dočasné jednotce ve virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Další informace o tom, jak Azure používá dočasný disk najdete v tématu [pochopení dočasné jednotky na virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-## <a name="attach-the-data-disk"></a>Připojit datový disk
-Nejprve budete muset připojit datový disk k virtuálnímu počítači. To provedete pomocí portálu najdete v části [jak připojit spravované datový disk na portálu Azure](attach-managed-disk-portal.md).
+## <a name="attach-the-data-disk"></a>Připojení datového disku
+Nejprve budete muset připojit datový disk k virtuálnímu počítači. Provedete to tak pomocí portálu, najdete v článku [postup připojení spravovaného datového disku na webu Azure Portal](attach-managed-disk-portal.md).
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Dočasně přesunout pagefile.sys na jednotce C
-1. Připojte k virtuálnímu počítači. 
-2. Klikněte pravým tlačítkem myši **spustit** nabídku a vyberte **systému**.
-3. V levé nabídce vyberte **Upřesnit nastavení systému**.
+1. Připojte se k virtuálnímu počítači. 
+2. Klikněte pravým tlačítkem myši **Start** nabídky a vybereme **systému**.
+3. V nabídce vlevo vyberte **Upřesnit nastavení systému**.
 4. V **výkonu** vyberte **nastavení**.
-5. Vyberte **Upřesnit** kartě.
+5. Vyberte **Upřesnit** kartu.
 6. V **virtuální paměti** vyberte **změnu**.
-7. Vyberte **C** jednotky a pak klikněte na **velikost určí systém** a pak klikněte na **nastavit**.
-8. Vyberte **D** jednotky a pak klikněte na **stránkovací soubor** a pak klikněte na **nastavit**.
-9. Kliknutím na tlačítko použít. Zobrazí se upozornění, že počítač je třeba restartovat změny se projeví.
+7. Vyberte **C** jednotky a pak klikněte na tlačítko **systému spravovaná velikost** a potom klikněte na tlačítko **nastavit**.
+8. Vyberte **D** jednotky a pak klikněte na tlačítko **stránkovací soubor** a potom klikněte na tlačítko **nastavit**.
+9. Kliknutím na tlačítko použít. Zobrazí se upozornění, že počítač potřebuje k provedení restartu, aby se změny projeví.
 10. Restartujte virtuální počítač.
 
 ## <a name="change-the-drive-letters"></a>Změna písmena jednotek
-1. Po restartování virtuálního počítače se přihlásíte do virtuálního počítače.
-2. Klikněte **spustit** nabídce a typ **diskmgmt.msc** a stiskněte Enter. Správa disků se spustí.
-3. Klikněte pravým tlačítkem na **D**, dočasné úložiště jednotky a vyberte **změnit písmeno jednotky a cesty**.
-4. V části písmeno jednotky, vyberte na nový disk **T** a pak klikněte na **OK**. 
+1. Po restartování virtuálního počítače, přihlaste se zpět k virtuálnímu počítači.
+2. Klikněte na tlačítko **Start** nabídce a zadejte **diskmgmt.msc** a stiskněte Enter. Správa disků se spustí.
+3. Klikněte pravým tlačítkem na **D**, disk dočasného úložiště a vyberte **změnit písmeno jednotky a cesty**.
+4. V části písmeno jednotky, vyberte novou jednotku **T** a potom klikněte na tlačítko **OK**. 
 5. Klikněte pravým tlačítkem na datový disk a vyberte **změnit písmeno jednotky a cesty**.
-6. V části písmeno jednotky, vyberte jednotky **D** a pak klikněte na **OK**. 
+6. V části písmeno jednotky, vyberte jednotky **D** a potom klikněte na tlačítko **OK**. 
 
-## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Přesunout pagefile.sys zpět na jednotku dočasné úložiště
-1. Klikněte pravým tlačítkem myši **spustit** nabídku a vyberte **systému**
-2. V levé nabídce vyberte **Upřesnit nastavení systému**.
+## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Pagefile.sys přejděte zpět na disk dočasného úložiště
+1. Klikněte pravým tlačítkem myši **Start** nabídky a vybereme **systému**
+2. V nabídce vlevo vyberte **Upřesnit nastavení systému**.
 3. V **výkonu** vyberte **nastavení**.
-4. Vyberte **Upřesnit** kartě.
+4. Vyberte **Upřesnit** kartu.
 5. V **virtuální paměti** vyberte **změnu**.
-6. Vyberte jednotku operačního systému **C** a klikněte na tlačítko **stránkovací soubor** a pak klikněte na **nastavit**.
-7. Vyberte jednotku dočasné úložiště **T** a pak klikněte na **velikost určí systém** a pak klikněte na **nastavit**.
-8. Klikněte na tlačítko **Použít**. Zobrazí se upozornění, že počítač je třeba restartovat změny se projeví.
+6. Vyberte jednotku operačního systému **C** a klikněte na tlačítko **stránkovací soubor** a potom klikněte na tlačítko **nastavit**.
+7. Vyberte disk dočasného úložiště **T** a potom klikněte na tlačítko **systému spravovaná velikost** a potom klikněte na tlačítko **nastavit**.
+8. Klikněte na tlačítko **Použít**. Zobrazí se upozornění, že počítač potřebuje k provedení restartu, aby se změny projeví.
 9. Restartujte virtuální počítač.
 
 ## <a name="next-steps"></a>Další postup
-* Můžete zvýšit úložiště k dispozici k virtuálnímu počítači pomocí [další datový disk se připojuje](attach-managed-disk-portal.md).
+* Můžete zvětšit úložiště k dispozici k virtuálnímu počítači podle [připojení další datový disk](attach-managed-disk-portal.md).
 

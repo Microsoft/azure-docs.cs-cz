@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c831a5a939e946d7189e4d35eaf051508e904a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999522"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -68,7 +68,7 @@ Uživatelé v některých případech může načíst zprávy z ověřování sl
 
 | Kód chyby | Chybová zpráva | Doporučené kroky | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Chybný kód entered\OATH nesprávný kód | Nejde o chybu, uživatel zadal nesprávný kód. | Uživatel zadal nesprávný kód. Požádejte zkuste znovu požádat o nový kód nebo znovu přihlásit. | 
+| **OathCodeIncorrect** | Chybný kód entered\OATH nesprávný kód | Uživatel zadal nesprávný kód. Požádejte zkuste znovu požádat o nový kód nebo znovu přihlásit. | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximální povolené kód opakování dosažen | Uživatel se nezdařilo ověření před obrovskou výzvou příliš mnohokrát. V závislosti na nastavení, může musí být nyní odblokováno správcem.  |
 | **SMSAuthFailedWrongCodeEntered** | Nesprávné kód zadali/Text zprávy nesprávné jednorázové heslo | Uživatel zadal nesprávný kód. Požádejte zkuste znovu požádat o nový kód nebo znovu přihlásit. |
 

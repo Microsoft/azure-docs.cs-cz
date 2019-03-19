@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: dwgeo
-ms.openlocfilehash: b4bcc1bbed732e09f4c4d915342a422ce6c36901
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6fc13010d5dd888f28b5634b1f70aaa3326e54cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002067"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837503"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Zjistěte, jak klienti předání tokenů ve službě Azure Media Services doručení klíče
 Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke službě Azure Media Services doručení klíče pro ověření, přehrávače můžete získat klíč. Služba Media Services podporuje jednoduchý webový token (SWT) a formátů JSON Web Token (JWT). Ověření tokenu se použije na libovolný typ klíče, bez ohledu na to, jestli používat standard common encryption nebo Obálka šifrování Advanced Encryption (Standard AES) v systému.
@@ -29,7 +29,7 @@ Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke služb
 
 - Prostřednictvím protokolu HTTP autorizační hlavičky.
     > [!NOTE]
-    > Předpona "Nosiče" očekává podle specifikace OAuth 2.0. Ukázka player se konfigurace tokenu je hostované na Azure Media Player [ukázkové stránky](http://ampdemo.azureedge.net/). Chcete-li nastavit zdroj videa, zvolte **AES (tokenů JWT)** nebo **AES (SWT Token)**. Token, který se předá prostřednictvím autorizační hlavičky.
+    > Předpona "Nosiče" očekává podle specifikace OAuth 2.0. Ukázka player se konfigurace tokenu je hostované na Azure Media Player [ukázkové stránky](https://ampdemo.azureedge.net/). Chcete-li nastavit zdroj videa, zvolte **AES (tokenů JWT)** nebo **AES (SWT Token)**. Token, který se předá prostřednictvím autorizační hlavičky.
 
 - Prostřednictvím přidání adresy URL parametr pomocí dotazu "token = tokenvalue."  
     > [!NOTE]

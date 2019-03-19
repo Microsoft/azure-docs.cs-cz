@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
-ms.openlocfilehash: 1494ccea1580d7415c6c86f14682ca59ad7124d5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120359"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Vytvořit lístek podpory pro úlohu importu/exportu
 
@@ -57,14 +57,14 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
 
 4. V **nová žádost o podporu**, klikněte na tlačítko **kroku 3 kontaktní údaje**. V **kontaktní informace**, proveďte následující kroky:
 
-    1. V **obraťte se na možnosti**, poskytují upřednostňovaný způsob kontaktu (telefonu nebo e-mailu) a jazyk. Doba odezvy je automaticky vybrána na základě vašeho plánu předplatného.
-    2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, zemi. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
-    3. Klikněte na možnost **Vytvořit**.
+   1. V **obraťte se na možnosti**, poskytují upřednostňovaný způsob kontaktu (telefonu nebo e-mailu) a jazyk. Doba odezvy je automaticky vybrána na základě vašeho plánu předplatného.
+   2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, zemi. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
+   3. Klikněte na možnost **Vytvořit**.
    
-        ![Kontaktní informace](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+       ![Kontaktní informace](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-    Microsoft Support bude tyto informace slouží k kontaktovat, další informace, diagnostiku a řešení.
-Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.
+      Microsoft Support bude tyto informace slouží k kontaktovat, další informace, diagnostiku a řešení.
+      Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.
 
 ## <a name="manage-a-support-request"></a>Spravovat žádosti o podporu
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447077"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093884"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Limity prostředků SQL Database pro server Azure SQL Database
 
@@ -36,7 +36,7 @@ Tento článek obsahuje přehled služby SQL Database omezení prostředků pro 
 | DTU nebo eDTU kvóta na serveru | 54,000 |  
 | vCore kvóty podle serveru či instance | 540 |
 | Maximální počet fondů na serveru | Počet je omezen počet Dtu nebo virtuálních jader. Například pokud každý fond je 1 000 Dtu, pak server podporují 54 fondy.|
-||||
+|||
 
 > [!NOTE]
 > K získání další /eDTU kvóty DTU, vCore kvóty nebo více serverů než výchozí dobu, můžete odeslat novou žádost o podporu na webu Azure Portal pro předplatné se typ problému "Quota". DTU / limitu eDTU kvótu a databáze na serveru omezuje počet elastických fondů na jeden server.
@@ -95,7 +95,7 @@ Směrování protokolu míra správce přenosu je prezentované prostřednictví
 | INSTANCE_LOG_RATE_GOVERNOR | Omezení na úrovni instance |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Ovládací prvek zpětnou vazbu, fyzické replikace skupiny dostupnosti v Premium nebo pro důležité obchodní informace není uchování |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Ovládací prvek zpětnou vazbu, omezení sazby zabránit nedostatku místa podmínky protokolu |
-||||
+|||
 
 Při zjištění omezení frekvence protokolu, který brzdí požadované škálovatelnost, zvažte následující možnosti:
 - Vertikálně navýšit kapacitu na vyšší úroveň zajistí maximální rychlost protokolu 48 MB/s. 

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 669da18c889d906c629a7656eaa766993bf67373
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7b932cf8a1623dfcff02baff409db26135e5aa20
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238347"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837554"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití Visual Studio Code k připojení a dotazování Azure SQL Database
 
@@ -50,7 +50,7 @@ Ujistěte se, že máte nainstalovanou nejnovější verzi [Visual Studio Code](
 
 ### <a name="mac-os"></a>**Mac OS**
 
-Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro.Net Core rozšíření mssql používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**. 
+Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .NET Core, který rozšíření mssql používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

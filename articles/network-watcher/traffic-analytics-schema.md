@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: b46a89e331c63aadc76b856b56b7b40bbc626193
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 922e01c26a2cfe24c8b8a32bb8037d9b3b3384c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109116"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schéma a data a analýzy provozu
 
@@ -61,7 +61,7 @@ Tady je polí na schéma a jejich místo
 | DestIP_s | Cílová IP adresa | V případě AzurePublic prázdné a ExternalPublic toky |
 | VMIP_s | IP adresu virtuálního počítače | Používá pro AzurePublic a ExternalPublic toků |
 | PublicIP_S | Veřejné IP adresy | Používá pro AzurePublic a ExternalPublic toků |
-| DestPort_d | |Cílový port| Port, na kterém je příchozí provoz | 
+| DestPort_d | Cílový port | Port, na kterém je příchozí provoz | 
 | L4Protocol_s  | * T <br> * U  | Přenosový protokol. T = TCP <br> U = UDP | 
 | L7Protocol_s  | Název protokolu | Odvozený od cílový port |
 | FlowDirection_s | * Můžu = příchozí<br> * O = odchozí | Směr toku do/z NSG podle protokolu toku | 
@@ -111,16 +111,16 @@ Tady je polí na schéma a jejich místo
 ### <a name="notes"></a>Poznámky
     
 1. V případě AzurePublic a ExternalPublic toky zákazník, který vlastní že IP adresa virtuálního počítače Azure jsou v VMIP_s pole vyplněné, zatímco veřejné IP adresy se zatím připravují PublicIPs_s pole. Pro tyto typy dvě toku jsme používali VMIP_s a PublicIPs_s místo SrcIP_s a DestIP_s pole. Pro AzurePublic a ExternalPublicIP adresy jsme agregovat dále tak, aby byla minimální počet záznamů přijaté do pracovního prostoru log analytics zákazníka. (Toto pole bude brzy přestanou používat a jsme měli použít SrcIP_ a DestIP_s v závislosti na tom, jestli byl virtuální počítač azure zdroji nebo cíli v toku) 
-2. Podrobnosti o typech toků: Podle IP adresy používané v toku, jsme kategorizace toků v následující typy toku: 
-* IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure. 
-* Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure. 
-* S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route. 
-* P2S - (bod do lokality) některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k virtuální síti Azure přes bránu VPN.
-* AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku. 
-* ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
-* MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
-* UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
-* Neznámé – nelze mapovat buď IP adres v toků s topologií zákazníků v Azure stejně jako místní (lokalita).
+1. Podrobnosti o typech toků: Podle IP adresy používané v toku, jsme kategorizace toků v následující typy toku: 
+1. IntraVNet – obě IP adresy v toku se nachází ve stejné virtuální síti Azure. 
+1. Mezi virtuálními sítěmi – IP adresy v toku se nachází ve dvou různých virtuálních sítí Azure. 
+1. S2S – jeden (S2s) IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k Azure Virtual Network prostřednictvím brány VPN nebo Express Route. 
+1. P2S - (bod do lokality) některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do sítě zákazníka (lokalita) připojené k virtuální síti Azure přes bránu VPN.
+1. AzurePublic - některou z IP adres patří do virtuální sítě Azure při dalších IP adres patří do Azure interní veřejných IP adres ve vlastnictví společnosti Microsoft. Zákazník vlastní veřejné IP adresy nebude součástí tento typ toku. Například každý zákazník, který vlastní odesílání provozu do služby Azure (koncový bod služby Storage) virtuálního počítače by zařazených do kategorií podle typu tohoto toku. 
+1. ExternalPublic - některou z IP adres patří do virtuální sítě Azure IP adresa je veřejná IP adresa, která není v Azure, nebude hlášena jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi " FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
+1. MaliciousFlow - některou z IP adres patří do virtuální sítě azure IP adresa je veřejná IP adresa, která není v Azure a hlásí jako škodlivou v ASC informační kanály, které využívá analýzy provozu pro zpracování interval mezi" FlowIntervalStartTime_t"a"FlowIntervalEndTime_t". 
+1. UnknownPrivate - některou z IP adres patří do virtuální sítě Azure a dalších IP adres patří do rozsah privátních IP adres, jak jsou definovány v dokumentu RFC 1918 nemohly být namapovány analýzu provozu pro vlastní web nebo Azure Virtual Network zákazníka.
+1. Neznámé – nelze mapovat buď IP adres v toků s topologií zákazníků v Azure stejně jako místní (lokalita).
 
 ### <a name="next-steps"></a>Další kroky
 Pokud chcete získat odpovědi na nejčastější dotazy, naleznete v tématu [nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) podrobnosti o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md)

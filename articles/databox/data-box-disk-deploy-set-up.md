@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232878"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106640"
 ---
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Kurz: Rozbalení, připojení a odemknutí Azure Data Box Disku
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Kurz: Rozbalit, připojení a odemknutí disku Azure Data Box
 
 Tento kurz popisuje, jak rozbalit, připojit a odemknout Azure Data Box Disk.
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [Kurz: Objednání Azure Data Box Disku](data-box-disk-deploy-ordered.md).
+1. Dokončili jste [kurzu: Objednávka disku Azure Data Box](data-box-disk-deploy-ordered.md).
 2. Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.
 3. Máte klientský počítač, na který můžete nainstalovat odemykací nástroj Data Box Disku. Klientský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
@@ -70,7 +70,7 @@ Postup odemknutí disků se liší v závislosti na tom, jestli jste připojeni 
 Disky připojíte a odemknete pomocí následujících kroků.
      
 1. Na webu Azure Portal přejděte na **Obecné > Podrobnosti zařízení**. 
-2. Stáhněte si sadu nástrojů Data Box Disk odpovídající klientovi pro Windows. Tato sada nástrojů obsahuje 3 nástroje: Data Box Disk Unlock, Data Box Disk Validation a Data Box Disk Split Copy. 
+2. Stáhněte si sadu nástrojů Data Box Disk odpovídající klientovi pro Windows. Tato sada nástrojů obsahuje nástroje, 3: Data Box Disk odemknutí nástroj, nástroje pro Data Box Disk ověření a nástroj pro kopírování dat pole disku rozdělení. 
 
     V tomto postupu použijete jenom nástroj Data Box Disk Unlock. Ostatní dva nástroje použijeme později.
 
@@ -170,39 +170,39 @@ Disky připojíte a odemknete pomocí následujících kroků.
     
  
 5. Zadáním `y` pokračujte v instalaci. Skript nainstaluje tyto balíčky: 
-    - **epel-release** – Úložiště, které obsahuje následující tři balíčky. 
-    - **dislocker a fuse-dislocker** – Tento nástroj umožňuje dešifrovat disky zašifrované nástrojem BitLocker. 
-    - **ntfs-3g** – Balíček, který umožňuje připojení svazků NTFS. 
+   - **epel-release** – Úložiště, které obsahuje následující tři balíčky. 
+   - **dislocker a fuse-dislocker** – Tento nástroj umožňuje dešifrovat disky zašifrované nástrojem BitLocker. 
+   - **ntfs-3g** – Balíček, který umožňuje připojení svazků NTFS. 
  
-    Po úspěšné instalaci těchto balíčků se na terminálu zobrazí příslušné oznámení.     
-    ```
-    Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
-    ruby-libs.x86 64 0:1.8.7.374-5.el6 
-    Complete! 
-    Loaded plugins: fastestmirror, refresh-packagekit, security 
-    Setting up Remove Process 
-    Resolving Dependencies 
-    --> Running transaction check 
-    ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
-    Dependencies Resolved 
-    Package        Architecture        Version        Repository        Size 
-    Removing:  epel-release        noarch         6-8        @extras        22 k 
-    Transaction Summary                                 
-    Remove        1 Package(s) 
-    Installed size: 22 k 
-    Downloading Packages: 
-    Running rpmcheckdebug 
-    Running Transaction Test 
-    Transaction Test Succeeded 
-    Running Transaction 
-    Erasing : epel-release-6-8.noarch 
-    Verifying : epel-release-6-8.noarch 
-    Removed: 
-    epel-release.noarch 0:6-8 
-    Complete! 
-    Dislocker is installed by the script. 
-    OpenSSL is already installed.
-    ```
+     Po úspěšné instalaci těchto balíčků se na terminálu zobrazí příslušné oznámení.     
+     ```
+     Dependency Installed: compat-readline5.x86 64 0:5.2-17.I.el6 dislocker-libs.x86 64 0:0.7.1-8.el6 mbedtls.x86 64 0:2.7.4-l.el6        ruby.x86 64 0:1.8.7.374-5.el6 
+     ruby-libs.x86 64 0:1.8.7.374-5.el6 
+     Complete! 
+     Loaded plugins: fastestmirror, refresh-packagekit, security 
+     Setting up Remove Process 
+     Resolving Dependencies 
+     --> Running transaction check 
+     ---> Package epel-release.noarch 0:6-8 will be erased --> Finished Dependency Resolution 
+     Dependencies Resolved 
+     Package        Architecture        Version        Repository        Size 
+     Removing:  epel-release        noarch         6-8        @extras        22 k 
+     Transaction Summary                                 
+     Remove        1 Package(s) 
+     Installed size: 22 k 
+     Downloading Packages: 
+     Running rpmcheckdebug 
+     Running Transaction Test 
+     Transaction Test Succeeded 
+     Running Transaction 
+     Erasing : epel-release-6-8.noarch 
+     Verifying : epel-release-6-8.noarch 
+     Removed: 
+     epel-release.noarch 0:6-8 
+     Complete! 
+     Dislocker is installed by the script. 
+     OpenSSL is already installed.
+     ```
 
 6. Spusťte odemykací nástroj Data Box Disku. Zadejte klíč z webu Azure Portal, který jste získali v části [Připojení k diskům a získání klíče](#Connect-to-disks-and-get-the-passkey). Volitelně zadejte seznam svazků zašifrovaných nástrojem BitLocker, které se mají odemknout. Klíč a seznam svazků musí být zadané v jednoduchých uvozovkách. 
 
@@ -254,7 +254,7 @@ Disky připojíte a odemknete pomocí následujících kroků.
 
     ![Obsah Data Box Disku](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 

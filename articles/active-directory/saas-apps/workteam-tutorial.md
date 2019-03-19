@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Kurz: Integrace Azure Active Directory s Workteam
 
@@ -200,7 +200,7 @@ Azure AD uživatelům se přihlásit a Workteam povolit, musí být poskytnuty d
 
     a. V **název** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
 
-    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon@contoso.com**.
+    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon\@contoso.com**.
 
     c. Klikněte na **OK**.
 

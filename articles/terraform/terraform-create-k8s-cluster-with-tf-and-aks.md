@@ -9,17 +9,17 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: ce16e1fbc112c4bd807c42893685643dc0a13992
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759745"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009090"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
 
-V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit pomocí [Terraformu](http://terraform.io) a AKS cluster [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes):
+V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit pomocí [Terraformu](https://terraform.io) a AKS cluster [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes):
 
 > [!div class="checklist"]
 > * Použití HCL (Jazyk společnosti HashiCorp) k definování clusteru Kubernetes
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit po
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

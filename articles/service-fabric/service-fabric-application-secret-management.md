@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: a0003ee02c09ad8c99d6fa94935f96527c146e7d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 77aa6d48f499a94f8fe2f3ef4e2444a34d3b3176
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063807"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894729"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Spravovat šifrované tajné kódy aplikace Service Fabric
 Tento průvodce vás provede kroky pro správu tajných kódů v aplikaci Service Fabric. Tajné klíče může být žádné citlivé údaje, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovat ve formátu prostého textu.
@@ -41,7 +41,7 @@ Zadejte šifrované [parametr] [ parameters-link] v konfiguračním souboru Sett
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Section Name="MySettings">
     <Parameter Name="MySecret" IsEncrypted="true" Value="I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM=" />
   </Section>
@@ -64,7 +64,7 @@ Konfigurace souboru Settings.xml umožňuje přepsatelnými parametry, které mo
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Section Name="MySettings">
     <Parameter Name="MySecret" IsEncrypted="true" Value="" MustOverride="true" />
   </Section>

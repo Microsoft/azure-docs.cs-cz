@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865055"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086815"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: Rychlý start
 
@@ -74,8 +74,9 @@ Pokud již máte instalaci služby Azure AD Connect, vyberte **změnit přihlá�
 ![Azure AD Connect: Změnit přihlášení uživatele](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Pokračujte v průvodci, dokud nezískáte **povolit jednotné přihlašování** stránky. Poskytněte přihlašovací údaje správce domény pro každou službu Active Directory doménové struktury, které:
-    * Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
-    * Obsahuje uživatele, které chcete povolit pro bezproblémové jednotné přihlašování.
+
+* Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
+* Obsahuje uživatele, které chcete povolit pro bezproblémové jednotné přihlašování.
 
 Po dokončení průvodce je bezproblémového jednotného přihlašování povolená ve svém tenantovi.
 
@@ -126,11 +127,11 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
    - **Název hodnoty**: Azure AD adresa URL, které jsou předávány lístky protokolu Kerberos.
    - **Hodnota** (Data): **1** označuje zóny intranetu.
 
-    Výsledek vypadá takto:
+     Výsledek vypadá takto:
 
-    Název hodnoty: `https://autologon.microsoftazuread-sso.com`
+     Název hodnoty: `https://autologon.microsoftazuread-sso.com`
   
-    Hodnota (Data): 1
+     Hodnota (Data): 1
 
    >[!NOTE]
    > Pokud chcete zakázat některé uživatele pomocí bezproblémového jednotného přihlašování (například pokud tito uživatelé přihlásit na sdílené veřejné terminály), nastavte předchozí hodnoty na **4**. Tato akce přidá adresu URL služby Azure AD k zóně s omezeným přístupem a neustále se nezdaří bezproblémového jednotného přihlašování.
@@ -162,9 +163,9 @@ Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
    - **Typ hodnoty**: ***REG_DWORD***.
    - **Údaj hodnoty**: ***00000001***.
  
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>Důležité informace o prohlížeči
 

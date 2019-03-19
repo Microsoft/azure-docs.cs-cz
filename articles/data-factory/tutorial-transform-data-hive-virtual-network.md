@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0601ad9b644c389ff37d37deab96ebf4e110ddd3
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 8ab647a7d97ace0d0f67fa462ada06901184933f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574580"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102988"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který transformuje data pomocí aktivity Hivu v clusteru HDInsight, který je ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -67,7 +67,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 3. Vytvořte složku s názvem **hivescripts**.
 4. Uložte soubor **hivescript.hql** do podsložky **hivescripts**.
 
- 
+  
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
