@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000400"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupin zabezpečení sítě s využitím Network Watcheru a Grafany
 
@@ -35,7 +35,7 @@ Může mít mnoho skupin zabezpečení sítě v síti s povoleno protokolování
 
 Protokoly toků NSG jsou povolené pomocí Network Watcheru a jsou uloženy v úložišti objektů blob v Azure. Modul plug-in se používá k připojení a zpracování protokolů toku z úložiště objektů blob a odeslat je do ElasticSearch.  Jakmile tok protokoly se ukládají do ElasticSearch, mohou být analyzovat a vizualizovat do přizpůsobené řídicí panely v Grafana.
 
-![Skupina zabezpečení sítě Grafana sledovací proces sítě](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
+![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Postup instalace
 
@@ -182,13 +182,13 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-Další informace o instalaci, naleznete v tématu [instalace v Debianu / Ubuntu](http://docs.grafana.org/installation/debian/).
+Další informace o instalaci, naleznete v tématu [instalace v Debianu / Ubuntu](https://docs.grafana.org/installation/debian/).
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Přidání serveru funkce ElasticSearch jako zdroj dat
 
 Dále je třeba přidat index funkce ElasticSearch jako zdroj dat obsahující protokolů toku. Zdroj dat můžete přidat tak, že vyberete **přidat zdroj dat** a vyplnění formuláře příslušné informace. Ukázku této konfigurace najdete na následujícím snímku obrazovky:
 
-![Přidat zdroj dat](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
+![Přidání zdroje dat](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 

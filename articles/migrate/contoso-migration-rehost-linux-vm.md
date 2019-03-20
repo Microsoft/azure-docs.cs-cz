@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103481"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele aplikace Linux on-premises do virtuálních počítačů Azure
 
@@ -314,17 +314,17 @@ Nyní můžete spustit Správce společnosti Contoso, replikaci **OSTICKETWEB** 
 
 3. Vyberou **OSTICKETWEB** pro replikaci virtuálního počítače. 
 
-    - V této fázi vyberou **OSTICKETWEB** pouze, protože virtuální síť a podsíť musí obě být vybrána, a virtuální počítače nejsou ve stejné podsíti.
-    - Po povolení replikace pro virtuální počítač, Site Recovery automaticky nainstaluje službu Mobility.
+   - V této fázi vyberou **OSTICKETWEB** pouze, protože virtuální síť a podsíť musí obě být vybrána, a virtuální počítače nejsou ve stejné podsíti.
+   - Po povolení replikace pro virtuální počítač, Site Recovery automaticky nainstaluje službu Mobility.
 
-    ![Povolení replikace](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![Povolení replikace](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. Ve vlastnostech virtuálního počítače, vyberte účet, který se používá procesový server při automatické instalaci služby Mobility na počítači.
 
      ![Služba Mobility](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. v **nastavení replikace** > **konfigurace nastavení replikace**, ověřte, zda je správná zásada replikace použít a vyberte **povolením replikace**.
-6.  Sledují průběh replikace v **úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
+6. Sledují průběh replikace v **úlohy**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 
 
 

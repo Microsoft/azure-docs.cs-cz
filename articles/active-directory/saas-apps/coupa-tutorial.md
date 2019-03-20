@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5e309bc077b29740b0d6e597164bcbcc5448f9
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Integrace Azure Active Directory s Coupa
 
@@ -111,6 +111,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coupa, proveďte následuj�
     > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Coupa klienta](https://success.coupa.com/Support/Contact_Us?) tuto výhodu získáte.
 
     b. V **identifikátor** pole, zadejte adresu URL:
+
     | Prostředí  | zprostředkovatele identity |
     |:-------------|----|
     | Izolovaný prostor | `devsso35.coupahost.com`|
@@ -118,6 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coupa, proveďte následuj�
     | | |
 
     c. V **adresy URL odpovědi** textové pole, zadejte adresu URL:
+
     | Prostředí | zprostředkovatele identity |
     |------------- |----|
     | Izolovaný prostor | `https://devsso35.coupahost.com/sp/ACS.saml2`|
@@ -174,7 +176,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

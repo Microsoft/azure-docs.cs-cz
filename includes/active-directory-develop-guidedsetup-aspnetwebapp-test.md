@@ -3,8 +3,8 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203595"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -63,7 +63,7 @@ Testování přístupu jako anonymní uživatel k řadiči chráněný pomocí `
 
 Zobrazí se výzva k ověření použijte zobrazení chráněných kontroleru.
 
-## <a name="advanced-options"></a>Rozšířené možnosti
+## <a name="advanced-options"></a>Pokročilá nastavení
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Ochranu celého webu
@@ -80,20 +80,20 @@ Ve výchozím nastavení při sestavování aplikace vytvořené v této příru
 
 Pokud chcete omezit přístup přihlašování uživatelů pro vaši aplikaci, jsou k dispozici několik možností:
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Možnost 1: Omezení uživatelů z instance Active Directory pouze jedna organizace k přihlášení do aplikace (jeden tenant)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Omezení přihlášení k aplikaci na uživatele pouze z instance Active Directory jedné organizace (jeden tenant)
 
-Tato možnost je běžným scénářem *aplikace LOB*: Pokud chcete, aby vaše aplikace tak, aby přijímal přihlášení pouze z účtů, které patří k určité instanci Azure Active Directory (včetně *účty hostů*dané instance) proveďte následující:
+Tato možnost je běžným scénářem *aplikace LOB*: Pokud chcete, aby vaše aplikace tak, aby přijímal přihlášení pouze z účtů, které patří k určité instanci Azure Active Directory (včetně *účty hostů* dané instance) proveďte následující:
 
 1. V **web.config** souboru, změňte hodnotu `Tenant` parametr z `Common` název tenanta organizace, jako například `contoso.onmicrosoft.com`.
 2. Ve vaší [třída OWIN Startup](#configure-the-authentication-pipeline), nastavte `ValidateIssuer` argument `true`.
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>Možnost 2: Omezení přístupu k aplikaci pro uživatele v konkrétním seznamu organizací
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>Option 2: Omezení přístupu k aplikaci pro uživatele v konkrétním seznamu organizací
 
 Můžete omezit přístup k přihlášení k pouze uživatelské účty, které jsou v organizaci Azure AD, který je v seznamu povolených organizací:
 1. Ve vaší [třída OWIN Startup](#configure-the-authentication-pipeline), nastavte `ValidateIssuer` argument `true`.
 2. Nastavte hodnotu `ValidIssuers` parametru do seznamu povolených organizací.
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Možnost 3: Použití vlastní metodu k ověření vystavitele
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Možnost 3: Použít vlastní metodu k ověření vystavitele
 
 Můžete implementovat vlastní metodu k ověření vystavitele s použitím **IssuerValidator** parametru. Další informace o tom, jak tento parametr použijte, přečtěte si informace o [parametry tokenvalidationparameters třída](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) na webové stránce MSDN.
 

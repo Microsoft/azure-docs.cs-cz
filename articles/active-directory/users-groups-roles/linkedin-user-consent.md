@@ -1,5 +1,5 @@
 ---
-title: LinkedIn integrace sdílení dat a vyjádření souhlasu – Azure Active Directory | Dokumentace Microsoftu
+title: Účet LinkedIn připojení sdílení dat a vyjádření souhlasu – Azure Active Directory | Dokumentace Microsoftu
 description: Vysvětluje, jak integrace LinkedIn sdílí data prostřednictvím aplikace Microsoftu ve službě Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71eeed62c6de2a3771909e8489ca816930993435
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200442"
 ---
-# <a name="linkedin-integration-data-sharing-and-consent"></a>Sdílení dat integrace Linkedinu a vyjádření souhlasu
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>Sdílení dat prostřednictvím připojení se účet LinkedIn a vyjádření souhlasu
 
-Jako správce Azure Active Directory (Azure AD) můžete povolit uživatelům ve vaší organizaci vyjádřit souhlas se připojit své pracovní nebo školní účet ke svému účtu LinkedIn. Když se uživatelé připojí svoje účty, jsou k dispozici v některých aplikacím a službám Microsoftu informace a vybraná vystoupení z Linkedinu. Uživatelé také mohou očekávat své síťové prostředí na Linkedinu vylepšené a rozšiřují o informace od Microsoftu.
+Umožníte uživatelům ve vaší organizaci Active Directory (Azure AD) vyjádřit souhlas se připojit své pracovní nebo školní účet ke svému účtu LinkedIn. Jakmile se uživatel připojí svoje účty, jsou k dispozici v některých aplikacím a službám Microsoftu informace a vybraná vystoupení z Linkedinu. Uživatelé také mohou očekávat své síťové prostředí na Linkedinu vylepšené a rozšiřují o informace od Microsoftu.
 
 Pokud chcete zobrazit informace Linkedinu v aplikacím a službám Microsoftu, uživatelé musí udělit souhlas připojit své účty Microsoft a LinkedIn. Uživatelům se výzva k připojit své účty při prvním kliknutí zobrazíte informace LinkedIn jiného uživatele na kartě profil v Outlooku, Onedrivu nebo Sharepointu Online. S účtem LinkedIn nejsou povolené plně pro vaše uživatele, dokud se souhlas ještě neznáte a připojit své účty.
 
@@ -32,13 +32,13 @@ Pokud chcete zobrazit informace Linkedinu v aplikacím a službám Microsoftu, u
 
 Přístup k informacím o Linkedinu v rámci aplikacím a službám Microsoftu usnadňuje uživatelům připojení, zapojení a vytvářet profesionální vztahy s kolegy, zákazníky a partnery uvnitř i mimo vaši organizaci. Noví uživatelé mohou rychle začít rychlejší připojení s kolegy, získání informací o nich a snadného přístupu k další informace. Tady je příklad toho, jak se zobrazuje na kartě profil v aplikacích Microsoft, LinkedIn informace:
 
-![Povolení integrace LinkedIn](./media/linkedin-user-consent/display-example.png)
+![Povolení integrace LinkedIn ve vaší organizaci](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-integration"></a>Povolit a oznamujeme integrace LinkedIn
 
 Musíte být správce Azure Active Directory ke správě nastavení pro vaši organizaci. Můžete ji povolit pro všechny uživatele, nebo pro konkrétní skupinu uživatelů.
 
-1. Chcete-li povolit nebo zakázat integraci, postupujte podle kroků v [integrace LinkedIn](linkedin-integration.md).
+1. Chcete-li povolit nebo zakázat integraci, postupujte podle kroků v [souhlas integrace LinkedIn ve vaší organizaci Azure AD](linkedin-integration.md).
 2. Když oznamujeme integrace LinkedIn ve vaší organizaci, přejděte na vaši uživatelé v části Nejčastější dotazy o [LinkedIn informace v aplikacím a službám Microsoftu](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Tento článek poskytuje informace o tom, kde informace LinkedIn se zobrazí, jak se připojit účty a další.
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Souhlas uživatele pro přístup k datům v Microsoft a LinkedIn

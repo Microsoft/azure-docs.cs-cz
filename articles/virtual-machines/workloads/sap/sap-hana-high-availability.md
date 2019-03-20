@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180836"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -193,6 +193,9 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 
 Další informace o požadované porty pro SAP HANA, najdete v kapitole [připojení k databázím Tenanta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v [databází Tenantů SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) průvodce nebo [2388694 Poznámka SAP][2388694].
 
+> [!IMPORTANT]
+> Nepovolujte TCP časová razítka na virtuálních počítačích Azure umístěných za nástrojem pro vyrovnávání zatížení Azure. Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání. Nastavte parametr **net.ipv4.tcp_timestamps** k **0**. Podrobnosti najdete v tématu [sondy stavu nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Poznámka SAP [2382421](https://launchpad.support.sap.com/#/notes/2382421) aktuálně obsahuje nesouhlasnou příkaz nutnost nastavit net.ipv4.tcp_timestamps na hodnotu 1. Pro virtuální počítače Azure umístěných za nástrojem pro vyrovnávání zatížení Azure, nastavte parametr **net.ipv4.tcp_timestamps** k **0**. 
 
 ## <a name="create-a-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 

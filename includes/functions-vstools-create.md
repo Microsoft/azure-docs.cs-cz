@@ -8,33 +8,33 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5c82d7ad3cf9c2318d3bf5d0157f00730a24a968
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457980"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227214"
 ---
-Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
+Šablona projektu Azure Functions v sadě Visual Studio vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Můžete použít aplikaci function app na skupiny funkce jako logickou jednotku pro správu, nasazování a sdílení prostředků.
 
-1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost **Nový** > **Projekt**.
+1. V sadě Visual Studio na **souboru** nabídce vyberte možnost **nový** > **projektu**.
 
-2. V dialogovém okně **Nový projekt** vyberte **Nainstalované**, rozbalte uzel **Visual C#** > **Cloud**, vyberte **Azure Functions**, zadejte **název** vašeho projektu a klikněte na **OK**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
+2. V **nový projekt** dialogu **nainstalováno** > **Visual C#**   >  **cloudu**  >  **Azure Functions**. Zadejte název pro váš projekt a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
 
     ![Dialogové okno Nový projekt pro vytvoření funkce v sadě Visual Studio](./media/functions-vstools-create/functions-vs-new-project.png)
 
 3. Použijte nastavení uvedená v tabulce pod obrázkem.
 
-    ![Dialogové okno Nová funkce v sadě Visual Studio](./media/functions-vstools-create/functions-vs-new-function.png) 
+    ![Dialogové okno nové funkce v sadě Visual Studio](./media/functions-vstools-create/functions-vs-new-function.png) 
 
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Verze** | Azure Functions 2.x <br />(.NET Core) | Vytvoří se projekt funkce, který používá modul runtime Azure Functions verze 2.x, která podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../articles/azure-functions/functions-versions.md).   |
-    | **Šablona** | Trigger HTTP | Vytvoří se funkce, kterou aktivuje požadavek HTTP. |
-    | **Účet úložiště**  | Emulátor úložiště | Trigger HTTP nepoužívá připojení účtu úložiště. Všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu úložiště. |
+    | **Verze** | Azure Functions 2.x <br />(.NET Core) | Toto nastavení se vytvoří projekt funkce, který používá modul runtime verze 2.x Azure Functions, která podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu [verze modulu runtime Azure Functions cílové](../articles/azure-functions/functions-versions.md).   |
+    | **Šablona** | Trigger HTTP | Toto nastavení se vytvoří funkce aktivované službou požadavek HTTP. |
+    | **Účet úložiště**  | Emulátor úložiště | Aktivační událost HTTP nepoužívá připojení k účtu úložiště Azure. Všechny ostatní typy triggerů vyžadují platný připojovací řetězec účtu úložiště. |
     | **Přístupová práva** | Anonymní | Vytvořenou funkci může aktivovat libovolný klient bez zadání klíče. Toto nastavení autorizace usnadňuje testování nových funkcí. Další informace o klíčích a autorizace najdete v části věnovaném [klíčům autorizace](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v tématu [HTTP a webhookové vazby](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
     > [!NOTE]
-    > Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Při výběru výchozí úrovně `Function`, je potřeba k dispozici [klíč funkce](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
+    > Ujistěte se, že nastavíte **přístupová práva** k `Anonymous`. Pokud se rozhodnete výchozí úroveň `Function`, je nutné k dispozici [klíč funkce](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) v žádosti o přístup ke koncovému bodu funkce.
     
-4. Kliknutím na **OK** vytvoříte projekt funkce a funkci aktivovanou HTTP.
+4. Vyberte **OK** vytvořit projekt funkcí a funkci aktivovanou protokolem HTTP.

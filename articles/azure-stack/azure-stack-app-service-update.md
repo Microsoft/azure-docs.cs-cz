@@ -11,16 +11,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c993322bdf4266939eab854e217cae6e90326d29
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 1ea079373edc9b9f1dde6038f1e02e3d7036e052
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991559"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890487"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizace služby Azure App Service v Azure stacku
 
@@ -52,7 +52,7 @@ Během tohoto procesu inovace bude:
 
 Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte podle těchto kroků:
 
-1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate4installer)
+1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate5installer)
 
 2. Spustit appservice.exe jako správce
 
@@ -72,13 +72,13 @@ Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte p
 
    1. Klikněte na tlačítko **připojit** vedle **předplatná Azure Stack** pole.
         * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Klikněte na tlačítko **přihlášení**.
-        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: *cloudadmin@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **Sign In**.
+        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například *cloudadmin\@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **Sign In**.
    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
    4. Pokud se detekuje existující nasazení služby App Service, klikněte prostředek skupiny a účet úložiště bude vyplní a šedě.
    5. Klikněte na tlačítko **Další** Zkontrolujte souhrn upgradu.
 
-    ![Nezjistila se instalace služby App Service][3]
+      ![Nezjistila se instalace služby App Service][3]
 
 8. Na stránce souhrnu:
    1. Zkontrolujte provedený výběr. Chcete-li provést změny, použijte **předchozí** tlačítka najdete předchozí stránky.

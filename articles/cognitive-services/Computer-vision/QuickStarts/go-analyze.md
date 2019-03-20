@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4e44bce29b1a9ca83cae009df5b10484d0b2739d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e783181e737a235a83149b1f22d699fe0aef0bfb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848656"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Rychlý start: Analýza vzdálené image pomocí rozhraní REST API a přejděte v počítačové zpracování obrazu
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Zkopírujte do textového editoru následující kód.
+1. Kopírování níže uvedeného kódu do textového editoru.
 1. Proveďte v kódu na příslušných místech následující změny:
     1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
     1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
@@ -177,10 +177,6 @@ func main() {
   "requestId": "a92f89ab-51f8-4735-a58d-507da2213fc2"
 }
 ```
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud už tuto ukázku nepotřebujete, odstraňte zkompilovaný balíček a soubor, ze kterého se tento balíček zkompiloval, a pak zavřete okno příkazového řádku a textový editor.
 
 ## <a name="next-steps"></a>Další postup
 

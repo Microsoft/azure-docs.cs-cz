@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311201"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225089"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -55,18 +55,13 @@ Průzkumník služby Azure Storage se podporuje v následujících verzích syst
 
 Průzkumník služby Azure Storage se podporuje v následujících distribucích systému Linux:
 
-* Ubuntu 16.04 x64 (doporučeno)
-* Ubuntu 17.10 x64
+* Ubuntu 18.04 x64
+* Ubuntu 16.04 x64
 * Ubuntu 14.04 x64
 
 Průzkumník služby Azure Storage může pracovat na jiné distribuce, ale pouze uvedené výše se oficiálně podporuje.
 
-Také musíte mít následující závislosti nebo knihovny nainstalována pro spouštění Průzkumníka služby Azure Storage v Linuxu:
-
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* libsecret (Poznámka: libsecret 1.so.0 musí být k dispozici na svém počítači. Pokud máte jinou verzi libsecret nainstalované, můžete zkusit obnovitelné libsecret 1.so.0 propojení jeho soubor .so)
-* libgconf-2-4
-* Aktuální GCC
+Další nápovědu k instalaci Průzkumníka služby Storage na platformě Linux, najdete v článku [Průvodce odstraňováním potíží](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies).
 
 Průzkumník služby Azure Storage [zpráva k vydání verze](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) obsahují konkrétní kroky pro některých distribucích.
 

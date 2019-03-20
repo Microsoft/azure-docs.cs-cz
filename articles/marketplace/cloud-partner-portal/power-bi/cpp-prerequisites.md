@@ -12,18 +12,19 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f9e57c00744301fefed32ed3e6526d3c1f52b362
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5014a9cdf9a8811aa6081476f9ec6c41be0ff906
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012943"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Aplikace Power BI nabízejí požadavky
 
-Tento článek obsahuje technické a podnikové požadavky, které je potřeba splnit, předtím, než můžete publikovat aplikaci Power BI nabízet na webu marketplace AppSource.
+Tento článek obsahuje technické a podnikové požadavky, které je potřeba splnit, předtím, než můžete publikovat aplikaci Power BI nabízet na webu marketplace AppSource.  Pokud jste tak již neučinili, přečtěte si [Office 365, Dynamics 365, PowerApps a Power BI nabízí průvodce publikováním](../../appsource-offer-publishing-guide.md).
+
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
@@ -33,16 +34,16 @@ Po aplikaci služby je vytvořený a otestovaný v Power BI, měli byste uložit
 
 ## <a name="business-requirements"></a>Obchodní požadavky
 
-Obchodní požadavky patří procesní, smluvní a právní závazky:
+Obchodní požadavky zahrnují procesní, smluvní a právní závazky.  Musíte mít:
 
--   Musí být vydavatele na webu marketplace zaregistrovaný cloud. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
+- Být vydavatele na webu marketplace zaregistrovaný cloud. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
 
     > [!NOTE] 
     > Použijte stejný účet Microsoft Developer Center registrace k přihlášení [portál partnerů cloudu](https://cloudpartner.azure.com). By měl mít pouze jeden účet Microsoft pro svoje nabídky na AppSource. Účty by neměly být specifické pro jednotlivé služby nebo nabídky.
  
--   Zodpovídáte za zpřístupnění technické podpory pro zákazníky přiměřené způsobem.
--   Je nutné zadat obsah, který splňuje kritéria pro vaši nabídku uvedené na AppSource. Další informace najdete v tématu [mají aplikace do seznamu na AppSource? Tady je způsob](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
--   Musíte dodržovat [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement).
+- Zákazníkům je třeba zpřístupnit z obchodního hlediska přiměřenou technickou podporu.
+- Zadejte obsah, který splňuje kritéria pro uvedené na AppSource vaší nabídky. Další informace najdete v tématu [mají aplikace do seznamu na AppSource? Tady je způsob](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- V souladu s [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement).
 
 
 ## <a name="next-steps"></a>Další postup

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2da89e674b967287150b2e8f3a98fc25df2af81e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fe653d36b2c527391a2f6d4ce33b89ba8dd648ac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202788"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
@@ -34,7 +34,7 @@ V některých případech budete chtít nakonfigurovat konfigurační soubory, m
 * Storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
-* yarn site.xml
+* yarn-site.xml
 * Server.Properties (Konfigurace zprostředkovatele kafka)
 
 Existují tři způsoby použití bootstrap:
@@ -131,7 +131,6 @@ V šabloně Resource Manageru můžete spuštění:
 * [Vytvořte clustery systému Apache Hadoop v HDInsight] [ hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
 * [Vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script]
 * [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]
-* [Instalace a použití Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install.md).
 * [Instalace a využít Apache Giraph u clusterů HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
@@ -142,7 +141,7 @@ V šabloně Resource Manageru můžete spuštění:
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Fáze při vytváření clusteru"
 
-## <a name="appendix-powershell-sample"></a>Dodatek: Ukázkový Powershellu
+## <a name="appendix-powershell-sample"></a>Dodatek: Ukázka PowerShellu
 Tento skript Powershellu vytvoří HDInsight cluster a přizpůsobí nastavení Hive:
 
 ```powershell

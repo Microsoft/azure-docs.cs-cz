@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8569cae1-87dd-4c40-9bbb-527ac80d6a96
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: f95eac0cdb0fa7d5f9a2882138affc09ff489956
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d58da4781a7c5c93d897e0efd7cf3d5aee612d78
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900315"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Kurz: Integrace Azure Active Directory s Figma
 
@@ -130,6 +131,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Figma, proveďte následuj�
     | Název | Zdrojový atribut|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
+    | `displayName` | `user.displayname` |
+    | `title` | `user.jobtitle` |
+    | `emailaddress` | `user.mail` |
     | `familyName` | `user.surname` |
     | `givenName` | `givenName` |
     | `userName` | `user.userprincipalname` |
@@ -158,23 +162,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Figma, proveďte následuj�
   
 ### <a name="configure-figma-single-sign-on"></a>Konfigurace Figma jednotné přihlašování
 
-1. V okně jiné webové prohlížeče, otevřete web Figma [tady](https://goo.gl/forms/XkRB1z5ed4eVUzXn2) jako správce.
-
-2. Na **Konfigurace jednotného přihlašování SAML Figma** stránce, proveďte následující kroky:
-
-    ![Konfigurace jednotného přihlašování](./media/figma-tutorial/configure01.png)
-
-    a. V **e-mailová adresa** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
-
-    b. V **jméno** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
-
-    c. Vyberte požadovanou možnost podle Figma organizace.
-
-    d. V **název vaší organizace na Figma** textového pole zadejte název vaší organizace.
-
-    e. V **adresa URL zprostředkovatele Identity (IDP) metadat** vložit do textového pole **adresa Url federačních metadat aplikace** který jste zkopírovali z portálu Azure portal.
-
-    f. Klikněte na tlačítko **odeslat**.
+Konfigurace jednotného přihlašování na straně Figma, budete muset postupovat podle článku Figma [proces konfigurace Azure Active Directory SAML SSO](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

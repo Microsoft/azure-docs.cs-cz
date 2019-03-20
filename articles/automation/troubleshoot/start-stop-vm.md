@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861056"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení
 
@@ -141,7 +141,7 @@ Přečtěte si informace následující možná řešení problému nebo místa 
 
 * Spuštění a zastavení virtuálních počítačů, účet Spustit jako pro účet Automation musí mít příslušná oprávnění k virtuálnímu počítači. Zjistěte, jak zkontrolovat oprávnění na prostředek, najdete v článku [rychlý start: Zobrazit role přiřazené uživateli pomocí webu Azure portal](../../role-based-access-control/check-access.md). Budete muset zadat Id aplikace instančního objektu služby používá účet Spustit jako. Tuto hodnotu můžete načíst tak, že přejdete do vašeho účtu Automation na webu Azure Portal, vyberte **účty spustit jako** pod **nastavení účtu** a kliknutím na příslušný účet Spustit jako.
 
-* Pokud virtuální počítač má problém s počáteční nebo rušení přidělení, toto chování může způsobovat chyby v samotných virtuálních počítačů. Některé příklady nebo potenciální problémy se aktualizace se právě používá při pokusu o ukončení služby. program přestane reagovat a další). Přejděte do prostředku vašeho virtuálního počítače a zkontrolujte, **protokoly aktivit** zobrazíte, pokud nejsou žádné chyby v protokolech. Taky může pokusit přihlásit k virtuálnímu počítači, pokud existují nějaké chyby v protokolech událostí.
+* Pokud virtuální počítač má problém s počáteční nebo rušení přidělení, toto chování může způsobovat chyby v samotných virtuálních počítačů. Některé příklady nebo potenciální problémy se aktualizace se právě používá při pokusu o ukončení služby. program přestane reagovat a další). Přejděte do prostředku vašeho virtuálního počítače a zkontrolujte, **protokoly aktivit** zobrazíte, pokud nejsou žádné chyby v protokolech. Taky může pokusit přihlásit k virtuálnímu počítači, pokud existují nějaké chyby v protokolech událostí. Další informace o řešení potíží s vašeho virtuálního počítače najdete v tématu [službě řešení potíží s Azure virtual machines](../../virtual-machines/troubleshooting/index.md)
 
 ## <a name="custom-runbook"></a>Scénář: Moje vlastní sady runbook se nezdaří spuštění nebo zastavení virtuálních počítačů
 

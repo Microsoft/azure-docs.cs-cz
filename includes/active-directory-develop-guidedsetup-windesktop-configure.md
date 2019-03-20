@@ -4,7 +4,7 @@ description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203183"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Registrace vaší aplikace v jednom ze dvou způsobů.
 
-### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
+### <a name="option-1-express-mode"></a>Option 1: Expresní režim
 
 Můžete rychle registrace vaší aplikace následujícím způsobem:
 1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
@@ -38,7 +38,7 @@ Můžete rychle registrace vaší aplikace následujícím způsobem:
 
 5. Postupujte podle pokynů pro získání ID aplikace a vložte ho do svého kódu.
 
-### <a name="option-2-advanced-mode"></a>Možnost 2: Rozšířeném režimu
+### <a name="option-2-advanced-mode"></a>Option 2: Rozšířený režim
 
 Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
 1. Pokud jste ještě nezaregistrovali vaši aplikaci, přejděte [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).

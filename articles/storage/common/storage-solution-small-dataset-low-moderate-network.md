@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 7cdaebe62c7071b26c29e599bb0614dbe7631085
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124299"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat pro malé datové sady s nízkými do střední šířka pásma sítě
  
@@ -49,16 +49,16 @@ Možnosti doporučení v tomto scénáři jsou:
 
 Následující tabulka shrnuje rozdíly mezi klíčové funkce.
 
-| Funkce                                                            | Azure Storage Explorer                    | portál Azure  | AzCopy<br>Azure PowerShell<br>Azure CLI            | Rozhraní REST API služby Azure Storage nebo sady SDK |
-|----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
-| Dostupnost                                                       | Stáhnout a nainstalovat <br>Samostatný nástroj | Nástroje na prozkoumávání založeného na webu na webu Azure portal           | Nástroj příkazového řádku |Programovatelný rozhraní v rozhraní .NET, Java, Python, JavaScript, C++, Go, Ruby a PHP                                                         |
-| Grafické rozhraní                                              | Ano                                       | Ano                                                     | Ne                | Ne                                                      |
-| Podporované platformy                                              | Windows, Mac, Linux                       | Webové     |Windows, Mac, Linux     |Všechny platformy                                                         |
-| Povolené operace úložiště objektů Blob<br>pro objekty BLOB a složek            | Odeslat<br>Ke stažení<br>Spravovat    | Odeslat<br>Ke stažení<br>Spravovat  |Odeslat<br>Ke stažení<br>Spravovat             | Ano, přizpůsobitelné                                                        |
-| Povolené úložiště Data Lake Gen1<br>operace pro soubory a složky  | Odeslat<br>Ke stažení<br>Spravovat                | Ne |Odeslat<br>Ke stažení<br>Spravovat                   |      Ne                                                   |
-| Povolené operace služby File storage<br>pro soubory a adresáře        | Odeslat<br>Ke stažení<br>Spravovat       | Odeslat<br>Ke stažení<br>Spravovat   |Odeslat<br>Ke stažení<br>Spravovat |                                                         |Ano, přizpůsobitelné
-| Povolená operace s tabulkou úložiště<br>pro tabulky                      |Spravovat                            | Ne            |Podpora tabulek v AzCopy v7 |Ano, přizpůsobitelné|
-| Povolené Queue storage                                              | Spravovat                                    | Ne  |Ne | Ano, je přizpůsobitelný|
+| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API služby Azure Storage nebo sady SDK |
+|---------|------------------------|--------------|-----------------------------------------|---------------------------------|
+| Dostupnost | Stáhnout a nainstalovat <br>Samostatný nástroj | Nástroje na prozkoumávání založeného na webu na webu Azure portal | Nástroj příkazového řádku |Programovatelný rozhraní v rozhraní .NET, Java, Python, JavaScript, C++, Go, Ruby a PHP |
+| Grafické rozhraní | Ano | Ano | Ne | Ne |
+| Podporované platformy | Windows, Mac, Linux | Webové |Windows, Mac, Linux |Všechny platformy |
+| Povolené operace úložiště objektů Blob<br>pro objekty BLOB a složek | Odeslat<br>Ke stažení<br>Spravovat | Odeslat<br>Ke stažení<br>Spravovat |Odeslat<br>Ke stažení<br>Spravovat | Ano, přizpůsobitelné |
+| Povolené úložiště Data Lake Gen1<br>operace pro soubory a složky | Odeslat<br>Ke stažení<br>Spravovat | Ne |Odeslat<br>Ke stažení<br>Spravovat                   | Ne |
+| Povolené operace služby File storage<br>pro soubory a adresáře | Odeslat<br>Ke stažení<br>Spravovat | Odeslat<br>Ke stažení<br>Spravovat   |Odeslat<br>Ke stažení<br>Spravovat | Ano, přizpůsobitelné |
+| Povolená operace s tabulkou úložiště<br>pro tabulky |Spravovat | Ne |Podpora tabulek v AzCopy v7 |Ano, přizpůsobitelné|
+| Povolené Queue storage | Spravovat | Ne  |Ne | Ano, je přizpůsobitelný|
 
 
 ## <a name="next-steps"></a>Další postup

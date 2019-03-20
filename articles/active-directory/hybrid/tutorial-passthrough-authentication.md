@@ -11,12 +11,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccc2941e1f3bbc4df0bf4dfbf55311c9e095fc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098038"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz:  Integrace jedné doménové struktury AD s využitím předávacího ověřování (PTA)
 
@@ -80,7 +80,7 @@ Pokud chcete dokončit vytváření virtuálního počítače, je potřeba dokon
 
 1. Správce technologie Hyper-V, dvakrát klikněte na virtuální počítač
 2. Klikněte na tlačítko Start.
-3.  Jste vyzváni k "Stisknutím libovolné klávesy pro spuštění z CD nebo DVD". Pokračujte a udělat.
+3. Jste vyzváni k "Stisknutím libovolné klávesy pro spuštění z CD nebo DVD". Pokračujte a udělat.
 4. V nabídce start systému Windows Server do obrazovky vyberte svůj jazyk a klikněte na tlačítko **Další**.
 5. Klikněte na tlačítko **nainstalovat**.
 6. Zadejte klíč licence a klikněte na tlačítko **Další**.
@@ -250,9 +250,9 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.
-![Ověření](media/tutorial-password-hash-sync/verify1.png)
+   ![Ověření](media/tutorial-password-hash-sync/verify1.png)
 
 Máte teď úspěšně nastavení hybridního prostředí identit, můžete použít k testování a seznamte se s co Azure může nabídnout.
 

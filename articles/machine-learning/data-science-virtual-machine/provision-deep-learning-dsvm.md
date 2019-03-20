@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250802"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845184"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřízení pro hloubkové učení na virtuálním počítači Azure 
 
@@ -49,10 +49,10 @@ Tady jsou kroky pro vytvoření instance aplikace virtuální počítač pro hlo
 > [!NOTE]
 > DLVM podporuje všechny síťového adaptéru a ND řady instancí virtuálního počítače s GPU. Při zřizování DLVM, musíte zvolit jedno z umístění v Azure, který má grafické procesory. Zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) stránce dostupných umístění a zkuste najít **NC-Series**, **řada NCv2**, **řady NCv3-Series** , nebo **i řada ND-Series** pod **Compute**. 
 
-   2. **Nastavení**: Vyberte jednu z řady síťový adaptér (NC, NCv2, NCv3) nebo řady ND GPU velikosti virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+1. **Nastavení**: Vyberte jednu z řady síťový adaptér (NC, NCv2, NCv3) nebo řady ND GPU velikosti virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvoření účtu úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **Souhrn**: Ověřte správnost všech informací, které jste zadali.
-   5. **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+1. **Souhrn**: Ověřte správnost všech informací, které jste zadali.
+1. **Koupit**: Klikněte na tlačítko **koupit** zahájíte zřizování. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
 
 > [!NOTE]
 > Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
@@ -66,7 +66,7 @@ Po vytvoření virtuálního počítače můžete do něj pomocí přihlašovac�
 
 ### <a name="linux-edition"></a>Edice pro Linux
 
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Na klientech systému Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Na klientech systému Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v našich testech. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -76,7 +76,7 @@ Po vytvoření virtuálního počítače se můžete přihlásit se pomocí prot
 #### <a name="installing-and-configuring-x2go-client"></a>Instalace a konfigurace X2Go klienta
 Linux DLVM už zřízeny X2Go serveru a připravené tak, aby přijímal připojení klienta. Pro připojení k desktopu grafické virtuálního počítače s Linuxem, proveďte následující postup u svého klienta:
 
-1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 2. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
      * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.

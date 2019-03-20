@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805473"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998407"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API
 
-V současné době zamítnout přiřazení **jen pro čtení** a lze nastavit pouze společností Microsoft. Nemůžete sice vytvářet vlastní přiřazení zamítnutí, můžete ale vytvořit jejich seznam, protože můžou ovlivnit účinnost vašich oprávnění. Tento článek popisuje, jak lze uvést zamítnout přiřazení pomocí RBAC a rozhraní REST API.
+[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje způsob použití rozhraní REST API do seznamu Odepřít přiřazení.
+
+> [!NOTE]
+> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Požadavky
+
+Pokud chcete získat informace o přiřazení odepřít, musíte mít:
+
+- `Microsoft.Authorization/denyAssignments/read` oprávnění, která je obsažena ve většině [předdefinované role pro prostředky Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Seznam jedné zamítnout přiřazení
 

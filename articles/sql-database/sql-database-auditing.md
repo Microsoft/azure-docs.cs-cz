@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010527"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -130,11 +130,11 @@ Pokud jste zvolili pro zápis protokolů auditu na protokoly Azure monitoru:
 Pokud jste zvolili pro zápis protokolů auditu do centra událostí:
 
 - Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v tématu [dokumentace k Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
-- Protokoly auditu v Centru událostí jsou zachyceny v těle [Apache Avro](http://avro.apache.org/) události a uložit pomocí formátování JSON s kódováním UTF-8. Čtení protokolů auditu, můžete použít [nástroje Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobné nástroje, které zpracovávají tento formát.
+- Protokoly auditu v Centru událostí jsou zachyceny v těle [Apache Avro](https://avro.apache.org/) události a uložit pomocí formátování JSON s kódováním UTF-8. Čtení protokolů auditu, můžete použít [nástroje Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) nebo podobné nástroje, které zpracovávají tento formát.
 
 Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage, existuje několik metod, které lze použít k zobrazení protokolů:
 
-- Protokoly auditu se agregují v účtu, který jste zvolili během instalace. Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/). Ve službě Azure storage, se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem **sqldbauditlogs**. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+- Protokoly auditu se agregují v účtu, který jste zvolili během instalace. Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](https://storageexplorer.com/). Ve službě Azure storage, se ukládají protokoly auditování jako kolekce souborů, objektů blob v kontejneru s názvem **sqldbauditlogs**. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
 - Použití [webu Azure portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části databáze **auditování** klikněte na **zobrazit protokoly auditu**.
 
@@ -161,7 +161,7 @@ Pokud jste zvolili pro zápis protokolů auditu do účtu služby Azure storage,
     4. Sloučený soubor se otevře v SSMS, kde je můžete zobrazit a analyzovat, jakož i exportovat do souboru XEL nebo sdíleného svazku clusteru nebo na tabulku.
 
 - Použití Power BI. Můžete zobrazit a analyzovat data protokolů auditu v Power BI. Další informace a pro přístup k šabloně ke stažení najdete na stránce [analyzovat data protokolu auditování v Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
-- Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
+- Stáhněte si soubory protokolů z vašeho kontejneru objektů blob v Azure Storage prostřednictvím portálu nebo pomocí nástroje [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
   - Po stažení souboru protokolu místně, poklikejte na soubor otevřít, zobrazení a analýza protokolů v aplikaci SSMS.
   - Můžete také stáhnout více souborů najednou pomocí Průzkumníka služby Azure Storage. Chcete-li to provést, klikněte pravým tlačítkem na konkrétní podsložku a vyberte **uložit jako** uložit do místní složky.
 

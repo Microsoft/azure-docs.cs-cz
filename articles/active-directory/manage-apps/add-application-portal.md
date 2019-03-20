@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27456f672e2fa67928b43e80bef384a14e9c1d62
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110116"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do svého tenanta Azure Active Directory
 
@@ -113,35 +113,35 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 
 4. Následující tabulky vám pomůžou zvolit možnosti, které jsou pro vaše potřeby nejvhodnější.
 
-    - Chování pro **přiřazené** uživatele:
+   - Chování pro **přiřazené** uživatele:
 
-        | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
-        |---|---|---|---|---|
-        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
-        | ano | ano | ano | ano | ano  |
-        | ano | ano | ne  | ano | ne   |
-        | ano | ne  | ano | ano | ano  |
-        | ano | ne  | ne  | ano | ne   |
-        | ne  | ano | ano | ne  | ne   |
-        | ne  | ano | ne  | ne  | ne   |
-        | ne  | ne  | ano | ne  | ne   |
-        | ne  | ne  | ne  | ne  | ne   |
+       | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
+       |---|---|---|---|---|
+       | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
+       | ano | ano | ano | ano | ano  |
+       | ano | ano | ne  | ano | ne   |
+       | ano | ne  | ano | ano | ano  |
+       | ano | ne  | ne  | ano | ne   |
+       | ne  | ano | ano | ne  | ne   |
+       | ne  | ano | ne  | ne  | ne   |
+       | ne  | ne  | ano | ne  | ne   |
+       | ne  | ne  | ne  | ne  | ne   |
 
-    - Chování pro **nepřiřazené** uživatele:
+   - Chování pro **nepřiřazené** uživatele:
 
-        | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
-        |---|---|---|---|---|
-        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
-        | ano | ano | ano | ne  | ne   |
-        | ano | ano | ne  | ne  | ne   |
-        | ano | ne  | ano | ano | ne   |
-        | ano | ne  | ne  | ano | ne   |
-        | ne  | ano | ano | ne  | ne   |
-        | ne  | ano | ne  | ne  | ne   |
-        | ne  | ne  | ano | ne  | ne   |
-        | ne  | ne  | ne  | ne  | ne   |
+       | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
+       |---|---|---|---|---|
+       | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
+       | ano | ano | ano | ne  | ne   |
+       | ano | ano | ne  | ne  | ne   |
+       | ano | ne  | ano | ano | ne   |
+       | ano | ne  | ne  | ano | ne   |
+       | ne  | ano | ano | ne  | ne   |
+       | ne  | ano | ne  | ne  | ne   |
+       | ne  | ne  | ano | ne  | ne   |
+       | ne  | ne  | ne  | ne  | ne   |
 
-    * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
+     * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
 
 ## <a name="use-a-custom-logo"></a>Použití vlastního loga
 

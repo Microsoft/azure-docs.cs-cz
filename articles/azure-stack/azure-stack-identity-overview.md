@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e548188f1fc44ec32b90d0eaaa4154602e3e51c4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 564c4b011b26f2bc6b034233d014542172a4a739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885296"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Přehled identity pro službu Azure Stack
 
@@ -60,7 +60,7 @@ Jak vytvořit a spravovat uživatele a skupiny závisí na řešení identit, kt
 
 Ve službě Azure Stack, uživatelských účtů:
 
-- Vytvářejí *username@domain* formátu. I když služba AD FS mapuje uživatelské účty do instance služby Active Directory, služby AD FS nepodporuje použití  *\\ \<domény >\\\<alias >* formátu.
+- Vytvářejí *uživatelské jméno\@domény* formátu. I když služba AD FS mapuje uživatelské účty do instance služby Active Directory, služby AD FS nepodporuje použití  *\\ \<domény >\\\<alias >* formátu.
 - Můžete nastavit na použití služby Multi-Factor authentication.
 - Jsou omezeny do adresáře, ve kterém se nejprve zaregistrovat, tedy adresáře své organizace.
 - Je možné importovat z místních adresářů. Další informace najdete v tématu [integrace místních adresářů se službou Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 7f3d5caf1d8fb03e989181bb13bcce274816baa7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097936"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
@@ -180,7 +180,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
 3. Vyberte **+ Přidat** > **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
-   |---------|---------|---------|
+   |---------|---------|
    |Alias pro výstup  |  MyPBIoutput  |
    |Název datové sady  |   ASAdataset  |
    |Název tabulky |  ASATable  |

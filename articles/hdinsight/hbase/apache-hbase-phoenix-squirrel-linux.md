@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: f2034124c3500f289457f06d19b76c6878877e93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653981"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863385"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight
 Další informace o použití [Apache Phoenix](https://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
@@ -24,7 +24,7 @@ Další informace o použití [Apache Phoenix](https://phoenix.apache.org/) v Az
 >
 >
 
-## <a name="use-sqlline"></a>Použití SQLLine
+## <a name="use-sqlline"></a>Use SQLLine
 [SQLLine](http://sqlline.sourceforge.net/) je nástroj příkazového řádku ke spuštění SQL.
 
 ### <a name="prerequisites"></a>Požadavky
@@ -39,7 +39,7 @@ Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu
 1. Otevřít [Apache Ambari](https://ambari.apache.org/) procházením **https://\<název clusteru\>. azurehdinsight.net**.
 2. Pro přihlášení, zadejte protokol HTTP (clusteru) uživatelského jména a hesla.
 3. V nabídce vlevo vyberte **ZooKeeper**. Tři **ZooKeeper Server** instance patří.
-4. Vyberte jednu z **ZooKeeper Server** instancí. Na **Souhrn** podokně vyhledejte **název hostitele**. Vypadá podobně jako *zk1 jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
+4. Vyberte jednu z **ZooKeeper Server** instancí. Na **Souhrn** podokně vyhledejte **název hostitele**. It looks similar to *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
 **Chcete-li použít SQLLine**
 
@@ -47,7 +47,7 @@ Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu
 
 2. V SSH použijte následující příkazy ke spuštění SQLLine:
 
-        cd /usr/hdp/2.2.9.1-7/phoenix/bin
+        cd /usr/hdp/current/phoenix/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. K vytvoření tabulky HBase a vložit nějaká data, spusťte následující příkazy:
 

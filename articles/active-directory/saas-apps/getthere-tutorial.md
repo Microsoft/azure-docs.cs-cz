@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 228692ede47bd67b25bfc4bd23b90666a8505107
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26b3e2144094bfd9b10367a48226c836c6152b79
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Kurz: Integrace Azure Active Directory s GetThere
 
@@ -105,12 +105,14 @@ Ke konfiguraci Azure AD jednotné přihlašování s GetThere, proveďte násled
     ![GetThere domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
     a. V **identifikátor** textové pole, zadejte adresu URL:
+
     | |
     |--|
     | `getthere.com` |
     | `http://idp.getthere.com` |
 
     b. V **adresy URL odpovědi** text zadejte některou z následující adresy URL:
+    
     | |
     |--|
     | `https://wx1.getthere.net/login/saml/post.act` |
@@ -183,7 +185,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

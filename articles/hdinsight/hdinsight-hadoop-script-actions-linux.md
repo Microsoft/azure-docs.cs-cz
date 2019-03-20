@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 4bef785a08d7482468630bc690d6c19b05bdf770
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202958"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
@@ -332,7 +332,6 @@ Další informace o použití každé metody, naleznete v tématu [způsob použ
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci součásti v clusteru HDInsight. V následujících tématech pro další příklad skriptových akcí.
 
 * [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalace a použití Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md)
 * [Instalace a použití Giraphu Apache v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Instalace nebo upgrade Mono na clusterech HDInsight](hdinsight-hadoop-install-mono.md)
 

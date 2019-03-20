@@ -11,18 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062651"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009373"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Time Series Insights pomocí šablon Azure Resource Manageru
 
 Tento článek popisuje postup vytvoření a nasazení prostředků Time Series Insights pomocí šablony Azure Resource Manageru, Powershellu a poskytovatele prostředků služby Time Series Insights.
 
 Time Series Insights podporuje následující zdroje:
+
    | Prostředek | Popis |
    | --- | --- |
    | Prostředí | Prostředí Time Series Insights je logické seskupení událostí, které se čtou zprostředkovatelé událostí, uložených a k dispozici pro dotaz. Další informace najdete v části [plánování prostředí Azure Time Series Insights](time-series-insights-environment-planning.md) |
@@ -65,7 +66,7 @@ Chcete-li vytvořit soubor parametrů, zkopírujte [201-timeseriesinsights prost
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "eventHubNamespaceName": {
@@ -93,8 +94,8 @@ Chcete-li vytvořit soubor parametrů, zkopírujte [201-timeseriesinsights prost
    | --- | --- |
    | eventHubNamespaceName | Obor názvů centra událostí, zdroje. |
    | eventHubName | Název centra událostí zdroje. |
-   | Název | Název skupiny příjemců, který bude služba Time Series Insights používat ke čtení dat z centra událostí. **POZNÁMKA:** Předejít sporu prostředků, musí tuto skupinu příjemců vyhrazená pro služby Time Series Insights a neměly by být sdíleny s jinými čtenáři. |
-   | EnvironmentName | Název prostředí. Název nesmí obsahovat: "<", ">", "%", "&", ":","\\','?', '/' a žádné řídicí znaky. Všechny ostatní znaky jsou povolené.|
+   | consumerGroupName | Název skupiny příjemců, který bude služba Time Series Insights používat ke čtení dat z centra událostí. **POZNÁMKA:** Předejít sporu prostředků, musí tuto skupinu příjemců vyhrazená pro služby Time Series Insights a neměly by být sdíleny s jinými čtenáři. |
+   | environmentName | Název prostředí. Název nesmí obsahovat: "<", ">", "%", "&", ":","\\','?', '/' a žádné řídicí znaky. Všechny ostatní znaky jsou povolené.|
    | eventSourceName | Název prostředku podřízený zdroj událostí. Název nesmí obsahovat: "<", ">", "%", "&", ":","\\','?', '/' a žádné řídicí znaky. Všechny ostatní znaky jsou povolené. |
 
 #### <a name="optional-parameters"></a>Volitelné parametry
@@ -116,7 +117,7 @@ Například následující soubor parametrů se použije k vytvoření prostřed
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "eventHubNamespaceName": {
@@ -268,7 +269,7 @@ Outputs                 :
 Domovská stránka šablony quickstart na Githubu zahrnuje také **nasadit do Azure** tlačítko. Kliknutím otevřete stránku vlastní nasazení na webu Azure Portal. Na této stránce můžete zadat nebo vybrat hodnoty pro každý z parametrů z [požadované parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) nebo [volitelné parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) tabulky. Po vyplnění nastavení kliknutím **nákupní** tlačítko opraví, zahájí se nasazení šablony.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>Další postup

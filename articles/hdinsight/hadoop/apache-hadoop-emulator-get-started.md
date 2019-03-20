@@ -10,14 +10,14 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016772"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005769"
 ---
-# <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop sandboxu, emulátoru na virtuálním počítači
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop sandboxu, emulátoru na virtuálním počítači
 
 Zjistěte, jak nainstalovat sandboxu Apache Hadoop od Hortonworks na virtuální počítač, aby Seznamte se s ekosystémem Hadoop. Izolovaný prostor poskytuje místní vývojové prostředí pro další informace o Hadoopu, soubor systému HDFS (Hadoop Distributed) a odeslání úlohy. Jakmile jste se seznámili s Hadoopem, chcete začít používat Hadoop v Azure tak, že vytvoříte HDInsight cluster. Další informace o tom, jak začít, najdete v části [Začínáme s Hadoop v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
@@ -30,7 +30,7 @@ Zjistěte, jak nainstalovat sandboxu Apache Hadoop od Hortonworks na virtuální
 1. Přejděte [stáhne Hortonworks](https://hortonworks.com/downloads/#sandbox).
 
 2. Klikněte na tlačítko **stáhnout VIRTUALBOX** stáhnout nejnovější Hortonworks Sandbox na virtuálním počítači. Zobrazí se výzva k registraci se Hortonworks, před zahájením stahování. Trvat jednu až dvě hodiny ke stažení v závislosti na rychlosti sítě.
-   
+
     ![Obrázek odkazu pro stažení Hortonworks Sandboxu pro VirtualBox](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
 3. Ze stejné webové stránky, klikněte na tlačítko **Import na virtuální pole** odkaz ke stažení PDF, který obsahuje pokyny k instalaci pro virtuální počítač.
 
@@ -44,36 +44,35 @@ Stažení starší verze sandboxu HDP, rozbalte archiv:
 1. Otevřete Oracle VM VirtualBox.
 2. Z **souboru** nabídky, klikněte na tlačítko **Import zařízení**a pak zadejte image Hortonworks Sandbox.
 1. Vyberte Hortonworks Sandbox, klikněte na **Start**a potom **normální spuštění**. Po dokončení procesu spouštění virtuálního počítače se zobrazí pokyny k přihlášení.
-   
+
     ![Normální spuštění](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Otevřete webový prohlížeč a přejděte na adresu URL zobrazené (obvykle http://127.0.0.1:8888).
+2. Otevřete webový prohlížeč a přejděte na adresu URL zobrazené (obvykle `http://127.0.0.1:8888`).
 
 ## <a name="set-sandbox-passwords"></a>Nastavení hesla izolovaného prostoru
 
 1. Z **Začínáme** krok Hortonworks Sandbox stránky vyberte **zobrazit pokročilé možnosti**. Pomocí informací na této stránce pro přihlášení do izolovaného prostoru pomocí protokolu SSH. Použijte název a heslo, které jsou k dispozici.
-   
+
    > [!NOTE]
    > Pokud nemáte nainstalovaný klient SSH, můžete použít SSH webové poskytnuté na virtuální počítač na **http://localhost:4200/**.
-   > 
-   
+
     Při prvním připojení pomocí protokolu SSH, zobrazí se výzva ke změně hesla pro kořenový účet. Zadejte nové heslo, které používáte k přihlášení pomocí SSH.
 
 2. Po přihlášení, zadejte následující příkaz:
-   
+
         ambari-admin-password-reset
-   
+
     Po zobrazení výzvy zadejte heslo pro účet správce Ambari. Používá se při přístupu k webovému uživatelskému rozhraní Ambari.
 
 ## <a name="use-hive-commands"></a>Použít příkazy Hive
 
 1. Z připojení SSH k izolovanému prostoru pomocí následujícího příkazu spusťte prostředí Hive:
-   
+
         hive
 2. Po zahájení prostředí použijte následující postup k zobrazení tabulky, které jsou součástí izolovaného prostoru:
-   
+
         show tables;
 3. Použijte následující postup k načtení 10 řádků z `sample_07` tabulky:
-   
+
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Další postup

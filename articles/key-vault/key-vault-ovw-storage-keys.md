@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: dc743f7e8ebaebf2b253a1c2c199133bc4266dd5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c2107e501affd5e3dd22e0fbc83d078b51d414a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841136"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
@@ -40,6 +40,7 @@ Při použití funkce klíče účtu spravovaného úložiště:
 - **Povolte pouze služby Key Vault ke správě vašeho klíče účtu úložiště.** Nepokoušejte se spravovat sami, jak budete rušit procesy služby Key Vault.
 - **Nepovolit klíče účtu úložiště lze spravovat pomocí více než jeden objekt služby Key Vault**.
 - **Klíče účtu úložiště ručně negenerovat**. Doporučujeme vám, můžete obnovit pomocí služby Key Vault.
+- Key Vault ke správě vašeho účtu úložiště s dotazem, můžete udělat tak, že hlavní název uživatele teď a objektu služby
 
 Následující příklad ukazuje, jak povolit služby Key Vault ke správě vašeho klíče účtu úložiště.
 
@@ -124,7 +125,7 @@ Pokud tuto operace proběhne úspěšně, byste měli vidět výstup podobný ja
    "se=2020-01-01&sp=***"
 ```
 
-2. V tomto kroku použijeme výstup ($sasToken) generovaný nad k vytvoření definice SAS. Další dokumentaci najdete [zde](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+1. V tomto kroku použijeme výstup ($sasToken) generovaný nad k vytvoření definice SAS. Další dokumentaci najdete [zde](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
 
 ```
 az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
@@ -134,12 +135,11 @@ az keyvault storage sas-definition create --vault-name <YourVaultName> --account
  > [!NOTE] 
  > V případě, že uživatel nemá oprávnění k účtu úložiště dostaneme nejprve Id objektu uživatele
 
-    ```
-    az ad user show --upn-or-object-id "developer@contoso.com"
+ ```
+ az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
-    
-    ```
+ az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+ ```
     
 ## <a name="fetch-sas-tokens-in-code"></a>Načíst tokeny SAS v kódu
 
@@ -147,8 +147,8 @@ V této části probereme, jak lze provést operace v účtu úložiště načí
 
 V níže uvedený oddíl, jsme ukazují, jak načíst tokeny SAS, jakmile se vytvoří definice SAS, jak je znázorněno výše.
 
-> [!NOTE] 
-  Existují 3 způsoby ověření do služby Key Vault, jak si můžete přečíst [základní koncepty](key-vault-whatis.md#basic-concepts)
+> [!NOTE]
+>   Existují 3 způsoby ověření do služby Key Vault, jak si můžete přečíst [základní koncepty](key-vault-whatis.md#basic-concepts)
 > - Pomocí Identity spravované služby (doporučeno)
 > - Pomocí instančního objektu a certifikátů 
 > - Pomocí instančního objektu a hesla (nedoporučuje se)

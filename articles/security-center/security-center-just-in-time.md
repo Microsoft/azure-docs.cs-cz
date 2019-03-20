@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/18/2019
 ms.author: monhaber
-ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199830"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -101,7 +101,7 @@ Výběr virtuálních počítačů, které chcete povolit:
 
 
 > [!NOTE]
->Pokud přístup k virtuálnímu počítači JIT je povolena pro virtuální počítač, Azure Security Center vytvoří zakázat všechna pravidla pro příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě s ním spojená. Pravidla budou buď skupiny zabezpečení sítě s nejvyšší prioritou, nebo nižší prioritu než mají existující pravidla, které jsou již existuje. To závisí na analýzu provádí Azure Security Center, která určuje, zda je pravidlo zabezpečení nebo ne.
+>Pokud přístup k virtuálnímu počítači JIT je povolena pro virtuální počítač, Azure Security Center vytvoří "odepřít veškerý příchozí provoz" pravidla pro vybraný porty ve skupinách zabezpečení sítě s ním spojená. Pokud byl vytvořili jiná pravidla pro vybrané porty, existující pravidla mají přednost před nová pravidla "odepřít veškerý příchozí provoz". Pokud na vybrané porty nejsou žádná existující pravidla, nová pravidla "odepřít veškerý příchozí provoz" trvat nejvyšší prioritou ve skupinách zabezpečení sítě.
 >
 
 ### <a name="request-jit-access-to-a-vm"></a>Žádost o přístup JIT k virtuálnímu počítači

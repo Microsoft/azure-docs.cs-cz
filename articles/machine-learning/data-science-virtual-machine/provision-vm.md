@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896258"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 
@@ -44,7 +44,7 @@ Tyto nástroje jsou součástí DSVM:
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) – rychlé strojového učení systém, který podporuje postupů, jako jsou online algoritmu hash, allreduce, snížení, learning2search a aktivní a interaktivní učení
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) – nástroj, který poskytuje rychlý a přesné Posílený stromu implementaci
   * [Rattle](https://togaware.com/rattle/) -R analytického nástroje, který vám pomůže začít s analýzy dat a strojové učení v jazyce R. Zahrnuje zkoumání a modelování s automatické generování kódu R dat využívající grafické rozhraní.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) -dolování vizuálních dat a strojové učení softwaru v jazyce Java
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) -dolování vizuálních dat a strojové učení softwaru v jazyce Java
   * [Apache Drill](https://drill.apache.org/) – bez schémat modul dotazů SQL pro Apache Hadoop, NoSQL a cloudového úložiště. Podporuje rozhraní ODBC a JDBC pro dotazování NoSQL a soubory ze standardních nástrojů BI, jako je Power BI, Microsoft Excelu a Tableau.
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
 * Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Azure DevOps. Git poskytuje několik oblíbených Linux nástroje příkazového řádku, které jsou dostupné i na Git Bash a příkazový řádek. Příklady jsou awk sed, perl, grep, hledání, wget a curl.
@@ -71,7 +71,7 @@ Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto 
 
 ## <a name="prerequisite"></a>Požadavek
 
-Chcete-li vytvořit virtuální počítač Microsoft datové vědy, musíte mít předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](http://azure.com/free).
+Chcete-li vytvořit virtuální počítač Microsoft datové vědy, musíte mít předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.com/free).
 
 ## <a name="create-your-dsvm"></a>Vytvoření vašeho DSVM
 
@@ -229,4 +229,4 @@ Můžete použít [instalačního programu webové platformy Microsoft](https://
 * V Průzkumníku souborů přejděte do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** pro ukázky, které používají RevoScaleR knihovny v jazyce R, který podporuje analýzy dat v podnikovém měřítku.  
 * Přečtěte si článek [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](https://aka.ms/dsvmtenthings).
 * Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).
-* Přejděte [galerii Azure AI](http://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. Připravili jsme vám také ikona pro tuto galerii na **Start** nabídky a ploše virtuálního počítače.
+* Přejděte [galerii Azure AI](https://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. Připravili jsme vám také ikona pro tuto galerii na **Start** nabídky a ploše virtuálního počítače.

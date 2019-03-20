@@ -3,20 +3,20 @@ title: Článek o omezeních známé problémy a migrace s online migraci do Azu
 description: Přečtěte si o známých problémech a migrace omezení online migraci do Azure SQL Database.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 2261e2143a460bad812a49ba9d8a593c3f3b7b00
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091490"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 
@@ -62,9 +62,9 @@ Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" 
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
+   1. Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
 
- 3. Znovu spusťte aktivitu migrace.
+   1. Znovu spusťte aktivitu migrace.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Selhání migrace s různými porušení integrity s aktivní aktivačními událostmi ve schématu během "úplné načtení dat" nebo "Přírůstková synchronizace dat"
 

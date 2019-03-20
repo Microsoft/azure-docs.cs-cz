@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Kurz: Integrace Azure Active Directory s virtuálními počítači IQNavigator
 
@@ -39,7 +39,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 Konfigurace integrace Azure AD s virtuálními počítači IQNavigator, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Virtuálních počítačích IQNavigator jednotného přihlašování povolená předplatného
+- Virtuálním počítačům IQNavigator jednotného přihlašování povolená předplatného
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -91,7 +91,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí IQNavigat
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváření virtuálních počítačů IQNavigator testovacího uživatele](#creating-a-iqnavigator-vms-test-user)**  – Pokud chcete mít protějšek Britta Simon ve virtuálních počítačích IQNavigator, který je propojený s Azure AD reprezentace uživatele.
+1. **[Vytvoření uživatele s IQNavigator virtuálních počítačů testovací](#creating-a-iqnavigator-vms-test-user)**  – Pokud chcete mít protějšek Britta Simon ve virtuálních počítačích IQNavigator, který je propojený s Azure AD reprezentace uživatele.
 1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -175,7 +175,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>Vytváření virtuálních počítačů IQNavigator testovacího uživatele
+### <a name="creating-an-iqnavigator-vms-test-user"></a>Vytváří se testovací uživatelské jméno IQNavigator virtuálních počítačů
 
 Cílem této části je vytvořte uživatele Britta Simon ve virtuálních počítačích IQNavigator. Práce s [tým podpory virtuálních počítačů IQNavigator](https://www.beeline.com/iqn-product-support/) k přidání uživatelů v účtu IQNavigator virtuálních počítačů.
 

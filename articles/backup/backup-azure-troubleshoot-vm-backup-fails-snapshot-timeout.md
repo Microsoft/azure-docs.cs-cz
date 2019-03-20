@@ -9,18 +9,20 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 3be2ab8bd4be56de945303bec9969f531be77864
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 85dca677238070ded13b59faf9a13081c2409987
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535583"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890852"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
 
 Tento článek popisuje postup řešení potíží, které vám může pomoct vyřešit Azure Backup chyby týkající se komunikace s agentem virtuálního počítače a rozšíření.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - agent virtuálního počítače moci komunikovat se službou Azure Backup
 
@@ -54,7 +56,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků virtuálního počítače a zkuste operaci zopakovat a aktivovat čištění.
 > [!NOTE]
-    > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+> Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **Krok 1: [Odebrat zámek ze skupiny prostředků bodů obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [Odstranit kolekci bodů obnovení](#clean_up_restore_point_collection)**<br>
@@ -64,7 +66,7 @@ Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků v
 **Kód chyby:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
 
-Záložní operace úspěšná na šifrovaných virtuálních počítačů musí mít oprávnění pro přístup k trezoru klíčů. To lze provést pomocí [webu Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [prostředí PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
+Záložní operace úspěšná na šifrovaných virtuálních počítačů musí mít oprávnění pro přístup k trezoru klíčů. To lze provést pomocí [webu Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [Powershellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - operace snímku nebyla úspěšná kvůli bez připojení k síti na virtuálním počítači
 
@@ -126,12 +128,12 @@ Poslední úlohy zálohování se nezdařila, protože je v průběhu existujíc
 3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** zobrazí všechny úlohy zálohování.
 
     * Pokud probíhá úloha zálohování, počkejte na dokončení nebo zrušení úlohy zálohování.
-        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [Powershellu](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Pokud jste změnili konfiguraci zálohování v jiném trezoru, zajistěte, neexistují žádné zálohování úloh spuštěných v starý trezor. Pokud existuje pak zrušíte úlohu zálohování.
-        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+        * Zrušit úlohu zálohování klikněte pravým tlačítkem na dokončení úlohy zálohování a klikněte na tlačítko **zrušit** nebo použijte [prostředí PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Zkuste operaci zálohování zopakujte.
 
-Pokud naplánované zálohování trvá delší dobu konfliktní s další konfigurací zálohování zkontrolujte [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance) a [obnovení posouzení ](backup-azure-vms-introduction.md#restore-considerations).
+Pokud naplánované zálohování trvá delší dobu konfliktní s další konfigurací zálohování zkontrolujte [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance) a [obnovení posouzení ](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
@@ -166,15 +168,15 @@ Většina souvisejících s agenty nebo souvisejících s rozšířením selhán
 
 1. Postupujte podle pokynů pro [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md).
 
- > [!NOTE]
- > Jsme *důrazně doporučujeme* , že aktualizujete agenta pouze prostřednictvím distribuce úložiště. Nedoporučujeme stažením kódu agenta přímo z Githubu a aktualizacích. Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. Vyhledat nejnovější agent, přejděte [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
+   > [!NOTE]
+   > Jsme *důrazně doporučujeme* , že aktualizujete agenta pouze prostřednictvím distribuce úložiště. Nedoporučujeme stažením kódu agenta přímo z Githubu a aktualizacích. Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. Vyhledat nejnovější agent, přejděte [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
 
 2. Ujistěte se, že Azure agent běží na virtuálním počítači spuštěním následujícího příkazu: `ps -e`
 
- Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
+   Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
 
- * Pro Ubuntu: `service walinuxagent start`
- * Pro jiné distribuce: `service waagent start`
+   * Pro Ubuntu: `service walinuxagent start`
+   * Pro jiné distribuce: `service waagent start`
 
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Spusťte nové zálohování testu. Pokud chyba přetrvává, shromážděte následující protokoly z virtuálního počítače:
@@ -198,7 +200,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 | Příčina | Řešení |
 | --- | --- |
 | Stav virtuálního počítače je uvedena nesprávně, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud vypnete virtuální počítač v protokolu RDP, podívejte se na portál k určení, zda je stav virtuálního počítače správný. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
-| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste nakonfigurovat prostřednictvím **webu Azure Portal** nebo **Powershellu** a ujistěte se, že je povolená možnost DHCP ve virtuálním počítači. Další informace o tom, jak nastavit statickou IP adresu prostřednictvím prostředí PowerShell, najdete v tématu [klasický virtuální počítač](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) a [virtuální počítač Resource Manageru](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
+| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste nakonfigurovat prostřednictvím **webu Azure Portal** nebo **Powershellu** a ujistěte se, že je povolená možnost DHCP ve virtuálním počítači. [Další informace](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o nastavení statické IP adresy pomocí prostředí PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozšíření zálohování se nezdaří pro aktualizaci nebo načtení
 Pokud rozšíření nelze načíst, zálohování se nezdaří, protože nelze pořídí snímek.
@@ -236,7 +238,7 @@ Po ze zařízení zámek odebral, mají body obnovení na vyčištění. Chcete-
 Po odebrání zámku aktivace zálohování ad hoc nebo ruční. Tím se zajistí, že se že body obnovení automaticky vyčištěna. Očekávané selhání poprvé; tento ad hoc nebo ruční operace však zajistí automatické čištění místo ruční odstranění bodů obnovení. Po vyčištění uspěli na další naplánované zálohování.
 
 > [!NOTE]
-    > Automatické čištění se stane po několik hodin aktivace zálohování ad hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
+> Automatické čištění se stane po několik hodin aktivace zálohování ad hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Vyčistit obnovení bodu kolekce z webu Azure portal <br>
 

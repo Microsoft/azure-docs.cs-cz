@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: dba7fbe026725510cc357fecbc7d3251849f6af8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dc088d3a6baa4198a1d5cb566b968c631ae5f2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113814"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
@@ -108,7 +108,7 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
     * **Heslo**: Heslo pro účet přihlášení clusteru.
 
- ![Přidat alias dialog](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
+   ![Přidat alias dialog](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
     > Použití **Test** tlačítko ověřit, že připojení funguje. Když **připojit: Hive s HDInsight** se zobrazí dialogové okno, vyberte **připojit** k provedení testu. Pokud je test úspěšný, zobrazí se **úspěšné připojení** dialogového okna. Pokud dojde k chybě, přečtěte si téma [Poradce při potížích s](#troubleshooting).

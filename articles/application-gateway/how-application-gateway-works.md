@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 41f69d2017d9fc04acda47d09c718d3585f6335c
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881091"
 ---
 # <a name="how-application-gateway-works"></a>Jak funguje služba Application Gateway
 
 Tento článek vysvětluje, jak službu application gateway přijímá příchozí požadavky a směruje je do back-endu.
 
-![how-application-gateway-works](.\media\how-application-gateway-works\how-application-gateway-works.png)
+![how-application-gateway-works](./media/how-application-gateway-works/how-application-gateway-works.png)
 
 ## <a name="how-a-request-is-accepted"></a>Jak přijmout žádost
 
@@ -36,7 +36,7 @@ Po back-end serveru Aplikační brána otevře novou relaci protokolu TCP s back
 
 Interní aplikační brány má pouze privátní IP adresu. Název DNS pro interní aplikační brány je interně přeložit na jeho privátní IP adresu. Proto interní služby load balancer můžete pouze směrovat požadavky od klientů s přístupem k virtuální síti pro službu Application Gateway.
 
-Všimněte si, že internetové i interní aplikační brány směrovat požadavky do back-end serverů pomocí privátních IP adres. Pokud váš prostředek back-endový fond obsahuje privátní IP adresy, konfigurace síťové karty virtuálního počítače nebo interně přeložitelnou adresu a back-endový fond je veřejný koncový bod, služba Application Gateway používá veřejnou IP adresu jeho front-endu k dosažení serveru. Pokud jste nezřídili veřejné IP adresy front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
+Všimněte si, že internetové i interní aplikační brány směrovat požadavky do back-end serverů pomocí privátních IP adres, pokud váš prostředek back-endový fond obsahuje privátní IP adresy, konfigurace síťové karty virtuálního počítače nebo interně přeložitelnou adresu a pokud vaše back-endový fond je veřejný koncový bod, služba Application Gateway používá veřejnou IP adresu jeho front-endu k dosažení serveru. Pokud jste nezřídili veřejné IP adresy front-endu, jeden je přiřazen pro odchozí připojení k externí síti.
 
 ### <a name="modifications-to-the-request"></a>Úpravy na požadavek
 

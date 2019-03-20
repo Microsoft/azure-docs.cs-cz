@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093384"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight pomocí Azure IoT Hub
 
@@ -168,32 +168,32 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
 
 1. Získejte koncový bod kompatibilní s centrem událostí a název koncový bod kompatibilní s centrem událostí služby IoT hub. Pokud chcete získat tyto informace, použijte jednu z následujících metod:
 
-    * __Z [webu Azure portal](https://portal.azure.com/)__, použijte následující postup:
+   * __Z [webu Azure portal](https://portal.azure.com/)__, použijte následující postup:
 
-        1. Přejděte do služby IoT Hub a vyberte __koncové body__.
-        2. Z __integrovaných koncových bodech__vyberte __události__.
-        3. Z __vlastnosti__, zkopírujte hodnotu z těchto polí:
+     1. Přejděte do služby IoT Hub a vyberte __koncové body__.
+     2. Z __integrovaných koncových bodech__vyberte __události__.
+     3. Z __vlastnosti__, zkopírujte hodnotu z těchto polí:
 
-            * __Název kompatibilní s centrem událostí__
-            * __Koncový bod kompatibilní s centrem událostí__
-            * __Oddíly__
+         * __Název kompatibilní s centrem událostí__
+         * __Koncový bod kompatibilní s centrem událostí__
+         * __Oddíly__
 
         > [!IMPORTANT]  
         > Hodnota koncový bod z portálu může obsahovat další text, který není nutné v tomto příkladu. Extrahovat text, který odpovídá tomuto vzoru `sb://<randomnamespace>.servicebus.windows.net/`.
 
-    * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, použijte následující příkaz:
+   * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, použijte následující příkaz:
 
-        ```azure-cli
-        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
-        ```
+       ```azure-cli
+       az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
+       ```
 
-        Nahraďte `myhubname` s názvem služby IoT hub. Odpověď se podobá následujícímu textu:
+       Nahraďte `myhubname` s názvem služby IoT hub. Odpověď se podobá následujícímu textu:
 
-        ```json
-        "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
-        "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
-        "Partitions": 2
-        ```
+       ```json
+       "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
+       "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
+       "Partitions": 2
+       ```
 
 2. Získejte __sdílené zásady přístupu__ a __klíč__. V tomto příkladu použijte __služby__ klíč. Pokud chcete získat tyto informace, použijte jednu z následujících metod:
 
@@ -239,16 +239,16 @@ Pokud chcete nakonfigurovat zdroj pro práci s centrem IoT, udělejte toto z př
 
     V editoru najít a změnit následující položky:
 
-    * `Kafka.Topic=PLACEHOLDER`: Nahraďte  za `iotin` (Jak velká může být moje znalostní báze?). V jsou umístěny zprávy přijaté ze služby IoT hub `iotin` tématu.
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s názvem kompatibilní s centrem událostí.
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Nahraďte `PLACEHOLDER` koncový bod kompatibilní s centrem událostí.
-    * `IotHub.Partitions=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s počtem oddílů z předchozího postupu.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: Nahraďte  za `service` (Jak velká může být moje znalostní báze?).
-    * `IotHub.AccessKeyValue=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s primárním klíčem `service` zásad.
-    * `IotHub.StartType=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s datum UTC. Toto datum je při spuštění konektoru probíhá kontrola zpráv. Formát data je `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: Nahraďte  za `5` (Jak velká může být moje znalostní báze?). Tato změna způsobí, že konektor umožní číst zprávy do Kafka, jakmile existuje pět nových zpráv ve službě IoT hub.
+   * `Kafka.Topic=PLACEHOLDER`: Nahraďte  za `iotin` (Jak velká může být moje znalostní báze?). V jsou umístěny zprávy přijaté ze služby IoT hub `iotin` tématu.
+   * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s názvem kompatibilní s centrem událostí.
+   * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Nahraďte `PLACEHOLDER` koncový bod kompatibilní s centrem událostí.
+   * `IotHub.Partitions=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s počtem oddílů z předchozího postupu.
+   * `IotHub.AccessKeyName=PLACEHOLDER`: Nahraďte  za `service` (Jak velká může být moje znalostní báze?).
+   * `IotHub.AccessKeyValue=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s primárním klíčem `service` zásad.
+   * `IotHub.StartType=PLACEHOLDER`: Nahraďte `PLACEHOLDER` s datum UTC. Toto datum je při spuštění konektoru probíhá kontrola zpráv. Formát data je `yyyy-mm-ddThh:mm:ssZ`.
+   * `BatchSize=100`: Nahraďte  za `5` (Jak velká může být moje znalostní báze?). Tato změna způsobí, že konektor umožní číst zprávy do Kafka, jakmile existuje pět nových zpráv ve službě IoT hub.
 
-    Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
+     Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
 3. Chcete-li změny uložit, použijte __Ctrl + X__, __Y__a potom __Enter__.
 
@@ -272,10 +272,10 @@ Konfigurace připojení jímky pro práci s centrem IoT, udělejte toto z připo
 
     V editoru najít a změnit následující položky:
 
-    * `topics=PLACEHOLDER`: Nahraďte  za `iotout` (Jak velká může být moje znalostní báze?). Zpráv zapsaných do `iotout` téma se předávají do služby IoT hub.
-    * `IotHub.ConnectionString=PLACEHOLDER`: Nahraďte `PLACEHOLDER` připojovacím řetězcem pro `service` zásad.
+   * `topics=PLACEHOLDER`: Nahraďte  za `iotout` (Jak velká může být moje znalostní báze?). Zpráv zapsaných do `iotout` téma se předávají do služby IoT hub.
+   * `IotHub.ConnectionString=PLACEHOLDER`: Nahraďte `PLACEHOLDER` připojovacím řetězcem pro `service` zásad.
 
-    Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+     Příklad konfigurace najdete v tématu [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 3. Chcete-li změny uložit, použijte __Ctrl + X__, __Y__a potom __Enter__.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200866"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224647"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -33,8 +33,10 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
    * [Azure AD připojený](../device-management-azure-portal.md) nebo
    * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Je nutné povolit Azure AD samoobslužné resetování hesla.
-* Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` do seznamu povolené adresy URL HTTPS provoz (port 443).
+* Pokud vaše zařízení s Windows 10 jsou za proxy server nebo brána firewall, je nutné přidat adresy URL, `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com` pro provoz HTTPS (port 443) povolený seznam adres URL.
+* Samoobslužné resetování HESLA pro Windows 10 se podporuje jen při úrovni počítače proxy serverů
 * Kontrola omezení pod před pokusem o tuto funkci ve vašem prostředí.
+* Pokud použijete image, před sysprep Ujistěte se, že se pro předdefinovaný účet Administrator před krokem CopyProfile vymaže mezipaměti webu. Další informace najdete v článku podpory [nedostatečný výkon při použití vlastní výchozí uživatelský profil](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
 

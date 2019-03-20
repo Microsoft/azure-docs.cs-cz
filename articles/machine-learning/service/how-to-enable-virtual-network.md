@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242934"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840439"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpečné spuštění experimentů a odvozování uvnitř virtuální sítě Azure
 
@@ -60,15 +60,17 @@ Pokud chcete používat Azure Machine Learning Compute ve virtuální síti, pou
 
     - Jedna služba Vyrovnávání zatížení
 
-   Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-subscription-service-limits) předplatného.
+  Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-subscription-service-limits) předplatného.
 
 ### <a id="mlcports"></a> Požadované porty
 
 Machine Learning Compute v současnosti využívá službu Azure Batch ke zřízení virtuálních počítačů v zadané virtuální sítě. Podsíť musí umožňovat příchozí komunikaci ze služby Batch. Tato komunikace se používá k naplánování spuštění na uzlech Machine Learning Compute a komunikovat s Azure Storage a dalším prostředkům. Batch přidá skupiny Nsg na úrovni síťových rozhraní (NIC), které jsou připojené k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
 
-- Příchozí provoz přes protokol TCP na portech 29876 a 29877 z IP adres role služby Batch.
+- Příchozí přenosy TCP na porty 29876 a 29877 z __značka služby__ z __BatchNodeManagement__.
+
+    ![Image na webu Azure portal znázorňující pravidlo pro příchozí spojení pomocí BatchNodeManagement značka služby](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- Příchozí přenosy TCP na portu 22 pro povolení vzdáleného přístupu.
+- (volitelné) Příchozí přenosy TCP na portu 22 pro povolení vzdáleného přístupu. Toto je vyžadováno pouze pokud se chcete připojit pomocí SSH na veřejné IP adresy.
  
 - Odchozí provoz do virtuální sítě na jakémkoli portu.
 

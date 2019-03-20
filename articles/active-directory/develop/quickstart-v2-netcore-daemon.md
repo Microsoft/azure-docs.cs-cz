@@ -4,7 +4,7 @@ description: Zjistěte, jak získat přístupový token a volat rozhraní API ch
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 1/11/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c63269630d0ed74d1b17edbc5cb9e787499604e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200510"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z konzoly aplikace pomocí identity aplikace
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194440"
 
 V tomto rychlém startu se dozvíte jak psát aplikace .NET Core, který můžete získat přístupový token pomocí aplikace pro vlastní identity a pak volání rozhraní Microsoft Graph API k zobrazení [seznam uživatelů](https://docs.microsoft.com/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy bezobslužného, bezobslužné úlohy nebo služby systému windows je potřeba spustit s identitou aplikace místo na identitě uživatele.
 
-![Jak funguje ukázková aplikace vygenerovaná v tomto rychlém startu](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-netcore-daemon/netcore-daemon-intro-updated.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -198,7 +198,7 @@ var app = new ConfidentialClientApplication(
 > |---------|---------|
 > | `secret` | Vytvoření tajného klíče klienta pro aplikaci na webu Azure Portal. |
 > | `clientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
-> | `Authority`    | (Volitelné) Koncový bod služby tokenů zabezpečení pro uživatele k ověření. Obvykle https://login.microsoftonline.com/{tenant} pro veřejný cloud, kde je název vašeho tenanta nebo vaše ID tenanta {klient}|
+> | `Authority`    | (Volitelné) Koncový bod služby tokenů zabezpečení pro uživatele k ověření. Obvykle <https://login.microsoftonline.com/{tenant}> pro veřejný cloud, kde je název vašeho tenanta nebo vaše ID tenanta {klient}|
 > | `redirectUri`  | Adresa URL, kde jsou uživatelé nasměrovaní po ověření. V tomto případě protože je to konzoly/neinteraktivní aplikace, tento parametr se nepoužívá |
 > | `clientCredentials`  | Objekt přihlašovacích údajů klienta, obsahující tajný klíč nebo certifikát |
 > | `userTokenCache`  | Instance mezipaměti tokenů pro daného uživatele. V tomto případě protože tato aplikace běží v kontextu aplikace a ne uživatele, je tato hodnota null|

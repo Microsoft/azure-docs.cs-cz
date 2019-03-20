@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 4471b556dc1ac5f520185d7ad586fb489c6d8f30
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856804"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225157"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -36,7 +36,7 @@ Rozhraní API je [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messag
 
 Odložené zprávy zůstávají ve frontě hlavní spolu s všechny ostatní aktivní zprávy (na rozdíl od nedoručených zpráv, kteří žijí v dílčí), ale může být již přijatých pomocí běžných příjmu/ReceiveAsync funkcí. Odložené zprávy můžete zjistit pomocí [procházení zpráv](message-browsing.md) Pokud aplikace ztratí sledování z nich.
 
-Načíst odloženou zprávu, jeho vlastníka odpovídá zprávě o zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) jako jeho odloží. Všechny příjemce, který zná pořadové číslo odloženou zprávu můžete později zpráva explicitně s `Receive(sequenceNumber)`.
+Načíst odloženou zprávu, jeho vlastníka odpovídá zprávě o zapamatování [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) jako jeho odloží. Všechny příjemce, který zná pořadové číslo odloženou zprávu můžete později zpráva explicitně s `Receive(sequenceNumber)`. Pro fronty, můžete použít [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), použijte odběry témat [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
 
 Pokud zprávu nelze zpracovat, protože konkrétního prostředku pro zpracování této zprávy je dočasně nedostupná, ale neměli summarily pozastavit zpracování zpráv, je způsob, jak vložit této zprávy na straně pro několik minut, než pamatovat  **SequenceNumber** v [naplánovanou zprávu](message-sequencing.md) účtován za pár minut a znovu načíst odloženou zprávu dorazí naplánovanou zprávu. Pokud obslužná rutina zprávy závisí na databázi pro všechny operace a databáze je dočasně nedostupná, ji by měl nepoužívat odložení, ale spíše pozastavit příjem zpráv s úplně, dokud nebude databáze opět k dispozici.
 

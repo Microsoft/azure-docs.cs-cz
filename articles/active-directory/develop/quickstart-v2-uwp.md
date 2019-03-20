@@ -3,8 +3,8 @@ title: Rychlý start pro Univerzální platformu Windows Azure AD v2 | Microsoft
 description: Zjistěte, jak může aplikace Universal Windows Platform (XAML) získat přístupový token a volat rozhraní API chráněné koncovým bodem Azure Active Directory v2.0.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/01/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 890bef048fbb9bd8bb7d246e4f09dc4ec420a7a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97ad2c5a395eb22ec8f20d4bab3e12f1091dceb0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200935"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
@@ -30,7 +30,7 @@ ms.locfileid: "56197313"
 
 Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplikace pro Univerzální platformu Windows (UPW) přihlašovat uživatele s osobním nebo pracovním a školním účtem, získat přístupový token a volat rozhraní Microsoft Graph API.
 
-![Jak funguje ukázková aplikace vygenerovaná v tomto rychlém startu](media/quickstart-v2-uwp/uwp-intro.png)
+![Ukazuje, jak ukázková aplikace vygenerované v tomto rychlém startu funguje](media/quickstart-v2-uwp/uwp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start

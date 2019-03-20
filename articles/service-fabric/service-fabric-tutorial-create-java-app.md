@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 92cee8e95888d5084165413ce49d4c884e476e71
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571435"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874877"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
 
@@ -76,6 +76,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace. Webového uživatelské
     ![Průzkumník balíčků v Eclipse po vytvoření aplikace]( ./media/service-fabric-tutorial-create-java-app/eclipse-package-explorer.png)
 
 Následující tabulka obsahuje stručný popis jednotlivých položek v průzkumníku balíčků z předchozího snímku obrazovky. 
+
 | **Položka průzkumníka balíčků** | **Popis** |
 | --- | --- |
 | PublishProfiles | Obsahuje soubory JSON popisující podrobnosti o profilu místního clusteru a clusteru Azure Service Fabric. Obsah těchto souborů používá modul plug-in při nasazování aplikace. |
@@ -103,7 +104,7 @@ Pokud chcete přidat uživatelské rozhraní, které lze vykreslit Bezstavová s
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <body>
 
@@ -911,7 +912,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 
 4. V průzkumníku balíčků pro Eclipse klikněte pravým tlačítkem na projekt **Voting** a pak klikněte na **Service Fabric –> Publish Application...** (Service Fabric –> Publikovat aplikaci...). 
 5. V okně **Publish Application** (Publikovat aplikaci) vyberte v rozevíracím seznamu soubor **Local.json** a klikněte na **Publish** (Publikovat).
-6. Ve webovém prohlížeči přejděte na adresu **http://localhost:8080** a zobrazte svou spuštěnou aplikaci na místním clusteru Service Fabric. 
+6. Přejděte na webový prohlížeč a přístup `http://localhost:8080` zobrazíte běžící aplikaci v místním clusteru Service Fabric. 
 
 ## <a name="next-steps"></a>Další postup
 

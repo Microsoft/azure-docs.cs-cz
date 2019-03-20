@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836976"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -149,7 +149,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 
 ### <a name="fixed-issues"></a>Oprava potíží 
 
-- Oprava chyby, kde by zobrazil vysoké využití procesoru po upgradu na .net 4.7.2 server AAD Connect
+- Oprava chyby, kde by zobrazil vysoké využití procesoru po upgradu na .NET 4.7.2 server AAD Connect
 - Oprava chyby, který vyprodukuje přerušovaně chybovou zprávu pro automaticky vyřešit problém zablokování SQL
 - Opravili jsme několik problémů usnadnění pro Editor pravidel synchronizace a synchronizace Service Manager  
 - Oprava chyby, kde Azure AD Connect nemůže získat informace o nastavení registru
@@ -180,12 +180,12 @@ Nové funkce a vylepšení
 - Konfigurace zpětného zápisu zařízení se teď spravuje výhradně v Azure AD Connect průvodce.
 - Řešení potíží s nový PowerShell modul volané ADSyncTools.psm1 se přidá, který slouží k řešení problémů s připojením SQL a různé další nástroje. Další informace o modulu ADSyncTools [tady](tshoot-connect-tshoot-sql-connectivity.md). 
 - Byla přidána nová dodatečnou úlohu "Nakonfigurovat možnosti zařízení". Úlohu můžete nakonfigurovat následující dvě operace: 
-    -   **Připojení k hybridní službě Azure AD**: Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
-    -   **Zpětný zápis zařízení**: Zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
+  - **Připojení k hybridní službě Azure AD**: Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
+  - **Zpětný zápis zařízení**: Zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
 
-   >[!NOTE] 
-   > - Možnost povolit zpětný zápis zařízení z přizpůsobit možnosti synchronizace bude zapnutá. 
-   > -  V této verzi je zastaralý modul PowerShell nástroje ADPrep.
+    >[!NOTE] 
+    > - Možnost povolit zpětný zápis zařízení z přizpůsobit možnosti synchronizace bude zapnutá. 
+    > -  V této verzi je zastaralý modul PowerShell nástroje ADPrep.
 
 
 
@@ -415,7 +415,7 @@ Stav: 19. října 2017
 
 * Opravili jsme problém s *změnit přihlášení uživatele* úkol v průvodce službou Azure AD Connect:
 
-   * Tento problém nastane, pokud máte existující nasazení služby Azure AD Connect se synchronizací hesla **zakázané**, a pokoušíte se nastavit uživatele přihlásit metody jako *předávací ověřování*. Při použití této změny, Průvodce povolí předávací ověřování a synchronizace hesel. S touto opravou již Průvodce povolí synchronizaci hesel.
+  * Tento problém nastane, pokud máte existující nasazení služby Azure AD Connect se synchronizací hesla **zakázané**, a pokoušíte se nastavit uživatele přihlásit metody jako *předávací ověřování*. Při použití této změny, Průvodce povolí předávací ověřování a synchronizace hesel. S touto opravou již Průvodce povolí synchronizaci hesel.
 
   * Synchronizace hesel dřív předpoklad pro povolení předávacího ověřování. Pokud nastavíte uživatele přihlásit metody jako *předávací ověřování*, průvodce by povolit předávací ověřování a synchronizace hesel. Synchronizace hesel se nedávno, se odebral jako předpoklad. Jako součást služby Azure AD Connect verze 1.1.557.0 byla provedena změna na Azure AD Connect není povolení synchronizace hesel při nastavení uživatele přihlásit metody jako *předávací ověřování*. Tato změna se však jedině pro instalace služby Azure AD Connect. S touto opravou stejnou změnu platí také pro *změnit přihlášení uživatele* úloh.
   
@@ -436,7 +436,7 @@ Stav: 19. října 2017
 * Přidání logiky pro zjednodušení kroky potřebné k nastavení Azure AD Connect pomocí služby Microsoft Germany Cloud. Dříve je nutné provést aktualizaci určité klíče registru na serveru služby Azure AD Connect, aby se správně pracovat s Microsoft Germany Cloud, jak je popsáno v tomto článku. Nyní Azure AD Connect a dokáže automaticky detekovat Pokud váš tenant v Microsoft Germany Cloud vychází přihlašovací údaje globálního správce, které jsou k dispozici během instalace.
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
->[!NOTE]
+> [!NOTE]
 > Poznámka: Synchronizační služba má rozhraní WMI, které vám umožní vyvíjet vlastní vlastní plánovač. Toto rozhraní je nyní zastaralá a bude odebrána z budoucí verze služby Azure AD Connect odeslaná po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace by měla použít [integrované plánovače (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
 #### <a name="fixed-issues"></a>Oprava potíží
@@ -642,7 +642,7 @@ Problém, který nastane je, že **synchronizovat všechny domény a organizačn
 
 * Azure AD Connect nyní podporuje zpětný zápis Exchange Online **cloudPublicDelegates** atribut místní AD **publicDelegates** atribut. To umožňuje scénáře, ve kterém poštovní schránku Exchange Online lze udělit práva SendOnBehalfTo uživatelům s poštovní schránku v místním systému Exchange. Pro podporu této funkce nové pravidlo synchronizace out-of-box "Mimo AD – zpětný zápis uživatelů Exchange hybridní PublicDelegates" se přidala. Toto synchronizační pravidlo se přidá do služby Azure AD Connect, pouze pokud je povolena funkce hybridní Exchange.
 
-*   Synchronizace Azure AD Connect teď podporuje **altRecipient** atribut ze služby Azure AD. Pro podporu této změně, byly aktualizovány následující pravidla synchronizace out-of-box zahrnout požadovaný atribut toku:
+* Synchronizace Azure AD Connect teď podporuje **altRecipient** atribut ze služby Azure AD. Pro podporu této změně, byly aktualizovány následující pravidla synchronizace out-of-box zahrnout požadovaný atribut toku:
   * V ze služby AD – uživatelů Exchange
   * Na AAD – ExchangeOnline uživatele
   
@@ -1186,9 +1186,9 @@ Vydáno: Říjen 2014
 
 Pokud již máte nainstalované Azure AD Sync, je další krok, který je třeba provést v případě, že jste změnili některý pravidel synchronizace out-of-box. Po upgradu na 1.0.470.1023 uvolněte, synchronizace, které jsou duplicitní pravidla, které jste upravili. Pro každé pravidlo upravené synchronizace postupujte takto:
 
-1.  Vyhledejte pravidlo synchronizace byly upraveny a poznamenejte si změny.
-* Odstraníte synchronizační pravidlo.
-* Vyhledejte nové pravidlo synchronizace, který je vytvořen pomocí Azure AD Sync a pak znovu použít změny.
+1. Vyhledejte pravidlo synchronizace byly upraveny a poznamenejte si změny.
+1. Odstraníte synchronizační pravidlo.
+1. Vyhledejte nové pravidlo synchronizace, který je vytvořen pomocí Azure AD Sync a pak znovu použít změny.
 
 **Oprávnění pro účet služby Active Directory**
 

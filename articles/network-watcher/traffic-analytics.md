@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: bc738dd93a43a1a3610323b9dd05abfd5b5c0091
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408798"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081062"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -201,7 +201,7 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
 - Statistiky provozu blokované.
     - Proč hostitele blokuje významný objem neškodný provoz? Toto chování vyžaduje další šetření a pravděpodobně optimalizace konfigurace
 - Statistiky škodlivého provozu, kterým povoleno/zablokováno
-    - Proč hostitele přijímá škodlivý provoz a proč je povolené toky ze škodlivých zdroje? Toto chování vyžaduje další šetření a pravděpodobně optimalizace konfigurace.
+  - Proč hostitele přijímá škodlivý provoz a proč je povolené toky ze škodlivých zdroje? Toto chování vyžaduje další šetření a pravděpodobně optimalizace konfigurace.
 
     Vyberte **zobrazit všechny**v části **hostitele**, jak je znázorněno na následujícím obrázku:
 
@@ -260,8 +260,8 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
 **Hledat**
 
 - Distribuce provozu na datové centrum, jako je hlavní zdroje přenosů do datového centra, horní podvodný sítě rozhovory s datového centra a horní rozhovory protokoly aplikací.
-    - Pokud zjistíte další zatížení datového centra, můžete naplánovat pro distribuci efektivní provoz.
-    - Pokud podvodný sítě jsou rozhovory v datovém centru, potom pravidla skupiny zabezpečení sítě k blokování, je opravte.
+  - Pokud zjistíte další zatížení datového centra, můžete naplánovat pro distribuci efektivní provoz.
+  - Pokud podvodný sítě jsou rozhovory v datovém centru, potom pravidla skupiny zabezpečení sítě k blokování, je opravte.
 
     Vyberte **zobrazení mapy** pod **prostředí**, jak je znázorněno na následujícím obrázku:
 
@@ -282,8 +282,8 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
 **Hledat**
 
 - Distribuce provozu na virtuální síť, topologie, hlavní zdroje přenosů do virtuální sítě, sítě nejvyšší podvodný rozhovory do virtuální sítě a horní rozhovory protokoly aplikací.
-    - Znalost, virtuální síť, ve které je rozhovory do virtuální sítě. Pokud se očekává, konverzace, můžete opravit.
-    - Pokud podvodný sítě jsou rozhovory s virtuální sítí, můžete opravit pravidla NSG pro blokování podvodný sítě.
+  - Znalost, virtuální síť, ve které je rozhovory do virtuální sítě. Pokud se očekává, konverzace, můžete opravit.
+  - Pokud podvodný sítě jsou rozhovory s virtuální sítí, můžete opravit pravidla NSG pro blokování podvodný sítě.
  
     Vyberte **zobrazení virtuálních sítí** pod **prostředí**, jak je znázorněno na následujícím obrázku:
 
@@ -323,7 +323,7 @@ Distribuce provozu na aplikační brány a nástroje pro vyrovnávání zatíže
 **Hledat**
 
 - Otevřít porty jsou rozhovory přes internet?
-    - Pokud jsou nalezeny neočekávané porty otevřít, můžete opravit konfiguraci:
+  - Pokud jsou nalezeny neočekávané porty otevřít, můžete opravit konfiguraci:
 
     ![Připraveném řídicím panelu porty příjem a odesílání provozu do Internetu](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
@@ -347,9 +347,9 @@ Máte ve svém prostředí škodlivý provoz? Kde je pocházející z? Pokud je 
 
 - Následující obrázky zobrazit čas vytvoření trendu pro uplatnění pravidel NSG a podrobnosti o toku zdroj cíl pro skupinu zabezpečení sítě:
 
-    - Rychle zjistit, které skupiny zabezpečení sítě a skupiny zabezpečení sítě jsou pravidla procházení škodlivé toky a které jsou hlavní škodlivé IP adresy, přístup k vašemu cloudovému prostředí
-    - Identifikace, která pravidla skupiny zabezpečení sítě nebo NSG se povolení/blokování významné síťového provozu
-    - Vyberte horní filtry pro detailní kontrolu skupiny zabezpečení sítě nebo NSG pravidla
+  - Rychle zjistit, které skupiny zabezpečení sítě a skupiny zabezpečení sítě jsou pravidla procházení škodlivé toky a které jsou hlavní škodlivé IP adresy, přístup k vašemu cloudovému prostředí
+  - Identifikace, která pravidla skupiny zabezpečení sítě nebo NSG se povolení/blokování významné síťového provozu
+  - Vyberte horní filtry pro detailní kontrolu skupiny zabezpečení sítě nebo NSG pravidla
 
     ![Která ukazuje čas vytvoření trendu pro uplatnění pravidla NSG a hlavní pravidla NSG](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
 

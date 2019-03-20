@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fa07ebf3dbf3e5d3e5f4e96cdf4b77a3710c1d1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888583"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení rámce: Ověřování | Zmírnění rizik 
+
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Webové aplikace**    | <ul><li>[Zvažte možnost použít standardní ověřovací mechanismus ověřování do webové aplikace](#standard-authn-web-app)</li><li>[Aplikace musí zvládnout bezpečně scénáře selhání ověření](#handle-failed-authn)</li><li>[Povolit krok nahoru nebo Adaptivní ověřování](#step-up-adaptive-authn)</li><li>[Ujistěte se, že jsou správně uzamčena rozhraní pro správu](#admin-interface-lockdown)</li><li>[Implementace zapomněli jste heslo funkce bezpečně](#forgot-pword-fxn)</li><li>[Ujistěte se, že jsou implementovány zásady hesla a účtu](#pword-account-policy)</li><li>[Implementace ovládacích prvků, aby se zabránilo výčet uživatelské jméno](#controls-username-enum)</li></ul> |
@@ -338,7 +339,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#)](http://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **Odkazy**              | [Ověřování a autorizace v rozhraní ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [externí ověřovací služby pomocí rozhraní ASP.NET Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **Kroky** | <p>Ověřování je proces, ve kterém entita prokáže svoji identitu, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo. Existuje více ověřovací protokoly dostupné kterých lze považovat za. Některé z nich jsou uvedeny níže:</p><ul><li>Klientské certifikáty</li><li>Založené na Windows</li><li>Na základě formulářů</li><li>Federace – služby AD FS</li><li>Federace – Azure AD</li><li>Federace - serveru identit</li></ul><p>Odkazy v části odkazy poskytují podrobnosti nižší úrovně o jak každý z ověřovací schémata je možné implementovat pro zabezpečení webového rozhraní API.</p>|
 
 ## <a id="authn-aad"></a>Použít standardní ověřovací scénáře podporované službou Azure Active Directory
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>Token SAS
+  #### <a name="sas-token"></a>Token SAS
 * Získá generováno interně při použití symetrický klíč, ale můžeme můžete vygenerovat a použít ho explicitně i
 * Definujte protokol: `var Http = require('azure-iot-device-http').Http;`
 * Vytvořte sas token:
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>Certifikáty
+  #### <a name="certificates"></a>Certifikáty
 * Generovat vlastní X509 podepsaný certifikát, využít libovolný nástroj, jako je například OpenSSL ke generování .cert a .key souborů k ukládání certifikát a klíč v uvedeném pořadí
 * Zřízení zařízení, která přijímá zabezpečené připojení pomocí certifikátů.
     ```javascript

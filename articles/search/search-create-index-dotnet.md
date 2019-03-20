@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/14/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f0ac5ee77bf4a479e48bbe048d2a558d78b18fe3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0aa7dce0b3cc4609a995097d8e70f8ec4336809
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136406"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226364"
 ---
 # <a name="quickstart-create-load-and-query-an-azure-search-index-using-the-net-sdk"></a>Rychlý start: Vytvoření, načtení a dotazování indexu Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]
@@ -39,15 +39,15 @@ Tento článek vás provede procesem vytvoření, načtení a dotazování Azure
 
 + Koncový bod adresy URL a správce klíč rozhraní api služby Search. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-    1. Na webu Azure Portal [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
+  1. Na webu Azure Portal [svou službu vyhledejte](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služeb.
 
-    2. V **přehled**, získat adresu URL. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
+  2. V **přehled**, získat adresu URL. Příkladem koncového bodu může být `https://my-service-name.search.windows.net`.
 
-    3. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. Na vaši žádost můžete použít buď primárním nebo sekundárním klíčem.
+  3. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. Na vaši žádost můžete použít buď primárním nebo sekundárním klíčem.
 
-    ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+     ![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-fiddler/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
 
-    Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+     Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="1---create-a-new-project"></a>1 – Vytvoření nového projektu
 

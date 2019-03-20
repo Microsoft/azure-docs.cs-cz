@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d3154e137aec8dcedcb066e2c9aab046b5a7b6e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081986"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
 Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:
@@ -45,28 +45,28 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
 1. V hlavní nabídce služby Security Center vyberte v části **DETEKCE** možnost **Výstrahy zabezpečení**:
 
-  ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
 
 2. V seznamu výstrah kliknutím na incident zabezpečení, který je kolekcí výstrah, zobrazte další informace o tomto incidentu. Otevře se stránka **Byl zjištěn incident zabezpečení**.
 
-  ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Na této obrazovce uvidíte incident zabezpečení nahoře a pod ním seznam výstrah, které jsou jeho součástí. Klikněte na výstrahu, kterou chcete prošetřit – zobrazí se další informace.
 
-  ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-  Výstrahy mohou být různých typů, další podrobnosti o typech výstrah a možnostech nápravy si přečtěte v článku [Význam výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). U výstrah, které je možné bezpečně zrušit, klikněte pravým tlačítkem na výstrahu a vyberte možnost **Zavřít**:
+   Výstrahy mohou být různých typů, další podrobnosti o typech výstrah a možnostech nápravy si přečtěte v článku [Význam výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). U výstrah, které je možné bezpečně zrušit, klikněte pravým tlačítkem na výstrahu a vyberte možnost **Zavřít**:
 
-  ![Výstrahy](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Výstrahy](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Pokud neznáte hlavní příčinu a rozsah škodlivé aktivity, pokračujte dalším krokem ve vyšetřování.
 
 ## <a name="investigate-an-alert-or-incident"></a>Šetření výstrahy nebo incidentu
 1. Na stránce **Výstraha zabezpečení** klikněte na tlačítko **Zahájit šetření** (pokud jste už začali, tlačítko se změní na **Pokračovat v šetření**).
 
-  ![Šetření](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+   ![Šetření](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-  Mapa šetření je grafická reprezentace entit, které jsou spojené s touto výstrahou nebo incidentem zabezpečení. Kliknutím na entitu v mapě zobrazíte informace o dané a mapa se rozšíří. Typ entity vybrané v mapě má své vlastnosti zvýrazněné v podokně na pravé straně stránky. Informace dostupné na každé kartě se liší podle vybrané entity. Během procesu šetření projděte všechny relevantní informace, abyste lépe pochopili postup útočníka.
+   Mapa šetření je grafická reprezentace entit, které jsou spojené s touto výstrahou nebo incidentem zabezpečení. Kliknutím na entitu v mapě zobrazíte informace o dané a mapa se rozšíří. Typ entity vybrané v mapě má své vlastnosti zvýrazněné v podokně na pravé straně stránky. Informace dostupné na každé kartě se liší podle vybrané entity. Během procesu šetření projděte všechny relevantní informace, abyste lépe pochopili postup útočníka.
 
 2. Pokud potřebujete další fakta nebo podrobnější zkoumání entit, na které jste narazili během šetření, přejděte k dalšímu kroku.
 

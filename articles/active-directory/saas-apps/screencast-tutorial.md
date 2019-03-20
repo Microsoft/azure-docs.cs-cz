@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 941a02ef9ab3d623d34c8dc6996040f6d9e44859
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Kurz: Integrace Azure Active Directory s Matic záznam dění na monitoru – O
 
@@ -133,17 +133,17 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 9. Na **stránky nastavení přístupu**, proveďte následující kroky:
 
-    * V části **adresa URL přístupového** oddíl, do zadaného textového pole zadejte vaše instancename.
+   * V části **adresa URL přístupového** oddíl, do zadaného textového pole zadejte vaše instancename.
 
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_access.png)
+     ![Přístup](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * Vyberte **vyžadují uživatele domény** pod **omezení uživatele SAML (volitelné)** oddílu.
+   * Vyberte **vyžadují uživatele domény** pod **omezení uživatele SAML (volitelné)** oddílu.
 
-    * V části **nahrát soubor XML metadat zprostředkovatele identity**, klikněte na tlačítko **zvolit soubor** nahrát metadat, který jste si stáhli z webu Azure portal.
+   * V části **nahrát soubor XML metadat zprostředkovatele identity**, klikněte na tlačítko **zvolit soubor** nahrát metadat, který jste si stáhli z webu Azure portal.
 
-    * Klikněte na **OK**. 
+   * Klikněte na **OK**. 
 
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_save.png)
+     ![Přístup](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 

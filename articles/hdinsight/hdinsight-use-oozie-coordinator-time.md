@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 000f8de4d40fda39f183b0824bea6a09605e6e9d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a47a30995f651204782325a9f984086fdf382a03
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202193"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Použití koordinátoru Apache Oozie založeného na čase s Apache Hadoop v HDInsight k definování pracovních postupů a koordinace úloh
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátory a jak aktivovat koordinátor úlohy, na základě času. Je užitečné projít [použití Apache Oozie s HDInsight] [ hdinsight-use-oozie] předtím, než v tomto článku. Kromě Oozie toho můžete také plánovat úlohy pomocí služby Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použití Apache Pig a Apache Hivu se službou Data Factory](../data-factory/transform-data.md).
@@ -73,7 +73,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     |Název clusteru HDInsight|$clusterName||Cluster HDInsight, na kterém budete spouštět v tomto kurzu.|
     |Uživatelské jméno clusteru HDInsight|$clusterUsername||Uživatelské jméno clusteru HDInsight. |
     |Heslo uživatele clusteru HDInsight |$clusterPassword||Heslo uživatele clusteru HDInsight.|
-    |Název účtu služby Azure storage|$storageAccountName||Účet služby Azure Storage k dispozici pro HDInsight cluster. Pro účely tohoto kurzu použijte výchozí účet úložiště, který jste zadali během procesu zřizování clusteru.|
+    |Název účtu úložiště Azure|$storageAccountName||Účet služby Azure Storage k dispozici pro HDInsight cluster. Pro účely tohoto kurzu použijte výchozí účet úložiště, který jste zadali během procesu zřizování clusteru.|
     |Název kontejneru Azure Blob|$containerName||V tomto příkladu pomocí kontejneru Azure Blob storage, který se používá pro výchozí systém souborů clusteru HDInsight. Ve výchozím nastavení má stejný název jako HDInsight cluster.|
 
 
@@ -87,7 +87,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     |Název databáze SQL|$sqlDatabaseName||Azure SQL database, ke kterému bude Sqoopu exportovat data. |
 
   > [!NOTE]   
-  > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ho povolit z portálu Azure Portal. Pokyny týkající se vytvoření databáze SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-get-started].
+  > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ji povolit z portálu Azure portal. Pokyny týkající se vytvoření databáze SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-get-started].
 
 > [!NOTE]  
 > Vyplňování hodnot v tabulkách. Je užitečné při procházení tohoto kurzu.
@@ -192,7 +192,7 @@ Akce Hive v pracovním postupu volá skript HiveQL. Tento soubor skriptu obsahuj
     |Proměnné pracovního postupu|Popis|
     |---|---|
     |${jobTracker}|Zadejte adresu URL sledování úloh Hadoopu. Použití **jobtrackerhost:9010** clusteru HDInsight verze 3.0 a 2.0.|
-    |${nameNode}|Zadejte adresu URL uzlu název Hadoop. Použít výchozí soubor systému wasb: / / adresa, třeba *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+    |${nameNode}|Zadejte adresu URL uzlu název Hadoop. Použít výchozí soubor systému wasb: / / adresa, třeba *wasb: / /&lt;containerName&gt;\@&lt;storageAccountName&gt;. blob.core.windows.net*.|
     |${queueName}|Určuje název fronty, který úloha bude odeslána k. Použití **výchozí**.|
 
     Proměnné akcí v hivu
@@ -655,15 +655,15 @@ Prostředí Azure PowerShell aktuálně neposkytuje žádné rutiny pro definov�
 
 Odeberte znaky #, pokud chcete spustit další funkce.
 
-9. Pokud je váš cluster HDinsight verze 2.1, nahraďte "https://$clusterName.azurehdinsight.net:443/oozie/v2/" s "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Verze clusteru HDInsight 2.1 nemá podporuje verze 2 webové služby.
-10. Klikněte na tlačítko **spustit skript** nebo stiskněte klávesu **F5** pro spuštění skriptu. Výstup bude podobný:
+1. Pokud je váš cluster HDInsight verze 2.1, nahraďte "https://$clusterName.azurehdinsight.net:443/oozie/v2/" s "https://$clusterName.azurehdinsight.net:443/oozie/v1/". Verze clusteru HDInsight 2.1 nemá podporuje verze 2 webové služby.
+1. Klikněte na tlačítko **spustit skript** nebo stiskněte klávesu **F5** pro spuštění skriptu. Výstup bude podobný:
 
-     ![Kurz spuštění výstup pracovního postupu][img-runworkflow-output]
-11. Připojení k databázi SQL pro exportovaná data.
+    ![Kurz spuštění výstup pracovního postupu][img-runworkflow-output]
+1. Připojení k databázi SQL pro exportovaná data.
 
 **Zkontrolujte protokol chyb úlohy**
 
-Řešení potíží s pracovního postupu, Oozie souboru protokolu najdete v C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log z hlavního uzlu clusteru. Informace o protokolu RDP najdete v tématu [clusterů Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal].
+Řešení potíží s pracovního postupu, Oozie souboru protokolu najdete v C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log z hlavního uzlu clusteru. Informace o protokolu RDP najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md).
 
 **Znovu spustit kurz**
 
@@ -719,7 +719,6 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a Oozie coordi
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

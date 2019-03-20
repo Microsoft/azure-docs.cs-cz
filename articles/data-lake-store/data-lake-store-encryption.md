@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: df89f8fd4dd5c7690d858009e250a474f702f1a8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098130"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
 
@@ -21,7 +21,7 @@ ms.locfileid: "46125030"
 
 Data Lake Storage Gen1 podporuje šifrování dat v klidovém stavu i při přenosu. Pro neaktivní uložená data, Data Lake Storage Gen1 podporuje "na ve výchozím nastavení," transparentní šifrování. Tady je podrobnější vysvětlení významu těchto termínů:
 
-* **Na ve výchozím nastavení**: při vytváření nového účtu Data Lake Storage Gen1 výchozí nastavení povolí šifrování. Následně data, která je uložená v Data Lake Storage Gen1 se budou šifrovat vždy před uložením na trvalé médium. Toto chování platí pro veškerá data a po vytvoření účtu nejde změnit.
+* **Na ve výchozím nastavení**: Když vytvoříte nový účet Data Lake Storage Gen1, výchozí nastavení povolí šifrování. Následně data, která je uložená v Data Lake Storage Gen1 se budou šifrovat vždy před uložením na trvalé médium. Toto chování platí pro veškerá data a po vytvoření účtu nejde změnit.
 * **Transparentní**: Data Lake Storage Gen1 automaticky šifruje data před uložením a dešifruje před načtením. Šifrování a je na úrovni účtu Data Lake Storage Gen1 spravuje správce. Rozhraní API pro přístup k datům se nemění. Díky tomu se nevyžaduje žádné změny aplikace a služby, které pracují s Data Lake Storage Gen1 kvůli šifrování.
 
 V Data Lake Storage Gen1 se také vždy šifrují data při přenosu (označované také jako data přenášená data). Kromě šifrování dat před uložením na trvalé médium se také vždy šifrují přenášená data pomocí protokolu HTTPS. HTTPS je jediný protokol, který se podporuje v rozhraních Data Lake Storage Gen1 REST. Následující diagram znázorňuje, jak probíhá šifrování dat v Data Lake Storage Gen1:
@@ -74,7 +74,7 @@ Při výběru režimu pro hlavní šifrovací klíče je důležité pamatovat n
 
 V návrhu šifrování dat používají tři typy klíčů. Následující tabulka poskytuje souhrn:
 
-| Klíč                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
+| Klíč                   | Zkratka | Přidružený k | Umístění úložiště                             | Type       | Poznámky                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Hlavní šifrovací klíč | MEK          | Účet Data Lake Storage Gen1 | Key Vault                              | Asymetrický | To může být spravován Gen1 úložiště Data Lake nebo.                                                              |
 | Šifrovací klíč dat   | DEK          | Účet Data Lake Storage Gen1 | Trvalé úložiště spravované službou Data Lake Storage Gen1 | Symetrický  | Klíč DEK je šifrovaný klíčem MEK. Na trvalé médium se ukládá šifrovaný klíč DEK. |
@@ -120,17 +120,17 @@ Všimněte si, že pokud použijete výchozí možnosti šifrování, vaše data
 
     ![Snímek obrazovky služby Key Vault](./media/data-lake-store-encryption/keyvault.png)
 
-3.  Vyberte klíč přidružený k účtu Data Lake Storage Gen1 a vytvořte novou verzi tohoto klíče. Všimněte si, že Data Lake Storage Gen1 aktuálně podporuje pouze obměnu klíče na novou verzi klíče. Obměnu za jiný klíč nepodporuje.
+3. Vyberte klíč přidružený k účtu Data Lake Storage Gen1 a vytvořte novou verzi tohoto klíče. Všimněte si, že Data Lake Storage Gen1 aktuálně podporuje pouze obměnu klíče na novou verzi klíče. Obměnu za jiný klíč nepodporuje.
 
    ![Snímek obrazovky okna Klíče se zvýrazněnou možností Nová verze](./media/data-lake-store-encryption/keynewversion.png)
 
-4.  Přejděte do účtu Data Lake Storage Gen1 a vyberte **šifrování**.
+4. Přejděte do účtu Data Lake Storage Gen1 a vyberte **šifrování**.
 
-    ![Snímek obrazovky nástroje Data Lake Storage Gen1 účet okna se zvýrazněnou možností šifrování](./media/data-lake-store-encryption/select-encryption.png)
+   ![Snímek obrazovky nástroje Data Lake Storage Gen1 účet okna se zvýrazněnou možností šifrování](./media/data-lake-store-encryption/select-encryption.png)
 
-5.  Zobrazí se zpráva informující o dostupnosti nové verze klíče. Kliknutím na **Obměnit klíč** aktualizujte klíč na novou verzi.
+5. Zobrazí se zpráva informující o dostupnosti nové verze klíče. Kliknutím na **Obměnit klíč** aktualizujte klíč na novou verzi.
 
-    ![Snímek obrazovky nástroje Data Lake Storage Gen1 okna zpráv a možností obměnit klíč zvýrazněnou](./media/data-lake-store-encryption/rotatekey.png)
+   ![Snímek obrazovky nástroje Data Lake Storage Gen1 okna zpráv a možností obměnit klíč zvýrazněnou](./media/data-lake-store-encryption/rotatekey.png)
 
 Tato operace by neměla trvat déle než dvě minuty a nemělo by dojít k žádnému výpadku v důsledku obměny klíče. Po dokončení operace se začne používat nová verze klíče.
 

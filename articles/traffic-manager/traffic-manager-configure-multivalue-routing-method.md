@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197164"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094799"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manageru
 
@@ -45,11 +45,11 @@ Vytvořte profil služby Traffic Manager, která přesměruje uživatelský prov
     | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte **hodnot** metodu směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
-    | Skupina prostředků          | Vyberte *myResourceGroupTM1*. |
+    | Skupina prostředků          | Select *myResourceGroupTM1*. |
     | Umístění                | Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.                              |
    |        |           | 
   
-  ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+   ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
@@ -61,13 +61,13 @@ Přidejte dvě IP adresy jako externí koncové body do profilu služby Traffic 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Typ                    | Externí koncový bod                                   |
+    | Type                    | Externí koncový bod                                   |
     | Název           | myEndpoint1                                        |
     | Plně kvalifikovaný název domény (FQDN) nebo IP adresa           | Zadejte veřejnou IP adresu koncového bodu, který chcete přidat k tomuto profilu Traffic Manageru                         |
     |        |           |
 
 4. Opakujte kroky 2 a 3 a přidat jiný koncový bod s názvem *myEndpoint2*, pro **plně kvalifikovaný název domény (FQDN) nebo IP adresa**, zadejte veřejnou IP adresu na druhém koncový bod.
-5.  Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
+5. Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
    ![Přidání koncového bodu služby Traffic Manager](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  

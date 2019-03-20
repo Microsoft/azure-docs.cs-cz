@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 1/30/2019
+ms.date: 3/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 3a1edde2f51abbe60370eefee1b0c141f772c547
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 973d5c5c3822eaddce2bc77d06d01930606994c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182570"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -51,13 +51,16 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 
 - Uživatelem definovanou trasou (UDR) v podsíti paprsku, který odkazuje na adresu IP brány Firewall Azure jako výchozí brána. U této směrovací tabulky musí být **Zakázáno** šíření tras protokolu BGP.
 - Uživatelem definovaná TRASA v podsíti brány centra musí odkazovat na IP adresu brány firewall jako další segment pro sítě paprsků.
-- Žádné uživatelem definovaná TRASA se vyžaduje v podsíti brány Firewall Azure jako zjišťuje směrování z protokolu BGP.
+
+   Žádné uživatelem definovaná TRASA se vyžaduje v podsíti brány Firewall Azure jako zjišťuje směrování z protokolu BGP.
 - Při vytváření partnerského vztahu virtuální sítě VNet-Hub s virtuální sítí VNet-Spoke nezapomeňte nastavit **AllowGatewayTransit** a při vytváření partnerského vztahu virtuální sítě VNet-Spoke s virtuální sítí VNet-Hub nezapomeňte nastavit **UseRemoteGateways**.
 
-V tomto kurzu, chcete-li zjistit, jak tyto trasy vytvářejí naleznete v části Vytvoření trasy.
+Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.
 
 >[!NOTE]
->Azure brány Firewall musí mít přímé připojení k Internetu. Pokud jste povolili vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset nakonfigurovat 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**a pak ji přiřaďte  **AzureFirewallSubnet**.
+>Azure brány Firewall musí mít přímé připojení k Internetu. Ve výchozím nastavení, měli povolit AzureFirewallSubnet pouze 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**.
+>
+>Pokud povolíte vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset explicitně uživatelem definovaná TRASA 0.0.0.0/0 nakonfigurovat NextHopType hodnotu nastavenou jako **Internet** a přidružte jej k vaší AzureFirewallSubnet. Pokud vaše organizace vyžaduje, aby vynucené tunelování provozu Brána Firewall služby Azure, kontaktujte prosím podporu tak, že můžeme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
 
 >[!NOTE]
 >Přenos dat mezi přímo partnerských virtuálních sítích je směrován přímo i v případě, že trasu UDR odkazuje na jako výchozí brána Firewall služby Azure. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat trasu UDR předpona cílové podsítě sítě explicitně v obou podsítích.

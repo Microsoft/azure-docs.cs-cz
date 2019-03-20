@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, otevřete Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991985"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrovat stávající aplikaci MongoDB API služby Azure Cosmos DB pro MongoDB a zprostředkovatele Open Service Broker for Azure (OSBA)
 
@@ -81,7 +81,7 @@ Spusťte aplikaci a že se ho na použití *mongodb* profilu:
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Přejděte na http://localhost:8080 v prohlížeči.
+Přejděte na `http://localhost:8080` v prohlížeči.
 
 ![Aplikace Music Spring s výchozími daty](media/music-app.png)
 
@@ -184,7 +184,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Všimněte si, že vaše aplikace stále používá *mongodb* profilu a identifikátor URI, který začíná *mongodb: / /* pro připojení k databázi Cosmos DB. [Rozhraní API služby Azure Cosmos DB pro MongoDB](../cosmos-db/mongodb-introduction.md) poskytuje tato kompatibilita. To umožňuje vaší aplikaci i nadále fungovat jako by se používat databázi MongoDB, ale ve skutečnosti používá Cosmos DB.
 
-Přejděte na http://localhost:8080 v prohlížeči. Všimněte si, že výchozí data byla obnovena. S ní pracovat tak, že odstraníte pár existující alba a vytvořením několika nových. Můžete ověřit, že změny jsou trvalé zastavením vaší aplikace, ho restartovat a přejdete do ji v prohlížeči. Všimněte si, že změny, které jste provedli, jsou stále existuje. Změny se ukládají do Cosmos DB, který jste vytvořili pomocí zprostředkovatele Open Service Broker for Azure.
+Přejděte na `http://localhost:8080` v prohlížeči. Všimněte si, že výchozí data byla obnovena. S ní pracovat tak, že odstraníte pár existující alba a vytvořením několika nových. Můžete ověřit, že změny jsou trvalé zastavením vaší aplikace, ho restartovat a přejdete do ji v prohlížeči. Všimněte si, že změny, které jste provedli, jsou stále existuje. Změny se ukládají do Cosmos DB, který jste vytvořili pomocí zprostředkovatele Open Service Broker for Azure.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Spuštění aplikace ve vašem clusteru AKS

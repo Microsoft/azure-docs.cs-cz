@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: c0b317019d69d5d66e5a85304f739c92b761217c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b323836ff804d9e4af3765a2d4ea713a34bcf284
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087648"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226517"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup serveru
 
@@ -327,31 +327,31 @@ Přidání virtuálních počítačů VMware pro zálohy. Skupiny ochrany shrom�
      ![Vyberte způsob vytvoření repliky](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. V **možnosti kontroly konzistence**, vyberte, jak a kdy chcete automatizovat kontroly konzistence. Pak klikněte na tlačítko **Další**.
-     - Kontroly konzistence můžete spustit, když se stane nekonzistentní data repliky, nebo podle nastaveného plánu.
-     - Pokud nechcete konfigurovat Automatická kontrola konzistence, můžete spustit ruční kontrolu. Chcete-li to provést, klikněte pravým tlačítkem na skupinu ochrany > **provést kontrolu konzistence**.
+      - Kontroly konzistence můžete spustit, když se stane nekonzistentní data repliky, nebo podle nastaveného plánu.
+      - Pokud nechcete konfigurovat Automatická kontrola konzistence, můžete spustit ruční kontrolu. Chcete-li to provést, klikněte pravým tlačítkem na skupinu ochrany > **provést kontrolu konzistence**.
 
 1. V **zadat Data Online ochrany** vyberte virtuální počítač nebo virtuální počítače, složky, které chcete zálohovat. Vyberte členy jednotlivě, nebo klikněte na **Vybrat vše** zvolit všechny členy. Pak klikněte na tlačítko **Další**.
 
-     ![Zadat data online ochrany](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+      ![Zadat data online ochrany](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Na **zadat plán Online zálohování** stránce, určete, jak často chcete zálohovat data z místního úložiště do Azure.
 
     - Cloudových bodů obnovení pro data vygeneruje podle plánu. Pak klikněte na tlačítko **Další**.
     - Po vygenerování bodu obnovení se přenesou do trezoru služby Recovery Services v Azure.
 
-    ![Zadejte plán online zálohování.](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+      ![Zadejte plán online zálohování.](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. Na **zadat zásady Online uchovávání** stránce, označuje, jak dlouho chcete zachovat body obnovení, které jsou vytvořeny z denních, týdenních nebo měsíčních/ročních záloh do Azure. Pak klikněte na tlačítko **Další**.
 
     - Neexistuje žádný časový limit pro dobu můžete ponechat data v Azure.
     - Jediným limitem je, že nemůže mít více než 9999 bodů obnovení na chráněnou instanci. V tomto příkladu je chráněná instance serveru VMware.
 
-    ![Zadejte zásady online uchovávání dat.](./media/backup-azure-backup-server-vmware/retention-policy.png)
+      ![Zadejte zásady online uchovávání dat.](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 
 1. Na **Souhrn** stránky, zkontrolujte nastavení a potom klikněte na tlačítko **vytvořit skupinu**.
 
-    ![Souhrn nastavení a člena skupiny ochrany](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+     ![Souhrn nastavení a člena skupiny ochrany](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 

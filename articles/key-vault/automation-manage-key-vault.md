@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 85a0c05719ba374ed213212db6f094d75e433183
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073427"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224869"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Správa služby Azure Key Vault pomocí Azure Automation.
 
@@ -34,7 +34,7 @@ Snižte operační režii a uvolnit tak IT a týmu DevOps umožňovaly práci, k
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Jak Azure Automation pomáhá spravovat služby Azure Key Vault?
 
-Key Vault můžete spravovat ve službě Azure Automation s použitím [rutin AzureRM Key Vault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) a [rutiny pro Azure Classic Key Vault](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Modul Azure pro správu klasické služby Key Vault je k dispozici automaticky ve službě Azure Automation, a můžete importovat [modulu AzureRM KeyVault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) do Azure Automation, tak, že můžete provádět mnoho úkolů správy služby Key Vault v rámci služby. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
+Key Vault můžete spravovat ve službě Azure Automation s použitím [rutin AzureRM Key Vault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) a [rutiny pro Azure Classic Key Vault](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Modul Azure pro správu klasické služby Key Vault je k dispozici automaticky ve službě Azure Automation, a můžete importovat [modulu AzureRM KeyVault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) do Azure Automation, tak, že můžete provádět mnoho úkolů správy služby Key Vault v rámci služby. Další informace o tom, jak importovat modul do služby Azure Automation najdete v tématu [spravovat moduly ve službě Azure Automation](../automation/shared-resources/modules.md) může také párovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč Služby Azure a systémech 3. stran.
 
 Pomocí rutiny Azure Key Vault můžete provádět tyto úlohy mimo jiné: 
 

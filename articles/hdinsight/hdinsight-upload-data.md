@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 513cc1f0155c5e5499d0bf076d21aff46756d769
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312170"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201921"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrání dat pro úlohy Apache Hadoop v HDInsight
 
@@ -37,7 +37,7 @@ Než začnete, vezměte na vědomí následující požadavky:
 ## <a name="utilities"></a>Veřejné služby
 Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
 
-| Nástroj | Linux | OS X | Windows |
+| Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
@@ -53,10 +53,7 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 ## <a id="commandline"></a>Hadoop příkazového řádku
 Příkazový řádek systému Hadoop je platný pouze pro ukládání dat do úložiště Azure blob, pokud data se již nachází hlavního uzlu clusteru.
 
-Chcete-li použít příkaz systému Hadoop, musíte nejdřív připojit k hlavnímu uzlu pomocí jedné z následujících metod:
-
-* **HDInsight se systémem Windows**: [Připojit pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **HDInsight se systémem Linux**: Připojte se pomocí [SSH nebo PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
+Chcete-li použít příkaz systému Hadoop, musíte nejdřív připojit k hlavnímu uzlu pomocí [SSH nebo PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Jakmile budete připojeni, můžete k nahrání souboru do úložiště následující syntaxi.
 

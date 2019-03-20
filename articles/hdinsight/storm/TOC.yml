@@ -288,17 +288,11 @@ items:
     - name: Použití Apache Mavenu k vytváření aplikací v Javě
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Přizpůsobení pomocí akce skriptu
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Přístup k protokolům aplikací Apache Hadoop YARN
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Vývoj akcí skriptů
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Správa clusterů pomocí webu Azure Portal
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Monitorování clusterů pomocí rozhraní Apache Ambari API
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -318,9 +312,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: ea149749fcb073861cb6af05225536c552e3f79a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e2ad72d544a401842c9352ebca86394357ce96eb
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200910"

@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850039"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
-Tento návod ukazuje, jak používat vědecké zpracování týmových dat ve scénáři začátku do konce se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, zkoumat, funkce technik a ukázková data z jednoho z veřejně dostupné dolů[ Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datové sady. Využívá Azure Machine Learning a začít vytvářet binární klasifikační model pro tato data. Také ukazuje, jak k publikování některého z těchto modelů jako webové služby.
+Tento návod ukazuje, jak používat vědecké zpracování týmových dat ve scénáři začátku do konce se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, zkoumat, funkce technik a ukázková data z jednoho z veřejně dostupné dolů[ Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) datové sady. Využívá Azure Machine Learning a začít vytvářet binární klasifikační model pro tato data. Také ukazuje, jak k publikování některého z těchto modelů jako webové služby.
 
 Je také možné použít k provádění úloh, které jsou uvedené v tomto názorném postupu IPython notebook. Uživatelé, kteří chtěli vyzkoušet tohoto přístupu by se měli obrátit [Criteo návod používání Hive ODBC připojení](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tématu.
 
 ## <a name="dataset"></a>Popis Criteo datové sady
-Criteo dat je predikce klikněte na datovou sadu, přibližně 370 GB souborů gzip komprimované TSV (~1.3TB nekomprimovaný), zahrnující více než 4.3 miliard záznamů. Je převzata z 24 dní klikněte na data k dispozici ve [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Pro usnadnění práce odborníci přes data byla data dostupná pro nás můžete experimentovat s rozbaleny.
+Criteo dat je predikce klikněte na datovou sadu, přibližně 370 GB souborů gzip komprimované TSV (~1.3TB nekomprimovaný), zahrnující více než 4.3 miliard záznamů. Je převzata z 24 dní klikněte na data k dispozici ve [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/). Pro usnadnění práce odborníci přes data byla data dostupná pro nás můžete experimentovat s rozbaleny.
 
 Každý záznam v této datové sadě obsahuje 40 sloupců:
 
@@ -68,7 +68,7 @@ Nastavení prostředí Azure pro datové vědy pro vytváření řešení predik
 3. [Vytvoření pracovního prostoru Azure Machine Learning studio](../studio/create-workspace.md): Tento pracovní prostor Azure Machine Learning je určená k vytváření modelů strojového učení po počáteční zkoumání a dolů vzorkování v clusteru HDInsight.
 
 ## <a name="getdata"></a>Získání a využívat data z veřejné zdroje
-[Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datová sada je přístupná, klikněte na odkaz, přijetí podmínek použití a poskytnutí názvu. Jak to vypadá snímku je znázorněna zde:
+[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) datová sada je přístupná, klikněte na odkaz, přijetí podmínek použití a poskytnutí názvu. Jak to vypadá snímku je znázorněna zde:
 
 ![Přijměte podmínky Criteo](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
@@ -306,7 +306,7 @@ To poskytuje:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Všimněte si, že Col15 má jedinečné hodnoty 19M! Pomocí technik naivní jako "horkou jeden kódování" ke kódování těchto vysokým počtem rozměrů zařazené do kategorií proměnné není možné. Zejména, výkonné a robustní technika nazývá [učení s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) pro efektivní řeší tento problém je vysvětlené a jsme vám ukázali.
+Všimněte si, že Col15 má jedinečné hodnoty 19M! Pomocí technik naivní jako "horkou jeden kódování" ke kódování těchto vysokým počtem rozměrů zařazené do kategorií proměnné není možné. Zejména, výkonné a robustní technika nazývá [učení s počty](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) pro efektivní řeší tento problém je vysvětlené a jsme vám ukázali.
 
 Nakonec se podívejte na počet jedinečných hodnot pro některé zařazené do kategorií sloupce také. Obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;více&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) jsou:
 
@@ -405,10 +405,10 @@ Díky tomu budete chtít použít naše dolů vzorky trénování a testování 
 Před přechodem na Azure Machine Learning, která se týká tabulky count není konečný důležitou součástí. V následující dílčí části tabulce počet je podrobněji popsána podrobněji.
 
 ## <a name="count"></a> Stručný popis v tabulce počet
-Jak už jste viděli, několik kategorií proměnné mají velmi vysoké dimenzionalitu. V tomto návodu, volá účinnou techniku [učení s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) ke kódování těchto proměnných v efektivní, se zobrazí robustní způsobem. Další informace o této technice je v odkazu.
+Jak už jste viděli, několik kategorií proměnné mají velmi vysoké dimenzionalitu. V tomto návodu, volá účinnou techniku [učení s počty](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) ke kódování těchto proměnných v efektivní, se zobrazí robustní způsobem. Další informace o této technice je v odkazu.
 
 [!NOTE]
->V tomto názorném postupu se zaměřuje na použití počet tabulek pro vytvoření compact reprezentace vysokým počtem rozměrů zařazené do kategorií funkce. To není jediný způsob, jak kódovat zařazené do kategorií funkcí. Další informace o jiných technikách zúčastněných uživatelů najdete v dokumentu [jedním hot-encoding](http://en.wikipedia.org/wiki/One-hot) a [hashování](http://en.wikipedia.org/wiki/Feature_hashing).
+>V tomto názorném postupu se zaměřuje na použití počet tabulek pro vytvoření compact reprezentace vysokým počtem rozměrů zařazené do kategorií funkce. To není jediný způsob, jak kódovat zařazené do kategorií funkcí. Další informace o jiných technikách zúčastněných uživatelů najdete v dokumentu [jedním hot-encoding](https://en.wikipedia.org/wiki/One-hot) a [hashování](https://en.wikipedia.org/wiki/Feature_hashing).
 >
 
 K sestavení počet tabulek na údaje o počtu, použijte data ve složce raw nebo count. Uživatelům se zobrazí v části modelování, jak vytvořit tyto tabulky počet kategorií funkcí od začátku, nebo můžete také použít předem sestavených počet tabulku pro jejich průzkumy. V jaké způsobem při "předchystané počet tabulek" označují, myslíme pomocí počet tabulek, které byly zadány. Podrobné pokyny o tom, jak přistupovat k tyto tabulky jsou uvedené v další části.

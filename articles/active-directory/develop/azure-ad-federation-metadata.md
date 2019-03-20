@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4daf43ed1cf757e95ba2963e2a2f395788aed17
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fcabf51b3a368841f7f135a32c4824eb3db571ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864928"
 ---
 # <a name="federation-metadata"></a>Metadata federování
 Azure Active Directory (Azure AD) publikuje dokumentu metadat federace pro služby, který je nakonfigurovaný tak, aby přijímal tokeny zabezpečení, které Azure AD vydá. Formát dokumentu federačních metadat je popsáno v [Web Services Federation Language (WS-Federation) verze 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), která rozšiřuje [Metadata pro OASIS Security Assertion Markup Language (SAML) 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -73,7 +73,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Podpisové certifikáty tokenů
-Když služba přijímá token, který je vydaný tenanta Azure AD, podpis tokenu musí být ověřené pomocí podpisového klíče, který je publikován v dokumentu federačních metadat. Federační metadata obsahují veřejnou část certifikáty, které klienti používají k podepisování tokenů. Nezpracovaná bajtů certifikátu se zobrazí v `KeyDescriptor` elementu. Podpisový certifikát tokenu je platný pro podepisování pouze tehdy, když hodnota `use` atribut je `signing`.
+Když služba přijímá token, který je vydaný tenanta služby Azure AD, podpis tokenu musí být ověřené pomocí podpisového klíče, který je publikován v dokumentu federačních metadat. Federační metadata obsahují veřejnou část certifikáty, které klienti používají k podepisování tokenů. Nezpracovaná bajtů certifikátu se zobrazí v `KeyDescriptor` elementu. Podpisový certifikát tokenu je platný pro podepisování pouze tehdy, když hodnota `use` atribut je `signing`.
 
 Dokument metadat federace publikované ve službě Azure AD může mít více podpisové klíče, jako je například, když Azure AD se připravuje k aktualizaci podpisového certifikátu. Pokud dokument metadat federace zahrnuje více než jeden certifikát, službu, která ověřuje tokeny musí podporovat všechny certifikáty v dokumentu.
 

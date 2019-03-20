@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 6c77bb1f17f93e25605d251c717c2a4d61f940dd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313955"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904622"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohy elastické databáze
 
@@ -28,6 +28,8 @@ Tento článek rozšiřuje ukázku v [Začínáme s nástroji Elastic Database](
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Stáhněte a spusťte [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
 
@@ -50,7 +52,7 @@ Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-A
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Vytvoří vlastní kolekce a přidat všechny databáze na serveru do vlastní kolekce cíle s výjimkou master
 
-   ```Powershell
+   ```PowerShell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -314,7 +316,7 @@ Pokud je úloha zrušení požadováno pro nadřazenou úlohou, žádost o zruš
 
 Chcete-li odeslat žádost o zrušení, použijte **Stop-AzureSqlJobExecution** rutiny a nastavit **JobExecutionId** parametr.
 
-   ```Powershell
+   ```PowerShell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```

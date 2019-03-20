@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093554"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905133"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Bezpečně instalaci a provozování váš Azure Data Box
 ![Ikona upozornění](./media/data-box-safety/warning_icon.png)
@@ -77,14 +77,14 @@ Tady jsou ikony, zjistíte, když zkontrolujete bezpečnostní opatření, kter�
 * Trvale Odpojte jednotku před přesunutím nebo pokud si myslíte, že je poškozená žádným způsobem.
 * Zdroj napájení vhodné poskytněte elektrické přetížení ochrany podle následujících specifikací power:
 
-    - Snímač napětí: 100 V AC na 240 V AC
-    - Aktuální: 6, nesmí být delší
+    - Snímač napětí: 100 V AC 240 V AC
+    - Aktuální stav: 6, nesmí být delší
     - Frekvence: 50 Hz až 60 Hz
 
 ![Ikona upozornění](./media/data-box-safety/warning_icon.png) **upozornění:**
 
 * Toto zařízení obsahuje mince buňky baterie. Nepokoušejte se službu zařízení. Baterie v tomto zařízení se nedají měnit uživatele. 
-* **Pro pracovníky služby pouze**: rizika z obrovské Pokud baterie je nahrazena nesprávného typu. Uvolnění používané baterie podle pokynů.
+* **Pro pracovníky služby pouze**: Riziko výbuchu Pokud baterie je nahrazena nesprávného typu. Uvolnění používané baterie podle pokynů.
 
 ![Všimněte si ikony](./media/data-box-safety/notice_icon.png) **oznámení:**
 
@@ -104,7 +104,7 @@ Je toto zařízení:
     - Provozní teplota: 50° s ° F 95 (10° až 35° C)
     - Úložiště teploty:-4 ° 122 ° f (°-20 do 50 C)
     - Relativní vlhkosti: 15 až 85 % (nekondenzovaná) 
-    - Provozování výška: testování 6500 nohou (2000 měřiče 0 metry)
+    - Provozní výška: Testovat 6500 nohou (2000 měřiče 0 metry)
 
 K elektrické napájení hodnocení odkazovat na zařízení hodnocení popisek jednotce je přidružená k dispozici. 
 
@@ -124,9 +124,9 @@ Tato zařízení v souladu se část 15 FCC pravidel a oborové Kanada licence v
 
 MŮŽETE ICES-3(A)/NMB-3(A)
 
-Microsoft Corporation, jeden Microsoft způsobem, Redmond, WA 98052, USA.
+Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
-Spojených států: (800) 426-9400
+Spojené státy americké: (800) 426-9400
 
 Kanada: (800) 933-4750
 
@@ -142,11 +142,11 @@ Toto je třída A produktu. Tento produkt může v prostředí domácí způsobi
 
 ![Ikona vyřazení baterie](./media/data-box-safety/battery_disposal_icon.png)
 
-Tento symbol v produktu nebo jeho baterie nebo jeho balení znamená, že tohoto produktu a jakékoli baterie, které obsahuje nesmí být odstraněny s domácnosti plýtvání. Místo toho je vaší odpovědností, abyste předá to do příslušné kolekce bodu recyklaci baterie a k elektrické a elektronických zařízení. Tato samostatné kolekce a recyklace se pomohou šetřit přírodních zdrojů a zabránit potenciální negativní důsledky pro zdravotnictví a prostředí kvůli možné přítomnosti nebezpečných látek v baterie a elektrické a elektronické zařízení, která by mohla být způsobena nevhodný vyřazení. Další informace o tom, kde zanechání baterie a elektrické a elektronické plýtvání obraťte se prosím na vaše místní město nebo obec office, službě nakládání s odpady domácnosti nebo obchod, kde jste zakoupili tohoto produktu. Kontakt *erecycle@microsoft.com* Další informace o OEEZ.
+Tento symbol v produktu nebo jeho baterie nebo jeho balení znamená, že tohoto produktu a jakékoli baterie, které obsahuje nesmí být odstraněny s domácnosti plýtvání. Místo toho je vaší odpovědností, abyste předá to do příslušné kolekce bodu recyklaci baterie a k elektrické a elektronických zařízení. Tato samostatné kolekce a recyklace se pomohou šetřit přírodních zdrojů a zabránit potenciální negativní důsledky pro zdravotnictví a prostředí kvůli možné přítomnosti nebezpečných látek v baterie a elektrické a elektronické zařízení, která by mohla být způsobena nevhodný vyřazení. Další informace o tom, kde zanechání baterie a elektrické a elektronické plýtvání obraťte se prosím na vaše místní město nebo obec office, službě nakládání s odpady domácnosti nebo obchod, kde jste zakoupili tohoto produktu. Kontakt *erecycle\@microsoft.com* Další informace o OEEZ.
 
 Tento produkt obsahuje battery(ies) mince buňky.
 
-Společnost Microsoft Ireland Sandyford ajít Est Dublin D18 KX32 IRL
+Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL
 
 Telefonní číslo: +353 1 295 3826
 

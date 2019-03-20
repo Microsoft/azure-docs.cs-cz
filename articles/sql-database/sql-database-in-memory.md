@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854836"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226976"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí v začleňování paměťových technologií ve službě SQL Database
 
@@ -83,7 +83,7 @@ Technologie OLTP v paměti poskytuje operacemi přístupu k datům extrémně ry
 
 - **Paměťově optimalizované rowstore** formát, kde každý řádek je samostatná paměťová objektu. Toto je classic formát OLTP v paměti optimalizované pro úlohy OLTP s vysokým výkonem. Existují dva typy paměťově optimalizované tabulky, které lze použít v paměťově optimalizovaných rowstore formátu:
   - *Trvalý tabulky* (SCHEMA_AND_DATA) kde řádků umístěný v paměti jsou zachovány po restartování serveru. Tento typ tabulky se chová jako tradiční rowstore tabulku s další výhody optimalizace v paměti.
-  - *Tabulky non-durable* (SCEMA_ONLY) Pokud jsou řádky není zachována po restartování. Tento typ tabulky je určen pro dočasná data (například nahrazení dočasné tabulky), nebo tabulky, které je potřeba rychle načíst data, teprve potom přejděte na některé trvalou tabulku (tzv. pracovních tabulek).
+  - *Tabulky non-durable* (SCHEMA_ONLY) Pokud jsou řádky není zachována po restartování. Tento typ tabulky je určen pro dočasná data (například nahrazení dočasné tabulky), nebo tabulky, které je potřeba rychle načíst data, teprve potom přejděte na některé trvalou tabulku (tzv. pracovních tabulek).
 - **Paměťově optimalizované columnstore** formát, kde jsou data uspořádána ve sloupcovém formátu. Tato struktura je určená pro HTAP scénáře, které je potřeba spouštět analytické dotazy na stejnou strukturu dat, ve kterém je spuštěná vaše úloha OLTP.
 
 > [!Note]

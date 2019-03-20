@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 5b3177e4918026871c336f831f6d03d707a43683
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e302a4edc54b98f0dd731f65d0d45aa592cc72ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761901"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076764"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Vývoj pro víc služeb prostory Azure Dev
 
@@ -34,7 +34,7 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 1. Otevřete službu `mywebapi` projektu v *samostatném okně sady Visual Studio*.
 1. Vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak jste to udělali už dříve pro projekt `webfrontend`. Tentokrát místo vytváření nového clusteru AKS vyberte cluster, který jste už vytvořili. Stejně jako dříve nechte v rozevíracím seznamu Space (Prostor) vybranou položku `default` a klikněte na **OK**. V okně výstupu můžete si všimnout spustí aplikace Visual Studio "zahřívání" Tato nová služba ve vašem prostoru dev k urychlení věci při zahájení ladění.
 1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Až se barva stavového řádku sady Visual Studio změní na oranžovou, bude služba připravená.
-1. Poznamenejte si koncový bod adresy URL se zobrazí v **Azure Dev prostory pro AKS** v podokně **výstup** okna. Bude vypadat přibližně takto: http://localhost:\<portnumber\>. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure.
+1. Poznamenejte si koncový bod adresy URL se zobrazí v **Azure Dev prostory pro AKS** v podokně **výstup** okna. Bude vypadat přibližně takto: `http://localhost:<portnumber>`. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure.
 2. Až se `mywebapi` připraví, otevřete v prohlížeči adresu místního hostitele a k adrese URL připojte `/api/values`, aby se vyvolalo výchozí rozhraní GET API pro `ValuesController`. 
 3. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď ze služby `mywebapi`, která vypadá takto:
 

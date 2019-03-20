@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081045"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizace služby Azure Stack 1811
 
@@ -122,13 +122,13 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
 - Tato verze přináší upozornění **opravit** akce pro operátory Azure stacku. Některé výstrahy v 1811 poskytují **opravit** tlačítko ve výstraze, které můžete vybrat k vyřešení daného problému. Další informace najdete v tématu [monitorovat stav a výstrahy ve službě Azure Stack](azure-stack-monitor-health.md).
 
 - Aktualizace prostředí aktualizací ve službě Azure Stack. Vylepšení aktualizace zahrnují: 
-    - Karty, které rozdělí aktualizace z historie aktualizace pro lepší sledování aktualizace v průběhu a dokončení aktualizace.
-    - Data budou aktualizovat Vylepšený stav vizualizace v části Základy pomocí nové ikony a rozložení pro verze aktuální a výrobce OEM, stejně jako poslední.
-    - **Zobrazení** odkaz pro sloupec Poznámky k verzi přejde přímo v dokumentaci k konkrétní, aby update spíše než na stránce Obecné aktualizace.
-    - **Aktualizace historie** karta používá k určení spuštění časy pro každou z aktualizace i rozšířené možnosti filtrování.  
-    - Azure Stack jednotek škálování, které jsou připojené stále automaticky přijme **k dispozici je aktualizace** , jakmile budou k dispozici.
-    - Azure Stack jednotek škálování, které nejsou připojené můžete naimportovat stejně jako před. 
-    - Neexistují žádné změny v procesu ke stažení protokolů JSON z portálu. Operátoři Azure stacku se zobrazí, rozbalení kroků vyjádření průběh.
+  - Karty, které rozdělí aktualizace z historie aktualizace pro lepší sledování aktualizace v průběhu a dokončení aktualizace.
+  - Data budou aktualizovat Vylepšený stav vizualizace v části Základy pomocí nové ikony a rozložení pro verze aktuální a výrobce OEM, stejně jako poslední.
+  - **Zobrazení** odkaz pro sloupec Poznámky k verzi přejde přímo v dokumentaci k konkrétní, aby update spíše než na stránce Obecné aktualizace.
+  - **Aktualizace historie** karta používá k určení spuštění časy pro každou z aktualizace i rozšířené možnosti filtrování.  
+  - Azure Stack jednotek škálování, které jsou připojené stále automaticky přijme **k dispozici je aktualizace** , jakmile budou k dispozici.
+  - Azure Stack jednotek škálování, které nejsou připojené můžete naimportovat stejně jako před. 
+  - Neexistují žádné změny v procesu ke stažení protokolů JSON z portálu. Operátoři Azure stacku se zobrazí, rozbalení kroků vyjádření průběh.
 
     Další informace najdete v tématu [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md).
 
@@ -256,17 +256,17 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 1264761 - IS ASDK -->  
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 
-    - Upozornění #1:
-       - JMÉNO:  Infrastrukturu role není v pořádku
-       - ZÁVAŽNOST: Upozornění
-       - KOMPONENTY: Stav kontroleru
-       - POPIS: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
+  - Upozornění #1:
+     - JMÉNO:  Infrastrukturu role není v pořádku
+     - ZÁVAŽNOST: Upozornění
+     - KOMPONENTY: Stav kontroleru
+     - POPIS: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
 
-    - Upozornění #2:
-       - JMÉNO:  Infrastrukturu role není v pořádku
-       - ZÁVAŽNOST: Upozornění
-       - KOMPONENTY: Stav kontroleru
-       - POPIS: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
+  - Upozornění #2:
+     - JMÉNO:  Infrastrukturu role není v pořádku
+     - ZÁVAŽNOST: Upozornění
+     - KOMPONENTY: Stav kontroleru
+     - POPIS: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
 
     Obě výstrahy můžete bezpečně ignorovat. Zavře se automaticky v čase.  
 
@@ -346,7 +346,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Během Azure Stack *tajný klíč otočení*, je období, ve kterém veřejné IP adresy nedostupné přibližně 2 až 5 minut.
 
 <!-- 2664148 - IS ASDK --> 
--   Ve scénářích, kde tenanta je přístup k virtuální počítače s použitím tunelu S2S VPN kterými se mohou setkat scénář, kde pokusy o připojení selhat, pokud místní podsítě se přidal k bráně místní sítě po již vytvoření brány. 
+- Ve scénářích, kde tenanta je přístup k virtuální počítače s použitím tunelu S2S VPN kterými se mohou setkat scénář, kde pokusy o připojení selhat, pokud místní podsítě se přidal k bráně místní sítě po již vytvoření brány. 
 
 - Na portálu Azure Stack při změně statickou IP adresu pro konfiguraci IP, která je vázána na síťový adaptér připojený k instanci virtuálního počítače, zobrazí se zpráva s oznámením 
 
@@ -358,9 +358,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
 - Na portálu, je-li přidat příchozí pravidlo zabezpečení a vyberte **značka služby** jako zdroj, se zobrazí několik možností, jak v **značka zdroje** seznamu, které nejsou k dispozici pro službu Azure Stack. Pouze možnosti, které jsou platné ve službě Azure Stack jsou následující:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     Další možnosti nejsou podporovány jako zdroj značky ve službě Azure Stack. Obdobně je-li přidat odchozí pravidlo zabezpečení a vyberte **značka služby** jako cíl stejný seznam možností pro **značka zdroje** se zobrazí. Pouze platné možnosti jsou stejné jako v případě **značka zdroje**, jak je popsáno v předchozím seznamu.
 

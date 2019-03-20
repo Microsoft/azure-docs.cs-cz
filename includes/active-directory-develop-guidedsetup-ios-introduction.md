@@ -3,23 +3,23 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ace6c36f1bc4582b3210c049a4ff8cb1f770bf88
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203471"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>Volání rozhraní Microsoft Graph API z aplikace pro iOS
 
@@ -34,7 +34,7 @@ Po dokončení cvičení v této příručce, může volat chráněné rozhraní
 
 ## <a name="how-this-guide-works"></a>Jak funguje tento průvodce
 
-![Jak funguje tento průvodce](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![Ukazuje, jak ukázková aplikace vygenerované tohle funguje kurzy](media/active-directory-develop-guidedsetup-ios-introduction/iosintro-updated.png)
 
 V této příručce ukázkovou aplikaci umožňuje dotazování rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Azure AD v2.0 aplikace pro iOS. V tomto scénáři token se přidá na požadavky HTTP s použitím **autorizace** záhlaví. Získání tokenu a obnovení jsou zpracovány pomocí Microsoft Authentication Library (MSAL).
 

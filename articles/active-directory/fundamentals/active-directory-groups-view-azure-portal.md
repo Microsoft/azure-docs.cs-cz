@@ -13,12 +13,12 @@ ms.author: lizross
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92038a7992129ce3a812fd12a5e42f5ac37125e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443573"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881006"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -61,7 +61,7 @@ Vytvořte nového uživatele se jménem _Alain Charon_. Uživatel musí existova
 
     - **Jméno:** Typ _Alain Charon_.
 
-    - **Uživatelské jméno:** Typ *alain@contoso.com*.
+    - **Uživatelské jméno:** Typ *alain\@contoso.com*.
 
 3. Zkopírujte automaticky vygenerované heslo v poli **Heslo** a pak vyberte **Vytvořit**.
 

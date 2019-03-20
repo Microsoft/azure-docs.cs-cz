@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657570"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850288"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Prozkoumejte SaaS analýz s využitím Azure SQL Database, SQL Data Warehouse, služby Data Factory a Power BI
 
@@ -94,7 +94,7 @@ V tomto kroku nasadíte další prostředky v tomto kurzu použili: volá se SQL
 
 Teď zkontrolujte prostředky Azure, které jste nasadili:
 #### <a name="tenant-databases-and-analytics-store"></a>Úložiště databáze a analýzy tenanta
-Použití [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) pro připojení k **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery. Nahraďte &lt;uživatele&gt; s hodnotou použitou při nasazení aplikace. Použijte přihlašovací jméno = *developer* a heslo = *P@ssword1*. Zobrazit [úvodní tutoriál](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
+Použití [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) pro připojení k **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery. Nahraďte &lt;uživatele&gt; s hodnotou použitou při nasazení aplikace. Použijte přihlašovací jméno = *developer* a heslo = *P\@ssword1*. Zobrazit [úvodní tutoriál](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
 
 ![Připojení k serveru SQL Database pomocí SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -113,7 +113,7 @@ V Průzkumníku objektů:
 #### <a name="blob-storage"></a>Blob Storage
 1. V [webu Azure Portal](https://ms.portal.azure.com), přejděte do skupiny prostředků, který jste použili k nasazení aplikace. Ověřte, že účet úložiště s názvem **wingtipstaging\<uživatele\>**  byla přidána.
 
-  ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
+   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. Klikněte na tlačítko **wingtipstaging\<uživatele\>**  účet úložiště, pokud chcete prozkoumat objekty, které jsou k dispozici.
 1. Klikněte na tlačítko **objekty BLOB** dlaždici
@@ -195,7 +195,7 @@ Následující kroky použijte pro připojení k Power BI a k importování zobr
 
     ![znak v na power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Vyberte **databáze** v levém podokně, zadejte uživatelské jméno = *developer*a zadejte heslo = *P@ssword1*. Klikněte na **Připojit**.  
+5. Vyberte **databáze** v levém podokně, zadejte uživatelské jméno = *developer*a zadejte heslo = *P\@ssword1*. Klikněte na **Připojit**.  
 
     ![databáze – přihlášení](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

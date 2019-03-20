@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a894e4f868e09881cff246ecf236a7937b9c7348
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095632"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Rychlý start: Hledání obrázků s SDK vyhledávání obrázků Bingu pro Python
 
@@ -52,16 +52,16 @@ Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive 
 
 ## <a name="create-the-image-search-client"></a>Vytvoření klienta vyhledávání obrázků
 
-3. Vytvořte instanci třídy `CognitiveServicesCredentials` a použijte ji k vytvoření instance klienta:
+1. Vytvořte instanci třídy `CognitiveServicesCredentials` a použijte ji k vytvoření instance klienta:
 
     ```python
     client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
-4. Odešlete vyhledávací dotaz do rozhraní API Bingu pro vyhledávání obrázků:
+1. Odešlete vyhledávací dotaz do rozhraní API Bingu pro vyhledávání obrázků:
     ```python
     image_results = client.images.search(query=search_term)
     ```
-## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
+   ## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
 
 Parsujte výsledky obrázků vrácené v odpovědi.
 

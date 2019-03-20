@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2c4f68a35d5baa3d7933243737d02d720409289
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671586"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004418"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
@@ -123,7 +123,7 @@ Další [příklady](./computer-vision-resource-container-config.md#example-dock
 
 Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
 
-Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
+Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 ### <a name="asynchronous-text-recognition"></a>Rozpoznávání asynchronní textu
 

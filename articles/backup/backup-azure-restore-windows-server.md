@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 1e8e9365567c19400b86dc60d966eb965b83591d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110813"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Obnovení souborů do Windows pomocí modelu nasazení Azure Resource Manageru
 
@@ -51,11 +51,11 @@ Pokud omylem odstranil se soubor a chcete provést obnovení do stejného počí
 4. Na **vybrat režim obnovení** zvolte **jednotlivých souborů a složek** > **Další**.
 
     ![Snímek obrazovky z obnovit Data Průvodce vybrat režim obnovení stránky](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
-  > [!IMPORTANT]
-  > Možnost obnovení jednotlivých souborů a složek vyžaduje rozhraní .NET Framework 4.5.2 nebo novější. Pokud se nezobrazí **jednotlivých souborů a složek** možnost, musíte upgradovat rozhraní .NET Framework verze 4.5.2 nebo novější a zkuste to znovu.
+   > [!IMPORTANT]
+   > Možnost obnovení jednotlivých souborů a složek vyžaduje rozhraní .NET Framework 4.5.2 nebo novější. Pokud se nezobrazí **jednotlivých souborů a složek** možnost, musíte upgradovat rozhraní .NET Framework verze 4.5.2 nebo novější a zkuste to znovu.
 
-  > [!TIP]
-  > **Jednotlivých souborů a složek** možnost umožňuje rychlý přístup k data bodu obnovení. Je vhodné pro obnovení jednotlivých souborů s více než 80 GB více velikostí a nabízí přenos nebo kopírování urychluje MB/s až 6 během obnovení. **Svazku** možnost obnoví všechna zálohovaná data v určeném svazku. Tato možnost poskytuje rychlejší přenos rychlosti (až 60 MB/s), která je ideální pro obnovení velkých a velkých dat nebo celé svazky.
+   > [!TIP]
+   > **Jednotlivých souborů a složek** možnost umožňuje rychlý přístup k data bodu obnovení. Je vhodné pro obnovení jednotlivých souborů s více než 80 GB více velikostí a nabízí přenos nebo kopírování urychluje MB/s až 6 během obnovení. **Svazku** možnost obnoví všechna zálohovaná data v určeném svazku. Tato možnost poskytuje rychlejší přenos rychlosti (až 60 MB/s), která je ideální pro obnovení velkých a velkých dat nebo celé svazky.
 
 5. Na **vybrat svazek a datum** vyberte svazek, který obsahuje soubory a složky, kterou chcete obnovit.
 

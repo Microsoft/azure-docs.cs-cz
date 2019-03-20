@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bbb3e4f319584740f165b64948e1fd4dca2722b0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999967"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -30,12 +30,13 @@ Azure Migrate vám pomůže s následujícími úlohami:
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware se musí spravovat přes vCenter Server (verze 5.5, 6.0, 6.5 nebo 6.7).
-- Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí, pokud máte zájem o vyzkoušení, zaregistrujte se prosím [tady.](http://aka.ms/migratefuture)
+- Podpora pro Hyper-V je aktuálně ve verzi preview s podporou produkčního prostředí, pokud máte zájem o vyzkoušení, zaregistrujte se prosím [tady.](https://aka.ms/migratefuture)
 - Pro účely posouzení fyzických serverů, můžete využít naše [partnerské nástroje](https://azure.microsoft.com/migration/partners/).
 - Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
 -  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.
+
     **Zeměpisné oblasti** | **Umístění úložiště**
     --- | ---
     Azure Government | USA (Gov) – Virginia
@@ -73,27 +74,27 @@ Nastavení posouzení si můžete přizpůsobit podle vašich potřeb. Souhrn vl
 
 ## <a name="how-does-azure-migrate-work"></a>Jak služba Azure Migrate funguje?
 
-1.  Vytvoříte projekt Azure Migrate.
-2.  Azure Migrate pomocí místního počítače označovaného jako zařízení kolektoru zjistí informace o místních počítačích. Toto zařízení vytvoříte tak, že stáhnete instalační soubor ve formátu .ova (Open Virtualization Appliance) a importujete ho jako virtuální počítač na místní vCenter Server.
+1. Vytvoříte projekt Azure Migrate.
+2. Azure Migrate pomocí místního počítače označovaného jako zařízení kolektoru zjistí informace o místních počítačích. Toto zařízení vytvoříte tak, že stáhnete instalační soubor ve formátu .ova (Open Virtualization Appliance) a importujete ho jako virtuální počítač na místní vCenter Server.
 3. Z vCenter Serveru se připojíte k virtuálnímu počítači a během připojování pro něj zadáte nové heslo.
 4. Na virtuálním počítači spustíte kolektor a tím zahájíte zjišťování.
 5. Kolektor pomocí rutin VMware PowerCLI shromáždí metadata virtuálního počítače. Zjišťování probíhá bez agenta a na hostitele VMware ani virtuální počítače se nic neinstaluje. Shromážděná metadata obsahují informace o virtuálním počítači (jádra, paměť, disky, velikosti disků a síťové adaptéry). Shromáždí se také data o výkonu virtuálních počítačů, včetně využití procesoru a paměti, IOPS disku, propustnosti disku (MB/s) a výstupu sítě (MB/s).
-5.  Metadata se vloží do projektu Azure Migrate. Můžete je zobrazit na webu Azure Portal.
-6.  Pro účely posouzení shromáždíte zjištěné virtuální počítače do skupin. Můžete například seskupit virtuální počítače, na kterých běží stejná aplikace. Pro přesnější seskupení můžete použít vizualizaci závislostí, zobrazit závislosti pro konkrétní počítač nebo pro všechny počítače ve skupině a skupinu upřesnit.
-7.  Po nadefinování skupiny pro ni vytvoříte posouzení.
-8.  Po dokončení můžete posouzení zobrazit na portálu nebo si ho stáhnout ve formátu aplikace Excel.
+5. Metadata se vloží do projektu Azure Migrate. Můžete je zobrazit na webu Azure Portal.
+6. Pro účely posouzení shromáždíte zjištěné virtuální počítače do skupin. Můžete například seskupit virtuální počítače, na kterých běží stejná aplikace. Pro přesnější seskupení můžete použít vizualizaci závislostí, zobrazit závislosti pro konkrétní počítač nebo pro všechny počítače ve skupině a skupinu upřesnit.
+7. Po nadefinování skupiny pro ni vytvoříte posouzení.
+8. Po dokončení můžete posouzení zobrazit na portálu nebo si ho stáhnout ve formátu aplikace Excel.
 
-  ![Architektura služby Azure Migrate](./media/migration-planner-overview/overview-1.png)
+   ![Architektura služby Azure Migrate](./media/migration-planner-overview/overview-1.png)
 
 ## <a name="what-are-the-port-requirements"></a>Jaké jsou požadavky na porty?
 
 Tabulka shrnuje porty potřebné ke komunikaci služby Azure Migrate.
 
-Komponenta | Komunikuje s |  Podrobnosti
---- | --- |---
-Kolektor  | Služba Azure Migrate | Kolektor se ke službě připojuje přes port SSL 443.
-Kolektor | vCenter Server | Ve výchozím nastavení se kolektor připojuje k systému vCenter Server na portu 443. Pokud server naslouchá na jiném portu, nakonfigurujte ho jako odchozí port na virtuálním počítači kolektoru.
-Místní virtuální počítač | Pracovní prostor Log Analytics | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) používá TCP port 443 pro připojení k protokoly Azure monitoru. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.
+| Komponenta | Komunikuje s |  Podrobnosti |
+| --- | --- |--- |
+|Kolektor  | Služba Azure Migrate | Kolektor se ke službě připojuje přes port SSL 443.|
+|Kolektor | vCenter Server | Ve výchozím nastavení se kolektor připojuje k systému vCenter Server na portu 443. Pokud server naslouchá na jiném portu, nakonfigurujte ho jako odchozí port na virtuálním počítači kolektoru.|
+|Místní virtuální počítač | Pracovní prostor Log Analytics | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) používá TCP port 443 pro připojení k protokoly Azure monitoru. Tento port potřebujete pouze v případě, že využíváte vizualizaci závislostí, která vyžaduje agenta MMA.|
 
 
 ## <a name="what-happens-after-assessment"></a>Co se stane po posouzení?

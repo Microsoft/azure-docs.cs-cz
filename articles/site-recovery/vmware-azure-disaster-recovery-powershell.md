@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 8cf07c5213652ecedce7cd49a1de745c7fe8aa0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122263"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226331"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí Powershellu
 
@@ -26,7 +26,7 @@ Získáte informace o těchto tématech:
 > - Nastavení replikace, včetně zásad replikace. Přidání serveru vCenter a zjištění virtuálních počítačů. 
 > - Přidání serveru vCenter a zjišťování 
 > - Vytvoření účtů úložiště pro uložení dat replikace a replikovat virtuální počítače.
-> - Převzetí služeb při selhání Konfigurace nastavení převzetí služeb při selhání, proveďte e nastavení pro replikaci virtuálních počítačů.
+> - Převzetí služeb při selhání Konfigurace nastavení převzetí služeb při selhání, proveďte nastavení pro replikaci virtuálních počítačů.
 
 ## <a name="prerequisites"></a>Požadavky
 

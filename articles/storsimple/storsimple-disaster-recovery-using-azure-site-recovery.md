@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084874"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii pomocí Azure Site Recovery pro sdílené složky hostované na StorSimple
 ## <a name="overview"></a>Přehled
@@ -179,7 +179,7 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
    - *RecoveryPlanName***-StorageAccountKey**: Přístupový klíč pro výše uvedené účtu úložiště.
    - * RecoveryPlanName ***- VMGUIDS**: Při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
 
-    Například, pokud se název plánu obnovení fileServerpredayRP pak vaše **proměnné**, **připojení** a **certifikáty** karta by měla vypadat následovně, po přidání všechny prostředky.
+     Například, pokud se název plánu obnovení fileServerpredayRP pak vaše **proměnné**, **připojení** a **certifikáty** karta by měla vypadat následovně, po přidání všechny prostředky.
 
       ![Prostředky](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
@@ -332,30 +332,30 @@ Plánování kapacity se skládá z alespoň dva důležité procesy:
    - Určení požadované šířky pásma Internetu.
 
 ## <a name="limitations"></a>Omezení
-   - V současné době mohou být přebrány pouze 1 zařízení StorSimple (na jednoho řešení StorSimple Cloud Appliance). Scénář souborový server, který zahrnuje několik zařízení StorSimple se ještě nepodporuje.
-   - Pokud dojde k chybě při zapínání ochrany pro virtuální počítač, ujistěte se, že jste odpojeni cíle iSCSI.
-   - Všechny kontejnery svazků, které byly seskupeny dohromady z důvodu zásad zálohování, které pokrývá kontejnery svazků převezme služby společně.
-   - Všechny svazky v kontejnerech svazků, kterou jste zvolili převezme služby.
-   - Svazky, které přidáte do více než 64 TB nejde přes se nezdařila, protože maximální kapacita jednu řešení StorSimple Cloud Appliance je 64 TB.
-   - Pokud se nepovede plánované/neplánované převzetí služeb při selhání a virtuální počítače se vytvoří v Azure, pak nevyčišťujte virtuálních počítačů. Místo toho proveďte navrácení služeb po obnovení. Pokud odstraníte virtuální počítače pak místní virtuální počítače nelze zapnout znovu.
-   - Po selhání Pokud se vám nedaří zobrazit svazky, přejděte na virtuální počítače, správu disků otevřete tak, zkontrolujte znovu disky a pak je převedení do online režimu.
-   - V některých případech může být jiná než písmena v místním písmena jednotek v lokalitě zotavení po Havárii. Pokud k tomu dojde, je potřeba ručně po dokončení převzetí služeb při odstranění problému.
-   - Časový limit úlohy převzetí služeb při selhání: StorSimple skriptu vyprší časový limit, pokud převzetí služeb při selhání kontejnerů svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
-   - Časový limit úlohy zálohování: StorSimple skriptu vyprší časový limit, pokud zálohování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+- V současné době mohou být přebrány pouze 1 zařízení StorSimple (na jednoho řešení StorSimple Cloud Appliance). Scénář souborový server, který zahrnuje několik zařízení StorSimple se ještě nepodporuje.
+- Pokud dojde k chybě při zapínání ochrany pro virtuální počítač, ujistěte se, že jste odpojeni cíle iSCSI.
+- Všechny kontejnery svazků, které byly seskupeny dohromady z důvodu zásad zálohování, které pokrývá kontejnery svazků převezme služby společně.
+- Všechny svazky v kontejnerech svazků, kterou jste zvolili převezme služby.
+- Svazky, které přidáte do více než 64 TB nejde přes se nezdařila, protože maximální kapacita jednu řešení StorSimple Cloud Appliance je 64 TB.
+- Pokud se nepovede plánované/neplánované převzetí služeb při selhání a virtuální počítače se vytvoří v Azure, pak nevyčišťujte virtuálních počítačů. Místo toho proveďte navrácení služeb po obnovení. Pokud odstraníte virtuální počítače pak místní virtuální počítače nelze zapnout znovu.
+- Po selhání Pokud se vám nedaří zobrazit svazky, přejděte na virtuální počítače, správu disků otevřete tak, zkontrolujte znovu disky a pak je převedení do online režimu.
+- V některých případech může být jiná než písmena v místním písmena jednotek v lokalitě zotavení po Havárii. Pokud k tomu dojde, je potřeba ručně po dokončení převzetí služeb při odstranění problému.
+- Časový limit úlohy převzetí služeb při selhání: StorSimple skriptu vyprší časový limit, pokud převzetí služeb při selhání kontejnerů svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+- Časový limit úlohy zálohování: StorSimple skriptu vyprší časový limit, pokud zálohování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
    
-   > [!IMPORTANT]
-   > Zálohování spustit ručně z portálu Azure portal a potom znovu spusťte plánu obnovení.
+  > [!IMPORTANT]
+  > Zálohování spustit ručně z portálu Azure portal a potom znovu spusťte plánu obnovení.
    
-   - Časový limit úlohy klonu: StorSimple skriptu vyprší časový limit, pokud se klonování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
-   - Chyba synchronizace času: StorSimple skripty chyby si informacemi o tom, že zálohování nebyly úspěšné, i když je na portálu pro úspěšné zálohování. Možnou příčinou to může být, že čas zařízení StorSimple může být synchronizován s aktuální čas v časovém pásmu.
+- Časový limit úlohy klonu: StorSimple skriptu vyprší časový limit, pokud se klonování svazků trvá déle než omezení Azure Site Recovery na skript (aktuálně 120 minut).
+- Chyba synchronizace času: StorSimple skripty chyby si informacemi o tom, že zálohování nebyly úspěšné, i když je na portálu pro úspěšné zálohování. Možnou příčinou to může být, že čas zařízení StorSimple může být synchronizován s aktuální čas v časovém pásmu.
    
-   > [!IMPORTANT]
-   > Synchronizaci času zařízení se aktuální čas v časovém pásmu.
+  > [!IMPORTANT]
+  > Synchronizaci času zařízení se aktuální čas v časovém pásmu.
    
-   - Chyba převzetí služeb při selhání zařízení: Skript StorSimple může selhat, pokud dojde převzetí služeb při selhání zařízení při spuštění plánu obnovení.
+- Chyba převzetí služeb při selhání zařízení: Skript StorSimple může selhat, pokud dojde převzetí služeb při selhání zařízení při spuštění plánu obnovení.
    
-   > [!IMPORTANT]
-   > Plán obnovení znovu po dokončení převzetí služeb při selhání zařízení.
+  > [!IMPORTANT]
+  > Plán obnovení znovu po dokončení převzetí služeb při selhání zařízení.
 
 
 ## <a name="summary"></a>Souhrn

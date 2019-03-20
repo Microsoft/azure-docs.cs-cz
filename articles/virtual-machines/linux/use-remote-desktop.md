@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995723"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure
 Virtuální počítače s Linuxem (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení (SSH secure shell). Při nové po Linux, nebo pro rychlé řešení problémů s scénáře, využívání vzdálené plochy může být jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
@@ -103,7 +103,7 @@ Po ověření, se načtou xfce desktopové prostředí a vypadat podobně jako v
 
 ![desktopové prostředí xfce prostřednictvím xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Pokud váš místní klient RDP používá ověření na úrovni sítě (NLA), budete muset zakázat toto nastavení připojení. XRDP NLA aktuálně nepodporuje. Můžete se také podívat na alternativní řešení RDP, které podporují NLA, jako je například [FreeRDP](http://www.freerdp.com).
+Pokud váš místní klient RDP používá ověření na úrovni sítě (NLA), budete muset zakázat toto nastavení připojení. XRDP NLA aktuálně nepodporuje. Můžete se také podívat na alternativní řešení RDP, které podporují NLA, jako je například [FreeRDP](https://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Řešení potíží

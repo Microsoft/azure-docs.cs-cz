@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635659"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118319"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox
 
@@ -53,20 +53,20 @@ V této části vytvoříte ukázkový projekt Scala pomocí IntelliJ IDEA. V da
    1. Vyberte **HDInsight** > **Spark on HDInsight (Scala)** (Spark v HDInsight (Scala)).
    2. V **nástroj pro sestavení** seznamu vyberte jednu z těchto možností podle vašemu scénáři:
 
-    * **Maven**: Pro podporu průvodce Scala vytváření projektu.
-    * **SBT**: Ke správě závislostí a vývoj aplikací pro Scala projektu.
+      * **Maven**: Pro podporu průvodce Scala vytváření projektu.
+      * **SBT**: Ke správě závislostí a vývoj aplikací pro Scala projektu.
 
    ![Dialogové okno New Project (Nový projekt)](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Vyberte **Další**.
 3. V dalším **nový projekt** dialogové okno pole, proveďte následující kroky:
 
-    1. V **název projektu** pole, zadejte název projektu.
-    2. V **umístění projektu** zadejte umístění projektu.
-    3. Vedle položky **SDK projektu** rozevíracího seznamu vyberte **nový**vyberte **JDK**, a pak určete složku pro Java JDK verze 1.7 nebo vyšší. Vyberte **Java 1.8** 2.x clusteru Spark. Vyberte **Java 1.7** 1.x clusteru Spark. Výchozí umístění je C:\Program Files\Java\jdk1.8.x_xxx.
-    4. V **verzi Sparku** rozevíracího seznamu, v Průvodci vytvořením projektu Scala Spark SDK a sady SDK Scala integruje správnou verzi. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. Tento příklad používá Spark 1.6.2 (Scala 2.10.5). Ujistěte se, že používáte úložiště označené **Scala 2.10.x**. Nepoužívejte úložiště označené Scala 2.11.x.
+   1. V **název projektu** pole, zadejte název projektu.
+   2. V **umístění projektu** zadejte umístění projektu.
+   3. Vedle položky **SDK projektu** rozevíracího seznamu vyberte **nový**vyberte **JDK**, a pak určete složku pro Java JDK verze 1.7 nebo vyšší. Vyberte **Java 1.8** 2.x clusteru Spark. Vyberte **Java 1.7** 1.x clusteru Spark. Výchozí umístění je C:\Program Files\Java\jdk1.8.x_xxx.
+   4. V **verzi Sparku** rozevíracího seznamu, v Průvodci vytvořením projektu Scala Spark SDK a sady SDK Scala integruje správnou verzi. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. Tento příklad používá Spark 1.6.2 (Scala 2.10.5). Ujistěte se, že používáte úložiště označené **Scala 2.10.x**. Nepoužívejte úložiště označené Scala 2.11.x.
     
-    ![Vytvoření IntelliJ Scala vlastnosti projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![Vytvoření IntelliJ Scala vlastnosti projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. Vyberte **Finish** (Dokončit).

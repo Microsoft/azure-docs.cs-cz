@@ -4,16 +4,19 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 8047ed27c732cabf92f53b4b70c22471ecb848aa
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 6768b1b8e0f5d7d3644779268025551c4e1aef9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57588111"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964111"
 ---
 Vyberte **sestavení** otevřete dialogové okno. Vyberte složku pro export projektů Xcode.
 
 Po dokončení exportu do složky se zobrazí obsahující exportovaném projektu Xcode.
+
+> [!NOTE]
+> Pokud otevře se dialogové okno s dotazem, jestli chcete **nahradit** nebo **Append**, **připojit** se doporučuje, protože je rychlejší. By měl pouze potřebujete provést **nahradit** Pokud měníte prostředky ve scéně (přidání, odebrání, Změna nadřazené a podřízené vztahy, přidání/odebrání/Změna vlastnosti atd). Pokud provádíte jenom změny zdrojového kódu, **připojit** by vám měly dostatečně.
 
 ### <a name="open-the-xcode-project"></a>Otevřete projekt Xcode
 
@@ -34,7 +37,7 @@ open ./Unity-iPhone.xcworkspace
 
 Vyberte kořenové **Unity – iPhone** uzel k zobrazení nastavení projektu a vyberte **Obecné** kartu.
 
-V části **podepisování**vyberte **automaticky spravovat podepisování**. Vyberte **povolit automatické** v dialogovém okně, které nejspíše obnovuje nastavení sestavení.
+V části **podepisování**, zkontrolujte, že **automaticky spravovat podepisování** je povolená. Pokud není, aktivovat ji a vyberte **povolit automatické** v dialogovém okně, které nejspíše obnovuje nastavení sestavení.
 
 V části **informace o nasazení**, ujistěte se, že **cíl nasazení** je nastavena na `11.0`.
 

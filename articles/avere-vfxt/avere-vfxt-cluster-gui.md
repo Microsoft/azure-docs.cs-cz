@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300468"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856837"
 ---
 # <a name="access-the-vfxt-cluster"></a>Přístup ke clusteru vFXT
 
@@ -31,7 +31,7 @@ Před připojením, ujistěte se, že veřejného/soukromého páru klíčů SSH
 
 Pokud používáte klienta se systémem Linux, použijte příkaz v tomto formuláři tunelování SSH: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 Tento příkaz se připojí k IP adresa pro správu clusteru prostřednictvím IP adresa adaptéru clusteru.
 
@@ -47,7 +47,7 @@ Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvo�
 
 Tento příklad používá běžné založené na Windows terminálu nástroj PuTTY.
 
-Vyplňte PuTTY **hostname** pole uživatelské jméno clusteru kontroleru a jeho IP adresu: *your_username*@*controller_public_IP*.
+Vyplňte PuTTY **hostname** pole uživatelské jméno clusteru kontroleru a jeho IP adresu: *your_username*\@*controller_public_IP*.
 
 Příklad: ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvo�
 
 Tento krok používá pro připojení k nástroji pro konfiguraci spuštěné v clusteru vFXT webový prohlížeč.
 
-* Pro připojení tunelu SSH, otevřete webový prohlížeč a přejděte do https://127.0.0.1:8443. 
+* Pro připojení tunelu SSH, otevřete webový prohlížeč a přejděte do `https://127.0.0.1:8443`. 
 
   Jste připojeni ke clusteru IP adresu při vytváření tunelového propojení, takže stačí použít IP adresu místního hostitele v prohlížeči. Pokud jste použili jiný místní port než 8443, použijte místo toho vaše číslo portu.
 

@@ -9,12 +9,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 99f5b09d0b5dfc144dca7f19efff3f0656a82b35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093241"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -77,16 +77,16 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
     ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. V nabídce **Zásady zálohování** jako **Název zásady** zadejte *Finance*. Proveďte následující změny zásady zálohování:
-    - V části **Frekvence zálohování** nastavte časové pásmo na *Střed*. Vzhledem k tomu, že se sportovní komplex nachází v Texasu, vlastník chce používat místní čas. Frekvenci zálohování ponechte nastavenou na Denní v 3:30.
-    - V části **Uchování denního bodu zálohy** nastavte období na 90 dnů.
-    - V části **Uchování týdenního bodu zálohy** použijte bod obnovení z *Pondělí* a nastavte dobu uchování na 52 týdnů.
-    - V části **Uchování měsíčního bodu zálohy** použijte bod obnovení z První neděle v měsíci a nastavte dobu uchování na 36 měsíců.
-    - Zrušte výběr možnosti **Uchování ročního bodu zálohy**. Vedoucí finančního oddělení nechce uchovávat data déle než 36 měsíců.
-    - Kliknutím na **OK** vytvořte zásadu zálohování.
+   - V části **Frekvence zálohování** nastavte časové pásmo na *Střed*. Vzhledem k tomu, že se sportovní komplex nachází v Texasu, vlastník chce používat místní čas. Frekvenci zálohování ponechte nastavenou na Denní v 3:30.
+   - V části **Uchování denního bodu zálohy** nastavte období na 90 dnů.
+   - V části **Uchování týdenního bodu zálohy** použijte bod obnovení z *Pondělí* a nastavte dobu uchování na 52 týdnů.
+   - V části **Uchování měsíčního bodu zálohy** použijte bod obnovení z První neděle v měsíci a nastavte dobu uchování na 36 měsíců.
+   - Zrušte výběr možnosti **Uchování ročního bodu zálohy**. Vedoucí finančního oddělení nechce uchovávat data déle než 36 měsíců.
+   - Kliknutím na **OK** vytvořte zásadu zálohování.
 
-    ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![Výběr úlohy](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
-    Po vytvoření zásady zálohování tuto zásadu přidružte k virtuálním počítačům.
+     Po vytvoření zásady zálohování tuto zásadu přidružte k virtuálním počítačům.
 
 6. V dialogovém okně **Výběr virtuálních počítačů** vyberte *myVM* a kliknutím na **OK** nasaďte zásadu zálohování do virtuálních počítačů.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 56d392a7df2a659cf457631ec5693766fd674f91
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842480"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vám nenaúčtovaly neočekávané poplatky se správou nákladů a fakturací Azure
 
@@ -183,7 +183,7 @@ Pokud chcete zobrazit, pokud jste správce účtu, přejděte na [předplatných
 
 Pokud si nejste správce účtu, pak někdo pravděpodobně zobrazila částečný přístup s použitím [řízení přístupu na základě Role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Ke správě předplatných a změnit informace o, fakturaci [Najít účet správce](billing-subscription-transfer.md#whoisaa). Požádejte správce účtu a proveďte úlohy nebo [převést toto předplatné se vám](billing-subscription-transfer.md).
 
-Pokud správce účtu už není ve vaší organizaci a potřebujete spravovat fakturace, [kontaktujte nás](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud správce účtu už není ve vaší organizaci a potřebujete spravovat fakturace, [kontaktujte nás](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 
 ### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Jak požádat o kredit smlouvu o úrovni služeb pro incident služby
@@ -207,4 +207,4 @@ Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.mi
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

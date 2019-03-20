@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240354"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005476"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ Pokud máte v Trend Micro aktuální předplatné pro místní řešení, může
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Nainstalovat Deep Security Agent na nový virtuální počítač
 
-[Webu Azure portal](http://portal.azure.com) vám umožní nainstalovat rozšíření zabezpečení Trend Micro, pokud použijete image z **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, na portálu je snadný způsob, jak přidat ochranu z Trend Micro.
+[Webu Azure portal](https://portal.azure.com) vám umožní nainstalovat rozšíření zabezpečení Trend Micro, pokud použijete image z **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, na portálu je snadný způsob, jak přidat ochranu z Trend Micro.
 
 Pomocí položky z **Marketplace** otevře se průvodce, který vám pomůže nastavit virtuální počítač. Můžete použít **nastavení** okna, panelu třetí průvodce, chcete-li nainstalovat rozšíření zabezpečení Trend Micro.  Obecné pokyny najdete v tématu [vytvořit virtuální počítač s Windows na webu Azure Portal](../windows/classic/tutorial.md).
 
@@ -82,7 +82,7 @@ Trvá několik minut, než spustíte po instalaci agenta. Potom budete muset akt
 * A [ukázkový skript prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) ke konfiguraci virtuálního počítače
 * [Pokyny](https://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]
 
 [Funkce a rozšíření virtuálních počítačů Azure]
@@ -94,4 +94,4 @@ Trvá několik minut, než spustíte po instalaci agenta. Potom budete muset akt
 
 <!-- Link references -->
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]:../windows/classic/connect-logon.md
-[Funkce a rozšíření virtuálních počítačů Azure]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Funkce a rozšíření virtuálních počítačů Azure]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

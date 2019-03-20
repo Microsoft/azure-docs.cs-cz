@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: c4f32113c0750b825f217330f94b45484dc3be29
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313462"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101087"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s Azure Data Factory
 
@@ -77,12 +77,12 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
     
 4. V **připojení zadejte Amazon S3** stránce, proveďte následující kroky:
 
-    1. Zadejte **Access Key ID** hodnotu.
-    2. Zadejte **tajný přístupový klíč** hodnotu.
-    3. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
-    4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
+   1. Zadejte **Access Key ID** hodnotu.
+   2. Zadejte **tajný přístupový klíč** hodnotu.
+   3. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
+   4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
    
-    ![Zadání účtu Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![Zadání účtu Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. V **zvolte vstupní soubor nebo složku** stránce, přejděte do složky a souboru, který chcete zkopírovat. Vyberte složky nebo souboru, vyberte **zvolit**:
 

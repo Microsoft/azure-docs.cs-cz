@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 34cedd2b389187e55201b62acc38fca291cdd736
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992471"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 
@@ -173,18 +173,21 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 |originalQuery|Řetězec dotazu jako zadaný v požadavku.|String|  
 
 ### <a name="identifiable"></a>Údaje
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
+
 |Název|Hodnota|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|

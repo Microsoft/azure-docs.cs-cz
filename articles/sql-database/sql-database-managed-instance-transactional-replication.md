@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 08ec654ecdfe9764aefdde287c5a4c78022c108c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551683"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852752"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
 
 Transakční replikace je funkce služby Azure SQL Database a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
+
+## <a name="when-to-use-transactional-replication"></a>Použití transakční replikace
+
+Transakční replikace je užitečná v následujících scénářích:
+- Publikovat změny provedené v jedné nebo více tabulek v databázi a Rozdejte je jeden nebo více systému SQL Server a Azure SQL databáze, které přihlášený(á) k odběru změn.
+- Zachovat několik distribuované databáze ve stavu synchronizovaná.
+- Migrace databází z jednoho serveru SQL Server nebo spravované Instance do jiné databáze a průběžně publikujte změny.
 
 ## <a name="overview"></a>Přehled
 
@@ -54,7 +61,7 @@ Klíčové komponenty v transakční replikaci můžete vidět na následující
   >[!NOTE]
   > Vyžádaný odběr není při distributora je Instance databáze a odběratele není podporováno. 
 
-Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
+Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
 | Replikace | Databáze ve fondu a jeden | Instance databáze|
@@ -70,7 +77,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
   >[!NOTE]
   > - Přistoupíte ke konfiguraci replikace pomocí starší verze může vést k chybě číslo MSSQL_REPL20084 (procesu nemůže připojit k odběrateli.) a MSSQ_REPL40532 (nejde otevřít server \<name > požadovaný v přihlášení. Přihlášení se nezdařilo.)
-  > - Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).
+  > - Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Matice Supportabilty pro Instance databází a místní systémy
   Matice podpory replikace pro instanci databáze je stejná jako ta pro místní SQL Server. 
@@ -93,14 +100,6 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
   >[!NOTE]
   > Chyba 53 může dojít při připojování ke služby Azure File Storage, pokud je odchozí síťové zabezpečení skupiny (NSG) portu 445 blokovaný při distributora je instance databáze a odběratele je místní. [Aktualizovat virtuální síť NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) k vyřešení tohoto problému. 
-
-## <a name="when-to-use-transactional-replication"></a>Použití transakční replikace
-
-Transakční replikace je užitečná v následujících scénářích:
-
-- Publikovat změny provedené v jedné nebo více tabulek v databázi a Rozdejte je jeden nebo více systému SQL Server a Azure SQL databáze, které přihlášený(á) k odběru změn.
-- Zachovat několik distribuované databáze ve stavu synchronizovaná.
-- Migrace databází z jednoho serveru SQL Server nebo spravované Instance do jiné databáze a průběžně publikujte změny.
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s využitím transakční replikace
 

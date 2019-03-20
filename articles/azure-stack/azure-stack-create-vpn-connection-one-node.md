@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d66ca49db097eebd4c8fb5663f63e0db7460ad6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e038afe27718dcbd407e83b5c9190606e6b917c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782866"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004653"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure Stack Development Kit
 ## <a name="overview"></a>Přehled
@@ -52,6 +52,7 @@ V POC1 a POC2 připravte tak, aby uživatel může předplacení nabídky a nasa
 Následující tabulka shrnuje konfiguraci sítě pro obou prostředích Azure Stack Development Kit. Pomocí postupu, který se zobrazí pod tabulkou přidat externí BGPNAT adresu, která jsou specifická pro vaši síť.
 
 **Síťové konfigurace tabulky**
+
 |   |POC1|POC2|
 |---------|---------|---------|
 |Název virtuální sítě     |VNET-01|VNET-02 |

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237848"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009656"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuální počítač s Linuxem v Azure
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>Instalace MongoDB a nastavení serveru
-[MongoDB](http://www.mongodb.com) ukládá data ve flexibilních dokumentech podobných formátu JSON. Pole v databázi se můžou v jednotlivých dokumentech lišit a datová struktura se může v průběhu času měnit. V naší ukázkové aplikaci přidáváme do MongoDB záznamy o knihách, které obsahují název knihy, číslo ISBN, autora a počet stran. 
+[MongoDB](https://www.mongodb.com) ukládá data ve flexibilních dokumentech podobných formátu JSON. Pole v databázi se můžou v jednotlivých dokumentech lišit a datová struktura se může v průběhu času měnit. V naší ukázkové aplikaci přidáváme do MongoDB záznamy o knihách, které obsahují název knihy, číslo ISBN, autora a počet stran. 
 
 1. Pomocí prostředí Bash, které jste otevřeli pomocí SSH, na virtuálním počítači nastavte klíč MongoDB.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. Aktualizujte klíč ve správci balíčků.
@@ -149,7 +149,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>Instalace Express a nastavení tras k serveru
 
-[Express](https://expressjs.com) je minimální a flexibilní architektura webových aplikací Node.js, která poskytuje funkce pro webové a mobilní aplikace. Express se v tomto kurzu používá k předávání informací o knihách do a z naší databáze MongoDB. [Mongoose](http://mongoosejs.com) poskytuje jednoduché řešení modelování dat aplikací založené na schématu. Mongoose s v tomto kurzu používá k poskytování schématu knih pro databázi.
+[Express](https://expressjs.com) je minimální a flexibilní architektura webových aplikací Node.js, která poskytuje funkce pro webové a mobilní aplikace. Express se v tomto kurzu používá k předávání informací o knihách do a z naší databáze MongoDB. [Mongoose](https://mongoosejs.com) poskytuje jednoduché řešení modelování dat aplikací založené na schématu. Mongoose s v tomto kurzu používá k poskytování schématu knih pro databázi.
 
 1. Nainstalujte Express a Mongoose.
 

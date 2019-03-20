@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544558"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225361"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -359,9 +359,9 @@ K dosažení úložiště dat, společné schéma rozhraní API implementované 
 - [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Slouží k monitorování živé webové aplikace. Detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
 ### <a name="azure-alerts"></a>Upozornění Azure
-- [Výstrahy nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
+- [Výstrahy](/azure/azure-monitor/platform/alerts-metric) nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
 
-### <a name="azure-monitor-logs"></a>Protokoly Azure monitoru
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 [Protokoly Azure monitoru](/azure/operations-management-suite/operations-management-suite-overview) je kolekce služeb pro správu.
 
 -   Pracovní prostor povolený pro Security Center

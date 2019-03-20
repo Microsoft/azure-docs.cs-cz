@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1110ef9383798ddeb8a04a0e19deb441e3d207c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200051"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Přidání nebo odebrání členů skupiny automaticky
 
@@ -28,7 +28,7 @@ V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele d
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vytvoření automaticky naplněné skupiny uživatelů typu host z konkrétní partnerské společnosti
+> * Vytvoření automaticky zadané skupiny uživatelů typu Host z partnerských společností
 > * Přiřazení licencí ke skupině pro funkce specifické pro partnera, ke kterým budou mít uživatelé typu host přístup
 > * Bonus: Zabezpečení skupiny **Všichni uživatelé** odebráním uživatelů typu host, abyste členům mohli například udělit přístup k výhradně interním webům
 
@@ -46,7 +46,7 @@ Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z je
 
 1. Přihlaste se k webu Azure portal (https://portal.azure.com) pomocí účtu, který má oprávnění globálního správce pro vašeho tenanta.
 2. Vyberte **Azure Active Directory** > **Skupiny** > **Nová skupina**.
-   ![výběr příkazu Nová skupina](./media/groups-dynamic-tutorial/new-group.png)
+   ![Vyberte příkaz, abyste spustili novou skupinu](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:
   
    * Jako typ skupiny vyberte **Zabezpečení**.

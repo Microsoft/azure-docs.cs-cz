@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: ae424638967de808f3ffb7d9a56a02398ed79f9e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007964"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
@@ -77,7 +77,7 @@ Image virtuálního počítače Terraform provede následující kroky:
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Přístup a konfigurace virtuálního počítače Terraform s Linuxem
 
-Po vytvoření virtuálního počítače se k němu můžete pomocí SSH přihlásit. V rozhraní textového prostředí použijte přihlašovací údaje, které jste vytvořili v kroku 3 v části „Základy“. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org/).
+Po vytvoření virtuálního počítače se k němu můžete pomocí SSH přihlásit. V rozhraní textového prostředí použijte přihlašovací údaje, které jste vytvořili v kroku 3 v části „Základy“. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](https://www.putty.org/).
 
 Až se pomocí SSH k virtuálnímu počítači připojíte, budete muset spravovaným identitám pro prostředky Azure na virtuálním počítači udělit oprávnění přispěvatele pro celé předplatné. 
 

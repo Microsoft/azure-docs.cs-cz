@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: bd59a9584f6993d768a9aeb790470a1d978c78ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab050a683913e62c6671bf01397e76311a08952b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006788"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -82,7 +82,7 @@ public static SignalRConnectionInfo Negotiate(
 
 #### <a name="authenticated-tokens"></a>Ověření tokenů
 
-Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování do aplikace function app pomocí [ověřování pomocí služby App Service] (.. /App-Service/Overview-Authentication-Authorization.MD).
+Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování pro aplikaci funkcí s použitím [ověřování pomocí služby App Service](../app-service/overview-authentication-authorization.md).
 
 Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `UserId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
 
@@ -127,7 +127,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Ověření tokenů
 
-Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování do aplikace function app pomocí [ověřování pomocí služby App Service] (.. /App-Service/Overview-Authentication-Authorization.MD).
+Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování pro aplikaci funkcí s použitím [ověřování pomocí služby App Service](../app-service/overview-authentication-authorization.md).
 
 Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `userId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`. 
 
@@ -174,7 +174,7 @@ public SignalRConnectionInfo negotiate(
 
 #### <a name="authenticated-tokens"></a>Ověření tokenů
 
-Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování do aplikace function app pomocí [ověřování pomocí služby App Service] (.. /App-Service/Overview-Authentication-Authorization.MD).
+Pokud ověřený klient se aktivuje funkci, můžete přidat deklarace identity ID uživatele pro vygenerovaný token. Můžete snadno přidat ověřování pro aplikaci funkcí s použitím [ověřování pomocí služby App Service](../app-service/overview-authentication-authorization.md).
 
 Ověřování pomocí služby App Service nastaví hlavičky protokolu HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` obsahují ověřeného uživatele ID klienta instančního objektu a název, v uvedeném pořadí. Můžete nastavit `UserId` vlastnost vazby na hodnotu buď pomocí hlavičky [vazby výraz](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}`.
 
@@ -260,7 +260,7 @@ public static Task SendMessage(
     return signalRMessages.AddAsync(
         new SignalRMessage
         {
-            // the message will only be sent to this user ID
+            // the message will be sent to the group with this name
             GroupName = "myGroup",
             Target = "newMessage",
             Arguments = new [] { message }

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 22a522fcde2b79d89e6084cdcfcbf64e4e5bd5ce
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091099"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru
 
@@ -84,8 +84,6 @@ Zprostředkovateli prostředků Microsoft.Compute. adresa URL tajného klíče d
 
 > [!NOTE]
 > Adresa URL tajného klíče musí obsahovat verzi také. Příklad adresy URL vypadá jako níže https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
-> 
-> 
 
 #### <a name="templates"></a>Šablony
 Můžete získat odkaz na adresu URL pomocí šablony níže uvedeného kódu

@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1ace0ddd3b29f844488eb7579934541fa8273fa0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199898"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
 Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.
@@ -46,7 +46,7 @@ Za účelem zajištění redundance a vyššího výkonu se aplikace obvykle dis
     - Automatické škálování také minimalizuje počet nepotřebných instancí virtuálních počítačů s vaší aplikací při nízké poptávce, zatímco zákazníci mají stále k dispozici přijatelnou úroveň výkonu díky automatickému přidávání dalších instancí virtuálních počítačů, když se poptávka zvýší. Tato schopnost pomáhá snižovat náklady a efektivně vytvářet prostředky Azure podle potřeby.
 
 - **Práce ve velkém měřítku**
-    - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní image virtuálních počítačů, platí omezení na 300 instancí virtuálních počítačů.
+    - Škálovací sady podporují až 1 000 instancí virtuálních počítačů. Pokud vytváříte a nahráváte vlastní Image virtuálního počítače, je limit 600 instancí virtuálních počítačů.
     - Pro zajištění nejlepšího výkonu pro úlohy v produkčním prostředí, použijte [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 

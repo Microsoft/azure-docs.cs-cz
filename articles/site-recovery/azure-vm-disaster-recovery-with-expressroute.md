@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087869"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -91,11 +91,11 @@ V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více vi
     - **Zdroj vNet2**: 10.2.0.0/24.
     - Virtuální síť každého paprsku je připojen k **virtuální síť centra**.
 - **Virtuální síť centra**. Je virtuální síť centra **virtuální síť centra zdroje**: 10.10.10.0/24.
-    - Tato virtuální síť centra funguje jako vrátný.
-    - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
- - ****Hub vNet subnets**. Virtuální síť centra má dvě podsítě:
-     - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
-     - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
+  - Tato virtuální síť centra funguje jako vrátný.
+  - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
+    - ****Hub vNet subnets**. Virtuální síť centra má dvě podsítě:
+    - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
+    - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
 - Místní datové centrum má připojení okruhu ExpressRoute prostřednictvím partnerů hrany v Hongkong –.
 - Všechny směrování je řízen pomocí tabulek Azure trasu (UDR).
 - Veškerý odchozí provoz mezi virtuálními sítěmi nebo do místního datového centra je směrován přes síťové virtuální zařízení.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077815"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tableau Online pro automatické zřizování uživatelů
 
@@ -106,13 +106,13 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **domény**, **uživatelské jméno správce**, **heslo správce**, a **obsahu Adresa URL** Tableau Online účtu:
 
-    *   V **domény** pole, naplnění subdoménu podle kroku 6.
+   * V **domény** pole, naplnění subdoménu podle kroku 6.
 
-    *   V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém Tenantovi Clarizen naplnit. Příklad: admin@contoso.com.
+   * V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém Tenantovi Clarizen naplnit. Příklad: admin@contoso.com.
 
-    *   V **heslo správce** pole, naplnění heslo účtu správce odpovídající uživatelské jméno správce.
+   * V **heslo správce** pole, naplnění heslo účtu správce odpovídající uživatelské jméno správce.
 
-    *   V **adresa URL obsahu** pole, naplnění subdoménu podle kroku 6.
+   * V **adresa URL obsahu** pole, naplnění subdoménu podle kroku 6.
 
 6. Po přihlášení na administrativní účet pro Online tableau. představují hodnoty **domény** a **adresa URL obsahu** může být extrahována z adresy URL stránky pro správu.
 

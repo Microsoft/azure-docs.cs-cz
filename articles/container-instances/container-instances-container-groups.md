@@ -1,21 +1,17 @@
 ---
-title: Skupin kontejnerů Azure Container Instances
-description: Pochopení skupiny vícekontejnerové jak práce ve službě Azure Container Instances
-services: container-instances
-author: dlepow
-manager: jeconnoc
-ms.service: container-instances
-ms.topic: article
-ms.date: 03/06/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 094dc796541aaccbdfa1efc93e833bc6c5a7d1f1
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.openlocfilehash: 1555a577d4fdf0436e891e3d73495d1fe2f7e606
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901317"
 ---
+---
+Název: Popis skupiny kontejnerů Azure Container Instances: Skupiny vícekontejnerové jak pochopit pracovní služby Azure Container Instances: instance kontejnerů Autor: Správce dlepow: jeconnoc
+
+ms.service: container-instances ms.topic: article ms.date: 03/20/2018 ms.author: danlep ms.custom: mvc
+
+
 # <a name="container-groups-in-azure-container-instances"></a>Skupin kontejnerů ve službě Azure Container Instances
 
 Prostředek nejvyšší úrovně ve službě Azure Container Instances je *skupinu kontejnerů*. Tento článek popisuje, co jsou skupiny kontejnerů a typy scénáře, které umožňují.

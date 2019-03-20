@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267177"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881057"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálních polí StorSimple – sady nahoru jako souborový server prostřednictvím webu Azure portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -129,15 +129,15 @@ Proveďte následující kroky v [webu Azure portal](https://portal.azure.com/) 
     ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Klikněte na tlačítko **konfigurovat** na panelu příkazů. Otevře **konfigurovat** okno. V **konfigurovat** okno, postupujte takto:
    
-    1. Název souborového serveru se vyplní automaticky.
+   1. Název souborového serveru se vyplní automaticky.
     
-    2. Ujistěte se, že šifrování cloudového úložiště je nastavena na **povoleno**. To bude šifrování všech dat, které se odesílají do cloudu. 
+   2. Ujistěte se, že šifrování cloudového úložiště je nastavena na **povoleno**. To bude šifrování všech dat, které se odesílají do cloudu. 
     
-    3. Klíč standardu AES 256 bitů se používá s uživatelský klíč pro šifrování. Zadejte klíč 32 znaků a potom znovu zadat klíč pro potvrzení. Záznam klíče v aplikaci pro správu klíčů pro budoucí použití.
+   3. Klíč standardu AES 256 bitů se používá s uživatelský klíč pro šifrování. Zadejte klíč 32 znaků a potom znovu zadat klíč pro potvrzení. Záznam klíče v aplikaci pro správu klíčů pro budoucí použití.
     
-    4. Klikněte na tlačítko **konfigurovat požadované nastavení** k zadání přihlašovacích údajů účtu úložiště pro použití s vaším zařízením. Klikněte na tlačítko **přidat nový** Pokud nejsou nakonfigurována žádná pověření účtu úložiště. **Ujistěte se, že účet úložiště, že použijte podporuje objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány.** Další informace o [blokuje objekty BLOB a objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Klikněte na tlačítko **konfigurovat požadované nastavení** k zadání přihlašovacích údajů účtu úložiště pro použití s vaším zařízením. Klikněte na tlačítko **přidat nový** Pokud nejsou nakonfigurována žádná pověření účtu úložiště. **Ujistěte se, že účet úložiště, že použijte podporuje objekty BLOB bloku. Objekty BLOB stránky nejsou podporovány.** Další informace o [blokuje objekty BLOB a objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. V **přidat přihlašovací údaje účtu úložiště** okno, postupujte takto: 
 
     1. Vyberte předplatné, aktuální, pokud je účet úložiště ve stejném předplatném jako služba. Zadejte jiné úložiště je účet nepochází z předplatného služby. 
@@ -175,26 +175,26 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
    ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Zadejte následující nastavení sdílené složky:
 
-    1. Jedinečný název pro svou sdílenou složku. Název musí být řetězec, který obsahuje 3 až 127 znaků.
+   1. Jedinečný název pro svou sdílenou složku. Název musí být řetězec, který obsahuje 3 až 127 znaků.
     
-    2. Volitelně **popis** pro sdílenou složku. Popis vám pomůže identifikovat vlastníkům sdílené složky.
+   2. Volitelně **popis** pro sdílenou složku. Popis vám pomůže identifikovat vlastníkům sdílené složky.
     
-    3. A **typ** pro sdílenou složku. Typ může být **Vrstvená** nebo **místně připnuté**, s vrstvami, je výchozí hodnota. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připnuté** sdílet. Všechna ostatní data, vyberte **Vrstvená** sdílet.
-    Místně připojené sdílené složky je tlustě zřízený a zajišťuje, že primární data ve sdílené složce zůstane na místním zařízení a uložená do cloudu. Vrstvenou sdílenou složku na druhé straně je tence zřízený. Když vytváříte vrstvenou sdílenou složku, 10 % prostoru musí být zřízena na místní úrovni a je zajištěno 90 % prostoru v cloudu. Například pokud jste zřídili svazku 1 TB, 100 GB by jsou umístěny v místním prostoru a v cloudu se použije 900 GB při datovou vrstvou. Pak z toho vyplývá, že pokud vyčerpáte veškeré volné místo na zařízení, nemůžete zřídit vrstvenou sdílenou složku.
+   3. A **typ** pro sdílenou složku. Typ může být **Vrstvená** nebo **místně připnuté**, s vrstvami, je výchozí hodnota. Pro úlohy, které vyžadují místní záruky, nízkou latenci a vyšší výkon, vyberte **místně připnuté** sdílet. Všechna ostatní data, vyberte **Vrstvená** sdílet.
+      Místně připojené sdílené složky je tlustě zřízený a zajišťuje, že primární data ve sdílené složce zůstane na místním zařízení a uložená do cloudu. Vrstvenou sdílenou složku na druhé straně je tence zřízený. Když vytváříte vrstvenou sdílenou složku, 10 % prostoru musí být zřízena na místní úrovni a je zajištěno 90 % prostoru v cloudu. Například pokud jste zřídili svazku 1 TB, 100 GB by jsou umístěny v místním prostoru a v cloudu se použije 900 GB při datovou vrstvou. Pak z toho vyplývá, že pokud vyčerpáte veškeré volné místo na zařízení, nemůžete zřídit vrstvenou sdílenou složku.
    
-    4. V **nastavit výchozí úplné oprávnění** pole, přiřaďte oprávnění pro uživatele nebo skupinu, která přistupuje k této sdílené složce. Zadejte název uživatele nebo skupiny uživatelů v *john@contoso.com* formátu. Doporučujeme použít skupiny uživatelů (místo jednoho uživatele) umožňující správu oprávnění pro přístup k těmto sdíleným složkám. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
+   4. V **nastavit výchozí úplné oprávnění** pole, přiřaďte oprávnění pro uživatele nebo skupinu, která přistupuje k této sdílené složce. Zadejte název uživatele nebo skupiny uživatelů v *Jan\@contoso.com* formátu. Doporučujeme použít skupiny uživatelů (místo jednoho uživatele) umožňující správu oprávnění pro přístup k těmto sdíleným složkám. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
    
-    5. Klikněte na tlačítko **přidat** sdílenou složku vytvořit. 
+   5. Klikněte na tlačítko **přidat** sdílenou složku vytvořit. 
     
-        ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        Zobrazí se oznámení o probíhajícím vytváření sdílené složky.
+       Zobrazí se oznámení o probíhajícím vytváření sdílené složky.
    
-        ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    Po vytvoření sdílené složky se zadaným nastavením **sdílené složky** okno aktualizuje tak, aby odrážely novou sdílenou složku. Ve výchozím nastavení jsou povolené sledování a zálohování pro sdílenou složku.
+      Po vytvoření sdílené složky se zadaným nastavením **sdílené složky** okno aktualizuje tak, aby odrážely novou sdílenou složku. Ve výchozím nastavení jsou povolené sledování a zálohování pro sdílenou složku.
    
-    ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Krok 4: Připojení ke sdílené složce
 Teď je potřeba připojit jeden nebo více sdílených složek, které jste vytvořili v předchozím kroku. Tyto kroky proveďte na hostiteli systému Windows Server připojený k StorSimple Virtual Array.

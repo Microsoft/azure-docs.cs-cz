@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/04/2019
+ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b25c0caf71835ccb5a055956d73a713efa5da0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 77f18a80c094fbaf58cfb09df38e5fa1c924329a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856188"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
-Řešení Update Management ve službě Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem, které jsou nasazené v Azure, místním prostředí nebo jiných poskytovatelů cloudových služeb. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+Řešení Update Management ve službě Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem v Azure, místním prostředí nebo jiných poskytovatelů cloudových služeb. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
 Můžete povolit správu aktualizací pro virtuální počítače přímo ze svého účtu Azure Automation. Informace o povolení správy aktualizací pro virtuální počítače ve svém účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro virtuální počítač z virtuálního počítače stránky na webu Azure Portal. Tento scénář je k dispozici pro [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
 
@@ -35,7 +35,7 @@ Počítače, které se spravují přes Update Management použít k provedení v
 
 Následující diagram znázorňuje konceptuální zobrazení chování a toku dat s jak toto řešení vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené systémy Windows Server a počítačů s Linuxem v pracovním prostoru:
 
-![Proces správy aktualizací](media/automation-update-management/update-mgmt-updateworkflow.png)
+![Proces správy aktualizací](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi.
 
@@ -295,7 +295,7 @@ sudo yum -q --security check-update
 
 Aktuálně neexistuje žádná metoda podporovaná metoda Povolit nativní klasifikace dat dostupnost na CentOS. V tuto chvíli je podporované jenom best effort pro zákazníky, kteří mohou povolili to sami.
 
-## <a name="firstparty-predownload"></a>První strany, použití dílčích oprav a předem stáhnout
+## <a name="firstparty-predownload"></a>Upřesňující nastavení
 
 Správa aktualizací spoléhá na webu Windows Update ke stažení a instalaci aktualizací Windows. V důsledku toho respektujeme řadu nastavení aktualizace Windows. Pokud nastavení použijete, aby povolovala aktualizace mimo Windows, správu aktualizací, spravovat a tyto aktualizace. Pokud chcete povolit stahování aktualizace, než dojde k nasazení aktualizací, nasazení aktualizací můžete začít pracovat rychleji a méně pravděpodobné překročení časového období údržby.
 
@@ -311,9 +311,18 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
+### <a name="disable-automatic-installation"></a>Zakázat automatické instalace
+
+Virtuální počítače Azure mají automatickou instalaci aktualizací ve výchozím nastavení povolená. To může způsobit předtím, než je možné nainstalovat Update Management naplánovat instalaci aktualizací. Toto chování lze zakázat nastavením `NoAutoUpdate` klíč registru, který `1`. Následující fragment kódu Powershellu ukazuje jeden způsob, jak to provést.
+
+```powershell
+$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
+```
+
 ### <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 
-Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, včetně oprav zabezpečení takové věci pro SQL Server nebo jiný software první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
+Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, včetně oprav zabezpečení pro SQL Server nebo jiný software první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -614,10 +623,6 @@ Odebrání virtuálního počítače ze správy aktualizací:
 * V pracovním prostoru Log Analytics, odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** ve vašem pracovním prostoru.
 * Odeberte [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="troubleshoot"></a>Řešení potíží
-
-Zjistěte, jak řešení Update Management, najdete v článku [řešení potíží se správou aktualizací](troubleshoot/update-management.md)
-
 ## <a name="next-steps"></a>Další postup
 
 Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počítače s Windows.
@@ -629,4 +634,4 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 * [Vytvořit upozornění](automation-tutorial-update-management.md#configure-alerts) stav nasazení aktualizace.
 
 * Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)
-
+* Zjistěte, jak řešení Update Management, najdete v článku [řešení potíží se správou aktualizací](troubleshoot/update-management.md)

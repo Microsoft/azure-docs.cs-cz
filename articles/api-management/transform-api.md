@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: fc22babe6bc052ff2e746185d6ccec059aad7331
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e50c5d942bdbafc60bf0e2b8c74b008ac12b3bc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084976"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
@@ -72,23 +72,23 @@ Původní odpověď by měla vypadat takto:
 
 ![Nastavení odchozí zásady](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1.  Vyberte **Demo Conference API**.
-2.  V horní části obrazovky vyberte kartu **Návrh**.
-3.  Vyberte **Všechny operace**.
-4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
-6.  V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
+1. Vyberte **Demo Conference API**.
+2. V horní části obrazovky vyberte kartu **Návrh**.
+3. Vyberte **Všechny operace**.
+4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
+5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
-    ![Zásady](./media/transform-api/transform-api.png)
+   ![Zásady](./media/transform-api/transform-api.png)
 
-7.  Svůj kód **<outbound>** upravte následovně:
+7. Svůj kód **<outbound>** upravte následovně:
 
-        <set-header name="X-Powered-By" exists-action="delete" />
-        <set-header name="X-AspNet-Version" exists-action="delete" />
+       <set-header name="X-Powered-By" exists-action="delete" />
+       <set-header name="X-AspNet-Version" exists-action="delete" />
 
-    ![Zásady](./media/transform-api/set-policy.png)
+   ![Zásady](./media/transform-api/set-policy.png)
 
-8.  Klikněte na tlačítko **Uložit**.
+8. Klikněte na tlačítko **Uložit**.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 

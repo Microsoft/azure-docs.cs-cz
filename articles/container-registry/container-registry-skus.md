@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: danlep
-ms.openlocfilehash: 3f058a68057d6b84cbbb2dfdb08ea8c2cb12b0b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138078"
 ---
 # <a name="azure-container-registry-skus"></a>Skladové položky registru kontejnerů Azure
 
@@ -22,8 +22,8 @@ Azure Container Registry (ACR) je k dispozici v několika úrovních služeb, oz
 | --- | :-------: | ----------- |
 | **Basic** | Ano | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové funkce jako Standard a Premium (Integrace ověřování Azure Active Directory, odstranění image a webhooky). Zahrnuté úložiště a propustnost bitové kopie jsou však nejvhodnější pro nižší scénáře použití. |
 | **Standard** | Ano | Standardními registry nabízí stejné funkce jako základní s zahrnuty vyšší propustnost úložiště a image. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
-| **Premium** | Ano | Registry úrovně Premium poskytují nejvyšší velikost zahrnutého úložiště a souběžné operace povolení scénářů s vysokými objemy. Kromě vyšší propustnost image Premium přidává funkce, jako jsou [geografickou replikaci] [ container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi a [obsahu vztahu důvěryhodnosti (preview)](container-registry-content-trust.md)k podepisování obrázku značky. |
-| Klasické<sup>1</sup> | Ne | Tato skladová položka povolena počáteční verzi služby Azure Container Registry v Azure. Registry Classic se zálohují na účet úložiště Azure se vytvoří v rámci vašeho předplatného, což omezí možnosti pro službu ACR a poskytují vyšší úrovně možnosti, jako je například vyšší propustnost a geografická replikace. |
+| **Premium** | Ano | Registry úrovně Premium poskytují nejvyšší velikost zahrnutého úložiště a souběžné operace povolení scénářů s vysokými objemy. Kromě vyšší propustnost image Premium přidává funkce včetně [geografickou replikaci] [ container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi a [obsahu důvěryhodnosti(veverzipreview)](container-registry-content-trust.md) k podepisování značka obrázku, a [brány firewall a virtuální sítě (preview)](container-registry-vnet.md) k omezení přístupu k registru. |
+| Classic<sup>1</sup> | Ne | Tato skladová položka povolena počáteční verzi služby Azure Container Registry v Azure. Registry Classic se zálohují na účet úložiště Azure se vytvoří v rámci vašeho předplatného, což omezí možnosti pro službu ACR a poskytují vyšší úrovně možnosti, jako je například vyšší propustnost a geografická replikace. |
 
 <sup>1</sup> Classic SKU bude **zastaralé** v **. března 2019**. Použití úrovně Basic, Standard nebo Premium pro všechny nové registry kontejnerů.
 
@@ -33,7 +33,7 @@ Když zvolíte že vyšší skladovou Položku poskytuje větší výkon a šká
 
 Basic, Standard a SKU úrovně Premium se souhrnně nazývají *spravované* registry a registry Classic jako *nespravované*. Hlavní rozdíl mezi nimi je způsob uložení imagí kontejnerů.
 
-### <a name="managed-basic-standard-premium"></a>Spravované (Basic, Standard a Premium)
+### <a name="managed-basic-standard-premium"></a>Managed (Basic, Standard, Premium)
 
 Spravované registry výhody z úložiště image kompletně spravované službou Azure. To znamená, že účet úložiště, která ukládá váš obrázky se nezobrazí v rámci vašeho předplatného Azure. Existuje více výhod získaných pomocí jedné z spravovaný registr SKU, popsané hlouběji v [úložiště image kontejneru ve službě Azure Container Registry][container-registry-storage]. Tento článek se zaměřuje na spravovaný registr skladové položky a jejich funkce.
 
@@ -86,7 +86,7 @@ Podrobnosti o cenách pro přenosy dat najdete v tématu [podrobnosti o cenách 
 
 ## <a name="next-steps"></a>Další postup
 
-**Plán služby Azure Container Registry**
+**Azure Container Registry Roadmap**
 
 Přejděte [plán služby ACR] [ acr-roadmap] na Githubu najdete informace o chystaných funkcí ve službě.
 

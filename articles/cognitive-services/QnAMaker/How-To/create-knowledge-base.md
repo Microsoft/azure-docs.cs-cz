@@ -1,26 +1,26 @@
 ---
 title: Vytvoření znalostní báze
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: Použijte portál QnA Maker, chcete-li přidat vytvořte znalostní bázi s chit konverzace. Díky tomu aplikace zapojení. Přidat sadu nejčastější konverzace chit předvyplněný do znalostní BÁZÍ jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: Použití portálu služby API nástroje QnA Maker, chcete-li přidat vytvořte znalostní bázi s chit konverzace. Díky tomu aplikace zapojení. Přidat sadu nejčastější konverzace chit předvyplněný do znalostní BÁZÍ jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 1691bf9334d15ed7af211a929cf87ce433af895c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116228"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>Rychlý start: Vytvoření znalostní báze na portálu pro nástroj QnA Maker
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze na portálu služby API nástroje QnA Maker
 
-Nástroj QnA Maker usnadňuje přidat stávajících zdrojů dat při vytváření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z následujících typů dokumentu:
+Na portálu služby API nástroje QnA Maker usnadňuje přidat stávajících zdrojů dat při vytváření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z následujících typů dokumentu:
 
 <!-- added for scanability -->
 * Nejčastější dotazy k stránky

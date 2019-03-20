@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
 ms.openlocfilehash: 1b55a2b053b86d3260fdca201357445d2556c444
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082462"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžné zpracování telemetrie v Application Insights SDK
 
@@ -356,7 +356,7 @@ Jaký je rozdíl mezi procesory telemetrická data a telemetrii inicializátory?
 * TelemetryProcessors umožňují k úplnému nahrazení nebo zahodit položky telemetrie.
 * TelemetryProcessors Nezpracovávat telemetrická data čítače výkonu.
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>Řešení potíží s soubor ApplicationInsights.config
+## <a name="troubleshooting-applicationinsightsconfig"></a>Troubleshooting ApplicationInsights.config
 * Potvrďte správnost plně kvalifikovaný název typu a název sestavení.
 * Zkontrolujte, jestli soubor applicationinsights.config v adresáři výstupu a obsahuje všechny změny.
 
@@ -366,7 +366,7 @@ Jaký je rozdíl mezi procesory telemetrická data a telemetrii inicializátory?
 
 ## <a name="sdk-code"></a>Kód SDK
 * [Sada ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [SADY SDK TECHNOLOGIE ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Další kroky

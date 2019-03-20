@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109484"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173919"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight (Preview)
 
@@ -31,7 +31,7 @@ Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpe�
 
 1. Vytvoření spravovaných identit pro prostředky Azure.
 
-   K ověření do služby Key Vault, vytvořte pomocí uživatelsky přiřazené identity spravované [webu Azure Portal](../../active-directory/managed-service-identity/how-to-manage-ua-identity-portal.md), [prostředí Azure PowerShell](../../active-directory/managed-service-identity/how-to-manage-ua-identity-powershell.md), [Azure Resource Manageru](../../active-directory/managed-service-identity/how-to-manage-ua-identity-arm.md), nebo [ Azure CLI](../../active-directory/managed-service-identity/how-to-manage-ua-identity-cli.md). Azure Active directory je požadovaná pro spravované identity a funkce BYOK na Kafka, Enterprise Security Package (ESP) nejsou povinné. Nezapomeňte uložit spravovaná identita ID prostředku pro při přidání do zásad přístupu trezoru klíčů.
+   K ověření do služby Key Vault, vytvořte pomocí uživatelsky přiřazené identity spravované [webu Azure portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [prostředí Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md), nebo [ Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Další informace o spravovaných pracovních identit v Azure HDInsight, naleznete v tématu [spravovaných identit v Azure HDInsight](../hdinsight-managed-identities.md). Azure Active directory je požadovaná pro spravované identity a funkce BYOK na Kafka, Enterprise Security Package (ESP) nejsou povinné. Nezapomeňte uložit spravovaná identita ID prostředku pro při přidání do zásad přístupu trezoru klíčů.
 
    ![Vytvoření uživatelsky přiřazené identity spravované v portálu Azure portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
@@ -75,7 +75,7 @@ Na webu Azure portal nebo rozhraní příkazového řádku Azure můžete bezpe�
 
    ![Nastavení oprávnění klíče zásad přístupu trezoru klíčů Azure](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-4. Vytvoření clusteru HDInsight
+4. Vytvořit cluster HDInsight
 
    Nyní jste připraveni vytvořit nový cluster HDInsight. BYOK dá používat jedině do nového clusteru během vytváření clusteru. Šifrování nelze odebrat z funkce BYOK clusterů a BYOK nelze přidat do existujících clusterů.
 

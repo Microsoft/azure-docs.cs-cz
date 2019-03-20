@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2019
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: eb8791a4031eeeeeccddda024514af208ff66251
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806556"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011035"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -108,7 +108,10 @@ Co se tak stane, když máte více překrývající se přiřazení rolí? RBAC 
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
-Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, zatímco přiřazení odepřít definuje sadu akcí, které jsou *nepovoluje*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. V současné době zamítnout přiřazení **jen pro čtení** a lze nastavit pouze společností Microsoft. Další informace najdete v tématu [porozumění zamítnout přiřazení pro prostředky Azure](deny-assignments.md) a [zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md).
+Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, zatímco přiřazení odepřít definuje sadu akcí, které jsou *nepovoluje*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [porozumění zamítnout přiřazení pro prostředky Azure](deny-assignments.md) a [zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md).
+
+> [!NOTE]
+> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
 

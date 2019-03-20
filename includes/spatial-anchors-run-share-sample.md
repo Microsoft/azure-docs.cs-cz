@@ -4,22 +4,20 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 5f1e0153b1f919bc9d7e921d2a1b3ae745b2b01f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: bfeb8bddf5fe3b4a76e662aed6c5a07439d2f1cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752141"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908620"
 ---
-## <a name="open-the-sample-project-in-unity"></a>Otevřete ukázkový projekt v Unity
+## <a name="set-up-your-device"></a>Nastavení zařízení
 
-[!INCLUDE [Clone Sample Repo](spatial-anchors-clone-sample-repository.md)]
-
-## <a name="to-set-up-for-an-android-device"></a>Nastavení pro zařízení s Androidem
+### <a name="set-up-an-android-device"></a>Nastavení zařízení s Androidem
 
 [!INCLUDE [Android Unity Build Settings](spatial-anchors-unity-android-build-settings.md)]
 
-## <a name="to-set-up-for-an-ios-device"></a>Nastavení pro zařízení se systémem iOS
+### <a name="set-up-an-ios-device"></a>Nastavení zařízení se systémem iOS
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
@@ -35,7 +33,7 @@ Uložte výběrem scény **souboru** -> **Uložit**.
 
 ## <a name="to-deploy-to-an-android-device"></a>Nasazení do zařízení s Androidem
 
-Zapněte zařízení s Androidem, přihlaste a připojte ho k počítači pomocí kabelu USB.
+Přihlaste se na zařízení s Androidem a připojte ho k počítači pomocí kabelu USB.
 
 Otevřít **nastavení sestavení** tak, že vyberete **souboru** -> **nastavení sestavení**.
 

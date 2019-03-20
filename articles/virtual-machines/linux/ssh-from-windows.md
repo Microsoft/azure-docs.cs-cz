@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005673"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -37,9 +37,9 @@ Počítače Windows vždy nemají srovnatelné příkazy SSH nainstalované. Nej
 
 Další běžné Windows SSH, který lze nainstalovat místně jsou klienti součástí následujících balíčků:
 
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git pro Windows](https://git-for-windows.github.io/)
-* [MobaXterm](http://mobaxterm.mobatek.net/)
+* [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 Můžete použít také nástroje SSH, který je dostupný v Bashi ve [Azure Cloud Shell](../../cloud-shell/overview.md). 
@@ -62,7 +62,7 @@ Další související informace a informace, najdete v článku [rychlé](mac-cr
 
 ### <a name="create-ssh-keys-with-puttygen"></a>Vytvoření klíčů SSH pomocí nástroje PuTTYgen
 
-Pokud chcete použít nástroj využívající grafické rozhraní pro vytváření klíčů SSH, můžete použít Generátor klíče PuTTYgen, součástí [balíček ke stažení PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
+Pokud chcete použít nástroj využívající grafické rozhraní pro vytváření klíčů SSH, můžete použít Generátor klíče PuTTYgen, součástí [balíček ke stažení PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
 
 Pomocí nástroje PuTTYgen vytvoření páru klíčů SSH RSA:
 
@@ -110,7 +110,7 @@ Pokud virtuální počítač používá zásady přístupu v čase, budete muset
 
 ### <a name="connect-with-putty"></a>Připojit pomocí klienta PuTTY
 
-Pokud jste nainstalovali [balíček ke stažení PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) a dříve vygenerovaný soubor privátního klíče PuTTY (.ppk) můžete připojit k virtuálnímu počítači s Linuxem pomocí klienta PuTTY.
+Pokud jste nainstalovali [balíček ke stažení PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) a dříve vygenerovaný soubor privátního klíče PuTTY (.ppk) můžete připojit k virtuálnímu počítači s Linuxem pomocí klienta PuTTY.
 
 1. Spusťte PuTTy.
 
