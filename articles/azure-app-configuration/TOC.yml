@@ -13,7 +13,7 @@ items:
     href: quickstart-dotnet-core-app.md
   - name: Vytvoření aplikace v .NET Frameworku
     href: quickstart-dotnet-app.md
-  - name: Vytvoření funkce Azure
+  - name: Vytvořit funkci Azure
     href: quickstart-azure-function-csharp.md
   - name: Vytvoření aplikace v Java Springu
     href: quickstart-java-spring-app.md
@@ -54,9 +54,9 @@ items:
   items:
   - name: Poskytnutí zpětné vazby k produktu
     href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: 6723ea35f6cc674c0e2776260c2077d781a5014c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 2a0c67c39a17b5a7035f569ed860cd4e6b3cd844
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989768"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224528"

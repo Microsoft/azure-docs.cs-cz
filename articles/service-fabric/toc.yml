@@ -66,11 +66,13 @@ items:
     items:
     - name: 1. Vytvoření clusteru v Azure
       href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
-    - name: 2. Škálování clusteru
+    - name: 2. Monitorování clusteru
+      href: service-fabric-tutorial-monitor-cluster.md
+    - name: 3. Škálování clusteru
       href: service-fabric-tutorial-scale-cluster.md
-    - name: 3. Upgrade modulu runtime clusteru
+    - name: 4. Upgrade modulu runtime clusteru
       href: service-fabric-tutorial-upgrade-cluster.md
-    - name: 4. Odstranění clusteru
+    - name: 5. Odstranění clusteru
       href: service-fabric-tutorial-delete-cluster.md
   - name: Vytvoření samostatného clusteru v AWS
     items:
@@ -837,9 +839,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 41e92402762d0adc63f374e49ef86d3e7e060fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bb1cfedbaf699ff951a03adc47b93332412d1e5a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57873838"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225276"

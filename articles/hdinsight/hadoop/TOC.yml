@@ -40,6 +40,9 @@ items:
   - name: Porovnání možností úložiště
     href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
+  - name: Principy spravovaných identit
+    href: ../hdinsight-managed-identities.md
+    maintainContext: true
 - name: Postup
   items:
   - name: Použití sandboxu Apache Hadoopu
@@ -75,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: Použití sady .NET SDK
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: Použití Vzdálené plochy
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: Použití konzoly pro dotazy
-        href: apache-hadoop-use-hive-query-console.md
     - name: Použití uživatelem definovaných funkcí v Javě s Hivem
       href: apache-hadoop-hive-java-udf.md
     - name: Použití MapReduce s Apache Hadoopem
@@ -159,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: Připojení pomocí ovladače Apache Hive JDBC
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: Analýza uložených dat snímačů
-      href: apache-hive-analyze-sensor-data.md
     - name: Analýza uložených tweetů
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Generování doporučení pomocí Apache Mahoutu
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Analýza webových protokolů pomocí Apache Hivu
-      href: apache-hive-analyze-website-log.md
     - name: Analýza protokolů Telemetrie Application Insights
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -207,9 +202,6 @@ items:
       maintainContext: true
     - name: Použití Hue
       href: ../hdinsight-hadoop-hue-linux.md
-      maintainContext: true
-    - name: Použití Apache Solru
-      href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Použití Apache Zeppelinu
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
@@ -321,8 +313,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: Škálování clusteru HDInsight
+    - name: Ruční škálování clusteru
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: Automatické škálování clusterů
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: Použití externích úložišť metadat
       href: ../hdinsight-use-external-metadata-stores.md
@@ -495,9 +490,6 @@ items:
     - name: Ukázky spouštění Apache Hadoop MapReduce
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: Použití Apache Solru na clusterech
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: Použití Apache Giraphu ke zpracování rozsáhlých grafů
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
@@ -510,26 +502,14 @@ items:
     - name: Použití Apache Mavenu k vytváření aplikací v Javě
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Přizpůsobení pomocí akce skriptu
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Přístup k protokolům aplikací Apache Hadoop YARN
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Generování filmových doporučení pomocí Apache Mahoutu
       href: ../hdinsight-mahout.md
       maintainContext: true
-    - name: Analýza údajů o zpoždění letů
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
     - name: Vývoj akcí skriptů
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Analýza dat Twitteru
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: Správa clusterů pomocí webu Azure Portal
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Monitorování clusterů pomocí rozhraní Apache Ambari API
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -556,9 +536,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c679970484666a6087b33276eb545304a3b2793c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c2272c9ae3b5f26dc1c83b7af5850a44aed6abdc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224392"
