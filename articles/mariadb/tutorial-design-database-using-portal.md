@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 2bbe69d114df61f6ca01add0b3459220d59d83e0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29ad35b30e7f75259b9c4d0174c16c6c9c40a917
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852522"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB s využitím webu Azure portal
 
@@ -90,7 +90,7 @@ Na webu Azure Portal získejte hodnoty **Název serveru** (plně kvalifikovaný)
 
    ![Vlastnosti serveru](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin@mydemoserver**.
+V našem příkladu je název serveru **mydemoserver.mariadb.database.azure.com** a přihlašovací jméno správce serveru je **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Připojení k serveru pomocí mysql
 

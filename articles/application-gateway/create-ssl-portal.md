@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308087"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091830"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurace aplikační brány s ukončení protokolu SSL pomocí webu Azure portal
 
@@ -78,12 +78,12 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
-    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
-    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
-    - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+   - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
+   - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
+   - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
+   - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
 
-    ![Vytvoření virtuální sítě](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Vytvoření virtuální sítě](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
@@ -149,13 +149,13 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se použijí 
 
 ### <a name="add-backend-servers"></a>Přidání back-endových serverů
 
-3. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAppGateway**.
-4. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na **appGatewayBackendPool**.
-5. Klikněte na tlačítko **přidat cíl** přidáte každý virtuální počítač, který jste vytvořili pro back-endový fond.
+1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAppGateway**.
+1. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na **appGatewayBackendPool**.
+1. Klikněte na tlačítko **přidat cíl** přidáte každý virtuální počítač, který jste vytvořili pro back-endový fond.
 
     ![Přidání back-endových serverů](./media/create-ssl-portal/application-gateway-backend.png)
 
-6. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 

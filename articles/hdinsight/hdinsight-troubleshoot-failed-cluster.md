@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 05c6f1cbf5f7f20745fa837accdaa95e6c186b8b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994364"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226608"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
 
@@ -129,7 +129,7 @@ $ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton
 
 Ambari zobrazí výstrahu zobrazující hostitele, na kterých služba WebHCat je mimo provoz. Můžete zkusit zobrazíte službě WebHCat zpět restartováním služby svého hostitele.
 
-![Restartujte WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![Restart WebHCat Server](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
 
 Pokud WebHCat server stále nepřejde, pak v protokolu operations zprávy o neúspěchu. Podrobnější informace, zkontrolujte `stderr` a `stdout` soubory odkazuje na uzlu.
 
@@ -267,6 +267,6 @@ Pro usnadnění diagnostiky příčiny chyby clusteru, spusťte nový cluster se
 
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Analýza protokolů pro HDInsight](hdinsight-debug-jobs.md)
-* [Protokol aplikace přístup Apache Hadoop YARN v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Přihlášení aplikace přístup Apache Hadoop YARN v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Známé problémy pro cluster Apache Spark v HDInsight](hdinsight-apache-spark-known-issues.md)

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992354"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -89,7 +89,7 @@ Pokud nejste obeznámeni s nástroj device explorer, následující postup popis
 
 1. Když program spustíte, zobrazí se toto rozhraní:
 
-  ![Snímek obrazovky Dvojčete Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
+   ![Snímek obrazovky Dvojčete Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
 1. Zadejte vaše **připojovacího řetězce centra IoT** na první pole a klikněte na **aktualizace**. Tento krok nakonfiguruje nástroj, aby mohla komunikovat s centrem IoT. 
 
@@ -97,17 +97,17 @@ Pokud nejste obeznámeni s nástroj device explorer, následující postup popis
 
 1. Pokud je nakonfigurovaná připojovací řetězec služby IoT Hub, klikněte na tlačítko **správu** kartu:
 
-  ![Dvojče Device Explorer / Správa – snímek obrazovky](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
+   ![Dvojče Device Explorer / Správa – snímek obrazovky](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Tato karta je, kde budete spravovat zařízení registrovaná ve službě IoT hub.
 
 1. Vytvoření zařízení kliknutím **vytvořit** tlačítko. Dialogové okno zobrazí sadu předem naplněných klíče (primární i sekundární). Zadejte **ID zařízení** a potom klikněte na tlačítko **vytvořit**.
 
-  ![Vytvořit snímek obrazovky zařízení](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![Vytvořit snímek obrazovky zařízení](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
 1. Když se zařízení, zařízení seznam aktualizací se všechna registrovaná zařízení, včetně toho, který jste právě vytvořili. Pokud kliknete pravým tlačítkem nové zařízení, zobrazí tato nabídka:
 
-  ![Device Explorer Dvojčete klikněte pravým tlačítkem na výsledek](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Device Explorer Dvojčete klikněte pravým tlačítkem na výsledek](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
 1. Pokud se rozhodnete **zkopírujte připojovací řetězec pro vybrané zařízení**, připojovací řetězec zařízení je zkopírován do schránky. Zkopírujte připojovací řetězec zařízení. Když je potřebujete při spuštění ukázkové aplikace popsané v následujících částech.
 
@@ -351,7 +351,7 @@ Stejně jako u předchozí ukázce tohohle zahrnuje několik balíčků NuGet:
 
 Většina těchto balíčků v předchozí ukázce jste viděli, ale **Microsoft.Azure.IoTHub.Serializer** novinky. Tento balíček je povinný při použití **serializátor** knihovny.
 
-Provádění ukázkovou aplikaci v můžete najít ***iothub_client\_ukázky\_iothub_convenience_sample** souboru.
+Provádění ukázkovou aplikaci v můžete najít **iothub_client\_ukázky\_iothub_convenience_sample** souboru.
 
 Následující části vás provede procesem klíčových částí této ukázky.
 

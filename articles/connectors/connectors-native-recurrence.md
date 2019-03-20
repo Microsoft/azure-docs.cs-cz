@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: eb22539d1f433e396935f82e4cb3786d5699d21a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107833"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083950"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Vytváření a spouštění opakovaných úloh a pracovních postupů s Azure Logic Apps
 
@@ -95,12 +95,12 @@ Aktivaci vaší aplikace logiky a spustit pouze jednou v budoucnu najdete v tém
 
 Můžete nakonfigurovat tyto vlastnosti pro trigger opakování.
 
-| Název | Požaduje se | Název vlastnosti | Typ | Popis | 
+| Název | Požaduje se | Název vlastnosti | Type | Popis | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Frekvence** | Ano | frequency | Řetězec | Jednotka času pro opakování: **Druhý**, **minutu**, **hodinu**, **den**, **týden**, nebo **měsíc** | 
+| **Frekvence** | Ano | frequency | String | Jednotka času pro opakování: **Druhý**, **minutu**, **hodinu**, **den**, **týden**, nebo **měsíc** | 
 | **Interval** | Ano | interval | Integer | Kladné celé číslo, který popisuje, jak často pracovní postup spouští na základě frekvence. <p>Výchozí interval je 1. Toto jsou minimální a maximální intervaly: <p>-Měsíc: 1 – 16 měsíců </br>-Den: 1 – 500 dnů </br>-Hodinu: 1 – 12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Sekundu: 1-9,999,999 sekund<p>Například pokud je interval 6 a je frekvence "Měsíc", pak opakování je každých 6 měsíců. | 
-| **Časové pásmo** | Ne | timeZone | Řetězec | Platí, pouze pokud zadáte čas spuštění protože nepřijme tento trigger [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. | 
-| **Čas spuštění** | Ne | startTime | Řetězec | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-ddTHH Pokud vyberte časové pásmo <p>-nebo- <p>RRRR-MM-: ssZ Pokud nevyberete časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, jako je například tichomořského času. Nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. [*Jaké jsou způsoby, které lze použít počáteční datum a čas?*](#start-time) | 
+| **Časové pásmo** | Ne | timeZone | String | Platí, pouze pokud zadáte čas spuštění protože nepřijme tento trigger [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. | 
+| **Čas spuštění** | Ne | startTime | String | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-ddTHH Pokud vyberte časové pásmo <p>-nebo- <p>RRRR-MM-: ssZ Pokud nevyberete časové pásmo <p>Tak například, pokud chcete 18. září 2017 ve 14:00, zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, jako je například tichomořského času. Nebo zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas musí následovat [specifikace formátu ISO 8601 datum čas](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) v [formát času UTC data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [časový posun](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné přidat písmeno "Z" na konci bez mezer. Tato "Z" odkazuje na ekvivalentní [námořních čas](https://en.wikipedia.org/wiki/Nautical_time). <p>U jednoduchých plánů, počáteční čas je první výskyt, zatímco u složitějších plánů aktivační událost neaktivuje všechny dříve než čas spuštění. [*Jaké jsou způsoby, které lze použít počáteční datum a čas?*](#start-time) | 
 | **V tyto dny** | Ne | weekDays | Řetězec nebo pole řetězců | Pokud vyberete "Týden", můžete vybrat jeden nebo více dní, kdy chcete spustit pracovní postup: **Pondělí**, **úterý**, **středa**, **čtvrtek**, **pátek**, **sobota**, a **Neděle** | 
 | **V těchto hodinách** | Ne | hours | Integer nebo celočíselné pole | Pokud vyberete "Day" nebo "Týden", můžete vybrat jeden nebo více celá čísla od 0 do 23 jako hodin dne, kdy chcete spustit pracovní postup. <p>Například pokud zadáte "číslo 10", "12" a "14", získáte 10 AM, 12 hodin a 14: 00 jako značky hodinu. | 
 | **V těchto minutách** | Ne | minutes | Integer nebo celočíselné pole | Pokud vyberete "Day" nebo "Týden", můžete vybrat jeden nebo více celá čísla od 0 do 59 jako minuty v hodině, kdy chcete spustit pracovní postup. <p>Například můžete zadat "30" jako značku minutu a použijeme předchozí příklad hodin dne, získáte 10:30:00, 12:30 odp. a 2:30 odp. | 
@@ -141,8 +141,8 @@ Tady je příklad [definice aktivační události opakování](../logic-apps/log
 
 <a name="run-once"></a>
 
-**DOTAZ:** Co když chci pouze v budoucnu jednou spustili aplikaci logiky? </br>
-**ODPOVĚĎ:** K aktivaci vaší aplikace logiky a spusťte jednou bez opakování, můžete použít **plánovače: Spustit jednou úlohy** šablony. Po vytvoření nové aplikace logiky, ale před otevřením v návrháři pro Logic Apps **šablony** části z **kategorie** seznamu vyberte **plán**a pak vyberte šablony:
+**Otázka:** Co když chci pouze v budoucnu jednou spustili aplikaci logiky? </br>
+**Odpověď:** K aktivaci vaší aplikace logiky a spusťte jednou bez opakování, můžete použít **plánovače: Spustit jednou úlohy** šablony. Po vytvoření nové aplikace logiky, ale před otevřením v návrháři pro Logic Apps **šablony** části z **kategorie** seznamu vyberte **plán**a pak vyberte šablony:
 
 ![Vyberte "plánovače: Spustit jednou úlohy"šablony](./media/connectors-native-recurrence/choose-run-once-template.png)
 
@@ -150,8 +150,8 @@ Nebo, pokud používáte šablony prázdné aplikace logiky, aplikaci logiky s s
 
 <a name="example-recurrences"></a>
 
-**DOTAZ:** Jaké jsou další příklady plánů opakování? </br>
-**ODPOVĚĎ:** Tady jsou další příklady:
+**Otázka:** Jaké jsou další příklady plánů opakování? </br>
+**Odpověď:** Tady jsou další příklady:
 
 | Opakování | Interval | Frekvence | Počáteční čas | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
@@ -180,8 +180,8 @@ Nebo, pokud používáte šablony prázdné aplikace logiky, aplikaci logiky s s
 
 <a name="start-time"></a>
 
-**DOTAZ:** Jaké jsou způsoby, které lze použít počáteční datum a čas? </br>
-**ODPOVĚĎ:** Tady jsou některé vzory, které ukazují, jak můžete řídit opakování s počáteční datum a čas a jak modul Logic Apps provede tyto opakování:
+**Otázka:** Jaké jsou způsoby, které lze použít počáteční datum a čas? </br>
+**Odpověď:** Tady jsou některé vzory, které ukazují, jak můžete řídit opakování s počáteční datum a čas a jak modul Logic Apps provede tyto opakování:
 
 | Počáteční čas | Opakování bez plánu | Opakování s plánem | 
 | ---------- | --------------------------- | ------------------------ | 
@@ -202,7 +202,7 @@ V tomto scénáři, Logic Apps vypočítá modul runtime podle času spuštění
 | Počáteční čas | První čas spuštění | Budoucí čas spuštění | 
 | ---------- | ------------ | ---------- | 
 | 2017-09 -**07** ve 14:00 | 2017-09 -**09** ve 14:00 | 2017-09 -**11** ve 14:00 </br>2017-09 -**13** ve 14:00 </br>2017-09 -**15** ve 14:00 </br>a tak dále.
-||||| 
+||||
 
 Takže pro tento scénář, bez ohledu na to, jak daleko v minulosti zadáte počáteční čas, například 2017-09 -**05** ve 14:00 nebo 2017-09 -**01** ve 14:00:00, první čas spuštění je stejný.
 

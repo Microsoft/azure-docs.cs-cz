@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 7cfcf68a7725ba6c8a7ad4e0a88c5eed814b38ba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4b8d26868c3880852e0d2f9c43b06ca1b25d094f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176374"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>Rychlý start: Vyhledávání slov s využitím dvojjazyčného slovníku pomocí Node.js
 
@@ -32,7 +32,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt. Pak do svého projektu, do souboru s názvem `dictionary-lookup.js`, zkopírujte tento fragment kódu.
+Vytvoření nového projektu pomocí vašeho oblíbeného prostředím IDE nebo editorem, nebo vytvořte novou složku na ploše. Tento fragment kódu zkopírujte do složky vašeho projektu nebo do souboru s názvem `alt-translations.js`.
 
 ```javascript
 const request = require('request');
@@ -114,7 +114,7 @@ request(options, function(err, res, body){
 To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
 
 ```console
-node dictionary-lookup.js
+node alt-translations.js
 ```
 
 Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).

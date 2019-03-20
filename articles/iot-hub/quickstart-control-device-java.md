@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: 82586838c9b442ce27d6a18f45fb93370e532701
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ce451ebb6b4a9afb10b9213a3d50c24c586887aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164888"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Java)
 
@@ -103,7 +103,7 @@ Potřebujete také _připojovací řetězec služby_, který back-endové aplika
 **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:

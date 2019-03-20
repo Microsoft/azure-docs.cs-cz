@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098768"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -68,11 +68,11 @@ V části **přehled**, není k dispozici seznam doporučení. První sloupec uv
 
 1. Vyberte doporučení. Otevře se okno a zobrazí doporučení:
 
-  - Popis doporučení
-  - Seznam předplatných není v pořádku a v dobrém stavu
-  - Seznam prostředků, které jsou z důvodu selhání posouzení nezkontrolované nebo prostředek spadá pod předplatné běžící na úrovni Free a není použit k vyhodnocení
+   - Popis doporučení
+   - Seznam předplatných není v pořádku a v dobrém stavu
+   - Seznam prostředků, které jsou z důvodu selhání posouzení nezkontrolované nebo prostředek spadá pod předplatné běžící na úrovni Free a není použit k vyhodnocení
 
-  ![Okno doporučení.][3]
+   ![Okno doporučení.][3]
 
 1. Vyberte předplatné, v seznamu pro další podrobnosti.
 
@@ -81,27 +81,27 @@ V části **předplatná**, je seznam předplatných. První sloupec uvádí př
 
 ![Karta předplatného.][4]
 
-1.  Vyberte předplatné. Souhrnné zobrazení otevřete tři karty:
+1. Vyberte předplatné. Souhrnné zobrazení otevřete tři karty:
 
-  - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
-  - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
-  - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo proto, že předplatné má více než 600 účty.
+   - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
+   - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
+   - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo proto, že předplatné má více než 600 účty.
 
-  V části **doporučení** se seznam doporučení pro vybrané předplatné a závažnost jednotlivých doporučení.
+   V části **doporučení** se seznam doporučení pro vybrané předplatné a závažnost jednotlivých doporučení.
 
-  ![Doporučení pro výběr předplatného][5]
+   ![Doporučení pro výběr předplatného][5]
 
 1. Vyberte doporučení pro popis doporučení, seznam předplatných není v pořádku a v pořádku a seznam nezkontrolované prostředky.
 
-  ![Popis doporučení][6]
+   ![Popis doporučení][6]
 
-  V části **předaný posouzení** je seznam vyhovující posouzení.  Závažnost těchto hodnocení je vždy zelená.
+   V části **předaný posouzení** je seznam vyhovující posouzení.  Závažnost těchto hodnocení je vždy zelená.
 
-  ![Vyhovující posouzení][7]
+   ![Vyhovující posouzení][7]
 
 1. Předaný posouzení vyberte ze seznamu popis posouzení a seznam předplatných v pořádku. Je na kartě pro předplatné není v pořádku, který obsahuje seznam všech předplatných, které se nezdařilo.
 
-  ![Vyhovující posouzení][8]
+   ![Vyhovující posouzení][8]
 
 ## <a name="recommendations"></a>Doporučení
 V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné doporučení identita a přístup a každý z nich, co dělá když je použijete.

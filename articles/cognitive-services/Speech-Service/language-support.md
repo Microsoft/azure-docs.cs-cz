@@ -1,5 +1,5 @@
 ---
-title: Podpora jazyků – rozhraní API pro rozpoznávání řeči služeb
+title: Podpora jazyků – hlasové služby
 titleSuffix: Azure Cognitive Services
 description: Hlasové služby Azure podporu mnoha jazyků pro převod řeči na text a převod textu na řeč, spolu s překladu řeči. Tento článek obsahuje úplný seznam jazykovou podporu služby.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878030"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225429"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
+# <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyka a oblasti pro hlasové služby
 
 Různé jazyky jsou podporovány pro různé funkce hlasové služby. Následující tabulky shrnují jazykovou podporu.
 
@@ -76,13 +76,18 @@ Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů 
 Úplný seznam neuronových sítí hlasy a dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#neural-voices).
 
 | Národní prostředí | Jazyk | Pohlaví | Název mapování služby|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE | Němčina (Německo) | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, KatjaNeural)" |
 | en-US | English (US) | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, GuyNeural)" |
 | en-US | English (US) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaNeural)" |
+| IT-IT | Italština (Itálie) | Žena | "Microsoft serveru řeči Text na řeč hlas (it-IT, ElsaNeural)" |
 | zh-CN | Čínština | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural)" |
 
 > [!IMPORTANT]
 > Microsoft Server řeči Text na řeč hlas (zh-CN, XiaoxiaoNeural) je k dispozici prostřednictvím koncového bodu jihovýchodní Asie pouze: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
+
+> [!IMPORTANT]
+> Microsoft Server řeči Text na řeč hlas (de-DE, KatjaNeural) a Microsoft serveru řeči Text a hlasu Speech (it-IT, ElsaNeural) jsou dostupné jen přes koncový bod západní Evropa: https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standardní hlasů
 
@@ -179,7 +184,7 @@ zh-TW | Čínština (Tchaj-wan)|Žena | "Microsoft serveru řeči Text na řeč 
 Přizpůsobení hlasu je k dispozici pro nás Angličtina (en US), Španělsko čínština (zh-CN), francouzština (fr-FR), němčina (de-DE) a italština (it-IT).
 
 > [!NOTE]
-> Francouzština, němčina a italština školení způsobu vyjadřování začíná u datové sady 2 000 + projevy. Dvojjazyčné modely čínština – angličtina jsou také podporovány s počáteční sadu 2 000 + projevy data.
+> Francouzština, němčina a italština školení způsobu vyjadřování začíná u datové sady z 2 000 + projevy. Dvojjazyčné modely čínština – angličtina jsou také podporovány s počáteční sadu 2 000 + projevy data.
 
 ## <a name="speech-translation"></a>Překlad řeči
 
@@ -255,5 +260,5 @@ Přizpůsobení hlasu je k dispozici pro nás Angličtina (en US), Španělsko �
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 * [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)

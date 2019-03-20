@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf73708be8a8bc597b70d0cb50fc337efa72906
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211678"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199597"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Změnit členství ve skupině statické na dynamickou ve službě Azure Active Directory
 
@@ -33,7 +33,7 @@ ms.locfileid: "56211678"
 
 ## <a name="change-the-membership-type-for-a-group"></a>Změnit typ členství pro skupinu
 
-1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce uživatelských účtů ve vašem tenantovi.
+1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo Správce uživatelů ve vašem tenantovi.
 2. Vyberte **skupiny**.
 3. Z **všechny skupiny** seznamu, otevřete skupinu, kterou chcete změnit.
 4. Vyberte **vlastnosti**.
@@ -47,14 +47,13 @@ Následující postup je příklad změny skupiny ze statické na dynamické čl
   
 2. Vyberte **Přidat dynamický dotaz**a pak zadejte pravidlo.
   
-   ![Zadejte pravidla](./media/groups-change-type/enter-rule.png)
+   ![Zadejte pravidla pro dynamickou skupinu](./media/groups-change-type/enter-rule.png)
   
 3. Po vytvoření pravidla, vyberte **přidat dotaz** v dolní části stránky.
 4. Vyberte **Uložit** na **vlastnosti** stránce pro skupinu, kterou chcete uložit provedené změny. **Typ členství** skupiny okamžitě aktualizován v seznamu skupin.
 
 > [!TIP]
 > Převod skupin může selhat, pokud byl nesprávný pravidla členství, které jste zadali. Oznámení se zobrazí v pravém dolním rohu portálu, který obsahuje vysvětlení, proč nelze přijmout pravidlo v systému. Přečtěte si ho pečlivě, abyste pochopili, jak můžete nastavit pravidlo, aby byl platný. Příklady syntaxe pravidla a úplný seznam podporovaných vlastností, operátory a hodnoty pro pravidlo členství, naleznete v tématu [pravidla dynamického členství pro skupiny ve službě Azure Active Directory](groups-dynamic-membership.md).
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Změnit typ členství pro skupinu (PowerShell)
 
@@ -63,7 +62,7 @@ Následující postup je příklad změny skupiny ze statické na dynamické čl
 
 Tady je příklad funkce, které se přepnout na existující skupinu správy členství. V tomto příkladu je správně pracovat vlastnost GroupTypes a zachovat všechny hodnoty, které nesouvisí s dynamického členství věnovat pozornost.
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -107,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 Chcete-li vytvořit statickou skupinu:
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 Chcete-li dynamické skupiny:
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

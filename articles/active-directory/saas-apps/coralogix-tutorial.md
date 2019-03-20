@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 137429fc21bc71f0273029ca6578596b64001823
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: feb34ab8d811d813e751b25c2a6b6d4bf0397f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Kurz: Integrace Azure Active Directory s Coralogix
 
@@ -108,6 +108,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coralogix, proveďte násle
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.coralogix.com`
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL:
+
     | |
     |--|
     | `https://api.coralogix.com/saml/metadata.xml` |
@@ -170,7 +171,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 73b13dcea84ba322072217c3feacebdefb3bf1e6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896700"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Co jsou kolekce pracovních prostorů Power BI?
 
@@ -84,7 +84,7 @@ Teď můžete upravit existující sestavy nebo vytvářet nové sestavy přímo
 [Vložení sestavy](embed-report.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Úložiště Git PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
+[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)  
 [Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
 
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)

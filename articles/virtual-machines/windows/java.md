@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 24c8ec6cfe587fbb6e1e1e5433123aad87705c04
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 816233368c2274e34d2acdd712aed270a5e3bfa5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010904"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Javy
 
@@ -40,7 +40,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
 ## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
 
 1. Pokud jste tak již neučinili, nainstalujte [Java](https://aka.ms/azure-jdks).
-2. Nainstalujte [Maven](http://maven.apache.org/download.cgi).
+2. Nainstalujte [Maven](https://maven.apache.org/download.cgi).
 3. Vytvořte novou složku a projekt:
     
     ```

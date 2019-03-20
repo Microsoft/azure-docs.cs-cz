@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995115"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: Zjišťování možných podvodů v reálném čase
 
@@ -114,20 +114,20 @@ Před spuštěním aplikace TelcoGenerator, musíte ji nakonfigurovat tak, aby z
 
 ### <a name="configure-the-telcogenerator-app"></a>Konfigurace aplikace TelcoGenerator
 
-1.  V editoru, kterého jste zkopírovali připojovací řetězec, poznamenejte si `EntityPath` hodnotu a pak odeberte `EntityPath` pár (Nezapomeňte odebrat středník, který mu předchází). 
+1. V editoru, kterého jste zkopírovali připojovací řetězec, poznamenejte si `EntityPath` hodnotu a pak odeberte `EntityPath` pár (Nezapomeňte odebrat středník, který mu předchází). 
 
-2.  Ve složce, kde odblokujte TelcoGenerator.zip soubor otevřete soubor telcodatagen.exe.config v editoru. (Existuje více než jeden soubor .config, proto se ujistěte, že otevíráte ten správný.)
+2. Ve složce, kde odblokujte TelcoGenerator.zip soubor otevřete soubor telcodatagen.exe.config v editoru. (Existuje více než jeden soubor .config, proto se ujistěte, že otevíráte ten správný.)
 
-3.  V `<appSettings>` element:
+3. V `<appSettings>` element:
 
-    * Nastavte hodnotu `EventHubName` klíče název centra událostí (to znamená, hodnotu cesta entity).
-    * Nastavte hodnotu `Microsoft.ServiceBus.ConnectionString` na připojovací řetězec klíče. 
+   * Nastavte hodnotu `EventHubName` klíče název centra událostí (to znamená, hodnotu cesta entity).
+   * Nastavte hodnotu `Microsoft.ServiceBus.ConnectionString` na připojovací řetězec klíče. 
 
-    `<appSettings>` Části bude vypadat jako v následujícím příkladu. (Pro přehlednost jsou zabaleny řádky a některé znaky se odstranily z autorizační token.)
+   `<appSettings>` Části bude vypadat jako v následujícím příkladu. (Pro přehlednost jsou zabaleny řádky a některé znaky se odstranily z autorizační token.)
 
    ![Konfigurační soubor TelcoGenerator zobrazuje název a připojovací řetězec centra událostí](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  Uložte soubor. 
+4. Uložte soubor. 
 
 ### <a name="start-the-app"></a>Aplikace se spustila
 1.  Otevřete okno příkazového řádku a přejděte do složky, ve kterém je aplikace TelcoGenerator rozbaleny.
@@ -191,6 +191,7 @@ Teď, když máte stream událostí volání, můžete nastavit úlohu Stream An
    |Obor názvů centra událostí  |  asa-eh-ns-demo |  Zadejte název pro obor názvů centra událostí.   |
    |Název centra událostí  | asa-eh-frauddetection-demo | Vyberte název vašeho centra událostí.   |
    |Název zásad centra událostí  | asa-policy-manage-demo | Vyberte zásady přístupu, který jste vytvořili dříve.   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ Pokud máte existující účet úložiště objektů blob, můžete použít, k
    |Předplatné   |  \<Vaše předplatné\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště  |  asaehstorage |  Zadejte název účtu úložiště, který jste vytvořili. |
    |Kontejner  | asa-fraudulentcalls-demo | Zvolte možnost vytvořit novou a zadejte název kontejneru. |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

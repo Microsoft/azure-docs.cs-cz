@@ -3,7 +3,7 @@ title: Shromažďování dat ve službě Azure Security Center | Dokumentace Mic
 description: " Informace o povolení shromažďování dat ve službě Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,55 +12,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
-ms.author: rkarlin
-ms.openlocfilehash: 09abb8fa2c8d08b27b83a2510b4c1133458b8363
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 03/19/2018
+ms.author: monhaber
+ms.openlocfilehash: 7be86ae7b425c8497b017672ae2e828ccbf65049
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240724"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223695"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
-Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Log Analytics, která z počítače načítá různé konfigurace týkající se zabezpečení a protokolů událostí a zkopíruje data na váš pracovní prostor pro analýzu. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agenta Log Analytics také zkopíruje soubory se stavem systému do pracovního prostoru.
+Security Center shromažďuje data z virtuálních počítačů Azure (VM), škálovací sady virtuálních počítačů (VMSS), kontejnerů IaaS a počítače mimo Azure (včetně místních) k monitorování ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
 
 Shromažďování dat je potřeba poskytnout přehled o chybějících aktualizací, nesprávně nakonfigurované nastavení zabezpečení operačního systému, povolení ochrany koncového bodu a detekce hrozeb a stavu. 
 
-Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Log Analytics a nastavte pracovnímu prostoru Log Analytics, ve kterých se mají ukládat shromážděná data. Operace je potřeba povolit shromažďování dat. 
+Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Microsoft Monitoring Agent a nastavte pracovnímu prostoru Log Analytics, ve kterých se mají ukládat shromážděná data. Operace je potřeba povolit shromažďování dat. 
 
 > [!NOTE]
-> - Shromažďování dat je potřeba jenom za výpočetní prostředky (virtuální počítače a počítače mimo Azure). Můžete využívat výhody Azure Security Center i v případě, že nemusíte zřizovat agentů; ale bude mít omezenou zabezpečení a možnosti uvedené výše se nepodporují.  
+
+> - Shromažďování dat je potřeba jenom za výpočetní prostředky (virtuální počítače, Škálovací sady virtuálních počítačů, kontejnery IaaS a počítače mimo Azure). Můžete využívat výhody Azure Security Center i v případě, že nemusíte zřizovat agentů; ale bude mít omezenou zabezpečení a možnosti uvedené výše se nepodporují.  
 > - Seznam podporovaných platforem najdete v tématu [podporovaných platforem ve službě Azure Security Center](security-center-os-coverage.md).
 > - Shromažďování dat pro škálovací sadu virtuálních počítačů se momentálně nepodporuje.
 
 
-## Povolit automatické zřizování agenta Log Analytics <a name="auto-provision-mma"></a>
+## Povolit automatické zřizování agenta Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
 
-Ke shromažďování dat z počítačů byste měli mít nainstalovaného agenta Log Analytics.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
+Ke shromažďování dat z počítačů, měli byste mít agenta Microsoft Monitoring Agent nainstalována.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
 
 >[!NOTE]
 > Automatické zřizování je ve výchozím nastavení vypnuté. Pokud chcete nastavit Security Center mohla nainstalovat ve výchozím nastavení automatického zřizování, nastavte ji na **na**.
 >
 
-Při zapnuté automatické zřizování, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření agenta Log Analytics](#manualagent).
+Při zapnuté automatické zřizování, Security Center zřídí Microsoft Monitoring agent na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření Microsoft Monitoring Agent](#manualagent).
 
 
 
-Pokud chcete povolit automatické zřizování agenta Log Analytics:
+Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
 2. Klikněte na tlačítko **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
 
-  ![Výběr předplatného][7]
+   ![Výběr předplatného][7]
 
 3. V části **Zásady zabezpečení** vyberte **Shromažďování dat**.
 4. V části **automatického zřizování**vyberte **na** chcete povolit automatické zřizování.
 5. Vyberte **Uložit**.
 
-  ![Povolení automatického zřizování][1]
+   ![Povolení automatického zřizování][1]
 
 >[!NOTE]
 > - Pokyny o tom, jak zřídit existující instalace najdete v tématu [automatické zřizování v případech dříve existující instalace agenta](#preexisting).
-> - Pokyny k ruční zřizování najdete v tématu [ručně nainstalovat rozšíření agenta Log Analytics](#manualagent).
+> - Pokyny k ruční zřizování najdete v tématu [nainstalovat rozšíření Microsoft Monitoring Agent ručně](#manualagent).
 > - Vypnutí automatického zřizování, v tématu [vypnout automatické zřizování](#offprovisioning).
 > - Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 >
@@ -76,15 +77,15 @@ Centrum zabezpečení můžete automaticky vytvořit výchozí pracovní prostor
 
 Výběr pracovního prostoru vytvořených službou Security Center:
 
-1.  V části **výchozí konfigurace pracovního prostoru**, vyberte možnost použití pracovních prostorů vytvořených službou Security center.
+1. V části **výchozí konfigurace pracovního prostoru**, vyberte možnost použití pracovních prostorů vytvořených službou Security center.
    ![Vyberte cenovou úroveň.][10] 
 
-2. Klikněte na **Uložit**.<br>
+1. Klikněte na **Uložit**.<br>
     Security Center vytvoří nový prostředek skupiny a výchozí pracovní prostor v této informace o zeměpisné poloze a agent se připojí k tomuto pracovnímu prostoru. Zásady vytváření názvů pracovní prostor a skupiny prostředků je:<br>
-**Pracovní prostor: DefaultWorkspace-[Id_předplatného]-[zeměpisné_umístění]<br> skupina prostředků: DefaultResourceGroup-[geo]**
+   **Pracovní prostor: DefaultWorkspace-[Id_předplatného]-[zeměpisné_umístění]<br> skupina prostředků: DefaultResourceGroup-[geo]**
 
    Pokud předplatné obsahuje virtuální počítače z více geolocations, Security Center vytvoří několik pracovních prostorů. Zachovat data pravidla ochrany osobních údajů se vytvoří víc pracovních prostorů.
--   Security Center automaticky povolí řešení Security Center v pracovním prostoru pro jednotlivé cenové úrovně pro předplatné. 
+1. Security Center automaticky povolí řešení Security Center v pracovním prostoru pro jednotlivé cenové úrovně pro předplatné. 
 
 > [!NOTE]
 > Log analytics cenová úroveň pracovních prostorů vytvořených službou Security Center nemá vliv na fakturaci Security Center. Fakturace Security Center je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru. Pro bezplatnou úroveň Security Center umožňuje *SecurityCenterFree* řešení na výchozího pracovního prostoru. Pro úroveň Standard, Security Center umožňuje *zabezpečení* řešení na výchozího pracovního prostoru.
@@ -111,10 +112,10 @@ Vyberte existující pracovní prostor Log Analytics:
 
 2. Z rozevírací nabídky vyberte pracovní prostor pro ukládání shromážděných dat.
 
-  > [!NOTE]
-  > V rozevírací nabídku o přijetí změn jsou k dispozici všechny pracovní prostory ve všech vašich předplatných. Zobrazit [napříč výběr pracovního prostoru předplatného](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Další informace. Musíte mít oprávnění pro přístup k pracovnímu prostoru.
-  >
-  >
+   > [!NOTE]
+   > V rozevírací nabídku o přijetí změn jsou k dispozici všechny pracovní prostory ve všech vašich předplatných. Zobrazit [napříč výběr pracovního prostoru předplatného](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Další informace. Musíte mít oprávnění pro přístup k pracovnímu prostoru.
+   >
+   >
 
 3. Vyberte **Uložit**.
 4. Po výběru **Uložit**, zobrazí se výzva, pokud chcete změnit konfiguraci monitorovaných virtuálních počítačů, které byly dříve připojen do výchozího pracovního prostoru.
@@ -150,8 +151,8 @@ Když vyberete pracovní prostor, ve kterých se mají ukládat data, jsou k dis
 Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Agenta Log Analytics bude i nadále shromažďovat a analyzovat události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
 > [!NOTE]
 > Ukládání dat v log analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
->
-Můžete si vybrat vpravo filtrování zásady pro předplatná a pracovní prostory z čtyř sad událostí, které mají být uloženy ve vašem pracovním prostoru: 
+> 
+> Můžete si vybrat vpravo filtrování zásady pro předplatná a pracovní prostory z čtyř sad událostí, které mají být uloženy ve vašem pracovním prostoru: 
 
 - **Žádný** – zakázat úložiště událostí zabezpečení. Toto je výchozí nastavení.
 - **Minimální** – menší sadu protokolovaných událostí pro zákazníky, kteří chtějí minimalizovat objem událostí.
@@ -202,16 +203,20 @@ Chcete-li zvolit filtrování zásad:
 
 Tyto případy použití určit, jak automatické zřizování lze použít v případech, kdy je již agent nebo rozšíření nainstalované. 
 
-- Agenta log Analytics je nainstalován na počítači, ale ne jako rozšíření<br>
-Pokud agenta Log Analytics je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center není možné nainstalovat agenta Log Analytics. Můžete zapnout automatické zřizování a vyberte pracovní prostor příslušné uživatelské v Security Center automaticky konfiguraci zřizování. Pokud se rozhodnete, že stejný pracovní prostor, který virtuální počítač je již připojen k existujícího agenta se zalomí pomocí rozšíření agenta Log Analytics. 
+- Microsoft Monitoring Agent je nainstalovaný na počítači, ale ne jako rozšíření (přímý agent)<br>
+Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center nainstaluje rozšíření Microsoft Monitoring Agent a upgradovat Microsoft Monitoring agent na nejnovější verzi.
+Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporována).
+Pokud má konfigurovaný pracovní prostor je uživatel pracovní prostor (není Security Center výchozího pracovního prostoru), pak budete muset nainstalovat "zabezpečení /"securityFree"řešení v něm pro Security Center spuštění zpracování událostí z virtuálních počítačů a počítačů odesílajících sestavy do pracovního prostoru.<br>
+<br>
+Pro existující počítače v předplatných připojili ke službě Security Center před 2019-03-17, když bude zjištěna existujícího agenta, nenainstalují se rozšíření Microsoft Monitoring Agent a nebude mít vliv počítače. Pro tyto počítače naleznete v části "Vyřešit problémy se stavem agenta na počítačích monitorování" doporučení k vyřešení problémů s instalací agenta na těchto počítačích.
 
-> [!NOTE]
-> Pokud je nainstalovaná SCOM agenta verze 2012, **nejsou** zapnutí automatického zřizování na. 
+  
+- Na počítači je nainstalován agent nástroje SCOM<br>
+Security center se nainstaluje agenta Microsoft Monitoring Agent rozšíření na straně sebe do existující SCOM. Existujícího agenta nástroje SCOM nadále sestavy se serverem SCOM za normálních okolností. Všimněte si, že agent nástroje SCOM a agenta Microsoft Monitoring Agent sdílejí společné knihovny runtime, které se aktualizují na nejnovější verzi při tomto zpracovat.
+Poznámka: Pokud SCOM agenta verze 2012 je nainstalovaná, **nejsou** zapnutí automatického zřizování na.<br>
 
-Další informace najdete v tématu [co se stane, když OMS nebo SCOM přímý agent je již nainstalován na mém virtuálním počítači?](security-center-faq.md#scomomsinstalled)
-
--   Existující rozšíření virtuálního počítače je k dispozici<br>
-    - Security center podporuje stávající instalace rozšíření, nedojde k přepsání existujících připojení. Security Center uchovává data z virtuálních počítačů v pracovním prostoru už připojený a poskytuje ochranu podle řešení povolená v pracovním prostoru pro zabezpečení.   
+- Existující rozšíření virtuálního počítače je k dispozici<br>
+    - Pokud Monitoring Agent je nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav jenom jeden pracovní prostor. Security Center nemůže přepsat existující připojení k pracovním prostorům uživatele. Security Center budou ukládat data zabezpečení z virtuálního počítače na pracovní prostor už připojený, za předpokladu, že "zabezpečení" nebo "securityFree" řešení byla nainstalována na něm. Security Center může upgradovat verzi rozšíření na nejnovější verzi v tomto procesu.  
     - Pokud chcete zobrazit, který pracovní prostor existující rozšíření odesílá data pro spuštění testu na [ověření připojení pomocí služby Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Alternativně můžete otevřít pracovní prostory Log Analytics, vyberte pracovní prostor, vyberte virtuální počítač a podívejte se na připojení agenta Log Analytics. 
     - Pokud máte prostředí kde agenta Log Analytics je nainstalovaná na klientských pracovních stanicích a vytváření sestav do existujícího pracovního prostoru Log Analytics, projděte si seznam [operačních systémů podporovaných službou Azure Security Center](security-center-os-coverage.md) zajistit váš operační systém se podporuje a najdete v článku [existující log analytics zákazníkům](security-center-faq.md#existingloganalyticscust) Další informace.
  
@@ -224,7 +229,7 @@ Můžete vypnout automatické zřizování z prostředků v každém okamžiku v
 3. Na **zásady zabezpečení – shromažďování dat** okně v části **automatického zřizování** vyberte **vypnout**.
 4. Vyberte **Uložit**.
 
-  ![Vypnout automatické zřizování][6]
+   ![Vypnout automatické zřizování][6]
 
 Když automatické zřizování je zakázaný (vypnuto), konfigurační oddíl výchozí pracovní prostor se nezobrazí.
 
@@ -243,57 +248,57 @@ Existuje několik způsobů, jak ručně nainstalovat agenta Microsoft Monitorin
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Nasazení rozšíření Operations Management Suite virtuálního počítače 
 
 Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďování dat zabezpečení z virtuálních počítačů a poskytování doporučení a výstrahy Security Center.
-1.  Vyberte automatického zřizování – vypnuto.
-2.  Vytvořit pracovní prostor a nastavit cenovou úroveň pracovního prostoru máte v úmyslu nastavit Microsoft Monitoring agent:
+1. Vyberte automatického zřizování – vypnuto.
+2. Vytvořit pracovní prostor a nastavit cenovou úroveň pracovního prostoru máte v úmyslu nastavit Microsoft Monitoring agent:
 
-    a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
+   a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
      
-    b.  Vyberte pracovní prostor, ve které máte v úmyslu připojení agenta. Zajistěte, aby že pracovní prostor je ve stejném předplatném, použijte ve službě Security Center a zda máte oprávnění ke čtení/zápisu v pracovním prostoru.
-        ![Vyberte pracovní prostor][8]
+   b.  Vyberte pracovní prostor, ve které máte v úmyslu připojení agenta. Zajistěte, aby že pracovní prostor je ve stejném předplatném, použijte ve službě Security Center a zda máte oprávnění ke čtení/zápisu v pracovním prostoru.
+       ![Vyberte pracovní prostor][8]
 3. Nastavte cenovou úroveň.
    ![Vyberte cenovou úroveň.][9] 
    >[!NOTE]
    >Pokud je pracovní prostor už **zabezpečení** nebo **SecurityCenterFree** povolené žádné řešení, ceny se nastaví automaticky. 
    > 
 
-4.  Pokud chcete nasadit agenty na nové virtuální počítače pomocí šablony Resource Manageru, nainstalujte rozšíření virtuálního počítače OMS:
+4. Pokud chcete nasadit agenty na nové virtuální počítače pomocí šablony Resource Manageru, nainstalujte rozšíření virtuálního počítače OMS:
 
-    a.  [Instalace rozšíření virtuálního počítače OMS pro Windows](../virtual-machines/extensions/oms-windows.md)
+   a.  [Instalace rozšíření virtuálního počítače OMS pro Windows](../virtual-machines/extensions/oms-windows.md)
     
-    b.  [Instalace rozšíření virtuálního počítače OMS pro Linux](../virtual-machines/extensions/oms-linux.md)
-5.  Chcete-li nasadit rozšíření na existující virtuální počítače, postupujte podle pokynů v [shromažďování dat o virtuálních počítačích Azure](../azure-monitor/learn/quick-collect-azurevm.md).
+   b.  [Instalace rozšíření virtuálního počítače OMS pro Linux](../virtual-machines/extensions/oms-linux.md)
+5. Chcete-li nasadit rozšíření na existující virtuální počítače, postupujte podle pokynů v [shromažďování dat o virtuálních počítačích Azure](../azure-monitor/learn/quick-collect-azurevm.md).
 
-  > [!NOTE]
-  > V části **shromažďování dat o událostech a výkonu** je volitelný.
-  >
+   > [!NOTE]
+   > V části **shromažďování dat o událostech a výkonu** je volitelný.
+   >
 6. Použití Powershellu k nasazení rozšíření, použijte následující příklad Powershellu:  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
    
-    1.  Přejděte na **Log Analytics** a klikněte na **upřesňující nastavení**.
+   1. Přejděte na **Log Analytics** a klikněte na **upřesňující nastavení**.
     
-        ![Nastavení log analytics][11]
+      ![Nastavení log analytics][11]
 
-    2. Zkopírujte hodnoty z **ID pracovního prostoru** a **primární klíč**.
+   2. Zkopírujte hodnoty z **ID pracovního prostoru** a **primární klíč**.
   
-       ![Zkopírujte hodnoty][12]
+      ![Zkopírujte hodnoty][12]
 
-    3. Naplnění config veřejné a privátní konfigurace s těmito hodnotami:
+   3. Naplnění config veřejné a privátní konfigurace s těmito hodnotami:
      
-            $PublicConf = '{
-                "workspaceId": "WorkspaceID value",
-                "MultipleConnections": true
-            }' 
+           $PublicConf = '{
+               "workspaceId": "WorkspaceID value",
+               "MultipleConnections": true
+           }' 
  
-            $PrivateConf = '{
-                "workspaceKey": "<Primary key value>”
-            }' 
+           $PrivateConf = '{
+               "workspaceKey": "<Primary key value>”
+           }' 
 
       - Při instalaci na virtuálním počítači s Windows:
         
-             Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
-       - Při instalaci na virtuální počítač s Linuxem:
+      - Při instalaci na virtuální počítač s Linuxem:
         
-             Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
 > [!NOTE]
 > Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/17/2019
+ms.date: 3/14/2019
 ms.author: monhaber
-ms.openlocfilehash: 7931caa985bc5dea98ca36bd15e0e634855ab2c5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650627"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226109"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -36,7 +36,7 @@ Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zaji
 
 Zásady zabezpečení vliv na doporučení zabezpečení, získáte v Azure Security Center. Můžete monitorovat dodržování zásad v nich můžete najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o tom, jak určit, která možnost je pro vás vhodná, najdete v seznamu [integrované bezpečnostní zásady](security-center-policy-definitions.md).
 
-Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované iniciativy se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu. 
+Když povolíte Security Center, zásady zabezpečení, která je integrovaná do služby Security Center se projeví ve službě Azure Policy jako integrované iniciativy v rámci kategorie Security Center. Integrované iniciativy se automaticky přiřadí na všechny odběry registrované Security Center (úrovně Free nebo Standard). Integrované iniciativy obsahuje pouze zásady auditu.
 
 
 ### <a name="management-groups"></a>Skupiny pro správu
@@ -68,25 +68,25 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
     ![Okno Správa zásad](./media/security-center-policies/security-center-policy-mgt.png)
 
-  V **Správa zásad** obrazovky, zobrazí se počet skupin pro správu, předplatných a pracovních prostorů, jakož i strukturu skupin pro správu.
+   V **Správa zásad** obrazovky, zobrazí se počet skupin pro správu, předplatných a pracovních prostorů, jakož i strukturu skupin pro správu.
 
-  > [!NOTE]
-  > - Řídicí panel Security Center může zobrazit větší počet předplatných v rámci **pokrytí předplatného** než počet předplatných, které jsou uvedené v části **Správa zásad**. V části Pokrytí předplatného se zobrazuje počet předplatných úrovně Standard a Free a „nepokrytých“ předplatných. Předplatná "nejsou zahrnuta" nemají povolené Security Center a nejsou zobrazeny v části **Správa zásad**.
-  >
+   > [!NOTE]
+   > - Řídicí panel Security Center může zobrazit větší počet předplatných v rámci **pokrytí předplatného** než počet předplatných, které jsou uvedené v části **Správa zásad**. V části Pokrytí předplatného se zobrazuje počet předplatných úrovně Standard a Free a „nepokrytých“ předplatných. Předplatná "nejsou zahrnuta" nemají povolené Security Center a nejsou zobrazeny v části **Správa zásad**.
+   >
 
-  Ve sloupcích tabulky se zobrazuje:
+   Ve sloupcích tabulky se zobrazuje:
 
- - **Přiřazení iniciativy zásad** – Security Center [integrované zásady](security-center-policy-definitions.md) a iniciativy, které jsou přiřazeny předplatné nebo skupinu pro správu.
- - **Pokrytí** – identifikuje cenové úrovně Free nebo Standard, která skupina pro správu, předplatné nebo pracovní prostor běží na.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
- - **Nastavení** – předplatné má odkaz **upravit nastavení**. Výběr **upravit nastavení** vám umožní aktualizovat vaše [nastavení Centra zabezpečení](security-center-policies-overview.md) pro každé předplatné nebo skupinu pro správu.
- - **Zabezpečené skóre** – [zabezpečené skóre](security-center-secure-score.md) poskytují měřítko zabezpečené stavu zabezpečení vašich úloh a pomůže vám určit prioritu doporučení pro vylepšení.
+   - **Přiřazení iniciativy zásad** – Security Center [integrované zásady](security-center-policy-definitions.md) a iniciativy, které jsou přiřazeny předplatné nebo skupinu pro správu.
+   - **Pokrytí** – identifikuje cenové úrovně Free nebo Standard, která skupina pro správu, předplatné nebo pracovní prostor běží na.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
+   - **Nastavení** – předplatné má odkaz **upravit nastavení**. Výběr **upravit nastavení** vám umožní aktualizovat vaše [nastavení Centra zabezpečení](security-center-policies-overview.md) pro každé předplatné nebo skupinu pro správu.
+   - **Zabezpečené skóre** – [zabezpečené skóre](security-center-secure-score.md) poskytují měřítko zabezpečené stavu zabezpečení vašich úloh a pomůže vám určit prioritu doporučení pro vylepšení.
 
 2. Vyberte předplatné nebo správu skupinu, jejichž zásady, které chcete zobrazit.
 
-  - **Zásady zabezpečení** obrazovce se projeví akci provedenou na základě zásad přiřazených na předplatné nebo skupinu pro správu jste vybrali.
-  - V horní části stránky, použijte odkazy otevřete jednotlivé zásady **přiřazení** , která se vztahuje na předplatné nebo skupinu pro správu. Odkazy můžete použít pro přístup k přiřazení a upravte nebo zakažte zásadu. Například pokud se zobrazí, že konkrétní zásady přiřazení efektivně odepření služby endpoint protection, můžete použít odkaz pro přístup k zásadám a upravit nebo zakázat.
-  - V seznamu zásad uvidíte efektivní použití zásady na vaše předplatné nebo skupinu pro správu. To znamená, že jsou nastavení jednotlivých zásad, které se vztahují k oboru vzít v úvahu a jsou součástí souhrnné výsledky akci těmito zásadami. Například pokud v jedné přiřazení zásady zakázaly, ale v jiném nastavená na AuditIfNotExist, kumulativní efekt použije AuditIfNotExist. Aktivní efekt vždy přednost.
-  - Tyto zásady vliv může být: Připojit, Audit, AuditIfNotExists, zakáže, DeployIfNotExists, zakázané. Další informace o použití efektů, naleznete v tématu [pochopit zásady účinky](../governance/policy/concepts/effects.md).
+   - **Zásady zabezpečení** obrazovce se projeví akci provedenou na základě zásad přiřazených na předplatné nebo skupinu pro správu jste vybrali.
+   - V horní části stránky, použijte odkazy otevřete jednotlivé zásady **přiřazení** , která se vztahuje na předplatné nebo skupinu pro správu. Odkazy můžete použít pro přístup k přiřazení a upravte nebo zakažte zásadu. Například pokud se zobrazí, že konkrétní zásady přiřazení efektivně odepření služby endpoint protection, můžete použít odkaz pro přístup k zásadám a upravit nebo zakázat.
+   - V seznamu zásad uvidíte efektivní použití zásady na vaše předplatné nebo skupinu pro správu. To znamená, že jsou nastavení jednotlivých zásad, které se vztahují k oboru vzít v úvahu a jsou součástí souhrnné výsledky akci těmito zásadami. Například pokud v jedné přiřazení zásady zakázaly, ale v jiném nastavená na AuditIfNotExist, kumulativní efekt použije AuditIfNotExist. Aktivní efekt vždy přednost.
+   - Tyto zásady vliv může být: Připojit, Audit, AuditIfNotExists, zakáže, DeployIfNotExists, zakázané. Další informace o použití efektů, naleznete v tématu [pochopit zásady účinky](../governance/policy/concepts/effects.md).
 
    ![zásady obrazovky](./media/security-center-policies/policy-screen.png)
 
@@ -102,16 +102,25 @@ Můžete upravit zásady zabezpečení pomocí portálu Azure Policy, prostředn
 
 
 ## <a name="disable-security-policies"></a>Vypnutí zásad zabezpečení
-Pokud výchozí zásady zabezpečení je generování doporučení, které nejsou relevantní pro vaše prostředí, můžete zastavit jeho zakázáním definice zásad, která odesílá doporučení. To se provádí prostřednictvím portálu Azure Policy (a ne k portálu Security Center), jak je popsáno zde.
-Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md). 
-1. Přejděte ke službě Azure Policy a klikněte na tlačítko **přiřazení**.
-2. V **výchozí ASC** řádku, klikněte na tři tečky a klikněte na tlačítko **Zobrazit definice**. **Definice iniciativy** otevře se stránka.
-   ![Zobrazit definici](./media/tutorial-security-policy/view-definition.png)
-3. Klikněte na tlačítko **upravit podnětu**. **Upravit definici iniciativy** otevře se stránka.
-   ![Upravit iniciativu](./media/tutorial-security-policy/edit-initiative.png)
-4. V **zásady a parametry** části hledání zásad, který vyvolá doporučení, který chcete zakázat a z rozevíracího seznamu vyberte **zakázané**.
+Pokud výchozí zásady zabezpečení je generování doporučení, které nejsou relevantní pro vaše prostředí, můžete zastavit jeho zakázáním definice zásad, která odesílá doporučení.
+Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md).
+
+1. Ve službě Security Center z **zásady a dodržování předpisů** klikněte na tlačítko **zásady zabezpečení**.
+
+   ![Správa zásad](./media/tutorial-security-policy/policy-management.png)
+
+2. Klikněte na předplatné, pro který chcete zakázat toto doporučení.
+
+1. Klikněte na přiřazené zásady.
+
+   ![Zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
+
+1. V **parametry** části hledání zásad, který vyvolá doporučení, který chcete zakázat a z rozevíracího seznamu vyberte **zakázáno**
+
    ![Zakázat zásadu](./media/tutorial-security-policy/disable-policy.png)
-1. Klikněte na tlačítko **Uložit** (nachází se v dolní části stránky).
+1. Klikněte na **Uložit**.
+   > [!Note]
+   > Změny zásad zakázat může trvat až 12 hodin, než se projeví.
 
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurace zásad zabezpečení pomocí rozhraní REST API
@@ -173,38 +182,38 @@ Tento příklad ukazuje, jak přiřadit předdefinované iniciativu Security Cen
 
 - Aplikace Endpoint protection (dále jen "endpointProtectionMonitoringEffect") 
 
- 
-      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-      Request Body (JSON) 
-
-      { 
-
-        "properties":{ 
-
-      "displayName":"Enable Monitoring in Azure Security Center", 
-
-      "metadata":{ 
-
-      "assignedBy":"{Name}" 
-
-      }, 
-
-      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
-
-      "parameters":{ 
-
-      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
-
-      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
-
-      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
-
-      }, 
-
-       } 
-
-      } 
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Text požadavku (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName": "Povolit monitorování v Azure Security Center", 
+    
+    "metadat": { 
+    
+    "assignedBy": "{Name}. 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parametrů": { 
+    
+    "systemUpdatesMonitoringEffect": {"value": "Zakázáno"}, 
+    
+    "systemConfigurationsMonitoringEffect": {"value": "Zakázáno"}, 
+    
+    "endpointProtectionMonitoringEffect": {"value": "Zakázáno"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
 
 Tento příklad ukazuje, jak odebrat přiřazení:
 

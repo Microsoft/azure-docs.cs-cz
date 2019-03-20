@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 3ce385149de58b185f296191bbed0f16b5331c1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001327"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -58,6 +58,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Skupina prostředků| Vyberte **Nová** a zadejte *myResourceGroupTM1*.|
     |Umístění| Vyberte **USA – východ**.|
     |||
+
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
     
@@ -67,6 +68,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Skupina zabezpečení sítě|Vyberte **Basic** a v rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
     |Diagnostika spouštění|Vyberte **Zakázáno**.|
     |||
+
 6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
 
 7. Zopakujte kroky 1 až 6 s následujícími změnami:
@@ -78,6 +80,7 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
     |Název virtuálního počítače | myIISVMWEurope|
     |Virtuální síť | Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet2* a jako podsíť zadejte *mySubnet*.|
     |||
+
 8. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
 
    ![Vytvoření virtuálního počítače](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -143,6 +146,7 @@ V této části vytvoříte virtuální počítač (*mVMEastUS* a *myVMWestEurop
 
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
+
     |Nastavení|Hodnota|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť** a v části **Vytvořit virtuální síť** jako **Název** zadejte *myVNet3* a jako podsíť zadejte *mySubnet3*.|
@@ -168,6 +172,7 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 2. V části **Vytvořit profil služby Traffic Manager** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
+
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
@@ -189,7 +194,7 @@ Přidejte dva virtuální počítače se službou IIS servery – *myIISVMEastUS
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Typ                    | Koncový bod Azure                                   |
+    | Type                    | Koncový bod Azure                                   |
     | Název           | myTestWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|

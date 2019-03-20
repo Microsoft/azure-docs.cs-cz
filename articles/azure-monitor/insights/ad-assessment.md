@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 113408b49297a292967be9215291b3cecfa7384d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 949bf52a586603fc6a82c0da553cf70877a8f4be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431594"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085010"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory ve službě Azure Monitor
 
@@ -111,10 +111,10 @@ Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pa
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-4. Na **přehled** stránky, klikněte na tlačítko **Kontrola stavu služby Active Directory** dlaždici.
-5. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
-6. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu doporučení](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-7. Můžete provést opravné akce navržený v **doporučené akce**. Když položka vyřeší, novější posouzení záznamy, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
+1. Na **přehled** stránky, klikněte na tlačítko **Kontrola stavu služby Active Directory** dlaždici.
+1. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
+1. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu doporučení](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+1. Můžete provést opravné akce navržený v **doporučené akce**. Když položka vyřeší, novější posouzení záznamy, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
 
 ## <a name="ignore-recommendations"></a>Ignorujte doporučení
 Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který zabránit doporučení povolí, nebude vaše výsledky posouzení bude používat Azure Monitor.

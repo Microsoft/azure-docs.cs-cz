@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: cc786b97c38c115fb288a5b9a0f73f566777e7df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5fadf23cc1fc2e1a6092c48033580d398fc689a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734415"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012806"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem
 
-[MongoDB](http://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem pomocí Azure CLI. Příklady jsou uvedeny této podrobnosti o tom, jak do:
+[MongoDB](https://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem pomocí Azure CLI. Příklady jsou uvedeny této podrobnosti o tom, jak do:
 
 * [Ručně nainstalujte a nakonfigurujte základní instanci databáze MongoDB](#manually-install-and-configure-mongodb-on-a-vm)
 * [Vytvoření základní instanci databáze MongoDB pomocí šablony Resource Manageru](#create-basic-mongodb-instance-on-centos-using-a-template)

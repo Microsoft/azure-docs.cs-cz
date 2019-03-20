@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: dcfe744cc8ca6f3b3cd201898a79fcce3f24f8d5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c21fa3cf819f48dcda46f2d444ed52bc2eb9ae3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639622"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113516"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získání sdíleného přístupového podpisu URI pro vaši image virtuálního počítače
 
@@ -44,33 +44,33 @@ Adresa URL SAS můžete vygenerovat dvě běžné možnosti, jak pomocí násled
 
 Pomocí následujících kroků vygenerovat identifikátor URI SAS pomocí Azure CLI.
 
-1.  Stáhněte a nainstalujte [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  Verze jsou k dispozici pro Windows, macOS a různých distribucích systému Linux. 
-2.  Vytvořte soubor prostředí PowerShell (`.ps1` přípony souboru), zkopírujte následující kód a uložte ho místně.
+1. Stáhněte a nainstalujte [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  Verze jsou k dispozici pro Windows, macOS a různých distribucích systému Linux. 
+2. Vytvořte soubor prostředí PowerShell (`.ps1` přípony souboru), zkopírujte následující kód a uložte ho místně.
 
-    ``` powershell
-    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
-    ```
+   ``` powershell
+   az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
+   ```
     
-3.  Upravte soubor a zadejte následující hodnoty parametrů.  Data by měla zadat ve formátu data a času UTC, například `10-25-2016T00:00:00Z`.
-    - `<account-name>` – Název účtu úložiště Azure
-    - `<account-key>` -Klíče účtu úložiště Azure
-    - `<vhd-name>` – Název virtuálního pevného disku
-    - `<start-date>` -Oprávnění počáteční datum pro přístup k virtuální pevný disk. Zadejte datum o jeden den před aktuálním datem. 
-    - `<expiry-date>` -Datum vypršení platnosti oprávnění pro přístup k virtuální pevný disk.  Zadejte datum nejméně tři týdny po aktuálním datu. 
+3. Upravte soubor a zadejte následující hodnoty parametrů.  Data by měla zadat ve formátu data a času UTC, například `10-25-2016T00:00:00Z`.
+   - `<account-name>` – Název účtu úložiště Azure
+   - `<account-key>` -Klíče účtu úložiště Azure
+   - `<vhd-name>` – Název virtuálního pevného disku
+   - `<start-date>` -Oprávnění počáteční datum pro přístup k virtuální pevný disk. Zadejte datum o jeden den před aktuálním datem. 
+   - `<expiry-date>` -Datum vypršení platnosti oprávnění pro přístup k virtuální pevný disk.  Zadejte datum nejméně tři týdny po aktuálním datu. 
  
-    Následující příklad ukazuje hodnoty správné parametrů (v době psaní tohoto textu).
+   Následující příklad ukazuje hodnoty správné parametrů (v době psaní tohoto textu).
 
-    ``` powershell
-        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
-    ```
+   ``` powershell
+       az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
+   ```
  
 4. Uložte změny tohoto skriptu prostředí PowerShell.
 5. Spusťte tento skript k vygenerování s oprávněním správce, *připojovací řetězec SAS* pro úrovně přístupu ke kontejneru.  Můžete použít dva základní přístupy:
-    - Spusťte skript z konzoly.  Například ve Windows, zápis kliknutím na skriptu a vyberte **spustit jako správce**.
-    - Spusťte skript z editoru skriptů Powershellu, jako [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise), s oprávněním správce. 
-  Následující příklad ukazuje připojovací řetězec SAS se vygeneruje v rámci tohoto editoru. 
+   - Spusťte skript z konzoly.  Například ve Windows, zápis kliknutím na skriptu a vyberte **spustit jako správce**.
+   - Spusťte skript z editoru skriptů Powershellu, jako [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise), s oprávněním správce. 
+     Následující příklad ukazuje připojovací řetězec SAS se vygeneruje v rámci tohoto editoru. 
 
-    ![Generování SAS URI v prostředí PowerShell ISE](./media/publishvm_032.png)
+     ![Generování SAS URI v prostředí PowerShell ISE](./media/publishvm_032.png)
 
 6. Zkopírujte výsledný řetězec připojení SAS a uložte ho do textového souboru v zabezpečeném umístění.  Upravíte tento řetězec přidat související informace pro umístění virtuálního pevného disku k němu chcete-li vytvořit finální identifikátor URI SAS. 
 7. Na webu Azure Portal přejděte do úložiště objektů blob, který obsahuje související s nově vygenerovaný identifikátor URI virtuálního pevného disku.
@@ -89,7 +89,7 @@ Pomocí následujících kroků vygenerovat identifikátor URI SAS pomocí Azure
 Tento postup opakujte pro každý virtuální pevný disk ve skladové položky, které chcete publikovat.
 
 
-### <a name="microsoft-storage-explorer"></a>Průzkumník úložišť Microsoft
+### <a name="microsoft-storage-explorer"></a>Microsoft Storage Explorer
 
 Pomocí následujících kroků vygenerovat identifikátor URI SAS pomocí Průzkumníka služby Microsoft Azure Storage.
 
@@ -102,11 +102,11 @@ Pomocí následujících kroků vygenerovat identifikátor URI SAS pomocí Průz
     ![Získání položky SAS v Průzkumníku služby Azure](./media/publishvm_034.png)
 
 6. **Sdílený přístupový podpis** se zobrazí dialogové okno. Zadejte hodnoty pro následující pole:
-    - **Počáteční čas** -oprávnění počáteční datum pro přístup k virtuální pevný disk. Zadejte datum, který je za jeden den před aktuálním datem.
-    - **Čas vypršení platnosti** -datum vypršení platnosti oprávnění pro přístup k virtuální pevný disk.  Zadejte datum nejméně tři týdny po aktuálním datu.
-    - **Oprávnění** – tuto možnost vyberte `Read` a `List` oprávnění. 
+   - **Počáteční čas** -oprávnění počáteční datum pro přístup k virtuální pevný disk. Zadejte datum, který je za jeden den před aktuálním datem.
+   - **Čas vypršení platnosti** -datum vypršení platnosti oprávnění pro přístup k virtuální pevný disk.  Zadejte datum nejméně tři týdny po aktuálním datu.
+   - **Oprávnění** – tuto možnost vyberte `Read` a `List` oprávnění. 
 
-    ![Dialogové okno SAS v Průzkumníku služby Azure](./media/publishvm_035.png)
+     ![Dialogové okno SAS v Průzkumníku služby Azure](./media/publishvm_035.png)
 
 7. Klikněte na tlačítko **vytvořit** vytvořit přidružen k identifikátoru URI SAS pro tento virtuální pevný disk.  Dialogové okno se teď zobrazují podrobnosti o této operaci. 
 8. Kopírovat **URL** hodnotu a uložte ho do textového souboru v zabezpečeném umístění. 

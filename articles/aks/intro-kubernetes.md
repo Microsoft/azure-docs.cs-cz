@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 46d667bc32c5c5f3ccb14cf4a43a3441efe94c31
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0960977a17925ffd922e75fa03847b7023241c4e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201496"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -109,7 +109,7 @@ Azure Kubernetes Service (AKS) má certifikaci CNFC a je tedy v souladu s Kubern
 
 ## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
 
-Azure Kubernetes Service (AKS) je kompatibilní s normami SOC, ISO, PCI DSS a HIPAA.
+Azure Kubernetes Service (AKS) je kompatibilní s normami SOC, ISO, PCI DSS a HIPAA. Další informace najdete v tématu [dodržování předpisů přehled Microsoft Azure][compliance-doc].
 
 ## <a name="next-steps"></a>Další postup
 
@@ -121,6 +121,7 @@ Další informace o nasazení a správě AKS najdete v rychlých startech pro Az
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
+[compliance-doc]: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md

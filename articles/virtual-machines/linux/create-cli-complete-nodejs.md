@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: d0a38defe41ea7c4e0da32cb73cf2bd73fd80950
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 04c1d69fc46b9a918038e93c4fc56681f225d365
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006229"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure Classic
 V tomto článku jsme integrovali jednoduchá síť s nástroji pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduché výpočetního prostředí. Provedeme procesem příkazu command, dokud nebudete mít dvě funkční, zabezpečené virtuální počítače s Linuxem ke kterým se můžete připojit z kdekoliv na Internetu. Potom můžete přesunout složitější sítě a prostředí.
@@ -1180,7 +1180,7 @@ Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 0 packages can be updated.
 0 updates are security updates.

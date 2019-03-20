@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570857"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079706"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak odeslat měření Real User Measurements do Traffic Manager se službou Visual Studio Mobile Center
 
@@ -33,22 +33,22 @@ Pokud chcete nakonfigurovat měření Real User Measurements, potřebujete a zí
 Měření trvat a odeslané do Traffic Manageru z klientské aplikace jsou označeny pomocí jedinečného řetězce, volá se klíč měření reálných skutečných uživatelů (REÁLNÝCH). Můžete získat spuštění klíče pomocí webu Azure portal, rozhraní REST API nebo pomocí Powershellu nebo rozhraní příkazového řádku.
 
 Získání klíče REÁLNÝCH pomocí webu Azure portal následujícím postupem:
-   1. Z prohlížeče Přihlaste se k webu Azure portal. Pokud ještě nemáte účet, můžete se zaregistrovat k bezplatné zkušební verzi na jeden měsíc.
-   2. Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru, který chcete upravit a poté klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
-   3. Na stránce profil Traffic Manageru, klikněte na tlačítko **měření Real User Measurements** pod **nastavení**.
-   4. Klikněte na tlačítko **vygenerovat klíč** a vytvořte nový klíč REÁLNÝCH.
+1. Z prohlížeče Přihlaste se k webu Azure portal. Pokud ještě nemáte účet, můžete se zaregistrovat k bezplatné zkušební verzi na jeden měsíc.
+2. Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru, který chcete upravit a poté klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
+3. Na stránce profil Traffic Manageru, klikněte na tlačítko **měření Real User Measurements** pod **nastavení**.
+4. Klikněte na tlačítko **vygenerovat klíč** a vytvořte nový klíč REÁLNÝCH.
         
    ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Obrázek 1: Skutečné vygenerovat klíč měření reálných uživatelů**
 
-   5.   Na stránce zobrazí REÁLNÝCH klíč, který je generován a fragment kódu jazyka JavaScript, které je potřeba vložit do HTML stránky.
+5. Na stránce zobrazí REÁLNÝCH klíč, který je generován a fragment kódu jazyka JavaScript, které je potřeba vložit do HTML stránky.
  
    ![Kód jazyka JavaScript pro měření Real User Measurements klíč](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
    **Obrázek 2: Klíč měření reálných uživatelů a JavaScript měření**
  
-   6. Klikněte na tlačítko **kopírování** tlačítko REÁLNÝCH klíč si zkopírujte. 
+6. Klikněte na tlačítko **kopírování** tlačítko REÁLNÝCH klíč si zkopírujte. 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentace vaší aplikace v rámci spuštění balíčku sady Mobile Center SDK
 

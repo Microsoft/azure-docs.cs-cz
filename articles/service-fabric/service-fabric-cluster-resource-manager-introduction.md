@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903352"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Úvod do Service Fabric cluster resource Manageru
 Tradičně Správa informačních systémů nebo online služby určené vyhradíte konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byla navržena jako úrovně. By být "web" a "data" nebo "úložiště" vrstvu. Aplikace by měla mít zasílání zpráv úrovně, kde požadavky byly převedeny dovnitř a ven a také sadu počítačů vyhrazený pro ukládání do mezipaměti. Každou vrstvu nebo typu úlohy konkrétního počítače, které jsou vyhrazené pro to měl: databáze je teď několik počítačů dedicated, webové servery v pár. Je-li konkrétní typ zatížení počítače, ve kterém se k spuštění příliš horké, pak jste přidali další počítače pomocí této stejnou konfiguraci na dané úrovni. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvou obvykle nahradíte počítače s větší počítače. Snadné. Pokud na počítači se nezdařilo, část celkové aplikace nižší kapacitu spuštěné, dokud se počítač může obnovit. Stále poměrně snadné (Pokud není nutně zábavné).
 
 Teď ale ve světě služby a softwarovou architekturu byl změněn. Je běžné, že aplikace, si osvojila návrh pro horizontální navýšení kapacity. Vytváření aplikací s kontejnery nebo mikroslužbami (nebo obojí) je běžné. Nyní když pouze několik počítačů mohou mít i nadále, neběží jenom jednu instanci úlohy. Se možná ještě běží více různých úloh ve stejnou dobu. Teď máte desítkách různých typů služeb (žádné využívání úplné počítač za prostředky), případně stovky různých instancí těchto služeb. Každá pojmenované instance má jeden nebo více instancí nebo replik pro vysokou dostupnost (HA). V závislosti na velikosti těchto pracovních postupů a jak jsou zaneprázdněny, může být pro vás sami stovky nebo tisíce počítačů. 
 
-Náhle správě prostředí není tak jednoduchá jako správa několika počítače vyhrazené pro samostatné typy úloh. Vaše servery jsou virtuální a už nebude mít názvy (jste přešli mindsets z [domácí zvířata, aby zvířat](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) po všech). Konfigurace je menší o počítače a další informace o vlastních služeb. Hardware, který je vyhrazen pro jednu instanci úlohy je do značné míry věcí minulosti. Vlastních služeb se staly malé distribuovaných systémů, které jsou rozmístěny v několika menších komoditním hardwaru.
+Náhle správě prostředí není tak jednoduchá jako správa několika počítače vyhrazené pro samostatné typy úloh. Vaše servery jsou virtuální a už nebude mít názvy (jste přešli mindsets z [domácí zvířata, aby zvířat](https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) po všech). Konfigurace je menší o počítače a další informace o vlastních služeb. Hardware, který je vyhrazen pro jednu instanci úlohy je do značné míry věcí minulosti. Vlastních služeb se staly malé distribuovaných systémů, které jsou rozmístěny v několika menších komoditním hardwaru.
 
 Vzhledem k tomu, že vaše aplikace není nadále řadu monolitů rozděleny mezi několik vrstev, teď mají mnoho více kombinací řešit. Který rozhodne, jaké typy úloh můžete spustit na hardwaru, nebo kolik? Úlohy, které mohl dobře fungovat na stejném hardwaru, a které jsou v konfliktu? Když se počítač dostane dolů jak na to víte, co bylo spuštěné na daném počítači? Kdo má na starosti a ujistěte se, že úlohy znovu spustí? Čekání (virtuální)? počítače k téhle akci vrátit nebo úlohy automaticky převzetí služeb při selhání do dalších počítačů a nechat běžet –? Je vyžadováno zásahu člověka? Co o upgradech v tomto prostředí?
 

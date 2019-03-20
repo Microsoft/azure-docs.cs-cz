@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750782"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848920"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Přechod na certifikát veřejné brány CA pro P2S
 
@@ -20,7 +20,6 @@ Azure VPN Gateway už vydává certifikáty podepsané svým držitelem úrovně
 
 >[!NOTE]
 > * Certifikáty podepsané svým držitelem použit pro ověření klienta P2S neovlivní tato změna certifikátu úrovně Azure. Můžete pokračovat k vystavování a použití certifikátů podepsaných svým držitelem jako za normálních okolností.
-> * Webové aplikace nejsou touto změnou ovlivněny.
 >
 
 Certifikáty v tomto kontextu jsou další úrovně Azure certifikát. Nejsou řetězy certifikátů, které používáte při vytváření vlastní kořenovými certifikáty podepsanými svým držitelem a klientských certifikátů pro ověřování. Tyto certifikáty zůstanou beze změny a dnů do vypršení platnosti dat je k tomu vygeneroval.
@@ -39,7 +38,7 @@ Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát br�
 >
 > **Všechny zbývající brány přejde na 12 března. května 2019 od 18:00 UTC**.
 >
-> Proces přechodu gateway bude trvat až 2 hodiny. Zákazníci obdrží e-mailu při jejich brány dokončí proces přechodu.
+> Zákazníci obdrží e-mailu při jejich brány dokončí proces přechodu.
 > 
 
 ## <a name="1-verify-your-certificate"></a>1. Ověřte váš certifikát
@@ -51,8 +50,8 @@ Touto změnou jsou ovlivněny pouze starší brány. Pokud váš certifikát br�
 2. Otevřete nebo extrahování souboru zip a přejděte do složky "Generic". V obecné složce, zobrazí se dva soubory, z nichž jeden je *VPNSettings.xml*.
 3. Otevřít *VPNSettings.xml* v libovolném prohlížeči nebo editoru xml. V souboru xml vyhledejte následující pole:
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. Pokud *ServerCertRotCn* a *ServerCertIssuerCn* jsou "DigiCert globální kořenové certifikační Autority", nejsou touto aktualizací ovlivněny a není nutné postupujte podle kroků v tomto článku. Pokud ale zobrazí se něco jiného, certifikát brány je v rámci aktualizace a se převedou.
 
 ### <a name="classic"></a>Classic

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117434"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Jak používat Learner konverzace s další robotem vytváření technologie
 
@@ -119,11 +119,11 @@ Na rozdíl od jednoho modelu robotů konverzace Štíhlejší nebude možné ote
 2. Zadejte "hello".  Protože `isOpen` hodnota není nastavená, bude robot sdělení "Jsem je nám líto, jsme už uzavřený" a ukončení relace.
 
 #### <a name="scenario-2-store-is-open"></a>Scénář 2: Je-li otevřít Store
-3. Zadejte "Otevřít úložiště".  Tato možnost nastaví `isOpen` na hodnotu true.
-4. Zadejte "kde".
-5. Zadejte "hello".  Protože `isOpen` je hodnota nastavena na hodnotu true, robota bude sdělení "Co chcete koupit?"
-6. Zadejte "předsedat". "židle" se uloží do CL paměti jako entita `purchaseItem`. Zpětné volání end relace je vyvolán která kopíruje tuto hodnotu úložiště konverzace.
-7. Zadejte "historie".  Robot bude sdělení "Jste zakoupili židle" jako to byla vaše poslední `purchaseItem`.
+1. Zadejte "Otevřít úložiště".  Tato možnost nastaví `isOpen` na hodnotu true.
+1. Zadejte "kde".
+1. Zadejte "hello".  Protože `isOpen` je hodnota nastavena na hodnotu true, robota bude sdělení "Co chcete koupit?"
+1. Zadejte "předsedat". "židle" se uloží do CL paměti jako entita `purchaseItem`. Zpětné volání end relace je vyvolán která kopíruje tuto hodnotu úložiště konverzace.
+1. Zadejte "historie".  Robot bude sdělení "Jste zakoupili židle" jako to byla vaše poslední `purchaseItem`.
 
 ## <a name="conclusion"></a>Závěr
 

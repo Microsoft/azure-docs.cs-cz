@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b73acefa3dcddfedbcaee841f9b3560ed10407d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 83c071629ba18ab9f40ecec3b2e09290f57ad2fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960407"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996562"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikace Microsoft Authenticator – nejčastější dotazy
 
@@ -27,6 +27,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se aplikace Mic
 Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je doporučenou aplikaci, pokud používáte ověřování Azure Multi-Factor Authentication. Aplikace Microsoft Authenticator je dostupná pro [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) a [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
 |Otázka|Řešení|
 |--------|--------|
 |Jaká data ověřovacích ukládá na můj účet a jak ho můžete odstranit?|Aplikace Microsoft Authenticator shromažďuje tři typy informací:<ul><li>Údaje účtu, které poskytnete při přidání vašeho účtu. Tato data lze odebrat odstraněním účtu.</li><li>Data diagnostického protokolu, který se nachází pouze v aplikaci, dokud se nerozhodnete pro **odeslat protokoly** k Microsoftu prostřednictvím aplikace **pomáhají** nabídky. Tyto soubory protokolu obsahují osobní údaje, jako jsou e-mailové adresy (jako je třeba alain@contoso.com), serveru nebo IP adres a data zařízení (například zařízení název a verzi operačního systému), s osobními údaji omezené informace potřebné k řešení problémů s aplikací. Tyto soubory protokolu můžete zobrazit v aplikaci kdykoli zobrazíte informace, které shromažďují. Pokud odesíláte soubory protokolů, aplikace techniky ověřování můžete použít k řešení potíží s problémy nahlášené zákazníky.</li><li>Non osobně identifikovatelných dat o využití takové "spuštění přidat účet tok/úspěšně přidán účet" nebo "oznámení o schválení." Tato data je nedílnou součástí našich technických rozhodnutí a pomáhá nám zjistit, jaké funkce jsou pro vás důležité, a kdy je potřeba vylepšení v podobě aktualizace provedené aplikací. Jako uživatel aplikace při prvním spuštění aplikace se zobrazí oznámení této kolekce dat a budou informováni, že mohou být vypnuta v rámci aplikace **nastavení** stránky. Můžete povolit nebo zakázat toto nastavení v každém okamžiku.</li></ul>|
@@ -49,7 +50,7 @@ Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je dopo
 |Proč není doprovodné aplikace Microsoft Authenticator pro Apple Watch synchronizace nebo objeví na mé watch?|Pokud aplikace se nezobrazuje na hodinkách, zkuste následující: <ol><li>Zajistěte, aby že hodinkách běží watchOS 4.0 nebo vyšší.</li><li>Znovu synchronizujte hodinkách.</li></ol>|
 |Doprovodná aplikace Apple Watch došlo k chybě. Můžu vám může poslat Moje protokoly chyb, můžete prozkoumat? |Je nutné nejprve ujistěte se, že jste se rozhodli sdílet analýz s námi. Pokud jste uživatel testovacího prostředí, jste již přihlášeni. V opačném případě můžete přejít na **Nastavení > Ochrana osobních údajů > Analytics** a vyberte možnost **sdílet iPhone & Watch analytics** a **sdílenou složku s vývojáři aplikace** možnosti.<br><br>Když si zaregistrujete, můžete zkusit pro reprodukci vašich chyb tak vaše protokoly o chybách automaticky posílat nám prozkoumat. Ale pokud nelze reprodukovat vaše při selhání, můžete ručně kopírování souborů protokolu a odeslat společnosti Microsoft.<ol><li>Otevřete aplikaci Watch na telefonu, přejděte na **Nastavení > Obecné**a potom klikněte na tlačítko **kopírování Watch Analytics**.</li><li>Najít odpovídající při selhání v rámci **Nastavení > Ochrana osobních údajů > Analytics > analytická Data**a potom ručně zkopírovat celý text.</li><li>Otevřete aplikaci Microsoft Authenticator na telefonu a vložit zkopírovaný text do **sdílenou složku s vývojáři aplikace** textového pole na **odeslat protokoly** stránky.</li></ol>|
 |Co je App Lock funkce a jak to funguje na zůstat bezpečnější?|K lepšímu zabezpečení jednorázového hesla, informace o aplikaci a nastavení aplikace, můžete zapnout funkci App Lock v aplikaci Microsoft Authenticator. Zapnutí zámku aplikace z **nastavení** obrazovce v aplikaci Microsoft Authenticator znamená, že budete vyzváni k ověření pomocí svého PIN kódu nebo biometrické pokaždé, když otevřete aplikaci Microsoft Authenticator. Tato funkce nabízí další ochranu, nedojde ke změně způsobu, jakým schválit oznámení v aplikaci Microsoft Authenticator.<br><br>**Poznámka**<br>Pokud se vrátíte do aplikace Microsoft Authenticator běžící na zařízení s Androidem za méně než 30 sekund, nezobrazí výzva k opakovanému ověření.|
-|Proč se zobrazuje oznámení o aktivitách Můj účet?|Chcete-li zajistit, aby byl vám kvalifikovaněji o co se děje s osobním účtem Microsoft, posíláme aktivity oznámení do aplikace Microsoft Authenticator. Tato oznámení se zobrazí okamžitě po něco změní, pomáhá zajistit zabezpečení. Jsme dříve odeslané tato oznámení prostřednictvím e-mailu a SMS a teď rozšířily do aplikace zahrnout. Další informace o těchto oznámeních aktivity, naleznete v tématu [co se stane, pokud dojde neobvyklé přihlášení ke svému účtu](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Chcete-li změnit, kam budete dostávat oznámení, přihlaste se k https://account.live.com/SecurityNotifications/Update.|
+|Proč se zobrazuje oznámení o aktivitách Můj účet?|Chcete-li zajistit, aby byl vám kvalifikovaněji o co se děje s osobním účtem Microsoft, posíláme aktivity oznámení do aplikace Microsoft Authenticator. Tato oznámení se zobrazí okamžitě po něco změní, pomáhá zajistit zabezpečení. Jsme dříve odeslané tato oznámení prostřednictvím e-mailu a SMS a teď rozšířily do aplikace zahrnout. Další informace o těchto oznámeních aktivity, naleznete v tématu [co se stane, pokud dojde neobvyklé přihlášení ke svému účtu](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Chcete-li změnit, kam budete dostávat oznámení, přihlaste se k https://account.live.com/SecurityNotifications/Update.
 
 
 ## <a name="next-steps"></a>Další postup

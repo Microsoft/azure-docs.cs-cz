@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6f7eaa91faabfea7bb951eb9863ffecd2f5499
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183148"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
@@ -49,7 +49,7 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 - Všechny cloudové služby Microsoftu, které vyžadují licencování na úrovni uživatele, jsou podporované. Tato podpora zahrnuje všechny produkty, Enterprise Mobility + Security a Dynamics 365 v Office 365.
 
-- Licencování na základě skupin je momentálně dostupné jenom prostřednictvím webu [Azure Portal](https://portal.azure.com). Pokud používáte ke správě uživatelů a skupin primárně jiné portály pro správu, například portál Office 365, můžete v tom dále pokračovat. Ke správě licencí na úrovni skupin byste však měli používat Azure Portal.
+- Licencování na základě skupiny je momentálně dostupná jenom [webu Azure portal](https://portal.azure.com). Pokud používáte především jiných portálech pro správu pro uživatele a skupiny správy, jako [centra pro správu služeb Microsoft 365](https://admin.microsoft.com), můžete pokračovat k tomu. Ke správě licencí na úrovni skupin byste však měli používat Azure Portal.
 
 - Azure AD automaticky spravuje úpravy licencí, které jsou důsledkem změn členství ve skupinách. Úpravy licencí jsou obvykle účinné během několika minut od změny členství.
 

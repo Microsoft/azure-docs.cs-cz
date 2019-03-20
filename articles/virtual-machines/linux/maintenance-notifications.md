@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 5c154541163285de6f17a4ac697a14737bf31762
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 860cb2bee902c6559b7851eb05fa9c5270876fe9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738330"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084721"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
@@ -86,12 +86,12 @@ V části MaintenanceRedeployStatus se vrátí následující hodnoty:
 
 | Hodnota | Popis   |
 |-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli ||
-| PreMaintenanceWindowStartTime         | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači ||
-| PreMaintenanceWindowEndTime           | Konec samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači ||
-| MaintenanceWindowStartTime            | Začátek okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači ||
-| MaintenanceWindowEndTime              | Konci okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači ||
-| LastOperationResultCode               | Výsledek posledního pokusu o zahájení údržby ve virtuálním počítači ||
+| IsCustomerInitiatedMaintenanceAllowed | Určuje, zda lze spustit údržbu na virtuálním počítači v tuto chvíli |
+| PreMaintenanceWindowStartTime         | Začátek samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači |
+| PreMaintenanceWindowEndTime           | Konec samoobslužné časové období údržby při údržby můžete spustit na virtuálním počítači |
+| MaintenanceWindowStartTime            | Začátek okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači |
+| MaintenanceWindowEndTime              | Konci okna plánované údržby, ve kterém Azure zahájí Údržba na vašem virtuálním počítači |
+| LastOperationResultCode               | Výsledek posledního pokusu o zahájení údržby ve virtuálním počítači |
 
 
 

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd05913a982d88a1e4fe4ff72bca0387e280e230
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211627"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838387"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
@@ -40,7 +40,7 @@ Při pokusu o zřízení nového objektu s hodnotou hlavní název uživatele ne
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Chování s odolnost duplicitních atributů
 Místo úplně neúspěšné ke zřízení nebo aktualizaci objektu s duplicitní atribut, Azure Active Directory "umístí do karantény" duplicitní atribut, který by mohla narušit omezení jedinečnosti. Pokud tento atribut je vyžadován pro zřizování, jako jsou UserPrincipalName, služba přiřadí hodnotu zástupného symbolu. Formát tyto dočasné hodnoty  
-"***<OriginalPrefix>+ < 4DigitNumber > @<InitialTenantDomain>. onmicrosoft.com***".  
+"***<OriginalPrefix>+ < 4DigitNumber >\@<InitialTenantDomain>. onmicrosoft.com***".  
 Pokud atribut není vyžadována, třeba **ProxyAddress**, Azure Active Directory jednoduše umístí do karantény atribut konflikt a pokračuje v objektu vytvoření nebo aktualizace.
 
 Při umístění do karantény atribut, odesílají informace o konflikt stejné chybě sestav e-mailu používat staré chování. Ale tyto informace se zobrazí jenom v chybové zprávě jednou, když se stane o karanténě, ho nepokračuje má být zaznamenána v budoucích e-mailů. Navíc protože úspěšném exportu pro tento objekt synchronizačního klienta neprotokoluje chybu a neopakuje vytvořit nebo aktualizovat operace při následné synchronizaci cykly.
@@ -144,9 +144,9 @@ Následující článek popisuje různé strategie jejich řešení: [Duplicitn�
 1. Objekty s konkrétním atributem konfigurace dál dostávat chyby export na rozdíl od duplicitní atributy, které se umístí do karantény.  
    Příklad:
    
-    a. Vytvoření nového uživatele ve službě AD s název UPN **Joe@contoso.com** a ProxyAddress **smtp:Joe@contoso.com**
+    a. Vytvoření nového uživatele ve službě AD s název UPN **Joe\@contoso.com** a ProxyAddress **smtp:Joe\@contoso.com**
    
-    b. Vlastnosti tohoto objektu jsou v konfliktu s existující skupinu, ve kterém je ProxyAddress **SMTP:Joe@contoso.com**.
+    b. Vlastnosti tohoto objektu jsou v konfliktu s existující skupinu, ve kterém je ProxyAddress **SMTP:Joe\@contoso.com**.
    
     c. Při exportu **ProxyAddress konflikt** nemuseli konfliktní atributy umístí do karantény, je vržena chyba. Operace je opakována při každém cyklu následná synchronizace, jako by byl předtím, než byla povolena funkce odolnosti proti chybám.
 2. Pokud v místním se stejnou adresou SMTP se vytvoří dvě skupiny, jeden selže zřizování při prvním pokusu se standardní duplicitní **ProxyAddress** chyby. Ale duplicitní hodnota je správně umístit do karantény na další cyklus synchronizace.
@@ -156,13 +156,13 @@ Následující článek popisuje různé strategie jejich řešení: [Duplicitn�
 1. Podrobná chybová zpráva pro dva objekty v sadě konflikt (UPN) je stejný. To znamená, že oba měly jejich hlavní název uživatele změnit / umístit do karantény, když ve skutečnosti pouze jeden z nich měl jakékoli změny dat.
 2. Podrobná chybová zpráva pro hlavní název uživatele konflikt zobrazuje nesprávný displayName pro uživatele, který má určitá jejich hlavní název uživatele změnit/umístit do karantény. Příklad:
    
-    a. **Uživatel A** synchronizuje se první z nich s **UPN = User@contoso.com** .
+    a. **Uživatel A** synchronizuje se první z nich s **UPN = uživatel\@contoso.com**.
    
-    b. **Uživatel B** se pokusil synchronizovat do další s **UPN = User@contoso.com** .
+    b. **Uživatel B** se pokusil synchronizovat do další s **UPN = uživatel\@contoso.com**.
    
-    c. **Uživatel B** UPN se změní na **User1234@contoso.onmicrosoft.com** a **User@contoso.com** se přidá do **DirSyncProvisioningErrors**.
+    c. **Uživatel B** UPN se změní na **User1234\@contoso.onmicrosoft.com** a **uživatele\@contoso.com** se přidá do **DirSyncProvisioningErrors** .
    
-    d. Chybová zpráva pro **uživateli B** , která by měla zobrazovat **uživatel A** už má **User@contoso.com** podle UPN, ale zobrazuje **uživateli B** vlastní displayName.
+    d. Chybová zpráva pro **uživateli B** , která by měla zobrazovat **uživatel A** už má **uživatele\@contoso.com** podle UPN, ale zobrazuje **uživatele B** vlastní displayName.
 
 **Sestava chyb synchronizace identit**:
 

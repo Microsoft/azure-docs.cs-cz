@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5d0b53590e901cfa1686a71c3f0dda7fb771b56b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107912"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -94,18 +94,18 @@ Po instalaci agentů na všech počítačích skupiny můžete vizualizace závi
 1. Ve službě Azure Migrate projektu, v části **spravovat**, klikněte na tlačítko **skupiny**a vyberte skupinu.
 2. Na stránce skupiny, klikněte na tlačítko **zobrazení závislostí**, chcete-li spustit nástroj Mapa závislostí skupiny.
 3. Mapa závislostí pro skupinu zobrazí následující podrobnosti:
-    - Odchozí připojení (servery) TCP do a ze všech počítačů, které jsou součástí skupiny a příchozí (klientů)
-        - Závislé počítače, které nemají nainstalovaného agenta MMA a závislosti jsou seskupené podle čísla portů
-        - Závislé počítače, které mají agenta MMA a instalaci agenta závislosti jsou uvedeny v samostatných polích.
-    - Spuštěné procesy v rámci počítače, můžete rozbalit každé pole počítače zobrazit procesy
-    - Vlastnosti, jako je plně kvalifikovaný název domény, operačního systému, atd. adresu MAC každého počítače, můžete kliknout na každé pole počítače zobrazit tyto podrobnosti
+   - Odchozí připojení (servery) TCP do a ze všech počítačů, které jsou součástí skupiny a příchozí (klientů)
+       - Závislé počítače, které nemají nainstalovaného agenta MMA a závislosti jsou seskupené podle čísla portů
+       - Závislé počítače, které mají agenta MMA a instalaci agenta závislosti jsou uvedeny v samostatných polích.
+   - Spuštěné procesy v rámci počítače, můžete rozbalit každé pole počítače zobrazit procesy
+   - Vlastnosti, jako je plně kvalifikovaný název domény, operačního systému, atd. adresu MAC každého počítače, můžete kliknout na každé pole počítače zobrazit tyto podrobnosti
 
      ![Zobrazení skupinových závislostí](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Chcete-li zobrazit podrobnější závislosti, klikněte na tlačítko časový rozsah jej upravit. Ve výchozím nastavení rozsah je jedna hodina. Můžete upravit časový rozsah, nebo zadat počáteční a koncové datum a dobu trvání.
 
-    > [!NOTE]
-      Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) za delší dobu.
+   > [!NOTE]
+   >    Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) za delší dobu.
 
 4. Ověření závislých počítačů, proces spuštěný v každém počítači a identifikaci počítačů, které mají přidat nebo odebrat ze skupiny.
 5. Vyberte počítače, na mapě, které chcete přidat nebo odebrat ze skupiny pomocí kombinace kláves Ctrl + kliknutí.

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543912"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136508"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
 
@@ -146,7 +146,7 @@ V některých případech neočekávané látku a není struktury výsledky. Pok
 
 + Změna **`searchMode=any`** (ve výchozím nastavení) **`searchMode=all`** tak, aby vyžadovala odpovídajících položek na všechna kritéria namísto některé z kritérií. To platí zejména když logické operátory jsou zahrnuty dotazu.
 
-+ Techniky dotazu změňte, pokud text nebo provést lexikální analýzu, je nezbytné, ale typ dotazu vylučuje jazykové zpracování. Ve fulltextovém vyhledávání text nebo provést lexikální analýzu automaticky opravuje pravopisné chyby, tvary slov plural jednotném čísle a dokonce nestandardní příkazy nebo podstatná jména. U některých dotazů, jako přibližných shod nebo hledání pomocí zástupných znaků, analýzu textu není součástí dotazu parsování kanálu. Regulární výrazy byly použity pro některé scénáře, jako alternativní řešení. 
++ Techniky dotazu změňte, pokud text nebo provést lexikální analýzu, je nezbytné, ale typ dotazu vylučuje jazykové zpracování. Fulltextové vyhledávání, text nebo provést lexikální analýzu autocorrects pravopisné chyby, tvary slov plural jednotném čísle a dokonce nestandardní příkazy nebo podstatná jména. U některých dotazů, jako přibližných shod nebo hledání pomocí zástupných znaků, analýzu textu není součástí dotazu parsování kanálu. Regulární výrazy byly použity pro některé scénáře, jako alternativní řešení. 
 
 ### <a name="paging-results"></a>Výsledky stránkování
 Služba Azure Search umožňuje snadnou implementaci stránkování výsledků vyhledávání. S použitím **`top`** a **`skip`** parametry, můžete plynule vydávat vyhledávací požadavky, které vám umožní získat úplnou sadu výsledků vyhledávání ve spravovatelných, seřazených podmnožiny, který snadno povolte hledání dobré postupy v uživatelském rozhraní. Při získávání těchto menších podmnožin výsledků můžete také získat počet dokumentů v úplné sadě výsledků vyhledávání.
@@ -167,4 +167,4 @@ Ve službě Azure Search je zvýrazňování přesné části výsledků vyhled�
 + [Jak funguje fulltextové vyhledávání ve službě Azure Search (dotaz parsování architektura)](search-lucene-query-architecture.md)
 + [Průzkumník služby Search](search-explorer.md)
 + [Jak provádět dotazy v .NET](search-query-dotnet.md)
-+ [Jak provádět dotazy v REST](search-query-rest-api.md)
++ [Jak provádět dotazy v REST](search-create-index-rest-api.md)

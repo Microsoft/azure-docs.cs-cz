@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700090"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002029"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora cloud-init pro virtuální počítače v Azure
 Tento článek vysvětluje, zda existuje pro podporu [cloud-init](https://cloudinit.readthedocs.io) ke konfiguraci virtuálního počítače (VM) nebo virtuální počítače škálovacích sad (VMSS) zřizování času v Azure. Tyto skripty cloud-init spustit při prvním spuštění, jakmile se zřizují prostředky Azure.  
 
 ## <a name="cloud-init-overview"></a>Přehled Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně vaše `#cloud-config` soubory, najdete v článku [cloud-init dokumentačním webu](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně vaše `#cloud-config` soubory, najdete v článku [cloud-init dokumentačním webu](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
@@ -34,7 +34,7 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze | Připraveno na cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04 LTS |nejnovější |ano | 
+|Canonical |UbuntuServer |18.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |17.10 |nejnovější |ano | 
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
@@ -92,7 +92,7 @@ Po zřízení virtuálního počítače, cloud-init spustí prostřednictvím v�
 > [!NOTE]
 > Ne každá chyba modulu výsledkem závažná cloud-init celkové Chyba konfigurace. Například použití `runcmd` modulu, pokud skript selže, cloud-init stále oznámí zřizování bylo úspěšné, protože modul runcmd proveden.
 
-Další podrobnosti protokolování cloud-init najdete [dokumentace k cloud-init](http://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
+Další podrobnosti protokolování cloud-init najdete [dokumentace k cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
 ## <a name="next-steps"></a>Další postup
 Příklady cloud-init změny konfigurace naleznete v následujících dokumentech:

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204521"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090453"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potížím při přihlašování k webu přístupového panelu
 
@@ -168,23 +168,23 @@ Pokud chcete povolit samoobslužné resetování hesla, postupujte podle kroků 
 
 Pokud chcete zkontrolovat stav služby Multi-Factor authentication, postupujte podle těchto kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
+4. Klikněte na tlačítko **uživatelů a skupin** v navigační nabídce.
 
-5.  Klikněte na tlačítko **všichni uživatelé**.
+5. Klikněte na tlačítko **všichni uživatelé**.
 
-6.  Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** tlačítko v horní části podokna.
+6. Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** tlačítko v horní části podokna.
 
-7.  Jednou **portál pro správu služby Multi-Factor Authentication** zatížením, ujistěte se na **uživatelé** kartu.
+7. Jednou **portál pro správu služby Multi-Factor Authentication** zatížením, ujistěte se na **uživatelé** kartu.
 
-8.  Vyhledejte uživatele pomocí hledání, filtrování a řazení v seznamu uživatelů.
+8. Vyhledejte uživatele pomocí hledání, filtrování a řazení v seznamu uživatelů.
 
-9.  Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** ověřování službou Multi-Factor Authentication podle potřeby.
+9. Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**, nebo **vynutit** ověřování službou Multi-Factor Authentication podle potřeby.
 
    >[!NOTE]
    >Pokud je uživatel v **vynucené** stavu, může je nastavená na **zakázané** dočasně a informovat je zpátky do svého účtu. Poté, co jsou zpět v, můžete změnit jejich stav na **povoleno** znovu tak, aby vyžadovala je znovu zaregistrovat své kontaktní informace při jeho příštím přihlášení. Alternativně můžete podle kroků v [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info) ověření nebo pro ně nastavit tato data.

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 579c23fc3092acb785e89ddfa390e9495fc004d3
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194523"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081249"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
-Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků. Absolvovat kurz, naleznete v tématu [kurzu: Přesunutí prostředků Azure do jiné skupiny prostředků nebo předplatného](./resource-manager-tutorial-move-resources.md).
+Tento článek ukazuje, jak Azure prostředky přesunout do jiného předplatného Azure nebo jiné skupiny prostředků ve stejném předplatném. Webu Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API můžete použít k přesunutí prostředků. Absolvovat kurz, naleznete v tématu [kurzu: Přesun prostředků Azure do jiné skupiny prostředků nebo předplatného](./resource-manager-tutorial-move-resources.md)
 
 Během operace přesunu jsou zamknuté skupiny zdrojové i cílové skupině. Zápis a odstranění operace jsou blokovány o skupinách prostředků, až do dokončení přechodu. Tento Zámek znamená, že nelze přidat, aktualizovat nebo odstranit prostředky ve skupinách prostředků, ale neznamená, že prostředky jsou zmražená. Například při přesunutí serveru SQL Server a jeho databázi do nové skupiny prostředků, aplikace, která používá databázi prostředí bez výpadků. Můžete nadále číst a zapisovat do databáze.
 
-Přesunutí prostředku pouze přesune do nové skupiny prostředků. Operace přesunu nejde změnit umístění prostředku. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
+Přesunutím prostředku dojde pouze k jeho přesunu do nové skupiny prostředků. Operace přesunu nemůže změnit umístění prostředku. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
 
 > [!NOTE]
 > Tento článek popisuje, jak přesouvání prostředků mezi existující předplatná Azure. Pokud chcete skutečně upgradovat vaše předplatné Azure (např. přechod z bezplatné na průběžné platby), musíte převést vaše předplatné.
@@ -65,7 +65,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Azure Database for PostgreSQL
 * Azure DevOps – nákupy na Azure DevOps institucím rozšíření od jiných výrobců musí [zrušit jejich nákupů](https://go.microsoft.com/fwlink/?linkid=871160) než účet může pokračovat napříč předplatnými.
 * Azure Maps
-* Protokoly Azure monitoru
+* Protokoly služby Azure Monitor
 * Azure Relay
 * Azure Stack – registrace
 * Batch
@@ -255,58 +255,58 @@ Klasické prostředky přesunout do nového předplatného, pomocí operace REST
 
 1. Zaškrtněte, pokud zdrojové předplatné mohl podílet na přesun mezi předplatnými. Použijte následující operace:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      V textu požadavku patří:
 
-  ```json
-  {
+   ```json
+   {
     "role": "source"
-  }
-  ```
+   }
+   ```
 
      Odpověď pro operace ověření je v následujícím formátu:
 
-  ```json
-  {
+   ```json
+   {
     "status": "{status}",
     "reasons": [
       "reason1",
       "reason2"
     ]
-  }
-  ```
+   }
+   ```
 
 2. Zaškrtněte, pokud cílové předplatné se mohou účastnit přesun mezi předplatnými. Použijte následující operace:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      V textu požadavku patří:
 
-  ```json
-  {
+   ```json
+   {
     "role": "target"
-  }
-  ```
+   }
+   ```
 
      Odpověď je ve stejném formátu jako zdroj ověření předplatného.
 3. Pokud obě předplatná projít ověřením, přesune všechny klasické prostředky z jednoho předplatného do jiného předplatného pomocí následující operace:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
+   ```
 
     V textu požadavku patří:
 
-  ```json
-  {
+   ```json
+   {
     "target": "/subscriptions/{target-subscription-id}"
-  }
-  ```
+   }
+   ```
 
 Operace může běžet několik minut.
 
@@ -345,52 +345,52 @@ Existuje několik důležitých kroků provedete před přesunutím prostředku 
 
 1. Zdrojové a cílové předplatné musí existovat v rámci stejného [tenanta Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md). Pokud chcete zkontrolovat, že oba odběry obsahují stejné ID tenanta, pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
-  Pro prostředí Azure PowerShell použijte:
+   Pro prostředí Azure PowerShell použijte:
 
-  ```azurepowershell-interactive
-  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
-  ```
+   ```azurepowershell-interactive
+   (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+   (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
+   ```
 
-  Pokud používáte Azure CLI, použijte:
+   Pokud používáte Azure CLI, použijte:
 
-  ```azurecli-interactive
-  az account show --subscription <your-source-subscription> --query tenantId
-  az account show --subscription <your-destination-subscription> --query tenantId
-  ```
+   ```azurecli-interactive
+   az account show --subscription <your-source-subscription> --query tenantId
+   az account show --subscription <your-destination-subscription> --query tenantId
+   ```
 
-  Pokud ID tenantů pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody k odsouhlasení ID tenantů:
+   Pokud ID tenantů pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody k odsouhlasení ID tenantů:
 
-  * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
-  * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
+   * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba může zobrazit při přesunutí prostředku do nového předplatného, ale, že předplatné nikdy použito příslušný typ prostředku.
 
-  Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
+   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
-  ```azurepowershell-interactive
-  Set-AzContext -Subscription <destination-subscription-name-or-id>
-  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -Subscription <destination-subscription-name-or-id>
+   Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+   ```
 
-  Zaregistrovat poskytovatele prostředků, použijte:
+   Zaregistrovat poskytovatele prostředků, použijte:
 
-  ```azurepowershell-interactive
-  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
-  ```
+   ```azurepowershell-interactive
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+   ```
 
-  Azure CLI použijte následující příkazy se získat stav registrace:
+   Azure CLI použijte následující příkazy se získat stav registrace:
 
-  ```azurecli-interactive
-  az account set -s <destination-subscription-name-or-id>
-  az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-  ```
+   ```azurecli-interactive
+   az account set -s <destination-subscription-name-or-id>
+   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+   ```
 
-  Zaregistrovat poskytovatele prostředků, použijte:
+   Zaregistrovat poskytovatele prostředků, použijte:
 
-  ```azurecli-interactive
-  az provider register --namespace Microsoft.Batch
-  ```
+   ```azurecli-interactive
+   az provider register --namespace Microsoft.Batch
+   ```
 
 1. Účet přesunutí prostředků musí mít alespoň následující oprávnění:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9b36332382de1317e386af59695f993efb233e79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108439"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. I když je možné vytvořit nezabezpečenému clusteru, pokud clusteru zpřístupní koncových bodů správy do veřejného Internetu, můžete k němu připojit anonymním uživatelům. Nezabezpečené clustery nejsou podporovány pro produkční úlohy. 
@@ -112,7 +112,7 @@ Certifikát musí splňovat následující požadavky:
 
 Pár dalších věcí k uvážení:
 
-* **Subjektu** pole může mít víc hodnot. Každá hodnota je předponu inicializace označující typ hodnoty. Inicializace je obvykle **CN** (pro *běžný název*); například **CN = www.contoso.com**. 
+* **Subjektu** pole může mít víc hodnot. Každá hodnota je předponu inicializace označující typ hodnoty. Inicializace je obvykle **CN** (pro *běžný název*); například **CN = www\.contoso.com**. 
 * **Subjektu** pole může být prázdné. 
 * Pokud volitelný **alternativní název předmětu** pole vyplněné, musí mít běžný název certifikátu a jeden záznam za po síti SAN. Ty se zadávají jako **název DNS** hodnoty. Zjistěte, jak vygenerovat certifikáty, které mají alternativními názvy subjektu, najdete v článku [přidání alternativní název předmětu certifikátem protokolu secure LDAP](https://support.microsoft.com/kb/931351).
 * Hodnota **zamýšlené účely** pole certifikátu by měl obsahovat správnou hodnotu, jako například **ověřování serveru** nebo **ověření klienta**.

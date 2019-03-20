@@ -1,6 +1,6 @@
 ---
-title: Integrace s průběžnou integraci a doručování kanálu pomocí konfigurace aplikace pro Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vygenerovat konfigurační soubor používá data v konfiguraci aplikací pro Azure během průběžnou integraci a doručování
+title: Integrace s kanálu průběžné integrace a doručování s využitím konfigurace aplikace pro Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vygenerovat konfigurační soubor s použitím dat v konfiguraci aplikací pro Azure během průběžnou integraci a doručování
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -12,32 +12,32 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7b2e919bc46810e8478956675ffeb1cb0542da85
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cb9fe6dc234c317daa5eabec01812324e7c81663
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957364"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224324"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
 
-K vylepšení odolnosti vaší aplikace proti vzdálené možnosti, že nelze dosáhnout konfigurace aplikace pro Azure, musí balíček aktuální konfiguračních dat do souboru, který je nasazen s aplikací a místně načtení při jeho spuštění . Tento postup zaručuje, že vaše aplikace bude mít výchozí hodnoty nastavení alespoň. Tyto hodnoty se přepíšou všechny novější změny v obchodě s aplikacemi konfigurace až bude k dispozici.
+Můžete zvýšit odolnost aplikace proti vzdálené možnosti, že nelze dosáhnout konfiguraci aplikací Azure. Uděláte to tak, balíček aktuální konfiguračních dat do souboru, který je nasazen s aplikací a načíst místně při jeho spuštění. Tento postup zaručuje, že vaše aplikace má alespoň výchozí hodnoty nastavení. Až bude k dispozici jsou tyto hodnoty přepíše všechny novější změny v obchodě s aplikacemi konfigurace.
 
-Použití [ **exportovat** ](./howto-import-export-data.md#export-data) funkce Konfigurace aplikací v Azure, můžete automatizovat proces načítání aktuální konfigurační data jako jeden soubor. Tento soubor pak můžete vložit v kroku sestavení nebo nasazení v průběžnou integraci a průběžné nasazování kanálu.
+Použití [exportovat](./howto-import-export-data.md#export-data) funkce Konfigurace aplikací v Azure, můžete automatizovat proces načítání aktuální konfigurační data jako jeden soubor. Potom můžete vložte tento soubor v kroku sestavení nebo nasazení v průběžné integrace a průběžného nasazování (CI/CD) kanálu.
 
-Následující příklad ukazuje, jak zahrnout konfigurace aplikace data jako sestavení krok pro webovou aplikaci zavedený rychlých startech. Kompletní [vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) první předtím, než budete pokračovat.
+Následující příklad ukazuje, jak zahrnout konfigurace aplikace data jako sestavení krok pro webovou aplikaci zavedený rychlých startech. Než budete pokračovat, dokončete [vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) první.
 
-K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor kódu. Skvělou volbou je však editor [Visual Studio Code](https://code.visualstudio.com/), který je dostupný pro platformy Windows, macOS a Linux.
+Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) skvělou možnost je k dispozici ve Windows, macOS a Linux platformy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud vytvoříte místně, stáhněte a nainstalujte [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pokud jste tak již neučinili.
 
-Pokud chcete provést sestavení do cloudu s Azure DevOps například, ujistěte se, že [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalovaný v systému sestavení.
+Provedete sestavení do cloudu s Azure DevOps například, ujistěte se, že [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalovaný v systému sestavení.
 
-## <a name="export-app-configuration-store"></a>Export konfigurace obchodu s aplikacemi
+## <a name="export-an-app-configuration-store"></a>Exportovat konfiguraci app storu
 
-1. Otevřete váš *.csproj* soubor a přidejte následující:
+1. Otevřete váš *.csproj* soubor a přidejte následující skript:
 
     ```xml
     <Target Name="Export file" AfterTargets="Build">
@@ -46,9 +46,9 @@ Pokud chcete provést sestavení do cloudu s Azure DevOps například, ujistěte
     </Target>
     ```
 
-    *ConnectionString* související s konfigurací aplikace úložiště přidaly jako proměnnou prostředí.
+    Přidat *ConnectionString* přidružený k úložišti konfigurace aplikace jako proměnné prostředí.
 
-2. Otevřít *Program.cs* a aktualizovat `CreateWebHostBuilder` metodu použít soubor exportovaného json voláním `config.AddJsonFile()` metoda.
+2. Otevřete soubor Program.cs a aktualizujte `CreateWebHostBuilder` metoda se má použít v exportovaném souboru JSON voláním `config.AddJsonFile()` metody.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -66,7 +66,7 @@ Pokud chcete provést sestavení do cloudu s Azure DevOps například, ujistěte
 
 ## <a name="build-and-run-the-app-locally"></a>Sestavte a spusťte aplikaci místně
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString** a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a potom restartujte příkazového řádku umožňující změna se projeví:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ho na přístupový klíč k úložišti konfigurace aplikace. Pokud používáte Windows příkazového řádku, spusťte následující příkaz a restartujte příkazového řádku umožňující změna se projeví:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -74,19 +74,19 @@ Pokud chcete provést sestavení do cloudu s Azure DevOps například, ujistěte
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Pokud používáte v systému macOS nebo Linux, spusťte následující příkaz:
+    Pokud používáte systému macOS nebo Linux, spusťte následující příkaz:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Pokud chcete aplikaci sestavit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
+2. Pokud chcete vytvořit aplikaci pomocí rozhraní příkazového řádku .NET Core, spusťte následující příkaz v příkazovém prostředí:
 
         dotnet build
 
-3. Po úspěšném dokončení sestavení spuštěním následujícího příkazu místně spusťte webovou aplikaci:
+3. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
         dotnet run
 
-4. Spusťte okno prohlížeče a přejděte na `http://localhost:5000`, což je výchozí adresa URL pro webové aplikace hostované místně.
+4. Otevřete okno prohlížeče a přejděte na `http://localhost:5000`, což je výchozí adresa URL pro webové aplikace hostované místně.
 
     ![Místní spuštění aplikace rychlý start](./media/quickstarts/aspnet-core-app-launch-local.png)
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336931"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108201"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Zotavení po havárii a geografická distribuce
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336931"
 V Durable Functions všechny stavy se ukládají ve službě Azure Storage. A [centra úloh](durable-functions-task-hubs.md) je logický kontejner prostředků služby Azure Storage, které se používají pro Orchestrace. Funkce nástroje Orchestrator a aktivity pouze komunikovat mezi sebou když patří do stejné centra úloh.
 Popsané scénáře navrhnout možnosti nasazení pro zvýšení dostupnosti a minimalizovat prostoje během aktivity pro zotavení po havárii.
 
-Je důležité si všimněte, že tyto scénáře jsou založeny na konfigurace aktivní – pasivní, protože se řídit využití služby Azure Storage. Tento model spočívá v nasazení aplikace funkcí zálohování (pasivní) do jiné oblasti. Traffic Manager monitorovat aplikace primární (aktivní) funkce dostupnosti. To převezme do aplikace funkci zálohování Pokud selže primární. Další informace najdete v tématu [Traffic Manageru](https://azure.microsoft.com/services/traffic-manager/)společnosti [metody směrování provozu Priority.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
+Je důležité si všimněte, že tyto scénáře jsou založeny na konfigurace aktivní – pasivní, protože se řídit využití služby Azure Storage. Tento model spočívá v nasazení aplikace funkcí zálohování (pasivní) do jiné oblasti. Traffic Manager monitorovat aplikace primární (aktivní) funkce dostupnosti. To převezme do aplikace funkci zálohování Pokud selže primární. Další informace najdete v tématu [Traffic Manageru](https://azure.microsoft.com/services/traffic-manager/)společnosti [metody směrování provozu Priority.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >

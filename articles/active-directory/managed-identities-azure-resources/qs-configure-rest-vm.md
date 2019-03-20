@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 778897e1a146abd0655d76ef157f64522681cb0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889671"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí volání rozhraní REST API
 
@@ -63,7 +63,7 @@ Chcete-li vytvořit virtuální počítač Azure s využitím systém přiřadil
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače s systém přiřadil spravovanou identitu.
+3. Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače s systém přiřadil spravovanou identitu.
 
    ```azurecli-interactive
    az account get-access-token
@@ -80,6 +80,7 @@ Chcete-li vytvořit virtuální počítač Azure s využitím systém přiřadil
    ```
    
    **Hlavičky žádosti**
+   
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
@@ -168,6 +169,7 @@ Aby systém přiřadil spravovaná identita na virtuálním počítači, který 
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **Hlavičky žádosti**
+
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
@@ -239,6 +241,7 @@ Aby systém přiřadil spravovaná identita na virtuálním počítači, který 
    |---------|---------|
    |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        | 
+
    **Text žádosti**
 
    ```JSON
@@ -314,7 +317,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače s systém přiřadil spravovanou identitu.
+3. Načtěte přístupový token nosiče, který použijete v dalším kroku v hlavičce autorizace k vytvoření virtuálního počítače s systém přiřadil spravovanou identitu.
 
    ```azurecli-interactive
    az account get-access-token
@@ -507,6 +510,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **Hlavičky žádosti**
+
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.
@@ -675,6 +679,7 @@ Chcete-li odebrat uživatelsky přiřazené identity virtuálního počítače, 
    ```
 
    **Hlavičky žádosti**
+
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |

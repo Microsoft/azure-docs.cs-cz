@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013341"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA na Azure Virtual Machines
 
@@ -63,8 +63,8 @@ _Ne, aktuálně můžete vzít data a jako hlavní strana zálohu protokolu. Pok
 
 - [Úvod k SAP HANA správy](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
 - [Plánování zálohování a obnovení strategie](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [Naplánování zálohování HANA pomocí ABAP DBACOCKPIT](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [Plán zálohování dat (SAP HANA řídicí panel)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- [Naplánování zálohování HANA pomocí ABAP DBACOCKPIT](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [Plán zálohování dat (SAP HANA řídicí panel)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
 - Nejčastější dotazy týkající se SAP HANA zálohování v [1642148 Poznámka SAP](https://launchpad.support.sap.com/#/notes/1642148)
 - Nejčastější dotazy týkající se SAP HANA database a storage snímky v [2039883 Poznámka SAP](https://launchpad.support.sap.com/#/notes/2039883)
 - Nevhodný síťový systémy souborů pro zálohování a obnovení v [1820529 Poznámka SAP](https://launchpad.support.sap.com/#/notes/1820529)
@@ -80,7 +80,7 @@ Při použití úložiště snímků, se doporučuje spustit testovací obnoven�
 
 Zachovat v paměti, která provádění snadného obnovení a kontroly, jestli je HANA a spouštění není dostatečná. V ideálním případě jeden by měl spustit kontrolu konzistence tabulky ujistit se, že je v pořádku obnovené databáze. SAP HANA nabízí několik druhů kontroly konzistence je popsáno v [1977584 Poznámka SAP](https://launchpad.support.sap.com/#/notes/1977584).
 
-Informace o kontrole konzistence tabulky najdete také na webu SAP na [tabulky a kontrolu konzistence katalogu](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
+Informace o kontrole konzistence tabulky najdete také na webu SAP na [tabulky a kontrolu konzistence katalogu](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
 
 U standardních souborových záloh testovací obnovení není nutné. Existují dva nástroje SAP HANA, které pomáhají zjistit, kterou zálohu lze použít pro obnovení: hdbbackupdiag a hdbbackupcheck. Zobrazit [ruční kontrolu, jestli obnovení je možné](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) pro další informace o těchto nástrojích.
 
@@ -90,7 +90,7 @@ SAP kódu&#39;t dát přednost buď zálohování HANA a snímek úložiště. V
 
 V Azure, mějte na paměti postup využívající fakt, že Azure blob snapshot kódu funkce&#39;konzistence systému souborů se zárukou t (naleznete v tématu [snímky objektů blob pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). Další části _konzistence dat SAP HANA při pořizování snímků úložiště_, tento článek popisuje některé důležité informace týkající se této funkce.
 
-Kromě toho je nutné při nepochopení plného fakturační při práci často se snímky objektů blob, jak je popsáno v tomto článku: [Principy jak snímky nabíhání poplatků za](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)– to není&#39;t jako zřejmé jako pomocí Azure virtual disky.
+Kromě toho jeden má fakturační nepochopení při práci se často se snímky objektů blob, jak je popsáno v tomto článku: [Principy jak snímky nabíhání poplatků za](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)– to není&#39;t jako zřejmé jako použití virtuálních disků v Azure.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Konzistence dat SAP HANA při pořizování snímků úložiště
 
@@ -129,7 +129,7 @@ Volitelně můžete jeden může přejít zcela bez snímků úložiště; můž
 Příručka věnovaná HANA poskytuje příklad seznamu. Navrhuje jeden obnovit SAP HANA k určitému bodu v čase s použitím následující posloupnost zálohování:
 
 1. Úplná záloha
-2. Rozdílová záloha
+2. Rozdílové zálohování
 3. Přírůstkové zálohování 1
 4. Přírůstkové zálohování 2
 5. Zálohování protokolu
@@ -137,7 +137,7 @@ Příručka věnovaná HANA poskytuje příklad seznamu. Navrhuje jeden obnovit 
 Pokud jde o přesnou plán, kdy a jak často se stane konkrétní typ zálohy, není možné poskytnout obecných pokynů – je moc specifické pro zákazníka a závisí na tom, kolik dat změn v systému. Jeden základní ze strany SAP, což uvidíte jako obecné pokyny, doporučujeme vytvořit jeden úplné HANA zálohování jednou za týden.
 Týká se zálohy protokolu, naleznete v dokumentaci k SAP HANA [zálohy protokolu](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm).
 
-SAP také doporučuje provádění některých údržbu katalog záloh zachovat neomezeně narůstat (viz [spouštění pro katalog záloh a úložiště pro zálohování](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
+SAP také doporučuje provádění některých údržbu katalog záloh zachovat neomezeně narůstat (viz [spouštění pro katalog záloh a úložiště pro zálohování](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
 
 ### <a name="sap-hana-configuration-files"></a>SAP HANA konfiguračních souborů
 

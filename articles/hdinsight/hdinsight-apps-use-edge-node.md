@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: fca14eb5a51799e6d3c0e4f96cb956e4e6886cdb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aa9cdbaece2714dd4869268f394e6840fe42edda
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844819"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225395"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight
 
@@ -91,7 +91,7 @@ V této části pomocí šablony Resource Manageru pro přidání hraniční uze
 > Ujistěte se, že vyberete skupinu prostředků Azure existujícího clusteru HDInsight.  Jinak, zobrazí se chybová zpráva "nelze provést požadovanou operaci pro vnořený prostředek. Nadřazený prostředek "&lt;Název_clusteru >' nebyl nalezen."
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Přidat hraničnímu uzlu při vytváření clusteru
-V této části pomocí šablony Resource Manageru k vytvoření clusteru HDInsight s hraniční uzel.  Šablony Resource Manageru najdete v [Galerie šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablony Resource Manageru volá akci skriptu umístěného v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení akce volání skriptu z šablony Resource Manageru.
+V této části pomocí šablony Resource Manageru k vytvoření clusteru HDInsight s hraniční uzel.  Šablony Resource Manageru najdete v [galerii šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablony Resource Manageru volá akci skriptu umístěného v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení akce volání skriptu z šablony Resource Manageru.
 
 **Vytvoření clusteru HDInsight s hraniční uzel**
 

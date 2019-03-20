@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: a75f3f2b1cc6d352afdf366d17c78e95420184cd
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 60c4d1631717eea602e391387d57afe268efbace
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571231"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075880"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Kurz: Aktualizovat inventáře pomocí rozhraní příkazového řádku a předplatná
 
@@ -148,7 +148,7 @@ Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, 
 4. Program spustíte následujícím příkazem. Nezapomeňte zástupné symboly nahradit připojovacím řetězcem a názvem tématu, které jste získali v předchozím kroku:
 
    ```shell
-  java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
+   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
    ```
 
    Sledujte, jak se do tématu odešle deset zpráv a jak se následně z jednotlivých odběrů přijmou:

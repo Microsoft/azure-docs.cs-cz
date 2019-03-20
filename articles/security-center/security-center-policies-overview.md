@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: f61f5ebf4c0658ff846421682d50ea346c699e01
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 818b3e3b464ecbe8d55367ab5318436a14567263
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108759"
 ---
 # <a name="security-center-settings"></a>Nastavení služby Security Center
 Tento článek obsahuje přehled nastavení ve službě Security Center.
@@ -51,6 +51,6 @@ V tomto článku jste se dozvěděli o zásad zabezpečení ve službě Azure Se
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
-- [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md): Zjistěte, jak se spravuje Security Center a chrání data.
+* [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md): Zjistěte, jak se spravuje Security Center a chrání data.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Získejte odpovědi na nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Získejte nejnovější informace zabezpečení Azure a informace.

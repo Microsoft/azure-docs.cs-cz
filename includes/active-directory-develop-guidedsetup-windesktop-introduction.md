@@ -4,22 +4,22 @@ description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d7f268618888eb1f3fcd98b13b67635d9e2d056d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bb28862ad6452eab3130eeb2dc0b4c269839d306
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203170"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní Microsoft Graph API z desktopové aplikace Windows
 
@@ -32,7 +32,7 @@ Po dokončení průvodce, vaše aplikace bude moct volat chráněné rozhraní A
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 
-![Jak funguje tento průvodce](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.png)
+![Ukazuje, jak ukázková aplikace vygenerované tohle funguje kurzy](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks-updated.png)
 
 Ukázkovou aplikaci, kterou vytvoříte v této příručce umožňuje aplikaci Windows Desktop, který se dotazuje rozhraní Microsoft Graph API nebo webové rozhraní API, které přijímá tokeny z koncového bodu Azure Active Directory v2.0. Pro tento scénář přidejte token na požadavky HTTP přes autorizační hlavičky. Microsoft Authentication Library (MSAL) zpracovává získání tokenu a obnovení.
 

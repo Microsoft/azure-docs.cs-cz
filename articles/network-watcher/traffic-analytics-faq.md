@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 946af124c5e16620c5052ac32d47ddb5fe4537d2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406012"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835312"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -120,6 +120,12 @@ Ne. Libovolný účet úložiště, kde je povolena skupinu zabezpečení sítě
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Co když nelze nakonfigurovat skupinu NSG pro analýzu provozu z důvodu chyby "Nenalezeno"?
 
 Vyberte podporovanou oblast. Pokud vyberete oblast není podporováno, se zobrazí chyba "Nebyl nalezen". Podporované oblasti jsou uvedeny dříve v tomto článku.
+
+## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>Proč se zobrazuje chyba "Nepodařilo se aktualizovat nastavení protokolů toku pro... Nenalezeno..." Při povolování skupin zabezpečení sítě a ve Virginii US Gov?
+
+Toto je kvůli chybě poskytovatele prostředků 'Microsoft.Network' Pokud není znovu zaregistrovala pro předplatné ve Virginii státní správy USA. Tým pracuje na opravě pro tento. Jako alternativní řešení, je třeba [ručně znovu zaregistrovat 'Microsoft.Network' RP](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors). 
+
+Pokud potíže potrvají, kontaktujte prosím podporu. 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Co když se zobrazuje stav, "se nepodařilo načíst," v části stránky protokolů toku NSG?
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043647"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137670"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 
@@ -122,7 +122,7 @@ Bude načítat data sopka z účtu služby Azure Cosmos DB a vizualizace dat v i
 8. Zadejte název pro nový sloupec, třeba LatLong.
 9. Dále zadejte vlastní vzorec pro nový sloupec.  V našem příkladu jsme se zřetězit zeměpisná šířka a délka hodnoty oddělené čárkou, jak je znázorněno níže pomocí následujícího vzorce: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Klikněte na **OK**.
    
-    Další informace o výrazech DAX (Data Analysis) včetně funkcí jazyka DAX, navštivte prosím [základního jazyka DAX v Power BI Desktopu](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
+    Další informace o výrazech DAX (Data Analysis) včetně funkcí jazyka DAX, navštivte prosím [základy jazyka DAX v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
     ![Kurz k Power BI pro konektor Azure Cosmos DB Power BI – přidat vlastní sloupec](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 

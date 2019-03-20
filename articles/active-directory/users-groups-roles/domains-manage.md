@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201838"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -33,11 +33,11 @@ Když se do adresáře, počáteční název domény, například "contoso.onmic
 2. Vyberte **Azure Active Directory**.
 3. Vyberte **Názvy vlastních domén**.
   
-   ![Otevírání správy uživatelů](./media/domains-manage/add-custom-domain.png)
+   ![Otevřete stránku správy uživatelů](./media/domains-manage/add-custom-domain.png)
 4. Vyberte název domény, které mají být primární doménu.
 5. Vyberte **nastavit jako primární** příkazu. Potvrďte svou volbu po zobrazení výzvy.
   
-   ![Nastavit jako primární název domény](./media/domains-manage/make-primary-domain.png)
+   ![Ujistěte se, primární název domény](./media/domains-manage/make-primary-domain.png)
 
 Můžete změnit název primární domény pro váš adresář bude ověřené vlastní doméně, která není Federovaná. Primární doména pro svůj adresář změna neovlivní uživatelské jméno pro všechny stávající uživatele.
 
@@ -88,13 +88,13 @@ Chyba je vrácena, pokud:
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka: Proč selhává v odstraňování domény zobrazí se chyba s oznámením, že mám na tento název domény Exchange standardní skupiny?** <br>
-**ODPOVĚĎ:** V současné době určitých skupin, jako jsou skupiny zabezpečení s povolenou poštou a distribuované seznamy byly povolené nástrojem Exchange a muset ručně vyčistit v [správce Exchange System Center (EAC)](https://outlook.office365.com/ecp/). Existuje může být přetrvávání odstraněných ProxyAddresses, které využívají vlastní název domény a bude nutné ručně aktualizovat tak, aby jiný název domény. 
+**Odpověď:** V současné době určitých skupin, jako jsou skupiny zabezpečení s povolenou poštou a distribuované seznamy byly povolené nástrojem Exchange a muset ručně vyčistit v [správce Exchange System Center (EAC)](https://outlook.office365.com/ecp/). Existuje může být přetrvávání odstraněných ProxyAddresses, které využívají vlastní název domény a bude nutné ručně aktualizovat tak, aby jiný název domény. 
 
-**Otázka: Jsem přihlášený jako admin@contoso.com , ale nemůžu odstranit název domény "contoso.com"?**<br>
-**ODPOVĚĎ:** Nemůže odkazovat vlastní název domény, který se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), jako admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného globálního správce účtu, který jako admin@contoso.onmicrosoft.com nebo jiný název vlastní domény, jako je "fabrikam.com", které je účet admin@fabrikam.com.
+**Otázka: Jsem se přihlášeni jako správce\@contoso.com, ale vybral jsem nelze odstranit název domény "contoso.com"?**<br>
+**Odpověď:** Nemůže odkazovat vlastní název domény, který se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), jako admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného globálního správce účtu, který jako admin@contoso.onmicrosoft.com nebo jiný název vlastní domény, jako je "fabrikam.com", které je účet admin@fabrikam.com.
 
 **Otázka: Po klepnutí na tlačítko pro odstranění domény a viz `In Progress` stavu pro operace Delete. Jak dlouho trvá? Co se stane, když dojde k chybě?**<br>
-**ODPOVĚĎ:** Operace odstranění domény je pozadí asynchronní úloha, která přejmenuje všechny odkazy na název domény. By se měla dokončit během několika minut. Pokud odstranění domény selhání, ujistěte se, že není nutné:
+**Odpověď:** Operace odstranění domény je pozadí asynchronní úloha, která přejmenuje všechny odkazy na název domény. By se měla dokončit během několika minut. Pokud odstranění domény selhání, ujistěte se, že není nutné:
 
 * Aplikace nakonfigurované v názvu domény pomocí appIdentifierURI
 * Žádné skupina s povolenou poštou odkazovat na název vlastní domény

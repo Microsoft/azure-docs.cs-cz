@@ -3,20 +3,20 @@ title: 'Kurz: Azure Database Migration Service můžete provést online migraci 
 description: Zjistěte, jak provést online migrace ze vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database s využitím Azure Database Migration Service.
 services: dms
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 95ce91edcd1273f0fdf7c1e710d19d717eb34e80
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 5b91e3082dba2ac8ea19606f4269e65a0f537ce1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792153"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183131"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Migrace vzdálené plochy SQL serveru do Azure SQL Database nebo spravované instance Azure SQL Database online pomocí DMS
 Azure Database Migration Service můžete použít k migraci databází z instance SQL serveru vzdálené plochy k [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) nebo [Azure SQL Database managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) s minimálními výpadky. V tomto kurzu, migrujete **Adventureworks2012** obnovit databáze na SQL serveru vzdálené plochy instanci systému SQL Server 2012 (nebo novější) do Azure SQL Database nebo Azure SQL Database managed instance s využitím Azure Database Migration Služba.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f18b2cbf31b50b27c1ae8a6d4fa4a6510781cb12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886479"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -45,12 +45,12 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
-Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečné. Použitím `$RANDOM` připojíte k názvu účtu úložiště nějaké číslo, díky kterému bude název jedinečný. 
+Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečný, takže nezapomeňte nahradit "mystorageacct" s jedinečným názvem.
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
-    --name "mystorageacct$RANDOM" \
+    --name "mystorageacct" \
     --location eastus \
     --sku Standard_LRS \
     --query "name" | tr -d '"')
@@ -87,12 +87,12 @@ Informace o připojení sdílené složky s využitím protokolu SMB najdete v n
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Použití sdílené složky Azure se souborovým protokolem REST 
-Je možné pracovat přímo s protokolu REST souboru přímo (to znamená handcrafting REST HTTP volá sami), ale nejběžnější způsob pro použití REST soubor protokolu je použít rozhraní příkazového řádku Azure [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), nebo Azure Sada SDK úložiště, které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru.  
+Je možné pracovat přímo s REST souboru protokolu přímo (handcrafting sami volání REST HTTP), ale nejběžnější způsob pro použití REST soubor protokolu je použít rozhraní příkazového řádku Azure [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), nebo sadu SDK Azure Storage , které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru.  
 
 Předpokládáme, že ve většině případů použití služby Soubory Azure budete chtít se sdílenými složkami Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
 - Procházíte sdílenou složku z prostředí Bash ve službě Azure Cloud Shell (které nedokáže připojit sdílené složky přes protokol SMB).
-- Potřebujete spustit skript nebo aplikaci z klienta, který nedokáže připojit sdílené složky SMB, jako jsou například místní klienti s blokovaným portem 445.
+- Je potřeba spustit skript nebo aplikaci z klienta, která aktuálně nedokáže připojit sdílené složky SMB, jako jsou místní klienti, které nemají odblokovaného portu 445.
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 
 Následující příklady ukazují, jak používat rozhraní příkazového řádku Azure k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 

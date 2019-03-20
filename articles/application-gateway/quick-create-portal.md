@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 49035bc94f0ed51abb5f7e7a4af8eb1a0b08cfe4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b474d3579a7c20c190a427f503d97ec7471a1b12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539821"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091150"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure portal
 
@@ -37,10 +37,10 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
 
 1. Na **Základy** stránky, zadejte tyto hodnoty pro následující nastavení aplikační brány:
 
-    - **Název**: Zadejte *myAppGateway* pro název služby application gateway.
-    - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro skupinu prostředků. Pokud neexistuje, vyberte **vytvořit nový** k jeho vytvoření.
+   - **Název**: Zadejte *myAppGateway* pro název služby application gateway.
+   - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro skupinu prostředků. Pokud neexistuje, vyberte **vytvořit nový** k jeho vytvoření.
 
-    ![Vytvoření nové aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
+     ![Vytvoření nové aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
 2. Přijměte výchozí hodnoty pro další nastavení a pak vyberte **OK**.
 
@@ -50,15 +50,15 @@ U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální s
 
 2. Na **zvolte virtuální síť** stránce **vytvořit nový**a potom zadejte hodnoty pro následující nastavení virtuální sítě:
 
-    - **Název**: Zadejte *myVNet* pro název virtuální sítě.
+   - **Název**: Zadejte *myVNet* pro název virtuální sítě.
 
-    - **Adresní prostor**: Zadejte *10.0.0.0/16* pro adresní prostor virtuální sítě.
+   - **Adresní prostor**: Zadejte *10.0.0.0/16* pro adresní prostor virtuální sítě.
 
-    - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.<br>Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
+   - **Název podsítě**: Zadejte *myAGSubnet* název podsítě.<br>Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.
 
-    - **Rozsah adres podsítě**: Zadejte *10.0.0.0/24* pro rozsah adres podsítě.
+   - **Rozsah adres podsítě**: Zadejte *10.0.0.0/24* pro rozsah adres podsítě.
 
-    ![Vytvoření virtuální sítě](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
+     ![Vytvoření virtuální sítě](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
 3. Vyberte **OK** se vrátíte **nastavení** stránky.
 

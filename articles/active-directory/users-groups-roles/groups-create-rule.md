@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5668c3fa43130ee1a0271d6040b1989ee8ab79
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242628"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199677"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvoření dynamické skupiny a zkontrolovat stav
 
@@ -34,15 +34,15 @@ Příklady syntaxe, podporovaných vlastností, operátory a hodnoty pro pravidl
 2. Vyberte **skupiny**.
 3. Vyberte **všechny skupiny**a vyberte **novou skupinu**.
 
-   ![Přidat novou skupinu](./media/groups-create-rule/new-group-creation.png)
+   ![Vyberte příkaz pro přidání nové skupiny](./media/groups-create-rule/new-group-creation.png)
 
 4. Na **skupiny** stránky, zadejte název a popis nové skupiny. Vyberte **typ členství** pro uživatele nebo zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidlo můžete použít k vytvoření jednoduché pravidlo, nebo [napsat pravidlo členství, sami](groups-dynamic-membership.md).
 
-   ![Přidat dynamické pravidlo členství](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 5. Pokud chcete zobrazit vlastnosti vlastní rozšíření, která je k dispozici pro dotaz na členství
-  1. Vyberte **získání rozšíření vlastních vlastností**
-  2. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**. 
+   1. Vyberte **získání rozšíření vlastních vlastností**
+   2. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**. 
 6. Po vytvoření pravidla, vyberte **přidat dotaz** v dolní části okna.
 7. Vyberte **vytvořit** na **skupiny** okno pro vytvoření skupiny.
 
@@ -74,7 +74,7 @@ Tyto stavové zprávy lze zobrazit pro **členství poslední aktualizace** stav
 
 Pokud dojde k chybě při zpracování pravidla členství pro konkrétní skupinu, upozornění se zobrazí v horní **stránka s přehledem** pro skupinu. Pokud ne čekající členství v dynamické aktualizace lze zpracovat pro všechny skupiny v rámci tenanta pro další pak 24 hodin, upozornění se zobrazí v horní **všechny skupiny**.
 
-![zpracování chybová zpráva](./media/groups-create-rule/processing-error.png)
+![zpracování chybové zprávy oznámení](./media/groups-create-rule/processing-error.png)
 
 Tyto články poskytují další informace o skupinách ve službě Azure Active Directory.
 

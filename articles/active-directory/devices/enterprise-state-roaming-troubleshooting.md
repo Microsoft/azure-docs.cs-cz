@@ -19,12 +19,12 @@ ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf7919a2dc69bc834a5834d10a5a297a2ad6949
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e2b99871cc1da2b1e8e136fc4d689e90dfad77a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170299"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081232"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
@@ -47,7 +47,7 @@ Pokud nelze vyřešit vaše potíže s níže uvedeném doprovodném materiálu,
 * **Ovlivnění uživatelé** – je synchronizace pracovní/selhání pro jeden nebo více uživateli? Kolik zařízení se podílejí na uživatele? Všechny z nich nesynchronizuje, nebo některé z nich synchronizace a některé nesynchronizuje?
 * **Informace o uživateli** – co je identita uživatele pomocí pro přihlášení k zařízení? Jak uživatel přihlašuje k zařízení? Jsou součástí vybrané skupiny zabezpečení můžou synchronizovat? 
 * **Informace o zařízení** – je toto zařízení Azure AD připojen nebo připojené k doméně? Jaké sestavení je na zařízení? Co jsou nejnovější aktualizace?
-- **Datum / čas / časové pásmo** – co byl přesné datum a čas jste viděli chybu (včetně časové pásmo)?
+* **Datum / čas / časové pásmo** – co byl přesné datum a čas jste viděli chybu (včetně časové pásmo)?
 
 Tyto informace včetně pomáhá nám tak rychle vyřešit problém.
 
@@ -59,8 +59,8 @@ Tato část poskytuje návrhy na řešení potíží a Diagnostikujte problémy 
 1. Po připojení k doméně, která je nakonfigurovaná k povolení Enterprise State Roaming svůj počítač s Windows 10, přihlaste se pomocí svého pracovního účtu. Přejděte na **nastavení** > **účty** > **nastavení synchronizace** a ověřte, zda jsou synchronizace a individuální nastavení a že horní části Stránka nastavení znamená, že se synchronizují pomocí svého pracovního účtu. Potvrzení o stejný účet slouží také jako účet přihlášení v **nastavení** > **účty** > **vaše informace**. 
 1. Ověřte, že synchronizace funguje napříč více počítačů tím, že některé změny na původní počítač, jako je například přesun na hlavním panelu k pravému nebo hornímu okraji obrazovky. Podívejte se změny rozšíří do druhého počítače do pěti minut. 
 
-  * Zamknutí a odemknutí obrazovky (Win + L) může pomoct aktivovat synchronizaci.
-  * Jak Enterprise State Roaming je vázán na uživatelský účet a účet počítače musí být přihlásit na obou počítačích pro synchronizaci pro práci – stejný účet.
+   * Zamknutí a odemknutí obrazovky (Win + L) může pomoct aktivovat synchronizaci.
+   * Jak Enterprise State Roaming je vázán na uživatelský účet a účet počítače musí být přihlásit na obou počítačích pro synchronizaci pro práci – stejný účet.
 
 **Potenciální problém**: Pokud ovládací prvky **nastavení** stránky nejsou k dispozici, a zobrazí se zpráva "některé funkce Windows jsou k dispozici pouze pokud používáte účet Microsoft nebo pracovní účet." Tento problém může vzniknout pro zařízení, která jsou nastavena na být připojená k doméně a zaregistrované u služby Azure AD, ale zařízení nebyl dosud úspěšně ověřil do služby Azure AD. Možnou příčinou je, že zásady zařízení musí být použity, ale tato aplikace probíhá asynchronně a může zpozdit několik hodin. 
 

@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: becd91b3539ef992289a4032283be64fbf9d123d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 551b884f032eaba3f052fcb7571ba907038152ff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729361"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226840"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření .NET Framework aplikace s konfigurací aplikace Azure
 
-Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. To umožňuje snadno ukládat a spravovat nastavení aplikace na jednom místě, který je oddělen od kódu. V tomto rychlém startu se dozvíte, jak tuto službu začlenit do aplikace klasické pracovní plochy konzoly Windows založené na rozhraní .NET Framework.
+Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můžete ho snadno ukládat a spravovat nastavení aplikace na jednom místě, který je oddělen od kódu. V tomto rychlém startu se dozvíte, jak tuto službu začlenit do aplikace klasické pracovní plochy konzoly Windows založené na rozhraní .NET Framework.
 
-![Dokončený rychlý start v místním prostředí](./media/quickstarts/dotnet-fx-app-run.png)
+![Kompletní místní rychlý start](./media/quickstarts/dotnet-fx-app-run.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, nainstalujte [Visual Studio 2017](https://visualstudio.microsoft.com/vs) a [rozhraní .NET Framework 4.7.1](https://dotnet.microsoft.com/download) nebo novější, pokud jste tak již neučinili.
+V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visualstudio.microsoft.com/vs) a [rozhraní .NET Framework 4.7.1](https://dotnet.microsoft.com/download) nebo novější, pokud jste tak již neučinili.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,11 +41,11 @@ Abyste mohli absolvovat tento rychlý start, nainstalujte [Visual Studio 2017](h
 
 1. Spusťte sadu Visual Studio a vyberte **souboru** > **nový** > **projektu**.
 
-2. V **nový projekt** dialogového okna, vyberte **nainstalováno**, rozbalte **Visual C#**   >  **Windows Desktop**, vyberte  **Aplikace konzoly (.NET Framework)**, zadejte **název** pro váš projekt, zvolte **rozhraní .NET Framework 4.7.1** nebo nahoru a klikněte na tlačítko **OK**.
+2. V **nový projekt**vyberte **nainstalováno** > **Visual C#**   >  **Windows Desktop**. Vyberte **Konzolová aplikace (.NET Framework)** a zadejte název pro váš projekt. Vyberte **rozhraní .NET Framework 4.7.1** nebo si a vyberte **OK**.
 
-## <a name="connect-to-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
+## <a name="connect-to-an-app-configuration-store"></a>Připojit k úložišti konfigurace aplikace
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet...** . V **Procházet** kartu, vyhledávání a přidat následující balíčky NuGet do projektu (zkontrolujte **zahrnout předběžné verze** pole, pokud nemůžete najít, je).
+1. Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**. Na **Procházet** kartu, vyhledávání a přidejte následující balíčky NuGet do projektu. Pokud je nemůžete najít, vyberte **zahrnout předběžné verze** zaškrtávací políčko.
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
@@ -71,9 +71,9 @@ Abyste mohli absolvovat tento rychlý start, nainstalujte [Visual Studio 2017](h
     </appSettings>
     ```
 
-   Všimněte si, jak jsme čtení připojovací řetězec úložiště konfigurace vaší aplikace z proměnné prostředí `ConnectionString`, je potřeba přidat `Environment` Tvůrce konfigurace před `MyConfigStore` v `configBuilders` vlastnost `appSettings` oddílu.
+   Připojovací řetězec úložiště konfigurace aplikace čte z proměnné prostředí `ConnectionString`. Přidat `Environment` Tvůrce konfigurace před `MyConfigStore` v `configBuilders` vlastnost `appSettings` oddílu.
 
-3. Otevřít *Program.cs* a aktualizovat `Main` používat konfiguraci aplikací pomocí volání metody `ConfigurationManager`.
+3. Otevřít *Program.cs*a aktualizovat `Main` používat konfiguraci aplikací pomocí volání metody `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
@@ -94,7 +94,7 @@ Abyste mohli absolvovat tento rychlý start, nainstalujte [Visual Studio 2017](h
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Restartujte aplikaci Visual Studio, aby tato změna se projeví a potom stiskněte klávesu **Ctrl + F5** na klávesnici a sestavíte a spustíte aplikaci konzoly.
+2. Restartujte aplikaci Visual Studio, aby změna projevila. Stisknutím kláves Ctrl + F5 sestavte a spusťte konzolovou aplikaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -102,7 +102,7 @@ Abyste mohli absolvovat tento rychlý start, nainstalujte [Visual Studio 2017](h
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Framework. Další informace o použití konfigurace aplikace, pokračujte k dalšímu kurzu, který ukazuje ověření.
+V tomto rychlém startu jste vytvořili novým úložištěm konfigurace aplikace a použít s konzolovou aplikaci .NET Framework. Další informace o tom, jak používat konfiguraci aplikací, pokračujte k dalšímu kurzu, který ukazuje ověření.
 
 > [!div class="nextstepaction"]
 > [Spravované identity pro integraci prostředků Azure](./integrate-azure-managed-service-identity.md)

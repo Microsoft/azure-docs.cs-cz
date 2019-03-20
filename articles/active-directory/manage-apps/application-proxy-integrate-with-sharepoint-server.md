@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f0d7907fa755483ef5a92b3376c18d54467cc7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7dc80b78bbba369e0ddb5c2c1e9fd90834dc0148
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120410"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 
@@ -50,7 +50,7 @@ Chcete-li nastavovat KCD pro SharePoint server, použijte postupy v následujíc
 Nejprve ujistěte se, že webová aplikace SharePoint běží pod účtem domény – není místní systém, místní služba nebo účet network service. To proveďte tak, aby hlavní názvy služby (SPN) můžete připojit k tomuto účtu. Hlavní názvy služby jsou způsobu, jakým protokol Kerberos identifikuje různé služby. A budete potřebovat účet později ke konfiguraci KCD.
 
 > [!NOTE]
-Musíte mít dříve vytvořený účet služby Azure AD pro službu. Doporučujeme vám umožňují automatickou změnu hesel. Další informace o úplnou sadu kroků a řešení problémů najdete v tématu [konfigurovat automatickou změnu hesel ve službě SharePoint](https://technet.microsoft.com/library/ff724280.aspx).
+> Musíte mít dříve vytvořený účet služby Azure AD pro službu. Doporučujeme vám umožňují automatickou změnu hesel. Další informace o úplnou sadu kroků a řešení problémů najdete v tématu [konfigurovat automatickou změnu hesel ve službě SharePoint](https://technet.microsoft.com/library/ff724280.aspx).
 
 Aby bylo zajištěno, že vaše weby běží pod účtem služby definované, postupujte následovně:
 
@@ -58,7 +58,7 @@ Aby bylo zajištěno, že vaše weby běží pod účtem služby definované, po
 2. Přejděte na **zabezpečení** a vyberte **konfigurovat účty služby**.
 3. Vyberte **fond webových aplikací – SharePoint - 80**. Možnosti můžou mírně lišit podle názvu fondu web, nebo pokud fondu web ve výchozím nastavení používá protokol SSL.
 
-  ![Možnosti pro konfiguraci účtu služby](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
+   ![Možnosti pro konfiguraci účtu služby](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. Pokud **vyberte účet pro tuto součást** je nastaveno na **místní služba** nebo **síťová služba**, budete muset vytvořit účet. Pokud ne, dokončení a můžete přejít k další části.
 5. Vyberte **zaregistrovat nový účet spravovaný**. Po vytvoření účtu je nutné nastavit **fond webových aplikací** než použijete tento účet.
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý poč�
 6. V seznamu hlavních názvů služby vyberte ten, který jste dříve vytvořili pro účet služby.
 7. Klikněte na **OK**. Klikněte na tlačítko **OK** znovu a uložte změny.
   
-  ![Nastavení delegace](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
+   ![Nastavení delegace](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
 ## <a name="step-2-configure-azure-ad-proxy"></a>Krok 2: Konfigurace Proxy služby Azure AD
 
@@ -142,18 +142,18 @@ Dalším krokem je rozšíření webové aplikace služby SharePoint do nové z�
 1. Spustit **prostředí SharePoint Management Shell**.
 2. Spusťte následující skript pro rozšíření webové aplikace do sítě Extranet zóny a zapněte ověřování protokolem Kerberos:
 
-  ```powershell
-  # Replace "http://spsites/" with the URL of your web application
-  # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
-  $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
-  Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
-  ```
+   ```powershell
+   # Replace "http://spsites/" with the URL of your web application
+   # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
+   $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
+   Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
+   ```
 
 3. Otevřít **Centrální správa SharePoint** lokality.
 4. V části **nastavení systému**vyberte **konfigurace mapování alternativních adres URL**. Otevře se pole mapování alternativních adres URL.
 5. Vyberte svou lokalitu, například **SharePoint - 80**. Pro tuto chvíli nemá extranetu zóny interní adresa URL správně nastavit ještě:
 
-  ![Alternativní mapování pole](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
+   ![Alternativní mapování pole](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
 
 6. Klikněte na tlačítko **přidejte interní adresy URL**.
 7. V **protokol adresy URL, hostitele a port** textové pole, typ **interní adresa URL** nakonfigurované v proxy služby Azure AD, například <https://SharePoint/>.
@@ -161,7 +161,7 @@ Dalším krokem je rozšíření webové aplikace služby SharePoint do nové z�
 9. Klikněte na **Uložit**.
 10. Mapování alternativních adres URL by teď měl vypadat takto:
 
-  ![Opravte mapování alternativních adres URL](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
+    ![Opravte mapování alternativních adres URL](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
 ## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>Krok 4: Ujistěte se, že je nakonfigurovaný certifikát HTTPS pro web služby IIS extranetu zóny
 
@@ -170,13 +170,13 @@ Konfigurace služby SharePoint je nyní dokončena, ale protože je interní adr
 1. Otevřete konzolu prostředí Windows PowerShell.
 2. Spusťte následující skript, který vygenerovat certifikát podepsaný svým držitelem a přidejte ho do počítače úložišti:
 
-  ```powershell
-  # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
-  New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
-  ```
+   ```powershell
+   # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
+   New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
+   ```
 
-  > [!NOTE]
-  Certifikáty podepsané svým držitelem jsou vhodné pouze pro účely testování. V produkčním prostředí doporučujeme používat certifikáty vydané certifikační autoritou místo.
+   > [!NOTE]
+   > Certifikáty podepsané svým držitelem jsou vhodné pouze pro účely testování. V produkčním prostředí doporučujeme používat certifikáty vydané certifikační autoritou místo.
 
 3. Otevřete konzolu "Správce Internetové informační služby".
 4. Rozbalte položku serveru ve stromovém zobrazení rozbalte "Lokalit", vyberte lokalitu, "Proxy AAD – SharePoint" a klikněte na **vazby**.

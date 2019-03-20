@@ -1,6 +1,6 @@
 ---
 title: Virtuální síť koncové body služby – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o tom, jak adda Microsoft.EventHub koncového bodu služby virtuální sítě.
+description: Tento článek obsahuje informace o tom, jak přidat koncový bod služby Microsoft.EventHub k virtuální síti.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -9,22 +9,23 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232599"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887591"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Koncové body služeb virtuální sítě pomocí Azure Event Hubs
 
 Integrace Event Hubs s využitím [koncové body služeb virtuální sítě (VNet)] [ vnet-sep] umožňuje zabezpečený přístup k možnosti zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázány na virtuální sítě, síťová cesta provoz se zabezpečují na obou koncích.
 
-Po nakonfigurování navázat na koncový bod služby podsítě alespoň jednu virtuální síť, příslušný obor názvů Event Hubs již přijímá provoz z libovolného místa, ale oprávnění podsítí ve virtuálních sítích. Z pohledu virtuální sítě nakonfiguruje vazby obor názvů služby Event Hubs do koncového bodu služby izolované sítě tunelové propojení z podsítě virtuální sítě ke službě zasílání zpráv.
+Po nakonfigurování vázán ke koncovému bodu služby podsítě alespoň jednu virtuální síť, příslušný obor názvů Event Hubs již přijímá provoz z libovolného místa, ale oprávnění podsítí ve virtuálních sítích. Z pohledu virtuální sítě nakonfiguruje vazby obor názvů služby Event Hubs do koncového bodu služby izolované sítě tunelové propojení z podsítě virtuální sítě ke službě zasílání zpráv. 
 
-Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány na podsíť a odpovídající obor názvů Event Hubs, přestože pozorovatelných síťovou adresu na zasílání zpráv služby koncového bodu, který v rozsahu veřejných IP.
+Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány na podsíť a odpovídající obor názvů Event Hubs, přestože pozorovatelných síťovou adresu na zasílání zpráv služby koncového bodu, který v rozsahu veřejných IP. Dojde k výjimce tohoto chování. Povolení koncového bodu služby, ve výchozím nastavení, povolí pravidlo denyall v brány firewall protokolu IP, které jsou přidružené k virtuální síti. Přidejte konkrétní IP adresy do brány firewall protokolu IP umožňuje přístup k veřejnému koncovému bodu centra událostí. 
+
 
 >[!WARNING]
 > Implementace integrace virtuální sítě můžete zabránit interakci s centry událostí dalšími službami Azure.
@@ -48,7 +49,7 @@ Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé zabezpečení scénáře povolené ve integrace virtuální sítě 
 
-Řešení, které vyžadují vysoké a zpřehlednění zabezpečení a kde podsítě virtuální sítě poskytuje segmentace mezi těmito službami compartmentalized obecně stále potřebovat komunikační trasy mezi službami, které se nacházejí v těchto oddílech.
+Řešení, které vyžadují vysoké a zpřehlednění zabezpečení a kde podsítě virtuální sítě poskytuje segmentace mezi compartmentalized služby potřebují komunikační trasy mezi službami, které se nacházejí v těchto oddílech.
 
 Žádné okamžité IP trasy mezi oddíly, včetně těch, které může přenos HTTPS přes protokol TCP/IP, přináší riziko zneužití slabých míst z síťové vrstvy v provozu. Zasílání zpráv služby poskytují zcela izolované komunikační cesty, kde se zprávy i zapisují na disk po jejich přechod mezi stranami. Úlohy ve dvou různých virtuálních sítích, které jsou vázány na stejnou instanci služby Event Hubs může komunikovat efektivně a spolehlivě prostřednictvím zprávy, zatímco je zajištěná integrita hranice izolace příslušné síti.
  

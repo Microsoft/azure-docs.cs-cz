@@ -12,12 +12,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d33fb24e08ea0a726f9f8e51eacf17fd22efaf9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791133"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011716"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
 
@@ -76,23 +76,23 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. V **název virtuálního počítače**, zadejte název pro nový virtuální počítač s Linuxem.
 1. Potom zadejte nebo vyberte následující hodnoty:
-    * **Oblast**: Vyberte oblast Azure, který je pro vás nejvhodnější.
-    * **Možnosti dostupnosti**: Vyberte možnost dostupnost a redundance, která je nejvhodnější pro vaše aplikace a data.
-    * **Změnit velikost**: Tuto možnost vyberte velikost počítače a až budete hotovi, zvolte **vyberte**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+   * **Oblast**: Vyberte oblast Azure, který je pro vás nejvhodnější.
+   * **Možnosti dostupnosti**: Vyberte možnost dostupnost a redundance, která je nejvhodnější pro vaše aplikace a data.
+   * **Změnit velikost**: Tuto možnost vyberte velikost počítače a až budete hotovi, zvolte **vyberte**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
-    ![Výběr velikosti virtuálního počítače](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![Výběr velikosti virtuálního počítače](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > Pro vývoj a funkční testování, použít velikost virtuálního počítače u **DS2** nebo vyšší. Pro testování výkonnosti použijte **DS13** nebo vyšší.
 
-    * **Typ ověřování**: Vyberte **veřejný klíč SSH**.
+   * **Typ ověřování**: Vyberte **veřejný klíč SSH**.
 
-    > [!Note]
-    > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+     > [!Note]
+     > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
-    * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
-    * **Veřejný klíč SSH**: Zadejte veřejný klíč RSA.
-    * **Veřejné příchozí porty**: Zvolte **povolit vybrané porty** a vybrat **SSH (22)** port v **vyberte veřejné příchozí porty** seznamu. V tomto rychlém startu tento krok je nezbytný k připojení a dokončete konfiguraci systému SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)**, aby se otevřel port 1433 pro připojení přes internet.
+   * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
+   * **Veřejný klíč SSH**: Zadejte veřejný klíč RSA.
+   * **Veřejné příchozí porty**: Zvolte **povolit vybrané porty** a vybrat **SSH (22)** port v **vyberte veřejné příchozí porty** seznamu. V tomto rychlém startu tento krok je nezbytný k připojení a dokončete konfiguraci systému SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)**, aby se otevřel port 1433 pro připojení přes internet.
 
    ![Příchozí porty](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -120,7 +120,7 @@ IP adresu svého virtuálního počítače najdete na webu Azure Portal.
 
 Pokud máte spuštěnou na Windows a nemáte prostředí BASH, nainstalujte klienta SSH, jako je například PuTTY.
 
-1. [Stáhněte a nainstalujte PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+1. [Stáhněte a nainstalujte PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 1. Spusťte PuTTY.
 

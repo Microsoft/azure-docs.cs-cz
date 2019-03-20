@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: eb5eecaca65cc8394bcc12fc5a475cf5e762f1c9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123670"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak použít nástroje poskytované v sadách SDK pro zjednodušení vývoje pro zřizování
 IoT Hub Device Provisioning Service zjednodušuje proces s plně automatizované zřizování za běhu [automatického zřizování](concepts-auto-provisioning.md) bezpečným a škálovatelným způsobem.  Vyžaduje se ověření zabezpečení ve formě certifikátu X.509 nebo Trusted Platform Module (TPM).  Microsoft je také partnerství s [jiných hardwarových partnerů zabezpečení](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) k vylepšení spolehlivosti při zabezpečení nasazení IoT. Principy hardwarový požadavek zabezpečení může být poměrně obtížné pro vývojáře. Sada SDK služby zřizování prostředí Azure IoT jsou k dispozici tak, aby vývojáři můžou pomocí vrstvy usnadnění psaní klienty, kteří mluví ke službě zřizování. Sady SDK také poskytnout ukázky pro běžné scénáře, jakož i sadu nástrojů pro zjednodušení ověření zabezpečení při vývoji.
@@ -23,9 +23,9 @@ IoT Hub Device Provisioning Service zjednodušuje proces s plně automatizované
 
 Tady jsou kroky pro použití simulátor TPM:
 1. [Příprava vývojového prostředí](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) a naklonujte úložiště GitHub:
-```
-git clone https://github.com/Azure/azure-iot-sdk-java.git
-```
+   ```
+   git clone https://github.com/Azure/azure-iot-sdk-java.git
+   ```
 2. Přejděte do složky simulátoru TPM v rámci ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```.
 3. Spusťte Simulator.exe před spuštěním jakékoli klientské aplikace pro zřizování zařízení.
 4. Nechte běžet na pozadí během procesu zřizování získat ID registrace a ověřovacím klíčem simulátoru.  Obě hodnoty jsou platné pouze pro jednu instanci spuštění.
@@ -47,18 +47,18 @@ V současné době while emulátorem DICE výstupy kořenový certifikát, zpros
 
 Chcete-li generovat certifikát X.509 pomocí tohoto generátoru:
 1. [Příprava vývojového prostředí](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) a naklonujte úložiště GitHub:
-```
-git clone https://github.com/Azure/azure-iot-sdk-java.git
-```
+   ```
+   git clone https://github.com/Azure/azure-iot-sdk-java.git
+   ```
 2. Změňte kořenový adresář azure-iot-sdk-java.
 3. Spustit ```mvn install -DskipTests=true``` stáhnout všechny požadované balíčky a zkompilujte sadu SDK
 4. Přejděte do kořenového adresáře pro generátor certifikátů X.509 v ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```.
 5. Sestavení s ```mvn clean install```
 6. Spusťte nástroj pomocí následujících příkazů:
-```
-cd target
-java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
-```
+   ```
+   cd target
+   java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
+   ```
 7. Po zobrazení výzvy můžete volitelně zadat _běžný název_ pro vaše certifikáty.
 8. Tento nástroj místně vygeneruje **klientský certifikát**, **privátní klíč klientského certifikátu**, **zprostředkující certifikát**a **Root Cert**.
 

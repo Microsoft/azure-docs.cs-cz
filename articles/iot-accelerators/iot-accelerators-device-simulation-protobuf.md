@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 64470a1497a287f4cc2c3ef3ed29986382aeac9b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 9657cda8b0f3a19d02ebf1907116235b88f4cb82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111510"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace pomocí Protocol Buffers telemetrie
 
@@ -37,7 +37,7 @@ Kroky v tomto postupy-k-Průvodci ukazují, jak do:
 Chcete-li postupovat podle kroků v této příručce s postupy, musíte:
 
 * Visual Studio Code. Můžete si stáhnout [Visual Studio Code pro Mac, Linux a Windows](https://code.visualstudio.com/download).
-* .NET core. Můžete si stáhnout [.NET Core pro Windows, Mac a Linux](https://www.microsoft.com/net/download).
+* .NET Core. Můžete si stáhnout [.NET Core pro Windows, Mac a Linux](https://www.microsoft.com/net/download).
 * Postman. Můžete si stáhnout [Postman pro Mac, windows nebo Linux](https://www.getpostman.com/apps).
 * [Nasadí do vašeho předplatného Azure IoT hub](../iot-hub/iot-hub-create-through-portal.md). Potřebujete připojovací řetězec služby IoT hub k dokončení kroků v této příručce. Získání připojovacího řetězce z webu Azure portal.
 * A [nasadí do vašeho předplatného Azure databázi Cosmos DB](../cosmos-db/create-sql-api-dotnet.md#create-a-database-account) , která používá rozhraní SQL API a, který je nakonfigurovaný pro [silnou konzistenci](../cosmos-db/manage-account.md). Potřebujete připojovací řetězec databáze Cosmos DB k dokončení kroků v této příručce. Získání připojovacího řetězce z webu Azure portal.
@@ -70,7 +70,7 @@ Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec 
 
 Místní spuštění mikroslužeb adaptér úložiště, klikněte na tlačítko **ladění \> spustit ladění**.
 
-**Terminálu** okně ve Visual Studio Code se zobrazí výstup ze spuštěné mikroslužeb, včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status>. Když přejdete na tuto adresu, musí být stav "OK: aktivní a dobře".
+**Terminálu** okně ve Visual Studio Code se zobrazí výstup ze spuštěné mikroslužeb, včetně adresy URL pro kontrolu stavu webové služby: <http://127.0.0.1:9022/v1/status>. Když přejdete na tuto adresu, musí být stav "OK: Aktivní a dobře".
 
 Ponechte mikroslužeb adaptér úložiště, který je spuštěn v této instanci aplikace Visual Studio Code, a proveďte následující kroky.
 
@@ -84,58 +84,58 @@ V tomto postupy-k-Průvodci vytvoříte nový model zařízení pro sledování 
 
 1. Definovat funkci zařízení v modelu zařízení **assettracker 01.json** souboru. Část telemetrických dat model zařízení Protobuf musí:
 
-    * Zahrnout název třídy Protobuf, které vytvoříte pro vaše zařízení. Následující části se dozvíte, jak vygenerovat tuto třídu.
-    * Zadejte Protobuf jako formát zprávy.
+   * Zahrnout název třídy Protobuf, které vytvoříte pro vaše zařízení. Následující části se dozvíte, jak vygenerovat tuto třídu.
+   * Zadejte Protobuf jako formát zprávy.
 
-    ```json
-    {
-      "SchemaVersion": "1.0.0",
-      "Id": "assettracker-01",
-      "Version": "0.0.1",
-      "Name": "Asset Tracker",
-      "Description": "An asset tracker with location, temperature, and humidity",
-      "Protocol": "AMQP",
-      "Simulation": {
-        "InitialState": {
-          "online": true,
-          "latitude": 47.445301,
-          "longitude": -122.296307,
-          "temperature": 38.0,
-          "humidity": 62.0
-        },
-        "Interval": "00:01:00",
-        "Scripts": [
-          {
-            "Type": "javascript",
-            "Path": "assettracker-01-state.js"
-          }
-        ]
-      },
-      "Properties": {
-        "Type": "AssetTracker",
-        "Location": "Field",
-        "Latitude": 47.445301,
-        "Longitude": -122.296307
-      },
-      "Telemetry": [
-        {
-          "Interval": "00:00:10",
-          "MessageTemplate": "{\"latitude\":${latitude},\"longitude\":${longitude},\"temperature\":${temperature},\"humidity\":${humidity}}",
-          "MessageSchema": {
-            "Name": "assettracker-sensors;v1",
-            "ClassName": "Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Models.Protobuf.AssetTracker",
-            "Format": "Protobuf",
-            "Fields": {
-              "latitude": "double",
-              "longitude": "double",
-              "temperature": "double",
-              "humidity": "double"
-            }
-          }
-        }
-      ]
-    }
-    ```
+     ```json
+     {
+     "SchemaVersion": "1.0.0",
+     "Id": "assettracker-01",
+     "Version": "0.0.1",
+     "Name": "Asset Tracker",
+     "Description": "An asset tracker with location, temperature, and humidity",
+     "Protocol": "AMQP",
+     "Simulation": {
+       "InitialState": {
+         "online": true,
+         "latitude": 47.445301,
+         "longitude": -122.296307,
+         "temperature": 38.0,
+         "humidity": 62.0
+       },
+       "Interval": "00:01:00",
+       "Scripts": [
+         {
+           "Type": "javascript",
+           "Path": "assettracker-01-state.js"
+         }
+       ]
+     },
+     "Properties": {
+       "Type": "AssetTracker",
+       "Location": "Field",
+       "Latitude": 47.445301,
+       "Longitude": -122.296307
+     },
+     "Telemetry": [
+       {
+         "Interval": "00:00:10",
+         "MessageTemplate": "{\"latitude\":${latitude},\"longitude\":${longitude},\"temperature\":${temperature},\"humidity\":${humidity}}",
+         "MessageSchema": {
+           "Name": "assettracker-sensors;v1",
+           "ClassName": "Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Models.Protobuf.AssetTracker",
+           "Format": "Protobuf",
+           "Fields": {
+             "latitude": "double",
+             "longitude": "double",
+             "temperature": "double",
+             "humidity": "double"
+           }
+         }
+       }
+     ]
+     }
+     ```
 
 ### <a name="create-device-behaviors-script"></a>Vytvoření skriptu chování zařízení
 
@@ -271,7 +271,7 @@ Můžete zastavit dvěma místně spuštěné mikroslužby v jejich instance apl
 
 Pokud už nepotřebujete instance služby IoT Hub a Cosmos DB, můžete je odstraňte z vašeho předplatného Azure, aby se zabránilo zbytečným poplatkům.
 
-## <a name="iot-hub-support"></a>Podpora služby IoT Hub
+## <a name="iot-hub-support"></a>IoT Hub Support
 
 Mnoho funkcí služby IoT Hub nativně nepodporují Protobuf nebo jiných binární formáty. Například nemůžete provádět směrování založen na datovou část zprávy, protože služby IoT Hub nebude moci zpracovat datovou část zprávy. Můžete ale směrovat podle záhlaví zpráv.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: e851f6f5433a832aa30a0d87a917b64d1bc721f2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998982"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je podobný Oracle a DB2 pokročilé open source databáze. Obsahuje připravené pro podnikové funkce, jako je řízení souběžnosti více verzí, plně odpovídající zásadám ACID dodržování předpisů a spolehlivé zpracování transakcí. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálky cizí dat Oracle, MySQL, MongoDB a mnoha dalších). Je velmi dobře rozšiřitelná s podporou více než 12 postupu jazycích, GIN a GiST indexů, podporu prostorových dat a více funkcí až pravděpodobnosti NoSQL pro JSON nebo aplikace pro systém hodnotou klíče.
@@ -238,5 +238,5 @@ Použijte následující příkaz k aktualizaci dat v tabulce. Pro tento jeden S
 
 
 ## <a name="get-more-information-about-postgresql"></a>Získejte další informace o PostgreSQL
-Teď, když jste dokončili instalace PostgreSQL jsou ve virtuálním počítači Azure s Linuxem, budete moct využívat používat v Azure. Další informace o PostgreSQL, přejděte [PostgreSQL webu](http://www.postgresql.org/).
+Teď, když jste dokončili instalace PostgreSQL jsou ve virtuálním počítači Azure s Linuxem, budete moct využívat používat v Azure. Další informace o PostgreSQL, přejděte [PostgreSQL webu](https://www.postgresql.org/).
 

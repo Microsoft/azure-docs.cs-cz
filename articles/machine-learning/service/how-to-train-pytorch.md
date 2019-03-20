@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f1c4e7695e0c260b6486b3c3d4d0bd8b3f951f6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004058"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trénování modelů PyTorch službou Azure Machine Learning
 
@@ -42,6 +42,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 Jsme zde, zadejte následující parametry pro konstruktor PyTorch:
+
 Parametr | Popis
 --|--
 `source_directory` |  Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
@@ -82,6 +83,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 Tento kód zveřejňuje následující nové parametry pro konstruktor PyTorch:
+
 Parametr | Popis | Výchozí
 --|--|--
 `node_count` |  Počet uzlů pro trénovací úlohu. | `1`

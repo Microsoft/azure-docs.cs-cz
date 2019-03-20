@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009925"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -340,6 +340,7 @@ Ne, Traffic Manager neumožňuje kombinovat adresování typy koncových bodů v
 Po přijetí dotaz vůči profilu Traffic Manageru vyhledá první koncový bod, který je vrácen podle metodu směrování zadat a stav koncových bodů. Poté hledá v typu záznamu. požadovaný v příchozí dotaz a typ záznamu spojená s koncovým bodem před vrácením odpovědi na základě následující tabulky.
 
 Pro profily s kteroukoli metodu směrování, než je hodnot:
+
 |Příchozí požadavek dotazu|    Typ koncového bodu|  K dispozici odpověď|
 |--|--|--|
 |VŠECHNY |  A / AAAA / CNAME |  Cílový koncový bod| 
@@ -350,6 +351,7 @@ Pro profily s kteroukoli metodu směrování, než je hodnot:
 |CNAME |    CNAME | Cílový koncový bod|
 |CNAME  |A / AAAA | NODATA |
 |
+
 Profily pomocí metody směrování nastavený na více hodnot:
 
 |Příchozí požadavek dotazu|    Typ koncového bodu | K dispozici odpověď|

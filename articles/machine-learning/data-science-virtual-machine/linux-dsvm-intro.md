@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 58f4d7be530aa3c7e0071a2f0d80bc30ebd5cf25
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835743"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřízení CentOS Data Science virtuálního počítače s Linuxem v Azure
 
@@ -104,7 +104,7 @@ Tady jsou kroky pro vytvoření instance z Linuxu virtuální počítač pro dat
 Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Jak získat přístup k virtuální počítač Linux datové vědy
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go proveden výrazně lepší než X11 předávání v testování. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -114,7 +114,7 @@ Po vytvoření virtuálního počítače se můžete přihlásit se pomocí prot
 ## <a name="installing-and-configuring-x2go-client"></a>Instalace a konfigurace X2Go klienta
 Virtuální počítač s Linuxem už zřízeny X2Go serveru a připravené tak, aby přijímal připojení klienta. Pro připojení k desktopu grafické virtuálního počítače s Linuxem, udělejte na klienta:
 
-1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
      * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
@@ -132,7 +132,7 @@ R je jedním z nejoblíbenějších jazyků pro analýzy dat a strojové učení
 
 Spuštění R konzoly, stačí zadat **R** v prostředí. Tím přejdete na interaktivní prostředí. K vývoji aplikace R, obvykle použít editor, například (emacs) nebo editoru vi nebo gedit a pak spusťte skripty v rámci jazyka R. S prostředím RStudio máte úplné grafické prostředí IDE k vývoji aplikace R.
 
-K dispozici je také skriptu jazyka R můžete nainstalovat [balíčky Top 20 R](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) potřebujete. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, které může uživatel zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
+K dispozici je také skriptu jazyka R můžete nainstalovat [balíčky Top 20 R](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) potřebujete. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, které může uživatel zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
 
 ### <a name="python"></a>Python
 Pro vývoj pomocí Pythonu byl nainstalován distribuce Anaconda Python 2.7 a 3.5. Toto rozdělení obsahuje základní Python spolu s přibližně 300 nejoblíbenějších balíčků analytics matematické, inženýrství a data. Můžete použít výchozí textových editorů. Kromě toho můžete použít Spyder, integrované vývojové prostředí Pythonu, který je součástí distribuce Anaconda Python. Spyder potřebuje grafické stolní počítač nebo X11 předávání. Zástupce Spyder je součástí grafické desktop.
@@ -203,7 +203,7 @@ Hadoop můžete zastavit služby související s, když je nepotřebujete spušt
 ### <a name="ides-and-editors"></a>Editory a integrovanými vývojovými prostředími
 Máte možnost výběru z několika editory kódu. To zahrnuje vi/VIM (emacs), gEdit, PyCharm, RStudio, Eclipse a IntelliJ. gEdit, Eclipse, IntelliJ, RStudio nebo PyCharm jsou grafické editory a musíte být přihlášeni grafické desktopu k jejich použití. Tyto editory obsahují desktopových a aplikačních zástupci v nabídce je spustit.
 
-**VIM** a **Emacs** jsou textové editory. Do (emacs) jsme nainstalovali balíček doplňku volat (emacs) mluví statistiky (UPU), která usnadňuje práci s jazykem R v editoru (emacs). Další informace najdete v [UPU](http://ess.r-project.org/).
+**VIM** a **Emacs** jsou textové editory. Do (emacs) jsme nainstalovali balíček doplňku volat (emacs) mluví statistiky (UPU), která usnadňuje práci s jazykem R v editoru (emacs). Další informace najdete v [UPU](https://ess.r-project.org/).
 
 **Eclipse** je typu open source, rozšiřitelné integrované vývojové prostředí, která podporuje více jazyků. Edice vývojáře Java je instance nainstalovaný na virtuálním počítači. Nejsou k dispozici pro několik oblíbených jazyků, které je možné nainstalovat rozšíření prostředí moduly plug-in. Modul plug-in nainstalované v Eclipse, volá se, máme také **sady Azure Toolkit pro Eclipse**. Umožňuje vytvořit, vývoj, testování a nasazování aplikací Azure pomocí vývojového prostředí Eclipse, který podporuje jazyky jako Java. K dispozici je také **sady Azure SDK pro Javu** , který umožňuje přístup do různých služeb Azure z prostředí Java. Další informace o sadě Azure toolkit pro Eclipse najdete v [sady Azure Toolkit pro Eclipse](../../azure-toolkit-for-eclipse.md).
 
@@ -377,5 +377,5 @@ Zde je, jak můžete pokračovat v učení a zkoumání:
 * [Vědecké zpracování dat v systému Linux virtuální počítač pro datové vědy](linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžných úloh datové vědy Data Science virtuálního počítače s Linuxem zřízené tady. 
 * Prozkoumejte různé nástrojů pro datové vědy pro datovou vědu virtuální počítač a vyzkoušejte si nástroje popsané v tomto článku. Můžete také spustit *dsvm. více informací* na prostředí v rámci virtuálního počítače pro základní informace a odkazy na další informace o těchto nástrojích, nainstalovaný na virtuálním počítači.  
 * Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
-* Přejděte [galerii Cortana Analytics](http://gallery.cortanaanalytics.com) pro machine learning a datové analýzy ukázky, které používají Cortana Analytics Suite.
+* Přejděte [galerii Cortana Analytics](https://gallery.cortanaanalytics.com) pro machine learning a datové analýzy ukázky, které používají Cortana Analytics Suite.
 

@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: c684d275052e011d965210c132e09bab679cf166
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003546"
 ---
 # <a name="templates"></a>Šablony
 
@@ -45,6 +45,8 @@ Data Factory používá pro ukládání šablon kanálu data factory šablon Azu
 -   Kopírování šablony:
 
     -   [Hromadné kopírování z databáze](solution-template-bulk-copy-with-control-table.md)
+    
+    -   [Kopírování nových souborů ve LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Kopírování více kontejnerů souborů mezi souborové úložiště](solution-template-copy-files-multiple-containers.md)
 

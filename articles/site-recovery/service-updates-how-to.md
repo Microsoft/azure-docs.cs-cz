@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: e3933fb593dfafc6ecc641d7c19741b7c0882c00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091643"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizace služeb ve službě Azure Site Recovery
 Jako organizace budete muset zjistit, jak budete bezpečnost vašich dat a aplikací a úloh v případě plánovaných a neplánovaných výpadků. Azure Site Recovery přispívá ke strategii BCDR tím, že vaše aplikace běžící na virtuálních počítačích a fyzických serverů, které jsou k dispozici, pokud web přestane fungovat. Site Recovery replikuje úlohy spuštěné na virtuálních počítačích a fyzických serverech, aby zůstaly dostupné v sekundárním umístění v případě, že je primární lokalita nedostupná. Po opětovném zprovoznění primární lokality do ní úlohy obnoví.
@@ -108,7 +108,7 @@ Než budete pokračovat s aktualizacemi, odkazovat na [výrazem podpory Site Rec
 Restartování se doporučuje po každém upgradu agenta Mobility Ujistěte se, že jsou načteny všechny nejnovější změny na zdrojovém počítači. Je ale **není povinné**. Pokud rozdíl mezi verze agenta během posledního restartování a aktuální verze je větší než 4, restartování je povinný. Naleznete v následující tabulce pro podrobné vysvětlení.
 
 |**Verze agenta během poslední restartování** | **Upgrade na** | **Je restartovat povinné?**|
-|---------|---------|---------|--------|
+|---------|---------|---------|
 |9.16 |  9.18 | Není povinná|
 |9.16 | 9.19 | Není povinná|
 | 9.16 | 9.20 | Není povinná

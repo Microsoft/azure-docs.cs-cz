@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: e12ca7561181412318fa594093b047cd95e4e6bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894389"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování pomocí agenta Microsoft Azure Recovery Services (MARS)
 
@@ -26,9 +26,7 @@ Azure Backup používá agenta MARS zálohovat data z místních počítačů a 
 - Spuštění na virtuálních počítačích s Windows tak, aby můžete zálohovat přímo do trezoru.
 - Spusťte na serveru System Center Data Protection Manager (DPM) nebo Microsoft Azure Backup Server (MABS). V tomto scénáři počítače a úlohy zálohování na DPM server nebo MABS. Agenta MARS tento server pak zálohuje do trezoru v Azure. 
 
-Možnosti zálohování závisí na instalaci agenta. Další informace najdete v tématu [architektury Azure Backup pomocí agenta MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders). Informace o zálohování architektura MABS a aplikace DPM najdete v tématu [zpět do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) pro zálohování architekturu.
-
-## <a name="supported-installations"></a>Podporovaná zařízení
+Možnosti zálohování závisí na instalaci agenta. Další informace najdete v tématu [architektury Azure Backup pomocí agenta MARS](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informace o zálohování architektura MABS a aplikace DPM najdete v tématu [zpět do DPM nebo MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Viz také [požadavky](backup-support-matrix-mabs-dpm.md) pro zálohování architekturu.
 
 **Instalace** | **Podrobnosti**
 --- | ---
@@ -139,14 +137,12 @@ Azure Backup podporuje *offline předvyplnění* pro přenos počáteční zálo
 
 Zálohování offline nelze použít pro soubory stavu systému.
 
-
 ## <a name="support-for-data-restoration"></a>Podpora pro obnovení dat
 
 S použitím [rychlé obnovení](backup-instant-restore-capability.md) funkce služby Azure Backup můžete obnovit data předtím, než je zkopírován do trezoru. Musí být počítač zálohujete spuštěn rozhraní .NET Framework 4.5.2 nebo novější.
 
 Zálohování není možné obnovit do cílového počítače, na kterém běží starší verze operačního systému. Například může být obnovena záloha provést z počítače se systémem Windows 7 na Windows 8 nebo novější. Ale zálohování provést z počítače se systémem Windows 8 nelze obnovit v počítači se systémem Windows 7.
 
-
 ## <a name="next-steps"></a>Další postup
-- Další informace o [architekturu, která používá agenta MARS zálohovat](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders).
+- Další informace o [architekturu, která používá agenta MARS zálohovat](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Zjistěte, co je podporovaná, až vám [spuštění agenta MARS na serveru aplikace DPM nebo MABS](backup-support-matrix-mabs-dpm.md).

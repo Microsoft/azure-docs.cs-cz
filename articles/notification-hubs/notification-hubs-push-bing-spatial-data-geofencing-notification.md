@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7b01ee726d8417e34645e743497a02455fbe709c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118302"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Kurz: Nabízená oznámení založená na poloze pomocí Azure Notification Hubs a Bing Spatial Data
 
@@ -63,12 +63,12 @@ V tomto kurzu provedete následující kroky:
 
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stránce **Nahrát zdroj dat** proveďte následující akce:
-    1. Jako **Formát dat** vyberte **kanál**.
-    2. Procházet a vybrat `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
-    3. Vyberte tlačítko **Nahrát**.
+   1. Jako **Formát dat** vyberte **kanál**.
+   2. Procházet a vybrat `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
+   3. Vyberte tlačítko **Nahrát**.
 
-    > [!NOTE]
-    > Může se zobrazit výzva k zadání nového klíče jako **hlavního klíče**, který se bude lišit od **klíče dotazu**. Nový klíč jednoduše vytvořte přes řídicí panel a aktualizujte stránku pro nahrání zdroje dat.
+      > [!NOTE]
+      > Může se zobrazit výzva k zadání nového klíče jako **hlavního klíče**, který se bude lišit od **klíče dotazu**. Nový klíč jednoduše vytvořte přes řídicí panel a aktualizujte stránku pro nahrání zdroje dat.
 6. Jakmile nahrajete datový soubor, bude nezbytné publikovat zdroj dat. Stejně jako předtím vyberte **Zdroje dat** -> **Spravovat zdroje dat**.
 7. V seznamu vyberte váš zdroj dat a ve sloupci **Akce** zvolte **Publikovat**.
 
@@ -112,11 +112,11 @@ V tomto kurzu provedete následující kroky:
     ```
     Zprovozníte ho zadáním následujících parametrů:
 
-    * **ID zdroje dat** a **Název zdroje dat** – v rozhraní API Map Bing zdroje dat obsahují různá kategorizovaná metadata, například lokality a pracovní doby provozu.  
-    * **Název entity** – entita, kterou chcete použít jako referenční bod pro oznámení.
-    * **Klíč rozhraní API Map Bing** – klíč, který jste dříve získali při vytváření účtu Dev Center pro Bing.
+   * **ID zdroje dat** a **Název zdroje dat** – v rozhraní API Map Bing zdroje dat obsahují různá kategorizovaná metadata, například lokality a pracovní doby provozu.  
+   * **Název entity** – entita, kterou chcete použít jako referenční bod pro oznámení.
+   * **Klíč rozhraní API Map Bing** – klíč, který jste dříve získali při vytváření účtu Dev Center pro Bing.
 
-    Když teď máte připravený zdroj dat, můžete začít pracovat na aplikaci pro UPW.
+     Když teď máte připravený zdroj dat, můžete začít pracovat na aplikaci pro UPW.
 2. Povolte pro vaši aplikaci zjišťování polohy. V **Průzkumníku řešení** otevřete soubor `Package.appxmanifest`.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)

@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9c20c141f640ae5f868b350951e132d3a6479af9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576234"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085027"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -85,24 +85,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
      
-      - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
-      - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
+   - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
+   - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
-      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
 
-    ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
+     ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka datové továrny](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku: 
 
-   ![Karta Upravit](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![Karta Upravit](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 Vzhledem k tomu, že cluster Hadoop je ve virtuální síti, musíte do stejné virtuální sítě nainstalovat místní prostředí Integration Runtime. V této části vytvoříte nový virtuální počítač, připojíte ho do stejné virtuální sítě a nainstalujete na něm místní prostředí IR. Místní prostředí IR umožňuje službě Data Factory odesílat požadavky na zpracování do výpočetní služby, jako je HDInsight, ve virtuální síti. Umožňuje také přesun dat mezi úložištěm dat ve virtuální síti a Azure. Místní prostředí IR použijete i v případě, že je úložiště dat nebo výpočetní služba v místním prostředí. 

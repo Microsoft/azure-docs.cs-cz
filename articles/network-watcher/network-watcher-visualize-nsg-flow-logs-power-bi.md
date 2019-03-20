@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079022"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Skupina zabezpečení sítě visualizing protokolů toku s využitím Power BI
 
@@ -56,10 +56,10 @@ Také musíte mít nainstalovaného na vašem počítači a dostatek volného m�
 
 1. Stáhnout a otevřít následující šablony Power BI v aplikaci Power BI Desktopu [protokoly toku Network Watcher PowerBI šablony](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Zadejte požadované parametry dotazu
-    1. **StorageAccountName** – Určuje, že název účtu úložiště obsahující protokoly toků NSG, které chcete načíst a vizualizace.
-    1. **NumberOfLogFiles** – určuje počet souborů protokolů, které chcete stáhnout a vizualizace v Power BI. Pokud je zadán 50, například 50 nejnovějších souborů protokolu. Pokud budeme mít 2 skupin zabezpečení sítě povolené a nakonfigurované k odeslání protokolů toku NSG k tomuto účtu, můžete zobrazit posledních 25 hodin protokolů.
+   1. **StorageAccountName** – Určuje, že název účtu úložiště obsahující protokoly toků NSG, které chcete načíst a vizualizace.
+   1. **NumberOfLogFiles** – určuje počet souborů protokolů, které chcete stáhnout a vizualizace v Power BI. Pokud je zadán 50, například 50 nejnovějších souborů protokolu. Pokud budeme mít 2 skupin zabezpečení sítě povolené a nakonfigurované k odeslání protokolů toku NSG k tomuto účtu, můžete zobrazit posledních 25 hodin protokolů.
 
-    ![hlavní Power BI][2]
+      ![hlavní Power BI][2]
 
 1. Zadejte přístupový klíč účtu úložiště. Platné přístupové klíče můžete najít tak, že přejdete do účtu úložiště v Azure portal a potom zvolíte **přístupové klíče** z nabídky nastavení. Klikněte na tlačítko **připojit** pak použít změny.
 
@@ -67,7 +67,7 @@ Také musíte mít nainstalovaného na vašem počítači a dostatek volného m�
 
     ![přístupový klíč 2][4]
 
-4.  Protokoly jsou stáhnout a analyzovat a mohou nyní využívat předem vytvořených vizuálů.
+4. Protokoly jsou stáhnout a analyzovat a mohou nyní využívat předem vytvořených vizuálů.
 
 ## <a name="understanding-the-visuals"></a>Principy vizuály
 

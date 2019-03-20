@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0f700b9e24399768977a1fa221322fa4c1c6708d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095139"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -61,7 +61,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Pokud **slmgr.vbs/dlv** zobrazí prodejní kanál, spusťte následující příkazy pro nastavení [Instalační klíč klienta služby správy KLÍČŮ](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) se používají pro verzi systému Windows Server a vynutit u něj k aktivaci opakujte: 
+2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -81,34 +81,34 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
 
 2. Přejít na Start, Hledat v prostředí Windows PowerShell, klikněte pravým tlačítkem na prostředí Windows PowerShell a vybrat příkaz Spustit jako správce.
 
-3. Ujistěte se, že virtuální počítač je nakonfigurován na použití správný server služby správy KLÍČŮ Azure. Chcete-li to provést, spusťte následující příkaz:
-  
+3. Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby používal správný server Azure KMS. Chcete-li to provést, spusťte následující příkaz:
+  
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    Příkaz by měl vrátit: Název počítače služby správy klíčů na kms.core.windows.net:1688 byl úspěšně nastaven.
+    Výstupem příkazu by mělo být: Název počítače služby správy klíčů na kms.core.windows.net:1688 byl úspěšně nastaven.
 
-4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, které jste extrahovali Pstools.zip stahování a pak spusťte následující příkaz:
-  
+4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, do které jste extrahovali stažený soubor Pstools.zip, a spusťte následující:
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
-  V druhé poslední řádek výstupu Ujistěte se, že se zobrazí: Odeslání = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
+  
+   Ujistěte se, že se na předposledním řádku výstupu zobrazí následující: Odeslání = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
 
-  Pokud bylo ztraceno je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V takovém případě pokud je virtuální počítač ve virtuální síti a má vlastní server DNS zadán, je nutné tento server DNS je schopen převést kms.core.windows.net. Nebo změnit DNS server, který kms.core.windows.net vyřešit.
+   Pokud bylo ztraceno je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V takovém případě pokud je virtuální počítač ve virtuální síti a má vlastní server DNS zadán, je nutné tento server DNS je schopen převést kms.core.windows.net. Nebo změnit DNS server, který kms.core.windows.net vyřešit.
 
-  Všimněte si, že pokud odeberete všechny servery DNS z virtuální sítě, virtuální počítače používají interní služba DNS Azure. Tato služba dokáže přeložit kms.core.windows.net.
+   Všimněte si, že pokud odeberete všechny servery DNS z virtuální sítě, virtuální počítače používají interní služba DNS Azure. Tato služba dokáže přeložit kms.core.windows.net.
   
 Dál ověřte, že není nakonfigurovaná brána firewall hosta způsobem, který se bude blokovat pokusy o aktivaci.
 
-5. Po ověření úspěšného připojení k kms.core.windows.net, spusťte následující příkaz v tomto řádku se zvýšenými oprávněními prostředí Windows PowerShell. Tento příkaz se pokusí aktivace více než jednou.
+1. Po ověření úspěšného připojení k kms.core.windows.net, spusťte následující příkaz v tomto řádku se zvýšenými oprávněními prostředí Windows PowerShell. Tento příkaz se několikrát pokusí o aktivaci.
 
     ```
     1..12 | % { iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
     ```
 
-Úspěšné aktivaci vrátí informace, které vypadá přibližně takto:
+Po úspěšné aktivaci se vrátí podobné informace:
 
 **Aktivace Windows(R) ServerDatacenter edition (12345678-1234-1234-1234-12345678)... Produkt se úspěšně aktivoval.**
 

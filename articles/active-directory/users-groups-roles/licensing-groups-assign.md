@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 02/25/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 423399c93fca222dad2db3175036719a0cd5fdb9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201082"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory
 
@@ -30,7 +30,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 
 > [!NOTE]
 > Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít vlastnost Usage umístění na uživatele.
-
+> 
 > Přiřazení licencí skupiny zdědí všechny uživatele bez zadaného místa využití umístění adresáře. Pokud máte uživatele v několika umístěních, doporučujeme, abyste jako součást vytváření toku uživatele ve službě Azure AD (např. pomocí AAD Connect konfigurace) –, který zajišťuje výsledek přiřazení licence je vždy správný a uživatelé neobdrží vždy nastavena místo využívání služby v umístění, které nejsou povoleny.
 
 ## <a name="step-1-assign-the-required-licenses"></a>Krok 1: Přiřadit požadované licence
@@ -41,7 +41,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 
 4. V části **všechny produkty**, vyberte Office 365 Enterprise E5 a Enterprise Mobility + Security E3 tak, že vyberete názvů produktů. Chcete-li spustit přiřazení, vyberte **přiřadit** v horní části podokna.
 
-   ![Všechny produkty, přiřazení licence](./media/licensing-groups-assign/all-products-assign.png)
+   ![Vyberte produkty k přiřazení licencí](./media/licensing-groups-assign/all-products-assign.png)
   
 5. Na **přiřadit licence** vyberte **uživatelů a skupin** otevřete seznam uživatelů a skupin.
 
@@ -49,7 +49,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 
 7. Na **přiřadit licence** podokně klikněte na tlačítko **možnosti přiřazení**, zobrazuje všechny plány služby, které jsou součástí tyto dva produkty, které jsme vybrali dříve. Najít **Yammer Enterprise** a znovu je zapnout **vypnout** zakázat tuto službu z licenci na produkt. Potvrďte kliknutím **OK** v dolní části **licenčních voleb**.
 
-   ![Možnosti přiřazení](./media/licensing-groups-assign/assignment-options.png)
+   ![Vyberte plány služeb pro licence](./media/licensing-groups-assign/assignment-options.png)
   
 8. Přiřazení dokončíte tak, že v dolní části podokna **Přiřadit licenci** kliknete na **Přiřadit**.
 
@@ -69,7 +69,7 @@ Po přiřazení licence ke skupině, zpracuje všechny stávající členy této
 
    - Informace o uživatelích, kteří jsou v chybovém stavu protože licence se nepovedlo přiřadit k nim.
 
-   ![Možnosti přiřazení](./media/licensing-groups-assign/assignment-errors.png)
+   ![chyby při licencování a stav licence](./media/licensing-groups-assign/assignment-errors.png)
 
 3. Si zobrazili podrobnější informace o licenci zpracování v rámci **Azure Active Directory** > **uživatelů a skupin** > *název skupiny*  >  **Protokoly auditu**. Mějte na paměti následující činnosti:
 
@@ -85,15 +85,15 @@ Po přiřazení licence ke skupině, zpracuje všechny stávající členy této
 2. V podokně skupiny vyberte **licence**. Oznámení o podokně ukazují, že jsou 10 uživatelů, které nelze přiřadit licence. Otevřete ho a podívejte se seznam všech uživatelů v chybovém stavu licencí pro tuto skupinu.
 3. **Neúspěšných přiřazení** sloupec víme, že obě licence na produkty nebylo možné přiřadit uživatelům. **Nejčastější příčiny selhání** sloupec obsahuje příčinu selhání. V tomto případě má **konfliktní plány služeb**.
 
-   ![Neúspěšné přiřazení](./media/licensing-groups-assign/failed-assignments.png)
+   ![licence, které nebylo možné přiřadit](./media/licensing-groups-assign/failed-assignments.png)
 
 4. Vyberte uživatele, aby otevřel **licence** podokně. V tomto podokně se zobrazí všechny licence, které jsou aktuálně přiřazeny uživateli. V tomto příkladu má uživatel licenci Office 365 Enterprise E1, která byla zděděna od **veřejného terminálu uživatelé** skupiny. To je v konfliktu s licencí E3, systém se pokusil použít z **Personální oddělení** skupiny. V důsledku toho žádná z dané skupiny licencí bylo přiřazeno uživateli.
 
-   ![Zobrazení licencí pro uživatele](./media/licensing-groups-assign/user-license-view.png)
+   ![Zobrazit všechny konflikty licence pro uživatele](./media/licensing-groups-assign/user-license-view.png)
 
 5. Pokud chcete tento konflikt vyřešit, odeberte uživatele z **veřejného terminálu uživatelé** skupiny. Poté, co Azure AD zpracovává této změny **Personální oddělení** správně přiřazení licencí.
 
-   ![Správně přiřazenou licenci](./media/licensing-groups-assign/license-correctly-assigned.png)
+   ![Zde správně přiřazení licencí](./media/licensing-groups-assign/license-correctly-assigned.png)
 
 ## <a name="next-steps"></a>Další postup
 

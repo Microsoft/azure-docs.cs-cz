@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd57b753a4e59f2fb9590f081345d7af0de9124d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 830825c6ad54a6ff300fb7ee223b32ee0571a55a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451465"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163530"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 

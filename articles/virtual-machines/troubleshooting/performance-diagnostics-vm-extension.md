@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980019"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002730"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače výkonu Azure Diagnostics pro Windows
 
@@ -89,7 +89,7 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 
 Postupujte podle těchto pokynů k instalaci rozšíření na virtuálních počítačích Windows:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte virtuální počítač, ve které chcete nainstalovat tato rozšíření.
 
     ![Snímek obrazovky Azure Portalu s virtuálními počítači zvýrazněnou](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Postupujte podle těchto pokynů k instalaci rozšíření na virtuálních poč
 ## <a name="remove-the-extension"></a>Odebrat rozšíření
 Odebrat rozšíření z virtuálního počítače, postupujte podle těchto kroků:
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření a pak vyberte **rozšíření** okno. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření a pak vyberte **rozšíření** okno. 
 2. Vyberte (**...** ) pro rozšíření diagnostiky výkonu položku ze seznamu a vyberte **odinstalovat**.
 
     ![Rozšíření – snímek obrazovky okna s odinstalovat zvýrazněnou](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -125,7 +125,7 @@ Rozšíření virtuálního počítače Azure je možné nasadit s využitím š
 
 ```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994388"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -106,7 +106,7 @@ Pokud Azure mezipaměti Redis je hostovaný ve virtuální síti, se používaj�
 
 Existuj sedm požadavků odchozí port.
 
-- Pokud požadovaný, všechny odchozí připojení k Internetu, lze provést prostřednictvím klienta v místním auditování zařízení.
+- Všechny odchozí připojení k Internetu, lze provést prostřednictvím klienta na auditování v místním zařízení.
 - Tři porty směrování provozu do koncových bodů Azure údržby služby Azure Storage a Azure DNS.
 - Zbývající rozsahy portů a pro interní komunikaci podsítě Redis. Žádná pravidla NSG podsítě jsou požadovány pro interní komunikaci podsítě Redis.
 

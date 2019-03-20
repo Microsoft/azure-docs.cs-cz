@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4fb4989327896a74a33e16635a3ce37d1dbbc889
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c9cdac53e43d57feb0d2dc5a8a7153dc05be8a7d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170628"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (privátní verze preview)
 
@@ -112,7 +112,7 @@ Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-t
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu obsahuje komprimovaný balíček pouze soubor index.html.
+    Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu zkomprimovaného balíčku obsahuje pouze soubor index.html.
 3. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**. 
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace – parametr containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)

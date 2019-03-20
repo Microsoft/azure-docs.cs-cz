@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 32604c06c6a4325f7ae6cb45930de902a1366480
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895477"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živých Azure Cloud Services službou Application Insights
 
@@ -33,7 +33,7 @@ Application Insights Profiler je nainstalován pomocí rozšíření Azure Diagn
 
 1. Přidat [Application Insights SDK pro Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-  >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler.
+   >**V profileru, který se dodává v nejnovější verzi WAD pro Cloud Services je chyba.** Chcete-li použít profiler s cloudovou službou, podporuje pouze sady Application Insights SDK verzi 2.7.2. Pokud používáte novější verzi sady Application Insights SDK, budete muset přejít zpět na 2.7.2, aby bylo možné využívat profiler. Pokud používáte sadu Visual Studio na starší verzi verze sady App Insights SDK, se může zobrazit chyba přesměrování vazby v době běhu. Je to proto, že "newVersion" v souboru web.config pro Microsoft.ApplicationInsights musí být nastavená na "2.7.2.0" po downgradu sady Application Insights SDK, ale nebude aktualizovat automaticky.
 
 1. Požadavky na sledování pomocí Application Insights:
 

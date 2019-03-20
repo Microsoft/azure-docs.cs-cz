@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f2b8e79d5b7638a8266ada9f789b055d9249dc5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531058"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077798"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API vytvoříte kanál Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -64,24 +64,24 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
   
   1. Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
     
-    ```PowerShell 
-    Connect-AzAccount
-    ```   
+     ```PowerShell 
+     Connect-AzAccount
+     ```   
   2. Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet:
 
-    ```PowerShell     
-    Get-AzSubscription
-    ``` 
+     ```PowerShell     
+     Get-AzSubscription
+     ``` 
   3. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Místo **&lt;NameOfAzureSubscription**&gt; zadejte název svého předplatného Azure. 
      
-    ```PowerShell
-    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
-    ```
+     ```PowerShell
+     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
+     ```
   4. Spuštěním následujícího příkazu v prostředí PowerShell vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**:  
 
-    ```PowerShell     
+     ```PowerShell     
       New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-    ```
+     ```
      
       Pokud skupina prostředků už existuje, určete, jestli se má aktualizovat (Y), nebo ponechat tak, jak je (N). 
      

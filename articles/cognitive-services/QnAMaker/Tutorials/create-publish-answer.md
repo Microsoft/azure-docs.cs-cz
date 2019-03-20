@@ -11,23 +11,23 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: dd307e4abf4145bad9e0be79d261abf98d7bb3b7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102158"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Pomocí C#, vytvořte základní znalosti pak odpověď na otázku
 
 Tento kurz vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky zákazníka s využitím znalostní báze. 
 
 > [!div class="checklist"]
-* Vytvoření znalostní báze 
-* Kontrola stavu vytváření
-* Trénování a publikování znalostní báze
-* Získání informací o koncových bodech
-* Dotazování znalostní báze pomocí cURL
+> * Vytvoření znalostní báze 
+> * Kontrola stavu vytváření
+> * Trénování a publikování znalostní báze
+> * Získání informací o koncových bodech
+> * Dotazování znalostní báze pomocí cURL
 
 
 Tento rychlý start volá rozhraní API služby QnA Maker:

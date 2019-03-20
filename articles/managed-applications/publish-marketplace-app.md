@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343957"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892910"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Spravované aplikace Azure v Marketplace
 
@@ -43,7 +43,7 @@ Pokud se chcete stát vydavatelem v Azure Marketplace, musíte splnit následuj�
 
 1. Vytvořit Microsoft ID: Vytvořte si účet Microsoft pomocí e-mailové adresy, která patří do domény vaší společnosti, ale nepatří konkrétnímu uživateli. Tato e-mailová adresa se používá pro Centrum pro vývojáře Microsoft i pro portál partnerů cloudu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 1. Odeslat [nominační formulář Azure Marketplace](https://aka.ms/ampnomination): Pro **řešení, které chcete publikovat**, vyberte **spravovanou aplikaci**. Po odeslání formuláře tým registrace Marketplace aplikace zkontroluje a ověří žádost. Schvalovací proces může trvat jeden až tři dny. Pokud bude vaše nominace schválena, získáte propagační kód umožňující zproštění od poplatku za registraci do centra pro vývojáře. Pokud nominační formulář pro Marketplace **neodešlete**, činí registrační poplatek 99 USD.
-1. Zaregistrovat se v [centru pro vývojáře](http://dev.windows.com/registration?accountprogram=azure): Microsoft ověří, jestli vaše organizace je platným právním subjektem s platným kódem DIČ v zemi, ve které je zaregistrovaná. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
+1. Zaregistrovat se v [centru pro vývojáře](https://dev.windows.com/registration?accountprogram=azure): Microsoft ověří, jestli vaše organizace je platným právním subjektem s platným kódem DIČ v zemi, ve které je zaregistrovaná. Schvalovací proces může trvat 5 až 10 dnů. Pokud nechcete platit registrační poplatek, použijte propagační kód, který jste obdrželi e-mailem v rámci nominačního procesu. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 1. Přihlásit se na [portál partnerů cloudu](https://cloudpartner.azure.com): V profilu vydavatele propojte svůj účet centra pro vývojáře s profilem vydavatele Marketplace. Další informace viz [Příručka pro vydavatele Azure Marketplace](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Vytvoření nové nabídky aplikace Azure

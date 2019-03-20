@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1f7cd612fe8d1f644b259d37a7658728db81faf4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472435"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896292"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Zkoumání dat na virtuálním počítači s SQL Serverem v Azure
 
@@ -46,7 +46,7 @@ Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úlo�
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Například praktické, můžete použít [NYC taxislužby datovou sadu](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Například praktické, můžete použít [NYC taxislužby datovou sadu](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
 > 
 > 
 
@@ -59,7 +59,7 @@ Následující formát připojovacího řetězce je možné se připojit k datab
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Knihovny Pandas](http://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
+[Knihovny Pandas](https://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

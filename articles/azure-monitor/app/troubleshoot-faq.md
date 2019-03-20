@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905051"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -257,7 +257,7 @@ Projděte si náš úplný seznam služeb a IP adres [tady](../../azure-monitor/
 
 Povolit webový server k odesílání telemetrie na naše koncových bodů. 
 
-### <a name="proxy-redirect"></a>Přesměrování proxy
+### <a name="gateway-redirect"></a>Brány pro přesměrování
 
 Směrování provozu do brány ve vašem intranetu přepsáním koncových bodů v konfiguraci serveru.
 Pokud tyto vlastnosti "Koncového bodu" se nenachází v konfiguraci, tyto třídy použije výchozí hodnoty uvedené níže v souboru ApplicationInsights.config v příkladu. 
@@ -288,7 +288,19 @@ Vaše brána by měl směrovat provoz na základní adresu naše koncového bodu
 
 _Poznámka: ApplicationIdProvider je k dispozici od v2.6.0_
 
+### <a name="proxy-passthrough"></a>Průchod proxy
 
+Průchod proxy můžete dosáhnout tím, že nakonfigurujete úrovni počítače nebo aplikace proxy serveru.
+Další informace najdete v článku pro dotnet na [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+ 
+ Příklad souboru Web.config:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Můžete spustit testy dostupnosti webu na intranetový server?

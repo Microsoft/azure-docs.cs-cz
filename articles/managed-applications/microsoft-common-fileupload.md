@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2886dbafe6bf20718f4e3cd2976764fc432dbb04
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895248"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.FileUpload
 Ovládací prvek, který umožňuje uživateli zadat jeden nebo více souborů k nahrání.
@@ -48,7 +48,7 @@ Ovládací prvek, který umožňuje uživateli zadat jeden nebo více souborů k
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `constraints.accept` Určuje typy souborů, které se zobrazí v dialogovém okně soubor prohlížeče. Zobrazit [specifikace HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept) pro povolené hodnoty. Výchozí hodnota je **null**.
+- `constraints.accept` Určuje typy souborů, které se zobrazí v dialogovém okně soubor prohlížeče. Zobrazit [specifikace HTML5](https://www.w3.org/TR/html5/forms.html#attr-input-accept) pro povolené hodnoty. Výchozí hodnota je **null**.
 - Pokud `options.multiple` je nastavena na **true**, uživatel může vybrat více než jeden soubor v dialogovém okně soubor prohlížeče. Výchozí hodnota je **false**.
 - Tento prvek podporuje nahrávání souborů ve dvou režimech na základě hodnoty z `options.uploadMode`. Pokud **souboru** není zadána, výstup obsahuje obsah souboru jako objekt blob. Pokud **url** není zadán, pak se soubor nahraje do dočasného umístění a výstup obsahuje adresu URL objektu blob. Dočasné objekty BLOB bude vyprázdněno po 24 hodinách. Výchozí hodnota je **souboru**.
 - Nahraný soubor je chráněný. Zahrnuje výstupní adresy URL [SAS token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) pro přístup k souboru během nasazení.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792777"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076798"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použít rozšířený Server historie Sparku Apache pro ladění a Diagnostika aplikací Apache Spark
 
@@ -106,11 +106,11 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 
 + Přehrání úlohy po kliknutí **přehrávání** tlačítko a kdykoli ukončit kliknutím na tlačítko Zastavit. Zobrazení úloh barvou, chcete-li zobrazit různé stavy při přehrávání:
 
-    + Zelená pro úspěšné: Úloha byla úspěšně dokončena.
-    + Pokus o oranžově pro: Instance úlohy, které selhaly, ale nemají vliv na konečný výsledek úlohy. Tyto úlohy měl duplicitní nebo instance opakování, které mohou být úspěšně dokončeny později.
-    + Modrá pro spuštění: Úloha je spuštěna.
-    + Bílé čekání nebo přeskočené: Úloha čeká na spuštění nebo fázi byl přeskočen.
-    + Nepovedlo se červenou barvu pro: Úloha se nezdařila.
+  + Zelená pro úspěšné: Úloha byla úspěšně dokončena.
+  + Pokus o oranžově pro: Instance úlohy, které selhaly, ale nemají vliv na konečný výsledek úlohy. Tyto úlohy měl duplicitní nebo instance opakování, které mohou být úspěšně dokončeny později.
+  + Modrá pro spuštění: Úloha je spuštěna.
+  + Bílé čekání nebo přeskočené: Úloha čeká na spuštění nebo fázi byl přeskočen.
+  + Nepovedlo se červenou barvu pro: Úloha se nezdařila.
 
     ![ukázka barvy grafu, spuštění](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -132,20 +132,20 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
     ![Popis grafu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Na kartě Graf úlohy, budou mít fáze popisek a malé ikony se zobrazí, pokud mají úlohy, které splňují následující podmínky:
-    + Nerovnoměrná distribuce dat: velikost čtení dat > průměr dat číst velikost všech úkolů v této fázi * 2 a data načtená velikost > 10 MB.
-    + Nerovnoměrné rozdělení času: doba provádění > Průměrná doba provádění všech úloh v této fázi * 2 a doba provádění > 2 minut.
+  + Nerovnoměrná distribuce dat: velikost čtení dat > průměr dat číst velikost všech úkolů v této fázi * 2 a data načtená velikost > 10 MB.
+  + Nerovnoměrné rozdělení času: doba provádění > Průměrná doba provádění všech úloh v této fázi * 2 a doba provádění > 2 minut.
 
     ![zkosení ikonou grafu](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Uzel grafu úlohy se zobrazí následující informace každou z fází:
-    + ID.
-    + Název nebo popis.
-    + Celkový počet úloh číslo.
-    + Data načtená: velikost čtení součet velikost vstupu a náhodně.
-    + Zápis dat: součet velikost výstupu a shuffle velikost pro zápis.
-    + Doba provádění: čas mezi časem spuštění prvního pokusu a čas dokončení posledního pokusu o.
-    + Počet řádků: součet vstupní záznamy výstupní záznamy, náhodné čtení záznamů a náhodné zápis záznamů.
-    + Průběh.
+  + ID.
+  + Název nebo popis.
+  + Celkový počet úloh číslo.
+  + Data načtená: velikost čtení součet velikost vstupu a náhodně.
+  + Zápis dat: součet velikost výstupu a shuffle velikost pro zápis.
+  + Doba provádění: čas mezi časem spuštění prvního pokusu a čas dokončení posledního pokusu o.
+  + Počet řádků: součet vstupní záznamy výstupní záznamy, náhodné čtení záznamů a náhodné zápis záznamů.
+  + Průběh.
 
     > [!NOTE]  
     > Ve výchozím nastavení uzlu grafu úlohy se zobrazí informace z posledního pokusu každou z fází (s výjimkou doba provedení fáze), ale během přehrávání grafu se zobrazí uzel informace každého pokusu.
@@ -312,10 +312,10 @@ Pokud chcete provést upgrade pomocí opravy hotfix, použijte níže uvedený s
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-    + Podívejte se na **Head** a **pracovního procesu**.
-    + **Parametry**: nastavit podle parametrů využití prostředí bash.
+   + Podívejte se na **Head** a **pracovního procesu**.
+   + **Parametry**: nastavit podle parametrů využití prostředí bash.
 
-    ![Nahrát protokoly nebo upgrade opravy hotfix](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![Nahrát protokoly nebo upgrade opravy hotfix](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
 ## <a name="known-issues"></a>Známé problémy

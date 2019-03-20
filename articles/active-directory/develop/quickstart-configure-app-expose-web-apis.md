@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940ca126eb18b81fd31f1ee2876948563e9d97af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080841"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Rychlý start: Konfigurace aplikace k vystavení webové rozhraní API (Preview)
 
@@ -106,10 +106,10 @@ Zveřejnění nového oboru prostřednictvím manifestu aplikace:
       }
       ```
 
-  > [!NOTE]
-  > Hodnota `id` se musí vygenerovat programově nebo pomocí nástroje pro generování globálně jedinečných identifikátorů (GUID), jako je [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
-  >
-  > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
+   > [!NOTE]
+   > Hodnota `id` se musí vygenerovat programově nebo pomocí nástroje pro generování globálně jedinečných identifikátorů (GUID), jako je [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
+   >
+   > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
 
 1. Jakmile budete hotoví, klikněte na **Uložit**. Webové rozhraní API je teď nakonfigurované k použití jinými aplikacemi v adresáři.
 1. Postupujte podle pokynů a [ověřte, že je webové rozhraní API zveřejněné ostatním aplikacím](#verify-the-web-api-is-exposed-to-other-applications).

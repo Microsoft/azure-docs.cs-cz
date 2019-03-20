@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 8fc3246c76d7d09ea4518b5c548d5dbe05cc7a84
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164256"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116788"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Kurz: Nabízí vysoce dostupné databáze MySQL
 
@@ -67,7 +67,7 @@ Použijte postup v této části MySQL serveru k nasazení clusteru s použitím
 - Tři virtuální počítače s Linuxem k hostování MySQL cluster
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Compute**a potom **MySQL s replikací**.
 
@@ -168,7 +168,7 @@ Po MySQL cluster byla vytvořena, konfiguraci a přidat jako Server služby Azur
 > Projít tyto kroky na portálu user portal Azure Stack jako uživatel tenanta s předplatným zajišťuje serveru MySQL (Microsoft.MySQLAdapter služby).
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Data \+ úložiště**a potom **databázi MySQL** .<br><br>Zadejte informace o vlastnosti databáze, včetně názvu, řazení, předplatné se má použít a umístění pro nasazení. 
 

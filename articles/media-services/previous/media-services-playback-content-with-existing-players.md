@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 2083390c3d228e57151db8b165b876054d6c12cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876557"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
 Azure Media Services podporuje řadu oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma odkazuje na stávajících přehrávačů, které můžete použít k testování vašich streamů.
@@ -31,12 +31,12 @@ Klikněte na požadované video (ujistěte se, že byla [publikované](media-ser
 
 Musí být splněny určité předpoklady:
 
-* Přehrávač **MEDIA SERVICES CONTENT PLAYER** přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozích koncového bodu streamování, použijte jiný přehrávač. Například [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Přehrávač **MEDIA SERVICES CONTENT PLAYER** přehrává z výchozího koncového bodu streamování. Pokud chcete přehrávat z jiného než výchozích koncového bodu streamování, použijte jiný přehrávač. Například [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Přehrávač médií Azure
-Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) k přehrávání obsahu (Vymazat nebo chráněný) v některém z následujících formátů:
+Použití [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) k přehrávání obsahu (Vymazat nebo chráněný) v některém z následujících formátů:
 
 * Technologie Smooth Streaming
 * MPEG DASH
@@ -45,17 +45,17 @@ Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplay
 
 ### <a name="flash-player"></a>Přehrávače pro Flash
 #### <a name="aes-encrypted-with-token"></a>Šifrováním AES s tokenem
-[http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
+[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 ### <a name="silverlight-players"></a>Hráči Silverlight
 
 #### <a name="playready-with-token"></a>PlayReady s tokenem
-[http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)
+[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>Hráči DASH
-[http://dashplayer.azurewebsites.net](http://dashplayer.azurewebsites.net)
+[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
-[http://dashif.org](http://dashif.org)
+[https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Ostatní
 K otestování HLS adresy URL můžete také použít:
