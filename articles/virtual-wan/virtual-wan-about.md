@@ -5,29 +5,45 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6a6fc9df2b102fd16bba03f26df4e24a1c946875
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5c6e69e05eaa036e140d7275b4e66930a3e5be7a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409988"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225293"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
-Azure Virtual WAN je síťová služba poskytující optimalizované a automatizované možnosti propojení jednotlivých poboček prostřednictvím Azure. Virtuální síť WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. To můžete udělat buď ručně, nebo pomocí partnerských zařízení prostřednictvím virtuální sítě WAN partnera. Pomocí partnerských zařízení umožňuje že snadné použití, zjednodušení připojení a správa konfigurace. Další informace najdete v tématu [umístění a partneři](virtual-wan-locations-partners.md) článku. Kromě toho Azure WAN integrovaný řídicí panel poskytuje okamžitý přehled o řešení problémů, které dokáže šetřit čas a poskytuje snadný způsob, jak zobrazit ve velkém měřítku připojení.
+Azure virtuální síť WAN je síťová služba, která poskytuje větev optimalizované a automatické připojení k a prostřednictvím Azure. Oblasti Azure, které slouží jako rozbočovačů, které můžete zvolit připojení větvích. Po připojení se větve, můžete využít páteřní síť Azure k navázání připojení větev to-VNet a větve do větve.
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
+Azure virtuální sítě WAN spojuje mnoho připojení k Azure cloudové služby jako Site-to-Site VPN (obecně dostupné), ExpressRoute (Preview), uživatel Point-to-Site VPN (Preview) do jediného provozní rozhraní. Navázání připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
 
-Tento článek obsahuje rychlý přehled o síťovém propojení úloh v prostředí Azure i mimo ně. Virtual WAN nabízí následující výhody:
+![Diagram virtuální sítě WAN](./media/virtual-wan-about/vwangraphic.png)
+
+Tento článek obsahuje rychlý přehled připojení k síti v Azure virtuální sítě WAN. Virtual WAN nabízí následující výhody:
 
 * **Integrované připojení řešení v hvězdicové:** Automatizace konfigurace Site-to-Site a připojení mezi místními servery a centra Azure.
 * **Paprsky automatizované instalaci a konfiguraci:** Připojte virtuální sítě a úlohy k centru Azure bez problémů.
 * **Intuitivní řešení potíží:** Můžete zobrazit začátku do konce tok v rámci Azure a tyto informace slouží k provedení požadované akce.
 
+## <a name="partner-region"></a>Partneři a umístění
+
+Další informace najdete v tématu [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) článku.
+
+### <a name="partner"></a>Partneři
+
+[!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
+
+### <a name="locations"></a>umístění
+
+[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
+
 ## <a name="s2s"></a>Propojení typu Site-to-Site
+
+![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
 
 K vytvoření připojení typu Site-to-Site pomocí služby Virtual WAN můžete buď využít služeb [partnera pro Virtual WAN](virtual-wan-locations-partners.md), nebo vytvořit připojení ručně.
 
@@ -67,20 +83,10 @@ Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následuj�
 
 * **Centrum směrovací tabulky:**  Můžete vytvořit trasu virtuální rozbočovač a použít trasy do směrovací tabulky virtuální rozbočovač. V uvedené tabulce můžete použít více tras.
 
-## <a name="partner-region"></a>Partneři a umístění
-
-### <a name="partner"></a>Partneři
-
-[!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
-
-### <a name="locations"></a>umístění
-
-[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
-
 ## <a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazení [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) stránky.
+Zobrazení [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) stránky pro další informace o umístění a partnerům virtuální sítě WAN.

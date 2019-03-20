@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301770"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901164"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -112,7 +112,7 @@ Tady je pár tipů pro vyhledání a Diagnostika problémů s výkonem:
 * Porovnejte počet požadavků s ostatními metrikami a zjistěte, jestli selhání nebo pomalé odezvy se vztahují k načtení.
 * [Vložit a hledání trasování příkazy] [ diagnostic] v kódu k pomoci přesně určit problémy.
 * Monitorování webové aplikace v operaci s [Live Metrics Stream][livestream].
-* Zaznamenání stavu aplikace .net s [Snapshot Debugger][snapshot].
+* Zaznamenání stavu aplikace .NET s [Snapshot Debugger][snapshot].
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Najít a opravit kritická místa výkonu pomocí možnosti pro zkoumání výkonu
 

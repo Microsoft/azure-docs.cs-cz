@@ -14,12 +14,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 651950cfe6ab1b752c4bcf92c4e2f00591e9eb97
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1773083a5d02f3bb988ac3e5cef6528a5d49b94e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100390"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -66,25 +66,25 @@ grant_type=password
 
 Pro každou hodnotu:
 
- - **grant_type**  
-    Typ schématu ověřování budete používat. V tomto příkladu je hodnota `password`
+- **grant_type**  
+   Typ schématu ověřování budete používat. V tomto příkladu je hodnota `password`
 
- - **resource**  
-    Prostředek přistupuje k tokenu. Najít prostředek pomocí dotazu na koncový bod metadat pro správu služby Azure Stack. Podívejte se na **cílovým skupinám na místě** oddílu
+- **resource**  
+   Prostředek přistupuje k tokenu. Najít prostředek pomocí dotazu na koncový bod metadat pro správu služby Azure Stack. Podívejte se na **cílovým skupinám na místě** oddílu
 
- - **Koncový bod pro správu Azure Stack**  
-    ```
-    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-    ```
+- **Koncový bod pro správu Azure Stack**  
+   ```
+   https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+   ```
 
   > [!NOTE]  
   > Pokud jste správcem pokusu o přístup k rozhraní API klienta pak můžete musí nezapomeňte použít koncový bod tenanta, například: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Například v Azure Stack Development Kit jako koncový bod:
 
-    ```bash
-    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-    ```
+   ```bash
+   curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+   ```
 
   Odpověď:
 
@@ -94,9 +94,9 @@ Pro každou hodnotu:
   "graphEndpoint":"https://graph.windows.net/",
   "portalEndpoint":"https://adminportal.local.azurestack.external/",
   "authentication":{
-      "loginEndpoint":"https://login.windows.net/",
-      "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
-      }
+     "loginEndpoint":"https://login.windows.net/",
+     "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
+     }
   }
   ```
 

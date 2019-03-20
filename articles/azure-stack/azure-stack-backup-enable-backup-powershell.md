@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 38ab7b80e2f03176c3bedfd98a2d0e20fc02592b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 773e600577b35019b8a3619c7eec3e93b77a4382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865888"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085792"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Povolit zálohování pro Azure Stack pomocí Powershellu
 
@@ -51,9 +51,11 @@ Ve stejné relaci prostředí PowerShell upravte následující skript prostřed
 | $sharepath      | Zadejte cestu k **umístění úložiště zálohy**. Je nutné použít řetězec konvenci UNC (Universal Naming) pro cestu ke sdílené složce hostované na samostatném zařízení. Řetězec ve formátu UNC Určuje umístění prostředků, jako jsou sdílené soubory nebo zařízení. K zajištění dostupnosti dat zálohy by měla být zařízení v samostatném umístění. |
 | $frequencyInHours | Určuje četnost v hodinách, jak často se vytvoří zálohy. Výchozí hodnota je 12. Scheduler podporuje maximálně 12 a minimálně 4.|
 | $retentionPeriodInDays | Doba uchování ve dnech Určuje, kolik dní záloh, které jsou uvedeny v externím místě. Výchozí hodnota je 7. Scheduler podporuje maximálně 14 a minimálně 2. Starší než doba uchování zálohy se automaticky odstraní z externího umístění.|
-| $encryptioncertpath | Cesta k certifikátu šifrování Určuje cesta k souboru. Soubor CER pomocí veřejného klíče pro šifrování dat |
+| $encryptioncertpath | Platí pro 1901 i nad rámec.  Parametr je k dispozici v modulu Azure Stack verze 1.7 a nad rámec. Cesta k certifikátu šifrování Určuje cesta k souboru. Soubor CER pomocí veřejného klíče pro šifrování dat |
+| $encryptionkey | Použité k vytvoření 1811 nebo starší. Parametr je k dispozici v modulu Azure Stack verze 1.6 nebo dřívější. Šifrovací klíč použitý k šifrování. Použití [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) rutiny vygenerujte nový klíč. |
 |     |     |
 
+### <a name="enable-backup-on-1901-and-beyond-using-certificate"></a>Povolit zálohování na 1901 a novějšími pomocí certifikátu
 ```powershell
     # Example username:
     $username = "domain\backupadmin"
@@ -80,6 +82,25 @@ Ve stejné relaci prostředí PowerShell upravte následující skript prostřed
     # Set the backup settings with the name, password, share, and CER certificate file.
     Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
+### <a name="enable-backup-on-1811-or-earlier-using-certificate"></a>Povolit zálohy na 1811 nebo dříve pomocí certifikátu
+```powershell
+    # Example username:
+    $username = "domain\backupadmin"
+ 
+    # Example share path:
+    $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+
+    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+
+    # Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
+
+    $key = New-AzsEncryptionKeyBase64
+    $Securekey = ConvertTo-SecureString -String ($key) -AsPlainText -Force
+
+    # Set the backup settings with the name, password, share, and CER certificate file.
+    Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $Securekey
+```
+
    
 ##  <a name="confirm-backup-settings"></a>Potvrdit nastavení zálohování
 
@@ -119,7 +140,7 @@ Výsledek by měl vypadat jako následující příklad výstupu:
     BackupRetentionPeriodInDays : 5
    ```
 
-###<a name="azure-stack-powershell"></a>Azure Stack PowerShell 
+### <a name="azure-stack-powershell"></a>Azure Stack PowerShell 
 Rutiny Powershellu pro konfiguraci zálohování infrastruktury je sada AzsBackupConfiguration. V předchozích verzích byla rutinu Set-AzsBackupShare. Tato rutina vyžaduje poskytnutí certifikátu. Pokud infrastruktura zálohování je nakonfigurovaný pomocí šifrovacího klíče, nejde aktualizovat šifrovací klíč nebo vlastnost zobrazit. Je potřeba použít verzi 1.6 Powershellu pro správu. 
 
 Infrastruktura zálohování se nakonfigurovalo před aktualizací na 1901, můžete nastavit a zobrazit šifrovací klíč verze 1.6 Powershellu pro správu. Verze 1.6 nebude možné aktualizovat z šifrovací klíč do souboru certifikátu.

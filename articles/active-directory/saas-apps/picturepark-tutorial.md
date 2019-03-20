@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56dc54c2c296ee17b04070ac8ee68d2180b7046
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b458632ddb6e23ab1ddf642752aa0cbfc11f1ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Integrace Azure Active Directory s Picturepark
 
@@ -224,7 +224,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Picturepark, musí bý
    
     ![Vytvoření uživatele](./media/picturepark-tutorial/ic795069.png "vytvoření uživatele")
    
-    a. V **e-mailovou adresu** textové pole, typ **e-mailová adresa** uživatele **BrittaSimon@contoso.com**.  
+    a. V **e-mailovou adresu** textové pole, typ **e-mailová adresa** uživatele **BrittaSimon\@contoso.com**.  
    
     b. V **heslo** a **potvrzení hesla** textová pole, typ **heslo** z BrittaSimon. 
    

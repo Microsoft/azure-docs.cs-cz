@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893336"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002330"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Zákazník SaaS pomocí Azure – rozhraní API
 
@@ -53,26 +53,26 @@ Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nej
 
 Registrace nové aplikace pomocí webu Azure portal, postupujte následovně:
 
-1.  Přihlaste se k [Portálu Azure](https://portal.azure.com/).
-2.  Pokud váš účet umožňuje přístup k více účtům, klikněte na požadovaný účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-3.  V levém navigačním podokně klikněte **Azure Active Directory** služby, klikněte na tlačítko **registrace aplikací**a klikněte na tlačítko **registrace nové aplikace**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+2. Pokud váš účet umožňuje přístup k více účtům, klikněte na požadovaný účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+3. V levém navigačním podokně klikněte **Azure Active Directory** služby, klikněte na tlačítko **registrace aplikací**a klikněte na tlačítko **registrace nové aplikace**.
 
-    ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration.png)
+   ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration.png)
 
-4.  Na stránce pro vytvoření, zadejte vaše aplikace\'s informace o registraci:
-    -   **Název**: Zadejte název smysluplné aplikace
-    -   **Typ aplikace**: 
-        - Vyberte **Nativní** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) OAuth.
-        - Vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
-        Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
-    -   **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
-    -   **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
+4. Na stránce pro vytvoření, zadejte vaše aplikace\'s informace o registraci:
+   - **Název**: Zadejte název smysluplné aplikace
+   - **Typ aplikace**: 
+     - Vyberte **Nativní** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application), které jsou nainstalované místně na zařízení. Toto nastavení se používá pro veřejné [nativní klienty](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) OAuth.
+     - Vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+     Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
+   - **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
+   - **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
 
-        ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+     ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-2.png) konkrétní příklady webových nebo nativních aplikací, podívejte se na rychlý start na základě nastavení, které jsou k dispozici v části Začínáme [příručku pro vývojáře v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-5.  Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD jedinečný Identifikátor aplikace přiřadí vaší aplikaci a\'znovu provést do vaší aplikace\'s hlavním registrační stránku. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
+5. Jakmile budete hotovi, klikněte na **Vytvořit**. Azure AD jedinečný Identifikátor aplikace přiřadí vaší aplikaci a\'znovu provést do vaší aplikace\'s hlavním registrační stránku. V závislosti na tom, jestli je vaše aplikace webová nebo nativní, jsou k dispozici různé volby pro přidání dalších možností do vaší aplikace.
 
-    **Poznámka:** ve výchozím nastavení, nově registrovaných aplikací umožňují povolit pouze uživatele ze stejného tenanta k přihlášení do vaší aplikace.
+   **Poznámka:** ve výchozím nastavení, nově registrovaných aplikací umožňují povolit pouze uživatele ze stejného tenanta k přihlášení do vaší aplikace.
 
 <a name="api-methods-and-endpoints"></a>Koncové body a metody rozhraní API
 -------------------------
@@ -502,6 +502,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
     "lastModified": ""
 }
 ```
+
 | **Název parametru**     | **Datový typ** | **Popis**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Prostředek předplatného ID SaaS v Azure.    |

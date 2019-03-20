@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dfd7d2a0363a95acb76a5dc214dbd4036de11d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ee5faedd4f59aa791424a1f178f0462922f21d28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094687"
 ---
 Každý koncový bod má *veřejný port* a *privátní port*:
 
@@ -76,7 +76,7 @@ Pokud virtuální počítač je ve službě Azure virtual network, namísto sezn
 
 4. Pomocí řádků v seznamu přidat, odstranit nebo upravit pravidla pro seznam ACL a změňte jejich pořadí. **Vzdálené PODSÍTĚ** hodnota je rozsah IP adres pro příchozí provoz z Internetu, která používá Azure load balancer můžete povolit nebo zakázat provoz na základě zdrojové IP adresy. Nezapomeňte zadat rozsah IP adres ve classless Inter-Domain směrování (CIDR Classless) formátu, označované také jako formát předponu adresy. Například, `10.1.0.0/8`.
 
- ![Nová položka seznamu ACL](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
+   ![Nová položka seznamu ACL](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 
 
 Pravidla můžete použít pro povolení provozu pouze z určitých počítačů odpovídající počítače na Internetu nebo pro odepření provozu z rozsahů adres konkrétní, známé.

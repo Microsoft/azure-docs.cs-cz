@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 145c6ac01cce9a70f3753b54a46638bf9d9c23b4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729742"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000407"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
 
@@ -72,16 +72,18 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 ----
 
 ## <a name="container-offer-requirements"></a>Nabídka požadavků na kontejner
+
 |  | Výpis – Element | Základní požadavky | Požadavky na optimální | 
 |:--- |:--- |:--- |:--- |
 |1 |Nabídka nastavení | <br>• ID nabídky: Max. 50 znaků. <br>• ID vydavatele: Vyberte z rozevíracího seznamu <br>• Název: Max. 50 znaků. | Styl nadpisu aktuálně k dispozici v popisu - nechcete, aby zrcadlení dlouhé názvy. | 
-| 2 | Skladové položky | Partner klikne na nové SKU| Styl nadpisu aktuálně k dispozici v popisu - nechcete, aby zrcadlení dlouhé názvy.  |  |
+| 2 | Skladové položky | Partner klikne na nové SKU| Styl nadpisu aktuálně k dispozici v popisu - nechcete, aby zrcadlení dlouhé názvy.  |
 | 3 | Artefakty Marketplace | Správné zobrazení loga |<br>• Logo obsahuje "hlavní image", tedy velké formát obrázku na webu Azure Portal <br>• Loga: Malý (48 x 48) a velké (216 x 216) jsou požadavky <br>• Požadavky na image Hero: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>Snímek obrazovky • (max. 5):  CPP vyžaduje image ve formátu PNG s rozlišení 1280 × 720.|
 | 4 | Průběžná správa |<br>• Průběžná správa: Vyberte systému, kam se budou ukládat vaše potenciálních zákazníků. <br>• Informace o připojení systému CRM [zde](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>Požadavky na konzultační nabídky
+
 |  | Výpis – Element | Základní požadavky | Požadavky na optimální |
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky  |  <br>• Jasně uvést typ služby a doba trvání v následujícím formátu: JMÉNO: TYP TRVÁNÍ. (tedy "nabízejí Engagement: 1 týden testování konceptu")  | <br>• Neopakuje název vydavatele <br>• Zrcadlí již k dispozici v popisu styl nadpisu – nechcete, aby dlouhé názvy. | 

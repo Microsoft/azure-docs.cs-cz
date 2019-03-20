@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 158f22ec2ab07bfc2f893d4b0c55d862e0b19de0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238903"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106657"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Klíčové aspekty: Pomocí služby nebo vytvářet aplikace pro Azure Stack
 
@@ -76,8 +76,8 @@ Azure Stack podporuje konkrétní verze prostředí Azure PowerShell a rozhraní
 
 Chcete-li mít jistotu, že používáte správnou verzi Azure Powershellu, použijte [profilů verzí API](azure-stack-version-profiles.md). K určení profilu nejnovější verze rozhraní API, které můžete použít, přečtěte si sestavení služby Azure Stack, který používáte. Tyto informace můžete získat od správce služby Azure Stack.
 
->[!NOTE]
- Pokud používáte Azure Stack Development Kit a máte přístup správce, podívejte se [zjistit aktuální verzi](../azure-stack-updates.md#determine-the-current-version) části k určení sestavení služby Azure Stack.
+> [!NOTE]
+>  Pokud používáte Azure Stack Development Kit a máte přístup správce, podívejte se [zjistit aktuální verzi](../azure-stack-updates.md#determine-the-current-version) části k určení sestavení služby Azure Stack.
 
 Pro jiná rozhraní API spusťte následující příkaz Powershellu na výstup obory názvů, typy prostředků a verze rozhraní API, které jsou podporovány v rámci vašeho předplatného Azure Stack. Poznámka: může být stále rozdíly na úrovni vlastnost. Pro tento příkaz fungovat, musíte už mít [nainstalované](azure-stack-powershell-install.md) a [nakonfigurované](azure-stack-powershell-configure-user.md) prostředí PowerShell pro prostředí Azure Stack. Také musíte mít předplatné služby Azure Stack nabídky.
 
@@ -94,4 +94,4 @@ Podrobnější informace o rozdílech na úrovni služby naleznete v tématu:
 
 * [Důležité informace týkající se virtuálních počítačů v Azure stacku](azure-stack-vm-considerations.md)
 * [Důležité informace týkající se úložiště v Azure stacku](azure-stack-acs-differences.md)
-* [Důležité informace týkající se sítích Azure stacku](azure-stack-network-differences.md)
+* [Aspekty sítí Azure Stack](azure-stack-network-differences.md)

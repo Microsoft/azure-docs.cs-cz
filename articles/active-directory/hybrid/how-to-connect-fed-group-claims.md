@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080352"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarace skupiny pro aplikace pomocí Azure Active Directory (Public Preview)
 
@@ -111,60 +111,60 @@ Některé aplikace vyžadují informace o členství ve skupině se zobrazí v d
 
 Deklarace skupiny může být rovněž konfigurována ve [nepovinných deklarací identity](../../active-directory/develop/active-directory-optional-claims.md) část [Manifest aplikace](../../active-directory/develop/reference-app-manifest.md).
 
- 1. Na portálu -> Azure Active Directory -> aplikace registrací -> vyberte aplikace -> manifestu
+1. Na portálu -> Azure Active Directory -> aplikace registrací -> vyberte aplikace -> manifestu
 
- 2. Povolit deklarace členství skupiny tak, že změníte groupMembershipClaim
+2. Povolit deklarace členství skupiny tak, že změníte groupMembershipClaim
 
-    Platné hodnoty jsou:
+   Platné hodnoty jsou:
 
-    - "Vše"
-    - "Skupiny SecurityGroup"
-    - "DistributionList"
-    - "DirectoryRole"
+   - "Vše"
+   - "Skupiny SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
 
-    Příklad:
+   Příklad:
 
-    ```json
-    "groupMembershipClaims": "SecurityGroup"
-    ```
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
 
-    Ve výchozím nastavení skupiny objectid bude vygenerován ve skupině hodnoty deklarace identity.  Chcete-li změnit hodnotu deklarace identity tak, aby obsahovala místní skupinu atributů, nebo chcete změnit typ deklarace identity do role, použijte konfiguraci OptionalClaims následujícím způsobem:
+   Ve výchozím nastavení skupiny objectid bude vygenerován ve skupině hodnoty deklarace identity.  Chcete-li změnit hodnotu deklarace identity tak, aby obsahovala místní skupinu atributů, nebo chcete změnit typ deklarace identity do role, použijte konfiguraci OptionalClaims následujícím způsobem:
 
- 3. Nastavit nepovinné deklarace skupiny název konfigurace.
+3. Nastavit nepovinné deklarace skupiny název konfigurace.
 
-    Pokud budete chtít do skupin v tokenu obsahovat atributy skupin AD v části nepovinných deklarací identity určit, které typ tokenu volitelnou deklaraci má být použit pro místní, název požadované volitelnou deklaraci a další požadované vlastnosti.  Výpis je možný víc typy tokenů:
+   Pokud budete chtít do skupin v tokenu obsahovat atributy skupin AD v části nepovinných deklarací identity určit, které typ tokenu volitelnou deklaraci má být použit pro místní, název požadované volitelnou deklaraci a další požadované vlastnosti.  Výpis je možný víc typy tokenů:
 
-    - idToken pro token OIDC ID
-    - accessToken pro přístupový token OAuth/OIDC
-    - Saml2Token pro tokeny SAML.
+   - idToken pro token OIDC ID
+   - accessToken pro přístupový token OAuth/OIDC
+   - Saml2Token pro tokeny SAML.
 
-    > [!NOTE]
-    > Typ Saml2Token platí pro SAML1.1 i SAML2.0 tokenů formátu
+   > [!NOTE]
+   > Typ Saml2Token platí pro SAML1.1 i SAML2.0 tokenů formátu
 
-    Pro každý odpovídající typ tokenu upravte deklaraci skupiny oddílů OptionalClaims v manifestu. Schéma OptionalClaims vypadá takto:
+   Pro každý odpovídající typ tokenu upravte deklaraci skupiny oddílů OptionalClaims v manifestu. Schéma OptionalClaims vypadá takto:
 
- ```json
- {
-    "name": "groups",
-    "source": null,
-    "essential": false,
-    "additionalProperties": []
- }
- ```
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
 
- | Schéma nepovinných deklarací identity | Hodnota |
- |----------|-------------|
- | **Jméno:** | Musí být "groups" |
- | **Zdroj:** | Nepoužívá se. Vynechat nebo zadat hodnotu null |
- | **essential:** | Nepoužívá se. Vynechat nebo zadat hodnotu false |
- | **additionalProperties:** | Seznam dalších vlastností.  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | Schéma nepovinných deklarací identity | Hodnota |
+   |----------|-------------|
+   | **Jméno:** | Musí být "groups" |
+   | **Zdroj:** | Nepoužívá se. Vynechat nebo zadat hodnotu null |
+   | **essential:** | Nepoužívá se. Vynechat nebo zadat hodnotu false |
+   | **additionalProperties:** | Seznam dalších vlastností.  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
- V additionalProperties pouze jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" jsou vyžadovány.  Pokud se nachází více než jeden, slouží první a všechny ostatní ignorovat.
+   V additionalProperties pouze jeden "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" jsou vyžadovány.  Pokud se nachází více než jeden, slouží první a všechny ostatní ignorovat.
 
- Některé aplikace vyžadují skupiny informace o uživateli v deklarace role.  Chcete-li změnit typ deklarace identity ze skupiny uplatnit na deklarace role, přidejte do další vlastnosti "emit_as_roles".  Skupinové hodnoty budou zaznamenávány do deklarace role.
+   Některé aplikace vyžadují skupiny informace o uživateli v deklarace role.  Chcete-li změnit typ deklarace identity ze skupiny uplatnit na deklarace role, přidejte do další vlastnosti "emit_as_roles".  Skupinové hodnoty budou zaznamenávány do deklarace role.
 
- > [!NOTE]
- > Pokud se používá "emit_as_roles" všechny aplikační role nakonfigurované, že se uživateli přiřadila se nezobrazí v deklarace role
+   > [!NOTE]
+   > Pokud se používá "emit_as_roles" všechny aplikační role nakonfigurované, že se uživateli přiřadila se nezobrazí v deklarace role
 
 ### <a name="examples"></a>Příklady
 

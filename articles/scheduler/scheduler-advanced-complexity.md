@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860614"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Vytvářejte upřesnění plánování a opakování pro úlohy v Azure Scheduleru
 
@@ -65,13 +65,13 @@ Tato tabulka obsahuje podrobný přehled hlavních elementů JSON, který může
 
 | Element | Požaduje se | Popis | 
 |---------|----------|-------------|
-| **startTime** | Ne | Hodnotu řetězce data a času v [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy úloha nejprve spustí v plánu basic. <p>U složitějších plánů úloha spustí dřív než **startTime**. | 
+| **startTime** | Ne | Hodnotu řetězce data a času v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy úloha nejprve spustí v plánu basic. <p>U složitějších plánů úloha spustí dřív než **startTime**. | 
 | **recurrence** | Ne | Opakování pravidla po spuštění úlohy. **Opakování** objekt podporuje tyto elementy: **frekvence**, **interval**, **plán**, **počet**, a **endTime**. <p>Pokud používáte **opakování** elementu, je třeba použít také **frekvence** elementu, zatímco jiné **opakování** prvky jsou volitelné. |
 | **frequency** | Ano, pokud použijete **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "Minute", "Hour", "Day", "Týden", "Měsíc" a "Rok" | 
 | **interval** | Ne | Celé kladné číslo určující počet časových jednotek mezi opakování na základě **frekvence**. <p>Například pokud **interval** je 10 a **frekvence** hodnotu "Týden", úloha se opakuje každé 10 týdny. <p>Tady je největší počet intervalů pro každý frekvence: <p>-18 měsíců <br>-78 týdnů <br>-548 dnů <br>-Pro hodiny a minuty, rozsah je 1 < = <*interval*>< = 1 000. | 
 | **schedule** | Ne | Definuje změny opakování podle zadané minuty – značky, hodinu, dny v týdnu a dny v měsíci | 
 | **count** | Ne | Kladné celé číslo, která určuje počet případů, kdy se úloha spustí před dokončením. <p>Například, pokud má každodenní úlohu **počet** nastavená na 7 a počáteční datum je od pondělí, úlohu dokončí spuštěné v neděli. Pokud už uplynul počáteční datum, při prvním spuštění se počítá od času vytvoření. <p>Bez **endTime** nebo **počet**, neomezeně spuštění úlohy. Nelze použít obě **počet** a **endTime** ve stejné úloze, ale pravidlo, že dokončení nejprve zachovaný. | 
-| **endTime** | Ne | Řetězcovou hodnotu datum nebo datum a čas v [formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se zastaví úlohu spuštění. Můžete nastavit hodnotu pro **endTime** , který je v minulosti. <p>Bez **endTime** nebo **počet**, neomezeně spuštění úlohy. Nelze použít obě **počet** a **endTime** ve stejné úloze, ale pravidlo, že dokončení nejprve zachovaný. |
+| **endTime** | Ne | Řetězcovou hodnotu datum nebo datum a čas v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se zastaví úlohu spuštění. Můžete nastavit hodnotu pro **endTime** , který je v minulosti. <p>Bez **endTime** nebo **počet**, neomezeně spuštění úlohy. Nelze použít obě **počet** a **endTime** ve stejné úloze, ale pravidlo, že dokončení nejprve zachovaný. |
 |||| 
 
 Například toto schéma JSON popisuje základní plánu a opakování pro úlohu: 
@@ -94,9 +94,9 @@ Například toto schéma JSON popisuje základní plánu a opakování pro úloh
 
 *Data a hodnoty data a času*
 
-* Data v Plánovači úloh zahrnují pouze datum a postupujte podle [specifikace formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
+* Data v Plánovači úloh zahrnují pouze datum a postupujte podle [specifikace formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
-* Data a časy v Plánovači úloh uveďte datum a čas, postupujte [specifikace formátu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)a budou považovat za čas UTC-li zadána žádná posun UTC. 
+* Data a časy v Plánovači úloh uveďte datum a čas, postupujte [specifikace formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)a budou považovat za čas UTC-li zadána žádná posun UTC. 
 
 Další informace najdete v tématu [koncepty, terminologie a entity](../scheduler/scheduler-concepts-terms.md).
 

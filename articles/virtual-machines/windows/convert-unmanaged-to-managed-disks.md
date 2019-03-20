@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: bcfb227b8ced6b17fe23c1a60468de24f1835ba0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d848fdd23f459d7e95e85fe38f2272f4d67c32be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120784"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na managed disks
 
@@ -45,17 +45,17 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
 
 1. Uvolněte virtuální počítač s použitím [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) rutiny. V následujícím příkladu se uvolní virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`: 
 
-  ```azurepowershell-interactive
-  $rgName = "myResourceGroup"
-  $vmName = "myVM"
-  Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
-  ```
+   ```azurepowershell-interactive
+   $rgName = "myResourceGroup"
+   $vmName = "myVM"
+   Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
+   ```
 
 2. Převod virtuálního počítače na managed disks pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) rutiny. Následující proces převede předchozí virtuálního počítače, včetně disk s operačním systémem a všechny datové disky a spouští virtuální počítač:
 
-  ```azurepowershell-interactive
-  ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
-  ```
+   ```azurepowershell-interactive
+   ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
+   ```
 
 
 
@@ -65,33 +65,33 @@ Pokud virtuální počítače, které chcete převést na spravované disky jsou
 
 1. Převést skupině dostupnosti s využitím [aktualizace AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) rutiny. Následující příklad aktualizuje skupinu dostupnosti `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup`:
 
-  ```azurepowershell-interactive
-  $rgName = 'myResourceGroup'
-  $avSetName = 'myAvailabilitySet'
+   ```azurepowershell-interactive
+   $rgName = 'myResourceGroup'
+   $avSetName = 'myAvailabilitySet'
 
-  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
-  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
-  ```
+   $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+   Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
+   ```
 
-  Pokud se nachází v oblasti, kde vaší skupiny dostupnosti má pouze 2 domén selhání spravovaných, ale počet domén selhání nespravované je 3, tento příkaz zobrazí chybu podobný "počet domén selhání zadané 3 musí spadat do rozsahu 1 až 2." Chybu vyřešit, aktualizujte doméně selhání 2 a update `Sku` k `Aligned` následujícím způsobem:
+   Pokud se nachází v oblasti, kde vaší skupiny dostupnosti má pouze 2 domén selhání spravovaných, ale počet domén selhání nespravované je 3, tento příkaz zobrazí chybu podobný "počet domén selhání zadané 3 musí spadat do rozsahu 1 až 2." Chybu vyřešit, aktualizujte doméně selhání 2 a update `Sku` k `Aligned` následujícím způsobem:
 
-  ```azurepowershell-interactive
-  $avSet.PlatformFaultDomainCount = 2
-  Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
-  ```
+   ```azurepowershell-interactive
+   $avSet.PlatformFaultDomainCount = 2
+   Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
+   ```
 
 2. Zrušit přidělení a k převodu virtuálních počítačů ve skupině dostupnosti. Následující skript uvolní každý virtuální počítač s použitím [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) rutiny, převede ho pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)a restartuje automaticky dvou procesu převodu:
 
-  ```azurepowershell-interactive
-  $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
+   ```azurepowershell-interactive
+   $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
 
-  foreach($vmInfo in $avSet.VirtualMachinesReferences)
-  {
+   foreach($vmInfo in $avSet.VirtualMachinesReferences)
+   {
      $vm = Get-AzVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-  }
-  ```
+   }
+   ```
 
 
 ## <a name="troubleshooting"></a>Řešení potíží

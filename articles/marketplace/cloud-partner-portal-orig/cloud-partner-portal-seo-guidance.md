@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809321"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834332"
 ---
 <a name="azure-marketplace-seo-publisher-guide"></a>Příručka pro vydavatele na Azure Marketplace optimalizace pro vyhledávací weby
 =======================================
 
 ### <a name="general-explanation-of-algorithm"></a>Obecné vysvětlení algoritmu.
 
-Na webu marketplace využívá Azure Search pro provozování možnosti vyhledávání webu. Algoritmus je založen na termín frekvence – inverzní dokumentu frekvence ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardní [analyzátor Lucene](http://lucene.apache.org/core/) se používá.
+Na webu marketplace využívá Azure Search pro provozování možnosti vyhledávání webu. Algoritmus je založen na termín frekvence – inverzní dokumentu frekvence ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardní [analyzátor Lucene](https://lucene.apache.org/core/) se používá.
 
 Obecně platí veškerý text pole, kategorie a odvětví a zahrnut do weightage význam. Specializované podmínky, které nejsou používány často aplikací, ale často ve vaší aplikaci bude generovat vyšší ohodnocení shoda s vyhledávání. Proto včetně jako "Virtuální počítač" by nabízejí málo výhodné, že "Služba Azure search" by mnohem více specializovaný.
 Níže jsou uvedeny nejdůležitější pole vzít v úvahu.

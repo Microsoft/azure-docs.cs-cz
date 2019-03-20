@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 11026d642a5136ffcf0caa5815934115b6becf89
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238455"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880099"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Použití virtuálního počítače geografickou umělou inteligencí datové vědy
 
@@ -30,7 +30,7 @@ Virtuální počítač pro geograficky AI datové vědy můžete načíst data p
 
 ## <a name="configuration-details"></a>Podrobnosti konfigurace
 
-Knihovna Python [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), který se používá k v prostředí conda globální kořenový virtuální počítač datové vědy, který se nachází v umístění je nainstalováno rozhraní s ArcGIS ```c:\anaconda```. 
+Knihovna Python [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), který se používá k v prostředí conda globální kořenový virtuální počítač datové vědy, který se nachází v umístění je nainstalováno rozhraní s ArcGIS ```c:\anaconda```. 
 
 - Pokud používáte Python v příkazovém řádku, spusťte ```activate``` aktivovat do prostředí conda kořenové Python. 
 - Pokud používáte prostředí IDE nebo aplikace Jupyter notebook, můžete vybrat prostředí nebo jádra Ujistěte se, že jste v prostředí správné conda. 
@@ -43,7 +43,7 @@ Most R ArcGIS je nainstalován jako knihovny R s názvem [arcgisbinding](https:/
 Vedle ML a hloubkové učení založené na platformě ukázky ze základní virtuální počítač pro datové vědy řadu ukázek v geoprostorové také poskytuje jako součást virtuální počítač pro geograficky AI datové vědy. Tyto ukázky vám můžou pomoct vám nastartování vývoje aplikací AI s využitím geoprostorových dat a ArcGIS softwaru. 
 
 
-1. [Získávání uvedeny s geoprostorové analýzy s využitím Pythonu](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodních ukázkových ukazující, jak pracovat s Geoprostorová data pomocí rozhraní Python na ArcGIS poskytované [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) knihovny. Také ukazuje, jak můžete kombinovat tradiční strojového učení s geoprostorových dat a vizualizaci výsledků na mapě v ArcGIS. 
+1. [Získávání uvedeny s geoprostorové analýzy s využitím Pythonu](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodních ukázkových ukazující, jak pracovat s Geoprostorová data pomocí rozhraní Python na ArcGIS poskytované [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) knihovny. Také ukazuje, jak můžete kombinovat tradiční strojového učení s geoprostorových dat a vizualizaci výsledků na mapě v ArcGIS. 
 
 2. [Získávání uvedeny s geoprostorové analýzy s jazykem R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní příklad, který ukazuje, jak pracovat s Geoprostorová data pomocí rozhraní R na ArcGIS poskytované [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) knihovny. 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2019
+ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: e42deed992496cc28bdf92c01934d74361f2de6f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444017"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226891"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -52,7 +52,7 @@ Security Center posuzuje konfiguraci vašich prostředků identifikovat problém
 Zobrazit [oprávnění ve službě Azure Security Center](security-center-permissions.md) získat další informace o rolí a povolených akcí ve službě Security Center.
 
 ## <a name="data-collection-agents-and-workspaces"></a>Shromažďování dat, agentů a pracovní prostory
-Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
+Security Center shromažďuje data z virtuálních počítačů Azure (VM), škálovací sady virtuálních počítačů (VMSS), kontejnerů IaaS a počítače mimo Azure (včetně místních) k monitorování ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Fakturují pro protokoly Azure monitoru pracovních prostorů vytvořených službou Security Center?
 Ne. Pracovních prostorů vytvořených službou Security Center, i když nakonfigurovat pro protokoly Azure monitoru fakturace uzlu, nejsou spojené poplatky za protokoly Azure monitoru. Fakturace centra zabezpečení je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru:
@@ -74,7 +74,7 @@ Windows nebo virtuální počítače IaaS s Linuxem kvalifikovat, pokud:
 
 - Rozšíření Microsoft Monitoring Agent není nainstalována na virtuálním počítači.
 - Virtuální počítač je ve spuštěném stavu.
-- Je nainstalovaný Windows nebo Linux agenta virtuálního počítače.
+- Windows nebo Linux [agenta virtuálního počítače Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows) je nainstalována.
 - Virtuální počítač se nepoužívá jako zařízení jako jsou brány firewall webových aplikací nebo brána firewall příští generace.
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Můžete odstranit výchozí pracovních prostorů vytvořených službou Security Center?
@@ -115,21 +115,23 @@ Vyberte existující pracovní prostor Log Analytics:
 
    - Vyberte **zrušit** na zrušení operace.
 
-### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co když agenta Microsoft Monitoring Agent byl již nainstalován jako rozšíření ve virtuálním počítači?
-Security Center nemůže přepsat existující připojení k pracovním prostorům uživatele. Security Center ukládá data zabezpečení z virtuálního počítače v pracovním prostoru již připojen. Security Center aktualizuje verzi rozšíření zahrnout ID prostředku Azure, virtuálního počítače pro podporu použití Security Center.
+### Co když agenta Microsoft Monitoring Agent byl již nainstalován jako rozšíření ve virtuálním počítači?<a name="mmaextensioninstalled"></a>
+Pokud Monitoring Agent je nainstalován jako rozšíření, konfigurace rozšíření umožňuje vytváření sestav jenom jeden pracovní prostor. Security Center nemůže přepsat existující připojení k pracovním prostorům uživatele. Security Center budou ukládat data zabezpečení z virtuálního počítače na pracovní prostor, který je již připojen, za předpokladu, že "zabezpečení" nebo "securityFree" řešení byla nainstalována na něj. Security Center může upgradovat verzi rozšíření na nejnovější verzi v tomto procesu.
 
-### <a name="what-if-i-had-a-microsoft-monitoring-agent-installed-on-the-machine-but-not-as-an-extension"></a>Co když mám měli agenta Microsoft Monitoring Agent nainstalovaný na počítači, ale ne jako rozšíření?
-Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center není možné nainstalovat agenta Microsoft Monitoring Agent a monitorování zabezpečení je omezený.
+Další informace najdete v tématu [automatické zřizování v případech dříve existující instalace agenta](security-center-enable-data-collection.md#preexisting).
 
-Další informace najdete v části Další [co se stane, když OMS nebo SCOM přímý agent je již nainstalován na mém virtuálním počítači?](#scomomsinstalled)
 
-### Co se stane, když OMS nebo SCOM přímý agent je již nainstalován na mém virtuálním počítači?<a name="scomomsinstalled"></a>
-Security Center nemůže identifikovat předem, že je nainstalován agent.  Security Center pokusí nainstalovat rozšíření Microsoft Monitoring Agent a nezdaří z důvodu existující nainstalovaného agenta.  Toto selhání zabrání přepsání nastavení připojení agenta k její pracovní prostor a zabraňuje vytváření vícenásobné navádění.
+### Co když jsem měl Microsoft Monitoring Agent instalovaný přímo na počítači, ale ne jako rozšíření (přímý Agent)?<a name="directagentinstalled"></a>
+Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center nainstaluje rozšíření Microsoft Monitoring Agent a upgradovat Microsoft Monitoring agent na nejnovější verzi.
+Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporována).
+Pokud má konfigurovaný pracovní prostor je uživatel pracovní prostor (není Security Center výchozího pracovního prostoru), budete muset nainstalovat "zabezpečení /"securityFree"řešení v něm pro Security Center spuštění zpracování událostí z virtuálních počítačů a počítačů odesílajících sestavy do pracovního prostoru.
 
-> [!NOTE]
-> Verze agenta se aktualizuje na nejnovější verzi agenta OMS.  Také platí pro uživatele SCOM.
->
->
+Pro existující počítače v předplatných připojili ke službě Security Center před 2019-03-17, když bude zjištěna existujícího agenta, nenainstalují se rozšíření Microsoft Monitoring Agent a nebude mít vliv počítače. Tyto počítače naleznete v tématu "Vyřešit problémy se stavem agenta na počítačích monitorování" doporučení k vyřešení problémů s instalací agenta na těchto počítačích
+
+ Další informace najdete v části Další [co se stane, když OMS nebo SCOM přímý agent je již nainstalován na mém virtuálním počítači?](#scomomsinstalled)
+
+### Co se stane, když už je nainstalovaný agent nástroje SCOM na mém virtuálním počítači?<a name="scomomsinstalled"></a>
+Security center se nainstaluje agenta Microsoft Monitoring Agent rozšíření na straně sebe do existující SCOM. Existujícího agenta nástroje SCOM nadále sestavy se serverem SCOM za normálních okolností. Všimněte si, že agent nástroje SCOM a agenta Microsoft Monitoring Agent sdílejí společné knihovny runtime, které se aktualizují na nejnovější verzi při tomto zpracovat.
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>Co je dopady odebrání těchto rozšíření?
 Pokud odeberete rozšíření Microsoft Monitoring, Security Center nedokáže ke shromažďování dat zabezpečení z virtuálního počítače a několik doporučení zabezpečení a výstrahy nejsou k dispozici. Security Center během 24 hodin, určuje chybí rozšíření a znovu nainstaluje rozšíření virtuálního počítače.

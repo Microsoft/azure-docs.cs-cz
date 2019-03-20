@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761843aad24dc89131079eb59954bd17883e595d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996537"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení 
 
@@ -87,7 +87,7 @@ Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-m
 Odpovědi, jako je například následující může znamenat, že spravovanou identitu Virtuálního počítače pro prostředky Azure nebyla nakonfigurována správně:
 
 - PowerShell: *Invoke-WebRequest: Nelze se připojit ke vzdálenému serveru*
-- CLI: *MSI: Nepovedlo se načíst token z "http://localhost:50342/oauth2/token" s chybou "HTTPConnectionPool (hostitele ="localhost", port = 50342)* 
+- CLI: *MSI: Nepovedlo se načíst token z `http://localhost:50342/oauth2/token` s chybou "HTTPConnectionPool (host ="localhost", port = 50342)* 
 
 Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [webu Azure portal](https://portal.azure.com) a:
 

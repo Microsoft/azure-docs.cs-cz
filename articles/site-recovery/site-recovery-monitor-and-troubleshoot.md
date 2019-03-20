@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098470"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 
@@ -149,19 +149,19 @@ Přidání řídicího panelu můžete sledovat počítače na stránce virtuál
     ![Site Recovery replikuje zobrazení seznamu položek](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Na **replikované položky** stránky, můžete zobrazit a filtrovat informace. V nabídce Akce v horní části můžete provádět akce pro konkrétní počítač, včetně systémem testovací převzetí služeb při selhání nebo zobrazení konkrétní chyby.
-3.  Klikněte na tlačítko **sloupce** a zobrazit další sloupce, třeba když chcete zobrazit cíl bodu obnovení, cílových problémy s konfigurací a chyby replikace.
+3. Klikněte na tlačítko **sloupce** a zobrazit další sloupce, třeba když chcete zobrazit cíl bodu obnovení, cílových problémy s konfigurací a chyby replikace.
 4. Klikněte na tlačítko **filtr** Chcete-li zobrazit informace v závislosti na konkrétní parametry, jako je například stav replikace nebo zásady konkrétní replikace.
 5. Klikněte pravým tlačítkem na počítač k zahájení operace, jako je test převzetí služeb při selhání, nebo pokud chcete zobrazit podrobnosti o chybě s ním spojená.
 6. Klikněte na počítač přejít na další podrobnosti pro něj. Podrobnosti zahrnují:
-      - **Informace o replikaci**: Aktuální stav a stav počítače.
-      - **Cíl bodu obnovení** (bodu obnovení rpo): Aktuální cíl bodu obnovení pro virtuální počítač a čas, kdy se naposledy spočítá cíle bodu obnovení.
-      - **Body obnovení**: Nejnovější dostupné body obnovení pro počítač.
-      - **Připravenost na převzetí služeb při selhání**: Určuje, zda testovací převzetí služeb spuštěné v počítači agenta verze, která běží na počítači (pro počítače se službou Mobility) a případných problémů s konfigurací.
-      - **Chyby**: Seznam aktuálně pozorovaný na počítač a možných příčin/příznaky Chyba replikace.
-      - **Události**: Chronologický seznam posledních událostí vliv na tento počítač. Podrobnosti o chybě zobrazuje aktuálně pozorovatelných chyba projevuje, zatímco události je Historický záznam problémů, které mají vliv počítače.
-      - **Zobrazení infrastruktury**: Zobrazuje stav infrastruktury pro scénář, když počítače se replikují do Azure.
+   - **Informace o replikaci**: Aktuální stav a stav počítače.
+   - **Cíl bodu obnovení** (bodu obnovení rpo): Aktuální cíl bodu obnovení pro virtuální počítač a čas, kdy se naposledy spočítá cíle bodu obnovení.
+   - **Body obnovení**: Nejnovější dostupné body obnovení pro počítač.
+   - **Připravenost na převzetí služeb při selhání**: Určuje, zda testovací převzetí služeb spuštěné v počítači agenta verze, která běží na počítači (pro počítače se službou Mobility) a případných problémů s konfigurací.
+   - **Chyby**: Seznam aktuálně pozorovaný na počítač a možných příčin/příznaky Chyba replikace.
+   - **Události**: Chronologický seznam posledních událostí vliv na tento počítač. Podrobnosti o chybě zobrazuje aktuálně pozorovatelných chyba projevuje, zatímco události je Historický záznam problémů, které mají vliv počítače.
+   - **Zobrazení infrastruktury**: Zobrazuje stav infrastruktury pro scénář, když počítače se replikují do Azure.
 
-    ![Site Recovery replikované položky. Podrobnosti o/overview](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
+     ![Site Recovery replikované položky. Podrobnosti o/overview](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
 
 ### <a name="common-questions"></a>Časté dotazy
@@ -191,7 +191,7 @@ Můžete se přihlásit k odběru e-mailová oznámení pro tyto důležité ud�
 Přihlášení odběru následujícím způsobem:
 
 V trezoru > **monitorování a sestavy** klikněte na tlačítko **událostí ASR**.
-2. Klikněte na tlačítko **e-mailová oznámení**.
-3. V **e-mailová oznámení**, zapněte oznámení a zadejte, kdo k odeslání. Můžete odeslat na všichni správci předplatného pošle oznámení a volitelně konkrétní e-mailové adresy.
+1. Klikněte na tlačítko **e-mailová oznámení**.
+1. V **e-mailová oznámení**, zapněte oznámení a zadejte, kdo k odeslání. Můžete odeslat na všichni správci předplatného pošle oznámení a volitelně konkrétní e-mailové adresy.
 
     ![E-mailová oznámení](./media/site-recovery-monitor-and-troubleshoot/email.png)

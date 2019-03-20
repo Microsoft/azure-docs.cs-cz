@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d1af8d7e10bd62819909c87c8e54fcbce6b7fe6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890415"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170798"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestavě rizikových IP adres (public preview)
 Zákazníci služby AD FS můžou zveřejnit koncové body ověřování pomocí hesla na internetu a poskytnout tak koncovým zákazníkům ověřovací služby pro přístup k aplikacím SaaS, jako je Office 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
@@ -44,7 +44,7 @@ Každá položka v sestavě rizikových IP adres ukazuje agregované informace o
 | ------- | ----------- |
 | Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
-| IP adresa | Jedna riziková IP adresa, ze které probíhaly aktivity přihlášení se špatným heslem nebo uzamčením extranetu. Může se jednat o adresu IPv4 nebo IPv6. |
+| IP adresa | Jedna riziková IP adresa, ze které probíhaly aktivity přihlášení se špatným heslem nebo uzamčením extranetu. To může být IPv4 nebo IPv6 adresu. |
 | Počet chybných zadání hesla | Počet chybných zadání hesla, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybnému zadání hesla může u určitých uživatelů dojít vícekrát. Všimněte si, že toto číslo nezahrnuje neúspěšné pokusy kvůli heslům, kterým vypršela platnost. |
 | Počet chyb uzamčení extranetu | Počet chyb uzamčení extranetu, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybám uzamčení extranetu může u určitých uživatelů dojít vícekrát. Tato položka se zobrazí pouze v případě, že je uzamčení extranetu nakonfigurované ve službě AD FS (verze 2012R2 nebo novější). <b>Poznámka:</b> Důrazně doporučujeme tuto funkci zapnout, pokud umožňujete přihlášení pomocí hesel z extranetu. |
 | Počet vyzkoušených jedinečných uživatelů | Počet vyzkoušených jedinečných uživatelských účtů, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. Tato položka poskytuje mechanismus pro odlišení vzorce útoku na jednoho uživatele od vzorce útoku na více uživatelů.  |

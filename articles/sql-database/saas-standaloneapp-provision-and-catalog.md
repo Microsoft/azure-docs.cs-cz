@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 57a8a89c73e2be51e54130d9c37194a7513a47d8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896938"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a katalogizace nových tenantů v aplikaci na model SaaS tenanta
 
@@ -99,7 +99,7 @@ Po dokončení skriptu budou existovat v katalogu a ukázkoví tenanti se zaregi
 Nyní se podívejte na prostředky, které jste vytvořili.
 
 1. Otevřít [webu Azure portal](https://portal.azure.com/) a procházet skupiny prostředků.  Otevřít **wingtip-sa-catalog -\<uživatele\>**  prostředek skupiny a poznamenejte si katalog serveru a databáze.
-1. Otevřete portál a vyberte databázi *Průzkumník dat* z nabídky na levé straně.  Klikněte na příkaz Login a pak zadejte heslo = **P@ssword1**.
+1. Otevřete portál a vyberte databázi *Průzkumník dat* z nabídky na levé straně.  Klikněte na příkaz Login a pak zadejte heslo = **P\@ssword1**.
 
 
 1. Prozkoumejte schéma *tenantcatalog* databáze.  

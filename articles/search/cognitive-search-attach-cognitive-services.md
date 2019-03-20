@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880411"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
@@ -60,21 +60,7 @@ Pouze bude vám účtována dovednosti, které volají rozhraní API služeb Cog
 
 1. Pro **vytvořit nový prostředek služeb Cognitive Services**, otevře se nová karta, aby mohl vytvořit prostředek. Zadejte jedinečný název prostředku.
 
-1. Zvolte stejné umístění jako Azure Search. Kognitivní dovednosti indexování v současné době se podporuje v těchto oblastech:
-
-  * Západní střed USA
-  * Středojižní USA
-  * USA – východ
-  * Východní USA 2
-  * Západní USA 2
-  * Kanada – střed
-  * Západní Evropa
-  * Velká Británie – jih
-  * Severní Evropa
-  * Brazílie – jih
-  * Jihovýchodní Asie
-  * Střed Indie
-  * Austrálie – východ
+1. Pokud vytvoříte nový prostředek služeb Cognitive Services **vyberte stejnou oblast,** jako váš prostředek Azure Search.
 
 1. Zvolte cenovou úroveň All-in-one, **S0**. Tato úroveň poskytuje funkce pro zpracování obrazu a jazyk, které zálohují předdefinované dovednosti v kognitivního vyhledávání.
 

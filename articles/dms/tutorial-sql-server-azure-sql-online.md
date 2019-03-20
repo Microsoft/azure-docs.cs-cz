@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 605986a61ee6a09ccc3bfd6c58719a1d82604c8e
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1eb41b7b027489e18900332ca0c20598ec8edfcc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093105"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Kurz: Migrace SQL serveru do izolované databáze nebo databázi ve fondu ve službě Azure SQL Database pomocí DMS online
 
@@ -130,10 +130,10 @@ Pokud chcete posoudit místní databázi, postupujte následovně:
 
     Když posuzovaných zdroje migrace databáze systému SQL Server na izolovanou databázi nebo databázi ve fondu ve službě Azure SQL Database, můžete jednu nebo obě z následujících posouzení typy sestav:
 
-    - Kontrola kompatibility databáze
-    - Kontrola parity funkcí
+   - Kontrola kompatibility databáze
+   - Kontrola parity funkcí
 
-    Ve výchozím nastavení jsou vybrané oba typy sestavy.
+     Ve výchozím nastavení jsou vybrané oba typy sestavy.
 
 3. V DMA na obrazovce **Možnosti** vyberte **Další**.
 4. Na obrazovce **Vybrat zdroje** v dialogovém okně **Připojit k serveru** zadejte podrobnosti o připojení k vašemu SQL Serveru a pak vyberte **Připojit**.

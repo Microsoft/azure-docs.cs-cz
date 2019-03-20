@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: 098958cd729f1c616a93bbb5264445cb6d877f8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: de849ae290228826ee500ae1c7e623210e585d34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441980"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113244"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -78,7 +78,7 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
 1. Nainstalujte tyto dva balíčky nuget [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet knihovny.
 
 2. Otevřete soubor Program.cs a aktualizujte kód následujícím kódem: 
-```
+   ```
     public class Program
     {
         public static void Main(string[] args)
@@ -106,27 +106,27 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
 
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
-```
+   ```
 3. Potom otevřete soubor About.cshtml.cs a napsat následující kód
-    1. Zahrnout odkaz na Microsoft.Extensions.Configuration situace using – příkaz    
-        ```
-        using Microsoft.Extensions.Configuration
-        ```
-    2. Přidejte tento konstruktor
-        ```
-        public AboutModel(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-        ```
-    3. Metoda OnGet aktualizace. Aktualizovat hodnotu zástupného symbolu, které jsou tady uvedené s název tajného klíče, který jste vytvořili výše uvedené příkazy
-        ```
-        public void OnGet()
-        {
-            //Message = "Your application description page.";
-            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
-        }
-        ```
+   1. Zahrnout odkaz na Microsoft.Extensions.Configuration situace using – příkaz    
+       ```
+       using Microsoft.Extensions.Configuration
+       ```
+   2. Přidejte tento konstruktor
+       ```
+       public AboutModel(IConfiguration configuration)
+       {
+           _configuration = configuration;
+       }
+       ```
+   3. Metoda OnGet aktualizace. Aktualizovat hodnotu zástupného symbolu, které jsou tady uvedené s název tajného klíče, který jste vytvořili výše uvedené příkazy
+       ```
+       public void OnGet()
+       {
+           //Message = "Your application description page.";
+           Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+       }
+       ```
 
 Spusťte aplikaci místně tak, že přejdete do o stránce. Měli byste vaše tajná hodnota načíst
 

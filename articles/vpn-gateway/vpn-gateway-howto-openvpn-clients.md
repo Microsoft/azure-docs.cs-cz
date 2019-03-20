@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f7288202eb6dd66aee0bb38bb3611e8b319b50f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415829"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010541"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
@@ -36,29 +36,29 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 4. [Export](vpn-gateway-certificates-point-to-site.md#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně.
 5. Extrahování privátním klíčem a kryptografického otisku base64 z *.pfx*. To lze provést několika způsoby. Pomocí OpenSSL na vašem počítači je jedním ze způsobů. *Profileinfo.txt* soubor obsahuje privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
-  ```
-  openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
-  ```
+   ```
+   openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+   ```
 6. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat kryptografický otisk certifikátu klienta (podřízený), vyberte text (včetně a mezi) "---BEGIN CERTIFICATE---" a "---konec certifikát---" pro podřízené certifikát a zkopírujte ho. Certifikát podřízené můžete identifikovat podle předmětu = / řádek.
 7. Přepněte *vpnconfig.ovpn* soubor otevřený v poznámkovém bloku z kroku 3. Část uvedenou níže najít a nahradit všechno mezi "cert" a "/ certifikátu".
 
-  ```
-  # P2S client certificate
-  # please fill this field with a PEM formatted cert
-  <cert>
-  $CLIENTCERTIFICATE
-  </cert>
-  ```
-8.  Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "---BEGIN PRIVATE KEY---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
-9.  Vraťte se do souboru vpnconfig.ovpn v programu Poznámkový blok a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat privátní klíč, vyberte text (včetně a mezi) "---BEGIN PRIVATE KEY---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
+9. Vraťte se do souboru vpnconfig.ovpn v programu Poznámkový blok a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
 
-  ```
-  # P2S client root certificate private key
-  # please fill this field with a PEM formatted key
-  <key>
-  $PRIVATEKEY
-  </key>
-  ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 10. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
 11. Zkopírujte soubor vpnconfig.ovpn do složky C:\Program Files\OpenVPN\config.
 12. Klikněte pravým tlačítkem na ikonu OpenVPN na hlavním panelu a klikněte na Připojit.
@@ -84,56 +84,56 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 1. Otevřete novou relaci terminálu. Nová relace můžete otevřít stisknutím klávesy "Ctrl + Alt + t" ve stejnou dobu.
 2. Zadejte následující příkaz pro instalaci potřebných součástí:
 
-  ```
-  sudo apt-get install openvpn
-  sudo apt-get -y install network-manager-openvpn
-  sudo service network-manager restart
-  ```
+   ```
+   sudo apt-get install openvpn
+   sudo apt-get -y install network-manager-openvpn
+   sudo service network-manager restart
+   ```
 3. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace Point-to-site na webu Azure Portal.
-4.  [Export](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně. 
+4. [Export](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) P2S klientský certifikát můžete vytvořit a nahrát do vaší konfigurace P2S k bráně. 
 5. Extrahování privátní klíč a kryptografický otisk base64 z soubor .pfx. To lze provést několika způsoby. Pomocí OpenSSL ve vašem počítači je jedním ze způsobů.
 
     ```
     openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-  *Profileinfo.txt* soubor bude obsahovat privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
+   *Profileinfo.txt* soubor bude obsahovat privátní klíč a kryptografický otisk certifikační Autority a certifikát klienta. Nezapomeňte použít kryptografický otisk klientského certifikátu.
 
 6. Otevřít *profileinfo.txt* v textovém editoru. Pokud chcete získat kryptografický otisk certifikátu klienta (podřízený), vyberte text, včetně a mezi "---začátek certifikát---" a "---konec certifikát---" pro podřízené certifikát a zkopírujte ho. Certifikát podřízené můžete identifikovat podle předmětu = / řádek.
 
-7.  Otevřít *vpnconfig.ovpn* souborů a vyhledejte část uvedenou níže. Nahradit vše mezi a "cert" a "/ certifikátu".
+7. Otevřít *vpnconfig.ovpn* souborů a vyhledejte část uvedenou níže. Nahradit vše mezi a "cert" a "/ certifikátu".
 
-    ```
-    # P2S client certificate
-    # please fill this field with a PEM formatted cert
-    <cert>
-    $CLIENTCERTIFICATE
-    </cert>
-    ```
-8.  Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text, včetně a mezi "---začátek PRIVÁTNÍ klíč---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. Otevřete profileinfo.txt v textovém editoru. Pokud chcete získat privátní klíč, vyberte text, včetně a mezi "---začátek PRIVÁTNÍ klíč---" a "---BEGIN PRIVATE KEY---" a zkopírujte ho.
 
-9.  Otevřete soubor vpnconfig.ovpn v textovém editoru a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
+9. Otevřete soubor vpnconfig.ovpn v textovém editoru a najděte v této části. Vložte privátní klíč, který nahrazuje všechno mezi a "klíče" a "/ klíčů".
 
-    ```
-    # P2S client root certificate private key
-    # please fill this field with a PEM formatted key
-    <key>
-    $PRIVATEKEY
-    </key>
-    ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 
 10. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
 11. Připojení pomocí příkazového řádku, zadejte následující příkaz:
   
-  ```
-  sudo openvpn –-config <name and path of your VPN profile file>
-  ```
+    ```
+    sudo openvpn –-config <name and path of your VPN profile file>
+    ```
 12. Chcete-li připojit pomocí grafického uživatelského rozhraní, přejděte na nastavení systému.
 13. Klikněte na tlačítko **+** přidat nové připojení VPN.
 14. V části **přidat VPN**, vyberte **importovat ze souboru...**
 15. Vyhledejte soubor profilu a poklikáním nebo vyberte **otevřít**.
 16. Klikněte na tlačítko **přidat** na **přidat VPN** okna.
   
-  ![Importovat ze souboru](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+    ![Importovat ze souboru](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. Můžete připojit síť VPN zapnete **ON** na **nastavení sítě** stránky, nebo na ikonu sítě v oznamovací oblasti.
 
 ## <a name="next-steps"></a>Další postup

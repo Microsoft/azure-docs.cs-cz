@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 0d9de6e5cfa8ffa0c5f67607a60d930b623413cf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247269"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111663"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci pro PCI DSS
 
@@ -228,10 +228,10 @@ Tento zabezpečení Azure a dodržování předpisů podrobného plánu Automati
 2. Zkontrolujte 0. Instalační program AdministrativeAccountAndPermission.md a spusťte zadaný příkaz.
 
 3. Nasazení řešení pro testování s Contoso ukázková data nebo pilotní počáteční produkčního prostředí.
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - Tento skript nasadí prostředky Azure pro ukázku webstore pomocí ukázkových dat společnosti Contoso.
-  - 1-DeployAndConfigureAzureResources.ps1
-    - Tento skript nasadí prostředky Azure potřebné pro podporu pro vlastněné zákazníkem webovou aplikaci do produkčního prostředí. Toto prostředí by měl dál přizpůsobit podle zákazníka na základě požadavků organizace.
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - Tento skript nasadí prostředky Azure pro ukázku webstore pomocí ukázkových dat společnosti Contoso.
+   - 1-DeployAndConfigureAzureResources.ps1
+     - Tento skript nasadí prostředky Azure potřebné pro podporu pro vlastněné zákazníkem webovou aplikaci do produkčního prostředí. Toto prostředí by měl dál přizpůsobit podle zákazníka na základě požadavků organizace.
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 

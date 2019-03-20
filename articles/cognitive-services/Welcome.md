@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: nitinme
-ms.openlocfilehash: 5c6d9bbfe5cf3632b21f374c23bf5df728478ce0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7f0bfa407705f4c9535e6dddc9a27a4f7130931d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113826"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
@@ -46,7 +46,7 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 |[Pro kontrolu pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "pro kontrolu pravopisu Bingu")|Pro kontrolu pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrola pravopisu.|
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding service (LUIS) umožňuje, aby aplikace věděla, požadavkům člověka ve své vlastní slova.|
 |[Rozhraní text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "pro analýzu textu")|Rozhraní text Analytics poskytuje nezpracovaný text pro analýzu mínění, extrakci klíčových frází a rozpoznání jazyka zpracování přirozeného jazyka.|
-|[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator text obsahuje pro překlad textu založených na počítačích v téměř v reálném čase.||
+|[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Translator text obsahuje pro překlad textu založených na počítačích v téměř v reálném čase.|
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
 

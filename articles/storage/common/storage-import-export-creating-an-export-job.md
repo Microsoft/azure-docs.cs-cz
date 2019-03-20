@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731390"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092221"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
 Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
 
--   Výběr objektů BLOB k exportu.
+- Výběr objektů BLOB k exportu.
 
--   Získání umístění přesouvání.
+- Získání umístění přesouvání.
 
--   Vytvoření úlohy exportu.
+- Vytvoření úlohy exportu.
 
--   Přesouvání prázdné jednotky společnosti Microsoft prostřednictvím služby podporované operátora.
+- Přesouvání prázdné jednotky společnosti Microsoft prostřednictvím služby podporované operátora.
 
--   Aktualizuje se úloha exportu s informací o balíčku.
+- Aktualizuje se úloha exportu s informací o balíčku.
 
--   Přijetí jednotky zpět od Microsoftu.
+- Přijetí jednotky zpět od Microsoftu.
 
- V tématu [pomocí služby Windows Azure Import/Export pro přenos dat do úložiště objektů Blob](storage-import-export-service.md) Přehled služby Import/Export a kurz, který ukazuje, jak používat [webu Azure portal](https://portal.azure.com/) k vytvoření a Správa import a export úloh.
+  V tématu [pomocí služby Windows Azure Import/Export pro přenos dat do úložiště objektů Blob](storage-import-export-service.md) Přehled služby Import/Export a kurz, který ukazuje, jak používat [webu Azure portal](https://portal.azure.com/) k vytvoření a Správa import a export úloh.
 
 ## <a name="selecting-blobs-to-export"></a>Vyberte objekty BLOB k exportu
  Chcete-li vytvořit úlohu exportu, musíte poskytnout seznam objektů BLOB, které chcete exportovat z vašeho účtu úložiště. Existuje několik způsobů, jak vybrat objekty BLOB export:
 
--   Cesta relativní objektů blob můžete vybrat jeden objekt blob a všechny její snímky.
+- Cesta relativní objektů blob můžete vybrat jeden objekt blob a všechny její snímky.
 
--   Cesta relativní objektů blob můžete vybrat jeden objekt blob, s výjimkou její snímky.
+- Cesta relativní objektů blob můžete vybrat jeden objekt blob, s výjimkou její snímky.
 
--   Cesta relativní objektů blob a čas snímku můžete vybrat jeden snímek.
+- Cesta relativní objektů blob a čas snímku můžete vybrat jeden snímek.
 
--   Předpony objektů blob můžete vybrat všechny objekty BLOB a snímky s danou předponu.
+- Předpony objektů blob můžete vybrat všechny objekty BLOB a snímky s danou předponu.
 
--   Můžete exportovat všechny objekty BLOB a snímky v účtu úložiště.
+- Můžete exportovat všechny objekty BLOB a snímky v účtu úložiště.
 
- Další informace o zadávání objekty BLOB k exportu, najdete v článku [úlohy umístit](/rest/api/storageimportexport/jobs) operace.
+  Další informace o zadávání objekty BLOB k exportu, najdete v článku [úlohy umístit](/rest/api/storageimportexport/jobs) operace.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
 Před vytvoření úlohy exportu, je potřeba získat přenosů název umístění a adresa voláním [získat umístění](https://portal.azure.com) nebo [seznamu umístění](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.

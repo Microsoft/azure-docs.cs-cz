@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: b3675821cd5565df409fac209b6763845460df1c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 123c5556dc76b35cf4a6b4b34e0c3e2fe437cebe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996454"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Průvodce upgradem API Bingu pro vyhledávání obrázků v7
 
@@ -26,7 +26,7 @@ Tento průvodce upgradem identifikuje změny mezi verzí 5 a verze 7 rozhraní A
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncový bod se změní z v5 na v7. Například https://api.cognitive.microsoft.com/bing/\ * \*v7.0**/images/search.
+- Číslo verze koncový bod se změní z v5 na v7. Například https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědi chyby a chybové kódy
 

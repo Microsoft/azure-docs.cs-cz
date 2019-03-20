@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448037"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841170"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sadou SDK pro řeč
 
@@ -26,7 +26,7 @@ Aplikace je založena na Microsoft Cognitive Services sadou SDK pro řeč ([stah
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu Speech. Viz [Vyzkoušejte si službu Speech zdarma](get-started.md).
+* Klíč předplatného pro službu Speech. Zobrazit [hlasové služby si můžete vyzkoušet zdarma](get-started.md).
 * PC nebo Mac s funkčním mikrofonem
 * Textový editor
 * Aktuální verze prohlížeče Chrome nebo Microsoft Edge
@@ -49,12 +49,12 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
 
 1. Vytvořte následující kostru HTML:
 
-  ```html
-  <html>
-  <head>
+   ```html
+   <html>
+   <head>
       <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
-  </head>
-  <body>
+   </head>
+   <body>
     <!-- UI code goes here -->
 
     <!-- SDK reference goes here -->
@@ -62,21 +62,21 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
     <!-- Optional authorization token request goes here -->
 
     <!-- Sample code goes here -->
-  </body>
-  </html>
-  ```
+   </body>
+   </html>
+   ```
 
 1. Pod první komentář v souboru přidejte následující kód uživatelského rozhraní:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
 
 1. Přidejte odkaz na sadu Speech SDK.
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
 1. Nastavit obslužné rutiny pro rozpoznávání tlačítko, výsledek rozpoznání a týkajících se předplatného polí definovaných v kódu uživatelského rozhraní:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
 ## <a name="create-the-token-source-optional"></a>Vytvoření zdroje tokenu (volitelné)
 
@@ -85,11 +85,11 @@ Díky tomu váš klíč předplatného nikdy neopustí váš server a uživatel�
 
 1. Vytvořte nový soubor s názvem `token.php`. V tomto příkladu předpokládáme, že váš webový server podporuje skriptovací jazyk PHP. Zadejte následující kód:
 
-  [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
+   [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
 
 1. Upravte soubor `index.html` a přidejte do něj následující kód:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
 
 > [!NOTE]
 > Autorizační tokeny mají pouze omezenou dobu života.

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 610b140fd6049842b993c17fd53bebf799f83f5c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006502"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Virtuální počítač pro datové vědy](https://aka.ms/dsvm) (DSVM) a [hloubkového učení VM](https://aka.ms/dsvm/deeplearning) podporuje řadu architektury hloubkového učení, které vám pomůžou vytvářet aplikace umělou inteligenci (AI) k prediktivním analýzám a kognitivní možnosti, jako jsou bitové kopie a umožňující porozumět jazyku.
@@ -218,8 +218,7 @@ Službu spusťte trvá přibližně jednu minutu. Spusťte webový prohlížeč 
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Je nainstalovaný PyTorch [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
 | Odkazy na ukázky      | Jsou zahrnuty ukázkové poznámkové bloky Jupyter a ukázky najdete také v /dsvm/samples/pytorch.      |
 | Související nástroje na datové VĚDY      | Torch      |
-| Jak používat nebo ji spustit |
-* V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/> * V Jupyter: Připojte se k [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete PyTorch adresář pro ukázky.  |
+| Jak používat nebo ji spustit |* V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/> * V Jupyter: Připojte se k [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete PyTorch adresář pro ukázky.  |
 
 ## <a name="mxnet-model-server"></a>Server MXNet modelu
 

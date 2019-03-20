@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 03/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550186"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224545"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -48,7 +48,7 @@ V současné době podporuje kombinovaná registrace použít následující met
 | Jiné ověřovací aplikaci | Ano (max. 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
 | Telefon | Ano | Ano | Ano |
-| Jiný telefon | Ano | Ano | Ano |
+| Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
 | Email | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
@@ -68,11 +68,11 @@ Jak Pokračujeme v do Azure AD přidat další metody ověřování takové, bud
 
 ## <a name="combined-registration-modes"></a>Kombinovaná registrace režimy
 
-Existují dva "režimy" kombinovaná registrace: přerušení a spravovat. 
+Existují dva "režimy" kombinovaná registrace: přerušení a spravovat.
 
-Režim přerušení, je to prostředí jako průvodce zobrazí uživateli při registraci nebo aktualizovat svoje bezpečnostní údaje při přihlášení. 
+Režim přerušení, je to prostředí jako průvodce zobrazí uživateli při registraci nebo aktualizovat svoje bezpečnostní údaje při přihlášení.
 
-Správa režimu je součástí profilu uživatele a umožňuje je spravovat svoje bezpečnostní údaje. 
+Správa režimu je součástí profilu uživatele a umožňuje je spravovat svoje bezpečnostní údaje.
 
 Pro oba režimy Pokud uživatel už zaregistroval metodu, která lze použít pro vícefaktorové ověřování, se potřebují k provedení MFA, než bude moct svoje bezpečnostní údaje.
 

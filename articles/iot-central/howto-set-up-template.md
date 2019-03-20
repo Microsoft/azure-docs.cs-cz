@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f8c99bd6bc9edb78a7af241f1eee2669c955a040
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767307"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167435"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Nastavit šablonu zařízení (návrh nové uživatelské rozhraní)
 
@@ -44,11 +44,13 @@ Z této šablony zařízení můžete vytvořit a připojit skutečné ventilát
 
 1. Přejděte **šablon** stránky.
 
-2. Chcete-li vytvořit prázdnou šablonou, vyberte **+** a potom zadejte název, třeba **lednice** nové šablony zařízení. Potom vyberte **vytvořit**:
+2. Pokud chcete vytvořit šablonu, začněte výběrem **+ nová**.
 
-   ![Stránce s podrobnostmi o zařízení s "Lednice" jako název šablony](./media/howto-set-up-template/devicedetailspage.png)
+3. Abyste mohli rychle začít, zvolte z existující předem připravené šablony. V opačném případě vyberte **vlastní**, zadejte název a klikněte na tlačítko **vytvořit** vytvářet vlastní šablonu od začátku.
 
-4. Nyní jste na **podrobnosti o zařízení** stránky pro novou šablonu zařízení. IoT Central automaticky vytvoří simulované zařízení, když vytvoříte šablonu zařízení. Simulované zařízení umožňuje testovat chování aplikace před připojit skutečné zařízení.
+   ![Knihovna šablon zařízení](./media/howto-set-up-template/newtemplate.png)
+
+4. Když vytvoříte vlastní šablonu, se zobrazí **podrobnosti o zařízení** stránky pro šablonu nové zařízení. IoT Central automaticky vytvoří simulované zařízení, když vytvoříte šablonu zařízení. Simulované zařízení umožňuje testovat chování aplikace před připojit skutečné zařízení.
 
 Následující části popisují každou z karet na **šablona zařízení** stránky.
 

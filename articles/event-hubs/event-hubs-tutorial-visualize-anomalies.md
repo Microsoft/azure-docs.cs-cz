@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123041"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizovat data anomálie v reálném čase událostí odeslaných do služby Azure Event Hubs
 
@@ -328,10 +328,10 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
     > Když spustíte ukázkovou aplikaci a Streamovat data do centra událostí, počet na tuto dlaždici mění často (každou sekundu). Je proto, že dotazu Stream Analytics ve skutečnosti aktualizuje hodnotu **každou sekundu**. Aktualizujte dotaz až 3 minuty přeskakujícího okna zobrazíte součet za posledních několik minut. 
 11. Přidejte další vizualizaci. Zopakujte prvních několik kroků:
 
-   * Klikněte na **Přidat dlaždici**.
-   * Vyberte **Vlastní streamovaná data**. 
-   * Klikněte na tlačítko **Další**.
-   * Vyberte vaši datovou sadu a klikněte na **Další**. 
+    * Klikněte na **Přidat dlaždici**.
+    * Vyberte **Vlastní streamovaná data**. 
+    * Klikněte na tlačítko **Další**.
+    * Vyberte vaši datovou sadu a klikněte na **Další**. 
 
 12. V části **Typ vizualizace** vyberte **Spojnicový graf**.
 

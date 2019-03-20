@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217349"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096669"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: Zpracování chyb LargeObject způsobených atributem userCertificate
 
@@ -79,9 +79,9 @@ Ujistěte se, že žádná synchronizace bude probíhat, když jste uprostřed i
 > [!Note]
 > V předchozích krocích platí pouze pro novější verze (1.1.xxx.x) služby Azure AD Connect s využitím integrované plánovače. Pokud používáte starší verze (1.0.xxx.x) služby Azure AD Connect, používající Plánovač úloh Windows, nebo používáte vlastní vlastní plánovač (není běžné) k aktivaci pravidelnou synchronizaci, musíte je zakázat odpovídajícím způsobem.
 
-3. Spustit **Synchronization Service Manager** tak, že přejdete na ZAČÁTKU → synchronizační služba.
+1. Spustit **Synchronization Service Manager** tak, že přejdete na ZAČÁTKU → synchronizační služba.
 
-4. Přejděte **operace** kartu a potvrdit, neexistuje žádná operace, jejichž stav je *"probíhá."*
+1. Přejděte **operace** kartu a potvrdit, neexistuje žádná operace, jejichž stav je *"probíhá."*
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Krok 2. Najít existující pravidlo odchozí synchronizace pro atributem userCertificate
 Měla by existovat existující synchronizační pravidlo, které je povolená a nakonfigurovaná tak, aby export atributem userCertificate pro uživatelské objekty do služby Azure AD. Vyhledejte pravidlo synchronizace a zjistěte jeho **prioritu** a **filtr oborů** konfigurace:

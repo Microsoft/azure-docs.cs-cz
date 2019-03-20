@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 63e4052a2bce6c620180d682d6713d2f1547c956
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536755"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858197"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API webové vyhledávání Bingu  
 
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. Tuto aplikaci Node.js k rozhraní API odešle žádost o vyhledávání a ukázka odezvy. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [PHP 5.6.x](https://php.net/downloads.php) nebo novější
@@ -34,11 +35,11 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 
 Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
 
-```
-;extension=php_openssl.dll
+```php
+; extension=php_openssl.dll
 ```
 
-## <a name="create-a-project-and-define-variables"></a>Vytvoření projektu a definování proměnných  
+## <a name="create-a-project-and-define-variables"></a>Vytvoření projektu a definování proměnných
 
 V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Nezapomeňte přidat počáteční a koncové značky `<?php` a `?>`.
 

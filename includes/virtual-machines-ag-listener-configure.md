@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e24ed3921872a4c754967841634ebab23b972e59
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9c7c6d31b9443ee09539d4882a9e8f4c4332763b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55735974"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124637"
 ---
 Naslouchací proces skupiny dostupnosti se IP adresy a síťového názvu, které skupiny dostupnosti systému SQL Server naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte takto:
 
@@ -86,27 +86,27 @@ Naslouchací proces skupiny dostupnosti se IP adresy a síťového názvu, kter�
 
 1. <a name="setparam"></a>Nastavení parametrů clusteru v prostředí PowerShell.
 
-  a. Zkopírujte následující skript prostředí PowerShell do jednoho z vašich instancí systému SQL Server. Aktualizujte proměnné pro vaše prostředí.
+   a. Zkopírujte následující skript prostředí PowerShell do jednoho z vašich instancí systému SQL Server. Aktualizujte proměnné pro vaše prostředí.
 
-  - `$ListenerILBIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerILBIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
     
-  - `$ListenerProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<IPResourceName>" # the IP Address resource name
-  $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ListenerProbePort = <nnnnn>
+   ```PowerShell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<IPResourceName>" # the IP Address resource name
+   $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ListenerProbePort = <nnnnn>
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
 
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
+   b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
 
-  > [!NOTE]
-  > Pokud vaše instance SQL serveru jsou v oblastech, budete muset spustit skript prostředí PowerShell dvakrát. Při prvním použití `$ListenerILBIP` a `$ListenerProbePort` v první oblasti. Použít při druhém volání `$ListenerILBIP` a `$ListenerProbePort` z druhé oblasti. Síťový název clusteru a název prostředku IP clusteru se také liší pro každou oblast.
+   > [!NOTE]
+   > Pokud vaše instance SQL serveru jsou v oblastech, budete muset spustit skript prostředí PowerShell dvakrát. Při prvním použití `$ListenerILBIP` a `$ListenerProbePort` v první oblasti. Použít při druhém volání `$ListenerILBIP` a `$ListenerProbePort` z druhé oblasti. Síťový název clusteru a název prostředku IP clusteru se také liší pro každou oblast.
 
 1. Přeneste online role clusteru skupiny dostupnosti. V **Správce clusteru převzetí služeb při selhání** pod **role**, klikněte pravým tlačítkem myši klikněte na roli a vyberte **Role spuštění**.
 
@@ -120,24 +120,24 @@ V případě potřeby opakujte tento postup k nastavení parametrů clusteru pro
 
 1. <a name="setwsfcparam"></a>Nastavení parametrů clusteru v prostředí PowerShell.
   
-  a. Zkopírujte následující skript prostředí PowerShell do jednoho z vašich instancí systému SQL Server. Aktualizujte proměnné pro vaše prostředí.
+   a. Zkopírujte následující skript prostředí PowerShell do jednoho z vašich instancí systému SQL Server. Aktualizujte proměnné pro vaše prostředí.
 
-  - `$ClusterCoreIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro prostředek clusteru služby WSFC core. To se liší od IP adresu pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterCoreIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro prostředek clusteru služby WSFC core. To se liší od IP adresu pro naslouchací proces skupiny dostupnosti.
 
-  - `$ClusterProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondy stavu služby WSFC. To se liší od testu paměti pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondy stavu služby WSFC. To se liší od testu paměti pro naslouchací proces skupiny dostupnosti.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
-  $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
+   ```PowerShell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
   
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
+   b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
 
 >[!WARNING]
 >Port sondy stavu naslouchacího procesu skupiny dostupnosti musí být odlišný od port clusteru core IP adresu stavu testu. V těchto příkladech na port naslouchacího procesu je 59999 a IP adresu clusteru core je 58888. Vyžadovat oba porty brány firewall pro příchozí pravidlo povolení.

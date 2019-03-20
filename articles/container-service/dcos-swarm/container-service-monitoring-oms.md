@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 8ed148dfd6441d05891ef38934123a9cd3827b8b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110966"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics
 
@@ -41,18 +41,18 @@ Tento článek předpokládá, že jste nastavili DC/OS a nasazení jednoduché 
    >[!NOTE]
    >OMS se teď označuje jako Log Analytics.
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. Klikněte na **Nainstalovat**. Zobrazí se automaticky otevírané okno s informací o verzi a **instalovat balíček** nebo **rozšířené instalace** tlačítko. Po kliknutí na **rozšířené instalace**, což povede k **vlastnosti konkrétní konfigurace OMS** stránky.
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. Tady, zobrazí se výzva k zadání `wsid` (ID pracovního prostoru Log Analytics) a `wskey` (primární klíč pro ID pracovního prostoru). Chcete-li získat i `wsid` a `wskey` budete muset vytvořit účet na webu <https://mms.microsoft.com>.
-Postupujte podle kroků k vytvoření účtu. Po dokončení vytváření účtu, je třeba získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery s Linuxem**, jak je znázorněno níže.
+   Postupujte podle kroků k vytvoření účtu. Po dokončení vytváření účtu, je třeba získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery s Linuxem**, jak je znázorněno níže.
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. Vyberte počet instancí a klikněte na tlačítko "Zkontrolovat a nainstalovat". Obvykle můžete mít počet instancí rovná počtu virtuálních počítačů máte ve vašem clusteru agenta. Nainstaluje agenta log Analytics pro Linux jako jednotlivých kontejnerů na každém virtuálním počítači, který je chce shromažďovat informace o monitorování a protokolování.
 

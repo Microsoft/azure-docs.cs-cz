@@ -1,7 +1,7 @@
 ---
-title: Automaticky – train model prognózy
+title: Automaticky – train model prognózy časových řad
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak pomocí služby Azure Machine Learning k trénování prognóz regresního modelu pomocí automatizovaných strojového učení.
+description: Zjistěte, jak pomocí služby Azure Machine Learning algoritmu time series prognóz regresního modelu pomocí automatizované strojového učení.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -9,17 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/08/2019
-ms.openlocfilehash: 7c34040180cd7c6b635d55e59498908b1373ae1b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/19/2019
+ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57786616"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226604"
 ---
-# <a name="auto-train-a-forecast-model"></a>Automaticky – train model prognózy
+# <a name="auto-train-a-time-series-forecast-model"></a>Automaticky – train model prognózy časových řad
 
-V tomto článku se dozvíte, jak pro trénování prognóz regresního modelu pomocí automatizovaných strojového učení ve službě Azure Machine Learning. Konfigurace modelu prognózy je podobné nastavení standardní regresního modelu pomocí automatizovaných strojového učení, ale existují určité kroky předběžného zpracování a možnosti konfigurace pro práci s daty časových řad. Následující příklady ukazují, jak do:
+V tomto článku se dozvíte, jak pro trénování časových řad prognóz regresního modelu pomocí automatizovaných strojového učení ve službě Azure Machine Learning. Konfigurace modelu prognózy je podobné nastavení standardní regresního modelu pomocí automatizovaných strojového učení, ale existují určité kroky předběžného zpracování a možnosti konfigurace pro práci s daty časových řad. Následující příklady ukazují, jak do:
 
 * Příprava dat pro čas řady modelování
 * Konfigurovat parametry pro konkrétní časových řad v [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektu
@@ -58,7 +58,7 @@ V tomto případě je již řazeno vzestupně podle času pole `week_starting`. 
 
 ```python
 X_train = data.iloc[:950]
-X_test = data.iloc[50:]
+X_test = data.iloc[-50:]
 
 y_train = X_train.pop("sales_quantity").values
 y_test = X_test.pop("sales_quantity").values

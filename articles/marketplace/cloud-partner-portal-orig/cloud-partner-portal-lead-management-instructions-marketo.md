@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: abb0abb94d3b3e7abc4dce58cdb11fa0c2cedd34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 482d7a9662a79503bb2b197d5a6c63c9fa3c1c96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809194"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113108"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků služby marketo
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak nastavit Marketo pro zpracování potenciálních z
 
 1. Přihlaste se k Marketo.
 2. Vyberte **návrh Studio**.
-    ![Studio návrhu služby Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
+    ![Marketo Design Studio](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo1.png)
 
 3.  Vyberte **nový formulář**.
     ![Formulář nové platformy Marketo](./media/cloud-partner-portal-lead-management-instructions-marketo/marketo2.png)
@@ -50,10 +50,10 @@ Tento článek popisuje, jak nastavit Marketo pro zpracování potenciálních z
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
-8.  Zkopírujte hodnoty uvedené v kódu pro vložení, můžete nakonfigurovat **Id serveru**, **Munchkin Id**, a **Id formuláře** v polích Marketo na portál partnerů cloudu.
+1. Zkopírujte hodnoty uvedené v kódu pro vložení, můžete nakonfigurovat **Id serveru**, **Munchkin Id**, a **Id formuláře** v polích Marketo na portál partnerů cloudu.
 
 Další příklad, použijte jako vodítko pro získání ID, budete potřebovat v příkladu kódu pro vložení Marketo.
 
-- Id serveru = **ys12**
+- Server Id = **ys12**
 - Munchkin Id = **123. PQR 789**
 - Formulář Id = **1179**\

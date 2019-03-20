@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfebab81e1c0105bb42cf2853a2f042f128c1fd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731119"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Kurz: Integrace Azure Active Directory s Comm100 živém chatu
 
@@ -154,29 +154,29 @@ Ke konfiguraci Azure AD jednotné přihlašování s Comm100 živém chatu, prov
 
 ### <a name="configure-comm100-live-chat-single-sign-on"></a>Konfigurace Comm100 živý Chat jednotného přihlašování
 
-9. V jiné okno webového prohlížeče, přihlaste se k Comm100 živém chatu jako správce zabezpečení.
+1. V jiné okno webového prohlížeče, přihlaste se k Comm100 živém chatu jako správce zabezpečení.
 
-10. V horní pravé straně stránky klikněte na **Můj účet**.
+1. V horní pravé straně stránky klikněte na **Můj účet**.
 
-    ![Myaccount Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Myaccount Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-11. V levé nabídce klikněte na **zabezpečení** a potom klikněte na tlačítko **agenta Single Sign-On**.
+1. V levé nabídce klikněte na **zabezpečení** a potom klikněte na tlačítko **agenta Single Sign-On**.
 
-    ![Zabezpečení Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Zabezpečení Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
-12. Na **agenta Single Sign-On** stránce, proveďte následující kroky:
+1. Na **agenta Single Sign-On** stránce, proveďte následující kroky:
 
-    ![Zabezpečení Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Zabezpečení Comm100 živém chatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
 
-    a. Zkopírujte první zvýrazněný odkaz a vložte ji **přihlašovací adresa URL** textového pole v **Comm100 Live domény chatu a adresy URL** části na webu Azure portal.
+   a. Zkopírujte první zvýrazněný odkaz a vložte ji **přihlašovací adresa URL** textového pole v **Comm100 Live domény chatu a adresy URL** části na webu Azure portal.
 
-    b. V **adresu URL jednotného přihlašování SAML** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+   b. V **adresu URL jednotného přihlašování SAML** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    c. V **vzdálené adresy URL odhlašovací** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+   c. V **vzdálené adresy URL odhlašovací** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    d. Klikněte na tlačítko **zvolte soubor** nahrát base-64 kódování certifikátu, který jste si stáhli z portálu Azure portal do **certifikát**.
+   d. Klikněte na tlačítko **zvolte soubor** nahrát base-64 kódování certifikátu, který jste si stáhli z portálu Azure portal do **certifikát**.
 
-    e. Klikněte na tlačítko **uložit změny**
+   e. Klikněte na tlačítko **uložit změny**
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -196,7 +196,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -249,7 +249,7 @@ Povolení služby Azure AD uživatelům přihlášení na živém chatu Comm100,
 
     ![Živém chatu Comm100 nového agenta](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon@contoso.com**.
+    a. a. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon\@contoso.com**.
 
     b. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
 

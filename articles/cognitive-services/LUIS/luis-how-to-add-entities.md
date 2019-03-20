@@ -1,7 +1,7 @@
 ---
 title: Přidání entit
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding (LUIS).
+description: Vytvoření entity k extrakci klíčových dat z projevy uživatele v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106929"
 ---
 # <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
 
-Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Utterance může obsahovat mnoho entit nebo žádný vůbec. Entity představuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. 
-
-Entity můžete vytvořit před nebo kromě vytváření záměry.
+Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Entity představuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Entity můžete vytvořit, když přidáte utterance záměru nebo od sebe z (před nebo po) přidání utterance záměru.
 
 Můžete přidat, upravit nebo odstranit entity v aplikaci LUIS prostřednictvím **seznam entit** na **entity** stránky. Služba LUIS nabízí dva hlavní typy entit: [předem připravených entit](luis-reference-prebuilt-entities.md)a vlastní [vlastní entity](luis-concept-entity-types.md#types-of-entities).
 
-Po vytvoření entity mohou být označeny v utterance příklad záměru od z **záměr** stránce s podrobnostmi o. 
+Po vytvoření entity se zjištěné počítače budete muset označit ve všech utterance příklad ze všech příkazů, které je v dané entitě.
 
-## <a name="add-prebuilt-entity"></a>Přidat předem připravených entit
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>Přidejte do své aplikace předem připravených entit
 
 Jsou přidány do aplikace běžné předem připravených entit *číslo* a *datetimeV2*. 
 
@@ -40,7 +40,9 @@ Jsou přidány do aplikace běžné předem připravených entit *číslo* a *da
 
     ![Dialogové okno snímek obrazovky přidání předem připravených entit](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>Přidání jednoduchého entit
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>Přidat jednoduchou entity pro jeden koncepty
 
 Jednoduché entity popisuje jeden koncept. Pomocí následujícího postupu vytvořte entitu, která extrahuje názvy oddělení společnosti, jako *lidských zdrojů* nebo *operace*.   
 
@@ -52,7 +54,9 @@ Jednoduché entity popisuje jeden koncept. Pomocí následujícího postupu vytv
 
     A [seznam frází](luis-concept-feature.md) se běžně používá pro zvýšení signál jednoduchou entitu.
 
-## <a name="add-regular-expression-entities"></a>Přidání entit regulárního výrazu
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Přidání entity regulárního výrazu pro vysoce strukturovaná koncepty
 
 Regulární výraz entita se používá vyžádá si data z utterance podle regulárních výrazů, které zadáte. 
 
@@ -60,7 +64,7 @@ Regulární výraz entita se používá vyžádá si data z utterance podle regu
 
 1. V místním dialogovém okně zadejte `Human resources form name` v **název Entity** vyberte **regulárního výrazu** z **typ Entity** seznamu, zadejte regulární výraz `hrf-[0-9]{6}`a pak vyberte **provádí**. 
 
-    Literály tento regulární výraz `hrf-`, pak 6 číslic představující formuláře číslo pro formulář lidských zdrojů.
+    Tento regulární výraz shoduje s literálními znaky `hrf-`, pak 6 číslic představující formuláře číslo pro formulář lidských zdrojů.
 
 ## <a name="add-hierarchical-entities"></a>Přidání hierarchické entit
 
@@ -85,7 +89,9 @@ Přidání hierarchické entit, proveďte následující kroky:
 
     Jakmile se vytvoří tuto entitu, přejděte na všechny příkazy, které mají příklad projevy, které obsahují entity. Výběr textu v příkladu utterance a označte text jako entity. 
 
-## <a name="add-composite-entities"></a>Přidat složené entity
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Přidat složené entity seskupit do vztahu nadřazený podřízený
 
 Je možné definovat vztahy mezi entitami z různých typů tak, že vytvoříte složený entity. V následujícím příkladu obsahuje entitu regulárního výrazu a předem připravených entit názvu.  
 
@@ -107,7 +113,9 @@ V utterance `Send hrf-123456 to John Smith`, text `hrf-123456` je nalezena shoda
 
 1. Vyberte **Done** (Hotovo).
 
-## <a name="add-patternany-entities"></a>Přidání Pattern.any entit
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Přidání entit Pattern.any zachycení entity volného tvaru
 
 [Pattern.Any](luis-concept-entity-types.md) entity platí jenom v [vzory](luis-how-to-model-intent-pattern.md), ne záměry. Tento typ entity pomáhá najít koncové entity různé délky a výběr slov LUIS. Protože tato entita se používá ve vzorku, LUIS ví, kde koncové entity je v šabloně utterance.
 
@@ -123,7 +131,9 @@ V utterance `Where is Request relocation from employee new to the company on the
 
     Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists). 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>Přidání role na základě vzoru entitu
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>Přidání role k rozlišení různých kontextech
 
 Role je pojmenovaný podtypem typu entity na základě kontextu. Je srovnatelná se [hierarchické](#add-hierarchical-entities) entity, ale role se používají v [vzory](luis-how-to-model-intent-pattern.md). 
 
@@ -141,7 +151,9 @@ Syntaxe pro roli je **{Entityname:Rolename}** kde je název entity následovaný
 
     ![Snímek obrazovky přidání role zdroje do umístění entity](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>Přidání seznamu entit
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>Přidat seznam entit pro přesné shody
 
 Seznam entit představují pevné, uzavřené sadu souvisejících slov. 
 
@@ -184,12 +196,15 @@ Pro aplikaci lidských zdrojů může mít seznam všech oddělení spolu s jak�
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>Změnit typ entity
+## <a name="do-not-change-entity-type"></a>Neměňte typ entity
 
 Služba LUIS neumožňuje změnit typ entity, protože nebude vědět, co se má přidat nebo odebrat k vytvoření této entity. Chcete-li změnit typ, je lepší vytvořit novou entitu správného typu s mírně odlišný název. Po vytvoření entity v každé utterance, odeberte starý název s popiskem entity a přidejte nový název entity. Jakmile se všechny projevy mít relabeled, odstraňte staré entitu. 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Ze utterance společně tvoří masku
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>Ze příklad utterance společně tvoří masku
 
 Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 

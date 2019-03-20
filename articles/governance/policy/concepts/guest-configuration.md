@@ -4,17 +4,17 @@ description: Zjistěte, jak Azure Policy používá hostovaný konfigurace audit
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d97ac99cae963ddb9df4de06736c64d5d8ceafb5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187655"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
@@ -64,7 +64,7 @@ V následující tabulce je seznam nástrojů pro místní použít na všech po
 
 ### <a name="validation-frequency"></a>Frekvence ověření
 
-Klient hosta konfigurace kontroluje nový obsah každých 5 minut. Po přijetí hosta přiřazení nastavení kontroluje v intervalech 15 minut. Výsledky se posílají hosta konfigurace zprostředkovatele prostředků poté, co se dokončí auditu. Když zásadu [vyhodnocení trigger](../how-to/get-compliance-data.md#evaluation-triggers) dojde, stav počítače se zapisují do hostovaného konfigurace zprostředkovatele prostředků. Tato událost způsobí, že Azure Policy k vyhodnocení vlastností Azure Resource Manageru. Vyhodnocení zásad na vyžádání načte poslední hodnotu z hosta konfigurace zprostředkovatele prostředků. Ale neaktivuje nové auditu konfigurace v rámci virtuálního počítače.
+Klient hosta konfigurace kontroluje nový obsah každých 5 minut. Po přijetí hosta přiřazení nastavení kontroluje v intervalech 15 minut. Výsledky se posílají hosta konfigurace zprostředkovatele prostředků poté, co se dokončí auditu. Když zásadu [vyhodnocení trigger](../how-to/get-compliance-data.md#evaluation-triggers) dojde, stav počítače se zapisují do hostovaného konfigurace zprostředkovatele prostředků. To způsobí, že Azure Policy k vyhodnocení vlastností Azure Resource Manageru. Vyhodnocení zásad na vyžádání načte poslední hodnotu z hosta konfigurace zprostředkovatele prostředků. Ale neaktivuje nové auditu konfigurace v rámci virtuálního počítače.
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
@@ -74,22 +74,18 @@ Následující tabulka uvádí seznam podporovaný operační systém v imagích
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credativ|Debian|8, 9|
-|Microsoft|Windows Server|Datového centra 2012, 2012 R2 Datacenter, 2016 Datacenter|
+|Microsoft|Windows Server|Datového centra 2012, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Microsoft|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SuSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Konfigurace typu Host můžete auditovat jakéhokoli serveru se systémem podporovaný operační systém.  Pokud chcete auditovat servery, které používají vlastní image, budete muset duplicitní **DeployIfNotExists** definice a upravovat **Pokud** část vaší vlastnosti bitové kopie.
+> Konfigurace typu Host můžete auditovat uzly, které běží podporovaný operační systém.  Pokud chcete auditovat virtuální počítače, které používají vlastní image, budete muset duplicitní **DeployIfNotExists** definice a upravovat **Pokud** část vaší vlastnosti bitové kopie.
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
-Následující tabulka uvádí operační systémy, které nejsou podporovány:
-
-|Operační systém|Poznámky|
-|-|-|
-|Klient Windows | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.
-|Windows Server 2016 Nano Server | Nepodporuje se.|
+Windows Server Nano Server nepodporuje všechny verze.
 
 ### <a name="guest-configuration-extension-network-requirements"></a>Požadavky na síť hosta konfigurace rozšíření
 
@@ -123,15 +119,29 @@ Služba Azure Policy používá poskytovatele prostředků hosta konfigurace **c
 > [!NOTE]
 > Pro každou definici typu Host konfigurace i **DeployIfNotExists** a **auditu** definice zásad musí existovat.
 
-Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Předdefinované *[Preview]: Audit zabezpečení hesla uvnitř virtuálního počítače s Linuxem a Windows* iniciativy obsahuje 18 zásady. Obsahuje šest **DeployIfNotExists** a **auditu** páry definici zásady pro Windows a tři páry pro Linux.
-U každé **DeployIfNotExists** [pravidlo definice zásad](definition-structure.md#policy-rule) omezuje systémy vyhodnocen.
+Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrované iniciativu s názvem *[Preview]: Audit zabezpečení hesla uvnitř virtuálního počítače s Linuxem a Windows* obsahuje 18 zásady. Obsahuje šest **DeployIfNotExists** a **auditu** dvojice pro Windows a tři páry pro Linux. V každém případě logika uvnitř definice ověří pouze cílový operační systém se vyhodnocuje na základě [pravidlo zásad](definition-structure.md#policy-rule) definice.
+
+## <a name="client-log-files"></a>Soubory protokolu klienta
+
+Rozšíření typu Host konfigurace zapisuje soubory protokolu do následujících umístění:
+
+Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\1.10.0.0\dsc\logs\dsc.log`
+
+Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-1.8.0/GCAgent/logs/dsc.log`
+
+## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
+
+Ukázky pro konfiguraci zásad hosta jsou k dispozici v následujících umístěních:
+
+- [Ukázky index - konfigurace hosta](../samples/index.md#guest-configuration)
+- [Služba Azure Policy ukázkové úložiště GitHub se vzorovými](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
 
 ## <a name="next-steps"></a>Další postup
 
-- Projděte si příklady v [ukázek Azure Policy](../samples/index.md)
-- Zkontrolujte [struktura definic zásad](definition-structure.md)
-- Kontrola [Principy účinky zásad](effects.md)
-- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md)
-- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md)
-- Zjistěte, jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
-- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/index.md)
+- Projděte si příklady v [ukázek Azure Policy](../samples/index.md).
+- Projděte si [strukturu definic zásad](definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](effects.md).
+- Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md).
+- Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
+- Zjistěte, jak [nápravě nekompatibilních prostředků](../how-to/remediate-resources.md).
+- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../../management-groups/index.md).

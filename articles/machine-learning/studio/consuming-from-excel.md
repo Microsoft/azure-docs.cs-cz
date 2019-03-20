@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 37a7610cf2458906729432b1cf53043f1badd64b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855193"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Využívání webové služby Azure Machine Learning Studio z Excelu
 
@@ -33,8 +33,8 @@ Jakmile budete mít webovou službu, klikněte na **webových služeb** části 
 **Klasické webové služby**
 
 1. Na **řídicí panel** kartě je řádek pro webovou službu **žádostí a odpovědí** služby. Pokud tato služba má jeden výstup, měli byste vidět **stáhněte si Excelový sešit** odkaz v daném řádku.
-   
-    ![](./media/consuming-from-excel/excellink.png)
+
+    ![Stáhněte si Excelový sešit na portálu Studio webové služby](./media/consuming-from-excel/excellink.png)
 2. Klikněte na **stáhněte si Excelový sešit**.
 
 **Nové webové služby**
@@ -46,17 +46,17 @@ Jakmile budete mít webovou službu, klikněte na **webových služeb** části 
 
 1. Otevřete sešit.
 2. Zobrazí se upozornění zabezpečení. Klikněte na **povolit úpravy** tlačítko.
-   
-    ![](./media/consuming-from-excel/enableeditting.png)
+
+    ![Povolit úpravy odebrat chráněné zobrazení upozornění zabezpečení](./media/consuming-from-excel/enableeditting.png)
 3. Zobrazí se upozornění zabezpečení. Klikněte na **povolit obsah** možnost spouštět makra tabulky.
-   
-    ![](./media/consuming-from-excel/enablecontent.png)
+
+    ![Povolit obsah zavřete upozornění zabezpečení zakázání makra](./media/consuming-from-excel/enablecontent.png)
 4. Jakmile jsou povolená makra, je vygenerována tabulku. Sloupce v modré jsou vyžaduje jako vstup do webové služby RRS nebo **parametry**. Všimněte si výstup služby RRS **PŘEDPOVĚDĚT hodnoty** zeleně. Když jsou vyplněny všechny sloupce daného řádku, sešit automaticky volá rozhraní API pro vyhodnocení a zobrazí skóre výsledky.
-   
-    ![](./media/consuming-from-excel/sampletable.png)
+
+    ![Tabulka pro parametr vstupů a výsledné předpovědět hodnoty](./media/consuming-from-excel/sampletable.png)
 5. Ke stanovení skóre pro více než jeden řádek, jsou vytvářeny výplně druhý řádek s daty a předpovězeným hodnotám. I vložením několika řádků najednou.
 
-Vám pomůže některou z funkcí aplikace Excel (grafů, doplňkem power map, podmíněné formátování, atd.) s předpovězeným hodnotám pomáhají vizualizovat data.    
+Vám pomůže některou z funkcí aplikace Excel (grafů, doplňkem power map, podmíněné formátování, atd.) s předpovězeným hodnotám pomáhají vizualizovat data.
 
 ## <a name="sharing-your-workbook"></a>Sdílení vašeho sešitu
 Makra pro práci klíč rozhraní API musí být součástí tabulky. To znamená, že by měly sdílet sešit pouze u entity nebo jednotlivce, které důvěřujete.

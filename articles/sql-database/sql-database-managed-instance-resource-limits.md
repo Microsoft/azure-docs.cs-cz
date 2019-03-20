@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: e429504cb6df2ba4f871fa0c9ca780ac5d906356
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958963"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223814"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -55,8 +55,8 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
-| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines)| 11 110 tis. (1,375 za vCore) |
-|Propustnost protokolu | 22 MB/s na instanci | 3 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
+| Data/Log IOPS (přibližné) | 500 – 7 500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 110 tis. (1,375 za vCore) |
+| Propustnost protokolu | 22 MB/s na instanci | 3 MB/s na vCore<br/>Maximální počet 48 MB/s na instanci|
 | Propustnost dat (přibližné) | 100 – 250 MB/s na souboru<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s na vCore |
 | Vstupně-výstupní latence (přibližné) | 5-10 ms | 1-2 ms |
 | Maximální velikost tempDB | 192 - 1,920 GB (24 GB na vCore) | Bez omezení – limitován velikostí úložiště maximální počet instancí |
@@ -90,6 +90,9 @@ Typy podporované předplatného může obsahovat omezený počet prostředků v
 - **Limitu podsítí**: Maximální počet podsítí, ve které jsou spravované instance nasazené v jedné oblasti.
 - **Omezení počtu instancí**: Maximální počet instancí, které mohou být nasazeny v jedné oblasti.
 
+> [!Note]
+> Tato omezení jsou výchozí nastavení a ne technická omezení. Omezení může být vyšší podle potřeby tak, že vytvoříte speciální [žádost o podporu na webu Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) Pokud potřebujete více spravovaných instancí v aktuální oblasti. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez odeslání žádosti o podporu.
+
 V následující tabulce jsou uvedeny výchozí místní omezení pro podporované předplatná:
 
 |Typ odběru| Maximální počet podsítí Managed Instance | Maximální počet instancí |Maximální počet GP managed instance *|Maximální počet BC managed instance *|
@@ -104,7 +107,7 @@ V následující tabulce jsou uvedeny výchozí místní omezení pro podporovan
 
 ** Maximální počet instancí v rámci jedné úrovně služby platí v případě, že neexistují žádné instance v rámci jiné úrovně služby. V případě, že budete chtít míchat zásady skupiny a BC instance ve stejné podsíti, použijte jako referenci pro povolené kombinace v následující části. Jednoduché pravidlo celkový počet podsítí nemůže být delší než 3 a celkový počet jednotek instance nemůže být delší než 12.
 
-Tyto limity můžete zvýšit tak, že vytvoříte speciální [žádost o podporu na webu Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) Pokud potřebujete více spravovaných instancí v aktuální oblasti. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez odeslání žádosti o podporu.
+
 
 > [!IMPORTANT]
 > Při plánování vašeho nasazení, vezměte v úvahu, že instance kritické obchodní (BC) (z důvodu přidání redundance) obecně využívá 4 x větší kapacitu než instance obecné účely (zásady skupiny). Ano, pro výpočty, 1 GP instance = 1 instance jednotky a 1 BC instance = 4 jednotky instance. Pro zjednodušení analýzy využití pro výchozí omezení, shrnutí instance jednotky ve všech podsítí v oblasti, ve které jsou nasazené spravované instance a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného.

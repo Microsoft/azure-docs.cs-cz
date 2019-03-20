@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850900"
 ---
 # <a name="handling-event-grid-events"></a>Zpracování událostí služby Event Grid
 
@@ -24,26 +24,9 @@ Události služby Media Services umožňují aplikacím reagovat na různé udá
 
 Dostupnost pro události služby Media Services je vázán na služby Event Grid [dostupnosti](../../event-grid/overview.md) a bude k dispozici v jiných oblastech, stejně jako služby Event Grid.  
 
-## <a name="available-media-services-events"></a>K dispozici událostí Media Services
+## <a name="media-services-events-and-schemas"></a>Služba Media Services události a schémata
 
-Pomocí služby Event grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele.  Odběry událostí Media Services v současné době může obsahovat následující události:  
-
-|Název události|Popis|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| Vyvoláno, když stav úlohy změny. |
-| Microsoft.Media.LiveEventConnectionRejected | Pokus o připojení kodéru byl odmítnut. |
-| Microsoft.Media.LiveEventEncoderConnected | Kodér naváže připojení se živá událost. |
-| Microsoft.Media.LiveEventEncoderDisconnected | Kodér odpojí. |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Server mediálních datových zahodí datové dávky, protože je příliš pozdě nebo obsahuje překrývající se časové razítko (timestamp nové datové dávky je menší než koncový čas předchozího bloku dat). |
-| Microsoft.Media.LiveEventIncomingStreamReceived | Média server přijímá prvního bloku dat pro každou sledovat ve službě stream ani připojení. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Server mediálních datových zjistí zvuk a video streamy nejsou synchronizované. Použít jako varování, protože nemusí mít dopad na činnost koncového uživatele. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Server mediálních datových zjistí, že některý dvě videa datové proudy z externí kodér nejsou synchronizované. Použít jako varování, protože nemusí mít dopad na činnost koncového uživatele. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Publikuje každých 20 sekund pro každé stopu, když běží živá událost. Poskytuje ingestování shrnutí stavu. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Server mediálních datových detekuje diskontinuitu v příchozí směr. |
-
-## <a name="event-schema"></a>Schéma událostí
-
-Media Services události obsahují všechny informace, které je potřeba reagovat na změny ve vašich datech.  Události služby Media Services můžete identifikovat, protože vlastnost Typ události začíná řetězcem "Microsoft.Media.".
+Pomocí služby Event grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele. Media Services události obsahují všechny informace, které je potřeba reagovat na změny ve vašich datech. Události služby Media Services můžete identifikovat, protože vlastnost Typ události začíná řetězcem "Microsoft.Media.".
 
 Další informace najdete v tématu [schémata událostí služby Media Services](media-services-event-schemas.md).
 

@@ -16,12 +16,12 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4eab44a55574f84f29488e78cd60522d7a52eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905167"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailových oznámení v PIM
 
@@ -31,7 +31,7 @@ Azure AD Privileged Identity Management (PIM) vám umožňuje vědět, pokud dů
 
 E-mailů odeslaných z PIM pro Azure AD a mají následující e-mailovou adresu odesílatele role prostředků Azure:
 
-- E-mailová adresa:  **azure-noreply@microsoft.com**
+- E-mailová adresa: **azure noreply\@webu microsoft.com**
 - Zobrazovaný název: Microsoft Azure
 
 Zahrnout tyto e-mailů **PIM** předponu v řádku předmětu. Tady je příklad:

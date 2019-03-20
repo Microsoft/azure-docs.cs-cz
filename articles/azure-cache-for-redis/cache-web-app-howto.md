@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090470"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 
@@ -74,9 +74,9 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Úprava souboru *CacheSecrets.config*
 
-3. Na počítači vytvořte soubor s názvem *CacheSecrets.config*. Uložte ho v umístění, ve kterém se nebude vracet se změnami zdrojového kódu ukázkové aplikace. V tomto rychlém startu je soubor *CacheSecrets.config* umístěný zde: *C:\AppSecrets\CacheSecrets.config*.
+1. Na počítači vytvořte soubor s názvem *CacheSecrets.config*. Uložte ho v umístění, ve kterém se nebude vracet se změnami zdrojového kódu ukázkové aplikace. V tomto rychlém startu je soubor *CacheSecrets.config* umístěný zde: *C:\AppSecrets\CacheSecrets.config*.
 
-4. Upravte soubor *CacheSecrets.config*. Pak přidejte následující obsah:
+1. Upravte soubor *CacheSecrets.config*. Pak přidejte následující obsah:
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
     </appSettings>
     ```
 
-5. `<cache-name>` nahraďte názvem hostitele mezipaměti.
+1. `<cache-name>` nahraďte názvem hostitele mezipaměti.
 
-6. `<access-key>` nahraďte primárním klíčem mezipaměti.
+1. `<access-key>` nahraďte primárním klíčem mezipaměti.
 
     > [!TIP]
     > Při rotaci klíčů můžete použít sekundární přístupový klíč jako alternativní klíč během opětovného generování primárního přístupového klíče.
->
-7. Uložte soubor.
+   >
+1. Uložte soubor.
 
 ## <a name="update-the-mvc-application"></a>Aktualizace aplikace MVC
 

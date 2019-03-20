@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbeffd012d2d2445d4a9a927981728e1bbe43e97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670566"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111306"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 
@@ -44,7 +44,7 @@ Rozhraní API nabízí následující funkce:
     "sendInvitationMessage": true
     ```
 
-  a zobrazí se zpráva, kterou můžete přizpůsobit příjemce
+   a zobrazí se zpráva, kterou můžete přizpůsobit příjemce
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ Rozhraní API nabízí následující funkce:
     "sendInvitationMessage": false
     ```
 
-  V takovém případě můžete získat zpět uplatnění adresu URL z rozhraní API, které můžete vložit do e-mailovou šablonu, zasílání rychlých zpráv nebo jiné metody distribuce podle vašeho výběru.
+   V takovém případě můžete získat zpět uplatnění adresu URL z rozhraní API, které můžete vložit do e-mailovou šablonu, zasílání rychlých zpráv nebo jiné metody distribuce podle vašeho výběru.
 
 6. Nakonec pokud si nejste správce, můžete pozvat uživatele jako člena.
 

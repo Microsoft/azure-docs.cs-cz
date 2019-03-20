@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189644"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí C# zavolat Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) s C#. Kód je napsaný tak, aby fungoval v aplikaci .NET Core, a obsahuje minimum odkazů na externí knihovny, takže ho můžete spustit i v systému Linux nebo MacOS.
+V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) s C#. Kód byl zapsán pro práci na aplikaci .NET Core, s minimálními odkazy na externí knihovny, můžete ho také spustit v systému Linux nebo MacOS.
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -30,26 +30,25 @@ Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní A
 
 Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
 
-
 ## <a name="install-the-nuget-sdk-package"></a>Nainstalovat balíček NuGet sady SDK
 1. Vytvořte nové konzolové řešení v sadě Visual Studio.
 1. Klikněte na řešení pravým tlačítkem a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 1. Zaškrtněte políčko **Zahrnout předběžné verze**.
 1. Vyberte kartu **Procházet** a vyhledejte **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
-1. Vyberte balíček NuGet a nainstalujte ho.
+1. Vyberte balíček NuGet a nainstalujte ho. Nyní je opraveno (3-18-2019), nikoli v3.0.0, dokud se chyby v softwaru možná bude nutné v2.8.0 pro.
 
 > [!Tip]
 >  [Koncové body HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) můžete volat přímo z kódu jazyka C#, ale sada SDK Microsoft.Azure.CognitiveServices.Language volání služby výrazně usnadňuje díky tomu, že se nemusíte starat o serializaci a deserializaci formátu JSON.
 >
 > Několik užitečných odkazů:
-> - [Balíček NuGet sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [Balíček NuGet sady SDK](<https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics>)
 > - [Kód SDK](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
-
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API pro analýzu textu s využitím sady SDK
+
 1. Nahraďte soubor Program.cs níže uvedeným kódem. Tento program předvádí možnosti rozhraní API pro analýzu textu ve třech částech (jazyk extrakce, extrakce klíčových frází – to a analýza mínění).
 1. Hodnotu hlavičky `Ocp-Apim-Subscription-Key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v proměnné `Endpoint` za koncový bod, který jste si zaregistrovali. Najít koncový bod u prostředku Azure portal. Koncový bod obvykle začíná řetězcem "https://[region].api.cognitive.microsoft.com" a pouze sem patří protokol a název hostitele.
+1. Nahraďte oblasti `Endpoint`. Koncový bod služby najdete v části Přehled vašeho prostředku pro analýzu textu ve [webu Azure portal](<https://ms.portal.azure.com>). Zahrnout pouze tuto část váš koncový bod: "https://[region].api.cognitive.microsoft.com".
 1. Spusťte program.
 
 ```csharp

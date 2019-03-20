@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0bbf76e16334ae4847ec6f7fbf3aa88fb508e84d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731141"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226857"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizace služby Azure Stack 1901
 
@@ -58,12 +58,12 @@ Azure Stack opravy hotfix platí pouze pro integrované systémy Azure Stack; Ne
 
 - **1809**: [KB 4481548 – oprava hotfix Azure Stack 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: K dispozici žádná aktuální hotfix.
-- **1901**: K dispozici žádná aktuální hotfix.
+- **1901**: [KB 4481548 – oprava hotfix Azure Stack 1.1901.2.103](https://support.microsoft.com/help/4494720)
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
-- Nainstalujte [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1811 (pokud existuje) před aktualizací na 1901.
+> - Nainstalujte [nejnovější opravy hotfix Azure Stack](#azure-stack-hotfixes) pro 1811 (pokud existuje) před aktualizací na 1901.
 
 - Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) s následujícími parametry do ověřte stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci:
 
@@ -89,7 +89,7 @@ Tato aktualizace zahrnuje následující nové funkce a vylepšení pro službu 
    * **AzureRm.Storage**  
          Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.0.4 **verze rozhraní api 2017-10-01**.  
    * **AzureRm.Compute**  
-         Přidání jednoduchého parametru nastaví v `New-AzureRMVM` a `NewAzureRMVMSS`, `-ImageName` parametr podporuje zadání Image uživatele.  
+         Přidání jednoduchého parametru nastaví v `New-AzureRmVM` a `New-AzureRmVmss`, `-Image` parametr podporuje zadání Image uživatele.  
    * **AzureRm.Insights**  
          Kumulativní modul AzureRm teď zahrnuje podporu ještě publikovanou verzi 5.1.5 **verze api-version 2018-01-01** pro metriky, typy prostředků definice metrik.
 
@@ -115,7 +115,8 @@ Referenční informace pro aktualizovaný modulů najdete v tématu [referenčn�
 <!-- 16523695 – IS, ASDK -->
 - Opravili jsme problém, ve kterém po aktualizaci nastavení DNS pro vaši virtuální síť z **DNS pomocí Azure Stack** k **vlastního DNS**, instance se neaktualizovala s novým nastavením.
 
-- <!-- 3235634 – IS, ASDK --> Opravili jsme problém, ve které nasazení virtuální počítače s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, se vyžaduje zadání přípony jako **Standard_A2_v2** () malá písmena v). I s globální Azure, můžete nyní použít **Standard_A2_V2** (velká písmena V).
+- <!-- 3235634 – IS, ASDK -->
+  Opravili jsme problém, ve které nasazení virtuální počítače s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, se vyžaduje zadání přípony jako **Standard_A2_v2** () malá písmena v). I s globální Azure, můžete nyní použít **Standard_A2_V2** (velká písmena V).
 
 <!-- 2869209 – IS, ASDK --> 
 - Opravili jsme problém při použití [rutiny Add-AzsPlatformImage](/powershell/module/azs.compute.admin/add-azsplatformimage), ve kterém jste museli používat **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Nyní můžete také použít místní cesta k disku.
@@ -291,9 +292,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 3632798 - IS, ASDK -->
 - Na portálu, je-li přidat příchozí pravidlo zabezpečení a vyberte **značka služby** jako zdroj, se zobrazí několik možností, jak v **značka zdroje** seznamu, které nejsou k dispozici pro službu Azure Stack. Pouze možnosti, které jsou platné ve službě Azure Stack jsou následující:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     Další možnosti nejsou podporovány jako zdroj značky ve službě Azure Stack. Obdobně je-li přidat odchozí pravidlo zabezpečení a vyberte **značka služby** jako cíl stejný seznam možností pro **značka zdroje** se zobrazí. Pouze platné možnosti jsou stejné jako v případě **značka zdroje**, jak je popsáno v předchozím seznamu.
 

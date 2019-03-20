@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 6669be82877ae5d9465e23dad3c8b310cf24af89
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576765"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871634"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s použitím klíče spravovaného zákazníkem ze služby Azure Key Vault
 
@@ -26,16 +26,18 @@ Tento článek vás provede postupem použití klíče ze služby Azure Key Vaul
 ## <a name="prerequisites-for-powershell"></a>Požadavky na prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 - Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné.
 - [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
 - Musíte mít Azure PowerShell nainstalovaný a spuštěný. 
 - Vytvoření služby Azure Key Vault a klíče pro TDE.
-   - [Pokyny pro PowerShell ze služby Key Vault](../key-vault/key-vault-overview.md)
-   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
- - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) 
+  - [Pokyny pro PowerShell ze služby Key Vault](../key-vault/key-vault-overview.md)
+  - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
    - Není zakázáno
@@ -175,7 +177,7 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
 ## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k problému zkontrolujte následující:
-- Pokud nelze najít trezor klíčů, ujistěte se, že jste pomocí správného předplatného [Get-AzSubscription](/powershell/module/az.account/get-azsubscription) rutiny.
+- Pokud nelze najít trezor klíčů, ujistěte se, že jste pomocí správného předplatného [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) rutiny.
 
    ```powershell
    Get-AzSubscription `
@@ -195,13 +197,13 @@ Pokud dojde k problému zkontrolujte následující:
 
 - Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné.
 - [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
-- Rozhraní příkazového řádku verze 2.0 nebo novější. Nainstalujte nejnovější verzi a připojte se ke svému předplatnému Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku 2.0 pro různé platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+- Rozhraní příkazového řádku verze 2.0 nebo novější. Nainstalujte nejnovější verzi a připojte se ke svému předplatnému Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku 2.0 pro různé platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 - Vytvoření služby Azure Key Vault a klíče pro TDE.
-   - [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
-   - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
- - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
+  - [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
+  - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
    - Žádné datum vypršení platnosti
    - Není zakázáno
@@ -263,11 +265,11 @@ Nyní databázi ani na datový sklad má povoleno pomocí klíče spravovaného 
 
 ## <a name="sql-cli-references"></a>Reference k rozhraní příkazového řádku SQL
 
-https://docs.microsoft.com/cli/azure/sql?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql 
 
-https://docs.microsoft.com/cli/azure/sql/server/key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/key 
 
-https://docs.microsoft.com/cli/azure/sql/server/tde-key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/tde-key 
 
-https://docs.microsoft.com/cli/azure/sql/db/tde?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/db/tde 
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 3700ffe0a2b0e0d3ec69bce3a11cdc36d28d9145
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a1bd6da68b49481429709c7e4fd37dd5c07ae2c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200782"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows s agentem Azure Backup MARS
 
@@ -43,7 +43,7 @@ Co můžete zálohovat, závisí na instalaci agenta.
 
 ## <a name="before-you-start"></a>Než začnete
 
-- [Zjistěte, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) Azure Backup zálohuje počítačů s Windows pomocí agenta MARS.
+- [Zjistěte, jak](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders) Azure Backup zálohuje počítačů s Windows pomocí agenta MARS.
 - [Další informace o](backup-architecture.md#architecture-back-up-to-dpmmabs) zálohování architekturu běžící agenta MARS na sekundárním serveru MABS nebo aplikace DPM.
 - [Kontrola](backup-support-matrix-mars-agent.md) co je podporováno a co můžete zálohovat pomocí agenta MARS.
 - Ověřte přístup k Internetu na počítačích, které chcete zálohovat.
@@ -51,13 +51,21 @@ Co můžete zálohovat, závisí na instalaci agenta.
 
 ### <a name="verify-internet-access"></a>Ověřte přístup k Internetu
 
-Pokud váš počítač má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo proxy serveru povolit, tyto adresy URL:
+Pokud váš počítač má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo proxy serveru povolit, tyto adresy URL a IP adresa:
 
-- www.msftncsi.com
+**Adresy URL**
+
+- www\.msftncsi.com
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+**IP adresa**
+
+- 20.190.128.0/18
+- 40.126.0.0/18
+
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -72,15 +80,20 @@ Trezor služby Recovery Services uchovává všechny zálohy a body obnovení, k
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-4. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný v rámci předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
+4. Jako **Název** zadejte popisný název pro identifikaci trezoru.
+
+   - Název musí být jedinečný v rámci předplatného Azure.
+   - Může obsahovat 2 až 50 znaků.
+   - Musí začínat písmenem a může obsahovat jenom písmena, číslice a pomlčky.
 
 5. Vyberte předplatné Azure, skupinu prostředků a zeměpisné oblasti, ve kterém se vytvoří v trezoru. Zálohovaná data se odesílají do trezoru. Poté klikněte na **Vytvořit**.
 
     ![Vytvoření trezoru Recovery Services – krok 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-Může trvat několik minut pro vytvoření trezoru. Sledujte oznámení stavu na portálu. Po vytvoření trezoru se zobrazí v seznamu trezorů služby Recovery Services. Pokud po několika minutách se trezor nezobrazí, klikněte na tlačítko **aktualizovat**.
+   - Může trvat nějakou dobu vytvoření trezoru.
+   - Sledujte oznámení o stavu v oblasti pravém horním rohu portálu. Pokud po několika minutách se trezor nezobrazí, klikněte na tlačítko **aktualizovat**.
 
-![Kliknutí na tlačítko Obnovit](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
+     ![Kliknutí na tlačítko Obnovit](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
 
 ### <a name="set-storage-redundancy"></a>Nastavení redundance úložiště
 
@@ -129,17 +142,17 @@ Stáhněte agenta MARS pro instalaci na počítačích, které chcete zálohovat
 
 1. Spustit **MARSagentinstaller.exe** souboru na počítačích, které chcete zálohovat.
 2. V Průvodci instalací agenta MARS > **nastavení instalace**, zadejte, kam chcete nainstalovat agenta a umístění, které chcete použít pro ukládání do mezipaměti. Pak klikněte na tlačítko **Další**.
-    - Azure Backup používá mezipaměť pro ukládání snímků dat před jejich odesláním do Azure.
-    - Umístění mezipaměti by měly mít volné místo odpovídající nejméně 5 % velikosti dat, která se bude zálohovat.
+   - Azure Backup používá mezipaměť pro ukládání snímků dat před jejich odesláním do Azure.
+   - Umístění mezipaměti by měly mít volné místo odpovídající nejméně 5 % velikosti dat, která se bude zálohovat.
 
-    ![Nastavení instalace Průvodce MARS](./media/backup-configure-vault/mars1.png)
+     ![Nastavení instalace Průvodce MARS](./media/backup-configure-vault/mars1.png)
 
 2. V **konfiguraci proxy serveru**, určete, jak agenta spuštěného na počítači Windows připojí k Internetu. Pak klikněte na tlačítko **Další**.
 
-    - Pokud používáte vlastní proxy server zadejte nastavení proxy serveru a přihlašovací údaje v případě potřeby.
-    - Mějte na paměti, že agent potřebuje přístup k [tyto adresy URL](#verify-internet-access).
+   - Pokud používáte vlastní proxy server zadejte nastavení proxy serveru a přihlašovací údaje v případě potřeby.
+   - Mějte na paměti, že agent potřebuje přístup k [tyto adresy URL](#verify-internet-access).
 
-    ![Přístup k Internetu pro Průvodce MARS](./media/backup-configure-vault/mars2.png)
+     ![Přístup k Internetu pro Průvodce MARS](./media/backup-configure-vault/mars2.png)
 
 3. V **instalace** zkontrolujte kontroly požadavků a klikněte na **nainstalovat**.
 4. Po nainstalování agenta klikněte na tlačítko **přejít k registraci**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 534a9584427efd15b8119f8421fb041199b97fbf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731578"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123228"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání vašeho clusteru service fabric
 Service Fabric Cluster Resource Manager podporuje změny dynamického zatížení reakce na přidání nebo odebrání uzlů nebo služby. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jak často pocházejí tyto akce a co je aktivace?
@@ -122,6 +122,7 @@ prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.jso
 ```
 
 <center>
+
 ![Příklad vyrovnávání prahová hodnota][Image1]
 </center>
 
@@ -130,6 +131,7 @@ V tomto příkladu každá služba využívá jednu jednotku některé metriky. 
 V příkladu dole maximálního zatížení na uzlu je 10, zatímco minimum je dvě, výsledkem je poměr pět. Pět zadefinujete, přesáhne určenou prahovou hodnotu vyrovnávání tří pro tuto metriku. V důsledku toho vyrovnávání spuštění bude naplánováno další vyrovnávání časovač vyvolá. V situaci, tímto způsobem je nějaké zatížení obvykle distribuován do Uzel3. Protože Service Fabric Cluster Resource Manager nepoužívá greedy přístup, může do Node2 distribuované nějaké zatížení. 
 
 <center>
+
 ![Vyrovnávání prahovou hodnotu příklad akce][Image2]
 </center>
 
@@ -145,6 +147,7 @@ Někdy, i když jsou poměrně imbalanced uzly *celkový* zatížením v cluster
 Řekněme, že můžeme uchovávat prahové hodnoty vyrovnávání tří pro tuto metriku. Předpokládejme také, že máme prahovou hodnotu aktivitu 1536. V prvním případě clusteru je imbalanced za vyrovnávání prahová hodnota neexistuje žádný uzel splňuje této prahové hodnoty aktivity, nic se nestane. V příkladu dole Node1 je nad prahovou hodnotou aktivity. Protože se překročila prahovou hodnotu vyrovnávání a aktivita prahové hodnoty pro metriku, vyrovnávání naplánován. Jako příklad Podívejme se na následující diagram: 
 
 <center>
+
 ![Příklad aktivity prahová hodnota][Image3]
 </center>
 
@@ -194,6 +197,7 @@ Určuje, zda je cluster imbalanced nebo ne je celoclusterový rozhodnutí. Jedno
 Seděl můžete vidět, kde jsme teď tady: Existuje řetězec! Nemáme skutečně čtyř nezávislých služeb, máme tři služby, které se týkají a jednu, která sama o sobě je vypnuté.
 
 <center>
+
 ![Služby Vyrovnávání dohromady][Image4]
 </center>
 
@@ -202,6 +206,7 @@ Z důvodu tento řetězec je možné, že nevyrovnanosti metriky 1 – 4 může 
 Cluster Resource Manager automaticky přijde na to, jaké služby jsou související. Přidání, odebrání nebo změně metriky pro služby může ovlivnit jejich vztahy. Například mezi dvěma spuštěními vyrovnávání Service2 může byly aktualizovány Metric2 odebrat. Tím je prolomen řetězce mezi Service1 a Service2. Teď místo dvou skupin souvisejících služeb, jsou dostupné tři:
 
 <center>
+
 ![Služby Vyrovnávání dohromady][Image5]
 </center>
 

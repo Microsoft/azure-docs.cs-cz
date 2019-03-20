@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091541"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
 
@@ -367,7 +367,7 @@ Zde je, co se děje na pozadí:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-Z důvodu náhlé ukončení nemusí být uvolněna port spojených s procesem, i když proces serveru oblasti je zastavená. Tato situace může vést k AddressBindException při spouštění serveru oblasti, jak je znázorněno v následující protokoly. Můžete to ověřit v server.log oblast v adresáři /var/log/hbase na pracovní uzly, kde oblastním serveru nepodaří spustit. 
+   Z důvodu náhlé ukončení nemusí být uvolněna port spojených s procesem, i když proces serveru oblasti je zastavená. Tato situace může vést k AddressBindException při spouštění serveru oblasti, jak je znázorněno v následující protokoly. Můžete to ověřit v server.log oblast v adresáři /var/log/hbase na pracovní uzly, kde oblastním serveru nepodaří spustit. 
 
    ```apache
 

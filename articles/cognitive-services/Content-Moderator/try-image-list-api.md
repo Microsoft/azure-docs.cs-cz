@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e28342b2f2a4846f80940e701dfb638e8f860e5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7efa5114a903ba88010ec44f2f1038331df62948
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864345"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075693"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Střední s vlastním seznamem obrázků v konzole pro rozhraní API
 
@@ -42,9 +42,9 @@ Předtím, než můžete vyzkoušet rozhraní API v konzole online, budete potř
 
 Když provedete změny seznamu obrázků, je nutné aktualizovat jeho index pro změny, které mají být zahrnuty v budoucích kontrolách. Tento krok je podobný jak vyhledávacího webu na ploše (je-li povoleno) nebo webového vyhledávacího webu průběžně aktualizuje jeho index nových souborů nebo stránky.
 
-1.  V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat Index vyhledávání**.
+1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **aktualizovat Index vyhledávání**.
 
-  **Seznamy obrázků – aktualizovat Index vyhledávání** otevře se stránka.
+   **Seznamy obrázků – aktualizovat Index vyhledávání** otevře se stránka.
 
 2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
  
@@ -52,66 +52,66 @@ Když provedete změny seznamu obrázků, je nutné aktualizovat jeho index pro 
 
     **Seznamy obrázků – aktualizovat Index vyhledávání** otevře se konzola rozhraní API.
 
-3.  V **listId** zadejte ID seznamu. Zadejte klíč předplatného a pak vyberte **odeslat**.
+3. V **listId** zadejte ID seznamu. Zadejte klíč předplatného a pak vyberte **odeslat**.
 
-  ![Seznamy obrázků - Index vyhledávání aktualizace konzoly pole obsahu odpovědi](images/try-image-list-refresh-1.png)
+   ![Seznamy obrázků - Index vyhledávání aktualizace konzoly pole obsahu odpovědi](images/try-image-list-refresh-1.png)
 
 
 ## <a name="create-an-image-list"></a>Vytvoření seznamu obrázků
 
-1.  Přejděte [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
+1. Přejděte [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
 
-  **Seznamy obrázků – vytvořit** otevře se stránka. 
+   **Seznamy obrázků – vytvořit** otevře se stránka. 
 
-3.  Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
+3. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
 
-    ![Seznamy obrázků: vytvoření stránky oblast výběru](images/test-drive-region.png)
+   ![Seznamy obrázků: vytvoření stránky oblast výběru](images/test-drive-region.png)
 
-    **Seznamy obrázků – vytvořit** otevře se konzola rozhraní API.
+   **Seznamy obrázků – vytvořit** otevře se konzola rozhraní API.
  
-4.  V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
+4. V **Ocp-Apim-Subscription-Key** zadejte váš klíč předplatného.
 
-5.  V **text žádosti** , zadejte hodnoty pro pole **název** (například MyList) a **popis**.
+5. V **text žádosti** , zadejte hodnoty pro pole **název** (například MyList) a **popis**.
 
-  ![Seznamy obrázků – vytvoření konzoly žádost subjektu název a popis](images/try-terms-list-create-1.png)
+   ![Seznamy obrázků – vytvoření konzoly žádost subjektu název a popis](images/try-terms-list-create-1.png)
 
-6.  Pomocí páru klíč hodnota zástupné symboly můžete přiřadit více popisná metadata do seznamu.
+6. Pomocí páru klíč hodnota zástupné symboly můžete přiřadit více popisná metadata do seznamu.
 
-        {
-           "Name": "MyExclusionList",
-           "Description": "MyListDescription",
-           "Metadata": 
-           {
-             "Category": "Competitors",
-             "Type": "Exclude"
-           }
-        }
+       {
+          "Name": "MyExclusionList",
+          "Description": "MyListDescription",
+          "Metadata": 
+          {
+            "Category": "Competitors",
+            "Type": "Exclude"
+          }
+       }
 
-  Přidáte seznam metadat jako páry klíč hodnota a ne skutečné bitové kopie.
+   Přidáte seznam metadat jako páry klíč hodnota a ne skutečné bitové kopie.
  
-7.  Vyberte **Poslat**. Vytvoření seznamu. Poznámka: **ID** hodnotu, která je přidružena k nového seznamu. Toto ID budete potřebovat další funkce správy seznamu obrázků.
+7. Vyberte **Poslat**. Vytvoření seznamu. Poznámka: **ID** hodnotu, která je přidružena k nového seznamu. Toto ID budete potřebovat další funkce správy seznamu obrázků.
 
-  ![Seznamy obrázků – vytvoření konzoly odpovědi obsahu pole se zobrazí seznam ID](images/try-terms-list-create-2.png)
+   ![Seznamy obrázků – vytvoření konzoly odpovědi obsahu pole se zobrazí seznam ID](images/try-terms-list-create-2.png)
  
-8.  V dalším kroku přidáte Image do MyList. V nabídce vlevo vyberte **Image**a pak vyberte **přidat obrázek**.
+8. V dalším kroku přidáte Image do MyList. V nabídce vlevo vyberte **Image**a pak vyberte **přidat obrázek**.
 
-  **Image - přidat bitovou kopii** otevře se stránka. 
+   **Image - přidat bitovou kopii** otevře se stránka. 
 
 9. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.
 
-  ![Obrázek – přidat výběr oblasti obrázku stránky](images/test-drive-region.png)
+   ![Obrázek – přidat výběr oblasti obrázku stránky](images/test-drive-region.png)
 
-  **Image - přidat bitovou kopii** otevře se konzola rozhraní API.
+   **Image - přidat bitovou kopii** otevře se konzola rozhraní API.
  
 10. V **listId** zadejte ID seznamu, který jste vygenerovali a potom zadejte adresu URL obrázku, který chcete přidat. Zadejte klíč předplatného a pak vyberte **odeslat**.
 
 11. Chcete-li ověřit, že image byla přidána do seznamu, v nabídce vlevo vyberte **Image**a pak vyberte **získáte všechna ID Image**.
 
-  **Image - získáte všechna ID Image** otevře se konzola rozhraní API.
+    **Image - získáte všechna ID Image** otevře se konzola rozhraní API.
   
 12. V **listId** zadejte ID seznamu a pak zadejte klíč předplatného. Vyberte **Poslat**.
 
-  ![Obrázek – Get všechny Image ID konzole odpovědi obsahu pole obsahuje seznam imagí, které jste zadali](images/try-image-list-create-11.png)
+    ![Obrázek – Get všechny Image ID konzole odpovědi obsahu pole obsahuje seznam imagí, které jste zadali](images/try-image-list-create-11.png)
  
 10. Přidáte pár další Image. Teď, když vytvoříte vlastní seznam imagí, zkuste [vyhodnocování image](try-image-api.md) pomocí seznamu vlastní image. 
 
@@ -127,29 +127,29 @@ Tento příklad odstraní jedné image:
 
 1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **Image**a pak vyberte **odstranit**. 
 
-  **Obrázek – odstranit** otevře se stránka.
+   **Obrázek – odstranit** otevře se stránka.
 
 2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu. 
 
-  ![Obrázek – výběr oblasti stránek Delete](images/test-drive-region.png)
+   ![Obrázek – výběr oblasti stránek Delete](images/test-drive-region.png)
  
-  **Obrázek – odstranit** otevře se konzola rozhraní API.
+   **Obrázek – odstranit** otevře se konzola rozhraní API.
  
-3.  V **listId** , zadejte ID seznamu, který se má odstranit bitové kopie z pole.  Toto je číslo vrácen v **Image - získáte všechna ID Image** konzoly, kde MyList. Potom zadejte **ID obrázku** bitové kopie odstranit. 
+3. V **listId** , zadejte ID seznamu, který se má odstranit bitové kopie z pole.  Toto je číslo vrácen v **Image - získáte všechna ID Image** konzoly, kde MyList. Potom zadejte **ID obrázku** bitové kopie odstranit. 
 
 V našem příkladu je ID seznamu **58953**, hodnota **ContentSource**. Na obrázku je ID **59021**, hodnota **ContentIds**.
 
-4.  Zadejte klíč předplatného a pak vyberte **odeslat**.
+1. Zadejte klíč předplatného a pak vyberte **odeslat**.
 
-5.  Chcete-li ověřit, že image byla odstraněna, použijte **Image - získáte všechna ID Image** konzoly.
+1. Chcete-li ověřit, že image byla odstraněna, použijte **Image - získáte všechna ID Image** konzoly.
  
 ## <a name="change-list-information"></a>Informace o změně seznamu
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1.  V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **podrobnosti o aktualizacích**. 
+1. V [referenční dokumentace rozhraní API pro správu seznamu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672), v nabídce vlevo vyberte **seznamy obrázků**a pak vyberte **podrobnosti o aktualizacích**. 
 
-  **Image obsahuje seznam - podrobnosti o aktualizacích** otevře se stránka.
+   **Image obsahuje seznam - podrobnosti o aktualizacích** otevře se stránka.
 
 2. Pro **testovací konzoly Open API**, vyberte oblast, která nejlépe popisuje vaši polohu.  
 
@@ -157,11 +157,11 @@ Můžete upravit název a popis seznamu a přidat položky metadat.
 
     **Image obsahuje seznam - podrobnosti o aktualizacích** otevře se konzola rozhraní API.
  
-3.  V **listId** zadejte ID seznamu a pak zadejte klíč předplatného.
+3. V **listId** zadejte ID seznamu a pak zadejte klíč předplatného.
 
-4.  V **text žádosti** udělejte úpravy a potom vyberte **odeslat** tlačítko na stránce.
+4. V **text žádosti** udělejte úpravy a potom vyberte **odeslat** tlačítko na stránce.
 
-  ![Seznamy obrázků – podrobnosti o aktualizacích konzole úpravy textu požadavku](images/try-terms-list-change-1.png)
+   ![Seznamy obrázků – podrobnosti o aktualizacích konzole úpravy textu požadavku](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>Další postup

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544562"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997893"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru ve službě Azure Database pro MariaDB
 Tento článek obsahuje důležité informace a pokyny pro práci se službou Azure Database pro MariaDB servery.
@@ -36,6 +36,7 @@ V rámci serveru Azure Database for MariaDB můžete vytvořit jednu nebo někol
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Jak zabezpečit serveru Azure Database for MariaDB
 
 Tyto prvky zajistit bezpečný přístup k vaší databázi.
+
 |||
 | :--| :--|
 | **Ověřování a autorizace** | MariaDB server Azure Database for podporuje nativní MySQL ověřování. Můžete se připojit a ověřit na serveru s přihlašovací jméno správce serveru. |

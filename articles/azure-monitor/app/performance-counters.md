@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5c7e1815fe27d9b851407a8e6f17d04d7bc1cad
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d38a575af54f044d64efc67b5483a67ffcd2fcd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003253"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837605"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
 
-Windows poskytuje širokou škálu [čítače výkonu](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat vlastní čítače výkonu. Tak dlouho, dokud vaše aplikace běží v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu.
+Windows nabízí širokou škálu [čítačů výkonu](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters), například pro vytížení procesoru nebo využití paměti, disku a sítě. Můžete také definovat vlastní čítače výkonu. Tak dlouho, dokud vaše aplikace běží v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu.
 
 ## <a name="view-counters"></a>Zobrazení čítačů
 
@@ -53,7 +53,7 @@ Pokud čítač výkonu, které chcete nejsou zahrnuty v seznamu metrik, můžete
     `Get-Counter -ListSet *`
    
     (Viz [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
-2. Otevřete soubor ApplicationInsights.config.
+2. Open ApplicationInsights.config.
    
    * Pokud jste přidali Application Insights do vaší aplikace během vývoje, upravit soubor ApplicationInsights.config v projektu a pak ho znovu nasadíte na serverech.
    * Pokud monitorování stavu jste použili k instrumentaci webové aplikace za běhu, vyhledejte soubor ApplicationInsights.config v kořenovém adresáři aplikace ve službě IIS. Aktualizujte ji, existuje v každé instanci serveru.
@@ -122,8 +122,8 @@ Další telemetrická data, jako jsou **čítače výkonu** má také sloupec `c
 
 * *Výjimky* je počet sestav TrackException přijatých na portálu v intervalu vzorkování grafu. Zahrnuje pouze zpracované výjimky, ve kterém jste napsali TrackException volání v kódu a nezahrnuje všechny [neošetřené výjimky](../../azure-monitor/app/asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace ASP.Net Core
-Čítače výkonu jsou podporovány pouze v případě, že aplikace cílí na úplné rozhraní .NET Framework. Neexistuje žádná možnost získat čítače výkonu pro.Net Core aplikací.
+## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace ASP.NET Core
+Čítače výkonu jsou podporovány pouze v případě, že aplikace cílí na úplné rozhraní .NET Framework. Neexistuje žádná možnost získat čítače výkonu aplikací .NET Core.
 
 ## <a name="alerts"></a>Výstrahy
 Stejně jako jiné metriky můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevřete podokno oznámení a klikněte na tlačítko Přidat oznámení.

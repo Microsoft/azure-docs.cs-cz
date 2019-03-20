@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0fd865a6890721d3889fc5cef39d9888fe1fb689
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856109"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí webu Azure portal
 
@@ -62,7 +62,7 @@ Proveďte následující kroky k dosažení scénář popsaný v tomto článku.
 
 Pro každý virtuální počítač ve virtuální síti přidáte konfiguraci IP adresy pro sekundární síťové rozhraní:  
 
-1. Přejděte na web Azure Portal: http://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte na web Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
 
 2. V levém horním rohu obrazovky vyberte **skupiny prostředků** ikonu. Pak vyberte skupinu prostředků, ve kterém jsou umístěné vaše virtuální počítače (například **contosofabrikam**). **Skupiny prostředků** podokně se zobrazí všechny prostředky a síťových karet pro virtuální počítače.
 
@@ -86,7 +86,7 @@ Po druhá konfigurace IP adresy pro sekundární síťové rozhraní se dokonč�
 
 Vytvořte nástroj pro vyrovnávání zatížení pro konfiguraci:
 
-1. Přejděte na web Azure Portal: http://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
+1. Přejděte na web Azure Portal: https://portal.azure.com. Přihlaste se pomocí svého účtu Azure.
 
 2. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **sítě** > **nástroje pro vyrovnávání zatížení**. V dalším kroku vyberte **vytvořit**.
 
@@ -106,15 +106,15 @@ Pro každý web (contoso.com a fabrikam.com) konfigurace front-endový fond IP a
 
 2. Nakonfigurujte dvě veřejné IP adresy (**PublicIP1** a **PublicIP2**) pro oba weby (contoso.com a fabrikam.com):
 
-    1. Zadejte název pro vaši front-endovou IP adresu.
+   1. Zadejte název pro vaši front-endovou IP adresu.
 
-    2. Pro **skupiny prostředků**, vyberte existující skupinu prostředků pro virtuální počítače (například **contosofabrikam**).
+   2. Pro **skupiny prostředků**, vyberte existující skupinu prostředků pro virtuální počítače (například **contosofabrikam**).
 
-    3. Pro **umístění**, vybrat stejné umístění jako virtuální počítače.
+   3. Pro **umístění**, vybrat stejné umístění jako virtuální počítače.
 
-    4. Vyberte **OK**.
+   4. Vyberte **OK**.
 
-    Po vytvoření veřejné IP adresy, se zobrazí v části **veřejnou IP adresu** adresy.
+      Po vytvoření veřejné IP adresy, se zobrazí v části **veřejnou IP adresu** adresy.
 
 3. <a name="step3-3"></a>Na portálu vyberte **další služby**. V dialogovém okně Filtr zadejte **nástroj pro vyrovnávání zatížení** a pak vyberte **Load Balancer**. 
 

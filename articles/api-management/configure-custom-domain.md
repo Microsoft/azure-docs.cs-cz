@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: cb7ccc665cdf9867232580fd8b687b344e43116d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079785"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény 
 
@@ -45,22 +45,22 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 1. Vyberte **vlastní domény a SSL**.
     
     Existuje několik koncových bodů, ke kterým přiřadíte vlastního názvu domény. V současné době jsou k dispozici následující koncové body: 
-    + **Proxy** (výchozí hodnota je: `<apim-service-name>.azure-api.net`), 
-    + **Portál** (výchozí hodnota je: `<apim-service-name>.portal.azure-api.net`),     
-    + **Správa** (výchozí hodnota je: `<apim-service-name>.management.azure-api.net`), 
-    + **Správce řízení služeb** (výchozí hodnota je: `<apim-service-name>.scm.azure-api.net`).
+   + **Proxy** (výchozí hodnota je: `<apim-service-name>.azure-api.net`), 
+   + **Portál** (výchozí hodnota je: `<apim-service-name>.portal.azure-api.net`),     
+   + **Správa** (výchozí hodnota je: `<apim-service-name>.management.azure-api.net`), 
+   + **Správce řízení služeb** (výchozí hodnota je: `<apim-service-name>.scm.azure-api.net`).
 
-    >[!NOTE]
-    > Můžete aktualizovat všechny koncové body nebo některé z nich. Běžně, zákazníci provést aktualizaci **Proxy** (Tato adresa URL slouží k volání rozhraní API prostřednictvím API Management) a **portál** (portál pro vývojáře adresy URL). **Správa** a **SCM** koncové body se používají interně zákazníci služby APIM a proto jsou méně často přiřazeny vlastního názvu domény.
+     >[!NOTE]
+     > Můžete aktualizovat všechny koncové body nebo některé z nich. Běžně, zákazníci provést aktualizaci **Proxy** (Tato adresa URL slouží k volání rozhraní API prostřednictvím API Management) a **portál** (portál pro vývojáře adresy URL). **Správa** a **SCM** koncové body se používají interně zákazníci služby APIM a proto jsou méně často přiřazeny vlastního názvu domény.
 
 1. Vyberte koncový bod, který chcete aktualizovat. 
 1. V okně na pravé straně, klikněte na tlačítko **vlastní**.
 
-    + V **vlastní název domény**, zadejte název, který chcete použít. Například, `api.contoso.com`. Názvy domény se zástupnými znaky (například *. uživatel@doména.com) jsou také podporovány.
-    + V **certifikát**, vyberte certifikát ze služby Key Vault. Můžete také nahrát platný. PFX souboru a zadejte jeho **heslo**v případě, že certifikát je chráněný heslem.
+   + V **vlastní název domény**, zadejte název, který chcete použít. Například, `api.contoso.com`. Názvy domény se zástupnými znaky (například *. uživatel@doména.com) jsou také podporovány.
+   + V **certifikát**, vyberte certifikát ze služby Key Vault. Můžete také nahrát platný. PFX souboru a zadejte jeho **heslo**v případě, že certifikát je chráněný heslem.
 
-    > [!TIP]
-    > Pokud používáte Azure Key Vault ke správě certifikát SSL pro vlastní doménu, ujistěte se, že certifikát je vložen do služby Key Vault [jako *certifikát*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli *tajný klíč*. Pokud tento certifikát je nastavena na autorotate, API Management na nejnovější verzi automaticky převezmou.
+     > [!TIP]
+     > Pokud používáte Azure Key Vault ke správě certifikát SSL pro vlastní doménu, ujistěte se, že certifikát je vložen do služby Key Vault [jako *certifikát*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli *tajný klíč*. Pokud tento certifikát je nastavena na autorotate, API Management na nejnovější verzi automaticky převezmou.
 
 1. Kliknutím na tlačítko použít.
 

@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 67baa204d50d1319559abcc58e0ae00e1810ebaf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101971"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrace aktuálního uživatele pro nabízená oznámení pomocí technologie ASP.NET
 
@@ -42,9 +42,9 @@ Toto téma ukazuje, jak požádat o registrace nabízených oznámení pomocí A
    * **Textové pole**: "Password"
    * **Tlačítko**: "Login"
 
-    V tomto okamžiku scénář vypadá takto:
+     V tomto okamžiku scénář vypadá takto:
 
-    ![][0]
+     ![][0]
 
 2. V editoru Pomocníka s nastavením vytvářet výstupy pro přepnulo ovládací prvky a jejich volání, textových polí napojení na kontroler zobrazení (delegáta) a vytvoření **akce** pro **přihlášení** tlačítko.
 

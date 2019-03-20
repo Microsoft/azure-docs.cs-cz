@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d7679f41b5e1c1fe6705ef3ed4be28a521f0d0d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46507562ab5a31f377b8c3a11902abf9aeccd846
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176442"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Rychlý start: Použití rozhraní Translator Text API k určení délky větu pomocí Javy
 
@@ -34,8 +34,8 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 Začněme vytvořením pracovní adresář pro tento projekt. Z příkazového řádku (nebo terminál) spusťte tento příkaz:
 
 ```console
-mkdir break-sentence-sample
-cd break-sentence-sample
+mkdir length-sentence-sample
+cd length-sentence-sample
 ```
 
 V dalším kroku budete inicializovat projekt Gradle. Tento příkaz vytvoří soubory nezbytné sestavení pro Gradle, nejdůležitější ale je, `build.gradle.kts`, který se používá v době běhu k vytvoření a konfigurace aplikace. Spuštěním tohoto příkazu z pracovní adresář:
@@ -56,7 +56,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "BreakSentence"
+    mainClassName = "LengthSentence"
 }
 repositories {
     mavenCentral()
@@ -77,11 +77,11 @@ Pojďme vytvořit složku pro ukázkovou aplikaci. Z pracovního adresáře spus
 mkdir -p src/main/java
 ```
 
-Dále v této složce vytvořte soubor s názvem `BreakSentence.java`.
+Dále v této složce vytvořte soubor s názvem `LengthSentence.java`.
 
 ## <a name="import-required-libraries"></a>Importujte požadované knihovny
 
-Otevřít `BreakSentence.java` a přidat tyto příkazy import:
+Otevřít `LengthSentence.java` a přidat tyto příkazy import:
 
 ```java
 import java.io.*;
@@ -97,12 +97,12 @@ import com.squareup.okhttp.*;
 Nejprve budete muset vytvořit veřejnou třídu pro váš projekt:
 
 ```java
-public class BreakSentence {
+public class LengthSentence {
   // All project code goes here...
 }
 ```
 
-Přidejte tyto řádky do `BreakSentence` třídy. Uvidíte, že spolu s `api-version`, můžete definovat jazyk. V této ukázce je angličtina.
+Přidejte tyto řádky do `LengthSentence` třídy. Uvidíte, že spolu s `api-version`, můžete definovat jazyk. V této ukázce je angličtina.
 
 ```java
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
@@ -111,7 +111,7 @@ String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-ve
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 
-Přidejte tento řádek, který `BreakSentence` třída pro vytvoření instance `OkHttpClient`:
+Přidejte tento řádek, který `LengthSentence` třída pro vytvoření instance `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -156,8 +156,8 @@ Posledním krokem je vytvořit žádost a získejte odpověď. Do projektu přid
 ```java
 public static void main(String[] args) {
     try {
-        BreakSentence breakSentenceRequest = new BreakSentence();
-        String response = breakSentenceRequest.Post();
+        LengthSentence lengthSentenceRequest = new LengthSentence();
+        String response = lengthSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

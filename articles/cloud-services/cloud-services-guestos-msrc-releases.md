@@ -11,22 +11,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/20/2019
+ms.date: 3/14/2019
 ms.author: raiye
-ms.openlocfilehash: 9a54a7676b874eee601ac2b673021bb7ff161ba8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ec50cff2a2d3323b988632fd7ee96b73f60117b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532946"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887285"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
-## <a name="february-2019-guest-os"></a>. Února 2019 hostovaného operačního systému
-
 >[!NOTE]
->Únor hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. února. Tento seznam se může změnit.
+>Březen hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí operačního systému. března. Tento seznam se může změnit.
+
+
+## <a name="march-2019-guest-os"></a>Březen 2019 hostovaného operačního systému
+
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 12. března 2019 |
+| Rel 19-03 | [4489907] | Animace Flash | 3.71, 4.64, 5.29, 6.5 | 12. března 2019 |
+| Rel 19-03 | [4489885] | Zabezpečení Windows | 2.84 | 12. března 2019 |
+| Rel 19-03 | [4489884] | Zabezpečení Windows | 3.71 | 12. března 2019 |
+| Rel 19-03 | [4489883] | Zabezpečení Windows | 4.64 | 12. března 2019 |
+| Rel 19-03 | [4489882] | Windows 10 Security | 5.29 | 12. března 2019 |
+| Rel 19-03 | [4489899] | Windows 10 Security | 6.5 | 12. března 2019 |
+| Rel 19-03 | [4486563] | Souhrn února Non-zabezpečení | 2.84 | 12. února 2019 |
+| Rel 19-03 | [4483458] | Souhrn února zabezpečením .NET 3.x | 2.84 | 12. února 2019 |
+| Rel 19-03 | [4483455] | Souhrn února zabezpečením .NET 4.x | 2.84 | 12. února 2019 |
+| Rel 19-03 | [4487025] | Souhrn února Non-zabezpečení | 3.71 | 12. února 2019 |
+| Rel 19-03 | [4483456] | Souhrn února zabezpečením .NET 3.x | 3.71 | 12. února 2019 |
+| Rel 19-03 | [4483454] | Souhrn února zabezpečením .NET 4.x | 3.71 | 12. února 2019 |
+| Rel 19-03 | [4487000] | Souhrn února Non-zabezpečení | 4.64 | 12. února 2019 |
+| Rel 19-03 | [4483459] | Souhrn února zabezpečením .NET 3.x | 4.64 | 12. února 2019 |
+| Rel 19-03 | [4483453] | Souhrn února zabezpečením .NET 4.x | 4.64 | 12. února 2019 |
+| Rel 19-03 | [4485447] | Únor servisní aktualizace zásobníku | 5.29 | 12. února 2019 |
+| Rel 19-03 | [4486459] | Aktualizace časového pásma | 2.84, 3.71, 4.64 | 12. února 2019 |
+
+[4489873]: https://support.microsoft.com/kb/4489873
+[4489907]: https://support.microsoft.com/kb/4489907
+[4489885]: https://support.microsoft.com/kb/4489885
+[4489884]: https://support.microsoft.com/kb/4489884
+[4489883]: https://support.microsoft.com/kb/4489883
+[4489882]: https://support.microsoft.com/kb/4489882
+[4489899]: https://support.microsoft.com/kb/4489899
+[4486563]: https://support.microsoft.com/kb/4486563
+[4483458]: https://support.microsoft.com/kb/4483458
+[4483455]: https://support.microsoft.com/kb/4483455
+[4487025]: https://support.microsoft.com/kb/4487025
+[4483456]: https://support.microsoft.com/kb/4483456
+[4483454]: https://support.microsoft.com/kb/4483454
+[4487000]: https://support.microsoft.com/kb/4487000
+[4483459]: https://support.microsoft.com/kb/4483459
+[4483453]: https://support.microsoft.com/kb/4483453
+[4485447]: https://support.microsoft.com/kb/4485447
+[4486459]: https://support.microsoft.com/kb/4486459
+
+## <a name="february-2019-guest-os"></a>. Února 2019 hostovaného operačního systému
 
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
@@ -87,13 +130,13 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 19-01 | [4480964] | Zabezpečení Windows | 4.62 | 8. ledna 2019 |
 | Rel 19-01 | [4480972] | Zabezpečení Windows | 3.69 | 8. ledna 2019 |
 | Rel 19-01 | [4480960] | Zabezpečení Windows | 2.82 | 8. ledna 2019 |
-| Rel 19-01 | [4480056] | Zabezpečení rozhraní .net | 6.3 | 8. ledna 2019 |
-| Rel 19-01 | [4480074] | Zabezpečení .net 4.x | 4.62 | 8. ledna 2019 |
-| Rel 19-01 | [4480075] | Zabezpečení .net 4.x | 3.69 | 8. ledna 2019 |
-| Rel 19-01 | [4480076] | Zabezpečení .net 4.x | 2.82 | 8. ledna 2019 |
-| Rel 19-01 | [4480086] | Zabezpečení .net 3.x | 4.62 | 8. ledna 2019 |
-| Rel 19-01 | [4480083] | Zabezpečení .net 3.x | 3.69 | 8. ledna 2019 |
-| Rel 19-01 | [4480085] | Zabezpečení .net 3.x | 2.82 | 8. ledna 2019 |
+| Rel 19-01 | [4480056] | Zabezpečení rozhraní .NET | 6.3 | 8. ledna 2019 |
+| Rel 19-01 | [4480074] | .NET 4.x Security | 4.62 | 8. ledna 2019 |
+| Rel 19-01 | [4480075] | .NET 4.x Security | 3.69 | 8. ledna 2019 |
+| Rel 19-01 | [4480076] | .NET 4.x Security | 2.82 | 8. ledna 2019 |
+| Rel 19-01 | [4480086] | .NET 3.x Security | 4.62 | 8. ledna 2019 |
+| Rel 19-01 | [4480083] | .NET 3.x Security | 3.69 | 8. ledna 2019 |
+| Rel 19-01 | [4480085] | .NET 3.x Security | 2.82 | 8. ledna 2019 |
 | Rel 19-01 | [4480979] | Animace Flash | 3.69, 4.62, 5.27, 6.3 | 8. ledna 2019 |
 | Rel 19-01 | [4480965] | Internet Explorer | 2.82, 3.69, 4.62 | 8. ledna 2019 |
 | neuvedeno | [4471318] | Souhrn prosince Non-zabezpečení | 2.82 | 11. prosince 2018 |
@@ -138,12 +181,12 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 18-12 | [4471328] | Zabezpečení Windows   | 2.81 | 11. prosince 2018 |
 | Rel 18-12 | [4471326] | Zabezpečení Windows   | 3.68 | 11. prosince 2018 |
 | Rel 18-12 | [4471322] | Zabezpečení Windows   | 4.61 | 11. prosince 2018 |
-| Rel 18-12 | [4470600] | Zabezpečení .net 3.x  | 2.81 | 11. prosince 2018 |
-| Rel 18-12 | [4470601] | Zabezpečení .net 3.x  | 3.68 | 11. prosince 2018|
-| Rel 18-12 | [4470602] | Zabezpečení .net 3.x  | 4.61 | 11. prosince 2018 |
-| Rel 18-12 | [4470493] | Zabezpečení .net 4.x  | 2.81 | 11. prosince 2018 |
-| Rel 18-12 | [4470492] | Zabezpečení .net 4.x  | 3.68 | 11. prosince 2018 |
-| Rel 18-12 | [4470491] | Zabezpečení .net 4.x  | 4.61| 11. prosince 2018 |
+| Rel 18-12 | [4470600] | .NET 3.x Security  | 2.81 | 11. prosince 2018 |
+| Rel 18-12 | [4470601] | .NET 3.x Security  | 3.68 | 11. prosince 2018|
+| Rel 18-12 | [4470602] | .NET 3.x Security  | 4.61 | 11. prosince 2018 |
+| Rel 18-12 | [4470493] | .NET 4.x Security  | 2.81 | 11. prosince 2018 |
+| Rel 18-12 | [4470492] | .NET 4.x Security  | 3.68 | 11. prosince 2018 |
+| Rel 18-12 | [4470491] | .NET 4.x Security  | 4.61| 11. prosince 2018 |
 | Rel 18-12 | [4471331] | Animace Flash  | 3.68, 4.61, 5.26 | 5. prosince 2018  |
 | Rel 18-12 | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. prosince 2018 |
 | neuvedeno | [4468323] | Aktualizace časového pásma    | 2.81, 3.68, 4.61 | 13. prosince 2018 |
@@ -520,7 +563,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 17-05 | [4010323] |SHA1 Poradce |2.62, 4.42, 5.7 | 9. května 2017 |
 | Rel 17-05 | [4022344] |Microsoft Security Advisory |5.7 | 9. května 2017 |
 | Rel 17-05 | [4022345] |Microsoft Security Advisory |5.7 | 9. května 2017 |
-| Rel 17-05 | [4021279] |Poradní core /ASP.Net .net |2.62, 3.49, 4.42, 5.7 | 9. května 2017 |
+| Rel 17-05 | [4021279] |Poradní core /ASP.NET .NET |2.62, 3.49, 4.42, 5.7 | 9. května 2017 |
 | neuvedeno | [4012864] |Timezone Update |2.62, 3.49, 4.42 | 9. května 2017 |
 | neuvedeno | [4014565] |Souhrn bez zabezpečení dubna .NET |2.62 | 11. dubna 2017 |
 | neuvedeno | [4014559] |Souhrn bez zabezpečení dubna .NET |2.62 | 11. dubna 2017 |

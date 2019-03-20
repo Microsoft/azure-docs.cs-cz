@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec119c9e11b21828b1b056fb97598ca7434cfc68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9f987c6803f6ca538f4ae7470caaff597c9596c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Kurz: Integrace s Azure Active Directory s IMPAC riziko správce
 
@@ -114,6 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **identifikátor** textové pole, typ a hodnotu poskytovanou infrastrukturou IMPAC
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+
     | Prostředí | Vzor adresy URL |
     | ---------------|--------------- |    
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
@@ -127,6 +128,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![IMPAC riziko správce domény a adresy URL jednotného přihlašování – informace](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_url1_new.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | Prostředí | Vzor adresy URL |
     | ---------------|--------------- |    
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|

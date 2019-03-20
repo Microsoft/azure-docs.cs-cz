@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c247ef748628c14074c2b5ea37df251793840b16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076747"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -49,11 +49,11 @@ Po importu aplikace vyberte **Entities** (Entity) a pak **Add prebuilt entity** 
 
 3. Na stránce **Keys and endpoints** (Klíče a koncové body) přiřaďte klíč služby LUIS, který jste vytvořili v části [Vytvoření klíče koncového bodu služby LUIS](#create-luis-endpoint-key).
 
-  Na této stránce si poznamenejte ID aplikace, oblast publikování a ID předplatného pro klíč služby LUIS, který jste vytvořili v části [Vytvoření klíče koncového bodu služby LUIS](#create-luis-endpoint-key). V pozdější části tohoto článku budete muset upravit kód s použitím těchto hodnot. 
+   Na této stránce si poznamenejte ID aplikace, oblast publikování a ID předplatného pro klíč služby LUIS, který jste vytvořili v části [Vytvoření klíče koncového bodu služby LUIS](#create-luis-endpoint-key). V pozdější části tohoto článku budete muset upravit kód s použitím těchto hodnot. 
   
-  Pro účely tohoto cvičení **nepoužívejte** bezplatný počáteční klíč. V tomto cvičení bude fungovat pouze klíč služby **Language Understanding** vytvořený na webu Azure Portal. 
+   Pro účely tohoto cvičení **nepoužívejte** bezplatný počáteční klíč. V tomto cvičení bude fungovat pouze klíč služby **Language Understanding** vytvořený na webu Azure Portal. 
 
-  https://**OBLAST**.api.cognitive.microsoft.com/luis/v2.0/apps/**ID_APLIKACE**?subscription-key=**KLÍČ_SLUŽBY_LUIS**&q=
+   https://**OBLAST**.api.cognitive.microsoft.com/luis/v2.0/apps/**ID_APLIKACE**?subscription-key=**KLÍČ_SLUŽBY_LUIS**&q=
 
 
 4. Publikujte aplikaci LUIS výběrem tlačítka **Publish** (Publikovat) na pravém horním panelu. 

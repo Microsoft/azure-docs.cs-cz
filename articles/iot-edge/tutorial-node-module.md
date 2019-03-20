@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: ab57e3cd99d015343330f4d9c558b9af729dcd5c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 10026f0a9ff702ee45926ca097e9123ea3db06d5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437815"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225922"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj a nasazení modulu Node.js IoT Edge na simulovaném zařízení
 
@@ -61,14 +61,14 @@ Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vyt
 
 2. Zadejte následující hodnoty pro vytvoření registru kontejneru:
 
-   | Pole | Hodnota | 
+   | Pole | Hodnota |
    | ----- | ----- |
    | Název registru | Zadejte jedinečný název. |
    | Předplatné | V rozevíracím seznamu vyberte předplatné. |
    | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
    | Umístění | Zvolte umístění, které je blízko vás. |
    | Uživatel s rolí správce | Nastavte na **Povolit**. |
-   | Skladová jednotka (SKU) | Vyberte **Basic**. | **Terminálu**
+   | Skladová jednotka (SKU) | Vyberte **Basic**. |
 
 5. Vyberte **Vytvořit**.
 
@@ -197,11 +197,11 @@ Každá šablona zahrnuje ukázkový kód, který směruje simulovaná data sní
 11. Přidejte do manifestu nasazení dvojče modulu NodeModule. Vložte následující obsah JSON do dolní části oddílu `moduleContent`, za dvojče modulu `$edgeHub`: 
 
    ```json
-       "NodeModule": {
-           "properties.desired":{
-               "TemperatureThreshold":25
-           }
-       }
+     "NodeModule": {
+         "properties.desired":{
+             "TemperatureThreshold":25
+         }
+     }
    ```
 
    ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-node-module/module-twin.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 67442a5861514eadfebfc877d91e735e05f6f63d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117541"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106776"
 ---
 # <a name="alert-confidence-score"></a>Skóre spolehlivosti výstrah 
 
@@ -45,7 +45,7 @@ Chcete-li zobrazit skóre spolehlivosti:
 Chcete-li zobrazit data, která přispívají k Security Center důvěru ve výstraze:
 - Na zabezpečení upozorní okno, v části **spolehlivosti**, zobrazit poznámky, které přispěly k skóre spolehlivosti a získání přehledů souvisejících s danou výstrahou. To vám poskytuje podobné informace o povaze aktivity, které výstrahu způsobil.
 
- ![Skóre spolehlivosti podezřelé][2]
+  ![Skóre spolehlivosti podezřelé][2]
 
 Skóre spolehlivosti pomocí Security Center k určení priority výstrah třídění ve vašem prostředí. Skóre spolehlivosti vám šetří čas a úsilí automaticky prošetřování výstrah, použitím doporučené postupy a inteligentním algoritmům provedou a funguje jako virtuální analytik a zjistěte jaké hrozby jsou skutečné a které je potřeba zaměřit vaši pozornost.
 

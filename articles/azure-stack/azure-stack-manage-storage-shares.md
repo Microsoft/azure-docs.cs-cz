@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20d51905d90f9f80007dcaa39cf978c7100026d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762885"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225701"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -89,12 +89,12 @@ Jako operátor cloudu, můžete sledovat kapacitu úložiště sdílené složky
 Jako operátor cloudu můžete na portálu pro správu k zobrazení všech sdílených složek kapacitu úložiště.
 
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
-2. Vyberte **všechny služby** > **úložiště** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití. 
+2. Vyberte **všechny služby** > **úložiště** > **sdílené složky** otevřete seznam souborů sdílené složky, kde můžete zobrazit informace o využití. 
 
     ![Příklad: Sdílené složky úložiště](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
-  - **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
-  - **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
+   - **Celkový počet** je místo na celkový počet bajtů, které jsou k dispozici na sdílené složce. Zde se používá pro data a metadata, která se spravuje pomocí služby úložiště.
+   - **POUŽÍT** je množství dat v bajtech, která se používá všechny rozsahy ze souborů, které ukládají data tenanta a přidružená metadata.
 
 ### <a name="storage-space-alerts"></a>Upozornění prostor úložiště
 Při použití portálu pro správu se zobrazí oznámení o sdílených složkách, které je nedostatek volného místa.
@@ -140,64 +140,64 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 
 #### <a name="to-migrate-containers-using-powershell"></a>K migraci kontejnerů pomocí Powershellu
 1. Potvrďte, že máte [prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](https://go.microsoft.com/fwlink/?LinkId=394767).
-2.  Prozkoumejte kontejneru pochopit, jaká data jsou ve sdílené složce, kterou chcete použít k migraci. Chcete-li určit nejlepší kandidát kontejnery pro migraci na svazku, použijte **Get-AzsStorageContainer** rutiny:
+2. Prozkoumejte kontejneru pochopit, jaká data jsou ve sdílené složce, kterou chcete použít k migraci. Chcete-li určit nejlepší kandidát kontejnery pro migraci na svazku, použijte **Get-AzsStorageContainer** rutiny:
 
-    ```PowerShell  
-    $farm_name = (Get-AzsStorageFarm)[0].name
-    $shares = Get-AzsStorageShare -FarmName $farm_name
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
-    ```
-    Pak zkontrolujte $containers:
+   ```PowerShell  
+   $farm_name = (Get-AzsStorageFarm)[0].name
+   $shares = Get-AzsStorageShare -FarmName $farm_name
+   $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+   ```
+   Pak zkontrolujte $containers:
 
-    ```PowerShell
-    $containers
-    ```
+   ```PowerShell
+   $containers
+   ```
 
-    ![Příklad: $Containers](media/azure-stack-manage-storage-shares/containers.png)
+   ![Příklad: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
-3.  Určení nejlepší cílové složky pro uložení kontejneru, který migrujete:
+3. Určení nejlepší cílové složky pro uložení kontejneru, který migrujete:
 
-    ```PowerShell
-    $destinationshares = Get-AzsStorageShare -SourceShareName
-    $shares[0].ShareName -Intent ContainerMigration
-    ```
+   ```PowerShell
+   $destinationshares = Get-AzsStorageShare -SourceShareName
+   $shares[0].ShareName -Intent ContainerMigration
+   ```
 
-    Pak zkontrolujte $destinationshares:
+   Pak zkontrolujte $destinationshares:
 
-    ```PowerShell 
-    $destinationshares
-    ```
+   ```PowerShell 
+   $destinationshares
+   ```
 
-    ![Příklad: $destination sdílené složky](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+   ![Příklad: $destination sdílené složky](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. Zahájení migrace pro kontejner. Migrace je asynchronní. Pokud před dokončením migrace první spuštění migrace dalších kontejnerů, sledovat stav každého pomocí id úlohy.
+4. Zahájení migrace pro kontejner. Migrace je asynchronní. Pokud před dokončením migrace první spuštění migrace dalších kontejnerů, sledovat stav každého pomocí ID úlohy.
 
-  ```PowerShell
-  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
-  ```
+   ```PowerShell
+   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+   ```
 
-  Pak zkontrolujte $jobId. V následujícím příkladu nahraďte *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* s id úlohy, které chcete prověřit:
+   Pak zkontrolujte $jobId. V následujícím příkladu nahraďte *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* s ID úlohy, které chcete prověřit:
 
-  ```PowerShell
-  $jobId
-  d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ```
+   ```PowerShell
+   $jobId
+   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
+   ```
 
-5. Id úlohy můžete zkontrolovat stav úlohy migrace. Po dokončení migrace kontejneru **MigrationStatus** je nastavena na **Complete**.
+5. ID úlohy můžete zkontrolovat stav úlohy migrace. Po dokončení migrace kontejneru **MigrationStatus** je nastavena na **Complete**.
 
-  ```PowerShell 
-  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell 
+   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Příklad: Stav migrace](media/azure-stack-manage-storage-shares/migration-status1.png)
+   ![Příklad: Stav migrace](media/azure-stack-manage-storage-shares/migration-status1.png)
 
-6.  Zrušit úlohu migrace probíhá. Zrušit migraci, které úlohy jsou zpracovávány asynchronně. Zrušení můžete sledovat pomocí $jobid:
+6. Zrušit úlohu migrace probíhá. Zrušit migraci, které úlohy jsou zpracovávány asynchronně. Zrušení můžete sledovat pomocí $jobid:
 
-  ```PowerShell
-  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell
+   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Příklad: Stav odvolání](media/azure-stack-manage-storage-shares/rollback.png)
+   ![Příklad: Stav odvolání](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. Spuštěním příkazu v kroku 6 znovu, dokud se potvrdí stav úlohy migrace je **zrušeno**:  
 

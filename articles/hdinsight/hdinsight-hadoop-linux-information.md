@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339224"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202448"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -114,7 +114,8 @@ Při použití služby Azure Storage nebo Data Lake Storage, nemusíte dělat ni
 
 V HDInsight jsou prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Storage) oddělené od výpočetních prostředků. Proto můžete vytvářet clustery HDInsight provést výpočet podle potřeby a po dokončení práce později odstranit cluster, mezitím udržování vašich datových souborů bezpečně zachována v cloudovém úložišti za předpokladu, budete potřebovat.
 
-### <a name="uri-and-scheme"></a>Identifikátor URI a schéma
+
+### <a name="URI-and-scheme"></a>Identifikátor URI a schéma
 
 Některé příkazy mohou vyžadovat zadejte schéma jako součást identifikátoru URI při přístupu k souboru. Například komponenty Storm HDFS vyžaduje, abyste zadejte schéma. Pokud používáte jiné než výchozí storage (úložiště do clusteru přidat jako "Další" úložiště), musíte vždycky použít schéma jako součást identifikátoru URI.
 
@@ -248,7 +249,7 @@ Podrobnější informace o škálování clusteru HDInsight naleznete v tématu:
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Jak nainstalovat Hue (nebo jiné součásti systému Hadoop)?
 
-HDInsight je spravovaná služba. Když Azure zjistí problém s clusterem, může odstranit uzel selhání a vytvořit uzel ji nahradit. Pokud nainstalujete ručně věci v clusteru, nejsou zachované při výskytu této operace. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster.md). Akce skriptu umožňuje provést následující změny:
+HDInsight je spravovaná služba. Když Azure zjistí problém s clusterem, může odstranit uzel selhání a vytvořit uzel ji nahradit. Pokud nainstalujete ručně věci v clusteru, nejsou zachované při výskytu této operace. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akce skriptu umožňuje provést následující změny:
 
 * Instalace a konfigurace služby nebo webové stránky.
 * Instalace a konfigurace komponenty, která vyžaduje změny konfigurace na několika uzlech v clusteru.
@@ -256,7 +257,6 @@ HDInsight je spravovaná služba. Když Azure zjistí problém s clusterem, mů�
 Akce skriptů jsou skripty Bash. Skripty spustit během vytváření clusteru a slouží k instalaci a konfiguraci dalších součástí. Příklady skriptů jsou k dispozici pro instalaci následující komponenty:
 
 * [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 
 Informace o vývoji vlastních akcí skriptů naleznete v tématu [Vývoj akcí skriptů v prostředí HDInsight](hdinsight-hadoop-script-actions-linux.md).
 

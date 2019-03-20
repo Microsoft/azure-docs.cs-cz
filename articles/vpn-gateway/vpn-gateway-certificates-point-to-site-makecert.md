@@ -1,5 +1,5 @@
 ---
-title: 'Generování a export certifikátů pro Point-to-Site: použití nástroje MakeCert: Azure | Dokumentace Microsoftu'
+title: 'Generování a export certifikátů pro Point-to-Site: MakeCert : Azure | Dokumentace Microsoftu'
 description: Vytvořit certifikát podepsaný svým držitelem, exportujte veřejný klíč a generování klientských certifikátů pomocí nástroje MakeCert.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102073"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a export certifikátů pro připojení Point-to-Site pomocí nástroje MakeCert
 
@@ -28,16 +28,16 @@ Přestože doporučujeme používat [kroky Windows 10 PowerShell](vpn-gateway-ce
 Následující kroky ukazují, jak vytvořit certifikát podepsaný svým držitelem pomocí nástroje MakeCert. Tyto kroky nejsou specifické pro model nasazení. Jsou platné pro Resource Manager a classic.
 
 1. Stáhněte a nainstalujte [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. Po dokončení instalace, můžete obvykle najít nástroj makecert.exe pod touto cestou: "C:\Program Files (x86) \Windows Kits\10\bin\<arch >'. I když je možné, že byla nainstalována do jiného umístění. Otevřete příkazový řádek jako správce a přejděte do umístění nástroje MakeCert. Následující příklad, můžete použít nastavení pro správné umístění:
+2. Po dokončení instalace můžete obvykle najít nástroj makecert.exe pod touto cestou: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. I když je možné, že byla nainstalována do jiného umístění. Otevřete příkazový řádek jako správce a přejděte do umístění nástroje MakeCert. Následující příklad, můžete použít nastavení pro správné umístění:
 
-  ```cmd
-  cd C:\Program Files (x86)\Windows Kits\10\bin\x64
-  ```
+   ```cmd
+   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+   ```
 3. Vytvořte a nainstalujte certifikát v úložišti osobních certifikátů na vašem počítači. Následující příklad vytvoří odpovídající *.cer* soubor, který nahrajete do Azure při konfigurování P2S. Nahraďte názvem, který chcete použít pro certifikát "P2SRootCert" a "P2SRootCert.cer". Certifikát je umístěn ve vaší "Certificates - Current User\Personal\Certificates".
 
-  ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
-  ```
+   ```cmd
+   makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
+   ```
 
 ## <a name="cer"></a>Export veřejného klíče (.cer)
 
@@ -61,14 +61,14 @@ Následující kroky vás provedou vygenerování klientského certifikátu z ce
  
 1. Ve stejném počítači, který jste použili k vytvoření certifikátu podepsaného svým držitelem otevřete příkazový řádek jako správce.
 2. Upravit a spuštění ukázky pro vytvoření klientského certifikátu.
-  * Změna *"P2SRootCert"* k názvu podepsaný svým držitelem, který se generuje klientský certifikát z kořenové. Ujistěte se, že používáte název kořenového certifikátu, který je bez ohledu "CN =' byla hodnota, kterou jste zadali při vytváření podepsaný svým držitelem kořenové.
-  * Změna *P2SChildCert* k vygenerování klientského certifikátu na požadovaný název.
+   * Změna *"P2SRootCert"* k názvu podepsaný svým držitelem, který se generuje klientský certifikát z kořenové. Ujistěte se, že používáte název kořenového certifikátu, který je bez ohledu "CN =' byla hodnota, kterou jste zadali při vytváření podepsaný svým držitelem kořenové.
+   * Změna *P2SChildCert* k vygenerování klientského certifikátu na požadovaný název.
 
-  Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem P2SChildcert ve vašem osobním úložišti certifikátů, který byl vytvořen kořenový certifikát P2SRootCert.
+   Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem P2SChildcert ve vašem osobním úložišti certifikátů, který byl vytvořen kořenový certifikát P2SRootCert.
 
-  ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
-  ```
+   ```cmd
+   makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
+   ```
 
 ### <a name="clientexport"></a>Export klientského certifikátu
 

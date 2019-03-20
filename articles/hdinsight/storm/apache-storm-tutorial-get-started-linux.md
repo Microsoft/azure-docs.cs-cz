@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8981f6a2b2d42627530fb8bf820ff8373e8f50b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c0fe0921446dde12771bacf096f806701b90444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117995"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 
@@ -124,26 +124,26 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
     Tato stránka přináší následující informace:
 
-    * **Statistiky topologie** – základní informace o výkonu topologie uspořádané do časových oken.
+   * **Statistiky topologie** – základní informace o výkonu topologie uspořádané do časových oken.
 
-        > [!NOTE]  
-        > Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.
+       > [!NOTE]  
+       > Výběrem konkrétního časového okna změníte časové okno informací zobrazených v dalších částech stránky.
 
-    * **Funkce Spouts** – základní informace o funkcích spouts, včetně poslední chyby vrácené každou funkcí spout.
+   * **Funkce Spouts** – základní informace o funkcích spouts, včetně poslední chyby vrácené každou funkcí spout.
 
-    * **Funkce Bolts** – základní informace o funkcích bolts.
+   * **Funkce Bolts** – základní informace o funkcích bolts.
 
-    * **Topologie konfigurace** – podrobné informace o konfiguraci topologie.
+   * **Topologie konfigurace** – podrobné informace o konfiguraci topologie.
 
-    Tato stránka také obsahuje akce, které můžete provést na topologii:
+     Tato stránka také obsahuje akce, které můžete provést na topologii:
 
-    * **Aktivovat** – obnoví zpracování deaktivované topologie.
+   * **Aktivovat** – obnoví zpracování deaktivované topologie.
 
-    * **Deaktivovat** – pozastaví spuštěné topologie.
+   * **Deaktivovat** – pozastaví spuštěné topologie.
 
-    * **Znovu vyvážit** – upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+   * **Znovu vyvážit** – upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-    * **Ukončit** – ukončí topologii Storm po zadaném časovém limitu.
+   * **Ukončit** – ukončí topologii Storm po zadaném časovém limitu.
 
 3. Na této stránce vyberte položku z oddílu **Spouts** nebo **Bolts**. Zobrazí se informace o vybrané komponentě.
 

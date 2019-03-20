@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: diberry
-ms.openlocfilehash: 9e4935c9aea87faa07481652ed70032c226e11d5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6ad48bb6e7d9c2fd0365b26999b67ad8c62fc42c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000262"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spouštění kontejnerů pro analýzu textu
 
@@ -140,7 +140,7 @@ Další [příklady](../text-analytics-resource-container-config.md#example-dock
 
 Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
 
-Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
+Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 ## <a name="stop-the-container"></a>Zastavit kontejner
 

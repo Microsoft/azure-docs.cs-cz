@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8009f50643121f1def184485aa383fe3ce8033dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 13b0c03f03012058616dba21536cfc3f292fff4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091507"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Volba typu aplikace, při přidávání aplikace v Azure Active Directory
 Další informace o čtyři typy aplikací, které můžete přidat do služby Azure Active Directory (Azure AD). Při přidávání aplikace v Azure Active Directory, zobrazí se výzva k výběru jednoho typu čtyři aplikace. 
@@ -67,32 +67,32 @@ Následující tabulka popisuje různé jednotné přihlašování a zřizován�
 
 Toto jsou podporované **jednotného přihlašování** režimy pro aplikace Azure AD.
 
--   **Azure AD jednotné přihlašování zakázáno** – zvolte Azure AD jednotné přihlašování zakázáno **režim jednotného přihlašování** Pokud ještě nejsou připraveny na integraci této aplikace pomocí jednotného přihlašování s Azure AD, nebo ji jednoduše testování
+- **Azure AD jednotné přihlašování zakázáno** – zvolte Azure AD jednotné přihlašování zakázáno **režim jednotného přihlašování** Pokud ještě nejsou připraveny na integraci této aplikace pomocí jednotného přihlašování s Azure AD, nebo ji jednoduše testování
 
--   **Propojené přihlašování** – zvolte [propojené přihlášení](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **režim jednotného přihlašování** Pokud máte aplikaci, která je už propojená s existujícím jednotné přihlašování – řešení, nebo pokud chcete jen publikování jednoduchý odkaz na vaši uživatelé v jejich [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) nebo [Spouštěče aplikací Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+- **Propojené přihlašování** – zvolte [propojené přihlášení](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **režim jednotného přihlašování** Pokud máte aplikaci, která je už propojená s existujícím jednotné přihlašování – řešení, nebo pokud chcete jen publikování jednoduchý odkaz na vaši uživatelé v jejich [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) nebo [Spouštěče aplikací Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Přihlašování na základě heslo** – zvolte [přihlašování na základě heslo](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **režim jednotného přihlašování** Pokud vaše aplikace zobrazí uživatelské jméno a heslo pole HTML a vy chcete ukládat tímto uživatelským jménem a heslo do přehrány aplikaci později
+- **Přihlašování na základě heslo** – zvolte [přihlašování na základě heslo](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **režim jednotného přihlašování** Pokud vaše aplikace zobrazí uživatelské jméno a heslo pole HTML a vy chcete ukládat tímto uživatelským jménem a heslo do přehrány aplikaci později
 
--   **Přihlašování na základě SAML** – zvolte [přihlašování na základě SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) jednotné přihlašování v režimu, pokud vaše aplikace podporuje protokol SAML nebo OpenID Connect, nebo chcete být schopni mapování uživatelů na konkrétní aplikační role na základě pravidel můžete definovat vaše SAML deklaracemi identity *
+- **Přihlašování na základě SAML** – zvolte [přihlašování na základě SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) jednotné přihlašování v režimu, pokud vaše aplikace podporuje protokol SAML nebo OpenID Connect, nebo chcete být schopni mapování uživatelů na konkrétní aplikační role na základě pravidel můžete definovat vaše SAML deklaracemi identity *
 
-   >[!NOTE]
-   >Tato možnost není k dispozici, když proxy aplikací je nakonfigurován pro aplikaci.
-   >
-   >
+  >[!NOTE]
+  >Tato možnost není k dispozici, když proxy aplikací je nakonfigurován pro aplikaci.
+  >
+  >
 
--   **Přihlašování na základě záhlaví** – tuto možnost zvolte, [přihlašování na základě záhlaví](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) jednotné přihlašování režimu Pokud máte aplikaci pomocí PingAccess, který podporuje založený na HTTP hlavičce ověřování, kterou chcete provést jednotné přihlašování k 
+- **Přihlašování na základě záhlaví** – tuto možnost zvolte, [přihlašování na základě záhlaví](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) jednotné přihlašování režimu Pokud máte aplikaci pomocí PingAccess, který podporuje založený na HTTP hlavičce ověřování, kterou chcete provést jednotné přihlašování k 
 
-   >[!NOTE]
-   >Tato možnost je dostupná, pouze pokud proxy aplikací a Pingaccessem je nakonfigurovaná pro aplikaci.
-   >
-   >
+  >[!NOTE]
+  >Tato možnost je dostupná, pouze pokud proxy aplikací a Pingaccessem je nakonfigurovaná pro aplikaci.
+  >
+  >
 
--   **Integrované ověřování Windows** – zvolte [integrované ověřování Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) jednotného přihlašování při vystavení, kterou chcete provést jednotné přihlašování k aplikaci WIA v místním režimu 
+- **Integrované ověřování Windows** – zvolte [integrované ověřování Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) jednotného přihlašování při vystavení, kterou chcete provést jednotné přihlašování k aplikaci WIA v místním režimu 
 
-   >[!NOTE]
-   >Tato možnost je dostupná, jenom když se proxy aplikací je nakonfigurován pro aplikaci.
-   >
-   >
+  >[!NOTE]
+  >Tato možnost je dostupná, jenom když se proxy aplikací je nakonfigurován pro aplikaci.
+  >
+  >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Režimy jednotné přihlašování pro vlastní aplikace
 
@@ -112,39 +112,39 @@ Přečtěte si [Příručka pro vývojáře Azure Active Directory](https://docs
 
 Chcete-li nastavit aplikaci prvku **jednotného přihlašování** režimu, postupujte podle těchto pokynů:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
+6. Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>Jak zvolit režim zřizování
 
--   **Ruční zřizování** – zvolte [ruční](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) režim zřizování, pokud máte existující účty, nebo chcete spravovat účty pro tuto aplikaci mimo Azure AD.
+- **Ruční zřizování** – zvolte [ruční](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) režim zřizování, pokud máte existující účty, nebo chcete spravovat účty pro tuto aplikaci mimo Azure AD.
 
--   **Automatické zřizování** – zvolte [automatické](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **režim zřizování** Pokud chcete povolit automatické zřizování založené na rozhraní API a/nebo zrušení zřizování uživatelských účtů do této aplikace 
+- **Automatické zřizování** – zvolte [automatické](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **režim zřizování** Pokud chcete povolit automatické zřizování založené na rozhraní API a/nebo zrušení zřizování uživatelských účtů do této aplikace 
 
-   >[!NOTE]
-   >Tato možnost je dostupná jenom pro aplikace v rámci **vybrané** kategorii [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
-   >
-   >
+  >[!NOTE]
+  >Tato možnost je dostupná jenom pro aplikace v rámci **vybrané** kategorii [Galerie aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal).
+  >
+  >
 
--   **Na základě SCIM automatické zřizování** – použijte [na základě SCIM automatické zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) Pokud vaše aplikace podporuje protokol SCIM pro zjištění změny uživatelů a skupin, které jsou automaticky generované pro změny všechny aplikace integrované s Azure AD 
+- **Na základě SCIM automatické zřizování** – použijte [na základě SCIM automatické zřizování](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) Pokud vaše aplikace podporuje protokol SCIM pro zjištění změny uživatelů a skupin, které jsou automaticky generované pro změny všechny aplikace integrované s Azure AD 
 
-   >[!NOTE]
-   >Tato možnost není uvedena jako konkrétní režim zřizování, ale je povoleno standardně pro všechny aplikace, které jsou integrované s Azure AD.
-   >
-   >
+  >[!NOTE]
+  >Tato možnost není uvedena jako konkrétní režim zřizování, ale je povoleno standardně pro všechny aplikace, které jsou integrované s Azure AD.
+  >
+  >
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>Jak nastavit aplikaci prvku režim zřizování
 
@@ -152,21 +152,21 @@ Chcete-li nastavit aplikaci prvku **zřizování** režimu, postupujte podle tě
 
 Chcete-li nastavit aplikaci prvku **jednotného přihlašování** režimu, postupujte podle těchto pokynů:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, pro kterou chcete provést konfiguraci zřizování.
+6. Vyberte aplikaci, pro kterou chcete provést konfiguraci zřizování.
 
-7.  Po načtení aplikace, klikněte na tlačítko **zřizování** levé navigační nabídce aplikace.
+7. Po načtení aplikace, klikněte na tlačítko **zřizování** levé navigační nabídce aplikace.
 
 ## <a name="next-steps"></a>Další postup
 [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)

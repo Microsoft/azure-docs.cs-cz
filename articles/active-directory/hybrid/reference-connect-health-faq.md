@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852954"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) týkající se Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy k pokrytí otázek o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -192,6 +192,9 @@ CheckForMS17-010
 **Otázka: Proč se Moje služby AD FS Audituje naprostou vygenerovat?**
 
 Použijte prosím rutinu Powershellu <i>Get-AdfsProperties - AuditLevel</i> zajistit protokolů auditování není v zakázaném stavu. Další informace o [protokoly auditu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Oznámení, že pokud existuje pokročilé nastavení auditu nahrány na server ADFS, veškeré změny s auditpol.exe budou přepsány (událost když vytvářených aplikací není nakonfigurované). V takovém případě nastavte prosím místní zásady zabezpečení do protokolu chyb aplikací vygenerované a úspěšné dokončení.
+
+**Otázka: Když se automatické obnovené před vypršení platnosti certifikátu agenta**
+Certifikace agenta bude automatické obnovení **6 měsíců** před vypršením platnosti. Pokud se platnost neprodlouží, ujistěte se, že je připojení síti agenta stabilní. Restartujte služby agent nebo aktualizaci na nejnovější verzi může také vyřešit problém.
 
 
 ## <a name="related-links"></a>Související odkazy

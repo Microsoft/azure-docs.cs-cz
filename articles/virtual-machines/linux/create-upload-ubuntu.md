@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 62d17670a068304e0764c85d49da0aa9a736c477
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444426"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004894"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="official-ubuntu-cloud-images"></a>Oficiální Image Ubuntu cloudu
-Ubuntu nyní publikuje oficiální Azure virtuálních pevných disků ke stažení na [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). Pokud budete muset sestavit vlastní specializované image Ubuntu pro Azure, spíše než pomocí níže uvedeného ručního postupu se doporučuje spustit s těmito označuje práci virtuální pevné disky a podle potřeby upravte. Nejnovější verze image vždy najdete v následujících umístěních:
+Ubuntu nyní publikuje oficiální Azure virtuálních pevných disků ke stažení na [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/). Pokud budete muset sestavit vlastní specializované image Ubuntu pro Azure, spíše než pomocí níže uvedeného ručního postupu se doporučuje spustit s těmito označuje práci virtuální pevné disky a podle potřeby upravte. Nejnovější verze image vždy najdete v následujících umístěních:
 
 * Ubuntu 12.04/přesné: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že jste již nainstalovali operačního systému Ubuntu Linux na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
@@ -47,7 +47,7 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
 
 ## <a name="manual-steps"></a>Vyžadováno provedení ručních kroků
 > [!NOTE]
-> Před pokusem o vytvoření vlastní image Ubuntu pro Azure, zvažte použití předem připravené a otestovaná Image z [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) místo.
+> Před pokusem o vytvoření vlastní image Ubuntu pro Azure, zvažte použití předem připravené a otestovaná Image z [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/) místo.
 > 
 > 
 
@@ -122,8 +122,8 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
-    >[!Note]
-    `walinuxagent` Může odebrat balíček `NetworkManager` a `NetworkManager-gnome` balíčky, pokud jsou nainstalovány.
+   > [!Note]
+   >  `walinuxagent` Může odebrat balíček `NetworkManager` a `NetworkManager-gnome` balíčky, pokud jsou nainstalovány.
 
 Pro Ubuntu 18.04/18.10 aktualizovat zdroj dat Azure, upravit: /etc/cloud/cloud.cfg.d/90-azure.cfg, přidejte tento kód na konec souboru:
 
@@ -135,13 +135,13 @@ datasource:
      agent_command: [service, walinuxagent, start]
 ```
 
-8. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
+1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-9. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
+1. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
 
 ## <a name="references"></a>Odkazy
 [Ubuntu hardwaru povolení (HWE) jádra](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)

@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111102"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -86,7 +86,7 @@ Připojení k VP k nasazení jako správce a změňte název serveru služby Br�
 6. Na kartě brány VP, změnit **název serveru** zadejte externí adresu URL, kterou jste nastavili pro koncový bod vzdálené plochy hostiteli v Proxy aplikací.
 7. Změnit **přihlašovací metoda** pole **ověřování hesla**.
 
-  ![Obrazovky Vlastnosti nasazení na vzdálené plochy](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
+   ![Obrazovky Vlastnosti nasazení na vzdálené plochy](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
 8. Spusťte tento příkaz pro každou kolekci. Nahraďte *\<yourcollectionname\>* a *\<proxyfrontendurl\>* nahraďte svými vlastními informacemi. Tento příkaz umožňuje jednotné přihlašování mezi webu a brány VP a optimalizuje výkon:
 
@@ -98,8 +98,8 @@ Připojení k VP k nasazení jako správce a změňte název serveru služby Br�
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
->[!NOTE]
->Výše uvedený příkaz používá prvními v "" nrequire ".
+   >[!NOTE]
+   >Výše uvedený příkaz používá prvními v "" nrequire ".
 
 9. Ověření úprav vlastních vlastností RDP také zobrazit obsah souboru RDP, které budou staženy z RDWeb pro tuto kolekci, spusťte následující příkaz:
     ```

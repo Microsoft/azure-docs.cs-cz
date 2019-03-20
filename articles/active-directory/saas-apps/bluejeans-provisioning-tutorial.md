@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2006b025c4bcf54ee2ab131e0d6a105f9f4e9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110354"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro automatické zřizování uživatelů
 
@@ -107,9 +107,9 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce**, a **heslo správce** BlueJeans účtu. Mezi tyto hodnoty patří:
 
-    *   V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi BlueJeans naplnit. Příklad: admin@contoso.com.
+   * V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi BlueJeans naplnit. Příklad: admin@contoso.com.
 
-    *   V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
+   * V **heslo správce** pole, vyplnit odpovídající uživatelské jméno správce heslo.
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k BlueJeans. Pokud se nepovede, ujistěte se, že váš účet BlueJeans má oprávnění správce a zkuste to znovu.
 

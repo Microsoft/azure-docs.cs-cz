@@ -4,17 +4,17 @@ description: Zjistěte, jaké operační systémy můžete spustit démona Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e97983e1316476848eb4a051cd636339b8caff7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190001"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -31,27 +31,30 @@ Azure IoT Edge musí modul container moduly spustit, protože jsou implementovan
 
 <br>
 <center>
+
 ![Moby jako kontejner modulu runtime](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Operační systémy
-Azure IoT Edge běží na většině operačních systémů, které můžete spouštět kontejnery; ale všechny podporované nejsou stejně. Operační systémy jsou seskupené do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat.
-* Systémy vrstvy 1 si lze představit jako oficiálně podporované. To znamená, že Microsoft:
+Azure IoT Edge běží na většině operačních systémů, které můžete spouštět kontejnery; však všechny tyto systémy nepodporují stejně. Operační systémy jsou seskupené do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat.
+* Systémy vrstvy 1 si lze představit jako oficiálně podporované. Pro systémy vrstvy 1, Microsoft:
     * má tento operační systém v automatizovaných testů
     * poskytne vám jejich instalačních balíčků
-* Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. To znamená, že:
+* Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. Pro systémy vrstvy 2:
     * Microsoft má provést testování ad hoc na platformách nebo ví partnerských úspěšně spuštěných na platformě Azure IoT Edge
     * Instalační balíčky pro jiné platformy může pracovat na těchto platformách
     
-Řada hostitelský operační systém musí vždy odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Jinými slovy můžete použít pouze Linuxové kontejnery v Linuxu a kontejnery Windows ve Windows. Pokud používáte Windows, pouze samostatný proces kontejnery jsou podporované, ne technologie hyper-v izolovaných kontejnerech.  
+Řada hostitelský operační systém musí vždy odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Jinými slovy můžete použít pouze Linuxové kontejnery v Linuxu a kontejnery Windows ve Windows. Při použití Windows pouze procesu, které jsou podporovány izolovaných kontejnerech, technologie Hyper-V izolované kontejnery.  
 
 <br>
 <center>
+
 ![Hostitelského operačního systému odpovídá hostovaného operačního systému](./media/support/edge-on-device.png)
 </center>
 
 ### <a name="tier-1"></a>Úroveň 1
 Obecně dostupná
+
 | Operační systém | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | Raspbian stretch | Ne | Ano|
@@ -59,13 +62,14 @@ Obecně dostupná
 | Ubuntu Server 18.04 | Ano | Ne |
 
 Verze Public Preview
+
 | Operační systém | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core build 17763 | Ano | Ne |
-| Windows 10 IoT Enterprise sestavení 17763 | Ano | Ne |
+| Windows 10 IoT Core, build 17763 | Ano | Ne |
+| Windows 10 IoT Enterprise, build 17763 | Ano | Ne |
 | Windows Server 2019 | Ano | Ne |
 
-Operační systémy Windows výše jsou požadavky na zařízení, které se spustí kontejnery Windows na Windows. Toto je jedinou podporovanou konfiguraci pro produkční prostředí. Instalační balíčky Azure IoT Edge pro Windows jim umožňují používat kontejnery Linuxu ve Windows; je to ale pro vývoj a testování pouze. Použití kontejnery Linuxu ve Windows není podporovanou konfiguraci pro produkční prostředí. Všechny verze Windows 10 sestavení 14393 nebo novější a Windows Server 2016 nebo novější, je možné pro tento scénář vývoje.
+Výše uvedenými operačními systémy Windows jsou uvedeny požadavky pro zařízení se systémem Windows kontejnery ve Windows. Tato konfigurace je jedinou podporovanou konfiguraci pro produkční prostředí. Instalační balíčky Azure IoT Edge pro Windows jim umožňují používat kontejnery Linuxu ve Windows; Nicméně tato konfigurace je pro vývoj a testování pouze. Použití kontejnery Linuxu ve Windows není podporovanou konfiguraci pro produkční prostředí. Všechny verze Windows 10 sestavení 14393 nebo novější a Windows Server 2016 nebo novější, je možné pro tento scénář vývoje.
 
 ### <a name="tier-2"></a>Úroveň 2
 
@@ -82,14 +86,23 @@ Operační systémy Windows výše jsou požadavky na zařízení, které se spu
 
 
 ## <a name="virtual-machines"></a>Virtuální počítače
-Azure IoT Edge může běžet na virtuálních počítačích. To je běžné, pokud zákazníci chtějí rozšířit stávající infrastrukturu s hraniční inteligence. Řada hostitelský operační systém virtuálního počítače musí odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. To je stejný požadavek, když Azure IoT Edge běží přímo v zařízení. Azure IoT Edge se nerozlišují základní technologie virtualizace a pracuje ve virtuálních počítačích s využitím podle platformy, jako je Hyper-V a vSphere.
+Azure IoT Edge může běžet na virtuálních počítačích. Používání virtuálních počítačů jako IoT Edge zařízení je běžná v případě zákazníci chtějí rozšířit stávající infrastrukturu s hraniční inteligence. Řada hostitelský operační systém virtuálního počítače musí odpovídat řady hostovaného operačního systému použít uvnitř kontejneru modulu. Tento požadavek je stejný jako při spuštění přímo na zařízení Azure IoT Edge. Azure IoT Edge se nerozlišují základní technologie virtualizace a pracuje ve virtuálních počítačích s využitím podle platformy, jako je Hyper-V a vSphere.
 
 <br>
 <center>
+
 ![Azure IoT Edge ve virtuálním počítači](./media/support/edge-on-vm.png)
 </center>
 
 ## <a name="minimum-system-requirements"></a>Minimální požadavky na systém
-Azure IoT Edge skvělé fungování v zařízení malá jako Raspberry Pi3 na hardware serveru na podnikové úrovni. Volba ten správný hardware pro váš scénář je závislé na jiné úlohy, které chcete spustit. Rozhodování konečné zařízení můžou být složité; vytváření prototypů řešení ale můžete snadno spustit na tradiční přenosné počítače nebo stolní počítače.
+Azure IoT Edge skvělé fungování v zařízení malá jako Raspberry Pi3 na hardware serveru na podnikové úrovni. Volba ten správný hardware pro váš scénář závisí na jiné úlohy, které chcete spustit. Rozhodování konečné zařízení můžou být složité; vytváření prototypů řešení ale můžete snadno spustit na tradiční přenosné počítače nebo stolní počítače.
 
-Prostředí při vytváření prototypů se pomoci výběr konečné zařízení. Zahrnují dotazy, které byste měli zvážit: kolik modulů zahrnuje úlohy, kolik vrstvy své moduly kontejnery sdílenou složku, v jakém jazyce jsou vaše modulů napsaných, kolik dat bude moduly zpracovávat, proveďte libovolný specializované moduly potřeba hardware pro urychlení jejich pracovní vytížení, jaké jsou požadované výkonové charakteristiky vašeho řešení, co je vašemu rozpočtu hardwaru?
+Prostředí při vytváření prototypů se pomoci výběr konečné zařízení. Otázek, na které byste měli zvážit, patří: 
+
+* Kolik modulů jsou vaše úlohy?
+* Kolik vrstvy vašeho moduly kontejnery sdílejí?
+* V jakém jazyce jsou moduly vytvořeny? 
+* Kolik dat bude moduly zpracovávat?
+* Potřebují moduly žádný speciální hardware pro urychlení jejich pracovní vytížení?
+* Jaké jsou požadované výkonové charakteristiky vašeho řešení?
+* Co je vašemu rozpočtu hardwaru?

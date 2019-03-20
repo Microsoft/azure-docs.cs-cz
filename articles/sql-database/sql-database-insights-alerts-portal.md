@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: dea9a73d7ac868e45d3abf2ee3ff8366fc7b65cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783087"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855584"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse s využitím webu Azure portal
 
@@ -59,7 +59,7 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění
 4. **Název** upozornění pravidlo a vyberte **popis**, které zároveň ukazuje oznámení e-mailů.
 5. Vyberte **metrika** chcete monitorovat, a potom vyberte **podmínku** a **prahová hodnota** hodnoty pro metriku. Se také rozhodnout **období** , kterou pravidlo metriky musí být splněny před výstrah aktivační události. Třeba Pokud používáte období "PT5M" a upozornění hledá CPU vyšší než 80 %, aktivaci upozornění při **průměrné** procesoru byla vyšší než 80 % po dobu 5 minut. Jakmile dojde k první aktivační událost, se znovu aktivuje, když průměrné využití procesoru je nižší než 80 % více než 5 minut. Měření využití procesoru dochází každou 1 minutu. Podporované časových oken naleznete v následující tabulce a že každý typ agregace upozornění používá ne všechny výstrahy použít průměrnou hodnotu.   
 6. Zkontrolujte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci e-mailem odešle, když se aktivuje upozornění.
-7. Pokud chcete další e-maily přijímat oznámení, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělujte středníkem -  *email@contoso.com;email2@contoso.com*
+7. Pokud chcete další e-maily přijímat oznámení, když se aktivuje upozornění, přidejte je **další email(s) správce** pole. Více e-mailů oddělujte středníkem - *e-mailu\@contoso.com;email2\@contoso.com*
 8. Vložit platný identifikátor URI, **Webhooku** pole, pokud chcete, volá se, když se aktivuje upozornění.
 9. Vyberte **OK** po dokončení vytvoření výstrahy.   
 
@@ -79,26 +79,26 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | --- | --- | --- | --- | --- |
 | Databáze SQL | cpu_percent | Procento CPU | Průměr | 5 minut |
 | Databáze SQL | physical_data_read_percent | Procento datových V/V | Průměr | 5 minut |
-| Databáze SQL | log_write_percent | Procento v/v protokolu | Průměr | 5 minut |
+| Databáze SQL | log_write_percent | Procento V/V protokolu | Průměr | 5 minut |
 | Databáze SQL | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
 | Databáze SQL | úložiště | Celkovou velikost databáze | Maximum | 30 minut |
 | Databáze SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| Databáze SQL | connection_failed | Chyba připojení | Celkem | 10 minut |
+| Databáze SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
 | Databáze SQL | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
 | Databáze SQL | Zablokování | Zablokování | Celkem | 10 minut |
 | Databáze SQL | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
 | Databáze SQL | xtp_storage_percent | Percent(Preview) úložiště OLTP v paměti | Průměr | 5 minut |
-| Databáze SQL | workers_percent | Procento pracovních procesů | Průměr | 5 minut |
+| Databáze SQL | workers_percent | Procento prac. procesů | Průměr | 5 minut |
 | Databáze SQL | sessions_percent | Procento relací | Průměr | 5 minut |
 | Databáze SQL | dtu_limit | Omezení jednotek DTU | Průměr | 5 minut |
 | Databáze SQL | dtu_used | DTU použít | Průměr | 5 minut |
 ||||||
 | Elastický fond | cpu_percent | Procento CPU | Průměr | 10 minut |
 | Elastický fond | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| Elastický fond | log_write_percent | Procento v/v protokolu | Průměr | 10 minut |
+| Elastický fond | log_write_percent | Procento V/V protokolu | Průměr | 10 minut |
 | Elastický fond | dtu_consumption_percent | Procento DTU | Průměr | 10 minut |
 | Elastický fond | storage_percent | Procento úložiště | Průměr | 10 minut |
-| Elastický fond | workers_percent | Procento pracovních procesů | Průměr | 10 minut |
+| Elastický fond | workers_percent | Procento prac. procesů | Průměr | 10 minut |
 | Elastický fond | eDTU_limit | omezení eDTU | Průměr | 10 minut |
 | Elastický fond | storage_limit | Limit úložiště. | Průměr | 10 minut |
 | Elastický fond | eDTU_used | použít eDTU | Průměr | 10 minut |
@@ -107,7 +107,7 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | SQL Data Warehouse | cpu_percent | Procento CPU | Průměr | 10 minut |
 | SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
 | SQL Data Warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| SQL Data Warehouse | connection_failed | Chyba připojení | Celkem | 10 minut |
+| SQL Data Warehouse | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
 | SQL Data Warehouse | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
 | SQL Data Warehouse | service_level_objective | Úrovně služby databáze | Celkem | 10 minut |
 | SQL Data Warehouse | dwu_limit | limit jednotky | Maximum | 10 minut |

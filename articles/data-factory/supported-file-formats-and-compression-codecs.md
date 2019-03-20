@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: bb701a33d4ebb1ffca19896f3b4ac0419f27d54f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875116"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -573,6 +573,14 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 
 > [!NOTE]
 > Nastavení komprese nejsou podporovány pro data ve službě **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjistí a využívá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory využívá možnost kompresní kodek výchozí pro daný formát. Například pro OrcFormat ZLIB a SNAPPY pro ParquetFormat.
+
+## <a name="unsupported-file-types-and-compression-formats"></a>Nepodporované typy souborů a formátů komprese
+
+Rozšíření funkcí služby Azure Data Factory můžete použít k transformaci soubory, které nejsou podporovány. Dvě možnosti patří Azure Functions a vlastní úlohy pomocí služby Azure Batch.
+
+Můžete zobrazit ukázky, která používá funkci Azure pro [extrahovat obsah souboru cíl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivit Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+
+Můžete také sestavit této funkce s použitím vlastní dotnet aktivity. Další informace jsou k dispozici [zde](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>Další postup
 

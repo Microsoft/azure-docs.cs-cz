@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8008f96e00b0d9a4366832110c696c67a9c7257
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc3a42c280a344ef08fa23111df8652b6167cfb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Kurz: Integrace Azure Active Directory s Panorama9
 
@@ -198,18 +198,18 @@ V případě Panorama9 zřizování se ruční úlohy.
 
 1. V nabídce v horní části klikněte na tlačítko **spravovat**a potom klikněte na tlačítko **uživatelé**.
    
-  ![Uživatelé](./media/panorama9-tutorial/ic790027.png "uživatelů")
+   ![Uživatelé](./media/panorama9-tutorial/ic790027.png "uživatelů")
 
 1. V sekci uživatelé klikněte na tlačítko **+** pro přidání nového uživatele.
 
- ![Uživatelé](./media/panorama9-tutorial/ic790028.png "uživatelů")
+   ![Uživatelé](./media/panorama9-tutorial/ic790028.png "uživatelů")
 
 1. Přejděte do části data uživatele, zadejte e-mailovou adresu platného uživatele Azure Active Directory, kterým chcete přidělit do **e-mailu** textového pole.
 
 1. Přijďte na sekci uživatelé klikněte na tlačítko **Uložit**.
    
 > [!NOTE]
-    > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
+> Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

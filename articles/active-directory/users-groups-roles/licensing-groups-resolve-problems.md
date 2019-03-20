@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201530"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licencí pro skupinu v Azure Active Directory
 
@@ -33,21 +33,21 @@ Při použití skupinové licence, může dojít k chybám stejné, ale dějí n
 ## <a name="how-to-find-license-assignment-errors"></a>Jak najít chyby přiřazení licencí
 **Najít chyby přiřazení licencí**
 
-   1. K vyhledání uživatelů v chybovém stavu v konkrétní skupině, otevřete podokno pro skupinu. V části **licence**, zobrazí se upozornění, pokud jsou všechny uživatele v chybovém stavu.
+1. K vyhledání uživatelů v chybovém stavu v konkrétní skupině, otevřete podokno pro skupinu. V části **licence**, zobrazí se upozornění, pokud jsou všechny uživatele v chybovém stavu.
 
-   ![Skupina, oznamování chyb](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![Skupiny a chybové zprávy oznámení](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. Vyberte oznámení a otevřete seznam všech ovlivněných uživatelů. Můžete vybrat každého uživatele zvlášť, abyste zobrazili další podrobnosti.
+2. Vyberte oznámení a otevřete seznam všech ovlivněných uživatelů. Můžete vybrat každého uživatele zvlášť, abyste zobrazili další podrobnosti.
 
-   ![Skupiny, seznam uživatelů v chybovém stavu](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![seznam uživatelů ve skupině licencí chybovém stavu](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. K vyhledání všech skupin, které obsahují alespoň jednu chybu na **Azure Active Directory** okně vyberte **licence**a pak vyberte **přehled**. Informační okno se zobrazí, když skupiny vyžadují vaši pozornost.
+3. K vyhledání všech skupin, které obsahují alespoň jednu chybu na **Azure Active Directory** okně vyberte **licence**a pak vyberte **přehled**. Informační okno se zobrazí, když skupiny vyžadují vaši pozornost.
 
-   ![Přehled, informace o skupinách v chybovém stavu](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![Přehled a informace o skupinách v chybovém stavu](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. Vyberte pole zobrazíte seznam všech skupin s chybami. Můžete vybrat každou skupinu další podrobnosti.
+4. Vyberte pole zobrazíte seznam všech skupin s chybami. Můžete vybrat každou skupinu další podrobnosti.
 
-   ![Přehled, seznam skupin s chybami](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![Přehled a seznamu skupin s chybami](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 Následující části poskytují popis každý potenciální problém a způsob, jak problém vyřešit.
@@ -104,9 +104,9 @@ Pokud používáte Exchange Online, někteří uživatelé ve vašem tenantovi m
 
 > [!TIP]
 > Pokud chcete zobrazit, pokud je adresa duplicitní proxy, spusťte následující rutinu prostředí PowerShell pro Exchange Online:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > Další informace o tomto problému najdete v tématu ["adresa proxy serveru se už používá" chybová zpráva v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Tento článek obsahuje také informace o [jak se připojit ke službě Exchange Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx). Tento článek pro další informace naleznete v tématu [na způsob naplnění atributu proxyAddresses v Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 Až vyřešíte všechny problémy adresu proxy serveru pro ovlivnění uživatelé, ujistěte se, že chcete vynutit zpracování licencí skupiny, abyste měli jistotu, že licence se teď může používat.

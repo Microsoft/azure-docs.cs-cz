@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: b4877f7904523782f1555f53a7bcb440871cc698
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 6e393bf9c08eaa656a1c9b2302cde937a87ccc9a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888308"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088498"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -54,16 +54,16 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
      >
      >
 
-    - **Název podsítě**: Název podsítě musí být v rámci virtuální sítě jedinečný. Název podsítě nelze změnit po vytvoření podsítě. Na portálu vyžaduje definovat jednu podsíť při vytváření virtuální sítě, i když není virtuální síť musí mít žádné podsítě. Na portálu můžete definovat jenom jednu podsíť, při vytváření virtuální sítě. Můžete přidat další podsítě do virtuální sítě později, po vytvoření virtuální sítě. Přidání podsítě do virtuální sítě, najdete v článku [Správa podsítí](virtual-network-manage-subnet.md). Můžete vytvořit virtuální síť, která má více podsítí pomocí Azure CLI nebo Powershellu.
+     - **Název podsítě**: Název podsítě musí být v rámci virtuální sítě jedinečný. Název podsítě nelze změnit po vytvoření podsítě. Na portálu vyžaduje definovat jednu podsíť při vytváření virtuální sítě, i když není virtuální síť musí mít žádné podsítě. Na portálu můžete definovat jenom jednu podsíť, při vytváření virtuální sítě. Můžete přidat další podsítě do virtuální sítě později, po vytvoření virtuální sítě. Přidání podsítě do virtuální sítě, najdete v článku [Správa podsítí](virtual-network-manage-subnet.md). Můžete vytvořit virtuální síť, která má více podsítí pomocí Azure CLI nebo Powershellu.
 
-      >[!TIP]
-      >V některých případech správci vytvářet různé podsítě a filtrovat řídit směrování provozu mezi podsítěmi. Před definováním podsítí, zvažte, jak můžete filtrovat a směrovat provoz mezi podsítěmi. Další informace o filtrování provozu mezi podsítěmi, najdete v článku [skupiny zabezpečení sítě](security-overview.md). Azure automaticky směruje provoz mezi podsítěmi, ale můžete přepsat Azure výchozí trasy. Další informace o směrování Azures výchozí podsíť provozu najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
-      >
+       >[!TIP]
+       >V některých případech správci vytvářet různé podsítě a filtrovat řídit směrování provozu mezi podsítěmi. Před definováním podsítí, zvažte, jak můžete filtrovat a směrovat provoz mezi podsítěmi. Další informace o filtrování provozu mezi podsítěmi, najdete v článku [skupiny zabezpečení sítě](security-overview.md). Azure automaticky směruje provoz mezi podsítěmi, ale můžete přepsat Azure výchozí trasy. Další informace o směrování Azures výchozí podsíť provozu najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+       >
 
-    - **Rozsah adres podsítě**: Rozsah musí být v rámci adresního prostoru, které jste zadali pro virtuální síť. Nejmenší oblast, kterou můžete určit je minimální velikostí/29, který nabízí osm IP adres podsítě. Azure si vyhrazuje první a poslední adresa v každé podsíti pro udržování souladu s protokoly. Tři další adresy jsou vyhrazené pro použití služby Azure. V důsledku toho virtuální síť s rozsahem adres podsíť/29 má pouze tři použitelných IP adresách. Pokud máte v plánu připojit virtuální sítě k bráně VPN, musíte vytvořit podsíť brány. Další informace o [aspekty konkrétní adresu rozsahu podsítí brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete změnit po vytvoření podsítě za určitých podmínek. Zjistěte, jak změnit rozsah adres podsítě, najdete v článku [Správa podsítí](virtual-network-manage-subnet.md).
-    - **Předplatné**: Vyberte [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Stejné virtuální síti nelze použít ve více než jedno předplatné Azure. Ale můžete propojit virtuální sítě v rámci jednoho předplatného k virtuálním sítím v jiných předplatných s [partnerský vztah virtuální sítě](virtual-network-peering-overview.md). Prostředek Azure, který jste připojení k virtuální síti musí být ve stejném předplatném jako virtuální síť.
-    - **Skupina prostředků**: Vyberte existující [skupiny prostředků](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) nebo vytvořte novou. Prostředek Azure, který jste připojení k virtuální síti může být ve stejné skupině prostředků jako virtuální síť nebo v jiné skupině prostředků.
-    - **Umístění**: Vyberte Azure [umístění](https://azure.microsoft.com/regions/), označovaný také jako oblast. Virtuální síť může být pouze v jednom umístění Azure. Můžete však připojení virtuální sítě v jednom umístění k virtuální síti v jiném umístění s použitím brány VPN. Prostředek Azure, který jste připojení k virtuální síti musí být ve stejném umístění jako virtuální síť.
+     - **Rozsah adres podsítě**: Rozsah musí být v rámci adresního prostoru, které jste zadali pro virtuální síť. Nejmenší oblast, kterou můžete určit je minimální velikostí/29, který nabízí osm IP adres podsítě. Azure si vyhrazuje první a poslední adresa v každé podsíti pro udržování souladu s protokoly. Tři další adresy jsou vyhrazené pro použití služby Azure. V důsledku toho virtuální síť s rozsahem adres podsíť/29 má pouze tři použitelných IP adresách. Pokud máte v plánu připojit virtuální sítě k bráně VPN, musíte vytvořit podsíť brány. Další informace o [aspekty konkrétní adresu rozsahu podsítí brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Rozsah adres můžete změnit po vytvoření podsítě za určitých podmínek. Zjistěte, jak změnit rozsah adres podsítě, najdete v článku [Správa podsítí](virtual-network-manage-subnet.md).
+     - **Předplatné**: Vyberte [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Stejné virtuální síti nelze použít ve více než jedno předplatné Azure. Ale můžete propojit virtuální sítě v rámci jednoho předplatného k virtuálním sítím v jiných předplatných s [partnerský vztah virtuální sítě](virtual-network-peering-overview.md). Prostředek Azure, který jste připojení k virtuální síti musí být ve stejném předplatném jako virtuální síť.
+     - **Skupina prostředků**: Vyberte existující [skupiny prostředků](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) nebo vytvořte novou. Prostředek Azure, který jste připojení k virtuální síti může být ve stejné skupině prostředků jako virtuální síť nebo v jiné skupině prostředků.
+     - **Umístění**: Vyberte Azure [umístění](https://azure.microsoft.com/regions/), označovaný také jako oblast. Virtuální síť může být pouze v jednom umístění Azure. Můžete však připojení virtuální sítě v jednom umístění k virtuální síti v jiném umístění s použitím brány VPN. Prostředek Azure, který jste připojení k virtuální síti musí být ve stejném umístění jako virtuální síť.
 
 **Příkazy**
 

@@ -1,6 +1,6 @@
 ---
 title: Názvy produktů a identifikátory pro licencování – plánování služby Azure AD | Dokumentace Microsoftu
-description: Identifikátor mapu, která bude spravovat licence Azure Active Directory na webu Azure portal, na portálu Office 365, prostředí PowerShell nebo Microsoft Graphu
+description: Identifikátor mapu, která bude spravovat licence Azure Active Directory v portálu Azure, Microsoft 365 centra pro správu, prostředí PowerShell nebo Microsoft Graphu
 services: active-directory
 keywords: Licenční plány služby Azure Active Directory.
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f0308905ab33cd18160389dfe50a0ed8bb5152
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fc4580b4f600b06fc89e3fc8760679028765e03e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176416"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 
-Při správě licencí [na webu Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) nebo na portálu Office 365 se zobrazí názvy produktů, které vypadat podobně jako *Office 365 Enterprise E3*. Při použití rutin Powershellu v1.0 stejného produktu je identifikován pomocí konkrétní, ale méně popisný název: *ENTERPRISEPACK*. Při použití rutin prostředí PowerShell verze 2.0 nebo Microsoft Graphu, je stejný produkt identifikovat pomocí hodnota identifikátoru GUID: *6fd2c87f-b296-42f0-b197-1e91e994b900*. V následující tabulce jsou uvedeny nejčastěji používané služby online produkty společnosti Microsoft a poskytuje jejich různé hodnoty ID. Tyto tabulky jsou pro referenční účely a přesný pouze k datu poslední aktualizace v tomto článku. Microsoft v plánu je nově přidané služby pravidelně aktualizovat.
+Při správě licencí [na webu Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) nebo [centra pro správu služeb Microsoft 365](https://admin.microsoft.com), uvidíte názvy produktů, které vypadat podobně jako *Office 365 Enterprise E3*. Při použití rutin Powershellu v1.0 stejného produktu je identifikován pomocí konkrétní, ale méně popisný název: *ENTERPRISEPACK*. Při použití rutin prostředí PowerShell verze 2.0 nebo Microsoft Graphu, je stejný produkt identifikovat pomocí hodnota identifikátoru GUID: *6fd2c87f-b296-42f0-b197-1e91e994b900*. V následující tabulce jsou uvedeny nejčastěji používané služby online produkty společnosti Microsoft a poskytuje jejich různé hodnoty ID. Tyto tabulky jsou pro referenční účely a přesný pouze k datu poslední aktualizace v tomto článku. Microsoft v plánu je nově přidané služby pravidelně aktualizovat.
 
 - **Název produktu**: Použít v portálech pro správu
 - **ID řetězce**: Při provádění operace s licencí pomocí rutin Powershellu v1.0

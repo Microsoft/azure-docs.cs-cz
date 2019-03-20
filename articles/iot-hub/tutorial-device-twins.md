@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
 ms.custom: mvc
-ms.openlocfilehash: 02159f58b5e1db3de92e88dae3f6eba38b24e3c4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450851"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088073"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -75,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hubname -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -262,4 +262,4 @@ az group delete --name tutorial-iot-hub-rg
 V tomto kurzu jste se naučili synchronizovat informace o stavu mezi zařízeními a centrem IoT. V dalším kurzu se dozvíte, jak využít dvojčata zařízení k implementaci procesu aktualizace firmwaru.
 
 > [!div class="nextstepaction"]
-[Implementace procesu aktualizace firmwaru zařízení](tutorial-firmware-update.md)
+> [Implementace procesu aktualizace firmwaru zařízení](tutorial-firmware-update.md)

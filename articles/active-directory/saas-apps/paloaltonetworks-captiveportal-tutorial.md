@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7523eef4e3dc25929616f1d151ab22841db13993
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781982"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vnitropodnikové Palo Alto sítě
 
@@ -105,12 +105,12 @@ Nejprve povolte Azure AD jednotného přihlašování na portálu Azure portal:
 
     ![Podokno Palo Alto sítě vnitropodnikové základní SAML konfigurace portálu](common/idp-intiated.png)
 
-    1. Pro **identifikátor**, zadejte adresu URL ve tvaru `https://<customer_firewall_host_name>/SAML20/SP`.
+   1. Pro **identifikátor**, zadejte adresu URL ve tvaru `https://<customer_firewall_host_name>/SAML20/SP`.
 
-    2. Pro **adresy URL odpovědi**, zadejte adresu URL ve tvaru `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
+   2. Pro **adresy URL odpovědi**, zadejte adresu URL ve tvaru `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
 
-    > [!NOTE]
-    > Aktualizujte hodnoty zástupných symbolů v tomto kroku s identifikátorem skutečné a adresy URL odpovědí. Abyste získali skutečné hodnoty, kontaktujte [tým podpory Palo Alto sítě vnitropodnikové portál klienta](https://support.paloaltonetworks.com/support).
+      > [!NOTE]
+      > Aktualizujte hodnoty zástupných symbolů v tomto kroku s identifikátorem skutečné a adresy URL odpovědí. Abyste získali skutečné hodnoty, kontaktujte [tým podpory Palo Alto sítě vnitropodnikové portál klienta](https://support.paloaltonetworks.com/support).
 
 5. V **podpisový certifikát SAML** části vedle **kód XML metadat federace**vyberte **Stáhnout**. Uložte stažený soubor ve vašem počítači.
 
@@ -158,7 +158,7 @@ Dále vytvořte testovacího uživatele s názvem *Britta Simon* na webu Azure P
 
     1. Pro **název**, zadejte **BrittaSimon**.
   
-    2. Pro **uživatelské jméno**, zadejte **BrittaSimon @\<your_company_domain\>**. Příklad: **BrittaSimon@contoso.com**.
+    2. Pro **uživatelské jméno**, zadejte **BrittaSimon\@\<your_company_domain\>**. Například **BrittaSimon\@contoso.com**.
 
     3. Pro **heslo**, zadejte heslo. Doporučujeme, abyste záznam o heslo, které zadáte. Můžete vybrat **zobrazit heslo** políčka zobrazíte heslo.
 

@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439109"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101138"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -85,19 +85,19 @@ Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést p
 
     ![Připojení k pracovní ploše pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - Autoworkplace.exe nedokáže bezobslužné ověření pomocí Azure AD nebo AD FS. To může být způsobeno chybějícími nebo špatně nakonfigurovaný. Služba AD FS (u federovaných domén) nebo chybějící nebo nesprávně nakonfigurované Azure AD bezproblémové jednotné přihlašování (pro spravované domény) nebo problémů se sítí. 
+  - Autoworkplace.exe nedokáže bezobslužné ověření pomocí Azure AD nebo AD FS. To může být způsobeno chybějícími nebo špatně nakonfigurovaný. Služba AD FS (u federovaných domén) nebo chybějící nebo nesprávně nakonfigurované Azure AD bezproblémové jednotné přihlašování (pro spravované domény) nebo problémů se sítí. 
     
-     - Je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaná na serveru služby AD FS. 
+    - Je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaná na serveru služby AD FS. 
      
-     - Další možností je, že tuto stránku zjišťování domovské sféry čeká pro interakci s uživatelem, což zabrání **autoworkplace.exe** tiše vyžádat token.
+    - Další možností je, že tuto stránku zjišťování domovské sféry čeká pro interakci s uživatelem, což zabrání **autoworkplace.exe** tiše vyžádat token.
      
-     - Je možné, že adresy URL služby Azure AD a AD FS chybí v zóně intranetu IE na straně klienta.
+    - Je možné, že adresy URL služby Azure AD a AD FS chybí v zóně intranetu IE na straně klienta.
      
-     - Problémy se síťovým připojením možná nepůjde **autoworkplace.exe** dosažení služby AD FS nebo adresy URL Azure AD. 
+    - Problémy se síťovým připojením možná nepůjde **autoworkplace.exe** dosažení služby AD FS nebo adresy URL Azure AD. 
      
-     - **Autoworkplace.exe** vyžaduje, aby měl přímé dohlednost služby z klienta do organizace místní klient řadič domény služby AD, což znamená, že připojení k hybridní službě Azure AD úspěšné, jenom když je klient připojen k intranetu organizace.
+    - **Autoworkplace.exe** vyžaduje, aby měl přímé dohlednost služby z klienta do organizace místní klient řadič domény služby AD, což znamená, že připojení k hybridní službě Azure AD úspěšné, jenom když je klient připojen k intranetu organizace.
      
-     - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení aplikace Internet Explorer intranetu zařízení, a **povolit aktualizace stavového řádku prostřednictvím skriptu** není povolená pro zónu intranetu.
+    - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení aplikace Internet Explorer intranetu zařízení, a **povolit aktualizace stavového řádku prostřednictvím skriptu** není povolená pro zónu intranetu.
 
 - Nejste přihlášení jako uživatel domény
 

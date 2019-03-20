@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 502ccf15fe3e2f803febb711d4ea8850abbaea85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106334"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Průvodce: Export do SQL z Application Insights s použitím Stream Analytics
 Tento článek popisuje, jak přesunout vaše telemetrická data z [Azure Application Insights] [ start] do služby Azure SQL database s použitím [průběžný Export] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -84,7 +84,7 @@ Události se zapisují do objektu blob soubory ve formátu JSON. Každý soubor 
 ## <a name="create-an-azure-sql-database"></a>Vytvoření Azure SQL Database
 Znovu spouští ze svého předplatného v [webu Azure portal][portal], vytvořit databázi (a nový server, pokud již máte jeden) která bude zapisovat data.
 
-![Nová Data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
+![New, Data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
 Ujistěte se, že databázový server umožňuje přístup ke službám Azure:
 
@@ -181,8 +181,8 @@ Pokud chcete získat název a iKey prostředku Application Insights, otevřete E
 > Použijte ukázkové funkce pro kontrolu vstupní cesta jste správně nastavili. Pokud selže: Zkontrolujte, jestli data v úložišti pro ukázkové časový rozsah, který jste zvolili. Upravte definici vstupní a zkontrolujte nastavení účtu úložiště, předpona cesty a datum formátu správně.
 > 
 > 
-## <a name="set-query"></a>Sady dotazů
-Otevřete část dotazu:
+> ## <a name="set-query"></a>Sady dotazů
+> Otevřete část dotazu:
 
 Nahraďte výchozí dotaz pomocí:
 

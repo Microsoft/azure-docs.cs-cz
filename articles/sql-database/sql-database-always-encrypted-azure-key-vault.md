@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 27d25c0b7007489dbb3db3b44497268ad33e9b37
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884167"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -39,6 +39,8 @@ Postupujte podle kroků v tomto článku a zjistěte, jak nastavit pro službu A
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Pro účely tohoto kurzu budete potřebovat:
 
@@ -609,7 +611,7 @@ Uvidíte, že šifrované sloupce nebudou obsahovat žádná data ve formátu pr
 
    ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Použití SSMS k přístupu k datům ve formátu prostého textu, je nejprve potřeba zajistit, že uživatel má příslušná oprávnění ke službě Azure Key Vault: *získat*, *unwrapKey*, a *ověřte*. Podrobné informace najdete v tématu [vytvořit a hlavních klíčů sloupce pro Store (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+Použití SSMS k přístupu k datům ve formátu prostého textu, je nejprve potřeba zajistit, že uživatel má příslušná oprávnění ke službě Azure Key Vault: *získat*, *unwrapKey*, a *ověřte*. Podrobné informace najdete v tématu [vytvořit a hlavních klíčů sloupce pro Store (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Pak přidejte *nastavení šifrování sloupce = povoleno* parametr během připojení.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 5282f2e153ec2f1304bec9aadaf8fab88961edd9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 536b7ed21e7dd54fcbea97951330b08925961713
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443604"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884961"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro VMware pro replikaci Azure
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nastavit místní vaše zdrojové prostředí pro r
 Tento článek předpokládá, že jste již:
 
 - Plánované nasazení díky [Azure Site Recovery Deployment Planner](site-recovery-deployment-planner.md). To vám umožní přidělit dostatečnou šířku pásma v závislosti na vaší denní frekvenci změn dat, abyste splňovat váš požadovaný cíl bodu obnovení (RPO).
-- [Nastavení prostředků](tutorial-prepare-azure.md) v [webu Azure portal](http://portal.azure.com).
+- [Nastavení prostředků](tutorial-prepare-azure.md) v [webu Azure portal](https://portal.azure.com).
 - [Nastavení VMware v místním prostředí](vmware-azure-tutorial-prepare-on-premises.md), včetně vyhrazený účet pro automatické zjišťování.
 
 ## <a name="choose-your-protection-goals"></a>Volba cílů ochrany
@@ -58,18 +58,18 @@ Vyloučit následující složky z antivirového softwaru pro hladký průběh r
 - C:\Program Files\Microsoft Azure Site Recovery Provider
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manageru 
 - Kolekce chyb nástroj pro C:\Program Files\Microsoft Azure Site Recovery 
- - C:\thirdparty
- - C:\Temp
- - C:\strawberry
- - C:\ProgramData\MySQL
- - C:\Program Files (x86)\MySQL
- - C:\ProgramData\ASR
- - C:\ProgramData\Microsoft Azure Site Recovery
- - C:\ProgramData\ASRLogs
- - C:\ProgramData\ASRSetupLogs
- - C:\ProgramData\LogUploadServiceLogs
- - C:\inetpub
- - Instalační adresář serveru Azure Site Recovery. Příklad: E:\Program soubory (x86) \Microsoft Azure Site Recovery
+  - C:\thirdparty
+  - C:\Temp
+  - C:\strawberry
+  - C:\ProgramData\MySQL
+  - C:\Program Files (x86)\MySQL
+  - C:\ProgramData\ASR
+  - C:\ProgramData\Microsoft Azure Site Recovery
+  - C:\ProgramData\ASRLogs
+  - C:\ProgramData\ASRSetupLogs
+  - C:\ProgramData\LogUploadServiceLogs
+  - C:\inetpub
+  - Instalační adresář serveru Azure Site Recovery. Příklad: E:\Program soubory (x86) \Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Pokud Software antivirové ochrany v programu je aktivní na horizontální navýšení kapacity zpracování server nebo hlavní cíl
 

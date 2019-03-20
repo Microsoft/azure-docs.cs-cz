@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6b2c2345612727ca2b71adcf1a5e505abe3efe
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Integrace Azure Active Directory s Adobe Creative Cloud
 
@@ -205,7 +205,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -249,9 +249,9 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Adobe Creative Cloud, 
 2. Přidat jako federované ID uživatele v rámci konzoly Adobe a přiřadit profil produktu. Podrobné informace o přidávání uživatelů najdete v tématu [přidat uživatele konzoly pro správu Adobe](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
 3. V tuto chvíli zadejte e-mailovou adresu nebo hlavní název uživatele do formuláře signin Adobe, stisknutím klávesy tab a by měl Federovat zpět do služby Azure AD:
-    * Webový přístup: www.adobe.com > přihlášení
-    * V rámci aplikace klasické pracovní plochy nástroje > přihlášení
-    * V rámci aplikace > Nápověda > přihlášení
+   * Webový přístup: www\.adobe.com > přihlášení
+   * V rámci aplikace klasické pracovní plochy nástroje > přihlášení
+   * V rámci aplikace > Nápověda > přihlášení
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

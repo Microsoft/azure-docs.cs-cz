@@ -1,72 +1,80 @@
 ---
-title: O převodu textu na řeč – Speech Service
+title: Převod textu na řeč se službami Azure řeči
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro převod textu na řeč poskytuje více než 75 hlasy ve více než 45 jazyků a národních prostředí. Použít standardní hlasová písma, stačí zadat název hlasové s několika dalších parametrů při volání služby řeči.
+description: Převod textu na řeč z hlasové služby Azure je služba založená na protokolu REST, který umožňuje aplikacím, nástroje nebo zařízení pro převod textu na fyzické řečového podobnou té lidské. Zvolte standardní a neuronových sítí hlasů nebo vytvořte vlastní vlastní hlasové jedinečné produkty nebo značky. 75 standardní hlasy jsou k dispozici ve více než 45 jazyků a národních prostředí a 5 neuronových sítí hlasy jsou k dispozici v 4 jazyky a národní prostředí.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859330"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226908"
 ---
-# <a name="about-the-text-to-speech-api"></a>O rozhraní API pro převod textu na řeč
+# <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
-**Převod textu na řeč** rozhraní API (převod textu na ŘEČ) převede vstupní text na řeč přirozeného to nezní (také nazývané *syntézu řeči*).
+Převod textu na řeč z hlasové služby Azure je služba založená na protokolu REST, který umožňuje aplikacím, nástroje nebo zařízení pro převod textu na fyzické řečového podobnou té lidské. Výběr úrovně standard a neuronových sítí hlasy nebo vytvořit vlastní [vlastní hlasové](#custom-voice-fonts) jedinečné produkty nebo značky. 75 standardní hlasy jsou k dispozici ve více než 45 jazyků a národních prostředí a 5 neuronových sítí hlasy jsou k dispozici v 4 jazyky a národní prostředí. Úplný seznam najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
-Pro vygenerování řeči, vaše aplikace posílá požadavky HTTP POST do rozhraní API pro převod textu na řeč. Tady je text syntetizovat do mluvené řeči lidských to nezní a vrátí jako zvukový soubor. Širokou škálu hlasy a jazyky jsou podporovány.
-
-Mezi scénáře, v které řeči syntézu přijali patří:
-
-* *Vylepšení usnadnění přístupu:* **převod textu na řeč** technologie umožňuje vlastníkům obsahu a vydavatelé reagovat uživatelům různými způsoby interakce s jeho obsahem. Lidé s zrakově nebo vyřešit potíže se čtení nebudou moct využívat obsah aurally si cení toho. Hlasový výstup také usnadňuje uživatelům využívat textový obsah, jako je například novinových článcích nebo blogy na mobilních zařízeních při jste na cestách nebo práv vyplývajících z.
-
-* *Reagovat ve scénářích multitaskingu:* **převod textu na řeč** umožňuje uživatelům chránit před důležité informace rychle a pohodlně při zvyšování nebo jinak mimo pohodlnou čtení prostředí. Navigace je běžné aplikace v této oblasti.
-
-* *Vylepšení učení s několika způsoby:* Různí lidé další nejlepší různými způsoby. Online výuka odborníků ukázalo, že poskytuje pro hlasové hovory a textové společně vám pomohou lépe informace o další informace a zachovat.
-
-* *Poskytuje intuitivní roboti nebo Asistenti:* Schopnost komunikovat může být nedílnou součástí inteligentní chatovací robot nebo virtuální Pomocníka s nastavením. Více společností vyvíjíte chatovací roboty k poskytování poutavé prostředí služby pro své zákazníky. Hlasové přidá jinou dimenzi tím, že odpovědi bodu robotů také přijímat aurally (například telefonní).
-
-## <a name="voice-support"></a>Podpora hlasu
-
-Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Další informace o podporovaných jazycích, národních prostředích a hlasy najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
-
-> [!IMPORTANT]
-> Náklady se liší pro standardní, vlastní a neuronových sítí hlasy. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+Převod textu na řeč technologie umožňuje tvůrce obsahu pro interakci se svým uživatelům různými způsoby. Převod textu na řeč lze vylepšit dostupnost zároveň uživatelům poskytují možnost pracovat s obsahem zvukově. Zda uživatel má zrakově learning postižení, nebo vyžaduje informace o navigaci a zajistit, převod textu na řeč vylepšit stávající zkušenosti. Převod textu na řeč je také užitečné doplněk pro hlasové roboty a virtuálních asistentů.
 
 ### <a name="neural-voices"></a>Neurální hlasů
 
-Neurální převod textu na řeč umožňuje interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit navigaci systémy. Přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální převod textu na ŘEČ významně snížila naslouchání reorganizovaly při interakci s AI systémy. Další informace o neuronových sítí hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
+Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Díky přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly při interakci s AI systémy. Další informace o neuronových sítí hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
 ### <a name="custom-voices"></a>Vlastní hlasů
 
-Přizpůsobení řeč umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.* K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Můžete použít jeho hlasového písma tak, aby odpovídaly řeči. Další informace najdete v tématu [vlastní hlasové písmo](how-to-customize-voice-font.md).
+Přizpůsobení hlasové umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky. Pokud chcete vytvořit vlastní hlasové písmo, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Toto vlastní hlasové písmo můžete použít tak, aby odpovídaly řeči. Další informace najdete v tématu [vlastní hlasy](how-to-customize-voice-font.md).
 
-## <a name="api-capabilities"></a>Funkce rozhraní API
+## <a name="core-features"></a>Základní funkce
 
-Mnoho funkcí **převod textu na řeč** rozhraní API, zejména v oblasti Vlastní nastavení, jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. Úplný seznam možností a podrobnosti o rozhraní API najdete v tématu [Swagger odkaz](https://westus.cris.ai/swagger/ui/index).
+Tato tabulka uvádí základní funkce pro převod textu na řeč:
 
-| Případ použití | REST | Sady SDK |
-|-----|-----|-----|----|
-| Nahrání datových sad pro přizpůsobení hlasu | Ano | Ne |
-| Vytvoření a správa modelů hlasového písma | Ano | Ne |
-| Vytvoření a Správa nasazení hlasového písma | Ano | Ne |
-| Vytvoření a správa testů hlasového písma| Ano | Ne |
-| Správa předplatných | Ano | Ne |
+| Případ použití | Sada SDK | REST |
+|----------|-----|------|
+| Převod textu na řeč. | Ne | Ano |
+| Nahrání datových sad pro přizpůsobení hlasu. | Ne | Ano\* |
+| Vytvoření a správa modelů hlasového písma. | Ne | Ano\* |
+| Vytvářejte a spravujte nasazení hlasového písma. | Ne | Ano\* |
+| Vytvoření a správa testů hlasového písma. | Ne | Ano\* |
+| Spravujte předplatná. | Ne | Ano\* |
+
+\* *Tyto služby jsou k dispozici prostřednictvím cris.ai koncového bodu. Zobrazit [Swagger odkaz](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> Rozhraní API implementuje tohoto omezení požadavků rozhraní API 25 na 5 sekund. Záhlaví zpráv bude informovat omezení.
+> Převod textu na řeč koncový bod implementuje, omezování, která omezuje požadavky na 25 na 5 sekund. Pokud dojde k omezení využití sítě, zobrazí se oznámení prostřednictvím záhlaví zpráv.
+
+## <a name="get-started-with-text-to-speech"></a>Začínáme s převod textu na řeč
+
+Nabízíme rychlí průvodci navržená tak, aby se spouštěním kódu za méně než 10 minut. Tato tabulka obsahuje seznam převod textu na řeč rychlých startů uspořádané podle jazyka.
+
+| Rychlý start | Platforma | API – referenční informace |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Python](quickstart-python-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+
+## <a name="sample-code"></a>Ukázka kódu
+
+Ukázkový kód pro převod textu na řeč je k dispozici na Githubu. Tyto ukázky zahrnují převod textu na řeč převod v nejoblíbenějších programovacích jazyků.
+
+* [Převod textu na řeč ukázky (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+
+## <a name="reference-docs"></a>Referenční dokumenty
+
+* [Speech SDK](speech-sdk-reference.md)
+* [Rozpoznávání řeči zařízení SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Text-to-speech](rest-text-to-speech.md)
+* [REST API: Přepis služby batch a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Pořiďte si předplatné služby zdarma řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Rychlé zprovoznění: Převést převod textu na řeč, Python](quickstart-python-text-to-speech.md)
-* [Rychlé zprovoznění: Převést převod textu na řeč, .NET Core](quickstart-dotnet-text-to-speech.md)
-* [REST API – referenční informace](rest-apis.md)
+* [Pořiďte si předplatné služby zdarma řeči](get-started.md)
+* [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)

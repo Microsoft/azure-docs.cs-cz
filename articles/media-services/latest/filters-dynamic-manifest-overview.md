@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: juliako
-ms.openlocfilehash: 5290901348bb139140f1ad6d2ee50b9ddd88b297
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 57007674e11271e6a3d5bdf660531d01b1eff82c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861430"
 ---
 # <a name="dynamic-manifests"></a>Dynamické manifesty
 
@@ -52,7 +52,7 @@ Příklad REST naleznete v tématu [nahrávání, kódování a streamování so
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>Monitorování s přenosovou rychlostí streamu videa
 
-Můžete použít [stránky ukázku Azure Media Player](http://aka.ms/amp) monitorování přenosové rychlosti datový proud videa. Ukázka stránka zobrazuje diagnostické informace v **diagnostiky** kartu:
+Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) monitorování přenosové rychlosti datový proud videa. Ukázka stránka zobrazuje diagnostické informace v **diagnostiky** kartu:
 
 ![Diagnostika Azure Media Player][amp_diagnostics]
 

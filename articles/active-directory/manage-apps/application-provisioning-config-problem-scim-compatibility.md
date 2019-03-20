@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190513"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124063"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
 
@@ -59,36 +59,36 @@ Ano. Pokud už používáte tato instance aplikace pro jednotné přihlašován�
  
 1. Přihlaste se k webu Azure portal na https://portal.azure.com.
 2. V **Azure Active Directory > podnikové aplikace** části na webu Azure Portal, vyhledejte a vyberte svou stávající aplikaci SCIM.
-3.  V **vlastnosti** část vaší existující aplikace SCIM kopírování **ID objektu**.
-4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
+3. V **vlastnosti** část vaší existující aplikace SCIM kopírování **ID objektu**.
+4. V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
 5. V Graph Exploreru spusťte následující příkaz k vyhledání ID zřizování úlohy. Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![Získat úlohy](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "úloh") 
+   ![Získat úlohy](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "úloh") 
 
 
 6. Ve výsledcích zkopírujte úplný řetězec "ID", který začíná "customappsso" nebo "scim".
 7. Spusťte následující příkaz pro načtení konfigurace mapování atributů, takže můžete vytvořit zálohu. Použít stejné [object-id] jako před a nahraďte [id úlohy] zřizování ID úlohy, které jsou zkopírovány z posledního kroku.
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![Získat schéma](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "získat schéma") 
+   ![Získat schéma](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "získat schéma") 
 
 8. Kopírovat výstup JSON v posledním kroku a uložte ho do textového souboru. Tato položka obsahuje všechny vlastní – mapování atributů přidá do vaší aplikace starý a by měla být přibližně několik tisíc řádků JSON.
 9. Spuštěním následujícího příkazu odstraňte úlohu zřizování:
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. Spusťte následující příkaz k vytvoření nové úlohy zřizování, který má nejnovější opravy služby.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. Ve výsledcích poslední krok zkopírujte úplný řetězec "ID", který začíná "scim". Znovu použijte v případě potřeby vaše staré mapování atributů spuštěním příkazu nahrazujte [nové-– id úlohy] s novou úlohu s ID jste zkopírovali a zadat, které ve formátu JSON výstup z kroku 7 # jako datovou část požadavku.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. Vraťte se do první okno webového prohlížeče a vyberte **zřizování** kartu pro vaši aplikaci.
 13. Zkontrolujte konfiguraci a spusťte úlohy zřizování. 
@@ -97,15 +97,15 @@ Ano. Pokud už používáte tato instance aplikace pro jednotné přihlašován�
 
 Ano. Pokud měl programového aplikace do staré chování, které existovaly před opravy a budete muset nasadit novou instanci, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak použít rozhraní Microsoft Graph API a Průzkumník Microsoft Graph API k vytvoření úlohy zřizování SCIM, vykazující staré chování.
  
-1.  Přihlaste se k webu Azure portal na https://portal.azure.com.
+1. Přihlaste se k webu Azure portal na https://portal.azure.com.
 2. v **Azure Active Directory > podnikové aplikace > Vytvoření aplikace** části na webu Azure Portal vytvořte novou **mimo galerii** aplikace.
-3.  V **vlastnosti** části nové vlastní aplikace, kopie **ID objektu**.
-4.  V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
+3. V **vlastnosti** části nové vlastní aplikace, kopie **ID objektu**.
+4. V novém okně webového prohlížeče, přejděte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce pro tenanta Azure AD, kde se přidá vaši aplikaci.
 5. V Graph Exploreru spusťte následující příkaz k inicializaci konfigurace zřizování pro vaši aplikaci.
-Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
+   Nahraďte ID objektu zabezpečení (ID objektu) zkopírovanými z třetí krok služba "[object-id]".
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. Vraťte se do první okno webového prohlížeče a vyberte **zřizování** kartu pro vaši aplikaci.
 7. Dokončení zřizování konfigurace, jako obvykle uživatelů.

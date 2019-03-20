@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7f09db1f37617519926955daf0c29c13993dbf80
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728450"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871058"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -38,7 +38,7 @@ Podrobný přehled skupin pro správu, najdete v článku [uspořádání prost�
 Můžete uspořádat do skupin pro správu předplatných a zásad správného řízení zásad do skupin pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. Zatímco skupin pro správu nebude muset připojit Security Center, důrazně doporučujeme vytvořit alespoň jednu skupinu pro správu, vytvořit skupinu root management. Po vytvoření skupiny se k němu propojí Všechna předplatná v rámci vašeho tenanta Azure AD. Pokyny pro prostředí PowerShell a další informace najdete v tématu [vytvoření skupin pro správu ke správě prostředků a organizace](../azure-resource-manager/management-groups-create.md).
 
  
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **skupin pro správu**.
 3. Na hlavní stránce vyberte **skupiny pro správu nový.** 
 
@@ -51,7 +51,7 @@ Můžete uspořádat do skupin pro správu předplatných a zásad správného �
 5.  Vyberte **uložit**
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Zobrazení skupin pro správu na webu Azure Portal
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com).
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com).
 2. Chcete-li zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure.
 3. V části **Obecné**vyberte **skupin pro správu**.
 
@@ -77,7 +77,7 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
    - Když nastavíte přepínač na Ano, máte přiřazenou roli správce uživatelských přístupů v Azure RBAC v kořenovém oboru (/). To vám uděluje oprávnění k přiřazení rolí ve všech předplatných Azure a skupiny pro správu přidružené k tento adresář Azure AD. Tento přepínač je pouze dostupné pro uživatele, kteří mají přiřazenou roli globálního správce ve službě Azure AD.
 
-  - Když nastavíte přepínač na Ne, role správce přístupu uživatelů v Azure RBAC je odebraný z vašeho účtu uživatele. Už můžete přiřadit role ve všech předplatných Azure a skupiny pro správu, které jsou přidružené k tomuto adresáři Azure AD. Můžete zobrazit a spravovat pouze předplatná Azure a skupiny pro správu ke kterým vám byl udělen přístup.
+   - Když nastavíte přepínač na Ne, role správce přístupu uživatelů v Azure RBAC je odebraný z vašeho účtu uživatele. Už můžete přiřadit role ve všech předplatných Azure a skupiny pro správu, které jsou přidružené k tomuto adresáři Azure AD. Můžete zobrazit a spravovat pouze předplatná Azure a skupiny pro správu ke kterým vám byl udělen přístup.
 
 4. Klikněte na tlačítko **Uložit** uložte nastavení.
 
@@ -181,8 +181,8 @@ Odběry můžete přidat do skupiny pro správu, který jste vytvořili. Tyto kr
 
 4. Opakujte kroky 1 až 3, dokud nepřidáte všechna předplatná v oboru.
 
- > [!NOTE]
- > Skupiny pro správu může obsahovat předplatná a podřízené skupiny pro správu. Když přiřadíte uživatele roli RBAC nadřazená skupina pro správu, je přístup dědí podřízené skupiny správy předplatných. Zásady nastavené v nadřazené skupině pro správu jsou také dědí podřízené objekty. 
+   > [!NOTE]
+   > Skupiny pro správu může obsahovat předplatná a podřízené skupiny pro správu. Když přiřadíte uživatele roli RBAC nadřazená skupina pro správu, je přístup dědí podřízené skupiny správy předplatných. Zásady nastavené v nadřazené skupině pro správu jsou také dědí podřízené objekty. 
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak získat přehled celého tenanta pro Azure Security Center. Další informace o službě Security Center najdete v následujících článcích:

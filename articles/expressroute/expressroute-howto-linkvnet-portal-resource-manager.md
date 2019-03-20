@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438825"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079464"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -54,13 +54,13 @@ Tento článek vám pomůže vytvořit připojení k propojení virtuální sít
 
 1. Ujistěte se, že váš okruh ExpressRoute a soukromého partnerského vztahu Azure byl úspěšně nakonfigurován. Postupujte podle pokynů v [vytvořit okruh ExpressRoute](expressroute-howto-circuit-arm.md) a [konfigurace směrování](expressroute-howto-routing-arm.md). Váš okruh ExpressRoute by měl vypadat jako na následujícím obrázku:
 
-  ![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   ![Snímek obrazovky okruhu ExpressRoute](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 2. Teď můžete začít zřizování připojení k propojení vaší brány virtuální sítě pro váš okruh ExpressRoute. Klikněte na tlačítko **připojení** > **přidat** otevřít **přidat připojení** stránce a pak proveďte konfiguraci hodnot.
 
-  ![Přidat snímek obrazovky připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   ![Přidat snímek obrazovky připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
 3. Po připojení se úspěšně nakonfigurovalo, objekt připojení se zobrazí informace o připojení.
 
-  ![Snímek obrazovky připojení objektu](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+   ![Snímek obrazovky připojení objektu](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Připojení virtuální sítě k okruhu - jiného předplatného
 
@@ -95,10 +95,10 @@ Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačníh
 
 1. Na stránce ExpressRoute, klikněte na **povolení** a potom zadejte **název** autorizace a klikněte na **Uložit**.
 
-  ![Autorizace](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+   ![Autorizace](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. Po uložení konfigurace zkopírovat **ID prostředku** a **autorizační klíč**.
 
-  ![Autorizační klíč](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![Autorizační klíč](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **Chcete-li odstranit autorizaci připojení**
 
@@ -112,18 +112,18 @@ ID prostředku a autorizační klíč z vlastníka okruhu, musí uživatel okruh
 
 1. Klikněte na tlačítko **+ nová** tlačítko.
 
-  ![Klikněte na tlačítko Nový](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
+   ![Klikněte na tlačítko Nový](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. Vyhledejte **"Připojení"** na webu Marketplace, vyberte ho a klikněte na tlačítko **vytvořit**.
 
-  ![Hledat připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+   ![Hledat připojení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. Ujistěte se, **typ připojení** je nastavena na "ExpressRoute".
 4. Vyplňte podrobnosti a pak klikněte na **OK** na základní stránce.
 
-  ![Základní informace o stránce](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![Základní informace o stránce](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. V **nastavení** stránky, vyberte **Brána virtuální sítě** a zkontrolujte **uplatnit autorizaci** zaškrtávací políčko.
 6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na **OK**.
 
-  ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zkontrolujte informace **Souhrn** stránky a klikněte na tlačítko **OK**.
 
 **K uvolnění ověření připojení**

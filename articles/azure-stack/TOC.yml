@@ -5,10 +5,12 @@ items:
   items:
   - name: Co je Azure Stack?
     href: azure-stack-poc.md
+  - name: Klíčové funkce a koncepty
+    href: azure-stack-key-features.md
   - name: Poznámky k verzi
     items:
     - name: Nejnovější aktualizace
-      href: azure-stack-servicing-policy.md#update-package-release-cadence
+      href: azure-stack-servicing-policy.md
     - name: aktualizace 1902
       href: azure-stack-update-1902.md
     - name: aktualizace 1901
@@ -113,10 +115,6 @@ items:
         href: azure-stack-integrate-security.md
       - name: Auditování zařízení
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: Zásady obsluhy
-    href: azure-stack-servicing-policy.md
-  - name: Klíčové funkce a koncepty
-    href: azure-stack-key-features.md
   - name: Základy správy
     href: azure-stack-manage-basics.md
 - name: Návody
@@ -286,8 +284,10 @@ items:
       href: azure-stack-app-service-capacity-planning.md
     - name: Než začnete
       href: azure-stack-app-service-before-you-get-started.md
-    - name: Nasazení poskytovatele prostředků App Service
+    - name: Nasadit službu App Service
       href: azure-stack-app-service-deploy.md
+    - name: Nasadit službu App Service pro zajištění vysoké dostupnosti
+      href: app-service-deploy-ha.md
     - name: Nasazení App Service offline
       href: azure-stack-app-service-deploy-offline.md
     - name: Aktualizace služby App Service
@@ -399,9 +399,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4875ccf5b74151809788e024ae659756cf769e10
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774264"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223321"

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852673"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136289"
 ---
 # <a name="use-firewall-rules"></a>Pomocí pravidel brány Firewall
 
@@ -60,7 +60,7 @@ Pravidla filtru IP jsou použity v zadaném pořadí a první pravidlo, které o
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Vytváří se pravidlo virtuální sítě a brány firewall pomocí šablon Azure Resource Manageru
 
 > [!IMPORTANT]
-> Virtuální sítě jsou podporovány pouze **premium** úroveň služby Service Bus.
+> Brány firewall a virtuální sítě jsou podporovány pouze v **premium** úroveň služby Service Bus.
 
 Následující šablony Resource Manageru umožňuje do existujícího oboru názvů služby Service Bus přidáte pravidlo virtuální sítě.
 

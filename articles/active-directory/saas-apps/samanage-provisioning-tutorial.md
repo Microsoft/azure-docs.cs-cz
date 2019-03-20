@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d620701bc8590bee746be35f69b0da890c359601
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205354"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092374"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace Samanage pro automatické zřizování uživatelů
 
@@ -108,9 +108,9 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce** a **heslo správce** Samanage účtu. Mezi tyto hodnoty patří:
 
-    *   V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi Samanage naplnit. Příklad: admin@contoso.com.
+   * V **uživatelské jméno správce** pole, uživatelské jméno účtu správce ve svém tenantovi Samanage naplnit. Příklad: admin@contoso.com.
 
-    *   V **heslo správce** pole, naplnění heslo účtu správce odpovídající uživatelské jméno správce.
+   * V **heslo správce** pole, naplnění heslo účtu správce odpovídající uživatelské jméno správce.
 
 6. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Samanage. Pokud se nepovede, ujistěte se, že váš účet Samanage má oprávnění správce a zkuste to znovu.
 

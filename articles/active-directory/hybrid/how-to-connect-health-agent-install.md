@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e276cb0beb982d797fcf6816d84eae6b135b74
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652276"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898818"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -235,6 +235,28 @@ Pokud jste konfiguraci dokončili, tyto služby by již měly být spuštěny. V
 
 ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
+### <a name="quick-agent-installation-in-multiple-servers"></a>Instalace agenta rychlé na více serverech
+1. Vytvoření uživatelského účtu ve službě Azure AD s heslem.
+2. Přiřazení **vlastníka** role pro tohoto místního účtu ve službě Azure AD Connect Health přes portál AAD. Postupujte podle kroků [tady](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). Přiřaďte roli na všechny instance služby. 
+3. Stáhněte soubor MSI .exe v místní řadič domény pro instalaci.
+4. Spusťte následující skript k registraci. Nahraďte parametry vytvoření nového uživatelského účtu a jeho heslo. 
+
+```
+AdHealthAddsAgentSetup.exe /quiet
+sleep 30
+$userName = "NEWUSER@DOMAIN"
+$secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
+import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
+ 
+Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
+
+```
+1. Až budete hotoví, můžete odebrat přístup pro místní účet pomocí jednoho nebo více z následujících akcí: 
+    * Odebrání přiřazení role pro místní účet pro službu AAD Connect Health
+    * Otočte heslo pro místní účet. 
+    * Zakázat místní účet AAD
+    * Odstranit místní účet AAD  
 
 ## <a name="agent-registration-using-powershell"></a>Registrace agenta pomocí PowerShellu
 Po nainstalování odpovídajícího agenta můžete provést krok registrace agenta pomocí následujících příkazů PowerShellu, v závislosti na roli. Otevřete okno PowerShellu a spusťte příslušný příkaz:

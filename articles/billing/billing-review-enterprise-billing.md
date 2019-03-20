@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 5cb26b98f5969032bcff95e4408fcf685399d6da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114497"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898699"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Projděte si podnikové registrace fakturace pomocí rozhraní REST API
 
@@ -78,7 +78,7 @@ Pro úspěšné odpovědi, který obsahuje seznam podrobné ceny pro tento úče
 }
 ```  
 
-Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro fakturační účet](/rest/api/consumption/usagedetails/listbybillingaccount) úplný popis každého pole odpovědi a zpracování chyb.
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro fakturační účet](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) úplný popis každého pole odpovědi a zpracování chyb.
 
 ## <a name="department-billing"></a>Oddělení fakturace 
 
@@ -134,7 +134,7 @@ Následující příklad ukazuje výstup rozhraní REST API pro oddělení `1234
 }
 ```  
 
-Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro oddělení](/rest/api/consumption/usagedetails/listbydepartment) úplný popis každého pole odpovědi a zpracování chyb.
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro oddělení](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) úplný popis každého pole odpovědi a zpracování chyb.
 
 ## <a name="enrollment-account-billing"></a>Fakturace účtu registrace
 
@@ -187,7 +187,7 @@ Následující příklad ukazuje výstup rozhraní REST API pro podnikového zá
 }
 ``` 
 
-Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro účet pro zápis](/rest/api/consumption/usagedetails/listbyenrollmentaccount) úplný popis každého pole odpovědi a zpracování chyb.
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro účet pro zápis](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) úplný popis každého pole odpovědi a zpracování chyb.
 
 ## <a name="next-steps"></a>Další postup 
 - Kontrola [Enterprise Přehled vytváření sestav](https://docs.microsoft.com/azure/billing/billing-enterprise-api)

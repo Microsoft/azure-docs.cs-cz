@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20416a4b761496ec65c6911f3e4de18111b663a1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842069"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý start: Hledat na webu pomocí REST API pro vyhledávání Bingu Web aC#
 
-
-V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. To C# aplikace odešle požadavek hledání do rozhraní API a zobrazí odpovědi. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání do rozhraní API Bingu pro vyhledávání webu a přijetí odpovědi JSON. To C# aplikace odešle požadavek hledání do rozhraní API a ukázka odezvy. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
@@ -31,7 +31,6 @@ Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebo
 * Klíč předplatného
 
 V tomto ukázkovém programu jsou použité jenom třídy .NET Core.
-
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -63,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód `Program` třídy, jak bylo uvedeno výše.
 
 ```csharp
 // Enter a valid subscription key.
@@ -79,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarace hlavní metody
 
-Metoda `Main()` je povinná. Při spuštění programu se volá jako první. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
+`Main()` Se vyžaduje metoda a je první metoda vyvolá při spuštění programu. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
 
 Nezapomeňte, že metoda `main()` závisí na metodách vytvořených v následujících několika oddílech.
 
@@ -110,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Vytvoření struktury výsledků hledání
 
-Tato struktura vrátí výsledky hledání s příslušnými hlavičkami. Volá se při vytvoření požadavku do rozhraní API Bingu pro vyhledávání na webu kvůli vytvoření výsledného objektu.
+Tato struktura vrátí výsledky hledání s příslušnými hlavičkami. Je volána při požadavku na rozhraní API webové vyhledávání Bingu k vytvoření objektu výsledků.
 
 ```csharp
 // Returns search results with headers.

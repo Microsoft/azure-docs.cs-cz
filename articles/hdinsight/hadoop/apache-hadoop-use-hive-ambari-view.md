@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091303"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoop v HDInsight
 
@@ -73,7 +73,7 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
    * `DROP TABLE`: Odstraní tabulku a datový soubor, v případě, že tabulka již existuje.
 
    * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v podregistru.
-   Externí tabulky uložte definici tabulky Hive. Data zůstane v původním umístění.
+     Externí tabulky uložte definici tabulky Hive. Data zůstane v původním umístění.
 
    * `ROW FORMAT`: Ukazuje, jak je ve formátu data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
 
@@ -81,8 +81,8 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
    * `SELECT`: Počet všech řádků, kde t4 sloupec obsahuje hodnotu [Chyba] vybere.
 
-    > [!IMPORTANT]  
-    > Nechte __databáze__ výběr na __výchozí__. V příkladech v tomto dokumentu pomocí výchozí databáze je součástí HDInsight.
+     > [!IMPORTANT]  
+     > Nechte __databáze__ výběr na __výchozí__. V příkladech v tomto dokumentu pomocí výchozí databáze je součástí HDInsight.
 
 5. Chcete-li spustit dotaz, použijte **Execute** tlačítko pod listem. Tlačítko oranžově a se text změní na **Zastavit**.
 
@@ -102,7 +102,7 @@ Chcete-li zobrazit vizualizaci plán dotazu, vyberte **Visual vysvětlují** kar
 
 **Visual vysvětlují** zobrazení dotazu může být užitečné porozumět toku složitým dotazům. Textový ekvivalent toto zobrazení můžete zobrazit pomocí **vysvětlit** tlačítko v editoru dotazů.
 
-### <a name="tez-ui"></a>Uživatelského rozhraní tez
+### <a name="tez-ui"></a>Tez UI
 
 Chcete-li zobrazit uživatelského rozhraní Tez pro dotaz, vyberte **Tez** kartu pod listem.
 
@@ -152,7 +152,7 @@ Například pokud jste definovali UDF s následujícími vlastnostmi:
 
 * Název systému souborů UDF: myawesomeudf
 
-* Název třídy UDF: com.myudfs.Awesome
+* UDF class name: com.myudfs.Awesome
 
 Použití **vložit UDF** tlačítku zobrazí položka s názvem **myudfs**, s jinou rozevíracího seznamu pro každý UDF definované pro daný prostředek. V takovém případě je **myawesomeudf**. Výběrem této položky přidá na začátek dotazu následující:
 

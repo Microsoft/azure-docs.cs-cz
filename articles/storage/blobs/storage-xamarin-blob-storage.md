@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: cac889b83bb0e7a7aab12ff4097556abf60663b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449117"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010072"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Používání úložiště Blob z Xamarin
 
@@ -168,7 +168,7 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
@@ -231,7 +231,7 @@ namespace XamarinApp.WinPhone
 ## <a name="run-the-application"></a>Spuštění aplikace
 Nyní můžete spustit tuto aplikaci v emulátoru Android nebo Windows Phone. Můžete také spustit tuto aplikaci v emulátoru systému iOS, ale to vyžaduje počítači Mac. Pro konkrétní pokyny o tom, jak to provést, najdete v dokumentaci k [připojení sady Visual Studio pro Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Po spuštění aplikace se vytvoří kontejner `mycontainer` ve vašem účtu úložiště. Objekt blob, měl by obsahovat `myblob`, který obsahuje text, `Hello, world!`. Můžete to ověřit pomocí [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Po spuštění aplikace se vytvoří kontejner `mycontainer` ve vašem účtu úložiště. Objekt blob, měl by obsahovat `myblob`, který obsahuje text, `Hello, world!`. Můžete to ověřit pomocí [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit aplikaci, více platforem v Xamarinu, která používá službu Azure Storage, zaměřují se na jeden scénář v úložišti objektů Blob. Ale můžete udělat mnohem více pouze úložiště objektů Blob, ale také pomocí tabulky, souboru a Queue Storage. Najdete další informace v následujících článcích:

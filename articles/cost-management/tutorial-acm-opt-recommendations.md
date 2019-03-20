@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6a26b4c08915b44d24290fde2c74d71b9362c11c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000923"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů od doporučení.
 
@@ -41,7 +41,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="view-cost-optimization-recommendations"></a>Zobrazit doporučení pro optimalizaci nákladů
 
-Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**. Pak v seznamu **Cost Management**vyberte **doporučení Advisoru**. Doporučení advisoru náklady jsou zobrazeny.
+Chcete-li zobrazit doporučení týkající se optimalizace nákladů za předplatné, otevřete v webu Azure portal a vyberte požadovaný obor **doporučení Advisoru**.
+
+Chcete-li zobrazit doporučení pro skupinu pro správu, otevřete v Azure portal a vyberte požadovaný obor **analýza nákladů** v nabídce. Použití **oboru** obranné přepnout do jiného oboru, jako je například skupiny pro správu. Vyberte **doporučení Advisoru** v nabídce. Další informace o oborech najdete v tématu [pochopení a práci s obory](understand-work-scopes.md).
 
 ![Doporučení k cenám Management Advisor webu Azure Portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

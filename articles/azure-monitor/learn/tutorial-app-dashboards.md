@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318419"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082122"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -42,18 +42,18 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="create-a-new-dashboard"></a>Vytvoření nového řídicího panelu
 Jeden řídicí panel může obsahovat prostředky z více aplikací, skupin prostředků a předplatných.  Tento kurz začněte vytvořením nového řídicího panelu pro vaši aplikaci.  
 
-2.  V podokně řídicí panel, vyberte **nový řídicí panel**.
+1. V podokně řídicí panel, vyberte **nový řídicí panel**.
 
-    ![Nový řídicí panel](media/tutorial-app-dashboards/1newdashboard.png)
+   ![Nový řídicí panel](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. Zadejte název pro řídicí panel.
-4. Podívejte se do **Galerie dlaždic**, kde najdete celou řadu dlaždic, které můžete přidat do řídicího panelu.  Kromě přidávání dlaždic z galerie můžete připínat grafy a jiná zobrazení přímo z Application Insights na řídicí panel.
-5. Vyhledejte dlaždici **Markdown** a přetáhněte ji na řídicí panel.  Tato dlaždice vám umožní přidat text ve formátu Markdown, který je ideální pro přidávání popisného textu do řídicího panelu.
-6. Přidejte text do vlastností dlaždice a změňte její velikost na plátně řídicího panelu.
+1. Zadejte název pro řídicí panel.
+1. Podívejte se do **Galerie dlaždic**, kde najdete celou řadu dlaždic, které můžete přidat do řídicího panelu.  Kromě přidávání dlaždic z galerie můžete připínat grafy a jiná zobrazení přímo z Application Insights na řídicí panel.
+1. Vyhledejte dlaždici **Markdown** a přetáhněte ji na řídicí panel.  Tato dlaždice vám umožní přidat text ve formátu Markdown, který je ideální pro přidávání popisného textu do řídicího panelu.
+1. Přidejte text do vlastností dlaždice a změňte její velikost na plátně řídicího panelu.
     
     ![Úprava dlaždice Markdown](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. Klikněte na tlačítko **přizpůsobení dokončeno** v horní části obrazovky, chcete-li ukončit režim přizpůsobení dlaždice.
+1. Klikněte na tlačítko **přizpůsobení dokončeno** v horní části obrazovky, chcete-li ukončit režim přizpůsobení dlaždice.
 
 ## <a name="add-health-overview"></a>Přidání přehledu o stavu
 Řídicí panel jenom se statickým textem není moc zajímavý, takže teď přidáte dlaždici z Application Insights, která zobrazí informace o vaší aplikaci.  Dlaždice můžete z Application Insights přidat z Galerie dlaždic nebo je můžete připnout přímo z obrazovek Application Insights.  Díky tomu můžete konfigurovat grafy a zobrazení, která už znáte, ještě než je připnete na řídicí panel.  Přidejte nejdříve standardní přehled o stavu pro vaši aplikaci.  Není nutné nic konfigurovat a v řídicím panelu je možné provádět minimální přizpůsobení.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: sideeksh
 ms.custom: mvc
-ms.openlocfilehash: 90ebea81c37c40dc5396d2e6378c7b9af52ad23d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: d8721f313907f0e0519dca52f5565853f1c44110
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733107"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089692"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Selhání obnovení virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -23,12 +23,12 @@ ms.locfileid: "57733107"
 Tento kurz popisuje, jak navrátit služby po obnovení jednoho virtuálního počítače Azure. Po převzetí služeb při selhání navrátíte služby po obnovení do primární oblasti, až bude dostupná. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-
+> 
 > * Navrácení služeb po obnovení sekundárního virtuálního počítače
 > * Znovunastavení ochrany primárního virtuálního počítače do sekundární oblasti
-
+> 
 > [!NOTE]
->
+> 
 > Tento kurz je určen pro uživatele provede kroky k převzetí služeb při selhání pro cílovou oblast a vraťte se minimální přizpůsobení; v případě, že chcete se dozvědět víc o různých aspektech, které jsou přidružené k převzetí služeb při selhání, včetně síťové požadavky na služby automation nebo řešení potíží, získáte v dokumentech v části "Jak na" pro virtuální počítače Azure.
 
 ## <a name="prerequisites"></a>Požadavky

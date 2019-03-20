@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 731b87d7958bb461466b16f2ff724ea33f234ba8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439804"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083177"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
 
@@ -28,7 +28,7 @@ Aplikace s víceklientskou databázi s SaaS aplikace Wingtip Tickets používá 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-
+> 
 > * Simulace použití v horizontálně dělené databázi s více tenanty pomocí dodaného generátoru zatížení
 > * Monitorujte databáze, jako jsou reaguje na zvýšení zatížení
 > * Vertikálně navýšit kapacitu databáze v reakci na zvýšení zatížení databáze

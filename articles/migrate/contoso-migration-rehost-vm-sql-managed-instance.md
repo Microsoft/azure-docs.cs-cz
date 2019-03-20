@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 832614c46f0269460245d081f20897b591e31fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101563"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálním počítači Azure a SQL Database, spravované Instance
 
@@ -222,7 +222,7 @@ Contoso bere v úvahu tyto faktory:
 - Podsíť lze přidružit pouze jednu směrovací tabulku.
 - Nejsou žádné další poplatky za vytvoření směrovací tabulky ve službě Microsoft Azure.
 
- Nastavení směrování Contoso správci takto:
+  Nastavení směrování Contoso správci takto:
 
 1. Vytváření tabulky směrování definovaného uživatelem (trasy) v **ContosoNetworkingRG** skupinu prostředků.
 
@@ -441,11 +441,11 @@ Pokud zdroj a cíl jsou nastavena tak, Contoso správci vytvořit zásady replik
 
 1. V **připravit infrastrukturu** > **nastavení replikace** > **zásady replikace** >  **vytvořit a Přidružit**, vytvoří **ContosoMigrationPolicy** zásad.
 2. Používají výchozí nastavení:
-    - **Prahová hodnota cíle bodu obnovení**: Výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
-    - **Uchování bodu obnovení**: Výchozí hodnotu 24 hodin. Tato hodnota určuje, jak dlouho je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
-    - **Frekvence snímků konzistentní vzhledem k**: Výchozí hodnotu 1 hodina. Tato hodnota určuje frekvenci, s jakou se vytvořit snímky konzistentní s aplikací.
+   - **Prahová hodnota cíle bodu obnovení**: Výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
+   - **Uchování bodu obnovení**: Výchozí hodnotu 24 hodin. Tato hodnota určuje, jak dlouho je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
+   - **Frekvence snímků konzistentní vzhledem k**: Výchozí hodnotu 1 hodina. Tato hodnota určuje frekvenci, s jakou se vytvořit snímky konzistentní s aplikací.
  
-    ![Zásady replikace – vytvořit](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
+     ![Zásady replikace – vytvořit](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
 3. Tato zásada se automaticky přidruží ke konfiguračnímu serveru. 
 

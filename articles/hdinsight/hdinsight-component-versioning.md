@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 7da765bda815e9112dac809d259fd417dc4d866e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0e15f3dc448ba218ebdfe309c4308bbc789ef5be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981090"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226260"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -50,11 +50,14 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (jenom Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1, 1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 | Apache posuvníku |-| 0.92.0 |-|-|-|-|-|-|
+
+> [!NOTE]
+> Z důvodu důležité informace o výkonu systému podpora pro systém Kafka verze 0.10 vypršelo v březnu 2019.
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Zkontrolujte aktuální informace o verzi komponenty systému Hadoop
 
@@ -72,7 +75,7 @@ V následujících tabulkách jsou uvedeny verzích HDInsight. Verze HDP, které
 
 ### <a name="available-versions"></a>Dostupné verze
 
-Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu Azure Portal, jakož i jiné metody nasazení, například prostředí PowerShell a sady .NET SDK.
+Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu Azure portal, jakož i jiné metody nasazení, například prostředí PowerShell a sady .NET SDK.
 
 | Verze HDInsight | Verze HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -122,12 +125,12 @@ Podnikové zabezpečení je volitelný balíček, který můžete přidat jako s
 
 - Autorizace pro data
 
-    - Integrace s Apache Rangerem pro autorizaci pro fronty Yarn, Hive a Spark SQL.
-    - Můžete nastavit řízení přístupu k souborům a složkám.
+  - Integrace s Apache Rangerem pro autorizaci pro fronty Yarn, Hive a Spark SQL.
+  - Můžete nastavit řízení přístupu k souborům a složkám.
 
     Další informace naleznete v tématu:
 
-    - [Nakonfigurovat zásady Apache Hive v HDInsight připojených k doméně](./domain-joined/apache-domain-joined-run-hive.md)
+  - [Nakonfigurovat zásady Apache Hive v HDInsight připojených k doméně](./domain-joined/apache-domain-joined-run-hive.md)
 
 - Zobrazení protokolů auditu na nakonfigurovaných zásad a monitorování přístupy. 
 

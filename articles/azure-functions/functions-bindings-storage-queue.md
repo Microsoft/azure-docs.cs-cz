@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: f54bec9c328893d1d579bff3313f126dbc1178de
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fbb95f6b92944b0f07ad17eb3094f9b30480144c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200969"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
@@ -176,7 +176,7 @@ module.exports = async function (context, message) {
 ### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
 
 V následujícím příkladu Java ukazuje aktivační událost fronty úložiště funkcí, které zaznamená aktivovaných zprávu do fronty `myqueuename`.
- 
+
  ```java
  @FunctionName("queueprocessor")
  public void run(
@@ -190,7 +190,7 @@ V následujícím příkladu Java ukazuje aktivační událost fronty úložišt
  ```
 
 ## <a name="trigger---attributes"></a>Aktivační události – atributy
- 
+
 V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost fronty následující atributy:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
@@ -218,7 +218,7 @@ V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurov
       ....
   }
   ```
- 
+
   Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
@@ -253,14 +253,14 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | neuvedeno| Musí být nastaveno na `queueTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction**| neuvedeno | V *function.json* pouze soubor. Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** | neuvedeno |Název proměnné, která obsahuje datovou část položky fronty v kódu funkce.  | 
-|**queueName** | **queueName**| Název fronty posílat do služby. | 
+|**Jméno** | neuvedeno |Název proměnné, která obsahuje datovou část položky fronty v kódu funkce.  |
+|**queueName** | **queueName**| Název fronty posílat do služby. |
 |**připojení** | **připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Aktivační události – využití
- 
+
 V jazyce C# a skript jazyka C#, přístup k datům zprávy pomocí parametru metody, jako `string paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. Můžete vytvořit vazbu k některé z následujících typů:
 
 * Objekt – modul runtime služby Functions deserializuje datovou část JSON do instance libovolné třídy definované ve vašem kódu. 
@@ -306,9 +306,7 @@ Aktivační událost fronty automaticky brání funkce zpracování zprávy fron
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
-[Host.json](functions-host-json.md#queues) soubor obsahuje nastavení, která řídí chování aktivační událost fronty.
-
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+[Host.json](functions-host-json.md#queues) soubor obsahuje nastavení, která řídí chování aktivační událost fronty. Zobrazit [host.json nastavení](#hostjson-settings) podrobné informace o dostupných nastaveních.
 
 ## <a name="output"></a>Výstup
 
@@ -370,7 +368,7 @@ Tady je *function.json* souboru:
     }
   ]
 }
-``` 
+```
 
 [Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
@@ -431,7 +429,7 @@ Tady je *function.json* souboru:
     }
   ]
 }
-``` 
+```
 
 [Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
@@ -466,13 +464,13 @@ module.exports = function(context) {
        result.setValue(message + " has been added.");
        return message;
  }
- ```
+```
 
 V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@QueueOutput` poznámku o parametrech, jehož hodnota by byla zapsána do fronty úložiště.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
 
 
 ## <a name="output---attributes"></a>Výstup – atributy
- 
+
 V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
 Atribut se vztahuje na `out` parametr nebo návratovou hodnotu funkce. Konstruktor atributu má název fronty, jak je znázorněno v následujícím příkladu:
@@ -509,14 +507,14 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | neuvedeno | Musí být nastaveno na `queue`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.| 
-|**queueName** |**queueName** | Název fronty | 
+|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.|
+|**queueName** |**queueName** | Název fronty |
 |**připojení** | **připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Výstup – využití
- 
+
 V jazyce C# a skript jazyka C#, psát pomocí parametru metody, jako zpráva s jednou frontou `out T paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. Návratový typ metody místo můžete použít `out` parametr, a `T` může být kterýkoli z následujících typů:
 
 * Objekt serializovat jako JSON.
@@ -564,16 +562,16 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
         }
     }
 }
-```  
+```
 
 
 |Vlastnost  |Výchozí | Popis |
-|---------|---------|---------| 
-|maxPollingInterval|00:00:02|Maximální časový interval mezi dotazuje fronty. Minimální hodnota je 00:00:00.100 (100 ms). | 
-|visibilityTimeout|00:00:00|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdaří. | 
-|batchSize|16|Počet zpráv fronty, které modul runtime služby Functions současně načte a zpracuje paralelně. Jakmile číslo zpracovává přejdete dolů k `newBatchThreshold`, modul runtime získá další dávku a spustí zpracování zprávy. Maximální počet souběžných za funkce zpracování zprávy je `batchSize` plus `newBatchThreshold`. Toto omezení platí zvlášť pro každou funkci aktivovanou protokolem fronty. <br><br>Pokud chcete se vyhnout paralelní provádění pro zprávy přijaté pro jednu frontu, můžete nastavit `batchSize` na hodnotu 1. Toto nastavení však eliminuje souběžnosti, pouze tak dlouho, dokud vaše aplikace function app běží na jeden virtuální počítač (VM). Pokud aplikace function app škálovat do několika virtuálních počítačů, každý virtuální počítač může spustit jednu instanci každé funkce aktivované triggerem queue.<br><br>Maximální počet `batchSize` je 32. | 
-|maxDequeueCount|5|Počet pokusů, zpracovává zprávu před přesunutím do poškozené fronty.| 
-|newBatchThreshold|batchSize/2|Pokaždé, když se počet zpráv souběžně zpracováváno získá na toto číslo, modul runtime načte jiná dávka.| 
+|---------|---------|---------|
+|maxPollingInterval|00:00:02|Maximální časový interval mezi dotazuje fronty. Minimální hodnota je 00:00:00.100 (100 ms). |
+|visibilityTimeout|00:00:00|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdaří. |
+|batchSize|16|Počet zpráv fronty, které modul runtime služby Functions současně načte a zpracuje paralelně. Jakmile číslo zpracovává přejdete dolů k `newBatchThreshold`, modul runtime získá další dávku a spustí zpracování zprávy. Maximální počet souběžných za funkce zpracování zprávy je `batchSize` plus `newBatchThreshold`. Toto omezení platí zvlášť pro každou funkci aktivovanou protokolem fronty. <br><br>Pokud chcete se vyhnout paralelní provádění pro zprávy přijaté pro jednu frontu, můžete nastavit `batchSize` na hodnotu 1. Toto nastavení však eliminuje souběžnosti, pouze tak dlouho, dokud vaše aplikace function app běží na jeden virtuální počítač (VM). Pokud aplikace function app škálovat do několika virtuálních počítačů, každý virtuální počítač může spustit jednu instanci každé funkce aktivované triggerem queue.<br><br>Maximální počet `batchSize` je 32. |
+|maxDequeueCount|5|Počet pokusů, zpracovává zprávu před přesunutím do poškozené fronty.|
+|newBatchThreshold|batchSize/2|Pokaždé, když se počet zpráv souběžně zpracováváno získá na toto číslo, modul runtime načte jiná dávka.|
 
 ## <a name="next-steps"></a>Další postup
 

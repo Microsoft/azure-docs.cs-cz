@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 883e1c11e3485c0bf3441a67a3a191563ea3aed4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990789"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
@@ -222,7 +222,7 @@ Helena umístění výchozí hodnota je globální prostředí číst všichni u
 Otevřete terminál a právě spuštění `julia`. 
 * Použití v rozhraní IDE
 
-Použití `Juno` Julie IDE nainstalované na datové VĚDY a k dispozici jako místní nabídku aplikace.
+Použití `Juno` Julie IDE nainstalované na datové VĚDY a k dispozici jako zástupce v nabídce aplikaci.
 
 * Použití v Jupyter
 

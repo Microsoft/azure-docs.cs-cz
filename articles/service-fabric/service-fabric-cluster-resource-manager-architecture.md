@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b39f7bc31ed286ef4a894e9d49166cd305d9e905
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 82183cefc11a1f3c39fadd639c988d8bf83fc109
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116587"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektura cluster resource Manageru
 Service Fabric Cluster Resource Manager je centrální služba, která se spustí v clusteru. Spravuje požadovaný stav služby v clusteru, zejména s ohledem na využití prostředků a všechny pravidla pro umístění. 
@@ -51,6 +51,7 @@ Cluster Resource Manager má ke sledování požadavků jednotlivých služeb a 
 Podívejme se na následující diagram:
 
 <center>
+
 ![Architektura Resource Balancer][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Za běhu existuje mnoho změn, které se může stát. Například můžeme Dejm
 Pojďme podívat se na následující diagram a zobrazit, co bude dál. Řekněme, že Cluster Resource Manager určuje, že je nutné provést změny. To koordinuje s dalšími službami systému (zejména Správce převzetí služeb při selhání) provést nezbytné změny. Pak potřebné příkazy jsou odesílány na odpovídající uzly (4). Řekněme například, že správce prostředků si všimli, že Uzel5 přetížená. a proto se rozhodli přesunout služba B v počítači Uzel5 do Uzel4. Na konci (5) konfigurace clusteru vypadá například takto:
 
 <center>
+
 ![Architektura Resource Balancer][Image2]
 </center>
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562891"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835777"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalogizace nových tenantů v SaaS aplikace využívající horizontálně dělené databázi s více tenanty Azure SQL
 
@@ -237,7 +237,7 @@ Otevřete Centrum akcí stránku v prohlížeči (http:events.wingtip-mt.\<uživ
 - Název tenanta uložená v tabulce Tenantů.
 - Název databáze se ukládají do tabulek Shard Management.
 
-1. V SQL Server Management Studio (SSMS), připojte se k serveru tenantů v **katalogu pro mt.\<uživatele\>. database.windows.net**, přihlášení = **developer**a heslo = **P@ssword1**
+1. V SQL Server Management Studio (SSMS), připojte se k serveru tenantů v **katalogu pro mt.\<uživatele\>. database.windows.net**, přihlášení = **developer**a heslo =  **P\@ssword1**
 
     ![Dialogové okno připojení aplikace SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

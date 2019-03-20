@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a8704fc27aad114d9a1d251cca773d9d0b767a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9385ec6a86c24e619ffafdae67bc66f66e099f3b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Kurz: Integrace Azure Active Directory s 8 x 8 virtuálních Office
 
@@ -128,41 +128,41 @@ Ke konfiguraci Azure AD jednotné přihlašování s 8 x 8 virtuálních Office,
 
 ### <a name="configure-8x8-virtual-office-single-sign-on"></a>Konfigurace 8 x 8 virtuální Office jednotného přihlašování
 
-7. Přihlášení k tenantovi virtuální Office 8 x 8 jako správce.
+1. Přihlášení k tenantovi virtuální Office 8 x 8 jako správce.
 
-8. Vyberte **virtuální Office účet správce** na panelu aplikace.
+1. Vyberte **virtuální Office účet správce** na panelu aplikace.
 
     ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
-9. Vyberte **obchodní** účtu pro správu a klikněte na tlačítko **Sign In** tlačítko.
+1. Vyberte **obchodní** účtu pro správu a klikněte na tlačítko **Sign In** tlačítko.
 
     ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
-10. Klikněte na tlačítko **účty** karty v seznamu v nabídce.
+1. Klikněte na tlačítko **účty** karty v seznamu v nabídce.
 
-    ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+   ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
-11. Klikněte na tlačítko **Single Sign On** v seznamu účtů.
+1. Klikněte na tlačítko **Single Sign On** v seznamu účtů.
   
-    ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+   ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-12. Vyberte **Single Sign On** podle metody ověřování a klikněte na tlačítko **SAML**.
+1. Vyberte **Single Sign On** podle metody ověřování a klikněte na tlačítko **SAML**.
 
-    ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+   ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
-13. V **jednotného přihlašování SAML** části, proveďte následující kroky:
+1. V **jednotného přihlašování SAML** části, proveďte následující kroky:
 
-    ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
+   ![Konfigurace na straně aplikace](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
-    a. V **přihlašování v adrese URL** vložit do textového pole **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
+   a. V **přihlašování v adrese URL** vložit do textového pole **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    b. V **adresy URL odhlašovací** vložit do textového pole **odhlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
+   b. V **adresy URL odhlašovací** vložit do textového pole **odhlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    c. V **URL vystavitele** vložit do textového pole **Azure AD identifikátor** hodnotu, která jste zkopírovali z portálu Azure portal.
+   c. V **URL vystavitele** vložit do textového pole **Azure AD identifikátor** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    d. Klikněte na tlačítko **Procházet** tlačítko Nahrát certifikát, který jste si stáhli z webu Azure portal.
+   d. Klikněte na tlačítko **Procházet** tlačítko Nahrát certifikát, který jste si stáhli z webu Azure portal.
 
-    e. Klikněte na tlačítko **Uložit**.
+   e. Klikněte na tlačítko **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -182,7 +182,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

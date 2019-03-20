@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6a008072fc88b9dc800b792c13a6c77c31b31e51
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106895"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
@@ -169,8 +169,8 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     Pokud chcete optimalizovat výkon, použijte při kopírování dat následující parametry robocopy.
 
     |    Platforma    |    Vetšinou malé soubory (< 512 kB)                           |    Většinou středně velké soubory (512 kB až 1 MB)                      |    Většinou velké soubory (> 1 MB)                             |   
-    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-    |    Data Box Disk        |    4 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |  |
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+    |    Data Box Disk        |    4 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |    2 Robocopy relace * <br> 16 vláken na relaci    |
     
     **Každou relaci nástroje Robocopy můžou mít maximálně 7 000 adresářů a souborů milionů 150.*
     
@@ -209,10 +209,10 @@ Tento volitelný postup můžete použít v případě, že používáte více d
  
 5. Upravit `SampleConfig.json` souboru.
  
-    - Zadejte název úlohy. Tím se na Data Box Disku vytvoří složka, ze které se nakonec stane kontejner v účtu úložiště Azure přidruženém k těmto diskům. Název úlohy musí být v souladu se zásadami vytváření názvů kontejnerů v Azure. 
-    - Zadejte cestu ke zdroji a poznamenejte si formát cesty v `SampleConfigFile.json`. 
-    - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
-    - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení, je odeslána do aktuálního adresáře kde `.exe` nachází.
+   - Zadejte název úlohy. Tím se na Data Box Disku vytvoří složka, ze které se nakonec stane kontejner v účtu úložiště Azure přidruženém k těmto diskům. Název úlohy musí být v souladu se zásadami vytváření názvů kontejnerů v Azure. 
+   - Zadejte cestu ke zdroji a poznamenejte si formát cesty v `SampleConfigFile.json`. 
+   - Zadejte písmena jednotek odpovídající cílovým diskům. Data se načtou ze zdrojové cesty a zkopírují se mezi několik disků.
+   - Zadejte cestu pro soubory protokolů. Ve výchozím nastavení, je odeslána do aktuálního adresáře kde `.exe` nachází.
 
      ![Rozdělení kopírování dat](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 

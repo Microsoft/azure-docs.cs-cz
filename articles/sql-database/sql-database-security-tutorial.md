@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4fc1b4d4d0d7f215f8fee1de01e171c3fdc5aae5
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893267"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení databáze jedné, nebo součástí fondu
 
@@ -77,11 +77,11 @@ Nastavit pravidlo brány firewall na úrovni serveru:
 
 1. Na **přehled** stránce **nastavit bránu firewall serveru**. **Nastavení brány Firewall** otevře se stránka pro databázový server.
 
-    1. Vyberte **přidat IP adresu klienta** na panelu nástrojů přidat vaši aktuální IP adresu na nové pravidlo brány firewall. Pravidlo může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres. Vyberte **Uložit**.
+   1. Vyberte **přidat IP adresu klienta** na panelu nástrojů přidat vaši aktuální IP adresu na nové pravidlo brány firewall. Pravidlo může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres. Vyberte **Uložit**.
 
-    ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+      ![nastavení pravidla brány firewall serveru](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
-    1. Vyberte **OK** a zavřít **nastavení brány Firewall** stránky.
+   1. Vyberte **OK** a zavřít **nastavení brány Firewall** stránky.
 
 Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k jakékoli databázi na serveru.
 
@@ -248,11 +248,11 @@ Pokud chcete povolit rozšířené data zabezpečení:
 
 1. Na **systému SQL server** stránky, vyhledejte **zabezpečení** a vyberte **rozšířené zabezpečení dat**.
 
-    1. Vyberte **ON** pod **rozšířené zabezpečení dat** k povolení této funkce. Zvolte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
+   1. Vyberte **ON** pod **rozšířené zabezpečení dat** k povolení této funkce. Zvolte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
 
-    ![Navigační podokno](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Navigační podokno](./media/sql-database-security-tutorial/threat-settings.png)
 
-    Můžete také nakonfigurovat e-mailů dostávat výstrahy zabezpečení a podrobnosti o úložišti a typy detekce hrozeb.
+      Můžete také nakonfigurovat e-mailů dostávat výstrahy zabezpečení a podrobnosti o úložišti a typy detekce hrozeb.
 
 1. Vraťte se na **databází SQL** stránky databáze a vyberte **rozšířené zabezpečení dat** pod **zabezpečení** oddílu. Tady najdete různé ukazatele zabezpečení dostupné pro databázi.
 
@@ -274,25 +274,25 @@ Pokud chcete povolit auditování:
 
 1. V části **auditování** nastavení, nastavte následující hodnoty:
 
-    1. Nastavte **auditování** k **ON**.
+   1. Nastavte **auditování** k **ON**.
 
-    1. Vyberte **cíl protokolu auditu** jako některý z následujících akcí:
+   1. Vyberte **cíl protokolu auditu** jako některý z následujících akcí:
 
-        - **Úložiště**, účet úložiště Azure, kde se ukládají protokoly událostí a lze stáhnout jako *xel* soubory
+       - **Úložiště**, účet úložiště Azure, kde se ukládají protokoly událostí a lze stáhnout jako *xel* soubory
 
-           > [!TIP]
-           > Chcete-li získat maximum z šablon sestav auditování pomocí stejného účtu úložiště pro všechny auditované databáze.
+          > [!TIP]
+          > Chcete-li získat maximum z šablon sestav auditování pomocí stejného účtu úložiště pro všechny auditované databáze.
 
-        - **Log Analytics**, které automaticky uloží události pro dotaz nebo další analýzu
+       - **Log Analytics**, které automaticky uloží události pro dotaz nebo další analýzu
 
-            > [!NOTE]
-            > A **pracovní prostor Log Analytics** je nezbytný pro podporu pokročilých funkcí, jako je například analýzy, vlastních pravidel výstrah a export Excelu nebo Power BI. Bez pracovní prostor je k dispozici pouze v editoru dotazů.
+           > [!NOTE]
+           > A **pracovní prostor Log Analytics** je nezbytný pro podporu pokročilých funkcí, jako je například analýzy, vlastních pravidel výstrah a export Excelu nebo Power BI. Bez pracovní prostor je k dispozici pouze v editoru dotazů.
 
-        - **Centrum událostí**, což umožňuje událostí bude směrovat pro použití v jiných aplikacích
+       - **Centrum událostí**, což umožňuje událostí bude směrovat pro použití v jiných aplikacích
 
-    1. Vyberte **Uložit**.
+   1. Vyberte **Uložit**.
 
-    ![Nastavení auditu](./media/sql-database-security-tutorial/audit-settings.png)
+      ![Nastavení auditu](./media/sql-database-security-tutorial/audit-settings.png)
 
 1. Teď můžete vybrat **zobrazit protokoly auditu** chcete zobrazit údaje o událostech databáze.
 
@@ -334,7 +334,7 @@ K povolení nebo ověřit šifrování:
     ![Transparentní šifrování dat](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Chcete-li zobrazit stav šifrování, připojit k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a dotazování `encryption_state` sloupec [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) zobrazení. Stav `3` označuje je databáze šifrovaná.
+> Chcete-li zobrazit stav šifrování, připojit k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a dotazování `encryption_state` sloupec [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) zobrazení. Stav `3` označuje je databáze šifrovaná.
 
 ## <a name="next-steps"></a>Další postup
 

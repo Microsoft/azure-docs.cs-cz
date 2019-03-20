@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1d81426853a9a8e28fa04e34fada3ce64798ccfd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 73dcddf796faa3b39dbb124fe6c528bb19eda3a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958146"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841221"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o řeči SDK
 
-Řeči Software Development Kit (SDK) poskytuje vaše aplikace nativní přístup k funkce Speech service, což usnadňuje vývoj softwaru. V současné době sada SDK poskytuje přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**.
+Rozpoznávání řeči Software Development Kit (SDK) poskytuje vaše aplikace přístup k funkce hlasové služby usnadňují vývoj softwaru podporou řeči. V současné době se sadami SDK poskytují přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**. Obecný přehled o možnostech a podporovaných platforem najdete v dokumentaci [položka stránky](https://aka.ms/csspeech).
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

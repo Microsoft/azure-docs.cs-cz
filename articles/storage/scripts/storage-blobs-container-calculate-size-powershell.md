@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: ec8254478786825d0333e8be24b0dfbea8c18e60
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245146"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094003"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Výpočet velikosti kontejneru úložiště objektů blob
 
@@ -52,7 +52,7 @@ Tento skript k výpočtu velikosti kontejneru úložiště objektů blob použí
 | Příkaz | Poznámky |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložišť ve skupině prostředků nebo předplatného. |
-| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Vypíše objekty BLOB v kontejneru. ||
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Vypíše objekty BLOB v kontejneru. |
 
 ## <a name="next-steps"></a>Další postup
 

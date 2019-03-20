@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004647"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostikovat problém filtrování provozu sítě virtuálních počítačů pomocí webu Azure portal
 
@@ -85,7 +85,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Směr         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |
-    | Vzdálená IP adresa | 13.107.21.200 – jedna z adres stránky www.bing.com                                             |
+    | Vzdálená IP adresa | 13.107.21.200 – jeden z adresy < www.bing.com>.                                             |
     | Vzdálený port       | 80                                                                                                |
 
     ![Ověření toku protokolu IP](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

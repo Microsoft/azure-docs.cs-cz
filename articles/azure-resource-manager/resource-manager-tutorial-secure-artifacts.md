@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53cc987d13479fc0d9276ec80f33a163a2a6ded7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120342"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečené artefaktů v nasazení šablon Azure Resource Manageru
 
@@ -126,11 +126,11 @@ Kontejner objektů Blob je potřeba předtím, než můžete nahrát všechny so
 3. Vyberte **vygenerujte token SAS objektů blob a adresa URL**.
 4. Vytvořte kopii **SAS URL objektu Blob**. Uprostřed adresa URL je název souboru **SQLDatabaseExtension.bacpac**.  Název souboru rozděluje adresu URL do tří částí:
 
-    - **Umístění artefaktů**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ujistěte se, že umístění končí "/".
-    - **Název souboru BACPAC**: SQLDatabaseExtension.bacpac.
-    - **Token SAS umístění artefaktů**: Ujistěte se, že token, který předchází s "?."
+   - **Umístění artefaktů**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ujistěte se, že umístění končí "/".
+   - **Název souboru BACPAC**: SQLDatabaseExtension.bacpac.
+   - **Token SAS umístění artefaktů**: Ujistěte se, že token, který předchází s "?."
 
-    V tyto tři hodnoty budete potřebovat [nasazení šablony](#deploy-the-template).
+     V tyto tři hodnoty budete potřebovat [nasazení šablony](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Otevřete existující šablonu
 
@@ -146,13 +146,13 @@ V této relaci, můžete upravit šablonu, kterou jste vytvořili v [kurzu: Impo
 
     Existuje pět prostředky definované v šabloně:
 
-    * `Microsoft.Sql/servers`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-    * `Microsoft.SQL/servers/securityAlertPolicies`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-    * `Microsoft.SQL/servers/filewallRules`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-    * `Microsoft.SQL/servers/databases`.  Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-    * `Microsoft.SQL/server/databases/extensions`.  Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/securityAlertPolicies`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
+   * `Microsoft.SQL/servers/filewallRules`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`.  Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`.  Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
-    Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
+     Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
 4. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte na místní počítač pod názvem **azuredeploy.json**.
 
 ## <a name="edit-the-template"></a>Úprava šablony

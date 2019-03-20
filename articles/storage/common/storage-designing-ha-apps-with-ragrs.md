@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512240"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225820"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -123,7 +123,7 @@ V podstatě existují dva scénáře, které je třeba zvážit, pokud se rozhod
 
     V tomto scénáři je snížení výkonu vzhledem k tomu, že všechny vaše požadavky na čtení se nejprve zkuste primární koncový bod, čekat vypršení časového limitu vyprší, potom přepněte do sekundárního koncového bodu.
 
-Pro tyto scénáře, měli byste identifikovat, který existuje probíhající problému s primární koncový bod a odeslat všechny číst požadavků přímo do sekundárního koncového bodu tak, že nastavíte **LocationMode** vlastnost **SecondaryOnly** . V současné době je nutné změnit také aplikace na spouštění v režimu jen pro čtení. Tento postup se označuje jako [vzoru Circuit Breaker](https://msdn.microsoft.com/library/dn589784.aspx).
+Pro tyto scénáře, měli byste identifikovat, který existuje probíhající problému s primární koncový bod a odeslat všechny číst požadavků přímo do sekundárního koncového bodu tak, že nastavíte **LocationMode** vlastnost **SecondaryOnly** . V současné době je nutné změnit také aplikace na spouštění v režimu jen pro čtení. Tento postup se označuje jako [vzoru Circuit Breaker](/azure/architecture/patterns/circuit-breaker).
 
 ### <a name="update-requests"></a>Žádosti o aktualizaci
 
@@ -203,7 +203,7 @@ Následující tabulka znázorňuje příklad co může nastat při aktualizaci 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entity ve primárního |                                   |                    | Transakce A vložit do primární,<br> nejsou ještě nereplikovaly. |
 | T1       |                                                            | Transakce A <br> replikují do<br> sekundární | T1 | Transakce A replikují do sekundární. <br>Čas poslední synchronizace aktualizovat.    |
 | T2       | Transakce B:<br>Aktualizace<br> Zaměstnanec entity<br> v primární  |                                | T1                 | Transakci zapsán do primární, B<br> nejsou ještě nereplikovaly.  |
-| T3       | Transakce C:<br> Aktualizace <br>Správce<br>Entita role v<br>primární |                    | T1                 | Transakci zapsán do primární, C<br> nejsou ještě nereplikovaly.  |
+| T3       | Transakce C:<br> Aktualizace <br>správce<br>Entita role v<br>primární |                    | T1                 | Transakci zapsán do primární, C<br> nejsou ještě nereplikovaly.  |
 | *T4*     |                                                       | Transakce C <br>replikují do<br> sekundární | T1         | Transakce C replikují do sekundární.<br>Nelze aktualizovat, protože LastSyncTime <br>ještě nebyla replikována transakce B.|
 | *T5*     | Ke čtení entit <br>ze sekundární                           |                                  | T1                 | Získat hodnotu zastaralé pro zaměstnance <br> entity vzhledem k tomu, že nebyla transakce B <br> ještě nereplikovaly. Získat novou hodnotu<br> Entita role správce vzhledem k tomu, že má C<br> replikovat. Stále ještě čas poslední synchronizace<br> byla aktualizována, protože transakce B<br> nebyl replikován. Poznáte,<br>Entita role správce je nekonzistentní <br>protože entity data a času je po <br>Čas poslední synchronizace. |
 | *T6*     |                                                      | Transakce B<br> replikují do<br> sekundární | T6                 | *T6* – mít všechny transakce pomocí jazyka C <br>se replikují, čas poslední synchronizace<br> se aktualizuje. |
@@ -216,7 +216,7 @@ Rozpoznat, že má potenciálně nekonzistentní data, může klient použít ho
 
 Je důležité, otestovat, že vaše aplikace chová podle očekávání, pokud se setká s opakovatelnou chyby. Například je potřeba testovat, že aplikace přepínače na sekundární a do režimu jen pro čtení, když zjistí problém a přepne zpět při primární oblast opět k dispozici. K tomuto účelu, budete potřebovat způsob, jak simulovat opakovatelná chyby a řízení, jak často k nim dojde.
 
-Můžete použít [Fiddler](http://www.telerik.com/fiddler) zachytí a upravit odpovědi protokolu HTTP ve skriptu. Tento skript můžete identifikovat odpovědi, které pocházejí z primárního koncového bodu a změnit stavový kód protokolu HTTP, který rozpozná klientskou knihovnu pro úložiště jako Opakovatelná chyba. Tento fragment kódu ukazuje jednoduchý příklad Fiddleru skript, který zachycuje odpovědí na požadavky na čtení **employeedata** tabulky vrátit 502 stav:
+Můžete použít [Fiddler](https://www.telerik.com/fiddler) zachytí a upravit odpovědi protokolu HTTP ve skriptu. Tento skript můžete identifikovat odpovědi, které pocházejí z primárního koncového bodu a změnit stavový kód protokolu HTTP, který rozpozná klientskou knihovnu pro úložiště jako Opakovatelná chyba. Tento fragment kódu ukazuje jednoduchý příklad Fiddleru skript, který zachycuje odpovědí na požadavky na čtení **employeedata** tabulky vrátit 502 stav:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -228,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Můžete rozšířit a zachytit používání nástroje většímu počtu požadavků a změnit pouze v tomto příkladu **responseCode** na některé z nich pro lepší simulaci reálné scénáře. Další informace o přizpůsobení Fiddleru skriptů, najdete v části [změna požadavku nebo odpovědi](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) v dokumentaci k aplikaci Fiddler.
+Můžete rozšířit a zachytit používání nástroje většímu počtu požadavků a změnit pouze v tomto příkladu **responseCode** na některé z nich pro lepší simulaci reálné scénáře. Další informace o přizpůsobení Fiddleru skriptů, najdete v části [změna požadavku nebo odpovědi](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) v dokumentaci k aplikaci Fiddler.
 
 Pokud jste provedli prahové hodnoty pro přepnutí do režimu jen pro čtení konfigurovat aplikace, ji bude snazší testování chování se svazky-li se o neprodukční transakce.
 

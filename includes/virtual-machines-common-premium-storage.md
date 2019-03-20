@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: cd29fb968bd73e09c2e3b60e62a478b4e577146d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 40ff2339ad34a72079109317bf0a89dfbc6458e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098120"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -63,9 +63,9 @@ Tady jsou některé z funkcí úložiště Premium Storage:
 
     Pokud chcete začít používat Premium Storage, vytvoření účtu služby premium storage pro nespravované disky. V [webu Azure portal](https://portal.azure.com), abyste mohli vytvořit účet úložiště úrovně premium, zvolte **Premium** úroveň výkonu. Vyberte **místně redundantní úložiště (LRS)** možnost replikace. Můžete také vytvořit účet premium storage podle nastavení úrovně výkonu **Premium_LRS**. Chcete-li změnit úroveň výkonu, použijte jednu z následujících postupů:
      
-    - [Prostředí PowerShell pro Azure Storage](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
-    - [Azure CLI pro úložiště Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
-    - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager) nebo jedna z klientských knihoven Azure Storage resource provider
+  - [Prostředí PowerShell pro Azure Storage](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+  - [Azure CLI pro úložiště Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+  - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (pro nasazení Azure Resource Manager) nebo jedna z klientských knihoven Azure Storage resource provider
 
     Další informace o omezeních účtu úložiště úrovně premium, najdete v článku [škálovatelnost a výkonnostní cíle](#scalability-and-performance-targets).
 

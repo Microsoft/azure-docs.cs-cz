@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95465fdc17131c996fa242d028addbab4191628c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1bb62c9a11971f72a6c96c4652b136c19812cb3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Kurz: Integrace Azure Active Directory s EverBridge
 
@@ -127,22 +127,22 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 5. Ke konfiguraci **EverBridge** aplikace jako **EverBridge člen portál**na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    * Pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+   * Pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-        ![EverBridge domény a adresy URL jednotného přihlašování – informace](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
+       ![EverBridge domény a adresy URL jednotného přihlašování – informace](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
 
-        * V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+       * V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-        * V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+       * V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-    * Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+   * Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-        ![EverBridge domény a adresy URL jednotného přihlašování – informace](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
+       ![EverBridge domény a adresy URL jednotného přihlašování – informace](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
 
-        * V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+       * V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
-    > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlášení na adrese URL. Kontakt [tým podpory EverBridge](mailto:support@everbridge.com) k získání těchto hodnot.
+     > [!NOTE]
+     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlášení na adrese URL. Kontakt [tým podpory EverBridge](mailto:support@everbridge.com) k získání těchto hodnot.
 
 6. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **kód XML metadat federace** a uložte soubor metadat ve vašem počítači.
 
@@ -164,21 +164,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 9. V nabídce v horní části klikněte **nastavení** kartě a vyberte **Single Sign-On** pod **zabezpečení**.
    
-    ![Konfigurace jednotného přihlašování](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Konfigurace jednotného přihlašování](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-    a. V **název** textového pole zadejte název zprostředkovatele identifikátor (například: název vaší společnosti).
+     a. V **název** textového pole zadejte název zprostředkovatele identifikátor (například: název vaší společnosti).
    
-    b. V **název rozhraní API** textového pole zadejte název rozhraní API.
+     b. V **název rozhraní API** textového pole zadejte název rozhraní API.
    
-    c. Klikněte na tlačítko **zvolit soubor** tlačítko Nahrát soubor metadat, který jste si stáhli z webu Azure portal.
+     c. Klikněte na tlačítko **zvolit soubor** tlačítko Nahrát soubor metadat, který jste si stáhli z webu Azure portal.
    
-    d. V umístění Identity SAML, vyberte **identita je v elementu NameIdentifier příkazu subjektu**.
+     d. V umístění Identity SAML, vyberte **identita je v elementu NameIdentifier příkazu subjektu**.
    
-    e. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+     e. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
    
-    f. Poskytovatele inicioval žádost o vazbu služby, vyberte **přesměrování protokolu HTTP**.
+     f. Poskytovatele inicioval žádost o vazbu služby, vyberte **přesměrování protokolu HTTP**.
 
-    g. Klikněte na **Uložit**.
+     g. Klikněte na **Uložit**.
 
 10. Ke konfiguraci jednotného přihlašování na **EverBridge** aplikace jako **EverBridge člen portál**, je nutné odeslat na stažený **kód XML metadat federace** k [ Tým podpory Everbridge](mailto:support@everbridge.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
@@ -200,7 +200,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

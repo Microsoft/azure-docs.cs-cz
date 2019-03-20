@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075a50802a05a9b8254ff6ab1e0a38f43baca970
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444286"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105620"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>V seznamu aplikací neočekávaná aplikace
 
@@ -48,7 +48,7 @@ Pokud chcete zobrazit všechny aplikace ve vašem tenantovi, budete muset použ�
 
 Při filtrování do **všechny aplikace**, **všechny aplikace** **seznamu** ukazuje, každý instanční objekt ve vašem tenantovi. Instanční objekty se mohou zobrazit v tomto seznamu různými způsoby:
 
-1.  Když přidáte libovolnou aplikaci z Galerie aplikací, včetně:
+1. Když přidáte libovolnou aplikaci z Galerie aplikací, včetně:
 
    1. **Galerie aplikací Azure AD** – což je aplikace, který byl předem integrovaných pro jednotné přihlašování s Azure AD
 
@@ -58,21 +58,21 @@ Při filtrování do **všechny aplikace**, **všechny aplikace** **seznamu** uk
 
    4. **Aplikace mimo galerii** – používání vlastních aplikací. Libovolný webový odkaz, který chcete nebo jakékoliv aplikace, která vykreslí pole uživatelského jména a hesla, podporuje přes protokol SAML nebo OpenID Connect nebo SCIM, kterou chcete integrovat pro jednotné přihlašování s Azure AD podporuje.
 
-2.  Při registraci nebo přihlášení k 3<sup>VP</sup> stran aplikace integrované s Azure Active Directory. Jedním z příkladů je [Smartsheet](https://app.smartsheet.com/b/home) nebo [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Při registraci nebo přihlášení k 3<sup>VP</sup> stran aplikace integrované s Azure Active Directory. Jedním z příkladů je [Smartsheet](https://app.smartsheet.com/b/home) nebo [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Při registraci nebo přidání licence pro uživatele nebo skupiny k první aplikaci stran, jako jsou [Microsoft Office 365](https://products.office.com/)
+3. Při registraci nebo přidání licence pro uživatele nebo skupiny k první aplikaci stran, jako jsou [Microsoft Office 365](https://products.office.com/)
 
-4.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [registru aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [registru aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [portál pro registraci aplikace V2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [portál pro registraci aplikace V2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6.  Pokud jste přidali aplikaci vyvíjíte pomocí sady Visual Studio [metody ověřování ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6. Pokud jste přidali aplikaci vyvíjíte pomocí sady Visual Studio [metody ověřování ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
-7.  Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Pokud jste [souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako správce, aby používala data ve vašem tenantovi
+8. Pokud jste [souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako správce, aby používala data ve vašem tenantovi
 
-9.  Když [uživatel vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) používat data ve vašem tenantovi
+9. Když [uživatel vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) používat data ve vašem tenantovi
 
 10. Když povolíte určité služby, které ukládají data ve vašem tenantovi. Jedním z příkladů je resetování hesel, která je modelovaná jako objekt služby k uložení hesla resetovat zásady bezpečně.
 
@@ -90,21 +90,21 @@ K zakázání všech přihlášení uživatelů k aplikaci, postupujte podle kro
 
 K **odstranit aplikaci**, postupujte podle těchto kroků:
 
-1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
+1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
+2. Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
+4. Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete odstranit.
+6. Vyberte aplikaci, kterou chcete odstranit.
 
-7.  Po načtení aplikace, klikněte na tlačítko **odstranit** ikonu z hlavní aplikace **přehled** podokně.
+7. Po načtení aplikace, klikněte na tlačítko **odstranit** ikonu z hlavní aplikace **přehled** podokně.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace vyjádření souhlasu budoucí uživatele do žádné aplikace
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533625"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894542"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení účtu fakturační zákaznické smlouvy Microsoft
 
@@ -47,7 +47,7 @@ Před zahájením instalace, doporučujeme, že abyste provedli následující:
 - **Principy změn pro přístup k vaší fakturační správci**
   - Správce z smlouvu Enterprise získáte přístup k fakturačním oborů v rámci nového účtu. [Pochopit změny v jejich přístup](#understand-changes-to-your-billing-administrators-access).
 - **Funkce Enterprise Agreement zobrazení, které nahrazují nový účet**
-  - Zobrazit funkce smlouva Enterprise Agreement enrollment, které jsou [nahrazuje funkce v rámci nového účtu](#review-features-replaced-by-the-new-billing-account).
+  - Zobrazit funkce smlouva Enterprise Agreement enrollment, které nahrazují funkce v rámci nového účtu.
 - **Zobrazit odpovědi na nejčastější dotazy**
   - Zobrazení [Další informace o](#additional-information) Další informace o nastavení.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2457ef2843b0d16359b7e47fc54c58e2ef5e6034
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429938"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125285"
 ---
 > [!NOTE]
 > Tyto příklady se nevztahují na S2S a ExpressRoute existovat vedle sebe konfigurace.
@@ -28,8 +28,8 @@ Po přidání brány do virtuální sítě pomocí modelu klasického prostředk
 1. Stáhněte si soubor konfigurace sítě pomocí postupu v [soubor konfigurace sítě](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) článku. Otevřete soubor pomocí textového editoru.
 2. Přidání místní síťové lokality do souboru. Můžete použít jakoukoli předponu platnou adresu. Můžete přidat libovolná platná IP adresa brány VPN. Hodnoty adres v této části se používá pro operace ExpressRoute, ale jsou požadovány pro ověření souboru. "Pobočka1" v příkladu je název webu. Můžete použít jiný název, ale nezapomeňte použít stejnou hodnotu v bráně část souboru.
 
-  ```
-  <VirtualNetworkConfiguration>
+   ```
+   <VirtualNetworkConfiguration>
     <Dns />
     <LocalNetworkSites>
       <LocalNetworkSite name="branch1">
@@ -38,15 +38,15 @@ Po přidání brány do virtuální sítě pomocí modelu klasického prostředk
         </AddressSpace>
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
-  ```
+   ```
 3. Přejděte VirtualNetworkSites a upravit pole.
 
-  * Ověřte, zda existuje podsíť brány pro vaši virtuální síť. Pokud tomu tak není, můžete přidat jednu v tuto chvíli. Název musí být "GatewaySubnet".
-  * Ověřte, zda že existuje brány část souboru. Pokud tomu tak není, přidejte ji. To se vyžaduje pro virtuální síť přidružit k místní síťové lokality (která představuje síť, ke kterému se připojujete).
-  * Ověřte, že typ připojení = Dedicated. To je potřeba pro připojení ExpressRoute.
+   * Ověřte, zda existuje podsíť brány pro vaši virtuální síť. Pokud tomu tak není, můžete přidat jednu v tuto chvíli. Název musí být "GatewaySubnet".
+   * Ověřte, zda že existuje brány část souboru. Pokud tomu tak není, přidejte ji. To se vyžaduje pro virtuální síť přidružit k místní síťové lokality (která představuje síť, ke kterému se připojujete).
+   * Ověřte, že typ připojení = Dedicated. To je potřeba pro připojení ExpressRoute.
 
-  ```
-  </LocalNetworkSites>
+   ```
+   </LocalNetworkSites>
     <VirtualNetworkSites>
       <VirtualNetworkSite name="myAzureVNET" Location="East US">
         <AddressSpace>
@@ -69,9 +69,9 @@ Po přidání brány do virtuální sítě pomocí modelu klasického prostředk
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
-  </NetworkConfiguration>
-  ```
+   </VirtualNetworkConfiguration>
+   </NetworkConfiguration>
+   ```
 4. Soubor uložte a nahrajte ho do Azure.
 
 ### <a name="create-the-gateway"></a>Vytvoření brány

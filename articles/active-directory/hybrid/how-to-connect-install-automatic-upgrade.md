@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b044edbc24a83aeb98ff603a43f160a6c88d940f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003916"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla zavedena v systému sestavení [1.1.105.0 (všeobecně dostupné. února 2016)](reference-connect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které dříve nebyly podporovány.
@@ -89,16 +89,16 @@ Tady je seznam nejběžnějších zprávy, které najdete. Neobsahuje všechny, 
 | UpgradeAbortedSyncExeInUse |[Synchronization service Manageru uživatelského rozhraní](how-to-connect-sync-service-manager-ui.md) na serveru je otevřený. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Průvodce instalací je spuštěna nebo k synchronizaci byla naplánována mimo plánovače. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | Vybrali jste jako metoda pro přihlašování do služby AD FS. | 
+| UpgradeNotSupportedAdfsSignInMethod | Vybrali jste jako metoda pro přihlašování do služby AD FS. |
 | UpgradeNotSupportedCustomizedSyncRules |Vaše vlastní pravidla jste přidali do konfigurace. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Povolíte [zpětný zápis zařízení](how-to-connect-device-writeback.md) funkce. |
 | UpgradeNotSupportedGroupWritebackEnabled |Povolíte [zpětný zápis skupin](how-to-connect-preview.md#group-writeback) funkce. |
 | UpgradeNotSupportedInvalidPersistedState |Instalaci se nepovedlo Expresní nastavení nebo upgradu nástroje DirSync. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Máte více než 100 000 objektů v úložišti metaverse. |
 | UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jednu doménovou strukturu. Expresní instalace pouze připojí k jedné doménové struktuře. |
-| UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |d
+| UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |
 | UpgradeNotSupportedNonMsolAccount |[Účet AD DS konektoru](reference-connect-accounts-permissions.md#ad-ds-connector-account) MSOL_ výchozího účtu už není. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect, zvolíte *nekonfigurujte* při výběru metody přihlašování. | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect, zvolíte *nekonfigurujte* při výběru metody přihlašování. |
 | UpgradeNotSupportedPtaSignInMethod | Jako metodu přihlašování jste vybrali předávací ověřování. |
 | UpgradeNotSupportedStagingModeEnabled |Server je nastaven v [pracovním režimu](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Povolíte [zpětný zápis uživatelů](how-to-connect-preview.md#user-writeback) funkce. |

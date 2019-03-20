@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f63851359a19455ab0f46f66a801a679ee2c3bfe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079686"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Rychlý start: Migrace místních poznámkových bloků Jupyter
 
@@ -50,13 +50,13 @@ Tento rychlý start popisuje proces migrace z místního počítače nebo jinou 
 
    (Znovu, pokud je v úložišti GitHub, postupujte podle kroků [rychlý start: Klonovat Poznámkový blok](quickstart-clone-jupyter-notebook.md) místo.)
 
-    - Pokud používáte **z počítače**, přetažením vaše *.ipynb* soubory do automaticky otevíraného okna, nebo vyberte **vybrat soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **nahrát**. Nahrané soubory jsou uvedeny stejný název jako místní soubory. (Není nutné k nahrání obsahu jakékoli *.ipynb_checkpoints* složek.)
+   - Pokud používáte **z počítače**, přetažením vaše *.ipynb* soubory do automaticky otevíraného okna, nebo vyberte **vybrat soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **nahrát**. Nahrané soubory jsou uvedeny stejný název jako místní soubory. (Není nutné k nahrání obsahu jakékoli *.ipynb_checkpoints* složek.)
 
-    ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
+     ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
 
-    - Pokud používáte **z adresy URL**, zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název souboru** pole. Potom vyberte **nahrát**. Pokud máte víc souborů s samostatné adresy URL, použijte **+ přidat soubor** příkaz a zkontrolujte první adresa URL, které jste zadali, po jejímž uplynutí automaticky otevírané okno obsahuje nové pole pro jiný soubor.
+   - Pokud používáte **z adresy URL**, zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název souboru** pole. Potom vyberte **nahrát**. Pokud máte víc souborů s samostatné adresy URL, použijte **+ přidat soubor** příkaz a zkontrolujte první adresa URL, které jste zadali, po jejímž uplynutí automaticky otevírané okno obsahuje nové pole pro jiný soubor.
 
-    ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
+     ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
 
 1. Otevřete a spusťte nově nahraných Poznámkový blok a ověřte jeho obsah a operace. Jakmile budete hotovi, vyberte **souboru** > **zastavení a zavřít** zavřete poznámkový blok.
 

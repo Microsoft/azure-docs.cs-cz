@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 336b30a8e8687b3a2bdd05a17e558f44905f135e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102379"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Nastavení informací zabezpečení (preview) pro použití ověřovací aplikaci
 Provedením následujících kroků pro přidání dvoufaktorového ověřování a metody pro resetování hesla. Po nastavení tím prvním, můžete se vrátit k **bezpečnostní údaje** stránku chcete přidat, aktualizovat nebo odstranit informace o zabezpečení.
@@ -52,10 +52,10 @@ V závislosti na nastavení vaší organizace je možné použít ověřování 
 
     ![Začněte tím, že získáme stránka aplikace](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >Pokud chcete použít aplikaci authenticator než aplikace Microsoft Authenticator, vyberte **chci používat jinou ověřovací aplikaci** odkaz.
-    
-    >Pokud vaše organizace vám umožní vybrat si jinou metodu kromě ověřovací aplikaci, můžete vybrat **budu chtít nastavit odkazem na jinou metodu**.
+   > [!Note]
+   > Pokud chcete použít aplikaci authenticator než aplikace Microsoft Authenticator, vyberte **chci používat jinou ověřovací aplikaci** odkaz.
+   > 
+   > Pokud vaše organizace vám umožní vybrat si jinou metodu kromě ověřovací aplikaci, můžete vybrat **budu chtít nastavit odkazem na jinou metodu**.
 
 5. Zůstat na **nastavili svůj účet** stránce během nastavení aplikace Microsoft Authenticator na vašem mobilním zařízení.
 
@@ -81,9 +81,9 @@ V závislosti na nastavení vaší organizace je možné použít ověřování 
 
 8. Schvalte oznámení v aplikaci Microsoft Authenticator a pak vyberte **Další**.
 
-    ![Oznámením o úspěšné připojení aplikace a váš účet](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Oznámením o úspěšné připojení aplikace a váš účet](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    Vaše bezpečnostní údaje se aktualizuje a použít aplikaci Microsoft Authenticator ve výchozím nastavení při použití dvoustupňové ověření nebo heslo resetovat ověřit vaši identitu.
+     Vaše bezpečnostní údaje se aktualizuje a použít aplikaci Microsoft Authenticator ve výchozím nastavení při použití dvoustupňové ověření nebo heslo resetovat ověřit vaši identitu.
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Odstranit aplikaci authenticator z metody informace o zabezpečení
 Pokud už nechcete používat vaší ověřovací aplikací jako způsob informace o zabezpečení, můžete ho odebrat **bezpečnostní údaje** stránky. Tento postup funguje pro všechny aplikace, ne jenom aplikace Microsoft Authenticator. Po odstranění aplikace, budete muset přejít do aplikace authenticator na vašem mobilním zařízení a odstraní účet.

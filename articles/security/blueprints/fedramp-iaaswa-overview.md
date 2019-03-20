@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: daa81f4ec14a0e022ea22948324478b8e9cc3ce3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864469"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: IaaS webové aplikace pro FedRAMP
 
@@ -191,7 +191,7 @@ Tento zabezpečení Azure a dodržování předpisů podrobného plánu Automati
 
 3. Klikněte na tlačítko níže, přihlaste se na webu Azure portal, zadejte požadované parametry šablony ARM a klikněte na tlačítko **nákupní**.
 
-    [![Nasazení do Azure](http://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
+    [![Nasazení do Azure](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 ### <a name="vpn-and-expressroute"></a>Připojení VPN a ExpressRoute

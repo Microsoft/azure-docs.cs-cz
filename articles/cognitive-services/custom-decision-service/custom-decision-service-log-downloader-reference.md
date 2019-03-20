@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109405"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`, `--start_date START_DATE` | Stažení počátečního data (zahrnout), v *rrrr-MM-DD* formátu. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | Stahování koncové datum (je součástí), v *rrrr-MM-DD* formátu. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Režim přepisu, který chcete použít. | |
-| | `0`: Nikdy přepsat; Požádejte uživatele, zda objekty BLOB se aktuálně používají. | Výchozí | |
+| | `0`: Nikdy přepsat; Požádejte uživatele, zda objekty BLOB se aktuálně používají. | Výchozí |
 | | `1`: Požádejte uživatele, jak pokračovat dál, pokud se soubory mají různé velikosti nebo pokud objekty BLOB se aktuálně používá. | |
 | | `2`: Vždy přepsat; aktuálně používané objekty BLOB můžete stáhněte. | |
 | | `3`: Nikdy přepsat a přidat, pokud je větší, aniž by požádal; aktuálně používané objekty BLOB můžete stáhněte. | |

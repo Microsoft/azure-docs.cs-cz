@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467328"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009753"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řídit směrování provozu s koncovými body vážený pomocí Traffic Manageru
 
@@ -60,6 +60,7 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
     |Skupina prostředků| Vyberte **Nová** a zadejte **myResourceGroupTM1**.|
     |Umístění| Vyberte **USA – východ**.|
     |||
+
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
     
@@ -69,6 +70,7 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
     |Skupina zabezpečení sítě|Vyberte **Basic**. V rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
     |Diagnostika spouštění|Vyberte **Zakázáno**.|
     |||
+
 6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
 
 7. Zopakujte kroky 1 až 6 s následujícími změnami:
@@ -80,6 +82,7 @@ V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myII
     |Název virtuálního počítače | Zadejte **myIISVMWEurope**.|
     |Virtuální síť | Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet2**. Jako **Podsíť** zadejte **mySubnet**.|
     |||
+
 8. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte v dalších krocích, dokud se oba virtuální počítače nevytvoří.
 
 ![Vytvoření virtuálního počítače](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -137,6 +140,7 @@ V této části vytvoříte virtuální počítač *mVMEastUS*. Tento virtuáln�
 
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
+
     |Nastavení|Hodnota|
     |---|---|
     |Virtuální síť| Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet3**. Jako podsíť zadejte **mySubnet**.|
@@ -173,7 +177,7 @@ Přidejte dva virtuální počítače se službou myIISVMEastUS servery služby 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Typ                    | Zadejte koncový bod Azure.                                   |
+    | Type                    | Zadejte koncový bod Azure.                                   |
     | Název           | Zadejte **myEastUSEndpoint**.                                        |
     | Typ cílového prostředku           | Vyberte **Veřejná IP adresa**.                          |
     | Cílový prostředek          | Zvolte veřejnou IP adresu a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu **myIISVMEastUS-ip**. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|

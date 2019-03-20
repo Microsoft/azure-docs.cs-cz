@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c9be377dc74ac936aa3139d395b6a02f3b3192eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084357"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Kurz: Konfigurace připojení k hybridní cloud s Azure a Azure Stack
 
@@ -152,12 +152,12 @@ Pomocí následujících kroků a vytvořte bránu virtuální sítě v Azure.
 3. V **Brána virtuální sítě**vyberte **vytvořit** otevřít **vytvořit bránu virtuální sítě** stránky.
 4. Na **vytvořit bránu virtuální sítě**, zadejte hodnoty pro bránu sítě, jak je znázorněno v **hodnoty v tomto příkladu**a následující další hodnoty:
 
-    - **Skladová položka**: základní
-    - **Virtual Network**: Výběr virtuální sítě, které jste vytvořili dříve. Podsíť brány, kterou jste vytvořili se vybere automaticky.
-    - **První konfigurace IP adresy**:  Toto je veřejná IP adresa brány.
-        - Vyberte **vytvořit konfiguraci IP adresy brány**, což vás přesměruje na **zvolte veřejnou IP adresu** stránky.
-        - Vyberte **+ vytvořit novou** otevřít **vytvoření veřejné IP adresy** stránky.
-        - Zadejte **název** pro veřejnou IP adresu. Jako SKU ponechte **základní**a pak vyberte **OK** uložte provedené změny.
+   - **Skladová položka**: základní
+   - **Virtual Network**: Výběr virtuální sítě, které jste vytvořili dříve. Podsíť brány, kterou jste vytvořili se vybere automaticky.
+   - **První konfigurace IP adresy**:  Toto je veřejná IP adresa brány.
+     - Vyberte **vytvořit konfiguraci IP adresy brány**, což vás přesměruje na **zvolte veřejnou IP adresu** stránky.
+     - Vyberte **+ vytvořit novou** otevřít **vytvoření veřejné IP adresy** stránky.
+     - Zadejte **název** pro veřejnou IP adresu. Jako SKU ponechte **základní**a pak vyberte **OK** uložte provedené změny.
 
        > [!Note]
        > VPN Gateway v současné době podporuje pouze přidělení dynamické veřejné IP adresy. Nicméně to neznamená, že změní IP adresa po přiřazení k vaší bráně VPN. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. Změna velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN nezmění IP adresu.

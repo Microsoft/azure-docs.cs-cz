@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "52319460"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853065"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>Povolit nebo zakázat pravidlo brány firewall na hostovaný operační systém virtuálního počítače Azure
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Povolit nebo zakázat pravidlo brány firewall na operační systém hosta virtuálního počítače Azure
 
 Tento článek poskytuje odkaz pro řešení potíží s situace, ve kterém máte podezření, že brána firewall operačního systému hosta je filtrování částečné přenosy na virtuální počítač (VM). To může být užitečné z následujících důvodů:
 
@@ -103,19 +103,19 @@ Pokud virtuální počítač je v režimu online a je přístupný jinému virtu
 
     * Chcete-li povolit pravidlo, otevřete následující hodnotu registru:
     
-        *CÍLOVÝ počítač*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
     
         Poté změňte **aktivní = FALSE** k **aktivní = TRUE** v řetězci:
 
-        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =@FirewallAPI.dll,-28775 | Desc =@FirewallAPI.dll,-28756 | EmbedCtxt =@FirewallAPI.dll,-28752 |**
+        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
     
     * Chcete-li zakázat pravidlo, otevřete následující hodnotu registru:
     
-        *CÍLOVÝ počítač*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
         Poté změňte **aktivní = TRUE** k **aktivní = FALSE**:
         
-        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =@FirewallAPI.dll,-28775 | Desc =@FirewallAPI.dll,-28756 | EmbedCtxt =@FirewallAPI.dll,-28752 |**
+        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
 
 3.  Restartujte virtuální počítač, aby se změny projevily.
 
@@ -150,19 +150,19 @@ Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk 
 
     2.  Chcete-li povolit pravidlo, otevřete následující hodnotu registru:
     
-        HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop přesměrovač v TCP
+        HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
         Poté změňte **aktivní = FALSE** k **aktivní = True**.
         
-        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =@FirewallAPI.dll,-28775 | Desc =@FirewallAPI.dll,-28756 | EmbedCtxt =@FirewallAPI.dll,-28752 |**
+        **v2.22 | Akce = Povolit | Aktivní = TRUE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
 
     3.  Pokud chcete zakázat pravidlo, otevřete následující klíč registru:
 
-        HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop přesměrovač v TCP
+        HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
         Poté změňte **aktivní = True** k **aktivní = FALSE**.
         
-        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =@FirewallAPI.dll,-28775 | Desc =@FirewallAPI.dll,-28756 | EmbedCtxt =@FirewallAPI.dll,-28752 |**
+        **v2.22 | Akce = Povolit | Aktivní = FALSE | Příkaz dir = In | Protokol = 6 | Profil domény = | Profil = Private | Profil = Public | LPort = 3389 | App=%SystemRoot%\System32\svchost.exe| SVC = inicializace | Název =\@FirewallAPI.dll-28775 | Desc =\@FirewallAPI.dll-28756 | EmbedCtxt =\@FirewallAPI.dll-28752 |**
 
 9.  Zvýrazněte **BROKENSYSTEM**a pak vyberte **souboru** > **Uvolnit podregistr** z nabídky.
 

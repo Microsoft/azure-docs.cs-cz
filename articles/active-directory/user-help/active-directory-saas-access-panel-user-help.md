@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: japere
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e35cc4d5500cdfda0af4e130928434af34b1497f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cad68afd02694ec471d032a554ed468691ff914b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449780"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105467"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Řešení potíží s přístupem k a používání portálu MyApps
 
@@ -96,8 +96,8 @@ Pokud máte nainstalované rozšíření a i nadále dochází k problémům, zk
 
 ## <a name="how-do-i-add-a-new-app"></a>Jak přidat novou aplikaci?
 
-1.  Na **aplikace** stránce **přidat aplikaci**.
-2.  Najděte aplikaci, kterou chcete přidat a pak vyberte **přidat**.
+1. Na **aplikace** stránce **přidat aplikaci**.
+2. Najděte aplikaci, kterou chcete přidat a pak vyberte **přidat**.
 
    > [!NOTE]
    > * Tuto možnost můžete přistupovat pouze v případě, že správce má povolený pro váš účet.

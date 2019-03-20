@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: be2eee7e9951ac1975adfacc63d982a4fb4eabbd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 94686d62e8019bfc5dba1ccd4a00142512930c0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782424"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Integrace Azure Active Directory s daty přes aplikaci Periscope
 
@@ -105,6 +105,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s daty přes aplikaci Perisco
     ![Přes aplikaci periscope dat domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
     a. V **přihlašovací adresa URL** textové pole, zadejte některý z adresy URL:
+    
     | |
     |--|
     | `https://app.periscopedata.com/` |
@@ -165,7 +166,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -218,7 +219,7 @@ Přihlaste se k datům přes aplikaci Periscope Azure AD uživatelům umožnit, 
 
     b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
 
-    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je **brittasimon\@contoso.com**.
 
     d. Klikněte na tlačítko **přidat**.
 

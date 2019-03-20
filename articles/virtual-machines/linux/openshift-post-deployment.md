@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: b99490102dd4f2c08a11be066b2ddc5fd6b7ea7b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bc7a49aa143400387afcd59d5b9307d82a028486
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535831"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098657"
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
@@ -75,23 +75,23 @@ Poznamenejte si vlastnost appId vrácenou příkazem pro později.
 
 Na webu Azure Portal:
 
-1.  Vyberte **Azure Active Directory** > **registrace aplikace**.
-2.  Hledání registrace vaší aplikace (například OCPAzureAD).
-3.  Ve výsledcích klikněte na registraci aplikace.
-4.  V části **nastavení**vyberte **požadovaná oprávnění**.
-5.  V části **požadovaná oprávnění**vyberte **přidat**.
+1. Vyberte **Azure Active Directory** > **registrace aplikace**.
+2. Hledání registrace vaší aplikace (například OCPAzureAD).
+3. Ve výsledcích klikněte na registraci aplikace.
+4. V části **nastavení**vyberte **požadovaná oprávnění**.
+5. V části **požadovaná oprávnění**vyberte **přidat**.
 
-  ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
+   ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
-6.  Klikněte na krok 1: Vyberte rozhraní API a potom klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klikněte na tlačítko **vyberte** v dolní části.
+6. Klikněte na krok 1: Vyberte rozhraní API a potom klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klikněte na tlačítko **vyberte** v dolní části.
 
-  ![Vyberte rozhraní API registrace aplikace](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Vyberte rozhraní API registrace aplikace](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  V kroku 2: Vyberte oprávnění, vyberte **přihlášení a čtení profilu uživatele** pod **delegovaná oprávnění**a potom klikněte na tlačítko **vyberte**.
+7. V kroku 2: Vyberte oprávnění, vyberte **přihlášení a čtení profilu uživatele** pod **delegovaná oprávnění**a potom klikněte na tlačítko **vyberte**.
 
-  ![Registrace aplikace Access](media/openshift-post-deployment/app-registration-access.png)
+   ![Registrace aplikace Access](media/openshift-post-deployment/app-registration-access.png)
 
-8.  Vyberte **Done** (Hotovo).
+8. Vyberte **Done** (Hotovo).
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurace OpenShift pro ověřování Azure AD
 

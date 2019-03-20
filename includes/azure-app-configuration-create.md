@@ -8,41 +8,41 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 71e63de247e05a4712687354ed548219b36e8f2f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884862"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227180"
 ---
-1. Pokud chcete vytvořit novým úložištěm konfigurace aplikace, nejdřív přihlásit k [webu Azure portal](https://aka.ms/azconfig/portal). V levém horním rohu stránky klikněte na **+ Vytvořit prostředek**. V **Hledat na Marketplace** textové pole, typ **konfigurace aplikace** a stiskněte klávesu **Enter**.
+1. Pokud chcete vytvořit novým úložištěm konfigurace aplikace, přihlaste se k [webu Azure portal](https://aka.ms/azconfig/portal). V levém horním rohu stránky vyberte **+ vytvořit prostředek**. V **Hledat na Marketplace** zadejte **konfigurace aplikace** a stiskněte klávesu Enter.
 
     ![Hledat konfigurace aplikace](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-new.png)
 
-2. Klikněte na tlačítko **konfigurace aplikace** ve výsledcích hledání a následně **vytvořit**.
+2. Vyberte **konfigurace aplikace** z výsledků hledání a pak vyberte **vytvořit**.
 
-3. V **konfigurace aplikace** > **vytvořit** stránky, zadejte následující nastavení:
+3. Na **konfigurace aplikace** > **vytvořit** stránky, zadejte následující nastavení.
 
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|
-    | **Název prostředku** | Globálně jedinečný název | Zadejte název jedinečné prostředků pro prostředek aplikace konfigurace úložiště. Název musí být řetězec o délce 1 až 63 znaků a může obsahovat jenom čísla, písmena a znak `-`. Název nesmí začínat ani končit znakem `-` a po sobě jdoucí znaky `-` nejsou platné.  |
-    | **Předplatné** | Vaše předplatné | Vyberte předplatné Azure, který chcete použít k otestování konfigurace aplikace. Pokud má váš účet jenom jedno předplatné, vybere se automaticky a rozevírací seznam **Předplatné** se nezobrazí. |
-    | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace vaší aplikace. Tato skupina umožňuje uspořádání více prostředků, které pak můžete odstranit najednou tím, že odstraníte skupinu prostředků. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](/azure/azure-resource-manager/resource-group-overview). |
-    | **Umístění** | *USA (střed)* | Použití **umístění** k určení zeměpisného umístění, ve které je hostované úložiště konfigurace vaší aplikace. Pro zajištění nejlepšího výkonu doporučujeme vytvořit prostředek ve stejné oblasti jako ostatní komponenty vaší aplikace. |
+    | **Název prostředku** | Globálně jedinečný název | Zadejte název jedinečné prostředků pro prostředek aplikace konfigurace úložiště. Název musí být řetězec o délce 1 až 63 znaků a může obsahovat jenom čísla, písmena a znak `-`. Název nesmí začínat ani končit `-` znak a po sobě jdoucích `-` znaky nejsou platné.  |
+    | **Předplatné** | Vaše předplatné | Vyberte předplatné Azure, který chcete použít k otestování konfigurace aplikace. Pokud má váš účet jenom jedno předplatné, je automaticky vybrána a **předplatné** rozevíracím seznamu nezobrazí. |
+    | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace vaší aplikace. Tato skupina je užitečné pro uspořádání různé prostředky, které můžete chtít odstranit tak, že odstraníte skupinu prostředků ve stejnou dobu. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](/azure/azure-resource-manager/resource-group-overview). |
+    | **Umístění** | *USA (střed)* | Použití **umístění** k určení zeměpisného umístění, ve které je hostované úložiště konfigurace vaší aplikace. Pro zajištění nejlepšího výkonu vytvořte prostředek ve stejné oblasti jako součásti vaší aplikace. |
 
     ![Vytvořte prostředek aplikace konfigurace úložiště](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-create.png)
 
-4. Klikněte na možnost **Vytvořit**. Dokončení nasazení může trvat několik minut.
+4. Vyberte **Vytvořit**. Nasazení může trvat několik minut déle.
 
-5. Po dokončení nasazení klikněte na tlačítko **nastavení** > **přístupové klíče**. Poznamenejte si buď primární jen pro čtení nebo primární čtení a zápis připojovací řetězec klíče. Bude to použít později ke konfiguraci vaší aplikace ke komunikaci s úložištěm aplikace konfigurace, kterou jste právě vytvořili.
+5. Po dokončení nasazení vyberte **nastavení** > **přístupové klíče**. Poznamenejte buď primární jen pro čtení nebo primární čtení a zápis připojovací řetězec klíče. Tento připojovací řetězec použijete později ke konfiguraci vaší aplikace ke komunikaci s úložišti konfigurace aplikace, kterou jste vytvořili.
 
-6. Klikněte na tlačítko **klíč/hodnota Explorer** a **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **klíč/hodnota Explorer** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
     | Klíč | Hodnota |
     |---|---|
-    | TestApp:Settings:BackgroundColor | Prázdné |
+    | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Černá |
+    | TestApp:Settings:FontColor | Black |
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 
-    Ukončíte **popisek** a **typ obsahu** zatím prázdný.
+    Ponechte **popisek** a **typ obsahu** zatím prázdný.

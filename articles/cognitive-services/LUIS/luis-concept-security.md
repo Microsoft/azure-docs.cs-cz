@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: ac4095d19904db10d4d60364dd2c739e8105c171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089841"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 
@@ -53,7 +53,7 @@ Přístup k dotazování na koncový bod je řízen pomocí nastavení na **info
 Koncový bod soukromých aplikací je pouze k dispozici pro následující:
 
 |Klíč a uživatele|Vysvětlení|
-|--|--|--|
+|--|--|
 |Klíč pro tvorbu vlastníka| Až 1000 koncový bod přístupů|
 |Pro vytváření klíčů se spolupracovníky| Až 1000 koncový bod přístupů|
 |Libovolná klávesa přiřadil Autor nebo spolupracovníků k LUIS|Založené na úrovni použití klíče|

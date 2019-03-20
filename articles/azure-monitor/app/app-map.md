@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755885"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006793"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -42,13 +42,13 @@ Po kliknutí na tlačítko "Součásti mapy aktualizace", mapy aktualizují se v
 
 Pokud jsou všechny komponenty rolí v rámci jednoho prostředku Application Insights, pak tento krok zjišťování se nevyžaduje. Počáteční načtení pro takové aplikace budou mít všechny jeho součásti.
 
-![Snímek obrazovky aplikace mapy](media/app-map/001.png)
+![Snímek obrazovky aplikace mapy](media/app-map/app-map-001.png)
 
 Jedním z klíčových cílů s toto prostředí je možné k vizualizaci komplexní topologie spolu se stovkami komponenty.
 
 Klikněte na libovolné součásti najdete v článku související přehledy a přejít k výkonu a selhání prostředí pro třídění pro danou součást.
 
-![Kontextová nabídka](media/app-map/application-map-001.png)
+![Kontextová nabídka](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>Prověřit chyby
 

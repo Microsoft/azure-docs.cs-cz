@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
-ms.openlocfilehash: d4d399258ac1bd83fe4cfb46344576ca74e66f1e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805133"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119645"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
 Spolehlivá souběžná fronta je asynchronní, transakční a replikované fronty které funkce vysoké souběžnost pro zařazení do fronty a operace odstranění z fronty. Je navržena pro zajištění vysoké propustnosti a nízké latence zmírněním striktní řazení FIFO poskytované [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 Předpokládejme, že se úloha úspěšně dokončila a že v něm nebyly žádné souběžných transakcí úprava fronty. Uživatel můžete očekávat, že fronta bude obsahovat položky v některém z následujících pořadí:
 
 > 10, 20
-
+> 
 > 20, 10
 
 
@@ -165,7 +165,7 @@ Předpokládejme, že byly položky vyřazených z fronty v následujícím poř
 
 Když jsme přerušení transakce, položky byly přidány zpět do hlavní fronty v některém z následujících pořadí:
 > 10, 20
-
+> 
 > 20, 10
 
 Totéž platí pro všechny případy, ve kterém transakce nebyla úspěšně *potvrzeno*.

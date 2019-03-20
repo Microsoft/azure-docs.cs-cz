@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: b4778c87ca5da266858cd05c67e5f0a78af731bc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 11a8ef1974e8d930b0001ccfb445b0eee509356f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188947"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Pomocí jazyka Go k volání Text Analytics služby Cognitive Services 
 <a name="HOLTop"></a>
@@ -41,9 +41,9 @@ Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu po
 1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
-1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
-1. Vytvořte soubor, například: go build quickstart.go.
-1. Spusťte soubor, například: quickstart.
+1. Otevřete příkazový řádek v počítači, kde přejděte nainstalované z kořenové složky.
+1. Vytvořte soubor, například: `go build detect.go`.
+1. Spusťte soubor, například: `go run detect.go`.
 
 ```golang
 package main
@@ -177,16 +177,16 @@ func main() {
 
 ## <a name="analyze-sentiment-request"></a>Žádost Analyze Sentiment
 
-Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Analýza subjektivního hodnocení umožňuje zjistit, co si vaši zákazníci myslí o vaší značce nebo téma díky analýze nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Následující příklad uvádí skóre pro dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
-1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
-1. Vytvořte soubor, například: go build quickstart.go.
-1. Spusťte soubor, například: quickstart.
+1. Otevřete příkazový řádek v počítači, kde přejděte nainstalované z kořenové složky.
+1. Vytvořte soubor, například: `go build sentiment.go`.
+1. Spusťte soubor, například: `go run sentiment.go`.
 
 ```golang
 package main
@@ -272,7 +272,8 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Odpověď metody Analyze Sentiment
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
+Výsledek se měří jako kladná, pokud se vypočítává se skóre blíž ke 1.0 a záporná Pokud je blíž skóre rovnou 0,0.
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -294,7 +295,7 @@ func main() {
 
 ## <a name="extract-key-phrases-request"></a>Žádost Extract Key Phrases
 
-Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
+Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Extrakce klíčových frází slouží k rychlé zjištění hlavních bodů dokumentu nebo text. Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
@@ -302,8 +303,8 @@ Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z te
 1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
-1. Vytvořte soubor, například: go build quickstart.go.
-1. Spusťte soubor, například: quickstart.
+1. Vytvořte soubor, například: `go build key-phrases.go`.
+1. Spusťte soubor, například: `go run key-phrases.go`.
 
 ```golang
 package main
@@ -390,7 +391,7 @@ func main() {
 
 ## <a name="extract-key-phrases-response"></a>Odpověď metody Extract Key Phrases
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
+Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -430,9 +431,9 @@ func main() {
 
 <a name="Entities"></a>
 
-## <a name="identify-entities-request"></a>Požadavek na identifikaci entit
+## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahovat slova z textu, jako je "USA", pak zadejte typ a/nebo odkaz na wikipedii tato slova. Typ pro "USA" je `location`, zatímco je odkaz na wikipedii `https://en.wikipedia.org/wiki/United_States`.  Následující příklad identifikuje entity pro anglické dokumenty.
 
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
@@ -440,8 +441,8 @@ Rozhraní API pro entity identifikuje dobře známé entity v textovém dokument
 1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
-1. Vytvořte soubor, například: go build quickstart.go.
-1. Spusťte soubor, například: quickstart.
+1. Vytvořte soubor, například: `go build entities.go`.
+1. Spusťte soubor, například: `go run entities.go`.
 
 ```golang
 package main

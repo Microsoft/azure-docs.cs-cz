@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587884"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123602"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení bezpečnostních údajů (ve verzi preview) z příkazového řádku přihlašovací stránky
 Pokud se zobrazí výzva k nastavení bezpečnostních údajů ihned po přihlášení ke svému pracovnímu nebo školnímu účtu, můžete následujícím postupem.
@@ -39,10 +39,10 @@ Postupujte podle těchto pokynů nastavte si svoje bezpečnostní údaje pro vá
 
 1. Po výběru **Další** z příkazového řádku, **zachovat Průvodce zabezpečený účet** zobrazí první metoda správce a organizace vyžadují, abyste nastavení. V tomto příkladu je aplikace Microsoft Authenticator.
 
-    >[!Note]
-    >Pokud chcete použít aplikaci authenticator než aplikace Microsoft Authenticator, vyberte **chci používat jinou ověřovací aplikaci** odkaz.
-    
-    >Pokud vaše organizace vám umožní vybrat si jinou metodu kromě ověřovací aplikaci, můžete vybrat **budu chtít nastavit odkazem na jinou metodu**.
+   > [!Note]
+   > Pokud chcete použít aplikaci authenticator než aplikace Microsoft Authenticator, vyberte **chci používat jinou ověřovací aplikaci** odkaz.
+   > 
+   > Pokud vaše organizace vám umožní vybrat si jinou metodu kromě ověřovací aplikaci, můžete vybrat **budu chtít nastavit odkazem na jinou metodu**.
 
     ![Zachovat Průvodce zabezpečený účet, stránkou ověřování aplikace ke stažení](media/security-info/securityinfo-prompt-get-auth-app.png)
 

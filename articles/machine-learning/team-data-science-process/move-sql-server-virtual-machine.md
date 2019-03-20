@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcab8d1cfd076e57a25ee3d36fadd86f158c53b8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880593"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835108"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 
@@ -58,7 +58,7 @@ BCP je nástroj příkazového řádku nainstalovat s SQL serverem a je jedním 
 
 > [!NOTE]
 > **Kdy mají být data pro BCP?**  
-> I když není povinné, s soubory obsahující zdrojová data nachází ve stejném počítači jako cílový SQL Server umožňuje rychlejší přenos (sítě rychlosti vs. místní disk rychlost vstupně-výstupní operace). Ploché soubory obsahující data do počítače můžete přesunout tam, kde je nainstalován SQL Server pomocí různých kopírování souborů nástroje jako [AZCopy](../../storage/common/storage-use-azcopy.md), [Průzkumníka služby Azure Storage](http://storageexplorer.com/) nebo windows, kopírování a vkládání přes vzdálenou plochu Protocol (RDP).
+> I když není povinné, s soubory obsahující zdrojová data nachází ve stejném počítači jako cílový SQL Server umožňuje rychlejší přenos (sítě rychlosti vs. místní disk rychlost vstupně-výstupní operace). Ploché soubory obsahující data do počítače můžete přesunout tam, kde je nainstalován SQL Server pomocí různých kopírování souborů nástroje jako [AZCopy](../../storage/common/storage-use-azcopy.md), [Průzkumníka služby Azure Storage](https://storageexplorer.com/) nebo windows, kopírování a vkládání přes vzdálenou plochu Protocol (RDP).
 >
 >
 
@@ -75,10 +75,10 @@ CREATE TABLE <tablename>
 )
 ```
 
-2. Generovat formátový soubor, který popisuje schéma pro tabulku zadáním následujícího příkazu z příkazového řádku na počítači nainstalovanou bcp.
+1. Generovat formátový soubor, který popisuje schéma pro tabulku zadáním následujícího příkazu z příkazového řádku na počítači nainstalovanou bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. Vložení dat do databáze pomocí příkazu bcp následujícím způsobem. Tento postup měl fungovat z příkazového řádku za předpokladu, že SQL Server nainstalovaný na stejném počítači:
+1. Vložení dat do databáze pomocí příkazu bcp následujícím způsobem. Tento postup měl fungovat z příkazového řádku za předpokladu, že SQL Server nainstalovaný na stejném počítači:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -142,7 +142,7 @@ Tady jsou některé ukázkové příkazy pro Bulk Insert se, jak je uvedeno ní�
 ```sql
 SET DATEFORMAT ymd;
 ```
-2. Importujte data pomocí hromadného importu:
+1. Importujte data pomocí hromadného importu:
 
 ```sql
 BULK INSERT <tablename>
@@ -195,7 +195,7 @@ Různé metody slouží k hromadně exportovat data z místního SQL serveru, ja
 4. Použít některou z metod popsaných v části [přesouvání dat ze zdrojového souboru](#filesource_to_sqlonazurevm) pro přesun dat do SQL serveru do plochých souborů.
 
 ### <a name="sql-migration"></a>Průvodce migrací služby SQL Database
-[Průvodce migrací sady SQL Server Database](http://sqlazuremw.codeplex.com/) poskytuje uživatelsky přívětivé pro přesun dat mezi dvěma instancemi serveru SQL. Umožňuje uživateli mapování schématu dat mezi zdroji a cílové tabulky, zvolte typy sloupců a různé další funkce. Hromadné kopírování (BCP) na pozadí používá. Snímek obrazovky s úvodní obrazovce Průvodce migrací databáze SQL je uveden níže.  
+[Průvodce migrací sady SQL Server Database](https://sqlazuremw.codeplex.com/) poskytuje uživatelsky přívětivé pro přesun dat mezi dvěma instancemi serveru SQL. Umožňuje uživateli mapování schématu dat mezi zdroji a cílové tabulky, zvolte typy sloupců a různé další funkce. Hromadné kopírování (BCP) na pozadí používá. Snímek obrazovky s úvodní obrazovce Průvodce migrací databáze SQL je uveden níže.  
 
 ![Průvodce migrací sady SQL Server][2]
 

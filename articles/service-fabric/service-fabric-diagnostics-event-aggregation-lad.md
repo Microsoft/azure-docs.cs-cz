@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 9e4c4e8c8d7aa89e2a27efc2c2deebd4863be23e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ca6be2b08c9a38813b2c98eef7e5696bd61fd074
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893029"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace událostí a kolekce pomocí diagnostiky Azure Linux
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Jeden způsob, jak nahrát a shromažďovat protokoly je použít rozšíření 
 ## <a name="log-and-event-sources"></a>Zdroje protokolů a událostí
 
 ### <a name="service-fabric-platform-events"></a>Události platformy Service Fabric
-Service Fabric vysílá několik protokolů out-of-the-box prostřednictvím [LTTng](http://lttng.org), včetně provozní události nebo běhové události. Tyto protokoly se ukládají v umístění, které určuje šablony Resource Manageru clusteru. Pro získání nebo nastavení podrobností účtu úložiště, vyhledá značku **AzureTableWinFabETWQueryable** a hledejte **StoreConnectionString**.
+Service Fabric vysílá několik protokolů out-of-the-box prostřednictvím [LTTng](https://lttng.org), včetně provozní události nebo běhové události. Tyto protokoly se ukládají v umístění, které určuje šablony Resource Manageru clusteru. Pro získání nebo nastavení podrobností účtu úložiště, vyhledá značku **AzureTableWinFabETWQueryable** a hledejte **StoreConnectionString**.
 
 ### <a name="application-events"></a>Události aplikace
  Události generované z kódu vašich aplikací a služeb, jako jste je uvedli v při instrumentaci vašeho softwaru. Můžete použít žádné protokolování řešení, která zapisuje soubory založený na textu protokolu – například LTTng. Další informace najdete v dokumentaci LTTng na trasování pro tuto aplikaci.
@@ -52,5 +52,5 @@ Tím se nakonfiguruje LAD agenta monitorování zadané soubory protokolu. Poka�
 
 ## <a name="next-steps"></a>Další postup
 
-1. Chcete-li podrobněji pochopit, jaké události byste měli zkontrolovat při řešení potíží, přečtěte si téma [LTTng dokumentaci](http://lttng.org/docs) a [pomocí LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+1. Chcete-li podrobněji pochopit, jaké události byste měli zkontrolovat při řešení potíží, přečtěte si téma [LTTng dokumentaci](https://lttng.org/docs) a [pomocí LAD](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
 2. [Nastavení agenta Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) pomůže shromažďovat metriky, monitorování kontejnerů v clusteru a vizualizovat vaše protokoly 

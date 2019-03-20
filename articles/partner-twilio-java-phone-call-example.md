@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 71ffcc420372215a393f560d01d6c08dee03dfbd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433667"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010561"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak telefonování pomocí Twilio v aplikace v Javě v Azure
 Následující příklad ukazuje, jak Twilio můžete uskutečnit volání z webové stránky hostované v Azure. Výsledné aplikace se zobrazí výzva pro hodnoty telefonního hovoru, jak je znázorněno na následujícím snímku obrazovky.
@@ -173,7 +173,7 @@ Toto jsou hlavní kroky při spuštění aplikace; Podrobnosti pro tyto kroky m�
 2. Upravit **startup.cmd** k rozbalení vaše TwilioCloud WAR.
 3. Zkompilujte aplikaci pro emulátor služby výpočty.
 4. Zahájení nasazení v emulátoru služby compute.
-5. Otevřete prohlížeč a spusťte **http://localhost:8080/TwilioCloud/callform.jsp**.
+5. Otevřete prohlížeč a spusťte `http://localhost:8080/TwilioCloud/callform.jsp`.
 6. Zadejte hodnoty ve formuláři, klikněte na tlačítko **toto volání**a potom zobrazit výsledky v makecall.jsp.
 
 Až budete připravení nasadit do Azure a překompilujte pro nasazení do cloudu a nasadit do Azure a spustit http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp v prohlížeči (nahraďte svoji hodnotu pro  *your_hosted_name*).

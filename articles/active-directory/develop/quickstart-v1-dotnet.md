@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204538"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223389"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace .NET klasické plochy (WPF)
 
@@ -77,9 +77,9 @@ Když už máte v Azure AD aplikaci, můžete nainstalovat knihovnu ADAL a zapsa
 
 1. V `DirectorySearcher` projekt, otevřete `app.config`.
 1. Nahraďte hodnoty prvků v `<appSettings>` části tak, aby odrážely hodnoty vstup na webu Azure portal. Váš kód bude tyto hodnoty využívat vždy, když bude používat ADAL.
-  * `ida:Tenant` Je doména tenanta Azure AD, například contoso.onmicrosoft.com
-  * `ida:ClientId` Je ID klienta vaší aplikace, které jste zkopírovali z portálu.
-  * `ida:RedirectUri` Je adresa URL pro přesměrování registrovaný na portálu.
+   * `ida:Tenant` Je doména tenanta Azure AD, například contoso.onmicrosoft.com
+   * `ida:ClientId` Je ID klienta vaší aplikace, které jste zkopírovali z portálu.
+   * `ida:RedirectUri` Je adresa URL pro přesměrování registrovaný na portálu.
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Krok 3: Použití knihovny ADAL k získání tokenů z Azure AD
 
@@ -172,7 +172,7 @@ Základním principem za ADAL je, že pokaždé, když se vaše aplikace potřeb
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087087"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -242,7 +242,7 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
 | **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 
-5.  Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 Když je teď pracovní postup dokončený, můžete aplikaci logiky povolit a podívat se na funkci v akci.
 
@@ -285,7 +285,7 @@ Pokud chcete aplikaci logiky zakázat, klikněte na **Přehled** a pak v horní 
 
 ![Protokoly funkce](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

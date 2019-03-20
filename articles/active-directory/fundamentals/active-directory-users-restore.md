@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a810ae13d9cfb68d11293ba883c52858aa4a2deb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164749"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876999"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.
@@ -31,13 +31,13 @@ Můžete zobrazit obnovitelné uživatelům, obnovení odstraněného uživatele
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 Musí mít jeden z následujících rolí pro obnovení a trvale odstranit uživatele.
 
-- Správce společnosti
+- Globální správce
 
 - Podpora partnerů úrovně 1
 
 - Podpora partnerů úrovně 2
 
-- Správce uživatelských účtů
+- Správce uživatelů
 
 ## <a name="view-your-restorable-users"></a>Zobrazit obnovitelné uživatele
 Zobrazí se všichni uživatelé, které byly odstraněny před méně než 30 dny. Tito uživatelé můžou obnovit.

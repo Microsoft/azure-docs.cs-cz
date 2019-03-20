@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c723ade885474f07d025b10e075edab0383b82e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108371"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
@@ -70,22 +70,22 @@ Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiš
 
 - Vaše účty úložiště Azure. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
-    - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-    - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
 - Vaší skupiny prostředků spravovaného disku. Při vytváření spravované disky, virtuální pevné disky jsou odeslat jako objekty BLOB stránky a poté převeden na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadané v době vytvoření objednávky.
 
-    - Pokud vaše kopie na managed disks v Azure byla úspěšná, může použít **podrobnosti objednávky** webu Azure portal a zkontrolujte poznamenejte si skupinu prostředků zadaná pro spravované disky.
+  - Pokud vaše kopie na managed disks v Azure byla úspěšná, může použít **podrobnosti objednávky** webu Azure portal a zkontrolujte poznamenejte si skupinu prostředků zadaná pro spravované disky.
 
-        ![Zobrazit podrobnosti objednávky](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
+      ![Zobrazit podrobnosti objednávky](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
 
     Přejděte do skupiny prostředků uvedené a vyhledejte spravované disky.
 
-        ![Resource group for managed disks](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
+      ![Skupina prostředků za spravované disky](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-    - Pokud jste si zkopírovali disk VHDX nebo dynamický nebo rozdílový virtuální pevný disk, pak VHDX nebo VHD se nahrají do přípravného účtu úložiště jako objekt blob bloku. Přejděte k vaší pracovní **účet úložiště > objekty BLOB** a pak vyberte příslušný kontejner – StandardSSD, StandardHDD nebo PremiumSSD. VHDX nebo VHD se měla zobrazit jako objekty BLOB bloku do přípravného účtu úložiště.
+  - Pokud jste si zkopírovali disk VHDX nebo dynamický nebo rozdílový virtuální pevný disk, pak VHDX nebo VHD se nahrají do přípravného účtu úložiště jako objekt blob bloku. Přejděte k vaší pracovní **účet úložiště > objekty BLOB** a pak vyberte příslušný kontejner – StandardSSD, StandardHDD nebo PremiumSSD. VHDX nebo VHD se měla zobrazit jako objekty BLOB bloku do přípravného účtu úložiště.
 
 Pokud chcete ověřit, že se data nahrála do Azure, postupujte takto:
 

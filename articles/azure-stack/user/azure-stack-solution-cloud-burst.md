@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896190"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Kurz: Vytvoření řešení škálování cloudu s Azure
 
@@ -128,7 +128,7 @@ Azure Repos
 
 1. Přihlaste se k Azure kanály potvrďte schopnost vytvářet definice sestavení.
 
-2. Přidat **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s.Net Core.
+2. Přidat **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s .NET Core.
 
     ![Alternativní text](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -266,7 +266,7 @@ Teď, když existuje informace o koncovém bodu Azure kanály pro připojení sl
 
 Použití [šablony Azure Resource Manageru, jako je web](https://azure.microsoft.com/resources/templates/) kód aplikace z úložiště Azure k nasazení pro oba cloudy.
 
-### <a name="add-code-to-a-azure-repos-project"></a>Přidání kódu do projektu úložiště Azure
+### <a name="add-code-to-an-azure-repos-project"></a>Přidejte kód do úložiště Azure projektu
 
 1.  Přihlaste se k úložišti Azure pomocí účtu, který má práva k vytvoření projektu ve službě Azure Stack. Následující snímek obrazovky ukazuje, jak se připojit k projektu HybridCICD.
 
@@ -286,7 +286,7 @@ Použití [šablony Azure Resource Manageru, jako je web](https://azure.microsof
 
 2.  Přejděte **sestavit webovou aplikaci** stránky pro projekt.
 
-3.  V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s.Net Core.
+3.  V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s .NET Core.
 
 4.  Spuštění sestavení. [Samostatná nasazení sestavení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) procesu budete publikovat artefakty, které lze spustit v Azure a Azure Stack.
 

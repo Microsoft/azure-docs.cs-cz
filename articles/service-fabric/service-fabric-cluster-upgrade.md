@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: f19693853672b6274265c95b851f478b4f3ef4a2
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: a3778a0b0e5b4b59eb29cb67c0596d9636eb3ccb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961886"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166697"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizuje se cluster Azure Service Fabric
 
@@ -101,8 +101,6 @@ Mnoho různých konfiguračních nastavení se dají přizpůsobit v clusteru, j
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Opravy operačního systému v uzlech clusteru
 Aplikace orchestraci oprav (POA) je aplikace Service Fabric, který automatizuje operačního systému, použití dílčích oprav v clusteru Service Fabric bez jakýchkoli prostojů. [Opravy Orchestrace aplikace pro Windows](service-fabric-patch-orchestration-application.md) nebo [aplikace orchestraci oprav pro Linux](service-fabric-patch-orchestration-application-linux.md) je možné nasadit v clusteru pro instalaci oprav iniciovat organizovaně, což způsobem při zachování služeb dostupné neustále. 
 
-## <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Upgrady operačního systému na virtuálních počítačích, které tvoří cluster
-Pokud je nutné upgradovat image operačního systému na virtuálních počítačích clusteru, je nutné ho jeden virtuální počítač najednou. Jste zodpovědní pro tento upgrade – aktuálně nejsou k dispozici žádné automatizace pro tento.
 
 ## <a name="next-steps"></a>Další postup
 * Zjistěte, jak přizpůsobit některé z [service fabric nastavení prostředků infrastruktury clusteru](service-fabric-cluster-fabric-settings.md)

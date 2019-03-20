@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c4c4bb924ed6faf1b194273a3cf8c17b16d741
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e425efda49e02c895d288b517635525e7fa444e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209876"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Integrace Azure Active Directory s Kintone
 
@@ -116,6 +116,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.kintone.com`
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<companyname>.cybozu.com`|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422048"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858163"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru
 ## <a name="overview"></a>Přehled
@@ -30,7 +30,7 @@ Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 * [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com)
-* [Připojení k účtu úložiště nebo službě Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Připojení k účtu služby Azure storage nebo service](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 Všechny objekty BLOB se musí nacházet v kontejneru objektů blob, který je jednoduše logické seskupení objektů BLOB. Účet může obsahovat neomezený počet kontejnerů a každý kontejner můžete pojmout neomezený počet objektů BLOB.
@@ -44,7 +44,7 @@ Následující postup ukazuje, jak vytvořit kontejner objektů blob v Průzkumn
    ![Vytvořit kontejnery místní nabídka objektu blob][0]
 4. Níže se zobrazí textové pole **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
 
-   ![Vytvoření kontejnerů objektů Blob textového pole][1]
+   ![Create Blob Containers text box][1]
 5. Stisknutím klávesy **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
 
    ![Vytvoření kontejneru objektů BLOB][2]

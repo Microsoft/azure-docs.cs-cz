@@ -1,6 +1,6 @@
 ---
-title: Příprava infrastruktury Azure pro vysokou dostupnost SAP použití clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky pro instance SAP ASC nebo SCS | Microsoft Docs
-description: Příprava infrastruktury Azure pro vysokou dostupnost SAP pomocí pro SAP ASC nebo SCS instance clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky
+title: Příprava infrastruktury Azure pro zajištění vysoké dostupnosti SAP pomocí clusteru převzetí služeb při selhání Windows a sdílené instance SAP ASCS/SCS | Dokumentace Microsoftu
+description: Příprava infrastruktury Azure pro zajištění vysoké dostupnosti SAP pomocí clusteru převzetí služeb při selhání Windows a sdílené instance SAP ASCS/SCS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf0f06528b3571ce8307a2fed2fb9c43f608d15d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 064daa7ed8fb5be34524d9ea27cfa6c22b9c3e66
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656709"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008371"
 ---
-# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Připravit infrastrukturu Azure pro zajištění vysoké dostupnosti SAP pomocí systému Windows převzetí služeb při selhání clusteru a sdílení souborů pro SAP ASC nebo SCS instance
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Příprava infrastruktury Azure pro zajištění vysoké dostupnosti SAP pomocí Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -46,7 +46,7 @@ ms.locfileid: "34656709"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -99,7 +99,7 @@ ms.locfileid: "34656709"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností více SID SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace vysoké dostupnosti SAP s několika SID)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -207,46 +207,46 @@ ms.locfileid: "34656709"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Tento článek popisuje kroky přípravy infrastrukturu Azure, které jsou potřebné k instalaci a konfiguraci SAP systémů s vysokou dostupností na clusteru Windows Server Failover Clustering (WSFC), používá sdílenou složku se Škálováním na jako možnost pro clustering SAP ASC nebo SCS instance.
+Tento článek popisuje kroky přípravy infrastruktury Azure, které jsou potřebné k instalaci a konfiguraci SAP systémů s vysokou dostupností na clusteru systému Windows Server Failover Clustering (WSFC), pomocí horizontální navýšení kapacity sdílené složky jako možnost pro clusteringu SAP ASCS/SCS instance.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Než začnete s instalací, projděte si v následujícím článku:
+Před zahájením instalace, projděte si následující článek:
 
-* [Průvodce architekturou: instance clusteru SAP ASC nebo SCS při selhání Windows clusteru pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share]
+* [Průvodce architekturou: Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdílené složky][sap-high-availability-guide-wsfc-file-share]
 
 
-## <a name="host-names-and-ip-addresses"></a>Názvy hostitelů a IP adresy
+## <a name="host-names-and-ip-addresses"></a>Názvy hostitele a IP adresy
 
-| Název role virtuálních hostitelů | Název virtuálního hostitele | Statická IP adresa | Skupina dostupnosti |
+| Virtuální hostitel název role | Název virtuálního hostitele | Statická IP adresa | Skupina dostupnosti |
 | --- | --- | --- | --- |
-| První cluster ASC nebo SCS uzlu clusteru | ASC-1 | 10.0.6.4 | ASC-jako |
-| Druhé clusteru ASC nebo SCS uzlu clusteru | ASC-2 | 10.0.6.5 | ASC-jako |
-| Název sítě s clustery |ASC cl | 10.0.6.6 | neuvedeno |
-| Název sítě s clustery PR1 ASC SAP |PR1 ASC | 10.0.6.7 | neuvedeno |
+| První clusteru ASC/SCS uzlu clusteru | ascs-1 | 10.0.6.4 | ascs-as |
+| Druhá clusteru ASC/SCS uzlu clusteru | ascs-2 | 10.0.6.5 | ascs-as |
+| Název sítě s clustery |ascs-cl | 10.0.6.6 | neuvedeno |
+| Název sítě clusteru ASC PR1 SAP |pr1-ascs | 10.0.6.7 | neuvedeno |
 
 
-**Tabulka 1**: ASC nebo SCS clusteru
+**Tabulka 1**: Clusteru ASC/SCS
 
-| SAP \<SID &GT; | Čísla instance SAP ASC nebo SCS |
+| SAP \<SID> | Číslo instance SAP ASCS/SCS |
 | --- | --- |
 | PR1 | 00 |
 
-**Tabulka 2**: SAP ASC nebo SCS instance podrobnosti
+**Tabulka 2**: Podrobnosti o instanci SAP ASCS/SCS
 
 
-| Název role virtuálních hostitelů | Název virtuálního hostitele | Statická IP adresa | Skupina dostupnosti |
+| Virtuální hostitel název role | Název virtuálního hostitele | Statická IP adresa | Skupina dostupnosti |
 | --- | --- | --- | --- |
-| Prvním uzlu clusteru | sofs-1 | 10.0.6.10 | sofs-jako |
-| Druhý uzel clusteru | sofs-2 | 10.0.6.11 | sofs-jako |
-| Třetí uzlu clusteru | sofs – 3 | 10.0.6.12 | sofs-jako |
-| Název sítě s clustery | sofs cl | 10.0.6.13 | neuvedeno |
-| Název hostitele globální SAP | sapglobal | Používat IP adresy všech uzlů clusteru | neuvedeno |
+| Prvním uzlu clusteru | sofs-1 | 10.0.6.10 | sofs-as |
+| Druhý uzel clusteru | sofs-2 | 10.0.6.11 | sofs-as |
+| Třetí uzlu clusteru | sofs-3 | 10.0.6.12 | sofs-as |
+| Název sítě s clustery | sofs-cl | 10.0.6.13 | neuvedeno |
+| Název globální hostitele SAP | sapglobal | Použití IP adresy všech uzlů clusteru | neuvedeno |
 
-**Tabulka 3**: clusteru souborových serverů se Škálováním na více systémů
+**Tabulka 3**: Cluster souborových serverů se Škálováním
 
 
-## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Nasazení virtuálních počítačů pro cluster služby SAP ASC nebo SCS, cluster systému správy databáze správu systému (databáze) a instancí aplikačního serveru SAP
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Nasazení virtuálních počítačů pro cluster SAP ASCS/SCS, systém správy databáze (DBMS) clusteru a instance aplikační Server SAP
 
 Pokud chcete připravit infrastrukturu Azure, proveďte následující kroky:
 
@@ -256,24 +256,24 @@ Pokud chcete připravit infrastrukturu Azure, proveďte následující kroky:
 
 * [Nastavte požadované DNS IP adresy][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
 
-* [Nastavení statické IP adresy pro virtuální počítače SAP][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
+* [Nastavení statické IP adresy pro SAP virtual machines][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
 
-* [Nastavit statickou IP adresu pro nástroj pro vyrovnávání zatížení Azure interní][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
+* [Nastavit statickou IP adresu nástroje pro vyrovnávání zatížení Azure interní][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
 
-* [Výchozí sada Vyrovnávání zatížení ASC nebo SCS pravidla pro vyrovnávání zatížení Azure interní][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
+* [Nastavit výchozí ASC/SCS Vyrovnávání zatížení pravidla nástroje pro vyrovnávání zatížení Azure interní][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
 
-* [Změňte pravidla pro vyrovnávání zatížení Azure interní Vyrovnávání zatížení výchozí ASC nebo SCS][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+* [Změna pravidel nástroje pro vyrovnávání zatížení Azure interní Vyrovnávání zatížení výchozí ASC/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
 
-* [Přidejte virtuální počítače s Windows do domény][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Přidání Windows virtuálních počítačů k doméně][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* [Přidat položky registru na obou uzlů clusteru instance SAP ASC nebo SCS][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* Při používání systému Windows Server 2016, doporučujeme nakonfigurovat [Azure Cloud určující][deploy-cloud-witness].
+* Při použití Windows serveru 2016, doporučujeme, abyste nakonfigurovali [disk s kopií cloudu Azure][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Ruční nasazení clusteru souborového serveru Škálovaného na více systémů 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Ruční nasazení clusteru souborových serverů se Škálováním 
 
-Cluster souborového serveru Škálovaného na více systémů Microsoft lze nasadit ručně, jak je popsáno v blogu [prostory úložiště – přímé v Azure][ms-blog-s2d-in-azure], a to spuštěním následující kód:  
+Můžete nasadit clusteru souborových serverů se Škálováním Microsoft ručně, jak je popsáno v blogovém [prostory úložiště – přímé v Azure][ms-blog-s2d-in-azure], spuštěním následujícího kódu:  
 
 
 ```PowerShell
@@ -306,42 +306,42 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Automaticky nasazení souborového serveru Škálovaného na více systémů
+## <a name="deploy-scale-out-file-server-automatically"></a>Automatické nasazení souborového serveru se Škálováním
 
-Můžete také automatizovat nasazení souborového serveru se Škálováním na více systémů s použitím šablon Azure Resource Manageru do existující virtuální síť a prostředí služby Active Directory.
+Můžete automatizovat nasazení souborového serveru se Škálováním pomocí šablony Azure Resource Manageru do existující virtuální síť a prostředí služby Active Directory.
 
 > [!IMPORTANT]
-> Doporučujeme, abyste měli tři nebo více uzlech clusteru souborového serveru Škálovaného na více systémů s třícestné zrcadlení.
+> Doporučujeme, abyste měli tři nebo více uzlů clusteru souborového serveru se Škálováním pomocí trojcestné zrcadlení.
 >
-> V šabloně správce prostředků souborového serveru Škálovaného na více systémů uživatelského rozhraní je nutné zadat počet virtuálních počítačů.
+> Šablony správce prostředků souborového serveru horizontální navýšení kapacity uživatelského rozhraní je nutné zadat počet virtuálních počítačů.
 >
 
-### <a name="use-managed-disks"></a>Používat spravované disky
+### <a name="use-managed-disks"></a>Použít spravované disky
 
-Šablony Azure Resource Manageru pro nasazováním souborového serveru Škálovaného na více systémů s prostory úložiště – přímé a disky spravované Azure je k dispozici na [Githubu][arm-sofs-s2d-managed-disks].
+Šablony Azure Resource Manageru pro nasazení souborového serveru se Škálováním pomocí prostorů úložiště s přímým a Azure Managed Disks je k dispozici na [Githubu][arm-sofs-s2d-managed-disks].
 
-Doporučujeme použít spravované disky.
+Doporučujeme používat službu Managed Disks.
 
-![Obrázek 1: Obrazovky uživatelského rozhraní pro šablonu správce prostředků souborového serveru Škálovaného na více systémů s spravované disky][sap-ha-guide-figure-8010]
+![Obrázek 1: Obrazovky uživatelského rozhraní pro šablony správce prostředků souborového serveru horizontální navýšení kapacity se spravovanými disky][sap-ha-guide-figure-8010]
 
-_**Obrázek 1**: obrazovky uživatelského rozhraní pro šablonu správce prostředků souborového serveru Škálovaného na více systémů s spravované disky_
+_**Obrázek 1**: Obrazovky uživatelského rozhraní pro šablony správce prostředků souborového serveru horizontální navýšení kapacity se spravovanými disky_
 
 V šabloně postupujte takto:
 1. V **počet virtuálních počítačů** zadejte minimální počet **2**.
-2. V **počet disků virtuálních počítačů** zadejte minimální diskový počet **3** (2 disky + 1 disku k výměně za chodu = 3 disky).
-3. V **Sofs název** zadejte název sítě globální hostitele SAP **sapglobalhost**.
-4. V **název sdílené složky** zadejte název sdílené složky souborů **sapmnt**.
+2. V **počet disků virtuálního počítače** zadejte minimální diskový počet **3** (2 disků + 1 náhradní disk = 3 disky).
+3. V **název serveru Sofs** zadejte název sítě hostitele globální SAP **sapglobalhost**.
+4. V **název sdílené složky** zadejte název sdílené složky souboru **sapmnt**.
 
-### <a name="use-unmanaged-disks"></a>Použití nespravovaného disky
+### <a name="use-unmanaged-disks"></a>Použití nespravovaných disků
 
-Šablony Azure Resource Manageru pro nasazení souborového serveru Škálovaného na více systémů s prostory úložiště – přímé a nespravované disky Azure je k dispozici na [Githubu][arm-sofs-s2d-non-managed-disks].
+Šablona Azure Resource Manageru pro nasazení souborového serveru se Škálováním pomocí prostorů úložiště s přímým a nespravované disky Azure je k dispozici [Githubu][arm-sofs-s2d-non-managed-disks].
 
-![Obrázek 2: Obrazovky uživatelského rozhraní pro šablonu správce prostředků Škálováním na více systémů souborového serveru Azure bez spravovaných disků][sap-ha-guide-figure-8011]
+![Obrázek 2: Obrazovky uživatelského rozhraní pro šablonu Scale-Out File Server Azure Resource Manageru bez spravovaných disků][sap-ha-guide-figure-8011]
 
-_**Obrázek 2**: obrazovky uživatelského rozhraní pro šablonu správce prostředků Škálováním na více systémů souborového serveru Azure bez spravovaných disků_
+_**Obrázek 2**: Obrazovky uživatelského rozhraní pro šablonu Scale-Out File Server Azure Resource Manageru bez spravovaných disků_
 
-V **typ účtu úložiště** vyberte **Storage úrovně Premium**. Všechna ostatní nastavení jsou stejné jako nastavení pro spravovaný disky.
+V **typ účtu úložiště** vyberte **Premium Storage**. Všechna ostatní nastavení se neshoduje s nastavením pro spravované disky.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nainstalujte SAP NetWeaver vysokou dostupnost systému Windows převzetí služeb při selhání clusteru a sdílení souborů pro SAP ASC nebo SCS instance][sap-high-availability-installation-wsfc-file-share]
+* [Vysoká dostupnost SAP NetWeaver nainstalovat Windows převzetí služeb při selhání clusteru a sdílenou složku pro instance SAP ASCS/SCS][sap-high-availability-installation-wsfc-file-share]

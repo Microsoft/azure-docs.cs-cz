@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Dotazování na data v Azure Data Exploreru'
+title: 'Rychlý start: Dotazování dat v Průzkumníku dat Azure'
 description: V tomto rychlém startu se naučíte dotazovat na data v Azure Data Exploreru a sdílet je v něm.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106443"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225769"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Rychlý start: Dotazování na data v Azure Data Exploreru
+# <a name="quickstart-query-data-in-azure-data-explorer"></a>Rychlý start: Dotazování dat v Průzkumníku dat Azure
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje webovou aplikaci, která umožňuje spouštět a sdílet dotazy. Aplikace je dostupná na portálu Azure Portal a jako samostatná webová aplikace. V tomto článku pracujete v samostatné verzi, která umožňuje připojení k více clusterům a sdílení přímých odkazů na vaše dotazy.
 
@@ -39,7 +39,11 @@ Abyste mohli začít spouštět dotazy, musíte přidat připojení aspoň k jed
 
 1. V levém horním rohu aplikace vyberte **Přidat cluster**.
 
-1. V dialogovém okně **Přidat cluster** zadejte `https://help.kusto.windows.net` a pak vyberte **Přidat**.
+1. V **clusteru přidat** dialogové okno, zadejte identifikátor URI a pak vyberte **přidat**.
+
+   Můžete použít identifikátor URI, clusteru help `https://help.kusto.windows.net`. Pokud máte vlastní cluster, zadejte identifikátor URI clusteru. Například `https://mydataexplorercluster.westus.kusto.windows.net` stejně jako na následujícím obrázku:
+
+    ![Identifikátor URI webu Portal serveru](media/web-query-data/server-uri.png)
 
 1. V levém podokně byste teď měli vidět cluster **nápovědy**. Rozbalením databáze **Ukázky** si zobrazte ukázkové tabulky, ke kterým máte přístup.
 
@@ -148,7 +152,7 @@ Už víte, jak fungují základní dotazy. Teď se pojďme podívat na to, jak s
 
     Tento panel funguje podobně jako seznam polí kontingenční tabulky v Excelu, protože vám přímo v mřížce umožňuje provádět další analýzu.
 
-1. Zaškrtněte políčko **Režim pivotu** a potom přetáhněte sloupce následovně: **State** do části **Row groups** (Skupiny řádků); **DamageProperty** do části **Values** (Hodnoty) a **EventType** do části **Column labels** (Popisky sloupců).  
+1. Vyberte **režim Pivotu**, přetáhněte sloupce následujícím způsobem: **Stav** k **řádek skupiny**; **DamageProperty** k **hodnoty**; a **EventType** k **popisky sloupců**.  
 
     ![Režim pivotu](media/web-query-data/pivot-mode.png)
 

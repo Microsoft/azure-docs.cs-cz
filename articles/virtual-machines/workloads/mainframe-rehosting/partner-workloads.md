@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: b4ba59ef24ec106c5a5f21f395445ca39b2bd1ea
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: faaba873f20fc0ac04abdd7bd78dd85429d341e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739469"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996527"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Úlohy mainframových podporované v Azure
 
@@ -26,7 +26,7 @@ Další pomoc s emulace sálové počítače a služby, najdete [migrace Mainfra
 - [Visual COBOL Micro fokus](https://www.microfocus.com/products/visual-cobol/) nástroje pro vývoj a integraci.
 - [Micro fokus PL / můžu](https://www.microfocus.com/campaign/download/pli-modernization/) starší verzi kompilátoru pro platformu .NET, podporuje mainframových PL / můžu syntaxe, datových typů a chování.
 - [Server Enterprise Micro fokus](https://www.microfocus.com/products/enterprise-suite/enterprise-server/) mainframových integrační platformě.
-- [Fujitsu NetCOBOL](http://www.fujitsu.com/global/products/software/developer-tool/netcobol/) nástroje pro vývoj a integraci.
+- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/) nástroje pro vývoj a integraci.
 - [NTT Data organizace COBOL](https://www.nttdataservices.com/en-ie/services/application-modernization-services) nástroje pro vývoj a integraci.
 - [Otevřít NTT PL / můžu](https://www.nttdataservices.com/en-ie/services/application-modernization-services) starší verzi kompilátoru pro platformu .NET, podporuje mainframových PL / můžu syntaxe, datových typů a chování.
 - [Kompilátor Raincode COBOL](https://www.raincode.com/products/cobol/) nástroje pro vývoj a integraci.

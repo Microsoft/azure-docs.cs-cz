@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 08910cbae9f370dde7b8718ca4868dc7b3510f8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108895"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202703"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoop v HDInsight
 
@@ -216,11 +216,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 ## <a name="run-an-apache-pig-job"></a>Spuštění úlohy Apache Pig
 
-1. Použijte jednu z následujících metod pro připojení ke clusteru HDInsight:
-
-    * Pokud používáte __založených na Linuxu__ HDInsight clusteru, pomocí SSH. Například, `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Další informace najdete v tématu [withHDInsight použití SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * Pokud používáte __založené na Windows__ clusteru HDInsight, [připojit ke clusteru pomocí vzdálené plochy](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+1. Pomocí SSH se připojte ke clusteru HDInsight. Například, `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Další informace najdete v tématu [withHDInsight použití SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. Pomocí jedné následujícího příkazu spusťte Pig příkazového řádku:
 

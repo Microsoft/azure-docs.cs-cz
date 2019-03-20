@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a35f4d8c1d5bf5943ecba02ff262fbc7fc0730fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261992"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108219"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -87,7 +87,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
         });
         
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
+   </script>
    ```
 
 3. Upravte soubor ``hello_world.html`` a přidejte svůj instrumentační klíč.
@@ -127,7 +127,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 5. Dalším užitečným nástrojem pro instrumentaci složitějších webů s více stránkami je nástroj [**Toky uživatelů**](../../azure-monitor/app/usage-flows.md). Pomocí nástroje **Toky uživatelů** můžete sledovat cesty uživatelů různými částmi vašeho webu.
 
-  ![Vizualizace nástroje Toky uživatelů](./media/website-monitoring/user-flows.png)
+   ![Vizualizace nástroje Toky uživatelů](./media/website-monitoring/user-flows.png)
 
 Pokud se chcete dozvědět o pokročilejších konfiguracích monitorování webů, přečtěte si [referenční informace k rozhraní API sady JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 

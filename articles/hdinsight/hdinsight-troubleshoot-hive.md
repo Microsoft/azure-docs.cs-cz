@@ -8,12 +8,12 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407012"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088957"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
 
@@ -33,13 +33,13 @@ Další informace o častých dotazů a jejich řešení při práci s Apache Hi
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-  Tento příkaz vygeneruje soubor s názvem allatables.sql.
+   Tento příkaz vygeneruje soubor s názvem allatables.sql.
 
 3. Zkopírujte soubor alltables.sql do nového clusteru HDInsight a pak spusťte následující příkaz:
 
-  ```apache
-  hive -f alltables.sql
-  ```
+   ```apache
+   hive -f alltables.sql
+   ```
 
 Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud cesty k datům se liší, můžete ručně upravit soubor generovaný alltables.sql tak, aby odrážela všechny změny.
 
@@ -56,21 +56,21 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 
 2. Pokud chcete zobrazit protokoly Hive klienta, použijte následující příkaz:
 
-  ```apache
-  /tmp/<username>/hive.log 
-  ```
+   ```apache
+   /tmp/<username>/hive.log 
+   ```
 
 3. Pokud chcete zobrazit protokoly metastore Hive, použijte následující příkaz:
 
-  ```apache
-  /var/log/hive/hivemetastore.log 
-  ```
+   ```apache
+   /var/log/hive/hivemetastore.log 
+   ```
 
 4. Pokud chcete zobrazit protokoly Hiveserver, použijte následující příkaz:
 
-  ```apache
-  /var/log/hive/hiveserver2.log 
-  ```
+   ```apache
+   /var/log/hive/hiveserver2.log 
+   ```
 
 ### <a name="additional-reading"></a>Další čtení
 
@@ -83,21 +83,21 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 
 1. Zadejte pár klíč hodnota konfigurace při spuštění prostředí Hive. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
-  ```apache
-  hive -hiveconf a=b 
-  ```
+   ```apache
+   hive -hiveconf a=b 
+   ```
 
 2. Chcete-li vypsat všechny platné konfigurace v prostředí Hive, použijte následující příkaz:
 
-  ```apache
-  hive> set;
-  ```
+   ```apache
+   hive> set;
+   ```
 
-  Například použijte následující příkaz ke spuštění prostředí Hive s protokolováním ladění povoleno v konzole:
+   Například použijte následující příkaz ke spuštění prostředí Hive s protokolováním ladění povoleno v konzole:
 
-  ```apache
-  hive -hiveconf hive.root.logger=ALL,console 
-  ```
+   ```apache
+   hive -hiveconf hive.root.logger=ALL,console 
+   ```
 
 ### <a name="additional-reading"></a>Další čtení
 
@@ -113,19 +113,19 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 
 2. Na příkazovém řádku spusťte následující příkaz:
    
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
+   ```
 
 3. Seznam dalších analyzátorů, které můžete použít k analýze Tez DAG, použijte následující příkaz:
 
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
+   ```
 
-  Ukázkový program je nutné zadat jako první argument.
+   Ukázkový program je nutné zadat jako první argument.
 
-  Program platné názvy patří:
+   Program platné názvy patří:
     - **ContainerReuseAnalyzer**: Vytisknout podrobnosti o opakované použití kontejneru ve skupině DAG
     - **CriticalPath**: Najít kritické cesty DAG
     - **LocalityAnalyzer**: Vytisknout podrobnosti lokality ve skupině DAG

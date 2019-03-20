@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107725"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -47,7 +47,7 @@ SAP HANA v Azure (velké instance) nabízí dvě možnosti zálohování a obnov
 
 - Infrastruktura zálohování a obnovení. Můžete také použít funkci zálohování a obnovení, který poskytuje základní infrastruktury SAP HANA v Azure (velké instance). Tato možnost splňuje potřeby zálohování a rychlé obnovení. Zbývající část adresy funkce zálohování a obnovení, které se nabízí s velkých instancích HANA. Tato část se věnuje také relace zálohování a obnovení po havárii má nabízí funkce obnovení ve velkých instancích HANA.
 
->   [!NOTE]
+> [!NOTE]
 >   Snímek technologie, která používá základní infrastruktury velkých instancích HANA obsahuje závislost na snímky SAP HANA. V tomto okamžiku SAP HANA snímků nebudou fungovat ve spojení s více tenanty kontejnerů víceklientské databáze SAP HANA. Pokud jen pro nasazení jednoho klienta pracovní snímky SAP HANA a tuto metodu můžete použít.
 
 ## <a name="using-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>Pomocí snímků úložiště SAP Hana v Azure (velké instance)
@@ -641,44 +641,44 @@ Následující ukazuje, jak připravit pro požadavek:
 
 1. Vypnutí HANA instance.
 
- ![Vypnutí HANA instance](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
+   ![Vypnutí HANA instance](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
 1. Odpojte objemy dat v každém uzlu databáze HANA. Pokud datové svazky se pořád připojený k operačnímu systému, obnovení snímku se nezdaří.
- ![Odpojte objemy dat v každém uzlu databáze HANA](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
+   ![Odpojte objemy dat v každém uzlu databáze HANA](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. Otevřete žádost o podporu Azure a zahrňte pokyny k obnovení konkrétní snímek.
 
- - Během obnovení: SAP HANA v Azure Service Management může požádat o jeho účasti na konferenci pro zajištění koordinace, ověřování a potvrzení, že je obnovit snímek správné úložiště. 
+   - Během obnovení: SAP HANA v Azure Service Management může požádat o jeho účasti na konferenci pro zajištění koordinace, ověřování a potvrzení, že je obnovit snímek správné úložiště. 
 
- - Po obnovení: SAP HANA v Azure Service Management vás upozorní, když obnovení snímku úložiště.
+   - Po obnovení: SAP HANA v Azure Service Management vás upozorní, když obnovení snímku úložiště.
 
 1. Po dokončení procesu obnovení znovu připojte všechny datové svazky.
 
- ![Znovu připojit všechny datové svazky](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
+   ![Znovu připojit všechny datové svazky](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
 1. Možnosti obnovení v rámci SAP HANA Studio, vyberte, pokud nepocházejí automaticky při opětovném připojení k databázi HANA přes SAP HANA Studio. Následující příklad ukazuje obnovení na poslední snímek HANA. Snímek úložiště vloží jeden snímek HANA. Pokud obnovujete na nejnovější snímek úložiště, měla by být nejnovější snímek HANA. (Pokud obnovujete na starší snímek úložiště, budete muset najít snímek HANA na základě času pořízení snímku úložiště.)
 
- ![Vybrat možnosti obnovení v rámci SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
+   ![Vybrat možnosti obnovení v rámci SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
 1. Vyberte **obnovit databázi do konkrétního data zálohování nebo úložiště snímku**.
 
- ![V okně zadejte typ obnovení](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
+   ![V okně zadejte typ obnovení](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
 1. Vyberte **zadejte zálohování bez katalogu**.
 
- ![V okně zadejte umístění zálohy](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
+   ![V okně zadejte umístění zálohy](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
 1. V **cílového typu** seznamu vyberte **snímku**.
 
- ![Zadejte zálohování a obnovení okno](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
+   ![Zadejte zálohování a obnovení okno](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
 1. Vyberte **Dokončit** chcete zahájit proces obnovení.
 
- ![Vybrat dokončit"Chcete-li zahájit proces obnovení](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
+    ![Vybrat dokončit"Chcete-li zahájit proces obnovení](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
 1. Databáze HANA je obnovit a obnovení do snímku HANA, který je součástí úložiště snímku.
 
- ![Databáze HANA je obnovení a obnovit na snímek HANA](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
+    ![Databáze HANA je obnovení a obnovit na snímek HANA](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
 ### <a name="recover-to-the-most-recent-state"></a>Obnovit do posledního stavu
 
@@ -691,23 +691,23 @@ Následující proces obnoví HANA snímek, který je součástí úložiště s
 
 1. Vyberte **obnovit databázi do stavu posledního**.
 
- ![Vyberte možnost "Obnovit databázi do posledního stavu"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
+   ![Vyberte možnost "Obnovit databázi do posledního stavu"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
 1. Zadejte umístění nejnovější zálohy protokolu HANA. Umístění musí obsahovat všechny HANA zálohy transakčního protokolu ze snímku HANA na nejnovější stav.
 
- ![Zadejte umístění nejnovější zálohy protokolu HANA](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
+   ![Zadejte umístění nejnovější zálohy protokolu HANA](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
 1. Výběr zálohy jako základ, ze kterého se má obnovit databázi. V tomto příkladu snímek HANA na snímku obrazovky je snímek HANA, která byla součástí úložiště snímku. 
 
- ![Výběr zálohy jako základ, ze kterého se má obnovit databázi](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
+   ![Výběr zálohy jako základ, ze kterého se má obnovit databázi](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
 1. Zrušte **použití rozdílového zálohování** zaškrtávací políčko, pokud neexistují rozdíly mezi časem snímku HANA a nejnovější stav.
 
- ![Zrušte zaškrtnutí políčka "Použití rozdílové zálohy", pokud neexistuje žádné rozdíly](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
+   ![Zrušte zaškrtnutí políčka "Použití rozdílové zálohy", pokud neexistuje žádné rozdíly](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
 1. Na souhrnné obrazovce vyberte **Dokončit** spustíte proces obnovení.
 
- ![Na souhrnné obrazovce klepněte na tlačítko "Dokončit"](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
+   ![Na souhrnné obrazovce klepněte na tlačítko "Dokončit"](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
 ### <a name="recover-to-another-point-in-time"></a>Obnovení do jiného bodu v čase
 Chcete-li provést obnovení do bodu v čase mezi HANA snímku (zahrnutý ve snímku úložiště) a ten, který je pozdější než obnovení bodu v čase HANA snímků, postupujte následovně:

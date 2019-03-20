@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 55e414a35574f8437a30ffb75aebd82eded14fa9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878070"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené databáze SQL více tenantů
 
@@ -53,7 +53,7 @@ V tomto kurzu se naučíte:
 - Musí být nainstalované prostředí Azure PowerShell. Podrobnosti najdete v tématu [Začínáme s Azure Powershellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> Tento kurz používá funkce služby Azure SQL Database, které jsou ve verzi limited preview ([úlohy elastické databáze](sql-database-elastic-database-client-library.md)). Pokud chcete provést v tomto kurzu, zadejte ID svého předplatného na *SaaSFeedback@microsoft.com* předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). V této verzi preview je omezená, takže obraťte se na *SaaSFeedback@microsoft.com* pro dotazy související s hesly nebo podpory.
+> Tento kurz používá funkce služby Azure SQL Database, které jsou ve verzi limited preview ([úlohy elastické databáze](sql-database-elastic-database-client-library.md)). Pokud chcete provést v tomto kurzu, zadejte ID svého předplatného na *SaaSFeedback\@microsoft.com* předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). V této verzi preview je omezená, takže obraťte se na *SaaSFeedback\@microsoft.com* pro dotazy související s hesly nebo podpory.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod do principu správy schématu SaaS
 

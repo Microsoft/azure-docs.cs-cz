@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 8e8b9536c96b1f5ed899695a3715021b9f9875cf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 271e18d370068e0445f183af0c694b19f0da22f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440365"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102750"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migrace Contoso: Refaktorovat a místní aplikace do webové aplikace Azure a Azure SQL database
 
@@ -244,9 +244,9 @@ S databází migrovat, správce společnosti Contoso můžete nyní zřídit dv�
 
 Contoso potřebuje pro sestavení infrastruktury DevOps a kanály pro aplikaci.  K tomuto účelu správce společnosti Contoso vytvořit nový projekt DevOps, naimportovat kód a pak nastavení sestavení a vydávání kanálů.
 
-1.   V účtu Contoso Azure DevOps, vytvořte nový projekt (**ContosoSmartHotelRefactor**) a vyberte **Git** pro správu verzí.
+1. V účtu Contoso Azure DevOps, vytvořte nový projekt (**ContosoSmartHotelRefactor**) a vyberte **Git** pro správu verzí.
 
-    ![Nový projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
+   ![Nový projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
 2. Jejich importovat úložiště Git, která nyní obsahuje jejich kód aplikace. Se [veřejného úložiště](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) a můžete ji stáhnout.
 
     ![Stáhněte si kód aplikace](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
@@ -306,8 +306,8 @@ Správce společnosti Contoso teď nakonfigurovat Azure DevOps k provedení sest
 
 6. Složka **vyřadit** obsahuje výsledků sestavení.
 
-    - Soubory zip dva jsou balíčky obsahující aplikace.
-    - Tyto soubory se používají v kanál pro vydávání verzí pro nasazení do Azure Web Apps
+   - Soubory zip dva jsou balíčky obsahující aplikace.
+   - Tyto soubory se používají v kanál pro vydávání verzí pro nasazení do Azure Web Apps
 
      ![Artefakt](./media/contoso-migration-refactor-web-app-sql/pipeline6.png)
 
@@ -341,7 +341,7 @@ Správce společnosti Contoso teď nakonfigurovat Azure DevOps k provedení sest
 
 16. Trigger průběžného nasazování musí být nastavená na **povoleno**.
 
-   ![Průběžné nasazování povoleno](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
+    ![Průběžné nasazování povoleno](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
 17. Teď, přecházejí zpět do fáze 1 úlohy můžu úkoly a klikněte na **nasazení služby Azure App Service**.
 

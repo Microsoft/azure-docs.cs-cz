@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117264"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak odeslat měření Real User Measurements do Azure Traffic Manager pomocí webových stránek
 
@@ -34,7 +34,7 @@ Získání klíče REÁLNÝCH pomocí webu Azure portal:
 3. V okně profilu Traffic Manageru, klikněte na tlačítko **měření Real User Measurements** pod **nastavení**.
 4. Klikněte na tlačítko **vygenerovat klíč** a vytvořte nový klíč REÁLNÝCH.
  
-  ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Obrázek 1: Vygenerovat klíč měření reálných uživatelů**
 
@@ -44,7 +44,7 @@ Získání klíče REÁLNÝCH pomocí webu Azure portal:
 
     **Obrázek 2: Klíč měření reálných uživatelů a JavaScript měření**
  
-6.  Klikněte na tlačítko **kopírování** tlačítka pro kopírování kódu jazyka JavaScript. 
+6. Klikněte na tlačítko **kopírování** tlačítka pro kopírování kódu jazyka JavaScript. 
 
 >[!IMPORTANT]
 > Pomocí generovaného jazyka JavaScript pro funkci měření Real User Measurements fungovat správně. Všechny změny tohoto skriptu nebo skripty používané měření Real User Measurements může způsobit nepředvídatelné chování.

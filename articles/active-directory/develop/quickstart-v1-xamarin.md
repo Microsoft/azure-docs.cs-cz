@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6266ec1f01a50756f745c3e8185c9fe34e102b4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078699"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Rychlý start: Vytvořte aplikaci typu Xamarin, která se integruje přihlašování společnosti Microsoft
 
@@ -59,11 +59,12 @@ K tomu, aby aplikace k získání tokenů, musíte nejprve zaregistrovat ve vaš
 3. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
 4. Klikněte na **Registrace aplikací** a pak vyberte **Přidat**.
 5. Chcete-li vytvořit nový **nativní klientská aplikace**, postupujte podle zobrazených výzev.
-  * **Název** popis aplikace pro uživatele.
-  * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu (například http://DirectorySearcher).
+   * **Název** popis aplikace pro uživatele.
+   * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu (například `http://DirectorySearcher`).
 6. Po dokončení registrace Azure AD přiřadí aplikace jedinečné ID. Zkopírujte hodnotu z **aplikace** kartu, protože ho budete potřebovat později.
 7. Na **nastavení** stránce **požadovaná oprávnění**a pak vyberte **přidat**.
-8. Vyberte **Microsoft Graphu** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění. Tato akce umožní aplikaci k dotazování rozhraní Graph API pro uživatele.
+8. Vyberte **Microsoft Graphu** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění. 
+   Tato akce umožní aplikaci k dotazování rozhraní Graph API pro uživatele.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
 
@@ -95,9 +96,9 @@ Teď, když máte aplikaci ve službě Azure AD, můžete nainstalovat knihovnu 
 2. V projektu DirectorySearcherLib otevřete DirectorySearcher.cs.
 3. Hodnoty členů třídy nahraďte hodnotami, které jste zadali na webu Azure Portal. Váš kód odkazuje na tyto hodnoty pokaždé, když se používá ADAL.
 
-  * *Tenanta* je doména tenanta Azure AD (například contoso.onmicrosoft.com).
-  * *ClientId* je ID klienta aplikace, které jste zkopírovali z portálu.
-  * *ReturnUri* je identifikátor URI, který jste zadali v portálu pro přesměrování (například http://DirectorySearcher).
+   * *Tenanta* je doména tenanta Azure AD (například contoso.onmicrosoft.com).
+   * *ClientId* je ID klienta aplikace, které jste zkopírovali z portálu.
+   * *ReturnUri* je identifikátor URI, který jste zadali v portálu pro přesměrování (například `http://DirectorySearcher`).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití knihovny ADAL k získání tokenů z Azure AD
 

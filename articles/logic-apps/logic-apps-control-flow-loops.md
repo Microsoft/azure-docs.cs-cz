@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159481"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225004"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
 
@@ -166,7 +166,8 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 > Tyto kroky používají Office 365 Outlook, ale mohou využívat kteréhokoli zprostředkovatele e-mailu, který podporuje Logic Apps. 
 > [Zkontrolujte na seznam konektorů zde](https://docs.microsoft.com/connectors/). Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak. 
 
-1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky zvolte pod vyhledávacím polem **všechny**. Vyhledejte "opakování". Ze seznamu triggerů vyberte tento trigger: **Opakování – plán**
+1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky zvolte pod vyhledávacím polem **všechny**. Vyhledejte "opakování". 
+   Ze seznamu triggerů vyberte tento trigger: **Opakování – plán**
 
    ![Přidání triggeru "Plán – opakování"](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +182,8 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
    | **V těchto hodinách** | 8 |
    ||| 
 
-1. Pod triggerem zvolte **nový krok**. Vyhledejte "proměnné" a vyberte tuto akci: **Inicializace proměnné – proměnné**
+1. Pod triggerem zvolte **nový krok**. 
+   Vyhledejte "proměnné" a vyberte tuto akci: **Inicializace proměnné – proměnné**
 
    ![Přidání akce "Inicializace proměnné - proměnné"](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -202,7 +204,8 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 
    ![Přidání "smyčky do"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. Vytvoření smyčky ukončovací podmínky tak, že vyberete **Limit** proměnné a **rovná** operátor. Zadejte **10** jako hodnotu porovnání.
+1. Vytvoření smyčky ukončovací podmínky tak, že vyberete **Limit** proměnné a **rovná** operátor. 
+   Zadejte **10** jako hodnotu porovnání.
 
    ![Sestavení ukončovací podmínky pro ukončení smyčky](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
@@ -214,32 +217,33 @@ Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodn
 
 1. Pro **název**, vyberte **Limit** proměnné. Pro **hodnota**, zadejte hodnotu "1". 
 
-   !["Limit" přírůstkem 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     !["Limit" přírůstkem 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. Mimo a v rámci smyčky, zvolte **nový krok**. 
 
-1. Pod vyhledávacím polem vyberte **všechny**. Najděte a přidejte akci, která se odešle e-mailu, například: 
+1. Pod vyhledávacím polem vyberte **všechny**. 
+     Najděte a přidejte akci, která se odešle e-mailu, například: 
 
-   ![Přidejte akci, která odešle e-mailu](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![Přidejte akci, která odešle e-mailu](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. Pokud budete vyzváni, přihlaste se k e-mailovému účtu.
 
 1. Nastavení e-mailu vlastností akce. Přidat **Limit** proměnné subjektu. Tímto způsobem můžete ověřit, že se že aktuální hodnota proměnné splňuje zadanou podmínku, třeba:
 
-    ![Nastavit vlastnosti e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![Nastavit vlastnosti e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | Vlastnost | Hodnota | Popis |
-    | -------- | ----- | ----------- | 
-    | **Komu** | *<email-address@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
-    | **Předmět** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
-    | **Text** | <*obsah e-mailu*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
-    |||| 
+      | Vlastnost | Hodnota | Popis |
+      | -------- | ----- | ----------- | 
+      | **Komu** | *<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
+      | **Předmět** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
+      | **Text** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
+      |||| 
 
 1. Uložte svou aplikaci logiky. Chcete-li ručním testováním aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.
 
-    Po svoji logiku spustí, dostanete e-mail s obsahem, který jste zadali:
+      Po svoji logiku spustí, dostanete e-mail s obsahem, který jste zadali:
 
-    ![Přijatých e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![Přijatých e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>Zabránit nekonečná smyčka
 

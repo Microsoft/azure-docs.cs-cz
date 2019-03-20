@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897504"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -27,7 +27,7 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvažte použití [LUIS odeslání](luis-concept-enterprise.md#dispatch-tool-and-model) aplikace nebo pomocí [LUIS kontejneru](luis-container-howto.md). 
 
 |Oblast|Omezení|
-|--|:--|--|
+|--|:--|
 | [Název aplikace][luis-get-started-create-app] | * Znak výchozí maximální |
 | [Testování služby batch][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
@@ -41,7 +41,7 @@ Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvaž
 | [Regulární výraz entity](./luis-concept-entity-types.md)|20 entity<br>Max. 500 znaků. každý vzor regulárního výrazu entity|
 | [Role](luis-concept-roles.md)|300 role na aplikaci. 10 rolemi na entitu|
 | [Utterance][utterances] | 500 znaků|
-| [Projevy][utterances] | 15 000 na aplikaci.|
+| [Projevy][utterances] | 15 000 za aplikace – neexistuje žádné omezení počtu projevy na záměr|
 | [Verze](luis-concept-version.md)| bez omezení |
 | [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a tečky (.) |
 

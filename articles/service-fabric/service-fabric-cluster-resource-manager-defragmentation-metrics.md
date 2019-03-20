@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a50d65940ec12f9883f8991307c3cc5692d96f06
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6c15526169a984ffdaee826fec6ac21fc42647e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738075"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086781"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentaci metrik a zatížení v Service Fabric
 Service Fabric Cluster Resource Manager výchozí strategii pro správu metriky zatížení v clusteru je můžete distribuovat zatížení. Zajištění, že uzly jsou rovnoměrně využít zabraňuje horké a studené body, které vedou ke soupeření a nevyužité prostředky. Distribuce zatížení v clusteru je také nejbezpečnější z hlediska přežití selhání, protože zajišťuje, že selhání nepřijímá si vysoké procento konkrétní úlohu. 
@@ -41,6 +41,7 @@ Defragmentace zvýšit impactfulness selhání, protože další služby spušt�
 Následující diagram nabízí vizuální znázornění dva clustery, ten, který je defragmentovat a, který není. 
 
 <center>
+
 ![Porovnání s vyrovnáváním a defragmentovat clusterů][Image1]
 </center>
 

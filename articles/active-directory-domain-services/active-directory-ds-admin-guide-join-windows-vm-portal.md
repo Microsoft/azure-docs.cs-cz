@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900586"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Windows Server ke spravované doméně
 Tento článek popisuje postup nasazení virtuálního počítače s Windows serverem pomocí webu Azure portal. Následně ukazuje, jak připojit virtuální počítač k spravované doméně služby Azure Active Directory Domain Services (Azure AD DS).
@@ -107,7 +107,7 @@ K připojení virtuálních počítačů s Windows serverem do Azure AD DS sprav
 
 7. Zadejte přihlašovací údaje v některém z následujících způsobů:
 
-   * **Formát UPN**: (Doporučeno) Příponou hlavního názvu (UPN) uživatele pro uživatelský účet, zadejte, jak nakonfigurovat ve službě Azure AD. V tomto příkladu přípona UPN uživatele *bob* je *bob@domainservicespreview.onmicrosoft.com*.
+   * **Formát UPN**: (Doporučeno) Příponou hlavního názvu (UPN) uživatele pro uživatelský účet, zadejte, jak nakonfigurovat ve službě Azure AD. V tomto příkladu přípona UPN uživatele *bob* je *bob\@domainservicespreview.onmicrosoft.com*.
 
    * **Formátu SAMAccountName**: Můžete zadat název účtu ve formátu SAMAccountName. V tomto příkladu uživatel *bob* by bylo potřeba zadat *CONTOSO100\bob*.
 
@@ -146,7 +146,7 @@ Pokud máte potíže s přihlašovacími údaji a se nám připojit se k domén�
 
 * Zkontrolujte, jestli máte [povolili synchronizaci hesel](active-directory-ds-getting-started-password-sync.md) do spravované domény.
 
-* Zkontrolujte, že jste použili (UPN) uživatele, jak nakonfigurovat ve službě Azure AD (například *bob@domainservicespreview.onmicrosoft.com*) pro přihlášení.
+* Zkontrolujte, že jste použili (UPN) uživatele, jak nakonfigurovat ve službě Azure AD (například *bob\@domainservicespreview.onmicrosoft.com*) pro přihlášení.
 
 * Počkejte dostatečně dlouho synchronizace hesel do dokončení, jak je uvedeno v získávání Příručka Začínáme.
 

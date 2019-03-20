@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039465"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002382"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
@@ -190,7 +190,7 @@ Nyní nainstalujte konfigurační server:
 
 > [!NOTE]
 > Konfigurační server, můžete ji také nainstalovat z příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
-
+> 
 > Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete provést aktualizaci okamžitě, vyberte **Konfigurační servery** > ***název serveru*** > **Aktualizovat server**.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Krok 4: Nastavení cílového prostředí
@@ -214,7 +214,7 @@ Vyberte a zkontrolujte cílové prostředky.
 4. V **uchování bodu obnovení**, určete, jak dlouho zůstane každý bod obnovení. Replikované virtuální počítače můžete obnovit do libovolného bodu v zadané časové okno.
 5. V **frekvence snímků konzistentní vzhledem k**, určete, jak často vytvářejí snímky konzistentní s aplikací.
 
-    - Snímky konzistentní s aplikací je snímek dat aplikací ve virtuálním počítači v daném okamžiku.
+    - Konzistentní vzhledem k snímku je snímek dat aplikací ve virtuálním počítači v daném okamžiku.
     - Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace na virtuálním počítači v konzistentním stavu při pořízení snímku.
 6. Vyberte **OK** a vytvořte zásadu.
 
@@ -249,9 +249,9 @@ Ujistěte se, že jste dokončili všechny úkoly v [krok 1: Příprava počíta
 
 > [!NOTE]
 > Jakmile bude replikace virtuálního počítače povolená, Site Recovery nainstaluje službu mobility.
-
+> 
 > Může to trvat 15 minut nebo déle, než se změny projeví a objeví se na portálu.
-
+> 
 > Pokud chcete monitorovat virtuální počítače, které jste přidali, zkontrolujte čas posledního zjištění virtuálních počítačů v části **Konfigurační servery** > **Poslední kontakt**. Pokud chcete přidat virtuální počítače bez čekání na naplánované zjišťování, zvýrazněte konfigurační server (nevybírejte ho) a vyberte **Aktualizovat**.
 
 

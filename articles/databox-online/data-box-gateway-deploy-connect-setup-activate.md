@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 84eb458c68c7accf1b638b8e21907516328cb892
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112292"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Kurz: Připojení, nastavit, aktivovat Azure Data Box Gateway (Preview) 
 
@@ -80,12 +80,12 @@ Teď jste na **řídicí panel** vašeho zařízení.
    
     Při konfiguraci nastavení sítě, mějte následující:
 
-    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Proto IP adresu, podsíť, brána a DNS jsou automaticky přiřazeny.
-    - Pokud není povolený DHCP, můžete přiřadit statické IP adresy v případě potřeby.
-    - Síťové rozhraní můžete nakonfigurovat jako pro protokol IPv4.
+   - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Proto IP adresu, podsíť, brána a DNS jsou automaticky přiřazeny.
+   - Pokud není povolený DHCP, můžete přiřadit statické IP adresy v případě potřeby.
+   - Síťové rozhraní můžete nakonfigurovat jako pro protokol IPv4.
 
-    >[!NOTE] 
-    > Doporučujeme přepnutí místní IP adresa síťového rozhraní ze statické na protokol DHCP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud pomocí některé síťové rozhraní a můžete přepnout na DHCP, by existovat žádný způsob, jak určit adresu ze serveru DHCP. Pokud chcete změnit adresu DHCP, počkat, dokud se zařízení zaregistruje ve službě a potom změňte. Pak můžete zobrazit IP adresy všech adaptérů v **vlastnosti zařízení** na webu Azure Portal pro vaši službu.
+     >[!NOTE] 
+     > Doporučujeme přepnutí místní IP adresa síťového rozhraní ze statické na protokol DHCP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud pomocí některé síťové rozhraní a můžete přepnout na DHCP, by existovat žádný způsob, jak určit adresu ze serveru DHCP. Pokud chcete změnit adresu DHCP, počkat, dokud se zařízení zaregistruje ve službě a potom změňte. Pak můžete zobrazit IP adresy všech adaptérů v **vlastnosti zařízení** na webu Azure Portal pro vaši službu.
 
 4. (Volitelně) nakonfigurujte váš webový proxy server. Sice volitelné konfigurace webového proxy serveru, mějte na paměti, že pokud používáte webový proxy server, můžete pouze nakonfigurovat ji sem.
    

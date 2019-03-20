@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6e72ee4ce8c36377980cb279d15c70f7235cd303
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 5ce409b984ab9110a8ca44f47675045e4d80aed5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726307"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088634"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Kurz: Nastavte si odpovědi automatizované hrozeb v Azure Preview Sentinelu
 
@@ -59,8 +59,8 @@ Playbooky zabezpečení můžete spustit ručně nebo automaticky. Ruční spuš
 
 Postupujte podle těchto kroků a vytvořte nový playbook zabezpečení v Azure Sentinelu:
 
-1.  Otevřít **Azure Sentinelu** řídicího panelu.
-2.  V části **správu**vyberte **Playbooky**.
+1. Otevřít **Azure Sentinelu** řídicího panelu.
+2. V části **správu**vyberte **Playbooky**.
 
    ![Aplikace logiky](./media/tutorial-respond-threats-playbook/playbookimg.png)
 

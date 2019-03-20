@@ -10,16 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2e51bdd24f33789a95017c9fe5df88b0bb55de26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005505"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 
 Následující změny části seznamu v nejnovější vydané verze.
+
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Zařízení řeči služeb cognitive Services SDK 1.3.1: 2019 března vydání 
+
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.3.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+*   Aktualizované probuzení slovo zpracování, naleznete v tématu Rozbíjející změny.
+*   Ukázková aplikace přidá výběru jazyka pro rozpoznávání řeči a překladu.
+
+**Rozbíjející změny v** 
+
+*   [Instalace aplikace word probuzení](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) bylo zjednodušené, je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
+*   Došlo ke změně rozpoznávání probuzení aplikace word a jsou podporovány dvě události.
+    - RecognizingKeyword, označuje, že výsledek řeči obsahuje text (neověřené) – klíčové slovo.
+    - RecognizedKeyword, označuje, že – klíčové slovo rozpoznávání dokončit uznání daným klíčovým slovem.
+
 
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Zařízení řeči služeb cognitive Services SDK 1.1.0: Verze v listopadu 2018 
 

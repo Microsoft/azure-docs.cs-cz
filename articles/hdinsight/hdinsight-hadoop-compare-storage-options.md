@@ -8,24 +8,53 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 91b6808e5f74d82a980dc633b2fa2bb0fe6752f1
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101478"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
-Uživatelé Microsoft Azure HDInsight můžete vybrat z několika možností jiného úložiště při vytváření clusterů HDInsight:
+Můžete si vybrat mezi několik různé služby Azure storage services při vytváření clusterů HDInsight:
 
-* Azure Data Lake Storage Gen2
 * Azure Storage
+* Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
 Tento článek poskytuje přehled o těchto typech úložiště a jejich jedinečné funkce.
 
-## <a name="azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
+V následující tabulce najdete souhrn služby Azure Storage, které jsou podporovány v různých verzích HDInsight:
+
+| Služba úložiště | Typ účtu | Typ Namespace | Podporované služby | Úrovně výkonu podporované | Podporované přístupu | Verze služby HDInsight | Typ clusteru |
+|---|---|---|---|---|---|---|---|
+|Azure Data Lake Storage Gen2| Pro obecné účely V2 | Hierarchické (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
+|Azure Storage| Pro obecné účely V2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
+|Azure Storage| Pro obecné účely V1 | Objekt | Objekt blob | Standard | neuvedeno | Vše | Vše |
+|Azure Storage| Blob Storage | Objekt | Objekt blob | Standard | Horká, studená, archivní | Vše | Vše |
+|Azure Data Lake Storage Gen1| neuvedeno | Hierarchické (systém souborů) | neuvedeno | neuvedeno | neuvedeno | Pouze 3.6 | Všechny s výjimkou HBase |
+
+Další informace o úrovních přístupu služby Azure Storage, najdete v části [úložiště objektů Blob v Azure: Premium (preview), vrstvy úložiště Hot, Cool a archiv](../storage/blobs/storage-blob-storage-tiers.md)
+
+Můžete vytvořit cluster pomocí různé kombinace služeb pro primární a volitelné sekundárního úložiště. V následující tabulce najdete souhrn konfigurace clusteru úložiště, které jsou aktuálně podporovány v HDInsight:
+
+| Verze služby HDInsight | Primární úložiště | Sekundární úložiště | Podporováno |
+|---|---|---|---|
+| 3.6 & 4.0 | Standardní objektů Blob | Standardní objektů Blob | Ano |
+| 3.6 & 4.0 | Standardní objektů Blob | Data Lake Storage Gen2 | Ne |
+| 3.6 & 4.0 | Standardní objektů Blob | Data Lake Storage Gen1 | Ano |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Ano |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | Standardní objektů Blob | Ano |
+| 3.6 & 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Ne |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
+| 3.6 | Data Lake Storage Gen1 | Standardní objektů Blob | Ano |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
+| 4.0 | Data Lake Storage Gen1 | Všechny | Ne |
+
+* = Může to být jeden nebo více účtů Data Lake Storage Gen2, za předpokladu, že jsou všechny instalační program a použít stejné spravovanou identitu pro přístup ke clusteru.
+
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Použití Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
 
 Azure Data Lake Storage Gen2 přebírá základní funkce z Azure Data Lake Storage Gen1 a integruje do úložiště objektů Blob v Azure. Tyto funkce patří systém souborů, který je kompatibilní se systémem Hadoop, Azure Active Directory (Azure AD), a seznamů řízení přístupu na základě POSIX (ACL). Tato kombinace umožňuje využít výkon Azure Data Lake Storage Gen1 a zároveň využívat Správa životního cyklu vrstvy a dat Blob Storage.
 
@@ -89,21 +118,10 @@ Další informace najdete v tématu [použít identifikátor URI služby Azure D
 
 Azure Storage je řešení robustní úložiště pro obecné účely, který se bez problémů integruje s HDInsight. HDInsight může jako výchozí systém souborů pro cluster používat kontejner objektů blob ve službě Azure Storage. Pomocí rozhraní HDFS celá sada komponent v HDInsight můžete pracovat přímo s strukturovanými i nestrukturovanými daty uloženými jako objekty BLOB.
 
-Při vytváření účtu služby Azure storage, můžete z několika typů účtu úložiště. Následující tabulka obsahuje informace o možnostech, které jsou podporovány s HDInsight.
-
-| **Typ účtu úložiště** | **Podporované služby** | **Úrovně výkonu podporované** | **Podporované přístupu** |
-|----------------------|--------------------|-----------------------------|------------------------|
-| Pro obecné účely V2   | Objekt blob               | Standard                    | Horká, studená, archivní *    |
-| Pro obecné účely V1   | Objekt blob               | Standard                    | neuvedeno                    |
-| Blob Storage         | Objekt blob               | Standard                    | Horká, studená, archivní *    |
-
-* Úroveň přístupu Archive je vrstvu offline latence načtení několik hodin. Nepoužívejte tuto vrstvu s HDInsight. Další informace najdete v tématu [archivní úroveň přístupu](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
-
-> [!WARNING]  
-> Nedoporučujeme používat výchozí kontejner objektu blob ukládat firemní data. Výchozí kontejner obsahuje protokoly aplikace a systému. Ujistěte se, že tyto protokoly načíst před odstraněním výchozí kontejner objektu blob. Odstraňte kontejner blogu po každém použití ke snížení nákladů na úložiště. Také vzít v úvahu, že jedna kontejner objektů blob nelze použít jako výchozí systém souborů pro několik clusterů.
-
+Doporučujeme použít samostatné úložiště kontejnery pro výchozí úložiště clusteru a podniková data, k izolaci HDInsight protokoly a dočasné soubory z obchodní data. Doporučujeme také odstranit výchozí kontejner objektu blob, který obsahuje aplikace a systémové protokoly, po každém použití, abyste snížili náklady na úložiště. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
 
 ### <a name="hdinsight-storage-architecture"></a>Architektura úložiště HDInsight
+
 Následující diagram představuje abstraktní zobrazení architektury úložiště Azure v HDInsight:
 
 ![Diagram znázorňující, jak clustery Hadoop používají rozhraní API HDFS pro přístup a ukládání strukturovaných a nestrukturovaných dat v úložišti objektů Blob](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "architektury úložiště HDInsight")

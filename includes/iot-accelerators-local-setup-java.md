@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/25/2019
 ms.author: v-krghan
 ms.custom: include file
-ms.openlocfilehash: 5909533c2153fe7c6697f516ce7568787b82bdab
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 81590a4d686d85482bee38c4391b8ac24b25658e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105972"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125373"
 ---
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
@@ -54,16 +54,16 @@ Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle tě
     ```
 
 1. Spustit **start.cmd** skriptu. Skript vyzve k zadání následujících informací:
-    * Název řešení.
-    * Předplatné Azure, které se má použít.
-    * Umístění datového centra Azure používat.
+   * Název řešení.
+   * Předplatné Azure, které se má použít.
+   * Umístění datového centra Azure používat.
 
-    Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Jakmile už nepotřebujete odpovídající prostředky můžete odstranit tuto skupinu prostředků.
+     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Jakmile už nepotřebujete odpovídající prostředky můžete odstranit tuto skupinu prostředků.
 
-    Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Při spuštění kontejnerů Dockeru nebo mikroslužeb projekty místně, jejich čtení jejich hodnoty konfigurace z těchto proměnných prostředí.
+     Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Při spuštění kontejnerů Dockeru nebo mikroslužeb projekty místně, jejich čtení jejich hodnoty konfigurace z těchto proměnných prostředí.
 
-    > [!TIP]
-    > Po dokončení skriptu, také uloží proměnné prostředí do souboru s názvem  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** . Můžete je použít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+     > [!TIP]
+     > Po dokončení skriptu, také uloží proměnné prostředí do souboru s názvem  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** . Můžete je použít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
 
 1. Výstup z prostředí příkazového řádku.
 
