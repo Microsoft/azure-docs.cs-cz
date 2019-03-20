@@ -32,15 +32,17 @@ items:
 - name: Koncepty
   items:
   - name: Vstupní typy pro úlohu
-    href: stream-analytics-add-inputs.md
     items:
+    - name: Přehled vstupů
+      href: stream-analytics-add-inputs.md
     - name: Streamování datových výstupů
       href: stream-analytics-define-inputs.md
     - name: Referenční datové výstupy
       href: stream-analytics-use-reference-data.md
   - name: Výstupní typy pro úlohu
-    href: stream-analytics-define-outputs.md
     items:
+    - name: Přehled výstupů
+      href: stream-analytics-define-outputs.md
     - name: Výstup do Cosmos DB
       href: stream-analytics-documentdb-output.md
     - name: Výstup do Azure SQL DB
@@ -114,7 +116,7 @@ items:
       href: stream-analytics-monitoring.md
     - name: Monitorování úloh – PowerShell
       href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-    - name: Monitorování úloh – Azure .Net SDK
+    - name: Monitorování úloh – Azure .NET SDK
       href: stream-analytics-monitor-jobs.md
     - name: Monitorování úloh – Visual Studio
       href: stream-analytics-monitor-jobs-use-vs.md
@@ -122,9 +124,10 @@ items:
     items:
     - name: Škálování využitím s jednotek streamování
       href: stream-analytics-streaming-unit-consumption.md
-    - name: Škálování s využitím paralelizace dotazů
-      href: stream-analytics-parallelization.md
+    - name: Škálování s využitím paralelizace
       items:
+      - name: Paralelizace dotazů
+        href: stream-analytics-parallelization.md
       - name: Zvýšení prostupnosti
         href: stream-analytics-scale-jobs.md
     - name: Škálování s využitím funkcí ML
@@ -428,16 +431,16 @@ items:
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: Zákaznické případové studie
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 24c475fcbe1bda825693ee04f9381922c46633ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853001"

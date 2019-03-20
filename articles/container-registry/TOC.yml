@@ -62,26 +62,29 @@ items:
       href: container-registry-image-lock.md
     - name: Odstranění imagí kontejneru
       href: container-registry-delete.md
-    - name: Důvěryhodnost obsahu (Preview)
-      href: container-registry-content-trust.md
     - name: Upgrade registru Classic
       href: container-registry-upgrade.md
     - name: Použití webhooků ACR
       href: container-registry-webhook.md
     - name: Úložiště grafů Helmu (Preview)
       href: container-registry-helm-repos.md
-  - name: Authentication
+  - name: Zabezpečení a ověřování
     items:
+    - name: Omezení přístupu s využitím virtuální sítě (Preview)
+      href: container-registry-vnet.md
     - name: Přehled ověřování
       href: container-registry-authentication.md
-    - name: Ověřování instančních objektů
-      href: container-registry-auth-service-principal.md
-    - name: Ověřování spravovaných identit
-      href: container-registry-authentication-managed-identity.md
-    - name: Azure Container Instances
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes Service (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: Ověřování instančních objektů
+        href: container-registry-auth-service-principal.md
+      - name: Ověřování spravovaných identit
+        href: container-registry-authentication-managed-identity.md
+      - name: Ověřování ze služby Azure Container Instances
+        href: container-registry-auth-aci.md
+      - name: Ověřování ze služby Azure Kubernetes Service (AKS)
+        href: container-registry-auth-aks.md
+    - name: Důvěryhodnost obsahu (Preview)
+      href: container-registry-content-trust.md
   - name: Sestavení a opravy
     items:
     - name: Úlohy ACR
@@ -137,9 +140,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: ef8f6b64129f9dd2f2959c89e93c34b9d90a62f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 732c0f878df9b5d722571bf45e4afd76a3180ebb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541945"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137990"

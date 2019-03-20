@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f0d4a689e783f8c460ee54b3613ac0fe432b59ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464020"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862783"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/30/2019
+  ms.date: 03/13/2019
   ms.author: kgremban
 abstract:
   description: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na změny stavu.
@@ -32,7 +32,7 @@ sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Nasazení prvního modulu IoT Edge a zpracování dat v simulovaném zařízení:'
+    text: 'Vytvořte virtuální počítač Azure, nakonfigurujte ho, aby se spouštěl jako zařízení IoT Edge a nasaďte do něj kód:'
   - type: list
     style: icon48
     items:

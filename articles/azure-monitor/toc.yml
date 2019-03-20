@@ -282,12 +282,24 @@ items:
             href: app/profiler-servicefabric.md
           - name: Povolení profileru pro virtuální počítač Azure
             href: app/profiler-vm.md
+          - name: Profiler pro linuxové aplikační služby (Preview)
+            href: app/profiler-aspnetcore-linux.md
           - name: Nastavení profileru
             href: app/profiler-settings.md
           - name: Sledování požadavků pro profilaci
             href: app/profiler-trackrequests.md
           - name: Řešení potíží s profilerem
             href: app/profiler-troubleshooting.md
+        - name: Ladicí program snímků
+          items:
+          - name: Přehled
+            href: app/snapshot-debugger.md
+          - name: Povolení Snapshot Debuggeru pro App Service
+            href: app/snapshot-debugger-appservice.md
+          - name: Povolení Snapshot Debuggeru pro další prostředí
+            href: app/snapshot-debugger-vm.md
+          - name: Řešení potíží se Snapshot Debuggerem
+            href: app/snapshot-debugger-troubleshoot.md
         - name: Diagnostika
           href: ../application-insights/app-insights-azure-diagnostics.md
         - name: Náhledy
@@ -305,7 +317,7 @@ items:
         - name: Jádro ASP.NET
           href: app/asp-net-core.md
           items:
-          - name: Profiler pro linuxové aplikační služby
+          - name: Profiler pro linuxové aplikační služby (Preview)
             href: app/profiler-aspnetcore-linux.md
         - name: Konzola
           href: app/console.md
@@ -1034,9 +1046,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 84cda925280e7497b2538d958a841bba3fc48d60
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 19b06e5e558bdeb903907e8db8d17fd2ee4eb288
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897312"

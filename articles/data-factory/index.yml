@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575388"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848157"
 documentType: LandingData
 title: Dokumentace ke službě Azure Data Factory
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: Transformace dat ve virtuální síti – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
     - html: Přidání větvení a řetězení – <a href="/azure/data-factory/tutorial-control-flow-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
     - html: Spuštění balíčků SSIS v Azure – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Uživatelské rozhraní Data Factory</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Kontinuální integrace a průběžné doručování (CI/CD) ve službě Azure Data Factory – <a href="/azure/data-factory/continuous-integration-deployment">uživatelské rozhraní služby Data Factory</a>
 - title: Ukázky
   items:
   - type: paragraph

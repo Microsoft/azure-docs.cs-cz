@@ -78,6 +78,7 @@
 #### [HA ve Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [HA ve Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [HA v SUSE Linuxu pro instanci (A)SCS](high-availability-guide-suse.md)
+#### [HA v SUSE Linuxu pro instanci (A)SCS s využitím Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Vysoká dostupnost v Red Hat Enterprise Linuxu pro instanci (A)SCS](high-availability-guide-rhel.md)
 ### Příprava infrastruktury Azure
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -90,6 +91,7 @@
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-high-availability-installation-wsfc-file-share.md)
 #### [SUSE Linux s NFS pro instanci (A)SCS](high-availability-guide-suse.md)
+#### [SUSE Linux s NFS pro instanci (A)SCS s využitím Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Vysoká dostupnost pro SAP NetWeaver na Red Hat Enterprise Linuxu](high-availability-guide-rhel.md)
 ### SAP s několika SID
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
