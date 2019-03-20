@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 206e50107e52d631cb33b7cb8dcc03474dd27e64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456410"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884672"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
 Virtuální počítač pro datové vědy pro Linux je image virtuálního počítače založeného na Ubuntu, který umožňuje snadno a rychle začít s machine learningem, včetně obsáhlého learningu v Azure. Nástroje pro hloubkové učení patří:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): Architektura obsáhlý learning zajišťující rychlost, expressivity a modularitu
+  * [Caffe](https://caffe.berkeleyvision.org/): Architektura obsáhlý learning zajišťující rychlost, expressivity a modularitu
   * [Caffe2](https://github.com/caffe2/caffe2): Multiplatformní verzi Caffe
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Hloubkové učení softwarových nástrojů Microsoft Research
   * [H2O](https://www.h2o.ai/): Platformy pro velká data open source a grafické uživatelské rozhraní
   * [Keras](https://keras.io/): Základní neuronové sítě rozhraní API v jazyce Python pro TensorFlow, Microsoft Cognitive Toolkit a Theano
-  * [MXNet](http://mxnet.io/): Knihovna flexibilní a efektivní obsáhlý learning s mnoha jazykové vazby
+  * [MXNet](https://mxnet.io/): Knihovna flexibilní a efektivní obsáhlý learning s mnoha jazykové vazby
   * [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): Grafické systému, který zjednodušuje běžných úloh hloubkového učení
-  * [PyTorch](http://pytorch.org/): Základní knihovna Python s podporou pro dynamické sítě
+  * [PyTorch](https://pytorch.org/): Základní knihovna Python s podporou pro dynamické sítě
   * [TensorFlow](https://www.tensorflow.org/): Knihovny open source pro inteligencí z Googlu
   * [Theano](http://deeplearning.net/software/theano/): Knihovna Python pro definování, optimalizovat a efektivně hodnocení matematické výrazy zahrnující vícerozměrná pole
   * [Svítilnou](http://torch.ch/): Vědecké výpočetní architektura díky široké podpoře algoritmů strojového učení
@@ -120,7 +120,7 @@ Můžete získat přístup k datové VĚDY se systémem Ubuntu pomocí tří met
 
 ### <a name="ssh"></a>SSH
 
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](https://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v testování. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -130,7 +130,7 @@ Po vytvoření virtuálního počítače se můžete přihlásit se pomocí prot
 ### <a name="x2go"></a>X2Go
 Virtuální počítač s Linuxem už zřízeny X2Go serveru a připravené tak, aby přijímal připojení klienta. Pro připojení k desktopu grafické virtuálního počítače s Linuxem, proveďte následující postup u svého klienta:
 
-1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Spusťte klienta X2Go a vyberte **novou relaci**. Otevře se okno Konfigurace s více karet. Zadejte následující parametry konfigurace:
    * **Karta relace**:
      * **Host**: Název hostitele nebo IP adresu virtuálního počítače s Linuxem datové vědy.
@@ -205,7 +205,7 @@ R je jedním z nejoblíbenějších jazyků pro analýzy dat a strojové učení
 
 Spuštění R konzoly, stačí zadat **R** v prostředí. Tím přejdete na interaktivní prostředí. K vývoji aplikace R, obvykle použít editor, například (emacs) nebo vi a pak spusťte skripty v rámci jazyka R. S prostředím RStudio máte úplné grafické prostředí IDE k vývoji aplikace R.
 
-K dispozici je také skriptu jazyka R můžete nainstalovat [balíčky Top 20 R](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) potřebujete. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, které může uživatel zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
+K dispozici je také skriptu jazyka R můžete nainstalovat [balíčky Top 20 R](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) potřebujete. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, které může uživatel zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
 
 ### <a name="python"></a>Python
 Anaconda Python se instaluje s 3,5 prostředí a použije se Python 2.7. 2.7 prostředí se nazývá _kořenové_, a 3.5 prostředí se nazývá _py35_. Toto rozdělení obsahuje základní Python spolu s přibližně 300 nejoblíbenějších balíčků analytics matematické, inženýrství a data. 
@@ -276,7 +276,7 @@ Hadoop můžete zastavit služby související s, když je nepotřebujete spušt
 ### <a name="ides-and-editors"></a>Editory a integrovanými vývojovými prostředími
 Máte možnost výběru z několika editory kódu. To zahrnuje vi/VIM, (emacs), PyCharm, RStudio a IntelliJ. IntelliJ, RStudio PyCharm jsou grafické editory a musíte být přihlášeni grafické desktopu k jejich použití. Tyto editory obsahují desktopových a aplikačních zástupci v nabídce je spustit.
 
-**VIM** a **Emacs** jsou textové editory. Do (emacs) jsme nainstalovali balíček doplňku volat (emacs) mluví statistiky (UPU), která usnadňuje práci s jazykem R v editoru (emacs). Další informace najdete v [UPU](http://ess.r-project.org/).
+**VIM** a **Emacs** jsou textové editory. Do (emacs) jsme nainstalovali balíček doplňku volat (emacs) mluví statistiky (UPU), která usnadňuje práci s jazykem R v editoru (emacs). Další informace najdete v [UPU](https://ess.r-project.org/).
 
 **LaTex** se instaluje prostřednictvím balíčku texlive spolu s doplňkem (emacs) [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) balíček, který zjednodušuje vytváření dokumentů LaTex v rámci (emacs).  
 

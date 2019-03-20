@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235831"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104518"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -179,16 +179,16 @@ Importujte stažený soubor do vCenter Serveru.
 3. Na ploše klikněte na zástupce **Spustit kolektor**.
 4. Klikněte na **Vyhledat aktualizace** v horním panelu uživatelského rozhraní kolektoru a ověřte, že používáte nejnovější verzi kolektoru. Pokud ne, můžete stáhnout balíček s nejnovějším upgradem z tohoto odkazu a kolektor aktualizovat.
 5. Ve službě Azure Migrate Collector otevřete nabídku **Nastavit požadavky**.
-    - Vyberte cloud Azure, ke kterému plánujete migrovat (globálního Azure nebo Azure Government).
-    - Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
-    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector) , který přistupuje k kolektoru.
+   - Vyberte cloud Azure, ke kterému plánujete migrovat (globálního Azure nebo Azure Government).
+   - Přijměte licenční podmínky a přečtěte si informace třetích stran.
+   - Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
+   - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) týkající se požadavků na připojení k Internetu a [seznam adres URL](https://docs.microsoft.com/azure/migrate/concepts-collector) , který přistupuje k kolektoru.
 
-      > [!NOTE]
-      > Adresu proxy serveru je potřeba zadat ve formátu http://ProxyIPAddress nebo http://ProxyFQDN. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
+     > [!NOTE]
+     > Adresu proxy serveru je potřeba zadat ve formátu <http://ProxyIPAddress> nebo <http://ProxyFQDN>. Podporuje se jen proxy protokolu HTTP. Pokud máte prověřuje zachycovací proxy server, připojení k Internetu může zpočátku selhat, pokud jste neimportovali certifikát proxy serveru; [Další](https://docs.microsoft.com/azure/migrate/concepts-collector) na jak to vyřešit importem certifikátu proxy jako důvěryhodný certifikát na virtuálním počítači kolektoru.
 
-    - Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
-    - Stáhněte a nainstalujte VMware PowerCLI.
+   - Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
+   - Stáhněte a nainstalujte VMware PowerCLI.
 
 6. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (plně kvalifikovaný název domény) nebo IP adresu vCenter Serveru.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077849"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migrace Contoso: Změna hostitele místní linuxové aplikace na virtuální počítače Azure a Azure MySQL
 
@@ -127,7 +127,7 @@ Zde je, jak správce společnosti Contoso se dokončí migrace:
 > [!div class="checklist"]
 > * **Krok 1: Příprava Azure Site Recovery**: Vytvoří účet úložiště Azure pro uložení replikovaná data, vytvořte trezor služby Recovery Services.
 > * **Krok 2: Příprava VMware v místním prostředí pro Site Recovery**: Příprava virtuálního počítače zjišťování a instalaci agenta účty a připravte se připojit k virtuálním počítačům Azure po převzetí služeb při selhání.
- * **Krok 3: Zřízení databáze]**: V Azure zřizování instance databáze Azure MySQL.
+>   * **Krok 3: Zřízení databáze]**: V Azure zřizování instance databáze Azure MySQL.
 > * **Krok 4: Replikace virtuálních počítačů**: Jejich konfigurace zdrojového a cílového prostředí Site Recovery, nastavení zásady replikace a spustit replikaci virtuálních počítačů do Azure storage.
 > * **Krok 5: Migrace databáze**: Nastavení migrace s využitím nástrojů MySQL.
 > * **Krok 6: Migrace virtuálních počítačů pomocí Site Recovery**: Nakonec, spusťte převzetí služeb při selhání testu Ujistěte se, že všechno funguje a pak spusťte úplné převzetí služeb při selhání k migraci virtuálních počítačů do Azure.
@@ -147,10 +147,10 @@ Správce společnosti Contoso vytvořit účet úložiště a trezoru následuj�
 
 1. Vytváření účtu úložiště (**contosovmsacc20180528**) v oblasti východní USA 2.
 
-    - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
-    - Účet general purpose, používají úložiště úrovně standard a replikací LRS.
+   - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
+   - Účet general purpose, používají úložiště úrovně standard a replikací LRS.
 
-    ![Site Recovery úložiště](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery úložiště](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. Pomocí účtu sítě a úložiště na místě, vytvořte trezor (ContosoMigrationVault) a jeho umístění **ContosoFailoverRG** skupinu prostředků, v primární oblasti USA – východ 2.
 

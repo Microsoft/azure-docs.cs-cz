@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 535ba0049e91e09de3d1dcf05fc8ede80ef403ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088056"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace on-premises na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
@@ -704,10 +704,10 @@ Bezpečnostní tým Contoso kontroly WEBVM virtuální počítače Azure, SQLAOG
 ## <a name="bcdr"></a>BCDR
 
  Společnosti Contoso pro provozní kontinuitu a zotavení po havárii (BCDR), provede následující akce:
- - Bezpečnost dat: Contoso zálohuje data na WEBVM a SQLAOG1 SQLAOG2 virtuálních počítačů pomocí služby Azure Backup. [Další informace].
-(https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Contoso se také informace o tom, jak používat Azure Storage pro zálohování serveru SQL Server přímo do úložiště objektů blob. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
-- Udržujte aplikace rychle zprovoznit: Contoso replikuje aplikace virtuální počítače v Azure do sekundární oblasti vzdálené používání služby Site Recovery. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- Bezpečnost dat: Contoso zálohuje data na WEBVM a SQLAOG1 SQLAOG2 virtuálních počítačů pomocí služby Azure Backup. [Další informace].
+  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  - Contoso se také informace o tom, jak používat Azure Storage pro zálohování serveru SQL Server přímo do úložiště objektů blob. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
+  - Udržujte aplikace rychle zprovoznit: Contoso replikuje aplikace virtuální počítače v Azure do sekundární oblasti vzdálené používání služby Site Recovery. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 
 
 ### <a name="licensing-and-cost-optimization"></a>Optimalizace nákladů a licencování

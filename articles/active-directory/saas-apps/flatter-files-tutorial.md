@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c18678e211b8b1f8682215a7314309166ebb02cf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 48c5804df53c084715cac872aa431cf8694c6d35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Kurz: Integrace Azure Active Directory s plošší soubory
 
@@ -140,8 +140,8 @@ Ke konfiguraci Azure AD jednotného přihlašování se plošší soubory, prove
    
     a. V **domény** textového pole zadejte registrované domény.
    
-    >[!NOTE]
-    >Pokud nemáte k dispozici registrované domény ještě, kontaktujte tým prostřednictvím podpory plošší soubory [ support@flatterfiles.com ](mailto:support@flatterfiles.com). 
+   > [!NOTE]
+   > Pokud nemáte k dispozici registrované domény ještě, kontaktujte tým prostřednictvím podpory plošší soubory [ support@flatterfiles.com ](mailto:support@flatterfiles.com). 
     
     b. V **adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali formuláře webu Azure portal.
    
@@ -167,7 +167,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
