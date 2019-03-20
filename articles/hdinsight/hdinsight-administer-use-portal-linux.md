@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8fccf82371225acd5839537f7629ffe7df138d43
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201003"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -56,7 +56,7 @@ Vyberte název vašeho clusteru z [ **clustery HDInsight** stránky](#showCluste
     - **Nástroje**: Nápověda pro HDInsight související nástroje.
 
 - **Nabídka nastavení**  
-  - **Velikost clusteru**: Kontrola, zvýšit a snížit počet pracovních uzlů clusteru. Zobrazit [škálování clusterů](hdinsight-administer-use-management-portal.md#scale-clusters).
+  - **Velikost clusteru**: Kontrola, zvýšit a snížit počet pracovních uzlů clusteru. Zobrazit [škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters).
   - **Kvóty**: Zobrazte používaných a dostupných jader pro vaše předplatné.
   - **SSH + přihlašovací údaje clusteru**: Zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH). Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
   - **Data Lake Storage Gen1**: Konfigurace přístupu k Data Lake Storage Gen1.  Zobrazit [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -186,7 +186,7 @@ Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzh
 Existuje mnoho způsobů, které můžete naprogramovat procesu:
 
 * Uživatel Azure Data Factory. Zobrazit [vytvořit na vyžádání založené na Linuxu Apache Hadoop clusterů v HDInsight pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) pro vytváření HDInsight na vyžádání propojené služby.
-* Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data.md).
+* Použití Azure Powershellu.  Zobrazit [analyzovat zpoždění letů](hdinsight-analyze-flight-delay-data-linux.md).
 * Pomocí příkazového řádku Azure Classic. Zobrazit [HDInsight Správa clusterů pomocí rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md).
 * Použití sady HDInsight .NET SDK. Zobrazit [úlohy odeslání Apache Hadoop](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

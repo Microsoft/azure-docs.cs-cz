@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 5141cd083469d51a067bbc993f598393768fe99f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000186"
+ms.locfileid: "58200578"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -79,7 +79,7 @@ Můžete také zkusit [Poradce při potížích pro partnerský vztah virtuáln�
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
 Pouze když partnerské virtuální sítě jsou globálně platí následující omezení:
-- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná za globální VNet Peering.  -Prostředků v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná pro VNet Peering i globální VNet Peering.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná za globální VNet Peering.
 - Můžete používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview.
 
 Další informace o požadavcích a omezeních najdete v tématu [Požadavky a omezení partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints). Informace o omezeních počtu partnerských vztahů, které pro virtuální síť můžete vytvořit, najdete v tématu popisujícím [omezení sítí Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 

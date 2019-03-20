@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 8417b849ad7589ce6a770eb805c38a13e3c672dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202975"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database zjišťování a klasifikace dat
 
@@ -145,6 +145,13 @@ Můžete také použít rozhraní REST API můžete programově spravovat klasif
 - [Získat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -získá označení citlivosti daného sloupce
 - [Aktuální databáze podle seznamu](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -získá aktuální označení citlivosti na danou databázi
 - [Seznam doporučuje pomocí databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) -získá popisky doporučené citlivosti na danou databázi
+
+## <a name="permissions"></a>Oprávnění
+Následující předdefinované role najdete na klasifikaci dat službu Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` a `User Access Administrator`.
+
+Následující předdefinované role můžete upravit klasifikaci dat službu Azure SQL database: `Owner`, `Contributor`, `SQL Security Manager`.
+
+Další informace o [RBAC pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a id="subheading-5"></a>Další kroky
 

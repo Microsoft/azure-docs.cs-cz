@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: df836d46f244822c8c3dd35be6de08b0c4f34038
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 681ee66ca165ece170dd2a2ce2736cf55a44f1f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104076"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení Windows
 Chcete-li zabránit neoprávněnému přístupu ke clusteru Service Fabric, třeba zabezpečení clusteru. Zabezpečení je obzvláště důležité, když v clusteru běží úlohy v produkčním prostředí. Tento článek popisuje postup konfigurace zabezpečení mezi uzly a uzel klienta s použitím Windows zabezpečení v *ClusterConfig.JSON* souboru.  Proces odpovídá kroku konfigurovat zabezpečení [vytvoření samostatného clusteru se systémem Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení Windows, naleznete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
@@ -52,13 +52,13 @@ Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JSON* konfigurační soubor st�
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
 | ClusterCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci mezi uzly.  | 
-| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci klienta uzlu. |  
-| WindowsIdentities |Obsahuje identitu clusteru a klienta. |  
-| ClustergMSAIdentity |Konfiguruje zabezpečení mezi uzly. Skupinový účet spravované služby. |  
-| ClusterSPN |Registrovaný hlavní název služby pro účet gMSA|  
-| ClientIdentities |Nakonfiguruje klienta mezi uzly zabezpečení. Pole klientské uživatelské účty. | 
-| Identita |Přidejte uživatele domény, pro identity klienta doména\uživatelské jméno. |  
-| IsAdmin |Nastavte na hodnotu true. Chcete-li určit, jestli má uživatel domény přístup správce klienta, nebo hodnotu NEPRAVDA pro klientský přístup uživatele. |  
+| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci klienta uzlu. |
+| WindowsIdentities |Obsahuje identitu clusteru a klienta. |
+| ClustergMSAIdentity |Konfiguruje zabezpečení mezi uzly. Skupinový účet spravované služby. |
+| ClusterSPN |Registrovaný hlavní název služby pro účet gMSA|
+| ClientIdentities |Nakonfiguruje klienta mezi uzly zabezpečení. Pole klientské uživatelské účty. |
+| Identita |Přidejte uživatele domény, pro identity klienta doména\uživatelské jméno. |
+| IsAdmin |Nastavte na hodnotu true. Chcete-li určit, jestli má uživatel domény přístup správce klienta, nebo hodnotu NEPRAVDA pro klientský přístup uživatele. |
 
 > [!NOTE]
 > Hodnota ClustergMSAIdentity nemůže obsahovat název domény a může být pouze název skupinového účtu spravované služby. I.E. "mysfgmsa" je správný a obě "mojedoména / / mysfgmsa" nebo "mysfgmsa@mydomain" jsou neplatné; protože domény je zahrnuto v hostitelském počítači.
@@ -104,10 +104,10 @@ Tento model je zastaralé. Doporučujeme pro používání gMSA podrobnosti jsou
 
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
-| ClusterCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci mezi uzly.  | 
-| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci klienta uzlu. |  
-| WindowsIdentities |Obsahuje identitu clusteru a klienta. |  
-| ClusterIdentity |Použijte název skupiny počítače, domain\machinegroup, konfigurace zabezpečení mezi uzly. |  
+| ClusterCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci mezi uzly.  |
+| ServerCredentialType |Nastavte na *Windows* povolit zabezpečení Windows pro komunikaci klienta uzlu. |
+| WindowsIdentities |Obsahuje identitu clusteru a klienta. |
+| ClusterIdentity |Použijte název skupiny počítače, domain\machinegroup, konfigurace zabezpečení mezi uzly. |
 | ClientIdentities |Nakonfiguruje klienta mezi uzly zabezpečení. Pole klientské uživatelské účty. |  
 | Identita |Přidejte uživatele domény, pro identity klienta doména\uživatelské jméno. |  
 | IsAdmin |Nastavte na hodnotu true. Chcete-li určit, jestli má uživatel domény přístup správce klienta, nebo hodnotu NEPRAVDA pro klientský přístup uživatele. |  

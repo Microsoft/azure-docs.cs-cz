@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: ergreenl
-ms.openlocfilehash: d72fa2551eb4db3cb68a52cd8a76dd7b9d27b6f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a2abdbf1409564f94356279332d253627c5b447a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111918"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Zakažte Azure Active Directory Domain Services pomocí webu Azure portal
 Tento článek ukazuje, jak zakázat domény služby Azure Active Directory (AD) pro váš adresář Azure AD pomocí webu Azure portal.
@@ -28,12 +28,11 @@ Tento článek ukazuje, jak zakázat domény služby Azure Active Directory (AD)
 > [!WARNING]
 > **Odstranění je trvalá a nejde ho vrátit.**
 > Postupujte opatrně. Při odstranění spravované domény:
-  * Řadiče domény pro spravovanou doménu se zrušení zřízení a odebrán z virtuální sítě.
-  * Data ve spravované doméně se trvale odstraní. To zahrnuje vlastní organizační jednotky, objektů zásad skupiny, vlastní záznamy DNS, objektů služby, účty Gmsa atd., které jste vytvořili ve spravované doméně.
-  * Počítače připojené k spravované doméně dojít ke ztrátě jejich vztah důvěryhodnosti s doménou a je potřeba odpojit z domény.
-  * Nemůžete se přihlásit k těmto počítačům pomocí firemních přihlašovacích údajů AD. Místo toho použijte přihlašovací údaje místního správce pro počítač.
-Odstraňuje se spravovaná doména odstranění adresáře služby Azure AD nebo jinak negativně ovlivnit adresáři.
->
+>   * Řadiče domény pro spravovanou doménu se zrušení zřízení a odebrán z virtuální sítě.
+>   * Data ve spravované doméně se trvale odstraní. To zahrnuje vlastní organizační jednotky, objektů zásad skupiny, vlastní záznamy DNS, objektů služby, účty Gmsa atd., které jste vytvořili ve spravované doméně.
+>   * Počítače připojené k spravované doméně dojít ke ztrátě jejich vztah důvěryhodnosti s doménou a je potřeba odpojit z domény.
+>   * Nemůžete se přihlásit k těmto počítačům pomocí firemních přihlašovacích údajů AD. Místo toho použijte přihlašovací údaje místního správce pro počítač.
+> Odstraňuje se spravovaná doména odstranění adresáře služby Azure AD nebo jinak negativně ovlivnit adresáři.
 
 Proveďte následující kroky pro odstranění spravované domény služby Azure AD Domain Services:
 1. Přejděte [rozšíření Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) na webu Azure Portal.

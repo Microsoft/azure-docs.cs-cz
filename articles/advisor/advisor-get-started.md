@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: aabb316cf564520e6ea5e8689f1c18c98b94ab3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111391"
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -35,7 +35,7 @@ Zjistěte, jak přistupovat k služby Advisor na webu Azure portal, doporučení
 
 1. Pokud chcete získat doporučení pro určitou kategorii, klikněte na jednu z karet: **Vysoká dostupnost**, **zabezpečení**, **výkonu**, nebo **náklady**. 
 
-  ![Řídicí panel Azure Advisoru](./media/advisor-overview/advisor-dashboard.png)
+   ![Řídicí panel Azure Advisoru](./media/advisor-overview/advisor-dashboard.png)
 
 ## <a name="get-recommendation-details-and-implement-a-solution"></a>Získat podrobnosti o doporučení a implementaci řešení
 

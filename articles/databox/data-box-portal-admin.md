@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 10/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 1b228a66f2d59b3ff252df266783f7bd5d27139e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: f2ad4dc3d74771d28ca91e41f2b0eb547d678908
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122990"
 ---
 # <a name="use-the-azure-portal-to-administer-your-data-box"></a>Správa Data Boxu pomocí portálu Azure Portal
 
@@ -122,58 +122,58 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
 2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
-    - **Copy logs** (Protokoly kopírování) – obsahují seznam souborů, u kterých během kopírování dat z Data Boxu do vašeho účtu úložiště Azure došlo k chybě.
-    - **Audit logs** (Protokoly auditu) – obsahují informace o zapnutí a sdílení přístupu k Data Boxu, když je mimo datacentrum Azure.
-    - **BOM files** (Soubory BOM) – obsahují seznam souborů (označovaný také jako soubor manifestu), které si můžete stáhnout během **přípravy k odeslání**, a zahrnují názvy, velikosti a kontrolní součty souborů.
+   - **Copy logs** (Protokoly kopírování) – obsahují seznam souborů, u kterých během kopírování dat z Data Boxu do vašeho účtu úložiště Azure došlo k chybě.
+   - **Audit logs** (Protokoly auditu) – obsahují informace o zapnutí a sdílení přístupu k Data Boxu, když je mimo datacentrum Azure.
+   - **BOM files** (Soubory BOM) – obsahují seznam souborů (označovaný také jako soubor manifestu), které si můžete stáhnout během **přípravy k odeslání**, a zahrnují názvy, velikosti a kontrolní součty souborů.
 
-        ```
-        -------------------------------
-        Microsoft Data Box Order Report
-        -------------------------------
+       ```
+       -------------------------------
+       Microsoft Data Box Order Report
+       -------------------------------
         
-        Name                                               : eastusdryrun                                      
-        StartTime(UTC)                                     : 9/6/2018 12:54:47 PM +00:00                       
-        DeviceType                                         : ImolaPod                                          
+       Name                                               : eastusdryrun                                      
+       StartTime(UTC)                                     : 9/6/2018 12:54:47 PM +00:00                       
+       DeviceType                                         : ImolaPod                                          
         
-        -------------------
-        Data Box Activities
-        -------------------
+       -------------------
+       Data Box Activities
+       -------------------
         
-        Time(UTC)             | Activity                       | Status          | Description                                                                                                                                           
+       Time(UTC)             | Activity                       | Status          | Description                                                                                                                                           
         
-        9/6/2018 12:54:51 PM  | OrderCreated         | Completed  |                                                                                                                              
-        9/11/2018 8:57:38 PM  | DevicePrepared       | Completed  |                                                                                                                                                       
-        9/12/2018 7:28:15 PM  | ShippingToCustomer   | InProgress | Pickup Scan. Local Time : 9/12/2018 2:52:31 PM at Chantilly                                                                                           
-        9/13/2018 2:33:04 AM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/12/2018 9:00:00 PM at Chantilly                                                                                                                                                                                                                                                              
-        9/13/2018 12:40:31 PM | ShippingToCustomer   | InProgress | Arrival Scan. Local Time : 9/13/2018 5:00:00 AM at Oakland                                                                                            
-        9/13/2018 2:42:10 PM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/13/2018 6:08:00 AM at Oakland                                                                                          
-        9/13/2018 3:42:12 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:14:08 AM at Sunnyvale                                                                                      
-        9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:56:54 AM at Sunnyvale                                                                                      
-        9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Out For Delivery Today. Local Time : 9/13/2018 9:11:21 AM at Sunnyvale                                                                                
-        9/13/2018 5:43:07 PM  | ShippingToCustomer   | Completed  | Delivered. Local Time : 9/13/2018 9:44:17 AM at SUNNYVALE                                                                                             
-        9/14/2018 11:48:35 PM | ShippingToDataCenter | InProgress | Pickup Scan. Local Time : 9/14/2018 3:55:37 PM at Sunnyvale                                                                                                                                                                                 
-        9/15/2018 1:52:35 AM  | ShippingToDataCenter | InProgress | Arrival Scan. Local Time : 9/14/2018 6:31:00 PM at San Jose                                                                                           
-        9/15/2018 2:52:39 AM  | ShippingToDataCenter | InProgress | Departure Scan. Local Time : 9/14/2018 7:17:00 PM at San Jose                                                                                                                                                                             
-        9/17/2018 8:23:31 AM  | ShippingToDataCenter | InProgress | Destination Scan. Local Time : 9/17/2018 4:14:37 AM at Chantilly                                                                                      
-        9/17/2018 12:24:42 PM | ShippingToDataCenter | InProgress | Loaded on Delivery Vehicle. Local Time : 9/17/2018 7:45:36 AM at Chantilly                                                                            
-        9/17/2018 1:25:11 PM  | ShippingToDataCenter | InProgress | Out For Delivery Today. Local Time : 9/17/2018 8:27:11 AM at Chantilly                                                                                
-        9/17/2018 2:25:51 PM  | ShippingToDataCenter | Completed | Delivered. Local Time : 9/17/2018 9:56:32 AM at STERLING                                                                                              
-        9/18/2018 9:55:41 PM  | DeviceBoot           | Completed | Appliance booted up successfully                                                                                                                      
-        9/18/2018 11:00:25 PM | DataCopy             | Started   |                                                                                                                                                       
-        9/18/2018 11:01:33 PM | DataCopy             | Completed | Copy Completed.                                                                                                                                       
-        9/18/2018 11:20:58 PM | SecureErase          | Started   |                                                                                                                                                       
-        9/18/2018 11:28:46 PM | SecureErase          | Completed | Azure Data Box:BY506B4B616700 has been sanitized according to NIST 800 -88 Rev 1.                                                                     
+       9/6/2018 12:54:51 PM  | OrderCreated         | Completed  |                                                                                                                              
+       9/11/2018 8:57:38 PM  | DevicePrepared       | Completed  |                                                                                                                                                       
+       9/12/2018 7:28:15 PM  | ShippingToCustomer   | InProgress | Pickup Scan. Local Time : 9/12/2018 2:52:31 PM at Chantilly                                                                                           
+       9/13/2018 2:33:04 AM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/12/2018 9:00:00 PM at Chantilly                                                                                                                                                                                                                                                              
+       9/13/2018 12:40:31 PM | ShippingToCustomer   | InProgress | Arrival Scan. Local Time : 9/13/2018 5:00:00 AM at Oakland                                                                                            
+       9/13/2018 2:42:10 PM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/13/2018 6:08:00 AM at Oakland                                                                                          
+       9/13/2018 3:42:12 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:14:08 AM at Sunnyvale                                                                                      
+       9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:56:54 AM at Sunnyvale                                                                                      
+       9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Out For Delivery Today. Local Time : 9/13/2018 9:11:21 AM at Sunnyvale                                                                                
+       9/13/2018 5:43:07 PM  | ShippingToCustomer   | Completed  | Delivered. Local Time : 9/13/2018 9:44:17 AM at SUNNYVALE                                                                                             
+       9/14/2018 11:48:35 PM | ShippingToDataCenter | InProgress | Pickup Scan. Local Time : 9/14/2018 3:55:37 PM at Sunnyvale                                                                                                                                                                                 
+       9/15/2018 1:52:35 AM  | ShippingToDataCenter | InProgress | Arrival Scan. Local Time : 9/14/2018 6:31:00 PM at San Jose                                                                                           
+       9/15/2018 2:52:39 AM  | ShippingToDataCenter | InProgress | Departure Scan. Local Time : 9/14/2018 7:17:00 PM at San Jose                                                                                                                                                                             
+       9/17/2018 8:23:31 AM  | ShippingToDataCenter | InProgress | Destination Scan. Local Time : 9/17/2018 4:14:37 AM at Chantilly                                                                                      
+       9/17/2018 12:24:42 PM | ShippingToDataCenter | InProgress | Loaded on Delivery Vehicle. Local Time : 9/17/2018 7:45:36 AM at Chantilly                                                                            
+       9/17/2018 1:25:11 PM  | ShippingToDataCenter | InProgress | Out For Delivery Today. Local Time : 9/17/2018 8:27:11 AM at Chantilly                                                                                
+       9/17/2018 2:25:51 PM  | ShippingToDataCenter | Completed | Delivered. Local Time : 9/17/2018 9:56:32 AM at STERLING                                                                                              
+       9/18/2018 9:55:41 PM  | DeviceBoot           | Completed | Appliance booted up successfully                                                                                                                      
+       9/18/2018 11:00:25 PM | DataCopy             | Started   |                                                                                                                                                       
+       9/18/2018 11:01:33 PM | DataCopy             | Completed | Copy Completed.                                                                                                                                       
+       9/18/2018 11:20:58 PM | SecureErase          | Started   |                                                                                                                                                       
+       9/18/2018 11:28:46 PM | SecureErase          | Completed | Azure Data Box:BY506B4B616700 has been sanitized according to NIST 800 -88 Rev 1.                                                                     
         
-        ----------------------
-        Data Box Job Log Links
-        ----------------------
+       ----------------------
+       Data Box Job Log Links
+       ----------------------
         
-        Account Name         : eastusdryrun                                         
-        Copy Logs Path       : copylog/copylogd695869a2a294396b7b903296c208388.xml                                                                                                                                                     
-        Audit Logs Path      : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700                                                                                                                     
-        BOM Files Path       : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700
-        ```
-Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
+       Account Name         : eastusdryrun                                         
+       Copy Logs Path       : copylog/copylogd695869a2a294396b7b903296c208388.xml                                                                                                                                                     
+       Audit Logs Path      : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700                                                                                                                     
+       BOM Files Path       : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700
+       ```
+     Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
 
 ![Protokoly v účtech úložiště](media/data-box-portal-admin/logs-in-storage-acct-2.png)
 
@@ -201,6 +201,6 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [řešit problémy s Data Boxem](data-box-faq.md).

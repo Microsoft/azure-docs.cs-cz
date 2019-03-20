@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6d3bb9708c7bab41f87ad9c2b6ae18ac62849a2d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208346"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223916"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI
 
@@ -107,14 +107,10 @@ Pokud máte virtuální počítač, který už je systém přiřadil identity a 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
+> [!NOTE]
+> Pokud jste zřídili spravovanou identitu pro prostředky Azure VM rozšíření (zastaralé), musíte ho odebrat pomocí [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/). Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-K odebrání spravovanou identitu pro rozšíření virtuálního počítače pro prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), uživatel `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/):
-
-```azurecli-interactive
-az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
-```
-
-## <a name="user-assigned-managed-identity"></a>uživatel přiřazenou spravované identity
+## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
 
 V této části se dozvíte, jak přidávat a odebírat uživatelsky přiřazené spravovanou identitu virtuálního počítače Azure pomocí Azure CLI.
 
@@ -135,7 +131,7 @@ Pro přiřazení identit se uživatelsky přiřazené k virtuálnímu počítač
    ```azurecli-interactive
    az identity create -g myResourceGroup -n myUserAssignedIdentity
    ```
-   Odpověď obsahuje podrobnosti o uživateli přiřazena spravovanou identitu vytvořené, podobně jako následující. Hodnota id prostředku přiřazená uživateli přiřazena spravovaná identita se používá v následujícím kroku.
+   Odpověď obsahuje podrobnosti o uživateli přiřazena spravovanou identitu vytvořené, podobně jako následující. Hodnota ID prostředku přiřazená uživateli přiřazena spravovaná identita se používá v následujícím kroku.
 
    ```json
    {

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d94e64af362ef9698350b8231718cc841731f7e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112700"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 
@@ -105,7 +105,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Kliknutím na následující odkaz k provedení tohoto požadavku. Po přihlášení prohlížeči, budete přesměrováni na https://localhost/myapp/, k tokenu ID do adresního řádku. Všimněte si, že tento požadavek používá `response_mode=fragment` (pouze pro demonstrační účely). Doporučujeme, abyste použili `response_mode=form_post`.
+> Kliknutím na následující odkaz k provedení tohoto požadavku. Po přihlášení prohlížeči, budete přesměrováni na `https://localhost/myapp/`, k tokenu ID do adresního řádku. Všimněte si, že tento požadavek používá `response_mode=fragment` (pouze pro demonstrační účely). Doporučujeme, abyste použili `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametr | Podmínka | Popis |
@@ -178,7 +178,7 @@ Následující tabulka popisuje chybové kódy, které mohou být vráceny v `er
 
 Pouhého získání tokentu id_token není dostatečná k ověření uživatele. je nutné ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
-Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-idtoken) a [důležité informace o podpisový klíč výměny](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
+Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-id_token) a [důležité informace o podpisový klíč výměny](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
 <!--TODO: Improve the information on this-->
 
 Také můžete chtít ověřit další deklarace identity v závislosti na vašem scénáři. Některé běžné ověření patří:
@@ -235,7 +235,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 ```
 
 > [!TIP]
-> Kliknutím na následující odkaz k provedení tohoto požadavku. Po přihlášení prohlížeči přesměrován https://localhost/myapp/, ID token a kód do adresního řádku. Všimněte si, že tento požadavek používá `response_mode=fragment` pouze pro demonstrační účely. Doporučujeme, abyste použili `response_mode=form_post`.
+> Kliknutím na následující odkaz k provedení tohoto požadavku. Po přihlášení prohlížeči přesměrován `https://localhost/myapp/`, ID token a kód do adresního řádku. Všimněte si, že tento požadavek používá `response_mode=fragment` pouze pro demonstrační účely. Doporučujeme, abyste použili `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
@@ -279,4 +279,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Popis možné kódy chyb a odpovědí doporučených klienta najdete v tématu [kódy chyb pro chyby koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).
 
-Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](id-tokens.md#validating-an-idtoken). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v [dokumentace ke službě flow OAuth kód](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](id-tokens.md#validating-an-id_token). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v [dokumentace ke službě flow OAuth kód](v2-oauth2-auth-code-flow.md#request-an-access-token).

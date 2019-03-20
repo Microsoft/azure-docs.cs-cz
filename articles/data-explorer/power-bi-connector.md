@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vizualizujte data pomocí Průzkumníku dat Azure konektoru pro Power BI'
+title: 'Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI'
 description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: konektor Power BI pro Průzkumník dat Azure.'
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: de920a9addf9d2053a3c101c6b1f9a2c1a2feb27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106742"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizujte data pomocí Průzkumníku dat Azure konektoru pro Power BI
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
@@ -53,14 +53,14 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
     |---|---|---|
     | Cluster | *https://help.kusto.windows.net* | Adresa URL clusteru help. Pro další clustery, adresa URL je ve formě *https://\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
     | Databáze | Ponechte prázdné | Databáze, která je hostovaná v clusteru, ke kterému se připojujete. Vybereme to v pozdějším kroku. |
-    | Název tabulky | Ponechte prázdné | Jednu z tabulek v databázi nebo dotaz, jako jsou "StormEvents | Využijte 1000'. Vybereme to v pozdějším kroku. |
-    | Upřesnit možnosti | Ponechte prázdné | Nastavit možnosti pro vaše dotazy, jako je například výsledek velikost. |
+    | Název tabulky | Ponechte prázdné | Jednu z tabulek v databázi nebo dotaz, jako jsou <code>StormEvents \| take 1000</code>. Vybereme to v pozdějším kroku. |
+    | Pokročilá nastavení | Ponechte prázdné | Nastavit možnosti pro vaše dotazy, jako je například výsledek velikost. |
     | Režim připojení dat | *DirectQuery* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
     | | | |
 
 1. Pokud ještě nemáte připojení ke clusteru pomoc, přihlaste se. Přihlaste se pomocí účtu organizace a pak vyberte **připojit**.
 
-    ![Přihlásit se](media/power-bi-connector/sign-in.png)
+    ![Přihlášení](media/power-bi-connector/sign-in.png)
 
 1. Na **Navigátor** obrazovky, rozbalte **ukázky** databáze, vyberte **StormEvents** pak **upravit**.
 
@@ -91,4 +91,4 @@ Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rych
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vizualizujte data pomocí importovaných dotazů v Power BI](power-bi-imported-query.md)
+> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-imported-query.md)

@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: ee82aab37973117b0c1960d8b75a29bfad38b7c7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6f93bbceacff3731206e5f98ba9a252d6a046ac4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200068"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>referenční materiály k Host.JSON pro Azure Functions 1.x
 
-> [!div class="op_single_selector" title1="Vyberte verzi programu Azure Functions, který používáte: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Verze 1](functions-host-json-v1.md)
 > * [Verze 2](functions-host-json.md)
 
@@ -109,7 +109,7 @@ Následující ukázka *host.json* soubory mají všechny zadané možnosti.
 
 Následující části tohoto článku popisují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
 
-## <a name="aggregator"></a>Agregátor
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -169,7 +169,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
 |healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
-|counterThreshold|0,80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
+|counterThreshold|0.80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
 
 ## <a name="http"></a>http
 
@@ -191,7 +191,7 @@ Pokud sdílíte mezi více aplikací funkcí účet úložiště, ujistěte se, 
 }
 ```
 
-## <a name="logger"></a>Protokolovací nástroj
+## <a name="logger"></a>logger
 
 Ovládací prvky filtrování protokolů autorem [objektu ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
 
@@ -220,9 +220,27 @@ Ovládací prvky filtrování protokolů autorem [objektu ILogger](functions-mon
 
 Nastavení konfigurace pro [úložiště fronty aktivačními událostmi a vazbami](functions-bindings-storage-queue.md).
 
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+```json
+{
+    "queues": {
+      "maxPollingInterval": 2000,
+      "visibilityTimeout" : "00:00:30",
+      "batchSize": 16,
+      "maxDequeueCount": 5,
+      "newBatchThreshold": 8
+    }
+}
+```
 
-## <a name="servicebus"></a>služby Service Bus
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------| 
+|maxPollingInterval|60000|Maximální interval v milisekundách mezi dotazuje fronty.| 
+|visibilityTimeout|0|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdaří.| 
+|batchSize|16|Počet zpráv fronty, které modul runtime služby Functions současně načte a zpracuje paralelně. Jakmile číslo zpracovává přejdete dolů k `newBatchThreshold`, modul runtime získá další dávku a spustí zpracování zprávy. Maximální počet souběžných za funkce zpracování zprávy je `batchSize` plus `newBatchThreshold`. Toto omezení platí zvlášť pro každou funkci aktivovanou protokolem fronty. <br><br>Pokud chcete se vyhnout paralelní provádění pro zprávy přijaté pro jednu frontu, můžete nastavit `batchSize` na hodnotu 1. Toto nastavení však eliminuje souběžnosti, pouze tak dlouho, dokud vaše aplikace function app běží na jeden virtuální počítač (VM). Pokud aplikace function app škálovat do několika virtuálních počítačů, každý virtuální počítač může spustit jednu instanci každé funkce aktivované triggerem queue.<br><br>Maximální počet `batchSize` je 32. | 
+|maxDequeueCount|5|Počet pokusů, zpracovává zprávu před přesunutím do poškozené fronty.| 
+|newBatchThreshold|batchSize/2|Pokaždé, když se počet zpráv souběžně zpracováváno získá na toto číslo, modul runtime načte jiná dávka.| 
+
+## <a name="servicebus"></a>serviceBus
 
 Nastavení konfigurace pro [aktivační události služby Service Bus a vazby](functions-bindings-service-bus.md).
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b45f48289eda9096c84537eaaa7bc2df74c9d05d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112445"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -107,7 +107,7 @@ Poskytnutí přístupu vzdálený prostředek na trénovací data. Pro automatiz
 
 Pokud chcete poskytnout přístup, musíte mít:
 + Vytvořit soubor obsahující get_data.py `get_data()` – funkce 
-* Umístit tento soubor v adresáři dostupné jako absolutní cestu 
++ Umístit tento soubor v adresáři dostupné jako absolutní cestu 
 
 Kód pro čtení dat z úložiště objektů blob nebo místní disk v souboru get_data.py může zapouzdřit. V následující ukázce kódu data pocházejí z balíčku skriptu sklearn.
 

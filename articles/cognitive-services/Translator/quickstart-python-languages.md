@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 705bc49cef13ae80d648ca59b50021250dede3bd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e455b0167810c6e08853f3bce665cb6f314eec52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181448"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Rychlý start: Použití rozhraní Translator Text API k získání seznamu podporovaných jazyků pomocí Pythonu
 
@@ -95,6 +95,8 @@ python get-languages.py
 Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="sample-response"></a>Ukázková odpověď
+
+Najít – zkratka země v tomto [seznam jazyků](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 Ukázka je zkrácená, aby zobrazovala jenom fragment výsledku:
 

@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/19/2019
+ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98ea4d78a473123708be6e371587252acad6ffcd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 931bc26e22db4bbf02a18d4824b9c846f1e66b18
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190655"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
-Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měřítku a je určená pro zajištění propustnosti, škálovatelnosti a snadného použití. Funkce připojení ExpressRoute a Point-to-Site jsou v současnosti ve verzi Preview. Pobočková zařízení CPE automaticky zřizují službu Azure Virtual WAN a připojují se k ní. Tato zařízení jsou dostupná od stále rostoucího ekosystému partnerů pro SD-WAN a VPN. Viz [Seznam upřednostňovaných partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měřítku a je určená pro zajištění propustnosti, škálovatelnosti a snadného použití. Funkce připojení ExpressRoute a Point-to-Site jsou v současnosti ve verzi Preview. CPE větev autoprovision zařízení a připojení v Azure virtuální sítě WAN. Tato zařízení jsou dostupná od stále rostoucího ekosystému partnerů pro SD-WAN a VPN. Zobrazit [Upřednostňovaný seznam partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
-### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Kteří poskytovatelé zařízení (partneři pro Virtual WAN) se podporují při uvedení na trh? 
+### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Kteří poskytovatelé zařízení (partneři pro Virtual WAN) se podporují při uvedení na trh?
 
 Plně automatizované prostředí Virtual WAN v současnosti podporuje celá řada partnerů. Další informace najdete v tématu [Partneři Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615). 
 
@@ -69,7 +69,7 @@ Ne. Virtuální síť připojená k virtuálnímu rozbočovači nemůže mít br
 
 ### <a name="is-there-support-for-bgp"></a>Podporuje se BGP?
 
-Ano, BGP se podporuje. Aby bylo zajištěno, že trasy z virtuální sítě virtuálního síťového zařízení budou odpovídajícím způsobem inzerovány, musí paprsky zakázat BGP, pokud jsou připojené k virtuální síti virtuálního síťového zařízení, která je pak připojená k virtuálnímu rozbočovači. Hvězdicové virtuální sítě dále připojte k virtuálnímu rozbočovači, abyste zajistili, že trasy hvězdicových virtuálních budou šířeny do místních systémů.
+Ano, BGP se podporuje. Při vytváření serveru VPN, můžete zadat parametry protokolu BGP v ní. To bude znamenat, že budou všechna připojení vytvořené v Azure pro tuto lokalitu povolené pro protokol BGP. Kromě toho pokud máte virtuální síť, která síťové virtuální zařízení a této virtuální síti VNet síťové virtuální zařízení byla připojena k rozbočovači virtuální sítě WAN, aby se zajistilo, že jsou odpovídajícím způsobem, Inzerovat trasy z virtuální sítě síťové virtuální zařízení paprsků, které jsou připojené k virtuální síti síťového virtuálního zařízení nutné zakázat protokol BGP. Navíc tyto paprsku, který se rozšíří virtuální sítě k virtuální rozbočovač typu VNet-to-Ujistěte se trasy virtuální sítě paprsků připojení k místním systémům.
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Dá se ve virtuálním rozbočovači směrovat provoz s využitím UDR?
 
@@ -79,13 +79,21 @@ Ano, provoz do virtuální sítě můžete směrovat pomocí tabulky směrován�
  
 Ano. Prohlédněte si stránku s [cenami](https://azure.microsoft.com/pricing/details/virtual-wan/).
 
+### <a name="how-do-i-calculate-price-of-a-hub"></a>Výpočet ceny rozbočovače
+ 
+Zaplatíte služby v centru. Například 10 větve nebo na místním zařízení, která vyžadují pro připojení k Azure virtuální sítě WAN by vyžadovalo připojení k síti VPN koncové body v centru. Umožňuje to je VPN jednotky škálování 1 = 500 MB/s, to se účtuje 0.361 $/ hod. Každé připojení se účtuje 0,08 USD/hod. Pro 10 připojení, celková cena služby/hod by 0.361 $ + $. 8 / hod. Data pro provoz opouští azure účtují poplatky. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Jak se onboardují noví partneři, kteří nejsou uvedení ve vašem seznamu partnerů pro spouštění?
 
 Odešlete email na adresu azurevirtualwan@microsoft.com. Ideální partner je takový, pro jehož zařízení se dá zřídit připojení IKEv1 nebo IKEv2 protokolu IPSec.
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Co když používám zařízení i se nenachází v seznamu partnerské virtuální sítě WAN? Můžu ji mohou dál používat pro připojení k virtuální síti WAN VPN Azure?
+
+Ano, tak dlouho, dokud zařízení podporuje protokol IPsec IKEv1 nebo IKEv2. Virtuální sítě WAN partneři automatizovat připojení ze zařízení do koncových bodů Azure VPN. To znamená automatizuje kroky, jako je například "větev informace nahrávání", "IPsec a konfiguraci" a "připojení". Protože zařízení není z virtuální sítě WAN ekosystém partnerů, je potřeba udělat rutinní ručně trvá konfigurace Azure a aktualizaci vašich zařízení k nastavení připojení protokolu IPsec. 
+
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Je možné vytvořit Azure Virtual WAN s využitím šablony Resource Manageru?
 
-Jednoduchou konfiguraci jedné sítě Virtual WAN s jedním rozbočovačem a jedním vpnsite můžete vytvořit pomocí [šablony pro rychlé zprovoznění Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). Virtual WAN je služba, která je primárně založená na rozhraní REST nebo na portálu.
+Jednoduchá konfigurace jedné virtuální sítě WAN s jednom centru a jeden vpnsite lze vytvořit pomocí [šablona Azure quickstart](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). Virtual WAN je služba, která je primárně založená na rozhraní REST nebo na portálu.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Jsou ve Virtual WAN povolené možnosti připojení mezi jednotlivými pobočkami?
 
@@ -99,6 +107,10 @@ Ano.
 
 Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Ve všech oblastech kromě oblasti USA – středozápad můžete v centru připojit až 1000 připojení poboček s rychlostí 2 GB/s. Pro oblast USA – středozápad je dostupná rychlost 20 GB/s. V budoucnu budeme postupně zavádět rychlost 20 GB/s i do dalších oblastí. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V každé oblasti můžete mít jeden rozbočovač, což znamená, že můžete připojit více než 1000 poboček mezi různými rozbočovači.
 
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak se virtuální sítě WAN podporu SD-WAN zařízení?
+
+Virtuální sítě WAN partneři automatizovat připojení protokolu IPsec pro koncové body Azure VPN. Pokud virtuální sítě WAN partner poskytovatele SD-WAN, pak se předpokládá, že SD-WAN kontrolér spravuje automatizace a možnosti připojení protokolu IPsec pro koncové body Azure VPN. Pokud zařízení SD-WAN vyžaduje svou vlastní koncový bod místo Azure VPN pro všechny speciální funkce SD-WAN, můžete nasadit SD-WAN koncový bod ve virtuální síti Azure a existovat současně s Azure virtuální sítě WAN.
+
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Vyžaduje tato služba Virtual WAN ExpressRoute z každé lokality?
 
 Ne, Virtual WAN nevyžaduje ExpressRoute z každé lokality. Využívá standardní připojení IPsec typu Site-to-Site prostřednictvím internetových linek ze zařízení do rozbočovače Azure Virtual WAN. Vaše lokality můžou být připojené k síti poskytovatele prostřednictvím okruhu ExpressRoute. V případě lokalit, které jsou připojené pomocí okruhu ExpressRoute ve virtuálním rozbočovači (ve verzi Preview), je možné využívat provoz pobočka-pobočka mezi VPN a ExpressRoute. 
@@ -109,12 +121,12 @@ Počet poboček je omezený na 1000 připojení na rozbočovač/oblast a celkem 
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Umožňuje Virtual WAN místním zařízením využívat paralelně několik poskytovatelů internetových služeb, nebo jde vždycky o jeden tunel VPN?
 
-Ano, v závislosti na zařízení pobočky můžete mít z jedné pobočky tunely typu aktivní-aktivní (2 tunely = 1 připojení Azure Virtual WAN).
+Připojení přicházející do virtuální sítě WAN VPN vždy tunelové propojení typu aktivní aktivní (pro odolnost proti chybám ve stejné oblasti/rozbočovač) používá k dispozici odkaz na větev. Tento odkaz může být odkaz na poskytovatele internetových služeb ve větvi v místním prostředí. Virtuální síť WAN neposkytuje nějakou zvláštní logiku k nastavení více poskytovatele internetových služeb paralelně; správu převzetí služeb při selhání mezi poskytovatele internetových služeb ve větvi je zcela zaměřené na větev síťové operace. Provedete to výběr cesty na větev můžete použít oblíbený SD-WAN řešení.
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Jak se směruje provoz v páteřní síti Azure?
 
-Přenos probíhá takto: zařízení pobočky -> poskytovatel internetu -> Microsoft Edge -> datové centrum Microsoftu -> Microsoft Edge -> poskytovatel internetu -> zařízení pobočky.
+Provoz má následující formát: větev zařízení -> poskytovatele internetových služeb -> Microsoft edge -> Microsoft řadič domény (virtuální síti centra) -> Microsoft -> edge poskytovatele internetových služeb -> větev zařízení
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Co je při použití tohoto modelu potřeba na jednotlivých lokalitách? Jenom připojení k internetu?
 
-Ano. Připojení k internetu a fyzické zařízení, ideálně od některého z našich integrovaných [partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615). Volitelně můžete konfiguraci a připojení k Azure z vašeho preferovaného zařízení spravovat ručně.
+Ano. Připojení k Internetu a fyzickým zařízením, která podporuje protokol IPsec, nejlépe z našich integrovaných [partneři](https://go.microsoft.com/fwlink/p/?linkid=2019615). Volitelně můžete konfiguraci a připojení k Azure z vašeho preferovaného zařízení spravovat ručně.

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: bd1cb101a3bf9a4da9c681169d2a5c999e56b1b3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c4db658db3d32905368390826e5531ca31525486
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438410"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133123"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Příjem dat Azure Průzkumník dat
 
@@ -53,7 +53,7 @@ Průzkumník dat Azure aktuálně podporuje:
 
 ### <a name="ingestion-using-integration-services"></a>Ingestování pomocí integračních služeb
 
-* Azure Data Factory (ADF), služba pro integraci plně spravovaná data pro analytické úlohy v Azure ke zkopírování dat do a z Průzkumníku dat Azure. Další informace najdete v tématu [kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
+* Azure Data Factory (ADF), služba pro integraci plně spravovaná data pro analytické úlohy v Azure ke zkopírování dat do a z Průzkumníku dat Azure pomocí [podporovaných úložišť dat a formáty](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). Další informace najdete v tématu [kopírování dat do nebo z Průzkumníku dat Azure pomocí Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Ingestování prostřednictvím kódu programu
 

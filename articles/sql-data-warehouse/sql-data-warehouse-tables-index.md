@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244687"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190035"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulky ve službě SQL Data Warehouse
 Doporučení a příklady pro indexování tabulky ve službě Azure SQL Data Warehouse.
@@ -45,12 +45,12 @@ Zde je několik scénářů, kde Clusterované columnstore nemusí být vhodný:
 
 - Tabulky Columnstore nepodporuje varchar(max), nvarchar(max) a varbinary(max). Místo toho zvažte haldy nebo clusterovaný index.
 - Tabulky Columnstore je možné pro přechodná data méně efektivní. Vezměte v úvahu haldy a možná i dočasné tabulky.
-- Malé tabulky s méně než 100 milionů řádků. Vezměte v úvahu tabulky haldy.
+- Malé tabulky s méně než 60 milionů řádků. Vezměte v úvahu tabulky haldy.
 
 ## <a name="heap-tables"></a>Tabulky hald
 Když dočasně umisťujete data ve službě SQL Data Warehouse, můžete zjistit, že použitím tabulky haldy je celý proces zrychlí. Je to proto, že do hald načítají rychleji než do tabulky indexů a v některých případech následné čtení se dá udělat z mezipaměti.  Pokud nahráváte data pouze za účelem jejich přípravy před spuštěním dalších transformací, nahrání tabulky do tabulky haldy je mnohem rychlejší než nahrání dat do Clusterované tabulky columnstore. Kromě toho nahrání dat do [dočasnou tabulku](sql-data-warehouse-tables-temporary.md) načte rychlejší, než nahrání tabulky do trvalého úložiště.  
 
-Pro malé vyhledávacími tabulkami, méně než 100 milionů řádků tabulky hald často má smysl.  Začít dosáhli optimální komprese po více než 100 milionů řádků tabulky columnstore clusteru.
+Pro malé vyhledávacími tabulkami, méně než 60 miliony řádků, často tabulky hald dávat smysl.  Začít dosáhli optimální komprese po více než 60 milionů řádků tabulky columnstore clusteru.
 
 K vytvoření tabulky haldy, zadejte jednoduše HALDY v klauzuli WITH:
 
@@ -79,7 +79,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Chcete-li přidat neclusterovaný index u tabulky, jednoduše použijte následující syntaxi:
+Chcete-li přidat neclusterovaný index u tabulky, použijte následující syntaxi:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -182,7 +182,7 @@ Pokud jste našli tabulky s kvality segmentů nízký, budete chtít zjistit pů
 Tyto faktory mohou způsobit index columnstore, aby výrazně méně než optimální 1 milion řádků na skupinu řádků. Může také dojít k tomu řádků, které mají přejít na skupinu řádků delta místo skupiny komprimovaný řádek. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Přetížení paměti, když byl sestaven indexu
-Počet řádků na skupinu komprimovaný řádek přímo souvisí šířky řádku a množství paměti k dispozici pro zpracování skupinu řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Osvědčeným postupem je proto poskytnout relace, která zapisuje do indexu columnstore tabulky přístup k tolik paměti co nejvíce.  Protože kompromis mezi pamětí a souběžnosti, pokyny k přidělení paměti správné závisí na data v jednotlivých řádcích tabulky, jednotky datového skladu, které jsou přiděleny do vašeho systému a slotů souběžnosti, které poskytnete k relaci který zapisuje data do tabulky.  Jako osvědčený postup doporučujeme začít s xlargerc, pokud používáte DW300 nebo méně largerc, pokud používáte DW400 na úroveň DW600 a mediumrc, pokud používáte DW1000 a vyšší.
+Počet řádků na skupinu komprimovaný řádek přímo souvisí šířky řádku a množství paměti k dispozici pro zpracování skupinu řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Osvědčeným postupem je proto poskytnout relace, která zapisuje do indexu columnstore tabulky přístup k tolik paměti co nejvíce.  Protože kompromis mezi pamětí a souběžnosti, pokyny k přidělení paměti správné závisí na data v jednotlivých řádcích tabulky, jednotky datového skladu, které jsou přiděleny do vašeho systému a slotů souběžnosti, které poskytnete k relaci který zapisuje data do tabulky.
 
 ### <a name="high-volume-of-dml-operations"></a>Velký objem operací DML
 Velký objem operací DML, aktualizovat a odstraňovat řádky můžete zavést nedostatků do indexu columnstore. To platí zejména při změně většinou řádků v skupinu řádků.
@@ -205,7 +205,7 @@ Po načtení tabulky s daty postupujte níže uvedený postup k identifikaci a z
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Nové sestavení indexů ke zlepšení kvality segmentů
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Určete nebo vytvořte uživatele, který používá správný prostředek třídy
-Rychlý způsob okamžitě zlepšení kvality segmentů je index znovu sestavit.  SQL vrácený zobrazení výše vrátí příkaz ALTER INDEX REBUILD, který slouží k opětovnému sestavení indexů. Při opětovném sestavování indexů, ujistěte se, že přidělíte dostatek paměti pro relaci, která znovu sestaví indexy.  K tomuto účelu zvýšit Třída prostředků uživatele, který má oprávnění k opětovnému sestavení indexů v této tabulce na Doporučená minimální. Třída prostředků uživatele vlastníka databáze nemůže být změněna, takže pokud jste ještě nevytvořili uživatele v systému, musíte nejdříve provést. Minimální doporučená nastavení je třída prostředků xlargerc Pokud používáte DW300 nebo méně largerc Pokud používáte DW400 na úroveň DW600 a mediumrc, pokud používáte DW1000 a vyšší.
+Rychlý způsob okamžitě zlepšení kvality segmentů je index znovu sestavit.  SQL vrácený zobrazení výše vrátí příkaz ALTER INDEX REBUILD, který slouží k opětovnému sestavení indexů. Při opětovném sestavování indexů, ujistěte se, že přidělíte dostatek paměti pro relaci, která znovu sestaví indexy.  K tomuto účelu zvýšit Třída prostředků uživatele, který má oprávnění k opětovnému sestavení indexů v této tabulce na Doporučená minimální. 
 
 Níže je příklad toho, jak přidělit víc paměti uživateli zvýšením své třídy prostředků. Práce s třídami prostředků, najdete v článku [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Znovu sestavit Clusterované indexy columnstore s větším uživatelském třídy prostředků
 Přihlaste se jako uživatel z kroku 1 (třeba LoadUser), která je teď vyšší třídě prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER na tabulky, kde index je znovu sestaven. Tyto příklady ukazují, jak znovu sestavte index columnstore celý nebo znovu sestavit jeden oddíl. U velkých tabulek je víc praktických znovu sestavit indexy jeden oddíl v čase.
 
-Místo znovu sestavit index, může případně zkopírujte tabulku, do nové tabulky [použití příkazu CTAS](sql-data-warehouse-develop-ctas.md). Jakým způsobem je nejvhodnější? Pro velké objemy dat, je obvykle rychlejší než CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Pro menší objem dat ALTER INDEX se snadněji používá a není třeba vyměnit v tabulce. Zobrazit **nové sestavení indexů CTAS a přepínání oddílů** níže podrobné informace o tom, jak provést nové sestavení indexů s CTAS.
+Místo znovu sestavit index, může případně zkopírujte tabulku, do nové tabulky [použití příkazu CTAS](sql-data-warehouse-develop-ctas.md). Jakým způsobem je nejvhodnější? Pro velké objemy dat, je obvykle rychlejší než CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Pro menší objem dat ALTER INDEX se snadněji používá a není třeba vyměnit v tabulce. 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 Další podrobnosti o opětovné vytvoření oddílů použití příkazu CTAS najdete v tématu [používání oddílů ve službě SQL Data Warehouse](sql-data-warehouse-tables-partition.md).

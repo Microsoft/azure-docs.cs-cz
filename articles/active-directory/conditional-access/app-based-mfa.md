@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68593087c1fbb912cafb9c886f43f947744c5651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07466e40834b8bfaf4a452cf728bae517b8c7b00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122706"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory 
 
@@ -164,7 +164,7 @@ K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
 - **Isabella Simonsen** jako uživatel 
 - **Microsoft Azure Management** jako cloudové aplikace
 
- Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
+  Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
 
 - **Vyžadovat vícefaktorové ověřování pro přístup na portál Azure** pod **zásady, které budou platit** 
 - **Vyžadovat vícefaktorové ověřování** jako **udělení ovládacích prvků**.

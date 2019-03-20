@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2aa32d75edbacdfff6428a6526d9898cb6732d6b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181822"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek obsahuje několik příkladů běžných úloh po spuštění, které můžete provádět v cloudové službě. Úlohy po spuštění můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnout instalaci součásti, registrace komponent COM, nastavení klíče registru nebo spouští se dlouho běžící proces. 
@@ -93,7 +93,7 @@ REM   *** Add a compression section to the Web.config file. ***
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
-REM   batch file were executed twice. This can occur and must be accounted for in a Azure startup
+REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
 IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL

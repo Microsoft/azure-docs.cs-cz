@@ -11,43 +11,44 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c81ab72be58cd223eb9b3fe9ec53d56574a94e8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 4b65eb38b6c8102295f40b5e169ae7c32a2342a2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430297"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201360"
 ---
-# <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování na základě skupin
+# <a name="change-the-license-for-a-single-user-in-a-licensed-group-in-azure-active-directory"></a>Změnit licenci pro jednoho uživatele v licencované skupiny v Azure Active Directory
 
 Tento článek popisuje doporučenou metodou pro přesun uživatelů mezi licencemi produktů při použití skupinové licence. Cílem tohoto přístupu je zajistit, že nedochází ke ztrátě služeb nebo dat během migrace: by uživatelé přepínat mezi produkty bez problémů. Dvě varianty proces migrace zahrnuje:
 
--   Jednoduchá migrace mezi licencemi produktů, které neobsahují slovo konfliktní plány služeb, jako je migrace mezi Office 365 Enterprise E3 a Office 365 Enterprise E5.
+- Jednoduchá migrace mezi licencemi produktů, které neobsahují slovo konfliktní plány služeb, jako je migrace mezi Office 365 Enterprise E3 a Office 365 Enterprise E5.
 
--   Složitější migrace mezi produkty, které obsahují některé konfliktní plány služeb, jako je migrace mezi Office 365 Enterprise E1 a Office 365 Enterprise E3. Další informace o konfliktech najdete v tématu [konfliktní plány služeb](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) a [služby plány, které nelze přiřadit ve stejnou dobu](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
+- Složitější migrace mezi produkty, které obsahují některé konfliktní plány služeb, jako je migrace mezi Office 365 Enterprise E1 a Office 365 Enterprise E3. Další informace o konfliktech najdete v tématu [konfliktní plány služeb](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) a [služby plány, které nelze přiřadit ve stejnou dobu](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
 
 Tento článek obsahuje ukázkový kód Powershellu, který slouží k provedení kroků migrace a ověření. Kód je užitečné zejména pro rozsáhlé operace, kde není praktické kroky provést ručně.
 
 ## <a name="before-you-begin"></a>Před zahájením
 Než začnete s migrací, je důležité ověřit, že některé předpoklady platí pro všechny uživatele, které chcete migrovat. Nejsou-li předpoklady platí pro všechny uživatele, může migrace selhat pro některé. Díky tomu někteří uživatelé možná ztratíte přístup ke službám nebo datům. Je třeba ověřit následující předpoklady:
 
--   Uživatelé mají *zdroj licence* , která je přiřazena pomocí licencování na základě skupiny. Licence k produktu pro přesun směrem z dědí z jedné zdrojové skupiny a nejsou přímo přiřadit.
+- Uživatelé mají *zdroj licence* , která je přiřazena pomocí licencování na základě skupiny. Licence k produktu pro přesun směrem z dědí z jedné zdrojové skupiny a nejsou přímo přiřadit.
 
     >[!NOTE]
     >Pokud také přiřazení licencí přímo, může bránit použití *cílové licence*. Další informace o [Přímá synchronizace a přiřazení licence skupině](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Můžete chtít použít [skript prostředí PowerShell](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) chcete kontrolovat, jestli uživatelé mají přímé licence.
 
--   Máte dostatek dostupné licence pro cíl produktu. Pokud nemáte k dispozici dostatek licencí, nemusí někteří uživatelé získat *cílové licence*. Je možné [Zkontrolujte počet dostupných licencí](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
+- Máte dostatek dostupné licence pro cíl produktu. Pokud nemáte k dispozici dostatek licencí, nemusí někteří uživatelé získat *cílové licence*. Je možné [Zkontrolujte počet dostupných licencí](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
 
--   Uživatelé nemají k dispozici další licence na přiřazené produkty, které může dojít ke konfliktu s *cílové licence* nebo zabránit odebrání *zdroj licence*. Například licenci z doplňkovým produktem jako Workplace Analytics nebo Projectu Online, který obsahuje závislost na další produkty.
+- Uživatelé nemají k dispozici další licence na přiřazené produkty, které může dojít ke konfliktu s *cílové licence* nebo zabránit odebrání *zdroj licence*. Například licenci z doplňkovým produktem jako Workplace Analytics nebo Projectu Online, který obsahuje závislost na další produkty.
 
--   Zjistěte, jak se spravují skupiny ve vašem prostředí. Například je-li spravovat skupiny v místním a synchronizovat je se do služby Azure Active Directory (Azure AD) prostřednictvím služby Azure AD Connect, pak můžete přidávat nebo odebírat uživatele pomocí místního systému. Změny se synchronizují do služby Azure AD a získat vyzvednou licencování na základě skupiny chvíli trvá. Pokud používáte dynamické členství ve skupinách Azure AD, můžete přidat či odebrat uživatele úpravou jejich atributy. Celkový proces migrace ale zůstává stejná. Jediným rozdílem je, jak můžete přidat nebo odebrat uživatele pro členství ve skupině.
+- Zjistěte, jak se spravují skupiny ve vašem prostředí. Například je-li spravovat skupiny v místním a synchronizovat je se do služby Azure Active Directory (Azure AD) prostřednictvím služby Azure AD Connect, pak můžete přidávat nebo odebírat uživatele pomocí místního systému. Změny se synchronizují do služby Azure AD a získat vyzvednou licencování na základě skupiny chvíli trvá. Pokud používáte dynamické členství ve skupinách Azure AD, můžete přidat či odebrat uživatele úpravou jejich atributy. Celkový proces migrace ale zůstává stejná. Jediným rozdílem je, jak můžete přidat nebo odebrat uživatele pro členství ve skupině.
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>Migrace uživatelů mezi produkty, které nemají konfliktní plány služeb
+
 Cíl migrace je změna uživatelské licence pomocí licencování na základě skupiny *zdroj licence* (v tomto příkladu: Office 365 Enterprise E3) k *cílové licence* (v tomto příkladu: Office 365 Enterprise E5). Tyto dva produkty v tomto scénáři neobsahují konfliktní plány služeb tak můžou být plně přiřazeno ve stejnou dobu bez konfliktu. V žádném bodě během migrace by uživatelé ztratit přístup ke službám nebo datům. Migrace se provádí malých dávkách"." Můžete ověřovat výsledek pro jednotlivé dávky a minimalizovat rozsahu potíží, které mohou nastat během procesu. Celkově procesu vypadá takto:
 
 1.  Uživatelé jsou členy skupiny zdroje a dědí *zdroj licence* z této skupiny.
@@ -65,6 +66,7 @@ Cíl migrace je změna uživatelské licence pomocí licencování na základě 
 7.  Postup opakujte pro další dávky uživatelů.
 
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Migrace jednoho uživatele pomocí webu Azure portal
+
 Toto je jednoduché návod, jak migrovat jenom jednoho konkrétního uživatele.
 
 **KROK 1**: Uživatel má *zdroj licence* , který je zděděno od skupiny. Nejsou žádné přímé přiřazení licence:

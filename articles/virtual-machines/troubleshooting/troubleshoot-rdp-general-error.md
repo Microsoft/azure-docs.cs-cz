@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100407"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení potíží s RDP obecné chybě ve virtuálním počítači Azure
 
@@ -65,7 +65,7 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 
 ### <a name="serial-console"></a>Konzola sériového portu
 
-#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otevřete CMD instance v konzole sériového portu
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otevřené instance CMD v konzole sériového portu
 
 1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
 
@@ -164,17 +164,17 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 
 Pokud problém stále dochází, přejděte ke kroku 2.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Povolení služby Vzdálená plocha
+#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Povolení vzdálené plochy
 
 Další informace najdete v tématu [služby Vzdálená plocha nespouští na Virtuálním počítači Azure](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetování naslouchací proces RDP
+#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetovat naslouchací proces RDP
 
 Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuálním počítači Azure](troubleshoot-rdp-intermittent-connectivity.md).
 
 ### <a name="offline-repair"></a>Offline oprava
 
-#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Zapněte vzdálenou plochu
+#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Zapnout vzdálené plochy
 
 1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
@@ -229,19 +229,19 @@ Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuá
 
       Zásady definitions\Windows Windows\Vzdálená Desktopu plocha\Hostitel Desktop relace Host\Connections\Allow uživatelům vzdálené připojení s použitím služby Vzdálená plocha
   
-7. Odpojte disk od zachránit virtuálního počítače.
-8. [Vytvořit nový virtuální počítač z disku](../windows/create-vm-specialized.md).
+1. Odpojte disk od zachránit virtuálního počítače.
+1. [Vytvořit nový virtuální počítač z disku](../windows/create-vm-specialized.md).
 
 Pokud problém stále dochází, přejděte ke kroku 2.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Povolení služby Vzdálená plocha
+#### <a name="step-2-enable-remote-desktop-services"></a>Krok 2: Povolení vzdálené plochy
 
 Další informace najdete v tématu [služby Vzdálená plocha nespouští na Virtuálním počítači Azure](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetování naslouchací proces RDP
+#### <a name="step-3-reset-rdp-listener"></a>Krok 3: Resetovat naslouchací proces RDP
 
 Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuálním počítači Azure](troubleshoot-rdp-intermittent-connectivity.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktovat podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

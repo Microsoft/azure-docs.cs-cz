@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: ec0211c71b8be66262ef0f19dcd1f952051c97b8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: edf724d6fd659ad4e8887a9c68467d17a33f5ccc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332672"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110273"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa nákladů a využití pro službu Application Insights
 
@@ -167,15 +167,15 @@ Vzhledem k tomu, že tento plán je určené jenom pro zákazníky s předplatn�
 ### <a name="how-the-enterprise-plan-works"></a>Jak funguje plánu Enterprise
 
 * Platíte za každý uzel, který odesílá telemetrická data pro všechny aplikace v plánu Enterprise.
- * A *uzlu* je počítač fyzický nebo virtuální server nebo instance platformy jako služby role, který je hostitelem vaší aplikace.
- * Vývoj pro počítače, klientský prohlížeč a mobilní zařízení se nepočítají jako uzly.
- * Pokud má vaše aplikace několik komponent, které odesílají telemetrická data, jako jsou webové služby a back-end pracovní proces, komponenty se počítá samostatně.
- * [Live Metrics Stream](../../azure-monitor/app/live-stream.md) dat se nepočítá ceny účely. V předplatném poplatky se podle počtu uzlů, ne podle aplikací. Pokud máte pět uzlů, které odesílají telemetrii pro 12 aplikací, platí se za pět uzlů.
+  * A *uzlu* je počítač fyzický nebo virtuální server nebo instance platformy jako služby role, který je hostitelem vaší aplikace.
+  * Vývoj pro počítače, klientský prohlížeč a mobilní zařízení se nepočítají jako uzly.
+  * Pokud má vaše aplikace několik komponent, které odesílají telemetrická data, jako jsou webové služby a back-end pracovní proces, komponenty se počítá samostatně.
+  * [Live Metrics Stream](../../azure-monitor/app/live-stream.md) dat se nepočítá ceny účely. V předplatném poplatky se podle počtu uzlů, ne podle aplikací. Pokud máte pět uzlů, které odesílají telemetrii pro 12 aplikací, platí se za pět uzlů.
 * I když poplatky se zaokrouhlují za měsíc, platíte jenom pro všechny hodiny, kdy uzel odesílá telemetrická data z aplikace. Hodinová sazba se v uvozovkách měsíční poplatek vydělí 744 (počet hodin za měsíc s 31 dny).
 * Pro každý uzel, který je zjištěn (s hodinovou členitost) je zadána přidělení dat svazku alespoň 200 MB za den. Přidělení nepoužívaná data se přenesou z jeden den na další.
- * Pokud se rozhodnete podniku cenový plán, každé předplatné získá denní příděl dat na základě počtu uzlů, které posílají telemetrická data do prostředky Application Insights v tomto předplatném. Ano Pokud máte pět uzlů, které posílají data celý den, budete mít ve fondu příděl 1 GB použito pro všechny prostředky Application Insights v tomto předplatném. Nebude vadit, když některé uzly posílají více dat než jiné uzly, protože poskytovaná data se sdílejí napříč všemi uzly. Pokud v daném dni prostředky Application Insights zobrazí více dat, než je součástí denní přidělování dat pro toto předplatné, vztahují poplatky za Nadlimitní data úrovně za GB. 
- * Denní příděl dat se počítá jako počtu hodin za den (pomocí času UTC), že každý uzel odesílá telemetrii, dělený 24, vynásobený 200 MB. Ano, pokud máte čtyři uzly, které odesílají telemetrii během 15 z 24 hodin za den, zahrnutých dat pro tento den by ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Za cenu 2.30 USD za GB za překročení limitu dat náklady by rovný 1,15 USD uzly odeslání 1 GB dat daný den.
- * Denní příděl plánu Enterprise se nesdílí s aplikacemi, pro které jste zvolili základní plán. Nepoužité příspěvek není přenesou v detailech. 
+  * Pokud se rozhodnete podniku cenový plán, každé předplatné získá denní příděl dat na základě počtu uzlů, které posílají telemetrická data do prostředky Application Insights v tomto předplatném. Ano Pokud máte pět uzlů, které posílají data celý den, budete mít ve fondu příděl 1 GB použito pro všechny prostředky Application Insights v tomto předplatném. Nebude vadit, když některé uzly posílají více dat než jiné uzly, protože poskytovaná data se sdílejí napříč všemi uzly. Pokud v daném dni prostředky Application Insights zobrazí více dat, než je součástí denní přidělování dat pro toto předplatné, vztahují poplatky za Nadlimitní data úrovně za GB. 
+  * Denní příděl dat se počítá jako počtu hodin za den (pomocí času UTC), že každý uzel odesílá telemetrii, dělený 24, vynásobený 200 MB. Ano, pokud máte čtyři uzly, které odesílají telemetrii během 15 z 24 hodin za den, zahrnutých dat pro tento den by ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Za cenu 2.30 USD za GB za překročení limitu dat náklady by rovný 1,15 USD uzly odeslání 1 GB dat daný den.
+  * Denní příděl plánu Enterprise se nesdílí s aplikacemi, pro které jste zvolili základní plán. Nepoužité příspěvek není přenesou v detailech. 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Příklady toho, jak určit počet různých uzlů
 

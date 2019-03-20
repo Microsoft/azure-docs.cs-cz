@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abdfc377c40e37f01fbbbbd695e949671d40a51
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1c93716d5c8d0c9a74e2cb14a35637faa029c156
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820123"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226177"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
 
@@ -64,35 +64,10 @@ Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním po�
    },
    ```
 
-3. (Volitelné) Přidání virtuálních počítačů spravovaných identit pro rozšíření prostředků Azure jako `resources` elementu. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
+> [!NOTE]
+> Může volitelně zřízení spravovaných identit pro prostředky Azure rozšíření virtuálního počítače tak, že zadáte jako `resources` element v šabloně. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-   >[!NOTE] 
-   > V následujících příkladech se předpokládá rozšíření virtuálního počítače Windows (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux s použitím `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy. Rozšíření virtuálního počítače je naplánovaná na vyřazení v lednu 2019.
-   >
-
-   ```JSON
-   { 
-       "type": "Microsoft.Compute/virtualMachines/extensions",
-       "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-       "apiVersion": "2018-06-01",
-       "location": "[resourceGroup().location]",
-       "dependsOn": [
-           "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-       ],
-       "properties": {
-           "publisher": "Microsoft.ManagedIdentity",
-           "type": "ManagedIdentityExtensionForWindows",
-           "typeHandlerVersion": "1.0",
-           "autoUpgradeMinorVersion": true,
-           "settings": {
-               "port": 50342
-           },
-           "protectedSettings": {}
-       }
-   }
-   ```
-
-4. Jakmile budete hotovi, v dalších částech měla být přidána do `resource` část šablony a to by měl vypadat takto:
+3. Jakmile budete hotovi, v dalších částech měla být přidána do `resource` část šablony a to by měl vypadat takto:
 
    ```JSON
    "resources": [
@@ -106,6 +81,8 @@ Pokud chcete povolit systém přiřadil spravovaná identita na virtuálním po�
                 "type": "SystemAssigned",
                 },
             },
+        
+            //The following appears only if you provisioned the optional VM extension (to be deprecated)
             {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -253,29 +230,6 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
    }
    ```
        
-
-2. (Volitelné) Části `resources` prvku, přidejte následující položku přiřazení spravovanou identitu rozšíření k vašemu virtuálnímu počítači (plánovaná k převedení na zastaralého v lednu 2019). Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také. Použijte následující syntaxi:
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-    
 3. Jakmile budete hotovi, v dalších částech měla být přidána do `resource` část šablony a to by měl vypadat takto:
    
    **Microsoft.Compute/virtualMachines rozhraní API verze 2018-06-01**    
@@ -295,6 +249,7 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
                 }
             }
         },
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                  
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -332,6 +287,8 @@ K virtuálnímu počítači přiřadit uživatelsky přiřazené identity, musí
                 ]
             }
         },
+                 
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                   
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",

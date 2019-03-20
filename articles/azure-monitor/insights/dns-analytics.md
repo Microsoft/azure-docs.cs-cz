@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6e3c456b3ee92f30b3b152a39faf3f1fe483013f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: fdc3c42da7f3d2290806a8cd00d7c90d16f3b87d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103923"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -66,7 +66,7 @@ Na řídicím panelu řešení, klikněte na tlačítko **konfigurace** otevřet
 
 - **Názvy domén na seznamu povolených**. Řešení nezpracovává vyhledávací dotazy. Udržuje seznam povolených přípon názvů domén. Řešení nezpracovávají vyhledávací dotazy, které odkazují na názvy domén, které odpovídají přípon názvů domén v tomto seznamu povolených IP adres. Zpracování nejsou povolené názvy domén umožňuje optimalizovat data odeslaná do Azure monitoru. Výchozí seznam povolených obsahuje názvy populárních veřejných domén, například www.google.com a www.facebook.com. Zobrazení seznamu dokončení výchozí posunutím.
 
- Můžete upravit seznam přidat příponu názvu domény, kterou chcete zobrazit přehledy vyhledávání pro. Můžete také odebrat příponu názvu domény, které nechcete zobrazit přehledy vyhledávání pro.
+  Můžete upravit seznam přidat příponu názvu domény, kterou chcete zobrazit přehledy vyhledávání pro. Můžete také odebrat příponu názvu domény, které nechcete zobrazit přehledy vyhledávání pro.
 
 - **Prahová hodnota prahová klienta**. Klienti DNS, které překračují prahovou hodnotu pro počet požadavků na vyhledávání jsou zvýrazněné **klienti DNS** okno. Výchozí prahová hodnota je 1 000. Můžete upravit prahovou hodnotu.
 

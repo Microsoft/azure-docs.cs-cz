@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 5988ad92c9395332163182cb6995781d08bd5957
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 47566b8ca9682d411f576929531d50ef7a1ae279
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180972"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Vytváření filtrů pomocí Media Services .NET SDK 
 > [!div class="op_single_selector"]

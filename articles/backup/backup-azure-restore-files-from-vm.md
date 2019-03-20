@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 9ab271943d33ad63be0fae705ac703d1d98524ef
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 25c78e4050f1f5fdb02500fa1f206f6cf05e7134
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542501"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111952"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -74,9 +74,9 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
     - odchozí port 3260
 
 > [!Note]
->
-* Název souboru staženého skriptu bude mít **geo-name** pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678...<br><br>
-* Adresa URL bude "https://pod01-rec2.wcus.backup.windowsazure.com"
+> 
+> * Název souboru staženého skriptu bude mít **geo-name** pro vyplnění v adrese URL. Pro např: Název staženého skriptu začíná \'VMname\'\_\'geoname\'_\'GUID\', jako jsou ContosoVM_wcus_12345678...<br><br>
+> * Adresa URL bude "<https://pod01-rec2.wcus.backup.windowsazure.com>"
 
 
    Pro Linux vyžaduje skript 'open-iscsi' a "lshw" součásti pro připojení k bodu obnovení. Pokud komponenty na počítači, ve kterém se skript spouští neexistují, skript vyzve k zadání oprávnění k instalaci součásti. Poskytnout souhlas nainstalujte nezbytné součásti.

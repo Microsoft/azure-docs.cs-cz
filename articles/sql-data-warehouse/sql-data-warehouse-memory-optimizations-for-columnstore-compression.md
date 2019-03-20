@@ -2,24 +2,24 @@
 title: Zlepšení výkonu indexu columnstore – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Snižte požadavky na paměť nebo zvýšení dostupné paměti se pro zajištění maximálního počtu řádků, které komprimuje columnstore index do každé skupiny řádků.
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189559"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace rowgroup kvality columnstore
 
-Skupiny řádků kvality se určuje podle počtu řádků v skupiny řádků. Snižte požadavky na paměť nebo zvýšení dostupné paměti se pro zajištění maximálního počtu řádků, které komprimuje columnstore index do každé skupiny řádků.  Pomocí těchto metod k vylepšení míry komprese a dotazování výkonu pro indexy columnstore.
+Skupiny řádků kvality se určuje podle počtu řádků v skupiny řádků. Zvýšit dostupnou paměť můžete maximalizovat počet řádků, které komprimuje columnstore index do každé skupiny řádků.  Pomocí těchto metod k vylepšení míry komprese a dotazování výkonu pro indexy columnstore.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Proč na záleží velikosti skupiny řádků
 Protože oddíly indexu columnstore prohledá tabulku tím, že kontroluje segmenty sloupce s jednotlivé rowgroups, maximální počet řádků v každé skupiny řádků vylepšuje výkon dotazů. Když rowgroups mají velký počet řádků, komprese dat zvyšuje, což znamená, že je méně dat pro čtení z disku.
@@ -35,11 +35,11 @@ Během hromadné načtení nebo columnstore index opětovné sestavení někdy n
 
 Pokud není dostatek paměti do každé skupiny řádků zkomprimovat alespoň 10 000 řádků, SQL Data Warehouse dojde k chybě.
 
-Další informace o hromadné načítání, najdete v části [hromadné načtení do clusterovaného indexu columnstore](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Další informace o hromadné načítání, najdete v části [hromadné načtení do clusterovaného indexu columnstore](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorovat kvalitu skupiny řádků
 
-Není k dispozici zobrazení dynamické správy (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats), která zveřejňuje užitečné informace, jako je počet řádků v rowgroups a důvod ořezávání, pokud byl oříznutí. Následujícím způsobem můžete vytvořit jako šikovný způsob, jak dotazovat tohoto zobrazení dynamické správy k získání informací o oříznutí skupiny řádků.
+Zobrazení dynamické správy sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) obsahuje definice zobrazení odpovídající databázi SQL do služby SQL Data Warehouse), která zveřejní užitečné informace například počet řádků v rowgroups a důvod ořezávání, pokud byl oříznutí. Následujícím způsobem můžete vytvořit jako šikovný způsob, jak dotazovat tohoto zobrazení dynamické správy k získání informací o oříznutí skupiny řádků.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -137,14 +137,6 @@ Velikost DWU a třída prostředků uživatele společně určují, kolik pamět
 
 - Pokud chcete zvýšit jednotkami Dwu, naleznete v tématu [jak škálovat výkon?](quickstart-scale-compute-portal.md)
 - Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](resource-classes-for-workload-management.md#change-a-users-resource-class).
-
-Například na DWU 100 může uživatel v třídě prostředků smallrc používat 100 MB paměti pro jednotlivé distribuce. Podrobnosti najdete v tématu [souběžnosti ve službě SQL Data Warehouse](resource-classes-for-workload-management.md).
-
-Předpokládejme, že určíte, že potřebujete 700 MB paměti k získání velikosti vysoce kvalitní skupiny řádků. Tyto příklady ukazují, jak můžete spustit dotaz zatížení s dostatek paměti.
-
-- Použití DWU 1000 a mediumrc, vaše přidělení paměti je 800 MB
-- Použití DWU 600 a largerc, vaše přidělení paměti je 800 MB.
-
 
 ## <a name="next-steps"></a>Další postup
 

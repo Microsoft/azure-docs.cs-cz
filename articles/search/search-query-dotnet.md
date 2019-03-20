@@ -1,21 +1,21 @@
 ---
 title: Dotazování indexu v kódu pomocí sady .NET SDK – Azure Search
 description: C#Příklad kódu pro vytváření vyhledávacího dotazu ve službě Azure Search. Přidání parametrů hledání k filtrování a řazení výsledků hledání.
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
 ms.custom: seodec2018
-ms.openlocfilehash: ecd4c7e862db43dc01685af313d618a38a688d5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98a857ca0d3ecabc9deebcb177e3548ab02fd3b3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58138249"
+ms.locfileid: "58201445"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Dotazování indexu Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]

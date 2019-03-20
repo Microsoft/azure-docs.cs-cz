@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ff6601042c82cef2b0101833117f17aca8b463dc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743789"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223253"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorování clusterů systému Apache Hadoop v HDInsight pomocí rozhraní API Apache Ambari
 Další informace o monitorování clusterů HDInsight pomocí rozhraní API Apache Ambari.
@@ -137,7 +137,7 @@ V následující tabulce jsou uvedeny některé nejběžnější Ambari, monitor
 ## <a name="next-steps"></a>Další kroky
 Nyní jste se naučili, jak použít monitorování volání rozhraní API Apache Ambari. Další informace naleznete v tématu:
 
-* [Správa clusterů HDInsight pomocí webu Azure portal][hdinsight-admin-portal]
+* [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md)
 * [Správa clusterů HDInsight pomocí Azure Powershellu][hdinsight-admin-powershell]
 * [Správa clusterů HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Dokumentace ke službě HDInsight][hdinsight-documentation]
@@ -155,7 +155,6 @@ Nyní jste se naučili, jak použít monitorování volání rozhraní API Apach
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201428"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
@@ -22,8 +22,6 @@ ms.locfileid: "57539543"
 ## <a name="iot-hub-names"></a>Názvy služby IoT Hub
 
 Název hostitele, který je hostitelem vašich koncových bodů na portálu na vaše centrum služby IoT hub můžete najít **přehled** stránky. Ve výchozím nastavení, jako název DNS služby IoT hub bude vypadat takto: `{your iot hub name}.azure-devices.net`.
-
-Azure DNS můžete použít k vytvoření vlastního názvu DNS pro službu IoT hub. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../dns/dns-custom-domain.md).
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncové body IoT Hubu
 

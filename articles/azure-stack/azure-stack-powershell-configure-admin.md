@@ -15,12 +15,12 @@ ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: fca1865236adeb196b2260e6c6b27b3180fe3ef9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5eb2dc129cdde6f116cb4e054fa7eb792812db40
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086084"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225871"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako operátor
 
@@ -80,6 +80,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Další postup
 
- - [Vývoj šablon pro Azure Stack](user/azure-stack-develop-templates.md)
- - [Nasazení šablon pomocí PowerShellu](user/azure-stack-deploy-template-powershell.md)
-- [Odkaz na modul služby Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  
+- [Vývoj šablon pro Azure Stack](user/azure-stack-develop-templates.md)
+- [Nasazení šablon pomocí PowerShellu](user/azure-stack-deploy-template-powershell.md)
+  - [Odkaz na modul služby Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  

@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
 manager: yuvalm
-ms.openlocfilehash: 7dc3d3faf3d1fa338c2732c22918528edda5f479
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b105b5d4609430ef9a302fdf990b22406941e132
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850764"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Vývoj pro víc služeb prostory Azure Dev
 
@@ -33,8 +33,13 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
 1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
 1. Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
-1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Připravenou službu poznáte podle toho, že se zobrazí panel ladění editoru VS Code.
-1. Adresa URL koncového bodu bude přibližně takto: http://localhost:\<portnumber\>. **Tip: Stavový řádek VS Code se zobrazí po kliknutí adresy URL.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
+1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Poznáte to bude připravené, když zpráva podobná níže se zobrazí v konzole ladění:
+
+    ```cmd
+    2019-03-11 17:02:35.935  INFO 216 --- [           main] com.ms.sample.mywebapi.Application       : Started Application in 8.164 seconds (JVM running for 9.272)
+    ```
+
+1. Adresa URL koncového bodu bude přibližně takto: `http://localhost:<portnumber>`. **Tip: Stavový řádek VS Code se zobrazí po kliknutí adresy URL.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
 1. Až bude služba `mywebapi` připravená, otevřete v prohlížeči adresu místního hostitele.
 1. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď služby `mywebapi`.
 

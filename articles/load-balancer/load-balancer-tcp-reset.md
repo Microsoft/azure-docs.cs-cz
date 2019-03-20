@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58132425"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
 
@@ -27,7 +27,7 @@ Můžete použít [Load balanceru úrovně Standard](load-balancer-standard-over
 ![Obnovení protokolu TCP nástroje pro vyrovnávání zatížení](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->Nástroj pro vyrovnávání zatížení se vynulují funkce časového limitu nečinnosti protokolu TCP je v tuto chvíli dostupná jako veřejná verze Preview a k dispozici v omezenou sadu [oblastech](#regions). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Nástroj pro vyrovnávání zatížení se vynulují funkce časového limitu nečinnosti protokolu TCP je v tuto chvíli k dispozici jako verze Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 Změnit toto výchozí chování a odesílat TCP resetuje na časový limit nečinnosti na pravidla příchozího překladu adres, Vyrovnávání zatížení a pravidla povolit a [odchozí pravidla](https://aka.ms/lboutboundrules).  Když povolena pro každé pravidlo nástroje pro vyrovnávání zatížení odešle obousměrné TCP Reset (TCP RVNÍ pakety) do koncových bodů klienta i serveru v době nečinnosti časový limit pro všechny toky odpovídající.
 
