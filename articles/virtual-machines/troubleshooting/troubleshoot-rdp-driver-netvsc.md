@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: c6918126c36e1940daf564ee7eae562e31b280c3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449100"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994627"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nelze vzdáleně připojit k Windows 10 nebo Windows serveru 2016 virtuálního počítače v Azure z důvodu netvsc.sys
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak vyřešit nějaký problém, ve kterém není ž
 
 Nelze se připojení k Azure Windows 10 nebo virtuální počítač s Windows serverem 2016 pomocí protokolu RDP (Remote Desktop). V [Diagnostika spouštění](boot-diagnostics.md), na obrazovce zobrazí červený křížek v průběhu síťovou kartu (NIC). To znamená, že virtuální počítač nemá připojení po plně načtený operační systém.
 
-Obvykle k tomuto problému dochází ve Windows [sestavení 14393](http://support.microsoft.com/help/4093120/) a [sestavení 15063](http://support.microsoft.com/help/4015583/). Pokud verze operačního systému je novější než tato verze, v tomto článku se nevztahují na váš scénář. Pokud chcete zkontrolovat verzi systému, otevřete relaci příkazového řádku v [funkce konzoly sériového portu přístup](serial-console-windows.md)a pak spusťte **Ver**.
+Obvykle k tomuto problému dochází ve Windows [sestavení 14393](https://support.microsoft.com/help/4093120/) a [sestavení 15063](https://support.microsoft.com/help/4015583/). Pokud verze operačního systému je novější než tato verze, v tomto článku se nevztahují na váš scénář. Pokud chcete zkontrolovat verzi systému, otevřete relaci příkazového řádku v [funkce konzoly sériového portu přístup](serial-console-windows.md)a pak spusťte **Ver**.
 
 ## <a name="cause"></a>Příčina
 
@@ -55,8 +55,8 @@ Připojte se k [konzoly sériového portu, otevřete PowerShell instanci](serial
 
 2. Stáhněte si příslušnou aktualizaci na nový nebo existující datový disk, který je připojen k funkčním virtuálním počítači ze stejné oblasti:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) nebo novější aktualizace
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) nebo novější aktualizace
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo novější aktualizace
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
 
 3. Odpojení disku nástroje funkčním virtuálním počítači a poté jej připojit k virtuálnímu počítači nefunkční.
 
@@ -98,22 +98,22 @@ Připojte se k [konzoly sériového portu, otevřete PowerShell instanci](serial
 
 12. Stáhněte si příslušnou aktualizaci:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) nebo novější aktualizace
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) nebo novější aktualizace
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo novější aktualizace
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
 
 13. Připojte disk systému jako datový disk na virtuálním počítači s zachránit, na kterém si můžete stáhnout aktualizace.
 
 14. Spusťte následující příkaz k instalaci aktualizace na virtuálním počítači:
 
-   ```
-   dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
-   ```
+    ```
+    dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
+    ```
 
 15. Spusťte následující příkaz pro odpojení podregistry:
 
-   ```
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 16. [Odpojení disku a vytvoření virtuálního počítače znovu](../windows/troubleshoot-recovery-disks-portal.md).
 

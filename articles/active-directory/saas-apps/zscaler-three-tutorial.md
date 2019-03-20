@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Kurz: Integrace Azure Active Directory s tři Zscaler
 
@@ -159,43 +159,43 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Konfigurace Zscalerem tři jednotného přihlašování
 
-9. V okně jiné webové prohlížeče Přihlaste se k webu Zscalerem tři společnosti jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu Zscalerem tři společnosti jako správce.
 
-10. Přejděte na **správy > ověřování > Nastavení ověřování** a proveďte následující kroky:
+1. Přejděte na **správy > ověřování > Nastavení ověřování** a proveďte následující kroky:
    
-    ![Správa](./media/zscaler-three-tutorial/ic800206.png "správy")
+   ![Správa](./media/zscaler-three-tutorial/ic800206.png "správy")
 
-    a. V části typ ověřování, zvolte **SAML**.
+   a. V části typ ověřování, zvolte **SAML**.
 
-    b. Klikněte na tlačítko **konfigurace SAML**.
+   b. Klikněte na tlačítko **konfigurace SAML**.
 
-11. Na **upravit SAML** okno, postupujte takto: a klikněte na Uložit.  
+1. Na **upravit SAML** okno, postupujte takto: a klikněte na Uložit.  
             
-    ![Správa uživatelů a ověřování](./media/zscaler-three-tutorial/ic800208.png "správu uživatelů a ověřování")
+   ![Správa uživatelů a ověřování](./media/zscaler-three-tutorial/ic800208.png "správu uživatelů a ověřování")
     
-    a. V **adresa URL portálu SAML** vložit do textového pole **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
+   a. V **adresa URL portálu SAML** vložit do textového pole **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
 
-    b. V **atribut Name přihlášení** textového pole zadejte **NameID**.
+   b. V **atribut Name přihlášení** textového pole zadejte **NameID**.
 
-    c. Klikněte na tlačítko **nahrát**, k nahrání podpisového certifikátu Azure SAML, který jste si stáhli z webu Azure portal v **veřejný certifikát SSL**.
+   c. Klikněte na tlačítko **nahrát**, k nahrání podpisového certifikátu Azure SAML, který jste si stáhli z webu Azure portal v **veřejný certifikát SSL**.
 
-    d. Přepnout **povolení automatického zřizování SAML**.
+   d. Přepnout **povolení automatického zřizování SAML**.
 
-    e. V **atribut uživatelského jména. zobrazení** textového pole zadejte **displayName** Pokud chcete povolit SAML automatického zřizování pro atributy displayName.
+   e. V **atribut uživatelského jména. zobrazení** textového pole zadejte **displayName** Pokud chcete povolit SAML automatického zřizování pro atributy displayName.
 
-    f. V **atribut název skupiny** textového pole zadejte **memberOf** Pokud chcete povolit SAML automatického zřizování pro memberOf atributy.
+   f. V **atribut název skupiny** textového pole zadejte **memberOf** Pokud chcete povolit SAML automatického zřizování pro memberOf atributy.
 
-    g. V **atributem název oddělení** Enter **oddělení** Pokud chcete povolit SAML automatického zřizování pro oddělení atributy.
+   g. V **atributem název oddělení** Enter **oddělení** Pokud chcete povolit SAML automatického zřizování pro oddělení atributy.
 
-    i. Klikněte na **Uložit**.
+   i. Klikněte na **Uložit**.
 
-12. Na **konfiguraci ověření uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **konfiguraci ověření uživatele** dialogového okna stránky, proveďte následující kroky:
 
-    ![Správa](./media/zscaler-three-tutorial/ic800207.png)
+   ![Správa](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. Najeďte myší **aktivace** nabídky vlevo dole.
+   a. Najeďte myší **aktivace** nabídky vlevo dole.
 
-    b. Klikněte na tlačítko **aktivovat**.
+   b. Klikněte na tlačítko **aktivovat**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurace nastavení proxy serveru
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v aplikaci Internet Explorer
@@ -246,7 +246,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

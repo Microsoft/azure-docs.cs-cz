@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ee91c9f152d72fbcc58cb4707af9420a57a1517b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984813"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224189"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
 
-Chcete-li vytvořit aplikaci, která používá image, kterou jste právě odeslali, spouštíte příkazy rozhraní příkazového řádku Azure, které vytvoření skupiny, pak plán služby a nakonec samotnou webovou aplikaci. 
+Pokud chcete vytvořit aplikaci, která využívá image, kterou jste právě nasdíleli, spuštění příkazů Azure CLI, které vytvářejí skupiny, pak plán služby a nakonec samotnou webovou aplikaci. 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -526,6 +526,9 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 > [!NOTE]
 > V hodnotě *\<docker-registry-server-url>* (adresa URL serveru registru Dockeru) se vyžaduje `https://`.
 >
+> [!NOTE]
+> Při použití registru než dockerhubu, `docker-custom-image-name` musí obsahovat plně kvalifikovaný název domény (FQDN) svého registru.  
+> Pro službu Azure Container Registry to bude vypadat přibližně takto: `<azure-container-registry>.azurecr.io/mydockerimage`.
 
 Příkaz zobrazí výstup podobný následujícímu řetězci JSON, který značí úspěšnou změnu konfigurace:
 

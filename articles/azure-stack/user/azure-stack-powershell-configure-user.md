@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 2012810e42c3a35e8e93f85402d92dae1151516b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ab23013d8de61e13013aa4cd735be04e1e3213c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119934"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel
 
@@ -94,13 +94,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Další postup
 
-<<<<<<< HEAD
 - [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md)
 - [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
- - [Odkaz na modul prostředí PowerShell Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)
-=======
-- [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md)  
-- [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)  
-- [Odkaz na modul služby Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  
->>>>>>> ac8c5a2d00d4eb5b4ef65359c5349ddff1bf30cf
+- [Odkaz na modul prostředí PowerShell Azure Stack](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)
 - Pokud chcete nastavit prostředí PowerShell pro operátor prostředí cloud, podívejte se na [konfigurace prostředí PowerShell pro operátory Azure stacku](../azure-stack-powershell-configure-admin.md) článku.

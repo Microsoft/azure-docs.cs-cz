@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d0590215f92f7b3d1c2ad0bbbc509da31c2fd1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 67393e19a72777d105f1f35a16986c52f52133be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079801"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stáhněte a nainstalujte aplikaci Microsoft Authenticator
 >[!Important]
@@ -34,13 +34,13 @@ Můžete použít aplikaci Microsoft Authenticator několika různými způsoby,
 
 - **Generování kódu.** Jako generátor kódu pro všechny účty, které podporují aplikace.
 
->[!Important]
->Aplikace Microsoft Authenticator funguje pomocí libovolného účtu, který používá dvojúrovňového ověřování a podporuje podle času jednorázového hesla (TOTP) normami.
-
->Vaše organizace může vyžadovat přihlášení a přístup k datům organizace a dokumenty pomocí ověřovací aplikace. I když vaše uživatelské jméno se může zobrazit v aplikaci, účet není nastavené ve skutečnosti tak, aby fungoval jako metodu ověřování, až do dokončení procesu registrace. Další informace najdete v tématu [přidejte svůj pracovní nebo školní účet](user-help-auth-app-add-work-school-account.md).
-
->[!NOTE]
->Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu.  Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
+> [!Important]
+> Aplikace Microsoft Authenticator funguje pomocí libovolného účtu, který používá dvojúrovňového ověřování a podporuje podle času jednorázového hesla (TOTP) normami.
+> 
+> Vaše organizace může vyžadovat přihlášení a přístup k datům organizace a dokumenty pomocí ověřovací aplikace. I když vaše uživatelské jméno se může zobrazit v aplikaci, účet není nastavené ve skutečnosti tak, aby fungoval jako metodu ověřování, až do dokončení procesu registrace. Další informace najdete v tématu [přidejte svůj pracovní nebo školní účet](user-help-auth-app-add-work-school-account.md).
+> 
+> [!NOTE]
+> Pokud máte potíže s přihlášením k účtu, najdete v článku [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429) nápovědu.  Získat další informace o tom, jak postupovat, když se zobrazí ["Tento účet Microsoft neexistuje"](https://support.microsoft.com/help/13811) zpráva při pokusu o přihlášení k účtu Microsoft.
 
 ## <a name="download-and-install-the-app"></a>Stažení a instalace aplikace
 Nainstalujte nejnovější verzi aplikace Microsoft Authenticator, podle vašeho operačního systému:
@@ -49,7 +49,8 @@ Nainstalujte nejnovější verzi aplikace Microsoft Authenticator, podle vašeho
 
 - **Apple iOS.** Na zařízení s Iosem Apple přejděte na App Store na [stáhnout a nainstalovat aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
->[Důležité] Pokud nejste aktuálně na svém mobilním zařízení, stále můžete získat aplikaci Microsoft Authenticator odesláním sami odkaz ke stažení z [stránky Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator).
+>[!Important]
+>Pokud nejste aktuálně na svém mobilním zařízení, stále můžete získat aplikaci Microsoft Authenticator odesláním sami odkaz ke stažení z [stránky Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>Další postup
 

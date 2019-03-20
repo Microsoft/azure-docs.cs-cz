@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860550"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -29,13 +28,12 @@ Zjistěte, jak provádět následující akce:
 > [!div class="checklist"]
 > * Nastavení vývojového prostředí.
 > * Přístup a prozkoumejte data.
-> * Trénování jednoduchý Logistický regresní místně s použitím oblíbených scikit-informace knihovna pro machine learning. 
-> * Trénování modelů více ve vzdáleném clusteru.
+> * Natrénujeme jednoduchý Logistický regresní model ve vzdáleném clusteru.
 > * Zkontrolujte výsledky školení a zaregistrujte tento nejlepší model.
 
 Zjistíte, jak vybrat model a nasadit ho v [druhou částí z tohoto kurzu](tutorial-deploy-models-with-aml.md). 
 
-Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
 > S využitím Azure Machine Learning SDK verze 1.0.8 testovaný kód v tomto článku.

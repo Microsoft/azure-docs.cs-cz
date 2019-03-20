@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9967893e855770b693f0d581a07fe2910df4a3cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003600"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -26,6 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
 **B2C** kategorie z protokolů auditu obsahuje následující typy aktivit:
+
 |Typ aktivity |Popis  |
 |---------|---------|
 |Autorizace |Aktivity týkající se povolení uživatele B2C přístup k prostředkům (například správce přístup k seznamu zásad B2C)         |

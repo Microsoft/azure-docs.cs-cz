@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 54df5069970a628962f20761441a8f9947356da9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 9633b6c083b6e7286435c8c3867339868ae53458
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791660"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105416"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL do služby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **DVD Rental** z místní instance PostgreSQL verze 9.6 do služby Azure Database for PostgreSQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -148,64 +148,64 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>Zřízení instance DMS pomocí rozhraní příkazového řádku
 
-1.  Nainstalujte rozšíření synchronizace dms:
-    - K Azure se přihlásíte spuštěním následujícího příkazu:        
-        ```
-        az login
-        ```
+1. Nainstalujte rozšíření synchronizace dms:
+   - K Azure se přihlásíte spuštěním následujícího příkazu:        
+       ```
+       az login
+       ```
 
-    - Po zobrazení výzvy otevřete webový prohlížeč a zadejte kód pro ověření vašeho zařízení. Postupujte podle uvedených pokynů.
-    - Přidání rozšíření dms:
-        - K zobrazení seznamu dostupných rozšíření spusťte následující příkaz:
+   - Po zobrazení výzvy otevřete webový prohlížeč a zadejte kód pro ověření vašeho zařízení. Postupujte podle uvedených pokynů.
+   - Přidání rozšíření dms:
+       - K zobrazení seznamu dostupných rozšíření spusťte následující příkaz:
 
-            ```
-            az extension list-available –otable
-            ```
-        - Rozšíření nainstalujete spuštěním tohoto příkazu:
+           ```
+           az extension list-available –otable
+           ```
+       - Rozšíření nainstalujete spuštěním tohoto příkazu:
 
-            ```
-            az extension add –n dms-preview
-            ```
+           ```
+           az extension add –n dms-preview
+           ```
 
-    - Chcete-li ověřit, že máte správně nainstalované rozšíření dms, spusťte následující příkaz:
+   - Chcete-li ověřit, že máte správně nainstalované rozšíření dms, spusťte následující příkaz:
  
-        ```
-        az extension list -otable
-        ```
-        Měl by se zobrazit následující výstup:     
+       ```
+       az extension list -otable
+       ```
+       Měl by se zobrazit následující výstup:     
+
+       ```
+       ExtensionType    Name
+       ---------------  ------
+       whl              dms
+       ```
+
+   - Kdykoli spuštěním zobrazíte všechny příkazy podporované v DMS:
+       ```
+       az dms -h
+       ```
+   - Pokud máte několik předplatných Azure, spuštěním následujícího příkazu nastavíte předplatné, které chcete použít k zřízení instance služby DMS.
 
         ```
-        ExtensionType    Name
-        ---------------  ------
-        whl              dms
+       az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
-    - Kdykoli spuštěním zobrazíte všechny příkazy podporované v DMS:
-        ```
-        az dms -h
-        ```
-    - Pokud máte několik předplatných Azure, spuštěním následujícího příkazu nastavíte předplatné, které chcete použít k zřízení instance služby DMS.
+2. Zřízení instance DMS spuštěním následujícího příkazu:
 
-         ```
-        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
-         ```
+   ```
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   ```
 
-2.  Zřízení instance DMS spuštěním následujícího příkazu:
+   Například následující příkaz vytvoří službu v:
+   - Umístění: USA – východ 2
+   - Předplatné: 97181df2-909d-420b-ab93-1bff15acb6b7
+   - Název skupiny prostředků: PostgresDemo
+   - Název služby DMS: PostgresCLI
 
-    ```
-    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
-    ```
-
-    Například následující příkaz vytvoří službu v:
-    - Umístění: USA – východ 2
-    - Předplatné: 97181df2-909d-420b-ab93-1bff15acb6b7
-    - Název skupiny prostředků: PostgresDemo
-    - Název služby DMS: PostgresCLI
-
-    ```
-    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
-    ```
-    Vytvoření instance služby DMS trvá asi 10 až 12 minut.
+   ```
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   ```
+   Vytvoření instance služby DMS trvá asi 10 až 12 minut.
 
 3. Pokud chcete zjistit IP adresu DMS agenta tak, že ho přidáte do souboru Postgres pg_hba.conf, spusťte následující příkaz:
 
@@ -242,103 +242,103 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     ```
     Například následující příkaz vytvoří projekt s použitím těchto parametrů:
 
-      - Umístění: Západní střed USA
-      - Název skupiny prostředků: PostgresDemo
-      - Název služby: PostgresCLI
-      - Název projektu: PGMigration
-      - Zdrojová platforma: PostgreSQL
-      - Cílová platforma: AzureDbForPostgreSql
+   - Umístění: Západní střed USA
+   - Název skupiny prostředků: PostgresDemo
+   - Název služby: PostgresCLI
+   - Název projektu: PGMigration
+   - Zdrojová platforma: PostgreSQL
+   - Cílová platforma: AzureDbForPostgreSql
  
-    ```
-    az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
-    ```
+     ```
+     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
+     ```
                 
 6. Vytvoření úlohy migrace PostgreSQL pomocí následujících kroků.
 
     Tento krok zahrnuje použití zdrojové IP adresy, ID uživatele a hesla, cílové IP adresy, ID uživatele, hesla a typ úlohy k navázání možnosti připojení.
 
-    - Pokud chcete zobrazit úplný seznam možností, spusťte příkaz:
-        ```
-        az dms project task create -h
-        ```
+   - Pokud chcete zobrazit úplný seznam možností, spusťte příkaz:
+       ```
+       az dms project task create -h
+       ```
 
-        Jak u zdroje, tak u cíle připojení vstupní parametr odkazuje na soubor json, který má seznam objektů.
+       Jak u zdroje, tak u cíle připojení vstupní parametr odkazuje na soubor json, který má seznam objektů.
  
-        Formát objektu připojení JSON pro připojení PostgreSQL.
+       Formát objektu připojení JSON pro připojení PostgreSQL.
         
-        ```
-        {
-                    "userName": "user name",    // if this is missing or null, you will be prompted
-                    "password": null,           // if this is missing or null (highly recommended) you will
-                be prompted
-                    "serverName": "server name",
-                    "databaseName": "database name", // if this is missing, it will default to the 'postgres'
-                server
-                    "port": 5432                // if this is missing, it will default to 5432
-                }
-        ```
+       ```
+       {
+                   "userName": "user name",    // if this is missing or null, you will be prompted
+                   "password": null,           // if this is missing or null (highly recommended) you will
+               be prompted
+                   "serverName": "server name",
+                   "databaseName": "database name", // if this is missing, it will default to the 'postgres'
+               server
+                   "port": 5432                // if this is missing, it will default to 5432
+               }
+       ```
 
-    - Je také používá soubor json možnost databáze, která obsahuje seznam objektů json. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
+   - Je také používá soubor json možnost databáze, která obsahuje seznam objektů json. Pro PostgreSQL formát objektu JSON možností databáze je zobrazen níže:
 
-        ```
-        [
-            {
-                "name": "source database",
-                "target_database_name": "target database",
-            },
-            ...n
-        ]
-        ```
+       ```
+       [
+           {
+               "name": "source database",
+               "target_database_name": "target database",
+           },
+           ...n
+       ]
+       ```
 
-    - Vytvořte soubor json v aplikaci Poznámkový blok, zkopírujte následující příkazy a vložte je do souboru a pak soubor uložte v umístění C:\DMS\source.json.
-         ```
-        {
-                    "userName": "postgres",    
-                    "password": null,           
-                be prompted
-                    "serverName": "13.51.14.222",
-                    "databaseName": "dvdrental", 
-                    "port": 5432                
-                }
-         ```
-    - Vytvořte jiný soubor s názvem target.json a uložte ho jako C:\DMS\target.json. Zahrňte následující příkazy:
+   - Vytvořte soubor json v aplikaci Poznámkový blok, zkopírujte následující příkazy a vložte je do souboru a pak soubor uložte v umístění C:\DMS\source.json.
         ```
-        {
-                "userName": " dms@builddemotarget",    
-                "password": null,           
-                "serverName": " builddemotarget.postgres.database.azure.com",
-                "databaseName": "inventory", 
-                "port": 5432                
-            }
+       {
+                   "userName": "postgres",    
+                   "password": null,           
+               be prompted
+                   "serverName": "13.51.14.222",
+                   "databaseName": "dvdrental", 
+                   "port": 5432                
+               }
         ```
-    - Vytvořte soubor json možností databáze, který obsahuje seznam inventáře jako databázi, kterou chcete migrovat:
-        ``` 
-        [
-            {
-                "name": "dvdrental",
-                "target_database_name": "dvdrental",
-            }
-        ]
-        ```
-    - Spusťte následující příkaz, který přijímá zdroj, cíl a soubory json možností databáze.
+   - Vytvořte jiný soubor s názvem target.json a uložte ho jako C:\DMS\target.json. Zahrňte následující příkazy:
+       ```
+       {
+               "userName": " dms@builddemotarget",    
+               "password": null,           
+               "serverName": " builddemotarget.postgres.database.azure.com",
+               "databaseName": "inventory", 
+               "port": 5432                
+           }
+       ```
+   - Vytvořte soubor json možností databáze, který obsahuje seznam inventáře jako databázi, kterou chcete migrovat:
+       ``` 
+       [
+           {
+               "name": "dvdrental",
+               "target_database_name": "dvdrental",
+           }
+       ]
+       ```
+   - Spusťte následující příkaz, který přijímá zdroj, cíl a soubory json možností databáze.
 
-        ``` 
-        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
-        ``` 
+       ``` 
+       az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
+       ``` 
 
-    V tomto okamžiku jste úspěšně odeslali úlohu migrace.
+     V tomto okamžiku jste úspěšně odeslali úlohu migrace.
 
-7.  Chcete-li zobrazit průběh úlohy, spusťte následující příkaz:
+7. Chcete-li zobrazit průběh úlohy, spusťte následující příkaz:
+
+   ```
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   ```
+
+   NEBO
 
     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
-
-    NEBO
-
-     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
-     ```
 
 8. Můžete také dotázat stav migrace z výstupu rozbalení:
 

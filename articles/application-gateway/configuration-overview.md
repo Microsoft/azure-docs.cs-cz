@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: absha
-ms.openlocfilehash: 702101039c03b30bb8883ef0308fe68c5567a0c4
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.openlocfilehash: 7bc3ea054056ac67cf0a116fb1538bc1483ab4d4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733145"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223525"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
 Služba Application gateway se skládá z několika komponent, které můžete nakonfigurovat různými způsoby pro provádění různých scénářů. Tento článek vás provede jak jednotlivé komponenty je potřeba nakonfigurovat.
 
-![application-gateway-components](.\media\configuration-overview\configuration-overview1.png)
+![application-gateway-components](./media/configuration-overview/configuration-overview1.png)
 
-Na obrázku výše znázorňuje konfiguraci aplikace s 3 naslouchacích procesů. První dvě jsou naslouchacích procesů více lokalit pro http://acme.com/* a http://fabrikam.com/* v uvedeném pořadí. Obě naslouchají na portu 80. Třetí naslouchací proces je základní naslouchací proces s komplexní ukončení protokolu SSL. 
+Na obrázku výše znázorňuje konfiguraci aplikace s 3 naslouchacích procesů. První dvě jsou naslouchacích procesů více lokalit pro `http://acme.com/*` a `http://fabrikam.com/*`v uvedeném pořadí. Obě naslouchají na portu 80. Třetí naslouchací proces je základní naslouchací proces s komplexní ukončení protokolu SSL. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -83,10 +83,9 @@ Naslouchací proces je logická entita, která kontroluje příchozí požadavky
 
 Můžete si vybrat mezi [základní nebo multi-Site naslouchací proces](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners) při vytváření nový naslouchací proces. 
 
-- Pokud jsou hostiteli jedné lokality za službou Application gateway, zvolte základní naslouchací proces. Přečtěte si [vytvoření služby application gateway s s základní naslouchací proces](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Pokud jsou hostiteli jedné lokality za službou Application gateway, zvolte základní naslouchací proces. Přečtěte si [vytvoření služby application gateway s základní naslouchací proces](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Pokud konfigurujete víc než jednu webovou aplikaci nebo více poddomény stejné nadřazené domény na stejné instance služby application gateway, zvolte Multi-Site naslouchací proces. Pro naslouchací proces více lokalit bude kromě toho musíte zadat název hostitele. Je to proto, že služba Application Gateway spoléhá na hlavičky hostitele HTTP 1.1 pro hostování více než jednoho webu na stejnou veřejnou IP adresu a port.![1551057450710](C:\Users\absha\AppData\Roaming\Typora\typora-user-images\1551057450710.png)
-
+- Pokud konfigurujete víc než jednu webovou aplikaci nebo více poddomény stejné nadřazené domény na stejné instance služby application gateway, zvolte Multi-Site naslouchací proces. Pro naslouchací proces více lokalit bude kromě toho musíte zadat název hostitele. Je to proto, že služba Application Gateway spoléhá na hlavičky hostitele HTTP 1.1 pro hostování více než jednoho webu na stejnou veřejnou IP adresu a port.
 
 > [!NOTE]
 > V případě SKU v1 naslouchacích procesů se zpracovávají v pořadí, ve kterém jsou zobrazeny. Z tohoto důvodu Pokud základní naslouchací proces odpovídá příchozí žádosti zpracovávat jej nejprve. Proto by měl být nakonfigurovaný naslouchací procesy pro více webů před základní naslouchací proces chcete zajistit, aby provoz se směruje do správného back endu.
@@ -195,7 +194,7 @@ Informace o funkci přesměrování najdete v tématu [přehled přesměrování
 
   - ##### <a name="listener"></a>Naslouchací proces
 
-    Když zvolíte naslouchací proces jako cíl přesměrování pomáhá přesměrování z jeden naslouchací proces na jiné naslouchací proces na bráně. Toto nastavení je povinné, pokud chcete povolit HTTP na HTTPS přesměrování, například přesměrovat provoz z zdroj naslouchací proces kontroly pro příchozí požadavky HTTP na cílový naslouchací proces kontroly příchozím požadavkům HTTPS. Můžete také zvolit řetězec dotazu a cesty v původní žádosti, které mají být zahrnuty v žádosti o předávat na cíl přesměrování.![application-gateway-components](.\media\configuration-overview\configure-redirection.png)
+    Když zvolíte naslouchací proces jako cíl přesměrování pomáhá přesměrování z jeden naslouchací proces na jiné naslouchací proces na bráně. Toto nastavení je povinné, pokud chcete povolit HTTP na HTTPS přesměrování, například přesměrovat provoz z zdroj naslouchací proces kontroly pro příchozí požadavky HTTP na cílový naslouchací proces kontroly příchozím požadavkům HTTPS. Můžete také zvolit řetězec dotazu a cesty v původní žádosti, které mají být zahrnuty v žádosti o předávat na cíl přesměrování.![application-gateway-components](./media/configuration-overview/configure-redirection.png)
 
     Další informace o protokolu HTTP na HTTPS přesměrování najdete v tématu [přesměrování HTTP na protokol HTTP pomocí portálu](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal), [přesměrování HTTP na HTTP pomocí prostředí PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell), [přesměrování HTTP na protokol HTTP pomocí rozhraní příkazového řádku](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
@@ -277,7 +276,7 @@ Pokud jste vlastní doménu a namapované existujícího vlastního názvu DNS d
 
 ### <a name="host-name-override"></a>Přepsání název hostitele
 
-Tato novinka nahrazuje *hostitele* záhlaví v příchozím požadavku ve službě application gateway na název hostitele, který zde určíte. Například, pokud je stanoveno www.contoso.com **název hostitele** nastavení původní požadavek https://appgw.eastus.cloudapp.net/path1 se změní na https://www.contoso.com/path1 při předá požadavek back-end serveru. 
+Tato novinka nahrazuje *hostitele* záhlaví v příchozím požadavku ve službě application gateway na název hostitele, který zde určíte. Například pokud www\.contoso.com je zadán jako **název hostitele** nastavení původní požadavek https://appgw.eastus.cloudapp.net/path1 se změní na https://www.contoso.com/path1 při předá požadavek back-end serveru. 
 
 ## <a name="backend-pool"></a>Back-endový fond
 

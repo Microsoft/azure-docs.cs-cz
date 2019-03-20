@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7406758a5e5c345aee4165139242025b8ceb4d18
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534714"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076458"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování služby Azure Active Directory
 
@@ -260,11 +260,11 @@ Nejprve změňte metodu přihlašování:
    ![Snímek obrazovky stránce Připraveno ke konfiguraci](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Na portálu Azure AD, vyberte **Azure Active Directory**a pak vyberte **Azure AD Connect**.
 8. Ověřte tato nastavení:
-  * **Federace** je nastavena na **zakázané**.
-  * **Bezproblémové jednotné přihlašování** je nastavena na **povoleno**.
-  * **Předávací ověřování** je nastavena na **povoleno**.<br />
+   * **Federace** je nastavena na **zakázané**.
+   * **Bezproblémové jednotné přihlašování** je nastavena na **povoleno**.
+   * **Předávací ověřování** je nastavena na **povoleno**.<br />
 
-  ![Snímek obrazovky, který zobrazuje nastavení v části přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![Snímek obrazovky, který zobrazuje nastavení v části přihlášení uživatele](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 Další. nasazení dalších metod ověřování:
 
@@ -272,16 +272,16 @@ Další. nasazení dalších metod ověřování:
 2. Na **předávací ověřování** stránky, vyberte **Stáhnout** tlačítko.
 3. Na **stáhnout agenta** stránce **přijměte podmínky a stáhnout**.
 
-  Zahájit stahování agentů další ověřování. Nainstalujte sekundární ověřovací agent na serveru připojeném k doméně. 
+   Zahájit stahování agentů další ověřování. Nainstalujte sekundární ověřovací agent na serveru připojeném k doméně. 
 
-  > [!NOTE]
-  > První agent je vždy nainstalován na Azure AD Connect serveru jako součást konfigurace změn provedených v **přihlášení uživatele** části nástroje Azure AD Connect. Nainstalujte agenty žádné další ověření na samostatném serveru. Doporučujeme, abyste měli dva nebo tři agenti dodatečného ověřování k dispozici. 
+   > [!NOTE]
+   > První agent je vždy nainstalován na Azure AD Connect serveru jako součást konfigurace změn provedených v **přihlášení uživatele** části nástroje Azure AD Connect. Nainstalujte agenty žádné další ověření na samostatném serveru. Doporučujeme, abyste měli dva nebo tři agenti dodatečného ověřování k dispozici. 
 
 4. Spusťte instalaci agenta ověřování. Během instalace musíte zadat přihlašovací údaje účtu globálního správce.
 
-  ![Snímek obrazovky zobrazující tlačítko instalovat na stránce balíček agenta služby Microsoft Azure AD Connect ověřování](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Snímek obrazovky zobrazující tlačítko instalovat na stránce balíček agenta služby Microsoft Azure AD Connect ověřování](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-  ![Snímek obrazovky zobrazující přihlašovací stránku](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Snímek obrazovky zobrazující přihlašovací stránku](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Pokud je nainstalován agent ověřování, může vrátit na stránku stavu agenta předávací ověřování a kontrolovat stav dalších agentů.
 

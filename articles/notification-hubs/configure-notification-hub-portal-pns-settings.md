@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 6d0076f2ddaee0a1a0daa4c1bf6b0c8bec2ff3e8
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010170"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113329"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Nastavení nabízených oznámení v centru oznámení na webu Azure Portal
 
@@ -34,18 +34,18 @@ Chcete-li nastavit nahoru Apple Push Notification Service (APNS):
 1. Pro **režim ověřování**, vyberte buď **certifikát** nebo **Token**.
 
    a. Pokud vyberete **certifikát**:
-      * Vyberte ikonu souboru a pak vyberte *.p12* soubor, který chcete odeslat.
-      * Zadejte heslo.
-      * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
+   * Vyberte ikonu souboru a pak vyberte *.p12* soubor, který chcete odeslat.
+   * Zadejte heslo.
+   * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
 
-      ![Snímek obrazovky APNS certifikátu konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Snímek obrazovky APNS certifikátu konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
    b. Pokud vyberete **Token**:
 
-      * Zadejte hodnoty pro **Id klíče**, **Id sady prostředků**, **Id týmu**, a **Token**.
-      * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
+   * Zadejte hodnoty pro **Id klíče**, **Id sady prostředků**, **Id týmu**, a **Token**.
+   * Vyberte režim **Sandbox**. Nebo k odesílání nabízených oznámení uživatelům, kteří si zakoupili aplikaci z obchodu, vyberte **produkční** režimu.
 
-      ![Snímek obrazovky APNS token konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Snímek obrazovky APNS token konfigurace na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
 
 Další informace najdete v tématu [nabízená oznámení do iOS pomocí Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 

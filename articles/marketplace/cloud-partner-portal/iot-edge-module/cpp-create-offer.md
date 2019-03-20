@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7943119ed29e03afb6b089a913d4ba2baddc166
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 69ee0c0add2895b30a60db577cc11c83a0e00bb8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430732"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854768"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvořit novou nabídku modul IoT Edge s portálem Cloud Partner
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak vytvářet a publikovat položku nabídky modul IoT
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky 
 
-Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. V nabídce Nová nabídka vyberte **moduly IoT Edge** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky ioT Edge Module. 
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. V nabídce Nová nabídka vyberte **moduly IoT Edge** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky ioT Edge Module. 
 
 ![Nový modul IoT Edge nabízí uživatelské rozhraní výběru](./media/new-iot-edge-module-offer.png)
 
@@ -42,7 +42,7 @@ Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak 
 
 **Nová nabídka** stránky pro typ nabídky modul IoT Edge poskytuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak karta slouží k definování skupin prostředků a služeb podpory pro nové nabídky modul IoT Edge.
 
-- [Karta nastavení nabídky](./cpp-offer-settings-tab.md)
-- [Karta skladové položky](./cpp-skus-tab.md)
+- [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
+- [Karta Skladové položky](./cpp-skus-tab.md)
 - [Karta Marketplace](./cpp-marketplace-tab.md)
-- [Kartu Podpora](./cpp-support-tab.md)
+- [Karta Podpora](./cpp-support-tab.md)

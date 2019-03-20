@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 019c4eca564c503913a488a1d1ee5e4046ff320a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089875"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Vytvoření uživatelů ve službě Azure Database pro MariaDB 
 Tento článek popisuje, jak vytvořit uživatele ve službě Azure Database pro MariaDB.
@@ -80,7 +80,7 @@ Po vytvoření Azure Database pro MariaDB server slouží k vytvoření dalšíc
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-Další informace týkající se správy uživatelských účtů, najdete v dokumentaci MariaDB pro [Správa uživatelských účtů](https://mariadb.com/kb/en/library/user-account-management/), [udělení syntaxe](https://mariadb.com/kb/en/library/grant/), a [oprávnění](https://mariadb.com/kb/en/library/grant/#privilege-levels).
+   Další informace týkající se správy uživatelských účtů, najdete v dokumentaci MariaDB pro [Správa uživatelských účtů](https://mariadb.com/kb/en/library/user-account-management/), [udělení syntaxe](https://mariadb.com/kb/en/library/grant/), a [oprávnění](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>Další postup
 Otevření brány firewall pro IP adresy počítačů novým uživatelům povolit jim připojení: [Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal](howto-manage-firewall-portal.md)  

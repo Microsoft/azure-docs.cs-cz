@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074712"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem dat B2B s Azure Logic Apps a Enterprise Integration Pack
 
@@ -47,11 +47,13 @@ Postupujte podle těchto kroků můžete vytvořit aplikaci logiky B2B, které p
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Přidat **tělo** , kterou chcete použít jako vstup. V tomto příkladu vyberte tělo požadavku HTTP, který aktivuje aplikace logiky. Nebo zadejte výraz, který vstupů záhlaví ve **záhlaví** pole:
+6. Přidat **tělo** , kterou chcete použít jako vstup. 
+   V tomto příkladu vyberte tělo požadavku HTTP, který aktivuje aplikace logiky. Nebo zadejte výraz, který vstupů záhlaví ve **záhlaví** pole:
 
-    @triggerOutputs(["záhlaví"])
+    @triggerOutputs()['headers']
 
-7. Přidejte požadované **záhlaví** pro AS2, které můžete vyhledat v hlavičkách žádosti protokolu HTTP. V tomto příkladu vyberte záhlaví požadavku HTTP, které aktivují aplikace logiky.
+7. Přidejte požadované **záhlaví** pro AS2, které můžete vyhledat v hlavičkách žádosti protokolu HTTP. 
+   V tomto příkladu vyberte záhlaví požadavku HTTP, které aktivují aplikace logiky.
 
 8. Nyní přidejte akce X12 dekódování zprávy. Vyberte **přidat akci**.
 
@@ -65,7 +67,8 @@ Postupujte podle těchto kroků můžete vytvořit aplikaci logiky B2B, které p
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Nyní je nutné zadat vstup pro tuto akci. Tento vstup je výstup z předchozí akci AS2.
+11. Nyní je nutné zadat vstup pro tuto akci. 
+    Tento vstup je výstup z předchozí akci AS2.
 
     Obsah zprávy skutečné je v objektu JSON a s kódováním base64, musejí zadat výraz jako vstup. 
     Zadejte následující výraz v **X12 plochého souboru zprávy do dekódování** vstupní pole:

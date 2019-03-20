@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/16/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b54b8f74df4b073b29ce05b11aa90ba53db7c09
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 01a1c1fef5dd2dabf99677d59126caf41e1f6885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731712"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900603"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvořit a dotazovat službu Azure SQL data warehouse pomocí Azure Powershellu
 
@@ -30,19 +30,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k předplatnému Azure pomocí [AzAccount přidat](/powershell/module/az.profile/add-azaccount) příkaz a postupujte podle pokynů na obrazovce pokynů.
+Přihlaste se k předplatnému Azure pomocí [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
 ```powershell
-Add-AzAccount
+Connect-AzAccount
 ```
 
-Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Chcete-li zjistit, které předplatné používáte, spusťte [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Pokud budete muset použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Pokud budete muset použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"

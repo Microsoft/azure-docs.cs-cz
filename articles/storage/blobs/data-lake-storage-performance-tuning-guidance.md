@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 7039df6dde25fd4ba9a8b9cb7670e72df7e68797
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f175360586428b57d1ff10e3529ae9e3283399e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245812"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117046"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimalizace výkonu pro Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ Připojení k síti mezi zdrojem dat a Data Lake Storage Gen2 může být někdy
 
 Jakmile vyřešili zdrojového hardwaru a výše kritické body připojení k síti, jste připraveni ke konfiguraci nástroje pro ingestování. Následující tabulka shrnuje nastavení klíče pro nástroje pro několik oblíbených ingestování a poskytuje podrobné výkonů články pro ně.  Další informace o nástroji pro váš scénář, navštivte tuto [článku](data-lake-storage-data-scenarios.md).
 
-| Nástroj               | Nastavení     | Další podrobnosti                                                                 |
+| Tool               | Nastavení     | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapování)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |
@@ -131,12 +131,12 @@ V závislosti na velikosti pracovní zátěže bude vždy minimální velikost k
 
 Kromě výše uvedených obecné pokyny každá aplikace má různé parametry, které jsou k dispozici pro ladění pro určitou aplikaci. Následující tabulka uvádí některé z parametrů a odkazy pro zahájení práce s pro jednotlivé aplikace pro optimalizaci výkonu.
 
-| Úloha               | Parametr pro nastavení úlohy                                                         |
-|--------------------|-------------------------------------------------------------------------------------|
-| [Spark v HDInsight](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Počet prováděcích modulů</li><li>Prováděcí modul paměti</li><li>Prováděcí modul jader</li></ul> |
-| [Hive s HDInsight](data-lake-storage-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
-| [MapReduce v HDInsight](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [Storm v HDInsight](data-lake-storage-performance-tuning-storm.md)|  | <ul><li>Počet pracovních procesů</li><li>Počet instancí spout prováděcího modulu</li><li>Počet instancí bolt prováděcího modulu </li><li>Počet úkolů spout</li><li>Počet úkolů bolt</li></ul>|
+| Úloha | Parametr pro nastavení úlohy |
+|----------|------------------------|
+| [Spark v HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Počet prováděcích modulů</li><li>Prováděcí modul paměti</li><li>Prováděcí modul jader</li></ul> |
+| [Hive s HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
+| [MapReduce v HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [Storm v HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí spout prováděcího modulu</li><li>Počet instancí bolt prováděcího modulu </li><li>Počet úkolů spout</li><li>Počet úkolů bolt</li></ul>|
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

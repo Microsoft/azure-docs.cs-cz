@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: cf4ee8b1b9d96ad4d32a0ac8b1682968b90653f9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074892"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
 
@@ -120,17 +120,17 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 
 3. Na **přidat skupinu registrací**, zadejte následující informace a klikněte na tlačítko **Uložit** tlačítko.
 
-    - **Název skupiny**: Zadejte **mylegacydevices**.
+   - **Název skupiny**: Zadejte **mylegacydevices**.
 
-    - **Typ ověření**: Vyberte **symetrický klíč**.
+   - **Typ ověření**: Vyberte **symetrický klíč**.
 
-    - **Automaticky vygenerovat klíče**: Zaškrtněte toto políčko.
+   - **Automaticky vygenerovat klíče**: Zaškrtněte toto políčko.
 
-    - **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **statickou konfiguraci** tak můžete přiřadit konkrétní rozbočovače.
+   - **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **statickou konfiguraci** tak můžete přiřadit konkrétní rozbočovače.
 
-    - **Vyberte centra IoT hub je možné přiřadit tato skupina**: Vyberte jednu z vašich rozbočovače.
+   - **Vyberte centra IoT hub je možné přiřadit tato skupina**: Vyberte jednu z vašich rozbočovače.
 
-    ![Přidat skupinu registrací pro ověření identity symetrického klíče](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Přidat skupinu registrací pro ověření identity symetrického klíče](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. Po uložení registrace se vygeneruje **Primární klíč** a **Sekundární klíč** a tyto klíče se přidají do položky registrace. Zobrazí vaše skupina symetrického klíče registrace jako **mylegacydevices** pod *název skupiny* sloupec v *skupiny registrací* kartu. 
 

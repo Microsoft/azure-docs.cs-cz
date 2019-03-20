@@ -8,16 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: spelluru
-ms.openlocfilehash: ac43b85858451149ceabf87c77b42d40fbd4eac4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181686"
 ---
 # <a name="query-event-grid-subscriptions"></a>Dotazování odběrů služby Event Grid 
 
 Tento článek popisuje, jak zobrazit seznam odběrů služby Event Grid ve vašem předplatném Azure. Při dotazování na vašich stávajících předplatných služby Event Grid, je důležité porozumět různým typům předplatných. Můžete poskytovat různé parametry podle typu vašeho předplatného, které chcete získat.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-groups-and-azure-subscriptions"></a>Skupiny prostředků a předplatných Azure
 
@@ -35,8 +37,8 @@ az eventgrid event-subscription list
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Set-AzureRmContext -Subscription "My Azure Subscription"
-Get-AzureRmEventGridSubscription
+Set-AzContext -Subscription "My Azure Subscription"
+Get-AzEventGridSubscription
 ```
 
 Pokud chcete získat předplatná event gridu pro předplatné Azure, zadejte typ tématu **Microsoft.Resources.Subscriptions**.
@@ -50,7 +52,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subs
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
 Pokud chcete získat předplatná event gridu pro všechny skupiny prostředků v rámci předplatného Azure, zadejte typ tématu **Microsoft.Resources.ResourceGroups**.
@@ -64,7 +66,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Reso
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
 Pokud chcete získat předplatná event gridu pro zadané skupině prostředků, zadejte název skupiny prostředků jako parametr.
@@ -78,7 +80,7 @@ az eventgrid event-subscription list --resource-group myResourceGroup
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="custom-topics-and-azure-resources"></a>Vlastní témata a prostředků Azure
@@ -96,7 +98,7 @@ az eventgrid event-subscription list --location westus2
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -Location westus2
+Get-AzEventGridSubscription -Location westus2
 ```
 
 Získat předplatné na vlastní témata na umístění, zadat umístění a typ tématu **Microsoft.EventGrid.Topics**.
@@ -110,7 +112,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.EventGrid.Topi
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
 Chcete-li získat předplatná do účtů úložiště pro umístění, zadejte umístění a typ tématu **Microsoft.Storage.StorageAccounts**.
@@ -124,7 +126,7 @@ az eventgrid event-subscription list --topic-type "Microsoft.Storage.StorageAcco
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
 Pokud chcete získat předplatná event gridu vlastního tématu, zadejte název vlastního tématu a název dané skupiny prostředků.
@@ -138,7 +140,7 @@ az eventgrid event-subscription list --topic-name myCustomTopic --resource-group
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
 Pokud chcete získat předplatná event gridu pro určitý prostředek, zadejte ID prostředku.
@@ -153,8 +155,8 @@ az eventgrid event-subscription list --resource-id $resourceid
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-$resourceid = (Get-AzureRmResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
-Get-AzureRmEventGridSubscription -ResourceId $resourceid
+$resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
+Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 5174723e7c9566fe90eb8bf49a1f353a5d9ae9ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083967"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. V případě připojení můžete použít Azure AD nebo AD FS. Odpojené scénáři je podporována pouze služba AD FS.
@@ -122,7 +122,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
 |CustomAdfsName|Název zprostředkovatele deklarací identity.<br>Zobrazí se tak na cílové stránce služby AD FS.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Federační metadata odkaz|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|Federační metadata odkaz| https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Aktivování automatizace ke konfiguraci vztahu důvěryhodnosti zprostředkovatele deklarací identity ve službě Azure Stack

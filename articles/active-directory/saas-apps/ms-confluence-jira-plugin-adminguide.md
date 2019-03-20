@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109133"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Od společnosti Atlassian Jira a Confluence příručky pro správce Azure Active Directory
 
@@ -110,33 +110,33 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 ![Obrazovka Konfigurace modulu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Adresa URL metadat**: Adresa URL federačních metadat získat ze služby Azure AD.
+* **Adresa URL metadat**: Adresa URL federačních metadat získat ze služby Azure AD.
 
-*   **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/.
+* **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/.
 
-*   **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
+* **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
 
-*   **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
+* **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*< domény: port >*/plugins/servlet/saml/auth.
 
-*   **ID IdP Entity**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
+* **ID IdP Entity**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
 
-*   **Adresa URL pro přihlášení**: Přihlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Adresa URL pro přihlášení**: Přihlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Odhlašovací adresa URL**: Odhlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Odhlašovací adresa URL**: Odhlašovací adresa URL ze svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Certifikát X.509**: Certifikát X.509 svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
+* **Certifikát X.509**: Certifikát X.509 svého zprostředkovatele identity. Toto pole se naplní ze služby Azure AD, pokud je adresa URL metadat vyřešit.
 
-*   **Přihlašovací jméno tlačítko**: Název tlačítka přihlašování, které vaše organizace chce, aby se uživatelům zobrazit na přihlašovací stránku.
+* **Přihlašovací jméno tlačítko**: Název tlačítka přihlašování, které vaše organizace chce, aby se uživatelům zobrazit na přihlašovací stránku.
 
-*   **Umístění ID uživatele SAML**: Umístění, kde se očekává ID uživatele Jira nebo Confluence odpověď SAML. Může být v **NameID** nebo v názvu vlastního atributu.
+* **Umístění ID uživatele SAML**: Umístění, kde se očekává ID uživatele Jira nebo Confluence odpověď SAML. Může být v **NameID** nebo v názvu vlastního atributu.
 
-*   **Atribut název**: Název atributu, kde se očekává ID uživatele.
+* **Atribut název**: Název atributu, kde se očekává ID uživatele.
 
-*   **Zjišťování povolit domovské sféry**: Výběr, ujistěte se, pokud společnost používá služby Active Directory Federation Services (AD FS) - based sign - v.
+* **Zjišťování povolit domovské sféry**: Výběr, ujistěte se, pokud společnost používá služby Active Directory Federation Services (AD FS) - based sign - v.
 
-*   **Domain Name**: Pokud přihlášení je název domény na základě služby AD FS.
+* **Domain Name**: Pokud přihlášení je název domény na základě služby AD FS.
 
-*   **Povolit jednotné odhlášení**: Ujistěte se, pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele ze systému Jira nebo Confluence výběru.
+* **Povolit jednotné odhlášení**: Ujistěte se, pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele ze systému Jira nebo Confluence výběru.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

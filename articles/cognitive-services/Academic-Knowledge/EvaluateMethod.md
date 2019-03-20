@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871315"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004922"
 ---
 # <a name="evaluate-method"></a>vyhodnocení metody
 
@@ -27,7 +27,9 @@ ms.locfileid: "55871315"
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>Parametry žádosti  
+
 Název     | Hodnota | Povinné?  | Popis
 -----------|-----------|---------|--------
 **výraz**       | Textový řetězec | Ano | Výraz dotazu, který určuje entit, které má být vrácen.
@@ -38,7 +40,9 @@ Název     | Hodnota | Povinné?  | Popis
 **Řadit podle** |   Textový řetězec | Ne<br>Výchozí hodnota: snížením prob | Název atributu, který se používá pro řazení entity. Volitelně můžete Vzestupně/sestupně lze zadat. Formát je: *název: asc* nebo *název: desc*.
   
  <br>
+
 ## <a name="response-json"></a>Odpověď (JSON)
+
 Název | Popis
 -------|-----   
 **výraz** |  *Expr* parametr z požadavku.
@@ -46,6 +50,7 @@ Název | Popis
 **aborted** | True, pokud vypršel časový limit žádosti.
 
 <br>
+
 #### <a name="example"></a>Příklad:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 74329624b6e0f1b105349d87a6d166efad520076
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010920"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -33,12 +33,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
-      - Windows Server 2016 
-      - Windows Server 2012 R2
-      - Windows Server 2012 
-      - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
-      - Red Hat Enterprise Linux 6.4 6.10, 7.1 na 7.6 (pouze virtualizované instance HVM) *(instance s ovladači RedHat PV nejsou podporované.)*
-      - CentOS 6.4 6.10 7.1 na 7.6 (pouze virtualizované instance HVM)
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
+  - Red Hat Enterprise Linux 6.4 6.10, 7.1 na 7.6 (pouze virtualizované instance HVM) *(instance s ovladači RedHat PV nejsou podporované.)*
+  - CentOS 6.4 6.10 7.1 na 7.6 (pouze virtualizované instance HVM)
  
 - Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
 
@@ -172,39 +172,39 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
 2. V části **pro místní počítače a virtuální počítače Azure**vyberte **krok 1: Replikovat aplikaci**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
-    - 1: Konfigurace zdroje
+   - 1: Konfigurace zdroje
 
-    |  |  |
-    |-----|-----|
-    | Zdroj: | Zvolte **Místní**.|
-    | Zdrojové umístění:| Zadejte název instance EC2 konfiguračního serveru.|
-    |Typ počítače: | Zvolte **Fyzické počítače**.|
-    | Procesový server: | Z rozevíracího seznamu vyberte konfigurační server.|
+     |  |  |
+     |-----|-----|
+     | Zdroj: | Zvolte **Místní**.|
+     | Zdrojové umístění:| Zadejte název instance EC2 konfiguračního serveru.|
+     |Typ počítače: | Zvolte **Fyzické počítače**.|
+     | Procesový server: | Z rozevíracího seznamu vyberte konfigurační server.|
 
-    - 2: Konfigurace cíle
+   - 2: Konfigurace cíle
 
-    |  |  |
-    |-----|-----|
-    | Cíl: | Nechte zadanou výchozí hodnotu.|
-    | Předplatné: | Zvolte předplatné, které jste dosud používali.|
-    | Skupina prostředků po převzetí služeb při selhání:| Použijte skupinu prostředků, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
-    | Model nasazení po převzetí služeb při selhání: | Zvolte **Resource Manager** (Správce prostředků).|
-    | Účet úložiště: | Vyberte účet úložiště, který jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
-    | Síť Azure: | Zvolte **Nakonfigurovat pro vybrané počítače**.|
-    | Síť Azure po převzetí služeb při selhání: | Zvolte síť, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
-    | Podsíť: | V rozevíracím seznamu vyberte **výchozí**.|
+     |  |  |
+     |-----|-----|
+     | Cíl: | Nechte zadanou výchozí hodnotu.|
+     | Předplatné: | Zvolte předplatné, které jste dosud používali.|
+     | Skupina prostředků po převzetí služeb při selhání:| Použijte skupinu prostředků, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
+     | Model nasazení po převzetí služeb při selhání: | Zvolte **Resource Manager** (Správce prostředků).|
+     | Účet úložiště: | Vyberte účet úložiště, který jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
+     | Síť Azure: | Zvolte **Nakonfigurovat pro vybrané počítače**.|
+     | Síť Azure po převzetí služeb při selhání: | Zvolte síť, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
+     | Podsíť: | V rozevíracím seznamu vyberte **výchozí**.|
 
-    - 3: Výběr fyzických počítačů
+   - 3: Výběr fyzických počítačů
 
-      Vyberte **Fyzický počítač** a zadejte **název**, **IP adresu** a **typ operačního systému** instance EC2, kterou chcete migrovat. Vyberte **OK**.
+     Vyberte **Fyzický počítač** a zadejte **název**, **IP adresu** a **typ operačního systému** instance EC2, kterou chcete migrovat. Vyberte **OK**.
 
-    - 4: Konfigurace vlastností
+   - 4: Konfigurace vlastností
 
-      Vyberte účet, který jste vytvořili na konfiguračním serveru, a potom zvolte **OK**.
+     Vyberte účet, který jste vytvořili na konfiguračním serveru, a potom zvolte **OK**.
 
-    - 5: Konfigurace nastavení replikace
+   - 5: Konfigurace nastavení replikace
 
-      Ujistěte se, že v rozevíracím seznamu pro zásady replikace máte vybranou možnost **myReplicationPolicy**, a potom zvolte **OK**.
+     Ujistěte se, že v rozevíracím seznamu pro zásady replikace máte vybranou možnost **myReplicationPolicy**, a potom zvolte **OK**.
 
 3. Po dokončení průvodce zvolte **Povolit replikaci**.
 
@@ -245,10 +245,10 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
 1. Ujistěte se, že se virtuální počítač zobrazuje na stránce **Replikované položky**.
 2. Klikněte pravým tlačítkem na každý virtuální počítač a vyberte **Dokončit migraci**. To provede následující akce:
 
-    - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
-    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů. 
+   - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
+   - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů. 
 
-    ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  

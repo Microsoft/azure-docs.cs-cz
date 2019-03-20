@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008215"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Příručka zabezpečení služby Azure Data Lake Storage Gen2
 
@@ -88,7 +88,7 @@ Tady jsou hlavní body, které je potřeba vědět o použití RBAC pro přístu
 
 Klíče účtu úložiště jsou 512 bitů řetězce, které vytvořil Azure, který spolu s názvem účtu úložiště, může být použita pro přístup k objektům data uložená v účtu úložiště, například, objekty BLOB, entity do tabulky, fronty zpráv a souborům ve sdílené složky Azure. Řízení přístupu k úložiště účtu klíče řídí přístup k rovině dat pro daný účet úložiště.
 
-Každý účet úložiště má dva klíče, které jsou označovány jako "Klíč 1" a "Klíč 2" v [webu Azure portal](http://portal.azure.com/) a v rutinách prostředí PowerShell. Toto může být znovu vygenerován ručně pomocí jedné z několika metod, včetně, ale není možné použít [webu Azure portal](https://portal.azure.com/), prostředí PowerShell, rozhraní příkazového řádku Azure nebo programově pomocí klientské knihovny úložiště .NET nebo služby Azure Storage ROZHRANÍ REST API.
+Každý účet úložiště má dva klíče, které jsou označovány jako "Klíč 1" a "Klíč 2" v [webu Azure portal](https://portal.azure.com/) a v rutinách prostředí PowerShell. Toto může být znovu vygenerován ručně pomocí jedné z několika metod, včetně, ale není možné použít [webu Azure portal](https://portal.azure.com/), prostředí PowerShell, rozhraní příkazového řádku Azure nebo programově pomocí klientské knihovny úložiště .NET nebo služby Azure Storage ROZHRANÍ REST API.
 
 Existuje spousta důvodů se znovu vygenerovat své klíče účtu úložiště.
 
@@ -167,7 +167,7 @@ Kromě toho můžete určit, aby byly omezené na IP adresu nebo rozsah IP adres
 
 Sdílený přístupový podpis je sada připojí k adrese URL odkazující na prostředek parametry dotazu.
 
-který poskytuje informace o povoleného přístupu a dobu, pro který je povolen přístup. Tady je příklad; Pomocí tohoto identifikátoru URI poskytuje přístup pro čtení do objektu blob pro pět minut. Parametry dotazu SAS musí být kódovaná v řetězci URL, jako je například 3A % dvojtečkou (:) nebo % 20 mezerou.
+který poskytuje informace o povoleného přístupu a dobu, pro který je povolen přístup. Tady je příklad; Pomocí tohoto identifikátoru URI poskytuje přístup pro čtení do objektu blob pro pět minut. Parametry dotazu SAS musí být kódovaná v řetězci URL, jako je například 3A % pro dvojtečkou (:) nebo % 20 mezerou.
 
 ```
 http://mystorage.dfs.core.windows.net/myfilesystem/myfile.txt (URL to the file)

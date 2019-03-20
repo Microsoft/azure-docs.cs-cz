@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 555fcc8998f954d222753194fc08bdf4a113d59c
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845133"
 ---
 # <a name="show-search-results-on-the-map"></a>Na mapě zobrazit výsledky hledání
 
@@ -33,7 +33,7 @@ Vytvoří druhý blok kódu **SubscriptionKeyCredentialPolicy** k ověření po�
 
 Třetí bloku kódu vytvoří objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídu a přidejte do ní výsledky hledání. A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Symbol vrstvy se pak vytvoří a bude přidán zdroj dat do vrstvy symbol, který se pak přidá do mapy.
 
-Čtvrtý blok kódu používá [SearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) metodu [modulu service](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). To umožňuje provádět textové vyhledávání volnou formou pomocí [získat vyhledávání přibližných shod rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Rozhraní API pro vyhledávání přibližných shod Get může zpracovat libovolnou kombinaci přibližných shod vstupů. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí **geojson.getFeatures()** – metoda a přidán do zdroje dat, výsledkem je automaticky dat, vykreslované na mapě prostřednictvím vrstev symbol.
+Čtvrtý blok kódu používá [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) metodu [modulu service](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). To umožňuje provádět textové vyhledávání volnou formou pomocí [získat vyhledávání přibližných shod rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Rozhraní API pro vyhledávání přibližných shod Get může zpracovat libovolnou kombinaci přibližných shod vstupů. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí **geojson.getFeatures()** – metoda a přidán do zdroje dat, výsledkem je automaticky dat, vykreslované na mapě prostřednictvím vrstev symbol.
 
 Poslední blok kódu nastaví fotoaparátu mezí mapy pomocí mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) vlastnost.
 

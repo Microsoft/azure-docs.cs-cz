@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195932"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122922"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -66,7 +66,7 @@ Aby bylo zajištěno, že vše funguje podle očekávání, musíte mít:
 - Zajistěte, aby byl váš obsah HTML5 kompatibilní a přístupné
 - Ujistěte se, že vaše servery obsahu je povolený pro sdílení CORS.
 - Poskytování obsahu prostřednictvím protokolu HTTPS.
-- Použít absolutní adresy URL například https://yourdomain/content pro všechny odkazy a obsah šablony stylů CSS.
+- Použít absolutní adresy URL například `https://yourdomain/content` pro všechny odkazy a obsah šablony stylů CSS.
 
 > [!TIP]
 > Ověřte, že hostují váš obsah na lokalitu má zapnuté CORS a testování požadavků CORS, můžete použít web https://test-cors.org/. Díky této lokalitě můžete odeslat požadavek CORS ke vzdálenému serveru (který testuje, jestli se podporuje CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat některé funkce CORS).
@@ -121,16 +121,16 @@ Ověřte, že úložiště, které hostují váš obsah na má zapnuté CORS, po
 
 1. Otevřete relaci procházení a přejděte na stránku *unified.html* úplnou adresu URL umístění ve vašem účtu úložiště pomocí `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Například, https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
 2. Přejděte na adresu https://test-cors.org. Tento web umožňuje ověřit, že stránka, kterou používáte má zapnuté CORS.  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. V **adresa URL vzdáleného úložiště**, zadejte úplnou adresu URL pro váš obsah unified.html a klikněte na tlačítko **odeslat požadavek**.
 4. Ověřte, že výstup v **výsledky** oddíl obsahuje *XHR stavu: 200*, což znamená, že je povoleno CORS.
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-Účet úložiště by měl nyní obsahovat kontejner objektů blob s názvem *b2c* obrázku, který obsahuje následující Northwind šablony z *Starter Pack*.
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   Účet úložiště by měl nyní obsahovat kontejner objektů blob s názvem *b2c* obrázku, který obsahuje následující Northwind šablony z *Starter Pack*.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)
