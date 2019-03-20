@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c1840e2102a0a08e73490319a5633d4db8e0f0bd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5e879395e034813f954d1046e4a69e21534f3968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077152"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -481,9 +481,9 @@ Existuje několik možností pro nasazení virtuální sítě.
 
 - Šablony Azure Resource Manageru
 
->**Kdy použít**: Když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
-
->**Začínáme**: Nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
+> **Kdy použít**: Když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
+> 
+> **Začínáme**: Nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 

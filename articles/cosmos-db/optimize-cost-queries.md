@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840184"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizujte náklady dotazu ve službě Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Dotazy, které načítají data z jednoho nebo více oddílů vyšší latenci s
 
 Po uložení některá data v kontejnerech Azure Cosmos, můžete použít Průzkumníka dat na webu Azure Portal sestavit a spustit vaše dotazy. Náklady na dotazy můžete získat také pomocí Průzkumníku dat. Tato metoda získáte představu o skutečných poplatky spojené s typické dotazy a operace, které systém podporuje.
 
-Náklady na dotazy můžete získat také programově pomocí sad SDK. K měření nároky na jakékoli operace, jako je vytváření, aktualizace nebo odstranění zkontrolujte `x-ms-request-charge` záhlaví při použití rozhraní REST API. Pokud používáte .net nebo sady Java SDK `RequestCharge` vlastnost je ekvivalentní vlastnost k získání zátěž žádostí a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
+Náklady na dotazy můžete získat také programově pomocí sad SDK. K měření nároky na jakékoli operace, jako je vytváření, aktualizace nebo odstranění zkontrolujte `x-ms-request-charge` záhlaví při použití rozhraní REST API. Pokud používáte .NET nebo sady Java SDK `RequestCharge` vlastnost je ekvivalentní vlastnost k získání zátěž žádostí a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ V některých případech se může zobrazit posloupnost odpovědi 200 a 429 a j
 
 ## <a name="metrics-for-troubleshooting"></a>Metriky pro řešení potíží
 
-Výkon a propustnosti dotazů, uživatelem definované funkce (UDF) používané většinou závisí na tělo funkce. Nejjednodušší způsob, jak zjistit, kolik času spuštění dotazu se stráven v UDF a počet ru spotřebovaných, je zapnutí metrik dotazu. V případě použití sady .net SDK, tady je ukázkový dotaz metriky vrácené sady SDK:
+Výkon a propustnosti dotazů, uživatelem definované funkce (UDF) používané většinou závisí na tělo funkce. Nejjednodušší způsob, jak zjistit, kolik času spuštění dotazu se stráven v UDF a počet ru spotřebovaných, je zapnutí metrik dotazu. Pokud používáte sadu .NET SDK, tady je ukázkový dotaz metriky vrácené sady SDK:
 
 ```bash
 Retrieved Document Count                 :               1              

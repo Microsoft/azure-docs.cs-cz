@@ -11,13 +11,13 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: aacb1aa451a1453d0648478ed359630d57f265f4
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 8789e6c45940891e51638f9711fbcf66259882b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842239"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi ve fondu ve službě Azure SQL Database pomocí Powershellu
 

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860580"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack
 
@@ -135,7 +135,7 @@ Nastavení hybridní CI/CD a nasazení webové aplikace do Azure a Azure Stack a
 
 1. **Přihlaste se k Azure kanály** potvrďte schopnost vytvářet definice sestavení.
 
-2. Přidat **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s.Net Core.
+2. Přidat **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s .NET Core.
 
     ![Alternativní text](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -154,9 +154,9 @@ Azure DevOps a Azure DevOps serveru poskytovat vysoce konfigurovatelné a spravo
 
 ![Alternativní text](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  Vyberte **plus** tlačítko pro přidání nové vydané verze v části **kartě vydané verze** na stránce sestavení a vydaná verze sady Visual Studio Online (VSO).
+1. Vyberte **plus** tlačítko pro přidání nové vydané verze v části **kartě vydané verze** na stránce sestavení a vydaná verze sady Visual Studio Online (VSO).
 
-    ![Alternativní text](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Alternativní text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Použít **nasazení služby Azure App Service** šablony.
 
@@ -210,7 +210,7 @@ Azure DevOps a Azure DevOps serveru poskytovat vysoce konfigurovatelné a spravo
 
 14. Vyberte **předplatné** pro koncový bod služby Azure Stack.
 
-  ![Alternativní text](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Nastavte název webové aplikace služby Azure Stack jako **název služby App service**.
 
@@ -299,11 +299,11 @@ Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
 ![Příklad stránky záznamů DNS](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  V registrátora názvu domény, vyberte **přidat nebo vytvořit** k vytvoření záznamu. Někteří poskytovatelé nabízejí různé odkazy pro přidání různých typů záznamů. V dokumentaci poskytovatele.
+1. V registrátora názvu domény, vyberte **přidat nebo vytvořit** k vytvoření záznamu. Někteří poskytovatelé nabízejí různé odkazy pro přidání různých typů záznamů. V dokumentaci poskytovatele.
 
-2.  Přidejte záznam CNAME pro mapování subdomény na výchozí název hostitele aplikace.
+2. Přidejte záznam CNAME pro mapování subdomény na výchozí název hostitele aplikace.
 
-  Pro příklad domény www.northwindcloud.com přidejte záznam CNAME, který mapuje název na < aplikace\_název >. azurewebsites.net.
+   Pro příklad domény www.northwindcloud.com přidejte záznam CNAME, který mapuje název na < aplikace\_název >. azurewebsites.net.
 
 Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
@@ -311,47 +311,47 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
 
-1.  V nové záložce Přihlaste se k webu Azure portal
+1. V nové záložce Přihlaste se k webu Azure portal
 
-2.  Přejděte do služby App Services.
+2. Přejděte do služby App Services.
 
-3.  Vyberte webovou aplikaci.
+3. Vyberte webovou aplikaci.
 
-4.  V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
+4. V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
-5.  Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
+5. Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
 
-1.  Zadejte plně kvalifikovaný název, například `www.northwindcloud.com`.
+1. Zadejte plně kvalifikovaný název, například `www.northwindcloud.com`.
 
-2.  Vyberte **Ověřit**.
+2. Vyberte **Ověřit**.
 
-3.  Pokud je uvedeno, přidat další záznamy z ostatních typů (`A` nebo `TXT`) záznamů DNS registrátorů název domény. Azure vám poskytne hodnoty a typy těchto záznamů:
+3. Pokud je uvedeno, přidat další záznamy z ostatních typů (`A` nebo `TXT`) záznamů DNS registrátorů název domény. Azure vám poskytne hodnoty a typy těchto záznamů:
 
-    a.  Záznam **A** pro mapování na IP adresu aplikace.
+   a.  Záznam **A** pro mapování na IP adresu aplikace.
 
-    b.  A **TXT** záznam pro mapování na výchozí název hostitele aplikace < název_aplikace >. azurewebsites.net. Služba App Service používá tento záznam pouze během konfigurace k ověření vlastnictví vlastní domény. Po ověření záznam TXT odstraňte.
+   b.  A **TXT** záznam pro mapování na výchozí název hostitele aplikace < název_aplikace >. azurewebsites.net. Služba App Service používá tento záznam pouze během konfigurace k ověření vlastnictví vlastní domény. Po ověření záznam TXT odstraňte.
 
-4.  Dokončení této úlohy v kartě registrátora domény a odhlášením až **přidat název hostitele** se aktivuje tlačítko.
+4. Dokončení této úlohy v kartě registrátora domény a odhlášením až **přidat název hostitele** se aktivuje tlačítko.
 
-5.  Ujistěte se, že ** typ záznamu názvu hostitele je nastavena **CNAME (www.example.com nebo jakákoli subdoména)**.
+5. Ujistěte se, že ** typ záznamu názvu hostitele je nastavena **CNAME (www.example.com nebo jakákoli subdoména)**.
 
-6.  Vyberte **Přidat název hostitele**.
+6. Vyberte **Přidat název hostitele**.
 
-7.  Zadejte plně kvalifikovaný název, například `northwindcloud.com`.
+7. Zadejte plně kvalifikovaný název, například `northwindcloud.com`.
 
-8.  Vyberte **Ověřit**.
+8. Vyberte **Ověřit**.
 
-9.  **Přidat** aktivován.
+9. **Přidat** aktivován.
 
 10. Ujistěte se, že ** typ záznamu názvu hostitele je nastavena **záznam A (www.example.com)**.
 
 11. **Přidat název hostitele**.
 
-  Může trvat nějakou dobu nové názvy hostitelů se projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+    Může trvat nějakou dobu nové názvy hostitelů se projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
   
-  ![Alternativní text](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  V případě chyby se v dolní části stránky zobrazí oznámení o chybě ověření. ![Chyba ověření](media/azure-stack-solution-geo-distributed/image32.png)
+    V případě chyby se v dolní části stránky zobrazí oznámení o chybě ověření. ![Chyba ověření](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Výše uvedené kroky může opakovat mapovat zástupnou doménu (\*. northwindcloud.com)... To umožňuje přidání všechny další subdomény, které do této služby app service bez nutnosti vytvářet samostatné záznam CNAME pro každou z nich. Doménový Registrátor pokynů ke konfiguraci tohoto nastavení.
@@ -482,15 +482,15 @@ Když služba IIS nebo **Certreq.exe** se používají ke generování požadavk
 
 #### <a name="upload-the-ssl-certificate"></a>Nahrát certifikát SSL
 
-1.  Vyberte **nastavení SSL** v levém navigačním panelu webové aplikace.
+1. Vyberte **nastavení SSL** v levém navigačním panelu webové aplikace.
 
-2.  Vyberte **nahrát certifikát**.
+2. Vyberte **nahrát certifikát**.
 
-3.  V **soubor certifikátu PFX**, vyberte soubor PFX.
+3. V **soubor certifikátu PFX**, vyberte soubor PFX.
 
-4.  4. V **heslo certifikátu**, zadejte heslo, které vytvořili při exportování souboru PFX.
+4. 1. V **heslo certifikátu**, zadejte heslo, které vytvořili při exportování souboru PFX.
 
-5.  Vyberte **Nahrát**.
+5. Vyberte **Nahrát**.
 
 ![Nahrání certifikátu](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -588,23 +588,23 @@ Umožňuje aplikaci [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1
 
 ### <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
-1.  Na panelu hledání portálů, vyhledejte ** profil služby Traffic Manager ** název vytvořený v předchozí části a vyberte profil služby traffic manager ve výsledcích, který je zobrazeno.
+1. Na panelu hledání portálů, vyhledejte ** profil služby Traffic Manager ** název vytvořený v předchozí části a vyberte profil služby traffic manager ve výsledcích, který je zobrazeno.
 
-2.  V **profil služby Traffic Manager**v **nastavení** vyberte **koncové body**.
+2. V **profil služby Traffic Manager**v **nastavení** vyberte **koncové body**.
 
-3.  Vyberte **Přidat**.
+3. Vyberte **Přidat**.
 
-4.  Přidává se koncový bod služby Azure Stack.
+4. Přidává se koncový bod služby Azure Stack.
 
-5.  Pro **typ**vyberte **externí koncový bod**.
+5. Pro **typ**vyberte **externí koncový bod**.
 
-6.  Zadejte **název** pro tento koncový bod v ideálním případě název služby Azure Stack.
+6. Zadejte **název** pro tento koncový bod v ideálním případě název služby Azure Stack.
 
-7.  Pro plně kvalifikovaný název domény (**plně kvalifikovaný název domény**), použijte externí adresu URL pro webovou aplikaci Azure Stack.
+7. Pro plně kvalifikovaný název domény (**plně kvalifikovaný název domény**), použijte externí adresu URL pro webovou aplikaci Azure Stack.
 
-8.  V části geomapping, vyberte oblast/kontinent, kde je umístěný prostředek, třeba **Evropa.**
+8. V části geomapping, vyberte oblast/kontinent, kde je umístěný prostředek, třeba **Evropa.**
 
-9.  V zemi nebo oblast rozevíracího seznamu, který se zobrazí, vyberte zemi, která se použije k tomuto koncovému bodu, například **Německo**.
+9. V zemi nebo oblast rozevíracího seznamu, který se zobrazí, vyberte zemi, která se použije k tomuto koncovému bodu, například **Německo**.
 
 10. Políčko **Přidat jako zakázaný** ponechte nezaškrtnuté.
 
@@ -628,12 +628,12 @@ Umožňuje aplikaci [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1
 
 16. Vyberte **OK**.
 
-  > [!Note]  
-  >  Vytvořte aspoň jeden koncový bod s geografické oboru všechny (celý svět) která bude sloužit jako výchozí koncový bod pro prostředek.
+    > [!Note]  
+    >  Vytvořte aspoň jeden koncový bod s geografické oboru všechny (celý svět) která bude sloužit jako výchozí koncový bod pro prostředek.
 
-1.  Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
+1. Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
-  ![Alternativní text](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globální organizace spoléhá na funkce Azure geografická distribuce**
 

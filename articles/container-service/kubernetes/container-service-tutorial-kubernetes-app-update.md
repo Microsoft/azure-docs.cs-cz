@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993520"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006265"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(NEPOUŽÍVANÉ) Aktualizace aplikace v Kubernetes
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurzu: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -35,7 +35,7 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 
 V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes. 
 
@@ -75,7 +75,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testování aplikace v místním prostředí
 
-Přejděte na adresu http://localhost:8080 a prohlédněte si aktualizovanou aplikaci.
+Přejděte na adresu `http://localhost:8080` a prohlédněte si aktualizovanou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 

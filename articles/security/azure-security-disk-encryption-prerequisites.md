@@ -1,18 +1,18 @@
 ---
 title: Požadavky – Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek obsahuje požadavky pro používání Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/04/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: d10a73eae3546ea0bbf7b6cad86838063ec48520
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 495095df65a03dca573f38c93eb5e77176c16359
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760238"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895902"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -30,7 +30,7 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 Azure Disk Encryption je podporována v následujících operačních systémech:
 
 - Verze Windows serveru: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows serveru 2016.
-    - Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované před povolením šifrování v Azure. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 x64 systémů Windows Server 2008 R2 ([KB2901983](https://support.microsoft.com/kb/2901983)).    
+  - Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované před povolením šifrování v Azure. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 x64 systémů Windows Server 2008 R2 ([KB2901983](https://support.microsoft.com/kb/2901983)).    
 - Verze klientů Windows: Klient Windows 8 a Windows 10 klient.
 - Azure Disk Encryption je pouze podporované na konkrétní Galerie Azure Linux server distribucích a verzích. Seznam aktuálně podporovaných verzí najdete [nejčastější dotazy týkající se Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 - Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné. Konfigurace prostředků v oblastech způsobí selhání při povolování funkce Azure Disk Encryption.
@@ -38,11 +38,12 @@ Azure Disk Encryption je podporována v následujících operačních systémech
 ## <a name="bkmk_LinuxPrereq"></a> Další požadavky pro virtuální počítače IaaS s Linuxem 
 
 - Azure Disk Encryption pro Linux vyžaduje 7 GB paměti RAM ve virtuálním počítači povolit šifrování disku operačního systému na [podporované obrázky](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po dokončení procesu šifrování disku operačního systému virtuálního počítače může být nakonfigurován pro spouštění s méně paměti.
+- Azure Disk Encryption vyžaduje modul vfat nacházet v systému.  Odebrání nebo zakázání tohoto modulu z výchozí bitové kopie zabrání tomu nebudou moct číst klíče svazku a získat klíč potřebný k odemknutí disky na následné restartování systému. Kroků posílení zabezpečení systému, které modul vfat odebrat ze systému nejsou kompatibilní s Azure Disk Encryption. 
 - Před povolením šifrování, třeba správně zobrazeny v /etc/fstab datových disků k šifrování. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v článku: [Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Ujistěte se, že nastavení /etc/fstab jsou správně nakonfigurovány pro připojení. Tato nastavení nakonfigurujete, spusťte připojení – příkaz nebo restartujte virtuální počítač a aktivuje tímto způsobem opětovné připojení. Jakmile, která se dokončí, zkontrolujte výstup příkazu lsblk k ověření, že na jednotce je pořád připojený. 
-    - Pokud soubor /etc/fstab není správně připojit jednotku před povolením šifrování, Azure Disk Encryption nebude možné ji správně připojit.
-    - Azure Disk Encryption proces přesune informace připojení mimo /etc/fstab a do jeho vlastní konfigurační soubor jako součást procesu šifrování. Není možné dospod vidět, že položka chybí /etc/fstab po data šifrování jednotky dokončí.
-    -  Po restartování počítače bude trvat dobu procesu Azure Disk Encryption pro připojení nově šifrovanými disky. Bude okamžitě k dispozici po restartu. Proces potřebuje čas ke spuštění, odemčení a pak připojte šifrované jednotky, teprve pak ji bude k dispozici pro jiné procesy pro přístup k. Tento proces může trvat déle než minutu po restartování počítače v závislosti na charakteristikách systému.
+  - Pokud soubor /etc/fstab není správně připojit jednotku před povolením šifrování, Azure Disk Encryption nebude možné ji správně připojit.
+  - Azure Disk Encryption proces přesune informace připojení mimo /etc/fstab a do jeho vlastní konfigurační soubor jako součást procesu šifrování. Není možné dospod vidět, že položka chybí /etc/fstab po data šifrování jednotky dokončí.
+  -  Po restartování počítače bude trvat dobu procesu Azure Disk Encryption pro připojení nově šifrovanými disky. Bude okamžitě k dispozici po restartu. Proces potřebuje čas ke spuštění, odemčení a pak připojte šifrované jednotky, teprve pak ji bude k dispozici pro jiné procesy pro přístup k. Tento proces může trvat déle než minutu po restartování počítače v závislosti na charakteristikách systému.
 
 Příklad příkazy, které je možné připojit datové disky a vytvořte nezbytné/etc/fstab položky lze nalézt v [řádky 244 248 tohoto souboru skriptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
 
@@ -69,8 +70,8 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalace Azure Powershellu pro použití v místním počítači (volitelné): 
 1. Postupujte podle pokynů v odkazech pro váš operační systém, pokračujte ale zbytek postupu níže.      
-    - [Instalace a konfigurace Azure Powershellu](/powershell/azure/install-az-ps). 
-        - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu Az. 
+   - [Instalace a konfigurace Azure Powershellu](/powershell/azure/install-az-ps). 
+     - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu Az. 
 
 2. Ověřte nainstalovaných verzí modulu Az. V případě potřeby [aktualizace modulu Azure PowerShell](/powershell/azure/install-az-ps#update-the-azure-powershell-module).
     Doporučuje se použít nejnovější verzi modulu Az.

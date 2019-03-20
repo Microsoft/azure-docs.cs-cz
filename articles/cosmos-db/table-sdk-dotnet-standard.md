@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 99371f0ae56046a328155aa2151ad8b89df93a04
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 38b283ed666b39b4e090bd95051a4454a9b47e62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975657"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Standardní rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
-
+> 
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
@@ -27,9 +27,15 @@ ms.locfileid: "57551921"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
+|**Ukázka**|[Ukázka .NET cosmos DB Table API](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Rychlý start**|[Rychlý start](create-table-dotnet.md)|
+|**Kurz**|[Kurz](tutorial-develop-table-dotnet.md)|
 |**Aktuální podporované architektury**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* Verzi všeobecné dostupnosti
 
 ### <a name="a-name0110-preview0110-preview"></a><a name="0.11.0-preview"/>0.11.0-Preview
 * Byly provedeny změny konfigurace CloudTableClient. Nyní využívá objektu TableClientConfiguration během konstrukce. TableClientConfiguration poskytuje různé vlastnosti konfigurace chování klienta v závislosti na tom, jestli je cílový koncový bod Cosmos DB Table API nebo rozhraní API tabulky Azure Storage.
@@ -56,6 +62,7 @@ Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřa
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [1.0.0](#1.0.0) |13. března 2019 |--- |
 | [0.11.0-Preview](#0.11.0-preview) |5. března 2019 |--- |
 | [0.10.1-preview](#0.10.1-preview) |22. ledna 2019 |--- |
 | [0.10.0-preview](#0.10.0-preview) |18. prosince 2018 |--- |

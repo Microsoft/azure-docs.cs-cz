@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží – Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek poskytuje tipy pro řešení potíží pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/04/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e2fa8c526a1016e5b8157f5f8b3ecb38bf8ef15
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779959"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838268"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
@@ -112,15 +112,15 @@ Chcete-li tento problém obejít, zkopírujte následující čtyři soubory z v
    \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
-   2. Zadejte následující příkaz:
+1. Zadejte následující příkaz:
 
    ```
    bdehdcfg.exe -target default
    ```
 
-   3. Tento příkaz vytvoří 550 MB systémový oddíl. Restartování systému.
+1. Tento příkaz vytvoří 550 MB systémový oddíl. Restartování systému.
 
-   4. Pomocí nástroje DiskPart zkontrolujte svazky a pak pokračujte.  
+1. Pomocí nástroje DiskPart zkontrolujte svazky a pak pokračujte.  
 
 Příklad:
 

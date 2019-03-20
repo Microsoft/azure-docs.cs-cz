@@ -1,19 +1,19 @@
 ---
 title: Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
-description: Tento článek popisuje, jak je možné restartovat Azure Database for PostgreSQL pomocí webu Azure Portal.
+description: Tento článek popisuje, jak je možné restartovat Azure Database for PostgreSQL pomocí webu Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: cc5957da97d9a8801583564bdf51f0483ab8e004
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 3/18/2019
+ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168771"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
+# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Restartovat – Azure Database for PostgreSQL pomocí webu Azure portal
 Toto téma popisuje, jak je možné restartovat serveru Azure Database for PostgreSQL. Budete muset restartovat server z důvodů údržby, což způsobuje krátké výpadky, jak server provádí operaci.
 
 Restartování serveru se zablokuje, pokud služba je zaneprázdněna. Například služba může zpracovávat dříve požadovaná operace, jako je například škálování virtuálních jader.
@@ -28,7 +28,7 @@ K dokončení této příručce s postupy, potřebujete:
 
 PostgreSQL server restartovat následující kroky:
 
-1. Na webu Azure Portal vyberte váš server Azure Database for PostgreSQL.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte váš server Azure Database for PostgreSQL.
 
 2. Na panelu nástrojů na server **přehled** klikněte na **restartovat**.
 
@@ -48,4 +48,4 @@ PostgreSQL server restartovat následující kroky:
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlé zprovoznění: Vytvoření Azure Database for PostgreSQL pomocí webu Azure portal](./quickstart-create-server-database-portal.md)
+Další informace o [jak nastavit parametry ve službě Azure Database for PostgreSQL](howto-configure-server-parameters-using-portal.md)

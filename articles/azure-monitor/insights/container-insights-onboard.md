@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 2e7c06d7dd673ff2a638b94996667607a079e707
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 591624e6bab07bfa06799d8e4817622e7a5c280a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107640"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
 
@@ -297,31 +297,31 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 5. Uložte soubor jako **existingClusterParam.json** do místní složky.
 6. Jste připraveni k nasazení této šablony. 
 
-    * Do složky obsahující šablonu použijte následující příkazy Powershellu:
+   * Do složky obsahující šablonu použijte následující příkazy Powershellu:
 
-        ```powershell
-        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
-        ```
-        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+       ```powershell
+       New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
+       ```
+       Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
-        ```powershell
-        provisioningState       : Succeeded
-        ```
+       ```powershell
+       provisioningState       : Succeeded
+       ```
 
-    * Chcete-li pomocí Azure CLI, spusťte následující příkaz:
+   * Chcete-li pomocí Azure CLI, spusťte následující příkaz:
     
-        ```azurecli
-        az login
-        az account set --subscription "Subscription Name"
-        az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
-        ```
+       ```azurecli
+       az login
+       az account set --subscription "Subscription Name"
+       az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
+       ```
 
-        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+       Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
-        ```azurecli
-        provisioningState       : Succeeded
-        ```
-Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
+       ```azurecli
+       provisioningState       : Succeeded
+       ```
+     Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí stav metriky pro cluster. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Ověření nasazení agenta a řešení
 Verze agenta *06072018* nebo později, můžete ověřit, že agent a řešení se úspěšně nasadily. V předchozích verzích agenta můžete ověřit pouze nasazení agenta.

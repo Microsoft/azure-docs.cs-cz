@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872131"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895443"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Zjišťování typy obrázků s pro počítačové zpracování obrazu
 
-Počítačové zpracování obrazu můžete analyzovat typ obsahu imagí podle určující, zda je bitové klipart, hodnocení pravděpodobnost, že na škálovací nebo perokresba.
+S [analyzovat Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API, pro počítačové zpracování obrazu můžete analyzovat typ obsahu, obrázků, určující, zda je bitové klipart nebo perokresba.
 
 ## <a name="detecting-clip-art"></a>Zjišťování klipart
 
@@ -115,4 +115,4 @@ Následující odpověďmi ve formátu JSON ukazuje, co pro počítačové zprac
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [označování imagí](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).
+Zobrazit [analyzovat Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) referenční dokumentace se naučíte zjistit tyto typy obrázků.

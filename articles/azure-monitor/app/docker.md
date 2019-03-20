@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c31d895c453a8272c337b78f01dc8342a4d0765
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672504"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996471"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>Monitorování aplikací Dockeru ve službě Application Insights
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorování aplikací Dockeru ve službě Application Insights (zastaralé)
+
+> [!NOTE]
+> Toto řešení je zastaralá. Další informace o naší stávající investice do monitorování kontejnerů doporučujeme rezervace [monitorování Azure pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 Události životního cyklu a výkonu čítače z [Docker](https://www.docker.com/) kontejnery lze převést na Application Insights graf. Nainstalujte [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) bitové kopie v kontejneru v hostiteli který se zobrazí čítače výkonu pro hostitele, stejně jako u jiných imagí.
 
@@ -30,9 +33,6 @@ Při spuštění [Application Insights image](https://hub.docker.com/r/microsoft
 * Životní cyklus telemetrie o všechny kontejnery spuštěné na hostiteli – spuštění, zastavení a tak dále.
 * Čítače výkonu pro všechny kontejnery. Procesoru, paměti, využití sítě a další.
 * Pokud jste [nainstalovat sadu Application Insights SDK pro Javu](../../azure-monitor/app/java-get-started.md) v aplikace spuštěné v kontejnerech, bude mít veškerá telemetrická data těchto aplikací další vlastnosti identifikující kontejner a hostitele počítače. Například pokud máte instancí aplikace běžící ve více než jednoho hostitele, můžete snadno filtrovat telemetrie vaší aplikace od hostitele.
-
-> [!NOTE]
-> Toto řešení je zastaralá. Další informace o naší stávající investice do monitorování kontejnerů doporučujeme rezervace [monitorování Azure pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 ## <a name="set-up-your-application-insights-resource"></a>Nastavení prostředku Application Insights
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820348"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076883"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Rychlý start: Vytvořit frontu služby Service Bus pomocí Azure CLI
 
@@ -61,31 +61,31 @@ Po dokončení všech příkazů zkopírujte vybraný připojovací řetězec a 
 
 Když vytvoříte obor názvů a frontu a máte potřebná pověření, jste připraveni odesílat a přijímat zprávy. Kód můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
-2. Klonování [úložiště GitHub služby Service Bus](https://github.com/Azure/azure-service-bus/) v počítači pomocí následujícího příkazu:
+1. Klonování [úložiště GitHub služby Service Bus](https://github.com/Azure/azure-service-bus/) v počítači pomocí následujícího příkazu:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Změňte svůj aktuální adresář na složku s ukázkou použitím lomítek jako oddělovačů cest:
+1. Změňte svůj aktuální adresář na složku s ukázkou použitím lomítek jako oddělovačů cest:
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. Proveďte následující příkaz, kterým vytvoříte aplikaci:
+1. Proveďte následující příkaz, kterým vytvoříte aplikaci:
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. Chcete-li spustit program, vydejte následující příkaz po nahrazení připojovací řetězec s hodnotou, kterou jste si zkopírovali dříve:
+1. Chcete-li spustit program, vydejte následující příkaz po nahrazení připojovací řetězec s hodnotou, kterou jste si zkopírovali dříve:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. Sledujte, jak se do fronty odešle 10 zpráv. Řazení zpráv, které není zaručeno, ale můžete zobrazit zprávy odesílá, pak potvrzení a přijetí spolu s daty o datové části:
+1. Sledujte, jak se do fronty odešle 10 zpráv. Řazení zpráv, které není zaručeno, ale můžete zobrazit zprávy odesílá, pak potvrzení a přijetí spolu s daty o datové části:
 
     ```
     Message sending: Id = 0

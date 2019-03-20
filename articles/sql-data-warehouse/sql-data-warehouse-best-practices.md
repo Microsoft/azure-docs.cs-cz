@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 529a9f3481ae8bd793ece5110fc0efbb63e127b0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 519eae012db30d772a388865380e4909d91b711a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315351"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878138"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro službu Azure SQL Data Warehouse
 Tento článek je kolekce doporučené postupy vám pomohou dosáhnout optimálního výkonu služby Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.
@@ -156,5 +156,5 @@ Nakonec můžete použít stránku [Zpětná vazba k službě Azure SQL Data War
 [Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
 [Azure SQL Data Warehouse Feedback]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Data Warehouse MSDN Forum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
-[Azure SQL Data Warehouse Stack Overflow Forum]:  http://stackoverflow.com/questions/tagged/azure-sqldw
-[Azure SQL Data Warehouse loading patterns and strategies]: http://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/
+[Azure SQL Data Warehouse Stack Overflow Forum]:  https://stackoverflow.com/questions/tagged/azure-sqldw
+[Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/

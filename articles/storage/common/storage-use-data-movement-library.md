@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996145"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Přenos dat pomocí knihovna pro přesun dat úložiště Microsoft Azure
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 Tento kód zobrazí výzvu nám pro cestu do místního souboru, název nové nebo existující kontejneru a názvem nový objekt blob. `TransferManager.UploadAsync` Metoda provádí samotné nahrávání pomocí těchto informací.
 
-Spuštění `F5` ke spuštění aplikace. Můžete ověřit, že nahrávání došlo k účtu úložiště se zobrazením [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Spuštění `F5` ke spuštění aplikace. Můžete ověřit, že nahrávání došlo k účtu úložiště se zobrazením [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="set-number-of-parallel-operations"></a>Stanovený počet paralelních operací
 Skvělé funkce nabízené knihovna pro přesun dat je možnost nastavit počet paralelních operací, pokud chcete zvýšit propustnost dat přenos. Ve výchozím nastavení, knihovna pro přesun dat nastaví počet paralelních operací na 8 * počet jader na svém počítači.

@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34b416fd8c9e87006a0fe5d7a7e30521ef03e2b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9011a7b49aa4085c7ea05e0b320eba834b8da73d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193683"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004201"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace Azure AD Connect pomocí existující databáze ADSync
 Azure AD Connect vyžaduje databázi SQL serveru ukládat data. Můžete buď použít výchozí nastavení, které SQL Server 2012 Express LocalDB nainstalované pomocí služby Azure AD Connect, nebo použijte vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect vytvoří nová databáze s názvem ADSync byla vždy. S Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect kliknutím na existující databáze ADSync.
@@ -65,31 +65,31 @@ Důležité poznámky vzít si předtím, než budete pokračovat:
 > Použijte přepínač **/useexistingdatabase** pouze pokud databáze již obsahuje data z předchozí instalace služby Azure AD Connect. Pokud přecházíte z místní databáze na úplné databáze serveru SQL Server nebo pokud byl znovu sestaven serveru služby Azure AD Connect a obnovit zálohu SQL databáze ADSync z předchozí instalace služby Azure AD Connect. Pokud databáze je prázdný, je to znamená, nebude obsahovat žádná data z předchozí instalace služby Azure AD Connect, tento krok přeskočit.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
-4.  Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
-![Uvítání](./media/how-to-connect-install-existing-database/db3.png)
-5.  Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Příklad:         
-![Uvítání](./media/how-to-connect-install-existing-database/db4.png)           
+1. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
+   ![Uvítání](./media/how-to-connect-install-existing-database/db3.png)
+1. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Příklad:         
+   ![Uvítání](./media/how-to-connect-install-existing-database/db4.png)           
 
-6.  Na obrazovce **Připojení ke službě Azure AD** musíte zadat přihlašovací údaje globálního správce vašeho adresáře služby Azure AD. Je vhodné použít účet ve výchozí doméně onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
-![Připojení](./media/how-to-connect-install-existing-database/db5.png)
+1. Na obrazovce **Připojení ke službě Azure AD** musíte zadat přihlašovací údaje globálního správce vašeho adresáře služby Azure AD. Je vhodné použít účet ve výchozí doméně onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
+   ![Připojení](./media/how-to-connect-install-existing-database/db5.png)
  
-7.  Na obrazovce **Připojení adresářů** je uvedená stávající doménová struktura AD nakonfigurovaná pro synchronizaci adresářů, vedle níž je ikona červeného křížku. K synchronizaci změn z místní doménové struktury AD se vyžaduje účet služby AD DS. Průvodce Azure AD Connect nemůže načíst přihlašovací údaje účtu služby AD DS uložené v databázi ADSync, protože jsou šifrované a může je dešifrovat pouze předchozí server Azure AD Connect. Klikněte na **Změnit přihlašovací údaje** a zadejte účet služby AD DS pro doménovou strukturu AD.
-![Adresáře](./media/how-to-connect-install-existing-database/db6.png)
- 
- 
-8.  V automaticky otevíraném dialogovém okně můžete buď (i) zadat přihlašovací údaje podnikového správce a nechat Azure AD Connect vytvořit účet služby AD DS za vás, nebo (ii) sami vytvořit účet služby AD DS a zadat jeho přihlašovací údaje do Azure AD Connect. Jakmile vyberete jednu z možností a zadáte potřebné přihlašovací údaje, kliknutím na **OK** zavřete automaticky otevírané dialogové okno.
-![Uvítání](./media/how-to-connect-install-existing-database/db7.png)
+1. Na obrazovce **Připojení adresářů** je uvedená stávající doménová struktura AD nakonfigurovaná pro synchronizaci adresářů, vedle níž je ikona červeného křížku. K synchronizaci změn z místní doménové struktury AD se vyžaduje účet služby AD DS. Průvodce Azure AD Connect nemůže načíst přihlašovací údaje účtu služby AD DS uložené v databázi ADSync, protože jsou šifrované a může je dešifrovat pouze předchozí server Azure AD Connect. Klikněte na **Změnit přihlašovací údaje** a zadejte účet služby AD DS pro doménovou strukturu AD.
+   ![Adresáře](./media/how-to-connect-install-existing-database/db6.png)
  
  
-9.  Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
-![Uvítání](./media/how-to-connect-install-existing-database/db8.png)
+1. V automaticky otevíraném dialogovém okně můžete buď (i) zadat přihlašovací údaje podnikového správce a nechat Azure AD Connect vytvořit účet služby AD DS za vás, nebo (ii) sami vytvořit účet služby AD DS a zadat jeho přihlašovací údaje do Azure AD Connect. Jakmile vyberete jednu z možností a zadáte potřebné přihlašovací údaje, kliknutím na **OK** zavřete automaticky otevírané dialogové okno.
+   ![Uvítání](./media/how-to-connect-install-existing-database/db7.png)
  
  
-10. Na obrazovce **Připraveno ke konfiguraci** klikněte na **Nainstalovat**.
-![Uvítání](./media/how-to-connect-install-existing-database/db9.png)
+1. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
+   ![Uvítání](./media/how-to-connect-install-existing-database/db8.png)
  
  
-11. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
+1. Na obrazovce **Připraveno ke konfiguraci** klikněte na **Nainstalovat**.
+   ![Uvítání](./media/how-to-connect-install-existing-database/db9.png)
+ 
+ 
+1. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
 
 ## <a name="post-installation-tasks"></a>Úlohy po skončení instalace
 Při obnovení zálohy databáze vytvořené ve verzi Azure AD Connect starší než 1.2.65.0 pracovní server automaticky vybere metoda přihlašování z **nekonfigurujte**. Během synchronizace hodnot hash hesel a předvolby zpětný zápis hesla se obnoví, musíte následně změnit metodu přihlašování tak, aby odpovídaly ostatní zásady platit pro váš server synchronizace služby active.  Nepodařilo se dokončit tyto kroky může zabránění uživatelům v přihlašování v by měl tento server bude aktivní.  
@@ -102,6 +102,7 @@ Následující tabulku použijte k ověření dalších kroků, které jsou pož
 |Federace se službou AD FS|Ověřování Azure bude dál používat zásady služby AD FS nakonfigurovaný pro váš server synchronizace služby active.  Pokud používáte Azure AD Connect ke správě farmu služby AD FS, můžete volitelně změnit metodu přihlašování na federační služba AD FS v rámci přípravy pro pohotovostní server stávají instance synchronizace služby active.   Pokud na serveru synchronizace služby active jsou povolené možnosti zařízení, nakonfigurujte tyto možnosti na tomto serveru spuštěním úlohy "Konfigurovat možnosti zařízení".|
 |Předávací ověřování a Desktop jednotného přihlašování|Aktualizujte přihlašovací metoda tak, aby odpovídaly konfiguraci na serveru synchronizace služby active.  Pokud se nedodrží předtím, než na zvyšování úrovně serveru pro primární a předávací ověřování spolu s bezproblémové jednotné přihlašování bude zakázáno a může být váš tenant uzamčený, pokud nemáte přihlášení synchronizace hodnot hash hesel jako záložní možnost. Všimněte si také, že když povolíte předávací ověřování v pracovním režimu, nové ověřovací agent se nainstaluje, registrované a poběží jako vysokou dostupnost agenta, který bude přijímat žádosti o přihlášení.|
 |Federace s PingFederate|Ověřování Azure bude nadále používat PingFederate zásady nakonfigurované pro váš server synchronizace služby active.  V rámci přípravy pro pohotovostní server stávají instance synchronizace služby active může volitelně můžete změnit metodu přihlašování do služby PingFederate.  Tento krok může odloženo, dokud nebudete potřebovat pro vytvoření federace s PingFederate další domény.|
+
 ## <a name="next-steps"></a>Další postup
 
 - Nyní, když máte nainstalovanou službu Azure AD Connect, můžete si [ověřit instalaci a přiřadit licence](how-to-connect-post-installation.md).

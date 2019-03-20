@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: aschhab
-ms.openlocfilehash: 996fcbe350f14bb22b8927d9d19f63636b1d7894
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 9915392f7bb12b31dce6e141383a48b69c6f70a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585505"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842766"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty služby Service Bus pomocí PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -34,7 +34,7 @@ Tato příručka ukazuje, jak používat fronty Service Bus. Ukázky jsou napsan
 Jediným požadavkem pro vytvoření aplikace v jazyce PHP, který přistupuje k službě objektů Blob v Azure je odkazující na třídy v [sady Azure SDK pro jazyk PHP](../php-download-sdk.md) z vašeho kódu. Nástroje pro vývoj můžete použít k vytvoření aplikace nebo Poznámkový blok.
 
 > [!NOTE]
-> Instalace PHP je také nutné [OpenSSL rozšíření](http://php.net/openssl) nainstalovaný a povolený.
+> Instalace PHP je také nutné [OpenSSL rozšíření](https://php.net/openssl) nainstalovaný a povolený.
 > 
 > 
 
@@ -225,6 +225,6 @@ Další informace také najdete [středisko pro vývojáře PHP](https://azure.m
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[require_once]: http://php.net/require_once
+[require_once]: https://php.net/require_once
 
 

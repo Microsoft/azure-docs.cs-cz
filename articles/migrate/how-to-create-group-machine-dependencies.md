@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 3938dece92ed133d268fceda746cbe05305e15ae
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 388a0419d5de87c3eb7faff9b556f888e52ac12e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449491"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117366"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -105,8 +105,8 @@ Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insi
 
 4. Po kliknutí na dobu trvání rozsah popisku čas můžete prohlédnout závislosti pro různé dob trvání. Rozsah ve výchozím nastavení je jedna hodina. Můžete upravit časový rozsah, nebo zadat počáteční a koncové datum a dobu trvání.
 
-    > [!NOTE]
-      Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
+   > [!NOTE]
+   >    Vizualizace závislostí uživatelského rozhraní v současné době nepodporuje výběr časový rozsah, který je delší než hodinu. Použití Azure monitoru zaznamená do [zadávat dotazy na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) za delší dobu.
 
 5. Po identifikaci závislých počítačů, které chcete seskupit dohromady pomocí Ctrl + kliknutí výběr více počítačů na mapě, a klikněte na **skupiny počítačů**.
 6. Zadejte název skupiny. Ověřte, že se službou Azure Migrate zjistí závislých počítačů.

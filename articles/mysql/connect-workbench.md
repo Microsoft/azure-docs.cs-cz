@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: f93c581b916a7f9c4f454833cb37f603cc177856
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 410317d0a075f7c9e82fbed8d041437819ef06d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875868"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Použití aplikace MySQL Workbench k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. 
@@ -52,7 +52,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
     | Způsob připojení | Standard (TCP/IP) | Standard (TCP/IP) je dostačující. |
     | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili dříve při vytváření služby Azure Database for MySQL. Ukázkový server v příkladu je mydemoserver.mysql.database.azure.com. Použijte plně kvalifikovaný název domény (\*.mysql.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
     | Port | 3306 | Při připojování ke službě Azure Database for MySQL vždy používejte port 3306. |
-    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření služby Azure Database for MySQL. Uživatelské jméno v našem příkladu je myadmin@mydemoserver. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření služby Azure Database for MySQL. Uživatelské jméno v našem příkladu je myadmin@mydemoserver. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
     | Heslo | vaše heslo | Kliknutím na tlačítko **Uložit v trezoru...** heslo uložte. |
 
 3.   Pokud chcete otestovat, jestli jsou všechny parametry správně nakonfigurované, klikněte na **Test připojení**. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
 ms.author: banders
-ms.openlocfilehash: a71c456f017e80da85f27437738aa963ec967a3c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880210"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro rezervaci Azure automation
 
@@ -29,7 +29,7 @@ Pomocí rozhraní API pro Azure prostřednictvím kódu programu získat informa
 
 Pomocí rezervace doporučení rozhraní API pro doporučení, na kterých chcete koupit rezervace založeno na používání ve vaší organizaci. Další informace najdete v tématu [doporučení rezervace](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Můžete také analyzovat využití prostředků pomocí podrobností využití rozhraní API využití. Další informace najdete v tématu [podrobnosti o použití – seznam pro fakturační období podle fakturačního účtu](/rest/api/consumption/usagedetails/listforbillingperiodbybillingaccount). Prostředky Azure, které používají konzistentní jsou obvykle nejlepší kandidát pro rezervaci.
+Můžete také analyzovat využití prostředků pomocí podrobností využití rozhraní API využití. Další informace najdete v tématu [podrobnosti o použití – seznam pro fakturační období podle fakturačního účtu](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Prostředky Azure, které používají konzistentní jsou obvykle nejlepší kandidát pro rezervaci.
 
 ## <a name="buy-a-reservation"></a>Nákup rezervace
 

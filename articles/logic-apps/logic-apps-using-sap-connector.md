@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887081"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
-Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP ERP ústřední součást (ECC). Konektor SAP ECC podporuje integraci zpráv nebo dat do a z systémy SAP Netweaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
+Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP ERP ústřední součást (ECC). Tento konektor funguje systémech ECC a s/4 HANA místně. Konektor SAP ECC podporuje integraci zpráv nebo dat do a z systémy SAP Netweaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
 
-Konektor SAP ECC používá <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net knihovna konektorů (NCo)</a> a poskytuje tyto operace nebo akce:
+Konektor SAP ECC používá <a href="https://support.sap.com/en/product/connectors/msnet.html">knihovny .NET konektoru SAP (NCo)</a> a poskytuje tyto operace nebo akce:
 
 - **Poslat SAP**: Odeslat IDoc nebo volat funkce BAPI přes tRFC v systémů SAP.
 - **Přijímat od SAPU**: Volání funkcí IDoc nebo BAPI přijímat přes tRFC ze systémů SAP.

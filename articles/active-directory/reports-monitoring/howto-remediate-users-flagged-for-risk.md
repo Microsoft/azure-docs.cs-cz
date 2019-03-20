@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0fc2aca2b785329b6faebd37c94493269d65c22b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182978"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -46,7 +46,7 @@ Další informace najdete v tématu [sestava zabezpečení ohrožení uživatel�
 
 Můžete také použít svoje přihlašovací údaje Office 365 pro přístup k **centra pro správu Azure**. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
 
-Pro přístup **uživatelé označení příznakem rizika** sestavy v Centru pro správu Office 365:
+Pro přístup **uživatelé označení příznakem rizika** sestavy v Centru pro správu služeb Microsoft 365:
 
 1.  V navigační nabídce na levé straně vyberte **centra pro správu**. 
 2.  Vyberte **Azure AD**.

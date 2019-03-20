@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 488e1adb6d533dc88994e1dc08513870f56bd9c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003467"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
 
@@ -34,9 +34,9 @@ Existují dvě hlavní možnosti, jak migrovat data z místního prostředí Azu
 
 Následující tabulka má dobu přenosu přibližné dat na základě dat svazku a síťové šířky pásma. Pokud se očekává, že migrace dat trvat více než tři týdny, použijte Data box.
 
-|**Množství dat**|**Šířka pásma sítě**|||
-|---|---|---|---|
-|| **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**
+|**Množství dat**|**Šířka pásma sítě**||||
+|---|---|---|---|---|
+|| **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 dny|1 den| 2 hodiny|14 minut|
 |10 TB|22 dnů|10 dnů|1 den|2 hodiny|
 |35 TB|76 dnů|34 dnů|3 dny|8 hodin|

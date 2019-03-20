@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21c10c4bf19d4bf72c4ec5005bb95353ed00c7aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010139"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>Instalaci aktualizací do StorSimple Virtual Array – Azure portal
 
@@ -49,7 +49,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Spustit aplikaci Internet Explorer a přejděte do [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 

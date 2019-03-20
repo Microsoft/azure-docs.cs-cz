@@ -7,18 +7,18 @@ ms.topic: overview
 ms.author: jmartens
 author: j-martens
 ms.date: 2/28/2019
-ms.openlocfilehash: 5bc01ad6811cc5661d74770ce36281c9acba8912
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e495ed06c640601c0500d14b42070a264fd687a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862110"
 ---
 # <a name="migrating-from-batch-ai-to-azure-machine-learning-service"></a>Migrace ze služby Batch AI do služby Azure Machine Learning
 
 **Služba Azure Batch AI je vyřazení z provozu v březnu.** Ve velkém měřítku trénování a vyhodnocování funkcí služby Batch AI jsou teď dostupné v [služby Azure Machine Learning](../machine-learning/service/overview-what-is-azure-ml.md), která se stala všeobecně dostupná na 4. prosince 2018.
 
-Spolu s mnoha jiných strojového učení zahrnuje službu Azure Machine Learning založené na cloudu spravované cílové výpočetní prostředí pro školení, nasazování a vyhodnocování modelů strojového učení. Tato cílového výpočetního prostředí se nazývá [Azure Machine Learning Compute](../machine-learning/service/how-to-set-up-training-targets.md#amlcompute). [Spuštění migrace a jeho použití Dnes](#migrate). Můžete pracovat se službou Azure Machine Learning prostřednictvím jeho [sady SDK pro Python](../machine-learning/service/quickstart-create-workspace-with-python.md), rozhraní příkazového řádku a [webu Azure portal](../machine-learning/service/quickstart-get-started.md).
+Spolu s mnoha jiných strojového učení zahrnuje službu Azure Machine Learning založené na cloudu spravované cílové výpočetní prostředí pro školení, nasazování a vyhodnocování modelů strojového učení. Tato cílového výpočetního prostředí se nazývá [Azure Machine Learning Compute](../machine-learning/service/how-to-set-up-training-targets.md#amlcompute). Zahajte migraci a používat ještě dnes. Můžete pracovat se službou Azure Machine Learning prostřednictvím jeho [sady SDK pro Python](../machine-learning/service/quickstart-create-workspace-with-python.md), rozhraní příkazového řádku a [webu Azure portal](../machine-learning/service/quickstart-get-started.md).
 
 Upgrade z verze Preview služby Batch AI ve službě GA'ed Azure Machine Learning poskytuje lepší základními pojmy, které se snadněji používá jako jsou odhady a úložišť. Zaručuje taky všeobecné dostupnosti služeb Azure na úrovni smlouvy o úrovni služeb a zákaznické podpory.
 

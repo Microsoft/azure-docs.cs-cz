@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 8b82955d7a4bdecf71c9cb4545249a423a5b5dd4
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 0d0452cba099bbc568f2b9e926258eb16060eaf4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577071"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855916"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -26,6 +26,8 @@ SQL Database, Azure SQL Database jsou generovány doporučení pro vyladění [a
 SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatizace e-mailová oznámení pro doporučení automatického ladění
 

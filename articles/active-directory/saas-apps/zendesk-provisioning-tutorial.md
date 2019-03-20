@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097987"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů
 
@@ -111,12 +111,12 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 5. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno správce**, **tajný klíč tokenu**, a **domény** účtu vaší Zendesku. Mezi tyto hodnoty patří:
 
-    *   V **uživatelské jméno správce** pole, naplnění uživatelské jméno účtu správce ve svém tenantovi Zendesku. Příklad: admin@contoso.com.
+   * V **uživatelské jméno správce** pole, naplnění uživatelské jméno účtu správce ve svém tenantovi Zendesku. Příklad: admin@contoso.com.
 
-    *   V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
+   * V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
 
-    *   V **domény** pole, naplnění subdoménu tenanta Zendesku.
-    Příklad: Pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
+   * V **domény** pole, naplnění subdoménu tenanta Zendesku.
+     Příklad: Pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
 
 6. **Tajný klíč tokenu** Zendesku. váš účet se nachází v **správce > rozhraní API > Nastavení**.
    Ujistěte se, že **přístup pomocí tokenu** je nastavena na **povoleno**.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.subservice: queues
-ms.openlocfilehash: 64e8f9d1fb29718b0a3d4655c739abc93ecb088c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7f317c061c66a344731172f83e1c85dc5487379d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005185"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue storage pomocí Azure Powershellu
 
@@ -122,7 +122,7 @@ $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQ
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
-Pokud používáte [Průzkumníka služby Azure Storage](http://storageexplorer.com), můžete připojit ke svému účtu Azure a zobrazit front v účtu úložiště a podrobnostem do fronty k zobrazení zpráv ve frontě. 
+Pokud používáte [Průzkumníka služby Azure Storage](https://storageexplorer.com), můžete připojit ke svému účtu Azure a zobrazit front v účtu úložiště a podrobnostem do fronty k zobrazení zpráv ve frontě. 
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Čtení zpráv z fronty, odstraňte ji.
 

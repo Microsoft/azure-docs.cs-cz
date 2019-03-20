@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: ea508c04660df4ba103a2a0da39b7cd914cd629c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: afa0b6d4f87c4325f116463242c15df9d9b6e7c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006424"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Používání úložiště Queue z Pythonu
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -133,5 +133,5 @@ Teď, když jste se naučili základy používání služby Queue storage, použ
 * [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355)
 
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK pro Python]: https://github.com/Azure/azure-storage-python

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 436d40bc2e83244f5624286c43dab6a63f8c6a47
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Kurz: Integrace pokyny týkající se Microsoft Azure Active Directory
 
@@ -106,12 +106,14 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí pokynů v Microsoftu,
     ![Pokyny na Microsoft Domain a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
     | `https://<subdomain>.devcloud.acquia-sites.com/<companyname>` |
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    
     |  |
     | --- |
     | `https://rhelmdirectionsonmicrosoftcomtest.devcloud.acquia-sites.com/simplesaml/<companyname>` |
@@ -159,7 +161,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

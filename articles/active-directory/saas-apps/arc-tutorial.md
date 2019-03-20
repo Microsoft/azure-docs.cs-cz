@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cca37de70733c8350f97f464ef041af255f41b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8eec05507cd66e2b856e3110bfb60f24c87dfdf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování
 
@@ -154,11 +154,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s oblouk publikování – je
     > [!NOTE]
     > Tady **skupiny** atribut je namapována na žádnou **user.assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD k mapování názvů skupin zpět v aplikaci. Můžete najít ještě s něčím poradit [tady](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak vytvořit vlastní role ve službě Azure AD. 
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-9. Na **oblouk publikování – jednotné přihlašování nastavit** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. Na **oblouk publikování – jednotné přihlašování nastavit** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -190,7 +190,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

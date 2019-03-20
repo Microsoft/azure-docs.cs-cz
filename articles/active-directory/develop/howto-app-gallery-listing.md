@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5622c179b6eb767f4c608e8c36c2ba154aac0906
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4cda09a6b407621e595b0cb8ed9103b1fbbd5cc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097953"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -83,12 +83,12 @@ Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve im
     * Pokud chcete přidat aplikace do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID Connect a OAuth 2.0** jak je uvedeno výše.
     * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **Protokol SAML 2.0** nebo **WS-Fed**: Pokud vaše aplikace podporuje SAML 2.0, můžete ji integrovat přímo s tenantem Azure AD s použitím [pokynů a přidejte vlastní aplikaci](../active-directory-saas-custom-apps.md).
+- **Protokol SAML 2.0** nebo **WS-Fed**: Pokud vaše aplikace podporuje SAML 2.0, můžete ji integrovat přímo s tenantem Azure AD s použitím [pokynů a přidejte vlastní aplikaci](../active-directory-saas-custom-apps.md).
 
-    ![Časová osa uvedení aplikace SAML 2.0 nebo WS-Fed do Galerie](./media/howto-app-gallery-listing/saml.png)
+  ![Časová osa uvedení aplikace SAML 2.0 nebo WS-Fed do Galerie](./media/howto-app-gallery-listing/saml.png)
 
-    * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**vyberte **SAMl 2.0 a WS-Fed** jak je uvedeno výše.
-    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+  * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**vyberte **SAMl 2.0 a WS-Fed** jak je uvedeno výše.
+  * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implementing-sso-using-password-sso"></a>Implementaci jednotného přihlašování pomocí hesla jednotného přihlašování
 

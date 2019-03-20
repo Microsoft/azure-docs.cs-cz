@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 10565839148eae0db4bb374939eb3725f6262e60
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452942"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110541"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Gremlin API
 
@@ -49,31 +49,31 @@ Služba Azure Cosmos DB nabízí následující možnosti, kterými se odlišuje
 
 * Elasticky škálovatelná propustnost a úložiště
 
- Grafy v reálném světě je potřeba škálovat nad kapacitu jednoho serveru. Se službu Azure Cosmos DB můžete grafy bezproblémově škálovat na několik serverů. Můžete také nezávisle škálovat propustnost grafu na základě způsobů přístupu. Azure Cosmos DB podporuje databáze grafu, které lze škálovat na prakticky neomezenou velikost úložiště a zřízenou propustnost.
+  Grafy v reálném světě je potřeba škálovat nad kapacitu jednoho serveru. Se službu Azure Cosmos DB můžete grafy bezproblémově škálovat na několik serverů. Můžete také nezávisle škálovat propustnost grafu na základě způsobů přístupu. Azure Cosmos DB podporuje databáze grafu, které lze škálovat na prakticky neomezenou velikost úložiště a zřízenou propustnost.
 
 * Replikace mezi více oblastmi
 
- Azure Cosmos DB transparentně replikuje data vašeho grafu do všech oblastí přidružených k vašemu účtu. Replikace umožňuje vývoj aplikací, které vyžadují přístup k datům po celém světě. Existují určité kompromisy v oblasti konzistence, dostupnosti, výkonu a odpovídajících záruk. Díky multihostingu rozhraní API nabízí Azure Cosmos DB transparentní převzetí služeb při selhání mezi oblastmi. Propustnost a úložiště můžete elasticky škálovat v globálním měřítku.
+  Azure Cosmos DB transparentně replikuje data vašeho grafu do všech oblastí přidružených k vašemu účtu. Replikace umožňuje vývoj aplikací, které vyžadují přístup k datům po celém světě. Existují určité kompromisy v oblasti konzistence, dostupnosti, výkonu a odpovídajících záruk. Díky multihostingu rozhraní API nabízí Azure Cosmos DB transparentní převzetí služeb při selhání mezi oblastmi. Propustnost a úložiště můžete elasticky škálovat v globálním měřítku.
 
 * Rychlé dotazy a procházení pomocí známé syntaxe Gremlin
 
- Můžete ukládat heterogenní vrcholy a hrany a dotazovat tyto dokumenty pomocí známé syntaxe Gremlin. Azure Cosmos DB využívá vysoce souběžnou technologii indexování strukturovanou do protokolů, která nevyžaduje zamykání a automaticky indexuje veškerý obsah. Tato funkce umožňuje plnohodnotné dotazy a procházení v reálném čase bez nutnosti specifikace parametrů schématu, sekundárních indexů nebo zobrazení. Další informace najdete v článku o [dotazování grafů pomocí jazyka Gremlin](gremlin-support.md).
+  Můžete ukládat heterogenní vrcholy a hrany a dotazovat tyto dokumenty pomocí známé syntaxe Gremlin. Azure Cosmos DB využívá vysoce souběžnou technologii indexování strukturovanou do protokolů, která nevyžaduje zamykání a automaticky indexuje veškerý obsah. Tato funkce umožňuje plnohodnotné dotazy a procházení v reálném čase bez nutnosti specifikace parametrů schématu, sekundárních indexů nebo zobrazení. Další informace najdete v článku o [dotazování grafů pomocí jazyka Gremlin](gremlin-support.md).
 
 * S plnou správou
 
- Azure Cosmos DB eliminuje nutnost správy databáze a počítačových prostředků. Protože se jedná o plně spravovanou službu Microsoft Azure, nemusíte spravovat virtuální počítače, nasazovat a konfigurovat software, spravovat škálování nebo řešit komplexní upgrady datové vrstvy. Každý graf je automaticky zálohovaný a chráněný proti selháním v dané oblasti. Jednoduše si můžete přidat účet služby Azure Cosmos DB a zřídit kapacitu podle potřeby. Díky tomu se můžete soustředit na svou aplikaci, ne na provoz a správu databáze.
+  Azure Cosmos DB eliminuje nutnost správy databáze a počítačových prostředků. Protože se jedná o plně spravovanou službu Microsoft Azure, nemusíte spravovat virtuální počítače, nasazovat a konfigurovat software, spravovat škálování nebo řešit komplexní upgrady datové vrstvy. Každý graf je automaticky zálohovaný a chráněný proti selháním v dané oblasti. Jednoduše si můžete přidat účet služby Azure Cosmos DB a zřídit kapacitu podle potřeby. Díky tomu se můžete soustředit na svou aplikaci, ne na provoz a správu databáze.
 
 * Automatické indexování
 
- Azure Cosmos DB standardně automaticky indexuje všechny vlastnosti v uzlech a hranách grafu a neočekává ani nevyžaduje žádné schéma nebo vytvoření sekundárních indexů.
+  Azure Cosmos DB standardně automaticky indexuje všechny vlastnosti v uzlech a hranách grafu a neočekává ani nevyžaduje žádné schéma nebo vytvoření sekundárních indexů.
 
 * Kompatibilita s Apache TinkerPop
 
- Služba Azure Cosmos DB nativně podporuje Open Source standard TinkerPop a může být integrovaná s jinými systémy grafů, které tento standard podporují. Snadno tak můžete migrovat z jiných databází grafu, jako jsou Titan nebo Neo4j, nebo Azure Cosmos DB použít s rozhraními pro analýzu grafů, jako je Apache Spark GraphX.
+  Služba Azure Cosmos DB nativně podporuje Open Source standard TinkerPop a může být integrovaná s jinými systémy grafů, které tento standard podporují. Snadno tak můžete migrovat z jiných databází grafu, jako jsou Titan nebo Neo4j, nebo Azure Cosmos DB použít s rozhraními pro analýzu grafů, jako je Apache Spark GraphX.
 
 * Nastavitelné úrovně konzistence
 
- Pro dosažení optimálního kompromisu mezi konzistencí a výkonem si můžete vybrat z pěti jasně definovaných úrovní konzistence. Pro dotazy a operace čtení nabízí služba Azure Cosmos DB pět různých úrovní konzistence: silná, omezená neaktuálnost, relace, konzistentní předpona a konečný výsledek. Tyto podrobné a jasně definované úrovně konzistence umožňují zvolit vhodný kompromis mezi konzistencí, dostupností a latencí. Další informace najdete v článku o [nastavitelných úrovních konzistence dat v Azure Cosmos DB](consistency-levels.md).
+  Pro dosažení optimálního kompromisu mezi konzistencí a výkonem si můžete vybrat z pěti jasně definovaných úrovní konzistence. Pro dotazy a operace čtení nabízí služba Azure Cosmos DB pět různých úrovní konzistence: silná, omezená neaktuálnost, relace, konzistentní předpona a konečný výsledek. Tyto podrobné a jasně definované úrovně konzistence umožňují zvolit vhodný kompromis mezi konzistencí, dostupností a latencí. Další informace najdete v článku o [nastavitelných úrovních konzistence dat v Azure Cosmos DB](consistency-levels.md).
 
 Azure Cosmos DB dokáže ve stejných kontejnerech/databázích použít několik modelů, například dokument a graf. Kontejner dokumentů můžete použít k uložení dat grafu a zároveň dokumentů. K dotazování stejných dat ve formě grafu můžete použít dotazy SQL přes JSON i dotazy Gremlin.
 
@@ -123,19 +123,19 @@ Tady je několik scénářů, ve kterých je možné využít podporu grafů slu
 
 * Sociální sítě
 
- Zkombinováním dat o zákaznících a jejich interakcích s jinými lidmi můžete vytvořit individualizované prostředí, předvídat chování zákazníků nebo spojit osoby s lidmi, kteří mají podobné zájmy. Azure Cosmos DB lze použít ke správě sociálních sítí a sledování zákaznických preferencí a dat.
+  Zkombinováním dat o zákaznících a jejich interakcích s jinými lidmi můžete vytvořit individualizované prostředí, předvídat chování zákazníků nebo spojit osoby s lidmi, kteří mají podobné zájmy. Azure Cosmos DB lze použít ke správě sociálních sítí a sledování zákaznických preferencí a dat.
 
 * Generátory doporučení
 
- Tento scénář se často používá v maloobchodě. Zkombinováním informací o produktech, uživatelích a interakcích uživatelů (jako je nákup, procházení nebo hodnocení položky) můžete vytvořit přizpůsobená doporučení. Nízká latence, elastické škálování a nativní podpora grafů služby Azure Cosmos DB se k modelování těchto interakcí ideálně hodí.
+  Tento scénář se často používá v maloobchodě. Zkombinováním informací o produktech, uživatelích a interakcích uživatelů (jako je nákup, procházení nebo hodnocení položky) můžete vytvořit přizpůsobená doporučení. Nízká latence, elastické škálování a nativní podpora grafů služby Azure Cosmos DB se k modelování těchto interakcí ideálně hodí.
 
 * Geoprostorové
 
- V mnoha aplikacích v oboru telekomunikací, logistiky a plánování cest je potřeba najít místo zájmu v určité oblasti nebo vyhledat nejkratší/optimální trasu mezi dvěma místy. Azure Cosmos DB se k řešení těchto problémů skvěle hodí.
+  V mnoha aplikacích v oboru telekomunikací, logistiky a plánování cest je potřeba najít místo zájmu v určité oblasti nebo vyhledat nejkratší/optimální trasu mezi dvěma místy. Azure Cosmos DB se k řešení těchto problémů skvěle hodí.
 
 * Internet věcí
 
- Pomocí sítě a propojení mezi zařízeními IoT modelovanými ve formě grafu můžete zajistit lepší porozumění stavu vašich zařízení a majetku. Zároveň zjistíte, jak změny v jedné části sítě mohou potenciálně ovlivnit jinou část.
+  Pomocí sítě a propojení mezi zařízeními IoT modelovanými ve formě grafu můžete zajistit lepší porozumění stavu vašich zařízení a majetku. Zároveň zjistíte, jak změny v jedné části sítě mohou potenciálně ovlivnit jinou část.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o podpoře grafů ve službě Azure Cosmos DB najdete tady:

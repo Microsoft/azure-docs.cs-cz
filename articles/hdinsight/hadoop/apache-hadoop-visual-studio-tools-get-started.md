@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 7d93e5777e3456098e1282fd70da55e85e1f80d0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: aa9d03e40880dbc856045840499dba43b9d1aba9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105331"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -246,12 +246,12 @@ Zobrazení úloh Hive:
 1. Klikněte pravým tlačítkem na HDInsight cluster a vyberte **zobrazit úlohy**. Zobrazí se seznam úloh Hive, které se v clusteru spustily.  
 
 2. Vyberte úlohu. V okně **Souhrn úlohy Hive** vyberte jednu z následujících možností:
-    - **Dotaz úlohy**
-    - **Výstup úlohy**
-    - **Protokol úlohy**  
-    - **Protokol Yarn**
+   - **Dotaz úlohy**
+   - **Výstup úlohy**
+   - **Protokol úlohy**  
+   - **Protokol Yarn**
 
-    ![Snímek obrazovky s oknem Zobrazení úloh Hive ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "Zobrazení úloh Hive")
+     ![Snímek obrazovky s oknem Zobrazení úloh Hive ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "Zobrazení úloh Hive")
 
 
 ## <a name="run-apache-pig-scripts"></a>Spouštění skriptů Apache Pig

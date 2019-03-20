@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccc7e7352a18aa03c13ccfd99529dd5fae5ec06
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8c9f123cdc88a3af68f7c37e44f60b588f5e8b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dovetale"></a>Kurz: Integrace Azure Active Directory s Dovetale
 
@@ -173,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

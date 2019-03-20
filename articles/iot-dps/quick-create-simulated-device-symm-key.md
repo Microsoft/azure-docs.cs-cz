@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5899b2b667df4800bf98aa6ed7b70f2f8ba4f931
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7d56f01aabe77680ed78927848668457344a0f2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337100"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080291"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů
 
@@ -114,15 +114,15 @@ Sada SDK obsahuje vzorový kód pro simulované zařízení. Toto simulované za
 
 3. V části **Přidat registraci** zadejte následující informace a klikněte na tlačítko **Uložit**.
 
-    - **Mechanismus**: Vyberte **symetrický klíč** jako ověření identity *mechanismus*.
+   - **Mechanismus**: Vyberte **symetrický klíč** jako ověření identity *mechanismus*.
 
-    - **Automaticky vygenerovat klíče**: Zaškrtněte toto políčko.
+   - **Automaticky vygenerovat klíče**: Zaškrtněte toto políčko.
 
-    - **ID registrace**: Zadejte ID registrace k identifikaci registraci. Použijte k tomu pouze malá písmena, číslice a spojovník („-“). Například, `symm-key-device-007`.
+   - **ID registrace**: Zadejte ID registrace k identifikaci registraci. Použijte k tomu pouze malá písmena, číslice a spojovník („-“). Například, `symm-key-device-007`.
 
-    - **ID zařízení služby IoT Hub:** Zadejte identifikátor zařízení. například **zařízení 007**.
+   - **ID zařízení služby IoT Hub:** Zadejte identifikátor zařízení. například **zařízení 007**.
 
-    ![Přidání jednotlivé registrace pro ověření symetrického klíče na webu Azure Portal](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
+     ![Přidání jednotlivé registrace pro ověření symetrického klíče na webu Azure Portal](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
 4. Po uložení registrace se vygeneruje **Primární klíč** a **Sekundární klíč** a tyto klíče se přidají do položky registrace. Symetrický klíč registrace zařízení se zobrazí na kartě *Jednotlivé registrace* ve sloupci *ID registrace* jako **symm-key-device-007**. 
 

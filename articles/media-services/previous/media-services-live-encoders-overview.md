@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 50e1d3c894455f31513f7bcd1bff42a9329b329a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 360b822bc78d353e91612459a70334a0bf3a56e6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189627"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Konfigurace místních kodérů při použití služby Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 Toto téma obsahuje seznam s místními kodéry, které můžete použít k živé události zaznamenávat a odesílat živý datový proud s jednou přenosovou rychlostí do AMS kanálů, (, které jsou živé kódování, povolené) pro další zpracování. Téma obsahuje také odkazy na kurzy, které ukazují, jak nakonfigurovat uvedené kodérů.
@@ -28,19 +28,19 @@ Toto téma obsahuje seznam s místními kodéry, které můžete použít k živ
 > Při streamování přes RTMP, zkontrolujte nastavení brány firewall nebo proxy serveru pro potvrzení, že jsou otevřené odchozí porty TCP 1935 a 1936.
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
-Informace o tom, jak nakonfigurovat [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) naleznete v tématu encoder (FMLE) odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace FMLE](media-services-configure-fmle-live-encoder.md).
+Informace o tom, jak nakonfigurovat [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) naleznete v tématu encoder (FMLE) odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace FMLE](media-services-configure-fmle-live-encoder.md).
 
 ## <a name="haivision-kb-encoder"></a>Kodér Haivision KB
 Informace o tom, jak nakonfigurovat [kodér Haivision KB](https://www.haivision.com/products/kb-series/) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace kodér Haivision KB](media-services-configure-kb-live-encoder.md).
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
-Informace o tom, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
+Informace o tom, jak nakonfigurovat [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
 
 ## <a name="newtek-tricaster"></a>Kodér NewTek TriCaster
 Informace o tom, jak nakonfigurovat [Tricaster](http://newtek.com/products/tricaster-40.html) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Tricaster](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
-Další informace najdete v tématu [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live).
+Další informace najdete v tématu [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

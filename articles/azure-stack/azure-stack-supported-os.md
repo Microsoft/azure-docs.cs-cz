@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 171beb432a2c49f1896dc13208a3df1b922828c0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118999"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 
@@ -32,7 +32,7 @@ ms.locfileid: "57245688"
 Azure Stack podporuje Windows hostovaných operačních systémů uvedených v následující tabulce:
 
 | Operační systém | Popis | K dispozici na webu Marketplace |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Windows Server verze 1709 | 64 bitů | Jádra s kontejnery |
 | Windows Server 2016 | 64 bitů |  Datové centrum, Datacenter Core Datacenter s kontejnery |
 | Windows Server 2012 R2 | 64 bitů |  Datové centrum |
@@ -58,7 +58,7 @@ Linuxové distribuce, které jsou uvedené jako dostupné na webu Marketplace za
 > [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 
 | Distribuce | Popis | Vydavatel | Marketplace |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Založené na centOS 6.9 | 64 bitů | Neautorizovaný Wave | Ano |
 | Založené na centOS 7.4 | 64 bitů | Neautorizovaný Wave | Ano |
 | ClearLinux | 64 bitů | ClearLinux.org | Ano |

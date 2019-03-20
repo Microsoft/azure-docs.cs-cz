@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 8d70fca5820dbd2152ca378916bfbcdbad4a027f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892655"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -100,7 +100,7 @@ Vaše videa nebo zvukový obsah, které mají veřejné jako jeho nastavení och
 
 ### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Moje videa nebo zvukový souborů, které byly indexované nebo uložit Video Indexer a metadat a přehledy, které byly extrahovány jaký přístup má Microsoft?
 
-Za [podmínky Online služeb Azure](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) zcela vlastní obsah (OST) a Microsoft se jenom přístup k obsahu a metadat a přehledy, které funkce Video Indexer extrahuje ze svého obsahu podle úložiště offline a Microsoft Prohlášení o ochraně osobních údajů.
+Za [podmínky Online služeb Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) zcela vlastní obsah (OST) a Microsoft se jenom přístup k obsahu a metadat a přehledy, které funkce Video Indexer extrahuje ze svého obsahu podle úložiště offline a Microsoft Prohlášení o ochraně osobních údajů.
 
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Jsou vlastní modely, které vytvářím Můj účet služby Video Indexer jako dostupné pro jiné účty?
 

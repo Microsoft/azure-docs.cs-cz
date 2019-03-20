@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b431d1b739342c54cbc218efdfded1ee516ecaa7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586388"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849818"
 ---
-# <a name="quickstart-create-query-and-traverse-a-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytvářet, dotazovat a procházení grafu databáze Azure Cosmos DB pomocí konzoly Gremlin
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytvářet, dotazovat a procházení grafu databázi aplikace služby Azure Cosmos DB pomocí konzoly Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -81,13 +81,13 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 Ujistěte se, že při zabalení hodnoty parametru hostitelů v hranatých závorkách []. 
 
-3. V terminálu spuštěním příkazu `bin/gremlin.bat` nebo `bin/gremlin.sh` spusťte [konzolu Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
-4. V terminálu se spuštěním příkazu `:remote connect tinkerpop.server conf/remote-secure.yaml` připojte k aplikační službě.
+1. V terminálu spuštěním příkazu `bin/gremlin.bat` nebo `bin/gremlin.sh` spusťte [konzolu Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
+1. V terminálu se spuštěním příkazu `:remote connect tinkerpop.server conf/remote-secure.yaml` připojte k aplikační službě.
 
     > [!TIP]
     > Pokud se zobrazí chyba `No appenders could be found for logger`, zkontrolujte, že jste v souboru remote-secure.yaml aktualizovali hodnotu serializátoru, jak je popsáno v kroku 2. 
 
-5. Potom spusťte příkaz `:remote console`, abyste přesměrovali všechny příkazy konzoly na vzdálený server.
+1. Potom spusťte příkaz `:remote console`, abyste přesměrovali všechny příkazy konzoly na vzdálený server.
 
    > [!NOTE]
    > Pokud jste nespustili příkaz `:remote console`, ale chcete přesměrovat všechny příkazy konzoly na vzdálený server, zadejte před příkaz předponu `:>`. Příklad spuštěného příkazu: `:> g.V().count()`. Předpona je součástí příkazu. Při používání konzoly Gremlin s Azure Cosmos DB je to důležité. Pokud tuto předponu vynecháte, dáte konzole pokyn, aby příkaz spustila lokálně – často s grafem v paměti. Použitím předpony `:>` dáváte konzole pokyn ke spuštění vzdáleného příkazu. V tomto případě ve službě Azure Cosmos DB (v emulátoru místního hostitele nebo v instanci Azure).

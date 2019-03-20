@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bb827b80f79a53f30074b9230efe3e2049471051
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989334"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880768"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Porovnání Azure na vyžádání kodérů médií  
 
@@ -33,7 +33,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 |---|---|---|
 |Použití podmíněné logiky při kódování<br/>(například, pokud je vstup HD, High Density, pak kódování zvuk 5.1)|Ne|Ano|
 |Skryté titulky|Ne|[Ano](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> pomocí dialogu Intelligence™|Ne|Ano|
+|[Dolby® Professional Loudness Correction](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> pomocí dialogu Intelligence™|Ne|Ano|
 |Odstraňování prokládání, inverzní telecine|Basic|Kvalitě pro vysílání|
 |Zjistit a odebrat černé ohraničení <br/>(pillarboxes letterboxes)|Ne|Ano|
 |Generování miniatur|[Ano](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ano](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -153,4 +153,4 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 * [Kvóty a omezení](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
-[1]: http://azure.microsoft.com/pricing/details/media-services/
+[1]: https://azure.microsoft.com/pricing/details/media-services/

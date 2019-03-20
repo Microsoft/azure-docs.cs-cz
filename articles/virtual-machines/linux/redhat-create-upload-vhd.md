@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: 81327c083b9517974780ac73284259b4408c2890
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001662"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
-V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou popsané v tomto článku jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware. Další informace o požadavky zakládající nárok pro účast v programu Red Hat Cloud Access najdete v tématu [Red Hat Cloud Access web](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [systémem RHEL v Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
+V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou popsané v tomto článku jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware. Další informace o požadavky zakládající nárok pro účast v programu Red Hat Cloud Access najdete v tématu [Red Hat Cloud Access web](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [systémem RHEL v Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače založeného na Red Hat ve Správci technologie Hyper-V
 
@@ -517,7 +517,7 @@ V této části se předpokládá, že jste už soubor ISO získali z webu Red H
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Příprava virtuálního počítače založeného na Red Hat z VMware
 ### <a name="prerequisites"></a>Požadavky
-V této části se předpokládá, že jste už nainstalovali virtuální počítač s RHEL ve službě VMware. Podrobnosti o postupu při instalaci operačního systému v prostředí VMware najdete v tématu [Průvodce instalací operačního systému hosta VMware](http://partnerweb.vmware.com/GOSIG/home.html).
+V této části se předpokládá, že jste už nainstalovali virtuální počítač s RHEL ve službě VMware. Podrobnosti o postupu při instalaci operačního systému v prostředí VMware najdete v tématu [Průvodce instalací operačního systému hosta VMware](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Při instalaci operačního systému Linux, doporučujeme použít standardní oddíly spíše než LVM, což je často na výchozí hodnoty pro mnoho zařízení. Tím se vyhnete LVM název je v konfliktu s naklonovaný virtuální počítač, zejména v případě, že disk s operačním systémem nikdy musí být připojen k jinému virtuálnímu počítači pro řešení potíží. LVM nebo RAID je možné pro datové disky, pokud tomu dávají přednost.
 * Neprovádějte konfiguraci odkládací oddíl na disk s operačním systémem. Můžete nakonfigurovat agenta pro Linux Chcete-li vytvořit odkládací soubor na disku dočasných prostředků. Další informace najdete v následujících kroků.

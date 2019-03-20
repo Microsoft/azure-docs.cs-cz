@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e1af2ef3be2b6cf4b75357107caf9d74c7199e8d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539778"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123415"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
-
+> 
 > Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce se vyřazuje a nebudou nahrazeny.
-
->Podobně jako funkce jsou dostupné v rozhraní Translator API centra, vám umožní vytvářet vlastní překladový systém s terminologie a stylu, a lze vyvolat pomocí ID kategorie v rozhraní Translator Text API. Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com). Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
+> 
+> Podobně jako funkce jsou dostupné v rozhraní Translator API centra, vám umožní vytvářet vlastní překladový systém s terminologie a stylu, a lze vyvolat pomocí ID kategorie v rozhraní Translator Text API. Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com). Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
 
 API pro generování sestav Collaborative Translation Framework (CTF) vrátí statistiku a skutečný obsah v úložišti CTF. Toto rozhraní API se liší od metody GetTranslations() protože ji:
 * Vrátí přeloženého obsahu a jeho celkového počtu pouze z vašeho účtu (appId nebo účet Azure Marketplace).
@@ -56,21 +56,21 @@ Tato metoda načte počet překlady, které jsou vytvořené tímto uživatelem.
 **Syntaxe**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslationCount[]GetUserTranslationCounts(
-           string appId,
-           string uriPrefix,
-           string from,
-           string to,
-           int? minRating,
-           int? maxRating,
-           string user,
-           string category
-           DateTime? minDateUtc,
-           DateTime? maxDateUtc,
-           int? skip,
-           int? take);
-```
+> ```cs
+> UserTranslationCount[]GetUserTranslationCounts(
+>            string appId,
+>            string uriPrefix,
+>            string from,
+>            string to,
+>            int? minRating,
+>            int? maxRating,
+>            string user,
+>            string category
+>            DateTime? minDateUtc,
+>            DateTime? maxDateUtc,
+>            int? skip,
+>            int? take);
+> ```
 
 **Parametry**
 
@@ -127,21 +127,21 @@ Tato metoda načte překlady, které jsou vytvořené tímto uživatelem. Nabíz
 **Syntaxe**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslation[] GetUserTranslations (
-            string appId,
-            string uriPrefix,
-            string from,
-            string to,
-            int? minRating,
-            int? maxRating,
-            string user,
-            string category
-            DateTime? minDateUtc,
-            DateTime? maxDateUtc,
-            int? skip,
-            int? take);
-```
+> ```cs
+> UserTranslation[] GetUserTranslations (
+>             string appId,
+>             string uriPrefix,
+>             string from,
+>             string to,
+>             int? minRating,
+>             int? maxRating,
+>             string user,
+>             string category
+>             DateTime? minDateUtc,
+>             DateTime? maxDateUtc,
+>             int? skip,
+>             int? take);
+> ```
 
 **Parametry**
 

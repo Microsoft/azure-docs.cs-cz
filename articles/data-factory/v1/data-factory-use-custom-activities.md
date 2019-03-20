@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 6d7aeef415fcc53fda2f5d66d748dd38f6d644fb
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 1341a8fce95dff0499a698fcddf8d048f3628dba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108227"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -421,7 +421,7 @@ Tady jsou kroky, které provedete v této části:
    2. Klikněte na tlačítko **Data a analýzy** v **nový** okno.
    3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat**.
 
-    ![Nová nabídka služby Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+      ![Nová nabídka služby Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. V **nová datová továrna** okně zadejte **CustomActivityFactory** pro název. Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **Název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název datové továrny (například **yournameCustomActivityFactory**) a zkuste to znovu.
 
     ![Okno Nový objekt pro vytváření dat Azure](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)

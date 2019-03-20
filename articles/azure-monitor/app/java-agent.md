@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412390"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004045"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
@@ -73,7 +73,6 @@ Nastavení obsahu souboru xml. Podle následujícího příkladu lze zahrnout ne
                reportCaughtExceptions="true"
                reportExecutionTime="true"
                />
-
            <!-- Report on the particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
@@ -90,12 +89,26 @@ Je nutné povolit sestavy výjimku a metoda časování pro jednotlivé metody.
 
 Ve výchozím nastavení `reportExecutionTime` má hodnotu true a `reportCaughtExceptions` má hodnotu false.
 
-### <a name="spring-boot-agent-additional-config"></a>Jarní další konfigurace spouštění agenta
+## <a name="additional-config-spring-boot"></a>Další konfigurace (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
+Pro Azure App Services, postupujte následovně:
+
+* Klikněte na Nastavení > Nastavení aplikace.
+* V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
+
+Klíč: `JAVA_OPTS` Hodnota: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+
+Nejnovější verzi agenta Java zkontrolujte verze [tady](https://github.com/Microsoft/ApplicationInsights-Java/releases
+). 
+
+Agent musí být zabalená jako prostředek v projektu tak, aby skončilo v D:/home/site/wwwroot/directory. Si můžete ověřit, že agenta ve správném adresáři služby App Service tak, že přejdete do **nástroje pro vývoj** > **Rozšířené nástroje** > **ladění konzoly**a zkoumání obsahu adresáře webu.    
+
+* Uložte nastavení a restartujte aplikaci. (Postup platí jenom pro aplikaci služby spuštěné na Windows.)
+
 > [!NOTE]
-> AI Agent.xml a soubor jar agenta musí být ve stejné složce. Jsou často umístěny společně v `/resources` složky projektu. 
+> AI Agent.xml a soubor jar agenta musí být ve stejné složce. Jsou často umístěny společně v `/resources` složky projektu.  
 
 ### <a name="spring-rest-template"></a>Spring Rest šablony
 

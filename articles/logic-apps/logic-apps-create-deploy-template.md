@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3d32b180f7d841c36f8ae03aa94956c6da00c6fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065728"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883436"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytvoření šablony Azure Resource Manageru pro nasazení aplikací logiky
 
@@ -63,7 +63,7 @@ Také můžete nainstalovat modul prostředí PowerShell ručně:
 1. Stáhněte si nejnovější verzi [autora šablony aplikace logiky](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
 2. Rozbalte složku ve složce modulu prostředí PowerShell (obvykle `%UserProfile%\Documents\WindowsPowerShell\Modules`).
 
-Pro modul pro práci s přístup tenanta a předplatné token, doporučujeme použít je s [ARMClient](https://github.com/projectkudu/ARMClient) nástroj příkazového řádku.  To [blogový příspěvek](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ARMClient popisuje podrobněji.
+Pro modul pro práci s přístup tenanta a předplatné token, doporučujeme použít je s [ARMClient](https://github.com/projectkudu/ARMClient) nástroj příkazového řádku.  To [blogový příspěvek](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ARMClient popisuje podrobněji.
 
 ### <a name="generate-a-logic-app-template-by-using-powershell"></a>Generovat šablony aplikace logiky s použitím prostředí PowerShell
 Po instalaci prostředí PowerShell můžete generovat šablony pomocí následujícího příkazu:

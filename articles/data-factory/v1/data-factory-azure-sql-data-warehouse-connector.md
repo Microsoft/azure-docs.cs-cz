@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4c431b149edb0677585da3c84e37d64873478ccf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116194"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -197,28 +197,28 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 1. **Zdroj propojené služby** je typu: **AzureStorage** nebo **AzureDataLakeStore s ověřování instančních objektů**.
 2. **Vstupní datová sada** je typu: **AzureBlob** nebo **AzureDataLakeStore**a formát, zadejte v části `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat** s následující konfigurací:
 
-    1. `rowDelimiter` musí být **\n**.
-    2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastavena na **true**.
-    3. `encodingName` je nastavena na **utf-8**, což je **výchozí** hodnotu.
-    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadány.
-    5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+   1. `rowDelimiter` musí být **\n**.
+   2. `nullValue` je nastavena na **prázdný řetězec** (""), nebo `treatEmptyAsNull` je nastavena na **true**.
+   3. `encodingName` je nastavena na **utf-8**, což je **výchozí** hodnotu.
+   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, a `skipLineCount` nejsou zadány.
+   5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
-    ```JSON
-    "typeProperties": {
-        "folderPath": "<blobpath>",
-        "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "<any delimiter>",
-            "rowDelimiter": "\n",
-            "nullValue": "",
-            "encodingName": "utf-8"
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
-        }
-    },
-    ```
+      ```JSON
+      "typeProperties": {
+       "folderPath": "<blobpath>",
+       "format": {
+           "type": "TextFormat",
+           "columnDelimiter": "<any delimiter>",
+           "rowDelimiter": "\n",
+           "nullValue": "",
+           "encodingName": "utf-8"
+       },
+       "compression": {
+           "type": "GZip",
+           "level": "Optimal"
+       }
+      },
+      ```
 
 3. Neexistuje žádná `skipHeaderLineCount` v nabídce **BlobSource** nebo **AzureDataLakeStore** pro aktivitu kopírování v kanálu.
 4. Neexistuje žádná `sliceIdentifierColumnName` v nabídce **SqlDWSink** pro aktivitu kopírování v kanálu. (PolyBase zaručuje, že se aktualizuje všechna data nebo nic je aktualizována najednou. K dosažení **opakovatelnosti**, můžete použít `sqlWriterCleanupScript`).

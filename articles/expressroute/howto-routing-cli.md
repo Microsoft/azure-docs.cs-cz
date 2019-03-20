@@ -1,5 +1,5 @@
 ---
-title: 'Postup konfigurace partnerského vztahu pro okruh - ExpresssRoute: rozhraní příkazového řádku Azure | Dokumentace Microsoftu'
+title: 'Postup konfigurace partnerského vztahu pro okruh - ExpresssRoute: Rozhraní příkazového řádku Azure | Dokumentace Microsoftu'
 description: Tento článek pomůže při vytváření a zřizování soukromého a veřejného a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 683a05c39b73f51d6eb2c81b8afbb32c7daf6bfc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a2bb8f5d27f1829f891a0638642093df1fa35b81
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104573"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088447"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -52,70 +52,70 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit konfiguraci 
 
 1. Nainstalujte nejnovější verzi Azure CLI. Používat nejnovější verzi z rozhraní příkazového řádku Azure (CLI). * kontrolu [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
-  ```azurecli-interactive
-  az login
-  ```
+   ```azurecli-interactive
+   az login
+   ```
 
-  Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
+   Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
 
-  ```azurecli-interactive
-  az account set --subscription "<subscription ID>"
-  ```
+   ```azurecli-interactive
+   az account set --subscription "<subscription ID>"
+   ```
 2. Vytvořte okruh ExpressRoute. Podle pokynů vytvořte [okruh ExpressRoute](howto-circuit-cli.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení partnerského vztahu Microsoftu pro můžete povolit. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace. 
 
 3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízený a také povolený. Použijte následující příklad:
 
-  ```azurecli-interactive
-  az network express-route list
-  ```
+   ```azurecli-interactive
+   az network express-route list
+   ```
 
-  Odpověď bude podobná jako v následujícím příkladu:
+   Odpověď bude podobná jako v následujícím příkladu:
 
-  ```azurecli
-  "allowClassicOperations": false,
-  "authorizations": [],
-  "circuitProvisioningState": "Enabled",
-  "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
-  "gatewayManagerEtag": null,
-  "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
-  "location": "westus",
-  "name": "MyCircuit",
-  "peerings": [],
-  "provisioningState": "Succeeded",
-  "resourceGroup": "ExpressRouteResourceGroup",
-  "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
-  "serviceProviderNotes": null,
-  "serviceProviderProperties": {
+   ```azurecli
+   "allowClassicOperations": false,
+   "authorizations": [],
+   "circuitProvisioningState": "Enabled",
+   "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
+   "gatewayManagerEtag": null,
+   "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
+   "location": "westus",
+   "name": "MyCircuit",
+   "peerings": [],
+   "provisioningState": "Succeeded",
+   "resourceGroup": "ExpressRouteResourceGroup",
+   "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
+   "serviceProviderNotes": null,
+   "serviceProviderProperties": {
     "bandwidthInMbps": 200,
     "peeringLocation": "Silicon Valley",
     "serviceProviderName": "Equinix"
-  },
-  "serviceProviderProvisioningState": "Provisioned",
-  "sku": {
+   },
+   "serviceProviderProvisioningState": "Provisioned",
+   "sku": {
     "family": "UnlimitedData",
     "name": "Standard_MeteredData",
     "tier": "Standard"
-  },
-  "tags": null,
-  "type": "Microsoft.Network/expressRouteCircuits]
-  ```
+   },
+   "tags": null,
+   "type": "Microsoft.Network/expressRouteCircuits]
+   ```
 
 4. Nakonfigurujte partnerský vztah Microsoftu pro okruh. Před pokračováním se ujistěte, že máte k dispozici následující informace.
 
-  * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR.
-  * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR.
-  * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
-  * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-  * Inzerované předpony: Musíte poskytnout seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
-  * **Volitelné –** zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, do kterého jsou registrované.
-  * Název registru směrování: Můžete zadat RIR/IRR, kde jsou předpony a číslo AS registrované.
-  * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
+   * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR.
+   * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR.
+   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
+   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
+   * Inzerované předpony: Je nutné zadat seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
+   * **Volitelné –** zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, do kterého jsou registrované.
+   * Název registru směrování: Můžete zadat RIR / IRR, kde AS jsou registrované předpony a číslo.
+   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 
    Spusťte následující příklad konfigurace partnerského vztahu Microsoftu pro váš okruh:
 
-  ```azurecli-interactive
-  az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
-  ```
+   ```azurecli-interactive
+   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
+   ```
 
 ### <a name="getmsft"></a>Chcete-li zobrazit podrobností partnerského vztahu Microsoftu
 
@@ -189,78 +189,78 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
 
 1. Nainstalujte nejnovější verzi Azure CLI. Je nutné použít nejnovější verzi z rozhraní příkazového řádku Azure (CLI). * kontrolu [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
-  ```azurecli-interactive
-  az login
-  ```
+   ```azurecli-interactive
+   az login
+   ```
 
-  Vyberte předplatné, pro které chcete vytvořit okruh ExpressRoute.
+   Vyberte předplatné, pro které chcete vytvořit okruh ExpressRoute.
 
-  ```azurecli-interactive
-  az account set --subscription "<subscription ID>"
-  ```
+   ```azurecli-interactive
+   az account set --subscription "<subscription ID>"
+   ```
 2. Vytvořte okruh ExpressRoute. Podle pokynů vytvořte [okruh ExpressRoute](howto-circuit-cli.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
 
 3. Zkontrolujte okruh ExpressRoute a ujistěte se, že je zřízený a také povolený. Použijte následující příklad:
 
-  ```azurecli-interactive
-  az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
-  ```
+   ```azurecli-interactive
+   az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
+   ```
 
-  Odpověď bude podobná jako v následujícím příkladu:
+   Odpověď bude podobná jako v následujícím příkladu:
 
-  ```azurecli
-  "allowClassicOperations": false,
-  "authorizations": [],
-  "circuitProvisioningState": "Enabled",
-  "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
-  "gatewayManagerEtag": null,
-  "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
-  "location": "westus",
-  "name": "MyCircuit",
-  "peerings": [],
-  "provisioningState": "Succeeded",
-  "resourceGroup": "ExpressRouteResourceGroup",
-  "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
-  "serviceProviderNotes": null,
-  "serviceProviderProperties": {
-  "bandwidthInMbps": 200,
-  "peeringLocation": "Silicon Valley",
-  "serviceProviderName": "Equinix"
-  },
-  "serviceProviderProvisioningState": "Provisioned",
-  "sku": {
+   ```azurecli
+   "allowClassicOperations": false,
+   "authorizations": [],
+   "circuitProvisioningState": "Enabled",
+   "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
+   "gatewayManagerEtag": null,
+   "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
+   "location": "westus",
+   "name": "MyCircuit",
+   "peerings": [],
+   "provisioningState": "Succeeded",
+   "resourceGroup": "ExpressRouteResourceGroup",
+   "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
+   "serviceProviderNotes": null,
+   "serviceProviderProperties": {
+   "bandwidthInMbps": 200,
+   "peeringLocation": "Silicon Valley",
+   "serviceProviderName": "Equinix"
+   },
+   "serviceProviderProvisioningState": "Provisioned",
+   "sku": {
     "family": "UnlimitedData",
     "name": "Standard_MeteredData",
     "tier": "Standard"
-  },
-  "tags": null,
-  "type": "Microsoft.Network/expressRouteCircuits]
-  ```
+   },
+   "tags": null,
+   "type": "Microsoft.Network/expressRouteCircuits]
+   ```
 
 4. Nakonfigurujte soukromý partnerský vztah Azure pro okruh. Před zahájením dalších kroků se ujistěte, že máte k dispozici následující položky:
 
-  * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
-  * Podsíť /30 pro sekundární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
-  * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
-  * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Zkontrolujte, že nepoužíváte 65515.
-  * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
+   * Podsíť /30 pro primární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
+   * Podsíť /30 pro sekundární propojení. Podsítě nesmí být součástí žádného adresního prostor vyhrazeného pro virtuální sítě.
+   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
+   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS. Pro tento partnerský vztah můžete použít soukromé číslo AS. Zkontrolujte, že nepoužíváte 65515.
+   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 
-  Můžete nakonfigurovat soukromý partnerský vztah Azure pro váš okruh v následujícím příkladu:
+   Můžete nakonfigurovat soukromý partnerský vztah Azure pro váš okruh v následujícím příkladu:
 
-  ```azurecli-interactive
-  az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering
-  ```
+   ```azurecli-interactive
+   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering
+   ```
 
-  Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
+   Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
 
-  ```azurecli-interactive
-  az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering --SharedKey "A1B2C3D4"
-  ```
+   ```azurecli-interactive
+   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering --SharedKey "A1B2C3D4"
+   ```
 
-  > [!IMPORTANT]
-  > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
-  > 
-  > 
+   > [!IMPORTANT]
+   > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
+   > 
+   > 
 
 ### <a name="getprivate"></a>K zobrazení podrobností soukromého partnerského vztahu Azure
 
@@ -327,76 +327,76 @@ Tato část umožňuje vytvořit, získat, aktualizovat a odstranit Azure konfig
 
 1. Nainstalujte nejnovější verzi Azure CLI. Je nutné použít nejnovější verzi z rozhraní příkazového řádku Azure (CLI). * kontrolu [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
-  ```azurecli-interactive
-  az login
-  ```
+   ```azurecli-interactive
+   az login
+   ```
 
-  Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
+   Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
 
-  ```azurecli-interactive
-  az account set --subscription "<subscription ID>"
-  ```
+   ```azurecli-interactive
+   az account set --subscription "<subscription ID>"
+   ```
 2. Vytvořte okruh ExpressRoute.  Podle pokynů vytvořte [okruh ExpressRoute](howto-circuit-cli.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete požádat svého poskytovatele připojení povolit veřejný partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud poskytovatel připojení nespravuje směrování, po vytvoření okruhu, ale dál používat další kroky konfigurace.
 
 3. Zkontrolujte okruh ExpressRoute a ověřte je zřízený a také povolený. Použijte následující příklad:
 
-  ```azurecli-interactive
-  az network express-route list
-  ```
+   ```azurecli-interactive
+   az network express-route list
+   ```
 
-  Odpověď bude podobná jako v následujícím příkladu:
+   Odpověď bude podobná jako v následujícím příkladu:
 
-  ```azurecli
-  "allowClassicOperations": false,
-  "authorizations": [],
-  "circuitProvisioningState": "Enabled",
-  "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
-  "gatewayManagerEtag": null,
-  "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
-  "location": "westus",
-  "name": "MyCircuit",
-  "peerings": [],
-  "provisioningState": "Succeeded",
-  "resourceGroup": "ExpressRouteResourceGroup",
-  "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
-  "serviceProviderNotes": null,
-  "serviceProviderProperties": {
+   ```azurecli
+   "allowClassicOperations": false,
+   "authorizations": [],
+   "circuitProvisioningState": "Enabled",
+   "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
+   "gatewayManagerEtag": null,
+   "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
+   "location": "westus",
+   "name": "MyCircuit",
+   "peerings": [],
+   "provisioningState": "Succeeded",
+   "resourceGroup": "ExpressRouteResourceGroup",
+   "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
+   "serviceProviderNotes": null,
+   "serviceProviderProperties": {
     "bandwidthInMbps": 200,
     "peeringLocation": "Silicon Valley",
     "serviceProviderName": "Equinix"
-  },
-  "serviceProviderProvisioningState": "Provisioned",
-  "sku": {
+   },
+   "serviceProviderProvisioningState": "Provisioned",
+   "sku": {
     "family": "UnlimitedData",
     "name": "Standard_MeteredData",
     "tier": "Standard"
-  },
-  "tags": null,
-  "type": "Microsoft.Network/expressRouteCircuits]
-  ```
+   },
+   "tags": null,
+   "type": "Microsoft.Network/expressRouteCircuits]
+   ```
 
 4. Nakonfigurujte veřejný partnerský vztah Azure pro okruh. Ujistěte se, že máte následující informace předtím, než budete pokračovat dál.
 
-  * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
-  * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
-  * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
-  * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-  * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
+   * Podsíť /30 pro primární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
+   * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy.
+   * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Zajistěte, aby žádný jiný partnerský vztah v okruhu nepoužíval stejné ID sítě VLAN.
+   * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
+   * **Volitelné –** algoritmus hash MD5, pokud se rozhodnete použít.
 
-  Podle následujícího příkladu lze nakonfigurovat veřejný partnerský vztah Azure pro váš okruh spusťte:
+   Podle následujícího příkladu lze nakonfigurovat veřejný partnerský vztah Azure pro váš okruh spusťte:
 
-  ```azurecli-interactive
-  az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
-  ```
+   ```azurecli-interactive
+   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
+   ```
 
-  Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
+   Pokud se rozhodnete použít hodnotu hash MD5, použijte následující příklad:
 
-  ```azurecli-interactive
-  az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
-  ```
+   ```azurecli-interactive
+   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
+   ```
 
-  > [!IMPORTANT]
-  > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
+   > [!IMPORTANT]
+   > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
 
 ### <a name="getpublic"></a>K zobrazení podrobností veřejného partnerského vztahu Azure
 

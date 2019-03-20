@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073879"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092289"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
@@ -117,12 +117,12 @@ Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačn
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Nastavení clusteru Kubernetes přes ukázkový instalační skript
 1. Upravte soubor **deploy/aks/setup/setup.sh** a nahraďte následující zástupné texty odpovídajícími hodnotami pro vaše prostředí: 
 
-    - **&lt;your-resource-group-name>** – Název vaší skupiny prostředků
-    - **&lt;your-kubernetes-cluster-name>** – Název vašeho clusteru Kubernetes
-    - **&lt;your-location>** – Vaše umístění
-    - **&lt;your-dns-name-suffix>** – Vaše předpona názvu DNS
+   - **&lt;your-resource-group-name>** – Název vaší skupiny prostředků
+   - **&lt;your-kubernetes-cluster-name>** – Název vašeho clusteru Kubernetes
+   - **&lt;your-location>** – Vaše umístění
+   - **&lt;your-dns-name-suffix>** – Vaše předpona názvu DNS
 
-    ![Snímek obrazovky prostředí Bash se skriptem s několika zvýrazněnými zástupnými texty](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+     ![Snímek obrazovky prostředí Bash se skriptem s několika zvýrazněnými zástupnými texty](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. Spusťte instalační skript.
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807643146c4f2821cecf60499ea1985f56e9d251
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103056"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -29,7 +29,7 @@ Pomocí loga vaší organizace a vlastní barevná schémata poskytují konziste
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
 Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do lokalit, třeba www.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
+Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do lokalit, jako je například www\.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
 
 > [!NOTE]
 > Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.
@@ -103,7 +103,7 @@ Po vytvoření vlastní značky, můžete přejít zpět a změňte všechno, co
 
 4. Vyberte **Uložit**.
 
-  Změny brandingu přihlašovací stránky se můžou projevit třeba až za hodinu.
+   Změny brandingu přihlašovací stránky se můžou projevit třeba až za hodinu.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Přidání firemního brandingu pro konkrétní jazyk do adresáře
 Původní konfiguraci jazyka nelze změnit z výchozí jazyk. Pokud potřebujete konfigurace v jiném jazyce, ale můžete vytvořit novou konfiguraci.

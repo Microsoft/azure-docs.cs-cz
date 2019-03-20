@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: f6d3fd32245c52d3fa3321dad8ef1545e9d2d84c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 2ed866a0406de2421c5c98fc09849d0dfabaa464
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094496"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query
 Jednu klíčovou funkcí řešení pro velké objemy dat společnosti Microsoft je integrační komponenty Microsoft business intelligence (BI) s clustery Apache Hadoop v Azure HDInsight. Primární příkladem je schopnost připojit Excel k účtu služby Azure Storage, který obsahuje data spojená s vaším clusterem Hadoop pomocí Microsoft Power Query pro Excel add-in. Tento článek vás provede jak nastavit a provádět dotazy na data související s clusterem Hadoop spravované pomocí HDInsight pomocí Power Query.
@@ -40,21 +40,21 @@ Doplněk Power Query pro Excel umožňuje snadno importovat data z vašeho clust
 2. Vytvořte nový prázdný sešit.
 3. Proveďte následující kroky na základě verze Excelu:
 
-    - Excel 2016
+   - Excel 2016
 
-        - Klikněte na tlačítko **Data** nabídky, klikněte na tlačítko **získat Data** z **načíst a transformovat Data** pásu karet, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **Z Azure HDInsight(HDFS)**.
+     - Klikněte na tlačítko **Data** nabídky, klikněte na tlačítko **získat Data** z **načíst a transformovat Data** pásu karet, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **Z Azure HDInsight(HDFS)**.
 
-        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
+       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
-    - Excel 2013/2010
+   - Excel 2013/2010
 
-        - Klikněte na tlačítko **Power Query** nabídky, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **z Microsoft Azure HDInsight**.
+     - Klikněte na tlačítko **Power Query** nabídky, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **z Microsoft Azure HDInsight**.
    
-        ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
+       ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-        **Poznámka:** Pokud se nezobrazí **Power Query** nabídky, přejděte na **souboru** > **možnosti** > **Add-ins**a vyberte  **Doplňky modelu COM** z rozevíracího seznamu **spravovat** pole v dolní části stránky. Vyberte **přejít...**  tlačítko a ověřte, že je zaškrtnuto políčko pro Power Query pro Excel add-in.
+       **Poznámka:** Pokud se nezobrazí **Power Query** nabídky, přejděte na **souboru** > **možnosti** > **Add-ins**a vyberte  **Doplňky modelu COM** z rozevíracího seznamu **spravovat** pole v dolní části stránky. Vyberte **přejít...**  tlačítko a ověřte, že je zaškrtnuto políčko pro Power Query pro Excel add-in.
        
-        **Poznámka:** Power Query také umožňuje importovat data z HDFS kliknutím **z jiných zdrojů**.
+       **Poznámka:** Power Query také umožňuje importovat data z HDFS kliknutím **z jiných zdrojů**.
 4. Pro **název účtu**, zadejte název účtu služby Azure Blob storage spojené s vaším clusterem a potom klikněte na tlačítko **OK**. Tento účet může být [výchozí účet úložiště](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account) nebo propojený účet úložiště.  Formát je *https://&lt;StorageAccountName >.blob.core.windows.net/*.
 5. Pro **klíč účtu**, zadejte klíč účtu úložiště objektů Blob a pak klikněte na tlačítko **Uložit**. (Budete muset zadat čas informace pouze první účet přístupu k tomuto úložišti.)
 6. V **Navigátor** podokna na levé straně editoru dotazů, dvakrát klikněte na název kontejneru úložiště objektů Blob. Ve výchozím nastavení je název kontejneru stejný název jako název clusteru.

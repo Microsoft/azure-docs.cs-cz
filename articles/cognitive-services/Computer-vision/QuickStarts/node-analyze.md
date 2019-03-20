@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8ba09d1841ada25f6b763f187f629ef0c7eae598
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 96a2e9f2f6e114c9a4b74111cd6a6d085022a4c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872666"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>Rychlý start: Analýza vzdálené image pomocí rozhraní REST API s využitím Node.js v počítačové zpracování obrazu
 
@@ -54,7 +54,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění souboru na příkazovém řádku použijte příkaz `node`. Například, `node analyze-image.js`.
 
-```nodejs
+```javascript
 'use strict';
 
 const request = require('request');

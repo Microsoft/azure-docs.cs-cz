@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c1343326b6db18608eb6a8994957d560124116ce
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450698"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105943"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB
 
@@ -49,15 +49,15 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
 1. Přidejte do složky nový soubor a pojmenujte ho ```index.js```.
 1. Pomocí některé z možností příkazu ```npm install``` nainstalujte potřebné balíčky:
-    * Mongoose: ```npm install mongoose@5 --save```
+   * Mongoose: ```npm install mongoose@5 --save```
 
-    > [!Note]
-    > Připojení Mongoose příkladu níže je založená na Mongoose 5 +, které se změnily od předchozích verzí.
+     > [!Note]
+     > Připojení Mongoose příkladu níže je založená na Mongoose 5 +, které se změnily od předchozích verzí.
     
-    * Dotenv (pokud chcete načíst tajné kódy ze souboru .env): ```npm install dotenv --save```
+   * Dotenv (pokud chcete načíst tajné kódy ze souboru .env): ```npm install dotenv --save```
 
-    >[!Note]
-    > Příznak ```--save``` přidá závislost do souboru package.json.
+     >[!Note]
+     > Příznak ```--save``` přidá závislost do souboru package.json.
 
 1. Importujte závislosti v souboru index.js.
     ```JavaScript
@@ -161,25 +161,25 @@ Výchozím chováním Mongoose je vytvořit kolekci MongoDB při každém vytvo�
     ```
 
 1. Teď vytvoříme další schéma a objekt. Tentokrát vytvoříme definici schématu Vacation Destinations (Prázdninové destinace), které můžou rodiny zajímat.
-    1. Stejně jako předtím vytvoříme schéma.
-    ```JavaScript
-    const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
-        name: String,
-        country: String
-    }));
-    ```
+   1. Stejně jako předtím vytvoříme schéma.
+      ```JavaScript
+      const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
+       name: String,
+       country: String
+      }));
+      ```
 
-    1. Vytvořte ukázkový objekt (do tohoto schématu můžete přidat více objektů) a uložte ho.
-    ```JavaScript
-    const vacaySpot = new VacationDestinations({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. Vytvořte ukázkový objekt (do tohoto schématu můžete přidat více objektů) a uložte ho.
+      ```JavaScript
+      const vacaySpot = new VacationDestinations({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacaySpot.save((err, saveVacay) => {
-        console.log(JSON.stringify(saveVacay));
-    });
-    ```
+      vacaySpot.save((err, saveVacay) => {
+       console.log(JSON.stringify(saveVacay));
+      });
+      ```
 
 1. Nyní že přejdete na web Azure Portal, zjistíte v Cosmos DB vytvořily dvě kolekce.
 
@@ -251,40 +251,40 @@ Tady vytvoříme základní objektový model, nadefinujeme odlišující klíč 
     ```
 
 1. Nakonec pro model vytvoříme objekty a uložíme ho.
-    1. Přidáme objekty do modelu Family.
-    ```JavaScript
-    const family_common = new Family_common({
-        lastName: "Volum",
-        parents: [
-            { firstName: "Thomas" },
-            { firstName: "Mary Kay" }
-        ],
-        children: [
-            { firstName: "Ryan", gender: "male", grade: 8 },
-            { firstName: "Patrick", gender: "male", grade: 7 }
-        ],
-        pets: [
-            { givenName: "Blackie" }
-        ],
-        address: { country: "USA", state: "WA", city: "Seattle" }
-    });
+   1. Přidáme objekty do modelu Family.
+      ```JavaScript
+      const family_common = new Family_common({
+       lastName: "Volum",
+       parents: [
+           { firstName: "Thomas" },
+           { firstName: "Mary Kay" }
+       ],
+       children: [
+           { firstName: "Ryan", gender: "male", grade: 8 },
+           { firstName: "Patrick", gender: "male", grade: 7 }
+       ],
+       pets: [
+           { givenName: "Blackie" }
+       ],
+       address: { country: "USA", state: "WA", city: "Seattle" }
+      });
 
-    family_common.save((err, saveFamily) => {
-        console.log("Saved: " + JSON.stringify(saveFamily));
-    });
-    ```
+      family_common.save((err, saveFamily) => {
+       console.log("Saved: " + JSON.stringify(saveFamily));
+      });
+      ```
 
-    1. Dále přidáme objekty do modelu VacationDestinations a uložíme ho.
-    ```JavaScript
-    const vacay_common = new Vacation_common({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. Dále přidáme objekty do modelu VacationDestinations a uložíme ho.
+      ```JavaScript
+      const vacay_common = new Vacation_common({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacay_common.save((err, saveVacay) => {
-        console.log("Saved: " + JSON.stringify(saveVacay));
-    });
-    ```
+      vacay_common.save((err, saveVacay) => {
+       console.log("Saved: " + JSON.stringify(saveVacay));
+      });
+      ```
 
 1. Pokud se teď vrátíte na web Azure Portal, zjistíte, že máte pouze jednu kolekci ```alldata``` obsahující data modelů Family i VacationDestinations.
 

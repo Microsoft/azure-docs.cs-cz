@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a77ad3ec954e77895cfab76a2f5fe2d822e08fb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473166"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57879850"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Přesun dat do a z Azure Blob Storage pomocí Průzkumníka služby Azure Storage
-Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, která umožňuje pracovat s daty Azure Storage ve Windows, macOS a Linuxu. Toto téma popisuje, jak ji používat k nahrávání a stahování dat z Azure blob storage. Nástroj si můžete stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, která umožňuje pracovat s daty Azure Storage ve Windows, macOS a Linuxu. Toto téma popisuje, jak ji používat k nahrávání a stahování dat z Azure blob storage. Nástroj si můžete stáhnout z [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -36,7 +36,7 @@ Tento dokument předpokládá, že máte předplatné Azure, účet úložiště
 
 * Nastavení předplatného služby Azure, najdete v článku [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
 * Pokyny k vytvoření účtu úložiště a účet a informace o klíči najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md). Poznamenejte si přístupový klíč účtu úložiště potřebujete tento klíč k připojení k účtu pomocí nástroje Průzkumník služby Azure Storage.
-* Nástroj Průzkumník služby Azure Storage je možné stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). Přijměte výchozí hodnoty během instalace.
+* Nástroj Průzkumník služby Azure Storage je možné stáhnout z [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Přijměte výchozí hodnoty během instalace.
 
 <a id="explorer"></a>
 

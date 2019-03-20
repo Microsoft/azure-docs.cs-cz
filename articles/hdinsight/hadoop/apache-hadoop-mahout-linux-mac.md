@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075812"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout s linuxovým Apache Hadoop v HDInsight (SSH)
 
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     Tento příkaz zjistí doporučení generovaných pro uživatele ID 4.
 
-    * **Uživatele ratings.txt** soubor se používá k načtení filmy, které nemají hodnocení.
+   * **Uživatele ratings.txt** soubor se používá k načtení filmy, které nemají hodnocení.
 
-    * **Moviedb.txt** soubor se používá k načtení názvy videa.
+   * **Moviedb.txt** soubor se používá k načtení názvy videa.
 
-    * **Recommendations.txt** se používá k získání filmových doporučení pro tohoto uživatele.
+   * **Recommendations.txt** se používá k získání filmových doporučení pro tohoto uživatele.
 
      Výstup tohoto příkazu se podobá následujícímu textu:
 
-        Skóre sedm let v Tibet (1997) = 5.0 Indiana Jones a poslední Crusade (1989), stanovení skóre = 5.0 čtečky Jaws (1975), skóre = 5.0 smysl a citlivosti (1995), skóre = 5.0 nezávislosti (ID 4) (1996), skóre = 5.0 Moje nejlepším pomocníkem svatbě (1997), stanovení skóre = 5.0 Jerry Maguire (1996), skóre = 5.0 Scream 2 (1997), skóre = 5.0 čas ukončit, (1996), stanovení skóre = 5.0
+       Skóre sedm let v Tibet (1997) = 5.0 Indiana Jones a poslední Crusade (1989), stanovení skóre = 5.0 čtečky Jaws (1975), skóre = 5.0 smysl a citlivosti (1995), skóre = 5.0 nezávislosti (ID 4) (1996), skóre = 5.0 Moje nejlepším pomocníkem svatbě (1997), stanovení skóre = 5.0 Jerry Maguire (1996), skóre = 5.0 Scream 2 (1997), skóre = 5.0 čas ukončit, (1996), stanovení skóre = 5.0
 
 ## <a name="delete-temporary-data"></a>Odstraňování dočasných dat
 

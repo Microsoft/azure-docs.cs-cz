@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889688"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače VMware nebo fyzických počítačů do Azure
 
@@ -24,7 +24,7 @@ Může zobrazit jedna z následující chyby při provádění převzetí služe
 
 Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít vlivem jednoho z následujících důvodů:
 
-* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty.
+* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty.
 
 * Pokoušíte se převzetí služeb při selhání virtuálních počítačů z různých velikostní řady ve stejné sadě dostupnosti. Ujistěte se, že zvolíte stejnou řadu velikostí pro všechny virtuální počítače ve stejné sadě dostupnosti. Změnit velikost tak, že přejdete do nastavení výpočty a síť virtuálního počítače a pak zkuste převzetí služeb při selhání.
 
@@ -32,7 +32,7 @@ Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač 
 
 ## <a name="failover-failed-with-error-id-28092"></a>Převzetí služeb při selhání s ID chyby 28092
 
-Site Recovery se nepodařilo vytvořit síťové rozhraní, pro které bylo provedeno přes virtuální počítač. Ujistěte se, že máte dostatečnou kvótu pro vytvoření síťových rozhraní v rámci předplatného k dispozici. Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty. Pokud máte dostatečnou kvótu, pak může se jednat přerušovaný vydávání, zkuste operaci zopakovat. Pokud se problém nevyřeší ani po opakovaných pokusů, pak napište komentář na konci tohoto dokumentu.  
+Site Recovery se nepodařilo vytvořit síťové rozhraní, pro které bylo provedeno přes virtuální počítač. Ujistěte se, že máte dostatečnou kvótu pro vytvoření síťových rozhraní v rámci předplatného k dispozici. Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty. Pokud máte dostatečnou kvótu, pak může se jednat přerušovaný vydávání, zkuste operaci zopakovat. Pokud se problém nevyřeší ani po opakovaných pokusů, pak napište komentář na konci tohoto dokumentu.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Převzetí služeb při selhání s ID chyby 70038
 
@@ -48,7 +48,7 @@ Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z
 
 Ruční změna typu spouštění ovladače pro **hostovaného operačního systému Windows**, postupujte následujících kroků:
 
-1. [Stáhněte si](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ne dosazování skript a spustit ho jako následující. Tento skript kontroluje, pokud virtuální počítač dosazování.
+1. [Stáhněte si](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ne dosazování skript a spustit ho jako následující. Tento skript kontroluje, pokud virtuální počítač dosazování.
 
     `.\Script-no-hydration.ps1`
 

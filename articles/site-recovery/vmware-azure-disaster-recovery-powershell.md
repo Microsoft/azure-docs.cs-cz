@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d73c0e3f62d30764cba8866d7e731c5ea67d3057
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8cf07c5213652ecedce7cd49a1de745c7fe8aa0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122263"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí Powershellu
 
@@ -61,7 +61,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ProvisioningState : Succeeded
    Tags              :
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
-```
+   ```
    
 2. Vytvoření trezoru služby Recovery services. V následujícím příkladu trezor služby Recovery services je s názvem VMwareDRToAzurePs a je vytvořen v oblasti východní Asie a ve skupině prostředků vytvořili v předchozím kroku.
 

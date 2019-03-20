@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456686"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010508"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
@@ -104,7 +104,7 @@ Další eDTU lze do existujícího fondu přidat bez jakéhokoli výpadku datab�
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určit počet Dtu potřebný podle úloh
 
-Pokud jste v úmyslu migrovat existující místní nebo úloha virtuálního počítače SQL serveru do služby Azure SQL Database, můžete použít [kalkulačku DTU](http://dtucalculator.azurewebsites.net/) k odhadu počtu potřebných Dtu. Pro existující úlohy Azure SQL Database, můžete použít [přehled o výkonu dotazování](sql-database-query-performance.md) abyste pochopili spotřebu databázových prostředků (Dtu), abyste získali hlubší vhled pro optimalizaci vašich úloh. Můžete také použít [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení dynamické správy k zobrazení využití prostředků za poslední hodinu. Můžete také zobrazit katalog [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazí využití prostředků za posledních 14 dní, ale v méně přesné průměry pět minut.
+Pokud jste v úmyslu migrovat existující místní nebo úloha virtuálního počítače SQL serveru do služby Azure SQL Database, můžete použít [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k odhadu počtu potřebných Dtu. Pro existující úlohy Azure SQL Database, můžete použít [přehled o výkonu dotazování](sql-database-query-performance.md) abyste pochopili spotřebu databázových prostředků (Dtu), abyste získali hlubší vhled pro optimalizaci vašich úloh. Můžete také použít [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení dynamické správy k zobrazení využití prostředků za poslední hodinu. Můžete také zobrazit katalog [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazí využití prostředků za posledních 14 dní, ale v méně přesné průměry pět minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají samosprávné elastického fondu prostředků
 

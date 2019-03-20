@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863253"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí castLabs 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "56003206"
 
 Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) k zajištění datového proudu, která je dynamicky šifrovat pomocí AMS pomocí technologie PlayReady a Widevine technologiemi DRM. Licence PlayReady pochází ze serveru pro správu licencí Media Services PlayReady a licencování Widevine dodává **castLabs** licenční server.
 
-Přehrávání zpět streamování obsahu chráněného službou CENC (PlayReady nebo Widevine), můžete použít [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Zobrazit [AMP dokumentu](http://amp.azure.net/libs/amp/latest/docs/) podrobnosti.
+Přehrávání zpět streamování obsahu chráněného službou CENC (PlayReady nebo Widevine), můžete použít [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Zobrazit [AMP dokumentu](https://amp.azure.net/libs/amp/latest/docs/) podrobnosti.
 
 Následující diagram ukazuje základní služby Azure Media Services a architektura castLabs integrace.
 
@@ -101,10 +101,10 @@ Použití webových aplikací (STS):
 
 ## <a name="playing-back-a-video"></a>Přehrávání videa
 
-Přehrát video šifrován používat standard common encryption (PlayReady nebo Widevine), můžete použít [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Při spuštění aplikace konzoly, budou se vypisovat obsahu ID klíče a adresy URL manifestu.
+Přehrát video šifrován používat standard common encryption (PlayReady nebo Widevine), můžete použít [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Při spuštění aplikace konzoly, budou se vypisovat obsahu ID klíče a adresy URL manifestu.
 
 1. Otevřete novou kartu a spusťte váš STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Přejděte na [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+2. Přejděte na [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 3. Vložte adresu URL streamování.
 4. Klikněte na tlačítko **rozšířené možnosti** zaškrtávací políčko.
 5. V **ochrany** rozevíracím seznamu vyberte PlayReady nebo Widevine.

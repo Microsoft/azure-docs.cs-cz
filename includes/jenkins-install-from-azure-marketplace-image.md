@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 4025dcc5824991baa9a52dbb912a5c07f4273d58
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383295"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124623"
 ---
 1. V prohlížeči se otevře [image Jenkinse na webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
@@ -32,30 +32,30 @@ ms.locfileid: "54383295"
 
 1. V **Základy** kartu, zadejte následující hodnoty:
 
-    - **Název** – zadejte `Jenkins`.
-    - **Uživatelské jméno** – zadejte uživatelské jméno pro použití při přihlášení k virtuálnímu počítači, na kterém je spuštěný Jenkinse. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
-    - **Typ ověřování** – vyberte **veřejný klíč SSH**.
-    - **Veřejný klíč SSH** -zkopírujte a vložte veřejný klíč RSA v jednořádkovém formátu (začíná `ssh-rsa`) nebo víceřádkovém formátu PEM. Můžete vygenerovat klíče SSH pomocí ssh-keygen v Linuxu a macOS nebo PuTTYGen ve Windows. Další informace o klíči SSH a Azure, najdete v článku, [jak používat klíče SSH s Windows v Azure](/azure/virtual-machines/linux/ssh-from-windows).
-    - **Předplatné** – vyberte předplatné Azure, do kterého chcete nainstalovat Jenkinse.
-    - **Skupina prostředků** – vyberte **vytvořit nový**a zadejte název pro skupinu prostředků, která slouží jako logický kontejner pro kolekci prostředků, které tvoří vaši instalaci Jenkinse.
-    - **Umístění** – vyberte **USA – východ**.
+   - **Název** – zadejte `Jenkins`.
+   - **Uživatelské jméno** – zadejte uživatelské jméno pro použití při přihlášení k virtuálnímu počítači, na kterém je spuštěný Jenkinse. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+   - **Typ ověřování** – vyberte **veřejný klíč SSH**.
+   - **Veřejný klíč SSH** -zkopírujte a vložte veřejný klíč RSA v jednořádkovém formátu (začíná `ssh-rsa`) nebo víceřádkovém formátu PEM. Můžete vygenerovat klíče SSH pomocí ssh-keygen v Linuxu a macOS nebo PuTTYGen ve Windows. Další informace o klíči SSH a Azure, najdete v článku, [jak používat klíče SSH s Windows v Azure](/azure/virtual-machines/linux/ssh-from-windows).
+   - **Předplatné** – vyberte předplatné Azure, do kterého chcete nainstalovat Jenkinse.
+   - **Skupina prostředků** – vyberte **vytvořit nový**a zadejte název pro skupinu prostředků, která slouží jako logický kontejner pro kolekci prostředků, které tvoří vaši instalaci Jenkinse.
+   - **Umístění** – vyberte **USA – východ**.
 
-    ![Zadání informací o skupiny ověřování a prostředků pro Jenkinse kartě Základní.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
+     ![Zadání informací o skupiny ověřování a prostředků pro Jenkinse kartě Základní.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
 
 1. Vyberte **OK** pokračujte **další nastavení** kartu. 
 
 1. V **další nastavení** kartu, zadejte následující hodnoty:
 
-    - **Velikost** – výběr možnosti příslušné nastavení velikosti pro virtuální počítač Jenkinse.
-    - **Typ disku virtuálního počítače** – zadejte buď pevný disk (jednotku pevného disku) nebo SSD (jednotky SSD) k označení jaký typ disku úložiště je povolený pro virtuální počítač Jenkinse.
-    - **Virtuální síť** – (volitelné) vyberte **virtuální síť** upravit výchozí nastavení.
-    - **Podsítě** – vyberte **podsítě**, zkontrolujte zadané informace a vyberte **OK**.
-    - **Veřejná IP adresa** – název IP adresy výchozím názvem Jenkins jste zadali na předchozí stránce s příponou - IP adresy. Můžete vybrat možnost změnit tuto výchozí hodnotu.
-    - **Popisek názvu domény** – zadejte hodnotu pro plně kvalifikovanou adresu URL pro virtuální počítač Jenkinse.
-    - **Typ verze Jenkins** – vyberte typ požadované verze z možností: `LTS`, `Weekly build`, nebo `Azure Verified`. `LTS` a `Weekly build` možnosti jsou popsány v následujícím článku [Jenkins LTS verze řádku](https://jenkins.io/download/lts/). `Azure Verified` Možnost odkazuje na [verze Jenkins LTS](https://jenkins.io/download/lts/) , která byla ověřena ke spuštění v Azure. 
-    - **Typ sady JDK** -JDK k instalaci. Výchozí hodnota je testována, Zulu certifikovaných sestavení OpenJDK.
+   - **Velikost** – výběr možnosti příslušné nastavení velikosti pro virtuální počítač Jenkinse.
+   - **Typ disku virtuálního počítače** – zadejte buď pevný disk (jednotku pevného disku) nebo SSD (jednotky SSD) k označení jaký typ disku úložiště je povolený pro virtuální počítač Jenkinse.
+   - **Virtuální síť** – (volitelné) vyberte **virtuální síť** upravit výchozí nastavení.
+   - **Podsítě** – vyberte **podsítě**, zkontrolujte zadané informace a vyberte **OK**.
+   - **Veřejná IP adresa** – název IP adresy výchozím názvem Jenkins jste zadali na předchozí stránce s příponou - IP adresy. Můžete vybrat možnost změnit tuto výchozí hodnotu.
+   - **Popisek názvu domény** – zadejte hodnotu pro plně kvalifikovanou adresu URL pro virtuální počítač Jenkinse.
+   - **Typ verze Jenkins** – vyberte typ požadované verze z možností: `LTS`, `Weekly build`, nebo `Azure Verified`. `LTS` a `Weekly build` možnosti jsou popsány v následujícím článku [Jenkins LTS verze řádku](https://jenkins.io/download/lts/). `Azure Verified` Možnost odkazuje na [verze Jenkins LTS](https://jenkins.io/download/lts/) , která byla ověřena ke spuštění v Azure. 
+   - **Typ sady JDK** -JDK k instalaci. Výchozí hodnota je testována, Zulu certifikovaných sestavení OpenJDK.
 
-    ![Zadejte nastavení virtuálního počítače pro Jenkinse kartě nastavení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
+     ![Zadejte nastavení virtuálního počítače pro Jenkinse kartě nastavení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 
 1. Vyberte **OK** pokračujte **nastavení integrace** kartu.
 
@@ -69,8 +69,8 @@ ms.locfileid: "54383295"
 
 1. Když **Souhrn** zobrazí kartu, se ověří informace zadané. Jakmile se zobrazí **ověření proběhlo úspěšně.** zprávy (v horní části karty), vyberte **OK**. 
 
-    ![Karta Souhrn zobrazuje a ověří vybrané možnosti.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
+     ![Karta Souhrn zobrazuje a ověří vybrané možnosti.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
 
 1. Když **vytvořit** zobrazí kartu, vyberte **vytvořit** vytvořit virtuální počítač Jenkinse. Pokud váš server připravený, zobrazí se oznámení na webu Azure Portal.
 
-    ![Jenkins je připraven oznámení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)
+     ![Jenkins je připraven oznámení.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)

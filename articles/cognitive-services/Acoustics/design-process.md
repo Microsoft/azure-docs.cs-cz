@@ -1,7 +1,7 @@
 ---
-title: Přehled procesu návrhu pro Akustika projektu
+title: Koncepty návrhu s Akustika simulace
 titlesuffix: Azure Cognitive Services
-description: Tento dokument popisuje, jak vyjádřit záměr vašeho návrhu ve všech třech fázích Akustika projektu pracovního postupu.
+description: Tento přehled vysvětluje, jak Akustika projektu zahrnuje akustický simulace do procesu návrhu zvuku.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,87 +10,56 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: bb5f309a96feac2caea85fbe81b7216eecfc4b79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136152"
 ---
-# <a name="design-process-overview"></a>Přehled procesu návrhu
-Máte v úmyslu návrhu můžete vyjádřit ve všech třech fázích Akustika projektu pracovního postupu: předem zanést scény nastavení, zvukové zdrojové umístění a která má označení po vytvoření návrhu. Proces vyžaduje méně značek přidružené k uvedení dozvuku svazky při zachování návrháře kontrolu nad jak zvuky scény.
+# <a name="project-acoustics-design-process-concepts"></a>Koncepty proces návrhu Akustika projektu
 
-## <a name="pre-bake-design"></a>Předběžné vytvoření návrhu
-Proces instalace předběžné která má označení vytvoření scény vytváří scény a metadata, která se používají pro simulaci wave zvuk, která zahrnuje vybrat, které prvky scény se účastní simulace a poskytuje occlusions, odrazů a reverberation. Metadata pro scénu je výběr akustický materiálů pro každý prvek scény. Akustický materiály řízení velikosti šířky zvukové energie projeví zpět z každé povrchu.
+Tento přehled vysvětluje, jak Akustika projektu zahrnuje fyzické simulace akustický do procesu návrhu zvuku.
 
-Pohltivosti výchozí pro všechny plochy je 0.04, což je vysoce odrazivý. Účinky aesthetic a hraní her můžete dosáhnout optimalizace koeficienty absorpční z různých materiálů v rámci scény, které vynikají zejména pro posluchače při jejich slyšet přechody z jedné oblasti od scény do jiného. Například přechod z tmavě reverberant místnosti k jasně,-reverberant venkovní scény vylepšuje dopad na přechod. Tohoto efektu dosáhnete tak, vylaďte koeficienty absorpční na vyšší venkovní scény materiály.
+## <a name="sound-design-with-audio-dsp-parameters"></a>Zvukové návrhu s parametry, DSP zvuku
 
-Čas reverberation dané materiálů v místnosti nepřímo souvisí jeho pohltivosti většina materiálů s absorpce hodnoty v rozsahu 0.01, 0.20 a novější. Jsou velmi absorpčního materiály s absorpční koeficienty mimo tento rozsah.
+3D interaktivní názvy dosažení jejich konkrétní zvuk pomocí zvukový signál digitálního zpracování bloky (DSP) konání modul pro zvuk. Tyto bloky rozsahu od jednoduché kombinování reverberation, odezvu, zpoždění, vyrovnávací, komprese a omezení a další efekty. Výběr, uspořádání a nastavení parametrů na těchto důsledcích zodpovídá za zvukové návrháře, který vytváří zvuku graf, který dosahuje cílů aesthetic a hraní her prostředí.
 
-![Graf doby dozvuku](media/ReverbTimeGraph.png)
+V nadpisech interaktivní zvuky a naslouchacího procesu přesunu v rámci 3D prostoru, jak tyto parametry se přizpůsobit měnícím podmínky? Návrhář zvukové často uspořádá svazky v celém oboru, které jsou naprogramovány na aktivaci změny parametrů k dosažení změnami reverberation účinky, například nebo duck zvuků v kombinaci jako naslouchací proces přesune z jedné části scény do jiného. Akustika systémy jsou také k dispozici, můžete automatizovat některé z těchto účinky.
 
-[Která má označení vytvoření uživatelského rozhraní provede](bake-ui-walkthrough.md) předběžné která má označení vytvoření ovládacích prvků podrobně popisuje.
+3D názvy pomocí osvětlení a kinematiky fyzika systémy, které jsou opodstatněny fyzika ale Návrhář upravena k dosažení kombinaci cílů podrobných informací a hraní her. Vizuálního návrháře nenastavil jednotlivých obrazových bodů, ale místo toho upravuje 3D modelů, materiály a světla přenosu systémy, které jsou všechny fyzicky založené na obchodu visual estetiku a náklady na využití procesoru. Co by ekvivalentní proces pro zvuk? Projekt Akustika je prvním krokem při zkoumání tento dotaz. Nejprve jsme budete touch na co to znamená přenést akustické energie prostřednictvím mezerou.
 
-## <a name="sound-source-placement"></a>Umístění zdroje zvuku
-Zobrazení body voxels a kontroly za běhu může pomoci ladit problémy pomocí zdrojů zvuku se zablokuje a uvnitř voxelized geometrie. Chcete-li přepnout voxel mřížky a kontroly bodů, se zobrazí, klikněte na odpovídajícího zaškrtávacího políčka v nabídce Gizma v pravém horním rohu scény. Pokud je zdrojem zvuku uvnitř wall voxel, přesuňte ho do voxel vzduchu.
+![dozvuku zóny](media/reverb-zones-altspace.png)
 
-![Gizma nabídky](media/GizmosMenu.png)  
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulsů odpovědi: Dva body v prostoru akusticky sítě
 
-Zobrazení voxel může pomoct zjistit, jestli vizuální komponenty ve hře použitou k nim transformací. Pokud ano, použít k hostování GameObject stejnou transformaci **Akustika správce**.
+Pokud jste obeznámeni s návrhem zvuku, může být obeznámeni s akustický impulsů odpovědi. Odpověď akustický impulsů modely přenos zvuk ze zdroje do naslouchacího procesu. Odpověď impulsů proto můžete zachytit všechny zajímavé efekt Akustika místnosti, jako je vhodné a reverberation. Impulsů odpovědi mají také některé výkonné vlastnosti, které umožňují zvukové efekty DSP škálování. Přidání dvou zvukového signálu společně a zpracování impulsů odpovědí poskytuje stejný výsledek jako použití odpovědi impulsů samostatně pro každý signál a sečtením výsledků. Akustický šíření a impulsů odpovědi také nejsou závislé na zvuk zpracovává pouze na scénu modelovaných a umístění zdroje a naslouchacího procesu. Stručně řečeno odpověď impulsů distills na zvukové šíření vliv na scéně.
 
-### <a name="voxel-size-discrepancies"></a>Velikost nesrovnalostí Voxel
-Můžete si všimnout, že velikost voxels slouží ke znázornění, které se od scény mřížek účastní která má označení vytvoření Akustika se liší v zobrazení Návrh čas a modulu runtime. Tento rozdíl nemá vliv na kvalitu/členitost četnost vaší vybrané simulace, ale je spíše biproduct použití modulu runtime voxelized scény. Za běhu jsou voxels simulace "kontrast" pro podporu interpolaci mezi zdrojová umístění. To také umožňuje návrh čas umístění zvuku zdroje blíž ke mřížek scény než velikost voxel simulace umožňuje – od zdrojů uvnitř voxel obsahujících akusticky ošetřených síť Nedovolte, aby byly všechny zvuk.
+Odpověď impulsů zachytí každou zajímavé místnosti akustický efekt a můžeme použít i pro zvuk efektivně pomocí filtru a získáme impulsů odpovědi z měření nebo simulace. Ale co když jsme není úplně vhodné Akustika tak, aby přesně odpovídaly fyziky, ale místo toho ji tak, aby odpovídaly citové požadavky scény tvarovat? Ale mnohem jako hodnoty pixel, je při reakci na impulsů jen seznam tisíce čísla, jak jsme pravděpodobně nastavit tak, aby vyhovovala potřebám aesthetic? A co když Chceme mít uzavření/překážka, která se liší plynule při předání prostřednictvím dveří, nebo za překážky, kolik impulsů odpovědi je potřeba získat smooth efekt? Co když zdroj přesune rychle? Jak jsme interpolovat?
 
-Tady jsou dvě bitové kopie, které zobrazuje rozdíl mezi voxels návrhu (předběžné která má označení vytvoření) a modulu runtime (po která má označení vytvoření) voxels, jak vizualizovat pomocí modulu plug-in Unity:
+Vypadá obtížně použitelnou simulace a impulsů odpovědi pro některé aspekty Akustika v interaktivní názvy. Ale jsme i přesto vytvořit systém zvuku přenosu, který podporuje návrháře nastavení, pokud jsme naše reakce impulsů připojit z simulace se naše zkušenosti zvuku parametry efekt DSP.
 
-Návrh voxels čas:
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Simulace propojíte DSP zvuku s parametry
 
-![VoxelsDesignTime](media/VoxelsDesignTime.png)
+Odpověď impulsů obsahuje každou zajímavé (a každý nezajímavé) akustické vliv. Bloky DSP zvuku, když své parametry jsou nastaveny správně, může mít za následek zajímavé akustické vliv. Použití akustické simulace Centrum umožňující prosazovat blok DSP zvuku k automatizaci přenos zvuku ve 3D scéně je jenom pár měření parametrech DSP zvuku z impulsů odpovědi. Toto měření je dobře pochopitelné i pro některé běžné a důležité akustické efekty včetně uzavření, překážka, portalling a reverberation.
 
-Modul runtime voxels:
+Ale pokud simulace je připojený přímo k parametrům DSP zvuku, kde je návrháře úpravy? Co nám získat? Dobře abychom získali značné množství paměti zpět tak, že impulsů odpovědi se zahodí a zachování několika DSP parametrů. A poskytnout návrháře určitou energii za konečný výsledek, budeme potřebovat pouze hledal způsob, jak vložit návrháře mezi simulace a DSP zvuku.
 
-![VoxelsRuntime](media/VoxelsRuntime.png)
+![Parametry impulsů odpovědi](media/acoustic-parameters.png)
 
-Pomocí voxels režimu návrhu, ne modulu runtime vizualizace kontrast voxels je třeba rozhodnutí na Určuje, jestli síť voxel přesně reprezentuje mřížek architektura/strukturální scény.
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Zvuk: design by transformace zvuku DSP parametry z simulace
 
-## <a name="post-bake-design"></a>Po vytvoření návrhu
-Která má označení vytvoření výsledky jsou uloženy v souboru ACE jako parametry uzavření a reverberation pro všechny páry umístění zdroje naslouchací proces v celém scény. Tato fyzicky přesných výsledků lze použít pro váš projekt jako – a je skvělý výchozí bod pro návrh. Proces návrhu po která má označení vytvoření určuje pravidla pro transformaci parametrů výsledek která má označení vytvoření za běhu.
+Zvažte, jaký vliv, které mají vaše prodejci slunečních brýlí zobrazení na světě. Jasně dne můžete snížit brýlí nám na něco lépe seznámíte. V tmavě místnosti nemusí být vidět nic vůbec. Brýlí nenastavuje určitou úroveň jas ve všech situacích; využívají jenom všechno, co tmavší.
 
-### <a name="distance-based-attenuation"></a>Zeslabení na základě vzdálenosti
-Zvuk poskytované DSP **Microsoft Acoustics** modulu plug-in spatializer Unity respektuje integrované do editoru Unity na základě vzdálenosti zeslabení-source. Ovládací prvky pro na základě vzdálenosti zeslabení **zdroje zvuku** komponenta nalezena v **inspektoru** panelu zvuk v oblasti zdrojů **3D nastavení zvuku**:
+Pokud používáme simulace Centrum umožňující prosazovat naše zvuku DSP pomocí vhodné a reverberation parametrů, můžeme přidat filtr po simulátor upravit parametry, které DSP "vidí". Filtr nebude vynucovat určitou úroveň uzavření nebo dozvuku tail délka mnohem jako prodejci slunečních brýlí neprovádějte každé místnosti stejné jas. Filtr může mít jenom každý occluder occlude menší. Nebo occlude informace. Přidávání a úprava jeden filtr "ztmavení" parametr uzavření, velké, otevřete místnosti by ještě malý vliv na žádné vhodné při dveří zvýší z média pro silné uzavření účinek, při zachování plynulost platit přechody že poskytuje simulace.
 
-![Zeslabení vzdálenost](media/distanceattenuation.png)
+V toto paradigma úlohy návrháři změní z výběru akustický parametry pro každé situaci, výběru a úpravu filtry, které platí pro nejdůležitější DSP parametry z simulace. Z úzké nemuseli dělat starosti nastavení smooth přechody vyšší nemuseli dělat starosti intenzitu zrcadlových uzavření a reverberation efekty a přítomnost zdroje v kombinaci se zvýší oprávnění návrháře aktivit. Samozřejmě požadavky na situaci, vždy k dispozici jeden filtr je jednoduše přejděte zpět do výběru DSP parametry konkrétního zdroje v konkrétní situaci.
 
-Akustika provádí výpočet v poli "simulace oblasti" zaměřená na umístění přehrávače. Pokud je Vzdálená přehrávači nacházejících se mimo tuto oblast simulace zdroje zvuku pouze geometrie v rámci pole bude mít vliv na zvukové šíření hodnoty (jako je například způsobí uzavření), což poměrně dobře funguje, když jsou occluders pixelům přehrávač. Ale v případech, když hráč je ve volném prostoru, ale occluders blíží vzdálené zdrojem zvuku zvuk může stát unrealistically disoccluded. Naše navrhované alternativním řešením je v takových případech Ujistěte se, že zvukový zeslabení spadá 0 přibližně 45 m, výchozí vzdálenost vodorovné přehrávače k okraji pole.
+## <a name="sound-design-in-project-acoustics"></a>Zvukové návrhu v projektu Akustika
 
-### <a name="tuning-scene-parameters"></a>Optimalizace parametrů scény
-Upravit parametry pro všechny zdroje, klikněte na kanál pruhu v Unity a **zvuk Mixer**a upravit parametry na **projektu Akustika Mixer** vliv.
+Balíček projektu Akustika integruje všech komponent popsaných výše: simulátoru, encoder, který extrahuje parametry a vytvoří prostředek Akustika DSP zvuku a výběr filtrů. Zvukové návrh s použitím Akustika projektu zahrnuje výběr parametrů pro filtry, které upravit parametry uzavření a reverberation odvozený od simulace a použity na DSP zvuku, pomocí dynamických ovládacích prvků, které jsou zveřejněné v editoru her a modul zvuku.
 
-![Přizpůsobení Mixer](media/MixerParameters.png)
-
-* **Upravit wetness** – upraví dozvuku výkon, v databázi, ze všech zdrojů ve scéně podle vzdálenosti zdroj naslouchacího procesu. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk.
-* **Škálování RT60** – násobení skalární dozvuku dobu.
-* **Použijte pro posouvání** – ovládací prvky, zda je zvukový je výstup jako binaural (0) nebo multichannel posouvání (1). Libovolná hodnota kromě 1 označuje binaural. Binaural výstup je spatialized s HRTFs pro použití s sluchátka a vícekanálový výstupu je spatialized s VBAP pro použití s vícekanálový obklopit mluvčího systémy. Pokud pomocí vícekanálový výřez, nezapomeňte vybrat režim reproduktoru, který odpovídá nastavení zařízení, najdete v části **nastavení projektu** > **zvuk**.
-
-![SpeakerMode](media/SpeakerMode.png)
-
-### <a name="tuning-source-parameters"></a>Ladění zdrojových parametrů
-Připojení **AcousticsAdjust** skript ke zdroji povolí optimalizaci parametrů pro tento zdroj. Připojit skriptu, klikněte na tlačítko **přidat součást** v dolní části **inspektoru** panelu a přejděte do **skripty > Upravit Akustika**. Tento skript má šest ovládací prvky:
-
-![AcousticsAdjust](media/AcousticsAdjust.png)
-
-* **Povolit Akustika** – Určuje, zda Akustika je použito k tomuto zdroji. Pokud není zaškrtnuto, zdroj bude spatialized HRTFs nebo posouvání, ale nedojde k žádné Akustika. To znamená bez překážky, uzavření a reverberation dynamické parametry, například úroveň a decay čas. Reverberation se uplatní s pevnou úroveň a decay čas.
-* **Uzavření** – používají multiplikátoru na úrovni databáze uzavření počítají tak, že Akustika systému. Pokud tento multiplikátor je větší než 1, uzavření bude exaggerated, při hodnoty menší než 1. Ujistěte se, efekt uzavření složitější a hodnota 0 zakáže uzavření.
-* **Přenos (databáze)** -nastavit zeslabení (v databázi) způsobené přenos přes geometry. Nastavte tento posuvník na nejnižší úrovni zakázat přenos. Akustika spatializes počáteční suchého zvuk jako přicházejících kolem geometrie scény (portaling). Přenos poskytuje další suchého doručení, která spatialized ve směru z dohlednost. Všimněte si, že je použito také křivky zeslabení vzdálenost pro zdroj.
-* **Wetness (databáze)** – upraví dozvuku výkon, v databázi, podle vzdálenosti ze zdroje. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk. Klikněte na křivku ovládací prvek (zelená čára) a zobrazte si editoru křivky. Klepněte na Přidat body levým tlačítkem myši a přetažení tyto body k vytvoření funkce, že které chcete upravte křivky. Osy x je vzdálenost od zdroje a osy y je úprava dozvuku v databázi. Další informace o úpravě křivky, najdete v tomto [Unity ruční](https://docs.unity3d.com/Manual/EditingCurves.html). Pokud chcete obnovit výchozí křivku, klikněte pravým tlačítkem na **Wetness** a vyberte **resetování**.
-* **Decay – časové měřítko** – nastaví dobu decay multiplikátoru. Například pokud Určuje, která má označení vytvoření výsledku decay čas 750 milisekund, ale tato hodnota nastavená na 1.5, je čas decay použití ke zdroji 1,125 milisekund.
-* **Outdoorness** -sčítání úprava na odhad systému Akustika jak "venku" by měl zvukové reverberation ve zdroji. Tuto hodnotu nastavíte na 1 způsobí, že zdroj vždy zvukové zcela venku, při nastavení na hodnotu -1 způsobí, že zdroj zvukové budovách.
-
-Různých zdrojů mohou vyžadovat různé nastavení k dosažení určitých efektů aesthetic nebo hraní her. Dialogové okno je jedním z příkladů je to možné. Lidské mazat je více attuned k reverberation v řeči, zatímco dialogové okno často musí být srozumitelné pro hraní her. Můžete účet pro toto přitom dialogové okno bez diegetic přechodem **Wetness** dolů, nastavení **Percepční Warp vzdálenost** parametr je popsáno níže, přidání některých  **Přenos** pro některé suchého zvuku boost šíření prostřednictvím stěn a/nebo omezení **uzavření** od 1 do mají další zvuk doručení prostřednictvím portálů.
-
-Připojení **AcousticsAdjustExperimental** skript, který zdroj umožňuje další experimentální parametry ladění u tohoto zdroje. Připojit skriptu, klikněte na tlačítko **přidat součást** dole **inspektoru** panelu a přejděte do **skripty > Akustika upravit experimentální**. Aktuálně nejsou k dispozici jeden experimentální ovládací prvek:
-
-![AcousticsAdjustExperimental](media/AcousticsAdjustExperimental.png)
-
-* **Percepční Warp vzdálenost** – použití exponenciální pokřivení vzdálenosti slouží k výpočtu poměru suchého vlhkého stavu. Systém Akustika vypočítá vlhkou úrovně v rámci oboru, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Pokřivení hodnoty větší než 1 exaggerate tento efekt zvýšením úrovně reverberation související vzdálenost, provádění zvuk "vzdálené". Pokřivení hodnoty menší než 1 Zkontrolujte reverberation na základě vzdálenosti změnit složitější a zvukových další "tohoto".
+## <a name="next-steps"></a>Další postup
+* Vyzkoušejte si pomocí paradigma návrhu [Akustika projekt rychlý start pro Unity](unity-quickstart.md) nebo [Akustika projekt rychlý start pro Unreal](unreal-quickstart.md)
+* Prozkoumejte [projektu Akustika návrh ovládacích prvků pro Unity](unity-workflow.md) nebo [projektu Akustika návrh ovládacích prvků pro Unreal](unreal-workflow.md)
 

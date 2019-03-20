@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004982"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastního testu paměti pro službu Azure Application Gateway (classic pomocí prostředí PowerShell)
 
@@ -151,7 +151,7 @@ Konfigurační parametry jsou:
 |Parametr|Popis|
 |---|---|
 |**Název** |Referenční název pro vlastní test paměti. |
-* **Protokol** | Protokol použitý (možné hodnoty jsou HTTP nebo HTTPS).|
+| **Protokol** | Protokol použitý (možné hodnoty jsou HTTP nebo HTTPS).|
 | **Hostitel** a **cesty** | Úplná cesta URL, která je volána službou application gateway určit stav instance. Například, pokud máte web http://contoso.com/, pak je možné nakonfigurovat vlastní test paměti pro "http://contoso.com/path/custompath.htm" pro test zkontroluje, že máte úspěšné odpovědi HTTP.|
 | **Interval** | Nakonfiguruje interval kontroly testu nezdaří v řádu sekund.|
 | **časový limit** | Definuje časový limit testu pro kontrolu odpovědi HTTP.|
@@ -161,18 +161,18 @@ Název sondy odkazuje \<BackendHttpSettings\> konfigurace přiřadit kterému fo
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Přidat vlastní test paměti do existující aplikační bráně
 
-Změna aktuální konfigurace služby application gateway vyžaduje tři kroky: získání aktuálního konfiguračního souboru XML, upravte mít vlastní test paměti a nakonfigurujte aplikační bránu s novým nastavením XML.
+Změna aktuální konfigurace služby application gateway vyžaduje tři kroky: Získání aktuálního konfiguračního souboru XML, upravte mít vlastní test paměti a nakonfigurujte aplikační bránu s novým nastavením XML.
 
 1. Získejte soubor XML s použitím `Get-AzureApplicationGatewayConfig`. Tato rutina exportuje konfiguraci XML upravena k přidání nastavení testu.
 
-  ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-  ```
+   ```powershell
+   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+   ```
 
 1. V textovém editoru otevřete soubor XML. Přidat `<probe>` části po `<frontendport>`.
 
-  ```xml
-<Probes>
+   ```xml
+   <Probes>
     <Probe>
         <Name>Probe01</Name>
         <Protocol>Http</Protocol>
@@ -182,12 +182,12 @@ Změna aktuální konfigurace služby application gateway vyžaduje tři kroky: 
         <Timeout>15</Timeout>
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
-</Probes>
-  ```
+   </Probes>
+   ```
 
-  V části backendHttpSettings XML přidáte název testu, jak je znázorněno v následujícím příkladu:
+   V části backendHttpSettings XML přidáte název testu, jak je znázorněno v následujícím příkladu:
 
-  ```xml
+   ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -196,9 +196,9 @@ Změna aktuální konfigurace služby application gateway vyžaduje tři kroky: 
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-  ```
+   ```
 
-  Soubor XML uložte.
+   Soubor XML uložte.
 
 1. Aktualizace konfigurace aplikační brány pomocí nového souboru XML s použitím `Set-AzureApplicationGatewayConfig`. Tato rutina aktualizuje vaše brána application gateway s novou konfigurací.
 

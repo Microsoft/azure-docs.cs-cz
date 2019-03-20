@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 6401cd6d50eaead14e3c280a0246ab042af98009
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 77d37d5fae024c7b50d9eac461c9f609a86f8ed9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100100"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -42,8 +42,6 @@ Následující kroky popisují úlohy, které jsou běžně součásti procesu v
 
 > [!NOTE]
 > V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
-> 
-> 
 
 1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér služby live Encoding, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).
 
@@ -230,7 +228,7 @@ namespace EncodeLiveStreamWithAmsClear
             // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
             // IpV4 address with 4 numbers
             // CIDR address range
-        
+
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.FragmentedMP4,
@@ -258,7 +256,7 @@ namespace EncodeLiveStreamWithAmsClear
             // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
             // IpV4 address with 4 numbers
             // CIDR address range
-        
+
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl

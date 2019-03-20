@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211351"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108844"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Nastavení IP adres pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
@@ -49,8 +49,8 @@ Pojďme se podívat na příklad pro převzetí služeb při selhání do Azure 
 - Společnosti Woodgrove Bank hostitelem jejich obchodních aplikací v místní lokalitě. Hostují své mobilní aplikace na Azure.
 - Existuje připojení site-to-site VPN mezi jejich místní hraniční sítí a virtuální síť Azure. Z důvodu připojení VPN se zobrazí virtuální síť v Azure jako rozšíření místní sítě.
 - Woodgrove chce, aby se pro replikaci místních úloh do Azure pomocí Site Recovery.
- - Woodgrove má aplikace, které závisí na pevně zakódované IP adresy, takže je třeba zachovat IP adresy pro aplikace, po převzetí služeb při selhání do Azure.
- - Prostředky spuštěné v Azure použít 172.16.1.0/24 rozsah IP adres, 172.16.2.0/24.
+  - Woodgrove má aplikace, které závisí na pevně zakódované IP adresy, takže je třeba zachovat IP adresy pro aplikace, po převzetí služeb při selhání do Azure.
+  - Prostředky spuštěné v Azure použít 172.16.1.0/24 rozsah IP adres, 172.16.2.0/24.
 
 ![Před převzetí služeb při selhání podsíť](./media/site-recovery-network-design/network-design7.png)
 

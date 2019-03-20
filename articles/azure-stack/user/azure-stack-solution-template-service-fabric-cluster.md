@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098004"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Nasazení clusteru Service Fabric v Azure stacku
 
@@ -37,17 +37,17 @@ Následující jsou nutné k nasazení clusteru Service Fabric:
    To je certifikát X.509 serveru, které přidáte do trezoru klíčů při nasazování Service Fabric. 
    - **CN** na tento certifikát se musí shodovat plně kvalifikovaný název domény (FQDN) clusteru Service Fabric můžete vytvořit. 
    - Certifikát musí být ve formátu PFX, veřejné a soukromé klíče jsou povinné. 
-   Zobrazit [požadavky](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) pro vytvoření tohoto certifikátu na straně serveru.
+     Zobrazit [požadavky](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) pro vytvoření tohoto certifikátu na straně serveru.
 
-    > [!NOTE]  
-    > Pro účely testování můžete použít certifikát podepsaný svým držitelem místní server certifikátu x.509. Certifikáty podepsané svým držitelem tak, aby odpovídala plně kvalifikovaný název domény clusteru není nutné.
+     > [!NOTE]  
+     > Pro účely testování můžete použít certifikát podepsaný svým držitelem místní server certifikátu x.509. Certifikáty podepsané svým držitelem tak, aby odpovídala plně kvalifikovaný název domény clusteru není nutné.
 
-1.  **Klient pro správu certifikátů** jedná se o certifikát, který klient použije k ověření do clusteru Service Fabric, který může být podepsaný držitelem. Zobrazit [požadavky](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) pro vytvoření tohoto certifikátu klienta.
+1. **Klient pro správu certifikátů** jedná se o certifikát, který klient použije k ověření do clusteru Service Fabric, který může být podepsaný držitelem. Zobrazit [požadavky](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) pro vytvoření tohoto certifikátu klienta.
 
-1.  **Následující položky musí být dostupné v Tržišti Azure Stack:**
-     - **Windows Server 2016** – šablony k vytvoření clusteru používá image Windows serveru 2016.  
-     - **Rozšíření vlastních skriptů** – rozšíření virtuálního počítače od Microsoftu.  
-     - **Prostředí PowerShell Desired Configuration fázi** – rozšíření virtuálního počítače od Microsoftu.
+1. **Následující položky musí být dostupné v Tržišti Azure Stack:**
+    - **Windows Server 2016** – šablony k vytvoření clusteru používá image Windows serveru 2016.  
+    - **Rozšíření vlastních skriptů** – rozšíření virtuálního počítače od Microsoftu.  
+    - **Prostředí PowerShell Desired Configuration fázi** – rozšíření virtuálního počítače od Microsoftu.
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault

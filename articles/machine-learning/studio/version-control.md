@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 22fe9a6bc6eaec1f4c73f9b92e30f174dd7855f2
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 102d06f6d4a51f7edc1fc269180f8fb3e5b0626c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820378"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121464"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.

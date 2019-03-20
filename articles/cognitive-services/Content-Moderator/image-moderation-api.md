@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1dba848be0c24ef26dcefd23d4fc3f7201420449
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079707"
 ---
 # <a name="learn-image-moderation-concepts"></a>Další koncepty moderování obrázků
 
@@ -35,12 +35,11 @@ Použít moderování obrázků s podporou počítače Content Moderator a [nás
       ],
 
 > [!NOTE]
-
+> 
 > - `isImageAdultClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně explicitní nebo pouze pro dospělé.
 > - `isImageRacyClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně sugestivní nebo pouze pro dospělé.
 > - Skóre jsou v rozmezí od 0 do 1. Čím více bodů vyšší model je predikce kategorii lze použít. V této verzi preview spoléhá na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
 > - Logické hodnoty jsou true nebo false, v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
->
 
 ## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Rozpoznání textu s optického rozpoznávání znaků (OCR)
 

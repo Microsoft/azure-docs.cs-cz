@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 89a97b583407b448f296b1a54f5aabbf825b8b65
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101172"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
 > [!NOTE]
 > V2 se přestala nabízet 30. dubna 2018 a bude ukončena 30. dubna 2019.
-
+> 
 > Centrum Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).  
 
 Tým Microsoft Translatoru vydala rozhraní Translator Text API verze 3 (V3). Tato verze obsahuje nové funkce, nepoužívané metody a nový formát pro odesílání a přijímání dat ze služby Microsoft Translator. Tento dokument obsahuje informace pro změnu aplikace, aby používaly V3. 
@@ -108,8 +108,8 @@ Globální
 
 ## <a name="compatibility-and-customization"></a>Kompatibilita a přizpůsobení
 
-> [!NOTE] 
-
+> [!NOTE]
+> 
 > Centrum Microsoft Translator se vyřadí z provozu 30. dubna 2019. [Zobrazit informace o migraci důležité a data](https://www.microsoft.com/translator/business/hub/).   
 
 Ve výchozím nastavení používá Microsoft Translator V3 Neurální strojový překlad. V důsledku toho jej nelze použít v centru Microsoft Translator. Překladač rozbočovače podporuje pouze starší verze statistické strojového překladu. Přizpůsobení pro Neurální překladové je nyní dostupné s použitím překladač vlastní. [Další informace o přizpůsobení Neurální strojový překlad](custom-translator/overview.md)

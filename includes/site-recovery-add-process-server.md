@@ -4,24 +4,24 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: b6e3abb56ebd02131fac78c2a8f03ddcbf50958a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124672"
 ---
 1. Spuštění UnifiedSetup.exe služby Azure Site Recovery
 2. V části **Než začnete** vyberte **Přidat další procesové servery pro horizontální navýšení kapacity nasazení**.
 
-  ![Přidání procesového serveru](./media/site-recovery-add-process-server/ps-page-1.png)
+   ![Přidání procesového serveru](./media/site-recovery-add-process-server/ps-page-1.png)
 
 3. V části **Podrobnosti konfiguračního serveru** zadejte IP adresu konfiguračního serveru a přístupové heslo.
 
-  ![Přidání procesového serveru 2](./media/site-recovery-add-process-server/ps-page-2.png)
+   ![Přidání procesového serveru 2](./media/site-recovery-add-process-server/ps-page-2.png)
 4. Na stránce **Nastavení internetu** určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes internet.
 
-  ![Přidání procesového serveru 3](./media/site-recovery-add-process-server/ps-page-3.png)
+   ![Přidání procesového serveru 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
    * Pokud chcete nastavit připojení s proxy serverem, který je aktuálně nastavený na počítači, vyberte **Připojit se s existujícím nastavením proxy serveru**.
    * Pokud chcete, aby se zprostředkovatel připojil přímo, vyberte **Připojit přímo bez proxy serveru**.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79caee603e76b854a6a34a9f95d91f392728de0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 426162d6655a107aad6fc7dd1081ca9352099449
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Kurz: Integrace Azure Active Directory s Korn Ferry ALP
 
@@ -106,6 +106,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Korn Ferry ALP, proveďte n
     ![Korn Ferry ALP domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     | |
     |--|
     | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
@@ -113,6 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Korn Ferry ALP, proveďte n
     | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    
     | |
     |--|
     | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
@@ -148,7 +150,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

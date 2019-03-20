@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/30/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7f1b9bb9d542b54afb6bf8b7bfc0df9fc1a9e434
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009422"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182128"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování, který se pomocí rozhraní příkazového řádku
 

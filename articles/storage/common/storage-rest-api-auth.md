@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 771f910fce44724250ff79e770e0d1ca56e8765c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768412"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012789"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
@@ -46,7 +46,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Otevřít
 
 ## <a name="what-is-rest"></a>Co je REST?
 
-ZBÝVAJÍCÍ prostředky *přenosu representational stavu*. Pro konkrétní definici, projděte si [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
+ZBÝVAJÍCÍ prostředky *přenosu representational stavu*. Pro konkrétní definici, projděte si [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 V podstatě REST architektura je taková, lze použít při volání rozhraní API nebo zajištěním, k dispozici k volání rozhraní API. Je nezávislý na co se děje na obou stranách a jaký software se používá při odesílání nebo přijímání ZBÝVAJÍCÍ volá. Můžete napsat aplikace, která běží na Macu, Windows, Linux, telefon s Androidem nebo tabletu, iPhone, iPod nebo webové stránky a použijte stejné rozhraní REST API pro všechny tyto platformy. Data mohou být předána v a/nebo si při volání rozhraní REST API. Rozhraní REST API není pro vás z jaké platformy je volána – co je důležité je informací předaných v požadavku a data zadaná v odpovědi.
 
@@ -80,7 +80,7 @@ Chcete-li použít další parametry, přidejte je na řetězec prostředku s ho
 
 [Text žádosti](/rest/api/storageservices/List-Containers2#request-body)**:** Není k dispozici není datová část požadavku pro ListContainers. Text požadavku se používá ve všech operacích PUT při odesílání objektů BLOB, stejně jako SetContainerAccessPolicy, který umožňuje odeslat XML seznam uložené zásady přístupu k použití. Uložené zásady přístupu jsou popsány v následujícím článku [použití sdílených přístupových podpisů (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code)**:** Říká jakékoli stavové kódy, které potřebujete znát. V tomto příkladu je stavový kód HTTP 200 ok. Úplný seznam stavových kódů HTTP, projděte si [definice stavových kódů](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb, které jsou specifické pro rozhraní REST API služby Storage najdete v tématu [kódy chyb společné rozhraní REST API](/rest/api/storageservices/common-rest-api-error-codes)
+[Stavový kód odpovědi](/rest/api/storageservices/List-Containers2#status-code)**:** Říká jakékoli stavové kódy, které potřebujete znát. V tomto příkladu je stavový kód HTTP 200 ok. Úplný seznam stavových kódů HTTP, projděte si [definice stavových kódů](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Kódy chyb, které jsou specifické pro rozhraní REST API služby Storage najdete v tématu [kódy chyb společné rozhraní REST API](/rest/api/storageservices/common-rest-api-error-codes)
 
 [Hlavičky odpovědi](/rest/api/storageservices/List-Containers2#response-headers)**:** Patří mezi ně *typ obsahu*; *x-ms-request-id* (id žádosti je předán, pokud je k dispozici); *x-ms-version* (označuje verzi služby Blob service použít) a *datum* (UTC, určuje, kdy byl požadavek).
 
@@ -88,7 +88,7 @@ Chcete-li použít další parametry, přidejte je na řetězec prostředku s ho
 
 ## <a name="creating-the-rest-request"></a>Vytvoření požadavku REST
 
-Několik poznámek k před zahájením – zabezpečení při spuštění v produkčním prostředí vždy používejte protokol HTTPS, nikoli protokol HTTP. Pro účely tohoto cvičení měli byste použít HTTP, můžete zobrazit data požadavku a odpovědi. Chcete-li zobrazit informace o požadavku a odpovědi ve skutečné volání REST, si můžete stáhnout [Fiddler](http://www.telerik.com/fiddler) nebo podobné aplikace. V řešení sady Visual Studio název účtu úložiště a klíč jsou pevně zakódované ve třídě a metodě ListContainersAsyncREST předá název účtu úložiště a klíč účtu úložiště metody, které se používají k vytváření různých součástí požadavku REST . V reálné aplikaci název účtu úložiště a klíč by se nacházejí v konfiguračním souboru, proměnné prostředí, nebo ze služby Azure Key Vault načíst.
+Několik poznámek k před zahájením – zabezpečení při spuštění v produkčním prostředí vždy používejte protokol HTTPS, nikoli protokol HTTP. Pro účely tohoto cvičení měli byste použít HTTP, můžete zobrazit data požadavku a odpovědi. Chcete-li zobrazit informace o požadavku a odpovědi ve skutečné volání REST, si můžete stáhnout [Fiddler](https://www.telerik.com/fiddler) nebo podobné aplikace. V řešení sady Visual Studio název účtu úložiště a klíč jsou pevně zakódované ve třídě a metodě ListContainersAsyncREST předá název účtu úložiště a klíč účtu úložiště metody, které se používají k vytváření různých součástí požadavku REST . V reálné aplikaci název účtu úložiště a klíč by se nacházejí v konfiguračním souboru, proměnné prostředí, nebo ze služby Azure Key Vault načíst.
 
 V našem projektu ukázkový kód pro vytvoření autorizační hlavičky je v samostatné třídě s myšlenkou, že může trvat celé jedné třídy a přidáte vlastní řešení a použije "tak jak jsou." Autorizační hlavička kód funguje pro většinu volání rozhraní REST API do služby Azure Storage.
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
 
 Většina z těchto polí jsou zřídka se používá. Pro úložiště objektů Blob zadejte příkaz, md5, délka obsahu, ho Kanonizovat záhlaví a ho Kanonizovat prostředků. Ostatní můžete nechat prázdné (ale put v `\n` aby věděl, že jsou prázdné).
 
-Co jsou CanonicalizedHeaders a CanonicalizedResource? Funkční dotaz. Ve skutečnosti co dělá ho kanonizovat průměr? Aplikace Microsoft Word i nerozpoznal ho jako slovo. Tady je co [Wikipedia říká o převodu do kanonického tvaru](http://en.wikipedia.org/wiki/Canonicalization): *Z počítačových věd převodu do kanonického tvaru (někdy normalizaci nebo normalizace) je proces převodu dat, která má více než jednu možnou reprezentaci do "standard", "Normální (normal) nebo kanonickém tvaru.* V normální mluvit, to znamená, že seznam položek (například záhlaví, v případě ho Kanonizovat záhlaví) a standardizovat do požadovanému formátu. V podstatě Microsoft jste se rozhodli formátu a budete muset spárujte ji.
+Co jsou CanonicalizedHeaders a CanonicalizedResource? Funkční dotaz. Ve skutečnosti co dělá ho kanonizovat průměr? Aplikace Microsoft Word i nerozpoznal ho jako slovo. Tady je co [Wikipedia říká o převodu do kanonického tvaru](https://en.wikipedia.org/wiki/Canonicalization): *Z počítačových věd převodu do kanonického tvaru (někdy normalizaci nebo normalizace) je proces převodu dat, která má více než jednu možnou reprezentaci do "standard", "Normální (normal) nebo kanonickém tvaru.* V normální mluvit, to znamená, že seznam položek (například záhlaví, v případě ho Kanonizovat záhlaví) a standardizovat do požadovanému formátu. V podstatě Microsoft jste se rozhodli formátu a budete muset spárujte ji.
 
 Začněme s tyto dvě kanonizovaného pole, protože jsou vyžadovány pro vytvoření autorizační hlavičky.
 
@@ -325,7 +325,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
     StringBuilder sb = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
-    //   it means put in a standard format. http://en.wikipedia.org/wiki/Canonicalization
+    //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
         StringBuilder headerBuilder = new StringBuilder(kvp.Key);
@@ -482,7 +482,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-Následující hodnoty jsou od [Fiddler](http://www.telerik.com/fiddler):
+Následující hodnoty jsou od [Fiddler](https://www.telerik.com/fiddler):
 
 **Žádost:**
 

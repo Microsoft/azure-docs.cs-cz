@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262281"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839742"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Brána firewall operačního systému hosta virtuálního počítače Azure je špatně nakonfigurovaný.
 
@@ -98,7 +98,7 @@ V případě sériový přístup ke konzole může dotazovat aktuální stav pra
 
 ### <a name="offline-mitigations"></a>Offline migrace
 
-1.  Povolení nebo zakázání pravidla brány firewall, najdete v tématu [povolit nebo zakázat pravidlo brány firewall na hostovaný operační systém virtuálního počítače Azure](enable-disable-firewall-rule-guest-os.md).
+1.  Povolení nebo zakázání pravidla brány firewall, najdete v tématu [povolit nebo zakázat pravidlo brány firewall na operační systém hosta virtuálního počítače Azure](enable-disable-firewall-rule-guest-os.md).
 
 2.  Zkontrolujte, zda jsou v [blokuje příchozí provoz scénáře s branou firewall hostovaného operačního systému](guest-os-firewall-blocking-inbound-traffic.md).
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: af8d06a8eeb1c8fbce7ccc47c9f25b9d37ff83e6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b71c48a86be13df51222069f6948642455bc77fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121260"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -46,7 +46,7 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 S našimi partnery spolupracujeme na začlenění nástroje cloud-init, aby fungoval v imagích, které pro Azure poskytují. Následující tabulka popisuje aktuální dostupnost cloudu-init pro image platformy Azure:
 
 | Alias | Vydavatel | Nabídka | Skladová jednotka (SKU) | Verze |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |nejnovější |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |
 | CoreOS |CoreOS |CoreOS |Stable |nejnovější |

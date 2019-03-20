@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 971d9b557b56a645f0c99c41fb3afb3ed01db3d0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ea643622973456f6334333731f3a3e7be6a41089
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732256"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Integrace Azure Active Directory s ClickTime
 
@@ -108,6 +108,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ClickTime, proveďte násle
     a. V **identifikátor** textové pole, zadejte adresu URL: `https://app.clicktime.com/sp/`
 
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    
     | |
     |--|
     | `https://app.clicktime.com/Login/` |
@@ -163,7 +164,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -222,7 +223,7 @@ V případě ClickTime zřizování se ruční úlohy.
    
     a.  V **celý název** textové pole, typ celé jméno uživatele, jako je **Britta Simon**. 
   
-    b.  V **e-mailová adresa** , jako je textové pole, typ e-mailu uživatele **brittasimon@contoso.com**.
+    b.  V **e-mailová adresa** , jako je textové pole, typ e-mailu uživatele **brittasimon\@contoso.com**.
        
     > [!NOTE]
     > Pokud chcete, můžete nastavit další vlastnosti nového objektu osoba.

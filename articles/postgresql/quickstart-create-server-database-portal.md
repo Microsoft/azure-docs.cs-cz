@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: 71afbff4d5a322fe632824f082fcdf256e364699
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a17bbc26a65d3747683ad0fc0ecba40a22088d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856205"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -116,7 +116,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
     ---|---|---
     --host | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     --port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
-    --username | Přihlašovací jméno správce serveru |Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si své uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    --username | Přihlašovací jméno správce serveru |Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si své uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
     --dbname | *postgres* | Výchozí systémem vygenerovaný název databáze vytvořený pro první připojení. Později vytvoříte vlastní databázi.
 
     Po spuštění příkazu psql s vlastními hodnotami parametrů se zobrazí výzva k zadání hesla správce serveru. Jedná se o stejné heslo, které jste zadali při vytváření serveru. 
@@ -181,7 +181,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
-    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
+    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Na kartě SSL nástroje pgAdmin můžete nastavit režim SSL. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
@@ -198,7 +198,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
 10. Ze seznamu vyberte **Vlastníka** databáze. Zvolte přihlašovací jméno správce serveru, jako je **myadmin** v příkladu.
 
-   ![Vytvoření databáze v nástroji pgAdmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
+    ![Vytvoření databáze v nástroji pgAdmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 11. Vyberte **Uložit** a vytvořte novou prázdnou databázi.
 

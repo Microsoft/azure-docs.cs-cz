@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 0140cb4fd1721e1d13840fe27db223c0ebec7d8a
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841102"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
@@ -83,6 +83,7 @@ Informace o pod seznamem proxy a firewallu informace o konfiguraci vyžadované 
 |*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
 |*.azure-automation.net |Port 443 |Odchozí|Ano |  
 
+Informace o bráně firewall vyžadované pro Azure Government, najdete v části [správy Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
 Pokud budete chtít použít Azure Automation Hybrid Runbook Worker a připojte se k registraci ve službě Automation použití sad runbook ve vašem prostředí, musí mít přístup k portu a adresy URL popisované v [konfigurace sítě pro zajištění Funkce hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

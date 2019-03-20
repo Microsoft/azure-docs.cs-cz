@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075897"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Použití Graph API v Azure AD
 
@@ -45,7 +45,7 @@ Jakmile budete mít tenanta B2C, budete muset zaregistrovat aplikaci pomocí [we
 3. V levém navigačním podokně zvolte **všechny služby**, klikněte na tlačítko **registrace aplikací**a klikněte na tlačítko **přidat**.
 4. Postupujte podle zobrazených výzev a vytvořte novou aplikaci. 
     1. Vyberte **webová aplikace / rozhraní API** jako typ aplikace.    
-    2. Zadejte **libovolnou adresu URL přihlašování** (třeba https://B2CGraphAPI) není relevantní pro účely tohoto příkladu.  
+    2. Zadejte **libovolnou adresu URL přihlašování** (třeba `https://B2CGraphAPI`) není relevantní pro účely tohoto příkladu.  
 5. Budou aplikace nyní zobrazí v seznamu aplikací, klikněte na něj získat **ID aplikace** (také označované jako ID klienta). Zkopírujte jej, protože ho budete potřebovat v další části.
 6. V nabídce nastavení, klikněte na tlačítko **klíče**.
 7. V **hesla** části, zadejte popis klíče a vyberte dobu trvání a potom klikněte na tlačítko **Uložit**. Zkopírujte hodnotu klíče (označované také jako tajný kód klienta) pro použití v další části.

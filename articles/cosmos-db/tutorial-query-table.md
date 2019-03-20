@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.reviewer: sngun
-ms.openlocfilehash: 9a47333c8cd8968c007a2d328e81d8ea8585971c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037986"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001637"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -78,7 +78,7 @@ Další informace o vytváření výrazů filtru pro různé datové typy najdet
 
 | PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
-| Ben |Smith | Ben@contoso.com| 425-555-0102 |
+| Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>Dotazování pomocí jazyka LINQ 
 Dotazovat můžete také pomocí jazyka LINQ, který se přeloží na odpovídající výrazy dotazu OData. Tady je příklad sestavování dotazů pomocí sady .NET SDK:

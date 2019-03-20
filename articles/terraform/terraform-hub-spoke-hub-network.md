@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 52eb6615442618893741f507d9cae6bd31d5f558
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000228"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Kurz: Vytvoření virtuální sítě centra s využitím Terraformu v Azure
 
@@ -43,7 +43,7 @@ Centrální síti se skládá z následujících součástí:
 
 Následující konfigurační soubor Terraformu definuje prostředky:
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

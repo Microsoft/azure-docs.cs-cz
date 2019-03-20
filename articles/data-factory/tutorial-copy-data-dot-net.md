@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e855c7c7f7c74ee9c8c30cd618260ad284b1c7f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 630b17a3467f372190004172b31b481dcb5af3ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863130"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 V tomto kurzu vytvoříte kanál datové továrny, který kopíruje data ze služby Azure Blob Storage do Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -236,7 +236,7 @@ Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. T
 - Strukturu dat, včetně názvů sloupců a typů dat, které se v tomto případě mapují na tabulku SQL jímky.
 
 ```csharp
-// Create a Azure Blob dataset
+// Create an Azure Blob dataset
 Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
@@ -274,7 +274,7 @@ Do metody **Main** přidejte následující kód, který vytvoří **datovou sad
 Definujete datovou sadu, která představuje data jímky ve službě Azure SQL Database. Tato datová sada odkazuje na propojenou službu Azure SQL Database, kterou jste vytvořili v předchozím kroku. Určuje také tabulku SQL, který obsahuje zkopírovaná data. 
 
 ```csharp
-// Create a Azure SQL Database dataset
+// Create an Azure SQL Database dataset
 Console.WriteLine("Creating dataset " + sqlDatasetName + "...");
 DatasetResource sqlDataset = new DatasetResource(
     new AzureSqlTableDataset

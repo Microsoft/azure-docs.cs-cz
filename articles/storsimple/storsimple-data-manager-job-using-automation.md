@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086016"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Pomocí Azure Automation k aktivaci úlohy
 
@@ -53,20 +53,20 @@ Než začnete, ujistěte se, že máte:
 
 3. V **přidání automatizace**:
 
-    1. Zadat **název** vašeho účtu automation.
-    2. Vyberte **předplatné** propojenému s vaší službou StorSimple Data Manageru.
-    3. Vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků.
-    4. Vyberte **Umístění**.
-    5. Ponechte výchozí nastavení **vytvořit účet Spustit jako** zaškrtnutou možnost.
-    6. Chcete-li získat odkaz na rychlý přístup na řídicím panelu, zkontrolujte **připnout na řídicí panel**. Klikněte na možnost **Vytvořit**.
+   1. Zadat **název** vašeho účtu automation.
+   2. Vyberte **předplatné** propojenému s vaší službou StorSimple Data Manageru.
+   3. Vytvořit novou skupinu prostředků nebo vyberte existující skupinu prostředků.
+   4. Vyberte **Umístění**.
+   5. Ponechte výchozí nastavení **vytvořit účet Spustit jako** zaškrtnutou možnost.
+   6. Chcete-li získat odkaz na rychlý přístup na řídicím panelu, zkontrolujte **připnout na řídicí panel**. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvořit účet automation spustit jako](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Vytvořit účet automation spustit jako](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    Po úspěšném vytvoření účtu automation, budete upozorněni.
+      Po úspěšném vytvoření účtu automation, budete upozorněni.
     
-    ![Oznámení pro nasazení účtu automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Oznámení pro nasazení účtu automation](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    Další informace najdete v části [vytvořit účet Spustit jako](../automation/automation-create-runas-account.md).
+      Další informace najdete v části [vytvořit účet Spustit jako](../automation/automation-create-runas-account.md).
 
 3. V nově vytvořeného účtu, přejděte na **sdílené prostředky > moduly** a klikněte na tlačítko **+ přidat modul**.
 

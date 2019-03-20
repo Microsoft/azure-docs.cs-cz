@@ -4,17 +4,17 @@ description: Další informace o statické a dynamické parametry a jejich použ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838013"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
 
@@ -41,8 +41,13 @@ Tato bezpečnostní opatření zabrání unsafe postup ukládání tajných kód
 - Název tajného kódu Key Vault
 - Verze tajného kódu Key Vault
 
-Odkazované služby Key Vault musí existovat ve stejném předplatném jako podrobný plán je přiřazen.
-Musí mít rovněž **povolit přístup k Azure Resource Manageru pro nasazení šablony** nakonfigurované ve službě Key Vault **zásady přístupu** stránky. Pokyny o tom, jak tuto funkci povolit, najdete v části [služby Key Vault – nasazení šablony povolit](../../../managed-applications/key-vault-access.md#enable-template-deployment). Další informace o službě Azure Key Vault najdete v tématu [Key Vault přehled](../../../key-vault/key-vault-overview.md).
+Pokud používá přiřazení podrobného plánu **systém přiřadil se identita spravované**, odkazuje služby Key Vault _musí_ existují ve stejném předplatném přiřazen definice podrobného plánu.
+
+Pokud používá přiřazení podrobného plánu **uživatelsky přiřazené identity spravované**, odkazuje služby Key Vault _může_ existovat v rámci centralizované předplatného. Spravovaná identita musí být udělena příslušná oprávnění ke službě Key Vault před přiřazení podrobného plánu.
+
+V obou případech musí mít služby Key Vault **povolit přístup k Azure Resource Manageru pro nasazení šablony** nakonfigurovali na **zásady přístupu** stránky. Pokyny o tom, jak tuto funkci povolit, najdete v části [služby Key Vault – nasazení šablony povolit](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+
+Další informace o službě Azure Key Vault najdete v tématu [Key Vault přehled](../../../key-vault/key-vault-overview.md).
 
 ## <a name="parameter-types"></a>Typy parametrů
 
@@ -236,8 +241,8 @@ Artefakty pro skupinu prostředků, které jsou definovány pomocí "název šab
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
-- Zjistěte, jak používat [zamykání prostředků podrobného plánu](resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
-- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)
+- Další informace o [podrobný plán životního cyklu](lifecycle.md).
+- Zjistěte, jak přizpůsobit [podrobný plán pořadí řazení](sequencing-order.md).
+- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](resource-locking.md).
+- Zjistěte, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
+- Řešení problémů při přiřazení podrobného plánu se [obecné řešení potíží s](../troubleshoot/general.md).

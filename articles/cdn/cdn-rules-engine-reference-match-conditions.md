@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087189"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN stroj pravidel splňují podmínky 
 Tento článek obsahuje podrobný popis dostupných odpovídají podmínkám pro sítě Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -532,16 +532,16 @@ Informace o klíči:
 - Okraj CNAME adresa URL je přepsán na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL přejděte na stejný prostředek a proto mají stejnou cestu URL.
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+  - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
     
     Další informace:
-    - Vlastní doménu: https:\//my.domain.com/path/asset.htm
+  - Vlastní doménu: https:\//my.domain.com/path/asset.htm
     
-    - Cesta adresy URL (relativní vůči kořenovému adresáři): / 800001/CustomerOrigin/path /
+  - Cesta adresy URL (relativní vůči kořenovému adresáři): / 800001/CustomerOrigin/path /
     
-    - Cesta adresy URL (relativní k původu): /path/
+  - Cesta adresy URL (relativní k původu): /path/
 
 - Část adresy URL, který se používá pro porovnání končí URL těsně před název souboru požadovaného assetu. Koncové lomítko je posledním znakem v tento druh cesty.
     
@@ -639,27 +639,27 @@ Informace o klíči:
 - Použití **vzhledem ke** možnost určit, zda bod porovnání adresa URL začíná před nebo po obsahu přístupový bod. 
 
     Jsou k dispozici pro následující hodnoty **vzhledem ke** možnost:
-     - **Kořenové**: Označuje, že začne porovnání bodu adresy URL přímo za název hostitele CDN.
+  - **Kořenové**: Označuje, že začne porovnání bodu adresy URL přímo za název hostitele CDN.
 
-       Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
+    Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Počátek**: Označuje, že porovnání bodu adresy URL začne za obsahu přístupový bod (například myorigin /000001 nebo/800001 /). Protože \*. azureedge.net CNAME je relativní vzhledem k adresáři origin na název hostitele Verizon CDN ve výchozím nastavení vytvořen, Azure CDN uživatelé by měli použít **původu** hodnotu. 
+  - **Počátek**: Označuje, že porovnání bodu adresy URL začne za obsahu přístupový bod (například myorigin /000001 nebo/800001 /). Protože \*. azureedge.net CNAME je relativní vzhledem k adresáři origin na název hostitele Verizon CDN ve výchozím nastavení vytvořen, Azure CDN uživatelé by měli použít **původu** hodnotu. 
 
-       Například: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
+    Například: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
 
-     Tato adresa URL odkazuje na následující název hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
+    Tato adresa URL odkazuje na následující název hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Okraj CNAME adresa URL je přepsán na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL přejděte na stejný prostředek a proto mají stejnou cestu URL:
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-    - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
     
     Další informace:
     
-    - Cesta adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
+  - Cesta adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
    
-    - Cesta adresy URL (relativní k původu): /path/asset.htm
+  - Cesta adresy URL (relativní k původu): /path/asset.htm
 
 - Řetězce dotazu v adrese URL se ignorují.
 - Použití **ignorování případu** možnost řízení, zda se provádí porovnání velká a malá písmena.
@@ -684,13 +684,13 @@ Informace o klíči:
  
     Například obě adresy URL přejděte na stejný prostředek a proto mají stejnou cestu URL.
 
-     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
+  - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
     
     Další informace:
     
-     - Cesta adresy URL: /800001/CustomerOrigin/path/asset.htm
+  - Cesta adresy URL: /800001/CustomerOrigin/path/asset.htm
 
 - Řetězce dotazu v adrese URL se ignorují.
     
@@ -714,27 +714,27 @@ Informace o klíči:
 - **Vzhledem k** možnost: Tato možnost určuje, zda bod adresy URL porovnání zahájí před nebo po obsahu přístupový bod.
 
    Tato možnost může mít následující hodnoty:
-     - **Kořenové**: Označuje, že začne porovnání bodu adresy URL přímo za název hostitele CDN.
+  - **Kořenové**: Označuje, že začne porovnání bodu adresy URL přímo za název hostitele CDN.
 
-       Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
+    Příklad: http:\//wpc.0001.&lt; domény&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Počátek**: Označuje, že porovnání bodu adresy URL začne za obsahu přístupový bod (například myorigin /000001 nebo/800001 /). Protože \*. azureedge.net CNAME je relativní vzhledem k adresáři origin na název hostitele Verizon CDN ve výchozím nastavení vytvořen, Azure CDN uživatelé by měli použít **původu** hodnotu. 
+  - **Počátek**: Označuje, že porovnání bodu adresy URL začne za obsahu přístupový bod (například myorigin /000001 nebo/800001 /). Protože \*. azureedge.net CNAME je relativní vzhledem k adresáři origin na název hostitele Verizon CDN ve výchozím nastavení vytvořen, Azure CDN uživatelé by měli použít **původu** hodnotu. 
 
-       Například: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
+    Například: https:\//&lt;koncový bod&gt;.azureedge.net/**myfolder/index.htm**
 
-     Tato adresa URL odkazuje na následující název hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
+    Tato adresa URL odkazuje na následující název hostitele Verizon CDN: http:\//wpc.0001.&lt; domény&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Okraj CNAME adresa URL je přepsán na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL přejděte na stejný prostředek a proto mají stejnou cestu URL:
-     - Adresa URL pro CDN: http://wpc.0001.&lt; domény&gt;/800001/CustomerOrigin/path/asset.htm
-     - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
+  - Adresa URL pro CDN: http://wpc.0001.&lt; domény&gt;/800001/CustomerOrigin/path/asset.htm
+  - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
     
     Další informace:
     
-     - Cesta adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
+  - Cesta adresy URL (relativní vůči kořenovému adresáři): /800001/CustomerOrigin/path/asset.htm
     
-     - Cesta adresy URL (relativní k původu): /path/asset.htm
+  - Cesta adresy URL (relativní k původu): /path/asset.htm
     
 - Určete víc cest URL omezující každé z nich mezerou.
 

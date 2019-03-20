@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870990"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -34,15 +34,15 @@ V příkladu, budete potřebovat tyto položky:
 
 * Než se aplikace logiky můžete připojit k místním systémům například souborového serveru systému, je potřeba [instalace a nastavení místní brány dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete používat instalaci brány při vytváření připojení systému souborů z aplikace logiky.
 
-* A [Drobox účet](https://www.dropbox.com/) a přihlašovacích údajů k účtu. Vaše přihlašovací údaje k Dropboxu jsou nezbytné pro vytvoření připojení mezi vaší aplikace logiky a Drobox účet. 
+* A [účtu Dropbox](https://www.dropbox.com/), které můžete se zaregistrovat zadarmo. Svoje přihlašovací údaje jsou nezbytné pro vytvoření připojení mezi vaší aplikace logiky a účtu Dropbox. 
 
-* Svoje přihlašovací údaje pro počítač, který má v systému souborů, kterému chcete získat přístup. Například pokud se instalace brány dat na stejném počítači jako systém souborů, pak potřebujete přihlašovací údaje účtu pro daný počítač. 
+* Přístup k počítači, který se má systém souborů, které chcete použít. Například pokud se instalace brány dat na stejném počítači jako systém souborů, potřebujete přihlašovací údaje účtu pro daný počítač. 
 
 * E-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit. 
 
 * Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). V tomto příkladu je třeba prázdné aplikace logiky.
 
-## <a name="add-trigger"></a>Přidání triggeru
+## <a name="add-trigger"></a>Přidat trigger
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -58,7 +58,7 @@ V příkladu, budete potřebovat tyto položky:
 
    ![Aktivační události Dropboxu](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
-## <a name="add-actions"></a>Přidání akce
+## <a name="add-actions"></a>Přidat akce
 
 1. Pod triggerem zvolte **další krok**. Do vyhledávacího pole zadejte jako filtr "systém souborů". Ze seznamu akcí vyberte tuto akci: **Vytvořte soubor – systém souborů**
 
@@ -68,7 +68,7 @@ V příkladu, budete potřebovat tyto položky:
 
    ![Vytvoření připojení](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   | Vlastnost | Požaduje se | Value | Popis | 
    | -------- | -------- | ----- | ----------- | 
    | **Název připojení** | Ano | <*Název připojení*> | Název, který chcete použít pro připojení | 
    | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, například, pokud jste nainstalovali bránu místní data jako je například místní složka na počítači, kde je nainstalován na místní bránu dat, nebo složku pro sdílené síťové složky můžete přistupovat k počítači. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazené složky, který se používá pro relativní cesty pro všechny akce související se soubory. | 

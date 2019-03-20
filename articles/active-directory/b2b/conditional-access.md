@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f51b42780a4a3500a5f5e8385d0973a335c2b78e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5234443e234d232a9711274bea2f73427266f6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113482"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -48,26 +48,26 @@ V současné době správce můžete vyžadovat uživatele spolupráce B2B až p
 
 1. Připojení k Azure AD
 
-  ```
-  $cred = Get-Credential
-  Connect-MsolService -Credential $cred
-  ```
+   ```
+   $cred = Get-Credential
+   Connect-MsolService -Credential $cred
+   ```
 2. Získat všichni uživatelé s potvrzením do metody
 
-  ```
-  Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
-  ```
-  Zde naleznete příklad:
+   ```
+   Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
+   ```
+   Zde naleznete příklad:
 
-  ```
-  Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
-  ```
+   ```
+   Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
+   ```
 
 3. Resetujte – metoda vícefaktorové ověřování pro konkrétního uživatele tak, aby vyžadovala uživatele spolupráce B2B znovu nastavit metody výš. Příklad:
 
-  ```
-  Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
-  ```
+   ```
+   Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
+   ```
 
 ### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Proč jsme na prostředek tenantů provádět vícefaktorové ověřování?
 

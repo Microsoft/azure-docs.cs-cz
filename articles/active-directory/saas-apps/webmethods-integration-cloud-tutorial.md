@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 20e8fe96e403156cd0662b5c8abe4971e1d02866
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 11021562cd34f31564e6b4c22fcd64aac25d3469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771578"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-cloud"></a>Kurz: Integrace Azure Active Directory s prvkům webMethods integrace cloudu
 
@@ -107,6 +107,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
     ![informace o prvkům webMethods integrace cloudu domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
 
     a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     | |
     |--|
     | `<SUBDOMAIN>.webmethodscloud.com` |
@@ -114,6 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
     | `<SUBDOMAIN>.webmethodscloud.de` |
 
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse` |
@@ -125,6 +127,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s prvkům webMethods integrac
     ![informace o prvkům webMethods integrace cloudu domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
 
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
@@ -170,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

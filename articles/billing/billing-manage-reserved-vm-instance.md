@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743629"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904010"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -38,13 +38,13 @@ Chcete-li aktualizovat obor rezervace, rezervaci:
 4. Vyberte **Nastavení** > **Konfigurace**.
 5. Změna oboru.
 
-Pokud změníte z sdílí jeden obor, můžete vybrat pouze pokud jste vlastníkem předplatného. Jenom předplatná v rámci stejného kontextu fakturace jako rezervace, je možné vybrat.
+Pokud změníte z sdílí jeden obor, můžete vybrat pouze pokud jste vlastníkem předplatného. Je možné vybrat pouze předplatná ve stejném kontextu fakturace jako rezervace.
 
-Obor se vztahuje pouze na nabídku průběžných plateb, které MS-AZR - 0003 P nebo MS-AZR - 0023 P, Enterprise nabízí MS-AZR - 0017 P nebo MS-AZR - 0148 P nebo typy předplatného poskytovatele CSP.
+Obor se vztahuje pouze na nabídku průběžných plateb MS-AZR-0003P nebo MS-AZR-0023P, nabídku Enterprise MS-AZR-0017P nebo MS-AZR-0148P nebo předplatná typu CSP.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Přidání nebo změna uživatelů, kteří můžou spravovat rezervace
+## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci
 
-Přidáním uživatelů do role na rezervaci můžete delegovat správu rezervaci. Ve výchozím nastavení osoby, které zakoupíte rezervaci a správce účtu mít roli vlastníka na rezervaci.
+Správu rezervace můžete delegovat přidáním lidí do rolí rezervace. Ve výchozím nastavení má roli vlastníka rezervace osoba, která rezervaci zakoupila, a správce účtu.
 
 Z předplatných, které získáte slevy na rezervaci můžete spravovat přístup k rezervace nezávisle na sobě. Pokud někomu poskytnete oprávnění ke správě rezervace, který je nedává práva ke správě předplatného. A pokud někomu poskytnete oprávnění ke správě předplatných v rámci oboru rezervaci, která nedává jejich práva ke správě rezervace.
 
@@ -54,7 +54,7 @@ Delegovat správu přístupu k rezervaci:
 2. Vyberte **všechny služby** > **rezervace** do seznamu rezervace, které máte přístup.
 3. Vyberte rezervace, které chcete delegovat přístup ostatním uživatelům.
 4. Vyberte **řízení přístupu (IAM)**.
-5. Vyberte **přidat přiřazení role** > **Role** > **vlastníka**. Nebo, pokud chcete udělit omezený přístup, vyberte jinou roli.
+5. Vyberte **přidat přiřazení role** > **Role** > **vlastníka**. Pokud chcete udělit omezený přístup, vyberte jinou roli.
 6. Zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka.
 7. Vyberte uživatele a pak vyberte **Uložit**.
 
@@ -133,4 +133,4 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

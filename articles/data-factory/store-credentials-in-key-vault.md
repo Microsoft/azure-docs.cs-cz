@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: fcd3af6c000debb8da6200205a9aa2ae61feac58
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675411"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896207"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store přihlašovacích údajů ve službě Azure Key Vault
 
@@ -84,6 +84,9 @@ Při konfiguraci pole v propojené službě odkazující na tajný kód trezoru 
 **Použití pro vytváření uživatelského rozhraní:**
 
 Vyberte **Azure Key Vault** pro skryté pole při vytváření připojení k úložišti dat/výpočetní. Vyberte zřízené Azure Key Vault propojenou službu a poskytnout **název tajného kódu**. Volitelně můžete zadat tajná verze. 
+
+>[!TIP]
+>Pro konektory pomocí připojovacího řetězce v propojené službě, jako je SQL Server, úložiště objektů Blob, atd., můžete k uložení pouze pole tajného kódu například hesla v službou AZURE nebo k uložení celé připojovací řetězec v službou AZURE. Můžete najít obě možnosti v Uživatelském rozhraní.
 
 ![Konfigurace tajného kódu službou AZURE](media/store-credentials-in-key-vault/configure-akv-secret.png)
 

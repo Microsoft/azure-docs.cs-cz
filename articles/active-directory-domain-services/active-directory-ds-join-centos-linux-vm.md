@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9ea236718b7fd9b808a5092dddec9574f6b93b48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6d78e310ffd5b473c3d7e44b4edbf9caaff7655f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077662"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače CentOS Linux ke spravované doméně
 Tento článek ukazuje, jak připojení virtuálního počítače CentOS Linux v Azure k spravované doméně služby Azure AD Domain Services.
@@ -86,12 +86,11 @@ Teď, když na virtuálním počítači s Linuxem nainstalované požadované ba
     sudo realm discover CONTOSO100.COM
     ```
 
-    > [!NOTE]
-    > **Řešení potíží:** Pokud *zjišťování sféry* nemůže najít vaši spravovanou doménu:  
-      * Ujistěte se, že doménu je dostupný z virtuálního počítače (zkuste příkaz ping).  
-      * Zkontrolujte, že virtuální počítač skutečně byla nasazena do stejné virtuální síti, ve kterém je spravovaná doména k dispozici.
-      * Zaškrtněte, pokud chcete zobrazit, když jste aktualizovali nastavení serveru DNS pro virtuální síť tak, aby odkazoval na řadiče domény spravované domény.  
-      >
+   > [!NOTE]
+   > **Řešení potíží:** Pokud *zjišťování sféry* nemůže najít vaši spravovanou doménu:  
+   >    * Ujistěte se, že doménu je dostupný z virtuálního počítače (zkuste příkaz ping).  
+   >    * Zkontrolujte, že virtuální počítač skutečně byla nasazena do stejné virtuální síti, ve kterém je spravovaná doména k dispozici.
+   >    * Zaškrtněte, pokud chcete zobrazit, když jste aktualizovali nastavení serveru DNS pro virtuální síť tak, aby odkazoval na řadiče domény spravované domény.  
 
 2. Inicializace protokolu Kerberos. V terminálu SSH zadejte následující příkaz:
 

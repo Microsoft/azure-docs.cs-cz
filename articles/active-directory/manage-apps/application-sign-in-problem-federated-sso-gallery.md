@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5b61dbb3c6dde8dfcabdba015ee41e968cc5dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013094"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
 
@@ -93,7 +93,7 @@ Poté, co jste aktualizovali hodnotu adresy URL odpovědi ve službě Azure AD a
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel není přiřazený k roli
 
-*Chyba AADSTS50105: Přihlášený uživatel "brian@contoso.com" není přiřazen k roli pro aplikaci*.
+*Chyba AADSTS50105: Přihlášený uživatel "brian\@contoso.com" není přiřazen k roli pro aplikaci*.
 
 **Možná příčina**
 
@@ -145,14 +145,14 @@ Po krátkou dobu budou moci spouštět tyto aplikace pomocí metod popsaných v 
 
 Azure AD nepodporuje požadavek SAML, kterou aplikace odeslala, pro jednotné přihlašování. Mezi běžné problémy patří:
 
--   Chybí povinná pole. v požadavku SAML
--   Požadavek SAML zakódoval metodu
+-   V požadavku SAML chybí povinná pole.
+-   Kódovaná metoda požadavku SAML
 
 **Řešení**
 
-1.  Zaznamenejte požadavek SAML. postupujte podle kurzu [ladění založené na SAML jednotného přihlašování k aplikacím ve službě Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) informace o zaznamenání požadavku SAML.
+1. Zaznamenejte požadavek SAML. postupujte podle kurzu [ladění založené na SAML jednotného přihlašování k aplikacím ve službě Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) informace o zaznamenání požadavku SAML.
 
-1.  Obraťte se na dodavatele aplikace a sdílet tyto údaje:
+1. Obraťte se na dodavatele aplikace a sdílet tyto údaje:
 
    -   Požadavek SAML
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: b5ea7822d96e45d61ecef384d15d78e6a75fa46c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310722"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014048"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu paměti pro službu Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manageru
 
@@ -41,27 +41,27 @@ V tomto článku přidáte vlastní test paměti existující aplikační brán�
 
 1. Použití `Connect-AzAccount` k ověření.
 
-  ```powershell
-  Connect-AzAccount
-  ```
+   ```powershell
+   Connect-AzAccount
+   ```
 
 1. Získáte předplatná pro příslušný účet.
 
-  ```powershell
-  Get-AzSubscription
-  ```
+   ```powershell
+   Get-AzSubscription
+   ```
 
 1. Zvolte předplatné Azure, které chcete použít.
 
-  ```powershell
-  Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
-  ```
+   ```powershell
+   Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
+   ```
 
 1. Vytvořte skupinu prostředků. Pokud máte existující skupinu prostředků, můžete tento krok přeskočit.
 
-  ```powershell
-  New-AzResourceGroup -Name appgw-rg -Location 'West US'
-  ```
+   ```powershell
+   New-AzResourceGroup -Name appgw-rg -Location 'West US'
+   ```
 
 Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby application gateway používají stejnou skupinu prostředků.
 
@@ -105,7 +105,7 @@ Nastavit všechny položky konfigurace před vytvořením služby application ga
 |**Pravidlo**| Směrování provozu do příslušného back-endu podle nastavení protokolu HTTP.|
 
 ```powershell
-# Creates a application gateway Frontend IP configuration named gatewayIP01
+# Creates an application gateway Frontend IP configuration named gatewayIP01
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 #Creates a back-end IP address pool named pool01 with IP addresses 134.170.185.46, 134.170.188.221, 134.170.185.50.

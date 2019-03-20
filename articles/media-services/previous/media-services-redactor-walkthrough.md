@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 14a274dbbc45f00ecf914d5bb0a3e1c040fb3a89
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 70cd93e4f7984e938a67c799d632f653745a6c62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994519"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870025"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Zákona o svobodném přístupu tváře s názorným postupem Azure Media Analytics
 
@@ -130,6 +130,6 @@ Pokud jste vývojář pokusu o analýzu dat JSON poznámky, vyhledejte uvnitř M
 ## <a name="related-links"></a>Související odkazy
 [Azure Media Services Analytics Overview](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Oznamujeme vydání rozmazání Obličejů pro Azure Media Analytics](https://azure.microsoft.com/blog/azure-media-redactor/)

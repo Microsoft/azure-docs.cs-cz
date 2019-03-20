@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: fcb5941c56eda19f9c524a2c078a76483426b862
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082921"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení k ochraně hybridní zálohy, které používají Azure Backup
 Otázky týkající se otázek zabezpečení, jako je malware, před ransomwarem a neoprávněných vniknutí, roste. Tyto problémy se zabezpečením může být náročné, peněz i data. Pro ochranu před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a služby Azure Backup serveru. Tyto funkce patří:
@@ -82,7 +82,7 @@ Abyste měli jistotu, že pouze platné uživatele můžete provádět různé o
 Jako součást přidáním další úrovně ověřování pro kritické operace, budete vyzváni, zadejte bezpečnostní kód PIN, když provádíte **zastavit ochranu a odstraňte data** a **změnit heslo** operace.
 
 > [!NOTE]
-
+> 
 > V současné době bezpečnostní kód pin není podporována pro **zastavit ochranu a odstraňte data** pro DPM a MABS.
 
 Chcete-li zobrazit tento PIN kód:

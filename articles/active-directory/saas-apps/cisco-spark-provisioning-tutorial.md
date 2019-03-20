@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120393"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cisco Spark pro automatické zřizování uživatelů
 
@@ -113,28 +113,28 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
     *   V **tajný klíč tokenu** pole, vyplňte tajný klíč tokenu, jak je popsáno v kroku 6.
 
 1. **ID Tenanta** a **tajný klíč tokenu** pro Cisco Spark účtu najdete po přihlášení na [webu pro vývojáře Cisco Spark](https://developer.webex.com/) pomocí účtu správce. Po přihlášení -
-    * Přejděte [stránka Začínáme](https://developer.webex.com/getting-started.html)
-    * Přejděte dolů k položce [oddíl Authentication](https://developer.webex.com/getting-started.html#authentication)
-    ![Cisco Spark ověřovací Token](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * Alfanumerický řetězec v poli je vaše **tajný klíč tokenu**. Zkopírujte tento token do schránky
-    * Přejděte [získat Moje vlastní stránka s podrobnostmi o](https://developer.webex.com/endpoint-people-me-get.html)
-        * Zajistěte, aby byl Test režimu ON
-        * Zadejte slovo "Nosiče" následované mezerou a vložte Token tajného klíče do pole autorizace ![Cisco Spark ověřovací Token](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
-        * Klikněte na tlačítko Spustit
-    * V textu odpovědi na pravé straně **ID Tenanta** se zobrazí jako "orgId":
+   * Přejděte [stránka Začínáme](https://developer.webex.com/getting-started.html)
+   * Přejděte dolů k položce [oddíl Authentication](https://developer.webex.com/getting-started.html#authentication)
+     ![Cisco Spark ověřovací Token](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+   * Alfanumerický řetězec v poli je vaše **tajný klíč tokenu**. Zkopírujte tento token do schránky
+   * Přejděte [získat Moje vlastní stránka s podrobnostmi o](https://developer.webex.com/endpoint-people-me-get.html)
+       * Zajistěte, aby byl Test režimu ON
+       * Zadejte slovo "Nosiče" následované mezerou a vložte Token tajného klíče do pole autorizace ![Cisco Spark ověřovací Token](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+       * Klikněte na tlačítko Spustit
+   * V textu odpovědi na pravé straně **ID Tenanta** se zobrazí jako "orgId":
 
-    ```json
-    {
-        "id": "(...)",
-        "emails": [
-            "admin.user@contoso.com"
-        ],
-        "displayName": "John Smith",
-        "nickName": "John",
-        "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        (...)
-    }
-    ```
+     ```json
+     {
+       "id": "(...)",
+       "emails": [
+           "admin.user@contoso.com"
+       ],
+       "displayName": "John Smith",
+       "nickName": "John",
+       "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       (...)
+     }
+     ```
 
 1. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Cisco Spark. Pokud se nepovede, ujistěte se, že váš účet Cisco Spark má oprávnění správce a zkuste to znovu.
 

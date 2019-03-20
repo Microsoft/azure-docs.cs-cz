@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002339"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 
@@ -72,7 +72,7 @@ Odpověď: Pro přístup k pracovní prostor v Azure, musíte mít oprávnění 
 Odpověď: Návrhář zobrazení je dostupná jenom v protokolech pro uživatelé s oprávněním Přispěvatel nebo vyšší.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>Otázka: Použití portálu Analytics mimo Azure
-A. Ano, na stránce protokoly v Azure a portál pro pokročilou analýzu jsou založeny na stejný kód. Log Analytics je integrované jako funkci ve službě Azure Monitor k poskytování více jednotné možnosti monitorování. Můžete nadále přistupovat pomocí adresy URL portálu Analytics: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Ano, na stránce protokoly v Azure a portál pro pokročilou analýzu jsou založeny na stejný kód. Log Analytics je integrované jako funkci ve službě Azure Monitor k poskytování více jednotné možnosti monitorování. Můžete nadále přistupovat pomocí adresy URL portálu Analytics: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
 
 
 

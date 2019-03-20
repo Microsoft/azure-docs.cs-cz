@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08aab209d4772435c8b349026f036ce15ff73ced
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7bc40c5043cefad7892eaead8fe8058ac3707865
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731618"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Kurz: Integrace Azure Active Directory s Envi MMIS
 
@@ -184,7 +184,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -237,7 +237,7 @@ Povolení služby Azure AD uživatelům umožní přihlásit k Envi MMIS, musí 
 
     ![Přidat zaměstnance](./media/envimmis-tutorial/user3.png)
 
-    a. V **uživatelské jméno** , jako je textové pole, zadejte uživatelské jméno účtu Britta Simon **brittasimon@contoso.com**.
+    a. V **uživatelské jméno** , jako je textové pole, zadejte uživatelské jméno účtu Britta Simon **brittasimon\@contoso.com**.
     
     b. V **křestní jméno** , jako je textové pole, typ křestní jméno BrittaSimon **Britta**.
 
@@ -245,9 +245,9 @@ Povolení služby Azure AD uživatelům umožní přihlásit k Envi MMIS, musí 
 
     d. Zadejte název uživatele v **název** textového pole.
     
-    e. V **e-mailovou adresu** , jako je textové pole, typ e-mailovou adresu účtu Britta Simon **brittasimon@contoso.com**.
+    e. V **e-mailovou adresu** , jako je textové pole, typ e-mailovou adresu účtu Britta Simon **brittasimon\@contoso.com**.
 
-    f. V **jednotné uživatelské jméno** , jako je textové pole, zadejte uživatelské jméno účtu Britta Simon **brittasimon@contoso.com**.
+    f. V **jednotné uživatelské jméno** , jako je textové pole, zadejte uživatelské jméno účtu Britta Simon **brittasimon\@contoso.com**.
 
     g. Klikněte na **Uložit**.
 

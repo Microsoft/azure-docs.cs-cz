@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: e4ccb9be5d13ea72086fbaae2ffb2ec63ad55786
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f3c485659bc686efbb4101879e5cd24e7bb3db46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340316"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905099"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa služby Azure Active Directory ověřování pomocí SQL
 
@@ -29,12 +29,14 @@ V tomto článku se dozvíte, jak vytvořit a naplnit Azure AD a Azure AD pomoc�
 > Připojení k SQL serveru běžícího na Virtuálním počítači Azure není podporováno použití účtu služby Azure Active Directory. Místo toho použijte doménu účtu služby Active Directory.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 ## <a name="create-and-populate-an-azure-ad"></a>Vytvoření a naplnění Azure AD
 
 Vytvoření Azure AD a přidání uživatelů a skupin. Azure AD může být počáteční Azure AD spravované domény. Azure AD může být také v místním Active Directory Domain Services, která se federuje s Azure AD.
 
-Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) a [Porty a protokoly, které vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md).
+Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview) a [Porty a protokoly, které vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory
 
@@ -240,6 +242,7 @@ Správce Azure Active Directory můžete také vytvářet pomocí rozhraní REST
 ### <a name="cli"></a>Rozhraní příkazového řádku  
 
 Správce Azure AD můžou zřizovat také voláním následující příkazy rozhraní příkazového řádku:
+
 | Příkaz | Popis |
 | --- | --- |
 |[vytvoření ad správce az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
@@ -349,7 +352,7 @@ Tuto metodu použijte, pokud připojení s názvem instančního objektu Azure A
 Tuto metodu použijte k ověření do SQL DB/DW s Azure AD pro nativní nebo federovaných uživatelů Azure AD. Nativní uživatelská je jednou explicitně vytvořena ve službě Azure AD a ověřuje pomocí uživatelského jména a hesla, zatímco federovaného uživatele se Windows uživatele má doménu je Federovaná pomocí služby Azure AD. Druhá metoda (s použitím uživatele a heslo) lze použít, když chce uživatel použít svoje přihlašovací údaje systému windows, ale jejich místní počítač není připojený k doméně (například pomocí vzdáleného přístupu). V tomto případě uživatel Windows můžete určit jejich účet domény a heslo a může ověřit do SQL DB/DW pomocí federovaného pověření.
 
 1. Spuštění Management Studio nebo nástroje pro Data a **připojit k serveru** (nebo **připojit k databázovému stroji**) v dialogovém **ověřování** vyberte  **Active Directory – heslo**.
-2. V **uživatelské jméno** zadejte jméno uživatele Azure Active Directory ve formátu **username@domain.com**. Uživatelská jména musí být účet ze služby Azure Active Directory nebo účet z domény provést federaci se službou Azure Active Directory.
+2. V **uživatelské jméno** zadejte jméno uživatele Azure Active Directory ve formátu **uživatelské jméno\@domain.com**. Uživatelská jména musí být účet ze služby Azure Active Directory nebo účet z domény provést federaci se službou Azure Active Directory.
 3. V **heslo** zadejte vaše uživatelské heslo pro účet služby Azure Active Directory nebo federované účet domény.
 
     ![Vyberte metodu ověřování hesla služby AD][12]

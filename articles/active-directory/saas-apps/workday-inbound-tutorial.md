@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c921df493eeda25c50047e861d3d30e6dc52a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897618"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
 
@@ -257,13 +257,13 @@ V tomto kroku vytvoříte skupinu zabezpečení systému integrace neomezeným n
     ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity Group")
 2. Dokončení **vytvořit skupinu zabezpečení** úloh. 
 
-  * Existují dva typy skupin zabezpečení ve Workday:
-    * **Aktivace:** Všechny členy skupiny zabezpečení přístupné všechny instance data zabezpečená pomocí skupiny zabezpečení.
-    * **Omezené:** Všechny členy skupiny zabezpečení měli kontextové podmnožinu dat instancí (řádků), ke kterým přístup do skupiny zabezpečení.
-  * Poraďte se vašeho partnera integraci Workday a vybrat typ skupiny zabezpečení pro integraci.
-  * Jakmile budete znát typ skupiny, vyberte **skupiny zabezpečení systému integrace (neomezená)** nebo **skupiny zabezpečení systému integrace (Constrained)** z **typ z klienty skupiny zabezpečení**  rozevíracího seznamu.
+   * Existují dva typy skupin zabezpečení ve Workday:
+     * **Aktivace:** Všechny členy skupiny zabezpečení přístupné všechny instance data zabezpečená pomocí skupiny zabezpečení.
+     * **Omezené:** Všechny členy skupiny zabezpečení měli kontextové podmnožinu dat instancí (řádků), ke kterým přístup do skupiny zabezpečení.
+   * Poraďte se vašeho partnera integraci Workday a vybrat typ skupiny zabezpečení pro integraci.
+   * Jakmile budete znát typ skupiny, vyberte **skupiny zabezpečení systému integrace (neomezená)** nebo **skupiny zabezpečení systému integrace (Constrained)** z **typ z klienty skupiny zabezpečení**  rozevíracího seznamu.
 
-    ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity Group")
+     ![CreateSecurity Group](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity Group")
 
 3. Po úspěšném vytvoření skupiny zabezpečení, zobrazí se stránka, kde můžete přiřadit členy do skupiny zabezpečení. Přidání nového uživatele systému integrace vytvořili v předchozím kroku do této skupiny zabezpečení. Pokud používáte *omezené* skupiny zabezpečení, budete také muset vybrat obor příslušné organizace.
 
@@ -286,11 +286,11 @@ V tomto kroku budete "zabezpečení domény" udělit oprávnění zásad pro pra
    * *Data pracovních procesů: Aktuální personální informace*
    * *Data pracovních procesů: Název firmy na pracovní profil*
 
-    ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_07.png "zásady zabezpečení domény")  
+     ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_07.png "zásady zabezpečení domény")  
 
-    ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_08.png "zásady zabezpečení domény") 
+     ![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_08.png "zásady zabezpečení domény") 
 
-    Klikněte na **OK**.
+     Klikněte na **OK**.
 
 3. V sestavě, která se zobrazí, vyberte tři tečky (...), která se zobrazí vedle **externí zřizování účtů** a klikněte na možnost nabídky **domény -> Upravit oprávnění zásad zabezpečení**
 
@@ -428,7 +428,7 @@ Po nasazení .NET 4.7.1+ si můžete stáhnout **[zde agentem zřizování v mí
 
 8. Dokončení **přihlašovacích údajů správce** části následujícím způsobem:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integraci Workday, se připojí název domény tenantu. By měl vypadat přibližně jako: **username@tenant_name**
+   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integraci Workday, se připojí název domény tenantu. Ji by měl vypadat podobně jako: **uživatelské jméno\@Název_klíče**
 
    * **Heslo správce –** zadejte heslo účtu systému integraci Workday
 
@@ -438,8 +438,8 @@ Po nasazení .NET 4.7.1+ si můžete stáhnout **[zde agentem zřizování v mí
 
    * **Kontejner služby Active Directory -** zadejte rozlišující název kontejneru, kde vytváříte uživatelské účty ve výchozím nastavení agenta.
         Příklad: *Organizační jednotky = standardní uživatelé, OU = Users, DC = contoso, DC = test*
-> [!NOTE]
-> Toto nastavení pouze dodává do hry pro vytváření účtů uživatelů, pokud *parentDistinguishedName* atribut není nakonfigurovaný v mapování atributů. Toto nastavení nepoužívají pro hledání uživatele nebo aktualizace operace. Sub stromu celé doméně spadá do rozsahu operace vyhledávání.
+     > [!NOTE]
+     > Toto nastavení pouze dodává do hry pro vytváření účtů uživatelů, pokud *parentDistinguishedName* atribut není nakonfigurovaný v mapování atributů. Toto nastavení nepoužívají pro hledání uživatele nebo aktualizace operace. Sub stromu celé doméně spadá do rozsahu operace vyhledávání.
 
    * **E-mailové oznámení –** zadejte svou e-mailovou adresu a zaškrtněte políčko "Odeslat e-mail, pokud dojde k selhání".
 
@@ -477,11 +477,11 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 > [!TIP]
 > Při první konfiguraci zřizování aplikací, je potřeba otestovat a ověřit mapování atributů a výrazy, abyste měli jistotu, že se vám umožňuje požadovaný výsledek. Společnost Microsoft doporučuje použití nepříznivě filtruje podle **obor zdrojového objektu** otestovat mapování s několika testovacích uživatelů z Workday. Jakmile si ověříte, že pracujete mapování, pak můžete odebrat filtr nebo rozbalte postupně tak, aby obsahovala více uživatelů.
 
-3. V **akce cílového objektu** pole, můžete globálně filtrovat, jaké akce se provádí na základě Active Directory. **Vytvoření** a **aktualizace** rozsahu je nejvíce.
+1. V **akce cílového objektu** pole, můžete globálně filtrovat, jaké akce se provádí na základě Active Directory. **Vytvoření** a **aktualizace** rozsahu je nejvíce.
 
-4. V **mapování atributů** oddílu, můžete definovat jak jednotlivé Workday atributy mapování atributů služby Active Directory.
+1. V **mapování atributů** oddílu, můžete definovat jak jednotlivé Workday atributy mapování atributů služby Active Directory.
 
-5. Klikněte na existující mapování atributů ji aktualizovat, nebo klikněte na tlačítko **přidat nové mapování** v dolní části obrazovky, chcete-li přidat nové mapování. Mapování individuální atribut podporuje tyto vlastnosti:
+1. Klikněte na existující mapování atributů ji aktualizovat, nebo klikněte na tlačítko **přidat nové mapování** v dolní části obrazovky, chcete-li přidat nové mapování. Mapování individuální atribut podporuje tyto vlastnosti:
 
       * **Typ mapování**
 
@@ -508,7 +508,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 
          * **Jenom během vytváření** -použít toto mapování jenom na akce vytvoření uživatele
 
-6. Chcete-li uložit mapování, klikněte na tlačítko **Uložit** v horní části mapování atributů.
+1. Chcete-li uložit mapování, klikněte na tlačítko **Uložit** v horní části mapování atributů.
 
    ![portál Azure](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ano** | Zapisovat pouze při vytváření |
 | **PreferredNameData**    |  CN    |   |   Zapisovat pouze při vytváření |
-| **SelectUniqueValue (připojit k ("@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("@", připojte se k (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), připojte se k ("@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
-| **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze při vytváření |
+| **SelectUniqueValue (připojit k ("\@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 1 (), \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
+| **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze při vytváření |
 | **Přepínač (\[aktivní\],, "0", "PRAVDA", "1", "Nepravda")** |  accountDisabled      |     | Vytváření a aktualizace |
 | **Jméno**   | givenName       |     |    Vytváření a aktualizace |
 | **LastName**   |   sériové číslo   |     |  Vytváření a aktualizace |
@@ -677,7 +677,7 @@ Postupujte podle těchto pokynů a nakonfigurovat zpětný zápis e-mailové adr
 
 8. Dokončení **přihlašovacích údajů správce** části následujícím způsobem:
 
-   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integraci Workday, se připojí název domény tenantu. By měla vypadat podobně jako: *username@contoso4*
+   * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integraci Workday, se připojí název domény tenantu. By měl vypadat nějak takto: *uživatelské jméno\@contoso4*
 
    * **Heslo správce –** zadejte heslo účtu systému integraci Workday
 
@@ -1226,7 +1226,7 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
 7. Nastavte **operace** k **Get_Workers**
 
-8.  Klikněte na malé **konfigurace** odkaz podokna požadavku nebo odpovědi k nastavení pověření Workday. Zkontrolujte **ověřování**a pak zadejte uživatelské jméno a heslo pro váš účet integrace systému Workday. Je potřeba formátovat jako uživatelské jméno name@tenanta nechat **WS-Security UsernameToken** zaškrtnutou možnost.
+8.  Klikněte na malé **konfigurace** odkaz podokna požadavku nebo odpovědi k nastavení pověření Workday. Zkontrolujte **ověřování**a pak zadejte uživatelské jméno a heslo pro váš účet integrace systému Workday. Nezapomeňte si uživatelské jméno jako název formátu\@tenanta a nechte **WS-Security UsernameToken** zaškrtnutou možnost.
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

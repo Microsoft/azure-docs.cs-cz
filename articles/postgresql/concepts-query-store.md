@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cd4cf12390ff29754b55d2827ea4750e7123a27
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730481"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005907"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
@@ -36,8 +36,8 @@ Query Store je funkce opt-in, proto není ve výchozím nastavení na server akt
 4. Nastavte hodnotu na `TOP` a **Uložit**.
 
 Pokud chcete povolit čekání statistické údaje ve vašich Query Store: 
-5. Hledat `pgms_wait_sampling.query_capture_mode` parametru.
-6. Nastavte hodnotu na `ALL` a **Uložit**.
+1. Hledat `pgms_wait_sampling.query_capture_mode` parametru.
+1. Nastavte hodnotu na `ALL` a **Uložit**.
 
 
 Případně můžete nastavit tyto parametry s využitím rozhraní příkazového řádku Azure.
@@ -87,6 +87,7 @@ Tady jsou některé příklady, jak můžete získat podrobnější informace o 
 Pokud je povolena Query Store uloží data v systému windows agregace 15 minut až 500 různých dotazů na okno. 
 
 Tyto možnosti jsou k dispozici pro konfiguraci Query Store parametry.
+
 | **Parametr** | **Popis** | **Výchozí** | **rozsah**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádný | NONE, top, vše |
@@ -95,6 +96,7 @@ Tyto možnosti jsou k dispozici pro konfiguraci Query Store parametry.
 | pg_qs.track_utility | Nastaví, zda jsou sledovány příkazy nástroje | zapnuté | vypnutý |
 
 Tyto možnosti platí konkrétně pro počkejte statistiky.
+
 | **Parametr** | **Popis** | **Výchozí** | **rozsah**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Sady, které příkazy jsou sledována pro čekání statistiky. | žádný | NONE, vše|

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64e5e78f93488b2c375c617e8857c84ba2171f00
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880031"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android pomocí Azure prostorových kotvy
 
@@ -33,6 +33,8 @@ Dozvíte se, jak provést tyto akce:
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 - Windows nebo macOS počítače s <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a>.
+  - Pokud používáte Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
+  - Pokud spuštěný v systému macOS, zajistit správné fungování Gitu instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
   - K vytvoření vzorku NDK, budete také muset nainstalovat NDK a CMake 3.6 SDK Tools v nástroji Android Studio.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer povolené</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore podporující</a> zařízení s Androidem.
 - Aplikace musí cílit na ARCore 1.5 (podpora ARCore 1.6 + budou již brzy)
@@ -59,7 +61,7 @@ Vyberte **otevřete existující projekt Android Studio** a vyberte projekt v `A
 
 ## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
 
-Dalším krokem je konfigurace aplikace použijte identifikátor účtu a klíč účtu zaznamenané dříve při nastavování zdroje prostorových ukotvení.
+Dalším krokem je konfigurace aplikace pro používání identifikátor účtu a klíč účtu. Jste zkopírovali do textového editoru, když [nastavení zdroje prostorových kotvy](#create-a-spatial-anchors-resource).
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 

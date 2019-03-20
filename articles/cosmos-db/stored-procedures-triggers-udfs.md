@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083194"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelem definovaných funkcí
 
@@ -26,7 +26,7 @@ Zápis v jazyce JavaScript uložené procedury, triggery a uživatelem definovan
 
 * **Atomické transakce:** Azure Cosmos DB zaručuje, že databázových operací, které se provádí v rámci jedné uložené procedury nebo aktivační události jsou atomické. Tato funkce atomic umožňuje kombinovat souvisejících operací do jedné dávce, tak, aby všechny operace úspěšná nebo žádné z nich úspěšné aplikace.
 
-- **Výkon:** JSON data vnitřně namapována na systém typů jazyka JavaScript. Toto mapování umožňuje počet optimalizaci, jako je opožděné materializace dokumentů JSON ve fondu vyrovnávací paměti a které je k dispozici na vyžádání prováděním kódu. Existují další výhody výkonu přidružený k přesouvání obchodní logiky k databázi, která zahrnuje:
+* **Výkon:** JSON data vnitřně namapována na systém typů jazyka JavaScript. Toto mapování umožňuje počet optimalizaci, jako je opožděné materializace dokumentů JSON ve fondu vyrovnávací paměti a které je k dispozici na vyžádání prováděním kódu. Existují další výhody výkonu přidružený k přesouvání obchodní logiky k databázi, která zahrnuje:
 
    * *Dávkové zpracování:* Lze seskupit operace, jako je vložení a odešlete je hromadně. Jsou výrazně snížit náklady na provoz latence sítě a režie úložiště k vytvoření samostatných transakcí.
 
@@ -34,7 +34,7 @@ Zápis v jazyce JavaScript uložené procedury, triggery a uživatelem definovan
 
    * *Pořadí úloh:* Někdy potřebujete operations spouštěcí mechanismus, který může provést jednu nebo další aktualizace k datům. Kromě atomicitu existují také přinese zlepšení výkonu při spouštění na straně serveru.
 
-- **Zapouzdření protokolu:** Uložené procedury lze použít k seskupení logiku na jednom místě. Zapouzdření přidá abstraktní vrstvu nad daty, která umožňuje vyvíjet aplikace nezávisle na data. Tato vrstva abstrakce je užitečné, když data bez schématu a není nutné spravovat, přidáte další logiku přímo do vaší aplikace. Abstrakce vám umožní vaší zajistit zabezpečení dat tak, že usnadňuje přístup ze skriptů.
+* **Zapouzdření protokolu:** Uložené procedury lze použít k seskupení logiku na jednom místě. Zapouzdření přidá abstraktní vrstvu nad daty, která umožňuje vyvíjet aplikace nezávisle na data. Tato vrstva abstrakce je užitečné, když data bez schématu a není nutné spravovat, přidáte další logiku přímo do vaší aplikace. Abstrakce vám umožní vaší zajistit zabezpečení dat tak, že usnadňuje přístup ze skriptů.
 
 > [!TIP]
 > Uložené procedury jsou nejvhodnější pro operace, které jsou zápisu náročná na výkon. Při rozhodování, kam pouze pomocí uložených procedur, optimalizujte kolem zapouzdření maximální dobu, možná zápisy. Obecně řečeno uložené procedury nejsou nejúčinnější způsob plnit velkým počtem operací čtení, proto vrátí klientovi pomocí uložené procedury pro batch velký počet čtení nepřinese požadovanou výhodu.

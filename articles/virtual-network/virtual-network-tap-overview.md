@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
+ms.date: 03/18/2019
 ms.author: kaanan
-ms.openlocfilehash: 5532174b6fc72f51e7ba7a946e601e7d97c7808e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189134"
 ---
 # <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 
 Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průběžně stream vašeho virtuálního počítače síťový provoz do síťových paketů kolekcí nebo analytics nástroj. Nástroj kolekcí nebo analytics poskytuje [síťové virtuální zařízení](https://azure.microsoft.com/solutions/network-appliances/) partnera. Seznam partnerských řešení, kteří jsou ověření pro práci s virtuální sítí TAP najdete v tématu [partnerská řešení](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Virtuální síť TAP je aktuálně ve verzi preview pro vývojáře v oblasti WestCentralUS Azure. Pokud chcete použít virtuální síť TAP, musíte se zaregistrovat ve verzi preview zasláním e-mailu <azurevnettap@microsoft.com> svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Nejste schopni používat funkci, kterou, až se zobrazí potvrzovací e-mail. Tato verze preview pro vývojáře je k dispozici bez smlouvy o úrovni služeb a nemělo používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Zobrazit [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) podrobnosti.
+> Virtuální síť TAP je aktuálně ve verzi preview ve všech oblastech Azure. Pokud chcete použít virtuální síť TAP, musíte se zaregistrovat ve verzi preview zasláním e-mailu <azurevnettap@microsoft.com> svým ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Nejste schopni používat funkci, kterou, až se zobrazí potvrzovací e-mail. V této verzi preview je k dispozici bez smlouvy o úrovni služeb a nemělo používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Zobrazit [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) podrobnosti.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Virtuální síť TAP partnerských řešení
 
@@ -40,9 +40,11 @@ Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průbě�
 ### <a name="security-analytics-networkapplication-performance-management"></a>Analýzu zabezpečení, správy výkonu sítě/aplikací
 
 - [Vzhůru zabezpečení](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
+- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Pomocí Nubeva prismatu](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)

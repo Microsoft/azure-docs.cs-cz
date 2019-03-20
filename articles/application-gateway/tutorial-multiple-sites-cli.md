@@ -10,16 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fede6907b2b5fac475758b1bb8b1493b86ed408
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a1f1b464b2ac6fc62ea23a80a3887961ebe2d87e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100713"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Kurz: Vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI
 
-Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto kurzu definujete back-endové fondy adres pomocí škálovacích sad virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
+Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto kurzu definujete back-endové fondy adres pomocí škálovacích sad virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že jste vlastníkem více domén a používá příklady *www\.contoso.com* a *www\.fabrikam.com*.
 
 V tomto kurzu se naučíte:
 

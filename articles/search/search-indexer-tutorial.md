@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: MT
+ms.openlocfilehash: e23c9e04d06e509cba32c728ae6f86e1328d88cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312047"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111068"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
@@ -90,20 +90,20 @@ Koncový bod vyhledávací služby a klíč najdete na portálu. Klíč poskytuj
 
 4. Název zkopírujte a vložte jej jako první položku do souboru **appsettings.json** v sadě Visual Studio.
 
-  > [!Note]
-  > Název služby je součástí koncového bodu, který zahrnuje search.windows.net. Pokud jste zvědaví, v části **Základy** na stránce Přehled můžete zobrazit úplnou adresu URL. Adresa URL vypadá jako v tomto příkladu: https://your-service-name.search.windows.net
+   > [!Note]
+   > Název služby je součástí koncového bodu, který zahrnuje search.windows.net. Pokud jste zvědaví, v části **Základy** na stránce Přehled můžete zobrazit úplnou adresu URL. Adresa URL vypadá jako v tomto příkladu: https://your-service-name.search.windows.net
 
 5. Na levé straně v části **Nastavení** > **Klíče** zkopírujte jeden z klíčů správce a vložte jej jako druhou položku do souboru **appsettings.json**. Klíče jsou alfanumerické řetězce vygenerované pro vaši službu během zřizování, které se vyžadují pro ověřený přístup k operacím služby. 
 
-  Po přidání obou nastavení by měl váš soubor vypadat přibližně jako v tomto příkladu:
+   Po přidání obou nastavení by měl váš soubor vypadat přibližně jako v tomto příkladu:
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
 ## <a name="prepare-an-external-data-source"></a>Příprava externího zdroje dat
 
@@ -125,7 +125,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
 4. Otevřete stránku služby SQL Database pro vaši novou databázi, pokud ještě není otevřená. Název prostředku by měl být *Databáze SQL*, a ne *SQL Server*.
 
-  ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
+   ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
 
 4. Na panelu příkazů klikněte na **Nástroje** > **Editor dotazů**.
 
@@ -135,24 +135,24 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
 7. Vyberte tento soubor a klikněte na **Otevřít**. Váš skript by měl vypadat jako na následujícím snímku obrazovky:
 
-  ![Skript SQL](./media/search-indexer-tutorial/sql-script.png)
+   ![Skript SQL](./media/search-indexer-tutorial/sql-script.png)
 
 8. Kliknutím na **Spustit** dotaz spusťte. V podokně výsledků by se na 3 řádcích měla zobrazit zpráva o úspěšném provedení dotazu.
 
 9. Pokud chcete vrátit sadu řádků z této tabulky, můžete jako krok ověření spustit následující dotaz:
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   Typický dotaz `SELECT * FROM Hotels` v editoru dotazů nefunguje. Ukázková data obsahují v poli Location (Umístění) zeměpisné souřadnice, které editor v tuto chvíli nezpracovává. Seznam dalších sloupců, které můžete dotazovat, získáte spuštěním tohoto příkazu: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    Typický dotaz `SELECT * FROM Hotels` v editoru dotazů nefunguje. Ukázková data obsahují v poli Location (Umístění) zeměpisné souřadnice, které editor v tuto chvíli nezpracovává. Seznam dalších sloupců, které můžete dotazovat, získáte spuštěním tohoto příkazu: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Když teď máte externí datovou sadu, zkopírujte připojovací řetězec ADO.NET pro databázi. Na stránce služby SQL Database pro vaši databázi přejděte do **Nastavení** > **Připojovací řetězce** a zkopírujte připojovací řetězec ADO.NET.
  
-  Připojovací řetězec ADO.NET vypadá podobně jako v následujícím příkladu, ale je upravený, aby používal platný název databáze a platné uživatelské jméno a heslo.
+    Připojovací řetězec ADO.NET vypadá podobně jako v následujícím příkladu, ale je upravený, aby používal platný název databáze a platné uživatelské jméno a heslo.
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. Vložte připojovací řetězec do AzureSqlConnectionString jako třetí položku v souboru **appsettings.json** v sadě Visual Studio.
 
     ```json
@@ -250,15 +250,15 @@ Na webu Azure Portal na stránce Přehled vyhledávací služby klikněte v horn
 
 2. Kliknutím na tlačítko **Hledat** proveďte prázdné vyhledávání. 
 
-  Vrátí se tři položky ve vašem indexu jako dokumenty JSON. Průzkumník služby Search vrací dokumenty ve formátu JSON, abyste mohli zobrazit celou jejich strukturu.
+   Vrátí se tři položky ve vašem indexu jako dokumenty JSON. Průzkumník služby Search vrací dokumenty ve formátu JSON, abyste mohli zobrazit celou jejich strukturu.
 
 3. Dále zadejte hledaný řetězec `search=river&$count=true`. 
 
-  Tento dotaz vyvolá fulltextové vyhledávání výrazu `river` a výsledek bude obsahovat počet odpovídajících dokumentů. Vrácení počtu odpovídajících dokumentů je užitečné ve scénářích testování, když máte velký index s tisíci nebo miliony dokumentů. V tomto případě dotazu odpovídá pouze jeden dokument.
+   Tento dotaz vyvolá fulltextové vyhledávání výrazu `river` a výsledek bude obsahovat počet odpovídajících dokumentů. Vrácení počtu odpovídajících dokumentů je užitečné ve scénářích testování, když máte velký index s tisíci nebo miliony dokumentů. V tomto případě dotazu odpovídá pouze jeden dokument.
 
 4. Nakonec zadejte hledaný řetězec, který omezí pole ve výstupu JSON pouze na ta, která vás zajímají: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
-  Odpověď na dotaz je omezená na vybraná pole, což ve výsledku znamená stručnější výstup.
+   Odpověď na dotaz je omezená na vybraná pole, což ve výsledku znamená stručnější výstup.
 
 ## <a name="view-indexer-configuration"></a>Zobrazení konfigurace indexeru
 
@@ -268,7 +268,7 @@ Všechny indexery, včetně toho, který jste právě vytvořili prostřednictv�
 2. Přejděte dolů a vyhledejte dlaždice **Indexery** a **Zdroje dat**.
 3. Kliknutím na dlaždici otevřete seznam jednotlivých prostředků. Můžete vybrat jednotlivé indexery nebo zdroje dat a zobrazit nebo upravit nastavení konfigurace.
 
-  ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
+   ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

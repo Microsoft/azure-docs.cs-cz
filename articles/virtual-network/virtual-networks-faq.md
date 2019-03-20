@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: a8cc730e6e03e3d1adce1a584a20e8111116f40c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013055"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188607"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -285,7 +285,7 @@ Ne. VNet peering, ať už místní nebo globální, nepředstavuje nějaká omez
 ## <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Které oblasti Azure jsou k dispozici pro virtuální síť TAP?
-Ve verzi preview pro vývojáře možnost je dostupná v oblasti střed USA – západ. Monitorovaných síťových rozhraní, klepněte na prostředek virtuální sítě a řešení kolekcí nebo analytics se musí nasadit ve stejné oblasti.
+Virtuální síť TAP ve verzi preview je k dispozici ve všech oblastech Azure. Monitorovaných síťových rozhraní, klepněte na prostředek virtuální sítě a řešení kolekcí nebo analytics se musí nasadit ve stejné oblasti.
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Naslouchací zařízení virtuální sítě podporuje všechny možnosti filtrování v zrcadlené pakety?
 Možnosti filtrování nepodporují klepnutím na virtuální síť, ve verzi Preview. Při konfigurace klepněte na se přidá k síťovému rozhraní hluboká kopie všechny příchozí a výchozí přenos do síťového rozhraní se streamuje do cíle TAP.
@@ -298,7 +298,7 @@ Ano. Stejné virtuální síti TAP prostředků je možné použít k agregaci p
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Je-li povolit konfiguraci klepnutím na virtuální sítě v síťovém rozhraní jsou nějaké speciální pokyny jakékoli výkonu na produkční provoz?
 
-Virtuální síť TAP je ve verzi preview pro vývojáře. Ve verzi preview není žádná smlouva o úrovni služeb. Funkce by neměla používat pro produkční úlohy. Obrysů síťovému rozhraní virtuálního počítače s konfigurací klepněte na stejných prostředků na hostiteli azure přidělená k virtuálnímu počítači k posílání síťového provozu produkční slouží k provádění funkci zrcadlení a odeslat pakety pro zrcadlené. Vyberte správné [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikost virtuálního počítače zajistit dostatek prostředků k dispozici pro virtuální počítač pro odesílání provozních přenosů a přenosy se zrcadlením.
+Virtuální síť TAP je ve verzi preview. Ve verzi preview není žádná smlouva o úrovni služeb. Funkce by neměla používat pro produkční úlohy. Obrysů síťovému rozhraní virtuálního počítače s konfigurací klepněte na stejných prostředků na hostiteli azure přidělená k virtuálnímu počítači k posílání síťového provozu produkční slouží k provádění funkci zrcadlení a odeslat pakety pro zrcadlené. Vyberte správné [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikost virtuálního počítače zajistit dostatek prostředků k dispozici pro virtuální počítač pro odesílání provozních přenosů a přenosy se zrcadlením.
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Je akcelerované síťové služby pro [Linux](create-vm-accelerated-networking-cli.md) nebo [Windows](create-vm-accelerated-networking-powershell.md) podporované službou virtual network TAP?
 

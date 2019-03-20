@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847962"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
 Tento kurz popisuje, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která vystavuje rozhraní založené na protokolu REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- [Sada Visual Studio 2015 nebo novější](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+- [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
 - Azure SDK pro .NET. Nainstalujte ji z [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
 ## <a name="create-a-relay-namespace"></a>Vytvořit obor názvů služby Relay
@@ -81,10 +81,10 @@ Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastno
     {
         ...
     ```
-8. Přímo po otevření složené závorky deklarace oboru názvů definujte nové rozhraní s názvem **IImageContract** a aplikujte atribut **ServiceContractAttribute** na rozhraní s hodnotou `http://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů se liší od oboru názvů, které používáte v celém svém kódu. Hodnota oboru názvů se používá jako jedinečný identifikátor pro tento kontrakt a měla by mít informaci o verzi. Další informace najdete v článku o [Správa verzí služeb](https://go.microsoft.com/fwlink/?LinkID=180498). Když explicitně zadáte obor názvů, zabráníte tím přidání výchozí hodnoty oboru názvů do názvu kontraktu.
+8. Přímo po otevření složené závorky deklarace oboru názvů definujte nové rozhraní s názvem **IImageContract** a aplikujte atribut **ServiceContractAttribute** na rozhraní s hodnotou `https://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů se liší od oboru názvů, které používáte v celém svém kódu. Hodnota oboru názvů se používá jako jedinečný identifikátor pro tento kontrakt a měla by mít informaci o verzi. Další informace najdete v článku o [Správa verzí služeb](https://go.microsoft.com/fwlink/?LinkID=180498). Když explicitně zadáte obor názvů, zabráníte tím přidání výchozí hodnoty oboru názvů do názvu kontraktu.
    
     ```csharp
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
     public interface IImageContract
     {
     }
@@ -134,7 +134,7 @@ using System.IO;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -169,7 +169,7 @@ Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací ko
 2. Aplikujte atribut [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) na třídu **IImageService** na znamení, že třída je implementace kontraktu WCF.
    
     ```csharp
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
     }
@@ -311,7 +311,7 @@ namespace Microsoft.ServiceBus.Samples
 {
 
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -320,7 +320,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";
@@ -512,7 +512,7 @@ using Microsoft.ServiceBus.Web;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -521,7 +521,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";

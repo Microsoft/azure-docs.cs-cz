@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: monhaber
-ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: MT
+ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110949"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -82,20 +82,20 @@ Výběr virtuálních počítačů, které chcete povolit:
 
 1. V části **Just-in-time přístup k virtuálním počítačům**, vyberte **doporučená** kartu.
 
-  ![Povolení přístupu just-in-time](./media/security-center-just-in-time/enable-just-in-time-access.png)
+   ![Povolení přístupu just-in-time](./media/security-center-just-in-time/enable-just-in-time-access.png)
 
 2. V části **virtuální počítač**, vyberte virtuální počítače, které chcete povolit. To umístí značku zaškrtnutí vedle virtuálního počítače.
 3. Vyberte **povolit JIT na virtuálních počítačích**.
-  1. V tomto okně se zobrazí výchozí porty, doporučuje se služba Azure Security Center:
-     - 22 - SSH
-     - 3389 - RDP
-     - 5985 - WinRM 
-     - 5986 - WinRM
-  2. Můžete také nakonfigurovat vlastní porty. Chcete-li to provést, vyberte **přidat**. 
-  3. V **přidání konfigurace portu**, pro každý z portů provedete konfiguraci i výchozí a vlastní, můžete přizpůsobit následující nastavení:
-    - **Protokol typu**– protokol, který je povolen na tento port při schválení žádosti.
-    - **Povolené zdrojové IP adresy**– rozsahy IP adres, které jsou povolené pro tento port při schválení žádosti.
-    - **Maximální čas požadavku**– maximální časový interval, během které se dají otevřít specifického portu.
+   1. V tomto okně se zobrazí výchozí porty, doporučuje se služba Azure Security Center:
+      - 22 - SSH
+      - 3389 - RDP
+      - 5985 - WinRM 
+      - 5986 - WinRM
+   2. Můžete také nakonfigurovat vlastní porty. Chcete-li to provést, vyberte **přidat**. 
+   3. V **přidání konfigurace portu**, pro každý z portů provedete konfiguraci i výchozí a vlastní, můžete přizpůsobit následující nastavení:
+      - **Protokol typu**– protokol, který je povolen na tento port při schválení žádosti.
+      - **Povolené zdrojové IP adresy**– rozsahy IP adres, které jsou povolené pro tento port při schválení žádosti.
+      - **Maximální čas požadavku**– maximální časový interval, během které se dají otevřít specifického portu.
 
 4. Vyberte **Uložit**.
 
@@ -174,9 +174,9 @@ Můžete získat přehled o aktivitách virtuálního počítače pomocí prohle
 2. V části **virtuálních počítačů**, vyberte virtuální počítač k zobrazení informací o po kliknutí na tři tečky v rámci řádku pro tento virtuální počítač. Otevře se nabídka.
 3. Vyberte **protokolu aktivit** v nabídce. Tím se otevře **protokolu aktivit**.
 
-  ![Vyberte protokol aktivit](./media/security-center-just-in-time/select-activity-log.png)
+   ![Vyberte protokol aktivit](./media/security-center-just-in-time/select-activity-log.png)
 
-  **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro tento virtuální počítač spolu s čas, datum a předplatné.
+   **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro tento virtuální počítač spolu s čas, datum a předplatné.
 
 Informace protokolu můžete stáhnout tak, že vyberete **kliknutím sem stáhnete všechny položky jako CSV**.
 
@@ -188,16 +188,16 @@ Upravit filtry a vybrat **použít** vytvoříte vyhledávání a protokolu.
 Nastavte tyto požadovaná oprávnění a povolit tak uživateli konfigurovat nebo úprava zásad JIT pro virtuální počítač.
 
 Přiřadit tato *akce* do role: 
--   V oboru předplatného nebo skupiny prostředků, které souvisí s virtuálním Počítačem:
-   - Microsoft.Security/locations/jitNetworkAccessPolicies/write
--    V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
-   - Microsoft.Compute/virtualMachines/write 
+- V oboru předplatného nebo skupiny prostředků, které souvisí s virtuálním Počítačem:
+  - Microsoft.Security/locations/jitNetworkAccessPolicies/write
+- V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
+  - Microsoft.Compute/virtualMachines/write 
 
 Nastavte tato oprávnění a povolit tak uživateli úspěšně požádat o přístup JIT k virtuálnímu počítači: Přiřadit tato *akce* uživateli:
--   V oboru předplatného nebo skupiny prostředků, které souvisí s virtuálním Počítačem:
-   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ zahájení nebo akce
--    V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
-   - Microsoft.Compute/virtualMachines/read
+- V oboru předplatného nebo skupiny prostředků, které souvisí s virtuálním Počítačem:
+  - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ zahájení nebo akce
+- V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
+  - Microsoft.Compute/virtualMachines/read
 
 
 

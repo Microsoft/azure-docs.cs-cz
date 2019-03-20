@@ -1,7 +1,7 @@
 ---
-title: Pokyny pro přepis pro vzdělávání Speech Service
+title: Pokyny pro přepis pro trénování modelů hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasová písma pro službu rozpoznávání řeči.
+description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasů pro hlasové služby.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897210"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Přepis pokyny k používání Speech Service
 
 Chcete-li přizpůsobit **převod řeči na Text** nebo **převod textu na řeč**, je nutné zadat text spolu s řeči. Každý řádek v textu odpovídá jedné utterance. Text by měl odpovídat řeč co nejpřesněji. Text je volána *přepisu*, a je třeba jej vytvořit v určitém formátu.
 
-Speech Service normalizuje vstup pro zachování konzistence text. 
+Hlasové služby normalizovat vstup pro zachování konzistence text.
 
 Tento článek popisuje oba typy normalizations. Pravidla se mírně liší pro jednotlivé jazyky.
 
@@ -39,7 +39,7 @@ Vyhněte se použití rozšířené (Latin-1) nebo interpunkční znaky znakové
 
 ### <a name="text-normalization-rules-for-english"></a>Text pravidel normalizace pro angličtinu
 
-Speech Service provádí následující normalizace pravidla:
+Hlasové služby provádět následující normalizace pravidla:
 
 * Použití malých písmen pro veškerý text
 * Odebrat všechny interpunkční znaménka s výjimkou Wordu interní apostrofy
@@ -64,7 +64,7 @@ Platí následující normalizace pro vaše záznamy o studiu text:
 * Nestandardní číselné řetězce (například některé datum nebo formuláře monitorování účtů) by měl zapsaná ve slovech.
 * Slov s neabecedními znaky nebo smíšené alfanumerické znaky by měla být přepsána jako výraznější.
 * Ponechte zkratek, které jsou vyslovuje se jako slova beze změny (například "této možnosti taky přemýšlíte," "laserové," "RAM" nebo "NATO").
-* Zápis zkratek, které jsou vyslovováno jako samostatné písmena s písmeny oddělených mezerami (třeba "IBM," "CPU", "FBI", "TBD" nebo "Není číslo"). 
+* Zápis zkratek, které jsou vyslovováno jako samostatné písmena s písmeny oddělených mezerami (třeba "IBM," "CPU", "FBI", "TBD" nebo "Není číslo").
 
 Zde je několik příkladů:
 
@@ -83,7 +83,7 @@ Zde je několik příkladů:
 
 ## <a name="chinese-zh-cn"></a>Čínština (zh-cn)
 
-Textová data, která se nahraje do služby Custom Speech Service používali s značky pořadí bajtů kódování UTF-8. Soubor by měly být zapsány jeden utterance každý řádek.
+Textových dat, který se nahraje do vlastní hlasové služby by měl používat s značky pořadí bajtů kódování UTF-8. Soubor by měly být zapsány jeden utterance každý řádek.
 
 Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo scrape data z webové stránky. Nahraďte je vhodné náhrady plnou šířkou. Příklad:
 
@@ -94,7 +94,7 @@ Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může 
 
 ### <a name="text-normalization-rules-for-chinese"></a>Text pravidel normalizace pro čínštinu
 
-Speech Service provádí následující normalizace pravidla:
+Hlasové služby provádět následující normalizace pravidla:
 
 * Odebrat všechny interpunkční znaménka
 * Rozbalení čísla do mluvené řeči formuláře
@@ -134,7 +134,7 @@ Textová data nahrát do **převod řeči na Text** služba musí použít s zna
 
 ### <a name="text-normalization-rules-for-german"></a>Text pravidel normalizace pro němčinu
 
-Speech Service provádí následující normalizace pravidla:
+Hlasové služby provádět následující normalizace pravidla:
 
 * Použití malých písmen pro veškerý text
 * Odebrat všechny interpunkční znaménka, včetně různých typů uvozovky ("test", "test", "test" a "test" jsou OK)
@@ -162,13 +162,13 @@ Předtím, než importujete textu, aby u ní použil normalizace následující:
 
 Zde je několik příkladů:
 
-| Původní text | Po normalizace uživatele | Po normalizace systému
+| Původní text | Po normalizace uživatele | Po normalizace systému |
 |--------  | ----- | -------- |
 | Uhr TIS 12.23 ES | ES TIS 12:23 Uhr | ES TIS zwölf uhr drei a zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf ||
+| {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)

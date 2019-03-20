@@ -14,18 +14,18 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2d58ea2a7b25648dbecfefb882f71137096bff7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: a01bd205ad26169ab0a21345a2246eb12dca6645
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180887"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
 Zabezpečení většiny nebo veškerých podnikových prostředků v moderních organizacích závisí na integritě privilegovaných účtů, které spravují a řídí systémy IT. Útočníky včetně internetoví útočníci často cílí účtům pro správu a další prvky privilegovaného přístupu, pokusí se rychle získat přístup k citlivým datům a systémům pomocí útoků využívajících krádež přihlašovacích údajů. Pro cloud services, ochrany před únikem informací a odpovědi jsou společné odpovědnost poskytovatel cloudových služeb a zákazníka. Další informace o nejnovějších hrozbách do koncových bodů a cloud, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report). Tento článek pomáhají při vývoji plánu směrem k uzavření mezery mezi vašich aktuálních plánů a pokyny popsané.
 
-> [!NOTE] 
+> [!NOTE]
 > Společnost Microsoft se zavazuje poskytovat nejvyšší úrovně důvěryhodnosti, transparentnosti, shoda se standardy a předpisy. Další informace o jak globální reakce na incidenty týmu Microsoftu snižuje důsledky útoků proti cloudové služby a jak zabezpečení je integrováno do produktů Microsoft business a cloudovým službám v [Microsoft Trust Center - zabezpečení](https://www.microsoft.com/trustcenter/security)a Microsoft dodržování předpisů cílí na [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
@@ -101,7 +101,7 @@ První, kdo k použití ve vašem tenantovi Azure AD Privileged Identity Managem
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifikujte a kategorizaci účty, které jsou ve vysoce privilegované role 
 
-Po zapnutí Azure AD Privileged Identity Management, můžete zobrazte uživatele, kteří jsou v adresáři role Globální správce, správce privilegovaných rolí, správce Exchange Online a správce Sharepointu Online. Pokud nemáte Azure AD PIM ve vašem tenantovi, můžete použít [rozhraní API prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Spustit s rolí globálního správce, protože tato role je obecný: uživatel, který je přiřazena tato role správce má stejná oprávnění ve všech cloudových službách, pro které má vaše organizace předplacené, bez ohledu na to, zda se přiřadil tuto roli na portálu Office 365 , Azure portal, nebo pomocí modulu Azure AD pro Microsoft PowerShell. 
+Po zapnutí Azure AD Privileged Identity Management, můžete zobrazte uživatele, kteří jsou v adresáři role Globální správce, správce privilegovaných rolí, správce Exchange Online a správce Sharepointu Online. Pokud nemáte Azure AD PIM ve vašem tenantovi, můžete použít [rozhraní API prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Spustit s rolí globálního správce, protože tato role je obecný: uživatel, který je přiřazena tato role správce má stejná oprávnění ve všech cloudových službách, pro které má vaše organizace předplacené, bez ohledu na to, zda se přiřadil této role v Microsoft 365 Centrum pro správu, Azure portal, nebo pomocí modulu Azure AD pro Microsoft PowerShell. 
 
 Odeberte všechny účty, které už nejsou potřeba v těchto rolích. Potom kategorizace zbývajících účtů, která jsou přiřazená rolím správce:
 
@@ -138,7 +138,7 @@ S nárůstem přenést your-own-device (BYOD) a práci z domovské zásady a rů
 
 * Identifikujte uživatele, kteří mají správní role a služby, kde můžete spravovat.
 * Pomocí Azure AD PIM můžete zjistit, kteří uživatelé ve vaší organizaci mají přístup správce ke službě Azure AD, včetně dalších rolí nad rámec těch uvedené ve fázi 1.
-* Nad rámec role definované ve službě Azure AD Office 365 obsahuje sadu rolí správců, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce se mapuje na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění k provádění konkrétních úkolů v Centru pro správu Office 365. Pomocí centra pro správu Office a zjistěte, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí není spravovaná ve službě Azure AD. Další informace najdete v tématu [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [osvědčené postupy zabezpečení pro Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Nad rámec role definované ve službě Azure AD Office 365 obsahuje sadu rolí správců, které můžete přiřadit uživatelům ve vaší organizaci. Každá role správce se mapuje na běžné obchodní funkce a poskytuje lidem ve vaší organizaci oprávnění k provádění konkrétních úkolů [centra pro správu služeb Microsoft 365](https://admin.microsoft.com). Chcete-li zjistit, kteří uživatelé ve vaší organizaci mají přístup správce k Office 365, včetně rolí není spravovaná ve službě Azure AD pomocí centra pro správu služeb Microsoft 365. Další informace najdete v tématu [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) a [osvědčené postupy zabezpečení pro Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
 * Inventarizaci v dalších službách, které vaše organizace využívá, jako je například Azure, Intune nebo Dynamics 365.
 * Zkontrolujte, že vaše účty správců (počet účtů, které se používají pro účely správy, ne jenom každodenní účtů uživatelů) mají pracovní e-mailové adresy, které jsou připojené k nim a jste se zaregistrovali pro Azure MFA nebo používat MFA v místním.
 * Požádejte uživatele pro jejich obchodní odůvodnění přístup pro správu.
@@ -168,9 +168,7 @@ Azure AD doporučuje vyžadovat vícefaktorové ověřování (MFA) pro všechny
 
 Zapněte:
 
-* [MFA pro účty vysoce vystavení](../authentication/multi-factor-authentication-security-best-practices.md) například účty pro vedoucí pracovníci pověření ochranou výkonný v organizaci 
-* [Vícefaktorové ověřování pro každý účet správce přidružený k jednotlivého uživatele](../authentication/howto-mfa-userstates.md) pro druhým připojeným aplikacím SaaS 
-* Vícefaktorové ověřování pro všechny správce pro aplikace SaaS společnosti Microsoft, včetně správců v rolích spravované v Exchangi Online a na portálu Office
+* [Vícefaktorové ověřování pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) pro všechny uživatele ve vaší organizaci.
 
 Pokud používáte Windows Hello pro firmy, požadavek na vícefaktorové ověřování můžete splnit pomocí sign Windows Hello v prostředí. Další informace najdete v tématu [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
@@ -186,10 +184,9 @@ Zabezpečte skóre zjistí, jaké služby Office 365 používáte (jako je OneDr
 
 [Plánování zabezpečení a dodržování předpisů](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) nastiňuje metody pro zákazníky s Office 365 jak konfiguraci aplikací Office 365 a využívat další možnosti EMS. Pak zkontrolujte kroky 3 až 6 o tom, jak [chránit přístup k datům a službám Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) a příručky k tom, jak [monitorování zabezpečení a dodržování předpisů v Office 365](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
 
-
 #### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Konfigurace monitorování aktivit Office 365 (Pokud používáte Office 365)
 
-Můžete sledovat, jak lidé ve vaší organizaci používáte služby Office 365, můžete k identifikaci uživatelů, kteří mají účet správce a kdo nemusí potřebovat Office 365 přístup z důvodu není přihlásíte těchto portálů. Další informace najdete v tématu [sestavy aktivit v Centru pro správu Office 365](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
+Můžete sledovat, jak lidé ve vaší organizaci používáte služby Office 365, můžete k identifikaci uživatelů, kteří mají účet správce a kdo nemusí potřebovat Office 365 přístup z důvodu není přihlásíte těchto portálů. Další informace najdete v tématu [sestavy aktivit v Centru pro správu služeb Microsoft 365](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>Vytvořit incident/nouzovou odpovědi plán vlastníky
 
@@ -394,47 +391,47 @@ Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní in
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>NEJČASTĚJŠÍ DOTAZY: Běžné otázky, které se týkají zabezpečení privilegovaného přístupu  
 
 
-**DOTAZ:** Co mám dělat, když mám nebyly dosud implementován součásti žádné zabezpečený přístup?
+**Otázka:** Co mám dělat, když mám nebyly dosud implementován součásti žádné zabezpečený přístup?
 
 **Odpověď:** Definovat aspoň dva break pohotovostní účet, přiřaďte vícefaktorové ověřování pro správce privilegovaných účtů a samostatné uživatelské účty z globálního správce účtů.
 
 
-**DOTAZ:** Po porušení zabezpečení co je nejdůležitější problémy, které je potřeba se zpracovávají jako první?
+**Otázka:** Po porušení zabezpečení co je nejdůležitější problémy, které je potřeba se zpracovávají jako první?
 
 **Odpověď:** Ujistěte se, že jste vyžadování nejsilnější ověřování pro vysoce vystavený jednotlivce.
 
 
-**DOTAZ:** Co se stane, když byly deaktivovány naše privilegovaných správců?
+**Otázka:** Co se stane, když byly deaktivovány naše privilegovaných správců?
 
 **Odpověď:** Vytvořte účet globálního správce, který je pořád aktuální.
 
 
-**DOTAZ:** Co se stane, pokud existuje jenom globální správce vlevo a že není dostupný? 
+**Otázka:** Co se stane, pokud existuje jenom globální správce vlevo a že není dostupný? 
 
 **Odpověď:** Použijte jeden z vašich účtů skleněné získat okamžitý oprávnění k přístupu.
 
 
-**DOTAZ:** Jak můžete chránit admins v rámci mé organizaci?
+**Otázka:** Jak můžete chránit admins v rámci mé organizaci?
 
 **Odpověď:** Mají správci vždy proveďte jejich každodenní firmy jako standardní uživatelé "bez oprávnění umožňovala zvlášť".
  
 
-**DOTAZ:** Co jsou osvědčené postupy pro vytváření účtů správce ve službě Azure AD?
+**Otázka:** Co jsou osvědčené postupy pro vytváření účtů správce ve službě Azure AD?
 
 **Odpověď:** Rezerva privilegovaný přístup pro konkrétní Správce úloh.
 
 
-**DOTAZ:** Jaké nástroje existovat pro snížení trvalý přístup?
+**Otázka:** Jaké nástroje existovat pro snížení trvalý přístup?
 
 **Odpověď:** Privileged Identity Management (PIM) a Azure AD role správce.
 
 
-**DOTAZ:** Co je Microsoft pozice na synchronizaci účtů správce Azure AD?
+**Otázka:** Co je Microsoft pozice na synchronizaci účtů správce Azure AD?
 
 **Odpověď:** Úroveň 0 účtům pro správu (včetně účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménové struktuře Active Directory, doménami nebo řadiči domény a všechny prostředky) se používá pouze pro místní účty služby AD a jsou obvykle nejsou synchronizace pro Azure AD pro cloud. 
 
 
-**DOTAZ:** Jak jsme zachovat správci v přiřazení náhodné správu přístupu na portálu?
+**Otázka:** Jak jsme zachovat správci v přiřazení náhodné správu přístupu na portálu?
 
 **Odpověď:** Použijte neprivilegované účty pro všechny uživatele a většina správce. Začněte tím, že vývoj nároky organizace rozhodnout, který by měl být privilegovaného několik účtů správců. Sledování a pro nově vytvořený administrativní uživatelé.
 

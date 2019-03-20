@@ -11,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 1/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: da1e4cf1780ffdfedb0e194fbd721277db90e45c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847945"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+* Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 * Pracovnímu prostoru Azure Machine Learning, místní adresář, který obsahuje skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách, najdete v článku [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md).
 * Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.

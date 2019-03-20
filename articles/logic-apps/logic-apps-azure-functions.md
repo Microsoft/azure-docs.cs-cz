@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861583"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Přidání a spuštění vlastních fragmentech kódu v Azure Logic Apps s využitím Azure Functions
 
-Když chcete spustit pouze dostatek kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkce s [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit Node.js, C# a F # fragmenty kódu, nemusíte vytvářet kompletní aplikace nebo infrastrukturu pro spouštění kódu. Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
+Když chcete spustit pouze dostatek kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkce s [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit Node.js s využitím C#, a F# fragmenty kódu, takže není nutné vytvářet kompletní aplikace nebo infrastrukturu pro spouštění kódu. Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
 
 * Rozšíření chování vaší aplikace logiky s funkcí v Node.js, nebo C#.
 * Provádění výpočtů ve vaší aplikaci logiky.
@@ -44,7 +44,7 @@ V tomto článku, budete potřebovat tyto položky:
     Šablonu triggeru HTTP může přijímat obsah, který má `application/json` typ vaší aplikace logiky. 
     Když přidáte funkci Azure pro svou aplikaci logiky, Návrhář aplikace logiky ukazuje vlastní funkce, které jsou vytvořené z této šablony v rámci vašeho předplatného Azure. 
 
-  * Funkce nepoužívá vlastní trasy, pokud jste definovali [definice OpenAPI](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/). 
+  * Funkce nepoužívá vlastní trasy, pokud jste definovali [definice OpenAPI](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](https://swagger.io/). 
   
   * Pokud jste definovali definice OpenAPI pro funkci, Návrhář pro Logic Apps poskytuje pohodlnější a pestřejší prostředí pro práci s parametry funkce. Předtím, než aplikace logiky můžete najít a přístup k funkcím, které mají definice OpenAPI [nastavení aplikace function app pomocí následujících kroků](#function-swagger).
 
@@ -52,7 +52,7 @@ V tomto článku, budete potřebovat tyto položky:
 
   Před přidáním akce, které můžete spouštět funkce, aplikace logiky musí spouštět triggerem.
 
-  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="create-function-external"></a>
 
@@ -67,7 +67,7 @@ Pokud začínáte vytváření Azure functions, přečtěte si postup [vytvořen
 
 <a name="function-swagger"></a>
 
-* Volitelně Pokud jste [vygenerovat definici rozhraní API](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/), funkce, můžete získat pohodlnější a pestřejší prostředí při práci s parametry funkce v návrháři pro Logic Apps. Nastavení aplikace function app, aplikace logiky můžete najít a používat funkce, které mají Swagger popisy, postupujte podle těchto kroků:
+* Volitelně Pokud jste [vygenerovat definici rozhraní API](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](https://swagger.io/), funkce, můžete získat pohodlnější a pestřejší prostředí při práci s parametry funkce v návrháři pro Logic Apps. Nastavení aplikace function app, aplikace logiky můžete najít a používat funkce, které mají Swagger popisy, postupujte podle těchto kroků:
 
   1. Ujistěte se, že právě aktivně běží vaše aplikace function app.
 
@@ -125,11 +125,11 @@ Předtím, než budete moct vytvořit funkci Azure od ve svých aplikacích logi
    * Mezi stávající kroky v pracovním postupu vaší aplikace logiky, najeďte myší na šipku, zvolte na znaménko plus (+), přihlaste se a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "funkce azure".
-Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions** 
+Ze seznamu akcí vyberte tuto akci: **Zvolte funkci Azure – Azure Functions** 
 
    ![Vyhledejte "Funkce Azure"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-4. Ze seznamu aplikací funkce vyberte vaši aplikaci function app. Jakmile se otevře se seznam akcí, vyberte tuto akci: **Azure vytvořit novou funkci – funkce**
+4. Ze seznamu aplikací funkce vyberte vaši aplikaci function app. Jakmile se otevře seznam akcí, vyberte tuto akci: **Vytvoření nové funkce Azure Functions –**
 
    ![Vyberte vaši aplikaci function app](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -181,7 +181,7 @@ Pokud chcete volat existující služba Azure functions z aplikace logiky, můž
 2. V části krok, ve které chcete přidat funkce, zvolte **nový krok** > **přidat akci**. 
 
 3. Do vyhledávacího pole zadejte jako filtr "funkce azure".
-Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions** 
+Ze seznamu akcí vyberte tuto akci: **Zvolte funkci Azure – Azure Functions** 
 
    ![Vyhledejte "Funkce Azure"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

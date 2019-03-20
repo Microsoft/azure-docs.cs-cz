@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
 ms.custom: seodec2018
-ms.openlocfilehash: a18aaceb4840ffc7e3e3dca4eeb8f5fd8e88049c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e7b2c43e06c8fbc1f561defebf29fdd37bc8bfab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100900"
 ---
 # <a name="search-for-gif-images"></a>Vyhledávání obrázků GIF 
 
@@ -47,6 +47,7 @@ Další informace o možnostech a parametrech dotazů najdete v článku [odkaz 
 - *AnimatedGifHttps* pouze vrátí animovat obrázků gif, které jsou z adresy protokolu https. Mnoho aplikací pro zabezpečení, vyžadují připojení k externí webové odkazy přes protokol https. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, který šifruje zabezpečení v průběhu přenosu dat uživatele.
 
 <a name="gifExample" />
+
 ## <a name="example-search-for-animated-gif-using-java"></a>Příklad prohledávání pro animovaný obrázek gif pomocí Javy
 
 Na následující adrese URL vyhledává animovaný obrázek GIF imagí: `q=interesting`

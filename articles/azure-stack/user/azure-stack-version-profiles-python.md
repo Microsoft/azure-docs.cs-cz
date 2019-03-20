@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: c7c23352cea4f9e79b371f38112fb66ac31ac849
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b3bfc3072f819a92bdceb1721bb7737a3dc04cf8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078852"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verzí API s využitím Pythonu ve službě Azure Stack
 
@@ -51,14 +51,65 @@ Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, 
 
 Chcete-li použít sady Azure Python SDK pro Azure Stack, musíte zadat následující hodnoty a pak nastavte hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro váš operační systém na nastavení proměnných prostředí.
 
-| Value | Proměnné prostředí | Popis |
+| Hodnota | Proměnné prostředí | Popis |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | ID tenanta | AZURE_TENANT_ID | Výhody služby Azure Stack [ID tenanta](../azure-stack-identity-overview.md). |
 | ID klienta | AZURE_CLIENT_ID | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto článku. |
 | ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
 | Tajný kód klienta | AZURE_CLIENT_SECRET | Služba hlavní tajný klíč aplikace neuloží, když se vytvoří nový instanční objekt služby. |
-| Koncový bod Resource Manageru | ARM_ENDPOINT | Zobrazit [koncový bod služby Azure Stack resource manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Koncový bod Resource Manageru | ARM_ENDPOINT | Zobrazit [koncový bod Azure Stack Resource Manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Umístění prostředku | AZURE_RESOURCE_LOCATION | Umístění prostředku vaším prostředím Azure Stack.
+
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
+
+Pokud používáte ASDK, musíte důvěřovat certifikátu kořenové certifikační Autority na vzdáleném počítači. Nebude potřeba to udělat pomocí integrovaných systémů.
+
+#### <a name="windows"></a>Windows
+
+1. Najdete python umístění úložiště certifikátů na vašem počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Otevřete příkazový řádek nebo řádku Powershellu se zvýšenými oprávněními a zadejte následující příkaz:
+
+    ```PowerShell  
+      python -c "import certifi; print(certifi.where())"
+    ```
+
+    Poznamenejte certifikát umístění úložiště. Například *~/lib/python3.5/site-packages/certifi/cacert.pem*. Konkrétní cestu bude záviset na váš operační systém a verzi Pythonu, který jste nainstalovali.
+
+2. Důvěřujete certifikátu kořenové certifikační Autority Azure stacku připojením k existující certifikát Python.
+
+    ```powershell
+    $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
+
+    $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+    $root.Import($pemFile)
+
+    Write-Host "Extracting required information from the cert file"
+    $md5Hash    = (Get-FileHash -Path $pemFile -Algorithm MD5).Hash.ToLower()
+    $sha1Hash   = (Get-FileHash -Path $pemFile -Algorithm SHA1).Hash.ToLower()
+    $sha256Hash = (Get-FileHash -Path $pemFile -Algorithm SHA256).Hash.ToLower()
+
+    $issuerEntry  = [string]::Format("# Issuer: {0}", $root.Issuer)
+    $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
+    $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
+    $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
+    $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
+    $sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
+    $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
+    $certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
+
+    $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
+    $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
+
+    Write-Host "Adding the certificate content to Python Cert store"
+    Add-Content "${env:ProgramFiles(x86)}\Python35\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
+
+    Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
+
+    ```
+
+> [!NOTE]  
+> Pokud používáte virtualenv pro vývoj pomocí sady Python SDK, jak je uvedeno níže, je potřeba přidat výše certifikát do úložiště certifikátů virtuální prostředí také. Cesta může vypadat podobně jako: ".. \mytestenv\Lib\site-packages\certifi\cacert.pem"
+
+
 
 ## <a name="python-samples-for-azure-stack"></a>Ukázky Pythonu pro službu Azure Stack
 
@@ -133,7 +184,7 @@ Každá operace jasně označené jako komentář a tisku funkcí. Příklady ne
     export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
-8. Pokud chcete tuto ukázku spustit, musí být Ubuntu 16.04-LTS a WindowsServer 2012-R2-Datacenter imagí v Tržišti Azure Stack. Mohou to být buď [stáhli z Azure](../azure-stack-download-azure-marketplace-item.md), nebo přidat do [úložiště Imagí platforem](../azure-stack-add-vm-image.md).
+8. Pokud chcete tuto ukázku spustit, musí být Ubuntu 16.04-LTS a WindowsServer 2012-R2-DataCenter imagí v Tržišti Azure Stack. Mohou to být buď [stáhli z Azure](../azure-stack-download-azure-marketplace-item.md), nebo přidat do [úložiště Imagí platforem](../azure-stack-add-vm-image.md).
 
 9. Spusťte ukázku:
 

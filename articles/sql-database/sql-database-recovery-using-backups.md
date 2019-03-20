@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855091"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -114,9 +114,6 @@ Obnovení odstraněné databáze pomocí webu Azure portal během jeho [dobu uch
 
 Obnovení databáze SQL na libovolném serveru v libovolné oblasti Azure z poslední geograficky replikovaných záloh. Geografické obnovení pomocí geograficky redundantní zálohy jako zdroj a slouží k obnovení databáze, i když je nejsou dostupné kvůli výpadku databáze nebo datového centra.
 
-> [!Note]
-> Geografické obnovení není k dispozici ve spravované instanci.
-
 Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit databázi z geograficky replikovaných záloh na server v jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy je geograficky replikované do služby Azure blob do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu. Následující obrázek znázorňuje obnovit databázi z poslední dostupnou zálohou v jiné oblasti.
 
 ![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
@@ -133,6 +130,9 @@ Obnovení bodu v čase na typu geo-secondary se momentálně nepodporuje. Obnove
 
 Geografické obnovení a databáze během jeho [dobu uchování model založený na DTU](sql-database-service-tiers-dtu.md) nebo [dobu uchování model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) pomocí webu Azure portal, otevřete stránku databází SQL a pak klikněte na tlačítko **přidat** . V **výběr zdroje** textového pole, vyberte **zálohování**. Zadejte zálohování, ze kterého se má provést obnovení v oblasti a na serveru podle vašeho výběru.
 
+> [!Note]
+> Geografické obnovení prostřednictvím webu Azure portal není k dispozici ve spravované instanci. Pomocí prostředí PowerShell.
+
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Provádí obnovení pomocí automatizovaného zálohování se prostřednictvím kódu programu
 
 Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnovení databáze prostřednictvím kódu programu pomocí Azure Powershellu nebo rozhraní REST API. Následující tabulky popisují sadu příkazů, které jsou k dispozici.
@@ -140,6 +140,8 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 - K obnovení samostatné nebo databázi ve fondu, naleznete v tématu [obnovení AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -173,7 +175,7 @@ Obnovení databáze jedné, nebo součástí fondu pomocí rozhraní REST API:
 ### <a name="azure-cli"></a>Azure CLI
 
 - Obnovení databáze jedné, nebo součástí fondu pomocí Azure CLI, najdete v článku [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Pokud chcete obnovit spravované instance pomocí rozhraní příkazového řádku Azure, najdete v článku [az sql midb obnovení](/cli/azure/sql/db#az-sql-midb-restore)
+- Pokud chcete obnovit spravované instance pomocí rozhraní příkazového řádku Azure, najdete v článku [az sql midb obnovení](/cli/azure/sql/db)
 
 ## <a name="summary"></a>Souhrn
 

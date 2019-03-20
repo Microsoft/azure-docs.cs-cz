@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.openlocfilehash: aa089ed53554ec697bd9430cc95a7cce78aabed2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 03/12/2019
+ms.openlocfilehash: fb1d724907c09e2eb77930f5a235336ca8cd3a25
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411526"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886843"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Spuštění úlohy Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Můžete spustit úlohy Azure Stream Analytics pomocí webu Azure portal, sady V
 
 Přejděte do úlohy v Azure portal a vyberte **Start** na stránce Přehled. Vyberte **čas spuštění výstupu úlohy** a pak vyberte **Start**.
 
-Existují tři možnosti pro **čas spuštění výstupu úlohy**: *Nyní*, *vlastní*, a *při posledním zastavení*. Výběr *nyní* spustí úlohu v současné době. Výběr *vlastní* umožňuje nastavit vlastní čas v minulosti nebo budoucnost je pro úlohu, která má začít. Pokud chcete zastavenou úlohu Obnovit bez ztráty dat, zvolte. Při posledním zastavení *.
+Existují tři možnosti pro **čas spuštění výstupu úlohy**: *Nyní*, *vlastní*, a *při posledním zastavení*. Výběr *nyní* spustí úlohu v současné době. Výběr *vlastní* umožňuje nastavit vlastní čas v minulosti nebo budoucnost je pro úlohu, která má začít. Pokud chcete zastavenou úlohu Obnovit bez ztráty dat, zvolte *při posledním zastavení*.
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -56,7 +56,7 @@ Existují tři možnosti pro **OutputStartMode**: *JobStartTime*, *CustomTime*, 
 
 *LastOutputEventTime* vytvoří výchozí bod do výstupního datového proudu událostí stejná jako poslední události čas výstupu.
 
-Další informace o `Start-AzStreamAnalyitcsJob` rutiny, zobrazení [Start AzStreamAnalyticsJob odkaz](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob.md).
+Další informace o `Start-AzStreamAnalyitcsJob` rutiny, zobrazení [Start AzStreamAnalyticsJob odkaz](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>Další postup
 

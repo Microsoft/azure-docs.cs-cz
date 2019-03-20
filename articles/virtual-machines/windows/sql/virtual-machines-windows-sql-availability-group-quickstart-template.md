@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5390885ccb4bbc3e1552d3f5e80c1b451b7bee38
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4b4527bfaacc592c13552e362de0cba620314cd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570160"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122042"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurace skupiny dostupnosti Always On pro SQL Server na Virtuálním počítači Azure pomocí šablon rychlého startu Azure
 Tento článek popisuje, jak pomocí šablon Azure Quickstart částečně automatizovat nasazení konfigurace dostupnosti skupin Always On pro SQL Server Virtual Machines v Azure. Existují dvě šablony Quickstart pro Azure, které se používají v tomto procesu. 
@@ -76,8 +76,8 @@ Jakmile se vaše virtuální počítače s SQL serverem jste zaregistrovali pomo
 1. Pokud souhlasíte s podmínkami a ujednáními, zaškrtněte políčko vedle položky **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře** a vyberte **nákupní** pro dokončení nasazení šablony rychlý start. 
 1. K monitorování vašeho nasazení, vyberte nasazení **oznámení** sek ikony v horním navigačním panelu nápisu nebo přejděte na vaše **skupiny prostředků** na webu Azure Portal, vyberte  **Nasazení** v **nastavení** pole a možnost nasazení "Microsoft.Template". 
 
-  >[!NOTE]
-  > Přihlašovací údaje zadané během nasazování šablony jsou uloženy pouze po dobu nasazení. Po dokončení nasazení tato hesla se odeberou a bude třeba je zadat znovu měli byste přidat další virtuální počítače SQL serveru do clusteru. 
+   >[!NOTE]
+   > Přihlašovací údaje zadané během nasazování šablony jsou uloženy pouze po dobu nasazení. Po dokončení nasazení tato hesla se odeberou a bude třeba je zadat znovu měli byste přidat další virtuální počítače SQL serveru do clusteru. 
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>Krok 2: ruční vytvoření skupiny dostupnosti 
@@ -150,8 +150,8 @@ Pokud chcete nakonfigurovat ILB a vytvoření naslouchacího procesu AG, postupu
 1. Pokud souhlasíte s podmínkami a ujednáními, zaškrtněte políčko vedle položky **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře** a vyberte **nákupní** pro dokončení nasazení šablony rychlý start. 
 1. K monitorování vašeho nasazení, vyberte nasazení **oznámení** sek ikony v horním navigačním panelu nápisu nebo přejděte na vaše **skupiny prostředků** na webu Azure Portal, vyberte  **Nasazení** v **nastavení** pole a možnost nasazení "Microsoft.Template". 
 
-  >[!NOTE]
-  >Pokud se nasazení nezdaří poloviční způsob, jak prostřednictvím, budete muset ručně [odstranit nově vytvořený naslouchací proces](#remove-availability-group-listener) před opětovného nasazení pomocí prostředí PowerShell **101--vm-aglistener – instalační program systému sql** šablonu pro rychlý start. 
+   >[!NOTE]
+   >Pokud se nasazení nezdaří poloviční způsob, jak prostřednictvím, budete muset ručně [odstranit nově vytvořený naslouchací proces](#remove-availability-group-listener) před opětovného nasazení pomocí prostředí PowerShell **101--vm-aglistener – instalační program systému sql** šablonu pro rychlý start. 
 
 ## <a name="remove-availability-group-listener"></a>Odebrání naslouchacího procesu skupiny dostupnosti
 Pokud později potřebujete odebrat naslouchacího procesu skupiny dostupnosti nakonfigurováno pomocí šablony, musíte projít přes poskytovatele prostředků virtuálního počítače s SQL. Protože naslouchací proces je zaregistrované prostřednictvím poskytovatele prostředků virtuálního počítače s SQL, pouhým odstraněním přes SQL Server Management Studio není dostatečná. Je ve skutečnosti je potřeba odstranit prostřednictvím poskytovatele prostředků virtuálního počítače SQL pomocí Powershellu. To odebere metadata naslouchacího procesu AG od zprostředkovatele prostředků virtuálního počítače s SQL a fyzicky odstraní naslouchací proces skupiny dostupnosti. 
@@ -183,17 +183,17 @@ Tuto chybu může způsobovat jednu ze dvou důvodů. Doménový účet zadaný 
 
  Ověřte, že účet neexistuje. Pokud ano, může běžet do druhé situaci. Chcete-li tento problém vyřešit, postupujte takto:
 
- 1. Na řadiči domény otevřete **Active Directory Users and Computers** okna **nástroje** možnost **správce serveru**. 
- 2. Přejděte na účet tak, že vyberete **uživatelé** v levém podokně.
- 3. Klikněte pravým tlačítkem na požadovaný účet a vyberte **vlastnosti**.
- 4. Vyberte **účet** kartu a ověření, jestli **přihlašovací uživatelské jméno** je prázdný. Pokud se jedná, to je příčinou chyby. 
+1. Na řadiči domény otevřete **Active Directory Users and Computers** okna **nástroje** možnost **správce serveru**. 
+2. Přejděte na účet tak, že vyberete **uživatelé** v levém podokně.
+3. Klikněte pravým tlačítkem na požadovaný účet a vyberte **vlastnosti**.
+4. Vyberte **účet** kartu a ověření, jestli **přihlašovací uživatelské jméno** je prázdný. Pokud se jedná, to je příčinou chyby. 
 
-     ![Označuje prázdný uživatelský účet, chybí hlavní název uživatele](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Označuje prázdný uživatelský účet, chybí hlavní název uživatele](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
- 5. Vyplňte **přihlašovací uživatelské jméno** shodovat s názvem uživatele, a vyberte správné domény z rozevíracího seznamu. 
- 6. Vyberte **použít** uložte provedené změny a zavřete dialogové okno tak, že vyberete **OK**. 
+5. Vyplňte **přihlašovací uživatelské jméno** shodovat s názvem uživatele, a vyberte správné domény z rozevíracího seznamu. 
+6. Vyberte **použít** uložte provedené změny a zavřete dialogové okno tak, že vyberete **OK**. 
 
- Jakmile se změny provedou, pokus o nasazení šablony rychlý start Azure ještě jednou. 
+   Jakmile se změny provedou, pokus o nasazení šablony rychlý start Azure ještě jednou. 
 
 
 
