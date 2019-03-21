@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099133"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -25,8 +25,8 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
-- [Jednotlivé registrace:](concepts-service.md#individual-enrollment) Slouží k registraci jednoho zařízení.
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Použít k registraci více související zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Použitý k registraci jedno zařízení.
 
 V tomto článku si předvedeme jednotlivé registrace.
 
@@ -72,25 +72,25 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 1. Nainstalujte následující balíčky, které obsahují komponenty používané během instalace:
 
-    - Klient zabezpečení, který funguje s TPM: `azure-iot-security-tpm`
-    - Přenos umožňující připojení zařízení ke službě Device Provisioning: `azure-iot-provisioning-device-http` nebo `azure-iot-provisioning-device-amqp`
-    - Klient, který použije přenos a klienta zabezpečení: `azure-iot-provisioning-device`
+   - Klient zabezpečení, který funguje s TPM: `azure-iot-security-tpm`
+   - Přenos umožňující připojení zařízení ke službě Device Provisioning: `azure-iot-provisioning-device-http` nebo `azure-iot-provisioning-device-amqp`
+   - Klient, který použije přenos a klienta zabezpečení: `azure-iot-provisioning-device`
 
-    Jakmile bude zařízení zaregistrované, můžete pomocí obvyklých klientských balíčků zařízení IoT Hub připojit zařízení s použitím přihlašovacích údajů, které jste zadali při registraci. Budete potřebovat:
+     Jakmile bude zařízení zaregistrované, můžete pomocí obvyklých klientských balíčků zařízení IoT Hub připojit zařízení s použitím přihlašovacích údajů, které jste zadali při registraci. Budete potřebovat:
 
-    - Klienta zařízení: `azure-iot-device`
-    - Přenos: `azure-iot-device-amqp`, `azure-iot-device-mqtt` nebo `azure-iot-device-http`
-    - Klienta zabezpečení, kterého jste už nainstalovali: `azure-iot-security-tpm`
+   - Klienta zařízení: `azure-iot-device`
+   - Přenos: `azure-iot-device-amqp`, `azure-iot-device-mqtt` nebo `azure-iot-device-http`
+   - Klienta zabezpečení, kterého jste už nainstalovali: `azure-iot-security-tpm`
 
-    > [!NOTE]
-    > V níže uvedených ukázkách se používají přenosy `azure-iot-provisioning-device-http` a `azure-iot-device-mqtt`.
-    > 
+     > [!NOTE]
+     > V níže uvedených ukázkách se používají přenosy `azure-iot-provisioning-device-http` a `azure-iot-device-mqtt`.
+     > 
 
-    Všechny tyto balíčky můžete nainstalovat najednou spuštěním následujícího příkazu na příkazovém řádku ve složce **registerdevice**:
+     Všechny tyto balíčky můžete nainstalovat najednou spuštěním následujícího příkazu na příkazovém řádku ve složce **registerdevice**:
 
-        ```cmd/sh
-        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
-        ```
+       ```cmd/sh
+       npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
+       ```
 
 1. Pomocí textového editoru vytvořte ve složce **registerdevice** nový soubor **ExtractDevice.js**.
 
@@ -141,15 +141,15 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a nahoře klikněte na tlačítko **Přidat jednotlivou registraci**. 
 
 1. V části **Přidat registraci** zadejte následující informace:
-    - Jako *Mechanismus* ověření identity vyberte **TPM**.
-    - Zadejte *ID registrace* a *Ověřovací klíč* pro zařízení TPM.
-    - Volitelně můžete zadat následující informace:
-        - Vyberte centrum IoT propojené s vaší zřizovací službou.
-        - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data.
-        - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
-    - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+   - Jako *Mechanismus* ověření identity vyberte **TPM**.
+   - Zadejte *ID registrace* a *Ověřovací klíč* pro zařízení TPM.
+   - Volitelně můžete zadat následující informace:
+       - Vyberte centrum IoT propojené s vaší zřizovací službou.
+       - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data.
+       - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
+   - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
-    ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+     ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    Po úspěšné registraci se *ID registrace* vašeho zařízení zobrazí v seznamu na kartě *Jednotlivé registrace*. 
 

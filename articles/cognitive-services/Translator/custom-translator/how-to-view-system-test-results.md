@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: d06b4a0a9823871ffc14d7cfa7148f6e335835d6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 67ddc7a8e9d79d0eef9c017b315385df62c18e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997718"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
@@ -26,7 +26,7 @@ Vyberte projekt a pak vyberte kartu modely tohoto projektu, vyhledejte model, kt
 
 Karta testu se dozvíte:
 
-1.  **Výsledky testů systému:** výsledek pro testovací proces v školení. Testovací proces vytvoří BLEU skóre.
+1.  **Výsledky testů systému:** Výsledek pro testovací proces v školení. Testovací proces vytvoří BLEU skóre.
 
     **Počet větu:** Kolik paralelní věty byly použity v testovací sadě.
 

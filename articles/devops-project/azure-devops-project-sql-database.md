@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace ASP.NET a služby Azure SQL Database pomocí projektu Azure DevOps | Kurz Azure DevOps Services
-description: DevOps Project usnadňuje začátek práce v Azure. Projekt Azure DevOps umožňuje snadno a v několika rychlých krocích nasadit aplikaci ASP.NET se službou Azure SQL Database.
+title: 'Kurz: Nasazení aplikace ASP.NET a Azure SQL Database kódu pomocí projektů Azure DevOps'
+description: DevOps Projects umožňuje snadno začít používat Azure. S projekty DevOps můžete nasadit aplikace v ASP.NET a Azure SQL Database kód v několika rychlých krocích.
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,183 +9,212 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: d9c7c94e344daee5af87ce40ddf4dcb686696ded
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297329"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845218"
 ---
-# <a name="tutorial--deploy-your-aspnet-app-and-azure-sql-database-with-the-azure-devops-project"></a>Kurz: Nasazení aplikace ASP.NET a služby Azure SQL Database pomocí služby Azure DevOps Project
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Kurz: Nasazení aplikace ASP.NET a Azure SQL Database kódu pomocí projektů Azure DevOps
 
-Azure DevOps Project představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.  Projekt DevOps automaticky vytvoří prostředky Azure, jako je služba Azure SQL Database, vytvoří a nakonfiguruje kanál verze v Azure DevOps zahrnující kanál buildu pro kontinuální integraci, nastaví kanál verze pro průběžné nasazování a pak vytvoří prostředek Azure Application Insights pro účely monitorování.
+Projekty Azure DevOps představuje zjednodušené prostředí, ve kterém můžete přenést váš stávající kód a úložiště Git nebo jej vybrat ukázkovou aplikaci k vytvoření kanálu průběžného doručování (CD) do Azure a kontinuální integrace (CI). 
 
-Vaším úkolem je:
+Projekty DevOps také:
+* Automaticky vytváří prostředky Azure, jako je například Azure SQL database.
+* Vytvoří a nakonfiguruje kanál pro vydávání verzí v kanálech Azure, obsahující sestavení kanálu CI.
+* Nastaví kanál pro vydávání verzí pro CD. 
+* Vytvoří prostředek služby Azure Application Insights pro monitorování.
+
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvoření projektu Azure DevOps pro aplikaci ASP.NET a službu Azure SQL Database
-> * Konfigurace služby Azure DevOps Services a předplatného Azure 
-> * Prozkoumání kanálu CI služby Azure DevOps Services
-> * Prozkoumání kanálu CD služby Azure DevOps Services
-> * Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure
-> * Připojení k databázi Azure SQL Serveru 
+> * Nasazení aplikace ASP.NET a Azure SQL Database kódu pomocí projektů Azure DevOps
+> * Konfigurace Azure DevOps a předplatné Azure 
+> * Prozkoumání kanálu CI
+> * Prozkoumání kanálu CD
+> * Zapsat změny do úložiště Azure a automaticky nasadit do Azure
+> * Připojení k Azure SQL database 
 > * Vyčištění prostředků
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="create-an-azure-devops-project-for-an-aspnet-app-and-azure-sql-database"></a>Vytvoření projektu Azure DevOps pro aplikaci ASP.NET a službu Azure SQL Database
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Vytvoření projektu v projekty DevOps pro aplikace ASP.NET a Azure SQL database
 
-Projekt Azure DevOps vytvoří kanál CI/CD v Azure.  Můžete vytvořit novou organizaci služby **Azure DevOps Services** nebo použít **existující organizaci**.  Azure DevOps Project také vytvoří **prostředky Azure**, jako je služba Azure SQL Database, v **předplatném Azure** podle vašeho výběru.
+Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Projekty DevOps prostředků Azure, jako je Azure SQL database, také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V levém navigačním panelu zvolte ikonu **Vytvořit prostředek** a pak vyhledejte **Projekt DevOps**.  Zvolte **Vytvořit**.
+1. V levém podokně vyberte **vytvořit prostředek**.
 
-    ![Zahájení průběžného doručování](_img/azure-devops-project-github/fullbrowser.png)
+1. Do vyhledávacího pole zadejte **DevOps Projects**a pak vyberte **vytvořit**.
 
-1. Vyberte **.NET** a pak zvolte **Další**.
+    ![Řídicí panel projekty DevOps](_img/azure-devops-project-github/fullbrowser.png)
 
-1. V části **Zvolte architekturu aplikace** vyberte **ASP.NET**.
+1. Vyberte **.NET**a pak vyberte **Další**.
 
-1. Vyberte **Přidat databázi** a zvolte **Další**.  
+1. V části **zvolte aplikační architekturu**vyberte **ASP.NET**.
 
-1. Architektura aplikace, kterou jste zvolili v předchozích krocích, určuje typ cíle nasazení služby Azure, který je zde k dispozici.  Vyberte **Další**.
-
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace služby Azure DevOps Services a předplatného Azure
-
-1. Vytvořte **novou** organizaci služby Azure DevOps Services nebo zvolte některou **existující** organizaci.  Zvolte **název** projektu Azure DevOps.  
-
-1. Vyberte své **předplatné Azure**.
-
-1. Volitelně výběrem odkazu **Změnit** zobrazte další nastavení konfigurace Azure a v části **Údaje pro přihlášení k databázovému serveru** identifikujte **uživatelské jméno**.  **Uložte** si **uživatelské jméno** pro další kroky v tomto kurzu.
- 
-1. Pokud jste provedli předchozí krok, opusťte oblast konfigurace Azure a zvolte **Hotovo**.  Jinak stačí vybrat **Hotovo**.
-
-1. Dokončení procesu bude trvat několik minut.  Po dokončení se na webu Azure Portal načte **řídicí panel projektu** Azure DevOps.  Na **řídicí panel Azure DevOps Project** můžete přejít také přímo z části **Všechny prostředky** na webu **Azure Portal**.  Na pravé straně řídicího panelu vyberte **Procházet** a zobrazte vaši spuštěnou aplikaci.
+1. Vyberte **přidat databázi**a pak vyberte **Další**.  
+    Aplikační platformu, kterou jste zvolili v předchozím kroku, určí typ cíli pro nasazení služby Azure, který je zde k dispozici. 
     
-## <a name="examine-the-azure-devops-services-ci-pipeline"></a>Prozkoumání kanálu CI služby Azure DevOps Services
+1. Vyberte **Další**.
 
-Projekt Azure DevOps ve vaší organizaci služby Azure DevOps Services automaticky nakonfiguruje úplný kanál Azure CI/CD.  Kanál můžete prozkoumat a upravit.  Pomocí následujícího postupu se seznamte s kanálem buildu služby Azure DevOps Services.
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure
 
-1. Přejděte na **řídicí panel Azure DevOps Project**.
+1. Vytvořte novou organizaci Azure DevOps, nebo vyberte existující organizace. 
 
-1. V **horní** části **řídicího panelu projektu Azure DevOps** vyberte **Kanály sestavení**.  Tento odkaz otevře na nové záložce prohlížeče kanál buildu Azure DevOps Services pro váš nový projekt.
+1. Zadejte název pro váš projekt Azure DevOps. 
 
-1. Přesuňte kurzor myši napravo od kanálu buildu vedle pole **Stav**. Vyberte **tři tečky**, které se zobrazí.  Tato akce otevře nabídku, ve které můžete provést několik aktivit, jako je **zařazení nového buildu do fronty**, **pozastavení buildu** a **úprava kanálu buildu**.
+1. Vyberte služby vašeho předplatného Azure.  
+    Volitelně Chcete-li zobrazit další Azure nastavení konfigurace a určit uživatelské jméno v **databáze serveru přihlašovací podrobnosti** oddílu, můžete vybrat **změnu**. Store uživatelského jména pro budoucí kroky v tomto kurzu. Je-li provést tento krok volitelný, ukončete oblasti konfigurace Azure dřív, než vyberete **provádí**.
+ 
+1. Vyberte **Done** (Hotovo).  
+    Po několika minutách dokončení procesu a otevře se řídicí panel projekty DevOps na webu Azure Portal. Můžete také přejít na řídicí panel z **všechny prostředky** na webu Azure Portal. Na pravé straně vyberte **Procházet** k běžící aplikaci zobrazit.
+    
+## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
+
+Projekty DevOps automaticky nakonfiguruje úplný kanál CI/CD v úložišti Azure. Kanál můžete prozkoumat a upravit. Seznamte se s kanálem Azure DevOps sestavení, postupujte takto:
+
+1. V horní části řídicího panelu DevOps Projects, vyberte **vytvářet kanály**.  
+    Na kartě prohlížeče zobrazí kanálu sestavení pro nový projekt.
+
+1. Přejděte **stav** pole a pak vyberte tři tečky (...).  
+    Nabídka obsahuje několik možností, jako je například přidávání nové sestavení, přerušení sestavení a úpravy kanálu sestavení do fronty.
 
 1. Vyberte **Upravit**.
 
-1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro váš kanál buildu.  Tento build provádí různé úlohy, jako je načtení zdrojových kódů z úložiště Git Azure DevOps Services, obnovení závislostí a publikování výstupů používaných pro nasazení.
+1. V tomto podokně můžete prozkoumat různé úlohy pro vašeho kanálu sestavení.  
+    Sestavení provádí různé úlohy, jako je načítání zdroje z Gitu výstupy úložiště, obnovení závislostí a publikování použít pro nasazení.
 
-1. V horní části kanálu buildu vyberte **název kanálu buildu**.
+1. V horní části kanálu sestavení vyberte název kanálu sestavení.
 
-1. Změňte **název** kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
+1. Změnit na něco více popisné, vyberte název vašeho kanálu sestavení **Uložit & frontu**a pak vyberte **Uložit**.
 
-1. Pod názvem kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách provedených v kanálu buildu a umožňuje porovnávat verze.
+1. Pod názvem kanálu buildu vyberte **Historie**.  
+    V tomto podokně se zobrazí záznam auditovaných nedávné změny pro sestavení. Kanály Azure uchovává informace o všechny změny provedené kanálu sestavení, a umožňuje porovnání verzí.
 
-1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nový build.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
+1. Vyberte **Triggery**.  
+    Projekty DevOps automaticky vytvoří aktivační událost CI, a každé potvrzení do úložiště spustí nové sestavení. Volitelně můžete zahrnout nebo vyloučit větve z položek konfigurace procesu.
 
-1. Vyberte **Uchování**.  V závislosti na vašem scénáři můžete určit zásady pro zachování nebo odebrání určitého počtu sestavení.
+1. Vyberte **Uchování**.  
+    V závislosti na vašem scénáři můžete zadat zásady, které chcete zachovat nebo odebrat počet sestavení.
 
-## <a name="examine-the-azure-devops-services-cd-pipeline"></a>Prozkoumání kanálu CD služby Azure DevOps Services
+## <a name="examine-the-cd-pipeline"></a>Prozkoumání kanálu CD
 
-Projekt Azure DevOps automaticky vytvoří a nakonfiguruje potřebné kroky pro nasazení z organizace služby Azure DevOps Services do předplatného Azure.  Mezi tyto kroky patří konfigurace připojení ke službě Azure za účelem ověření služby Azure DevOps Services vůči vašemu předplatnému Azure.  Automatizace také vytvoří definici verze Azure DevOps Services, která zajišťuje průběžné nasazování do Azure.  Pomocí níže uvedeného postupu dále prozkoumejte definici verze služby Azure DevOps Services.
+Projekty DevOps automaticky vytvoří a nakonfiguruje nezbytné kroky k nasazení z vaší organizace Azure DevOps se svým předplatným Azure. Tyto kroky zahrnují konfigurace připojení služby Azure k ověřování Azure DevOps se svým předplatným Azure. Automatizace také vytvoří kanál CD, který poskytuje CD na virtuálním počítači Azure. Další informace o kanálu Azure DevOps CD, postupujte takto:
 
-1. Vyberte **Sestavení a vydání** a zvolte **Verze**.  Projekt Azure DevOps vytvořil kanál verze Azure DevOps Services pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání**a pak vyberte **vydání**.  
+    Projekty DevOps vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
-1. Na levé straně prohlížeče vyberte **tři tečky** vedle kanálu verze a pak zvolte **Upravit**.
+1. Vyberte tři tečky (...) vedle kanálu pro vydávání verzí a pak vyberte **upravit**.  
+    Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
-1. Kanál verze obsahuje **kanál**, který definuje proces vydání.  V části **Artefakty** vyberte **Zahodit**.  Kanál buildu, který jste prozkoumali v předchozích krocích, vytvoří výstup pro artefakt. 
+1. V části **Artefakty** vyberte **Zahodit**.  
+    Kanál sestavení, kterou můžete prozkoumat v předchozích krocích vytvoří výstup, který se používá pro artefakt. 
 
-1. Napravo od ikony **Zahodit** vyberte **Trigger průběžného nasazování** (**ikona** blesku).  Tento kanál verze obsahuje povolený trigger průběžného nasazování.  Tento trigger spustí nasazení pokaždé, když bude k dispozici nový artefakt sestavení.  Volitelně můžete trigger zakázat, aby pak vaše nasazení vyžadovala ruční spuštění. 
+1. V pravém rohu **vyřadit** ikonu, vyberte **trigger průběžného nasazování**.  
+    Tento kanál pro vydávání verzí obsahuje aktivační událost CD povolené, která spustí nasazení pokaždé, když je k dispozici nové artefakt sestavení. Volitelně můžete zakázat aktivační událost tak, aby vaše nasazení vyžaduje ruční spuštění. 
 
-1. Projekt Azure DevOps nastavil náhodné heslo SQL a toto heslo použil pro kanál verze.  Na levé straně prohlížeče vyberte **Proměnné**. 
+    Projekty DevOps nastaví náhodné heslo SQL a použije ho k kanál pro vydávání verzí.
+    
+1. Na levé straně vyberte **proměnné**. 
 
-1. **Tento krok proveďte pouze v případě, že jste změnili heslo pro SQL Server.**  Zobrazí se jedna proměnná **Heslo**.  Napravo od textového pole **Hodnota** vyberte ikonu **zámku**.  **Zadejte** nové heslo a pak vyberte **Uložit**.
+   > [!NOTE]
+   > Proveďte následující krok jenom v případě, že jste změnili heslo SQL serveru. Je proměnná jedno heslo.
+  
+1. Vedle položky **hodnotu** , vyberte ikonu visacího zámku nezobrazuje, zadejte nové heslo a potom vyberte **Uložit**.
 
-1. Na levé straně prohlížeče vyberte **Úlohy** a pak zvolte vaše **prostředí**.  
+1. Na levé straně vyberte **úlohy**a potom vyberte vaše prostředí.  
+    Úkoly jsou aktivity, které spustí proces nasazení, a jsou seskupené ve fázích. Tento kanál pro vydávání verzí má jedna fáze, která obsahuje *Azure App Service nasadit* a *nasazení databáze SQL Azure* úloh.
 
-1. Úlohy jsou aktivity, které se provádí ve vašem procesu nasazení a které se seskupují do **fází**.  Tento kanál verze obsahuje jednu fázi.  Tato fáze obsahuje úlohy **nasazení služby Azure App Service** a **nasazení služby Azure SQL Database**.
+1. Vyberte *provést SQL Azure* úloh a podívejte se na různé vlastnosti, které se používají pro nasazení SQL.  
+    V části **balíček pro nasazení**, použije úloha *SQL DACPAC* souboru.
 
-1. Vyberte úlohu **spuštění Azure SQL** a prozkoumejte různé vlastnosti použité pro nasazení SQL.  V části **Balíček pro nasazení** si všimněte, že úloha používá **soubor DACPAC SQL**.
+1. Na pravé straně vyberte **zobrazit verze** zobrazíte historii verzí.
 
-1. Na pravé straně prohlížeče vyberte **Zobrazit verze**.  Toto zobrazení ukazuje historii vydaných verzí.
+1. Vyberte tři tečky (...) vedle vydané verze a pak vyberte **otevřít**.  
+     Můžete si projít několik nabídek, jako je například souhrnu vydané verze, přidružené pracovní položky a testy.
 
-1. Vyberte **tři tečky** vedle některé z vydaných verzí a zvolte **Otevřít**.  Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například **souhrn verze**, **související pracovní položky** a **testy**.
+1. Vyberte **Potvrzení**.  
+     Toto zobrazení ukazuje potvrzení změn kódu, které jsou spojeny s tímto nasazením. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
 
-1. Vyberte **Potvrzení**.  Toto zobrazení ukazuje potvrzení kódu související s konkrétním nasazením. Můžete porovnat vydané verze a zobrazit rozdíly v potvrzeních jednotlivých nasazení.
+1. Vyberte **Protokoly**.  
+     Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobrazit během a po nasazení.
 
-1. Vyberte **Protokoly**.  Protokoly obsahují užitečné informace o procesu nasazení.  Můžete je zobrazit během nasazení i po nich.
-
-## <a name="commit-changes-to-azure-devops-services-and-automatically-deploy-to-azure"></a>Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure 
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Zapsat změny do úložiště Azure a automaticky nasadit do Azure 
 
  > [!NOTE]
- > Následujícím postupem se provede test kanálu CI/CD prostřednictvím prosté změny textu.  Volitelně můžete u tabulky provést změnu schématu SQL Serveru a otestovat proces nasazení SQL.
+ > Následující postup testuje kanálu CI/CD a jednoduchý text se změní. Testovací proces nasazení SQL, můžete volitelně nastavit schéma systému SQL Server změňte na tabulce.
 
-Teď jste připraveni při práci na vaší aplikaci spolupracovat s týmem s využitím procesu CI/CD, který automaticky nasazuje nejnovější práci na web.  Každá změna v úložišti Git Azure DevOps Services spustí build ve službě Azure DevOps Services a kanál průběžného nasazování služby Azure DevOps Services provede nasazení do Azure.  K potvrzení změn v úložišti můžete použít následující postup nebo jiné techniky.  Změny kódu spustí proces CI/CD a vaše nové změny se automaticky nasadí do Azure.
+Teď jste připraveni spolupracovat s týmem ve vaší aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na váš web. Jednotlivé změny do úložiště Git v Azure DevOps spustí sestavení a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použít jiné techniky se zapsat změny do úložiště. Změny kódu k zahájení procesu CI/CD a automaticky nasazovat vaše změny do Azure.
 
-1. V nabídce Azure DevOps Services vyberte **Kód** a přejděte do svého úložiště.
+1. V levém podokně vyberte **kód**a potom přejděte do úložiště.
 
-1. Přejděte do adresáře **SampleWebApplication\Views\Home**, vyberte **tři tečky** vedle souboru **Index.cshtml** a pak zvolte **Upravit**.
+1. Přejděte na *SampleWebApplication\Views\Home* adresář, vyberte tři tečky (...) vedle položky *Index.cshtml* souboru a pak vyberte **upravit**. 
 
-1. Proveďte změnu souboru například úpravou textu uvnitř některé ze **značek div**.  V pravém horním rohu vyberte **Potvrdit**.  Znovu vyberte **Potvrdit**, aby se změna nasdílela. 
+1. Proveďte změnu souboru, např. přidejte nějaký text v rámci jedné značky div. 
 
-1. Za chvíli se **spustí build ve službě Azure DevOps Services** a pak se provede vydání za účelem nasazení změn.  **Stav buildu** můžete monitorovat na řídicím panelu projektu DevOps nebo v prohlížeči s vaší organizací služby Azure DevOps Services.
+1. V pravém horním rohu, vyberte **potvrzení**a pak vyberte **potvrzení** znovu, aby push změny.  
+    Po chvíli se sestavení začíná v Azure DevOps a provede vydání k nasazení změny. Sledování stavu sestavení v řídicím panelu projekty DevOps, nebo v prohlížeči ve vaší organizaci Azure DevOps.
 
-1. Po dokončení vydání **aktualizujte aplikaci** v prohlížeči a ověřte, že se zobrazí provedené změny.
+1. Po vydání aktualizace aplikace, chcete-li ověřit změny.
 
-## <a name="connect-to-the-azure-sql-server-database"></a>Připojení k databázi Azure SQL Serveru
+## <a name="connect-to-the-azure-sql-database"></a>Připojení k Azure SQL database
 
-Pro připojení ke službě Azure SQL Database potřebujete odpovídající oprávnění.
+Budete potřebovat příslušná oprávnění pro připojení k databázi Azure SQL.
 
-1. Na řídicím panelu Azure DevOps Project vyberte **SQL Database** a přejděte na stránku pro správu služby SQL Database.
+1. Na řídicím panelu projekty DevOps vyberte **SQL Database** přejděte na stránku správy pro službu SQL database.
    
-1. Vyberte **Nastavit bránu firewall serveru** a pak **+ Přidat IP adresu klienta**.  
+1. Vyberte **nastavit bránu firewall serveru**a pak vyberte **přidat IP adresu klienta**. 
 
-1. Vyberte **Uložit**.  IP adresa vašeho klienta má teď povolený přístup k **prostředku Azure SQL Serveru**.
+1. Vyberte **Uložit**.  
+    Vaše IP adresa klienta má nyní přístup k prostředku SQL Server Azure.
 
-1. Vraťte se do okna **SQL Database**. 
+1. Přejděte zpět **SQL Database** podokně. 
 
-1. Na pravé straně obrazovky vyberte **Název serveru** a přejděte na stránku konfigurace **SQL Serveru**.
+1. Na pravé straně vyberte název serveru, přejděte na konfigurační stránku pro **systému SQL Server**.
 
-1. Vyberte **Resetovat heslo**, zadejte heslo pro **Přihlášení správce SQL Serveru** a pak vyberte **Uložit**.  **Uložte** si toto heslo pro další kroky v tomto kurzu.
+1. Vyberte **resetovat heslo**, zadejte heslo pro přihlašovací jméno správce SQL serveru a pak vyberte **Uložit**.  
+    Ujistěte se, aby toto heslo použijete později v tomto kurzu.
 
-1. Teď se můžete volitelně připojit k Azure SQL Serveru a službě Azure SQL Database pomocí klientských nástrojů, jako je aplikace **SQL Server Management Studio** nebo sada **Visual Studio**.  Pro připojení použijte vlastnost **Název serveru**.
+    Nyní může volitelně pomocí klientských nástrojů, jako je SQL Server Management Studio nebo Visual Studio pro připojení k serveru SQL Server a Azure SQL database. Pro připojení použijte vlastnost **Název serveru**.
 
-   Pokud jste při počáteční konfiguraci služby DevOps Project nezměnili uživatelské jméno databáze, vaše uživatelské jméno je místní část vaší e-mailové adresy.  Pokud je vaše e-mailová adresa například johndoe@microsoft.com, vaše uživatelské jméno je johndoe.
+    Pokud jste nezměnili uživatelské jméno pro databázi při počáteční konfiguraci projektu v DevOps Projects, vaše uživatelské jméno je místní části e-mailovou adresu. Například, pokud je vaše e-mailovou adresu *johndoe\@microsoft.com*, vaše uživatelské jméno je *johndoe*.
 
- > [!NOTE]
- > Pokud si změníte heslo pro přihlášení k SQL, musíte změnit heslo v proměnné kanálu verze služby Azure DevOps Services, jak je popsáno v oddílu **Prozkoumání kanálu CD služby Azure DevOps Services**.
+   > [!NOTE]
+   > Pokud změníte heslo pro přihlašovací jméno SQL, musíte změnit heslo v kanálu proměnná vydané verze, jak je popsáno v části "Zkontrolujte kanálu CD".
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
- > [!NOTE]
- > Následujícím postupem se trvale odstraní prostředky.  Tuto funkci použijte pouze po důkladném prostudování výzev.
+Pokud testujete, vyhnete se účtují poplatky podle údržbě vašich prostředků. Pokud už je nepotřebujete, můžete odstranit databázi Azure SQL a související prostředky, které jste vytvořili v tomto kurzu. Chcete-li tak učinit, použijte **odstranit** funkce na řídicím panelu projekty DevOps.
 
-Pokud provádíte testování, můžete vyčistit prostředky a zamezit tak nabíhání poplatků.  Pokud už je nepotřebujete, můžete službu Azure SQL Database a související prostředky vytvořené v tomto kurzu odstranit pomocí funkce **Odstranit** na řídicím panelu Azure DevOps Project.  **Buďte opatrní**, protože funkce odstranění zničí všechna data vytvořená projektem Azure DevOps v Azure i ve službě Azure DevOps Services. Po odstranění dat je nebudete moct načíst.
+> [!IMPORTANT]
+> Následující postup se trvale odstraní prostředky. *Odstranit* funkcí zničí data, která se vytvoří v projektu v projektech pro DevOps v Azure i Azure DevOps a nebude možné ho načíst. Pomocí tohoto postupu, až poté, co jste pečlivě přečtěte si zobrazených výzev.
 
-1. Na webu **Azure Portal** přejděte do služby **Azure DevOps Project**.
-2. Na **pravé horní** straně řídicího panelu vyberte **Odstranit**.  Po přečtení výzvy vyberte **Ano** a **trvale odstraňte** prostředky.
+1. Na webu Azure Portal přejděte do řídicího panelu DevOps Projects.
+2. V pravém horním rohu, vyberte **odstranit**. 
+3. Do příkazového řádku vyberte **Ano** k *trvale odstranit* prostředky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další projekty.  Naučili jste se tyto postupy:
+Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další kanály. V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření projektu Azure DevOps pro aplikaci ASP.NET a službu Azure SQL Database
-> * Konfigurace služby Azure DevOps Services a předplatného Azure 
-> * Prozkoumání kanálu CI služby Azure DevOps Services
-> * Prozkoumání kanálu CD služby Azure DevOps Services
-> * Potvrzení změn do služby Azure DevOps Services a automatické nasazení do Azure
-> * Připojení k databázi Azure SQL Serveru 
+> * Nasazení aplikace ASP.NET a Azure SQL Database kódu pomocí projektů Azure DevOps
+> * Konfigurace Azure DevOps a předplatné Azure 
+> * Prozkoumání kanálu CI
+> * Prozkoumání kanálu CD
+> * Zapsat změny do úložiště Azure a automaticky nasadit do Azure
+> * Připojení k Azure SQL database 
 > * Vyčištění prostředků
 
-Další informace o kanálu Azure najdete v tomto kurzu:
+Další informace o kanálu CI/CD, naleznete v tématu:
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení procesu CD](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definování kanálu vícefázové průběžného nasazování (CD)](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Videa
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116177"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Kurz: Stream Analytics a Power BI: Řídicí panel analýzy v reálném čase pro streamovaná data
 Azure Stream Analytics umožňuje využít jeden z předních nástroje business intelligence, [Microsoft Power BI](https://powerbi.com/). V tomto článku se dozvíte, jak vytvořit nástroje business intelligence pomocí Power BI jako výstup pro úlohy Azure Stream Analytics. Také se dozvíte, jak vytvořit a použít řídicí panel v reálném čase.
@@ -56,16 +56,16 @@ V tomto kurzu zjišťování možných podvodů v reálném čase je výstup ode
 
 7. Když se vrátíte **nový výstup** okně zadejte následující informace:
 
-    * **Pracovní prostor skupiny**: Vyberte pracovní prostor ve vašem tenantovi Power BI, kde chcete vytvořit datovou sadu.
-    * **Název datové sady**:  Zadejte `sa-dataset`. Můžete použít jiný název. Pokud tak učiníte, ujistěte se, poznamenejte si ho pro pozdější.
-    * **Název tabulky**: Zadejte `fraudulent-calls`. V současné době Power BI výstup z úlohy Stream Analytics může mít pouze jednu tabulku v datové sadě.
+   * **Pracovní prostor skupiny**: Vyberte pracovní prostor ve vašem tenantovi Power BI, kde chcete vytvořit datovou sadu.
+   * **Název datové sady**:  Zadejte `sa-dataset`. Můžete použít jiný název. Pokud tak učiníte, ujistěte se, poznamenejte si ho pro pozdější.
+   * **Název tabulky**: Zadejte `fraudulent-calls`. V současné době Power BI výstup z úlohy Stream Analytics může mít pouze jednu tabulku v datové sadě.
 
-    ![Datová sada pracovního prostoru Power BI a tabulky](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+     ![Datová sada pracovního prostoru Power BI a tabulky](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
-    > [!WARNING]
-    > Pokud Power BI obsahuje datovou sadu a tabulku, která mají stejné názvy jako ty, které zadáte v úloze Stream Analytics, jsou přepsat ty stávající.
-    > Doporučujeme vám, že nevytvoříte explicitně touto datovou sadou a tabulka ve vašem účtu Power BI. Vytvoří se automaticky při spuštění vaší úlohy Stream Analytics a úloha spustí čerpací výstup do Power BI. Pokud vaše úloha dotaz nevrátí žádné výsledky, nevytvoří se datová sada a tabulky.
-    >
+     > [!WARNING]
+     > Pokud Power BI obsahuje datovou sadu a tabulku, která mají stejné názvy jako ty, které zadáte v úloze Stream Analytics, jsou přepsat ty stávající.
+     > Doporučujeme vám, že nevytvoříte explicitně touto datovou sadou a tabulka ve vašem účtu Power BI. Vytvoří se automaticky při spuštění vaší úlohy Stream Analytics a úloha spustí čerpací výstup do Power BI. Pokud vaše úloha dotaz nevrátí žádné výsledky, nevytvoří se datová sada a tabulky.
+     >
 
 8. Klikněte na možnost **Vytvořit**.
 
@@ -170,7 +170,7 @@ Tato část je volitelný, ale doporučujeme.
 
     ![Vizualizace podrobnosti nové dlaždice.](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. Klikněte na tlačítko **Další**.
+7. Klikněte na **Další**.
 
 8. Vyplňte podrobnosti o dlaždici jako nadpis a podnadpis.
 
@@ -189,13 +189,13 @@ Tato část je volitelný, ale doporučujeme.
     * Přidejte hodnotu a vyberte **podvodnávolání**.
     * Jako **časové okno pro zobrazení** vyberte posledních 10 minut.
 
-    ![Vytvoření dlaždice pro spojnicový graf v Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Vytvoření dlaždice pro spojnicový graf v Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. Klikněte na tlačítko **Další**, přidejte nadpis a podnadpis a klikněte na tlačítko **použít**.
 
-    Řídicí panel Power BI teď nabízí dvě zobrazení dat o podvodných volání zjištěné v streamovaná data.
+     Řídicí panel Power BI teď nabízí dvě zobrazení dat o podvodných volání zjištěné v streamovaná data.
 
-    ![Dokončení zobrazující dvě dlaždice podvodných volání řídicí panel Power BI](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Dokončení zobrazující dvě dlaždice podvodných volání řídicí panel Power BI](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>Další informace o Power BI

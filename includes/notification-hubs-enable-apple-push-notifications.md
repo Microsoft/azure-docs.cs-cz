@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125323"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru s žádostí o podepsání certifikátu
 
@@ -47,17 +47,17 @@ Abyste mohli odesílat nabízená oznámení do aplikace systému iOS, musíte a
 
 2. Aktualizujte následující tři pole týkající se nové aplikace a potom klikněte na **Continue** (Pokračovat):
 
-    * **Name** (Název): V části **App ID Description** (Popis ID aplikace) zadejte do pole **Name** (Název) popisný název aplikace.
-    * **Bundle Identifier** (Identifikátor svazku): V části **Explicit App ID** (Explicitní ID aplikace) zadejte **identifikátor svazku** ve formě `<Organization Identifier>.<Product Name>`, jak je uvedeno v [Průvodci distribucí aplikace](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). Použité hodnoty *Organization Identifier* (Identifikátor organizace) a *Product Name* (Název produktu) musí odpovídat identifikátoru organizace a názvu produktu, které použijete při vytváření projektu prostředí XCode. Na následujícím snímku se jako identifikátor organizace používá *NotificationHubs* a jako název produktu se používá *GetStarted*. Ujistěte se, že tyto hodnoty odpovídají hodnotám, které použijete v projektu XCode. To vám umožní používat správný profil publikování s XCode.
-    * **Push Notifications** (Nabízená oznámení): V části **App Services** (Služby aplikací) zaškrtněte možnost **Push Notifications** (Nabízená oznámení).
+   * **Název**: Zadejte popisný název pro vaši aplikaci v **název** pole **popis ID aplikace** oddílu.
+   * **Identifikátor sady prostředků**: V části **explicitní ID aplikace** části, zadejte **identifikátor sady prostředků** ve formě `<Organization Identifier>.<Product Name>` jak je uvedeno v [průvodci distribucí aplikace](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). Použité hodnoty *Organization Identifier* (Identifikátor organizace) a *Product Name* (Název produktu) musí odpovídat identifikátoru organizace a názvu produktu, které použijete při vytváření projektu prostředí XCode. Na následujícím snímku se jako identifikátor organizace používá *NotificationHubs* a jako název produktu se používá *GetStarted*. Ujistěte se, že tyto hodnoty odpovídají hodnotám, které použijete v projektu XCode. To vám umožní používat správný profil publikování s XCode.
+   * **Nabízená oznámení**: Zkontrolujte **nabízená oznámení** možnost **App Services** oddílu.
 
-    ![Formulář pro registraci nového ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+     ![Formulář pro registraci nového ID aplikace](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-    Tato akce vygeneruje ID aplikace a vyzve vás k potvrzení tohoto údaje. Kliknutím na **Register** (Zaregistrovat) potvrďte nové ID aplikace.
+     Tato akce vygeneruje ID aplikace a vyzve vás k potvrzení tohoto údaje. Kliknutím na **Register** (Zaregistrovat) potvrďte nové ID aplikace.
 
-    Po kliknutí na **Register** (Zaregistrovat) se zobrazí obrazovka **Registration complete** (Registrace je dokončena), která je na následujícím obrázku. Klikněte na **Done** (Hotovo).
+     Po kliknutí na **Register** (Zaregistrovat) se zobrazí obrazovka **Registration complete** (Registrace je dokončena), která je na následujícím obrázku. Klikněte na **Done** (Hotovo).
 
-    ![Dokončení registrace ID aplikace se zobrazením oprávnění](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+     ![Dokončení registrace ID aplikace se zobrazením oprávnění](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 3. V centru pro vývojáře v části App IDs (ID aplikací) najděte vytvořené ID aplikace a klikněte na jeho řádek.
 

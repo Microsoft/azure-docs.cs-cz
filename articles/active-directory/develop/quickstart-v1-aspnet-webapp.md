@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007623"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
 
@@ -146,7 +146,8 @@ V sadě Visual Studio vytvořte nové zobrazení, do kterého přidáte tlačít
 
     [!code-html[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Views/Home/Index.cshtml "Index.cshtml")]
 
-<!--start-collapse--> Tato stránka přidá tlačítko pro přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Další informace o tlačítkách pro přihlášení najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
+<!--start-collapse-->
+Tato stránka přidá tlačítko přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> Další informace o tlačítkách pro přihlášení najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
 <!--end-collapse-->
 
 ## <a name="step-7-display-users-claims-by-adding-a-controller"></a>Krok 7: Přidání kontroleru zobrazení deklarací identity uživatele
@@ -300,7 +301,7 @@ Kromě toho uvidíte tabulku obsahující všechny deklarace identity uživatele
 
 V tomto kroku otestujete přístup ke kontroleru deklarací identity jako anonymní uživatel:<br/>
 Výběrem odkazu odhlaste uživatele a dokončete proces odhlášení.<br/>
-V prohlížeči zadejte http://localhost:{port}/claims, abyste získali přístup ke kontroleru, který je chráněn atributem `[Authorize]`.
+V prohlížeči zadejte `http://localhost:{port}/claims`, abyste získali přístup ke kontroleru, který je chráněn atributem `[Authorize]`.
 
 #### <a name="expected-results"></a>Očekávané výsledky
 

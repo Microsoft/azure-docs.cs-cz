@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 09f0416e5a03527613e7c353961d81de39c4fe0e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 3bc91b1c20bb4cf4ae755ca47c8d8e0581eb3a1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566835"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995378"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBase pomocí Azure Data Factory 
 
@@ -42,7 +42,7 @@ HBase propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **HBase** | Ano |
-| hostitel | IP adresu nebo název hostitele serveru HBase. (tj.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Ano |
+| hostitel | IP adresu nebo název hostitele serveru HBase. (tj.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Ano |
 | port | Port TCP, která HBase instance používá k naslouchání pro připojení klientů. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru HBase, třeba `/hbaserest0` při použití HDInsights clusteru. | Ne |
 | authenticationType. | Mechanismus ověřování, který se má použít pro připojení k serveru HBase. <br/>Povolené hodnoty jsou: **Anonymní**, **základní** | Ano |

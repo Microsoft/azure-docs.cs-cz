@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 84b66605939abd0f676625a5959f4a31ef1774db
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855346"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -28,7 +28,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 
 Na webu Azure Portal, přejděte na **virtuálních počítačů**.
 
-Pomocí zaškrtávacích políček vyberte virtuální počítače, který chcete připojit pomocí řešení Change Tracking a Inventory nebo Update Management. Registrace je dostupná pro až tří různých skupin prostředků v čase.
+Pomocí zaškrtávacích políček vyberte virtuální počítače, který chcete připojit pomocí řešení Change Tracking a Inventory nebo Update Management. Registrace je dostupná pro až tří různých skupin prostředků v čase. Virtuální počítače Azure mohou existovat v libovolné oblasti bez ohledu na umístění účtu Automation.
 
 ![Seznam virtuálních počítačů](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -68,14 +68,19 @@ V následující tabulce jsou uvedeny podporované mapování:
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
+
+> [!NOTE]
+> Z důvodu poptávky nemusí být oblasti k dispozici při vytváření pracovního prostoru účtu Automation a Log Analytics.  Pokud je to tento případ, ujistěte se, že používáte v předchozí tabulce, která může vytvářet prostředky v oblasti.
 
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e932fd59fb888d73fb2ad9aee3f440b4aca3e662
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 378aab82fac5298c3785f752478e3bfc3c6e325b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory s HR2day podle Merces
 
@@ -132,8 +132,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2day_00.png)
     
-    > [!NOTE] 
-    Než budete moct nakonfigurovat kontrolní výraz SAML, obraťte se [HR2day týmem podpory Merces klienta](mailto:servicedesk@merces.nl) a žádat o hodnotu atributu jedinečného identifikátoru pro vašeho tenanta. Je nutné tuto hodnotu k dokončení kroků v další části. 
+   > [!NOTE]
+   >  Než budete moct nakonfigurovat kontrolní výraz SAML, obraťte se [HR2day týmem podpory Merces klienta](mailto:servicedesk@merces.nl) a žádat o hodnotu atributu jedinečného identifikátoru pro vašeho tenanta. Je nutné tuto hodnotu k dokončení kroků v další části. 
 
 1. V **jednotného přihlašování** v dialogu **atributy uživatele** nakonfigurujte atribut tokenu SAML, jak je znázorněno na následujícím obrázku. Pak proveďte následující kroky.
     
@@ -174,7 +174,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     > [!TIP]
     >Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu. Přejděte k vložená dokumentace prostřednictvím **konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace v [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+   > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.

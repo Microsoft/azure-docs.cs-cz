@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4086c6e591029c926dbf3b7c527ffd8d936bc79b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d5839329f78fc349210f9439c5b1580a21f5172a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760239"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Integrace Azure Active Directory s Citrix ShareFile
 
@@ -119,6 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Citrix ShareFile, proveďte
     | |
     
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |---|
     | `https://<tenant-name>.sharefile.com/saml/acs`|
@@ -186,7 +187,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
@@ -235,7 +236,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Citrix ShareFile, mus�
    
     ![Základní informace](./media/sharefile-tutorial/IC799951.png "základní informace")
    
-    a. V **e-mailovou adresu** textového pole zadejte e-mailovou adresu Britta Simon jako **brittasimon@contoso.com**.
+    a. V **e-mailovou adresu** textového pole zadejte e-mailovou adresu Britta Simon jako **brittasimon\@contoso.com**.
    
     b. V **křestní jméno** textové pole, typ **křestní jméno** uživatele jako **Britta**.
    

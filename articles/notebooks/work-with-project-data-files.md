@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fd1e7ccdc54b5c5111ecfa466e916a376f43521a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5f8b6db77cabdf5e7af66063cbd9a058bd01800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082768"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Práce s datovými soubory v projektech poznámkového bloku v Azure
 
@@ -42,13 +42,13 @@ Soubory můžete zahrnout do projektu z řídicího panelu Projekt, nebo v rámc
 
 1. Vyberte **nahrát** příkaz a pak buď **z adresy URL** nebo **z počítače** a nezbytné podrobnosti o, pro kterou chcete importovat data projektu:
 
-    - **Z adresy URL**: Zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název_souboru** pole. Potom vyberte **+ přidat soubor** přidejte adresu URL do seznamu nahrávání. Postup opakujte pro všechny další adresy URL a pak vyberte **provádí**.
+   - **Z adresy URL**: Zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název_souboru** pole. Potom vyberte **+ přidat soubor** přidejte adresu URL do seznamu nahrávání. Postup opakujte pro všechny další adresy URL a pak vyberte **provádí**.
 
-    ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
+     ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
 
-    - **Z počítače**: Přetáhněte soubory do automaticky otevíraného okna nebo vyberte **vybrat soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, z libovolného typu a formátu, protože je na kódu v poznámkovém bloku otevřete soubor a analyzovat svá data.
+   - **Z počítače**: Přetáhněte soubory do automaticky otevíraného okna nebo vyberte **vybrat soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, z libovolného typu a formátu, protože je na kódu v poznámkovém bloku otevřete soubor a analyzovat svá data.
 
-    ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
+     ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
 
 1. Po importu, soubory se zobrazí na řídicím panelu Projekt a je přístupná v rámci poznámkového bloku kódu pomocí relativní cesty ke složce obsahující.
 

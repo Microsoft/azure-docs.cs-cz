@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095037"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nelze provést připojení RDP k virtuálnímu počítači, protože virtuální počítač se spustí v nouzovém režimu
 
@@ -47,7 +47,7 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
 1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [opravte virtuální počítač v režimu offline](#repair-the-vm-offline).
+   ). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [opravte virtuální počítač v režimu offline](#repair-the-vm-offline).
 2. Kontrola konfiguračních dat spouštění:
 
         bcdedit /enum
@@ -55,12 +55,12 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
     Pokud virtuální počítač je nakonfigurovaný pro spuštění v nouzovém režimu, zobrazí se další příznak v části **Windows spouštěcí zavaděč** část s názvem **bezpečného**. Pokud se nezobrazí **bezpečného** příznak, virtuální počítač není v nouzovém režimu. Tento článek se nevztahuje na váš scénář.
 
     **Bezpečného** příznak může zobrazit následující hodnoty:
-    - Minimální
-    - Síť
+   - Minimální
+   - Síť
 
-    V některém z těchto dvou režimech nebude spuštěno protokolu RDP. Proto oprava zůstává stejná.
+     V některém z těchto dvou režimech nebude spuštěno protokolu RDP. Proto oprava zůstává stejná.
 
-    ![Obrázek o příznak Nouzový režim](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![Obrázek o příznak Nouzový režim](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. Odstranit **safemoade** příznak, tak virtuální počítač se spustí v normálním režimu:
 

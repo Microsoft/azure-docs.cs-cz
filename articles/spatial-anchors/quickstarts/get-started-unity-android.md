@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863113"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android Unity s Azure prostorových kotev vztahů
 
@@ -35,7 +35,9 @@ Dozvíte se, jak provést tyto akce:
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Windows nebo macOS počítače s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> a <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a> nainstalované.
+- Windows nebo macOS počítače s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> a <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a>.
+  - Pokud používáte Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
+  - Pokud spuštěný v systému macOS, zajistit správné fungování Gitu instalovaných pomocí instalace HomeBrew. Jako jeden řádek, terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Potom spusťte `brew install git`.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer povolené</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore podporující</a> zařízení s Androidem.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -58,32 +60,12 @@ Uložte výběrem scény **souboru** -> **Uložit**.
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Vyberte **exportovat** otevřete dialogové okno. Vyberte složku pro export projektů Android Studio.
-
-Po dokončení exportu do složky se zobrazí obsahující exportované projekt Android Studio, s podsložce s názvem **HelloAR U3D**.
-
-## <a name="deploy-the-android-application"></a>Nasazení aplikace pro Android
-
-Otevřete Android Studio a vyberte **otevřete existující projekt Android Studio**. Vyberte **HelloAR U3D** podsložky v exportovaném projektu Android Studio a klikněte na **OK**.
-
-Při otevírání, se zobrazí výzva s výzvou k použití obálky Gradle. Vyberte **OK** použití obálky Gradle a otevřete projekt.
-
-Zapněte zařízení s Androidem, přihlaste a připojte ho k počítači pomocí kabelu USB.
-
-Vyberte **spustit** z panelu nástrojů Android Studio.
-
-![Android Studio nasadit a spustit](./media/get-started-unity-android/android-studio-deploy-run.png)
-
-Vyberte zařízení s Androidem v **vyberte cíl nasazení** dialogového okna a vyberte **OK** ke spuštění aplikace na zařízení s Androidem.
+Zkontrolujte **Export projektů** zaškrtávacího políčka nemá značku zaškrtnutí. Klikněte na tlačítko **sestavíte a spustíte**. Zobrazí se dotaz, chcete-li uložit vaše `.apk` soubor, můžete vybrat libovolný název.
 
 Postupujte podle pokynů v aplikaci umístit a odvolat ukotvení.
 
 > [!NOTE]
 > Při spuštění aplikace, pokud se nezobrazí fotoaparátu/kamery jako pozadí (pro instance, zobrazí se místo toho prázdnou hodnotu, modrá nebo jiných textury) pak budete pravděpodobně muset znovu importovat prostředky v Unity. Zastavte aplikaci. Z hlavní nabídky v Unity, zvolte **prostředků -> všechny opakovaný import**. Spusťte aplikaci znovu.
-
-Zastavte aplikaci tak, že vyberete **Zastavit** z panelu nástrojů Android Studio.
-
-![Android Studio Stop](./media/get-started-unity-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -1,21 +1,21 @@
 ---
-title: Použití portálu webových služeb Azure Machine Learning Studio
+title: Správa webových služeb
 titleSuffix: Azure Machine Learning Studio
-description: Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
+description: Správa služby Machine Learning nová a klasická webová pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2d62b5a140fc4614e26d40f153f5e13d4a3b70f4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838370"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Správa webové služby pomocí portálu webových služeb Azure Machine Learning Studio
 Můžete spravovat novou Machine Learning a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Protože klasické webové služby a nové webové služby jsou založeny na různé základní technologie, získáte možnosti správy mírně liší pro každý z nich.
@@ -29,7 +29,7 @@ Na portálu pro Machine Learning Web Services vám umožňuje:
 * Přidání a odstranění koncových bodů (pouze Klasický model)
 
 >[!NOTE]
->Také můžete spravovat klasické webové služby v [Machine Learning Studio](http://studio.azureml.net) na **webových služeb** kartu.
+>Také můžete spravovat klasické webové služby v [Machine Learning Studio](https://studio.azureml.net) na **webových služeb** kartu.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Oprávnění ke správě nového správce prostředků na základě webové služby
 

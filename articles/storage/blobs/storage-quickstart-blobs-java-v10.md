@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 136f9912e5a296629f76998e5843d6cccd81d3e3
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: f44a6b825f9e8871bb7d7877ebd1821038b45f65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570568"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004874"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí V10 Java úložiště sady SDK
 
@@ -25,7 +25,7 @@ V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahr�
 
 Ujistěte se, že máte nainstalované následující další požadavky:
 
-* [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo libovolné integrované vývojové prostředí Java, které dáváte přednost.
+* [Maven](https://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo libovolné integrované vývojové prostředí Java, které dáváte přednost.
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
@@ -100,7 +100,7 @@ Cleaning up the sample and exiting!
 
 Máte možnost ovládat tuto ukázku a zadat příkazy, které spustí kód. Při zadávání se rozlišují malá a velká písmena.
 
-K zobrazení souborů v úložišti objektů blob můžete použít taky nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
+K zobrazení souborů v úložišti objektů blob můžete použít taky nástroj, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
 
 Ověřte soubory. Potom vyberte **E**, stiskněte **Enter**, aby se ukázka dokončila, a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor **Quickstart.java** a prohlédněte si kód. 
 
@@ -166,11 +166,11 @@ try {
 1. Pokud chcete do objektu blob nahrát soubor, získejte odkaz na objekt blob v cílovém kontejneru. 
 2. Jakmile získáte odkaz na objekt blob, můžete do něj nahrát soubor pomocí některého z následujících rozhraní API:
 
-    * Rozhraní API nízké úrovně. Mezi příklady patří rozhraní [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_) neboli PutBlob a rozhraní [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable) neboli PutBLock v instanci objektu **BlockBlobURL**. 
+   * Rozhraní API nízké úrovně. Mezi příklady patří rozhraní [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_) neboli PutBlob a rozhraní [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable) neboli PutBLock v instanci objektu **BlockBlobURL**. 
 
-    * Rozhraní API vysoké úrovně, která jsou součástí [třídy TransferManager](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable). Mezi příklady patří metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable). 
+   * Rozhraní API vysoké úrovně, která jsou součástí [třídy TransferManager](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable). Mezi příklady patří metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable). 
 
-    Tato operace vytvoří objekt blob, pokud ještě neexistuje. Pokud už objekt blob existuje, operace ho přepíše.
+     Tato operace vytvoří objekt blob, pokud ještě neexistuje. Pokud už objekt blob existuje, operace ho přepíše.
 
 Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor určený k nahrání se uloží jako **sourceFile** a adresa URL objektu blob jako **blob**. Následující příklad nahraje soubor do kontejneru **quickstart**.
 

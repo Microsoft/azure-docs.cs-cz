@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: fd4c1220d0652139c247ffed80e995a90a93c5b1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 469213ae67f1f2bcece6afa5d9b7873bfdfe8d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780830"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095734"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Monitor v Azure stacku
 
@@ -33,8 +33,8 @@ Tento článek obsahuje přehled služby Azure Monitor ve službě Azure Stack. 
 
 Azure Monitor je služba platformy, která poskytuje jeden zdroj pro monitorování prostředků Azure. Prostřednictvím služby Azure Monitor můžete vizualizovat, dotazy, směrovat, archivace a jinak reagovat na metriky a protokoly pocházející z prostředků v Azure. S těmito daty můžete pracovat s použitím služby Azure Stack portálu pro správu, monitorování rutin prostředí PowerShell, Cross-Platform CLI nebo REST API služby Azure Monitor. Pro konkrétní připojení podporován ve službě Azure Stack, najdete v článku [jak využívat data monitorování z Azure Stack](azure-stack-metrics-monitor.md)
 
-> [!Note]  
-Diagnostické protokoly a metriky nejsou k dispozici pro Azure Stack Development Kit.
+> [!Note]
+> Diagnostické protokoly a metriky nejsou k dispozici pro Azure Stack Development Kit.
 
 ## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Požadavky pro Azure Monitor v Azure stacku
 

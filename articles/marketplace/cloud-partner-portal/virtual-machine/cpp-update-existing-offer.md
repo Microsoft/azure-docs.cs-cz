@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: ee828c908cb3b103befa3890b43bb2c1f04f7cf0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852470"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace stávající nabídky virtuálních počítačů na webu Azure Marketplace
 
@@ -65,7 +65,7 @@ Je běžné, že image virtuálního počítače pravidelně aktualizovat opravy
 
 4.  V části **disková verze**, klikněte na **+ nová verze disku** přidat nové image virtuálního počítače.
 
-5.  Zadejte nové Image virtuálních počítačů **disková verze**. Verze disku musí podstoupit [sémantickou verzi](http://semver.org/) formátu. Verze by měla mít formát X.Y.Z, kde X, Y a jsou celá čísla. Ověřte, zda je větší než všechny předchozí verze; nové verze, které zadáte v opačném případě po publikování na novou verzi nezobrazí na portálu nebo na webu Azure Marketplace.
+5.  Zadejte nové Image virtuálních počítačů **disková verze**. Verze disku musí podstoupit [sémantickou verzi](https://semver.org/) formátu. Verze by měla mít formát X.Y.Z, kde X, Y a jsou celá čísla. Ověřte, zda je větší než všechny předchozí verze; nové verze, které zadáte v opačném případě po publikování na novou verzi nezobrazí na portálu nebo na webu Azure Marketplace.
 
 6.  Pro **URL virtuálního pevného disku operačního systému**, zadejte [sdílený přístupový podpis (SAS) URI](./cpp-get-sas-uri.md) pro operační systém virtuálního pevného disku. 
 

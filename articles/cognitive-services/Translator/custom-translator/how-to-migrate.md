@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 246580d7c93677859c5800cdc9394c1603c4c36b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776968"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901521"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -26,12 +26,8 @@ Během migrace se provádí tyto akce:
 * Všechny migrované školení, které nebyly v nasazeném stavu zařadí do stavu migrovaných konceptu. V tomto stavu budete mít možnost trénujete model pro migrované definicí, ale poplatky za regulární školení.
 * V libovolném bodě skóre BLEU migrovat z centra školení najdete na stránce TrainingDetails modelu v "Bleu skóre v centru MT" záhlaví.
 
->[!Note]
-Školení na úspěšné, vlastní Translator vyžaduje minimálně 10 000 jedinečných extrahované věty. Vlastní překladač nemůže provádějte školení s méně než [navrhované minimální](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
-
-## <a name="enable-account-migration"></a>Povolení migrace účtu
-
-Chcete-li použít nástroj pro migraci, budete muset mít vaše Centrum účtu migrace je povolená. K tomuto účelu e-mailu [ custommt@microsoft.com ](mailto:custommt@microsoft.com) se seznamem všech za provozu id účtů, které byste chtěli povolena. Tyto účty by měl být e-mailové adresy, které jste přihlášení.
+> [!Note]
+> Školení na úspěšné, vlastní Translator vyžaduje minimálně 10 000 jedinečných extrahované věty. Vlastní překladač nemůže provádějte školení s méně než [navrhované minimální](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Najít vlastní Translator ID pracovního prostoru
 

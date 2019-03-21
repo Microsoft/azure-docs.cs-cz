@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
-ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 938d1b820bbc85824138d77b81b0f922fd494d0d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003375"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)
 Azure SQL Database a Azure SQL Data Warehouse připojení pomocí SQL Server Management Studio (SSMS) podporují *univerzálního ověřování Active Directory*. 
@@ -46,7 +46,7 @@ Uživatelé Azure AD podporuje pro scénáře B2B ve službě Azure AD jako uži
 - SSMS verze 17.2 poskytuje podporu průvodce DacFx pro Export/Extract/nasazení dat. databázi. Konkrétní uživatel ověřen pomocí dialogového okna počáteční ověřování pomocí univerzální ověřování, funkce Průvodce DacFx stejným způsobem funguje pro všechny ostatní metody ověřování.
 - Návrhář tabulky aplikace SSMS nepodporuje univerzální ověřování.
 - Nejsou žádné další požadavky na software pro univerzálního ověřování Active Directory s tím rozdílem, že musí použít podporovanou verzi aplikace ssms.  
-- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování byl aktualizován na nejnovější dostupné vydané verzi ADAL.dll 3.13.9. Zobrazit [Active Directory Authentication Library 3.14.1](http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování byl aktualizován na nejnovější dostupné vydané verzi ADAL.dll 3.13.9. Zobrazit [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 
 ## <a name="next-steps"></a>Další postup

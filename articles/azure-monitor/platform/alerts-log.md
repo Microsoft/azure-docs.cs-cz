@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 3240878507249d22a8d791ced9332878907a818c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873787"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru
 
@@ -47,29 +47,29 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
 1. Definujte podmínku upozornění pomocí **vybrat prostředek** odkaz a zadáte cíl tak, že vyberete prostředku. Filtrovat podle výběru _předplatné_, _typ prostředku_a požadované _prostředků_.
 
-    >[!NOTE]
-
-    > Pro vytvoření protokolu upozornění: ověření **protokolu** signálu je k dispozici pro vybraný prostředek, než budete pokračovat.
-    ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
+   > [!NOTE]
+   > 
+   > Pro vytvoření protokolu upozornění: ověření **protokolu** signálu je k dispozici pro vybraný prostředek, než budete pokračovat.
+   >  ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. *Upozornění protokolů*: Zajištění **typ prostředku** je zdrojem analytics jako *Log Analytics* nebo *Application Insights* a signalizuje, že typ jako **protokolu**, než jednou odpovídající **prostředků** je vybrán, klikněte na tlačítko *provádí*. Potom pomocí **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro prostředek a v seznamu signál **prohledávání protokolů vlastní** možnosti zvolené protokolu monitorování službě, jako je *protokolu Analytics* nebo *Application Insights*.
 
    ![Vyberte prostředek - hledání vlastního protokolu](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
-
+   > 
    > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../../azure-monitor/log-query/log-query-overview.md) nebo [sdíleného dotazu ve službě application insights Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 1. *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
     ![Konfigurace pravidla výstrahy](media/alerts-log/AlertsPreviewAlertLog.png)
 
-    > [!NOTE]
-    
-    > Vizualizaci historických dat mohou být zobrazeny pouze pokud výsledky dotazu obsahovat podrobnosti času. Pokud váš dotaz vrátí souhrnná data nebo konkrétní sloupec hodnot – stejný se zobrazuje jako jednotný vykreslení.
-    > Pro typ měření metriky upozornění protokolů pomocí Application Insights nebo [přešla na nové rozhraní API](alerts-log-api-switch.md), které konkrétní proměnné k seskupení dat s využitím můžete určit **agregace na** možnosti, jak je znázorněno v níže:
-    >
-    > ![agregace na možnost](media/alerts-log/aggregate-on.png)
+   > [!NOTE]
+   > 
+   > Vizualizaci historických dat mohou být zobrazeny pouze pokud výsledky dotazu obsahovat podrobnosti času. Pokud váš dotaz vrátí souhrnná data nebo konkrétní sloupec hodnot – stejný se zobrazuje jako jednotný vykreslení.
+   > Pro typ měření metriky upozornění protokolů pomocí Application Insights nebo [přešla na nové rozhraní API](alerts-log-api-switch.md), které konkrétní proměnné k seskupení dat s využitím můžete určit **agregace na** možnosti, jak je znázorněno v níže:
+   > 
+   > ![agregace na možnost](media/alerts-log/aggregate-on.png)
 
 1. *Upozornění protokolů*: S vizualizací na místě **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logice, čas pro zadanou podmínku pomocí **období** možnost. Spolu s jak často výstraha spouštět tak, že vyberete **frekvence**. **Upozornění protokolů** může být založené na:
     - [Počet záznamů, které](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Pokud je počet záznamů vrácených dotazem větší nebo menší než hodnota zadaná, vytvoří se výstraha.
@@ -102,9 +102,9 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
 1. Pokud všechna pole jsou platná a s zelené značky **vytvořit pravidlo upozornění** kliknutí na tlačítko a výstrahy se vytvoří ve službě Azure Monitor – výstrahy. Všechny výstrahy můžete zobrazit z výstrah řídicí panel.
 
-    ![Vytvoření pravidla](media/alerts-log/AlertsPreviewCreate.png)
+     ![Vytvoření pravidla](media/alerts-log/AlertsPreviewCreate.png)
 
-    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
+     Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
 Uživatelé můžou také finalizován jejich analytického dotazu v [protokolu analytics](../log-query/portals.md) a poslat ho chcete vytvořit upozornění přes tlačítko "nastavit upozornění - pak postupujte podle pokynů v kroku 6 a vyšší v tomto kurzu výše.
 
@@ -318,7 +318,7 @@ Azure Monitor – naplánovaných pravidel dotazu rozhraní API] (https://docs.m
 > [!NOTE]
 > Upozornění protokolů pro Log Analytics je také možné spravovat pomocí starší verze [API upozornění Log Analytics](../../azure-monitor/platform/api-alerts.md) a starší verze šablony [uložené výsledky hledání a upozornění Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md) také. Další informace o použití nového rozhraní API ScheduledQueryRules pomocí zde podrobně ve výchozím nastavení, najdete v části [přepnout na nové rozhraní API pro upozornění Log Analytics](alerts-log-api-switch.md).
 
-Upozornění protokolů aktuálně nemáte vyhrazené příkazy prostředí PowerShell nebo rozhraní příkazového řádku aktuálně; jak je znázorněno níže je možné pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json) v, ale [oddíl prostředků šablony](#azure-resource-template-for-application-insights) :
+Upozornění protokolů aktuálně nemáte vyhrazené příkazy prostředí PowerShell nebo rozhraní příkazového řádku aktuálně; ale jak je znázorněno níže je možné pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json) v části šablony Resource:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"

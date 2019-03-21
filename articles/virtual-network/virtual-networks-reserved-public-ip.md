@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 543135db8df69db7e0e6182c9d52b9c956ee80b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228177"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996981"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Rezervované IP adresy (klasické nasazení)
 
@@ -28,7 +28,7 @@ ms.locfileid: "51228177"
 Chcete-li zabránit ve změně IP adresy, si můžete rezervovat IP adresu. Rezervované IP adresy lze použít pouze jako virtuální IP adresy, zajištění, že IP adresa pro cloudovou službu zůstává stejné, i když jsou prostředky vypnutý nebo zastaveno (přidělení zrušeno). Kromě toho můžete převést stávající dynamické IP adresy použít jako virtuální IP adresu pro rezervovanou IP adresu.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak rezervovat statické veřejné IP adresy using [modelu nasazení Resource Manager](virtual-network-ip-addresses-overview-arm.md).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky:  [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak rezervovat statické veřejné IP adresy using [modelu nasazení Resource Manager](virtual-network-ip-addresses-overview-arm.md).
 
 Další informace o IP adresách v Azure najdete v článku [IP adresy](virtual-network-ip-addresses-overview-classic.md) článku.
 
@@ -83,7 +83,7 @@ Očekávaný výstup:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Když vytvoříte vyhrazené IP adresy pomocí prostředí PowerShell, nelze zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure umístí do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte rezervované IP používat [webu Azure portal](http://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název  *Vyhrazené resource-group-name-ip název skupiny*.  Například můžete vytvořit vyhrazenou IP adresu s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazené IP adresy jako *myResourceGroup skupiny myReservedIP*.   
+>Když vytvoříte vyhrazené IP adresy pomocí prostředí PowerShell, nelze zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure umístí do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte rezervované IP používat [webu Azure portal](https://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název  *Vyhrazené resource-group-name-ip název skupiny*.  Například můžete vytvořit vyhrazenou IP adresu s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazené IP adresy jako *myResourceGroup skupiny myReservedIP*.   
 
 
 Jakmile je vyhrazené IP adresy, zůstane přidružený k vašemu předplatnému, dokud je neodstraníte. Odstraňte vyhrazenou IP adresu následujícím způsobem:

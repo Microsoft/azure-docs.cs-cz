@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05b1885871c83da79839448fce2814016f0c082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64c199df2012e6ce3b3de5f34989cf5cbc135fdc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194559"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101019"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -45,7 +45,7 @@ Také můžete přispívat do našich ukázek na Githubu. Další informace o po
 Tato ukázka předvádí, jak psát jednostránkovou aplikaci zabezpečené službou Azure AD.
 
  Platforma | Volání vlastního rozhraní API | Volání jiné webové rozhraní API
- -------- |  --------------------- | ------------------ | ----------------
+ -------- |  --------------------- | ------------------ 
 ![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
@@ -67,8 +67,8 @@ Následující ukázky ukazují webové aplikace přihlašování uživatelů. N
 
 Následující ukázky ukazují, jak implementovat řízení přístupu na základě role (RBAC). RBAC se používá k omezení oprávnění určité funkce ve webové aplikaci na určité uživatele. Uživatelé mají oprávnění v závislosti na tom, jestli patří do **skupiny Azure AD** nebo mají určité aplikace **role**.
 
-Platforma | Ukázka
- -------- | -------------------
+Platforma | Ukázka |
+ -------- | ------------------- |
 ![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Webové aplikace .NET 4.5 MVC, který používá Azure AD **role** pro autorizaci
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop a mobile veřejné klientské aplikace volání Microsoft Graphu nebo rozhraní Web API
@@ -88,14 +88,14 @@ Mobilní zařízení (Android)           | ![Android / Javu](media/sample-v2-cod
 Mobilní zařízení (iOS)           | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Interaktivní |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 Plocha (konzola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Uživatelské jméno / heslo </p>  Integrované ověřování systému Windows | | [DotNet – nativní bezobslužného](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Plocha (konzola)          | ![Konzola jazyka Java](media/sample-v2-code/logo_Java.png) | Uživatelské jméno / heslo | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Plocha (konzola)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Tok kódu při zařízení | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Plocha (konzola)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Tok kódu zařízení | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Démon procesu aplikace (přístup k webovým rozhraním API s identitou aplikace)
 
 Následující ukázky ukazují desktopových nebo webových aplikací s přístupem k Microsoft Graphu nebo webové rozhraní API bez uživatele (s identitou aplikace).
 
 Klientská aplikace | Platforma | Tok/udělení | Volání rozhraní API technologie ASP.NET nebo ASP.NET Core 2.0 Web
------------------- | -------- | ---------- | -------------------- | -------------------------
+------------------ | -------- | ---------- | -------------------- 
 Démon procesu aplikace (konzola)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | Přihlašovací údaje pro klienta s tajný kód aplikace nebo certifikát | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Démon procesu aplikace (konzola)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | Přihlašovací údaje pro klienta pomocí certifikátu| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
 Webové aplikace v ASP.NET  | ![.NET](media/sample-v2-code/logo_NETframework.png) | Přihlašovací údaje klienta | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)

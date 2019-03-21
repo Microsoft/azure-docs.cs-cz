@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075557"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k sestavení služby machine learning aplikací a analyzovat datové sady
 
@@ -200,16 +200,16 @@ Začněme představu, co obsahuje datovou sadu.
 
     Pro předpověď výsledků kontroly potravin, budete muset vyvinout model založený na porušení zásad. Protože logistické regrese je metoda binární klasifikace, je vhodné seskupit Výsledná data do dvou kategorií: **Selhání** a **předat**:
 
-    - Úspěch
-        - Úspěch
-        - Předejte plánovaným bodem obnovení kratším podmínky
-    - Chyba
-        - Chyba
-    - Zahodit
-        - Firmy, které se nenachází
-        - Nevyvíjí obchodní činnost
+   - Úspěch
+       - Úspěch
+       - Předejte plánovaným bodem obnovení kratším podmínky
+   - Chyba
+       - Chyba
+   - Zahodit
+       - Firmy, které se nenachází
+       - Nevyvíjí obchodní činnost
 
-    Nejsou užitečné údaje s další výsledky ("Obchodní není umístěný" nebo "obchodní z") a jsou velmi malé procento výsledky přesto provést.
+     Nejsou užitečné údaje s další výsledky ("Obchodní není umístěný" nebo "obchodní z") a jsou velmi malé procento výsledky přesto provést.
 
 4. Spusťte následující kód pro převod existujícího datového rámce (`df`) do struktury dataframe nové, kde každé kontrole reprezentované jako dvojici popisek porušení. V tomto případě popisek `0.0` představuje selhání popisek `1.0` představuje úspěch a jako popisek `-1.0` představuje některé výsledky kromě těchto dvou. 
 

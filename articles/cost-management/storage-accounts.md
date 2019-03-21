@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f03193253bd8d8a7530d65a552a07d3901887cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104297"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 
@@ -39,13 +39,13 @@ Konfigurace je úložiště Azure pro použití u Cloudyn je jednoduché. Shrom�
 2. Klikněte na tlačítko **všechny služby**vyberte **účty úložiště**, přejděte do účtu úložiště, který chcete použít a potom vyberte účet.
 3. Na stránce svého účtu úložiště v rámci **nastavení**, klikněte na tlačítko **přístupové klíče**.
 4. Kopii vaší **název účtu úložiště** a **připojovací řetězec** pod klíč1.  
-![Zkopírujte název a připojovací řetězec účtu úložiště](./media/storage-accounts/azure-storage-access-keys.png)  
+   ![Zkopírujte název a připojovací řetězec účtu úložiště](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
 6. Kliknutím na symbol ozubeného kola a pak vyberte **Správa sestav úložišť**.
 7. Klikněte na tlačítko **přidat nový +** a zkontrolujte, že je vybraná možnost Microsoft Azure. Vložte název účtu úložiště Azure v **název** oblasti. Vložit vaše **připojovací řetězec** v příslušné oblasti. Zadejte název kontejneru a pak klikněte na tlačítko **Uložit**.  
-![Vložte účet úložiště Azure, název a připojovací řetězec v okně Přidat nová pole úložiště sestavy](./media/storage-accounts/azure-cloudyn-storage.png)
+   ![Vložte účet úložiště Azure, název a připojovací řetězec v okně Přidat nová pole úložiště sestavy](./media/storage-accounts/azure-cloudyn-storage.png)
 
-  Vaše nové úložiště položka Azure sestavy se zobrazí v seznamu účtů úložiště.  
+   Vaše nové úložiště položka Azure sestavy se zobrazí v seznamu účtů úložiště.  
     ![Nová položka úložiště Azure sestavy v seznamu](./media/storage-accounts/azure-storage-entry.png)
 
 
@@ -53,7 +53,7 @@ Sestavy můžete uložit do služby Azure storage. V sestavách, klikněte na tl
 
 ## <a name="configure-an-aws-storage-bucket"></a>Konfigurace kontejneru úložiště AWS
 
-Cloudyn používá existující přihlašovací údaje AWS: uživatel nebo Role, ukládání sestav do vašeho kontejneru. Pokud chcete otestovat přístup, Cloudyn pokusí uložit malý textový soubor do kontejneru s názvem souboru _kontrola sady permission.txt_.
+Cloudyn používá existující přihlašovací údaje AWS: Uživatel nebo Role, ukládání sestav do vašeho kontejneru. Pokud chcete otestovat přístup, Cloudyn pokusí uložit malý textový soubor do kontejneru s názvem souboru _kontrola sady permission.txt_.
 
 Poskytnete Cloudyn role nebo uživatele s oprávněním umístit objekt do vašeho kontejneru. Potom použijte existující sady nebo vytvořit nový pro uložení sestavy. Nakonec se rozhodněte, jak spravovat třídy úložiště, nastavení životního cyklu pravidla nebo odeberte všechny nepotřebné soubory.
 
@@ -67,8 +67,8 @@ Když vytvoříte novou zásadu, je třeba zadat přesné oprávnění potřebn�
 4. Klikněte na tlačítko **JSON** kartu.
 5. Tyto zásady můžete uložit sestavu do sady S3. Zkopírujte a vložte následující příklad zásady pro **JSON** kartu. Nahraďte &lt;bucketname&gt; názvem vašeho kontejneru.
 
-  ```json
-{
+   ```json
+   {
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -82,8 +82,8 @@ Když vytvoříte novou zásadu, je třeba zadat přesné oprávnění potřebn�
         ]
       }
     ]
-}
-```
+   }
+   ```
 
 6. Klikněte na tlačítko **zkontrolujte zásady**.  
     ![Zobrazuje informace o příklad zásad AWS JSON](./media/storage-accounts/aws-policy.png)  
@@ -109,12 +109,12 @@ Pro připojení nové zásady, otevřete konzoly AWS a upravte Cloudyn role nebo
 1. Vyberte uživatele, Cloudyn.
 2. Na **oprávnění** klikněte na tlačítko **přidat oprávnění**.
 3. V **udělit oprávnění** vyberte **připojit existující zásady přímo**.
-4. Vyhledejte zásadu, kterou jste vytvořili a vyberte ji a pak klikněte na **Další: Revize**.
+4. Vyhledejte zásadu, kterou jste vytvořili a vyberte ji a pak klikněte na **Další: Kontrola**.
 5. Na oprávnění přidat na stránku název role, klikněte na tlačítko **přidat oprávnění**.  
     ![Příklad zásady připojené k vaší uživatelské Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Volitelné: Nastavte oprávnění pomocí sady zásad
+### <a name="optional-set-permission-with-bucket-policy"></a>Volitelné: Sada oprávnění pomocí sady zásad
 
 Můžete také nastavit oprávnění k vytváření sestav s vaší sady S3 pomocí sady zásad. V klasickém zobrazení S3:
 
@@ -122,11 +122,11 @@ Můžete také nastavit oprávnění k vytváření sestav s vaší sady S3 pomo
 2. Vyberte **oprávnění** kartu a potom klikněte na tlačítko **kontejneru zásad**.
 3. Zkopírujte a vložte následující ukázkové zásady. Nahraďte &lt;kbelíku\_název&gt; a &lt;Cloudyn\_Princip&gt; s ARN vašeho kontejneru. Nahraďte ARN role nebo uživatele používají Cloudyn.
 
-  ```
-{
-  "Id": "Policy1485775646248",
-  "Version": "2012-10-17",
-  "Statement": [
+   ```
+   {
+   "Id": "Policy1485775646248",
+   "Version": "2012-10-17",
+   "Statement": [
     {
       "Sid": "SaveReport2S3",
       "Action": [
@@ -140,9 +140,9 @@ Můžete také nastavit oprávnění k vytváření sestav s vaší sady S3 pomo
         ]
       }
     }
-  ]
-}
-```
+   ]
+   }
+   ```
 
 4. V editoru zásad kontejneru, klikněte na tlačítko **Uložit**.
 

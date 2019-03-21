@@ -1,21 +1,21 @@
 ---
-title: Správa webových služeb Machine Learning Studio pomocí služby API Management
+title: Správa webových služeb pomocí služby API Management
 titleSuffix: Azure Machine Learning Studio
 description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management. Správa koncových bodů rozhraní REST API tak, že definujete uživatelský přístup, omezení využití a řídicí panel monitorování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d4029d7f15918ea75ebcb10bfa8f8f7657eb11ca
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852878"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
@@ -182,11 +182,11 @@ Přejmenujte ho na **SimpleFeatureHashingExperiment**. Rozbalte **uložení dato
 
 Rozbalte **transformace dat** a **manipulaci s** a přetáhněte **výběr sloupců v datové sadě** do experimentu. Připojit **rezervuje kontroly od Amazonu** k **výběr sloupců v datové sadě**.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Propojte modul knihy revize datovou sadu do modulu projektu sloupce](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Klikněte na tlačítko **výběr sloupců v datové sadě** a potom klikněte na tlačítko **spustit selektor sloupců** a vyberte **Col2**. Kliknutím na značku zaškrtnutí k použití těchto změn.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Vyberte sloupce pomocí názvů sloupců](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Rozbalte **rozhraní Text Analytics** a přetáhněte **Hashování** do experimentu. Připojit **výběr sloupců v datové sadě** k **Hashování**.
 

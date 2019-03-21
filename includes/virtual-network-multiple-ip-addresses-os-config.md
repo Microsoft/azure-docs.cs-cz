@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36964531"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124611"
 ---
 ## <a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
-Připojte se a přihlaste se k virtuálnímu počítači jste vytvořili pomocí více privátních IP adres. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte kroky tohoto následující pro operační systém virtuálního počítače.
+Připojte se a přihlaste se k virtuálnímu počítači jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Provést kroky následujících pro váš operační systém virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
@@ -27,19 +27,19 @@ Připojte se a přihlaste se k virtuálnímu počítači jste vytvořili pomocí
 4. Dvakrát klikněte na Protokol IPv4 (Internet Protocol verze 4).
 5. Vyberte **Použít následující IP adresu** a zadejte tyto hodnoty:
 
-    * **IP adresa:** Zadejte *primární* privátní IP adresu.
-    * **Maska podsítě:** Nastavte podle vaší podsítě. Pokud je podsíť například /24, maska podsítě bude 255.255.255.0.
-    * **Výchozí brána:** První IP adresa v podsíti. Pokud je vaše podsíť 10.0.0.0/24, IP adresa brány bude 10.0.0.1.
+    * **IP adresa**: Zadejte *primární* privátní IP adresy
+    * **Maska podsítě**: Sada podle vaší podsítě. Pokud je podsíť například /24, maska podsítě bude 255.255.255.0.
+    * **Výchozí brána**: První IP adresou v podsíti. Pokud je vaše podsíť 10.0.0.0/24, IP adresa brány bude 10.0.0.1.
     * Vyberte **použít následující adresy serverů DNS** a zadejte následující hodnoty:
-        * **Upřednostňovaný server DNS:** Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte vlastní server DNS, zadejte IP adresu pro váš server.
-    * Vyberte **Upřesnit** tlačítko a přidejte další IP adresy. Přidejte všechny sekundární soukromé IP adresy, které jste přidali do Azure síťového rozhraní v předchozím kroku, přiřazený přiřazené Azure síťové rozhraní primární IP adresy rozhraní sítě systému Windows.
+        * **Upřednostňovaný server DNS**: Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte vlastní server DNS, zadejte IP adresu pro váš server.
+    * Vyberte **Upřesnit** tlačítko a přidejte další IP adresy. Přidejte všechny sekundární privátní IP adresy, které jste přidali do Azure síťového rozhraní v předchozím kroku, k síťovému rozhraní Windows, který je přiřazen primární IP adresu přiřazenou rozhraní sítě Azure.
 
-        Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače. Když nastavíte ručně IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) nastavení. Nikdy byste měli přiřadit Azure veřejnou IP adresu v operačním systému.
+        Veřejná IP adresa přidělená k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače by nikdy ručně přiřadit. Když ručně nastavit IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) nastavení. Nikdy byste měli přiřadit Azure veřejnou IP adresu v rámci operačního systému.
 
     * Kliknutím na **OK** zavřete nastavení protokolu TCP/IP a pak znovu kliknutím na **OK** zavřete nastavení adaptéru. Vaše připojení RDP je obnoveno.
 
 6. Na příkazovém řádku zadejte *ipconfig /all*. Zobrazí se všechny IP adresy, které jste přidali, a protokol DHCP je vypnutý.
-7. Konfigurace systému Windows na privátní IP adresa primární konfigurace protokolu IP v Azure jako primární IP adresu pro systém Windows. V tématu [přístup k Internetu bez z virtuálního počítače Windows Azure, který má více IP adres](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) podrobnosti. 
+7. Konfigurace Windows používat privátní IP adresu primární konfigurace protokolu IP v Azure jako primární IP adresu pro Windows. Zobrazit [přístup k Internetu bez z virtuálního počítače Windows Azure, který má několik IP adres](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) podrobnosti. 
 
 ### <a name="validation-windows"></a>Ověření (Windows)
 
@@ -49,7 +49,7 @@ Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfig
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Pro sekundární konfigurace IP pouze připojíte k Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu na příkaz ping k Internetu.
+>Pro sekundární konfigurace IP pouze příkazem ping na Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu pomocí příkazu ping na Internetu.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
@@ -62,15 +62,15 @@ ping -S 10.0.0.5 hotmail.com
 
 3. Aktualizujte konfigurační soubor síťového rozhraní (předpokládejme, že je to „eth0“).
 
-    * Ponechejte stávající položku řádku pro protokol DHCP. Primární IP adresa bude nakonfigurována stejně jako dříve.
-    * Přidejte konfiguraci pro další statickou IP adresu pomocí následujících příkazů:
+   * Ponechejte stávající položku řádku pro protokol DHCP. Primární IP adresa bude nakonfigurována stejně jako dříve.
+   * Přidejte konfiguraci pro další statickou IP adresu pomocí následujících příkazů:
 
-        ```bash
-        cd /etc/network/interfaces.d/
-        ls
-        ```
+       ```bash
+       cd /etc/network/interfaces.d/
+       ls
+       ```
 
-    Měl by se zobrazit soubor .cfg.
+     Měl by se zobrazit soubor .cfg.
 4. Otevřete tento soubor. Na konci souboru by se měly zobrazit tyto řádky:
 
     ```bash
@@ -110,7 +110,7 @@ ping -S 10.0.0.5 hotmail.com
 
     V seznamu by se měla zobrazit IP adresa, kterou jste přidali.
 
-### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS a dalších)
+### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS a další)
 
 1. Otevřete okno terminálu.
 2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:
@@ -178,7 +178,7 @@ Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfig
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Pro sekundární konfigurace IP pouze připojíte k Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu na příkaz ping k Internetu.
+>Pro sekundární konfigurace IP pouze příkazem ping na Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu pomocí příkazu ping na Internetu.
 
 Pokud ověřujete odchozí připojení ze sekundárního síťového rozhraní na virtuálním počítači s Linuxem, možná bude nutné přidat odpovídající trasy. To lze provést několika způsoby. Další informace najdete v odpovídající dokumentaci k vaší distribuci Linuxu. Toto je jedna z metod, jak to provést:
 

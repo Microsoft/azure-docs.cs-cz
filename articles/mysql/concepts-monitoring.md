@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 05af196d115376d744df1976c6a3d9fe9cab74e0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958894"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111000"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for MySQL poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -23,7 +23,7 @@ Všechny metriky Azure máte minutových frekvence a jednotlivé metriky poskytu
 Tyto metriky jsou k dispozici pro službu Azure Database for MySQL:
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Popis|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Procento procesoru používá.|
 |memory_percent|Paměť v procentech|Procento|Procento paměti používá.|
 |io_consumption_percent|V/v úrovně procent|Procento|Procentuální podíl vstupně-výstupní operace používá.|
@@ -34,7 +34,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for MySQL:
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Chyba připojení|Počet|Počet selhání připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
 |seconds_behind_master|Zpoždění replikace v řádu sekund|Počet|Počet sekund, po které server repliky zaostává s hlavním serverem.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|

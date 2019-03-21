@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085316"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Nastavení monitorové geografické zóny s využitím Azure Maps
 
@@ -25,11 +25,11 @@ Další informace o službě Event Grid najdete v tématu [Azure Event Grid](htt
 V tomto kurzu se dozvíte jak:
 
 > [!div class="checklist"]
-* Nahrajte oblasti monitorové geografické zóny ve službě Azure Maps, datové služby pomocí rozhraní API odeslat Data.
-*   Nastavení Event Grid pro zpracování událostí monitorové geografické zóny.
-*   Obslužné rutiny událostí instalace monitorové geografické zóny.
-*   Nastavte si upozornění v reakci na události monitorové geografické zóny pomocí Logic Apps.
-*   Pomocí služby Azure Maps monitorové geografické zóny rozhraní API pro sledování, zda je konstrukce prostředků v rámci lokality konstrukce nebo ne.
+> * Nahrajte oblasti monitorové geografické zóny ve službě Azure Maps, datové služby pomocí rozhraní API odeslat Data.
+> *   Nastavení Event Grid pro zpracování událostí monitorové geografické zóny.
+> *   Obslužné rutiny událostí instalace monitorové geografické zóny.
+> *   Nastavte si upozornění v reakci na události monitorové geografické zóny pomocí Logic Apps.
+> *   Pomocí služby Azure Maps monitorové geografické zóny rozhraní API pro sledování, zda je konstrukce prostředků v rámci lokality konstrukce nebo ne.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -150,9 +150,9 @@ Otevřete aplikaci Postman a postupujte podle následujících kroků k nahrán�
 
 5. Klikněte na tlačítko Odeslat a projděte si hlavičky odpovědi. Hlavička umístění obsahuje identifikátor URI pro přístup k nebo stáhnout data pro budoucí použití. Také obsahuje jedinečné `udId` pro odesílaná data.
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>Nastavit obslužnou rutinu události
 
@@ -163,15 +163,15 @@ Zobrazí se všechna [podporované obslužné rutiny událostí](https://docs.mi
 
 1. Vytvoření aplikace logiky na webu Azure portal
 
-  ![vytváření aplikací logiky](./media/tutorial-geofence/logic-app.png)
+   ![vytváření aplikací logiky](./media/tutorial-geofence/logic-app.png)
 
 2. Výběr triggeru požadavku HTTP a vyberte "Odeslat e-mail" jako akci v aplikaci outlook connector
   
-  ![Schéma Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
+   ![Schéma Logic Apps](./media/tutorial-geofence/logic-app-schema.png)
 
 3. Uložení aplikace logiky pro generování koncového bodu adresy URL protokolu HTTP a zkopírujte adresu URL protokolu HTTP.
 
-  ![Koncový bod aplikace logiky](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Koncový bod aplikace logiky](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Vytvořit odběr události Azure Maps
@@ -208,53 +208,53 @@ Následují pět požadavky HTTP GET API monitorování geografických zón s r�
  
 1. 1. umístění:
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![Dotaz monitorové geografické zóny 1](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![Dotaz monitorové geografické zóny 1](./media/tutorial-geofence/geofence-query1.png)
 
-  Když se podíváte na odpovědi výše, záporná vzdálenost od hlavní monitorové geografické zóny znamená, že zařízení se nachází uvnitř monitorové geografické zóny a kladné z podřízeného webu monitorové geografické zóny znamená, že je mimo podřízeného webu monitorové geografické zóny. 
+   Když se podíváte na odpovědi výše, záporná vzdálenost od hlavní monitorové geografické zóny znamená, že zařízení se nachází uvnitř monitorové geografické zóny a kladné z podřízeného webu monitorové geografické zóny znamená, že je mimo podřízeného webu monitorové geografické zóny. 
 
 2. Umístění 2: 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![Monitorové geografické zóny dotazu 2](./media/tutorial-geofence/geofence-query2.png)
+   ![Monitorové geografické zóny dotazu 2](./media/tutorial-geofence/geofence-query2.png)
 
-  Když se podíváte na předchozí odpověď JSON, pečlivě zařízení je mimo podřízeného webu, ale je uvnitř hlavní ohrazení. Aktivovat události a žádný e-mail se odešle.
+   Když se podíváte na předchozí odpověď JSON, pečlivě zařízení je mimo podřízeného webu, ale je uvnitř hlavní ohrazení. Aktivovat události a žádný e-mail se odešle.
 
 3. 3. umístění: 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Dotaz monitorové geografické zóny 3](./media/tutorial-geofence/geofence-query3.png)
+   ![Dotaz monitorové geografické zóny 3](./media/tutorial-geofence/geofence-query3.png)
 
-  Došlo ke změně stavu a nyní je zařízení v rámci oba hlavní a monitorovaná geografická zóna podřízených lokalit. To publikuje událost a oznámení e-mailu se odešlou do nástroje Operations Manager.
+   Došlo ke změně stavu a nyní je zařízení v rámci oba hlavní a monitorovaná geografická zóna podřízených lokalit. To publikuje událost a oznámení e-mailu se odešlou do nástroje Operations Manager.
 
 4. Umístění 4: 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![Monitorové geografické zóny dotazu 4](./media/tutorial-geofence/geofence-query4.png)
+   ![Monitorové geografické zóny dotazu 4](./media/tutorial-geofence/geofence-query4.png)
 
    Pozorováním pečlivě odpovídající odpověď, jste si, že žádná událost publikuje sem i v případě, že zařízení se ukončil podřízeného webu monitorové geografické zóny. Když se podíváte v určený čas uživatele v požadavek GET, uvidíte, že monitorové geografické zóny podřízeného webu vypršela platnost vzhledem k této doby a zařízení je stále v hlavní monitorové geografické zóny. Můžete také zjistit ID geometrie monitorové geografické zóny podřízené lokality pod `expiredGeofenceGeometryId` v textu odpovědi.
 
 
 5. Umístění 5:
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Monitorové geografické zóny dotazu 5](./media/tutorial-geofence/geofence-query5.png)
+   ![Monitorové geografické zóny dotazu 5](./media/tutorial-geofence/geofence-query5.png)
 
-  Uvidíte, že zařízení není dostupný hlavní konstrukce lokality monitorové geografické zóny. Publikuje událost, a jedná se o závažnou porušení kritické výstrahy e-mail se odešle do nástroje Operations Manager.
+   Uvidíte, že zařízení není dostupný hlavní konstrukce lokality monitorové geografické zóny. Publikuje událost, a jedná se o závažnou porušení kritické výstrahy e-mail se odešle do nástroje Operations Manager.
 
 ## <a name="next-steps"></a>Další postup
 

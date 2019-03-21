@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177717"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -36,7 +36,7 @@ Tento článek obsahuje další informace o správě podpisové certifikáty tok
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Výchozí konfigurace služby AD FS pro podpisové certifikáty tokenu
 Podpisové a dešifrovací certifikáty tokenu jsou obvykle certifikáty podepsané svým držitelem a jsou vhodné pro jeden rok. Standardně služba AD FS obsahuje tzv. automatické obnovení **AutoCertificateRollover**. Pokud používáte službu AD FS 2.0 nebo novější, Office 365 a Azure AD automaticky aktualizujte před vypršením platnosti vašeho certifikátu.
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Obnovení oznámení z portálu Office 365 nebo e-mailu
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Obnovení oznámení z centra pro správu služeb Microsoft 365 nebo e-mailu
 > [!NOTE]
 > Pokud jste dostali e-mailu nebo oznámení na portálu s výzvou k obnovení certifikátu pro Office naleznete v tématu [správou změn podpisové certifikáty tokenů](#managecerts) ke kontrole, pokud je potřeba provádět žádnou akci. Microsoft si uvědomuje možný problém, který může mít za následek oznámení o obnovení certifikátu, které jsou odesílány, i když není vyžadována žádná akce.
 >
@@ -44,8 +44,8 @@ Podpisové a dešifrovací certifikáty tokenu jsou obvykle certifikáty podepsa
 
 Azure AD se pokusí federačních metadat. monitorování a aktualizace je určeno tato metadata podpisových certifikátů tokenu. 30 dní před vypršením platnosti tokenu podpisové certifikáty, Azure AD ověří, pokud nové certifikáty jsou k dispozici pomocí cyklického dotazování federačních metadat.
 
-* Pokud může úspěšně dotazování federačních metadat a načíst nové certifikáty, objeví se uživateli upozornění na portálu Office 365 ani e-mailové oznámení.
-* Pokud nemůže získat nový token podpisové certifikáty, buď protože federačních metadat je nedostupná nebo není povoleno automatické certifikáty vyměnit, Azure AD vydá e-mailové oznámení a upozornění na portálu Office 365.
+* Pokud může úspěšně dotazování federačních metadat a načíst nové certifikáty, objeví se žádné e-mailových oznámení nebo upozornění v Centru pro správu služeb Microsoft 365 uživateli.
+* Pokud nemůže získat nový token podpisové certifikáty, buď protože federačních metadat je nedostupná nebo není povoleno automatické certifikáty vyměnit, Azure AD vydá e-mailové oznámení a upozornění v Centru pro správu Microsoftu 365.
 
 ![Oznámení na portálu Office 365](./media/how-to-connect-fed-o365-certs/notification.png)
 

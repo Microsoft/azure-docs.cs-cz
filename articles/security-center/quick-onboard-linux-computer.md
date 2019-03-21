@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114616"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104671"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta pro Linux povolit službu Security Center pro prostředky Linuxu spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
@@ -37,7 +37,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
- ![Přehled služby Security Center][2]
+   ![Přehled služby Security Center][2]
 
 3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
 4. Vyberte kartu **Začínáme**. ![Začínáme][3]
@@ -46,16 +46,16 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
     ![Přidání počítače umístěného mimo Azure](./media/quick-onboard-linux-computer/non-azure.png)
 
-6.  Na stránce **Přímý agent** v části **STÁHNOUT A PŘOPOJIT AGENTA PRO LINUX** výběrem tlačítka pro **kopírování** zkopírujte příkaz *wget*.
+6. Na stránce **Přímý agent** v části **STÁHNOUT A PŘOPOJIT AGENTA PRO LINUX** výběrem tlačítka pro **kopírování** zkopírujte příkaz *wget*.
 
-7.  Otevřete Poznámkový blok a vložte do něj tento příkaz. Uložte tento soubor do umístění přístupného z vašeho počítače s Linuxem.
+7. Otevřete Poznámkový blok a vložte do něj tento příkaz. Uložte tento soubor do umístění přístupného z vašeho počítače s Linuxem.
 
 ## <a name="install-the-agent"></a>Instalace agenta
 
-1.  Na počítači s Linuxem otevřete dříve uložený soubor. Vyberte a zkopírujte celý obsah, otevřete konzolu terminálu a příkaz do ní vložte.
-2.  Po dokončení instalace můžete instalaci agenta *omsagent* ověřit spuštěním příkazu *pgrep*. Příkaz vrátí ID procesu (PID) *omsagent*, jak je znázorněno níže:
+1. Na počítači s Linuxem otevřete dříve uložený soubor. Vyberte a zkopírujte celý obsah, otevřete konzolu terminálu a příkaz do ní vložte.
+2. Po dokončení instalace můžete instalaci agenta *omsagent* ověřit spuštěním příkazu *pgrep*. Příkaz vrátí ID procesu (PID) *omsagent*, jak je znázorněno níže:
 
-  ![Instalace agenta][5]
+   ![Instalace agenta][5]
 
 Protokoly agenta služby Security Center pro Linux se nacházejí v umístění: */var/opt/microsoft/omsagent/<workspace id>/log/*
 

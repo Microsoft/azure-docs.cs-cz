@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b94445d3053f036510baf7945c1086558d28188
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860325"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -204,7 +204,7 @@ Postupujte podle těchto pokynů k zachycení protokoly pro řešení potíží 
 
 4. Tyto změny vrátit, až budete hotovi.
 
-### <a name="net-core"></a>.Net Core
+### <a name="net-core"></a>.NET Core
 
 1. Nainstalujte [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) balíčku od Nugetu. Verze, kterou instalujete, musí odpovídat aktuální nainstalovaná verze `Microsoft.ApplicationInsights`
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 4a7da4a6e7b4b395063f7e4c9a3e97d610492ef6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885177"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
 
@@ -93,7 +93,7 @@ Po kliknutí na zprávu, **EmbedSample** webovou aplikaci by měl vypadat přibl
 
 ## <a name="explore-the-sample-code"></a>Prozkoumejte vzorový kód
 
-**Kolekce pracovních prostorů Power BI Microsoft** ukázka je ukázkové webové aplikace, který ukazuje, jak integrovat **Power BI** sestavy do vaší aplikace. Návrhový vzor Model-View-Controller (MVC) používá k ukazují osvědčené postupy. Tato část ukazuje části ukázek kódu, který si můžete projít v rámci **Power BI embedded** webové aplikace řešení. Vzor Model-View-Controller (MVC) odděluje modelování domény, prezentace a akce na základě uživatelského zadání na tři samostatné třídy: Model, zobrazení a ovládací prvek. Další informace o MVC najdete v tématu [Další informace o ASP.NET](http://www.asp.net/mvc).
+**Kolekce pracovních prostorů Power BI Microsoft** ukázka je ukázkové webové aplikace, který ukazuje, jak integrovat **Power BI** sestavy do vaší aplikace. Návrhový vzor Model-View-Controller (MVC) používá k ukazují osvědčené postupy. Tato část ukazuje části ukázek kódu, který si můžete projít v rámci **Power BI embedded** webové aplikace řešení. Vzor Model-View-Controller (MVC) odděluje modelování domény, prezentace a akce na základě uživatelského zadání na tři samostatné třídy: Model, zobrazení a ovládací prvek. Další informace o MVC najdete v tématu [Další informace o ASP.NET](https://www.asp.net/mvc).
 
 **Kolekce pracovních prostorů Power BI Microsoft** ukázkový kód je oddělená následujícím způsobem. Každý oddíl obsahuje název souboru v řešení Power BI embedded.sln, takže můžete snadno vyhledat kód v ukázce.
 
@@ -270,4 +270,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)
+Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](https://community.powerbi.com/)

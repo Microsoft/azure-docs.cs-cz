@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b801df6036566840dd96bde0801ab018d0614b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103090"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -72,7 +72,7 @@ Hosta virtuálního počítače – s více síťovými Kartami | Ano
 
 **Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
-Systém souborů NFS | neuvedeno
+NFS | neuvedeno
 SMB 3.0 |  Ano
 SAN (ISCSI) | Ano
 Více cest (MPIO) | Ano
@@ -87,7 +87,7 @@ Virtuální počítače 2. generace | Ano
 Sdílený disk clusteru | Ne
 Šifrovaného disku | Ne
 ROZHRANÍ UEFI| neuvedeno
-Systém souborů NFS | Ne
+NFS | Ne
 SMB 3.0 | Ne
 RDM | neuvedeno
 Disk > 1 TB | Ano
@@ -109,7 +109,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 Zprostředkovatel koordinuje komunikaci mezi servery VMM. 
 
 **nejnovější** | **Aktualizace**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19 ([dostupná z portálu](https://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
 
 

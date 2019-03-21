@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233876"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084128"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
 
@@ -43,10 +43,10 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaše webové aplikace,
     
 5. Vyberte barevný motiv. Můžete také přizpůsobit barvy podle vaší aplikace kliknutím **vlastní motiv**. Chcete-li změnit barvu, zadejte hodnotu barvy RGB HEX (například `#366eb8`), nebo klikněte na barvu ve verzi preview.
 
-  Můžete zobrazit náhled změn můžete zobrazit na pravé straně portálu. Kliknutím na **obnovit výchozí** se vrátit změny k výchozí barvy pro vybraný motiv.
+   Můžete zobrazit náhled změn můžete zobrazit na pravé straně portálu. Kliknutím na **obnovit výchozí** se vrátit změny k výchozí barvy pro vybraný motiv.
 
-  > [!NOTE]
-  > Při výběru barvy, zvažte usnadnění přístupu.
+   > [!NOTE]
+   > Při výběru barvy, zvažte usnadnění přístupu.
 
 6. V části **další konfigurace**, zadejte hodnoty jako vhodná pro vaši aplikaci. Tato nastavení jsou volitelná. Efekt použití nebo odstranění najdete v tématu podokno náhledu na pravé straně. Výběr dostupných možností konfigurace jsou:  
 

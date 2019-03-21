@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: be3e9b8003bc6eb585177b285255658c44c7fc36
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ce573ff8fe61f2e1d4c88963e0f21fc9402776e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808474"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083211"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Přidružit veřejnou IP adresu virtuálnímu počítači
 
@@ -74,20 +74,20 @@ Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-c
      --public-ip-address myVMPublicIP
    ```
 
-  - Pokud nemáte stávající veřejnou IP adresu, použijte [az network public-ip vytvořit](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) příkaz k jejímu vytvoření. Například následující příkaz vytvoří veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup*.
+   - Pokud nemáte stávající veřejnou IP adresu, použijte [az network public-ip vytvořit](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) příkaz k jejímu vytvoření. Například následující příkaz vytvoří veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup*.
   
-    ```azurecli-interactive
-    az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
-    ```
+     ```azurecli-interactive
+     az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
+     ```
 
-    > [!NOTE]
-    > Předchozí příkaz vytvoří veřejnou IP adresu s použitím výchozích hodnot pro několik nastavení, které můžete chtít přizpůsobit. Další informace o všech nastavení veřejné IP adresy najdete v tématu [vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Z fondu veřejných IP adres pro každou oblast Azure je přiřazena adresa. Seznam fondů adres v jednotlivých oblastech používají, najdete v sekci [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
+     > [!NOTE]
+     > Předchozí příkaz vytvoří veřejnou IP adresu s použitím výchozích hodnot pro několik nastavení, které můžete chtít přizpůsobit. Další informace o všech nastavení veřejné IP adresy najdete v tématu [vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Z fondu veřejných IP adres pro každou oblast Azure je přiřazena adresa. Seznam fondů adres v jednotlivých oblastech používají, najdete v sekci [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-  - Pokud si nejste jisti názvem síťové rozhraní připojené k virtuálnímu počítači, použijte [az vm nic seznamu](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) příkazu zobrazte je. Například následující příkaz zobrazí seznam názvů síťovým rozhraním připojeným k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud si nejste jisti názvem síťové rozhraní připojené k virtuálnímu počítači, použijte [az vm nic seznamu](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) příkazu zobrazte je. Například následující příkaz zobrazí seznam názvů síťovým rozhraním připojeným k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
-    ```azurecli-interactive
-    az vm nic list --vm-name myVM --resource-group myResourceGroup
-    ```
+     ```azurecli-interactive
+     az vm nic list --vm-name myVM --resource-group myResourceGroup
+     ```
 
      Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v následujícím příkladu:
   
@@ -97,11 +97,11 @@ Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-c
 
      V předchozím příkladu *myVMVMNic* je název síťového rozhraní.
 
-  - Pokud neznáte název konfigurace protokolu IP pro síťové rozhraní, použijte [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) příkaz, který je načíst. Například následující příkaz vypíše názvy konfigurací protokolu IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud neznáte název konfigurace protokolu IP pro síťové rozhraní, použijte [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) příkaz, který je načíst. Například následující příkaz vypíše názvy konfigurací protokolu IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
-    ```azurecli-interactive
-    az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
-    ```
+     ```azurecli-interactive
+     az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
+     ```
 
 3. Zobrazit přiřazenou ke konfiguraci IP adresy s veřejnou IP adresu [az vm list-ip-addresses](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) příkazu. Následující příklad ukazuje IP adresy přiřazené k existujícímu virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.
 
@@ -132,35 +132,35 @@ Nainstalujte [Powershellu](/powershell/azure/install-az-ps), nebo použít Azure
    $nic | Set-AzNetworkInterface
    ```
 
-  - Pokud nemáte stávající veřejnou IP adresu, použijte [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) příkaz k jejímu vytvoření. Například následující příkaz vytvoří *dynamické* veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup* v  *eastus* oblasti.
+   - Pokud nemáte stávající veřejnou IP adresu, použijte [New-AzPublicIpAddress](/powershell/module/Az.Network/New-AzPublicIpAddress) příkaz k jejímu vytvoření. Například následující příkaz vytvoří *dynamické* veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup* v  *eastus* oblasti.
   
-    ```azurepowershell-interactive
-    New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
-    ```
+     ```azurepowershell-interactive
+     New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
+     ```
 
-    > [!NOTE]
-    > Předchozí příkaz vytvoří veřejnou IP adresu s použitím výchozích hodnot pro několik nastavení, které můžete chtít přizpůsobit. Další informace o všech nastavení veřejné IP adresy najdete v tématu [vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Z fondu veřejných IP adres pro každou oblast Azure je přiřazena adresa. Seznam fondů adres v jednotlivých oblastech používají, najdete v sekci [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
+     > [!NOTE]
+     > Předchozí příkaz vytvoří veřejnou IP adresu s použitím výchozích hodnot pro několik nastavení, které můžete chtít přizpůsobit. Další informace o všech nastavení veřejné IP adresy najdete v tématu [vytvoření veřejné IP adresy](virtual-network-public-ip-address.md#create-a-public-ip-address). Z fondu veřejných IP adres pro každou oblast Azure je přiřazena adresa. Seznam fondů adres v jednotlivých oblastech používají, najdete v sekci [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-  - Pokud si nejste jisti názvem síťové rozhraní připojené k virtuálnímu počítači, použijte [rutiny Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) příkazu zobrazte je. Například následující příkaz zobrazí seznam názvů síťovým rozhraním připojeným k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud si nejste jisti názvem síťové rozhraní připojené k virtuálnímu počítači, použijte [rutiny Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) příkazu zobrazte je. Například následující příkaz zobrazí seznam názvů síťovým rozhraním připojeným k virtuálnímu počítači s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
-    $vm.NetworkProfile
-    ```
+     ```azurepowershell-interactive
+     $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
+     $vm.NetworkProfile
+     ```
 
-    Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v příkladu, který následuje. Ukázkový výstup *myVMVMNic* je název síťového rozhraní.
+     Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v příkladu, který následuje. Ukázkový výstup *myVMVMNic* je název síťového rozhraní.
   
-    ```
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
-    ```
+     ```
+     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
+     ```
 
-  - Pokud neznáte název virtuální sítě nebo podsítě, které se síťové rozhraní nachází, použijte `Get-AzNetworkInterface` příkazu zobrazíte informace. Například následující příkaz načte informace virtuální síť a podsíť pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud neznáte název virtuální sítě nebo podsítě, které se síťové rozhraní nachází, použijte `Get-AzNetworkInterface` příkazu zobrazíte informace. Například následující příkaz načte informace virtuální síť a podsíť pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-    $ipConfigs = $nic.IpConfigurations
-    $ipConfigs.Subnet | Select Id
-    ```
+     ```azurepowershell-interactive
+     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
+     $ipConfigs = $nic.IpConfigurations
+     $ipConfigs.Subnet | Select Id
+     ```
 
      Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v příkladu, který následuje. Ukázkový výstup *myVMVNET* je název virtuální sítě a *myVMSubnet* je název podsítě.
   
@@ -168,18 +168,18 @@ Nainstalujte [Powershellu](/powershell/azure/install-az-ps), nebo použít Azure
      "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVMVNET/subnets/myVMSubnet",
      ```
 
-  - Pokud neznáte název konfigurace protokolu IP pro síťové rozhraní, použijte [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) příkaz, který je načíst. Například následující příkaz vypíše názvy konfigurací protokolu IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
+   - Pokud neznáte název konfigurace protokolu IP pro síťové rozhraní, použijte [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) příkaz, který je načíst. Například následující příkaz vypíše názvy konfigurací protokolu IP pro síťové rozhraní s názvem *myVMVMNic* ve skupině prostředků s názvem *myResourceGroup*:
 
-    ```azurepowershell-interactive
-    $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-    $nic.IPConfigurations
-    ```
+     ```azurepowershell-interactive
+     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
+     $nic.IPConfigurations
+     ```
 
-    Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v příkladu, který následuje. Ukázkový výstup *ipconfigmyVM* je název konfigurace protokolu IP.
+     Výstup obsahuje jeden nebo více řádků, které jsou podobné jako v příkladu, který následuje. Ukázkový výstup *ipconfigmyVM* je název konfigurace protokolu IP.
   
-    ```
-    Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
-    ```
+     ```
+     Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
+     ```
 
 3. Zobrazit přiřazenou ke konfiguraci IP adresy s veřejnou IP adresu [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) příkazu. Následující příklad ukazuje adresu přiřazenou veřejnou IP adresu s názvem *myVMPublicIP* ve skupině prostředků s názvem *myResourceGroup*.
 

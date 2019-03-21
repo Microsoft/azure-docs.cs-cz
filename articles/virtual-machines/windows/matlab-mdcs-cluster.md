@@ -1,6 +1,6 @@
 ---
-title: MATLAB clusterů na virtuálních počítačích | Microsoft Docs
-description: Použijte virtuální počítače Microsoft Azure k vytvoření clusterů MATLAB distribuovaná výpočetní Server ke spuštění úlohy náročné paralelní MATLAB
+title: MATLAB clusterů na virtuálních počítačích | Dokumentace Microsoftu
+description: Pomocí Microsoft Azure virtual machines k vytvoření clusterů MATLAB distribuované výpočetní serveru spouštět úlohy náročné na výpočetní paralelní MATLAB
 services: virtual-machines-windows
 documentationcenter: ''
 author: mscurrell
@@ -14,62 +14,62 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 695833fb12c0c7a130e98fe9b3bdfa502672ab29
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fd5ae375dff80c8b1179d2fd73566d07c5861e4a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30914914"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000334"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření MATLAB distribuovaný Server výpočetních clusterů na virtuálních počítačích Azure
-Pomocí virtuální počítače Microsoft Azure můžete vytvořit jeden nebo více clusterů MATLAB distribuovaná výpočetní serveru spouštět paralelní MATLAB úlohy náročné na výkon. Instalaci softwaru MATLAB distribuovaný Server Computing na virtuálním počítači používat jako základní bitové kopie a použít šablonu Azure rychlý start nebo skript Azure PowerShell (k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) k nasazení a správě clusteru. Po nasazení připojte se ke clusteru ke spuštění úlohy.
+Pomocí Microsoft Azure virtual machines můžete vytvořit jeden nebo více MATLAB distribuované výpočetní clustery spouštět úlohy náročné na výpočetní paralelní MATLAB. Nainstalovat software serveru distribuované výpočetní MATLAB na virtuálním počítači používat jako základní image a použít šablonu Azure pro rychlý start nebo skriptu Azure Powershellu (k dispozici na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) k nasazení a správě clusteru. Po nasazení připojte se ke clusteru pro spouštění vašich úloh.
 
-## <a name="about-matlab-and-matlab-distributed-computing-server"></a>O MATLAB a MATLAB distribuované Computing serveru
-[MATLAB](http://www.mathworks.com/products/matlab/) platformy je optimalizovaná pro řešení problémů technické a vědecké. Uživatelé MATLAB s rozsáhlé simulace a úloh zpracování dat můžete použít společnost MathWorks paralelní výpočty produktů pro urychlení jejich výpočetně náročných úloh využitím výpočetní clustery a mřížky služeb. [Paralelní výpočty nástrojů](http://www.mathworks.com/products/parallel-computing/) umožňuje uživatelům MATLAB paralelní aplikace a využít výhod více jádry grafickými procesory a výpočetní clustery. [MATLAB distribuovaný Server Computing](http://www.mathworks.com/products/distriben/) umožňuje uživatelům MATLAB využívat mnoho počítačů ve výpočetním clusteru.
+## <a name="about-matlab-and-matlab-distributed-computing-server"></a>O MATLAB a MATLAB distribuované výpočetní Server
+[MATLAB](https://www.mathworks.com/products/matlab/) platformy je optimalizovaný pro řešení problémů technické a vědecké. MATLAB uživatele pomocí simulace ve velkém měřítku a úloh zpracování dat můžete použít společnost MathWorks paralelní výpočetní produkty a urychlit tak jejich úlohy náročné na výpočetní prostředky s využitím výpočetních clusterů a služeb mřížky. [Paralelní výpočty nástrojů](https://www.mathworks.com/products/parallel-computing/) MATLAB uživatelům umožňuje paralelní aplikace a využít výhod vícejádrových procesorů, která využívá GPU a výpočetních clusterů. [Server distribuované výpočetní MATLAB](https://www.mathworks.com/products/distriben/) umožňuje uživatelům MATLAB využívat mnoho počítačů ve výpočetním clusteru.
 
-Pomocí virtuální počítače Azure můžete vytvořit MATLAB distribuovaný Server výpočetních clusterů, které mají stejné mechanismy, které jsou k dispozici pro odeslání paralelní práce jako místní clustery, jako je například interaktivní úlohy, úlohy batch, nezávislé úlohy a komunikaci úlohy. Použití Azure ve spojení s platformou MATLAB má mnoho výhod oproti zřizování a pomocí tradiční místní hardware: velikostí rozsah virtuálního počítače, vytváření clusterů na vyžádání, platíte jenom za výpočetní prostředky, které používáte, a možnost otestovat modely ve velkém měřítku.  
+Využití Azure virtual machines, můžete vytvořit MATLAB distribuované výpočetní clustery, které mají stejné mechanismy, které jsou k dispozici pro odeslání paralelní práce jako s místními clustery, jako je například interaktivní úlohy, dávkových úloh Hive, nezávislých úloh a komunikaci úlohy. Pomocí Azure v kombinaci s platformou MATLAB má mnoho výhod oproti zřizování a pomocí tradiční v místním hardwaru: rozsah virtuální počítač o velikosti, vytváření clusterů na vyžádání, platíte jenom za výpočetní prostředky, které používáte, a schopnost testování modely ve velkém měřítku.  
 
 ## <a name="prerequisites"></a>Požadavky
-* **Klientský počítač** -založené na Windows klientský počítač komunikovat s Azure a MATLAB distribuovaný Server výpočetní cluster po nasazení budete potřebovat.
-* **Prostředí Azure PowerShell** -najdete v části [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) k její instalaci do klientského počítače.
-* **Předplatné Azure** – Pokud nemáte předplatné, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) si během několika minut. Pro větší clustery zvažte průběžnými platbami předplatné nebo jiné možnosti nákupu.
-* **kvóta Vcpu** -možná budete muset zvýšit kvótu virtuální procesor chcete nasadit více než jeden cluster MATLAB distribuovaný Server Computing nebo velké clusteru. Pokud chcete zvýšit kvótu, [otevřete žádosti o podporu online zákazníka](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) zdarma.
-* **MATLAB, paralelní výpočty sada nástrojů a MATLAB distribuovaný Server Computing licence** -skripty předpokládat, že [správce licencí hostované společnost MathWorks](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) se používá pro všechny licence.  
-* **Software MATLAB distribuovaný Server Computing** -bude nainstalována na virtuální počítač, který se použije jako základní image virtuálního počítače pro cluster virtuálních počítačů.
+* **Klientský počítač** -počítače klienta se systémem Windows ke komunikaci s Azure a cluster MATLAB distribuovaný Server výpočetního prostředí po nasazení budete potřebovat.
+* **Prostředí Azure PowerShell** -naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) instalace na klientském počítači.
+* **Předplatné Azure** – Pokud nemáte předplatné, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) během několika minut. Pro větší clustery zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu.
+* **kvóty virtuálních procesorů** – možná budete muset zvýšit kvótu virtuálních procesorů nasadit velký cluster nebo více než jeden cluster MATLAB distribuovaný Server výpočetního prostředí. Na zvýšení této kvóty, [otevřete žádost o online zákaznickou podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) bez poplatků.
+* **Licence MATLAB, paralelní výpočty nástrojů a MATLAB distribuovaný Server computingu** – skripty se předpokládá, že [společnost MathWorks hostovaný správce licencí](https://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) se používá pro všechny licence.  
+* **Software serveru distribuované výpočetní MATLAB** – se nainstaluje na virtuálním počítači, který se použije jako základní image virtuálního počítače pro virtuální počítače clusteru.
 
-## <a name="high-level-steps"></a>Kroky vysoké úrovně
-Pokud chcete používat virtuální počítače Azure pro své clustery serverů distribuované Computing MATLAB, jsou požadovány následující postup vysoké úrovně. Podrobné pokyny naleznete v dokumentaci doprovázející aplikaci rychlý start šablonu a skripty na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster).
+## <a name="high-level-steps"></a>Postup vysoké úrovně
+K použití virtuálních počítačů Azure pro své clustery serverů distribuované výpočetní MATLAB, je potřeba následující postup vysoké úrovně. Podrobné pokyny naleznete v dokumentaci šablonu pro rychlý start a skripty na [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster).
 
-1. **Vytvořte základní image virtuálního počítače**  
+1. **Vytvoření základní image virtuálního počítače**  
 
-   * Stáhněte a nainstalujte software MATLAB distribuovaný Server Computing na tento virtuální počítač.
+   * Stáhněte a nainstalujte software MATLAB distribuovaný Server computingu do tohoto virtuálního počítače.
 
      > [!NOTE]
-     > Tento proces může trvat několik hodin, ale budete muset provést po pro každou verzi MATLAB použijete.   
+     > Tento proces může trvat několik hodin, ale budete muset provést jednou pro každou verzi MATLAB použijete.   
      >
      >
 2. **Vytvořte jeden nebo více clusterů**  
 
-   * Zadaný skript prostředí PowerShell použít nebo vytvořit cluster z základní image virtuálního počítače pomocí šablony rychlý start.   
-   * Správa clusterů pomocí zadaný skript prostředí PowerShell, které umožňuje seznamu, pozastavit, obnovit a odstranění clusterů.
+   * Použijte zadaný skript prostředí PowerShell nebo šablonu pro rychlý start k vytvoření clusteru ze základní image virtuálního počítače.   
+   * Správa clusterů pomocí zadaný skript prostředí PowerShell, který umožňuje seznam, pozastavení, obnovení a odstranění clusterů.
 
 ## <a name="cluster-configurations"></a>Konfigurace clusteru
-V současné době skriptu pro vytváření clusteru a šablony umožňují vytvořit jeden Server distribuované Computing MATLAB topologie. Pokud chcete, vytvořte jeden nebo více dalších clusterů s každý cluster s odlišným počtem pracovní virtuální počítače, pomocí různých velikostí virtuálních počítačů a tak dále.
+V současné době skriptu pro vytváření clusteru a šablony umožňují vytvořit jeden Server distribuované výpočetní MATLAB topologie. Pokud chcete, vytvořte jeden nebo více dalších clusterů s každý cluster má jiný počet pracovních procesů virtuálních počítačů, pomocí různých velikostí virtuálních počítačů a tak dále.
 
-### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB klienta a cluster v Azure
-MATLAB klientský uzel, uzel MATLAB plánovače úloh a MATLAB distribuovaný Server Computing "pracovní" uzly jsou všechny nakonfigurované jako virtuální počítače Azure ve virtuální síti, jak je znázorněno na následujícím obrázku.
+### <a name="matlab-client-and-cluster-in-azure"></a>Klient MATLAB a clusteru v Azure
+Uzel klienta MATLAB, Plánovač úloh MATLAB uzlu a MATLAB distribuovaný Server computingu "pracovní" uzly jsou všechny nakonfigurované jako virtuální počítače Azure ve virtuální síti, jak je znázorněno na následujícím obrázku.
 
 
-* Pokud chcete použít clusteru, připojte k uzlu klienta pomocí vzdálené plochy. Uzel klient spustí MATLAB klienta.
-* Klientský uzel má sdílení souborů, které mají přístup všechny pracovní procesy.
-* Správce licencí hostované společnost MathWorks se používá pro kontroly licence pro veškerý software MATLAB.
-* Ve výchozím nastavení v pracovním procesu virtuální počítače se vytvoří jeden pracovní proces MATLAB distribuovaný Server Computing za virtuální procesory, ale můžete zadat všechny číslo.
+* Použití clusteru, připojte k uzlu klienta pomocí vzdálené plochy. Uzel klienta MATLAB klienta využívají.
+* Uzel klienta má sdílenou složku, která je možný přes všechny pracovní procesy.
+* Společnost MathWorks hostovaný správce licencí se používá pro kontroly licenci pro všechny MATLAB softwaru.
+* Ve výchozím nastavení jeden pracovní proces serveru distribuované výpočetní MATLAB na virtuální procesor je vytvořen v pracovním procesu virtuálních počítačů, ale můžete zadat libovolný počet.
 
 ## <a name="use-an-azure-based-cluster"></a>Použití clusteru služby založené na Azure
-Jako s jinými typy MATLAB distribuovaný Server výpočetních clusterů, budete muset použít profil Správce clusteru v klientovi MATLAB (na straně klienta VM) k vytvoření profilu clusteru MATLAB plánovače úloh.
+Jako u jiných typů MATLAB distribuované výpočetní clustery, budete muset použít profil Správce clusteru v klientovi MATLAB (na straně klienta virtuálního počítače) k vytvoření profilu cluster MATLAB Plánovač úloh.
 
 ![Profil Správce clusteru](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
 ## <a name="next-steps"></a>Další postup
-* Podrobné pokyny k nasazení a správě clusterů MATLAB distribuovaný Server výpočty v Azure najdete v tématu [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) úložiště, který obsahuje šablony a skripty.
-* Přejděte na [společnost MathWorks lokality](http://www.mathworks.com/) pro podrobnou dokumentaci pro MATLAB a MATLAB distribuovaný Server Computing.
+* Podrobné pokyny k nasazení a správě MATLAB distribuované výpočetní clustery v Azure najdete v tématu [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) úložiště, který obsahuje šablony a skripty.
+* Přejděte [společnost MathWorks lokality](https://www.mathworks.com/) podrobnou dokumentaci pro MATLAB a MATLAB distribuovaný Server výpočetního prostředí.

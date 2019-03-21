@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: 9426fb1df38797ffbb9cc457ba4fe9eb62cfba40
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089691"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Rychlý start: Najít dostupné místnosti s použitím digitálních Dvojčat Azure
 
@@ -115,8 +115,8 @@ Ukázka senzor simuluje hodnoty náhodných dat pro dvě senzory. Jsou to pohybu
 1. Podívejte se na tento příkazový řádek a příkazového řádku data ze senzorů vedle sebe.
 
     Jeden příkazový řádek odesílá Simulovaná data pohybu a k oxidu uhličitého do digitální dvojče každých pět sekund. Další příkaz přečte grafů v reálném čase, které chcete zjistit, k dispozici místnosti s novou air založeny na náhodných Simulovaná data. Zobrazí jedno z těchto podmínek téměř v reálném čase na základě dat ze senzorů, odeslání poslední:
-    - Dostupné místnosti s čerstvým vzduchem
-    - Obsazené místnosti nebo místnosti se špatnou kvalitou vzduchu
+   - Dostupné místnosti s čerstvým vzduchem
+   - Obsazené místnosti nebo místnosti se špatnou kvalitou vzduchu
 
      ![Získání dostupných prostorů s čerstvým vzduchem][3]
 

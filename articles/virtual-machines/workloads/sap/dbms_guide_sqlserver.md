@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992498"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -158,7 +158,7 @@ ms.locfileid: "56889915"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56889915"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -343,7 +343,7 @@ V souladu s obecný popis spustitelné soubory systému SQL Server nachází neb
 Tyto konfigurace povolit tempdb využívat více místa, než je schopna poskytovat systémové jednotce. Dočasné jednotce D:\ také nabízí lepší vstupně-výstupní latence a propustnosti (s výjimkou virtuálních počítačů řady A-Series). Aby bylo možné zjistit správné tempdb velikost, můžete zkontrolovat velikosti databáze tempdb na stávající systémy. 
 
 >[!NOTE]
-> v případě, že datové soubory databáze tempdb a soubor protokolu se umístí do složky na jednotku D:\, kterou jste vytvořili, musíte zajistit, že složka existuje po restartování virtuálního počítače. Vzhledem k tomu, že jednotce D:\ je inicializován čerstvě po restartování virtuálního počítače všechny struktury souborů a adresářů jsou dojde k vymazání. Možnost znovu vytvořit struktury konečné adresáře na jednotku D:\, před počáteční službu systému SQL Server je popsána v [v tomto článku](http://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
+> v případě, že datové soubory databáze tempdb a soubor protokolu se umístí do složky na jednotku D:\, kterou jste vytvořili, musíte zajistit, že složka existuje po restartování virtuálního počítače. Vzhledem k tomu, že jednotce D:\ je inicializován čerstvě po restartování virtuálního počítače všechny struktury souborů a adresářů jsou dojde k vymazání. Možnost znovu vytvořit struktury konečné adresáře na jednotku D:\, před počáteční službu systému SQL Server je popsána v [v tomto článku](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
 
 Konfigurace virtuálního počítače, který spouští SQL Server s databázi SAP a umístění dat databáze tempdb a databázi tempdb souboru protokolu na jednotku D:\ vypadat nějak takto:
 

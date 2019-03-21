@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855720"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
 
@@ -45,9 +45,9 @@ Než zahájíte tento kurz, musíte mít následující položky.
 
 ## <a name="luis-and-speech"></a>Služba LUIS a řeč
 
-Služba LUIS se integruje se službou Speech za účelem rozpoznávání záměrů z řeči. Nepotřebujete předplatné služby Speech, stačí vám služba LUIS.
+Služba LUIS se integruje s hlasové služby rozpoznat záměry z řeči. Není nutné hlasové služby předplatného, stačí LUIS.
 
-Služba LUIS používá dva typy klíčů: 
+Služba LUIS používá dva typy klíčů:
 
 |Typ klíče|Účel|
 |--------|-------|
@@ -56,7 +56,7 @@ Služba LUIS používá dva typy klíčů:
 
 Klíč koncového bodu je klíč služby LUIS, který potřebujete pro účely tohoto kurzu. Tento kurz používá ukázkovou aplikaci Home Automation služby LUIS, kterou můžete vytvořit pomocí postupu v článku o [použití předem připravené aplikace Home Automation](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app). Pokud jste si vytvořili vlastní aplikaci LUIS, můžete použít ji.
 
-Při vytváření aplikace LUIS se automaticky vygeneruje počáteční klíč, abyste aplikaci mohli otestovat pomocí textových dotazů. Tento klíč neumožňuje integraci služby Speech a v tomto kurzu nebude fungovat. Musíte vytvořit prostředek služby LUIS na řídicím panelu Azure a přiřadit ho aplikaci LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného. 
+Při vytváření aplikace LUIS se automaticky vygeneruje počáteční klíč, abyste aplikaci mohli otestovat pomocí textových dotazů. Tento klíč neumožňuje integrace hlasových služeb a nebude fungovat v tomto kurzu. Musíte vytvořit prostředek služby LUIS na řídicím panelu Azure a přiřadit ho aplikaci LUIS. Pro účely tohoto kurzu můžete použít na bezplatnou úroveň předplatného.
 
 Jakmile prostředek služby LUIS na řídicím panelu Azure vytvoříte, přihlaste se k [portálu LUIS](https://www.luis.ai/home), vyberte svoji aplikaci na stránce My Apps (Moje aplikace), potom přepněte na stránku pro správu této aplikace. Nakonec na bočním panelu klikněte na **Keys and Endpoints** (Klíče a koncové body).
 
@@ -123,7 +123,7 @@ Následující části obsahují informace o kódu.
 Prvním krokem při rozpoznávání záměrů v řeči je vytvoření konfigurace řeči z klíče koncového bodu a oblasti služby LUIS. Konfigurace řeči můžete použít k vytvoření nástrojů pro rozpoznávání s různými možnostmi sady Speech SDK. Konfigurace řeči zahrnuje několik způsobů, jak specifikovat předplatné, které chcete použít. My použijeme `FromSubscription`, který využije klíč a oblast předplatného.
 
 > [!NOTE]
-> Použijte klíč a oblast předplatného služby LUIS, nikoli předplatného služby Speech.
+> Použijte klíč a oblasti vašeho předplatného služby LUIS, nikoli hlasové služby předplatného.
 
 Potom pomocí `new IntentRecognizer(config)` vytvořte nástroj pro rozpoznávání záměru. Vzhledem k tomu, že konfigurace již ví, jaké předplatné použít, není při vytváření nástroje pro rozpoznávání nutné znovu zadávat klíč a koncový bod předplatného.
 
@@ -174,7 +174,7 @@ Následující kód představuje další dvě možnosti rozpoznávání záměru
 
 Druhou možností je čtení zvuku obsahujícího řeč, která se má zpracovat, ze souboru WAV. Zahrnuje vytvoření zvukové konfigurace, kterou lze použít při vytváření nástroje pro rozpoznávání záměru. Soubor musí být jednokanálový (mono) a musí mít vzorkovací frekvenci 16 kHz.
 
-Pokud si chcete tyto funkce vyzkoušet, nahraďte text metody `RecognizeIntentAsync()` následujícím kódem. 
+Pokud si chcete tyto funkce vyzkoušet, nahraďte text metody `RecognizeIntentAsync()` následujícím kódem.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

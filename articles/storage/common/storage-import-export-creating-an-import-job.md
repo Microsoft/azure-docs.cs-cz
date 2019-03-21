@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 42246a5d2c8515c26ed399f041476c8ad70decfe
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442133"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102175"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
 Vytvoření úlohy importu pomocí rozhraní REST API služby Microsoft Azure Import/Export zahrnuje následující kroky:
 
--   Příprava jednotky s nástrojem Import/Export Azure.
+- Příprava jednotky s nástrojem Import/Export Azure.
 
--   Získání umístění, do kterého k odeslání na jednotce.
+- Získání umístění, do kterého k odeslání na jednotce.
 
--   Vytváří se úloha importu.
+- Vytváří se úloha importu.
 
--   Přesouvání jednotky společnosti Microsoft prostřednictvím služby podporované operátora.
+- Přesouvání jednotky společnosti Microsoft prostřednictvím služby podporované operátora.
 
--   Aktualizuje se úloha importu podrobnosti o dopravě.
+- Aktualizuje se úloha importu podrobnosti o dopravě.
 
- V tématu [pomocí služby Microsoft Azure Import/Export pro přenos dat do úložiště objektů Blob](storage-import-export-service.md) Přehled služby Import/Export a kurz, který ukazuje, jak používat [webu Azure portal](https://portal.azure.com/) k vytvoření Správa import a export úloh.
+  V tématu [pomocí služby Microsoft Azure Import/Export pro přenos dat do úložiště objektů Blob](storage-import-export-service.md) Přehled služby Import/Export a kurz, který ukazuje, jak používat [webu Azure portal](https://portal.azure.com/) k vytvoření Správa import a export úloh.
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Příprava jednotky pomocí nástroje Azure Import/Export
 
@@ -39,21 +39,21 @@ Níže uvádíme stručný přehled o přípravu jednotky. Odkazovat [referenčn
 
 Příprava jednotky zahrnuje:
 
--   Identifikuje data, která mají být importována.
+- Identifikuje data, která mají být importována.
 
--   Určení cílové objektů BLOB ve službě Windows Azure Storage.
+- Určení cílové objektů BLOB ve službě Windows Azure Storage.
 
--   Použití nástroje Import/Export Azure ke zkopírování dat na jeden nebo více pevných disků.
+- Použití nástroje Import/Export Azure ke zkopírování dat na jeden nebo více pevných disků.
 
- Nástroje Import/Export Azure také vygeneruje soubor manifestu pro každou z jednotky jako je připraven. Obsahuje soubor manifestu:
+  Nástroje Import/Export Azure také vygeneruje soubor manifestu pro každou z jednotky jako je připraven. Obsahuje soubor manifestu:
 
--   Výčet všech souborů, které jsou určené pro nahrávání a mapování z těchto souborů do objektů BLOB.
+- Výčet všech souborů, které jsou určené pro nahrávání a mapování z těchto souborů do objektů BLOB.
 
--   Kontrolní součty segmentů každého souboru.
+- Kontrolní součty segmentů každého souboru.
 
--   Informace o vlastnosti, které chcete přidružit každý objekt blob a metadat.
+- Informace o vlastnosti, které chcete přidružit každý objekt blob a metadat.
 
--   Výpis akce má být provedena, pokud má stejný název jako existující objekt blob v kontejneru objektů blob, který se nahrává. Možnými volbami jsou: a) přepsat objekt blob se souborem, (b) zachovat existující objekt blob a přeskočení nahrávání souboru, c) připojit příponu k názvu tak, aby nejsou v konfliktu s jinými soubory.
+- Výpis akce má být provedena, pokud má stejný název jako existující objekt blob v kontejneru objektů blob, který se nahrává. Možnými volbami jsou: a) přepsat objekt blob se souborem, (b) zachovat existující objekt blob a přeskočení nahrávání souboru, c) připojit příponu k názvu tak, aby nejsou v konfliktu s jinými soubory.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
 

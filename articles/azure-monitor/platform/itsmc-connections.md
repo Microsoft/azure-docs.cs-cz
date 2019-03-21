@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 64a4e7a181f7bd24e305ef5ee8d3d6657c3f394b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081283"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -30,7 +30,7 @@ Jsou podporovány následující ITSM produktů a služeb. Vyberte produkt, chce
 - [Cherwell](#connect-cherwell-to-it-service-management-connector-in-azure)
 
 > [!NOTE]
-
+> 
 > Konektor ITSM se můžete připojit jenom k instance ServiceNow založené na cloudu. Místní instance ServiceNow není momentálně podporované.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>Připojení produktu System Center Service Manager k IT Service Management Connector v Azure
@@ -62,7 +62,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 4. Zadejte informace, jak je popsáno v následující tabulce a klikněte na tlačítko **OK** k vytvoření připojení.
 
 > [!NOTE]
-
+> 
 > Všechny tyto parametry jsou povinné.
 
 | **Pole** | **Popis** |
@@ -137,14 +137,14 @@ Pomocí následujícího postupu ke konfiguraci hybridního připojení, která 
 
 6. Zadejte následující hodnoty:
 
-    - **Název koncového bodu**: Zadejte název nové hybridní připojení.
-    -  **Hostitel koncového bodu**: Plně kvalifikovaný název domény serveru pro správu portálu Service Manager.
-    - **Port koncového bodu**: Typ 5724
-    - **Obor názvů služby Service Bus**: Použití existujícího oboru názvů služby Service Bus nebo vytvořte novou.
-    - **Umístění**: Vyberte umístění.
-    -  **Název**: Zadejte název, který služby Service Bus, pokud jeho vytváření.
+   - **Název koncového bodu**: Zadejte název nové hybridní připojení.
+   - **EndPoint Host**: Plně kvalifikovaný název domény serveru pro správu portálu Service Manager.
+   - **Port koncového bodu**: Typ 5724
+   - **Obor názvů služby Service Bus**: Použití existujícího oboru názvů služby Service Bus nebo vytvořte novou.
+   - **Umístění**: Vyberte umístění.
+   - **Název**: Zadejte název, který služby Service Bus, pokud jeho vytváření.
 
-    ![Hodnoty hybridní připojení](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
+     ![Hodnoty hybridní připojení](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Klikněte na tlačítko **OK** zavřete **vytvořit hybridní připojení** blade a začít vytvářet hybridní připojení.
 
     Po vytvoření hybridního připojení se zobrazí pod oknem.
@@ -171,7 +171,7 @@ Hybridní připojení se úspěšně připojil.
 
 ![úspěšné hybridní připojení](media/itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
-
+> 
 > Po hybridního připojení vytvořit, ověřit a vyzkoušejte připojení návštěvou nasazené aplikace webového portálu Service Manager. Ujistěte se, že je připojení úspěšné, než se pokusíte připojit k ITSMC v Azure.
 
 Následující ukázkový obrázek zobrazuje podrobnosti o úspěšném připojení:
@@ -244,20 +244,20 @@ Další informace: [Vytvoření pracovní položky ITSM z výstrah Azure](../../
 
 Uživatel takto:
 
-1.  Přejděte [ServiceNow úložiště](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) a nainstalujte **uživatele aplikace pro ServiceNow a integraci Microsoft OMS** do vaší Instance ServiceNow.
+1. Přejděte [ServiceNow úložiště](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) a nainstalujte **uživatele aplikace pro ServiceNow a integraci Microsoft OMS** do vaší Instance ServiceNow.
    
    >[!NOTE]
    >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru OMS se teď označuje jako Log Analytics.     
-2.  Po instalaci, přejděte v levém navigačním panelu ServiceNow instance, hledání a vybrat integrátor Microsoft OMS.  
-3.  Klikněte na tlačítko **kontrolní seznam pro instalaci**.
+2. Po instalaci, přejděte v levém navigačním panelu ServiceNow instance, hledání a vybrat integrátor Microsoft OMS.  
+3. Klikněte na tlačítko **kontrolní seznam pro instalaci**.
 
-    Stav se zobrazí jako **dokončena** Pokud roli uživatele ještě má být vytvořen.
+   Stav se zobrazí jako **dokončena** Pokud roli uživatele ještě má být vytvořen.
 
-4.  Do textových polí vedle **vytvořit integrace uživatele**, zadejte uživatelské jméno pro uživatele, který se může připojit k ITSMC v Azure.
-5.  Zadejte heslo pro tohoto uživatele a klikněte na tlačítko **OK**.  
+4. Do textových polí vedle **vytvořit integrace uživatele**, zadejte uživatelské jméno pro uživatele, který se může připojit k ITSMC v Azure.
+5. Zadejte heslo pro tohoto uživatele a klikněte na tlačítko **OK**.  
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > Tyto přihlašovací údaje použijete k vytvoření připojení ServiceNow v Azure.
 
 Zobrazí se nově vytvořeného uživatele se výchozí role přiřazené.
@@ -266,16 +266,16 @@ Zobrazí se nově vytvořeného uživatele se výchozí role přiřazené.
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft.user
--   ITIL
+-   itil
 -   template_editor
 -   view_changer
 
 Jakmile uživatel je úspěšně vytvořen, stav **zkontrolujte kontrolní seznam pro instalaci** přesune na dokončeno, podrobnosti role uživatele vytvořit pro aplikaci.
 
 > [!NOTE]
-
+> 
 > ITSM konektor můžete odesílat incidenty ServiceNow bez dalších modulů, které mají nainstalovaný na instanci ServiceNow. Pokud používáte modul EventManagement ve vaší instanci ServiceNow a chcete k vytvoření události nebo výstrahy v ServiceNow s použitím konektoru, přidejte následující role integrace uživateli:
-
+> 
 >    - evt_mgmt_integration
 >    - evt_mgmt_operator  
 
@@ -309,7 +309,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 4. Zadejte informace, jak je popsáno v následující tabulce a klikněte na tlačítko **OK** k vytvoření připojení.
 
 > [!NOTE]
-
+> 
 > Všechny tyto parametry jsou povinné.
 
 | **Pole** | **Popis** |
@@ -360,7 +360,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 4. Zadejte informace, jak je popsáno v následující tabulce a klikněte na tlačítko **OK** k vytvoření připojení.
 
 > [!NOTE]
-
+> 
 > Všechny tyto parametry jsou povinné.
 
 | **Pole** | **Popis** |

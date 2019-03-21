@@ -15,12 +15,12 @@ ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194006"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101869"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
@@ -44,9 +44,9 @@ Ujistěte se, že máte přihlašovací údaje pro účet s oprávněními sprá
 4. Zadejte podrobnosti připojení vaší instance serveru MySQL.
 
    * Pro **názvem serveru MySQL hostování**, zadejte plně kvalifikovaný název domény (FQDN) nebo platná adresa IPv4. Nepoužívejte krátký název virtuálního počítače.
-   - Výchozí správce **uživatelské jméno** pro Bitnami MySQL Image dostupných v Tržišti Azure Stack je *kořenové*. 
-   - Pokud si nejste jisti kořenové **heslo**, najdete v článku [Bitnami dokumentaci](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) postup, jak se dá stáhnout. 
-   - Výchozí instanci MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacity databázového serveru.
+   * Výchozí správce **uživatelské jméno** pro Bitnami MySQL Image dostupných v Tržišti Azure Stack je *kořenové*. 
+   * Pokud si nejste jisti kořenové **heslo**, najdete v článku [Bitnami dokumentaci](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) postup, jak se dá stáhnout. 
+   * Výchozí instanci MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacity databázového serveru.
    * Zachovat výchozí nastavení pro **předplatné**.
    * Pro **skupiny prostředků**, vytvořte novou, nebo použijte existující skupinu.
 
@@ -60,8 +60,8 @@ Ujistěte se, že máte přihlašovací údaje pro účet s oprávněními sprá
    SKU **název** by měly odrážet vlastnosti skladové Položce, takže uživatelé můžou nasazovat své databáze do příslušné SKU.
 
 6. Vyberte **OK** vytvoření skladové Položce.
-> [!NOTE]
-> SKU může trvat až hodinu, uvidí na portálu. Nelze vytvořit databázi, dokud SKU není nasazená a běží.
+   > [!NOTE]
+   > SKU může trvat až hodinu, uvidí na portálu. Nelze vytvořit databázi, dokud SKU není nasazená a běží.
 
 7. V části **přidat Server pro hostování MySQL**vyberte **vytvořit**.
 

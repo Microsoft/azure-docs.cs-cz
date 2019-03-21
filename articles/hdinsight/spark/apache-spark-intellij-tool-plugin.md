@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 272ec7298785128caebd850dc488ca01937a3960
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077968"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -57,10 +57,10 @@ Proveďte následující postup instalace modulu plug-in Scala:
 3. Vyberte **Project Spark (Scala)** z hlavního okna.
 
 4. Z **nástroj pro sestavení** rozevíracího seznamu vyberte jednu z následujících akcí:
-      * **Maven** podpory jazyků Scala vytvoření projektu průvodce.
-      * **SBT** ke správě závislostí a vývoj aplikací pro Scala projektu.
+   * **Maven** podpory jazyků Scala vytvoření projektu průvodce.
+   * **SBT** ke správě závislostí a vývoj aplikací pro Scala projektu.
 
-    ![Dialogové okno New Project (Nový projekt)](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![Dialogové okno New Project (Nový projekt)](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. Vyberte **Další**.
 

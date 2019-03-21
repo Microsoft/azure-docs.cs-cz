@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: ab99116cabc14c70698a962c803adb87394e1796
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651100"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100066"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete zkusit Standard zdarma. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -65,11 +65,11 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 1. Vraťte se na **Začínáme**.   
 2. Vyberte kartu **Začínáme**.
 
-  ![Mimo službu Azure](./media/security-center-onboarding/non-azure.png)
+   ![Mimo službu Azure](./media/security-center-onboarding/non-azure.png)
 
 3. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
-  ![Přidání počítače umístěného mimo Azure][7]
+   ![Přidání počítače umístěného mimo Azure][7]
 
 Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat počítače umístěné mimo Azure**. Můžete přidat počítače do existujícího pracovního prostoru nebo vytvořte nový pracovní prostor. Pokud chcete vytvořit nový pracovní prostor, vyberte odkaz **přidat nový pracovní prostor**.
 
@@ -82,8 +82,8 @@ Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat po
    ![Přidat nový pracovní prostor][4]
 
 2. V části **zabezpečení a Audit**vyberte **pracovní prostor OMS** vytvořte nový pracovní prostor.
-> [!NOTE]
-> Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
+   > [!NOTE]
+   > Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 3. V části **pracovní prostor OMS**, zadejte informace pro váš pracovní prostor.
 4. V části **pracovní prostor OMS**vyberte **OK**.  Když vyberete OK, se zobrazí odkaz pro stažení agenta Windows nebo Linuxem a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 5. V části **zabezpečení a Audit**vyberte **OK**.
@@ -105,7 +105,7 @@ Pomocí následujícího pracovního postupu můžete přidat počítač **přip
 
    ![Přidat počítače][7]
 
- **Přímý Agent** okno obsahuje odkaz ke stažení agenta Windows nebo Linuxem, jakož i ID pracovního prostoru a klíče, které použijete při konfiguraci agenta.   
+   **Přímý Agent** okno obsahuje odkaz ke stažení agenta Windows nebo Linuxem, jakož i ID pracovního prostoru a klíče, které použijete při konfiguraci agenta.   
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak připojit Azure a prostředků mimo Azure, aby bylo možné využívat pokročilé zabezpečení Security Center.  Další zprovozněné prostředky, najdete v tématu

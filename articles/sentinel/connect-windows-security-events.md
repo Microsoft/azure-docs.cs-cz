@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 270254ae4f66fa3642df844f384e15564945628e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087597"
 ---
 # <a name="connect-windows-security-events"></a>Připojení událostí zabezpečení systému Windows 
 
@@ -34,8 +34,8 @@ Všechny události zabezpečení z Windows serverů, připojený k pracovnímu p
 - **Minimální** -malou sadu událostí, které může znamenat potenciální hrozby. Když tuto možnost povolíte, nebudete moci mít úplný záznam pro audit.
 - **Žádný** – žádné události zabezpečení ani Applockeru.
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
 
 ## <a name="set-up-the-windows-security-events-connector"></a>Nastavení konektoru události zabezpečení Windows

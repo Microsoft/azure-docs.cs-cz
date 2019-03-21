@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 59ba69f8bf208ab4f38ae326cf4297947f0b844e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075471"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - připojit ke službě Cosmos DB pomocí Mongoose
 
@@ -56,35 +56,35 @@ Mongoose je objektu data modelování knihovny (ODM) pro MongoDB a Node.js. Při
 
 1. Zkopírujte následující kód do **mongo.js** souboru. Kód poskytuje následující funkce:
 
-    * Vyžaduje Mongoose.
-    * Přepíše příslib Mongo tak používal základní příslib, která je integrována do ES6/ES2015 a novějších verzích.
-    * Volání soubor env, který umožňuje nastavit určité na základě toho, jestli jste v pracovní produkčního prostředí a vývoj. Tento soubor vytvoříte v další části.
-    * Obsahuje připojovací řetězec MongoDB, jež je nastavena v souboru env.
-    * Vytvoří funkci connect, která volá Mongoose.
+   * Vyžaduje Mongoose.
+   * Přepíše příslib Mongo tak používal základní příslib, která je integrována do ES6/ES2015 a novějších verzích.
+   * Volání soubor env, který umožňuje nastavit určité na základě toho, jestli jste v pracovní produkčního prostředí a vývoj. Tento soubor vytvoříte v další části.
+   * Obsahuje připojovací řetězec MongoDB, jež je nastavena v souboru env.
+   * Vytvoří funkci connect, která volá Mongoose.
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
      * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. V podokně Průzkumník pod **server**, vytvořte složku s názvem **prostředí**. V **prostředí** složce vytvořte soubor s názvem **environment.js**.
 

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 5a9638a18b8b5b046d66a6a95ef223220d05d550
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819339"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856106"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
@@ -25,7 +25,7 @@ Tento článek představuje referenční implementaci projektu pro analýzu pře
 Tento experiment se vývoji a testování Serge Berger, odborník přes Data objektu zabezpečení v Microsoftu a Roger Barga, dříve produktový manažer pro Microsoft Azure Machine Learning Studio. Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
 
 > [!NOTE]
-> Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu naleznete v tématu: [Maloobchodní změny šablony modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](http://gallery.azure.ai/)
+> Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu naleznete v tématu: [Maloobchodní změny šablony modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](https://gallery.azure.ai/)
 > 
 > 
 
@@ -106,7 +106,7 @@ Následující obrázky znázorňují data, která byla použita.
  
 
 > Všimněte si, že tato data jsou privátní a proto není možné model a data sdílet.
-> Ale podobný modelu pomocí veřejně dostupných dat, naleznete v tématu této ukázce experimentovat v [galerii Azure AI](http://gallery.azure.ai/): [Výpovědi zákazníků](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Ale podobný modelu pomocí veřejně dostupných dat, naleznete v tématu této ukázce experimentovat v [galerii Azure AI](https://gallery.azure.ai/): [Výpovědi zákazníků](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Další informace o implementace modelu analysis změn pomocí Cortana Intelligence Suite, doporučujeme také [toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) tak Tok Hyong praco vedoucí manažer programu. 
 > 
@@ -213,13 +213,13 @@ Tento dokument popisuje rozumné přístup k řešení běžných problémů vý
 ## <a name="references"></a>Odkazy
 [1] prediktivní analýzy: Kromě správy informace Predikcí, západ McKnight, července/Srpen 2011, p.18 20.  
 
-[2] článku na wikipedii: [Přesnost](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] článku na wikipedii: [Přesnost](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: Průvodce krok za krokem dat dolování](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Průvodce krok za krokem dat dolování](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [Marketing velké objemy dat: Upoutat zákazníky efektivněji a posílení hodnoty](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco změny šablony modelu](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) v [galerii Azure AI](http://gallery.azure.ai/) 
+[5] [Telco změny šablony modelu](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) v [galerii Azure AI](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Příloha

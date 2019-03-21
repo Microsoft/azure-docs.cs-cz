@@ -1,6 +1,6 @@
 ---
-title: Vytvoření účtu služby Azure Media Services – Azure CLI | Microsoft Docs
-description: Použijte skript Azure CLI k vytvoření účtu služby Azure Media Services.
+title: Vytvoření účtu Azure Media Services – Azure CLI | Dokumentace Microsoftu
+description: Použijte skript rozhraní příkazového řádku Azure k vytvoření účtu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 41d9548aa33ee29c40179506ae824ab79b000859
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e668852346de1b48bd34658dea001435ba8a625
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213170"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842205"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Azure Media Services
 

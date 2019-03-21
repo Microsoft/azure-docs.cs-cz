@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af7c5721458e36a1efa27c9696feaa3dbf043e4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878444"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -101,7 +101,7 @@ Osvědčeným postupem při řešení potíží se zpětným zápisem hesla je k
 | Kód | Název nebo zprávy | Popis |
 | --- | --- | --- |
 | 6329 | NICHŽ: MMS(4924) 0x80230619: "Omezení brání změny do aktuálního zadat heslo." | Když službu zpětného zápisu hesla, pokusí se nastavit heslo na váš místní adresář, který nesplňuje stáří hesla, historie, složitost nebo filtrování požadavky domény dojde k této události. <br> <br> Pokud máte minimální stáří hesla a jste nedávno změnili heslo v rámci této časové okno, nejste schopni změnit heslo znovu, dokud nedosáhne zadané stáří ve vaší doméně. Pro účely testování, by měla minimální stáří nastavena na hodnotu 0. <br> <br> Pokud máte požadavky na heslo historie povolené, pak je nutné vybrat heslo, které nebyl použit za posledních *N* krát, kde *N* je nastavení historie hesel. Pokud vyberete heslo, které se používá v posledním *N* vícekrát, pak můžete zobrazit informace o selhání v tomto případě. Pro účely testování, je třeba nastavit historii hesel na 0. <br> <br> Pokud máte požadavky na složitost hesla, všechny z nich se vynucují, když se uživatel pokusí o změnu nebo resetování hesla. <br> <br> Pokud máte povolené filtry hesla a uživatel vybere heslo, které splňují kritéria filtru, klikněte resetovat nebo změnit operace se nezdaří. |
-| 6329 | MMS(3040): admaexport.cpp(2837): Server neobsahuje prvek zásad heslo protokolu LDAP. | K tomuto problému dochází, pokud ovládací prvek LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) není povolena na řadiče domény. Pokud chcete použít funkci zpětného zápisu hesla, třeba povolte stažení ovládacího prvku. Uděláte to tak, musí být řadiče domény v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak také musíte použít opravu hotfix [KB2386717](https://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): Server neobsahuje prvek zásad heslo protokolu LDAP. | K tomuto problému dochází, pokud ovládací prvek LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) není povolena na řadiče domény. Pokud chcete použít funkci zpětného zápisu hesla, třeba povolte stažení ovládacího prvku. Uděláte to tak, musí být řadiče domény v systému Windows Server 2008 R2 nebo novějším. |
 | HR 8023042 | Modul synchronizace vrácena chyba hr = 80230402, zpráva = pokus o získání objektu se nezdařilo, protože existují duplicitní položky s stejné kotvě. | Tato chyba nastane, pokud stejného ID uživatele je povoleno ve více doménách. Příkladem je Pokud jste synchronizaci doménových struktur účtů a prostředků a mají stejné ID uživatele k dispozici a povoleno v každé doménové struktuře. <br> <br> K této chybě může dojít také jako alias nebo hlavní název uživatele a dva uživatelé sdílet tento stejný atribut ukotvení používáte atribut ukotvení není jedinečný. <br> <br> Chcete-li vyřešit tento problém, ujistěte se, že nemáte žádné duplicitní uživatele v rámci vaší domény a používat atribut jedinečné ukotvení pro každého uživatele. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Pokud je zdroj události PasswordResetService
@@ -179,10 +179,10 @@ Další informace najdete v tématu požadavky připojení [požadavky pro Azure
 
 Chcete-li vyřešit potíže s připojením nebo jiné přechodné problémy se službou, restartujte službu Azure AD Connect Sync:
 
-   1. Jako správce, vyberte **Start** na serveru se službou Azure AD Connect.
-   1. Zadejte **services.msc** vyhledávacího pole a vyberte **Enter**.
-   1. Hledat **Microsoft Azure AD Sync** položka.
-   1. Klikněte pravým tlačítkem na položku služby, vyberte **restartovat**a potom počkejte na dokončení operace.
+1. Jako správce, vyberte **Start** na serveru se službou Azure AD Connect.
+1. Zadejte **services.msc** vyhledávacího pole a vyberte **Enter**.
+1. Hledat **Microsoft Azure AD Sync** položka.
+1. Klikněte pravým tlačítkem na položku služby, vyberte **restartovat**a potom počkejte na dokončení operace.
 
    ![Restartujte službu Azure AD Sync][Service restart]
 
@@ -272,13 +272,13 @@ K usnadnění správně, můžeme požádat, zadejte co nejvíce podrobností ne
 * **Obecný popis chyby**: Co je chyba? Jak se chování, které bylo si všimli? Jak jsme chybu reprodukovat? Zadejte co nejvíce podrobností nejvíce.
 * **Stránka**: Které stránce jste byli na kdy jste si všimli chybu? Zahrnují adresu URL, pokud jste byli schopni a snímek obrazovky stránky.
 * **Podpora kódu**: Jak se kód podpory, který se vygeneroval při uživateli zobrazila chyba?
-    * Tento kód najdete chybu reprodukovat a pak vyberte **podpory kódu** odkaz v dolní části obrazovky a identifikátor GUID, který výsledky odeslat pracovníkem technické podpory.
+  * Tento kód najdete chybu reprodukovat a pak vyberte **podpory kódu** odkaz v dolní části obrazovky a identifikátor GUID, který výsledky odeslat pracovníkem technické podpory.
 
     ![Kód podpory, v dolní části obrazovky][Support code]
 
-    * Pokud jste na stránce bez podpory kód v dolní části, vyberte F12 a vyhledejte identifikátor SID a CID a odesílat tyto dva výsledky pro pracovníka podpory.
+  * Pokud jste na stránce bez podpory kód v dolní části, vyberte F12 a vyhledejte identifikátor SID a CID a odesílat tyto dva výsledky pro pracovníka podpory.
 * **Datum, čas a časové pásmo**: Uveďte přesné datum a čas *s časovým pásmem* , ke které došlo k chybě.
-* **ID uživatele**: Kdo byl uživatel, který viděli chybu? Příkladem je *user@contoso.com*.
+* **ID uživatele**: Kdo byl uživatel, který viděli chybu? Příkladem je *uživatele\@contoso.com*.
     * Je to federovaného uživatele?
     * Je to předávací ověřování uživatele?
     * Je to synchronizaci hodnoty hash hesla uživatele?

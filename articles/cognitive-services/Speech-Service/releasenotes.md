@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856086"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -32,7 +32,7 @@ Toto je vydání opravy chyb a pouze by to ovlivnilo sady SDK nativního/spravov
 
 **Nové funkce**
 
-* Sadou SDK pro řeč podporuje výběr vstupní mikrofonu prostřednictvím AudioConfig třídy. Díky tomu datový proud zvukových dat ve službě řeči z jiné než výchozí mikrofonu. Další podrobnosti najdete v dokumentaci popisující [vstupní zvuková zařízení výběr](how-to-select-audio-input-devices.md). To ještě není k dispozici z jazyka JavaScript.
+* Sadou SDK pro řeč podporuje výběr vstupní mikrofonu prostřednictvím AudioConfig třídy. Umožňuje zvukových dat datový proud do hlasové služby z jiné než výchozí mikrofonu. Další informace najdete v dokumentaci popisující [vstupní zvuková zařízení výběr](how-to-select-audio-input-devices.md). To ještě není k dispozici z jazyka JavaScript.
 * Sadou SDK pro řeč teď podporuje Unity v beta verzi. Poskytněte prosím zpětnou vazbu prostřednictvím v části problém [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity na Windows x86 a x64 (desktop nebo aplikací univerzální platformy Windows) a Android (ARM32/64, x86). Další informace najdete v našich [rychlý start Unity](quickstart-csharp-unity.md).
 * Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
 
@@ -89,13 +89,13 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 **Nové funkce**
 
 * Python
-  * Je k dispozici v této vydané verzi Beta verze podpory Pythonu (3.5 a vyšší). Další podrobnosti [tady uvidíte](quickstart-python.md).
+  * Je k dispozici v této vydané verzi Beta verze podpory Pythonu (3.5 a vyšší). Další informace najdete v tématu here](quickstart-python.md).
 * JavaScript
   * Open source se sadou SDK pro řeč pro jazyk JavaScript. Zdrojový kód je k dispozici na [Githubu](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   * Nyní podporujeme Node.js, najdete další informace o [tady](quickstart-js-node.md).
   * Omezení délky pro zvuk relace byla odebrána, opětovné připojení v rámci obálek provede automaticky.
 * Objekt připojení
-  * Z Rozlišovač můžete získat objekt připojení. Tento objekt umožňuje explicitně iniciovat připojení k službě a přihlaste se k připojení a odpojení události odběru.
+  * Z rozpoznávání rukopisu můžete použít objekt připojení. Tento objekt umožňuje explicitně iniciovat připojení k službě a přihlaste se k připojení a odpojení události odběru.
     (Toto není zatím k dispozici z jazyka JavaScript a Python.)
 * Podpora pro Ubuntu 18.04.
 * Android
@@ -113,7 +113,7 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 * V některých případech se za následek únik výjimek.
 * Oprava nevracení paměti v argumentech události překladu.
 * Oprava zamykání problém na znovu připojit v dlouho spuštěna relace.
-* Opravili jsme chybu, která by mohla vést k chybějící konečný výsledek pro překlady se nezdařilo.
+* Opravili jsme problém, který může vést k chybějící konečný výsledek pro překlady se nezdařilo.
 * C#: Pokud asynchronní operace nebyla očekávána v hlavním vlákně, bylo možné že nástroj pro rozpoznávání může být uvolněn předtím, než se asynchronní úloha byla dokončena.
 * Java: Opravili jsme problém, což vede k chybovému ukončení virtuálního počítače Java.
 * Objective-C: Oprava výčtu mapování; RecognizedIntent vrátila místo RecognizingIntent.
@@ -122,7 +122,7 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 
 **Ukázky**
 
-* Aktualizace a opravy několik vzorových (například výstup hlasy pro překlad atd).
+* Aktualizace a opravy několik vzorových (například výstup hlasy pro překlad atd.).
 * Přidání ukázky Node.js v [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0

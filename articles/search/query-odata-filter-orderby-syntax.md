@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1f1fbc49a42ec9b72ebe74a96ee099630d7416b1
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570643"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087393"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
 
@@ -55,62 +55,62 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ### <a name="filter-operators"></a>Operátory filtru  
 
--   Logické operátory (a, nebo ne).  
+- Logické operátory (a, nebo ne).  
 
--   Výrazy porovnání (`eq, ne, gt, lt, ge, le`). Při porovnávání řetězců se rozlišují malá a velká písmena.  
+- Výrazy porovnání (`eq, ne, gt, lt, ge, le`). Při porovnávání řetězců se rozlišují malá a velká písmena.  
 
--   Konstanty z podporovaných [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typů (EDM) (viz [podporované datové typy &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) seznam podporovaných typů). Konstanty kolekci typů nejsou podporovány.  
+- Konstanty z podporovaných [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typů (EDM) (viz [podporované datové typy &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) seznam podporovaných typů). Konstanty kolekci typů nejsou podporovány.  
 
--   Odkazy na názvy polí. Pouze `filterable` pole můžete používat ve výrazech filtru.  
+- Odkazy na názvy polí. Pouze `filterable` pole můžete používat ve výrazech filtru.  
 
--   `any` bez parametrů. To testuje, jestli pole typu `Collection(Edm.String)` neobsahuje žádné prvky.  
+- `any` bez parametrů. To testuje, jestli pole typu `Collection(Edm.String)` neobsahuje žádné prvky.  
 
--   `any` a `all` s podporou omezené lambda výrazu. 
+- `any` a `all` s podporou omezené lambda výrazu. 
     
-    -   `any/all` jsou podporovány na pole typu `Collection(Edm.String)`. 
+  -   `any/all` jsou podporovány na pole typu `Collection(Edm.String)`. 
     
-    -   `any` jde použít jenom s výrazy rovnosti jednoduché nebo `search.in` funkce. Jednoduché výrazy skládat z porovnání mezi službou jedno pole a hodnota literálu, třeba `Title eq 'Magna Carta'`.
+  -   `any` jde použít jenom s výrazy rovnosti jednoduché nebo `search.in` funkce. Jednoduché výrazy skládat z porovnání mezi službou jedno pole a hodnota literálu, třeba `Title eq 'Magna Carta'`.
     
-    -   `all` jde použít jenom s jednoduchou nerovnost výrazy nebo `not search.in`.   
+  -   `all` jde použít jenom s jednoduchou nerovnost výrazy nebo `not search.in`.   
 
--   Geoprostorové funkce `geo.distance` a `geo.intersects`. `geo.distance` Funkce vrací vzdálenost v kilometrech mezi dvěma body, jeden je pole a druhý je konstantní předanou v rámci filtru. `geo.intersects` Funkce vrátí hodnotu true, pokud je daný bod v rámci dané mnohoúhelníku, kde je bod je pole a mnohoúhelník je zadána jako konstanta předanou v rámci filtru.  
+- Geoprostorové funkce `geo.distance` a `geo.intersects`. `geo.distance` Funkce vrací vzdálenost v kilometrech mezi dvěma body, jeden je pole a druhý je konstantní předanou v rámci filtru. `geo.intersects` Funkce vrátí hodnotu true, pokud je daný bod v rámci dané mnohoúhelníku, kde je bod je pole a mnohoúhelník je zadána jako konstanta předanou v rámci filtru.  
 
-    Mnohoúhelník je dvojrozměrné povrch uložené jako posloupnost body definující ohraničující vyzvánět (viz následující příklad). Mnohoúhelník musí zavřou, což znamená, první a poslední bod sad musí být stejné. [Bodů mnohoúhelníku musí být v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+  Mnohoúhelník je dvojrozměrné povrch uložené jako posloupnost body definující ohraničující vyzvánět (viz následující příklad). Mnohoúhelník musí zavřou, což znamená, první a poslední bod sad musí být stejné. [Bodů mnohoúhelníku musí být v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-    `geo.distance` vrací vzdálenost v kilometrech ve službě Azure Search. Tím se liší od jiných služeb, které podporují operace geoprostorové OData, které obvykle vrací vzdálenost v metrech.  
+  `geo.distance` vrací vzdálenost v kilometrech ve službě Azure Search. Tím se liší od jiných služeb, které podporují operace geoprostorové OData, které obvykle vrací vzdálenost v metrech.  
 
-    > [!NOTE]  
-    >  Při použití geo.distance ve filtru, musí porovnat vzdálenost vrácené funkcí s použitím konstantní `lt`, `le`, `gt`, nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. To je třeba správné použití geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
+  > [!NOTE]  
+  >  Při použití geo.distance ve filtru, musí porovnat vzdálenost vrácené funkcí s použitím konstantní `lt`, `le`, `gt`, nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. To je třeba správné použití geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
 
--   `search.in` Funkce testuje, jestli daný řetězec pole je rovna jednomu z daného seznamu hodnot. To lze také v některé nebo všechny porovnat jednu hodnotu pole řetězce kolekce s daný seznam hodnot. Rovnost mezi poli a každá hodnota v seznamu je určena stejným způsobem jako pro malá a velká písmena způsobem `eq` operátor. Proto výraz jako `search.in(myfield, 'a, b, c')` je ekvivalentní `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, s tím rozdílem, že `search.in` předá mnohem lepší výkon. 
+- `search.in` Funkce testuje, jestli daný řetězec pole je rovna jednomu z daného seznamu hodnot. To lze také v některé nebo všechny porovnat jednu hodnotu pole řetězce kolekce s daný seznam hodnot. Rovnost mezi poli a každá hodnota v seznamu je určena stejným způsobem jako pro malá a velká písmena způsobem `eq` operátor. Proto výraz jako `search.in(myfield, 'a, b, c')` je ekvivalentní `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, s tím rozdílem, že `search.in` předá mnohem lepší výkon. 
 
-    První parametr `search.in` funkce je odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kde `search.in` je použit uvnitř `any` nebo `all` výraz). Druhý parametr je řetězec obsahující seznam hodnot, oddělené mezerami nebo čárkami. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat volitelný třetí parametr pro `search.in`. 
+  První parametr `search.in` funkce je odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kde `search.in` je použit uvnitř `any` nebo `all` výraz). Druhý parametr je řetězec obsahující seznam hodnot, oddělené mezerami nebo čárkami. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat volitelný třetí parametr pro `search.in`. 
 
-    Tento třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru.
+  Tento třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru.
 
-    > [!NOTE]   
-    > Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
-    >
-    > Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Všimněte si, že není žádná explicitní omezený počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
+  > [!NOTE]   
+  > Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
+  >
+  > Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Všimněte si, že není žádná explicitní omezený počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
 
--   `search.ismatch` Funkce vyhodnocuje vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají vyhledávacímu dotazu. K dispozici jsou následující přetížení této funkce:
-    - `search.ismatch(search)`
-    - `search.ismatch(search, searchFields)`
-    - `search.ismatch(search, searchFields, queryType, searchMode)`
+- `search.ismatch` Funkce vyhodnocuje vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají vyhledávacímu dotazu. K dispozici jsou následující přetížení této funkce:
+  - `search.ismatch(search)`
+  - `search.ismatch(search, searchFields)`
+  - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-    kde: 
+  kde: 
   
-    - `search`: vyhledávací dotaz (buď [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxe dotazu). 
-    - `queryType`: "jednoduchý" nebo "úplné", výchozí hodnota je "jednoduchý". Určuje, jaký jazyk dotazu byla použita v `search` parametru.
-    - `searchFields`: čárkami oddělený seznam prohledávatelná pole pro hledání, výchozí hodnota je všechna prohledatelná pole v indexu.    
-    - `searchMode`: "libovolné" nebo "vše", výchozí hodnota je "žádný". Určuje, zda některé nebo všechny hledané termíny musí odpovídat k sečtení dokument jako shoda.
+  - `search`: vyhledávací dotaz (buď [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxe dotazu). 
+  - `queryType`: "jednoduchý" nebo "úplné", výchozí hodnota je "jednoduchý". Určuje, jaký jazyk dotazu byla použita v `search` parametru.
+  - `searchFields`: čárkami oddělený seznam prohledávatelná pole pro hledání, výchozí hodnota je všechna prohledatelná pole v indexu.    
+  - `searchMode`: "libovolné" nebo "vše", výchozí hodnota je "žádný". Určuje, zda některé nebo všechny hledané termíny musí odpovídat k sečtení dokument jako shoda.
 
-    Všechny výše uvedené parametry jsou ekvivalentní odpovídající [parametry požadavku hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+  Všechny výše uvedené parametry jsou ekvivalentní odpovídající [parametry požadavku hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
--   `search.ismatchscoring` Funkce, jako je třeba `search.ismatch` fungovat, vrátí hodnotu true pro dokumenty, které odpovídají vyhledávacímu dotazu předaného jako parametr. Rozdíl mezi nimi je, že skóre relevance odpovídajících dokumentů `search.ismatchscoring` dotazu přispěje k celkové skóre dokument, zatímco v případě `search.ismatch`, skóre dokumentu se nezmění. Následující přetížení této funkce je k dispozici s parametry, které jsou stejné jako `search.ismatch`:
-    - `search.ismatchscoring(search)`
-    - `search.ismatchscoring(search, searchFields)`
-    - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
+- `search.ismatchscoring` Funkce, jako je třeba `search.ismatch` fungovat, vrátí hodnotu true pro dokumenty, které odpovídají vyhledávacímu dotazu předaného jako parametr. Rozdíl mezi nimi je, že skóre relevance odpovídajících dokumentů `search.ismatchscoring` dotazu přispěje k celkové skóre dokument, zatímco v případě `search.ismatch`, skóre dokumentu se nezmění. Následující přetížení této funkce je k dispozici s parametry, které jsou stejné jako `search.ismatch`:
+  - `search.ismatchscoring(search)`
+  - `search.ismatchscoring(search, searchFields)`
+  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
   `search.ismatch` a `search.ismatchscoring` funkce jsou plně ortogonální sebou a zbytek algebraický filtru. To znamená, že obě funkce je možné ve stejném výrazu filtru. 
 

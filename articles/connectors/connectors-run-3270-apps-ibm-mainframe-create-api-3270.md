@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: fb61935c7e7b45699d4142293f31bbfe39e4cb78
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457067"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878376"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integraci 3270 aplikace řízené modelem obrazovky na sálové počítače IBM v Azure s využitím konektoru Azure Logic Apps a IBM 3270
 
@@ -410,7 +410,7 @@ Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplika
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o limitu, akce a aktivačních událostí, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/<*replace-with-api-topic-file-name*>).
+Technické podrobnosti o limitu, akce a aktivačních událostí, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, projděte si referenční stránce konektoru: [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/).
 
 ## <a name="get-support"></a>Získat podporu
 

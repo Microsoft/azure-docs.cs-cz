@@ -1,5 +1,5 @@
 ---
-title: Název zásady (preview) – skupin Office 365, Azure Active Directory skupiny | Dokumentace Microsoftu
+title: Vynucení zásad pojmenování skupiny – skupiny Office 365 – Azure Active Directory | Dokumentace Microsoftu
 description: Nastavení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 services: active-directory
 documentationcenter: ''
@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ca7f457f74202735d3abdf7faaed4ee66745f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bce8a9e4018f24022fcc45733d64ce47d07ba771
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898767"
 ---
-# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
+# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
 
 K vynucení konzistentní zásady vytváření názvů pro skupiny Office 365 vytvořených nebo upravených uživatele, nastavte skupinu zásad pojmenování pro své tenanty ve službě Azure Active Directory (Azure AD). Například můžete použít zásady vytváření názvů pro komunikaci funkce skupiny, členství, geografické oblasti nebo kteří vytvořili skupinu. Můžete také použít zásady pojmenování můžete uspořádat skupiny v adresáři. Zásady můžete použít k blokování konkrétních slov z používán ve skupině názvy a aliasy.
 
 > [!IMPORTANT]
-> Použití náhledu zásady pojmenování skupin Office 365 vyžaduje licence Azure Active Directory Premium P1 nebo licence Azure AD Basic EDU pro každý jedinečný uživatel, který je členem jedné nebo víc skupin Office 365.
+> Použití pojmenování zásady skupiny Office 365 vyžaduje Azure AD Basic EDU licence nebo licence Azure Active Directory Premium P1 pro každý jedinečný uživatel, který je členem jedné nebo víc skupin Office 365.
 
 Pojmenování zásady se použijí k vytvoření nebo úpravu skupiny vytvořené napříč úlohami (například Outlook, Microsoft Teams, SharePoint, Exchange nebo plánovač). Použije se název skupiny a alias skupiny. Pokud nastavíte zásady vytváření názvů v Azure AD a máte existující skupinu Exchange pojmenování zásady, použije se pojmenování zásady služby Azure AD.
 
@@ -72,7 +72,7 @@ Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a
 - Globální správce
 - Podpora partnerů úrovně 1
 - Podpora partnerů úrovně 2
-- Správce uživatelských účtů
+- Správce uživatelů
 - Uživatelé zapisující do adresáře
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Instalace rutin prostředí PowerShell ke konfiguraci zásad pojmenování
@@ -82,15 +82,15 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
 1. Otevřete aplikaci Windows PowerShell jako správce.
 2. Odinstalujte všechny předchozí verze AzureADPreview.
   
-  ```
-  Uninstall-Module AzureADPreview
-  ```
+   ```
+   Uninstall-Module AzureADPreview
+   ```
 3. Nainstalujte nejnovější verzi AzureADPreview.
   
-  ```
-  Install-Module AzureADPreview
-  ```
-Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
+   ```
+   Install-Module AzureADPreview
+   ```
+   Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí Azure AD Powershellu
 
@@ -98,11 +98,11 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
 
 2. Spuštěním následujících příkazů se připravte na spouštění rutin.
   
-  ```
-  Import-Module AzureADPreview
-  Connect-AzureAD
-  ```
-  Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
+   ```
+   Import-Module AzureADPreview
+   Connect-AzureAD
+   ```
+   Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
 
 3. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
 
@@ -110,35 +110,35 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
 
 1. Načte aktuální zásady pojmenování, chcete-li zobrazit aktuální nastavení.
   
-  ```
-  $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-  ```
+   ```
+   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+   ```
   
 2. Zobrazte aktuální nastavení skupiny.
   
-  ```
-  $Setting.Values
-  ```
+   ```
+   $Setting.Values
+   ```
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Nastavte zásady pojmenování a zadejte vlastní slova blokované
 
 1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
+   ```
   
 2. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
   
-  ```
-  $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
+   ```
   
 3. Uložte nastavení, aby nová zásada vstoupila v platnost, jak je znázorněno v následujícím příkladu.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
   
 A to je vše. Jste nastavit pojmenování zásady a přidá blokované slova.
 
@@ -173,21 +173,21 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
   
-  ```
-  $Setting["PrefixSuffixNamingRequirement"] =""
-  ```
+   ```
+   $Setting["PrefixSuffixNamingRequirement"] =""
+   ```
   
 2. Prázdný vlastní blokované slova. 
   
-  ```
-  $Setting["CustomBlockedWordsList"]=""
-  ```
+   ```
+   $Setting["CustomBlockedWordsList"]=""
+   ```
   
 3. Uložte nastavení.
   
-  ```
-  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-  ```
+   ```
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   ```
 
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Pojmenování zásady prostředí v aplikacích Office 365
@@ -218,7 +218,7 @@ StaffHub  | Týmy Staffhubu nepostupujte podle zásady pojmenování, ale zákla
 Exchange PowerShell | Rutiny Powershellu v Exchangi vyhovují zásadám vytváření názvů. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady pojmenování v název skupiny a alias skupiny (mailNickname).
 Rutiny Azure Powershellu pro Active Directory | Rutiny Azure Powershellu pro Active Directory jsou kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v názvech skupin a alias skupiny.
 Centra pro správu Exchange | Centra pro správu Exchange je kompatibilní s zásad pojmenování. Uživatelé dostanou odpovídající chybové zprávy se navrhované předpony a přípony a pro blokované zadejte vlastní slova, pokud není řídí zásady vytváření názvů v název skupiny a alias skupiny.
-Centrum pro správu Office 365 | Centrum pro správu Office 365 je kompatibilní s zásad pojmenování. Když uživatel vytvoří nebo názvy skupin úpravy, bude automaticky použito zásad vytváření názvů a uživatelé obdrží příslušné chyby při zadávání blokované zadejte vlastní slova. Centrum pro správu Office 365 ještě nezobrazí ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny.
+Centrum pro správu služeb Microsoft 365 | Centrum pro správu služeb Microsoft 365 je kompatibilní s zásad pojmenování. Když uživatel vytvoří nebo názvy skupin úpravy, bude automaticky použito zásad vytváření názvů a uživatelé obdrží příslušné chyby při zadávání blokované zadejte vlastní slova. Centrum pro správu služeb Microsoft 365 nezobrazí zatím ve verzi preview zásady pojmenování a nevrací vlastní zablokované slovo chyby, když uživatel zadá název skupiny.
 
 ## <a name="next-steps"></a>Další postup
 Tyto články poskytují další informace o skupinách Azure AD.

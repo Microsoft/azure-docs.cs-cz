@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883368"
 ---
 # <a name="what-is-translator-text-api"></a>Co je Translator Text API?
 
@@ -28,7 +28,7 @@ Translator Text API je součástí kolekce [rozhraní API služeb Azure Cognitiv
 
 Microsoft Translator je cloudová služba pro strojový překlad. Hlavní službou je Translator Text API, která se využívá v řadě produktů a služeb Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňuje šíření obsahu k cílové skupině po celém světě.
 
-Překlad řeči s využitím služby Translator Text API je k dispozici také prostřednictvím [služby Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Tato jednotná a plně přizpůsobitelná služba v sobě kombinuje funkce ze služeb Translator Speech API, Zpracování řeči Bingu a Custom Speech (Preview). Služba Speech nahrazuje službu Translator Speech API, která se 15. října 2019 vyřadí z provozu.
+Překlad řeči s využitím služby Translator Text API je k dispozici také prostřednictvím [služby Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/). Kombinuje funkce z rozhraní Translator Speech API a službě Custom Speech Service do plně přizpůsobitelné a sjednocené služby. Služba Speech nahrazuje službu Translator Speech API, která se 15. října 2019 vyřadí z provozu.
 
 ## <a name="language-support"></a>Podpora jazyků
 

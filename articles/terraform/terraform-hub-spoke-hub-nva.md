@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 6fd81403d7c58fc196326d360aeccea9354f1088
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4155a67f70ccc238c6046c07dded7f0214689617
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993516"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Kurz: Vytvoření zařízení virtuální sítě centra s využitím Terraformu v Azure
 
@@ -38,7 +38,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
-1. Přejděte na web [Azure Portal](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 

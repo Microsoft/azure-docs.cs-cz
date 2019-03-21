@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 703bf7425962ddcb5e7566f99c461ca37d237b68
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 14d763126cccadf8042da79b20d15e5c93a8ce62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094173"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -28,9 +28,9 @@ Pokud máte problémy při povolení ochrany pro virtuální počítače Hyper-V
 3. Zkontrolujte, jestli je spuštěná služba Správa virtuálních počítačů Hyper-V na hostitelích Hyper-V.
 4. Zkontrolovat problémy, které se zobrazují v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokoly aplikací a služeb** > **Microsoft** > **Windows**.
 5. Na virtuálním počítači hosta ověřte, že rozhraní WMI povolené a přístupné.
-  - [Další informace o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) základní testování služby WMI.
-  - [Řešení potíží s](https://aka.ms/WMiTshooting) rozhraní WMI.
-  - [Řešení potíží s](https://technet.microsoft.com/library/ff406382.aspx#H22) problémy s WMI skripty a službami.
+   - [Další informace o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) základní testování služby WMI.
+   - [Řešení potíží s](https://aka.ms/WMiTshooting) rozhraní WMI.
+   - [Řešení potíží s](https://technet.microsoft.com/library/ff406382.aspx#H22) problémy s WMI skripty a službami.
 6. Na virtuálním počítači hosta Ujistěte se, že je spuštěna nejnovější verzi integrační služby.
     - [Zkontrolujte](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , že máte nejnovější verzi.
     - [Zachovat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) nejnovější integrační služby.
@@ -41,9 +41,9 @@ Pokud máte problémy při povolení ochrany pro virtuální počítače Hyper-V
 
 1. Ujistěte se, že máte spuštěnou [nejnovější verzi](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) služby Site Recovery.
 2. Ověřte, zda replikace se pozastaví:
-  - Zkontrolujte stav virtuálního počítače v konzole Správce technologie Hyper-V.
-  - Pokud je důležité, klikněte pravým tlačítkem na virtuální počítač > **replikace** > **zobrazit stav replikace**.
-  - Pokud replikace se pozastaví, klikněte na tlačítko **obnovit replikaci**.
+   - Zkontrolujte stav virtuálního počítače v konzole Správce technologie Hyper-V.
+   - Pokud je důležité, klikněte pravým tlačítkem na virtuální počítač > **replikace** > **zobrazit stav replikace**.
+   - Pokud replikace se pozastaví, klikněte na tlačítko **obnovit replikaci**.
 3. Zkontrolujte, zda jsou spuštěny požadované služby. Pokud nejsou, je restartujte.
     - Pokud provádíte replikaci technologie Hyper-V bez nástroje VMM, zkontrolujte, jestli hostitel Hyper-V běží tyto služby:
         - Služba Správa virtuálních počítačů
@@ -65,10 +65,10 @@ Omezení šířky pásma sítě může mít vliv na replikaci. Řešení potíž
 2. Spustit [plánovače nasazení služby profiler](hyper-v-deployment-planner-run.md).
 3. Po spuštění profileru, postupujte [šířky pásma](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) a [úložiště](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) doporučení.
 4. Zkontrolujte [omezení četnost změn dat](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits). Pokud se zobrazí vysoké četnosti změn na virtuálním počítači dat, postupujte takto:
-  - Zaškrtněte, pokud se váš virtuální počítač označí pro resynchronizaci.
-  - Postupujte podle [tyto kroky](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) prozkoumat zdroje změn.
-  - Četnost změn může dojít, pokud soubory protokolů HRL delší než 50 % místa na disku. Pokud je to problém, zřídíte další úložný prostor pro všechny virtuální počítače, ve kterých k problému dochází.
-  - Zkontrolujte, že není pozastavené, že je replikace. Pokud se jedná, pokračuje v zápisu změny do souboru hrl, což může přispívat k jeho zvětšení velikosti.
+   - Zaškrtněte, pokud se váš virtuální počítač označí pro resynchronizaci.
+   - Postupujte podle [tyto kroky](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) prozkoumat zdroje změn.
+   - Četnost změn může dojít, pokud soubory protokolů HRL delší než 50 % místa na disku. Pokud je to problém, zřídíte další úložný prostor pro všechny virtuální počítače, ve kterých k problému dochází.
+   - Zkontrolujte, že není pozastavené, že je replikace. Pokud se jedná, pokračuje v zápisu změny do souboru hrl, což může přispívat k jeho zvětšení velikosti.
  
 
 ## <a name="critical-replication-state-issues"></a>Problémy se stavem důležité replikace
@@ -91,17 +91,17 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 1. Zkontrolujte, že je nainstalované a spuštěné nejnovější integrační služby.  Zkontrolujte, jestli jsou aktualizace dostupné spuštěním následujícího příkazu Powershellu řádku se zvýšenými oprávněními na hostiteli Hyper-V: **get-vm | vyberte název, stav, IntegrationServicesState**.
 2. Zkontrolujte, zda jsou služby VSS běží a je v pořádku:
-    - Ke kontrole služby, přihlaste se na virtuálním počítači hosta. Pak otevřete příkazový řádek správce a spusťte následující příkazy ke kontrole, jestli jsou všechny zapisovače VSS jsou v pořádku.
-        - **Vssadmin list writers**
-        - **Vssadmin list shadows**
-        - **Seznam poskytovatelů vssadmin**
-    - Zkontrolujte výstup. Pokud jsou zapisovače ve stavu selhání, postupujte takto:
-        - Zkontrolujte protokol událostí aplikace na virtuálním počítači aplikacevss nevyskytují chyby VSS. operace.
-    - Zkuste restartovat těchto služeb přidružený k zapisovač, který se nezdařilo:
-        - Stínová kopie svazku
-         - Azure Site Recovery VSS Provider
-    - Až to uděláte, počkejte několik hodin, které chcete zobrazit, pokud jsou snímky konzistentní vzhledem k úspěšně vygenerována.
-    - Jako poslední možnost akci restartování virtuálního počítače. To může vyřešit služby, které jsou ve stavu neodpovídá.
+   - Ke kontrole služby, přihlaste se na virtuálním počítači hosta. Pak otevřete příkazový řádek správce a spusťte následující příkazy ke kontrole, jestli jsou všechny zapisovače VSS jsou v pořádku.
+       - **Vssadmin list writers**
+       - **Vssadmin list shadows**
+       - **Seznam poskytovatelů vssadmin**
+   - Zkontrolujte výstup. Pokud jsou zapisovače ve stavu selhání, postupujte takto:
+       - Zkontrolujte protokol událostí aplikace na virtuálním počítači aplikacevss nevyskytují chyby VSS. operace.
+   - Zkuste restartovat těchto služeb přidružený k zapisovač, který se nezdařilo:
+     - Stínová kopie svazku
+       - Azure Site Recovery VSS Provider
+   - Až to uděláte, počkejte několik hodin, které chcete zobrazit, pokud jsou snímky konzistentní vzhledem k úspěšně vygenerována.
+   - Jako poslední možnost akci restartování virtuálního počítače. To může vyřešit služby, které jsou ve stavu neodpovídá.
 3. Zkontrolujte, že nemáte dynamických disků ve virtuálním počítači. To není podporováno pro snímky konzistentní. Můžete zkontrolovat v nástroji Správa disků (diskmgmt.msc).
 
     ![Dynamický disk](media/hyper-v-azure-troubleshoot/dynamic-disk.png)

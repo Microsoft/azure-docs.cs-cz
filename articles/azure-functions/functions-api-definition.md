@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076730"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve službě Azure Functions (preview)
 OpenAPI 2.0 (dříve Swagger) podpora metadat ve službě Azure Functions je funkce ve verzi preview, můžete použít k zápisu definici rozhraní OpenAPI 2.0 v aplikaci function app. Tento soubor pak můžete hostovat pomocí aplikace function app.
@@ -72,9 +72,9 @@ Následující tabulka představuje nastavení portálu Azure portal a odpovída
  Je nutné povolit hostování na portálu, dříve než povolíte správy zdrojového kódu k úpravě definice vašeho rozhraní API ze správy zdrojových kódů definice rozhraní API. Postupujte podle těchto pokynů:
 
 1. Přejděte do **definice rozhraní API (preview)** ve vašich nastavení aplikace function app.
-  1. Nastavte **zdroj definice rozhraní API** k **funkce**.
-  1. Klikněte na tlačítko **šablonu definic rozhraní API vygenerovat** a potom **Uložit** k vytvoření definice šablony pro úpravu později.
-  1. Poznamenejte si adresu URL definice rozhraní API a klíč.
+   1. Nastavte **zdroj definice rozhraní API** k **funkce**.
+   1. Klikněte na tlačítko **šablonu definic rozhraní API vygenerovat** a potom **Uložit** k vytvoření definice šablony pro úpravu později.
+   1. Poznamenejte si adresu URL definice rozhraní API a klíč.
 1. [Nastavení průběžné integrace a nasazování (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
 2. Upravit swagger.json ve správě zdrojového kódu v \site\wwwroot\.azurefunctions\swagger\swagger.json.
 

@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b61bf4f05f52b9d28ee09bb6c0de30544396e815
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407999"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091592"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Kurz: Nabízí vysoce dostupné databáze SQL
 
@@ -65,7 +65,7 @@ Postupujte podle kroků v této části nasadíte skupiny dostupnosti AlwaysOn s
 - Jedna skupina dostupnosti obsahující SQL a soubor sdílené složky s kopií clusteru virtuálních počítačů  
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **vlastní**a potom **nasazení šablony**.
 
@@ -156,7 +156,7 @@ Po SQL AlwaysOn, skupiny dostupnosti byla vytvořena, nakonfigurovat a přidat j
 > Projít tyto kroky na portálu user portal Azure Stack jako uživatel tenanta s předplatným nabízí funkce SQL serveru (Microsoft.SQLAdapter služby).
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Data \+ úložiště**a potom **SQL Database**.<br><br>Zadejte informace o vlastnosti databáze, včetně názvu, kolace, maximální velikost a předplatné, skupinu prostředků a umístění pro nasazení. 
 

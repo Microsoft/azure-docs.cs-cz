@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 724a91b6ba0be030a2281bce366e4378892df59b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392869"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011577"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -27,7 +27,7 @@ Architektura služby Azure network je klíčovou komponentou úspěšné nasazen
 
 - Nasazení SAP systémy místní. Z důvodu jejich velikosti tyto systémy momentálně nemůže být hostovaná v Azure. Příkladem je produkční systém SAP ERP, který běží na SQL serveru (jako je databáze) a vyžaduje další prostředky procesoru nebo paměti než virtuální počítače můžete zadat.
 - Na základě SAP HANA SAP systémy místně nasadili.
-- Nasazené systémy SAP na virtuálních počítačích. Tyto systémy můžou být vývoj, testování, izolovaného prostoru, nebo produkční instance pro některé aplikace založené na systému SAP NetWeaver, které můžete úspěšně nasazovat v Azure (na virtuálních počítačích), na základě poptávky spotřeby a paměti prostředků. Tyto systémy také může být založen na databáze, jako jsou SQL Server. Další informace najdete v tématu [SAP Support Poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533/E). A tyto systémy můžou být založené na databáze, jako jsou SAP HANA. Další informace najdete v tématu [platformách IaaS s certifikací SAP HANA](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+- Nasazené systémy SAP na virtuálních počítačích. Tyto systémy můžou být vývoj, testování, izolovaného prostoru, nebo produkční instance pro některé aplikace založené na systému SAP NetWeaver, které můžete úspěšně nasazovat v Azure (na virtuálních počítačích), na základě poptávky spotřeby a paměti prostředků. Tyto systémy také může být založen na databáze, jako jsou SQL Server. Další informace najdete v tématu [SAP Support Poznámka #1928533 – aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533/E). A tyto systémy můžou být založené na databáze, jako jsou SAP HANA. Další informace najdete v tématu [platformách IaaS s certifikací SAP HANA](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
 - Nasazený aplikační servery SAP v Azure (na virtuálních počítačích), které využívají SAP HANA v Azure (velké instance) v razítka velkých instancí Azure.
 
 Vytvoření hybridního prostředí SAP se čtyřmi nebo více různých scénářů nasazení je obvyklé. Existují také většinou zákazníka kompletní prostředí SAP, na kterých běží v Azure. Virtuální počítače budou výkonnější, roste počet zákazníků, které přesunout všechny svoje řešení SAP v Azure.
@@ -79,7 +79,7 @@ Rozdíly pro nasazení SAP v Azure jsou následující:
 - Architektura aplikací SAP je citlivější na latenci sítě než typické scénáře, kde data se přemisťují mezi místními a Azure.
 - Brána virtuální sítě má aspoň dvě připojení ExpressRoute. Obě připojení sdílet maximální šířka pásma pro příchozí data brány virtuální sítě.
 
-Latenci sítě mezi virtuálními počítači a velké Instance HANA jednotky může být vyšší než typické latence přenosu sítě virtuálních počítačů VM. Závisí na oblasti Azure, můžete hodnoty měří překročit round-trip latence 0,7 ms jsou klasifikovány jako podprůměrná v [SAP Poznámka #1100926 – nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E). Závisí na oblasti Azure a nástroje k přenosu latence sítě mezi virtuálním počítači Azure a velké Instance HANA jednotka měření, naměřenou latence může být až a kolem 2 milisekund. Nicméně zákazníci nasadit na základě SAP HANA produkční aplikace SAP úspěšně na velké Instance SAP HANA. Zajistěte, aby že důkladně otestovat vašich obchodních procesů ve velké Instance Azure HANA.
+Latenci sítě mezi virtuálními počítači a velké Instance HANA jednotky může být vyšší než typické latence přenosu sítě virtuálních počítačů VM. Závisí na oblasti Azure, můžete hodnoty měří překročit round-trip latence 0,7 ms jsou klasifikovány jako podprůměrná v [SAP Poznámka #1100926 – nejčastější dotazy: Výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E). Závisí na oblasti Azure a nástroje k přenosu latence sítě mezi virtuálním počítači Azure a velké Instance HANA jednotka měření, naměřenou latence může být až a kolem 2 milisekund. Nicméně zákazníci nasadit na základě SAP HANA produkční aplikace SAP úspěšně na velké Instance SAP HANA. Zajistěte, aby že důkladně otestovat vašich obchodních procesů ve velké Instance Azure HANA.
  
 Zajištění deterministické sítích s latencí mezi virtuálními počítači a velké Instance HANA brány virtuální sítě SKU je nezbytné. Na rozdíl od vzorů provozu mezi místními a virtuálními počítači můžete vyvíjet vzor provoz mezi virtuálními počítači a velké Instance HANA malou, avšak vysokou nárůstům požadavků a datové svazky přenášet. Pro zpracování takových nárůstem dobře, důrazně doporučujeme používat SKU brány UltraPerformance. Pro třídu typu II SKU velké Instance HANA je povinné použití SKU brány UltraPerformance jako bránu virtuální sítě.
 
@@ -113,7 +113,7 @@ Pro větší škálovatelnost síťové architektury:
 - Využívejte více virtuálních sítí pro jeden, větší SAP aplikační vrstvu.
 - Nasazení jedné samostatné virtuální sítě pro každý systém SAP nasazení, ve srovnání se sloučením tyto systémy SAP do samostatných podsítí v rámci stejné virtuální síti.
 
- Větší škálovatelnost sítě architektura pro SAP HANA v Azure (velké instance):
+  Větší škálovatelnost sítě architektura pro SAP HANA v Azure (velké instance):
 
 ![Nasazení aplikační vrstvě SAP přes více virtuálních sítí](./media/hana-overview-architecture/image4-networking-architecture.png)
 
@@ -132,12 +132,12 @@ Tři aspekty směrování sítě jsou důležité pro SAP HANA v Azure (velké i
 
 * SAP HANA v Azure (velké instance) jednotky mají přiřazenou IP adresu z rozsah adres fondu IP serveru, který jste odeslali. Další informace najdete v tématu [infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupné prostřednictvím ExpressRoute, který se připojuje k HANA v Azure (velké instance) virtuální sítě a předplatných Azure. Přidělit IP adresu z celkového počtu, rozsah adres fondu IP serveru přímo přiřazená jednotky hardwaru. Má *není* přiřazeném prostřednictvím překladu adres už nepotřebujeme, stejně jako v případě v prvním nasazení tohoto řešení. 
 
-> [!NOTE] 
+> [!NOTE]
 > K překonání omezení v přechodné směrování, jak je vysvětleno v prvních dvou seznam položek, použijte další komponenty pro směrování. Součásti, které slouží k překonání tohoto omezení může být:
-
+> 
 > * Reverzních proxy serverů pro směrování dat do a z. Například F5 BIG-IP, server NGINX pomocí Traffic Manageru nasazené v Azure jako virtuální brána firewall/přenosů směrování řešení.
 > * Pomocí [pravidla iptables tak](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) v virtuálního počítače s Linuxem umožňující směrování mezi místními umístěními a velké Instance HANA jednotky, nebo mezi jednotkami velká Instance HANA v různých oblastech.
-
+> 
 > Mějte na paměti, že implementaci a podporu pro vlastní řešení zahrnující třetích stran síťových zařízení nebo IPTables není k dispozici společností Microsoft. Podpora musí poskytnout dodavatel komponentu používanou nebo integrátor. 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>Připojení k Internetu velké instance HANA

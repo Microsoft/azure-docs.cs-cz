@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191721"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103804"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Rychlý start: Aktualizace aplikace v Azure Active Directory
 
@@ -60,24 +60,24 @@ Než klient získá přístup k webovému rozhraní API zveřejněnému aplikac�
    ![Aktualizace registrace aplikace](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. Budete přesměrováni na hlavní stránku registrace aplikace, která obsahuje stránku aplikace **Nastavení**. Postup přidání přihlašovacích údajů u webové aplikace:
-  1. Na stránce **Nastavení** vyberte část **Klíče**.
-  2. Přidání certifikátu:
-    - Vyberte **Odeslat veřejný klíč**.
-    - Vyberte soubor, který chcete nahrát. Musí jít o jeden z následujících typů souboru: .cer, .pem nebo .crt.
-  - Přidání hesla:
-    - Přidejte svému klíči popis.
-    - Vyberte dobu trvání.
-    - Vyberte **Uložit**. Po uložení změn konfigurace bude krajní pravý sloupec obsahovat hodnotu klíče. **Nezapomeňte si klíč zkopírovat**, abyste ho mohli použít v kódu klientské aplikace, protože jinak se k němu už nedostanete, když tuto stránku opustíte.
+   1. Na stránce **Nastavení** vyberte část **Klíče**.
+   1. Přidání certifikátu:
+      - Vyberte **Odeslat veřejný klíč**.
+      - Vyberte soubor, který chcete nahrát. Musí jít o jeden z následujících typů souboru: .cer, .pem nebo .crt.
+   1. Přidání hesla:
+      - Přidejte svému klíči popis.
+      - Vyberte dobu trvání.
+      - Vyberte **Uložit**. Po uložení změn konfigurace bude krajní pravý sloupec obsahovat hodnotu klíče. **Nezapomeňte si klíč zkopírovat**, abyste ho mohli použít v kódu klientské aplikace, protože jinak se k němu už nedostanete, když tuto stránku opustíte.
 
 5. Přidání oprávnění pro přístup k rozhraní API prostředků z klienta
-  1. Na stránce **Nastavení** vyberte část **Požadovaná oprávnění** a potom vyberte **Přidat**.
-  1. Zvolte **Vyberte rozhraní API**, abyste zvolili typ prostředků, ze kterých chcete vybírat.
-  1. Projděte si seznam dostupných rozhraní API nebo použijte vyhledávací pole a vyberte si v adresáři z dostupných aplikací prostředků, které zveřejňují webové rozhraní API. Vyberte prostředek, o který máte zájem, a potom klikněte na **Vybrat**.
-  1. Na stránce **Povolit přístup** vyberte oprávnění aplikace a/nebo delegovaná oprávnění, které aplikace potřebuje při přístupu k rozhraní API.
+   1. Na stránce **Nastavení** vyberte část **Požadovaná oprávnění** a potom vyberte **Přidat**.
+   1. Zvolte **Vyberte rozhraní API**, abyste zvolili typ prostředků, ze kterých chcete vybírat.
+   1. Projděte si seznam dostupných rozhraní API nebo použijte vyhledávací pole a vyberte si v adresáři z dostupných aplikací prostředků, které zveřejňují webové rozhraní API. Vyberte prostředek, o který máte zájem, a potom klikněte na **Vybrat**.
+   1. Na stránce **Povolit přístup** vyberte oprávnění aplikace a/nebo delegovaná oprávnění, které aplikace potřebuje při přístupu k rozhraní API.
    
-  ![Aktualizace registrace aplikace – rozhraní API pro oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![Aktualizace registrace aplikace – rozhraní API pro oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![Aktualizace registrace aplikace – povolení oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![Aktualizace registrace aplikace – povolení oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Až budete hotoví, vyberte na stránce **Povolit přístup** tlačítko **Vybrat** a pak na stránce **Přidat přístup přes rozhraní API** vyberte tlačítko **Hotovo**. Budete přesměrováni na stránku **Požadovaná oprávnění**, kde na seznamu rozhraní API uvidíte nový prostředek.
 
@@ -98,8 +98,8 @@ V následující části se dozvíte, jak zveřejnit obory přístupu úpravou m
 4. Budete přesměrováni na hlavní stránku registrace aplikace, která otevře stránku **Nastavení**. Kliknutím na **Manifest** se ze stránky registrace aplikace přepněte na stránku **Upravit manifest**. Otevře se editor manifestu na webovém základu, který vám umožní na webu Azure Portal manifest **Upravit**. Volitelně můžete kliknout na **Stáhnout**, upravit si ho místně a potom ho **Nahrát** zpět do aplikace.
 5. V tomto příkladu zveřejníme v našem prostředku či rozhraní API nový obor s názvem `Employees.Read.All` tak, že přidáme do kolekce `oauth2Permissions` následující prvek JSON. Existující obor `user_impersonation` získáte ve výchozím nastavení během registrace. Obor `user_impersonation` umožňuje klientské aplikaci pod identitou přihlášeného uživatele požádat o oprávnění pro přístup k prostředku. Nezapomeňte za existující obor `user_impersonation` přidat čárku a změnit hodnoty vlastností tak, aby vyhovovaly potřebám prostředku. 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ V následující části se dozvíte, jak zveřejnit obory přístupu úpravou m
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > `id` Hodnota musí být generována prostřednictvím kódu programu nebo pomocí identifikátoru GUID generování nástroje, jako [Guidgen –](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
-  >
-  > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
+   > [!NOTE]
+   > `id` Hodnota musí být generována prostřednictvím kódu programu nebo pomocí identifikátoru GUID generování nástroje, jako [Guidgen –](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
+   >
+   > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
 
 6. Jakmile budete hotoví, klikněte na **Uložit**. Webové rozhraní API je teď nakonfigurované k použití jinými aplikacemi v adresáři.
 
-  ![Aktualizace registrace aplikace](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![Aktualizace registrace aplikace](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>Ověření, že je webové rozhraní API zveřejněné ostatním aplikacím v tenantovi
 
@@ -130,7 +130,7 @@ V následující části se dozvíte, jak zveřejnit obory přístupu úpravou m
 
 3. Na stránce **Povolit přístup** byste měli vidět nový obor, který je k dispozici pro žádosti o oprávnění klientů.
 
-  ![Zobrazená nová oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![Zobrazená nová oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>Další informace o manifestu aplikace
 
@@ -211,9 +211,9 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 3. V levém navigačním podokně klikněte na službu **Azure Active Directory**, klikněte na **Registrace aplikací** a potom najděte a klikněte na aplikaci, kterou chcete nakonfigurovat. Budete přesměrováni na hlavní stránku registrace aplikace, která otevře stránku **Nastavení**.
 4. Kliknutím na **Manifest** se ze stránky registrace aplikace přepněte na stránku **Upravit manifest**. Otevře se editor manifestu na webovém základu, který vám umožní na webu Azure Portal manifest **Upravit**. Najděte hodnotu „oauth2AllowImplicitFlow“ a nastavte ji na „true“. Ve výchozím nastavení je nastavená na „false“.
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. Aktualizovaný manifest uložte. Po uložení je webové rozhraní API nakonfigurované k používání implicitního udělení OAuth 2.0 pro ověřování uživatelů.
 
 ## <a name="next-steps"></a>Další postup

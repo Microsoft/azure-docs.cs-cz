@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 991032a603844e697c122d8a26923f4c95a4a78c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170220"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -66,9 +66,13 @@ Výše uvedená stránka také obsahuje pokyny k povolení monitorování více 
 
 ## <a name="using-the-solution"></a>Použití řešení
 
-Když přidáte řešení do pracovního prostoru, na dlaždici Azure SQL Analytics je přidána do pracovního prostoru a zobrazí se v přehledu. Na dlaždici se zobrazuje počet databáze, elastické fondy, spravované instance a databáze Azure SQL v Managed instance, které přijímá telemetrická data diagnostiky z řešení.
+Když přidáte řešení do pracovního prostoru, na dlaždici Azure SQL Analytics je přidána do pracovního prostoru a zobrazí se v přehledu. Vyberte zobrazení souhrnu odkaz k načtení obsahu dlaždice.
 
-![Dlaždici Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile.png)
+![Azure SQL Analytics souhrnnou dlaždici](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+Po načtení dlaždice zobrazuje počet databáze, elastické fondy, spravované instance a databáze Azure SQL v Managed instance, které přijímá telemetrická data diagnostiky z řešení.
+
+![Dlaždici Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 Řešení poskytuje dvě samostatné zobrazení – jeden pro monitorování databází Azure SQL Database a elastické fondy a ostatních zobrazeních monitorování Managed Instance a databáze ve spravovaných instancí.
 

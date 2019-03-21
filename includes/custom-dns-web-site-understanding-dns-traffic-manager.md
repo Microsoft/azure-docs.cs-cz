@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f42a97cdd74d360bc047ef561cbe626d526f9e4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124474"
 ---
 V systému DNS (Domain Name) slouží k vyhledání věci na Internetu. Například pokud v prohlížeči zadejte adresu nebo kliknutím na odkaz na webové stránce, používá DNS přeložit doménu na IP adresu. IP adresa je ze například adresu ulice, ale nejedná se o velmi lidské popisný. Například je mnohem jednodušší pamatovat název DNS jako **contoso.com** než adresu IP, jako je například 192.168.1.88 nebo 2001:0:4137:1f67:24a2:3888:9cce:fea3 mějte na paměti.
 
@@ -27,12 +27,10 @@ Při vytváření na webu Azure k webu se automaticky přiřadí název DNS. Ten
 Existují také typy více záznamů, každá má své vlastní funkce a omezení, ale pro moduly websites nakonfigurovány jako koncové body Traffic Manageru, jsme pouze pro vás o některém; *CNAME* záznamy.
 
 ### <a name="cname-or-alias-record"></a>Záznam CNAME nebo Alias
-Záznam CNAME, který se mapuje *konkrétní* název DNS, jako **mail.contoso.com** nebo **www.contoso.com**, na jiný název domény (kanonické). V případě Azure Websites pomocí Traffic Manageru, je název domény canonical  **&lt;myapp >. trafficmanager.net** název domény vašeho profilu Traffic Manageru. Po vytvoření záznamu CNAME vytvoří alias pro  **&lt;myapp >. trafficmanager.net** název domény. Záznam CNAME se přeloží IP adresu vašeho  **&lt;myapp >. trafficmanager.net** název domény automaticky, takže pokud se změní IP adresu webu, není nutné provádět žádnou akci.
+Záznam CNAME, který se mapuje *konkrétní* název DNS, jako **mail.contoso.com** nebo **www\.contoso.com**, na jiný název domény (kanonické). V případě Azure Websites pomocí Traffic Manageru, je název domény canonical  **&lt;myapp >. trafficmanager.net** název domény vašeho profilu Traffic Manageru. Po vytvoření záznamu CNAME vytvoří alias pro  **&lt;myapp >. trafficmanager.net** název domény. Záznam CNAME se přeloží IP adresu vašeho  **&lt;myapp >. trafficmanager.net** název domény automaticky, takže pokud se změní IP adresu webu, není nutné provádět žádnou akci.
 
 Jakmile přenos dorazí na Traffic Manager, pak se směruje provoz na svůj web pomocí metody, které je nakonfigurována pro vyrovnávání zatížení. Toto je pro návštěvníky na svůj web zcela transparentní. Zobrazí se pouze název vlastní domény ve svém prohlížeči.
 
 > [!NOTE]
-> Některé domény registrátorů umožňují pouze pro mapování subdomény, při použití záznam CNAME, jako například **www.contoso.com**a není kořenový názvy, například **contoso.com**. Další informace o záznamech CNAME najdete v tématu v dokumentaci od vašeho registrátora <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia položka záznamu CNAME</a>, nebo <a href="https://tools.ietf.org/html/rfc1035">názvy domén IETF – implementace a specifikace</a> dokumentu.
-> 
-> 
+> Některé domény registrátorů umožňují pouze pro mapování subdomény, při použití záznam CNAME, jako například **www\.contoso.com**a není kořenový názvy, například **contoso.com**. Další informace o záznamech CNAME najdete v tématu v dokumentaci od vašeho registrátora <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia položka záznamu CNAME</a>, nebo <a href="https://tools.ietf.org/html/rfc1035">názvy domén IETF – implementace a specifikace</a> dokumentu.
 

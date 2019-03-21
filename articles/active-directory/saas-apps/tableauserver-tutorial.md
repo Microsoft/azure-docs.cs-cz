@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0a8f6ce325dd087aec5e055e09e20e7de62a40
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1b48d3bced2061dbe7e8ba26e2c6738e44ba4b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Integrace Azure Active Directory s Tableau Server
 
@@ -171,7 +171,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     b. Zaškrtněte políčko z **povolit ověřování SAML pro server**.
 
-    c. Tableau Server návratová adresa URL – adresa URL, Tableau Server uživatelé budou přistupovat k, jako například http://tableau_server. Pomocí http://localhost se nedoporučuje. Pomocí adresy URL s koncovým lomítkem (například http://tableau_server/) se nepodporuje. Kopírování **Tableau Server návratová adresa URL** a vložte ho do služby Azure AD **přihlašovací adresa URL** textového pole v **Tableau Server domény a adresy URL** oddílu.
+    c. Tableau Server návratová adresa URL – adresa URL, Tableau Server uživatelé budou přistupovat k, jako například <http://tableau_server>. Pomocí `http://localhost` se nedoporučuje. Pomocí adresy URL s koncovým lomítkem (například `http://tableau_server/`) se nepodporuje. Kopírování **Tableau Server návratová adresa URL** a vložte ho do služby Azure AD **přihlašovací adresa URL** textového pole v **Tableau Server domény a adresy URL** oddílu.
 
     d. SAML entity ID – entity ID jednoznačně identifikuje Tableau Server instalace pro zprostředkovatele identity. Můžete zadat adresu URL svého Tableau Server znovu sem, pokud chcete, můžete, ale nemusí být vaše adresa URL serveru Tableau. Kopírování **SAML entity ID** a vložte ho do služby Azure AD **identifikátor** textového pole v **Tableau Server domény a adresy URL** oddílu.
 
@@ -205,7 +205,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.

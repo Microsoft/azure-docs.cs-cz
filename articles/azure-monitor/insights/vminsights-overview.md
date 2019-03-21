@@ -11,24 +11,24 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2019
+ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004583"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (preview)?
 
-Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Služba analyzuje výkonu a stavu systému Windows a virtuální počítače s Linuxem, monitorování svých procesů a jejich závislosti na jiných zdrojů a externí procesů. 
+Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkonu a stavu systému Windows a virtuální počítače s Linuxem a monitoruje jejich procesy a závislosti na jiných zdrojů a externí procesů. 
 
 Azure Monitor pro virtuální počítače jako řešení, zahrnuje podporu pro monitorování výkonu a používání závislosti virtuálních počítačů, které jsou hostované v místním prostředí nebo jiného zprostředkovatele cloudu. Tři klíčové funkce poskytovat podrobnější informace:
 
 * **Logické součásti virtuálních počítačů Azure, který spustí Windows a Linuxem**: Se měří podle kritérií stavu předem nakonfigurované a že vás upozornit, když je splněna podmínka Vyhodnocená.  
 
-* **Předem definované, grafy výkonu vzroste zájem o**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
+* **Předdefinované populárních grafy výkonu**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
 
 * **Mapa závislostí**: Zobrazí vzájemně propojených součástí virtuálního počítače z různých skupin prostředků a předplatných.  
 
@@ -39,7 +39,7 @@ Funkce jsou uspořádané do tří perspektiv:
 * Mapa
 
 >[!NOTE]
->V současné době funkce stavu nabízí pouze pro Azure virtual machines a virtual machine scale sets. Výkon a mapování funkce podporují virtuální počítače Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
+>V současné době funkce stavu nabízí pouze pro Azure virtual machines a virtual machine scale sets. Výkon a funkce mapování podporují virtuální počítače Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
 
 Integrace s protokoly Azure monitoru poskytuje výkonné agregace a filtrování, a to analyzovat trendy v datech v čase. Tyto úlohy komplexní monitorování není možné dosáhnout s Azure Monitor nebo Service Map samostatně.  
 
@@ -54,13 +54,14 @@ Pro virtuální počítače Azure Monitor dokáže zajistit předvídatelný vý
 
 ## <a name="data-usage"></a>Využití dat 
 
-Při nasazení Azure Monitor pro virtuální počítače, data, která se shromažďují ve vašich virtuálních počítačů je ingestuje a uložené ve službě Azure Monitor. Na ceny, který je publikovaný na základě [stránce s cenami Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/), účtuje se pro monitorování Azure pro virtuální počítače:
+Při nasazení Azure Monitor pro virtuální počítače, data, která se shromažďují ve vašich virtuálních počítačů je ingestuje a uložené ve službě Azure Monitor. Kritéria metrik stavu se ukládají ve službě Azure Monitor, databáze časových řad, shromažďovat data o výkonu a závislostí se ukládají v pracovním prostoru Log Analytics. Na ceny, který je publikovaný na základě [stránce s cenami Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/), účtuje se pro monitorování Azure pro virtuální počítače:
+
 * Data, která má ingestují a ukládají.
 * Počet metrik stavu kritéria, časových řad, která jsou monitorovaná.
 * Pravidla výstrah, které jsou vytvořeny.
 * Oznámení, které se odesílají. 
 
-Velikost protokolu se liší podle délky řetězce čítačů a můžete zvýšit počet logických disků a síťových adaptérů. Pokud už máte pracovní prostor a tyto čítače shromažďují, jsou použity žádné duplicitní poplatky. Pokud už používáte řešení Service Map, je jediná změna, který se zobrazí data další připojení, která je odeslána do Azure monitoru.
+Velikost protokolu se liší podle délky řetězce čítačů výkonu a můžete zvýšit počet logických disků a síťových adaptérů přidělí virtuálnímu počítači. Pokud už máte pracovní prostor a tyto čítače shromažďují, jsou použity žádné duplicitní poplatky. Pokud už používáte řešení Service Map, je jediná změna, který se zobrazí data další připojení, která je odeslána do Azure monitoru.
 
 ## <a name="next-steps"></a>Další postup
 Informace o tom požadavky a metody, které vám pomohou monitorovat virtuální počítače, projděte si [nasazení Azure Monitor pro virtuální počítače](vminsights-onboard.md).

@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 21f59ad03f2ff91b3c33675b0994b7f565bf5031
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f4afd83e31cf724e734b4e86045f8404e65753c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563197"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088022"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj C# modul IoT Edge a nasazení simulovaného zařízení
 
@@ -277,15 +277,15 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 
 10. Přidejte do manifestu nasazení dvojče modulu **CSharpModule**. Vložte následující obsah JSON do dolní části oddílu **modulesContent** za dvojče modulu **$edgeHub**: 
 
-   ```json
+    ```json
        "CSharpModule": {
            "properties.desired":{
                "TemperatureThreshold":25
            }
        }
-   ```
+    ```
 
-   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-csharp-module/module-twin.png)
+    ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-csharp-module/module-twin.png)
 
 11. Uložte soubor deployment.template.json.
 

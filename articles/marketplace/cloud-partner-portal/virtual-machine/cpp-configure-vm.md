@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183467"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833497"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálních počítačů hostovaných v Azure
 
@@ -28,7 +28,8 @@ Tento článek vysvětluje, jak upravit velikost, aktualizovat a generalizace vi
 
 ## <a name="sizing-the-vhds"></a>Změna velikosti virtuálních pevných disků
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Pokud jste vybrali některé virtuální počítače předem nakonfigurované s operačním systémem (a volitelně další služby), pak již mít vyberou standardní velikost virtuálního počítače Azure, jak je popsáno v [skladové položky virtuálních počítačů kartu](./cpp-skus-tab.md).  Spuštění řešení s předem nakonfigurované operačním systémem je doporučený postup.  Ale operační systém při instalaci ručně, pak jste musí velikost primární virtuální pevný disk ve vaší imagi virtuálního počítače:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+Pokud jste vybrali některé virtuální počítače předem nakonfigurované s operačním systémem (a volitelně další služby), pak již mít vyberou standardní velikost virtuálního počítače Azure, jak je popsáno v [skladové položky virtuálních počítačů kartu](./cpp-skus-tab.md).  Spuštění řešení s předem nakonfigurované operačním systémem je doporučený postup.  Ale operační systém při instalaci ručně, pak jste musí velikost primární virtuální pevný disk ve vaší imagi virtuálního počítače:
 
 - Pro Windows, operačního systému virtuálního pevného disku by měl být vytvořen jako 127-128 GB virtuální pevný disk pevného formátu. 
 - Pro Linux, tento virtuální pevný disk by měl být vytvořen jako 30 – 50 GB virtuální pevný disk pevného formátu.
@@ -44,7 +45,7 @@ Základní Image operačního systému virtuálních počítačů obsahují nejn
 
 Pro Windows Server 2016, spusťte **vyhledávat aktualizace** příkazu.  V opačném případě pro starší verze systému Windows, naleznete v tématu [jak získat aktualizace pomocí služby Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows update automaticky nainstaluje nejnovější kritické a důležité aktualizace.
 
-Pro distribuce Linuxu aktualizace se běžně stahují a instalují přes nástroje příkazového řádku nebo grafické nástroje.  Například, Ubuntu Linux poskytuje [apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) příkazu a [Update Manager](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) nástroje pro aktualizaci operačního systému.
+Pro distribuce Linuxu aktualizace se běžně stahují a instalují přes nástroje příkazového řádku nebo grafické nástroje.  Například, Ubuntu Linux poskytuje [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) příkazu a [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) nástroje pro aktualizaci operačního systému.
 
 
 ## <a name="perform-additional-security-checks"></a>Provedení dalších kontrol zabezpečení
@@ -72,7 +73,7 @@ Disky s operačním systémem Windows jsou zobecněn pomocí [nástroje sysprep]
 > [!WARNING]
 >  Protože aktualizace může běžet automaticky, až spustíte sysprep, měli byste vypnout virtuální počítač, dokud je nasazená.  Toto vypnutí zabrání následné aktualizace v provádění změn instancí operačního systému virtuálního pevného disku nebo služby nainstalovány.
 
-Další informace o spuštění příkazu sysprep najdete v článku [kroky pro generalizaci virtuálního pevného disku] ()https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+Další informace o spuštění příkazu sysprep najdete v tématu [postup generalizace virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
 
 ### <a name="linux"></a>Linux
 

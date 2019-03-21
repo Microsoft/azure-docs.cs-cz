@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106471"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního
 
@@ -93,15 +93,15 @@ Pokud nelze získat přístup k účtu Azure Active Directory (Azure AD), je mo�
 
 - **Resetování hesla pomocí kódu z vaší ověřovací aplikací.** Přijímá náhodného zdrojového kódu, který poskytuje ověřování aplikace. Pokud správce zapnul prostředí informace o zabezpečení, najdete další informace o nastavení služby pro poskytnout kód v ověřovací aplikaci [nastavení bezpečnostní údaje pro použití ověřování aplikace (preview)](security-info-setup-auth-app.md) článku. Pokud ještě není při použití bezpečnostní údaje, najdete další informace o nastavení služby pro poskytnout kód v ověřovací aplikaci [nastavit účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) článku.
 
-    1. Vyberte **zadejte kód z aplikace authenticator**a pak vyberte **odeslat oznámení**.
+  1. Vyberte **zadejte kód z aplikace authenticator**a pak vyberte **odeslat oznámení**.
 
-    2. Otevřete aplikaci authenticator, zadejte ověřovací kód účtu do pole a pak vyberte **Další**.
+  2. Otevřete aplikaci authenticator, zadejte ověřovací kód účtu do pole a pak vyberte **Další**.
 
-    3. Zadejte a potvrďte nové heslo a potom vyberte **Dokončit**.
+  3. Zadejte a potvrďte nové heslo a potom vyberte **Dokončit**.
 
-    4. Jakmile se zobrazí zpráva oznamující, že vaše heslo se resetovalo, můžete přihlásit k vašemu účtu pomocí nového hesla.
+  4. Jakmile se zobrazí zpráva oznamující, že vaše heslo se resetovalo, můžete přihlásit k vašemu účtu pomocí nového hesla.
         
-    Pokud pořád nemáte přístup k účtu, měli byste požádat správce vaší organizace. o další pomoc.
+     Pokud pořád nemáte přístup k účtu, měli byste požádat správce vaší organizace. o další pomoc.
 
 Po resetování hesla, může se zobrazit potvrzovací e-mail odeslaný z účtu, jako je "Microsoft jménem společnosti \< *Vaše_organizace*>." Pokud získáte podobně jako e-mailu, ale nebyla nedávno resetování hesla, musíte okamžitě požádat správce vaší organizace.
 
@@ -113,7 +113,7 @@ Pokud chcete změnit heslo, to zvládnete prostřednictvím portálu služeb Off
 
 Tuto metodu použijte, pokud obvykle přistupujete k vaší aplikace prostřednictvím portálu služeb Office:
 
-1. Přihlaste se k vaší [účet Office 365](https://www.office.com), pomocí stávajícího hesla.
+1. Přihlaste se k vaší [účet Office 365](https://portal.office.com), pomocí stávajícího hesla.
 
 2. Vyberte svůj profil vpravo nahoře a pak vyberte **zobrazit účet**.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997011"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformovat data pomocí Pig aktivity ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,6 +82,7 @@ Aktivita HDInsight Pig ve službě Data Factory [kanálu](data-factory-create-pi
 ```
 
 ## <a name="syntax-details"></a>Podrobnosti o syntaxi
+
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | jméno |Název aktivity |Ano |
@@ -90,7 +91,7 @@ Aktivita HDInsight Pig ve službě Data Factory [kanálu](data-factory-create-pi
 | vstupy |Jeden nebo více vstupů spotřebovávané aktivitou Pig |Ne |
 | výstupy |Jeden nebo více výstupů produkované aktivitou Pig |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
-| skript |Zadejte vložený skript Pig |Ne |
+| script |Zadejte vložený skript Pig |Ne |
 | Cesta ke skriptu |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
@@ -124,7 +125,7 @@ Chcete-li spustit tento skript Pig v kanálech Data Factory, proveďte následuj
 1. Vytvoření propojené služby pro registraci [vlastní HDInsight výpočetní cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurovat [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Pojmenujme tuto propojenou službu **HDInsightLinkedService**.
 2. Vytvoření [propojená služba](data-factory-azure-blob-connector.md) ke konfiguraci připojení k hostování dat úložiště objektů Blob v Azure. Pojmenujme tuto propojenou službu **StorageLinkedService**.
 3. Vytvoření [datových sad](data-factory-create-datasets.md) odkazující na vstupní a výstupní data. Pojmenujme vstupní datová sada **PigSampleIn** a výstupní datovou sadu **PigSampleOut**.
-4. Zkopírujte tento dotaz Pig v souboru nakonfigurovali v kroku #2 Azure Blob Storage. Pokud Azure storage, který je hostitelem dat se liší od jednoho, který je hostitelem soubor dotazu, vytvořte samostatné služby propojené služby Azure Storage. Odkazují na propojenou službu v konfiguraci aktivity. Použijte ** scriptPath ** pro zadání cesty k souboru skriptu pig a **scriptLinkedService**. 
+4. Zkopírujte tento dotaz Pig v souboru nakonfigurovali v kroku #2 Azure Blob Storage. Pokud Azure storage, který je hostitelem dat se liší od jednoho, který je hostitelem soubor dotazu, vytvořte samostatné služby propojené služby Azure Storage. Odkazují na propojenou službu v konfiguraci aktivity. Použití **scriptPath** chcete zadat cestu k souboru skriptu pig a **scriptLinkedService**. 
    
    > [!NOTE]
    > Můžete také poskytnout vložený skript Pig v definici aktivity pomocí **skript** vlastnost. Ale tento přístup nedoporučuje jako všechny speciální znaky ve skriptu musí být uvozena a může způsobit problémy ladění. Osvědčeným postupem je postupujte podle kroku #4.

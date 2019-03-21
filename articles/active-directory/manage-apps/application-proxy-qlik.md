@@ -14,12 +14,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855cf81dbf24b0662048f69061ca85b72ff5f670
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12e36c49d8c4db60302d4b72dfa81ea4aceec77b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107385"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik Sense 
 Azure Active Directory Application Proxy a Qlik Sense uzavřeli partnerství s společně k zajištění, že budete moct snadno použít k poskytnutí vzdáleného přístupu pro vaše nasazení Qlik Sense Proxy aplikací.  
@@ -41,13 +41,13 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 2. Vyberte **Azure Active Directory** > **podnikové aplikace**. 
 3. Vyberte **přidat** v horní části okna. 
 4. Vyberte **On-premises application**. 
-5.       Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte následující pokyny pro nastavení: 
-    - **Interní adresa URL**: Tato aplikace by měla mít interní adresa URL adresy URL QlikSense samotné. Například **https&#58;//demo.qlikemm.com:4244** 
-    - **Metoda předběžného ověřování služby**: Azure Active Directory (doporučuje se ale nevyžadováno) 
-1.       Vyberte **přidat** v dolní části okna. Přidá se vaše aplikace a otevře se nabídka rychlý start. 
-2.       V nabídce rychlý start vyberte **přiřadit uživatele pro testování**, a přidejte aspoň jednoho uživatele k aplikaci. Ujistěte se, že testovacího účtu má přístup k místní aplikaci. 
-3.       Vyberte **přiřadit** se uložit přiřazení uživatelských testu. 
-4.       (Volitelné) V okně správy aplikace vyberte jednotného přihlašování. Zvolte **omezeného delegování protokolu Kerberos** z rozevírací nabídky a zadejte požadovaná pole na základě vaší konfigurace Qlik. Vyberte **Uložit**. 
+5. Vyplňte požadovaná pole s informacemi o novou aplikaci. Použijte následující pokyny pro nastavení: 
+   - **Interní adresa URL**: Tato aplikace by měla mít interní adresa URL adresy URL QlikSense samotné. Například **https&#58;//demo.qlikemm.com:4244** 
+   - **Metoda předběžného ověřování služby**: Azure Active Directory (doporučuje se ale nevyžadováno) 
+1. Vyberte **přidat** v dolní části okna. Přidá se vaše aplikace a otevře se nabídka rychlý start. 
+2. V nabídce rychlý start vyberte **přiřadit uživatele pro testování**, a přidejte aspoň jednoho uživatele k aplikaci. Ujistěte se, že testovacího účtu má přístup k místní aplikaci. 
+3. Vyberte **přiřadit** se uložit přiřazení uživatelských testu. 
+4. (Volitelné) V okně správy aplikace vyberte jednotného přihlašování. Zvolte **omezeného delegování protokolu Kerberos** z rozevírací nabídky a zadejte požadovaná pole na základě vaší konfigurace Qlik. Vyberte **Uložit**. 
 
 ### <a name="application-2"></a>Aplikace #2: 
 Postupujte stejným způsobem jako u aplikace č. 1, s následujícími výjimkami: 

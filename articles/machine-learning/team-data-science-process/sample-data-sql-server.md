@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4be3787df0c914762e02a2fa7ead870cbf945452
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455492"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897074"
 ---
 # <a name="heading"></a>Ukázková data v SQL serveru v Azure
 
 Tento článek ukazuje, jak ukázková data uložená na SQL serveru v Azure pomocí jazyka SQL nebo programovací jazyk Python. Také ukazuje, jak přesunout jen Vzorkovaná data do Azure Machine Learning uložením do souboru, pak ho nahrát do objektu blob Azure a jeho načtením do Azure Machine Learning Studio.
 
-Použití Pythonu vzorkování [pyodbc](https://code.google.com/p/pyodbc/) ODBC knihovny pro připojení k SQL serveru v Azure a [Pandas](http://pandas.pydata.org/) knihovny provedete vzorkování.
+Použití Pythonu vzorkování [pyodbc](https://code.google.com/p/pyodbc/) ODBC knihovny pro připojení k SQL serveru v Azure a [Pandas](https://pandas.pydata.org/) knihovny provedete vzorkování.
 
 > [!NOTE]
 > Ukázkový kód SQL v tomto dokumentu se předpokládá, že data jsou v systému SQL Server v Azure. Pokud není, podívejte se na [přesun dat do SQL serveru v Azure](move-sql-server-virtual-machine.md) najdete pokyny, jak přesunout data do SQL serveru v Azure.
@@ -71,7 +71,7 @@ Tato část ukazuje, jak pomocí [pyodbc knihovny](https://code.google.com/p/pyo
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas](http://pandas.pydata.org/) knihovny v jazyce Python nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte do datové Pandas 0,1 % ukázková data z tabulky ve službě Azure SQL database:
+[Pandas](https://pandas.pydata.org/) knihovny v jazyce Python nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte do datové Pandas 0,1 % ukázková data z tabulky ve službě Azure SQL database:
 
     import pandas as pd
 

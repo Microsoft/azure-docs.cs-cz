@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a242e2419c64b0b80665aa2a8859f73143210bab
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102396"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Federace prostředí jedné doménové struktury služby AD do cloudu
 
@@ -83,7 +83,7 @@ Pokud chcete dokončit vytváření virtuálního počítače, je potřeba dokon
 
 1. Správce technologie Hyper-V, dvakrát klikněte na virtuální počítač
 2. Klikněte na tlačítko Start.
-3.  Jste vyzváni k "Stisknutím libovolné klávesy pro spuštění z CD nebo DVD". Pokračujte a udělat.
+3. Jste vyzváni k "Stisknutím libovolné klávesy pro spuštění z CD nebo DVD". Pokračujte a udělat.
 4. V nabídce start systému Windows Server do obrazovky vyberte svůj jazyk a klikněte na tlačítko **Další**.
 5. Klikněte na tlačítko **nainstalovat**.
 6. Zadejte klíč licence a klikněte na tlačítko **Další**.
@@ -281,9 +281,9 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.
-![Ověření](media/tutorial-password-hash-sync/verify1.png)
+   ![Ověření](media/tutorial-password-hash-sync/verify1.png)
 
 Máte teď úspěšně nastavení hybridního prostředí identit, můžete použít k testování a seznamte se s co Azure může nabídnout.
 

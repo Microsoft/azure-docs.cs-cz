@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5f421c8949efae5a2488d5bf156a5d3571401bcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996442"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -25,8 +25,8 @@ Další informace o modulu runtime IoT Edge najdete v tématu [pochopení runtim
 
 V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
 
->[!NOTE]
-Použití kontejnerů Linuxu v systémech Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
+> [!NOTE]
+> Použití kontejnerů Linuxu v systémech Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,6 +52,8 @@ Další informace o co je zahrnuté v nejnovější verzi služby IoT Edge najde
 
 Azure IoT Edge se může spolehnout [OCI kompatibilní](https://www.opencontainers.org/) modul kontejneru. Pro produkční scénáře použití modulu Moby součástí instalační skript pro spouštění kontejnerů Windows na zařízení s Windows. Pro vývoj a testování, kontejnery Linuxu můžete spustit na zařízení s Windows, ale je potřeba nainstalovat a nakonfigurovat modul container před instalací IoT Edge. Obou scénářích najdete v následující části pro požadavky na přípravu vašeho zařízení. 
 
+Pokud chcete nainstalovat IoT Edge na virtuálním počítači, povolit vnořenou virtualizaci a vyhradit alespoň 2 GB paměti. Jak povolit vnořenou virtualizaci se liší v závislosti na hypervizoru používání. Pro Hyper-V virtuálních počítačů generace 2 mít člověk vnořené virtualizace ve výchozím nastavení povolená. Pro replikaci z VMWare je přepínač k povolení této funkce ve vašem virtuálním počítači. 
+
 #### <a name="moby-engine-for-windows-containers"></a>Modul Moby pro kontejnery Windows
 
 Pro zařízení Windows s IoT Edge v produkčních scénářích je Moby pouze modul oficiálně podporovaných kontejneru. Instalační skript automaticky nainstaluje modul Moby na vašem zařízení před instalací IoT Edge. Připravte zařízení zapnutím funkce kontejnery. 
@@ -64,7 +66,7 @@ Pro zařízení Windows s IoT Edge v produkčních scénářích je Moby pouze m
 
 Pokud používáte Windows můžete vyvíjet a testovat kontejnery pro Linux zařízení, můžete použít [Docker pro Windows](https://www.docker.com/docker-windows) jako modul kontejneru. Docker může být nakonfigurován k [používat kontejnery Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). Budete muset Docker nainstalujte a nakonfigurujte jej před instalací IoT Edge. Na zařízeních s Windows v produkčním prostředí nejsou podporovány kontejnery Linux. 
 
-Pokud zařízení IoT Edge je počítač Windows, zkontrolujte, zda splňuje [požadavky na systém](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) pro Hyper-V. Pokud je virtuální počítač, povolte [vnořená virtualizace](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) a vyhradit alespoň 2 GB paměti.
+Pokud zařízení IoT Edge je počítač Windows, zkontrolujte, zda splňuje [požadavky na systém](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) pro Hyper-V.
 
 ## <a name="install-iot-edge-on-a-new-device"></a>Nainstalovat nové zařízení IoT Edge
 

@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 033b853537ade927e4bb7e47c92efe1acff226d9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864945"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Pomocí služby Machine Learning (s jazykem R) ve službě Azure SQL Database (preview)
 
@@ -158,7 +158,7 @@ Prozatím se podíváme pouze na výchozí vstupní a výstupní hodnoty pro sp_
 
     ![Výstup skriptu R, který vrací data z tabulky](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
-3. Teď změníme název vstupní a výstupní proměnné. Výše uvedený skript používá výchozí názvy vstupní a výstupní proměnné _InputDataSet_ a _OutputDataSet_. K definování vstupních dat přidružených ke vstupní datové sadě _InputDataSet_ použijete proměnnou *@input_data_1*.
+3. Teď změníme název vstupní a výstupní proměnné. Výše uvedený skript používá výchozí názvy vstupní a výstupní proměnné _InputDataSet_ a _OutputDataSet_. Chcete-li definovat vstupní data přidružená k _InputDatSet_, použijete  *\@input_data_1* proměnné.
 
     V tomto skriptu se názvy výstupní a vstupní proměnné pro uloženou proceduru změnily na *SQL_out* a *SQL_in*:
 
@@ -174,7 +174,7 @@ Prozatím se podíváme pouze na výchozí vstupní a výstupní hodnoty pro sp_
 
     Nezapomeňte, že jazyk R rozlišuje malá a velká písmena, takže velikost písmen ve vstupní a výstupní proměnné `@input_data_1_name` a `@output_data_1_name` musí odpovídat velikosti písmen v kódu R v proměnné `@script`. 
 
-    Kromě toho je důležité také pořadí parametrů. Nejprve je potřeba zadat požadované parametry *@input_data_1* a *@output_data_1*, abyste mohli použít volitelné parametry *@input_data_1_name* a *@output_data_1_name*.
+    Kromě toho je důležité také pořadí parametrů. Je nutné zadat požadované parametry  *\@input_data_1* a  *\@output_data_1* první, chcete-li použít nepovinné parametry  *\@ input_data_1_name* a  *\@output_data_1_name*.
 
     Jako parametr je možné předat pouze jednu vstupní datovou sadu. Zároveň je možné vrátit pouze jednu datovou sadu. V kódu R však můžete volat i jiné datové sady a kromě datové sady vracet také výstupy jiných typů. K jakémukoli parametrů také můžete přidat klíčové slovo OUTPUT, aby se vrátil s výsledky. 
 
@@ -275,34 +275,34 @@ Pomocí jazyka R můžete natrénovat model a uložit ho do tabulky v databázi 
 
     Požadavky na lineární model jsou jednoduché:
 
-    - Definování vzorce, který popisuje vztah mezi závislou proměnnou `speed` a nezávislou proměnnou `distance`.
+   - Definování vzorce, který popisuje vztah mezi závislou proměnnou `speed` a nezávislou proměnnou `distance`.
 
-    - Poskytnutí vstupních dat pro použití při trénování modelu.
+   - Poskytnutí vstupních dat pro použití při trénování modelu.
 
-    > [!TIP]
-    > Pokud potřebujete občerstvit lineární modelů, doporučujeme vám tento kurz, který popisuje postup přizpůsobení modelu pomocí rxLinMod: [Přizpůsobení lineární modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+     > [!TIP]
+     > Pokud potřebujete občerstvit lineární modelů, doporučujeme vám tento kurz, který popisuje postup přizpůsobení modelu pomocí rxLinMod: [Přizpůsobení lineární modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-    Model sestavíte tak, že v kódu R definujete vzorec a jako vstupní parametr předáte data.
+     Model sestavíte tak, že v kódu R definujete vzorec a jako vstupní parametr předáte data.
 
-    ```sql
-    DROP PROCEDURE IF EXISTS generate_linear_model;
-    GO
-    CREATE PROCEDURE generate_linear_model
-    AS
-    BEGIN
-        EXEC sp_execute_external_script
-        @language = N'R'
-        , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
-            trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
-        , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
-        , @input_data_1_name = N'CarsData'
-        , @output_data_1_name = N'trained_model'
-        WITH RESULT SETS ((model VARBINARY(max)));
-    END;
-    GO
-    ```
+     ```sql
+     DROP PROCEDURE IF EXISTS generate_linear_model;
+     GO
+     CREATE PROCEDURE generate_linear_model
+     AS
+     BEGIN
+       EXEC sp_execute_external_script
+       @language = N'R'
+       , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
+           trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
+       , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
+       , @input_data_1_name = N'CarsData'
+       , @output_data_1_name = N'trained_model'
+       WITH RESULT SETS ((model VARBINARY(max)));
+     END;
+     GO
+     ```
 
-    První argument funkce rxLinMod je parametr *formula*, který definuje závislost proměnné distance (vzdálenost) na proměnné speed (rychlost). Vstupní data jsou uložená v proměnné `CarsData`, která se naplní dotazem SQL. Pokud vstupním datům nepřiřadíte konkrétní název, výchozí název proměnné bude _InputDataSet_.
+     První argument funkce rxLinMod je parametr *formula*, který definuje závislost proměnné distance (vzdálenost) na proměnné speed (rychlost). Vstupní data jsou uložená v proměnné `CarsData`, která se naplní dotazem SQL. Pokud vstupním datům nepřiřadíte konkrétní název, výchozí název proměnné bude _InputDataSet_.
 
 2. Dále vytvořte tabulku, do které model uložíte, abyste ho mohli přetrénovat nebo použít k předpovědi. Výstupem balíčku R, který vytváří model, je obvykle **binární objekt**. Proto tabulka musí obsahovat sloupec typu **VARBINARY(max)**.
 
@@ -401,23 +401,23 @@ Použijte model, který jste vytvořili v předchozí části, k hodnocení pře
 
     Výše uvedený skript provádí následující kroky:
 
-    + Pomocí příkazu SELECT získá z tabulky jeden model a předá ho jako vstupní parametr.
+   + Pomocí příkazu SELECT získá z tabulky jeden model a předá ho jako vstupní parametr.
 
-    + Po načtení modelu z tabulky zavolá pro model funkci `unserialize`.
+   + Po načtení modelu z tabulky zavolá pro model funkci `unserialize`.
 
-        > [!TIP] 
-        > Prozkoumejte také nové [funkce serializace](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) v balíčku RevoScaleR, které podporují bodování v reálném čase.
-    + Použije na model funkci `rxPredict` s odpovídajícími argumenty a zadá nová vstupní data.
+       > [!TIP] 
+       > Prozkoumejte také nové [funkce serializace](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) v balíčku RevoScaleR, které podporují bodování v reálném čase.
+   + Použije na model funkci `rxPredict` s odpovídajícími argumenty a zadá nová vstupní data.
 
-    + V tomto příkladu se ve fázi testování přidá funkce `str`, která kontroluje schéma dat vracených z kódu R. Tento příkaz můžete později odebrat.
+   + V tomto příkladu se ve fázi testování přidá funkce `str`, která kontroluje schéma dat vracených z kódu R. Tento příkaz můžete později odebrat.
 
-    + Názvy sloupců použité ve skriptu R není nutné předávat do výstupu uložené procedury. Tady jsme použili klauzuli WITH RESULTS k definování několika nových názvů sloupců.
+   + Názvy sloupců použité ve skriptu R není nutné předávat do výstupu uložené procedury. Tady jsme použili klauzuli WITH RESULTS k definování několika nových názvů sloupců.
 
-    **Results**
+     **Results**
 
-    ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+     ![Sada výsledků dotazu pro předpověď brzdné dráhy](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
-    K vygenerování předpovězené hodnoty nebo skóre na základě uloženého modelu je možné použít také příkaz [PREDICT v jazyce Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql).
+     K vygenerování předpovězené hodnoty nebo skóre na základě uloženého modelu je možné použít také příkaz [PREDICT v jazyce Transact-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql).
 
 <a name="add-package"></a>
 

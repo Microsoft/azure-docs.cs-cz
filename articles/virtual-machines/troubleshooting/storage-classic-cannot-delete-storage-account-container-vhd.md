@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330609"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078155"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Řešení chyb při odstraňování prostředku klasického úložiště.
 Tento článek obsahuje pokyny k odstraňování problémů při jedné z následujících chyb při odstraňování účtu úložiště Azure classic, kontejneru nebo souboru objektu blob stránky *.vhd. 
@@ -59,10 +59,10 @@ S disky "Ne" virtuální počítač
 #### <a name="azure-powershell"></a>Azure PowerShell
 Uživatel se pokusí odstranit účet úložiště, který je již nejsou déle používány, prostřednictvím rutin prostředí PowerShell classic. Uživateli se zobrazí následující zpráva:
 
-><span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
-
-><span style="color:red">Remove-AzureStorageAccount : Chybného požadavku: Myclassicaccount účet úložiště obsahuje některé aktivní Image a/nebo disky, například  
-myclassicaccount. Zkontrolujte tyto Image a/nebo disky se odeberou před odstraněním tohoto účtu úložiště.</span>
+> <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
+> 
+> <span style="color:red">Remove-AzureStorageAccount : Chybného požadavku: Myclassicaccount účet úložiště obsahuje některé aktivní Image a/nebo disky, například  
+> myclassicaccount. Zkontrolujte tyto Image a/nebo disky se odeberou před odstraněním tohoto účtu úložiště.</span>
 
 ## <a name="unable-to-delete-storage-container"></a>Nepovedlo se odstranit kontejner úložiště
 
@@ -77,9 +77,9 @@ Azure portal nepovolí uživateli odstranit kontejner, pokud existuje zapůjčen
 #### <a name="azure-powershell"></a>Azure PowerShell
 Pokud uživatel zvolí možnost odstranit pomocí prostředí PowerShell, bude výsledkem následující chyba. 
 
-><span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
-
-><span style="color:red">Remove-AzureStorageContainer : Vzdálený server vrátil chybu: (412) je aktuálně v kontejneru zapůjčení a žádné ID zapůjčení byla zadaná v žádosti... Kód stavu HTTP: 412 – HTTP chybová zpráva: V kontejneru je aktuálně zapůjčení a v požadavku bylo zadáno žádné ID zapůjčení.</span>
+> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> 
+> <span style="color:red">Remove-AzureStorageContainer : Vzdálený server vrátil chybu: (412) je aktuálně v kontejneru zapůjčení a žádné ID zapůjčení byla zadaná v žádosti... Kód stavu HTTP: 412 – HTTP chybová zpráva: V kontejneru je aktuálně zapůjčení a v požadavku bylo zadáno žádné ID zapůjčení.</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>Nepovedlo se odstranit virtuální pevný disk 
 
@@ -99,9 +99,9 @@ Na portálu může být dvě možnosti v závislosti na seznam vybraných pro od
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Pokud uživatel zvolí možnost odstranit pomocí prostředí PowerShell, bude výsledkem následující chyba. 
 
-><span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
-
-><span style="color:red">Remove-AzureStorageBlob : Vzdálený server vrátil chybu: (412) je aktuálně zapůjčení u objektu blob a žádné ID zapůjčení byla zadaná v žádosti... Kód stavu HTTP: 412 – HTTP chybová zpráva: V požadavku bylo zadáno žádné ID zapůjčení u objektu blob je aktuálně zapůjčení.</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> 
+> <span style="color:red">Remove-AzureStorageBlob : Vzdálený server vrátil chybu: (412) je aktuálně zapůjčení u objektu blob a žádné ID zapůjčení byla zadaná v žádosti... Kód stavu HTTP: 412 – HTTP chybová zpráva: V požadavku bylo zadáno žádné ID zapůjčení u objektu blob je aktuálně zapůjčení.</span>
 
 
 ## <a name="resolution-steps"></a>Postup řešení

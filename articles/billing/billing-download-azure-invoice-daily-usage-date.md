@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 59d63efbf261813c8519b03d3e1630cf24d868d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 52e227b933533bf60a474d0417c57e4b75c7978f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835922"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224630"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
 
@@ -56,7 +56,7 @@ Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyú
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Stažení faktury zákaznické smlouvy Microsoft
 
-Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#understand-billing-profiles) smlouvy zákazníka Microsoftu. Musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat správce stahovat faktury z portálu Azure portal. 
+Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#understand-billing-profiles) smlouvy zákazníka Microsoftu. Musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat správce stahovat faktury z portálu Azure portal.
 
 1. Hledat na **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
@@ -91,7 +91,7 @@ Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro p
 2. Klikněte na tlačítko **vyjádřit výslovný souhlas** a přijměte podmínky.
 
     ![Snímek obrazovky zobrazující tok vyjádření souhlasu se krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
- 
+
 3. Jakmile jste přijali smlouvu, můžete nakonfigurovat další příjemce. Při odebrání příjemce e-mailová adresa je již uloženy. Pokud změníte své rozhodnutí, budete muset znovu přidat.
 
     ![Snímek obrazovky zobrazující tok vyjádření souhlasu se krok 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
@@ -106,7 +106,7 @@ Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko mů�
 
 ### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Získání faktury smlouvy zákazníka se společností Microsoft v e-mailu
 
-Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktury e-mailem. Všechny fakturační profil vlastníci, přispěvatelé, čtenáři a faktury Správci získají faktury e-mailem. Čtenáři nelze aktualizovat předvolby faktury e-mailu. 
+Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktury e-mailem. Všechny fakturační profil vlastníci, přispěvatelé, čtenáři a faktury Správci získají faktury e-mailem. Čtenáři nelze aktualizovat předvolby faktury e-mailu.
 
 1. Hledat na **Cost Management a fakturace**.
 1. Vyberte fakturační profil.
@@ -121,7 +121,7 @@ Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko mů�
 
 ## <a name="download-usage"></a>Stáhnout využití
 
- Většina předplatných, najít souboru denního využití v [centra účtů Azure](https://account.azure.com/Subscriptions). Pokud jste zákazník EA nebo máte zákaznické smlouvy Microsoft, můžete stáhnout využití [webu Azure portal](https://portal.azure.com/). <!--lze: aktualizovat PayG prostředí k Ibiza, jakmile je dodáván >
+ Většina předplatných, najít souboru denního využití v [centra účtů Azure](https://account.azure.com/Subscriptions). Pokud jste zákazník EA nebo máte zákaznické smlouvy Microsoft, můžete stáhnout využití [webu Azure portal](https://portal.azure.com/). <!-- TO DO: update PayG experience to Ibiza once it ships-->
 
 ### <a name="download-usage-from-the-account-center-csv"></a>Stáhnout využití z centra účtů (CSV)
 

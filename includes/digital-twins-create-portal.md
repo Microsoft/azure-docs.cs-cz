@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: f286676cba3d1333db52fb1125279772d518dd88
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124521"
 ---
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
@@ -27,7 +27,7 @@ ms.locfileid: "53584758"
    * **Skupina prostředků**: Vyberte nebo vytvořte [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) digitální dvojče instance.
    * **Umístění**: Vyberte nejbližší umístění pro vaše zařízení.
 
-    ![Digitální dvojče podokno pomocí zadaných informací](./media/create-digital-twins-portal/create-digital-twins-param.png)
+     ![Digitální dvojče podokno pomocí zadaných informací](./media/create-digital-twins-portal/create-digital-twins-param.png)
 
 1. Zkontrolujte informace o digitální dvojče a pak vyberte **vytvořit**. Vaše digitální dvojče instance může trvat několik minut, který se má vytvořit. Průběh můžete sledovat v podokně **Oznámení**.
 

@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: e265a46533264bbb1d437edbfe1bbfb3306614ad
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088753"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -66,7 +66,7 @@ Následující příkaz aktualizuje vlastnosti existujícího účtu Data Lake A
    az dla account update --account "<Data Lake Analytics Account Name>" --firewall-state "Enabled" --query-store-retention 7
    ```
 
-### <a name="list-accounts"></a>Výpis účtů
+### <a name="list-accounts"></a>Vypíše účty
 
 Přehled Data Lake Analytics účty v konkrétní skupině prostředků
 
@@ -180,9 +180,9 @@ Než budete moct vytvořit úlohu, musíte mít účet Data Lake Analytics.  Dal
 > [!NOTE]
 > Výchozí prioritu úlohy je 1000 a výchozí stupně paralelního zpracování úlohy je 1.
 > 
-   ```azurecli
-   az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
-   ```
+>    ```azurecli
+>    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
+>    ```
 
 ### <a name="cancel-jobs"></a>Zrušit úlohy
 Pomocí seznamu příkazu k vyhledání id úlohy a pak použijte Storno pro zrušení úlohy.

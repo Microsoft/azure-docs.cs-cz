@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092187"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána správy dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -29,8 +29,8 @@ Tento článek vám pomůže nakonfigurovat vysokou dostupnost a škálovatelnos
 
 > [!NOTE]
 > Tento článek předpokládá, že jste už obeznámení se základy prostředí Integration runtime (starší Data správy brány). Pokud si nejste, přečtěte si téma [brána správy dat](data-factory-data-management-gateway.md).
-
->**Tato funkce ve verzi preview je oficiálně podporované na 2.12.xxxx.x verze brány správy dat a vyšší**. Ujistěte se prosím, že používáte verzi 2.12.xxxx.x nebo vyšší. Stáhněte si nejnovější verzi brány správy dat [tady](https://www.microsoft.com/download/details.aspx?id=39717).
+> 
+> **Tato funkce ve verzi preview je oficiálně podporované na 2.12.xxxx.x verze brány správy dat a vyšší**. Ujistěte se prosím, že používáte verzi 2.12.xxxx.x nebo vyšší. Stáhněte si nejnovější verzi brány správy dat [tady](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="overview"></a>Přehled
 Můžete přiřadit bran pro správu dat, které jsou nainstalované na víc místních počítačů s jednou bránou logické z portálu. Tyto počítače se nazývají **uzly**. Můžete mít až **čtyři uzly** přidružený k logické brány. Výhody s více uzly (na místních počítačích s nainstalovanou bránu) pro logické brány jsou:  
@@ -163,8 +163,8 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 
 - Certifikát musí být veřejně důvěryhodné X509 certifikát v3. Doporučujeme používat certifikáty vydané veřejnou (třetí strany) certifikační autoritou (CA).
 - Každý uzel integration runtime musí důvěřovat tomuto certifikátu, stejně jako klientský počítač, na kterém běží aplikace Správce pověření. 
-> [!NOTE]
-> Aplikace Správce pověření se používá při bezpečně nastavení přihlašovacích údajů z Průvodce kopírováním a webu Azure Portal. A to může být z libovolného počítače ve stejné síti jako místní aktivace / soukromé úložiště.
+  > [!NOTE]
+  > Aplikace Správce pověření se používá při bezpečně nastavení přihlašovacích údajů z Průvodce kopírováním a webu Azure Portal. A to může být z libovolného počítače ve stejné síti jako místní aktivace / soukromé úložiště.
 - Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít ***. domain.contoso.com** jako název subjektu certifikátu.
 - Certifikátů SAN se nedoporučuje, protože se použijí jenom poslední položka alternativní názvy subjektů a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například máte certifikát SAN jehož SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.

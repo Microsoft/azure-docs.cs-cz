@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0b0d302dcd86f18eef6bf7600dd93878d0d9bd99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902684"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
@@ -44,7 +44,7 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 - [Blog – Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Blogy zákaznického poradního týmu](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [Úspěšné zákaznické implementace](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [Fórum Stack Overflow](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Fórum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [Videa](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Glosář Azure](../azure-glossary-cloud-terminology.md)

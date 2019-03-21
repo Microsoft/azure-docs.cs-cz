@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002294"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
 Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 
@@ -35,7 +35,7 @@ Když používáte DapperExtensions, musíte už poskytují příkazy SQL. Metod
 
 Další výhodou Dapperem a také DapperExtensions je, že aplikace řídí vytváření připojení k databázi. Díky tomu interakci s Klientská knihovna elastic database, která můžou být zprostředkovatelé připojení na základě mapování shardletů k databázím databáze.
 
-Pokud chcete získat Dapper sestavení, naleznete v tématu [Dapper dot net](http://www.nuget.org/packages/Dapper/). Dapper rozšíření, naleznete v tématu [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
+Pokud chcete získat Dapper sestavení, naleznete v tématu [Dapper dot net](https://www.nuget.org/packages/Dapper/). Dapper rozšíření, naleznete v tématu [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Rychlý pohled na Klientská knihovna elastic database
 Pomocí Klientská knihovna elastic database definujete oddílů dat ve vašich aplikacích nazývá *shardletů*mapovat k databázím a poznají podle *klíče horizontálního dělení*. Může mít libovolný počet databází, podle potřeby a distribuci vašich shardletů v těchto databázích. Mapování hodnot klíče horizontálního dělení do databází se ukládá pomocí mapy horizontálních oddílů poskytuje knihovny rozhraní API. Tato funkce je volána **správy mapování horizontálních oddílů**. Mapy horizontálních oddílů slouží také jako zprostředkovatel připojení k databázi pro požadavky, které mají klíč horizontálního dělení. Tato funkce se označuje jako **směrování závislé na datech**.

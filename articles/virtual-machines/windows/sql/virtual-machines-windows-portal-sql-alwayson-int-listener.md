@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f2694f597d99edaf127a6afd64376cca33dad2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448148"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107878"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn SQL serveru ve službě Azure virtual machines, které jsou spuštěny pomocí Azure Resource Manageru. Skupině dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. V případě skupiny dostupnosti pokrývá více oblastí, musí každá oblast nástroj pro vyrovnávání zatížení.
@@ -235,18 +235,18 @@ Chcete-li přidat IP adresu nástroji pro vyrovnávání zatížení pomocí web
 
 10. Konfigurace nové pravidlo s použitím následujícího nastavení Vyrovnávání zatížení:
 
-   |Nastavení |Hodnota
-   |:-----|:----
-   |**Název** |Název pro identifikaci pravidlo Vyrovnávání zatížení. 
-   |**Front-endové IP adresy** |Vyberte IP adresu, kterou jste vytvořili. 
-   |**Protokol** |TCP
-   |**Port** |Použijte port, který používáte instance systému SQL Server. Výchozí instance používá port 1433, pokud jste změnili. 
-   |**Back-endový port** |Použijte stejnou hodnotu jako **Port**.
-   |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancí serveru SQL Server. 
-   |**Sonda stavu** |Zvolte test, který jste vytvořili.
-   |**Trvalost relace** |Žádný
-   |**Časový limit nečinnosti (minuty)** |Výchozí (4)
-   |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Povoleno
+    |Nastavení |Hodnota
+    |:-----|:----
+    |**Název** |Název pro identifikaci pravidlo Vyrovnávání zatížení. 
+    |**Front-endové IP adresy** |Vyberte IP adresu, kterou jste vytvořili. 
+    |**Protokol** |TCP
+    |**Port** |Použijte port, který používáte instance systému SQL Server. Výchozí instance používá port 1433, pokud jste změnili. 
+    |**Back-endový port** |Použijte stejnou hodnotu jako **Port**.
+    |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancí serveru SQL Server. 
+    |**Sonda stavu** |Zvolte test, který jste vytvořili.
+    |**Trvalost relace** |Žádný
+    |**Časový limit nečinnosti (minuty)** |Výchozí (4)
+    |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Povoleno
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurace skupiny dostupnosti používat novou IP adresu
 

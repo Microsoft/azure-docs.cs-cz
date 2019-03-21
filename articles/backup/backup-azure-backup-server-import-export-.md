@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094969"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování DPM a Azure Backup Server
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Azure Backup komprimuje prvotní zálohy. Procesem offline předvyplnění Azure Backup můžete použít disky k nahrání komprimované počáteční zálohovací data do offline režimu do Azure.
@@ -55,7 +55,7 @@ Ujistěte se, že jsou splněny následující požadavky před inicializací pr
 
 * Účet služby Azure Storage s *classic* modelu nasazení se vytvořil v rámci předplatného, ze kterého jste stáhli soubor nastavení publikování jak je znázorněno níže: 
 
- ![Vytvoření účtu klasického úložiště.](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Vytvoření účtu klasického úložiště.](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * Pracovní umístění, což může být sdílen v síti nebo libovolné další jednotky v počítači, interní nebo externí, dostatek místa na disku pro uložení počáteční kopie, je vytvořen. Například pokud se pokoušíte získat zpátky až 500 GB souborový server, ujistěte se, že pracovní oblasti je aspoň 500 GB. (Menší velikost se používá v důsledku komprese.)
 * S ohledem na disky, které se odešlou do Azure Ujistěte se, pouze 2,5 SSD nebo 2,5 nebo 3, 5palcová SATA II/III interní pevné disky se používají. Můžete použít pevné disky až 10 TB. Zkontrolujte [dokumentace ke službě Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) nejnovější sady jednotek, které služba podporuje.
@@ -74,12 +74,12 @@ Informace v této části vám pomůže dokončit pracovní postup offline zálo
 
     Popis vstupy vypadá takto:
 
-    * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
-    * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure.
-    * **Nastavení publikování v Azure**: Zadejte místní cestu k souboru nastavení publikování.
-    * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze které jste stáhli soubor nastavení publikování v Azure. 
-    * **Azure Storage Account**: Název účtu úložiště v rámci předplatného Azure přidružené k souboru nastavení publikování v Azure.
-    * **Azure Storage Container**: Název cílové objektů blob úložiště v účtu úložiště Azure, kterého se naimportuje data záloh.
+   * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
+   * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure.
+   * **Nastavení publikování v Azure**: Zadejte místní cestu k souboru nastavení publikování.
+   * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze které jste stáhli soubor nastavení publikování v Azure. 
+   * **Azure Storage Account**: Název účtu úložiště v rámci předplatného Azure přidružené k souboru nastavení publikování v Azure.
+   * **Azure Storage Container**: Název cílové objektů blob úložiště v účtu úložiště Azure, kterého se naimportuje data záloh.
 
      Uložit *pracovní umístění* a *název úlohy importu Azure* jste zadali, protože je nutné připravit disky.  
      
@@ -102,14 +102,14 @@ Informace v této části vám pomůže dokončit pracovní postup offline zálo
 
 1. Přejděte do adresáře a zkopírujte **AzureOfflineBackupDiskPrep** adresáře pro kopírování počítače, na kterém jsou připojené disky SATA, abyste byli připraveni. Zajistěte následující s ohledem na počítači kopírování:
 
-    * Kopírování počítač získá přístup k pracovní umístění pro pracovní postup offline předvyplnění pomocí stejné cesty sítě, která byla součástí **zahájení offline zálohování** pracovního postupu.
-    * Povolení nástroje BitLocker v počítači kopírování.
-    * Počítač kopírování získá přístup k webu Azure portal.
+   * Kopírování počítač získá přístup k pracovní umístění pro pracovní postup offline předvyplnění pomocí stejné cesty sítě, která byla součástí **zahájení offline zálohování** pracovního postupu.
+   * Povolení nástroje BitLocker v počítači kopírování.
+   * Počítač kopírování získá přístup k webu Azure portal.
 
-    V případě potřeby kopírování počítač může být stejný jako zdrojový počítač. 
+     V případě potřeby kopírování počítač může být stejný jako zdrojový počítač. 
     
-    > [!IMPORTANT] 
-    > Pokud zdrojový počítač je virtuální počítač, je nutné použít jiný fyzický server nebo klientský počítač jako počítač kopírování.
+     > [!IMPORTANT] 
+     > Pokud zdrojový počítač je virtuální počítač, je nutné použít jiný fyzický server nebo klientský počítač jako počítač kopírování.
     
     
 2. Otevřete příkazový řádek se zvýšenými oprávněními na počítači kopírování s *AzureOfflineBackupDiskPrep* nástroj adresář jako aktuálního adresáře a spusťte následující příkaz:

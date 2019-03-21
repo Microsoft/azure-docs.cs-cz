@@ -1,21 +1,21 @@
 ---
-title: Vytvoření více modelů z jednoho experimentu Studio
+title: Vytvoření více koncových bodů pro model
 titleSuffix: Azure Machine Learning Studio
 description: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 442acb88a7a758517b8007b85dd6a58520a0caa4
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a191a7adc2c43337b663fc44a8ef40df9d8ffef4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848913"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Použití Powershellu k vytvoření Studio modely a koncových bodů webové služby z jednoho experimentu
 
@@ -35,7 +35,7 @@ Naštěstí to můžete provést pomocí [přetrénování rozhraní API Azure M
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Nastavit výukového experimentu
-Použijte tento příklad [výukového experimentu](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) , který je [Cortana Intelligence Gallery](http://gallery.azure.ai). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
+Použijte tento příklad [výukového experimentu](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) , který je [Cortana Intelligence Gallery](https://gallery.azure.ai). Otevřete tento experiment v vaše [Azure Machine Learning Studio](https://studio.azureml.net) pracovního prostoru.
 
 > [!NOTE]
 > Pokud chcete postupovat podle tohoto příkladu, můžete použít standardní pracovní prostor, spíše než bezplatný pracovní prostor. Vytvořte jeden koncový bod pro každého zákazníka - celkem 10 koncových bodů – a standardní pracovní prostor, který vyžaduje, protože bezplatný pracovní prostor je omezená na 3 koncových bodů. Pokud máte jenom bezplatný pracovní prostor, stačí změňte skripty umožňující pouze obsah za umístění.
@@ -44,7 +44,7 @@ Použijte tento příklad [výukového experimentu](https://gallery.azure.ai/Exp
 
 Experiment používá **importovat Data** modulu k importu trénovací datové sady *customer001.csv* z účtu služby Azure storage. Předpokládejme, máte shromážděné ze všech umístění pronájem kol cvičných datových sad a je uložená ve stejném umístění úložiště objektů blob s názvy souborů od *rentalloc001.csv* k *rentalloc10.csv*.
 
-![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+![Modul čtečky importuje data z objektu blob Azure](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 Všimněte si, že **webové služby výstup** modul byl přidán do **Train Model** modulu.
 Při nasazení tento experiment jako webové služby, koncový bod přidružený, že výstup ve formátu souboru .ilearner vrátí trénovaného modelu.
@@ -52,7 +52,7 @@ Při nasazení tento experiment jako webové služby, koncový bod přidružený
 Všimněte si také, že nastavíte parametr webové služby, který určuje adresu URL, která **Import dat** používá modul. To umožňuje zadat jednotlivé trénovací datové sady pro trénování modelu pro každé umístění, použijte parametr.
 Existují jiné způsoby, může to uděláte. Dotaz SQL s parametrem webové služby můžete použít k získání dat z databáze SQL Azure. Nebo můžete použít **vstup webové služby** modul pro předávání v datové sadě k webové službě.
 
-![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+![Výstupy modulu Trained Model k výstupu modulu webové služby](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
 Teď spustíme tohoto výukového experimentu s výchozí hodnotou *rental001.csv* jako trénovací datové sady. Je-li zobrazit výstup **vyhodnotit** modulu (klikněte na výstupní a vyberte **vizualizovat**), zobrazí se vám vrazíme výkon *AUC* = 0.91. V tuto chvíli jste připraveni nasadit webovou službu mimo tento výukový experiment.
 
@@ -89,7 +89,7 @@ Potom spusťte následující příkaz Powershellu:
 
 Nyní jste vytvořili 10 koncových bodů a všechny obsahují stejné Trénink modelů trénovaných na *customer001.csv*. Můžete je zobrazit na webu Azure Portal.
 
-![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![Zobrazit seznam trénované modely na portálu](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualizovat koncových bodů pro použití samostatné cvičných datových sad pomocí Powershellu
 Dalším krokem je aktualizovat koncovým bodům modelů trénovaných jednoznačně na jednotlivé dat jednotlivých zákazníků. Ale nejdřív je potřeba vytvořit tyto modely **kol pronájem školení** webové služby. Vraťme se k **kol pronájem školení** webové služby. Je třeba volat její koncový bod BES 10krát s 10 různých cvičných datových sad cílem vytvořit 10 různých modelů. Použití **InovkeAmlWebServiceBESEndpoint** to udělat pomocí rutiny Powershellu.

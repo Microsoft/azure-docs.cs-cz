@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dc8deb16f7d124c5fb11568f25050eee99a245b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834753"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096754"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spustit postup zotavení po Havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -31,11 +31,11 @@ Při spouštění testovací převzetí služeb při selhání z primární do s
     - Převzetí služeb při selhání a nechat automaticky vytvořit testovací síti Site Recovery. V tomto případě se Site Recovery automaticky vytvořit síť a vyčištění po dokončení testovacího převzetí služeb při selhání.
 - Je třeba vybrat bod obnovení pro převzetí služeb při selhání testu: 
     - **Nejnovější zpracovaný**: Tato možnost převezme virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
-    - **Nejnovější konzistentní vzhledem k**: tuto možnost převzetí služeb při selhání virtuálního počítače do bodu nejnovější konzistentní obnovení zpracovanému službou Site Recovery. 
+    - **Nejnovější konzistentní vzhledem k**: Tato možnost převzetí služeb při selhání virtuálního počítače do bodu nejnovější konzistentní obnovení zpracovanému službou Site Recovery. 
     - **Nejnovější**: Tato možnost nejprve zpracuje všechna data, ke které byl odeslán do služby Site Recovery, chcete-li vytvořit bod obnovení pro každý virtuální počítač před přebírání služeb při selhání se. Tato možnost poskytuje nejnižší cíl bodu obnovení bodu obnovení (rpo), protože virtuální počítač vytvořen po převzetí služeb při selhání bude mít všechna data do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
-    - **Nejnovější více virtuálních počítačů zpracovat**: k dispozici pro plány obnovy, které zahrnují jeden nebo více virtuálních počítačů, které mají povolenou konzistencí pro víc virtuálních počítačů. Virtuální počítače s povoleným nastavením převzetí služeb při selhání na nejnovější společný bod obnovení konzistentní vzhledem k několika virtuálním počítačům. Ostatní virtuální počítače převzetí služeb při selhání do nejnovějšího bodu obnovení zpracované.
+    - **Nejnovější více virtuálních počítačů zpracovat**: K dispozici pro plány obnovy, které zahrnují jeden nebo více virtuálních počítačů, které mají povolenou konzistencí pro víc virtuálních počítačů. Virtuální počítače s povoleným nastavením převzetí služeb při selhání na nejnovější společný bod obnovení konzistentní vzhledem k několika virtuálním počítačům. Ostatní virtuální počítače převzetí služeb při selhání do nejnovějšího bodu obnovení zpracované.
     - **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost je dostupná pro plány obnovení s jeden nebo více virtuálních počítačů, které mají povolenou konzistencí pro víc virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při selhání na nejnovější společný bod obnovení konzistentní vzhledem k aplikaci pro více virtuálních počítačů. Ostatní virtuální počítače převzetí služeb při selhání na jejich nejnovější bod obnovení konzistentní s aplikací.
-    - **Vlastní**: tuto možnost použijte k převzetí služeb při selhání konkrétní virtuální počítač, který konkrétnímu bodu obnovení.
+    - **Vlastní**: Tuto možnost použijte k převzetí služeb při selhání konkrétní virtuální počítač, který konkrétnímu bodu obnovení.
 
 
 
@@ -43,11 +43,11 @@ Při spouštění testovací převzetí služeb při selhání z primární do s
 
 Když spustíte testovací převzetí služeb, budete vyzváni k nastavení sítě pro testovací počítače repliky, vyberte dle souhrnu v tabulce.
 
-**Možnost** | **Podrobnosti** 
---- | --- 
-**None** | Vytvoření testovacího virtuálního počítače na hostitele, na kterém je umístěn replikovaného virtuálního počítače. Není přidaná do cloudu a není připojen k žádné síti.<br/><br/> Na počítači můžete připojit k síti virtuálních počítačů po jeho vytvoření.
-**Použít existující** | Vytvoření testovacího virtuálního počítače na hostitele, na kterém je umístěn replikovaného virtuálního počítače. Tam není přidaný do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která bude izolovaná od produkční sítě.<br/><br/>Pokud používáte sítě využívající připojení VLAN, doporučujeme vytvořit samostatnou logickou síť (nelze použít v produkčním prostředí) v nástroji VMM pro tento účel. Tato logická síť se používá k vytvoření sítě virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť by měly být přidružené minimálně jeden ze síťových adaptérů všech serverů Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>Pro logické sítě VLAN by měl být izolované síťové lokality, které přidáte k logické síti.<br/><br/>Pokud používáte logické sítě na bázi virtualizace sítě Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. 
-**Vytvoření sítě** | Dočasné testovací síti je vytvořen automaticky v závislosti na nastavení, které jste zadali v **logickou síť** a její související síťové lokality.<br/><br/> Převzetí služeb při selhání ověří, že se vytvoří virtuální počítače. |Tuto možnost používejte, pokud se plán obnovení používá více než jedna síť virtuálních počítačů.<br/><br/> Pokud používáte Windows virtualizace sítě, tato možnost automaticky vytvořit sítě virtuálních počítačů se stejným nastavením (podsítí a fondy IP adres) v síti virtuálního počítače repliky. Tyto sítě virtuálních počítačů se čistí automaticky po dokončení testu převzetí služeb.<br/><br/> Testovací virtuální počítač se vytvoří na hostiteli, na kterém se nachází virtuální počítač repliky. Tam není přidaný do cloudu.
+| **Možnost** | **Podrobnosti** | |
+| --- | --- | --- |
+| **Žádné** | Vytvoření testovacího virtuálního počítače na hostitele, na kterém je umístěn replikovaného virtuálního počítače. Není přidaná do cloudu a není připojen k žádné síti.<br/><br/> Na počítači můžete připojit k síti virtuálních počítačů po jeho vytvoření.| |
+| **Použít existující** | Vytvoření testovacího virtuálního počítače na hostitele, na kterém je umístěn replikovaného virtuálního počítače. Tam není přidaný do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která bude izolovaná od produkční sítě.<br/><br/>Pokud používáte sítě využívající připojení VLAN, doporučujeme vytvořit samostatnou logickou síť (nelze použít v produkčním prostředí) v nástroji VMM pro tento účel. Tato logická síť se používá k vytvoření sítě virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť by měly být přidružené minimálně jeden ze síťových adaptérů všech serverů Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>Pro logické sítě VLAN by měl být izolované síťové lokality, které přidáte k logické síti.<br/><br/>Pokud používáte logické sítě na bázi virtualizace sítě Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. | |
+| **Vytvoření sítě** | Dočasné testovací síti je vytvořen automaticky v závislosti na nastavení, které jste zadali v **logickou síť** a její související síťové lokality.<br/><br/> Převzetí služeb při selhání ověří, že se vytvoří virtuální počítače.<br/><br/> Tuto možnost používejte, pokud se plán obnovení používá více než jedna síť virtuálních počítačů.<br/><br/> Pokud používáte Windows virtualizace sítě, tato možnost automaticky vytvořit sítě virtuálních počítačů se stejným nastavením (podsítí a fondy IP adres) v síti virtuálního počítače repliky. Tyto sítě virtuálních počítačů se čistí automaticky po dokončení testu převzetí služeb.<br/><br/> Testovací virtuální počítač se vytvoří na hostiteli, na kterém se nachází virtuální počítač repliky. Tam není přidaný do cloudu.|
 
 ### <a name="best-practices"></a>Osvědčené postupy
 
@@ -100,7 +100,7 @@ Ke spuštění testovací převzetí služeb při selhání pro testování apli
 ### <a name="prepare-dns"></a>Příprava DNS
 Připravte DNS server pro testovací převzetí služeb následujícím způsobem:
 
-* **DHCP**: Pokud virtuální počítače používají protokol DHCP, je třeba aktualizovat IP adresu, testu DNS na testovacím serveru DHCP. Pokud používáte typ sítě Windows virtualizace sítě, VMM server funguje jako DHCP server. Proto se IP adresa DNS se musí aktualizovat v testovací síti převzetí služeb při selhání. V tomto případě virtuální počítače zaregistrovat se na příslušný server DNS.
+* **DHCP**: Pokud virtuální počítače používají protokol DHCP, IP adresa, testu DNS se musí aktualizovat na testovacím serveru DHCP. Pokud používáte typ sítě Windows virtualizace sítě, VMM server funguje jako DHCP server. Proto se IP adresa DNS se musí aktualizovat v testovací síti převzetí služeb při selhání. V tomto případě virtuální počítače zaregistrovat se na příslušný server DNS.
 * **Statická adresa**: Pokud virtuální počítače používat statickou IP adresu, je třeba aktualizovat IP adresu serveru DNS, testu v testovací síti převzetí služeb při selhání. Může být potřeba aktualizovat DNS IP adresou testovací virtuální počítače. K tomuto účelu můžete použít následující ukázkový skript:
 
         Param(

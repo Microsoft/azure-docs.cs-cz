@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3500463cc57fb236de2a591181a5dc7054780404
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863759"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Kurz: Stream živé pomocí Media Services v3 pomocí .NET
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > [!div class="checklist"]
 > * Stažení ukázkové aplikace popsané v tématu
 > * Kontrola kódu, který provádí živé streamování
-> * Sledování události s [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) na webu http://ampdemo.azureedge.net
+> * Sledování události s [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) na webu https://ampdemo.azureedge.net
 > * Vyčištění prostředků
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -166,7 +166,7 @@ Následující kód ukazuje, jak vyčistit účtu všechny živé události:
 
 ## <a name="watch-the-event"></a>Sledování události
 
-Pokud chcete sledovat událost, zkopírujte adresu URL streamování, které jste získali při spuštění kódu je popsáno v vytvořit lokátor streamování a použijte přehrávač dle vašeho výběru. K testování streamování na webu http://ampdemo.azureedge.net můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html). 
+Pokud chcete sledovat událost, zkopírujte adresu URL streamování, které jste získali při spuštění kódu je popsáno v vytvořit lokátor streamování a použijte přehrávač dle vašeho výběru. K testování streamování na webu https://ampdemo.azureedge.net můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html). 
 
 Živá událost automaticky převede na obsah na vyžádání při zastavení. I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
