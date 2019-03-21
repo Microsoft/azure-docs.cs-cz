@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718873"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078784"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -240,10 +240,10 @@ Můžete také použít `UseDefaultConfiguration()` místo rozšiřující metod
 ## <a name="how-to-work-with-authentication"></a>Postup: Práce s ověřováním
 Azure Mobile Apps využívá ověřování pomocí služby App Service / autorizace zabezpečit mobilní back-end.  Tato část ukazuje, jak provádět následující úlohy související s ověřováním v projektu .NET back-end serveru:
 
-* [Jak: Přidání ověřování do aplikace project server](#add-auth)
-* [Jak: Použití vlastního ověřování pro vaši aplikaci](#custom-auth)
-* [Jak: Načíst informace o ověřeném uživateli](#user-info)
-* [Jak: Omezit přístup k datům můžou Autorizovaní uživatelé](#authorize)
+* [Postup: Přidání ověřování do aplikace project server](#add-auth)
+* [Postup: Použití vlastního ověřování pro vaši aplikaci](#custom-auth)
+* [Postup: Načíst informace o ověřeném uživateli](#user-info)
+* [Postup: Omezit přístup k datům můžou Autorizovaní uživatelé](#authorize)
 
 ### <a name="add-auth"></a>Jak: Přidání ověřování do aplikace project server
 Ověřování můžete přidat do projektu serveru tím, že rozšíří **MobileAppConfiguration** objektů a konfiguraci middlewaru OWIN. Při instalaci [Microsoft.Azure.Mobile.Server.Quickstart] balíčku a volání **UseDefaultConfiguration** metodu rozšíření, můžete přeskočit ke kroku 3.
@@ -263,7 +263,7 @@ Další informace o tom, jak ověřovat klienty back-end Mobile Apps, najdete v 
 > Pokud chcete povolit vlastní ověřování, musíte nejprve povolit ověřování pomocí služby App Service bez výběru zprostředkovatele pro službu App Service na webu Azure Portal. To vám umožní proměnnou prostředí WEBSITE_AUTH_SIGNING_KEY, když jsou hostované.
 > 
 > 
-Pokud nechcete používat jednoho z těchto poskytovatelů ověřování/autorizace služby App Service, můžete implementovat vlastní přihlašovací jméno systému. Nainstalujte [Microsoft.Azure.Mobile.Server.Login] balíčku pro účely pomoci s generování tokenů ověřování.  Zadejte vlastní kód pro ověření přihlašovacích údajů. Můžete například zkontrolovat proti solené a hodnoty hash hesla v databázi. V následujícím příkladu `isValidAssertion()` – metoda (definovaný jinde) zodpovídá za tyto kontroly.
+> Pokud nechcete používat jednoho z těchto poskytovatelů ověřování/autorizace služby App Service, můžete implementovat vlastní přihlašovací jméno systému. Nainstalujte [Microsoft.Azure.Mobile.Server.Login] balíčku pro účely pomoci s generování tokenů ověřování.  Zadejte vlastní kód pro ověření přihlašovacích údajů. Můžete například zkontrolovat proti solené a hodnoty hash hesla v databázi. V následujícím příkladu `isValidAssertion()` – metoda (definovaný jinde) zodpovídá za tyto kontroly.
 
 Vlastní ověřování je zveřejněný prostřednictvím vytváření objektu ApiController a jestli vystavuje `register` a `login` akce. Klient musí použít vlastního uživatelského rozhraní pro shromažďování informací od uživatele.  Informace se pak odešle do rozhraní API pomocí standardní volání HTTP POST. Jakmile server ověřuje kontrolního výrazu, je token vystavované pomocí `AppServiceLoginHandler.CreateToken()` metody.  Objektu ApiController **by neměla** použít `[MobileAppController]` atribut.
 

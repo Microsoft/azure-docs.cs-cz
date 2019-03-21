@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445391"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892451"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak udělit oprávnění registrace a produktu předplatné uživatele
 Delegování můžete použít svůj stávající web pro zpracování developer přihlašování – v registrace/přihlášení a odběru produktů na rozdíl od použití integrované funkce na portálu pro vývojáře. To umožňuje webu na vlastní uživatelská data a provést ověření z těchto kroků vlastním způsobem.
@@ -47,7 +47,7 @@ Teď je potřeba vytvořit **koncového bodu delegace**. Je třeba provést něk
 
 1. Zobrazí se žádost o ve tvaru:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL zdrojové stránky} & řetězce salt = {řetězec} & sig = {řetězec}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn & returnUrl = {adresa URL zdroje stránky} & řetězce salt = {řetězec} & sig = {řetězec}*
    > 
    > 
    
@@ -80,7 +80,7 @@ Teď je potřeba vytvořit **koncového bodu delegace**. Je třeba provést něk
 
 Kromě **SignIn** operace, můžete také provádět správu účtů podle předchozích kroků a použijte jednu z následujících operací:
 
-* **Metodu ChangePassword**
+* **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
 
@@ -104,7 +104,7 @@ Zajistěte, že koncového bodu delegace provede následující akce:
 
 1. Zobrazí se žádost o ve tvaru:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product Přihlaste se k odběru} & userId = {{uživatel provádění požadavku} & řetězce salt = {řetězec} & sig = {řetězec}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    > 
    > 
    
@@ -120,7 +120,7 @@ Zajistěte, že koncového bodu delegace provede následující akce:
    * **SIG**: hash vypočítané zabezpečení se použije k porovnání s vlastním vypočtená hodnota hash
 2. Ověřte, že žádost pochází ze služby Azure API Management (volitelný, ale důrazně doporučujeme pro zabezpečení)
    
-   * COMPUTE SHA512 HMAC řetězce na základě **productId**, ** ID uživatele, a **řetězce salt** parametrů dotazu:
+   * COMPUTE SHA512 HMAC řetězce na základě **productId**, **userId**, a **řetězce salt** parametrů dotazu:
      
      > Metoda HMAC (**řetězce salt** + '\n' + **productId** + '\n' + **userId**)
      > 

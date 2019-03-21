@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: Šablony Rychlý start
   items:
-  - name: Správa webového provozu – portál
+  - name: Vytvoření Application Gateway – portál
     href: quick-create-portal.md
-  - name: Správa webového provozu – PowerShell
+  - name: Vytvoření Application Gateway – PowerShell
     href: quick-create-powershell.md
-  - name: Správa webového provozu – Azure CLI
+  - name: Vytvoření Application Gateway – Azure CLI
     href: quick-create-cli.md
   expanded: true
 - name: Kurzy
   items:
-  - name: Správa webového provozu
+  - name: Hostování jedné lokality
     href: tutorial-manage-web-traffic-cli.md
   - name: Povolení firewallu webových aplikací
     href: tutorial-restrict-web-traffic-cli.md
@@ -40,12 +40,26 @@ items:
     href: cli-samples.md
 - name: Koncepty
   items:
-  - name: Jak funguje Application Gateway
-    href: how-application-gateway-works.md
-  - name: Komponenty Application Gateway
-    href: application-gateway-components.md
-  - name: Přehled konfigurace
-    href: configuration-overview.md
+  - name: Základy
+    items:
+    - name: Jak funguje Application Gateway
+      href: how-application-gateway-works.md
+    - name: Komponenty Application Gateway
+      href: application-gateway-components.md
+    - name: Přehled konfigurace
+      href: configuration-overview.md
+  - name: Směrování
+    items:
+    - name: Hostování několika webů
+      href: multiple-site-overview.md
+    - name: Směrování adres URL
+      href: url-route-overview.md
+    - name: Přesměrování
+      href: redirect-overview.md
+    - name: Přepsání hlaviček HTTP
+      href: rewrite-http-headers.md
+    - name: Vlastní chybové stránky
+      href: custom-error.md
   - name: SSL
     items:
     - name: Přehled zásad SSL
@@ -58,20 +72,16 @@ items:
       href: waf-overview.md
     - name: Konfigurace WAF
       href: application-gateway-waf-configuration.md
-  - name: Směrování adres URL
-    href: url-route-overview.md
-  - name: Hostování několika webů
-    href: multiple-site-overview.md
+  - name: Monitorování stavu
+    items:
+    - name: Sonda stavu
+      href: application-gateway-probe-overview.md
+    - name: Diagnostika
+      href: application-gateway-diagnostics.md
   - name: Automatické škálování a redundance zón
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: Podpora přesměrování
-    href: redirect-overview.md
-  - name: Přepsání hlaviček HTTP
-    href: rewrite-http-headers.md
   - name: Podpora více tenantů a webová aplikace App Service
     href: application-gateway-web-app-overview.md
-  - name: Monitorování stavu
-    href: application-gateway-probe-overview.md
   - name: Podpora protokolu WebSocket
     href: application-gateway-websocket.md
   - name: Nejčastější dotazy
@@ -96,8 +106,12 @@ items:
       href: create-ssl-portal.md
     - name: Ukončení protokolu SSL – PowerShell
       href: tutorial-ssl-powershell.md
+    - name: Kompletní SSL – portál
+      href: end-to-end-ssl-portal.md
     - name: Kompletní SSL – PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
+    - name: Vytváření certifikátů pro back-end zařazování na seznam povolených
+      href: certificates-for-backend-authentication.md
     - name: Obnovení certifikátů
       href: renew-certificates.md
     - name: Konfigurace zásad SSL
@@ -108,7 +122,7 @@ items:
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: Přizpůsobení pravidel WAF
+  - name: Konfigurace sad pravidel WAF
     items:
     - name: portál Azure
       href: application-gateway-customize-waf-rules-portal.md
@@ -180,10 +194,6 @@ items:
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
     - name: Chyby Chybná brána (502)
       href: application-gateway-troubleshooting-502.md
-    - name: Diagnostika
-      href: application-gateway-diagnostics.md
-  - name: Vlastní chybové stránky
-    href: custom-error.md
 - name: Referenční informace
   items:
   - name: Pravidla CRS
@@ -218,9 +228,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: bd544dc507be3caade81ee45c3a5d704392c5694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68264afadd3d05e4d11c6b4b98cd7375886e4d20
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170322"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286952"

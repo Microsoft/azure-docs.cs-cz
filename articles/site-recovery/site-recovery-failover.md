@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: mayg
-ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215839"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082088"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Převzetí služeb při selhání virtuálních počítačů a fyzických serverů 
 
@@ -39,17 +39,17 @@ Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plánu
 
 1. Vyberte **plány obnovení** > *recoveryplan_name*. Klikněte na tlačítko **převzetí služeb při selhání**
 2. Na **převzetí služeb při selhání** obrazovky, vyberte **bod obnovení** převzetí služeb při selhání. Můžete použít jednu z následujících možností:
-    1.  **Nejnovější**: Tato možnost spustí úlohu pomocí první zpracování všech dat poslaných do služby Site Recovery. Zpracování dat vytvoří bod obnovení pro každý virtuální počítač. Tohoto bodu obnovení se používá pro virtuální počítač během převzetí služeb při selhání. Tato možnost poskytuje nejnižší cíl (bodu obnovení rpo) jako virtuální počítač po převzetí služeb při selhání bude mít veškerá data, které jsou replikované do služby Site Recovery při aktivaci převzetí služeb při selhání.
-    1.  **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko posledního bodu obnovení zpracované. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací. Protože se neztrácí žádný čas ke zpracování nezpracovaných dat, tato možnost poskytuje nízkou možnost převzetí služeb při selhání obnovení čas (RTO).
-    1.  **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení konzistentní vzhledem k aplikaci, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko bodu nejnovější konzistentní vzhledem k obnovení. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací.
-    1.  **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost dostupná jenom pro plány obnovy, které mají nejméně jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při nejnovější společné pro více virtuálních počítačů obnovení konzistentní vzhledem k bodu. Ostatní virtuální počítače převzetí služeb při selhání do bodu jejich nejnovější zpracované obnovení.  
-    1.  **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost dostupná jenom pro plány obnovy, které mají nejméně jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při nejnovější běžné konzistentní obnovení více virtuálních počítačů bodu. Ostatní virtuální počítače převzetí služeb při selhání jejich nejnovější bod obnovení konzistentní s aplikací.
-    1.  **Vlastní**: Při provádění testovacího převzetí služeb při selhání virtuálního počítače, můžete použít tuto možnost, převzetí služeb při selhání konkrétnímu bodu obnovení.
+   1. **Nejnovější**: Tato možnost spustí úlohu pomocí první zpracování všech dat poslaných do služby Site Recovery. Zpracování dat vytvoří bod obnovení pro každý virtuální počítač. Tohoto bodu obnovení se používá pro virtuální počítač během převzetí služeb při selhání. Tato možnost poskytuje nejnižší cíl (bodu obnovení rpo) jako virtuální počítač po převzetí služeb při selhání bude mít veškerá data, které jsou replikované do služby Site Recovery při aktivaci převzetí služeb při selhání.
+   1. **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko posledního bodu obnovení zpracované. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací. Protože se neztrácí žádný čas ke zpracování nezpracovaných dat, tato možnost poskytuje nízkou možnost převzetí služeb při selhání obnovení čas (RTO).
+   1. **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení konzistentní vzhledem k aplikaci, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko bodu nejnovější konzistentní vzhledem k obnovení. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací.
+   1. **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost dostupná jenom pro plány obnovy, které mají nejméně jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při nejnovější společné pro více virtuálních počítačů obnovení konzistentní vzhledem k bodu. Ostatní virtuální počítače převzetí služeb při selhání do bodu jejich nejnovější zpracované obnovení.  
+   1. **Nejnovější více virtuálních počítačů konzistentní**: Tato možnost dostupná jenom pro plány obnovy, které mají nejméně jeden virtuální počítač s ON konzistence více virtuálních počítačů. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při nejnovější běžné konzistentní obnovení více virtuálních počítačů bodu. Ostatní virtuální počítače převzetí služeb při selhání jejich nejnovější bod obnovení konzistentní s aplikací.
+   1. **Vlastní**: Při provádění testovacího převzetí služeb při selhání virtuálního počítače, můžete použít tuto možnost, převzetí služeb při selhání konkrétnímu bodu obnovení.
 
-    > [!NOTE]
-    > Zvolte bod obnovení možnost je k dispozici, pouze pokud jste se převzetí služeb při selhání do Azure.
-    >
-    >
+      > [!NOTE]
+      > Zvolte bod obnovení možnost je k dispozici, pouze pokud jste se převzetí služeb při selhání do Azure.
+      >
+      >
 
 
 1. Pokud některé virtuální počítače v plánu obnovení byly převzetí služeb při selhání v předchozím spuštění a teď virtuální počítače jsou aktivní na zdrojovém i cílovém umístění, můžete použít **změnit směr** možnost se rozhodnout, směr, ve kterém převzetí služeb při selhání by mělo nastat.
@@ -70,9 +70,9 @@ Virtuální počítače/fyzické servery, chránit pomocí Site Recovery také p
 
 > [!NOTE]
 > Během převzetí služeb při selhání virtuálních počítačů Hyper-v z jedné místní lokality do jiné místní lokality, chcete-li se vrátit do primární místní lokality budete muset nejprve **zpětnou replikaci** virtuální počítač zpět do primární lokality a pak aktivační událost převzetí služeb při selhání. Pokud není k dispozici, pak před spuštěním na primárním virtuálním počítači **zpětnou replikaci** budete muset obnovit virtuální počítač ze zálohy.   
->
->
-## <a name="failover-job"></a>Úlohy převzetí služeb při selhání
+> 
+> 
+> ## <a name="failover-job"></a>Úlohy převzetí služeb při selhání
 
 ![Převzetí služeb při selhání](./media/site-recovery-failover/FailoverJob.png)
 

@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 8b37f86706e47e3998a4ba85e4416ce1a8a44c22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834213"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do zařízení s Iosem konkrétní pomocí Azure Notification Hubs
 
@@ -49,14 +49,14 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
 
 1. Ve vaší **MainStoryboard_iPhone.storyboard** z objektu knihovny přidejte následující součásti:
 
-    * Popisek s textem "Novinkách."
-    * Popisky se texty kategorie "World", "Politika", "Obchodní", "Technologie", "Přírodověda", "Sports"
-    * Šest přepínače, jeden pro každou kategorii, nastavit každý přepínač **stavu** bude **vypnout** ve výchozím nastavení.
-    * Jedno tlačítko s popiskem "Přihlásit k odběru"
+   * Popisek s textem "Novinkách."
+   * Popisky se texty kategorie "World", "Politika", "Obchodní", "Technologie", "Přírodověda", "Sports"
+   * Šest přepínače, jeden pro každou kategorii, nastavit každý přepínač **stavu** bude **vypnout** ve výchozím nastavení.
+   * Jedno tlačítko s popiskem "Přihlásit k odběru"
 
-    Scénář by měl vypadat takto:
+     Scénář by měl vypadat takto:
 
-    ![Tvůrce rozhraní Xcode][3]
+     ![Tvůrce rozhraní Xcode][3]
 
 2. V editoru Pomocníka s nastavením, vytvoříte výstupy pro všechny přepínače a volat "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
 3. Vytvoření akce pro tlačítko volá `subscribe`; vaší `ViewController.h` by měl obsahovat následující kód:
@@ -359,11 +359,11 @@ V tomto kurzu jste zaslali oznámení vysílání specifické pro zařízení s 
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
+[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Azure Portal]: https://portal.azure.com

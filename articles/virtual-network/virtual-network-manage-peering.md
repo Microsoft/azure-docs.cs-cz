@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: e752c19dc74135c05b971f8eb296da61259d0c20
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 28783b61a9361d97c151294140819249c9a100c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875202"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
@@ -114,9 +114,9 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
 - <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Partnerské vztahy virtuálních sítí v různých oblastech se také označuje jako *globální VNet Peering*. 
-- Při vytváření globální partnerský vztah, partnerských virtuálních sítích mohou existovat v libovolné oblasti veřejného cloudu Azure nebo cloudových oblastech Čína, ale není v Government cloudovým oblastem. Je možné jen partnerské virtuální sítě ve stejné oblasti v oblasti cloudu Azure Government. Nejde vytvořit partnerský vztah napříč cloudy.
-- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná za globální VNet Peering.
-- Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
+- Při vytváření globální partnerský vztah, mohou existovat partnerských virtuálních sítích v libovolné oblasti veřejného cloudu Azure nebo cloudových oblastech Čína nebo cloudové oblasti státní správy. Nejde vytvořit partnerský vztah napříč cloudy. Například virtuální sítě ve veřejném cloudu Azure nejde vytvořit partnerský vztah k virtuální síti v cloud Azure China.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu interní load balanceru úrovně Basic v globálním partnerském vztahu virtuální sítě. Podpora pro Load balancer úrovně Basic existuje pouze v rámci stejné oblasti. Podpora pro Load balancer úrovně Standard je dostupná pro VNet Peering i globální VNet Peering.
+- Můžete používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí ve verzi preview. Verzi preview je k dispozici ve všech oblastech Azure, Čína cloudové oblasti a oblasti cloud Government. Vyžaduje se žádná přidání na seznam povolených. Můžete otestovat ve verzi preview prostřednictvím rozhraní příkazového řádku, PowerShell, šablony nebo rozhraní API. Portál se nepodporuje ve verzi preview.
 - Virtuální sítě může být ve stejném ani jiném předplatném. Po vytvoření partnerského vztahu virtuálních sítí v různých předplatných, dá se přidružit k stejného nebo jiného tenanta Azure Active Directory oběma předplatným. Pokud ještě nemáte klient služby AD, můžete si [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Podpora pro vytvoření partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým tenantům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, Powershellu nebo šablony.
 - Virtuální sítě, které můžete vytvořit partnerský vztah musí mít překrývat adresní prostory IP adres.
 - Nelze přidat rozsahy adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě, jakmile se virtuální síť má partnerský vztah s jinou virtuální sítí. Chcete-li přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, pak znovu vytvořte partnerský vztah. Přidat rozsahy adres k nebo odebrat rozsahy adres virtuální sítě, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md).

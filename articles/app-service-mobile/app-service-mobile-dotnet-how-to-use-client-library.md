@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 01294ec8aa65a8405bc99be215008dad66a73d8d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 469c6802879707a3cf16b3e17876cb1f5e3854fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960740"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093003"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -663,10 +663,10 @@ Active Directory Authentication Library (ADAL) můžete použít k ověření sp
 
      **Windows:**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -694,15 +694,15 @@ Active Directory Authentication Library (ADAL) můžete použít k ověření sp
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.iOS**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync(UIViewController view)
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync(UIViewController view)
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -722,15 +722,15 @@ Active Directory Authentication Library (ADAL) můžete použít k ověření sp
         {
             Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.Android**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -753,14 +753,14 @@ Active Directory Authentication Library (ADAL) můžete použít k ověření sp
             builder.SetTitle("You must log in. Login Required");
             builder.Create().Show();
         }
-    }
-    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-    {
+     }
+     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+     {
 
         base.OnActivityResult(requestCode, resultCode, data);
         AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-    }
-    ```
+     }
+     ```
 
 #### <a name="client-facebook"></a>Jednotné přihlašování pomocí tokenu z Facebooku nebo Googlu
 Tok klienta můžete použít, jak je znázorněno v tomto fragmentu kódu pro Facebook nebo Google.

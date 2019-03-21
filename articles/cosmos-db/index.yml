@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a94039b70ceb1cffabe90df09282f840f45f7d32
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 43740118c4379c3b30843575840a000e89cd820b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033498"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294990"
 documentType: LandingData
 title: Dokumentace k databázi Azure Cosmos
 metadata:
@@ -35,11 +35,11 @@ sections:
     columns: 3
     items:
     - href: /azure/cosmos-db/distribute-data-globally/
-      html: <p>Další informace o globální distribuci, dělení do oddílů, indexování a dalších konceptech, které se vztahují na všechna rozhraní API služby Azure Cosmos DB</p>
+      html: <p>Další informace o globální distribuci, dělení do oddílů, zřízené propustnosti, indexování a dalších konceptech, které se vztahují na všechna rozhraní API služby Azure Cosmos DB</p>
       image:
         src: media/index/azure-cosmos-db-icon.png
       title: Koncepty
-    - href: /azure/cosmos-db/sql-api-introduction/
+    - href: /azure/cosmos-db/sql-api-query-reference/
       html: <p>Rozhraní SQL API můžete využít, když sestavujete novou nerelační dokumentační databázi a chcete k dotazování využít známou syntaxi SQL.</p>
       image:
         src: media/index/sql-api.svg
@@ -102,7 +102,7 @@ sections:
       - href: 
       - href: 
       - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
-    - title: Rozhraní API služby Azure Cosmos DB pro MongoDB
+    - title: Rozhraní API pro MongoDB
       values:
       - href: /azure/cosmos-db/create-mongodb-java
       - href: /azure/cosmos-db/create-mongodb-dotnet
@@ -157,12 +157,12 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " Vytvoření škálovatelné databáze Azure Cosmos DB"
+    - title: " Vytvoření škálovatelné databáze Azure Cosmos"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg
         href: /learn/modules/create-cosmos-db-for-scale/
-    - title: Vložení dat do databáze Azure Cosmos DB a dotazování na tato data
+    - title: Vložení dat do databáze Azure Cosmos a dotazování na tato data
       href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
       image:
         src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg

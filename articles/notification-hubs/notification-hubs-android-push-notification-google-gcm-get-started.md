@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 54c5daa45a7a31334a8f4f437e914dff64752499
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887574"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging
 
@@ -31,6 +31,9 @@ ms.locfileid: "55963059"
 
 V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace systému Android.
 Vytvoříte prázdnou aplikaci pro Android, která přijímá nabízená oznámení službou Google Cloud Messaging (GCM).
+
+> [!IMPORTANT]
+> Google Cloud Messaging (GCM) je zastaralá a bude odebrána [brzy](https://developers.google.com/cloud-messaging/faq).
 
 > [!IMPORTANT]
 > Toto téma popisuje nabízená oznámení ve službě Google Cloud Messaging (GCM). Pokud používáte Firebase Cloud Messaging (FCM) od Googlu, přečtěte si článek [Odesílání nabízených oznámení do systému Android pomocí služeb Azure Notification Hubs a FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
@@ -89,15 +92,15 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 1. Do souboru `Build.Gradle` pro **aplikaci** přidejte následující řádky v části **závislosti**.
 
     ```gradle
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 2. Přidejte následující úložiště za část **závislosti**.
 
     ```gradle
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -158,19 +161,19 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 
     V následujícím kódu třídy `NotificationSettings` aktualizujte tyto tři zástupné symboly:
 
-   * `SenderId`: Číslo projektu, který jste získali výše [Google Cloud Console](http://cloud.google.com/console).
+   * `SenderId`: Číslo projektu, který jste získali výše [Google Cloud Console](https://cloud.google.com/console).
    * `HubListenConnectionString`: `DefaultListenAccessSignature` Připojovací řetězec centra. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
    * `HubName`: Použijte název, který se zobrazí na stránce centra v centru oznámení [Azure Portal].
 
      Kód `NotificationSettings`:
 
-    ```java
-    public class NotificationSettings {
+     ```java
+     public class NotificationSettings {
         public static String SenderId = "<Your project number>";
         public static String HubName = "<Your HubName>";
         public static String HubListenConnectionString = "<Your default listen connection string>";
-    }
-    ```
+     }
+     ```
 2. Přidejte další třídu pojmenovanou `MyInstanceIDService`. Tato třída představuje vaši implementaci naslouchací služby ID instance.
 
     Kód této třídy volá `IntentService`, aby na pozadí [aktualizoval token GCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
@@ -544,7 +547,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
 
     ```java
     /**
-        * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
+        * Example code from https://msdn.microsoft.com/library/azure/dn495627.aspx
         * to parse the connection string so a SaS authentication token can be
         * constructed.
         *
@@ -573,7 +576,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
 
     ```java
     /**
-        * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
+        * Example code from https://msdn.microsoft.com/library/azure/dn495627.aspx to
         * construct a SaS token from the access key to authenticate a request.
         *
         * @param uri The unencoded resource URI string for this operation. The resource
@@ -647,7 +650,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
                 try
                 {
                     // Based on reference documentation...
-                    // http://msdn.microsoft.com/library/azure/dn223273.aspx
+                    // https://msdn.microsoft.com/library/azure/dn223273.aspx
                     ParseConnectionString(NotificationSettings.HubFullAccess);
                     URL url = new URL(HubEndpoint + NotificationSettings.HubName +
                             "/messages/?api-version=2015-01");
@@ -734,8 +737,8 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 <!-- URLs. -->
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

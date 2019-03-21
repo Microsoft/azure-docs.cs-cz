@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 8cd50cab555755a137114bf871cad57ddf7a9db5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 3e93e822c5764a23bba124152ef5dfabf2d3f94f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872976"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223865"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric v Linuxu spuštěnou serveru Apache Tomcat
 Apache Tomcat je Oblíbené, open source implementace technologií Java Servlet a Java Server. V tomto článku se dozvíte, jak vytvořit kontejner s Apache Tomcat a jednoduchou webovou aplikaci, kontejner nasadí do clusteru Service Fabric s Linuxem a připojit k webové aplikaci.  
@@ -153,12 +153,12 @@ Teď, když jste nevložili jste Tomcat image do registru kontejneru, můžete s
 
    ```xml
    <Resources>
-     <Endpoints>
-       <!-- This endpoint is used by the communication listener to obtain the port on which to 
-        listen. Please note that if your service is partitioned, this port is shared with 
-        replicas of different partitions that are placed in your code. -->
-       <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
-     </Endpoints>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+       listen. Please note that if your service is partitioned, this port is shared with 
+       replicas of different partitions that are placed in your code. -->
+      <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
+    </Endpoints>
    </Resources>
    ```
 
@@ -166,10 +166,10 @@ Teď, když jste nevložili jste Tomcat image do registru kontejneru, můžete s
 
    ```xml
    <Policies>
-     <ContainerHostPolicies CodePackageRef="Code">
-       <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
-       <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-     </ContainerHostPolicies>
+    <ContainerHostPolicies CodePackageRef="Code">
+      <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
+      <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
+    </ContainerHostPolicies>
    </Policies>
    ```
 
@@ -183,31 +183,31 @@ Teď, když jste nevložili jste Tomcat image do registru kontejneru, můžete s
 
    * Pokud chcete připojit k místnímu clusteru Service Fabric, spusťte:
 
-      ```bash
-      sfctl cluster select --endpoint http://localhost:19080
-      ```
+     ```bash
+     sfctl cluster select --endpoint http://localhost:19080
+     ```
     
    * Pro připojení k zabezpečenému clusteru Azure, ujistěte se, že je k dispozici jako soubor .pem certifikátu klienta *ServiceFabricTomcat* adresář a spusťte: 
 
-      ```bash
-      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
-      ```
-      V předchozím příkazu nahraďte `your-certificate.pem` s názvem vašeho souboru klientského certifikátu. Do vývojového a testovacího prostředí se často používá certifikát clusteru jako na klientský certifikát. Pokud není certifikát podepsaný držitelem, vynechejte `-no-verify` parametru. 
+     ```bash
+     sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
+     ```
+     V předchozím příkazu nahraďte `your-certificate.pem` s názvem vašeho souboru klientského certifikátu. Do vývojového a testovacího prostředí se často používá certifikát clusteru jako na klientský certifikát. Pokud není certifikát podepsaný držitelem, vynechejte `-no-verify` parametru. 
        
-      Certifikáty clusteru jsou obvykle stáhli jako soubory PFX. Pokud ještě nemáte certifikát ve formátu PEM, spuštěním následujícího příkazu vytvořte soubor .pem ze souboru .pfx:
+     Certifikáty clusteru jsou obvykle stáhli jako soubory PFX. Pokud ještě nemáte certifikát ve formátu PEM, spuštěním následujícího příkazu vytvořte soubor .pem ze souboru .pfx:
 
-      ```bash
-      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
-      ```
+     ```bash
+     openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
+     ```
 
-      Pokud váš soubor PFX není chráněn heslem, použijte `-passin pass:` pro poslední parametr.
+     Pokud váš soubor PFX není chráněn heslem, použijte `-passin pass:` pro poslední parametr.
 
 
 13. Spusťte instalační skript, který je součástí šablony, které chcete nasadit aplikaci do clusteru. Tento skript zkopíruje balíček aplikace do úložiště imagí clusteru, zaregistruje typ aplikace a vytvoří instanci aplikace.
 
-      ```bash
-      ./install.sh
-      ```
+     ```bash
+     ./install.sh
+     ```
 
    Po spuštění instalačního skriptu, spusťte prohlížeč a přejděte do Service Fabric Exploreru:
     

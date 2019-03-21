@@ -180,6 +180,8 @@ items:
       href: backup-client-automation.md
     - name: Sdílené složky Azure na webu Azure Portal
       href: backup-azure-afs-automation.md
+    - name: SQL v zálohách virtuálních počítačů Azure
+      href: backup-azure-sql-automation.md
   - name: Použití rozhraní REST API Azure Backup
     items:
     - name: Vytvoření trezoru služby Recovery Services
@@ -195,7 +197,7 @@ items:
   - name: Zálohování databází SQL Serveru na virtuálních počítačích Azure
     items:
     - name: Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
-      href: backup-sql-server-azure-vms.md
+      href: backup-azure-sql-database.md
     - name: Zálohování databází SQL Serveru ve virtuálních počítačích Azure
       href: backup-sql-server-database-azure-vms.md
     - name: Obnovení databází SQL Serveru ve virtuálních počítačích Azure
@@ -244,7 +246,7 @@ items:
       href: backup-sql-server-azure-troubleshoot.md
   - name: Monitorování úloh služby Azure Backup
     items:
-    - name: Pomocí webu Azure Portal
+    - name: Použití webu Azure Portal
       href: backup-azure-monitoring-built-in-monitor.md
     - name: Pomocí Azure Monitoru
       href: backup-azure-monitoring-use-azuremonitor.md
@@ -278,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 033235611271b00275a0ef759af80f2c8c9a2474
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb58460b2331ab867e064235d5a2536809b28021
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014653"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284965"
